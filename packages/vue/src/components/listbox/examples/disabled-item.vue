@@ -5,20 +5,17 @@ import styles from 'styles/listbox.module.css'
 
 const collection = createListCollection({
   items: [
-    { label: 'Monday', value: 'mon' },
-    { label: 'Tuesday', value: 'tue' },
-    { label: 'Wednesday', value: 'wed' },
-    { label: 'Thursday', value: 'thu' },
-    { label: 'Friday', value: 'fri' },
-    { label: 'Saturday', value: 'sat' },
-    { label: 'Sunday', value: 'sun' },
+    { label: 'Free', value: 'free' },
+    { label: 'Pro', value: 'pro' },
+    { label: 'Enterprise', value: 'enterprise', disabled: true },
+    { label: 'Custom', value: 'custom' },
   ],
 })
 </script>
 
 <template>
-  <Listbox.Root :class="styles.Root" :collection="collection" selectionMode="multiple">
-    <Listbox.Label :class="styles.Label">Select Days</Listbox.Label>
+  <Listbox.Root :class="styles.Root" :collection="collection">
+    <Listbox.Label :class="styles.Label">Select Plan</Listbox.Label>
     <Listbox.Content :class="styles.Content">
       <Listbox.Item v-for="item in collection.items" :key="item.value" :class="styles.Item" :item="item">
         <Listbox.ItemText :class="styles.ItemText">{{ item.label }}</Listbox.ItemText>

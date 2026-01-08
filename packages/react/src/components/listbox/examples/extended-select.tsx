@@ -2,26 +2,22 @@ import { Listbox, createListCollection } from '@ark-ui/react/listbox'
 import { CheckIcon } from 'lucide-react'
 import styles from 'styles/listbox.module.css'
 
-export const ValueText = () => {
+export const ExtendedSelect = () => {
   const collection = createListCollection({
     items: [
-      { label: 'Red', value: 'red' },
-      { label: 'Blue', value: 'blue' },
-      { label: 'Green', value: 'green' },
-      { label: 'Yellow', value: 'yellow' },
-      { label: 'Purple', value: 'purple' },
+      { label: 'React', value: 'react' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Angular', value: 'angular' },
+      { label: 'Svelte', value: 'svelte' },
+      { label: 'Solid', value: 'solid' },
+      { label: 'Preact', value: 'preact' },
     ],
   })
 
   return (
-    <Listbox.Root
-      className={styles.Root}
-      collection={collection}
-      selectionMode="multiple"
-      defaultValue={['red', 'blue']}
-    >
+    <Listbox.Root className={styles.Root} collection={collection} selectionMode="extended">
       <Listbox.Label className={styles.Label}>
-        Colors: <Listbox.ValueText className={styles.ValueText} />
+        Hold <kbd>⌘</kbd> or <kbd>Ctrl</kbd> to select multiple
       </Listbox.Label>
       <Listbox.Content className={styles.Content}>
         {collection.items.map((item) => (

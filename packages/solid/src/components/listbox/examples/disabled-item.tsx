@@ -3,22 +3,19 @@ import { CheckIcon } from 'lucide-solid'
 import { Index } from 'solid-js'
 import styles from 'styles/listbox.module.css'
 
-export const ValueText = () => {
+export const DisabledItem = () => {
   const collection = createListCollection({
     items: [
-      { label: 'Red', value: 'red' },
-      { label: 'Blue', value: 'blue' },
-      { label: 'Green', value: 'green' },
-      { label: 'Yellow', value: 'yellow' },
-      { label: 'Purple', value: 'purple' },
+      { label: 'Free', value: 'free' },
+      { label: 'Pro', value: 'pro' },
+      { label: 'Enterprise', value: 'enterprise', disabled: true },
+      { label: 'Custom', value: 'custom' },
     ],
   })
 
   return (
-    <Listbox.Root class={styles.Root} collection={collection} selectionMode="multiple" defaultValue={['red', 'blue']}>
-      <Listbox.Label class={styles.Label}>
-        Colors: <Listbox.ValueText class={styles.ValueText} />
-      </Listbox.Label>
+    <Listbox.Root class={styles.Root} collection={collection}>
+      <Listbox.Label class={styles.Label}>Select Plan</Listbox.Label>
       <Listbox.Content class={styles.Content}>
         <Index each={collection.items}>
           {(item) => (

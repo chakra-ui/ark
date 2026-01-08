@@ -5,19 +5,24 @@
 
   const collection = createListCollection({
     items: [
-      { label: 'Monday', value: 'mon' },
-      { label: 'Tuesday', value: 'tue' },
-      { label: 'Wednesday', value: 'wed' },
-      { label: 'Thursday', value: 'thu' },
-      { label: 'Friday', value: 'fri' },
-      { label: 'Saturday', value: 'sat' },
-      { label: 'Sunday', value: 'sun' },
+      { label: 'Red', value: 'red' },
+      { label: 'Blue', value: 'blue' },
+      { label: 'Green', value: 'green' },
+      { label: 'Yellow', value: 'yellow' },
+      { label: 'Purple', value: 'purple' },
     ],
   })
 </script>
 
-<Listbox.Root class={styles.Root} {collection} selectionMode="multiple">
-  <Listbox.Label class={styles.Label}>Select Days</Listbox.Label>
+<Listbox.Root
+  class={styles.Root}
+  {collection}
+  selectionMode="multiple"
+  defaultValue={['red', 'blue']}
+>
+  <Listbox.Label class={styles.Label}>
+    Colors: <Listbox.ValueText class={styles.ValueText} />
+  </Listbox.Label>
   <Listbox.Content class={styles.Content}>
     {#each collection.items as item (item.value)}
       <Listbox.Item class={styles.Item} {item}>

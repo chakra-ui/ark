@@ -2,27 +2,19 @@ import { Listbox, createListCollection } from '@ark-ui/react/listbox'
 import { CheckIcon } from 'lucide-react'
 import styles from 'styles/listbox.module.css'
 
-export const ValueText = () => {
+export const DisabledItem = () => {
   const collection = createListCollection({
     items: [
-      { label: 'Red', value: 'red' },
-      { label: 'Blue', value: 'blue' },
-      { label: 'Green', value: 'green' },
-      { label: 'Yellow', value: 'yellow' },
-      { label: 'Purple', value: 'purple' },
+      { label: 'Free', value: 'free' },
+      { label: 'Pro', value: 'pro' },
+      { label: 'Enterprise', value: 'enterprise', disabled: true },
+      { label: 'Custom', value: 'custom' },
     ],
   })
 
   return (
-    <Listbox.Root
-      className={styles.Root}
-      collection={collection}
-      selectionMode="multiple"
-      defaultValue={['red', 'blue']}
-    >
-      <Listbox.Label className={styles.Label}>
-        Colors: <Listbox.ValueText className={styles.ValueText} />
-      </Listbox.Label>
+    <Listbox.Root className={styles.Root} collection={collection}>
+      <Listbox.Label className={styles.Label}>Select Plan</Listbox.Label>
       <Listbox.Content className={styles.Content}>
         {collection.items.map((item) => (
           <Listbox.Item className={styles.Item} key={item.value} item={item}>
