@@ -5,6 +5,7 @@ export interface LocaleProviderProps {
    * @default 'en-US'
    */
   locale: string
+  dir?: "rtl" | "ltr"
 }
 </script>
 
@@ -16,7 +17,7 @@ import { LocaleContextProvider } from './use-locale-context'
 const props = defineProps<LocaleProviderProps>()
 const context = computed<Locale>(() => ({
   locale: props.locale,
-  dir: isRTL(props.locale) ? 'rtl' : 'ltr',
+  dir: props.dir ? props.dir : isRTL(props.locale) ? "rtl" : "ltr",
 }))
 
 LocaleContextProvider(context)
