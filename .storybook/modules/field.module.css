@@ -19,7 +19,6 @@
   color: var(--neutral-fg);
 
   &[data-disabled] {
-    cursor: not-allowed;
   }
 }
 
@@ -60,7 +59,6 @@
   }
 
   &[data-disabled] {
-    cursor: not-allowed;
   }
 
   &[data-invalid] {
@@ -102,7 +100,6 @@
   }
 
   &[data-disabled] {
-    cursor: not-allowed;
   }
 
   &[data-invalid] {
@@ -143,7 +140,6 @@
   }
 
   &[data-disabled] {
-    cursor: not-allowed;
   }
 
   &[data-invalid] {

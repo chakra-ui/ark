@@ -1,6 +1,7 @@
 # CSS Module & Example Update Guide
 
-This guide documents the patterns for styling Ark UI component examples using CSS modules across all supported frameworks (React, Solid, Svelte, Vue).
+This guide documents the patterns for styling Ark UI component examples using CSS modules across all supported
+frameworks (React, Solid, Svelte, Vue).
 
 ## Directory Structure
 
@@ -19,15 +20,15 @@ This guide documents the patterns for styling Ark UI component examples using CS
 
 Each component should have these standard examples:
 
-| Example | Description |
-|---------|-------------|
-| `basic` | Minimal working example |
-| `controlled` | State managed externally via props |
-| `disabled` | Disabled state |
+| Example           | Description                                            |
+| ----------------- | ------------------------------------------------------ |
+| `basic`           | Minimal working example                                |
+| `controlled`      | State managed externally via props                     |
+| `disabled`        | Disabled state                                         |
 | `initial-checked` | Pre-selected/checked state (for toggleable components) |
-| `context` | Using the Context component to access internal state |
-| `with-field` | Integration with Field component |
-| `root-provider` | Using RootProvider with external hook |
+| `context`         | Using the Context component to access internal state   |
+| `with-field`      | Integration with Field component                       |
+| `root-provider`   | Using RootProvider with external hook                  |
 
 > **Note**: Use `initial-checked` (not `initial-value`) for boolean state components like Switch, Checkbox.
 
@@ -107,7 +108,7 @@ The `theme.css` file defines CSS custom properties used across all modules:
 import styles from 'styles/select.module.css'
 import button from 'styles/button.module.css'
 
-<Select.Root className={styles.Root}>
+;<Select.Root className={styles.Root}>
   <Select.Label className={styles.Label}>Label</Select.Label>
 </Select.Root>
 ```
@@ -118,7 +119,7 @@ import button from 'styles/button.module.css'
 import styles from 'styles/select.module.css'
 import button from 'styles/button.module.css'
 
-<Select.Root class={styles.Root}>
+;<Select.Root class={styles.Root}>
   <Select.Label class={styles.Label}>Label</Select.Label>
 </Select.Root>
 ```
@@ -218,9 +219,7 @@ export const RootProvider = () => {
 
 <div class="stack">
   <button class={button.Root} onclick={() => _switch().toggleChecked()}>Toggle</button>
-  <Switch.RootProvider class={styles.Root} value={_switch}>
-    ...
-  </Switch.RootProvider>
+  <Switch.RootProvider class={styles.Root} value={_switch}>...</Switch.RootProvider>
 </div>
 ```
 
@@ -234,9 +233,7 @@ const _switch = useSwitch()
 <template>
   <div class="stack">
     <button :class="button.Root" @click="_switch.toggleChecked()">Toggle</button>
-    <Switch.RootProvider :class="styles.Root" :value="_switch">
-      ...
-    </Switch.RootProvider>
+    <Switch.RootProvider :class="styles.Root" :value="_switch">...</Switch.RootProvider>
   </div>
 </template>
 ```
@@ -263,12 +260,12 @@ const checked = ref(false)
 
 Use `lucide-*` icons consistently:
 
-| Framework | Package | Icons |
-|-----------|---------|-------|
-| React | `lucide-react` | `ChevronsUpDownIcon`, `XIcon`, `CheckIcon` |
-| Solid | `lucide-solid` | `ChevronsUpDownIcon`, `XIcon`, `CheckIcon` |
-| Svelte | `lucide-svelte` | `ChevronsUpDownIcon`, `XIcon`, `CheckIcon` |
-| Vue | `lucide-vue-next` | `ChevronsUpDownIcon`, `XIcon`, `CheckIcon` |
+| Framework | Package           | Icons                                      |
+| --------- | ----------------- | ------------------------------------------ |
+| React     | `lucide-react`    | `ChevronsUpDownIcon`, `XIcon`, `CheckIcon` |
+| Solid     | `lucide-solid`    | `ChevronsUpDownIcon`, `XIcon`, `CheckIcon` |
+| Svelte    | `lucide-svelte`   | `ChevronsUpDownIcon`, `XIcon`, `CheckIcon` |
+| Vue       | `lucide-vue-next` | `ChevronsUpDownIcon`, `XIcon`, `CheckIcon` |
 
 ## Collection Data Structure
 
@@ -295,26 +292,44 @@ Each component module exports classes matching Ark UI part names:
 
 ```css
 /* switch.module.css */
-.Root { }
-.Label { }
-.Control { }
-.Thumb { }
+.Root {
+}
+.Label {
+}
+.Control {
+}
+.Thumb {
+}
 
 /* select.module.css */
-.Root { }
-.Label { }
-.Control { }
-.Trigger { }
-.ValueText { }
-.Indicators { }  /* Custom wrapper */
-.Indicator { }
-.ClearTrigger { }
-.Content { }
-.ItemGroup { }
-.ItemGroupLabel { }
-.Item { }
-.ItemText { }
-.ItemIndicator { }
+.Root {
+}
+.Label {
+}
+.Control {
+}
+.Trigger {
+}
+.ValueText {
+}
+.Indicators {
+} /* Custom wrapper */
+.Indicator {
+}
+.ClearTrigger {
+}
+.Content {
+}
+.ItemGroup {
+}
+.ItemGroupLabel {
+}
+.Item {
+}
+.ItemText {
+}
+.ItemIndicator {
+}
 ```
 
 ## Data Attributes for Styling
@@ -324,13 +339,19 @@ Ark UI components expose data attributes for state-based styling:
 ```css
 /* Toggle states */
 .Control {
-  &[data-state='checked'] { background: var(--coral-solid); }
-  &[data-state='unchecked'] { background: var(--neutral-muted); }
+  &[data-state='checked'] {
+    background: var(--coral-solid);
+  }
+  &[data-state='unchecked'] {
+    background: var(--neutral-muted);
+  }
 }
 
 /* Common states */
 .Root {
-  &[data-disabled] { opacity: 0.5; cursor: not-allowed; }
+  &[data-disabled] {
+    opacity: 0.5;
+  }
 }
 
 /* Focus states */
@@ -343,15 +364,25 @@ Ark UI components expose data attributes for state-based styling:
 
 /* List item states */
 .Item {
-  &[data-highlighted] { background: var(--neutral-subtle); }
-  &[data-state='checked'] { color: var(--coral-fg); }
-  &[data-disabled] { opacity: 0.5; }
+  &[data-highlighted] {
+    background: var(--neutral-subtle);
+  }
+  &[data-state='checked'] {
+    color: var(--coral-fg);
+  }
+  &[data-disabled] {
+    opacity: 0.5;
+  }
 }
 
 /* Animation states */
 .Content {
-  &[data-state='open'] { animation: slide-fade-in 0.15s ease-out; }
-  &[data-state='closed'] { animation: slide-fade-out 0.1s ease-in; }
+  &[data-state='open'] {
+    animation: slide-fade-in 0.15s ease-out;
+  }
+  &[data-state='closed'] {
+    animation: slide-fade-out 0.1s ease-in;
+  }
 }
 ```
 
