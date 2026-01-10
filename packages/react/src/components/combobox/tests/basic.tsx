@@ -1,5 +1,6 @@
 import { Combobox, createListCollection } from '../'
 import type { Optional } from '../../../types'
+import { Field } from '../../field'
 import { Portal } from '../../portal'
 
 interface Item {
@@ -42,5 +43,40 @@ export const ComponentUnderTest = (props: Optional<Combobox.RootProps<Item>, 'co
         </Combobox.Positioner>
       </Portal>
     </Combobox.Root>
+  )
+}
+
+export const ComboboxWithField = (props: Field.RootProps) => {
+  const collection = createListCollection({
+    items: [
+      { label: 'React', value: 'react' },
+      { label: 'Solid', value: 'solid' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Svelte', value: 'svelte' },
+    ],
+  })
+  return (
+    <Field.Root {...props}>
+      <Combobox.Root collection={collection}>
+        <Combobox.Label>Label</Combobox.Label>
+        <Combobox.Control>
+          <Combobox.Input />
+          <Combobox.Trigger>Open</Combobox.Trigger>
+          <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
+        </Combobox.Control>
+        <Combobox.Positioner>
+          <Combobox.Content>
+            {collection.items.map((item) => (
+              <Combobox.Item key={item.value} item={item}>
+                <Combobox.ItemText>{item.label}</Combobox.ItemText>
+                <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
+              </Combobox.Item>
+            ))}
+          </Combobox.Content>
+        </Combobox.Positioner>
+      </Combobox.Root>
+      <Field.HelperText>Additional Info</Field.HelperText>
+      <Field.ErrorText>Error Info</Field.ErrorText>
+    </Field.Root>
   )
 }

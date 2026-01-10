@@ -1,10 +1,9 @@
 import { Combobox, useCombobox, useComboboxContext, useListCollection } from '@ark-ui/solid/combobox'
 import { For, createEffect, createRenderEffect, createSignal, on } from 'solid-js'
 import { Portal } from 'solid-js/web'
+import styles from 'styles/combobox.module.css'
 import { useAsync } from './use-async'
 
-// The meat of the example is here.
-// It rehydrates the input value when the combobox is mounted.
 function ComboboxRehydrateValue() {
   const combobox = useComboboxContext()
   let hydrated = false
@@ -45,28 +44,28 @@ export const RehydrateValue = () => {
   createEffect(on(inputValue, () => state.load()))
 
   return (
-    <Combobox.RootProvider value={combobox}>
-      <Combobox.Label>Search Star Wars Characters</Combobox.Label>
+    <Combobox.RootProvider class={styles.Root} value={combobox}>
+      <Combobox.Label class={styles.Label}>Search Star Wars Characters</Combobox.Label>
       <ComboboxRehydrateValue />
-      <Combobox.Control>
-        <Combobox.Input placeholder="Type to search" />
+      <Combobox.Control class={styles.Control}>
+        <Combobox.Input class={styles.Input} placeholder="e.g. Luke" />
       </Combobox.Control>
 
       <Portal>
         <Combobox.Positioner>
-          <Combobox.Content>
+          <Combobox.Content class={styles.Content}>
             {state.loading() ? (
-              <span>Loading...</span>
+              <span style={{ padding: '0.5rem' }}>Loading...</span>
             ) : state.error() ? (
-              <span>{state.error()?.message}</span>
+              <span style={{ padding: '0.5rem' }}>{state.error()?.message}</span>
             ) : (
               <For each={collection().items}>
                 {(item) => (
-                  <Combobox.Item item={item}>
-                    <span>
+                  <Combobox.Item class={styles.Item} item={item}>
+                    <Combobox.ItemText class={styles.ItemText}>
                       {item.name} - {item.height}cm / {item.mass}kg
-                    </span>
-                    <Combobox.ItemIndicator />
+                    </Combobox.ItemText>
+                    <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
                   </Combobox.Item>
                 )}
               </For>

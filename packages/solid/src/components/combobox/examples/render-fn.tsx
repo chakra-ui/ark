@@ -1,44 +1,55 @@
 import { Combobox, useListCollection } from '@ark-ui/solid/combobox'
 import { useFilter } from '@ark-ui/solid/locale'
-import { For, Portal } from 'solid-js/web'
-
-const initialItems = ['React', 'Solid', 'Vue', 'Svelte']
+import { CheckIcon, ChevronsUpDownIcon, XIcon } from 'lucide-solid'
+import { For } from 'solid-js'
+import { Portal } from 'solid-js/web'
+import styles from 'styles/combobox.module.css'
 
 export const RenderFn = () => {
-  const filters = useFilter({ sensitivity: 'base' })
+  const filterFn = useFilter({ sensitivity: 'base' })
 
-  const { collection: filteredCollection, filter } = useListCollection({
-    initialItems,
-    filter: filters().contains,
+  const { collection, filter } = useListCollection({
+    initialItems: [
+      { label: 'Small', value: 'sm' },
+      { label: 'Medium', value: 'md' },
+      { label: 'Large', value: 'lg' },
+      { label: 'Extra Large', value: 'xl' },
+    ],
+    filter: filterFn().contains,
   })
 
-  const handleInputChange = (details: { inputValue: string }) => {
+  const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
     filter(details.inputValue)
   }
 
   return (
-    <Combobox.Root collection={filteredCollection()} onInputValueChange={handleInputChange}>
-      <Combobox.Context>{(combobox) => <p>Value: {JSON.stringify(combobox().value)}</p>}</Combobox.Context>
-      <Combobox.Label>Framework</Combobox.Label>
-      <Combobox.Control>
-        <Combobox.Input />
-        <Combobox.Trigger>Open</Combobox.Trigger>
-        <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
+    <Combobox.Root class={styles.Root} collection={collection()} onInputValueChange={handleInputChange}>
+      <Combobox.Context>{(context) => <p>Selected: {context().valueAsString || 'None'}</p>}</Combobox.Context>
+      <Combobox.Label class={styles.Label}>Size</Combobox.Label>
+      <Combobox.Control class={styles.Control}>
+        <Combobox.Input class={styles.Input} placeholder="e.g. Medium" />
+        <div class={styles.Indicators}>
+          <Combobox.ClearTrigger class={styles.ClearTrigger}>
+            <XIcon />
+          </Combobox.ClearTrigger>
+          <Combobox.Trigger class={styles.Trigger}>
+            <ChevronsUpDownIcon />
+          </Combobox.Trigger>
+        </div>
       </Combobox.Control>
       <Portal>
         <Combobox.Positioner>
-          <Combobox.Content>
-            <Combobox.ItemGroup>
-              <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-              <For each={filteredCollection().items}>
-                {(item) => (
-                  <Combobox.Item item={item}>
-                    <Combobox.ItemText>{item}</Combobox.ItemText>
-                    <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
-                  </Combobox.Item>
-                )}
-              </For>
-            </Combobox.ItemGroup>
+          <Combobox.Content class={styles.Content}>
+            <For each={collection().items}>
+              {(item) => (
+                <Combobox.Item class={styles.Item} item={item}>
+                  <Combobox.ItemText class={styles.ItemText}>{item.label}</Combobox.ItemText>
+                  <Combobox.ItemIndicator class={styles.ItemIndicator}>
+                    <CheckIcon />
+                  </Combobox.ItemIndicator>
+                </Combobox.Item>
+              )}
+            </For>
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

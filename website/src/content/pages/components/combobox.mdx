@@ -16,9 +16,22 @@ To set up the combobox correctly, you'll need to understand its anatomy and how 
 
 ## Examples
 
-Learn how to use the `Combobox` component in your project. Let's take a look at the most basic example
+Learn how to use the `Combobox` component in your project.
 
 <Example id="basic" />
+
+### Auto Highlight
+
+Automatically highlight the first matching item as the user types by setting `inputBehavior="autohighlight"`.
+
+<Example id="auto-highlight" />
+
+### Inline Autocomplete
+
+Complete the input value with the first matching item by setting `inputBehavior="autocomplete"`. Use with
+`startsWith` filter for best results.
+
+<Example id="inline-autocomplete" />
 
 ### Grouping
 
@@ -51,16 +64,16 @@ Use the `asChild` prop to render the combobox items as links.
 
 ### Rehydrate Value
 
-In some cases, where a combobox has a `defaultValue` or `value` but the `collection` is not loaded yet, here's how to
-rehydrate the value and populate the input value.
+When a combobox has a `defaultValue` or `value` but the `collection` is not loaded yet, you can rehydrate the value to
+populate the input.
 
 <Example id="rehydrate-value" />
 
 ### Highlight Matching Text
 
-Here's an example of highlighting the search text in combobox items based on the user's input.
+Highlight the matching search text in combobox items based on the user's input.
 
-<Example id="with-highlight" />
+<Example id="highlight-matching-text" />
 
 ### Dynamic Items
 
@@ -76,15 +89,30 @@ categories, or other custom values.
 
 <Example id="creatable" />
 
-<Example id="custom-object" />
+### Multiple Selection
+
+Enable multiple selection by setting the `multiple` prop. Selected items can be displayed as tags above the input.
+
+<Example id="multiple" />
+
+### Async Search
+
+Load options asynchronously based on user input using the `useAsyncList` hook. This is useful for searching large
+datasets or fetching data from an API.
+
+<Example id="async-search" />
+
+### Virtualized
+
+For very large lists, use virtualization with `@tanstack/react-virtual` to render only the visible items.
+
+<Example id="virtualized" />
 
 ## Guides
 
 ### Custom Router Links
 
-For custom router links, you can customize the `navigate` prop on the `Combobox.Root` component.
-
-Here's an example of using the Tanstack Router.
+Customize the `navigate` prop on `Combobox.Root` to integrate with your router. Using Tanstack Router:
 
 ```tsx
 import { Combobox } from '@ark-ui/react/combobox'

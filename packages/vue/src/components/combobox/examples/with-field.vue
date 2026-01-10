@@ -1,45 +1,53 @@
 <script setup lang="ts">
 // biome-ignore lint/style/useImportType: intentional
 import { Combobox, useListCollection } from '@ark-ui/vue/combobox'
-import { Field, type FieldRootProps } from '@ark-ui/vue/field'
+import { Field } from '@ark-ui/vue/field'
 import { useFilter } from '@ark-ui/vue/locale'
+import styles from 'styles/combobox.module.css'
+import field from 'styles/field.module.css'
 
 const filters = useFilter({ sensitivity: 'base' })
 
+const initialItems = [
+  { label: 'Engineering', value: 'engineering' },
+  { label: 'Design', value: 'design' },
+  { label: 'Marketing', value: 'marketing' },
+  { label: 'Sales', value: 'sales' },
+  { label: 'Human Resources', value: 'hr' },
+  { label: 'Finance', value: 'finance' },
+]
+
 const { collection, filter } = useListCollection({
-  initialItems: ['React', 'Solid', 'Vue', 'Svelte'],
+  initialItems,
   filter: filters.value.contains,
 })
 
 const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
   filter(details.inputValue)
 }
-
-const props = defineProps<FieldRootProps>()
 </script>
 
 <template>
-  <Field.Root v-bind="props">
-    <Combobox.Root :collection="collection" @input-value-change="handleInputChange">
-      <Combobox.Label>Label</Combobox.Label>
-      <Combobox.Control>
-        <Combobox.Input />
-        <Combobox.Trigger>Open</Combobox.Trigger>
-        <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
+  <Field.Root :class="field.Root">
+    <Combobox.Root :class="styles.Root" :collection="collection" @input-value-change="handleInputChange">
+      <Combobox.Label :class="styles.Label">Department</Combobox.Label>
+      <Combobox.Control :class="styles.Control">
+        <Combobox.Input :class="styles.Input" placeholder="e.g. Engineering" />
+        <div :class="styles.Indicators">
+          <Combobox.ClearTrigger :class="styles.ClearTrigger">Clear</Combobox.ClearTrigger>
+          <Combobox.Trigger :class="styles.Trigger">Open</Combobox.Trigger>
+        </div>
       </Combobox.Control>
       <Combobox.Positioner>
-        <Combobox.Content>
-          <Combobox.ItemGroup>
-            <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-            <Combobox.Item v-for="item in collection.items" :key="item" :item="item">
-              <Combobox.ItemText>{{ item }}</Combobox.ItemText>
-              <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
-            </Combobox.Item>
-          </Combobox.ItemGroup>
+        <Combobox.Content :class="styles.Content">
+          <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item" :class="styles.Item">
+            <Combobox.ItemText :class="styles.ItemText">{{ item.label }}</Combobox.ItemText>
+            <Combobox.ItemIndicator :class="styles.ItemIndicator">✓</Combobox.ItemIndicator>
+          </Combobox.Item>
         </Combobox.Content>
       </Combobox.Positioner>
     </Combobox.Root>
-    <Field.HelperText>Additional Info</Field.HelperText>
-    <Field.ErrorText>Error Info</Field.ErrorText>
+    <Field.HelperText :class="field.HelperText">Select your primary department</Field.HelperText>
+    <Field.ErrorText :class="field.ErrorText">Department is required</Field.ErrorText>
   </Field.Root>
 </template>

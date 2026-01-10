@@ -151,11 +151,11 @@
   }
 
   &[data-state='open'] {
-    animation: slide-fade-in 0.15s ease-out;
+    animation: scale-fade-in 0.15s ease-out;
   }
 
   &[data-state='closed'] {
-    animation: slide-fade-out 0.1s ease-in;
+    animation: scale-fade-out 0.1s ease-in;
   }
 }
 
@@ -219,24 +219,24 @@
   flex-shrink: 0;
 }
 
-@keyframes slide-fade-in {
+@keyframes scale-fade-in {
   from {
     opacity: 0;
-    transform: translateY(-4px);
+    transform: scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1);
   }
 }
 
-@keyframes slide-fade-out {
+@keyframes scale-fade-out {
   from {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1);
   }
   to {
     opacity: 0;
-    transform: translateY(-4px);
+    transform: scale(0.95);
   }
 }
