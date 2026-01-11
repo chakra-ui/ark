@@ -3,7 +3,8 @@
   import styles from 'styles/progress-circular.module.css'
 </script>
 
-<Progress.Root class={styles.Root} defaultValue={20} min={10} max={30}>
+<Progress.Root class={styles.Root} defaultValue={42}>
+  <Progress.Label class={styles.Label}>Label</Progress.Label>
   <div class={styles.CircleContainer}>
     <Progress.Circle class={styles.Circle}>
       <Progress.CircleTrack class={styles.CircleTrack} />

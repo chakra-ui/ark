@@ -4,7 +4,8 @@ import styles from 'styles/progress-circular.module.css'
 </script>
 
 <template>
-  <Progress.Root :class="styles.Root" :defaultValue="null">
+  <Progress.Root :class="styles.Root" :defaultValue="42">
+    <Progress.Label :class="styles.Label">Label</Progress.Label>
     <div :class="styles.CircleContainer">
       <Progress.Circle :class="styles.Circle">
         <Progress.CircleTrack :class="styles.CircleTrack" />

@@ -1,0 +1,62 @@
+.Root {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem;
+  row-gap: 0.5rem;
+  width: 100%;
+  max-width: 16rem;
+}
+
+.Label {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--neutral-fg);
+}
+
+.ValueText {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--neutral-fg);
+  text-align: right;
+}
+
+.Track {
+  grid-column: 1 / -1;
+  height: 0.375rem;
+  background: var(--neutral-muted);
+  border-radius: 9999px;
+  overflow: hidden;
+
+  &[data-orientation='vertical'] {
+    height: 8rem;
+    width: 0.375rem;
+  }
+}
+
+.Range {
+  height: 100%;
+  background: var(--coral-solid);
+  border-radius: 9999px;
+  transition: width 0.3s ease-out;
+
+  &[data-orientation='vertical'] {
+    width: 100%;
+    transition: height 0.3s ease-out;
+  }
+
+  &[data-state='indeterminate'] {
+    width: 50%;
+    animation: indeterminate 1s ease-in-out infinite;
+  }
+}
+
+@keyframes indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
