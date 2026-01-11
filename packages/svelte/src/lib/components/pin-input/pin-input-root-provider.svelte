@@ -1,13 +1,14 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UsePinInputReturn } from './use-pin-input.svelte'
 
   interface RootProviderProps {
     value: UsePinInputReturn
   }
 
-  export interface PinInputRootProviderBaseProps extends RootProviderProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface PinInputRootProviderBaseProps
+    extends Assign<HTMLProps<'div'>, RootProviderProps>, PolymorphicProps<'div'>, RefAttribute {}
   export interface PinInputRootProviderProps extends PinInputRootProviderBaseProps {
     children?: Snippet
   }

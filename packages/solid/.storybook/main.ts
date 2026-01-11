@@ -1,6 +1,10 @@
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { mergeConfig } from 'vite'
 
 import type { StorybookConfig } from 'storybook-solidjs-vite'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default {
   framework: 'storybook-solidjs-vite',
@@ -9,6 +13,11 @@ export default {
     return mergeConfig(config, {
       define: {
         'process.env': {},
+      },
+      resolve: {
+        alias: {
+          styles: resolve(__dirname, '../../../.storybook/modules'),
+        },
       },
     })
   },

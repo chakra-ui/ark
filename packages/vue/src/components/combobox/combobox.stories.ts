@@ -12,7 +12,10 @@ import RenderFnExample from './examples/render-fn.vue'
 import RehydrateValueExample from './examples/rehydrate-value.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import WithFieldExample from './examples/with-field.vue'
-import WithHighlightExample from './examples/with-highlight.vue'
+import HighlightMatchingTextExample from './examples/highlight-matching-text.vue'
+import AutoHighlightExample from './examples/auto-highlight.vue'
+import InlineAutocompleteExample from './examples/inline-autocomplete.vue'
+import LimitResultsExample from './examples/limit-results.vue'
 
 const meta: Meta = {
   title: 'Components / Combobox',
@@ -97,9 +100,9 @@ export const Multiple = {
   }),
 }
 
-export const WithHighlight = {
+export const HighlightMatchingText = {
   render: () => ({
-    components: { Component: WithHighlightExample },
+    components: { Component: HighlightMatchingTextExample },
     template: '<Component />',
   }),
 }
@@ -107,6 +110,27 @@ export const WithHighlight = {
 export const CustomObject = {
   render: () => ({
     components: { Component: CustomObjectExample },
+    template: '<Component />',
+  }),
+}
+
+export const AutoHighlight = {
+  render: () => ({
+    components: { Component: AutoHighlightExample },
+    template: '<Component />',
+  }),
+}
+
+export const InlineAutocomplete = {
+  render: () => ({
+    components: { Component: InlineAutocompleteExample },
+    template: '<Component />',
+  }),
+}
+
+export const LimitResults = {
+  render: () => ({
+    components: { Component: LimitResultsExample },
     template: '<Component />',
   }),
 }

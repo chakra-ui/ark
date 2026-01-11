@@ -1,0 +1,485 @@
+# CSS Module & Example Update Guide
+
+This guide documents the patterns for styling Ark UI component examples using CSS modules across all supported
+frameworks (React, Solid, Svelte, Vue).
+
+## Directory Structure
+
+```
+.storybook/modules/
+├── theme.css           # CSS variables (colors, semantic tokens)
+├── button.module.css   # Button component styles
+├── field.module.css    # Field component styles
+├── select.module.css   # Select component styles
+├── switch.module.css   # Switch component styles
+├── GUIDE.mdx          # This guide
+└── css-modules.d.ts    # TypeScript declarations
+```
+
+## Standard Example Names
+
+Each component should have these standard examples:
+
+| Example           | Description                                            |
+| ----------------- | ------------------------------------------------------ |
+| `basic`           | Minimal working example                                |
+| `controlled`      | State managed externally via props                     |
+| `disabled`        | Disabled state                                         |
+| `initial-checked` | Pre-selected/checked state (for toggleable components) |
+| `context`         | Using the Context component to access internal state   |
+| `with-field`      | Integration with Field component                       |
+| `root-provider`   | Using RootProvider with external hook                  |
+
+> **Note**: Use `initial-checked` (not `initial-value`) for boolean state components like Switch, Checkbox.
+
+## Example vs Test Separation
+
+Examples should be simple, static demonstrations without props. Tests need their own components that accept props.
+
+```
+packages/{framework}/src/components/{component}/
+├── examples/
+│   └── with-field.tsx      # Simple, no props
+└── tests/
+    ├── basic.tsx           # ComponentUnderTest + ComponentWithField (accept props)
+    └── component.test.tsx  # Imports from ./basic, not ../examples
+```
+
+### Example (no props)
+
+```tsx
+// examples/with-field.tsx
+export const WithField = () => (
+  <Field.Root className={field.Root}>
+    <Switch.Root className={styles.Root}>...</Switch.Root>
+    <Field.HelperText>Additional Info</Field.HelperText>
+    <Field.ErrorText>Error Info</Field.ErrorText>
+  </Field.Root>
+)
+```
+
+### Test Component (accepts props)
+
+```tsx
+// tests/basic.tsx
+export const SwitchWithField = (props: Field.RootProps) => (
+  <Field.Root {...props}>
+    <Switch.Root>...</Switch.Root>
+    <Field.HelperText>Additional Info</Field.HelperText>
+    <Field.ErrorText>Error Info</Field.ErrorText>
+  </Field.Root>
+)
+```
+
+## CSS Variables (theme.css)
+
+The `theme.css` file defines CSS custom properties used across all modules:
+
+```css
+:root {
+  /* Neutral colors */
+  --neutral-fg: #1a1a19;
+  --neutral-subtle: #f5f5f4;
+  --neutral-emphasized: #70706b;
+
+  /* Coral accent */
+  --coral-solid: #ec5d5e;
+  --coral-fg: #c63637;
+  --coral-subtle: #feebec;
+
+  /* Borders */
+  --border-emphasized: #e4e4e3;
+
+  /* Semantic */
+  --error: #dc2626;
+  --bg-popover: white;
+}
+
+.dark {
+  /* Dark mode overrides */
+}
+```
+
+## Import Patterns by Framework
+
+### React
+
+```tsx
+import styles from 'styles/select.module.css'
+import button from 'styles/button.module.css'
+
+;<Select.Root className={styles.Root}>
+  <Select.Label className={styles.Label}>Label</Select.Label>
+</Select.Root>
+```
+
+### Solid
+
+```tsx
+import styles from 'styles/select.module.css'
+import button from 'styles/button.module.css'
+
+;<Select.Root class={styles.Root}>
+  <Select.Label class={styles.Label}>Label</Select.Label>
+</Select.Root>
+```
+
+### Svelte
+
+```svelte
+<script lang="ts">
+  import styles from 'styles/select.module.css'
+  import button from 'styles/button.module.css'
+</script>
+
+<Select.Root class={styles.Root}>
+  <Select.Label class={styles.Label}>Label</Select.Label>
+</Select.Root>
+```
+
+### Vue
+
+```vue
+<script setup lang="ts">
+import styles from 'styles/select.module.css'
+import button from 'styles/button.module.css'
+</script>
+
+<template>
+  <Select.Root :class="styles.Root">
+    <Select.Label :class="styles.Label">Label</Select.Label>
+  </Select.Root>
+</template>
+```
+
+## Hook Variable Naming
+
+When using component hooks, avoid JavaScript reserved words:
+
+```tsx
+// ❌ Bad - "switch" is a reserved word
+const switch = useSwitch()
+
+// ✅ Good - prefix with underscore
+const _switch = useSwitch()
+
+// ✅ Also acceptable for non-reserved words
+const dialog = useDialog()
+const select = useSelect()
+```
+
+## RootProvider Example Pattern
+
+RootProvider examples should wrap content in a `div.stack` for proper layout:
+
+### React
+
+```tsx
+export const RootProvider = () => {
+  const _switch = useSwitch()
+
+  return (
+    <div className="stack">
+      <button className={button.Root} onClick={() => _switch.toggleChecked()}>
+        Toggle
+      </button>
+      <Switch.RootProvider className={styles.Root} value={_switch}>
+        ...
+      </Switch.RootProvider>
+    </div>
+  )
+}
+```
+
+### Solid
+
+```tsx
+export const RootProvider = () => {
+  const _switch = useSwitch()
+
+  return (
+    <div class="stack">
+      <button class={button.Root} onClick={() => _switch().toggleChecked()}>
+        Toggle
+      </button>
+      <Switch.RootProvider class={styles.Root} value={_switch}>
+        ...
+      </Switch.RootProvider>
+    </div>
+  )
+}
+```
+
+### Svelte
+
+```svelte
+<script lang="ts">
+  const _switch = useSwitch({ id: $props.id() })
+</script>
+
+<div class="stack">
+  <button class={button.Root} onclick={() => _switch().toggleChecked()}>Toggle</button>
+  <Switch.RootProvider class={styles.Root} value={_switch}>...</Switch.RootProvider>
+</div>
+```
+
+### Vue
+
+```vue
+<script setup lang="ts">
+const _switch = useSwitch()
+</script>
+
+<template>
+  <div class="stack">
+    <button :class="button.Root" @click="_switch.toggleChecked()">Toggle</button>
+    <Switch.RootProvider :class="styles.Root" :value="_switch">...</Switch.RootProvider>
+  </div>
+</template>
+```
+
+## Controlled Example Pattern
+
+Controlled examples should start with a falsy initial value:
+
+```tsx
+// React
+const [checked, setChecked] = useState(false)
+
+// Solid
+const [checked, setChecked] = createSignal(false)
+
+// Svelte
+let checked = $state(false)
+
+// Vue
+const checked = ref(false)
+```
+
+## Icon Usage
+
+Use `lucide-*` icons consistently:
+
+| Framework | Package           | Icons                                      |
+| --------- | ----------------- | ------------------------------------------ |
+| React     | `lucide-react`    | `ChevronsUpDownIcon`, `XIcon`, `CheckIcon` |
+| Solid     | `lucide-solid`    | `ChevronsUpDownIcon`, `XIcon`, `CheckIcon` |
+| Svelte    | `lucide-svelte`   | `ChevronsUpDownIcon`, `XIcon`, `CheckIcon` |
+| Vue       | `lucide-vue-next` | `ChevronsUpDownIcon`, `XIcon`, `CheckIcon` |
+
+## Collection Data Structure
+
+Prefer object-based items for better label/value separation:
+
+```ts
+// ✅ Preferred
+const collection = createListCollection({
+  items: [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+  ],
+})
+
+// ⚠️ Simple strings for basic examples only
+const collection = createListCollection({
+  items: ['React', 'Solid', 'Vue'],
+})
+```
+
+## CSS Module Naming Convention
+
+Each component module exports classes matching Ark UI part names:
+
+```css
+/* switch.module.css */
+.Root {
+}
+.Label {
+}
+.Control {
+}
+.Thumb {
+}
+
+/* select.module.css */
+.Root {
+}
+.Label {
+}
+.Control {
+}
+.Trigger {
+}
+.ValueText {
+}
+.Indicators {
+} /* Custom wrapper */
+.Indicator {
+}
+.ClearTrigger {
+}
+.Content {
+}
+.ItemGroup {
+}
+.ItemGroupLabel {
+}
+.Item {
+}
+.ItemText {
+}
+.ItemIndicator {
+}
+```
+
+## Data Attributes for Styling
+
+Ark UI components expose data attributes for state-based styling:
+
+```css
+/* Toggle states */
+.Control {
+  &[data-state='checked'] {
+    background: var(--coral-solid);
+  }
+  &[data-state='unchecked'] {
+    background: var(--neutral-muted);
+  }
+}
+
+/* Common states */
+.Root {
+  &[data-disabled] {
+    opacity: 0.5;
+  }
+}
+
+/* Focus states */
+.Control {
+  &[data-focus-visible] {
+    outline: 2px solid var(--coral-focus-ring);
+    outline-offset: 2px;
+  }
+}
+
+/* List item states */
+.Item {
+  &[data-highlighted] {
+    background: var(--neutral-subtle);
+  }
+  &[data-state='checked'] {
+    color: var(--coral-fg);
+  }
+  &[data-disabled] {
+    opacity: 0.5;
+  }
+}
+
+/* Animation states */
+.Content {
+  &[data-state='open'] {
+    animation: slide-fade-in 0.15s ease-out;
+  }
+  &[data-state='closed'] {
+    animation: slide-fade-out 0.1s ease-in;
+  }
+}
+```
+
+## Import Order Convention
+
+Maintain consistent import ordering:
+
+```tsx
+// 1. Ark UI components
+import { Switch } from '@ark-ui/react/switch'
+import { Field } from '@ark-ui/react/field'
+// 2. Icons
+import { CheckIcon } from 'lucide-react'
+// 3. Framework utilities (React hooks, Solid signals, etc.)
+import { useState } from 'react'
+// 4. CSS modules (alphabetical: button, field, then component-specific)
+import button from 'styles/button.module.css'
+import field from 'styles/field.module.css'
+import styles from 'styles/switch.module.css'
+```
+
+## Example File Locations
+
+```
+packages/
+├── react/src/components/{component}/
+│   ├── examples/*.tsx
+│   ├── tests/basic.tsx
+│   └── tests/*.test.tsx
+├── solid/src/components/{component}/
+│   ├── examples/*.tsx
+│   ├── tests/basic.tsx
+│   └── tests/*.test.tsx
+├── svelte/src/lib/components/{component}/
+│   ├── examples/*.svelte
+│   └── tests/*.test.ts
+└── vue/src/components/{component}/
+    ├── examples/*.vue
+    ├── tests/*.test.vue
+    └── tests/*.test.ts
+```
+
+## Stories File Patterns
+
+### React/Solid
+
+```tsx
+import type { Meta } from '@storybook/react-vite'
+
+const meta: Meta = {
+  title: 'Components / Switch',
+}
+
+export default meta
+
+export { Basic } from './examples/basic'
+export { Controlled } from './examples/controlled'
+export { Disabled } from './examples/disabled'
+export { InitialChecked } from './examples/initial-checked'
+export { Context } from './examples/context'
+export { RootProvider } from './examples/root-provider'
+export { WithField } from './examples/with-field'
+```
+
+### Svelte/Vue
+
+```ts
+import type { Meta } from '@storybook/svelte'
+import BasicExample from './examples/basic.svelte'
+
+const meta: Meta = {
+  title: 'Components/Switch',
+}
+
+export default meta
+
+export const Basic = {
+  render: () => ({
+    Component: BasicExample,
+  }),
+}
+```
+
+## Checklist for New Component Styling
+
+1. [ ] Create `{component}.module.css` in `.storybook/modules/`
+2. [ ] Define CSS variables in `theme.css` if needed
+3. [ ] Create all standard examples (basic, controlled, disabled, context, root-provider, with-field)
+4. [ ] Update all React examples with CSS module imports (`className`)
+5. [ ] Update all Solid examples (`class`)
+6. [ ] Update all Svelte examples (`class`, `lang="ts"` in script)
+7. [ ] Update all Vue examples (`:class`)
+8. [ ] Create test components in `tests/basic.tsx` (separate from examples)
+9. [ ] Update test files to import from `./basic` not `../examples`
+10. [ ] Update stories file with correct imports and exports
+11. [ ] Use `_prefix` for hook variables that are reserved words
+12. [ ] Wrap RootProvider content in `div.stack`
+13. [ ] Remove props from with-field examples (tests have their own components)
+14. [ ] Replace text icons (▼, ✓) with Lucide icons
+15. [ ] Convert string collections to object-based where appropriate

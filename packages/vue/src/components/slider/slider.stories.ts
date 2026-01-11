@@ -2,13 +2,14 @@ import type { Meta } from '@storybook/vue3-vite'
 
 import BasicExample from './examples/basic.vue'
 import CenterOriginExample from './examples/center-origin.vue'
+import ContextExample from './examples/context.vue'
 import DraggingIndicatorExample from './examples/dragging-indicator.vue'
-import InitialValueExample from './examples/initial-value.vue'
 import MinMaxExample from './examples/min-max.vue'
 import OnEventExample from './examples/on-event.vue'
 import RangeExample from './examples/range.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import StepExample from './examples/step.vue'
+import ThumbAlignmentExample from './examples/thumb-alignment.vue'
 import ThumbOverlapExample from './examples/thumb-overlap.vue'
 import VerticalExample from './examples/vertical.vue'
 import WithMarksExample from './examples/with-marks.vue'
@@ -33,16 +34,16 @@ export const CenterOrigin = {
   }),
 }
 
-export const DraggingIndicator = {
+export const Context = {
   render: () => ({
-    components: { Component: DraggingIndicatorExample },
+    components: { Component: ContextExample },
     template: '<Component />',
   }),
 }
 
-export const InitialValue = {
+export const DraggingIndicator = {
   render: () => ({
-    components: { Component: InitialValueExample },
+    components: { Component: DraggingIndicatorExample },
     template: '<Component />',
   }),
 }
@@ -78,6 +79,13 @@ export const RootProvider = {
 export const Step = {
   render: () => ({
     components: { Component: StepExample },
+    template: '<Component />',
+  }),
+}
+
+export const ThumbAlignment = {
+  render: () => ({
+    components: { Component: ThumbAlignmentExample },
     template: '<Component />',
   }),
 }

@@ -1,25 +1,28 @@
+import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeftIcon, ChevronsRightIcon } from 'lucide-solid'
 import { Pagination } from '@ark-ui/solid/pagination'
+import styles from 'styles/pagination.module.css'
 
 export const Context = () => {
   return (
-    <Pagination.Root count={100} pageSize={10}>
+    <Pagination.Root count={100} pageSize={10} class={styles.Root}>
       <Pagination.Context>
-        {(api) => (
-          <div>
-            <button onClick={() => api().goToFirstPage()}>First</button>
-            <button onClick={() => api().goToPrevPage()}>Previous</button>
-            <button onClick={() => api().setPage(5)}>Go to Page 5</button>
-            <button onClick={() => api().goToNextPage()}>Next</button>
-            <button onClick={() => api().goToLastPage()}>Last</button>
-
-            <p>
-              Page {api().page} of {api().totalPages}
+        {(pagination) => (
+          <div class={styles.Controls}>
+            <button class={styles.Trigger} onClick={() => pagination().goToFirstPage()}>
+              <ChevronsLeftIcon />
+            </button>
+            <button class={styles.Trigger} onClick={() => pagination().goToPrevPage()}>
+              <ChevronLeftIcon />
+            </button>
+            <p class={styles.Text} style={{ 'min-width': '120px', 'text-align': 'center' }}>
+              Page {pagination().page} of {pagination().totalPages}
             </p>
-            <p>
-              Items {api().pageRange.start + 1}-{api().pageRange.end}
-            </p>
-
-            <button onClick={() => api().setPageSize(20)}>20 per page</button>
+            <button class={styles.Trigger} onClick={() => pagination().goToNextPage()}>
+              <ChevronRightIcon />
+            </button>
+            <button class={styles.Trigger} onClick={() => pagination().goToLastPage()}>
+              <ChevronsRightIcon />
+            </button>
           </div>
         )}
       </Pagination.Context>

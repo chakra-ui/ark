@@ -1,17 +1,14 @@
 import type { Meta } from '@storybook/vue3-vite'
 
 import ArrowExample from './examples/arrow.vue'
-import AsChildExample from './examples/as-child.vue'
 import BasicExample from './examples/basic.vue'
 import CloseBehaviorExample from './examples/close-behavior.vue'
+import ContextExample from './examples/context.vue'
 import ControlledExample from './examples/controlled.vue'
-import FactoryExample from './examples/factory.vue'
 import ModalExample from './examples/modal.vue'
-import OnOpenChangeExample from './examples/on-open-change.vue'
-import PortalledExample from './examples/portalled.vue'
 import PositioningExample from './examples/positioning.vue'
-import RenderFnExample from './examples/render-fn.vue'
 import RootProviderExample from './examples/root-provider.vue'
+import WithDialogExample from './examples/with-dialog.vue'
 
 const meta: Meta = {
   title: 'Components / Popover',
@@ -19,23 +16,16 @@ const meta: Meta = {
 
 export default meta
 
-export const Arrow = {
-  render: () => ({
-    components: { Component: ArrowExample },
-    template: '<Component />',
-  }),
-}
-
-export const AsChild = {
-  render: () => ({
-    components: { Component: AsChildExample },
-    template: '<Component />',
-  }),
-}
-
 export const Basic = {
   render: () => ({
     components: { Component: BasicExample },
+    template: '<Component />',
+  }),
+}
+
+export const Arrow = {
+  render: () => ({
+    components: { Component: ArrowExample },
     template: '<Component />',
   }),
 }
@@ -47,16 +37,16 @@ export const CloseBehavior = {
   }),
 }
 
-export const Controlled = {
+export const Context = {
   render: () => ({
-    components: { Component: ControlledExample },
+    components: { Component: ContextExample },
     template: '<Component />',
   }),
 }
 
-export const Factory = {
+export const Controlled = {
   render: () => ({
-    components: { Component: FactoryExample },
+    components: { Component: ControlledExample },
     template: '<Component />',
   }),
 }
@@ -68,20 +58,6 @@ export const Modal = {
   }),
 }
 
-export const OnOpenChange = {
-  render: () => ({
-    components: { Component: OnOpenChangeExample },
-    template: '<Component />',
-  }),
-}
-
-export const Portalled = {
-  render: () => ({
-    components: { Component: PortalledExample },
-    template: '<Component />',
-  }),
-}
-
 export const Positioning = {
   render: () => ({
     components: { Component: PositioningExample },
@@ -89,16 +65,16 @@ export const Positioning = {
   }),
 }
 
-export const RenderFn = {
+export const RootProvider = {
   render: () => ({
-    components: { Component: RenderFnExample },
+    components: { Component: RootProviderExample },
     template: '<Component />',
   }),
 }
 
-export const RootProvider = {
+export const WithDialog = {
   render: () => ({
-    components: { Component: RootProviderExample },
+    components: { Component: WithDialogExample },
     template: '<Component />',
   }),
 }

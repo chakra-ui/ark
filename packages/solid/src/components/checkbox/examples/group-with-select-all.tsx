@@ -1,13 +1,22 @@
 import { Checkbox } from '@ark-ui/solid/checkbox'
 import { CheckIcon, MinusIcon } from 'lucide-solid'
 import { For, createSignal, createMemo } from 'solid-js'
+import styles from 'styles/checkbox.module.css'
 
-const items = [
-  { label: 'React', value: 'react' },
-  { label: 'Solid', value: 'solid' },
-  { label: 'Vue', value: 'vue' },
-  { label: 'Svelte', value: 'svelte' },
-]
+const CheckboxItem = (props: Checkbox.RootProps) => (
+  <Checkbox.Root class={styles.Root} {...props}>
+    <Checkbox.Control class={styles.Control}>
+      <Checkbox.Indicator class={styles.Indicator}>
+        <CheckIcon />
+      </Checkbox.Indicator>
+      <Checkbox.Indicator class={styles.Indicator} indeterminate>
+        <MinusIcon />
+      </Checkbox.Indicator>
+    </Checkbox.Control>
+    <Checkbox.Label class={styles.Label}>{props.children}</Checkbox.Label>
+    <Checkbox.HiddenInput />
+  </Checkbox.Root>
+)
 
 export const GroupWithSelectAll = () => {
   const [value, setValue] = createSignal<string[]>([])
@@ -21,42 +30,30 @@ export const GroupWithSelectAll = () => {
 
   return (
     <div style={{ display: 'flex', 'flex-direction': 'column', gap: '10px' }}>
-      <Checkbox.Root
+      <output>Selected: {JSON.stringify(value())}</output>
+
+      <CheckboxItem
         checked={indeterminate() ? 'indeterminate' : allSelected()}
         onCheckedChange={(details) => handleSelectAll(!!details.checked)}
       >
-        <Checkbox.Label>Select All</Checkbox.Label>
-        <Checkbox.Control>
-          <Checkbox.Indicator>
-            <CheckIcon />
-          </Checkbox.Indicator>
-          <Checkbox.Indicator indeterminate>
-            <MinusIcon />
-          </Checkbox.Indicator>
-        </Checkbox.Control>
-        <Checkbox.HiddenInput />
-      </Checkbox.Root>
+        JSX Frameworks
+      </CheckboxItem>
 
-      <Checkbox.Group value={value} onValueChange={setValue} name="framework">
-        <For each={items}>
-          {(item) => (
-            <Checkbox.Root value={item.value}>
-              <Checkbox.Label>{item.label}</Checkbox.Label>
-              <Checkbox.Control>
-                <Checkbox.Indicator>
-                  <CheckIcon />
-                </Checkbox.Indicator>
-                <Checkbox.Indicator indeterminate>
-                  <MinusIcon />
-                </Checkbox.Indicator>
-              </Checkbox.Control>
-              <Checkbox.HiddenInput />
-            </Checkbox.Root>
-          )}
-        </For>
+      <Checkbox.Group
+        class={styles.Group}
+        style={{ 'margin-inline-start': '1rem' }}
+        value={value}
+        onValueChange={setValue}
+        name="framework"
+      >
+        <For each={items}>{(item) => <CheckboxItem value={item.value}>{item.label}</CheckboxItem>}</For>
       </Checkbox.Group>
-
-      <pre>Selected: {JSON.stringify(value())}</pre>
     </div>
   )
 }
+
+const items = [
+  { label: 'React', value: 'react' },
+  { label: 'Solid', value: 'solid' },
+  { label: 'Vue', value: 'vue' },
+]

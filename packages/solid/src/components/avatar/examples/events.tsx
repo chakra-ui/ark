@@ -1,4 +1,5 @@
 import { Avatar } from '@ark-ui/solid/avatar'
+import styles from 'styles/avatar.module.css'
 
 export const Events = () => {
   const handleStatusChange = (details: Avatar.StatusChangeDetails) => {
@@ -6,9 +7,9 @@ export const Events = () => {
   }
 
   return (
-    <Avatar.Root onStatusChange={handleStatusChange}>
-      <Avatar.Fallback>PA</Avatar.Fallback>
-      <Avatar.Image src="https://i.pravatar.cc/3000" alt="avatar" />
+    <Avatar.Root class={styles.Root} onStatusChange={handleStatusChange}>
+      <Avatar.Fallback class={styles.Fallback}>PA</Avatar.Fallback>
+      <Avatar.Image class={styles.Image} src="https://i.pravatar.cc/3000" alt="avatar" />
     </Avatar.Root>
   )
 }

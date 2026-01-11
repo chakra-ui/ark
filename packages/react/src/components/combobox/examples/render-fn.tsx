@@ -1,12 +1,19 @@
 import { Combobox, useListCollection } from '@ark-ui/react/combobox'
 import { useFilter } from '@ark-ui/react/locale'
 import { Portal } from '@ark-ui/react/portal'
+import { CheckIcon, ChevronsUpDownIcon, XIcon } from 'lucide-react'
+import styles from 'styles/combobox.module.css'
 
 export const RenderFn = () => {
   const { contains } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter } = useListCollection({
-    initialItems: ['React', 'Solid', 'Vue', 'Svelte'],
+    initialItems: [
+      { label: 'Small', value: 'sm' },
+      { label: 'Medium', value: 'md' },
+      { label: 'Large', value: 'lg' },
+      { label: 'Extra Large', value: 'xl' },
+    ],
     filter: contains,
   })
 
@@ -15,26 +22,31 @@ export const RenderFn = () => {
   }
 
   return (
-    <Combobox.Root collection={collection} onInputValueChange={handleInputChange}>
-      <Combobox.Context>{(combobox) => <p>Value: {JSON.stringify(combobox.value)}</p>}</Combobox.Context>
-      <Combobox.Label>Framework</Combobox.Label>
-      <Combobox.Control>
-        <Combobox.Input />
-        <Combobox.Trigger>Open</Combobox.Trigger>
-        <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
+    <Combobox.Root className={styles.Root} collection={collection} onInputValueChange={handleInputChange}>
+      <Combobox.Context>{(combobox) => <p>Selected: {combobox.valueAsString || 'None'}</p>}</Combobox.Context>
+      <Combobox.Label className={styles.Label}>Size</Combobox.Label>
+      <Combobox.Control className={styles.Control}>
+        <Combobox.Input className={styles.Input} placeholder="e.g. Medium" />
+        <div className={styles.Indicators}>
+          <Combobox.ClearTrigger className={styles.ClearTrigger}>
+            <XIcon />
+          </Combobox.ClearTrigger>
+          <Combobox.Trigger className={styles.Trigger}>
+            <ChevronsUpDownIcon />
+          </Combobox.Trigger>
+        </div>
       </Combobox.Control>
       <Portal>
         <Combobox.Positioner>
-          <Combobox.Content>
-            <Combobox.ItemGroup>
-              <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-              {collection.items.map((item) => (
-                <Combobox.Item key={item} item={item}>
-                  <Combobox.ItemText>{item}</Combobox.ItemText>
-                  <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
-                </Combobox.Item>
-              ))}
-            </Combobox.ItemGroup>
+          <Combobox.Content className={styles.Content}>
+            {collection.items.map((item) => (
+              <Combobox.Item className={styles.Item} key={item.value} item={item}>
+                <Combobox.ItemText className={styles.ItemText}>{item.label}</Combobox.ItemText>
+                <Combobox.ItemIndicator className={styles.ItemIndicator}>
+                  <CheckIcon />
+                </Combobox.ItemIndicator>
+              </Combobox.Item>
+            ))}
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

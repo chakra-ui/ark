@@ -2,11 +2,11 @@ import type { Meta } from '@storybook/svelte'
 
 import AnchorPositionExample from './examples/anchor-position.svelte'
 import BasicExample from './examples/basic.svelte'
+import ContextExample from './examples/context.svelte'
 import ControlledOpenExample from './examples/controlled-open.svelte'
 import ControlledPositionExample from './examples/controlled-position.svelte'
 import ControlledSizeExample from './examples/controlled-size.svelte'
 import LazyMountExample from './examples/lazy-mount.svelte'
-import RenderFnExample from './examples/render-fn.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 
 const meta: Meta = {
@@ -51,9 +51,9 @@ export const AnchorPosition = {
   }),
 }
 
-export const RenderFn = {
+export const Context = {
   render: () => ({
-    Component: RenderFnExample,
+    Component: ContextExample,
   }),
 }
 

@@ -5,13 +5,13 @@ import BasicExample from './examples/basic.svelte'
 import CloseOnEscapeExample from './examples/close-on-escape.svelte'
 import CloseOnInteractOutsideExample from './examples/close-on-interact-outside.svelte'
 import ConfirmationExample from './examples/confirmation.svelte'
+import ContextExample from './examples/context.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import FinalFocusExample from './examples/final-focus.svelte'
 import InitialFocusExample from './examples/initial-focus.svelte'
 import LazyMountExample from './examples/lazy-mount.svelte'
 import NestedExample from './examples/nested.svelte'
 import NonModalExample from './examples/non-modal.svelte'
-import RenderFnExample from './examples/render-fn.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 
 const meta: Meta = {
@@ -50,6 +50,12 @@ export const Confirmation = {
   }),
 }
 
+export const Context = {
+  render: () => ({
+    Component: ContextExample,
+  }),
+}
+
 export const Controlled = {
   render: () => ({
     Component: ControlledExample,
@@ -68,6 +74,12 @@ export const InitialFocus = {
   }),
 }
 
+export const LazyMount = {
+  render: () => ({
+    Component: LazyMountExample,
+  }),
+}
+
 export const Nested = {
   render: () => ({
     Component: NestedExample,
@@ -80,20 +92,8 @@ export const NonModal = {
   }),
 }
 
-export const RenderFn = {
-  render: () => ({
-    Component: RenderFnExample,
-  }),
-}
-
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
-  }),
-}
-
-export const LazyMount = {
-  render: () => ({
-    Component: LazyMountExample,
   }),
 }

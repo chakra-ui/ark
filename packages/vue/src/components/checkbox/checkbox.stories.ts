@@ -13,7 +13,7 @@ import GroupWithSelectAllExample from './examples/group-with-select-all.vue'
 import GroupExample from './examples/group.vue'
 import IndeterminateExample from './examples/indeterminate.vue'
 import ProgrammaticControlExample from './examples/programmatic-control.vue'
-import RenderPropExample from './examples/render-prop.vue'
+import ContextExample from './examples/context.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import WithFieldExample from './examples/with-field.vue'
 import WithFormExample from './examples/with-form.vue'
@@ -66,9 +66,9 @@ export const ProgrammaticControl = {
   }),
 }
 
-export const RenderProp = {
+export const Context = {
   render: () => ({
-    components: { Component: RenderPropExample },
+    components: { Component: ContextExample },
     template: '<Component />',
   }),
 }

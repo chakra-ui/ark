@@ -1,26 +1,29 @@
 <script lang="ts">
   import { Dialog, useDialog } from '@ark-ui/svelte/dialog'
-  import { XIcon } from 'lucide-svelte'
   import { Portal } from '@ark-ui/svelte/portal'
+  import { XIcon } from 'lucide-svelte'
+  import button from 'styles/button.module.css'
+  import styles from 'styles/dialog.module.css'
 
   const id = $props.id()
 
   const dialog = useDialog({ id })
 </script>
 
-<button onclick={() => dialog().setOpen(true)}>Open</button>
+<button class={button.Root} onclick={() => dialog().setOpen(true)}>Open</button>
 
 <Dialog.RootProvider value={dialog}>
-  <Dialog.Trigger>Open Dialog</Dialog.Trigger>
   <Portal>
-    <Dialog.Backdrop />
-    <Dialog.Positioner>
-      <Dialog.Content>
-        <Dialog.Title>Dialog Title</Dialog.Title>
-        <Dialog.Description>Dialog Description</Dialog.Description>
-        <Dialog.CloseTrigger>
+    <Dialog.Backdrop class={styles.Backdrop} />
+    <Dialog.Positioner class={styles.Positioner}>
+      <Dialog.Content class={styles.Content}>
+        <Dialog.CloseTrigger class={styles.CloseTrigger}>
           <XIcon />
         </Dialog.CloseTrigger>
+        <Dialog.Title class={styles.Title}>Account Settings</Dialog.Title>
+        <Dialog.Description class={styles.Description}>
+          Manage your account preferences and security options.
+        </Dialog.Description>
       </Dialog.Content>
     </Dialog.Positioner>
   </Portal>

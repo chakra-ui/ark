@@ -1,0 +1,62 @@
+@layer recipes.slots {
+  @layer _base {
+    .card__root {
+      border-radius: var(--radii-l3);
+      overflow: hidden;
+      position: relative;
+}
+
+    .card__root,.card__header {
+      display: flex;
+      flex-direction: column;
+}
+
+    .card__header {
+      padding: var(--spacing-6);
+      gap: var(--spacing-1);
+}
+
+    .card__body {
+      flex: 1 1 0%;
+      flex-direction: column;
+}
+
+    .card__body,.card__footer {
+      padding-inline: var(--spacing-6);
+      display: flex;
+      padding-bottom: var(--spacing-6);
+}
+
+    .card__footer {
+      gap: var(--spacing-3);
+      justify-content: flex-end;
+      padding-top: var(--spacing-2);
+}
+
+    .card__title {
+      font-size: var(--font-sizes-lg);
+      line-height: 1.75rem;
+      font-weight: var(--font-weights-semibold);
+}
+
+    .card__description {
+      color: var(--colors-fg-muted);
+      font-size: var(--font-sizes-sm);
+      line-height: 1.25rem;
+}
+}
+
+  .card__root--variant_outline {
+    background: var(--colors-gray-surface-bg);
+    border-width: 1px;
+}
+
+  .card__root--variant_elevated {
+    background: var(--colors-gray-surface-bg);
+    box-shadow: var(--shadows-lg);
+}
+
+  .card__root--variant_subtle {
+    background: var(--colors-gray-subtle-bg);
+}
+}

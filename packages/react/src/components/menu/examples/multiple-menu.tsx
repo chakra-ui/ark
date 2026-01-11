@@ -1,49 +1,58 @@
 import { Menu as ArkMenu } from '@ark-ui/react'
+import { ChevronDownIcon } from 'lucide-react'
+import styles from 'styles/menu.module.css'
 
-interface Item {
-  name: string
-  uid: string
+interface MenuItem {
+  label: string
+  value: string
 }
 
-interface Props {
+interface MenuProps {
   id: string
   label: string
-  items: Item[]
-  onSelect?: ((uid: string) => void) | undefined
+  items: MenuItem[]
+  onSelect?: (value: string) => void
 }
 
-const Menu = (props: Props) => {
+const Menu = (props: MenuProps) => {
   const { id, label, items, onSelect } = props
   return (
-    <ArkMenu.Root onSelect={(changes) => onSelect?.(changes.value)} id={id}>
-      <ArkMenu.Trigger style={{ fontSize: '18px', padding: '12px' }}>{label} ⬇️</ArkMenu.Trigger>
+    <ArkMenu.Root onSelect={(e) => onSelect?.(e.value)} id={id}>
+      <ArkMenu.Trigger className={styles.Trigger}>
+        {label}
+        <ArkMenu.Indicator className={styles.Indicator}>
+          <ChevronDownIcon />
+        </ArkMenu.Indicator>
+      </ArkMenu.Trigger>
       <ArkMenu.Positioner>
-        <ArkMenu.Content>
-          {items.map(({ name, uid }) => {
-            return (
-              <ArkMenu.Item key={uid} value={uid} className="item">
-                <ArkMenu.ItemIndicator>✅</ArkMenu.ItemIndicator>
-                {name}
-              </ArkMenu.Item>
-            )
-          })}
+        <ArkMenu.Content className={styles.Content}>
+          {items.map((item) => (
+            <ArkMenu.Item className={styles.Item} key={item.value} value={item.value}>
+              {item.label}
+            </ArkMenu.Item>
+          ))}
         </ArkMenu.Content>
       </ArkMenu.Positioner>
     </ArkMenu.Root>
   )
 }
 
-const items = [
-  { name: 'one', uid: 'one' },
-  { name: 'two', uid: 'two' },
-  { name: 'three', uid: 'three' },
+const fileItems = [
+  { label: 'New File', value: 'new' },
+  { label: 'Open...', value: 'open' },
+  { label: 'Save', value: 'save' },
 ]
 
-export const MultipleMenu = () => {
-  return (
-    <div style={{ display: 'flex', gap: '10px' }}>
-      <Menu id="first" label="First" items={items} />
-      <Menu id="second" label="Second" items={items} />
-    </div>
-  )
-}
+const editItems = [
+  { label: 'Undo', value: 'undo' },
+  { label: 'Redo', value: 'redo' },
+  { label: 'Cut', value: 'cut' },
+  { label: 'Copy', value: 'copy' },
+]
+
+export const MultipleMenu = () => (
+  <div style={{ display: 'flex', gap: '0.5rem' }}>
+    <Menu id="file" label="File" items={fileItems} />
+    <Menu id="edit" label="Edit" items={editItems} />
+  </div>
+)

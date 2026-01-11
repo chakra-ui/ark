@@ -20,27 +20,12 @@ Learn how to use the `Popover` component in your project. Let's take a look at t
 
 <Example id="basic" />
 
-### Using a Portal
-
-By default, the popover is rendered in the same DOM hierarchy as the trigger. To render the popover within a portal, set
-the `portalled` prop to `true`.
-
-> Note: This requires that you render the component within a `Portal` based on the framework you use.
-
-<Example id="portalled" />
-
 ### Adding an arrow
 
 To render an arrow within the popover, render the component `Popover.Arrow` and `Popover.ArrowTip` as children of
 `Popover.Positioner`.
 
 <Example id="arrow" />
-
-### Listening for open and close events
-
-When the popover is opened or closed, we invoke the `onOpenChange` callback.
-
-<Example id="on-open-change" />
 
 ### Control the open state
 
@@ -52,10 +37,9 @@ Use the `isOpen` prop to control the open state of the popover.
 
 The popover is designed to close on blur and when the <kbd>esc</kbd> key is pressed.
 
-To prevent it from closing on blur (clicking or focusing outside), pass the `closeOnInteractOutside` prop and set it to
-`false`.
-
-To prevent it from closing when the <kbd>esc</kbd> key is pressed, pass the `closeOnEsc` prop and set it to `false`.
+- To prevent it from closing on blur (clicking or focusing outside), pass the `closeOnInteractOutside` prop and set it
+  to `false`.
+- To prevent it from closing when the <kbd>esc</kbd> key is pressed, pass the `closeOnEsc` prop and set it to `false`.
 
 <Example id="close-behavior" />
 
@@ -87,6 +71,18 @@ leverage it to access the component state and methods from outside the popover.
 <Example id="root-provider" />
 
 > If you're using the `RootProvider` component, you don't need to use the `Root` component.
+
+### Usage with Dialog
+
+When rendering a popover inside a dialog, you have two options for proper layering:
+
+1. **Keep the Portal with `lazyMount` and `unmountOnExit`** - This ensures the popover is properly unmounted when the
+   dialog closes, preventing stale DOM nodes.
+
+2. **Remove the Portal** - Render the popover inline within the dialog content. This works well but may have z-index
+   considerations.
+
+<Example id="with-dialog" />
 
 ## Guides
 

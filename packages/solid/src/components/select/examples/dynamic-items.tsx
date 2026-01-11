@@ -1,6 +1,9 @@
 import { Select, createListCollection } from '@ark-ui/solid/select'
+import { ChevronsUpDownIcon, XIcon } from 'lucide-solid'
 import { createMemo, createSignal } from 'solid-js'
 import { Index, Portal } from 'solid-js/web'
+import button from 'styles/button.module.css'
+import styles from 'styles/select.module.css'
 
 export const DynamicItems = () => {
   const [items, setItems] = createSignal(['React', 'Solid', 'Vue', 'Svelte'])
@@ -10,29 +13,35 @@ export const DynamicItems = () => {
     }),
   )
 
-  const addItem = () => setItems([...items(), 'Svelte'])
+  const addItem = () => setItems([...items(), 'Angular'])
 
   return (
     <div>
-      <Select.Root collection={collection()}>
-        <Select.Control>
-          <Select.Label>Framework</Select.Label>
-          <Select.Trigger>
-            <Select.ValueText placeholder="Select a Framework" />
-            <Select.Indicator>▼</Select.Indicator>
+      <Select.Root class={styles.Root} collection={collection()}>
+        <Select.Label class={styles.Label}>Framework</Select.Label>
+        <Select.Control class={styles.Control}>
+          <Select.Trigger class={styles.Trigger}>
+            <Select.ValueText class={styles.ValueText} placeholder="Select a Framework" />
           </Select.Trigger>
-          <Select.ClearTrigger>Clear</Select.ClearTrigger>
+          <div class={styles.Indicators}>
+            <Select.ClearTrigger class={styles.ClearTrigger}>
+              <XIcon />
+            </Select.ClearTrigger>
+            <Select.Indicator class={styles.Indicator}>
+              <ChevronsUpDownIcon />
+            </Select.Indicator>
+          </div>
         </Select.Control>
         <Portal>
           <Select.Positioner>
-            <Select.Content>
-              <Select.ItemGroup>
-                <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
+            <Select.Content class={styles.Content}>
+              <Select.ItemGroup class={styles.ItemGroup}>
+                <Select.ItemGroupLabel class={styles.ItemGroupLabel}>Frameworks</Select.ItemGroupLabel>
                 <Index each={collection().items}>
                   {(item) => (
-                    <Select.Item item={item()}>
-                      <Select.ItemText>{item()}</Select.ItemText>
-                      <Select.ItemIndicator>✓</Select.ItemIndicator>
+                    <Select.Item class={styles.Item} item={item()}>
+                      <Select.ItemText class={styles.ItemText}>{item()}</Select.ItemText>
+                      <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
                     </Select.Item>
                   )}
                 </Index>
@@ -40,9 +49,10 @@ export const DynamicItems = () => {
             </Select.Content>
           </Select.Positioner>
         </Portal>
+        <Select.HiddenSelect />
       </Select.Root>
 
-      <button type="button" onClick={addItem}>
+      <button class={button.Root} style={{ 'margin-top': '1rem' }} type="button" onClick={addItem}>
         Add Item
       </button>
     </div>

@@ -1,35 +1,39 @@
 import { TagsInput, useTagsInput } from '@ark-ui/solid/tags-input'
 import { XIcon } from 'lucide-solid'
 import { Index } from 'solid-js'
+import button from 'styles/button.module.css'
+import styles from 'styles/tags-input.module.css'
 
 export const RootProvider = () => {
   const tagsInput = useTagsInput()
 
   return (
-    <>
-      <button onClick={() => tagsInput().focus()}>Focus</button>
+    <div class="stack">
+      <button class={button.Root} onClick={() => tagsInput().focus()}>
+        Focus
+      </button>
 
-      <TagsInput.RootProvider value={tagsInput}>
+      <TagsInput.RootProvider value={tagsInput} class={styles.Root}>
         <TagsInput.Context>
           {(api) => (
             <>
-              <TagsInput.Label>Frameworks</TagsInput.Label>
-              <TagsInput.Control>
+              <TagsInput.Label class={styles.Label}>Frameworks</TagsInput.Label>
+              <TagsInput.Control class={styles.Control}>
                 <Index each={api().value}>
                   {(value, index) => (
-                    <TagsInput.Item index={index} value={value()}>
-                      <TagsInput.ItemPreview>
-                        <TagsInput.ItemText>{value()}</TagsInput.ItemText>
-                        <TagsInput.ItemDeleteTrigger>
+                    <TagsInput.Item index={index} value={value()} class={styles.Item}>
+                      <TagsInput.ItemPreview class={styles.ItemPreview}>
+                        <TagsInput.ItemText class={styles.ItemText}>{value()}</TagsInput.ItemText>
+                        <TagsInput.ItemDeleteTrigger class={styles.ItemDeleteTrigger}>
                           <XIcon />
                         </TagsInput.ItemDeleteTrigger>
                       </TagsInput.ItemPreview>
-                      <TagsInput.ItemInput />
+                      <TagsInput.ItemInput class={styles.ItemInput} />
                     </TagsInput.Item>
                   )}
                 </Index>
-                <TagsInput.Input placeholder="Add Framework" />
-                <TagsInput.ClearTrigger>
+                <TagsInput.Input placeholder="Add Framework" class={styles.Input} />
+                <TagsInput.ClearTrigger class={styles.ClearTrigger}>
                   <XIcon />
                 </TagsInput.ClearTrigger>
               </TagsInput.Control>
@@ -38,6 +42,6 @@ export const RootProvider = () => {
         </TagsInput.Context>
         <TagsInput.HiddenInput />
       </TagsInput.RootProvider>
-    </>
+    </div>
   )
 }

@@ -1,4 +1,5 @@
 import { Avatar, useAvatar } from '@ark-ui/react/avatar'
+import styles from 'styles/avatar.module.css'
 
 export const RootProvider = () => {
   const avatar = useAvatar()
@@ -9,9 +10,9 @@ export const RootProvider = () => {
         Change Source
       </button>
 
-      <Avatar.RootProvider value={avatar}>
-        <Avatar.Fallback>PA</Avatar.Fallback>
-        <Avatar.Image src="https://avatars.githubusercontent.com/u/1846056?v=4" alt="avatar" />
+      <Avatar.RootProvider className={styles.Root} value={avatar}>
+        <Avatar.Fallback className={styles.Fallback}>PA</Avatar.Fallback>
+        <Avatar.Image className={styles.Image} src="https://avatars.githubusercontent.com/u/1846056?v=4" alt="avatar" />
       </Avatar.RootProvider>
     </>
   )

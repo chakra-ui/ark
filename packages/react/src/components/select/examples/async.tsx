@@ -1,7 +1,8 @@
 import { Portal } from '@ark-ui/react/portal'
 import { Select, createListCollection } from '@ark-ui/react/select'
-import { ChevronDownIcon } from 'lucide-react'
+import { ChevronsUpDownIcon } from 'lucide-react'
 import { useState } from 'react'
+import styles from 'styles/select.module.css'
 
 function loadData() {
   return new Promise<string[]>((resolve) => {
@@ -30,29 +31,28 @@ export const Async = () => {
   }
 
   return (
-    <Select.Root collection={collection} onOpenChange={handleOpenChange}>
-      <Select.Label>Framework</Select.Label>
-      <Select.Control>
-        <Select.Trigger>
-          <Select.ValueText placeholder="Select" />
-          <Select.Indicator>
-            <ChevronDownIcon />
+    <Select.Root className={styles.Root} collection={collection} onOpenChange={handleOpenChange}>
+      <Select.Label className={styles.Label}>Framework</Select.Label>
+      <Select.Control className={styles.Control}>
+        <Select.Trigger className={styles.Trigger}>
+          <Select.ValueText className={styles.ValueText} placeholder="Select" />
+          <Select.Indicator className={styles.Indicator}>
+            <ChevronsUpDownIcon />
           </Select.Indicator>
         </Select.Trigger>
-        <Select.ClearTrigger>Clear</Select.ClearTrigger>
       </Select.Control>
       <Portal>
         <Select.Positioner>
-          <Select.Content>
+          <Select.Content className={styles.Content}>
             {loading ? (
-              <div>Loading...</div>
+              <div className={styles.Item}>Loading...</div>
             ) : error ? (
-              <div>Error: {error.message}</div>
+              <div className={styles.Item}>Error: {error.message}</div>
             ) : (
               collection.items.map((item) => (
-                <Select.Item key={item} item={item}>
-                  <Select.ItemText>{item}</Select.ItemText>
-                  <Select.ItemIndicator>✓</Select.ItemIndicator>
+                <Select.Item className={styles.Item} key={item} item={item}>
+                  <Select.ItemText className={styles.ItemText}>{item}</Select.ItemText>
+                  <Select.ItemIndicator className={styles.ItemIndicator}>✓</Select.ItemIndicator>
                 </Select.Item>
               ))
             )}

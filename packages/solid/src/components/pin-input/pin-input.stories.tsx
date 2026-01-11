@@ -7,10 +7,9 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
-export { Blurred } from './examples/blurred'
-export { Customized } from './examples/customized'
-export { InitialValue } from './examples/initial-value'
+export { BlurOnComplete } from './examples/blur-on-complete'
+export { CustomPlaceholder } from './examples/custom-placeholder'
+export { Mask } from './examples/mask'
 export { OTPMode } from './examples/otp-mode'
 export { RootProvider } from './examples/root-provider'
 export { WithField } from './examples/with-field'
-export { WithMask } from './examples/with-mask'

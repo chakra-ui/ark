@@ -13,7 +13,7 @@ describe('Select', () => {
 
   it('should render select with placeholder', () => {
     render(ComponentUnderTest)
-    expect(screen.getByText('Select a Framework')).toBeInTheDocument()
+    expect(screen.getByText('Select')).toBeInTheDocument()
     expect(screen.getByText('Framework')).toBeInTheDocument()
   })
 

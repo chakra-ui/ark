@@ -1,7 +1,7 @@
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
 import { vi } from 'vitest'
-import WithField from '../examples/with-field.vue'
+import SelectWithField from './field.test.vue'
 import ComponentUnderTest from './select.test.vue'
 
 describe('Select', () => {
@@ -106,38 +106,38 @@ describe('Select', () => {
 
 describe('Select / Field', () => {
   it('should set combobox as required', async () => {
-    render(WithField, { props: { required: true } })
+    render(SelectWithField, { props: { required: true } })
     expect(screen.getAllByRole('combobox', { hidden: true })[1]).toBeRequired()
   })
 
   it('should set input as disabled', async () => {
-    render(WithField, { props: { disabled: true } })
+    render(SelectWithField, { props: { disabled: true } })
     expect(screen.getByRole('combobox')).toBeDisabled()
   })
 
   it('should set input as readonly', async () => {
-    render(WithField, { props: { readOnly: true } })
+    render(SelectWithField, { props: { readOnly: true } })
     expect(screen.getByRole('combobox')).toHaveAttribute('data-readonly')
   })
 
   it('should display helper text', async () => {
-    render(WithField)
+    render(SelectWithField)
     expect(screen.getByText('Additional Info')).toBeInTheDocument()
   })
 
   it('should display error text when error is present', async () => {
-    render(WithField, { props: { invalid: true } })
+    render(SelectWithField, { props: { invalid: true } })
     expect(screen.getByText('Error Info')).toBeInTheDocument()
   })
 
   it('should focus on input when label is clicked', async () => {
-    render(WithField)
+    render(SelectWithField)
     await user.click(screen.getByText(/label/i))
     expect(screen.getByRole('combobox', { name: /label/i })).toHaveFocus()
   })
 
   it('should not display error text when no error is present', async () => {
-    render(WithField)
+    render(SelectWithField)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })

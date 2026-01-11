@@ -3,9 +3,13 @@
   "compilerOptions": {
     "jsx": "preserve",
     "jsxImportSource": "vue",
+    "baseUrl": ".",
+    "paths": {
+      "styles/*": ["../../.storybook/modules/*"]
+    },
     "noPropertyAccessFromIndexSignature": false,
     "types": ["vitest/globals"],
     "lib": ["ESNext", "DOM"]
   },
-  "include": ["src"]
+  "include": ["src", "../../.storybook/modules/css-modules.d.ts"]
 }

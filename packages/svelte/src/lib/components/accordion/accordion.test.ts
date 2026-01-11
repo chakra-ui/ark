@@ -12,19 +12,19 @@ describe('Accordion', () => {
 
   it('should render accordion items', async () => {
     render(ComponentUnderTest)
-    expect(screen.getByText('What is React?')).toBeInTheDocument()
-    expect(screen.getByText('What is Svelte?')).toBeInTheDocument()
+    expect(screen.getByText('What is Ark UI?')).toBeInTheDocument()
+    expect(screen.getByText('How to get started?')).toBeInTheDocument()
   })
 
   it('should show default expanded item', () => {
     render(ComponentUnderTest)
 
-    // React is open by default
-    const reactContent = screen.getByText('React is a JavaScript library for building user interfaces.')
-    expect(reactContent).toBeVisible()
+    // Ark UI is open by default
+    const arkContent = screen.getByText('A headless component library for building accessible web apps.')
+    expect(arkContent).toBeVisible()
 
-    // Vue should be closed
-    const vueContent = screen.getByText('Vue is a JavaScript library for building user interfaces.')
-    expect(vueContent).not.toBeVisible()
+    // Getting started should be closed
+    const gettingStartedContent = screen.getByText('Install the package and import the components you need.')
+    expect(gettingStartedContent).not.toBeVisible()
   })
 })

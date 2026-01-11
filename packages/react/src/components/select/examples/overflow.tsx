@@ -1,5 +1,7 @@
 import { Portal } from '@ark-ui/react/portal'
 import { Select, createListCollection } from '@ark-ui/react/select'
+import { ChevronsUpDownIcon } from 'lucide-react'
+import styles from 'styles/select.module.css'
 
 export const Overflow = () => {
   const collection = createListCollection({
@@ -22,61 +24,41 @@ export const Overflow = () => {
   })
 
   return (
-    <main>
-      <h1>Welcome to Ark UI</h1>
-      <p>Please edit src/App.tsx and save to reload.</p>
-      <Select.Root
-        collection={collection}
-        positioning={{
-          fitViewport: true,
-          placement: 'bottom-start',
-          sameWidth: true,
-        }}
-      >
-        <Select.Label>Framework</Select.Label>
-        <Select.Control>
-          <Select.Trigger>
-            <Select.ValueText placeholder="Select a Framework" />
-          </Select.Trigger>
-          <Select.ClearTrigger>Clear</Select.ClearTrigger>
-        </Select.Control>
-        <Portal>
-          <Select.Positioner>
-            <Select.Content style={{ maxHeight: '120px', overflow: 'auto' }}>
-              <Select.ItemGroup>
-                <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-                {collection.items.map((item) => (
-                  <Select.Item
-                    key={item}
-                    item={item}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 2,
-                    }}
-                  >
-                    <Select.ItemContext>
-                      {(itemState) => (
-                        <Select.ItemText
-                          style={{
-                            flex: '1',
-                            fontSize: '16px',
-                            background: itemState.highlighted ? 'blue' : 'white',
-                          }}
-                        >
-                          {item}
-                        </Select.ItemText>
-                      )}
-                    </Select.ItemContext>
-                    <Select.ItemIndicator>✓</Select.ItemIndicator>
-                  </Select.Item>
-                ))}
-              </Select.ItemGroup>
-            </Select.Content>
-          </Select.Positioner>
-        </Portal>
-        <Select.HiddenSelect />
-      </Select.Root>
-    </main>
+    <Select.Root
+      className={styles.Root}
+      collection={collection}
+      positioning={{
+        fitViewport: true,
+        placement: 'bottom-start',
+        sameWidth: true,
+      }}
+    >
+      <Select.Label className={styles.Label}>Framework</Select.Label>
+      <Select.Control className={styles.Control}>
+        <Select.Trigger className={styles.Trigger}>
+          <Select.ValueText className={styles.ValueText} placeholder="Select a Framework" />
+          <Select.Indicator className={styles.Indicator}>
+            <ChevronsUpDownIcon />
+          </Select.Indicator>
+        </Select.Trigger>
+        <Select.ClearTrigger className={styles.ClearTrigger}>Clear</Select.ClearTrigger>
+      </Select.Control>
+      <Portal>
+        <Select.Positioner>
+          <Select.Content className={styles.Content} style={{ maxHeight: '200px' }}>
+            <Select.ItemGroup className={styles.ItemGroup}>
+              <Select.ItemGroupLabel className={styles.ItemGroupLabel}>Names</Select.ItemGroupLabel>
+              {collection.items.map((item) => (
+                <Select.Item className={styles.Item} key={item} item={item}>
+                  <Select.ItemText className={styles.ItemText}>{item}</Select.ItemText>
+                  <Select.ItemIndicator className={styles.ItemIndicator}>✓</Select.ItemIndicator>
+                </Select.Item>
+              ))}
+            </Select.ItemGroup>
+          </Select.Content>
+        </Select.Positioner>
+      </Portal>
+      <Select.HiddenSelect />
+    </Select.Root>
   )
 }

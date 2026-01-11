@@ -1,21 +1,28 @@
 <script setup lang="ts">
+import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-vue-next'
 import { Pagination } from '@ark-ui/vue/pagination'
+import styles from 'styles/pagination.module.css'
 </script>
 
 <template>
-  <Pagination.Root :count="100" :pageSize="10">
+  <Pagination.Root :count="100" :page-size="10" :class="styles.Root">
     <Pagination.Context v-slot="pagination">
-      <div>
-        <button @click="pagination.goToFirstPage()">First</button>
-        <button @click="pagination.goToPrevPage()">Previous</button>
-        <button @click="pagination.setPage(5)">Go to Page 5</button>
-        <button @click="pagination.goToNextPage()">Next</button>
-        <button @click="pagination.goToLastPage()">Last</button>
-
-        <p>Page {{ pagination.page }} of {{ pagination.totalPages }}</p>
-        <p>Items {{ pagination.pageRange.start + 1 }}-{{ pagination.pageRange.end }}</p>
-
-        <button @click="pagination.setPageSize(20)">20 per page</button>
+      <div :class="styles.Controls">
+        <button :class="styles.Trigger" @click="pagination.goToFirstPage()">
+          <ChevronsLeft />
+        </button>
+        <button :class="styles.Trigger" @click="pagination.goToPrevPage()">
+          <ChevronLeft />
+        </button>
+        <p :class="styles.Text" style="min-width: 120px; text-align: center">
+          Page {{ pagination.page }} of {{ pagination.totalPages }}
+        </p>
+        <button :class="styles.Trigger" @click="pagination.goToNextPage()">
+          <ChevronRight />
+        </button>
+        <button :class="styles.Trigger" @click="pagination.goToLastPage()">
+          <ChevronsRight />
+        </button>
       </div>
     </Pagination.Context>
   </Pagination.Root>

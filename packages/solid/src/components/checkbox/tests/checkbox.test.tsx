@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { WithField } from '../examples/with-field'
+import { CheckboxWithField } from './field'
 import { ComponentUnderTest } from './basic'
 import { ControlledComponentUnderTest } from './controlled'
 
@@ -40,38 +40,38 @@ describe('Checkbox', () => {
 
 describe('Checkbox / Field', () => {
   it('should set checkbox as required', async () => {
-    render(() => <WithField required />)
+    render(() => <CheckboxWithField required />)
     expect(screen.getByRole('checkbox', { name: /label/i })).toBeRequired()
   })
 
   it('should set input as disabled', async () => {
-    render(() => <WithField disabled />)
+    render(() => <CheckboxWithField disabled />)
     expect(screen.getByRole('checkbox', { name: /label/i })).toBeDisabled()
   })
 
   it('should set input as readonly', async () => {
-    render(() => <WithField readOnly />)
+    render(() => <CheckboxWithField readOnly />)
     expect(screen.getByText('Label')).toHaveAttribute('data-readonly')
   })
 
   it('should display helper text', async () => {
-    render(() => <WithField />)
+    render(() => <CheckboxWithField />)
     expect(screen.getByText('Additional Info')).toBeInTheDocument()
   })
 
   it('should display error text when error is present', async () => {
-    render(() => <WithField invalid />)
+    render(() => <CheckboxWithField invalid />)
     expect(screen.getByText('Error Info')).toBeInTheDocument()
   })
 
   it('should focus on input when label is clicked', async () => {
-    render(() => <WithField />)
+    render(() => <CheckboxWithField />)
     await user.click(screen.getByText(/label/i))
     expect(screen.getByRole('checkbox', { name: /label/i })).toHaveFocus()
   })
 
   it('should not display error text when no error is present', async () => {
-    render(() => <WithField />)
+    render(() => <CheckboxWithField />)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })

@@ -1,10 +1,11 @@
 import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
+import ControlledExample from './examples/controlled.svelte'
 import DisabledExample from './examples/disabled.svelte'
-import GroupWithFieldsetExample from './examples/group-with-fieldset.svelte'
 import InitialValueExample from './examples/initial-value.svelte'
-import OnEventExample from './examples/on-event.svelte'
+import OrientationExample from './examples/orientation.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import WithFieldsetExample from './examples/with-fieldset.svelte'
 
 const meta: Meta = {
   title: 'Components / Radio Group',
@@ -18,15 +19,15 @@ export const Basic = {
   }),
 }
 
-export const Disabled = {
+export const Controlled = {
   render: () => ({
-    Component: DisabledExample,
+    Component: ControlledExample,
   }),
 }
 
-export const GroupWithFieldset = {
+export const Disabled = {
   render: () => ({
-    Component: GroupWithFieldsetExample,
+    Component: DisabledExample,
   }),
 }
 
@@ -36,14 +37,20 @@ export const InitialValue = {
   }),
 }
 
-export const OnEvent = {
+export const Orientation = {
   render: () => ({
-    Component: OnEventExample,
+    Component: OrientationExample,
   }),
 }
 
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
+  }),
+}
+
+export const WithFieldset = {
+  render: () => ({
+    Component: WithFieldsetExample,
   }),
 }

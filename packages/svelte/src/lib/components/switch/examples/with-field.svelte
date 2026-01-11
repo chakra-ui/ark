@@ -1,19 +1,18 @@
 <script lang="ts">
-  // biome-ignore lint/style/useImportType: intentional
   import { Field } from '@ark-ui/svelte/field'
   import { Switch } from '@ark-ui/svelte/switch'
-
-  const props: Field.RootProps = $props()
+  import field from 'styles/field.module.css'
+  import styles from 'styles/switch.module.css'
 </script>
 
-<Field.Root {...props}>
-  <Switch.Root>
-    <Switch.Control>
-      <Switch.Thumb />
+<Field.Root class={field.Root}>
+  <Switch.Root class={styles.Root}>
+    <Switch.Control class={styles.Control}>
+      <Switch.Thumb class={styles.Thumb} />
     </Switch.Control>
-    <Switch.Label>Label</Switch.Label>
+    <Switch.Label class={styles.Label}>Label</Switch.Label>
     <Switch.HiddenInput />
   </Switch.Root>
-  <Field.HelperText>Additional Info</Field.HelperText>
-  <Field.ErrorText>Error Info</Field.ErrorText>
+  <Field.HelperText class={field.HelperText}>Additional Info</Field.HelperText>
+  <Field.ErrorText class={field.ErrorText}>Error Info</Field.ErrorText>
 </Field.Root>

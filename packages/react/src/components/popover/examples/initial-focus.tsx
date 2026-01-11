@@ -1,29 +1,35 @@
 import { Popover } from '@ark-ui/react/popover'
+import { Portal } from '@ark-ui/react/portal'
+import { XIcon } from 'lucide-react'
 import { useRef } from 'react'
+import button from 'styles/button.module.css'
+import field from 'styles/field.module.css'
+import styles from 'styles/popover.module.css'
 
-const style: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '8px',
-}
-
-export const WithInitialFocusEl = () => {
-  const ref = useRef<HTMLInputElement>(null)
+export const InitialFocusEl = () => {
+  const ref = useRef<HTMLInputElement | null>(null)
   return (
     <Popover.Root initialFocusEl={() => ref.current}>
-      <Popover.Trigger>Click Me</Popover.Trigger>
-      <Popover.Positioner>
-        <Popover.Content>
-          <Popover.Title>Title</Popover.Title>
-          <Popover.Description>Description</Popover.Description>
-          <form style={style}>
-            <input type="file" />
-            <input placeholder="Add title" ref={ref} />
-            <textarea placeholder="Add details" />
-          </form>
-          <Popover.CloseTrigger>Close</Popover.CloseTrigger>
-        </Popover.Content>
-      </Popover.Positioner>
+      <Popover.Trigger className={button.Root}>Update Profile</Popover.Trigger>
+      <Portal>
+        <Popover.Positioner className={styles.Positioner}>
+          <Popover.Content className={styles.Content}>
+            <Popover.CloseTrigger className={styles.CloseTrigger}>
+              <XIcon />
+            </Popover.CloseTrigger>
+            <Popover.Title className={styles.Title}>Enter your name</Popover.Title>
+            <Popover.Description className={styles.Description}>Make changes to your profile here.</Popover.Description>
+            <div className={styles.Body}>
+              <input className={field.Input} placeholder="First Name" defaultValue="John" ref={ref} />
+              <input className={field.Input} placeholder="Last Name" ref={ref} />
+              <textarea className={field.Textarea} placeholder="Add details" />
+              <button className={button.Root} data-variant="solid">
+                Save
+              </button>
+            </div>
+          </Popover.Content>
+        </Popover.Positioner>
+      </Portal>
     </Popover.Root>
   )
 }

@@ -1,13 +1,11 @@
 import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
-import BlurredExample from './examples/blurred.svelte'
-import CustomizedExample from './examples/customized.svelte'
-import InitialValueExample from './examples/initial-value.svelte'
+import BlurOnCompleteExample from './examples/blur-on-complete.svelte'
+import CustomPlaceholderExample from './examples/custom-placeholder.svelte'
+import MaskExample from './examples/mask.svelte'
 import OtpModeExample from './examples/otp-mode.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
-import WithAutofocusExample from './examples/with-autofocus.svelte'
 import WithFieldExample from './examples/with-field.svelte'
-import WithMaskExample from './examples/with-mask.svelte'
 
 const meta: Meta = {
   title: 'Components/PinInput',
@@ -21,15 +19,21 @@ export const Basic = {
   }),
 }
 
-export const InitialValue = {
+export const BlurOnComplete = {
   render: () => ({
-    Component: InitialValueExample,
+    Component: BlurOnCompleteExample,
   }),
 }
 
-export const WithMask = {
+export const CustomPlaceholder = {
   render: () => ({
-    Component: WithMaskExample,
+    Component: CustomPlaceholderExample,
+  }),
+}
+
+export const Mask = {
+  render: () => ({
+    Component: MaskExample,
   }),
 }
 
@@ -39,32 +43,14 @@ export const OtpMode = {
   }),
 }
 
-export const WithAutofocus = {
+export const RootProvider = {
   render: () => ({
-    Component: WithAutofocusExample,
+    Component: RootProviderExample,
   }),
 }
 
 export const WithField = {
   render: () => ({
     Component: WithFieldExample,
-  }),
-}
-
-export const Blurred = {
-  render: () => ({
-    Component: BlurredExample,
-  }),
-}
-
-export const Customized = {
-  render: () => ({
-    Component: CustomizedExample,
-  }),
-}
-
-export const RootProvider = {
-  render: () => ({
-    Component: RootProviderExample,
   }),
 }

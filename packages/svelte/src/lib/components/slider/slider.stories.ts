@@ -1,13 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
 import CenterOriginExample from './examples/center-origin.svelte'
+import ContextExample from './examples/context.svelte'
 import DraggingIndicatorExample from './examples/dragging-indicator.svelte'
-import InitialValueExample from './examples/initial-value.svelte'
 import MinMaxExample from './examples/min-max.svelte'
 import OnEventExample from './examples/on-event.svelte'
 import RangeExample from './examples/range.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import StepExample from './examples/step.svelte'
+import ThumbAlignmentExample from './examples/thumb-alignment.svelte'
 import ThumbOverlapExample from './examples/thumb-overlap.svelte'
 import VerticalExample from './examples/vertical.svelte'
 import WithMarksExample from './examples/with-marks.svelte'
@@ -32,15 +33,15 @@ export const CenterOrigin: Story = {
   }),
 }
 
-export const DraggingIndicator: Story = {
+export const Context: Story = {
   render: () => ({
-    Component: DraggingIndicatorExample,
+    Component: ContextExample,
   }),
 }
 
-export const InitialValue: Story = {
+export const DraggingIndicator: Story = {
   render: () => ({
-    Component: InitialValueExample,
+    Component: DraggingIndicatorExample,
   }),
 }
 
@@ -71,6 +72,12 @@ export const RootProvider: Story = {
 export const Step: Story = {
   render: () => ({
     Component: StepExample,
+  }),
+}
+
+export const ThumbAlignment: Story = {
+  render: () => ({
+    Component: ThumbAlignmentExample,
   }),
 }
 

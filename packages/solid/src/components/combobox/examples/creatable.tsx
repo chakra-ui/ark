@@ -2,6 +2,7 @@ import { Combobox, useListCollection } from '@ark-ui/solid/combobox'
 import { useFilter } from '@ark-ui/solid/locale'
 import { createSignal, For } from 'solid-js'
 import { Portal } from 'solid-js/web'
+import styles from 'styles/combobox.module.css'
 
 interface Item {
   label: string
@@ -21,10 +22,10 @@ export const Creatable = () => {
 
   const { collection, filter, upsert, update, remove } = useListCollection<Item>({
     initialItems: [
-      { label: 'React', value: 'react' },
-      { label: 'Solid', value: 'solid' },
-      { label: 'Vue', value: 'vue' },
-      { label: 'Svelte', value: 'svelte' },
+      { label: 'Bug', value: 'bug' },
+      { label: 'Feature', value: 'feature' },
+      { label: 'Enhancement', value: 'enhancement' },
+      { label: 'Documentation', value: 'docs' },
     ],
     filter: filterFn().contains,
   })
@@ -66,6 +67,7 @@ export const Creatable = () => {
 
   return (
     <Combobox.Root
+      class={styles.Root}
       collection={collection()}
       onInputValueChange={handleInputChange}
       onOpenChange={handleOpenChange}
@@ -73,31 +75,31 @@ export const Creatable = () => {
       onValueChange={handleValueChange}
       allowCustomValue
     >
-      <Combobox.Control>
-        <Combobox.Input placeholder="Search..." />
-        <Combobox.Trigger>Open</Combobox.Trigger>
-        <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
+      <Combobox.Label class={styles.Label}>Label</Combobox.Label>
+      <Combobox.Control class={styles.Control}>
+        <Combobox.Input class={styles.Input} placeholder="e.g. Bug" />
+        <div class={styles.Indicators}>
+          <Combobox.ClearTrigger class={styles.ClearTrigger}>Clear</Combobox.ClearTrigger>
+          <Combobox.Trigger class={styles.Trigger}>Open</Combobox.Trigger>
+        </div>
       </Combobox.Control>
       <Portal>
         <Combobox.Positioner>
-          <Combobox.Content>
-            <Combobox.ItemGroup>
-              <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-              <For each={collection().items}>
-                {(item) => (
-                  <Combobox.Item item={item}>
-                    {isNewOptionValue(item.value) ? (
-                      <Combobox.ItemText>+ Create "{item.label}"</Combobox.ItemText>
-                    ) : (
-                      <Combobox.ItemText>
-                        {item.label} {item.__new__ ? NEW_OPTION_VALUE : ''}
-                      </Combobox.ItemText>
-                    )}
-                    <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
-                  </Combobox.Item>
-                )}
-              </For>
-            </Combobox.ItemGroup>
+          <Combobox.Content class={styles.Content}>
+            <For each={collection().items}>
+              {(item) => (
+                <Combobox.Item class={styles.Item} item={item}>
+                  {isNewOptionValue(item.value) ? (
+                    <Combobox.ItemText class={styles.ItemText}>+ Create "{item.label}"</Combobox.ItemText>
+                  ) : (
+                    <Combobox.ItemText class={styles.ItemText}>
+                      {item.label} {item.__new__ ? '(new)' : ''}
+                    </Combobox.ItemText>
+                  )}
+                  <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
+                </Combobox.Item>
+              )}
+            </For>
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

@@ -2,10 +2,19 @@ import { Combobox, useListCollection } from '@ark-ui/solid/combobox'
 import { Field } from '@ark-ui/solid/field'
 import { useFilter } from '@ark-ui/solid/locale'
 import { For } from 'solid-js'
+import styles from 'styles/combobox.module.css'
+import field from 'styles/field.module.css'
 
-const initialItems = ['React', 'Solid', 'Vue', 'Svelte']
+const initialItems = [
+  { label: 'Engineering', value: 'engineering' },
+  { label: 'Design', value: 'design' },
+  { label: 'Marketing', value: 'marketing' },
+  { label: 'Sales', value: 'sales' },
+  { label: 'Human Resources', value: 'hr' },
+  { label: 'Finance', value: 'finance' },
+]
 
-export const WithField = (props: Field.RootProps) => {
+export const WithField = () => {
   const filterFn = useFilter({ sensitivity: 'base' })
 
   const { collection, filter } = useListCollection({
@@ -18,29 +27,31 @@ export const WithField = (props: Field.RootProps) => {
   }
 
   return (
-    <Field.Root {...props}>
-      <Combobox.Root collection={collection()} onInputValueChange={handleInputChange}>
-        <Combobox.Label>Label</Combobox.Label>
-        <Combobox.Control>
-          <Combobox.Input />
-          <Combobox.Trigger>Open</Combobox.Trigger>
-          <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
+    <Field.Root class={field.Root}>
+      <Combobox.Root class={styles.Root} collection={collection()} onInputValueChange={handleInputChange}>
+        <Combobox.Label class={styles.Label}>Department</Combobox.Label>
+        <Combobox.Control class={styles.Control}>
+          <Combobox.Input class={styles.Input} placeholder="e.g. Engineering" />
+          <div class={styles.Indicators}>
+            <Combobox.ClearTrigger class={styles.ClearTrigger}>Clear</Combobox.ClearTrigger>
+            <Combobox.Trigger class={styles.Trigger}>Open</Combobox.Trigger>
+          </div>
         </Combobox.Control>
         <Combobox.Positioner>
-          <Combobox.Content>
+          <Combobox.Content class={styles.Content}>
             <For each={collection().items}>
               {(item) => (
-                <Combobox.Item item={item}>
-                  <Combobox.ItemText>{item}</Combobox.ItemText>
-                  <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
+                <Combobox.Item class={styles.Item} item={item}>
+                  <Combobox.ItemText class={styles.ItemText}>{item.label}</Combobox.ItemText>
+                  <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
                 </Combobox.Item>
               )}
             </For>
           </Combobox.Content>
         </Combobox.Positioner>
       </Combobox.Root>
-      <Field.HelperText>Additional Info</Field.HelperText>
-      <Field.ErrorText>Error Info</Field.ErrorText>
+      <Field.HelperText class={field.HelperText}>Select your primary department</Field.HelperText>
+      <Field.ErrorText class={field.ErrorText}>Department is required</Field.ErrorText>
     </Field.Root>
   )
 }

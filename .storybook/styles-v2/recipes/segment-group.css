@@ -1,0 +1,169 @@
+@layer recipes.slots {
+  @layer _base {
+    .segment-group__root {
+      border-radius: var(--radii-l3);
+      box-shadow: inset 0 0 0px 1px var(--shadow-color);
+      --shadow-color: var(--colors-border);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      isolation: isolate;
+      position: relative;
+}
+
+    :root .segment-group__root,.light .segment-group__root {
+      background: var(--colors-gray-2);
+}
+
+    .dark .segment-group__root {
+      background: var(--colors-gray-1);
+}
+
+    .segment-group__root[data-orientation=vertical] {
+      flex-direction: column;
+      align-items: stretch;
+}
+
+    .segment-group__item {
+      border-radius: var(--radii-l3);
+      gap: var(--spacing-2);
+      align-items: center;
+      display: inline-flex;
+      flex-shrink: 0;
+      font-weight: var(--font-weights-medium);
+      justify-content: center;
+      position: relative;
+      -webkit-user-select: none;
+      user-select: none;
+}
+
+    .segment-group__item::before {
+      background: var(--colors-gray-surface-border);
+      transition: opacity 0.2s;
+      content: "";
+      position: absolute;
+}
+
+    .segment-group__item:is(:disabled, [disabled], [data-disabled], [aria-disabled=true]) {
+      opacity: 0.5;
+}
+
+    .segment-group__item:has(input:focus-visible) {
+      --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005FCC));
+}
+
+    .segment-group__item:has(input:focus-visible):is(:focus-visible, [data-focus-visible]) {
+      outline-width: var(--focus-ring-width, 2px);
+      outline-offset: var(--focus-ring-offset, 2px);
+      outline-style: var(--focus-ring-style, solid);
+      outline-color: var(--focus-ring-color);
+}
+
+    .segment-group__item[data-orientation=horizontal]::before {
+      inset-block: var(--spacing-1\.5);
+      inset-inline-start: var(--spacing-0);
+      width: 1px;
+}
+
+    .segment-group__item[data-orientation=vertical]::before {
+      inset-inline: var(--spacing-1\.5);
+      inset-block-start: var(--spacing-0);
+      height: 1px;
+}
+
+    .segment-group__item + .segment-group__item[data-state=checked]::before,.segment-group__item[data-state=checked] + .segment-group__item::before,.segment-group__item:first-of-type::before {
+      opacity: 0;
+}
+
+    .segment-group__indicator {
+      border-width: 1px;
+      border-color: var(--colors-gray-surface-border);
+      border-radius: var(--radii-l3);
+      position: absolute;
+      z-index: -1;
+      height: var(--height);
+      width: var(--width);
+}
+
+    :root .segment-group__indicator,.light .segment-group__indicator {
+      background: var(--colors-white);
+}
+
+    .dark .segment-group__indicator {
+      background: var(--colors-gray-2);
+}
+}
+
+  .segment-group__item--size_md {
+    padding-inline: var(--spacing-3\.5);
+    font-size: var(--font-sizes-sm);
+    line-height: 1.25rem;
+    height: var(--sizes-10);
+    min-width: var(--sizes-10);
+}
+
+  .segment-group__item--size_md :where(svg) {
+    width: var(--sizes-5);
+    height: var(--sizes-5);
+}
+
+  .segment-group__root--fitted_true {
+    display: flex;
+}
+
+  .segment-group__item--fitted_true {
+    flex: 1 1 0%;
+}
+
+  .segment-group__item--size_xs {
+    padding-inline: var(--spacing-2\.5);
+    font-size: var(--font-sizes-sm);
+    line-height: 1.25rem;
+    height: var(--sizes-8);
+    min-width: var(--sizes-8);
+}
+
+  .segment-group__item--size_xs :where(svg) {
+    width: var(--sizes-4);
+    height: var(--sizes-4);
+}
+
+  .segment-group__item--size_sm {
+    padding-inline: var(--spacing-3);
+    font-size: var(--font-sizes-sm);
+    line-height: 1.25rem;
+    height: var(--sizes-9);
+    min-width: var(--sizes-9);
+}
+
+  .segment-group__item--size_sm :where(svg) {
+    width: var(--sizes-4);
+    height: var(--sizes-4);
+}
+
+  .segment-group__item--size_lg {
+    padding-inline: var(--spacing-4);
+    font-size: var(--font-sizes-md);
+    line-height: 1.5rem;
+    height: var(--sizes-11);
+    min-width: var(--sizes-11);
+}
+
+  .segment-group__item--size_lg :where(svg) {
+    width: var(--sizes-5);
+    height: var(--sizes-5);
+}
+
+  .segment-group__item--size_xl {
+    padding-inline: var(--spacing-4\.5);
+    font-size: var(--font-sizes-md);
+    line-height: 1.5rem;
+    height: var(--sizes-12);
+    min-width: var(--sizes-12);
+}
+
+  .segment-group__item--size_xl :where(svg) {
+    width: var(--sizes-5\.5);
+    height: var(--sizes-5\.5);
+}
+}

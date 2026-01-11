@@ -2,6 +2,8 @@
 import { Dialog, useDialog } from '@ark-ui/vue/dialog'
 import { XIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
+import button from 'styles/button.module.css'
+import styles from 'styles/dialog.module.css'
 
 const formContent = ref('')
 
@@ -22,21 +24,23 @@ const handleConfirmClose = () => {
 </script>
 
 <template>
-  <button @click="parentDialog.setOpen(true)">Open Form</button>
+  <button :class="button.Root" @click="parentDialog.setOpen(true)">Open Form</button>
 
   <Dialog.RootProvider :value="parentDialog">
     <Teleport to="body">
-      <Dialog.Backdrop />
-      <Dialog.Positioner>
-        <Dialog.Content>
-          <Dialog.Title>Edit Content</Dialog.Title>
-          <Dialog.Description>
-            Make changes to your content. If you have unsaved changes, you'll be asked to confirm before closing.
-          </Dialog.Description>
-          <textarea v-model="formContent" placeholder="Enter some text..." rows="4" style="width: 100%" />
-          <Dialog.CloseTrigger>
+      <Dialog.Backdrop :class="styles.Backdrop" />
+      <Dialog.Positioner :class="styles.Positioner">
+        <Dialog.Content :class="styles.Content">
+          <Dialog.CloseTrigger :class="styles.CloseTrigger">
             <XIcon />
           </Dialog.CloseTrigger>
+          <Dialog.Title :class="styles.Title">Edit Content</Dialog.Title>
+          <Dialog.Description :class="styles.Description">
+            Make changes to your content. You'll be asked to confirm if you have unsaved changes.
+          </Dialog.Description>
+          <div :class="styles.Body">
+            <textarea v-model="formContent" placeholder="Enter some text..." rows="4"></textarea>
+          </div>
         </Dialog.Content>
       </Dialog.Positioner>
     </Teleport>
@@ -44,20 +48,17 @@ const handleConfirmClose = () => {
 
   <Dialog.RootProvider :value="confirmDialog">
     <Teleport to="body">
-      <Dialog.Backdrop />
-      <Dialog.Positioner>
-        <Dialog.Content>
-          <Dialog.Title>Unsaved Changes</Dialog.Title>
-          <Dialog.Description>
-            You have unsaved changes. Are you sure you want to close without saving?
+      <Dialog.Backdrop :class="styles.Backdrop" />
+      <Dialog.Positioner :class="styles.Positioner">
+        <Dialog.Content :class="styles.Content">
+          <Dialog.Title :class="styles.Title">Unsaved Changes</Dialog.Title>
+          <Dialog.Description :class="styles.Description">
+            You have unsaved changes. Are you sure you want to discard them?
           </Dialog.Description>
-          <div>
-            <button @click="confirmDialog.setOpen(false)">Keep Editing</button>
-            <button @click="handleConfirmClose">Discard Changes</button>
+          <div :class="styles.Actions">
+            <button :class="button.Root" @click="confirmDialog.setOpen(false)">Keep Editing</button>
+            <button :class="button.Root" @click="handleConfirmClose">Discard</button>
           </div>
-          <Dialog.CloseTrigger>
-            <XIcon />
-          </Dialog.CloseTrigger>
         </Dialog.Content>
       </Dialog.Positioner>
     </Teleport>

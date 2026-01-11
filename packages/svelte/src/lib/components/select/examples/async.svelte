@@ -2,7 +2,8 @@
   import { Portal } from '@ark-ui/svelte/portal'
   // biome-ignore lint/style/useImportType: intentional
   import { Select, createListCollection } from '@ark-ui/svelte/select'
-  import { ChevronDownIcon } from 'lucide-svelte'
+  import { ChevronsUpDownIcon } from 'lucide-svelte'
+  import styles from 'styles/select.module.css'
 
   function loadData() {
     return new Promise<string[]>((resolve) => {
@@ -38,29 +39,28 @@
   }
 </script>
 
-<Select.Root {collection} onOpenChange={handleOpenChange}>
-  <Select.Label>Framework</Select.Label>
-  <Select.Control>
-    <Select.Trigger>
-      <Select.ValueText placeholder="Select" />
-      <Select.Indicator>
-        <ChevronDownIcon />
+<Select.Root class={styles.Root} {collection} onOpenChange={handleOpenChange}>
+  <Select.Label class={styles.Label}>Framework</Select.Label>
+  <Select.Control class={styles.Control}>
+    <Select.Trigger class={styles.Trigger}>
+      <Select.ValueText class={styles.ValueText} placeholder="Select" />
+      <Select.Indicator class={styles.Indicator}>
+        <ChevronsUpDownIcon />
       </Select.Indicator>
     </Select.Trigger>
-    <Select.ClearTrigger>Clear</Select.ClearTrigger>
   </Select.Control>
   <Portal>
     <Select.Positioner>
-      <Select.Content>
+      <Select.Content class={styles.Content}>
         {#if loading}
-          <div>Loading...</div>
+          <div class={styles.Item}>Loading...</div>
         {:else if error}
-          <div>Error: {error.message}</div>
+          <div class={styles.Item}>Error: {error.message}</div>
         {:else}
           {#each collection.items as item}
-            <Select.Item {item}>
-              <Select.ItemText>{item}</Select.ItemText>
-              <Select.ItemIndicator>✓</Select.ItemIndicator>
+            <Select.Item class={styles.Item} {item}>
+              <Select.ItemText class={styles.ItemText}>{item}</Select.ItemText>
+              <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
             </Select.Item>
           {/each}
         {/if}

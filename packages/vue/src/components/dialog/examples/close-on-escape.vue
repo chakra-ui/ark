@@ -1,32 +1,29 @@
 <script setup lang="ts">
 import { Dialog } from '@ark-ui/vue/dialog'
 import { XIcon } from 'lucide-vue-next'
+import button from 'styles/button.module.css'
+import styles from 'styles/dialog.module.css'
 
 const handleEscapeKeyDown = (e: KeyboardEvent) => {
-  const hasUnsavedChanges = true
-  if (hasUnsavedChanges) {
-    e.preventDefault()
-    alert('You have unsaved changes. Please save or discard them before closing.')
-  }
+  e.preventDefault()
+  alert('Escape key pressed but dialog stays open')
 }
 </script>
 
 <template>
   <Dialog.Root :close-on-escape="false" :on-escape-key-down="handleEscapeKeyDown">
-    <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+    <Dialog.Trigger :class="button.Root">Open Dialog</Dialog.Trigger>
     <Teleport to="body">
-      <Dialog.Backdrop />
-      <Dialog.Positioner>
-        <Dialog.Content>
-          <Dialog.Title>Unsaved Changes</Dialog.Title>
-          <Dialog.Description>
-            This dialog prevents closing with Escape key. Try pressing Escape to see the warning. Use the close button
-            to dismiss.
-          </Dialog.Description>
-          <textarea placeholder="Type something..." rows="4" style="width: 100%" />
-          <Dialog.CloseTrigger>
+      <Dialog.Backdrop :class="styles.Backdrop" />
+      <Dialog.Positioner :class="styles.Positioner">
+        <Dialog.Content :class="styles.Content">
+          <Dialog.CloseTrigger :class="styles.CloseTrigger">
             <XIcon />
           </Dialog.CloseTrigger>
+          <Dialog.Title :class="styles.Title">Escape Disabled</Dialog.Title>
+          <Dialog.Description :class="styles.Description">
+            This dialog will not close when pressing the Escape key. Use the close button instead.
+          </Dialog.Description>
         </Dialog.Content>
       </Dialog.Positioner>
     </Teleport>

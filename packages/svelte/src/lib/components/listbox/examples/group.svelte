@@ -1,29 +1,36 @@
 <script lang="ts">
   import { Listbox, createListCollection } from '@ark-ui/svelte/listbox'
+  import CheckIcon from 'lucide-svelte/icons/check'
+  import styles from 'styles/listbox.module.css'
 
   const collection = createListCollection({
     items: [
-      { label: 'React', value: 'react', type: 'JS' },
-      { label: 'Solid', value: 'solid', type: 'JS' },
-      { label: 'Vue', value: 'vue', type: 'JS' },
-      { label: 'Svelte', value: 'svelte', type: 'JS' },
-      { label: 'Panda', value: 'panda', type: 'CSS' },
-      { label: 'Tailwind', value: 'tailwind', type: 'CSS' },
+      { label: 'New York', value: 'nyc', region: 'North America' },
+      { label: 'Los Angeles', value: 'lax', region: 'North America' },
+      { label: 'Toronto', value: 'yyz', region: 'North America' },
+      { label: 'London', value: 'lhr', region: 'Europe' },
+      { label: 'Paris', value: 'cdg', region: 'Europe' },
+      { label: 'Berlin', value: 'ber', region: 'Europe' },
+      { label: 'Tokyo', value: 'nrt', region: 'Asia Pacific' },
+      { label: 'Singapore', value: 'sin', region: 'Asia Pacific' },
+      { label: 'Sydney', value: 'syd', region: 'Asia Pacific' },
     ],
-    groupBy: (item) => item.type,
+    groupBy: (item) => item.region,
   })
 </script>
 
-<Listbox.Root {collection}>
-  <Listbox.Label>Select your Frameworks</Listbox.Label>
-  <Listbox.Content>
-    {#each collection.group() as [type, group]}
-      <Listbox.ItemGroup>
-        <Listbox.ItemGroupLabel>{type}</Listbox.ItemGroupLabel>
-        {#each group as item}
-          <Listbox.Item {item}>
-            <Listbox.ItemText>{item.label}</Listbox.ItemText>
-            <Listbox.ItemIndicator />
+<Listbox.Root class={styles.Root} {collection}>
+  <Listbox.Label class={styles.Label}>Select Region</Listbox.Label>
+  <Listbox.Content class={styles.Content}>
+    {#each collection.group() as [region, items]}
+      <Listbox.ItemGroup class={styles.ItemGroup}>
+        <Listbox.ItemGroupLabel class={styles.ItemGroupLabel}>{region}</Listbox.ItemGroupLabel>
+        {#each items as item (item.value)}
+          <Listbox.Item class={styles.Item} {item}>
+            <Listbox.ItemText class={styles.ItemText}>{item.label}</Listbox.ItemText>
+            <Listbox.ItemIndicator class={styles.ItemIndicator}>
+              <CheckIcon />
+            </Listbox.ItemIndicator>
           </Listbox.Item>
         {/each}
       </Listbox.ItemGroup>

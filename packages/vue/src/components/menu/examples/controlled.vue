@@ -1,20 +1,31 @@
 <script setup lang="ts">
 import { Menu } from '@ark-ui/vue/menu'
+import { ChevronDownIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
+import button from 'styles/button.module.css'
+import styles from 'styles/menu.module.css'
 
-const isOpen = ref(false)
+const open = ref(false)
 </script>
 
 <template>
-  <button @click="isOpen = !isOpen">Trigger from the outside</button>
-  <Menu.Root v-model:open="isOpen">
-    <Menu.Trigger>Open menu</Menu.Trigger>
-    <Menu.Positioner>
-      <Menu.Content>
-        <Menu.Item value="react">React</Menu.Item>
-        <Menu.Item value="solid">Solid</Menu.Item>
-        <Menu.Item value="vue">Vue</Menu.Item>
-      </Menu.Content>
-    </Menu.Positioner>
-  </Menu.Root>
+  <div class="stack">
+    <button type="button" :class="button.Root" @click="open = !open">Toggle</button>
+    <Menu.Root v-model:open="open">
+      <Menu.Trigger :class="styles.Trigger">
+        Actions
+        <Menu.Indicator :class="styles.Indicator">
+          <ChevronDownIcon />
+        </Menu.Indicator>
+      </Menu.Trigger>
+      <Menu.Positioner>
+        <Menu.Content :class="styles.Content">
+          <Menu.Item :class="styles.Item" value="edit">Edit</Menu.Item>
+          <Menu.Item :class="styles.Item" value="duplicate">Duplicate</Menu.Item>
+          <Menu.Item :class="styles.Item" value="archive">Archive</Menu.Item>
+          <Menu.Item :class="styles.Item" value="delete">Delete</Menu.Item>
+        </Menu.Content>
+      </Menu.Positioner>
+    </Menu.Root>
+  </div>
 </template>

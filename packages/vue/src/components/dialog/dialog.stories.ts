@@ -5,13 +5,13 @@ import BasicExample from './examples/basic.vue'
 import CloseOnEscapeExample from './examples/close-on-escape.vue'
 import CloseOnInteractOutsideExample from './examples/close-on-interact-outside.vue'
 import ConfirmationExample from './examples/confirmation.vue'
+import ContextExample from './examples/context.vue'
 import ControlledExample from './examples/controlled.vue'
 import FinalFocusExample from './examples/final-focus.vue'
 import InitialFocusExample from './examples/initial-focus.vue'
 import LazyMountExample from './examples/lazy-mount.vue'
 import NestedExample from './examples/nested.vue'
 import NonModalExample from './examples/non-modal.vue'
-import RenderFnExample from './examples/render-fn.vue'
 import RootProviderExample from './examples/root-provider.vue'
 
 const meta: Meta = {
@@ -55,6 +55,13 @@ export const Confirmation = {
   }),
 }
 
+export const Context = {
+  render: () => ({
+    components: { Component: ContextExample },
+    template: '<Component />',
+  }),
+}
+
 export const Controlled = {
   render: () => ({
     components: { Component: ControlledExample },
@@ -93,13 +100,6 @@ export const Nested = {
 export const NonModal = {
   render: () => ({
     components: { Component: NonModalExample },
-    template: '<Component />',
-  }),
-}
-
-export const RenderFn = {
-  render: () => ({
-    components: { Component: RenderFnExample },
     template: '<Component />',
   }),
 }

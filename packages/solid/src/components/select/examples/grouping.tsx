@@ -1,38 +1,48 @@
 import { Select, createListCollection } from '@ark-ui/solid/select'
+import { ChevronsUpDownIcon, XIcon } from 'lucide-solid'
 import { For, Portal } from 'solid-js/web'
+import styles from 'styles/select.module.css'
+
+const frameworks = createListCollection({
+  items: [
+    { label: 'React', value: 'react', type: 'JS' },
+    { label: 'Solid', value: 'solid', type: 'JS' },
+    { label: 'Vue', value: 'vue', type: 'JS' },
+    { label: 'Panda', value: 'panda', type: 'CSS' },
+    { label: 'Tailwind', value: 'tailwind', type: 'CSS' },
+  ],
+  groupBy: (item) => item.type,
+})
 
 export const Grouping = () => {
-  const collection = createListCollection({
-    items: [
-      { label: 'React', value: 'react', type: 'JS' },
-      { label: 'Solid', value: 'solid', type: 'JS' },
-      { label: 'Vue', value: 'vue', type: 'JS' },
-      { label: 'Panda', value: 'panda', type: 'CSS' },
-      { label: 'Tailwind', value: 'tailwind', type: 'CSS' },
-    ],
-    groupBy: (item) => item.type,
-  })
   return (
-    <Select.Root collection={collection}>
-      <Select.Label>Framework</Select.Label>
-      <Select.Control>
-        <Select.Trigger>
-          <Select.ValueText placeholder="Select a Framework" />
+    <Select.Root class={styles.Root} collection={frameworks}>
+      <Select.Label class={styles.Label}>Framework</Select.Label>
+      <Select.Control class={styles.Control}>
+        <Select.Trigger class={styles.Trigger}>
+          <Select.ValueText class={styles.ValueText} placeholder="Select a Framework" />
         </Select.Trigger>
-        <Select.ClearTrigger>Clear</Select.ClearTrigger>
+        <div class={styles.Indicators}>
+          <Select.ClearTrigger class={styles.ClearTrigger}>
+            <XIcon />
+          </Select.ClearTrigger>
+          <Select.Indicator class={styles.Indicator}>
+            <ChevronsUpDownIcon />
+          </Select.Indicator>
+        </div>
       </Select.Control>
       <Portal>
         <Select.Positioner>
-          <Select.Content>
-            <For each={collection.group()}>
+          <Select.Content class={styles.Content}>
+            <For each={frameworks.group()}>
               {([type, group]) => (
-                <Select.ItemGroup>
-                  <Select.ItemGroupLabel>{type}</Select.ItemGroupLabel>
+                <Select.ItemGroup class={styles.ItemGroup}>
+                  <Select.ItemGroupLabel class={styles.ItemGroupLabel}>{type}</Select.ItemGroupLabel>
                   <For each={group}>
                     {(item) => (
-                      <Select.Item item={item}>
-                        <Select.ItemText>{item.label}</Select.ItemText>
-                        <Select.ItemIndicator>✓</Select.ItemIndicator>
+                      <Select.Item class={styles.Item} item={item}>
+                        <Select.ItemText class={styles.ItemText}>{item.label}</Select.ItemText>
+                        <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
                       </Select.Item>
                     )}
                   </For>

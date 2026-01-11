@@ -3,6 +3,7 @@
   import { useFilter } from '@ark-ui/svelte/locale'
   import { Portal } from '@ark-ui/svelte/portal'
   import { tick } from 'svelte'
+  import styles from 'styles/combobox.module.css'
 
   interface Item {
     label: string
@@ -21,10 +22,10 @@
 
   const { collection, filter, upsert, update, remove } = useListCollection<Item>({
     initialItems: [
-      { label: 'React', value: 'react' },
-      { label: 'Solid', value: 'solid' },
-      { label: 'Vue', value: 'vue' },
-      { label: 'Svelte', value: 'svelte' },
+      { label: 'Bug', value: 'bug' },
+      { label: 'Feature', value: 'feature' },
+      { label: 'Enhancement', value: 'enhancement' },
+      { label: 'Documentation', value: 'docs' },
     ],
     filter: filterFn().contains,
   })
@@ -67,6 +68,7 @@
 </script>
 
 <Combobox.Root
+  class={styles.Root}
   {collection}
   onInputValueChange={handleInputChange}
   onOpenChange={handleOpenChange}
@@ -74,30 +76,29 @@
   onValueChange={handleValueChange}
   allowCustomValue
 >
-  <Combobox.Control>
-    <Combobox.Input placeholder="Search..." />
-    <Combobox.Trigger>Open</Combobox.Trigger>
-    <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
+  <Combobox.Label class={styles.Label}>Label</Combobox.Label>
+  <Combobox.Control class={styles.Control}>
+    <Combobox.Input class={styles.Input} placeholder="e.g. Bug" />
+    <div class={styles.Indicators}>
+      <Combobox.ClearTrigger class={styles.ClearTrigger}>Clear</Combobox.ClearTrigger>
+      <Combobox.Trigger class={styles.Trigger}>Open</Combobox.Trigger>
+    </div>
   </Combobox.Control>
   <Portal>
     <Combobox.Positioner>
-      <Combobox.Content>
-        <Combobox.ItemGroup>
-          <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-          {#each collection().items as item (item.value)}
-            <Combobox.Item {item}>
-              {#if isNewOptionValue(item.value)}
-                <Combobox.ItemText>+ Create "{item.label}"</Combobox.ItemText>
-              {:else}
-                <Combobox.ItemText>
-                  {item.label}
-                  {item.__new__ ? NEW_OPTION_VALUE : ''}
-                </Combobox.ItemText>
-              {/if}
-              <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
-            </Combobox.Item>
-          {/each}
-        </Combobox.ItemGroup>
+      <Combobox.Content class={styles.Content}>
+        {#each collection().items as item (item.value)}
+          <Combobox.Item class={styles.Item} {item}>
+            {#if isNewOptionValue(item.value)}
+              <Combobox.ItemText class={styles.ItemText}>+ Create "{item.label}"</Combobox.ItemText>
+            {:else}
+              <Combobox.ItemText class={styles.ItemText}>
+                {item.label} {item.__new__ ? '(new)' : ''}
+              </Combobox.ItemText>
+            {/if}
+            <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
+          </Combobox.Item>
+        {/each}
       </Combobox.Content>
     </Combobox.Positioner>
   </Portal>

@@ -7,16 +7,15 @@ import ControlledInputValueExample from './examples/controlled-input-value.svelt
 import DelimiterExample from './examples/delimiter.svelte'
 import DisabledExample from './examples/disabled.svelte'
 import DisabledEditingExample from './examples/disabled-editing.svelte'
-import InitialValueExample from './examples/initial-value.svelte'
 import InvalidExample from './examples/invalid.svelte'
 import MaxTagLengthExample from './examples/max-tag-length.svelte'
 import MaxWithOverflowExample from './examples/max-with-overflow.svelte'
-import OnEventExample from './examples/on-event.svelte'
 import PasteBehaviorExample from './examples/paste-behavior.svelte'
 import ProgrammaticControlExample from './examples/programmatic-control.svelte'
 import ReadonlyExample from './examples/readonly.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import ValidationExample from './examples/validation.svelte'
+import WithComboboxExample from './examples/with-combobox.svelte'
 import WithFieldExample from './examples/with-field.svelte'
 
 const meta: Meta = {
@@ -67,12 +66,6 @@ export const DisabledEditing = {
   }),
 }
 
-export const InitialValue = {
-  render: () => ({
-    Component: InitialValueExample,
-  }),
-}
-
 export const Invalid = {
   render: () => ({
     Component: InvalidExample,
@@ -88,12 +81,6 @@ export const MaxTagLength = {
 export const MaxWithOverflow = {
   render: () => ({
     Component: MaxWithOverflowExample,
-  }),
-}
-
-export const OnEvent = {
-  render: () => ({
-    Component: OnEventExample,
   }),
 }
 
@@ -118,6 +105,12 @@ export const Readonly = {
 export const Validation = {
   render: () => ({
     Component: ValidationExample,
+  }),
+}
+
+export const WithCombobox = {
+  render: () => ({
+    Component: WithComboboxExample,
   }),
 }
 

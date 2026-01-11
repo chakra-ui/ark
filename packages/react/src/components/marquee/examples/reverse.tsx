@@ -1,14 +1,23 @@
 import { Marquee } from '@ark-ui/react/marquee'
+import styles from 'styles/marquee.module.css'
 
-const items = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry', 'Fig', 'Grape']
+const items = [
+  { name: 'Apple', logo: '🍎' },
+  { name: 'Banana', logo: '🍌' },
+  { name: 'Cherry', logo: '🍒' },
+  { name: 'Grape', logo: '🍇' },
+  { name: 'Watermelon', logo: '🍉' },
+  { name: 'Strawberry', logo: '🍓' },
+]
 
 export const Reverse = () => (
-  <Marquee.Root reverse>
-    <Marquee.Viewport>
-      <Marquee.Content>
+  <Marquee.Root reverse className={styles.Root}>
+    <Marquee.Viewport className={styles.Viewport}>
+      <Marquee.Content className={styles.Content}>
         {items.map((item, i) => (
-          <Marquee.Item key={i} style={{ padding: '0 2rem' }}>
-            {item}
+          <Marquee.Item key={i} className={styles.Item}>
+            <span className={styles.ItemLogo}>{item.logo}</span>
+            <span className={styles.ItemName}>{item.name}</span>
           </Marquee.Item>
         ))}
       </Marquee.Content>

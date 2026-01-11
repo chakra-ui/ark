@@ -1,24 +1,20 @@
 <script lang="ts">
   import { Field, useField } from '@ark-ui/svelte/field'
+  import styles from 'styles/field.module.css'
+  import button from 'styles/button.module.css'
 
   const id = $props.id()
 
-  const field = useField({ id, invalid: true, required: true })
+  let invalid = $state(false)
+  const field = useField({ id, get invalid() { return invalid } })
 </script>
 
-<Field.RootProvider value={field}>
-  <Field.Label>
-    Label
-    <Field.RequiredIndicator>*</Field.RequiredIndicator>
-  </Field.Label>
-  <Field.Input />
-  <Field.ErrorText>This field has an error</Field.ErrorText>
+<button class={button.Root} style="margin-bottom: 1rem" onclick={() => invalid = !invalid}>
+  Toggle Invalid
+</button>
+<Field.RootProvider class={styles.Root} value={field}>
+  <Field.Label class={styles.Label}>Label</Field.Label>
+  <Field.Input class={styles.Input} />
+  <Field.HelperText class={styles.HelperText}>Some additional Info</Field.HelperText>
+  <Field.ErrorText class={styles.ErrorText}>Error Info</Field.ErrorText>
 </Field.RootProvider>
-
-<Field.Context>
-  {#snippet render(field)}
-    <p>Field ID: {field().ids.control}</p>
-    <p>Required: {field().required}</p>
-    <p>Invalid: {field().invalid}</p>
-  {/snippet}
-</Field.Context>

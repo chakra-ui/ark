@@ -20,12 +20,6 @@ Learn how to use the `TagsInput` component in your project. Let's take a look at
 
 <Example id="basic" />
 
-### Initial tags
-
-To set the initial tag values, set the `defaultValue` prop.
-
-<Example id="initial-value" />
-
 ### Max Tags
 
 To limit the number of tags within the component, you can set the `max` property to the limit you want. The default
@@ -126,16 +120,6 @@ by default the tags can be edited by double-clicking on the tag or focusing on t
 
 <Example id="disabled-editing" />
 
-### Events
-
-During the lifetime of the tags input interaction, here's a list of events we emit:
-
-- `onValueChange` — invoked when the tag value changes.
-- `onHighlightChange` — invoked when a tag has visual focus.
-- `onValueInvalid` — invoked when the max tag count is reached or the `validate` function returns `false`.
-
-<Example id="on-event" />
-
 ### Using the Field Component
 
 The `Field` component helps manage form-related state and accessibility attributes of a tags input. It includes handling
@@ -151,6 +135,13 @@ You can leverage it to access the component state and methods from outside the t
 <Example id="root-provider" />
 
 > If you're using the `RootProvider` component, you don't need to use the `Root` component.
+
+### With Combobox
+
+Combine TagsInput with Combobox to create an autocomplete tags input. This pattern uses shared IDs between both
+components and the `asChild` prop to compose the inputs together.
+
+<Example id="with-combobox" />
 
 ## Guides
 

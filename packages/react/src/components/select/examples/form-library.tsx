@@ -1,6 +1,8 @@
 import { Select, createListCollection } from '@ark-ui/react/select'
-import { ChevronDownIcon } from 'lucide-react'
+import { ChevronsUpDownIcon } from 'lucide-react'
 import { Controller, type SubmitHandler, useForm } from 'react-hook-form'
+import styles from 'styles/select.module.css'
+import button from 'styles/button.module.css'
 
 interface Inputs {
   framework: string
@@ -26,31 +28,32 @@ export const FormLibrary = () => {
         control={control}
         render={({ field }) => (
           <Select.Root
+            className={styles.Root}
             collection={collection}
             value={field.value ? [field.value] : []}
             onValueChange={(e) => field.onChange(e.value[0])}
             name={field.name}
             onInteractOutside={() => field.onBlur()}
           >
-            <Select.Label>Framework</Select.Label>
+            <Select.Label className={styles.Label}>Framework</Select.Label>
             <Select.HiddenSelect />
-            <Select.Control>
-              <Select.Trigger>
-                <Select.ValueText placeholder="Select a Framework" />
-                <Select.Indicator>
-                  <ChevronDownIcon />
+            <Select.Control className={styles.Control}>
+              <Select.Trigger className={styles.Trigger}>
+                <Select.ValueText className={styles.ValueText} placeholder="Select a Framework" />
+                <Select.Indicator className={styles.Indicator}>
+                  <ChevronsUpDownIcon />
                 </Select.Indicator>
               </Select.Trigger>
-              <Select.ClearTrigger>Clear</Select.ClearTrigger>
+              <Select.ClearTrigger className={styles.ClearTrigger}>Clear</Select.ClearTrigger>
             </Select.Control>
             <Select.Positioner>
-              <Select.Content>
-                <Select.ItemGroup>
-                  <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
+              <Select.Content className={styles.Content}>
+                <Select.ItemGroup className={styles.ItemGroup}>
+                  <Select.ItemGroupLabel className={styles.ItemGroupLabel}>Frameworks</Select.ItemGroupLabel>
                   {collection.items.map((item) => (
-                    <Select.Item key={item} item={item}>
-                      <Select.ItemText>{item}</Select.ItemText>
-                      <Select.ItemIndicator>✓</Select.ItemIndicator>
+                    <Select.Item className={styles.Item} key={item} item={item}>
+                      <Select.ItemText className={styles.ItemText}>{item}</Select.ItemText>
+                      <Select.ItemIndicator className={styles.ItemIndicator}>✓</Select.ItemIndicator>
                     </Select.Item>
                   ))}
                 </Select.ItemGroup>
@@ -60,7 +63,9 @@ export const FormLibrary = () => {
         )}
       />
 
-      <button type="submit">Submit</button>
+      <button className={button.Root} style={{ marginTop: '1rem' }} type="submit">
+        Submit
+      </button>
     </form>
   )
 }

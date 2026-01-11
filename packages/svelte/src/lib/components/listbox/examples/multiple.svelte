@@ -1,24 +1,31 @@
 <script lang="ts">
   import { Listbox, createListCollection } from '@ark-ui/svelte/listbox'
+  import CheckIcon from 'lucide-svelte/icons/check'
+  import styles from 'styles/listbox.module.css'
 
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
-
-  let value = $state(['React'])
+  const collection = createListCollection({
+    items: [
+      { label: 'Monday', value: 'mon' },
+      { label: 'Tuesday', value: 'tue' },
+      { label: 'Wednesday', value: 'wed' },
+      { label: 'Thursday', value: 'thu' },
+      { label: 'Friday', value: 'fri' },
+      { label: 'Saturday', value: 'sat' },
+      { label: 'Sunday', value: 'sun' },
+    ],
+  })
 </script>
 
-<Listbox.Root {collection} bind:value selectionMode="multiple">
-  <Listbox.Label>Select your Frameworks (Multiple)</Listbox.Label>
-  <Listbox.ValueText placeholder="Select frameworks..." />
-  <Listbox.Content>
-    {#each collection.items as item}
-      <Listbox.Item {item}>
-        <Listbox.ItemText>{item}</Listbox.ItemText>
-        <Listbox.ItemIndicator />
+<Listbox.Root class={styles.Root} {collection} selectionMode="multiple">
+  <Listbox.Label class={styles.Label}>Select Days</Listbox.Label>
+  <Listbox.Content class={styles.Content}>
+    {#each collection.items as item (item.value)}
+      <Listbox.Item class={styles.Item} {item}>
+        <Listbox.ItemText class={styles.ItemText}>{item.label}</Listbox.ItemText>
+        <Listbox.ItemIndicator class={styles.ItemIndicator}>
+          <CheckIcon />
+        </Listbox.ItemIndicator>
       </Listbox.Item>
     {/each}
   </Listbox.Content>
 </Listbox.Root>
-
-<div>
-  <p>Selected: {JSON.stringify(value)}</p>
-</div>

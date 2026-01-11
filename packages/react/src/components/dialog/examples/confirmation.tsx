@@ -2,6 +2,9 @@ import { Dialog, useDialog } from '@ark-ui/react/dialog'
 import { Portal } from '@ark-ui/react/portal'
 import { XIcon } from 'lucide-react'
 import { useState } from 'react'
+import button from 'styles/button.module.css'
+import field from 'styles/field.module.css'
+import styles from 'styles/dialog.module.css'
 
 export const Confirmation = () => {
   const [formContent, setFormContent] = useState('')
@@ -28,27 +31,31 @@ export const Confirmation = () => {
 
   return (
     <>
-      <button onClick={() => parentDialog.setOpen(true)}>Open Form</button>
+      <button className={button.Root} onClick={() => parentDialog.setOpen(true)}>
+        Open Form
+      </button>
 
       <Dialog.RootProvider value={parentDialog}>
         <Portal>
-          <Dialog.Backdrop />
-          <Dialog.Positioner>
-            <Dialog.Content>
-              <Dialog.Title>Edit Content</Dialog.Title>
-              <Dialog.Description>
-                Make changes to your content. If you have unsaved changes, you'll be asked to confirm before closing.
-              </Dialog.Description>
-              <textarea
-                value={formContent}
-                onChange={(e) => setFormContent(e.target.value)}
-                placeholder="Enter some text..."
-                rows={4}
-                style={{ width: '100%' }}
-              />
-              <Dialog.CloseTrigger>
+          <Dialog.Backdrop className={styles.Backdrop} />
+          <Dialog.Positioner className={styles.Positioner}>
+            <Dialog.Content className={styles.Content}>
+              <Dialog.CloseTrigger className={styles.CloseTrigger}>
                 <XIcon />
               </Dialog.CloseTrigger>
+              <Dialog.Title className={styles.Title}>Edit Content</Dialog.Title>
+              <Dialog.Description className={styles.Description}>
+                Make changes to your content. You'll be asked to confirm before closing if there are unsaved changes.
+              </Dialog.Description>
+              <div className={styles.Body}>
+                <textarea
+                  className={field.Textarea}
+                  value={formContent}
+                  onChange={(e) => setFormContent(e.target.value)}
+                  placeholder="Enter some text..."
+                  rows={4}
+                />
+              </div>
             </Dialog.Content>
           </Dialog.Positioner>
         </Portal>
@@ -56,20 +63,24 @@ export const Confirmation = () => {
 
       <Dialog.RootProvider value={confirmDialog}>
         <Portal>
-          <Dialog.Backdrop />
-          <Dialog.Positioner>
-            <Dialog.Content>
-              <Dialog.Title>Unsaved Changes</Dialog.Title>
-              <Dialog.Description>
-                You have unsaved changes. Are you sure you want to close without saving?
-              </Dialog.Description>
-              <div>
-                <button onClick={() => confirmDialog.setOpen(false)}>Keep Editing</button>
-                <button onClick={handleConfirmClose}>Discard Changes</button>
-              </div>
-              <Dialog.CloseTrigger>
+          <Dialog.Backdrop className={styles.Backdrop} />
+          <Dialog.Positioner className={styles.Positioner}>
+            <Dialog.Content className={styles.Content}>
+              <Dialog.CloseTrigger className={styles.CloseTrigger}>
                 <XIcon />
               </Dialog.CloseTrigger>
+              <Dialog.Title className={styles.Title}>Unsaved Changes</Dialog.Title>
+              <Dialog.Description className={styles.Description}>
+                You have unsaved changes. Are you sure you want to close without saving?
+              </Dialog.Description>
+              <div className={styles.Actions}>
+                <button className={button.Root} onClick={() => confirmDialog.setOpen(false)}>
+                  Keep Editing
+                </button>
+                <button className={button.Root} data-variant="solid" onClick={handleConfirmClose}>
+                  Discard Changes
+                </button>
+              </div>
             </Dialog.Content>
           </Dialog.Positioner>
         </Portal>

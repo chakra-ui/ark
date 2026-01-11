@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Avatar, useAvatar } from '@ark-ui/svelte/avatar'
+  import styles from 'styles/avatar.module.css'
 
   const id = $props.id()
   const avatar = useAvatar({
@@ -15,7 +16,7 @@
 
 <button onclick={() => counter++}>Change Avatar</button>
 
-<Avatar.RootProvider value={avatar}>
-  <Avatar.Fallback>PA</Avatar.Fallback>
-  <Avatar.Image {src} alt="avatar" />
+<Avatar.RootProvider class={styles.Root} value={avatar}>
+  <Avatar.Fallback class={styles.Fallback}>PA</Avatar.Fallback>
+  <Avatar.Image class={styles.Image} {src} alt="avatar" />
 </Avatar.RootProvider>

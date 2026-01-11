@@ -2,6 +2,7 @@
 import { useForwardPropsEmits } from '@ark-ui/vue'
 import { Avatar, type AvatarRootEmits, type AvatarRootProps } from '@ark-ui/vue/avatar'
 import { computed } from 'vue'
+import styles from 'styles/avatar.module.css'
 
 export interface AvatarProps extends AvatarRootProps {
   src?: string
@@ -24,8 +25,8 @@ const getInitials = computed(() =>
 </script>
 
 <template>
-  <Avatar.Root v-bind="forwarded">
-    <Avatar.Fallback>{{ getInitials }}</Avatar.Fallback>
-    <Avatar.Image :src="props.src" :alt="props.name" />
+  <Avatar.Root :class="styles.Root" v-bind="forwarded">
+    <Avatar.Fallback :class="styles.Fallback">{{ getInitials }}</Avatar.Fallback>
+    <Avatar.Image :class="styles.Image" :src="props.src" :alt="props.name" />
   </Avatar.Root>
 </template>

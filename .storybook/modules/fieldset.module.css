@@ -1,0 +1,35 @@
+.Root {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+
+  &[data-disabled] {
+    opacity: 0.5;
+  }
+}
+
+.Legend {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  color: var(--neutral-fg);
+  padding: 0;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.HelperText {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--neutral-emphasized);
+}
+
+.ErrorText {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--coral-fg);
+}

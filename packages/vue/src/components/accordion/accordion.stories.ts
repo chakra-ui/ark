@@ -1,14 +1,11 @@
 import type { Meta } from '@storybook/vue3-vite'
 
 import BasicExample from './examples/basic.vue'
-import RenderPropExample from './examples/render-prop.vue'
 import CollapsibleExample from './examples/collapsible.vue'
 import MultipleExample from './examples/multiple.vue'
 import ControlledExample from './examples/controlled.vue'
-import VerticalExample from './examples/vertical.vue'
 import HorizontalExample from './examples/horizontal.vue'
 import DisabledExample from './examples/disabled.vue'
-import AccordionExample from './examples/accordion.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import ContextExample from './examples/context.vue'
 import ItemContextExample from './examples/item-context.vue'
@@ -22,13 +19,6 @@ export default meta
 export const Basic = {
   render: () => ({
     components: { Component: BasicExample },
-    template: '<Component />',
-  }),
-}
-
-export const RenderProp = {
-  render: () => ({
-    components: { Component: RenderPropExample },
     template: '<Component />',
   }),
 }
@@ -54,13 +44,6 @@ export const Controlled = {
   }),
 }
 
-export const Vertical = {
-  render: () => ({
-    components: { Component: VerticalExample },
-    template: '<Component />',
-  }),
-}
-
 export const Horizontal = {
   render: () => ({
     components: { Component: HorizontalExample },
@@ -72,13 +55,6 @@ export const Disabled = {
   render: () => ({
     components: { Component: DisabledExample },
     template: '<Component />',
-  }),
-}
-
-export const Closed = {
-  render: () => ({
-    components: { Component: AccordionExample },
-    template: "<Component multiple :items=\"['React', 'Solid', 'Vue', 'Svelte']\" />",
   }),
 }
 

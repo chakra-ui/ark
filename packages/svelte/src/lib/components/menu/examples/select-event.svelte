@@ -1,29 +1,35 @@
 <script lang="ts">
   import { Menu } from '@ark-ui/svelte/menu'
+  import { ChevronDownIcon } from 'lucide-svelte'
+  import styles from 'styles/menu.module.css'
 
   const items = [
-    { value: 'react', label: 'React' },
-    { value: 'solid', label: 'Solid' },
-    { value: 'vue', label: 'Vue' },
+    { value: 'profile', label: 'My Profile' },
+    { value: 'settings', label: 'Settings' },
+    { value: 'billing', label: 'Billing' },
+    { value: 'logout', label: 'Log Out' },
   ]
 
   function handleSelect(e: { value: string }) {
-    console.log('[root] selected item', e.value)
+    console.log('Selected:', e.value)
   }
 
-  function handleItemSelect(value: string) {
-    console.log('[item] selected item', value)
+  function handleItemSelect(label: string) {
+    console.log('Item selected:', label)
   }
 </script>
 
 <Menu.Root onSelect={handleSelect}>
-  <Menu.Trigger>
-    Open menu <Menu.Indicator>➡️</Menu.Indicator>
+  <Menu.Trigger class={styles.Trigger}>
+    Account
+    <Menu.Indicator class={styles.Indicator}>
+      <ChevronDownIcon />
+    </Menu.Indicator>
   </Menu.Trigger>
   <Menu.Positioner>
-    <Menu.Content>
+    <Menu.Content class={styles.Content}>
       {#each items as item}
-        <Menu.Item value={item.value} onSelect={() => handleItemSelect(item.value)}>
+        <Menu.Item class={styles.Item} value={item.value} onSelect={() => handleItemSelect(item.label)}>
           {item.label}
         </Menu.Item>
       {/each}

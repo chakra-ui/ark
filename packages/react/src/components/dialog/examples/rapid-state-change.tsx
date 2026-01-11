@@ -1,6 +1,9 @@
 import { Dialog } from '@ark-ui/react/dialog'
 import { Portal } from '@ark-ui/react/portal'
+import { XIcon } from 'lucide-react'
 import { useState } from 'react'
+import button from 'styles/button.module.css'
+import styles from 'styles/dialog.module.css'
 
 const promise1 = Promise.resolve()
 const promise2 = Promise.resolve()
@@ -18,20 +21,22 @@ export const RapidStateChange = () => {
 
   return (
     <>
-      <button type="button" onClick={handleClick}>
+      <button className={button.Root} onClick={handleClick}>
         Open Dialog {String(open)}
       </button>
       <Dialog.Root open={open} onOpenChange={(e) => setOpen(e.open)}>
         <Portal>
-          <Dialog.Backdrop />
-          <Dialog.Positioner>
-            <Dialog.Content>
-              <Dialog.Title>Dialog Title</Dialog.Title>
-              <Dialog.Description>
-                This dialog tests the fix for rapid state changes (true → false → true). If the fix works, the dialog
-                should be open after clicking the button.
+          <Dialog.Backdrop className={styles.Backdrop} />
+          <Dialog.Positioner className={styles.Positioner}>
+            <Dialog.Content className={styles.Content}>
+              <Dialog.CloseTrigger className={styles.CloseTrigger}>
+                <XIcon />
+              </Dialog.CloseTrigger>
+              <Dialog.Title className={styles.Title}>Rapid State Test</Dialog.Title>
+              <Dialog.Description className={styles.Description}>
+                This dialog tests rapid state changes (true → false → true). If working correctly, the dialog should be
+                open after clicking the button.
               </Dialog.Description>
-              <Dialog.CloseTrigger onClick={() => setOpen(false)}>Close</Dialog.CloseTrigger>
             </Dialog.Content>
           </Dialog.Positioner>
         </Portal>

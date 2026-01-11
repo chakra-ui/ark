@@ -1,4 +1,6 @@
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 import { Pagination } from '@ark-ui/react/pagination'
+import styles from 'styles/pagination.module.css'
 
 export const Customized = () => (
   <Pagination.Root
@@ -10,23 +12,30 @@ export const Customized = () => (
       prevTriggerLabel: 'Prev',
       itemLabel: (details) => `Page ${details.page}`,
     }}
+    className={styles.Root}
   >
-    <Pagination.PrevTrigger>Previous</Pagination.PrevTrigger>
-    <Pagination.Context>
-      {(pagination) =>
-        pagination.pages.map((page, index) =>
-          page.type === 'page' ? (
-            <Pagination.Item key={index} {...page}>
-              {page.value}
-            </Pagination.Item>
-          ) : (
-            <Pagination.Ellipsis key={index} index={index}>
-              &#8230;
-            </Pagination.Ellipsis>
-          ),
-        )
-      }
-    </Pagination.Context>
-    <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
+    <div className={styles.Controls}>
+      <Pagination.PrevTrigger className={styles.Trigger}>
+        <ChevronLeftIcon />
+      </Pagination.PrevTrigger>
+      <Pagination.Context>
+        {(pagination) =>
+          pagination.pages.map((page, index) =>
+            page.type === 'page' ? (
+              <Pagination.Item key={index} {...page} className={styles.Item}>
+                {page.value}
+              </Pagination.Item>
+            ) : (
+              <Pagination.Ellipsis key={index} index={index} className={styles.Ellipsis}>
+                &#8230;
+              </Pagination.Ellipsis>
+            ),
+          )
+        }
+      </Pagination.Context>
+      <Pagination.NextTrigger className={styles.Trigger}>
+        <ChevronRightIcon />
+      </Pagination.NextTrigger>
+    </div>
   </Pagination.Root>
 )

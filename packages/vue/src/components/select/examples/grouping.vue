@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Select, createListCollection } from '@ark-ui/vue/select'
-import { ChevronDownIcon } from 'lucide-vue-next'
+import { ChevronsUpDownIcon, XIcon } from 'lucide-vue-next'
+import styles from 'styles/select.module.css'
 
 const collection = createListCollection({
   items: [
@@ -15,25 +16,29 @@ const collection = createListCollection({
 </script>
 
 <template>
-  <Select.Root :collection="collection">
-    <Select.Label>Framework</Select.Label>
-    <Select.Control>
-      <Select.Trigger>
-        <Select.ValueText placeholder="Select a Framework" />
-        <Select.Indicator>
-          <ChevronDownIcon />
-        </Select.Indicator>
+  <Select.Root :class="styles.Root" :collection="collection">
+    <Select.Label :class="styles.Label">Framework</Select.Label>
+    <Select.Control :class="styles.Control">
+      <Select.Trigger :class="styles.Trigger">
+        <Select.ValueText :class="styles.ValueText" placeholder="Select a Framework" />
       </Select.Trigger>
-      <Select.ClearTrigger>Clear</Select.ClearTrigger>
+      <div :class="styles.Indicators">
+        <Select.ClearTrigger :class="styles.ClearTrigger">
+          <XIcon />
+        </Select.ClearTrigger>
+        <Select.Indicator :class="styles.Indicator">
+          <ChevronsUpDownIcon />
+        </Select.Indicator>
+      </div>
     </Select.Control>
     <Teleport to="body">
       <Select.Positioner>
-        <Select.Content>
-          <Select.ItemGroup v-for="[type, group] in collection.group()" :key="type">
-            <Select.ItemGroupLabel>{{ type }}</Select.ItemGroupLabel>
-            <Select.Item v-for="item in group" :key="item.value" :item="item">
-              <Select.ItemText>{{ item.label }}</Select.ItemText>
-              <Select.ItemIndicator>✓</Select.ItemIndicator>
+        <Select.Content :class="styles.Content">
+          <Select.ItemGroup v-for="[type, group] in collection.group()" :key="type" :class="styles.ItemGroup">
+            <Select.ItemGroupLabel :class="styles.ItemGroupLabel">{{ type }}</Select.ItemGroupLabel>
+            <Select.Item v-for="item in group" :key="item.value" :item="item" :class="styles.Item">
+              <Select.ItemText :class="styles.ItemText">{{ item.label }}</Select.ItemText>
+              <Select.ItemIndicator :class="styles.ItemIndicator">✓</Select.ItemIndicator>
             </Select.Item>
           </Select.ItemGroup>
         </Select.Content>

@@ -1,22 +1,29 @@
 <script setup lang="ts">
 import { Menu } from '@ark-ui/vue/menu'
+import { ChevronDownIcon } from 'lucide-vue-next'
+import styles from 'styles/menu.module.css'
 </script>
 
 <template>
   <Menu.Root>
-    <Menu.Trigger>Open menu</Menu.Trigger>
+    <Menu.Trigger :class="styles.Trigger">
+      Edit
+      <Menu.Indicator :class="styles.Indicator">
+        <ChevronDownIcon />
+      </Menu.Indicator>
+    </Menu.Trigger>
     <Menu.Positioner>
-      <Menu.Content>
-        <Menu.ItemGroup>
-          <Menu.ItemGroupLabel>JS Frameworks</Menu.ItemGroupLabel>
-          <Menu.Item value="react">React</Menu.Item>
-          <Menu.Item value="solid">Solid</Menu.Item>
-          <Menu.Item value="vue">Vue</Menu.Item>
+      <Menu.Content :class="styles.Content">
+        <Menu.ItemGroup :class="styles.ItemGroup">
+          <Menu.ItemGroupLabel :class="styles.ItemGroupLabel">Clipboard</Menu.ItemGroupLabel>
+          <Menu.Item :class="styles.Item" value="cut">Cut</Menu.Item>
+          <Menu.Item :class="styles.Item" value="copy">Copy</Menu.Item>
+          <Menu.Item :class="styles.Item" value="paste">Paste</Menu.Item>
         </Menu.ItemGroup>
-        <Menu.ItemGroup>
-          <Menu.ItemGroupLabel>CSS Frameworks</Menu.ItemGroupLabel>
-          <Menu.Item value="panda">Panda</Menu.Item>
-          <Menu.Item value="tailwind">Tailwind</Menu.Item>
+        <Menu.ItemGroup :class="styles.ItemGroup">
+          <Menu.ItemGroupLabel :class="styles.ItemGroupLabel">Selection</Menu.ItemGroupLabel>
+          <Menu.Item :class="styles.Item" value="select-all">Select All</Menu.Item>
+          <Menu.Item :class="styles.Item" value="deselect">Deselect</Menu.Item>
         </Menu.ItemGroup>
       </Menu.Content>
     </Menu.Positioner>

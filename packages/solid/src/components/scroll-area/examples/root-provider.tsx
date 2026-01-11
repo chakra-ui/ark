@@ -1,19 +1,20 @@
 import { ScrollArea, useScrollArea } from '@ark-ui/solid/scroll-area'
+import styles from 'styles/scroll-area.module.css'
 
 export const RootProvider = () => {
   const scrollArea = useScrollArea()
 
   return (
-    <>
-      <div>
+    <div class="stack">
+      <div class="hstack">
         <button onClick={() => scrollArea().scrollToEdge({ edge: 'top' })}>Scroll to Top</button>
         <button onClick={() => scrollArea().scrollToEdge({ edge: 'bottom' })}>Scroll to Bottom</button>
       </div>
 
-      <ScrollArea.RootProvider value={scrollArea} style={{ height: '8.5rem' }}>
-        <ScrollArea.Viewport style={{ height: '100%' }}>
-          <ScrollArea.Content style={{ padding: '1rem 1rem 1.5rem' }}>
-            <p>
+      <ScrollArea.RootProvider value={scrollArea} class={styles.Root}>
+        <ScrollArea.Viewport class={styles.Viewport}>
+          <ScrollArea.Content class={styles.Content}>
+            <p class={styles.Paragraph}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
               ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
@@ -27,11 +28,11 @@ export const RootProvider = () => {
             </p>
           </ScrollArea.Content>
         </ScrollArea.Viewport>
-        <ScrollArea.Scrollbar>
-          <ScrollArea.Thumb />
+        <ScrollArea.Scrollbar orientation="vertical" class={styles.Scrollbar}>
+          <ScrollArea.Thumb class={styles.Thumb} />
         </ScrollArea.Scrollbar>
-        <ScrollArea.Corner />
+        <ScrollArea.Corner class={styles.Corner} />
       </ScrollArea.RootProvider>
-    </>
+    </div>
   )
 }

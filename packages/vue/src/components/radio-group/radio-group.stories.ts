@@ -1,14 +1,15 @@
 import type { Meta } from '@storybook/vue3-vite'
 
 import BasicExample from './examples/basic.vue'
+import ControlledExample from './examples/controlled.vue'
 import DisabledExample from './examples/disabled.vue'
-import GroupWithFieldsetExample from './examples/group-with-fieldset.vue'
 import InitialValueExample from './examples/initial-value.vue'
-import OnEventExample from './examples/on-event.vue'
+import OrientationExample from './examples/orientation.vue'
 import RootProviderExample from './examples/root-provider.vue'
+import WithFieldsetExample from './examples/with-fieldset.vue'
 
 const meta: Meta = {
-  title: 'Components / RadioGroup',
+  title: 'Components / Radio Group',
 }
 
 export default meta
@@ -20,16 +21,16 @@ export const Basic = {
   }),
 }
 
-export const Disabled = {
+export const Controlled = {
   render: () => ({
-    components: { Component: DisabledExample },
+    components: { Component: ControlledExample },
     template: '<Component />',
   }),
 }
 
-export const GroupWithFieldset = {
+export const Disabled = {
   render: () => ({
-    components: { Component: GroupWithFieldsetExample },
+    components: { Component: DisabledExample },
     template: '<Component />',
   }),
 }
@@ -41,9 +42,9 @@ export const InitialValue = {
   }),
 }
 
-export const OnEvent = {
+export const Orientation = {
   render: () => ({
-    components: { Component: OnEventExample },
+    components: { Component: OrientationExample },
     template: '<Component />',
   }),
 }
@@ -51,6 +52,13 @@ export const OnEvent = {
 export const RootProvider = {
   render: () => ({
     components: { Component: RootProviderExample },
+    template: '<Component />',
+  }),
+}
+
+export const WithFieldset = {
+  render: () => ({
+    components: { Component: WithFieldsetExample },
     template: '<Component />',
   }),
 }

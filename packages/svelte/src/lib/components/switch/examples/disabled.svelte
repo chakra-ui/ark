@@ -1,11 +1,12 @@
-<script>
+<script lang="ts">
   import { Switch } from '@ark-ui/svelte/switch'
+  import styles from 'styles/switch.module.css'
 </script>
 
-<Switch.Root disabled>
-  <Switch.Control>
-    <Switch.Thumb />
+<Switch.Root class={styles.Root} disabled>
+  <Switch.Control class={styles.Control}>
+    <Switch.Thumb class={styles.Thumb} />
   </Switch.Control>
-  <Switch.Label>Label</Switch.Label>
+  <Switch.Label class={styles.Label}>Label</Switch.Label>
   <Switch.HiddenInput />
 </Switch.Root>

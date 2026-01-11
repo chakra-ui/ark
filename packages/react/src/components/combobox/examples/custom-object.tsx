@@ -1,6 +1,8 @@
 import { Combobox, useListCollection } from '@ark-ui/react/combobox'
 import { useFilter } from '@ark-ui/react/locale'
 import { Portal } from '@ark-ui/react/portal'
+import { CheckIcon, ChevronsUpDownIcon, XIcon } from 'lucide-react'
+import styles from 'styles/combobox.module.css'
 
 export const CustomObject = () => {
   const { contains } = useFilter({ sensitivity: 'base' })
@@ -21,24 +23,32 @@ export const CustomObject = () => {
   }
 
   return (
-    <Combobox.Root collection={collection} onInputValueChange={handleInputChange}>
-      <Combobox.Control>
-        <Combobox.Input />
-        <Combobox.Trigger>Open</Combobox.Trigger>
-        <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
+    <Combobox.Root className={styles.Root} collection={collection} onInputValueChange={handleInputChange}>
+      <Combobox.Label className={styles.Label}>Country</Combobox.Label>
+      <Combobox.Control className={styles.Control}>
+        <Combobox.Input className={styles.Input} placeholder="e.g. Canada" />
+        <div className={styles.Indicators}>
+          <Combobox.ClearTrigger className={styles.ClearTrigger}>
+            <XIcon />
+          </Combobox.ClearTrigger>
+          <Combobox.Trigger className={styles.Trigger}>
+            <ChevronsUpDownIcon />
+          </Combobox.Trigger>
+        </div>
       </Combobox.Control>
       <Portal>
         <Combobox.Positioner>
-          <Combobox.Content>
-            <Combobox.ItemGroup>
-              <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-              {collection.items.map((item) => (
-                <Combobox.Item key={item.country} item={item}>
-                  <Combobox.ItemText>{item.country}</Combobox.ItemText>
-                  <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
-                </Combobox.Item>
-              ))}
-            </Combobox.ItemGroup>
+          <Combobox.Content className={styles.Content}>
+            {collection.items.map((item) => (
+              <Combobox.Item className={styles.Item} key={item.code} item={item}>
+                <Combobox.ItemText className={styles.ItemText}>
+                  {item.flag} {item.country}
+                </Combobox.ItemText>
+                <Combobox.ItemIndicator className={styles.ItemIndicator}>
+                  <CheckIcon />
+                </Combobox.ItemIndicator>
+              </Combobox.Item>
+            ))}
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

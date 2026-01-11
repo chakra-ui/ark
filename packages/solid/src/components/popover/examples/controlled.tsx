@@ -1,23 +1,28 @@
 import { Popover } from '@ark-ui/solid/popover'
+import { XIcon } from 'lucide-solid'
 import { createSignal } from 'solid-js'
+import { Portal } from 'solid-js/web'
+import button from 'styles/button.module.css'
+import styles from 'styles/popover.module.css'
 
 export const Controlled = () => {
-  const [isOpen, setIsOpen] = createSignal(false)
+  const [open, setOpen] = createSignal(false)
   return (
-    <>
-      <button type="button" onClick={() => setIsOpen(!isOpen())}>
-        Toggle
-      </button>
-      <Popover.Root open={isOpen()}>
-        <Popover.Anchor>Anchor</Popover.Anchor>
-        <Popover.Positioner>
-          <Popover.Content>
-            <Popover.Title>Title</Popover.Title>
-            <Popover.Description>Description</Popover.Description>
-            <Popover.CloseTrigger>Close</Popover.CloseTrigger>
+    <Popover.Root open={open()} onOpenChange={(e) => setOpen(e.open)}>
+      <Popover.Trigger class={button.Root}>Click Me</Popover.Trigger>
+      <Portal>
+        <Popover.Positioner class={styles.Positioner}>
+          <Popover.Content class={styles.Content}>
+            <Popover.CloseTrigger class={styles.CloseTrigger}>
+              <XIcon />
+            </Popover.CloseTrigger>
+            <Popover.Title class={styles.Title}>Team Members</Popover.Title>
+            <Popover.Description class={styles.Description}>
+              Invite colleagues to collaborate on this project.
+            </Popover.Description>
           </Popover.Content>
         </Popover.Positioner>
-      </Popover.Root>
-    </>
+      </Portal>
+    </Popover.Root>
   )
 }

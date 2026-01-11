@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Checkbox } from '@ark-ui/vue/checkbox'
 import { CheckIcon } from 'lucide-vue-next'
+import styles from 'styles/checkbox.module.css'
 
 const items = [
   { label: 'React', value: 'react' },
@@ -10,14 +11,14 @@ const items = [
 </script>
 
 <template>
-  <Checkbox.Group :defaultValue="['react']" name="framework" @valueChange="console.log">
-    <Checkbox.Root v-for="item in items" :value="item.value" :key="item.value">
-      <Checkbox.Label>{{ item.label }}</Checkbox.Label>
-      <Checkbox.Control>
-        <Checkbox.Indicator>
+  <Checkbox.Group :class="styles.Group" :defaultValue="['react']" name="framework">
+    <Checkbox.Root :class="styles.Root" v-for="item in items" :value="item.value" :key="item.value">
+      <Checkbox.Control :class="styles.Control">
+        <Checkbox.Indicator :class="styles.Indicator">
           <CheckIcon />
         </Checkbox.Indicator>
       </Checkbox.Control>
+      <Checkbox.Label :class="styles.Label">{{ item.label }}</Checkbox.Label>
       <Checkbox.HiddenInput />
     </Checkbox.Root>
   </Checkbox.Group>

@@ -2,26 +2,31 @@ import { Dialog } from '@ark-ui/react/dialog'
 import { Portal } from '@ark-ui/react/portal'
 import { XIcon } from 'lucide-react'
 import { useRef } from 'react'
+import button from 'styles/button.module.css'
+import field from 'styles/field.module.css'
+import styles from 'styles/dialog.module.css'
 
 export const InitialFocus = () => {
   const inputRef = useRef<HTMLInputElement>(null)
 
   return (
     <Dialog.Root initialFocusEl={() => inputRef.current}>
-      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+      <Dialog.Trigger className={button.Root}>Open Dialog</Dialog.Trigger>
       <Portal>
-        <Dialog.Backdrop />
-        <Dialog.Positioner>
-          <Dialog.Content>
-            <Dialog.Title>Edit Profile</Dialog.Title>
-            <Dialog.Description>
-              Make changes to your profile here. The first input will be focused when the dialog opens.
-            </Dialog.Description>
-            <input ref={inputRef} type="text" placeholder="Enter your name..." />
-            <input type="email" placeholder="Enter your email..." />
-            <Dialog.CloseTrigger>
+        <Dialog.Backdrop className={styles.Backdrop} />
+        <Dialog.Positioner className={styles.Positioner}>
+          <Dialog.Content className={styles.Content}>
+            <Dialog.CloseTrigger className={styles.CloseTrigger}>
               <XIcon />
             </Dialog.CloseTrigger>
+            <Dialog.Title className={styles.Title}>Edit Profile</Dialog.Title>
+            <Dialog.Description className={styles.Description}>
+              The first input will be focused when the dialog opens.
+            </Dialog.Description>
+            <div className={styles.Body}>
+              <input ref={inputRef} className={field.Input} placeholder="Enter your name..." />
+              <input className={field.Input} placeholder="Enter your email..." />
+            </div>
           </Dialog.Content>
         </Dialog.Positioner>
       </Portal>

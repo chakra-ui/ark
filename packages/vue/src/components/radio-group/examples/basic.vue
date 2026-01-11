@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import { RadioGroup } from '@ark-ui/vue/radio-group'
-import { ref } from 'vue'
+import styles from 'styles/radio-group.module.css'
 
-const frameworks = ref(['React', 'Solid', 'Vue', 'Svelte'])
+const frameworks = ['React', 'Solid', 'Vue']
 </script>
 
 <template>
-  <RadioGroup.Root>
-    <RadioGroup.Label>Framework</RadioGroup.Label>
-    <RadioGroup.Indicator />
-    <RadioGroup.Item v-for="framework in frameworks" :key="framework" :value="framework">
-      <RadioGroup.ItemText>{{ framework }}</RadioGroup.ItemText>
-      <RadioGroup.ItemControl />
+  <RadioGroup.Root :class="styles.Root" default-value="React">
+    <RadioGroup.Label :class="styles.Label">Framework</RadioGroup.Label>
+    <RadioGroup.Item v-for="framework in frameworks" :key="framework" :class="styles.Item" :value="framework">
+      <RadioGroup.ItemControl :class="styles.ItemControl" />
+      <RadioGroup.ItemText :class="styles.ItemText">{{ framework }}</RadioGroup.ItemText>
       <RadioGroup.ItemHiddenInput />
     </RadioGroup.Item>
   </RadioGroup.Root>

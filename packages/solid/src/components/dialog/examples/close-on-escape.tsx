@@ -1,36 +1,31 @@
-import { XIcon } from 'lucide-solid'
 import { Dialog } from '@ark-ui/solid/dialog'
+import { XIcon } from 'lucide-solid'
 import { Portal } from 'solid-js/web'
+import button from 'styles/button.module.css'
+import styles from 'styles/dialog.module.css'
 
-export const CloseOnEscape = () => {
-  return (
-    <Dialog.Root
-      closeOnEscape={false}
-      onEscapeKeyDown={(e) => {
-        const hasUnsavedChanges = true
-        if (hasUnsavedChanges) {
-          e.preventDefault()
-          alert('You have unsaved changes. Please save or discard them before closing.')
-        }
-      }}
-    >
-      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Portal>
-        <Dialog.Backdrop />
-        <Dialog.Positioner>
-          <Dialog.Content>
-            <Dialog.Title>Unsaved Changes</Dialog.Title>
-            <Dialog.Description>
-              This dialog prevents closing with Escape key. Try pressing Escape to see the warning. Use the close button
-              to dismiss.
-            </Dialog.Description>
-            <textarea placeholder="Type something..." rows={4} style={{ width: '100%' }} />
-            <Dialog.CloseTrigger>
-              <XIcon />
-            </Dialog.CloseTrigger>
-          </Dialog.Content>
-        </Dialog.Positioner>
-      </Portal>
-    </Dialog.Root>
-  )
-}
+export const CloseOnEscape = () => (
+  <Dialog.Root
+    closeOnEscape={false}
+    onEscapeKeyDown={(e) => {
+      e.preventDefault()
+      alert('Escape key pressed but dialog stays open')
+    }}
+  >
+    <Dialog.Trigger class={button.Root}>Open Dialog</Dialog.Trigger>
+    <Portal>
+      <Dialog.Backdrop class={styles.Backdrop} />
+      <Dialog.Positioner class={styles.Positioner}>
+        <Dialog.Content class={styles.Content}>
+          <Dialog.CloseTrigger class={styles.CloseTrigger}>
+            <XIcon />
+          </Dialog.CloseTrigger>
+          <Dialog.Title class={styles.Title}>Escape Disabled</Dialog.Title>
+          <Dialog.Description class={styles.Description}>
+            This dialog will not close when pressing the Escape key. Use the close button instead.
+          </Dialog.Description>
+        </Dialog.Content>
+      </Dialog.Positioner>
+    </Portal>
+  </Dialog.Root>
+)
