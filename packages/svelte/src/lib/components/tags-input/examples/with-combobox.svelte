@@ -54,9 +54,9 @@
           <TagsInput.ItemInput class={styles.ItemInput} />
         </TagsInput.Item>
       {/each}
-      <Combobox.Input asChild>
-        {#snippet child(inputProps)}
-          <TagsInput.Input placeholder="Add Framework" class={styles.Input} {...inputProps} />
+      <Combobox.Input>
+        {#snippet asChild(inputProps)}
+          <TagsInput.Input placeholder="Add Framework" class={styles.Input} {...inputProps()} />
         {/snippet}
       </Combobox.Input>
       <TagsInput.ClearTrigger class={styles.ClearTrigger}><XIcon /></TagsInput.ClearTrigger>

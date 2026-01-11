@@ -8,8 +8,6 @@ import styles from 'styles/combobox.module.css'
 export const Multiple = () => {
   const filterFn = useFilter({ sensitivity: 'base' })
 
-  let selectedValue: string[] = []
-
   const { collection, filter, remove } = useListCollection({
     initialItems: [
       { label: 'JavaScript', value: 'js' },
@@ -27,7 +25,6 @@ export const Multiple = () => {
   }
 
   const handleValueChange = (details: Combobox.ValueChangeDetails) => {
-    selectedValue = details.value
     remove(...details.value)
   }
 

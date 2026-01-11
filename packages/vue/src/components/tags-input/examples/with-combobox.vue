@@ -22,7 +22,9 @@ const tagsInput = useTagsInput({
 
 const comboboxApi = useCombobox({
   ids: { input: `input_${uid}`, control: `control_${uid}` },
-  collection,
+  get collection() {
+    return collection.value
+  },
   onInputValueChange(details) {
     filter(details.inputValue)
   },
@@ -40,30 +42,32 @@ const comboboxApi = useCombobox({
 <template>
   <Combobox.RootProvider :value="comboboxApi">
     <TagsInput.RootProvider :class="styles.Root" :value="tagsInput">
-      <TagsInput.Label :class="styles.Label">Frameworks</TagsInput.Label>
-      <TagsInput.Control :class="styles.Control">
-        <TagsInput.Item
-          v-for="(value, index) in tagsInput.value.value"
-          :key="index"
-          :index="index"
-          :value="value"
-          :class="styles.Item"
-        >
-          <TagsInput.ItemPreview :class="styles.ItemPreview">
-            <TagsInput.ItemText :class="styles.ItemText">{{ value }}</TagsInput.ItemText>
-            <TagsInput.ItemDeleteTrigger :class="styles.ItemDeleteTrigger">
-              <XIcon />
-            </TagsInput.ItemDeleteTrigger>
-          </TagsInput.ItemPreview>
-          <TagsInput.ItemInput :class="styles.ItemInput" />
-        </TagsInput.Item>
-        <Combobox.Input as-child>
-          <TagsInput.Input placeholder="Add Framework" :class="styles.Input" />
-        </Combobox.Input>
-        <TagsInput.ClearTrigger :class="styles.ClearTrigger">
-          <XIcon />
-        </TagsInput.ClearTrigger>
-      </TagsInput.Control>
+      <TagsInput.Context v-slot="context">
+        <TagsInput.Label :class="styles.Label">Frameworks</TagsInput.Label>
+        <TagsInput.Control :class="styles.Control">
+          <TagsInput.Item
+            v-for="(value, index) in context.value"
+            :key="index"
+            :index="index"
+            :value="value"
+            :class="styles.Item"
+          >
+            <TagsInput.ItemPreview :class="styles.ItemPreview">
+              <TagsInput.ItemText :class="styles.ItemText">{{ value }}</TagsInput.ItemText>
+              <TagsInput.ItemDeleteTrigger :class="styles.ItemDeleteTrigger">
+                <XIcon />
+              </TagsInput.ItemDeleteTrigger>
+            </TagsInput.ItemPreview>
+            <TagsInput.ItemInput :class="styles.ItemInput" />
+          </TagsInput.Item>
+          <Combobox.Input as-child>
+            <TagsInput.Input placeholder="Add Framework" :class="styles.Input" />
+          </Combobox.Input>
+          <TagsInput.ClearTrigger :class="styles.ClearTrigger">
+            <XIcon />
+          </TagsInput.ClearTrigger>
+        </TagsInput.Control>
+      </TagsInput.Context>
       <TagsInput.HiddenInput />
     </TagsInput.RootProvider>
 

@@ -46,10 +46,6 @@ watch(inputValue, () => {
   state.load()
 })
 
-const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
-  inputValue.value = details.inputValue
-}
-
 let hydrated = false
 watchEffect(() => {
   if (combobox.value.value.length && combobox.value.collection.size && !hydrated) {
