@@ -3,12 +3,15 @@
   import { Portal } from '@ark-ui/svelte/portal'
   import { ArrowDownLeft, GripVertical, Maximize2, Minus, XIcon } from 'lucide-svelte'
   import styles from 'styles/floating-panel.module.css'
-
-  let open = $state(false)
 </script>
 
-<FloatingPanel.Root bind:open>
+<FloatingPanel.Root>
   <FloatingPanel.Trigger class={styles.Trigger}>Toggle Panel</FloatingPanel.Trigger>
+  <FloatingPanel.Context>
+    {#snippet render(floatingPanel)}
+      <p>floatingPanel is {floatingPanel().open ? 'open' : 'closed'}</p>
+    {/snippet}
+  </FloatingPanel.Context>
   <Portal>
     <FloatingPanel.Positioner class={styles.Positioner}>
       <FloatingPanel.Content class={styles.Content}>
@@ -36,7 +39,6 @@
         </FloatingPanel.DragTrigger>
         <FloatingPanel.Body class={styles.Body}>
           <p>Some content</p>
-          <p>Panel is {open ? 'open' : 'closed'}</p>
         </FloatingPanel.Body>
 
         <FloatingPanel.ResizeTrigger axis="n" class={styles.ResizeTrigger} />

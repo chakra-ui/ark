@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { FloatingPanel } from '@ark-ui/vue/floating-panel'
 import { ArrowDownLeft, GripVertical, Maximize2, Minus, XIcon } from 'lucide-vue-next'
-import { ref } from 'vue'
 import styles from 'styles/floating-panel.module.css'
-
-const open = ref(false)
 </script>
 
 <template>
-  <FloatingPanel.Root v-model:open="open">
+  <FloatingPanel.Root>
+    <FloatingPanel.Context v-slot="floatingPanel">
+      <p>floatingPanel is {{ floatingPanel.open ? 'open' : 'closed' }}</p>
+    </FloatingPanel.Context>
+
     <FloatingPanel.Trigger :class="styles.Trigger">Toggle Panel</FloatingPanel.Trigger>
     <Teleport to="body">
       <FloatingPanel.Positioner :class="styles.Positioner">

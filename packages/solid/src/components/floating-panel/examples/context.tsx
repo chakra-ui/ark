@@ -3,9 +3,12 @@ import { ArrowDownLeft, GripVertical, Maximize2, Minus, XIcon } from 'lucide-sol
 import { Portal } from 'solid-js/web'
 import styles from 'styles/floating-panel.module.css'
 
-export const LazyMount = () => (
-  <FloatingPanel.Root lazyMount onExitComplete={() => console.log('onExitComplete invoked')}>
+export const Context = () => (
+  <FloatingPanel.Root>
     <FloatingPanel.Trigger class={styles.Trigger}>Toggle Panel</FloatingPanel.Trigger>
+    <FloatingPanel.Context>
+      {(floatingPanel) => <p>floatingPanel is {floatingPanel().open ? 'open' : 'closed'}</p>}
+    </FloatingPanel.Context>
     <Portal>
       <FloatingPanel.Positioner class={styles.Positioner}>
         <FloatingPanel.Content class={styles.Content}>

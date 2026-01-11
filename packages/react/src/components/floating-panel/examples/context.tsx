@@ -3,17 +3,12 @@ import { Portal } from '@ark-ui/react/portal'
 import { ArrowDownLeft, GripVertical, Maximize2, Minus, XIcon } from 'lucide-react'
 import styles from 'styles/floating-panel.module.css'
 
-export const AnchorPosition = () => (
-  <FloatingPanel.Root
-    getAnchorPosition={({ triggerRect }) => {
-      if (!triggerRect) return { x: 0, y: 0 }
-      return {
-        x: triggerRect.x + triggerRect.width / 2,
-        y: triggerRect.y + triggerRect.height / 2,
-      }
-    }}
-  >
+export const Context = () => (
+  <FloatingPanel.Root>
     <FloatingPanel.Trigger className={styles.Trigger}>Toggle Panel</FloatingPanel.Trigger>
+    <FloatingPanel.Context>
+      {(floatingPanel) => <p>floatingPanel is {floatingPanel.open ? 'open' : 'closed'}</p>}
+    </FloatingPanel.Context>
     <Portal>
       <FloatingPanel.Positioner className={styles.Positioner}>
         <FloatingPanel.Content className={styles.Content}>
