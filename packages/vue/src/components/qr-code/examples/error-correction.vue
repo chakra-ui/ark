@@ -1,14 +1,35 @@
 <script setup lang="ts">
-import { QrCode, type QrCodeGenerateOptions } from '@ark-ui/vue/qr-code'
+import { QrCode } from '@ark-ui/vue/qr-code'
+import { RadioGroup } from '@ark-ui/vue/radio-group'
 import { ref } from 'vue'
+import styles from 'styles/qr-code.module.css'
+import radio from 'styles/radio-group.module.css'
 
-const encoding = ref<QrCodeGenerateOptions>({ ecc: 'H' })
+type ErrorLevel = 'L' | 'M' | 'Q' | 'H'
+const errorLevel = ref<ErrorLevel>('L')
+const levels: ErrorLevel[] = ['L', 'M', 'Q', 'H']
 </script>
 
 <template>
-  <QrCode.Root defaultValue="http://ark-ui.com" :encoding="encoding">
-    <QrCode.Frame>
-      <QrCode.Pattern />
-    </QrCode.Frame>
-  </QrCode.Root>
+  <div class="stack">
+    <QrCode.Root :class="styles.Root" defaultValue="http://ark-ui.com" :encoding="{ ecc: errorLevel }">
+      <QrCode.Frame :class="styles.Frame">
+        <QrCode.Pattern :class="styles.Pattern" />
+      </QrCode.Frame>
+    </QrCode.Root>
+    <RadioGroup.Root
+      :class="radio.Root"
+      defaultValue="L"
+      orientation="horizontal"
+      @value-change="(e) => (errorLevel = e.value as ErrorLevel)"
+    >
+      <div class="hstack">
+        <RadioGroup.Item v-for="level in levels" :key="level" :class="radio.Item" :value="level">
+          <RadioGroup.ItemControl :class="radio.ItemControl" />
+          <RadioGroup.ItemText :class="radio.ItemText">{{ level }}</RadioGroup.ItemText>
+          <RadioGroup.ItemHiddenInput />
+        </RadioGroup.Item>
+      </div>
+    </RadioGroup.Root>
+  </div>
 </template>
