@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Portal } from '@ark-ui/svelte/portal'
   import { Select, createListCollection } from '@ark-ui/svelte/select'
-  import { ChevronsUpDownIcon } from 'lucide-svelte'
+  import { ChevronsUpDownIcon, XIcon } from 'lucide-svelte'
   import { createForm } from '@tanstack/svelte-form'
   import styles from 'styles/select.module.css'
   import button from 'styles/button.module.css'
@@ -55,7 +55,14 @@
               <ChevronsUpDownIcon />
             </Select.Indicator>
           </Select.Trigger>
-          <Select.ClearTrigger class={styles.ClearTrigger}>Clear</Select.ClearTrigger>
+          <div class={styles.Indicators}>
+            <Select.ClearTrigger class={styles.ClearTrigger}>
+              <XIcon />
+            </Select.ClearTrigger>
+            <Select.Indicator class={styles.Indicator}>
+              <ChevronsUpDownIcon />
+            </Select.Indicator>
+          </div>
         </Select.Control>
         <Portal>
           <Select.Positioner>

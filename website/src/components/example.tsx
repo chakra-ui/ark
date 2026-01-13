@@ -3,10 +3,12 @@ import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { transformerNotationHighlight } from '@shikijs/transformers'
 import { Match } from 'effect'
+import { Stack } from 'styled-system/jsx'
 import { getHighlighter } from '~/lib/highlighter'
 import { getFramework } from '~/lib/frameworks'
 import { getServerContext } from '~/lib/server-context'
 import { CodeTabs } from './code-tabs'
+import { ExamplePreview } from './example-preview'
 
 interface Props {
   id: string
@@ -14,6 +16,31 @@ interface Props {
 }
 
 export const Example = async (props: Props) => {
+  const serverContext = getServerContext()
+  const component = props.component ?? serverContext.component
+
+  const framework = await getFramework()
+  const examples = await findExamples(props)
+  const styles = await fetchStyle(props.component)
+  const hasPreview = component ? exampleExists(component, props.id) : false
+
+  return (
+    <Stack gap="3" className="not-prose">
+      {hasPreview && component && <ExamplePreview component={component} example={props.id} />}
+      <CodeTabs
+        examples={examples}
+        defaultValue={framework}
+        styles={styles}
+        meta={{
+          ...props,
+          framework,
+        }}
+      />
+    </Stack>
+  )
+}
+
+export const ExampleCode = async (props: Props) => {
   const framework = await getFramework()
   const examples = await findExamples(props)
   const styles = await fetchStyle(props.component)
@@ -94,9 +121,30 @@ const findExamples = async (props: Props) => {
   )
 }
 
-const replacementMap = {
-  'progress-circular': 'progress',
+const replacementMap: Record<string, string> = {
+  // progress-circular uses progress-circular.module.css
+  // progress-linear uses progress.module.css
   'progress-linear': 'progress',
+}
+
+/**
+ * Check if a React example file exists (server-side only)
+ */
+function exampleExists(component: string, id: string): boolean {
+  const examplePath = Match.value(component).pipe(
+    Match.when(
+      () => ['progress-circular', 'progress-linear'].includes(component),
+      () => `components/progress/examples/${component.split('-')[1]}`,
+    ),
+    Match.when(
+      () => ['environment', 'locale'].includes(component),
+      () => `providers/${component}/examples`,
+    ),
+    Match.orElse(() => `components/${component}/examples`),
+  )
+
+  const filePath = join(process.cwd(), '..', 'packages', 'react', 'src', examplePath, `${id}.tsx`)
+  return existsSync(filePath)
 }
 
 export const fetchStyle = async (comp: string | undefined) => {
@@ -104,10 +152,19 @@ export const fetchStyle = async (comp: string | undefined) => {
 
   const component = comp ?? serverContext.component
   if (!component) return ''
-  const cm = replacementMap[component as keyof typeof replacementMap] ?? component
-  const filePath = join(process.cwd(), '..', '.storybook', 'styles', `${cm}.css`)
-  if (existsSync(filePath)) {
-    return readFile(filePath, 'utf-8')
+  const cm = replacementMap[component] ?? component
+
+  // Try CSS modules first (what examples actually use)
+  const moduleFilePath = join(process.cwd(), '..', '.storybook', 'modules', `${cm}.module.css`)
+  if (existsSync(moduleFilePath)) {
+    return readFile(moduleFilePath, 'utf-8')
   }
+
+  // Fallback to plain CSS
+  const plainFilePath = join(process.cwd(), '..', '.storybook', 'styles', `${cm}.css`)
+  if (existsSync(plainFilePath)) {
+    return readFile(plainFilePath, 'utf-8')
+  }
+
   return ''
 }

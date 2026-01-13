@@ -19,13 +19,15 @@ export const Multiple = () => {
       <Select.Control className={styles.Control}>
         <Select.Trigger className={styles.Trigger}>
           <Select.ValueText className={styles.ValueText} placeholder="Select" />
+        </Select.Trigger>
+        <div className={styles.Indicators}>
+          <Select.ClearTrigger className={styles.ClearTrigger}>
+            <XIcon />
+          </Select.ClearTrigger>
           <Select.Indicator className={styles.Indicator}>
             <ChevronsUpDownIcon />
           </Select.Indicator>
-        </Select.Trigger>
-        <Select.ClearTrigger className={styles.ClearTrigger}>
-          <XIcon />
-        </Select.ClearTrigger>
+        </div>
       </Select.Control>
       <Portal>
         <Select.Positioner>

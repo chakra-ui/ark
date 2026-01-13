@@ -1,8 +1,8 @@
 import { Select, createListCollection } from '@ark-ui/react/select'
-import { ChevronsUpDownIcon } from 'lucide-react'
+import { ChevronsUpDownIcon, XIcon } from 'lucide-react'
 import { Controller, type SubmitHandler, useForm } from 'react-hook-form'
-import styles from 'styles/select.module.css'
 import button from 'styles/button.module.css'
+import styles from 'styles/select.module.css'
 
 interface Inputs {
   framework: string
@@ -40,11 +40,15 @@ export const FormLibrary = () => {
             <Select.Control className={styles.Control}>
               <Select.Trigger className={styles.Trigger}>
                 <Select.ValueText className={styles.ValueText} placeholder="Select a Framework" />
+              </Select.Trigger>
+              <div className={styles.Indicators}>
+                <Select.ClearTrigger className={styles.ClearTrigger}>
+                  <XIcon />
+                </Select.ClearTrigger>
                 <Select.Indicator className={styles.Indicator}>
                   <ChevronsUpDownIcon />
                 </Select.Indicator>
-              </Select.Trigger>
-              <Select.ClearTrigger className={styles.ClearTrigger}>Clear</Select.ClearTrigger>
+              </div>
             </Select.Control>
             <Select.Positioner>
               <Select.Content className={styles.Content}>

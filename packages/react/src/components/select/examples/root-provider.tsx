@@ -1,7 +1,6 @@
 import { Portal } from '@ark-ui/react/portal'
 import { Select, createListCollection, useSelect } from '@ark-ui/react/select'
 import { ChevronsUpDownIcon, XIcon } from 'lucide-react'
-import button from 'styles/button.module.css'
 import styles from 'styles/select.module.css'
 
 const frameworks = createListCollection({
@@ -18,9 +17,7 @@ export const RootProvider = () => {
 
   return (
     <>
-      <button className={button.Root} style={{ marginBottom: '1rem' }} onClick={() => select.focus()}>
-        Focus
-      </button>
+      <output>selected: {JSON.stringify(select.value)}</output>
 
       <Select.RootProvider className={styles.Root} value={select}>
         <Select.Label className={styles.Label}>Framework</Select.Label>

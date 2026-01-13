@@ -1,5 +1,5 @@
 import { Select, createListCollection } from '@ark-ui/solid/select'
-import { ChevronsUpDownIcon } from 'lucide-solid'
+import { ChevronsUpDownIcon, XIcon } from 'lucide-solid'
 import { createForm, getValue, setValue } from '@modular-forms/solid'
 import { createMemo } from 'solid-js'
 import { Index, Portal } from 'solid-js/web'
@@ -43,11 +43,15 @@ export const FormLibrary = () => {
               <Select.Control class={styles.Control}>
                 <Select.Trigger class={styles.Trigger}>
                   <Select.ValueText class={styles.ValueText} placeholder="Select a Framework" />
+                </Select.Trigger>
+                <div class={styles.Indicators}>
+                  <Select.ClearTrigger class={styles.ClearTrigger}>
+                    <XIcon />
+                  </Select.ClearTrigger>
                   <Select.Indicator class={styles.Indicator}>
                     <ChevronsUpDownIcon />
                   </Select.Indicator>
-                </Select.Trigger>
-                <Select.ClearTrigger class={styles.ClearTrigger}>Clear</Select.ClearTrigger>
+                </div>
               </Select.Control>
               <Portal>
                 <Select.Positioner>

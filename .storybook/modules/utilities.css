@@ -1,0 +1,43 @@
+/* Utility classes for example layouts */
+
+[hidden] {
+  display: none !important;
+}
+
+output {
+  display: flex;
+  max-width: 32rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: 1px solid var(--border-emphasized);
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-family: monospace;
+  max-height: 200px;
+  overflow-y: auto;
+
+  .title {
+    font-weight: 600;
+  }
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.vstack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hstack {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}

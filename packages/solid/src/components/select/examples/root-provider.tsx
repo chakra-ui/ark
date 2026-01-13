@@ -1,7 +1,6 @@
 import { Select, createListCollection, useSelect } from '@ark-ui/solid/select'
 import { ChevronsUpDownIcon, XIcon } from 'lucide-solid'
 import { Index, Portal } from 'solid-js/web'
-import button from 'styles/button.module.css'
 import styles from 'styles/select.module.css'
 
 const frameworks = createListCollection({
@@ -18,9 +17,7 @@ export const RootProvider = () => {
 
   return (
     <>
-      <button class={button.Root} style={{ 'margin-bottom': '1rem' }} onClick={() => select().focus()}>
-        Focus
-      </button>
+      <output>selected: {JSON.stringify(select().value)}</output>
 
       <Select.RootProvider class={styles.Root} value={select}>
         <Select.Label class={styles.Label}>Framework</Select.Label>

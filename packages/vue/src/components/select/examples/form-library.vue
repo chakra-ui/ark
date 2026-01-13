@@ -41,10 +41,15 @@ const onSubmit = handleSubmit((values) => {
         <Select.Control :class="styles.Control">
           <Select.Trigger :class="styles.Trigger">
             <Select.ValueText :class="styles.ValueText" placeholder="Select a Framework" />
+          </Select.Trigger>
+          <div :class="styles.Indicators">
+            <Select.ClearTrigger :class="styles.ClearTrigger">
+              <XIcon />
+            </Select.ClearTrigger>
             <Select.Indicator :class="styles.Indicator">
               <ChevronsUpDownIcon />
             </Select.Indicator>
-          </Select.Trigger>
+          </div>
         </Select.Control>
         <Teleport to="body">
           <Select.Positioner>

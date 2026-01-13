@@ -20,25 +20,19 @@ Learn how to use the `PinInput` component in your project. Let's take a look at 
 
 <Example id="basic" />
 
-### Setting a default value
-
-To set the initial value of the pin input, set the `defaultValue` prop.
-
-<Example id="initial-value" />
-
 ### Changing the placeholder
 
 To customize the default pin input placeholder `○` for each input, pass the placeholder prop and set it to your desired
 value.
 
-<Example id="customized" />
+<Example id="custom-placeholder" />
 
 ### Blur on complete
 
 By default, the last input maintains focus when filled, and we invoke the `onValueComplete` callback. To blur the last
 input when the user completes the input, set the prop `blurOnComplete` to `true`.
 
-<Example id="blurred" />
+<Example id="blur-on-complete" />
 
 ### Using OTP mode
 
@@ -52,7 +46,7 @@ pin input component provides support for this automatically when you set the `ot
 When collecting private or sensitive information using the pin input, you might need to mask the value entered, similar
 to `<input type="password"/>`. Pass the `mask` prop to `true`.
 
-<Example id="with-mask" />
+<Example id="mask" />
 
 ### Listening for changes
 

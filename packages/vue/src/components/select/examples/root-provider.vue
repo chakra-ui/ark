@@ -2,7 +2,6 @@
 import { Select, createListCollection, useSelect } from '@ark-ui/vue/select'
 import { ChevronsUpDownIcon, XIcon } from 'lucide-vue-next'
 import styles from 'styles/select.module.css'
-import button from 'styles/button.module.css'
 
 const frameworks = createListCollection({
   items: [
@@ -17,7 +16,7 @@ const select = useSelect({ collection: frameworks })
 </script>
 
 <template>
-  <button :class="button.Root" style="margin-bottom: 1rem" @click="select.focus()">Focus</button>
+  <output>selected: {{ JSON.stringify(select.value) }}</output>
 
   <Select.RootProvider :class="styles.Root" :value="select">
     <Select.Label :class="styles.Label">Framework</Select.Label>

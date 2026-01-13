@@ -19,13 +19,16 @@
   <Select.Control class={styles.Control}>
     <Select.Trigger class={styles.Trigger}>
       <Select.ValueText class={styles.ValueText} placeholder="Select" />
+    </Select.Trigger>
+    <div class={styles.Indicators}>
+      <Select.ClearTrigger class={styles.ClearTrigger}>
+        <XIcon />
+      </Select.ClearTrigger>
+
       <Select.Indicator class={styles.Indicator}>
         <ChevronsUpDownIcon />
       </Select.Indicator>
-    </Select.Trigger>
-    <Select.ClearTrigger class={styles.ClearTrigger}>
-      <XIcon />
-    </Select.ClearTrigger>
+    </div>
   </Select.Control>
   <Portal>
     <Select.Positioner>
