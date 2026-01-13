@@ -7,23 +7,23 @@ import { CodeExamples } from './code-examples'
 const features = [
   {
     icon: Paintbrush,
-    title: 'Zero-Styling Freedom',
-    description: 'Your design system, your rules. Every component starts as a blank canvas ready for your creativity.',
+    title: 'Truly Headless',
+    description: 'No default styles to fight. Bring your own CSS — Panda, Tailwind, CSS-in-JS, or plain stylesheets.',
   },
   {
     icon: Braces,
-    title: 'Truly Composable',
-    description: 'Build complex UIs effortlessly with modular components that work seamlessly together.',
+    title: 'Framework Agnostic',
+    description: 'Write once, use everywhere. The same API works across React, Solid, Vue, and Svelte.',
   },
   {
     icon: Keyboard,
-    title: 'Accessibility-First',
-    description: 'Ship with confidence. Every component is WCAG compliant and thoroughly tested for accessibility.',
+    title: 'Accessible by Default',
+    description: 'WAI-ARIA patterns baked in. Keyboard navigation and screen reader support out of the box.',
   },
   {
     icon: Orbit,
     title: 'State Machine Powered',
-    description: 'Predictable behavior, fewer bugs. State machines ensure rock-solid component interactions.',
+    description: 'Predictable behavior you can rely on. Complex interactions handled with edge cases covered.',
   },
 ]
 
