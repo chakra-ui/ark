@@ -4,9 +4,8 @@ import BasicExample from './examples/basic.vue'
 import ControlledExample from './examples/controlled.vue'
 import DisabledTabExample from './examples/disabled-tab.vue'
 import IndicatorExample from './examples/indicator.vue'
-import InitialTabExample from './examples/initial-tab.vue'
 import LazyMountExample from './examples/lazy-mount.vue'
-import ManualExample from './examples/manual.vue'
+import ManualActivationExample from './examples/manual-activation.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import VerticalExample from './examples/vertical.vue'
 
@@ -44,13 +43,6 @@ export const Indicator = {
   }),
 }
 
-export const InitialTab = {
-  render: () => ({
-    components: { Component: InitialTabExample },
-    template: '<Component />',
-  }),
-}
-
 export const LazyMount = {
   render: () => ({
     components: { Component: LazyMountExample },
@@ -58,9 +50,9 @@ export const LazyMount = {
   }),
 }
 
-export const Manual = {
+export const ManualActivation = {
   render: () => ({
-    components: { Component: ManualExample },
+    components: { Component: ManualActivationExample },
     template: '<Component />',
   }),
 }

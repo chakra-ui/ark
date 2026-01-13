@@ -1,17 +1,28 @@
 import { Tabs } from '@ark-ui/react/tabs'
+import styles from 'styles/tabs.module.css'
 
 export const LazyMount = () => (
-  <Tabs.Root lazyMount unmountOnExit>
-    <Tabs.List>
-      <Tabs.Trigger value="react">React</Tabs.Trigger>
-      <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
-      <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
-      <Tabs.Trigger value="svelte">Svelte</Tabs.Trigger>
-      <Tabs.Indicator />
+  <Tabs.Root className={styles.Root} lazyMount unmountOnExit defaultValue="account">
+    <Tabs.List className={styles.List}>
+      <Tabs.Trigger className={styles.TriggerIndicator} value="account">
+        Account
+      </Tabs.Trigger>
+      <Tabs.Trigger className={styles.TriggerIndicator} value="password">
+        Password
+      </Tabs.Trigger>
+      <Tabs.Trigger className={styles.TriggerIndicator} value="billing">
+        Billing
+      </Tabs.Trigger>
+      <Tabs.Indicator className={styles.Indicator} />
     </Tabs.List>
-    <Tabs.Content value="react">React Content</Tabs.Content>
-    <Tabs.Content value="vue">Vue Content</Tabs.Content>
-    <Tabs.Content value="solid">Solid Content</Tabs.Content>
-    <Tabs.Content value="svelte">Svelte Content</Tabs.Content>
+    <Tabs.Content className={styles.Content} value="account">
+      Make changes to your account here.
+    </Tabs.Content>
+    <Tabs.Content className={styles.Content} value="password">
+      Change your password here.
+    </Tabs.Content>
+    <Tabs.Content className={styles.Content} value="billing">
+      Manage your billing and payment details.
+    </Tabs.Content>
   </Tabs.Root>
 )

@@ -1,13 +1,13 @@
 import { Tabs } from '@ark-ui/solid/tabs'
 import styles from 'styles/tabs.module.css'
 
-export const DisabledTab = () => (
-  <Tabs.Root class={styles.Root} defaultValue="account">
+export const ManualActivation = () => (
+  <Tabs.Root class={styles.Root} activationMode="manual" defaultValue="account">
     <Tabs.List class={styles.List}>
       <Tabs.Trigger class={styles.Trigger} value="account">
         Account
       </Tabs.Trigger>
-      <Tabs.Trigger class={styles.Trigger} value="password" disabled>
+      <Tabs.Trigger class={styles.Trigger} value="password">
         Password
       </Tabs.Trigger>
       <Tabs.Trigger class={styles.Trigger} value="billing">

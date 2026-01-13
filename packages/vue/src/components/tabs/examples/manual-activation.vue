@@ -4,7 +4,7 @@ import styles from 'styles/tabs.module.css'
 </script>
 
 <template>
-  <Tabs.Root :class="styles.Root" default-value="account">
+  <Tabs.Root :class="styles.Root" activation-mode="manual" default-value="account">
     <Tabs.List :class="styles.List">
       <Tabs.Trigger :class="styles.Trigger" value="account">Account</Tabs.Trigger>
       <Tabs.Trigger :class="styles.Trigger" value="password">Password</Tabs.Trigger>

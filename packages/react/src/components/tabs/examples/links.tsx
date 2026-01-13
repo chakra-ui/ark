@@ -1,19 +1,18 @@
 import { Tabs } from '@ark-ui/react/tabs'
 import styles from 'styles/tabs.module.css'
 
-export const Indicator = () => (
+export const Links = () => (
   <Tabs.Root className={styles.Root} defaultValue="account">
     <Tabs.List className={styles.List}>
-      <Tabs.Trigger className={styles.TriggerIndicator} value="account">
-        Account
+      <Tabs.Trigger className={styles.Trigger} value="account" asChild>
+        <a href="#account">Account</a>
       </Tabs.Trigger>
-      <Tabs.Trigger className={styles.TriggerIndicator} value="password">
-        Password
+      <Tabs.Trigger className={styles.Trigger} value="password" asChild>
+        <a href="#password">Password</a>
       </Tabs.Trigger>
-      <Tabs.Trigger className={styles.TriggerIndicator} value="billing">
-        Billing
+      <Tabs.Trigger className={styles.Trigger} value="billing" asChild>
+        <a href="#billing">Billing</a>
       </Tabs.Trigger>
-      <Tabs.Indicator className={styles.Indicator} />
     </Tabs.List>
     <Tabs.Content className={styles.Content} value="account">
       Make changes to your account here.

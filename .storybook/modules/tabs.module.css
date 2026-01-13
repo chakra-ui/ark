@@ -1,0 +1,141 @@
+.Root {
+  display: flex;
+  max-width: 32rem;
+
+  &[data-orientation='horizontal'] {
+    flex-direction: column;
+  }
+
+  &[data-orientation='vertical'] {
+    flex-direction: row;
+  }
+}
+
+.List {
+  display: inline-flex;
+  position: relative;
+  isolation: isolate;
+  gap: 0.25rem;
+
+  &[data-orientation='horizontal'] {
+    flex-direction: row;
+  }
+
+  &[data-orientation='vertical'] {
+    flex-direction: column;
+  }
+}
+
+.Trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: inherit;
+  background: transparent;
+  border: none;
+  border-radius: 0.375rem;
+  padding-inline: 0.75rem;
+  height: 2rem;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+
+  &:is(a) {
+    color: inherit;
+  }
+
+  &[data-orientation='vertical'] {
+    justify-content: flex-start;
+    width: 100%;
+    padding-block: 0.5rem;
+  }
+
+  &[data-selected] {
+    background: var(--coral-subtle);
+    color: var(--coral-fg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--coral-focus-ring);
+    outline-offset: 2px;
+  }
+
+  &[data-disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(100%);
+  }
+}
+
+.TriggerIndicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: inherit;
+  background: transparent;
+  border: none;
+  border-radius: 0.375rem;
+  padding-inline: 0.75rem;
+  height: 2rem;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+
+  &[data-orientation='vertical'] {
+    justify-content: flex-start;
+    width: 100%;
+    padding-block: 0.5rem;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--coral-focus-ring);
+    outline-offset: 2px;
+  }
+
+  &[data-selected] {
+    color: var(--coral-fg);
+  }
+}
+
+.Indicator {
+  position: absolute;
+  z-index: -1;
+  background: var(--coral-subtle);
+  border-radius: 0.375rem;
+  transition-property: width, height, left, top;
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+
+  &[data-orientation='horizontal'] {
+    height: 2rem;
+    width: var(--width);
+  }
+
+  &[data-orientation='vertical'] {
+    width: calc(100% - 0.5rem);
+    height: var(--height);
+  }
+}
+
+.Content {
+  padding-block: 0.725rem;
+  outline: none;
+  font-size: 0.875rem;
+
+  &[data-orientation='vertical'] {
+    padding-inline-start: 1rem;
+    padding-block: 0;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--coral-focus-ring);
+    outline-offset: -2px;
+    border-radius: 0.25rem;
+  }
+}
