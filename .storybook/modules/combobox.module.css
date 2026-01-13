@@ -79,7 +79,7 @@
   color: var(--neutral-emphasized);
   background: transparent;
   border: 0;
-  cursor: pointer;
+
   pointer-events: auto;
 
   &:hover {
@@ -99,7 +99,7 @@
   color: var(--neutral-emphasized);
   background: transparent;
   border: 0;
-  cursor: pointer;
+
   pointer-events: auto;
 
   &:hover {
@@ -176,7 +176,7 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   border-radius: 0.25rem;
-  cursor: pointer;
+
   user-select: none;
   outline: none;
 

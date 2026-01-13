@@ -33,7 +33,7 @@
   height: 2rem;
   border-radius: 0.375rem;
   user-select: none;
-  cursor: pointer;
+
   color: var(--neutral-fg);
   position: relative;
 

@@ -3,7 +3,6 @@
   align-items: center;
   gap: 0.5rem;
   position: relative;
-  cursor: pointer;
 
   &[data-disabled] {
     opacity: 0.5;
@@ -28,7 +27,7 @@
   padding: 0.125rem;
   background: var(--neutral-muted);
   border-radius: 9999px;
-  cursor: pointer;
+
   transition:
     background-color 0.15s ease,
     box-shadow 0.15s ease;

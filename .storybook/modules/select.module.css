@@ -37,7 +37,7 @@
   border-radius: 0.375rem;
   color: var(--neutral-fg);
   outline: none;
-  cursor: pointer;
+
   user-select: none;
   transition:
     border-color 0.15s ease,
@@ -99,7 +99,7 @@
 
 .ClearTrigger {
   color: var(--neutral-emphasized);
-  cursor: pointer;
+
   border: 0;
   background: transparent;
   transition: color 0.15s ease;
@@ -185,7 +185,7 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   border-radius: 0.25rem;
-  cursor: pointer;
+
   user-select: none;
 
   &[data-highlighted] {

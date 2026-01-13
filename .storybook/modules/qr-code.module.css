@@ -47,7 +47,7 @@
   border-radius: 0.375rem;
   background: var(--neutral-subtle);
   color: var(--neutral-fg);
-  cursor: pointer;
+
   border: none;
   transition:
     background 0.2s,

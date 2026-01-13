@@ -26,7 +26,6 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  cursor: pointer;
 
   &[data-disabled] {
     opacity: 0.5;
@@ -43,7 +42,6 @@
   border: 1px solid var(--border-emphasized);
   border-radius: 9999px;
   background: transparent;
-  cursor: pointer;
 
   &[data-state='checked'] {
     border-color: var(--coral-solid);

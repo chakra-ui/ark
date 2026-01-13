@@ -4,7 +4,6 @@
   vertical-align: top;
   gap: 0.5rem;
   position: relative;
-  cursor: pointer;
 
   &[data-disabled] {
     opacity: 0.5;
@@ -30,7 +29,6 @@
   border-radius: 0.25rem;
   background: transparent;
   color: var(--coral-contrast);
-  cursor: pointer;
 
   &[data-state='checked'],
   &[data-state='indeterminate'] {

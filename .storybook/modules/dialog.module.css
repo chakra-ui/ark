@@ -94,7 +94,7 @@
   border-radius: 4px;
   background: transparent;
   color: var(--neutral-emphasized);
-  cursor: pointer;
+
   transition: background-color 0.15s ease;
 
   & svg {

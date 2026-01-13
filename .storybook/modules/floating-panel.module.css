@@ -9,7 +9,6 @@
   border: 1px solid var(--border);
   background-color: white;
   color: var(--neutral-fg);
-  cursor: pointer;
 
   &:hover {
     background-color: var(--neutral-subtle);
@@ -90,7 +89,6 @@
   border-radius: 0.25rem;
   background-color: white;
   color: var(--neutral-fg);
-  cursor: pointer;
 
   &:hover {
     background-color: var(--neutral-subtle);

@@ -112,7 +112,6 @@
   border: none;
   border-radius: 0.25rem;
   color: inherit;
-  cursor: pointer;
 
   & svg {
     width: 0.875rem;
@@ -152,7 +151,7 @@
   border: none;
   border-radius: 0.25rem;
   color: var(--neutral-emphasized);
-  cursor: pointer;
+
   transition:
     background-color 0.15s ease,
     color 0.15s ease;

@@ -43,7 +43,7 @@
   font-weight: 600;
   line-height: 1.5;
   text-align: start;
-  cursor: pointer;
+
   outline: none;
 
   &:focus-visible {
