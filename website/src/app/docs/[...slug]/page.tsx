@@ -76,6 +76,7 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
 }
 
 const pages = getSidebarGroups().flat()
+const uniquePages = pages.filter((page, index, self) => self.findIndex((p) => p.slug === page.slug) === index)
 
 export const generateStaticParams = () =>
   ['react', 'solid', 'vue'].flatMap((framework) => pages.map((page) => ({ framework, slug: page.slug.split('/') })))
@@ -90,11 +91,11 @@ const getPageBySlug = (slug: string[], framework?: string) => {
 }
 
 const getNextPage = (slug: string[]) => {
-  const index = pages.findIndex((page) => page.slug === slug.join('/'))
-  return pages[index + 1]
+  const index = uniquePages.findIndex((page) => page.slug === slug.join('/'))
+  return uniquePages[index + 1]
 }
 
 const getPrevPage = (slug: string[]) => {
-  const index = pages.findIndex((page) => page.slug === slug.join('/'))
-  return pages[index - 1]
+  const index = uniquePages.findIndex((page) => page.slug === slug.join('/'))
+  return uniquePages[index - 1]
 }
