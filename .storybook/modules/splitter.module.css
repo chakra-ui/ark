@@ -18,7 +18,6 @@
   justify-content: center;
   font-weight: 500;
   color: var(--neutral-fg);
-  background: var(--neutral-subtle);
 }
 
 .ResizeTrigger {
