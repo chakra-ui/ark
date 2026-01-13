@@ -38,7 +38,7 @@ export interface RootProps {
   /**
    * The v-model value of the progress
    */
-  modelValue?: number
+  modelValue?: number | null
   /**
    * The orientation of the element.
    * @default "horizontal"
