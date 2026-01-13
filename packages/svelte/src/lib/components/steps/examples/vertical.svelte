@@ -10,7 +10,7 @@
   ]
 </script>
 
-<Steps.Root class={styles.Root} count={items.length}>
+<Steps.Root class={styles.Root} count={items.length} orientation="vertical">
   <Steps.List class={styles.List}>
     {#each items as item, index}
       <Steps.Item class={styles.Item} {index}>
@@ -25,16 +25,20 @@
 
   {#each items as item, index}
     <Steps.Content class={styles.Content} {index}>
-      {item.title} - {item.description}
+      <div class="vstack">
+        <span>{item.title} - {item.description}</span>
+        <div class={styles.Actions}>
+          <Steps.PrevTrigger class={button.Root}>Back</Steps.PrevTrigger>
+          <Steps.NextTrigger class={button.Root} data-variant="solid">Next</Steps.NextTrigger>
+        </div>
+      </div>
     </Steps.Content>
   {/each}
 
   <Steps.CompletedContent class={styles.CompletedContent}>
-    Steps Complete - Thank you for filling out the form!
+    <div class="vstack">
+      <span>Steps Complete - Thank you for filling out the form!</span>
+      <Steps.PrevTrigger class={button.Root}>Back</Steps.PrevTrigger>
+    </div>
   </Steps.CompletedContent>
-
-  <div class={styles.Actions}>
-    <Steps.PrevTrigger class={button.Root}>Back</Steps.PrevTrigger>
-    <Steps.NextTrigger class={button.Root} data-variant="solid">Next</Steps.NextTrigger>
-  </div>
 </Steps.Root>

@@ -11,7 +11,7 @@ const items = [
 </script>
 
 <template>
-  <Steps.Root :class="styles.Root" :count="items.length">
+  <Steps.Root :class="styles.Root" :count="items.length" orientation="vertical">
     <Steps.List :class="styles.List">
       <Steps.Item v-for="(item, index) in items" :key="index" :class="styles.Item" :index="index">
         <Steps.Trigger :class="styles.Trigger">
@@ -23,16 +23,20 @@ const items = [
     </Steps.List>
 
     <Steps.Content v-for="(item, index) in items" :key="index" :class="styles.Content" :index="index">
-      {{ item.title }} - {{ item.description }}
+      <div class="vstack">
+        <span>{{ item.title }} - {{ item.description }}</span>
+        <div :class="styles.Actions">
+          <Steps.PrevTrigger :class="button.Root">Back</Steps.PrevTrigger>
+          <Steps.NextTrigger :class="button.Root" data-variant="solid">Next</Steps.NextTrigger>
+        </div>
+      </div>
     </Steps.Content>
 
     <Steps.CompletedContent :class="styles.CompletedContent">
-      Steps Complete - Thank you for filling out the form!
+      <div class="vstack">
+        <span>Steps Complete - Thank you for filling out the form!</span>
+        <Steps.PrevTrigger :class="button.Root">Back</Steps.PrevTrigger>
+      </div>
     </Steps.CompletedContent>
-
-    <div :class="styles.Actions">
-      <Steps.PrevTrigger :class="button.Root">Back</Steps.PrevTrigger>
-      <Steps.NextTrigger :class="button.Root" data-variant="solid">Next</Steps.NextTrigger>
-    </div>
   </Steps.Root>
 </template>

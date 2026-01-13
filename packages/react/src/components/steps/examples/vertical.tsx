@@ -8,9 +8,9 @@ const items = [
   { value: 'third', title: 'Third', description: 'Select Rooms' },
 ]
 
-export const Basic = () => {
+export const Vertical = () => {
   return (
-    <Steps.Root className={styles.Root} count={items.length}>
+    <Steps.Root className={styles.Root} count={items.length} orientation="vertical">
       <Steps.List className={styles.List}>
         {items.map((item, index) => (
           <Steps.Item className={styles.Item} key={index} index={index}>
@@ -25,20 +25,26 @@ export const Basic = () => {
 
       {items.map((item, index) => (
         <Steps.Content className={styles.Content} key={index} index={index}>
-          {item.title} - {item.description}
+          <div className="vstack">
+            <span>
+              {item.title} - {item.description}
+            </span>
+            <div className={styles.Actions}>
+              <Steps.PrevTrigger className={button.Root}>Back</Steps.PrevTrigger>
+              <Steps.NextTrigger className={button.Root} data-variant="solid">
+                Next
+              </Steps.NextTrigger>
+            </div>
+          </div>
         </Steps.Content>
       ))}
 
       <Steps.CompletedContent className={styles.CompletedContent}>
-        Steps Complete - Thank you for filling out the form!
+        <div className="vstack">
+          <span>Steps Complete - Thank you for filling out the form!</span>
+          <Steps.PrevTrigger className={button.Root}>Back</Steps.PrevTrigger>
+        </div>
       </Steps.CompletedContent>
-
-      <div className={styles.Actions}>
-        <Steps.PrevTrigger className={button.Root}>Back</Steps.PrevTrigger>
-        <Steps.NextTrigger className={button.Root} data-variant="solid">
-          Next
-        </Steps.NextTrigger>
-      </div>
     </Steps.Root>
   )
 }
