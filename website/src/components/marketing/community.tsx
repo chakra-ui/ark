@@ -11,28 +11,12 @@ const contributors = [
     src: 'https://avatars.githubusercontent.com/u/1846056?v=4',
   },
   {
-    name: 'Tim Kolberger',
-    src: 'https://avatars.githubusercontent.com/u/16899513?v=4',
-  },
-  {
-    name: 'Tyler Pfledderer',
-    src: 'https://avatars.githubusercontent.com/u/65234762?v=4',
-  },
-  {
     name: 'Segun Adebayo',
     src: 'https://avatars.githubusercontent.com/u/6916170?v=4',
   },
   {
     name: 'Abraham',
     src: 'https://avatars.githubusercontent.com/u/30869823?v=4',
-  },
-  {
-    name: 'Jonathan Bakebwa',
-    src: 'https://avatars.githubusercontent.com/u/21237954?v=4',
-  },
-  {
-    name: 'Zakaria Sahmane',
-    src: 'https://avatars.githubusercontent.com/u/10008963?v=4',
   },
   {
     name: 'Esther Adebayo',

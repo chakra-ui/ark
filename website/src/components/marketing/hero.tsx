@@ -22,13 +22,13 @@ export const Hero = () => {
             <Stack gap={{ base: '3', md: '4' }}>
               <Announcement />
               <Heading as="h1" fontWeight="bold" textStyle={{ base: '4xl', md: '6xl' }}>
-                Fully <styled.span color="colorPalette.default">customizable</styled.span> and{' '}
-                <styled.span color="colorPalette.default">accessible</styled.span> UI components
+                <styled.span color="colorPalette.default">Unstyled</styled.span> UI components for your{' '}
+                <styled.span color="colorPalette.default">Design System</styled.span>
               </Heading>
             </Stack>
             <Text textStyle={{ base: 'lg', md: 'xl' }} color="fg.muted">
-              Ark UI is a headless UI library with over 45+ components designed to build reusable, scalable Design
-              Systems that works for a wide range of JS frameworks.
+              A headless library with 45+ accessible components. Bring your own styles and build a design system that
+              works across React, Solid, Vue, and Svelte.
             </Text>
           </Stack>
           <Stack direction={{ base: 'column', sm: 'row' }} gap="3">
