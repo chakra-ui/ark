@@ -1,5 +1,5 @@
 import { writeFileSync } from 'node:fs'
-import { basename, dirname, join, relative } from 'node:path'
+import { basename, join } from 'node:path'
 import { globby } from 'globby'
 
 const rootDir = join(import.meta.dirname, '../..')
@@ -27,14 +27,6 @@ function toImportAlias(componentName: string, exampleName: string): string {
     .join('')
   const example = toExportName(exampleName)
   return `${component}_${example}`
-}
-
-/**
- * Get registry key from component and example
- * e.g., ('menu', 'basic') -> 'menu/basic'
- */
-function toRegistryKey(component: string, example: string): string {
-  return `${component}/${example.replace('.tsx', '')}`
 }
 
 const main = async () => {
