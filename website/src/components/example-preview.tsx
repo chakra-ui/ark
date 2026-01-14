@@ -15,6 +15,17 @@ interface Props {
 const LoadingSpinner = () => <div className="example-spinner" role="status" aria-label="Loading example" />
 
 /**
+ * Hook to check if we're on the client (prevents hydration mismatch)
+ */
+function useIsClient() {
+  const [isClient, setIsClient] = useState(false)
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+  return isClient
+}
+
+/**
  * Wrapper that waits for styles to be applied before showing content.
  * This prevents flash of unstyled content when CSS modules load.
  */
@@ -42,14 +53,18 @@ const StylesReadyWrapper = ({ children }: { children: React.ReactNode }) => {
 
 /**
  * Renders a live preview of an example from the packages.
- * Uses a pre-analyzed webpack context for optimal bundling.
+ * Uses static imports to ensure React context is shared across all examples.
+ * Only renders on client to prevent hydration mismatch from auto-generated IDs.
  */
 export const ExamplePreview = (props: Props) => {
   const { component, example } = props
+  const isClient = useIsClient()
 
   const ExampleComponent = useMemo(() => {
+    // Only load on client to prevent SSR hydration issues
+    if (!isClient) return null
     return loadExample(component, example)
-  }, [component, example])
+  }, [component, example, isClient])
 
   return (
     <Flex
@@ -68,7 +83,9 @@ export const ExamplePreview = (props: Props) => {
               <ExampleComponent />
             </StylesReadyWrapper>
           </Suspense>
-        ) : null}
+        ) : (
+          <LoadingSpinner />
+        )}
       </Flex>
     </Flex>
   )

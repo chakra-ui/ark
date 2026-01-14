@@ -124,7 +124,7 @@
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  z-index: calc(50 + var(--layer-index));
+  z-index: calc(50 + var(--layer-index, 0));
   max-height: min(var(--available-height, 300px), 300px);
   overflow-y: auto;
   outline: none;

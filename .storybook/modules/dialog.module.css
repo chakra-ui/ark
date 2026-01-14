@@ -4,7 +4,7 @@
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.4);
-  z-index: calc(50 + var(--layer-index));
+  z-index: calc(50 + var(--layer-index, 0));
 
   &[data-state='open'] {
     animation: fade-in 0.15s ease-out;
@@ -21,7 +21,11 @@
   justify-content: center;
   position: fixed;
   inset: 0;
-  z-index: calc(50 + var(--layer-index));
+  z-index: calc(50 + var(--layer-index, 0));
+  /* Prevent overscroll bounce on iOS */
+  overscroll-behavior-y: none;
+  /* Reserve space for scrollbar to prevent layout shift */
+  scrollbar-gutter: stable both-edges;
 }
 
 .Content {
@@ -39,9 +43,11 @@
   box-shadow:
     0 10px 38px -10px rgba(14, 18, 22, 0.35),
     0 10px 20px -15px rgba(14, 18, 22, 0.2);
-  z-index: calc(50 + var(--layer-index));
+  z-index: calc(50 + var(--layer-index, 0));
   outline: 0;
   transition: transform 0.1s ease-in-out;
+  /* Offset for scrollbar width when body scroll is locked (prevents visual shift) */
+  translate: calc(-1 * var(--scrollbar-width, 0px) / 2) 0;
 
   &[data-has-nested] {
     transform: scale(calc(1 - var(--nested-layer-count) * 0.05));

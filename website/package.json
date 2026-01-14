@@ -3,7 +3,10 @@
   "private": true,
   "scripts": {
     "prepare": "bun panda codegen",
+    "generate:examples": "bun run --cwd ../scripts src/generate-example-registry.ts",
+    "predev": "bun run generate:examples",
     "dev": "next dev",
+    "prebuild": "bun run generate:examples",
     "build": "next build",
     "start": "next start",
     "setup": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull .env",

@@ -13,6 +13,7 @@
     "document:types": "bun run src/generate-type-docs.ts",
     "document:tags": "bun run src/extend-types-with-tags.ts",
     "vue:props": "bun run src/generate-vue-props.ts",
+    "generate-example-registry": "bun run src/generate-example-registry.ts",
     "play": "bun run src/play.ts",
     "local:sync": "bun run src/symlink.ts",
     "typecheck": "tsc --noEmit"
