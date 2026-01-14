@@ -4,7 +4,7 @@
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.4);
-  z-index: var(--layer-index);
+  z-index: calc(50 + var(--layer-index));
 
   &[data-state='open'] {
     animation: fade-in 0.15s ease-out;
@@ -21,7 +21,7 @@
   justify-content: center;
   position: fixed;
   inset: 0;
-  z-index: var(--layer-index);
+  z-index: calc(50 + var(--layer-index));
 }
 
 .Content {
@@ -39,7 +39,7 @@
   box-shadow:
     0 10px 38px -10px rgba(14, 18, 22, 0.35),
     0 10px 20px -15px rgba(14, 18, 22, 0.2);
-  z-index: var(--layer-index);
+  z-index: calc(50 + var(--layer-index));
   outline: 0;
   transition: transform 0.1s ease-in-out;
 

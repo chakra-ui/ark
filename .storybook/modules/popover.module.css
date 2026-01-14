@@ -29,7 +29,7 @@
   position: relative;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
   transform-origin: var(--transform-origin);
-  z-index: var(--layer-index);
+  z-index: calc(50 + var(--layer-index));
 
   &[data-state='open'] {
     animation: scale-fade-in 0.15s ease-in-out;
