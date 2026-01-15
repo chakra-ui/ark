@@ -1,13 +1,15 @@
-<script lang="ts">
-  import { Field } from '@ark-ui/svelte/field'
-  import { NumberInput } from '@ark-ui/svelte/number-input'
-  import { ChevronDownIcon, ChevronUpIcon } from 'lucide-svelte'
-  import field from 'styles/field.module.css'
-  import styles from 'styles/number-input.module.css'
-</script>
+import { NumberInput } from '@ark-ui/solid/number-input'
+import { ChevronDownIcon, ChevronUpIcon } from 'lucide-solid'
+import styles from 'styles/number-input.module.css'
 
-<Field.Root class={field.Root}>
-  <NumberInput.Root class={styles.Root}>
+export const Formatting = () => (
+  <NumberInput.Root
+    class={styles.Root}
+    formatOptions={{
+      style: 'currency',
+      currency: 'USD',
+    }}
+  >
     <NumberInput.Label class={styles.Label}>Label</NumberInput.Label>
     <NumberInput.Control class={styles.Control}>
       <NumberInput.Input class={styles.Input} />
@@ -21,6 +23,4 @@
       </div>
     </NumberInput.Control>
   </NumberInput.Root>
-  <Field.HelperText class={field.HelperText}>Additional Info</Field.HelperText>
-  <Field.ErrorText class={field.ErrorText}>Error Info</Field.ErrorText>
-</Field.Root>
+)

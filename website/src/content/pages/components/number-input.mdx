@@ -26,6 +26,9 @@ Pass the `min` prop or `max` prop to set an upper and lower limit for the input.
 value to stay within the specified range.
 
 <Example id="min-max" />
+
+> To allow values outside the min/max range, set `clampValueOnBlur` to `false`.
+
 ### Adjusting the precision of the value
 
 In some cases, you might need the value to be rounded to specific decimal points. Set the `formatOptions` and provide
@@ -48,27 +51,12 @@ The NumberInput exposes a way to increment/decrement the value using the mouse w
 
 <Example id="mouse-wheel" />
 
-### Clamp value when user blurs the input
-
-In most cases, users can type custom values in the input field. If the typed value is greater than the max, the value is
-reset to max when the user blur out of the input.
-
-To disable this behavior, pass `clampValueOnBlur` and set to `false`.
-
-<Example id="no-clamp" />
-
-### Usage within forms
-
-To use the number input within forms, set the `name` prop.
-
-<Example id="form-usage" />
-
 ### Format and parse value
 
 To apply custom formatting to the input's value, set the `formatOptions` and provide `Intl.NumberFormatOptions` such as
 `style` and `currency`.
 
-<Example id="formatted" />
+<Example id="formatting" />
 
 ### Using the Field Component
 

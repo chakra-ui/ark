@@ -23,7 +23,7 @@
   --border-emphasized: #d2d2cf;
 
   /* Error semantic tokens */
-  --error: #dc2626;
+  --error: #ff4444;
 
   /* Popover */
   --bg-popover: white;
@@ -55,7 +55,7 @@
   --border-emphasized: #4a4a47;
 
   /* Error dark mode */
-  --error: #f87171;
+  --error: #ff4444;
 
   /* Popover dark mode */
   --bg-popover: #1a1a19;

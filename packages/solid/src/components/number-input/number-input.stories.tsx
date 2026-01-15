@@ -7,14 +7,12 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
+export { Context } from './examples/context'
 export { Controlled } from './examples/controlled'
-export { FormUsage } from './examples/form-usage'
-export { Formatted } from './examples/formatted'
+export { Formatting } from './examples/formatting'
 export { FractionDigits } from './examples/fraction-digits'
 export { MinMax } from './examples/min-max'
 export { MouseWheel } from './examples/mouse-wheel'
-export { NoClamp } from './examples/no-clamp'
-export { RenderFn } from './examples/render-fn'
 export { RootProvider } from './examples/root-provider'
 export { Scrubber } from './examples/scrubber'
 export { WithField } from './examples/with-field'

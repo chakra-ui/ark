@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import { NumberInput } from '@ark-ui/vue/number-input'
-import { ArrowLeftRightIcon, ChevronDownIcon, ChevronUpIcon } from 'lucide-vue-next'
+import { ChevronDownIcon, ChevronUpIcon } from 'lucide-vue-next'
 import styles from 'styles/number-input.module.css'
 </script>
 
 <template>
-  <NumberInput.Root :class="styles.Root" defaultValue="32">
-    <NumberInput.Label :class="styles.Label">Label</NumberInput.Label>
+  <NumberInput.Root :class="styles.Root">
+    <NumberInput.Context v-slot="context">
+      <NumberInput.Label :class="styles.Label">Value: {{ context.valueAsNumber }}</NumberInput.Label>
+    </NumberInput.Context>
     <NumberInput.Control :class="styles.Control">
-      <NumberInput.Scrubber :class="styles.Scrubber">
-        <ArrowLeftRightIcon />
-      </NumberInput.Scrubber>
-      <NumberInput.Input :class="styles.Input" data-has-scrubber />
+      <NumberInput.Input :class="styles.Input" />
       <div :class="styles.TriggerGroup">
         <NumberInput.IncrementTrigger :class="styles.IncrementTrigger">
           <ChevronUpIcon />

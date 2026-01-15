@@ -1,20 +1,26 @@
 import { NumberInput, useNumberInput } from '@ark-ui/react/number-input'
+import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
+import styles from 'styles/number-input.module.css'
 
 export const RootProvider = () => {
   const numberInput = useNumberInput()
-
   return (
-    <>
-      <button onClick={() => numberInput.focus()}>Focus</button>
-
-      <NumberInput.RootProvider value={numberInput}>
-        <NumberInput.Label>Label</NumberInput.Label>
-        <NumberInput.Input />
-        <NumberInput.Control>
-          <NumberInput.DecrementTrigger>-1</NumberInput.DecrementTrigger>
-          <NumberInput.IncrementTrigger>+1</NumberInput.IncrementTrigger>
+    <div className="stack">
+      <output>valueAsNumber: {numberInput.valueAsNumber}</output>
+      <NumberInput.RootProvider className={styles.Root} value={numberInput}>
+        <NumberInput.Label className={styles.Label}>Label</NumberInput.Label>
+        <NumberInput.Control className={styles.Control}>
+          <NumberInput.Input className={styles.Input} />
+          <div className={styles.TriggerGroup}>
+            <NumberInput.IncrementTrigger className={styles.IncrementTrigger}>
+              <ChevronUpIcon />
+            </NumberInput.IncrementTrigger>
+            <NumberInput.DecrementTrigger className={styles.DecrementTrigger}>
+              <ChevronDownIcon />
+            </NumberInput.DecrementTrigger>
+          </div>
         </NumberInput.Control>
       </NumberInput.RootProvider>
-    </>
+    </div>
   )
 }

@@ -1,8 +1,7 @@
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { WithField } from '../examples/with-field'
-import { ComponentUnderTest } from './basic'
+import { ComponentUnderTest, NumberInputWithField } from './basic'
 
 describe('NumberInput', () => {
   it('should have no a11y violations', async () => {
@@ -99,38 +98,38 @@ describe('NumberInput', () => {
 
 describe('NumberInput / Field', () => {
   it('should set input as required', async () => {
-    render(<WithField required />)
+    render(<NumberInputWithField required />)
     expect(screen.getByRole('spinbutton', { name: /label/i })).toBeRequired()
   })
 
   it('should set input as disabled', async () => {
-    render(<WithField disabled />)
+    render(<NumberInputWithField disabled />)
     expect(screen.getByRole('spinbutton', { name: /label/i })).toBeDisabled()
   })
 
   it('should set input as readonly', async () => {
-    render(<WithField readOnly />)
+    render(<NumberInputWithField readOnly />)
     expect(screen.getByRole('spinbutton', { name: /label/i })).toHaveAttribute('readonly')
   })
 
   it('should display helper text', async () => {
-    render(<WithField />)
+    render(<NumberInputWithField />)
     expect(screen.getByText('Additional Info')).toBeInTheDocument()
   })
 
   it('should display error text when error is present', async () => {
-    render(<WithField invalid />)
+    render(<NumberInputWithField invalid />)
     expect(screen.getByText('Error Info')).toBeInTheDocument()
   })
 
   it('should focus on input when label is clicked', async () => {
-    render(<WithField />)
+    render(<NumberInputWithField />)
     await user.click(screen.getByText(/label/i))
     expect(screen.getByRole('spinbutton', { name: /label/i })).toHaveFocus()
   })
 
   it('should not display error text when no error is present', async () => {
-    render(<WithField />)
+    render(<NumberInputWithField />)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })
