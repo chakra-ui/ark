@@ -6,6 +6,7 @@
   interface TreeNode {
     id: string
     name: string
+    disabled?: boolean
     children?: TreeNode[]
   }
 
@@ -37,19 +38,19 @@
           name: 'src',
           children: [
             { id: 'src/app.tsx', name: 'app.tsx' },
-            { id: 'src/index.ts', name: 'index.ts' },
+            { id: 'src/index.ts', name: 'index.ts', disabled: true },
           ],
         },
         { id: 'panda.config', name: 'panda.config.ts' },
         { id: 'package.json', name: 'package.json' },
-        { id: 'renovate.json', name: 'renovate.json' },
+        { id: 'renovate.json', name: 'renovate.json', disabled: true },
         { id: 'readme.md', name: 'README.md' },
       ],
     },
   })
 </script>
 
-<TreeView.Root class={styles.Root} {collection} lazyMount unmountOnExit>
+<TreeView.Root class={styles.Root} {collection}>
   <TreeView.Label class={styles.Label}>Tree</TreeView.Label>
   <TreeView.Tree class={styles.Tree}>
     {#each collection.rootNode.children ?? [] as node, index (node.id)}

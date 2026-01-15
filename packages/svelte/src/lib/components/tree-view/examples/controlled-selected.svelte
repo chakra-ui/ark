@@ -1,14 +1,15 @@
 <script lang="ts">
-  import { TreeView, createTreeCollection } from '@ark-ui/svelte/tree-view'
-  import { SquareCheckBigIcon, ChevronRightIcon, FileIcon, FolderIcon } from 'lucide-svelte'
+  import { TreeView, createTreeCollection } from '$lib'
+  import { ChevronRightIcon, FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-svelte'
+  import styles from 'styles/tree-view.module.css'
 
-  interface Node {
+  interface TreeNode {
     id: string
     name: string
-    children?: Node[]
+    children?: TreeNode[]
   }
 
-  const collection = createTreeCollection<Node>({
+  const collection = createTreeCollection<TreeNode>({
     nodeToValue: (node) => node.id,
     nodeToString: (node) => node.name,
     rootNode: {
@@ -41,45 +42,50 @@
 
 <pre>Selected: {JSON.stringify(selectedValue)}</pre>
 
-<TreeView.Root {collection} bind:selectedValue>
-  <TreeView.Label>Tree</TreeView.Label>
-  <TreeView.Tree>
+<TreeView.Root class={styles.Root} {collection} bind:selectedValue>
+  <TreeView.Label class={styles.Label}>Tree</TreeView.Label>
+  <TreeView.Tree class={styles.Tree}>
     {#each collection.rootNode.children ?? [] as node, index (node.id)}
       {@render renderNode(node, [index])}
     {/each}
   </TreeView.Tree>
 </TreeView.Root>
 
-{#snippet renderNode(node: Node, indexPath: number[])}
+{#snippet renderNode(node: TreeNode, indexPath: number[])}
   <TreeView.NodeProvider {node} {indexPath}>
-    {#if node.children}
-      <TreeView.Branch>
-        <TreeView.BranchControl>
-          <TreeView.BranchText>
-            <FolderIcon />
-            {node.name}
-          </TreeView.BranchText>
-          <TreeView.BranchIndicator>
-            <ChevronRightIcon />
-          </TreeView.BranchIndicator>
-        </TreeView.BranchControl>
-        <TreeView.BranchContent>
-          <TreeView.BranchIndentGuide />
-          {#each node.children as child, index (child.id)}
-            {@render renderNode(child, [...indexPath, index])}
-          {/each}
-        </TreeView.BranchContent>
-      </TreeView.Branch>
-    {:else}
-      <TreeView.Item>
-        <TreeView.ItemIndicator>
-          <SquareCheckBigIcon />
-        </TreeView.ItemIndicator>
-        <TreeView.ItemText>
-          <FileIcon />
-          {node.name}
-        </TreeView.ItemText>
-      </TreeView.Item>
-    {/if}
+    <TreeView.NodeContext>
+      {#snippet render(nodeState)}
+        {#if node.children}
+          <TreeView.Branch class={styles.Branch}>
+            <TreeView.BranchControl class={styles.BranchControl}>
+              <TreeView.BranchIndicator class={styles.BranchIndicator}>
+                <ChevronRightIcon />
+              </TreeView.BranchIndicator>
+              <TreeView.BranchText class={styles.BranchText}>
+                {#if nodeState().expanded}
+                  <FolderOpenIcon />
+                {:else}
+                  <FolderIcon />
+                {/if}
+                {node.name}
+              </TreeView.BranchText>
+            </TreeView.BranchControl>
+            <TreeView.BranchContent class={styles.BranchContent}>
+              <TreeView.BranchIndentGuide class={styles.BranchIndentGuide} />
+              {#each node.children as child, index (child.id)}
+                {@render renderNode(child, [...indexPath, index])}
+              {/each}
+            </TreeView.BranchContent>
+          </TreeView.Branch>
+        {:else}
+          <TreeView.Item class={styles.Item}>
+            <TreeView.ItemText class={styles.ItemText}>
+              <FileIcon />
+              {node.name}
+            </TreeView.ItemText>
+          </TreeView.Item>
+        {/if}
+      {/snippet}
+    </TreeView.NodeContext>
   </TreeView.NodeProvider>
 {/snippet}

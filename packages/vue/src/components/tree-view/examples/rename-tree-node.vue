@@ -26,15 +26,20 @@ defineProps<Props>()
             <TreeView.BranchIndicator :class="styles.BranchIndicator">
               <ChevronRight />
             </TreeView.BranchIndicator>
-            <TreeView.BranchText :class="styles.BranchText">
-              <FolderOpen v-if="nodeState.expanded" />
-              <Folder v-else />
-              {{ node.name }}
-            </TreeView.BranchText>
+            <template v-if="nodeState.renaming">
+              <TreeView.NodeRenameInput :class="styles.NodeRenameInput" />
+            </template>
+            <template v-else>
+              <TreeView.BranchText :class="styles.BranchText">
+                <FolderOpen v-if="nodeState.expanded" />
+                <Folder v-else />
+                {{ node.name }}
+              </TreeView.BranchText>
+            </template>
           </TreeView.BranchControl>
           <TreeView.BranchContent :class="styles.BranchContent">
             <TreeView.BranchIndentGuide :class="styles.BranchIndentGuide" />
-            <TreeNode
+            <RenameTreeNode
               v-for="(child, index) in node.children"
               :key="child.id"
               :node="child"
@@ -45,12 +50,22 @@ defineProps<Props>()
       </template>
       <template v-else>
         <TreeView.Item :class="styles.Item">
-          <TreeView.ItemText :class="styles.ItemText">
-            <File />
-            {{ node.name }}
-          </TreeView.ItemText>
+          <File />
+          <template v-if="nodeState.renaming">
+            <TreeView.NodeRenameInput :class="styles.NodeRenameInput" />
+          </template>
+          <template v-else>
+            <TreeView.ItemText :class="styles.ItemText">{{ node.name }}</TreeView.ItemText>
+          </template>
         </TreeView.Item>
       </template>
     </TreeView.NodeContext>
   </TreeView.NodeProvider>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+export default defineComponent({
+  name: 'RenameTreeNode',
+})
+</script>

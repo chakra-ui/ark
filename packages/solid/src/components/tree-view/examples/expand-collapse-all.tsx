@@ -1,18 +1,40 @@
-import { TreeView, createTreeCollection, useTreeView } from '@ark-ui/solid/tree-view'
+import { TreeView, createTreeCollection, useTreeViewContext } from '@ark-ui/solid/tree-view'
 import { ChevronRightIcon, FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-solid'
-import { For } from 'solid-js'
+import { For, Show, createMemo } from 'solid-js'
+import button from 'styles/button.module.css'
 import styles from 'styles/tree-view.module.css'
 
-export const RootProvider = () => {
-  const treeView = useTreeView({ collection })
+const ExpandCollapseButtons = () => {
+  const tree = useTreeViewContext()
+  const branchValues = createMemo(() => tree().collection.getBranchValues())
+  const isAllExpanded = createMemo(() => branchValues().every((value) => tree().expandedValue.includes(value)))
 
   return (
-    <TreeView.RootProvider class={styles.Root} value={treeView}>
-      <TreeView.Label class={styles.Label}>Tree</TreeView.Label>
+    <div class="hstack">
+      <Show
+        when={isAllExpanded()}
+        fallback={
+          <button class={button.Root} onClick={() => tree().expand()}>
+            Expand all
+          </button>
+        }
+      >
+        <button class={button.Root} onClick={() => tree().collapse()}>
+          Collapse all
+        </button>
+      </Show>
+    </div>
+  )
+}
+
+export const ExpandCollapseAll = () => {
+  return (
+    <TreeView.Root class={styles.Root} collection={collection} data-animate="false">
+      <ExpandCollapseButtons />
       <TreeView.Tree class={styles.Tree}>
         <For each={collection.rootNode.children}>{(node, index) => <TreeNode node={node} indexPath={[index()]} />}</For>
       </TreeView.Tree>
-    </TreeView.RootProvider>
+    </TreeView.Root>
   )
 }
 
@@ -20,15 +42,27 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
   return (
     <TreeView.NodeProvider node={props.node} indexPath={props.indexPath}>
       <TreeView.NodeContext>
-        {(nodeState) =>
-          props.node.children ? (
+        {(nodeState) => (
+          <Show
+            when={props.node.children}
+            fallback={
+              <TreeView.Item class={styles.Item}>
+                <TreeView.ItemText class={styles.ItemText}>
+                  <FileIcon />
+                  {props.node.name}
+                </TreeView.ItemText>
+              </TreeView.Item>
+            }
+          >
             <TreeView.Branch class={styles.Branch}>
               <TreeView.BranchControl class={styles.BranchControl}>
                 <TreeView.BranchIndicator class={styles.BranchIndicator}>
                   <ChevronRightIcon />
                 </TreeView.BranchIndicator>
                 <TreeView.BranchText class={styles.BranchText}>
-                  {nodeState().expanded ? <FolderOpenIcon /> : <FolderIcon />}
+                  <Show when={nodeState().expanded} fallback={<FolderIcon />}>
+                    <FolderOpenIcon />
+                  </Show>
                   {props.node.name}
                 </TreeView.BranchText>
               </TreeView.BranchControl>
@@ -39,15 +73,8 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
                 </For>
               </TreeView.BranchContent>
             </TreeView.Branch>
-          ) : (
-            <TreeView.Item class={styles.Item}>
-              <TreeView.ItemText class={styles.ItemText}>
-                <FileIcon />
-                {props.node.name}
-              </TreeView.ItemText>
-            </TreeView.Item>
-          )
-        }
+          </Show>
+        )}
       </TreeView.NodeContext>
     </TreeView.NodeProvider>
   )

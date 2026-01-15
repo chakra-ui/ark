@@ -3,14 +3,14 @@ import { TreeView } from '@ark-ui/vue/tree-view'
 import { ChevronRight, File, Folder, FolderOpen } from 'lucide-vue-next'
 import styles from 'styles/tree-view.module.css'
 
-interface Node {
+interface TreeNode {
   id: string
   name: string
-  children?: Node[]
+  children?: TreeNode[]
 }
 
 interface Props {
-  node: Node
+  node: TreeNode
   indexPath: number[]
 }
 
@@ -34,7 +34,7 @@ defineProps<Props>()
           </TreeView.BranchControl>
           <TreeView.BranchContent :class="styles.BranchContent">
             <TreeView.BranchIndentGuide :class="styles.BranchIndentGuide" />
-            <TreeNode
+            <ExpandCollapseTreeNode
               v-for="(child, index) in node.children"
               :key="child.id"
               :node="child"
@@ -54,3 +54,9 @@ defineProps<Props>()
     </TreeView.NodeContext>
   </TreeView.NodeProvider>
 </template>
+
+<script lang="ts">
+import ExpandCollapseTreeNode from './expand-collapse-tree-node.vue'
+
+export default { name: 'ExpandCollapseTreeNode' }
+</script>

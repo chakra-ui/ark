@@ -1,18 +1,16 @@
-import { TreeView, createTreeCollection, useTreeView } from '@ark-ui/solid/tree-view'
+import { TreeView, createTreeCollection } from '@ark-ui/solid/tree-view'
 import { ChevronRightIcon, FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-solid'
-import { For } from 'solid-js'
+import { For, Show } from 'solid-js'
 import styles from 'styles/tree-view.module.css'
 
-export const RootProvider = () => {
-  const treeView = useTreeView({ collection })
-
+export const DisabledNode = () => {
   return (
-    <TreeView.RootProvider class={styles.Root} value={treeView}>
+    <TreeView.Root class={styles.Root} collection={collection}>
       <TreeView.Label class={styles.Label}>Tree</TreeView.Label>
       <TreeView.Tree class={styles.Tree}>
         <For each={collection.rootNode.children}>{(node, index) => <TreeNode node={node} indexPath={[index()]} />}</For>
       </TreeView.Tree>
-    </TreeView.RootProvider>
+    </TreeView.Root>
   )
 }
 
@@ -20,15 +18,27 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
   return (
     <TreeView.NodeProvider node={props.node} indexPath={props.indexPath}>
       <TreeView.NodeContext>
-        {(nodeState) =>
-          props.node.children ? (
+        {(nodeState) => (
+          <Show
+            when={props.node.children}
+            fallback={
+              <TreeView.Item class={styles.Item}>
+                <TreeView.ItemText class={styles.ItemText}>
+                  <FileIcon />
+                  {props.node.name}
+                </TreeView.ItemText>
+              </TreeView.Item>
+            }
+          >
             <TreeView.Branch class={styles.Branch}>
               <TreeView.BranchControl class={styles.BranchControl}>
                 <TreeView.BranchIndicator class={styles.BranchIndicator}>
                   <ChevronRightIcon />
                 </TreeView.BranchIndicator>
                 <TreeView.BranchText class={styles.BranchText}>
-                  {nodeState().expanded ? <FolderOpenIcon /> : <FolderIcon />}
+                  <Show when={nodeState().expanded} fallback={<FolderIcon />}>
+                    <FolderOpenIcon />
+                  </Show>
                   {props.node.name}
                 </TreeView.BranchText>
               </TreeView.BranchControl>
@@ -39,15 +49,8 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
                 </For>
               </TreeView.BranchContent>
             </TreeView.Branch>
-          ) : (
-            <TreeView.Item class={styles.Item}>
-              <TreeView.ItemText class={styles.ItemText}>
-                <FileIcon />
-                {props.node.name}
-              </TreeView.ItemText>
-            </TreeView.Item>
-          )
-        }
+          </Show>
+        )}
       </TreeView.NodeContext>
     </TreeView.NodeProvider>
   )
@@ -56,6 +59,7 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
 interface Node {
   id: string
   name: string
+  disabled?: boolean
   children?: Node[]
 }
 
@@ -87,12 +91,12 @@ const collection = createTreeCollection<Node>({
         name: 'src',
         children: [
           { id: 'src/app.tsx', name: 'app.tsx' },
-          { id: 'src/index.ts', name: 'index.ts' },
+          { id: 'src/index.ts', name: 'index.ts', disabled: true },
         ],
       },
       { id: 'panda.config', name: 'panda.config.ts' },
       { id: 'package.json', name: 'package.json' },
-      { id: 'renovate.json', name: 'renovate.json' },
+      { id: 'renovate.json', name: 'renovate.json', disabled: true },
       { id: 'readme.md', name: 'README.md' },
     ],
   },

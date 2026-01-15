@@ -1,18 +1,36 @@
-import { TreeView, createTreeCollection } from '@ark-ui/react/tree-view'
+import { TreeView, createTreeCollection, useTreeViewContext } from '@ark-ui/react/tree-view'
 import { ChevronRightIcon, FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-react'
-import { useState } from 'react'
+import { useMemo } from 'react'
+import button from 'styles/button.module.css'
 import styles from 'styles/tree-view.module.css'
 
-export const ControlledExpanded = () => {
-  const [expandedValue, setExpandedValue] = useState<string[]>(['node_modules'])
+const ExpandCollapseButtons = () => {
+  const tree = useTreeViewContext()
+  const branchValues = useMemo(() => tree.collection.getBranchValues(), [tree.collection])
+  const isAllExpanded = useMemo(
+    () => branchValues.every((value) => tree.expandedValue.includes(value)),
+    [tree.expandedValue, branchValues],
+  )
+
   return (
-    <TreeView.Root
-      className={styles.Root}
-      collection={collection}
-      expandedValue={expandedValue}
-      onExpandedChange={({ expandedValue }) => setExpandedValue(expandedValue)}
-    >
-      <TreeView.Label className={styles.Label}>Tree</TreeView.Label>
+    <div className="hstack">
+      {isAllExpanded ? (
+        <button className={button.Root} onClick={() => tree.collapse()}>
+          Collapse all
+        </button>
+      ) : (
+        <button className={button.Root} onClick={() => tree.expand()}>
+          Expand all
+        </button>
+      )}
+    </div>
+  )
+}
+
+export const ExpandCollapseAll = () => {
+  return (
+    <TreeView.Root className={styles.Root} collection={collection} data-animate="false">
+      <ExpandCollapseButtons />
       <TreeView.Tree className={styles.Tree}>
         {collection.rootNode.children?.map((node, index) => (
           <TreeNode key={node.id} node={node} indexPath={[index]} />

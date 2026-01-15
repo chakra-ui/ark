@@ -1,7 +1,9 @@
 import { useFilter } from '@ark-ui/react/locale'
 import { TreeView, createTreeCollection, useTreeViewContext } from '@ark-ui/react/tree-view'
-import { SquareCheckBigIcon, ChevronRightIcon, FileIcon, FolderIcon } from 'lucide-react'
+import { ChevronRightIcon, FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-react'
 import { useState } from 'react'
+import styles from 'styles/tree-view.module.css'
+import fieldStyles from 'styles/field.module.css'
 
 export const Filtering = () => {
   const { contains } = useFilter({ sensitivity: 'base' })
@@ -14,10 +16,10 @@ export const Filtering = () => {
   }
 
   return (
-    <div>
-      <input placeholder="Search" onChange={(e) => filter(e.target.value)} />
-      <TreeView.Root collection={collection}>
-        <TreeView.Tree>
+    <div className="stack" style={{ maxWidth: '20rem' }}>
+      <input className={fieldStyles.Input} placeholder="Search" onChange={(e) => filter(e.target.value)} />
+      <TreeView.Root className={styles.Root} collection={collection}>
+        <TreeView.Tree className={styles.Tree}>
           {collection.rootNode.children?.map((node, index) => (
             <TreeNode key={node.id} node={node} indexPath={[index]} />
           ))}
@@ -34,28 +36,25 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
   return (
     <TreeView.NodeProvider key={node.id} node={node} indexPath={indexPath}>
       {nodeState.isBranch ? (
-        <TreeView.Branch>
-          <TreeView.BranchControl>
-            <TreeView.BranchText>
-              <FolderIcon /> {node.name}
-            </TreeView.BranchText>
-            <TreeView.BranchIndicator>
+        <TreeView.Branch className={styles.Branch}>
+          <TreeView.BranchControl className={styles.BranchControl}>
+            <TreeView.BranchIndicator className={styles.BranchIndicator}>
               <ChevronRightIcon />
             </TreeView.BranchIndicator>
+            <TreeView.BranchText className={styles.BranchText}>
+              {nodeState.expanded ? <FolderOpenIcon /> : <FolderIcon />} {node.name}
+            </TreeView.BranchText>
           </TreeView.BranchControl>
-          <TreeView.BranchContent>
-            <TreeView.BranchIndentGuide />
+          <TreeView.BranchContent className={styles.BranchContent}>
+            <TreeView.BranchIndentGuide className={styles.BranchIndentGuide} />
             {node.children?.map((child, index) => (
               <TreeNode key={child.id} node={child} indexPath={[...indexPath, index]} />
             ))}
           </TreeView.BranchContent>
         </TreeView.Branch>
       ) : (
-        <TreeView.Item>
-          <TreeView.ItemIndicator>
-            <SquareCheckBigIcon />
-          </TreeView.ItemIndicator>
-          <TreeView.ItemText>
+        <TreeView.Item className={styles.Item}>
+          <TreeView.ItemText className={styles.ItemText}>
             <FileIcon />
             {node.name}
           </TreeView.ItemText>

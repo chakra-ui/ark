@@ -1,14 +1,15 @@
 <script lang="ts">
-  import { TreeView, createTreeCollection } from '../index.js'
+  import { TreeView, createTreeCollection } from '$lib'
   import { SquareCheckBigIcon, ChevronRightIcon, SquareMinusIcon, SquareIcon } from 'lucide-svelte'
+  import styles from 'styles/tree-view.module.css'
 
-  interface Node {
+  interface TreeNode {
     id: string
     name: string
-    children?: Node[] | undefined
+    children?: TreeNode[]
   }
 
-  const collection = createTreeCollection<Node>({
+  const collection = createTreeCollection<TreeNode>({
     nodeToValue: (node) => node.id,
     nodeToString: (node) => node.name,
     rootNode: {
@@ -48,17 +49,17 @@
   })
 </script>
 
-<TreeView.Root {collection} defaultCheckedValue={[]}>
-  <TreeView.Label>Tree</TreeView.Label>
-  <TreeView.Tree>
+<TreeView.Root class={styles.Root} {collection} defaultCheckedValue={[]}>
+  <TreeView.Label class={styles.Label}>Tree</TreeView.Label>
+  <TreeView.Tree class={styles.Tree}>
     {#each collection.rootNode.children ?? [] as node, index (node.id)}
-      {@render TreeNode({ node, indexPath: [index] })}
+      {@render renderNode(node, [index])}
     {/each}
   </TreeView.Tree>
 </TreeView.Root>
 
-{#snippet TreeNodeCheckbox()}
-  <TreeView.NodeCheckbox>
+{#snippet treeNodeCheckbox()}
+  <TreeView.NodeCheckbox class={styles.NodeCheckbox}>
     <TreeView.NodeCheckboxIndicator>
       {#snippet indeterminate()}
         <SquareMinusIcon />
@@ -71,28 +72,28 @@
   </TreeView.NodeCheckbox>
 {/snippet}
 
-{#snippet TreeNode({ node, indexPath }: TreeView.NodeProviderProps<Node>)}
+{#snippet renderNode(node: TreeNode, indexPath: number[])}
   <TreeView.NodeProvider {node} {indexPath}>
     {#if node.children}
-      <TreeView.Branch>
-        <TreeView.BranchControl>
-          {@render TreeNodeCheckbox()}
-          <TreeView.BranchText>{node.name}</TreeView.BranchText>
-          <TreeView.BranchIndicator>
+      <TreeView.Branch class={styles.Branch}>
+        <TreeView.BranchControl class={styles.BranchControl}>
+          {@render treeNodeCheckbox()}
+          <TreeView.BranchText class={styles.BranchText}>{node.name}</TreeView.BranchText>
+          <TreeView.BranchIndicator class={styles.BranchIndicator}>
             <ChevronRightIcon />
           </TreeView.BranchIndicator>
         </TreeView.BranchControl>
-        <TreeView.BranchContent>
-          <TreeView.BranchIndentGuide />
+        <TreeView.BranchContent class={styles.BranchContent}>
+          <TreeView.BranchIndentGuide class={styles.BranchIndentGuide} />
           {#each node.children as child, index (child.id)}
-            {@render TreeNode({ node: child, indexPath: [...indexPath, index] })}
+            {@render renderNode(child, [...indexPath, index])}
           {/each}
         </TreeView.BranchContent>
       </TreeView.Branch>
     {:else}
-      <TreeView.Item>
-        {@render TreeNodeCheckbox()}
-        <TreeView.ItemText>{node.name}</TreeView.ItemText>
+      <TreeView.Item class={styles.Item}>
+        {@render treeNodeCheckbox()}
+        <TreeView.ItemText class={styles.ItemText}>{node.name}</TreeView.ItemText>
       </TreeView.Item>
     {/if}
   </TreeView.NodeProvider>

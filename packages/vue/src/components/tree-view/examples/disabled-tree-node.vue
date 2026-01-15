@@ -6,6 +6,7 @@ import styles from 'styles/tree-view.module.css'
 interface Node {
   id: string
   name: string
+  disabled?: boolean
   children?: Node[]
 }
 
@@ -34,7 +35,7 @@ defineProps<Props>()
           </TreeView.BranchControl>
           <TreeView.BranchContent :class="styles.BranchContent">
             <TreeView.BranchIndentGuide :class="styles.BranchIndentGuide" />
-            <TreeNode
+            <DisabledTreeNode
               v-for="(child, index) in node.children"
               :key="child.id"
               :node="child"
@@ -54,3 +55,10 @@ defineProps<Props>()
     </TreeView.NodeContext>
   </TreeView.NodeProvider>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+export default defineComponent({
+  name: 'DisabledTreeNode',
+})
+</script>

@@ -1,15 +1,19 @@
 <script setup lang="ts">
-import { TreeView, createTreeCollection, useTreeView } from '@ark-ui/vue/tree-view'
-import TreeNode from './tree-node.vue'
+import { TreeView, createTreeCollection } from '@ark-ui/vue/tree-view'
+import { useId } from 'vue'
+import ContextMenuTreeNode from './context-menu-tree-node.vue'
 import styles from 'styles/tree-view.module.css'
 
-interface Node {
+interface TreeNode {
   id: string
   name: string
-  children?: Node[]
+  children?: TreeNode[]
 }
 
-const collection = createTreeCollection<Node>({
+const uid = useId()
+const getNodeId = (node: string) => `${uid}/${node}`
+
+const collection = createTreeCollection<TreeNode>({
   nodeToValue: (node) => node.id,
   nodeToString: (node) => node.name,
   rootNode: {
@@ -47,22 +51,19 @@ const collection = createTreeCollection<Node>({
     ],
   },
 })
-
-const treeView = useTreeView({
-  collection,
-})
 </script>
 
 <template>
-  <TreeView.RootProvider :class="styles.Root" :value="treeView">
+  <TreeView.Root :class="styles.Root" :collection="collection" :ids="{ node: getNodeId }">
     <TreeView.Label :class="styles.Label">Tree</TreeView.Label>
     <TreeView.Tree :class="styles.Tree">
-      <TreeNode
+      <ContextMenuTreeNode
         v-for="(node, index) in collection.rootNode.children"
         :key="node.id"
         :node="node"
         :indexPath="[index]"
+        :triggerId="getNodeId(node.id)"
       />
     </TreeView.Tree>
-  </TreeView.RootProvider>
+  </TreeView.Root>
 </template>

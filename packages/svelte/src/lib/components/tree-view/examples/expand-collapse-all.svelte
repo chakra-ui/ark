@@ -1,6 +1,7 @@
 <script lang="ts">
   import { TreeView, createTreeCollection } from '$lib'
   import { ChevronRightIcon, FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-svelte'
+  import button from 'styles/button.module.css'
   import styles from 'styles/tree-view.module.css'
 
   interface TreeNode {
@@ -47,10 +48,22 @@
       ],
     },
   })
+
+  const branchValues = collection.getBranchValues()
 </script>
 
-<TreeView.Root class={styles.Root} {collection} lazyMount unmountOnExit>
-  <TreeView.Label class={styles.Label}>Tree</TreeView.Label>
+<TreeView.Root class={styles.Root} {collection} data-animate="false">
+  <TreeView.Context>
+    {#snippet render(tree)}
+      <div class="hstack">
+        {#if branchValues.every((value) => tree().expandedValue.includes(value))}
+          <button class={button.Root} onclick={() => tree().collapse()}>Collapse all</button>
+        {:else}
+          <button class={button.Root} onclick={() => tree().expand()}>Expand all</button>
+        {/if}
+      </div>
+    {/snippet}
+  </TreeView.Context>
   <TreeView.Tree class={styles.Tree}>
     {#each collection.rootNode.children ?? [] as node, index (node.id)}
       {@render renderNode(node, [index])}

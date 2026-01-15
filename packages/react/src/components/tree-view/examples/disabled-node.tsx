@@ -1,17 +1,10 @@
 import { TreeView, createTreeCollection } from '@ark-ui/react/tree-view'
 import { ChevronRightIcon, FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-react'
-import { useState } from 'react'
 import styles from 'styles/tree-view.module.css'
 
-export const ControlledExpanded = () => {
-  const [expandedValue, setExpandedValue] = useState<string[]>(['node_modules'])
+export const DisabledNode = () => {
   return (
-    <TreeView.Root
-      className={styles.Root}
-      collection={collection}
-      expandedValue={expandedValue}
-      onExpandedChange={({ expandedValue }) => setExpandedValue(expandedValue)}
-    >
+    <TreeView.Root className={styles.Root} collection={collection}>
       <TreeView.Label className={styles.Label}>Tree</TreeView.Label>
       <TreeView.Tree className={styles.Tree}>
         {collection.rootNode.children?.map((node, index) => (
@@ -63,6 +56,7 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
 interface Node {
   id: string
   name: string
+  disabled?: boolean
   children?: Node[]
 }
 
@@ -94,12 +88,12 @@ const collection = createTreeCollection<Node>({
         name: 'src',
         children: [
           { id: 'src/app.tsx', name: 'app.tsx' },
-          { id: 'src/index.ts', name: 'index.ts' },
+          { id: 'src/index.ts', name: 'index.ts', disabled: true },
         ],
       },
       { id: 'panda.config', name: 'panda.config.ts' },
       { id: 'package.json', name: 'package.json' },
-      { id: 'renovate.json', name: 'renovate.json' },
+      { id: 'renovate.json', name: 'renovate.json', disabled: true },
       { id: 'readme.md', name: 'README.md' },
     ],
   },

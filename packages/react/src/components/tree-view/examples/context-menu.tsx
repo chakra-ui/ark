@@ -3,7 +3,10 @@
 import { Menu } from '@ark-ui/react/menu'
 import { Portal } from '@ark-ui/react/portal'
 import { TreeView, createTreeCollection } from '@ark-ui/react/tree-view'
+import { ChevronRightIcon, FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-react'
 import { useId } from 'react'
+import menuStyles from 'styles/menu.module.css'
+import styles from 'styles/tree-view.module.css'
 
 interface TreeNodeContextMenuProps extends Menu.RootProps {
   triggerId: string
@@ -17,9 +20,13 @@ const TreeNodeContextMenu = (props: TreeNodeContextMenuProps) => {
       {children}
       <Portal>
         <Menu.Positioner>
-          <Menu.Content>
-            <Menu.Item value="rename">Rename</Menu.Item>
-            <Menu.Item value="delete">Delete</Menu.Item>
+          <Menu.Content className={menuStyles.Content}>
+            <Menu.Item className={menuStyles.Item} value="rename">
+              Rename
+            </Menu.Item>
+            <Menu.Item className={menuStyles.Item} value="delete">
+              Delete
+            </Menu.Item>
           </Menu.Content>
         </Menu.Positioner>
       </Portal>
@@ -32,9 +39,9 @@ const getNodeId = (uid: string, node: string) => `${uid}/${node}`
 export const ContextMenu = () => {
   const uid = useId()
   return (
-    <TreeView.Root collection={collection} ids={{ node: (value) => getNodeId(uid, value) }}>
-      <TreeView.Label>Tree</TreeView.Label>
-      <TreeView.Tree>
+    <TreeView.Root className={styles.Root} collection={collection} ids={{ node: (value) => getNodeId(uid, value) }}>
+      <TreeView.Label className={styles.Label}>Tree</TreeView.Label>
+      <TreeView.Tree className={styles.Tree}>
         {collection.rootNode.children?.map((node, index) => (
           <TreeNode key={node.id} node={node} indexPath={[index]} triggerId={getNodeId(uid, node.id)} />
         ))}
@@ -47,31 +54,42 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node> & { triggerId: string 
   const { node, indexPath, triggerId } = props
   return (
     <TreeView.NodeProvider key={node.id} node={node} indexPath={indexPath}>
-      {node.children ? (
-        <TreeView.Branch>
-          <TreeNodeContextMenu triggerId={triggerId}>
-            <TreeView.BranchControl asChild>
-              <Menu.ContextTrigger>
-                <TreeView.BranchText>{node.name}</TreeView.BranchText>
-              </Menu.ContextTrigger>
-            </TreeView.BranchControl>
-          </TreeNodeContextMenu>
-          <TreeView.BranchContent>
-            <TreeView.BranchIndentGuide />
-            {node.children.map((child, index) => (
-              <TreeNode key={child.id} node={child} indexPath={[...indexPath, index]} triggerId={triggerId} />
-            ))}
-          </TreeView.BranchContent>
-        </TreeView.Branch>
-      ) : (
-        <TreeNodeContextMenu triggerId={triggerId}>
-          <TreeView.Item asChild>
-            <Menu.ContextTrigger>
-              <TreeView.ItemText>{node.name}</TreeView.ItemText>
-            </Menu.ContextTrigger>
-          </TreeView.Item>
-        </TreeNodeContextMenu>
-      )}
+      <TreeView.NodeContext>
+        {(nodeState) =>
+          node.children ? (
+            <TreeView.Branch className={styles.Branch}>
+              <TreeNodeContextMenu triggerId={triggerId}>
+                <TreeView.BranchControl className={styles.BranchControl} asChild>
+                  <Menu.ContextTrigger>
+                    <TreeView.BranchIndicator className={styles.BranchIndicator}>
+                      <ChevronRightIcon />
+                    </TreeView.BranchIndicator>
+                    <TreeView.BranchText className={styles.BranchText}>
+                      {nodeState.expanded ? <FolderOpenIcon /> : <FolderIcon />}
+                      {node.name}
+                    </TreeView.BranchText>
+                  </Menu.ContextTrigger>
+                </TreeView.BranchControl>
+              </TreeNodeContextMenu>
+              <TreeView.BranchContent className={styles.BranchContent}>
+                <TreeView.BranchIndentGuide className={styles.BranchIndentGuide} />
+                {node.children.map((child, index) => (
+                  <TreeNode key={child.id} node={child} indexPath={[...indexPath, index]} triggerId={triggerId} />
+                ))}
+              </TreeView.BranchContent>
+            </TreeView.Branch>
+          ) : (
+            <TreeNodeContextMenu triggerId={triggerId}>
+              <TreeView.Item className={styles.Item} asChild>
+                <Menu.ContextTrigger>
+                  <FileIcon />
+                  <TreeView.ItemText className={styles.ItemText}>{node.name}</TreeView.ItemText>
+                </Menu.ContextTrigger>
+              </TreeView.Item>
+            </TreeNodeContextMenu>
+          )
+        }
+      </TreeView.NodeContext>
     </TreeView.NodeProvider>
   )
 }

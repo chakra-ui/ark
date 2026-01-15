@@ -1,17 +1,18 @@
 <script lang="ts">
-  import { TreeView } from '@ark-ui/svelte/tree-view'
-  import { ChevronRight, ExternalLink, File } from 'lucide-svelte'
+  import { TreeView } from '$lib'
+  import { ChevronRightIcon, ExternalLinkIcon, FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-svelte'
   import LinksTreeNode from './links-tree-node.svelte'
+  import styles from 'styles/tree-view.module.css'
 
-  interface Node {
+  interface TreeNode {
     id: string
     name: string
     href?: string
-    children?: Node[]
+    children?: TreeNode[]
   }
 
   interface Props {
-    node: Node
+    node: TreeNode
     indexPath: number[]
   }
 
@@ -19,34 +20,45 @@
 </script>
 
 <TreeView.NodeProvider {node} {indexPath}>
-  {#if node.children}
-    <TreeView.Branch>
-      <TreeView.BranchControl>
-        <TreeView.BranchText>{node.name}</TreeView.BranchText>
-        <TreeView.BranchIndicator>
-          <ChevronRight />
-        </TreeView.BranchIndicator>
-      </TreeView.BranchControl>
-      <TreeView.BranchContent>
-        <TreeView.BranchIndentGuide />
-        {#each node.children as child, index (child.id)}
-          <LinksTreeNode node={child} indexPath={[...indexPath, index]} />
-        {/each}
-      </TreeView.BranchContent>
-    </TreeView.Branch>
-  {:else}
-    <TreeView.Item>
-      {#snippet asChild(itemProps)}
-        <a href={node.href} {...itemProps()}>
-          <TreeView.ItemText>
-            <File />
-            {node.name}
-          </TreeView.ItemText>
-          {#if node.href?.startsWith('http')}
-            <ExternalLink size={12} />
-          {/if}
-        </a>
-      {/snippet}
-    </TreeView.Item>
-  {/if}
+  <TreeView.NodeContext>
+    {#snippet render(nodeState)}
+      {#if node.children}
+        <TreeView.Branch class={styles.Branch}>
+          <TreeView.BranchControl class={styles.BranchControl}>
+            <TreeView.BranchIndicator class={styles.BranchIndicator}>
+              <ChevronRightIcon />
+            </TreeView.BranchIndicator>
+            <TreeView.BranchText class={styles.BranchText}>
+              {#if nodeState().expanded}
+                <FolderOpenIcon />
+              {:else}
+                <FolderIcon />
+              {/if}
+              {node.name}
+            </TreeView.BranchText>
+          </TreeView.BranchControl>
+          <TreeView.BranchContent class={styles.BranchContent}>
+            <TreeView.BranchIndentGuide class={styles.BranchIndentGuide} />
+            {#each node.children as child, index (child.id)}
+              <LinksTreeNode node={child} indexPath={[...indexPath, index]} />
+            {/each}
+          </TreeView.BranchContent>
+        </TreeView.Branch>
+      {:else}
+        <TreeView.Item class={styles.Item}>
+          {#snippet asChild(itemProps)}
+            <a href={node.href} {...itemProps()}>
+              <TreeView.ItemText class={styles.ItemText}>
+                <FileIcon />
+                {node.name}
+              </TreeView.ItemText>
+              {#if node.href?.startsWith('http')}
+                <ExternalLinkIcon size={12} />
+              {/if}
+            </a>
+          {/snippet}
+        </TreeView.Item>
+      {/if}
+    {/snippet}
+  </TreeView.NodeContext>
 </TreeView.NodeProvider>

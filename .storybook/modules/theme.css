@@ -28,6 +28,7 @@
   /* Popover */
   --bg-popover: white;
   --bg-thumb: white;
+  --bg-checkbox: white;
 }
 
 .dark {
@@ -60,4 +61,5 @@
   /* Popover dark mode */
   --bg-popover: #1a1a19;
   --bg-thumb: #1a1a19;
+  --bg-checkbox: #1a1a19;
 }

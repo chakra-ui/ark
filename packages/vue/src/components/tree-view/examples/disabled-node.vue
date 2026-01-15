@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { TreeView, createTreeCollection, useTreeView } from '@ark-ui/vue/tree-view'
-import TreeNode from './tree-node.vue'
+import { TreeView, createTreeCollection } from '@ark-ui/vue/tree-view'
+import DisabledTreeNode from './disabled-tree-node.vue'
 import styles from 'styles/tree-view.module.css'
 
 interface Node {
   id: string
   name: string
+  disabled?: boolean
   children?: Node[]
 }
 
@@ -37,32 +38,28 @@ const collection = createTreeCollection<Node>({
         name: 'src',
         children: [
           { id: 'src/app.tsx', name: 'app.tsx' },
-          { id: 'src/index.ts', name: 'index.ts' },
+          { id: 'src/index.ts', name: 'index.ts', disabled: true },
         ],
       },
       { id: 'panda.config', name: 'panda.config.ts' },
       { id: 'package.json', name: 'package.json' },
-      { id: 'renovate.json', name: 'renovate.json' },
+      { id: 'renovate.json', name: 'renovate.json', disabled: true },
       { id: 'readme.md', name: 'README.md' },
     ],
   },
 })
-
-const treeView = useTreeView({
-  collection,
-})
 </script>
 
 <template>
-  <TreeView.RootProvider :class="styles.Root" :value="treeView">
+  <TreeView.Root :class="styles.Root" :collection="collection">
     <TreeView.Label :class="styles.Label">Tree</TreeView.Label>
     <TreeView.Tree :class="styles.Tree">
-      <TreeNode
+      <DisabledTreeNode
         v-for="(node, index) in collection.rootNode.children"
         :key="node.id"
         :node="node"
         :indexPath="[index]"
       />
     </TreeView.Tree>
-  </TreeView.RootProvider>
+  </TreeView.Root>
 </template>

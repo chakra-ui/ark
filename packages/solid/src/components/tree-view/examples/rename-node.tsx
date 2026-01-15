@@ -1,18 +1,30 @@
-import { TreeView, createTreeCollection, useTreeView } from '@ark-ui/solid/tree-view'
+import { TreeView, createTreeCollection } from '@ark-ui/solid/tree-view'
 import { ChevronRightIcon, FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-solid'
-import { For } from 'solid-js'
+import { For, Show, createSignal } from 'solid-js'
 import styles from 'styles/tree-view.module.css'
 
-export const RootProvider = () => {
-  const treeView = useTreeView({ collection })
-
+export const RenameNode = () => {
+  const [collection, setCollection] = createSignal(initialCollection)
   return (
-    <TreeView.RootProvider class={styles.Root} value={treeView}>
-      <TreeView.Label class={styles.Label}>Tree</TreeView.Label>
+    <TreeView.Root
+      class={styles.Root}
+      collection={collection()}
+      canRename={() => true}
+      onRenameComplete={(details) => {
+        setCollection((prev) => {
+          const node = prev.at(details.indexPath)
+          if (!node) return prev
+          return prev.replace(details.indexPath, { ...node, name: details.label })
+        })
+      }}
+    >
+      <TreeView.Label class={styles.Label}>Tree (Press F2 to rename)</TreeView.Label>
       <TreeView.Tree class={styles.Tree}>
-        <For each={collection.rootNode.children}>{(node, index) => <TreeNode node={node} indexPath={[index()]} />}</For>
+        <For each={collection().rootNode.children}>
+          {(node, index) => <TreeNode node={node} indexPath={[index()]} />}
+        </For>
       </TreeView.Tree>
-    </TreeView.RootProvider>
+    </TreeView.Root>
   )
 }
 
@@ -20,17 +32,39 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
   return (
     <TreeView.NodeProvider node={props.node} indexPath={props.indexPath}>
       <TreeView.NodeContext>
-        {(nodeState) =>
-          props.node.children ? (
+        {(nodeState) => (
+          <Show
+            when={props.node.children}
+            fallback={
+              <TreeView.Item class={styles.Item}>
+                <FileIcon />
+                <Show
+                  when={nodeState().renaming}
+                  fallback={<TreeView.ItemText class={styles.ItemText}>{props.node.name}</TreeView.ItemText>}
+                >
+                  <TreeView.NodeRenameInput class={styles.NodeRenameInput} />
+                </Show>
+              </TreeView.Item>
+            }
+          >
             <TreeView.Branch class={styles.Branch}>
               <TreeView.BranchControl class={styles.BranchControl}>
                 <TreeView.BranchIndicator class={styles.BranchIndicator}>
                   <ChevronRightIcon />
                 </TreeView.BranchIndicator>
-                <TreeView.BranchText class={styles.BranchText}>
-                  {nodeState().expanded ? <FolderOpenIcon /> : <FolderIcon />}
-                  {props.node.name}
-                </TreeView.BranchText>
+                <Show
+                  when={nodeState().renaming}
+                  fallback={
+                    <TreeView.BranchText class={styles.BranchText}>
+                      <Show when={nodeState().expanded} fallback={<FolderIcon />}>
+                        <FolderOpenIcon />
+                      </Show>
+                      {props.node.name}
+                    </TreeView.BranchText>
+                  }
+                >
+                  <TreeView.NodeRenameInput class={styles.NodeRenameInput} />
+                </Show>
               </TreeView.BranchControl>
               <TreeView.BranchContent class={styles.BranchContent}>
                 <TreeView.BranchIndentGuide class={styles.BranchIndentGuide} />
@@ -39,15 +73,8 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
                 </For>
               </TreeView.BranchContent>
             </TreeView.Branch>
-          ) : (
-            <TreeView.Item class={styles.Item}>
-              <TreeView.ItemText class={styles.ItemText}>
-                <FileIcon />
-                {props.node.name}
-              </TreeView.ItemText>
-            </TreeView.Item>
-          )
-        }
+          </Show>
+        )}
       </TreeView.NodeContext>
     </TreeView.NodeProvider>
   )
@@ -59,7 +86,7 @@ interface Node {
   children?: Node[]
 }
 
-const collection = createTreeCollection<Node>({
+const initialCollection = createTreeCollection<Node>({
   nodeToValue: (node) => node.id,
   nodeToString: (node) => node.name,
   rootNode: {
