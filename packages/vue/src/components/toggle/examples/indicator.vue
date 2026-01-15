@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { Toggle } from '@ark-ui/vue/toggle'
-import { Volume, VolumeOff } from 'lucide-vue-next'
+import { HeartIcon } from 'lucide-vue-next'
+import styles from 'styles/toggle.module.css'
 </script>
 
 <template>
-  <Toggle.Root>
-    <Toggle.Indicator>
+  <Toggle.Root :class="styles.Root">
+    <Toggle.Indicator :class="styles.Indicator">
       <template #fallback>
-        <Volume />
+        <HeartIcon />
       </template>
-      <VolumeOff />
+      <HeartIcon fill="currentColor" />
     </Toggle.Indicator>
   </Toggle.Root>
 </template>

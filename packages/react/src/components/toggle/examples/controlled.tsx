@@ -1,15 +1,15 @@
 import { Toggle } from '@ark-ui/react/toggle'
-import { Volume, VolumeOff } from 'lucide-react'
+import { HeartIcon } from 'lucide-react'
 import { useState } from 'react'
+import styles from 'styles/toggle.module.css'
 
 export const Controlled = () => {
   const [pressed, setPressed] = useState(false)
   return (
-    <div>
-      <Toggle.Root pressed={pressed} onPressedChange={setPressed}>
-        {pressed ? <Volume /> : <VolumeOff />}
-      </Toggle.Root>
-      <p>Volume is {pressed ? 'unmuted' : 'muted'}</p>
-    </div>
+    <Toggle.Root className={styles.Root} pressed={pressed} onPressedChange={setPressed}>
+      <Toggle.Indicator className={styles.Indicator} fallback={<HeartIcon />}>
+        <HeartIcon fill="currentColor" />
+      </Toggle.Indicator>
+    </Toggle.Root>
   )
 }

@@ -7,5 +7,8 @@ import styles from 'styles/toggle.module.css'
 <template>
   <Toggle.Root :class="styles.Root">
     <BoldIcon />
+    <Toggle.Context v-slot="context">
+      <span>{{ context.pressed ? 'On' : 'Off' }}</span>
+    </Toggle.Context>
   </Toggle.Root>
 </template>

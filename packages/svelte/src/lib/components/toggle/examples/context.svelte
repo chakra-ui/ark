@@ -4,6 +4,11 @@
   import styles from 'styles/toggle.module.css'
 </script>
 
-<Toggle.Root class={styles.Root} disabled>
+<Toggle.Root class={styles.Root}>
   <BoldIcon />
+  <Toggle.Context>
+    {#snippet children(context)}
+      <span>{context.pressed ? 'On' : 'Off'}</span>
+    {/snippet}
+  </Toggle.Context>
 </Toggle.Root>
