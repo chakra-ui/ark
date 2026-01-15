@@ -9,9 +9,9 @@
   <Portal>
     <Tooltip.Positioner>
       <Tooltip.Context>
-        {#snippet children(context)}
+        {#snippet render(context)}
           <Tooltip.Content class={styles.Content}>
-            This tooltip is open: {context.open.toString()}
+            This tooltip is open: {context().open.toString()}
           </Tooltip.Content>
         {/snippet}
       </Tooltip.Context>

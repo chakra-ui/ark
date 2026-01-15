@@ -7,8 +7,8 @@
 <Toggle.Root class={styles.Root}>
   <BoldIcon />
   <Toggle.Context>
-    {#snippet children(context)}
-      <span>{context.pressed ? 'On' : 'Off'}</span>
+    {#snippet render(context)}
+      <span>{context().pressed ? 'On' : 'Off'}</span>
     {/snippet}
   </Toggle.Context>
 </Toggle.Root>
