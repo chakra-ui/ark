@@ -1,0 +1,57 @@
+.Root {
+  display: inline-flex;
+  gap: 1px;
+  border: 1px solid var(--border-emphasized);
+  background-color: var(--border-default);
+  border-radius: 0.375rem;
+  padding: 0.125rem;
+
+  &[data-orientation='vertical'] {
+    flex-direction: column;
+  }
+}
+
+.Item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: inherit;
+  line-height: 1.25rem;
+  border-radius: 0.25rem;
+  user-select: none;
+  white-space: nowrap;
+  border: none;
+  background: transparent;
+  color: var(--neutral-fg);
+
+  & svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &:hover:not(:disabled, [data-disabled]) {
+    background: var(--neutral-subtle);
+  }
+
+  &[data-state='on'] {
+    background: var(--neutral-subtle);
+    color: var(--neutral-fg);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--coral-focus-ring);
+    outline-offset: -1px;
+    z-index: 1;
+  }
+
+  &:is(:disabled, [data-disabled]) {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

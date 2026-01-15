@@ -1,10 +1,12 @@
 import { ToggleGroup } from '@ark-ui/react/toggle-group'
 import { AlignCenterIcon, AlignJustifyIcon, AlignLeftIcon, AlignRightIcon } from 'lucide-react'
+import { useState } from 'react'
 import styles from 'styles/toggle-group.module.css'
 
-export const Basic = () => {
+export const Controlled = () => {
+  const [value, setValue] = useState(['left'])
   return (
-    <ToggleGroup.Root defaultValue={['left']} className={styles.Root}>
+    <ToggleGroup.Root value={value} onValueChange={(e) => setValue(e.value)} className={styles.Root}>
       <ToggleGroup.Item value="left" className={styles.Item}>
         <AlignLeftIcon />
       </ToggleGroup.Item>

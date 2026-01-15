@@ -3,7 +3,7 @@
   import type { UsePresenceProps } from '../presence'
   import type { UseTooltipProps } from './use-tooltip.svelte'
 
-  export interface TooltipRootBaseProps extends UseTooltipProps, UsePresenceProps {}
+  export interface TooltipRootBaseProps extends Optional<UseTooltipProps, 'id'>, UsePresenceProps {}
   export interface TooltipRootProps extends TooltipRootBaseProps {
     children?: Snippet
   }
@@ -14,6 +14,7 @@
   import { splitPresenceProps } from '../presence/split-presence-props.svelte'
   import { TooltipProvider } from './use-tooltip-context'
   import { useTooltip } from './use-tooltip.svelte'
+  import type { Optional } from '$lib/types'
 
   let { open = $bindable(), ...props }: TooltipRootProps = $props()
   const providedId = $props.id()

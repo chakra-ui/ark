@@ -1,13 +1,25 @@
-<script>
+<script lang="ts">
   import { ToggleGroup } from '@ark-ui/svelte/toggle-group'
+  import AlignCenterIcon from 'lucide-svelte/icons/align-center'
+  import AlignJustifyIcon from 'lucide-svelte/icons/align-justify'
+  import AlignLeftIcon from 'lucide-svelte/icons/align-left'
+  import AlignRightIcon from 'lucide-svelte/icons/align-right'
+  import styles from 'styles/toggle-group.module.css'
 
-  let value = $state(['b'])
+  let value = $state(['left'])
 </script>
 
-<div>Value is {JSON.stringify(value)}</div>
-
-<ToggleGroup.Root bind:value>
-  <ToggleGroup.Item value="a">A</ToggleGroup.Item>
-  <ToggleGroup.Item value="b">B</ToggleGroup.Item>
-  <ToggleGroup.Item value="c">C</ToggleGroup.Item>
+<ToggleGroup.Root bind:value class={styles.Root}>
+  <ToggleGroup.Item value="left" class={styles.Item}>
+    <AlignLeftIcon />
+  </ToggleGroup.Item>
+  <ToggleGroup.Item value="center" class={styles.Item}>
+    <AlignCenterIcon />
+  </ToggleGroup.Item>
+  <ToggleGroup.Item value="right" class={styles.Item}>
+    <AlignRightIcon />
+  </ToggleGroup.Item>
+  <ToggleGroup.Item value="justify" class={styles.Item}>
+    <AlignJustifyIcon />
+  </ToggleGroup.Item>
 </ToggleGroup.Root>
