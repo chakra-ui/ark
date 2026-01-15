@@ -1,16 +1,19 @@
 <script setup lang="ts">
 import { Tooltip } from '@ark-ui/vue/tooltip'
 import { ref } from 'vue'
+import styles from 'styles/tooltip.module.css'
 
-const isOpen = ref(false)
+const open = ref(false)
 </script>
 
 <template>
-  <button @click="isOpen = !isOpen">Toggle</button>
-  <Tooltip.Root v-model:open="isOpen">
-    <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
-    <Tooltip.Positioner>
-      <Tooltip.Content>I am a tooltip!</Tooltip.Content>
-    </Tooltip.Positioner>
+  <button @click="open = !open">Toggle</button>
+  <Tooltip.Root v-model:open="open">
+    <Tooltip.Trigger :class="styles.Trigger">Hover Me</Tooltip.Trigger>
+    <Teleport to="body">
+      <Tooltip.Positioner>
+        <Tooltip.Content :class="styles.Content">I am a tooltip!</Tooltip.Content>
+      </Tooltip.Positioner>
+    </Teleport>
   </Tooltip.Root>
 </template>

@@ -4,16 +4,13 @@ import styles from 'styles/tooltip.module.css'
 </script>
 
 <template>
-  <Tooltip.Root
-    :positioning="{
-      placement: 'left-start',
-      offset: { mainAxis: 12, crossAxis: 12 },
-    }"
-  >
+  <Tooltip.Root>
     <Tooltip.Trigger :class="styles.Trigger">Hover Me</Tooltip.Trigger>
     <Teleport to="body">
       <Tooltip.Positioner>
-        <Tooltip.Content :class="styles.Content">I am a tooltip!</Tooltip.Content>
+        <Tooltip.Context v-slot="tooltip">
+          <Tooltip.Content :class="styles.Content">This tooltip is open: {{ tooltip.open.toString() }}</Tooltip.Content>
+        </Tooltip.Context>
       </Tooltip.Positioner>
     </Teleport>
   </Tooltip.Root>

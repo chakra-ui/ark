@@ -4,12 +4,7 @@ import styles from 'styles/tooltip.module.css'
 </script>
 
 <template>
-  <Tooltip.Root
-    :positioning="{
-      placement: 'left-start',
-      offset: { mainAxis: 12, crossAxis: 12 },
-    }"
-  >
+  <Tooltip.Root :closeDelay="0" :openDelay="0">
     <Tooltip.Trigger :class="styles.Trigger">Hover Me</Tooltip.Trigger>
     <Teleport to="body">
       <Tooltip.Positioner>

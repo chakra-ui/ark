@@ -2,13 +2,8 @@ import { Tooltip } from '@ark-ui/react/tooltip'
 import { Portal } from '@ark-ui/react/portal'
 import styles from 'styles/tooltip.module.css'
 
-export const Positioning = () => (
-  <Tooltip.Root
-    positioning={{
-      placement: 'left-start',
-      offset: { mainAxis: 12, crossAxis: 12 },
-    }}
-  >
+export const Delay = () => (
+  <Tooltip.Root closeDelay={0} openDelay={0}>
     <Tooltip.Trigger className={styles.Trigger}>Hover Me</Tooltip.Trigger>
     <Portal>
       <Tooltip.Positioner>

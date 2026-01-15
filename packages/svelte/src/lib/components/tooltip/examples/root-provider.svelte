@@ -1,17 +1,18 @@
 <script lang="ts">
+  import { Portal } from '@ark-ui/svelte/portal'
   import { Tooltip, useTooltip } from '@ark-ui/svelte/tooltip'
+  import styles from 'styles/tooltip.module.css'
 
-  const tooltip = useTooltip({ id: 'tooltip-provider' })
+  const tooltip = useTooltip()
 </script>
 
-<div>
-  <button onclick={() => tooltip().setOpen(true)}>Open tooltip</button>
-  <button onclick={() => tooltip().setOpen(false)}>Close tooltip</button>
+<button onclick={() => tooltip().setOpen(true)}>Open</button>
 
-  <Tooltip.RootProvider value={tooltip}>
-    <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
+<Tooltip.RootProvider value={tooltip}>
+  <Tooltip.Trigger class={styles.Trigger}>Hover Me</Tooltip.Trigger>
+  <Portal>
     <Tooltip.Positioner>
-      <Tooltip.Content>I am a tooltip using root provider!</Tooltip.Content>
+      <Tooltip.Content class={styles.Content}>I am a tooltip!</Tooltip.Content>
     </Tooltip.Positioner>
-  </Tooltip.RootProvider>
-</div>
+  </Portal>
+</Tooltip.RootProvider>

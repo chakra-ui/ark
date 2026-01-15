@@ -8,12 +8,13 @@
   <Tooltip.Trigger class={styles.Trigger}>Hover Me</Tooltip.Trigger>
   <Portal>
     <Tooltip.Positioner>
-      <Tooltip.Content class={styles.Content}>
-        <Tooltip.Arrow class={styles.Arrow}>
-          <Tooltip.ArrowTip class={styles.ArrowTip} />
-        </Tooltip.Arrow>
-        I am a tooltip!
-      </Tooltip.Content>
+      <Tooltip.Context>
+        {#snippet children(context)}
+          <Tooltip.Content class={styles.Content}>
+            This tooltip is open: {context.open.toString()}
+          </Tooltip.Content>
+        {/snippet}
+      </Tooltip.Context>
     </Tooltip.Positioner>
   </Portal>
 </Tooltip.Root>
