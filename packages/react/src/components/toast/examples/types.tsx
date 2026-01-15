@@ -1,5 +1,8 @@
+import { Portal } from '@ark-ui/react/portal'
 import { Toast, Toaster, createToaster } from '@ark-ui/react/toast'
-import { CircleAlertIcon, TriangleAlertIcon, CircleCheckIcon, InfoIcon, X } from 'lucide-react'
+import { CircleAlertIcon, TriangleAlertIcon, CircleCheckIcon, InfoIcon, XIcon } from 'lucide-react'
+import button from 'styles/button.module.css'
+import styles from 'styles/toast.module.css'
 
 const toaster = createToaster({
   overlap: true,
@@ -20,53 +23,61 @@ export const Types = () => {
       <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
         <button
           type="button"
-          onClick={() => toaster.success({ title: 'Success!', description: 'Your changes have been saved.' })}
+          className={button.Root}
+          onClick={() =>
+            toaster.success({ title: 'Changes saved', description: 'Your profile has been updated successfully.' })
+          }
         >
           Success
         </button>
         <button
           type="button"
+          className={button.Root}
           onClick={() =>
-            toaster.error({ title: 'Error occurred', description: 'Something went wrong. Please try again.' })
+            toaster.error({ title: 'Upload failed', description: 'There was an error uploading your file.' })
           }
         >
           Error
         </button>
         <button
           type="button"
-          onClick={() => toaster.warning({ title: 'Warning', description: 'This action cannot be undone.' })}
+          className={button.Root}
+          onClick={() =>
+            toaster.warning({ title: 'Low storage', description: 'You have less than 10% storage remaining.' })
+          }
         >
           Warning
         </button>
         <button
           type="button"
+          className={button.Root}
           onClick={() =>
-            toaster.info({ title: 'New update available', description: 'Version 2.1.0 is now available for download.' })
+            toaster.info({ title: 'Update available', description: 'A new version of the app is ready to install.' })
           }
         >
           Info
         </button>
       </div>
 
-      <Toaster toaster={toaster}>
-        {(toast) => {
-          const ToastIcon = toast.type ? iconMap[toast.type as keyof typeof iconMap] : undefined
-          return (
-            <Toast.Root key={toast.id}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                {ToastIcon && <ToastIcon />}
-                <div style={{ flex: 1 }}>
-                  <Toast.Title>{toast.title}</Toast.Title>
-                  <Toast.Description>{toast.description}</Toast.Description>
-                </div>
-                <Toast.CloseTrigger>
-                  <X />
+      <Portal>
+        <Toaster toaster={toaster}>
+          {(toast) => {
+            const ToastIcon = toast.type ? iconMap[toast.type as keyof typeof iconMap] : undefined
+            return (
+              <Toast.Root key={toast.id} className={styles.Root}>
+                <Toast.Title className={styles.Title}>
+                  {ToastIcon && <ToastIcon className={styles.Indicator} />}
+                  {toast.title}
+                </Toast.Title>
+                <Toast.Description className={styles.Description}>{toast.description}</Toast.Description>
+                <Toast.CloseTrigger className={styles.CloseTrigger}>
+                  <XIcon />
                 </Toast.CloseTrigger>
-              </div>
-            </Toast.Root>
-          )
-        }}
-      </Toaster>
+              </Toast.Root>
+            )
+          }}
+        </Toaster>
+      </Portal>
     </div>
   )
 }

@@ -1,20 +1,25 @@
 <script lang="ts">
+  import { Portal } from '@ark-ui/svelte/portal'
   import { Toast, Toaster, createToaster } from '@ark-ui/svelte/toast'
+  import { X } from 'lucide-svelte'
+  import button from 'styles/button.module.css'
+  import styles from 'styles/toast.module.css'
 
   const toaster = createToaster({
     placement: 'bottom-end',
-    gap: 24,
+    overlap: true,
+    gap: 16,
   })
 
   function addToast() {
     toaster.create({
-      title: 'Toast Title',
-      description: 'Toast Description',
+      title: 'Invitation sent',
+      description: 'Your team invitation has been sent. Click undo to cancel.',
       type: 'info',
       action: {
-        label: 'Subscribe',
+        label: 'Undo',
         onClick: () => {
-          console.log('Subscribe')
+          console.log('Undo clicked')
         },
       },
     })
@@ -22,16 +27,21 @@
 </script>
 
 <div>
-  <button type="button" onclick={addToast}>Add Toast</button>
-  <Toaster {toaster}>
-    {#snippet children(toast)}
-      <Toast.Root>
-        <Toast.Title>{toast().title}</Toast.Title>
-        <Toast.Description>{toast().description}</Toast.Description>
-        {#if toast().action}
-          <Toast.ActionTrigger>{toast().action?.label}</Toast.ActionTrigger>
-        {/if}
-      </Toast.Root>
-    {/snippet}
-  </Toaster>
+  <button type="button" class={button.Root} onclick={addToast}>Send invitation</button>
+  <Portal>
+    <Toaster {toaster}>
+      {#snippet children(toast)}
+        <Toast.Root class={styles.Root}>
+          <Toast.Title class={styles.Title}>{toast().title}</Toast.Title>
+          <Toast.Description class={styles.Description}>{toast().description}</Toast.Description>
+          {#if toast().action}
+            <Toast.ActionTrigger class={styles.ActionTrigger}>{toast().action?.label}</Toast.ActionTrigger>
+          {/if}
+          <Toast.CloseTrigger class={styles.CloseTrigger}>
+            <X />
+          </Toast.CloseTrigger>
+        </Toast.Root>
+      {/snippet}
+    </Toaster>
+  </Portal>
 </div>

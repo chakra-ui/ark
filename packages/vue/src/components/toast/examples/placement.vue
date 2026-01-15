@@ -5,15 +5,15 @@ import button from 'styles/button.module.css'
 import styles from 'styles/toast.module.css'
 
 const toaster = createToaster({
-  placement: 'bottom-end',
+  placement: 'top-end',
   overlap: true,
   gap: 16,
 })
 
-const createToast = () => {
+const addToast = () => {
   toaster.create({
-    title: 'Scheduled for tomorrow',
-    description: 'Your meeting has been scheduled for tomorrow at 10am.',
+    title: 'Notification',
+    description: 'This toast appears at the top-right corner.',
     type: 'info',
   })
 }
@@ -21,7 +21,7 @@ const createToast = () => {
 
 <template>
   <div>
-    <button type="button" :class="button.Root" @click="createToast">Schedule meeting</button>
+    <button type="button" :class="button.Root" @click="addToast">Show toast (top-end)</button>
     <Teleport to="body">
       <Toaster :toaster="toaster" v-slot="toast">
         <Toast.Root :class="styles.Root">

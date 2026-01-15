@@ -11,33 +11,28 @@
     gap: 16,
   })
 
-  let toastId: string | undefined = $state()
+  const DESCRIPTIONS = [
+    'Your changes have been saved.',
+    'File uploaded successfully. You can view it in your documents folder.',
+    'Your meeting has been scheduled for tomorrow at 10:00 AM. We have sent a calendar invite to all participants.',
+    'We noticed unusual activity on your account. For your security, please verify your identity by clicking the link sent to your email address.',
+  ]
+
+  let count = $state(0)
 
   function createToast() {
-    toastId = toaster.create({
-      title: 'Uploading file...',
-      description: 'Please wait while your file is being uploaded.',
-      type: 'loading',
-    })
-  }
-
-  function updateToast() {
-    if (!toastId) {
-      return
-    }
-    toaster.update(toastId, {
-      title: 'Upload complete',
-      description: 'Your file has been uploaded successfully.',
-      type: 'success',
+    count++
+    const description = DESCRIPTIONS[Math.floor(Math.random() * DESCRIPTIONS.length)]
+    toaster.create({
+      title: `Notification ${count}`,
+      description,
+      type: 'info',
     })
   }
 </script>
 
 <div>
-  <div style="display: flex; gap: 8px;">
-    <button type="button" class={button.Root} onclick={createToast}>Start upload</button>
-    <button type="button" class={button.Root} onclick={updateToast}>Complete upload</button>
-  </div>
+  <button type="button" class={button.Root} onclick={createToast}>Create toast</button>
   <Portal>
     <Toaster {toaster}>
       {#snippet children(toast)}

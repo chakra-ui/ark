@@ -6,38 +6,22 @@
   import styles from 'styles/toast.module.css'
 
   const toaster = createToaster({
-    placement: 'bottom-end',
+    placement: 'top-end',
     overlap: true,
     gap: 16,
   })
 
-  let toastId: string | undefined = $state()
-
-  function createToast() {
-    toastId = toaster.create({
-      title: 'Uploading file...',
-      description: 'Please wait while your file is being uploaded.',
-      type: 'loading',
-    })
-  }
-
-  function updateToast() {
-    if (!toastId) {
-      return
-    }
-    toaster.update(toastId, {
-      title: 'Upload complete',
-      description: 'Your file has been uploaded successfully.',
-      type: 'success',
+  function addToast() {
+    toaster.create({
+      title: 'Notification',
+      description: 'This toast appears at the top-right corner.',
+      type: 'info',
     })
   }
 </script>
 
 <div>
-  <div style="display: flex; gap: 8px;">
-    <button type="button" class={button.Root} onclick={createToast}>Start upload</button>
-    <button type="button" class={button.Root} onclick={updateToast}>Complete upload</button>
-  </div>
+  <button type="button" class={button.Root} onclick={addToast}>Show toast (top-end)</button>
   <Portal>
     <Toaster {toaster}>
       {#snippet children(toast)}

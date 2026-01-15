@@ -5,12 +5,12 @@ import button from 'styles/button.module.css'
 import styles from 'styles/toast.module.css'
 
 const toaster = createToaster({
-  placement: 'bottom-end',
+  placement: 'top-end',
   overlap: true,
-  gap: 24,
+  gap: 16,
 })
 
-export const Basic = () => {
+export const Placement = () => {
   return (
     <div>
       <button
@@ -18,13 +18,13 @@ export const Basic = () => {
         className={button.Root}
         onClick={() =>
           toaster.create({
-            title: 'Scheduled for tomorrow',
-            description: 'Your meeting has been scheduled for tomorrow at 10am.',
+            title: 'Notification',
+            description: 'This toast appears at the top-right corner.',
             type: 'info',
           })
         }
       >
-        Schedule meeting
+        Show toast (top-end)
       </button>
       <Portal>
         <Toaster toaster={toaster}>

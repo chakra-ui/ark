@@ -1,5 +1,8 @@
+import { Portal } from '@ark-ui/react/portal'
 import { Toast, Toaster, createToaster } from '@ark-ui/react/toast'
 import { useRef } from 'react'
+import button from 'styles/button.module.css'
+import styles from 'styles/toast.module.css'
 
 const toaster = createToaster({
   placement: 'bottom-end',
@@ -12,9 +15,9 @@ export const Update = () => {
 
   const createToast = () => {
     id.current = toaster.create({
-      title: 'Loading',
-      description: 'Loading ...',
-      type: 'info',
+      title: 'Sending message...',
+      description: 'Please wait while we deliver your message.',
+      type: 'loading',
     })
   }
 
@@ -23,27 +26,30 @@ export const Update = () => {
       return
     }
     toaster.update(id.current, {
-      title: 'Success',
-      description: 'Success!',
+      title: 'Message sent',
+      description: 'Your message has been delivered successfully.',
+      type: 'success',
     })
   }
 
   return (
-    <div>
-      <button type="button" onClick={createToast}>
-        Create Toast
+    <div className="hstack">
+      <button type="button" className={button.Root} onClick={createToast}>
+        Send message
       </button>
-      <button type="button" onClick={updateToast}>
-        Update Toast
+      <button type="button" className={button.Root} onClick={updateToast}>
+        Mark as sent
       </button>
-      <Toaster toaster={toaster}>
-        {(toast) => (
-          <Toast.Root key={toast.id}>
-            <Toast.Title>{toast.title}</Toast.Title>
-            <Toast.Description>{toast.description}</Toast.Description>
-          </Toast.Root>
-        )}
-      </Toaster>
+      <Portal>
+        <Toaster toaster={toaster}>
+          {(toast) => (
+            <Toast.Root key={toast.id} className={styles.Root}>
+              <Toast.Title className={styles.Title}>{toast.title}</Toast.Title>
+              <Toast.Description className={styles.Description}>{toast.description}</Toast.Description>
+            </Toast.Root>
+          )}
+        </Toaster>
+      </Portal>
     </div>
   )
 }

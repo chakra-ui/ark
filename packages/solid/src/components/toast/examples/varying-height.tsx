@@ -5,46 +5,37 @@ import { createSignal } from 'solid-js'
 import button from 'styles/button.module.css'
 import styles from 'styles/toast.module.css'
 
-export const Update = () => {
+const DESCRIPTIONS = [
+  'Your changes have been saved.',
+  'File uploaded successfully. You can view it in your documents folder.',
+  'Your meeting has been scheduled for tomorrow at 10:00 AM. We have sent a calendar invite to all participants.',
+  'We noticed unusual activity on your account. For your security, please verify your identity by clicking the link sent to your email address.',
+]
+
+export const VaryingHeight = () => {
   const toaster = createToaster({
     placement: 'bottom-end',
     overlap: true,
     gap: 16,
   })
 
-  const [id, setId] = createSignal<string | undefined>(undefined)
+  const [count, setCount] = createSignal(0)
 
   const createToast = () => {
-    const newId = toaster.create({
-      title: 'Uploading file...',
-      description: 'Please wait while your file is being uploaded.',
-      type: 'loading',
-    })
-    setId(newId)
-  }
-
-  const updateToast = () => {
-    const currentId = id()
-    if (!currentId) {
-      return
-    }
-    toaster.update(currentId, {
-      title: 'Upload complete',
-      description: 'Your file has been uploaded successfully.',
-      type: 'success',
+    setCount((prev) => prev + 1)
+    const description = DESCRIPTIONS[Math.floor(Math.random() * DESCRIPTIONS.length)]
+    toaster.create({
+      title: `Notification ${count()}`,
+      description,
+      type: 'info',
     })
   }
 
   return (
     <div>
-      <div style={{ display: 'flex', gap: '8px' }}>
-        <button type="button" class={button.Root} onClick={createToast}>
-          Start upload
-        </button>
-        <button type="button" class={button.Root} onClick={updateToast}>
-          Complete upload
-        </button>
-      </div>
+      <button type="button" class={button.Root} onClick={createToast}>
+        Create toast
+      </button>
       <Portal>
         <Toaster toaster={toaster}>
           {(toast) => (
