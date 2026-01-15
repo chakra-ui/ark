@@ -1,3 +1,4 @@
+import { RotateCcwIcon } from 'lucide-react'
 import { SignaturePad } from '../'
 
 export const ComponentUnderTest = (props: SignaturePad.RootProps) => (
@@ -5,7 +6,9 @@ export const ComponentUnderTest = (props: SignaturePad.RootProps) => (
     <SignaturePad.Label>Sign below</SignaturePad.Label>
     <SignaturePad.Control>
       <SignaturePad.Segment />
-      <SignaturePad.ClearTrigger>Clear</SignaturePad.ClearTrigger>
+      <SignaturePad.ClearTrigger>
+        <RotateCcwIcon />
+      </SignaturePad.ClearTrigger>
       <SignaturePad.Guide />
     </SignaturePad.Control>
   </SignaturePad.Root>

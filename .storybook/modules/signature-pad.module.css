@@ -1,0 +1,107 @@
+.Root {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+  --width: 20rem;
+  --height: 10rem;
+  max-width: var(--width);
+
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+}
+
+.Image {
+  width: 100%;
+  height: auto;
+  max-width: 20rem;
+}
+
+.Label {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--neutral-fg);
+}
+
+.Control {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: var(--height);
+  min-width: 0;
+  border: 1px solid var(--border-emphasized);
+  border-radius: 0.5rem;
+  background: var(--neutral-subtle);
+
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.Segment {
+  width: 100%;
+  height: 100%;
+  min-height: var(--height);
+  touch-action: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--coral-focus-ring);
+    outline-offset: -2px;
+  }
+}
+
+.SegmentPath {
+  fill: var(--neutral-fg);
+}
+
+.Guide {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  border-bottom: 1px dashed var(--border-emphasized);
+  pointer-events: none;
+}
+
+.ClearTrigger {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  font-family: inherit;
+  color: var(--neutral-emphasized);
+  background: transparent;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+
+  & svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &:hover {
+    background: var(--neutral-muted);
+    color: var(--neutral-fg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--coral-focus-ring);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

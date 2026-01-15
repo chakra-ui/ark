@@ -1,29 +1,24 @@
 <script setup lang="ts">
-import { Field, type FieldRootProps } from '@ark-ui/vue/field'
-import { SignaturePad, type SignaturePadDrawEndDetails } from '@ark-ui/vue/signature-pad'
-import { ref } from 'vue'
-
-const imageUrl = ref('')
-
-const handleDrawEnd = async (details: SignaturePadDrawEndDetails) => {
-  imageUrl.value = await details.getDataUrl('image/png')
-}
-
-const props = defineProps<FieldRootProps>()
+import { Field } from '@ark-ui/vue/field'
+import { SignaturePad } from '@ark-ui/vue/signature-pad'
+import { RotateCcwIcon } from 'lucide-vue-next'
+import field from 'styles/field.module.css'
+import styles from 'styles/signature-pad.module.css'
 </script>
 
 <template>
-  <Field.Root v-bind="props">
-    <SignaturePad.Root @draw-end="handleDrawEnd">
-      <SignaturePad.Label>Label</SignaturePad.Label>
-      <SignaturePad.Control>
-        <SignaturePad.Segment />
-        <SignaturePad.ClearTrigger>Clear</SignaturePad.ClearTrigger>
-        <SignaturePad.Guide />
+  <Field.Root :class="field.Root">
+    <SignaturePad.Root :class="styles.Root">
+      <SignaturePad.Label :class="styles.Label">Label</SignaturePad.Label>
+      <SignaturePad.Control :class="styles.Control">
+        <SignaturePad.Segment :class="styles.Segment" />
+        <SignaturePad.ClearTrigger :class="styles.ClearTrigger">
+          <RotateCcwIcon />
+        </SignaturePad.ClearTrigger>
+        <SignaturePad.Guide :class="styles.Guide" />
       </SignaturePad.Control>
-      <SignaturePad.HiddenInput :value="imageUrl" />
     </SignaturePad.Root>
-    <Field.HelperText>Additional Info</Field.HelperText>
-    <Field.ErrorText>Error Info</Field.ErrorText>
+    <Field.HelperText :class="field.HelperText">Additional Info</Field.HelperText>
+    <Field.ErrorText :class="field.ErrorText">Error Info</Field.ErrorText>
   </Field.Root>
 </template>

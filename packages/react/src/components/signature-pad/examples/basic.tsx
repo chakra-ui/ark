@@ -1,12 +1,16 @@
 import { SignaturePad } from '@ark-ui/react/signature-pad'
+import { RotateCcwIcon } from 'lucide-react'
+import styles from 'styles/signature-pad.module.css'
 
 export const Basic = () => (
-  <SignaturePad.Root>
-    <SignaturePad.Label>Sign below</SignaturePad.Label>
-    <SignaturePad.Control>
-      <SignaturePad.Segment />
-      <SignaturePad.ClearTrigger>Clear</SignaturePad.ClearTrigger>
-      <SignaturePad.Guide />
+  <SignaturePad.Root className={styles.Root}>
+    <SignaturePad.Label className={styles.Label}>Sign below</SignaturePad.Label>
+    <SignaturePad.Control className={styles.Control}>
+      <SignaturePad.Segment className={styles.Segment} />
+      <SignaturePad.ClearTrigger className={styles.ClearTrigger}>
+        <RotateCcwIcon />
+      </SignaturePad.ClearTrigger>
+      <SignaturePad.Guide className={styles.Guide} />
     </SignaturePad.Control>
   </SignaturePad.Root>
 )
