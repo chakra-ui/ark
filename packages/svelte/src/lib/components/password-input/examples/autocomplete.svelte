@@ -1,14 +1,15 @@
 <script lang="ts">
   import { PasswordInput } from '@ark-ui/svelte/password-input'
   import { EyeIcon, EyeOffIcon } from 'lucide-svelte'
+  import styles from 'styles/password-input.module.css'
 </script>
 
-<PasswordInput.Root autoComplete="current-password">
-  <PasswordInput.Label>Current Password</PasswordInput.Label>
-  <PasswordInput.Control>
-    <PasswordInput.Input />
-    <PasswordInput.VisibilityTrigger>
-      <PasswordInput.Indicator>
+<PasswordInput.Root class={styles.Root} autoComplete="new-password">
+  <PasswordInput.Label class={styles.Label}>Password</PasswordInput.Label>
+  <PasswordInput.Control class={styles.Control}>
+    <PasswordInput.Input class={styles.Input} />
+    <PasswordInput.VisibilityTrigger class={styles.VisibilityTrigger}>
+      <PasswordInput.Indicator class={styles.Indicator}>
         {#snippet fallback()}
           <EyeOffIcon />
         {/snippet}

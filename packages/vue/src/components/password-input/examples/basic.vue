@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { PasswordInput } from '@ark-ui/vue/password-input'
 import { EyeIcon, EyeOffIcon } from 'lucide-vue-next'
+import styles from 'styles/password-input.module.css'
 </script>
 
 <template>
-  <PasswordInput.Root>
-    <PasswordInput.Label>Password</PasswordInput.Label>
-    <PasswordInput.Control>
-      <PasswordInput.Input placeholder="Enter your password" />
-      <PasswordInput.VisibilityTrigger>
-        <PasswordInput.Indicator>
+  <PasswordInput.Root :class="styles.Root">
+    <PasswordInput.Label :class="styles.Label">Password</PasswordInput.Label>
+    <PasswordInput.Control :class="styles.Control">
+      <PasswordInput.Input :class="styles.Input" />
+      <PasswordInput.VisibilityTrigger :class="styles.VisibilityTrigger">
+        <PasswordInput.Indicator :class="styles.Indicator">
           <EyeIcon />
           <template #fallback>
             <EyeOffIcon />
