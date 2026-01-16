@@ -1,24 +1,28 @@
 <script lang="ts">
   import { RatingGroup } from '@ark-ui/svelte/rating-group'
   import { StarIcon } from 'lucide-svelte'
+  import styles from 'styles/rating-group.module.css'
 
   let value = $state(0)
 </script>
 
-<RatingGroup.Root count={5} bind:value allowHalf>
-  <RatingGroup.Label>Label</RatingGroup.Label>
-  <RatingGroup.Control>
+<RatingGroup.Root class={styles.Root} bind:value>
+  <RatingGroup.Label class={styles.Label}>Label</RatingGroup.Label>
+  <RatingGroup.Control class={styles.Control}>
     <RatingGroup.Context>
       {#snippet render(ratingGroup)}
         {#each ratingGroup().items as item}
-          <RatingGroup.Item index={item}>
+          <RatingGroup.Item class={styles.Item} index={item}>
             <RatingGroup.ItemContext>
               {#snippet render(itemState)}
-                {#if itemState().highlighted}
-                  <StarIcon fill="current" />
-                {:else}
-                  <StarIcon />
-                {/if}
+                <span
+                  class={styles.ItemIndicator}
+                  data-half={itemState().half ? '' : undefined}
+                  data-highlighted={itemState().highlighted ? '' : undefined}
+                >
+                  <StarIcon data-bg="" />
+                  <StarIcon data-fg="" fill="currentColor" />
+                </span>
               {/snippet}
             </RatingGroup.ItemContext>
           </RatingGroup.Item>

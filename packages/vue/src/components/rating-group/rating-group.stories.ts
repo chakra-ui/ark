@@ -4,9 +4,7 @@ import BasicExample from './examples/basic.vue'
 import ControlledExample from './examples/controlled.vue'
 import DisabledExample from './examples/disabled.vue'
 import FormUsageExample from './examples/form-usage.vue'
-import HalfRatingsExample from './examples/half-ratings.vue'
-import InitialValueExample from './examples/initial-value.vue'
-import ReadonlyExample from './examples/read-only.vue'
+import HalfStarExample from './examples/half-star.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import WithFieldExample from './examples/with-field.vue'
 
@@ -44,23 +42,9 @@ export const FormUsage = {
   }),
 }
 
-export const HalfRatings = {
+export const HalfStar = {
   render: () => ({
-    components: { Component: HalfRatingsExample },
-    template: '<Component />',
-  }),
-}
-
-export const InitialValue = {
-  render: () => ({
-    components: { Component: InitialValueExample },
-    template: '<Component />',
-  }),
-}
-
-export const Readonly = {
-  render: () => ({
-    components: { Component: ReadonlyExample },
+    components: { Component: HalfStarExample },
     template: '<Component />',
   }),
 }

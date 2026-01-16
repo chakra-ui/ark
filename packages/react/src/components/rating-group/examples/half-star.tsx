@@ -2,8 +2,8 @@ import { RatingGroup } from '@ark-ui/react/rating-group'
 import { StarIcon } from 'lucide-react'
 import styles from 'styles/rating-group.module.css'
 
-export const Basic = () => (
-  <RatingGroup.Root className={styles.Root} defaultValue={3}>
+export const HalfStar = () => (
+  <RatingGroup.Root className={styles.Root} defaultValue={2.5} allowHalf>
     <RatingGroup.Label className={styles.Label}>Label</RatingGroup.Label>
     <RatingGroup.Control className={styles.Control}>
       <RatingGroup.Context>
@@ -11,8 +11,12 @@ export const Basic = () => (
           items.map((item) => (
             <RatingGroup.Item className={styles.Item} key={item} index={item}>
               <RatingGroup.ItemContext>
-                {({ highlighted }) => (
-                  <span className={styles.ItemIndicator} data-highlighted={highlighted ? '' : undefined}>
+                {({ half, highlighted }) => (
+                  <span
+                    className={styles.ItemIndicator}
+                    data-half={half ? '' : undefined}
+                    data-highlighted={highlighted ? '' : undefined}
+                  >
                     <StarIcon data-bg="" />
                     <StarIcon data-fg="" fill="currentColor" />
                   </span>

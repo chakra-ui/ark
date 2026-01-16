@@ -1,28 +1,30 @@
 <script setup lang="ts">
-import { Field, type FieldRootProps } from '@ark-ui/vue/field'
+import { Field } from '@ark-ui/vue/field'
 import { RatingGroup } from '@ark-ui/vue/rating-group'
 import { StarIcon } from 'lucide-vue-next'
-
-const props = defineProps<FieldRootProps>()
+import field from 'styles/field.module.css'
+import styles from 'styles/rating-group.module.css'
 </script>
 
 <template>
-  <Field.Root v-bind="props">
-    <RatingGroup.Root :count="5" :default-value="3">
-      <RatingGroup.Label>Label</RatingGroup.Label>
-      <RatingGroup.Control>
+  <Field.Root :class="field.Root">
+    <RatingGroup.Root :class="styles.Root" :default-value="3">
+      <RatingGroup.Label :class="styles.Label">Label</RatingGroup.Label>
+      <RatingGroup.Control :class="styles.Control">
         <RatingGroup.Context v-slot="{ items }">
-          <RatingGroup.Item v-for="item in items" :key="item" :index="item">
+          <RatingGroup.Item v-for="item in items" :key="item" :class="styles.Item" :index="item">
             <RatingGroup.ItemContext v-slot="{ highlighted }">
-              <StarIcon v-if="highlighted" fill="current" />
-              <StarIcon v-else />
+              <span :class="styles.ItemIndicator" :data-highlighted="highlighted ? '' : undefined">
+                <StarIcon data-bg="" />
+                <StarIcon data-fg="" fill="currentColor" />
+              </span>
             </RatingGroup.ItemContext>
           </RatingGroup.Item>
         </RatingGroup.Context>
         <RatingGroup.HiddenInput />
       </RatingGroup.Control>
     </RatingGroup.Root>
-    <Field.HelperText>Additional Info</Field.HelperText>
-    <Field.ErrorText>Error Info</Field.ErrorText>
+    <Field.HelperText :class="field.HelperText">Additional Info</Field.HelperText>
+    <Field.ErrorText :class="field.ErrorText">Error Info</Field.ErrorText>
   </Field.Root>
 </template>

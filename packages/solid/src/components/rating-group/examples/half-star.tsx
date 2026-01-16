@@ -3,8 +3,8 @@ import { StarIcon } from 'lucide-solid'
 import { Index } from 'solid-js'
 import styles from 'styles/rating-group.module.css'
 
-export const Basic = () => (
-  <RatingGroup.Root class={styles.Root} defaultValue={3}>
+export const HalfStar = () => (
+  <RatingGroup.Root class={styles.Root} defaultValue={2.5} allowHalf>
     <RatingGroup.Label class={styles.Label}>Label</RatingGroup.Label>
     <RatingGroup.Control class={styles.Control}>
       <RatingGroup.Context>
@@ -14,7 +14,11 @@ export const Basic = () => (
               <RatingGroup.Item class={styles.Item} index={item()}>
                 <RatingGroup.ItemContext>
                   {(itemContext) => (
-                    <span class={styles.ItemIndicator} data-highlighted={itemContext().highlighted ? '' : undefined}>
+                    <span
+                      class={styles.ItemIndicator}
+                      data-half={itemContext().half ? '' : undefined}
+                      data-highlighted={itemContext().highlighted ? '' : undefined}
+                    >
                       <StarIcon data-bg="" />
                       <StarIcon data-fg="" fill="currentColor" />
                     </span>

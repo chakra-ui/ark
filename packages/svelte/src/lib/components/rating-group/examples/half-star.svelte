@@ -4,7 +4,7 @@
   import styles from 'styles/rating-group.module.css'
 </script>
 
-<RatingGroup.Root class={styles.Root} defaultValue={3}>
+<RatingGroup.Root class={styles.Root} defaultValue={2.5} allowHalf>
   <RatingGroup.Label class={styles.Label}>Label</RatingGroup.Label>
   <RatingGroup.Control class={styles.Control}>
     <RatingGroup.Context>
@@ -15,6 +15,7 @@
               {#snippet render(itemState)}
                 <span
                   class={styles.ItemIndicator}
+                  data-half={itemState().half ? '' : undefined}
                   data-highlighted={itemState().highlighted ? '' : undefined}
                 >
                   <StarIcon data-bg="" />
