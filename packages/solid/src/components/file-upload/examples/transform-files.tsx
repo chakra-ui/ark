@@ -2,7 +2,7 @@ import { FileUpload } from '@ark-ui/solid/file-upload'
 import { compressAccurately } from 'image-conversion'
 import { For } from 'solid-js'
 
-export const FileTransformations = () => {
+export const TransformFiles = () => {
   const transformFiles = async (files: File[]) => {
     return Promise.all(
       files.map(async (file) => {

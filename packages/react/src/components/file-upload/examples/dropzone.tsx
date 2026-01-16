@@ -1,24 +1,28 @@
 import { FileUpload } from '@ark-ui/react/file-upload'
-import { FileIcon, PaperclipIcon, XIcon } from 'lucide-react'
+import { FileIcon, UploadIcon, XIcon } from 'lucide-react'
 import styles from 'styles/file-upload.module.css'
 
-export const InitialFiles = () => (
-  <FileUpload.Root
-    defaultAcceptedFiles={[new File(['Welcome to Ark UI React'], 'README.md', { type: 'text/plain' })]}
-    className={styles.Root}
-  >
+export const Dropzone = () => (
+  <FileUpload.Root maxFiles={5} className={styles.Root}>
     <FileUpload.Label className={styles.Label}>File Upload</FileUpload.Label>
-    <FileUpload.Trigger className={styles.Trigger}>
-      <PaperclipIcon /> Choose file(s)
-    </FileUpload.Trigger>
+    <FileUpload.Dropzone className={styles.Dropzone}>
+      <UploadIcon className={styles.DropzoneIcon} />
+      <div className={styles.DropzoneContent}>
+        <span className={styles.DropzoneTitle}>Drag and drop files here</span>
+        <span className={styles.DropzoneDescription}>or click to browse</span>
+      </div>
+    </FileUpload.Dropzone>
     <FileUpload.ItemGroup className={styles.ItemGroup}>
       <FileUpload.Context>
         {({ acceptedFiles }) =>
           acceptedFiles.map((file) => (
             <FileUpload.Item key={file.name} file={file} className={styles.Item}>
-              <div className={styles.ItemPreview}>
+              <FileUpload.ItemPreview type="image/*" className={styles.ItemPreview}>
+                <FileUpload.ItemPreviewImage className={styles.ItemPreviewImage} />
+              </FileUpload.ItemPreview>
+              <FileUpload.ItemPreview type=".*" className={styles.ItemPreview}>
                 <FileIcon />
-              </div>
+              </FileUpload.ItemPreview>
               <FileUpload.ItemName className={styles.ItemName} />
               <FileUpload.ItemSizeText className={styles.ItemSizeText} />
               <FileUpload.ItemDeleteTrigger className={styles.ItemDeleteTrigger}>

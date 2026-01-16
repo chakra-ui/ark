@@ -1,7 +1,7 @@
 import { FileUpload, useFileUpload } from '@ark-ui/solid/file-upload'
 import { For } from 'solid-js'
 
-export const WithPaste = () => {
+export const PastingFiles = () => {
   const fileUpload = useFileUpload({ maxFiles: 3, accept: 'image/*' })
 
   return (

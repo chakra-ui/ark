@@ -6,9 +6,9 @@
 </script>
 
 <FileUpload.RootProvider value={fileUpload}>
-  <FileUpload.Label>File Upload with Paste</FileUpload.Label>
+  <FileUpload.Label>Upload with Paste</FileUpload.Label>
   <textarea
-    placeholder="Paste image here..."
+    placeholder="Paste an image here (Ctrl/Cmd + V)"
     onpaste={(e) => fileUpload().setClipboardFiles(e.clipboardData)}
   ></textarea>
   <FileUpload.ItemGroup>
@@ -17,6 +17,8 @@
         <FileUpload.ItemPreview type="image/*">
           <FileUpload.ItemPreviewImage />
         </FileUpload.ItemPreview>
+        <FileUpload.ItemName />
+        <FileUpload.ItemSizeText />
         <FileUpload.ItemDeleteTrigger>X</FileUpload.ItemDeleteTrigger>
       </FileUpload.Item>
     {/each}

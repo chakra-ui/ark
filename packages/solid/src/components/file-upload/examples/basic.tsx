@@ -11,12 +11,7 @@ export const Basic = () => (
           <For each={context().acceptedFiles}>
             {(file) => (
               <FileUpload.Item file={file}>
-                <FileUpload.ItemPreview type="image/*">
-                  <FileUpload.ItemPreviewImage />
-                </FileUpload.ItemPreview>
-                <FileUpload.ItemPreview type=".*">Any Icon</FileUpload.ItemPreview>
                 <FileUpload.ItemName />
-                <FileUpload.ItemSizeText />
                 <FileUpload.ItemDeleteTrigger>X</FileUpload.ItemDeleteTrigger>
               </FileUpload.Item>
             )}

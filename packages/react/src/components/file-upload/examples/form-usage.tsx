@@ -1,17 +1,23 @@
-import { FileUpload, useFileUpload } from '@ark-ui/react/file-upload'
+import { FileUpload } from '@ark-ui/react/file-upload'
 import { FileIcon, UploadIcon, XIcon } from 'lucide-react'
+import { useForm } from 'react-hook-form'
 import button from 'styles/button.module.css'
 import styles from 'styles/file-upload.module.css'
 
-export const RootProvider = () => {
-  const fileUpload = useFileUpload({ maxFiles: 5 })
+interface FieldValues {
+  files: File[]
+}
+
+export const FormUsage = () => {
+  const { register, handleSubmit } = useForm<FieldValues>()
+
+  const onSubmit = (data: FieldValues) => {
+    console.log(data)
+  }
 
   return (
-    <div className="stack">
-      <button className={button.Root} onClick={() => fileUpload.clearFiles()}>
-        Clear Files
-      </button>
-      <FileUpload.RootProvider value={fileUpload} className={styles.Root}>
+    <form onSubmit={handleSubmit(onSubmit)} className="stack">
+      <FileUpload.Root maxFiles={5} className={styles.Root}>
         <FileUpload.Label className={styles.Label}>File Upload</FileUpload.Label>
         <FileUpload.Dropzone className={styles.Dropzone}>
           <UploadIcon className={styles.DropzoneIcon} />
@@ -41,8 +47,11 @@ export const RootProvider = () => {
             }
           </FileUpload.Context>
         </FileUpload.ItemGroup>
-        <FileUpload.HiddenInput />
-      </FileUpload.RootProvider>
-    </div>
+        <FileUpload.HiddenInput {...register('files')} />
+      </FileUpload.Root>
+      <button type="submit" className={button.Root} data-variant="solid">
+        Submit
+      </button>
+    </form>
   )
 }

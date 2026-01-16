@@ -4,18 +4,16 @@ import AcceptedFileTypesExample from './examples/accepted-file-types.vue'
 import BasicExample from './examples/basic.vue'
 import ClearTriggerExample from './examples/clear-trigger.vue'
 import DirectoryUploadExample from './examples/directory-upload.vue'
-import DragAndDropExample from './examples/drag-and-drop.vue'
+import DropzoneExample from './examples/dropzone.vue'
 import ErrorHandlingExample from './examples/error-handling.vue'
-import FileTransformationsExample from './examples/file-transformations.vue'
+import FormUsageExample from './examples/form-usage.vue'
 import InitialFilesExample from './examples/initial-files.vue'
 import MediaCaptureExample from './examples/media-capture.vue'
+import PastingFilesExample from './examples/pasting-files.vue'
 import RejectedFilesExample from './examples/rejected-files.vue'
 import RootProviderExample from './examples/root-provider.vue'
-import SingleFileExample from './examples/single-file.vue'
-import SizeLimitsExample from './examples/size-limits.vue'
-import WithValidationExample from './examples/validation.vue'
+import TransformFilesExample from './examples/transform-files.vue'
 import WithFieldExample from './examples/with-field.vue'
-import WithPasteExample from './examples/with-paste.vue'
 
 const meta: Meta = {
   title: 'Components / FileUpload',
@@ -44,9 +42,9 @@ export const ClearTrigger = {
   }),
 }
 
-export const DragAndDrop = {
+export const Dropzone = {
   render: () => ({
-    components: { Component: DragAndDropExample },
+    components: { Component: DropzoneExample },
     template: '<Component />',
   }),
 }
@@ -58,9 +56,16 @@ export const ErrorHandling = {
   }),
 }
 
-export const FileTransformations = {
+export const FormUsage = {
   render: () => ({
-    components: { Component: FileTransformationsExample },
+    components: { Component: FormUsageExample },
+    template: '<Component />',
+  }),
+}
+
+export const TransformFiles = {
+  render: () => ({
+    components: { Component: TransformFilesExample },
     template: '<Component />',
   }),
 }
@@ -86,20 +91,6 @@ export const RejectedFiles = {
   }),
 }
 
-export const SingleFile = {
-  render: () => ({
-    components: { Component: SingleFileExample },
-    template: '<Component />',
-  }),
-}
-
-export const SizeLimits = {
-  render: () => ({
-    components: { Component: SizeLimitsExample },
-    template: '<Component />',
-  }),
-}
-
 export const WithField = {
   render: () => ({
     components: { Component: WithFieldExample },
@@ -114,13 +105,6 @@ export const RootProvider = {
   }),
 }
 
-export const WithValidation = {
-  render: () => ({
-    components: { Component: WithValidationExample },
-    template: '<Component />',
-  }),
-}
-
 export const DirectoryUpload = {
   render: () => ({
     components: { Component: DirectoryUploadExample },
@@ -128,9 +112,9 @@ export const DirectoryUpload = {
   }),
 }
 
-export const WithPaste = {
+export const PastingFiles = {
   render: () => ({
-    components: { Component: WithPasteExample },
+    components: { Component: PastingFilesExample },
     template: '<Component />',
   }),
 }

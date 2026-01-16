@@ -21,20 +21,20 @@
 </script>
 
 <FileUpload.Root accept="image/*" maxFiles={5} {transformFiles}>
-  <FileUpload.Label>File Upload with Compression</FileUpload.Label>
+  <FileUpload.Label>Upload with Compression</FileUpload.Label>
   <FileUpload.Trigger>Choose Images</FileUpload.Trigger>
 
   <FileUpload.ItemGroup>
     <FileUpload.Context>
       {#snippet render(fileUpload)}
         {#each fileUpload().acceptedFiles as file (file.name)}
-          <FileUpload.Item {file} class="file-item">
+          <FileUpload.Item {file}>
             <FileUpload.ItemPreview type="image/*">
               <FileUpload.ItemPreviewImage />
             </FileUpload.ItemPreview>
             <FileUpload.ItemName />
             <FileUpload.ItemSizeText />
-            <FileUpload.ItemDeleteTrigger>Remove</FileUpload.ItemDeleteTrigger>
+            <FileUpload.ItemDeleteTrigger>X</FileUpload.ItemDeleteTrigger>
           </FileUpload.Item>
         {/each}
       {/snippet}
