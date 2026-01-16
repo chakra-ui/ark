@@ -67,48 +67,24 @@ We expose the `--collapsed-height` or `--collapsed-width` variables to use in yo
 
 You can nest collapsibles within collapsibles to create hierarchical content structures.
 
-<Example id="nested-collapsible" />
-
-### Events
-
-Use `onExitComplete` callback to listen for when the `Collapsible.Content` is no longer visible
-
-<Example id="on-exit-complete" />
+<Example id="nested" />
 
 ### Lazy Mount
 
-To delay the mounting of the `Collapsible.Content`, use the `lazyMount` prop
+Use `lazyMount` to delay mounting the content until first opened, and `unmountOnExit` to remove it from the DOM when
+collapsed. Combining both ensures the component is only in the DOM while expanded.
 
 <Example id="lazy-mount" />
-
-### Unmount on Exit
-
-To remove the `Collapsible.Content` from the DOM when it is not visible, use the `unmountOnExit` prop
-
-<Example id="unmount-on-exit" />
-
-### Lazy Mount + Unmount on Exit
-
-Both `lazyMount` and `unmountOnExit` can be combined to ensure that the component is mounted only when the `Collapsible`
-is expanded and unmounted when it is collapsed:
-
-<Example id="lazy-mount-and-unmount-on-exit" />
 
 ### Root Provider
 
 Use the `useCollapsible` hook to create the collapsible store and pass it to the `Collapsible.RootProvider` component.
-This allows you to have maximum control over the collapsible programmatically.
+This allows you to programmatically control the collapsible using methods like `setOpen()` and read state properties
+like `open` and `visible`.
 
 <Example id="root-provider" />
 
 > If you're using the `Collapsible.RootProvider` component, you don't need to use the `Collapsible.Root` component.
-
-### Programmatic Control
-
-Use the `useCollapsible` hook with `Collapsible.RootProvider` to programmatically control the collapsible using the
-`setOpen()` method and read state properties like `open` and `visible`.
-
-<Example id="programmatic-open" />
 
 ## Guides
 

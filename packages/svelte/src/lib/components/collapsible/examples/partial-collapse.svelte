@@ -1,28 +1,31 @@
 <script lang="ts">
   import { Collapsible } from '@ark-ui/svelte/collapsible'
-  import { ChevronRight } from 'lucide-svelte'
+  import { ChevronRightIcon } from 'lucide-svelte'
+  import styles from 'styles/collapsible.module.css'
 </script>
 
-<Collapsible.Root collapsedHeight="100px">
-  <Collapsible.Trigger>
-    Show More
-    <Collapsible.Indicator>
-      <ChevronRight />
+<Collapsible.Root class={styles.Root} collapsedHeight="40px">
+  <Collapsible.Trigger class={styles.Trigger}>
+    Read More
+    <Collapsible.Indicator class={styles.Indicator}>
+      <ChevronRightIcon />
     </Collapsible.Indicator>
   </Collapsible.Trigger>
-  <Collapsible.Content>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat.
-    </p>
-    <p>
-      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-      sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-    <p>
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-      aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-    </p>
+  <Collapsible.Content class={styles.Content}>
+    <div class={styles.Body}>
+      <p>
+        Ark UI is a headless component library for building accessible, high-quality UI components for React, Solid,
+        Vue, and Svelte. It provides unstyled, fully accessible components that you can customize to match your design
+        system.
+      </p>
+      <p>
+        Built on top of Zag.js state machines, Ark UI ensures consistent behavior across all frameworks while giving
+        you complete control over styling. Each component follows WAI-ARIA patterns for accessibility out of the box.
+      </p>
+      <p>
+        Whether you're building a design system from scratch or need reliable primitives for your next project, Ark UI
+        provides the foundation you need without imposing any visual constraints.
+      </p>
+    </div>
   </Collapsible.Content>
 </Collapsible.Root>
