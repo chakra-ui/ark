@@ -26,6 +26,7 @@ export const SignaturePadWithField = (props: Field.RootProps) => (
         </SignaturePad.ClearTrigger>
         <SignaturePad.Guide />
       </SignaturePad.Control>
+      <SignaturePad.HiddenInput value="" />
     </SignaturePad.Root>
     <Field.HelperText>Additional Info</Field.HelperText>
     <Field.ErrorText>Error Info</Field.ErrorText>
