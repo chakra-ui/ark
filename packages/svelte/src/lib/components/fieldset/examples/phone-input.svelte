@@ -3,9 +3,18 @@
   import { Fieldset } from '@ark-ui/svelte/fieldset'
   import { Portal } from '@ark-ui/svelte/portal'
   import { Select, createListCollection } from '@ark-ui/svelte/select'
+  import { ChevronsUpDownIcon } from 'lucide-svelte'
+  import field from 'styles/field.module.css'
+  import styles from 'styles/fieldset.module.css'
+  import select from 'styles/select.module.css'
 
   const extensions = createListCollection({
-    items: ['+1', '+44', '+49', '+41'],
+    items: [
+      { label: '+1', value: '+1' },
+      { label: '+44', value: '+44' },
+      { label: '+49', value: '+49' },
+      { label: '+41', value: '+41' },
+    ],
   })
 
   let input: HTMLInputElement | null = null
@@ -17,23 +26,24 @@
   }
 </script>
 
-<Fieldset.Root>
-  <Fieldset.Legend onclick={focusInput}>Mobile Number</Fieldset.Legend>
+<Fieldset.Root class={styles.Root}>
+  <Fieldset.Legend class={styles.Legend} onclick={focusInput}>Mobile Number</Fieldset.Legend>
 
-  <div style="display: flex; align-items: flex-start;">
+  <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
     <Field.Root>
-      <Select.Root collection={extensions} defaultValue={['+1']} onValueChange={focusInput}>
-        <Select.Control>
-          <Select.Trigger>
+      <Select.Root class={select.Root} collection={extensions} defaultValue={['+1']} onValueChange={focusInput}>
+        <Select.Control class={select.Control}>
+          <Select.Trigger class={select.Trigger}>
             <Select.ValueText placeholder="Select" />
+            <ChevronsUpDownIcon />
           </Select.Trigger>
         </Select.Control>
         <Portal>
           <Select.Positioner>
-            <Select.Content>
+            <Select.Content class={select.Content}>
               {#each extensions.items as item}
-                <Select.Item {item}>
-                  <Select.ItemText>{item}</Select.ItemText>
+                <Select.Item class={select.Item} {item}>
+                  <Select.ItemText class={select.ItemText}>{item.label}</Select.ItemText>
                 </Select.Item>
               {/each}
             </Select.Content>
@@ -43,8 +53,8 @@
       </Select.Root>
     </Field.Root>
 
-    <Field.Root>
-      <Field.Input bind:ref={input} />
+    <Field.Root class={field.Root}>
+      <Field.Input class={field.Input} bind:ref={input} />
     </Field.Root>
   </div>
 </Fieldset.Root>

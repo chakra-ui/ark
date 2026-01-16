@@ -2,10 +2,19 @@
 import { Field } from '@ark-ui/vue/field'
 import { Fieldset } from '@ark-ui/vue/fieldset'
 import { Select, createListCollection } from '@ark-ui/vue/select'
+import { ChevronsUpDownIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
+import field from 'styles/field.module.css'
+import styles from 'styles/fieldset.module.css'
+import select from 'styles/select.module.css'
 
 const extensions = createListCollection({
-  items: ['+1', '+44', '+49', '+41'],
+  items: [
+    { label: '+1', value: '+1' },
+    { label: '+44', value: '+44' },
+    { label: '+49', value: '+49' },
+    { label: '+41', value: '+41' },
+  ],
 })
 
 const inputRef = ref<{ $el: HTMLInputElement | null } | null>(null)
@@ -18,21 +27,22 @@ const focusInput = () => {
 </script>
 
 <template>
-  <Fieldset.Root style="border: 0; padding: 0">
-    <Fieldset.Legend @click="focusInput">Mobile Number</Fieldset.Legend>
-    <div style="display: flex; align-items: flex-start">
+  <Fieldset.Root :class="styles.Root">
+    <Fieldset.Legend :class="styles.Legend" @click="focusInput">Mobile Number</Fieldset.Legend>
+    <div style="display: flex; align-items: flex-start; gap: 0.5rem">
       <Field.Root>
-        <Select.Root :collection="extensions" :default-value="['+1']" @value-change="focusInput">
-          <Select.Control>
-            <Select.Trigger>
+        <Select.Root :class="select.Root" :collection="extensions" :default-value="['+1']" @value-change="focusInput">
+          <Select.Control :class="select.Control">
+            <Select.Trigger :class="select.Trigger">
               <Select.ValueText placeholder="Select" />
+              <ChevronsUpDownIcon />
             </Select.Trigger>
           </Select.Control>
 
           <Select.Positioner>
-            <Select.Content>
-              <Select.Item v-for="item in extensions" :key="item" :item="item">
-                <Select.ItemText>{{ item }}</Select.ItemText>
+            <Select.Content :class="select.Content">
+              <Select.Item v-for="item in extensions.items" :key="item.value" :class="select.Item" :item="item">
+                <Select.ItemText :class="select.ItemText">{{ item.label }}</Select.ItemText>
               </Select.Item>
             </Select.Content>
           </Select.Positioner>
@@ -41,8 +51,8 @@ const focusInput = () => {
         </Select.Root>
       </Field.Root>
 
-      <Field.Root>
-        <Field.Input ref="inputRef" />
+      <Field.Root :class="field.Root">
+        <Field.Input ref="inputRef" :class="field.Input" />
       </Field.Root>
     </div>
   </Fieldset.Root>

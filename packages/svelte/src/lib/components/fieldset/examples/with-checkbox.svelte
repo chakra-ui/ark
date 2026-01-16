@@ -1,22 +1,31 @@
 <script lang="ts">
   import { Checkbox } from '@ark-ui/svelte/checkbox'
-  import { Field } from '@ark-ui/svelte/field'
   import { Fieldset } from '@ark-ui/svelte/fieldset'
+  import { CheckIcon } from 'lucide-svelte'
+  import checkbox from 'styles/checkbox.module.css'
+  import styles from 'styles/fieldset.module.css'
 </script>
 
-<Fieldset.Root>
-  <Fieldset.Legend>Legend</Fieldset.Legend>
-  <Fieldset.HelperText>Helper text</Fieldset.HelperText>
-  <Fieldset.ErrorText>Error text</Fieldset.ErrorText>
-  <Field.Root>
-    <Checkbox.Root>
-      <Checkbox.Label>Label</Checkbox.Label>
-      <Checkbox.Control>
-        <Checkbox.Indicator>✔️</Checkbox.Indicator>
-      </Checkbox.Control>
-      <Checkbox.HiddenInput />
-    </Checkbox.Root>
-    <Field.HelperText>Field Heler Text</Field.HelperText>
-    <Field.ErrorText>Field Error Text</Field.ErrorText>
-  </Field.Root>
+<Fieldset.Root class={styles.Root}>
+  <Fieldset.Legend class={styles.Legend}>Email Preferences</Fieldset.Legend>
+
+  <Checkbox.Root class={checkbox.Root} defaultChecked>
+    <Checkbox.Control class={checkbox.Control}>
+      <Checkbox.Indicator class={checkbox.Indicator}>
+        <CheckIcon />
+      </Checkbox.Indicator>
+    </Checkbox.Control>
+    <Checkbox.Label class={checkbox.Label}>Product updates</Checkbox.Label>
+    <Checkbox.HiddenInput />
+  </Checkbox.Root>
+
+  <Checkbox.Root class={checkbox.Root}>
+    <Checkbox.Control class={checkbox.Control}>
+      <Checkbox.Indicator class={checkbox.Indicator}>
+        <CheckIcon />
+      </Checkbox.Indicator>
+    </Checkbox.Control>
+    <Checkbox.Label class={checkbox.Label}>Marketing emails</Checkbox.Label>
+    <Checkbox.HiddenInput />
+  </Checkbox.Root>
 </Fieldset.Root>

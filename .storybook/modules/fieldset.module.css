@@ -6,10 +6,6 @@
   padding: 0;
   margin: 0;
   min-width: 0;
-
-  &[data-disabled] {
-    opacity: 0.5;
-  }
 }
 
 .Legend {
@@ -20,16 +16,28 @@
   padding: 0;
   padding-bottom: 0.5rem;
   margin-bottom: 0.25rem;
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
 }
 
 .HelperText {
   font-size: 0.875rem;
   line-height: 1.25rem;
   color: var(--neutral-emphasized);
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
 }
 
 .ErrorText {
   font-size: 0.875rem;
   line-height: 1.25rem;
   color: var(--coral-fg);
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
 }

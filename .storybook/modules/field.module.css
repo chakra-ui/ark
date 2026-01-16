@@ -17,9 +17,6 @@
   line-height: 1.25rem;
   font-weight: 500;
   color: var(--neutral-fg);
-
-  &[data-disabled] {
-  }
 }
 
 .ErrorText {
@@ -56,9 +53,6 @@
   &:focus {
     border-color: var(--coral-solid);
     box-shadow: 0 0 0 1px var(--coral-solid);
-  }
-
-  &[data-disabled] {
   }
 
   &[data-invalid] {
@@ -99,9 +93,6 @@
     box-shadow: 0 0 0 1px var(--coral-solid);
   }
 
-  &[data-disabled] {
-  }
-
   &[data-invalid] {
     border-color: var(--coral-fg);
 
@@ -137,9 +128,6 @@
   &:focus {
     border-color: var(--coral-solid);
     box-shadow: 0 0 0 1px var(--coral-solid);
-  }
-
-  &[data-disabled] {
   }
 
   &[data-invalid] {

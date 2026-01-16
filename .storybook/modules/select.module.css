@@ -65,6 +65,12 @@
       box-shadow: 0 0 0 1px var(--error);
     }
   }
+
+  & svg {
+    width: 1rem;
+    height: 1rem;
+    color: var(--neutral-emphasized);
+  }
 }
 
 .ValueText {
