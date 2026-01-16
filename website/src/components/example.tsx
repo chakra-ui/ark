@@ -21,7 +21,7 @@ export const Example = async (props: Props) => {
 
   const framework = await getFramework()
   const examples = await findExamples(props)
-  const styles = await fetchStyle(props.component)
+  const cssModules = await fetchCssModules(examples)
   const hasPreview = component ? exampleExists(component, props.id) : false
 
   return (
@@ -30,7 +30,7 @@ export const Example = async (props: Props) => {
       <CodeTabs
         examples={examples}
         defaultValue={framework}
-        styles={styles}
+        cssModules={cssModules}
         meta={{
           ...props,
           framework,
@@ -43,13 +43,13 @@ export const Example = async (props: Props) => {
 export const ExampleCode = async (props: Props) => {
   const framework = await getFramework()
   const examples = await findExamples(props)
-  const styles = await fetchStyle(props.component)
+  const cssModules = await fetchCssModules(examples)
 
   return (
     <CodeTabs
       examples={examples}
       defaultValue={framework}
-      styles={styles}
+      cssModules={cssModules}
       meta={{
         ...props,
         framework,
@@ -121,12 +121,6 @@ const findExamples = async (props: Props) => {
   )
 }
 
-const replacementMap: Record<string, string> = {
-  // progress-circular uses progress-circular.module.css
-  // progress-linear uses progress.module.css
-  'progress-linear': 'progress',
-}
-
 /**
  * Check if a React example file exists (server-side only)
  */
@@ -147,24 +141,59 @@ function exampleExists(component: string, id: string): boolean {
   return existsSync(filePath)
 }
 
+/**
+ * Extract CSS module import paths from example code
+ */
+function extractCssModuleImports(code: string): string[] {
+  const importRegex = /from\s+['"]styles\/([^'"]+\.module\.css)['"]/g
+  const matches = code.matchAll(importRegex)
+  const imports = Array.from(matches, (match) => match[1])
+  return [...new Set(imports)]
+}
+
+/**
+ * Fetch CSS modules used by an example
+ */
+export const fetchCssModules = async (exampleCodes: { code: string }[]): Promise<Record<string, string>> => {
+  const cssModules: Record<string, string> = {}
+  const modulesPath = join(process.cwd(), '..', '.storybook', 'modules')
+
+  // Collect all unique CSS module imports from all framework examples
+  const allImports = new Set<string>()
+  for (const { code } of exampleCodes) {
+    for (const imp of extractCssModuleImports(code)) {
+      allImports.add(imp)
+    }
+  }
+
+  // Load each CSS module
+  for (const moduleName of allImports) {
+    const filePath = join(modulesPath, moduleName)
+    if (existsSync(filePath)) {
+      cssModules[moduleName] = await readFile(filePath, 'utf-8')
+    }
+  }
+
+  // Always include base styles (theme + utilities)
+  const themeFile = join(modulesPath, 'theme.css')
+  const utilitiesFile = join(modulesPath, 'utilities.css')
+
+  if (existsSync(themeFile)) {
+    cssModules['theme.css'] = await readFile(themeFile, 'utf-8')
+  }
+  if (existsSync(utilitiesFile)) {
+    cssModules['utilities.css'] = await readFile(utilitiesFile, 'utf-8')
+  }
+
+  return cssModules
+}
+
 export const fetchStyle = async (comp: string | undefined) => {
   const serverContext = getServerContext()
-
   const component = comp ?? serverContext.component
   if (!component) return ''
-  const cm = replacementMap[component] ?? component
 
-  // Try CSS modules first (what examples actually use)
-  const moduleFilePath = join(process.cwd(), '..', '.storybook', 'modules', `${cm}.module.css`)
-  if (existsSync(moduleFilePath)) {
-    return readFile(moduleFilePath, 'utf-8')
-  }
-
-  // Fallback to plain CSS
-  const plainFilePath = join(process.cwd(), '..', '.storybook', 'styles', `${cm}.css`)
-  if (existsSync(plainFilePath)) {
-    return readFile(plainFilePath, 'utf-8')
-  }
-
+  // This is a legacy function kept for backward compatibility
+  // Use fetchCssModules for the new CSS module approach
   return ''
 }

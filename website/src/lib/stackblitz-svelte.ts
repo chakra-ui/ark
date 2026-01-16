@@ -111,10 +111,27 @@ const appDts = `/// <reference types="svelte" />
 
 export {};`
 
-export async function openInStackblitzSvelte(opts: { code: string; css: string; id: string; component: string }) {
-  const { code, css, id, component } = opts
+function transformCssModuleImports(code: string): string {
+  return code.replace(/from\s+['"]styles\/([^'"]+)['"]/g, "from './$1'")
+}
 
-  const files = {
+function generateAppCss(cssModules: Record<string, string>): string {
+  const theme = cssModules['theme.css'] ?? ''
+  const utilities = cssModules['utilities.css'] ?? ''
+  return `${theme}\n\n${utilities}`
+}
+
+export async function openInStackblitzSvelte(opts: {
+  code: string
+  cssModules: Record<string, string>
+  id: string
+  component: string
+}) {
+  let { code, cssModules, id, component } = opts
+
+  code = transformCssModuleImports(code)
+
+  const files: Record<string, string> = {
     'tsconfig.json': JSON.stringify(tsconfig, null, 2),
     'tsconfig.app.json': JSON.stringify(tsconfigApp, null, 2),
     'tsconfig.node.json': JSON.stringify(tsconfigNode, null, 2),
@@ -123,9 +140,15 @@ export async function openInStackblitzSvelte(opts: { code: string; css: string; 
     'svelte.config.js': svelteConfig,
     'index.html': indexHtml,
     'src/App.svelte': code,
-    'src/app.css': css,
+    'src/app.css': generateAppCss(cssModules),
     'src/main.ts': main,
     'src/app.d.ts': appDts,
+  }
+
+  for (const [filename, content] of Object.entries(cssModules)) {
+    if (filename.endsWith('.module.css')) {
+      files[`src/${filename}`] = content
+    }
   }
 
   sdk.openProject(

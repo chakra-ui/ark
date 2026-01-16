@@ -123,7 +123,6 @@
   padding-bottom: var(--py);
   color: var(--neutral-fg);
   line-height: 1.5;
-  white-space: nowrap;
 }
 
 .Centered {

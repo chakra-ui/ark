@@ -277,13 +277,11 @@ import * as NavigationMenu_RenderProp from '@examples/navigation-menu/examples/r
 import * as NavigationMenu_RootProvider from '@examples/navigation-menu/examples/root-provider'
 import * as NavigationMenu_Viewport from '@examples/navigation-menu/examples/viewport'
 import * as NumberInput_Basic from '@examples/number-input/examples/basic'
-import * as NumberInput_FormUsage from '@examples/number-input/examples/form-usage'
-import * as NumberInput_Formatted from '@examples/number-input/examples/formatted'
+import * as NumberInput_Context from '@examples/number-input/examples/context'
+import * as NumberInput_Formatting from '@examples/number-input/examples/formatting'
 import * as NumberInput_FractionDigits from '@examples/number-input/examples/fraction-digits'
 import * as NumberInput_MinMax from '@examples/number-input/examples/min-max'
 import * as NumberInput_MouseWheel from '@examples/number-input/examples/mouse-wheel'
-import * as NumberInput_NoClamp from '@examples/number-input/examples/no-clamp'
-import * as NumberInput_RenderFn from '@examples/number-input/examples/render-fn'
 import * as NumberInput_RootProvider from '@examples/number-input/examples/root-provider'
 import * as NumberInput_Scrubber from '@examples/number-input/examples/scrubber'
 import * as NumberInput_WithField from '@examples/number-input/examples/with-field'
@@ -468,24 +466,27 @@ import * as Toast_Action from '@examples/toast/examples/action'
 import * as Toast_Basic from '@examples/toast/examples/basic'
 import * as Toast_Duration from '@examples/toast/examples/duration'
 import * as Toast_MaxToasts from '@examples/toast/examples/max-toasts'
+import * as Toast_Placement from '@examples/toast/examples/placement'
 import * as Toast_PromiseToast from '@examples/toast/examples/promise-toast'
 import * as Toast_Types from '@examples/toast/examples/types'
 import * as Toast_Update from '@examples/toast/examples/update'
+import * as Toast_VaryingHeight from '@examples/toast/examples/varying-height'
 import * as ToggleGroup_Basic from '@examples/toggle-group/examples/basic'
-import * as ToggleGroup_InitialValue from '@examples/toggle-group/examples/initial-value'
+import * as ToggleGroup_Controlled from '@examples/toggle-group/examples/controlled'
 import * as ToggleGroup_Multiple from '@examples/toggle-group/examples/multiple'
 import * as ToggleGroup_RootProvider from '@examples/toggle-group/examples/root-provider'
 import * as Toggle_Basic from '@examples/toggle/examples/basic'
+import * as Toggle_Context from '@examples/toggle/examples/context'
 import * as Toggle_Controlled from '@examples/toggle/examples/controlled'
 import * as Toggle_Disabled from '@examples/toggle/examples/disabled'
 import * as Toggle_Indicator from '@examples/toggle/examples/indicator'
 import * as Tooltip_Arrow from '@examples/tooltip/examples/arrow'
 import * as Tooltip_Basic from '@examples/tooltip/examples/basic'
+import * as Tooltip_Context from '@examples/tooltip/examples/context'
 import * as Tooltip_Controlled from '@examples/tooltip/examples/controlled'
+import * as Tooltip_Delay from '@examples/tooltip/examples/delay'
 import * as Tooltip_Positioning from '@examples/tooltip/examples/positioning'
-import * as Tooltip_RenderFn from '@examples/tooltip/examples/render-fn'
 import * as Tooltip_RootProvider from '@examples/tooltip/examples/root-provider'
-import * as Tooltip_Timings from '@examples/tooltip/examples/timings'
 import * as Tooltip_WithinFixed from '@examples/tooltip/examples/within-fixed'
 import * as Tour_Basic from '@examples/tour/examples/basic'
 import * as Tour_Steps from '@examples/tour/examples/steps'
@@ -496,6 +497,8 @@ import * as TreeView_CheckboxTree from '@examples/tree-view/examples/checkbox-tr
 import * as TreeView_ContextMenu from '@examples/tree-view/examples/context-menu'
 import * as TreeView_ControlledExpanded from '@examples/tree-view/examples/controlled-expanded'
 import * as TreeView_ControlledSelected from '@examples/tree-view/examples/controlled-selected'
+import * as TreeView_DisabledNode from '@examples/tree-view/examples/disabled-node'
+import * as TreeView_ExpandCollapseAll from '@examples/tree-view/examples/expand-collapse-all'
 import * as TreeView_Filtering from '@examples/tree-view/examples/filtering'
 import * as TreeView_LazyMount from '@examples/tree-view/examples/lazy-mount'
 import * as TreeView_Links from '@examples/tree-view/examples/links'
@@ -788,13 +791,11 @@ const exampleModules: Record<string, ExampleModule> = {
   'navigation-menu/root-provider': NavigationMenu_RootProvider,
   'navigation-menu/viewport': NavigationMenu_Viewport,
   'number-input/basic': NumberInput_Basic,
-  'number-input/form-usage': NumberInput_FormUsage,
-  'number-input/formatted': NumberInput_Formatted,
+  'number-input/context': NumberInput_Context,
+  'number-input/formatting': NumberInput_Formatting,
   'number-input/fraction-digits': NumberInput_FractionDigits,
   'number-input/min-max': NumberInput_MinMax,
   'number-input/mouse-wheel': NumberInput_MouseWheel,
-  'number-input/no-clamp': NumberInput_NoClamp,
-  'number-input/render-fn': NumberInput_RenderFn,
   'number-input/root-provider': NumberInput_RootProvider,
   'number-input/scrubber': NumberInput_Scrubber,
   'number-input/with-field': NumberInput_WithField,
@@ -979,24 +980,27 @@ const exampleModules: Record<string, ExampleModule> = {
   'toast/basic': Toast_Basic,
   'toast/duration': Toast_Duration,
   'toast/max-toasts': Toast_MaxToasts,
+  'toast/placement': Toast_Placement,
   'toast/promise-toast': Toast_PromiseToast,
   'toast/types': Toast_Types,
   'toast/update': Toast_Update,
+  'toast/varying-height': Toast_VaryingHeight,
   'toggle-group/basic': ToggleGroup_Basic,
-  'toggle-group/initial-value': ToggleGroup_InitialValue,
+  'toggle-group/controlled': ToggleGroup_Controlled,
   'toggle-group/multiple': ToggleGroup_Multiple,
   'toggle-group/root-provider': ToggleGroup_RootProvider,
   'toggle/basic': Toggle_Basic,
+  'toggle/context': Toggle_Context,
   'toggle/controlled': Toggle_Controlled,
   'toggle/disabled': Toggle_Disabled,
   'toggle/indicator': Toggle_Indicator,
   'tooltip/arrow': Tooltip_Arrow,
   'tooltip/basic': Tooltip_Basic,
+  'tooltip/context': Tooltip_Context,
   'tooltip/controlled': Tooltip_Controlled,
+  'tooltip/delay': Tooltip_Delay,
   'tooltip/positioning': Tooltip_Positioning,
-  'tooltip/render-fn': Tooltip_RenderFn,
   'tooltip/root-provider': Tooltip_RootProvider,
-  'tooltip/timings': Tooltip_Timings,
   'tooltip/within-fixed': Tooltip_WithinFixed,
   'tour/basic': Tour_Basic,
   'tour/steps': Tour_Steps,
@@ -1007,6 +1011,8 @@ const exampleModules: Record<string, ExampleModule> = {
   'tree-view/context-menu': TreeView_ContextMenu,
   'tree-view/controlled-expanded': TreeView_ControlledExpanded,
   'tree-view/controlled-selected': TreeView_ControlledSelected,
+  'tree-view/disabled-node': TreeView_DisabledNode,
+  'tree-view/expand-collapse-all': TreeView_ExpandCollapseAll,
   'tree-view/filtering': TreeView_Filtering,
   'tree-view/lazy-mount': TreeView_LazyMount,
   'tree-view/links': TreeView_Links,

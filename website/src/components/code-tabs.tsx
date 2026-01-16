@@ -28,12 +28,12 @@ interface ExampleMeta {
 interface Props extends Tabs.RootProps {
   defaultValue: string
   examples: CodeExample[]
-  styles?: string
+  cssModules?: Record<string, string>
   meta?: ExampleMeta
 }
 
 export const CodeTabs = (props: Props) => {
-  const { examples, defaultValue, meta, styles, ...rootProps } = props
+  const { examples, defaultValue, meta, cssModules, ...rootProps } = props
 
   return (
     <Tabs.Root
@@ -70,7 +70,7 @@ export const CodeTabs = (props: Props) => {
         <Tabs.Indicator />
         {meta && (
           <Box pos="absolute" right="1.5" top="1" className="dark">
-            <StackblitzButton examples={examples} styles={styles} meta={meta} />
+            <StackblitzButton examples={examples} cssModules={cssModules} meta={meta} />
           </Box>
         )}
       </Tabs.List>
@@ -83,10 +83,14 @@ export const CodeTabs = (props: Props) => {
   )
 }
 
-function StackblitzButton(props: { examples: CodeExample[]; styles: string | undefined; meta: ExampleMeta }) {
+function StackblitzButton(props: {
+  examples: CodeExample[]
+  cssModules: Record<string, string> | undefined
+  meta: ExampleMeta
+}) {
   const {
     examples,
-    styles = '',
+    cssModules = {},
     meta: { id, component, framework },
   } = props
 
@@ -110,7 +114,7 @@ function StackblitzButton(props: { examples: CodeExample[]; styles: string | und
 
         fn?.({
           code: example.code,
-          css: styles,
+          cssModules,
           id,
           component: component ?? 'Example',
         })

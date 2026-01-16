@@ -80,19 +80,41 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   </React.StrictMode>,
 )`
 
-export async function openInStackblitzReact(opts: { code: string; css: string; id: string; component: string }) {
-  let { code, css, id, component } = opts
+function transformCssModuleImports(code: string): string {
+  return code.replace(/from\s+['"]styles\/([^'"]+)['"]/g, "from './$1'")
+}
+
+function generateIndexCss(cssModules: Record<string, string>): string {
+  const theme = cssModules['theme.css'] ?? ''
+  const utilities = cssModules['utilities.css'] ?? ''
+  return `${theme}\n\n${utilities}`
+}
+
+export async function openInStackblitzReact(opts: {
+  code: string
+  cssModules: Record<string, string>
+  id: string
+  component: string
+}) {
+  let { code, cssModules, id, component } = opts
 
   code = code.replace(/export const \w+ =/, 'export const App =')
+  code = transformCssModuleImports(code)
 
-  const files = {
+  const files: Record<string, string> = {
     'tsconfig.json': JSON.stringify(tsconfig, null, 2),
     'package.json': JSON.stringify(packageJson, null, 2),
     'vite.config.ts': viteConfig,
     'index.html': indexHtml,
     'src/App.tsx': code,
-    'src/index.css': css,
+    'src/index.css': generateIndexCss(cssModules),
     'src/main.tsx': main,
+  }
+
+  for (const [filename, content] of Object.entries(cssModules)) {
+    if (filename.endsWith('.module.css')) {
+      files[`src/${filename}`] = content
+    }
   }
 
   sdk.openProject(
