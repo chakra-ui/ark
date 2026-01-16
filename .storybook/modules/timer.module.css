@@ -1,0 +1,39 @@
+.Root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.Area {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ItemGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.Item {
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--neutral-fg);
+  min-width: 2ch;
+  text-align: center;
+}
+
+.ItemLabel {
+  font-size: 0.75rem;
+  color: var(--neutral-emphasized);
+}
+
+.Separator {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--neutral-emphasized);
+}

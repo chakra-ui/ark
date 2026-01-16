@@ -14,9 +14,15 @@ Learn how to use the `Timer` component in your project. Let's take a look at the
 
 ### Countdown Timer
 
-You can create a countdown timer by setting the `targetMs` prop to a future timestamp:
+You can create a countdown timer by setting the `countdown` prop to `true` and `startMs` to the initial time:
 
 <Example id="countdown" />
+
+### Custom Interval
+
+Use the `interval` prop to control how frequently the timer updates. This is useful for displaying milliseconds:
+
+<Example id="interval" />
 
 ### Timer Events
 
@@ -26,6 +32,12 @@ The Timer component provides events that you can listen to for various timer-rel
 - The `onTick` event is called on each timer update, providing details about the current timer state.
 
 <Example id="events" />
+
+### Pomodoro Timer
+
+Here's an example of building a pomodoro timer that alternates between work and break sessions:
+
+<Example id="pomodoro" />
 
 ### Using the Root Provider
 

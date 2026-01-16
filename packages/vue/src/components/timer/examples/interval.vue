@@ -7,16 +7,16 @@ import styles from 'styles/timer.module.css'
 </script>
 
 <template>
-  <Timer.Root class="stack" :countdown="true" :startMs="5 * 60 * 1000">
+  <Timer.Root class="stack" :interval="100" :targetMs="60 * 1000">
     <Timer.Area :class="styles.Area">
-      <div :class="styles.ItemGroup">
-        <Timer.Item :class="styles.Item" type="minutes" />
-        <span :class="styles.ItemLabel">minutes</span>
-      </div>
-      <Timer.Separator :class="styles.Separator">:</Timer.Separator>
       <div :class="styles.ItemGroup">
         <Timer.Item :class="styles.Item" type="seconds" />
         <span :class="styles.ItemLabel">seconds</span>
+      </div>
+      <Timer.Separator :class="styles.Separator">.</Timer.Separator>
+      <div :class="styles.ItemGroup">
+        <Timer.Item :class="styles.Item" type="milliseconds" />
+        <span :class="styles.ItemLabel">ms</span>
       </div>
     </Timer.Area>
     <Timer.Control class="hstack">

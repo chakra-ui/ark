@@ -3,17 +3,17 @@ import { PauseIcon, PlayIcon, RotateCcwIcon } from 'lucide-react'
 import button from 'styles/button.module.css'
 import styles from 'styles/timer.module.css'
 
-export const Countdown = () => (
-  <Timer.Root className="stack" countdown startMs={5 * 60 * 1000}>
+export const Interval = () => (
+  <Timer.Root className="stack" interval={100} targetMs={60 * 1000}>
     <Timer.Area className={styles.Area}>
-      <div className={styles.ItemGroup}>
-        <Timer.Item className={styles.Item} type="minutes" />
-        <span className={styles.ItemLabel}>minutes</span>
-      </div>
-      <Timer.Separator className={styles.Separator}>:</Timer.Separator>
       <div className={styles.ItemGroup}>
         <Timer.Item className={styles.Item} type="seconds" />
         <span className={styles.ItemLabel}>seconds</span>
+      </div>
+      <Timer.Separator className={styles.Separator}>.</Timer.Separator>
+      <div className={styles.ItemGroup}>
+        <Timer.Item className={styles.Item} type="milliseconds" />
+        <span className={styles.ItemLabel}>ms</span>
       </div>
     </Timer.Area>
     <Timer.Control className="hstack">

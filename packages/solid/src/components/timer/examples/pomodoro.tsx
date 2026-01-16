@@ -1,19 +1,27 @@
 import { Timer } from '@ark-ui/solid/timer'
-import { PlayIcon, RotateCcwIcon } from 'lucide-solid'
+import { PauseIcon, PlayIcon, RotateCcwIcon } from 'lucide-solid'
 import { createSignal } from 'solid-js'
 import button from 'styles/button.module.css'
 import styles from 'styles/timer.module.css'
 
-export const Events = () => {
-  const [ticks, setTicks] = createSignal(0)
+export const Pomodoro = () => {
+  const [isWorking, setIsWorking] = createSignal(true)
+  const [cycles, setCycles] = createSignal(0)
+
+  const handleComplete = () => {
+    setIsWorking(!isWorking())
+    if (!isWorking()) setCycles((c) => c + 1)
+  }
 
   return (
     <Timer.Root
       class="stack"
-      targetMs={60 * 1000}
-      onComplete={() => console.log('Timer completed')}
-      onTick={() => setTicks((t) => t + 1)}
+      startMs={isWorking() ? 25 * 60 * 1000 : 5 * 60 * 1000}
+      countdown
+      onComplete={handleComplete}
     >
+      <h2>{isWorking() ? 'Work Session' : 'Break Session'}</h2>
+
       <Timer.Area class={styles.Area}>
         <div class={styles.ItemGroup}>
           <Timer.Item class={styles.Item} type="minutes" />
@@ -30,12 +38,15 @@ export const Events = () => {
         <Timer.ActionTrigger class={button.Root} action="start">
           <PlayIcon /> Start
         </Timer.ActionTrigger>
+        <Timer.ActionTrigger class={button.Root} action="pause">
+          <PauseIcon /> Pause
+        </Timer.ActionTrigger>
         <Timer.ActionTrigger class={button.Root} action="reset">
           <RotateCcwIcon /> Reset
         </Timer.ActionTrigger>
       </Timer.Control>
 
-      <output>Ticks: {ticks()}</output>
+      <output>Completed cycles: {cycles()}</output>
     </Timer.Root>
   )
 }
