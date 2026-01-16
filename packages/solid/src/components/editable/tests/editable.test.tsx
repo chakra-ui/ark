@@ -1,7 +1,6 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { WithField } from '../examples/with-field'
-import { ControlledComponentUnderTest } from './controlled'
+import { ControlledComponentUnderTest, EditableWithField } from './controlled'
 
 describe('Editable', () => {
   it('should render controlled component', async () => {
@@ -59,32 +58,32 @@ describe('Editable', () => {
 
 describe('Editable / Field', () => {
   it('should set editable as required', async () => {
-    render(() => <WithField required />)
+    render(() => <EditableWithField required />)
     expect(screen.getByRole('textbox', { hidden: true })).toBeRequired()
   })
 
   it('should set editable as disabled', async () => {
-    render(() => <WithField disabled />)
+    render(() => <EditableWithField disabled />)
     expect(screen.getByRole('textbox', { hidden: true })).toBeDisabled()
   })
 
   it('should set editable as readonly', async () => {
-    render(() => <WithField readOnly />)
+    render(() => <EditableWithField readOnly />)
     expect(screen.getByRole('textbox', { hidden: true })).toHaveAttribute('readonly')
   })
 
   it('should display helper text', async () => {
-    render(() => <WithField />)
+    render(() => <EditableWithField />)
     expect(screen.getByText('Additional Info')).toBeInTheDocument()
   })
 
   it('should display error text when error is present', async () => {
-    render(() => <WithField invalid />)
+    render(() => <EditableWithField invalid />)
     expect(screen.getByText('Error Info')).toBeInTheDocument()
   })
 
   it('should not display error text when no error is present', async () => {
-    render(() => <WithField />)
+    render(() => <EditableWithField />)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })

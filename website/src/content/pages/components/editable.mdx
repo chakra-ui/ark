@@ -20,12 +20,30 @@ Learn how to use the `Editable` component in your project. Let's take a look at 
 
 <Example id="basic" />
 
-### Custom controls
+### Controlled
+
+Use the `value` and `onValueChange` props to control the editable state.
+
+<Example id="controlled" />
+
+### Context
+
+Use `Editable.Context` to access the editable state and show contextual UI like keyboard hints when editing.
+
+<Example id="context" />
+
+### Controls
 
 In some cases, you might need to use custom controls to toggle the edit and read mode. We use the render prop pattern to
 provide access to the internal state of the component.
 
-<Example id="custom-controls" />
+<Example id="controls" />
+
+### Textarea
+
+Use the `asChild` prop on `Editable.Input` to render a textarea for multi-line editing.
+
+<Example id="textarea" />
 
 ### Field
 

@@ -1,9 +1,11 @@
 import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
+import ContextExample from './examples/context.svelte'
 import ControlledExample from './examples/controlled.svelte'
-import CustomControlsExample from './examples/custom-controls.svelte'
-import RenderFnExample from './examples/render-fn.svelte'
+import ControlsExample from './examples/controls.svelte'
+import DoubleClickExample from './examples/double-click.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import TextareaExample from './examples/textarea.svelte'
 import WithFieldExample from './examples/with-field.svelte'
 
 const meta: Meta = {
@@ -18,27 +20,39 @@ export const Basic = {
   }),
 }
 
+export const Context = {
+  render: () => ({
+    Component: ContextExample,
+  }),
+}
+
 export const Controlled = {
   render: () => ({
     Component: ControlledExample,
   }),
 }
 
-export const RenderFn = {
+export const Controls = {
   render: () => ({
-    Component: RenderFnExample,
+    Component: ControlsExample,
   }),
 }
 
-export const CustomControls = {
+export const DoubleClick = {
   render: () => ({
-    Component: CustomControlsExample,
+    Component: DoubleClickExample,
   }),
 }
 
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
+  }),
+}
+
+export const Textarea = {
+  render: () => ({
+    Component: TextareaExample,
   }),
 }
 

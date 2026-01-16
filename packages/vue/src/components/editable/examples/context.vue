@@ -11,10 +11,13 @@ import styles from 'styles/editable.module.css'
       <Editable.Input :class="styles.Input" />
       <Editable.Preview :class="styles.Preview" />
     </Editable.Area>
-    <Editable.Control :class="styles.Control">
-      <Editable.EditTrigger :class="styles.EditTrigger">
-        <PencilIcon />
-      </Editable.EditTrigger>
-    </Editable.Control>
+    <Editable.Context v-slot="{ editing }">
+      <span v-if="editing" :class="styles.HelperText">Enter to save, Esc to cancel</span>
+      <Editable.Control v-else :class="styles.Control">
+        <Editable.EditTrigger :class="styles.EditTrigger">
+          <PencilIcon />
+        </Editable.EditTrigger>
+      </Editable.Control>
+    </Editable.Context>
   </Editable.Root>
 </template>

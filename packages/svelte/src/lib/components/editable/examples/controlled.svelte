@@ -1,21 +1,25 @@
 <script lang="ts">
   import { Editable } from '@ark-ui/svelte/editable'
+  import PencilIcon from 'lucide-svelte/icons/pencil'
+  import styles from 'styles/editable.module.css'
 
-  let value = $state('Click to edit')
+  let value = $state('Hello World')
 </script>
 
-<Editable.Root bind:value>
-  <Editable.Label>Label</Editable.Label>
-  <Editable.Area>
-    <Editable.Input />
-    <Editable.Preview />
+<Editable.Root
+  class={styles.Root}
+  placeholder="Enter text..."
+  {value}
+  onValueChange={(e) => (value = e.value)}
+>
+  <Editable.Label class={styles.Label}>Label</Editable.Label>
+  <Editable.Area class={styles.Area}>
+    <Editable.Input class={styles.Input} />
+    <Editable.Preview class={styles.Preview} />
   </Editable.Area>
-
-  <Editable.Control>
-    <Editable.EditTrigger>Edit</Editable.EditTrigger>
-    <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
-    <Editable.CancelTrigger>Cancel</Editable.CancelTrigger>
+  <Editable.Control class={styles.Control}>
+    <Editable.EditTrigger class={styles.EditTrigger}>
+      <PencilIcon />
+    </Editable.EditTrigger>
   </Editable.Control>
 </Editable.Root>
-
-<p>Value: {value}</p>
