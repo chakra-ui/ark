@@ -1,6 +1,6 @@
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import ComponentUnderTest from './examples/basic.vue'
+import ComponentUnderTest from './tests/collapsible.test.vue'
 
 describe('Collapsible', () => {
   it('should control presence when not lazy mounting and not unmounting on exit', async () => {
