@@ -4,7 +4,7 @@
   import styles from 'styles/hover-card.module.css'
 </script>
 
-<HoverCard.Root positioning={{ placement: 'right', gutter: 12 }}>
+<HoverCard.Root openDelay={200} closeDelay={500}>
   <p>
     Liked by
     <HoverCard.Trigger class={styles.Trigger}>

@@ -2,8 +2,8 @@ import { HoverCard } from '@ark-ui/solid/hover-card'
 import { Portal } from 'solid-js/web'
 import styles from 'styles/hover-card.module.css'
 
-export const Basic = () => (
-  <HoverCard.Root>
+export const Delay = () => (
+  <HoverCard.Root openDelay={200} closeDelay={500}>
     <p>
       Liked by{' '}
       <HoverCard.Trigger
@@ -23,27 +23,12 @@ export const Basic = () => (
             <HoverCard.ArrowTip class={styles.ArrowTip} />
           </HoverCard.Arrow>
           <div class={styles.Body}>
-            <div class={styles.Header}>
-              <img class={styles.Avatar} src="https://i.pravatar.cc/300?u=sarah" alt="Sarah Chen" />
-              <button type="button" class={styles.FollowButton}>
-                Follow
-              </button>
-            </div>
+            <img class={styles.Avatar} src="https://i.pravatar.cc/300?u=sarah" alt="Sarah Chen" />
             <div>
               <p class={styles.Name}>Sarah Chen</p>
               <p class={styles.Username}>@sarah_chen</p>
             </div>
-            <p class={styles.Bio}>Design Engineer at Acme Inc. Building beautiful interfaces and design systems.</p>
-            <div class={styles.Stats}>
-              <div class={styles.Stat}>
-                <span class={styles.StatValue}>2,456</span>
-                <span class={styles.StatLabel}>Following</span>
-              </div>
-              <div class={styles.Stat}>
-                <span class={styles.StatValue}>14.5K</span>
-                <span class={styles.StatLabel}>Followers</span>
-              </div>
-            </div>
+            <p class={styles.Bio}>Design Engineer at Acme Inc.</p>
           </div>
         </HoverCard.Content>
       </HoverCard.Positioner>

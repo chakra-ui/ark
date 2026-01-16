@@ -1,16 +1,21 @@
 import { HoverCard } from '@ark-ui/react/hover-card'
 import { Portal } from '@ark-ui/react/portal'
+import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
 import styles from 'styles/hover-card.module.css'
 
-export const Positioning = () => (
-  <HoverCard.Root positioning={{ placement: 'right', gutter: 12 }}>
-    <p>
-      Liked by{' '}
-      <HoverCard.Trigger className={styles.Trigger} asChild>
-        <a href="#profile">@sarah_chen</a>
-      </HoverCard.Trigger>{' '}
-      and 3 others
-    </p>
+export const Context = () => (
+  <HoverCard.Root>
+    <HoverCard.Context>
+      {(context) => (
+        <p>
+          Liked by{' '}
+          <HoverCard.Trigger className={styles.Trigger} asChild>
+            <a href="#profile">@sarah_chen {context.open ? <ChevronUpIcon /> : <ChevronDownIcon />}</a>
+          </HoverCard.Trigger>{' '}
+          and 3 others
+        </p>
+      )}
+    </HoverCard.Context>
     <Portal>
       <HoverCard.Positioner>
         <HoverCard.Content className={styles.Content}>

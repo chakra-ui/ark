@@ -1,0 +1,178 @@
+.Trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--coral-fg);
+  text-decoration: underline;
+  text-decoration-color: var(--coral-muted);
+  text-underline-offset: 2px;
+  cursor: pointer;
+  font-weight: 500;
+  transition:
+    text-decoration-color 150ms,
+    color 150ms;
+
+  &:hover {
+    text-decoration-color: var(--coral-fg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--coral-focus-ring);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  & svg {
+    width: 1em;
+    height: 1em;
+  }
+}
+
+.Content {
+  --arrow-background: var(--bg-popover);
+  --arrow-size: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-popover);
+  border: 1px solid var(--border);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  outline: none;
+  z-index: calc(50 + var(--layer-index, 0));
+  transform-origin: var(--transform-origin);
+
+  &[data-state='open'] {
+    animation: scale-fade-in 0.15s ease-out;
+  }
+
+  &[data-state='closed'] {
+    animation: scale-fade-out 0.1s ease-in;
+  }
+}
+
+.Arrow {
+  --arrow-background: var(--bg-popover);
+  --arrow-shadow-color: var(--border);
+}
+
+.ArrowTip {
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+
+.Avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.AvatarFallback {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--coral-subtle);
+  color: var(--coral-fg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.Body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.Name {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--neutral-fg);
+}
+
+.Username {
+  margin: 0;
+  font-size: 14px;
+  color: var(--neutral-emphasized);
+}
+
+.Bio {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--neutral-fg);
+}
+
+.Stats {
+  display: flex;
+  gap: 1rem;
+  font-size: 14px;
+}
+
+.Stat {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.StatValue {
+  font-weight: 700;
+  color: var(--neutral-fg);
+}
+
+.StatLabel {
+  color: var(--neutral-emphasized);
+}
+
+.FollowButton {
+  padding: 0.5rem 1rem;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 9999px;
+  border: none;
+  background: var(--neutral-fg);
+  color: var(--neutral-contrast);
+  cursor: pointer;
+  transition: opacity 150ms;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+@keyframes scale-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-fade-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}

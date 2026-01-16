@@ -20,28 +20,33 @@ Learn how to use the `HoverCard` component in your project. Let's take a look at
 
 <Example id="basic" />
 
-### Controlled HoverCard
+### Controlled
 
 The controlled `HoverCard` component provides an interface for managing the state of the hover card using the `open` and
 `onOpenChange` props:
 
 <Example id="controlled" />
 
-### Custom Positioning
+### Delay
+
+Control the open and close delay of the hover card using the `openDelay` and `closeDelay` props:
+
+<Example id="delay" />
+
+### Positioning
 
 The `HoverCard` component can be customized in its placement and distance from the trigger element through the
 `positioning` prop:
 
 <Example id="positioning" />
 
-### Render Prop Usage
+### Context
 
-The `HoverCard` component can also accept a render prop, giving the user more control over rendering behavior. This is
-useful for dynamically updating the trigger based on the state of the `HoverCard`:
+Use the `Context` component to access the hover card's state and methods from within the component tree:
 
-<Example id="render-prop" />
+<Example id="context" />
 
-### Using the Root Provider
+### Root Provider
 
 The `RootProvider` component provides a context for the hover-card. It accepts the value of the `useHover-card` hook.
 You can leverage it to access the component state and methods from outside the hover-card.

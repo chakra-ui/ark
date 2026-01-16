@@ -1,19 +1,32 @@
 <script lang="ts">
   import { HoverCard } from '@ark-ui/svelte/hover-card'
   import { Portal } from '@ark-ui/svelte/portal'
+  import ChevronDownIcon from 'lucide-svelte/icons/chevron-down'
+  import ChevronUpIcon from 'lucide-svelte/icons/chevron-up'
   import styles from 'styles/hover-card.module.css'
 </script>
 
-<HoverCard.Root positioning={{ placement: 'right', gutter: 12 }}>
-  <p>
-    Liked by
-    <HoverCard.Trigger class={styles.Trigger}>
-      {#snippet asChild(props)}
-        <a href="#profile" {...props()}>@sarah_chen</a>
-      {/snippet}
-    </HoverCard.Trigger>
-    and 3 others
-  </p>
+<HoverCard.Root>
+  <HoverCard.Context>
+    {#snippet render(context)}
+      <p>
+        Liked by
+        <HoverCard.Trigger class={styles.Trigger}>
+          {#snippet asChild(props)}
+            <a href="#profile" {...props()}>
+              @sarah_chen
+              {#if context().open}
+                <ChevronUpIcon />
+              {:else}
+                <ChevronDownIcon />
+              {/if}
+            </a>
+          {/snippet}
+        </HoverCard.Trigger>
+        and 3 others
+      </p>
+    {/snippet}
+  </HoverCard.Context>
   <Portal>
     <HoverCard.Positioner>
       <HoverCard.Content class={styles.Content}>

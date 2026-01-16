@@ -4,7 +4,7 @@ import styles from 'styles/hover-card.module.css'
 </script>
 
 <template>
-  <HoverCard.Root>
+  <HoverCard.Root :open-delay="200" :close-delay="500">
     <p>
       Liked by
       <HoverCard.Trigger :class="styles.Trigger" as-child>
@@ -19,25 +19,12 @@ import styles from 'styles/hover-card.module.css'
             <HoverCard.ArrowTip :class="styles.ArrowTip" />
           </HoverCard.Arrow>
           <div :class="styles.Body">
-            <div :class="styles.Header">
-              <img :class="styles.Avatar" src="https://i.pravatar.cc/300?u=sarah" alt="Sarah Chen" />
-              <button type="button" :class="styles.FollowButton">Follow</button>
-            </div>
+            <img :class="styles.Avatar" src="https://i.pravatar.cc/300?u=sarah" alt="Sarah Chen" />
             <div>
               <p :class="styles.Name">Sarah Chen</p>
               <p :class="styles.Username">@sarah_chen</p>
             </div>
-            <p :class="styles.Bio">Design Engineer at Acme Inc. Building beautiful interfaces and design systems.</p>
-            <div :class="styles.Stats">
-              <div :class="styles.Stat">
-                <span :class="styles.StatValue">2,456</span>
-                <span :class="styles.StatLabel">Following</span>
-              </div>
-              <div :class="styles.Stat">
-                <span :class="styles.StatValue">14.5K</span>
-                <span :class="styles.StatLabel">Followers</span>
-              </div>
-            </div>
+            <p :class="styles.Bio">Design Engineer at Acme Inc.</p>
           </div>
         </HoverCard.Content>
       </HoverCard.Positioner>

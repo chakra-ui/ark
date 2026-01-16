@@ -1,9 +1,10 @@
 import type { Meta } from '@storybook/vue3-vite'
 
 import BasicExample from './examples/basic.vue'
+import ContextExample from './examples/context.vue'
 import ControlledExample from './examples/controlled.vue'
+import DelayExample from './examples/delay.vue'
 import PositioningExample from './examples/positioning.vue'
-import RenderPropExample from './examples/render-prop.vue'
 import RootProviderExample from './examples/root-provider.vue'
 
 const meta: Meta = {
@@ -26,6 +27,13 @@ export const Controlled = {
   }),
 }
 
+export const Delay = {
+  render: () => ({
+    components: { Component: DelayExample },
+    template: '<Component />',
+  }),
+}
+
 export const Positioning = {
   render: () => ({
     components: { Component: PositioningExample },
@@ -33,9 +41,9 @@ export const Positioning = {
   }),
 }
 
-export const RenderProp = {
+export const Context = {
   render: () => ({
-    components: { Component: RenderPropExample },
+    components: { Component: ContextExample },
     template: '<Component />',
   }),
 }

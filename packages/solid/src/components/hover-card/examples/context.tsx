@@ -1,21 +1,26 @@
 import { HoverCard } from '@ark-ui/solid/hover-card'
+import { ChevronDownIcon, ChevronUpIcon } from 'lucide-solid'
 import { Portal } from 'solid-js/web'
 import styles from 'styles/hover-card.module.css'
 
-export const Positioning = () => (
-  <HoverCard.Root positioning={{ placement: 'right', gutter: 12 }}>
-    <p>
-      Liked by{' '}
-      <HoverCard.Trigger
-        class={styles.Trigger}
-        asChild={(props) => (
-          <a href="#profile" {...props()}>
-            @sarah_chen
-          </a>
-        )}
-      />{' '}
-      and 3 others
-    </p>
+export const Context = () => (
+  <HoverCard.Root>
+    <HoverCard.Context>
+      {(context) => (
+        <p>
+          Liked by{' '}
+          <HoverCard.Trigger
+            class={styles.Trigger}
+            asChild={(props) => (
+              <a href="#profile" {...props()}>
+                @sarah_chen {context().open ? <ChevronUpIcon /> : <ChevronDownIcon />}
+              </a>
+            )}
+          />{' '}
+          and 3 others
+        </p>
+      )}
+    </HoverCard.Context>
     <Portal>
       <HoverCard.Positioner>
         <HoverCard.Content class={styles.Content}>

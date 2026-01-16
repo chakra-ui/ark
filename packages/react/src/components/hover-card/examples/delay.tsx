@@ -2,8 +2,8 @@ import { HoverCard } from '@ark-ui/react/hover-card'
 import { Portal } from '@ark-ui/react/portal'
 import styles from 'styles/hover-card.module.css'
 
-export const Positioning = () => (
-  <HoverCard.Root positioning={{ placement: 'right', gutter: 12 }}>
+export const Delay = () => (
+  <HoverCard.Root openDelay={200} closeDelay={500}>
     <p>
       Liked by{' '}
       <HoverCard.Trigger className={styles.Trigger} asChild>
