@@ -22,14 +22,10 @@ Learn how to use the `RatingGroup` component in your project. Let's take a look 
 
 ### Using half ratings
 
-Allow `0.5` value steps by setting the `allowHalf` prop to `true`. Ensure to render the correct icon if the `isHalf`
+Allow `0.5` value steps by setting the `allowHalf` prop to `true`. Ensure to render the correct icon if the `half`
 value is set in the Rating components render callback.
 
-<Example id="half-ratings" />
-
-### Using a default value
-
-<Example id="initial-value" />
+<Example id="half-star" />
 
 ### Controlled
 
@@ -42,12 +38,6 @@ When using the `RatingGroup` component, you can use the `value` and `onValueChan
 To make the rating group disabled, set the `disabled` prop to `true`.
 
 <Example id="disabled" />
-
-### Readonly rating group
-
-To make the rating group readonly, set the `readOnly` prop to `true`.
-
-<Example id="read-only" />
 
 ### Usage within forms
 
@@ -65,8 +55,8 @@ handling ARIA labels, helper text, and error text to ensure proper accessibility
 
 ### Using the Root Provider
 
-The `RootProvider` component provides a context for the rating-group. It accepts the value of the `useRating-group`
-hook. You can leverage it to access the component state and methods from outside the rating-group.
+The `RootProvider` component provides a context for the rating group. It accepts the value of the `useRatingGroup`
+hook. You can leverage it to access the component state and methods from outside the rating group.
 
 <Example id="root-provider" />
 
