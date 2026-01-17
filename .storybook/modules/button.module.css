@@ -28,15 +28,15 @@
   }
 
   background: transparent;
-  border: 1px solid var(--border-emphasized);
-  color: var(--neutral-fg);
+  border: 1px solid var(--demo-border-emphasized);
+  color: var(--demo-neutral-fg);
 
   &:is(:hover, [aria-expanded='true']):not(:disabled, [data-disabled]) {
-    background: var(--neutral-subtle);
+    background: var(--demo-neutral-subtle);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: -1px;
   }
 
@@ -47,23 +47,23 @@
 
   /* Surface: outline + coral text */
   &[data-variant='surface'] {
-    border-color: var(--border-emphasized);
-    color: var(--coral-fg);
+    border-color: var(--demo-border-emphasized);
+    color: var(--demo-coral-fg);
 
     &:hover {
-      background: var(--coral-subtle);
+      background: var(--demo-coral-subtle);
     }
   }
 
   /* Solid: solid bg + contrast text */
   &[data-variant='solid'] {
-    background: var(--coral-solid);
-    border-color: var(--coral-solid);
-    color: var(--coral-contrast);
+    background: var(--demo-coral-solid);
+    border-color: var(--demo-coral-solid);
+    color: var(--demo-coral-contrast);
 
     &:hover {
-      background: var(--coral-fg);
-      border-color: var(--coral-fg);
+      background: var(--demo-coral-fg);
+      border-color: var(--demo-coral-fg);
     }
 
     &:focus-visible {

@@ -10,7 +10,7 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
   user-select: none;
   &[data-disabled] {
     opacity: 0.5;
@@ -26,7 +26,7 @@
   gap: 0.25rem;
   min-height: 2.5rem;
   padding: 0.25rem 0.5rem;
-  border: 1px solid var(--border-emphasized);
+  border: 1px solid var(--demo-border-emphasized);
   border-radius: 0.375rem;
   background: transparent;
   transition:
@@ -39,8 +39,8 @@
   }
 
   &:focus-within {
-    border-color: var(--coral-solid);
-    box-shadow: 0 0 0 1px var(--coral-solid);
+    border-color: var(--demo-coral-solid);
+    box-shadow: 0 0 0 1px var(--demo-coral-solid);
   }
 
   &[data-disabled] {
@@ -49,11 +49,11 @@
   }
 
   &[data-invalid] {
-    border-color: var(--error);
+    border-color: var(--demo-error);
 
     &:focus-within {
-      border-color: var(--error);
-      box-shadow: 0 0 0 1px var(--error);
+      border-color: var(--demo-error);
+      box-shadow: 0 0 0 1px var(--demo-error);
     }
   }
 }
@@ -73,14 +73,14 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   border-radius: 0.25rem;
-  background: var(--neutral-subtle);
-  color: var(--neutral-fg);
+  background: var(--demo-neutral-subtle);
+  color: var(--demo-neutral-fg);
   outline: none;
   transition: background-color 0.15s ease;
 
   &[data-highlighted] {
-    background: var(--coral-subtle);
-    color: var(--coral-fg);
+    background: var(--demo-coral-subtle);
+    color: var(--demo-coral-fg);
   }
 }
 
@@ -96,10 +96,10 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-family: inherit;
-  background: var(--neutral-subtle);
-  border: 1px solid var(--border-emphasized);
+  background: var(--demo-neutral-subtle);
+  border: 1px solid var(--demo-border-emphasized);
   border-radius: 0.25rem;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
   outline: none;
 }
 
@@ -130,11 +130,11 @@
   font-family: inherit;
   background: transparent;
   border: none;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
   outline: none;
 
   &::placeholder {
-    color: var(--neutral-emphasized);
+    color: var(--demo-neutral-emphasized);
   }
 }
 
@@ -150,15 +150,15 @@
   background: transparent;
   border: none;
   border-radius: 0.25rem;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
 
   transition:
     background-color 0.15s ease,
     color 0.15s ease;
 
   &:hover {
-    background: var(--neutral-subtle);
-    color: var(--neutral-fg);
+    background: var(--demo-neutral-subtle);
+    color: var(--demo-neutral-fg);
   }
 
   & svg {

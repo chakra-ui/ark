@@ -78,21 +78,21 @@ The `theme.css` file defines CSS custom properties used across all modules:
 ```css
 :root {
   /* Neutral colors */
-  --neutral-fg: #1a1a19;
-  --neutral-subtle: #f5f5f4;
-  --neutral-emphasized: #70706b;
+  --demo-neutral-fg: #1a1a19;
+  --demo-neutral-subtle: #f5f5f4;
+  --demo-neutral-emphasized: #70706b;
 
   /* Coral accent */
-  --coral-solid: #ec5d5e;
-  --coral-fg: #c63637;
-  --coral-subtle: #feebec;
+  --demo-coral-solid: #ec5d5e;
+  --demo-coral-fg: #c63637;
+  --demo-coral-subtle: #feebec;
 
   /* Borders */
-  --border-emphasized: #e4e4e3;
+  --demo-border-emphasized: #e4e4e3;
 
   /* Semantic */
-  --error: #dc2626;
-  --bg-popover: white;
+  --demo-error: #dc2626;
+  --demo-bg-popover: white;
 }
 
 .dark {
@@ -107,7 +107,6 @@ The `theme.css` file defines CSS custom properties used across all modules:
 ```tsx
 import styles from 'styles/select.module.css'
 import button from 'styles/button.module.css'
-
 ;<Select.Root className={styles.Root}>
   <Select.Label className={styles.Label}>Label</Select.Label>
 </Select.Root>
@@ -118,7 +117,6 @@ import button from 'styles/button.module.css'
 ```tsx
 import styles from 'styles/select.module.css'
 import button from 'styles/button.module.css'
-
 ;<Select.Root class={styles.Root}>
   <Select.Label class={styles.Label}>Label</Select.Label>
 </Select.Root>
@@ -340,10 +338,10 @@ Ark UI components expose data attributes for state-based styling:
 /* Toggle states */
 .Control {
   &[data-state='checked'] {
-    background: var(--coral-solid);
+    background: var(--demo-coral-solid);
   }
   &[data-state='unchecked'] {
-    background: var(--neutral-muted);
+    background: var(--demo-neutral-muted);
   }
 }
 
@@ -357,7 +355,7 @@ Ark UI components expose data attributes for state-based styling:
 /* Focus states */
 .Control {
   &[data-focus-visible] {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: 2px;
   }
 }
@@ -365,10 +363,10 @@ Ark UI components expose data attributes for state-based styling:
 /* List item states */
 .Item {
   &[data-highlighted] {
-    background: var(--neutral-subtle);
+    background: var(--demo-neutral-subtle);
   }
   &[data-state='checked'] {
-    color: var(--coral-fg);
+    color: var(--demo-coral-fg);
   }
   &[data-disabled] {
     opacity: 0.5;

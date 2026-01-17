@@ -5,10 +5,10 @@
   width: 100%;
   max-width: 32rem;
   height: 10rem;
-  background: var(--neutral-subtle);
-  border: 1px solid var(--border);
+  background: var(--demo-neutral-subtle);
+  border: 1px solid var(--demo-border);
   border-radius: 0.25rem;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
   font-weight: 500;
   font-size: 0.875rem;
 

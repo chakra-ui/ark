@@ -22,18 +22,18 @@
   font-size: 1.5rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
   min-width: 2ch;
   text-align: center;
 }
 
 .ItemLabel {
   font-size: 0.75rem;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
 }
 
 .Separator {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
 }

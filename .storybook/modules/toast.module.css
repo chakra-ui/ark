@@ -26,11 +26,11 @@
     box-shadow 200ms;
   transition-timing-function: cubic-bezier(0.21, 1.02, 0.73, 1);
 
-  background: var(--bg-popover);
-  color: var(--neutral-fg);
+  background: var(--demo-bg-popover);
+  color: var(--demo-neutral-fg);
 
-  --toast-trigger-bg: var(--neutral-muted);
-  --toast-accent: var(--neutral-fg);
+  --toast-trigger-bg: var(--demo-neutral-muted);
+  --toast-accent: var(--demo-neutral-fg);
 
   /* Shadow direction based on placement */
   &[data-placement^='top'] {
@@ -59,7 +59,7 @@
   }
 
   &[data-type='loading'] {
-    --toast-accent: var(--neutral-emphasized, #6b7280);
+    --toast-accent: var(--demo-neutral-emphasized, #6b7280);
   }
 
   /* Success, Error, Warning - filled background */
@@ -141,7 +141,7 @@
     color 150ms;
 
   background: transparent;
-  border: 1px solid var(--border-emphasized, currentColor);
+  border: 1px solid var(--demo-border-emphasized, currentColor);
   color: inherit;
 
   &:hover {

@@ -11,7 +11,7 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
 
   &[data-disabled] {
     opacity: 0.5;
@@ -37,8 +37,8 @@
     background 150ms,
     border-color 150ms;
   background: transparent;
-  border: 1px solid var(--border-emphasized);
-  color: var(--neutral-fg);
+  border: 1px solid var(--demo-border-emphasized);
+  color: var(--demo-neutral-fg);
 
   & svg {
     width: 1rem;
@@ -46,11 +46,11 @@
   }
 
   &:hover:not(:disabled, [data-disabled]) {
-    background: var(--neutral-subtle);
+    background: var(--demo-neutral-subtle);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: -1px;
   }
 
@@ -79,7 +79,7 @@
     color 150ms;
   background: transparent;
   border: none;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
 
   & svg {
     width: 0.85em;
@@ -87,12 +87,12 @@
   }
 
   &:hover:not(:disabled, [data-disabled]) {
-    background: var(--neutral-subtle);
-    color: var(--neutral-fg);
+    background: var(--demo-neutral-subtle);
+    color: var(--demo-neutral-fg);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: -1px;
   }
 
@@ -111,7 +111,7 @@
   gap: 0.75rem;
   min-height: 10rem;
   padding: 1.5rem;
-  border: 2px dashed var(--border-emphasized);
+  border: 2px dashed var(--demo-border-emphasized);
   border-radius: 0.5rem;
   text-align: center;
   cursor: pointer;
@@ -120,17 +120,17 @@
     border-color 150ms;
 
   &:hover:not([data-disabled]) {
-    background: var(--neutral-subtle);
+    background: var(--demo-neutral-subtle);
   }
 
   &[data-dragging] {
-    background: var(--coral-subtle);
-    border-color: var(--coral-solid);
+    background: var(--demo-coral-subtle);
+    border-color: var(--demo-coral-solid);
     border-style: solid;
   }
 
   &[data-invalid] {
-    border-color: var(--error);
+    border-color: var(--demo-error);
   }
 
   &[data-disabled] {
@@ -139,7 +139,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: 2px;
   }
 }
@@ -154,18 +154,18 @@
 .DropzoneIcon {
   width: 2.5rem;
   height: 2.5rem;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
 }
 
 .DropzoneTitle {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
 }
 
 .DropzoneDescription {
   font-size: 0.75rem;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
 }
 
 .ItemGroup {
@@ -187,13 +187,13 @@
   align-items: center;
   column-gap: 0.75rem;
   padding: 0.75rem;
-  background: var(--bg-popover);
-  border: 1px solid var(--border);
+  background: var(--demo-bg-popover);
+  border: 1px solid var(--demo-border);
   border-radius: 0.5rem;
 
   &[data-rejected] {
-    background: var(--coral-subtle);
-    border-color: var(--coral-fg);
+    background: var(--demo-coral-subtle);
+    border-color: var(--demo-coral-fg);
   }
 }
 
@@ -202,7 +202,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 0.75rem;
-  background: var(--neutral-subtle);
+  background: var(--demo-neutral-subtle);
   border-radius: 0.375rem;
 }
 
@@ -216,7 +216,7 @@
   & svg {
     width: 1.25rem;
     height: 1.25rem;
-    color: var(--neutral-emphasized);
+    color: var(--demo-neutral-emphasized);
   }
 }
 
@@ -234,7 +234,7 @@
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.25rem;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -244,7 +244,7 @@
   grid-area: size;
   font-size: 0.75rem;
   line-height: 1rem;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
 }
 
 .ItemDeleteTrigger {
@@ -259,7 +259,7 @@
   background: transparent;
   border: none;
   border-radius: 0.25rem;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
   cursor: pointer;
 
   & svg {
@@ -268,11 +268,11 @@
   }
 
   &:hover {
-    color: var(--neutral-fg);
+    color: var(--demo-neutral-fg);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: -1px;
   }
 }
@@ -295,14 +295,14 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.025em;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
 
   &[data-status='accepted'] {
     color: #16a34a;
   }
 
   &[data-status='rejected'] {
-    color: var(--coral-fg);
+    color: var(--demo-coral-fg);
   }
 }
 
@@ -316,12 +316,12 @@
 
 .ErrorItem {
   font-size: 0.75rem;
-  color: var(--coral-fg);
+  color: var(--demo-coral-fg);
 }
 
 .Empty {
   font-size: 0.875rem;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
   text-align: center;
   padding: 1rem;
 }

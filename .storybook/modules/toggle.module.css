@@ -17,21 +17,21 @@
   }
 
   background: transparent;
-  border: 1px solid var(--border-emphasized);
-  color: var(--neutral-fg);
+  border: 1px solid var(--demo-border-emphasized);
+  color: var(--demo-neutral-fg);
 
   &:hover:not(:disabled, [data-disabled]) {
-    background: var(--neutral-subtle);
+    background: var(--demo-neutral-subtle);
   }
 
   &[data-state='on'] {
-    background: var(--coral-subtle) !important;
-    border-color: var(--coral-muted);
-    color: var(--coral-fg);
+    background: var(--demo-coral-subtle) !important;
+    border-color: var(--demo-coral-muted);
+    color: var(--demo-coral-fg);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: 2px;
   }
 

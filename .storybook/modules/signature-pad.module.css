@@ -23,7 +23,7 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
 }
 
 .Control {
@@ -32,9 +32,9 @@
   flex-direction: column;
   min-height: var(--height);
   min-width: 0;
-  border: 1px solid var(--border-emphasized);
+  border: 1px solid var(--demo-border-emphasized);
   border-radius: 0.5rem;
-  background: var(--neutral-subtle);
+  background: var(--demo-neutral-subtle);
 
   &[data-disabled] {
     cursor: not-allowed;
@@ -48,13 +48,13 @@
   touch-action: none;
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: -2px;
   }
 }
 
 .SegmentPath {
-  fill: var(--neutral-fg);
+  fill: var(--demo-neutral-fg);
 }
 
 .Guide {
@@ -62,7 +62,7 @@
   bottom: 1.5rem;
   left: 1.5rem;
   right: 1.5rem;
-  border-bottom: 1px dashed var(--border-emphasized);
+  border-bottom: 1px dashed var(--demo-border-emphasized);
   pointer-events: none;
 }
 
@@ -76,7 +76,7 @@
   width: 2rem;
   height: 2rem;
   font-family: inherit;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
   background: transparent;
   border: none;
   border-radius: 0.375rem;
@@ -91,12 +91,12 @@
   }
 
   &:hover {
-    background: var(--neutral-muted);
-    color: var(--neutral-fg);
+    background: var(--demo-neutral-muted);
+    color: var(--demo-neutral-fg);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: 2px;
   }
 

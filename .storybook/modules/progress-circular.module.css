@@ -9,7 +9,7 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
 }
 
 .CircleContainer {
@@ -29,11 +29,11 @@
 }
 
 .CircleTrack {
-  stroke: var(--neutral-muted);
+  stroke: var(--demo-neutral-muted);
 }
 
 .CircleRange {
-  stroke: var(--coral-solid);
+  stroke: var(--demo-coral-solid);
   transition:
     stroke-dasharray 0.6s ease-out,
     stroke 0.6s ease-out;
@@ -47,7 +47,7 @@
   position: absolute;
   font-size: calc(var(--size) * 0.25);
   font-weight: 500;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
 }
 
 @keyframes circle-spin {

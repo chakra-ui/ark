@@ -54,12 +54,12 @@
   }
 
   &[data-selected] {
-    background: var(--coral-subtle);
-    color: var(--coral-fg);
+    background: var(--demo-coral-subtle);
+    color: var(--demo-coral-fg);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: 2px;
   }
 
@@ -94,19 +94,19 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: 2px;
   }
 
   &[data-selected] {
-    color: var(--coral-fg);
+    color: var(--demo-coral-fg);
   }
 }
 
 .Indicator {
   position: absolute;
   z-index: -1;
-  background: var(--coral-subtle);
+  background: var(--demo-coral-subtle);
   border-radius: 0.375rem;
   transition-property: width, height, left, top;
   transition-duration: 200ms;
@@ -134,7 +134,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: -2px;
     border-radius: 0.25rem;
   }

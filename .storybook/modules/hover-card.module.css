@@ -2,9 +2,9 @@
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  color: var(--coral-fg);
+  color: var(--demo-coral-fg);
   text-decoration: underline;
-  text-decoration-color: var(--coral-muted);
+  text-decoration-color: var(--demo-coral-muted);
   text-underline-offset: 2px;
   cursor: pointer;
   font-weight: 500;
@@ -13,11 +13,11 @@
     color 150ms;
 
   &:hover {
-    text-decoration-color: var(--coral-fg);
+    text-decoration-color: var(--demo-coral-fg);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: 2px;
     border-radius: 2px;
   }
@@ -29,13 +29,13 @@
 }
 
 .Content {
-  --arrow-background: var(--bg-popover);
+  --arrow-background: var(--demo-bg-popover);
   --arrow-size: 10px;
   position: relative;
   display: flex;
   flex-direction: column;
-  background: var(--bg-popover);
-  border: 1px solid var(--border);
+  background: var(--demo-bg-popover);
+  border: 1px solid var(--demo-border);
   padding: 1rem;
   border-radius: 12px;
   box-shadow:
@@ -56,13 +56,13 @@
 }
 
 .Arrow {
-  --arrow-background: var(--bg-popover);
-  --arrow-shadow-color: var(--border);
+  --arrow-background: var(--demo-bg-popover);
+  --arrow-shadow-color: var(--demo-border);
 }
 
 .ArrowTip {
-  border-top: 1px solid var(--border);
-  border-left: 1px solid var(--border);
+  border-top: 1px solid var(--demo-border);
+  border-left: 1px solid var(--demo-border);
 }
 
 .Avatar {
@@ -76,8 +76,8 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: var(--coral-subtle);
-  color: var(--coral-fg);
+  background: var(--demo-coral-subtle);
+  color: var(--demo-coral-fg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,20 +103,20 @@
   font-size: 15px;
   font-weight: 700;
   line-height: 1.25;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
 }
 
 .Username {
   margin: 0;
   font-size: 14px;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
 }
 
 .Bio {
   margin: 0;
   font-size: 14px;
   line-height: 1.4;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
 }
 
 .Stats {
@@ -132,11 +132,11 @@
 
 .StatValue {
   font-weight: 700;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
 }
 
 .StatLabel {
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
 }
 
 .FollowButton {
@@ -145,8 +145,8 @@
   font-weight: 600;
   border-radius: 9999px;
   border: none;
-  background: var(--neutral-fg);
-  color: var(--neutral-contrast);
+  background: var(--demo-neutral-fg);
+  color: var(--demo-neutral-contrast);
   cursor: pointer;
   transition: opacity 150ms;
 

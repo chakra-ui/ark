@@ -8,8 +8,8 @@
   flex-shrink: 0;
   user-select: none;
   border-radius: 9999px;
-  background: var(--neutral-subtle);
-  color: var(--neutral-fg);
+  background: var(--demo-neutral-subtle);
+  color: var(--demo-neutral-fg);
   font-size: 1rem;
   width: 2.5rem;
   height: 2.5rem;

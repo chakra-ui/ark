@@ -19,15 +19,15 @@
     color 150ms;
 
   background: transparent;
-  border: 1px solid var(--border-emphasized);
-  color: var(--neutral-fg);
+  border: 1px solid var(--demo-border-emphasized);
+  color: var(--demo-neutral-fg);
 
   &:is(:hover, [aria-expanded='true']):not(:disabled, [data-disabled]) {
-    background: var(--neutral-subtle);
+    background: var(--demo-neutral-subtle);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: -1px;
   }
 
@@ -38,15 +38,15 @@
 }
 
 .Content {
-  --arrow-background: var(--bg-popover);
+  --arrow-background: var(--demo-bg-popover);
   --arrow-size: 10px;
   position: relative;
-  background: var(--bg-popover);
+  background: var(--demo-bg-popover);
   color: var(--fg-inverted);
   padding-inline: 0.625rem;
   padding-block: 0.25rem;
   border-radius: 0.25rem;
-  border: 1px solid var(--border-muted);
+  border: 1px solid var(--demo-border-muted);
   font-weight: 500;
   font-size: 0.75rem;
   line-height: 1.25rem;
@@ -67,8 +67,8 @@
 }
 
 .ArrowTip {
-  border-top: 1px solid var(--border-muted);
-  border-left: 1px solid var(--border-muted);
+  border-top: 1px solid var(--demo-border-muted);
+  border-left: 1px solid var(--demo-border-muted);
 }
 
 @keyframes scale-fade-in {

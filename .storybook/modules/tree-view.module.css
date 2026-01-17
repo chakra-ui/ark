@@ -16,7 +16,7 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
   user-select: none;
 }
 
@@ -62,17 +62,17 @@
   padding-block: var(--tree-padding-block);
 
   &:hover {
-    background: var(--neutral-subtle);
+    background: var(--demo-neutral-subtle);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: -2px;
   }
 
   &[data-selected] {
-    background: var(--neutral-subtle);
-    color: var(--coral-fg);
+    background: var(--demo-neutral-subtle);
+    color: var(--demo-coral-fg);
   }
 
   &[data-disabled] {
@@ -105,7 +105,7 @@
 .BranchIndentGuide {
   height: 100%;
   width: 1px;
-  background: var(--border);
+  background: var(--demo-border);
   position: absolute;
   z-index: 1;
 
@@ -121,7 +121,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
   transform-origin: center;
   transition: transform 150ms ease;
 
@@ -180,17 +180,17 @@
   padding-block: var(--tree-padding-block);
 
   &:hover {
-    background: var(--neutral-subtle);
+    background: var(--demo-neutral-subtle);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: -2px;
   }
 
   &[data-selected] {
-    background: var(--neutral-subtle);
-    color: var(--coral-fg);
+    background: var(--demo-neutral-subtle);
+    color: var(--demo-coral-fg);
   }
 
   &[data-disabled] {
@@ -204,7 +204,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--coral-solid);
+  color: var(--demo-coral-solid);
   flex-shrink: 0;
 
   & svg {
@@ -230,20 +230,20 @@
   flex-shrink: 0;
   width: 1rem;
   height: 1rem;
-  border: 1px solid var(--border-emphasized);
+  border: 1px solid var(--demo-border-emphasized);
   border-radius: 0.25rem;
-  background: var(--bg-checkbox);
-  color: var(--coral-contrast);
+  background: var(--demo-bg-checkbox);
+  color: var(--demo-coral-contrast);
   cursor: pointer;
 
   &[data-state='checked'],
   &[data-state='indeterminate'] {
-    background: var(--coral-solid);
-    border-color: var(--coral-solid);
+    background: var(--demo-coral-solid);
+    border-color: var(--demo-coral-solid);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: 2px;
   }
 
@@ -281,7 +281,7 @@
   border: none;
   border-radius: 0.25rem;
   background: transparent;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
   cursor: pointer;
   flex-shrink: 0;
 
@@ -300,15 +300,15 @@
   margin-block: -1px;
   font-size: inherit;
   line-height: inherit;
-  border: 1px solid var(--coral-solid);
+  border: 1px solid var(--demo-coral-solid);
   border-radius: 0.25rem;
-  background: var(--bg-popover);
-  color: var(--neutral-fg);
+  background: var(--demo-bg-popover);
+  color: var(--demo-neutral-fg);
   outline: none;
   box-sizing: content-box;
 
   &:focus {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: -1px;
   }
 }

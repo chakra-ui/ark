@@ -15,7 +15,7 @@
   font-size: 1rem;
   line-height: 1.25rem;
   user-select: none;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
 }
 
 .Control {
@@ -25,19 +25,19 @@
   flex-shrink: 0;
   width: 1.25rem;
   height: 1.25rem;
-  border: 1px solid var(--border-emphasized);
+  border: 1px solid var(--demo-border-emphasized);
   border-radius: 0.25rem;
   background: transparent;
-  color: var(--coral-contrast);
+  color: var(--demo-coral-contrast);
 
   &[data-state='checked'],
   &[data-state='indeterminate'] {
-    background: var(--coral-solid);
-    border-color: var(--coral-solid);
+    background: var(--demo-coral-solid);
+    border-color: var(--demo-coral-solid);
   }
 
   &[data-focus-visible] {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: 2px;
   }
 

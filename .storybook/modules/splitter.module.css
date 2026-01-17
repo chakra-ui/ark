@@ -1,6 +1,6 @@
 .Root {
-  --splitter-border-color: var(--border-emphasized);
-  --splitter-thumb-color: var(--bg-thumb);
+  --splitter-border-color: var(--demo-border-emphasized);
+  --splitter-thumb-color: var(--demo-bg-thumb);
   --splitter-thumb-size: 0.5rem;
   --splitter-thumb-inset: calc(var(--splitter-thumb-size) * -0.5);
   --splitter-border-size: 1px;
@@ -9,7 +9,7 @@
   display: flex;
   width: 100%;
   min-height: 20rem;
-  border: 1px solid var(--border);
+  border: 1px solid var(--demo-border);
 }
 
 .Panel {
@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: center;
   font-weight: 500;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
 }
 
 .ResizeTrigger {
@@ -43,13 +43,13 @@
   }
 
   &:focus {
-    --splitter-border-color: var(--coral-emphasized);
-    --splitter-thumb-color: var(--coral-solid);
+    --splitter-border-color: var(--demo-coral-emphasized);
+    --splitter-thumb-color: var(--demo-coral-solid);
   }
 
   &[data-dragging] {
-    --splitter-border-color: var(--coral-emphasized);
-    --splitter-thumb-color: var(--coral-solid);
+    --splitter-border-color: var(--demo-coral-emphasized);
+    --splitter-thumb-color: var(--demo-coral-solid);
   }
 
   &[data-disabled] {
@@ -82,7 +82,7 @@
   border-radius: 9999px;
   background: var(--splitter-thumb-color);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid var(--border);
+  border: 1px solid var(--demo-border);
   z-index: 1;
 
   &[data-orientation='horizontal'] {
@@ -96,7 +96,7 @@
   }
 
   &[data-focus]:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: 2px;
   }
 

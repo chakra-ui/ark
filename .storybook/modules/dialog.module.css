@@ -38,8 +38,8 @@
   max-height: calc(100vh - 2rem);
   padding: 1.5rem;
   border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--bg-popover);
+  border: 1px solid var(--demo-border);
+  background: var(--demo-bg-popover);
   box-shadow:
     0 10px 38px -10px rgba(14, 18, 22, 0.35),
     0 10px 20px -15px rgba(14, 18, 22, 0.2);
@@ -67,14 +67,14 @@
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.75rem;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
 }
 
 .Description {
   margin: 0.25rem 0 0;
   font-size: 0.875rem;
   line-height: 1.5;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
 }
 
 .Body {
@@ -99,7 +99,7 @@
   border: none;
   border-radius: 4px;
   background: transparent;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
 
   transition: background-color 0.15s ease;
 
@@ -109,11 +109,11 @@
   }
 
   &:hover {
-    background: var(--neutral-muted);
+    background: var(--demo-neutral-muted);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: -1px;
   }
 }

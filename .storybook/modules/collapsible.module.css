@@ -15,7 +15,7 @@
   padding: 0.625rem 0.75rem;
 
   margin: 0;
-  border: 1px solid var(--border);
+  border: 1px solid var(--demo-border);
   border-radius: 0.5rem;
   background: transparent;
   font-size: 0.875rem;
@@ -23,16 +23,16 @@
   line-height: 1.5;
   text-align: start;
   cursor: pointer;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
 
   outline: none;
 
   &:hover:not([data-disabled], :disabled) {
-    background: var(--neutral-subtle);
+    background: var(--demo-neutral-subtle);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: 2px;
   }
 
@@ -47,7 +47,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
   transition: transform 120ms ease;
   transform-origin: center;
 
@@ -92,7 +92,7 @@
 .Body {
   padding-inline: 0.75rem;
   padding-block: 0.625rem;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
   line-height: 1.5;
   font-size: 0.875rem;
 
@@ -103,8 +103,8 @@
   code {
     font-family: ui-monospace, monospace;
     font-size: 0.875rem;
-    color: var(--neutral-fg);
-    background-color: var(--neutral-subtle);
+    color: var(--demo-neutral-fg);
+    background-color: var(--demo-neutral-subtle);
     padding: 0.25rem 0.5rem;
     border-radius: 0.375rem;
   }

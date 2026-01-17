@@ -55,30 +55,30 @@
 
   &[data-side='start'] {
     width: 20%;
-    background: linear-gradient(to right, var(--bg-popover), transparent);
+    background: linear-gradient(to right, var(--demo-bg-popover), transparent);
 
     &[dir='rtl'] {
-      background: linear-gradient(to left, var(--bg-popover), transparent);
+      background: linear-gradient(to left, var(--demo-bg-popover), transparent);
     }
   }
 
   &[data-side='end'] {
     width: 20%;
-    background: linear-gradient(to left, var(--bg-popover), transparent);
+    background: linear-gradient(to left, var(--demo-bg-popover), transparent);
 
     &[dir='rtl'] {
-      background: linear-gradient(to right, var(--bg-popover), transparent);
+      background: linear-gradient(to right, var(--demo-bg-popover), transparent);
     }
   }
 
   &[data-side='top'] {
     height: 20%;
-    background: linear-gradient(to bottom, var(--bg-popover), transparent);
+    background: linear-gradient(to bottom, var(--demo-bg-popover), transparent);
   }
 
   &[data-side='bottom'] {
     height: 20%;
-    background: linear-gradient(to top, var(--bg-popover), transparent);
+    background: linear-gradient(to top, var(--demo-bg-popover), transparent);
   }
 }
 
@@ -88,7 +88,7 @@
   justify-content: center;
   gap: 0.75rem;
   padding: 1rem 1.5rem;
-  border: 1px solid var(--border);
+  border: 1px solid var(--demo-border);
   border-radius: 6px;
   white-space: nowrap;
   user-select: none;
@@ -102,7 +102,7 @@
 .ItemName {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
 }
 
 @keyframes marqueeX {

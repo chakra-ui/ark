@@ -13,7 +13,7 @@
 .Label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
 }
 
 .Area {
@@ -33,12 +33,12 @@
   font-family: inherit;
   border: 1px solid transparent;
   border-radius: 0.375rem;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
 }
 
 .Input {
-  background: var(--bg-popover);
-  border-color: var(--border-emphasized);
+  background: var(--demo-bg-popover);
+  border-color: var(--demo-border-emphasized);
   outline: none;
 }
 
@@ -47,11 +47,11 @@
   cursor: text;
 
   &:hover {
-    background: var(--neutral-subtle);
+    background: var(--demo-neutral-subtle);
   }
 
   &[data-placeholder] {
-    color: var(--neutral-emphasized);
+    color: var(--demo-neutral-emphasized);
   }
 }
 
@@ -73,8 +73,8 @@
   line-height: 1;
   border-radius: 0.375rem;
   background: transparent;
-  border: 1px solid var(--border-emphasized);
-  color: var(--neutral-fg);
+  border: 1px solid var(--demo-border-emphasized);
+  color: var(--demo-neutral-fg);
   cursor: pointer;
 
   & svg {
@@ -83,22 +83,22 @@
   }
 
   &:hover {
-    background: var(--neutral-subtle);
+    background: var(--demo-neutral-subtle);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: 2px;
   }
 }
 
 .SubmitTrigger {
-  background: var(--coral-solid);
-  border-color: var(--coral-solid);
-  color: var(--coral-contrast);
+  background: var(--demo-coral-solid);
+  border-color: var(--demo-coral-solid);
+  color: var(--demo-coral-contrast);
 
   &:hover {
-    background: var(--coral-emphasized);
+    background: var(--demo-coral-emphasized);
   }
 }
 
@@ -114,13 +114,13 @@
   font-family: inherit;
   border: 1px solid transparent;
   border-radius: 0.375rem;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
   resize: vertical;
   white-space: pre-wrap;
 
   &:is(textarea) {
-    background: var(--bg-popover);
-    border-color: var(--border-emphasized);
+    background: var(--demo-bg-popover);
+    border-color: var(--demo-border-emphasized);
     outline: none;
   }
 
@@ -130,16 +130,16 @@
     cursor: text;
 
     &:hover {
-      background: var(--neutral-subtle);
+      background: var(--demo-neutral-subtle);
     }
 
     &[data-placeholder] {
-      color: var(--neutral-emphasized);
+      color: var(--demo-neutral-emphasized);
     }
   }
 }
 
 .HelperText {
   font-size: 0.75rem;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
 }

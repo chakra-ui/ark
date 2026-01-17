@@ -10,7 +10,7 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
   user-select: none;
 }
 
@@ -29,21 +29,21 @@
   line-height: 1.25rem;
   font-family: inherit;
   background: transparent;
-  border: 1px solid var(--border-emphasized);
+  border: 1px solid var(--demo-border-emphasized);
   border-radius: 0.375rem;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
   outline: none;
   transition:
     border-color 0.15s ease,
     box-shadow 0.15s ease;
 
   &::placeholder {
-    color: var(--neutral-emphasized);
+    color: var(--demo-neutral-emphasized);
   }
 
   &:focus {
-    border-color: var(--coral-solid);
-    box-shadow: 0 0 0 1px var(--coral-solid);
+    border-color: var(--demo-coral-solid);
+    box-shadow: 0 0 0 1px var(--demo-coral-solid);
   }
 
   &[data-disabled] {
@@ -52,11 +52,11 @@
   }
 
   &[data-invalid] {
-    border-color: var(--error);
+    border-color: var(--demo-error);
 
     &:focus {
-      border-color: var(--error);
-      box-shadow: 0 0 0 1px var(--error);
+      border-color: var(--demo-error);
+      box-shadow: 0 0 0 1px var(--demo-error);
     }
   }
 }
@@ -76,14 +76,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
   background: transparent;
   border: 0;
 
   pointer-events: auto;
 
   &:hover {
-    color: var(--neutral-fg);
+    color: var(--demo-neutral-fg);
   }
 
   & svg {
@@ -96,14 +96,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
   background: transparent;
   border: 0;
 
   pointer-events: auto;
 
   &:hover {
-    color: var(--neutral-fg);
+    color: var(--demo-neutral-fg);
   }
 
   & svg {
@@ -118,8 +118,8 @@
   gap: 0.25rem;
   padding: 0.25rem;
   min-width: var(--reference-width);
-  background: var(--bg-popover);
-  border: 1px solid var(--border-emphasized);
+  background: var(--demo-bg-popover);
+  border: 1px solid var(--demo-border-emphasized);
   border-radius: 0.375rem;
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -132,11 +132,11 @@
   scroll-padding-block: 0.25rem;
 
   scrollbar-width: thin;
-  scrollbar-color: var(--border-emphasized) var(--bg-popover);
+  scrollbar-color: var(--demo-border-emphasized) var(--demo-bg-popover);
 
   &::-webkit-scrollbar {
     width: 8px;
-    background: var(--bg-popover);
+    background: var(--demo-bg-popover);
     border-radius: 4px;
   }
 
@@ -162,7 +162,7 @@
   padding: 0.375rem 0.5rem;
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
   text-transform: uppercase;
   letter-spacing: 0.025em;
 }
@@ -181,15 +181,15 @@
   outline: none;
 
   &[data-highlighted] {
-    background: var(--neutral-subtle);
+    background: var(--demo-neutral-subtle);
   }
 
   &[data-state='checked'] {
-    color: var(--coral-fg);
+    color: var(--demo-coral-fg);
   }
 
   &[data-disabled] {
-    color: var(--neutral-emphasized);
+    color: var(--demo-neutral-emphasized);
 
     opacity: 0.5;
   }
@@ -213,7 +213,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--coral-solid);
+  color: var(--demo-coral-solid);
   flex-shrink: 0;
 
   & svg {
@@ -236,12 +236,12 @@
   font-weight: 500;
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
-  background: var(--neutral-subtle);
-  color: var(--neutral-fg);
+  background: var(--demo-neutral-subtle);
+  color: var(--demo-neutral-fg);
 }
 
 .TagPlaceholder {
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
   font-size: 0.75rem;
   min-height: 24px;
   display: inline-flex;
@@ -254,7 +254,7 @@
   gap: 0.5rem;
   padding: 0.5rem;
   font-size: 0.875rem;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
 }
 
 .Spinner {
@@ -271,7 +271,7 @@
 .ItemSubtitle {
   display: block;
   font-size: 0.75rem;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
 }
 
 .Scroller {
@@ -283,11 +283,11 @@
   scroll-padding-block: 0.25rem;
 
   scrollbar-width: thin;
-  scrollbar-color: var(--border-emphasized) var(--bg-popover);
+  scrollbar-color: var(--demo-border-emphasized) var(--demo-bg-popover);
 
   &::-webkit-scrollbar {
     width: 8px;
-    background: var(--bg-popover);
+    background: var(--demo-bg-popover);
     border-radius: 4px;
   }
 

@@ -14,7 +14,7 @@
 }
 
 .Content {
-  --arrow-background: var(--bg-popover);
+  --arrow-background: var(--demo-bg-popover);
   --arrow-size: 10px;
   display: flex;
   flex-direction: column;
@@ -23,8 +23,8 @@
   outline: 0;
   padding: 20px;
   width: max(var(--reference-width), 320px);
-  background: var(--bg-popover);
-  border: 1px solid var(--border);
+  background: var(--demo-bg-popover);
+  border: 1px solid var(--demo-border);
   border-radius: 4px;
   position: relative;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
@@ -41,13 +41,13 @@
 }
 
 .Arrow {
-  --arrow-background: var(--bg-popover);
-  --arrow-shadow-color: var(--border);
+  --arrow-background: var(--demo-bg-popover);
+  --arrow-shadow-color: var(--demo-border);
 }
 
 .ArrowTip {
-  border-top: 1px solid var(--border);
-  border-left: 1px solid var(--border);
+  border-top: 1px solid var(--demo-border);
+  border-left: 1px solid var(--demo-border);
 }
 
 .Title {
@@ -55,14 +55,14 @@
   font-size: 15px;
   font-weight: 600;
   line-height: 19px;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
 }
 
 .Description {
   margin: 0;
   font-size: 14px;
   line-height: 1.5;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
 }
 
 .Body {
@@ -81,7 +81,7 @@
   align-items: center;
   justify-content: center;
   border: none;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
   background: transparent;
   width: 1.5rem;
   height: 1.5rem;
@@ -93,7 +93,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--coral-focus-ring);
+    outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: -1px;
   }
 }

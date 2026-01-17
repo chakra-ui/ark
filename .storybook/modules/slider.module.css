@@ -15,7 +15,7 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
   user-select: none;
 }
 
@@ -23,7 +23,7 @@
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.25rem;
-  color: var(--neutral-fg);
+  color: var(--demo-neutral-fg);
 }
 
 .Control {
@@ -42,7 +42,7 @@
 .Track {
   flex: 1;
   height: 0.375rem;
-  background: var(--neutral-muted);
+  background: var(--demo-neutral-muted);
   border-radius: 9999px;
   overflow: hidden;
 
@@ -54,7 +54,7 @@
 
 .Range {
   height: 100%;
-  background: var(--coral-solid);
+  background: var(--demo-coral-solid);
   border-radius: 9999px;
 
   &[data-orientation='vertical'] {
@@ -68,8 +68,8 @@
   justify-content: center;
   width: 1.25rem;
   height: 1.25rem;
-  background: var(--bg-thumb);
-  border: 2px solid var(--coral-solid);
+  background: var(--demo-bg-thumb);
+  border: 2px solid var(--demo-coral-solid);
   border-radius: 9999px;
   outline: none;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -78,7 +78,7 @@
     transform 0.1s ease;
 
   &:focus-visible {
-    box-shadow: 0 0 0 2px var(--coral-focus-ring);
+    box-shadow: 0 0 0 2px var(--demo-coral-focus-ring);
   }
 
   &[data-disabled] {
@@ -88,7 +88,7 @@
 }
 
 .DraggingIndicator {
-  background: var(--neutral-fg);
+  background: var(--demo-neutral-fg);
   color: white;
   top: -28px;
   padding: 0.25rem 0.5rem;
@@ -118,7 +118,7 @@
   position: relative;
   font-size: 0.75rem;
   line-height: 1rem;
-  color: var(--neutral-emphasized);
+  color: var(--demo-neutral-emphasized);
 
   &::before {
     content: '';
@@ -126,7 +126,7 @@
     position: absolute;
     width: 0.25rem;
     height: 0.25rem;
-    background: var(--border);
+    background: var(--demo-border);
     border-radius: 9999px;
     top: -0.625rem;
     left: 50%;
@@ -134,6 +134,6 @@
   }
 
   &:is([data-state='under-value'], [data-state='at-value'])::before {
-    background: var(--coral-solid);
+    background: var(--demo-coral-solid);
   }
 }
