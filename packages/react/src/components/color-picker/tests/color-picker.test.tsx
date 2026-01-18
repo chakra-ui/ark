@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { parseColor } from '../'
-import { WithField } from '../examples/with-field'
+import { ColorPicker, parseColor } from '../'
+import { Field } from '../../field'
 import { ComponentUnderTest } from './basic'
 
 describe('ColorPicker', () => {
@@ -45,6 +45,23 @@ describe('ColorPicker', () => {
     })
   })
 })
+
+const WithField = (props: Field.RootProps) => (
+  <Field.Root {...props}>
+    <ColorPicker.Root defaultValue={parseColor('#eb5e41')}>
+      <ColorPicker.Label>Label</ColorPicker.Label>
+      <ColorPicker.Control>
+        <ColorPicker.ChannelInput channel="hex" />
+        <ColorPicker.Trigger>
+          <ColorPicker.ValueSwatch />
+        </ColorPicker.Trigger>
+      </ColorPicker.Control>
+      <ColorPicker.HiddenInput />
+    </ColorPicker.Root>
+    <Field.HelperText>Additional Info</Field.HelperText>
+    <Field.ErrorText>Error Info</Field.ErrorText>
+  </Field.Root>
+)
 
 describe('Color Picker / Field', () => {
   it('should set color picker as required', async () => {
