@@ -1,7 +1,9 @@
 <script lang="ts">
   import { ColorPicker, parseColor } from '@ark-ui/svelte/color-picker'
-  import { Pipette } from 'lucide-svelte'
+  import { Check, Pipette } from 'lucide-svelte'
   import styles from 'styles/color-picker.module.css'
+
+  const swatches = ['red', 'blue', 'green', 'orange']
 </script>
 
 <ColorPicker.Root class={styles.Root} defaultValue={parseColor('#eb5e41')}>
@@ -40,6 +42,17 @@
           </ColorPicker.ChannelSlider>
         </div>
       </div>
+      <ColorPicker.SwatchGroup class={styles.SwatchGroup}>
+        {#each swatches as color}
+          <ColorPicker.SwatchTrigger class={styles.SwatchTrigger} value={color}>
+            <ColorPicker.Swatch class={styles.Swatch} value={color}>
+              <ColorPicker.SwatchIndicator class={styles.SwatchIndicator}>
+                <Check />
+              </ColorPicker.SwatchIndicator>
+            </ColorPicker.Swatch>
+          </ColorPicker.SwatchTrigger>
+        {/each}
+      </ColorPicker.SwatchGroup>
     </ColorPicker.Content>
   </ColorPicker.Positioner>
   <ColorPicker.HiddenInput />

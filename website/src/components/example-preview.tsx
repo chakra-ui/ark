@@ -76,7 +76,7 @@ export const ExamplePreview = (props: Props) => {
       overflow="hidden"
       className="not-prose example-preview-scope"
     >
-      <Flex justify="center" align="center" flex="1" p={{ base: '4', md: '6' }} style={{ width: '100%' }}>
+      <Flex justify="center" align="center" direction="column" flex="1" p={{ base: '4', md: '6' }} width="full">
         {ExampleComponent ? (
           <Suspense fallback={<LoadingSpinner />}>
             <StylesReadyWrapper>

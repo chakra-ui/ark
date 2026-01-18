@@ -1,20 +1,27 @@
 import { ColorPicker, parseColor } from '@ark-ui/solid/color-picker'
 import { Pipette } from 'lucide-solid'
 import { createSignal } from 'solid-js'
+import button from 'styles/button.module.css'
 import styles from 'styles/color-picker.module.css'
 
-export const Controlled = () => {
-  const [color, setColor] = createSignal(parseColor('hsl(20, 100%, 50%)'))
+export const OpenControlled = () => {
+  const [open, setOpen] = createSignal(false)
 
   return (
     <div class="stack">
-      <output>Selected color: {color().toString('hex')}</output>
+      <button class={button.Root} onClick={() => setOpen(!open())}>
+        Toggle
+      </button>
 
-      <ColorPicker.Root class={styles.Root} value={color()} onValueChange={(e) => setColor(e.value)}>
+      <ColorPicker.Root
+        class={styles.Root}
+        open={open()}
+        onOpenChange={(e) => setOpen(e.open)}
+        defaultValue={parseColor('#eb5e41')}
+      >
         <ColorPicker.Label class={styles.Label}>Color</ColorPicker.Label>
         <ColorPicker.Control class={styles.Control}>
           <ColorPicker.ChannelInput class={styles.Input} channel="hex" />
-          <ColorPicker.ChannelInput class={styles.ChannelInput} channel="alpha" />
           <ColorPicker.Trigger class={styles.Trigger}>
             <div class={styles.Swatch}>
               <ColorPicker.TransparencyGrid class={styles.TransparencyGrid} />
@@ -47,7 +54,6 @@ export const Controlled = () => {
             </div>
           </ColorPicker.Content>
         </ColorPicker.Positioner>
-
         <ColorPicker.HiddenInput />
       </ColorPicker.Root>
     </div>

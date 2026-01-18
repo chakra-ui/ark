@@ -1,8 +1,10 @@
 import { ColorPicker, parseColor } from '@ark-ui/react/color-picker'
-import { PipetteIcon } from 'lucide-react'
+import { CheckIcon, PipetteIcon } from 'lucide-react'
 import styles from 'styles/color-picker.module.css'
 
-export const Basic = () => {
+const swatches = ['red', 'blue', 'green', 'orange']
+
+export const Swatches = () => {
   return (
     <ColorPicker.Root className={styles.Root} defaultValue={parseColor('#eb5e41')}>
       <ColorPicker.Label className={styles.Label}>Color</ColorPicker.Label>
@@ -40,6 +42,17 @@ export const Basic = () => {
               </ColorPicker.ChannelSlider>
             </div>
           </div>
+          <ColorPicker.SwatchGroup className={styles.SwatchGroup}>
+            {swatches.map((color) => (
+              <ColorPicker.SwatchTrigger key={color} className={styles.SwatchTrigger} value={color}>
+                <ColorPicker.Swatch className={styles.Swatch} value={color}>
+                  <ColorPicker.SwatchIndicator className={styles.SwatchIndicator}>
+                    <CheckIcon />
+                  </ColorPicker.SwatchIndicator>
+                </ColorPicker.Swatch>
+              </ColorPicker.SwatchTrigger>
+            ))}
+          </ColorPicker.SwatchGroup>
         </ColorPicker.Content>
       </ColorPicker.Positioner>
       <ColorPicker.HiddenInput />

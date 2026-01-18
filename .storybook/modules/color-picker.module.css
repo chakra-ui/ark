@@ -1,0 +1,456 @@
+.Root {
+  color: var(--demo-neutral-fg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 16rem;
+}
+
+.Label {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--demo-neutral-fg);
+  user-select: none;
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+}
+
+.Control {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.Trigger {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  min-width: 2.5rem;
+  background: white;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.375rem;
+  cursor: pointer;
+  overflow: hidden;
+  flex-shrink: 0;
+  outline: none;
+
+  &:focus-visible {
+    border-color: var(--demo-coral-solid);
+    box-shadow: 0 0 0 1px var(--demo-coral-solid);
+  }
+
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+}
+
+.ValueSwatch {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+.ValueText {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  color: var(--demo-neutral-fg);
+}
+
+.Content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  width: 16rem;
+  outline: 0;
+  position: relative;
+  background: var(--demo-bg-popover);
+  border: 1px solid var(--demo-border);
+  border-radius: 0.5rem;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  transform-origin: var(--transform-origin);
+  z-index: calc(50 + var(--layer-index, 0));
+
+  &[data-state='open'] {
+    animation: scale-fade-in 0.15s ease-in-out;
+  }
+
+  &[data-state='closed'] {
+    animation: scale-fade-out 0.1s ease-in-out;
+  }
+}
+
+.Area {
+  position: relative;
+  height: 10rem;
+  border-radius: 0.375rem;
+  overflow: hidden;
+  touch-action: none;
+}
+
+.AreaBackground {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.AreaThumb {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  box-shadow:
+    0 0 0 2px white,
+    0 0 0 3px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.15);
+  outline: none;
+  transform: translate(-50%, -50%);
+
+  &:focus-visible {
+    box-shadow:
+      0 0 0 2px white,
+      0 0 0 4px var(--demo-coral-solid),
+      0 1px 3px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.ChannelSlider {
+  position: relative;
+  border-radius: 0.25rem;
+  height: 0.625rem;
+  flex: 1;
+}
+
+.ChannelSliderTrack {
+  width: 100%;
+  height: 0.625rem;
+  border-radius: 0.25rem;
+}
+
+.ChannelSliderThumb {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  box-shadow:
+    0 0 0 2px white,
+    0 0 0 3px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.15);
+  transform: translate(-50%, -50%);
+  outline: none;
+
+  &:focus-visible {
+    box-shadow:
+      0 0 0 2px white,
+      0 0 0 4px var(--demo-coral-solid),
+      0 1px 3px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.ChannelSliderLabel {
+  font-size: 0.875rem;
+  line-height: 1rem;
+  font-weight: 500;
+  color: var(--demo-neutral-fg);
+}
+
+.ChannelSliderRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ChannelSliderValueText {
+  font-size: 0.875rem;
+  line-height: 1rem;
+  color: var(--demo-neutral-emphasized);
+}
+
+.ChannelInput {
+  box-sizing: border-box;
+  flex: 1;
+  min-width: 0;
+  height: 2.5rem;
+  padding: 0 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  font-family: inherit;
+  background: transparent;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.375rem;
+  color: var(--demo-neutral-fg);
+  outline: none;
+  appearance: textfield;
+
+  &:focus {
+    border-color: var(--demo-coral-solid);
+    box-shadow: 0 0 0 1px var(--demo-coral-solid);
+  }
+
+  &[data-disabled] {
+    opacity: 0.5;
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+
+  &[data-channel='alpha'] {
+    width: 4rem;
+    min-width: unset;
+  }
+}
+
+.ChannelInputGroup {
+  display: flex;
+  gap: 0.5rem;
+
+  & > * {
+    flex: 1;
+  }
+}
+
+.Input {
+  box-sizing: border-box;
+  flex: 1;
+  height: 2.5rem;
+  padding: 0 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  font-family: inherit;
+  background: transparent;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.375rem;
+  color: var(--demo-neutral-fg);
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &::placeholder {
+    color: var(--demo-neutral-emphasized);
+  }
+
+  &:focus {
+    border-color: var(--demo-coral-solid);
+    box-shadow: 0 0 0 1px var(--demo-coral-solid);
+  }
+
+  &[data-disabled] {
+    opacity: 0.5;
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.TransparencyGrid {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.SwatchGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.SwatchTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 0.25rem;
+  transition: transform 0.1s ease;
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px var(--demo-coral-focus-ring);
+  }
+}
+
+.Swatch {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0 1px var(--demo-border);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.SwatchIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  color: white;
+  font-size: 0.875rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+
+  & svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.SliderGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ChannelSliders {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.625rem;
+}
+
+.EyeDropperTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  color: var(--demo-neutral-fg);
+  background: transparent;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.375rem;
+  cursor: pointer;
+  outline: none;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+
+  & svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &:hover {
+    background: var(--demo-neutral-subtle);
+  }
+
+  &:focus-visible {
+    border-color: var(--demo-coral-solid);
+    box-shadow: 0 0 0 1px var(--demo-coral-solid);
+  }
+}
+
+.FormatTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 2rem;
+  padding: 0 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--demo-neutral-fg);
+  background: transparent;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.375rem;
+  cursor: pointer;
+  outline: none;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    background: var(--demo-neutral-subtle);
+  }
+
+  &:focus-visible {
+    border-color: var(--demo-coral-solid);
+    box-shadow: 0 0 0 1px var(--demo-coral-solid);
+  }
+}
+
+.FormatSelect {
+  box-sizing: border-box;
+  height: 2rem;
+  padding: 0 0.5rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  background: transparent;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.375rem;
+  color: var(--demo-neutral-fg);
+  outline: none;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:focus {
+    border-color: var(--demo-coral-solid);
+    box-shadow: 0 0 0 1px var(--demo-coral-solid);
+  }
+}
+
+.View {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.InputGroup {
+  display: flex;
+  gap: 0.5rem;
+}
+
+@keyframes scale-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-fade-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}

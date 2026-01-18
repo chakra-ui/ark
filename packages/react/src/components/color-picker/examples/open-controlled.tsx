@@ -1,21 +1,27 @@
-import { ColorPicker, parseColor, useColorPicker } from '@ark-ui/react/color-picker'
-import { CheckIcon, PipetteIcon } from 'lucide-react'
+import { ColorPicker, parseColor } from '@ark-ui/react/color-picker'
+import { PipetteIcon } from 'lucide-react'
+import { useState } from 'react'
+import button from 'styles/button.module.css'
 import styles from 'styles/color-picker.module.css'
 
-const swatches = ['red', 'blue', 'green', 'orange']
-
-export const RootProvider = () => {
-  const colorPicker = useColorPicker({ defaultValue: parseColor('#eb5e41') })
+export const OpenControlled = () => {
+  const [open, setOpen] = useState(false)
 
   return (
     <div className="stack">
-      <output>Color: {colorPicker.valueAsString}</output>
+      <button className={button.Root} onClick={() => setOpen(!open)}>
+        Toggle
+      </button>
 
-      <ColorPicker.RootProvider className={styles.Root} value={colorPicker}>
+      <ColorPicker.Root
+        className={styles.Root}
+        open={open}
+        onOpenChange={(e) => setOpen(e.open)}
+        defaultValue={parseColor('#eb5e41')}
+      >
         <ColorPicker.Label className={styles.Label}>Color</ColorPicker.Label>
         <ColorPicker.Control className={styles.Control}>
           <ColorPicker.ChannelInput className={styles.Input} channel="hex" />
-          <ColorPicker.ChannelInput className={styles.ChannelInput} channel="alpha" />
           <ColorPicker.Trigger className={styles.Trigger}>
             <div className={styles.Swatch}>
               <ColorPicker.TransparencyGrid className={styles.TransparencyGrid} />
@@ -23,6 +29,7 @@ export const RootProvider = () => {
             </div>
           </ColorPicker.Trigger>
         </ColorPicker.Control>
+
         <ColorPicker.Positioner>
           <ColorPicker.Content className={styles.Content}>
             <ColorPicker.Area className={styles.Area}>
@@ -45,34 +52,10 @@ export const RootProvider = () => {
                 </ColorPicker.ChannelSlider>
               </div>
             </div>
-            <ColorPicker.SwatchGroup className={styles.SwatchGroup}>
-              {swatches.map((color) => (
-                <ColorPicker.SwatchTrigger key={color} className={styles.SwatchTrigger} value={color}>
-                  <ColorPicker.Swatch className={styles.Swatch} value={color}>
-                    <ColorPicker.SwatchIndicator className={styles.SwatchIndicator}>
-                      <CheckIcon />
-                    </ColorPicker.SwatchIndicator>
-                  </ColorPicker.Swatch>
-                </ColorPicker.SwatchTrigger>
-              ))}
-            </ColorPicker.SwatchGroup>
-            <ColorPicker.View className={styles.View} format="rgba">
-              <div className={styles.ChannelInputGroup}>
-                <ColorPicker.ChannelInput className={styles.ChannelInput} channel="hex" />
-                <ColorPicker.ChannelInput className={styles.ChannelInput} channel="alpha" />
-              </div>
-            </ColorPicker.View>
-            <ColorPicker.View className={styles.View} format="hsla">
-              <div className={styles.ChannelInputGroup}>
-                <ColorPicker.ChannelInput className={styles.ChannelInput} channel="hue" />
-                <ColorPicker.ChannelInput className={styles.ChannelInput} channel="saturation" />
-                <ColorPicker.ChannelInput className={styles.ChannelInput} channel="lightness" />
-              </div>
-            </ColorPicker.View>
           </ColorPicker.Content>
         </ColorPicker.Positioner>
         <ColorPicker.HiddenInput />
-      </ColorPicker.RootProvider>
+      </ColorPicker.Root>
     </div>
   )
 }

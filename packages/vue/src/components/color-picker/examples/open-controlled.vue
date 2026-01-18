@@ -2,20 +2,20 @@
 import { ColorPicker, parseColor } from '@ark-ui/vue/color-picker'
 import { Pipette } from 'lucide-vue-next'
 import { ref } from 'vue'
+import button from 'styles/button.module.css'
 import styles from 'styles/color-picker.module.css'
 
-const value = ref(parseColor('hsl(20, 100%, 50%)'))
+const open = ref(false)
 </script>
 
 <template>
   <div class="stack">
-    <output>Selected color: {{ value.toString('hex') }}</output>
+    <button :class="button.Root" @click="open = !open">Toggle</button>
 
-    <ColorPicker.Root :class="styles.Root" v-model="value">
+    <ColorPicker.Root :class="styles.Root" v-model:open="open" :default-value="parseColor('#eb5e41')">
       <ColorPicker.Label :class="styles.Label">Color</ColorPicker.Label>
       <ColorPicker.Control :class="styles.Control">
         <ColorPicker.ChannelInput :class="styles.Input" channel="hex" />
-        <ColorPicker.ChannelInput :class="styles.ChannelInput" channel="alpha" />
         <ColorPicker.Trigger :class="styles.Trigger">
           <div :class="styles.Swatch">
             <ColorPicker.TransparencyGrid :class="styles.TransparencyGrid" />
@@ -48,7 +48,6 @@ const value = ref(parseColor('hsl(20, 100%, 50%)'))
           </div>
         </ColorPicker.Content>
       </ColorPicker.Positioner>
-
       <ColorPicker.HiddenInput />
     </ColorPicker.Root>
   </div>

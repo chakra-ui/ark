@@ -1,8 +1,11 @@
 import { ColorPicker, parseColor } from '@ark-ui/solid/color-picker'
-import { Pipette } from 'lucide-solid'
+import { Check, Pipette } from 'lucide-solid'
+import { For } from 'solid-js'
 import styles from 'styles/color-picker.module.css'
 
-export const Basic = () => {
+const swatches = ['red', 'blue', 'green', 'orange']
+
+export const Swatches = () => {
   return (
     <ColorPicker.Root class={styles.Root} defaultValue={parseColor('#eb5e41')}>
       <ColorPicker.Label class={styles.Label}>Color</ColorPicker.Label>
@@ -40,6 +43,19 @@ export const Basic = () => {
               </ColorPicker.ChannelSlider>
             </div>
           </div>
+          <ColorPicker.SwatchGroup class={styles.SwatchGroup}>
+            <For each={swatches}>
+              {(color) => (
+                <ColorPicker.SwatchTrigger class={styles.SwatchTrigger} value={color}>
+                  <ColorPicker.Swatch class={styles.Swatch} value={color}>
+                    <ColorPicker.SwatchIndicator class={styles.SwatchIndicator}>
+                      <Check />
+                    </ColorPicker.SwatchIndicator>
+                  </ColorPicker.Swatch>
+                </ColorPicker.SwatchTrigger>
+              )}
+            </For>
+          </ColorPicker.SwatchGroup>
         </ColorPicker.Content>
       </ColorPicker.Positioner>
       <ColorPicker.HiddenInput />

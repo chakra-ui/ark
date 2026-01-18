@@ -1,19 +1,19 @@
 <script lang="ts">
   import { ColorPicker, parseColor } from '@ark-ui/svelte/color-picker'
   import { Pipette } from 'lucide-svelte'
+  import button from 'styles/button.module.css'
   import styles from 'styles/color-picker.module.css'
 
-  let value = $state(parseColor('hsl(20, 100%, 50%)'))
+  let open = $state(false)
 </script>
 
 <div class="stack">
-  <output>Selected color: {value.toString('hex')}</output>
+  <button class={button.Root} onclick={() => (open = !open)}>Toggle</button>
 
-  <ColorPicker.Root class={styles.Root} bind:value>
+  <ColorPicker.Root class={styles.Root} bind:open defaultValue={parseColor('#eb5e41')}>
     <ColorPicker.Label class={styles.Label}>Color</ColorPicker.Label>
     <ColorPicker.Control class={styles.Control}>
       <ColorPicker.ChannelInput class={styles.Input} channel="hex" />
-      <ColorPicker.ChannelInput class={styles.ChannelInput} channel="alpha" />
       <ColorPicker.Trigger class={styles.Trigger}>
         <div class={styles.Swatch}>
           <ColorPicker.TransparencyGrid class={styles.TransparencyGrid} />
@@ -46,7 +46,6 @@
         </div>
       </ColorPicker.Content>
     </ColorPicker.Positioner>
-
     <ColorPicker.HiddenInput />
   </ColorPicker.Root>
 </div>
