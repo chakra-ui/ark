@@ -1,3 +1,4 @@
+import { resolve } from 'node:path'
 import solid from 'vite-plugin-solid'
 import { defineConfig } from 'vitest/config'
 
@@ -14,5 +15,8 @@ export default defineConfig({
   },
   resolve: {
     conditions: ['source'],
+    alias: {
+      styles: resolve(__dirname, '../../.storybook/modules'),
+    },
   },
 })
