@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { JsonTreeView } from '@ark-ui/vue/json-tree-view'
 import { ChevronRightIcon } from 'lucide-vue-next'
+import styles from 'styles/json-tree-view.module.css'
 
 const testArray = [1, 2, 3, 4, 5]
 Object.defineProperties(testArray, {
@@ -21,8 +22,8 @@ const data = {
 </script>
 
 <template>
-  <JsonTreeView.Root :data="data">
-    <JsonTreeView.Tree>
+  <JsonTreeView.Root :defaultExpandedDepth="1" :class="styles.Root" :data="data">
+    <JsonTreeView.Tree :class="styles.Tree">
       <template #arrow>
         <ChevronRightIcon />
       </template>

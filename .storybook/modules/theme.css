@@ -29,6 +29,13 @@
   --demo-bg-popover: white;
   --demo-bg-thumb: white;
   --demo-bg-checkbox: white;
+
+  /* JSON tree view */
+  --demo-json-string: #c9453b;
+  --demo-json-number: #0550ae;
+  --demo-json-boolean: #b35900;
+  --demo-json-key: #116329;
+  --demo-json-accent: #6f42c1;
 }
 
 .dark {
@@ -62,4 +69,11 @@
   --demo-bg-popover: #111110;
   --demo-bg-thumb: #111110;
   --demo-bg-checkbox: #111110;
+
+  /* JSON tree view dark mode */
+  --demo-json-string: #ff7b72;
+  --demo-json-number: #79c0ff;
+  --demo-json-boolean: #ffa657;
+  --demo-json-key: #7ee787;
+  --demo-json-accent: #d2a8ff;
 }

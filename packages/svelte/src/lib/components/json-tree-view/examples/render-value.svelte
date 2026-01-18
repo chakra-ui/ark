@@ -1,6 +1,7 @@
 <script lang="ts">
   import { JsonTreeView } from '@ark-ui/svelte/json-tree-view'
   import { ChevronRightIcon } from 'lucide-svelte'
+  import styles from 'styles/json-tree-view.module.css'
 
   const isEmail = (value: string) => {
     const strippedValue = value.replace(/^"(.*)"$/, '$1')
@@ -9,6 +10,7 @@
 </script>
 
 <JsonTreeView.Root
+  class={styles.Root}
   defaultExpandedDepth={2}
   data={{
     name: 'John Doe',
@@ -23,7 +25,7 @@
     },
   }}
 >
-  <JsonTreeView.Tree>
+  <JsonTreeView.Tree class={styles.Tree}>
     {#snippet arrow()}
       <ChevronRightIcon />
     {/snippet}

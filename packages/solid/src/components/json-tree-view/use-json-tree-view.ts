@@ -1,18 +1,34 @@
+import type { PropTypes } from '@zag-js/solid'
+import type * as treeView from '@zag-js/tree-view'
 import { type JsonNode, getRootNode, nodeToString, nodeToValue } from '@zag-js/json-tree-utils'
-import { createMemo, splitProps } from 'solid-js'
+import { type Accessor, createMemo, splitProps } from 'solid-js'
 import { untrack } from 'solid-js/web'
-import { type UseTreeViewProps, type UseTreeViewReturn, createTreeCollection, useTreeView } from '../tree-view'
+import { createSplitProps } from '../../utils/create-split-props'
+import { type UseTreeViewProps, createTreeCollection, useTreeView } from '../tree-view'
 import { getBranchValues } from './get-branch-value'
+import type { JsonTreeViewOptions } from './json-tree-view-props-context'
 
-export interface UseJsonTreeViewProps extends Omit<UseTreeViewProps<JsonNode>, 'collection'> {
+export interface UseJsonTreeViewProps extends Omit<UseTreeViewProps<JsonNode>, 'collection'>, JsonTreeViewOptions {
   data: unknown
   defaultExpandedDepth?: number
 }
 
-export interface UseJsonTreeViewReturn extends UseTreeViewReturn<JsonNode> {}
+export interface UseJsonTreeViewReturn extends Accessor<
+  treeView.Api<PropTypes, JsonNode> & { options: JsonTreeViewOptions }
+> {}
+
+const splitJsonTreeViewProps = createSplitProps<JsonTreeViewOptions>()
 
 export const useJsonTreeView = (props: UseJsonTreeViewProps): UseJsonTreeViewReturn => {
-  const [jsonProps, restProps] = splitProps(props, ['data', 'defaultExpandedDepth'])
+  const [jsonTreeProps, localProps] = splitJsonTreeViewProps(props, [
+    'maxPreviewItems',
+    'collapseStringsAfterLength',
+    'quotesOnKeys',
+    'groupArraysAfterLength',
+    'showNonenumerable',
+  ])
+
+  const [jsonProps, restProps] = splitProps(localProps, ['data', 'defaultExpandedDepth'])
 
   const collection = createMemo(() => {
     return createTreeCollection<JsonNode>({
@@ -37,5 +53,7 @@ export const useJsonTreeView = (props: UseJsonTreeViewProps): UseJsonTreeViewRet
     }
   })
 
-  return useTreeView(machineProps)
+  const treeView = useTreeView(machineProps)
+
+  return createMemo(() => ({ ...treeView(), options: jsonTreeProps }))
 }
