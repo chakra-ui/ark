@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { Format } from '@ark-ui/vue/format'
-
-const value = 1450.45
+import styles from 'styles/format.module.css'
 </script>
 
 <template>
-  <div>
-    File size:
-    <Format.Byte :value="value" />
+  <div :class="styles.Root">
+    <span :class="styles.Label">File size</span>
+    <span :class="styles.Value">
+      <Format.Byte :value="120000" />
+    </span>
   </div>
 </template>

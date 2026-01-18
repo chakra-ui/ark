@@ -1,5 +1,10 @@
 import { Format } from '@ark-ui/react/format'
+import styles from 'styles/format.module.css'
 
 export const NumberWithUnit = () => {
-  return <Format.Number value={384.4} style="unit" unit="kilometer" />
+  return (
+    <span className={styles.Value}>
+      <Format.Number value={384.4} style="unit" unit="kilometer" />
+    </span>
+  )
 }
