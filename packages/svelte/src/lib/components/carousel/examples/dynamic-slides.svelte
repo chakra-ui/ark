@@ -1,8 +1,11 @@
 <script>
   import { Carousel } from '@ark-ui/svelte/carousel'
+  import ArrowLeftIcon from 'lucide-svelte/icons/arrow-left'
+  import ArrowRightIcon from 'lucide-svelte/icons/arrow-right'
+  import button from 'styles/button.module.css'
+  import styles from 'styles/carousel.module.css'
 
   let slides = $state([0, 1, 2, 3, 4])
-  let page = $state(0)
 
   function addSlide() {
     const max = Math.max(...slides)
@@ -11,38 +14,27 @@
 </script>
 
 <div>
-  <Carousel.Root bind:page slideCount={slides.length}>
-    <Carousel.Control>
-      <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
-      <Carousel.NextTrigger>Next</Carousel.NextTrigger>
-    </Carousel.Control>
-    <Carousel.IndicatorGroup>
-      {#each slides as _, index}
-        <Carousel.Indicator {index} />
-      {/each}
-    </Carousel.IndicatorGroup>
-    <Carousel.ItemGroup>
+  <button class={button.Root} onclick={addSlide}>Add Slide</button>
+  <Carousel.Root class={styles.Root} slideCount={slides.length}>
+    <Carousel.ItemGroup class={styles.ItemGroup}>
       {#each slides as slide, index}
-        <Carousel.Item {index}>
-          <div
-            style="
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              width: 100%;
-              height: 300px;
-              background-color: hsl({(slide * 60) % 360}, 70%, 60%);
-              color: white;
-              font-size: 24px;
-              font-weight: bold;
-              border-radius: 8px;
-            "
-          >
-            Slide {slide}
-          </div>
+        <Carousel.Item class={styles.Item} {index}>
+          <div class={styles.Slide}>Slide {slide + 1}</div>
         </Carousel.Item>
       {/each}
     </Carousel.ItemGroup>
+    <Carousel.Control class={styles.Control} data-align="center">
+      <Carousel.PrevTrigger class={styles.Trigger}>
+        <ArrowLeftIcon />
+      </Carousel.PrevTrigger>
+      <Carousel.IndicatorGroup class={styles.IndicatorGroup}>
+        {#each slides as _, index}
+          <Carousel.Indicator class={styles.Indicator} {index} />
+        {/each}
+      </Carousel.IndicatorGroup>
+      <Carousel.NextTrigger class={styles.Trigger}>
+        <ArrowRightIcon />
+      </Carousel.NextTrigger>
+    </Carousel.Control>
   </Carousel.Root>
-  <button onclick={addSlide} style="margin-top: 16px; padding: 8px 16px; cursor: pointer;">Add Slide</button>
 </div>

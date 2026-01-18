@@ -2,8 +2,6 @@
   import { Carousel } from '@ark-ui/svelte/carousel'
   import ArrowLeftIcon from 'lucide-svelte/icons/arrow-left'
   import ArrowRightIcon from 'lucide-svelte/icons/arrow-right'
-  import PauseIcon from 'lucide-svelte/icons/pause'
-  import PlayIcon from 'lucide-svelte/icons/play'
   import styles from 'styles/carousel.module.css'
 
   const images = [
@@ -15,26 +13,27 @@
   ]
 </script>
 
-<Carousel.Root class={styles.Root} slideCount={images.length} autoplay loop>
-  <Carousel.ItemGroup class={styles.ItemGroup}>
-    {#each images as image, index}
-      <Carousel.Item class={styles.Item} {index}>
-        <img src={image.src} alt={image.alt} width="500" height="300" />
-      </Carousel.Item>
-    {/each}
-  </Carousel.ItemGroup>
-  <Carousel.Control class={styles.Control} data-justify="center">
+<Carousel.Root class={styles.Root} slideCount={images.length}>
+  <Carousel.Control class={styles.Control}>
     <Carousel.PrevTrigger class={styles.Trigger}>
       <ArrowLeftIcon />
     </Carousel.PrevTrigger>
-    <Carousel.AutoplayTrigger class={styles.AutoplayTrigger}>
-      <Carousel.AutoplayIndicator>
-        {#snippet fallback()}<PlayIcon />{/snippet}
-        <PauseIcon />
-      </Carousel.AutoplayIndicator>
-    </Carousel.AutoplayTrigger>
+    <Carousel.ItemGroup class={styles.ItemGroup}>
+      {#each images as image, index}
+        <Carousel.Item class={styles.Item} {index}>
+          <img src={image.src} alt={image.alt} width="500" height="300" />
+        </Carousel.Item>
+      {/each}
+    </Carousel.ItemGroup>
     <Carousel.NextTrigger class={styles.Trigger}>
       <ArrowRightIcon />
     </Carousel.NextTrigger>
   </Carousel.Control>
+  <Carousel.IndicatorGroup class={styles.IndicatorGroup}>
+    {#each images as image, index}
+      <Carousel.Indicator class={styles.ThumbnailIndicator} {index}>
+        <img src={image.src} alt={image.alt} width="500" height="300" />
+      </Carousel.Indicator>
+    {/each}
+  </Carousel.IndicatorGroup>
 </Carousel.Root>

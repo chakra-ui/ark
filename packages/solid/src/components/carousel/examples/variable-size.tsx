@@ -1,5 +1,7 @@
+import { Carousel } from '@ark-ui/solid/carousel'
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-solid'
 import { For } from 'solid-js'
-import { Carousel } from '../'
+import styles from 'styles/carousel.module.css'
 
 const items = [
   { id: '1', width: '120px', label: 'Small' },
@@ -11,37 +13,35 @@ const items = [
 
 export const VariableSize = () => {
   return (
-    <Carousel.Root slideCount={items.length} autoSize spacing="8px">
-      <Carousel.Control>
-        <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
-        <Carousel.NextTrigger>Next</Carousel.NextTrigger>
+    <Carousel.Root class={styles.Root} slideCount={items.length} autoSize spacing="8px">
+      <Carousel.Control class={styles.Control}>
+        <Carousel.PrevTrigger class={styles.Trigger}>
+          <ArrowLeftIcon />
+        </Carousel.PrevTrigger>
+        <Carousel.NextTrigger class={styles.Trigger}>
+          <ArrowRightIcon />
+        </Carousel.NextTrigger>
       </Carousel.Control>
-      <Carousel.ItemGroup>
+      <Carousel.ItemGroup class={styles.ItemGroup}>
         <For each={items}>
           {(item, index) => (
             <Carousel.Item index={index()} snapAlign="center">
-              <div
-                style={{
-                  width: item.width,
-                  height: '100px',
-                  display: 'flex',
-                  'align-items': 'center',
-                  'justify-content': 'center',
-                  'background-color': '#f0f0f0',
-                  'border-radius': '8px',
-                  'font-size': '14px',
-                  'font-weight': '500',
-                }}
-              >
+              <div class={styles.Slide} style={{ width: item.width, height: '6rem' }}>
                 {item.label}
               </div>
             </Carousel.Item>
           )}
         </For>
       </Carousel.ItemGroup>
-      <Carousel.IndicatorGroup>
-        <For each={items}>{(_, index) => <Carousel.Indicator index={index()} />}</For>
-      </Carousel.IndicatorGroup>
+      <Carousel.Context>
+        {(api) => (
+          <Carousel.IndicatorGroup class={styles.IndicatorGroup}>
+            <For each={api().pageSnapPoints}>
+              {(_, index) => <Carousel.Indicator class={styles.Indicator} index={index()} />}
+            </For>
+          </Carousel.IndicatorGroup>
+        )}
+      </Carousel.Context>
     </Carousel.Root>
   )
 }

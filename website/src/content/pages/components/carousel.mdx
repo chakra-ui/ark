@@ -63,12 +63,12 @@ Add the `autoplay` and `loop` props to `Carousel.Root`, then attach `onPointerOv
 
 <Example id="pause-on-hover" />
 
-### Custom Indicators
+### Thumbnail Indicators
 
-Replace default indicator dots with custom content by wrapping `Carousel.IndicatorGroup` in `Carousel.Context`. Use
-`api.page` to determine the active indicator and render image thumbnails for each slide:
+Replace default indicator dots with image thumbnails. Render each thumbnail inside `Carousel.Indicator` to create a
+visual preview of each slide:
 
-<Example id="custom-indicator" />
+<Example id="thumbnail-indicator" />
 
 ### Vertical Orientation
 
@@ -99,6 +99,21 @@ from `Carousel.Context` to render the correct number of indicators based on page
 `spacing` prop to control the gap between slides.
 
 <Example id="slides-per-page" />
+
+### Spacing
+
+Control the gap between slides using the `spacing` prop on `Carousel.Root`. Combine it with `slidesPerPage` to create
+layouts that show partial previews of adjacent slides.
+
+<Example id="spacing" />
+
+### Variable Size Slides
+
+Enable variable-width slides by setting the `autoSize` prop on `Carousel.Root`. Each `Carousel.Item` can have its own
+width, and the carousel will adapt accordingly. Use the `snapAlign` prop on individual items to control their snap
+position.
+
+<Example id="variable-size" />
 
 ## API Reference
 

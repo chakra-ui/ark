@@ -28,7 +28,14 @@ const images = [
       </Carousel.NextTrigger>
     </Carousel.Control>
     <Carousel.IndicatorGroup :class="styles.IndicatorGroup">
-      <Carousel.Indicator v-for="(_, index) in images" :key="index" :class="styles.Indicator" :index="index" />
+      <Carousel.Indicator
+        v-for="(image, index) in images"
+        :key="index"
+        :class="styles.ThumbnailIndicator"
+        :index="index"
+      >
+        <img :src="image.src" :alt="image.alt" width="500" height="300" />
+      </Carousel.Indicator>
     </Carousel.IndicatorGroup>
   </Carousel.Root>
 </template>

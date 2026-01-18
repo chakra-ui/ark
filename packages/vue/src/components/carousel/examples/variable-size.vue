@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { Carousel } from '../'
+import { Carousel } from '@ark-ui/vue/carousel'
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-vue-next'
+import styles from 'styles/carousel.module.css'
 
 const items = [
   { id: '1', width: '120px', label: 'Small' },
@@ -11,32 +13,31 @@ const items = [
 </script>
 
 <template>
-  <Carousel.Root :slide-count="items.length" :auto-size="true" spacing="8px">
-    <Carousel.Control>
-      <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
-      <Carousel.NextTrigger>Next</Carousel.NextTrigger>
+  <Carousel.Root :class="styles.Root" :slide-count="items.length" :auto-size="true" spacing="8px">
+    <Carousel.Control :class="styles.Control">
+      <Carousel.PrevTrigger :class="styles.Trigger">
+        <ArrowLeftIcon />
+      </Carousel.PrevTrigger>
+      <Carousel.NextTrigger :class="styles.Trigger">
+        <ArrowRightIcon />
+      </Carousel.NextTrigger>
     </Carousel.Control>
-    <Carousel.ItemGroup>
+    <Carousel.ItemGroup :class="styles.ItemGroup">
       <Carousel.Item v-for="(item, index) in items" :key="item.id" :index="index" snap-align="center">
-        <div
-          :style="{
-            width: item.width,
-            height: '100px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#f0f0f0',
-            borderRadius: '8px',
-            fontSize: '14px',
-            fontWeight: '500',
-          }"
-        >
+        <div :class="styles.Slide" :style="{ width: item.width, height: '6rem' }">
           {{ item.label }}
         </div>
       </Carousel.Item>
     </Carousel.ItemGroup>
-    <Carousel.IndicatorGroup>
-      <Carousel.Indicator v-for="(_, index) in items" :key="index" :index="index" />
-    </Carousel.IndicatorGroup>
+    <Carousel.Context v-slot="api">
+      <Carousel.IndicatorGroup :class="styles.IndicatorGroup">
+        <Carousel.Indicator
+          v-for="(_, index) in api.pageSnapPoints"
+          :key="index"
+          :class="styles.Indicator"
+          :index="index"
+        />
+      </Carousel.IndicatorGroup>
+    </Carousel.Context>
   </Carousel.Root>
 </template>

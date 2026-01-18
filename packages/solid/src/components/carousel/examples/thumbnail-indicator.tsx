@@ -11,7 +11,7 @@ const images = [
   { src: 'https://picsum.photos/seed/5/500/300', alt: 'Forest path' },
 ]
 
-export const Basic = () => {
+export const ThumbnailIndicator = () => {
   return (
     <Carousel.Root class={styles.Root} slideCount={images.length}>
       <Carousel.Control class={styles.Control}>
@@ -32,7 +32,13 @@ export const Basic = () => {
         </Carousel.NextTrigger>
       </Carousel.Control>
       <Carousel.IndicatorGroup class={styles.IndicatorGroup}>
-        <Index each={images}>{(_, index) => <Carousel.Indicator class={styles.Indicator} index={index} />}</Index>
+        <Index each={images}>
+          {(image, index) => (
+            <Carousel.Indicator class={styles.ThumbnailIndicator} index={index}>
+              <img src={image().src} alt={image().alt} width="500" height="300" />
+            </Carousel.Indicator>
+          )}
+        </Index>
       </Carousel.IndicatorGroup>
     </Carousel.Root>
   )

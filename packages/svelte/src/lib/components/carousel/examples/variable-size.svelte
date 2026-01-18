@@ -1,5 +1,8 @@
-<script lang="ts">
-  import { Carousel } from '../'
+<script>
+  import { Carousel } from '@ark-ui/svelte/carousel'
+  import ArrowLeftIcon from 'lucide-svelte/icons/arrow-left'
+  import ArrowRightIcon from 'lucide-svelte/icons/arrow-right'
+  import styles from 'styles/carousel.module.css'
 
   const items = [
     { id: '1', width: '120px', label: 'Small' },
@@ -10,33 +13,31 @@
   ]
 </script>
 
-<Carousel.Root slideCount={items.length} autoSize spacing="8px">
-  <Carousel.Control>
-    <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
-    <Carousel.NextTrigger>Next</Carousel.NextTrigger>
+<Carousel.Root class={styles.Root} slideCount={items.length} autoSize spacing="8px">
+  <Carousel.Control class={styles.Control}>
+    <Carousel.PrevTrigger class={styles.Trigger}>
+      <ArrowLeftIcon />
+    </Carousel.PrevTrigger>
+    <Carousel.NextTrigger class={styles.Trigger}>
+      <ArrowRightIcon />
+    </Carousel.NextTrigger>
   </Carousel.Control>
-  <Carousel.ItemGroup>
+  <Carousel.ItemGroup class={styles.ItemGroup}>
     {#each items as item, index}
       <Carousel.Item {index} snapAlign="center">
-        <div
-          style:width={item.width}
-          style:height="100px"
-          style:display="flex"
-          style:align-items="center"
-          style:justify-content="center"
-          style:background-color="#f0f0f0"
-          style:border-radius="8px"
-          style:font-size="14px"
-          style:font-weight="500"
-        >
+        <div class={styles.Slide} style:width={item.width} style:height="6rem">
           {item.label}
         </div>
       </Carousel.Item>
     {/each}
   </Carousel.ItemGroup>
-  <Carousel.IndicatorGroup>
-    {#each items as _, index}
-      <Carousel.Indicator {index} />
-    {/each}
-  </Carousel.IndicatorGroup>
+  <Carousel.Context>
+    {#snippet render(api)}
+      <Carousel.IndicatorGroup class={styles.IndicatorGroup}>
+        {#each api().pageSnapPoints as _, index}
+          <Carousel.Indicator class={styles.Indicator} {index} />
+        {/each}
+      </Carousel.IndicatorGroup>
+    {/snippet}
+  </Carousel.Context>
 </Carousel.Root>
