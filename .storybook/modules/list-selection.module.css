@@ -1,0 +1,103 @@
+.Root {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  max-width: 24rem;
+}
+
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--demo-border);
+  margin-bottom: 0.25rem;
+}
+
+.Count {
+  font-size: 0.875rem;
+  color: var(--demo-neutral-emphasized);
+}
+
+.SelectAllButton {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--demo-coral-fg);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.Item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: 0.25rem;
+  user-select: none;
+  border: 1px solid transparent;
+
+  &:hover {
+    background: var(--demo-neutral-subtle);
+  }
+
+  &[data-selected] {
+    background: var(--demo-coral-subtle);
+    border-color: var(--demo-coral-muted);
+  }
+}
+
+.Checkbox {
+  appearance: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 1.5px solid var(--demo-border-emphasized);
+  border-radius: 0.25rem;
+  background: var(--demo-bg-checkbox);
+  cursor: pointer;
+  flex-shrink: 0;
+  display: grid;
+  place-content: center;
+
+  &::before {
+    content: '';
+    width: 0.625rem;
+    height: 0.625rem;
+    rotate: 15deg;
+    scale: 0;
+    transition: scale 0.1s ease-in-out;
+    box-shadow: inset 1rem 1rem var(--demo-coral-contrast);
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  }
+
+  &:checked {
+    background: var(--demo-coral-solid);
+    border-color: var(--demo-coral-solid);
+
+    &::before {
+      scale: 1;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: 2px;
+  }
+}
+
+.ItemText {
+  font-size: 0.9375rem;
+  color: var(--demo-neutral-fg);
+  flex: 1;
+}
+
+.HelperText {
+  font-size: 0.75rem;
+  color: var(--demo-neutral-emphasized);
+  margin-top: 0.5rem;
+}

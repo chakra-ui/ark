@@ -1,16 +1,14 @@
 import { createListCollection, useListSelection } from '@ark-ui/react/collection'
+import styles from 'styles/list-selection.module.css'
 
 export const Range = () => {
   const collection = createListCollection({
     items: [
-      { value: 'react', label: 'React' },
-      { value: 'vue', label: 'Vue' },
-      { value: 'angular', label: 'Angular' },
-      { value: 'svelte', label: 'Svelte' },
-      { value: 'solid', label: 'Solid' },
-      { value: 'preact', label: 'Preact' },
-      { value: 'qwik', label: 'Qwik' },
-      { value: 'lit', label: 'Lit' },
+      { label: 'React', value: 'react' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Angular', value: 'angular' },
+      { label: 'Svelte', value: 'svelte' },
+      { label: 'Solid', value: 'solid' },
     ],
   })
 
@@ -21,50 +19,30 @@ export const Range = () => {
 
   const handleItemClick = (value: string, event: React.MouseEvent) => {
     if (event.shiftKey && selection.firstSelectedValue) {
-      // Extend selection from first selected to clicked item
       selection.extend(selection.firstSelectedValue, value)
     } else if (event.ctrlKey || event.metaKey) {
-      // Toggle individual item
       selection.toggle(value)
     } else {
-      // Replace selection with clicked item
       selection.replace(value)
     }
   }
 
   return (
-    <div>
-      <div style={{ marginBottom: 16 }}>
-        <p>
-          <strong>Instructions:</strong>
-        </p>
-        <ul style={{ margin: '8px 0', paddingLeft: 20 }}>
-          <li>Click to select single item</li>
-          <li>Ctrl/Cmd + Click to toggle individual items</li>
-          <li>Shift + Click to select range from first selected item</li>
-        </ul>
-      </div>
-
+    <div className={styles.Root}>
+      <output>Selected: {selection.selectedValues.join(', ') || 'None'}</output>
       {collection.items.map((item) => (
-        <label
-          key={item.value}
-          style={{
-            backgroundColor: selection.isSelected(item.value) ? '#e2e8f0' : 'transparent',
-            padding: '8px 12px',
-            cursor: 'pointer',
-            userSelect: 'none',
-            border: '1px solid #e2e8f0',
-            marginBottom: 2,
-          }}
-        >
+        <label key={item.value} className={styles.Item} data-selected={selection.isSelected(item.value) || undefined}>
           <input
             type="checkbox"
+            className={styles.Checkbox}
             checked={selection.isSelected(item.value)}
             onClick={(e) => handleItemClick(item.value, e)}
+            readOnly
           />
-          {item.label}
+          <span className={styles.ItemText}>{item.label}</span>
         </label>
       ))}
+      <p className={styles.HelperText}>Click to select • Shift+Click for range • Cmd/Ctrl+Click to toggle</p>
     </div>
   )
 }
