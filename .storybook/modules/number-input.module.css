@@ -1,4 +1,5 @@
 .Root {
+  color: var(--demo-neutral-fg);
   --stepper-width: 1.5rem;
 
   display: flex;

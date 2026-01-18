@@ -1,4 +1,5 @@
 .Root {
+  color: var(--demo-neutral-fg);
   --qr-code-size: 100px;
   --qr-code-overlay-size: calc(var(--qr-code-size) / 3);
   position: relative;

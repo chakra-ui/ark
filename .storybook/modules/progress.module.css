@@ -1,4 +1,5 @@
 .Root {
+  color: var(--demo-neutral-fg);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.25rem;

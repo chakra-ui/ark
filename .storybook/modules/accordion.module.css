@@ -1,4 +1,5 @@
 .Root {
+  color: var(--demo-neutral-fg);
   --px: 0.5rem;
   --py: 0.625rem;
   display: flex;

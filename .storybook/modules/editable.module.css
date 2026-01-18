@@ -4,6 +4,7 @@
   gap: 0.375rem;
   width: 100%;
   max-width: 24rem;
+  color: var(--demo-neutral-fg);
 
   &[data-disabled] {
     opacity: 0.5;

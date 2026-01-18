@@ -1,4 +1,5 @@
 .Root {
+  color: var(--demo-neutral-fg);
   --steps-size: 2.5rem;
   --steps-icon-size: 1rem;
   --steps-thickness: 2px;

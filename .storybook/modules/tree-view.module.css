@@ -1,4 +1,5 @@
 .Root {
+  color: var(--demo-neutral-fg);
   --tree-item-gap: 0.5rem;
   --tree-indentation: 1rem;
   --tree-padding-inline: 0.75rem;

@@ -1,26 +1,26 @@
 :root {
   /* Coral semantic tokens */
   --demo-coral-solid: #eb5e41;
-  --demo-coral-emphasized: #d14d32;
+  --demo-coral-emphasized: #de5045;
   --demo-coral-muted: #ffdbda;
   --demo-coral-subtle: #ffe5e4;
   --demo-coral-fg: #c9453b;
   --demo-coral-contrast: white;
   --demo-coral-focus-ring: #ffb2a8;
 
-  /* Neutral semantic tokens */
+  /* Neutral semantic tokens (Sand from park-ui) */
   --demo-neutral-solid: #8d8d86;
-  --demo-neutral-emphasized: #6f6d66;
-  --demo-neutral-muted: #e9e8e6;
+  --demo-neutral-emphasized: #82827c;
+  --demo-neutral-muted: #e2e1de;
   --demo-neutral-subtle: #f1f0ef;
-  --demo-neutral-fg: #1a1a19;
+  --demo-neutral-fg: #21201c;
   --demo-neutral-contrast: white;
   --demo-neutral-focus-ring: #bcbbb5;
 
   /* Border semantic tokens */
-  --demo-border: #e5e5e3;
-  --demo-border-muted: #eeeeec;
-  --demo-border-emphasized: #d2d2cf;
+  --demo-border: #e9e8e6;
+  --demo-border-muted: #f9f9f8;
+  --demo-border-emphasized: #dad9d6;
 
   /* Error semantic tokens */
   --demo-error: #ff4444;
@@ -34,32 +34,32 @@
 .dark {
   /* Coral dark mode */
   --demo-coral-solid: #eb5e41;
-  --demo-coral-emphasized: #f47a5c;
+  --demo-coral-emphasized: #ef6b4e;
   --demo-coral-muted: #722b25;
   --demo-coral-subtle: #55221e;
   --demo-coral-fg: #f47a5c;
   --demo-coral-contrast: white;
   --demo-coral-focus-ring: #e2503f;
 
-  /* Neutral dark mode */
+  /* Neutral dark mode (Sand from park-ui) */
   --demo-neutral-solid: #6f6d66;
-  --demo-neutral-emphasized: #8d8d86;
-  --demo-neutral-muted: #2a2a28;
+  --demo-neutral-emphasized: #7c7b74;
+  --demo-neutral-muted: #31312e;
   --demo-neutral-subtle: #222221;
-  --demo-neutral-fg: #b5b3ad;
+  --demo-neutral-fg: #eeeeec;
   --demo-neutral-contrast: white;
   --demo-neutral-focus-ring: #62605b;
 
   /* Border dark mode */
-  --demo-border: #3a3a38;
-  --demo-border-muted: #2f2f2d;
-  --demo-border-emphasized: #4a4a47;
+  --demo-border: #2a2a28;
+  --demo-border-muted: #191918;
+  --demo-border-emphasized: #3b3a37;
 
   /* Error dark mode */
   --demo-error: #ff4444;
 
   /* Popover dark mode */
-  --demo-bg-popover: #1a1a19;
-  --demo-bg-thumb: #1a1a19;
-  --demo-bg-checkbox: #1a1a19;
+  --demo-bg-popover: #111110;
+  --demo-bg-thumb: #111110;
+  --demo-bg-checkbox: #111110;
 }

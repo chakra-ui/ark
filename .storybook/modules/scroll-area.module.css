@@ -1,4 +1,5 @@
 .Root {
+  color: var(--demo-neutral-fg);
   box-sizing: border-box;
   width: 24rem;
   height: 8.5rem;

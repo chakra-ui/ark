@@ -1,4 +1,5 @@
 .Root {
+  color: var(--demo-neutral-fg);
   display: inline-flex;
   align-items: center;
   vertical-align: top;
