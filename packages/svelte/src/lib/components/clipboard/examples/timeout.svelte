@@ -4,8 +4,8 @@
   import styles from 'styles/clipboard.module.css'
 </script>
 
-<Clipboard.Root class={styles.Root} value="https://ark-ui.com">
-  <Clipboard.Label class={styles.Label}>Copy this link</Clipboard.Label>
+<Clipboard.Root class={styles.Root} value="https://ark-ui.com" timeout={5000}>
+  <Clipboard.Label class={styles.Label}>Copy this link (5 second timeout)</Clipboard.Label>
   <Clipboard.Control class={styles.Control}>
     <Clipboard.Input class={styles.Input} />
     <Clipboard.Trigger class={styles.Trigger}>

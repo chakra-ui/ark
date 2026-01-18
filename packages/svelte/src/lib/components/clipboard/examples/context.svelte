@@ -1,31 +1,23 @@
 <script lang="ts">
-  import { CheckIcon, ClipboardCopyIcon } from 'lucide-svelte'
   import { Clipboard } from '@ark-ui/svelte/clipboard'
+  import { CheckIcon, ClipboardCopyIcon } from 'lucide-svelte'
+  import button from 'styles/button.module.css'
+  import styles from 'styles/clipboard.module.css'
 </script>
 
-<Clipboard.Root value="https://ark-ui.com">
-  <Clipboard.Label>Copy this link</Clipboard.Label>
-  <Clipboard.Control>
-    <Clipboard.Trigger>
-      <Clipboard.Context>
-        {#snippet render(clipboard)}
-          <div>
-            {#if clipboard().copied}
-              <CheckIcon />
-            {:else}
-              <ClipboardCopyIcon />
-            {/if}
-            <span>
-              {#if clipboard().copied}
-                Copied!
-              {:else}
-                Copy
-              {/if}
-            </span>
-            <small>Value: {clipboard().value}</small>
-          </div>
-        {/snippet}
-      </Clipboard.Context>
-    </Clipboard.Trigger>
-  </Clipboard.Control>
+<Clipboard.Root class={styles.Root} value="https://ark-ui.com">
+  <Clipboard.Label class={styles.Label}>Copy this link</Clipboard.Label>
+  <Clipboard.Context>
+    {#snippet render(clipboard)}
+      <button class={button.Root} onclick={() => clipboard().copy()}>
+        {#if clipboard().copied}
+          <CheckIcon />
+          Copied!
+        {:else}
+          <ClipboardCopyIcon />
+          Copy
+        {/if}
+      </button>
+    {/snippet}
+  </Clipboard.Context>
 </Clipboard.Root>
