@@ -1,5 +1,10 @@
 import { useAsyncList } from '@ark-ui/react/collection'
+import { LoaderIcon } from 'lucide-react'
 import { useState } from 'react'
+import field from 'styles/field.module.css'
+import styles from 'styles/async-list.module.css'
+
+const LIMIT = 5
 
 interface User {
   id: number
@@ -14,24 +19,21 @@ export const Dependencies = () => {
   const [selectedRole, setSelectedRole] = useState<string>('')
 
   const list = useAsyncList<User>({
-    initialItems: mockUsers, // Show all users initially
+    initialItems: mockUsers.slice(0, LIMIT),
     dependencies: [selectedDepartment, selectedRole],
     async load({ filterText }) {
-      await delay(400) // Simulate network delay
+      await delay(400)
 
       let items = mockUsers
 
-      // Filter by department
       if (selectedDepartment) {
         items = items.filter((user) => user.department === selectedDepartment)
       }
 
-      // Filter by role
       if (selectedRole) {
         items = items.filter((user) => user.role === selectedRole)
       }
 
-      // Filter by search text
       if (filterText) {
         items = items.filter(
           (user) =>
@@ -40,16 +42,18 @@ export const Dependencies = () => {
         )
       }
 
-      return { items }
+      return { items: items.slice(0, LIMIT) }
     },
   })
 
   return (
-    <div>
-      <h2>Dependencies Example</h2>
-
-      <div>
-        <select value={selectedDepartment} onChange={(e) => setSelectedDepartment(e.target.value)}>
+    <div className={styles.Root}>
+      <div className={styles.Header}>
+        <select
+          className={field.Select}
+          value={selectedDepartment}
+          onChange={(e) => setSelectedDepartment(e.target.value)}
+        >
           <option value="">All Departments</option>
           {departments.map((dept) => (
             <option key={dept} value={dept}>
@@ -58,7 +62,7 @@ export const Dependencies = () => {
           ))}
         </select>
 
-        <select value={selectedRole} onChange={(e) => setSelectedRole(e.target.value)}>
+        <select className={field.Select} value={selectedRole} onChange={(e) => setSelectedRole(e.target.value)}>
           <option value="">All Roles</option>
           {roles.map((role) => (
             <option key={role} value={role}>
@@ -68,39 +72,45 @@ export const Dependencies = () => {
         </select>
 
         <input
+          className={field.Input}
           type="text"
           placeholder="Search..."
           value={list.filterText}
           onChange={(e) => list.setFilterText(e.target.value)}
         />
 
-        {list.loading && <span>Loading...</span>}
+        {list.loading && (
+          <span className={styles.Loading}>
+            <LoaderIcon className={styles.Spinner} /> Loading
+          </span>
+        )}
       </div>
 
-      {list.error && <div>Error: {list.error.message}</div>}
+      {list.error && <div className={styles.Error}>Error: {list.error.message}</div>}
 
-      <div>Found {list.items.length} users</div>
+      <div className={styles.Status}>Found {list.items.length} users</div>
 
-      <div>
+      <div className={styles.ItemGroup}>
         {list.items.map((user) => (
-          <div key={user.id}>
-            <div>
-              <strong>{user.name}</strong>
-            </div>
-            <div>{user.email}</div>
-            <div>
-              {user.department} • {user.role}
+          <div key={user.id} className={styles.Item}>
+            <div className={styles.ItemContent}>
+              <div className={styles.ItemTitle}>{user.name}</div>
+              <div className={styles.ItemDescription}>{user.email}</div>
+              <div className={styles.ItemMeta}>
+                {user.department} • {user.role}
+              </div>
             </div>
           </div>
         ))}
       </div>
 
-      {list.items.length === 0 && !list.loading && <div>No users found with current filters</div>}
+      {list.items.length === 0 && !list.loading && (
+        <div className={styles.Empty}>No users found with current filters</div>
+      )}
     </div>
   )
 }
 
-// Helper function to simulate API delay
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const departments = ['Engineering', 'Marketing', 'Sales', 'Support']

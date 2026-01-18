@@ -1,4 +1,9 @@
 import { useAsyncList } from '@ark-ui/react/collection'
+import { LoaderIcon } from 'lucide-react'
+import field from 'styles/field.module.css'
+import styles from 'styles/async-list.module.css'
+
+const LIMIT = 4
 
 interface User {
   id: number
@@ -10,12 +15,12 @@ interface User {
 
 export const Filter = () => {
   const list = useAsyncList<User>({
-    initialItems: mockUsers.slice(0, 5), // Show first 5 users initially
+    initialItems: mockUsers.slice(0, LIMIT),
     async load({ filterText }) {
-      await delay(500) // Simulate network delay
+      await delay(500)
 
       if (!filterText) {
-        return { items: mockUsers.slice(0, 5) }
+        return { items: mockUsers.slice(0, LIMIT) }
       }
 
       const filtered = mockUsers.filter(
@@ -24,39 +29,44 @@ export const Filter = () => {
           user.email.toLowerCase().includes(filterText.toLowerCase()),
       )
 
-      return { items: filtered }
+      return { items: filtered.slice(0, LIMIT) }
     },
   })
 
   return (
-    <div>
-      <div>
+    <div className={styles.Root}>
+      <div className={styles.Header}>
         <input
+          className={field.Input}
           type="text"
           placeholder="Search users..."
           value={list.filterText}
           onChange={(e) => list.setFilterText(e.target.value)}
         />
-        {list.loading && <span>Loading...</span>}
+        {list.loading && (
+          <span className={styles.Loading}>
+            <LoaderIcon className={styles.Spinner} /> Searching
+          </span>
+        )}
       </div>
 
-      {list.error && <div>Error: {list.error.message}</div>}
+      {list.error && <div className={styles.Error}>Error: {list.error.message}</div>}
 
-      <div>
+      <div className={styles.ItemGroup}>
         {list.items.map((user) => (
-          <div key={user.id}>
-            <div>
-              <strong>{user.name}</strong>
-            </div>
-            <div>{user.email}</div>
-            <div>
-              {user.department} • {user.role}
+          <div key={user.id} className={styles.Item}>
+            <div className={styles.ItemContent}>
+              <div className={styles.ItemTitle}>{user.name}</div>
+              <div className={styles.ItemDescription}>{user.email}</div>
+              <div className={styles.ItemMeta}>
+                {user.department} • {user.role}
+              </div>
             </div>
           </div>
         ))}
       </div>
 
-      {list.items.length === 0 && !list.loading && <div>No results found</div>}
+      {list.items.length === 0 && !list.loading && <div className={styles.Empty}>No results found</div>}
     </div>
   )
 }

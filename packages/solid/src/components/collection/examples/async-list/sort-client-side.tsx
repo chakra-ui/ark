@@ -1,6 +1,8 @@
 import { useAsyncList } from '@ark-ui/solid/collection'
 import { useCollator } from '@ark-ui/solid/locale'
+import { ArrowDownIcon, ArrowUpDownIcon, ArrowUpIcon, LoaderIcon } from 'lucide-solid'
 import { For } from 'solid-js'
+import styles from 'styles/async-list.module.css'
 
 interface User {
   id: number
@@ -17,7 +19,7 @@ export const SortClientSide = () => {
   const list = useAsyncList<User>({
     autoReload: true,
     load: async () => {
-      const response = await fetch('https://jsonplaceholder.typicode.com/users')
+      const response = await fetch('https://jsonplaceholder.typicode.com/users?_limit=5')
       const data = await response.json()
       return { items: data }
     },
@@ -48,21 +50,25 @@ export const SortClientSide = () => {
 
   const getSortIcon = (column: keyof User) => {
     const current = list().sortDescriptor
-    if (current?.column !== column) return '↕️'
-    return current.direction === 'ascending' ? '↑' : '↓'
+    if (current?.column !== column) return <ArrowUpDownIcon />
+    return current.direction === 'ascending' ? <ArrowUpIcon /> : <ArrowDownIcon />
   }
 
   const descriptor = () => list().sortDescriptor
 
   return (
-    <div>
-      <div>
-        {list().loading && <div>Loading...</div>}
-        {list().error && <div>Error: {list().error.message}</div>}
+    <div class={styles.Root}>
+      {list().loading && (
+        <div class={styles.Loading}>
+          <LoaderIcon class={styles.Spinner} /> Loading
+        </div>
+      )}
+      {list().error && <div class={styles.Error}>Error: {list().error.message}</div>}
+      <div class={styles.Status}>
+        Sorted by: {descriptor() ? `${descriptor()?.column} (${descriptor()?.direction})` : 'none'}
       </div>
-      <div>Sorted by: {descriptor() ? `${descriptor()?.column} (${descriptor()?.direction})` : 'none'}</div>
 
-      <table>
+      <table class={styles.Table}>
         <thead>
           <tr>
             <For

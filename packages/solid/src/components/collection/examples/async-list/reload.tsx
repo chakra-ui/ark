@@ -1,5 +1,8 @@
 import { useAsyncList } from '@ark-ui/solid/collection'
+import { LoaderIcon } from 'lucide-solid'
 import { For } from 'solid-js'
+import button from 'styles/button.module.css'
+import styles from 'styles/async-list.module.css'
 
 interface Quote {
   id: number
@@ -10,7 +13,7 @@ interface Quote {
 export const Reload = () => {
   const list = useAsyncList<Quote>({
     async load() {
-      const response = await fetch(`https://dummyjson.com/quotes?limit=5&skip=${Math.floor(Math.random() * 50)}`)
+      const response = await fetch(`https://dummyjson.com/quotes?limit=4&skip=${Math.floor(Math.random() * 50)}`)
 
       if (!response.ok) {
         throw new Error('Failed to fetch quotes')
@@ -22,21 +25,29 @@ export const Reload = () => {
   })
 
   return (
-    <div>
-      <div>
-        <button onClick={() => list().reload()} disabled={list().loading}>
-          {list().loading ? 'Loading...' : 'Reload Quotes'}
+    <div class={styles.Root}>
+      <div class={styles.Header}>
+        <button class={button.Root} onClick={() => list().reload()} disabled={list().loading}>
+          {list().loading ? (
+            <>
+              <LoaderIcon class={styles.Spinner} /> Loading
+            </>
+          ) : (
+            'Reload Quotes'
+          )}
         </button>
       </div>
 
-      {list().error && <div>Error: {list().error.message}</div>}
+      {list().error && <div class={styles.Error}>Error: {list().error.message}</div>}
 
-      <div>
+      <div class={styles.ItemGroup}>
         <For each={list().items}>
           {(quote) => (
-            <div>
-              <div>"{quote.quote}"</div>
-              <div>— {quote.author}</div>
+            <div class={styles.Item}>
+              <div class={styles.ItemContent}>
+                <div class={styles.ItemDescription}>"{quote.quote}"</div>
+                <div class={styles.ItemMeta}>— {quote.author}</div>
+              </div>
             </div>
           )}
         </For>
