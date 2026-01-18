@@ -1,4 +1,7 @@
 import { DownloadTrigger } from '@ark-ui/react/download-trigger'
+import { DownloadIcon, ImageIcon } from 'lucide-react'
+import button from 'styles/button.module.css'
+import styles from 'styles/download-trigger.module.css'
 
 export const WithPromise = () => {
   const fetchImage = async () => {
@@ -7,8 +10,14 @@ export const WithPromise = () => {
   }
 
   return (
-    <DownloadTrigger data={fetchImage} fileName="random-image.jpg" mimeType="image/jpeg">
-      Download Image
-    </DownloadTrigger>
+    <div className={styles.Root}>
+      <div className={styles.Preview}>
+        <ImageIcon />
+        <span className={styles.PreviewText}>random-image.jpg (fetched on download)</span>
+      </div>
+      <DownloadTrigger className={button.Root} data={fetchImage} fileName="random-image.jpg" mimeType="image/jpeg">
+        <DownloadIcon /> Download Image
+      </DownloadTrigger>
+    </div>
   )
 }
