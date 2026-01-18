@@ -1,10 +1,12 @@
 import { Highlight } from '@ark-ui/solid/highlight'
+import styles from 'styles/highlight.module.css'
 
-export const Multiple = () => {
-  return (
+export const Multiple = () => (
+  <p class={styles.Text}>
     <Highlight
-      query={['ipsum', 'amet']}
-      text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt"
+      class={styles.Mark}
+      query={['React', 'Vue']}
+      text="Ark UI provides React, Solid, Vue, and Svelte components that are accessible and customizable."
     />
-  )
-}
+  </p>
+)

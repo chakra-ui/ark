@@ -1,12 +1,13 @@
 import { Highlight } from '@ark-ui/react/highlight'
 import styles from 'styles/highlight.module.css'
 
-export const Basic = () => (
+export const RepeatingText = () => (
   <p className={styles.Text}>
     <Highlight
       className={styles.Mark}
-      query="component"
-      text="Ark UI is a headless component library for building accessible web applications."
+      query="@ark-ui.com"
+      text="Contact us at support@ark-ui.com or sales@ark-ui.com for assistance."
+      matchAll
     />
   </p>
 )

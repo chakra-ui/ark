@@ -7,8 +7,9 @@ import styles from 'styles/highlight.module.css'
   <p :class="styles.Text">
     <Highlight
       :class="styles.Mark"
-      :query="['React', 'Vue']"
-      text="Ark UI provides React, Solid, Vue, and Svelte components that are accessible and customizable."
+      query="@ark-ui.com"
+      text="Contact us at support@ark-ui.com or sales@ark-ui.com for assistance."
+      match-all
     />
   </p>
 </template>

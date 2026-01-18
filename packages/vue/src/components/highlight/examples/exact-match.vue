@@ -1,17 +1,32 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { Highlight } from '@ark-ui/vue/highlight'
+import styles from 'styles/highlight.module.css'
 </script>
 
 <template>
-  <div>
-    <p>Without exactMatch (highlights partial matches):</p>
-    <Highlight query="cat" text="The cat is in the category. A cat-like creature." :match-all="true" />
-    <p style="margin-top: 1rem">With exactMatch (highlights whole words only):</p>
-    <Highlight
-      query="cat"
-      text="The cat is in the category. A cat-like creature."
-      :exact-match="true"
-      :match-all="true"
-    />
+  <div :class="styles.Root">
+    <div :class="styles.Section">
+      <span :class="styles.Label">Partial Match</span>
+      <p :class="styles.Text">
+        <Highlight
+          :class="styles.Mark"
+          query="box"
+          text="The checkbox component renders a box element. Use combobox for autocomplete."
+          match-all
+        />
+      </p>
+    </div>
+    <div :class="styles.Section">
+      <span :class="styles.Label">Exact Match</span>
+      <p :class="styles.Text">
+        <Highlight
+          :class="styles.Mark"
+          query="box"
+          text="The checkbox component renders a box element. Use combobox for autocomplete."
+          exact-match
+          match-all
+        />
+      </p>
+    </div>
   </div>
 </template>
