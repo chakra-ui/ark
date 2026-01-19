@@ -14,6 +14,7 @@ import LinksExample from './examples/links.vue'
 import MutationExample from './examples/mutation.vue'
 import RenameNodeExample from './examples/rename-node.vue'
 import RootProviderExample from './examples/root-provider.vue'
+import VirtualizedExample from './examples/virtualized.vue'
 
 const meta: Meta = {
   title: 'Components / TreeView',
@@ -115,6 +116,13 @@ export const RenameNode = {
 export const RootProvider = {
   render: () => ({
     components: { Component: RootProviderExample },
+    template: '<Component />',
+  }),
+}
+
+export const Virtualized = {
+  render: () => ({
+    components: { Component: VirtualizedExample },
     template: '<Component />',
   }),
 }

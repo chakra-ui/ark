@@ -89,7 +89,7 @@
             </Tour.Actions>
           </Tour.Control>
           <div class={styles.ProgressBarBottom}>
-            <div class={styles.ProgressFill} style="width: {tour().getProgressPercent()}%" />
+            <div class={styles.ProgressFill} style="width: {tour().getProgressPercent()}%"></div>
           </div>
         </Tour.Content>
       </Tour.Positioner>

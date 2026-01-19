@@ -74,7 +74,7 @@
   </TreeView.Context>
 </TreeView.Root>
 
-{#snippet renderNode(node: TreeNode, indexPath: number[], tree: UseTreeViewContext)}
+{#snippet renderNode(node: TreeNode, indexPath: number[], tree: any)}
   <TreeView.NodeProvider {node} {indexPath}>
     {#if node.children}
       <TreeView.Branch class={styles.Branch}>

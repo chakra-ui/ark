@@ -13,6 +13,7 @@ import LinksExample from './examples/links.svelte'
 import MutationExample from './examples/mutation.svelte'
 import RenameNodeExample from './examples/rename-node.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import VirtualizedExample from './examples/virtualized.svelte'
 
 const meta: Meta = {
   title: 'Components/TreeView',
@@ -101,5 +102,11 @@ export const RenameNode = {
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
+  }),
+}
+
+export const Virtualized = {
+  render: () => ({
+    Component: VirtualizedExample,
   }),
 }

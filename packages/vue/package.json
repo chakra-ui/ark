@@ -149,6 +149,7 @@
     "@zag-js/vue": "1.31.1"
   },
   "devDependencies": {
+    "@tanstack/vue-virtual": "3.13.6",
     "@biomejs/biome": "2.3.8",
     "@storybook/addon-a11y": "10.1.11",
     "@storybook/vue3-vite": "10.1.11",

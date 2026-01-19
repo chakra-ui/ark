@@ -210,6 +210,7 @@
     "@sveltejs/package": "2.5.7",
     "@sveltejs/vite-plugin-svelte": "6.2.1",
     "@tanstack/svelte-form": "1.26.0",
+    "@tanstack/svelte-virtual": "3.13.10",
     "@testing-library/dom": "10.4.1",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/svelte": "5.2.9",

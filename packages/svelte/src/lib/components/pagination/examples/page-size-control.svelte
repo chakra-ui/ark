@@ -8,8 +8,9 @@
   <Pagination.Context>
     {#snippet render(pagination)}
       <div class="hstack">
-        <label class={styles.Text}>Items per page:</label>
+        <label for="page-size" class={styles.Text}>Items per page:</label>
         <select
+          id="page-size"
           class={styles.PageSizeSelect}
           value={pagination().pageSize}
           onchange={(e) => pagination().setPageSize(Number(e.currentTarget.value))}
