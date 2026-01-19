@@ -21,14 +21,15 @@ import { ark } from '../factory'
 import { ScrollAreaProvider } from './use-scroll-area-context'
 
 const props = defineProps<ScrollAreaRootProviderBaseProps>()
+const scrollArea = computed(() => props.value)
 
-ScrollAreaProvider(computed(() => props.value))
+ScrollAreaProvider(scrollArea)
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.div :as-child="asChild">
+  <ark.div v-bind="scrollArea.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>
