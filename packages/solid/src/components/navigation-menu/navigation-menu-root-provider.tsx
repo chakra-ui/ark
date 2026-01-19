@@ -11,9 +11,7 @@ interface RootProviderProps {
 
 export interface NavigationMenuRootProviderBaseProps extends RenderStrategyProps, PolymorphicProps<'nav'> {}
 export interface NavigationMenuRootProviderProps
-  extends HTMLProps<'nav'>,
-    RootProviderProps,
-    NavigationMenuRootProviderBaseProps {}
+  extends HTMLProps<'nav'>, RootProviderProps, NavigationMenuRootProviderBaseProps {}
 
 export const NavigationMenuRootProvider = (props: NavigationMenuRootProviderProps) => {
   const [renderStrategyProps, navigationMenuProps] = splitRenderStrategyProps(props)

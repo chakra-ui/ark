@@ -6,7 +6,8 @@ import type { RootEmits, RootProps } from './password-input.types'
 
 export interface PasswordInputRootBaseProps extends RootProps, PolymorphicProps {}
 export interface PasswordInputRootProps
-  extends PasswordInputRootBaseProps,
+  extends
+    PasswordInputRootBaseProps,
     /**
      * @vue-ignore
      */

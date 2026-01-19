@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface NumberInputLabelBaseProps extends PolymorphicProps {}
 export interface NumberInputLabelProps
-  extends NumberInputLabelBaseProps,
+  extends
+    NumberInputLabelBaseProps,
     /**
      * @vue-ignore
      */

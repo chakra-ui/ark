@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface ColorPickerChannelSliderTrackBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface ColorPickerChannelSliderTrackProps
-    extends Assign<HTMLProps<'div'>, ColorPickerChannelSliderTrackBaseProps> {}
+  export interface ColorPickerChannelSliderTrackProps extends Assign<
+    HTMLProps<'div'>,
+    ColorPickerChannelSliderTrackBaseProps
+  > {}
 </script>
 
 <script lang="ts">

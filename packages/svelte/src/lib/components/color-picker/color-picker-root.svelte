@@ -4,10 +4,7 @@
   import type { UseColorPickerProps } from './use-color-picker.svelte'
 
   export interface ColorPickerRootBaseProps
-    extends UseColorPickerProps,
-      UsePresenceProps,
-      PolymorphicProps<'div'>,
-      RefAttribute {}
+    extends UseColorPickerProps, UsePresenceProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface ColorPickerRootProps extends Assign<HTMLProps<'div'>, ColorPickerRootBaseProps> {}
 </script>
 

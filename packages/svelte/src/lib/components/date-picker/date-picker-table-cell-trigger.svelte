@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
   export interface DatePickerTableCellTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
-  export interface DatePickerTableCellTriggerProps
-    extends Assign<HTMLProps<'button'>, DatePickerTableCellTriggerBaseProps> {}
+  export interface DatePickerTableCellTriggerProps extends Assign<
+    HTMLProps<'button'>,
+    DatePickerTableCellTriggerBaseProps
+  > {}
 </script>
 
 <script lang="ts">

@@ -4,7 +4,8 @@ import { type PolymorphicProps, ark } from '../factory'
 
 export interface TooltipPositionerBaseProps extends PolymorphicProps {}
 export interface TooltipPositionerProps
-  extends TooltipPositionerBaseProps,
+  extends
+    TooltipPositionerBaseProps,
     /**
      * @vue-ignore
      */

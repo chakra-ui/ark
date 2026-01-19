@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface ColorPickerAreaThumbBaseProps extends PolymorphicProps {}
 export interface ColorPickerAreaThumbProps
-  extends ColorPickerAreaThumbBaseProps,
+  extends
+    ColorPickerAreaThumbBaseProps,
     /**
      * @vue-ignore
      */

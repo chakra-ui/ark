@@ -5,9 +5,7 @@
   import type { UseFloatingPanelProps } from './use-floating-panel.svelte.js'
 
   export interface FloatingPanelRootBaseProps
-    extends UseFloatingPanelProps,
-      UsePresenceProps,
-      PolymorphicProps<'div'> {}
+    extends UseFloatingPanelProps, UsePresenceProps, PolymorphicProps<'div'> {}
   export interface FloatingPanelRootProps extends FloatingPanelRootBaseProps {
     children?: Snippet
   }

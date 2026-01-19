@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface SwitchLabelBaseProps extends PolymorphicProps {}
 export interface SwitchLabelProps
-  extends SwitchLabelBaseProps,
+  extends
+    SwitchLabelBaseProps,
     /**
      * @vue-ignore
      */

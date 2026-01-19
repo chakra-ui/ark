@@ -13,34 +13,34 @@
       border-bottom-color: var(--spinner-track-color);
       height: var(--spinner-size);
       width: var(--spinner-size);
-}
-}
+    }
+  }
 
   .spinner--size_inherit {
     --spinner-size: 1em;
-}
+  }
 
   .spinner--size_md {
     --spinner-size: var(--sizes-5);
-}
+  }
 
   .spinner--size_xs {
     --spinner-size: var(--sizes-3);
-}
+  }
 
   .spinner--size_sm {
     --spinner-size: var(--sizes-4);
-}
+  }
 
   .spinner--size_lg {
     --spinner-size: var(--sizes-6);
-}
+  }
 
   .spinner--size_xl {
     --spinner-size: var(--sizes-7);
-}
+  }
 
   .spinner--size_2xl {
     --spinner-size: var(--sizes-8);
-}
+  }
 }

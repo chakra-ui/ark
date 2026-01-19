@@ -6,7 +6,8 @@ import { usePresenceContext } from '../presence'
 
 export interface HoverCardContentBaseProps extends PolymorphicProps {}
 export interface HoverCardContentProps
-  extends HoverCardContentBaseProps,
+  extends
+    HoverCardContentBaseProps,
     /**
      * @vue-ignore
      */

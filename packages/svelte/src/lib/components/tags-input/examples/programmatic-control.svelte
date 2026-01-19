@@ -9,22 +9,12 @@
 
 <div class="stack">
   <div style="display: flex; gap: 8px;">
-    <button class={button.Root} type="button" onclick={() => tagsInput().addValue('React')}>
-      Add React
-    </button>
-    <button class={button.Root} type="button" onclick={() => tagsInput().addValue('Solid')}>
-      Add Solid
-    </button>
-    <button
-      class={button.Root}
-      type="button"
-      onclick={() => tagsInput().setValue(['Vue', 'Svelte'])}
-    >
+    <button class={button.Root} type="button" onclick={() => tagsInput().addValue('React')}>Add React</button>
+    <button class={button.Root} type="button" onclick={() => tagsInput().addValue('Solid')}>Add Solid</button>
+    <button class={button.Root} type="button" onclick={() => tagsInput().setValue(['Vue', 'Svelte'])}>
       Set to Vue & Svelte
     </button>
-    <button class={button.Root} type="button" onclick={() => tagsInput().clearValue()}>
-      Clear All
-    </button>
+    <button class={button.Root} type="button" onclick={() => tagsInput().clearValue()}>Clear All</button>
   </div>
 
   <TagsInput.RootProvider value={tagsInput} class={styles.Root}>

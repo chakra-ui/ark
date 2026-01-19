@@ -16,9 +16,7 @@
           <XIcon />
         </Dialog.CloseTrigger>
         <Dialog.Title class={styles.Title}>Welcome Back</Dialog.Title>
-        <Dialog.Description class={styles.Description}>
-          Sign in to your account to continue.
-        </Dialog.Description>
+        <Dialog.Description class={styles.Description}>Sign in to your account to continue.</Dialog.Description>
       </Dialog.Content>
     </Dialog.Positioner>
   </Portal>

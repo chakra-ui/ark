@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface SplitterResizeTriggerIndicatorBaseProps extends PolymorphicProps {}
 export interface SplitterResizeTriggerIndicatorProps
-  extends SplitterResizeTriggerIndicatorBaseProps,
+  extends
+    SplitterResizeTriggerIndicatorBaseProps,
     /**
      * @vue-ignore
      */

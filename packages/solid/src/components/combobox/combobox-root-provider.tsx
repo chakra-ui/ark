@@ -12,12 +12,9 @@ interface RootProviderProps<T extends CollectionItem> {
   value: UseComboboxReturn<T>
 }
 export interface ComboboxRootProviderBaseProps<T extends CollectionItem>
-  extends RootProviderProps<T>,
-    UsePresenceProps,
-    PolymorphicProps<'div'> {}
+  extends RootProviderProps<T>, UsePresenceProps, PolymorphicProps<'div'> {}
 export interface ComboboxRootProviderProps<T extends CollectionItem>
-  extends HTMLProps<'div'>,
-    ComboboxRootProviderBaseProps<T> {}
+  extends HTMLProps<'div'>, ComboboxRootProviderBaseProps<T> {}
 
 export const ComboboxRootProvider = <T extends CollectionItem>(props: ComboboxRootProviderProps<T>) => {
   const [presenceProps, comboboxProps] = splitPresenceProps(props)

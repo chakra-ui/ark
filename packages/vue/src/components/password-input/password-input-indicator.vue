@@ -9,7 +9,8 @@ export interface PasswordInputIndicatorBaseProps extends PolymorphicProps {
   fallback?: string
 }
 export interface PasswordInputIndicatorProps
-  extends PasswordInputIndicatorBaseProps,
+  extends
+    PasswordInputIndicatorBaseProps,
     /**
      * @vue-ignore
      */

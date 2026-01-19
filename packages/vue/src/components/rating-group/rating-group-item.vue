@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface RatingGroupItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface RatingGroupItemProps
-  extends RatingGroupItemBaseProps,
+  extends
+    RatingGroupItemBaseProps,
     /**
      * @vue-ignore
      */

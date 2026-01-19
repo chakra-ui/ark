@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface FileUploadHiddenInputBaseProps extends PolymorphicProps {}
 export interface FileUploadHiddenInputProps
-  extends FileUploadHiddenInputBaseProps,
+  extends
+    FileUploadHiddenInputBaseProps,
     /**
      * @vue-ignore
      */

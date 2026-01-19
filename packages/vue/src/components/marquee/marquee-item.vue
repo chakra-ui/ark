@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface MarqueeItemBaseProps extends PolymorphicProps {}
 export interface MarqueeItemProps
-  extends MarqueeItemBaseProps,
+  extends
+    MarqueeItemBaseProps,
     /**
      * @vue-ignore
      */

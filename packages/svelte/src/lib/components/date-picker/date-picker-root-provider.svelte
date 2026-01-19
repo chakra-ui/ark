@@ -8,9 +8,7 @@
   }
 
   export interface DatePickerRootProviderBaseProps
-    extends RootProviderProps,
-      UsePresenceProps,
-      PolymorphicProps<'div'> {}
+    extends RootProviderProps, UsePresenceProps, PolymorphicProps<'div'> {}
   export interface DatePickerRootProviderProps extends Assign<HTMLProps<'div'>, DatePickerRootProviderBaseProps> {}
 </script>
 

@@ -7,12 +7,7 @@
 </script>
 
 <div class={styles.Root}>
-  <input
-    class={field.Input}
-    type="text"
-    placeholder="Search text..."
-    bind:value={query}
-  />
+  <input class={field.Input} type="text" placeholder="Search text..." bind:value={query} />
   <p class={styles.Text}>
     <Highlight
       class={styles.Mark}

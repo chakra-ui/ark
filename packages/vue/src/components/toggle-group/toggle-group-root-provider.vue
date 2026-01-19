@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface ToggleGroupRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface ToggleGroupRootProviderProps
-  extends ToggleGroupRootProviderBaseProps,
+  extends
+    ToggleGroupRootProviderBaseProps,
     /**
      * @vue-ignore
      */

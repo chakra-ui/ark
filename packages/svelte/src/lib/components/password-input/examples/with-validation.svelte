@@ -10,7 +10,11 @@
 <PasswordInput.Root class={styles.Root} invalid={!isValid && password.length > 0}>
   <PasswordInput.Label class={styles.Label}>Password (min 8 characters)</PasswordInput.Label>
   <PasswordInput.Control class={styles.Control}>
-    <PasswordInput.Input class={styles.Input} oninput={(e) => (password = e.currentTarget.value)} placeholder="Enter your password" />
+    <PasswordInput.Input
+      class={styles.Input}
+      oninput={(e) => (password = e.currentTarget.value)}
+      placeholder="Enter your password"
+    />
     <PasswordInput.VisibilityTrigger class={styles.VisibilityTrigger}>
       <PasswordInput.Indicator class={styles.Indicator}>
         {#snippet fallback()}

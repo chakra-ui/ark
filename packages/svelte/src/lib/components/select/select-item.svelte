@@ -3,13 +3,14 @@
   import type { CollectionItem } from '../collection'
 
   export interface SelectItemBaseProps<T extends CollectionItem = CollectionItem>
-    extends PolymorphicProps<'div'>,
-      RefAttribute {
+    extends PolymorphicProps<'div'>, RefAttribute {
     item: T
     disabled?: boolean
   }
-  export interface SelectItemProps<T extends CollectionItem = CollectionItem>
-    extends Assign<HTMLProps<'div'>, SelectItemBaseProps<T>> {}
+  export interface SelectItemProps<T extends CollectionItem = CollectionItem> extends Assign<
+    HTMLProps<'div'>,
+    SelectItemBaseProps<T>
+  > {}
 </script>
 
 <script lang="ts" generics="T extends CollectionItem = CollectionItem">

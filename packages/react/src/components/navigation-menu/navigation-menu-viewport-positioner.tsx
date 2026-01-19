@@ -7,8 +7,7 @@ import { useNavigationMenuContext } from './use-navigation-menu-context'
 
 export interface NavigationMenuViewportPositionerBaseProps extends ViewportProps, PolymorphicProps {}
 export interface NavigationMenuViewportPositionerProps
-  extends HTMLProps<'div'>,
-    NavigationMenuViewportPositionerBaseProps {}
+  extends HTMLProps<'div'>, NavigationMenuViewportPositionerBaseProps {}
 
 const splitViewportProps = createSplitProps<ViewportProps>()
 

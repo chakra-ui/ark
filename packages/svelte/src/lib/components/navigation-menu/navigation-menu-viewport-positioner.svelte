@@ -3,11 +3,11 @@
   import type { ViewportProps } from '@zag-js/navigation-menu'
 
   export interface NavigationMenuViewportPositionerBaseProps
-    extends ViewportProps,
-      PolymorphicProps<'div'>,
-      RefAttribute {}
-  export interface NavigationMenuViewportPositionerProps
-    extends Assign<HTMLProps<'div'>, NavigationMenuViewportPositionerBaseProps> {}
+    extends ViewportProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface NavigationMenuViewportPositionerProps extends Assign<
+    HTMLProps<'div'>,
+    NavigationMenuViewportPositionerBaseProps
+  > {}
 </script>
 
 <script lang="ts">

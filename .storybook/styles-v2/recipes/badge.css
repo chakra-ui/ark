@@ -10,89 +10,89 @@
       white-space: nowrap;
       -webkit-user-select: none;
       user-select: none;
-}
-}
+    }
+  }
 
   .badge--variant_subtle {
     background: var(--colors-color-palette-subtle-bg);
     color: var(--colors-color-palette-subtle-fg);
-}
+  }
 
   .badge--size_md {
     padding-inline: var(--spacing-2);
     gap: var(--spacing-1);
     font-size: var(--font-sizes-xs);
     height: var(--sizes-5);
-}
+  }
 
   .badge--size_md :where(svg) {
     width: var(--sizes-3);
     height: var(--sizes-3);
-}
+  }
 
   .badge--variant_solid {
     background: var(--colors-color-palette-solid-bg);
     color: var(--colors-color-palette-solid-fg);
-}
+  }
 
   .badge--variant_surface {
     background: var(--colors-color-palette-surface-bg);
     border-width: 1px;
     border-color: var(--colors-color-palette-surface-border);
     color: var(--colors-color-palette-surface-fg);
-}
+  }
 
   .badge--variant_outline {
     border-width: 1px;
     border-color: var(--colors-color-palette-outline-border);
     color: var(--colors-color-palette-outline-fg);
-}
+  }
 
   .badge--size_sm {
     padding-inline: var(--spacing-1\.5);
     gap: var(--spacing-0\.5);
     font-size: var(--font-sizes-xs);
     height: var(--sizes-4\.5);
-}
+  }
 
   .badge--size_sm :where(svg) {
     width: var(--sizes-2\.5);
     height: var(--sizes-2\.5);
-}
+  }
 
   .badge--size_lg {
     padding-inline: var(--spacing-2\.5);
     gap: var(--spacing-1);
     font-size: var(--font-sizes-xs);
     height: var(--sizes-5\.5);
-}
+  }
 
   .badge--size_lg :where(svg) {
     width: var(--sizes-3\.5);
     height: var(--sizes-3\.5);
-}
+  }
 
   .badge--size_xl {
     padding-inline: var(--spacing-2\.5);
     gap: var(--spacing-1\.5);
     font-size: var(--font-sizes-sm);
     height: var(--sizes-6);
-}
+  }
 
   .badge--size_xl :where(svg) {
     width: var(--sizes-4);
     height: var(--sizes-4);
-}
+  }
 
   .badge--size_2xl {
     padding-inline: var(--spacing-3);
     gap: var(--spacing-1\.5);
     font-size: var(--font-sizes-md);
     height: var(--sizes-7);
-}
+  }
 
   .badge--size_2xl :where(svg) {
     width: var(--sizes-4\.5);
     height: var(--sizes-4\.5);
-}
+  }
 }

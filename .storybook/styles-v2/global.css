@@ -1,9 +1,12 @@
 @layer base {
   :root {
     --made-with-panda: '🐼';
-}
+  }
 
-  *,::before,::after,::backdrop {
+  *,
+  ::before,
+  ::after,
+  ::backdrop {
     --blur: /*-*/ /*-*/;
     --brightness: /*-*/ /*-*/;
     --contrast: /*-*/ /*-*/;
@@ -37,7 +40,7 @@
     --skew-y: 0;
     --scale-x: 1;
     --scale-y: 1;
-}
+  }
 
   html {
     --colors-color-palette-1: var(--colors-neutral-1);
@@ -84,17 +87,17 @@
     --colors-color-palette-plain-bg-hover: var(--colors-neutral-plain-bg-hover);
     --colors-color-palette-plain-bg-active: var(--colors-neutral-plain-bg-active);
     --colors-color-palette-plain-fg: var(--colors-neutral-plain-fg);
-}
+  }
 
   * {
     --global-color-border: var(--colors-border);
     --global-color-placeholder: var(--colors-fg-subtle);
     --global-color-selection: var(--colors-color-palette-subtle-bg);
     --global-color-focus-ring: var(--colors-color-palette-solid-bg);
-}
+  }
 
   body {
     background: var(--colors-canvas);
     color: var(--colors-fg-default);
-}
+  }
 }

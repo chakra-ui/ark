@@ -5,7 +5,8 @@ import type { RootEmits, RootProps } from './progress.types'
 
 export interface ProgressRootBaseProps extends RootProps, PolymorphicProps {}
 export interface ProgressRootProps
-  extends ProgressRootBaseProps,
+  extends
+    ProgressRootBaseProps,
     /**
      * @vue-ignore
      */

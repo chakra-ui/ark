@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface MenuItemGroupBaseProps extends Partial<ItemGroupProps>, PolymorphicProps {}
 export interface MenuItemGroupProps
-  extends MenuItemGroupBaseProps,
+  extends
+    MenuItemGroupBaseProps,
     /**
      * @vue-ignore
      */

@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface DatePickerTableRowBaseProps extends PolymorphicProps {}
 export interface DatePickerTableRowProps
-  extends DatePickerTableRowBaseProps,
+  extends
+    DatePickerTableRowBaseProps,
     /**
      * @vue-ignore
      */

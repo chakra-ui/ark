@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface ComboboxEmptyBaseProps extends PolymorphicProps {}
 export interface ComboboxEmptyProps
-  extends ComboboxEmptyBaseProps,
+  extends
+    ComboboxEmptyBaseProps,
     /**
      * @vue-ignore
      */

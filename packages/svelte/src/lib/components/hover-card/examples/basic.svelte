@@ -29,9 +29,7 @@
             <p class={styles.Name}>Sarah Chen</p>
             <p class={styles.Username}>@sarah_chen</p>
           </div>
-          <p class={styles.Bio}>
-            Design Engineer at Acme Inc. Building beautiful interfaces and design systems.
-          </p>
+          <p class={styles.Bio}>Design Engineer at Acme Inc. Building beautiful interfaces and design systems.</p>
           <div class={styles.Stats}>
             <div class={styles.Stat}>
               <span class={styles.StatValue}>2,456</span>

@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface FileUploadItemPreviewImageBaseProps extends PolymorphicProps<'img'>, RefAttribute {}
-  export interface FileUploadItemPreviewImageProps
-    extends Assign<HTMLProps<'img'>, FileUploadItemPreviewImageBaseProps> {}
+  export interface FileUploadItemPreviewImageProps extends Assign<
+    HTMLProps<'img'>,
+    FileUploadItemPreviewImageBaseProps
+  > {}
 </script>
 
 <script lang="ts">

@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface QrCodeRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface QrCodeRootProviderProps
-  extends QrCodeRootProviderBaseProps,
+  extends
+    QrCodeRootProviderBaseProps,
     /**
      * @vue-ignore
      */

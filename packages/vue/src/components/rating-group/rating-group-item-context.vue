@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseRatingGroupItemContext } from './use-rating-group-item-context'
 
-export interface RatingGroupItemContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseRatingGroupItemContext>
-  }> {}
+export interface RatingGroupItemContextProps extends SlotsType<{
+  default: UnwrapRef<UseRatingGroupItemContext>
+}> {}
 </script>
 
 <script setup lang="ts">

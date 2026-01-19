@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface NumberInputDecrementTriggerBaseProps extends PolymorphicProps {}
 export interface NumberInputDecrementTriggerProps
-  extends NumberInputDecrementTriggerBaseProps,
+  extends
+    NumberInputDecrementTriggerBaseProps,
     /**
      * @vue-ignore
      */

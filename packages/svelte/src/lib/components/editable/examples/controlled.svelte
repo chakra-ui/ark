@@ -6,12 +6,7 @@
   let value = $state('Hello World')
 </script>
 
-<Editable.Root
-  class={styles.Root}
-  placeholder="Enter text..."
-  {value}
-  onValueChange={(e) => (value = e.value)}
->
+<Editable.Root class={styles.Root} placeholder="Enter text..." {value} onValueChange={(e) => (value = e.value)}>
   <Editable.Label class={styles.Label}>Label</Editable.Label>
   <Editable.Area class={styles.Area}>
     <Editable.Input class={styles.Input} />

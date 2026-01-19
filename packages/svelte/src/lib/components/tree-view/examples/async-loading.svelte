@@ -55,7 +55,12 @@
   let collection = $state(initialCollection)
 </script>
 
-<TreeView.Root class={styles.Root} {collection} {loadChildren} onLoadChildrenComplete={(e) => (collection = e.collection)}>
+<TreeView.Root
+  class={styles.Root}
+  {collection}
+  {loadChildren}
+  onLoadChildrenComplete={(e) => (collection = e.collection)}
+>
   <TreeView.Label class={styles.Label}>Tree</TreeView.Label>
   <TreeView.Tree class={styles.Tree}>
     {#each collection.rootNode.children ?? [] as node, index (node.id)}

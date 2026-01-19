@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface SegmentGroupItemControlBaseProps extends PolymorphicProps {}
 export interface SegmentGroupItemControlProps
-  extends SegmentGroupItemControlBaseProps,
+  extends
+    SegmentGroupItemControlBaseProps,
     /**
      * @vue-ignore
      */

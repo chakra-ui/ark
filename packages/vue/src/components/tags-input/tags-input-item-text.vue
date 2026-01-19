@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface TagsInputItemTextBaseProps extends PolymorphicProps {}
 export interface TagsInputItemTextProps
-  extends TagsInputItemTextBaseProps,
+  extends
+    TagsInputItemTextBaseProps,
     /**
      * @vue-ignore
      */

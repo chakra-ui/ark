@@ -7,18 +7,18 @@
       align-items: center;
       position: relative;
       vertical-align: middle;
-}
+    }
 
-    :where([dir=rtl], :dir(rtl)) .switch__root {
+    :where([dir='rtl'], :dir(rtl)) .switch__root {
       --switch-x: calc(var(--switch-diff) * -1);
-}
+    }
 
     .switch__label {
       font-weight: var(--font-weights-medium);
       -webkit-user-select: none;
       user-select: none;
       line-height: 1;
-}
+    }
 
     .switch__control {
       gap: 0.5rem;
@@ -29,32 +29,32 @@
       justify-content: flex-start;
       cursor: pointer;
       position: relative;
-      --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005FCC));
-}
+      --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005fcc));
+    }
 
     .switch__control:is(:focus-visible, [data-focus-visible]) {
       outline-width: var(--focus-ring-width, 2px);
       outline-offset: var(--focus-ring-offset, 2px);
       outline-style: var(--focus-ring-style, solid);
       outline-color: var(--focus-ring-color);
-}
+    }
 
     .switch__control {
       width: var(--switch-width);
       height: var(--switch-height);
-}
+    }
 
-    .switch__control:is(:user-invalid, [data-invalid], [aria-invalid=true]) {
+    .switch__control:is(:user-invalid, [data-invalid], [aria-invalid='true']) {
       outline: 2px solid;
       outline-color: var(--colors-error);
       outline-offset: 2px;
-}
+    }
 
-    .switch__control:is(:disabled, [disabled], [data-disabled], [aria-disabled=true]) {
+    .switch__control:is(:disabled, [disabled], [data-disabled], [aria-disabled='true']) {
       cursor: not-allowed;
       opacity: 0.67;
       filter: grayscale(100%);
-}
+    }
 
     .switch__thumb {
       border-radius: inherit;
@@ -66,11 +66,17 @@
       transition-property: translate;
       --transition-duration: var(--durations-fast);
       transition-duration: var(--durations-fast);
-}
+    }
 
-    .switch__thumb:is(:checked, [data-checked], [data-state=checked], [aria-checked=true], [data-state=indeterminate]) {
+    .switch__thumb:is(
+      :checked,
+      [data-checked],
+      [data-state='checked'],
+      [aria-checked='true'],
+      [data-state='indeterminate']
+    ) {
       translate: var(--switch-x) 0;
-}
+    }
 
     .switch__indicator {
       place-content: center;
@@ -85,29 +91,41 @@
       inset-inline-start: calc(var(--switch-x) - 2px);
       height: var(--switch-height);
       width: var(--switch-height);
-}
+    }
 
-    .switch__indicator:is(:checked, [data-checked], [data-state=checked], [aria-checked=true], [data-state=indeterminate]) {
+    .switch__indicator:is(
+      :checked,
+      [data-checked],
+      [data-state='checked'],
+      [aria-checked='true'],
+      [data-state='indeterminate']
+    ) {
       inset-inline-start: 2px;
-}
-}
+    }
+  }
 
   .switch__control--variant_solid {
     background: var(--colors-gray-subtle-bg);
     border-radius: var(--radii-full);
-    --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005FCC));
-}
+    --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005fcc));
+  }
 
   .switch__control--variant_solid:is(:focus-visible, [data-focus-visible]) {
     outline-width: var(--focus-ring-width, 2px);
     outline-offset: var(--focus-ring-offset, 2px);
     outline-style: var(--focus-ring-style, solid);
     outline-color: var(--focus-ring-color);
-}
+  }
 
-  .switch__control--variant_solid:is(:checked, [data-checked], [data-state=checked], [aria-checked=true], [data-state=indeterminate]) {
+  .switch__control--variant_solid:is(
+    :checked,
+    [data-checked],
+    [data-state='checked'],
+    [aria-checked='true'],
+    [data-state='indeterminate']
+  ) {
     background: var(--colors-color-palette-solid-bg);
-}
+  }
 
   .switch__thumb--variant_solid {
     background: var(--colors-white);
@@ -115,53 +133,59 @@
     box-shadow: var(--shadows-xs);
     width: var(--switch-height);
     height: var(--switch-height);
-}
+  }
 
-  .switch__thumb--variant_solid:is(:checked, [data-checked], [data-state=checked], [aria-checked=true], [data-state=indeterminate]) {
+  .switch__thumb--variant_solid:is(
+    :checked,
+    [data-checked],
+    [data-state='checked'],
+    [aria-checked='true'],
+    [data-state='indeterminate']
+  ) {
     background: var(--colors-color-palette-solid-fg);
-}
+  }
 
   .switch__root--size_md {
     --switch-width: var(--sizes-10);
     --switch-height: var(--sizes-5);
     --switch-indicator-font-size: var(--font-sizes-sm);
     gap: var(--spacing-3);
-}
+  }
 
   .switch__label--size_md {
     font-size: var(--font-sizes-md);
-}
+  }
 
   .switch__root--size_lg {
     --switch-width: var(--sizes-11);
     --switch-height: var(--sizes-5\.5);
     --switch-indicator-font-size: var(--font-sizes-md);
     gap: var(--spacing-3);
-}
+  }
 
   .switch__label--size_lg {
     font-size: var(--font-sizes-lg);
-}
+  }
 
   .switch__root--size_xs {
     --switch-width: var(--sizes-8);
     --switch-height: var(--sizes-4);
     --switch-indicator-font-size: var(--font-sizes-xs);
     gap: var(--spacing-2);
-}
+  }
 
   .switch__label--size_xs {
     font-size: var(--font-sizes-sm);
-}
+  }
 
   .switch__root--size_sm {
     --switch-width: var(--sizes-9);
     --switch-height: var(--sizes-4\.5);
     --switch-indicator-font-size: var(--font-sizes-xs);
     gap: var(--spacing-2);
-}
+  }
 
   .switch__label--size_sm {
     font-size: var(--font-sizes-sm);
-}
+  }
 }

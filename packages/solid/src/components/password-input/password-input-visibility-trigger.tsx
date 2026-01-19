@@ -4,8 +4,7 @@ import { usePasswordInputContext } from './use-password-input-context'
 
 export interface PasswordInputVisibilityTriggerBaseProps extends PolymorphicProps<'button'> {}
 export interface PasswordInputVisibilityTriggerProps
-  extends HTMLProps<'button'>,
-    PasswordInputVisibilityTriggerBaseProps {}
+  extends HTMLProps<'button'>, PasswordInputVisibilityTriggerBaseProps {}
 
 export const PasswordInputVisibilityTrigger = (props: PasswordInputVisibilityTriggerProps) => {
   const passwordInput = usePasswordInputContext()

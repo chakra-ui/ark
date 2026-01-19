@@ -9,9 +9,7 @@ import { SelectProvider } from './use-select-context'
 import type { CollectionItem } from '../collection'
 
 export interface SelectRootBaseProps<T extends CollectionItem>
-  extends UseSelectProps<T>,
-    UsePresenceProps,
-    PolymorphicProps<'div'> {}
+  extends UseSelectProps<T>, UsePresenceProps, PolymorphicProps<'div'> {}
 export interface SelectRootProps<T extends CollectionItem> extends Assign<HTMLProps<'div'>, SelectRootBaseProps<T>> {}
 
 export const SelectRoot = <T extends CollectionItem>(props: SelectRootProps<T>) => {

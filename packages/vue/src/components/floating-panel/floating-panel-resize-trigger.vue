@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface FloatingPanelResizeTriggerBaseProps extends ResizeTriggerProps, PolymorphicProps {}
 export interface FloatingPanelResizeTriggerProps
-  extends FloatingPanelResizeTriggerBaseProps,
+  extends
+    FloatingPanelResizeTriggerBaseProps,
     /**
      * @vue-ignore
      */

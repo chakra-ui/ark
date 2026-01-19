@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface BottomSheetGrabberBaseProps extends PolymorphicProps {}
 export interface BottomSheetGrabberProps
-  extends BottomSheetGrabberBaseProps,
+  extends
+    BottomSheetGrabberBaseProps,
     /**
      * @vue-ignore
      */

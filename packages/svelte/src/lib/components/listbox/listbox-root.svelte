@@ -6,8 +6,10 @@
   import type { UseListboxProps } from './use-listbox.svelte.js'
 
   export interface ListboxRootBaseProps<T extends CollectionItem> extends UseListboxProps<T>, PolymorphicProps<'div'> {}
-  export interface ListboxRootProps<T extends CollectionItem>
-    extends Assign<HTMLProps<'div'>, ListboxRootBaseProps<T>> {}
+  export interface ListboxRootProps<T extends CollectionItem> extends Assign<
+    HTMLProps<'div'>,
+    ListboxRootBaseProps<T>
+  > {}
 
   export type ListboxRootComponentProps<T extends CollectionItem = CollectionItem, P = {}> = Assign<
     ListboxRootProps<T>,

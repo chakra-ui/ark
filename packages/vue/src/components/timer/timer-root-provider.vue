@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface TimerRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface TimerRootProviderProps
-  extends TimerRootProviderBaseProps,
+  extends
+    TimerRootProviderBaseProps,
     /**
      * @vue-ignore
      */

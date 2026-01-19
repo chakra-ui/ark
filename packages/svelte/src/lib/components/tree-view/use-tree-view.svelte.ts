@@ -6,8 +6,10 @@ import * as treeView from '@zag-js/tree-view'
 import { type MaybeFunction, ensureProps, runIfFn } from '@zag-js/utils'
 import type { TreeNode } from '../collection'
 
-export interface UseTreeViewProps<T extends TreeNode>
-  extends Optional<Omit<treeView.Props<T>, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseTreeViewProps<T extends TreeNode> extends Optional<
+  Omit<treeView.Props<T>, 'dir' | 'getRootNode'>,
+  'id'
+> {}
 
 export interface UseTreeViewReturn<T extends TreeNode> extends Accessor<treeView.Api<PropTypes, T>> {}
 

@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface BottomSheetGrabberIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface BottomSheetGrabberIndicatorProps
-    extends Assign<HTMLProps<'div'>, BottomSheetGrabberIndicatorBaseProps> {}
+  export interface BottomSheetGrabberIndicatorProps extends Assign<
+    HTMLProps<'div'>,
+    BottomSheetGrabberIndicatorBaseProps
+  > {}
 </script>
 
 <script lang="ts">

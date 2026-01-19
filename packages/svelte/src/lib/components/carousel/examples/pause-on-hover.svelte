@@ -21,7 +21,11 @@
   </Carousel.Control>
   <Carousel.Context>
     {#snippet render(api)}
-      <Carousel.ItemGroup class={styles.ItemGroup} onpointerover={() => api().pause()} onpointerleave={() => api().play()}>
+      <Carousel.ItemGroup
+        class={styles.ItemGroup}
+        onpointerover={() => api().pause()}
+        onpointerleave={() => api().play()}
+      >
         {#each images as image, index}
           <Carousel.Item class={styles.Item} {index}>
             <img src={image.src} alt={image.alt} width="500" height="300" />

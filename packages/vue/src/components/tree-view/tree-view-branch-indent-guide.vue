@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface TreeViewBranchIndentGuideBaseProps extends PolymorphicProps {}
 export interface TreeViewBranchIndentGuideProps
-  extends TreeViewBranchIndentGuideBaseProps,
+  extends
+    TreeViewBranchIndentGuideBaseProps,
     /**
      * @vue-ignore
      */

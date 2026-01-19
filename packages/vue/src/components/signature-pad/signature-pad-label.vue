@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface SignaturePadLabelBaseProps extends PolymorphicProps {}
 export interface SignaturePadLabelProps
-  extends SignaturePadLabelBaseProps,
+  extends
+    SignaturePadLabelBaseProps,
     /**
      * @vue-ignore
      */

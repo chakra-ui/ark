@@ -15,12 +15,7 @@
   }
 </script>
 
-<Timer.Root
-  class="stack"
-  startMs={isWorking ? 25 * 60 * 1000 : 5 * 60 * 1000}
-  countdown
-  onComplete={handleComplete}
->
+<Timer.Root class="stack" startMs={isWorking ? 25 * 60 * 1000 : 5 * 60 * 1000} countdown onComplete={handleComplete}>
   <h2>{isWorking ? 'Work Session' : 'Break Session'}</h2>
 
   <Timer.Area class={styles.Area}>

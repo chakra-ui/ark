@@ -10,7 +10,8 @@ interface RootProviderProps {
 
 export interface AccordionRootProviderBaseProps extends RootProviderProps, RenderStrategyProps, PolymorphicProps {}
 export interface AccordionRootProviderProps
-  extends AccordionRootProviderBaseProps,
+  extends
+    AccordionRootProviderBaseProps,
     /**
      * @vue-ignore
      */

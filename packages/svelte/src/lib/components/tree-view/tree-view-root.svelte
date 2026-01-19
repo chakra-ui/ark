@@ -5,10 +5,7 @@
   import type { UseTreeViewProps } from './use-tree-view.svelte'
 
   export interface TreeViewRootBaseProps<T extends TreeNode>
-    extends UseTreeViewProps<T>,
-      RenderStrategyProps,
-      PolymorphicProps<'div'>,
-      RefAttribute {}
+    extends UseTreeViewProps<T>, RenderStrategyProps, PolymorphicProps<'div'>, RefAttribute {}
 
   export interface TreeViewRootProps<T extends TreeNode> extends Assign<HTMLProps<'div'>, TreeViewRootBaseProps<T>> {}
 

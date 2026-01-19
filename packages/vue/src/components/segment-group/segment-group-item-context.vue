@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseSegmentGroupItemContext } from './use-segment-group-item-context'
 
-export interface SegmentGroupItemContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseSegmentGroupItemContext>
-  }> {}
+export interface SegmentGroupItemContextProps extends SlotsType<{
+  default: UnwrapRef<UseSegmentGroupItemContext>
+}> {}
 </script>
 
 <script setup lang="ts">

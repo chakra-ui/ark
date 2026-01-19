@@ -6,8 +6,10 @@ import type { Optional } from '../../types'
 import type { CollectionItem, ListCollection } from '../collection'
 import { useFieldContext } from '../field'
 
-export interface UseComboboxProps<T extends CollectionItem>
-  extends Optional<Omit<combobox.Props<T>, 'dir' | 'getRootNode' | 'collection'>, 'id'> {
+export interface UseComboboxProps<T extends CollectionItem> extends Optional<
+  Omit<combobox.Props<T>, 'dir' | 'getRootNode' | 'collection'>,
+  'id'
+> {
   /**
    * The collection of items
    */

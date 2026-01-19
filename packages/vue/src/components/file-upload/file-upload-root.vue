@@ -6,7 +6,8 @@ import type { RootEmits, RootProps } from './file-upload.types'
 
 export interface FileUploadRootBaseProps extends RootProps, PolymorphicProps {}
 export interface FileUploadRootProps
-  extends FileUploadRootBaseProps,
+  extends
+    FileUploadRootBaseProps,
     /**
      * @vue-ignore
      */

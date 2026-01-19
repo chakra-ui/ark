@@ -3,11 +3,11 @@
   import type { StageTriggerProps } from '@zag-js/floating-panel'
 
   export interface FloatingPanelStageTriggerBaseProps
-    extends StageTriggerProps,
-      PolymorphicProps<'button'>,
-      RefAttribute {}
-  export interface FloatingPanelStageTriggerProps
-    extends Assign<HTMLProps<'button'>, FloatingPanelStageTriggerBaseProps> {}
+    extends StageTriggerProps, PolymorphicProps<'button'>, RefAttribute {}
+  export interface FloatingPanelStageTriggerProps extends Assign<
+    HTMLProps<'button'>,
+    FloatingPanelStageTriggerBaseProps
+  > {}
 </script>
 
 <script lang="ts">

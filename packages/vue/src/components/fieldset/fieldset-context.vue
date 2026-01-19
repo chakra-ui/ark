@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseFieldsetContext } from './use-fieldset-context'
 
-export interface FieldsetContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseFieldsetContext>
-  }> {}
+export interface FieldsetContextProps extends SlotsType<{
+  default: UnwrapRef<UseFieldsetContext>
+}> {}
 </script>
 
 <script setup lang="ts">

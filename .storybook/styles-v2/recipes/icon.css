@@ -6,36 +6,36 @@
       flex-shrink: 0;
       vertical-align: middle;
       line-height: 1em;
-}
-}
+    }
+  }
 
   .icon--size_md {
     width: var(--sizes-5);
     height: var(--sizes-5);
-}
+  }
 
   .icon--size_lg {
     width: var(--sizes-5\.5);
     height: var(--sizes-5\.5);
-}
+  }
 
   .icon--size_sm {
     width: var(--sizes-4\.5);
     height: var(--sizes-4\.5);
-}
+  }
 
   .icon--size_2xs {
     width: var(--sizes-3);
     height: var(--sizes-3);
-}
+  }
 
   .icon--size_xs {
     width: var(--sizes-4);
     height: var(--sizes-4);
-}
+  }
 
   .icon--size_xl {
     width: var(--sizes-6);
     height: var(--sizes-6);
-}
+  }
 }

@@ -19,8 +19,8 @@
         system.
       </p>
       <p>
-        Built on top of Zag.js state machines, Ark UI ensures consistent behavior across all frameworks while giving
-        you complete control over styling. Each component follows WAI-ARIA patterns for accessibility out of the box.
+        Built on top of Zag.js state machines, Ark UI ensures consistent behavior across all frameworks while giving you
+        complete control over styling. Each component follows WAI-ARIA patterns for accessibility out of the box.
       </p>
       <p>
         Whether you're building a design system from scratch or need reliable primitives for your next project, Ark UI

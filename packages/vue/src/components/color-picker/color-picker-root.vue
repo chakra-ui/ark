@@ -7,7 +7,8 @@ import type { RootEmits, RootProps } from './color-picker.types'
 
 export interface ColorPickerRootBaseProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface ColorPickerRootProps
-  extends ColorPickerRootBaseProps,
+  extends
+    ColorPickerRootBaseProps,
     /**
      * @vue-ignore
      */

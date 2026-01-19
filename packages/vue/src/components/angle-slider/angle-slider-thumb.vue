@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface AngleSliderThumbBaseProps extends PolymorphicProps {}
 export interface AngleSliderThumbProps
-  extends AngleSliderThumbBaseProps,
+  extends
+    AngleSliderThumbBaseProps,
     /**
      * @vue-ignore
      */

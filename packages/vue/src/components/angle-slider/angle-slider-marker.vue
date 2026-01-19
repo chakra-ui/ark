@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface AngleSliderMarkerBaseProps extends MarkerProps, PolymorphicProps {}
 export interface AngleSliderMarkerProps
-  extends AngleSliderMarkerBaseProps,
+  extends
+    AngleSliderMarkerBaseProps,
     /**
      * @vue-ignore
      */

@@ -24,9 +24,7 @@
   const listbox = useListboxContext()
 
   const isAllSelected = $derived(listbox().value.length === frameworks.items.length)
-  const isSomeSelected = $derived(
-    listbox().value.length > 0 && listbox().value.length < frameworks.items.length,
-  )
+  const isSomeSelected = $derived(listbox().value.length > 0 && listbox().value.length < frameworks.items.length)
 
   function handleSelectAll() {
     if (isAllSelected) {

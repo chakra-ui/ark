@@ -10,10 +10,10 @@ interface RootProviderProps<T extends CollectionItem> {
 }
 
 export interface ListboxRootProviderBaseProps<T extends CollectionItem>
-  extends RootProviderProps<T>,
-    PolymorphicProps {}
+  extends RootProviderProps<T>, PolymorphicProps {}
 export interface ListboxRootProviderProps<T extends CollectionItem>
-  extends ListboxRootProviderBaseProps<T>,
+  extends
+    ListboxRootProviderBaseProps<T>,
     /**
      * @vue-ignore
      */

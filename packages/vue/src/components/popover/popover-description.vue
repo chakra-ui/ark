@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface PopoverDescriptionBaseProps extends PolymorphicProps {}
 export interface PopoverDescriptionProps
-  extends PopoverDescriptionBaseProps,
+  extends
+    PopoverDescriptionBaseProps,
     /**
      * @vue-ignore
      */

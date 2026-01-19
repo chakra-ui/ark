@@ -6,7 +6,8 @@ import type { RootEmits, RootProps } from './editable.types'
 
 export interface EditableRootBaseProps extends RootProps, PolymorphicProps {}
 export interface EditableRootProps
-  extends EditableRootBaseProps,
+  extends
+    EditableRootBaseProps,
     /**
      * @vue-ignore
      */

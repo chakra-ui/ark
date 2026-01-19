@@ -6,12 +6,15 @@
   const id = $props.id()
 
   let invalid = $state(false)
-  const field = useField({ id, get invalid() { return invalid } })
+  const field = useField({
+    id,
+    get invalid() {
+      return invalid
+    },
+  })
 </script>
 
-<button class={button.Root} style="margin-bottom: 1rem" onclick={() => invalid = !invalid}>
-  Toggle Invalid
-</button>
+<button class={button.Root} style="margin-bottom: 1rem" onclick={() => (invalid = !invalid)}>Toggle Invalid</button>
 <Field.RootProvider class={styles.Root} value={field}>
   <Field.Label class={styles.Label}>Label</Field.Label>
   <Field.Input class={styles.Input} />

@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface TourActionTriggerBaseProps extends StepActionTriggerProps, PolymorphicProps {}
 export interface TourActionTriggerProps
-  extends TourActionTriggerBaseProps,
+  extends
+    TourActionTriggerBaseProps,
     /**
      * @vue-ignore
      */

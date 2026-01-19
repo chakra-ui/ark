@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseTimerContext } from './use-timer-context'
 
-export interface TimerContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseTimerContext>
-  }> {}
+export interface TimerContextProps extends SlotsType<{
+  default: UnwrapRef<UseTimerContext>
+}> {}
 </script>
 
 <script setup lang="ts">

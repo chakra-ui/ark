@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface RatingGroupHiddenInputBaseProps extends PolymorphicProps {}
 export interface RatingGroupHiddenInputProps
-  extends RatingGroupHiddenInputBaseProps,
+  extends
+    RatingGroupHiddenInputBaseProps,
     /**
      * @vue-ignore
      */

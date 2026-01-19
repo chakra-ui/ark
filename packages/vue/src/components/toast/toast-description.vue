@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface ToastDescriptionBaseProps extends PolymorphicProps {}
 export interface ToastDescriptionProps
-  extends ToastDescriptionBaseProps,
+  extends
+    ToastDescriptionBaseProps,
     /**
      * @vue-ignore
      */

@@ -11,9 +11,7 @@ interface RootProviderProps {
 
 export interface SegmentGroupRootProviderBaseProps extends PolymorphicProps<'div'> {}
 export interface SegmentGroupRootProviderProps
-  extends HTMLProps<'div'>,
-    RootProviderProps,
-    SegmentGroupRootProviderBaseProps {}
+  extends HTMLProps<'div'>, RootProviderProps, SegmentGroupRootProviderBaseProps {}
 
 export const SegmentGroupRootProvider = (props: SegmentGroupRootProviderProps) => {
   const [{ value: segmentGroup }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])

@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseDatePickerContext } from './use-date-picker-context'
 
-export interface DatePickerContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseDatePickerContext>
-  }> {}
+export interface DatePickerContextProps extends SlotsType<{
+  default: UnwrapRef<UseDatePickerContext>
+}> {}
 </script>
 
 <script setup lang="ts">

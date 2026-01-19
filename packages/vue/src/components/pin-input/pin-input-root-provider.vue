@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface PinInputRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface PinInputRootProviderProps
-  extends PinInputRootProviderBaseProps,
+  extends
+    PinInputRootProviderBaseProps,
     /**
      * @vue-ignore
      */

@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface EditableLabelBaseProps extends PolymorphicProps {}
 export interface EditableLabelProps
-  extends EditableLabelBaseProps,
+  extends
+    EditableLabelBaseProps,
     /**
      * @vue-ignore
      */

@@ -6,7 +6,8 @@ import { usePresenceContext } from '../presence'
 
 export interface MenuContentBaseProps extends PolymorphicProps {}
 export interface MenuContentProps
-  extends MenuContentBaseProps,
+  extends
+    MenuContentBaseProps,
     /**
      * @vue-ignore
      */

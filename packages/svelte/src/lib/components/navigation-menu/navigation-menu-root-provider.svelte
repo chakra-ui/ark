@@ -8,13 +8,12 @@
   }
 
   export interface NavigationMenuRootProviderBaseProps
-    extends RootProviderProps,
-      PolymorphicProps<'nav'>,
-      UsePresenceProps,
-      RefAttribute {}
+    extends RootProviderProps, PolymorphicProps<'nav'>, UsePresenceProps, RefAttribute {}
 
-  export interface NavigationMenuRootProviderProps
-    extends Assign<HTMLProps<'nav'>, NavigationMenuRootProviderBaseProps> {}
+  export interface NavigationMenuRootProviderProps extends Assign<
+    HTMLProps<'nav'>,
+    NavigationMenuRootProviderBaseProps
+  > {}
 </script>
 
 <script lang="ts">

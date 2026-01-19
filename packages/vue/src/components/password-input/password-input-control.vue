@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface PasswordInputControlBaseProps extends PolymorphicProps {}
 export interface PasswordInputControlProps
-  extends PasswordInputControlBaseProps,
+  extends
+    PasswordInputControlBaseProps,
     /**
      * @vue-ignore
      */

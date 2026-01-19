@@ -10,7 +10,8 @@ import { ToggleProvider } from './use-toggle-context'
 
 export interface ToggleRootBaseProps extends RootProps, PolymorphicProps {}
 export interface ToggleRootProps
-  extends ToggleRootBaseProps,
+  extends
+    ToggleRootBaseProps,
     /**
      * @vue-ignore
      */

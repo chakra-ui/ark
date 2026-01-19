@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface MarqueeEdgeBaseProps extends EdgeProps, PolymorphicProps {}
 export interface MarqueeEdgeProps
-  extends MarqueeEdgeBaseProps,
+  extends
+    MarqueeEdgeBaseProps,
     /**
      * @vue-ignore
      */

@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface ProgressLabelBaseProps extends PolymorphicProps {}
 export interface ProgressLabelProps
-  extends ProgressLabelBaseProps,
+  extends
+    ProgressLabelBaseProps,
     /**
      * @vue-ignore
      */

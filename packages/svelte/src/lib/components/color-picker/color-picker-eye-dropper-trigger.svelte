@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface ColorPickerEyeDropperTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
-  export interface ColorPickerEyeDropperTriggerProps
-    extends Assign<HTMLProps<'button'>, ColorPickerEyeDropperTriggerBaseProps> {}
+  export interface ColorPickerEyeDropperTriggerProps extends Assign<
+    HTMLProps<'button'>,
+    ColorPickerEyeDropperTriggerBaseProps
+  > {}
 </script>
 
 <script lang="ts">

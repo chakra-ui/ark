@@ -5,7 +5,7 @@
       align-items: center;
       display: flex;
       word-break: break-word;
-}
+    }
 
     .breadcrumb__link {
       border-radius: var(--radii-l1);
@@ -15,97 +15,98 @@
       transition: color;
       align-items: center;
       display: inline-flex;
-      --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005FCC));
-}
+      --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005fcc));
+    }
 
     .breadcrumb__link:is(:focus, [data-focus]) {
       outline-width: var(--focus-ring-width, 2px);
       outline-offset: var(--focus-ring-offset, 2px);
       outline-style: var(--focus-ring-style, solid);
       outline-color: var(--focus-ring-color);
-}
+    }
 
     .breadcrumb__link :where(svg) {
       width: 1em;
       height: 1em;
-}
+    }
 
     .breadcrumb__item {
       display: inline-flex;
       align-items: center;
       color: var(--colors-fg-muted);
-}
+    }
 
     .breadcrumb__item:last-child {
       color: var(--colors-fg-default);
-}
+    }
 
     .breadcrumb__separator {
       color: var(--colors-fg-subtle);
-}
+    }
 
     .breadcrumb__separator :where(svg) {
       width: 1em;
       height: 1em;
-}
+    }
 
-    :where([dir=rtl], :dir(rtl)) .breadcrumb__separator {
+    :where([dir='rtl'], :dir(rtl)) .breadcrumb__separator {
       rotate: 180deg;
-}
+    }
 
     .breadcrumb__ellipsis {
       align-items: center;
       color: var(--colors-fg-muted);
       display: inline-flex;
       justify-content: center;
-}
+    }
 
     .breadcrumb__ellipsis :where(svg) {
       width: 1em;
       height: 1em;
-}
-}
+    }
+  }
 
   .breadcrumb__link--variant_plain {
     color: var(--colors-fg-muted);
-}
+  }
 
-  .breadcrumb__link--variant_plain[aria-current=page],.breadcrumb__link--variant_plain:not(:disabled):hover {
+  .breadcrumb__link--variant_plain[aria-current='page'],
+  .breadcrumb__link--variant_plain:not(:disabled):hover {
     color: var(--colors-fg-default);
-}
+  }
 
   .breadcrumb__list--size_md {
     gap: var(--spacing-1\.5);
     font-size: var(--font-sizes-md);
     line-height: 1.5rem;
-}
+  }
 
   .breadcrumb__link--variant_underline {
     text-decoration: underline;
     text-decoration-thickness: 0.1em;
     text-underline-offset: 0.125em;
     text-decoration-color: var(--colors-fg-subtle);
-}
+  }
 
   .breadcrumb__link--variant_underline:not(:disabled):hover {
     text-decoration-color: var(--colors-fg-default);
-}
+  }
 
   .breadcrumb__list--size_xs {
     gap: var(--spacing-1);
     font-size: var(--font-sizes-xs);
     line-height: 1.125rem;
-}
+  }
 
   .breadcrumb__list--size_sm {
     gap: var(--spacing-1);
     font-size: var(--font-sizes-sm);
     line-height: 1.25rem;
-}
+  }
 
   .breadcrumb__list--size_lg {
     gap: var(--spacing-2);
     font-size: var(--font-sizes-lg);
     line-height: 1.75rem;
-}
+  }
 }

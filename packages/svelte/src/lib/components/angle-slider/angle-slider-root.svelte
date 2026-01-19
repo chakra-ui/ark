@@ -3,9 +3,7 @@
   import type { UseAngleSliderProps } from './use-angle-slider.svelte'
 
   export interface AngleSliderRootBaseProps
-    extends Optional<UseAngleSliderProps, 'id'>,
-      PolymorphicProps<'div'>,
-      RefAttribute {}
+    extends Optional<UseAngleSliderProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface AngleSliderRootProps extends Assign<HTMLProps<'div'>, AngleSliderRootBaseProps> {}
 </script>
 

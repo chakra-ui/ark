@@ -17,7 +17,10 @@
 
 <Listbox.Root class={styles.Root} {collection} selectionMode="extended">
   <Listbox.Label class={styles.Label}>
-    Hold <kbd>⌘</kbd> or <kbd>Ctrl</kbd> to select multiple
+    Hold <kbd>⌘</kbd>
+    or
+    <kbd>Ctrl</kbd>
+    to select multiple
   </Listbox.Label>
   <Listbox.Content class={styles.Content}>
     {#each collection.items as item (item.value)}

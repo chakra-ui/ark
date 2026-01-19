@@ -3,16 +3,18 @@
     .form-label {
       color: var(--colors-fg-default);
       font-weight: var(--font-weights-medium);
-}
-}
+    }
+  }
 
-  .form-label--size_md,.form-label--size_sm,.form-label--size_lg {
+  .form-label--size_md,
+  .form-label--size_sm,
+  .form-label--size_lg {
     font-size: var(--font-sizes-sm);
     line-height: 1.25rem;
-}
+  }
 
   .form-label--size_xl {
     font-size: var(--font-sizes-md);
     line-height: 1.5rem;
-}
+  }
 }

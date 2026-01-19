@@ -8,8 +8,10 @@ import type { CollectionItem, ListCollection } from '../collection'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './select'
 
-export interface UseSelectProps<T extends CollectionItem>
-  extends Optional<Omit<select.Props<T>, 'dir' | 'getRootNode' | 'collection'>, 'id'> {
+export interface UseSelectProps<T extends CollectionItem> extends Optional<
+  Omit<select.Props<T>, 'dir' | 'getRootNode' | 'collection'>,
+  'id'
+> {
   /**
    * The model value of the select
    */

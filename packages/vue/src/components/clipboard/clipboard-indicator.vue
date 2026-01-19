@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface ClipboardIndicatorBaseProps extends PolymorphicProps {}
 export interface ClipboardIndicatorProps
-  extends ClipboardIndicatorBaseProps,
+  extends
+    ClipboardIndicatorBaseProps,
     /**
      * @vue-ignore
      */

@@ -27,8 +27,7 @@
 
       <div class="stack">
         <p class={styles.Text}>
-          Showing {pagination().pageRange.start + 1}-{pagination().pageRange.end} of {pagination()
-            .count} results
+          Showing {pagination().pageRange.start + 1}-{pagination().pageRange.end} of {pagination().count} results
         </p>
         <p class={styles.Text}>
           Page {pagination().page} of {pagination().totalPages}

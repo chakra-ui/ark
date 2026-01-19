@@ -3,8 +3,7 @@ import type { Reactive } from 'vue'
 import { createContext } from '../../utils/create-context'
 
 export interface DatePickerTableCellPropsContext
-  extends Omit<TableCellProps, 'value'>,
-    Omit<DayTableCellProps, 'value'> {
+  extends Omit<TableCellProps, 'value'>, Omit<DayTableCellProps, 'value'> {
   value: Reactive<number | DateValue>
 }
 

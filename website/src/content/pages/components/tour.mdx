@@ -22,6 +22,68 @@ To set up the tour correctly, it's essential to understand its anatomy and the n
 
 <Anatomy id="tour" />
 
+## Examples
+
+Learn how to use the `Tour` component in your project. Let's take a look at the most basic example:
+
+<Example id="basic" />
+
+### Mixed Step Types
+
+Demonstrate all three step types in a single tour: `dialog` for welcome/completion, `tooltip` anchored to elements, and
+`floating` for fixed-position content.
+
+<Example id="mixed-types" />
+
+### Progress Bar
+
+Display a visual progress indicator at the bottom of the tour content showing how far along the user is.
+
+<Example id="progress-bar" />
+
+### Skip Tour
+
+Allow users to skip the entire tour at any step by adding a skip action.
+
+<Example id="skip-tour" />
+
+### Keyboard Navigation
+
+Enable arrow key navigation between tour steps using the `keyboardNavigation` prop.
+
+<Example id="keyboard-navigation" />
+
+### Events
+
+Listen to tour lifecycle events like `onStepChange` and `onStatusChange` to track user progress.
+
+<Example id="events" />
+
+### Wait for Click
+
+Use the `effect` function with `waitForEvent` to wait for user interaction before proceeding to the next step.
+
+<Example id="wait-for-click" />
+
+### Wait for Input
+
+Create form tutorials that wait for users to enter valid input before advancing.
+
+<Example id="wait-for-input" />
+
+### Wait for Element
+
+Wait for dynamically rendered elements to appear in the DOM before showing a step.
+
+<Example id="wait-for-element" />
+
+### Async Step
+
+Load data asynchronously and update step content before displaying it using the `effect` function with `show()` and
+`update()`.
+
+<Example id="async-step" />
+
 ## Guides
 
 ### Using step types

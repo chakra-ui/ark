@@ -3,11 +3,11 @@
   import type { ResizeTriggerProps } from '@zag-js/floating-panel'
 
   export interface FloatingPanelResizeTriggerBaseProps
-    extends ResizeTriggerProps,
-      PolymorphicProps<'div'>,
-      RefAttribute {}
-  export interface FloatingPanelResizeTriggerProps
-    extends Assign<HTMLProps<'div'>, FloatingPanelResizeTriggerBaseProps> {}
+    extends ResizeTriggerProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface FloatingPanelResizeTriggerProps extends Assign<
+    HTMLProps<'div'>,
+    FloatingPanelResizeTriggerBaseProps
+  > {}
 </script>
 
 <script lang="ts">

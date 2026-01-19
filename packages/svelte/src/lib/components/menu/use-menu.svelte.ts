@@ -6,11 +6,10 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 
 export interface UseMenuProps extends Optional<Omit<menu.Props, 'dir' | 'getRootNode'>, 'id'> {}
-export interface UseMenuReturn
-  extends Accessor<{
-    api: menu.Api<PropTypes>
-    service: menu.Service
-  }> {}
+export interface UseMenuReturn extends Accessor<{
+  api: menu.Api<PropTypes>
+  service: menu.Service
+}> {}
 
 export const useMenu = (props?: MaybeFunction<UseMenuProps>): UseMenuReturn => {
   const env = useEnvironmentContext()

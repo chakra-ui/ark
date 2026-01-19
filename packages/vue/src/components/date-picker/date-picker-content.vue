@@ -6,7 +6,8 @@ import { usePresenceContext } from '../presence'
 
 export interface DatePickerContentBaseProps extends PolymorphicProps {}
 export interface DatePickerContentProps
-  extends DatePickerContentBaseProps,
+  extends
+    DatePickerContentBaseProps,
     /**
      * @vue-ignore
      */

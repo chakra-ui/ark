@@ -12,12 +12,9 @@ interface RootProviderProps<T extends TreeNode> {
   value: UseTreeViewReturn<T>
 }
 export interface TreeViewRootProviderBaseProps<T extends TreeNode>
-  extends RootProviderProps<T>,
-    RenderStrategyProps,
-    PolymorphicProps<'div'> {}
+  extends RootProviderProps<T>, RenderStrategyProps, PolymorphicProps<'div'> {}
 export interface TreeViewRootProviderProps<T extends TreeNode>
-  extends HTMLProps<'div'>,
-    TreeViewRootProviderBaseProps<T> {}
+  extends HTMLProps<'div'>, TreeViewRootProviderBaseProps<T> {}
 
 export const TreeViewRootProvider = <T extends TreeNode>(props: TreeViewRootProviderProps<T>) => {
   const [renderStrategyProps, treeViewProps] = splitRenderStrategyProps(props)

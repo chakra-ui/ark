@@ -6,10 +6,11 @@
   }
 
   export interface ListboxRootProviderBaseProps<T extends CollectionItem>
-    extends PolymorphicProps<'div'>,
-      RootProviderProps<T> {}
-  export interface ListboxRootProviderProps<T extends CollectionItem>
-    extends Assign<HTMLProps<'div'>, ListboxRootProviderBaseProps<T>> {}
+    extends PolymorphicProps<'div'>, RootProviderProps<T> {}
+  export interface ListboxRootProviderProps<T extends CollectionItem> extends Assign<
+    HTMLProps<'div'>,
+    ListboxRootProviderBaseProps<T>
+  > {}
 
   export type ListboxRootProviderComponent<P = {}> = <T extends CollectionItem>(
     props: Assign<ListboxRootProviderProps<T>, P>,

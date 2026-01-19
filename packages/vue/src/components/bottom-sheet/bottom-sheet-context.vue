@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseBottomSheetContext } from './use-bottom-sheet-context'
 
-export interface BottomSheetContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseBottomSheetContext>
-  }> {}
+export interface BottomSheetContextProps extends SlotsType<{
+  default: UnwrapRef<UseBottomSheetContext>
+}> {}
 </script>
 
 <script setup lang="ts">

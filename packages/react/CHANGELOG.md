@@ -6,7 +6,7 @@
 
 - **Date Picker**: Added `required` and `invalid` props
 - **Number Input**: Added `onValueCommit` callback that fires when the input loses focus or Enter is pressed
-- **Pagination**: 
+- **Pagination**:
   - Added `FirstTrigger` and `LastTrigger` components for navigating to first/last page
   - Added `boundaryCount` parameter for controlling boundary pages (start/end)
   - Implemented balanced pagination algorithm for consistent UI with max 7 elements
@@ -15,16 +15,20 @@
 
 ### Fixed
 
-- **Accordion, Menu**: Fixed issue where querying elements by `aria-controls` attribute could fail when lazy mounting the content
-- **Color Picker**: Added `role="dialog"` to content and `aria-haspopup="dialog"` to trigger when not inline for better accessibility
+- **Accordion, Menu**: Fixed issue where querying elements by `aria-controls` attribute could fail when lazy mounting
+  the content
+- **Color Picker**: Added `role="dialog"` to content and `aria-haspopup="dialog"` to trigger when not inline for better
+  accessibility
 - **Date Picker**: Fixed issue where date picker input does not update format when locale changes
 - **Floating Panel**:
   - Fixed `dir` prop now properly delegated to all panel parts
   - Fixed double-click behavior improvements and to check `event.defaultPrevented` for custom behavior
-- **Listbox**: 
-  - Fixed issue in React where filtering items with an input would throw a `flushSync was called from inside a lifecycle method` warning
-  - Fixed issue where `data-highlighted` wasn't applied to the first item when using `autoHighlight` with input filtering
-- **Number Input**: 
+- **Listbox**:
+  - Fixed issue in React where filtering items with an input would throw a
+    `flushSync was called from inside a lifecycle method` warning
+  - Fixed issue where `data-highlighted` wasn't applied to the first item when using `autoHighlight` with input
+    filtering
+- **Number Input**:
   - Fixed improved controlled usage sync
   - Fixed issue where input element doesn't sync when `formatOptions` changes dynamically
   - Ensured cursor position is preserved when `Enter` key is pressed and formatting is triggered

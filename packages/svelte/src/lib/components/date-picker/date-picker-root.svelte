@@ -4,10 +4,7 @@
   import type { UsePresenceProps } from '../presence/index.js'
 
   export interface DatePickerRootBaseProps
-    extends UseDatePickerProps,
-      UsePresenceProps,
-      PolymorphicProps<'div'>,
-      RefAttribute {}
+    extends UseDatePickerProps, UsePresenceProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface DatePickerRootProps extends Assign<HTMLProps<'div'>, DatePickerRootBaseProps> {}
 </script>
 

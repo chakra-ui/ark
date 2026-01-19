@@ -17,9 +17,7 @@
 </script>
 
 <div class="stack">
-  <button class={button.Root} onclick={() => listbox().setValue(['high'])}>
-    Set to High
-  </button>
+  <button class={button.Root} onclick={() => listbox().setValue(['high'])}>Set to High</button>
   <Listbox.RootProvider class={styles.Root} value={listbox}>
     <Listbox.Label class={styles.Label}>Select Priority</Listbox.Label>
     <Listbox.Content class={styles.Content}>

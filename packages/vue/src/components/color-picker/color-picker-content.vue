@@ -6,7 +6,8 @@ import { type PresenceProps, usePresenceContext } from '../presence'
 
 export interface ColorPickerContentBaseProps extends PresenceProps, PolymorphicProps {}
 export interface ColorPickerContentProps
-  extends ColorPickerContentBaseProps,
+  extends
+    ColorPickerContentBaseProps,
     /**
      * @vue-ignore
      */

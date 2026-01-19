@@ -12,14 +12,14 @@
       --transition-prop: box-shadow, border-color;
       min-width: var(--sizes-0);
       width: 100%;
-}
+    }
 
-    .textarea:is(:disabled, [disabled], [data-disabled], [aria-disabled=true]) {
+    .textarea:is(:disabled, [disabled], [data-disabled], [aria-disabled='true']) {
       cursor: not-allowed;
       opacity: 0.67;
       filter: grayscale(100%);
-}
-}
+    }
+  }
 
   .textarea--size_md {
     padding-inline: var(--spacing-3);
@@ -27,14 +27,14 @@
     font-size: var(--font-sizes-md);
     line-height: 1.5rem;
     scroll-padding-bottom: 7px;
-}
+  }
 
   .textarea--variant_surface {
     background: var(--colors-gray-surface-bg);
     border-width: 1px;
     border-color: var(--colors-gray-surface-border);
-    --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005FCC));
-}
+    --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005fcc));
+  }
 
   .textarea--variant_surface:is(:focus-visible, [data-focus-visible]) {
     outline-offset: 0px;
@@ -42,18 +42,18 @@
     outline-color: var(--focus-ring-color);
     outline-style: var(--focus-ring-style, solid);
     border-color: var(--focus-ring-color);
-}
+  }
 
-  .textarea--variant_surface:is(:user-invalid, [data-invalid], [aria-invalid=true]) {
+  .textarea--variant_surface:is(:user-invalid, [data-invalid], [aria-invalid='true']) {
     border-color: var(--colors-error);
     --focus-ring-color-prop: var(--colors-error);
-}
+  }
 
   .textarea--variant_outline {
     border-width: 1px;
     border-color: var(--colors-gray-outline-border);
-    --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005FCC));
-}
+    --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005fcc));
+  }
 
   .textarea--variant_outline:is(:focus-visible, [data-focus-visible]) {
     outline-offset: 0px;
@@ -61,20 +61,20 @@
     outline-color: var(--focus-ring-color);
     outline-style: var(--focus-ring-style, solid);
     border-color: var(--focus-ring-color);
-}
+  }
 
-  .textarea--variant_outline:is(:user-invalid, [data-invalid], [aria-invalid=true]) {
+  .textarea--variant_outline:is(:user-invalid, [data-invalid], [aria-invalid='true']) {
     border-color: var(--colors-error);
     --focus-ring-color-prop: var(--colors-error);
-}
+  }
 
   .textarea--variant_subtle {
     background: var(--colors-gray-subtle-bg);
     border-width: 1px;
     border-color: transparent;
     color: var(--colors-gray-subtle-fg);
-    --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005FCC));
-}
+    --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005fcc));
+  }
 
   .textarea--variant_subtle:is(:focus-visible, [data-focus-visible]) {
     outline-offset: 0px;
@@ -82,12 +82,12 @@
     outline-color: var(--focus-ring-color);
     outline-style: var(--focus-ring-style, solid);
     border-color: var(--focus-ring-color);
-}
+  }
 
-  .textarea--variant_subtle:is(:user-invalid, [data-invalid], [aria-invalid=true]) {
+  .textarea--variant_subtle:is(:user-invalid, [data-invalid], [aria-invalid='true']) {
     border-color: var(--colors-error);
     --focus-ring-color-prop: var(--colors-error);
-}
+  }
 
   .textarea--variant_flushed {
     border-radius: 0;
@@ -95,54 +95,56 @@
     color: var(--colors-fg-default);
     border-bottom-width: 1px;
     border-bottom-color: var(--colors-gray-outline-border);
-}
+  }
 
-  .textarea--variant_flushed:is(:user-invalid, [data-invalid], [aria-invalid=true]) {
+  .textarea--variant_flushed:is(:user-invalid, [data-invalid], [aria-invalid='true']) {
     border-color: var(--colors-error);
-}
+  }
 
   .textarea--variant_flushed:is(:focus, [data-focus]) {
     border-color: var(--colors-color-palette-solid-bg);
     --shadow-color: var(--colors-color-palette-solid-bg);
     box-shadow: 0 1px 0 0 var(--shadow-color);
-}
+  }
 
-  .textarea--variant_flushed:is(:focus, [data-focus]):is(:user-invalid, [data-invalid], [aria-invalid=true]) {
+  .textarea--variant_flushed:is(:focus, [data-focus]):is(:user-invalid, [data-invalid], [aria-invalid='true']) {
     border-color: var(--colors-error);
     --shadow-color: var(--colors-error);
-}
+  }
 
   .textarea--size_xs {
     padding-inline: var(--spacing-2);
     padding-block: 5px;
     scroll-padding-bottom: 5px;
-}
+  }
 
-  .textarea--size_xs,.textarea--size_sm {
+  .textarea--size_xs,
+  .textarea--size_sm {
     font-size: var(--font-sizes-sm);
     line-height: 1.25rem;
-}
+  }
 
   .textarea--size_sm {
     padding-inline: var(--spacing-2\.5);
     padding-block: 7px;
     scroll-padding-bottom: 7px;
-}
+  }
 
   .textarea--size_lg {
     padding-inline: var(--spacing-3\.5);
     font-size: var(--font-sizes-md);
     line-height: 1.5rem;
-}
+  }
 
-  .textarea--size_lg,.textarea--size_xl {
+  .textarea--size_lg,
+  .textarea--size_xl {
     padding-block: 9px;
     scroll-padding-bottom: 9px;
-}
+  }
 
   .textarea--size_xl {
     padding-inline: var(--spacing-4);
     font-size: var(--font-sizes-lg);
     line-height: 1.75rem;
-}
+  }
 }

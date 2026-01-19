@@ -5,7 +5,8 @@ import { useListboxItemPropsContext } from './use-listbox-item-props-context'
 
 export interface ListboxItemTextBaseProps extends PolymorphicProps {}
 export interface ListboxItemTextProps
-  extends ListboxItemTextBaseProps,
+  extends
+    ListboxItemTextBaseProps,
     /**
      * @vue-ignore
      */

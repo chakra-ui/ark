@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface NumberInputIncrementTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
-  export interface NumberInputIncrementTriggerProps
-    extends Assign<HTMLProps<'button'>, NumberInputIncrementTriggerBaseProps> {}
+  export interface NumberInputIncrementTriggerProps extends Assign<
+    HTMLProps<'button'>,
+    NumberInputIncrementTriggerBaseProps
+  > {}
 </script>
 
 <script lang="ts">

@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseSplitterContext } from './use-splitter-context'
 
-export interface SplitterContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseSplitterContext>
-  }> {}
+export interface SplitterContextProps extends SlotsType<{
+  default: UnwrapRef<UseSplitterContext>
+}> {}
 </script>
 
 <script setup lang="ts">

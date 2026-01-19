@@ -18,9 +18,7 @@
           <XIcon />
         </Popover.CloseTrigger>
         <Popover.Title class={styles.Title}>Notifications</Popover.Title>
-        <Popover.Description class={styles.Description}>
-          You have 3 unread messages in your inbox.
-        </Popover.Description>
+        <Popover.Description class={styles.Description}>You have 3 unread messages in your inbox.</Popover.Description>
       </Popover.Content>
     </Popover.Positioner>
   </Portal>

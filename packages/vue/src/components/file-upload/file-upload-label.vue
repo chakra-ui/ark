@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface FileUploadLabelBaseProps extends PolymorphicProps {}
 export interface FileUploadLabelProps
-  extends FileUploadLabelBaseProps,
+  extends
+    FileUploadLabelBaseProps,
     /**
      * @vue-ignore
      */

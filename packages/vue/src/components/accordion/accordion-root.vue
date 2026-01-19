@@ -7,7 +7,8 @@ import type { RootEmits, RootProps } from './accordion.types'
 
 export interface AccordionRootBaseProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface AccordionRootProps
-  extends AccordionRootBaseProps,
+  extends
+    AccordionRootBaseProps,
     /**
      * @vue-ignore
      */

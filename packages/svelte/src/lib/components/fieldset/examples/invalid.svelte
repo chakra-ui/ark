@@ -7,9 +7,7 @@
 
 <Fieldset.Root class={styles.Root} invalid>
   <Fieldset.Legend class={styles.Legend}>Account Information</Fieldset.Legend>
-  <Fieldset.ErrorText class={styles.ErrorText}>
-    Please fix the errors below to continue.
-  </Fieldset.ErrorText>
+  <Fieldset.ErrorText class={styles.ErrorText}>Please fix the errors below to continue.</Fieldset.ErrorText>
 
   <Field.Root class={field.Root} invalid>
     <Field.Label class={field.Label}>Username</Field.Label>

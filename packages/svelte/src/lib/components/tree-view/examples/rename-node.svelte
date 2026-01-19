@@ -57,12 +57,7 @@
   }
 </script>
 
-<TreeView.Root
-  class={styles.Root}
-  {collection}
-  canRename={() => true}
-  onRenameComplete={handleRenameComplete}
->
+<TreeView.Root class={styles.Root} {collection} canRename={() => true} onRenameComplete={handleRenameComplete}>
   <TreeView.Label class={styles.Label}>Tree (Press F2 to rename)</TreeView.Label>
   <TreeView.Tree class={styles.Tree}>
     {#each collection.rootNode.children ?? [] as node, index (node.id)}

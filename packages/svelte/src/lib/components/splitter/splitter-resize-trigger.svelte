@@ -3,9 +3,7 @@
   import type { ResizeTriggerProps } from '@zag-js/splitter'
 
   export interface SplitterResizeTriggerBaseProps
-    extends ResizeTriggerProps,
-      PolymorphicProps<'button'>,
-      RefAttribute {}
+    extends ResizeTriggerProps, PolymorphicProps<'button'>, RefAttribute {}
   export interface SplitterResizeTriggerProps extends Assign<HTMLProps<'button'>, SplitterResizeTriggerBaseProps> {}
 </script>
 

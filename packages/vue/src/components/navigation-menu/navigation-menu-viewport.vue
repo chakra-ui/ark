@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface NavigationMenuViewportBaseProps extends ViewportProps, PolymorphicProps {}
 export interface NavigationMenuViewportProps
-  extends NavigationMenuViewportBaseProps,
+  extends
+    NavigationMenuViewportBaseProps,
     /**
      * @vue-ignore
      */

@@ -36,9 +36,11 @@
     --line-heights-normal: 1.5;
     --line-heights-relaxed: 1.625;
     --line-heights-loose: 2;
-    --fonts-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --fonts-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-    --fonts-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --fonts-sans:
+      ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+      'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --fonts-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+    --fonts-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
     --letter-spacings-tighter: -0.05em;
     --letter-spacings-tight: -0.025em;
     --letter-spacings-normal: 0em;
@@ -227,7 +229,7 @@
     --radii-l1: var(--radii-xs);
     --radii-l2: var(--radii-sm);
     --radii-l3: var(--radii-md);
-}
+  }
 
   :where(:root, .light) {
     --colors-amber-1: #fefdfb;
@@ -1626,8 +1628,8 @@
     --shadows-lg: 0px 8px 16px var(--colors-gray-a4), 0px 0px 1px var(--colors-gray-a4);
     --shadows-xl: 0px 16px 24px var(--colors-gray-a4), 0px 0px 1px var(--colors-gray-a4);
     --shadows-2xl: 0px 24px 40px var(--colors-gray-a4), 0px 0px 1px var(--colors-gray-a4);
-    --shadows-inset: inset 8px 0 12px -8px var(--colors-gray-a4)
-}
+    --shadows-inset: inset 8px 0 12px -8px var(--colors-gray-a4);
+  }
 
   .dark {
     --colors-amber-1: #16120c;
@@ -3026,299 +3028,301 @@
     --shadows-lg: 0px 8px 16px var(--colors-black-a8), 0px 0px 1px inset var(--colors-gray-a8);
     --shadows-xl: 0px 16px 24px var(--colors-black-a8), 0px 0px 1px inset var(--colors-gray-a8);
     --shadows-2xl: 0px 24px 40px var(--colors-black-a8), 0px 0px 1px inset var(--colors-gray-a8);
-    --shadows-inset: inset 8px 0 12px -8px var(--colors-black-a6)
-}
+    --shadows-inset: inset 8px 0 12px -8px var(--colors-black-a6);
+  }
 
   @keyframes spin {
     to {
       transform: rotate(360deg);
-}
-}
+    }
+  }
 
   @keyframes ping {
-    75%,100% {
+    75%,
+    100% {
       transform: scale(2);
       opacity: 0;
-}
-}
+    }
+  }
 
   @keyframes pulse {
     50% {
       opacity: 0.5;
-}
-}
+    }
+  }
 
   @keyframes bounce {
-    0%,100% {
+    0%,
+    100% {
       transform: translateY(-25%);
-      animation-timing-function: cubic-bezier(0.8,0,1,1);
-}
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
 
     50% {
       transform: none;
-      animation-timing-function: cubic-bezier(0,0,0.2,1);
-}
-}
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
 
   @keyframes expand-height {
     from {
       height: var(--sizes-0);
-}
+    }
 
     to {
       height: var(--height);
-}
-}
+    }
+  }
 
   @keyframes collapse-height {
     from {
       height: var(--height);
-}
+    }
 
     to {
       height: var(--sizes-0);
-}
-}
+    }
+  }
 
   @keyframes expand-width {
     from {
       width: var(--sizes-0);
-}
+    }
 
     to {
       width: var(--width);
-}
-}
+    }
+  }
 
   @keyframes collapse-width {
     from {
       width: var(--width);
-}
+    }
 
     to {
       width: var(--sizes-0);
-}
-}
+    }
+  }
 
   @keyframes fade-in {
     from {
       opacity: 0;
-}
+    }
 
     to {
       opacity: 1;
-}
-}
+    }
+  }
 
   @keyframes fade-out {
     from {
       opacity: 1;
-}
+    }
 
     to {
       opacity: 0;
-}
-}
+    }
+  }
 
   @keyframes slide-from-left-full {
     from {
       translate: -100% 0;
-}
+    }
 
     to {
       translate: 0 0;
-}
-}
+    }
+  }
 
   @keyframes slide-from-right-full {
     from {
       translate: 100% 0;
-}
+    }
 
     to {
       translate: 0 0;
-}
-}
+    }
+  }
 
   @keyframes slide-from-top-full {
     from {
       translate: 0 -100%;
-}
+    }
 
     to {
       translate: 0 0;
-}
-}
+    }
+  }
 
   @keyframes slide-from-bottom-full {
     from {
       translate: 0 100%;
-}
+    }
 
     to {
       translate: 0 0;
-}
-}
+    }
+  }
 
   @keyframes slide-to-left-full {
     from {
       translate: 0 0;
-}
+    }
 
     to {
       translate: -100% 0;
-}
-}
+    }
+  }
 
   @keyframes slide-to-right-full {
     from {
       translate: 0 0;
-}
+    }
 
     to {
       translate: 100% 0;
-}
-}
+    }
+  }
 
   @keyframes slide-to-top-full {
     from {
       translate: 0 0;
-}
+    }
 
     to {
       translate: 0 -100%;
-}
-}
+    }
+  }
 
   @keyframes slide-to-bottom-full {
     from {
       translate: 0 0;
-}
+    }
 
     to {
       translate: 0 100%;
-}
-}
+    }
+  }
 
   @keyframes slide-from-top {
     0% {
       translate: 0 -0.5rem;
-}
+    }
 
     to {
       translate: 0;
-}
-}
+    }
+  }
 
   @keyframes slide-from-bottom {
     0% {
       translate: 0 0.5rem;
-}
+    }
 
     to {
       translate: 0;
-}
-}
+    }
+  }
 
   @keyframes slide-from-left {
     0% {
       translate: -0.5rem 0;
-}
+    }
 
     to {
       translate: 0;
-}
-}
+    }
+  }
 
   @keyframes slide-from-right {
     0% {
       translate: 0.5rem 0;
-}
+    }
 
     to {
       translate: 0;
-}
-}
+    }
+  }
 
   @keyframes slide-to-top {
     0% {
       translate: 0;
-}
+    }
 
     to {
       translate: 0 -0.5rem;
-}
-}
+    }
+  }
 
   @keyframes slide-to-bottom {
     0% {
       translate: 0;
-}
+    }
 
     to {
       translate: 0 0.5rem;
-}
-}
+    }
+  }
 
   @keyframes slide-to-left {
     0% {
       translate: 0;
-}
+    }
 
     to {
       translate: -0.5rem 0;
-}
-}
+    }
+  }
 
   @keyframes slide-to-right {
     0% {
       translate: 0;
-}
+    }
 
     to {
       translate: 0.5rem 0;
-}
-}
+    }
+  }
 
   @keyframes scale-in {
     from {
       scale: 0.95;
-}
+    }
 
     to {
       scale: 1;
-}
-}
+    }
+  }
 
   @keyframes scale-out {
     from {
       scale: 1;
-}
+    }
 
     to {
       scale: 0.95;
-}
-}
+    }
+  }
 
   @keyframes bg-position {
     from {
       background-position: var(--animate-from, 1rem) 0;
-}
+    }
 
     to {
       background-position: var(--animate-to, 0) 0;
-}
-}
+    }
+  }
 
   @keyframes position {
     from {
       inset-inline-start: var(--animate-from-x);
       inset-block-start: var(--animate-from-y);
-}
+    }
 
     to {
       inset-inline-start: var(--animate-to-x);
       inset-block-start: var(--animate-to-y);
-}
-}
+    }
+  }
 }

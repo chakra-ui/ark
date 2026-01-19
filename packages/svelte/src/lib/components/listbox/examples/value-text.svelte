@@ -14,12 +14,7 @@
   })
 </script>
 
-<Listbox.Root
-  class={styles.Root}
-  {collection}
-  selectionMode="multiple"
-  defaultValue={['red', 'blue']}
->
+<Listbox.Root class={styles.Root} {collection} selectionMode="multiple" defaultValue={['red', 'blue']}>
   <Listbox.Label class={styles.Label}>
     Colors: <Listbox.ValueText class={styles.ValueText} />
   </Listbox.Label>

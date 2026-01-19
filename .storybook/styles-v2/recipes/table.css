@@ -6,7 +6,7 @@
       text-align: start;
       vertical-align: top;
       width: var(--sizes-full);
-}
+    }
 
     .table__cell {
       overflow: hidden;
@@ -19,7 +19,7 @@
       white-space: nowrap;
       box-shadow: inset 0 -1px 0 0 var(--shadow-color);
       --shadow-color: var(--colors-border);
-}
+    }
 
     .table__cell:is([data-pinned]) {
       background: inherit;
@@ -28,16 +28,16 @@
       position: sticky;
       --shadow-color: var(--colors-border);
       z-index: 1;
-}
+    }
 
     .table__foot {
       font-weight: var(--font-weights-medium);
-}
+    }
 
     .table__foot td {
       box-shadow: inset 0 1px 0 0 var(--shadow-color) !important;
       --shadow-color: var(--colors-border);
-}
+    }
 
     .table__head {
       color: var(--colors-fg-muted);
@@ -46,60 +46,63 @@
       white-space: nowrap;
       font-size: var(--font-sizes-xs);
       line-height: 1.125rem;
-}
+    }
 
     .table__header {
       text-align: left;
       vertical-align: middle;
       box-shadow: inset 0 -1px 0 0 var(--shadow-color);
       --shadow-color: var(--colors-border);
-}
+    }
 
     .table__header:is([data-pinned]) {
       background: inherit;
       position: sticky;
       z-index: 2;
-}
+    }
 
     .table__row:last-child td {
       box-shadow: none;
-}
+    }
 
     .table__caption {
       color: var(--colors-fg-subtle);
       font-weight: var(--font-weights-medium);
-}
-}
+    }
+  }
 
   .table__root--size_md {
     font-size: var(--font-sizes-sm);
     line-height: 1.25rem;
-}
+  }
 
-  .table__cell--size_md,.table__header--size_md {
+  .table__cell--size_md,
+  .table__header--size_md {
     padding-inline: var(--spacing-3);
     padding-block: var(--spacing-3);
-}
+  }
 
-  .table__cell--columnBorder_true:not(:last-of-type),.table__header--columnBorder_true:not(:last-of-type) {
+  .table__cell--columnBorder_true:not(:last-of-type),
+  .table__header--columnBorder_true:not(:last-of-type) {
     border-inline-end-width: 1px;
-}
+  }
 
-  .table__body--interactive_true tr:not(:disabled):hover,.table__header--variant_surface {
+  .table__body--interactive_true tr:not(:disabled):hover,
+  .table__header--variant_surface {
     background: var(--colors-gray-surface-bg-hover);
-}
+  }
 
   .table__row--variant_surface {
     background: var(--colors-gray-surface-bg);
-}
+  }
 
   .table__head--stickyHeader_true :where(tr) {
     position: sticky;
     z-index: 2;
     top: var(--table-sticky-offset, 0);
-}
+  }
 
   .table__row--striped_true:nth-of-type(odd) td {
     background: var(--colors-gray-surface-bg-hover);
-}
+  }
 }

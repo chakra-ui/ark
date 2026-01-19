@@ -15,12 +15,7 @@
   let value = $state(['md'])
 </script>
 
-<Listbox.Root
-  class={styles.Root}
-  {collection}
-  {value}
-  onValueChange={(e) => (value = e.value)}
->
+<Listbox.Root class={styles.Root} {collection} {value} onValueChange={(e) => (value = e.value)}>
   <Listbox.Label class={styles.Label}>Select Size</Listbox.Label>
   <Listbox.Content class={styles.Content}>
     {#each collection.items as item (item.value)}

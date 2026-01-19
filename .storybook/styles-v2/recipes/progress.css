@@ -4,19 +4,19 @@
       font-size: var(--font-sizes-sm);
       line-height: 1.25rem;
       position: relative;
-}
+    }
 
     .progress__label {
       gap: var(--spacing-1);
       display: inline-flex;
       font-weight: var(--font-weights-medium);
       align-items: center;
-}
+    }
 
     .progress__track {
       overflow: hidden;
       position: relative;
-}
+    }
 
     .progress__range {
       display: flex;
@@ -28,9 +28,9 @@
       transition-duration: var(--durations-slow);
       background-color: var(--track-color);
       height: 100%;
-}
+    }
 
-    .progress__range:is(:indeterminate, [data-indeterminate], [aria-checked=mixed], [data-state="indeterminate"]) {
+    .progress__range:is(:indeterminate, [data-indeterminate], [aria-checked='mixed'], [data-state='indeterminate']) {
       --animate-from-x: -40%;
       --animate-to-x: 100%;
       animation: position 1s ease infinite normal none running;
@@ -38,77 +38,87 @@
       will-change: left;
       background-image: linear-gradient(to right, transparent 0%, var(--track-color) 50%, transparent 100%);
       min-width: 50%;
-}
+    }
 
     .progress__valueText {
       font-size: var(--font-sizes-xs);
       line-height: 1;
       font-weight: var(--font-weights-medium);
-}
-}
+    }
+  }
 
   .progress__track--variant_solid {
     background-color: var(--colors-gray-subtle-bg);
-}
+  }
 
   .progress__range--variant_solid {
     background-color: var(--colors-color-palette-solid-bg);
     color: var(--colors-color-palette-solid-fg);
-}
+  }
 
   .progress__track--size_md {
     height: var(--sizes-2\.5);
-}
+  }
 
   .progress__track--shape_rounded {
     border-radius: var(--radii-l1);
-}
+  }
 
   .progress__range--striped_true {
     --stripe-size: 1rem;
-    background-image: linear-gradient(45deg, var(--stripe-color) 25%, transparent 25%, transparent 50%, var(--stripe-color) 50%, var(--stripe-color) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(
+      45deg,
+      var(--stripe-color) 25%,
+      transparent 25%,
+      transparent 50%,
+      var(--stripe-color) 50%,
+      var(--stripe-color) 75%,
+      transparent 75%,
+      transparent
+    );
     background-size: var(--stripe-size) var(--stripe-size);
-}
+  }
 
-  :root .progress__range--striped_true,.light .progress__range--striped_true {
+  :root .progress__range--striped_true,
+  .light .progress__range--striped_true {
     --stripe-color: rgba(255, 255, 255, 0.3);
-}
+  }
 
   .dark .progress__range--striped_true {
     --stripe-color: rgba(0, 0, 0, 0.3);
-}
+  }
 
   .progress__range--animated_true {
     --animate-from: var(--stripe-size);
     animation: bg-position 1s linear infinite;
-}
+  }
 
   .progress__track--variant_subtle {
     background-color: var(--colors-color-palette-subtle-bg-active);
-}
+  }
 
   .progress__range--variant_subtle {
     background-color: var(--colors-color-palette-solid-bg);
     color: var(--colors-color-palette-solid-fg);
-}
+  }
 
   .progress__track--shape_full {
     border-radius: var(--radii-full);
-}
+  }
 
   .progress__track--size_xs {
     height: var(--sizes-1\.5);
-}
+  }
 
   .progress__track--size_sm {
     height: var(--sizes-2);
-}
+  }
 
   .progress__track--size_lg {
     height: var(--sizes-3);
-}
+  }
 
   .progress__track--size_xl {
     height: var(--sizes-3\.5);
-}
+  }
 }

@@ -10,9 +10,7 @@ interface RootProviderProps {
 
 export interface PaginationRootProviderBaseProps extends PolymorphicProps<'nav'> {}
 export interface PaginationRootProviderProps
-  extends HTMLProps<'nav'>,
-    RootProviderProps,
-    PaginationRootProviderBaseProps {}
+  extends HTMLProps<'nav'>, RootProviderProps, PaginationRootProviderBaseProps {}
 
 export const PaginationRootProvider = (props: PaginationRootProviderProps) => {
   const [{ value: pagination }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])

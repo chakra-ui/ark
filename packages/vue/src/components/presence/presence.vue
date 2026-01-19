@@ -6,7 +6,8 @@ import type { RootEmits, RootProps } from './presence.types'
 
 export interface PresenceBaseProps extends RootProps, PolymorphicProps {}
 export interface PresenceProps
-  extends PresenceBaseProps,
+  extends
+    PresenceBaseProps,
     /**
      * @vue-ignore
      */

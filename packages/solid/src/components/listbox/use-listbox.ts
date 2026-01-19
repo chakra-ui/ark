@@ -6,8 +6,10 @@ import type { MaybeAccessor, Optional } from '../../types'
 import { runIfFn } from '../../utils/run-if-fn'
 import type { CollectionItem, ListCollection } from '../collection'
 
-export interface UseListboxProps<T extends CollectionItem>
-  extends Optional<Omit<listbox.Props<T>, 'dir' | 'getRootNode' | 'collection'>, 'id'> {
+export interface UseListboxProps<T extends CollectionItem> extends Optional<
+  Omit<listbox.Props<T>, 'dir' | 'getRootNode' | 'collection'>,
+  'id'
+> {
   /**
    * The collection of items
    */

@@ -8,19 +8,19 @@
       left: var(--spacing-0);
       top: var(--spacing-0);
       width: 100dvw;
-}
+    }
 
-    .dialog__backdrop:is([open], [data-open], [data-state="open"], :popover-open) {
+    .dialog__backdrop:is([open], [data-open], [data-state='open'], :popover-open) {
       animation-name: fade-in;
       animation-timing-function: emphasized-in;
       animation-duration: var(--durations-normal);
-}
+    }
 
-    .dialog__backdrop:is([closed], [data-closed], [data-state="closed"]) {
+    .dialog__backdrop:is([closed], [data-closed], [data-state='closed']) {
       animation-name: fade-out;
       animation-timing-function: emphasized-out;
       animation-duration: var(--durations-fast);
-}
+    }
 
     .dialog__positioner {
       justify-content: center;
@@ -30,13 +30,14 @@
       overscroll-behavior-y: none;
       top: var(--spacing-0);
       width: 100dvw;
-}
+    }
 
-    .dialog__positioner,.dialog__content {
+    .dialog__positioner,
+    .dialog__content {
       --dialog-z-index: var(--z-index-modal);
       display: flex;
       z-index: calc(var(--dialog-z-index) + var(--layer-index, 0));
-}
+    }
 
     .dialog__content {
       background: var(--colors-gray-surface-bg);
@@ -51,40 +52,40 @@
       font-size: var(--font-sizes-sm);
       line-height: 1.25rem;
       width: 100%;
-}
+    }
 
-    .dialog__content:is([open], [data-open], [data-state="open"], :popover-open) {
+    .dialog__content:is([open], [data-open], [data-state='open'], :popover-open) {
       animation-duration: var(--durations-slowest);
-}
+    }
 
-    .dialog__content:is([closed], [data-closed], [data-state="closed"]) {
+    .dialog__content:is([closed], [data-closed], [data-state='closed']) {
       animation-duration: var(--durations-normal);
-}
+    }
 
     @media screen and (min-width: 48rem) {
       .dialog__content {
         padding-block: var(--spacing-6);
         gap: var(--spacing-6);
-}
-}
+      }
+    }
 
     .dialog__title {
       font-weight: var(--font-weights-semibold);
       font-size: var(--font-sizes-lg);
       line-height: 1.75rem;
-}
+    }
 
     .dialog__description {
       color: var(--colors-fg-muted);
       font-size: var(--font-sizes-sm);
       line-height: 1.25rem;
-}
+    }
 
     .dialog__closeTrigger {
       position: absolute;
       inset-inline-end: var(--spacing-3);
       top: var(--spacing-3);
-}
+    }
 
     .dialog__header {
       gap: var(--spacing-0\.5);
@@ -92,13 +93,13 @@
       flex: 0;
       display: flex;
       flex-direction: column;
-}
+    }
 
     @media screen and (min-width: 48rem) {
       .dialog__header {
         padding-inline: var(--spacing-6);
-}
-}
+      }
+    }
 
     .dialog__body {
       flex: 1 1 0%;
@@ -106,13 +107,13 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-}
+    }
 
     @media screen and (min-width: 48rem) {
       .dialog__body {
         padding-inline: var(--spacing-6);
-}
-}
+      }
+    }
 
     .dialog__footer {
       flex: 0;
@@ -121,73 +122,73 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-}
+    }
 
     @media screen and (min-width: 48rem) {
       .dialog__footer {
         padding-inline: var(--spacing-6);
-}
-}
-}
+      }
+    }
+  }
 
   .dialog__content--size_md {
     max-width: var(--sizes-md);
-}
+  }
 
   .dialog__positioner--scrollBehavior_outside {
     overflow: auto;
     pointer-events: auto;
-}
+  }
 
   .dialog__positioner--placement_center {
     align-items: center;
-}
+  }
 
   .dialog__content--placement_center {
     --dialog-base-margin: auto;
     margin-inline: auto;
-}
+  }
 
-  .dialog__content--motionPreset_scale:is([open], [data-open], [data-state="open"], :popover-open) {
+  .dialog__content--motionPreset_scale:is([open], [data-open], [data-state='open'], :popover-open) {
     animation-name: scale-in, fade-in;
-}
+  }
 
-  .dialog__content--motionPreset_scale:is([closed], [data-closed], [data-state="closed"]) {
+  .dialog__content--motionPreset_scale:is([closed], [data-closed], [data-state='closed']) {
     animation-name: scale-out, fade-out;
-}
+  }
 
   .dialog__positioner--size_cover {
     padding: var(--spacing-8);
-}
+  }
 
   .dialog__content--size_cover {
     --dialog-margin: 0;
     width: 100%;
     height: 100%;
-}
+  }
 
   .dialog__content--size_full {
     --dialog-margin: 0;
     border-radius: 0;
     max-width: 100dvw;
     min-height: 100dvh;
-}
+  }
 
   .dialog__positioner--scrollBehavior_inside {
     overflow: hidden;
-}
+  }
 
   .dialog__content--scrollBehavior_inside {
     max-height: calc(100% - 7.5rem);
-}
+  }
 
   .dialog__body--scrollBehavior_inside {
     overflow: auto;
-}
+  }
 
   .dialog__content--size_sm {
     max-width: var(--sizes-sm);
-}
+  }
 
   @media screen and (max-width: 47.9975rem) {
     .mdDown\:dialog__content--size_full {
@@ -195,74 +196,74 @@
       border-radius: 0;
       max-width: 100dvw;
       min-height: 100dvh;
-}
-}
+    }
+  }
 
   @media screen and (min-width: 48rem) {
     .md\:dialog__content--size_lg {
       max-width: var(--sizes-lg);
-}
-}
+    }
+  }
 
-  .dialog__content--motionPreset_slide-in-bottom:is([open], [data-open], [data-state="open"], :popover-open) {
+  .dialog__content--motionPreset_slide-in-bottom:is([open], [data-open], [data-state='open'], :popover-open) {
     animation-name: slide-from-bottom, fade-in;
-}
+  }
 
-  .dialog__content--motionPreset_slide-in-bottom:is([closed], [data-closed], [data-state="closed"]) {
+  .dialog__content--motionPreset_slide-in-bottom:is([closed], [data-closed], [data-state='closed']) {
     animation-name: slide-to-bottom, fade-out;
-}
+  }
 
-  .dialog__content--motionPreset_slide-in-top:is([open], [data-open], [data-state="open"], :popover-open) {
+  .dialog__content--motionPreset_slide-in-top:is([open], [data-open], [data-state='open'], :popover-open) {
     animation-name: slide-from-top, fade-in;
-}
+  }
 
-  .dialog__content--motionPreset_slide-in-top:is([closed], [data-closed], [data-state="closed"]) {
+  .dialog__content--motionPreset_slide-in-top:is([closed], [data-closed], [data-state='closed']) {
     animation-name: slide-to-top, fade-out;
-}
+  }
 
-  .dialog__content--motionPreset_slide-in-left:is([open], [data-open], [data-state="open"], :popover-open) {
+  .dialog__content--motionPreset_slide-in-left:is([open], [data-open], [data-state='open'], :popover-open) {
     animation-name: slide-from-left, fade-in;
-}
+  }
 
-  .dialog__content--motionPreset_slide-in-left:is([closed], [data-closed], [data-state="closed"]) {
+  .dialog__content--motionPreset_slide-in-left:is([closed], [data-closed], [data-state='closed']) {
     animation-name: slide-to-left, fade-out;
-}
+  }
 
-  .dialog__content--motionPreset_slide-in-right:is([open], [data-open], [data-state="open"], :popover-open) {
+  .dialog__content--motionPreset_slide-in-right:is([open], [data-open], [data-state='open'], :popover-open) {
     animation-name: slide-from-right, fade-in;
-}
+  }
 
-  .dialog__content--motionPreset_slide-in-right:is([closed], [data-closed], [data-state="closed"]) {
+  .dialog__content--motionPreset_slide-in-right:is([closed], [data-closed], [data-state='closed']) {
     animation-name: slide-to-right, fade-out;
-}
+  }
 
   .dialog__content--size_xs {
     max-width: var(--sizes-xs);
-}
+  }
 
   .dialog__content--size_lg {
     max-width: var(--sizes-lg);
-}
+  }
 
   .dialog__content--size_xl {
     max-width: var(--sizes-xl);
-}
+  }
 
   .dialog__positioner--placement_top {
     align-items: flex-start;
-}
+  }
 
   .dialog__content--placement_top {
     --dialog-base-margin: var(--spacing-16);
     margin-inline: auto;
-}
+  }
 
   .dialog__positioner--placement_bottom {
     align-items: flex-end;
-}
+  }
 
   .dialog__content--placement_bottom {
     --dialog-base-margin: var(--spacing-16);
     margin-inline: auto;
-}
+  }
 }

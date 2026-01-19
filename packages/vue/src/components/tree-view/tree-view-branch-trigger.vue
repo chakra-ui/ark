@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface TreeViewBranchTriggerBaseProps extends PolymorphicProps {}
 export interface TreeViewBranchTriggerProps
-  extends TreeViewBranchTriggerBaseProps,
+  extends
+    TreeViewBranchTriggerBaseProps,
     /**
      * @vue-ignore
      */

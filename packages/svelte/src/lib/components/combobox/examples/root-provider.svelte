@@ -36,9 +36,7 @@
 </script>
 
 <div class="stack">
-  <button class={button.Root} onclick={() => combobox().focus()}>
-    Focus
-  </button>
+  <button class={button.Root} onclick={() => combobox().focus()}>Focus</button>
 
   <Combobox.RootProvider class={styles.Root} value={combobox}>
     <Combobox.Label class={styles.Label}>Job Title</Combobox.Label>

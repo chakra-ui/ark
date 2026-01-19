@@ -9,13 +9,10 @@ import { ComboboxProvider } from './use-combobox-context'
 import type { CollectionItem } from '../collection'
 
 export interface ComboboxRootBaseProps<T extends CollectionItem>
-  extends UseComboboxProps<T>,
-    UsePresenceProps,
-    PolymorphicProps<'div'> {}
+  extends UseComboboxProps<T>, UsePresenceProps, PolymorphicProps<'div'> {}
 
 export interface ComboboxRootProps<T extends CollectionItem>
-  extends Omit<HTMLProps<'div'>, 'onSelect'>,
-    ComboboxRootBaseProps<T> {}
+  extends Omit<HTMLProps<'div'>, 'onSelect'>, ComboboxRootBaseProps<T> {}
 
 export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<T>) => {
   const [presenceProps, comboboxProps] = splitPresenceProps(props)

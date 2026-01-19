@@ -3,7 +3,16 @@
     .input {
       border-radius: var(--radii-l2);
       outline: 0;
-      transition-property: var(--transition-prop, color, background-color, border-color, outline-color, text-decoration-color, fill, stroke);
+      transition-property: var(
+        --transition-prop,
+        color,
+        background-color,
+        border-color,
+        outline-color,
+        text-decoration-color,
+        fill,
+        stroke
+      );
       transition-timing-function: var(--transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
       transition-duration: var(--transition-duration, 150ms);
       appearance: none;
@@ -14,27 +23,27 @@
       min-height: var(--input-height);
       min-width: var(--input-height);
       width: 100%;
-}
+    }
 
-    .input:is(:disabled, [disabled], [data-disabled], [aria-disabled=true]) {
+    .input:is(:disabled, [disabled], [data-disabled], [aria-disabled='true']) {
       cursor: not-allowed;
       opacity: 0.67;
       filter: grayscale(100%);
-}
-}
+    }
+  }
 
   .input--size_md {
     --input-height: var(--sizes-10);
     padding-inline: var(--spacing-3);
     font-size: var(--font-sizes-md);
     line-height: 1.5rem;
-}
+  }
 
   .input--variant_outline {
     border-width: 1px;
     border-color: var(--colors-gray-outline-border);
-    --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005FCC));
-}
+    --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005fcc));
+  }
 
   .input--variant_outline:is(:focus-visible, [data-focus-visible]) {
     outline-offset: 0px;
@@ -42,19 +51,19 @@
     outline-color: var(--focus-ring-color);
     outline-style: var(--focus-ring-style, solid);
     border-color: var(--focus-ring-color);
-}
+  }
 
-  .input--variant_outline:is(:user-invalid, [data-invalid], [aria-invalid=true]) {
+  .input--variant_outline:is(:user-invalid, [data-invalid], [aria-invalid='true']) {
     border-color: var(--colors-error);
     --focus-ring-color-prop: var(--colors-error);
-}
+  }
 
   .input--variant_surface {
     background: var(--colors-gray-surface-bg);
     border-width: 1px;
     border-color: var(--colors-gray-surface-border);
-    --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005FCC));
-}
+    --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005fcc));
+  }
 
   .input--variant_surface:is(:focus-visible, [data-focus-visible]) {
     outline-offset: 0px;
@@ -62,20 +71,20 @@
     outline-color: var(--focus-ring-color);
     outline-style: var(--focus-ring-style, solid);
     border-color: var(--focus-ring-color);
-}
+  }
 
-  .input--variant_surface:is(:user-invalid, [data-invalid], [aria-invalid=true]) {
+  .input--variant_surface:is(:user-invalid, [data-invalid], [aria-invalid='true']) {
     border-color: var(--colors-error);
     --focus-ring-color-prop: var(--colors-error);
-}
+  }
 
   .input--variant_subtle {
     background: var(--colors-gray-subtle-bg);
     border-width: 1px;
     border-color: transparent;
     color: var(--colors-gray-subtle-fg);
-    --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005FCC));
-}
+    --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005fcc));
+  }
 
   .input--variant_subtle:is(:focus-visible, [data-focus-visible]) {
     outline-offset: 0px;
@@ -83,12 +92,12 @@
     outline-color: var(--focus-ring-color);
     outline-style: var(--focus-ring-style, solid);
     border-color: var(--focus-ring-color);
-}
+  }
 
-  .input--variant_subtle:is(:user-invalid, [data-invalid], [aria-invalid=true]) {
+  .input--variant_subtle:is(:user-invalid, [data-invalid], [aria-invalid='true']) {
     border-color: var(--colors-error);
     --focus-ring-color-prop: var(--colors-error);
-}
+  }
 
   .input--variant_flushed {
     border-radius: 0;
@@ -96,63 +105,64 @@
     color: var(--colors-fg-default);
     border-bottom-width: 1px;
     border-bottom-color: var(--colors-gray-outline-border);
-}
+  }
 
-  .input--variant_flushed:is(:user-invalid, [data-invalid], [aria-invalid=true]) {
+  .input--variant_flushed:is(:user-invalid, [data-invalid], [aria-invalid='true']) {
     border-color: var(--colors-error);
-}
+  }
 
   .input--variant_flushed:is(:focus, [data-focus]) {
     border-color: var(--colors-color-palette-solid-bg);
     --shadow-color: var(--colors-color-palette-solid-bg);
     box-shadow: 0 1px 0 0 var(--shadow-color);
-}
+  }
 
-  .input--variant_flushed:is(:focus, [data-focus]):is(:user-invalid, [data-invalid], [aria-invalid=true]) {
+  .input--variant_flushed:is(:focus, [data-focus]):is(:user-invalid, [data-invalid], [aria-invalid='true']) {
     border-color: var(--colors-error);
     --shadow-color: var(--colors-error);
-}
+  }
 
   .input--size_2xs {
     --input-height: var(--sizes-7);
     padding-inline: var(--spacing-1\.5);
     font-size: var(--font-sizes-xs);
     line-height: 1.125rem;
-}
+  }
 
   .input--size_xs {
     --input-height: var(--sizes-8);
     padding-inline: var(--spacing-2);
-}
+  }
 
-  .input--size_xs,.input--size_sm {
+  .input--size_xs,
+  .input--size_sm {
     font-size: var(--font-sizes-sm);
     line-height: 1.25rem;
-}
+  }
 
   .input--size_sm {
     --input-height: var(--sizes-9);
     padding-inline: var(--spacing-2\.5);
-}
+  }
 
   .input--size_lg {
     --input-height: var(--sizes-11);
     padding-inline: var(--spacing-3\.5);
     font-size: var(--font-sizes-md);
     line-height: 1.5rem;
-}
+  }
 
   .input--size_xl {
     --input-height: var(--sizes-12);
     padding-inline: var(--spacing-4);
     font-size: var(--font-sizes-lg);
     line-height: 1.75rem;
-}
+  }
 
   .input--size_2xl {
     --input-height: var(--sizes-16);
     padding-inline: var(--spacing-4\.5);
     font-size: var(--font-sizes-3xl);
     line-height: 2.375rem;
-}
+  }
 }

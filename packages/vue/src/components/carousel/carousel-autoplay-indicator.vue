@@ -9,7 +9,8 @@ export interface CarouselAutoplayIndicatorBaseProps extends PolymorphicProps {
   fallback?: string
 }
 export interface CarouselAutoplayIndicatorProps
-  extends CarouselAutoplayIndicatorBaseProps,
+  extends
+    CarouselAutoplayIndicatorBaseProps,
     /**
      * @vue-ignore
      */

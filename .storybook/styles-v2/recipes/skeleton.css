@@ -3,7 +3,7 @@
     background: var(--colors-gray-subtle-bg-active);
     animation: var(--animations-pulse);
     animation-duration: var(--duration, 1.2s);
-}
+  }
 
   .skeleton--loading_true {
     border-radius: var(--radii-l2);
@@ -16,11 +16,13 @@
     -webkit-user-select: none;
     user-select: none;
     flex-shrink: 0;
-}
+  }
 
-  .skeleton--loading_true::before,.skeleton--loading_true::after,.skeleton--loading_true * {
+  .skeleton--loading_true::before,
+  .skeleton--loading_true::after,
+  .skeleton--loading_true * {
     visibility: hidden;
-}
+  }
 
   .skeleton--circle_true {
     flex: 0 0 auto;
@@ -28,7 +30,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
+  }
 
   .skeleton--variant_shine {
     --animate-from: 200%;
@@ -36,16 +38,22 @@
     --start-color: var(--colors-gray-subtle-bg);
     --end-color: var(--colors-gray-subtle-bg-active);
     animation: bg-position var(--duration, 5s) ease-in-out infinite;
-    background-image: linear-gradient(270deg,var(--start-color),var(--end-color),var(--end-color),var(--start-color));
+    background-image: linear-gradient(
+      270deg,
+      var(--start-color),
+      var(--end-color),
+      var(--end-color),
+      var(--start-color)
+    );
     background-size: 400% 100%;
-}
+  }
 
   .skeleton--loading_false {
     background: unset;
     animation: fade-in var(--fade-duration, 0.1s) ease-out !important;
-}
+  }
 
   .skeleton--variant_none {
     animation: none;
-}
+  }
 }

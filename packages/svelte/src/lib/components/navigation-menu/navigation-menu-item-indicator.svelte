@@ -2,7 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface NavigationMenuItemIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface NavigationMenuItemIndicatorProps extends Assign<HTMLProps<'div'>, NavigationMenuItemIndicatorBaseProps> {}
+  export interface NavigationMenuItemIndicatorProps extends Assign<
+    HTMLProps<'div'>,
+    NavigationMenuItemIndicatorBaseProps
+  > {}
 </script>
 
 <script lang="ts">

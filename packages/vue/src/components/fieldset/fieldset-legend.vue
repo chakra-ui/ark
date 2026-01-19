@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface FieldsetLegendBaseProps extends PolymorphicProps {}
 export interface FieldsetLegendProps
-  extends FieldsetLegendBaseProps,
+  extends
+    FieldsetLegendBaseProps,
     /**
      * @vue-ignore
      */

@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface FloatingPanelDragTriggerBaseProps extends PolymorphicProps {}
 export interface FloatingPanelDragTriggerProps
-  extends FloatingPanelDragTriggerBaseProps,
+  extends
+    FloatingPanelDragTriggerBaseProps,
     /**
      * @vue-ignore
      */

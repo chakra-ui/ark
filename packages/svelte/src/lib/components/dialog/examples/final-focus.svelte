@@ -20,8 +20,7 @@
         </Dialog.CloseTrigger>
         <Dialog.Title class={styles.Title}>Custom Focus Return</Dialog.Title>
         <Dialog.Description class={styles.Description}>
-          When this dialog closes, focus will return to the "Focus Target" button instead of the
-          trigger.
+          When this dialog closes, focus will return to the "Focus Target" button instead of the trigger.
         </Dialog.Description>
       </Dialog.Content>
     </Dialog.Positioner>

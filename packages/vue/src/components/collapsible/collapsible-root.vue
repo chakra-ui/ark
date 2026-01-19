@@ -6,7 +6,8 @@ import type { RootEmits, RootProps } from './collapsible.types'
 
 export interface CollapsibleRootBaseProps extends RootProps, PolymorphicProps {}
 export interface CollapsibleRootProps
-  extends CollapsibleRootBaseProps,
+  extends
+    CollapsibleRootBaseProps,
     /**
      * @vue-ignore
      */

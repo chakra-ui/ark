@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface HoverCardTriggerBaseProps extends PolymorphicProps {}
 export interface HoverCardTriggerProps
-  extends HoverCardTriggerBaseProps,
+  extends
+    HoverCardTriggerBaseProps,
     /**
      * @vue-ignore
      */

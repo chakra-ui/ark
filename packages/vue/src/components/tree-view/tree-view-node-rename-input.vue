@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface TreeViewNodeRenameInputBaseProps extends PolymorphicProps {}
 export interface TreeViewNodeRenameInputProps
-  extends TreeViewNodeRenameInputBaseProps,
+  extends
+    TreeViewNodeRenameInputBaseProps,
     /**
      * @vue-ignore
      */

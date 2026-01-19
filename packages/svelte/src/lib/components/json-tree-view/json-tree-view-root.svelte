@@ -17,8 +17,7 @@
   }
 
   export interface JsonTreeViewRootProps
-    extends Omit<TreeViewRootProps<JsonNode>, 'collection'>,
-      JsonTreeViewRootBaseProps {}
+    extends Omit<TreeViewRootProps<JsonNode>, 'collection'>, JsonTreeViewRootBaseProps {}
 
   const { data, defaultExpandedDepth, ...props }: JsonTreeViewRootProps = $props()
 

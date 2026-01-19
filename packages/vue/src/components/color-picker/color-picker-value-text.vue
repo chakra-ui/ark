@@ -7,7 +7,8 @@ export interface ColorPickerValueTextBaseProps extends PolymorphicProps {
   format?: ColorStringFormat
 }
 export interface ColorPickerValueTextProps
-  extends ColorPickerValueTextBaseProps,
+  extends
+    ColorPickerValueTextBaseProps,
     /**
      * @vue-ignore
      */

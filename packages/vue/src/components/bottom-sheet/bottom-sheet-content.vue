@@ -5,7 +5,8 @@ import type { ContentProps } from '@zag-js/bottom-sheet'
 
 export interface BottomSheetContentBaseProps extends PolymorphicProps, ContentProps {}
 export interface BottomSheetContentProps
-  extends BottomSheetContentBaseProps,
+  extends
+    BottomSheetContentBaseProps,
     /**
      * @vue-ignore
      */

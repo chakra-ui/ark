@@ -12,7 +12,5 @@
       <QrCode.Pattern class={styles.Pattern} />
     </QrCode.Frame>
   </QrCode.Root>
-  <button class={button.Root} onclick={() => (value = 'https://chakra-ui.com')}>
-    Set to chakra-ui.com
-  </button>
+  <button class={button.Root} onclick={() => (value = 'https://chakra-ui.com')}>Set to chakra-ui.com</button>
 </div>

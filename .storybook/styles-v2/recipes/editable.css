@@ -4,36 +4,41 @@
       gap: var(--spacing-1\.5);
       position: relative;
       width: var(--sizes-full);
-}
+    }
 
-    .editable__root,.editable__preview {
+    .editable__root,
+    .editable__preview {
       align-items: center;
       display: inline-flex;
-}
+    }
 
     .editable__preview {
       border-radius: var(--radii-l2);
       cursor: default;
       --transition-duration: var(--durations-normal);
       transition-duration: var(--durations-normal);
-      --transition-prop: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-      transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-}
+      --transition-prop:
+        color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, opacity, box-shadow,
+        transform, filter, backdrop-filter;
+      transition-property:
+        color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, opacity, box-shadow,
+        transform, filter, backdrop-filter;
+    }
 
-    .editable__preview:is(:disabled, [disabled], [data-disabled], [aria-disabled=true]) {
+    .editable__preview:is(:disabled, [disabled], [data-disabled], [aria-disabled='true']) {
       -webkit-user-select: none;
       user-select: none;
-}
+    }
 
     .editable__preview:not(:disabled):hover {
       background: var(--colors-gray-plain-bg-hover);
-}
+    }
 
     .editable__input {
       border-radius: var(--radii-l2);
       --focus-ring-width: 2px;
-      --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005FCC));
-}
+      --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005fcc));
+    }
 
     .editable__input:is(:focus, [data-focus]) {
       outline-offset: 0px;
@@ -41,59 +46,68 @@
       outline-color: var(--focus-ring-color);
       outline-style: var(--focus-ring-style, solid);
       border-color: var(--focus-ring-color);
-}
+    }
 
     .editable__input {
       --transition-duration: var(--durations-normal);
       transition-duration: var(--durations-normal);
-      --transition-prop: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-      transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+      --transition-prop:
+        color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, opacity, box-shadow,
+        transform, filter, backdrop-filter;
+      transition-property:
+        color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, opacity, box-shadow,
+        transform, filter, backdrop-filter;
       width: var(--sizes-full);
-}
+    }
 
     .editable__input:is(:focus-visible, [data-focus-visible]) {
       outline-offset: -1px;
-}
+    }
 
     .editable__control {
       gap: var(--spacing-1\.5);
       align-items: center;
       display: inline-flex;
-}
-}
+    }
+  }
 
-  .editable__preview--size_md,.editable__input--size_md {
+  .editable__preview--size_md,
+  .editable__input--size_md {
     padding-inline: var(--spacing-3\.5);
     padding-block: var(--spacing-2\.5);
     font-size: var(--font-sizes-sm);
     line-height: 1.25rem;
-}
+  }
 
-  .editable__preview--size_sm,.editable__input--size_sm {
+  .editable__preview--size_sm,
+  .editable__input--size_sm {
     padding-inline: var(--spacing-3);
     padding-block: var(--spacing-2);
     font-size: var(--font-sizes-sm);
     line-height: 1.25rem;
-}
+  }
 
-  .editable__preview--size_2xs,.editable__input--size_2xs {
+  .editable__preview--size_2xs,
+  .editable__input--size_2xs {
     padding-inline: var(--spacing-2);
     padding-block: var(--spacing-0\.5);
     font-size: var(--font-sizes-xs);
     line-height: 1.125rem;
-}
+  }
 
-  .editable__preview--size_xs,.editable__input--size_xs {
+  .editable__preview--size_xs,
+  .editable__input--size_xs {
     padding-inline: var(--spacing-2\.5);
     padding-block: var(--spacing-1\.5);
     font-size: var(--font-sizes-sm);
     line-height: 1.25rem;
-}
+  }
 
-  .editable__preview--size_lg,.editable__input--size_lg {
+  .editable__preview--size_lg,
+  .editable__input--size_lg {
     padding-inline: var(--spacing-4);
     padding-block: var(--spacing-2\.5);
     font-size: var(--font-sizes-md);
     line-height: 1.5rem;
-}
+  }
 }

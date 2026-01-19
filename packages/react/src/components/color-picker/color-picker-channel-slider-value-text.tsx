@@ -7,8 +7,7 @@ import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerChannelSliderValueTextBaseProps extends PolymorphicProps {}
 export interface ColorPickerChannelSliderValueTextProps
-  extends HTMLProps<'span'>,
-    ColorPickerChannelSliderValueTextBaseProps {}
+  extends HTMLProps<'span'>, ColorPickerChannelSliderValueTextBaseProps {}
 
 export const ColorPickerChannelSliderValueText = forwardRef<HTMLSpanElement, ColorPickerChannelSliderValueTextProps>(
   (props, ref) => {

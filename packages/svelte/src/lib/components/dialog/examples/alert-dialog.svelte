@@ -17,8 +17,7 @@
         </Dialog.CloseTrigger>
         <Dialog.Title class={styles.Title}>Are you absolutely sure?</Dialog.Title>
         <Dialog.Description class={styles.Description}>
-          This action cannot be undone. This will permanently delete your account and remove your
-          data from our servers.
+          This action cannot be undone. This will permanently delete your account and remove your data from our servers.
         </Dialog.Description>
         <div class={styles.Actions}>
           <Dialog.CloseTrigger class={button.Root}>Cancel</Dialog.CloseTrigger>

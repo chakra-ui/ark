@@ -6,7 +6,8 @@ import type { RootEmits, RootProps } from './steps.types'
 
 export interface StepsRootBaseProps extends RootProps, PolymorphicProps {}
 export interface StepsRootProps
-  extends StepsRootBaseProps,
+  extends
+    StepsRootBaseProps,
     /**
      * @vue-ignore
      */

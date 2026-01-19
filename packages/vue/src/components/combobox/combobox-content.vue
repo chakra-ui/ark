@@ -6,7 +6,8 @@ import { usePresenceContext } from '../presence'
 
 export interface ComboboxContentBaseProps extends PolymorphicProps {}
 export interface ComboboxContentProps
-  extends ComboboxContentBaseProps,
+  extends
+    ComboboxContentBaseProps,
     /**
      * @vue-ignore
      */

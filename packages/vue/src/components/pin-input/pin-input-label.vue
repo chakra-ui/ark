@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface PinInputLabelBaseProps extends PolymorphicProps {}
 export interface PinInputLabelProps
-  extends PinInputLabelBaseProps,
+  extends
+    PinInputLabelBaseProps,
     /**
      * @vue-ignore
      */

@@ -49,10 +49,6 @@
   &[data-variant='surface'] {
     border-color: var(--demo-border-emphasized);
     color: var(--demo-coral-fg);
-
-    &:hover {
-      background: var(--demo-coral-subtle);
-    }
   }
 
   /* Solid: solid bg + contrast text */

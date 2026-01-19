@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface TagsInputItemDeleteTriggerBaseProps extends PolymorphicProps {}
 export interface TagsInputItemDeleteTriggerProps
-  extends TagsInputItemDeleteTriggerBaseProps,
+  extends
+    TagsInputItemDeleteTriggerBaseProps,
     /**
      * @vue-ignore
      */

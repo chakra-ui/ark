@@ -7,8 +7,10 @@ import { cleanProps } from '../../utils/clean-props'
 import type { CollectionItem, ListCollection } from '../collection'
 import type { RootEmits } from './listbox'
 
-export interface UseListboxProps<T extends CollectionItem>
-  extends Optional<Omit<listbox.Props<T>, 'dir' | 'getRootNode' | 'collection'>, 'id'> {
+export interface UseListboxProps<T extends CollectionItem> extends Optional<
+  Omit<listbox.Props<T>, 'dir' | 'getRootNode' | 'collection'>,
+  'id'
+> {
   /**
    * The model value of the listbox
    */

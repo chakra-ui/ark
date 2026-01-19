@@ -3,7 +3,7 @@
     .input-group__root {
       position: relative;
       width: var(--sizes-full);
-}
+    }
 
     .input-group__element {
       align-items: center;
@@ -13,95 +13,95 @@
       position: absolute;
       z-index: 2;
       height: var(--sizes-full);
-}
+    }
 
     .input-group__element :where(svg) {
       color: var(--colors-fg-subtle);
-}
-}
+    }
+  }
 
   .input-group__root--size_md > input:not(:first-child) {
     padding-inline-start: var(--spacing-9) !important;
-}
+  }
 
   .input-group__root--size_md > input:not(:last-child) {
     padding-inline-end: var(--spacing-9) !important;
-}
+  }
 
   .input-group__element--size_md {
     min-width: var(--sizes-10);
-}
+  }
 
   .input-group__element--size_md :where(svg) {
     width: var(--sizes-5);
     height: var(--sizes-5);
-}
+  }
 
   .input-group__root--size_xs > input:not(:first-child) {
     padding-inline-start: var(--spacing-7) !important;
-}
+  }
 
   .input-group__root--size_xs > input:not(:last-child) {
     padding-inline-end: var(--spacing-7) !important;
-}
+  }
 
   .input-group__element--size_xs {
     min-width: var(--sizes-8);
-}
+  }
 
   .input-group__element--size_xs :where(svg) {
     width: var(--sizes-4);
     height: var(--sizes-4);
-}
+  }
 
   .input-group__root--size_sm > input:not(:first-child) {
     padding-inline-start: var(--spacing-8) !important;
-}
+  }
 
   .input-group__root--size_sm > input:not(:last-child) {
     padding-inline-end: var(--spacing-8) !important;
-}
+  }
 
   .input-group__element--size_sm {
     min-width: var(--sizes-9);
-}
+  }
 
   .input-group__element--size_sm :where(svg) {
     width: var(--sizes-4\.5);
     height: var(--sizes-4\.5);
-}
+  }
 
   .input-group__root--size_lg > input:not(:first-child) {
     padding-inline-start: var(--spacing-10) !important;
-}
+  }
 
   .input-group__root--size_lg > input:not(:last-child) {
     padding-inline-end: var(--spacing-10) !important;
-}
+  }
 
   .input-group__element--size_lg {
     min-width: var(--sizes-11);
-}
+  }
 
   .input-group__element--size_lg :where(svg) {
     width: var(--sizes-5);
     height: var(--sizes-5);
-}
+  }
 
   .input-group__root--size_xl > input:not(:first-child) {
     padding-inline-start: var(--spacing-11) !important;
-}
+  }
 
   .input-group__root--size_xl > input:not(:last-child) {
     padding-inline-end: var(--spacing-11) !important;
-}
+  }
 
   .input-group__element--size_xl {
     min-width: var(--sizes-11);
-}
+  }
 
   .input-group__element--size_xl :where(svg) {
     width: var(--sizes-5\.5);
     height: var(--sizes-5\.5);
-}
+  }
 }

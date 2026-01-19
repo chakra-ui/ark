@@ -6,7 +6,8 @@ import { pick } from '@zag-js/utils'
 
 export interface FileUploadItemGroupBaseProps extends PolymorphicProps, ItemGroupProps {}
 export interface FileUploadItemGroupProps
-  extends FileUploadItemGroupBaseProps,
+  extends
+    FileUploadItemGroupBaseProps,
     /**
      * @vue-ignore
      */

@@ -6,7 +6,8 @@ import type { RootProps } from './field.types'
 
 export interface FieldRootBaseProps extends RootProps, PolymorphicProps {}
 export interface FieldRootProps
-  extends FieldRootBaseProps,
+  extends
+    FieldRootBaseProps,
     /**
      * @vue-ignore
      */

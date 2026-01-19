@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface AngleSliderRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface AngleSliderRootProviderProps
-  extends AngleSliderRootProviderBaseProps,
+  extends
+    AngleSliderRootProviderBaseProps,
     /**
      * @vue-ignore
      */

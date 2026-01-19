@@ -18,10 +18,7 @@
             <RatingGroup.Item class={styles.Item} index={item}>
               <RatingGroup.ItemContext>
                 {#snippet render(itemState)}
-                  <span
-                    class={styles.ItemIndicator}
-                    data-highlighted={itemState().highlighted ? '' : undefined}
-                  >
+                  <span class={styles.ItemIndicator} data-highlighted={itemState().highlighted ? '' : undefined}>
                     <StarIcon data-bg="" />
                     <StarIcon data-fg="" fill="currentColor" />
                   </span>

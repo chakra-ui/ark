@@ -40,7 +40,8 @@
         {#each collection().items as item (item.code)}
           <Combobox.Item class={styles.Item} {item}>
             <Combobox.ItemText class={styles.ItemText}>
-              {item.flag} {item.country}
+              {item.flag}
+              {item.country}
             </Combobox.ItemText>
             <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
           </Combobox.Item>

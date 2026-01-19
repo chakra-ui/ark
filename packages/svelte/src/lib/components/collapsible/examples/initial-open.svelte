@@ -12,8 +12,6 @@
     </Collapsible.Indicator>
   </Collapsible.Trigger>
   <Collapsible.Content class={styles.Content}>
-    <div class={styles.Body}>
-      This content is visible by default when the component first renders.
-    </div>
+    <div class={styles.Body}>This content is visible by default when the component first renders.</div>
   </Collapsible.Content>
 </Collapsible.Root>

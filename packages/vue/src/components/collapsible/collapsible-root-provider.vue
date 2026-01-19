@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface CollapsibleRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface CollapsibleRootProviderProps
-  extends CollapsibleRootProviderBaseProps,
+  extends
+    CollapsibleRootProviderBaseProps,
     /**
      * @vue-ignore
      */

@@ -6,7 +6,8 @@ import type { RootEmits, RootProps } from './signature-pad.types'
 
 export interface SignaturePadRootBaseProps extends RootProps, PolymorphicProps {}
 export interface SignaturePadRootProps
-  extends SignaturePadRootBaseProps,
+  extends
+    SignaturePadRootBaseProps,
     /**
      * @vue-ignore
      */

@@ -6,7 +6,8 @@ import { usePresenceContext } from '../presence'
 
 export interface SelectContentBaseProps extends PolymorphicProps {}
 export interface SelectContentProps
-  extends SelectContentBaseProps,
+  extends
+    SelectContentBaseProps,
     /**
      * @vue-ignore
      */

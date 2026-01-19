@@ -7,8 +7,10 @@ import { runIfFn } from '../../utils/run-if-fn'
 import type { CollectionItem, ListCollection } from '../collection'
 import { useFieldContext } from '../field'
 
-export interface UseComboboxProps<T extends CollectionItem>
-  extends Optional<Omit<combobox.Props<T>, 'collection' | 'dir' | 'getRootNode'>, 'id'> {
+export interface UseComboboxProps<T extends CollectionItem> extends Optional<
+  Omit<combobox.Props<T>, 'collection' | 'dir' | 'getRootNode'>,
+  'id'
+> {
   /**
    * The collection of items
    */

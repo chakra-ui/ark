@@ -24,7 +24,8 @@
     <button
       type="button"
       class={button.Root}
-      onclick={() => toaster.success({ title: 'Changes saved', description: 'Your profile has been updated successfully.' })}
+      onclick={() =>
+        toaster.success({ title: 'Changes saved', description: 'Your profile has been updated successfully.' })}
     >
       Success
     </button>
@@ -38,14 +39,16 @@
     <button
       type="button"
       class={button.Root}
-      onclick={() => toaster.warning({ title: 'Low storage', description: 'You have less than 10% storage remaining.' })}
+      onclick={() =>
+        toaster.warning({ title: 'Low storage', description: 'You have less than 10% storage remaining.' })}
     >
       Warning
     </button>
     <button
       type="button"
       class={button.Root}
-      onclick={() => toaster.info({ title: 'Update available', description: 'A new version of the app is ready to install.' })}
+      onclick={() =>
+        toaster.info({ title: 'Update available', description: 'A new version of the app is ready to install.' })}
     >
       Info
     </button>

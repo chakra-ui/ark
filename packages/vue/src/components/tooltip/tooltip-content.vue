@@ -6,7 +6,8 @@ import { usePresenceContext } from '../presence'
 
 export interface TooltipContentBaseProps extends PolymorphicProps {}
 export interface TooltipContentProps
-  extends TooltipContentBaseProps,
+  extends
+    TooltipContentBaseProps,
     /**
      * @vue-ignore
      */

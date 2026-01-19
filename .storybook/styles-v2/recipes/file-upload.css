@@ -4,12 +4,13 @@
       gap: var(--spacing-1\.5);
       align-items: flex-start;
       width: var(--sizes-full);
-}
+    }
 
-    .file-upload__root,.file-upload__dropzone {
+    .file-upload__root,
+    .file-upload__dropzone {
       display: flex;
       flex-direction: column;
-}
+    }
 
     .file-upload__dropzone {
       background: var(--colors-gray-surface-bg);
@@ -18,26 +19,26 @@
       border-width: 2px;
       transition: backgrounds;
       align-items: center;
-      --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005FCC));
-}
+      --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005fcc));
+    }
 
     .file-upload__dropzone:is(:focus-visible, [data-focus-visible]) {
       outline-width: var(--focus-ring-width, 2px);
       outline-offset: var(--focus-ring-offset, 2px);
       outline-style: var(--focus-ring-style, solid);
       outline-color: var(--focus-ring-color);
-}
+    }
 
     .file-upload__dropzone {
       justify-content: center;
       width: var(--sizes-full);
-}
+    }
 
     .file-upload__dropzone[data-dragging] {
       background: var(--colors-gray-surface-bg-hover);
       border-style: solid;
       border-color: var(--colors-color-palette-solid-bg);
-}
+    }
 
     .file-upload__item {
       background: var(--colors-gray-surface-bg);
@@ -49,66 +50,66 @@
       display: flex;
       position: relative;
       width: var(--sizes-full);
-}
+    }
 
     .file-upload__itemDeleteTrigger {
       color: var(--colors-fg-subtle);
-}
+    }
 
     .file-upload__itemGroup {
       display: flex;
       align-items: start;
       flex-direction: column;
       width: var(--sizes-full);
-}
+    }
 
     .file-upload__itemName {
       color: var(--colors-fg-default);
       font-weight: var(--font-weights-medium);
-}
+    }
 
     .file-upload__itemPreviewImage {
       border-radius: var(--radii-l2);
       aspect-ratio: 1;
       object-fit: cover;
       max-width: var(--sizes-20);
-}
+    }
 
     .file-upload__itemSizeText {
       color: var(--colors-fg-muted);
-}
+    }
 
     .file-upload__label {
       font-size: var(--font-sizes-sm);
       line-height: 1.25rem;
       font-weight: var(--font-weights-medium);
-}
-}
+    }
+  }
 
   .file-upload__root--size_md {
     gap: var(--spacing-4);
-}
+  }
 
   .file-upload__dropzone--size_md {
     padding-inline: var(--spacing-6);
     padding-block: var(--spacing-4);
     gap: var(--spacing-0);
     min-height: var(--sizes-xs);
-}
+  }
 
   .file-upload__item--size_md {
     padding: var(--spacing-4);
     gap: var(--spacing-3);
     font-size: var(--font-sizes-sm);
     line-height: 1.25rem;
-}
+  }
 
   .file-upload__itemDeleteTrigger--size_md :where(svg) {
     width: var(--sizes-4);
     height: var(--sizes-4);
-}
+  }
 
   .file-upload__itemGroup--size_md {
     gap: var(--spacing-3);
-}
+  }
 }

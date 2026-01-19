@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface MenuContextTriggerBaseProps extends PolymorphicProps {}
 export interface MenuContextTriggerProps
-  extends MenuContextTriggerBaseProps,
+  extends
+    MenuContextTriggerBaseProps,
     /**
      * @vue-ignore
      */

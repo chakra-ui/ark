@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface ProgressCircleTrackBaseProps extends PolymorphicProps {}
 export interface ProgressCircleTrackProps
-  extends ProgressCircleTrackBaseProps,
+  extends
+    ProgressCircleTrackBaseProps,
     /**
      * @vue-ignore
      */

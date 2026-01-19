@@ -5,7 +5,8 @@ import { useDatePickerViewPropsContext } from './use-date-picker-view-props-cont
 
 export interface DatePickerViewControlBaseProps extends PolymorphicProps {}
 export interface DatePickerViewControlProps
-  extends DatePickerViewControlBaseProps,
+  extends
+    DatePickerViewControlBaseProps,
     /**
      * @vue-ignore
      */

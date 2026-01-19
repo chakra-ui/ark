@@ -6,7 +6,8 @@ import { usePresenceContext } from '../presence'
 
 export interface PopoverContentBaseProps extends PolymorphicProps {}
 export interface PopoverContentProps
-  extends PopoverContentBaseProps,
+  extends
+    PopoverContentBaseProps,
     /**
      * @vue-ignore
      */

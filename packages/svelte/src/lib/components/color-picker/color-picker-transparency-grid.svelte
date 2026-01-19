@@ -2,11 +2,11 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface ColorPickerTransparencyGridBaseProps
-    extends TransparencyGridProps,
-      PolymorphicProps<'div'>,
-      RefAttribute {}
-  export interface ColorPickerTransparencyGridProps
-    extends Assign<HTMLProps<'div'>, ColorPickerTransparencyGridBaseProps> {}
+    extends TransparencyGridProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface ColorPickerTransparencyGridProps extends Assign<
+    HTMLProps<'div'>,
+    ColorPickerTransparencyGridBaseProps
+  > {}
 </script>
 
 <script lang="ts">

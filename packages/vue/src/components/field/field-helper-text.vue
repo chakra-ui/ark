@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface FieldHelperTextBaseProps extends PolymorphicProps {}
 export interface FieldHelperTextProps
-  extends FieldHelperTextBaseProps,
+  extends
+    FieldHelperTextBaseProps,
     /**
      * @vue-ignore
      */

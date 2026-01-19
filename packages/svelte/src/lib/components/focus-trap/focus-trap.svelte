@@ -4,11 +4,10 @@
   import { type FocusTrapOptions, trapFocus } from '@zag-js/focus-trap'
   import { Ark } from '../factory/index.js'
 
-  export interface TrapOptions
-    extends Pick<
-      FocusTrapOptions,
-      'onActivate' | 'onDeactivate' | 'initialFocus' | 'fallbackFocus' | 'returnFocusOnDeactivate' | 'setReturnFocus'
-    > {
+  export interface TrapOptions extends Pick<
+    FocusTrapOptions,
+    'onActivate' | 'onDeactivate' | 'initialFocus' | 'fallbackFocus' | 'returnFocusOnDeactivate' | 'setReturnFocus'
+  > {
     /**
      * Whether the focus trap is disabled.
      */

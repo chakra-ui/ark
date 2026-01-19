@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface EditableRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface EditableRootProviderProps
-  extends EditableRootProviderBaseProps,
+  extends
+    EditableRootProviderBaseProps,
     /**
      * @vue-ignore
      */

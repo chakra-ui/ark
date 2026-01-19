@@ -93,7 +93,8 @@
               <Combobox.ItemText class={styles.ItemText}>+ Create "{item.label}"</Combobox.ItemText>
             {:else}
               <Combobox.ItemText class={styles.ItemText}>
-                {item.label} {item.__new__ ? '(new)' : ''}
+                {item.label}
+                {item.__new__ ? '(new)' : ''}
               </Combobox.ItemText>
             {/if}
             <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>

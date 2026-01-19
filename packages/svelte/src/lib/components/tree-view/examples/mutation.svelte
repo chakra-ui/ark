@@ -74,7 +74,7 @@
   </TreeView.Context>
 </TreeView.Root>
 
-{#snippet renderNode(node: TreeNode, indexPath: number[], tree: UseTreeViewContext<TreeNode>)}
+{#snippet renderNode(node: TreeNode, indexPath: number[], tree: UseTreeViewContext)}
   <TreeView.NodeProvider {node} {indexPath}>
     {#if node.children}
       <TreeView.Branch class={styles.Branch}>
@@ -84,10 +84,22 @@
           </TreeView.BranchIndicator>
           <TreeView.BranchText class={styles.BranchText}>{node.name}</TreeView.BranchText>
           <div class={styles.ActionGroup}>
-            <button class={styles.Action} onclick={(e) => { e.stopPropagation(); handleRemove(node, indexPath) }}>
+            <button
+              class={styles.Action}
+              onclick={(e) => {
+                e.stopPropagation()
+                handleRemove(node, indexPath)
+              }}
+            >
               <TrashIcon />
             </button>
-            <button class={styles.Action} onclick={(e) => { e.stopPropagation(); handleAdd(node, indexPath, tree) }}>
+            <button
+              class={styles.Action}
+              onclick={(e) => {
+                e.stopPropagation()
+                handleAdd(node, indexPath, tree)
+              }}
+            >
               <PlusIcon />
             </button>
           </div>
@@ -103,7 +115,13 @@
       <TreeView.Item class={styles.Item}>
         <TreeView.ItemText class={styles.ItemText}>{node.name}</TreeView.ItemText>
         <div class={styles.ActionGroup}>
-          <button class={styles.Action} onclick={(e) => { e.stopPropagation(); handleRemove(node, indexPath) }}>
+          <button
+            class={styles.Action}
+            onclick={(e) => {
+              e.stopPropagation()
+              handleRemove(node, indexPath)
+            }}
+          >
             <TrashIcon />
           </button>
         </div>

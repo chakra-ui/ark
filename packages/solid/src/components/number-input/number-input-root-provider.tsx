@@ -10,9 +10,7 @@ interface RootProviderProps {
 
 export interface NumberInputRootProviderBaseProps extends PolymorphicProps<'div'> {}
 export interface NumberInputRootProviderProps
-  extends HTMLProps<'div'>,
-    RootProviderProps,
-    NumberInputRootProviderBaseProps {}
+  extends HTMLProps<'div'>, RootProviderProps, NumberInputRootProviderBaseProps {}
 
 export const NumberInputRootProvider = (props: NumberInputRootProviderProps) => {
   const [{ value: numberInput }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])

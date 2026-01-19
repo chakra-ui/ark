@@ -18,7 +18,7 @@ body {
 }
 
 #root,
-.storybook-root {
+#storybook-root {
   display: flex;
   flex-direction: column;
   align-items: center;
