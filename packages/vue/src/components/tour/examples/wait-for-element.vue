@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { type Tour, useTour, waitForElement, waitForEvent } from '@ark-ui/vue/tour'
+import { Tour, useTour, waitForElement, waitForEvent, type TourStepDetails } from '@ark-ui/vue/tour'
 import { PlusIcon, SparklesIcon, XIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 import button from 'styles/button.module.css'
 import styles from 'styles/tour.module.css'
 
-const steps: Tour.StepDetails[] = [
+const steps: TourStepDetails[] = [
   {
     id: 'intro',
     type: 'dialog',

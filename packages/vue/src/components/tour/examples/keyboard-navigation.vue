@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { type Tour, useTour } from '@ark-ui/vue/tour'
+import { Tour, useTour, type TourStepDetails } from '@ark-ui/vue/tour'
 import { KeyboardIcon, SparklesIcon, XIcon } from 'lucide-vue-next'
 import button from 'styles/button.module.css'
 import styles from 'styles/tour.module.css'
 
-const steps: Tour.StepDetails[] = [
+const steps: TourStepDetails[] = [
   {
     id: 'step-1',
     type: 'tooltip',
