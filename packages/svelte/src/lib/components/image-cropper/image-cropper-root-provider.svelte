@@ -1,16 +1,12 @@
 <script module lang="ts">
-  import type { Snippet } from 'svelte'
-  import type { PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseImageCropperReturn } from './use-image-cropper.svelte'
 
-  interface RootProviderProps {
+  export interface ImageCropperRootProviderBaseProps extends PolymorphicProps<'div'>, RefAttribute {
     value: UseImageCropperReturn
   }
-
-  export interface ImageCropperRootProviderBaseProps extends RootProviderProps, PolymorphicProps<'div'>, RefAttribute {}
-  export interface ImageCropperRootProviderProps extends ImageCropperRootProviderBaseProps {
-    children?: Snippet
-  }
+  export interface ImageCropperRootProviderProps
+    extends Assign<HTMLProps<'div'>, ImageCropperRootProviderBaseProps> {}
 </script>
 
 <script lang="ts">

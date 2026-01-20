@@ -19,8 +19,8 @@
     color 150ms;
 
   & svg {
-    width: 0.85em;
-    height: 0.85em;
+    width: 1em;
+    height: 1em;
   }
 
   &:has(> svg:only-child) {
@@ -70,6 +70,7 @@
 
 .Group {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
 
   &[data-attached] {

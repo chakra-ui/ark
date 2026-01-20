@@ -1,19 +1,22 @@
 <script lang="ts">
-import type { UseImageCropperReturn } from './use-image-cropper'
+import type { SlotsType, UnwrapRef } from 'vue'
+import type { UseImageCropperContext } from './use-image-cropper-context'
 
-export interface ImageCropperContextProps {
-  value: UseImageCropperReturn
-}
+export interface ImageCropperContextProps extends SlotsType<{
+  default: UnwrapRef<UseImageCropperContext>
+}> {}
 </script>
 
 <script setup lang="ts">
-import { ImageCropperProvider } from './use-image-cropper-context'
+import { useImageCropperContext } from './use-image-cropper-context'
 
-const props = defineProps<ImageCropperContextProps>()
+const imageCropper = useImageCropperContext()
 
-ImageCropperProvider(props.value)
+defineSlots<{
+  default(imageCropper: UnwrapRef<UseImageCropperContext>): unknown
+}>()
 </script>
 
 <template>
-  <slot />
+  <slot v-bind="imageCropper"></slot>
 </template>
