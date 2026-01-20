@@ -1,15 +1,16 @@
 import { DatePicker } from '@ark-ui/react/date-picker'
+import { Portal } from '@ark-ui/react/portal'
 import { CalendarDate, type DateValue } from '@internationalized/date'
-import { useState } from 'react'
+import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
+import button from 'styles/button.module.css'
+import styles from 'styles/date-picker.module.css'
 
-// convert date to mm/yyyy format
 const format = (date: DateValue) => {
   const month = date.month.toString().padStart(2, '0')
   const year = date.year.toString()
   return `${month}/${year}`
 }
 
-// Handle full mm/yyyy format
 const parse = (string: string) => {
   const fullRegex = /^(\d{1,2})\/(\d{4})$/
   const fullMatch = string.match(fullRegex)
@@ -19,79 +20,96 @@ const parse = (string: string) => {
   }
 }
 
-const ViewTrigger = () => {
-  return (
-    <DatePicker.ViewControl>
-      <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
-      <DatePicker.ViewTrigger>
-        <DatePicker.RangeText />
-      </DatePicker.ViewTrigger>
-      <DatePicker.NextTrigger>Next</DatePicker.NextTrigger>
-    </DatePicker.ViewControl>
-  )
-}
-
 export const MonthRange = () => {
-  const [value, setValue] = useState<DateValue[]>([])
-
   return (
     <DatePicker.Root
-      open
+      className={styles.Root}
       selectionMode="range"
-      format={format}
-      parse={parse}
       defaultView="month"
       minView="month"
+      format={format}
+      parse={parse}
       placeholder="mm/yyyy"
-      value={value}
-      onValueChange={(details) => {
-        setValue(details.value)
-      }}
     >
-      {JSON.stringify(value)}
-      <DatePicker.Content>
-        <DatePicker.View view="month">
-          <ViewTrigger />
-          <DatePicker.Context>
-            {(datePicker) => (
-              <DatePicker.Table>
-                <DatePicker.TableBody>
-                  {datePicker.getMonthsGrid({ columns: 4, format: 'short' }).map((months, id) => (
-                    <DatePicker.TableRow key={id}>
-                      {months.map((month, id) => (
-                        <DatePicker.TableCell key={id} value={month.value}>
-                          <DatePicker.TableCellTrigger>{month.label}</DatePicker.TableCellTrigger>
-                        </DatePicker.TableCell>
+      <DatePicker.Label className={styles.Label}>Label</DatePicker.Label>
+      <DatePicker.Control className={styles.Control}>
+        <DatePicker.Input className={styles.Input} index={0} />
+        <DatePicker.Input className={styles.Input} index={1} />
+        <DatePicker.Trigger className={styles.Trigger}>
+          <CalendarIcon />
+        </DatePicker.Trigger>
+        <DatePicker.ClearTrigger className={button.Root}>Clear</DatePicker.ClearTrigger>
+      </DatePicker.Control>
+      <Portal>
+        <DatePicker.Positioner>
+          <DatePicker.Content className={styles.Content}>
+            <DatePicker.View view="month" className={styles.View}>
+              <DatePicker.ViewControl className={styles.ViewControl}>
+                <DatePicker.PrevTrigger className={styles.PrevTrigger}>
+                  <ChevronLeftIcon />
+                </DatePicker.PrevTrigger>
+                <DatePicker.ViewTrigger className={styles.ViewTrigger}>
+                  <DatePicker.RangeText />
+                </DatePicker.ViewTrigger>
+                <DatePicker.NextTrigger className={styles.NextTrigger}>
+                  <ChevronRightIcon />
+                </DatePicker.NextTrigger>
+              </DatePicker.ViewControl>
+              <DatePicker.Context>
+                {(datePicker) => (
+                  <DatePicker.Table className={styles.Table}>
+                    <DatePicker.TableBody className={styles.TableBody}>
+                      {datePicker.getMonthsGrid({ columns: 4, format: 'short' }).map((months, id) => (
+                        <DatePicker.TableRow className={styles.TableRow} key={id}>
+                          {months.map((month, id) => (
+                            <DatePicker.TableCell className={styles.TableCell} key={id} value={month.value}>
+                              <DatePicker.TableCellTrigger className={styles.MonthTableCellTrigger}>
+                                {month.label}
+                              </DatePicker.TableCellTrigger>
+                            </DatePicker.TableCell>
+                          ))}
+                        </DatePicker.TableRow>
                       ))}
-                    </DatePicker.TableRow>
-                  ))}
-                </DatePicker.TableBody>
-              </DatePicker.Table>
-            )}
-          </DatePicker.Context>
-        </DatePicker.View>
-
-        <DatePicker.View view="year">
-          <ViewTrigger />
-          <DatePicker.Context>
-            {(datePicker) => (
-              <DatePicker.Table>
-                <DatePicker.TableBody>
-                  {datePicker.getYearsGrid({ columns: 4 }).map((years, id) => (
-                    <DatePicker.TableRow key={id}>
-                      {years.map((year, id) => (
-                        <DatePicker.TableCell key={id} value={year.value}>
-                          <DatePicker.TableCellTrigger>{year.label}</DatePicker.TableCellTrigger>
-                        </DatePicker.TableCell>
+                    </DatePicker.TableBody>
+                  </DatePicker.Table>
+                )}
+              </DatePicker.Context>
+            </DatePicker.View>
+            <DatePicker.View view="year" className={styles.View}>
+              <DatePicker.ViewControl className={styles.ViewControl}>
+                <DatePicker.PrevTrigger className={styles.PrevTrigger}>
+                  <ChevronLeftIcon />
+                </DatePicker.PrevTrigger>
+                <DatePicker.ViewTrigger className={styles.ViewTrigger}>
+                  <DatePicker.RangeText />
+                </DatePicker.ViewTrigger>
+                <DatePicker.NextTrigger className={styles.NextTrigger}>
+                  <ChevronRightIcon />
+                </DatePicker.NextTrigger>
+              </DatePicker.ViewControl>
+              <DatePicker.Context>
+                {(datePicker) => (
+                  <DatePicker.Table className={styles.Table}>
+                    <DatePicker.TableBody className={styles.TableBody}>
+                      {datePicker.getYearsGrid({ columns: 4 }).map((years, id) => (
+                        <DatePicker.TableRow className={styles.TableRow} key={id}>
+                          {years.map((year, id) => (
+                            <DatePicker.TableCell className={styles.TableCell} key={id} value={year.value}>
+                              <DatePicker.TableCellTrigger className={styles.YearTableCellTrigger}>
+                                {year.label}
+                              </DatePicker.TableCellTrigger>
+                            </DatePicker.TableCell>
+                          ))}
+                        </DatePicker.TableRow>
                       ))}
-                    </DatePicker.TableRow>
-                  ))}
-                </DatePicker.TableBody>
-              </DatePicker.Table>
-            )}
-          </DatePicker.Context>
-        </DatePicker.View>
-      </DatePicker.Content>
+                    </DatePicker.TableBody>
+                  </DatePicker.Table>
+                )}
+              </DatePicker.Context>
+            </DatePicker.View>
+          </DatePicker.Content>
+        </DatePicker.Positioner>
+      </Portal>
     </DatePicker.Root>
   )
 }
