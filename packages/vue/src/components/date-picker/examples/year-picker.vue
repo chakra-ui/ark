@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { DatePicker, parseDate, type DateValue } from '@ark-ui/vue/date-picker'
-import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-vue-next'
+import { CalendarIcon } from 'lucide-vue-next'
 import button from 'styles/button.module.css'
 import styles from 'styles/date-picker.module.css'
 

@@ -24,47 +24,47 @@ const parse = (string: string) => {
 export const MonthPicker = () => {
   return (
     <DatePicker.Root
-      className={styles.Root}
+      class={styles.Root}
       format={format}
       parse={parse}
       defaultView="month"
       minView="month"
       placeholder="mm/yyyy"
     >
-      <DatePicker.Label className={styles.Label}>Label</DatePicker.Label>
-      <DatePicker.Control className={styles.Control}>
-        <DatePicker.Input className={styles.Input} />
-        <DatePicker.Trigger className={styles.Trigger}>
+      <DatePicker.Label class={styles.Label}>Label</DatePicker.Label>
+      <DatePicker.Control class={styles.Control}>
+        <DatePicker.Input class={styles.Input} />
+        <DatePicker.Trigger class={styles.Trigger}>
           <CalendarIcon />
         </DatePicker.Trigger>
-        <DatePicker.ClearTrigger className={button.Root}>Clear</DatePicker.ClearTrigger>
+        <DatePicker.ClearTrigger class={button.Root}>Clear</DatePicker.ClearTrigger>
       </DatePicker.Control>
       <Portal>
         <DatePicker.Positioner>
-          <DatePicker.Content className={styles.Content}>
-            <DatePicker.View view="month" className={styles.View}>
-              <DatePicker.ViewControl className={styles.ViewControl}>
-                <DatePicker.PrevTrigger className={styles.PrevTrigger}>
+          <DatePicker.Content class={styles.Content}>
+            <DatePicker.View view="month" class={styles.View}>
+              <DatePicker.ViewControl class={styles.ViewControl}>
+                <DatePicker.PrevTrigger class={styles.PrevTrigger}>
                   <ChevronLeftIcon />
                 </DatePicker.PrevTrigger>
-                <DatePicker.ViewTrigger className={styles.ViewTrigger}>
+                <DatePicker.ViewTrigger class={styles.ViewTrigger}>
                   <DatePicker.RangeText />
                 </DatePicker.ViewTrigger>
-                <DatePicker.NextTrigger className={styles.NextTrigger}>
+                <DatePicker.NextTrigger class={styles.NextTrigger}>
                   <ChevronRightIcon />
                 </DatePicker.NextTrigger>
               </DatePicker.ViewControl>
               <DatePicker.Context>
                 {(context) => (
-                  <DatePicker.Table className={styles.Table}>
-                    <DatePicker.TableBody className={styles.TableBody}>
+                  <DatePicker.Table class={styles.Table}>
+                    <DatePicker.TableBody class={styles.TableBody}>
                       <Index each={context().getMonthsGrid({ columns: 4, format: 'short' })}>
                         {(months) => (
-                          <DatePicker.TableRow className={styles.TableRow}>
+                          <DatePicker.TableRow class={styles.TableRow}>
                             <Index each={months()}>
                               {(month) => (
-                                <DatePicker.TableCell className={styles.TableCell} value={month().value}>
-                                  <DatePicker.TableCellTrigger className={styles.TableCellTrigger}>
+                                <DatePicker.TableCell class={styles.TableCell} value={month().value}>
+                                  <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>
                                     {month().label}
                                   </DatePicker.TableCellTrigger>
                                 </DatePicker.TableCell>
@@ -78,29 +78,29 @@ export const MonthPicker = () => {
                 )}
               </DatePicker.Context>
             </DatePicker.View>
-            <DatePicker.View view="year" className={styles.View}>
-              <DatePicker.ViewControl className={styles.ViewControl}>
-                <DatePicker.PrevTrigger className={styles.PrevTrigger}>
+            <DatePicker.View view="year" class={styles.View}>
+              <DatePicker.ViewControl class={styles.ViewControl}>
+                <DatePicker.PrevTrigger class={styles.PrevTrigger}>
                   <ChevronLeftIcon />
                 </DatePicker.PrevTrigger>
-                <DatePicker.ViewTrigger className={styles.ViewTrigger}>
+                <DatePicker.ViewTrigger class={styles.ViewTrigger}>
                   <DatePicker.RangeText />
                 </DatePicker.ViewTrigger>
-                <DatePicker.NextTrigger className={styles.NextTrigger}>
+                <DatePicker.NextTrigger class={styles.NextTrigger}>
                   <ChevronRightIcon />
                 </DatePicker.NextTrigger>
               </DatePicker.ViewControl>
               <DatePicker.Context>
                 {(context) => (
-                  <DatePicker.Table className={styles.Table}>
-                    <DatePicker.TableBody className={styles.TableBody}>
+                  <DatePicker.Table class={styles.Table}>
+                    <DatePicker.TableBody class={styles.TableBody}>
                       <Index each={context().getYearsGrid({ columns: 4 })}>
                         {(years) => (
-                          <DatePicker.TableRow className={styles.TableRow}>
+                          <DatePicker.TableRow class={styles.TableRow}>
                             <Index each={years()}>
                               {(year) => (
-                                <DatePicker.TableCell className={styles.TableCell} value={year().value}>
-                                  <DatePicker.TableCellTrigger className={styles.TableCellTrigger}>
+                                <DatePicker.TableCell class={styles.TableCell} value={year().value}>
+                                  <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>
                                     {year().label}
                                   </DatePicker.TableCellTrigger>
                                 </DatePicker.TableCell>
