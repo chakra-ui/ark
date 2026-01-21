@@ -35,12 +35,13 @@ import * as BottomSheet_SnapPoints from '@examples/bottom-sheet/examples/snap-po
 import * as Carousel_Autoplay from '@examples/carousel/examples/autoplay'
 import * as Carousel_Basic from '@examples/carousel/examples/basic'
 import * as Carousel_Controlled from '@examples/carousel/examples/controlled'
-import * as Carousel_CustomIndicator from '@examples/carousel/examples/custom-indicator'
 import * as Carousel_DynamicSlides from '@examples/carousel/examples/dynamic-slides'
 import * as Carousel_PauseOnHover from '@examples/carousel/examples/pause-on-hover'
 import * as Carousel_RootProvider from '@examples/carousel/examples/root-provider'
 import * as Carousel_ScrollTo from '@examples/carousel/examples/scroll-to'
 import * as Carousel_SlidesPerPage from '@examples/carousel/examples/slides-per-page'
+import * as Carousel_Spacing from '@examples/carousel/examples/spacing'
+import * as Carousel_ThumbnailIndicator from '@examples/carousel/examples/thumbnail-indicator'
 import * as Carousel_VariableSize from '@examples/carousel/examples/variable-size'
 import * as Carousel_Vertical from '@examples/carousel/examples/vertical'
 import * as Checkbox_Basic from '@examples/checkbox/examples/basic'
@@ -66,21 +67,16 @@ import * as Clipboard_Basic from '@examples/clipboard/examples/basic'
 import * as Clipboard_Context from '@examples/clipboard/examples/context'
 import * as Clipboard_Controlled from '@examples/clipboard/examples/controlled'
 import * as Clipboard_CopyStatus from '@examples/clipboard/examples/copy-status'
-import * as Clipboard_CustomTimeout from '@examples/clipboard/examples/custom-timeout'
-import * as Clipboard_Programmatic from '@examples/clipboard/examples/programmatic'
 import * as Clipboard_RootProvider from '@examples/clipboard/examples/root-provider'
+import * as Clipboard_Timeout from '@examples/clipboard/examples/timeout'
 import * as Clipboard_ValueText from '@examples/clipboard/examples/value-text'
 import * as Collapsible_Basic from '@examples/collapsible/examples/basic'
 import * as Collapsible_Disabled from '@examples/collapsible/examples/disabled'
 import * as Collapsible_InitialOpen from '@examples/collapsible/examples/initial-open'
-import * as Collapsible_LazyMountAndUnmountOnExit from '@examples/collapsible/examples/lazy-mount-and-unmount-on-exit'
 import * as Collapsible_LazyMount from '@examples/collapsible/examples/lazy-mount'
-import * as Collapsible_NestedCollapsible from '@examples/collapsible/examples/nested-collapsible'
-import * as Collapsible_OnExitComplete from '@examples/collapsible/examples/on-exit-complete'
+import * as Collapsible_Nested from '@examples/collapsible/examples/nested'
 import * as Collapsible_PartialCollapse from '@examples/collapsible/examples/partial-collapse'
-import * as Collapsible_ProgrammaticOpen from '@examples/collapsible/examples/programmatic-open'
 import * as Collapsible_RootProvider from '@examples/collapsible/examples/root-provider'
-import * as Collapsible_UnmountOnExit from '@examples/collapsible/examples/unmount-on-exit'
 import * as CollectionAsyncList_Dependencies from '@examples/collection/examples/async-list/dependencies'
 import * as CollectionAsyncList_Filter from '@examples/collection/examples/async-list/filter'
 import * as CollectionAsyncList_InfiniteLoading from '@examples/collection/examples/async-list/infinite-loading'
@@ -92,13 +88,17 @@ import * as CollectionListSelection_Multiple from '@examples/collection/examples
 import * as CollectionListSelection_Range from '@examples/collection/examples/list-selection/range'
 import * as ColorPicker_Basic from '@examples/color-picker/examples/basic'
 import * as ColorPicker_Controlled from '@examples/color-picker/examples/controlled'
+import * as ColorPicker_Disabled from '@examples/color-picker/examples/disabled'
+import * as ColorPicker_FormUsage from '@examples/color-picker/examples/form-usage'
 import * as ColorPicker_Inline from '@examples/color-picker/examples/inline'
-import * as ColorPicker_OnChangeEnd from '@examples/color-picker/examples/on-change-end'
+import * as ColorPicker_InputOnly from '@examples/color-picker/examples/input-only'
+import * as ColorPicker_OpenControlled from '@examples/color-picker/examples/open-controlled'
 import * as ColorPicker_RootProvider from '@examples/color-picker/examples/root-provider'
 import * as ColorPicker_SliderOnly from '@examples/color-picker/examples/slider-only'
 import * as ColorPicker_SwatchOnly from '@examples/color-picker/examples/swatch-only'
+import * as ColorPicker_Swatches from '@examples/color-picker/examples/swatches'
+import * as ColorPicker_ValueSwatch from '@examples/color-picker/examples/value-swatch'
 import * as ColorPicker_WithField from '@examples/color-picker/examples/with-field'
-import * as ColorPicker_WithFormRegister from '@examples/color-picker/examples/with-form-register'
 import * as Combobox_AsyncSearch from '@examples/combobox/examples/async-search'
 import * as Combobox_AutoHighlight from '@examples/combobox/examples/auto-highlight'
 import * as Combobox_Basic from '@examples/combobox/examples/basic'
@@ -118,13 +118,20 @@ import * as Combobox_Virtualized from '@examples/combobox/examples/virtualized'
 import * as Combobox_WithField from '@examples/combobox/examples/with-field'
 import * as DatePicker_Basic from '@examples/date-picker/examples/basic'
 import * as DatePicker_Controlled from '@examples/date-picker/examples/controlled'
+import * as DatePicker_DefaultValue from '@examples/date-picker/examples/default-value'
+import * as DatePicker_DefaultView from '@examples/date-picker/examples/default-view'
 import * as DatePicker_FormatParse from '@examples/date-picker/examples/format-parse'
 import * as DatePicker_Inline from '@examples/date-picker/examples/inline'
+import * as DatePicker_Locale from '@examples/date-picker/examples/locale'
+import * as DatePicker_MinMax from '@examples/date-picker/examples/min-max'
 import * as DatePicker_MonthPicker from '@examples/date-picker/examples/month-picker'
 import * as DatePicker_MonthRange from '@examples/date-picker/examples/month-range'
+import * as DatePicker_MultiSelection from '@examples/date-picker/examples/multi-selection'
 import * as DatePicker_MultipleMonths from '@examples/date-picker/examples/multiple-months'
-import * as DatePicker_Range from '@examples/date-picker/examples/range'
+import * as DatePicker_Presets from '@examples/date-picker/examples/presets'
+import * as DatePicker_RangeSelection from '@examples/date-picker/examples/range-selection'
 import * as DatePicker_RootProvider from '@examples/date-picker/examples/root-provider'
+import * as DatePicker_Unavailable from '@examples/date-picker/examples/unavailable'
 import * as DatePicker_YearPickerRange from '@examples/date-picker/examples/year-picker-range'
 import * as DatePicker_YearPicker from '@examples/date-picker/examples/year-picker'
 import * as Dialog_AlertDialog from '@examples/dialog/examples/alert-dialog'
@@ -145,9 +152,12 @@ import * as DownloadTrigger_Basic from '@examples/download-trigger/examples/basi
 import * as DownloadTrigger_Svg from '@examples/download-trigger/examples/svg'
 import * as DownloadTrigger_WithPromise from '@examples/download-trigger/examples/with-promise'
 import * as Editable_Basic from '@examples/editable/examples/basic'
-import * as Editable_CustomControls from '@examples/editable/examples/custom-controls'
+import * as Editable_Context from '@examples/editable/examples/context'
+import * as Editable_Controlled from '@examples/editable/examples/controlled'
+import * as Editable_Controls from '@examples/editable/examples/controls'
 import * as Editable_DoubleClick from '@examples/editable/examples/double-click'
 import * as Editable_RootProvider from '@examples/editable/examples/root-provider'
+import * as Editable_Textarea from '@examples/editable/examples/textarea'
 import * as Editable_WithField from '@examples/editable/examples/with-field'
 import * as Field_CustomControl from '@examples/field/examples/custom-control'
 import * as Field_Disabled from '@examples/field/examples/disabled'
@@ -160,6 +170,7 @@ import * as Field_ShadowDom from '@examples/field/examples/shadow-dom'
 import * as Field_TextareaAutoresize from '@examples/field/examples/textarea-autoresize'
 import * as Field_Textarea from '@examples/field/examples/textarea'
 import * as Fieldset_Basic from '@examples/fieldset/examples/basic'
+import * as Fieldset_Disabled from '@examples/fieldset/examples/disabled'
 import * as Fieldset_Invalid from '@examples/fieldset/examples/invalid'
 import * as Fieldset_PhoneInput from '@examples/fieldset/examples/phone-input'
 import * as Fieldset_RootProvider from '@examples/fieldset/examples/root-provider'
@@ -169,18 +180,16 @@ import * as FileUpload_AcceptedFileTypes from '@examples/file-upload/examples/ac
 import * as FileUpload_Basic from '@examples/file-upload/examples/basic'
 import * as FileUpload_ClearTrigger from '@examples/file-upload/examples/clear-trigger'
 import * as FileUpload_DirectoryUpload from '@examples/file-upload/examples/directory-upload'
-import * as FileUpload_DragAndDrop from '@examples/file-upload/examples/drag-and-drop'
+import * as FileUpload_Dropzone from '@examples/file-upload/examples/dropzone'
 import * as FileUpload_ErrorHandling from '@examples/file-upload/examples/error-handling'
-import * as FileUpload_FileTransformations from '@examples/file-upload/examples/file-transformations'
-import * as FileUpload_FormRegister from '@examples/file-upload/examples/form-register'
-import * as FileUpload_FormSetValue from '@examples/file-upload/examples/form-set-value'
+import * as FileUpload_FormUsage from '@examples/file-upload/examples/form-usage'
 import * as FileUpload_InitialFiles from '@examples/file-upload/examples/initial-files'
 import * as FileUpload_MediaCapture from '@examples/file-upload/examples/media-capture'
+import * as FileUpload_PastingFiles from '@examples/file-upload/examples/pasting-files'
 import * as FileUpload_RejectedFiles from '@examples/file-upload/examples/rejected-files'
 import * as FileUpload_RootProvider from '@examples/file-upload/examples/root-provider'
-import * as FileUpload_Validation from '@examples/file-upload/examples/validation'
+import * as FileUpload_TransformFiles from '@examples/file-upload/examples/transform-files'
 import * as FileUpload_WithField from '@examples/file-upload/examples/with-field'
-import * as FileUpload_WithPaste from '@examples/file-upload/examples/with-paste'
 import * as FloatingPanel_AnchorPosition from '@examples/floating-panel/examples/anchor-position'
 import * as FloatingPanel_Basic from '@examples/floating-panel/examples/basic'
 import * as FloatingPanel_Context from '@examples/floating-panel/examples/context'
@@ -210,22 +219,33 @@ import * as Frame_InheritStyles from '@examples/frame/examples/inherit-styles'
 import * as Frame_Script from '@examples/frame/examples/script'
 import * as Frame_SrcDoc from '@examples/frame/examples/src-doc'
 import * as Highlight_Basic from '@examples/highlight/examples/basic'
+import * as Highlight_DynamicQuery from '@examples/highlight/examples/dynamic-query'
 import * as Highlight_ExactMatch from '@examples/highlight/examples/exact-match'
 import * as Highlight_IgnoreCase from '@examples/highlight/examples/ignore-case'
 import * as Highlight_MatchAll from '@examples/highlight/examples/match-all'
 import * as Highlight_Multiple from '@examples/highlight/examples/multiple'
-import * as Highlight_WithInput from '@examples/highlight/examples/with-input'
-import * as Highlight_WithRepeatingText from '@examples/highlight/examples/with-repeating-text'
+import * as Highlight_RepeatingText from '@examples/highlight/examples/repeating-text'
 import * as HoverCard_Basic from '@examples/hover-card/examples/basic'
+import * as HoverCard_Context from '@examples/hover-card/examples/context'
 import * as HoverCard_Controlled from '@examples/hover-card/examples/controlled'
+import * as HoverCard_Delay from '@examples/hover-card/examples/delay'
 import * as HoverCard_Positioning from '@examples/hover-card/examples/positioning'
-import * as HoverCard_RenderProp from '@examples/hover-card/examples/render-prop'
 import * as HoverCard_RootProvider from '@examples/hover-card/examples/root-provider'
+import * as ImageCropper_AspectRatio from '@examples/image-cropper/examples/aspect-ratio'
 import * as ImageCropper_Basic from '@examples/image-cropper/examples/basic'
 import * as ImageCropper_Circle from '@examples/image-cropper/examples/circle'
-import * as ImageCropper_Controlled from '@examples/image-cropper/examples/controlled'
+import * as ImageCropper_Context from '@examples/image-cropper/examples/context'
+import * as ImageCropper_ControlledZoom from '@examples/image-cropper/examples/controlled-zoom'
+import * as ImageCropper_CropPreview from '@examples/image-cropper/examples/crop-preview'
+import * as ImageCropper_Events from '@examples/image-cropper/examples/events'
 import * as ImageCropper_Fixed from '@examples/image-cropper/examples/fixed'
+import * as ImageCropper_Flip from '@examples/image-cropper/examples/flip'
+import * as ImageCropper_InitialCrop from '@examples/image-cropper/examples/initial-crop'
+import * as ImageCropper_MinMaxSize from '@examples/image-cropper/examples/min-max-size'
+import * as ImageCropper_Reset from '@examples/image-cropper/examples/reset'
 import * as ImageCropper_RootProvider from '@examples/image-cropper/examples/root-provider'
+import * as ImageCropper_Rotation from '@examples/image-cropper/examples/rotation'
+import * as ImageCropper_ZoomLimits from '@examples/image-cropper/examples/zoom-limits'
 import * as JsonTreeView_ArrayData from '@examples/json-tree-view/examples/array-data'
 import * as JsonTreeView_Basic from '@examples/json-tree-view/examples/basic'
 import * as JsonTreeView_Errors from '@examples/json-tree-view/examples/errors'
@@ -363,9 +383,7 @@ import * as RatingGroup_Basic from '@examples/rating-group/examples/basic'
 import * as RatingGroup_Controlled from '@examples/rating-group/examples/controlled'
 import * as RatingGroup_Disabled from '@examples/rating-group/examples/disabled'
 import * as RatingGroup_FormUsage from '@examples/rating-group/examples/form-usage'
-import * as RatingGroup_HalfRatings from '@examples/rating-group/examples/half-ratings'
-import * as RatingGroup_InitialValue from '@examples/rating-group/examples/initial-value'
-import * as RatingGroup_ReadOnly from '@examples/rating-group/examples/read-only'
+import * as RatingGroup_HalfStar from '@examples/rating-group/examples/half-star'
 import * as RatingGroup_RootProvider from '@examples/rating-group/examples/root-provider'
 import * as RatingGroup_WithField from '@examples/rating-group/examples/with-field'
 import * as ScrollArea_Basic from '@examples/scroll-area/examples/basic'
@@ -458,8 +476,8 @@ import * as TagsInput_WithCombobox from '@examples/tags-input/examples/with-comb
 import * as TagsInput_WithField from '@examples/tags-input/examples/with-field'
 import * as Timer_Basic from '@examples/timer/examples/basic'
 import * as Timer_Countdown from '@examples/timer/examples/countdown'
-import * as Timer_CustomInterval from '@examples/timer/examples/custom-interval'
 import * as Timer_Events from '@examples/timer/examples/events'
+import * as Timer_Interval from '@examples/timer/examples/interval'
 import * as Timer_Pomodoro from '@examples/timer/examples/pomodoro'
 import * as Timer_RootProvider from '@examples/timer/examples/root-provider'
 import * as Toast_Action from '@examples/toast/examples/action'
@@ -488,9 +506,16 @@ import * as Tooltip_Delay from '@examples/tooltip/examples/delay'
 import * as Tooltip_Positioning from '@examples/tooltip/examples/positioning'
 import * as Tooltip_RootProvider from '@examples/tooltip/examples/root-provider'
 import * as Tooltip_WithinFixed from '@examples/tooltip/examples/within-fixed'
+import * as Tour_AsyncStep from '@examples/tour/examples/async-step'
 import * as Tour_Basic from '@examples/tour/examples/basic'
-import * as Tour_Steps from '@examples/tour/examples/steps'
-import * as Tour_Tour from '@examples/tour/examples/tour'
+import * as Tour_Events from '@examples/tour/examples/events'
+import * as Tour_KeyboardNavigation from '@examples/tour/examples/keyboard-navigation'
+import * as Tour_MixedTypes from '@examples/tour/examples/mixed-types'
+import * as Tour_ProgressBar from '@examples/tour/examples/progress-bar'
+import * as Tour_SkipTour from '@examples/tour/examples/skip-tour'
+import * as Tour_WaitForClick from '@examples/tour/examples/wait-for-click'
+import * as Tour_WaitForElement from '@examples/tour/examples/wait-for-element'
+import * as Tour_WaitForInput from '@examples/tour/examples/wait-for-input'
 import * as TreeView_AsyncLoading from '@examples/tree-view/examples/async-loading'
 import * as TreeView_Basic from '@examples/tree-view/examples/basic'
 import * as TreeView_CheckboxTree from '@examples/tree-view/examples/checkbox-tree'
@@ -505,6 +530,7 @@ import * as TreeView_Links from '@examples/tree-view/examples/links'
 import * as TreeView_Mutation from '@examples/tree-view/examples/mutation'
 import * as TreeView_RenameNode from '@examples/tree-view/examples/rename-node'
 import * as TreeView_RootProvider from '@examples/tree-view/examples/root-provider'
+import * as TreeView_Virtualized from '@examples/tree-view/examples/virtualized'
 import * as Environment_Basic from '../../../packages/react/src/providers/environment/examples/basic'
 import * as Environment_Setup from '../../../packages/react/src/providers/environment/examples/setup'
 import * as Environment_ShadowRoot from '../../../packages/react/src/providers/environment/examples/shadow-root'
@@ -549,12 +575,13 @@ const exampleModules: Record<string, ExampleModule> = {
   'carousel/autoplay': Carousel_Autoplay,
   'carousel/basic': Carousel_Basic,
   'carousel/controlled': Carousel_Controlled,
-  'carousel/custom-indicator': Carousel_CustomIndicator,
   'carousel/dynamic-slides': Carousel_DynamicSlides,
   'carousel/pause-on-hover': Carousel_PauseOnHover,
   'carousel/root-provider': Carousel_RootProvider,
   'carousel/scroll-to': Carousel_ScrollTo,
   'carousel/slides-per-page': Carousel_SlidesPerPage,
+  'carousel/spacing': Carousel_Spacing,
+  'carousel/thumbnail-indicator': Carousel_ThumbnailIndicator,
   'carousel/variable-size': Carousel_VariableSize,
   'carousel/vertical': Carousel_Vertical,
   'checkbox/basic': Checkbox_Basic,
@@ -580,21 +607,16 @@ const exampleModules: Record<string, ExampleModule> = {
   'clipboard/context': Clipboard_Context,
   'clipboard/controlled': Clipboard_Controlled,
   'clipboard/copy-status': Clipboard_CopyStatus,
-  'clipboard/custom-timeout': Clipboard_CustomTimeout,
-  'clipboard/programmatic': Clipboard_Programmatic,
   'clipboard/root-provider': Clipboard_RootProvider,
+  'clipboard/timeout': Clipboard_Timeout,
   'clipboard/value-text': Clipboard_ValueText,
   'collapsible/basic': Collapsible_Basic,
   'collapsible/disabled': Collapsible_Disabled,
   'collapsible/initial-open': Collapsible_InitialOpen,
-  'collapsible/lazy-mount-and-unmount-on-exit': Collapsible_LazyMountAndUnmountOnExit,
   'collapsible/lazy-mount': Collapsible_LazyMount,
-  'collapsible/nested-collapsible': Collapsible_NestedCollapsible,
-  'collapsible/on-exit-complete': Collapsible_OnExitComplete,
+  'collapsible/nested': Collapsible_Nested,
   'collapsible/partial-collapse': Collapsible_PartialCollapse,
-  'collapsible/programmatic-open': Collapsible_ProgrammaticOpen,
   'collapsible/root-provider': Collapsible_RootProvider,
-  'collapsible/unmount-on-exit': Collapsible_UnmountOnExit,
   'collection/async-list/dependencies': CollectionAsyncList_Dependencies,
   'collection/async-list/filter': CollectionAsyncList_Filter,
   'collection/async-list/infinite-loading': CollectionAsyncList_InfiniteLoading,
@@ -606,13 +628,17 @@ const exampleModules: Record<string, ExampleModule> = {
   'collection/list-selection/range': CollectionListSelection_Range,
   'color-picker/basic': ColorPicker_Basic,
   'color-picker/controlled': ColorPicker_Controlled,
+  'color-picker/disabled': ColorPicker_Disabled,
+  'color-picker/form-usage': ColorPicker_FormUsage,
   'color-picker/inline': ColorPicker_Inline,
-  'color-picker/on-change-end': ColorPicker_OnChangeEnd,
+  'color-picker/input-only': ColorPicker_InputOnly,
+  'color-picker/open-controlled': ColorPicker_OpenControlled,
   'color-picker/root-provider': ColorPicker_RootProvider,
   'color-picker/slider-only': ColorPicker_SliderOnly,
   'color-picker/swatch-only': ColorPicker_SwatchOnly,
+  'color-picker/swatches': ColorPicker_Swatches,
+  'color-picker/value-swatch': ColorPicker_ValueSwatch,
   'color-picker/with-field': ColorPicker_WithField,
-  'color-picker/with-form-register': ColorPicker_WithFormRegister,
   'combobox/async-search': Combobox_AsyncSearch,
   'combobox/auto-highlight': Combobox_AutoHighlight,
   'combobox/basic': Combobox_Basic,
@@ -632,13 +658,20 @@ const exampleModules: Record<string, ExampleModule> = {
   'combobox/with-field': Combobox_WithField,
   'date-picker/basic': DatePicker_Basic,
   'date-picker/controlled': DatePicker_Controlled,
+  'date-picker/default-value': DatePicker_DefaultValue,
+  'date-picker/default-view': DatePicker_DefaultView,
   'date-picker/format-parse': DatePicker_FormatParse,
   'date-picker/inline': DatePicker_Inline,
+  'date-picker/locale': DatePicker_Locale,
+  'date-picker/min-max': DatePicker_MinMax,
   'date-picker/month-picker': DatePicker_MonthPicker,
   'date-picker/month-range': DatePicker_MonthRange,
+  'date-picker/multi-selection': DatePicker_MultiSelection,
   'date-picker/multiple-months': DatePicker_MultipleMonths,
-  'date-picker/range': DatePicker_Range,
+  'date-picker/presets': DatePicker_Presets,
+  'date-picker/range-selection': DatePicker_RangeSelection,
   'date-picker/root-provider': DatePicker_RootProvider,
+  'date-picker/unavailable': DatePicker_Unavailable,
   'date-picker/year-picker-range': DatePicker_YearPickerRange,
   'date-picker/year-picker': DatePicker_YearPicker,
   'dialog/alert-dialog': Dialog_AlertDialog,
@@ -659,9 +692,12 @@ const exampleModules: Record<string, ExampleModule> = {
   'download-trigger/svg': DownloadTrigger_Svg,
   'download-trigger/with-promise': DownloadTrigger_WithPromise,
   'editable/basic': Editable_Basic,
-  'editable/custom-controls': Editable_CustomControls,
+  'editable/context': Editable_Context,
+  'editable/controlled': Editable_Controlled,
+  'editable/controls': Editable_Controls,
   'editable/double-click': Editable_DoubleClick,
   'editable/root-provider': Editable_RootProvider,
+  'editable/textarea': Editable_Textarea,
   'editable/with-field': Editable_WithField,
   'field/custom-control': Field_CustomControl,
   'field/disabled': Field_Disabled,
@@ -674,6 +710,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'field/textarea-autoresize': Field_TextareaAutoresize,
   'field/textarea': Field_Textarea,
   'fieldset/basic': Fieldset_Basic,
+  'fieldset/disabled': Fieldset_Disabled,
   'fieldset/invalid': Fieldset_Invalid,
   'fieldset/phone-input': Fieldset_PhoneInput,
   'fieldset/root-provider': Fieldset_RootProvider,
@@ -683,18 +720,16 @@ const exampleModules: Record<string, ExampleModule> = {
   'file-upload/basic': FileUpload_Basic,
   'file-upload/clear-trigger': FileUpload_ClearTrigger,
   'file-upload/directory-upload': FileUpload_DirectoryUpload,
-  'file-upload/drag-and-drop': FileUpload_DragAndDrop,
+  'file-upload/dropzone': FileUpload_Dropzone,
   'file-upload/error-handling': FileUpload_ErrorHandling,
-  'file-upload/file-transformations': FileUpload_FileTransformations,
-  'file-upload/form-register': FileUpload_FormRegister,
-  'file-upload/form-set-value': FileUpload_FormSetValue,
+  'file-upload/form-usage': FileUpload_FormUsage,
   'file-upload/initial-files': FileUpload_InitialFiles,
   'file-upload/media-capture': FileUpload_MediaCapture,
+  'file-upload/pasting-files': FileUpload_PastingFiles,
   'file-upload/rejected-files': FileUpload_RejectedFiles,
   'file-upload/root-provider': FileUpload_RootProvider,
-  'file-upload/validation': FileUpload_Validation,
+  'file-upload/transform-files': FileUpload_TransformFiles,
   'file-upload/with-field': FileUpload_WithField,
-  'file-upload/with-paste': FileUpload_WithPaste,
   'floating-panel/anchor-position': FloatingPanel_AnchorPosition,
   'floating-panel/basic': FloatingPanel_Basic,
   'floating-panel/context': FloatingPanel_Context,
@@ -724,22 +759,33 @@ const exampleModules: Record<string, ExampleModule> = {
   'frame/script': Frame_Script,
   'frame/src-doc': Frame_SrcDoc,
   'highlight/basic': Highlight_Basic,
+  'highlight/dynamic-query': Highlight_DynamicQuery,
   'highlight/exact-match': Highlight_ExactMatch,
   'highlight/ignore-case': Highlight_IgnoreCase,
   'highlight/match-all': Highlight_MatchAll,
   'highlight/multiple': Highlight_Multiple,
-  'highlight/with-input': Highlight_WithInput,
-  'highlight/with-repeating-text': Highlight_WithRepeatingText,
+  'highlight/repeating-text': Highlight_RepeatingText,
   'hover-card/basic': HoverCard_Basic,
+  'hover-card/context': HoverCard_Context,
   'hover-card/controlled': HoverCard_Controlled,
+  'hover-card/delay': HoverCard_Delay,
   'hover-card/positioning': HoverCard_Positioning,
-  'hover-card/render-prop': HoverCard_RenderProp,
   'hover-card/root-provider': HoverCard_RootProvider,
+  'image-cropper/aspect-ratio': ImageCropper_AspectRatio,
   'image-cropper/basic': ImageCropper_Basic,
   'image-cropper/circle': ImageCropper_Circle,
-  'image-cropper/controlled': ImageCropper_Controlled,
+  'image-cropper/context': ImageCropper_Context,
+  'image-cropper/controlled-zoom': ImageCropper_ControlledZoom,
+  'image-cropper/crop-preview': ImageCropper_CropPreview,
+  'image-cropper/events': ImageCropper_Events,
   'image-cropper/fixed': ImageCropper_Fixed,
+  'image-cropper/flip': ImageCropper_Flip,
+  'image-cropper/initial-crop': ImageCropper_InitialCrop,
+  'image-cropper/min-max-size': ImageCropper_MinMaxSize,
+  'image-cropper/reset': ImageCropper_Reset,
   'image-cropper/root-provider': ImageCropper_RootProvider,
+  'image-cropper/rotation': ImageCropper_Rotation,
+  'image-cropper/zoom-limits': ImageCropper_ZoomLimits,
   'json-tree-view/array-data': JsonTreeView_ArrayData,
   'json-tree-view/basic': JsonTreeView_Basic,
   'json-tree-view/errors': JsonTreeView_Errors,
@@ -877,9 +923,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'rating-group/controlled': RatingGroup_Controlled,
   'rating-group/disabled': RatingGroup_Disabled,
   'rating-group/form-usage': RatingGroup_FormUsage,
-  'rating-group/half-ratings': RatingGroup_HalfRatings,
-  'rating-group/initial-value': RatingGroup_InitialValue,
-  'rating-group/read-only': RatingGroup_ReadOnly,
+  'rating-group/half-star': RatingGroup_HalfStar,
   'rating-group/root-provider': RatingGroup_RootProvider,
   'rating-group/with-field': RatingGroup_WithField,
   'scroll-area/basic': ScrollArea_Basic,
@@ -972,8 +1016,8 @@ const exampleModules: Record<string, ExampleModule> = {
   'tags-input/with-field': TagsInput_WithField,
   'timer/basic': Timer_Basic,
   'timer/countdown': Timer_Countdown,
-  'timer/custom-interval': Timer_CustomInterval,
   'timer/events': Timer_Events,
+  'timer/interval': Timer_Interval,
   'timer/pomodoro': Timer_Pomodoro,
   'timer/root-provider': Timer_RootProvider,
   'toast/action': Toast_Action,
@@ -1002,9 +1046,16 @@ const exampleModules: Record<string, ExampleModule> = {
   'tooltip/positioning': Tooltip_Positioning,
   'tooltip/root-provider': Tooltip_RootProvider,
   'tooltip/within-fixed': Tooltip_WithinFixed,
+  'tour/async-step': Tour_AsyncStep,
   'tour/basic': Tour_Basic,
-  'tour/steps': Tour_Steps,
-  'tour/tour': Tour_Tour,
+  'tour/events': Tour_Events,
+  'tour/keyboard-navigation': Tour_KeyboardNavigation,
+  'tour/mixed-types': Tour_MixedTypes,
+  'tour/progress-bar': Tour_ProgressBar,
+  'tour/skip-tour': Tour_SkipTour,
+  'tour/wait-for-click': Tour_WaitForClick,
+  'tour/wait-for-element': Tour_WaitForElement,
+  'tour/wait-for-input': Tour_WaitForInput,
   'tree-view/async-loading': TreeView_AsyncLoading,
   'tree-view/basic': TreeView_Basic,
   'tree-view/checkbox-tree': TreeView_CheckboxTree,
@@ -1019,6 +1070,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'tree-view/mutation': TreeView_Mutation,
   'tree-view/rename-node': TreeView_RenameNode,
   'tree-view/root-provider': TreeView_RootProvider,
+  'tree-view/virtualized': TreeView_Virtualized,
   'environment/basic': Environment_Basic,
   'environment/setup': Environment_Setup,
   'environment/shadow-root': Environment_ShadowRoot,
