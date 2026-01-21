@@ -22,9 +22,21 @@ Learn how to use the `DatePicker` component in your project. Let's take a look a
 
 ### Controlled
 
-Use the `value` and `onValueChange` prop to control the date picker's value.
+Use the `value` and `onValueChange` props to control the date picker's value programmatically.
 
 <Example id="controlled" />
+
+### Default Value
+
+Use the `defaultValue` prop with `parseDate` to set the initial date value.
+
+<Example id="default-value" />
+
+### Default View
+
+Use the `defaultView` prop to set which view (day, month, or year) the calendar opens to initially.
+
+<Example id="default-view" />
 
 ### Range Selection
 
@@ -33,17 +45,63 @@ To create a date picker that allows a range selection, you need to:
 - Set the `selectionMode` prop to `range`.
 - Render multiple inputs with the `index` prop set to `0` and `1`.
 
-<Example id="range" />
+<Example id="range-selection" />
+
+### Multi Selection
+
+Use the `selectionMode="multiple"` prop to allow selecting multiple dates. This example also shows how to display
+selected dates as removable tags.
+
+<Example id="multi-selection" />
 
 ### Multiple Months
 
-To create a date picker that allows multiple months, you need to:
+To create a date picker that displays multiple months side by side:
 
 - Set the `numOfMonths` prop to the number of months you want to display.
-- Use the `datePicker.getOffset({ months: 1 })` prop to offset the date picker to the next month.
-- Render a `DatePicker.RangeText` component to display the range text.
+- Use the `datePicker.getOffset({ months: 1 })` to get data for the next month.
 
 <Example id="multiple-months" />
+
+### Presets
+
+Use the `DatePicker.PresetTrigger` component to add quick-select preset options like "Last 7 days" or "This month".
+
+<Example id="presets" />
+
+### Min and Max
+
+Use the `min` and `max` props with `parseDate` to restrict the selectable date range. Dates outside this range will be
+disabled.
+
+<Example id="min-max" />
+
+### Unavailable Dates
+
+Use the `isDateUnavailable` prop to mark specific dates as unavailable. This example disables weekends.
+
+<Example id="unavailable" />
+
+### Locale
+
+Use the `locale` prop to set the language and formatting, and `startOfWeek` to set the first day of the week (0 =
+Sunday, 1 = Monday, etc.).
+
+<Example id="locale" />
+
+### Month Picker
+
+Create a month-only picker by setting `defaultView="month"` and `minView="month"`. Use custom `format` and `parse`
+functions to handle month/year input format.
+
+<Example id="month-picker" />
+
+### Year Picker
+
+Create a year-only picker by setting `defaultView="year"` and `minView="year"`. Use custom `format` and `parse`
+functions to handle year-only input format.
+
+<Example id="year-picker" />
 
 ### Inline
 
@@ -71,8 +129,7 @@ This allows you to have maximum control over the date picker programmatically.
 
 ### Context
 
-These are the properties available when using `UdateUpicker.Context`, `useUdateUpickerContext` hook or `useUdateUpicker`
-hook.
+These are the properties available when using `DatePicker.Context`, `useDatePickerContext` hook or `useDatePicker` hook.
 
 <ContextType id="date-picker" />
 
