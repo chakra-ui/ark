@@ -61,6 +61,7 @@
   border-radius: 6px;
   position: relative;
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+  z-index: 50;
 
   &[data-state='open'] {
     animation: scale-fade-in 0.15s ease-in-out;
