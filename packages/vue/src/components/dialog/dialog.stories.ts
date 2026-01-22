@@ -13,6 +13,7 @@ import NestedExample from './examples/nested.vue'
 import NonModalExample from './examples/non-modal.vue'
 import RenderFnExample from './examples/render-fn.vue'
 import RootProviderExample from './examples/root-provider.vue'
+import OnExitCompleteExample from './examples/on-exit-complete.vue'
 
 const meta: Meta = {
   title: 'Components / Dialog',
@@ -107,6 +108,13 @@ export const RenderFn = {
 export const RootProvider = {
   render: () => ({
     components: { Component: RootProviderExample },
+    template: '<Component />',
+  }),
+}
+
+export const OnExitComplete = {
+  render: () => ({
+    components: { Component: OnExitCompleteExample },
     template: '<Component />',
   }),
 }

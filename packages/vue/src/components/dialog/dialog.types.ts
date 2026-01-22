@@ -117,4 +117,8 @@ export type RootEmits = {
    * The callback fired when the open state changes.
    */
   'update:open': [open: boolean]
+  /**
+   * Function called when the animation ends in the closed state
+   */
+  exitComplete: []
 }

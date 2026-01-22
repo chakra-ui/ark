@@ -1,20 +1,24 @@
 import * as presence from '@zag-js/presence'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { type MaybeRef, type VNodeRef, computed, ref, toValue, watch } from 'vue'
-import type { EmitFn, Optional } from '../../types'
+import type { EmitFn } from '../../types'
 import type { RootEmits } from './presence.types'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 
-export interface UsePresenceProps extends Optional<presence.Props, 'present'> {
+/**
+ * because [@vue/compiler-sfc] runtime error: Failed to resolve extends base type.
+ * we copy the props from @zag-js/presence props into UsePresenceProps
+ * using @vue-ignore will let props fall through to the $attrs
+ */
+export interface UsePresenceProps extends RenderStrategyProps {
   /**
-   * Whether to enable lazy mounting
-   * @default false
+   * Whether the node is present (controlled by the user)
    */
-  lazyMount?: boolean
+  present?: boolean | undefined
   /**
-   * Whether to unmount on exit.
-   * @default false
+   * Whether to synchronize the present change immediately or defer it to the next frame
    */
-  unmountOnExit?: boolean
+  immediate?: boolean | undefined
   /**
    * Whether to allow the initial presence animation.
    * @default false
