@@ -5,7 +5,7 @@ import type { UsePresenceProps } from '../presence'
 import { PresenceProvider, usePresence } from '../presence'
 import { splitPresenceProps } from '../presence/split-presence-props'
 
-export interface DialogRootBaseProps extends RootProps, /* @vue-ignore */ UsePresenceProps {}
+export interface DialogRootBaseProps extends RootProps, UsePresenceProps {}
 export interface DialogRootProps extends DialogRootBaseProps {}
 export interface DialogRootEmits extends RootEmits {}
 </script>
