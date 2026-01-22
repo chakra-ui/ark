@@ -12,7 +12,7 @@ const bottomSheet = useBottomSheet({
 
 <template>
   <div class="stack">
-    <div class="stack-h">
+    <div class="hstack">
       <button :class="button.Root" @click="bottomSheet.setOpen(true)">Open via API</button>
       <button :class="button.Root" @click="bottomSheet.setActiveSnapPoint(0.25)">Set to 25%</button>
       <button :class="button.Root" @click="bottomSheet.setActiveSnapPoint(1)">Set to 100%</button>

@@ -11,7 +11,7 @@
 </script>
 
 <div class="stack">
-  <div class="stack-h">
+  <div class="hstack">
     <button class={button.Root} onclick={() => bottomSheet().setOpen(true)}>Open via API</button>
     <button class={button.Root} onclick={() => bottomSheet().setActiveSnapPoint(0.25)}>Set to 25%</button>
     <button class={button.Root} onclick={() => bottomSheet().setActiveSnapPoint(1)}>Set to 100%</button>

@@ -11,7 +11,7 @@ export const RootProvider = () => {
 
   return (
     <div class="stack">
-      <div class="stack-h">
+      <div class="hstack">
         <button class={button.Root} onClick={() => bottomSheet().setOpen(true)}>
           Open via API
         </button>
