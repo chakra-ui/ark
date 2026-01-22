@@ -1,6 +1,8 @@
-<script setup>
-import { BottomSheet } from '@ark-ui/vue/bottom-sheet'
-import { useBottomSheet } from '@ark-ui/vue/bottom-sheet'
+<script setup lang="ts">
+import { BottomSheet, useBottomSheet } from '@ark-ui/vue/bottom-sheet'
+import { XIcon } from 'lucide-vue-next'
+import button from 'styles/button.module.css'
+import styles from 'styles/bottom-sheet.module.css'
 
 const bottomSheet = useBottomSheet({
   defaultActiveSnapPoint: 0.5,
@@ -9,23 +11,26 @@ const bottomSheet = useBottomSheet({
 </script>
 
 <template>
-  <div>
-    <button @click="bottomSheet.setOpen(true)">Open via API</button>
-    <button @click="bottomSheet.setActiveSnapPoint(0.25)">Set to 25%</button>
-    <button @click="bottomSheet.setActiveSnapPoint(1)">Set to 100%</button>
-    <p>Current snap point: {{ bottomSheet.activeSnapPoint }}</p>
-  </div>
+  <div class="stack">
+    <div class="stack-h">
+      <button :class="button.Root" @click="bottomSheet.setOpen(true)">Open via API</button>
+      <button :class="button.Root" @click="bottomSheet.setActiveSnapPoint(0.25)">Set to 25%</button>
+      <button :class="button.Root" @click="bottomSheet.setActiveSnapPoint(1)">Set to 100%</button>
+    </div>
 
-  <BottomSheet.RootProvider :value="bottomSheet">
-    <BottomSheet.Backdrop />
-    <BottomSheet.Content>
-      <BottomSheet.Grabber>
-        <BottomSheet.GrabberIndicator />
-      </BottomSheet.Grabber>
-      <BottomSheet.Title>Bottom Sheet with RootProvider</BottomSheet.Title>
-      <p>This bottom sheet is controlled via the useBottomSheet. hook and RootProvider.</p>
-      <p>Active snap point: {{ bottomSheet.activeSnapPoint }}</p>
-      <button @click="bottomSheet.setOpen(false)">Close</button>
-    </BottomSheet.Content>
-  </BottomSheet.RootProvider>
+    <BottomSheet.RootProvider :value="bottomSheet">
+      <BottomSheet.Backdrop :class="styles.Backdrop" />
+      <BottomSheet.Content :class="styles.Content">
+        <BottomSheet.Grabber :class="styles.Grabber">
+          <BottomSheet.GrabberIndicator :class="styles.GrabberIndicator" />
+        </BottomSheet.Grabber>
+        <BottomSheet.Title :class="styles.Title">Bottom Sheet with RootProvider</BottomSheet.Title>
+        <p>This bottom sheet is controlled via the useBottomSheet hook and RootProvider.</p>
+        <p>Active snap point: {{ bottomSheet.activeSnapPoint }}</p>
+        <BottomSheet.CloseTrigger :class="styles.CloseTrigger">
+          <XIcon />
+        </BottomSheet.CloseTrigger>
+      </BottomSheet.Content>
+    </BottomSheet.RootProvider>
+  </div>
 </template>
