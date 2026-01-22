@@ -1,20 +1,17 @@
 <script setup lang="ts">
 import { AngleSlider } from '@ark-ui/vue/angle-slider'
-import { ref } from 'vue'
 import styles from 'styles/angle-slider.module.css'
-
-const value = ref(45)
 </script>
 
 <template>
-  <AngleSlider.Root :class="styles.Root" :model-value="value" @value-change="(e) => (value = e.value)">
+  <AngleSlider.Root :class="styles.Root" disabled :default-value="45">
     <AngleSlider.Label :class="styles.Label">Rotation</AngleSlider.Label>
     <AngleSlider.Control :class="styles.Control">
       <AngleSlider.MarkerGroup :class="styles.MarkerGroup">
         <AngleSlider.Marker
-          v-for="v in [0, 45, 90, 135, 180, 225, 270, 315]"
-          :key="v"
-          :value="v"
+          v-for="value in [0, 45, 90, 135, 180, 225, 270, 315]"
+          :key="value"
+          :value="value"
           :class="styles.Marker"
         />
       </AngleSlider.MarkerGroup>

@@ -3,8 +3,12 @@
   import styles from 'styles/angle-slider.module.css'
 </script>
 
-<AngleSlider.Root class={styles.Root} step={15}>
-  <AngleSlider.Label class={styles.Label}>15 Step</AngleSlider.Label>
+<AngleSlider.Root class={styles.Root}>
+  <AngleSlider.Context>
+    {#snippet render(context)}
+      <AngleSlider.Label class={styles.Label}>{context().value} degrees</AngleSlider.Label>
+    {/snippet}
+  </AngleSlider.Context>
   <AngleSlider.Control class={styles.Control}>
     <AngleSlider.MarkerGroup class={styles.MarkerGroup}>
       {#each [0, 45, 90, 135, 180, 225, 270, 315] as value}

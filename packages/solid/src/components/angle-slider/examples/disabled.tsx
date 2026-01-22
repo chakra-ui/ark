@@ -1,12 +1,10 @@
 import { AngleSlider } from '@ark-ui/solid/angle-slider'
-import { For, createSignal } from 'solid-js'
+import { For } from 'solid-js'
 import styles from 'styles/angle-slider.module.css'
 
-export const Controlled = () => {
-  const [value, setValue] = createSignal(45)
-
+export const Disabled = () => {
   return (
-    <AngleSlider.Root class={styles.Root} value={value()} onValueChange={(e) => setValue(e.value)}>
+    <AngleSlider.Root class={styles.Root} disabled defaultValue={45}>
       <AngleSlider.Label class={styles.Label}>Rotation</AngleSlider.Label>
       <AngleSlider.Control class={styles.Control}>
         <AngleSlider.MarkerGroup class={styles.MarkerGroup}>
