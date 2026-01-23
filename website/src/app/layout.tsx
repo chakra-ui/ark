@@ -26,16 +26,11 @@ export const metadata: Metadata = {
   description,
   keywords: ['react', 'solid', 'vue', 'svelte', 'design systems', 'headless', 'components', 'library'],
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    description,
-    images: ['/opengraph-image.png'],
+    images: '/og-image.png',
   },
   twitter: {
     card: 'summary_large_image',
     creator: '@ark_ui_',
-    description,
-    images: ['/twitter-image.png'],
   },
 }
 
