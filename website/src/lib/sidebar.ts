@@ -18,14 +18,16 @@ export interface SidebarGroupWithPages {
   items: Pages[]
 }
 
-const pageMap = new Map(pages.map((page) => [page.id, page]))
+const findPageById = (id: string): Pages | undefined => {
+  return pages.find((p) => p.id === id && p.framework === '*') ?? pages.find((p) => p.id === id)
+}
 
 export const getSidebarGroups = (): SidebarGroup[] => {
   return sidebarConfig
     .map((group) => {
       const items: SidebarItem[] = []
       for (const item of group.items) {
-        const page = pageMap.get(item.id)
+        const page = findPageById(item.id)
         if (page) {
           items.push({
             id: page.id,
@@ -46,7 +48,7 @@ export const getSidebarGroupsWithPages = (): SidebarGroupWithPages[] => {
     .map((group) => {
       const items: Pages[] = []
       for (const item of group.items) {
-        const page = pageMap.get(item.id)
+        const page = findPageById(item.id)
         if (page) {
           items.push(page)
         }

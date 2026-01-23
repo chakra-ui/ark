@@ -4,16 +4,14 @@ import { type Pages, pages } from '.velite'
 import { getSidebarGroupsWithPages } from './sidebar'
 
 const orderedPages = getSidebarGroupsWithPages().flatMap((group) => group.items)
-const pageMap = new Map(pages.map((page) => [page.slug, page]))
 
 export function getPageBySlug(slug: string[], framework?: string): Pages | undefined {
   const slugStr = slug.join('/')
-  const page = pageMap.get(slugStr)
-  if (!page) return undefined
-  if (framework && page.framework !== '*' && page.framework !== framework) {
-    return undefined
-  }
-  return page
+  return pages.find((page) => {
+    if (page.slug !== slugStr) return false
+    if (!framework) return true
+    return page.framework === '*' || page.framework === framework
+  })
 }
 
 export interface NavItem {
