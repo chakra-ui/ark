@@ -4,6 +4,7 @@ import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useNavigationMenuContext } from './use-navigation-menu-context'
+import { NavigationMenuViewportPropsProvider } from './use-navigation-menu-viewport-props-context'
 
 export interface NavigationMenuViewportPositionerBaseProps extends ViewportProps, PolymorphicProps {}
 export interface NavigationMenuViewportPositionerProps
@@ -13,11 +14,15 @@ const splitViewportProps = createSplitProps<ViewportProps>()
 
 export const NavigationMenuViewportPositioner = forwardRef<HTMLDivElement, NavigationMenuViewportPositionerProps>(
   (props, ref) => {
-    const [positionerProps, localProps] = splitViewportProps(props, ['align'])
+    const [viewportProps, localProps] = splitViewportProps(props, ['align'])
     const navigationMenu = useNavigationMenuContext()
-    const mergedProps = mergeProps(navigationMenu.getViewportPositionerProps(positionerProps), localProps)
+    const mergedProps = mergeProps(navigationMenu.getViewportPositionerProps(viewportProps), localProps)
 
-    return <ark.div {...mergedProps} ref={ref} />
+    return (
+      <NavigationMenuViewportPropsProvider value={viewportProps}>
+        <ark.div {...mergedProps} ref={ref} />
+      </NavigationMenuViewportPropsProvider>
+    )
   },
 )
 

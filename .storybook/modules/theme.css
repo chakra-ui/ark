@@ -30,6 +30,14 @@
   --demo-bg-thumb: white;
   --demo-bg-checkbox: white;
 
+  /* Shadow tokens (soft, modern shadows) */
+  --demo-shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --demo-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08);
+  --demo-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  --demo-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+  --demo-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.04);
+  --demo-shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+
   /* JSON tree view */
   --demo-json-string: #c9453b;
   --demo-json-number: #0550ae;
@@ -69,6 +77,14 @@
   --demo-bg-popover: #111110;
   --demo-bg-thumb: #111110;
   --demo-bg-checkbox: #111110;
+
+  /* Shadow tokens dark mode (slightly higher opacity for visibility) */
+  --demo-shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.15);
+  --demo-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.2), 0 1px 2px -1px rgb(0 0 0 / 0.15);
+  --demo-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.2), 0 2px 4px -2px rgb(0 0 0 / 0.12);
+  --demo-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.2), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --demo-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.25), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --demo-shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.35);
 
   /* JSON tree view dark mode */
   --demo-json-string: #ff7b72;

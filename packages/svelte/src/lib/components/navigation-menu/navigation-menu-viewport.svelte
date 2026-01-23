@@ -1,8 +1,7 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { ViewportProps } from '@zag-js/navigation-menu'
 
-  export interface NavigationMenuViewportBaseProps extends ViewportProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface NavigationMenuViewportBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface NavigationMenuViewportProps extends Assign<HTMLProps<'div'>, NavigationMenuViewportBaseProps> {}
 </script>
 
@@ -11,19 +10,18 @@
   import { Ark } from '../factory'
   import { usePresence } from '../presence'
   import { useNavigationMenuContext } from './use-navigation-menu-context'
+  import { getNavigationMenuViewportPropsContext } from './use-navigation-menu-viewport-props-context'
   import { useRenderStrategyPropsContext } from '$lib/utils/render-strategy'
-  import { createSplitProps } from '$lib/utils/create-split-props'
 
   let { ref = $bindable(null), ...props }: NavigationMenuViewportProps = $props()
 
-  const splitViewportProps = createSplitProps<ViewportProps>()
-  const [viewportProps, localProps] = $derived(splitViewportProps(props, ['align']))
+  const viewportPropsContext = getNavigationMenuViewportPropsContext()
 
   const navigationMenu = useNavigationMenuContext()
   const renderStrategyProps = useRenderStrategyPropsContext()
   const presence = usePresence(() => ({ ...renderStrategyProps, present: navigationMenu().open }))
   const mergedProps = $derived(
-    mergeProps(navigationMenu().getViewportProps(viewportProps), presence().getPresenceProps(), localProps),
+    mergeProps(navigationMenu().getViewportProps(viewportPropsContext?.()), presence().getPresenceProps(), props),
   )
 
   function setNode(node: Element | null) {

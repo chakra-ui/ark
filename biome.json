@@ -20,7 +20,8 @@
       "a11y": {
         "useButtonType": "off",
         "noLabelWithoutControl": "off",
-        "useSemanticElements": "off"
+        "useSemanticElements": "off",
+        "useValidAnchor": "off"
       },
       "style": {
         "useConst": "off"

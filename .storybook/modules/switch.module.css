@@ -54,7 +54,7 @@
   height: 1.25rem;
   background: white;
   border-radius: 9999px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--demo-shadow-sm);
   transition: transform 0.15s ease;
 
   &[data-state='checked'] {

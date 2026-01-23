@@ -2,8 +2,9 @@ import { NavigationMenu } from '@ark-ui/react/navigation-menu'
 import { ChevronDownIcon } from 'lucide-react'
 import styles from 'styles/navigation-menu.module.css'
 
-export const Basic = () => (
+export const Context = () => (
   <NavigationMenu.Root className={styles.Root}>
+    <NavigationMenu.Context>{(api) => <output>value: {api.value || 'none'}</output>}</NavigationMenu.Context>
     <NavigationMenu.List className={styles.List}>
       <NavigationMenu.Item className={styles.Item} value="features">
         <NavigationMenu.Trigger className={styles.Trigger}>
@@ -13,9 +14,6 @@ export const Basic = () => (
           </span>
         </NavigationMenu.Trigger>
         <NavigationMenu.Content className={styles.Content}>
-          <NavigationMenu.Indicator className={styles.Indicator}>
-            <NavigationMenu.Arrow className={styles.Arrow} />
-          </NavigationMenu.Indicator>
           <NavigationMenu.Link className={styles.ContentLink} href="#overview">
             Overview
           </NavigationMenu.Link>
@@ -33,17 +31,11 @@ export const Basic = () => (
           </span>
         </NavigationMenu.Trigger>
         <NavigationMenu.Content className={styles.Content}>
-          <NavigationMenu.Indicator className={styles.Indicator}>
-            <NavigationMenu.Arrow className={styles.Arrow} />
-          </NavigationMenu.Indicator>
           <NavigationMenu.Link className={styles.ContentLink} href="#introduction">
             Introduction
           </NavigationMenu.Link>
           <NavigationMenu.Link className={styles.ContentLink} href="#installation">
             Installation
-          </NavigationMenu.Link>
-          <NavigationMenu.Link className={styles.ContentLink} href="#components">
-            Components
           </NavigationMenu.Link>
         </NavigationMenu.Content>
       </NavigationMenu.Item>

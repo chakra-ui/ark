@@ -81,7 +81,7 @@
   position: relative;
   border-radius: 9999px;
   background: var(--splitter-thumb-color);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--demo-shadow-sm);
   border: 1px solid var(--demo-border);
   z-index: 1;
 

@@ -1,76 +1,79 @@
 <script lang="ts">
   import { NavigationMenu } from '@ark-ui/svelte/navigation-menu'
+  import ChevronDownIcon from 'lucide-svelte/icons/chevron-down'
+  import styles from 'styles/navigation-menu.module.css'
 
-  const renderLinks = (opts: { value: string; items: string[] }) => {
-    const { value, items } = opts
-    return items.map((item, index) => ({
-      id: `${value}-${item}-${index}`,
-      value,
-      item,
-    }))
-  }
+  const products1 = ['Analytics Platform', 'Customer Engagement', 'Marketing Automation', 'Data Integration', 'Enterprise Solutions', 'API Documentation']
+  const products2 = ['Case Studies', 'Success Stories', 'Integration Partners', 'Security & Compliance']
+  const company1 = ['About Us', 'Leadership Team', 'Careers', 'Press Releases']
+  const company2 = ['Investors', 'Partners', 'Corporate Responsibility']
+  const developers1 = ['API Documentation', 'SDKs & Libraries', 'Developer Guides', 'Code Samples', 'Webhooks', 'GraphQL Explorer']
+  const developers2 = ['Developer Community', 'Changelog', 'Status Page', 'Rate Limits']
 </script>
 
-<NavigationMenu.Root class="viewport">
-  <NavigationMenu.List>
-    <NavigationMenu.Item value="products">
-      <NavigationMenu.Trigger>Products</NavigationMenu.Trigger>
-      <NavigationMenu.Content style="grid-template-columns: 1fr 2fr; width: 600px;">
-        {#each renderLinks( { value: 'products', items: ['Analytics Platform', 'Customer Engagement', 'Marketing Automation', 'Data Integration', 'Enterprise Solutions', 'API Documentation'] }, ) as link (link.id)}
-          <NavigationMenu.Link href="# ">
-            {link.item}
-          </NavigationMenu.Link>
+<NavigationMenu.Root class={styles.Root} data-variant="viewport">
+  <NavigationMenu.List class={styles.List}>
+    <NavigationMenu.Item class={styles.Item} value="products">
+      <NavigationMenu.Trigger class={styles.Trigger}>
+        Products
+        <span class={styles.TriggerIcon}>
+          <ChevronDownIcon />
+        </span>
+      </NavigationMenu.Trigger>
+      <NavigationMenu.Content class={styles.ViewportContent} style="grid-template-columns: 1fr 2fr; width: 600px;">
+        {#each products1 as item}
+          <NavigationMenu.Link class={styles.ViewportLink} href="#">{item}</NavigationMenu.Link>
         {/each}
-        {#each renderLinks( { value: 'products', items: ['Case Studies', 'Success Stories', 'Integration Partners', 'Security & Compliance'] }, ) as link (link.id)}
-          <NavigationMenu.Link href="# ">
-            {link.item}
-          </NavigationMenu.Link>
-        {/each}
-      </NavigationMenu.Content>
-    </NavigationMenu.Item>
-
-    <NavigationMenu.Item value="company">
-      <NavigationMenu.Trigger>Company</NavigationMenu.Trigger>
-      <NavigationMenu.Content style="grid-template-columns: 1fr 1fr; width: 450px;">
-        {#each renderLinks( { value: 'company', items: ['About Us', 'Leadership Team', 'Careers', 'Press Releases'] }, ) as link (link.id)}
-          <NavigationMenu.Link href="# ">
-            {link.item}
-          </NavigationMenu.Link>
-        {/each}
-        {#each renderLinks( { value: 'company', items: ['Investors', 'Partners', 'Corporate Responsibility'] }, ) as link (link.id)}
-          <NavigationMenu.Link href="# ">
-            {link.item}
-          </NavigationMenu.Link>
+        {#each products2 as item}
+          <NavigationMenu.Link class={styles.ViewportLink} href="#">{item}</NavigationMenu.Link>
         {/each}
       </NavigationMenu.Content>
     </NavigationMenu.Item>
 
-    <NavigationMenu.Item value="developers">
-      <NavigationMenu.Trigger>Developers</NavigationMenu.Trigger>
-      <NavigationMenu.Content style="grid-template-columns: 1.6fr 1fr; width: 650px;">
-        {#each renderLinks( { value: 'developers', items: ['API Documentation', 'SDKs & Libraries', 'Developer Guides', 'Code Samples', 'Webhooks', 'GraphQL Explorer'] }, ) as link (link.id)}
-          <NavigationMenu.Link href="# ">
-            {link.item}
-          </NavigationMenu.Link>
+    <NavigationMenu.Item class={styles.Item} value="company">
+      <NavigationMenu.Trigger class={styles.Trigger}>
+        Company
+        <span class={styles.TriggerIcon}>
+          <ChevronDownIcon />
+        </span>
+      </NavigationMenu.Trigger>
+      <NavigationMenu.Content class={styles.ViewportContent} style="grid-template-columns: 1fr 1fr; width: 450px;">
+        {#each company1 as item}
+          <NavigationMenu.Link class={styles.ViewportLink} href="#">{item}</NavigationMenu.Link>
         {/each}
-        {#each renderLinks( { value: 'developers', items: ['Developer Community', 'Changelog', 'Status Page', 'Rate Limits'] }, ) as link (link.id)}
-          <NavigationMenu.Link href="# ">
-            {link.item}
-          </NavigationMenu.Link>
+        {#each company2 as item}
+          <NavigationMenu.Link class={styles.ViewportLink} href="#">{item}</NavigationMenu.Link>
         {/each}
       </NavigationMenu.Content>
     </NavigationMenu.Item>
 
-    <NavigationMenu.Item value="pricing">
-      <NavigationMenu.Link href="#pricing">Pricing</NavigationMenu.Link>
+    <NavigationMenu.Item class={styles.Item} value="developers">
+      <NavigationMenu.Trigger class={styles.Trigger}>
+        Developers
+        <span class={styles.TriggerIcon}>
+          <ChevronDownIcon />
+        </span>
+      </NavigationMenu.Trigger>
+      <NavigationMenu.Content class={styles.ViewportContent} style="grid-template-columns: 1.6fr 1fr; width: 650px;">
+        {#each developers1 as item}
+          <NavigationMenu.Link class={styles.ViewportLink} href="#">{item}</NavigationMenu.Link>
+        {/each}
+        {#each developers2 as item}
+          <NavigationMenu.Link class={styles.ViewportLink} href="#">{item}</NavigationMenu.Link>
+        {/each}
+      </NavigationMenu.Content>
     </NavigationMenu.Item>
 
-    <NavigationMenu.Indicator>
-      <NavigationMenu.Arrow />
+    <NavigationMenu.Item class={styles.Item} value="pricing">
+      <NavigationMenu.Link class={styles.Link} href="#pricing">Pricing</NavigationMenu.Link>
+    </NavigationMenu.Item>
+
+    <NavigationMenu.Indicator class={styles.Indicator}>
+      <NavigationMenu.Arrow class={styles.Arrow} />
     </NavigationMenu.Indicator>
   </NavigationMenu.List>
 
-  <NavigationMenu.ViewportPositioner>
-    <NavigationMenu.Viewport />
+  <NavigationMenu.ViewportPositioner class={styles.ViewportPositioner} align="start">
+    <NavigationMenu.Viewport class={styles.Viewport} />
   </NavigationMenu.ViewportPositioner>
 </NavigationMenu.Root>

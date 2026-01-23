@@ -38,9 +38,7 @@
   border: 1px solid var(--demo-border);
   padding: 1rem;
   border-radius: 12px;
-  box-shadow:
-    0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--demo-shadow-lg);
   width: 300px;
   outline: none;
   z-index: calc(50 + var(--layer-index, 0));

@@ -29,9 +29,7 @@
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   background: var(--demo-bg-popover);
-  box-shadow:
-    0 -10px 38px -10px rgba(14, 18, 22, 0.35),
-    0 -10px 20px -15px rgba(14, 18, 22, 0.2);
+  box-shadow: var(--demo-shadow-xl);
   z-index: 50;
   outline: none;
   transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1);

@@ -40,9 +40,7 @@
   border-radius: 8px;
   border: 1px solid var(--demo-border);
   background: var(--demo-bg-popover);
-  box-shadow:
-    0 10px 38px -10px rgba(14, 18, 22, 0.35),
-    0 10px 20px -15px rgba(14, 18, 22, 0.2);
+  box-shadow: var(--demo-shadow-xl);
   z-index: calc(50 + var(--layer-index, 0));
   outline: 0;
   transition: transform 0.1s ease-in-out;

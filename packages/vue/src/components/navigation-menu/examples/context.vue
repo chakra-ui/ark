@@ -6,6 +6,9 @@ import styles from 'styles/navigation-menu.module.css'
 
 <template>
   <NavigationMenu.Root :class="styles.Root">
+    <NavigationMenu.Context v-slot="api">
+      <output>value: {{ api.value || 'none' }}</output>
+    </NavigationMenu.Context>
     <NavigationMenu.List :class="styles.List">
       <NavigationMenu.Item :class="styles.Item" value="features">
         <NavigationMenu.Trigger :class="styles.Trigger">
@@ -15,9 +18,6 @@ import styles from 'styles/navigation-menu.module.css'
           </span>
         </NavigationMenu.Trigger>
         <NavigationMenu.Content :class="styles.Content">
-          <NavigationMenu.Indicator :class="styles.Indicator">
-            <NavigationMenu.Arrow :class="styles.Arrow" />
-          </NavigationMenu.Indicator>
           <NavigationMenu.Link :class="styles.ContentLink" href="#overview">Overview</NavigationMenu.Link>
           <NavigationMenu.Link :class="styles.ContentLink" href="#features">Features</NavigationMenu.Link>
         </NavigationMenu.Content>
@@ -31,12 +31,8 @@ import styles from 'styles/navigation-menu.module.css'
           </span>
         </NavigationMenu.Trigger>
         <NavigationMenu.Content :class="styles.Content">
-          <NavigationMenu.Indicator :class="styles.Indicator">
-            <NavigationMenu.Arrow :class="styles.Arrow" />
-          </NavigationMenu.Indicator>
           <NavigationMenu.Link :class="styles.ContentLink" href="#introduction">Introduction</NavigationMenu.Link>
           <NavigationMenu.Link :class="styles.ContentLink" href="#installation">Installation</NavigationMenu.Link>
-          <NavigationMenu.Link :class="styles.ContentLink" href="#components">Components</NavigationMenu.Link>
         </NavigationMenu.Content>
       </NavigationMenu.Item>
 

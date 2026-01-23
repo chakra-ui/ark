@@ -14,16 +14,23 @@
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory'
   import { useNavigationMenuContext } from './use-navigation-menu-context'
+  import { setNavigationMenuViewportPropsContext } from './use-navigation-menu-viewport-props-context'
   import { createSplitProps } from '$lib/utils/create-split-props'
 
-  let { ref = $bindable(null), ...props }: NavigationMenuViewportPositionerProps = $props()
+  import type { Snippet } from 'svelte'
+
+  let { ref = $bindable(null), children, ...props }: NavigationMenuViewportPositionerProps & { children?: Snippet } = $props()
   const splitViewportProps = createSplitProps<ViewportProps>()
-  const [viewportPositionerProps, localProps] = $derived(splitViewportProps(props, ['align']))
+  const [viewportProps, localProps] = $derived(splitViewportProps(props, ['align']))
+
+  setNavigationMenuViewportPropsContext(() => viewportProps)
 
   const navigationMenu = useNavigationMenuContext()
   const mergedProps = $derived(
-    mergeProps(navigationMenu().getViewportPositionerProps(viewportPositionerProps), localProps),
+    mergeProps(navigationMenu().getViewportPositionerProps(viewportProps), localProps),
   )
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps}>
+  {@render children?.()}
+</Ark>
