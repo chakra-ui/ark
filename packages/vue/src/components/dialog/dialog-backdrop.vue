@@ -14,6 +14,7 @@ export interface DialogBackdropProps
 
 <script setup lang="ts">
 import { mergeProps } from '@zag-js/vue'
+import { omit } from '@zag-js/utils'
 import { computed } from 'vue'
 import { useForwardExpose } from '../../utils/use-forward-expose'
 import { usePresenceContext } from '../presence'
@@ -25,7 +26,17 @@ defineProps<DialogBackdropProps>()
 const dialog = useDialogContext()
 const presence = usePresenceContext()
 
-const mergedProps = computed(() => mergeProps(dialog.value.getBackdropProps(), presence.value.presenceProps))
+const mergedProps = computed(() =>
+  mergeProps(
+    dialog.value.getBackdropProps(),
+    /*
+     * Here we omit the ref because there should be only one ref to control the global presence state
+     * and that is DialogContent
+     * @see DialogContent.vue
+     */
+    omit(presence.value.presenceProps, ['ref']),
+  ),
+)
 
 useForwardExpose()
 </script>
