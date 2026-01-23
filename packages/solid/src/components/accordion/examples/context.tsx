@@ -8,10 +8,10 @@ export const Context = () => {
     <Accordion.Root class={styles.Root} defaultValue={['ark-ui']}>
       <Accordion.Context>
         {(context) => (
-          <div class={styles.Output}>
-            <code>context.value: {JSON.stringify(context().value)}</code>
-            <code>context.focusedValue: {context().focusedValue || 'null'}</code>
-          </div>
+          <output>
+            <div>context.value: {JSON.stringify(context().value)}</div>
+            <div>context.focusedValue: {context().focusedValue || 'null'}</div>
+          </output>
         )}
       </Accordion.Context>
 
