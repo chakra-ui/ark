@@ -105,6 +105,7 @@ import * as ColorPicker_WithField from '@examples/color-picker/examples/with-fie
 import * as Combobox_AsyncSearch from '@examples/combobox/examples/async-search'
 import * as Combobox_AutoHighlight from '@examples/combobox/examples/auto-highlight'
 import * as Combobox_Basic from '@examples/combobox/examples/basic'
+import * as Combobox_Context from '@examples/combobox/examples/context'
 import * as Combobox_Creatable from '@examples/combobox/examples/creatable'
 import * as Combobox_CustomObject from '@examples/combobox/examples/custom-object'
 import * as Combobox_Dynamic from '@examples/combobox/examples/dynamic'
@@ -115,7 +116,6 @@ import * as Combobox_LimitResults from '@examples/combobox/examples/limit-result
 import * as Combobox_Links from '@examples/combobox/examples/links'
 import * as Combobox_Multiple from '@examples/combobox/examples/multiple'
 import * as Combobox_RehydrateValue from '@examples/combobox/examples/rehydrate-value'
-import * as Combobox_RenderFn from '@examples/combobox/examples/render-fn'
 import * as Combobox_RootProvider from '@examples/combobox/examples/root-provider'
 import * as Combobox_Virtualized from '@examples/combobox/examples/virtualized'
 import * as Combobox_WithField from '@examples/combobox/examples/with-field'
@@ -648,6 +648,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'combobox/async-search': Combobox_AsyncSearch,
   'combobox/auto-highlight': Combobox_AutoHighlight,
   'combobox/basic': Combobox_Basic,
+  'combobox/context': Combobox_Context,
   'combobox/creatable': Combobox_Creatable,
   'combobox/custom-object': Combobox_CustomObject,
   'combobox/dynamic': Combobox_Dynamic,
@@ -658,7 +659,6 @@ const exampleModules: Record<string, ExampleModule> = {
   'combobox/links': Combobox_Links,
   'combobox/multiple': Combobox_Multiple,
   'combobox/rehydrate-value': Combobox_RehydrateValue,
-  'combobox/render-fn': Combobox_RenderFn,
   'combobox/root-provider': Combobox_RootProvider,
   'combobox/virtualized': Combobox_Virtualized,
   'combobox/with-field': Combobox_WithField,

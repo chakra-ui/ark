@@ -189,8 +189,7 @@ Every component should include these example patterns where applicable:
 ### Integration Examples
 
 - `with-field.{tsx,vue,svelte}` - Integration with Field component for forms
-- `render-prop.{tsx,vue,svelte}` - Custom render function patterns (React/Solid)
-- `render-fn.{tsx,vue,svelte}` - Function-based rendering patterns
+- `context.{tsx,vue,svelte}` - Component context usage patterns
 
 ### Advanced Examples
 

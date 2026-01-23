@@ -7,6 +7,7 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
+export { Context } from './examples/context'
 export { Grouping } from './examples/grouping'
 export { Links } from './examples/links'
 export { Multiple } from './examples/multiple'

@@ -5,7 +5,7 @@ import { For } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import styles from 'styles/combobox.module.css'
 
-export const RenderFn = () => {
+export const Context = () => {
   const filterFn = useFilter({ sensitivity: 'base' })
 
   const { collection, filter } = useListCollection({

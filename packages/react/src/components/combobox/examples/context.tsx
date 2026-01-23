@@ -4,7 +4,7 @@ import { Portal } from '@ark-ui/react/portal'
 import { CheckIcon, ChevronsUpDownIcon, XIcon } from 'lucide-react'
 import styles from 'styles/combobox.module.css'
 
-export const RenderFn = () => {
+export const Context = () => {
   const { contains } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter } = useListCollection({

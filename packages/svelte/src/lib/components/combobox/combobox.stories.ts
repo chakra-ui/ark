@@ -8,7 +8,7 @@ import GroupingExample from './examples/grouping.svelte'
 import LinksExample from './examples/links.svelte'
 import MultipleExample from './examples/multiple.svelte'
 import RehydrateValueExample from './examples/rehydrate-value.svelte'
-import RenderFnExample from './examples/render-fn.svelte'
+import ContextExample from './examples/context.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import WithFieldExample from './examples/with-field.svelte'
 import HighlightMatchingTextExample from './examples/highlight-matching-text.svelte'
@@ -46,9 +46,9 @@ export const Dynamic = {
   }),
 }
 
-export const RenderFn = {
+export const Context = {
   render: () => ({
-    Component: RenderFnExample,
+    Component: ContextExample,
   }),
 }
 

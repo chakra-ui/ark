@@ -8,7 +8,7 @@ import DynamicExample from './examples/dynamic.vue'
 import GroupingExample from './examples/grouping.vue'
 import LinksExample from './examples/links.vue'
 import MultipleExample from './examples/multiple.vue'
-import RenderFnExample from './examples/render-fn.vue'
+import ContextExample from './examples/context.vue'
 import RehydrateValueExample from './examples/rehydrate-value.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import WithFieldExample from './examples/with-field.vue'
@@ -79,9 +79,9 @@ export const Dynamic = {
   }),
 }
 
-export const RenderFunction = {
+export const Context = {
   render: () => ({
-    components: { Component: RenderFnExample },
+    components: { Component: ContextExample },
     template: '<Component />',
   }),
 }
