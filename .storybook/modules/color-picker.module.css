@@ -33,7 +33,7 @@
   height: 2.5rem;
   padding: 0;
   min-width: 2.5rem;
-  background: white;
+  background: var(--demo-bg-default);
   border: 1px solid var(--demo-border-emphasized);
   border-radius: 0.375rem;
   cursor: pointer;
@@ -207,6 +207,10 @@
     margin: 0;
   }
 
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
+
   &[data-channel='alpha'] {
     width: 4rem;
     min-width: unset;
@@ -338,8 +342,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   flex-shrink: 0;
   color: var(--demo-neutral-fg);
   background: transparent;
