@@ -60,5 +60,10 @@ export default async function Page(props: Props) {
 export const generateMetadata = async (props: Props): Promise<Metadata> => {
   const { id } = await props.params
   const example = await fetchExample(id)
-  return example ? { title: example.title, description: example.description } : {}
+  if (!example) return {}
+  return {
+    title: example.title,
+    description: example.description,
+    openGraph: { description: example.description },
+  }
 }

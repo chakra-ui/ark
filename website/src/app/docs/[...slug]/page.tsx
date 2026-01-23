@@ -69,7 +69,13 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
   const page = getPageBySlug(params.slug)
 
   if (page) {
-    return { title: page.title, description: page.description }
+    return {
+      title: page.title,
+      description: page.description,
+      openGraph: {
+        description: page.description,
+      },
+    }
   }
   return {}
 }
