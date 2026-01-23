@@ -6,6 +6,6 @@ export const Context = () => (
     <Avatar.Context>
       {(avatar) => <Avatar.Fallback class={styles.Fallback}>{avatar().loaded ? 'PA' : 'Loading'}</Avatar.Fallback>}
     </Avatar.Context>
-    <Avatar.Image class={styles.Image} src="https://i.pravatar.cc/300" alt="avatar" />
+    <Avatar.Image class={styles.Image} src="https://i.pravatar.cc/300?u=a" alt="avatar" />
   </Avatar.Root>
 )

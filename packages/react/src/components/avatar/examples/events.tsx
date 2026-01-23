@@ -8,7 +8,7 @@ export const Events = () => {
   return (
     <Avatar.Root className={styles.Root} onStatusChange={handleStatusChange}>
       <Avatar.Fallback className={styles.Fallback}>PA</Avatar.Fallback>
-      <Avatar.Image className={styles.Image} src="https://i.pravatar.cc/3000" alt="avatar" />
+      <Avatar.Image className={styles.Image} src="https://i.pravatar.cc/3000?u=a" alt="avatar" />
     </Avatar.Root>
   )
 }

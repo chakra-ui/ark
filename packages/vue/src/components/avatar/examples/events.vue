@@ -6,6 +6,6 @@ import styles from 'styles/avatar.module.css'
 <template>
   <Avatar.Root :class="styles.Root" @status-change="(e) => console.log(e.status)">
     <Avatar.Fallback :class="styles.Fallback">PA</Avatar.Fallback>
-    <Avatar.Image :class="styles.Image" src="https://i.pravatar.cc/3000" alt="avatar" />
+    <Avatar.Image :class="styles.Image" src="https://i.pravatar.cc/3000?u=a" alt="avatar" />
   </Avatar.Root>
 </template>

@@ -33,7 +33,7 @@ import { Avatar } from '@ark-ui/react/avatar'
 export const Basic = () => (
   <Avatar.Root>
     <Avatar.Fallback>PA</Avatar.Fallback>
-    <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
+    <Avatar.Image src="https://i.pravatar.cc/300?u=a" alt="avatar" />
   </Avatar.Root>
 )
 ```
@@ -244,17 +244,17 @@ Here's how you can apply styles to your avatar component using classes like `ava
 ```tsx
 <Avatar.Root className='avatar--sm'>
   <Avatar.Fallback>AB</Avatar.Fallback>
-  <Avatar.Image src='https://i.pravatar.cc/300' alt='avatar' />
+  <Avatar.Image src='https://i.pravatar.cc/300?u=a' alt='avatar' />
 </Avatar.Root>
 
 <Avatar.Root className='avatar--rounded'>
   <Avatar.Fallback>AB</Avatar.Fallback>
-  <Avatar.Image src='https://i.pravatar.cc/300' alt='avatar' />
+  <Avatar.Image src='https://i.pravatar.cc/300?u=a' alt='avatar' />
 </Avatar.Root>
 
 <Avatar.Root className='avatar--solid'>
   <Avatar.Fallback>AB</Avatar.Fallback>
-  <Avatar.Image src='https://i.pravatar.cc/300' alt='avatar' />
+  <Avatar.Image src='https://i.pravatar.cc/300?u=a' alt='avatar' />
 </Avatar.Root>
 ```
 
@@ -270,7 +270,7 @@ Here's a full example of how you'll use the defined styles on the Avatar.
 ```tsx
 <Avatar.Root className="avatar--lg avatar--solid avatar--full">
   <Avatar.Fallback>AB</Avatar.Fallback>
-  <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
+  <Avatar.Image src="https://i.pravatar.cc/300?u=a" alt="avatar" />
 </Avatar.Root>
 ```
 
@@ -494,7 +494,7 @@ You then apply the styles to each component part like this:
 ```tsx
 <Avatar.Root className={classes.root}>
   <Avatar.Fallback className={classes.fallback}>PA</Avatar.Fallback>
-  <Avatar.Image className={classes.image} src="https://i.pravatar.cc/300" alt="avatar" />
+  <Avatar.Image className={classes.image} src="https://i.pravatar.cc/300?u=a" alt="avatar" />
 </Avatar.Root>
 ```
 
@@ -510,7 +510,7 @@ const classes = avatarSlotRecipe({ size: 'lg', variant: 'solid', shape: 'rounded
 
 <Avatar.Root className={classes.root}>
   <Avatar.Fallback className={classes.fallback}>PA</Avatar.Fallback>
-  <Avatar.Image className={classes.image} src="https://i.pravatar.cc/300" alt="avatar" />
+  <Avatar.Image className={classes.image} src="https://i.pravatar.cc/300?u=a" alt="avatar" />
 </Avatar.Root>
 ```
 
