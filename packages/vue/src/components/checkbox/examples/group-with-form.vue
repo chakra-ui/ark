@@ -18,7 +18,7 @@ const items = [
 </script>
 
 <template>
-  <form @submit="handleSubmit">
+  <form class="stack" @submit="handleSubmit">
     <Checkbox.Group :class="styles.Group" :defaultValue="['react']" name="framework">
       <Checkbox.Root :class="styles.Root" v-for="item in items" :key="item.value" :value="item.value">
         <Checkbox.Control :class="styles.Control">

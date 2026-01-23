@@ -7,7 +7,8 @@ export const GroupControlled = () => {
   const [value, setValue] = createSignal(['react'])
 
   return (
-    <div>
+    <div class="stack">
+      <output>value: {JSON.stringify(value())}</output>
       <Checkbox.Group class={styles.Group} value={value} onValueChange={setValue} name="framework">
         <For each={items}>
           {(item) => (
@@ -23,7 +24,6 @@ export const GroupControlled = () => {
           )}
         </For>
       </Checkbox.Group>
-      <pre>Selected: {JSON.stringify(value())}</pre>
     </div>
   )
 }

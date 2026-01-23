@@ -1,10 +1,8 @@
 'use client'
 
-import { Suspense, useMemo, useState, useEffect } from 'react'
+import { Suspense, useEffect, useMemo, useState } from 'react'
 import { Flex } from 'styled-system/jsx'
 import { loadExample } from '~/lib/example-loader'
-
-// Scoped styles for example previews (theme variables + global utilities)
 import './example-preview.css'
 
 interface Props {
@@ -14,14 +12,9 @@ interface Props {
 
 const LoadingSpinner = () => <div className="example-spinner" role="status" aria-label="Loading example" />
 
-/**
- * Hook to check if we're on the client (prevents hydration mismatch)
- */
 function useIsClient() {
   const [isClient, setIsClient] = useState(false)
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
+  useEffect(() => setIsClient(true), [])
   return isClient
 }
 
@@ -33,12 +26,8 @@ const StylesReadyWrapper = ({ children }: { children: React.ReactNode }) => {
   const [isReady, setIsReady] = useState(false)
 
   useEffect(() => {
-    // Wait for next frame to ensure CSS modules are applied
     const raf = requestAnimationFrame(() => {
-      // Double RAF to ensure styles are painted
-      requestAnimationFrame(() => {
-        setIsReady(true)
-      })
+      requestAnimationFrame(() => setIsReady(true))
     })
     return () => cancelAnimationFrame(raf)
   }, [])
@@ -51,24 +40,18 @@ const StylesReadyWrapper = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
-/**
- * Renders a live preview of an example from the packages.
- * Uses static imports to ensure React context is shared across all examples.
- * Only renders on client to prevent hydration mismatch from auto-generated IDs.
- */
 export const ExamplePreview = (props: Props) => {
   const { component, example } = props
   const isClient = useIsClient()
 
   const ExampleComponent = useMemo(() => {
-    // Only load on client to prevent SSR hydration issues
     if (!isClient) return null
     return loadExample(component, example)
   }, [component, example, isClient])
 
   return (
     <Flex
-      minH="40"
+      minH={{ base: '32', md: '48' }}
       bg="bg.default"
       borderRadius="lg"
       borderWidth="1px"

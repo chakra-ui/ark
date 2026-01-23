@@ -14,7 +14,8 @@ const items = [
 </script>
 
 <template>
-  <div>
+  <div class="stack">
+    <output>value: {{ JSON.stringify(value) }}</output>
     <Checkbox.Group :class="styles.Group" v-model="value" name="framework">
       <Checkbox.Root :class="styles.Root" v-for="item in items" :value="item.value" :key="item.value">
         <Checkbox.Control :class="styles.Control">
@@ -26,6 +27,5 @@ const items = [
         <Checkbox.HiddenInput />
       </Checkbox.Root>
     </Checkbox.Group>
-    <pre>Selected: {{ JSON.stringify(value) }}</pre>
   </div>
 </template>

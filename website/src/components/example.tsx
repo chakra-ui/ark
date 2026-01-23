@@ -3,11 +3,13 @@ import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { transformerNotationHighlight } from '@shikijs/transformers'
 import { Match } from 'effect'
+import { css, cx } from 'styled-system/css'
 import { Stack } from 'styled-system/jsx'
 import { getHighlighter } from '~/lib/highlighter'
 import { getFramework } from '~/lib/frameworks'
 import { getServerContext } from '~/lib/server-context'
 import { CodeTabs } from './code-tabs'
+import { CollapsibleCode } from './collapsible-code'
 import { ExamplePreview } from './example-preview'
 
 interface Props {
@@ -25,17 +27,19 @@ export const Example = async (props: Props) => {
   const hasPreview = component ? exampleExists(component, props.id) : false
 
   return (
-    <Stack gap="3" className="not-prose">
+    <Stack gap="0" className={cx('not-prose', css({ '& > .example-preview-scope': { borderBottomRadius: '0' } }))}>
       {hasPreview && component && <ExamplePreview component={component} example={props.id} />}
-      <CodeTabs
-        examples={examples}
-        defaultValue={framework}
-        cssModules={cssModules}
-        meta={{
-          ...props,
-          framework,
-        }}
-      />
+      <CollapsibleCode>
+        <CodeTabs
+          examples={examples}
+          defaultValue={framework}
+          cssModules={cssModules}
+          meta={{
+            ...props,
+            framework,
+          }}
+        />
+      </CollapsibleCode>
     </Stack>
   )
 }

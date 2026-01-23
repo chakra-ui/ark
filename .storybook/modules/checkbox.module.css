@@ -42,6 +42,15 @@
     outline-offset: 2px;
   }
 
+  &[data-invalid] {
+    border-color: var(--demo-error);
+  }
+
+  &[data-invalid][data-focus-visible] {
+    border-color: var(--demo-error);
+    box-shadow: 0 0 0 1px var(--demo-error);
+  }
+
   & svg {
     width: 0.875rem;
     height: 0.875rem;

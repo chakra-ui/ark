@@ -12,6 +12,7 @@
 </script>
 
 <form
+  class="stack"
   onsubmit={(e) => {
     e.preventDefault()
     console.log(new FormData(e.currentTarget).getAll('framework'))

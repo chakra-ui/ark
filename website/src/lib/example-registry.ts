@@ -16,7 +16,10 @@ import * as Accordion_Multiple from '@examples/accordion/examples/multiple'
 import * as Accordion_RootProvider from '@examples/accordion/examples/root-provider'
 import * as Accordion_WithSlider from '@examples/accordion/examples/with-slider'
 import * as AngleSlider_Basic from '@examples/angle-slider/examples/basic'
+import * as AngleSlider_Context from '@examples/angle-slider/examples/context'
 import * as AngleSlider_Controlled from '@examples/angle-slider/examples/controlled'
+import * as AngleSlider_Disabled from '@examples/angle-slider/examples/disabled'
+import * as AngleSlider_RootProvider from '@examples/angle-slider/examples/root-provider'
 import * as AngleSlider_Step from '@examples/angle-slider/examples/step'
 import * as Avatar_Basic from '@examples/avatar/examples/basic'
 import * as Avatar_Closed from '@examples/avatar/examples/closed'
@@ -292,8 +295,8 @@ import * as Menu_RadioItems from '@examples/menu/examples/radio-items'
 import * as Menu_RootProvider from '@examples/menu/examples/root-provider'
 import * as Menu_SelectEvent from '@examples/menu/examples/select-event'
 import * as NavigationMenu_Basic from '@examples/navigation-menu/examples/basic'
+import * as NavigationMenu_Context from '@examples/navigation-menu/examples/context'
 import * as NavigationMenu_Controlled from '@examples/navigation-menu/examples/controlled'
-import * as NavigationMenu_RenderProp from '@examples/navigation-menu/examples/render-prop'
 import * as NavigationMenu_RootProvider from '@examples/navigation-menu/examples/root-provider'
 import * as NavigationMenu_Viewport from '@examples/navigation-menu/examples/viewport'
 import * as NumberInput_Basic from '@examples/number-input/examples/basic'
@@ -556,7 +559,10 @@ const exampleModules: Record<string, ExampleModule> = {
   'accordion/root-provider': Accordion_RootProvider,
   'accordion/with-slider': Accordion_WithSlider,
   'angle-slider/basic': AngleSlider_Basic,
+  'angle-slider/context': AngleSlider_Context,
   'angle-slider/controlled': AngleSlider_Controlled,
+  'angle-slider/disabled': AngleSlider_Disabled,
+  'angle-slider/root-provider': AngleSlider_RootProvider,
   'angle-slider/step': AngleSlider_Step,
   'avatar/basic': Avatar_Basic,
   'avatar/closed': Avatar_Closed,
@@ -832,8 +838,8 @@ const exampleModules: Record<string, ExampleModule> = {
   'menu/root-provider': Menu_RootProvider,
   'menu/select-event': Menu_SelectEvent,
   'navigation-menu/basic': NavigationMenu_Basic,
+  'navigation-menu/context': NavigationMenu_Context,
   'navigation-menu/controlled': NavigationMenu_Controlled,
-  'navigation-menu/render-prop': NavigationMenu_RenderProp,
   'navigation-menu/root-provider': NavigationMenu_RootProvider,
   'navigation-menu/viewport': NavigationMenu_Viewport,
   'number-input/basic': NumberInput_Basic,

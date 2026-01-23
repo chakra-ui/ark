@@ -12,7 +12,8 @@
   let value = $state(['react'])
 </script>
 
-<div>
+<div class="stack">
+  <output>value: {JSON.stringify(value)}</output>
   <Checkbox.Group class={styles.Group} bind:value name="framework">
     {#each items as item (item.value)}
       <Checkbox.Root class={styles.Root} value={item.value}>
@@ -26,5 +27,4 @@
       </Checkbox.Root>
     {/each}
   </Checkbox.Group>
-  <pre>Selected: {JSON.stringify(value)}</pre>
 </div>

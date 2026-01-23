@@ -10,7 +10,6 @@ import { openInStackblitzSolid } from '~/lib/stackblitz-solid'
 import { openInStackblitzSvelte } from '~/lib/stackblitz-svelte'
 import { openInStackblitzVue } from '~/lib/stackblitz-vue'
 import { CodePreview } from './code-preview'
-import { Button } from './ui/primitives/button'
 
 interface CodeExample {
   label: string
@@ -40,12 +39,14 @@ export const CodeTabs = (props: Props) => {
       defaultValue={defaultValue}
       variant="line"
       borderWidth="1px"
+      borderColor="gray.dark.5"
       borderRadius="lg"
       overflow="hidden"
       bg="gray.dark.2"
       size="sm"
       className="not-prose"
       {...rootProps}
+      lazyMount
     >
       <Tabs.List
         bg="gray.dark.a2"
@@ -69,7 +70,7 @@ export const CodeTabs = (props: Props) => {
         ))}
         <Tabs.Indicator />
         {meta && (
-          <Box pos="absolute" right="1.5" top="1" className="dark">
+          <Box pos="absolute" right="4" top="1.5" className="dark">
             <StackblitzButton examples={examples} cssModules={cssModules} meta={meta} />
           </Box>
         )}
@@ -100,9 +101,20 @@ function StackblitzButton(props: {
   if (!example) return null
 
   return (
-    <Button
-      size="xs"
-      scale="0.9"
+    <button
+      type="button"
+      className={css({
+        h: '7',
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '1.5',
+        color: 'gray.dark.11',
+        fontSize: 'sm',
+        fontWeight: 'medium',
+        cursor: 'pointer',
+        _hover: { color: 'white' },
+        _icon: { boxSize: '4', color: 'coral.8' },
+      })}
       onClick={() => {
         const selectedFramework = tabs.value ?? framework
         const fn = {
@@ -121,7 +133,7 @@ function StackblitzButton(props: {
       }}
     >
       <SiStackblitz />
-      <span className={css({ textStyle: 'sm', hideBelow: 'sm' })}>Stackblitz</span>
-    </Button>
+      <span className={css({ hideBelow: 'sm' })}>Stackblitz</span>
+    </button>
   )
 }
