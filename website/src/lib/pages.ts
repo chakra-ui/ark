@@ -1,39 +1,19 @@
 import 'server-only'
 
 import { type Pages, pages } from '.velite'
-import { categories } from './sidebar'
+import { getSidebarGroupsWithPages } from './sidebar'
 
-const overviewPriority = ['introduction', 'getting-started', 'changelog', 'about']
-
-function getOrderedPages(): Pages[] {
-  const sortedCategories = pages.reduce<Record<string, Pages[]>>((acc, page) => {
-    const category = page.category
-    if (categories.includes(category)) {
-      acc[category] ||= []
-      acc[category].push(page)
-    }
-    return acc
-  }, {})
-
-  if (sortedCategories.overview) {
-    sortedCategories.overview.sort((a, b) => overviewPriority.indexOf(a.id) - overviewPriority.indexOf(b.id))
-  }
-
-  return categories
-    .filter((category) => Object.hasOwn(sortedCategories, category))
-    .flatMap((category) => sortedCategories[category])
-}
-
-const orderedPages = getOrderedPages()
+const orderedPages = getSidebarGroupsWithPages().flatMap((group) => group.items)
+const pageMap = new Map(pages.map((page) => [page.slug, page]))
 
 export function getPageBySlug(slug: string[], framework?: string): Pages | undefined {
   const slugStr = slug.join('/')
-  if (framework) {
-    return orderedPages.find(
-      (page) => page.slug === slugStr && (page.framework === '*' || page.framework === framework),
-    )
+  const page = pageMap.get(slugStr)
+  if (!page) return undefined
+  if (framework && page.framework !== '*' && page.framework !== framework) {
+    return undefined
   }
-  return orderedPages.find((page) => page.slug === slugStr)
+  return page
 }
 
 export interface NavItem {

@@ -22,7 +22,6 @@ import * as AngleSlider_Disabled from '@examples/angle-slider/examples/disabled'
 import * as AngleSlider_RootProvider from '@examples/angle-slider/examples/root-provider'
 import * as AngleSlider_Step from '@examples/angle-slider/examples/step'
 import * as Avatar_Basic from '@examples/avatar/examples/basic'
-import * as Avatar_Closed from '@examples/avatar/examples/closed'
 import * as Avatar_Context from '@examples/avatar/examples/context'
 import * as Avatar_Events from '@examples/avatar/examples/events'
 import * as Avatar_Provider from '@examples/avatar/examples/provider'
@@ -335,11 +334,13 @@ import * as PinInput_RootProvider from '@examples/pin-input/examples/root-provid
 import * as PinInput_WithField from '@examples/pin-input/examples/with-field'
 import * as Popover_Anchor from '@examples/popover/examples/anchor'
 import * as Popover_Arrow from '@examples/popover/examples/arrow'
+import * as Popover_AsChild from '@examples/popover/examples/as-child'
 import * as Popover_Basic from '@examples/popover/examples/basic'
 import * as Popover_CloseBehavior from '@examples/popover/examples/close-behavior'
 import * as Popover_Context from '@examples/popover/examples/context'
 import * as Popover_Controlled from '@examples/popover/examples/controlled'
 import * as Popover_DisableOutsideClick from '@examples/popover/examples/disable-outside-click'
+import * as Popover_Factory from '@examples/popover/examples/factory'
 import * as Popover_InitialFocus from '@examples/popover/examples/initial-focus'
 import * as Popover_LazyMount from '@examples/popover/examples/lazy-mount'
 import * as Popover_Modal from '@examples/popover/examples/modal'
@@ -565,7 +566,6 @@ const exampleModules: Record<string, ExampleModule> = {
   'angle-slider/root-provider': AngleSlider_RootProvider,
   'angle-slider/step': AngleSlider_Step,
   'avatar/basic': Avatar_Basic,
-  'avatar/closed': Avatar_Closed,
   'avatar/context': Avatar_Context,
   'avatar/events': Avatar_Events,
   'avatar/provider': Avatar_Provider,
@@ -878,11 +878,13 @@ const exampleModules: Record<string, ExampleModule> = {
   'pin-input/with-field': PinInput_WithField,
   'popover/anchor': Popover_Anchor,
   'popover/arrow': Popover_Arrow,
+  'popover/as-child': Popover_AsChild,
   'popover/basic': Popover_Basic,
   'popover/close-behavior': Popover_CloseBehavior,
   'popover/context': Popover_Context,
   'popover/controlled': Popover_Controlled,
   'popover/disable-outside-click': Popover_DisableOutsideClick,
+  'popover/factory': Popover_Factory,
   'popover/initial-focus': Popover_InitialFocus,
   'popover/lazy-mount': Popover_LazyMount,
   'popover/modal': Popover_Modal,

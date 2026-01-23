@@ -8,7 +8,7 @@ import { Anatomy } from './components/anatomy'
 import { ComponentPreview } from './components/component-preview'
 import { ComponentTypes } from './components/component-types'
 import { ContextType } from './components/context-type'
-import { Example } from './components/example'
+import { Example, ExampleCode } from './components/example'
 import { Faq } from './components/faq'
 import { InstallCmd } from './components/install-cmd'
 import { KeyBindingsTable } from './components/key-bindings-table'
@@ -430,6 +430,7 @@ const sharedComponents = {
   ComponentTypes,
   ContextType,
   Example,
+  ExampleCode,
   Faq,
   InstallCmd,
   kbd: Kbd,
