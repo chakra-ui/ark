@@ -97,6 +97,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `/blog/${slug}`,
       title: blog.title,
       description: blog.description,
+      images: '/og-image.png',
       type: 'article',
       publishedTime: blog.date,
       authors: [blog.author],
@@ -106,6 +107,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: 'summary_large_image',
       title: blog.title,
       description: blog.description,
+      images: '/og-image.png',
     },
   }
 }
