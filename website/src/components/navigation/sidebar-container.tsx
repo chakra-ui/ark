@@ -1,5 +1,6 @@
 import NextLink from 'next/link'
 import type { PropsWithChildren } from 'react'
+import { cx } from 'styled-system/css'
 import { Box, HStack } from 'styled-system/jsx'
 import { Logo } from '~/components/logo'
 import { getFramework } from '~/lib/frameworks'
@@ -16,7 +17,7 @@ export const SidebarContainer = async (props: PropsWithChildren<Props>) => {
   const version = await fetchLatestVersion(framework)
 
   return (
-    <aside className={className}>
+    <aside className={cx('scroller', className)}>
       <Box py="4.5" position="sticky" top="0" bg="inherit" zIndex="sticky" borderBottomWidth="1px">
         <HStack justifyContent="space-between">
           <NextLink href="/" aria-label="Go to start page">

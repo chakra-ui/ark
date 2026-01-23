@@ -5,17 +5,19 @@ import { SiStackblitz } from '@icons-pack/react-simple-icons'
 import { css } from 'styled-system/css'
 import { Box } from 'styled-system/jsx'
 import { Tabs } from '~/components/ui/tabs'
+import type { SupportedLang } from '~/lib/shiki-client'
 import { openInStackblitzReact } from '~/lib/stackblitz-react'
 import { openInStackblitzSolid } from '~/lib/stackblitz-solid'
 import { openInStackblitzSvelte } from '~/lib/stackblitz-svelte'
 import { openInStackblitzVue } from '~/lib/stackblitz-vue'
 import { CodePreview } from './code-preview'
 
-interface CodeExample {
+export interface CodeExample {
   label: string
   value: string
   code: string
-  html: string
+  lang?: SupportedLang
+  html?: string
 }
 
 interface ExampleMeta {
@@ -77,7 +79,7 @@ export const CodeTabs = (props: Props) => {
       </Tabs.List>
       {examples.map((example) => (
         <Tabs.Content key={example.value} value={example.value} pt="0">
-          <CodePreview code={example.code} html={example.html} />
+          <CodePreview code={example.code} lang={example.lang} html={example.html} />
         </Tabs.Content>
       ))}
     </Tabs.Root>
