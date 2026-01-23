@@ -189,7 +189,8 @@
   border-radius: 0.375rem;
   color: var(--demo-neutral-fg);
   outline: none;
-  appearance: textfield;
+  -moz-appearance: textfield !important;
+  appearance: textfield !important;
 
   &:focus {
     border-color: var(--demo-coral-solid);
@@ -205,10 +206,6 @@
     -webkit-appearance: none;
     appearance: none;
     margin: 0;
-  }
-
-  &[type='number'] {
-    -moz-appearance: textfield;
   }
 
   &[data-channel='alpha'] {
