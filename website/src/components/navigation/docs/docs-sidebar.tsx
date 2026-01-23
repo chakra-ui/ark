@@ -5,13 +5,13 @@ import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Badge } from '~/components/ui/badge'
 import { Icon } from '~/components/ui/icon'
+import type { SidebarItem } from '~/lib/sidebar'
 import { recipe } from '../sidebar.recipe'
-import type { Pages } from '.velite'
 
 const styles = recipe()
 
 interface Props {
-  groups: Pages[][]
+  groups: SidebarItem[][]
 }
 
 const labelMap = new Map<string, string>([['ai', 'AI for agents']])
@@ -78,4 +78,5 @@ export const DocsSidebar = (props: Props) => {
   )
 }
 
-const uniqueByTitle = (items: Pages[]): Pages[] => Array.from(new Map(items.map((item) => [item.title, item])).values())
+const uniqueByTitle = (items: SidebarItem[]): SidebarItem[] =>
+  Array.from(new Map(items.map((item) => [item.title, item])).values())

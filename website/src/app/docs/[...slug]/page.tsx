@@ -8,8 +8,8 @@ import { TableOfContent } from '~/components/table-of-content'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import { getFramework } from '~/lib/frameworks'
+import { getAllPageSlugs, getPageBySlug, getPageNavigation } from '~/lib/pages'
 import { getServerContext } from '~/lib/server-context'
-import { getSidebarGroups } from '~/lib/sidebar'
 import { MDXContent } from '~/mdx-content'
 
 interface Props {
@@ -20,8 +20,7 @@ export default async function Page(props: Props) {
   const params = await props.params
   const framework = await getFramework()
   const currentPage = getPageBySlug(params.slug, framework)
-  const nextPage = getNextPage(params.slug)
-  const prevPage = getPrevPage(params.slug)
+  const { prev, next } = getPageNavigation(params.slug)
 
   const serverContext = getServerContext()
   serverContext.component = params.slug[1]
@@ -52,7 +51,7 @@ export default async function Page(props: Props) {
             <MDXContent code={currentPage.code} />
           </article>
 
-          <DocsFooter nextPage={nextPage} prevPage={prevPage} />
+          <DocsFooter nextPage={next} prevPage={prev} />
         </Stack>
         <Box flexGrow="1" width="full" maxW="14rem" display={{ base: 'none', xl: 'block' }}>
           <Box position="fixed">
@@ -75,26 +74,4 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
   return {}
 }
 
-const pages = getSidebarGroups().flat()
-
-export const generateStaticParams = () =>
-  ['react', 'solid', 'vue'].flatMap((framework) => pages.map((page) => ({ framework, slug: page.slug.split('/') })))
-
-const getPageBySlug = (slug: string[], framework?: string) => {
-  if (framework) {
-    return pages.find(
-      (page) => page.slug === slug.join('/') && (page.framework === '*' || page.framework === framework),
-    )
-  }
-  return pages.find((page) => page.slug === slug.join('/'))
-}
-
-const getNextPage = (slug: string[]) => {
-  const index = pages.findIndex((page) => page.slug === slug.join('/'))
-  return pages[index + 1]
-}
-
-const getPrevPage = (slug: string[]) => {
-  const index = pages.findIndex((page) => page.slug === slug.join('/'))
-  return pages[index - 1]
-}
+export const generateStaticParams = () => getAllPageSlugs()
