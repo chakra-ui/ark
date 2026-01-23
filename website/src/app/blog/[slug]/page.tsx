@@ -94,6 +94,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: blog.title,
     description: blog.description,
     openGraph: {
+      url: `/blog/${slug}`,
       title: blog.title,
       description: blog.description,
       type: 'article',

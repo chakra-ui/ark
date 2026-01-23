@@ -28,12 +28,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://ark-ui.com',
     description,
+    images: ['/opengraph-image.png'],
   },
   twitter: {
+    card: 'summary_large_image',
     creator: '@ark_ui_',
     description,
+    images: ['/twitter-image.png'],
   },
 }
 

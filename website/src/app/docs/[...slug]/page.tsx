@@ -73,6 +73,7 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
       title: page.title,
       description: page.description,
       openGraph: {
+        url: `/docs/${page.slug}`,
         description: page.description,
       },
     }
