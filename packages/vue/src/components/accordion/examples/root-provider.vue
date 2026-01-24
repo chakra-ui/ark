@@ -28,19 +28,21 @@ const accordion = useAccordion({
 </script>
 
 <template>
-  <button @click="accordion.setValue(['maintainers'])">Set to Maintainers</button>
+  <div class="stack">
+    <output>Value: {{ JSON.stringify(accordion.value) }}</output>
 
-  <Accordion.RootProvider :class="styles.Root" :value="accordion">
-    <Accordion.Item v-for="item in items" :key="item.value" :class="styles.Item" :value="item.value">
-      <Accordion.ItemTrigger :class="styles.ItemTrigger">
-        {{ item.title }}
-        <Accordion.ItemIndicator :class="styles.ItemIndicator">
-          <ChevronDownIcon />
-        </Accordion.ItemIndicator>
-      </Accordion.ItemTrigger>
-      <Accordion.ItemContent :class="styles.ItemContent">
-        <div :class="styles.ItemBody">{{ item.content }}</div>
-      </Accordion.ItemContent>
-    </Accordion.Item>
-  </Accordion.RootProvider>
+    <Accordion.RootProvider :class="styles.Root" :value="accordion">
+      <Accordion.Item v-for="item in items" :key="item.value" :class="styles.Item" :value="item.value">
+        <Accordion.ItemTrigger :class="styles.ItemTrigger">
+          {{ item.title }}
+          <Accordion.ItemIndicator :class="styles.ItemIndicator">
+            <ChevronDownIcon />
+          </Accordion.ItemIndicator>
+        </Accordion.ItemTrigger>
+        <Accordion.ItemContent :class="styles.ItemContent">
+          <div :class="styles.ItemBody">{{ item.content }}</div>
+        </Accordion.ItemContent>
+      </Accordion.Item>
+    </Accordion.RootProvider>
+  </div>
 </template>

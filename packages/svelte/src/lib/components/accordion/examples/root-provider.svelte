@@ -28,8 +28,8 @@
   ]
 </script>
 
-<div>
-  <button onclick={() => accordion().setValue(['maintainers'])}>Set to Maintainers</button>
+<div class="stack">
+  <output>Value: {JSON.stringify(accordion().value)}</output>
   <Accordion.RootProvider class={styles.Root} value={accordion}>
     {#each items as item (item.value)}
       <Accordion.Item class={styles.Item} value={item.value}>

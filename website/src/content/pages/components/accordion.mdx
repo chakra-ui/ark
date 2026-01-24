@@ -37,19 +37,19 @@ Use the `collapsible` prop to allow the user to collapse all panels.
 
 <Example id="collapsible" />
 
-### Multiple Panels
+### Multiple
 
 Use the `multiple` prop to allow multiple panels to be expanded simultaneously.
 
 <Example id="multiple" />
 
-### Horizontal Orientation
+### Horizontal
 
 By default, the Accordion is oriented vertically. Use the `orientation` prop to switch to a horizontal layout.
 
 <Example id="horizontal" />
 
-### Using the Root Provider
+### Root Provider
 
 The `RootProvider` component provides a context for the accordion. It accepts the value of the `useAccordion` hook. You
 can leverage it to access the component state and methods from outside the accordion.
@@ -58,25 +58,17 @@ can leverage it to access the component state and methods from outside the accor
 
 > If you're using the `RootProvider` component, you don't need to use the `Root` component.
 
-### Accessing context
+### Context
 
-Use the `Accordion.Context` component or `useAccordionContext` hook to access the state of an accordion. It exposes the
-following properties:
-
-- `focusedValue`: The value of the focused accordion item.
-- `value`: The value of the selected accordion items.
-- `setValue`: A method to set the selected accordion items.
+Use the `Accordion.Context` component or `useAccordionContext` hook to access the state of an accordion. It exposes
+properties like `focusedValue` and `value`.
 
 <Example id="context" />
 
-### Accessing the item context
+### Item Context
 
 Use the `Accordion.ItemContext` component or `useAccordionItemContext` hook to access the state of an accordion item. It
-exposes the following properties:
-
-- `expanded`: Whether the accordion item is expanded.
-- `focused`: Whether the accordion item is focused.
-- `disabled`: Whether the accordion item is disabled.
+exposes properties like `expanded`, `focused` and `disabled`.
 
 <Example id="item-context" />
 

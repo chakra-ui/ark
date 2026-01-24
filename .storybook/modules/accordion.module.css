@@ -6,7 +6,7 @@
 
   &[data-orientation='horizontal'] {
     flex-direction: row;
-    height: 24rem;
+    height: 20rem;
     max-height: calc(100vh - 8rem);
   }
 
@@ -96,6 +96,7 @@
     }
     &[data-orientation='horizontal'] {
       animation-name: expand-width, fade-in;
+      will-change: width;
     }
   }
 
@@ -109,7 +110,12 @@
 
     &[data-orientation='horizontal'] {
       animation-name: collapse-width, fade-out;
+      will-change: width;
     }
+  }
+
+  &[data-orientation='horizontal'] > * {
+    white-space: nowrap;
   }
 }
 

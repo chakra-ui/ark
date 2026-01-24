@@ -10,8 +10,8 @@ export const RootProvider = () => {
   })
 
   return (
-    <>
-      <button onClick={() => accordion().setValue(['maintainers'])}>Set to Maintainers</button>
+    <div class="stack">
+      <output>Value: {JSON.stringify(accordion().value)}</output>
 
       <Accordion.RootProvider class={styles.Root} value={accordion}>
         <Index each={items}>
@@ -30,7 +30,7 @@ export const RootProvider = () => {
           )}
         </Index>
       </Accordion.RootProvider>
-    </>
+    </div>
   )
 }
 

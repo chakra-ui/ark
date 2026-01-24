@@ -1,6 +1,5 @@
 <script lang="ts">
   import { Accordion } from '@ark-ui/svelte/accordion'
-  import { ChevronDownIcon } from 'lucide-svelte'
   import styles from 'styles/accordion.module.css'
 
   const items = [
@@ -25,12 +24,7 @@
 <Accordion.Root class={styles.Root} defaultValue={['ark-ui']} orientation="horizontal">
   {#each items as item (item.value)}
     <Accordion.Item class={styles.Item} value={item.value}>
-      <Accordion.ItemTrigger class={styles.ItemTrigger}>
-        {item.title}
-        <Accordion.ItemIndicator class={styles.ItemIndicator}>
-          <ChevronDownIcon />
-        </Accordion.ItemIndicator>
-      </Accordion.ItemTrigger>
+      <Accordion.ItemTrigger class={styles.ItemTrigger}>{item.title}</Accordion.ItemTrigger>
       <Accordion.ItemContent class={styles.ItemContent}>
         <div class={`${styles.ItemBody} ${styles.Centered}`}>{item.content}</div>
       </Accordion.ItemContent>

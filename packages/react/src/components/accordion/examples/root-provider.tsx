@@ -9,8 +9,8 @@ export const RootProvider = () => {
   })
 
   return (
-    <>
-      <button onClick={() => accordion.setValue(['maintainers'])}>Set to Maintainers</button>
+    <div className="stack">
+      <output>Value: {JSON.stringify(accordion.value)}</output>
 
       <Accordion.RootProvider className={styles.Root} value={accordion}>
         {items.map((item) => (
@@ -27,7 +27,7 @@ export const RootProvider = () => {
           </Accordion.Item>
         ))}
       </Accordion.RootProvider>
-    </>
+    </div>
   )
 }
 
