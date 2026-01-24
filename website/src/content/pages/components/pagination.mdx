@@ -20,21 +20,21 @@ Learn how to use the `Pagination` component in your project. Let's take a look a
 
 <Example id="basic" />
 
-### Controlled Pagination
+### Controlled
 
 To create a controlled Pagination component, manage the state of the current page using the `page` prop and update it
 when the `onPageChange` event handler is called:
 
 <Example id="controlled" />
 
-### Customizing Pagination
+### Customization
 
 You can customize the Pagination component by setting various props such as `dir`, `pageSize`, `siblingCount`, and
 `translations`. Here's an example of a customized Pagination:
 
 <Example id="customized" />
 
-### Using Context
+### Context
 
 The `Context` component provides access to the pagination state and methods through a render prop pattern. This allows
 you to access methods like `setPage`, `setPageSize`, `goToNextPage`, `goToPrevPage`, `goToFirstPage`, `goToLastPage`, as
@@ -49,14 +49,14 @@ page and page size.
 
 <Example id="data-slicing" />
 
-### Page Range Display
+### Page Range
 
 Display the current page range information using the `pageRange` property. This shows which items are currently visible
 (e.g., "Showing 1-10 of 100 results").
 
 <Example id="page-range" />
 
-### Page Size Control
+### Page Size
 
 Control the number of items per page dynamically using `setPageSize()`. This example shows how to integrate a native
 select element to change the page size.
@@ -66,7 +66,7 @@ select element to change the page size.
 
 <Example id="page-size-control" />
 
-### Link Pagination
+### Links
 
 Create pagination with link navigation for better SEO and accessibility. This example shows how to use the pagination
 component with anchor links instead of buttons.

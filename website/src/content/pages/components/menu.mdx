@@ -20,14 +20,14 @@ Learn how to use the `Menu` component in your project. Let's take a look at the 
 
 <Example id="basic" />
 
-### Listening to item selection
+### Item Selection
 
 Pass the `onSelect` prop to the Menu component to perform some custom logic when an item is selected. The callback is
 invoked with the `id` of the item.
 
 <Example id="controlled" />
 
-### Grouping menu items
+### Grouping
 
 When the number of menu items gets much, it might be useful to group related menu items. To achieve this, render the
 `Menu.ItemGroup` component around the `Menu.Item` components. The `Menu.ItemGroupLabel` component can be used to add a
@@ -35,13 +35,13 @@ label to the group.
 
 <Example id="group" />
 
-### Menu with links
+### Links
 
 To render menu items as links, use the `asChild` prop to replace the default element with an anchor tag.
 
 <Example id="links" />
 
-### Context menu
+### Context Menu
 
 To show the menu when a trigger element is right-clicked, use the `Menu.ContextTrigger` component.
 
@@ -49,7 +49,7 @@ Context menus are also opened during a long-press of roughly `700ms` when the po
 
 <Example id="context" />
 
-### Nested menu
+### Nested
 
 To show a nested menu, render another `Menu` component and use the `Menu.TriggerItem` component to open the submenu.
 
@@ -67,7 +67,7 @@ To group radio option items, use the `Menu.RadioGroup` component.
 
 <Example id="radio-items" />
 
-### Using the Root Provider
+### Root Provider
 
 The `RootProvider` component provides a context for the menu. It accepts the value of the `useMenu` hook. You can
 leverage it to access the component state and methods from outside the menu.
@@ -78,7 +78,7 @@ leverage it to access the component state and methods from outside the menu.
 
 ## Guides
 
-### Avoid passing custom ids to menu items
+### Custom IDs
 
 Ark UI autogenerates ids for menu items internally. Passing a custom `id` prop breaks the internal `getElementById`
 functionality used by the component.
@@ -95,7 +95,7 @@ functionality used by the component.
 </Menu.Item>
 ```
 
-### Menu items as links
+### Links
 
 To render a menu item as a link, render the link as the menu item itself using the `asChild` prop, not as a child of the
 menu item.

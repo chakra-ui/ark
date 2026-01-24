@@ -61,7 +61,7 @@ the trigger element, but you can specify a different element:
 
 <Example id="final-focus" />
 
-### Non-Modal Dialog
+### Non-Modal
 
 Use `modal={false}` to create a non-modal dialog that allows interaction with elements outside of it. This disables
 focus trapping, scroll prevention, and pointer blocking, making it useful for auxiliary panels or inspector windows:
@@ -82,7 +82,7 @@ with `e.preventDefault()` to implement custom behavior like unsaved changes warn
 
 <Example id="close-on-escape" />
 
-### Using Context
+### Context
 
 Use the `Dialog.Context` component to access the dialog's state and methods.
 
@@ -99,14 +99,14 @@ when you need to control the dialog from outside its component tree.
 > `useDialog()` + `Dialog.RootProvider` for programmatic control with access to state properties and methods like
 > `setOpen()`. Never use both approaches together - choose one based on your needs.
 
-### Nested Dialogs
+### Nested
 
 Multiple dialogs can be stacked with automatic z-index management. Zag.js manages layering through CSS variables like
 `--z-index` and `--layer-index`, which are automatically updated when dialogs are opened or closed:
 
 <Example id="nested" />
 
-### Confirmation Dialog
+### Confirmation
 
 Dialogs can intercept close attempts to show confirmation prompts. This pattern is useful for preventing data loss from
 unsaved changes:
@@ -115,7 +115,7 @@ unsaved changes:
 
 ## Guides
 
-### Nested Dialog Styling
+### Nested Styling
 
 You can create a zoom-out effect for parent dialogs using the `data-has-nested` attribute and `--nested-layer-count`
 variable:
@@ -126,7 +126,7 @@ variable:
 }
 ```
 
-### Lazy Mount and Dynamic Imports
+### Dynamic Imports
 
 When using `lazyMount` and dynamically rendering components in the dialog (via `React.lazy`, Next.js `dynamic`), wrap
 the imported component in a `Suspense` component to render a fallback.

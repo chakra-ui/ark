@@ -47,6 +47,12 @@ ARIA labels, helper text, and error text to ensure proper accessibility.
 
 <Example id="with-field" />
 
+### Context
+
+Use the `Combobox.Context` component to access the combobox state and display information like the selected value.
+
+<Example id="context" />
+
 ### Root Provider
 
 Use the `useCombobox` hook to create the combobox store and pass it to the `Combobox.RootProvider` component. This
@@ -62,27 +68,27 @@ Use the `asChild` prop to render the combobox items as links.
 
 <Example id="links" />
 
-### Rehydrate Value
+### Rehydrate
 
 When a combobox has a `defaultValue` or `value` but the `collection` is not loaded yet, you can rehydrate the value to
 populate the input.
 
 <Example id="rehydrate-value" />
 
-### Highlight Matching Text
+### Highlight Text
 
 Highlight the matching search text in combobox items based on the user's input.
 
 <Example id="highlight-matching-text" />
 
-### Dynamic Items
+### Dynamic
 
 Generate combobox items dynamically based on user input. This is useful for creating suggestions or autocomplete
 functionality.
 
 <Example id="dynamic" />
 
-### Creatable Options
+### Creatable
 
 Allow users to create new options when their search doesn't match any existing items. This is useful for tags,
 categories, or other custom values.
@@ -104,13 +110,26 @@ datasets or fetching data from an API.
 
 ### Virtualized
 
-For very large lists, use virtualization with `@tanstack/react-virtual` to render only the visible items.
+For very large lists, use virtualization with `@tanstack/virtual` to render only the visible items. Pass the
+`scrollToIndexFn` prop to enable keyboard navigation within the virtualized list.
 
 <Example id="virtualized" />
 
+### Custom Object
+
+Use the `itemToString` and `itemToValue` props to map custom objects to the required interface.
+
+<Example id="custom-object" />
+
+### Limit Results
+
+Use the `limit` property on `useListCollection` to limit the number of rendered items in the DOM.
+
+<Example id="limit-results" />
+
 ## Guides
 
-### Custom Router Links
+### Router Links
 
 Customize the `navigate` prop on `Combobox.Root` to integrate with your router. Using Tanstack Router:
 
@@ -154,25 +173,20 @@ const { collection } = useListCollection({
 })
 ```
 
-### Type-Safety
+### Type Safety
 
-The `Combobox.RootComponent` type enables you to create closed, strongly typed wrapper components that maintain full
-type safety for collection items.
-
-This is particularly useful when building reusable combobox components with custom props and consistent styling.
+The `Combobox.RootComponent` type enables you to create typed wrapper components that maintain full type safety for
+collection items.
 
 ```tsx
-import { Combobox as ArkCombobox, type CollectionItem } from '@ark-ui/react/combobox'
-import { useListCollection } from '@ark-ui/react/collection'
-
-interface ComboboxProps<T extends CollectionItem> extends ArkCombobox.RootProps<T> {}
+import { Combobox as ArkCombobox } from '@ark-ui/react/combobox'
 
 const Combobox: ArkCombobox.RootComponent = (props) => {
   return <ArkCombobox.Root {...props}>{/* ... */}</ArkCombobox.Root>
 }
 ```
 
-Then, you can use the `Combobox` component as follows:
+Use the wrapper with full type inference on `onValueChange` and other callbacks:
 
 ```tsx
 const App = () => {
@@ -180,14 +194,13 @@ const App = () => {
     initialItems: [
       { label: 'React', value: 'react' },
       { label: 'Vue', value: 'vue' },
-      { label: 'Svelte', value: 'svelte' },
     ],
   })
   return (
     <Combobox
       collection={collection}
       onValueChange={(e) => {
-        // this will be strongly typed Array<{ label: string, value: string }>
+        // e.items is typed as Array<{ label: string, value: string }>
         console.log(e.items)
       }}
     >
@@ -197,7 +210,7 @@ const App = () => {
 }
 ```
 
-### Limit Large Datasets
+### Large Datasets
 
 The recommended way of managing large lists is to use the `limit` property on the `useListCollection` hook. This will
 limit the number of rendered items in the DOM to improve performance.
@@ -209,7 +222,7 @@ const { collection } = useListCollection({
 })
 ```
 
-### Available height and width
+### Available Size
 
 The following css variables are exposed to the `Combobox.Positioner` which you can use to style the `Combobox.Content`
 

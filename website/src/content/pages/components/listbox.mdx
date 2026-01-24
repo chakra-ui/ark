@@ -37,7 +37,7 @@ Listbox items can be disabled using the `disabled` prop on the collection item.
 
 > You can also use the `isItemDisabled` within the `createListCollection` to disable items based on a condition.
 
-### Multiple Selection
+### Multiple
 
 You can set the `selectionMode` property as `multiple` to allow the user to select multiple items at a time.
 
@@ -50,27 +50,69 @@ property.
 
 <Example id="group" />
 
+### Extended Selection
+
+The extended selection mode allows users to select multiple items using keyboard modifiers like `Cmd` (Mac) or `Ctrl`
+(Windows/Linux).
+
+<Example id="extended-select" />
+
+### Horizontal
+
+Use the `orientation` prop to display the listbox items horizontally.
+
+<Example id="horizontal" />
+
+### Grid Layout
+
+Use `createGridCollection` to display items in a grid layout with keyboard navigation support.
+
+<Example id="grid" />
+
+### Filtering
+
+Use `useListCollection` with the `filter` function to enable filtering of items.
+
+<Example id="filtering" />
+
+### Select All
+
+Use `useListboxContext` to implement a "Select All" functionality that allows users to select or deselect all items at
+once.
+
+<Example id="select-all" />
+
+### Value Text
+
+Use `Listbox.ValueText` to display the selected values as a comma-separated string.
+
+<Example id="value-text" />
+
+### Root Provider
+
+The `RootProvider` component provides a context for the listbox. It accepts the value of the `useListbox` hook. You can
+leverage it to access the component state and methods from outside the listbox.
+
+<Example id="root-provider" />
+
+> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+
 ## Guides
 
-### Type-Safety
+### Type Safety
 
-The `Listbox.RootComponent` type enables you to create closed, strongly typed wrapper components that maintain full type
-safety for collection items.
-
-This is particularly useful when building reusable listbox components with custom props and consistent styling.
+The `Listbox.RootComponent` type enables you to create typed wrapper components that maintain full type safety for
+collection items.
 
 ```tsx
-import { Listbox as ArkListbox, type CollectionItem } from '@ark-ui/react/listbox'
-import { createListCollection } from '@ark-ui/react/collection'
-
-interface ListboxProps<T extends CollectionItem> extends ArkListbox.RootProps<T> {}
+import { Listbox as ArkListbox } from '@ark-ui/react/listbox'
 
 const Listbox: ArkListbox.RootComponent = (props) => {
   return <ArkListbox.Root {...props}>{/* ... */}</ArkListbox.Root>
 }
 ```
 
-Then, you can use the `Listbox` component as follows:
+Use the wrapper with full type inference on `onValueChange` and other callbacks:
 
 ```tsx
 const App = () => {
@@ -78,14 +120,13 @@ const App = () => {
     initialItems: [
       { label: 'React', value: 'react' },
       { label: 'Vue', value: 'vue' },
-      { label: 'Svelte', value: 'svelte' },
     ],
   })
   return (
     <Listbox
       collection={collection}
       onValueChange={(e) => {
-        // this will be strongly typed Array<{ label: string, value: string }>
+        // e.items is typed as Array<{ label: string, value: string }>
         console.log(e.items)
       }}
     >

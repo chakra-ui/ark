@@ -30,6 +30,9 @@
   --demo-bg-thumb: white;
   --demo-bg-checkbox: white;
 
+  /* Z-index tokens */
+  --demo-popover-z-index: 50;
+
   /* Shadow tokens (soft, modern shadows) */
   --demo-shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --demo-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08);

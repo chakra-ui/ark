@@ -35,7 +35,7 @@ Here's an example of creating a toast using the `toast.create` method.
 
 <Example id="basic" />
 
-### Toast Types
+### Types
 
 You can create different types of toasts (`success`, `error`, `warning`, `info`) with appropriate styling. For example,
 to create a success toast, you can do:
@@ -57,7 +57,7 @@ promise resolves or rejects.
 
 <Example id="promise-toast" />
 
-### Update Toast
+### Update
 
 To update a toast, use the `toast.update` method.
 
@@ -69,14 +69,14 @@ To add an action to a toast, use the `toast.action` property.
 
 <Example id="action" />
 
-### Custom Duration
+### Duration
 
 You can control how long a toast stays visible by setting a custom `duration` in milliseconds, or use `Infinity` to keep
 it visible until manually dismissed.
 
 <Example id="duration" />
 
-### Maximum Visible Toasts
+### Max Visible
 
 Set the `max` prop on the `createToaster` function to define the maximum number of toasts that can be rendered at any
 one time. Any extra toasts will be queued and rendered when a toast has been dismissed.
@@ -85,7 +85,7 @@ one time. Any extra toasts will be queued and rendered when a toast has been dis
 
 ## Guides
 
-### Creating Toast in Effects
+### Toast in Effects
 
 When creating a toast inside React effects (like `useEffect`, `useLayoutEffect`, or event handlers that trigger during
 render), you may encounter a "flushSync" warning. To avoid this, wrap the toast call in `queueMicrotask`:
@@ -115,7 +115,7 @@ export const EffectToast = () => {
 This ensures the toast creation is deferred until after the current execution context, preventing React's concurrent
 rendering warnings.
 
-### Styling the toast
+### Styling
 
 There's a minimal styling required for the toast to work correctly.
 

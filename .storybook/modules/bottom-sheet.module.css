@@ -4,7 +4,7 @@
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 50;
+  z-index: var(--demo-popover-z-index);
 
   &[data-state='open'] {
     animation: fade-in 0.5s cubic-bezier(0.32, 0.72, 0, 1);
@@ -30,7 +30,7 @@
   border-top-right-radius: 16px;
   background: var(--demo-bg-popover);
   box-shadow: var(--demo-shadow-xl);
-  z-index: 50;
+  z-index: var(--demo-popover-z-index);
   outline: none;
   transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1);
   animation-duration: 0.5s;

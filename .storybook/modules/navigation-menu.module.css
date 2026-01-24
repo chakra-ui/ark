@@ -140,7 +140,7 @@
   border: 1px solid var(--demo-border-emphasized);
   border-radius: 0.5rem;
   box-shadow: var(--demo-shadow-2xl);
-  z-index: 50;
+  z-index: var(--demo-popover-z-index);
   transform-origin: top left;
   outline: none;
 

@@ -20,20 +20,20 @@ Learn how to use the `Popover` component in your project. Let's take a look at t
 
 <Example id="basic" />
 
-### Adding an arrow
+### Arrow
 
 To render an arrow within the popover, render the component `Popover.Arrow` and `Popover.ArrowTip` as children of
 `Popover.Positioner`.
 
 <Example id="arrow" />
 
-### Control the open state
+### Controlled open state
 
-Use the `isOpen` prop to control the open state of the popover.
+Use the `open` and `onOpenChange` props to control the open state of the popover.
 
 <Example id="controlled" />
 
-### Modifying the close behavior
+### Close Behavior
 
 The popover is designed to close on blur and when the <kbd>esc</kbd> key is pressed.
 
@@ -43,13 +43,13 @@ The popover is designed to close on blur and when the <kbd>esc</kbd> key is pres
 
 <Example id="close-behavior" />
 
-### Changing the placement
+### Placement
 
 To change the placement of the popover, set the `positioning` prop.
 
 <Example id="positioning" />
 
-### Changing the modality
+### Modality
 
 In some cases, you might want the popover to be modal. This means that it'll:
 
@@ -63,7 +63,7 @@ To make the popover modal, set the `modal` prop to `true`. When `modal={true}`, 
 
 <Example id="modal" />
 
-### Using the Root Provider
+### Root Provider
 
 The `RootProvider` component provides a context for the popover. It accepts the value of the `usePopover` hook. You can
 leverage it to access the component state and methods from outside the popover.
@@ -72,7 +72,7 @@ leverage it to access the component state and methods from outside the popover.
 
 > If you're using the `RootProvider` component, you don't need to use the `Root` component.
 
-### Usage with Dialog
+### Dialog Integration
 
 When rendering a popover inside a dialog, you have two options for proper layering:
 
@@ -86,7 +86,7 @@ When rendering a popover inside a dialog, you have two options for proper layeri
 
 ## Guides
 
-### Available height and width
+### Available Size
 
 The following css variables are exposed to the `Popover.Positioner` which you can use to style the `Popover.Content`
 

@@ -72,7 +72,7 @@
   border: 1px solid var(--demo-border-emphasized);
   border-radius: 0.375rem;
   box-shadow: var(--demo-shadow-md);
-  z-index: calc(50 + var(--layer-index, 0));
+  z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
   outline: none;
   transform-origin: var(--transform-origin);
 

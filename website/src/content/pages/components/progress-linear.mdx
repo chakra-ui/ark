@@ -20,7 +20,7 @@ Learn how to use the `Progress` component in your project. Let's take a look at 
 
 <Example id="basic" />
 
-### Set a min and max value
+### Min and Max
 
 By default, the maximum is `100`. If that's not what you want, you can easily specify a different bound by changing the
 value of the `max` prop. You can do the same with the minimum value by setting the `min` prop.
@@ -29,21 +29,21 @@ For example, to show the user a progress from `10` to `30`, you can use:
 
 <Example id="min-max" />
 
-### Indeterminate progress
+### Indeterminate
 
 The progress component is determinate by default, with the value and max set to 50 and 100 respectively. To render an
 indeterminate progress, you will have to set the `value` to `null`.
 
 <Example id="indeterminate" />
 
-### Showing a value text
+### Value Text
 
 Progress bars can only be interpreted by sighted users. To include a text description to support assistive technologies
 like screen readers, use the `value` part in `translations`.
 
 <Example id="value-text" />
 
-### Changing the orientation
+### Orientation
 
 By default, the progress is assumed to be horizontal. To change the orientation to vertical, set the orientation
 property in the machine's context to vertical.
@@ -52,7 +52,7 @@ property in the machine's context to vertical.
 
 <Example id="vertical" />
 
-### Using the Root Provider
+### Root Provider
 
 The `RootProvider` component provides a context for the progress. It accepts the value of the `useProgress` hook. You
 can leverage it to access the component state and methods from outside the progress.

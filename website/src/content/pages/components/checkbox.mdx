@@ -14,15 +14,6 @@ To set up the checkbox correctly, you'll need to understand its anatomy and how 
 
 <Anatomy id="checkbox" />
 
-### Design impact on the asChild property
-
-The `Checkbox.Root` element of the checkbox is a `label` element. This is because the checkbox is a form control and
-should be associated with a label to provide context and meaning to the user. Otherwise, the HTML and accessibility
-structure will be invalid.
-
-> If you need to use the `asChild` property, make sure that the `label` element is the direct child of the
-> `Checkbox.Root` component.
-
 ## Examples
 
 Learn how to use the `Checkbox` component in your project. Let's take a look at the most basic example:
@@ -54,7 +45,7 @@ Use the `indeterminate` prop to create a checkbox in an indeterminate state (par
 
 <Example id="indeterminate" />
 
-### Access Checkbox State
+### State
 
 Use the `Checkbox.Context` component to access the checkbox's state and methods.
 
@@ -90,7 +81,7 @@ the checkboxes and provides a way to access the checked values.
 
 <Example id="group" />
 
-### Group Controlled
+### Controlled Group
 
 Use the `value` and `onValueChange` props to programmatically control the checkbox group's state. This example
 demonstrates how to manage selected checkboxes in an array and display the current selection.
@@ -105,21 +96,21 @@ individual checkboxes.
 
 <Example id="group-provider" />
 
-### Group + Form
+### Form Submission
 
 Use the `Checkbox.Group` component within a form to handle multiple checkbox values with form submission. The `name`
 prop ensures all selected values are collected as an array when the form is submitted using `FormData.getAll()`.
 
 <Example id="group-with-form" />
 
-### Group + Invalid
+### Invalid State
 
 Use the `invalid` prop on `Checkbox.Group` to mark the entire group as invalid for validation purposes. This applies the
 invalid state to all checkboxes within the group.
 
 <Example id="group-with-invalid" />
 
-### Group + Select All
+### Select All
 
 Implement a "select all" checkbox that controls all checkboxes within a group. The parent checkbox automatically shows
 an indeterminate state when some (but not all) items are selected, and becomes fully checked when all items are
@@ -127,12 +118,23 @@ selected.
 
 <Example id="group-with-select-all" />
 
-### Group + Fieldset
+### Fieldset
 
 Use the `Fieldset` component with `Checkbox.Group` to provide semantic grouping with legend, helper text, and error text
 support.
 
 <Example id="group-with-fieldset" />
+
+## Guides
+
+### asChild Behavior
+
+The `Checkbox.Root` element of the checkbox is a `label` element. This is because the checkbox is a form control and
+should be associated with a label to provide context and meaning to the user. Otherwise, the HTML and accessibility
+structure will be invalid.
+
+> If you need to use the `asChild` property, make sure that the `label` element is the direct child of the
+> `Checkbox.Root` component.
 
 ## API Reference
 

@@ -20,13 +20,13 @@ Learn how to use the `Slider` component in your project. Let's take a look at th
 
 <Example id="basic" />
 
-### Range Slider
+### Range
 
 You can add multiple thumbs to the slider by adding multiple `Slider.Thumb`
 
 <Example id="range" />
 
-### Adding marks
+### Marks
 
 You can add marks to the slider track by using the `Slider.MarkerGroup` and `Slider.Marker` components.
 
@@ -34,7 +34,7 @@ Position the `Slider.Marker` components relative to the track by providing the `
 
 <Example id="with-marks" />
 
-### Specifying the minimum and maximum
+### Min and Max
 
 By default, the minimum is `0` and the maximum is `100`. If that's not what you want, you can easily specify different
 bounds by changing the values of the `min` and/or `max` props.
@@ -43,7 +43,7 @@ For example, to ask the user for a value between `-10` and `10`, you can use:
 
 <Example id="min-max" />
 
-### Setting the value's granularity
+### Granularity
 
 By default, the granularity, is `1`, meaning that the value is always an integer. You can change the step attribute to
 control the granularity.
@@ -53,14 +53,14 @@ to `0.01`:
 
 <Example id="step" />
 
-### Listening for changes
+### Change Events
 
 When the slider value changes, the `onValueChange` and `onValueChangeEnd` callbacks are invoked. You can use this to set
 up custom behaviors in your app.
 
 <Example id="on-event" />
 
-### Changing the orientation
+### Orientation
 
 By default, the slider is assumed to be horizontal. To change the orientation to vertical, set the orientation property
 in the machine's context to vertical.
@@ -71,14 +71,14 @@ In this mode, the slider will use the arrow up and down keys to increment/decrem
 
 <Example id="vertical" />
 
-### Changing the origin
+### Origin
 
 By default, the slider's origin is at the start of the track. To change the origin to the center of the track, set the
 `origin` prop to `center`.
 
 <Example id="center-origin" />
 
-### Using the Root Provider
+### Root Provider
 
 The `RootProvider` component provides a context for the slider. It accepts the value of the `useSlider` hook. You can
 leverage it to access the component state and methods from outside the slider.

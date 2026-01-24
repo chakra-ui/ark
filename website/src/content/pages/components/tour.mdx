@@ -28,20 +28,20 @@ Learn how to use the `Tour` component in your project. Let's take a look at the 
 
 <Example id="basic" />
 
-### Mixed Step Types
+### Step Types
 
 Demonstrate all three step types in a single tour: `dialog` for welcome/completion, `tooltip` anchored to elements, and
 `floating` for fixed-position content.
 
 <Example id="mixed-types" />
 
-### Progress Bar
+### Progress
 
 Display a visual progress indicator at the bottom of the tour content showing how far along the user is.
 
 <Example id="progress-bar" />
 
-### Skip Tour
+### Skip
 
 Allow users to skip the entire tour at any step by adding a skip action.
 
@@ -77,7 +77,7 @@ Wait for dynamically rendered elements to appear in the DOM before showing a ste
 
 <Example id="wait-for-element" />
 
-### Async Step
+### Async
 
 Load data asynchronously and update step content before displaying it using the `effect` function with `show()` and
 `update()`.
@@ -86,7 +86,7 @@ Load data asynchronously and update step content before displaying it using the 
 
 ## Guides
 
-### Using step types
+### Step Types
 
 The tour machine supports different types of steps, allowing you to create a diverse and interactive tour experience.
 The available step types are defined in the `StepType` type:
@@ -137,7 +137,7 @@ const steps: TourStepDetails[] = [
 ]
 ```
 
-### Configuring actions
+### Actions
 
 Every step supports a list of actions that are rendered in the step footer.Use the `actions` property to define each
 action.
@@ -154,7 +154,7 @@ const steps: TourStepDetails[] = [
 ]
 ```
 
-### Changing tooltip placement
+### Tooltip Placement
 
 Use the `placement` property to define the placement of the tooltip.
 
@@ -169,7 +169,7 @@ const steps: TourStepDetails[] = [
 ]
 ```
 
-### Hiding the arrow
+### Hide Arrow
 
 Set `arrow: false` in the step property to hide the tooltip arrow. This is only useful for tooltip steps.
 
@@ -183,7 +183,7 @@ const steps: TourStepDetails[] = [
 ]
 ```
 
-### Hiding the backdrop
+### Hide Backdrop
 
 Set `backdrop: false` in the step property to hide the backdrop. This applies to all step types except the `wait` step.
 
@@ -197,7 +197,7 @@ const steps: TourStepDetails[] = [
 ]
 ```
 
-### Step Effects
+### Effects
 
 Step effects are functions that are called before a step is opened. They are useful for adding custom logic to a step.
 
@@ -229,7 +229,7 @@ const steps: TourStepDetails[] = [
 ]
 ```
 
-### Wait Steps
+### Wait
 
 Wait steps are useful when you need to wait for a specific condition before proceeding to the next step.
 
@@ -252,7 +252,7 @@ const steps: TourStepDetails[] = [
 ]
 ```
 
-### Styling Requirements
+### Styling
 
 Ensure the `box-sizing` is set to `border-box` for the means of measuring the tour target.
 

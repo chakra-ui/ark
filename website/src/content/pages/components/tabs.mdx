@@ -20,13 +20,13 @@ Learn how to use the `Tabs` component in your project. Let's take a look at the 
 
 <Example id="basic" />
 
-### Tab Indicator
+### Indicator
 
 To provide a visual cue for the selected tab, use the `Tabs.Indicator` component:
 
 <Example id="indicator" />
 
-### Lazy Mounting
+### Lazy Mount
 
 Lazy mounting is a feature that allows the content of a tab to be rendered only when the tab is first activated. This is
 useful for performance optimization, especially when tab content is large or complex. To enable lazy mounting, use the
@@ -37,20 +37,20 @@ tab is deactivated, freeing up resources. The next time the tab is activated, it
 
 <Example id="lazy-mount" />
 
-### Disabled Tab
+### Disabled
 
 To disable a tab, simply pass the `disabled` prop to the `Tabs.Trigger` component:
 
 <Example id="disabled-tab" />
 
-### Controlled Tabs
+### Controlled
 
 To create a controlled Tabs component, manage the current selected tab using the `value` prop and update it when the
 `onValueChange` event handler is called:
 
 <Example id="controlled" />
 
-### Vertical Tabs
+### Vertical
 
 The default orientation of the tabs is `horizontal`. To change the orientation, set the `orientation` prop to
 `vertical`.
@@ -68,7 +68,7 @@ In contrast, manual tab activation means the tab is selected with the
 
 <Example id="manual-activation" />
 
-### Using the Root Provider
+### Root Provider
 
 The `RootProvider` component provides a context for the tabs. It accepts the value of the `useTabs` hook. You can
 leverage it to access the component state and methods from outside the tabs.
@@ -79,7 +79,7 @@ leverage it to access the component state and methods from outside the tabs.
 
 ## Guides
 
-### Router Controlled Tabs
+### Router Integration
 
 When using frameworks like Next.js, Remix, or React Router, controlling the active tabs based on the URL can be useful.
 

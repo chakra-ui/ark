@@ -88,7 +88,7 @@ like `open` and `visible`.
 
 ## Guides
 
-### Animating the Indicator
+### Indicator Animation
 
 To rotate the indicator icon (such as a chevron) when the collapsible opens and closes, use CSS transforms with the
 `data-state` attribute:
@@ -103,7 +103,7 @@ To rotate the indicator icon (such as a chevron) when the collapsible opens and 
 }
 ```
 
-### `open` vs `visible`
+### Open vs Visible
 
 When using `useCollapsible` or `useCollapsibleContext`, you can access the `open` and `visible` state properties. They
 seem similar but serve different purposes:
@@ -115,7 +115,7 @@ seem similar but serve different purposes:
   content remains `visible` while the closing animation plays, even though `open` is already `false`. Once the animation
   completes, `visible` becomes `false`.
 
-### Animating the Content
+### Content Animation
 
 Use the `--height` and/or `--width` CSS variables to animate the size of the content when it expands or closes.
 

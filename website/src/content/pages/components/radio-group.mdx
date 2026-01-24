@@ -20,27 +20,27 @@ Learn how to use the `RadioGroup` component in your project. Let's take a look a
 
 <Example id="basic" />
 
-### Disabling the radio group
+### Disabled
 
 To make a radio group disabled, set the `disabled` prop to `true`.
 
 <Example id="disabled" />
 
-### Setting the initial value
+### Initial Value
 
 To set the radio group's initial value, set the `defaultValue` prop to the value of the radio item to be selected by
 default.
 
 <Example id="initial-value" />
 
-### Controlled Radio Group
+### Controlled
 
 For a controlled Radio Group, the state is managed using the `value` prop, and updates when the `onValueChange` event
 handler is called:
 
 <Example id="controlled" />
 
-### Using the Root Provider
+### Root Provider
 
 The `RootProvider` component provides a context for the radio-group. It accepts the value of the `useRadio-group` hook.
 You can leverage it to access the component state and methods from outside the radio-group.
@@ -51,7 +51,7 @@ You can leverage it to access the component state and methods from outside the r
 
 ## Guides
 
-### Using `asChild`
+### asChild
 
 The `RadioGroup.Item` component renders as a `label` element by default. This ensures proper form semantics and
 accessibility, as radio groups are form controls that require labels to provide meaningful context for users.
@@ -81,7 +81,7 @@ maintain valid HTML structure and accessibility compliance.
 </RadioGroup.Item>
 ```
 
-### Why `ItemHiddenInput` is required
+### Hidden Input
 
 The `RadioGroup.ItemHiddenInput` component renders a hidden HTML input element that enables proper form submission and
 integration with native form behaviors. This component is essential for the radio group to function correctly as it:

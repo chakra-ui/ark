@@ -20,7 +20,7 @@ Learn how to use the `Select` component in your project. Let's take a look at th
 
 <Example id="basic" />
 
-### Controlled Value
+### Controlled
 
 Use the `value` and `onValueChange` props to control the selected items.
 
@@ -36,19 +36,19 @@ Grouping related options can be useful for organizing options into categories.
 
 <Example id="grouping" />
 
-### Multiple Selection
+### Multiple
 
 To enable `multiple` item selection:
 
 <Example id="multiple" />
 
-### Form Library
+### Form Usage
 
 Here's an example of integrating the `Select` component with a form library.
 
 <Example id="form-library" />
 
-### Field Component
+### Field
 
 The `Field` component helps manage form-related state and accessibility attributes of a select. It includes handling
 ARIA labels, helper text, and error text to ensure proper accessibility.
@@ -76,7 +76,7 @@ Here's an example of automatically selecting items when they are highlighted (ho
 
 <Example id="select-on-highlight" />
 
-### Maximum Selected Items
+### Max Selection
 
 Here's an example of limiting the number of items that can be selected in a multiple select.
 
@@ -91,25 +91,20 @@ DOM. This can improve performance by only rendering the content when needed.
 
 ## Guides
 
-### Type-Safety
+### Type Safety
 
-The `Select.RootComponent` type enables you to create closed, strongly typed wrapper components that maintain full type
-safety for collection items.
-
-This is particularly useful when building reusable select components with custom props and consistent styling.
+The `Select.RootComponent` type enables you to create typed wrapper components that maintain full type safety for
+collection items.
 
 ```tsx
-import { Select as ArkSelect, type CollectionItem } from '@ark-ui/react/select'
-import { createListCollection } from '@ark-ui/react/collection'
-
-interface SelectProps<T extends CollectionItem> extends ArkSelect.RootProps<T> {}
+import { Select as ArkSelect } from '@ark-ui/react/select'
 
 const Select: ArkSelect.RootComponent = (props) => {
   return <ArkSelect.Root {...props}>{/* ... */}</ArkSelect.Root>
 }
 ```
 
-Then, you can use the `Select` component as follows:
+Use the wrapper with full type inference on `onValueChange` and other callbacks:
 
 ```tsx
 const App = () => {
@@ -117,14 +112,13 @@ const App = () => {
     initialItems: [
       { label: 'React', value: 'react' },
       { label: 'Vue', value: 'vue' },
-      { label: 'Svelte', value: 'svelte' },
     ],
   })
   return (
     <Select
       collection={collection}
       onValueChange={(e) => {
-        // this will be strongly typed Array<{ label: string, value: string }>
+        // e.items is typed as Array<{ label: string, value: string }>
         console.log(e.items)
       }}
     >
@@ -134,7 +128,7 @@ const App = () => {
 }
 ```
 
-### Usage in Popover or Dialog
+### Nested Usage
 
 When using the Select component within a `Popover` or `Dialog`, avoid rendering its content within a `Portal` or
 `Teleport`.
@@ -185,7 +179,7 @@ Then use it within your Select content:
 </Select.Content>
 ```
 
-### Available height and width
+### Available Size
 
 The following css variables are exposed to the `Select.Positioner` which you can use to style the `Select.Content`
 

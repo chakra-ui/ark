@@ -52,7 +52,7 @@
   line-height: 1.25rem;
   box-shadow: var(--demo-shadow-md);
   max-width: 20rem;
-  z-index: calc(50 + var(--layer-index, 0));
+  z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
   transform-origin: var(--transform-origin);
 
   &[data-state='open'] {
