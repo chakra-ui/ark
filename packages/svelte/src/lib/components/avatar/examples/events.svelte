@@ -2,12 +2,13 @@
   import { Avatar } from '@ark-ui/svelte/avatar'
   import styles from 'styles/avatar.module.css'
 
-  const handleStatusChange = (details: Avatar.StatusChangeDetails) => {
-    console.log(details.status)
-  }
+  let status = $state('loading...')
 </script>
 
-<Avatar.Root class={styles.Root} onStatusChange={handleStatusChange}>
-  <Avatar.Fallback class={styles.Fallback}>PA</Avatar.Fallback>
-  <Avatar.Image class={styles.Image} src="https://i.pravatar.cc/3000?u=a" alt="avatar" />
-</Avatar.Root>
+<div class="vstack">
+  <output>Status: {status}</output>
+  <Avatar.Root class={styles.Root} onStatusChange={(e) => (status = e.status)}>
+    <Avatar.Fallback class={styles.Fallback}>PA</Avatar.Fallback>
+    <Avatar.Image class={styles.Image} src="https://i.pravatar.cc/3000?u=a" alt="avatar" />
+  </Avatar.Root>
+</div>
