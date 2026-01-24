@@ -15,8 +15,8 @@ const carousel = useCarousel({ slideCount: images.length })
 </script>
 
 <template>
-  <div>
-    <div>Current page: {{ carousel.page }}</div>
+  <div class="vstack">
+    <output>Page: {{ carousel.page }}</output>
     <Carousel.RootProvider :class="styles.Root" :value="carousel">
       <Carousel.Control :class="styles.Control">
         <Carousel.PrevTrigger :class="styles.Trigger">

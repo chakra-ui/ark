@@ -1,7 +1,6 @@
 import { Carousel, useCarousel } from '@ark-ui/solid/carousel'
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-solid'
 import { Index } from 'solid-js'
-import button from 'styles/button.module.css'
 import styles from 'styles/carousel.module.css'
 
 const images = [
@@ -16,10 +15,8 @@ export const RootProvider = () => {
   const carousel = useCarousel({ slideCount: images.length })
 
   return (
-    <div class="stack">
-      <button class={button.Root} onClick={() => carousel().scrollToIndex(2)}>
-        Scroll to #3
-      </button>
+    <div class="vstack">
+      <output>Page: {carousel().page}</output>
       <Carousel.RootProvider class={styles.Root} value={carousel}>
         <Carousel.Control class={styles.Control}>
           <Carousel.PrevTrigger class={styles.Trigger}>

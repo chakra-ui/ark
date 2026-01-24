@@ -4,7 +4,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-vue-next'
 import button from 'styles/button.module.css'
 import styles from 'styles/carousel.module.css'
 
-const slides = [0, 1, 2, 3, 4]
+const slides = Array.from({ length: 6 })
 </script>
 
 <template>

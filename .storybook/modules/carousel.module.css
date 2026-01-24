@@ -74,10 +74,6 @@
   &[data-justify='center'] {
     justify-content: center;
   }
-
-  &[data-align='center'] {
-    justify-content: center;
-  }
 }
 
 .Trigger {

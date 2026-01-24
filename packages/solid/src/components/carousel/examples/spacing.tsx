@@ -3,7 +3,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-solid'
 import { Index } from 'solid-js'
 import styles from 'styles/carousel.module.css'
 
-const slides = [0, 1, 2, 3, 4]
+const slides = Array.from({ length: 6 })
 
 export const Spacing = () => {
   return (

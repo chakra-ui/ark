@@ -2,7 +2,7 @@ import { Carousel } from '@ark-ui/react/carousel'
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 import styles from 'styles/carousel.module.css'
 
-const slides = [0, 1, 2, 3, 4]
+const slides = Array.from({ length: 6 })
 
 export const Spacing = () => {
   return (
@@ -15,7 +15,7 @@ export const Spacing = () => {
           </Carousel.Item>
         ))}
       </Carousel.ItemGroup>
-      <Carousel.Control className={styles.Control} data-align="center">
+      <Carousel.Control className={styles.Control}>
         <Carousel.PrevTrigger className={styles.Trigger}>
           <ArrowLeftIcon />
         </Carousel.PrevTrigger>

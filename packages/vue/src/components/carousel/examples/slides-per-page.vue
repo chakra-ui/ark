@@ -3,7 +3,7 @@ import { Carousel } from '@ark-ui/vue/carousel'
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-vue-next'
 import styles from 'styles/carousel.module.css'
 
-const slides = [0, 1, 2, 3, 4]
+const slides = Array.from({ length: 6 })
 </script>
 
 <template>

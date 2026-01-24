@@ -41,15 +41,13 @@ when the `onPageChange` event handler is called:
 Use the `useCarousel` hook to create the carousel store and pass it to the `Carousel.RootProvider` component. This
 allows you to have maximum control over the carousel programmatically.
 
-<Example id="root-provider" />
-
 > If you're using the `Carousel.RootProvider` component, you don't need to use the `Carousel.Root` component.
+
+<Example id="root-provider" />
 
 ### Autoplay
 
 Pass the `autoplay` and `loop` props to `Carousel.Root` to make the carousel play automatically.
-
-> **Note:** Adding `loop` ensures the carousel keeps going after the last slide.
 
 <Example id="autoplay" />
 
@@ -57,9 +55,6 @@ Pass the `autoplay` and `loop` props to `Carousel.Root` to make the carousel pla
 
 This feature isn't built-in, but you can use the `play()` and `pause()` methods from `Carousel.Context` to implement
 pause on hover.
-
-Add the `autoplay` and `loop` props to `Carousel.Root`, then attach `onPointerOver` and `onPointerLeave` handlers to
-`Carousel.ItemGroup` that call `api.pause()` and `api.play()` respectively.
 
 <Example id="pause-on-hover" />
 
@@ -70,10 +65,10 @@ visual preview of each slide:
 
 <Example id="thumbnail-indicator" />
 
-### Vertical Orientation
+### Vertical
 
-Set the `orientation="vertical"` prop on `Carousel.Root` to change the carousel from horizontal to vertical scrolling.
-This is useful for vertical galleries or content feeds.
+Add the `orientation="vertical"` prop to `Carousel.Root` to switch the carousel to vertical scrolling. This can be
+helpful for displaying vertical galleries or content feeds.
 
 <Example id="vertical" />
 
@@ -109,9 +104,9 @@ layouts that show partial previews of adjacent slides.
 
 ### Variable Size Slides
 
-Enable variable-width slides by setting the `autoSize` prop on `Carousel.Root`. Each `Carousel.Item` can have its own
-width, and the carousel will adapt accordingly. Use the `snapAlign` prop on individual items to control their snap
-position.
+To allow slides with different widths, set the `autoSize` prop on `Carousel.Root`. This lets each `Carousel.Item` define
+its own width, and the carousel will adjust automatically. You can also use the `snapAlign` prop on individual items to
+control where each one snaps into view.
 
 <Example id="variable-size" />
 

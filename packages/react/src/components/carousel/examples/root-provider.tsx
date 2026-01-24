@@ -1,6 +1,5 @@
 import { Carousel, useCarousel } from '@ark-ui/react/carousel'
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
-import button from 'styles/button.module.css'
 import styles from 'styles/carousel.module.css'
 
 const images = [
@@ -15,10 +14,8 @@ export const RootProvider = () => {
   const carousel = useCarousel({ slideCount: images.length })
 
   return (
-    <div className="stack">
-      <button className={button.Root} onClick={() => carousel.scrollToIndex(2)}>
-        Scroll to #3
-      </button>
+    <div className="vstack">
+      <output>Page: {carousel.page}</output>
       <Carousel.RootProvider className={styles.Root} value={carousel}>
         <Carousel.Control className={styles.Control}>
           <Carousel.PrevTrigger className={styles.Trigger}>

@@ -3,7 +3,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 import styles from 'styles/carousel.module.css'
 
 export const SlidesPerPage = () => {
-  const slides = Array.from({ length: 5 }, (_, i) => i)
+  const slides = Array.from({ length: 6 })
 
   return (
     <Carousel.Root className={styles.Root} slideCount={slides.length} slidesPerPage={2} spacing="20px">
