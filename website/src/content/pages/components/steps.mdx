@@ -6,17 +6,13 @@ description: Used to guide users through a series of steps in a process
 
 <ComponentPreview id="Steps" />
 
-## Usage
+## Anatomy
 
-The `Steps` component is used to guide users through a series of steps in a process.
+To set up the steps correctly, you'll need to understand its anatomy and how we name its parts.
 
-- Supports horizontal and vertical orientations.
-- Support for changing the active step with the keyboard and pointer.
-- Support for linear and non-linear steps.
+> Each part includes a `data-part` attribute to help identify them in the DOM.
 
-```jsx
-import { Steps } from '@ark-ui/react/steps'
-```
+<Anatomy id="steps" />
 
 ## Examples
 
@@ -32,6 +28,12 @@ Using the `RootProvider` component, you can control the active step by using the
 `onStepChange` event.
 
 <Example id="controlled" />
+
+### Vertical
+
+Use the `orientation` prop to display the steps vertically.
+
+<Example id="vertical" />
 
 ### Root Provider
 
