@@ -22,6 +22,29 @@ To set up the tour correctly, it's essential to understand its anatomy and the n
 
 <Anatomy id="tour" />
 
+```tsx
+const tour = useTour({ steps: [...] })
+
+<Tour.Root tour={tour}>
+  <Tour.Backdrop />
+  <Tour.Spotlight />
+  <Tour.Positioner>
+    <Tour.Content>
+      <Tour.Arrow>
+        <Tour.ArrowTip />
+      </Tour.Arrow>
+      <Tour.Title />
+      <Tour.Description />
+      <Tour.ProgressText />
+      <Tour.CloseTrigger />
+      <Tour.Actions>
+        <Tour.ActionTrigger />
+      </Tour.Actions>
+    </Tour.Content>
+  </Tour.Positioner>
+</Tour.Root>
+```
+
 ## Examples
 
 Learn how to use the `Tour` component in your project. Let's take a look at the most basic example:

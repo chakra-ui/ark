@@ -14,6 +14,16 @@ To set up the tabs correctly, you'll need to understand its anatomy and how we n
 
 <Anatomy id="tabs" />
 
+```tsx
+<Tabs.Root>
+  <Tabs.List>
+    <Tabs.Trigger />
+    <Tabs.Indicator />
+  </Tabs.List>
+  <Tabs.Content />
+</Tabs.Root>
+```
+
 ## Examples
 
 Learn how to use the `Tabs` component in your project. Let's take a look at the most basic example:
@@ -98,7 +108,7 @@ To achieve this, you need to do two things:
 Here's an example using Remix Router
 
 ```tsx
-import { Tabs } from '@ark-ui/react/tabs'
+import { Tabs } from '@ark-ui/<framework>/tabs'
 import { useLocation, useNavigate, Link } from '@remix-run/react'
 
 export default function App() {

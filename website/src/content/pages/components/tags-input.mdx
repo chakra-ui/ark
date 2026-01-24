@@ -14,6 +14,24 @@ To set up the tags input correctly, you'll need to understand its anatomy and ho
 
 <Anatomy id="tags-input" />
 
+```tsx
+<TagsInput.Root>
+  <TagsInput.Label />
+  <TagsInput.Control>
+    <TagsInput.Item>
+      <TagsInput.ItemPreview>
+        <TagsInput.ItemText />
+        <TagsInput.ItemDeleteTrigger />
+      </TagsInput.ItemPreview>
+      <TagsInput.ItemInput />
+    </TagsInput.Item>
+    <TagsInput.Input />
+    <TagsInput.ClearTrigger />
+  </TagsInput.Control>
+  <TagsInput.HiddenInput />
+</TagsInput.Root>
+```
+
 ## Examples
 
 Learn how to use the `TagsInput` component in your project. Let's take a look at the most basic example:

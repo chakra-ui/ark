@@ -14,6 +14,31 @@ To set up the select correctly, you'll need to understand its anatomy and how we
 
 <Anatomy id="select" />
 
+```tsx
+<Select.Root>
+  <Select.Label />
+  <Select.Control>
+    <Select.Trigger>
+      <Select.ValueText />
+    </Select.Trigger>
+    <Select.ClearTrigger />
+    <Select.Indicator />
+  </Select.Control>
+  <Select.Positioner>
+    <Select.Content>
+      <Select.ItemGroup>
+        <Select.ItemGroupLabel />
+        <Select.Item>
+          <Select.ItemText />
+          <Select.ItemIndicator />
+        </Select.Item>
+      </Select.ItemGroup>
+    </Select.Content>
+  </Select.Positioner>
+  <Select.HiddenSelect />
+</Select.Root>
+```
+
 ## Examples
 
 Learn how to use the `Select` component in your project. Let's take a look at the most basic example:
@@ -111,8 +136,6 @@ The `Select.RootComponent` type enables you to create typed wrapper components t
 collection items.
 
 ```tsx
-import { Select as ArkSelect } from '@ark-ui/react/select'
-
 const Select: ArkSelect.RootComponent = (props) => {
   return <ArkSelect.Root {...props}>{/* ... */}</ArkSelect.Root>
 }

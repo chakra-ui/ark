@@ -14,6 +14,20 @@ To use the dialog component correctly, you'll need to understand its anatomy and
 
 <Anatomy id="dialog" />
 
+```tsx
+<Dialog.Root>
+  <Dialog.Trigger />
+  <Dialog.Backdrop />
+  <Dialog.Positioner>
+    <Dialog.Content>
+      <Dialog.Title />
+      <Dialog.Description />
+      <Dialog.CloseTrigger />
+    </Dialog.Content>
+  </Dialog.Positioner>
+</Dialog.Root>
+```
+
 ## Examples
 
 Learn how to use the `Dialog` component in your project. Let's take a look at the most basic example
@@ -151,7 +165,7 @@ When using `lazyMount` and dynamically rendering components in the dialog (via `
 the imported component in a `Suspense` component to render a fallback.
 
 ```tsx
-import { Dialog } from '@ark-ui/react/dialog'
+import { Dialog } from '@ark-ui/<framework>/dialog'
 import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
 

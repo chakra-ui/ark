@@ -14,6 +14,22 @@ To set up the Listbox correctly, you'll need to understand its anatomy and how w
 
 {/* <Anatomy id="listbox" /> */}
 
+```tsx
+<Listbox.Root>
+  <Listbox.Label />
+  <Listbox.Content>
+    <Listbox.ItemGroup>
+      <Listbox.ItemGroupLabel />
+      <Listbox.Item>
+        <Listbox.ItemText />
+        <Listbox.ItemIndicator />
+      </Listbox.Item>
+    </Listbox.ItemGroup>
+  </Listbox.Content>
+  <Listbox.ValueText />
+</Listbox.Root>
+```
+
 ## Examples
 
 ### Basic
@@ -105,8 +121,6 @@ The `Listbox.RootComponent` type enables you to create typed wrapper components 
 collection items.
 
 ```tsx
-import { Listbox as ArkListbox } from '@ark-ui/react/listbox'
-
 const Listbox: ArkListbox.RootComponent = (props) => {
   return <ArkListbox.Root {...props}>{/* ... */}</ArkListbox.Root>
 }

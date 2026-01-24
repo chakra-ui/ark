@@ -15,6 +15,28 @@ To set up the tree view component correctly, you'll need to understand its anato
 
 <Anatomy id="tree-view" />
 
+```tsx
+<TreeView.Root>
+  <TreeView.Label />
+  <TreeView.Tree>
+    <TreeView.NodeProvider>
+      <TreeView.Branch>
+        <TreeView.BranchControl>
+          <TreeView.BranchIndicator />
+          <TreeView.BranchText />
+        </TreeView.BranchControl>
+        <TreeView.BranchContent>
+          <TreeView.BranchIndentGuide />
+          <TreeView.Item>
+            <TreeView.ItemText />
+          </TreeView.Item>
+        </TreeView.BranchContent>
+      </TreeView.Branch>
+    </TreeView.NodeProvider>
+  </TreeView.Tree>
+</TreeView.Root>
+```
+
 ## Examples
 
 Learn how to use the `TreeView` component in your project. Let's take a look at the most basic example:

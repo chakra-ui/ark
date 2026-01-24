@@ -14,6 +14,44 @@ To set up the date picker correctly, you'll need to understand its anatomy and h
 
 <Anatomy id="date-picker" />
 
+```tsx
+<DatePicker.Root>
+  <DatePicker.Label />
+  <DatePicker.Control>
+    <DatePicker.Input />
+    <DatePicker.Trigger />
+    <DatePicker.ClearTrigger />
+  </DatePicker.Control>
+  <DatePicker.Positioner>
+    <DatePicker.Content>
+      <DatePicker.View view="day">
+        <DatePicker.ViewControl>
+          <DatePicker.PrevTrigger />
+          <DatePicker.ViewTrigger>
+            <DatePicker.RangeText />
+          </DatePicker.ViewTrigger>
+          <DatePicker.NextTrigger />
+        </DatePicker.ViewControl>
+        <DatePicker.Table>
+          <DatePicker.TableHead>
+            <DatePicker.TableRow>
+              <DatePicker.TableHeader />
+            </DatePicker.TableRow>
+          </DatePicker.TableHead>
+          <DatePicker.TableBody>
+            <DatePicker.TableRow>
+              <DatePicker.TableCell>
+                <DatePicker.TableCellTrigger />
+              </DatePicker.TableCell>
+            </DatePicker.TableRow>
+          </DatePicker.TableBody>
+        </DatePicker.Table>
+      </DatePicker.View>
+    </DatePicker.Content>
+  </DatePicker.Positioner>
+</DatePicker.Root>
+```
+
 ## Examples
 
 Learn how to use the `DatePicker` component in your project. Let's take a look at the most basic example

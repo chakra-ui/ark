@@ -6,6 +6,28 @@ description: A component for selecting a value within a circular range.
 
 <ComponentPreview id="AngleSlider" />
 
+## Anatomy
+
+To set up the angle slider correctly, you'll need to understand its anatomy and how we name its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+<Anatomy id="angle-slider" />
+
+```tsx
+<AngleSlider.Root>
+  <AngleSlider.Label />
+  <AngleSlider.Control>
+    <AngleSlider.Thumb />
+    <AngleSlider.MarkerGroup>
+      <AngleSlider.Marker />
+    </AngleSlider.MarkerGroup>
+  </AngleSlider.Control>
+  <AngleSlider.ValueText />
+  <AngleSlider.HiddenInput />
+</AngleSlider.Root>
+```
+
 ## Examples
 
 ### Basic

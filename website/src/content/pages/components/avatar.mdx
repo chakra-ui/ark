@@ -14,6 +14,13 @@ To set up the avatar correctly, you'll need to understand its anatomy and how we
 
 <Anatomy id="avatar" />
 
+```tsx
+<Avatar.Root>
+  <Avatar.Fallback />
+  <Avatar.Image />
+</Avatar.Root>
+```
+
 ## Examples
 
 ### Basic
@@ -44,7 +51,7 @@ to have maximum control over the avatar programmatically.
 Here's an example of how to use the `Image` component from `next/image`.
 
 ```tsx
-import { Avatar, useAvatarContext } from '@ark-ui/react/avatar'
+import { Avatar, useAvatarContext } from '@ark-ui/<framework>/avatar'
 import { getImageProps, type ImageProps } from 'next/image'
 
 const AvatarNextImage = (props: ImageProps) => {

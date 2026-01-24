@@ -14,6 +14,27 @@ To set up the menu correctly, you'll need to understand its anatomy and how we n
 
 <Anatomy id="menu" />
 
+```tsx
+<Menu.Root>
+  <Menu.Trigger>
+    <Menu.Indicator />
+  </Menu.Trigger>
+  <Menu.Positioner>
+    <Menu.Content>
+      <Menu.Arrow>
+        <Menu.ArrowTip />
+      </Menu.Arrow>
+      <Menu.Item />
+      <Menu.ItemGroup>
+        <Menu.ItemGroupLabel />
+        <Menu.Item />
+      </Menu.ItemGroup>
+      <Menu.Separator />
+    </Menu.Content>
+  </Menu.Positioner>
+</Menu.Root>
+```
+
 ## Examples
 
 Learn how to use the `Menu` component in your project. Let's take a look at the most basic example:

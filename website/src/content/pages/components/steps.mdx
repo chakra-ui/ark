@@ -14,6 +14,23 @@ To set up the steps correctly, you'll need to understand its anatomy and how we 
 
 <Anatomy id="steps" />
 
+```tsx
+<Steps.Root>
+  <Steps.List>
+    <Steps.Item>
+      <Steps.Trigger>
+        <Steps.Indicator />
+      </Steps.Trigger>
+      <Steps.Separator />
+    </Steps.Item>
+  </Steps.List>
+  <Steps.Content />
+  <Steps.CompletedContent />
+  <Steps.PrevTrigger />
+  <Steps.NextTrigger />
+</Steps.Root>
+```
+
 ## Examples
 
 ### Basic

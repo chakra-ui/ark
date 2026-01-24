@@ -24,6 +24,18 @@ To set up the scroll area correctly, it's essential to understand its anatomy an
 
 <Anatomy id="scroll-area" />
 
+```tsx
+<ScrollArea.Root>
+  <ScrollArea.Viewport>
+    <ScrollArea.Content />
+  </ScrollArea.Viewport>
+  <ScrollArea.Scrollbar>
+    <ScrollArea.Thumb />
+  </ScrollArea.Scrollbar>
+  <ScrollArea.Corner />
+</ScrollArea.Root>
+```
+
 ## Required style
 
 It's important to note that the scroll area requires the following styles on the `ScrollArea.Viewport` element to hide

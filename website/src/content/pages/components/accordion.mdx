@@ -23,6 +23,17 @@ To set up the accordion correctly, it's essential to understand its anatomy and 
 
 <Anatomy id="accordion" />
 
+```tsx
+<Accordion.Root>
+  <Accordion.Item>
+    <Accordion.ItemTrigger>
+      <Accordion.ItemIndicator />
+    </Accordion.ItemTrigger>
+    <Accordion.ItemContent />
+  </Accordion.Item>
+</Accordion.Root>
+```
+
 ## Examples
 
 ### Default Value
@@ -74,8 +85,8 @@ exposes properties like `expanded`, `focused` and `disabled`.
 
 ### Lazy Mount
 
-Use the `lazyMount` prop to defer rendering of accordion content until the item is expanded. Combine with `unmountOnExit`
-to unmount content when collapsed, freeing up resources.
+Use the `lazyMount` prop to defer rendering of accordion content until the item is expanded. Combine with
+`unmountOnExit` to unmount content when collapsed, freeing up resources.
 
 <Example id="lazy-mount" />
 

@@ -14,6 +14,27 @@ To set up the file upload component correctly, you'll need to understand its ana
 
 <Anatomy id="file-upload" />
 
+```tsx
+<FileUpload.Root>
+  <FileUpload.Label />
+  <FileUpload.Dropzone>
+    <FileUpload.Trigger />
+  </FileUpload.Dropzone>
+  <FileUpload.ItemGroup>
+    <FileUpload.Item>
+      <FileUpload.ItemPreview>
+        <FileUpload.ItemPreviewImage />
+      </FileUpload.ItemPreview>
+      <FileUpload.ItemName />
+      <FileUpload.ItemSizeText />
+      <FileUpload.ItemDeleteTrigger />
+    </FileUpload.Item>
+  </FileUpload.ItemGroup>
+  <FileUpload.ClearTrigger />
+  <FileUpload.HiddenInput />
+</FileUpload.Root>
+```
+
 ## Examples
 
 Learn how to use the `FileUpload` component in your project. Let's take a look at the most basic example:

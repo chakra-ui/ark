@@ -14,6 +14,28 @@ To set up the combobox correctly, you'll need to understand its anatomy and how 
 
 <Anatomy id="combobox" />
 
+```tsx
+<Combobox.Root>
+  <Combobox.Label />
+  <Combobox.Control>
+    <Combobox.Input />
+    <Combobox.Trigger />
+    <Combobox.ClearTrigger />
+  </Combobox.Control>
+  <Combobox.Positioner>
+    <Combobox.Content>
+      <Combobox.ItemGroup>
+        <Combobox.ItemGroupLabel />
+        <Combobox.Item>
+          <Combobox.ItemText />
+          <Combobox.ItemIndicator />
+        </Combobox.Item>
+      </Combobox.ItemGroup>
+    </Combobox.Content>
+  </Combobox.Positioner>
+</Combobox.Root>
+```
+
 ## Examples
 
 Learn how to use the `Combobox` component in your project.
@@ -134,7 +156,7 @@ Use the `limit` property on `useListCollection` to limit the number of rendered 
 Customize the `navigate` prop on `Combobox.Root` to integrate with your router. Using Tanstack Router:
 
 ```tsx
-import { Combobox } from '@ark-ui/react/combobox'
+import { Combobox } from '@ark-ui/<framework>/combobox'
 import { useNavigate } from '@tanstack/react-router'
 
 function Demo() {
@@ -179,8 +201,6 @@ The `Combobox.RootComponent` type enables you to create typed wrapper components
 collection items.
 
 ```tsx
-import { Combobox as ArkCombobox } from '@ark-ui/react/combobox'
-
 const Combobox: ArkCombobox.RootComponent = (props) => {
   return <ArkCombobox.Root {...props}>{/* ... */}</ArkCombobox.Root>
 }

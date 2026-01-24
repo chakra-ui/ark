@@ -14,6 +14,21 @@ To set up the toast correctly, you'll need to understand its anatomy and how we 
 
 <Anatomy id="toast" />
 
+```tsx
+const toaster = createToaster({ placement: 'bottom-end' })
+
+<Toaster toaster={toaster}>
+  {(toast) => (
+    <Toast.Root>
+      <Toast.Title />
+      <Toast.Description />
+      <Toast.ActionTrigger />
+      <Toast.CloseTrigger />
+    </Toast.Root>
+  )}
+</Toaster>
+```
+
 ## Setup
 
 To use the Toast component, create the toast engine using the `createToaster` function.

@@ -14,6 +14,37 @@ To set up the color picker correctly, you'll need to understand its anatomy and 
 
 <Anatomy id="color-picker" />
 
+```tsx
+<ColorPicker.Root>
+  <ColorPicker.Label />
+  <ColorPicker.Control>
+    <ColorPicker.ChannelInput />
+    <ColorPicker.Trigger>
+      <ColorPicker.ValueSwatch />
+    </ColorPicker.Trigger>
+  </ColorPicker.Control>
+  <ColorPicker.Positioner>
+    <ColorPicker.Content>
+      <ColorPicker.Area>
+        <ColorPicker.AreaBackground />
+        <ColorPicker.AreaThumb />
+      </ColorPicker.Area>
+      <ColorPicker.EyeDropperTrigger />
+      <ColorPicker.ChannelSlider>
+        <ColorPicker.ChannelSliderTrack />
+        <ColorPicker.ChannelSliderThumb />
+      </ColorPicker.ChannelSlider>
+      <ColorPicker.SwatchGroup>
+        <ColorPicker.SwatchTrigger>
+          <ColorPicker.Swatch />
+        </ColorPicker.SwatchTrigger>
+      </ColorPicker.SwatchGroup>
+    </ColorPicker.Content>
+  </ColorPicker.Positioner>
+  <ColorPicker.HiddenInput />
+</ColorPicker.Root>
+```
+
 ## Examples
 
 Learn how to use the `ColorPicker` component in your project. Let's take a look at the most basic example
