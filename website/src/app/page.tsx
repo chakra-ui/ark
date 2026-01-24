@@ -1,6 +1,5 @@
 import { Box } from 'styled-system/jsx'
 import { Community } from '~/components/marketing/community'
-import { Enterprise } from '~/components/marketing/enterprise'
 import { Footer } from '~/components/marketing/footer'
 import { Hero } from '~/components/marketing/hero'
 import { Highlights } from '~/components/marketing/highlights'
@@ -22,7 +21,6 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Highlights />
-      <Enterprise />
       <Showcases />
       <Universe />
       <Community />

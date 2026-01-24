@@ -103,7 +103,7 @@ export default defineConfig({
     extend: {
       tokens: {
         fonts: {
-          body: { value: 'var(--font-outfit), sans-serif' },
+          body: { value: 'var(--font-wix-madefor-text), sans-serif' },
           code: { value: 'var(--font-roboto-mono), monospace' },
         },
       },

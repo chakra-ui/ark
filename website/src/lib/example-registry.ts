@@ -125,8 +125,8 @@ import * as DatePicker_FormatParse from '@examples/date-picker/examples/format-p
 import * as DatePicker_Inline from '@examples/date-picker/examples/inline'
 import * as DatePicker_Locale from '@examples/date-picker/examples/locale'
 import * as DatePicker_MinMax from '@examples/date-picker/examples/min-max'
-import * as DatePicker_MonthPicker from '@examples/date-picker/examples/month-picker'
 import * as DatePicker_MonthPickerRange from '@examples/date-picker/examples/month-picker-range'
+import * as DatePicker_MonthPicker from '@examples/date-picker/examples/month-picker'
 import * as DatePicker_MultiSelection from '@examples/date-picker/examples/multi-selection'
 import * as DatePicker_MultipleMonths from '@examples/date-picker/examples/multiple-months'
 import * as DatePicker_Presets from '@examples/date-picker/examples/presets'
@@ -142,9 +142,12 @@ import * as Dialog_Context from '@examples/dialog/examples/context'
 import * as Dialog_Controlled from '@examples/dialog/examples/controlled'
 import * as Dialog_FinalFocus from '@examples/dialog/examples/final-focus'
 import * as Dialog_InitialFocus from '@examples/dialog/examples/initial-focus'
+import * as Dialog_InsideScroll from '@examples/dialog/examples/inside-scroll'
 import * as Dialog_LazyMount from '@examples/dialog/examples/lazy-mount'
 import * as Dialog_Nested from '@examples/dialog/examples/nested'
 import * as Dialog_NonModal from '@examples/dialog/examples/non-modal'
+import * as Dialog_OpenFromMenu from '@examples/dialog/examples/open-from-menu'
+import * as Dialog_OutsideScroll from '@examples/dialog/examples/outside-scroll'
 import * as Dialog_RapidStateChange from '@examples/dialog/examples/rapid-state-change'
 import * as Dialog_RootProvider from '@examples/dialog/examples/root-provider'
 import * as DownloadTrigger_Basic from '@examples/download-trigger/examples/basic'
@@ -666,8 +669,8 @@ const exampleModules: Record<string, ExampleModule> = {
   'date-picker/inline': DatePicker_Inline,
   'date-picker/locale': DatePicker_Locale,
   'date-picker/min-max': DatePicker_MinMax,
-  'date-picker/month-picker': DatePicker_MonthPicker,
   'date-picker/month-picker-range': DatePicker_MonthPickerRange,
+  'date-picker/month-picker': DatePicker_MonthPicker,
   'date-picker/multi-selection': DatePicker_MultiSelection,
   'date-picker/multiple-months': DatePicker_MultipleMonths,
   'date-picker/presets': DatePicker_Presets,
@@ -683,9 +686,12 @@ const exampleModules: Record<string, ExampleModule> = {
   'dialog/controlled': Dialog_Controlled,
   'dialog/final-focus': Dialog_FinalFocus,
   'dialog/initial-focus': Dialog_InitialFocus,
+  'dialog/inside-scroll': Dialog_InsideScroll,
   'dialog/lazy-mount': Dialog_LazyMount,
   'dialog/nested': Dialog_Nested,
   'dialog/non-modal': Dialog_NonModal,
+  'dialog/open-from-menu': Dialog_OpenFromMenu,
+  'dialog/outside-scroll': Dialog_OutsideScroll,
   'dialog/rapid-state-change': Dialog_RapidStateChange,
   'dialog/root-provider': Dialog_RootProvider,
   'download-trigger/basic': DownloadTrigger_Basic,

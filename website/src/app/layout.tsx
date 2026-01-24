@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { ThemeProvider } from 'next-themes'
-import { Outfit, Roboto_Mono } from 'next/font/google'
+import { Roboto_Mono, Wix_Madefor_Text } from 'next/font/google'
 import Script from 'next/script'
 import type { PropsWithChildren } from 'react'
 import { cx } from 'styled-system/css'
@@ -9,7 +9,7 @@ import { Toaster } from '~/components/toaster'
 import { getPublicUrl } from '~/lib/get-public-url'
 import './global.css'
 
-const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
+const wixMadeforText = Wix_Madefor_Text({ subsets: ['latin'], variable: '--font-wix-madefor-text' })
 const roboto = Roboto_Mono({
   subsets: ['latin'],
   variable: '--font-roboto-mono',
@@ -38,11 +38,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout(props: PropsWithChildren) {
   return (
-    <html lang="en" className={cx(outfit.variable, roboto.variable)} suppressHydrationWarning>
+    <html lang="en" className={cx(wixMadeforText.variable, roboto.variable)} suppressHydrationWarning>
       <head>
         <Script src="https://plausible.io/js/plausible.js" data-domain="ark-ui.com" />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <ThemeProvider attribute="class">
           {props.children}
           <ContactDialog>
