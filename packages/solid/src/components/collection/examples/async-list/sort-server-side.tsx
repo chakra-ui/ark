@@ -1,6 +1,6 @@
 import { useAsyncList } from '@ark-ui/solid/collection'
 import { ArrowDownIcon, ArrowUpDownIcon, ArrowUpIcon, LoaderIcon } from 'lucide-solid'
-import { For, Show } from 'solid-js'
+import { For } from 'solid-js'
 import button from 'styles/button.module.css'
 import styles from 'styles/async-list.module.css'
 
@@ -81,14 +81,6 @@ export const SortServerSide = () => {
           )}
         </For>
       </div>
-
-      <Show when={list().sortDescriptor}>
-        {(desc) => (
-          <div class={styles.Status}>
-            Sorted by {desc().column} ({desc().direction})
-          </div>
-        )}
-      </Show>
     </div>
   )
 }

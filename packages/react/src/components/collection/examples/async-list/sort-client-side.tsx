@@ -74,8 +74,6 @@ export const SortClientSide = () => {
               { key: 'name', label: 'Name' },
               { key: 'username', label: 'Username' },
               { key: 'email', label: 'Email' },
-              { key: 'phone', label: 'Phone' },
-              { key: 'website', label: 'Website' },
             ].map(({ key, label }) => (
               <th key={key} onClick={() => handleSort(key as keyof User)}>
                 {label} {getSortIcon(key as keyof User)}
@@ -89,8 +87,6 @@ export const SortClientSide = () => {
               <td>{user.name}</td>
               <td>{user.username}</td>
               <td>{user.email}</td>
-              <td>{user.phone}</td>
-              <td>{user.website}</td>
             </tr>
           ))}
         </tbody>

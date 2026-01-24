@@ -75,9 +75,5 @@ const handleSort = (column: keyof Product) => {
         </div>
       </div>
     </div>
-
-    <div v-if="list.sortDescriptor" :class="styles.Status">
-      Sorted by {{ list.sortDescriptor.column }} ({{ list.sortDescriptor.direction }})
-    </div>
   </div>
 </template>

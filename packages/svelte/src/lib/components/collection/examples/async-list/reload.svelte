@@ -11,6 +11,7 @@
   }
 
   const list = useAsyncList<Quote>({
+    autoReload: true,
     async load() {
       const response = await fetch(`https://dummyjson.com/quotes?limit=4&skip=${Math.floor(Math.random() * 50)}`)
 

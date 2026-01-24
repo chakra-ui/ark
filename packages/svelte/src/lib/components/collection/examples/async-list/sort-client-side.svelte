@@ -51,8 +51,6 @@
     { key: 'name', label: 'Name' },
     { key: 'username', label: 'Username' },
     { key: 'email', label: 'Email' },
-    { key: 'phone', label: 'Phone' },
-    { key: 'website', label: 'Website' },
   ]
 
   const descriptor = $derived(list().sortDescriptor)
@@ -94,8 +92,6 @@
           <td>{user.name}</td>
           <td>{user.username}</td>
           <td>{user.email}</td>
-          <td>{user.phone}</td>
-          <td>{user.website}</td>
         </tr>
       {/each}
     </tbody>

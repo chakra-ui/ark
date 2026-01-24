@@ -78,12 +78,6 @@ export const SortServerSide = () => {
           </div>
         ))}
       </div>
-
-      {list.sortDescriptor && (
-        <div className={styles.Status}>
-          Sorted by {list.sortDescriptor.column} ({list.sortDescriptor.direction})
-        </div>
-      )}
     </div>
   )
 }

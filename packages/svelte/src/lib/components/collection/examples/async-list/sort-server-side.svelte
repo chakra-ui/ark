@@ -83,10 +83,4 @@
       </div>
     {/each}
   </div>
-
-  {#if list().sortDescriptor}
-    <div class={styles.Status}>
-      Sorted by {list().sortDescriptor?.column} ({list().sortDescriptor?.direction})
-    </div>
-  {/if}
 </div>
