@@ -1,12 +1,13 @@
 import * as checkbox from '@zag-js/checkbox'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRef, type UnwrapRef, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils/clean-props'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './checkbox'
-import { useCheckboxGroupContext } from './use-checkbox-group-context'
+import { useCheckboxGroupContext, type UseCheckboxGroupContext } from './use-checkbox-group-context'
+import { toBooleanValue } from '../../utils/boolean'
 
 export interface UseCheckboxProps extends Optional<Omit<checkbox.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseCheckboxReturn extends ComputedRef<checkbox.Api<PropTypes>> {}
@@ -20,7 +21,14 @@ export const useCheckbox = (props: MaybeRef<UseCheckboxProps> = {}, emit?: EmitF
   const checkboxGroup = useCheckboxGroupContext()
   const computedProps = computed(() => {
     const propsValue = toValue<UseCheckboxProps>(props)
-    return mergeProps(propsValue, checkboxGroup?.value.getItemProps({ value: propsValue.value }) ?? {})
+    const groupProps =
+      checkboxGroup?.value.getItemProps({ value: propsValue.value }) ??
+      ({} as ReturnType<UnwrapRef<UseCheckboxGroupContext>['getItemProps']>)
+    const merged = mergeProps(propsValue, groupProps)
+    return {
+      ...merged,
+      disabled: toBooleanValue(groupProps.disabled) || toBooleanValue(propsValue.disabled),
+    }
   })
 
   const context = computed<checkbox.Props>(() => {
