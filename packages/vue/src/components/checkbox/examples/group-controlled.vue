@@ -14,7 +14,7 @@ const items = [
 </script>
 
 <template>
-  <div class="stack">
+  <div class="vstack">
     <output>value: {{ JSON.stringify(value) }}</output>
     <Checkbox.Group :class="styles.Group" v-model="value" name="framework">
       <Checkbox.Root :class="styles.Root" v-for="item in items" :value="item.value" :key="item.value">

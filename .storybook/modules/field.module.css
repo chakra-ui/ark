@@ -11,6 +11,10 @@
     opacity: 0.5;
     filter: grayscale(100%);
   }
+
+  &[data-inline] {
+    width: auto;
+  }
 }
 
 .Label {

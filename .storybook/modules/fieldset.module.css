@@ -15,7 +15,6 @@
   font-weight: 600;
   color: var(--demo-neutral-fg);
   padding: 0;
-  padding-bottom: 0.5rem;
   margin-bottom: 0.25rem;
   &[data-disabled] {
     opacity: 0.5;

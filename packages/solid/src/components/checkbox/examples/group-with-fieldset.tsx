@@ -8,6 +8,7 @@ import fieldset from 'styles/fieldset.module.css'
 export const GroupWithFieldset = () => (
   <Fieldset.Root class={fieldset.Root}>
     <Fieldset.Legend class={fieldset.Legend}>Select frameworks</Fieldset.Legend>
+    <Fieldset.HelperText class={fieldset.HelperText}>Choose your preferred frameworks</Fieldset.HelperText>
     <Checkbox.Group class={styles.Group} defaultValue={['react']} name="framework">
       <For each={items}>
         {(item) => (
@@ -23,7 +24,6 @@ export const GroupWithFieldset = () => (
         )}
       </For>
     </Checkbox.Group>
-    <Fieldset.HelperText class={fieldset.HelperText}>Choose your preferred frameworks</Fieldset.HelperText>
   </Fieldset.Root>
 )
 

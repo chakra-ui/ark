@@ -59,7 +59,6 @@ import * as Checkbox_GroupWithInvalid from '@examples/checkbox/examples/group-wi
 import * as Checkbox_GroupWithSelectAll from '@examples/checkbox/examples/group-with-select-all'
 import * as Checkbox_Group from '@examples/checkbox/examples/group'
 import * as Checkbox_Indeterminate from '@examples/checkbox/examples/indeterminate'
-import * as Checkbox_ProgrammaticControl from '@examples/checkbox/examples/programmatic-control'
 import * as Checkbox_RootProvider from '@examples/checkbox/examples/root-provider'
 import * as Checkbox_WithField from '@examples/checkbox/examples/with-field'
 import * as Checkbox_WithForm from '@examples/checkbox/examples/with-form'
@@ -603,7 +602,6 @@ const exampleModules: Record<string, ExampleModule> = {
   'checkbox/group-with-select-all': Checkbox_GroupWithSelectAll,
   'checkbox/group': Checkbox_Group,
   'checkbox/indeterminate': Checkbox_Indeterminate,
-  'checkbox/programmatic-control': Checkbox_ProgrammaticControl,
   'checkbox/root-provider': Checkbox_RootProvider,
   'checkbox/with-field': Checkbox_WithField,
   'checkbox/with-form': Checkbox_WithForm,

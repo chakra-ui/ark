@@ -5,7 +5,7 @@ import styles from 'styles/checkbox.module.css'
 import field from 'styles/field.module.css'
 
 export const WithField = () => (
-  <Field.Root className={field.Root}>
+  <Field.Root className={field.Root} data-inline>
     <Checkbox.Root className={styles.Root}>
       <Checkbox.Control className={styles.Control}>
         <Checkbox.Indicator className={styles.Indicator}>

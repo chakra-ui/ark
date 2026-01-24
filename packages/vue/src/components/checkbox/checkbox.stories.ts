@@ -12,7 +12,6 @@ import GroupWithInvalidExample from './examples/group-with-invalid.vue'
 import GroupWithSelectAllExample from './examples/group-with-select-all.vue'
 import GroupExample from './examples/group.vue'
 import IndeterminateExample from './examples/indeterminate.vue'
-import ProgrammaticControlExample from './examples/programmatic-control.vue'
 import ContextExample from './examples/context.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import WithFieldExample from './examples/with-field.vue'
@@ -55,13 +54,6 @@ export const Disabled = {
 export const Indeterminate = {
   render: () => ({
     components: { Component: IndeterminateExample },
-    template: '<Component />',
-  }),
-}
-
-export const ProgrammaticControl = {
-  render: () => ({
-    components: { Component: ProgrammaticControlExample },
     template: '<Component />',
   }),
 }

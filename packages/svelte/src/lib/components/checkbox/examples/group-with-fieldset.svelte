@@ -14,6 +14,7 @@
 
 <Fieldset.Root class={fieldset.Root}>
   <Fieldset.Legend class={fieldset.Legend}>Select frameworks</Fieldset.Legend>
+  <Fieldset.HelperText class={fieldset.HelperText}>Choose your preferred frameworks</Fieldset.HelperText>
   <Checkbox.Group class={styles.Group} defaultValue={['react']} name="framework">
     {#each items as item (item.value)}
       <Checkbox.Root class={styles.Root} value={item.value}>
@@ -27,5 +28,4 @@
       </Checkbox.Root>
     {/each}
   </Checkbox.Group>
-  <Fieldset.HelperText class={fieldset.HelperText}>Choose your preferred frameworks</Fieldset.HelperText>
 </Fieldset.Root>

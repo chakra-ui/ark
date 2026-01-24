@@ -7,6 +7,7 @@ import fieldset from 'styles/fieldset.module.css'
 export const GroupWithFieldset = () => (
   <Fieldset.Root className={fieldset.Root}>
     <Fieldset.Legend className={fieldset.Legend}>Select frameworks</Fieldset.Legend>
+    <Fieldset.HelperText className={fieldset.HelperText}>Choose your preferred frameworks</Fieldset.HelperText>
     <Checkbox.Group className={styles.Group} defaultValue={['react']} name="framework">
       {items.map((item) => (
         <Checkbox.Root className={styles.Root} value={item.value} key={item.value}>
@@ -20,7 +21,6 @@ export const GroupWithFieldset = () => (
         </Checkbox.Root>
       ))}
     </Checkbox.Group>
-    <Fieldset.HelperText className={fieldset.HelperText}>Choose your preferred frameworks</Fieldset.HelperText>
   </Fieldset.Root>
 )
 

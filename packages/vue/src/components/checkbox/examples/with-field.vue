@@ -7,7 +7,7 @@ import field from 'styles/field.module.css'
 </script>
 
 <template>
-  <Field.Root :class="field.Root">
+  <Field.Root :class="field.Root" data-inline>
     <Checkbox.Root :class="styles.Root">
       <Checkbox.Control :class="styles.Control">
         <Checkbox.Indicator :class="styles.Indicator">

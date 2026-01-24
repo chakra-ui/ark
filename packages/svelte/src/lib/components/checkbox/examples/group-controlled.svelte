@@ -12,7 +12,7 @@
   let value = $state(['react'])
 </script>
 
-<div class="stack">
+<div class="vstack">
   <output>value: {JSON.stringify(value)}</output>
   <Checkbox.Group class={styles.Group} bind:value name="framework">
     {#each items as item (item.value)}

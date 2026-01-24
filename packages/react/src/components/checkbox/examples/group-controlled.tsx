@@ -6,7 +6,7 @@ import styles from 'styles/checkbox.module.css'
 export const GroupControlled = () => {
   const [value, setValue] = useState(['react'])
   return (
-    <div className="stack">
+    <div className="vstack">
       <output>value: {JSON.stringify(value)}</output>
       <Checkbox.Group className={styles.Group} value={value} name="framework" onValueChange={setValue}>
         {items.map((item) => (

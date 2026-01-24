@@ -12,7 +12,7 @@
 </script>
 
 <form
-  class="stack"
+  class="vstack"
   onsubmit={(e) => {
     e.preventDefault()
     console.log(new FormData(e.currentTarget).getAll('framework'))

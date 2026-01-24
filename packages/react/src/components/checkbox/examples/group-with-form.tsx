@@ -5,7 +5,7 @@ import button from 'styles/button.module.css'
 
 export const GroupWithForm = () => (
   <form
-    className="stack"
+    className="vstack"
     onSubmit={(e) => {
       e.preventDefault()
       console.log(new FormData(e.currentTarget).getAll('framework'))

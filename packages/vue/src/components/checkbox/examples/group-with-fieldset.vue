@@ -15,6 +15,7 @@ const items = [
 <template>
   <Fieldset.Root :class="fieldset.Root">
     <Fieldset.Legend :class="fieldset.Legend">Select frameworks</Fieldset.Legend>
+    <Fieldset.HelperText :class="fieldset.HelperText">Choose your preferred frameworks</Fieldset.HelperText>
     <Checkbox.Group :class="styles.Group" :defaultValue="['react']" name="framework">
       <Checkbox.Root :class="styles.Root" v-for="item in items" :key="item.value" :value="item.value">
         <Checkbox.Control :class="styles.Control">
@@ -26,6 +27,5 @@ const items = [
         <Checkbox.HiddenInput />
       </Checkbox.Root>
     </Checkbox.Group>
-    <Fieldset.HelperText :class="fieldset.HelperText">Choose your preferred frameworks</Fieldset.HelperText>
   </Fieldset.Root>
 </template>
