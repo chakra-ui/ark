@@ -32,14 +32,12 @@
 <div class={styles.Root}>
   <output>Selected: {selection.selectedValues().join(', ') || 'None'}</output>
   {#each collection.items as item (item.value)}
-    <label class={styles.Item} data-selected={selection.isSelected(item.value) || undefined}>
-      <input
-        type="checkbox"
-        class={styles.Checkbox}
-        checked={selection.isSelected(item.value)}
-        onclick={(e) => handleItemClick(item.value, e)}
-        readonly
-      />
+    <label
+      class={styles.Item}
+      data-selected={selection.isSelected(item.value) || undefined}
+      onclick={(e) => handleItemClick(item.value, e)}
+    >
+      <input type="checkbox" class={styles.Checkbox} checked={selection.isSelected(item.value)} />
       <span class={styles.ItemText}>{item.label}</span>
     </label>
   {/each}

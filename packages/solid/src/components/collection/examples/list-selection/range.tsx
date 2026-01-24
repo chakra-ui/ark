@@ -34,14 +34,12 @@ export const Range = () => {
       <output>Selected: {selection.selectedValues().join(', ') || 'None'}</output>
       <For each={collection.items}>
         {(item) => (
-          <label class={styles.Item} data-selected={selection.isSelected(item.value) || undefined}>
-            <input
-              type="checkbox"
-              class={styles.Checkbox}
-              checked={selection.isSelected(item.value)}
-              onClick={(e) => handleItemClick(item.value, e)}
-              readOnly
-            />
+          <label
+            class={styles.Item}
+            data-selected={selection.isSelected(item.value) || undefined}
+            onClick={(e) => handleItemClick(item.value, e)}
+          >
+            <input type="checkbox" class={styles.Checkbox} checked={selection.isSelected(item.value)} />
             <span class={styles.ItemText}>{item.label}</span>
           </label>
         )}

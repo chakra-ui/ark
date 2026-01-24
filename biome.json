@@ -21,7 +21,8 @@
         "useButtonType": "off",
         "noLabelWithoutControl": "off",
         "useSemanticElements": "off",
-        "useValidAnchor": "off"
+        "useValidAnchor": "off",
+        "useKeyWithClickEvents": "off"
       },
       "style": {
         "useConst": "off"

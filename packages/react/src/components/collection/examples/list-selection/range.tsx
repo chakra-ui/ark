@@ -31,14 +31,13 @@ export const Range = () => {
     <div className={styles.Root}>
       <output>Selected: {selection.selectedValues.join(', ') || 'None'}</output>
       {collection.items.map((item) => (
-        <label key={item.value} className={styles.Item} data-selected={selection.isSelected(item.value) || undefined}>
-          <input
-            type="checkbox"
-            className={styles.Checkbox}
-            checked={selection.isSelected(item.value)}
-            onClick={(e) => handleItemClick(item.value, e)}
-            readOnly
-          />
+        <label
+          key={item.value}
+          className={styles.Item}
+          data-selected={selection.isSelected(item.value) || undefined}
+          onClick={(e) => handleItemClick(item.value, e)}
+        >
+          <input type="checkbox" className={styles.Checkbox} checked={selection.isSelected(item.value)} />
           <span className={styles.ItemText}>{item.label}</span>
         </label>
       ))}
