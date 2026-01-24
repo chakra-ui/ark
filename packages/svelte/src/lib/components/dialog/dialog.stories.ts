@@ -2,8 +2,6 @@ import type { Meta } from '@storybook/svelte'
 
 import AlertDialogExample from './examples/alert-dialog.svelte'
 import BasicExample from './examples/basic.svelte'
-import CloseOnEscapeExample from './examples/close-on-escape.svelte'
-import CloseOnInteractOutsideExample from './examples/close-on-interact-outside.svelte'
 import ConfirmationExample from './examples/confirmation.svelte'
 import ContextExample from './examples/context.svelte'
 import ControlledExample from './examples/controlled.svelte'
@@ -32,18 +30,6 @@ export const AlertDialog = {
 export const Basic = {
   render: () => ({
     Component: BasicExample,
-  }),
-}
-
-export const CloseOnEscape = {
-  render: () => ({
-    Component: CloseOnEscapeExample,
-  }),
-}
-
-export const CloseOnInteractOutside = {
-  render: () => ({
-    Component: CloseOnInteractOutsideExample,
   }),
 }
 
