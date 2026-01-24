@@ -29,6 +29,8 @@
 }
 
 .Content {
+  --px: 1.5rem;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -36,7 +38,7 @@
   width: 24rem;
   max-width: calc(100vw - 2rem);
   max-height: calc(100vh - 2rem);
-  padding: 1.5rem;
+  padding: var(--px);
   border-radius: 8px;
   border: 1px solid var(--demo-border);
   background: var(--demo-bg-popover);
@@ -121,6 +123,71 @@
   justify-content: flex-end;
   gap: 0.75rem;
   margin-top: 1.5rem;
+}
+
+/* Scroll styles for dialog scroll examples */
+
+.ScrollContainer {
+  flex: 1;
+  min-height: 0;
+  margin: 1rem calc(-1 * var(--px)) 0;
+  padding: 0 var(--px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  /* Custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--demo-neutral-solid) transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--demo-neutral-solid);
+    border-radius: 4px;
+
+    &:hover {
+      background-color: var(--demo-neutral-emphasized);
+    }
+  }
+}
+
+.ScrollSection {
+  & h3 {
+    margin: 0 0 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--demo-neutral-fg);
+  }
+
+  & p {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--demo-neutral-emphasized);
+  }
+}
+
+/* Outside scroll positioner variant */
+
+.OutsideScrollPositioner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  pointer-events: auto;
 }
 
 @keyframes fade-in {

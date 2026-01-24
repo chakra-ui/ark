@@ -75,6 +75,20 @@ focus trapping, scroll prevention, and pointer blocking, making it useful for au
 
 <Example id="non-modal" />
 
+### Inside Scroll
+
+When dialog content exceeds the viewport height, you can make the content area scrollable while keeping the header and
+footer fixed. Set a `maxHeight` on the content and use `overflow: auto` on the scrollable section:
+
+<Example id="inside-scroll" />
+
+### Outside Scroll
+
+Alternatively, make the entire positioner scrollable so the dialog can extend beyond the viewport. This approach works
+well for long-form content where you want the dialog to feel more like a page:
+
+<Example id="outside-scroll" />
+
 ### Close on Interact Outside
 
 Prevent the dialog from closing when clicking outside by setting `closeOnInteractOutside={false}`. Use the

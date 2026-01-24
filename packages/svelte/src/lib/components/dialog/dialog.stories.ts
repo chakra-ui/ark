@@ -9,10 +9,12 @@ import ContextExample from './examples/context.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import FinalFocusExample from './examples/final-focus.svelte'
 import InitialFocusExample from './examples/initial-focus.svelte'
+import InsideScrollExample from './examples/inside-scroll.svelte'
 import LazyMountExample from './examples/lazy-mount.svelte'
 import NestedExample from './examples/nested.svelte'
 import NonModalExample from './examples/non-modal.svelte'
 import OpenFromMenuExample from './examples/open-from-menu.svelte'
+import OutsideScrollExample from './examples/outside-scroll.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 
 const meta: Meta = {
@@ -75,6 +77,12 @@ export const InitialFocus = {
   }),
 }
 
+export const InsideScroll = {
+  render: () => ({
+    Component: InsideScrollExample,
+  }),
+}
+
 export const LazyMount = {
   render: () => ({
     Component: LazyMountExample,
@@ -96,6 +104,12 @@ export const NonModal = {
 export const OpenFromMenu = {
   render: () => ({
     Component: OpenFromMenuExample,
+  }),
+}
+
+export const OutsideScroll = {
+  render: () => ({
+    Component: OutsideScrollExample,
   }),
 }
 

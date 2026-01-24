@@ -9,10 +9,12 @@ import ContextExample from './examples/context.vue'
 import ControlledExample from './examples/controlled.vue'
 import FinalFocusExample from './examples/final-focus.vue'
 import InitialFocusExample from './examples/initial-focus.vue'
+import InsideScrollExample from './examples/inside-scroll.vue'
 import LazyMountExample from './examples/lazy-mount.vue'
 import NestedExample from './examples/nested.vue'
 import NonModalExample from './examples/non-modal.vue'
 import OpenFromMenuExample from './examples/open-from-menu.vue'
+import OutsideScrollExample from './examples/outside-scroll.vue'
 import RootProviderExample from './examples/root-provider.vue'
 
 const meta: Meta = {
@@ -84,6 +86,13 @@ export const InitialFocus = {
   }),
 }
 
+export const InsideScroll = {
+  render: () => ({
+    components: { Component: InsideScrollExample },
+    template: '<Component />',
+  }),
+}
+
 export const LazyMount = {
   render: () => ({
     components: { Component: LazyMountExample },
@@ -108,6 +117,13 @@ export const NonModal = {
 export const OpenFromMenu = {
   render: () => ({
     components: { Component: OpenFromMenuExample },
+    template: '<Component />',
+  }),
+}
+
+export const OutsideScroll = {
+  render: () => ({
+    components: { Component: OutsideScrollExample },
     template: '<Component />',
   }),
 }
