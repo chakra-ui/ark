@@ -479,6 +479,10 @@
     opacity: 0.4;
     cursor: not-allowed;
   }
+
+  &[data-outside-range] {
+    visibility: hidden;
+  }
 }
 
 .MultipleMonths {
