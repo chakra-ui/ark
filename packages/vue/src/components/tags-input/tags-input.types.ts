@@ -96,6 +96,10 @@ export interface RootProps {
    */
   name?: string
   /**
+   * The placeholder text for the input when there are no tags
+   */
+  placeholder?: string
+  /**
    * Whether the tags input should be read-only
    */
   readOnly?: boolean

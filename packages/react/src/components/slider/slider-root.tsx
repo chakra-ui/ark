@@ -34,7 +34,7 @@ export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>((props, re
     'readOnly',
     'step',
     'thumbAlignment',
-    'thumbAlignment',
+    'thumbCollisionBehavior',
     'thumbSize',
     'value',
   ])

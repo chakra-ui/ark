@@ -54,6 +54,7 @@
       'onOpenChange',
       'onValueChange',
       'onViewChange',
+      'onVisibleRangeChange',
       'open',
       'outsideDaySelectable',
       'parse',

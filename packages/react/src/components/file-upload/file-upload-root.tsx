@@ -31,6 +31,7 @@ export const FileUploadRoot = forwardRef<HTMLDivElement, FileUploadRootProps>((p
     'onFileChange',
     'onFileReject',
     'preventDocumentDrop',
+    'readOnly',
     'required',
     'translations',
     'transformFiles',

@@ -18,13 +18,16 @@
 
   const [useStepsProps, localProps] = $derived(
     createSplitProps<UseStepsProps>()(props, [
+      'count',
       'defaultStep',
       'id',
       'ids',
-      'count',
+      'isStepSkippable',
+      'isStepValid',
       'linear',
       'onStepChange',
       'onStepComplete',
+      'onStepInvalid',
       'orientation',
       'step',
     ]),

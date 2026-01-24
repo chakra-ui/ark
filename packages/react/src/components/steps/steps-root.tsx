@@ -12,13 +12,16 @@ const splitRootProps = createSplitProps<UseStepsProps>()
 
 export const StepsRoot = forwardRef<HTMLDivElement, StepsRootProps>((props, ref) => {
   const [useStepsProps, localProps] = splitRootProps(props, [
+    'count',
     'defaultStep',
     'id',
     'ids',
-    'count',
+    'isStepSkippable',
+    'isStepValid',
     'linear',
     'onStepChange',
     'onStepComplete',
+    'onStepInvalid',
     'orientation',
     'step',
   ])

@@ -111,6 +111,15 @@ export interface RootProps {
    */
   thumbAlignment?: 'center' | 'contain'
   /**
+   * How thumbs behave when they collide during pointer interactions
+   * - `none`: Thumbs cannot move past each other
+   * - `push`: Thumbs push each other
+   * - `swap`: Thumbs swap places
+   *
+   * @default "none"
+   */
+  thumbCollisionBehavior?: 'none' | 'push' | 'swap'
+  /**
    * The slider thumbs dimensions
    */
   thumbSize?: { width: number; height: number }

@@ -40,6 +40,7 @@ export const DatePickerRoot = forwardRef<HTMLDivElement, DatePickerRootProps>((p
     'onOpenChange',
     'onValueChange',
     'onViewChange',
+    'onVisibleRangeChange',
     'open',
     'outsideDaySelectable',
     'parse',

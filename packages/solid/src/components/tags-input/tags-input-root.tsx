@@ -33,6 +33,7 @@ export const TagsInputRoot = (props: TagsInputRootProps) => {
     'onPointerDownOutside',
     'onValueChange',
     'onValueInvalid',
+    'placeholder',
     'readOnly',
     'required',
     'translations',

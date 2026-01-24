@@ -27,6 +27,7 @@ const props = withDefaults(defineProps<FileUploadRootProps>(), {
   disabled: undefined,
   invalid: undefined,
   preventDocumentDrop: undefined,
+  readOnly: undefined,
   required: undefined,
 } satisfies BooleanDefaults<RootProps>)
 

@@ -37,6 +37,7 @@
       'onFileChange',
       'onFileReject',
       'preventDocumentDrop',
+      'readOnly',
       'required',
       'translations',
       'transformFiles',
