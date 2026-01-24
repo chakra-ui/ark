@@ -76,6 +76,20 @@ leverage it to access the component state and methods from outside the menu.
 
 > If you're using the `RootProvider` component, you don't need to use the `Root` component.
 
+### Menu in Dialog
+
+When rendering a menu inside a dialog, use `lazyMount` and `unmountOnExit` to ensure proper cleanup when the dialog
+closes.
+
+<Example id="menu-in-dialog" />
+
+### Menu Item Dialog
+
+Open a confirmation dialog from a menu item. This pattern is useful for destructive actions like delete that require
+user confirmation.
+
+<Example id="menu-item-dialog" />
+
 ## Guides
 
 ### Custom IDs

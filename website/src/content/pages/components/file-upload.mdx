@@ -125,6 +125,20 @@ Use the `setClipboardFiles` method to enable pasting images directly from the cl
 
 <Example id="pasting-files" />
 
+### Media Capture
+
+Use the `capture` prop to access the device camera directly. Set to `"environment"` for the back camera or `"user"` for
+the front camera. This is useful for mobile photo uploads.
+
+<Example id="media-capture" />
+
+### Rejected Files
+
+Access rejected files through the `rejectedFiles` array in the context. Each rejected file includes error codes
+explaining why it was rejected, allowing you to display detailed validation feedback.
+
+<Example id="rejected-files" />
+
 ## Guides
 
 ### File Previews

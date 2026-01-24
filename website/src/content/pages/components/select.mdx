@@ -89,6 +89,20 @@ DOM. This can improve performance by only rendering the content when needed.
 
 <Example id="lazy-mount" />
 
+### Select All
+
+Use the `selectAll()` method from the select context to select all items at once. This is useful for multi-select
+scenarios where users need to quickly select everything.
+
+<Example id="select-all" />
+
+### Overflow
+
+For selects with many items, use `positioning.fitViewport` to ensure the dropdown fits within the viewport. Combine with
+a max-height on the content to enable scrolling.
+
+<Example id="overflow" />
+
 ## Guides
 
 ### Type Safety

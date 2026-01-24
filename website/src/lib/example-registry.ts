@@ -126,7 +126,7 @@ import * as DatePicker_Inline from '@examples/date-picker/examples/inline'
 import * as DatePicker_Locale from '@examples/date-picker/examples/locale'
 import * as DatePicker_MinMax from '@examples/date-picker/examples/min-max'
 import * as DatePicker_MonthPicker from '@examples/date-picker/examples/month-picker'
-import * as DatePicker_MonthRange from '@examples/date-picker/examples/month-range'
+import * as DatePicker_MonthPickerRange from '@examples/date-picker/examples/month-picker-range'
 import * as DatePicker_MultiSelection from '@examples/date-picker/examples/multi-selection'
 import * as DatePicker_MultipleMonths from '@examples/date-picker/examples/multiple-months'
 import * as DatePicker_Presets from '@examples/date-picker/examples/presets'
@@ -137,8 +137,6 @@ import * as DatePicker_YearPickerRange from '@examples/date-picker/examples/year
 import * as DatePicker_YearPicker from '@examples/date-picker/examples/year-picker'
 import * as Dialog_AlertDialog from '@examples/dialog/examples/alert-dialog'
 import * as Dialog_Basic from '@examples/dialog/examples/basic'
-import * as Dialog_CloseOnEscape from '@examples/dialog/examples/close-on-escape'
-import * as Dialog_CloseOnInteractOutside from '@examples/dialog/examples/close-on-interact-outside'
 import * as Dialog_Confirmation from '@examples/dialog/examples/confirmation'
 import * as Dialog_Context from '@examples/dialog/examples/context'
 import * as Dialog_Controlled from '@examples/dialog/examples/controlled'
@@ -669,7 +667,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'date-picker/locale': DatePicker_Locale,
   'date-picker/min-max': DatePicker_MinMax,
   'date-picker/month-picker': DatePicker_MonthPicker,
-  'date-picker/month-range': DatePicker_MonthRange,
+  'date-picker/month-picker-range': DatePicker_MonthPickerRange,
   'date-picker/multi-selection': DatePicker_MultiSelection,
   'date-picker/multiple-months': DatePicker_MultipleMonths,
   'date-picker/presets': DatePicker_Presets,
@@ -680,8 +678,6 @@ const exampleModules: Record<string, ExampleModule> = {
   'date-picker/year-picker': DatePicker_YearPicker,
   'dialog/alert-dialog': Dialog_AlertDialog,
   'dialog/basic': Dialog_Basic,
-  'dialog/close-on-escape': Dialog_CloseOnEscape,
-  'dialog/close-on-interact-outside': Dialog_CloseOnInteractOutside,
   'dialog/confirmation': Dialog_Confirmation,
   'dialog/context': Dialog_Context,
   'dialog/controlled': Dialog_Controlled,

@@ -89,20 +89,6 @@ well for long-form content where you want the dialog to feel more like a page:
 
 <Example id="outside-scroll" />
 
-### Close on Interact Outside
-
-Prevent the dialog from closing when clicking outside by setting `closeOnInteractOutside={false}`. Use the
-`onInteractOutside` event with `e.preventDefault()` for advanced control:
-
-<Example id="close-on-interact-outside" />
-
-### Close on Escape
-
-Prevent the dialog from closing when pressing Escape by setting `closeOnEscape={false}`. Use the `onEscapeKeyDown` event
-with `e.preventDefault()` to implement custom behavior like unsaved changes warnings:
-
-<Example id="close-on-escape" />
-
 ### Context
 
 Use the `Dialog.Context` component to access the dialog's state and methods.
@@ -115,10 +101,6 @@ The `useDialog` hook gives you programmatic access to the dialog's state and met
 when you need to control the dialog from outside its component tree.
 
 <Example id="root-provider" />
-
-> **Note:** There are two ways to use the Dialog component: (1) `Dialog.Root` for declarative usage, or (2)
-> `useDialog()` + `Dialog.RootProvider` for programmatic control with access to state properties and methods like
-> `setOpen()`. Never use both approaches together - choose one based on your needs.
 
 ### Nested
 
@@ -152,6 +134,16 @@ unsaved changes:
 <Example id="confirmation" />
 
 ## Guides
+
+### Close Behavior
+
+Control how the dialog closes:
+
+- `closeOnEscape={false}` - Prevent closing when pressing <kbd>Escape</kbd>
+- `closeOnInteractOutside={false}` - Prevent closing when clicking outside
+
+For conditional control, use `onEscapeKeyDown` or `onInteractOutside` with `e.preventDefault()`. See the Confirmation
+example above for a practical implementation.
 
 ### Dynamic Imports
 

@@ -99,6 +99,34 @@ Key implementation details:
 
 <Example id="virtualized" />
 
+### Checkbox Tree
+
+Use the `defaultCheckedValue` prop to enable checkbox selection mode. This allows users to select multiple nodes with
+checkboxes, including parent-child selection relationships.
+
+<Example id="checkbox-tree" />
+
+### Expand and Collapse All
+
+Use the `expand()` and `collapse()` methods from the tree view context to programmatically expand or collapse all
+branches.
+
+<Example id="expand-collapse-all" />
+
+### Mutation
+
+Use the collection's `remove()` and `replace()` methods to dynamically add and remove nodes from the tree. This is
+useful for building file explorer interfaces where users can create and delete files.
+
+<Example id="mutation" />
+
+### Rename Node
+
+Enable inline renaming of nodes using the `canRename` prop and `onRenameComplete` callback. Press <kbd>F2</kbd> to
+activate rename mode on the focused node.
+
+<Example id="rename-node" />
+
 ## Guides
 
 ### Type Safety

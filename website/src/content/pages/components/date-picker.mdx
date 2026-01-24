@@ -121,6 +121,27 @@ This allows you to have maximum control over the date picker programmatically.
 
 > If you're using the `DatePicker.RootProvider` component, you don't need to use the `DatePicker.Root` component.
 
+### Custom Parsing
+
+Use the `parse` prop to implement custom date parsing logic. This allows users to enter dates in flexible formats like
+"25/12" or "25/12/24" which are automatically converted to valid dates.
+
+<Example id="format-parse" />
+
+### Month Picker Range
+
+Create a month range picker by combining `selectionMode="range"` with `defaultView="month"` and `minView="month"`. This
+is useful for selecting billing periods or date ranges by month.
+
+<Example id="month-picker-range" />
+
+### Year Range
+
+Create a year range picker by combining `selectionMode="range"` with `defaultView="year"` and `minView="year"`. This is
+useful for selecting multi-year periods.
+
+<Example id="year-picker-range" />
+
 ## API Reference
 
 ### Props

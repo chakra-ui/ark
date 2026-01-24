@@ -8,8 +8,6 @@ export default meta
 
 export { AlertDialog } from './examples/alert-dialog'
 export { Basic } from './examples/basic'
-export { CloseOnEscape } from './examples/close-on-escape'
-export { CloseOnInteractOutside } from './examples/close-on-interact-outside'
 export { Confirmation } from './examples/confirmation'
 export { Context } from './examples/context'
 export { Controlled } from './examples/controlled'

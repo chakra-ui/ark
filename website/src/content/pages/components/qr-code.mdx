@@ -49,18 +49,12 @@ leverage it to access the component state and methods from outside the QR code.
 
 > If you're using the `RootProvider` component, you don't need to use the `Root` component.
 
-## Guides
-
 ### Download
 
-You can download the QR code by using the `QrCode.DownloadTrigger`. You will have to provide the `fileName` and the
-`mimeType` of the image.
+Use the `QrCode.DownloadTrigger` component to allow users to download the QR code as an image. Specify the `fileName`
+and `mimeType` props for the downloaded file.
 
-```tsx
-<QrCode.DownloadTrigger fileName="qr-code.png" mimeType="image/png">
-  Download
-</QrCode.DownloadTrigger>
-```
+<Example id="download" />
 
 ## API Reference
 

@@ -40,34 +40,36 @@ export const YearPickerRange = () => {
         <DatePicker.Positioner>
           <DatePicker.Content className={styles.Content}>
             <DatePicker.View view="year" className={styles.View}>
-              <DatePicker.ViewControl className={styles.ViewControl}>
-                <DatePicker.PrevTrigger className={styles.PrevTrigger}>
-                  <ChevronLeftIcon />
-                </DatePicker.PrevTrigger>
-                <DatePicker.ViewTrigger className={styles.ViewTrigger}>
-                  <DatePicker.RangeText />
-                </DatePicker.ViewTrigger>
-                <DatePicker.NextTrigger className={styles.NextTrigger}>
-                  <ChevronRightIcon />
-                </DatePicker.NextTrigger>
-              </DatePicker.ViewControl>
               <DatePicker.Context>
                 {(datePicker) => (
-                  <DatePicker.Table className={styles.Table}>
-                    <DatePicker.TableBody className={styles.TableBody}>
-                      {datePicker.getYearsGrid({ columns: 4 }).map((years, id) => (
-                        <DatePicker.TableRow className={styles.TableRow} key={id}>
-                          {years.map((year, id) => (
-                            <DatePicker.TableCell className={styles.TableCell} key={id} value={year.value}>
-                              <DatePicker.TableCellTrigger className={styles.YearTableCellTrigger}>
-                                {year.label}
-                              </DatePicker.TableCellTrigger>
-                            </DatePicker.TableCell>
-                          ))}
-                        </DatePicker.TableRow>
-                      ))}
-                    </DatePicker.TableBody>
-                  </DatePicker.Table>
+                  <>
+                    <DatePicker.ViewControl className={styles.ViewControl}>
+                      <DatePicker.PrevTrigger className={styles.PrevTrigger}>
+                        <ChevronLeftIcon />
+                      </DatePicker.PrevTrigger>
+                      <span className={styles.ViewTrigger}>
+                        {datePicker.getDecade().start} - {datePicker.getDecade().end}
+                      </span>
+                      <DatePicker.NextTrigger className={styles.NextTrigger}>
+                        <ChevronRightIcon />
+                      </DatePicker.NextTrigger>
+                    </DatePicker.ViewControl>
+                    <DatePicker.Table className={styles.Table}>
+                      <DatePicker.TableBody className={styles.TableBody}>
+                        {datePicker.getYearsGrid({ columns: 4 }).map((years, id) => (
+                          <DatePicker.TableRow className={styles.TableRow} key={id}>
+                            {years.map((year, id) => (
+                              <DatePicker.TableCell className={styles.TableCell} key={id} value={year.value}>
+                                <DatePicker.TableCellTrigger className={styles.YearTableCellTrigger}>
+                                  {year.label}
+                                </DatePicker.TableCellTrigger>
+                              </DatePicker.TableCell>
+                            ))}
+                          </DatePicker.TableRow>
+                        ))}
+                      </DatePicker.TableBody>
+                    </DatePicker.Table>
+                  </>
                 )}
               </DatePicker.Context>
             </DatePicker.View>

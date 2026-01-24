@@ -20,7 +20,7 @@ const parse = (string: string) => {
   }
 }
 
-export const MonthRange = () => {
+export const MonthPickerRange = () => {
   return (
     <DatePicker.Root
       className={styles.Root}
