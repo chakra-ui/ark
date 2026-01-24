@@ -12,6 +12,7 @@ import InitialFocusExample from './examples/initial-focus.svelte'
 import LazyMountExample from './examples/lazy-mount.svelte'
 import NestedExample from './examples/nested.svelte'
 import NonModalExample from './examples/non-modal.svelte'
+import OpenFromMenuExample from './examples/open-from-menu.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 
 const meta: Meta = {
@@ -89,6 +90,12 @@ export const Nested = {
 export const NonModal = {
   render: () => ({
     Component: NonModalExample,
+  }),
+}
+
+export const OpenFromMenu = {
+  render: () => ({
+    Component: OpenFromMenuExample,
   }),
 }
 

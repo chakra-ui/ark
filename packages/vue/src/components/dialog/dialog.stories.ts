@@ -12,6 +12,7 @@ import InitialFocusExample from './examples/initial-focus.vue'
 import LazyMountExample from './examples/lazy-mount.vue'
 import NestedExample from './examples/nested.vue'
 import NonModalExample from './examples/non-modal.vue'
+import OpenFromMenuExample from './examples/open-from-menu.vue'
 import RootProviderExample from './examples/root-provider.vue'
 
 const meta: Meta = {
@@ -100,6 +101,13 @@ export const Nested = {
 export const NonModal = {
   render: () => ({
     components: { Component: NonModalExample },
+    template: '<Component />',
+  }),
+}
+
+export const OpenFromMenu = {
+  render: () => ({
+    components: { Component: OpenFromMenuExample },
     template: '<Component />',
   }),
 }

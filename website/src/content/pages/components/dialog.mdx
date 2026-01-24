@@ -26,6 +26,13 @@ To create a controlled Dialog component, manage the state of the dialog using th
 
 <Example id="controlled" />
 
+### Open from Menu
+
+To open a dialog from a menu item, control the dialog state and open it imperatively using the `onClick` handler on the
+menu item:
+
+<Example id="open-from-menu" />
+
 ### Lazy Mount
 
 Lazy mounting is a feature that allows the content of a dialog to be rendered only when the dialog is first opened. This
@@ -101,8 +108,25 @@ when you need to control the dialog from outside its component tree.
 
 ### Nested
 
-Multiple dialogs can be stacked with automatic z-index management. Zag.js manages layering through CSS variables like
-`--z-index` and `--layer-index`, which are automatically updated when dialogs are opened or closed:
+You can nest dialogs within one another normally. When a nested dialog is open, the parent dialog receives a
+`data-has-nested` attribute and a `--nested-layer-count` CSS variable indicating the number of nested layers.
+
+Use these to customize the styling of the parent dialog, such as creating a zoom-out effect:
+
+```css
+.Content[data-has-nested] {
+  transform: scale(calc(1 - var(--nested-layer-count) * 0.05));
+}
+```
+
+Zag.js also provides a `--layer-index` CSS variable for z-index management. Use it to ensure proper stacking of dialog
+layers:
+
+```css
+.Content {
+  z-index: calc(var(--layer-index));
+}
+```
 
 <Example id="nested" />
 
@@ -114,17 +138,6 @@ unsaved changes:
 <Example id="confirmation" />
 
 ## Guides
-
-### Nested Styling
-
-You can create a zoom-out effect for parent dialogs using the `data-has-nested` attribute and `--nested-layer-count`
-variable:
-
-```css
-[data-scope='dialog'][data-part='backdrop'][data-has-nested] {
-  transform: scale(calc(1 - var(--nested-layer-count) * 0.05));
-}
-```
 
 ### Dynamic Imports
 
