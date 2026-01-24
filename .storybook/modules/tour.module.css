@@ -25,10 +25,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: var(--z-index);
   }
 
   &[data-type='floating'] {
     position: fixed;
+    z-index: var(--z-index);
 
     &[data-placement*='bottom'] {
       bottom: 24px;
