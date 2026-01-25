@@ -7,7 +7,6 @@ import { cleanProps } from '../../utils/clean-props'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './checkbox'
 import { useCheckboxGroupContext, type UseCheckboxGroupContext } from './use-checkbox-group-context'
-import { toBooleanValue } from '../../utils/boolean'
 
 export interface UseCheckboxProps extends Optional<Omit<checkbox.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseCheckboxReturn extends ComputedRef<checkbox.Api<PropTypes>> {}
@@ -27,13 +26,12 @@ export const useCheckbox = (props: MaybeRef<UseCheckboxProps> = {}, emit?: EmitF
     const merged = mergeProps(propsValue, groupProps)
     return {
       ...merged,
-      disabled: toBooleanValue(groupProps.disabled) || toBooleanValue(propsValue.disabled),
+      disabled: groupProps.disabled || propsValue.disabled,
     }
   })
 
   const context = computed<checkbox.Props>(() => {
     const localProps = toValue<UseCheckboxProps>(computedProps)
-
     return {
       id,
       ids: {
