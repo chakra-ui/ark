@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import * as runtime from 'react/jsx-runtime'
 import { styled } from 'styled-system/jsx'
 import { BlogCardGroup } from '~/components/blog-card'
@@ -470,7 +471,7 @@ const sharedComponents = {
   em: Em,
 }
 
-const useMDXComponent = (code: string) => {
+const compileMDX = (code: string) => {
   const fn = new Function(code)
   return fn({ ...runtime }).default
 }
@@ -481,6 +482,7 @@ interface MDXProps {
 }
 
 export const MDXContent = ({ code, components }: MDXProps) => {
-  const Component = useMDXComponent(code)
-  return <Component components={{ ...sharedComponents, ...components }} />
+  const Component = useMemo(() => compileMDX(code), [code])
+  const mergedComponents = useMemo(() => ({ ...sharedComponents, ...components }), [components])
+  return <Component components={mergedComponents} />
 }
