@@ -56,6 +56,11 @@ const nextConfig = {
         permanent: false,
       },
       {
+        source: '/docs',
+        destination: '/docs/overview/getting-started',
+        permanent: false,
+      },
+      {
         source: '/:framework/docs/:slug*',
         destination: '/docs/:slug*',
         permanent: false,
