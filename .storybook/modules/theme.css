@@ -14,6 +14,7 @@
   --demo-neutral-muted: #e2e1de;
   --demo-neutral-subtle: #f1f0ef;
   --demo-neutral-fg: #21201c;
+  --demo-neutral-fg-muted: #61605b;
   --demo-neutral-contrast: white;
   --demo-neutral-focus-ring: #bcbbb5;
 
@@ -65,6 +66,7 @@
   --demo-neutral-muted: #31312e;
   --demo-neutral-subtle: #222221;
   --demo-neutral-fg: #eeeeec;
+  --demo-neutral-fg-muted: #a9a9a3;
   --demo-neutral-contrast: white;
   --demo-neutral-focus-ring: #62605b;
 

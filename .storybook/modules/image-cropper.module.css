@@ -190,7 +190,7 @@
 
 .Description {
   font-size: 0.875rem;
-  color: var(--demo-neutral-emphasized);
+  color: var(--demo-neutral-fg-muted);
   margin: 0;
 }
 

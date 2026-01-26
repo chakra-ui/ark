@@ -166,7 +166,7 @@
 
 .DropzoneDescription {
   font-size: 0.75rem;
-  color: var(--demo-neutral-emphasized);
+  color: var(--demo-neutral-fg-muted);
 }
 
 .ItemGroup {

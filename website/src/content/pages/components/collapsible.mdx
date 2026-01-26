@@ -23,39 +23,6 @@ To set up the collapsible correctly, you'll need to understand its anatomy and h
 </Collapsible.Root>
 ```
 
-## Animation
-
-You can use CSS animations to create smooth transitions for opening and closing the Collapsible content. Utilize the
-`data-state` attribute in combination with the `--height` CSS variable to animate the open and closed states.
-
-```css
-@keyframes slideDown {
-  from {
-    height: 0;
-  }
-  to {
-    height: var(--height);
-  }
-}
-
-@keyframes slideUp {
-  from {
-    height: var(--height);
-  }
-  to {
-    height: 0;
-  }
-}
-
-[data-scope='collapsible'][data-part='content'][data-state='open'] {
-  animation: slideDown 250ms;
-}
-
-[data-scope='collapsible'][data-part='content'][data-state='closed'] {
-  animation: slideUp 200ms;
-}
-```
-
 ## Examples
 
 Learn how to use the `Collapsible` component in your project. Let's examine the most basic example

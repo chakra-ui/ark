@@ -74,7 +74,7 @@
   margin: 0.25rem 0 0;
   font-size: 0.875rem;
   line-height: 1.5;
-  color: var(--demo-neutral-emphasized);
+  color: var(--demo-neutral-fg-muted);
 }
 
 .Body {
@@ -172,7 +172,7 @@
     margin: 0;
     font-size: 0.875rem;
     line-height: 1.5;
-    color: var(--demo-neutral-emphasized);
+    color: var(--demo-neutral-fg-muted);
   }
 }
 

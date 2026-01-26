@@ -62,7 +62,7 @@
   margin: 0;
   font-size: 14px;
   line-height: 1.5;
-  color: var(--demo-neutral-emphasized);
+  color: var(--demo-neutral-fg-muted);
 }
 
 .Body {
