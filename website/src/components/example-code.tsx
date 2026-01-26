@@ -65,15 +65,14 @@ export const ExampleCodeTabs = (props: Props) => {
 
   const hasComponentCss = componentCss.length > 0
   const hasGlobalCss = globalCssContent.length > 0
-  const hasCss = hasComponentCss || hasGlobalCss
 
-  const displayCode = showCss ? transformCssModuleImports(code) : stripCssModuleCode(code)
+  const displayCode = hasComponentCss && showCss ? transformCssModuleImports(code) : stripCssModuleCode(code)
   const codeExtension = lang === 'vue' ? 'vue' : lang === 'svelte' ? 'svelte' : 'tsx'
 
   const tabs = [
     { value: 'code', label: `index.${codeExtension}` },
     ...(hasComponentCss && showCss ? [{ value: 'styles', label: 'index.module.css' }] : []),
-    ...(hasGlobalCss && showCss ? [{ value: 'global', label: 'global.css' }] : []),
+    ...(hasComponentCss && hasGlobalCss && showCss ? [{ value: 'global', label: 'global.css' }] : []),
   ]
 
   return (
@@ -113,7 +112,7 @@ export const ExampleCodeTabs = (props: Props) => {
         ))}
         <Tabs.Indicator />
         <HStack pos="absolute" right="4" top="1.5" gap="4" className="dark">
-          {hasCss && (
+          {hasComponentCss && (
             <Switch
               size="sm"
               checked={showCss}
@@ -141,7 +140,7 @@ export const ExampleCodeTabs = (props: Props) => {
         </Tabs.Content>
       )}
 
-      {hasGlobalCss && showCss && (
+      {hasComponentCss && hasGlobalCss && showCss && (
         <Tabs.Content value="global" pt="0">
           <CodePreview code={globalCssContent} lang="css" />
         </Tabs.Content>
