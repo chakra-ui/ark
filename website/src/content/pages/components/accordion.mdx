@@ -29,6 +29,19 @@ Set the `defaultValue` prop to specify which item should be expanded by default.
 
 <Example id="basic" />
 
+### Controlled
+
+Use the `value` and `onValueChange` props to control the expanded items.
+
+<Example id="controlled" />
+
+### Root Provider
+
+An alternative way to control the accordion is to use the `RootProvider` component and the `useAccordion` hook. This way
+you can access the state and methods from outside the component.
+
+<Example id="root-provider" />
+
 ### Collapsible
 
 Use the `collapsible` prop to allow the user to collapse all panels.
@@ -40,13 +53,6 @@ Use the `collapsible` prop to allow the user to collapse all panels.
 Use the `multiple` prop to allow multiple panels to be expanded simultaneously.
 
 <Example id="multiple" />
-
-### Root Provider
-
-An alternative way to control the accordion is to use the `RootProvider` component and the `useAccordion` hook. This way
-you can access the state and methods from outside the component.
-
-<Example id="root-provider" />
 
 ### Horizontal
 
