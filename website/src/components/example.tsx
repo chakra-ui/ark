@@ -64,20 +64,8 @@ export const ExampleCode = async (props: Props) => {
   )
 }
 
-const fetchFrameworkCode = async (
-  framework: string,
-  component: string | undefined,
-  id: string,
-): Promise<{ code: string; lang: SupportedLang }> => {
-  if (!component) return { code: 'Example not found', lang: 'tsx' }
-
-  const extension = Match.value(framework).pipe(
-    Match.when('vue', () => 'vue'),
-    Match.when('svelte', () => 'svelte'),
-    Match.orElse(() => 'tsx'),
-  )
-
-  const examplePath = Match.value(component).pipe(
+const getExamplePath = (component: string) =>
+  Match.value(component).pipe(
     Match.when(
       () => ['progress-circular', 'progress-linear'].includes(component),
       () => `components/progress/examples/${component.split('-')[1]}`,
@@ -89,10 +77,27 @@ const fetchFrameworkCode = async (
     Match.orElse(() => `components/${component}/examples`),
   )
 
-  const srcPath = Match.value(framework).pipe(
+const getExtension = (framework: string) =>
+  Match.value(framework).pipe(
+    Match.when('vue', () => 'vue'),
+    Match.when('svelte', () => 'svelte'),
+    Match.orElse(() => 'tsx'),
+  )
+
+const getSrcPath = (framework: string) =>
+  Match.value(framework).pipe(
     Match.when('svelte', () => 'src/lib'),
     Match.orElse(() => 'src'),
   )
+
+export const frameworkExample = async (
+  framework: string,
+  component: string,
+  id: string,
+): Promise<{ code: string; extension: string }> => {
+  const extension = getExtension(framework)
+  const examplePath = getExamplePath(component)
+  const srcPath = getSrcPath(framework)
 
   const basePath = `../packages/${framework}/${srcPath}`
   const fileName = [id, extension].join('.')
@@ -102,6 +107,17 @@ const fetchFrameworkCode = async (
   )
 
   const code = content.replaceAll(/from '\.\/icons'/g, `from 'lucide-vue-next'`).replace(/.*@ts-expect-error.*\n/g, '')
+  return { code, extension }
+}
+
+const fetchFrameworkCode = async (
+  framework: string,
+  component: string | undefined,
+  id: string,
+): Promise<{ code: string; lang: SupportedLang }> => {
+  if (!component) return { code: 'Example not found', lang: 'tsx' }
+
+  const { code, extension } = await frameworkExample(framework, component, id)
   return { code, lang: extension as SupportedLang }
 }
 
