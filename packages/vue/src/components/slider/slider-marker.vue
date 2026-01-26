@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface SliderMarkerBaseProps extends MarkerProps, PolymorphicProps {}
 export interface SliderMarkerProps
-  extends SliderMarkerBaseProps,
+  extends
+    SliderMarkerBaseProps,
     /**
      * @vue-ignore
      */

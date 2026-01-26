@@ -6,16 +6,25 @@ description: Used to guide users through a series of steps in a process
 
 <ComponentPreview id="Steps" />
 
-## Usage
+## Anatomy
 
-The `Steps` component is used to guide users through a series of steps in a process.
+<Anatomy id="steps" />
 
-- Supports horizontal and vertical orientations.
-- Support for changing the active step with the keyboard and pointer.
-- Support for linear and non-linear steps.
-
-```jsx
-import { Steps } from '@ark-ui/react/steps'
+```tsx
+<Steps.Root>
+  <Steps.List>
+    <Steps.Item>
+      <Steps.Trigger>
+        <Steps.Indicator />
+      </Steps.Trigger>
+      <Steps.Separator />
+    </Steps.Item>
+  </Steps.List>
+  <Steps.Content />
+  <Steps.CompletedContent />
+  <Steps.PrevTrigger />
+  <Steps.NextTrigger />
+</Steps.Root>
 ```
 
 ## Examples
@@ -26,7 +35,7 @@ Here's a basic example of the `Steps` component.
 
 <Example component="steps" id="basic" />
 
-### Controlled Steps
+### Controlled
 
 Using the `RootProvider` component, you can control the active step by using the `step` prop and handling the
 `onStepChange` event.
@@ -35,13 +44,16 @@ Using the `RootProvider` component, you can control the active step by using the
 
 ### Root Provider
 
-An alternative way to control the steps is to use the `RootProvider` component and the `useSteps` store hook.
-
-This way you can access the steps state and methods from outside the steps.
+An alternative way to control the steps is to use the `RootProvider` component and the `useSteps` hook. This way you can
+access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+### Vertical
+
+Use the `orientation` prop to display the steps vertically.
+
+<Example id="vertical" />
 
 ## API Reference
 
@@ -50,7 +62,5 @@ This way you can access the steps state and methods from outside the steps.
 <ComponentTypes id="steps" />
 
 ### Context
-
-These are the properties available when using `Steps.Context`, `useStepsContext` hook or `useSteps` hook.
 
 <ContextType id="steps" />

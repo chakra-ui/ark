@@ -3,9 +3,7 @@
   import type { UseProgressProps } from './use-progress.svelte'
 
   export interface ProgressRootBaseProps
-    extends Optional<UseProgressProps, 'id'>,
-      PolymorphicProps<'div'>,
-      RefAttribute {}
+    extends Optional<UseProgressProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface ProgressRootProps extends Assign<HTMLProps<'div'>, ProgressRootBaseProps> {}
 </script>
 

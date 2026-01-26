@@ -1,8 +1,7 @@
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { WithField } from '../examples/with-field'
-import { ComponentUnderTest } from './basic'
+import { ComponentUnderTest, PinInputWithField } from './basic'
 
 describe('PinInput', () => {
   it('should have no a11y violations', async () => {
@@ -105,38 +104,38 @@ describe('PinInput', () => {
 
 describe('PinInput / Field', () => {
   it('should set input as required', async () => {
-    render(<WithField required />)
+    render(<PinInputWithField required />)
     expect((await screen.findAllByRole('textbox', { hidden: true }))[3]).toBeRequired()
   })
 
   it('should set input as disabled', async () => {
-    render(<WithField disabled />)
+    render(<PinInputWithField disabled />)
     expect((await screen.findAllByRole('textbox', { hidden: true }))[3]).toBeDisabled()
   })
 
   it('should set input as readonly', async () => {
-    render(<WithField readOnly />)
+    render(<PinInputWithField readOnly />)
     expect((await screen.findAllByRole('textbox', { hidden: true }))[3]).toHaveAttribute('readonly')
   })
 
   it('should display helper text', async () => {
-    render(<WithField />)
+    render(<PinInputWithField />)
     expect(await screen.findByText('Additional Info')).toBeInTheDocument()
   })
 
   it('should display error text when error is present', async () => {
-    render(<WithField invalid />)
+    render(<PinInputWithField invalid />)
     await screen.findByText('Error Info')
   })
 
   it('should focus on input when label is clicked', async () => {
-    render(<WithField />)
+    render(<PinInputWithField />)
     await user.click(await screen.findByText(/label/i))
     expect(screen.getByRole('textbox', { name: /pin code 1 of 3/i })).toHaveFocus()
   })
 
   it('should not display error text when no error is present', async () => {
-    await act(async () => render(<WithField />))
+    await act(async () => render(<PinInputWithField />))
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })

@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface FloatingPanelContentBaseProps extends PolymorphicProps {}
 export interface FloatingPanelContentProps
-  extends FloatingPanelContentBaseProps,
+  extends
+    FloatingPanelContentBaseProps,
     /**
      * @vue-ignore
      */

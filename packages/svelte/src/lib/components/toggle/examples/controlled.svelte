@@ -1,17 +1,16 @@
-<script>
+<script lang="ts">
   import { Toggle } from '@ark-ui/svelte/toggle'
-  import { Volume, VolumeOff } from 'lucide-svelte'
+  import { HeartIcon } from 'lucide-svelte'
+  import styles from 'styles/toggle.module.css'
 
   let pressed = $state(false)
 </script>
 
-<div>
-  <Toggle.Root bind:pressed>
-    {#if pressed}
-      <Volume />
-    {:else}
-      <VolumeOff />
-    {/if}
-  </Toggle.Root>
-  <p>Volume is {pressed ? 'unmuted' : 'muted'}</p>
-</div>
+<Toggle.Root class={styles.Root} bind:pressed>
+  <Toggle.Indicator class={styles.Indicator}>
+    {#snippet fallback()}
+      <HeartIcon />
+    {/snippet}
+    <HeartIcon fill="currentColor" />
+  </Toggle.Indicator>
+</Toggle.Root>

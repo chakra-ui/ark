@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UsePopoverContext } from './use-popover-context'
 
-export interface PopoverContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UsePopoverContext>
-  }> {}
+export interface PopoverContextProps extends SlotsType<{
+  default: UnwrapRef<UsePopoverContext>
+}> {}
 </script>
 
 <script setup lang="ts">

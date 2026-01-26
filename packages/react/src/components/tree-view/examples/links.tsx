@@ -1,11 +1,12 @@
 import { TreeView, createTreeCollection } from '@ark-ui/react/tree-view'
 import { ChevronRightIcon, ExternalLinkIcon, FileIcon } from 'lucide-react'
+import styles from 'styles/tree-view.module.css'
 
 export const Links = () => {
   return (
-    <TreeView.Root collection={collection}>
-      <TreeView.Label>Docs</TreeView.Label>
-      <TreeView.Tree>
+    <TreeView.Root className={styles.Root} collection={collection}>
+      <TreeView.Label className={styles.Label}>Docs</TreeView.Label>
+      <TreeView.Tree className={styles.Tree}>
         {collection.rootNode.children?.map((node, index) => (
           <TreeNode key={node.id} node={node} indexPath={[index]} />
         ))}
@@ -19,24 +20,24 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
   return (
     <TreeView.NodeProvider key={node.id} node={node} indexPath={indexPath}>
       {node.children ? (
-        <TreeView.Branch>
-          <TreeView.BranchControl>
-            <TreeView.BranchText>{node.name}</TreeView.BranchText>
-            <TreeView.BranchIndicator>
+        <TreeView.Branch className={styles.Branch}>
+          <TreeView.BranchControl className={styles.BranchControl}>
+            <TreeView.BranchIndicator className={styles.BranchIndicator}>
               <ChevronRightIcon />
             </TreeView.BranchIndicator>
+            <TreeView.BranchText className={styles.BranchText}>{node.name}</TreeView.BranchText>
           </TreeView.BranchControl>
-          <TreeView.BranchContent>
-            <TreeView.BranchIndentGuide />
+          <TreeView.BranchContent className={styles.BranchContent}>
+            <TreeView.BranchIndentGuide className={styles.BranchIndentGuide} />
             {node.children.map((child, index) => (
               <TreeNode key={child.id} node={child} indexPath={[...indexPath, index]} />
             ))}
           </TreeView.BranchContent>
         </TreeView.Branch>
       ) : (
-        <TreeView.Item asChild>
+        <TreeView.Item className={styles.Item} asChild>
           <a href={node.href}>
-            <TreeView.ItemText>
+            <TreeView.ItemText className={styles.ItemText}>
               <FileIcon />
               {node.name}
             </TreeView.ItemText>

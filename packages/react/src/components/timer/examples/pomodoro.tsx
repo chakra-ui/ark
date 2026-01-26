@@ -1,5 +1,8 @@
 import { Timer } from '@ark-ui/react/timer'
+import { PauseIcon, PlayIcon, RotateCcwIcon } from 'lucide-react'
 import { useState } from 'react'
+import button from 'styles/button.module.css'
+import styles from 'styles/timer.module.css'
 
 export const Pomodoro = () => {
   const [isWorking, setIsWorking] = useState(true)
@@ -7,26 +10,43 @@ export const Pomodoro = () => {
 
   const handleComplete = () => {
     setIsWorking(!isWorking)
-    if (!isWorking) {
-      setCycles(cycles + 1)
-    }
+    if (!isWorking) setCycles((c) => c + 1)
   }
 
   return (
-    <Timer.Root startMs={isWorking ? 25 * 60 * 1000 : 5 * 60 * 1000} countdown onComplete={handleComplete}>
+    <Timer.Root
+      className="stack"
+      startMs={isWorking ? 25 * 60 * 1000 : 5 * 60 * 1000}
+      countdown
+      onComplete={handleComplete}
+    >
       <h2>{isWorking ? 'Work Session' : 'Break Session'}</h2>
-      <Timer.Area>
-        <Timer.Item type="minutes" />
-        <Timer.Separator>:</Timer.Separator>
-        <Timer.Item type="seconds" />
+
+      <Timer.Area className={styles.Area}>
+        <div className={styles.ItemGroup}>
+          <Timer.Item className={styles.Item} type="minutes" />
+          <span className={styles.ItemLabel}>minutes</span>
+        </div>
+        <Timer.Separator className={styles.Separator}>:</Timer.Separator>
+        <div className={styles.ItemGroup}>
+          <Timer.Item className={styles.Item} type="seconds" />
+          <span className={styles.ItemLabel}>seconds</span>
+        </div>
       </Timer.Area>
 
-      <Timer.Control>
-        <Timer.ActionTrigger action="start">Start</Timer.ActionTrigger>
-        <Timer.ActionTrigger action="pause">Pause</Timer.ActionTrigger>
-        <Timer.ActionTrigger action="reset">Reset</Timer.ActionTrigger>
+      <Timer.Control className="hstack">
+        <Timer.ActionTrigger className={button.Root} action="start">
+          <PlayIcon /> Start
+        </Timer.ActionTrigger>
+        <Timer.ActionTrigger className={button.Root} action="pause">
+          <PauseIcon /> Pause
+        </Timer.ActionTrigger>
+        <Timer.ActionTrigger className={button.Root} action="reset">
+          <RotateCcwIcon /> Reset
+        </Timer.ActionTrigger>
       </Timer.Control>
-      <p>Completed cycles: {cycles}</p>
+
+      <output>Completed cycles: {cycles}</output>
     </Timer.Root>
   )
 }

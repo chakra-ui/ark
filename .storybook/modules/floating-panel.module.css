@@ -1,0 +1,131 @@
+.Trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  border: 1px solid var(--demo-border);
+  color: var(--demo-neutral-fg);
+
+  &:hover {
+    background-color: var(--demo-neutral-subtle);
+  }
+}
+
+.Positioner {
+  z-index: var(--demo-popover-z-index);
+}
+
+.Content {
+  background-color: var(--demo-bg-popover);
+  border-radius: 0.5rem;
+  border: 1px solid var(--demo-border);
+  width: 100%;
+  box-shadow: var(--demo-shadow-lg);
+  display: flex;
+  flex-direction: column;
+  outline: none;
+
+  &[data-topmost] {
+    z-index: 999999;
+  }
+
+  &[data-behind] {
+    opacity: 0.4;
+  }
+}
+
+.Header {
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  background-color: var(--demo-neutral-subtle);
+  border-bottom: 1px solid var(--demo-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.Title {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--demo-neutral-fg);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    color: var(--demo-neutral-solid);
+  }
+}
+
+.Control {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.ControlButton {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--demo-border);
+  border-radius: 0.25rem;
+  background-color: white;
+  color: var(--demo-neutral-fg);
+
+  &:hover {
+    background-color: var(--demo-neutral-subtle);
+  }
+
+  svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+}
+
+.Body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  overflow: auto;
+  flex: 1 1 auto;
+  font-size: 0.875rem;
+  color: var(--demo-neutral-fg);
+}
+
+.ResizeTrigger {
+  &[data-axis='n'],
+  &[data-axis='s'] {
+    height: 6px;
+    max-width: 90%;
+  }
+
+  &[data-axis='e'],
+  &[data-axis='w'] {
+    width: 6px;
+    max-height: 90%;
+  }
+
+  &[data-axis='ne'],
+  &[data-axis='nw'],
+  &[data-axis='se'],
+  &[data-axis='sw'] {
+    width: 10px;
+    height: 10px;
+  }
+}

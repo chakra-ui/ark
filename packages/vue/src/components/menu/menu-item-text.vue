@@ -5,7 +5,8 @@ import { useMenuItemPropsContext } from './use-menu-option-item-props-context'
 
 export interface MenuItemTextBaseProps extends PolymorphicProps {}
 export interface MenuItemTextProps
-  extends MenuItemTextBaseProps,
+  extends
+    MenuItemTextBaseProps,
     /**
      * @vue-ignore
      */

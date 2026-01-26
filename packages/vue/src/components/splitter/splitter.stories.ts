@@ -2,9 +2,8 @@ import type { Meta } from '@storybook/vue3-vite'
 
 import BasicExample from './examples/basic.vue'
 import CollapsibleExample from './examples/collapsible.vue'
-import EventsExample from './examples/events.vue'
+import ContextExample from './examples/context.vue'
 import MultiplePanelsExample from './examples/multiple-panels.vue'
-import RenderPropExample from './examples/render-prop.vue'
 import ResizeIndicatorExample from './examples/resize-indicator.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import VerticalExample from './examples/vertical.vue'
@@ -22,30 +21,9 @@ export const Basic = {
   }),
 }
 
-export const RootProvider = {
-  render: () => ({
-    components: { Component: RootProviderExample },
-    template: '<Component />',
-  }),
-}
-
 export const Vertical = {
   render: () => ({
     components: { Component: VerticalExample },
-    template: '<Component />',
-  }),
-}
-
-export const Collapsible = {
-  render: () => ({
-    components: { Component: CollapsibleExample },
-    template: '<Component />',
-  }),
-}
-
-export const Events = {
-  render: () => ({
-    components: { Component: EventsExample },
     template: '<Component />',
   }),
 }
@@ -57,9 +35,16 @@ export const MultiplePanels = {
   }),
 }
 
-export const RenderProp = {
+export const Collapsible = {
   render: () => ({
-    components: { Component: RenderPropExample },
+    components: { Component: CollapsibleExample },
+    template: '<Component />',
+  }),
+}
+
+export const Context = {
+  render: () => ({
+    components: { Component: ContextExample },
     template: '<Component />',
   }),
 }
@@ -67,6 +52,13 @@ export const RenderProp = {
 export const ResizeIndicator = {
   render: () => ({
     components: { Component: ResizeIndicatorExample },
+    template: '<Component />',
+  }),
+}
+
+export const RootProvider = {
+  render: () => ({
+    components: { Component: RootProviderExample },
     template: '<Component />',
   }),
 }

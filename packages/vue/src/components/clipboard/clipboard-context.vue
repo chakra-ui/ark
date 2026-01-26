@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseClipboardContext } from './use-clipboard-context'
 
-export interface ClipboardContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseClipboardContext>
-  }> {}
+export interface ClipboardContextProps extends SlotsType<{
+  default: UnwrapRef<UseClipboardContext>
+}> {}
 </script>
 
 <script setup lang="ts">

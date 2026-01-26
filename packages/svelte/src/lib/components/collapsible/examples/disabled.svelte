@@ -1,14 +1,17 @@
 <script lang="ts">
   import { Collapsible } from '@ark-ui/svelte/collapsible'
-  import { ChevronRight } from 'lucide-svelte'
+  import { ChevronRightIcon } from 'lucide-svelte'
+  import styles from 'styles/collapsible.module.css'
 </script>
 
-<Collapsible.Root disabled>
-  <Collapsible.Trigger>
-    Toggle
-    <Collapsible.Indicator>
-      <ChevronRight />
+<Collapsible.Root class={styles.Root} disabled>
+  <Collapsible.Trigger class={styles.Trigger}>
+    System Requirements
+    <Collapsible.Indicator class={styles.Indicator}>
+      <ChevronRightIcon />
     </Collapsible.Indicator>
   </Collapsible.Trigger>
-  <Collapsible.Content>Content</Collapsible.Content>
+  <Collapsible.Content class={styles.Content}>
+    <div class={styles.Body}>This section is currently unavailable.</div>
+  </Collapsible.Content>
 </Collapsible.Root>

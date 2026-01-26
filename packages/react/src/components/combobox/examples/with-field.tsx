@@ -1,8 +1,11 @@
 import { Combobox, useListCollection } from '@ark-ui/react/combobox'
 import { Field } from '@ark-ui/react/field'
 import { useFilter } from '@ark-ui/react/locale'
+import { CheckIcon, ChevronsUpDownIcon, XIcon } from 'lucide-react'
+import styles from 'styles/combobox.module.css'
+import field from 'styles/field.module.css'
 
-export const WithField = (props: Field.RootProps) => {
+export const WithField = () => {
   const { contains } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter } = useListCollection({
@@ -15,29 +18,44 @@ export const WithField = (props: Field.RootProps) => {
   }
 
   return (
-    <Field.Root {...props}>
-      <Combobox.Root collection={collection} onInputValueChange={handleInputChange}>
-        <Combobox.Label>Label</Combobox.Label>
-        <Combobox.Control>
-          <Combobox.Input />
-          <Combobox.Trigger>Open</Combobox.Trigger>
-          <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
+    <Field.Root className={field.Root}>
+      <Combobox.Root className={styles.Root} collection={collection} onInputValueChange={handleInputChange}>
+        <Combobox.Label className={styles.Label}>Department</Combobox.Label>
+        <Combobox.Control className={styles.Control}>
+          <Combobox.Input className={styles.Input} placeholder="e.g. Engineering" />
+          <div className={styles.Indicators}>
+            <Combobox.ClearTrigger className={styles.ClearTrigger}>
+              <XIcon />
+            </Combobox.ClearTrigger>
+            <Combobox.Trigger className={styles.Trigger}>
+              <ChevronsUpDownIcon />
+            </Combobox.Trigger>
+          </div>
         </Combobox.Control>
         <Combobox.Positioner>
-          <Combobox.Content>
+          <Combobox.Content className={styles.Content}>
             {collection.items.map((item) => (
-              <Combobox.Item key={item} item={item}>
-                <Combobox.ItemText>{item}</Combobox.ItemText>
-                <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
+              <Combobox.Item className={styles.Item} key={item.value} item={item}>
+                <Combobox.ItemText className={styles.ItemText}>{item.label}</Combobox.ItemText>
+                <Combobox.ItemIndicator className={styles.ItemIndicator}>
+                  <CheckIcon />
+                </Combobox.ItemIndicator>
               </Combobox.Item>
             ))}
           </Combobox.Content>
         </Combobox.Positioner>
       </Combobox.Root>
-      <Field.HelperText>Additional Info</Field.HelperText>
-      <Field.ErrorText>Error Info</Field.ErrorText>
+      <Field.HelperText className={field.HelperText}>Select your primary department</Field.HelperText>
+      <Field.ErrorText className={field.ErrorText}>Department is required</Field.ErrorText>
     </Field.Root>
   )
 }
 
-const initialItems = ['React', 'Solid', 'Vue', 'Svelte']
+const initialItems = [
+  { label: 'Engineering', value: 'engineering' },
+  { label: 'Design', value: 'design' },
+  { label: 'Marketing', value: 'marketing' },
+  { label: 'Sales', value: 'sales' },
+  { label: 'Human Resources', value: 'hr' },
+  { label: 'Finance', value: 'finance' },
+]

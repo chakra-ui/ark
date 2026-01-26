@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface TabIndicatorBaseProps extends PolymorphicProps {}
 export interface TabIndicatorProps
-  extends TabIndicatorBaseProps,
+  extends
+    TabIndicatorBaseProps,
     /**
      * @vue-ignore
      */

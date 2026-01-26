@@ -3,9 +3,7 @@
   import type { DownloadTriggerProps } from '@zag-js/qr-code'
 
   export interface QrCodeDownloadTriggerBaseProps
-    extends DownloadTriggerProps,
-      PolymorphicProps<'button'>,
-      RefAttribute {}
+    extends DownloadTriggerProps, PolymorphicProps<'button'>, RefAttribute {}
 
   export interface QrCodeDownloadTriggerProps extends HTMLProps<'button'>, QrCodeDownloadTriggerBaseProps {}
 </script>

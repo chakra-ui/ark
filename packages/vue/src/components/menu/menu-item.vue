@@ -6,7 +6,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface MenuItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface MenuItemProps
-  extends MenuItemBaseProps,
+  extends
+    MenuItemBaseProps,
     /**
      * @vue-ignore
      */

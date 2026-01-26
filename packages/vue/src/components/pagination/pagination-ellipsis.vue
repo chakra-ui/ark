@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface PaginationEllipsisBaseProps extends EllipsisProps, PolymorphicProps {}
 export interface PaginationEllipsisProps
-  extends PaginationEllipsisBaseProps,
+  extends
+    PaginationEllipsisBaseProps,
     /**
      * @vue-ignore
      */

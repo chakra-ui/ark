@@ -5,13 +5,12 @@
   import type { UseSelectProps } from './use-select.svelte'
 
   export interface SelectRootBaseProps<T extends CollectionItem = CollectionItem>
-    extends UseSelectProps<T>,
-      UsePresenceProps,
-      PolymorphicProps<'div'>,
-      RefAttribute {}
+    extends UseSelectProps<T>, UsePresenceProps, PolymorphicProps<'div'>, RefAttribute {}
 
-  export interface SelectRootProps<T extends CollectionItem = CollectionItem>
-    extends Assign<HTMLProps<'div'>, SelectRootBaseProps<T>> {}
+  export interface SelectRootProps<T extends CollectionItem = CollectionItem> extends Assign<
+    HTMLProps<'div'>,
+    SelectRootBaseProps<T>
+  > {}
 
   export type SelectRootComponentProps<T extends CollectionItem = CollectionItem, P = {}> = Assign<
     SelectRootProps<T>,

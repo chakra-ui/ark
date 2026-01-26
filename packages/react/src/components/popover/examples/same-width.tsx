@@ -1,20 +1,28 @@
 import { Popover } from '@ark-ui/react/popover'
+import { Portal } from '@ark-ui/react/portal'
+import { XIcon } from 'lucide-react'
+import button from 'styles/button.module.css'
+import styles from 'styles/popover.module.css'
 
-const style: React.CSSProperties = {
-  minWidth: '200px',
-}
-
-export const WithSameWidth = () => {
+export const SameWidth = () => {
   return (
     <Popover.Root positioning={{ sameWidth: true }}>
-      <Popover.Trigger style={style}>Click Me</Popover.Trigger>
-      <Popover.Positioner>
-        <Popover.Content>
-          <Popover.Title>Title</Popover.Title>
-          <Popover.Description>Description</Popover.Description>
-          <Popover.CloseTrigger>Close</Popover.CloseTrigger>
-        </Popover.Content>
-      </Popover.Positioner>
+      <Popover.Trigger className={button.Root} style={{ minWidth: '200px' }}>
+        Click Me
+      </Popover.Trigger>
+      <Portal>
+        <Popover.Positioner className={styles.Positioner}>
+          <Popover.Content className={styles.Content}>
+            <Popover.CloseTrigger className={styles.CloseTrigger}>
+              <XIcon />
+            </Popover.CloseTrigger>
+            <Popover.Title className={styles.Title}>Matched Width</Popover.Title>
+            <Popover.Description className={styles.Description}>
+              This popover matches the width of its trigger element.
+            </Popover.Description>
+          </Popover.Content>
+        </Popover.Positioner>
+      </Portal>
     </Popover.Root>
   )
 }

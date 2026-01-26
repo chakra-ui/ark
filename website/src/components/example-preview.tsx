@@ -1,59 +1,75 @@
-import { Code2Icon, EyeIcon, LockIcon } from 'lucide-react'
-import NextLink from 'next/link'
-import { Box, Stack } from 'styled-system/jsx'
-import { hasUserPermission } from '~/app/actions'
-import { Button } from '~/components/ui/button'
-import { Tabs } from '~/components/ui/tabs'
-import { Text } from '~/components/ui/text'
-import { type Example, fetchCodeExamples } from '~/lib/examples'
-import { getFramework } from '~/lib/frameworks'
-import { CodeTabs } from './code-tabs'
-import { IFrameExample } from './iframe-example'
+'use client'
+
+import { Suspense, useEffect, useMemo, useState } from 'react'
+import { Flex } from 'styled-system/jsx'
+import { loadExample } from '~/lib/example-loader'
+import './example-preview.css'
 
 interface Props {
-  example: Example
+  component: string
+  example: string
 }
 
-export const ExamplePreview = async (props: Props) => {
-  const { example } = props
-  const framework = await getFramework()
+const LoadingSpinner = () => <div className="example-spinner" role="status" aria-label="Loading example" />
 
-  const codeExamplesAvailable = example.accessLevel === 'free' || (await hasUserPermission())
-  const codeExamples = codeExamplesAvailable ? await fetchCodeExamples({ id: example.id, framework }) : []
+function useIsClient() {
+  const [isClient, setIsClient] = useState(false)
+  useEffect(() => setIsClient(true), [])
+  return isClient
+}
 
-  return codeExamplesAvailable ? (
-    <Tabs.Root variant="enclosed" defaultValue="preview" size="sm" lazyMount>
-      <Tabs.List width="fit-content" alignSelf="flex-end">
-        <Tabs.Trigger value="preview">
-          <EyeIcon />
-          <Text>Preview</Text>
-        </Tabs.Trigger>
-        <Tabs.Trigger value="code">
-          <Code2Icon />
-          <Text>Code</Text>
-        </Tabs.Trigger>
-        <Tabs.Indicator />
-      </Tabs.List>
-      <Tabs.Content value="preview" px="!0">
-        <Box borderRadius="l3" overflow="hidden" minH="md" borderWidth="1px">
-          <IFrameExample url={example.previewUrl} />
-        </Box>
-      </Tabs.Content>
-      <Tabs.Content value="code" px="!0">
-        <CodeTabs examples={codeExamples} defaultValue={framework === 'vue' ? 'index.vue' : 'index.tsx'} />
-      </Tabs.Content>
-    </Tabs.Root>
-  ) : (
-    <Stack gap="3.5">
-      <Button variant="outline" asChild alignSelf="flex-end" borderColor="border.muted">
-        <NextLink href="/plus">
-          <LockIcon />
-          Unlock Ark Plus
-        </NextLink>
-      </Button>
-      <Box borderRadius="l3" overflow="hidden" minH="md" borderWidth="1px">
-        <IFrameExample url={example.previewUrl} />
-      </Box>
-    </Stack>
+/**
+ * Wrapper that waits for styles to be applied before showing content.
+ * This prevents flash of unstyled content when CSS modules load.
+ */
+const StylesReadyWrapper = ({ children }: { children: React.ReactNode }) => {
+  const [isReady, setIsReady] = useState(false)
+
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => {
+      requestAnimationFrame(() => setIsReady(true))
+    })
+    return () => cancelAnimationFrame(raf)
+  }, [])
+
+  return (
+    <>
+      {!isReady && <LoadingSpinner />}
+      <div style={{ display: isReady ? 'contents' : 'none' }}>{children}</div>
+    </>
+  )
+}
+
+export const ExamplePreview = (props: Props) => {
+  const { component, example } = props
+  const isClient = useIsClient()
+
+  const ExampleComponent = useMemo(() => {
+    if (!isClient) return null
+    return loadExample(component, example)
+  }, [component, example, isClient])
+
+  return (
+    <Flex
+      minH={{ base: '32', md: '48' }}
+      bg="bg.default"
+      borderRadius="lg"
+      borderWidth="1px"
+      width="full"
+      overflow="hidden"
+      className="not-prose example-preview-scope"
+    >
+      <Flex justify="center" align="center" direction="column" flex="1" p={{ base: '4', md: '6' }} width="full">
+        {ExampleComponent ? (
+          <Suspense fallback={<LoadingSpinner />}>
+            <StylesReadyWrapper>
+              <ExampleComponent />
+            </StylesReadyWrapper>
+          </Suspense>
+        ) : (
+          <LoadingSpinner />
+        )}
+      </Flex>
+    </Flex>
   )
 }

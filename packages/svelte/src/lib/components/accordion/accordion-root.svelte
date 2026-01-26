@@ -3,10 +3,7 @@
   import type { UseAccordionProps } from './use-accordion.svelte'
 
   export interface AccordionRootBaseProps
-    extends UseAccordionProps,
-      RenderStrategyProps,
-      PolymorphicProps<'div'>,
-      RefAttribute {}
+    extends UseAccordionProps, RenderStrategyProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface AccordionRootProps extends Assign<HTMLProps<'div'>, AccordionRootBaseProps> {}
 </script>
 

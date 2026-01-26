@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseCheckboxContext } from './use-checkbox-context'
 
-export interface CheckboxContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseCheckboxContext>
-  }> {}
+export interface CheckboxContextProps extends SlotsType<{
+  default: UnwrapRef<UseCheckboxContext>
+}> {}
 </script>
 
 <script setup lang="ts">

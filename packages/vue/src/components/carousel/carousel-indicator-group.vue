@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface CarouselIndicatorGroupBaseProps extends PolymorphicProps {}
 export interface CarouselIndicatorGroupProps
-  extends CarouselIndicatorGroupBaseProps,
+  extends
+    CarouselIndicatorGroupBaseProps,
     /**
      * @vue-ignore
      */

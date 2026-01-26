@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseNavigationMenuContext } from './use-navigation-menu-context'
 
-export interface NavigationMenuContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseNavigationMenuContext>
-  }> {}
+export interface NavigationMenuContextProps extends SlotsType<{
+  default: UnwrapRef<UseNavigationMenuContext>
+}> {}
 </script>
 
 <script setup lang="ts">

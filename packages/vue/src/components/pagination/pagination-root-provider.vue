@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface PaginationRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface PaginationRootProviderProps
-  extends PaginationRootProviderBaseProps,
+  extends
+    PaginationRootProviderBaseProps,
     /**
      * @vue-ignore
      */

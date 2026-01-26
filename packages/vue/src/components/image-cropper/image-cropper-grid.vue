@@ -5,7 +5,8 @@ import type { GridProps } from '@zag-js/image-cropper'
 
 export interface ImageCropperGridBaseProps extends PolymorphicProps, GridProps {}
 export interface ImageCropperGridProps
-  extends ImageCropperGridBaseProps,
+  extends
+    ImageCropperGridBaseProps,
     /**
      * @vue-ignore
      */

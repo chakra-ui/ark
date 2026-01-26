@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface TagsInputItemDeleteTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
-  export interface TagsInputItemDeleteTriggerProps
-    extends Assign<HTMLProps<'button'>, TagsInputItemDeleteTriggerBaseProps> {}
+  export interface TagsInputItemDeleteTriggerProps extends Assign<
+    HTMLProps<'button'>,
+    TagsInputItemDeleteTriggerBaseProps
+  > {}
 </script>
 
 <script lang="ts">

@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface CarouselProgressTextBaseProps extends PolymorphicProps {}
 export interface CarouselProgressTextProps
-  extends CarouselProgressTextBaseProps,
+  extends
+    CarouselProgressTextBaseProps,
     /**
      * @vue-ignore
      */

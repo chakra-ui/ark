@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface TabTriggerBaseProps extends TriggerProps, PolymorphicProps {}
 export interface TabTriggerProps
-  extends TabTriggerBaseProps,
+  extends
+    TabTriggerBaseProps,
     /**
      * @vue-ignore
      */

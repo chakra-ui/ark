@@ -80,6 +80,10 @@ export interface RootProps {
    */
   preventDocumentDrop?: boolean
   /**
+   * Whether the file input is read-only
+   */
+  readOnly?: boolean
+  /**
    * Whether the file input is required
    */
   required?: boolean

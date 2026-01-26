@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface RadioGroupItemHiddenInputBaseProps extends PolymorphicProps<'input'>, RefAttribute {}
-  export interface RadioGroupItemHiddenInputProps
-    extends Assign<HTMLProps<'input'>, RadioGroupItemHiddenInputBaseProps> {}
+  export interface RadioGroupItemHiddenInputProps extends Assign<
+    HTMLProps<'input'>,
+    RadioGroupItemHiddenInputBaseProps
+  > {}
 </script>
 
 <script lang="ts">

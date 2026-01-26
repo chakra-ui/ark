@@ -7,16 +7,15 @@ import ControlledInputValueExample from './examples/controlled-input-value.vue'
 import DelimiterExample from './examples/delimiter.vue'
 import DisabledExample from './examples/disabled.vue'
 import DisabledEditingExample from './examples/disabled-editing.vue'
-import InitialValueExample from './examples/initial-value.vue'
 import InvalidExample from './examples/invalid.vue'
 import MaxTagLengthExample from './examples/max-tag-length.vue'
 import MaxWithOverflowExample from './examples/max-with-overflow.vue'
-import OnEventExample from './examples/on-event.vue'
 import PasteBehaviorExample from './examples/paste-behavior.vue'
 import ProgrammaticControlExample from './examples/programmatic-control.vue'
 import ReadonlyExample from './examples/readonly.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import ValidationExample from './examples/validation.vue'
+import WithComboboxExample from './examples/with-combobox.vue'
 import WithFieldExample from './examples/with-field.vue'
 
 const meta: Meta = {
@@ -74,13 +73,6 @@ export const DisabledEditing = {
   }),
 }
 
-export const InitialValue = {
-  render: () => ({
-    components: { Component: InitialValueExample },
-    template: '<Component />',
-  }),
-}
-
 export const Invalid = {
   render: () => ({
     components: { Component: InvalidExample },
@@ -98,13 +90,6 @@ export const MaxTagLength = {
 export const MaxWithOverflow = {
   render: () => ({
     components: { Component: MaxWithOverflowExample },
-    template: '<Component />',
-  }),
-}
-
-export const OnEvent = {
-  render: () => ({
-    components: { Component: OnEventExample },
     template: '<Component />',
   }),
 }
@@ -140,6 +125,13 @@ export const RootProvider = {
 export const Validation = {
   render: () => ({
     components: { Component: ValidationExample },
+    template: '<Component />',
+  }),
+}
+
+export const WithCombobox = {
+  render: () => ({
+    components: { Component: WithComboboxExample },
     template: '<Component />',
   }),
 }

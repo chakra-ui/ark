@@ -1,8 +1,10 @@
 import { Combobox, useListCollection } from '@ark-ui/react/combobox'
 import { useFilter } from '@ark-ui/react/locale'
 import { Portal } from '@ark-ui/react/portal'
+import { CheckIcon, ChevronsUpDownIcon, XIcon } from 'lucide-react'
 import { useState } from 'react'
 import { flushSync } from 'react-dom'
+import styles from 'styles/combobox.module.css'
 
 interface Item {
   label: string
@@ -22,10 +24,10 @@ export const Creatable = () => {
 
   const { collection, filter, upsert, update, remove } = useListCollection<Item>({
     initialItems: [
-      { label: 'React', value: 'react' },
-      { label: 'Solid', value: 'solid' },
-      { label: 'Vue', value: 'vue' },
-      { label: 'Svelte', value: 'svelte' },
+      { label: 'Bug', value: 'bug' },
+      { label: 'Feature', value: 'feature' },
+      { label: 'Enhancement', value: 'enhancement' },
+      { label: 'Documentation', value: 'docs' },
     ],
     filter: contains,
   })
@@ -68,6 +70,7 @@ export const Creatable = () => {
 
   return (
     <Combobox.Root
+      className={styles.Root}
       collection={collection}
       onInputValueChange={handleInputChange}
       onOpenChange={handleOpenChange}
@@ -75,29 +78,35 @@ export const Creatable = () => {
       onValueChange={handleValueChange}
       allowCustomValue
     >
-      <Combobox.Control>
-        <Combobox.Input placeholder="Search..." />
-        <Combobox.Trigger>Open</Combobox.Trigger>
-        <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
+      <Combobox.Label className={styles.Label}>Label</Combobox.Label>
+      <Combobox.Control className={styles.Control}>
+        <Combobox.Input className={styles.Input} placeholder="e.g. Bug" />
+        <div className={styles.Indicators}>
+          <Combobox.ClearTrigger className={styles.ClearTrigger}>
+            <XIcon />
+          </Combobox.ClearTrigger>
+          <Combobox.Trigger className={styles.Trigger}>
+            <ChevronsUpDownIcon />
+          </Combobox.Trigger>
+        </div>
       </Combobox.Control>
       <Portal>
         <Combobox.Positioner>
-          <Combobox.Content>
-            <Combobox.ItemGroup>
-              <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-              {collection.items.map((item) => (
-                <Combobox.Item key={item.value} item={item}>
-                  {isNewOptionValue(item.value) ? (
-                    <Combobox.ItemText>+ Create "{item.label}"</Combobox.ItemText>
-                  ) : (
-                    <Combobox.ItemText>
-                      {item.label} {item.__new__ ? NEW_OPTION_VALUE : ''}
-                    </Combobox.ItemText>
-                  )}
-                  <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
-                </Combobox.Item>
-              ))}
-            </Combobox.ItemGroup>
+          <Combobox.Content className={styles.Content}>
+            {collection.items.map((item) => (
+              <Combobox.Item className={styles.Item} key={item.value} item={item}>
+                {isNewOptionValue(item.value) ? (
+                  <Combobox.ItemText className={styles.ItemText}>+ Create "{item.label}"</Combobox.ItemText>
+                ) : (
+                  <Combobox.ItemText className={styles.ItemText}>
+                    {item.label} {item.__new__ ? '(new)' : ''}
+                  </Combobox.ItemText>
+                )}
+                <Combobox.ItemIndicator className={styles.ItemIndicator}>
+                  <CheckIcon />
+                </Combobox.ItemIndicator>
+              </Combobox.Item>
+            ))}
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

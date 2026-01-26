@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface DialogPositionerBaseProps extends PolymorphicProps {}
 export interface DialogPositionerProps
-  extends DialogPositionerBaseProps,
+  extends
+    DialogPositionerBaseProps,
     /**
      * @vue-ignore
      */

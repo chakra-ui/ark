@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface DatePickerTriggerBaseProps extends PolymorphicProps {}
 export interface DatePickerTriggerProps
-  extends DatePickerTriggerBaseProps,
+  extends
+    DatePickerTriggerBaseProps,
     /**
      * @vue-ignore
      */

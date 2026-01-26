@@ -1,12 +1,11 @@
 import { ark } from '@ark-ui/solid/factory'
 
-export const ArkFactory = () => (
-  <ark.div
-    id="parent"
-    class="parent"
-    style={{ background: 'red' }}
-    asChild={(props) => <ark.span {...props({ id: 'child', class: 'child', style: { color: 'blue' } })} />}
-  >
-    Ark UI
-  </ark.div>
+export const Factory = () => (
+  <ark.span
+    asChild={(props) => (
+      <a href="#" {...props()}>
+        Ark UI
+      </a>
+    )}
+  />
 )

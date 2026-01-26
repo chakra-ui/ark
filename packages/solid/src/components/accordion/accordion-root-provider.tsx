@@ -10,9 +10,7 @@ interface RootProviderProps {
 }
 
 export interface AccordionRootProviderBaseProps
-  extends RootProviderProps,
-    RenderStrategyProps,
-    PolymorphicProps<'div'> {}
+  extends RootProviderProps, RenderStrategyProps, PolymorphicProps<'div'> {}
 export interface AccordionRootProviderProps extends HTMLProps<'div'>, AccordionRootProviderBaseProps {}
 
 export const AccordionRootProvider = (props: AccordionRootProviderProps) => {

@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface FileUploadItemNameBaseProps extends PolymorphicProps {}
 export interface FileUploadItemNameProps
-  extends FileUploadItemNameBaseProps,
+  extends
+    FileUploadItemNameBaseProps,
     /**
      * @vue-ignore
      */

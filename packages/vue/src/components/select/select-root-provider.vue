@@ -11,11 +11,10 @@ interface RootProviderProps<T extends CollectionItem> {
 }
 
 export interface SelectRootProviderBaseProps<T extends CollectionItem>
-  extends RootProviderProps<T>,
-    RenderStrategyProps,
-    PolymorphicProps {}
+  extends RootProviderProps<T>, RenderStrategyProps, PolymorphicProps {}
 export interface SelectRootProviderProps<T extends CollectionItem>
-  extends SelectRootProviderBaseProps<T>,
+  extends
+    SelectRootProviderBaseProps<T>,
     /**
      * @vue-ignore
      */

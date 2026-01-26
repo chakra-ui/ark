@@ -1,5 +1,13 @@
 import { Highlight } from '@ark-ui/solid/highlight'
+import styles from 'styles/highlight.module.css'
 
 export const IgnoreCase = () => (
-  <Highlight text="The quick brown Fox jumps over the lazy Dog." query={['fox', 'dog']} ignoreCase />
+  <p class={styles.Text}>
+    <Highlight
+      class={styles.Mark}
+      text="TypeScript provides static type checking. Using typescript helps catch errors early in development."
+      query="typescript"
+      ignoreCase
+    />
+  </p>
 )

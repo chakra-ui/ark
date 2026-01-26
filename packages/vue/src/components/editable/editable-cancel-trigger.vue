@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface EditableCancelTriggerBaseProps extends PolymorphicProps {}
 export interface EditableCancelTriggerProps
-  extends EditableCancelTriggerBaseProps,
+  extends
+    EditableCancelTriggerBaseProps,
     /**
      * @vue-ignore
      */

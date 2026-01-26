@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface BottomSheetTitleBaseProps extends PolymorphicProps {}
 export interface BottomSheetTitleProps
-  extends BottomSheetTitleBaseProps,
+  extends
+    BottomSheetTitleBaseProps,
     /**
      * @vue-ignore
      */

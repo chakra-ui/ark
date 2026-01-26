@@ -1,5 +1,8 @@
 import { useAsyncList } from '@ark-ui/solid/collection'
-import { For, Show } from 'solid-js'
+import { ArrowDownIcon, ArrowUpDownIcon, ArrowUpIcon, LoaderIcon } from 'lucide-solid'
+import { For } from 'solid-js'
+import button from 'styles/button.module.css'
+import styles from 'styles/async-list.module.css'
 
 interface Product {
   id: number
@@ -19,6 +22,7 @@ export const SortServerSide = () => {
     autoReload: true,
     async load({ sortDescriptor }) {
       const url = new URL('https://fakestoreapi.com/products')
+      url.searchParams.set('limit', '5')
       if (sortDescriptor) {
         const { direction } = sortDescriptor
         url.searchParams.set('sort', direction === 'ascending' ? 'asc' : 'desc')
@@ -40,41 +44,43 @@ export const SortServerSide = () => {
 
   const getSortIcon = (column: keyof Product) => {
     const desc = list().sortDescriptor
-    if (desc?.column !== column) return '↕️'
-    return desc.direction === 'ascending' ? '↑' : '↓'
+    if (desc?.column !== column) return <ArrowUpDownIcon />
+    return desc.direction === 'ascending' ? <ArrowUpIcon /> : <ArrowDownIcon />
   }
 
   return (
-    <div>
-      <Show when={list().loading}>
-        <div>Loading...</div>
-      </Show>
-      <Show when={list().error}>{(err) => <div>Error: {err().message}</div>}</Show>
+    <div class={styles.Root}>
+      <div class={styles.Header}>
+        <button class={button.Root} onClick={() => handleSort('title')}>
+          Sort by title {getSortIcon('title')}
+        </button>
+        {list().loading && (
+          <span class={styles.Loading}>
+            <LoaderIcon class={styles.Spinner} /> Loading
+          </span>
+        )}
+      </div>
 
-      <button onClick={() => handleSort('title')}>Sort title {getSortIcon('title')}</button>
+      {list().error && <div class={styles.Error}>Error: {list().error.message}</div>}
 
-      <div>
+      <div class={styles.ItemGroup}>
         <For each={list().items}>
           {(product) => (
-            <div>
-              <div>{product.title}</div>
-              <div>${product.price}</div>
-              <div>{product.category}</div>
-              <div>
-                {product.rating.rate} ({product.rating.count} reviews)
+            <div class={styles.Item} data-variant="outline">
+              <div class={styles.ItemMedia}>
+                <img src={product.image} alt={product.title} />
+              </div>
+              <div class={styles.ItemContent}>
+                <div class={styles.ItemTitle}>{product.title}</div>
+                <div class={styles.ItemDescription}>${product.price}</div>
+                <div class={styles.ItemMeta}>
+                  {product.category} • {product.rating.rate} ({product.rating.count} reviews)
+                </div>
               </div>
             </div>
           )}
         </For>
       </div>
-
-      <Show when={list().sortDescriptor}>
-        {(desc) => (
-          <div>
-            Sorted by {desc().column} ({desc().direction})
-          </div>
-        )}
-      </Show>
     </div>
   )
 }

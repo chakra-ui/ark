@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface SignaturePadHiddenInputBaseProps extends HiddenInputProps, PolymorphicProps {}
 export interface SignaturePadHiddenInputProps
-  extends SignaturePadHiddenInputBaseProps,
+  extends
+    SignaturePadHiddenInputBaseProps,
     /**
      * @vue-ignore
      */

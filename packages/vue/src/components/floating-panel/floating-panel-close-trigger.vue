@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface FloatingPanelCloseTriggerBaseProps extends PolymorphicProps {}
 export interface FloatingPanelCloseTriggerProps
-  extends FloatingPanelCloseTriggerBaseProps,
+  extends
+    FloatingPanelCloseTriggerBaseProps,
     /**
      * @vue-ignore
      */

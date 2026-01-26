@@ -1,17 +1,20 @@
 <script setup lang="ts">
 import { RatingGroup } from '@ark-ui/vue/rating-group'
 import { StarIcon } from 'lucide-vue-next'
+import styles from 'styles/rating-group.module.css'
 </script>
 
 <template>
-  <RatingGroup.Root :count="5" :default-value="3">
-    <RatingGroup.Label>Label</RatingGroup.Label>
-    <RatingGroup.Control>
+  <RatingGroup.Root :class="styles.Root" :default-value="3">
+    <RatingGroup.Label :class="styles.Label">Label</RatingGroup.Label>
+    <RatingGroup.Control :class="styles.Control">
       <RatingGroup.Context v-slot="{ items }">
-        <RatingGroup.Item v-for="item in items" :key="item" :index="item">
+        <RatingGroup.Item v-for="item in items" :key="item" :class="styles.Item" :index="item">
           <RatingGroup.ItemContext v-slot="{ highlighted }">
-            <StarIcon v-if="highlighted" fill="current" />
-            <StarIcon v-else />
+            <span :class="styles.ItemIndicator" :data-highlighted="highlighted ? '' : undefined">
+              <StarIcon data-bg="" />
+              <StarIcon data-fg="" fill="currentColor" />
+            </span>
           </RatingGroup.ItemContext>
         </RatingGroup.Item>
       </RatingGroup.Context>

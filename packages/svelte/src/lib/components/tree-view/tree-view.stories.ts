@@ -2,12 +2,18 @@ import type { Meta } from '@storybook/svelte'
 import AsyncLoadingExample from './examples/async-loading.svelte'
 import BasicExample from './examples/basic.svelte'
 import CheckboxTreeExample from './examples/checkbox-tree.svelte'
+import ContextMenuExample from './examples/context-menu.svelte'
 import ControlledExpandedExample from './examples/controlled-expanded.svelte'
 import ControlledSelectedExample from './examples/controlled-selected.svelte'
+import DisabledNodeExample from './examples/disabled-node.svelte'
+import ExpandCollapseAllExample from './examples/expand-collapse-all.svelte'
 import FilteringExample from './examples/filtering.svelte'
 import LazyMountExample from './examples/lazy-mount.svelte'
 import LinksExample from './examples/links.svelte'
+import MutationExample from './examples/mutation.svelte'
+import RenameNodeExample from './examples/rename-node.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import VirtualizedExample from './examples/virtualized.svelte'
 
 const meta: Meta = {
   title: 'Components/TreeView',
@@ -15,9 +21,27 @@ const meta: Meta = {
 
 export default meta
 
+export const AsyncLoading = {
+  render: () => ({
+    Component: AsyncLoadingExample,
+  }),
+}
+
 export const Basic = {
   render: () => ({
     Component: BasicExample,
+  }),
+}
+
+export const CheckboxTree = {
+  render: () => ({
+    Component: CheckboxTreeExample,
+  }),
+}
+
+export const ContextMenu = {
+  render: () => ({
+    Component: ContextMenuExample,
   }),
 }
 
@@ -33,15 +57,15 @@ export const ControlledSelected = {
   }),
 }
 
-export const RootProvider = {
+export const DisabledNode = {
   render: () => ({
-    Component: RootProviderExample,
+    Component: DisabledNodeExample,
   }),
 }
 
-export const AsyncLoading = {
+export const ExpandCollapseAll = {
   render: () => ({
-    Component: AsyncLoadingExample,
+    Component: ExpandCollapseAllExample,
   }),
 }
 
@@ -63,8 +87,26 @@ export const Links = {
   }),
 }
 
-export const CheckboxTree = {
+export const Mutation = {
   render: () => ({
-    Component: CheckboxTreeExample,
+    Component: MutationExample,
+  }),
+}
+
+export const RenameNode = {
+  render: () => ({
+    Component: RenameNodeExample,
+  }),
+}
+
+export const RootProvider = {
+  render: () => ({
+    Component: RootProviderExample,
+  }),
+}
+
+export const Virtualized = {
+  render: () => ({
+    Component: VirtualizedExample,
   }),
 }

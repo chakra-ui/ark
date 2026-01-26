@@ -1,0 +1,176 @@
+.Trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--demo-coral-fg);
+  text-decoration: underline;
+  text-decoration-color: var(--demo-coral-muted);
+  text-underline-offset: 2px;
+  cursor: pointer;
+  font-weight: 500;
+  transition:
+    text-decoration-color 150ms,
+    color 150ms;
+
+  &:hover {
+    text-decoration-color: var(--demo-coral-fg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  & svg {
+    width: 1em;
+    height: 1em;
+  }
+}
+
+.Content {
+  --arrow-background: var(--demo-bg-popover);
+  --arrow-size: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--demo-bg-popover);
+  border: 1px solid var(--demo-border);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: var(--demo-shadow-lg);
+  width: 300px;
+  outline: none;
+  z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
+  transform-origin: var(--transform-origin);
+
+  &[data-state='open'] {
+    animation: scale-fade-in 0.15s ease-out;
+  }
+
+  &[data-state='closed'] {
+    animation: scale-fade-out 0.1s ease-in;
+  }
+}
+
+.Arrow {
+  --arrow-background: var(--demo-bg-popover);
+  --arrow-shadow-color: var(--demo-border);
+}
+
+.ArrowTip {
+  border-top: 1px solid var(--demo-border);
+  border-left: 1px solid var(--demo-border);
+}
+
+.Avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.AvatarFallback {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--demo-coral-subtle);
+  color: var(--demo-coral-fg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.Body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.Name {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--demo-neutral-fg);
+}
+
+.Username {
+  margin: 0;
+  font-size: 14px;
+  color: var(--demo-neutral-emphasized);
+}
+
+.Bio {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--demo-neutral-fg);
+}
+
+.Stats {
+  display: flex;
+  gap: 1rem;
+  font-size: 14px;
+}
+
+.Stat {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.StatValue {
+  font-weight: 700;
+  color: var(--demo-neutral-fg);
+}
+
+.StatLabel {
+  color: var(--demo-neutral-emphasized);
+}
+
+.FollowButton {
+  padding: 0.5rem 1rem;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 9999px;
+  border: none;
+  background: var(--demo-neutral-fg);
+  color: var(--demo-neutral-contrast);
+  cursor: pointer;
+  transition: opacity 150ms;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+@keyframes scale-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-fade-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}

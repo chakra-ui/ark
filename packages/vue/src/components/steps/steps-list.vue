@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface StepsListBaseProps extends PolymorphicProps {}
 export interface StepsListProps
-  extends StepsListBaseProps,
+  extends
+    StepsListBaseProps,
     /**
      * @vue-ignore
      */

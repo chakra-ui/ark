@@ -5,7 +5,8 @@ import type { RootEmits, RootProps } from './splitter.types'
 
 export interface SplitterRootBaseProps extends RootProps, PolymorphicProps {}
 export interface SplitterRootProps
-  extends SplitterRootBaseProps,
+  extends
+    SplitterRootBaseProps,
     /**
      * @vue-ignore
      */

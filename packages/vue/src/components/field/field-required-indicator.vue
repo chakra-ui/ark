@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 export interface FieldRequiredIndicatorBaseProps extends PolymorphicProps {}
 
 export interface FieldRequiredIndicatorProps
-  extends FieldRequiredIndicatorBaseProps,
+  extends
+    FieldRequiredIndicatorBaseProps,
     /**
      * @vue-ignore
      */

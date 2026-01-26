@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface TreeViewNodeCheckboxBaseProps extends PolymorphicProps {}
 export interface TreeViewNodeCheckboxProps
-  extends TreeViewNodeCheckboxBaseProps,
+  extends
+    TreeViewNodeCheckboxBaseProps,
     /**
      * @vue-ignore
      */

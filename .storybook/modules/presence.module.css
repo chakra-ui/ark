@@ -1,0 +1,44 @@
+.Box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 32rem;
+  height: 10rem;
+  background: var(--demo-neutral-subtle);
+  border: 1px solid var(--demo-border);
+  border-radius: 0.25rem;
+  color: var(--demo-neutral-fg);
+  font-weight: 500;
+  font-size: 0.875rem;
+
+  &[data-state='open'] {
+    animation: fade-in 150ms ease-out;
+  }
+
+  &[data-state='closed'] {
+    animation: fade-out 100ms ease-in;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}

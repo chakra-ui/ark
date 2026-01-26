@@ -10,9 +10,7 @@ interface RootProviderProps {
 
 export interface CollapsibleRootProviderBaseProps extends PolymorphicProps<'div'> {}
 export interface CollapsibleRootProviderProps
-  extends HTMLProps<'div'>,
-    RootProviderProps,
-    CollapsibleRootProviderBaseProps {}
+  extends HTMLProps<'div'>, RootProviderProps, CollapsibleRootProviderBaseProps {}
 
 export const CollapsibleRootProvider = (props: CollapsibleRootProviderProps) => {
   const [{ value: collapsible }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])

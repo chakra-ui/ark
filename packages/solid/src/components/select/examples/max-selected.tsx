@@ -1,14 +1,15 @@
 import { Select, createListCollection } from '@ark-ui/solid/select'
+import { ChevronsUpDownIcon, XIcon } from 'lucide-solid'
 import { Index, createMemo, createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
+import styles from 'styles/select.module.css'
 
 const items = ['React', 'Solid', 'Vue', 'Svelte']
+const MAX_SELECTION = 2
+const hasReachedMax = (value: string[]) => value.length >= MAX_SELECTION
 
 export const MaxSelected = () => {
   const [value, setValue] = createSignal<string[]>([])
-  const maxSelected = 2
-
-  const hasReachedMax = (value: string[]) => value.length >= maxSelected
 
   const collection = createMemo(() =>
     createListCollection({
@@ -21,30 +22,40 @@ export const MaxSelected = () => {
   )
 
   const handleValueChange = (details: Select.ValueChangeDetails) => {
-    if (hasReachedMax(value()) && details.value.length) return
+    if (hasReachedMax(value()) && details.value.length > value().length) return
     setValue(details.value)
   }
 
   return (
-    <Select.Root collection={collection()} multiple value={value()} onValueChange={handleValueChange}>
-      <Select.Label>Framework</Select.Label>
-      <Select.Control>
-        <Select.Trigger>
-          <Select.ValueText placeholder="Select a Framework" />
-          <Select.Indicator>▼</Select.Indicator>
+    <Select.Root
+      class={styles.Root}
+      collection={collection()}
+      multiple
+      value={value()}
+      onValueChange={handleValueChange}
+    >
+      <Select.Label class={styles.Label}>Framework</Select.Label>
+      <Select.Control class={styles.Control}>
+        <Select.Trigger class={styles.Trigger}>
+          <Select.ValueText class={styles.ValueText} placeholder="Select" />
+          <Select.Indicator class={styles.Indicator}>
+            <ChevronsUpDownIcon />
+          </Select.Indicator>
         </Select.Trigger>
-        <Select.ClearTrigger>Clear</Select.ClearTrigger>
+        <Select.ClearTrigger class={styles.ClearTrigger}>
+          <XIcon />
+        </Select.ClearTrigger>
       </Select.Control>
       <Portal>
         <Select.Positioner>
-          <Select.Content>
-            <Select.ItemGroup>
-              <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
+          <Select.Content class={styles.Content}>
+            <Select.ItemGroup class={styles.ItemGroup}>
+              <Select.ItemGroupLabel class={styles.ItemGroupLabel}>Frameworks</Select.ItemGroupLabel>
               <Index each={collection().items}>
                 {(item) => (
-                  <Select.Item item={item()}>
-                    <Select.ItemText>{item().label}</Select.ItemText>
-                    <Select.ItemIndicator>✓</Select.ItemIndicator>
+                  <Select.Item class={styles.Item} item={item()}>
+                    <Select.ItemText class={styles.ItemText}>{item().label}</Select.ItemText>
+                    <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
                   </Select.Item>
                 )}
               </Index>

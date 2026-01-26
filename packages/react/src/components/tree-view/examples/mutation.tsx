@@ -1,6 +1,7 @@
 import { TreeView, createTreeCollection, useTreeViewContext } from '@ark-ui/react/tree-view'
 import { ChevronRightIcon, PlusIcon, TrashIcon } from 'lucide-react'
 import { useState } from 'react'
+import styles from 'styles/tree-view.module.css'
 
 export const Mutation = () => {
   const [collection, setCollection] = useState(initialCollection)
@@ -17,15 +18,13 @@ export const Mutation = () => {
   }
 
   return (
-    <div>
-      <TreeView.Root collection={collection}>
-        <TreeView.Tree>
-          {collection.rootNode.children?.map((node, index) => (
-            <TreeNode key={node.id} node={node} indexPath={[index]} onRemove={removeNode} onAdd={addNode} />
-          ))}
-        </TreeView.Tree>
-      </TreeView.Root>
-    </div>
+    <TreeView.Root className={styles.Root} collection={collection}>
+      <TreeView.Tree className={styles.Tree}>
+        {collection.rootNode.children?.map((node, index) => (
+          <TreeNode key={node.id} node={node} indexPath={[index]} onRemove={removeNode} onAdd={addNode} />
+        ))}
+      </TreeView.Tree>
+    </TreeView.Root>
   )
 }
 
@@ -34,8 +33,9 @@ const TreeNodeActions = (props: TreeNodeProps) => {
   const tree = useTreeViewContext()
   const isBranch = tree.collection.isBranchNode(node)
   return (
-    <div style={{ display: 'flex', gap: 2, scale: 0.8 }}>
+    <div className={styles.ActionGroup}>
       <button
+        className={styles.Action}
         onClick={(e) => {
           e.stopPropagation()
           onRemove?.(props)
@@ -45,6 +45,7 @@ const TreeNodeActions = (props: TreeNodeProps) => {
       </button>
       {isBranch && (
         <button
+          className={styles.Action}
           onClick={(e) => {
             e.stopPropagation()
             onAdd?.(props)
@@ -70,24 +71,30 @@ const TreeNode = (props: TreeNodeProps) => {
   return (
     <TreeView.NodeProvider key={node.id} node={node} indexPath={indexPath}>
       {nodeState.isBranch ? (
-        <TreeView.Branch>
-          <TreeView.BranchControl>
-            <TreeView.BranchIndicator>
+        <TreeView.Branch className={styles.Branch}>
+          <TreeView.BranchControl className={styles.BranchControl}>
+            <TreeView.BranchIndicator className={styles.BranchIndicator}>
               <ChevronRightIcon />
             </TreeView.BranchIndicator>
-            <TreeView.BranchText>{node.name}</TreeView.BranchText>
+            <TreeView.BranchText className={styles.BranchText}>{node.name}</TreeView.BranchText>
             <TreeNodeActions {...props} />
           </TreeView.BranchControl>
-          <TreeView.BranchContent>
-            <TreeView.BranchIndentGuide />
+          <TreeView.BranchContent className={styles.BranchContent}>
+            <TreeView.BranchIndentGuide className={styles.BranchIndentGuide} />
             {node.children?.map((child, index) => (
-              <TreeNode key={child.id} node={child} indexPath={[...indexPath, index]} />
+              <TreeNode
+                key={child.id}
+                node={child}
+                indexPath={[...indexPath, index]}
+                onRemove={props.onRemove}
+                onAdd={props.onAdd}
+              />
             ))}
           </TreeView.BranchContent>
         </TreeView.Branch>
       ) : (
-        <TreeView.Item>
-          <TreeView.ItemText>{node.name}</TreeView.ItemText>
+        <TreeView.Item className={styles.Item}>
+          <TreeView.ItemText className={styles.ItemText}>{node.name}</TreeView.ItemText>
           <TreeNodeActions {...props} />
         </TreeView.Item>
       )}

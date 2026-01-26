@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface StepsRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface StepsRootProviderProps
-  extends StepsRootProviderBaseProps,
+  extends
+    StepsRootProviderBaseProps,
     /**
      * @vue-ignore
      */

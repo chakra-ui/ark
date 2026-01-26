@@ -1,39 +1,36 @@
 import { Carousel } from '@ark-ui/solid/carousel'
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-solid'
 import { Index } from 'solid-js'
+import styles from 'styles/carousel.module.css'
 
-const slides = Array.from({ length: 5 }, (_, i) => i)
+const slides = Array.from({ length: 6 })
 
 export const SlidesPerPage = () => {
   return (
-    <Carousel.Root slideCount={slides.length} slidesPerPage={2} spacing="20px">
-      <Carousel.Control>
-        <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
-        <Carousel.NextTrigger>Next</Carousel.NextTrigger>
+    <Carousel.Root class={styles.Root} slideCount={slides.length} slidesPerPage={2} spacing="20px">
+      <Carousel.Control class={styles.Control}>
+        <Carousel.PrevTrigger class={styles.Trigger}>
+          <ArrowLeftIcon />
+        </Carousel.PrevTrigger>
+        <Carousel.NextTrigger class={styles.Trigger}>
+          <ArrowRightIcon />
+        </Carousel.NextTrigger>
       </Carousel.Control>
-      <Carousel.ItemGroup>
+      <Carousel.ItemGroup class={styles.ItemGroup}>
         <Index each={slides}>
           {(_, index) => (
-            <Carousel.Item index={index}>
-              <div
-                style={{
-                  width: '100%',
-                  height: '300px',
-                  display: 'flex',
-                  'align-items': 'center',
-                  'justify-content': 'center',
-                  background: '#f0f0f0',
-                }}
-              >
-                Slide {index + 1}
-              </div>
+            <Carousel.Item class={styles.Item} index={index}>
+              <div class={styles.Slide}>Slide {index + 1}</div>
             </Carousel.Item>
           )}
         </Index>
       </Carousel.ItemGroup>
       <Carousel.Context>
         {(api) => (
-          <Carousel.IndicatorGroup>
-            <Index each={api().pageSnapPoints}>{(_, index) => <Carousel.Indicator index={index} />}</Index>
+          <Carousel.IndicatorGroup class={styles.IndicatorGroup}>
+            <Index each={api().pageSnapPoints}>
+              {(_, index) => <Carousel.Indicator class={styles.Indicator} index={index} />}
+            </Index>
           </Carousel.IndicatorGroup>
         )}
       </Carousel.Context>

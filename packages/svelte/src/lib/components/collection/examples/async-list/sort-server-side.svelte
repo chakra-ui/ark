@@ -1,5 +1,8 @@
 <script lang="ts">
   import { useAsyncList } from '@ark-ui/svelte/collection'
+  import { ArrowDownIcon, ArrowUpDownIcon, ArrowUpIcon, LoaderIcon } from 'lucide-svelte'
+  import button from 'styles/button.module.css'
+  import styles from 'styles/async-list.module.css'
 
   interface Product {
     id: number
@@ -18,6 +21,7 @@
     autoReload: true,
     async load({ sortDescriptor }) {
       const url = new URL('https://fakestoreapi.com/products')
+      url.searchParams.set('limit', '5')
       if (sortDescriptor) {
         const { direction } = sortDescriptor
         url.searchParams.set('sort', direction === 'ascending' ? 'asc' : 'desc')
@@ -36,41 +40,47 @@
     }
     list().sort({ column, direction })
   }
-
-  const getSortIcon = (column: keyof Product) => {
-    const desc = list().sortDescriptor
-    if (desc?.column !== column) return '↕️'
-    return desc.direction === 'ascending' ? '↑' : '↓'
-  }
 </script>
 
-<div>
-  {#if list().loading}
-    <div>Loading...</div>
-  {/if}
+<div class={styles.Root}>
+  <div class={styles.Header}>
+    <button class={button.Root} onclick={() => handleSort('title')}>
+      Sort by title
+      {#if list().sortDescriptor?.column === 'title'}
+        {#if list().sortDescriptor?.direction === 'ascending'}
+          <ArrowUpIcon />
+        {:else}
+          <ArrowDownIcon />
+        {/if}
+      {:else}
+        <ArrowUpDownIcon />
+      {/if}
+    </button>
+    {#if list().loading}
+      <span class={styles.Loading}>
+        <LoaderIcon class={styles.Spinner} /> Loading
+      </span>
+    {/if}
+  </div>
 
   {#if list().error}
-    <div>Error: {list().error.message}</div>
+    <div class={styles.Error}>Error: {list().error.message}</div>
   {/if}
 
-  <button onclick={() => handleSort('title')}>Sort title {getSortIcon('title')}</button>
-
-  <div>
+  <div class={styles.ItemGroup}>
     {#each list().items as product}
-      <div>
-        <div>{product.title}</div>
-        <div>${product.price}</div>
-        <div>{product.category}</div>
-        <div>
-          {product.rating.rate} ({product.rating.count} reviews)
+      <div class={styles.Item} data-variant="outline">
+        <div class={styles.ItemMedia}>
+          <img src={product.image} alt={product.title} />
+        </div>
+        <div class={styles.ItemContent}>
+          <div class={styles.ItemTitle}>{product.title}</div>
+          <div class={styles.ItemDescription}>${product.price}</div>
+          <div class={styles.ItemMeta}>
+            {product.category} • {product.rating.rate} ({product.rating.count} reviews)
+          </div>
         </div>
       </div>
     {/each}
   </div>
-
-  {#if list().sortDescriptor}
-    <div>
-      Sorted by {list().sortDescriptor?.column} ({list().sortDescriptor?.direction})
-    </div>
-  {/if}
 </div>

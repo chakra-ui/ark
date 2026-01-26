@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface SignaturePadClearTriggerBaseProps extends PolymorphicProps {}
 export interface SignaturePadClearTriggerProps
-  extends SignaturePadClearTriggerBaseProps,
+  extends
+    SignaturePadClearTriggerBaseProps,
     /**
      * @vue-ignore
      */

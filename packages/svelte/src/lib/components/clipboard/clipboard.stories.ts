@@ -3,8 +3,7 @@ import BasicExample from './examples/basic.svelte'
 import ContextExample from './examples/context.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import CopyStatusExample from './examples/copy-status.svelte'
-import CustomTimeoutExample from './examples/custom-timeout.svelte'
-import ProgrammaticExample from './examples/programmatic.svelte'
+import TimeoutExample from './examples/timeout.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import ValueTextExample from './examples/value-text.svelte'
 
@@ -38,15 +37,9 @@ export const CopyStatus = {
   }),
 }
 
-export const CustomTimeout = {
+export const Timeout = {
   render: () => ({
-    Component: CustomTimeoutExample,
-  }),
-}
-
-export const Programmatic = {
-  render: () => ({
-    Component: ProgrammaticExample,
+    Component: TimeoutExample,
   }),
 }
 

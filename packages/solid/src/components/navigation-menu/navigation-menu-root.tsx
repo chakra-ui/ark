@@ -6,9 +6,7 @@ import { type UseNavigationMenuProps, useNavigationMenu } from './use-navigation
 import { NavigationMenuProvider } from './use-navigation-menu-context'
 
 export interface NavigationMenuRootBaseProps
-  extends UseNavigationMenuProps,
-    RenderStrategyProps,
-    PolymorphicProps<'nav'> {}
+  extends UseNavigationMenuProps, RenderStrategyProps, PolymorphicProps<'nav'> {}
 export interface NavigationMenuRootProps extends HTMLProps<'nav'>, NavigationMenuRootBaseProps {}
 
 export const NavigationMenuRoot = (props: NavigationMenuRootProps) => {

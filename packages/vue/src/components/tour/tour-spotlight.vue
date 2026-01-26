@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface TourSpotlightBaseProps extends PolymorphicProps {}
 export interface TourSpotlightProps
-  extends TourSpotlightBaseProps,
+  extends
+    TourSpotlightBaseProps,
     /**
      * @vue-ignore
      */

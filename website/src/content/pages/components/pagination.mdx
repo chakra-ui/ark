@@ -8,33 +8,43 @@ description: A navigation component that allows users to browse through pages.
 
 ## Anatomy
 
-To set up the pagination correctly, you'll need to understand its anatomy and how we name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
 <Anatomy id="pagination" />
+
+```tsx
+<Pagination.Root>
+  <Pagination.PrevTrigger />
+  <Pagination.Item />
+  <Pagination.Ellipsis />
+  <Pagination.NextTrigger />
+</Pagination.Root>
+```
 
 ## Examples
 
-Learn how to use the `Pagination` component in your project. Let's take a look at the most basic example:
-
 <Example id="basic" />
 
-### Controlled Pagination
+### Controlled
 
 To create a controlled Pagination component, manage the state of the current page using the `page` prop and update it
 when the `onPageChange` event handler is called:
 
 <Example id="controlled" />
 
-### Customizing Pagination
+### Root Provider
+
+An alternative way to control the pagination is to use the `RootProvider` component and the `usePagination` hook. This
+way you can access the state and methods from outside the component.
+
+<Example id="root-provider" />
+
+### Customization
 
 You can customize the Pagination component by setting various props such as `dir`, `pageSize`, `siblingCount`, and
 `translations`. Here's an example of a customized Pagination:
 
 <Example id="customized" />
 
-### Using Context
+### Context
 
 The `Context` component provides access to the pagination state and methods through a render prop pattern. This allows
 you to access methods like `setPage`, `setPageSize`, `goToNextPage`, `goToPrevPage`, `goToFirstPage`, `goToLastPage`, as
@@ -49,14 +59,14 @@ page and page size.
 
 <Example id="data-slicing" />
 
-### Page Range Display
+### Page Range
 
 Display the current page range information using the `pageRange` property. This shows which items are currently visible
 (e.g., "Showing 1-10 of 100 results").
 
 <Example id="page-range" />
 
-### Page Size Control
+### Page Size
 
 Control the number of items per page dynamically using `setPageSize()`. This example shows how to integrate a native
 select element to change the page size.
@@ -66,21 +76,12 @@ select element to change the page size.
 
 <Example id="page-size-control" />
 
-### Link Pagination
+### Links
 
 Create pagination with link navigation for better SEO and accessibility. This example shows how to use the pagination
 component with anchor links instead of buttons.
 
 <Example id="link" />
-
-### Root Provider
-
-The `RootProvider` component provides a context for the pagination. It accepts the value of the `usePagination` hook.
-You can leverage it to access the component state and methods from outside the pagination.
-
-<Example id="root-provider" />
-
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
 
 ## API Reference
 
@@ -89,7 +90,5 @@ You can leverage it to access the component state and methods from outside the p
 <ComponentTypes id="pagination" />
 
 ### Context
-
-These are the properties available when using `Pagination.Context`, `usePaginationContext` hook or `usePagination` hook.
 
 <ContextType id="pagination" />

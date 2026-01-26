@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { Format } from '@ark-ui/vue/format'
-
-const value = 1450.45
-const unit = 'bit'
+import styles from 'styles/format.module.css'
 </script>
 
 <template>
-  <div>
-    File size:
-    <Format.Byte :value="value" :unit="unit" />
+  <div :class="styles.Inline">
+    <span :class="styles.InlineLabel">File size:</span>
+    <span :class="styles.InlineValue">
+      <Format.Byte :value="1450.45" unit="bit" />
+    </span>
   </div>
 </template>

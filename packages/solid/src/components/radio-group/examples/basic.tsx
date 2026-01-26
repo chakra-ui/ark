@@ -1,22 +1,22 @@
 import { RadioGroup } from '@ark-ui/solid/radio-group'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
+import styles from 'styles/radio-group.module.css'
 
 export const Basic = () => {
-  const frameworks = ['React', 'Solid', 'Vue', 'Svelte']
+  const frameworks = ['React', 'Solid', 'Vue']
 
   return (
-    <RadioGroup.Root>
-      <RadioGroup.Label>Framework</RadioGroup.Label>
-      <RadioGroup.Indicator />
-      <Index each={frameworks}>
+    <RadioGroup.Root class={styles.Root} defaultValue="React">
+      <RadioGroup.Label class={styles.Label}>Framework</RadioGroup.Label>
+      <For each={frameworks}>
         {(framework) => (
-          <RadioGroup.Item value={framework()}>
-            <RadioGroup.ItemText>{framework()}</RadioGroup.ItemText>
-            <RadioGroup.ItemControl />
+          <RadioGroup.Item class={styles.Item} value={framework}>
+            <RadioGroup.ItemControl class={styles.ItemControl} />
+            <RadioGroup.ItemText class={styles.ItemText}>{framework}</RadioGroup.ItemText>
             <RadioGroup.ItemHiddenInput />
           </RadioGroup.Item>
         )}
-      </Index>
+      </For>
     </RadioGroup.Root>
   )
 }

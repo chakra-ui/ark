@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseCarouselContext } from './use-carousel-context'
 
-export interface CarouselContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseCarouselContext>
-  }> {}
+export interface CarouselContextProps extends SlotsType<{
+  default: UnwrapRef<UseCarouselContext>
+}> {}
 </script>
 
 <script setup lang="ts">

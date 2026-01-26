@@ -8,46 +8,71 @@ description: A list of options that appears when a user interacts with a button.
 
 ## Anatomy
 
-To set up the menu correctly, you'll need to understand its anatomy and how we name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
 <Anatomy id="menu" />
+
+```tsx
+<Menu.Root>
+  <Menu.Trigger>
+    <Menu.Indicator />
+  </Menu.Trigger>
+  <Menu.Positioner>
+    <Menu.Content>
+      <Menu.Arrow>
+        <Menu.ArrowTip />
+      </Menu.Arrow>
+      <Menu.Item />
+      <Menu.ItemGroup>
+        <Menu.ItemGroupLabel />
+        <Menu.Item />
+      </Menu.ItemGroup>
+      <Menu.Separator />
+    </Menu.Content>
+  </Menu.Positioner>
+</Menu.Root>
+```
 
 ## Examples
 
-Learn how to use the `Menu` component in your project. Let's take a look at the most basic example:
-
 <Example id="basic" />
 
-### Listening to item selection
+### Item Selection
 
-Pass the `onSelect` prop to the Menu component to perform some custom logic when an item is selected. The callback is
-invoked with the `id` of the item.
+Use `onSelect` to handle item selection. The callback receives the item's `id`.
 
 <Example id="controlled" />
 
-### Grouping menu items
+### Root Provider
 
-When the number of menu items gets much, it might be useful to group related menu items. To achieve this, render the
-`Menu.ItemGroup` component around the `Menu.Item` components. The `Menu.ItemGroupLabel` component can be used to add a
-label to the group.
+An alternative way to control the menu is to use the `RootProvider` component and the `useMenu` hook. This way you can
+access the state and methods from outside the component.
+
+<Example id="root-provider" />
+
+### Grouping
+
+Use `Menu.ItemGroup` and `Menu.ItemGroupLabel` to organize related menu items.
 
 <Example id="group" />
 
-### Separating menu items
-
-To separate menu items, render the `Menu.Separator` component.
-
-<Example id="separator" />
-
-### Menu with links
+### Links
 
 To render menu items as links, use the `asChild` prop to replace the default element with an anchor tag.
 
 <Example id="links" />
 
-### Context menu
+### Checkbox
+
+To add a checkbox to a menu item, use the `Menu.Checkbox` component.
+
+<Example id="checkbox-items" />
+
+### Radio Group
+
+To group radio option items, use the `Menu.RadioGroup` component.
+
+<Example id="radio-items" />
+
+### Context Menu
 
 To show the menu when a trigger element is right-clicked, use the `Menu.ContextTrigger` component.
 
@@ -55,36 +80,29 @@ Context menus are also opened during a long-press of roughly `700ms` when the po
 
 <Example id="context" />
 
-### Nested menu
+### Nested
 
 To show a nested menu, render another `Menu` component and use the `Menu.TriggerItem` component to open the submenu.
 
 <Example id="nested" />
 
-### Checkbox
+### Menu in Dialog
 
-To add a checkbox to a menu item, use the `Menu.Checkbox` component.
+When rendering a menu inside a dialog, use `lazyMount` and `unmountOnExit` to ensure proper cleanup when the dialog
+closes.
 
-<Example id="checkbox" />
+<Example id="menu-in-dialog" />
 
-### Radio Group
+### Menu Item Dialog
 
-To group radio option items, use the `Menu.RadioGroup` component.
+Open a confirmation dialog from a menu item. This pattern is useful for destructive actions like delete that require
+user confirmation.
 
-<Example id="radio-group" />
-
-### Using the Root Provider
-
-The `RootProvider` component provides a context for the menu. It accepts the value of the `useMenu` hook. You can
-leverage it to access the component state and methods from outside the menu.
-
-<Example id="root-provider" />
-
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+<Example id="menu-item-dialog" />
 
 ## Guides
 
-### Avoid passing custom ids to menu items
+### Custom IDs
 
 Ark UI autogenerates ids for menu items internally. Passing a custom `id` prop breaks the internal `getElementById`
 functionality used by the component.
@@ -101,7 +119,7 @@ functionality used by the component.
 </Menu.Item>
 ```
 
-### Menu items as links
+### Links
 
 To render a menu item as a link, render the link as the menu item itself using the `asChild` prop, not as a child of the
 menu item.
@@ -136,8 +154,6 @@ export const MenuItemLink = (props: MenuItemLinkProps) => {
 <ComponentTypes id="menu" />
 
 ### Context
-
-These are the properties available when using `Menu.Context`, `useMenuContext` hook or `useMenu` hook.
 
 <ContextType id="menu" />
 

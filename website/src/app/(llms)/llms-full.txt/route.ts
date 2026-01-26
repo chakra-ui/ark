@@ -1,6 +1,6 @@
 import { cleanupPageContent } from '~/app/(llms)/shared'
 import { frameworks } from '~/lib/frameworks'
-import { categories, getSidebarGroups } from '~/lib/sidebar'
+import { getSidebarGroupsWithPages } from '~/lib/sidebar'
 import type { Pages } from '.velite'
 
 export const dynamic = 'force-static'
@@ -14,17 +14,17 @@ const generatePageContent = async (page: Pages) =>
     )
   ).join('\n')
 
-const generateCategorySection = async (category: string, pages: Pages[]) => {
-  const header = `# ${category.toUpperCase()}\n\n---\n`
-  const pagesContent = await Promise.all(pages.map(generatePageContent))
+const generateCategorySection = async (group: { title: string; items: Pages[] }) => {
+  const header = `# ${group.title.toUpperCase()}\n\n---\n`
+  const pagesContent = await Promise.all(group.items.map(generatePageContent))
   return `${header}\n${pagesContent.join('\n')}`
 }
 
 export const GET = async () => {
-  const sidebarGroups = getSidebarGroups()
-  const content = await Promise.all(
-    categories.map((category, index) => generateCategorySection(category, sidebarGroups[index])),
-  ).then((sections) => sections.join('\n\n'))
+  const sidebarGroups = getSidebarGroupsWithPages()
+  const content = await Promise.all(sidebarGroups.map(generateCategorySection)).then((sections) =>
+    sections.join('\n\n'),
+  )
 
   return new Response(content)
 }

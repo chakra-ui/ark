@@ -1,15 +1,16 @@
 import { RadioGroup } from '@ark-ui/react/radio-group'
+import styles from 'styles/radio-group.module.css'
 
 export const InitialValue = () => {
-  const frameworks = ['React', 'Solid', 'Vue', 'Svelte']
+  const frameworks = ['React', 'Solid', 'Vue']
 
   return (
-    <RadioGroup.Root defaultValue="Solid">
-      <RadioGroup.Label>Framework</RadioGroup.Label>
+    <RadioGroup.Root className={styles.Root} defaultValue="Solid">
+      <RadioGroup.Label className={styles.Label}>Framework</RadioGroup.Label>
       {frameworks.map((framework) => (
-        <RadioGroup.Item key={framework} value={framework}>
-          <RadioGroup.ItemText>{framework}</RadioGroup.ItemText>
-          <RadioGroup.ItemControl />
+        <RadioGroup.Item className={styles.Item} key={framework} value={framework}>
+          <RadioGroup.ItemControl className={styles.ItemControl} />
+          <RadioGroup.ItemText className={styles.ItemText}>{framework}</RadioGroup.ItemText>
           <RadioGroup.ItemHiddenInput />
         </RadioGroup.Item>
       ))}

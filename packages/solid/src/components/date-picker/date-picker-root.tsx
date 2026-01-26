@@ -36,6 +36,7 @@ export const DatePickerRoot = (props: DatePickerRootProps) => {
     'onOpenChange',
     'onValueChange',
     'onViewChange',
+    'onVisibleRangeChange',
     'open',
     'outsideDaySelectable',
     'parse',

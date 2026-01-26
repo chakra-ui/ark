@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface ColorPickerTransparencyGridBaseProps extends TransparencyGridProps, PolymorphicProps {}
 export interface ColorPickerTransparencyGridProps
-  extends ColorPickerTransparencyGridBaseProps,
+  extends
+    ColorPickerTransparencyGridBaseProps,
     /**
      * @vue-ignore
      */

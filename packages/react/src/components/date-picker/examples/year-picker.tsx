@@ -1,59 +1,56 @@
 import { DatePicker, parseDate } from '@ark-ui/react/date-picker'
 import { Portal } from '@ark-ui/react/portal'
 import type { DateValue } from '@internationalized/date'
+import { CalendarIcon } from 'lucide-react'
+import button from 'styles/button.module.css'
+import styles from 'styles/date-picker.module.css'
 
-const format = (date: DateValue) => {
-  const year = date.year.toString()
-  return year
-}
+const format = (date: DateValue) => date.year.toString()
 
-const parse = (string: string) => {
-  if (string === '') return
-  // account for yy
+const parse = (string: string | undefined) => {
+  if (string === '' || !string) return
   const year = Number(string)
   if (year < 100) {
     const currentYear = new Date().getFullYear()
     const currentCentury = Math.floor(currentYear / 100) * 100
     return parseDate(new Date(currentCentury + year, 0))
   }
-  return string ? parseDate(new Date(Number(string), 0)) : undefined
-}
-
-const ViewTrigger = () => {
-  return (
-    <DatePicker.ViewControl>
-      <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
-      <DatePicker.ViewTrigger>
-        <DatePicker.RangeText />
-      </DatePicker.ViewTrigger>
-      <DatePicker.NextTrigger>Next</DatePicker.NextTrigger>
-    </DatePicker.ViewControl>
-  )
+  return parseDate(new Date(Number(string), 0))
 }
 
 export const YearPicker = () => {
   return (
-    <DatePicker.Root format={format} parse={parse} defaultView="year" minView="year" placeholder="yyyy">
-      <DatePicker.Label>Label</DatePicker.Label>
-      <DatePicker.Control>
-        <DatePicker.Input />
-        <DatePicker.Trigger>📅</DatePicker.Trigger>
-        <DatePicker.ClearTrigger>Clear</DatePicker.ClearTrigger>
+    <DatePicker.Root
+      className={styles.Root}
+      format={format}
+      parse={parse}
+      defaultView="year"
+      minView="year"
+      placeholder="yyyy"
+    >
+      <DatePicker.Label className={styles.Label}>Label</DatePicker.Label>
+      <DatePicker.Control className={styles.Control}>
+        <DatePicker.Input className={styles.Input} />
+        <DatePicker.Trigger className={styles.Trigger}>
+          <CalendarIcon />
+        </DatePicker.Trigger>
+        <DatePicker.ClearTrigger className={button.Root}>Clear</DatePicker.ClearTrigger>
       </DatePicker.Control>
       <Portal>
         <DatePicker.Positioner>
-          <DatePicker.Content>
-            <DatePicker.View view="year">
-              <ViewTrigger />
+          <DatePicker.Content className={styles.Content}>
+            <DatePicker.View view="year" className={styles.View}>
               <DatePicker.Context>
                 {(datePicker) => (
-                  <DatePicker.Table>
-                    <DatePicker.TableBody>
+                  <DatePicker.Table className={styles.Table}>
+                    <DatePicker.TableBody className={styles.TableBody}>
                       {datePicker.getYearsGrid({ columns: 4 }).map((years, id) => (
-                        <DatePicker.TableRow key={id}>
+                        <DatePicker.TableRow className={styles.TableRow} key={id}>
                           {years.map((year, id) => (
-                            <DatePicker.TableCell key={id} value={year.value}>
-                              <DatePicker.TableCellTrigger>{year.label}</DatePicker.TableCellTrigger>
+                            <DatePicker.TableCell className={styles.TableCell} key={id} value={year.value}>
+                              <DatePicker.TableCellTrigger className={styles.YearTableCellTrigger}>
+                                {year.label}
+                              </DatePicker.TableCellTrigger>
                             </DatePicker.TableCell>
                           ))}
                         </DatePicker.TableRow>

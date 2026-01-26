@@ -1,15 +1,22 @@
 import { Combobox, useListCollection } from '@ark-ui/solid/combobox'
 import { useFilter } from '@ark-ui/solid/locale'
-import { For, type ParentProps, createSignal } from 'solid-js'
+import { CheckIcon, ChevronsUpDownIcon } from 'lucide-solid'
+import { For } from 'solid-js'
 import { Portal } from 'solid-js/web'
+import styles from 'styles/combobox.module.css'
 
 export const Multiple = () => {
   const filterFn = useFilter({ sensitivity: 'base' })
 
-  const [selectedValue, setSelectedValue] = createSignal<string[]>([])
-
   const { collection, filter, remove } = useListCollection({
-    initialItems: ['React', 'Solid', 'Vue', 'Svelte'],
+    initialItems: [
+      { label: 'JavaScript', value: 'js' },
+      { label: 'TypeScript', value: 'ts' },
+      { label: 'Python', value: 'python' },
+      { label: 'Go', value: 'go' },
+      { label: 'Rust', value: 'rust' },
+      { label: 'Java', value: 'java' },
+    ],
     filter: filterFn().contains,
   })
 
@@ -18,34 +25,45 @@ export const Multiple = () => {
   }
 
   const handleValueChange = (details: Combobox.ValueChangeDetails) => {
-    setSelectedValue(details.value)
     remove(...details.value)
   }
 
   return (
     <Combobox.Root
+      class={styles.Root}
       collection={collection()}
       onInputValueChange={handleInputChange}
       onValueChange={handleValueChange}
       multiple
     >
-      <Combobox.Label>Frameworks</Combobox.Label>
-      <Combobox.Control>
-        <ComboboxTagGroup>
-          <For each={selectedValue()}>{(value) => <ComboboxTag>{value}</ComboboxTag>}</For>
-        </ComboboxTagGroup>
-        <Combobox.Input />
-        <Combobox.Trigger>Open</Combobox.Trigger>
-        <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
+      <Combobox.Label class={styles.Label}>Skills</Combobox.Label>
+      <Combobox.Context>
+        {(context) => (
+          <div class={styles.Tags}>
+            {context().selectedItems.length === 0 && <span class={styles.TagPlaceholder}>None selected</span>}
+            <For each={context().selectedItems}>{(item: any) => <span class={styles.Tag}>{item.label}</span>}</For>
+          </div>
+        )}
+      </Combobox.Context>
+      <Combobox.Control class={styles.Control}>
+        <Combobox.Input class={styles.Input} placeholder="e.g. JavaScript" />
+        <div class={styles.Indicators}>
+          <Combobox.Trigger class={styles.Trigger}>
+            <ChevronsUpDownIcon />
+          </Combobox.Trigger>
+        </div>
       </Combobox.Control>
       <Portal>
         <Combobox.Positioner>
-          <Combobox.Content>
+          <Combobox.Content class={styles.Content}>
+            <Combobox.Empty class={styles.Item}>No skills found</Combobox.Empty>
             <For each={collection().items}>
               {(item) => (
-                <Combobox.Item item={item}>
-                  <Combobox.ItemText>{item}</Combobox.ItemText>
-                  <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
+                <Combobox.Item class={styles.Item} item={item}>
+                  <Combobox.ItemText class={styles.ItemText}>{item.label}</Combobox.ItemText>
+                  <Combobox.ItemIndicator class={styles.ItemIndicator}>
+                    <CheckIcon />
+                  </Combobox.ItemIndicator>
                 </Combobox.Item>
               )}
             </For>
@@ -54,12 +72,4 @@ export const Multiple = () => {
       </Portal>
     </Combobox.Root>
   )
-}
-
-const ComboboxTag = (props: ParentProps) => {
-  return <pre style={{ display: 'inline-block', padding: '0.25rem', border: '1px solid gray' }} {...props} />
-}
-
-const ComboboxTagGroup = (props: ParentProps) => {
-  return <div style={{ display: 'flex', 'flex-wrap': 'wrap', gap: '0.5rem' }} {...props} />
 }

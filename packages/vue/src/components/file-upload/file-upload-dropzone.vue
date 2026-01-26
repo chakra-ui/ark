@@ -6,7 +6,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface FileUploadDropzoneBaseProps extends PolymorphicProps, DropzoneProps {}
 export interface FileUploadDropzoneProps
-  extends FileUploadDropzoneBaseProps,
+  extends
+    FileUploadDropzoneBaseProps,
     /**
      * @vue-ignore
      */

@@ -36,10 +36,10 @@ export const DataAttrTable = (props: Props) => {
         <Table.Head>
           <Table.Row>
             <Table.Header px="4" bg="gray.2" h="10">
-              Data Attribute
+              Attribute
             </Table.Header>
             <Table.Header px="4" bg="gray.2" h="10">
-              Value
+              Description
             </Table.Header>
           </Table.Row>
         </Table.Head>

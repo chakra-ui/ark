@@ -3,9 +3,7 @@
   import type { StepActionTriggerProps } from '@zag-js/tour'
 
   export interface TourActionTriggerBaseProps
-    extends StepActionTriggerProps,
-      PolymorphicProps<'button'>,
-      RefAttribute {}
+    extends StepActionTriggerProps, PolymorphicProps<'button'>, RefAttribute {}
   export interface TourActionTriggerProps extends HTMLProps<'button'>, TourActionTriggerBaseProps {}
 </script>
 

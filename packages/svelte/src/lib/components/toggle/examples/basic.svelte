@@ -1,8 +1,9 @@
-<script>
+<script lang="ts">
   import { Toggle } from '@ark-ui/svelte/toggle'
-  import { Bold } from 'lucide-svelte'
+  import { BoldIcon } from 'lucide-svelte'
+  import styles from 'styles/toggle.module.css'
 </script>
 
-<Toggle.Root>
-  <Bold />
+<Toggle.Root class={styles.Root}>
+  <BoldIcon />
 </Toggle.Root>

@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface NavigationMenuTriggerBaseProps extends Omit<ItemProps, 'value'>, PolymorphicProps {}
 export interface NavigationMenuTriggerProps
-  extends NavigationMenuTriggerBaseProps,
+  extends
+    NavigationMenuTriggerBaseProps,
     /**
      * @vue-ignore
      */

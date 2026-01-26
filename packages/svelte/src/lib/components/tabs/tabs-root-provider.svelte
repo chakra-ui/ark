@@ -7,10 +7,7 @@
   }
 
   export interface TabsRootProviderBaseProps
-    extends RootProviderProps,
-      PolymorphicProps<'div'>,
-      RenderStrategyProps,
-      RefAttribute {}
+    extends RootProviderProps, PolymorphicProps<'div'>, RenderStrategyProps, RefAttribute {}
   export interface TabsRootProviderProps extends Assign<HTMLProps<'div'>, TabsRootProviderBaseProps> {}
 </script>
 

@@ -1,4 +1,8 @@
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import type { StorybookConfig } from '@storybook/react-vite'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const config: StorybookConfig = {
   stories: ['../src/components/**/*.stories.tsx'],
@@ -12,6 +16,13 @@ const config: StorybookConfig = {
   },
   typescript: {
     reactDocgen: false,
+  },
+  viteFinal(config) {
+    config.resolve ??= {}
+    config.resolve.alias ??= {}
+    // @ts-expect-error - alias type mismatch
+    config.resolve.alias.styles = resolve(__dirname, '../../../.storybook/modules')
+    return config
   },
 }
 

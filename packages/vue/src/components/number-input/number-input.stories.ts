@@ -1,14 +1,12 @@
 import type { Meta } from '@storybook/vue3-vite'
 
 import BasicExample from './examples/basic.vue'
+import ContextExample from './examples/context.vue'
 import ControlledExample from './examples/controlled.vue'
-import FormUsageExample from './examples/form-usage.vue'
-import FormattedExample from './examples/formatted.vue'
+import FormattingExample from './examples/formatting.vue'
 import FractionDigitsExample from './examples/fraction-digits.vue'
 import MinMaxExample from './examples/min-max.vue'
 import MouseWheelExample from './examples/mouse-wheel.vue'
-import NoClampExample from './examples/no-clamp.vue'
-import RenderFnExample from './examples/render-fn.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import ScrubberExample from './examples/scrubber.vue'
 import WithFieldExample from './examples/with-field.vue'
@@ -26,6 +24,13 @@ export const Basic = {
   }),
 }
 
+export const Context = {
+  render: () => ({
+    components: { Component: ContextExample },
+    template: '<Component />',
+  }),
+}
+
 export const Controlled = {
   render: () => ({
     components: { Component: ControlledExample },
@@ -33,9 +38,9 @@ export const Controlled = {
   }),
 }
 
-export const MinMax = {
+export const Formatting = {
   render: () => ({
-    components: { Component: MinMaxExample },
+    components: { Component: FormattingExample },
     template: '<Component />',
   }),
 }
@@ -47,9 +52,9 @@ export const FractionDigits = {
   }),
 }
 
-export const Scrubber = {
+export const MinMax = {
   render: () => ({
-    components: { Component: ScrubberExample },
+    components: { Component: MinMaxExample },
     template: '<Component />',
   }),
 }
@@ -61,30 +66,16 @@ export const MouseWheel = {
   }),
 }
 
-export const NoClamp = {
+export const RootProvider = {
   render: () => ({
-    components: { Component: NoClampExample },
+    components: { Component: RootProviderExample },
     template: '<Component />',
   }),
 }
 
-export const FormUsage = {
+export const Scrubber = {
   render: () => ({
-    components: { Component: FormUsageExample },
-    template: '<Component />',
-  }),
-}
-
-export const Formatted = {
-  render: () => ({
-    components: { Component: FormattedExample },
-    template: '<Component />',
-  }),
-}
-
-export const RenderFn = {
-  render: () => ({
-    components: { Component: RenderFnExample },
+    components: { Component: ScrubberExample },
     template: '<Component />',
   }),
 }
@@ -92,13 +83,6 @@ export const RenderFn = {
 export const WithField = {
   render: () => ({
     components: { Component: WithFieldExample },
-    template: '<Component />',
-  }),
-}
-
-export const RootProvider = {
-  render: () => ({
-    components: { Component: RootProviderExample },
     template: '<Component />',
   }),
 }

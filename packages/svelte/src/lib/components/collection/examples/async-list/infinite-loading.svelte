@@ -1,5 +1,10 @@
 <script lang="ts">
   import { useAsyncList } from '@ark-ui/svelte/collection'
+  import { LoaderIcon } from 'lucide-svelte'
+  import button from 'styles/button.module.css'
+  import styles from 'styles/async-list.module.css'
+
+  const LIMIT = 4
 
   interface Post {
     userId: number
@@ -12,17 +17,16 @@
     autoReload: true,
     async load({ cursor }) {
       const page = cursor || 1
-      const limit = 10
-      const start = (page - 1) * limit
+      const start = (page - 1) * LIMIT
 
-      const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=${limit}`)
+      const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=${LIMIT}`)
 
       if (!response.ok) {
         throw new Error('Failed to fetch posts')
       }
 
       const posts: Post[] = await response.json()
-      const hasNextPage = posts.length === limit
+      const hasNextPage = posts.length === LIMIT
 
       return {
         items: posts,
@@ -32,30 +36,34 @@
   })
 </script>
 
-<div>
-  <div>
-    Loaded {list().items.length} posts
-    {#if list().cursor}(more available){/if}
+<div class={styles.Root}>
+  <div class={styles.Header}>
+    <span class={styles.Status}>
+      Loaded {list().items.length} posts
+      {#if list().cursor}(more available){/if}
+    </span>
+    {#if list().cursor}
+      <button class={button.Root} onclick={() => list().loadMore()} disabled={list().loading}>
+        {#if list().loading}
+          <LoaderIcon class={styles.Spinner} /> Loading
+        {:else}
+          Load More
+        {/if}
+      </button>
+    {/if}
   </div>
 
-  {#if list().cursor}
-    <button onclick={() => list().loadMore()} disabled={list().loading}>
-      {list().loading ? 'Loading...' : 'Load More'}
-    </button>
-  {/if}
-
   {#if list().error}
-    <div>Error: {list().error.message}</div>
+    <div class={styles.Error}>Error: {list().error.message}</div>
   {/if}
 
-  <div>
+  <div class={styles.ItemGroup}>
     {#each list().items as post, index}
-      <div>
-        <div>
-          <strong>{index + 1}:</strong>
-          <strong>{post.title}</strong>
+      <div class={styles.Item}>
+        <div class={styles.ItemContent}>
+          <div class={styles.ItemTitle}>{index + 1}. {post.title}</div>
+          <div class={styles.ItemDescription}>{post.body}</div>
         </div>
-        <div>{post.body}</div>
       </div>
     {/each}
   </div>

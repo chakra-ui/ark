@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface ColorPickerAreaBackgroundBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface ColorPickerAreaBackgroundProps
-    extends Assign<HTMLProps<'div'>, ColorPickerAreaBackgroundBaseProps> {}
+  export interface ColorPickerAreaBackgroundProps extends Assign<
+    HTMLProps<'div'>,
+    ColorPickerAreaBackgroundBaseProps
+  > {}
 </script>
 
 <script lang="ts">

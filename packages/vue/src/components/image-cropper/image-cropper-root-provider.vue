@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface ImageCropperRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface ImageCropperRootProviderProps
-  extends ImageCropperRootProviderBaseProps,
+  extends
+    ImageCropperRootProviderBaseProps,
     /**
      * @vue-ignore
      */

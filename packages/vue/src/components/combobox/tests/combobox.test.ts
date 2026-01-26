@@ -1,6 +1,6 @@
 import user from '@testing-library/user-event'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
-import WithField from '../examples/with-field.vue'
+import ComboboxWithField from './combobox-with-field.test.vue'
 import ComponentUnderTest from './combobox.test.vue'
 
 describe('Combobox', () => {
@@ -71,38 +71,38 @@ describe('Combobox', () => {
 
 describe('Combobox / Field', () => {
   it('should set combobox as required', async () => {
-    render(WithField, { props: { required: true } })
+    render(ComboboxWithField, { props: { required: true } })
     expect(screen.getByRole('combobox', { name: /label/i })).toBeRequired()
   })
 
   it('should set combobox as disabled', async () => {
-    render(WithField, { props: { disabled: true } })
+    render(ComboboxWithField, { props: { disabled: true } })
     expect(screen.getByRole('combobox', { name: /label/i })).toBeDisabled()
   })
 
   it('should set combobox as readonly', async () => {
-    render(WithField, { props: { readOnly: true } })
+    render(ComboboxWithField, { props: { readOnly: true } })
     expect(screen.getByRole('combobox', { name: /label/i })).toHaveAttribute('readonly')
   })
 
   it('should display helper text', async () => {
-    render(WithField)
+    render(ComboboxWithField)
     expect(screen.getByText('Additional Info')).toBeInTheDocument()
   })
 
   it('should display error text when error is present', async () => {
-    render(WithField, { props: { invalid: true } })
+    render(ComboboxWithField, { props: { invalid: true } })
     expect(screen.getByText('Error Info')).toBeInTheDocument()
   })
 
   it('should focus on combobox when label is clicked', async () => {
-    render(WithField)
+    render(ComboboxWithField)
     await user.click(screen.getByText(/label/i))
     expect(screen.getByRole('combobox', { name: /label/i })).toHaveFocus()
   })
 
   it('should not display error text when no error is present', async () => {
-    render(WithField)
+    render(ComboboxWithField)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })

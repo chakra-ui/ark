@@ -1,18 +1,20 @@
 import type { Meta } from '@storybook/svelte'
 
 import BasicExample from './examples/basic.svelte'
-import CheckboxExample from './examples/checkbox.svelte'
+import CheckboxItemsExample from './examples/checkbox-items.svelte'
 import ContextExample from './examples/context.svelte'
+import ContextLazyMountExample from './examples/context-lazy-mount.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import GroupExample from './examples/group.svelte'
+import ItemContextExample from './examples/item-context.svelte'
 import LinksExample from './examples/links.svelte'
+import MenuInDialogExample from './examples/menu-in-dialog.svelte'
+import MenuItemDialogExample from './examples/menu-item-dialog.svelte'
+import MultipleMenuExample from './examples/multiple-menu.svelte'
 import NestedExample from './examples/nested.svelte'
-import RadioGroupExample from './examples/radio-group.svelte'
-import RenderPropExample from './examples/render-prop.svelte'
+import RadioItemsExample from './examples/radio-items.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import SelectEventExample from './examples/select-event.svelte'
-import SeparatorExample from './examples/separator.svelte'
-import WithContextExample from './examples/with-context.svelte'
 
 const meta: Meta = {
   title: 'Components / Menu',
@@ -26,9 +28,9 @@ export const Basic = {
   }),
 }
 
-export const Controlled = {
+export const CheckboxItems = {
   render: () => ({
-    Component: ControlledExample,
+    Component: CheckboxItemsExample,
   }),
 }
 
@@ -38,33 +40,15 @@ export const Context = {
   }),
 }
 
-export const RadioGroup = {
+export const ContextLazyMount = {
   render: () => ({
-    Component: RadioGroupExample,
+    Component: ContextLazyMountExample,
   }),
 }
 
-export const Separator = {
+export const Controlled = {
   render: () => ({
-    Component: SeparatorExample,
-  }),
-}
-
-export const RootProvider = {
-  render: () => ({
-    Component: RootProviderExample,
-  }),
-}
-
-export const WithContext = {
-  render: () => ({
-    Component: WithContextExample,
-  }),
-}
-
-export const Checkbox = {
-  render: () => ({
-    Component: CheckboxExample,
+    Component: ControlledExample,
   }),
 }
 
@@ -74,15 +58,33 @@ export const Group = {
   }),
 }
 
+export const ItemContext = {
+  render: () => ({
+    Component: ItemContextExample,
+  }),
+}
+
 export const Links = {
   render: () => ({
     Component: LinksExample,
   }),
 }
 
-export const SelectEvent = {
+export const MenuInDialog = {
   render: () => ({
-    Component: SelectEventExample,
+    Component: MenuInDialogExample,
+  }),
+}
+
+export const MenuItemDialog = {
+  render: () => ({
+    Component: MenuItemDialogExample,
+  }),
+}
+
+export const MultipleMenu = {
+  render: () => ({
+    Component: MultipleMenuExample,
   }),
 }
 
@@ -92,8 +94,20 @@ export const Nested = {
   }),
 }
 
-export const RenderProp = {
+export const RadioItems = {
   render: () => ({
-    Component: RenderPropExample,
+    Component: RadioItemsExample,
+  }),
+}
+
+export const RootProvider = {
+  render: () => ({
+    Component: RootProviderExample,
+  }),
+}
+
+export const SelectEvent = {
+  render: () => ({
+    Component: SelectEventExample,
   }),
 }

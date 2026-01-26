@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface CarouselRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface CarouselRootProviderProps
-  extends CarouselRootProviderBaseProps,
+  extends
+    CarouselRootProviderBaseProps,
     /**
      * @vue-ignore
      */

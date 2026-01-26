@@ -8,8 +8,7 @@ import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 import type { RootEmits } from './collapsible.types'
 
 export interface UseCollapsibleProps
-  extends RenderStrategyProps,
-    Optional<Omit<collapsible.Props, 'dir' | 'getRootNode'>, 'id'> {}
+  extends RenderStrategyProps, Optional<Omit<collapsible.Props, 'dir' | 'getRootNode'>, 'id'> {}
 
 interface Collapsible extends collapsible.Api<PropTypes> {
   /**

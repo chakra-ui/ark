@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface MenuItemGroupLabelBaseProps extends PolymorphicProps {}
 export interface MenuItemGroupLabelProps
-  extends MenuItemGroupLabelBaseProps,
+  extends
+    MenuItemGroupLabelBaseProps,
     /**
      * @vue-ignore
      */

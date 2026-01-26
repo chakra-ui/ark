@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface TooltipArrowTipBaseProps extends PolymorphicProps {}
 export interface TooltipArrowTipProps
-  extends TooltipArrowTipBaseProps,
+  extends
+    TooltipArrowTipBaseProps,
     /**
      * @vue-ignore
      */

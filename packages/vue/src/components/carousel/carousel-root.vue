@@ -6,7 +6,8 @@ import type { RootEmits, RootProps } from './carousel.types'
 
 export interface CarouselRootBaseProps extends RootProps, PolymorphicProps {}
 export interface CarouselRootProps
-  extends CarouselRootBaseProps,
+  extends
+    CarouselRootBaseProps,
     /**
      * @vue-ignore
      */

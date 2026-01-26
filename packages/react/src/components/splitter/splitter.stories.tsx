@@ -8,9 +8,8 @@ export default meta
 
 export { Basic } from './examples/basic'
 export { Collapsible } from './examples/collapsible'
-export { Events } from './examples/events'
+export { Context } from './examples/context'
 export { MultiplePanels } from './examples/multiple-panels'
-export { RenderProp } from './examples/render-prop'
 export { ResizeIndicator } from './examples/resize-indicator'
 export { RootProvider } from './examples/root-provider'
 export { Vertical } from './examples/vertical'

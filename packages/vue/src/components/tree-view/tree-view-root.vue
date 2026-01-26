@@ -7,11 +7,10 @@ import type { RootEmits, RootProps } from './tree-view.types'
 import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 
 export interface TreeViewRootBaseProps<T extends TreeNode>
-  extends RootProps<T>,
-    RenderStrategyProps,
-    PolymorphicProps {}
+  extends RootProps<T>, RenderStrategyProps, PolymorphicProps {}
 export interface TreeViewRootProps<T extends TreeNode>
-  extends TreeViewRootBaseProps<T>,
+  extends
+    TreeViewRootBaseProps<T>,
     /**
      * @vue-ignore
      */

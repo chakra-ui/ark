@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface DialogTriggerBaseProps extends PolymorphicProps {}
 export interface DialogTriggerProps
-  extends DialogTriggerBaseProps,
+  extends
+    DialogTriggerBaseProps,
     /**
      * @vue-ignore
      */

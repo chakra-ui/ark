@@ -3,9 +3,7 @@
   import type { ItemProps } from '@zag-js/navigation-menu'
 
   export interface NavigationMenuTriggerBaseProps
-    extends Omit<ItemProps, 'value'>,
-      PolymorphicProps<'button'>,
-      RefAttribute {}
+    extends Omit<ItemProps, 'value'>, PolymorphicProps<'button'>, RefAttribute {}
   export interface NavigationMenuTriggerProps extends Assign<HTMLProps<'button'>, NavigationMenuTriggerBaseProps> {}
 </script>
 

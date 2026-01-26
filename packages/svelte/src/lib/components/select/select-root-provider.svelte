@@ -4,14 +4,14 @@
   import type { UseSelectReturn } from './use-select.svelte'
 
   export interface SelectRootProviderBaseProps<T extends CollectionItem = CollectionItem>
-    extends PolymorphicProps<'div'>,
-      UsePresenceProps,
-      RefAttribute {
+    extends PolymorphicProps<'div'>, UsePresenceProps, RefAttribute {
     value: UseSelectReturn<T>
   }
 
-  export interface SelectRootProviderProps<T extends CollectionItem = CollectionItem>
-    extends Assign<HTMLProps<'div'>, SelectRootProviderBaseProps<T>> {}
+  export interface SelectRootProviderProps<T extends CollectionItem = CollectionItem> extends Assign<
+    HTMLProps<'div'>,
+    SelectRootProviderBaseProps<T>
+  > {}
 
   export type SelectRootProviderComponent<P = {}> = <T extends CollectionItem>(
     props: Assign<SelectRootProviderProps<T>, P>,

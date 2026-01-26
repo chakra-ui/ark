@@ -1,17 +1,24 @@
 import { ToggleGroup } from '@ark-ui/solid/toggle-group'
+import { AlignCenterIcon, AlignJustifyIcon, AlignLeftIcon, AlignRightIcon } from 'lucide-solid'
 import { createSignal } from 'solid-js'
+import styles from 'styles/toggle-group.module.css'
 
 export const Controlled = () => {
-  const [value, setValue] = createSignal<string[]>(['a'])
-
+  const [value, setValue] = createSignal(['left'])
   return (
-    <>
-      <p>Value: {value().join(', ')}</p>
-      <ToggleGroup.Root value={value()} onValueChange={(details) => setValue(details.value)}>
-        <ToggleGroup.Item value="a">A</ToggleGroup.Item>
-        <ToggleGroup.Item value="b">B</ToggleGroup.Item>
-        <ToggleGroup.Item value="c">C</ToggleGroup.Item>
-      </ToggleGroup.Root>
-    </>
+    <ToggleGroup.Root value={value()} onValueChange={(e) => setValue(e.value)} class={styles.Root}>
+      <ToggleGroup.Item value="left" class={styles.Item}>
+        <AlignLeftIcon />
+      </ToggleGroup.Item>
+      <ToggleGroup.Item value="center" class={styles.Item}>
+        <AlignCenterIcon />
+      </ToggleGroup.Item>
+      <ToggleGroup.Item value="right" class={styles.Item}>
+        <AlignRightIcon />
+      </ToggleGroup.Item>
+      <ToggleGroup.Item value="justify" class={styles.Item}>
+        <AlignJustifyIcon />
+      </ToggleGroup.Item>
+    </ToggleGroup.Root>
   )
 }

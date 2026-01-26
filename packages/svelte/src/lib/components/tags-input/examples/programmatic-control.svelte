@@ -1,33 +1,45 @@
 <script lang="ts">
   import { TagsInput, useTagsInput } from '@ark-ui/svelte/tags-input'
   import { XIcon } from 'lucide-svelte'
+  import button from 'styles/button.module.css'
+  import styles from 'styles/tags-input.module.css'
 
-  const tags = useTagsInput()
+  const tagsInput = useTagsInput()
 </script>
 
-<div>
-  <div style="display: flex; gap: 8px; margin-bottom: 12px;">
-    <button type="button" onclick={() => tags().addValue('React')}>Add React</button>
-    <button type="button" onclick={() => tags().addValue('Solid')}>Add Solid</button>
-    <button type="button" onclick={() => tags().setValue(['Vue', 'Svelte'])}>Set to Vue & Svelte</button>
-    <button type="button" onclick={() => tags().clearValue()}>Clear All</button>
+<div class="stack">
+  <div style="display: flex; gap: 8px;">
+    <button class={button.Root} type="button" onclick={() => tagsInput().addValue('React')}>Add React</button>
+    <button class={button.Root} type="button" onclick={() => tagsInput().addValue('Solid')}>Add Solid</button>
+    <button class={button.Root} type="button" onclick={() => tagsInput().setValue(['Vue', 'Svelte'])}>
+      Set to Vue & Svelte
+    </button>
+    <button class={button.Root} type="button" onclick={() => tagsInput().clearValue()}>Clear All</button>
   </div>
 
-  <TagsInput.RootProvider value={tags}>
-    <TagsInput.Label>Frameworks (Programmatic Control)</TagsInput.Label>
-    <TagsInput.Control>
-      {#each tags().value as value, index (index)}
-        <TagsInput.Item {index} {value}>
-          <TagsInput.ItemPreview>
-            <TagsInput.ItemText>{value}</TagsInput.ItemText>
-            <TagsInput.ItemDeleteTrigger><XIcon /></TagsInput.ItemDeleteTrigger>
-          </TagsInput.ItemPreview>
-          <TagsInput.ItemInput />
-        </TagsInput.Item>
-      {/each}
-      <TagsInput.Input placeholder="Add Framework" />
-    </TagsInput.Control>
-    <TagsInput.ClearTrigger><XIcon /></TagsInput.ClearTrigger>
+  <TagsInput.RootProvider value={tagsInput} class={styles.Root}>
+    <TagsInput.Context>
+      {#snippet render(api)}
+        <TagsInput.Label class={styles.Label}>Frameworks</TagsInput.Label>
+        <TagsInput.Control class={styles.Control}>
+          {#each api().value as value, index (index)}
+            <TagsInput.Item {index} {value} class={styles.Item}>
+              <TagsInput.ItemPreview class={styles.ItemPreview}>
+                <TagsInput.ItemText class={styles.ItemText}>{value}</TagsInput.ItemText>
+                <TagsInput.ItemDeleteTrigger class={styles.ItemDeleteTrigger}>
+                  <XIcon />
+                </TagsInput.ItemDeleteTrigger>
+              </TagsInput.ItemPreview>
+              <TagsInput.ItemInput class={styles.ItemInput} />
+            </TagsInput.Item>
+          {/each}
+          <TagsInput.Input placeholder="Add Framework" class={styles.Input} />
+          <TagsInput.ClearTrigger class={styles.ClearTrigger}>
+            <XIcon />
+          </TagsInput.ClearTrigger>
+        </TagsInput.Control>
+      {/snippet}
+    </TagsInput.Context>
     <TagsInput.HiddenInput />
   </TagsInput.RootProvider>
 </div>

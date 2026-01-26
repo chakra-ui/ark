@@ -1,14 +1,12 @@
 import type { Meta } from '@storybook/vue3-vite'
 
 import BasicExample from './examples/basic.vue'
-import BlurredExample from './examples/blurred.vue'
-import CustomizedExample from './examples/customized.vue'
-import InitialValueExample from './examples/initial-value.vue'
+import BlurOnCompleteExample from './examples/blur-on-complete.vue'
+import CustomPlaceholderExample from './examples/custom-placeholder.vue'
+import MaskExample from './examples/mask.vue'
 import OTPModeExample from './examples/otp-mode.vue'
 import RootProviderExample from './examples/root-provider.vue'
-import WithAutofocusExample from './examples/with-autofocus.vue'
 import WithFieldExample from './examples/with-field.vue'
-import WithMaskExample from './examples/with-mask.vue'
 
 const meta: Meta = {
   title: 'Components / PinInput',
@@ -23,23 +21,23 @@ export const Basic = {
   }),
 }
 
-export const Blurred = {
+export const BlurOnComplete = {
   render: () => ({
-    components: { Component: BlurredExample },
+    components: { Component: BlurOnCompleteExample },
     template: '<Component />',
   }),
 }
 
-export const Customized = {
+export const CustomPlaceholder = {
   render: () => ({
-    components: { Component: CustomizedExample },
+    components: { Component: CustomPlaceholderExample },
     template: '<Component />',
   }),
 }
 
-export const InitialValue = {
+export const Mask = {
   render: () => ({
-    components: { Component: InitialValueExample },
+    components: { Component: MaskExample },
     template: '<Component />',
   }),
 }
@@ -58,23 +56,9 @@ export const RootProvider = {
   }),
 }
 
-export const WithAutofocus = {
-  render: () => ({
-    components: { Component: WithAutofocusExample },
-    template: '<Component />',
-  }),
-}
-
 export const WithField = {
   render: () => ({
     components: { Component: WithFieldExample },
-    template: '<Component />',
-  }),
-}
-
-export const WithMask = {
-  render: () => ({
-    components: { Component: WithMaskExample },
     template: '<Component />',
   }),
 }

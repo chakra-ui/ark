@@ -1,5 +1,5 @@
 import { render, screen } from '@solidjs/testing-library'
-import { Basic as ComponentUnderTest } from '../examples/basic'
+import { ComponentUnderTest } from './basic'
 
 describe('TreeView', () => {
   it('should render a leaf node correctly', () => {

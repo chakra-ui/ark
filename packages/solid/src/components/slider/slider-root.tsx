@@ -31,7 +31,7 @@ export const SliderRoot = (props: SliderRootProps) => {
     'readOnly',
     'step',
     'thumbAlignment',
-    'thumbAlignment',
+    'thumbCollisionBehavior',
     'thumbSize',
     'value',
   ])

@@ -1,4 +1,6 @@
 import { Steps } from '@ark-ui/react/steps'
+import button from 'styles/button.module.css'
+import styles from 'styles/steps.module.css'
 
 const items = [
   { value: 'first', title: 'First', description: 'Contact Info' },
@@ -8,30 +10,34 @@ const items = [
 
 export const Basic = () => {
   return (
-    <Steps.Root count={items.length}>
-      <Steps.List>
+    <Steps.Root className={styles.Root} count={items.length}>
+      <Steps.List className={styles.List}>
         {items.map((item, index) => (
-          <Steps.Item key={index} index={index}>
-            <Steps.Trigger>
-              <Steps.Indicator>{index + 1}</Steps.Indicator>
+          <Steps.Item className={styles.Item} key={index} index={index}>
+            <Steps.Trigger className={styles.Trigger}>
+              <Steps.Indicator className={styles.Indicator}>{index + 1}</Steps.Indicator>
               <span>{item.title}</span>
             </Steps.Trigger>
-            <Steps.Separator />
+            <Steps.Separator className={styles.Separator} />
           </Steps.Item>
         ))}
       </Steps.List>
 
       {items.map((item, index) => (
-        <Steps.Content key={index} index={index}>
+        <Steps.Content className={styles.Content} key={index} index={index}>
           {item.title} - {item.description}
         </Steps.Content>
       ))}
 
-      <Steps.CompletedContent>Steps Complete - Thank you for filling out the form!</Steps.CompletedContent>
+      <Steps.CompletedContent className={styles.CompletedContent}>
+        Steps Complete - Thank you for filling out the form!
+      </Steps.CompletedContent>
 
-      <div>
-        <Steps.PrevTrigger>Back</Steps.PrevTrigger>
-        <Steps.NextTrigger>Next</Steps.NextTrigger>
+      <div className={styles.Actions}>
+        <Steps.PrevTrigger className={button.Root}>Back</Steps.PrevTrigger>
+        <Steps.NextTrigger className={button.Root} data-variant="solid">
+          Next
+        </Steps.NextTrigger>
       </div>
     </Steps.Root>
   )

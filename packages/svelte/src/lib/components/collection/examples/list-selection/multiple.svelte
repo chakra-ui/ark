@@ -1,8 +1,15 @@
 <script lang="ts">
   import { createListCollection, useListSelection } from '@ark-ui/svelte/collection'
+  import styles from 'styles/list-selection.module.css'
 
   const collection = createListCollection({
-    items: ['React', 'Vue', 'Angular', 'Svelte', 'Solid'],
+    items: [
+      { label: 'React', value: 'react' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Angular', value: 'angular' },
+      { label: 'Svelte', value: 'svelte' },
+      { label: 'Solid', value: 'solid' },
+    ],
   })
 
   const selection = useListSelection({
@@ -19,23 +26,24 @@
   }
 </script>
 
-<div>
-  <div style="margin-bottom: 16px; display: flex; align-items: center; gap: 16px;">
-    <button onclick={handleSelectAll}>
-      {selection.isAllSelected() ? 'Deselect All' : 'Select All'}
-    </button>
-    <span>
+<div class={styles.Root}>
+  <div class={styles.Header}>
+    <span class={styles.Count}>
       {selection.selectedValues().length} of {collection.items.length} selected
     </span>
+    <button type="button" class={styles.SelectAllButton} onclick={handleSelectAll}>
+      {selection.isAllSelected() ? 'Deselect all' : 'Select all'}
+    </button>
   </div>
-
-  {#each collection.items as item (item)}
-    <label
-      style="display: flex; align-items: center; gap: 8px; user-select: none;"
-      style:background-color={selection.isSelected(item) ? 'lightblue' : 'white'}
-    >
-      <input type="checkbox" checked={selection.isSelected(item)} onchange={() => selection.select(item)} />
-      <span>{item}</span>
+  {#each collection.items as item (item.value)}
+    <label class={styles.Item} data-selected={selection.isSelected(item.value) || undefined}>
+      <input
+        type="checkbox"
+        class={styles.Checkbox}
+        checked={selection.isSelected(item.value)}
+        onchange={() => selection.select(item.value)}
+      />
+      <span class={styles.ItemText}>{item.label}</span>
     </label>
   {/each}
 </div>

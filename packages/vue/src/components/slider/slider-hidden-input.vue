@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface SliderHiddenInputBaseProps extends PolymorphicProps {}
 export interface SliderHiddenInputProps
-  extends SliderHiddenInputBaseProps,
+  extends
+    SliderHiddenInputBaseProps,
     /**
      * @vue-ignore
      */

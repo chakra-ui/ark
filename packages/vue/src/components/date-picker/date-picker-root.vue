@@ -7,7 +7,8 @@ import type { RootEmits, RootProps } from './date-picker.types'
 
 export interface DatePickerRootBaseProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface DatePickerRootProps
-  extends DatePickerRootBaseProps,
+  extends
+    DatePickerRootBaseProps,
     /**
      * @vue-ignore
      */

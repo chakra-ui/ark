@@ -1,71 +1,78 @@
 import { ColorPicker, parseColor, useColorPicker } from '@ark-ui/react/color-picker'
+import { CheckIcon, PipetteIcon } from 'lucide-react'
+import styles from 'styles/color-picker.module.css'
+
+const swatches = ['red', 'blue', 'green', 'orange']
 
 export const RootProvider = () => {
   const colorPicker = useColorPicker({ defaultValue: parseColor('#eb5e41') })
 
   return (
-    <>
-      <span>Color: {colorPicker.valueAsString}</span>
+    <div className="stack">
+      <output>Color: {colorPicker.valueAsString}</output>
 
-      <ColorPicker.RootProvider value={colorPicker}>
-        <ColorPicker.Label>Color</ColorPicker.Label>
-        <ColorPicker.Control>
-          <ColorPicker.ChannelInput channel="hex" />
-          <ColorPicker.ChannelInput channel="alpha" />
-          <ColorPicker.ValueText />
-          <ColorPicker.Trigger>
-            <ColorPicker.TransparencyGrid />
-            <ColorPicker.ValueSwatch />
+      <ColorPicker.RootProvider className={styles.Root} value={colorPicker}>
+        <ColorPicker.Label className={styles.Label}>Color</ColorPicker.Label>
+        <ColorPicker.Control className={styles.Control}>
+          <ColorPicker.ChannelInput className={styles.Input} channel="hex" />
+          <ColorPicker.ChannelInput className={styles.ChannelInput} channel="alpha" />
+          <ColorPicker.Trigger className={styles.Trigger}>
+            <div className={styles.Swatch}>
+              <ColorPicker.TransparencyGrid className={styles.TransparencyGrid} />
+              <ColorPicker.ValueSwatch className={styles.ValueSwatch} />
+            </div>
           </ColorPicker.Trigger>
         </ColorPicker.Control>
         <ColorPicker.Positioner>
-          <ColorPicker.Content>
-            <ColorPicker.FormatTrigger>Toggle ColorFormat</ColorPicker.FormatTrigger>
-            <ColorPicker.FormatSelect />
-            <ColorPicker.Area>
-              <ColorPicker.AreaBackground />
-              <ColorPicker.AreaThumb />
+          <ColorPicker.Content className={styles.Content}>
+            <ColorPicker.Area className={styles.Area}>
+              <ColorPicker.AreaBackground className={styles.AreaBackground} />
+              <ColorPicker.AreaThumb className={styles.AreaThumb} />
             </ColorPicker.Area>
-            <ColorPicker.ChannelSlider channel="hue">
-              <ColorPicker.ChannelSliderTrack />
-              <ColorPicker.ChannelSliderThumb />
-            </ColorPicker.ChannelSlider>
-            <ColorPicker.ChannelSlider channel="alpha">
-              <ColorPicker.TransparencyGrid />
-              <ColorPicker.ChannelSliderTrack />
-              <ColorPicker.ChannelSliderThumb />
-            </ColorPicker.ChannelSlider>
-            <ColorPicker.SwatchGroup>
-              <ColorPicker.SwatchTrigger value="red">
-                <ColorPicker.Swatch value="red">
-                  <ColorPicker.SwatchIndicator>✓</ColorPicker.SwatchIndicator>
-                </ColorPicker.Swatch>
-              </ColorPicker.SwatchTrigger>
-              <ColorPicker.SwatchTrigger value="blue">
-                <ColorPicker.Swatch value="blue">
-                  <ColorPicker.SwatchIndicator>✓</ColorPicker.SwatchIndicator>
-                </ColorPicker.Swatch>
-              </ColorPicker.SwatchTrigger>
-              <ColorPicker.SwatchTrigger value="green">
-                <ColorPicker.Swatch value="green">
-                  <ColorPicker.SwatchIndicator>✓</ColorPicker.SwatchIndicator>
-                </ColorPicker.Swatch>
-              </ColorPicker.SwatchTrigger>
+            <div className={styles.SliderGroup}>
+              <ColorPicker.EyeDropperTrigger className={styles.EyeDropperTrigger}>
+                <PipetteIcon />
+              </ColorPicker.EyeDropperTrigger>
+              <div className={styles.ChannelSliders}>
+                <ColorPicker.ChannelSlider className={styles.ChannelSlider} channel="hue">
+                  <ColorPicker.ChannelSliderTrack className={styles.ChannelSliderTrack} />
+                  <ColorPicker.ChannelSliderThumb className={styles.ChannelSliderThumb} />
+                </ColorPicker.ChannelSlider>
+                <ColorPicker.ChannelSlider className={styles.ChannelSlider} channel="alpha">
+                  <ColorPicker.TransparencyGrid className={styles.TransparencyGrid} />
+                  <ColorPicker.ChannelSliderTrack className={styles.ChannelSliderTrack} />
+                  <ColorPicker.ChannelSliderThumb className={styles.ChannelSliderThumb} />
+                </ColorPicker.ChannelSlider>
+              </div>
+            </div>
+            <ColorPicker.SwatchGroup className={styles.SwatchGroup}>
+              {swatches.map((color) => (
+                <ColorPicker.SwatchTrigger key={color} className={styles.SwatchTrigger} value={color}>
+                  <ColorPicker.Swatch className={styles.Swatch} value={color}>
+                    <ColorPicker.SwatchIndicator className={styles.SwatchIndicator}>
+                      <CheckIcon />
+                    </ColorPicker.SwatchIndicator>
+                  </ColorPicker.Swatch>
+                </ColorPicker.SwatchTrigger>
+              ))}
             </ColorPicker.SwatchGroup>
-            <ColorPicker.View format="rgba">
-              <ColorPicker.ChannelInput channel="hex" />
-              <ColorPicker.ChannelInput channel="alpha" />
+            <ColorPicker.View className={styles.View} format="rgba">
+              <div className={styles.ChannelInputGroup}>
+                <ColorPicker.ChannelInput className={styles.ChannelInput} channel="hex" />
+                <ColorPicker.ChannelInput className={styles.ChannelInput} channel="alpha" />
+              </div>
             </ColorPicker.View>
-            <ColorPicker.View format="hsla">
-              <ColorPicker.ChannelInput channel="hue" />
-              <ColorPicker.ChannelInput channel="saturation" />
-              <ColorPicker.ChannelInput channel="lightness" />
+            <ColorPicker.View className={styles.View} format="hsla">
+              <div className={styles.ChannelInputGroup}>
+                <ColorPicker.ChannelInput className={styles.ChannelInput} channel="hue" />
+                <ColorPicker.ChannelInput className={styles.ChannelInput} channel="saturation" />
+                <ColorPicker.ChannelInput className={styles.ChannelInput} channel="lightness" />
+              </div>
             </ColorPicker.View>
-            <ColorPicker.EyeDropperTrigger>Pick color</ColorPicker.EyeDropperTrigger>
           </ColorPicker.Content>
         </ColorPicker.Positioner>
         <ColorPicker.HiddenInput />
       </ColorPicker.RootProvider>
-    </>
+    </div>
   )
 }

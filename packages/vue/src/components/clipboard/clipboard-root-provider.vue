@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface ClipboardRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface ClipboardRootProviderProps
-  extends ClipboardRootProviderBaseProps,
+  extends
+    ClipboardRootProviderBaseProps,
     /**
      * @vue-ignore
      */

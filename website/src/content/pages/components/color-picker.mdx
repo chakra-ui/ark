@@ -8,15 +8,40 @@ description: A component that allows users to select a color from a color picker
 
 ## Anatomy
 
-To set up the color picker correctly, you'll need to understand its anatomy and how we name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
 <Anatomy id="color-picker" />
 
-## Examples
+```tsx
+<ColorPicker.Root>
+  <ColorPicker.Label />
+  <ColorPicker.Control>
+    <ColorPicker.ChannelInput />
+    <ColorPicker.Trigger>
+      <ColorPicker.ValueSwatch />
+    </ColorPicker.Trigger>
+  </ColorPicker.Control>
+  <ColorPicker.Positioner>
+    <ColorPicker.Content>
+      <ColorPicker.Area>
+        <ColorPicker.AreaBackground />
+        <ColorPicker.AreaThumb />
+      </ColorPicker.Area>
+      <ColorPicker.EyeDropperTrigger />
+      <ColorPicker.ChannelSlider>
+        <ColorPicker.ChannelSliderTrack />
+        <ColorPicker.ChannelSliderThumb />
+      </ColorPicker.ChannelSlider>
+      <ColorPicker.SwatchGroup>
+        <ColorPicker.SwatchTrigger>
+          <ColorPicker.Swatch />
+        </ColorPicker.SwatchTrigger>
+      </ColorPicker.SwatchGroup>
+    </ColorPicker.Content>
+  </ColorPicker.Positioner>
+  <ColorPicker.HiddenInput />
+</ColorPicker.Root>
+```
 
-Learn how to use the `ColorPicker` component in your project. Let's take a look at the most basic example
+## Examples
 
 <Example id="basic" />
 
@@ -26,7 +51,60 @@ Use the `value` and `onValueChange` props to programatically control the color p
 
 <Example id="controlled" />
 
-> Alternatively, the `onValueChangeEnd` prop can be used to listen for when the user has finished selecting a color.
+### Open Controlled
+
+Control the open state of the color picker popover programmatically using the `open` and `onOpenChange` props.
+
+<Example id="open-controlled" />
+
+### Root Provider
+
+An alternative way to control the color picker is to use the `RootProvider` component and the `useColorPicker` hook.
+This way you can access the state and methods from outside the component.
+
+<Example id="root-provider" />
+
+### Disabled
+
+Use the `disabled` prop to disable the color picker.
+
+<Example id="disabled" />
+
+### Inline
+
+Render the color picker inline without a popover by using the `inline` prop.
+
+<Example id="inline" />
+
+### Input Only
+
+A minimal color picker with just an input field, value swatch, and eye dropper trigger.
+
+<Example id="input-only" />
+
+### Slider Only
+
+Display only the channel sliders for RGB color selection.
+
+<Example id="slider-only" />
+
+### Swatch Only
+
+A simple color picker with only preset color swatches.
+
+<Example id="swatch-only" />
+
+### Swatches
+
+Include preset color swatches in the color picker content for quick color selection.
+
+<Example id="swatches" />
+
+### Value Swatch
+
+Display the current color value as a swatch alongside the color area and sliders.
+
+<Example id="value-swatch" />
 
 ### Field
 
@@ -35,14 +113,11 @@ handling ARIA labels, helper text, and error text to ensure proper accessibility
 
 <Example id="with-field" />
 
-### Root Provider
+### Form Usage
 
-Use the `useColorPicker` hook to create the color picker store and pass it to the `ColorPicker.RootProvider` component.
-This allows you to have maximum control over the color picker programmatically.
+Integrate the color picker with form libraries like React Hook Form using the `HiddenInput` component.
 
-<Example id="root-provider" />
-
-> If you're using the `ColorPicker.RootProvider` component, you don't need to use the `ColorPicker.Root` component.
+<Example id="form-usage" />
 
 ## API Reference
 
@@ -51,9 +126,6 @@ This allows you to have maximum control over the color picker programmatically.
 <ComponentTypes id="color-picker" />
 
 ### Context
-
-These are the properties available when using `ColorPicker.Context`, `useColorPickerContext` hook or `useColorPicker`
-hook.
 
 <ContextType id="color-picker" />
 

@@ -10,7 +10,8 @@ interface RootProviderProps {
 
 export interface ColorPickerRootProviderBaseProps extends RootProviderProps, RenderStrategyProps, PolymorphicProps {}
 export interface ColorPickerRootProviderProps
-  extends ColorPickerRootProviderBaseProps,
+  extends
+    ColorPickerRootProviderBaseProps,
     /**
      * @vue-ignore
      */

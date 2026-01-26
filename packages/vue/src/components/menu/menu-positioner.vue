@@ -5,7 +5,8 @@ import { type PolymorphicProps, ark } from '../factory'
 
 export interface MenuPositionerBaseProps extends PolymorphicProps {}
 export interface MenuPositionerProps
-  extends MenuPositionerBaseProps,
+  extends
+    MenuPositionerBaseProps,
     /**
      * @vue-ignore
      */

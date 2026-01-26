@@ -9,7 +9,8 @@ type CheckboxItemProps = Omit<OptionItemProps, 'type' | 'onCheckedChange'>
 
 export interface MenuCheckboxItemBaseProps extends CheckboxItemProps, PolymorphicProps {}
 export interface MenuCheckboxItemProps
-  extends MenuCheckboxItemBaseProps,
+  extends
+    MenuCheckboxItemBaseProps,
     /**
      * @vue-ignore
      */

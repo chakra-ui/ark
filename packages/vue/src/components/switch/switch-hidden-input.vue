@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface SwitchHiddenInputBaseProps extends PolymorphicProps {}
 export interface SwitchHiddenInputProps
-  extends SwitchHiddenInputBaseProps,
+  extends
+    SwitchHiddenInputBaseProps,
     /**
      * @vue-ignore
      */

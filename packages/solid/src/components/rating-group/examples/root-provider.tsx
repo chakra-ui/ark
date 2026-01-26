@@ -1,27 +1,31 @@
 import { RatingGroup, useRatingGroup } from '@ark-ui/solid/rating-group'
 import { StarIcon } from 'lucide-solid'
-import { Index, Show } from 'solid-js'
+import { Index } from 'solid-js'
+import styles from 'styles/rating-group.module.css'
 
 export const RootProvider = () => {
-  const ratingGroup = useRatingGroup({ count: 5, value: 3 })
+  const ratingGroup = useRatingGroup({ defaultValue: 3 })
 
   return (
-    <>
-      <button onClick={() => ratingGroup().clearValue()}>Clear</button>
-
-      <RatingGroup.RootProvider value={ratingGroup}>
-        <RatingGroup.Label>Label</RatingGroup.Label>
-        <RatingGroup.Control>
+    <div class="stack">
+      <output>value: {ratingGroup().value}</output>
+      <RatingGroup.RootProvider class={styles.Root} value={ratingGroup}>
+        <RatingGroup.Label class={styles.Label}>Label</RatingGroup.Label>
+        <RatingGroup.Control class={styles.Control}>
           <RatingGroup.Context>
             {(context) => (
               <Index each={context().items}>
-                {(index) => (
-                  <RatingGroup.Item index={index()}>
+                {(item) => (
+                  <RatingGroup.Item class={styles.Item} index={item()}>
                     <RatingGroup.ItemContext>
-                      {(context) => (
-                        <Show when={context().highlighted} fallback={<StarIcon />}>
-                          <StarIcon fill="current" />
-                        </Show>
+                      {(itemContext) => (
+                        <span
+                          class={styles.ItemIndicator}
+                          data-highlighted={itemContext().highlighted ? '' : undefined}
+                        >
+                          <StarIcon data-bg="" />
+                          <StarIcon data-fg="" fill="currentColor" />
+                        </span>
                       )}
                     </RatingGroup.ItemContext>
                   </RatingGroup.Item>
@@ -32,6 +36,6 @@ export const RootProvider = () => {
           <RatingGroup.HiddenInput />
         </RatingGroup.Control>
       </RatingGroup.RootProvider>
-    </>
+    </div>
   )
 }

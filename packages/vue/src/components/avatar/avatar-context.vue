@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseAvatarContext } from './use-avatar-context'
 
-export interface AvatarContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseAvatarContext>
-  }> {}
+export interface AvatarContextProps extends SlotsType<{
+  default: UnwrapRef<UseAvatarContext>
+}> {}
 </script>
 
 <script setup lang="ts">

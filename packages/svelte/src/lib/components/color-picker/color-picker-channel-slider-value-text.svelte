@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface ColorPickerChannelSliderValueTextBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
-  export interface ColorPickerChannelSliderValueTextProps
-    extends Assign<HTMLProps<'span'>, ColorPickerChannelSliderValueTextBaseProps> {}
+  export interface ColorPickerChannelSliderValueTextProps extends Assign<
+    HTMLProps<'span'>,
+    ColorPickerChannelSliderValueTextBaseProps
+  > {}
 </script>
 
 <script lang="ts">

@@ -8,7 +8,8 @@ type RadioItemProps = Omit<OptionItemProps, 'type' | 'onCheckedChange' | 'checke
 
 export interface MenuRadioItemBaseProps extends RadioItemProps, PolymorphicProps {}
 export interface MenuRadioItemProps
-  extends MenuRadioItemBaseProps,
+  extends
+    MenuRadioItemBaseProps,
     /**
      * @vue-ignore
      */

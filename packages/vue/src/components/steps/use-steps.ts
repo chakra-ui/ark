@@ -32,6 +32,10 @@ export function useSteps(props: MaybeRef<UseStepsProps> = {}, emit?: EmitFn<Root
         emit?.('stepComplete')
         localProps.onStepComplete?.()
       },
+      onStepInvalid: (details) => {
+        emit?.('stepInvalid', details)
+        localProps.onStepInvalid?.(details)
+      },
     }
   })
 

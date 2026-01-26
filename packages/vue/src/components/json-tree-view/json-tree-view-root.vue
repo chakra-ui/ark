@@ -6,8 +6,7 @@ import type { TreeViewRootBaseProps } from '../tree-view'
 import type { JsonTreeViewOptions } from './json-tree-view-props-context'
 
 export interface JsonTreeViewRootBaseProps
-  extends JsonTreeViewOptions,
-    Omit<TreeViewRootBaseProps<JsonNode>, 'collection'> {
+  extends JsonTreeViewOptions, Omit<TreeViewRootBaseProps<JsonNode>, 'collection'> {
   /**
    * The data to display in the tree.
    */
@@ -19,7 +18,8 @@ export interface JsonTreeViewRootBaseProps
 }
 
 export interface JsonTreeViewRootProps
-  extends JsonTreeViewRootBaseProps,
+  extends
+    JsonTreeViewRootBaseProps,
     /**
      * @vue-ignore
      */

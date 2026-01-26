@@ -1,9 +1,12 @@
 import { JsonTreeView } from '@ark-ui/solid/json-tree-view'
 import { ChevronRightIcon } from 'lucide-solid'
+import styles from 'styles/json-tree-view.module.css'
 
 export const Basic = () => {
   return (
     <JsonTreeView.Root
+      defaultExpandedDepth={1}
+      class={styles.Root}
       data={{
         name: 'John Doe',
         age: 30,
@@ -17,7 +20,7 @@ export const Basic = () => {
         },
       }}
     >
-      <JsonTreeView.Tree arrow={<ChevronRightIcon />} />
+      <JsonTreeView.Tree class={styles.Tree} arrow={<ChevronRightIcon />} />
     </JsonTreeView.Root>
   )
 }

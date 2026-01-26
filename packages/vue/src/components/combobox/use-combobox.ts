@@ -8,8 +8,10 @@ import type { CollectionItem } from '../collection'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './combobox'
 
-export interface UseComboboxProps<T extends CollectionItem>
-  extends Optional<Omit<combobox.Props<T>, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseComboboxProps<T extends CollectionItem> extends Optional<
+  Omit<combobox.Props<T>, 'dir' | 'getRootNode'>,
+  'id'
+> {
   /**
    * The v-model value of the combobox
    */

@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface SwitchThumbBaseProps extends PolymorphicProps {}
 export interface SwitchThumbProps
-  extends SwitchThumbBaseProps,
+  extends
+    SwitchThumbBaseProps,
     /**
      * @vue-ignore
      */

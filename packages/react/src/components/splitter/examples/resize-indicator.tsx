@@ -1,11 +1,16 @@
 import { Splitter } from '@ark-ui/react/splitter'
+import styles from 'styles/splitter.module.css'
 
 export const ResizeIndicator = () => (
-  <Splitter.Root panels={[{ id: 'a' }, { id: 'b' }]}>
-    <Splitter.Panel id="a">A</Splitter.Panel>
-    <Splitter.ResizeTrigger id="a:b" aria-label="Resize">
-      <Splitter.ResizeTriggerIndicator />
+  <Splitter.Root className={styles.Root} panels={[{ id: 'a' }, { id: 'b' }]}>
+    <Splitter.Panel className={styles.Panel} id="a">
+      A
+    </Splitter.Panel>
+    <Splitter.ResizeTrigger className={styles.ResizeTrigger} id="a:b" aria-label="Resize">
+      <Splitter.ResizeTriggerIndicator className={styles.ResizeTriggerIndicator} />
     </Splitter.ResizeTrigger>
-    <Splitter.Panel id="b">B</Splitter.Panel>
+    <Splitter.Panel className={styles.Panel} id="b">
+      B
+    </Splitter.Panel>
   </Splitter.Root>
 )

@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface SelectTriggerBaseProps extends PolymorphicProps {}
 export interface SelectTriggerProps
-  extends SelectTriggerBaseProps,
+  extends
+    SelectTriggerBaseProps,
     /**
      * @vue-ignore
      */

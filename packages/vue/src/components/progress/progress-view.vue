@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface ProgressViewBaseProps extends ViewProps, PolymorphicProps {}
 export interface ProgressViewProps
-  extends ProgressViewBaseProps,
+  extends
+    ProgressViewBaseProps,
     /**
      * @vue-ignore
      */

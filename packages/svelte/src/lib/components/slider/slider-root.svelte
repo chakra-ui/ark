@@ -38,6 +38,7 @@
       'onFocusChange',
       'getAriaValueText',
       'thumbAlignment',
+      'thumbCollisionBehavior',
       'thumbSize',
       'aria-labelledby',
       'aria-label',

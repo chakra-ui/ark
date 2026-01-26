@@ -1,10 +1,9 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
 
-export interface TreeViewNodeContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseTreeViewNodeContext>
-  }> {}
+export interface TreeViewNodeContextProps extends SlotsType<{
+  default: UnwrapRef<UseTreeViewNodeContext>
+}> {}
 </script>
 
 <script setup lang="ts">

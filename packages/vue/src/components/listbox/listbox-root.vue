@@ -7,7 +7,8 @@ import type { RootEmits, RootProps } from './listbox.types'
 
 export interface ListboxRootBaseProps<T extends CollectionItem> extends RootProps<T>, PolymorphicProps {}
 export interface ListboxRootProps<T extends CollectionItem>
-  extends ListboxRootBaseProps<T>,
+  extends
+    ListboxRootBaseProps<T>,
     /**
      * @vue-ignore
      */

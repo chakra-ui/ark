@@ -1,28 +1,30 @@
 import { RadioGroup, useRadioGroup } from '@ark-ui/solid/radio-group'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
+import button from 'styles/button.module.css'
+import styles from 'styles/radio-group.module.css'
 
 export const RootProvider = () => {
-  const frameworks = ['React', 'Solid', 'Vue', 'Svelte']
-
-  const radioGroup = useRadioGroup()
+  const frameworks = ['React', 'Solid', 'Vue']
+  const radioGroup = useRadioGroup({ defaultValue: 'React' })
 
   return (
-    <>
-      <button onClick={() => radioGroup().focus()}>Focus</button>
-
-      <RadioGroup.RootProvider value={radioGroup}>
-        <RadioGroup.Label>Framework</RadioGroup.Label>
-        <RadioGroup.Indicator />
-        <Index each={frameworks}>
+    <div class="stack">
+      <RadioGroup.RootProvider class={styles.Root} value={radioGroup}>
+        <RadioGroup.Label class={styles.Label}>Framework</RadioGroup.Label>
+        <For each={frameworks}>
           {(framework) => (
-            <RadioGroup.Item value={framework()}>
-              <RadioGroup.ItemText>{framework()}</RadioGroup.ItemText>
-              <RadioGroup.ItemControl />
+            <RadioGroup.Item class={styles.Item} value={framework}>
+              <RadioGroup.ItemControl class={styles.ItemControl} />
+              <RadioGroup.ItemText class={styles.ItemText}>{framework}</RadioGroup.ItemText>
               <RadioGroup.ItemHiddenInput />
             </RadioGroup.Item>
           )}
-        </Index>
+        </For>
       </RadioGroup.RootProvider>
-    </>
+
+      <button class={button.Root} onClick={() => radioGroup().setValue('Solid')}>
+        Set to Solid
+      </button>
+    </div>
   )
 }

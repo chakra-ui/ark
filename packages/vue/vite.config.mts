@@ -1,10 +1,14 @@
 import { copyFileSync } from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import Vue from '@vitejs/plugin-vue'
 import VueJsx from '@vitejs/plugin-vue-jsx'
 import { globbySync } from 'globby'
 import dts from 'vite-plugin-dts'
 import { defineConfig } from 'vitest/config'
 import pkg from './package.json'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   logLevel: 'warn',
@@ -62,5 +66,8 @@ export default defineConfig({
   },
   resolve: {
     conditions: ['source'],
+    alias: {
+      styles: path.resolve(__dirname, '../../.storybook/modules'),
+    },
   },
 })

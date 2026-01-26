@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface TagsInputRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface TagsInputRootProviderProps
-  extends TagsInputRootProviderBaseProps,
+  extends
+    TagsInputRootProviderBaseProps,
     /**
      * @vue-ignore
      */

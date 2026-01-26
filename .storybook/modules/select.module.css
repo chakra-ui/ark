@@ -1,0 +1,246 @@
+.Root {
+  color: var(--demo-neutral-fg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+  max-width: 16rem;
+}
+
+.Label {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--demo-neutral-fg);
+  user-select: none;
+}
+
+.Control {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.Trigger {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-family: inherit;
+  background: transparent;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.375rem;
+  color: var(--demo-neutral-fg);
+  outline: none;
+
+  user-select: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:focus-visible {
+    border-color: var(--demo-coral-solid);
+    box-shadow: 0 0 0 1px var(--demo-coral-solid);
+  }
+
+  &[data-placeholder-shown] {
+    color: var(--demo-neutral-emphasized);
+  }
+
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
+  &[data-invalid] {
+    border-color: var(--demo-error);
+
+    &:focus-visible {
+      border-color: var(--demo-error);
+      box-shadow: 0 0 0 1px var(--demo-error);
+    }
+  }
+
+  & svg {
+    width: 1rem;
+    height: 1rem;
+    color: var(--demo-neutral-emphasized);
+  }
+}
+
+.ValueText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.Indicators {
+  position: absolute;
+  top: 50%;
+  right: 0.725rem;
+  transform: translateY(-50%);
+  display: flex;
+  pointer-events: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.Indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--demo-neutral-emphasized);
+  flex-shrink: 0;
+
+  & svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.ClearTrigger {
+  color: var(--demo-neutral-emphasized);
+
+  border: 0;
+  background: transparent;
+  transition: color 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+
+  &:hover {
+    color: var(--demo-neutral-fg);
+  }
+
+  & svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.Content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  min-width: var(--reference-width);
+  background: var(--demo-bg-popover);
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.375rem;
+  box-shadow: var(--demo-shadow-md);
+  z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
+  max-height: min(var(--available-height, 300px), 300px);
+  overflow-y: auto;
+  outline: none;
+
+  /* Fancy (custom) scrollbar styles using neutral */
+  scrollbar-width: thin;
+  scrollbar-color: var(--demo-border-emphasized) var(--demo-bg-popover);
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    background: var(--demo-bg-popover);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0.375rem;
+  }
+
+  &[data-state='open'] {
+    animation: scale-fade-in 0.15s ease-out;
+  }
+
+  &[data-state='closed'] {
+    animation: scale-fade-out 0.1s ease-in;
+  }
+}
+
+.ItemGroup {
+  display: flex;
+  flex-direction: column;
+
+  & + & {
+    margin-top: 0.5rem;
+  }
+}
+
+.ItemGroupLabel {
+  padding: 0.375rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--demo-neutral-emphasized);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.Item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  border-radius: 0.25rem;
+
+  user-select: none;
+
+  &[data-highlighted] {
+    background: var(--demo-neutral-subtle);
+  }
+
+  &[data-state='checked'] {
+    color: var(--demo-coral-fg);
+  }
+
+  &[data-disabled] {
+    color: var(--demo-neutral-emphasized);
+
+    opacity: 0.5;
+  }
+}
+
+.ItemText {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ItemIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--demo-coral-solid);
+  flex-shrink: 0;
+}
+
+@keyframes scale-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-fade-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}

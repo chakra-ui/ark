@@ -8,53 +8,51 @@ description: For pin or verification codes with auto-focus transfer and masking 
 
 ## Anatomy
 
-To set up the pin input correctly, you'll need to understand its anatomy and how we name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
 <Anatomy id="pin-input" />
+
+```tsx
+<PinInput.Root>
+  <PinInput.Label />
+  <PinInput.Control>
+    <PinInput.Input />
+  </PinInput.Control>
+  <PinInput.HiddenInput />
+</PinInput.Root>
+```
 
 ## Examples
 
-Learn how to use the `PinInput` component in your project. Let's take a look at the most basic example:
-
 <Example id="basic" />
 
-### Setting a default value
-
-To set the initial value of the pin input, set the `defaultValue` prop.
-
-<Example id="initial-value" />
-
-### Changing the placeholder
+### Placeholder
 
 To customize the default pin input placeholder `○` for each input, pass the placeholder prop and set it to your desired
 value.
 
-<Example id="customized" />
+<Example id="custom-placeholder" />
 
-### Blur on complete
+### Blur on Complete
 
 By default, the last input maintains focus when filled, and we invoke the `onValueComplete` callback. To blur the last
 input when the user completes the input, set the prop `blurOnComplete` to `true`.
 
-<Example id="blurred" />
+<Example id="blur-on-complete" />
 
-### Using OTP mode
+### OTP Mode
 
 To trigger smartphone OTP auto-suggestion, it is recommended to set the `autocomplete` attribute to "one-time-code". The
 pin input component provides support for this automatically when you set the `otp` prop to true.
 
 <Example id="otp-mode" />
 
-### Securing the text input
+### Masking
 
 When collecting private or sensitive information using the pin input, you might need to mask the value entered, similar
 to `<input type="password"/>`. Pass the `mask` prop to `true`.
 
-<Example id="with-mask" />
+<Example id="mask" />
 
-### Listening for changes
+### Change Events
 
 The pin input component invokes several callback functions when the user enters:
 
@@ -63,21 +61,19 @@ The pin input component invokes several callback functions when the user enters:
 - `onValueInvalid` — Callback invoked when an invalid value is entered into the input. An invalid value is any value
   that doesn't match the specified "type".
 
-### Using the Field Component
+### Field
 
 The `Field` component helps manage form-related state and accessibility attributes of a pin input. It includes handling
 ARIA labels, helper text, and error text to ensure proper accessibility.
 
 <Example id="with-field" />
 
-### Using the Root Provider
+### Root Provider
 
-The `RootProvider` component provides a context for the pin-input. It accepts the value of the `usePin-input` hook. You
-can leverage it to access the component state and methods from outside the pin-input.
+An alternative way to control the pin input is to use the `RootProvider` component and the `usePinInput` hook. This way
+you can access the state and methods from outside the component.
 
 <Example id="root-provider" />
-
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
 
 ## API Reference
 
@@ -86,8 +82,6 @@ can leverage it to access the component state and methods from outside the pin-i
 <ComponentTypes id="pin-input" />
 
 ### Context
-
-These are the properties available when using `UpinUinput.Context`, `useUpinUinputContext` hook or `useUpinUinput` hook.
 
 <ContextType id="pin-input" />
 

@@ -2,17 +2,18 @@
 import { PasswordInput } from '@ark-ui/vue/password-input'
 import { EyeIcon, EyeOffIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
+import styles from 'styles/password-input.module.css'
 
 const visible = ref(false)
 </script>
 
 <template>
-  <PasswordInput.Root v-model:visible="visible">
-    <PasswordInput.Label>Password is {{ visible ? 'visible' : 'hidden' }}</PasswordInput.Label>
-    <PasswordInput.Control>
-      <PasswordInput.Input placeholder="Enter your password" />
-      <PasswordInput.VisibilityTrigger>
-        <PasswordInput.Indicator>
+  <PasswordInput.Root :class="styles.Root" v-model:visible="visible">
+    <PasswordInput.Label :class="styles.Label">Password is {{ visible ? 'visible' : 'hidden' }}</PasswordInput.Label>
+    <PasswordInput.Control :class="styles.Control">
+      <PasswordInput.Input :class="styles.Input" />
+      <PasswordInput.VisibilityTrigger :class="styles.VisibilityTrigger">
+        <PasswordInput.Indicator :class="styles.Indicator">
           <EyeIcon />
           <template #fallback>
             <EyeOffIcon />

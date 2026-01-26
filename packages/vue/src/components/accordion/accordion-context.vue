@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseAccordionContext } from './use-accordion-context'
 
-export interface AccordionContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseAccordionContext>
-  }> {}
+export interface AccordionContextProps extends SlotsType<{
+  default: UnwrapRef<UseAccordionContext>
+}> {}
 </script>
 
 <script setup lang="ts">

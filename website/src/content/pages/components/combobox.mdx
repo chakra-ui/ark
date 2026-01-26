@@ -8,17 +8,46 @@ description: A single input field that combines the functionality of a select an
 
 ## Anatomy
 
-To set up the combobox correctly, you'll need to understand its anatomy and how we name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
 <Anatomy id="combobox" />
+
+```tsx
+<Combobox.Root>
+  <Combobox.Label />
+  <Combobox.Control>
+    <Combobox.Input />
+    <Combobox.Trigger />
+    <Combobox.ClearTrigger />
+  </Combobox.Control>
+  <Combobox.Positioner>
+    <Combobox.Content>
+      <Combobox.ItemGroup>
+        <Combobox.ItemGroupLabel />
+        <Combobox.Item>
+          <Combobox.ItemText />
+          <Combobox.ItemIndicator />
+        </Combobox.Item>
+      </Combobox.ItemGroup>
+    </Combobox.Content>
+  </Combobox.Positioner>
+</Combobox.Root>
+```
 
 ## Examples
 
-Learn how to use the `Combobox` component in your project. Let's take a look at the most basic example
-
 <Example id="basic" />
+
+### Auto Highlight
+
+Automatically highlight the first matching item as the user types by setting `inputBehavior="autohighlight"`.
+
+<Example id="auto-highlight" />
+
+### Inline Autocomplete
+
+Complete the input value with the first matching item by setting `inputBehavior="autocomplete"`. Use with `startsWith`
+filter for best results.
+
+<Example id="inline-autocomplete" />
 
 ### Grouping
 
@@ -34,14 +63,18 @@ ARIA labels, helper text, and error text to ensure proper accessibility.
 
 <Example id="with-field" />
 
+### Context
+
+Use the `Combobox.Context` component to access the combobox state and display information like the selected value.
+
+<Example id="context" />
+
 ### Root Provider
 
-Use the `useCombobox` hook to create the combobox store and pass it to the `Combobox.RootProvider` component. This
-allows you to have maximum control over the combobox programmatically.
+An alternative way to control the combobox is to use the `RootProvider` component and the `useCombobox` hook. This way
+you can access the state and methods from outside the component.
 
 <Example id="root-provider" />
-
-> If you're using the `Combobox.RootProvider` component, you don't need to use the `Combobox.Root` component.
 
 ### Links
 
@@ -49,45 +82,73 @@ Use the `asChild` prop to render the combobox items as links.
 
 <Example id="links" />
 
-### Rehydrate Value
+### Rehydrate
 
-In some cases, where a combobox has a `defaultValue` or `value` but the `collection` is not loaded yet, here's how to
-rehydrate the value and populate the input value.
+When a combobox has a `defaultValue` or `value` but the `collection` is not loaded yet, you can rehydrate the value to
+populate the input.
 
 <Example id="rehydrate-value" />
 
-### Highlight Matching Text
+### Highlight Text
 
-Here's an example of highlighting the search text in combobox items based on the user's input.
+Highlight the matching search text in combobox items based on the user's input.
 
-<Example id="with-highlight" />
+<Example id="highlight-matching-text" />
 
-### Dynamic Items
+### Dynamic
 
 Generate combobox items dynamically based on user input. This is useful for creating suggestions or autocomplete
 functionality.
 
 <Example id="dynamic" />
 
-### Creatable Options
+### Creatable
 
 Allow users to create new options when their search doesn't match any existing items. This is useful for tags,
 categories, or other custom values.
 
 <Example id="creatable" />
 
+### Multiple Selection
+
+Enable multiple selection by setting the `multiple` prop. Selected items can be displayed as tags above the input.
+
+<Example id="multiple" />
+
+### Async Search
+
+Load options asynchronously based on user input using the `useAsyncList` hook. This is useful for searching large
+datasets or fetching data from an API.
+
+<Example id="async-search" />
+
+### Virtualized
+
+For very large lists, use virtualization with `@tanstack/virtual` to render only the visible items. Pass the
+`scrollToIndexFn` prop to enable keyboard navigation within the virtualized list.
+
+<Example id="virtualized" />
+
+### Custom Object
+
+Use the `itemToString` and `itemToValue` props to map custom objects to the required interface.
+
 <Example id="custom-object" />
+
+### Limit Results
+
+Use the `limit` property on `useListCollection` to limit the number of rendered items in the DOM.
+
+<Example id="limit-results" />
 
 ## Guides
 
-### Custom Router Links
+### Router Links
 
-For custom router links, you can customize the `navigate` prop on the `Combobox.Root` component.
-
-Here's an example of using the Tanstack Router.
+Customize the `navigate` prop on `Combobox.Root` to integrate with your router. Using Tanstack Router:
 
 ```tsx
-import { Combobox } from '@ark-ui/react/combobox'
+import { Combobox } from '@ark-ui/<framework>/combobox'
 import { useNavigate } from '@tanstack/react-router'
 
 function Demo() {
@@ -126,25 +187,18 @@ const { collection } = useListCollection({
 })
 ```
 
-### Type-Safety
+### Type Safety
 
-The `Combobox.RootComponent` type enables you to create closed, strongly typed wrapper components that maintain full
-type safety for collection items.
-
-This is particularly useful when building reusable combobox components with custom props and consistent styling.
+The `Combobox.RootComponent` type enables you to create typed wrapper components that maintain full type safety for
+collection items.
 
 ```tsx
-import { Combobox as ArkCombobox, type CollectionItem } from '@ark-ui/react/combobox'
-import { useListCollection } from '@ark-ui/react/collection'
-
-interface ComboboxProps<T extends CollectionItem> extends ArkCombobox.RootProps<T> {}
-
 const Combobox: ArkCombobox.RootComponent = (props) => {
   return <ArkCombobox.Root {...props}>{/* ... */}</ArkCombobox.Root>
 }
 ```
 
-Then, you can use the `Combobox` component as follows:
+Use the wrapper with full type inference on `onValueChange` and other callbacks:
 
 ```tsx
 const App = () => {
@@ -152,14 +206,13 @@ const App = () => {
     initialItems: [
       { label: 'React', value: 'react' },
       { label: 'Vue', value: 'vue' },
-      { label: 'Svelte', value: 'svelte' },
     ],
   })
   return (
     <Combobox
       collection={collection}
       onValueChange={(e) => {
-        // this will be strongly typed Array<{ label: string, value: string }>
+        // e.items is typed as Array<{ label: string, value: string }>
         console.log(e.items)
       }}
     >
@@ -169,7 +222,7 @@ const App = () => {
 }
 ```
 
-### Limit Large Datasets
+### Large Datasets
 
 The recommended way of managing large lists is to use the `limit` property on the `useListCollection` hook. This will
 limit the number of rendered items in the DOM to improve performance.
@@ -181,7 +234,7 @@ const { collection } = useListCollection({
 })
 ```
 
-### Available height and width
+### Available Size
 
 The following css variables are exposed to the `Combobox.Positioner` which you can use to style the `Combobox.Content`
 
@@ -209,8 +262,6 @@ For example, if you want to make sure the maximum height doesn't exceed the avai
 <ComponentTypes id="combobox" />
 
 ### Context
-
-These are the properties available when using `Combobox.Context`, `useComboboxContext` hook or `useCombobox` hook.
 
 <ContextType id="combobox" />
 

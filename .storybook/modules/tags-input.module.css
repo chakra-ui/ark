@@ -1,0 +1,169 @@
+.Root {
+  color: var(--demo-neutral-fg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+  max-width: 32rem;
+}
+
+.Label {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--demo-neutral-fg);
+  user-select: none;
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+}
+
+.Control {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  min-height: 2.5rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.375rem;
+  background: transparent;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:has([data-part='clear-trigger']) {
+    position: relative;
+    padding-inline-end: 2rem;
+  }
+
+  &:focus-within {
+    border-color: var(--demo-coral-solid);
+    box-shadow: 0 0 0 1px var(--demo-coral-solid);
+  }
+
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
+  &[data-invalid] {
+    border-color: var(--demo-error);
+
+    &:focus-within {
+      border-color: var(--demo-error);
+      box-shadow: 0 0 0 1px var(--demo-error);
+    }
+  }
+}
+
+.Item {
+  display: inline-flex;
+  align-items: center;
+  outline: none;
+  cursor: default;
+}
+
+.ItemPreview {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.25rem 0.125rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  border-radius: 0.25rem;
+  background: var(--demo-neutral-subtle);
+  color: var(--demo-neutral-fg);
+  outline: none;
+  transition: background-color 0.15s ease;
+
+  &[data-highlighted] {
+    background: var(--demo-coral-subtle);
+    color: var(--demo-coral-fg);
+  }
+}
+
+.ItemText {
+  font-weight: 500;
+}
+
+.ItemInput {
+  box-sizing: border-box;
+  min-width: 4rem;
+  width: auto;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-family: inherit;
+  background: var(--demo-neutral-subtle);
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.25rem;
+  color: var(--demo-neutral-fg);
+  outline: none;
+}
+
+.ItemDeleteTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.125rem;
+  background: transparent;
+  border: none;
+  border-radius: 0.25rem;
+  color: inherit;
+
+  & svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+}
+
+.Input {
+  flex: 1;
+  box-sizing: border-box;
+  min-width: 4rem;
+  height: 1.75rem;
+  padding: 0 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-family: inherit;
+  background: transparent;
+  border: none;
+  color: var(--demo-neutral-fg);
+  outline: none;
+
+  &::placeholder {
+    color: var(--demo-neutral-emphasized);
+  }
+}
+
+.ClearTrigger {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  background: transparent;
+  border: none;
+  border-radius: 0.25rem;
+  color: var(--demo-neutral-emphasized);
+
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+
+  &:hover {
+    background: var(--demo-neutral-subtle);
+    color: var(--demo-neutral-fg);
+  }
+
+  & svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}

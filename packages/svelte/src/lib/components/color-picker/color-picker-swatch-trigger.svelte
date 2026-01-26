@@ -3,11 +3,11 @@
   import type { SwatchTriggerProps } from '@zag-js/color-picker'
 
   export interface ColorPickerSwatchTriggerBaseProps
-    extends SwatchTriggerProps,
-      PolymorphicProps<'button'>,
-      RefAttribute {}
-  export interface ColorPickerSwatchTriggerProps
-    extends Assign<HTMLProps<'button'>, ColorPickerSwatchTriggerBaseProps> {}
+    extends SwatchTriggerProps, PolymorphicProps<'button'>, RefAttribute {}
+  export interface ColorPickerSwatchTriggerProps extends Assign<
+    HTMLProps<'button'>,
+    ColorPickerSwatchTriggerBaseProps
+  > {}
 </script>
 
 <script lang="ts">

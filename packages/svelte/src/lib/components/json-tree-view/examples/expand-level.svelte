@@ -1,10 +1,12 @@
 <script lang="ts">
   import { JsonTreeView } from '@ark-ui/svelte/json-tree-view'
   import { ChevronRightIcon } from 'lucide-svelte'
+  import styles from 'styles/json-tree-view.module.css'
 </script>
 
 <JsonTreeView.Root
-  defaultExpandedDepth={1}
+  class={styles.Root}
+  defaultExpandedDepth={2}
   data={{
     name: 'John Doe',
     age: 30,
@@ -18,7 +20,7 @@
     },
   }}
 >
-  <JsonTreeView.Tree>
+  <JsonTreeView.Tree class={styles.Tree}>
     {#snippet arrow()}
       <ChevronRightIcon />
     {/snippet}

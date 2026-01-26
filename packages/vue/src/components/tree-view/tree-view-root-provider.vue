@@ -11,11 +11,10 @@ interface RootProviderProps<T extends TreeNode> {
 }
 
 export interface TreeViewRootProviderBaseProps<T extends TreeNode>
-  extends RootProviderProps<T>,
-    RenderStrategyProps,
-    PolymorphicProps {}
+  extends RootProviderProps<T>, RenderStrategyProps, PolymorphicProps {}
 export interface TreeViewRootProviderProps<T extends TreeNode>
-  extends TreeViewRootProviderBaseProps<T>,
+  extends
+    TreeViewRootProviderBaseProps<T>,
     /**
      * @vue-ignore
      */

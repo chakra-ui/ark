@@ -1,6 +1,9 @@
+import { Portal } from 'solid-js/web'
 import { Toast, Toaster, createToaster } from '@ark-ui/solid/toast'
 import { CircleAlertIcon, CircleCheckIcon, InfoIcon, LoaderIcon, XIcon } from 'lucide-solid'
 import { Dynamic } from 'solid-js/web'
+import button from 'styles/button.module.css'
+import styles from 'styles/toast.module.css'
 
 const uploadFile = () => {
   return new Promise<void>((resolve, reject) => {
@@ -8,6 +11,13 @@ const uploadFile = () => {
       Math.random() > 0.5 ? resolve() : reject(new Error('Upload failed'))
     }, 2000)
   })
+}
+
+const iconMap = {
+  loading: LoaderIcon,
+  success: CircleCheckIcon,
+  error: CircleAlertIcon,
+  info: InfoIcon,
 }
 
 export const PromiseToast = () => {
@@ -20,61 +30,49 @@ export const PromiseToast = () => {
   const handleUpload = async () => {
     toaster.promise(uploadFile, {
       loading: {
-        title: 'Uploading...',
-        description: 'Please wait while we process your request.',
+        title: 'Uploading file...',
+        description: 'Please wait while we process your file.',
       },
       success: {
-        title: 'Success!',
-        description: 'Your request has been processed successfully.',
+        title: 'Upload complete',
+        description: 'Your file has been uploaded successfully.',
       },
       error: {
-        title: 'Failed',
-        description: 'Something went wrong. Please try again.',
+        title: 'Upload failed',
+        description: 'There was an error uploading your file. Please try again.',
       },
     })
   }
 
-  const getIcon = (type: string | undefined) => {
-    switch (type) {
-      case 'loading':
-        return LoaderIcon
-      case 'success':
-        return CircleCheckIcon
-      case 'error':
-        return CircleAlertIcon
-      default:
-        return InfoIcon
-    }
-  }
-
   return (
     <div>
-      <button type="button" onClick={handleUpload}>
-        Start Process
+      <button type="button" class={button.Root} onClick={handleUpload}>
+        Upload file
       </button>
 
-      <Toaster toaster={toaster}>
-        {(toast) => {
-          const icon = () => getIcon(toast().type)
-          return (
-            <Toast.Root>
-              <div style={{ display: 'flex', 'align-items': 'flex-start', gap: '12px' }}>
-                <Dynamic
-                  component={icon()}
-                  style={toast().type === 'loading' ? { animation: 'spin 1s linear infinite' } : {}}
-                />
-                <div style={{ flex: 1 }}>
-                  <Toast.Title>{toast().title}</Toast.Title>
-                  <Toast.Description>{toast().description}</Toast.Description>
-                </div>
-                <Toast.CloseTrigger>
+      <Portal>
+        <Toaster toaster={toaster}>
+          {(toast) => {
+            const icon = () => (toast().type ? iconMap[toast().type as keyof typeof iconMap] : InfoIcon)
+            return (
+              <Toast.Root class={styles.Root}>
+                <Toast.Title class={styles.Title}>
+                  <Dynamic
+                    component={icon()}
+                    class={styles.Indicator}
+                    style={toast().type === 'loading' ? { animation: 'spin 1s linear infinite' } : {}}
+                  />
+                  {toast().title}
+                </Toast.Title>
+                <Toast.Description class={styles.Description}>{toast().description}</Toast.Description>
+                <Toast.CloseTrigger class={styles.CloseTrigger}>
                   <XIcon />
                 </Toast.CloseTrigger>
-              </div>
-            </Toast.Root>
-          )
-        }}
-      </Toaster>
+              </Toast.Root>
+            )
+          }}
+        </Toaster>
+      </Portal>
     </div>
   )
 }

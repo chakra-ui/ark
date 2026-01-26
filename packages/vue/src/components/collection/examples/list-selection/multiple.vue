@@ -1,8 +1,15 @@
 <script setup lang="ts">
 import { createListCollection, useListSelection } from '@ark-ui/vue/collection'
+import styles from 'styles/list-selection.module.css'
 
 const collection = createListCollection({
-  items: ['React', 'Vue', 'Angular', 'Svelte', 'Solid'],
+  items: [
+    { label: 'React', value: 'react' },
+    { label: 'Vue', value: 'vue' },
+    { label: 'Angular', value: 'angular' },
+    { label: 'Svelte', value: 'svelte' },
+    { label: 'Solid', value: 'solid' },
+  ],
 })
 
 const selection = useListSelection({
@@ -20,27 +27,28 @@ const handleSelectAll = () => {
 </script>
 
 <template>
-  <div>
-    <div :style="{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '16px' }">
-      <button @click="handleSelectAll">
-        {{ selection.isAllSelected() ? 'Deselect All' : 'Select All' }}
+  <div :class="styles.Root">
+    <div :class="styles.Header">
+      <span :class="styles.Count">
+        {{ selection.selectedValues.value.length }} of {{ collection.items.length }} selected
+      </span>
+      <button type="button" :class="styles.SelectAllButton" @click="handleSelectAll">
+        {{ selection.isAllSelected() ? 'Deselect all' : 'Select all' }}
       </button>
-      <span>{{ selection.selectedValues.value.length }} of {{ collection.items.length }} selected</span>
     </div>
-
     <label
       v-for="item in collection.items"
-      :key="item"
-      :style="{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-        userSelect: 'none',
-        backgroundColor: selection.isSelected(item) ? 'lightblue' : 'white',
-      }"
+      :key="item.value"
+      :class="styles.Item"
+      :data-selected="selection.isSelected(item.value) || undefined"
     >
-      <input type="checkbox" :checked="selection.isSelected(item)" @change="selection.select(item)" />
-      <span>{{ item }}</span>
+      <input
+        type="checkbox"
+        :class="styles.Checkbox"
+        :checked="selection.isSelected(item.value)"
+        @change="selection.select(item.value)"
+      />
+      <span :class="styles.ItemText">{{ item.label }}</span>
     </label>
   </div>
 </template>

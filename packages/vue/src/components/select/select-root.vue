@@ -7,11 +7,10 @@ import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './select.types'
 
 export interface SelectRootBaseProps<T extends CollectionItem>
-  extends RootProps<T>,
-    RenderStrategyProps,
-    PolymorphicProps {}
+  extends RootProps<T>, RenderStrategyProps, PolymorphicProps {}
 export interface SelectRootProps<T extends CollectionItem>
-  extends SelectRootBaseProps<T>,
+  extends
+    SelectRootBaseProps<T>,
     /**
      * @vue-ignore
      */

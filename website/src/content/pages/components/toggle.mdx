@@ -6,9 +6,17 @@ description: A two-state button that can be toggled on or off.
 
 <ComponentPreview id="Toggle" />
 
-## Examples
+## Anatomy
 
-Here's a basic example of how to use the `Toggle` component:
+<Anatomy id="toggle" />
+
+```tsx
+<Toggle.Root>
+  <Toggle.Indicator />
+</Toggle.Root>
+```
+
+## Examples
 
 <Example id="basic" />
 
@@ -37,7 +45,5 @@ Use the `Toggle.Indicator` component to render different indicators based on the
 <ComponentTypes id="toggle" />
 
 ### Context
-
-These are the properties available when using `Toggle.Context`, `useToggleContext` hook or `useToggle` hook.
 
 <ContextType id="toggle" />

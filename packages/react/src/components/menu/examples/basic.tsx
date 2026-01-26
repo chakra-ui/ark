@@ -1,16 +1,32 @@
 import { Menu } from '@ark-ui/react/menu'
+import { ChevronDownIcon } from 'lucide-react'
+import styles from 'styles/menu.module.css'
 
 export const Basic = () => (
   <Menu.Root>
-    <Menu.Trigger>
-      Open menu <Menu.Indicator>➡️</Menu.Indicator>
+    <Menu.Trigger className={styles.Trigger}>
+      File
+      <Menu.Indicator className={styles.Indicator}>
+        <ChevronDownIcon />
+      </Menu.Indicator>
     </Menu.Trigger>
     <Menu.Positioner>
-      <Menu.Content>
-        <Menu.Item value="react">React</Menu.Item>
-        <Menu.Item value="solid">Solid</Menu.Item>
-        <Menu.Item value="vue">Vue</Menu.Item>
-        <Menu.Item value="svelte">Svelte</Menu.Item>
+      <Menu.Content className={styles.Content}>
+        <Menu.Arrow className={styles.Arrow}>
+          <Menu.ArrowTip className={styles.ArrowTip} />
+        </Menu.Arrow>
+        <Menu.Item className={styles.Item} value="new-file">
+          New File
+        </Menu.Item>
+        <Menu.Item className={styles.Item} value="open">
+          Open...
+        </Menu.Item>
+        <Menu.Item className={styles.Item} value="save">
+          Save
+        </Menu.Item>
+        <Menu.Item className={styles.Item} value="save-as">
+          Save As...
+        </Menu.Item>
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>

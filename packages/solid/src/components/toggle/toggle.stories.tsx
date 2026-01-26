@@ -7,7 +7,7 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
+export { Context } from './examples/context'
 export { Controlled } from './examples/controlled'
 export { Disabled } from './examples/disabled'
 export { Indicator } from './examples/indicator'
-export { RenderFn } from './examples/render-fn'

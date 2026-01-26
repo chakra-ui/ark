@@ -7,8 +7,10 @@ import { cleanProps } from '../../utils/clean-props'
 import type { TreeCollection, TreeNode } from '../collection'
 import type { RootEmits } from './tree-view.types'
 
-export interface UseTreeViewProps<T extends TreeNode>
-  extends Optional<Omit<treeView.Props, 'dir' | 'getRootNode' | 'collection'>, 'id'> {
+export interface UseTreeViewProps<T extends TreeNode> extends Optional<
+  Omit<treeView.Props, 'dir' | 'getRootNode' | 'collection'>,
+  'id'
+> {
   /**
    * The collection of tree nodes
    */

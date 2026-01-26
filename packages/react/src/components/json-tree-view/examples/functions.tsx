@@ -1,5 +1,6 @@
 import { JsonTreeView } from '@ark-ui/react/json-tree-view'
 import { ChevronRightIcon } from 'lucide-react'
+import styles from 'styles/json-tree-view.module.css'
 
 const data = [
   function sum(a: number, b: number) {
@@ -15,8 +16,8 @@ const data = [
 
 export const Functions = () => {
   return (
-    <JsonTreeView.Root data={data}>
-      <JsonTreeView.Tree arrow={<ChevronRightIcon />} />
+    <JsonTreeView.Root defaultExpandedDepth={1} className={styles.Root} data={data}>
+      <JsonTreeView.Tree className={styles.Tree} arrow={<ChevronRightIcon />} />
     </JsonTreeView.Root>
   )
 }

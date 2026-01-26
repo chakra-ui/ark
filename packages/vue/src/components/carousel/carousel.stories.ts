@@ -3,12 +3,13 @@ import type { Meta } from '@storybook/vue3-vite'
 import AutoplayExample from './examples/autoplay.vue'
 import BasicExample from './examples/basic.vue'
 import ControlledExample from './examples/controlled.vue'
-import CustomIndicatorExample from './examples/custom-indicator.vue'
+import ThumbnailIndicatorExample from './examples/thumbnail-indicator.vue'
 import DynamicSlidesExample from './examples/dynamic-slides.vue'
 import PauseOnHoverExample from './examples/pause-on-hover.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import ScrollToExample from './examples/scroll-to.vue'
 import SlidesPerPageExample from './examples/slides-per-page.vue'
+import SpacingExample from './examples/spacing.vue'
 import VariableSizeExample from './examples/variable-size.vue'
 import VerticalExample from './examples/vertical.vue'
 
@@ -32,9 +33,9 @@ export const Controlled = {
   }),
 }
 
-export const CustomIndicator = {
+export const ThumbnailIndicator = {
   render: () => ({
-    components: { Component: CustomIndicatorExample },
+    components: { Component: ThumbnailIndicatorExample },
     template: '<Component />',
   }),
 }
@@ -77,6 +78,13 @@ export const ScrollTo = {
 export const SlidesPerPage = {
   render: () => ({
     components: { Component: SlidesPerPageExample },
+    template: '<Component />',
+  }),
+}
+
+export const Spacing = {
+  render: () => ({
+    components: { Component: SpacingExample },
     template: '<Component />',
   }),
 }

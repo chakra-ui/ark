@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface RadioGroupItemControlBaseProps extends PolymorphicProps {}
 export interface RadioGroupItemControlProps
-  extends RadioGroupItemControlBaseProps,
+  extends
+    RadioGroupItemControlBaseProps,
     /**
      * @vue-ignore
      */

@@ -6,7 +6,8 @@ import type { RootEmits, RootProps } from './rating-group.types'
 
 export interface RatingGroupRootBaseProps extends RootProps, PolymorphicProps {}
 export interface RatingGroupRootProps
-  extends RatingGroupRootBaseProps,
+  extends
+    RatingGroupRootBaseProps,
     /**
      * @vue-ignore
      */

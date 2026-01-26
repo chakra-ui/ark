@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface AccordionItemProps
-  extends AccordionItemBaseProps,
+  extends
+    AccordionItemBaseProps,
     /**
      * @vue-ignore
      */

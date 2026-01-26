@@ -1,20 +1,27 @@
 import { NumberInput, useNumberInput } from '@ark-ui/solid/number-input'
+import { ChevronDownIcon, ChevronUpIcon } from 'lucide-solid'
+import styles from 'styles/number-input.module.css'
 
 export const RootProvider = () => {
   const numberInput = useNumberInput()
 
   return (
-    <>
-      <button onClick={() => numberInput().focus()}>Focus</button>
-
-      <NumberInput.RootProvider value={numberInput}>
-        <NumberInput.Label>Label</NumberInput.Label>
-        <NumberInput.Input />
-        <NumberInput.Control>
-          <NumberInput.DecrementTrigger>-1</NumberInput.DecrementTrigger>
-          <NumberInput.IncrementTrigger>+1</NumberInput.IncrementTrigger>
+    <div class="stack">
+      <output>valueAsNumber: {numberInput().valueAsNumber}</output>
+      <NumberInput.RootProvider class={styles.Root} value={numberInput}>
+        <NumberInput.Label class={styles.Label}>Label</NumberInput.Label>
+        <NumberInput.Control class={styles.Control}>
+          <NumberInput.Input class={styles.Input} />
+          <div class={styles.TriggerGroup}>
+            <NumberInput.IncrementTrigger class={styles.IncrementTrigger}>
+              <ChevronUpIcon />
+            </NumberInput.IncrementTrigger>
+            <NumberInput.DecrementTrigger class={styles.DecrementTrigger}>
+              <ChevronDownIcon />
+            </NumberInput.DecrementTrigger>
+          </div>
         </NumberInput.Control>
       </NumberInput.RootProvider>
-    </>
+    </div>
   )
 }

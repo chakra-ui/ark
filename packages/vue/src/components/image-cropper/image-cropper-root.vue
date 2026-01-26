@@ -5,7 +5,8 @@ import type { RootEmits, RootProps } from './image-cropper.types'
 
 export interface ImageCropperRootBaseProps extends RootProps, PolymorphicProps {}
 export interface ImageCropperRootProps
-  extends ImageCropperRootBaseProps,
+  extends
+    ImageCropperRootBaseProps,
     /**
      * @vue-ignore
      */

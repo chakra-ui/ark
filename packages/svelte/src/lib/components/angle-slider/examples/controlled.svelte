@@ -1,19 +1,20 @@
 <script lang="ts">
   import { AngleSlider } from '@ark-ui/svelte/angle-slider'
+  import styles from 'styles/angle-slider.module.css'
 
-  let value = $state(180)
+  let value = $state(45)
 </script>
 
-<AngleSlider.Root bind:value>
-  <AngleSlider.Label>Temperature</AngleSlider.Label>
-  <AngleSlider.Control>
-    <AngleSlider.Thumb />
-    <AngleSlider.MarkerGroup>
-      {#each [0, 45, 90, 135, 180, 225, 270, 315] as value}
-        <AngleSlider.Marker {value} />
+<AngleSlider.Root class={styles.Root} bind:value>
+  <AngleSlider.Label class={styles.Label}>Rotation</AngleSlider.Label>
+  <AngleSlider.Control class={styles.Control}>
+    <AngleSlider.MarkerGroup class={styles.MarkerGroup}>
+      {#each [0, 45, 90, 135, 180, 225, 270, 315] as markerValue}
+        <AngleSlider.Marker value={markerValue} class={styles.Marker} />
       {/each}
     </AngleSlider.MarkerGroup>
+    <AngleSlider.Thumb class={styles.Thumb} />
   </AngleSlider.Control>
-  <AngleSlider.ValueText>{value} ºC</AngleSlider.ValueText>
+  <AngleSlider.ValueText class={styles.ValueText} />
   <AngleSlider.HiddenInput />
 </AngleSlider.Root>

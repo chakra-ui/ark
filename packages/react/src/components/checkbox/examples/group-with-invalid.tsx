@@ -1,25 +1,25 @@
 import { Checkbox } from '@ark-ui/react/checkbox'
 import { CheckIcon } from 'lucide-react'
-
-const items = [
-  { label: 'React', value: 'react' },
-  { label: 'Solid', value: 'solid' },
-  { label: 'Vue', value: 'vue' },
-  { label: 'Svelte', value: 'svelte' },
-]
+import styles from 'styles/checkbox.module.css'
 
 export const GroupWithInvalid = () => (
-  <Checkbox.Group invalid>
+  <Checkbox.Group className={styles.Group} invalid>
     {items.map((item) => (
-      <Checkbox.Root value={item.value} key={item.value}>
-        <Checkbox.Label>{item.label}</Checkbox.Label>
-        <Checkbox.Control>
-          <Checkbox.Indicator>
+      <Checkbox.Root className={styles.Root} value={item.value} key={item.value}>
+        <Checkbox.Control className={styles.Control}>
+          <Checkbox.Indicator className={styles.Indicator}>
             <CheckIcon />
           </Checkbox.Indicator>
         </Checkbox.Control>
+        <Checkbox.Label className={styles.Label}>{item.label}</Checkbox.Label>
         <Checkbox.HiddenInput />
       </Checkbox.Root>
     ))}
   </Checkbox.Group>
 )
+
+const items = [
+  { label: 'React', value: 'react' },
+  { label: 'Solid', value: 'solid' },
+  { label: 'Vue', value: 'vue' },
+]

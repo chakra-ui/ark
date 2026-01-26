@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseHoverCardContext } from './use-hover-card-context'
 
-export interface HoverCardContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseHoverCardContext>
-  }> {}
+export interface HoverCardContextProps extends SlotsType<{
+  default: UnwrapRef<UseHoverCardContext>
+}> {}
 </script>
 
 <script setup lang="ts">

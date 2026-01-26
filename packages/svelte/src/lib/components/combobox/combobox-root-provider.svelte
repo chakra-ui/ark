@@ -10,14 +10,13 @@
   }
 
   export interface ComboboxRootProviderBaseProps<T extends CollectionItem>
-    extends RootProviderProps<T>,
-      UsePresenceProps,
-      PolymorphicProps<'div'>,
-      RefAttribute {
+    extends RootProviderProps<T>, UsePresenceProps, PolymorphicProps<'div'>, RefAttribute {
     children?: Snippet
   }
-  export interface ComboboxRootProviderProps<T extends CollectionItem>
-    extends Assign<HTMLProps<'div'>, ComboboxRootProviderBaseProps<T>> {}
+  export interface ComboboxRootProviderProps<T extends CollectionItem> extends Assign<
+    HTMLProps<'div'>,
+    ComboboxRootProviderBaseProps<T>
+  > {}
 
   export type ComboboxRootProviderComponent<P = {}> = <T extends CollectionItem>(
     props: Assign<ComboboxRootProviderProps<T>, P>,

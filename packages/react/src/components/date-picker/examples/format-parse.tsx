@@ -1,10 +1,11 @@
 import { DatePicker } from '@ark-ui/react/date-picker'
 import { Portal } from '@ark-ui/react/portal'
 import { CalendarDate, type DateValue } from '@internationalized/date'
+import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
+import button from 'styles/button.module.css'
+import styles from 'styles/date-picker.module.css'
 
-// parse dd/mm/yy to DateValue
 const parse = (value: string) => {
-  // Handle full dd/mm/yy format
   const fullRegex = /^(\d{1,2})\/(\d{1,2})\/(\d{2})$/
   const fullMatch = value.match(fullRegex)
   if (fullMatch) {
@@ -16,7 +17,6 @@ const parse = (value: string) => {
     }
   }
 
-  // Handle dd/mm format
   const partialRegex = /^(\d{1,2})\/(\d{1,2})$/
   const partialMatch = value.match(partialRegex)
   if (partialMatch) {
@@ -29,7 +29,6 @@ const parse = (value: string) => {
     }
   }
 
-  // Handle dd format
   const dayRegex = /^(\d{1,2})$/
   const dayMatch = value.match(dayRegex)
   if (dayMatch) {
@@ -41,7 +40,6 @@ const parse = (value: string) => {
   return undefined
 }
 
-// convert DateValue to dd/mm/yy
 const format = (date: DateValue) => {
   const day = date.day.toString().padStart(2, '0')
   const month = date.month.toString().padStart(2, '0')
@@ -51,43 +49,51 @@ const format = (date: DateValue) => {
 
 export const FormatParse = () => {
   return (
-    <DatePicker.Root format={format} parse={parse} placeholder="dd/mm/yy">
-      <DatePicker.Label>Label</DatePicker.Label>
-      <DatePicker.Control>
-        <DatePicker.Input />
-        <DatePicker.Trigger>📅</DatePicker.Trigger>
-        <DatePicker.ClearTrigger>Clear</DatePicker.ClearTrigger>
+    <DatePicker.Root className={styles.Root} format={format} parse={parse} placeholder="dd/mm/yy">
+      <DatePicker.Label className={styles.Label}>Label</DatePicker.Label>
+      <DatePicker.Control className={styles.Control}>
+        <DatePicker.Input className={styles.Input} />
+        <DatePicker.Trigger className={styles.Trigger}>
+          <CalendarIcon />
+        </DatePicker.Trigger>
+        <DatePicker.ClearTrigger className={button.Root}>Clear</DatePicker.ClearTrigger>
       </DatePicker.Control>
       <Portal>
         <DatePicker.Positioner>
-          <DatePicker.Content>
-            <DatePicker.YearSelect />
-            <DatePicker.MonthSelect />
-            <DatePicker.View view="day">
+          <DatePicker.Content className={styles.Content}>
+            <DatePicker.View view="day" className={styles.View}>
               <DatePicker.Context>
                 {(datePicker) => (
                   <>
-                    <DatePicker.ViewControl>
-                      <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
-                      <DatePicker.ViewTrigger>
+                    <DatePicker.ViewControl className={styles.ViewControl}>
+                      <DatePicker.PrevTrigger className={styles.PrevTrigger}>
+                        <ChevronLeftIcon />
+                      </DatePicker.PrevTrigger>
+                      <DatePicker.ViewTrigger className={styles.ViewTrigger}>
                         <DatePicker.RangeText />
                       </DatePicker.ViewTrigger>
-                      <DatePicker.NextTrigger>Next</DatePicker.NextTrigger>
+                      <DatePicker.NextTrigger className={styles.NextTrigger}>
+                        <ChevronRightIcon />
+                      </DatePicker.NextTrigger>
                     </DatePicker.ViewControl>
-                    <DatePicker.Table>
-                      <DatePicker.TableHead>
-                        <DatePicker.TableRow>
+                    <DatePicker.Table className={styles.Table}>
+                      <DatePicker.TableHead className={styles.TableHead}>
+                        <DatePicker.TableRow className={styles.TableRow}>
                           {datePicker.weekDays.map((weekDay, id) => (
-                            <DatePicker.TableHeader key={id}>{weekDay.short}</DatePicker.TableHeader>
+                            <DatePicker.TableHeader className={styles.TableHeader} key={id}>
+                              {weekDay.short}
+                            </DatePicker.TableHeader>
                           ))}
                         </DatePicker.TableRow>
                       </DatePicker.TableHead>
-                      <DatePicker.TableBody>
+                      <DatePicker.TableBody className={styles.TableBody}>
                         {datePicker.weeks.map((week, id) => (
-                          <DatePicker.TableRow key={id}>
+                          <DatePicker.TableRow className={styles.TableRow} key={id}>
                             {week.map((day, id) => (
-                              <DatePicker.TableCell key={id} value={day}>
-                                <DatePicker.TableCellTrigger>{day.day}</DatePicker.TableCellTrigger>
+                              <DatePicker.TableCell className={styles.TableCell} key={id} value={day}>
+                                <DatePicker.TableCellTrigger className={styles.TableCellTrigger}>
+                                  {day.day}
+                                </DatePicker.TableCellTrigger>
                               </DatePicker.TableCell>
                             ))}
                           </DatePicker.TableRow>
@@ -98,24 +104,30 @@ export const FormatParse = () => {
                 )}
               </DatePicker.Context>
             </DatePicker.View>
-            <DatePicker.View view="month">
+            <DatePicker.View view="month" className={styles.View}>
               <DatePicker.Context>
                 {(datePicker) => (
                   <>
-                    <DatePicker.ViewControl>
-                      <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
-                      <DatePicker.ViewTrigger>
+                    <DatePicker.ViewControl className={styles.ViewControl}>
+                      <DatePicker.PrevTrigger className={styles.PrevTrigger}>
+                        <ChevronLeftIcon />
+                      </DatePicker.PrevTrigger>
+                      <DatePicker.ViewTrigger className={styles.ViewTrigger}>
                         <DatePicker.RangeText />
                       </DatePicker.ViewTrigger>
-                      <DatePicker.NextTrigger>Next</DatePicker.NextTrigger>
+                      <DatePicker.NextTrigger className={styles.NextTrigger}>
+                        <ChevronRightIcon />
+                      </DatePicker.NextTrigger>
                     </DatePicker.ViewControl>
-                    <DatePicker.Table>
-                      <DatePicker.TableBody>
+                    <DatePicker.Table className={styles.Table}>
+                      <DatePicker.TableBody className={styles.TableBody}>
                         {datePicker.getMonthsGrid({ columns: 4, format: 'short' }).map((months, id) => (
-                          <DatePicker.TableRow key={id}>
+                          <DatePicker.TableRow className={styles.TableRow} key={id}>
                             {months.map((month, id) => (
-                              <DatePicker.TableCell key={id} value={month.value}>
-                                <DatePicker.TableCellTrigger>{month.label}</DatePicker.TableCellTrigger>
+                              <DatePicker.TableCell className={styles.TableCell} key={id} value={month.value}>
+                                <DatePicker.TableCellTrigger className={styles.TableCellTrigger}>
+                                  {month.label}
+                                </DatePicker.TableCellTrigger>
                               </DatePicker.TableCell>
                             ))}
                           </DatePicker.TableRow>
@@ -126,24 +138,30 @@ export const FormatParse = () => {
                 )}
               </DatePicker.Context>
             </DatePicker.View>
-            <DatePicker.View view="year">
+            <DatePicker.View view="year" className={styles.View}>
               <DatePicker.Context>
                 {(datePicker) => (
                   <>
-                    <DatePicker.ViewControl>
-                      <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
-                      <DatePicker.ViewTrigger>
+                    <DatePicker.ViewControl className={styles.ViewControl}>
+                      <DatePicker.PrevTrigger className={styles.PrevTrigger}>
+                        <ChevronLeftIcon />
+                      </DatePicker.PrevTrigger>
+                      <DatePicker.ViewTrigger className={styles.ViewTrigger}>
                         <DatePicker.RangeText />
                       </DatePicker.ViewTrigger>
-                      <DatePicker.NextTrigger>Next</DatePicker.NextTrigger>
+                      <DatePicker.NextTrigger className={styles.NextTrigger}>
+                        <ChevronRightIcon />
+                      </DatePicker.NextTrigger>
                     </DatePicker.ViewControl>
-                    <DatePicker.Table>
-                      <DatePicker.TableBody>
+                    <DatePicker.Table className={styles.Table}>
+                      <DatePicker.TableBody className={styles.TableBody}>
                         {datePicker.getYearsGrid({ columns: 4 }).map((years, id) => (
-                          <DatePicker.TableRow key={id}>
+                          <DatePicker.TableRow className={styles.TableRow} key={id}>
                             {years.map((year, id) => (
-                              <DatePicker.TableCell key={id} value={year.value}>
-                                <DatePicker.TableCellTrigger>{year.label}</DatePicker.TableCellTrigger>
+                              <DatePicker.TableCell className={styles.TableCell} key={id} value={year.value}>
+                                <DatePicker.TableCellTrigger className={styles.TableCellTrigger}>
+                                  {year.label}
+                                </DatePicker.TableCellTrigger>
                               </DatePicker.TableCell>
                             ))}
                           </DatePicker.TableRow>

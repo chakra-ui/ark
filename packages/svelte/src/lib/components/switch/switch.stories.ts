@@ -3,8 +3,8 @@ import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import DisabledExample from './examples/disabled.svelte'
-import InitialValueExample from './examples/initial-value.svelte'
-import RenderPropExample from './examples/render-prop.svelte'
+import InitialCheckedExample from './examples/initial-checked.svelte'
+import ContextExample from './examples/context.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import WithFieldExample from './examples/with-field.svelte'
 
@@ -32,15 +32,15 @@ export const Disabled = {
   }),
 }
 
-export const InitialValue = {
+export const InitialChecked = {
   render: () => ({
-    Component: InitialValueExample,
+    Component: InitialCheckedExample,
   }),
 }
 
-export const RenderProp = {
+export const Context = {
   render: () => ({
-    Component: RenderPropExample,
+    Component: ContextExample,
   }),
 }
 

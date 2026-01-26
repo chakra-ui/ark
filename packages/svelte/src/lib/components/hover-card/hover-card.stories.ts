@@ -1,10 +1,10 @@
 import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
+import ContextExample from './examples/context.svelte'
+import DelayExample from './examples/delay.svelte'
 import PositioningExample from './examples/positioning.svelte'
-import RenderPropExample from './examples/render-prop.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
-import WithContextExample from './examples/with-context.svelte'
 
 const meta = {
   title: 'Components / Hover Card',
@@ -24,26 +24,26 @@ export const Controlled = {
   }),
 }
 
+export const Delay = {
+  render: () => ({
+    Component: DelayExample,
+  }),
+}
+
 export const Positioning = {
   render: () => ({
     Component: PositioningExample,
   }),
 }
 
-export const RenderProp = {
+export const Context = {
   render: () => ({
-    Component: RenderPropExample,
+    Component: ContextExample,
   }),
 }
 
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
-  }),
-}
-
-export const WithContext = {
-  render: () => ({
-    Component: WithContextExample,
   }),
 }

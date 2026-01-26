@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface MenuSeparatorBaseProps extends PolymorphicProps {}
 export interface MenuSeparatorProps
-  extends MenuSeparatorBaseProps,
+  extends
+    MenuSeparatorBaseProps,
     /**
      * @vue-ignore
      */

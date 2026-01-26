@@ -7,8 +7,10 @@ import { runIfFn } from '../../utils/run-if-fn'
 import type { CollectionItem, ListCollection } from '../collection'
 import { useFieldContext } from '../field'
 
-export interface UseSelectProps<T extends CollectionItem>
-  extends Optional<Omit<select.Props<T>, 'collection' | 'dir' | 'getRootNode'>, 'id'> {
+export interface UseSelectProps<T extends CollectionItem> extends Optional<
+  Omit<select.Props<T>, 'collection' | 'dir' | 'getRootNode'>,
+  'id'
+> {
   /**
    * The collection of items
    */

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Combobox, useCombobox, useListCollection } from '@ark-ui/svelte/combobox'
   import { Portal } from '@ark-ui/svelte/portal'
+  import styles from 'styles/combobox.module.css'
   import { useAsync } from './use-async.svelte'
 
   interface Character {
@@ -43,8 +44,6 @@
     void _state.load()
   })
 
-  // The meat of the example is here.
-  // It rehydrates the input value when the combobox is mounted.
   let hydrated = false
   $effect.pre(() => {
     if (combobox().value.length && combobox().collection.size && !hydrated) {
@@ -54,26 +53,26 @@
   })
 </script>
 
-<Combobox.RootProvider value={combobox}>
-  <Combobox.Label>Search Star Wars Characters</Combobox.Label>
-  <Combobox.Control>
-    <Combobox.Input placeholder="Type to search" />
+<Combobox.RootProvider class={styles.Root} value={combobox}>
+  <Combobox.Label class={styles.Label}>Search Star Wars Characters</Combobox.Label>
+  <Combobox.Control class={styles.Control}>
+    <Combobox.Input class={styles.Input} placeholder="e.g. Luke" />
   </Combobox.Control>
 
   <Portal>
     <Combobox.Positioner>
-      <Combobox.Content>
+      <Combobox.Content class={styles.Content}>
         {#if _state.loading()}
-          <span>Loading...</span>
+          <span style="padding: 0.5rem">Loading...</span>
         {:else if _state.error()}
-          <span>{_state.error()?.message}</span>
+          <span style="padding: 0.5rem">{_state.error()?.message}</span>
         {:else}
           {#each collection().items as item (item.name)}
-            <Combobox.Item {item}>
-              <span>
+            <Combobox.Item class={styles.Item} {item}>
+              <Combobox.ItemText class={styles.ItemText}>
                 {item.name} - {item.height}cm / {item.mass}kg
-              </span>
-              <Combobox.ItemIndicator />
+              </Combobox.ItemText>
+              <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
             </Combobox.Item>
           {/each}
         {/if}

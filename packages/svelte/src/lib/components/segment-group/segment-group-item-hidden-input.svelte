@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface SegmentGroupItemHiddenInputBaseProps extends PolymorphicProps<'input'>, RefAttribute {}
-  export interface SegmentGroupItemHiddenInputProps
-    extends Assign<HTMLProps<'input'>, SegmentGroupItemHiddenInputBaseProps> {}
+  export interface SegmentGroupItemHiddenInputProps extends Assign<
+    HTMLProps<'input'>,
+    SegmentGroupItemHiddenInputBaseProps
+  > {}
 </script>
 
 <script lang="ts">

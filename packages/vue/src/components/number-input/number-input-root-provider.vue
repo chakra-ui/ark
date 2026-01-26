@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface NumberInputRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface NumberInputRootProviderProps
-  extends NumberInputRootProviderBaseProps,
+  extends
+    NumberInputRootProviderBaseProps,
     /**
      * @vue-ignore
      */

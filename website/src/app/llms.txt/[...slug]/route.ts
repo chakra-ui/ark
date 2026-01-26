@@ -1,11 +1,11 @@
 import { notFound } from 'next/navigation'
-import { getSidebarGroups } from '~/lib/sidebar'
+import { getSidebarGroupsWithPages } from '~/lib/sidebar'
 
 interface RouteContext {
   params: Promise<{ slug: string[] }>
 }
 
-const pages = getSidebarGroups().flat()
+const pages = getSidebarGroupsWithPages().flatMap((group) => group.items)
 
 export async function GET(_request: Request, context: RouteContext) {
   const params = await context.params

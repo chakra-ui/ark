@@ -1,12 +1,13 @@
 import { Format } from '@ark-ui/solid/format'
+import styles from 'styles/format.module.css'
 
 export const ByteWithUnit = () => {
-  const value = 1450.45
-  const unit = 'bit'
-
   return (
-    <div>
-      File size: <Format.Byte value={value} unit={unit} />
+    <div class={styles.Inline}>
+      <span class={styles.InlineLabel}>File size:</span>
+      <span class={styles.InlineValue}>
+        <Format.Byte value={1450.45} unit="bit" />
+      </span>
     </div>
   )
 }

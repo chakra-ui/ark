@@ -8,6 +8,6 @@ export default meta
 
 export { Basic } from './examples/basic'
 export { Controlled } from './examples/controlled'
-export { RenderProp } from './examples/render-prop'
+export { Context } from './examples/context'
 export { RootProvider } from './examples/root-provider'
 export { Viewport } from './examples/viewport'

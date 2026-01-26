@@ -1,0 +1,140 @@
+.Root {
+  color: var(--demo-neutral-fg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+  max-width: 16rem;
+
+  &[data-orientation='vertical'] {
+    height: 12rem;
+    max-width: max-content;
+  }
+}
+
+.Label {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--demo-neutral-fg);
+  user-select: none;
+}
+
+.ValueText {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  color: var(--demo-neutral-fg);
+}
+
+.Control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 1.25rem;
+
+  &[data-orientation='vertical'] {
+    flex-direction: column;
+    height: 100%;
+    width: 1.25rem;
+  }
+}
+
+.Track {
+  flex: 1;
+  height: 0.375rem;
+  background: var(--demo-neutral-muted);
+  border-radius: 9999px;
+  overflow: hidden;
+
+  &[data-orientation='vertical'] {
+    height: 100%;
+    width: 0.375rem;
+  }
+}
+
+.Range {
+  height: 100%;
+  background: var(--demo-coral-solid);
+  border-radius: 9999px;
+
+  &[data-orientation='vertical'] {
+    width: 100%;
+  }
+}
+
+.Thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: var(--demo-bg-thumb);
+  border: 2px solid var(--demo-coral-solid);
+  border-radius: 9999px;
+  outline: none;
+  box-shadow: var(--demo-shadow-xs);
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.1s ease;
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px var(--demo-coral-focus-ring);
+  }
+
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+}
+
+.DraggingIndicator {
+  background: var(--demo-neutral-fg);
+  color: white;
+  top: -28px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1;
+  font-weight: 500;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+.MarkerGroup {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+
+  &[data-orientation='vertical'] {
+    flex-direction: column;
+    height: 100%;
+    margin-top: 0;
+    margin-inline-start: 0.5rem;
+  }
+}
+
+.Marker {
+  position: relative;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--demo-neutral-emphasized);
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0.25rem;
+    height: 0.25rem;
+    background: var(--demo-border);
+    border-radius: 9999px;
+    top: -0.625rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &:is([data-state='under-value'], [data-state='at-value'])::before {
+    background: var(--demo-coral-solid);
+  }
+}

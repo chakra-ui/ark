@@ -1,5 +1,6 @@
 import { JsonTreeView } from '@ark-ui/react/json-tree-view'
 import { ChevronRightIcon } from 'lucide-react'
+import styles from 'styles/json-tree-view.module.css'
 
 const testArray = [1, 2, 3, 4, 5]
 Object.defineProperties(testArray, {
@@ -10,6 +11,8 @@ Object.defineProperties(testArray, {
 export const ArrayData = () => {
   return (
     <JsonTreeView.Root
+      defaultExpandedDepth={1}
+      className={styles.Root}
       data={{
         normalArray: [1, 2, 3],
         arrayWithNonEnumerableProperties: testArray,
@@ -21,7 +24,7 @@ export const ArrayData = () => {
         })(),
       }}
     >
-      <JsonTreeView.Tree arrow={<ChevronRightIcon />} />
+      <JsonTreeView.Tree className={styles.Tree} arrow={<ChevronRightIcon />} />
     </JsonTreeView.Root>
   )
 }

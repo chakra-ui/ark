@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface ColorPickerAreaBaseProps extends AreaProps, PolymorphicProps {}
 export interface ColorPickerAreaProps
-  extends ColorPickerAreaBaseProps,
+  extends
+    ColorPickerAreaBaseProps,
     /**
      * @vue-ignore
      */

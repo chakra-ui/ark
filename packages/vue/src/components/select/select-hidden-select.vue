@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface SelectHiddenSelectBaseProps extends PolymorphicProps {}
 export interface SelectHiddenSelectProps
-  extends SelectHiddenSelectBaseProps,
+  extends
+    SelectHiddenSelectBaseProps,
     /**
      * @vue-ignore
      */

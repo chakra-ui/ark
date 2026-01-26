@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface AngleSliderLabelBaseProps extends PolymorphicProps {}
 export interface AngleSliderLabelProps
-  extends AngleSliderLabelBaseProps,
+  extends
+    AngleSliderLabelBaseProps,
     /**
      * @vue-ignore
      */

@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface MarqueeRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface MarqueeRootProviderProps
-  extends MarqueeRootProviderBaseProps,
+  extends
+    MarqueeRootProviderBaseProps,
     /**
      * @vue-ignore
      */

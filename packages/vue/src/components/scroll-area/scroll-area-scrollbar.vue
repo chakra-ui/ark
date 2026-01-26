@@ -9,7 +9,8 @@ interface ScrollbarProps {
 
 export interface ScrollAreaScrollbarBaseProps extends ScrollbarProps, PolymorphicProps {}
 export interface ScrollAreaScrollbarProps
-  extends ScrollAreaScrollbarBaseProps,
+  extends
+    ScrollAreaScrollbarBaseProps,
     /**
      * @vue-ignore
      */

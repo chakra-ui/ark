@@ -5,7 +5,8 @@ import type { RootEmits, RootProps } from './pagination.types'
 
 export interface PaginationRootBaseProps extends RootProps, PolymorphicProps {}
 export interface PaginationRootProps
-  extends PaginationRootBaseProps,
+  extends
+    PaginationRootBaseProps,
     /**
      * @vue-ignore
      */

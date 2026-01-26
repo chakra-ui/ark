@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseFloatingPanelContext } from './use-floating-panel-context'
 
-export interface FloatingPanelContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseFloatingPanelContext>
-  }> {}
+export interface FloatingPanelContextProps extends SlotsType<{
+  default: UnwrapRef<UseFloatingPanelContext>
+}> {}
 </script>
 
 <script setup lang="ts">

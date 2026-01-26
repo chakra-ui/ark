@@ -1,11 +1,12 @@
 import { Toggle } from '@ark-ui/solid/toggle'
-import { Volume, VolumeOff } from 'lucide-solid'
+import { HeartIcon } from 'lucide-solid'
+import styles from 'styles/toggle.module.css'
 
 export const Indicator = () => {
   return (
-    <Toggle.Root>
-      <Toggle.Indicator fallback={<Volume />}>
-        <VolumeOff />
+    <Toggle.Root class={styles.Root}>
+      <Toggle.Indicator class={styles.Indicator} fallback={<HeartIcon />}>
+        <HeartIcon fill="currentColor" />
       </Toggle.Indicator>
     </Toggle.Root>
   )

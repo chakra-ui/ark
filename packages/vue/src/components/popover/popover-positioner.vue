@@ -4,7 +4,8 @@ import { type PolymorphicProps, ark } from '../factory'
 
 export interface PopoverPositionerBaseProps extends PolymorphicProps {}
 export interface PopoverPositionerProps
-  extends PopoverPositionerBaseProps,
+  extends
+    PopoverPositionerBaseProps,
     /**
      * @vue-ignore
      */

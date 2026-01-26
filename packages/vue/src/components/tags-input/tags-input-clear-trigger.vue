@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface TagsInputClearTriggerBaseProps extends PolymorphicProps {}
 export interface TagsInputClearTriggerProps
-  extends TagsInputClearTriggerBaseProps,
+  extends
+    TagsInputClearTriggerBaseProps,
     /**
      * @vue-ignore
      */

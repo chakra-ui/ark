@@ -2,7 +2,8 @@
 // biome-ignore lint/style/useImportType: intentional
 import { Combobox, useListCollection } from '@ark-ui/vue/combobox'
 import { useFilter } from '@ark-ui/vue/locale'
-import { nextTick, ref, Teleport } from 'vue'
+import { nextTick, ref } from 'vue'
+import styles from 'styles/combobox.module.css'
 
 interface Item {
   label: string
@@ -21,10 +22,10 @@ const filterFn = useFilter({ sensitivity: 'base' })
 
 const { collection, filter, upsert, update, remove } = useListCollection<Item>({
   initialItems: [
-    { label: 'React', value: 'react' },
-    { label: 'Solid', value: 'solid' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte' },
+    { label: 'Bug', value: 'bug' },
+    { label: 'Feature', value: 'feature' },
+    { label: 'Enhancement', value: 'enhancement' },
+    { label: 'Documentation', value: 'docs' },
   ],
   filter: filterFn.value.contains,
 })
@@ -68,6 +69,7 @@ const handleValueChange = async ({ value }: Combobox.ValueChangeDetails) => {
 
 <template>
   <Combobox.Root
+    :class="styles.Root"
     :collection="collection"
     :model-value="selectedValue"
     :onInputValueChange="handleInputChange"
@@ -75,22 +77,26 @@ const handleValueChange = async ({ value }: Combobox.ValueChangeDetails) => {
     :onValueChange="handleValueChange"
     allowCustomValue
   >
-    <Combobox.Control>
-      <Combobox.Input placeholder="Search..." />
-      <Combobox.Trigger>Open</Combobox.Trigger>
-      <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
+    <Combobox.Label :class="styles.Label">Label</Combobox.Label>
+    <Combobox.Control :class="styles.Control">
+      <Combobox.Input :class="styles.Input" placeholder="e.g. Bug" />
+      <div :class="styles.Indicators">
+        <Combobox.ClearTrigger :class="styles.ClearTrigger">Clear</Combobox.ClearTrigger>
+        <Combobox.Trigger :class="styles.Trigger">Open</Combobox.Trigger>
+      </div>
     </Combobox.Control>
     <Teleport to="body">
       <Combobox.Positioner>
-        <Combobox.Content>
-          <Combobox.ItemGroup>
-            <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-            <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item">
-              <Combobox.ItemText v-if="isNewOptionValue(item.value)">+ Create "{{ item.label }}"</Combobox.ItemText>
-              <Combobox.ItemText v-else>{{ item.label }} {{ item.__new__ ? NEW_OPTION_VALUE : '' }}</Combobox.ItemText>
-              <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
-            </Combobox.Item>
-          </Combobox.ItemGroup>
+        <Combobox.Content :class="styles.Content">
+          <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item" :class="styles.Item">
+            <Combobox.ItemText v-if="isNewOptionValue(item.value)" :class="styles.ItemText">
+              + Create "{{ item.label }}"
+            </Combobox.ItemText>
+            <Combobox.ItemText v-else :class="styles.ItemText">
+              {{ item.label }} {{ item.__new__ ? '(new)' : '' }}
+            </Combobox.ItemText>
+            <Combobox.ItemIndicator :class="styles.ItemIndicator">✓</Combobox.ItemIndicator>
+          </Combobox.Item>
         </Combobox.Content>
       </Combobox.Positioner>
     </Teleport>

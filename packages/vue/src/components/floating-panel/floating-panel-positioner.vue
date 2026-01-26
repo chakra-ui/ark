@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface FloatingPanelPositionerBaseProps extends PolymorphicProps {}
 export interface FloatingPanelPositionerProps
-  extends FloatingPanelPositionerBaseProps,
+  extends
+    FloatingPanelPositionerBaseProps,
     /**
      * @vue-ignore
      */

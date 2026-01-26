@@ -1,26 +1,32 @@
 <script setup lang="ts">
 import { Menu } from '@ark-ui/vue/menu'
+import { ChevronDownIcon } from 'lucide-vue-next'
+import styles from 'styles/menu.module.css'
 
 const items = [
-  { value: 'react', label: 'React' },
-  { value: 'solid', label: 'Solid' },
-  { value: 'vue', label: 'Vue' },
+  { value: 'profile', label: 'My Profile' },
+  { value: 'settings', label: 'Settings' },
+  { value: 'billing', label: 'Billing' },
+  { value: 'logout', label: 'Log Out' },
 ]
 </script>
 
 <template>
-  <Menu.Root @select="(e) => console.log('[root] selected item', e.value)">
-    <Menu.Trigger>
-      Open menu
-      <Menu.Indicator>➡️</Menu.Indicator>
+  <Menu.Root @select="(e) => console.log('Selected:', e.value)">
+    <Menu.Trigger :class="styles.Trigger">
+      Account
+      <Menu.Indicator :class="styles.Indicator">
+        <ChevronDownIcon />
+      </Menu.Indicator>
     </Menu.Trigger>
     <Menu.Positioner>
-      <Menu.Content>
+      <Menu.Content :class="styles.Content">
         <Menu.Item
           v-for="item in items"
           :key="item.value"
+          :class="styles.Item"
           :value="item.value"
-          @select="() => console.log('[item] selected item', item.value)"
+          @select="() => console.log('Item selected:', item.label)"
         >
           {{ item.label }}
         </Menu.Item>

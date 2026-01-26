@@ -7,7 +7,8 @@ interface ValueSwatchProps extends Omit<SwatchProps, 'value'> {}
 
 export interface ColorPickerValueSwatchBaseProps extends ValueSwatchProps, PolymorphicProps {}
 export interface ColorPickerValueSwatchProps
-  extends ColorPickerValueSwatchBaseProps,
+  extends
+    ColorPickerValueSwatchBaseProps,
     /**
      * @vue-ignore
      */

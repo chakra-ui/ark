@@ -1,41 +1,40 @@
 import { Carousel } from '@ark-ui/solid/carousel'
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-solid'
 import { Index } from 'solid-js'
+import button from 'styles/button.module.css'
+import styles from 'styles/carousel.module.css'
+
+const slides = Array.from({ length: 6 })
 
 export const ScrollTo = () => {
   return (
-    <Carousel.Root slideCount={5}>
+    <Carousel.Root class={styles.Root} slideCount={slides.length}>
       <Carousel.Context>
-        {(api) => <button onClick={() => api().scrollToIndex(3)}>Go to slide 4</button>}
+        {(api) => (
+          <button class={button.Root} onClick={() => api().scrollToIndex(3)}>
+            Go to slide 4
+          </button>
+        )}
       </Carousel.Context>
-      <Carousel.ItemGroup>
-        <Index each={Array.from({ length: 5 })}>
+      <Carousel.ItemGroup class={styles.ItemGroup}>
+        <Index each={slides}>
           {(_, index) => (
-            <Carousel.Item index={index}>
-              <div
-                style={{
-                  display: 'flex',
-                  'align-items': 'center',
-                  'justify-content': 'center',
-                  width: '100%',
-                  height: '300px',
-                  'background-color': '#f0f0f0',
-                  'font-size': '24px',
-                  'font-weight': 'bold',
-                  'border-radius': '8px',
-                }}
-              >
-                Slide {index + 1}
-              </div>
+            <Carousel.Item class={styles.Item} index={index}>
+              <div class={styles.Slide}>Slide {index + 1}</div>
             </Carousel.Item>
           )}
         </Index>
       </Carousel.ItemGroup>
-      <Carousel.Control>
-        <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
-        <Carousel.NextTrigger>Next</Carousel.NextTrigger>
+      <Carousel.Control class={styles.Control}>
+        <Carousel.PrevTrigger class={styles.Trigger}>
+          <ArrowLeftIcon />
+        </Carousel.PrevTrigger>
+        <Carousel.NextTrigger class={styles.Trigger}>
+          <ArrowRightIcon />
+        </Carousel.NextTrigger>
       </Carousel.Control>
-      <Carousel.IndicatorGroup>
-        <Index each={Array.from({ length: 5 })}>{(_, index) => <Carousel.Indicator index={index} />}</Index>
+      <Carousel.IndicatorGroup class={styles.IndicatorGroup}>
+        <Index each={slides}>{(_, index) => <Carousel.Indicator class={styles.Indicator} index={index} />}</Index>
       </Carousel.IndicatorGroup>
     </Carousel.Root>
   )

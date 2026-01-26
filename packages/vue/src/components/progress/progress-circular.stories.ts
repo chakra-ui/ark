@@ -6,7 +6,7 @@ import IndeterminateExample from './examples/circular/indeterminate.vue'
 import InitialValueExample from './examples/circular/initial-value.vue'
 import MinMaxExample from './examples/circular/min-max.vue'
 import RootProviderExample from './examples/circular/root-provider.vue'
-import ValueTextExample from './examples/circular/value-text.vue'
+import WithLabelExample from './examples/circular/with-label.vue'
 
 const meta: Meta = {
   title: 'Components / Progress - Circular',
@@ -56,9 +56,9 @@ export const RootProvider = {
   }),
 }
 
-export const ValueText = {
+export const WithLabel = {
   render: () => ({
-    components: { Component: ValueTextExample },
+    components: { Component: WithLabelExample },
     template: '<Component />',
   }),
 }

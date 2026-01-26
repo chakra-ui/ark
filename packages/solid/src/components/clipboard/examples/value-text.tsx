@@ -1,19 +1,18 @@
 import { Clipboard } from '@ark-ui/solid/clipboard'
 import { CheckIcon, ClipboardCopyIcon } from 'lucide-solid'
-import { Show } from 'solid-js'
+import styles from 'styles/clipboard.module.css'
 
 export const ValueText = () => {
   return (
-    <Clipboard.Root value="https://ark-ui.com">
-      <Clipboard.ValueText />
-      <Clipboard.Trigger>
-        <Clipboard.Indicator>
-          <Show when={false} fallback={<ClipboardCopyIcon />}>
-            <CheckIcon />
-          </Show>
-        </Clipboard.Indicator>
-        Copy
-      </Clipboard.Trigger>
+    <Clipboard.Root class={styles.Root} value="https://ark-ui.com">
+      <Clipboard.Control class={styles.Control}>
+        <Clipboard.ValueText class={styles.ValueText} />
+        <Clipboard.Trigger class={styles.Trigger}>
+          <Clipboard.Indicator class={styles.Indicator} copied={<CheckIcon />}>
+            <ClipboardCopyIcon />
+          </Clipboard.Indicator>
+        </Clipboard.Trigger>
+      </Clipboard.Control>
     </Clipboard.Root>
   )
 }

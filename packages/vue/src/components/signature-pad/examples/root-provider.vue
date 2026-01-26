@@ -1,18 +1,23 @@
 <script setup lang="ts">
 import { SignaturePad, useSignaturePad } from '@ark-ui/vue/signature-pad'
+import { RotateCcwIcon } from 'lucide-vue-next'
+import styles from 'styles/signature-pad.module.css'
 
 const signaturePad = useSignaturePad()
 </script>
 
 <template>
-  <button @click="signaturePad.clear()">Clear</button>
-
-  <SignaturePad.RootProvider :value="signaturePad">
-    <SignaturePad.Label>Sign below</SignaturePad.Label>
-    <SignaturePad.Control>
-      <SignaturePad.Segment />
-      <SignaturePad.ClearTrigger>Clear</SignaturePad.ClearTrigger>
-      <SignaturePad.Guide />
-    </SignaturePad.Control>
-  </SignaturePad.RootProvider>
+  <div class="stack">
+    <output>no of paths: {{ signaturePad.paths.length }}</output>
+    <SignaturePad.RootProvider :class="styles.Root" :value="signaturePad">
+      <SignaturePad.Label :class="styles.Label">Sign below</SignaturePad.Label>
+      <SignaturePad.Control :class="styles.Control">
+        <SignaturePad.Segment :class="styles.Segment" />
+        <SignaturePad.ClearTrigger :class="styles.ClearTrigger">
+          <RotateCcwIcon />
+        </SignaturePad.ClearTrigger>
+        <SignaturePad.Guide :class="styles.Guide" />
+      </SignaturePad.Control>
+    </SignaturePad.RootProvider>
+  </div>
 </template>

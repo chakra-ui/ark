@@ -6,7 +6,8 @@ import type { RootEmits, RootProps } from './toggle-group.types'
 
 export interface ToggleGroupRootBaseProps extends RootProps, PolymorphicProps {}
 export interface ToggleGroupRootProps
-  extends ToggleGroupRootBaseProps,
+  extends
+    ToggleGroupRootBaseProps,
     /**
      * @vue-ignore
      */

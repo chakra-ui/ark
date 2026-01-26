@@ -9,13 +9,16 @@ export interface StepsRootProps extends HTMLProps<'div'>, StepsRootBaseProps {}
 
 export const StepsRoot = (props: StepsRootProps) => {
   const [useStepsProps, localProps] = createSplitProps<UseStepsProps>()(props, [
+    'count',
     'defaultStep',
     'id',
     'ids',
-    'count',
+    'isStepSkippable',
+    'isStepValid',
     'linear',
     'onStepChange',
     'onStepComplete',
+    'onStepInvalid',
     'orientation',
     'step',
   ])

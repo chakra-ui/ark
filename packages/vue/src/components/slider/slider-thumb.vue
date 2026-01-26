@@ -6,7 +6,8 @@ import { SliderThumbPropsProvider } from './use-slider-thumb-props-context'
 
 export interface SliderThumbBaseProps extends ThumbProps, PolymorphicProps {}
 export interface SliderThumbProps
-  extends SliderThumbBaseProps,
+  extends
+    SliderThumbBaseProps,
     /**
      * @vue-ignore
      */

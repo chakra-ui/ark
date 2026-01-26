@@ -1,6 +1,9 @@
+import { Portal } from 'solid-js/web'
 import { Toast, Toaster, createToaster } from '@ark-ui/solid/toast'
-import { XIcon, ClockIcon } from 'lucide-solid'
+import { XIcon } from 'lucide-solid'
 import { For } from 'solid-js'
+import button from 'styles/button.module.css'
+import styles from 'styles/toast.module.css'
 
 const durations = [
   { label: '1s', value: 1000 },
@@ -23,12 +26,14 @@ export const Duration = () => {
           {(duration) => (
             <button
               type="button"
+              class={button.Root}
               onClick={() =>
                 toaster.create({
-                  title: `Toast (${duration.label})`,
-                  description: `This toast will ${
-                    duration.value === Infinity ? 'stay until dismissed' : `disappear in ${duration.label}`
-                  }.`,
+                  title: `Duration: ${duration.label}`,
+                  description:
+                    duration.value === Infinity
+                      ? 'This toast will stay until you dismiss it.'
+                      : `This toast will automatically close in ${duration.label}.`,
                   type: 'info',
                   duration: duration.value,
                 })
@@ -40,22 +45,19 @@ export const Duration = () => {
         </For>
       </div>
 
-      <Toaster toaster={toaster}>
-        {(toast) => (
-          <Toast.Root>
-            <div style={{ display: 'flex', 'align-items': 'flex-start', gap: '12px' }}>
-              <ClockIcon />
-              <div style={{ flex: 1 }}>
-                <Toast.Title>{toast().title}</Toast.Title>
-                <Toast.Description>{toast().description}</Toast.Description>
-              </div>
-              <Toast.CloseTrigger>
+      <Portal>
+        <Toaster toaster={toaster}>
+          {(toast) => (
+            <Toast.Root class={styles.Root}>
+              <Toast.Title class={styles.Title}>{toast().title}</Toast.Title>
+              <Toast.Description class={styles.Description}>{toast().description}</Toast.Description>
+              <Toast.CloseTrigger class={styles.CloseTrigger}>
                 <XIcon />
               </Toast.CloseTrigger>
-            </div>
-          </Toast.Root>
-        )}
-      </Toaster>
+            </Toast.Root>
+          )}
+        </Toaster>
+      </Portal>
     </div>
   )
 }

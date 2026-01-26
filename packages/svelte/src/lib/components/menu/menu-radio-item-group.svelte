@@ -5,9 +5,7 @@
   type OptionalUseMenuItemGroupContext = Optional<ReturnType<UseMenuItemGroupContext>, 'id'>
 
   export interface MenuRadioItemGroupBaseProps
-    extends OptionalUseMenuItemGroupContext,
-      PolymorphicProps<'div'>,
-      RefAttribute {}
+    extends OptionalUseMenuItemGroupContext, PolymorphicProps<'div'>, RefAttribute {}
   export interface MenuRadioItemGroupProps extends Assign<HTMLProps<'div'>, MenuRadioItemGroupBaseProps> {}
 </script>
 

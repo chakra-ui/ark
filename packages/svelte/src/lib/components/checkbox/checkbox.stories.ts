@@ -9,8 +9,7 @@ import GroupWithInvalidExample from './examples/group-with-invalid.svelte'
 import GroupWithSelectAllExample from './examples/group-with-select-all.svelte'
 import GroupExample from './examples/group.svelte'
 import IndeterminateExample from './examples/indeterminate.svelte'
-import ProgrammaticControlExample from './examples/programmatic-control.svelte'
-import ContextExample from './examples/render-prop.svelte'
+import ContextExample from './examples/context.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import WithFieldExample from './examples/with-field.svelte'
 import GroupWithFieldsetExample from './examples/group-with-fieldset.svelte'
@@ -52,12 +51,6 @@ export const Controlled = {
 export const DefaultChecked = {
   render: () => ({
     Component: DefaultCheckedExample,
-  }),
-}
-
-export const ProgrammaticControl = {
-  render: () => ({
-    Component: ProgrammaticControlExample,
   }),
 }
 

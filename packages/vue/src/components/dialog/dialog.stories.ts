@@ -5,13 +5,16 @@ import BasicExample from './examples/basic.vue'
 import CloseOnEscapeExample from './examples/close-on-escape.vue'
 import CloseOnInteractOutsideExample from './examples/close-on-interact-outside.vue'
 import ConfirmationExample from './examples/confirmation.vue'
+import ContextExample from './examples/context.vue'
 import ControlledExample from './examples/controlled.vue'
 import FinalFocusExample from './examples/final-focus.vue'
 import InitialFocusExample from './examples/initial-focus.vue'
+import InsideScrollExample from './examples/inside-scroll.vue'
 import LazyMountExample from './examples/lazy-mount.vue'
 import NestedExample from './examples/nested.vue'
 import NonModalExample from './examples/non-modal.vue'
-import RenderFnExample from './examples/render-fn.vue'
+import OpenFromMenuExample from './examples/open-from-menu.vue'
+import OutsideScrollExample from './examples/outside-scroll.vue'
 import RootProviderExample from './examples/root-provider.vue'
 
 const meta: Meta = {
@@ -55,6 +58,13 @@ export const Confirmation = {
   }),
 }
 
+export const Context = {
+  render: () => ({
+    components: { Component: ContextExample },
+    template: '<Component />',
+  }),
+}
+
 export const Controlled = {
   render: () => ({
     components: { Component: ControlledExample },
@@ -72,6 +82,13 @@ export const FinalFocus = {
 export const InitialFocus = {
   render: () => ({
     components: { Component: InitialFocusExample },
+    template: '<Component />',
+  }),
+}
+
+export const InsideScroll = {
+  render: () => ({
+    components: { Component: InsideScrollExample },
     template: '<Component />',
   }),
 }
@@ -97,9 +114,16 @@ export const NonModal = {
   }),
 }
 
-export const RenderFn = {
+export const OpenFromMenu = {
   render: () => ({
-    components: { Component: RenderFnExample },
+    components: { Component: OpenFromMenuExample },
+    template: '<Component />',
+  }),
+}
+
+export const OutsideScroll = {
+  render: () => ({
+    components: { Component: OutsideScrollExample },
     template: '<Component />',
   }),
 }

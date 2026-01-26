@@ -8,64 +8,65 @@ description: An overlay that displays additional information or options when tri
 
 ## Anatomy
 
-To set up the popover correctly, you'll need to understand its anatomy and how we name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
 <Anatomy id="popover" />
+
+```tsx
+<Popover.Root>
+  <Popover.Trigger />
+  <Popover.Anchor />
+  <Popover.Positioner>
+    <Popover.Arrow>
+      <Popover.ArrowTip />
+    </Popover.Arrow>
+    <Popover.Content>
+      <Popover.Title />
+      <Popover.Description />
+      <Popover.CloseTrigger />
+    </Popover.Content>
+  </Popover.Positioner>
+</Popover.Root>
+```
 
 ## Examples
 
-Learn how to use the `Popover` component in your project. Let's take a look at the most basic example:
-
 <Example id="basic" />
 
-### Using a Portal
+### Controlled
 
-By default, the popover is rendered in the same DOM hierarchy as the trigger. To render the popover within a portal, set
-the `portalled` prop to `true`.
-
-> Note: This requires that you render the component within a `Portal` based on the framework you use.
-
-<Example id="portalled" />
-
-### Adding an arrow
-
-To render an arrow within the popover, render the component `Popover.Arrow` and `Popover.ArrowTip` as children of
-`Popover.Positioner`.
-
-<Example id="arrow" />
-
-### Listening for open and close events
-
-When the popover is opened or closed, we invoke the `onOpenChange` callback.
-
-<Example id="on-open-change" />
-
-### Control the open state
-
-Use the `isOpen` prop to control the open state of the popover.
+Use the `open` and `onOpenChange` props to control the open state of the popover.
 
 <Example id="controlled" />
 
-### Modifying the close behavior
+### Root Provider
 
-The popover is designed to close on blur and when the <kbd>esc</kbd> key is pressed.
+An alternative way to control the popover is to use the `RootProvider` component and the `usePopover` hook. This way you
+can access the state and methods from outside the component.
 
-To prevent it from closing on blur (clicking or focusing outside), pass the `closeOnInteractOutside` prop and set it to
-`false`.
+<Example id="root-provider" />
 
-To prevent it from closing when the <kbd>esc</kbd> key is pressed, pass the `closeOnEsc` prop and set it to `false`.
+### Arrow
 
-<Example id="close-behavior" />
+Use `Popover.Arrow` and `Popover.ArrowTip` to render an arrow pointing to the trigger.
 
-### Changing the placement
+<Example id="arrow" />
+
+### Placement
 
 To change the placement of the popover, set the `positioning` prop.
 
 <Example id="positioning" />
 
-### Changing the modality
+### Close Behavior
+
+The popover is designed to close on blur and when the <kbd>esc</kbd> key is pressed.
+
+- To prevent it from closing on blur (clicking or focusing outside), pass the `closeOnInteractOutside` prop and set it
+  to `false`.
+- To prevent it from closing when the <kbd>esc</kbd> key is pressed, pass the `closeOnEsc` prop and set it to `false`.
+
+<Example id="close-behavior" />
+
+### Modality
 
 In some cases, you might want the popover to be modal. This means that it'll:
 
@@ -79,18 +80,39 @@ To make the popover modal, set the `modal` prop to `true`. When `modal={true}`, 
 
 <Example id="modal" />
 
-### Using the Root Provider
+### Anchor
 
-The `RootProvider` component provides a context for the popover. It accepts the value of the `usePopover` hook. You can
-leverage it to access the component state and methods from outside the popover.
+Use `Popover.Anchor` to position the popover relative to a different element than the trigger.
 
-<Example id="root-provider" />
+<Example id="anchor" />
 
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+### Same Width
+
+Use `positioning.sameWidth` to make the popover match the width of its trigger element.
+
+<Example id="same-width" />
+
+### Dialog Integration
+
+When rendering a popover inside a dialog, you have two options for proper layering:
+
+1. **Keep the Portal with `lazyMount` and `unmountOnExit`** - This ensures the popover is properly unmounted when the
+   dialog closes, preventing stale DOM nodes.
+
+2. **Remove the Portal** - Render the popover inline within the dialog content. This works well but may have z-index
+   considerations.
+
+<Example id="with-dialog" />
+
+### Nested
+
+Popovers can be nested within each other. Each nested popover maintains its own open state and positioning.
+
+<Example id="nested" />
 
 ## Guides
 
-### Available height and width
+### Available Size
 
 The following css variables are exposed to the `Popover.Positioner` which you can use to style the `Popover.Content`
 
@@ -118,8 +140,6 @@ For example, if you want to make sure the maximum height doesn't exceed the avai
 <ComponentTypes id="popover" />
 
 ### Context
-
-These are the properties available when using `Popover.Context`, `usePopoverContext` hook or `usePopover` hook.
 
 <ContextType id="popover" />
 

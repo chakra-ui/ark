@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface FieldRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface FieldRootProviderProps
-  extends FieldRootProviderBaseProps,
+  extends
+    FieldRootProviderBaseProps,
     /**
      * @vue-ignore
      */

@@ -2,6 +2,7 @@
 // biome-ignore lint/style/useImportType: intentional
 import { Combobox, type UseComboboxProps, useCombobox, useListCollection } from '@ark-ui/vue/combobox'
 import { computed, ref, watch, watchEffect } from 'vue'
+import styles from 'styles/combobox.module.css'
 import { useAsync } from './use-async'
 
 interface Character {
@@ -45,12 +46,6 @@ watch(inputValue, () => {
   state.load()
 })
 
-const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
-  inputValue.value = details.inputValue
-}
-
-// The meat of the example is here.
-// It rehydrates the input value when the combobox is mounted.
 let hydrated = false
 watchEffect(() => {
   if (combobox.value.value.length && combobox.value.collection.size && !hydrated) {
@@ -61,31 +56,27 @@ watchEffect(() => {
 </script>
 
 <template>
-  <Combobox.Root
-    :collection="collection"
-    :default-value="['C-3PO']"
-    placeholder="Example: Dexter"
-    :input-value="inputValue"
-    @input-value-change="handleInputChange"
-  >
-    <Combobox.Label>Search Star Wars Characters</Combobox.Label>
-    <Combobox.Control>
-      <Combobox.Input placeholder="Type to search" />
+  <Combobox.RootProvider :class="styles.Root" :value="combobox">
+    <Combobox.Label :class="styles.Label">Search Star Wars Characters</Combobox.Label>
+    <Combobox.Control :class="styles.Control">
+      <Combobox.Input :class="styles.Input" placeholder="e.g. Luke" />
     </Combobox.Control>
 
     <Teleport to="body">
       <Combobox.Positioner>
-        <Combobox.Content>
-          <span v-if="state.loading.value">Loading...</span>
-          <span v-else-if="state.error.value">{{ state.error.value.message }}</span>
+        <Combobox.Content :class="styles.Content">
+          <span v-if="state.loading.value" style="padding: 0.5rem">Loading...</span>
+          <span v-else-if="state.error.value" style="padding: 0.5rem">{{ state.error.value.message }}</span>
           <template v-else>
-            <Combobox.Item v-for="item in collection.items" :key="item.name" :item="item">
-              <span>{{ item.name }} - {{ item.height }}cm / {{ item.mass }}kg</span>
-              <Combobox.ItemIndicator />
+            <Combobox.Item v-for="item in collection.items" :key="item.name" :item="item" :class="styles.Item">
+              <Combobox.ItemText :class="styles.ItemText">
+                {{ item.name }} - {{ item.height }}cm / {{ item.mass }}kg
+              </Combobox.ItemText>
+              <Combobox.ItemIndicator :class="styles.ItemIndicator">✓</Combobox.ItemIndicator>
             </Combobox.Item>
           </template>
         </Combobox.Content>
       </Combobox.Positioner>
     </Teleport>
-  </Combobox.Root>
+  </Combobox.RootProvider>
 </template>

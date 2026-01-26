@@ -10,7 +10,7 @@ export const Dynamic = defineComponent({
       const children = renderSlotFragments(slots.default())
       const [firstChildren, ...otherChildren] = children
 
-      if (Object.keys(attrs).length > 0) {
+      if (firstChildren && Object.keys(attrs).length > 0) {
         delete firstChildren.props?.ref
         const mergedProps = mergeProps(attrs, firstChildren.props ?? {})
         const cloned = cloneVNode(firstChildren, mergedProps)

@@ -1,7 +1,7 @@
-import { TreeView, createTreeCollection } from '@ark-ui/react/tree-view'
-import { SquareCheckBigIcon, ChevronRightIcon, FileIcon, FolderIcon, LoaderCircleIcon } from 'lucide-react'
+import { TreeView, createTreeCollection, useTreeViewNodeContext } from '@ark-ui/react/tree-view'
+import { ChevronRightIcon, FileIcon, FolderIcon, FolderOpenIcon, LoaderIcon } from 'lucide-react'
 import { useState } from 'react'
-import { useTreeViewNodeContext } from '../use-tree-view-node-context'
+import styles from 'styles/tree-view.module.css'
 
 // mock api result
 const response: Record<string, Node[]> = {
@@ -26,7 +26,7 @@ function loadChildren(details: TreeView.LoadChildrenDetails<Node>): Promise<Node
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(response[value] ?? [])
-    }, 1200)
+    }, 500)
   })
 }
 
@@ -34,12 +34,13 @@ export const AsyncLoading = () => {
   const [collection, setCollection] = useState(initialCollection)
   return (
     <TreeView.Root
+      className={styles.Root}
       collection={collection}
       loadChildren={loadChildren}
       onLoadChildrenComplete={(e) => setCollection(e.collection)}
     >
-      <TreeView.Label>Tree</TreeView.Label>
-      <TreeView.Tree>
+      <TreeView.Label className={styles.Label}>Tree</TreeView.Label>
+      <TreeView.Tree className={styles.Tree}>
         {collection.rootNode.children?.map((node, index) => (
           <TreeNode key={node.id} node={node} indexPath={[index]} />
         ))}
@@ -48,9 +49,10 @@ export const AsyncLoading = () => {
   )
 }
 
-function TreeNodeIndicator() {
+function TreeBranchIcon() {
   const nodeState = useTreeViewNodeContext()
-  return nodeState.loading ? <LoaderCircleIcon style={{ animation: 'spin 1s infinite' }} /> : <FolderIcon />
+  if (nodeState.loading) return <LoaderIcon className={styles.Loader} />
+  return nodeState.expanded ? <FolderOpenIcon /> : <FolderIcon />
 }
 
 const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
@@ -58,28 +60,25 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
   return (
     <TreeView.NodeProvider key={node.id} node={node} indexPath={indexPath}>
       {node.children || node.childrenCount ? (
-        <TreeView.Branch>
-          <TreeView.BranchControl>
-            <TreeView.BranchText>
-              <TreeNodeIndicator /> {node.name}
-            </TreeView.BranchText>
-            <TreeView.BranchIndicator>
+        <TreeView.Branch className={styles.Branch}>
+          <TreeView.BranchControl className={styles.BranchControl}>
+            <TreeView.BranchIndicator className={styles.BranchIndicator}>
               <ChevronRightIcon />
             </TreeView.BranchIndicator>
+            <TreeView.BranchText className={styles.BranchText}>
+              <TreeBranchIcon /> {node.name}
+            </TreeView.BranchText>
           </TreeView.BranchControl>
-          <TreeView.BranchContent>
-            <TreeView.BranchIndentGuide />
+          <TreeView.BranchContent className={styles.BranchContent}>
+            <TreeView.BranchIndentGuide className={styles.BranchIndentGuide} />
             {node.children?.map((child, index) => (
               <TreeNode key={child.id} node={child} indexPath={[...indexPath, index]} />
             ))}
           </TreeView.BranchContent>
         </TreeView.Branch>
       ) : (
-        <TreeView.Item>
-          <TreeView.ItemIndicator>
-            <SquareCheckBigIcon />
-          </TreeView.ItemIndicator>
-          <TreeView.ItemText>
+        <TreeView.Item className={styles.Item}>
+          <TreeView.ItemText className={styles.ItemText}>
             <FileIcon />
             {node.name}
           </TreeView.ItemText>

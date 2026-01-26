@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface RadioGroupRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface RadioGroupRootProviderProps
-  extends RadioGroupRootProviderBaseProps,
+  extends
+    RadioGroupRootProviderBaseProps,
     /**
      * @vue-ignore
      */

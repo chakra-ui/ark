@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import * as runtime from 'react/jsx-runtime'
 import { styled } from 'styled-system/jsx'
 import { BlogCardGroup } from '~/components/blog-card'
@@ -8,7 +9,7 @@ import { Anatomy } from './components/anatomy'
 import { ComponentPreview } from './components/component-preview'
 import { ComponentTypes } from './components/component-types'
 import { ContextType } from './components/context-type'
-import { Example } from './components/example'
+import { Example, ExampleCode } from './components/example'
 import { Faq } from './components/faq'
 import { InstallCmd } from './components/install-cmd'
 import { KeyBindingsTable } from './components/key-bindings-table'
@@ -430,6 +431,7 @@ const sharedComponents = {
   ComponentTypes,
   ContextType,
   Example,
+  ExampleCode,
   Faq,
   InstallCmd,
   kbd: Kbd,
@@ -469,7 +471,7 @@ const sharedComponents = {
   em: Em,
 }
 
-const useMDXComponent = (code: string) => {
+const compileMDX = (code: string) => {
   const fn = new Function(code)
   return fn({ ...runtime }).default
 }
@@ -480,6 +482,7 @@ interface MDXProps {
 }
 
 export const MDXContent = ({ code, components }: MDXProps) => {
-  const Component = useMDXComponent(code)
-  return <Component components={{ ...sharedComponents, ...components }} />
+  const Component = useMemo(() => compileMDX(code), [code])
+  const mergedComponents = useMemo(() => ({ ...sharedComponents, ...components }), [components])
+  return <Component components={mergedComponents} />
 }

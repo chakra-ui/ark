@@ -1,0 +1,146 @@
+.Root {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+  max-width: 24rem;
+  color: var(--demo-neutral-fg);
+
+  &[data-disabled] {
+    opacity: 0.5;
+  }
+}
+
+.Label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--demo-neutral-fg);
+}
+
+.Area {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+
+.Input,
+.Preview {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-family: inherit;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  color: var(--demo-neutral-fg);
+}
+
+.Input {
+  background: var(--demo-bg-popover);
+  border-color: var(--demo-border-emphasized);
+  outline: none;
+}
+
+.Preview {
+  background: transparent;
+  cursor: text;
+
+  &:hover {
+    background: var(--demo-neutral-subtle);
+  }
+
+  &[data-placeholder] {
+    color: var(--demo-neutral-emphasized);
+  }
+}
+
+.Control {
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 0.25rem;
+}
+
+.EditTrigger,
+.SubmitTrigger,
+.CancelTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  line-height: 1;
+  border-radius: 0.375rem;
+  background: transparent;
+  border: 1px solid var(--demo-border-emphasized);
+  color: var(--demo-neutral-fg);
+  cursor: pointer;
+
+  & svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &:hover {
+    background: var(--demo-neutral-subtle);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: 2px;
+  }
+}
+
+.SubmitTrigger {
+  background: var(--demo-coral-solid);
+  border-color: var(--demo-coral-solid);
+  color: var(--demo-coral-contrast);
+
+  &:hover {
+    background: var(--demo-coral-emphasized);
+  }
+}
+
+/* Textarea */
+.Textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 5rem;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-family: inherit;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  color: var(--demo-neutral-fg);
+  resize: vertical;
+  white-space: pre-wrap;
+
+  &:is(textarea) {
+    background: var(--demo-bg-popover);
+    border-color: var(--demo-border-emphasized);
+    outline: none;
+  }
+
+  &:is(span) {
+    display: block;
+    background: transparent;
+    cursor: text;
+
+    &:hover {
+      background: var(--demo-neutral-subtle);
+    }
+
+    &[data-placeholder] {
+      color: var(--demo-neutral-emphasized);
+    }
+  }
+}
+
+.HelperText {
+  font-size: 0.75rem;
+  color: var(--demo-neutral-fg-muted);
+}

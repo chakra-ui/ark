@@ -200,6 +200,10 @@ export type RootEmits = {
    */
   viewChange: [details: datePicker.ViewChangeDetails]
   /**
+   * Function called when the visible date range changes.
+   */
+  visibleRangeChange: [details: datePicker.VisibleRangeChangeDetails]
+  /**
    * The callback fired when the model value changes.
    */
   'update:modelValue': [value: datePicker.DateValue[]]

@@ -5,12 +5,12 @@ import { DocsNavbar } from '~/components/navigation/docs/docs-navbar'
 import { DocsSidebar } from '~/components/navigation/docs/docs-sidebar'
 import { Navbar } from '~/components/navigation/navbar'
 import { SidebarContainer } from '~/components/navigation/sidebar-container'
-import { getSidebarGroups } from '~/lib/sidebar'
+import { getSidebarItems } from '~/lib/sidebar'
 
 const styles = layout()
 
 export default function Layout(props: PropsWithChildren) {
-  const groups = getSidebarGroups()
+  const groups = getSidebarItems()
 
   return (
     <>

@@ -1,5 +1,6 @@
 import { JsonTreeView } from '@ark-ui/solid/json-tree-view'
 import { ChevronRightIcon } from 'lucide-solid'
+import styles from 'styles/json-tree-view.module.css'
 
 const data = {
   regex: /^[a-z0-9]+/g,
@@ -8,8 +9,8 @@ const data = {
 
 export const Regex = () => {
   return (
-    <JsonTreeView.Root data={data}>
-      <JsonTreeView.Tree arrow={<ChevronRightIcon />} />
+    <JsonTreeView.Root defaultExpandedDepth={1} class={styles.Root} data={data}>
+      <JsonTreeView.Tree class={styles.Tree} arrow={<ChevronRightIcon />} />
     </JsonTreeView.Root>
   )
 }

@@ -1,16 +1,18 @@
 import { Presence } from '@ark-ui/solid/presence'
 import { createSignal } from 'solid-js'
+import button from 'styles/button.module.css'
+import styles from 'styles/presence.module.css'
 
 export const LazyMount = () => {
   const [present, setPresent] = createSignal(false)
   return (
-    <>
-      <button type="button" onClick={() => setPresent(!present())}>
+    <div class="stack">
+      <button class={button.Root} type="button" onClick={() => setPresent(!present())}>
         Toggle
       </button>
-      <Presence present={present()} lazyMount>
-        Unmounted and Hidden
+      <Presence class={styles.Box} present={present()} lazyMount>
+        Lazy Mounted
       </Presence>
-    </>
+    </div>
   )
 }

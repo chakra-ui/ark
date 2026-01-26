@@ -6,30 +6,41 @@ description: A collapsible component for displaying content in a vertical stack.
 
 <ComponentPreview id="Accordion" />
 
-## Features
-
-- Full keyboard navigation
-- Supports horizontal and vertical orientation
-- Right-to-Left (RTL) support
-- Single or multiple item expansion
-- Controlled and uncontrolled modes
-- Collapse each accordion item
-
 ## Anatomy
-
-To set up the accordion correctly, it's essential to understand its anatomy and the naming of its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
 
 <Anatomy id="accordion" />
 
+```tsx
+<Accordion.Root>
+  <Accordion.Item>
+    <Accordion.ItemTrigger>
+      <Accordion.ItemIndicator />
+    </Accordion.ItemTrigger>
+    <Accordion.ItemContent />
+  </Accordion.Item>
+</Accordion.Root>
+```
+
 ## Examples
 
-### Default Expanded State
+### Default Value
 
 Set the `defaultValue` prop to specify which item should be expanded by default.
 
 <Example id="basic" />
+
+### Controlled
+
+Use the `value` and `onValueChange` props to control the expanded items.
+
+<Example id="controlled" />
+
+### Root Provider
+
+An alternative way to control the accordion is to use the `RootProvider` component and the `useAccordion` hook. This way
+you can access the state and methods from outside the component.
+
+<Example id="root-provider" />
 
 ### Collapsible
 
@@ -37,52 +48,40 @@ Use the `collapsible` prop to allow the user to collapse all panels.
 
 <Example id="collapsible" />
 
-### Multiple Panels
+### Multiple
 
 Use the `multiple` prop to allow multiple panels to be expanded simultaneously.
 
 <Example id="multiple" />
 
-### Horizontal Orientation
+### Horizontal
 
 By default, the Accordion is oriented vertically. Use the `orientation` prop to switch to a horizontal layout.
 
 <Example id="horizontal" />
 
-### Using the Root Provider
+### Lazy Mount
 
-The `RootProvider` component provides a context for the accordion. It accepts the value of the `useAccordion` hook. You
-can leverage it to access the component state and methods from outside the accordion.
+Use the `lazyMount` prop to defer rendering of accordion content until the item is expanded. Combine with
+`unmountOnExit` to unmount content when collapsed, freeing up resources.
 
-<Example id="root-provider" />
+<Example id="lazy-mount" />
 
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+### Context
 
-### Accessing context
-
-Use the `Accordion.Context` component or `useAccordionContext` hook to access the state of an accordion. It exposes the
-following properties:
-
-- `focusedValue`: The value of the focused accordion item.
-- `value`: The value of the selected accordion items.
-- `setValue`: A method to set the selected accordion items.
+Use `Accordion.Context` or `useAccordionContext` to access the accordion state.
 
 <Example id="context" />
 
-### Accessing the item context
+### Item State
 
-Use the `Accordion.ItemContext` component or `useAccordionItemContext` hook to access the state of an accordion item. It
-exposes the following properties:
-
-- `expanded`: Whether the accordion item is expanded.
-- `focused`: Whether the accordion item is focused.
-- `disabled`: Whether the accordion item is disabled.
+Use `Accordion.ItemContext` or `useAccordionItemContext` to access the state of an accordion item.
 
 <Example id="item-context" />
 
 ## Guides
 
-### Animate Content Size
+### Content Animation
 
 Use the `--height` and/or `--width` CSS variables to animate the size of the content when it expands or closes:
 
@@ -125,8 +124,6 @@ Use the `--height` and/or `--width` CSS variables to animate the size of the con
 <ComponentTypes id="accordion" />
 
 ### Context
-
-These are the properties available when using `Accordion.Context`, `useAccordionContext` hook or `useAccordion` hook.
 
 <ContextType id="accordion" />
 

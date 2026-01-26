@@ -1,33 +1,31 @@
 <script setup lang="ts">
 import { Select, createListCollection } from '@ark-ui/vue/select'
-import { ChevronDownIcon } from 'lucide-vue-next'
-import { Teleport } from 'vue'
+import { ChevronsUpDownIcon } from 'lucide-vue-next'
+import styles from 'styles/select.module.css'
 
-const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
+const collection = createListCollection({
+  items: ['React', 'Solid', 'Vue', 'Svelte'],
+})
 </script>
 
 <template>
-  <Select.Root :collection="collection" disabled>
-    <Select.Label>Framework (Disabled)</Select.Label>
-    <Select.Control>
-      <Select.Trigger>
-        <Select.ValueText placeholder="Select a Framework" />
-        <Select.Indicator>
-          <ChevronDownIcon />
+  <Select.Root :class="styles.Root" :collection="collection" disabled>
+    <Select.Label :class="styles.Label">Framework (Disabled)</Select.Label>
+    <Select.Control :class="styles.Control">
+      <Select.Trigger :class="styles.Trigger">
+        <Select.ValueText :class="styles.ValueText" placeholder="Select a Framework" />
+        <Select.Indicator :class="styles.Indicator">
+          <ChevronsUpDownIcon />
         </Select.Indicator>
       </Select.Trigger>
-      <Select.ClearTrigger>Clear</Select.ClearTrigger>
     </Select.Control>
     <Teleport to="body">
       <Select.Positioner>
-        <Select.Content>
-          <Select.ItemGroup>
-            <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-            <Select.Item v-for="item in collection.items" :key="item" :item="item">
-              <Select.ItemText>{{ item }}</Select.ItemText>
-              <Select.ItemIndicator>✓</Select.ItemIndicator>
-            </Select.Item>
-          </Select.ItemGroup>
+        <Select.Content :class="styles.Content">
+          <Select.Item v-for="item in collection.items" :key="item" :item="item" :class="styles.Item">
+            <Select.ItemText :class="styles.ItemText">{{ item }}</Select.ItemText>
+            <Select.ItemIndicator :class="styles.ItemIndicator">✓</Select.ItemIndicator>
+          </Select.Item>
         </Select.Content>
       </Select.Positioner>
     </Teleport>

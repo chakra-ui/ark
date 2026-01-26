@@ -1,5 +1,13 @@
 <script lang="ts">
   import { Highlight } from '@ark-ui/svelte/highlight'
+  import styles from 'styles/highlight.module.css'
 </script>
 
-<Highlight text="The quick brown Fox jumps over the lazy Dog." query={['fox', 'dog']} ignoreCase />
+<p class={styles.Text}>
+  <Highlight
+    class={styles.Mark}
+    text="TypeScript provides static type checking. Using typescript helps catch errors early in development."
+    query="typescript"
+    ignoreCase
+  />
+</p>

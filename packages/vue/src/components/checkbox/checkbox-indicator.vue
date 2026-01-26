@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface CheckboxIndicatorBaseProps extends PolymorphicProps {}
 export interface CheckboxIndicatorProps
-  extends CheckboxIndicatorBaseProps,
+  extends
+    CheckboxIndicatorBaseProps,
     /**
      * @vue-ignore
      */

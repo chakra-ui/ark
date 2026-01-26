@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface TreeViewLabelBaseProps extends PolymorphicProps {}
 export interface TreeViewLabelProps
-  extends TreeViewLabelBaseProps,
+  extends
+    TreeViewLabelBaseProps,
     /**
      * @vue-ignore
      */

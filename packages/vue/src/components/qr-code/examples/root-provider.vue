@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import { QrCode, useQrCode } from '@ark-ui/vue/qr-code'
+import styles from 'styles/qr-code.module.css'
 
-const qrCode = useQrCode({ defaultValue: 'http://ark-ui.com' })
+const qrCode = useQrCode({ value: 'http://ark-ui.com' })
 </script>
 
 <template>
-  <button @click="qrCode.setValue('https://ark-ui.com')">Set Value</button>
-
-  <QrCode.RootProvider :value="qrCode">
-    <QrCode.Frame>
-      <QrCode.Pattern />
-    </QrCode.Frame>
-  </QrCode.RootProvider>
+  <div class="stack">
+    <QrCode.RootProvider :class="styles.Root" :value="qrCode">
+      <QrCode.Frame :class="styles.Frame">
+        <QrCode.Pattern :class="styles.Pattern" />
+      </QrCode.Frame>
+    </QrCode.RootProvider>
+    <output>{{ qrCode.value }}</output>
+  </div>
 </template>

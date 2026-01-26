@@ -1,0 +1,106 @@
+.Root {
+  --splitter-border-color: var(--demo-border-emphasized);
+  --splitter-thumb-color: var(--demo-bg-thumb);
+  --splitter-thumb-size: 0.5rem;
+  --splitter-thumb-inset: calc(var(--splitter-thumb-size) * -0.5);
+  --splitter-border-size: 1px;
+  --splitter-handle-size: 1.5rem;
+
+  display: flex;
+  width: 100%;
+  min-height: 20rem;
+  border: 1px solid var(--demo-border);
+}
+
+.Panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  color: var(--demo-neutral-fg);
+}
+
+.ResizeTrigger {
+  outline: 0;
+  display: grid;
+  place-items: center;
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: col-resize;
+
+  &[data-orientation='horizontal'] {
+    min-width: var(--splitter-thumb-size);
+    margin-inline: var(--splitter-thumb-inset);
+    cursor: col-resize;
+  }
+
+  &[data-orientation='vertical'] {
+    min-height: var(--splitter-thumb-size);
+    margin-block: var(--splitter-thumb-inset);
+    cursor: row-resize;
+  }
+
+  &:focus {
+    --splitter-border-color: var(--demo-coral-emphasized);
+    --splitter-thumb-color: var(--demo-coral-solid);
+  }
+
+  &[data-dragging] {
+    --splitter-border-color: var(--demo-coral-emphasized);
+    --splitter-thumb-color: var(--demo-coral-solid);
+  }
+
+  &[data-disabled] {
+    cursor: default;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    background: var(--splitter-border-color);
+  }
+
+  &[data-orientation='horizontal']::before {
+    inset-inline-end: calc(var(--splitter-thumb-size) * 0.5);
+    inset-block: 0;
+    inset-inline-start: auto;
+    width: var(--splitter-border-size);
+  }
+
+  &[data-orientation='vertical']::before {
+    inset-block-end: calc(var(--splitter-thumb-size) * 0.5);
+    inset-inline: 0;
+    inset-block-start: auto;
+    height: var(--splitter-border-size);
+  }
+}
+
+.ResizeTriggerIndicator {
+  position: relative;
+  border-radius: 9999px;
+  background: var(--splitter-thumb-color);
+  box-shadow: var(--demo-shadow-sm);
+  border: 1px solid var(--demo-border);
+  z-index: 1;
+
+  &[data-orientation='horizontal'] {
+    width: 100%;
+    height: var(--splitter-handle-size);
+  }
+
+  &[data-orientation='vertical'] {
+    width: var(--splitter-handle-size);
+    height: 100%;
+  }
+
+  &[data-focus]:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: 2px;
+  }
+
+  &[data-disabled] {
+    visibility: hidden;
+  }
+}

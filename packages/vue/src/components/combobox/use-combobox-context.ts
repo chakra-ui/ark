@@ -4,7 +4,6 @@ import type { UsePresenceProps } from '../presence'
 import type { UseComboboxReturn } from './use-combobox'
 
 export interface UseComboboxContext<T extends CollectionItem = CollectionItem>
-  extends UseComboboxReturn<T>,
-    UsePresenceProps {}
+  extends UseComboboxReturn<T>, UsePresenceProps {}
 
 export const [ComboboxProvider, useComboboxContext] = createContext<UseComboboxContext<any>>('ComboboxContext')

@@ -33,7 +33,7 @@ export interface RootProps {
   /**
    * The v-model value of the segment group
    */
-  modelValue?: string
+  modelValue?: string | null
   /**
    * The name of the input fields in the radio
    * (Useful for form submission).

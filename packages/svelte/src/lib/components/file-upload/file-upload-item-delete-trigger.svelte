@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface FileUploadItemDeleteTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
-  export interface FileUploadItemDeleteTriggerProps
-    extends Assign<HTMLProps<'button'>, FileUploadItemDeleteTriggerBaseProps> {}
+  export interface FileUploadItemDeleteTriggerProps extends Assign<
+    HTMLProps<'button'>,
+    FileUploadItemDeleteTriggerBaseProps
+  > {}
 </script>
 
 <script lang="ts">

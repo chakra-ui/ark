@@ -19,6 +19,14 @@ export interface RootProps {
    */
   ids?: steps.ElementIds
   /**
+   * Function that returns whether a step can be skipped
+   */
+  isStepSkippable?: (index: number) => boolean
+  /**
+   * Function that returns whether a step is valid
+   */
+  isStepValid?: (index: number) => boolean
+  /**
    * If `true`, the stepper requires the user to complete the steps in order
    */
   linear?: boolean
@@ -42,6 +50,10 @@ export type RootEmits = {
    * Callback to be called when a step is completed
    */
   stepComplete: []
+  /**
+   * Callback to be called when a step is invalid
+   */
+  stepInvalid: [details: steps.StepInvalidDetails]
   /**
    * The callback fired when the model value changes.
    */

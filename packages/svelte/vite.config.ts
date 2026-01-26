@@ -1,4 +1,5 @@
 /** biome-ignore-all lint/suspicious/noTsIgnore: fix later */
+import path from 'node:path'
 import { sveltekit } from '@sveltejs/kit/vite'
 import { svelteTesting } from '@testing-library/svelte/vite'
 import { defineConfig } from 'vitest/config'
@@ -14,6 +15,11 @@ export default defineConfig({
     globals: true,
     coverage: {
       provider: 'v8',
+    },
+  },
+  resolve: {
+    alias: {
+      styles: path.resolve(__dirname, '../../.storybook/modules'),
     },
   },
 })

@@ -1,5 +1,10 @@
 import { useAsyncList } from '@ark-ui/solid/collection'
+import { LoaderIcon } from 'lucide-solid'
 import { createSignal, For } from 'solid-js'
+import field from 'styles/field.module.css'
+import styles from 'styles/async-list.module.css'
+
+const LIMIT = 5
 
 interface User {
   id: number
@@ -14,7 +19,7 @@ export const Dependencies = () => {
   const [selectedRole, setSelectedRole] = createSignal<string>('')
 
   const list = useAsyncList<User>({
-    initialItems: mockUsers,
+    initialItems: mockUsers.slice(0, LIMIT),
     get dependencies() {
       return [selectedDepartment(), selectedRole()]
     },
@@ -39,56 +44,65 @@ export const Dependencies = () => {
         )
       }
 
-      return { items }
+      return { items: items.slice(0, LIMIT) }
     },
   })
 
   return (
-    <div>
-      <h2>Dependencies Example</h2>
-
-      <div>
-        <select value={selectedDepartment()} onChange={(e) => setSelectedDepartment(e.target.value)}>
+    <div class={styles.Root}>
+      <div class={styles.Header}>
+        <select
+          class={field.Select}
+          value={selectedDepartment()}
+          onChange={(e) => setSelectedDepartment(e.target.value)}
+        >
           <option value="">All Departments</option>
           <For each={departments}>{(dept) => <option value={dept}>{dept}</option>}</For>
         </select>
 
-        <select value={selectedRole()} onChange={(e) => setSelectedRole(e.target.value)}>
+        <select class={field.Select} value={selectedRole()} onChange={(e) => setSelectedRole(e.target.value)}>
           <option value="">All Roles</option>
           <For each={roles}>{(role) => <option value={role}>{role}</option>}</For>
         </select>
 
         <input
+          class={field.Input}
           type="text"
           placeholder="Search..."
           value={list().filterText}
           onInput={(e) => list().setFilterText(e.target.value)}
         />
 
-        {list().loading && <span>Loading...</span>}
+        {list().loading && (
+          <span class={styles.Loading}>
+            <LoaderIcon class={styles.Spinner} /> Loading
+          </span>
+        )}
       </div>
 
-      {list().error && <div>Error: {list().error.message}</div>}
+      {list().error && <div class={styles.Error}>Error: {list().error.message}</div>}
 
-      <div>Found {list().items.length} users</div>
+      <div class={styles.Status}>Found {list().items.length} users</div>
 
-      <div>
+      <div class={styles.ItemGroup}>
         <For each={list().items}>
           {(user) => (
-            <div>
-              <div>
-                <strong>{user.name}</strong>
-              </div>
-              <div>{user.email}</div>
-              <div>
-                {user.department} • {user.role}
+            <div class={styles.Item}>
+              <div class={styles.ItemContent}>
+                <div class={styles.ItemTitle}>{user.name}</div>
+                <div class={styles.ItemDescription}>{user.email}</div>
+                <div class={styles.ItemMeta}>
+                  {user.department} • {user.role}
+                </div>
               </div>
             </div>
           )}
         </For>
       </div>
 
-      {list().items.length === 0 && !list().loading && <div>No users found with current filters</div>}
+      {list().items.length === 0 && !list().loading && (
+        <div class={styles.Empty}>No users found with current filters</div>
+      )}
     </div>
   )
 }

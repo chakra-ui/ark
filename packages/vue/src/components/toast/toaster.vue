@@ -15,7 +15,8 @@ export interface ToasterBaseProps extends PolymorphicProps {
 }
 
 export interface ToasterProps
-  extends ToasterBaseProps,
+  extends
+    ToasterBaseProps,
     /** @vue-ignore */
     HTMLAttributes,
     /** @vue-ignore */

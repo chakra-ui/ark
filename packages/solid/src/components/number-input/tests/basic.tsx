@@ -1,3 +1,4 @@
+import { Field } from '@ark-ui/solid/field'
 import { NumberInput } from '../'
 
 export const ComponentUnderTest = (props: NumberInput.RootProps) => (
@@ -12,4 +13,19 @@ export const ComponentUnderTest = (props: NumberInput.RootProps) => (
       <NumberInput.IncrementTrigger>+1</NumberInput.IncrementTrigger>
     </NumberInput.Control>
   </NumberInput.Root>
+)
+
+export const NumberInputWithField = (props: Field.RootProps) => (
+  <Field.Root {...props}>
+    <NumberInput.Root>
+      <NumberInput.Label>Label</NumberInput.Label>
+      <NumberInput.Control>
+        <NumberInput.Input />
+        <NumberInput.IncrementTrigger>+1</NumberInput.IncrementTrigger>
+        <NumberInput.DecrementTrigger>-1</NumberInput.DecrementTrigger>
+      </NumberInput.Control>
+    </NumberInput.Root>
+    <Field.HelperText>Additional Info</Field.HelperText>
+    <Field.ErrorText>Error Info</Field.ErrorText>
+  </Field.Root>
 )

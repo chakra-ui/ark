@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface EditableControlBaseProps extends PolymorphicProps {}
 export interface EditableControlProps
-  extends EditableControlBaseProps,
+  extends
+    EditableControlBaseProps,
     /**
      * @vue-ignore
      */
