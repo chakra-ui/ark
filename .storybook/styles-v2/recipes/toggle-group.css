@@ -1,8 +1,0 @@
-@layer recipes.slots {
-  .toggle-group__root--variant_outline {
-    padding: var(--spacing-1);
-    border-radius: var(--radii-l3);
-    border-width: 1px;
-    gap: var(--spacing-1);
-  }
-}

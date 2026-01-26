@@ -41,6 +41,13 @@ Use `onSelect` to handle item selection. The callback receives the item's `id`.
 
 <Example id="controlled" />
 
+### Root Provider
+
+An alternative way to control the menu is to use the `RootProvider` component and the `useMenu` hook. This way you can
+access the state and methods from outside the component.
+
+<Example id="root-provider" />
+
 ### Grouping
 
 Use `Menu.ItemGroup` and `Menu.ItemGroupLabel` to organize related menu items.
@@ -52,6 +59,18 @@ Use `Menu.ItemGroup` and `Menu.ItemGroupLabel` to organize related menu items.
 To render menu items as links, use the `asChild` prop to replace the default element with an anchor tag.
 
 <Example id="links" />
+
+### Checkbox
+
+To add a checkbox to a menu item, use the `Menu.Checkbox` component.
+
+<Example id="checkbox-items" />
+
+### Radio Group
+
+To group radio option items, use the `Menu.RadioGroup` component.
+
+<Example id="radio-items" />
 
 ### Context Menu
 
@@ -66,25 +85,6 @@ Context menus are also opened during a long-press of roughly `700ms` when the po
 To show a nested menu, render another `Menu` component and use the `Menu.TriggerItem` component to open the submenu.
 
 <Example id="nested" />
-
-### Checkbox
-
-To add a checkbox to a menu item, use the `Menu.Checkbox` component.
-
-<Example id="checkbox-items" />
-
-### Radio Group
-
-To group radio option items, use the `Menu.RadioGroup` component.
-
-<Example id="radio-items" />
-
-### Root Provider
-
-An alternative way to control the menu is to use the `RootProvider` component and the `useMenu` hook. This way you can
-access the state and methods from outside the component.
-
-<Example id="root-provider" />
 
 ### Menu in Dialog
 

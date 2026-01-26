@@ -41,19 +41,6 @@ can access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
-### Open from Menu
-
-Open a dialog imperatively from a menu item using the `onClick` handler.
-
-<Example id="open-from-menu" />
-
-### Lazy Mount
-
-Use `lazyMount` to render dialog content only when first opened. Combine with `unmountOnExit` to unmount when closed,
-freeing up resources.
-
-<Example id="lazy-mount" />
-
 ### Alert Dialog
 
 For critical confirmations or destructive actions, use `role="alertdialog"`. Alert dialogs differ from regular dialogs
@@ -63,6 +50,13 @@ in important ways:
 - **Requires explicit dismissal**: Cannot be closed by clicking outside, only via button clicks or Escape key
 
 <Example id="alert-dialog" />
+
+### Lazy Mount
+
+Use `lazyMount` to render dialog content only when first opened. Combine with `unmountOnExit` to unmount when closed,
+freeing up resources.
+
+<Example id="lazy-mount" />
 
 ### Initial Focus
 
@@ -100,6 +94,12 @@ Make the positioner scrollable so the dialog can extend beyond the viewport.
 Use the `Dialog.Context` component to access the dialog's state and methods.
 
 <Example id="context" />
+
+### Open from Menu
+
+Open a dialog imperatively from a menu item using the `onClick` handler.
+
+<Example id="open-from-menu" />
 
 ### Nested
 

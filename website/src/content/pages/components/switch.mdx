@@ -31,12 +31,12 @@ For a controlled Switch component, the state of the toggle is managed using the 
 
 <Example id="controlled" />
 
-### Context
+### Root Provider
 
-The Switch component allows access to its internal state through the `Context` component. This enables you to
-dynamically adjust and customize aspects of the component based on its current state:
+An alternative way to control the switch is to use the `RootProvider` component and the `useSwitch` hook. This way you
+can access the state and methods from outside the component.
 
-<Example id="context" />
+<Example id="root-provider" />
 
 ### Field
 
@@ -45,12 +45,12 @@ ARIA labels, helper text, and error text to ensure proper accessibility.
 
 <Example id="with-field" />
 
-### Root Provider
+### Context
 
-An alternative way to control the switch is to use the `RootProvider` component and the `useSwitch` hook. This way you
-can access the state and methods from outside the component.
+The Switch component allows access to its internal state through the `Context` component. This enables you to
+dynamically adjust and customize aspects of the component based on its current state:
 
-<Example id="root-provider" />
+<Example id="context" />
 
 ## Guides
 

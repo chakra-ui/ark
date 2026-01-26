@@ -32,15 +32,6 @@ description: A component that allows users to add tags to an input field.
 
 <Example id="basic" />
 
-### Max Tags
-
-To limit the number of tags within the component, you can set the `max` property to the limit you want. The default
-value is `Infinity`.
-
-When the tag reaches the limit, new tags cannot be added except the `allowOverflow` prop is set to `true`.
-
-<Example id="max-with-overflow" />
-
 ### Controlled
 
 Use the `value` and `onValueChange` props to programmatically control the tags input's state. This allows you to manage
@@ -61,6 +52,22 @@ An alternative way to control the tags input is to use the `RootProvider` compon
 way you can access the state and methods from outside the component.
 
 <Example id="root-provider" />
+
+### Field
+
+The `Field` component helps manage form-related state and accessibility attributes of a tags input. It includes handling
+ARIA labels, helper text, and error text to ensure proper accessibility.
+
+<Example id="with-field" />
+
+### Max Tags
+
+To limit the number of tags within the component, you can set the `max` property to the limit you want. The default
+value is `Infinity`.
+
+When the tag reaches the limit, new tags cannot be added except the `allowOverflow` prop is set to `true`.
+
+<Example id="max-with-overflow" />
 
 ### Custom Delimiter
 
@@ -87,13 +94,6 @@ Use the `maxLength` prop to limit the number of characters allowed per tag. This
 long tags.
 
 <Example id="max-tag-length" />
-
-### Programmatic Control
-
-Use the `useTagsInput` hook with `RootProvider` to access the component's API methods like `addValue()`, `setValue()`,
-and `clearValue()` for full programmatic control.
-
-<Example id="programmatic-control" />
 
 ### Read-only
 
@@ -139,12 +139,12 @@ by default the tags can be edited by double-clicking on the tag or focusing on t
 
 <Example id="disabled-editing" />
 
-### Field
+### Programmatic Control
 
-The `Field` component helps manage form-related state and accessibility attributes of a tags input. It includes handling
-ARIA labels, helper text, and error text to ensure proper accessibility.
+Use the `useTagsInput` hook with `RootProvider` to access the component's API methods like `addValue()`, `setValue()`,
+and `clearValue()` for full programmatic control.
 
-<Example id="with-field" />
+<Example id="programmatic-control" />
 
 ### Combobox
 

@@ -24,6 +24,13 @@ description: A control element that allows for multiple selections within a set.
 
 <Example id="basic" />
 
+### Default Checked
+
+Use the `defaultChecked` prop to set the initial checked state in an uncontrolled manner. The checkbox will manage its
+own state internally.
+
+<Example id="default-checked" />
+
 ### Controlled
 
 Use the `checked` and `onCheckedChange` props to programatically control the checkbox's state.
@@ -37,13 +44,6 @@ you can access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
-### Default Checked
-
-Use the `defaultChecked` prop to set the initial checked state in an uncontrolled manner. The checkbox will manage its
-own state internally.
-
-<Example id="default-checked" />
-
 ### Disabled
 
 Use the `disabled` prop to make the checkbox non-interactive.
@@ -55,12 +55,6 @@ Use the `disabled` prop to make the checkbox non-interactive.
 Use the `indeterminate` prop to create a checkbox in an indeterminate state (partially checked).
 
 <Example id="indeterminate" />
-
-### State
-
-Use the `Checkbox.Context` component to access the checkbox's state and methods.
-
-<Example id="context" />
 
 ### Field
 
@@ -75,6 +69,12 @@ Pass the `name` and `value` props to the `Checkbox.Root` component to make the c
 value will be submitted with the form when the user submits it.
 
 <Example id="with-form" />
+
+### Context
+
+Use the `Checkbox.Context` component to access the checkbox's state and methods.
+
+<Example id="context" />
 
 ### Group
 
@@ -98,14 +98,7 @@ individual checkboxes.
 
 <Example id="group-provider" />
 
-### Form Submission
-
-Use the `Checkbox.Group` component within a form to handle multiple checkbox values with form submission. The `name`
-prop ensures all selected values are collected as an array when the form is submitted using `FormData.getAll()`.
-
-<Example id="group-with-form" />
-
-### Invalid State
+### Invalid
 
 Use the `invalid` prop on `Checkbox.Group` to mark the entire group as invalid for validation purposes. This applies the
 invalid state to all checkboxes within the group.
@@ -119,6 +112,13 @@ an indeterminate state when some (but not all) items are selected, and becomes f
 selected.
 
 <Example id="group-with-select-all" />
+
+### Group Form
+
+Use the `Checkbox.Group` component within a form to handle multiple checkbox values with form submission. The `name`
+prop ensures all selected values are collected as an array when the form is submitted using `FormData.getAll()`.
+
+<Example id="group-with-form" />
 
 ### Fieldset
 

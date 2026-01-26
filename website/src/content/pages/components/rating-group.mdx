@@ -26,13 +26,6 @@ description: Allows users to rate items using a set of icons.
 
 <Example id="basic" />
 
-### Half Rating
-
-Allow `0.5` value steps by setting the `allowHalf` prop to `true`. Ensure to render the correct icon if the `half` value
-is set in the Rating components render callback.
-
-<Example id="half-star" />
-
 ### Controlled
 
 When using the `RatingGroup` component, you can use the `value` and `onValueChange` props to control the state.
@@ -46,11 +39,19 @@ This way you can access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
-### Disabled
+### Field
 
-To make the rating group disabled, set the `disabled` prop to `true`.
+The `Field` component helps manage form-related state and accessibility attributes of a rating group. It includes
+handling ARIA labels, helper text, and error text to ensure proper accessibility.
 
-<Example id="disabled" />
+<Example id="with-field" />
+
+### Half Rating
+
+Allow `0.5` value steps by setting the `allowHalf` prop to `true`. Ensure to render the correct icon if the `half` value
+is set in the Rating components render callback.
+
+<Example id="half-star" />
 
 ### Forms
 
@@ -59,12 +60,11 @@ get propagated to the form correctly.
 
 <Example id="form-usage" />
 
-### Field
+### Disabled
 
-The `Field` component helps manage form-related state and accessibility attributes of a rating group. It includes
-handling ARIA labels, helper text, and error text to ensure proper accessibility.
+To make the rating group disabled, set the `disabled` prop to `true`.
 
-<Example id="with-field" />
+<Example id="disabled" />
 
 ## API Reference
 

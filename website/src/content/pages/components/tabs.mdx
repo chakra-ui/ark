@@ -24,29 +24,6 @@ description: Flexible navigation tool with various modes and features.
 
 <Example id="basic" />
 
-### Indicator
-
-To provide a visual cue for the selected tab, use the `Tabs.Indicator` component:
-
-<Example id="indicator" />
-
-### Lazy Mount
-
-Lazy mounting is a feature that allows the content of a tab to be rendered only when the tab is first activated. This is
-useful for performance optimization, especially when tab content is large or complex. To enable lazy mounting, use the
-`lazyMount` prop on the `Tabs.Content` component.
-
-In addition, the `unmountOnExit` prop can be used in conjunction with `lazyMount` to unmount the tab content when the
-tab is deactivated, freeing up resources. The next time the tab is activated, its content will be re-rendered.
-
-<Example id="lazy-mount" />
-
-### Disabled
-
-To disable a tab, simply pass the `disabled` prop to the `Tabs.Trigger` component:
-
-<Example id="disabled-tab" />
-
 ### Controlled
 
 To create a controlled Tabs component, manage the current selected tab using the `value` prop and update it when the
@@ -61,12 +38,35 @@ access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
+### Indicator
+
+To provide a visual cue for the selected tab, use the `Tabs.Indicator` component:
+
+<Example id="indicator" />
+
+### Disabled
+
+To disable a tab, simply pass the `disabled` prop to the `Tabs.Trigger` component:
+
+<Example id="disabled-tab" />
+
 ### Vertical
 
 The default orientation of the tabs is `horizontal`. To change the orientation, set the `orientation` prop to
 `vertical`.
 
 <Example id="vertical" />
+
+### Lazy Mount
+
+Lazy mounting is a feature that allows the content of a tab to be rendered only when the tab is first activated. This is
+useful for performance optimization, especially when tab content is large or complex. To enable lazy mounting, use the
+`lazyMount` prop on the `Tabs.Content` component.
+
+In addition, the `unmountOnExit` prop can be used in conjunction with `lazyMount` to unmount the tab content when the
+tab is deactivated, freeing up resources. The next time the tab is activated, its content will be re-rendered.
+
+<Example id="lazy-mount" />
 
 ### Manual Activation
 

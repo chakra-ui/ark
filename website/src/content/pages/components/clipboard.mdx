@@ -26,6 +26,19 @@ description: A component to copy text to the clipboard
 
 <Example id="basic" />
 
+### Controlled
+
+Control the clipboard value externally by managing the state yourself and using `onValueChange` to handle updates.
+
+<Example id="controlled" />
+
+### Root Provider
+
+An alternative way to control the clipboard is to use the `RootProvider` component and the `useClipboard` hook. This way
+you can access the state and methods from outside the component.
+
+<Example id="root-provider" />
+
 ### Context
 
 Access the clipboard state and methods using `Clipboard.Context`. This provides access to properties like `copied`,
@@ -41,19 +54,6 @@ Use the `onStatusChange` prop to listen for copy operations. It exposes a `copie
 a success message.
 
 <Example id="copy-status" />
-
-### Controlled
-
-Control the clipboard value externally by managing the state yourself and using `onValueChange` to handle updates.
-
-<Example id="controlled" />
-
-### Root Provider
-
-An alternative way to control the clipboard is to use the `RootProvider` component and the `useClipboard` hook. This way
-you can access the state and methods from outside the component.
-
-<Example id="root-provider" />
 
 ### Timeout
 

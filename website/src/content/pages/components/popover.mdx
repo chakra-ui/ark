@@ -31,12 +31,6 @@ description: An overlay that displays additional information or options when tri
 
 <Example id="basic" />
 
-### Arrow
-
-Use `Popover.Arrow` and `Popover.ArrowTip` to render an arrow pointing to the trigger.
-
-<Example id="arrow" />
-
 ### Controlled
 
 Use the `open` and `onOpenChange` props to control the open state of the popover.
@@ -50,6 +44,18 @@ can access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
+### Arrow
+
+Use `Popover.Arrow` and `Popover.ArrowTip` to render an arrow pointing to the trigger.
+
+<Example id="arrow" />
+
+### Placement
+
+To change the placement of the popover, set the `positioning` prop.
+
+<Example id="positioning" />
+
 ### Close Behavior
 
 The popover is designed to close on blur and when the <kbd>esc</kbd> key is pressed.
@@ -59,12 +65,6 @@ The popover is designed to close on blur and when the <kbd>esc</kbd> key is pres
 - To prevent it from closing when the <kbd>esc</kbd> key is pressed, pass the `closeOnEsc` prop and set it to `false`.
 
 <Example id="close-behavior" />
-
-### Placement
-
-To change the placement of the popover, set the `positioning` prop.
-
-<Example id="positioning" />
 
 ### Modality
 
@@ -80,6 +80,18 @@ To make the popover modal, set the `modal` prop to `true`. When `modal={true}`, 
 
 <Example id="modal" />
 
+### Anchor
+
+Use `Popover.Anchor` to position the popover relative to a different element than the trigger.
+
+<Example id="anchor" />
+
+### Same Width
+
+Use `positioning.sameWidth` to make the popover match the width of its trigger element.
+
+<Example id="same-width" />
+
 ### Dialog Integration
 
 When rendering a popover inside a dialog, you have two options for proper layering:
@@ -92,23 +104,11 @@ When rendering a popover inside a dialog, you have two options for proper layeri
 
 <Example id="with-dialog" />
 
-### Anchor
-
-Use `Popover.Anchor` to position the popover relative to a different element than the trigger.
-
-<Example id="anchor" />
-
 ### Nested
 
 Popovers can be nested within each other. Each nested popover maintains its own open state and positioning.
 
 <Example id="nested" />
-
-### Same Width
-
-Use `positioning.sameWidth` to make the popover match the width of its trigger element.
-
-<Example id="same-width" />
 
 ## Guides
 

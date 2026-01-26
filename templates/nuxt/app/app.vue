@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import '../../../.storybook/styles.css'
+import 'styles/global.css'
+import 'styles/theme.css'
 </script>
 
 <template>

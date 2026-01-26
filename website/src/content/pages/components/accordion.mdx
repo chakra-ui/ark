@@ -41,18 +41,25 @@ Use the `multiple` prop to allow multiple panels to be expanded simultaneously.
 
 <Example id="multiple" />
 
-### Horizontal
-
-By default, the Accordion is oriented vertically. Use the `orientation` prop to switch to a horizontal layout.
-
-<Example id="horizontal" />
-
 ### Root Provider
 
 An alternative way to control the accordion is to use the `RootProvider` component and the `useAccordion` hook. This way
 you can access the state and methods from outside the component.
 
 <Example id="root-provider" />
+
+### Horizontal
+
+By default, the Accordion is oriented vertically. Use the `orientation` prop to switch to a horizontal layout.
+
+<Example id="horizontal" />
+
+### Lazy Mount
+
+Use the `lazyMount` prop to defer rendering of accordion content until the item is expanded. Combine with
+`unmountOnExit` to unmount content when collapsed, freeing up resources.
+
+<Example id="lazy-mount" />
 
 ### Context
 
@@ -65,13 +72,6 @@ Use `Accordion.Context` or `useAccordionContext` to access the accordion state.
 Use `Accordion.ItemContext` or `useAccordionItemContext` to access the state of an accordion item.
 
 <Example id="item-context" />
-
-### Lazy Mount
-
-Use the `lazyMount` prop to defer rendering of accordion content until the item is expanded. Combine with
-`unmountOnExit` to unmount content when collapsed, freeing up resources.
-
-<Example id="lazy-mount" />
 
 ## Guides
 
