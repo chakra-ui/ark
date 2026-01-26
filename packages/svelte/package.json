@@ -202,9 +202,9 @@
     "@zag-js/utils": "1.31.1"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "9.1.16",
-    "@storybook/svelte": "9.1.16",
-    "@storybook/sveltekit": "9.1.16",
+    "@storybook/addon-a11y": "10.2.0",
+    "@storybook/svelte": "10.2.0",
+    "@storybook/sveltekit": "10.2.0",
     "@sveltejs/adapter-auto": "7.0.0",
     "@sveltejs/kit": "2.49.0",
     "@sveltejs/package": "2.5.7",
@@ -220,7 +220,7 @@
     "image-conversion": "2.1.1",
     "jsdom": "26.1.0",
     "lucide-svelte": "0.555.0",
-    "storybook": "9.1.16",
+    "storybook": "10.2.0",
     "svelte": "5.45.2",
     "svelte-check": "4.3.4",
     "tslib": "2.8.1",
