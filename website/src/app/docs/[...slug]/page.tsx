@@ -53,8 +53,8 @@ export default async function Page(props: Props) {
 
           <DocsFooter nextPage={next} prevPage={prev} />
         </Stack>
-        <Box flexGrow="1" width="full" maxW="14rem" display={{ base: 'none', xl: 'block' }}>
-          <Box position="fixed">
+        <Box flexShrink="0" width="14rem" hideBelow="xl">
+          <Box position="fixed" width="14rem">
             <TableOfContent entries={currentPage.toc} />
           </Box>
         </Box>
