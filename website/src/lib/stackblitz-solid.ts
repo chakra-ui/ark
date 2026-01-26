@@ -72,18 +72,19 @@ const indexHtml = `<!DOCTYPE html>
 const main = `/* @refresh reload */
 import { render } from 'solid-js/web'
 import { App } from './App'
-import './index.css'
+import './global.css'
 
 render(() => <App />, document.getElementById('root')!)`
 
 function transformCssModuleImports(code: string): string {
-  return code.replace(/from\s+['"]styles\/([^'"]+)['"]/g, "from './$1'")
+  return code.replace(/from\s+['"]styles\/[^'"]+\.module\.css['"]/g, "from './index.module.css'")
 }
 
-function generateIndexCss(cssModules: Record<string, string>): string {
+function generateGlobalCss(cssModules: Record<string, string>): string {
   const theme = cssModules['theme.css'] ?? ''
   const utilities = cssModules['utilities.css'] ?? ''
-  return `${theme}\n\n${utilities}`
+  const global = cssModules['global.css'] ?? ''
+  return [theme, utilities, global].filter(Boolean).join('\n\n')
 }
 
 export async function openInStackblitzSolid(opts: {
@@ -103,14 +104,17 @@ export async function openInStackblitzSolid(opts: {
     'vite.config.ts': viteConfig,
     'index.html': indexHtml,
     'src/App.tsx': code,
-    'src/index.css': generateIndexCss(cssModules),
+    'src/global.css': generateGlobalCss(cssModules),
     'src/index.tsx': main,
   }
 
-  for (const [filename, content] of Object.entries(cssModules)) {
-    if (filename.endsWith('.module.css')) {
-      files[`src/${filename}`] = content
-    }
+  const componentCss = Object.entries(cssModules)
+    .filter(([filename]) => filename.endsWith('.module.css'))
+    .map(([, content]) => content)
+    .join('\n\n')
+
+  if (componentCss) {
+    files['src/index.module.css'] = componentCss
   }
 
   sdk.openProject(

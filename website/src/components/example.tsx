@@ -7,8 +7,8 @@ import { Stack } from 'styled-system/jsx'
 import type { SupportedLang } from '~/lib/shiki-client'
 import { getFramework } from '~/lib/frameworks'
 import { getServerContext } from '~/lib/server-context'
-import { CodeTabs } from './code-tabs'
 import { CollapsibleCode } from './collapsible-code'
+import { ExampleCodeTabs } from './example-code'
 import { ExamplePreview } from './example-preview'
 
 interface Props {
@@ -21,17 +21,17 @@ export const Example = async (props: Props) => {
   const component = props.component ?? serverContext.component
 
   const framework = await getFramework()
-  const examples = await findExamples(props)
-  const cssModules = await fetchCssModules(examples)
+  const { code, lang } = await fetchFrameworkCode(framework, component, props.id)
+  const cssModules = await fetchCssModulesFromCode(code)
   const hasPreview = component ? exampleExists(component, props.id) : false
 
   return (
     <Stack gap="0" className={cx('not-prose', css({ '& > .example-preview-scope': { borderBottomRadius: '0' } }))}>
       {hasPreview && component && <ExamplePreview component={component} example={props.id} />}
       <CollapsibleCode>
-        <CodeTabs
-          examples={examples}
-          defaultValue={framework}
+        <ExampleCodeTabs
+          code={code}
+          lang={lang}
           cssModules={cssModules}
           meta={{
             ...props,
@@ -44,14 +44,17 @@ export const Example = async (props: Props) => {
 }
 
 export const ExampleCode = async (props: Props) => {
+  const serverContext = getServerContext()
+  const component = props.component ?? serverContext.component
+
   const framework = await getFramework()
-  const examples = await findExamples(props)
-  const cssModules = await fetchCssModules(examples)
+  const { code, lang } = await fetchFrameworkCode(framework, component, props.id)
+  const cssModules = await fetchCssModulesFromCode(code)
 
   return (
-    <CodeTabs
-      examples={examples}
-      defaultValue={framework}
+    <ExampleCodeTabs
+      code={code}
+      lang={lang}
       cssModules={cssModules}
       meta={{
         ...props,
@@ -61,12 +64,19 @@ export const ExampleCode = async (props: Props) => {
   )
 }
 
-export const frameworkExample = async (framework: string, component: string, id: string) => {
+const fetchFrameworkCode = async (
+  framework: string,
+  component: string | undefined,
+  id: string,
+): Promise<{ code: string; lang: SupportedLang }> => {
+  if (!component) return { code: 'Example not found', lang: 'tsx' }
+
   const extension = Match.value(framework).pipe(
     Match.when('vue', () => 'vue'),
     Match.when('svelte', () => 'svelte'),
     Match.orElse(() => 'tsx'),
   )
+
   const examplePath = Match.value(component).pipe(
     Match.when(
       () => ['progress-circular', 'progress-linear'].includes(component),
@@ -83,6 +93,7 @@ export const frameworkExample = async (framework: string, component: string, id:
     Match.when('svelte', () => 'src/lib'),
     Match.orElse(() => 'src'),
   )
+
   const basePath = `../packages/${framework}/${srcPath}`
   const fileName = [id, extension].join('.')
 
@@ -91,30 +102,7 @@ export const frameworkExample = async (framework: string, component: string, id:
   )
 
   const code = content.replaceAll(/from '\.\/icons'/g, `from 'lucide-vue-next'`).replace(/.*@ts-expect-error.*\n/g, '')
-  return { code, extension }
-}
-
-const frameworks = ['react', 'solid', 'vue', 'svelte']
-
-const findExamples = async (props: Props) => {
-  const id = props.id
-  const serverContext = getServerContext()
-  const component = props.component ?? serverContext.component
-
-  if (!component) return []
-
-  return Promise.all(
-    frameworks.map(async (framework) => {
-      const { code, extension } = await frameworkExample(framework, component, id)
-
-      return {
-        label: framework.charAt(0).toUpperCase() + framework.slice(1),
-        value: framework,
-        code,
-        lang: extension as SupportedLang,
-      }
-    }),
-  )
+  return { code, lang: extension as SupportedLang }
 }
 
 /**
@@ -148,48 +136,39 @@ function extractCssModuleImports(code: string): string[] {
 }
 
 /**
- * Fetch CSS modules used by an example
+ * Fetch CSS modules used by an example (single code string)
  */
-export const fetchCssModules = async (exampleCodes: { code: string }[]): Promise<Record<string, string>> => {
+const fetchCssModulesFromCode = async (code: string): Promise<Record<string, string>> => {
   const cssModules: Record<string, string> = {}
   const modulesPath = join(process.cwd(), '..', '.storybook', 'modules')
 
-  // Collect all unique CSS module imports from all framework examples
-  const allImports = new Set<string>()
-  for (const { code } of exampleCodes) {
-    for (const imp of extractCssModuleImports(code)) {
-      allImports.add(imp)
-    }
-  }
+  // Extract CSS module imports from code
+  const imports = extractCssModuleImports(code)
 
   // Load each CSS module
-  for (const moduleName of allImports) {
+  for (const moduleName of imports) {
     const filePath = join(modulesPath, moduleName)
     if (existsSync(filePath)) {
       cssModules[moduleName] = await readFile(filePath, 'utf-8')
     }
   }
 
-  // Always include base styles (theme + utilities)
+  // Always include base styles (theme + global + utilities)
   const themeFile = join(modulesPath, 'theme.css')
+  const globalFile = join(modulesPath, 'global.css')
   const utilitiesFile = join(modulesPath, 'utilities.css')
 
   if (existsSync(themeFile)) {
     cssModules['theme.css'] = await readFile(themeFile, 'utf-8')
+  }
+  if (existsSync(globalFile)) {
+    // Strip the @import line since utilities is loaded separately
+    const globalContent = await readFile(globalFile, 'utf-8')
+    cssModules['global.css'] = globalContent.replace(/@import\s+['"]\.\/utilities\.css['"];?\s*/g, '')
   }
   if (existsSync(utilitiesFile)) {
     cssModules['utilities.css'] = await readFile(utilitiesFile, 'utf-8')
   }
 
   return cssModules
-}
-
-export const fetchStyle = async (comp: string | undefined) => {
-  const serverContext = getServerContext()
-  const component = comp ?? serverContext.component
-  if (!component) return ''
-
-  // This is a legacy function kept for backward compatibility
-  // Use fetchCssModules for the new CSS module approach
-  return ''
 }

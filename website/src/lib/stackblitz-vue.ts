@@ -89,7 +89,7 @@ const indexHtml = `<!doctype html>
 `
 
 const main = `import { createApp } from 'vue'
-import './style.css'
+import './global.css'
 import App from './App.vue'
 
 createApp(App).mount('#app')`
@@ -97,13 +97,14 @@ createApp(App).mount('#app')`
 const viteEnv = `/// <reference types="vite/client" />`
 
 function transformCssModuleImports(code: string): string {
-  return code.replace(/from\s+['"]styles\/([^'"]+)['"]/g, "from './$1'")
+  return code.replace(/from\s+['"]styles\/[^'"]+\.module\.css['"]/g, "from './index.module.css'")
 }
 
-function generateStyleCss(cssModules: Record<string, string>): string {
+function generateGlobalCss(cssModules: Record<string, string>): string {
   const theme = cssModules['theme.css'] ?? ''
   const utilities = cssModules['utilities.css'] ?? ''
-  return `${theme}\n\n${utilities}`
+  const global = (cssModules['global.css'] ?? '').replace(/#root(?![\w-])/g, '#app')
+  return [theme, utilities, global].filter(Boolean).join('\n\n')
 }
 
 export async function openInStackblitzVue(opts: {
@@ -124,15 +125,18 @@ export async function openInStackblitzVue(opts: {
     'vite.config.ts': viteConfig,
     'index.html': indexHtml,
     'src/App.vue': code,
-    'src/style.css': generateStyleCss(cssModules),
+    'src/global.css': generateGlobalCss(cssModules),
     'src/main.ts': main,
     'src/vite-env.d.ts': viteEnv,
   }
 
-  for (const [filename, content] of Object.entries(cssModules)) {
-    if (filename.endsWith('.module.css')) {
-      files[`src/${filename}`] = content
-    }
+  const componentCss = Object.entries(cssModules)
+    .filter(([filename]) => filename.endsWith('.module.css'))
+    .map(([, content]) => content)
+    .join('\n\n')
+
+  if (componentCss) {
+    files['src/index.module.css'] = componentCss
   }
 
   sdk.openProject(

@@ -72,7 +72,7 @@ const indexHtml = `<!doctype html>
 const main = `import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { App } from './App'
-import './index.css'
+import './global.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -81,13 +81,15 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 )`
 
 function transformCssModuleImports(code: string): string {
-  return code.replace(/from\s+['"]styles\/([^'"]+)['"]/g, "from './$1'")
+  // Rename any component.module.css to index.module.css
+  return code.replace(/from\s+['"]styles\/[^'"]+\.module\.css['"]/g, "from './index.module.css'")
 }
 
-function generateIndexCss(cssModules: Record<string, string>): string {
+function generateGlobalCss(cssModules: Record<string, string>): string {
   const theme = cssModules['theme.css'] ?? ''
   const utilities = cssModules['utilities.css'] ?? ''
-  return `${theme}\n\n${utilities}`
+  const global = cssModules['global.css'] ?? ''
+  return [theme, utilities, global].filter(Boolean).join('\n\n')
 }
 
 export async function openInStackblitzReact(opts: {
@@ -107,14 +109,18 @@ export async function openInStackblitzReact(opts: {
     'vite.config.ts': viteConfig,
     'index.html': indexHtml,
     'src/App.tsx': code,
-    'src/index.css': generateIndexCss(cssModules),
+    'src/global.css': generateGlobalCss(cssModules),
     'src/main.tsx': main,
   }
 
-  for (const [filename, content] of Object.entries(cssModules)) {
-    if (filename.endsWith('.module.css')) {
-      files[`src/${filename}`] = content
-    }
+  // Combine all component CSS modules into index.module.css
+  const componentCss = Object.entries(cssModules)
+    .filter(([filename]) => filename.endsWith('.module.css'))
+    .map(([, content]) => content)
+    .join('\n\n')
+
+  if (componentCss) {
+    files['src/index.module.css'] = componentCss
   }
 
   sdk.openProject(

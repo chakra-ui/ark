@@ -71,9 +71,8 @@ export default defineConfig({
       pre: {
         overflowX: 'auto',
         fontSize: '13px !important',
-        fontWeight: '500',
         bg: 'gray.dark.2!',
-        lineHeight: '1.75!',
+        lineHeight: '1.5!',
       },
       blockquote: {
         fontStyle: 'normal!',

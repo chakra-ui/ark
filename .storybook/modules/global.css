@@ -1,7 +1,5 @@
-/* Import shared utilities */
 @import './utilities.css';
 
-/* Base styles for Storybook environment */
 body {
   font-family:
     system-ui,
