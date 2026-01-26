@@ -2,6 +2,7 @@ import { Combobox, useListCollection } from '@ark-ui/solid/combobox'
 import { useFilter } from '@ark-ui/solid/locale'
 import { For } from 'solid-js'
 import { Portal } from 'solid-js/web'
+import styles from 'styles/combobox.module.css'
 
 export const CustomObject = () => {
   const filterFn = useFilter({ sensitivity: 'base' })
@@ -22,26 +23,28 @@ export const CustomObject = () => {
   }
 
   return (
-    <Combobox.Root collection={collection()} onInputValueChange={handleInputChange}>
-      <Combobox.Control>
-        <Combobox.Input />
-        <Combobox.Trigger>Open</Combobox.Trigger>
-        <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
+    <Combobox.Root class={styles.Root} collection={collection()} onInputValueChange={handleInputChange}>
+      <Combobox.Label class={styles.Label}>Country</Combobox.Label>
+      <Combobox.Control class={styles.Control}>
+        <Combobox.Input class={styles.Input} placeholder="e.g. Canada" />
+        <div class={styles.Indicators}>
+          <Combobox.ClearTrigger class={styles.ClearTrigger}>Clear</Combobox.ClearTrigger>
+          <Combobox.Trigger class={styles.Trigger}>Open</Combobox.Trigger>
+        </div>
       </Combobox.Control>
       <Portal>
         <Combobox.Positioner>
-          <Combobox.Content>
-            <Combobox.ItemGroup>
-              <Combobox.ItemGroupLabel>Countries</Combobox.ItemGroupLabel>
-              <For each={collection().items}>
-                {(item) => (
-                  <Combobox.Item item={item}>
-                    <Combobox.ItemText>{item.country}</Combobox.ItemText>
-                    <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
-                  </Combobox.Item>
-                )}
-              </For>
-            </Combobox.ItemGroup>
+          <Combobox.Content class={styles.Content}>
+            <For each={collection().items}>
+              {(item) => (
+                <Combobox.Item class={styles.Item} item={item}>
+                  <Combobox.ItemText class={styles.ItemText}>
+                    {item.flag} {item.country}
+                  </Combobox.ItemText>
+                  <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
+                </Combobox.Item>
+              )}
+            </For>
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

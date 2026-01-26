@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { Carousel } from '@ark-ui/vue/carousel'
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
+import button from 'styles/button.module.css'
+import styles from 'styles/carousel.module.css'
 
 const slides = ref([0, 1, 2, 3, 4])
-const page = ref(0)
 
 const addSlide = () => {
   const max = Math.max(...slides.value)
@@ -13,35 +15,24 @@ const addSlide = () => {
 
 <template>
   <div>
-    <Carousel.Root v-model:page="page" :slide-count="slides.length">
-      <Carousel.Control>
-        <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
-        <Carousel.NextTrigger>Next</Carousel.NextTrigger>
-      </Carousel.Control>
-      <Carousel.IndicatorGroup>
-        <Carousel.Indicator v-for="(_, idx) in slides" :key="idx" :index="idx" />
-      </Carousel.IndicatorGroup>
-      <Carousel.ItemGroup>
-        <Carousel.Item v-for="(slide, idx) in slides" :key="idx" :index="idx">
-          <div
-            :style="{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              height: '300px',
-              width: '100%',
-              backgroundColor: `hsl(${(slide * 60) % 360}, 70%, 60%)`,
-              color: 'white',
-              fontSize: '24px',
-              fontWeight: 'bold',
-              borderRadius: '8px',
-            }"
-          >
-            Slide {{ slide }}
-          </div>
+    <button :class="button.Root" @click="addSlide">Add Slide</button>
+    <Carousel.Root :class="styles.Root" :slide-count="slides.length">
+      <Carousel.ItemGroup :class="styles.ItemGroup">
+        <Carousel.Item v-for="(slide, index) in slides" :key="index" :class="styles.Item" :index="index">
+          <div :class="styles.Slide">Slide {{ slide + 1 }}</div>
         </Carousel.Item>
       </Carousel.ItemGroup>
+      <Carousel.Control :class="styles.Control" data-align="center">
+        <Carousel.PrevTrigger :class="styles.Trigger">
+          <ArrowLeftIcon />
+        </Carousel.PrevTrigger>
+        <Carousel.IndicatorGroup :class="styles.IndicatorGroup">
+          <Carousel.Indicator v-for="(_, index) in slides" :key="index" :class="styles.Indicator" :index="index" />
+        </Carousel.IndicatorGroup>
+        <Carousel.NextTrigger :class="styles.Trigger">
+          <ArrowRightIcon />
+        </Carousel.NextTrigger>
+      </Carousel.Control>
     </Carousel.Root>
-    <button @click="addSlide" :style="{ marginTop: '16px', padding: '8px 16px', cursor: 'pointer' }">Add Slide</button>
   </div>
 </template>

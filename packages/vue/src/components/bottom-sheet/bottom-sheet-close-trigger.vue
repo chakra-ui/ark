@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface BottomSheetCloseTriggerBaseProps extends PolymorphicProps {}
 export interface BottomSheetCloseTriggerProps
-  extends BottomSheetCloseTriggerBaseProps,
+  extends
+    BottomSheetCloseTriggerBaseProps,
     /**
      * @vue-ignore
      */

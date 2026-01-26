@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface AccordionItemTriggerBaseProps extends PolymorphicProps {}
 export interface AccordionItemTriggerProps
-  extends AccordionItemTriggerBaseProps,
+  extends
+    AccordionItemTriggerBaseProps,
     /**
      * @vue-ignore
      */

@@ -6,7 +6,8 @@ import type { RootEmits, RootProps } from './marquee.types'
 
 export interface MarqueeRootBaseProps extends RootProps, PolymorphicProps {}
 export interface MarqueeRootProps
-  extends MarqueeRootBaseProps,
+  extends
+    MarqueeRootBaseProps,
     /**
      * @vue-ignore
      */

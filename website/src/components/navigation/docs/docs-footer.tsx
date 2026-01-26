@@ -5,11 +5,15 @@ import { css, cva, cx } from 'styled-system/css'
 import { HStack, Stack } from 'styled-system/jsx'
 import { Icon } from '~/components/ui/icon'
 import { Text } from '~/components/ui/text'
-import type { Pages } from '.velite'
+
+export interface FooterNavItem {
+  slug: string
+  title: string
+}
 
 interface Props {
-  prevPage?: Pages
-  nextPage?: Pages
+  prevPage?: FooterNavItem
+  nextPage?: FooterNavItem
 }
 
 export const DocsFooter = (props: Props) => {

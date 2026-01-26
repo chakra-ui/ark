@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, RefAttribute } from '$lib/types'
   import type { UsePasswordInputReturn } from './use-password-input.svelte'
 
   interface RootProviderProps {
@@ -8,7 +8,7 @@
   }
 
   export interface PasswordInputRootProviderBaseProps extends RootProviderProps, RefAttribute {}
-  export interface PasswordInputRootProviderProps extends PasswordInputRootProviderBaseProps {
+  export interface PasswordInputRootProviderProps extends Assign<HTMLProps<'div'>, PasswordInputRootProviderBaseProps> {
     children?: Snippet
   }
 </script>

@@ -9,18 +9,16 @@ description: Learn how to manage component state using Context and Provider comp
 Context components expose state and functions to child components. In this example, `Avatar.Fallback` renders based on
 `loaded` state.
 
-<Example id="context" component="avatar" />
-
 > **Good to know (RSC)**: Due to the usage of render prop, you might need to add the `'use client'` directive at the top
 > of your file when using React Server Components.
+
+<ExampleCode id="context" component="avatar" />
 
 ## Provider Components
 
 Provider components can help coordinate state and behavior between multiple components, enabling interactions that
 aren't possible with `Context` components alone. They are used alongside component hooks.
 
-<Example id="root-provider" component="accordion" />
-
 > When using the `RootProvider` component, you don't need to use the `Root` component.
 
-See more in [Examples](/examples/popover-selection).
+<ExampleCode id="root-provider" component="accordion" />

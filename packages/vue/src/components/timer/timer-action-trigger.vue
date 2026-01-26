@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface TimerActionTriggerBaseProps extends ActionTriggerProps, PolymorphicProps {}
 export interface TimerActionTriggerProps
-  extends TimerActionTriggerBaseProps,
+  extends
+    TimerActionTriggerBaseProps,
     /**
      * @vue-ignore
      */

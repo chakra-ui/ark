@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface SegmentGroupItemHiddenInputBaseProps extends PolymorphicProps {}
 export interface SegmentGroupItemHiddenInputProps
-  extends SegmentGroupItemHiddenInputBaseProps,
+  extends
+    SegmentGroupItemHiddenInputBaseProps,
     /**
      * @vue-ignore
      */

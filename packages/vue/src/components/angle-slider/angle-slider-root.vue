@@ -6,7 +6,8 @@ import type { RootEmits, RootProps } from './angle-slider.types'
 
 export interface AngleSliderRootBaseProps extends RootProps, PolymorphicProps {}
 export interface AngleSliderRootProps
-  extends AngleSliderRootBaseProps,
+  extends
+    AngleSliderRootBaseProps,
     /**
      * @vue-ignore
      */

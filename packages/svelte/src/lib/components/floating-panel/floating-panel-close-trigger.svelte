@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
   export interface FloatingPanelCloseTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
-  export interface FloatingPanelCloseTriggerProps
-    extends Assign<HTMLProps<'button'>, FloatingPanelCloseTriggerBaseProps> {}
+  export interface FloatingPanelCloseTriggerProps extends Assign<
+    HTMLProps<'button'>,
+    FloatingPanelCloseTriggerBaseProps
+  > {}
 </script>
 
 <script lang="ts">

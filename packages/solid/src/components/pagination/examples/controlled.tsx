@@ -1,5 +1,7 @@
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-solid'
 import { Pagination } from '@ark-ui/solid/pagination'
 import { For, createSignal } from 'solid-js'
+import styles from 'styles/pagination.module.css'
 
 export const Controlled = () => {
   const [currentPage, setCurrentPage] = createSignal(1)
@@ -11,22 +13,33 @@ export const Controlled = () => {
       siblingCount={2}
       page={currentPage()}
       onPageChange={(details) => setCurrentPage(details.page)}
+      class={styles.Root}
     >
-      <Pagination.PrevTrigger>Previous Page</Pagination.PrevTrigger>
-      <Pagination.Context>
-        {(api) => (
-          <For each={api().pages}>
-            {(page, index) =>
-              page.type === 'page' ? (
-                <Pagination.Item {...page}>{page.value}</Pagination.Item>
-              ) : (
-                <Pagination.Ellipsis index={index()}>&#8230;</Pagination.Ellipsis>
-              )
-            }
-          </For>
-        )}
-      </Pagination.Context>
-      <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
+      <div class={styles.Controls}>
+        <Pagination.PrevTrigger class={styles.Trigger}>
+          <ChevronLeftIcon />
+        </Pagination.PrevTrigger>
+        <Pagination.Context>
+          {(pagination) => (
+            <For each={pagination().pages}>
+              {(page, index) =>
+                page.type === 'page' ? (
+                  <Pagination.Item {...page} class={styles.Item}>
+                    {page.value}
+                  </Pagination.Item>
+                ) : (
+                  <Pagination.Ellipsis index={index()} class={styles.Ellipsis}>
+                    &#8230;
+                  </Pagination.Ellipsis>
+                )
+              }
+            </For>
+          )}
+        </Pagination.Context>
+        <Pagination.NextTrigger class={styles.Trigger}>
+          <ChevronRightIcon />
+        </Pagination.NextTrigger>
+      </div>
     </Pagination.Root>
   )
 }

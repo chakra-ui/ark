@@ -3,9 +3,8 @@ import Basic from './examples/basic.svelte'
 import Controlled from './examples/controlled.svelte'
 import DisabledTab from './examples/disabled-tab.svelte'
 import Indicator from './examples/indicator.svelte'
-import InitialTab from './examples/initial-tab.svelte'
 import LazyMount from './examples/lazy-mount.svelte'
-import Manual from './examples/manual.svelte'
+import ManualActivation from './examples/manual-activation.svelte'
 import RootProvider from './examples/root-provider.svelte'
 import Vertical from './examples/vertical.svelte'
 
@@ -43,13 +42,6 @@ export const IndicatorStory = {
   }),
 }
 
-export const InitialTabStory = {
-  name: 'Initial Tab',
-  render: () => ({
-    Component: InitialTab,
-  }),
-}
-
 export const LazyMountStory = {
   name: 'Lazy Mount',
   render: () => ({
@@ -57,10 +49,10 @@ export const LazyMountStory = {
   }),
 }
 
-export const ManualStory = {
-  name: 'Manual',
+export const ManualActivationStory = {
+  name: 'Manual Activation',
   render: () => ({
-    Component: Manual,
+    Component: ManualActivation,
   }),
 }
 

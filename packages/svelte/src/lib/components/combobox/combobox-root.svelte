@@ -6,13 +6,12 @@
   import type { UseComboboxProps } from './use-combobox.svelte'
 
   export interface ComboboxRootBaseProps<T extends CollectionItem>
-    extends UseComboboxProps<T>,
-      UsePresenceProps,
-      PolymorphicProps<'div'>,
-      RefAttribute {}
+    extends UseComboboxProps<T>, UsePresenceProps, PolymorphicProps<'div'>, RefAttribute {}
 
-  export interface ComboboxRootProps<T extends CollectionItem>
-    extends Assign<HTMLProps<'div'>, ComboboxRootBaseProps<T>> {}
+  export interface ComboboxRootProps<T extends CollectionItem> extends Assign<
+    HTMLProps<'div'>,
+    ComboboxRootBaseProps<T>
+  > {}
 
   export type ComboboxRootComponentProps<T extends CollectionItem = CollectionItem, P = {}> = Assign<
     ComboboxRootProps<T>,

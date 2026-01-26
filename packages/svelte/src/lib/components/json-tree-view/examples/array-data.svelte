@@ -1,6 +1,7 @@
 <script lang="ts">
   import { JsonTreeView } from '@ark-ui/svelte/json-tree-view'
   import { ChevronRightIcon } from 'lucide-svelte'
+  import styles from 'styles/json-tree-view.module.css'
 
   const testArray = [1, 2, 3, 4, 5]
   Object.defineProperties(testArray, {
@@ -10,6 +11,8 @@
 </script>
 
 <JsonTreeView.Root
+  defaultExpandedDepth={1}
+  class={styles.Root}
   data={{
     normalArray: [1, 2, 3],
     arrayWithNonEnumerableProperties: testArray,
@@ -21,7 +24,7 @@
     })(),
   }}
 >
-  <JsonTreeView.Tree>
+  <JsonTreeView.Tree class={styles.Tree}>
     {#snippet arrow()}
       <ChevronRightIcon />
     {/snippet}

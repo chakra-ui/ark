@@ -8,10 +8,13 @@ import GroupingExample from './examples/grouping.svelte'
 import LinksExample from './examples/links.svelte'
 import MultipleExample from './examples/multiple.svelte'
 import RehydrateValueExample from './examples/rehydrate-value.svelte'
-import RenderFnExample from './examples/render-fn.svelte'
+import ContextExample from './examples/context.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import WithFieldExample from './examples/with-field.svelte'
-import WithHighlightExample from './examples/with-highlight.svelte'
+import HighlightMatchingTextExample from './examples/highlight-matching-text.svelte'
+import AutoHighlightExample from './examples/auto-highlight.svelte'
+import InlineAutocompleteExample from './examples/inline-autocomplete.svelte'
+import LimitResultsExample from './examples/limit-results.svelte'
 
 const meta: Meta = {
   title: 'Components / Combobox',
@@ -43,9 +46,9 @@ export const Dynamic = {
   }),
 }
 
-export const RenderFn = {
+export const Context = {
   render: () => ({
-    Component: RenderFnExample,
+    Component: ContextExample,
   }),
 }
 
@@ -85,14 +88,32 @@ export const Multiple = {
   }),
 }
 
-export const WithHighlight = {
+export const HighlightMatchingText = {
   render: () => ({
-    Component: WithHighlightExample,
+    Component: HighlightMatchingTextExample,
   }),
 }
 
 export const CustomObject = {
   render: () => ({
     Component: CustomObjectExample,
+  }),
+}
+
+export const AutoHighlight = {
+  render: () => ({
+    Component: AutoHighlightExample,
+  }),
+}
+
+export const InlineAutocomplete = {
+  render: () => ({
+    Component: InlineAutocompleteExample,
+  }),
+}
+
+export const LimitResults = {
+  render: () => ({
+    Component: LimitResultsExample,
   }),
 }

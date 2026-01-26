@@ -1,18 +1,24 @@
 import { BottomSheet } from '@ark-ui/react/bottom-sheet'
+import { XIcon } from 'lucide-react'
+import styles from 'styles/bottom-sheet.module.css'
 
 export const Scrollable = () => (
   <BottomSheet.Root>
-    <BottomSheet.Trigger>Open</BottomSheet.Trigger>
-    <BottomSheet.Backdrop />
-    <BottomSheet.Content>
-      <BottomSheet.Grabber>
-        <BottomSheet.GrabberIndicator />
+    <BottomSheet.Trigger className={styles.Trigger}>Open</BottomSheet.Trigger>
+    <BottomSheet.Backdrop className={styles.Backdrop} />
+    <BottomSheet.Content className={styles.Content}>
+      <BottomSheet.Grabber className={styles.Grabber}>
+        <BottomSheet.GrabberIndicator className={styles.GrabberIndicator} />
       </BottomSheet.Grabber>
-      <BottomSheet.Title>Scrollable Bottom Sheet</BottomSheet.Title>
-      <BottomSheet.CloseTrigger>Close</BottomSheet.CloseTrigger>
-      <div className="scrollable">
-        {Array.from({ length: 100 }).map((_element, index) => (
-          <div key={index}>Item {index}</div>
+      <BottomSheet.Title className={styles.Title}>Scrollable Bottom Sheet</BottomSheet.Title>
+      <BottomSheet.CloseTrigger className={styles.CloseTrigger}>
+        <XIcon />
+      </BottomSheet.CloseTrigger>
+      <div className={styles.Scrollable}>
+        {Array.from({ length: 50 }).map((_, index) => (
+          <div key={index} className={styles.ScrollableItem}>
+            Item {index + 1}
+          </div>
         ))}
       </div>
     </BottomSheet.Content>

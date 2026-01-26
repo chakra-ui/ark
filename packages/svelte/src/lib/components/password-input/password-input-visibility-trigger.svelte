@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface PasswordInputVisibilityTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
-  export interface PasswordInputVisibilityTriggerProps
-    extends Assign<HTMLProps<'button'>, PasswordInputVisibilityTriggerBaseProps> {}
+  export interface PasswordInputVisibilityTriggerProps extends Assign<
+    HTMLProps<'button'>,
+    PasswordInputVisibilityTriggerBaseProps
+  > {}
 </script>
 
 <script lang="ts">

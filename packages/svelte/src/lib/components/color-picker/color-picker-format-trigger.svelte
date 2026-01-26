@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface ColorPickerFormatTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
-  export interface ColorPickerFormatTriggerProps
-    extends Assign<HTMLProps<'button'>, ColorPickerFormatTriggerBaseProps> {}
+  export interface ColorPickerFormatTriggerProps extends Assign<
+    HTMLProps<'button'>,
+    ColorPickerFormatTriggerBaseProps
+  > {}
 </script>
 
 <script lang="ts">

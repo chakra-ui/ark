@@ -1,6 +1,8 @@
 <script lang="ts">
   import { useAsyncList } from '@ark-ui/svelte/collection'
   import { useCollator } from '@ark-ui/svelte/locale'
+  import { ArrowDownIcon, ArrowUpDownIcon, ArrowUpIcon, LoaderIcon } from 'lucide-svelte'
+  import styles from 'styles/async-list.module.css'
 
   interface User {
     id: number
@@ -16,7 +18,7 @@
   const list = useAsyncList<User>({
     autoReload: true,
     load: async () => {
-      const response = await fetch('https://jsonplaceholder.typicode.com/users')
+      const response = await fetch('https://jsonplaceholder.typicode.com/users?_limit=5')
       const data = await response.json()
       return { items: data }
     },
@@ -45,33 +47,41 @@
     list().sort({ column, direction })
   }
 
-  const getSortIcon = (column: keyof User) => {
-    const current = list().sortDescriptor
-    if (current?.column !== column) return '↕️'
-    return current.direction === 'ascending' ? '↑' : '↓'
-  }
+  const columns = [
+    { key: 'name', label: 'Name' },
+    { key: 'username', label: 'Username' },
+    { key: 'email', label: 'Email' },
+  ]
 
   const descriptor = $derived(list().sortDescriptor)
 </script>
 
-<div>
-  <div>
-    {#if list().loading}
-      <div>Loading...</div>
-    {/if}
-    {#if list().error}
-      <div>Error: {list().error.message}</div>
-    {/if}
-  </div>
-  <div>Sorted by: {descriptor ? `${descriptor.column} (${descriptor.direction})` : 'none'}</div>
+<div class={styles.Root}>
+  {#if list().loading}
+    <div class={styles.Loading}>
+      <LoaderIcon class={styles.Spinner} /> Loading
+    </div>
+  {/if}
+  {#if list().error}
+    <div class={styles.Error}>Error: {list().error.message}</div>
+  {/if}
+  <div class={styles.Status}>Sorted by: {descriptor ? `${descriptor.column} (${descriptor.direction})` : 'none'}</div>
 
-  <table>
+  <table class={styles.Table}>
     <thead>
       <tr>
-        {#each [{ key: 'name', label: 'Name' }, { key: 'username', label: 'Username' }, { key: 'email', label: 'Email' }, { key: 'phone', label: 'Phone' }, { key: 'website', label: 'Website' }] as { key, label }}
+        {#each columns as { key, label }}
           <th onclick={() => handleSort(key as keyof User)}>
             {label}
-            {getSortIcon(key as keyof User)}
+            {#if list().sortDescriptor?.column === key}
+              {#if list().sortDescriptor?.direction === 'ascending'}
+                <ArrowUpIcon />
+              {:else}
+                <ArrowDownIcon />
+              {/if}
+            {:else}
+              <ArrowUpDownIcon />
+            {/if}
           </th>
         {/each}
       </tr>
@@ -82,8 +92,6 @@
           <td>{user.name}</td>
           <td>{user.username}</td>
           <td>{user.email}</td>
-          <td>{user.phone}</td>
-          <td>{user.website}</td>
         </tr>
       {/each}
     </tbody>

@@ -6,8 +6,10 @@ import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 import type { CollectionItem, ListCollection } from '../collection'
 import { useFieldContext } from '../field'
 
-export interface UseSelectProps<T extends CollectionItem>
-  extends Optional<Omit<select.Props<T>, 'dir' | 'getRootNode' | 'collection'>, 'id'> {
+export interface UseSelectProps<T extends CollectionItem> extends Optional<
+  Omit<select.Props<T>, 'dir' | 'getRootNode' | 'collection'>,
+  'id'
+> {
   /**
    * The collection of items
    */

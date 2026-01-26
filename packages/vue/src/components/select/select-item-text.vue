@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface SelectItemTextBaseProps extends PolymorphicProps {}
 export interface SelectItemTextProps
-  extends SelectItemTextBaseProps,
+  extends
+    SelectItemTextBaseProps,
     /**
      * @vue-ignore
      */

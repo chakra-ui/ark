@@ -7,12 +7,11 @@ import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './combobox.types'
 
 export interface ComboboxRootBaseProps<T extends CollectionItem>
-  extends RootProps<T>,
-    RenderStrategyProps,
-    PolymorphicProps {}
+  extends RootProps<T>, RenderStrategyProps, PolymorphicProps {}
 
 export interface ComboboxRootProps<T extends CollectionItem>
-  extends ComboboxRootBaseProps<T>,
+  extends
+    ComboboxRootBaseProps<T>,
     /**
      * @vue-ignore
      */

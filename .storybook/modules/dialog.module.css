@@ -1,0 +1,231 @@
+/* Dialog Component CSS Module */
+
+.Backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
+
+  &[data-state='open'] {
+    animation: fade-in 0.15s ease-out;
+  }
+
+  &[data-state='closed'] {
+    animation: fade-out 0.1s ease-in;
+  }
+}
+
+.Positioner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
+  /* Prevent overscroll bounce on iOS */
+  overscroll-behavior-y: none;
+  /* Reserve space for scrollbar to prevent layout shift */
+  scrollbar-gutter: stable both-edges;
+}
+
+.Content {
+  --px: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  width: 24rem;
+  max-width: calc(100vw - 2rem);
+  max-height: calc(100vh - 2rem);
+  padding: var(--px);
+  border-radius: 8px;
+  border: 1px solid var(--demo-border);
+  background: var(--demo-bg-popover);
+  box-shadow: var(--demo-shadow-xl);
+  z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
+  outline: 0;
+  transition: transform 0.1s ease-in-out;
+  /* Offset for scrollbar width when body scroll is locked (prevents visual shift) */
+  translate: calc(-1 * var(--scrollbar-width, 0px) / 2) 0;
+
+  &[data-has-nested] {
+    transform: scale(calc(1 - var(--nested-layer-count) * 0.05));
+  }
+
+  &[data-state='open'] {
+    animation: scale-fade-in 0.15s ease-out;
+  }
+
+  &[data-state='closed'] {
+    animation: scale-fade-out 0.1s ease-in;
+  }
+}
+
+.Title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+  color: var(--demo-neutral-fg);
+}
+
+.Description {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--demo-neutral-fg-muted);
+}
+
+.Body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.CloseTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--demo-neutral-emphasized);
+
+  transition: background-color 0.15s ease;
+
+  & svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &:hover {
+    background: var(--demo-neutral-muted);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: -1px;
+  }
+}
+
+.Actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+/* Scroll styles for dialog scroll examples */
+
+.ScrollContainer {
+  flex: 1;
+  min-height: 0;
+  margin: 1rem calc(-1 * var(--px)) 0;
+  padding: 0 var(--px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  /* Custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--demo-neutral-solid) transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--demo-neutral-solid);
+    border-radius: 4px;
+
+    &:hover {
+      background-color: var(--demo-neutral-emphasized);
+    }
+  }
+}
+
+.ScrollSection {
+  & h3 {
+    margin: 0 0 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--demo-neutral-fg);
+  }
+
+  & p {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--demo-neutral-fg-muted);
+  }
+}
+
+/* Outside scroll positioner variant */
+
+.OutsideScrollPositioner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  pointer-events: auto;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes scale-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-fade-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}

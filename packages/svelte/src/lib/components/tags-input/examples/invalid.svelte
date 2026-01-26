@@ -1,26 +1,31 @@
 <script lang="ts">
   import { TagsInput } from '@ark-ui/svelte/tags-input'
   import { XIcon } from 'lucide-svelte'
+  import styles from 'styles/tags-input.module.css'
 </script>
 
-<TagsInput.Root invalid>
-  <TagsInput.Label>Frameworks</TagsInput.Label>
-  <TagsInput.Control>
-    <TagsInput.Context>
-      {#snippet render(tags)}
-        {#each tags().value as value, index (index)}
-          <TagsInput.Item {index} {value}>
-            <TagsInput.ItemPreview>
-              <TagsInput.ItemText>{value}</TagsInput.ItemText>
-              <TagsInput.ItemDeleteTrigger><XIcon /></TagsInput.ItemDeleteTrigger>
+<TagsInput.Root invalid class={styles.Root}>
+  <TagsInput.Context>
+    {#snippet render(tagsInput)}
+      <TagsInput.Label class={styles.Label}>Frameworks</TagsInput.Label>
+      <TagsInput.Control class={styles.Control}>
+        {#each tagsInput().value as value, index (index)}
+          <TagsInput.Item {index} {value} class={styles.Item}>
+            <TagsInput.ItemPreview class={styles.ItemPreview}>
+              <TagsInput.ItemText class={styles.ItemText}>{value}</TagsInput.ItemText>
+              <TagsInput.ItemDeleteTrigger class={styles.ItemDeleteTrigger}>
+                <XIcon />
+              </TagsInput.ItemDeleteTrigger>
             </TagsInput.ItemPreview>
-            <TagsInput.ItemInput />
+            <TagsInput.ItemInput class={styles.ItemInput} />
           </TagsInput.Item>
         {/each}
-      {/snippet}
-    </TagsInput.Context>
-    <TagsInput.Input placeholder="Add Framework" />
-  </TagsInput.Control>
-  <TagsInput.ClearTrigger><XIcon /></TagsInput.ClearTrigger>
+        <TagsInput.Input placeholder="Add Framework" class={styles.Input} />
+        <TagsInput.ClearTrigger class={styles.ClearTrigger}>
+          <XIcon />
+        </TagsInput.ClearTrigger>
+      </TagsInput.Control>
+    {/snippet}
+  </TagsInput.Context>
   <TagsInput.HiddenInput />
 </TagsInput.Root>

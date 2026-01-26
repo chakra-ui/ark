@@ -1,21 +1,26 @@
 import { ColorPicker, parseColor } from '@ark-ui/react/color-picker'
-import { ColorPickerSwatch } from './_template'
+import { CheckIcon } from 'lucide-react'
+import styles from 'styles/color-picker.module.css'
+
+const swatches = ['red', 'pink', 'orange', 'purple']
 
 export const SwatchOnly = () => {
   return (
-    <ColorPicker.Root open defaultValue={parseColor('#eb5e41')}>
-      <ColorPicker.Content>
-        <div>
-          <div>Selected color:</div>
-          <ColorPicker.ValueText />
-        </div>
-        <ColorPicker.SwatchGroup>
-          <ColorPickerSwatch value="red" />
-          <ColorPickerSwatch value="pink" />
-          <ColorPickerSwatch value="orange" />
-          <ColorPickerSwatch value="purple" />
-        </ColorPicker.SwatchGroup>
-      </ColorPicker.Content>
+    <ColorPicker.Root className={styles.Root} inline defaultValue={parseColor('#eb5e41')}>
+      <output>
+        Selected color: <ColorPicker.ValueText className={styles.ValueText} />
+      </output>
+      <ColorPicker.SwatchGroup className={styles.SwatchGroup}>
+        {swatches.map((color) => (
+          <ColorPicker.SwatchTrigger key={color} className={styles.SwatchTrigger} value={color}>
+            <ColorPicker.Swatch className={styles.Swatch} value={color}>
+              <ColorPicker.SwatchIndicator className={styles.SwatchIndicator}>
+                <CheckIcon />
+              </ColorPicker.SwatchIndicator>
+            </ColorPicker.Swatch>
+          </ColorPicker.SwatchTrigger>
+        ))}
+      </ColorPicker.SwatchGroup>
     </ColorPicker.Root>
   )
 }

@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface AvatarRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface AvatarRootProviderProps
-  extends AvatarRootProviderBaseProps,
+  extends
+    AvatarRootProviderBaseProps,
     /**
      * @vue-ignore
      */

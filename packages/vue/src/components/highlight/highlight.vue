@@ -5,7 +5,8 @@ import type { UseHighlightProps } from './use-highlight'
 export interface HighlightBaseProps extends UseHighlightProps {}
 
 export interface HighlightProps
-  extends HighlightBaseProps,
+  extends
+    HighlightBaseProps,
     /**
      * @vue-ignore
      */

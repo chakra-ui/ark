@@ -1,24 +1,33 @@
 <script setup lang="ts">
 import { Checkbox } from '@ark-ui/vue/checkbox'
-import { Field } from '@ark-ui/vue/field'
 import { Fieldset } from '@ark-ui/vue/fieldset'
+import { CheckIcon } from 'lucide-vue-next'
+import checkbox from 'styles/checkbox.module.css'
+import styles from 'styles/fieldset.module.css'
 </script>
 
 <template>
-  <Fieldset.Root>
-    <Fieldset.Legend>Legend</Fieldset.Legend>
-    <Fieldset.HelperText>Fieldset Helper Text</Fieldset.HelperText>
-    <Fieldset.ErrorText>Fieldset Error Text</Fieldset.ErrorText>
-    <Field.Root>
-      <Checkbox.Root>
-        <Checkbox.Label>Checkbox</Checkbox.Label>
-        <Checkbox.Control>
-          <Checkbox.Indicator>✔️</Checkbox.Indicator>
-        </Checkbox.Control>
-        <Checkbox.HiddenInput />
-      </Checkbox.Root>
-      <Field.HelperText>Field Heler Text</Field.HelperText>
-      <Field.ErrorText>Field Error Text</Field.ErrorText>
-    </Field.Root>
+  <Fieldset.Root :class="styles.Root">
+    <Fieldset.Legend :class="styles.Legend">Email Preferences</Fieldset.Legend>
+
+    <Checkbox.Root :class="checkbox.Root" defaultChecked>
+      <Checkbox.Control :class="checkbox.Control">
+        <Checkbox.Indicator :class="checkbox.Indicator">
+          <CheckIcon />
+        </Checkbox.Indicator>
+      </Checkbox.Control>
+      <Checkbox.Label :class="checkbox.Label">Product updates</Checkbox.Label>
+      <Checkbox.HiddenInput />
+    </Checkbox.Root>
+
+    <Checkbox.Root :class="checkbox.Root">
+      <Checkbox.Control :class="checkbox.Control">
+        <Checkbox.Indicator :class="checkbox.Indicator">
+          <CheckIcon />
+        </Checkbox.Indicator>
+      </Checkbox.Control>
+      <Checkbox.Label :class="checkbox.Label">Marketing emails</Checkbox.Label>
+      <Checkbox.HiddenInput />
+    </Checkbox.Root>
   </Fieldset.Root>
 </template>

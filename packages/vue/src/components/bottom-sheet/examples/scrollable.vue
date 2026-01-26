@@ -1,20 +1,23 @@
 <script setup lang="ts">
 import { BottomSheet } from '@ark-ui/vue/bottom-sheet'
+import { XIcon } from 'lucide-vue-next'
+import styles from 'styles/bottom-sheet.module.css'
 </script>
 
 <template>
   <BottomSheet.Root>
-    <BottomSheet.Trigger>Open</BottomSheet.Trigger>
-    <BottomSheet.Backdrop />
-    <BottomSheet.Content>
-      <BottomSheet.Grabber>
-        <BottomSheet.GrabberIndicator />
+    <BottomSheet.Trigger :class="styles.Trigger">Open</BottomSheet.Trigger>
+    <BottomSheet.Backdrop :class="styles.Backdrop" />
+    <BottomSheet.Content :class="styles.Content">
+      <BottomSheet.Grabber :class="styles.Grabber">
+        <BottomSheet.GrabberIndicator :class="styles.GrabberIndicator" />
       </BottomSheet.Grabber>
-      <BottomSheet.Title>Bottom Sheet Title</BottomSheet.Title>
-      <p>This is the content of the bottom sheet.</p>
-      <BottomSheet.CloseTrigger>Close</BottomSheet.CloseTrigger>
-      <div class="scrollable">
-        <div v-for="(_element, index) in Array.from({ length: 100 })" :key="index">Item {{ index }}</div>
+      <BottomSheet.Title :class="styles.Title">Scrollable Bottom Sheet</BottomSheet.Title>
+      <BottomSheet.CloseTrigger :class="styles.CloseTrigger">
+        <XIcon />
+      </BottomSheet.CloseTrigger>
+      <div :class="styles.Scrollable">
+        <div v-for="index in 50" :key="index" :class="styles.ScrollableItem">Item {{ index }}</div>
       </div>
     </BottomSheet.Content>
   </BottomSheet.Root>

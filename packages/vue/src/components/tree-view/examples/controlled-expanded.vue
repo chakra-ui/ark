@@ -2,6 +2,7 @@
 import { TreeView, createTreeCollection } from '@ark-ui/vue/tree-view'
 import { ref } from 'vue'
 import TreeNode from './tree-node.vue'
+import styles from 'styles/tree-view.module.css'
 
 interface Node {
   id: string
@@ -52,9 +53,9 @@ const collection = createTreeCollection<Node>({
 </script>
 
 <template>
-  <TreeView.Root :collection="collection" v-model:expanded-value="expandedValue">
-    <TreeView.Label>Tree</TreeView.Label>
-    <TreeView.Tree>
+  <TreeView.Root :class="styles.Root" :collection="collection" v-model:expanded-value="expandedValue">
+    <TreeView.Label :class="styles.Label">Tree</TreeView.Label>
+    <TreeView.Tree :class="styles.Tree">
       <TreeNode
         v-for="(node, index) in collection.rootNode.children"
         :key="node.id"

@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { Presence } from '@ark-ui/vue/presence'
 import { ref } from 'vue'
+import button from 'styles/button.module.css'
+import styles from 'styles/presence.module.css'
 
 const isPresent = ref(false)
 </script>
 
 <template>
-  <div>
-    <button @click="isPresent = !isPresent">Toggle</button>
-    <Presence :present="isPresent" lazyMount unmountOnExit>Lazy Mount and Unmounted on Exit</Presence>
+  <div class="stack">
+    <button :class="button.Root" @click="isPresent = !isPresent">Toggle</button>
+    <Presence :class="styles.Box" :present="isPresent" lazyMount unmountOnExit>Lazy + Unmount</Presence>
   </div>
 </template>

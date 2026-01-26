@@ -1,20 +1,24 @@
 <script setup lang="ts">
+import { Field } from '@ark-ui/vue/field'
 import { Fieldset, useFieldset } from '@ark-ui/vue/fieldset'
+import field from 'styles/field.module.css'
+import styles from 'styles/fieldset.module.css'
 
 const fieldset = useFieldset()
 </script>
 
 <template>
-  <Fieldset.RootProvider :value="fieldset">
-    <Fieldset.Legend>Contact Information</Fieldset.Legend>
-    <div>
-      <label for="name">Name</label>
-      <input id="name" type="text" required />
-    </div>
-    <div>
-      <label for="email">Email</label>
-      <input id="email" type="email" required />
-    </div>
-    <Fieldset.HelperText>Please fill out all required fields</Fieldset.HelperText>
+  <Fieldset.RootProvider :class="styles.Root" :value="fieldset">
+    <Fieldset.Legend :class="styles.Legend">Contact Details</Fieldset.Legend>
+
+    <Field.Root :class="field.Root">
+      <Field.Label :class="field.Label">Name</Field.Label>
+      <Field.Input :class="field.Input" placeholder="John Doe" />
+    </Field.Root>
+
+    <Field.Root :class="field.Root">
+      <Field.Label :class="field.Label">Email</Field.Label>
+      <Field.Input :class="field.Input" type="email" placeholder="john@example.com" />
+    </Field.Root>
   </Fieldset.RootProvider>
 </template>

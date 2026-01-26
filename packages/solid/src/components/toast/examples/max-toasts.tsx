@@ -1,5 +1,8 @@
+import { Portal } from 'solid-js/web'
 import { Toast, Toaster, createToaster } from '@ark-ui/solid/toast'
-import { XIcon, InfoIcon } from 'lucide-solid'
+import { XIcon } from 'lucide-solid'
+import button from 'styles/button.module.css'
+import styles from 'styles/toast.module.css'
 
 export const MaxToasts = () => {
   const toaster = createToaster({
@@ -14,48 +17,54 @@ export const MaxToasts = () => {
       <div style={{ display: 'flex', 'flex-wrap': 'wrap', gap: '8px' }}>
         <button
           type="button"
+          class={button.Root}
           onClick={() =>
             toaster.create({
-              title: `Toast ${Date.now()}`,
+              title: 'New notification',
               description: 'Maximum of 3 toasts visible at once. Extra toasts are queued.',
               type: 'info',
             })
           }
         >
-          Add Toast
+          Add toast
         </button>
         <button
           type="button"
+          class={button.Root}
           onClick={() => {
-            for (let i = 1; i <= 5; i++) {
+            const messages = [
+              { title: 'Message received', description: 'You have a new message from Sarah.' },
+              { title: 'File uploaded', description: 'Your document has been saved.' },
+              { title: 'Sync complete', description: 'All changes have been synced.' },
+              { title: 'New follower', description: 'John started following you.' },
+              { title: 'Task completed', description: 'Your export is ready for download.' },
+            ]
+            messages.forEach((msg) => {
               toaster.create({
-                title: `Toast ${i}`,
-                description: `This is toast number ${i}`,
+                title: msg.title,
+                description: msg.description,
                 type: 'info',
               })
-            }
+            })
           }}
         >
-          Add 5 Toasts
+          Add 5 toasts
         </button>
       </div>
 
-      <Toaster toaster={toaster}>
-        {(toast) => (
-          <Toast.Root>
-            <div style={{ display: 'flex', 'align-items': 'flex-start', gap: '12px' }}>
-              <InfoIcon />
-              <div style={{ flex: 1 }}>
-                <Toast.Title>{toast().title}</Toast.Title>
-                <Toast.Description>{toast().description}</Toast.Description>
-              </div>
-              <Toast.CloseTrigger>
+      <Portal>
+        <Toaster toaster={toaster}>
+          {(toast) => (
+            <Toast.Root class={styles.Root}>
+              <Toast.Title class={styles.Title}>{toast().title}</Toast.Title>
+              <Toast.Description class={styles.Description}>{toast().description}</Toast.Description>
+              <Toast.CloseTrigger class={styles.CloseTrigger}>
                 <XIcon />
               </Toast.CloseTrigger>
-            </div>
-          </Toast.Root>
-        )}
-      </Toaster>
+            </Toast.Root>
+          )}
+        </Toaster>
+      </Portal>
     </div>
   )
 }

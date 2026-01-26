@@ -33,7 +33,7 @@ export const Hero = () => {
           </Stack>
           <Stack direction={{ base: 'column', sm: 'row' }} gap="3">
             <Button asChild size={{ base: 'xl', md: '2xl' }}>
-              <NextLink href="/docs/overview/introduction">Get Started</NextLink>
+              <NextLink href="/docs/overview/about">Get Started</NextLink>
             </Button>
             <Button asChild size={{ base: 'xl', md: '2xl' }} variant="outline">
               <NextLink href="/docs/components/accordion">Show Components</NextLink>

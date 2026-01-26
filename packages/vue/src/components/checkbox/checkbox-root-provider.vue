@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface CheckboxRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface CheckboxRootProviderProps
-  extends CheckboxRootProviderBaseProps,
+  extends
+    CheckboxRootProviderBaseProps,
     /**
      * @vue-ignore
      */

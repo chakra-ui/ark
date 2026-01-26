@@ -1,0 +1,53 @@
+.Root {
+  color: var(--demo-neutral-fg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.Label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--demo-neutral-fg);
+}
+
+.Control {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.Input {
+  width: 2.5rem;
+  height: 2.5rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  border: 1px solid var(--demo-border);
+  background-color: transparent;
+  color: var(--demo-neutral-fg);
+  outline: none;
+
+  &::placeholder {
+    color: var(--demo-neutral-solid);
+  }
+
+  &:focus-visible {
+    border-color: var(--demo-coral-solid);
+    box-shadow: 0 0 0 1px var(--demo-coral-solid);
+  }
+
+  &[data-disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &[data-invalid] {
+    border-color: var(--demo-error);
+
+    &:focus-visible {
+      border-color: var(--demo-error);
+      box-shadow: 0 0 0 1px var(--demo-error);
+    }
+  }
+}

@@ -6,7 +6,8 @@ import type { RootEmits, RootProps } from './timer.types'
 
 export interface TimerRootBaseProps extends RootProps, PolymorphicProps {}
 export interface TimerRootProps
-  extends TimerRootBaseProps,
+  extends
+    TimerRootBaseProps,
     /**
      * @vue-ignore
      */

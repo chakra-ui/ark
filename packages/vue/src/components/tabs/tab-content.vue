@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface TabContentBaseProps extends ContentProps, PolymorphicProps {}
 export interface TabContentProps
-  extends TabContentBaseProps,
+  extends
+    TabContentBaseProps,
     /**
      * @vue-ignore
      */

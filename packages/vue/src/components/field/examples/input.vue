@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { Field } from '@ark-ui/vue/field'
+import styles from 'styles/field.module.css'
 </script>
 
 <template>
-  <Field.Root>
-    <Field.Label>Label</Field.Label>
-    <Field.Input />
-    <Field.HelperText>Some additional Info</Field.HelperText>
-    <Field.ErrorText>Error Info</Field.ErrorText>
+  <Field.Root :class="styles.Root">
+    <Field.Label :class="styles.Label">Label</Field.Label>
+    <Field.Input :class="styles.Input" />
+    <Field.HelperText :class="styles.HelperText">Some additional Info</Field.HelperText>
+    <Field.ErrorText :class="styles.ErrorText">Error Info</Field.ErrorText>
   </Field.Root>
 </template>

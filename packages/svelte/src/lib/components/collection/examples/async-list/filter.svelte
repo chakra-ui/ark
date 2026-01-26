@@ -1,5 +1,10 @@
 <script lang="ts">
   import { useAsyncList } from '@ark-ui/svelte/collection'
+  import { LoaderIcon } from 'lucide-svelte'
+  import field from 'styles/field.module.css'
+  import styles from 'styles/async-list.module.css'
+
+  const LIMIT = 4
 
   interface User {
     id: number
@@ -35,12 +40,12 @@
   ]
 
   const list = useAsyncList<User>({
-    initialItems: mockUsers.slice(0, 5),
+    initialItems: mockUsers.slice(0, LIMIT),
     async load({ filterText }: { filterText?: string } = {}) {
       await delay(500)
 
       if (!filterText) {
-        return { items: mockUsers.slice(0, 5) }
+        return { items: mockUsers.slice(0, LIMIT) }
       }
 
       const filtered = mockUsers.filter(
@@ -49,43 +54,46 @@
           user.email.toLowerCase().includes(filterText.toLowerCase()),
       )
 
-      return { items: filtered }
+      return { items: filtered.slice(0, LIMIT) }
     },
   })
 </script>
 
-<div>
-  <div>
+<div class={styles.Root}>
+  <div class={styles.Header}>
     <input
+      class={field.Input}
       type="text"
       placeholder="Search users..."
       value={list().filterText}
       oninput={(e) => list().setFilterText(e.currentTarget.value)}
     />
     {#if list().loading}
-      <span>Loading...</span>
+      <span class={styles.Loading}>
+        <LoaderIcon class={styles.Spinner} /> Searching
+      </span>
     {/if}
   </div>
 
   {#if list().error}
-    <div>Error: {list().error.message}</div>
+    <div class={styles.Error}>Error: {list().error.message}</div>
   {/if}
 
-  <div>
+  <div class={styles.ItemGroup}>
     {#each list().items as user}
-      <div>
-        <div>
-          <strong>{user.name}</strong>
-        </div>
-        <div>{user.email}</div>
-        <div>
-          {user.department} • {user.role}
+      <div class={styles.Item}>
+        <div class={styles.ItemContent}>
+          <div class={styles.ItemTitle}>{user.name}</div>
+          <div class={styles.ItemDescription}>{user.email}</div>
+          <div class={styles.ItemMeta}>
+            {user.department} • {user.role}
+          </div>
         </div>
       </div>
     {/each}
   </div>
 
   {#if list().items.length === 0 && !list().loading}
-    <div>No results found</div>
+    <div class={styles.Empty}>No results found</div>
   {/if}
 </div>

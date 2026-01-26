@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import { useAsyncList } from '@ark-ui/vue/collection'
+import { LoaderIcon } from 'lucide-vue-next'
+import button from 'styles/button.module.css'
+import styles from 'styles/async-list.module.css'
+
+const LIMIT = 5
 
 interface Post {
   userId: number
@@ -12,17 +17,16 @@ const list = useAsyncList<Post, number>({
   autoReload: true,
   async load({ cursor }) {
     const page = cursor || 1
-    const limit = 10
-    const start = (page - 1) * limit
+    const start = (page - 1) * LIMIT
 
-    const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=${limit}`)
+    const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=${LIMIT}`)
 
     if (!response.ok) {
       throw new Error('Failed to fetch posts')
     }
 
     const posts: Post[] = await response.json()
-    const hasNextPage = posts.length === limit
+    const hasNextPage = posts.length === LIMIT
 
     return {
       items: posts,
@@ -33,25 +37,30 @@ const list = useAsyncList<Post, number>({
 </script>
 
 <template>
-  <div>
-    <div>
+  <div :class="styles.Root">
+    <div :class="styles.Header">
+      <button v-if="list.cursor" :class="button.Root" @click="list.loadMore()" :disabled="list.loading">
+        <template v-if="list.loading">
+          <LoaderIcon :class="styles.Spinner" />
+          Loading
+        </template>
+        <template v-else>Load More</template>
+      </button>
+    </div>
+
+    <div :class="styles.Status">
       Loaded {{ list.items.length }} posts
       <span v-if="list.cursor">(more available)</span>
     </div>
 
-    <button v-if="list.cursor" @click="list.loadMore()" :disabled="list.loading">
-      {{ list.loading ? 'Loading...' : 'Load More' }}
-    </button>
+    <div v-if="list.error" :class="styles.Error">Error: {{ list.error.message }}</div>
 
-    <div v-if="list.error">Error: {{ list.error.message }}</div>
-
-    <div>
-      <div v-for="(post, index) in list.items" :key="post.id">
-        <div>
-          <strong>{{ index + 1 }}:</strong>
-          <strong>{{ post.title }}</strong>
+    <div :class="styles.ItemGroup">
+      <div v-for="(post, index) in list.items" :key="post.id" :class="styles.Item">
+        <div :class="styles.ItemContent">
+          <div :class="styles.ItemTitle">{{ index + 1 }}. {{ post.title }}</div>
+          <div :class="styles.ItemDescription">{{ post.body }}</div>
         </div>
-        <div>{{ post.body }}</div>
       </div>
     </div>
   </div>

@@ -4,7 +4,6 @@ import BasicExample from './examples/basic.svelte'
 import ConditionalExample from './examples/conditional.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import DisabledExample from './examples/disabled.svelte'
-import InitialValueExample from './examples/initial-value.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 
 const meta: Meta = {
@@ -28,12 +27,6 @@ export const Controlled = {
 export const Disabled = {
   render: () => ({
     Component: DisabledExample,
-  }),
-}
-
-export const InitialValue = {
-  render: () => ({
-    Component: InitialValueExample,
   }),
 }
 

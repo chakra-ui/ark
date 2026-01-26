@@ -10,7 +10,8 @@ interface RootProviderProps {
 
 export interface DatePickerRootProviderBaseProps extends RootProviderProps, RenderStrategyProps, PolymorphicProps {}
 export interface DatePickerRootProviderProps
-  extends DatePickerRootProviderBaseProps,
+  extends
+    DatePickerRootProviderBaseProps,
     /**
      * @vue-ignore
      */

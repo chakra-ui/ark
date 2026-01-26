@@ -5,7 +5,8 @@ import type { DatePickerTableCellPropsContext } from './use-date-picker-table-ce
 
 export interface DatePickerTableCellBaseProps extends DatePickerTableCellPropsContext, PolymorphicProps {}
 export interface DatePickerTableCellProps
-  extends DatePickerTableCellBaseProps,
+  extends
+    DatePickerTableCellBaseProps,
     /**
      * @vue-ignore
      */

@@ -5,7 +5,8 @@ import type { HandleProps } from '@zag-js/image-cropper'
 
 export interface ImageCropperHandleBaseProps extends PolymorphicProps, HandleProps {}
 export interface ImageCropperHandleProps
-  extends ImageCropperHandleBaseProps,
+  extends
+    ImageCropperHandleBaseProps,
     /**
      * @vue-ignore
      */

@@ -1,0 +1,43 @@
+.Root {
+  color: var(--demo-neutral-fg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+.Legend {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  color: var(--demo-neutral-fg);
+  padding: 0;
+  margin-bottom: 0.25rem;
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+}
+
+.HelperText {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--demo-neutral-fg-muted);
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+}
+
+.ErrorText {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--demo-coral-fg);
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+}

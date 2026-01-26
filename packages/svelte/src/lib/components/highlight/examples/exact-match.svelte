@@ -1,10 +1,30 @@
 <script lang="ts">
   import { Highlight } from '@ark-ui/svelte/highlight'
+  import styles from 'styles/highlight.module.css'
 </script>
 
-<div>
-  <p>Without exactMatch (highlights partial matches):</p>
-  <Highlight query="cat" text="The cat is in the category. A cat-like creature." matchAll />
-  <p style="margin-top: 1rem">With exactMatch (highlights whole words only):</p>
-  <Highlight query="cat" text="The cat is in the category. A cat-like creature." exactMatch matchAll />
+<div class={styles.Root}>
+  <div class={styles.Section}>
+    <span class={styles.Label}>Partial Match</span>
+    <p class={styles.Text}>
+      <Highlight
+        class={styles.Mark}
+        query="box"
+        text="The checkbox component renders a box element. Use combobox for autocomplete."
+        matchAll
+      />
+    </p>
+  </div>
+  <div class={styles.Section}>
+    <span class={styles.Label}>Exact Match</span>
+    <p class={styles.Text}>
+      <Highlight
+        class={styles.Mark}
+        query="box"
+        text="The checkbox component renders a box element. Use combobox for autocomplete."
+        exactMatch
+        matchAll
+      />
+    </p>
+  </div>
 </div>

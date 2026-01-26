@@ -1,5 +1,5 @@
 import { frameworks } from '~/lib/frameworks'
-import { categories, getSidebarGroups } from '~/lib/sidebar'
+import { getSidebarGroups } from '~/lib/sidebar'
 
 export const dynamic = 'force-static'
 
@@ -11,15 +11,13 @@ export const GET = async () => {
   const generatePageLinks = (page: { title: string; slug: string }) =>
     frameworks.map((framework) => `- [${page.title}](${generateUrl(framework, page.slug)})`).join('\n')
 
-  const generateCategorySection = (category: string, pages: (typeof sidebarGroups)[number]) => {
-    const header = `# ${category.toUpperCase()}\n`
-    const pageLinks = pages.map(generatePageLinks).join('\n')
+  const generateCategorySection = (group: (typeof sidebarGroups)[number]) => {
+    const header = `# ${group.title.toUpperCase()}\n`
+    const pageLinks = group.items.map(generatePageLinks).join('\n')
     return `${header}\n${pageLinks}`
   }
 
-  const content = categories
-    .map((category, index) => generateCategorySection(category, sidebarGroups[index]))
-    .join('\n\n')
+  const content = sidebarGroups.map(generateCategorySection).join('\n\n')
 
   return new Response(content)
 }

@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface TreeViewBranchIndentGuideBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface TreeViewBranchIndentGuideProps
-    extends Assign<HTMLProps<'div'>, TreeViewBranchIndentGuideBaseProps> {}
+  export interface TreeViewBranchIndentGuideProps extends Assign<
+    HTMLProps<'div'>,
+    TreeViewBranchIndentGuideBaseProps
+  > {}
 </script>
 
 <script lang="ts">

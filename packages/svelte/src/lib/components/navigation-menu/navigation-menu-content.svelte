@@ -3,9 +3,7 @@
   import type { ContentProps } from '@zag-js/navigation-menu'
 
   export interface NavigationMenuContentBaseProps
-    extends Partial<ContentProps>,
-      PolymorphicProps<'div'>,
-      RefAttribute {}
+    extends Partial<ContentProps>, PolymorphicProps<'div'>, RefAttribute {}
   export interface NavigationMenuContentProps extends Assign<HTMLProps<'div'>, NavigationMenuContentBaseProps> {}
 </script>
 

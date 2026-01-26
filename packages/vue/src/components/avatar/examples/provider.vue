@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Avatar, useAvatar } from '@ark-ui/vue/avatar'
+import styles from 'styles/avatar.module.css'
 
 const avatar = useAvatar({
   onStatusChange: (e) => console.log('status changed', e),
@@ -7,8 +8,8 @@ const avatar = useAvatar({
 </script>
 
 <template>
-  <Avatar.RootProvider :value="avatar">
-    <Avatar.Fallback>PA</Avatar.Fallback>
-    <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
+  <Avatar.RootProvider :class="styles.Root" :value="avatar">
+    <Avatar.Fallback :class="styles.Fallback">PA</Avatar.Fallback>
+    <Avatar.Image :class="styles.Image" src="https://i.pravatar.cc/300?u=a" alt="avatar" />
   </Avatar.RootProvider>
 </template>

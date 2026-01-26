@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseStepsItemContext } from './use-steps-item-context'
 
-export interface StepsItemContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseStepsItemContext>
-  }> {}
+export interface StepsItemContextProps extends SlotsType<{
+  default: UnwrapRef<UseStepsItemContext>
+}> {}
 </script>
 
 <script setup lang="ts">

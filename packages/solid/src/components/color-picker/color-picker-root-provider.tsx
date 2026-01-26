@@ -10,9 +10,7 @@ interface RootProviderProps {
 }
 
 export interface ColorPickerRootProviderBaseProps
-  extends RootProviderProps,
-    UsePresenceProps,
-    PolymorphicProps<'div'> {}
+  extends RootProviderProps, UsePresenceProps, PolymorphicProps<'div'> {}
 export interface ColorPickerRootProviderProps extends HTMLProps<'div'>, ColorPickerRootProviderBaseProps {}
 
 export const ColorPickerRootProvider = (props: ColorPickerRootProviderProps) => {

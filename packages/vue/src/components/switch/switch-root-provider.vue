@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface SwitchRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface SwitchRootProviderProps
-  extends SwitchRootProviderBaseProps,
+  extends
+    SwitchRootProviderBaseProps,
     /**
      * @vue-ignore
      */

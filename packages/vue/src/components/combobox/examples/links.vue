@@ -2,21 +2,15 @@
 // biome-ignore lint/style/useImportType: intentional
 import { Combobox, useListCollection } from '@ark-ui/vue/combobox'
 import { useFilter } from '@ark-ui/vue/locale'
+import styles from 'styles/combobox.module.css'
 
 const initialItems = [
-  { label: 'React', href: 'https://react.dev', value: 'react' },
-  { label: 'Solid', href: 'https://solidjs.com', value: 'solid' },
-  { label: 'Vue', href: 'https://vuejs.org', value: 'vue' },
-  { label: 'Svelte', href: 'https://svelte.dev', value: 'svelte' },
-  { label: 'Angular', href: 'https://angular.io', value: 'angular' },
-  { label: 'Ember', href: 'https://emberjs.com', value: 'ember' },
-  { label: 'Backbone', href: 'https://backbonejs.org', value: 'backbone' },
-  { label: 'Polymer', href: 'https://polymer-project.org', value: 'polymer' },
-  { label: 'Preact', href: 'https://preactjs.com', value: 'preact' },
-  { label: 'Alpine', href: 'https://alpinejs.dev', value: 'alpine' },
-  { label: 'Lit', href: 'https://lit.dev', value: 'lit' },
-  { label: 'Qwik', href: 'https://qwik.builder.io', value: 'qwik' },
-  { label: 'Astro', href: 'https://astro.build', value: 'astro' },
+  { label: 'GitHub', href: 'https://github.com', value: 'github' },
+  { label: 'Stack Overflow', href: 'https://stackoverflow.com', value: 'stackoverflow' },
+  { label: 'MDN Web Docs', href: 'https://developer.mozilla.org', value: 'mdn' },
+  { label: 'Dev.to', href: 'https://dev.to', value: 'devto' },
+  { label: 'Hacker News', href: 'https://news.ycombinator.com', value: 'hackernews' },
+  { label: 'Reddit Programming', href: 'https://reddit.com/r/programming', value: 'reddit' },
 ]
 
 const filters = useFilter({ sensitivity: 'base' })
@@ -32,18 +26,32 @@ const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
 </script>
 
 <template>
-  <Combobox.Root :collection="collection" @input-value-change="handleInputChange" selection-behavior="preserve">
-    <Combobox.Label>Framework</Combobox.Label>
-    <Combobox.Control>
-      <Combobox.Input />
+  <Combobox.Root
+    :class="styles.Root"
+    :collection="collection"
+    @input-value-change="handleInputChange"
+    selection-behavior="preserve"
+  >
+    <Combobox.Label :class="styles.Label">Developer Resources</Combobox.Label>
+    <Combobox.Control :class="styles.Control">
+      <Combobox.Input :class="styles.Input" placeholder="e.g. GitHub" />
+      <div :class="styles.Indicators">
+        <Combobox.Trigger :class="styles.Trigger">Open</Combobox.Trigger>
+      </div>
     </Combobox.Control>
     <Teleport to="body">
       <Combobox.Positioner>
-        <Combobox.Content>
-          <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item" :as-child="true">
+        <Combobox.Content :class="styles.Content">
+          <Combobox.Item
+            v-for="item in collection.items"
+            :key="item.value"
+            :item="item"
+            :class="styles.Item"
+            :as-child="true"
+          >
             <a :href="item.href">
-              <Combobox.ItemText>{{ item.label }}</Combobox.ItemText>
-              <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
+              <Combobox.ItemText :class="styles.ItemText">{{ item.label }}</Combobox.ItemText>
+              <Combobox.ItemIndicator :class="styles.ItemIndicator">✓</Combobox.ItemIndicator>
             </a>
           </Combobox.Item>
         </Combobox.Content>

@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface DialogDescriptionBaseProps extends PolymorphicProps {}
 export interface DialogDescriptionProps
-  extends DialogDescriptionBaseProps,
+  extends
+    DialogDescriptionBaseProps,
     /**
      * @vue-ignore
      */

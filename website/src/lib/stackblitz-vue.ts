@@ -89,17 +89,35 @@ const indexHtml = `<!doctype html>
 `
 
 const main = `import { createApp } from 'vue'
-import './style.css'
+import './global.css'
 import App from './App.vue'
 
 createApp(App).mount('#app')`
 
 const viteEnv = `/// <reference types="vite/client" />`
 
-export async function openInStackblitzVue(opts: { code: string; css: string; id: string; component: string }) {
-  const { code, css, id, component } = opts
+function transformCssModuleImports(code: string): string {
+  return code.replace(/from\s+['"]styles\/[^'"]+\.module\.css['"]/g, "from './index.module.css'")
+}
 
-  const files = {
+function generateGlobalCss(cssModules: Record<string, string>): string {
+  const theme = cssModules['theme.css'] ?? ''
+  const utilities = cssModules['utilities.css'] ?? ''
+  const global = (cssModules['global.css'] ?? '').replace(/#root(?![\w-])/g, '#app')
+  return [theme, utilities, global].filter(Boolean).join('\n\n')
+}
+
+export async function openInStackblitzVue(opts: {
+  code: string
+  cssModules: Record<string, string>
+  id: string
+  component: string
+}) {
+  let { code, cssModules, id, component } = opts
+
+  code = transformCssModuleImports(code)
+
+  const files: Record<string, string> = {
     'tsconfig.app.json': JSON.stringify(tsconfigApp, null, 2),
     'tsconfig.node.json': JSON.stringify(tsconfigNode, null, 2),
     'tsconfig.json': JSON.stringify(tsconfig, null, 2),
@@ -107,9 +125,18 @@ export async function openInStackblitzVue(opts: { code: string; css: string; id:
     'vite.config.ts': viteConfig,
     'index.html': indexHtml,
     'src/App.vue': code,
-    'src/style.css': css,
+    'src/global.css': generateGlobalCss(cssModules),
     'src/main.ts': main,
     'src/vite-env.d.ts': viteEnv,
+  }
+
+  const componentCss = Object.entries(cssModules)
+    .filter(([filename]) => filename.endsWith('.module.css'))
+    .map(([, content]) => content)
+    .join('\n\n')
+
+  if (componentCss) {
+    files['src/index.module.css'] = componentCss
   }
 
   sdk.openProject(
@@ -120,7 +147,7 @@ export async function openInStackblitzVue(opts: { code: string; css: string; id:
       files,
     },
     {
-      openFile: 'src/App.tsx',
+      openFile: 'src/App.vue',
       showSidebar: false,
     },
   )

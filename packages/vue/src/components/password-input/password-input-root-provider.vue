@@ -7,7 +7,8 @@ export interface PasswordInputRootProviderBaseProps extends PolymorphicProps {
   value: UnwrapRef<UsePasswordInputReturn>
 }
 export interface PasswordInputRootProviderProps
-  extends PasswordInputRootProviderBaseProps,
+  extends
+    PasswordInputRootProviderBaseProps,
     /**
      * @vue-ignore
      */

@@ -1,19 +1,28 @@
 <script lang="ts">
   import { Menu } from '@ark-ui/svelte/menu'
+  import { ChevronDownIcon } from 'lucide-svelte'
+  import button from 'styles/button.module.css'
+  import styles from 'styles/menu.module.css'
 
   let open = $state(false)
 </script>
 
-<div>Menu is {open ? 'open' : 'closed'}</div>
-
-<Menu.Root bind:open>
-  <Menu.Trigger>Open menu</Menu.Trigger>
-  <Menu.Positioner>
-    <Menu.Content>
-      <Menu.Item value="react">React</Menu.Item>
-      <Menu.Item value="solid">Solid</Menu.Item>
-      <Menu.Item value="svelte">Svelte</Menu.Item>
-      <Menu.Item value="vue">Vue</Menu.Item>
-    </Menu.Content>
-  </Menu.Positioner>
-</Menu.Root>
+<div class="stack">
+  <button type="button" class={button.Root} onclick={() => (open = !open)}>Toggle</button>
+  <Menu.Root bind:open>
+    <Menu.Trigger class={styles.Trigger}>
+      Actions
+      <Menu.Indicator class={styles.Indicator}>
+        <ChevronDownIcon />
+      </Menu.Indicator>
+    </Menu.Trigger>
+    <Menu.Positioner>
+      <Menu.Content class={styles.Content}>
+        <Menu.Item class={styles.Item} value="edit">Edit</Menu.Item>
+        <Menu.Item class={styles.Item} value="duplicate">Duplicate</Menu.Item>
+        <Menu.Item class={styles.Item} value="archive">Archive</Menu.Item>
+        <Menu.Item class={styles.Item} value="delete">Delete</Menu.Item>
+      </Menu.Content>
+    </Menu.Positioner>
+  </Menu.Root>
+</div>

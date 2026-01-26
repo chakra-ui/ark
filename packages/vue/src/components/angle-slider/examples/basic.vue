@@ -1,17 +1,23 @@
 <script setup lang="ts">
 import { AngleSlider } from '@ark-ui/vue/angle-slider'
+import styles from 'styles/angle-slider.module.css'
 </script>
 
 <template>
-  <AngleSlider.Root>
-    <AngleSlider.Label>Wind direction</AngleSlider.Label>
-    <AngleSlider.Control>
-      <AngleSlider.Thumb />
-      <AngleSlider.MarkerGroup>
-        <AngleSlider.Marker v-for="(value, i) in [0, 45, 90, 135, 180, 225, 270, 315]" :key="i" :value="value" />
+  <AngleSlider.Root :class="styles.Root">
+    <AngleSlider.Label :class="styles.Label">Rotation</AngleSlider.Label>
+    <AngleSlider.Control :class="styles.Control">
+      <AngleSlider.MarkerGroup :class="styles.MarkerGroup">
+        <AngleSlider.Marker
+          v-for="value in [0, 45, 90, 135, 180, 225, 270, 315]"
+          :key="value"
+          :value="value"
+          :class="styles.Marker"
+        />
       </AngleSlider.MarkerGroup>
+      <AngleSlider.Thumb :class="styles.Thumb" />
     </AngleSlider.Control>
-    <AngleSlider.ValueText />
+    <AngleSlider.ValueText :class="styles.ValueText" />
     <AngleSlider.HiddenInput />
   </AngleSlider.Root>
 </template>

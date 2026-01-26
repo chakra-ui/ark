@@ -6,7 +6,8 @@ import { usePresenceContext } from '../presence'
 
 export interface DialogContentBaseProps extends PolymorphicProps {}
 export interface DialogContentProps
-  extends DialogContentBaseProps,
+  extends
+    DialogContentBaseProps,
     /**
      * @vue-ignore
      */

@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseNumberInputContext } from './use-number-input-context'
 
-export interface NumberInputContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseNumberInputContext>
-  }> {}
+export interface NumberInputContextProps extends SlotsType<{
+  default: UnwrapRef<UseNumberInputContext>
+}> {}
 </script>
 
 <script setup lang="ts">

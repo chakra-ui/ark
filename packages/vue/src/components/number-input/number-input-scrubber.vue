@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface NumberInputScrubberBaseProps extends PolymorphicProps {}
 export interface NumberInputScrubberProps
-  extends NumberInputScrubberBaseProps,
+  extends
+    NumberInputScrubberBaseProps,
     /**
      * @vue-ignore
      */

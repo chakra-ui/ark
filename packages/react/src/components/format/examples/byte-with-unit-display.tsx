@@ -1,13 +1,18 @@
-import { Format } from '@ark-ui/react'
+import { Format } from '@ark-ui/react/format'
+import styles from 'styles/format.module.css'
 
 export const ByteWithUnitDisplay = () => {
-  const value = 50345.53
   const unitDisplays = ['narrow', 'short', 'long'] as const
 
   return (
-    <div>
+    <div className={styles.List}>
       {unitDisplays.map((unitDisplay) => (
-        <Format.Byte key={unitDisplay} value={value} unitDisplay={unitDisplay} />
+        <div key={unitDisplay} className={styles.ListItem}>
+          <span className={styles.InlineLabel}>{unitDisplay}:</span>
+          <span className={styles.Value}>
+            <Format.Byte value={50345.53} unitDisplay={unitDisplay} />
+          </span>
+        </div>
       ))}
     </div>
   )

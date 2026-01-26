@@ -4,10 +4,7 @@
   import type { UseNavigationMenuProps } from './use-navigation-menu.svelte'
 
   export interface NavigationMenuRootBaseProps
-    extends UseNavigationMenuProps,
-      UsePresenceProps,
-      PolymorphicProps<'nav'>,
-      RefAttribute {}
+    extends UseNavigationMenuProps, UsePresenceProps, PolymorphicProps<'nav'>, RefAttribute {}
   export interface NavigationMenuRootProps extends Assign<HTMLProps<'nav'>, NavigationMenuRootBaseProps> {}
 </script>
 

@@ -1,4 +1,7 @@
 import { useAsyncList } from '@ark-ui/react/collection'
+import { LoaderIcon } from 'lucide-react'
+import button from 'styles/button.module.css'
+import styles from 'styles/async-list.module.css'
 
 interface Quote {
   id: number
@@ -8,8 +11,9 @@ interface Quote {
 
 export const Reload = () => {
   const list = useAsyncList<Quote>({
+    autoReload: true,
     async load() {
-      const response = await fetch(`https://dummyjson.com/quotes?limit=5&skip=${Math.floor(Math.random() * 50)}`)
+      const response = await fetch(`https://dummyjson.com/quotes?limit=4&skip=${Math.floor(Math.random() * 50)}`)
 
       if (!response.ok) {
         throw new Error('Failed to fetch quotes')
@@ -21,20 +25,28 @@ export const Reload = () => {
   })
 
   return (
-    <div>
-      <div>
-        <button onClick={() => list.reload()} disabled={list.loading}>
-          {list.loading ? 'Loading...' : 'Reload Quotes'}
+    <div className={styles.Root}>
+      <div className={styles.Header}>
+        <button className={button.Root} onClick={() => list.reload()} disabled={list.loading}>
+          {list.loading ? (
+            <>
+              <LoaderIcon className={styles.Spinner} /> Loading
+            </>
+          ) : (
+            'Reload Quotes'
+          )}
         </button>
       </div>
 
-      {list.error && <div>Error: {list.error.message}</div>}
+      {list.error && <div className={styles.Error}>Error: {list.error.message}</div>}
 
-      <div>
+      <div className={styles.ItemGroup}>
         {list.items.map((quote) => (
-          <div key={quote.id}>
-            <div>"{quote.quote}"</div>
-            <div>— {quote.author}</div>
+          <div key={quote.id} className={styles.Item}>
+            <div className={styles.ItemContent}>
+              <div className={styles.ItemDescription}>"{quote.quote}"</div>
+              <div className={styles.ItemMeta}>— {quote.author}</div>
+            </div>
           </div>
         ))}
       </div>

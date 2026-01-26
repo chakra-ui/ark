@@ -8,7 +8,7 @@ export default meta
 
 export { Basic } from './examples/basic'
 export { Countdown } from './examples/countdown'
-export { CustomInterval } from './examples/custom-interval'
+export { Interval } from './examples/interval'
 export { Events } from './examples/events'
 export { Pomodoro } from './examples/pomodoro'
 export { RootProvider } from './examples/root-provider'

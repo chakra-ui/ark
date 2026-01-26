@@ -5,7 +5,8 @@ import type { RootEmits, RootProps } from './qr-code.types'
 
 export interface QrCodeRootBaseProps extends RootProps, PolymorphicProps {}
 export interface QrCodeRootProps
-  extends QrCodeRootBaseProps,
+  extends
+    QrCodeRootBaseProps,
     /**
      * @vue-ignore
      */

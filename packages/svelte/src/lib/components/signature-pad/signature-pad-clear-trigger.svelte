@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface SignaturePadClearTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
-  export interface SignaturePadClearTriggerProps
-    extends Assign<HTMLProps<'button'>, SignaturePadClearTriggerBaseProps> {}
+  export interface SignaturePadClearTriggerProps extends Assign<
+    HTMLProps<'button'>,
+    SignaturePadClearTriggerBaseProps
+  > {}
 </script>
 
 <script lang="ts">

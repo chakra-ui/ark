@@ -97,7 +97,7 @@ const indexHtml = `<!doctype html>
 </html>`
 
 const main = `import { mount } from 'svelte'
-import './app.css'
+import './global.css'
 import App from './App.svelte'
 
 const app = mount(App, {
@@ -111,10 +111,28 @@ const appDts = `/// <reference types="svelte" />
 
 export {};`
 
-export async function openInStackblitzSvelte(opts: { code: string; css: string; id: string; component: string }) {
-  const { code, css, id, component } = opts
+function transformCssModuleImports(code: string): string {
+  return code.replace(/from\s+['"]styles\/[^'"]+\.module\.css['"]/g, "from './index.module.css'")
+}
 
-  const files = {
+function generateGlobalCss(cssModules: Record<string, string>): string {
+  const theme = cssModules['theme.css'] ?? ''
+  const utilities = cssModules['utilities.css'] ?? ''
+  const global = (cssModules['global.css'] ?? '').replace(/#root(?![\w-])/g, '#app')
+  return [theme, utilities, global].filter(Boolean).join('\n\n')
+}
+
+export async function openInStackblitzSvelte(opts: {
+  code: string
+  cssModules: Record<string, string>
+  id: string
+  component: string
+}) {
+  let { code, cssModules, id, component } = opts
+
+  code = transformCssModuleImports(code)
+
+  const files: Record<string, string> = {
     'tsconfig.json': JSON.stringify(tsconfig, null, 2),
     'tsconfig.app.json': JSON.stringify(tsconfigApp, null, 2),
     'tsconfig.node.json': JSON.stringify(tsconfigNode, null, 2),
@@ -123,9 +141,18 @@ export async function openInStackblitzSvelte(opts: { code: string; css: string; 
     'svelte.config.js': svelteConfig,
     'index.html': indexHtml,
     'src/App.svelte': code,
-    'src/app.css': css,
+    'src/global.css': generateGlobalCss(cssModules),
     'src/main.ts': main,
     'src/app.d.ts': appDts,
+  }
+
+  const componentCss = Object.entries(cssModules)
+    .filter(([filename]) => filename.endsWith('.module.css'))
+    .map(([, content]) => content)
+    .join('\n\n')
+
+  if (componentCss) {
+    files['src/index.module.css'] = componentCss
   }
 
   sdk.openProject(

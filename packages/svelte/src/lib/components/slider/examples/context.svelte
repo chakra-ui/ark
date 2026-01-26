@@ -1,21 +1,25 @@
 <script lang="ts">
   import { Slider } from '@ark-ui/svelte/slider'
+  import styles from 'styles/slider.module.css'
 </script>
 
-<Slider.Root>
-  <Slider.Label>Label</Slider.Label>
-  <Slider.ValueText />
-  <Slider.Control>
-    <Slider.Track>
-      <Slider.Range />
+<Slider.Root class={styles.Root} defaultValue={[40]}>
+  <Slider.Context>
+    {#snippet render(context)}
+      <div style="display: flex; justify-content: space-between;">
+        <Slider.Label class={styles.Label}>
+          Dragging: {String(context().dragging)}
+        </Slider.Label>
+        <span class={styles.ValueText}>{context().value.join(', ')}</span>
+      </div>
+    {/snippet}
+  </Slider.Context>
+  <Slider.Control class={styles.Control}>
+    <Slider.Track class={styles.Track}>
+      <Slider.Range class={styles.Range} />
     </Slider.Track>
-    <Slider.Thumb index={0}>
+    <Slider.Thumb index={0} class={styles.Thumb}>
       <Slider.HiddenInput />
     </Slider.Thumb>
   </Slider.Control>
-  <Slider.Context>
-    {#snippet render(api)}
-      <p>Value: {api().value}</p>
-    {/snippet}
-  </Slider.Context>
 </Slider.Root>

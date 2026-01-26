@@ -4,18 +4,16 @@ import AcceptedFileTypesExample from './examples/accepted-file-types.svelte'
 import BasicExample from './examples/basic.svelte'
 import ClearTriggerExample from './examples/clear-trigger.svelte'
 import DirectoryUploadExample from './examples/directory-upload.svelte'
-import DragAndDropExample from './examples/drag-and-drop.svelte'
+import DropzoneExample from './examples/dropzone.svelte'
 import ErrorHandlingExample from './examples/error-handling.svelte'
-import FileTransformationsExample from './examples/file-transformations.svelte'
+import FormUsageExample from './examples/form-usage.svelte'
 import InitialFilesExample from './examples/initial-files.svelte'
 import MediaCaptureExample from './examples/media-capture.svelte'
+import PastingFilesExample from './examples/pasting-files.svelte'
 import RejectedFilesExample from './examples/rejected-files.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
-import SingleFileExample from './examples/single-file.svelte'
-import SizeLimitsExample from './examples/size-limits.svelte'
-import ValidationExample from './examples/validation.svelte'
+import TransformFilesExample from './examples/transform-files.svelte'
 import WithFieldExample from './examples/with-field.svelte'
-import WithPasteExample from './examples/with-paste.svelte'
 
 const meta: Meta = {
   title: 'Components/FileUpload',
@@ -41,9 +39,9 @@ export const ClearTrigger = {
   }),
 }
 
-export const DragAndDrop = {
+export const Dropzone = {
   render: () => ({
-    Component: DragAndDropExample,
+    Component: DropzoneExample,
   }),
 }
 
@@ -53,9 +51,9 @@ export const ErrorHandling = {
   }),
 }
 
-export const FileTransformations = {
+export const FormUsage = {
   render: () => ({
-    Component: FileTransformationsExample,
+    Component: FormUsageExample,
   }),
 }
 
@@ -77,6 +75,12 @@ export const MediaCapture = {
   }),
 }
 
+export const PastingFiles = {
+  render: () => ({
+    Component: PastingFilesExample,
+  }),
+}
+
 export const RejectedFiles = {
   render: () => ({
     Component: RejectedFilesExample,
@@ -89,32 +93,14 @@ export const RootProvider = {
   }),
 }
 
-export const SingleFile = {
+export const TransformFiles = {
   render: () => ({
-    Component: SingleFileExample,
-  }),
-}
-
-export const SizeLimits = {
-  render: () => ({
-    Component: SizeLimitsExample,
-  }),
-}
-
-export const Validation = {
-  render: () => ({
-    Component: ValidationExample,
+    Component: TransformFilesExample,
   }),
 }
 
 export const WithField = {
   render: () => ({
     Component: WithFieldExample,
-  }),
-}
-
-export const WithPaste = {
-  render: () => ({
-    Component: WithPasteExample,
   }),
 }

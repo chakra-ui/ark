@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { Steps } from '@ark-ui/vue/steps'
 import { ref } from 'vue'
+import button from 'styles/button.module.css'
+import styles from 'styles/steps.module.css'
 
 const items = [
   { value: 'first', title: 'First', description: 'Contact Info' },
@@ -12,34 +14,31 @@ const currentStep = ref(0)
 </script>
 
 <template>
-  <div>
-    <div>
-      <strong>Current Step:</strong>
-      {{ currentStep }}
-      <button @click="currentStep = 0">Reset to First</button>
-      <button @click="currentStep = items.length - 1">Skip to Last</button>
-    </div>
+  <div class="stack">
+    <output>current step: {{ currentStep + 1 }}</output>
 
-    <Steps.Root v-model:step="currentStep" :count="items.length">
-      <Steps.List>
-        <Steps.Item v-for="(item, index) in items" :key="index" :index="index">
-          <Steps.Trigger>
-            <Steps.Indicator>{{ index + 1 }}</Steps.Indicator>
+    <Steps.Root v-model:step="currentStep" :class="styles.Root" :count="items.length">
+      <Steps.List :class="styles.List">
+        <Steps.Item v-for="(item, index) in items" :key="index" :class="styles.Item" :index="index">
+          <Steps.Trigger :class="styles.Trigger">
+            <Steps.Indicator :class="styles.Indicator">{{ index + 1 }}</Steps.Indicator>
             <span>{{ item.title }}</span>
           </Steps.Trigger>
-          <Steps.Separator />
+          <Steps.Separator :class="styles.Separator" />
         </Steps.Item>
       </Steps.List>
 
-      <Steps.Content v-for="(item, index) in items" :key="index" :index="index">
+      <Steps.Content v-for="(item, index) in items" :key="index" :class="styles.Content" :index="index">
         {{ item.title }} - {{ item.description }}
       </Steps.Content>
 
-      <Steps.CompletedContent>Steps Complete - Thank you for filling out the form!</Steps.CompletedContent>
+      <Steps.CompletedContent :class="styles.CompletedContent">
+        Steps Complete - Thank you for filling out the form!
+      </Steps.CompletedContent>
 
-      <div>
-        <Steps.PrevTrigger>Back</Steps.PrevTrigger>
-        <Steps.NextTrigger>Next</Steps.NextTrigger>
+      <div :class="styles.Actions">
+        <Steps.PrevTrigger :class="button.Root">Back</Steps.PrevTrigger>
+        <Steps.NextTrigger :class="button.Root" data-variant="solid">Next</Steps.NextTrigger>
       </div>
     </Steps.Root>
   </div>

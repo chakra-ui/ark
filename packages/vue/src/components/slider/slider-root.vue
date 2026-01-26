@@ -6,7 +6,8 @@ import type { RootEmits, RootProps } from './slider.types'
 
 export interface SliderRootBaseProps extends RootProps, PolymorphicProps {}
 export interface SliderRootProps
-  extends SliderRootBaseProps,
+  extends
+    SliderRootBaseProps,
     /**
      * @vue-ignore
      */

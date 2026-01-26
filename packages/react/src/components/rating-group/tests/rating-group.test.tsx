@@ -1,8 +1,7 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { WithField } from '../examples/with-field'
-import { ComponentUnderTest } from './basic'
+import { ComponentUnderTest, RatingGroupWithField } from './basic'
 
 describe('Rating Group', () => {
   it('should have no a11y violations', async () => {
@@ -51,38 +50,38 @@ describe('Rating Group', () => {
 
 describe('Rating Group / Field', () => {
   it('should set rating group as required', async () => {
-    render(<WithField required />)
+    render(<RatingGroupWithField required />)
     expect(screen.getByRole('textbox', { hidden: true })).toBeRequired()
   })
 
   it('should set rating group as disabled', async () => {
-    render(<WithField disabled />)
+    render(<RatingGroupWithField disabled />)
     expect(screen.getByRole('textbox', { hidden: true })).toBeDisabled()
   })
 
   it('should set rating group as readonly', async () => {
-    render(<WithField readOnly />)
+    render(<RatingGroupWithField readOnly />)
     expect(screen.getByRole('textbox', { hidden: true })).toHaveAttribute('readonly')
   })
 
   it('should display helper text', async () => {
-    render(<WithField />)
+    render(<RatingGroupWithField />)
     expect(screen.getByText('Additional Info')).toBeInTheDocument()
   })
 
   it('should display error text when error is present', async () => {
-    render(<WithField invalid />)
+    render(<RatingGroupWithField invalid />)
     expect(screen.getByText('Error Info')).toBeInTheDocument()
   })
 
   it('should focus on rating group when label is clicked', async () => {
-    render(<WithField />)
+    render(<RatingGroupWithField />)
     await user.click(screen.getByText(/label/i))
     expect(screen.getByRole('radio', { name: /3 stars/i })).toHaveFocus()
   })
 
   it('should not display error text when no error is present', async () => {
-    render(<WithField />)
+    render(<RatingGroupWithField />)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })

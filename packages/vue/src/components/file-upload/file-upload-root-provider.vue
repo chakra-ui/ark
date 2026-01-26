@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface FileUploadRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface FileUploadRootProviderProps
-  extends FileUploadRootProviderBaseProps,
+  extends
+    FileUploadRootProviderBaseProps,
     /**
      * @vue-ignore
      */

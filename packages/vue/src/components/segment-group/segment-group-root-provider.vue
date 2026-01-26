@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface SegmentGroupRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface SegmentGroupRootProviderProps
-  extends SegmentGroupRootProviderBaseProps,
+  extends
+    SegmentGroupRootProviderBaseProps,
     /**
      * @vue-ignore
      */

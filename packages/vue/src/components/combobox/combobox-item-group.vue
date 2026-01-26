@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface ComboboxItemGroupBaseProps extends Partial<ItemGroupProps>, PolymorphicProps {}
 export interface ComboboxItemGroupProps
-  extends ComboboxItemGroupBaseProps,
+  extends
+    ComboboxItemGroupBaseProps,
     /**
      * @vue-ignore
      */

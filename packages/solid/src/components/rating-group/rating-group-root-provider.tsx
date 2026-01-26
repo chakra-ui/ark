@@ -10,9 +10,7 @@ interface RootProviderProps {
 
 export interface RatingGroupRootProviderBaseProps extends PolymorphicProps<'div'> {}
 export interface RatingGroupRootProviderProps
-  extends HTMLProps<'div'>,
-    RootProviderProps,
-    RatingGroupRootProviderBaseProps {}
+  extends HTMLProps<'div'>, RootProviderProps, RatingGroupRootProviderBaseProps {}
 
 export const RatingGroupRootProvider = (props: RatingGroupRootProviderProps) => {
   const [{ value: ratingGroup }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])

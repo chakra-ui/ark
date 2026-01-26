@@ -14,7 +14,8 @@ export interface FrameEmits {
 }
 
 export interface FrameProps
-  extends FrameBaseProps,
+  extends
+    FrameBaseProps,
     /**
      * @vue-ignore
      */

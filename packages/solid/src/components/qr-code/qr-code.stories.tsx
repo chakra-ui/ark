@@ -8,6 +8,8 @@ export default meta
 
 export { Basic } from './examples/basic'
 export { Controlled } from './examples/controlled'
+export { Download } from './examples/download'
 export { ErrorCorrection } from './examples/error-correction'
+export { Fill } from './examples/fill'
+export { Overlay } from './examples/overlay'
 export { RootProvider } from './examples/root-provider'
-export { WithOverlay } from './examples/with-overlay'

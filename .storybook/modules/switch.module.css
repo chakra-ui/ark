@@ -1,0 +1,63 @@
+.Root {
+  color: var(--demo-neutral-fg);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+}
+
+.Label {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--demo-neutral-fg);
+  user-select: none;
+}
+
+.Control {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 1.5rem;
+  padding: 0.125rem;
+  background: var(--demo-neutral-muted);
+  border-radius: 9999px;
+
+  transition:
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &[data-state='checked'] {
+    background: var(--demo-coral-solid);
+  }
+
+  &[data-focus-visible] {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: 2px;
+  }
+
+  &[data-disabled] {
+  }
+}
+
+.Thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: white;
+  border-radius: 9999px;
+  box-shadow: var(--demo-shadow-sm);
+  transition: transform 0.15s ease;
+
+  &[data-state='checked'] {
+    transform: translateX(1rem);
+  }
+}

@@ -3,9 +3,11 @@ import ActionExample from './examples/action.svelte'
 import BasicExample from './examples/basic.svelte'
 import DurationExample from './examples/duration.svelte'
 import MaxToastsExample from './examples/max-toasts.svelte'
+import PlacementExample from './examples/placement.svelte'
 import PromiseExample from './examples/promise-toast.svelte'
 import TypesExample from './examples/types.svelte'
 import UpdateExample from './examples/update.svelte'
+import VaryingHeightExample from './examples/varying-height.svelte'
 
 const meta: Meta = {
   title: 'Components / Toast',
@@ -52,5 +54,17 @@ export const Types = {
 export const Update = {
   render: () => ({
     Component: UpdateExample,
+  }),
+}
+
+export const Placement = {
+  render: () => ({
+    Component: PlacementExample,
+  }),
+}
+
+export const VaryingHeight = {
+  render: () => ({
+    Component: VaryingHeightExample,
   }),
 }

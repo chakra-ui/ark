@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseToggleContext } from './use-toggle-context'
 
-export interface ToggleContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseToggleContext>
-  }> {}
+export interface ToggleContextProps extends SlotsType<{
+  default: UnwrapRef<UseToggleContext>
+}> {}
 </script>
 
 <script setup lang="ts">

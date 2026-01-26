@@ -2,14 +2,14 @@
   import { Portal } from '@ark-ui/svelte/portal'
   // biome-ignore lint/style/useImportType: intentional
   import { Select, createListCollection } from '@ark-ui/svelte/select'
-  import { ChevronDownIcon } from 'lucide-svelte'
+  import { ChevronsUpDownIcon, XIcon } from 'lucide-svelte'
+  import styles from 'styles/select.module.css'
 
   const items = ['React', 'Solid', 'Vue', 'Svelte']
+  const MAX_SELECTION = 2
+  const hasReachedMax = (value: string[]) => value.length >= MAX_SELECTION
 
   let value = $state<string[]>([])
-  const maxSelected = 2
-
-  const hasReachedMax = (value: string[]) => value.length >= maxSelected
 
   const collection = $derived(
     createListCollection({
@@ -22,31 +22,33 @@
   )
 
   const handleValueChange = (details: Select.ValueChangeDetails) => {
-    if (hasReachedMax(value) && details.value.length) return
+    if (hasReachedMax(value) && details.value.length > value.length) return
     value = details.value
   }
 </script>
 
-<Select.Root {collection} multiple {value} onValueChange={handleValueChange}>
-  <Select.Label>Framework</Select.Label>
-  <Select.Control>
-    <Select.Trigger>
-      <Select.ValueText placeholder="Select a Framework" />
-      <Select.Indicator>
-        <ChevronDownIcon />
+<Select.Root class={styles.Root} {collection} multiple {value} onValueChange={handleValueChange}>
+  <Select.Label class={styles.Label}>Framework</Select.Label>
+  <Select.Control class={styles.Control}>
+    <Select.Trigger class={styles.Trigger}>
+      <Select.ValueText class={styles.ValueText} placeholder="Select" />
+      <Select.Indicator class={styles.Indicator}>
+        <ChevronsUpDownIcon />
       </Select.Indicator>
     </Select.Trigger>
-    <Select.ClearTrigger>Clear</Select.ClearTrigger>
+    <Select.ClearTrigger class={styles.ClearTrigger}>
+      <XIcon />
+    </Select.ClearTrigger>
   </Select.Control>
   <Portal>
     <Select.Positioner>
-      <Select.Content>
-        <Select.ItemGroup>
-          <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
+      <Select.Content class={styles.Content}>
+        <Select.ItemGroup class={styles.ItemGroup}>
+          <Select.ItemGroupLabel class={styles.ItemGroupLabel}>Frameworks</Select.ItemGroupLabel>
           {#each collection.items as item (item.value)}
-            <Select.Item {item}>
-              <Select.ItemText>{item.label}</Select.ItemText>
-              <Select.ItemIndicator>✓</Select.ItemIndicator>
+            <Select.Item class={styles.Item} {item}>
+              <Select.ItemText class={styles.ItemText}>{item.label}</Select.ItemText>
+              <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
             </Select.Item>
           {/each}
         </Select.ItemGroup>

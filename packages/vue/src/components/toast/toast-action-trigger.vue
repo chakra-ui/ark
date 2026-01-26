@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface ToastActionTriggerBaseProps extends PolymorphicProps {}
 export interface ToastActionTriggerProps
-  extends ToastActionTriggerBaseProps,
+  extends
+    ToastActionTriggerBaseProps,
     /**
      * @vue-ignore
      */

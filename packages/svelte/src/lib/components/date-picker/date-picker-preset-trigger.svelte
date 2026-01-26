@@ -3,9 +3,7 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
   export interface DatePickerPresetTriggerBaseProps
-    extends PresetTriggerProps,
-      PolymorphicProps<'button'>,
-      RefAttribute {}
+    extends PresetTriggerProps, PolymorphicProps<'button'>, RefAttribute {}
   export interface DatePickerPresetTriggerProps extends Assign<HTMLProps<'button'>, DatePickerPresetTriggerBaseProps> {}
 </script>
 

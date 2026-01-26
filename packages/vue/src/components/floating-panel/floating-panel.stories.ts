@@ -2,11 +2,11 @@ import type { Meta } from '@storybook/vue3-vite'
 
 import AnchorPositionExample from './examples/anchor-position.vue'
 import BasicExample from './examples/basic.vue'
+import ContextExample from './examples/context.vue'
 import ControlledOpenExample from './examples/controlled-open.vue'
 import ControlledPositionExample from './examples/controlled-position.vue'
 import ControlledSizeExample from './examples/controlled-size.vue'
 import LazyMountExample from './examples/lazy-mount.vue'
-import RenderFnExample from './examples/render-fn.vue'
 
 const meta: Meta = {
   title: 'Components / Floating Panel',
@@ -56,9 +56,9 @@ export const LazyMount = {
   }),
 }
 
-export const RenderFn = {
+export const Context = {
   render: () => ({
-    components: { Component: RenderFnExample },
+    components: { Component: ContextExample },
     template: '<Component />',
   }),
 }

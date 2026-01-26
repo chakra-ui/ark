@@ -6,7 +6,8 @@ import { usePresenceContext } from '../presence'
 
 export interface TourContentBaseProps extends PolymorphicProps {}
 export interface TourContentProps
-  extends TourContentBaseProps,
+  extends
+    TourContentBaseProps,
     /**
      * @vue-ignore
      */

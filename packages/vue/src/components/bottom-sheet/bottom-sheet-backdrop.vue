@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface BottomSheetBackdropBaseProps extends PolymorphicProps {}
 export interface BottomSheetBackdropProps
-  extends BottomSheetBackdropBaseProps,
+  extends
+    BottomSheetBackdropBaseProps,
     /**
      * @vue-ignore
      */

@@ -1,21 +1,22 @@
 <script setup lang="ts">
-import { useForwardPropsEmits } from '@ark-ui/vue'
-import { Collapsible, type CollapsibleRootEmits, type CollapsibleRootProps } from '@ark-ui/vue/collapsible'
+import { Collapsible } from '@ark-ui/vue/collapsible'
 import { ChevronRightIcon } from 'lucide-vue-next'
-
-const props = defineProps<CollapsibleRootProps>()
-const emits = defineEmits<CollapsibleRootEmits>()
-const localProps = useForwardPropsEmits(props, emits)
+import styles from 'styles/collapsible.module.css'
 </script>
 
 <template>
-  <Collapsible.Root v-bind="localProps">
-    <Collapsible.Trigger>
-      Toggle
-      <Collapsible.Indicator>
+  <Collapsible.Root :class="styles.Root">
+    <Collapsible.Trigger :class="styles.Trigger">
+      What is Ark UI?
+      <Collapsible.Indicator :class="styles.Indicator">
         <ChevronRightIcon />
       </Collapsible.Indicator>
     </Collapsible.Trigger>
-    <Collapsible.Content>Content</Collapsible.Content>
+    <Collapsible.Content :class="styles.Content">
+      <div :class="styles.Body">
+        Ark UI is a headless component library for building accessible, high-quality UI components for React, Solid,
+        Vue, and Svelte.
+      </div>
+    </Collapsible.Content>
   </Collapsible.Root>
 </template>

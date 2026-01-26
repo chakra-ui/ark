@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface AvatarFallbackBaseProps extends PolymorphicProps {}
 export interface AvatarFallbackProps
-  extends AvatarFallbackBaseProps,
+  extends
+    AvatarFallbackBaseProps,
     /**
      * @vue-ignore
      */

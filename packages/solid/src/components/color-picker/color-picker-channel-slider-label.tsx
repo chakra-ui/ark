@@ -5,8 +5,7 @@ import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerChannelSliderLabelBaseProps extends PolymorphicProps<'label'> {}
 export interface ColorPickerChannelSliderLabelProps
-  extends HTMLProps<'label'>,
-    ColorPickerChannelSliderLabelBaseProps {}
+  extends HTMLProps<'label'>, ColorPickerChannelSliderLabelBaseProps {}
 
 export const ColorPickerChannelSliderLabel = (props: ColorPickerChannelSliderLabelProps) => {
   const colorPicker = useColorPickerContext()

@@ -2,7 +2,7 @@ import type { Meta } from '@storybook/vue3-vite'
 
 import BasicExample from './examples/basic.vue'
 import ControlledExample from './examples/controlled.vue'
-import RenderPropExample from './examples/render-prop.vue'
+import ContextExample from './examples/context.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import ViewportExample from './examples/viewport.vue'
 
@@ -26,9 +26,9 @@ export const Controlled = {
   }),
 }
 
-export const RenderProp = {
+export const Context = {
   render: () => ({
-    components: { Component: RenderPropExample },
+    components: { Component: ContextExample },
     template: '<Component />',
   }),
 }

@@ -8,7 +8,8 @@ import { useToggleContext } from './use-toggle-context'
 
 export interface ToggleIndicatorBaseProps extends PolymorphicProps {}
 export interface ToggleIndicatorProps
-  extends ToggleIndicatorBaseProps,
+  extends
+    ToggleIndicatorBaseProps,
     /**
      * @vue-ignore
      */

@@ -1,0 +1,157 @@
+.Root {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  &[data-disabled] {
+    opacity: 0.6;
+    filter: grayscale(100%);
+  }
+}
+
+.Label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--demo-neutral-emphasized);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  user-select: none;
+}
+
+.Control {
+  --size: 100px;
+  --thumb-size: 36px;
+  --track-width: 4px;
+
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 9999px;
+  background: var(--demo-neutral-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.06),
+    0 4px 12px -4px rgba(0, 0, 0, 0.1);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: var(--track-width);
+    border-radius: 9999px;
+    background: var(--demo-bg-popover);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--demo-neutral-emphasized);
+    border-radius: 9999px;
+    z-index: 1;
+  }
+
+  &[data-focus] {
+    box-shadow:
+      inset 0 2px 4px rgba(0, 0, 0, 0.06),
+      0 0 0 3px var(--demo-coral-focus-ring);
+  }
+}
+
+.Thumb {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  --thumb-width: 3px;
+  left: calc(50% - var(--thumb-width) / 2);
+  height: 100%;
+  width: var(--thumb-width);
+  outline: none;
+  z-index: 2;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 4px;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: var(--demo-coral-solid);
+    border: 2px solid var(--demo-bg-popover);
+    border-radius: 9999px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.15s ease;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 14px;
+    transform: translateX(-50%);
+    width: 2px;
+    height: calc(var(--size) / 2 - 18px);
+    background: linear-gradient(to bottom, var(--demo-coral-solid), transparent);
+    border-radius: 1px;
+  }
+
+  &:focus-visible::before {
+    box-shadow:
+      0 0 0 3px var(--demo-coral-focus-ring),
+      0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  &:active::before {
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+.MarkerGroup {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.Marker {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  left: calc(50% - 1px);
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 6px;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 6px;
+    background: var(--demo-border-emphasized);
+    border-radius: 1px;
+  }
+
+  &[data-state='at-value']::before {
+    background: var(--demo-coral-solid);
+  }
+
+  &[data-state='under-value']::before {
+    background: var(--demo-coral-muted);
+  }
+}
+
+.ValueText {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--demo-neutral-fg);
+  font-variant-numeric: tabular-nums;
+}

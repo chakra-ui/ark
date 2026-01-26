@@ -5,8 +5,10 @@
   export interface BottomSheetContentBaseProps extends PolymorphicProps<'div'>, ContentProps, RefAttribute {
     ref?: Element | null
   }
-  export interface BottomSheetContentProps
-    extends Assign<Omit<HTMLProps<'div'>, 'draggable'>, BottomSheetContentBaseProps> {}
+  export interface BottomSheetContentProps extends Assign<
+    Omit<HTMLProps<'div'>, 'draggable'>,
+    BottomSheetContentBaseProps
+  > {}
 </script>
 
 <script lang="ts">

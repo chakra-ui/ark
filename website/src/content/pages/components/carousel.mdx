@@ -6,26 +6,26 @@ description: An interactive slideshow component for cycling through elements.
 
 <ComponentPreview id="Carousel" />
 
-## Features
-
-- Native CSS Scroll Snap integration for smooth, performant animations
-- Flexible orientation support (horizontal and vertical layouts)
-- Customizable slide alignment (start, center, or end positions)
-- Multi-slide display capabilities for complex layouts
-- Automatic playback with configurable looping behavior
-- Adjustable slide spacing and gap controls
-
 ## Anatomy
-
-To set up the carousel correctly, you'll need to understand its anatomy and how we name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
 
 <Anatomy id="carousel" />
 
-## Examples
+```tsx
+<Carousel.Root>
+  <Carousel.Control>
+    <Carousel.PrevTrigger />
+    <Carousel.NextTrigger />
+  </Carousel.Control>
+  <Carousel.ItemGroup>
+    <Carousel.Item />
+  </Carousel.ItemGroup>
+  <Carousel.IndicatorGroup>
+    <Carousel.Indicator />
+  </Carousel.IndicatorGroup>
+</Carousel.Root>
+```
 
-Learn how to use the `Carousel` component in your project. Let's take a look at the most basic example:
+## Examples
 
 <Example id="basic" />
 
@@ -38,18 +38,14 @@ when the `onPageChange` event handler is called:
 
 ### Root Provider
 
-Use the `useCarousel` hook to create the carousel store and pass it to the `Carousel.RootProvider` component. This
-allows you to have maximum control over the carousel programmatically.
+An alternative way to control the carousel is to use the `RootProvider` component and the `useCarousel` hook. This way
+you can access the state and methods from outside the component.
 
 <Example id="root-provider" />
-
-> If you're using the `Carousel.RootProvider` component, you don't need to use the `Carousel.Root` component.
 
 ### Autoplay
 
 Pass the `autoplay` and `loop` props to `Carousel.Root` to make the carousel play automatically.
-
-> **Note:** Adding `loop` ensures the carousel keeps going after the last slide.
 
 <Example id="autoplay" />
 
@@ -58,26 +54,23 @@ Pass the `autoplay` and `loop` props to `Carousel.Root` to make the carousel pla
 This feature isn't built-in, but you can use the `play()` and `pause()` methods from `Carousel.Context` to implement
 pause on hover.
 
-Add the `autoplay` and `loop` props to `Carousel.Root`, then attach `onPointerOver` and `onPointerLeave` handlers to
-`Carousel.ItemGroup` that call `api.pause()` and `api.play()` respectively.
-
 <Example id="pause-on-hover" />
 
-### Custom Indicators
+### Thumbnail Indicators
 
-Replace default indicator dots with custom content by wrapping `Carousel.IndicatorGroup` in `Carousel.Context`. Use
-`api.page` to determine the active indicator and render image thumbnails for each slide:
+Replace default indicator dots with image thumbnails. Render each thumbnail inside `Carousel.Indicator` to create a
+visual preview of each slide:
 
-<Example id="custom-indicator" />
+<Example id="thumbnail-indicator" />
 
-### Vertical Orientation
+### Vertical
 
-Set the `orientation="vertical"` prop on `Carousel.Root` to change the carousel from horizontal to vertical scrolling.
-This is useful for vertical galleries or content feeds.
+Add the `orientation="vertical"` prop to `Carousel.Root` to switch the carousel to vertical scrolling. This can be
+helpful for displaying vertical galleries or content feeds.
 
 <Example id="vertical" />
 
-### Dynamic Slides
+### Dynamic
 
 Manage slides dynamically by storing them in state and syncing the carousel page. Pass the `page` prop and
 `onPageChange` handler to `Carousel.Root`, and update `slideCount` when slides are added or removed. This demonstrates
@@ -100,6 +93,21 @@ from `Carousel.Context` to render the correct number of indicators based on page
 
 <Example id="slides-per-page" />
 
+### Spacing
+
+Control the gap between slides using the `spacing` prop on `Carousel.Root`. Combine it with `slidesPerPage` to create
+layouts that show partial previews of adjacent slides.
+
+<Example id="spacing" />
+
+### Variable Sizes
+
+To allow slides with different widths, set the `autoSize` prop on `Carousel.Root`. This lets each `Carousel.Item` define
+its own width, and the carousel will adjust automatically. You can also use the `snapAlign` prop on individual items to
+control where each one snaps into view.
+
+<Example id="variable-size" />
+
 ## API Reference
 
 ### Props
@@ -107,8 +115,6 @@ from `Carousel.Context` to render the correct number of indicators based on page
 <ComponentTypes id="carousel" />
 
 ### Context
-
-These are the properties available when using `Carousel.Context`, `useCarouselContext` hook or `useCarousel` hook.
 
 <ContextType id="carousel" />
 

@@ -6,19 +6,39 @@ description: Used to record the time elapsed from zero or since a specified targ
 
 <ComponentPreview id="Timer" />
 
-## Examples
+## Anatomy
 
-Learn how to use the `Timer` component in your project. Let's take a look at the most basic example:
+<Anatomy id="timer" />
+
+```tsx
+<Timer.Root>
+  <Timer.Area>
+    <Timer.Item />
+    <Timer.Separator />
+  </Timer.Area>
+  <Timer.Control>
+    <Timer.ActionTrigger />
+  </Timer.Control>
+</Timer.Root>
+```
+
+## Examples
 
 <Example id="basic" />
 
-### Countdown Timer
+### Countdown
 
-You can create a countdown timer by setting the `targetMs` prop to a future timestamp:
+You can create a countdown timer by setting the `countdown` prop to `true` and `startMs` to the initial time:
 
 <Example id="countdown" />
 
-### Timer Events
+### Interval
+
+Use the `interval` prop to control how frequently the timer updates. This is useful for displaying milliseconds:
+
+<Example id="interval" />
+
+### Events
 
 The Timer component provides events that you can listen to for various timer-related actions.
 
@@ -27,14 +47,18 @@ The Timer component provides events that you can listen to for various timer-rel
 
 <Example id="events" />
 
-### Using the Root Provider
+### Pomodoro
 
-The `RootProvider` component provides a context for the timer. It accepts the value of the `useTimer` hook. You can
-leverage it to access the component state and methods from outside the timer.
+Here's an example of building a pomodoro timer that alternates between work and break sessions:
+
+<Example id="pomodoro" />
+
+### Root Provider
+
+An alternative way to control the timer is to use the `RootProvider` component and the `useTimer` hook. This way you can
+access the state and methods from outside the component.
 
 <Example id="root-provider" />
-
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
 
 ## API Reference
 
@@ -43,7 +67,5 @@ leverage it to access the component state and methods from outside the timer.
 <ComponentTypes id="timer" />
 
 ### Context
-
-These are the properties available when using `Timer.Context`, `useTimerContext` hook or `useTimer` hook.
 
 <ContextType id="timer" />

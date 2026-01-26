@@ -5,7 +5,8 @@ import type { RootProps } from './scroll-area.types'
 
 export interface ScrollAreaRootBaseProps extends RootProps, PolymorphicProps {}
 export interface ScrollAreaRootProps
-  extends ScrollAreaRootBaseProps,
+  extends
+    ScrollAreaRootBaseProps,
     /**
      * @vue-ignore
      */

@@ -1,25 +1,34 @@
 <script lang="ts">
   import { Listbox, createListCollection, useListbox } from '@ark-ui/svelte/listbox'
+  import CheckIcon from 'lucide-svelte/icons/check'
+  import button from 'styles/button.module.css'
+  import styles from 'styles/listbox.module.css'
 
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
+  const collection = createListCollection({
+    items: [
+      { label: 'Low', value: 'low' },
+      { label: 'Medium', value: 'medium' },
+      { label: 'High', value: 'high' },
+      { label: 'Critical', value: 'critical' },
+    ],
+  })
 
-  const id = $props.id()
-  const listbox = useListbox({ collection, id })
+  const listbox = useListbox({ collection })
 </script>
 
-<Listbox.RootProvider value={listbox}>
-  <Listbox.Label>Select your Framework</Listbox.Label>
-  <Listbox.Content>
-    {#each collection.items as item}
-      <Listbox.Item {item}>
-        <Listbox.ItemText>{item}</Listbox.ItemText>
-        <Listbox.ItemIndicator />
-      </Listbox.Item>
-    {/each}
-  </Listbox.Content>
-</Listbox.RootProvider>
-
-<div>
-  <p>Selected: {JSON.stringify(listbox().value)}</p>
-  <button onclick={() => listbox().clearValue()}>Clear Selection</button>
+<div class="stack">
+  <button class={button.Root} onclick={() => listbox().setValue(['high'])}>Set to High</button>
+  <Listbox.RootProvider class={styles.Root} value={listbox}>
+    <Listbox.Label class={styles.Label}>Select Priority</Listbox.Label>
+    <Listbox.Content class={styles.Content}>
+      {#each collection.items as item (item.value)}
+        <Listbox.Item class={styles.Item} {item}>
+          <Listbox.ItemText class={styles.ItemText}>{item.label}</Listbox.ItemText>
+          <Listbox.ItemIndicator class={styles.ItemIndicator}>
+            <CheckIcon />
+          </Listbox.ItemIndicator>
+        </Listbox.Item>
+      {/each}
+    </Listbox.Content>
+  </Listbox.RootProvider>
 </div>

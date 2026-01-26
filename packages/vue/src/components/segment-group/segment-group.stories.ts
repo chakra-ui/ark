@@ -1,13 +1,13 @@
 import type { Meta } from '@storybook/vue3-vite'
 
 import BasicExample from './examples/basic.vue'
+import ConditionalExample from './examples/conditional.vue'
 import ControlledExample from './examples/controlled.vue'
 import DisabledExample from './examples/disabled.vue'
-import InitialValueExample from './examples/initial-value.vue'
 import RootProviderExample from './examples/root-provider.vue'
 
 const meta: Meta = {
-  title: 'Components / SegmentGroup',
+  title: 'Components / Segment Group',
 }
 
 export default meta
@@ -33,9 +33,9 @@ export const Disabled = {
   }),
 }
 
-export const InitialValue = {
+export const Conditional = {
   render: () => ({
-    components: { Component: InitialValueExample },
+    components: { Component: ConditionalExample },
     template: '<Component />',
   }),
 }

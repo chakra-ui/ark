@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseScrollAreaContext } from './use-scroll-area-context'
 
-export interface ScrollAreaContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseScrollAreaContext>
-  }> {}
+export interface ScrollAreaContextProps extends SlotsType<{
+  default: UnwrapRef<UseScrollAreaContext>
+}> {}
 </script>
 
 <script setup lang="ts">

@@ -22,7 +22,8 @@
       }
     ],
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "@examples/*": ["../packages/react/src/components/*"]
     }
   },
   "include": ["next-env.d.ts", "global-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

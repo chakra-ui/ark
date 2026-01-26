@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface SliderRangeBaseProps extends PolymorphicProps {}
 export interface SliderRangeProps
-  extends SliderRangeBaseProps,
+  extends
+    SliderRangeBaseProps,
     /**
      * @vue-ignore
      */

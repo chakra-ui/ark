@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface ScrollAreaContentBaseProps extends PolymorphicProps {}
 export interface ScrollAreaContentProps
-  extends ScrollAreaContentBaseProps,
+  extends
+    ScrollAreaContentBaseProps,
     /**
      * @vue-ignore
      */

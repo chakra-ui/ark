@@ -3,9 +3,7 @@
   import type { UseDatePickerTableCellPropsContext } from './use-date-picker-table-cell-props-context.js'
 
   export interface DatePickerTableCellBaseProps
-    extends ReturnType<UseDatePickerTableCellPropsContext>,
-      PolymorphicProps<'td'>,
-      RefAttribute {}
+    extends ReturnType<UseDatePickerTableCellPropsContext>, PolymorphicProps<'td'>, RefAttribute {}
   export interface DatePickerTableCellProps extends Assign<HTMLProps<'td'>, DatePickerTableCellBaseProps> {}
 </script>
 

@@ -4,8 +4,7 @@ import BasicExample from './examples/basic.vue'
 import ContextExample from './examples/context.vue'
 import ControlledExample from './examples/controlled.vue'
 import CopyStatusExample from './examples/copy-status.vue'
-import CustomTimeoutExample from './examples/custom-timeout.vue'
-import ProgrammaticExample from './examples/programmatic.vue'
+import TimeoutExample from './examples/timeout.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import ValueTextExample from './examples/value-text.vue'
 
@@ -43,16 +42,9 @@ export const CopyStatus = {
   }),
 }
 
-export const CustomTimeout = {
+export const Timeout = {
   render: () => ({
-    components: { Component: CustomTimeoutExample },
-    template: '<Component />',
-  }),
-}
-
-export const Programmatic = {
-  render: () => ({
-    components: { Component: ProgrammaticExample },
+    components: { Component: TimeoutExample },
     template: '<Component />',
   }),
 }

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { Toast, Toaster, createToaster } from '@ark-ui/vue/toast'
-import { XIcon, LoaderIcon, CircleCheckIcon, CircleAlertIcon } from 'lucide-vue-next'
+import { X, LoaderIcon, CircleCheckIcon, CircleAlertIcon, InfoIcon } from 'lucide-vue-next'
+import button from 'styles/button.module.css'
+import styles from 'styles/toast.module.css'
 
 const toaster = createToaster({
   overlap: true,
@@ -19,16 +21,16 @@ const uploadFile = () => {
 const handleUpload = async () => {
   toaster.promise(uploadFile, {
     loading: {
-      title: 'Uploading...',
-      description: 'Please wait while we process your request.',
+      title: 'Uploading file...',
+      description: 'Please wait while we process your file.',
     },
     success: {
-      title: 'Success!',
-      description: 'Your request has been processed successfully.',
+      title: 'Upload complete',
+      description: 'Your file has been uploaded successfully.',
     },
     error: {
-      title: 'Failed',
-      description: 'Something went wrong. Please try again.',
+      title: 'Upload failed',
+      description: 'There was an error uploading your file. Please try again.',
     },
   })
 }
@@ -37,29 +39,31 @@ const iconMap = {
   loading: LoaderIcon,
   success: CircleCheckIcon,
   error: CircleAlertIcon,
+  info: InfoIcon,
 }
 </script>
 
 <template>
   <div>
-    <button type="button" @click="handleUpload">Start Process</button>
+    <button type="button" :class="button.Root" @click="handleUpload">Upload file</button>
 
-    <Toaster :toaster="toaster" v-slot="toast">
-      <Toast.Root>
-        <div style="display: flex; align-items: flex-start; gap: 12px">
-          <component
-            :is="toast.type ? iconMap[toast.type as keyof typeof iconMap] : undefined"
-            :style="toast.type === 'loading' ? 'animation: spin 1s linear infinite;' : ''"
-          />
-          <div style="flex: 1">
-            <Toast.Title>{{ toast.title }}</Toast.Title>
-            <Toast.Description>{{ toast.description }}</Toast.Description>
-          </div>
-          <Toast.CloseTrigger>
-            <XIcon />
+    <Teleport to="body">
+      <Toaster :toaster="toaster" v-slot="toast">
+        <Toast.Root :class="styles.Root">
+          <Toast.Title :class="styles.Title">
+            <component
+              :is="toast.type ? iconMap[toast.type as keyof typeof iconMap] : InfoIcon"
+              :class="styles.Indicator"
+              :style="toast.type === 'loading' ? 'animation: spin 1s linear infinite;' : ''"
+            />
+            {{ toast.title }}
+          </Toast.Title>
+          <Toast.Description :class="styles.Description">{{ toast.description }}</Toast.Description>
+          <Toast.CloseTrigger :class="styles.CloseTrigger">
+            <X />
           </Toast.CloseTrigger>
-        </div>
-      </Toast.Root>
-    </Toaster>
+        </Toast.Root>
+      </Toaster>
+    </Teleport>
   </div>
 </template>

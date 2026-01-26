@@ -6,8 +6,7 @@ import { useSplitterResizeTriggerPropsContext } from './use-splitter-resize-trig
 
 export interface SplitterResizeTriggerIndicatorBaseProps extends PolymorphicProps {}
 export interface SplitterResizeTriggerIndicatorProps
-  extends HTMLProps<'div'>,
-    SplitterResizeTriggerIndicatorBaseProps {}
+  extends HTMLProps<'div'>, SplitterResizeTriggerIndicatorBaseProps {}
 
 export const SplitterResizeTriggerIndicator = forwardRef<HTMLDivElement, SplitterResizeTriggerIndicatorProps>(
   (props, ref) => {

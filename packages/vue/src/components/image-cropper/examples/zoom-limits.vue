@@ -1,0 +1,51 @@
+<script setup lang="ts">
+import { ImageCropper } from '@ark-ui/vue/image-cropper'
+import { ZoomIn, ZoomOut } from 'lucide-vue-next'
+import { ref } from 'vue'
+import button from 'styles/button.module.css'
+import styles from 'styles/image-cropper.module.css'
+
+const zoom = ref(1)
+const minZoom = 0.5
+const maxZoom = 2
+</script>
+
+<template>
+  <div :class="styles.Layout">
+    <div :class="button.Group">
+      <button :class="button.Root" @click="zoom = Math.max(minZoom, zoom - 0.1)">
+        <ZoomOut />
+      </button>
+      <span :style="{ fontSize: '0.875rem', padding: '0 0.5rem', minWidth: '3rem', textAlign: 'center' }">
+        {{ zoom.toFixed(1) }}x
+      </span>
+      <button :class="button.Root" @click="zoom = Math.min(maxZoom, zoom + 0.1)">
+        <ZoomIn />
+      </button>
+    </div>
+
+    <p :class="styles.Description">Zoom constrained between {{ minZoom }}x and {{ maxZoom }}x</p>
+
+    <ImageCropper.Root :class="styles.Root" v-model:zoom="zoom" :minZoom="minZoom" :maxZoom="maxZoom">
+      <ImageCropper.Viewport :class="styles.Viewport">
+        <ImageCropper.Image
+          :class="styles.Image"
+          src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800"
+          alt="Sample"
+        />
+        <ImageCropper.Selection :class="styles.Selection">
+          <ImageCropper.Handle
+            v-for="position in ImageCropper.handles"
+            :key="position"
+            :class="styles.Handle"
+            :position="position"
+          >
+            <div />
+          </ImageCropper.Handle>
+          <ImageCropper.Grid :class="styles.Grid" axis="horizontal" />
+          <ImageCropper.Grid :class="styles.Grid" axis="vertical" />
+        </ImageCropper.Selection>
+      </ImageCropper.Viewport>
+    </ImageCropper.Root>
+  </div>
+</template>

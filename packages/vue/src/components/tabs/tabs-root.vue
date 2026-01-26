@@ -7,7 +7,8 @@ import type { RootEmits, RootProps } from './tabs.types'
 
 export interface TabsRootBaseProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface TabsRootProps
-  extends TabsRootBaseProps,
+  extends
+    TabsRootBaseProps,
     /**
      * @vue-ignore
      */

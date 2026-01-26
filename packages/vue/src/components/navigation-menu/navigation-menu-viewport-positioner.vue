@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface NavigationMenuViewportPositionerBaseProps extends ViewportProps, PolymorphicProps {}
 export interface NavigationMenuViewportPositionerProps
-  extends NavigationMenuViewportPositionerBaseProps,
+  extends
+    NavigationMenuViewportPositionerBaseProps,
     /**
      * @vue-ignore
      */
@@ -13,18 +14,23 @@ export interface NavigationMenuViewportPositionerProps
 </script>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { ark } from '../factory'
 import { useNavigationMenuContext } from './use-navigation-menu-context'
+import { setNavigationMenuViewportPropsContext } from './use-navigation-menu-viewport-props-context'
 import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<NavigationMenuViewportPositionerProps>()
 const navigationMenu = useNavigationMenuContext()
 
+const viewportProps = computed(() => ({ align: props.align }))
+setNavigationMenuViewportPropsContext(viewportProps)
+
 useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="navigationMenu.getViewportPositionerProps(props)" :as-child="asChild">
+  <ark.div v-bind="navigationMenu.getViewportPositionerProps(viewportProps)" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

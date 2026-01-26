@@ -1,5 +1,8 @@
+import { Portal } from '@ark-ui/react/portal'
 import { Toast, Toaster, createToaster } from '@ark-ui/react/toast'
 import { XIcon, ClockIcon } from 'lucide-react'
+import button from 'styles/button.module.css'
+import styles from 'styles/toast.module.css'
 
 const toaster = createToaster({
   overlap: true,
@@ -22,10 +25,11 @@ export const Duration = () => {
           <button
             key={duration.label}
             type="button"
+            className={button.Root}
             onClick={() =>
               toaster.create({
-                title: `Toast (${duration.label})`,
-                description: `This toast will ${
+                title: 'Reminder set',
+                description: `This notification will ${
                   duration.value === Infinity ? 'stay until dismissed' : `disappear in ${duration.label}`
                 }.`,
                 type: 'info',
@@ -38,22 +42,22 @@ export const Duration = () => {
         ))}
       </div>
 
-      <Toaster toaster={toaster}>
-        {(toast) => (
-          <Toast.Root key={toast.id}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-              <ClockIcon />
-              <div style={{ flex: 1 }}>
-                <Toast.Title>{toast.title}</Toast.Title>
-                <Toast.Description>{toast.description}</Toast.Description>
-              </div>
-              <Toast.CloseTrigger>
+      <Portal>
+        <Toaster toaster={toaster}>
+          {(toast) => (
+            <Toast.Root key={toast.id} className={styles.Root}>
+              <Toast.Title className={styles.Title}>
+                <ClockIcon className={styles.Indicator} />
+                {toast.title}
+              </Toast.Title>
+              <Toast.Description className={styles.Description}>{toast.description}</Toast.Description>
+              <Toast.CloseTrigger className={styles.CloseTrigger}>
                 <XIcon />
               </Toast.CloseTrigger>
-            </div>
-          </Toast.Root>
-        )}
-      </Toaster>
+            </Toast.Root>
+          )}
+        </Toaster>
+      </Portal>
     </div>
   )
 }

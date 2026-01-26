@@ -1,15 +1,16 @@
 <script setup lang="ts">
 // biome-ignore lint/style/useImportType: intentional
 import { Select, createListCollection } from '@ark-ui/vue/select'
-import { ChevronDownIcon } from 'lucide-vue-next'
+import { ChevronsUpDownIcon, XIcon } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
+import styles from 'styles/select.module.css'
 
 const items = ['React', 'Solid', 'Vue', 'Svelte']
 
 const value = ref<string[]>([])
-const maxSelected = 2
+const MAX_SELECTION = 2
 
-const hasReachedMax = (value: string[]) => value.length >= maxSelected
+const hasReachedMax = (value: string[]) => value.length >= MAX_SELECTION
 
 const collection = computed(() =>
   createListCollection({
@@ -22,31 +23,33 @@ const collection = computed(() =>
 )
 
 const handleValueChange = (details: Select.ValueChangeDetails) => {
-  if (hasReachedMax(value.value) && details.value.length) return
+  if (hasReachedMax(value.value) && details.value.length > value.value.length) return
   value.value = details.value
 }
 </script>
 
 <template>
-  <Select.Root :collection="collection" multiple :value="value" @value-change="handleValueChange">
-    <Select.Label>Framework</Select.Label>
-    <Select.Control>
-      <Select.Trigger>
-        <Select.ValueText placeholder="Select a Framework" />
-        <Select.Indicator>
-          <ChevronDownIcon />
+  <Select.Root :class="styles.Root" :collection="collection" multiple :value="value" @value-change="handleValueChange">
+    <Select.Label :class="styles.Label">Framework</Select.Label>
+    <Select.Control :class="styles.Control">
+      <Select.Trigger :class="styles.Trigger">
+        <Select.ValueText :class="styles.ValueText" placeholder="Select" />
+        <Select.Indicator :class="styles.Indicator">
+          <ChevronsUpDownIcon />
         </Select.Indicator>
       </Select.Trigger>
-      <Select.ClearTrigger>Clear</Select.ClearTrigger>
+      <Select.ClearTrigger :class="styles.ClearTrigger">
+        <XIcon />
+      </Select.ClearTrigger>
     </Select.Control>
     <Teleport to="body">
       <Select.Positioner>
-        <Select.Content>
-          <Select.ItemGroup>
-            <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-            <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
-              <Select.ItemText>{{ item.label }}</Select.ItemText>
-              <Select.ItemIndicator>✓</Select.ItemIndicator>
+        <Select.Content :class="styles.Content">
+          <Select.ItemGroup :class="styles.ItemGroup">
+            <Select.ItemGroupLabel :class="styles.ItemGroupLabel">Frameworks</Select.ItemGroupLabel>
+            <Select.Item v-for="item in collection.items" :key="item.value" :item="item" :class="styles.Item">
+              <Select.ItemText :class="styles.ItemText">{{ item.label }}</Select.ItemText>
+              <Select.ItemIndicator :class="styles.ItemIndicator">✓</Select.ItemIndicator>
             </Select.Item>
           </Select.ItemGroup>
         </Select.Content>

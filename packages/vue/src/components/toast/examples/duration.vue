@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { Toast, Toaster, createToaster } from '@ark-ui/vue/toast'
-import { XIcon, ClockIcon } from 'lucide-vue-next'
+import { X } from 'lucide-vue-next'
+import button from 'styles/button.module.css'
+import styles from 'styles/toast.module.css'
 
 const toaster = createToaster({
   overlap: true,
@@ -23,12 +25,14 @@ const durations = [
         v-for="duration in durations"
         :key="duration.label"
         type="button"
+        :class="button.Root"
         @click="
           toaster.create({
-            title: `Toast (${duration.label})`,
-            description: `This toast will ${
-              duration.value === Infinity ? 'stay until dismissed' : `disappear in ${duration.label}`
-            }.`,
+            title: `Duration: ${duration.label}`,
+            description:
+              duration.value === Infinity
+                ? 'This toast will stay until you dismiss it.'
+                : `This toast will automatically close in ${duration.label}.`,
             type: 'info',
             duration: duration.value,
           })
@@ -38,19 +42,16 @@ const durations = [
       </button>
     </div>
 
-    <Toaster :toaster="toaster" v-slot="toast">
-      <Toast.Root>
-        <div style="display: flex; align-items: flex-start; gap: 12px">
-          <ClockIcon />
-          <div style="flex: 1">
-            <Toast.Title>{{ toast.title }}</Toast.Title>
-            <Toast.Description>{{ toast.description }}</Toast.Description>
-          </div>
-          <Toast.CloseTrigger>
-            <XIcon />
+    <Teleport to="body">
+      <Toaster :toaster="toaster" v-slot="toast">
+        <Toast.Root :class="styles.Root">
+          <Toast.Title :class="styles.Title">{{ toast.title }}</Toast.Title>
+          <Toast.Description :class="styles.Description">{{ toast.description }}</Toast.Description>
+          <Toast.CloseTrigger :class="styles.CloseTrigger">
+            <X />
           </Toast.CloseTrigger>
-        </div>
-      </Toast.Root>
-    </Toaster>
+        </Toast.Root>
+      </Toaster>
+    </Teleport>
   </div>
 </template>

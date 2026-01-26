@@ -9,5 +9,7 @@ export default meta
 export { Basic } from './examples/basic'
 export { Duration } from './examples/duration'
 export { MaxToasts } from './examples/max-toasts'
+export { Placement } from './examples/placement'
 export { PromiseToast } from './examples/promise-toast'
 export { Types } from './examples/types'
+export { VaryingHeight } from './examples/varying-height'

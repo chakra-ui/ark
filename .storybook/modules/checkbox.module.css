@@ -1,0 +1,70 @@
+.Root {
+  color: var(--demo-neutral-fg);
+  display: inline-flex;
+  align-items: center;
+  vertical-align: top;
+  gap: 0.5rem;
+  position: relative;
+
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+}
+
+.Label {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  user-select: none;
+  color: var(--demo-neutral-fg);
+}
+
+.Control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.25rem;
+  background: transparent;
+  color: var(--demo-coral-contrast);
+
+  &[data-state='checked'],
+  &[data-state='indeterminate'] {
+    background: var(--demo-coral-solid);
+    border-color: var(--demo-coral-solid);
+  }
+
+  &[data-focus-visible] {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: 2px;
+  }
+
+  &[data-invalid] {
+    border-color: var(--demo-error);
+  }
+
+  &[data-invalid][data-focus-visible] {
+    border-color: var(--demo-error);
+    box-shadow: 0 0 0 1px var(--demo-error);
+  }
+
+  & svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+}
+
+.Indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

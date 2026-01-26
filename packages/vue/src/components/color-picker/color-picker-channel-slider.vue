@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface ColorPickerChannelSliderBaseProps extends ChannelProps, PolymorphicProps {}
 export interface ColorPickerChannelSliderProps
-  extends ColorPickerChannelSliderBaseProps,
+  extends
+    ColorPickerChannelSliderBaseProps,
     /**
      * @vue-ignore
      */

@@ -10,9 +10,7 @@ interface RootProviderProps {
 
 export interface ImageCropperRootProviderBaseProps extends PolymorphicProps<'div'> {}
 export interface ImageCropperRootProviderProps
-  extends HTMLProps<'div'>,
-    RootProviderProps,
-    ImageCropperRootProviderBaseProps {}
+  extends HTMLProps<'div'>, RootProviderProps, ImageCropperRootProviderBaseProps {}
 
 export const ImageCropperRootProvider = (props: ImageCropperRootProviderProps) => {
   const [{ value: imageCropper }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])

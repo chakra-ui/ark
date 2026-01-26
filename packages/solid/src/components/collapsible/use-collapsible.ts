@@ -7,18 +7,16 @@ import { type RenderStrategyProps, splitRenderStrategyProps } from '../../utils/
 import { runIfFn } from '../../utils/run-if-fn'
 
 export interface UseCollapsibleProps
-  extends Optional<Omit<collapsible.Props, 'dir' | 'getRootNode'>, 'id'>,
-    RenderStrategyProps {}
+  extends Optional<Omit<collapsible.Props, 'dir' | 'getRootNode'>, 'id'>, RenderStrategyProps {}
 
-export interface UseCollapsibleReturn
-  extends Accessor<
-    collapsible.Api<PropTypes> & {
-      /**
-       * Whether the content is unmounted
-       */
-      unmounted?: boolean
-    }
-  > {}
+export interface UseCollapsibleReturn extends Accessor<
+  collapsible.Api<PropTypes> & {
+    /**
+     * Whether the content is unmounted
+     */
+    unmounted?: boolean
+  }
+> {}
 
 export const useCollapsible = (props: MaybeAccessor<UseCollapsibleProps> = {}): UseCollapsibleReturn => {
   const id = createUniqueId()

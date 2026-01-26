@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface CollapsibleIndicatorBaseProps extends PolymorphicProps {}
 export interface CollapsibleIndicatorProps
-  extends CollapsibleIndicatorBaseProps,
+  extends
+    CollapsibleIndicatorBaseProps,
     /**
      * @vue-ignore
      */

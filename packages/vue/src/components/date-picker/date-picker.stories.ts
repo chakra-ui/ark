@@ -2,10 +2,19 @@ import type { Meta } from '@storybook/vue3-vite'
 
 import BasicExample from './examples/basic.vue'
 import ControlledExample from './examples/controlled.vue'
-import MultipleMonthsExample from './examples/multiple-months.vue'
-import RangeExample from './examples/range.vue'
-import RootProviderExample from './examples/root-provider.vue'
+import DefaultValueExample from './examples/default-value.vue'
+import DefaultViewExample from './examples/default-view.vue'
 import InlineExample from './examples/inline.vue'
+import LocaleExample from './examples/locale.vue'
+import MinMaxExample from './examples/min-max.vue'
+import MonthPickerExample from './examples/month-picker.vue'
+import MultipleMonthsExample from './examples/multiple-months.vue'
+import MultiSelectionExample from './examples/multi-selection.vue'
+import PresetsExample from './examples/presets.vue'
+import RangeSelectionExample from './examples/range-selection.vue'
+import RootProviderExample from './examples/root-provider.vue'
+import UnavailableExample from './examples/unavailable.vue'
+import YearPickerExample from './examples/year-picker.vue'
 
 const meta: Meta = {
   title: 'Components / DatePicker',
@@ -27,6 +36,20 @@ export const Controlled = {
   }),
 }
 
+export const DefaultValue = {
+  render: () => ({
+    components: { Component: DefaultValueExample },
+    template: '<Component />',
+  }),
+}
+
+export const DefaultView = {
+  render: () => ({
+    components: { Component: DefaultViewExample },
+    template: '<Component />',
+  }),
+}
+
 export const Inline = {
   render: () => ({
     components: { Component: InlineExample },
@@ -34,9 +57,23 @@ export const Inline = {
   }),
 }
 
-export const Range = {
+export const Locale = {
   render: () => ({
-    components: { Component: RangeExample },
+    components: { Component: LocaleExample },
+    template: '<Component />',
+  }),
+}
+
+export const MinMax = {
+  render: () => ({
+    components: { Component: MinMaxExample },
+    template: '<Component />',
+  }),
+}
+
+export const MonthPicker = {
+  render: () => ({
+    components: { Component: MonthPickerExample },
     template: '<Component />',
   }),
 }
@@ -48,9 +85,44 @@ export const MultipleMonths = {
   }),
 }
 
+export const MultiSelection = {
+  render: () => ({
+    components: { Component: MultiSelectionExample },
+    template: '<Component />',
+  }),
+}
+
+export const Presets = {
+  render: () => ({
+    components: { Component: PresetsExample },
+    template: '<Component />',
+  }),
+}
+
+export const RangeSelection = {
+  render: () => ({
+    components: { Component: RangeSelectionExample },
+    template: '<Component />',
+  }),
+}
+
 export const RootProvider = {
   render: () => ({
     components: { Component: RootProviderExample },
+    template: '<Component />',
+  }),
+}
+
+export const Unavailable = {
+  render: () => ({
+    components: { Component: UnavailableExample },
+    template: '<Component />',
+  }),
+}
+
+export const YearPicker = {
+  render: () => ({
+    components: { Component: YearPickerExample },
     template: '<Component />',
   }),
 }

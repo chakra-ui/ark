@@ -2,9 +2,11 @@ import type { Meta } from '@storybook/vue3-vite'
 
 import BasicExample from './examples/basic.vue'
 import ControlledExample from './examples/controlled.vue'
+import DownloadExample from './examples/download.vue'
 import ErrorCorrectionExample from './examples/error-correction.vue'
+import FillExample from './examples/fill.vue'
+import OverlayExample from './examples/overlay.vue'
 import RootProviderExample from './examples/root-provider.vue'
-import WithOverlayExample from './examples/with-overlay.vue'
 
 const meta: Meta = {
   title: 'Components / QrCode',
@@ -26,6 +28,13 @@ export const Controlled = {
   }),
 }
 
+export const Download = {
+  render: () => ({
+    components: { Component: DownloadExample },
+    template: '<Component />',
+  }),
+}
+
 export const ErrorCorrection = {
   render: () => ({
     components: { Component: ErrorCorrectionExample },
@@ -33,16 +42,23 @@ export const ErrorCorrection = {
   }),
 }
 
-export const RootProvider = {
+export const Fill = {
   render: () => ({
-    components: { Component: RootProviderExample },
+    components: { Component: FillExample },
     template: '<Component />',
   }),
 }
 
-export const WithOverlay = {
+export const Overlay = {
   render: () => ({
-    components: { Component: WithOverlayExample },
+    components: { Component: OverlayExample },
+    template: '<Component />',
+  }),
+}
+
+export const RootProvider = {
+  render: () => ({
+    components: { Component: RootProviderExample },
     template: '<Component />',
   }),
 }

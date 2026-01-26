@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface TourCloseTriggerBaseProps extends PolymorphicProps {}
 export interface TourCloseTriggerProps
-  extends TourCloseTriggerBaseProps,
+  extends
+    TourCloseTriggerBaseProps,
     /**
      * @vue-ignore
      */

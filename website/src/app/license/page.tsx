@@ -28,9 +28,9 @@ const getPageById = (id: string) => pages.find((page) => page.id === id)
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = getPageById('license')
-
-  if (page) {
-    return { title: page.title, description: page.description }
+  if (!page) return {}
+  return {
+    title: page.title,
+    description: page.description,
   }
-  return {}
 }

@@ -46,6 +46,7 @@
       'onPointerDownOutside',
       'onValueChange',
       'onValueInvalid',
+      'placeholder',
       'readOnly',
       'required',
       'translations',

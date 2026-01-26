@@ -9,3 +9,36 @@
 body {
   position: relative;
 }
+
+.scroller {
+  --scroller-thumb: var(--colors-gray-7);
+  --scroller-thumb-hover: var(--colors-gray-8);
+  --scroller-scrollbar-color: var(--colors-gray-7);
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroller-scrollbar-color) transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--scroller-thumb);
+    border-radius: 4px;
+
+    &:hover {
+      background-color: var(--scroller-thumb-hover);
+    }
+  }
+
+  &[data-color-scheme='dark'] {
+    --scroller-thumb: var(--colors-gray-dark-7);
+    --scroller-thumb-hover: var(--colors-gray-dark-8);
+    --scroller-scrollbar-color: var(--colors-gray-dark-7);
+  }
+}

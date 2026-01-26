@@ -1,20 +1,26 @@
 <script setup lang="ts">
 import { AngleSlider } from '@ark-ui/vue/angle-slider'
 import { ref } from 'vue'
+import styles from 'styles/angle-slider.module.css'
 
-const angle = ref(180)
+const value = ref(45)
 </script>
 
 <template>
-  <AngleSlider.Root v-model="angle">
-    <AngleSlider.Label>Temperature</AngleSlider.Label>
-    <AngleSlider.Control>
-      <AngleSlider.Thumb />
-      <AngleSlider.MarkerGroup>
-        <AngleSlider.Marker v-for="(value, i) in [0, 45, 90, 135, 180, 225, 270, 315]" :key="i" :value="value" />
+  <AngleSlider.Root :class="styles.Root" :model-value="value" @value-change="(e) => (value = e.value)">
+    <AngleSlider.Label :class="styles.Label">Rotation</AngleSlider.Label>
+    <AngleSlider.Control :class="styles.Control">
+      <AngleSlider.MarkerGroup :class="styles.MarkerGroup">
+        <AngleSlider.Marker
+          v-for="v in [0, 45, 90, 135, 180, 225, 270, 315]"
+          :key="v"
+          :value="v"
+          :class="styles.Marker"
+        />
       </AngleSlider.MarkerGroup>
+      <AngleSlider.Thumb :class="styles.Thumb" />
     </AngleSlider.Control>
-    <AngleSlider.ValueText>{{ angle }} ºC</AngleSlider.ValueText>
+    <AngleSlider.ValueText :class="styles.ValueText" />
     <AngleSlider.HiddenInput />
   </AngleSlider.Root>
 </template>

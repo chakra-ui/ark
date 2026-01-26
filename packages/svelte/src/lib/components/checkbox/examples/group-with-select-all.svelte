@@ -1,12 +1,12 @@
 <script lang="ts">
   import { Checkbox } from '@ark-ui/svelte/checkbox'
   import { CheckIcon, MinusIcon } from 'lucide-svelte'
+  import styles from 'styles/checkbox.module.css'
 
   const items = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
     { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte' },
   ]
 
   let value = $state<string[]>([])
@@ -20,42 +20,43 @@
 </script>
 
 {#snippet CheckboxItem(item: (typeof items)[number])}
-  <Checkbox.Root value={item.value}>
-    <Checkbox.Label>{item.label}</Checkbox.Label>
-    <Checkbox.Control>
-      <Checkbox.Indicator>
+  <Checkbox.Root class={styles.Root} value={item.value}>
+    <Checkbox.Control class={styles.Control}>
+      <Checkbox.Indicator class={styles.Indicator}>
         <CheckIcon />
       </Checkbox.Indicator>
-      <Checkbox.Indicator indeterminate>
+      <Checkbox.Indicator class={styles.Indicator} indeterminate>
         <MinusIcon />
       </Checkbox.Indicator>
     </Checkbox.Control>
+    <Checkbox.Label class={styles.Label}>{item.label}</Checkbox.Label>
     <Checkbox.HiddenInput />
   </Checkbox.Root>
 {/snippet}
 
 <div style="display: flex; flex-direction: column; gap: 10px;">
+  <output>Selected: {JSON.stringify(value)}</output>
+
   <Checkbox.Root
+    class={styles.Root}
     checked={indeterminate ? 'indeterminate' : allSelected}
-    onCheckedChange={(e: { checked: boolean | 'indeterminate' }) => handleSelectAll(!!e.checked)}
+    onCheckedChange={(e) => handleSelectAll(!!e.checked)}
   >
-    <Checkbox.Label>Select All</Checkbox.Label>
-    <Checkbox.Control>
-      <Checkbox.Indicator>
+    <Checkbox.Control class={styles.Control}>
+      <Checkbox.Indicator class={styles.Indicator}>
         <CheckIcon />
       </Checkbox.Indicator>
-      <Checkbox.Indicator indeterminate>
+      <Checkbox.Indicator class={styles.Indicator} indeterminate>
         <MinusIcon />
       </Checkbox.Indicator>
     </Checkbox.Control>
+    <Checkbox.Label class={styles.Label}>JSX Frameworks</Checkbox.Label>
     <Checkbox.HiddenInput />
   </Checkbox.Root>
 
-  <Checkbox.Group bind:value name="framework">
+  <Checkbox.Group class={styles.Group} style="margin-inline-start: 1rem;" bind:value name="framework">
     {#each items as item (item.value)}
       {@render CheckboxItem(item)}
     {/each}
   </Checkbox.Group>
-
-  <pre>Selected: {JSON.stringify(value)}</pre>
 </div>

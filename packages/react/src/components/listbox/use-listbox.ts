@@ -5,8 +5,10 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import type { CollectionItem, ListCollection } from '../collection'
 
-export interface UseListboxProps<T extends CollectionItem>
-  extends Optional<Omit<listbox.Props<T>, 'dir' | 'getRootNode' | 'collection'>, 'id'> {
+export interface UseListboxProps<T extends CollectionItem> extends Optional<
+  Omit<listbox.Props<T>, 'dir' | 'getRootNode' | 'collection'>,
+  'id'
+> {
   /**
    * The collection of items
    */

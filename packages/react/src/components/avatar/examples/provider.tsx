@@ -1,4 +1,5 @@
 import { Avatar, useAvatar } from '@ark-ui/react/avatar'
+import styles from 'styles/avatar.module.css'
 
 export const Provider = () => {
   const avatar = useAvatar({
@@ -6,9 +7,9 @@ export const Provider = () => {
   })
 
   return (
-    <Avatar.RootProvider value={avatar}>
-      <Avatar.Fallback>PA</Avatar.Fallback>
-      <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
+    <Avatar.RootProvider className={styles.Root} value={avatar}>
+      <Avatar.Fallback className={styles.Fallback}>PA</Avatar.Fallback>
+      <Avatar.Image className={styles.Image} src="https://i.pravatar.cc/300?u=a" alt="avatar" />
     </Avatar.RootProvider>
   )
 }

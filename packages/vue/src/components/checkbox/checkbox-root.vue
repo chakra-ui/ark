@@ -6,7 +6,8 @@ import type { RootEmits, RootProps } from './checkbox.types'
 
 export interface CheckboxRootBaseProps extends RootProps, PolymorphicProps {}
 export interface CheckboxRootProps
-  extends CheckboxRootBaseProps,
+  extends
+    CheckboxRootBaseProps,
     /**
      * @vue-ignore
      */

@@ -1,5 +1,7 @@
 import { useAsyncList } from '@ark-ui/react/collection'
 import { useCollator } from '@ark-ui/react/locale'
+import { ArrowDownIcon, ArrowUpDownIcon, ArrowUpIcon, LoaderIcon } from 'lucide-react'
+import styles from 'styles/async-list.module.css'
 
 interface User {
   id: number
@@ -16,7 +18,7 @@ export const SortClientSide = () => {
   const list = useAsyncList<User>({
     autoReload: true,
     load: async () => {
-      const response = await fetch('https://jsonplaceholder.typicode.com/users')
+      const response = await fetch('https://jsonplaceholder.typicode.com/users?_limit=5')
       const data = await response.json()
       return { items: data }
     },
@@ -47,29 +49,31 @@ export const SortClientSide = () => {
 
   const getSortIcon = (column: keyof User) => {
     const current = list.sortDescriptor
-    if (current?.column !== column) return '↕️'
-    return current.direction === 'ascending' ? '↑' : '↓'
+    if (current?.column !== column) return <ArrowUpDownIcon />
+    return current.direction === 'ascending' ? <ArrowUpIcon /> : <ArrowDownIcon />
   }
 
   const descriptor = list.sortDescriptor
 
   return (
-    <div>
-      <div>
-        {list.loading && <div>Loading...</div>}
-        {list.error && <div>Error: {list.error.message}</div>}
+    <div className={styles.Root}>
+      {list.loading && (
+        <div className={styles.Loading}>
+          <LoaderIcon className={styles.Spinner} /> Loading
+        </div>
+      )}
+      {list.error && <div className={styles.Error}>Error: {list.error.message}</div>}
+      <div className={styles.Status}>
+        Sorted by: {descriptor ? `${descriptor.column} (${descriptor.direction})` : 'none'}
       </div>
-      <div>Sorted by: {descriptor ? `${descriptor.column} (${descriptor.direction})` : 'none'}</div>
 
-      <table>
+      <table className={styles.Table}>
         <thead>
           <tr>
             {[
               { key: 'name', label: 'Name' },
               { key: 'username', label: 'Username' },
               { key: 'email', label: 'Email' },
-              { key: 'phone', label: 'Phone' },
-              { key: 'website', label: 'Website' },
             ].map(({ key, label }) => (
               <th key={key} onClick={() => handleSort(key as keyof User)}>
                 {label} {getSortIcon(key as keyof User)}
@@ -83,8 +87,6 @@ export const SortClientSide = () => {
               <td>{user.name}</td>
               <td>{user.username}</td>
               <td>{user.email}</td>
-              <td>{user.phone}</td>
-              <td>{user.website}</td>
             </tr>
           ))}
         </tbody>

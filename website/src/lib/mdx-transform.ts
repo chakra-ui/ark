@@ -1,4 +1,11 @@
-import { type ApiDocKey, type DataAttrDocKey, getApiDoc, getDataAttrDoc } from '@zag-js/docs'
+import {
+  type ApiDocKey,
+  type CssVarDocKey,
+  type DataAttrDocKey,
+  getApiDoc,
+  getCssVarDoc,
+  getDataAttrDoc,
+} from '@zag-js/docs'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 
@@ -131,6 +138,24 @@ export function replaceComponentTypes(text: string): string {
             }
           } catch {
             // No data attributes for this part, skip
+          }
+
+          // Add CSS variables
+          try {
+            const cssVars = getCssVarDoc(id as CssVarDocKey)[partName]
+            if (cssVars && Object.keys(cssVars).length > 0) {
+              let cssTable = `**${partName} CSS Variables:**\n\n`
+              cssTable += '| Variable | Description |\n'
+              cssTable += '|----------|-------------|\n'
+
+              for (const [varName, description] of Object.entries(cssVars)) {
+                cssTable += `| \`${varName}\` | ${description} |\n`
+              }
+
+              tables.push(cssTable)
+            }
+          } catch {
+            // No CSS variables for this part, skip
           }
         }
 

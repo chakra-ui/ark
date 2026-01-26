@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface ImageCropperImageBaseProps extends PolymorphicProps {}
 export interface ImageCropperImageProps
-  extends ImageCropperImageBaseProps,
+  extends
+    ImageCropperImageBaseProps,
     /**
      * @vue-ignore
      */

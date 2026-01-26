@@ -6,11 +6,10 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 
-export interface TrapOptions
-  extends Pick<
-    FocusTrapOptions,
-    'onActivate' | 'onDeactivate' | 'initialFocus' | 'fallbackFocus' | 'returnFocusOnDeactivate' | 'setReturnFocus'
-  > {
+export interface TrapOptions extends Pick<
+  FocusTrapOptions,
+  'onActivate' | 'onDeactivate' | 'initialFocus' | 'fallbackFocus' | 'returnFocusOnDeactivate' | 'setReturnFocus'
+> {
   /**
    * Whether the focus trap is disabled.
    */

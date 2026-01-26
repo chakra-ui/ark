@@ -2,11 +2,11 @@ import type { Meta } from '@storybook/vue3-vite'
 
 import ArrowExample from './examples/arrow.vue'
 import BasicExample from './examples/basic.vue'
+import ContextExample from './examples/context.vue'
 import ControlledExample from './examples/controlled.vue'
+import DelayExample from './examples/delay.vue'
 import PositioningExample from './examples/positioning.vue'
-import RenderFnExample from './examples/render-fn.vue'
 import RootProviderExample from './examples/root-provider.vue'
-import TimingsExample from './examples/timings.vue'
 
 const meta: Meta = {
   title: 'Components / Tooltip',
@@ -28,9 +28,23 @@ export const Basic = {
   }),
 }
 
+export const Context = {
+  render: () => ({
+    components: { Component: ContextExample },
+    template: '<Component />',
+  }),
+}
+
 export const Controlled = {
   render: () => ({
     components: { Component: ControlledExample },
+    template: '<Component />',
+  }),
+}
+
+export const Delay = {
+  render: () => ({
+    components: { Component: DelayExample },
     template: '<Component />',
   }),
 }
@@ -42,23 +56,9 @@ export const Positioning = {
   }),
 }
 
-export const RenderFn = {
-  render: () => ({
-    components: { Component: RenderFnExample },
-    template: '<Component />',
-  }),
-}
-
 export const RootProvider = {
   render: () => ({
     components: { Component: RootProviderExample },
-    template: '<Component />',
-  }),
-}
-
-export const Timings = {
-  render: () => ({
-    components: { Component: TimingsExample },
     template: '<Component />',
   }),
 }

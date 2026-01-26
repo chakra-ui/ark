@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface AngleSliderValueTextBaseProps extends PolymorphicProps {}
 export interface AngleSliderValueTextProps
-  extends AngleSliderValueTextBaseProps,
+  extends
+    AngleSliderValueTextBaseProps,
     /**
      * @vue-ignore
      */

@@ -1,11 +1,11 @@
 import type { Meta } from '@storybook/svelte'
 import ArrowExample from './examples/arrow.svelte'
 import BasicExample from './examples/basic.svelte'
+import ContextExample from './examples/context.svelte'
 import ControlledExample from './examples/controlled.svelte'
+import DelayExample from './examples/delay.svelte'
 import PositioningExample from './examples/positioning.svelte'
-import RenderFnExample from './examples/render-fn.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
-import TimingsExample from './examples/timings.svelte'
 
 const meta: Meta = {
   title: 'Components/Tooltip',
@@ -25,9 +25,21 @@ export const Arrow = {
   }),
 }
 
+export const Context = {
+  render: () => ({
+    Component: ContextExample,
+  }),
+}
+
 export const Controlled = {
   render: () => ({
     Component: ControlledExample,
+  }),
+}
+
+export const Delay = {
+  render: () => ({
+    Component: DelayExample,
   }),
 }
 
@@ -40,17 +52,5 @@ export const Positioning = {
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
-  }),
-}
-
-export const Timings = {
-  render: () => ({
-    Component: TimingsExample,
-  }),
-}
-
-export const RenderFn = {
-  render: () => ({
-    Component: RenderFnExample,
   }),
 }

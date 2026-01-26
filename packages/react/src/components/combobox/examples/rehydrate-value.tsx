@@ -1,10 +1,10 @@
 import { Combobox, useCombobox, useComboboxContext, useListCollection } from '@ark-ui/react/combobox'
 import { Portal } from '@ark-ui/react/portal'
+import { CheckIcon } from 'lucide-react'
 import { useRef, useState } from 'react'
 import { useAsync } from 'react-use'
+import styles from 'styles/combobox.module.css'
 
-// The meat of the example is here.
-// It rehydrates the input value when the combobox is mounted.
 function ComboboxRehydrateValue() {
   const combobox = useComboboxContext()
   const hydrated = useRef(false)
@@ -39,27 +39,29 @@ export const RehydrateValue = () => {
   }, [inputValue, set])
 
   return (
-    <Combobox.RootProvider value={combobox}>
-      <Combobox.Label>Search Star Wars Characters</Combobox.Label>
+    <Combobox.RootProvider className={styles.Root} value={combobox}>
+      <Combobox.Label className={styles.Label}>Search Star Wars Characters</Combobox.Label>
       <ComboboxRehydrateValue />
-      <Combobox.Control>
-        <Combobox.Input placeholder="Type to search" />
+      <Combobox.Control className={styles.Control}>
+        <Combobox.Input className={styles.Input} placeholder="e.g. Luke" />
       </Combobox.Control>
 
       <Portal>
         <Combobox.Positioner>
-          <Combobox.Content>
+          <Combobox.Content className={styles.Content}>
             {state.loading ? (
-              <span>Loading...</span>
+              <span style={{ padding: '0.5rem' }}>Loading...</span>
             ) : state.error ? (
-              <span>{state.error.message}</span>
+              <span style={{ padding: '0.5rem' }}>{state.error.message}</span>
             ) : (
               collection.items.map((item) => (
-                <Combobox.Item key={item.name} item={item}>
-                  <span>
+                <Combobox.Item className={styles.Item} key={item.name} item={item}>
+                  <Combobox.ItemText className={styles.ItemText}>
                     {item.name} - {item.height}cm / {item.mass}kg
-                  </span>
-                  <Combobox.ItemIndicator />
+                  </Combobox.ItemText>
+                  <Combobox.ItemIndicator className={styles.ItemIndicator}>
+                    <CheckIcon />
+                  </Combobox.ItemIndicator>
                 </Combobox.Item>
               ))
             )}

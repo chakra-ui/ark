@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface PinInputHiddenInputBaseProps extends PolymorphicProps {}
 export interface PinInputHiddenInputProps
-  extends PinInputHiddenInputBaseProps,
+  extends
+    PinInputHiddenInputBaseProps,
     /**
      * @vue-ignore
      */

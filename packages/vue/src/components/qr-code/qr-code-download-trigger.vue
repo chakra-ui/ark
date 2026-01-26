@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface QrCodeDownloadTriggerBaseProps extends DownloadTriggerProps, PolymorphicProps {}
 export interface QrCodeDownloadTriggerProps
-  extends QrCodeDownloadTriggerBaseProps,
+  extends
+    QrCodeDownloadTriggerBaseProps,
     /**
      * @vue-ignore
      */

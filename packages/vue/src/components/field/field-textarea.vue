@@ -10,7 +10,8 @@ export interface FieldTextareaBaseProps extends PolymorphicProps {
   autoresize?: boolean
 }
 export interface FieldTextareaProps
-  extends FieldTextareaBaseProps,
+  extends
+    FieldTextareaBaseProps,
     /**
      * @vue-ignore
      */

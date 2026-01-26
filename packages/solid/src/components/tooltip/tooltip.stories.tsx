@@ -8,8 +8,8 @@ export default meta
 
 export { Arrow } from './examples/arrow'
 export { Basic } from './examples/basic'
+export { Context } from './examples/context'
 export { Controlled } from './examples/controlled'
+export { Delay } from './examples/delay'
 export { Positioning } from './examples/positioning'
-export { RenderFn } from './examples/render-fn'
 export { RootProvider } from './examples/root-provider'
-export { Timings } from './examples/timings'

@@ -1,8 +1,7 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { WithField } from '../examples/with-field'
-import { ComponentUnderTest } from './basic'
+import { ComboboxWithField, ComponentUnderTest } from './basic'
 
 describe('Combobox', () => {
   it('should have no a11y violations', async () => {
@@ -82,38 +81,38 @@ describe('Combobox', () => {
 
 describe('Combobox / Field', () => {
   it('should set combobox as required', async () => {
-    render(<WithField required />)
+    render(<ComboboxWithField required />)
     expect(screen.getByRole('combobox', { name: /label/i })).toBeRequired()
   })
 
   it('should set combobox as disabled', async () => {
-    render(<WithField disabled />)
+    render(<ComboboxWithField disabled />)
     expect(screen.getByRole('combobox', { name: /label/i })).toBeDisabled()
   })
 
   it('should set combobox as readonly', async () => {
-    render(<WithField readOnly />)
+    render(<ComboboxWithField readOnly />)
     expect(screen.getByRole('combobox', { name: /label/i })).toHaveAttribute('readonly')
   })
 
   it('should display helper text', async () => {
-    render(<WithField />)
+    render(<ComboboxWithField />)
     expect(screen.getByText('Additional Info')).toBeInTheDocument()
   })
 
   it('should display error text when error is present', async () => {
-    render(<WithField invalid />)
+    render(<ComboboxWithField invalid />)
     expect(screen.getByText('Error Info')).toBeInTheDocument()
   })
 
   it('should focus on combobox when label is clicked', async () => {
-    render(<WithField />)
+    render(<ComboboxWithField />)
     await user.click(screen.getByText(/label/i))
     expect(screen.getByRole('combobox', { name: /label/i })).toHaveFocus()
   })
 
   it('should not display error text when no error is present', async () => {
-    render(<WithField />)
+    render(<ComboboxWithField />)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })

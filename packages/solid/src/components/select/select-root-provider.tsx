@@ -12,12 +12,9 @@ interface RootProviderProps<T extends CollectionItem> {
   value: UseSelectReturn<T>
 }
 export interface SelectRootProviderBaseProps<T extends CollectionItem>
-  extends RootProviderProps<T>,
-    UsePresenceProps,
-    PolymorphicProps<'div'> {}
+  extends RootProviderProps<T>, UsePresenceProps, PolymorphicProps<'div'> {}
 export interface SelectRootProviderProps<T extends CollectionItem>
-  extends HTMLProps<'div'>,
-    SelectRootProviderBaseProps<T> {}
+  extends HTMLProps<'div'>, SelectRootProviderBaseProps<T> {}
 
 export const SelectRootProvider = <T extends CollectionItem>(props: SelectRootProviderProps<T>) => {
   const [presenceProps, selectProps] = splitPresenceProps(props)

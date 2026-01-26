@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface QrCodeOverlayBaseProps extends PolymorphicProps {}
 export interface QrCodeOverlayProps
-  extends QrCodeOverlayBaseProps,
+  extends
+    QrCodeOverlayBaseProps,
     /**
      * @vue-ignore
      */

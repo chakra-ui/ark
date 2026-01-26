@@ -9,7 +9,8 @@ interface GroupProviderProps {
 
 export interface CheckboxGroupProviderBaseProps extends GroupProviderProps, PolymorphicProps {}
 export interface CheckboxGroupProviderProps
-  extends CheckboxGroupProviderBaseProps,
+  extends
+    CheckboxGroupProviderBaseProps,
     /**
      * @vue-ignore
      */

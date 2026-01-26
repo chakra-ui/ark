@@ -1,20 +1,24 @@
+import { Portal } from 'solid-js/web'
 import { Toast, Toaster, createToaster } from '@ark-ui/solid/toast'
+import { XIcon } from 'lucide-solid'
 import { createSignal } from 'solid-js'
-
-const toaster = createToaster({
-  placement: 'bottom-end',
-  overlap: true,
-  gap: 24,
-})
+import button from 'styles/button.module.css'
+import styles from 'styles/toast.module.css'
 
 export const Update = () => {
+  const toaster = createToaster({
+    placement: 'bottom-end',
+    overlap: true,
+    gap: 16,
+  })
+
   const [id, setId] = createSignal<string | undefined>(undefined)
 
   const createToast = () => {
     const newId = toaster.create({
-      title: 'Loading',
-      description: 'Loading ...',
-      type: 'info',
+      title: 'Uploading file...',
+      description: 'Please wait while your file is being uploaded.',
+      type: 'loading',
     })
     setId(newId)
   }
@@ -25,27 +29,35 @@ export const Update = () => {
       return
     }
     toaster.update(currentId, {
-      title: 'Success',
-      description: 'Success!',
+      title: 'Upload complete',
+      description: 'Your file has been uploaded successfully.',
+      type: 'success',
     })
   }
 
   return (
     <div>
-      <button type="button" onClick={createToast}>
-        Create Toast
-      </button>
-      <button type="button" onClick={updateToast}>
-        Update Toast
-      </button>
-      <Toaster toaster={toaster}>
-        {(toast) => (
-          <Toast.Root>
-            <Toast.Title>{toast().title}</Toast.Title>
-            <Toast.Description>{toast().description}</Toast.Description>
-          </Toast.Root>
-        )}
-      </Toaster>
+      <div style={{ display: 'flex', gap: '8px' }}>
+        <button type="button" class={button.Root} onClick={createToast}>
+          Start upload
+        </button>
+        <button type="button" class={button.Root} onClick={updateToast}>
+          Complete upload
+        </button>
+      </div>
+      <Portal>
+        <Toaster toaster={toaster}>
+          {(toast) => (
+            <Toast.Root class={styles.Root}>
+              <Toast.Title class={styles.Title}>{toast().title}</Toast.Title>
+              <Toast.Description class={styles.Description}>{toast().description}</Toast.Description>
+              <Toast.CloseTrigger class={styles.CloseTrigger}>
+                <XIcon />
+              </Toast.CloseTrigger>
+            </Toast.Root>
+          )}
+        </Toaster>
+      </Portal>
     </div>
   )
 }

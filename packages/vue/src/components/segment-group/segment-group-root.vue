@@ -6,7 +6,8 @@ import type { RootEmits, RootProps } from './segment-group.types'
 
 export interface SegmentGroupRootBaseProps extends RootProps, PolymorphicProps {}
 export interface SegmentGroupRootProps
-  extends SegmentGroupRootBaseProps,
+  extends
+    SegmentGroupRootBaseProps,
     /**
      * @vue-ignore
      */

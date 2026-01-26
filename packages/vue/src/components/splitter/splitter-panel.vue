@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface SplitterPanelBaseProps extends PanelProps, PolymorphicProps {}
 export interface SplitterPanelProps
-  extends SplitterPanelBaseProps,
+  extends
+    SplitterPanelBaseProps,
     /**
      * @vue-ignore
      */

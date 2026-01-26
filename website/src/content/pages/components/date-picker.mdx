@@ -8,42 +8,139 @@ description: A component that allows users to select a date from a calendar.
 
 ## Anatomy
 
-To set up the date picker correctly, you'll need to understand its anatomy and how we name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
 <Anatomy id="date-picker" />
+
+```tsx
+<DatePicker.Root>
+  <DatePicker.Label />
+  <DatePicker.Control>
+    <DatePicker.Input />
+    <DatePicker.Trigger />
+    <DatePicker.ClearTrigger />
+  </DatePicker.Control>
+  <DatePicker.Positioner>
+    <DatePicker.Content>
+      <DatePicker.View>
+        <DatePicker.ViewControl>
+          <DatePicker.PrevTrigger />
+          <DatePicker.ViewTrigger>
+            <DatePicker.RangeText />
+          </DatePicker.ViewTrigger>
+          <DatePicker.NextTrigger />
+        </DatePicker.ViewControl>
+        <DatePicker.Table>
+          <DatePicker.TableHead>
+            <DatePicker.TableRow>
+              <DatePicker.TableHeader />
+            </DatePicker.TableRow>
+          </DatePicker.TableHead>
+          <DatePicker.TableBody>
+            <DatePicker.TableRow>
+              <DatePicker.TableCell>
+                <DatePicker.TableCellTrigger />
+              </DatePicker.TableCell>
+            </DatePicker.TableRow>
+          </DatePicker.TableBody>
+        </DatePicker.Table>
+      </DatePicker.View>
+    </DatePicker.Content>
+  </DatePicker.Positioner>
+</DatePicker.Root>
+```
 
 ## Examples
 
-Learn how to use the `DatePicker` component in your project. Let's take a look at the most basic example
-
 <Example id="basic" />
+
+### Default Value
+
+Use the `defaultValue` prop with `parseDate` to set the initial date value.
+
+<Example id="default-value" />
 
 ### Controlled
 
-Use the `value` and `onValueChange` prop to control the date picker's value.
+Use the `value` and `onValueChange` props to control the date picker's value programmatically.
 
 <Example id="controlled" />
 
-### Range Selection
+### Root Provider
+
+An alternative way to control the date picker is to use the `RootProvider` component and the `useDatePicker` hook. This
+way you can access the state and methods from outside the component.
+
+<Example id="root-provider" />
+
+### Default View
+
+Use the `defaultView` prop to set which view (day, month, or year) the calendar opens to initially.
+
+<Example id="default-view" />
+
+### Range
 
 To create a date picker that allows a range selection, you need to:
 
 - Set the `selectionMode` prop to `range`.
 - Render multiple inputs with the `index` prop set to `0` and `1`.
 
-<Example id="range" />
+<Example id="range-selection" />
+
+### Multiple
+
+Use the `selectionMode="multiple"` prop to allow selecting multiple dates. This example also shows how to display
+selected dates as removable tags.
+
+<Example id="multi-selection" />
 
 ### Multiple Months
 
-To create a date picker that allows multiple months, you need to:
+To create a date picker that displays multiple months side by side:
 
 - Set the `numOfMonths` prop to the number of months you want to display.
-- Use the `datePicker.getOffset({ months: 1 })` prop to offset the date picker to the next month.
-- Render a `DatePicker.RangeText` component to display the range text.
+- Use the `datePicker.getOffset({ months: 1 })` to get data for the next month.
 
 <Example id="multiple-months" />
+
+### Presets
+
+Use the `DatePicker.PresetTrigger` component to add quick-select preset options like "Last 7 days" or "This month".
+
+<Example id="presets" />
+
+### Min and Max
+
+Use the `min` and `max` props with `parseDate` to restrict the selectable date range. Dates outside this range will be
+disabled.
+
+<Example id="min-max" />
+
+### Unavailable
+
+Use the `isDateUnavailable` prop to mark specific dates as unavailable. This example disables weekends.
+
+<Example id="unavailable" />
+
+### Locale
+
+Use the `locale` prop to set the language and formatting, and `startOfWeek` to set the first day of the week (0 =
+Sunday, 1 = Monday, etc.).
+
+<Example id="locale" />
+
+### Month Picker
+
+Create a month-only picker by setting `defaultView="month"` and `minView="month"`. Use custom `format` and `parse`
+functions to handle month/year input format.
+
+<Example id="month-picker" />
+
+### Year Picker
+
+Create a year-only picker by setting `defaultView="year"` and `minView="year"`. Use custom `format` and `parse`
+functions to handle year-only input format.
+
+<Example id="year-picker" />
 
 ### Inline
 
@@ -54,14 +151,26 @@ Use the `inline` prop to display the date picker directly on the page, without a
 
 <Example id="inline" />
 
-### Root Provider
+### Custom Parsing
 
-Use the `useDatePicker` hook to create the date picker store and pass it to the `DatePicker.RootProvider` component.
-This allows you to have maximum control over the date picker programmatically.
+Use the `parse` prop to implement custom date parsing logic. This allows users to enter dates in flexible formats like
+"25/12" or "25/12/24" which are automatically converted to valid dates.
 
-<Example id="root-provider" />
+<Example id="format-parse" />
 
-> If you're using the `DatePicker.RootProvider` component, you don't need to use the `DatePicker.Root` component.
+### Month Picker Range
+
+Create a month range picker by combining `selectionMode="range"` with `defaultView="month"` and `minView="month"`. This
+is useful for selecting billing periods or date ranges by month.
+
+<Example id="month-picker-range" />
+
+### Year Range
+
+Create a year range picker by combining `selectionMode="range"` with `defaultView="year"` and `minView="year"`. This is
+useful for selecting multi-year periods.
+
+<Example id="year-picker-range" />
 
 ## API Reference
 
@@ -70,9 +179,6 @@ This allows you to have maximum control over the date picker programmatically.
 <ComponentTypes id="date-picker" />
 
 ### Context
-
-These are the properties available when using `UdateUpicker.Context`, `useUdateUpickerContext` hook or `useUdateUpicker`
-hook.
 
 <ContextType id="date-picker" />
 

@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseFileUploadContext } from './use-file-upload-context'
 
-export interface FileUploadContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseFileUploadContext>
-  }> {}
+export interface FileUploadContextProps extends SlotsType<{
+  default: UnwrapRef<UseFileUploadContext>
+}> {}
 </script>
 
 <script setup lang="ts">

@@ -1,0 +1,145 @@
+.Root {
+  color: var(--demo-neutral-fg);
+  --stepper-width: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+  max-width: 12rem;
+
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+}
+
+.Label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--demo-neutral-fg);
+}
+
+.Control {
+  position: relative;
+  isolation: isolate;
+}
+
+.Input {
+  width: 100%;
+  height: 2.5rem;
+  padding-inline: 0.75rem calc(var(--stepper-width) + 0.5rem);
+
+  &[data-has-scrubber] {
+    padding-inline-start: 2.5rem;
+  }
+
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--demo-neutral-fg);
+  background-color: transparent;
+  border: 1px solid var(--demo-border);
+  border-radius: 0.375rem;
+  outline: none;
+
+  &::placeholder {
+    color: var(--demo-neutral-solid);
+  }
+
+  &:focus-visible {
+    z-index: 1;
+    border-color: var(--demo-coral-solid);
+    box-shadow: 0 0 0 1px var(--demo-coral-solid);
+  }
+
+  &[data-invalid] {
+    border-color: var(--demo-error);
+
+    &:focus-visible {
+      border-color: var(--demo-error);
+      box-shadow: 0 0 0 1px var(--demo-error);
+    }
+  }
+}
+
+.TriggerGroup {
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  right: 1px;
+  display: flex;
+  flex-direction: column;
+  width: var(--stepper-width);
+  border-left: 1px solid var(--demo-border);
+  border-radius: 0 calc(0.375rem - 1px) calc(0.375rem - 1px) 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.IncrementTrigger,
+.DecrementTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  color: var(--demo-neutral-emphasized);
+  background-color: transparent;
+  border: none;
+  user-select: none;
+  cursor: pointer;
+
+  & svg {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+  }
+
+  &:hover:not(:disabled, [data-disabled]) {
+    background-color: var(--demo-neutral-subtle);
+  }
+
+  &:active:not(:disabled, [data-disabled]) {
+    background-color: var(--demo-neutral-muted);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: -2px;
+  }
+
+  &:is(:disabled, [data-disabled]) {
+    color: var(--demo-border);
+    cursor: not-allowed;
+  }
+}
+
+.IncrementTrigger {
+  border-bottom: 1px solid var(--demo-border);
+}
+
+.Scrubber {
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  left: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  color: var(--demo-neutral-emphasized);
+  cursor: ew-resize;
+  user-select: none;
+  z-index: 1;
+
+  & svg {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+}
+
+.ValueText {
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--demo-neutral-fg);
+}

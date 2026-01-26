@@ -1,5 +1,10 @@
 import { useAsyncList } from '@ark-ui/solid/collection'
+import { LoaderIcon } from 'lucide-solid'
 import { For } from 'solid-js'
+import button from 'styles/button.module.css'
+import styles from 'styles/async-list.module.css'
+
+const LIMIT = 4
 
 interface Post {
   userId: number
@@ -13,17 +18,16 @@ export const InfiniteLoading = () => {
     autoReload: true,
     async load({ cursor }) {
       const page = cursor || 1
-      const limit = 10
-      const start = (page - 1) * limit
+      const start = (page - 1) * LIMIT
 
-      const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=${limit}`)
+      const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=${LIMIT}`)
 
       if (!response.ok) {
         throw new Error('Failed to fetch posts')
       }
 
       const posts: Post[] = await response.json()
-      const hasNextPage = posts.length === limit
+      const hasNextPage = posts.length === LIMIT
 
       return {
         items: posts,
@@ -33,29 +37,37 @@ export const InfiniteLoading = () => {
   })
 
   return (
-    <div>
-      <div>
-        Loaded {list().items.length} posts
-        {list().cursor && ` (more available)`}
+    <div class={styles.Root}>
+      <div class={styles.Header}>
+        <span class={styles.Status}>
+          Loaded {list().items.length} posts
+          {list().cursor && ` (more available)`}
+        </span>
+        {list().cursor && (
+          <button class={button.Root} onClick={() => list().loadMore()} disabled={list().loading}>
+            {list().loading ? (
+              <>
+                <LoaderIcon class={styles.Spinner} /> Loading
+              </>
+            ) : (
+              'Load More'
+            )}
+          </button>
+        )}
       </div>
 
-      {list().cursor && (
-        <button onClick={() => list().loadMore()} disabled={list().loading}>
-          {list().loading ? 'Loading...' : 'Load More'}
-        </button>
-      )}
+      {list().error && <div class={styles.Error}>Error: {list().error.message}</div>}
 
-      {list().error && <div>Error: {list().error.message}</div>}
-
-      <div>
+      <div class={styles.ItemGroup}>
         <For each={list().items}>
           {(post, index) => (
-            <div>
-              <div>
-                <strong>{index() + 1}: </strong>
-                <strong>{post.title}</strong>
+            <div class={styles.Item}>
+              <div class={styles.ItemContent}>
+                <div class={styles.ItemTitle}>
+                  {index() + 1}. {post.title}
+                </div>
+                <div class={styles.ItemDescription}>{post.body}</div>
               </div>
-              <div>{post.body}</div>
             </div>
           )}
         </For>

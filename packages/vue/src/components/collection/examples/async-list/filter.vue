@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import { useAsyncList } from '@ark-ui/vue/collection'
+import { LoaderIcon } from 'lucide-vue-next'
+import field from 'styles/field.module.css'
+import styles from 'styles/async-list.module.css'
+
+const LIMIT = 4
 
 interface User {
   id: number
@@ -35,12 +40,12 @@ const mockUsers: User[] = [
 ]
 
 const list = useAsyncList<User>({
-  initialItems: mockUsers.slice(0, 5),
+  initialItems: mockUsers.slice(0, LIMIT),
   async load({ filterText }: { filterText?: string } = {}) {
     await delay(500)
 
     if (!filterText) {
-      return { items: mockUsers.slice(0, 5) }
+      return { items: mockUsers.slice(0, LIMIT) }
     }
 
     const filtered = mockUsers.filter(
@@ -49,35 +54,39 @@ const list = useAsyncList<User>({
         user.email.toLowerCase().includes(filterText.toLowerCase()),
     )
 
-    return { items: filtered }
+    return { items: filtered.slice(0, LIMIT) }
   },
 })
 </script>
 
 <template>
-  <div>
-    <div>
+  <div :class="styles.Root">
+    <div :class="styles.Header">
       <input
+        :class="field.Input"
         type="text"
         placeholder="Search users..."
         :value="list.filterText"
         @input="list.setFilterText(($event.currentTarget as HTMLInputElement).value ?? '')"
       />
-      <span v-if="list.loading">Loading...</span>
+      <span v-if="list.loading" :class="styles.Loading">
+        <LoaderIcon :class="styles.Spinner" />
+        Searching
+      </span>
     </div>
 
-    <div v-if="list.error">Error: {{ list.error.message }}</div>
+    <div v-if="list.error" :class="styles.Error">Error: {{ list.error.message }}</div>
 
-    <div>
-      <div v-for="user in list.items" :key="user.id">
-        <div>
-          <strong>{{ user.name }}</strong>
+    <div :class="styles.ItemGroup">
+      <div v-for="user in list.items" :key="user.id" :class="styles.Item">
+        <div :class="styles.ItemContent">
+          <div :class="styles.ItemTitle">{{ user.name }}</div>
+          <div :class="styles.ItemDescription">{{ user.email }}</div>
+          <div :class="styles.ItemMeta">{{ user.department }} • {{ user.role }}</div>
         </div>
-        <div>{{ user.email }}</div>
-        <div>{{ user.department }} • {{ user.role }}</div>
       </div>
     </div>
 
-    <div v-if="list.items.length === 0 && !list.loading">No results found</div>
+    <div v-if="list.items.length === 0 && !list.loading" :class="styles.Empty">No results found</div>
   </div>
 </template>

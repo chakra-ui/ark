@@ -6,13 +6,46 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Scroll Area**: Added overflow CSS variables to the viewport element for creating scroll fade effects:
+  - `--scroll-area-overflow-x-start`: Distance from horizontal start edge in pixels
+  - `--scroll-area-overflow-x-end`: Distance from horizontal end edge in pixels
+  - `--scroll-area-overflow-y-start`: Distance from vertical start edge in pixels
+  - `--scroll-area-overflow-y-end`: Distance from vertical end edge in pixels
+- **Slider**: Added `thumbCollisionBehavior` prop to control how thumbs behave when they collide (`none`, `push`, `swap`)
+- **Steps**: Added validation and skippable step support:
+  - `isStepValid(index)`: Block forward navigation when step is invalid (linear mode)
+  - `isStepSkippable(index)`: Mark steps as optional, bypassing validation
+  - `onStepInvalid({ step, action, targetStep })`: Callback when navigation is blocked
+- **Tags Input**: Added `placeholder` prop that is applied to the input only when there are no tags
+- **Tooltip**: Added `data-instant` attribute to content to indicate when animations should be instant
+
+### Fixed
+
+- **Auto Resize**: Fixed issue where change event is not emitted after clearing a controlled textarea programmatically
+- **Collection, Tree View**: Fixed initial focus issue when the first node or branch is disabled
+- **Color Picker**: Fixed color not updating in controlled mode when selecting black shades
+- **Floating Panel**: Fixed double-clicking title bar while minimized would incorrectly maximize instead of restore
+- **Image Cropper**:
+  - Fixed issue where `reset()` destroys the cropper area
+  - Fixed issue where changing `aspectRatio` or `cropShape` props doesn't update the crop instantly
+  - Added symmetric resize support when holding `Alt` key during pointer drag
+  - Fixed panning bounds in fixed crop mode at various zoom levels
+- **Number Input**: Fixed cursor positioning when clicking label or after scrubbing
+- **Pagination**: Fixed next trigger not disabled when `count` is `0`
+- **Slider**: Fixed pointer movement when dragging slider thumb from its edge in `thumbAlignment="contain"` mode
+- **Switch**: Fixed issue where `api.toggleChecked()` doesn't work as expected
+- **Toast**: Fixed toasts created before the state machine connects not being shown
+- **Tour**: Fixed janky scroll behavior when navigating between tour steps
+
 ## [5.15.0] - 2025-12-10
 
 ### Added
 
 - **Date Picker**: Added `required` and `invalid` props
 - **Number Input**: Added `onValueCommit` callback that fires when the input loses focus or Enter is pressed
-- **Pagination**: 
+- **Pagination**:
   - Added `FirstTrigger` and `LastTrigger` components for navigating to first/last page
   - Added `boundaryCount` parameter for controlling boundary pages (start/end)
   - Implemented balanced pagination algorithm for consistent UI with max 7 elements
@@ -21,15 +54,18 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
-- **Accordion, Menu**: Fixed issue where querying elements by `aria-controls` attribute could fail when lazy mounting the content
-- **Color Picker**: Added `role="dialog"` to content and `aria-haspopup="dialog"` to trigger when not inline for better accessibility
+- **Accordion, Menu**: Fixed issue where querying elements by `aria-controls` attribute could fail when lazy mounting
+  the content
+- **Color Picker**: Added `role="dialog"` to content and `aria-haspopup="dialog"` to trigger when not inline for better
+  accessibility
 - **Date Picker**: Fixed issue where date picker input does not update format when locale changes
 - **Floating Panel**:
   - Fixed `dir` prop now properly delegated to all panel parts
   - Fixed double-click behavior improvements and to check `event.defaultPrevented` for custom behavior
-- **Listbox**: 
-  - Fixed issue where `data-highlighted` wasn't applied to the first item when using `autoHighlight` with input filtering
-- **Number Input**: 
+- **Listbox**:
+  - Fixed issue where `data-highlighted` wasn't applied to the first item when using `autoHighlight` with input
+    filtering
+- **Number Input**:
   - Fixed issue where input element doesn't sync when `formatOptions` changes dynamically
   - Ensured cursor position is preserved when `Enter` key is pressed and formatting is triggered
   - Fixed cursor jumping to start when value is changed externally via props while user is typing

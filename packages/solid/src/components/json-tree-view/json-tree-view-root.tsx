@@ -17,8 +17,7 @@ export interface JsonTreeViewRootBaseProps extends JsonTreeViewOptions {
 }
 
 export interface JsonTreeViewRootProps
-  extends Omit<TreeView.RootProps<JsonNode>, 'collection'>,
-    JsonTreeViewRootBaseProps {}
+  extends Omit<TreeView.RootProps<JsonNode>, 'collection'>, JsonTreeViewRootBaseProps {}
 
 const splitJsonTreeViewProps = createSplitProps<JsonTreeViewOptions>()
 

@@ -1,0 +1,377 @@
+.Root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+  max-width: 24rem;
+}
+
+.Backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: var(--z-index);
+}
+
+.Spotlight {
+  border-radius: 4px;
+}
+
+.Positioner {
+  &[data-type='dialog'] {
+    width: 100%;
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--z-index);
+  }
+
+  &[data-type='floating'] {
+    position: fixed;
+    z-index: var(--z-index);
+
+    &[data-placement*='bottom'] {
+      bottom: 24px;
+    }
+
+    &[data-placement*='top'] {
+      top: 24px;
+    }
+
+    &[data-placement*='end'] {
+      inset-inline-end: 24px;
+    }
+
+    &[data-placement*='start'] {
+      inset-inline-start: 24px;
+    }
+  }
+}
+
+.Content {
+  --arrow-background: var(--demo-bg-popover);
+  --arrow-size: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  outline: 0;
+  padding: 20px;
+  width: 320px;
+  background: var(--demo-bg-popover);
+  border: 1px solid var(--demo-border);
+  border-radius: 6px;
+  position: relative;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+  z-index: var(--demo-popover-z-index);
+
+  &[data-state='open'] {
+    animation: scale-fade-in 0.15s ease-in-out;
+  }
+
+  &[data-state='closed'] {
+    animation: scale-fade-out 0.1s ease-in-out;
+  }
+
+  &[data-type='dialog'] {
+    width: 400px;
+  }
+
+  &[data-type='floating'] {
+    width: 360px;
+  }
+}
+
+.Arrow {
+  --arrow-background: var(--demo-bg-popover);
+  --arrow-shadow-color: var(--demo-border);
+}
+
+.ArrowTip {
+  border-top: 1px solid var(--demo-border);
+  border-left: 1px solid var(--demo-border);
+}
+
+.Title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--demo-neutral-fg);
+}
+
+.Description {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--demo-neutral-fg-muted);
+}
+
+.ProgressText {
+  font-size: 13px;
+  color: var(--demo-neutral-emphasized);
+  opacity: 0.8;
+}
+
+.CloseTrigger {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: var(--demo-neutral-emphasized);
+  background: transparent;
+  border-radius: 4px;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+
+  & svg {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    background: var(--demo-neutral-subtle);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: -1px;
+  }
+}
+
+.Control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.ActionTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-inline: 0.875rem;
+  padding-block: 0.375rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-family: inherit;
+  line-height: 1.25rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition:
+    background 150ms,
+    border-color 150ms,
+    color 150ms;
+
+  background: transparent;
+  border: 1px solid var(--demo-border-emphasized);
+  color: var(--demo-neutral-fg);
+
+  &:hover:not(:disabled) {
+    background: var(--demo-neutral-subtle);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: -1px;
+  }
+
+  &:last-child {
+    background: var(--demo-coral-solid);
+    border-color: var(--demo-coral-solid);
+    color: var(--demo-coral-contrast);
+
+    &:hover:not(:disabled) {
+      background: var(--demo-coral-fg);
+      border-color: var(--demo-coral-fg);
+    }
+  }
+}
+
+.ActionButtons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.Target {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--demo-neutral-fg);
+  background: var(--demo-bg-popover);
+}
+
+.Hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--demo-neutral-emphasized);
+
+  & svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.ProgressBar {
+  width: 100%;
+  height: 4px;
+  background: var(--demo-neutral-subtle);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.ProgressFill {
+  height: 100%;
+  background: var(--demo-coral-solid);
+  transition: width 200ms ease-out;
+}
+
+.ProgressBarBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--demo-neutral-subtle);
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
+}
+
+.EventLog {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  border: 1px solid var(--demo-border);
+  border-radius: 0.375rem;
+  font-size: 0.8125rem;
+  font-family: monospace;
+  background: var(--demo-neutral-subtle);
+  height: 120px;
+  overflow-y: auto;
+}
+
+.EventLogItem {
+  color: var(--demo-neutral-emphasized);
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--demo-border);
+  border-radius: 0.5rem;
+  background: var(--demo-bg-popover);
+  max-width: 320px;
+}
+
+.FormField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  & label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--demo-neutral-fg);
+  }
+}
+
+.FormFieldInline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  & label {
+    font-size: 0.875rem;
+    color: var(--demo-neutral-emphasized);
+  }
+}
+
+.Input {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  background: var(--demo-bg);
+  color: var(--demo-neutral-fg);
+
+  &::placeholder {
+    color: var(--demo-neutral-emphasized);
+    opacity: 0.6;
+  }
+
+  &:focus {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: -1px;
+  }
+}
+
+.Checkbox {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--demo-coral-solid);
+}
+
+.List {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ListItem {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--demo-border);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  color: var(--demo-neutral-fg);
+  background: var(--demo-bg-popover);
+
+  &[data-item='new'] {
+    border-color: var(--demo-coral-solid);
+    background: var(--demo-coral-subtle);
+  }
+}
+
+@keyframes scale-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-fade-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}

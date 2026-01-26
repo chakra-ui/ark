@@ -4,14 +4,24 @@ title: Fieldset
 description: A set of form controls optionally grouped under a common name.
 ---
 
+## Anatomy
+
+<Anatomy id="fieldset" />
+
+```tsx
+<Fieldset.Root>
+  <Fieldset.Legend />
+  <Fieldset.HelperText />
+  <Fieldset.ErrorText />
+</Fieldset.Root>
+```
+
 ## Examples
 
 The `Fieldset` component provides contexts such as `invalid` and `disabled` for form elements. While most Ark UI
 components natively support these contexts, you can also use the `Field` component with standard HTML form elements.
 
-### Basic Usage
-
-Learn how to use the `Fieldset` component in your project. Let's take a look at the most basic example:
+### Basic
 
 <Example id="basic" />
 
@@ -29,12 +39,10 @@ This example shows how to use the `Fieldset` component with other Ark UI form el
 
 ### Root Provider
 
-The `RootProvider` component provides a context for the fieldset. It accepts the value of the `useFieldset` hook. You
-can leverage it to access the component state and methods from outside the fieldset.
+An alternative way to control the fieldset is to use the `RootProvider` component and the `useFieldset` hook. This way
+you can access the state and methods from outside the component.
 
 <Example id="root-provider" />
-
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
 
 ### Input with Select
 

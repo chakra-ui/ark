@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface FileUploadTriggerBaseProps extends PolymorphicProps {}
 export interface FileUploadTriggerProps
-  extends FileUploadTriggerBaseProps,
+  extends
+    FileUploadTriggerBaseProps,
     /**
      * @vue-ignore
      */

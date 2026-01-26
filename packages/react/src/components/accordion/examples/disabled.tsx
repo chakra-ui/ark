@@ -1,15 +1,46 @@
 import { Accordion } from '@ark-ui/react/accordion'
+import { ChevronDownIcon } from 'lucide-react'
+import styles from 'styles/accordion.module.css'
 
 export const Disabled = () => {
-  const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion.Root>
+    <Accordion.Root className={styles.Root}>
       {items.map((item) => (
-        <Accordion.Item key={item} value={item} disabled={item === 'panel-2'}>
-          <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
-          <Accordion.ItemContent>{item} content</Accordion.ItemContent>
+        <Accordion.Item
+          className={styles.Item}
+          key={item.value}
+          value={item.value}
+          disabled={item.value === 'getting-started'}
+        >
+          <Accordion.ItemTrigger className={styles.ItemTrigger}>
+            {item.title}
+            <Accordion.ItemIndicator className={styles.ItemIndicator}>
+              <ChevronDownIcon />
+            </Accordion.ItemIndicator>
+          </Accordion.ItemTrigger>
+          <Accordion.ItemContent className={styles.ItemContent}>
+            <div className={styles.ItemBody}>{item.content}</div>
+          </Accordion.ItemContent>
         </Accordion.Item>
       ))}
     </Accordion.Root>
   )
 }
+
+const items = [
+  {
+    value: 'ark-ui',
+    title: 'What is Ark UI?',
+    content: 'A headless component library for building accessible web apps.',
+  },
+  {
+    value: 'getting-started',
+    title: 'How to get started?',
+    content: 'Install the package and import the components you need.',
+  },
+  {
+    value: 'maintainers',
+    title: 'Who maintains this project?',
+    content: 'Ark UI is maintained by the Chakra UI team.',
+  },
+]

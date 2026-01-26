@@ -4,7 +4,8 @@ import { type PolymorphicProps, ark } from '../factory'
 
 export interface DatePickerPositionerBaseProps extends PolymorphicProps {}
 export interface DatePickerPositionerProps
-  extends DatePickerPositionerBaseProps,
+  extends
+    DatePickerPositionerBaseProps,
     /**
      * @vue-ignore
      */

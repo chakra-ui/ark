@@ -1,21 +1,16 @@
 import { Accordion } from '@ark-ui/solid/accordion'
-import { ChevronDownIcon } from 'lucide-solid'
 import { Index } from 'solid-js'
+import styles from 'styles/accordion.module.css'
 
 export const Horizontal = () => {
   return (
-    <Accordion.Root defaultValue={['React']} orientation="horizontal">
-      <Index each={['React', 'Solid', 'Vue', 'Svelte']}>
+    <Accordion.Root class={styles.Root} defaultValue={['ark-ui']} orientation="horizontal">
+      <Index each={items}>
         {(item) => (
-          <Accordion.Item value={item()}>
-            <Accordion.ItemTrigger>
-              What is {item()}?
-              <Accordion.ItemIndicator>
-                <ChevronDownIcon />
-              </Accordion.ItemIndicator>
-            </Accordion.ItemTrigger>
-            <Accordion.ItemContent>
-              {item()} is a JavaScript library for building user interfaces.
+          <Accordion.Item class={styles.Item} value={item().value}>
+            <Accordion.ItemTrigger class={styles.ItemTrigger}>{item().title}</Accordion.ItemTrigger>
+            <Accordion.ItemContent class={styles.ItemContent}>
+              <div class={`${styles.ItemBody} ${styles.Centered}`}>{item().content}</div>
             </Accordion.ItemContent>
           </Accordion.Item>
         )}
@@ -23,3 +18,21 @@ export const Horizontal = () => {
     </Accordion.Root>
   )
 }
+
+const items = [
+  {
+    value: 'ark-ui',
+    title: 'What is Ark UI?',
+    content: 'A headless component library for building accessible web apps.',
+  },
+  {
+    value: 'getting-started',
+    title: 'How to get started?',
+    content: 'Install the package and import the components you need.',
+  },
+  {
+    value: 'maintainers',
+    title: 'Who maintains this project?',
+    content: 'Ark UI is maintained by the Chakra UI team.',
+  },
+]

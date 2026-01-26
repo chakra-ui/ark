@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface SplitterRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface SplitterRootProviderProps
-  extends SplitterRootProviderBaseProps,
+  extends
+    SplitterRootProviderBaseProps,
     /**
      * @vue-ignore
      */

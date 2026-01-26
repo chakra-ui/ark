@@ -5,7 +5,10 @@ import { Popover } from '@ark-ui/vue/popover'
 <template>
   <Popover.Root>
     <Popover.Trigger asChild>
-      <button>Open</button>
+      <button>Open Popover</button>
     </Popover.Trigger>
+    <Popover.Positioner>
+      <Popover.Content>Content</Popover.Content>
+    </Popover.Positioner>
   </Popover.Root>
 </template>

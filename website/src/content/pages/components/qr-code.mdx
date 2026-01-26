@@ -8,15 +8,19 @@ description: A component that generates a QR code based on the provided data.
 
 ## Anatomy
 
-To set up the QR code correctly, you'll need to understand its anatomy and how we name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
 <Anatomy id="qr-code" />
 
-## Examples
+```tsx
+<QrCode.Root>
+  <QrCode.Frame>
+    <QrCode.Pattern />
+  </QrCode.Frame>
+  <QrCode.Overlay />
+  <QrCode.DownloadTrigger />
+</QrCode.Root>
+```
 
-Learn how to use the `QR Code` component in your project. Let's take a look at the most basic example:
+## Examples
 
 <Example id="basic" />
 
@@ -24,7 +28,7 @@ Learn how to use the `QR Code` component in your project. Let's take a look at t
 
 You can also add a logo or overlay to the QR code. This is useful when you want to brand the QR code.
 
-<Example id="with-overlay" />
+<Example id="overlay" />
 
 ### Error Correction
 
@@ -40,27 +44,19 @@ Use the `encoding.ecc` or `encoding.boostEcc` property to set the error correcti
 
 <Example id="error-correction" />
 
-### Using the Root Provider
+### Root Provider
 
-The `RootProvider` component provides a context for the QR code. It accepts the value of the `useQrCode` hook. You can
-leverage it to access the component state and methods from outside the QR code.
+An alternative way to control the QR code is to use the `RootProvider` component and the `useQrCode` hook. This way you
+can access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+### Download
 
-## Guides
+Use the `QrCode.DownloadTrigger` component to allow users to download the QR code as an image. Specify the `fileName`
+and `mimeType` props for the downloaded file.
 
-### Download a QR Code
-
-You can download the QR code by using the `QrCode.DownloadTrigger`. You will have to provide the `fileName` and the
-`mimeType` of the image.
-
-```tsx
-<QrCode.DownloadTrigger fileName="qr-code.png" mimeType="image/png">
-  Download
-</QrCode.DownloadTrigger>
-```
+<Example id="download" />
 
 ## API Reference
 
@@ -69,7 +65,5 @@ You can download the QR code by using the `QrCode.DownloadTrigger`. You will hav
 <ComponentTypes id="qr-code" />
 
 ### Context
-
-These are the properties available when using `UqrUcode.Context`, `useUqrUcodeContext` hook or `useUqrUcode` hook.
 
 <ContextType id="qr-code" />

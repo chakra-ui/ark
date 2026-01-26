@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface SliderRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface SliderRootProviderProps
-  extends SliderRootProviderBaseProps,
+  extends
+    SliderRootProviderBaseProps,
     /**
      * @vue-ignore
      */

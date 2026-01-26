@@ -6,6 +6,24 @@ description: A component for selecting a value within a circular range.
 
 <ComponentPreview id="AngleSlider" />
 
+## Anatomy
+
+<Anatomy id="angle-slider" />
+
+```tsx
+<AngleSlider.Root>
+  <AngleSlider.Label />
+  <AngleSlider.Control>
+    <AngleSlider.Thumb />
+    <AngleSlider.MarkerGroup>
+      <AngleSlider.Marker />
+    </AngleSlider.MarkerGroup>
+  </AngleSlider.Control>
+  <AngleSlider.ValueText />
+  <AngleSlider.HiddenInput />
+</AngleSlider.Root>
+```
+
 ## Examples
 
 ### Basic
@@ -33,8 +51,5 @@ Use the `step` prop to set the discrete steps of the Angle Slider.
 <ComponentTypes id="angle-slider" />
 
 ### Context
-
-These are the properties available when using `AngleSlider.Context`, `useAngleSliderContext` hook or `useAngleSlider`
-hook.
 
 <ContextType id="angle-slider" />

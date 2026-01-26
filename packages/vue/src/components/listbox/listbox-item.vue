@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface ListboxItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface ListboxItemProps
-  extends ListboxItemBaseProps,
+  extends
+    ListboxItemBaseProps,
     /**
      * @vue-ignore
      */

@@ -5,7 +5,8 @@ import { useCarouselContext } from './use-carousel-context'
 
 export interface CarouselControlBaseProps extends PolymorphicProps {}
 export interface CarouselControlProps
-  extends CarouselControlBaseProps,
+  extends
+    CarouselControlBaseProps,
     /**
      * @vue-ignore
      */

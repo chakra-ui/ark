@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface SignaturePadRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface SignaturePadRootProviderProps
-  extends SignaturePadRootProviderBaseProps,
+  extends
+    SignaturePadRootProviderBaseProps,
     /**
      * @vue-ignore
      */

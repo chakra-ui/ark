@@ -1,10 +1,30 @@
+'use client'
 import { ArrowRightIcon, SparklesIcon } from 'lucide-react'
 import NextLink from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Badge } from '~/components/ui/badge'
 import { Icon } from '../ui/icon'
 
+const excludePaths = ['/plus', '/showcase']
+
 export const Announcement = () => {
-  return null
+  const pathname = usePathname()
+
+  if (excludePaths.includes(pathname)) {
+    return null
+  }
+
+  return (
+    <NextLink href="/blog/we-improved-the-docs">
+      <Badge size="lg" variant="outline">
+        <Icon color="colorPalette.default">
+          <SparklesIcon />
+        </Icon>
+        DX: We improved the docs
+        <ArrowRightIcon />
+      </Badge>
+    </NextLink>
+  )
 }
 
 export const Announcement_ = () => {

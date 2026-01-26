@@ -10,9 +10,7 @@ interface RootProviderProps {
 
 export interface TagsInputRootProviderBaseProps extends PolymorphicProps<'div'> {}
 export interface TagsInputRootProviderProps
-  extends HTMLProps<'div'>,
-    RootProviderProps,
-    TagsInputRootProviderBaseProps {}
+  extends HTMLProps<'div'>, RootProviderProps, TagsInputRootProviderBaseProps {}
 
 export const TagsInputRootProvider = (props: TagsInputRootProviderProps) => {
   const [{ value: tagsInput }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])

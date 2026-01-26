@@ -2,16 +2,17 @@ import type { Meta } from '@storybook/svelte'
 
 import AlertDialogExample from './examples/alert-dialog.svelte'
 import BasicExample from './examples/basic.svelte'
-import CloseOnEscapeExample from './examples/close-on-escape.svelte'
-import CloseOnInteractOutsideExample from './examples/close-on-interact-outside.svelte'
 import ConfirmationExample from './examples/confirmation.svelte'
+import ContextExample from './examples/context.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import FinalFocusExample from './examples/final-focus.svelte'
 import InitialFocusExample from './examples/initial-focus.svelte'
+import InsideScrollExample from './examples/inside-scroll.svelte'
 import LazyMountExample from './examples/lazy-mount.svelte'
 import NestedExample from './examples/nested.svelte'
 import NonModalExample from './examples/non-modal.svelte'
-import RenderFnExample from './examples/render-fn.svelte'
+import OpenFromMenuExample from './examples/open-from-menu.svelte'
+import OutsideScrollExample from './examples/outside-scroll.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 
 const meta: Meta = {
@@ -32,21 +33,15 @@ export const Basic = {
   }),
 }
 
-export const CloseOnEscape = {
-  render: () => ({
-    Component: CloseOnEscapeExample,
-  }),
-}
-
-export const CloseOnInteractOutside = {
-  render: () => ({
-    Component: CloseOnInteractOutsideExample,
-  }),
-}
-
 export const Confirmation = {
   render: () => ({
     Component: ConfirmationExample,
+  }),
+}
+
+export const Context = {
+  render: () => ({
+    Component: ContextExample,
   }),
 }
 
@@ -68,6 +63,18 @@ export const InitialFocus = {
   }),
 }
 
+export const InsideScroll = {
+  render: () => ({
+    Component: InsideScrollExample,
+  }),
+}
+
+export const LazyMount = {
+  render: () => ({
+    Component: LazyMountExample,
+  }),
+}
+
 export const Nested = {
   render: () => ({
     Component: NestedExample,
@@ -80,20 +87,20 @@ export const NonModal = {
   }),
 }
 
-export const RenderFn = {
+export const OpenFromMenu = {
   render: () => ({
-    Component: RenderFnExample,
+    Component: OpenFromMenuExample,
+  }),
+}
+
+export const OutsideScroll = {
+  render: () => ({
+    Component: OutsideScrollExample,
   }),
 }
 
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
-  }),
-}
-
-export const LazyMount = {
-  render: () => ({
-    Component: LazyMountExample,
   }),
 }

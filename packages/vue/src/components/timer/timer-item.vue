@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface TimerItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface TimerItemProps
-  extends TimerItemBaseProps,
+  extends
+    TimerItemBaseProps,
     /**
      * @vue-ignore
      */

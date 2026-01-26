@@ -7,7 +7,8 @@ export interface ScrollAreaRootProviderBaseProps extends PolymorphicProps {
   value: UnwrapRef<UseScrollAreaContext>
 }
 export interface ScrollAreaRootProviderProps
-  extends ScrollAreaRootProviderBaseProps,
+  extends
+    ScrollAreaRootProviderBaseProps,
     /**
      * @vue-ignore
      */

@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface FloatingPanelStageTriggerBaseProps extends StageTriggerProps, PolymorphicProps {}
 export interface FloatingPanelStageTriggerProps
-  extends FloatingPanelStageTriggerBaseProps,
+  extends
+    FloatingPanelStageTriggerBaseProps,
     /**
      * @vue-ignore
      */

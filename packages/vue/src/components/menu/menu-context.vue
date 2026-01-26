@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseMenuContext } from './use-menu-context'
 
-export interface MenuContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseMenuContext>
-  }> {}
+export interface MenuContextProps extends SlotsType<{
+  default: UnwrapRef<UseMenuContext>
+}> {}
 </script>
 
 <script setup lang="ts">

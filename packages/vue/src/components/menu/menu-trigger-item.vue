@@ -5,7 +5,8 @@ import { useMenuTriggerItemContext } from './use-menu-trigger-item-context'
 
 export interface MenuTriggerItemBaseProps extends PolymorphicProps {}
 export interface MenuTriggerItemProps
-  extends MenuTriggerItemBaseProps,
+  extends
+    MenuTriggerItemBaseProps,
     /**
      * @vue-ignore
      */

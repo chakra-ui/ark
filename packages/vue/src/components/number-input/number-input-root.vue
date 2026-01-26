@@ -6,7 +6,8 @@ import type { RootEmits, RootProps } from './number-input.types'
 
 export interface NumberInputRootBaseProps extends RootProps, PolymorphicProps {}
 export interface NumberInputRootProps
-  extends NumberInputRootBaseProps,
+  extends
+    NumberInputRootBaseProps,
     /**
      * @vue-ignore
      */

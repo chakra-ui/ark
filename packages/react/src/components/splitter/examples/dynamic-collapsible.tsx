@@ -2,6 +2,7 @@
 
 import { Splitter, useSplitter } from '@ark-ui/react/splitter'
 import { useLayoutEffect, useRef, useState } from 'react'
+import styles from 'styles/splitter.module.css'
 
 export const DynamicCollapsible = () => {
   const [rootSize, setRootSize] = useState<number | null>(null)
@@ -27,12 +28,14 @@ export const DynamicCollapsible = () => {
   })
 
   return (
-    <Splitter.RootProvider value={splitter} ref={ref}>
-      <Splitter.Panel id="a" style={{ background: '#f0f0f0', padding: '20px' }}>
+    <Splitter.RootProvider className={styles.Root} value={splitter} ref={ref}>
+      <Splitter.Panel className={styles.Panel} id="a">
         A
       </Splitter.Panel>
-      <Splitter.ResizeTrigger id="a:b" aria-label="Resize panels" />
-      <Splitter.Panel id="b" style={{ background: '#e0e0e0', padding: '20px' }}>
+      <Splitter.ResizeTrigger className={styles.ResizeTrigger} id="a:b" aria-label="Resize panels">
+        <Splitter.ResizeTriggerIndicator className={styles.ResizeTriggerIndicator} />
+      </Splitter.ResizeTrigger>
+      <Splitter.Panel className={styles.Panel} id="b">
         B
       </Splitter.Panel>
     </Splitter.RootProvider>

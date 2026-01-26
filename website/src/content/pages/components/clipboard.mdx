@@ -8,19 +8,38 @@ description: A component to copy text to the clipboard
 
 ## Anatomy
 
-To set up the Clipboard correctly, you'll need to understand its anatomy and how we name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
 <Anatomy id="clipboard" />
+
+```tsx
+<Clipboard.Root>
+  <Clipboard.Label />
+  <Clipboard.Control>
+    <Clipboard.Input />
+    <Clipboard.Trigger>
+      <Clipboard.Indicator />
+    </Clipboard.Trigger>
+  </Clipboard.Control>
+</Clipboard.Root>
+```
 
 ## Examples
 
-Learn how to use the `Clipboard` component in your project. Let's take a look at the most basic example:
-
 <Example id="basic" />
 
-### Using Context
+### Controlled
+
+Control the clipboard value externally by managing the state yourself and using `onValueChange` to handle updates.
+
+<Example id="controlled" />
+
+### Root Provider
+
+An alternative way to control the clipboard is to use the `RootProvider` component and the `useClipboard` hook. This way
+you can access the state and methods from outside the component.
+
+<Example id="root-provider" />
+
+### Context
 
 Access the clipboard state and methods using `Clipboard.Context`. This provides access to properties like `copied`,
 `value`, and `setValue`
@@ -36,32 +55,11 @@ a success message.
 
 <Example id="copy-status" />
 
-### Controlled
-
-Control the clipboard value externally by managing the state yourself and using `onValueChange` to handle updates.
-
-<Example id="controlled" />
-
-### Root Provider
-
-Use the `useClipboard` hook to create the clipboard store and pass it to the `Clipboard.RootProvider` component. This
-allows you to have maximum control over the clipboard programmatically.
-
-> If you're using the `Clipboard.RootProvider` component, you don't need to use the `Clipboard.Root` component.
-
-<Example id="root-provider" />
-
-### Custom Timeout
+### Timeout
 
 Configure the copy status timeout duration using the `timeout` prop. Default is 3000ms (3 seconds).
 
-<Example id="custom-timeout" />
-
-### Programmatic Copy
-
-Trigger copy operations programmatically using the context's `copy()` method.
-
-<Example id="programmatic" />
+<Example id="timeout" />
 
 ### Value Text
 
@@ -76,7 +74,5 @@ Use `Clipboard.ValueText` to display the current clipboard value.
 <ComponentTypes id="clipboard" />
 
 ### Context
-
-These are the properties available when using `Clipboard.Context`, `useClipboardContext` hook or `useClipboard` hook.
 
 <ContextType id="clipboard" />

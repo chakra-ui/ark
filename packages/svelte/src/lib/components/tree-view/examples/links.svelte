@@ -1,15 +1,16 @@
 <script lang="ts">
-  import { TreeView, createTreeCollection } from '@ark-ui/svelte/tree-view'
+  import { TreeView, createTreeCollection } from '$lib'
   import LinksTreeNode from './links-tree-node.svelte'
+  import styles from 'styles/tree-view.module.css'
 
-  interface Node {
+  interface TreeNode {
     id: string
     name: string
     href?: string
-    children?: Node[]
+    children?: TreeNode[]
   }
 
-  const collection = createTreeCollection<Node>({
+  const collection = createTreeCollection<TreeNode>({
     nodeToValue: (node) => node.id,
     nodeToString: (node) => node.name,
     rootNode: {
@@ -58,9 +59,9 @@
   })
 </script>
 
-<TreeView.Root {collection}>
-  <TreeView.Label>Docs</TreeView.Label>
-  <TreeView.Tree>
+<TreeView.Root class={styles.Root} {collection}>
+  <TreeView.Label class={styles.Label}>Docs</TreeView.Label>
+  <TreeView.Tree class={styles.Tree}>
     {#each collection.rootNode.children ?? [] as node, index (node.id)}
       <LinksTreeNode {node} indexPath={[index]} />
     {/each}

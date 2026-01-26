@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseSliderContext } from './use-slider-context'
 
-export interface SliderContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseSliderContext>
-  }> {}
+export interface SliderContextProps extends SlotsType<{
+  default: UnwrapRef<UseSliderContext>
+}> {}
 </script>
 
 <script setup lang="ts">

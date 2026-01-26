@@ -5,7 +5,7 @@ import IndeterminateExample from './examples/circular/indeterminate.svelte'
 import InitialValueExample from './examples/circular/initial-value.svelte'
 import MinMaxExample from './examples/circular/min-max.svelte'
 import RootProviderExample from './examples/circular/root-provider.svelte'
-import ValueTextExample from './examples/circular/value-text.svelte'
+import WithLabelExample from './examples/circular/with-label.svelte'
 
 const meta = {
   title: 'Components / Progress - Circular',
@@ -49,8 +49,8 @@ export const RootProvider = {
   }),
 }
 
-export const ValueText = {
+export const WithLabel = {
   render: () => ({
-    Component: ValueTextExample,
+    Component: WithLabelExample,
   }),
 }

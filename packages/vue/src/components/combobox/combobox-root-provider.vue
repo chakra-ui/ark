@@ -11,11 +11,10 @@ interface RootProviderProps<T extends CollectionItem> {
 }
 
 export interface ComboboxRootProviderBaseProps<T extends CollectionItem>
-  extends RootProviderProps<T>,
-    RenderStrategyProps,
-    PolymorphicProps {}
+  extends RootProviderProps<T>, RenderStrategyProps, PolymorphicProps {}
 export interface ComboboxRootProviderProps<T extends CollectionItem>
-  extends ComboboxRootProviderBaseProps<T>,
+  extends
+    ComboboxRootProviderBaseProps<T>,
     /**
      * @vue-ignore
      */

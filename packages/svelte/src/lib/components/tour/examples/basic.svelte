@@ -1,75 +1,100 @@
 <script lang="ts">
   import { Portal } from '@ark-ui/svelte/portal'
   import { Tour, useTour, type TourStepDetails } from '@ark-ui/svelte/tour'
-  import { XIcon } from 'lucide-svelte'
+  import { MoreHorizontalIcon, SaveIcon, SparklesIcon, UploadIcon, XIcon } from 'lucide-svelte'
+  import button from 'styles/button.module.css'
+  import styles from 'styles/tour.module.css'
 
   const steps: TourStepDetails[] = [
     {
+      id: 'welcome',
       type: 'dialog',
-      id: 'step-0',
-      title: 'Welcome to the tour!',
-      description: 'This is a centered tour step without a target element.',
-      actions: [{ label: 'Next', action: 'next' }],
+      title: 'Welcome to the App!',
+      description: "Let's take a quick tour to get you started with the main features.",
+      actions: [{ label: 'Start Tour', action: 'next' }],
     },
     {
+      id: 'upload',
       type: 'tooltip',
-      id: 'step-1',
-      title: 'Button Element',
-      description: 'This is our primary button element that users interact with.',
-      target: () => document.getElementById('step-1'),
+      title: 'Upload Files',
+      description: 'Click here to upload your files to the cloud.',
+      target: () => document.querySelector<HTMLElement>('#btn-upload'),
       actions: [
-        { label: 'Previous', action: 'prev' },
+        { label: 'Back', action: 'prev' },
         { label: 'Next', action: 'next' },
       ],
     },
     {
+      id: 'save',
       type: 'tooltip',
-      id: 'step-2',
-      title: 'Input Field',
-      description: 'Users can enter text in this input field.',
-      target: () => document.getElementById('step-2'),
+      title: 'Save Changes',
+      description: 'Save your work to keep your progress.',
+      target: () => document.querySelector<HTMLElement>('#btn-save'),
       actions: [
-        { label: 'Previous', action: 'prev' },
-        { label: 'Finish', action: 'dismiss' },
+        { label: 'Back', action: 'prev' },
+        { label: 'Next', action: 'next' },
       ],
+    },
+    {
+      id: 'more',
+      type: 'tooltip',
+      title: 'More Options',
+      description: 'Access additional settings and actions from this menu.',
+      target: () => document.querySelector<HTMLElement>('#btn-more'),
+      actions: [
+        { label: 'Back', action: 'prev' },
+        { label: 'Next', action: 'next' },
+      ],
+    },
+    {
+      id: 'complete',
+      type: 'dialog',
+      title: "You're all set!",
+      description: 'You now know the basics. Enjoy using the app!',
+      actions: [{ label: 'Finish', action: 'dismiss' }],
     },
   ]
 
-  const id = $props.id()
-  const tour = useTour({ steps, id })
+  const tour = useTour({ steps })
 </script>
 
-<div class="tour-example">
-  <h2>Tour Example</h2>
-  <p>This example demonstrates the tour component functionality.</p>
+<div class={styles.Root}>
+  <button type="button" data-variant="surface" class={button.Root} onclick={() => tour().start()}>
+    <SparklesIcon /> Start Tour
+  </button>
 
-  <div class="demo-content">
-    <button id="step-1" class="btn">Click me!</button>
-    <input id="step-2" class="input" placeholder="Enter text here..." />
+  <div class={styles.ActionButtons}>
+    <button id="btn-upload" type="button" class={button.Root}>
+      <UploadIcon /> Upload
+    </button>
+    <button id="btn-save" type="button" class={button.Root}>
+      <SaveIcon /> Save
+    </button>
+    <button id="btn-more" type="button" class={button.Root}>
+      <MoreHorizontalIcon /> More
+    </button>
   </div>
-
-  <button onclick={() => tour().start()} class="start-tour-btn">Start Tour</button>
 
   <Tour.Root {tour}>
     <Portal>
-      <Tour.Backdrop />
-      <Tour.Spotlight />
-      <Tour.Positioner>
-        <Tour.Content>
-          <Tour.Arrow>
-            <Tour.ArrowTip />
+      <Tour.Backdrop class={styles.Backdrop} />
+      <Tour.Spotlight class={styles.Spotlight} />
+      <Tour.Positioner class={styles.Positioner}>
+        <Tour.Content class={styles.Content}>
+          <Tour.Arrow class={styles.Arrow}>
+            <Tour.ArrowTip class={styles.ArrowTip} />
           </Tour.Arrow>
-          <Tour.Title />
-          <Tour.Description />
-          <Tour.ProgressText />
-          <Tour.CloseTrigger>
+          <Tour.CloseTrigger class={styles.CloseTrigger}>
             <XIcon />
           </Tour.CloseTrigger>
-          <Tour.Control>
+          <Tour.ProgressText class={styles.ProgressText} />
+          <Tour.Title class={styles.Title} />
+          <Tour.Description class={styles.Description} />
+          <Tour.Control class={styles.Control}>
             <Tour.Actions>
               {#snippet children(actions)}
                 {#each actions() as action (action.label)}
-                  <Tour.ActionTrigger {action} />
+                  <Tour.ActionTrigger class={styles.ActionTrigger} {action} />
                 {/each}
               {/snippet}
             </Tour.Actions>

@@ -1,10 +1,12 @@
 import type { Meta } from '@storybook/vue3-vite'
 
 import BasicExample from './examples/basic.vue'
+import ContextExample from './examples/context.vue'
 import ControlledExample from './examples/controlled.vue'
-import CustomControlsExample from './examples/custom-controls.vue'
-import RenderFnExample from './examples/render-fn.vue'
+import ControlsExample from './examples/controls.vue'
+import DoubleClickExample from './examples/double-click.vue'
 import RootProviderExample from './examples/root-provider.vue'
+import TextareaExample from './examples/textarea.vue'
 import WithFieldExample from './examples/with-field.vue'
 
 const meta: Meta = {
@@ -20,9 +22,9 @@ export const Basic = {
   }),
 }
 
-export const CustomControls = {
+export const Context = {
   render: () => ({
-    components: { Component: CustomControlsExample },
+    components: { Component: ContextExample },
     template: '<Component />',
   }),
 }
@@ -34,16 +36,16 @@ export const Controlled = {
   }),
 }
 
-export const RenderFunction = {
+export const Controls = {
   render: () => ({
-    components: { Component: RenderFnExample },
+    components: { Component: ControlsExample },
     template: '<Component />',
   }),
 }
 
-export const WithField = {
+export const DoubleClick = {
   render: () => ({
-    components: { Component: WithFieldExample },
+    components: { Component: DoubleClickExample },
     template: '<Component />',
   }),
 }
@@ -51,6 +53,20 @@ export const WithField = {
 export const RootProvider = {
   render: () => ({
     components: { Component: RootProviderExample },
+    template: '<Component />',
+  }),
+}
+
+export const Textarea = {
+  render: () => ({
+    components: { Component: TextareaExample },
+    template: '<Component />',
+  }),
+}
+
+export const WithField = {
+  render: () => ({
+    components: { Component: WithFieldExample },
     template: '<Component />',
   }),
 }

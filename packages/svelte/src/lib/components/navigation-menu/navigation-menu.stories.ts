@@ -1,6 +1,6 @@
 import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
-import RenderPropExample from './examples/render-prop.svelte'
+import ContextExample from './examples/context.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import ViewportExample from './examples/viewport.svelte'
 import type { Meta } from '@storybook/svelte'
@@ -21,9 +21,9 @@ export const Controlled = {
     Component: ControlledExample,
   }),
 }
-export const RenderProp = {
+export const Context = {
   render: () => ({
-    Component: RenderPropExample,
+    Component: ContextExample,
   }),
 }
 export const RootProvider = {

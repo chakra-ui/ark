@@ -5,7 +5,8 @@ import type { BaseEmits, BaseProps } from './focus-trap.types'
 
 export interface FocusTrapBaseProps extends BaseProps, PolymorphicProps {}
 export interface FocusTrapProps
-  extends FocusTrapBaseProps,
+  extends
+    FocusTrapBaseProps,
     /**
      * @vue-ignore
      */

@@ -1,37 +1,47 @@
 import { DatePicker } from '@ark-ui/solid/date-picker'
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-solid'
 import { Index } from 'solid-js'
+import styles from 'styles/date-picker.module.css'
 
 export const Inline = () => {
   return (
-    <DatePicker.Root inline>
-      <DatePicker.Input />
-      <DatePicker.View view="day">
+    <DatePicker.Root class={styles.Root} inline>
+      <DatePicker.Input class={styles.Input} />
+      <DatePicker.View view="day" class={styles.View}>
         <DatePicker.Context>
           {(context) => (
             <>
-              <DatePicker.ViewControl>
-                <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
-                <DatePicker.ViewTrigger>
+              <DatePicker.ViewControl class={styles.ViewControl}>
+                <DatePicker.PrevTrigger class={styles.PrevTrigger}>
+                  <ChevronLeftIcon />
+                </DatePicker.PrevTrigger>
+                <DatePicker.ViewTrigger class={styles.ViewTrigger}>
                   <DatePicker.RangeText />
                 </DatePicker.ViewTrigger>
-                <DatePicker.NextTrigger>Next</DatePicker.NextTrigger>
+                <DatePicker.NextTrigger class={styles.NextTrigger}>
+                  <ChevronRightIcon />
+                </DatePicker.NextTrigger>
               </DatePicker.ViewControl>
-              <DatePicker.Table>
-                <DatePicker.TableHead>
-                  <DatePicker.TableRow>
+              <DatePicker.Table class={styles.Table}>
+                <DatePicker.TableHead class={styles.TableHead}>
+                  <DatePicker.TableRow class={styles.TableRow}>
                     <Index each={context().weekDays}>
-                      {(weekDay) => <DatePicker.TableHeader>{weekDay().short}</DatePicker.TableHeader>}
+                      {(weekDay) => (
+                        <DatePicker.TableHeader class={styles.TableHeader}>{weekDay().short}</DatePicker.TableHeader>
+                      )}
                     </Index>
                   </DatePicker.TableRow>
                 </DatePicker.TableHead>
-                <DatePicker.TableBody>
+                <DatePicker.TableBody class={styles.TableBody}>
                   <Index each={context().weeks}>
                     {(week) => (
-                      <DatePicker.TableRow>
+                      <DatePicker.TableRow class={styles.TableRow}>
                         <Index each={week()}>
                           {(day) => (
-                            <DatePicker.TableCell value={day()}>
-                              <DatePicker.TableCellTrigger>{day().day}</DatePicker.TableCellTrigger>
+                            <DatePicker.TableCell class={styles.TableCell} value={day()}>
+                              <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>
+                                {day().day}
+                              </DatePicker.TableCellTrigger>
                             </DatePicker.TableCell>
                           )}
                         </Index>
@@ -44,26 +54,32 @@ export const Inline = () => {
           )}
         </DatePicker.Context>
       </DatePicker.View>
-      <DatePicker.View view="month">
+      <DatePicker.View view="month" class={styles.View}>
         <DatePicker.Context>
           {(context) => (
             <>
-              <DatePicker.ViewControl>
-                <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
-                <DatePicker.ViewTrigger>
+              <DatePicker.ViewControl class={styles.ViewControl}>
+                <DatePicker.PrevTrigger class={styles.PrevTrigger}>
+                  <ChevronLeftIcon />
+                </DatePicker.PrevTrigger>
+                <DatePicker.ViewTrigger class={styles.ViewTrigger}>
                   <DatePicker.RangeText />
                 </DatePicker.ViewTrigger>
-                <DatePicker.NextTrigger>Next</DatePicker.NextTrigger>
+                <DatePicker.NextTrigger class={styles.NextTrigger}>
+                  <ChevronRightIcon />
+                </DatePicker.NextTrigger>
               </DatePicker.ViewControl>
-              <DatePicker.Table>
-                <DatePicker.TableBody>
+              <DatePicker.Table class={styles.Table}>
+                <DatePicker.TableBody class={styles.TableBody}>
                   <Index each={context().getMonthsGrid({ columns: 4, format: 'short' })}>
                     {(months) => (
-                      <DatePicker.TableRow>
+                      <DatePicker.TableRow class={styles.TableRow}>
                         <Index each={months()}>
                           {(month) => (
-                            <DatePicker.TableCell value={month().value}>
-                              <DatePicker.TableCellTrigger>{month().label}</DatePicker.TableCellTrigger>
+                            <DatePicker.TableCell class={styles.TableCell} value={month().value}>
+                              <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>
+                                {month().label}
+                              </DatePicker.TableCellTrigger>
                             </DatePicker.TableCell>
                           )}
                         </Index>
@@ -76,26 +92,32 @@ export const Inline = () => {
           )}
         </DatePicker.Context>
       </DatePicker.View>
-      <DatePicker.View view="year">
+      <DatePicker.View view="year" class={styles.View}>
         <DatePicker.Context>
           {(context) => (
             <>
-              <DatePicker.ViewControl>
-                <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
-                <DatePicker.ViewTrigger>
+              <DatePicker.ViewControl class={styles.ViewControl}>
+                <DatePicker.PrevTrigger class={styles.PrevTrigger}>
+                  <ChevronLeftIcon />
+                </DatePicker.PrevTrigger>
+                <DatePicker.ViewTrigger class={styles.ViewTrigger}>
                   <DatePicker.RangeText />
                 </DatePicker.ViewTrigger>
-                <DatePicker.NextTrigger>Next</DatePicker.NextTrigger>
+                <DatePicker.NextTrigger class={styles.NextTrigger}>
+                  <ChevronRightIcon />
+                </DatePicker.NextTrigger>
               </DatePicker.ViewControl>
-              <DatePicker.Table>
-                <DatePicker.TableBody>
+              <DatePicker.Table class={styles.Table}>
+                <DatePicker.TableBody class={styles.TableBody}>
                   <Index each={context().getYearsGrid({ columns: 4 })}>
                     {(years) => (
-                      <DatePicker.TableRow>
+                      <DatePicker.TableRow class={styles.TableRow}>
                         <Index each={years()}>
                           {(year) => (
-                            <DatePicker.TableCell value={year().value}>
-                              <DatePicker.TableCellTrigger>{year().label}</DatePicker.TableCellTrigger>
+                            <DatePicker.TableCell class={styles.TableCell} value={year().value}>
+                              <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>
+                                {year().label}
+                              </DatePicker.TableCellTrigger>
                             </DatePicker.TableCell>
                           )}
                         </Index>

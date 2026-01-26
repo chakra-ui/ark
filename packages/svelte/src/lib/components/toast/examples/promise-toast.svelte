@@ -1,6 +1,9 @@
 <script lang="ts">
+  import { Portal } from '@ark-ui/svelte/portal'
   import { Toast, Toaster, createToaster } from '@ark-ui/svelte/toast'
-  import { XIcon, LoaderIcon, CircleCheckIcon, CircleAlertIcon } from 'lucide-svelte'
+  import { X, LoaderIcon, CircleCheckIcon, CircleAlertIcon, InfoIcon } from 'lucide-svelte'
+  import button from 'styles/button.module.css'
+  import styles from 'styles/toast.module.css'
 
   const toaster = createToaster({
     overlap: true,
@@ -19,16 +22,16 @@
   const handleUpload = async () => {
     toaster.promise(uploadFile, {
       loading: {
-        title: 'Uploading...',
-        description: 'Please wait while we process your request.',
+        title: 'Uploading file...',
+        description: 'Please wait while we process your file.',
       },
       success: {
-        title: 'Success!',
-        description: 'Your request has been processed successfully.',
+        title: 'Upload complete',
+        description: 'Your file has been uploaded successfully.',
       },
       error: {
-        title: 'Failed',
-        description: 'Something went wrong. Please try again.',
+        title: 'Upload failed',
+        description: 'There was an error uploading your file. Please try again.',
       },
     })
   }
@@ -37,32 +40,32 @@
     loading: LoaderIcon,
     success: CircleCheckIcon,
     error: CircleAlertIcon,
+    info: InfoIcon,
   }
 </script>
 
 <div>
-  <button type="button" onclick={handleUpload}>Start Process</button>
+  <button type="button" class={button.Root} onclick={handleUpload}>Upload file</button>
 
-  <Toaster {toaster}>
-    {#snippet children(toast)}
-      {@const icon = toast().type ? iconMap[toast().type as keyof typeof iconMap] : undefined}
-      <Toast.Root>
-        <div style="display: flex; align-items: flex-start; gap: 12px;">
-          {#if icon}
+  <Portal>
+    <Toaster {toaster}>
+      {#snippet children(toast)}
+        {@const icon = toast().type ? iconMap[toast().type as keyof typeof iconMap] : InfoIcon}
+        <Toast.Root class={styles.Root}>
+          <Toast.Title class={styles.Title}>
             <svelte:component
               this={icon}
+              class={styles.Indicator}
               style={toast().type === 'loading' ? 'animation: spin 1s linear infinite;' : ''}
             />
-          {/if}
-          <div style="flex: 1;">
-            <Toast.Title>{toast().title}</Toast.Title>
-            <Toast.Description>{toast().description}</Toast.Description>
-          </div>
-          <Toast.CloseTrigger>
-            <XIcon />
+            {toast().title}
+          </Toast.Title>
+          <Toast.Description class={styles.Description}>{toast().description}</Toast.Description>
+          <Toast.CloseTrigger class={styles.CloseTrigger}>
+            <X />
           </Toast.CloseTrigger>
-        </div>
-      </Toast.Root>
-    {/snippet}
-  </Toaster>
+        </Toast.Root>
+      {/snippet}
+    </Toaster>
+  </Portal>
 </div>

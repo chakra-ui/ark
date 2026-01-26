@@ -1,10 +1,12 @@
 import { Highlight } from '@ark-ui/react/highlight'
+import styles from 'styles/highlight.module.css'
 
-export const Basic = () => {
-  return (
+export const Basic = () => (
+  <p className={styles.Text}>
     <Highlight
-      query="ipsum"
-      text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt"
+      className={styles.Mark}
+      query="component"
+      text="Ark UI is a headless component library for building accessible web applications."
     />
-  )
-}
+  </p>
+)

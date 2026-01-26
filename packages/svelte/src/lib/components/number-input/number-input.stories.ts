@@ -1,13 +1,11 @@
 import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
+import ContextExample from './examples/context.svelte'
 import ControlledExample from './examples/controlled.svelte'
-import FormUsageExample from './examples/form-usage.svelte'
-import FormattedExample from './examples/formatted.svelte'
+import FormattingExample from './examples/formatting.svelte'
 import FractionDigitsExample from './examples/fraction-digits.svelte'
 import MinMaxExample from './examples/min-max.svelte'
 import MouseWheelExample from './examples/mouse-wheel.svelte'
-import NoClampExample from './examples/no-clamp.svelte'
-import RenderFnExample from './examples/render-fn.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import ScrubberExample from './examples/scrubber.svelte'
 import WithFieldExample from './examples/with-field.svelte'
@@ -24,21 +22,21 @@ export const Basic = {
   }),
 }
 
+export const Context = {
+  render: () => ({
+    Component: ContextExample,
+  }),
+}
+
 export const Controlled = {
   render: () => ({
     Component: ControlledExample,
   }),
 }
 
-export const Formatted = {
+export const Formatting = {
   render: () => ({
-    Component: FormattedExample,
-  }),
-}
-
-export const FormUsage = {
-  render: () => ({
-    Component: FormUsageExample,
+    Component: FormattingExample,
   }),
 }
 
@@ -60,9 +58,9 @@ export const MouseWheel = {
   }),
 }
 
-export const NoClamp = {
+export const RootProvider = {
   render: () => ({
-    Component: NoClampExample,
+    Component: RootProviderExample,
   }),
 }
 
@@ -75,17 +73,5 @@ export const Scrubber = {
 export const WithField = {
   render: () => ({
     Component: WithFieldExample,
-  }),
-}
-
-export const RenderFn = {
-  render: () => ({
-    Component: RenderFnExample,
-  }),
-}
-
-export const RootProvider = {
-  render: () => ({
-    Component: RootProviderExample,
   }),
 }

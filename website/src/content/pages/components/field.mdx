@@ -6,6 +6,21 @@ description: Provides a flexible container for form inputs, labels, and helper t
 
 <ComponentPreview id="Field" />
 
+## Anatomy
+
+<Anatomy id="field" />
+
+```tsx
+<Field.Root>
+  <Field.Label />
+  <Field.Input />
+  <Field.Textarea />
+  <Field.Select />
+  <Field.HelperText />
+  <Field.ErrorText />
+</Field.Root>
+```
+
 ## Examples
 
 The `Field` component provides contexts such as `invalid`, `disabled`, `required`, and `readOnly` for form elements.
@@ -44,12 +59,10 @@ This example demonstrates how to integrate the `Field` and `Checkbox` components
 
 ### Root Provider
 
-Use the `useField` hook to create the field store and pass it to the `Field.RootProvider` component. This allows you to
-have maximum control over the field programmatically.
+An alternative way to control the field is to use the `RootProvider` component and the `useField` hook. This way you can
+access the state and methods from outside the component.
 
 <Example id="root-provider" />
-
-> If you're using the `Field.RootProvider` component, you don't need to use the `Field.Root` component.
 
 ### Custom Control
 

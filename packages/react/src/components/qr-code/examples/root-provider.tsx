@@ -1,24 +1,17 @@
 import { QrCode, useQrCode } from '@ark-ui/react/qr-code'
-import { useState } from 'react'
+import styles from 'styles/qr-code.module.css'
 
 export const RootProvider = () => {
-  const [value, setValue] = useState('http://ark-ui.com')
-  const qrCode = useQrCode({ value })
+  const qrCode = useQrCode({ value: 'http://ark-ui.com' })
 
   return (
-    <>
-      <button
-        onClick={() => {
-          setValue('https://chakra-ui.com')
-        }}
-      >
-        Set Value
-      </button>
-      <QrCode.RootProvider value={qrCode}>
-        <QrCode.Frame>
-          <QrCode.Pattern />
+    <div className="stack">
+      <QrCode.RootProvider className={styles.Root} value={qrCode}>
+        <QrCode.Frame className={styles.Frame}>
+          <QrCode.Pattern className={styles.Pattern} />
         </QrCode.Frame>
       </QrCode.RootProvider>
-    </>
+      <output>{qrCode.value}</output>
+    </div>
   )
 }

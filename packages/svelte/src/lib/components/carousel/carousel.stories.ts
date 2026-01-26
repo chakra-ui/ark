@@ -2,12 +2,13 @@ import type { Meta } from '@storybook/svelte'
 import AutoplayExample from './examples/autoplay.svelte'
 import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
-import CustomIndicatorExample from './examples/custom-indicator.svelte'
+import ThumbnailIndicatorExample from './examples/thumbnail-indicator.svelte'
 import DynamicSlidesExample from './examples/dynamic-slides.svelte'
 import PauseOnHoverExample from './examples/pause-on-hover.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import ScrollToExample from './examples/scroll-to.svelte'
 import SlidesPerPageExample from './examples/slides-per-page.svelte'
+import SpacingExample from './examples/spacing.svelte'
 import VariableSizeExample from './examples/variable-size.svelte'
 import VerticalExample from './examples/vertical.svelte'
 
@@ -29,9 +30,9 @@ export const Controlled = {
   }),
 }
 
-export const CustomIndicator = {
+export const ThumbnailIndicator = {
   render: () => ({
-    Component: CustomIndicatorExample,
+    Component: ThumbnailIndicatorExample,
   }),
 }
 
@@ -68,6 +69,12 @@ export const ScrollTo = {
 export const SlidesPerPage = {
   render: () => ({
     Component: SlidesPerPageExample,
+  }),
+}
+
+export const Spacing = {
+  render: () => ({
+    Component: SpacingExample,
   }),
 }
 

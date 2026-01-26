@@ -28,6 +28,7 @@ export const FileUploadRoot = (props: FileUploadRootProps) => {
     'onFileChange',
     'onFileReject',
     'preventDocumentDrop',
+    'readOnly',
     'required',
     'translations',
     'transformFiles',

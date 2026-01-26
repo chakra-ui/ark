@@ -6,7 +6,8 @@ import type { GroupEmits, GroupProps } from './checkbox-group.types.ts'
 
 export interface CheckboxGroupBaseProps extends GroupProps, PolymorphicProps {}
 export interface CheckboxGroupProps
-  extends CheckboxGroupBaseProps,
+  extends
+    CheckboxGroupBaseProps,
     /**
      * @vue-ignore
      */

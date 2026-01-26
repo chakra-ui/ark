@@ -9,7 +9,8 @@ interface RootProviderProps {
 
 export interface RatingGroupRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface RatingGroupRootProviderProps
-  extends RatingGroupRootProviderBaseProps,
+  extends
+    RatingGroupRootProviderBaseProps,
     /**
      * @vue-ignore
      */

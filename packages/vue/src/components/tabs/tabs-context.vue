@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseTabsContext } from './use-tabs-context'
 
-export interface TabsContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseTabsContext>
-  }> {}
+export interface TabsContextProps extends SlotsType<{
+  default: UnwrapRef<UseTabsContext>
+}> {}
 </script>
 
 <script setup lang="ts">

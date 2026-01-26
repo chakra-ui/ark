@@ -4,7 +4,8 @@ import { type PolymorphicProps, ark } from '../factory'
 
 export interface ComboboxPositionerBaseProps extends PolymorphicProps {}
 export interface ComboboxPositionerProps
-  extends ComboboxPositionerBaseProps,
+  extends
+    ComboboxPositionerBaseProps,
     /**
      * @vue-ignore
      */

@@ -2,10 +2,9 @@
 import type { SlotsType, UnwrapRef } from 'vue'
 import type { UseAngleSliderContext } from './use-angle-slider-context'
 
-export interface AngleSliderContextProps
-  extends SlotsType<{
-    default: UnwrapRef<UseAngleSliderContext>
-  }> {}
+export interface AngleSliderContextProps extends SlotsType<{
+  default: UnwrapRef<UseAngleSliderContext>
+}> {}
 </script>
 
 <script setup lang="ts">

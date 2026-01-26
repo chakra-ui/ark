@@ -1,47 +1,54 @@
 import { DatePicker } from '@ark-ui/solid/date-picker'
+import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-solid'
 import { Index, createMemo } from 'solid-js'
+import button from 'styles/button.module.css'
+import styles from 'styles/date-picker.module.css'
 
 export const MultipleMonths = () => {
   return (
-    <DatePicker.Root numOfMonths={2}>
-      <DatePicker.Label>Label</DatePicker.Label>
-
-      <DatePicker.Control>
-        <DatePicker.Input index={0} />
-        <DatePicker.Trigger>📅</DatePicker.Trigger>
-        <DatePicker.ClearTrigger>Clear</DatePicker.ClearTrigger>
+    <DatePicker.Root class={styles.Root} numOfMonths={2}>
+      <DatePicker.Label class={styles.Label}>Label</DatePicker.Label>
+      <DatePicker.Control class={styles.Control}>
+        <DatePicker.Input class={styles.Input} index={0} />
+        <DatePicker.Trigger class={styles.Trigger}>
+          <CalendarIcon />
+        </DatePicker.Trigger>
+        <DatePicker.ClearTrigger class={button.Root}>Clear</DatePicker.ClearTrigger>
       </DatePicker.Control>
-
       <DatePicker.Positioner>
-        <DatePicker.Content>
-          <DatePicker.YearSelect />
-          <DatePicker.MonthSelect />
-          <DatePicker.ViewControl>
-            <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
+        <DatePicker.Content class={styles.Content}>
+          <DatePicker.ViewControl class={styles.ViewControl}>
+            <DatePicker.PrevTrigger class={styles.PrevTrigger}>
+              <ChevronLeftIcon />
+            </DatePicker.PrevTrigger>
             <DatePicker.RangeText />
-            <DatePicker.NextTrigger>Next</DatePicker.NextTrigger>
+            <DatePicker.NextTrigger class={styles.NextTrigger}>
+              <ChevronRightIcon />
+            </DatePicker.NextTrigger>
           </DatePicker.ViewControl>
-
           <div style={{ display: 'flex', gap: '10px' }}>
-            {/* First month */}
             <DatePicker.Context>
               {(datePicker) => (
-                <DatePicker.Table>
-                  <DatePicker.TableHead>
-                    <DatePicker.TableRow>
+                <DatePicker.Table class={styles.Table}>
+                  <DatePicker.TableHead class={styles.TableHead}>
+                    <DatePicker.TableRow class={styles.TableRow}>
                       <Index each={datePicker().weekDays}>
-                        {(weekDay) => <DatePicker.TableHeader>{weekDay().short}</DatePicker.TableHeader>}
+                        {(weekDay) => (
+                          <DatePicker.TableHeader class={styles.TableHeader}>{weekDay().short}</DatePicker.TableHeader>
+                        )}
                       </Index>
                     </DatePicker.TableRow>
                   </DatePicker.TableHead>
-                  <DatePicker.TableBody>
+                  <DatePicker.TableBody class={styles.TableBody}>
                     <Index each={datePicker().weeks}>
                       {(week) => (
-                        <DatePicker.TableRow>
+                        <DatePicker.TableRow class={styles.TableRow}>
                           <Index each={week()}>
                             {(day) => (
-                              <DatePicker.TableCell value={day()}>
-                                <DatePicker.TableCellTrigger>{day().day}</DatePicker.TableCellTrigger>
+                              <DatePicker.TableCell class={styles.TableCell} value={day()}>
+                                <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>
+                                  {day().day}
+                                </DatePicker.TableCellTrigger>
                               </DatePicker.TableCell>
                             )}
                           </Index>
@@ -52,28 +59,36 @@ export const MultipleMonths = () => {
                 </DatePicker.Table>
               )}
             </DatePicker.Context>
-
-            {/* Second month */}
             <DatePicker.Context>
               {(datePicker) => {
                 const offset = createMemo(() => datePicker().getOffset({ months: 1 }))
                 return (
-                  <DatePicker.Table>
-                    <DatePicker.TableHead>
-                      <DatePicker.TableRow>
+                  <DatePicker.Table class={styles.Table}>
+                    <DatePicker.TableHead class={styles.TableHead}>
+                      <DatePicker.TableRow class={styles.TableRow}>
                         <Index each={datePicker().weekDays}>
-                          {(weekDay) => <DatePicker.TableHeader>{weekDay().short}</DatePicker.TableHeader>}
+                          {(weekDay) => (
+                            <DatePicker.TableHeader class={styles.TableHeader}>
+                              {weekDay().short}
+                            </DatePicker.TableHeader>
+                          )}
                         </Index>
                       </DatePicker.TableRow>
                     </DatePicker.TableHead>
-                    <DatePicker.TableBody>
+                    <DatePicker.TableBody class={styles.TableBody}>
                       <Index each={offset().weeks}>
                         {(week) => (
-                          <DatePicker.TableRow>
+                          <DatePicker.TableRow class={styles.TableRow}>
                             <Index each={week()}>
                               {(day) => (
-                                <DatePicker.TableCell value={day()} visibleRange={offset().visibleRange}>
-                                  <DatePicker.TableCellTrigger>{day().day}</DatePicker.TableCellTrigger>
+                                <DatePicker.TableCell
+                                  class={styles.TableCell}
+                                  value={day()}
+                                  visibleRange={offset().visibleRange}
+                                >
+                                  <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>
+                                    {day().day}
+                                  </DatePicker.TableCellTrigger>
                                 </DatePicker.TableCell>
                               )}
                             </Index>

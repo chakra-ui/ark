@@ -6,8 +6,10 @@ import type { MaybeAccessor, Optional } from '../../types'
 import { runIfFn } from '../../utils/run-if-fn'
 import type { TreeCollection, TreeNode } from '../collection'
 
-export interface UseTreeViewProps<T extends TreeNode>
-  extends Optional<Omit<treeView.Props, 'dir' | 'getRootNode' | 'colllection'>, 'id'> {
+export interface UseTreeViewProps<T extends TreeNode> extends Optional<
+  Omit<treeView.Props, 'dir' | 'getRootNode' | 'colllection'>,
+  'id'
+> {
   /**
    * The collection of tree nodes
    */

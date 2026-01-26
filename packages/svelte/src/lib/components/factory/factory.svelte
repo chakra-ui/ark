@@ -28,7 +28,7 @@
   <Svg {as} {...rest} bind:ref />
 {:else if isVoidHTMLTag(as)}
   <svelte:element this={as} {...rest} bind:this={ref} />
-{:else if as === "textarea"}
+{:else if as === 'textarea'}
   <textarea {...rest} bind:this={ref}></textarea>
 {:else}
   <svelte:element this={as} {...rest} bind:this={ref}>

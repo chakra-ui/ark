@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface SplitterResizeTriggerIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface SplitterResizeTriggerIndicatorProps
-    extends Assign<HTMLProps<'div'>, SplitterResizeTriggerIndicatorBaseProps> {}
+  export interface SplitterResizeTriggerIndicatorProps extends Assign<
+    HTMLProps<'div'>,
+    SplitterResizeTriggerIndicatorBaseProps
+  > {}
 </script>
 
 <script lang="ts">

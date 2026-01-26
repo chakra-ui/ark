@@ -1,24 +1,33 @@
 import { Checkbox } from '@ark-ui/react/checkbox'
-import { Field } from '@ark-ui/react/field'
 import { Fieldset } from '@ark-ui/react/fieldset'
+import { CheckIcon } from 'lucide-react'
+import checkbox from 'styles/checkbox.module.css'
+import styles from 'styles/fieldset.module.css'
 
 export const WithCheckbox = () => {
   return (
-    <Fieldset.Root>
-      <Fieldset.Legend>Legend</Fieldset.Legend>
-      <Fieldset.HelperText>Fieldset Helper Text</Fieldset.HelperText>
-      <Fieldset.ErrorText>Fieldset Error Text</Fieldset.ErrorText>
-      <Field.Root>
-        <Checkbox.Root>
-          <Checkbox.Label>Label</Checkbox.Label>
-          <Checkbox.Control>
-            <Checkbox.Indicator>✔️</Checkbox.Indicator>
-          </Checkbox.Control>
-          <Checkbox.HiddenInput />
-        </Checkbox.Root>
-        <Field.HelperText>Field Heler Text</Field.HelperText>
-        <Field.ErrorText>Field Error Text</Field.ErrorText>
-      </Field.Root>
+    <Fieldset.Root className={styles.Root}>
+      <Fieldset.Legend className={styles.Legend}>Email Preferences</Fieldset.Legend>
+
+      <Checkbox.Root className={checkbox.Root} defaultChecked>
+        <Checkbox.Control className={checkbox.Control}>
+          <Checkbox.Indicator className={checkbox.Indicator}>
+            <CheckIcon />
+          </Checkbox.Indicator>
+        </Checkbox.Control>
+        <Checkbox.Label className={checkbox.Label}>Product updates</Checkbox.Label>
+        <Checkbox.HiddenInput />
+      </Checkbox.Root>
+
+      <Checkbox.Root className={checkbox.Root}>
+        <Checkbox.Control className={checkbox.Control}>
+          <Checkbox.Indicator className={checkbox.Indicator}>
+            <CheckIcon />
+          </Checkbox.Indicator>
+        </Checkbox.Control>
+        <Checkbox.Label className={checkbox.Label}>Marketing emails</Checkbox.Label>
+        <Checkbox.HiddenInput />
+      </Checkbox.Root>
     </Fieldset.Root>
   )
 }

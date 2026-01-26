@@ -11,11 +11,9 @@ interface RootProviderProps<T extends CollectionItem> {
   value: UseListboxReturn<T>
 }
 export interface ListboxRootProviderBaseProps<T extends CollectionItem>
-  extends RootProviderProps<T>,
-    PolymorphicProps {}
+  extends RootProviderProps<T>, PolymorphicProps {}
 export interface ListboxRootProviderProps<T extends CollectionItem>
-  extends HTMLProps<'div'>,
-    ListboxRootProviderBaseProps<T> {}
+  extends HTMLProps<'div'>, ListboxRootProviderBaseProps<T> {}
 
 const ListboxImpl = <T extends CollectionItem>(props: ListboxRootProviderProps<T>, ref: React.Ref<HTMLDivElement>) => {
   const [{ value: listbox }, localProps] = createSplitProps<RootProviderProps<T>>()(props, ['value'])

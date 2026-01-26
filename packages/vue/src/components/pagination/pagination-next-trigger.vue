@@ -4,7 +4,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface PaginationNextTriggerBaseProps extends PolymorphicProps {}
 export interface PaginationNextTriggerProps
-  extends PaginationNextTriggerBaseProps,
+  extends
+    PaginationNextTriggerBaseProps,
     /**
      * @vue-ignore
      */

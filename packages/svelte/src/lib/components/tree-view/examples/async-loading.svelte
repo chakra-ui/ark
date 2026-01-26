@@ -1,17 +1,16 @@
 <script lang="ts">
-  // biome-ignore lint/style/useImportType: intentional
-  import { TreeView, createTreeCollection } from '@ark-ui/svelte/tree-view'
-  import { SquareCheckBigIcon, ChevronRightIcon, FileIcon, FolderIcon, LoaderCircleIcon } from 'lucide-svelte'
+  import { TreeView, createTreeCollection } from '$lib'
+  import { ChevronRightIcon, FileIcon, FolderIcon, LoaderCircleIcon } from 'lucide-svelte'
+  import styles from 'styles/tree-view.module.css'
 
-  interface Node {
+  interface TreeNode {
     id: string
     name: string
-    children?: Node[]
+    children?: TreeNode[]
     childrenCount?: number
   }
 
-  // mock api result
-  const response: Record<string, Node[]> = {
+  const response: Record<string, TreeNode[]> = {
     node_modules: [
       { id: 'zag-js', name: 'zag-js' },
       { id: 'pandacss', name: 'panda' },
@@ -27,8 +26,7 @@
     ],
   }
 
-  // function to load children of a node
-  function loadChildren(details: TreeView.LoadChildrenDetails<Node>): Promise<Node[]> {
+  function loadChildren(details: TreeView.LoadChildrenDetails<TreeNode>): Promise<TreeNode[]> {
     const value = details.valuePath.join('/')
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -37,7 +35,7 @@
     })
   }
 
-  const initialCollection = createTreeCollection<Node>({
+  const initialCollection = createTreeCollection<TreeNode>({
     nodeToValue: (node) => node.id,
     nodeToString: (node) => node.name,
     rootNode: {
@@ -57,57 +55,55 @@
   let collection = $state(initialCollection)
 </script>
 
-<TreeView.Root {collection} {loadChildren} onLoadChildrenComplete={(e) => (collection = e.collection)}>
-  <TreeView.Label>Tree</TreeView.Label>
-  <TreeView.Tree>
+<TreeView.Root
+  class={styles.Root}
+  {collection}
+  {loadChildren}
+  onLoadChildrenComplete={(e) => (collection = e.collection)}
+>
+  <TreeView.Label class={styles.Label}>Tree</TreeView.Label>
+  <TreeView.Tree class={styles.Tree}>
     {#each collection.rootNode.children ?? [] as node, index (node.id)}
-      {@render TreeNode(node, [index])}
+      {@render renderNode(node, [index])}
     {/each}
   </TreeView.Tree>
 </TreeView.Root>
 
-{#snippet TreeNodeIndicator()}
-  <TreeView.NodeContext>
-    {#snippet render(nodeState)}
-      {#if nodeState().loading}
-        <LoaderCircleIcon style="animation: spin 1s infinite" />
-      {:else}
-        <FolderIcon />
-      {/if}
-    {/snippet}
-  </TreeView.NodeContext>
-{/snippet}
-
-{#snippet TreeNode(node: Node, indexPath: number[])}
+{#snippet renderNode(node: TreeNode, indexPath: number[])}
   <TreeView.NodeProvider {node} {indexPath}>
-    {#if node.children || node.childrenCount}
-      <TreeView.Branch>
-        <TreeView.BranchControl>
-          <TreeView.BranchText>
-            {@render TreeNodeIndicator()}
-            {node.name}
-          </TreeView.BranchText>
-          <TreeView.BranchIndicator>
-            <ChevronRightIcon />
-          </TreeView.BranchIndicator>
-        </TreeView.BranchControl>
-        <TreeView.BranchContent>
-          <TreeView.BranchIndentGuide />
-          {#each node.children ?? [] as child, index (child.id)}
-            {@render TreeNode(child, [...indexPath, index])}
-          {/each}
-        </TreeView.BranchContent>
-      </TreeView.Branch>
-    {:else}
-      <TreeView.Item>
-        <TreeView.ItemIndicator>
-          <SquareCheckBigIcon />
-        </TreeView.ItemIndicator>
-        <TreeView.ItemText>
-          <FileIcon />
-          {node.name}
-        </TreeView.ItemText>
-      </TreeView.Item>
-    {/if}
+    <TreeView.NodeContext>
+      {#snippet render(nodeState)}
+        {#if node.children || node.childrenCount}
+          <TreeView.Branch class={styles.Branch}>
+            <TreeView.BranchControl class={styles.BranchControl}>
+              <TreeView.BranchIndicator class={styles.BranchIndicator}>
+                <ChevronRightIcon />
+              </TreeView.BranchIndicator>
+              <TreeView.BranchText class={styles.BranchText}>
+                {#if nodeState().loading}
+                  <LoaderCircleIcon style="animation: spin 1s infinite" />
+                {:else}
+                  <FolderIcon />
+                {/if}
+                {node.name}
+              </TreeView.BranchText>
+            </TreeView.BranchControl>
+            <TreeView.BranchContent class={styles.BranchContent}>
+              <TreeView.BranchIndentGuide class={styles.BranchIndentGuide} />
+              {#each node.children ?? [] as child, index (child.id)}
+                {@render renderNode(child, [...indexPath, index])}
+              {/each}
+            </TreeView.BranchContent>
+          </TreeView.Branch>
+        {:else}
+          <TreeView.Item class={styles.Item}>
+            <TreeView.ItemText class={styles.ItemText}>
+              <FileIcon />
+              {node.name}
+            </TreeView.ItemText>
+          </TreeView.Item>
+        {/if}
+      {/snippet}
+    </TreeView.NodeContext>
   </TreeView.NodeProvider>
 {/snippet}

@@ -22,7 +22,8 @@ export interface DownloadTriggerBaseProps extends PolymorphicProps {
 }
 
 export interface DownloadTriggerProps
-  extends DownloadTriggerBaseProps,
+  extends
+    DownloadTriggerBaseProps,
     /**
      * @vue-ignore
      */

@@ -10,7 +10,8 @@ interface RootProviderProps {
 
 export interface TabsRootProviderBaseProps extends RootProviderProps, RenderStrategyProps, PolymorphicProps {}
 export interface TabsRootProviderProps
-  extends TabsRootProviderBaseProps,
+  extends
+    TabsRootProviderBaseProps,
     /**
      * @vue-ignore
      */

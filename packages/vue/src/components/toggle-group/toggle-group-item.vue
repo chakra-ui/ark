@@ -5,7 +5,8 @@ import type { PolymorphicProps } from '../factory'
 
 export interface ToggleGroupItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface ToggleGroupItemProps
-  extends ToggleGroupItemBaseProps,
+  extends
+    ToggleGroupItemBaseProps,
     /**
      * @vue-ignore
      */

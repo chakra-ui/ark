@@ -72,7 +72,7 @@ const indexHtml = `<!doctype html>
 const main = `import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { App } from './App'
-import './index.css'
+import './global.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -80,19 +80,47 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   </React.StrictMode>,
 )`
 
-export async function openInStackblitzReact(opts: { code: string; css: string; id: string; component: string }) {
-  let { code, css, id, component } = opts
+function transformCssModuleImports(code: string): string {
+  // Rename any component.module.css to index.module.css
+  return code.replace(/from\s+['"]styles\/[^'"]+\.module\.css['"]/g, "from './index.module.css'")
+}
+
+function generateGlobalCss(cssModules: Record<string, string>): string {
+  const theme = cssModules['theme.css'] ?? ''
+  const utilities = cssModules['utilities.css'] ?? ''
+  const global = cssModules['global.css'] ?? ''
+  return [theme, utilities, global].filter(Boolean).join('\n\n')
+}
+
+export async function openInStackblitzReact(opts: {
+  code: string
+  cssModules: Record<string, string>
+  id: string
+  component: string
+}) {
+  let { code, cssModules, id, component } = opts
 
   code = code.replace(/export const \w+ =/, 'export const App =')
+  code = transformCssModuleImports(code)
 
-  const files = {
+  const files: Record<string, string> = {
     'tsconfig.json': JSON.stringify(tsconfig, null, 2),
     'package.json': JSON.stringify(packageJson, null, 2),
     'vite.config.ts': viteConfig,
     'index.html': indexHtml,
     'src/App.tsx': code,
-    'src/index.css': css,
+    'src/global.css': generateGlobalCss(cssModules),
     'src/main.tsx': main,
+  }
+
+  // Combine all component CSS modules into index.module.css
+  const componentCss = Object.entries(cssModules)
+    .filter(([filename]) => filename.endsWith('.module.css'))
+    .map(([, content]) => content)
+    .join('\n\n')
+
+  if (componentCss) {
+    files['src/index.module.css'] = componentCss
   }
 
   sdk.openProject(

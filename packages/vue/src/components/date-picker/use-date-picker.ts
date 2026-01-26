@@ -53,6 +53,10 @@ export const useDatePicker = (
         emit?.('update:modelValue', details.value)
         localeProps.onValueChange?.(details)
       },
+      onVisibleRangeChange: (details) => {
+        emit?.('visibleRangeChange', details)
+        localeProps.onVisibleRangeChange?.(details)
+      },
     }
   })
 

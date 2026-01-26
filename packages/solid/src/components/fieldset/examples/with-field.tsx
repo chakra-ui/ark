@@ -1,17 +1,22 @@
 import { Field } from '@ark-ui/solid/field'
 import { Fieldset } from '@ark-ui/solid/fieldset'
+import field from 'styles/field.module.css'
+import styles from 'styles/fieldset.module.css'
 
 export const WithField = () => {
   return (
-    <Fieldset.Root>
-      <Fieldset.Legend>Legend</Fieldset.Legend>
-      <Fieldset.HelperText>Fieldset Helper Text</Fieldset.HelperText>
-      <Fieldset.ErrorText>Fieldset Error Text</Fieldset.ErrorText>
-      <Field.Root>
-        <Field.Label>Label</Field.Label>
-        <Field.Input />
-        <Field.HelperText>Field Helper Text</Field.HelperText>
-        <Field.ErrorText>Field Error Text</Field.ErrorText>
+    <Fieldset.Root class={styles.Root}>
+      <Fieldset.Legend class={styles.Legend}>Personal Information</Fieldset.Legend>
+
+      <Field.Root class={field.Root}>
+        <Field.Label class={field.Label}>First Name</Field.Label>
+        <Field.Input class={field.Input} placeholder="Enter your first name" />
+        <Field.HelperText class={field.HelperText}>As it appears on your ID</Field.HelperText>
+      </Field.Root>
+
+      <Field.Root class={field.Root}>
+        <Field.Label class={field.Label}>Last Name</Field.Label>
+        <Field.Input class={field.Input} placeholder="Enter your last name" />
       </Field.Root>
     </Fieldset.Root>
   )

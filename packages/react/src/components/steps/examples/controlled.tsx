@@ -1,5 +1,7 @@
 import { Steps } from '@ark-ui/react/steps'
 import { useState } from 'react'
+import button from 'styles/button.module.css'
+import styles from 'styles/steps.module.css'
 
 const items = [
   { value: 'first', title: 'First', description: 'Contact Info' },
@@ -11,37 +13,42 @@ export const Controlled = () => {
   const [step, setStep] = useState(0)
 
   return (
-    <div>
-      <div>
-        <strong>Current Step:</strong> {step}
-        <button onClick={() => setStep(0)}>Reset to First</button>
-        <button onClick={() => setStep(items.length - 1)}>Skip to Last</button>
-      </div>
+    <div className="stack">
+      <output>current step: {step + 1}</output>
 
-      <Steps.Root count={items.length} step={step} onStepChange={(details) => setStep(details.step)}>
-        <Steps.List>
+      <Steps.Root
+        className={styles.Root}
+        count={items.length}
+        step={step}
+        onStepChange={(details) => setStep(details.step)}
+      >
+        <Steps.List className={styles.List}>
           {items.map((item, index) => (
-            <Steps.Item key={index} index={index}>
-              <Steps.Trigger>
-                <Steps.Indicator>{index + 1}</Steps.Indicator>
+            <Steps.Item className={styles.Item} key={index} index={index}>
+              <Steps.Trigger className={styles.Trigger}>
+                <Steps.Indicator className={styles.Indicator}>{index + 1}</Steps.Indicator>
                 <span>{item.title}</span>
               </Steps.Trigger>
-              <Steps.Separator />
+              <Steps.Separator className={styles.Separator} />
             </Steps.Item>
           ))}
         </Steps.List>
 
         {items.map((item, index) => (
-          <Steps.Content key={index} index={index}>
+          <Steps.Content className={styles.Content} key={index} index={index}>
             {item.title} - {item.description}
           </Steps.Content>
         ))}
 
-        <Steps.CompletedContent>Steps Complete - Thank you for filling out the form!</Steps.CompletedContent>
+        <Steps.CompletedContent className={styles.CompletedContent}>
+          Steps Complete - Thank you for filling out the form!
+        </Steps.CompletedContent>
 
-        <div>
-          <Steps.PrevTrigger>Back</Steps.PrevTrigger>
-          <Steps.NextTrigger>Next</Steps.NextTrigger>
+        <div className={styles.Actions}>
+          <Steps.PrevTrigger className={button.Root}>Back</Steps.PrevTrigger>
+          <Steps.NextTrigger className={button.Root} data-variant="solid">
+            Next
+          </Steps.NextTrigger>
         </div>
       </Steps.Root>
     </div>

@@ -1,14 +1,15 @@
 import type { Metadata } from 'next'
 import { ThemeProvider } from 'next-themes'
-import { Outfit, Roboto_Mono } from 'next/font/google'
+import { Roboto_Mono, Wix_Madefor_Text } from 'next/font/google'
 import Script from 'next/script'
 import type { PropsWithChildren } from 'react'
 import { cx } from 'styled-system/css'
 import { ContactDialog, FloatingContactButton } from '~/components/contact-dialog'
 import { Toaster } from '~/components/toaster'
+import { getPublicUrl } from '~/lib/get-public-url'
 import './global.css'
 
-const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
+const wixMadeforText = Wix_Madefor_Text({ subsets: ['latin'], variable: '--font-wix-madefor-text' })
 const roboto = Roboto_Mono({
   subsets: ['latin'],
   variable: '--font-roboto-mono',
@@ -18,7 +19,7 @@ const description =
   'A headless UI library with over 45+ components designed to build reusable, scalable Design Systems that works for a wide range of JS frameworks.'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://ark-ui.com'),
+  metadataBase: new URL(getPublicUrl()),
   title: {
     default: 'Home | Ark UI',
     template: '%s | Ark UI',
@@ -26,24 +27,22 @@ export const metadata: Metadata = {
   description,
   keywords: ['react', 'solid', 'vue', 'svelte', 'design systems', 'headless', 'components', 'library'],
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://ark-ui.com',
-    description,
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
   twitter: {
+    card: 'summary_large_image',
     creator: '@ark_ui_',
-    description,
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
 }
 
 export default function RootLayout(props: PropsWithChildren) {
   return (
-    <html lang="en" className={cx(outfit.variable, roboto.variable)} suppressHydrationWarning>
+    <html lang="en" className={cx(wixMadeforText.variable, roboto.variable)} suppressHydrationWarning>
       <head>
         <Script src="https://plausible.io/js/plausible.js" data-domain="ark-ui.com" />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <ThemeProvider attribute="class">
           {props.children}
           <ContactDialog>

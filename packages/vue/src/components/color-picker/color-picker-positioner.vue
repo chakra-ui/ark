@@ -4,7 +4,8 @@ import { type PolymorphicProps, ark } from '../factory'
 
 export interface ColorPickerPositionerBaseProps extends PolymorphicProps {}
 export interface ColorPickerPositionerProps
-  extends ColorPickerPositionerBaseProps,
+  extends
+    ColorPickerPositionerBaseProps,
     /**
      * @vue-ignore
      */

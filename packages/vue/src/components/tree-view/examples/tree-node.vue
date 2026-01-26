@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { TreeView } from '@ark-ui/vue/tree-view'
-import { CheckSquare, ChevronRight, File, Folder } from 'lucide-vue-next'
+import { ChevronRight, File, Folder, FolderOpen } from 'lucide-vue-next'
+import styles from 'styles/tree-view.module.css'
 
 interface Node {
   id: string
@@ -18,38 +19,38 @@ defineProps<Props>()
 
 <template>
   <TreeView.NodeProvider :node="node" :indexPath="indexPath">
-    <template v-if="node.children">
-      <TreeView.Branch>
-        <TreeView.BranchControl>
-          <TreeView.BranchText>
-            <Folder />
+    <TreeView.NodeContext v-slot="nodeState">
+      <template v-if="node.children">
+        <TreeView.Branch :class="styles.Branch">
+          <TreeView.BranchControl :class="styles.BranchControl">
+            <TreeView.BranchIndicator :class="styles.BranchIndicator">
+              <ChevronRight />
+            </TreeView.BranchIndicator>
+            <TreeView.BranchText :class="styles.BranchText">
+              <FolderOpen v-if="nodeState.expanded" />
+              <Folder v-else />
+              {{ node.name }}
+            </TreeView.BranchText>
+          </TreeView.BranchControl>
+          <TreeView.BranchContent :class="styles.BranchContent">
+            <TreeView.BranchIndentGuide :class="styles.BranchIndentGuide" />
+            <TreeNode
+              v-for="(child, index) in node.children"
+              :key="child.id"
+              :node="child"
+              :indexPath="[...indexPath, index]"
+            />
+          </TreeView.BranchContent>
+        </TreeView.Branch>
+      </template>
+      <template v-else>
+        <TreeView.Item :class="styles.Item">
+          <TreeView.ItemText :class="styles.ItemText">
+            <File />
             {{ node.name }}
-          </TreeView.BranchText>
-          <TreeView.BranchIndicator>
-            <ChevronRight />
-          </TreeView.BranchIndicator>
-        </TreeView.BranchControl>
-        <TreeView.BranchContent>
-          <TreeView.BranchIndentGuide />
-          <TreeNode
-            v-for="(child, index) in node.children"
-            :key="child.id"
-            :node="child"
-            :indexPath="[...indexPath, index]"
-          />
-        </TreeView.BranchContent>
-      </TreeView.Branch>
-    </template>
-    <template v-else>
-      <TreeView.Item>
-        <TreeView.ItemIndicator>
-          <CheckSquare />
-        </TreeView.ItemIndicator>
-        <TreeView.ItemText>
-          <File />
-          {{ node.name }}
-        </TreeView.ItemText>
-      </TreeView.Item>
-    </template>
+          </TreeView.ItemText>
+        </TreeView.Item>
+      </template>
+    </TreeView.NodeContext>
   </TreeView.NodeProvider>
 </template>

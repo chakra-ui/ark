@@ -6,7 +6,8 @@ import type { RootEmits, RootProps } from './tags-input.types'
 
 export interface TagsInputRootBaseProps extends RootProps, PolymorphicProps {}
 export interface TagsInputRootProps
-  extends TagsInputRootBaseProps,
+  extends
+    TagsInputRootBaseProps,
     /**
      * @vue-ignore
      */
