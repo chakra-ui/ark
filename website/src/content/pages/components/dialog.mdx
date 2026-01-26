@@ -8,8 +8,6 @@ description: A modal window that appears on top of the main content.
 
 ## Anatomy
 
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
 <Anatomy id="dialog" />
 
 ```tsx
@@ -35,6 +33,13 @@ description: A modal window that appears on top of the main content.
 Manage the dialog state using the `open` and `onOpenChange` props.
 
 <Example id="controlled" />
+
+### Root Provider
+
+An alternative way to control the dialog is to use the `RootProvider` component and the `useDialog` hook. This way you
+can access the state and methods from outside the component.
+
+<Example id="root-provider" />
 
 ### Open from Menu
 
@@ -95,12 +100,6 @@ Make the positioner scrollable so the dialog can extend beyond the viewport.
 Use the `Dialog.Context` component to access the dialog's state and methods.
 
 <Example id="context" />
-
-### Root Provider
-
-Use `useDialog` with `Dialog.RootProvider` to control the dialog from outside its component tree.
-
-<Example id="root-provider" />
 
 ### Nested
 

@@ -8,10 +8,6 @@ description: A component that allows users to select a color from a color picker
 
 ## Anatomy
 
-To set up the color picker correctly, you'll need to understand its anatomy and how we name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
 <Anatomy id="color-picker" />
 
 ```tsx
@@ -47,8 +43,6 @@ To set up the color picker correctly, you'll need to understand its anatomy and 
 
 ## Examples
 
-Learn how to use the `ColorPicker` component in your project. Let's take a look at the most basic example
-
 <Example id="basic" />
 
 ### Controlled
@@ -62,6 +56,13 @@ Use the `value` and `onValueChange` props to programatically control the color p
 Control the open state of the color picker popover programmatically using the `open` and `onOpenChange` props.
 
 <Example id="open-controlled" />
+
+### Root Provider
+
+An alternative way to control the color picker is to use the `RootProvider` component and the `useColorPicker` hook.
+This way you can access the state and methods from outside the component.
+
+<Example id="root-provider" />
 
 ### Disabled
 
@@ -118,15 +119,6 @@ Integrate the color picker with form libraries like React Hook Form using the `H
 
 <Example id="form-usage" />
 
-### Root Provider
-
-Use the `useColorPicker` hook to create the color picker store and pass it to the `ColorPicker.RootProvider` component.
-This allows you to have maximum control over the color picker programmatically.
-
-<Example id="root-provider" />
-
-> If you're using the `ColorPicker.RootProvider` component, you don't need to use the `ColorPicker.Root` component.
-
 ## API Reference
 
 ### Props
@@ -134,9 +126,6 @@ This allows you to have maximum control over the color picker programmatically.
 <ComponentTypes id="color-picker" />
 
 ### Context
-
-These are the properties available when using `ColorPicker.Context`, `useColorPickerContext` hook or `useColorPicker`
-hook.
 
 <ContextType id="color-picker" />
 

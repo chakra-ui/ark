@@ -8,10 +8,6 @@ description: Used to record the time elapsed from zero or since a specified targ
 
 ## Anatomy
 
-To set up the timer correctly, you'll need to understand its anatomy and how we name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
 <Anatomy id="timer" />
 
 ```tsx
@@ -27,8 +23,6 @@ To set up the timer correctly, you'll need to understand its anatomy and how we 
 ```
 
 ## Examples
-
-Learn how to use the `Timer` component in your project. Let's take a look at the most basic example:
 
 <Example id="basic" />
 
@@ -61,12 +55,10 @@ Here's an example of building a pomodoro timer that alternates between work and 
 
 ### Root Provider
 
-The `RootProvider` component provides a context for the timer. It accepts the value of the `useTimer` hook. You can
-leverage it to access the component state and methods from outside the timer.
+An alternative way to control the timer is to use the `RootProvider` component and the `useTimer` hook. This way you can
+access the state and methods from outside the component.
 
 <Example id="root-provider" />
-
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
 
 ## API Reference
 
@@ -75,7 +67,5 @@ leverage it to access the component state and methods from outside the timer.
 <ComponentTypes id="timer" />
 
 ### Context
-
-These are the properties available when using `Timer.Context`, `useTimerContext` hook or `useTimer` hook.
 
 <ContextType id="timer" />

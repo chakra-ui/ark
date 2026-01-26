@@ -6,20 +6,7 @@ description: A collapsible component for displaying content in a vertical stack.
 
 <ComponentPreview id="Accordion" />
 
-## Features
-
-- Full keyboard navigation
-- Supports horizontal and vertical orientation
-- Right-to-Left (RTL) support
-- Single or multiple item expansion
-- Controlled and uncontrolled modes
-- Collapse each accordion item
-
 ## Anatomy
-
-To set up the accordion correctly, it's essential to understand its anatomy and the naming of its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
 
 <Anatomy id="accordion" />
 
@@ -62,24 +49,20 @@ By default, the Accordion is oriented vertically. Use the `orientation` prop to 
 
 ### Root Provider
 
-The `RootProvider` component provides a context for the accordion. It accepts the value of the `useAccordion` hook. You
-can leverage it to access the component state and methods from outside the accordion.
+An alternative way to control the accordion is to use the `RootProvider` component and the `useAccordion` hook. This way
+you can access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
-
 ### Context
 
-Use the `Accordion.Context` component or `useAccordionContext` hook to access the state of an accordion. It exposes
-properties like `focusedValue` and `value`.
+Use `Accordion.Context` or `useAccordionContext` to access the accordion state.
 
 <Example id="context" />
 
 ### Item State
 
-Use the `Accordion.ItemContext` component or `useAccordionItemContext` hook to access the state of an accordion item. It
-exposes properties like `expanded`, `focused` and `disabled`.
+Use `Accordion.ItemContext` or `useAccordionItemContext` to access the state of an accordion item.
 
 <Example id="item-context" />
 
@@ -92,7 +75,7 @@ Use the `lazyMount` prop to defer rendering of accordion content until the item 
 
 ## Guides
 
-### Animations
+### Content Animation
 
 Use the `--height` and/or `--width` CSS variables to animate the size of the content when it expands or closes:
 
@@ -135,8 +118,6 @@ Use the `--height` and/or `--width` CSS variables to animate the size of the con
 <ComponentTypes id="accordion" />
 
 ### Context
-
-These are the properties available when using `Accordion.Context`, `useAccordionContext` hook or `useAccordion` hook.
 
 <ContextType id="accordion" />
 

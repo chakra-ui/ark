@@ -8,10 +8,6 @@ description: A component that allows users to add tags to an input field.
 
 ## Anatomy
 
-To set up the tags input correctly, you'll need to understand its anatomy and how we name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
 <Anatomy id="tags-input" />
 
 ```tsx
@@ -33,8 +29,6 @@ To set up the tags input correctly, you'll need to understand its anatomy and ho
 ```
 
 ## Examples
-
-Learn how to use the `TagsInput` component in your project. Let's take a look at the most basic example:
 
 <Example id="basic" />
 
@@ -60,6 +54,13 @@ Use the `inputValue` and `onInputValueChange` props to control the text input fi
 clearing the input or pre-filling it programmatically.
 
 <Example id="controlled-input-value" />
+
+### Root Provider
+
+An alternative way to control the tags input is to use the `RootProvider` component and the `useTagsInput` hook. This
+way you can access the state and methods from outside the component.
+
+<Example id="root-provider" />
 
 ### Custom Delimiter
 
@@ -145,15 +146,6 @@ ARIA labels, helper text, and error text to ensure proper accessibility.
 
 <Example id="with-field" />
 
-### Root Provider
-
-The `RootProvider` component provides a context for the tags-input. It accepts the value of the `useTags-input` hook.
-You can leverage it to access the component state and methods from outside the tags-input.
-
-<Example id="root-provider" />
-
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
-
 ### Combobox
 
 Combine TagsInput with Combobox to create an autocomplete tags input. This pattern uses shared IDs between both
@@ -179,8 +171,6 @@ left and arrow right keys. When "visual" focus in on any tag:
 <ComponentTypes id="tags-input" />
 
 ### Context
-
-These are the properties available when using `TagsInput.Context`, `useTagsInputContext` hook or `useTagsInput` hook.
 
 <ContextType id="tags-input" />
 

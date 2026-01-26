@@ -6,20 +6,7 @@ description: A continuous scrolling component for displaying content in a seamle
 
 <ComponentPreview id="Marquee" />
 
-## Features
-
-- Smooth GPU-accelerated animations with seamless looping
-- Horizontal and vertical scrolling with RTL support
-- Auto-fill mode to duplicate content
-- Customizable speed and spacing
-- Pause on hover/focus with keyboard support
-- Programmatic control and finite loops
-
 ## Anatomy
-
-To set up the marquee correctly, you'll need to understand its anatomy and how we name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
 
 {/* <Anatomy id="marquee" /> */}
 
@@ -35,8 +22,6 @@ To set up the marquee correctly, you'll need to understand its anatomy and how w
 ```
 
 ## Examples
-
-Learn how to use the `Marquee` component in your project. Let's take a look at the most basic example:
 
 <Example id="basic" />
 
@@ -94,7 +79,7 @@ Add `Marquee.Edge` components to create fade effects at the start and end of the
 
 ## Guides
 
-### Styling
+### Content Animation
 
 The Marquee component requires CSS keyframe animations to function properly. You'll need to define animations for both
 horizontal and vertical scrolling:
@@ -147,16 +132,4 @@ You can target specific parts of the marquee using `data-part` attributes for cu
 
 ### Context
 
-These are the properties available when using `Marquee.Context`, `useMarqueeContext` hook or `useMarquee` hook.
-
 <ContextType id="marquee" />
-
-## Accessibility
-
-The Marquee component is built with accessibility in mind:
-
-- Uses appropriate ARIA attributes: `role="region"` and `aria-roledescription="marquee"`
-- Cloned content for seamless looping is marked with `aria-hidden="true"` to avoid confusion for screen readers
-- Automatically respects user motion preferences via `prefers-reduced-motion`
-- Supports keyboard interaction when `pauseOnInteraction` is enabled
-- Allows users to pause animations on hover or focus for better readability

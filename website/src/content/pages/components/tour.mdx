@@ -6,19 +6,7 @@ description: A guided tour that helps users understand the interface.
 
 <ComponentPreview id="Tour" />
 
-## Features
-
-- Support for different step types such as "dialog", "floating", "tooltip" or "wait"
-- Support for customizable content per step
-- Wait steps for waiting for a specific selector to appear on the page before showing the next step
-- Flexible positioning of the tour dialog per step
-- Progress tracking shows users their progress through the tour
-
 ## Anatomy
-
-To set up the tour correctly, it's essential to understand its anatomy and the naming of its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
 
 <Anatomy id="tour" />
 
@@ -46,8 +34,6 @@ const tour = useTour({ steps: [...] })
 ```
 
 ## Examples
-
-Learn how to use the `Tour` component in your project. Let's take a look at the most basic example:
 
 <Example id="basic" />
 
@@ -300,7 +286,5 @@ body {
 <ComponentTypes id="tour" />
 
 ### Context
-
-These are the properties available when using `Tour.Context`, `useTourContext` hook or `useTour` hook.
 
 <ContextType id="tour" />
