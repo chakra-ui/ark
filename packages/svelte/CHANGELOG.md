@@ -18,6 +18,7 @@ description: All notable changes will be documented in this file.
 
 - **Auto Resize**: Fixed change event not emitted after clearing controlled textarea
 - **Checkbox**: Fixed individual checkbox props being overridden by `CheckboxGroup`
+- **Factory**: Fixed textarea hydration marker issue
 - **Collection, Tree View**: Fixed initial focus when first node/branch is disabled
 - **Color Picker**: Fixed color not updating when selecting black shades in controlled mode
 - **Floating Panel**: Fixed double-click on minimized title bar incorrectly maximizing

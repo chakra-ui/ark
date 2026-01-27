@@ -12,6 +12,8 @@
 
 - **Auto Resize**: Fixed change event not emitted after clearing controlled textarea
 - **Checkbox**: Fixed individual checkbox props being overridden by `CheckboxGroup`
+- **Factory**: Fixed error when first child doesn't exist before merging props
+- **Scroll Area**: Fixed `ScrollAreaRootProvider` not binding `rootProps` correctly
 - **Collection, Tree View**: Fixed initial focus when first node/branch is disabled
 - **Color Picker**: Fixed color not updating when selecting black shades in controlled mode
 - **Floating Panel**: Fixed double-click on minimized title bar incorrectly maximizing
