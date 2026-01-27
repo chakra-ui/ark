@@ -98,6 +98,7 @@ export {
 export {
   default as ColorPickerRootProvider,
   type ColorPickerRootProviderBaseProps,
+  type ColorPickerRootProviderEmits,
   type ColorPickerRootProviderProps,
 } from './color-picker-root-provider.vue'
 export {

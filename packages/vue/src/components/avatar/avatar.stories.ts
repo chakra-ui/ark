@@ -1,7 +1,6 @@
 import type { Meta } from '@storybook/vue3-vite'
 
 import BasicExample from './examples/basic.vue'
-import ClosedExample from './examples/closed.vue'
 import ContextExample from './examples/context.vue'
 import EventsExample from './examples/events.vue'
 import ProviderExample from './examples/provider.vue'
@@ -24,14 +23,6 @@ export const Events = {
   render: () => ({
     components: { Component: EventsExample },
     template: '<Component />',
-  }),
-}
-
-export const Closed = {
-  render: () => ({
-    components: { Component: ClosedExample },
-    template:
-      '<Component name="Christian" src="https://avatars.githubusercontent.com/u/1846056?v=4" @status-change="(e) => console.log(e.status)" />',
   }),
 }
 

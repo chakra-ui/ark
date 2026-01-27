@@ -65,6 +65,7 @@ export {
 export {
   default as DatePickerRootProvider,
   type DatePickerRootProviderBaseProps,
+  type DatePickerRootProviderEmits,
   type DatePickerRootProviderProps,
 } from './date-picker-root-provider.vue'
 export {

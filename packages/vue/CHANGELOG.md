@@ -10,6 +10,8 @@
 
 ### Fixed
 
+- **Color Picker, Combobox, Date Picker, Dialog, Hover Card, Menu, Popover, Select, Tooltip, Tour**: Fixed
+  `exitComplete` event not being exposed from root component
 - **Auto Resize**: Fixed change event not emitted after clearing controlled textarea
 - **Checkbox**: Fixed individual checkbox props being overridden by `CheckboxGroup`
 - **Factory**: Fixed error when first child doesn't exist before merging props

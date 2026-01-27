@@ -17,12 +17,13 @@ export interface ColorPickerRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useColorPicker } from './use-color-picker'
-import { ColorPickerProvider } from './use-color-picker-context'
+import { computed } from 'vue'
 import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
 import { useForwardExpose } from '../../utils/use-forward-expose'
-import { computed } from 'vue'
+import { ark } from '../factory'
+import { PresenceProvider, usePresence } from '../presence'
+import { useColorPicker } from './use-color-picker'
+import { ColorPickerProvider } from './use-color-picker-context'
 
 const props = withDefaults(defineProps<ColorPickerRootProps>(), {
   closeOnSelect: undefined,
@@ -39,7 +40,18 @@ const props = withDefaults(defineProps<ColorPickerRootProps>(), {
 const emits = defineEmits<ColorPickerRootEmits>()
 
 const colorPicker = useColorPicker(props, emits)
+
+const presence = usePresence(
+  computed(() => ({
+    present: colorPicker.value.open,
+    lazyMount: props.lazyMount,
+    unmountOnExit: props.unmountOnExit,
+  })),
+  emits,
+)
+
 ColorPickerProvider(colorPicker)
+PresenceProvider(presence)
 
 RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 

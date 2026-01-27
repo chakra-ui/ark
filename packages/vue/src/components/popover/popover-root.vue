@@ -12,6 +12,7 @@ export interface PopoverRootEmits extends RootEmits {}
 import { computed } from 'vue'
 import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
 import { useForwardExpose } from '../../utils/use-forward-expose'
+import { PresenceProvider, usePresence } from '../presence'
 import { usePopover } from './use-popover'
 import { PopoverProvider } from './use-popover-context'
 
@@ -29,7 +30,17 @@ const emits = defineEmits<PopoverRootEmits>()
 
 const popover = usePopover(props, emits)
 
+const presence = usePresence(
+  computed(() => ({
+    present: popover.value.open,
+    lazyMount: props.lazyMount,
+    unmountOnExit: props.unmountOnExit,
+  })),
+  emits,
+)
+
 PopoverProvider(popover)
+PresenceProvider(presence)
 RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()

@@ -40,6 +40,7 @@ export {
 export {
   default as PopoverRootProvider,
   type PopoverRootProviderBaseProps,
+  type PopoverRootProviderEmits,
   type PopoverRootProviderProps,
 } from './popover-root-provider.vue'
 export {

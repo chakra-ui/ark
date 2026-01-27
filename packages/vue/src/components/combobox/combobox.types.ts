@@ -187,6 +187,10 @@ export interface RootProps<T extends CollectionItem> {
 
 export type RootEmits<T extends CollectionItem> = {
   /**
+   * Function called when the animation ends in the closed state
+   */
+  exitComplete: []
+  /**
    * Function called when the focus is moved outside the component
    */
   focusOutside: [event: combobox.FocusOutsideEvent]

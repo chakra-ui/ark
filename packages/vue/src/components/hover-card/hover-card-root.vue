@@ -12,6 +12,7 @@ export interface HoverCardRootEmits extends RootEmits {}
 import { computed } from 'vue'
 import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
 import { useForwardExpose } from '../../utils/use-forward-expose'
+import { PresenceProvider, usePresence } from '../presence'
 import { useHoverCard } from './use-hover-card'
 import { HoverCardProvider } from './use-hover-card-context'
 
@@ -25,7 +26,17 @@ const emits = defineEmits<HoverCardRootEmits>()
 
 const hoverCard = useHoverCard(props, emits)
 
+const presence = usePresence(
+  computed(() => ({
+    present: hoverCard.value.open,
+    lazyMount: props.lazyMount,
+    unmountOnExit: props.unmountOnExit,
+  })),
+  emits,
+)
+
 HoverCardProvider(hoverCard)
+PresenceProvider(presence)
 RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()

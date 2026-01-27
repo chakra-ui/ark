@@ -184,6 +184,10 @@ export interface RootProps {
 
 export type RootEmits = {
   /**
+   * Function called when the animation ends in the closed state
+   */
+  exitComplete: []
+  /**
    * Function called when the focused date changes.
    */
   focusChange: [details: datePicker.FocusChangeDetails]

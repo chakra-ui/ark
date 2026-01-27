@@ -51,6 +51,7 @@ export { default as MenuRadioItem, type MenuRadioItemBaseProps, type MenuRadioIt
 export {
   default as MenuRootProvider,
   type MenuRootProviderBaseProps,
+  type MenuRootProviderEmits,
   type MenuRootProviderProps,
 } from './menu-root-provider.vue'
 export { default as MenuRoot, type MenuRootBaseProps, type MenuRootEmits, type MenuRootProps } from './menu-root.vue'

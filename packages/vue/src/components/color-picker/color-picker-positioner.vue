@@ -1,6 +1,6 @@
 <script lang="ts">
-import { type HTMLAttributes, computed } from 'vue'
-import { type PolymorphicProps, ark } from '../factory'
+import type { HTMLAttributes } from 'vue'
+import type { PolymorphicProps } from '../factory'
 
 export interface ColorPickerPositionerBaseProps extends PolymorphicProps {}
 export interface ColorPickerPositionerProps
@@ -13,23 +13,15 @@ export interface ColorPickerPositionerProps
 </script>
 
 <script setup lang="ts">
-import { useRenderStrategyProps } from '../../utils/use-render-strategy'
 import { useForwardExpose } from '../../utils/use-forward-expose'
-import { PresenceProvider, usePresence } from '../presence'
+import { ark } from '../factory'
+import { usePresenceContext } from '../presence'
 import { useColorPickerContext } from './use-color-picker-context'
 
 defineProps<ColorPickerPositionerProps>()
+
 const colorPicker = useColorPickerContext()
-const renderStrategy = useRenderStrategyProps()
-
-const presence = usePresence(
-  computed(() => ({
-    ...renderStrategy.value,
-    present: colorPicker.value.open,
-  })),
-)
-
-PresenceProvider(presence)
+const presence = usePresenceContext()
 
 useForwardExpose()
 </script>

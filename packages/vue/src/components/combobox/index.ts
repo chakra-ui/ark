@@ -65,6 +65,7 @@ export {
 export {
   default as ComboboxRootProvider,
   type ComboboxRootProviderBaseProps,
+  type ComboboxRootProviderEmits,
   type ComboboxRootProviderProps,
   type ComboboxRootProviderComponent,
 } from './combobox-root-provider.vue'

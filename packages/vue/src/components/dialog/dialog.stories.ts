@@ -2,8 +2,6 @@ import type { Meta } from '@storybook/vue3-vite'
 
 import AlertDialogExample from './examples/alert-dialog.vue'
 import BasicExample from './examples/basic.vue'
-import CloseOnEscapeExample from './examples/close-on-escape.vue'
-import CloseOnInteractOutsideExample from './examples/close-on-interact-outside.vue'
 import ConfirmationExample from './examples/confirmation.vue'
 import ContextExample from './examples/context.vue'
 import ControlledExample from './examples/controlled.vue'
@@ -33,20 +31,6 @@ export const AlertDialog = {
 export const Basic = {
   render: () => ({
     components: { Component: BasicExample },
-    template: '<Component />',
-  }),
-}
-
-export const CloseOnEscape = {
-  render: () => ({
-    components: { Component: CloseOnEscapeExample },
-    template: '<Component />',
-  }),
-}
-
-export const CloseOnInteractOutside = {
-  render: () => ({
-    components: { Component: CloseOnInteractOutsideExample },
     template: '<Component />',
   }),
 }

@@ -63,6 +63,7 @@ export {
 export {
   default as SelectRootProvider,
   type SelectRootProviderBaseProps,
+  type SelectRootProviderEmits,
   type SelectRootProviderProps,
   type SelectRootProviderComponent,
 } from './select-root-provider.vue'

@@ -29,6 +29,7 @@ export {
 export {
   default as DialogRootProvider,
   type DialogRootProviderBaseProps,
+  type DialogRootProviderEmits,
   type DialogRootProviderProps,
 } from './dialog-root-provider.vue'
 export {

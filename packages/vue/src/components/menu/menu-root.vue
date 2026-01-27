@@ -13,6 +13,7 @@ export interface MenuRootEmits extends RootEmits {}
 import { computed, onMounted } from 'vue'
 import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
 import { useForwardExpose } from '../../utils/use-forward-expose'
+import { PresenceProvider, usePresence } from '../presence'
 import { useMenu } from './use-menu'
 import { MenuProvider, useMenuContext } from './use-menu-context'
 import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context'
@@ -31,6 +32,15 @@ const emits = defineEmits<MenuRootEmits>()
 
 const { api, machine } = useMenu(props, emits)
 
+const presence = usePresence(
+  computed(() => ({
+    present: api.value.open,
+    lazyMount: props.lazyMount,
+    unmountOnExit: props.unmountOnExit,
+  })),
+  emits,
+)
+
 const parentApi = useMenuContext()
 const parentMachine = useMenuMachineContext()
 
@@ -43,6 +53,7 @@ onMounted(() => {
 MenuTriggerItemProvider(computed(() => parentApi.value.getTriggerItemProps(api.value)))
 MenuMachineProvider(machine)
 MenuProvider(api)
+PresenceProvider(presence)
 RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()

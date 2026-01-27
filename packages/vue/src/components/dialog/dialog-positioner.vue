@@ -1,6 +1,5 @@
 <script lang="ts">
-import { type HTMLAttributes, computed } from 'vue'
-import { useRenderStrategyProps } from '../../utils/use-render-strategy'
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
 export interface DialogPositionerBaseProps extends PolymorphicProps {}
@@ -15,22 +14,14 @@ export interface DialogPositionerProps
 
 <script setup lang="ts">
 import { ark } from '../factory'
-import { PresenceProvider, usePresence } from '../presence'
+import { usePresenceContext } from '../presence'
 import { useDialogContext } from './use-dialog-context'
 import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<DialogPositionerProps>()
 
 const dialog = useDialogContext()
-const renderStrategy = useRenderStrategyProps()
-
-const presence = usePresence(
-  computed(() => ({
-    ...renderStrategy.value,
-    present: dialog.value.open,
-  })),
-)
-PresenceProvider(presence)
+const presence = usePresenceContext()
 
 useForwardExpose()
 </script>

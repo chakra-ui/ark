@@ -87,6 +87,10 @@ export type RootEmits = {
    */
   escapeKeyDown: [event: KeyboardEvent]
   /**
+   * Function called when the animation ends in the closed state
+   */
+  exitComplete: []
+  /**
    * Function called when the focus is moved outside the component
    */
   focusOutside: [event: dialog.FocusOutsideEvent]

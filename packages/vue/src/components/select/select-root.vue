@@ -28,6 +28,7 @@ import { computed } from 'vue'
 import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
 import { useForwardExpose } from '../../utils/use-forward-expose'
 import { ark } from '../factory'
+import { PresenceProvider, usePresence } from '../presence'
 import { useSelect } from './use-select'
 import { SelectProvider } from './use-select-context'
 
@@ -48,7 +49,18 @@ const props = withDefaults(defineProps<SelectRootProps<T>>(), {
 const emits = defineEmits<RootEmits<T>>()
 
 const select = useSelect(props, emits)
+
+const presence = usePresence(
+  computed(() => ({
+    present: select.value.open,
+    lazyMount: props.lazyMount,
+    unmountOnExit: props.unmountOnExit,
+  })),
+  emits,
+)
+
 SelectProvider(select)
+PresenceProvider(presence)
 
 RenderStrategyPropsProvider(
   computed(() => ({

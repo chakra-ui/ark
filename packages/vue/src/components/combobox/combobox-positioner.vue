@@ -1,6 +1,6 @@
 <script lang="ts">
-import { type HTMLAttributes, computed } from 'vue'
-import { type PolymorphicProps, ark } from '../factory'
+import type { HTMLAttributes } from 'vue'
+import type { PolymorphicProps } from '../factory'
 
 export interface ComboboxPositionerBaseProps extends PolymorphicProps {}
 export interface ComboboxPositionerProps
@@ -13,22 +13,15 @@ export interface ComboboxPositionerProps
 </script>
 
 <script setup lang="ts">
-import { useRenderStrategyProps } from '../../utils/use-render-strategy'
 import { useForwardExpose } from '../../utils/use-forward-expose'
-import { PresenceProvider, usePresence } from '../presence'
+import { ark } from '../factory'
+import { usePresenceContext } from '../presence'
 import { useComboboxContext } from './use-combobox-context'
 
 defineProps<ComboboxPositionerProps>()
-const combobox = useComboboxContext()
-const renderStrategy = useRenderStrategyProps()
 
-const presence = usePresence(
-  computed(() => ({
-    ...renderStrategy.value,
-    present: combobox.value.open,
-  })),
-)
-PresenceProvider(presence)
+const combobox = useComboboxContext()
+const presence = usePresenceContext()
 
 useForwardExpose()
 </script>

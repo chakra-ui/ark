@@ -72,6 +72,10 @@ export interface RootProps {
 
 export type RootEmits = {
   /**
+   * Function called when the animation ends in the closed state
+   */
+  exitComplete: []
+  /**
    * Function called when the tooltip is opened.
    */
   openChange: [details: tooltip.OpenChangeDetails]

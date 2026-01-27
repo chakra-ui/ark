@@ -32,6 +32,7 @@ import { computed } from 'vue'
 import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
 import { useForwardExpose } from '../../utils/use-forward-expose'
 import { ark } from '../factory'
+import { PresenceProvider, usePresence } from '../presence'
 import { useCombobox } from './use-combobox'
 import { ComboboxProvider } from './use-combobox-context'
 
@@ -58,7 +59,18 @@ const props = withDefaults(defineProps<ComboboxRootProps<T>>(), {
 const emits = defineEmits<RootEmits<T>>()
 
 const combobox = useCombobox(props, emits)
+
+const presence = usePresence(
+  computed(() => ({
+    present: combobox.value.open,
+    lazyMount: props.lazyMount,
+    unmountOnExit: props.unmountOnExit,
+  })),
+  emits,
+)
+
 ComboboxProvider(combobox)
+PresenceProvider(presence)
 RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()

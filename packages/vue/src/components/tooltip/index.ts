@@ -19,6 +19,7 @@ export {
 export {
   default as TooltipRootProvider,
   type TooltipRootProviderBaseProps,
+  type TooltipRootProviderEmits,
   type TooltipRootProviderProps,
 } from './tooltip-root-provider.vue'
 export {

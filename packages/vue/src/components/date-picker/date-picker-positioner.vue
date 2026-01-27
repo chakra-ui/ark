@@ -1,6 +1,6 @@
 <script lang="ts">
-import { type HTMLAttributes, computed } from 'vue'
-import { type PolymorphicProps, ark } from '../factory'
+import type { HTMLAttributes } from 'vue'
+import type { PolymorphicProps } from '../factory'
 
 export interface DatePickerPositionerBaseProps extends PolymorphicProps {}
 export interface DatePickerPositionerProps
@@ -13,22 +13,15 @@ export interface DatePickerPositionerProps
 </script>
 
 <script setup lang="ts">
-import { useRenderStrategyProps } from '../../utils/use-render-strategy'
-import { PresenceProvider, usePresence } from '../presence'
-import { useDatePickerContext } from './use-date-picker-context'
 import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory'
+import { usePresenceContext } from '../presence'
+import { useDatePickerContext } from './use-date-picker-context'
 
 defineProps<DatePickerPositionerProps>()
-const datePicker = useDatePickerContext()
-const renderStrategy = useRenderStrategyProps()
 
-const presence = usePresence(
-  computed(() => ({
-    ...renderStrategy.value,
-    present: datePicker.value.open,
-  })),
-)
-PresenceProvider(presence)
+const datePicker = useDatePickerContext()
+const presence = usePresenceContext()
 
 useForwardExpose()
 </script>

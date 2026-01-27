@@ -28,6 +28,7 @@ export {
 export {
   default as HoverCardRootProvider,
   type HoverCardRootProviderBaseProps,
+  type HoverCardRootProviderEmits,
   type HoverCardRootProviderProps,
 } from './hover-card-root-provider.vue'
 export {
