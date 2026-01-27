@@ -14,7 +14,7 @@ export const useCheckbox = (ownProps: UseCheckboxProps = {}): UseCheckboxReturn 
   const field = useFieldContext()
 
   const props = useMemo(() => {
-    return mergeProps(ownProps, checkboxGroup?.getItemProps({ value: ownProps.value }) ?? {})
+    return mergeProps(checkboxGroup?.getItemProps({ value: ownProps.value }) ?? {}, ownProps)
   }, [ownProps, checkboxGroup])
 
   const id = useId()

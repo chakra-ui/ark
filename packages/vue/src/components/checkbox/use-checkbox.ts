@@ -20,7 +20,7 @@ export const useCheckbox = (props: MaybeRef<UseCheckboxProps> = {}, emit?: EmitF
   const checkboxGroup = useCheckboxGroupContext()
   const computedProps = computed(() => {
     const propsValue = toValue<UseCheckboxProps>(props)
-    return mergeProps(propsValue, checkboxGroup?.value.getItemProps({ value: propsValue.value }) ?? {})
+    return mergeProps(checkboxGroup?.value.getItemProps({ value: propsValue.value }) ?? {}, propsValue)
   })
 
   const context = computed<checkbox.Props>(() => {
