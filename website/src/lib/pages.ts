@@ -4,6 +4,9 @@ import { type Pages, pages } from '.velite'
 import { getSidebarGroupsWithPages } from './sidebar'
 
 const orderedPages = getSidebarGroupsWithPages().flatMap((group) => group.items)
+const uniqueOrderedPages = orderedPages.filter(
+  (page, index, self) => self.findIndex((p) => p.slug === page.slug) === index,
+)
 
 export function getPageBySlug(slug: string[], framework?: string): Pages | undefined {
   const slugStr = slug.join('/')
@@ -21,10 +24,10 @@ export interface NavItem {
 
 export function getPageNavigation(slug: string[]): { prev?: NavItem; next?: NavItem } {
   const slugStr = slug.join('/')
-  const index = orderedPages.findIndex((page) => page.slug === slugStr)
+  const index = uniqueOrderedPages.findIndex((page) => page.slug === slugStr)
 
-  const prevPage = orderedPages[index - 1]
-  const nextPage = orderedPages[index + 1]
+  const prevPage = uniqueOrderedPages[index - 1]
+  const nextPage = uniqueOrderedPages[index + 1]
 
   return {
     prev: prevPage ? { slug: prevPage.slug, title: prevPage.title } : undefined,
