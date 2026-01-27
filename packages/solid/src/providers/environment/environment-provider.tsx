@@ -1,5 +1,6 @@
 import { getDocument, getWindow } from '@zag-js/dom-query'
 import { type JSX, Show, createMemo, createSignal } from 'solid-js'
+import { ark } from '../../components/factory'
 import { runIfFn } from '../../utils/run-if-fn'
 import { EnvironmentContextProvider, type RootNode } from './use-environment-context'
 
@@ -22,7 +23,7 @@ export const EnvironmentProvider = (props: EnvironmentProviderProps) => {
     <EnvironmentContextProvider value={environment}>
       {props.children}
       <Show when={!props.value}>
-        <span hidden ref={setSpanRef} />
+        <ark.span hidden ref={setSpanRef} />
       </Show>
     </EnvironmentContextProvider>
   )

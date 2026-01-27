@@ -2,6 +2,7 @@ import type { ComponentProps } from 'solid-js'
 import { For, Show } from 'solid-js'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
+import { ark } from '../factory'
 import { type UseHighlightProps, useHighlight } from './use-highlight'
 
 export interface HighlightBaseProps extends UseHighlightProps {}
@@ -27,7 +28,7 @@ export const Highlight = (props: HighlightProps) => {
     <For each={chunks()}>
       {(chunk) => (
         <Show when={chunk.match} fallback={chunk.text}>
-          <mark {...localProps}>{chunk.text}</mark>
+          <ark.mark {...localProps}>{chunk.text}</ark.mark>
         </Show>
       )}
     </For>

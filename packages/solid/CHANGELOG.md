@@ -10,6 +10,7 @@
 
 ### Fixed
 
+- **SSR**: Fixed Deno SSR crashes by replacing native HTML elements with `ark` factory components
 - **Auto Resize**: Fixed change event not emitted after clearing controlled textarea
 - **Checkbox**: Fixed individual checkbox props being overridden by `CheckboxGroup`
 - **Collection, Tree View**: Fixed initial focus when first node/branch is disabled

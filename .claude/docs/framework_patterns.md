@@ -115,6 +115,31 @@ import { Show } from 'solid-js'
 - More explicit conditional rendering semantics
 - Consistent with Solid.js reactive patterns
 
+#### Native Elements: Use `ark` Factory
+
+In Solid components, **always use `ark.<element>` instead of native HTML elements** (e.g., `<div>`, `<span>`, `<button>`):
+
+```tsx
+import { ark } from '../factory'
+
+// ✅ CORRECT - Use ark factory
+<ark.div {...props} />
+<ark.span data-kind="label">{text}</ark.span>
+<ark.button onClick={handler}>Click</ark.button>
+
+// ❌ WRONG - Native elements cause SSR issues
+<div {...props} />
+<span data-kind="label">{text}</span>
+<button onClick={handler}>Click</button>
+```
+
+**Why this matters:**
+
+- Native HTML elements compile to `template()` and `use()` calls from `solid-js/web`
+- These functions only exist in the browser build, not the server build
+- Deno and other SSR environments use the server build, causing crashes
+- The `ark` factory uses `Dynamic` internally, which defers element creation to render time and is SSR-safe
+
 ### Vue Pattern
 
 ```vue

@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props'
-import type { HTMLProps, PolymorphicProps } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseToggleProps, useToggle } from './use-toggle'
 import { ToggleProvider } from './use-toggle-context'
 
@@ -21,7 +21,7 @@ export const ToggleRoot = (props: ToggleRootProps) => {
 
   return (
     <ToggleProvider value={toggle}>
-      <button {...mergedProps} />
+      <ark.button {...mergedProps} />
     </ToggleProvider>
   )
 }

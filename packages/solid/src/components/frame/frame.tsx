@@ -4,6 +4,7 @@ import { Portal } from 'solid-js/web'
 import { EnvironmentProvider } from '../../providers'
 import type { Assign } from '../../types'
 import { composeRefs } from '../../utils/compose-refs'
+import { ark } from '../factory'
 import { FrameContent } from './frame-content'
 
 export interface FrameBaseProps {
@@ -82,7 +83,7 @@ export const Frame = (props: FrameProps) => {
 
   return (
     <EnvironmentProvider value={() => frameRef()?.contentDocument ?? document}>
-      <iframe {...localProps} ref={composeRefs(setFrameRef, localProps.ref)}>
+      <ark.iframe {...localProps} ref={composeRefs(setFrameRef, localProps.ref)}>
         <Show when={mountNode()}>
           {(node) => (
             <Portal mount={node()}>
@@ -95,7 +96,7 @@ export const Frame = (props: FrameProps) => {
         <Show when={mountNode()}>
           <Portal mount={frameRef()!.contentDocument!.head}>{frameProps.head}</Portal>
         </Show>
-      </iframe>
+      </ark.iframe>
     </EnvironmentProvider>
   )
 }

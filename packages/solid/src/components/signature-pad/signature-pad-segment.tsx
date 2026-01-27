@@ -11,12 +11,13 @@ export const SignaturePadSegment = (props: SignaturePadSegmentProps) => {
   const mergedProps = mergeProps(() => signaturePad().getSegmentProps(), props)
 
   return (
+    // biome-ignore lint/a11y/noSvgWithoutTitle: <ark.title> is used here
     <ark.svg {...mergedProps}>
-      <title>Signature</title>
-      <For each={signaturePad().paths}>{(path) => <path {...signaturePad().getSegmentPathProps({ path })} />}</For>
+      <ark.title>Signature</ark.title>
+      <For each={signaturePad().paths}>{(path) => <ark.path {...signaturePad().getSegmentPathProps({ path })} />}</For>
       <Show when={signaturePad().currentPath}>
         {/* @ts-expect-error */}
-        <path {...signaturePad().getSegmentPathProps({ path: signaturePad().currentPath })} />
+        <ark.path {...signaturePad().getSegmentPathProps({ path: signaturePad().currentPath })} />
       </Show>
     </ark.svg>
   )

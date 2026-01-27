@@ -12,7 +12,9 @@ export const DatePickerMonthSelect = (props: DatePickerMonthSelectProps) => {
 
   return (
     <ark.select {...mergedProps}>
-      <Index each={datePicker().getMonths()}>{(month) => <option value={month().value}>{month().label}</option>}</Index>
+      <Index each={datePicker().getMonths()}>
+        {(month) => <ark.option value={month().value}>{month().label}</ark.option>}
+      </Index>
     </ark.select>
   )
 }

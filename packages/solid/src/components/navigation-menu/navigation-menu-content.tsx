@@ -49,8 +49,8 @@ export const NavigationMenuContent = (props: NavigationMenuContentProps) => {
 
   return (
     <Show when={isViewportRendered() && viewportNode()} fallback={content}>
-      <div {...api().getViewportProxyProps(contentProps)} />
-      <div {...api().getTriggerProxyProps(contentProps)} />
+      <ark.div {...api().getViewportProxyProps(contentProps)} />
+      <ark.div {...api().getTriggerProxyProps(contentProps)} />
       <Portal mount={viewportNode()!}>{content}</Portal>
     </Show>
   )

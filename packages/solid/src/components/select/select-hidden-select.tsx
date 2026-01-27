@@ -16,16 +16,16 @@ export const SelectHiddenSelect = (props: SelectHiddenSelectProps) => {
   return (
     <ark.select aria-describedby={field?.().ariaDescribedby} {...mergedProps}>
       <Show when={isValueEmpty()}>
-        <option value="" />
+        <ark.option value="" />
       </Show>
       <Index each={select().collection.items}>
         {(item) => (
-          <option
+          <ark.option
             value={select().collection.getItemValue(item()) ?? ''}
             disabled={select().collection.getItemDisabled(item())}
           >
             {select().collection.stringifyItem(item())}
-          </option>
+          </ark.option>
         )}
       </Index>
     </ark.select>

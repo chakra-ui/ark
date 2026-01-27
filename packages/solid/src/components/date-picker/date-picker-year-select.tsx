@@ -12,7 +12,9 @@ export const DatePickerYearSelect = (props: DatePickerYearSelectProps) => {
 
   return (
     <ark.select {...mergedProps}>
-      <Index each={datePicker().getYears()}>{(year) => <option value={year().value}>{year().label}</option>}</Index>
+      <Index each={datePicker().getYears()}>
+        {(year) => <ark.option value={year().value}>{year().label}</ark.option>}
+      </Index>
     </ark.select>
   )
 }

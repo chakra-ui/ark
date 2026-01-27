@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import type { HTMLProps, PolymorphicProps } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useToastContext } from './use-toast-context'
 
 export interface ToastRootBaseProps extends PolymorphicProps<'div'> {}
@@ -10,10 +10,10 @@ export const ToastRoot = (props: ToastRootProps) => {
   const mergedProps = mergeProps(() => toast().getRootProps(), props)
 
   return (
-    <div {...mergedProps}>
-      <div {...toast().getGhostBeforeProps()} />
+    <ark.div {...mergedProps}>
+      <ark.div {...toast().getGhostBeforeProps()} />
       {props.children}
-      <div {...toast().getGhostAfterProps()} />
-    </div>
+      <ark.div {...toast().getGhostAfterProps()} />
+    </ark.div>
   )
 }
