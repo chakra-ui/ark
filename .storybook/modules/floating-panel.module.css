@@ -84,7 +84,7 @@
   padding: 0;
   border: 1px solid var(--demo-border);
   border-radius: 0.25rem;
-  background-color: white;
+  background-color: var(--demo-bg-popover);
   color: var(--demo-neutral-fg);
 
   &:hover {
