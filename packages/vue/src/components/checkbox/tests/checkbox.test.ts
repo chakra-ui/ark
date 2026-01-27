@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/vue'
 import CheckboxWithField from './field.test.vue'
 import ComponentUnderTest from './checkbox.test.vue'
 import ControlledComponentUnderTest from './controlled-checkbox.test.vue'
+import CheckboxGroupUnderTest from './checkbox-group.test.vue'
 
 describe('Checkbox', () => {
   it('should handle check and unchecked', async () => {
@@ -64,5 +65,16 @@ describe('Checkbox / Field', () => {
   it('should not display error text when no error is present', async () => {
     render(CheckboxWithField)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+  })
+})
+
+describe('Checkbox / Group', () => {
+  it('should allow individual checkbox to be disabled', async () => {
+    render(CheckboxGroupUnderTest)
+
+    const checkboxes = screen.getAllByRole('checkbox')
+    expect(checkboxes[0]).not.toBeDisabled()
+    expect(checkboxes[1]).toBeDisabled()
+    expect(checkboxes[2]).not.toBeDisabled()
   })
 })

@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
+import { Checkbox } from '../'
 import { CheckboxWithField } from './field'
 import { ComponentUnderTest } from './basic'
 import { ControlledComponentUnderTest } from './controlled'
@@ -73,5 +74,33 @@ describe('Checkbox / Field', () => {
   it('should not display error text when no error is present', async () => {
     render(() => <CheckboxWithField />)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+  })
+})
+
+const WithGroup = () => (
+  <Checkbox.Group>
+    <Checkbox.Root value="one">
+      <Checkbox.Label>One</Checkbox.Label>
+      <Checkbox.HiddenInput />
+    </Checkbox.Root>
+    <Checkbox.Root value="two" disabled>
+      <Checkbox.Label>Two</Checkbox.Label>
+      <Checkbox.HiddenInput />
+    </Checkbox.Root>
+    <Checkbox.Root value="three">
+      <Checkbox.Label>Three</Checkbox.Label>
+      <Checkbox.HiddenInput />
+    </Checkbox.Root>
+  </Checkbox.Group>
+)
+
+describe('Checkbox / Group', () => {
+  it('should allow individual checkbox to be disabled', async () => {
+    render(() => <WithGroup />)
+
+    const checkboxes = screen.getAllByRole('checkbox')
+    expect(checkboxes[0]).not.toBeDisabled()
+    expect(checkboxes[1]).toBeDisabled()
+    expect(checkboxes[2]).not.toBeDisabled()
   })
 })
