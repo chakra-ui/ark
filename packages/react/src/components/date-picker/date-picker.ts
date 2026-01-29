@@ -62,6 +62,12 @@ export {
   type DatePickerRangeTextProps as RangeTextProps,
 } from './date-picker-range-text'
 export {
+  DatePickerValueText as ValueText,
+  type DatePickerValueTextBaseProps as ValueTextBaseProps,
+  type DatePickerValueTextProps as ValueTextProps,
+  type DatePickerValueTextRenderProps as ValueTextRenderProps,
+} from './date-picker-value-text'
+export {
   DatePickerRoot as Root,
   type DatePickerRootBaseProps as RootBaseProps,
   type DatePickerRootProps as RootProps,

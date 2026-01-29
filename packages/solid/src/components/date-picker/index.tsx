@@ -46,6 +46,12 @@ export {
   type DatePickerRangeTextBaseProps,
   type DatePickerRangeTextProps,
 } from './date-picker-range-text'
+export {
+  DatePickerValueText,
+  type DatePickerValueTextBaseProps,
+  type DatePickerValueTextProps,
+  type DatePickerValueTextRenderProps,
+} from './date-picker-value-text'
 export { DatePickerRoot, type DatePickerRootBaseProps, type DatePickerRootProps } from './date-picker-root'
 export {
   DatePickerRootProvider,

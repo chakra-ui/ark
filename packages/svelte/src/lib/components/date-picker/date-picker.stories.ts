@@ -12,6 +12,7 @@ import MultipleMonthsExample from './examples/multiple-months.svelte'
 import PresetsExample from './examples/presets.svelte'
 import RangeSelectionExample from './examples/range-selection.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import TriggerValueExample from './examples/trigger-value.svelte'
 import UnavailableExample from './examples/unavailable.svelte'
 import YearPickerExample from './examples/year-picker.svelte'
 
@@ -96,6 +97,12 @@ export const RangeSelection = {
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
+  }),
+}
+
+export const TriggerValue = {
+  render: () => ({
+    Component: TriggerValueExample,
   }),
 }
 

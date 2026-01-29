@@ -55,6 +55,12 @@ export {
   type DatePickerRangeTextProps as RangeTextProps,
 } from './date-picker-range-text.svelte'
 export {
+  default as ValueText,
+  type DatePickerValueTextBaseProps as ValueTextBaseProps,
+  type DatePickerValueTextProps as ValueTextProps,
+  type DatePickerValueTextRenderProps as ValueTextRenderProps,
+} from './date-picker-value-text.svelte'
+export {
   default as Root,
   type DatePickerRootBaseProps as RootBaseProps,
   type DatePickerRootProps as RootProps,

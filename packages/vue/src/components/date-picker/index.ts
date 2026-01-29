@@ -63,6 +63,12 @@ export {
   type DatePickerRangeTextProps,
 } from './date-picker-range-text.vue'
 export {
+  default as DatePickerValueText,
+  type DatePickerValueTextBaseProps,
+  type DatePickerValueTextProps,
+  type DatePickerValueTextRenderProps,
+} from './date-picker-value-text.vue'
+export {
   default as DatePickerRootProvider,
   type DatePickerRootProviderBaseProps,
   type DatePickerRootProviderEmits,

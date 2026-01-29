@@ -13,6 +13,7 @@ import MultiSelectionExample from './examples/multi-selection.vue'
 import PresetsExample from './examples/presets.vue'
 import RangeSelectionExample from './examples/range-selection.vue'
 import RootProviderExample from './examples/root-provider.vue'
+import TriggerValueExample from './examples/trigger-value.vue'
 import UnavailableExample from './examples/unavailable.vue'
 import YearPickerExample from './examples/year-picker.vue'
 
@@ -109,6 +110,13 @@ export const RangeSelection = {
 export const RootProvider = {
   render: () => ({
     components: { Component: RootProviderExample },
+    template: '<Component />',
+  }),
+}
+
+export const TriggerValue = {
+  render: () => ({
+    components: { Component: TriggerValueExample },
     template: '<Component />',
   }),
 }

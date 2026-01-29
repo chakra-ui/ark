@@ -8,6 +8,8 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
+- **Date Picker**: Added `ValueText` component for displaying selected date value(s) with placeholder support and snippet
+  for custom formatting
 - **Scroll Area**: Added overflow CSS variables (`--scroll-area-overflow-{x,y}-{start,end}`) for scroll fade effects
 - **Slider**: Added `thumbCollisionBehavior` prop (`none`, `push`, `swap`)
 - **Steps**: Added `isStepValid`, `isStepSkippable`, and `onStepInvalid` for validation support
