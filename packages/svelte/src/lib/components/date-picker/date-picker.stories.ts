@@ -15,6 +15,7 @@ import RangeSelectionExample from './examples/range-selection.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import TriggerValueExample from './examples/trigger-value.svelte'
 import UnavailableExample from './examples/unavailable.svelte'
+import WithTimeExample from './examples/with-time.svelte'
 import YearPickerExample from './examples/year-picker.svelte'
 
 const meta: Meta = {
@@ -116,6 +117,12 @@ export const TriggerValue = {
 export const Unavailable = {
   render: () => ({
     Component: UnavailableExample,
+  }),
+}
+
+export const WithTime = {
+  render: () => ({
+    Component: WithTimeExample,
   }),
 }
 

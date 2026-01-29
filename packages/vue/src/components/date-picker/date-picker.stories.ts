@@ -16,6 +16,7 @@ import RangeSelectionExample from './examples/range-selection.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import TriggerValueExample from './examples/trigger-value.vue'
 import UnavailableExample from './examples/unavailable.vue'
+import WithTimeExample from './examples/with-time.vue'
 import YearPickerExample from './examples/year-picker.vue'
 
 const meta: Meta = {
@@ -132,6 +133,13 @@ export const TriggerValue = {
 export const Unavailable = {
   render: () => ({
     components: { Component: UnavailableExample },
+    template: '<Component />',
+  }),
+}
+
+export const WithTime = {
+  render: () => ({
+    components: { Component: WithTimeExample },
     template: '<Component />',
   }),
 }
