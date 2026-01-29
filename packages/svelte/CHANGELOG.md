@@ -8,8 +8,8 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **Date Picker**: Added `ValueText` component for displaying selected date value(s) with placeholder support and snippet
-  for custom formatting
+- **Date Picker**: Added `ValueText` component for displaying selected date value(s) with placeholder support and
+  snippet for custom formatting
 - **Scroll Area**: Added overflow CSS variables (`--scroll-area-overflow-{x,y}-{start,end}`) for scroll fade effects
 - **Slider**: Added `thumbCollisionBehavior` prop (`none`, `push`, `swap`)
 - **Steps**: Added `isStepValid`, `isStepSkippable`, and `onStepInvalid` for validation support
@@ -19,6 +19,9 @@ description: All notable changes will be documented in this file.
 ### Fixed
 
 - **Auto Resize**: Fixed change event not emitted after clearing controlled textarea
+- **Date Picker**: Fixed `visibleRangeText` to show correct format based on current view (year/month/day)
+- **Dismissable**: Fixed issue where closing a nested dialog/popover would incorrectly close its parent layers
+- **Menu**: Fixed glitchy submenu behavior when hovering between trigger items quickly
 - **Checkbox**: Fixed individual checkbox props being overridden by `CheckboxGroup`
 - **Factory**: Fixed textarea hydration marker issue
 - **Collection, Tree View**: Fixed initial focus when first node/branch is disabled

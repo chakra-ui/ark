@@ -12,8 +12,11 @@
 
 ### Fixed
 
-- **SSR**: Fixed Deno SSR crashes by replacing native HTML elements with `ark` factory components
 - **Auto Resize**: Fixed change event not emitted after clearing controlled textarea
+- **Date Picker**: Fixed `visibleRangeText` to show correct format based on current view (year/month/day)
+- **Dismissable**: Fixed issue where closing a nested dialog/popover would incorrectly close its parent layers
+- **Menu**: Fixed glitchy submenu behavior when hovering between trigger items quickly
+- **SSR**: Fixed Deno SSR crashes by replacing native HTML elements with `ark` factory components
 - **Checkbox**: Fixed individual checkbox props being overridden by `CheckboxGroup`
 - **Collection, Tree View**: Fixed initial focus when first node/branch is disabled
 - **Color Picker**: Fixed color not updating when selecting black shades in controlled mode
