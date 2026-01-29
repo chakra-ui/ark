@@ -126,7 +126,7 @@
 
   user-select: none;
   outline: none;
-  color: inherit;
+  color: var(--demo-neutral-fg);
   text-decoration: none;
 
   &[data-highlighted] {
