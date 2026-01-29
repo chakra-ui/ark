@@ -286,7 +286,7 @@
   padding: 0 0.5rem;
   font-size: 0.8125rem;
   font-family: inherit;
-  background: var(--demo-neutral-subtle);
+  background: transparent;
   border: 1px solid var(--demo-border);
   border-radius: 0.25rem;
   color: var(--demo-neutral-fg);

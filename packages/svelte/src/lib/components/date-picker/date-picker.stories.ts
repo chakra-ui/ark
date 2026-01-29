@@ -3,6 +3,7 @@ import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import DefaultValueExample from './examples/default-value.svelte'
 import DefaultViewExample from './examples/default-view.svelte'
+import MonthYearSelectExample from './examples/month-year-select.svelte'
 import InlineExample from './examples/inline.svelte'
 import LocaleExample from './examples/locale.svelte'
 import MinMaxExample from './examples/min-max.svelte'
@@ -43,6 +44,12 @@ export const DefaultValue = {
 export const DefaultView = {
   render: () => ({
     Component: DefaultViewExample,
+  }),
+}
+
+export const MonthYearSelect = {
+  render: () => ({
+    Component: MonthYearSelectExample,
   }),
 }
 

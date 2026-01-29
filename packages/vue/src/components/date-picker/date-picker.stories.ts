@@ -4,6 +4,7 @@ import BasicExample from './examples/basic.vue'
 import ControlledExample from './examples/controlled.vue'
 import DefaultValueExample from './examples/default-value.vue'
 import DefaultViewExample from './examples/default-view.vue'
+import MonthYearSelectExample from './examples/month-year-select.vue'
 import InlineExample from './examples/inline.vue'
 import LocaleExample from './examples/locale.vue'
 import MinMaxExample from './examples/min-max.vue'
@@ -47,6 +48,13 @@ export const DefaultValue = {
 export const DefaultView = {
   render: () => ({
     components: { Component: DefaultViewExample },
+    template: '<Component />',
+  }),
+}
+
+export const MonthYearSelect = {
+  render: () => ({
+    components: { Component: MonthYearSelectExample },
     template: '<Component />',
   }),
 }
