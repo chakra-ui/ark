@@ -81,7 +81,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 )`
 
 function transformCssModuleImports(code: string): string {
-  // Rename any component.module.css to index.module.css
   return code.replace(/from\s+['"]styles\/[^'"]+\.module\.css['"]/g, "from './index.module.css'")
 }
 
@@ -113,7 +112,6 @@ export async function openInStackblitzReact(opts: {
     'src/main.tsx': main,
   }
 
-  // Combine all component CSS modules into index.module.css
   const componentCss = Object.entries(cssModules)
     .filter(([filename]) => filename.endsWith('.module.css'))
     .map(([, content]) => content)

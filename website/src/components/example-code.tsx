@@ -6,11 +6,9 @@ import { css } from 'styled-system/css'
 import { HStack } from 'styled-system/jsx'
 import { Switch } from '~/components/ui/switch'
 import { Tabs } from '~/components/ui/tabs'
+import { stripCssModuleCode, transformCssModuleImports } from '~/lib/css-module-transform'
 import type { SupportedLang } from '~/lib/shiki-client'
-import { openInStackblitzReact } from '~/lib/stackblitz-react'
-import { openInStackblitzSolid } from '~/lib/stackblitz-solid'
-import { openInStackblitzSvelte } from '~/lib/stackblitz-svelte'
-import { openInStackblitzVue } from '~/lib/stackblitz-vue'
+import { type Framework, openInStackblitz } from '~/lib/stackblitz'
 import { CodePreview } from './code-preview'
 
 interface ExampleMeta {
@@ -24,32 +22,6 @@ interface Props extends Omit<Tabs.RootProps, 'defaultValue'> {
   lang?: SupportedLang
   cssModules?: Record<string, string>
   meta?: ExampleMeta
-}
-
-function stripCssModuleCode(code: string): string {
-  // Remove CSS module import lines (preserve blank line after imports)
-  let result = code.replace(/import\s+styles\s+from\s+['"]styles\/[^'"]+\.module\.css['"][ \t]*;?[ \t]*\n/g, '')
-
-  // React/Solid: Remove className={styles.xxx} attributes
-  result = result.replace(/\s*className=\{styles\.[^}]+\}/g, '')
-
-  // React/Solid: Remove className={`${styles.xxx}`} template literal patterns
-  result = result.replace(/\s*className=\{`\$\{styles\.[^}]+\}`\}/g, '')
-
-  // Vue: Remove :class="styles.xxx" attributes
-  result = result.replace(/\s*:class="styles\.[^"]+"/g, '')
-
-  // Svelte: Remove class={styles.xxx} attributes
-  result = result.replace(/\s*class=\{styles\.[^}]+\}/g, '')
-
-  // Clean up any resulting empty lines (multiple consecutive newlines -> single)
-  result = result.replace(/\n{3,}/g, '\n\n')
-
-  return result.trim()
-}
-
-function transformCssModuleImports(code: string): string {
-  return code.replace(/from\s+['"]styles\/[^'"]+\.module\.css['"]/g, "from './index.module.css'")
 }
 
 export const ExampleCodeTabs = (props: Props) => {
@@ -172,14 +144,7 @@ function StackblitzButton(props: { code: string; cssModules: Record<string, stri
         _icon: { boxSize: '4', color: 'coral.8' },
       })}
       onClick={() => {
-        const fn = {
-          react: openInStackblitzReact,
-          solid: openInStackblitzSolid,
-          vue: openInStackblitzVue,
-          svelte: openInStackblitzSvelte,
-        }[framework]
-
-        fn?.({
+        openInStackblitz(framework as Framework, {
           code,
           cssModules,
           id,

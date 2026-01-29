@@ -132,6 +132,7 @@ import * as DatePicker_MultipleMonths from '@examples/date-picker/examples/multi
 import * as DatePicker_Presets from '@examples/date-picker/examples/presets'
 import * as DatePicker_RangeSelection from '@examples/date-picker/examples/range-selection'
 import * as DatePicker_RootProvider from '@examples/date-picker/examples/root-provider'
+import * as DatePicker_TriggerValue from '@examples/date-picker/examples/trigger-value'
 import * as DatePicker_Unavailable from '@examples/date-picker/examples/unavailable'
 import * as DatePicker_YearPickerRange from '@examples/date-picker/examples/year-picker-range'
 import * as DatePicker_YearPicker from '@examples/date-picker/examples/year-picker'
@@ -676,6 +677,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'date-picker/presets': DatePicker_Presets,
   'date-picker/range-selection': DatePicker_RangeSelection,
   'date-picker/root-provider': DatePicker_RootProvider,
+  'date-picker/trigger-value': DatePicker_TriggerValue,
   'date-picker/unavailable': DatePicker_Unavailable,
   'date-picker/year-picker-range': DatePicker_YearPickerRange,
   'date-picker/year-picker': DatePicker_YearPicker,
