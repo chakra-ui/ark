@@ -26,8 +26,9 @@ const formattedValue = computed(() => {
   return v ? formatter.format(v.toDate(getLocalTimeZone())) : 'Select date and time'
 })
 
-const onTimeChange = (e: Event & { currentTarget: HTMLInputElement }) => {
-  const [hours, minutes] = e.currentTarget.value.split(':').map(Number)
+const onTimeChange = (e: Event) => {
+  const target = e.target as HTMLInputElement
+  const [hours, minutes] = target.value.split(':').map(Number)
   const current = value.value[0] ?? new CalendarDateTime(2025, 1, 1, 0, 0)
   value.value = [current.set({ hour: hours, minute: minutes })]
 }
