@@ -127,6 +127,7 @@ import * as DatePicker_Locale from '@examples/date-picker/examples/locale'
 import * as DatePicker_MinMax from '@examples/date-picker/examples/min-max'
 import * as DatePicker_MonthPickerRange from '@examples/date-picker/examples/month-picker-range'
 import * as DatePicker_MonthPicker from '@examples/date-picker/examples/month-picker'
+import * as DatePicker_MonthYearSelect from '@examples/date-picker/examples/month-year-select'
 import * as DatePicker_MultiSelection from '@examples/date-picker/examples/multi-selection'
 import * as DatePicker_MultipleMonths from '@examples/date-picker/examples/multiple-months'
 import * as DatePicker_Presets from '@examples/date-picker/examples/presets'
@@ -134,6 +135,7 @@ import * as DatePicker_RangeSelection from '@examples/date-picker/examples/range
 import * as DatePicker_RootProvider from '@examples/date-picker/examples/root-provider'
 import * as DatePicker_TriggerValue from '@examples/date-picker/examples/trigger-value'
 import * as DatePicker_Unavailable from '@examples/date-picker/examples/unavailable'
+import * as DatePicker_WithTime from '@examples/date-picker/examples/with-time'
 import * as DatePicker_YearPickerRange from '@examples/date-picker/examples/year-picker-range'
 import * as DatePicker_YearPicker from '@examples/date-picker/examples/year-picker'
 import * as Dialog_AlertDialog from '@examples/dialog/examples/alert-dialog'
@@ -672,6 +674,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'date-picker/min-max': DatePicker_MinMax,
   'date-picker/month-picker-range': DatePicker_MonthPickerRange,
   'date-picker/month-picker': DatePicker_MonthPicker,
+  'date-picker/month-year-select': DatePicker_MonthYearSelect,
   'date-picker/multi-selection': DatePicker_MultiSelection,
   'date-picker/multiple-months': DatePicker_MultipleMonths,
   'date-picker/presets': DatePicker_Presets,
@@ -679,6 +682,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'date-picker/root-provider': DatePicker_RootProvider,
   'date-picker/trigger-value': DatePicker_TriggerValue,
   'date-picker/unavailable': DatePicker_Unavailable,
+  'date-picker/with-time': DatePicker_WithTime,
   'date-picker/year-picker-range': DatePicker_YearPickerRange,
   'date-picker/year-picker': DatePicker_YearPicker,
   'dialog/alert-dialog': Dialog_AlertDialog,
