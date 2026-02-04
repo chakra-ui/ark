@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.31.0] - 2026-02-04
+
 ### Added
 
 - **Date Picker**: Added `ValueText` component for displaying selected date value(s) with placeholder support and scoped
