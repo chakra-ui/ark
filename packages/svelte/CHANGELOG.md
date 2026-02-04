@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.16.0] - 2026-02-04
+
 ### Added
 
 - **Date Picker**: Added `ValueText` component for displaying selected date value(s) with placeholder support and
