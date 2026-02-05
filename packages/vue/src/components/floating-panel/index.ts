@@ -58,12 +58,14 @@ export {
 export {
   default as FloatingPanelRoot,
   type FloatingPanelRootProps,
+  type FloatingPanelRootEmits,
   type FloatingPanelRootBaseProps,
 } from './floating-panel-root.vue'
 
 export {
   default as FloatingPanelRootProvider,
   type FloatingPanelRootProviderProps,
+  type FloatingPanelRootProviderEmits,
   type FloatingPanelRootProviderBaseProps,
 } from './floating-panel-root-provider.vue'
 
