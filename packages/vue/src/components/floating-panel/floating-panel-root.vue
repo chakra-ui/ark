@@ -39,6 +39,7 @@ const presence = usePresence(
     lazyMount: props.lazyMount,
     unmountOnExit: props.unmountOnExit,
   })),
+  emits,
 )
 PresenceProvider(presence)
 
