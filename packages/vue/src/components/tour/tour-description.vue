@@ -26,6 +26,6 @@ useForwardExpose()
 
 <template>
   <ark.div v-bind="tour.getDescriptionProps()" :as-child="asChild">
-    <slot>{{ slots.default?.() || tour.step?.title }}</slot>
+    <slot>{{ slots.default?.() || tour.step?.description }}</slot>
   </ark.div>
 </template>
