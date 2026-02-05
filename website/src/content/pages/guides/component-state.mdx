@@ -4,21 +4,59 @@ title: Component State
 description: Learn how to manage component state using Context and Provider components.
 ---
 
+Need to access a component's state? You have three options:
+
+| Approach                        | When to use it                                |
+| ------------------------------- | --------------------------------------------- |
+| `Component.Context`             | Quick inline access via render props          |
+| `use*Context` hooks             | Build custom child components that read state |
+| `useComponent` + `RootProvider` | Control the component from outside            |
+
 ## Context Components
 
-Context components expose state and functions to child components. In this example, `Avatar.Fallback` renders based on
-`loaded` state.
+Use `Component.Context` to access state inline via render props. Here, `Avatar.Fallback` reads the `loaded` state to
+show different content:
 
-> **Good to know (RSC)**: Due to the usage of render prop, you might need to add the `'use client'` directive at the top
-> of your file when using React Server Components.
+> **Good to know (RSC)**: The render prop pattern requires the `'use client'` directive when using React Server
+> Components.
 
 <ExampleCode id="context" component="avatar" />
 
+## Context Hooks
+
+Every component exports a `use*Context` hook (like `useDialogContext` or `useMenuContext`). Call it from any child
+component to access state and methods—no render props needed.
+
+```tsx
+import { Dialog, useDialogContext } from '@ark-ui/react/dialog'
+
+function CustomCloseButton() {
+  const dialog = useDialogContext()
+  return <button onClick={() => dialog.setOpen(false)}>Close ({dialog.open ? 'open' : 'closed'})</button>
+}
+
+export const Demo = () => (
+  <Dialog.Root>
+    <Dialog.Trigger>Open</Dialog.Trigger>
+    <Dialog.Content>
+      <CustomCloseButton />
+    </Dialog.Content>
+  </Dialog.Root>
+)
+```
+
+The hook returns the same API as `Component.Context`, just without the nesting.
+
 ## Provider Components
 
-Provider components can help coordinate state and behavior between multiple components, enabling interactions that
-aren't possible with `Context` components alone. They are used alongside component hooks.
+Need to control a component from outside its tree? Use a `useComponent` hook (like `useDialog`) with `RootProvider`.
 
-> When using the `RootProvider` component, you don't need to use the `Root` component.
+> When you use `RootProvider`, skip the `Root` component—you don't need both.
 
 <ExampleCode id="root-provider" component="accordion" />
+
+## Choosing the Right Approach
+
+- **`Component.Context`** — Quick inline access for conditional rendering
+- **`use*Context` hooks** — Build reusable child components that need parent state
+- **`useComponent` + `RootProvider`** — Trigger actions from outside (like opening a dialog from a menu item)
