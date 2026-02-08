@@ -9,6 +9,7 @@ import RangeExample from './examples/range.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import StepExample from './examples/step.svelte'
 import ThumbAlignmentExample from './examples/thumb-alignment.svelte'
+import ThumbCollisionExample from './examples/thumb-collision.svelte'
 import ThumbOverlapExample from './examples/thumb-overlap.svelte'
 import VerticalExample from './examples/vertical.svelte'
 import WithMarksExample from './examples/with-marks.svelte'
@@ -78,6 +79,12 @@ export const Step: Story = {
 export const ThumbAlignment: Story = {
   render: () => ({
     Component: ThumbAlignmentExample,
+  }),
+}
+
+export const ThumbCollision: Story = {
+  render: () => ({
+    Component: ThumbCollisionExample,
   }),
 }
 

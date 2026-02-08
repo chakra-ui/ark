@@ -433,6 +433,7 @@ import * as Slider_Range from '@examples/slider/examples/range'
 import * as Slider_RootProvider from '@examples/slider/examples/root-provider'
 import * as Slider_Step from '@examples/slider/examples/step'
 import * as Slider_ThumbAlignment from '@examples/slider/examples/thumb-alignment'
+import * as Slider_ThumbCollision from '@examples/slider/examples/thumb-collision'
 import * as Slider_ThumbOverlap from '@examples/slider/examples/thumb-overlap'
 import * as Slider_Vertical from '@examples/slider/examples/vertical'
 import * as Slider_WithMarks from '@examples/slider/examples/with-marks'
@@ -980,6 +981,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'slider/root-provider': Slider_RootProvider,
   'slider/step': Slider_Step,
   'slider/thumb-alignment': Slider_ThumbAlignment,
+  'slider/thumb-collision': Slider_ThumbCollision,
   'slider/thumb-overlap': Slider_ThumbOverlap,
   'slider/vertical': Slider_Vertical,
   'slider/with-marks': Slider_WithMarks,

@@ -10,6 +10,7 @@ import RangeExample from './examples/range.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import StepExample from './examples/step.vue'
 import ThumbAlignmentExample from './examples/thumb-alignment.vue'
+import ThumbCollisionExample from './examples/thumb-collision.vue'
 import ThumbOverlapExample from './examples/thumb-overlap.vue'
 import VerticalExample from './examples/vertical.vue'
 import WithMarksExample from './examples/with-marks.vue'
@@ -86,6 +87,13 @@ export const Step = {
 export const ThumbAlignment = {
   render: () => ({
     components: { Component: ThumbAlignmentExample },
+    template: '<Component />',
+  }),
+}
+
+export const ThumbCollision = {
+  render: () => ({
+    components: { Component: ThumbCollisionExample },
     template: '<Component />',
   }),
 }
