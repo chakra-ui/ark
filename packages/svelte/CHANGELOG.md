@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Locale**: Added `useDateFormatter` hook for localized date formatting using `@internationalized/date`
+
 ## [5.16.0] - 2026-02-04
 
 ### Added

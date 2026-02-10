@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Added
+
+- **Locale**: Added `useDateFormatter` hook for localized date formatting using `@internationalized/date`
+
 ## [5.31.0] - 2026-02-04
 
 ### Added

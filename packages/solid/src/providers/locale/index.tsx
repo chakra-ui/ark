@@ -1,4 +1,5 @@
 export { LocaleProvider, type LocaleProviderProps } from './locale-provider'
 export { useCollator, type UseCollatorProps } from './use-collator'
+export { useDateFormatter, type UseDateFormatterProps, type UseDateFormatterReturn } from './use-date-formatter'
 export { useFilter, type UseFilterProps, type UseFilterReturn } from './use-filter'
 export { useLocaleContext, type UseLocaleContext } from './use-locale-context'
