@@ -1,0 +1,139 @@
+---
+id: image-cropper
+title: Image Cropper
+description: Crop and transform images with zoom, rotation, and aspect ratio controls.
+status: preview
+---
+
+<ComponentPreview id="ImageCropper" />
+
+## Anatomy
+
+<Anatomy id="image-cropper" />
+
+```tsx
+<ImageCropper.Root>
+  <ImageCropper.Viewport>
+    <ImageCropper.Image />
+    <ImageCropper.Selection>
+      <ImageCropper.Handle />
+      <ImageCropper.Grid />
+    </ImageCropper.Selection>
+  </ImageCropper.Viewport>
+</ImageCropper.Root>
+```
+
+## Examples
+
+### Basic
+
+Set up a basic image cropper. Drag the handles to resize the selection, or drag inside to pan the image.
+
+<Example id="basic" />
+
+### Aspect Ratio
+
+Lock the crop area to a specific aspect ratio. Use the `aspectRatio` prop—pass a number like `16/9` for widescreen or
+`1` for square.
+
+<Example id="aspect-ratio" />
+
+### Circle Crop
+
+Use `cropShape="circle"` for profile pictures or avatars. The selection becomes a circle instead of a rectangle.
+
+<Example id="circle" />
+
+### Initial Crop
+
+Start with a pre-defined crop area using the `initialCrop` prop. Pass an object with `x`, `y`, `width`, and `height` in
+pixels.
+
+<Example id="initial-crop" />
+
+### Controlled Zoom
+
+Control zoom programmatically with the `zoom` and `onZoomChange` props. Useful when you want external buttons to zoom in
+and out.
+
+<Example id="controlled-zoom" />
+
+### Zoom Limits
+
+Set `minZoom` and `maxZoom` to constrain how far users can zoom. Prevents over-zooming or zooming out past the image
+bounds.
+
+<Example id="zoom-limits" />
+
+### Rotation
+
+Rotate the image with the `rotation` and `onRotationChange` props. Values are in degrees—common increments are 90
+or 180.
+
+<Example id="rotation" />
+
+### Flip
+
+Flip the image horizontally or vertically using the `flip` prop. Pass an object with `horizontal` and `vertical`
+booleans.
+
+<Example id="flip" />
+
+### Min and Max Size
+
+Constrain the crop area size with `minWidth`, `minHeight`, `maxWidth`, and `maxHeight`. Keeps the selection within
+sensible bounds.
+
+<Example id="min-max-size" />
+
+### Fixed Crop Area
+
+Set `fixedCropArea` to `true` when the crop area should stay fixed while the image moves underneath. Useful for
+overlay-style cropping.
+
+<Example id="fixed" />
+
+### Crop Preview
+
+Use `getCroppedImage()` from the context to get the cropped result. Call it with `{ output: 'dataUrl' }` for a base64
+string you can use in an `img` src.
+
+<Example id="crop-preview" />
+
+### Reset
+
+The context exposes a `reset()` method that restores the image to its initial state. Handy for an "undo" or "start over"
+button.
+
+<Example id="reset" />
+
+### Events
+
+Listen to `onCropChange` and `onZoomChange` to track crop position and zoom level. Use these to sync with external state
+or show live previews.
+
+<Example id="events" />
+
+### Context
+
+Use `ImageCropper.Context` to access the cropper API from anywhere inside the root. You get methods like `zoomBy`,
+`rotateBy`, and `setZoom`.
+
+<Example id="context" />
+
+### Root Provider
+
+Use `RootProvider` with `useImageCropper` when you need to control the cropper from outside the component tree. Build
+custom toolbars or integrate with form state.
+
+<Example id="root-provider" />
+
+## API Reference
+
+### Props
+
+<ComponentTypes id="image-cropper" />
+
+### Context
+
+<ContextType id="image-cropper" />
