@@ -4,6 +4,11 @@
 
 - **Locale**: Added `useDateFormatter` hook for localized date formatting using `@internationalized/date`
 
+### Fixed
+
+- **useForwardExpose**: Fixed crash when element bound with `forwardRef` does not exist (e.g. conditionally rendered
+  with `v-if`)
+
 ## [5.31.0] - 2026-02-04
 
 ### Added
