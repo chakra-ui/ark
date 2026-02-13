@@ -70,7 +70,10 @@ export const extractNpmDependencies = (code: string): string[] => {
 }
 
 export const cleanCode = (content: string): string => {
-  return content.replaceAll(/from '\.\/icons'/g, `from 'lucide-vue-next'`).replace(/.*@ts-expect-error.*\n/g, '')
+  return content
+    .replaceAll(/from '\.\/icons'/g, `from 'lucide-vue-next'`)
+    .replaceAll(/from 'styles\//g, `from './`)
+    .replace(/.*@ts-expect-error.*\n/g, '')
 }
 
 export const getAllComponents = async (framework: string): Promise<string[]> => {
@@ -162,18 +165,41 @@ export const readExampleFile = async (framework: string, component: string, exam
   return await readFile(fullPath, 'utf-8')
 }
 
-export const createExampleResponse = (exampleId: string, framework: string, component: string, code: string) => {
+const STYLE_IMPORT_RE = /from '\.\/([\w-]+\.module\.css)'/g
+
+export const extractStyleImports = (code: string): string[] => {
+  const matches = code.matchAll(STYLE_IMPORT_RE)
+  return [...new Set(Array.from(matches, (m) => m[1]))]
+}
+
+export const getStylesBasePath = () => {
+  return join(process.cwd(), '../.storybook/modules')
+}
+
+export const readStyleFile = async (fileName: string): Promise<string | null> => {
+  try {
+    return await readFile(join(getStylesBasePath(), fileName), 'utf-8')
+  } catch {
+    return null
+  }
+}
+
+export const createExampleResponse = async (exampleId: string, framework: string, component: string, code: string) => {
   const extension = getFrameworkExtension(framework)
   const fileName = `${exampleId}.${extension}`
   const npmDependencies = extractNpmDependencies(code)
 
-  const files = [
-    {
-      name: fileName,
-      content: code,
-      npmDependencies,
-    },
+  const files: { name: string; content: string; npmDependencies?: string[] }[] = [
+    { name: fileName, content: code, npmDependencies },
   ]
+
+  const styleFileNames = extractStyleImports(code)
+  for (const styleFileName of styleFileNames) {
+    const content = await readStyleFile(styleFileName)
+    if (content) {
+      files.push({ name: styleFileName, content })
+    }
+  }
 
   return {
     id: exampleId,
