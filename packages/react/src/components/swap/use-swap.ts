@@ -1,4 +1,4 @@
-import type { RenderStrategyProps } from 'src/utils/render-strategy'
+import type { RenderStrategyProps } from '../../utils/render-strategy'
 import type { HTMLProps } from '../factory'
 import { type UsePresenceReturn, usePresence } from '../presence/use-presence'
 import { parts } from './swap.anatomy'
