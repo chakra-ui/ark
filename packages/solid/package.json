@@ -83,7 +83,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@internationalized/date": "3.10.0",
+    "@internationalized/date": "3.11.0",
     "@zag-js/accordion": "1.33.1",
     "@zag-js/anatomy": "1.33.1",
     "@zag-js/angle-slider": "1.33.1",
@@ -149,12 +149,12 @@
     "@zag-js/utils": "1.33.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.8",
+    "@biomejs/biome": "2.4.0",
     "@modular-forms/solid": "0.25.1",
     "@solidjs/testing-library": "0.8.10",
-    "@storybook/addon-a11y": "10.1.11",
-    "@storybook/addon-links": "10.1.11",
-    "@storybook/addon-vitest": "10.1.11",
+    "@storybook/addon-a11y": "10.2.8",
+    "@storybook/addon-links": "10.2.8",
+    "@storybook/addon-vitest": "10.2.8",
     "@tanstack/solid-virtual": "3.13.18",
     "@testing-library/dom": "10.4.1",
     "@testing-library/jest-dom": "6.9.1",
@@ -167,14 +167,14 @@
     "globby": "16.1.0",
     "image-conversion": "2.1.1",
     "jsdom": "26.1.0",
-    "lucide-solid": "0.555.0",
+    "lucide-solid": "0.564.0",
     "resize-observer-polyfill": "1.5.1",
-    "solid-js": "1.9.10",
-    "storybook": "10.1.11",
+    "solid-js": "1.9.11",
+    "storybook": "10.2.8",
     "storybook-solidjs-vite": "10.0.9",
     "tsup": "8.5.1",
     "typescript": "5.9.3",
-    "vite": "7.3.0",
+    "vite": "7.3.1",
     "vite-plugin-solid": "2.11.10",
     "vitest": "^4.0.0",
     "vitest-axe": "1.0.0-pre.5"
@@ -183,6 +183,6 @@
     "solid-js": ">=1.6.0"
   },
   "overrides": {
-    "solid-js": "1.9.10"
+    "solid-js": "1.9.11"
   }
 }
