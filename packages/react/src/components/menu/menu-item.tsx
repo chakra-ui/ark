@@ -36,9 +36,8 @@ export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>((props, ref) =
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: intentional
   useEffect(() => {
-    if (!itemState?.id) return
-    return menu.addItemListener({ id: itemState?.id, onSelect: itemProps.onSelect })
-  }, [itemState?.id, itemProps.onSelect])
+    return menu.addItemListener({ id: itemState.id, onSelect: itemProps.onSelect })
+  }, [itemState.id, itemProps.onSelect])
 
   return (
     <MenuItemPropsProvider value={itemProps}>
