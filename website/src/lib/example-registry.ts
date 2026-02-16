@@ -449,6 +449,10 @@ import * as Steps_Basic from '@examples/steps/examples/basic'
 import * as Steps_Controlled from '@examples/steps/examples/controlled'
 import * as Steps_RootProvider from '@examples/steps/examples/root-provider'
 import * as Steps_Vertical from '@examples/steps/examples/vertical'
+import * as Swap_Fade from '@examples/swap/examples/fade'
+import * as Swap_Flip from '@examples/swap/examples/flip'
+import * as Swap_Rotate from '@examples/swap/examples/rotate'
+import * as Swap_Scale from '@examples/swap/examples/scale'
 import * as Switch_Basic from '@examples/switch/examples/basic'
 import * as Switch_Context from '@examples/switch/examples/context'
 import * as Switch_Controlled from '@examples/switch/examples/controlled'
@@ -997,6 +1001,10 @@ const exampleModules: Record<string, ExampleModule> = {
   'steps/controlled': Steps_Controlled,
   'steps/root-provider': Steps_RootProvider,
   'steps/vertical': Steps_Vertical,
+  'swap/fade': Swap_Fade,
+  'swap/flip': Swap_Flip,
+  'swap/rotate': Swap_Rotate,
+  'swap/scale': Swap_Scale,
   'switch/basic': Switch_Basic,
   'switch/context': Switch_Context,
   'switch/controlled': Switch_Controlled,

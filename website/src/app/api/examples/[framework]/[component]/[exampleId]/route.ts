@@ -23,7 +23,7 @@ export const GET = async (_: NextRequest, segmentData: { params: Params }) => {
 
     const content = await readExampleFile(framework, component, exampleId)
     const code = cleanCode(content)
-    const response = createExampleResponse(exampleId, framework, component, code)
+    const response = await createExampleResponse(exampleId, framework, component, code)
 
     return Response.json(response)
   } catch (error) {

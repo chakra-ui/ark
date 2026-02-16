@@ -15,12 +15,12 @@ export const Announcement = () => {
   }
 
   return (
-    <NextLink href="/blog/we-improved-the-docs">
+    <NextLink href="/docs/components/image-cropper">
       <Badge size="lg" variant="outline">
         <Icon color="colorPalette.default">
           <SparklesIcon />
         </Icon>
-        DX: We improved the docs
+        [New] Image Cropper component
         <ArrowRightIcon />
       </Badge>
     </NextLink>
