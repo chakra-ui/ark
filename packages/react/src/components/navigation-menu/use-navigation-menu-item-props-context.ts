@@ -5,4 +5,5 @@ export const [NavigationMenuItemPropsProvider, useNavigationMenuItemPropsContext
   name: 'NavigationMenuItemPropsContext',
   hookName: 'useNavigationMenuItemPropsContext',
   providerName: '<NavigationMenuItemPropsProvider />',
+  strict: false,
 })

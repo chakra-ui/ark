@@ -31,17 +31,18 @@ export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>((props, ref) =
   ])
 
   const menu = useMenuContext()
-  const mergedProps = mergeProps(menu.getItemProps(itemProps), localProps)
-  const itemState = menu.getItemState(itemProps)
+  const mergedProps = mergeProps(menu?.getItemProps(itemProps), localProps)
+  const itemState = menu?.getItemState(itemProps)
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: intentional
   useEffect(() => {
-    return menu.addItemListener({ id: itemState.id, onSelect: itemProps.onSelect })
-  }, [itemState.id, itemProps.onSelect])
+    if (!itemState?.id) return
+    return menu?.addItemListener({ id: itemState.id, onSelect: itemProps.onSelect })
+  }, [itemState?.id, itemProps.onSelect])
 
   return (
     <MenuItemPropsProvider value={itemProps}>
-      <MenuItemProvider value={itemState}>
+      <MenuItemProvider value={itemState!}>
         <ark.div {...mergedProps} ref={ref} />
       </MenuItemProvider>
     </MenuItemPropsProvider>

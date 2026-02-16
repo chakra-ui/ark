@@ -21,7 +21,7 @@ export const NavigationMenuContent = forwardRef<HTMLDivElement, NavigationMenuCo
   const itemContext = useNavigationMenuItemPropsContext()
 
   const value = props.value ?? itemContext?.value
-  const [contentProps, localProps] = splitContentProps({ ...props, value }, ['value'])
+  const [contentProps, localProps] = splitContentProps({ ...props, value: value! }, ['value'])
 
   const renderStrategyProps = useRenderStrategyPropsContext()
   const presence = usePresence({ ...renderStrategyProps, present: api.value === value })

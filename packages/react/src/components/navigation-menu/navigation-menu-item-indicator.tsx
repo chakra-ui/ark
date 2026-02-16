@@ -11,7 +11,7 @@ export const NavigationMenuItemIndicator = forwardRef<HTMLDivElement, Navigation
   (props, ref) => {
     const navigationMenu = useNavigationMenuContext()
     const itemProps = useNavigationMenuItemPropsContext()
-    const mergedProps = mergeProps(navigationMenu.getItemIndicatorProps(itemProps), props)
+    const mergedProps = mergeProps(navigationMenu.getItemIndicatorProps(itemProps!), props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },
