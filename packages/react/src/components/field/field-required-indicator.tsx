@@ -12,11 +12,11 @@ export const FieldRequiredIndicator = forwardRef<HTMLSpanElement, FieldRequiredI
   ({ fallback, ...props }, ref) => {
     const field = useFieldContext()
 
-    if (!field.required) {
+    if (!field?.required) {
       return fallback
     }
 
-    const mergedProps = mergeProps(field.getRequiredIndicatorProps(), props)
+    const mergedProps = mergeProps(field?.getRequiredIndicatorProps(), props)
     return (
       <ark.span {...mergedProps} ref={ref}>
         {props.children ?? '*'}

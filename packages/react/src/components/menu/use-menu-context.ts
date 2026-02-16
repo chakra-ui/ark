@@ -7,5 +7,4 @@ export const [MenuProvider, useMenuContext] = createContext<UseMenuContext>({
   name: 'MenuContext',
   hookName: 'useMenuContext',
   providerName: '<MenuProvider />',
-  strict: false,
 })
