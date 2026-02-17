@@ -16,6 +16,7 @@ export const CheckboxGroup = (props: CheckboxGroupProps) => {
     'invalid',
     'readOnly',
     'name',
+    'maxSelectedValues',
   ])
   const checkboxGroup = useCheckboxGroup(checkboxGroupProps)
 

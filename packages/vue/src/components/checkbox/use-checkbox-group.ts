@@ -34,9 +34,12 @@ export function useCheckboxGroup(props: GroupProps, emit?: EmitFn<GroupEmits>) {
     isChecked(val) ? removeValue(val) : addValue(val)
   }
 
+  const isAtMax = computed(() => props.maxSelectedValues != null && valueRef.value.length >= props.maxSelectedValues)
+
   const addValue = (val: string) => {
     if (!interactive.value) return
     if (isChecked(val)) return
+    if (isAtMax.value) return
     valueRef.value = valueRef.value.concat(val)
   }
 
@@ -46,15 +49,16 @@ export function useCheckboxGroup(props: GroupProps, emit?: EmitFn<GroupEmits>) {
   }
 
   const getItemProps = (itemProps: CheckboxGroupItemProps) => {
+    const checked = itemProps.value != null ? isChecked(itemProps.value) : undefined
     return {
-      checked: itemProps.value != null ? isChecked(itemProps.value) : undefined,
+      checked,
       onCheckedChange() {
         if (itemProps.value != null) {
           toggleValue(itemProps.value)
         }
       },
       name: props.name,
-      disabled: toBooleanValue(disabled.value),
+      disabled: toBooleanValue(disabled.value) || (isAtMax.value && !checked),
       readOnly: props.readOnly,
       invalid: invalid.value,
     }

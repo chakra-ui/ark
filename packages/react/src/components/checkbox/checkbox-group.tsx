@@ -20,6 +20,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>((pro
     'invalid',
     'readOnly',
     'name',
+    'maxSelectedValues',
   ])
 
   const checkboxGroup = useCheckboxGroup(checkboxGroupProps)

@@ -6,6 +6,7 @@ import DisabledExample from './examples/disabled.svelte'
 import GroupProviderExample from './examples/group-provider.svelte'
 import GroupWithFormExample from './examples/group-with-form.svelte'
 import GroupWithInvalidExample from './examples/group-with-invalid.svelte'
+import GroupWithMaxSelectedExample from './examples/group-with-max-selected.svelte'
 import GroupWithSelectAllExample from './examples/group-with-select-all.svelte'
 import GroupExample from './examples/group.svelte'
 import IndeterminateExample from './examples/indeterminate.svelte'
@@ -75,6 +76,12 @@ export const GroupWithForm = {
 export const GroupWithInvalid = {
   render: () => ({
     Component: GroupWithInvalidExample,
+  }),
+}
+
+export const GroupWithMaxSelected = {
+  render: () => ({
+    Component: GroupWithMaxSelectedExample,
   }),
 }
 

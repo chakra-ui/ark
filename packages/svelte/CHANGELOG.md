@@ -11,6 +11,7 @@ description: All notable changes will be documented in this file.
 - **Locale**: Added `useDateFormatter` hook for localized date formatting using `@internationalized/date`
 - **Swap**: Added new `Swap` component for toggling between two visual states with CSS animations using dual presence
   instances
+- **Checkbox**: Added `maxSelectedValues` prop to `CheckboxGroup` to limit the number of selected values
 
 ## [5.16.0] - 2026-02-04
 

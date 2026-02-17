@@ -32,6 +32,10 @@ export interface UseCheckboxGroupProps {
    * If `true`, the checkbox group is invalid
    */
   invalid?: boolean
+  /**
+   * The maximum number of selected values
+   */
+  maxSelectedValues?: number
 }
 
 export interface CheckboxGroupItemProps {
@@ -59,9 +63,12 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps = {}) {
       isChecked(val) ? removeValue(val) : addValue(val)
     }
 
+    const isAtMax = props.maxSelectedValues != null && value().length >= props.maxSelectedValues
+
     const addValue = (val: string) => {
       if (!interactive()) return
       if (isChecked(val)) return
+      if (isAtMax) return
       setValue(value().concat(val))
     }
 
@@ -71,15 +78,16 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps = {}) {
     }
 
     const getItemProps = (itemProps: CheckboxGroupItemProps) => {
+      const checked = itemProps.value != null ? isChecked(itemProps.value) : undefined
       return {
-        checked: itemProps.value != null ? isChecked(itemProps.value) : undefined,
+        checked,
         onCheckedChange() {
           if (itemProps.value != null) {
             toggleValue(itemProps.value)
           }
         },
         name: props.name,
-        disabled: disabled(),
+        disabled: disabled() || (isAtMax && !checked),
         readOnly: props.readOnly,
         invalid: invalid(),
       }

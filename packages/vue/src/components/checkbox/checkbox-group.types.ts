@@ -24,6 +24,10 @@ export interface GroupProps {
    * If `true`, the checkbox group is invalid
    */
   invalid?: boolean
+  /**
+   * The maximum number of selected values
+   */
+  maxSelectedValues?: number
 }
 
 export type GroupEmits = {

@@ -9,6 +9,7 @@ import GroupProviderExample from './examples/group-provider.vue'
 import GroupWithFieldsetExample from './examples/group-with-fieldset.vue'
 import GroupWithFormExample from './examples/group-with-form.vue'
 import GroupWithInvalidExample from './examples/group-with-invalid.vue'
+import GroupWithMaxSelectedExample from './examples/group-with-max-selected.vue'
 import GroupWithSelectAllExample from './examples/group-with-select-all.vue'
 import GroupExample from './examples/group.vue'
 import IndeterminateExample from './examples/indeterminate.vue'
@@ -124,6 +125,13 @@ export const GroupWithForm = {
 export const GroupWithInvalid = {
   render: () => ({
     components: { Component: GroupWithInvalidExample },
+    template: '<Component />',
+  }),
+}
+
+export const GroupWithMaxSelected = {
+  render: () => ({
+    components: { Component: GroupWithMaxSelectedExample },
     template: '<Component />',
   }),
 }
