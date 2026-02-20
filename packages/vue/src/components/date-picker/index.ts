@@ -136,6 +136,16 @@ export {
   type DatePickerViewProps,
 } from './date-picker-view.vue'
 export {
+  default as DatePickerWeekNumberHeaderCell,
+  type DatePickerWeekNumberHeaderCellBaseProps,
+  type DatePickerWeekNumberHeaderCellProps,
+} from './date-picker-week-number-header-cell.vue'
+export {
+  default as DatePickerWeekNumberCell,
+  type DatePickerWeekNumberCellBaseProps,
+  type DatePickerWeekNumberCellProps,
+} from './date-picker-week-number-cell.vue'
+export {
   default as DatePickerYearSelect,
   type DatePickerYearSelectBaseProps,
   type DatePickerYearSelectProps,

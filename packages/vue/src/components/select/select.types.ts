@@ -3,6 +3,10 @@ import type { CollectionItem, ListCollection } from '../collection'
 
 export interface RootProps<T extends CollectionItem> {
   /**
+   * The autocomplete attribute for the hidden select. Enables browser autofill (e.g. "address-level1" for state).
+   */
+  autoComplete?: string
+  /**
    * Whether the select should close after an item is selected
    * @default true
    */

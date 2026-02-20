@@ -85,6 +85,16 @@ export {
   type DatePickerTableHeaderProps,
 } from './date-picker-table-header'
 export {
+  DatePickerWeekNumberHeaderCell,
+  type DatePickerWeekNumberHeaderCellBaseProps,
+  type DatePickerWeekNumberHeaderCellProps,
+} from './date-picker-week-number-header-cell'
+export {
+  DatePickerWeekNumberCell,
+  type DatePickerWeekNumberCellBaseProps,
+  type DatePickerWeekNumberCellProps,
+} from './date-picker-week-number-cell'
+export {
   DatePickerTableRow,
   type DatePickerTableRowBaseProps,
   type DatePickerTableRowProps,

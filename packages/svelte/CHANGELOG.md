@@ -12,6 +12,34 @@ description: All notable changes will be documented in this file.
 - **Swap**: Added new `Swap` component for toggling between two visual states with CSS animations using dual presence
   instances
 - **Checkbox**: Added `maxSelectedValues` prop to `CheckboxGroup` to limit the number of selected values
+- **Drawer**: Replaced `BottomSheet` with new `Drawer` component supporting multi-directional swipe via `swipeDirection`
+  prop (`up`, `down`, `left`, `right`), a new `Positioner` part, and `snapToSequentialPoints` option
+- **Date Picker**:
+  - Added `focus` option to `api.clearValue({ focus?: boolean })`
+  - Added `api.setTime(time, index?)` for date-time picker support
+  - Added `maxSelectedDates` prop to limit selected dates in `multiple` selection mode
+  - Added `api.isMaxSelected` to check if maximum number of dates has been selected
+  - Added `openOnClick` prop to open the calendar when clicking the input field
+  - Added `showWeekNumbers` support to display ISO 8601 week number column in the day view
+- **Popover**: Added `sizeMiddleware` positioning option to optionally disable the size middleware
+- **Select**: Added `autoComplete` prop for browser autofill hints
+
+### Fixed
+
+- **Combobox**:
+  - Fixed `aria-selected` being set on highlighted items instead of selected items
+  - Fixed `selectedItems` getting out of sync with `value` in controlled mode
+  - Fixed item disabled state not accounting for root-level `disabled` prop
+- **Date Picker**:
+  - Fixed `api.selectToday()` sending incorrect value format
+  - Preserve time/timezone when selecting new dates (`CalendarDateTime` and `ZonedDateTime`)
+  - Improved focus management in trigger-only mode
+- **Dialog**: Fixed non-modal dialog closing on outside click when `modal` is `false`
+- **Listbox**: Fixed DOM IDs
+- **Number Input**: Fixed `invalid` prop being ignored when value is out of range
+- **Popover**: Improved performance by reducing style recalculations when scrolling
+- **Select**: Fixed autofill not updating value when hidden select value changes
+- **Svelte**: Fixed `state_unsafe_mutation` warning during component teardown
 
 ## [5.16.0] - 2026-02-04
 

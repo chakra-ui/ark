@@ -102,6 +102,16 @@ export {
   type DatePickerViewTriggerProps,
 } from './date-picker-view-trigger'
 export {
+  DatePickerWeekNumberCell,
+  type DatePickerWeekNumberCellBaseProps,
+  type DatePickerWeekNumberCellProps,
+} from './date-picker-week-number-cell'
+export {
+  DatePickerWeekNumberHeaderCell,
+  type DatePickerWeekNumberHeaderCellBaseProps,
+  type DatePickerWeekNumberHeaderCellProps,
+} from './date-picker-week-number-header-cell'
+export {
   DatePickerYearSelect,
   type DatePickerYearSelectBaseProps,
   type DatePickerYearSelectProps,

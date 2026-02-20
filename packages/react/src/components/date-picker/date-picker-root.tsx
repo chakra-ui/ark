@@ -54,6 +54,9 @@ export const DatePickerRoot = forwardRef<HTMLDivElement, DatePickerRootProps>((p
     'translations',
     'value',
     'view',
+    'openOnClick',
+    'showWeekNumbers',
+    'maxSelectedDates',
   ])
   const datePicker = useDatePicker(useDatePickerProps)
   const presence = usePresence(mergeProps({ present: datePicker.open }, presenceProps))

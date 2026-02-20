@@ -33,9 +33,11 @@ const props = withDefaults(defineProps<DatePickerRootProps>(), {
   inline: undefined,
   invalid: undefined,
   open: undefined,
+  openOnClick: undefined,
   outsideDaySelectable: undefined,
   readOnly: undefined,
   required: undefined,
+  showWeekNumbers: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<DatePickerRootEmits>()

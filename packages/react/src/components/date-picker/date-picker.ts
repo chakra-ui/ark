@@ -108,6 +108,16 @@ export {
   type DatePickerTableHeaderProps as TableHeaderProps,
 } from './date-picker-table-header'
 export {
+  DatePickerWeekNumberHeaderCell as WeekNumberHeaderCell,
+  type DatePickerWeekNumberHeaderCellBaseProps as WeekNumberHeaderCellBaseProps,
+  type DatePickerWeekNumberHeaderCellProps as WeekNumberHeaderCellProps,
+} from './date-picker-week-number-header-cell'
+export {
+  DatePickerWeekNumberCell as WeekNumberCell,
+  type DatePickerWeekNumberCellBaseProps as WeekNumberCellBaseProps,
+  type DatePickerWeekNumberCellProps as WeekNumberCellProps,
+} from './date-picker-week-number-cell'
+export {
   DatePickerTableRow as TableRow,
   type DatePickerTableRowBaseProps as TableRowBaseProps,
   type DatePickerTableRowProps as TableRowProps,

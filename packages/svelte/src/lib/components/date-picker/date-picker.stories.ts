@@ -16,6 +16,8 @@ import RootProviderExample from './examples/root-provider.svelte'
 import TriggerValueExample from './examples/trigger-value.svelte'
 import UnavailableExample from './examples/unavailable.svelte'
 import WithTimeExample from './examples/with-time.svelte'
+import OpenOnClickExample from './examples/open-on-click.svelte'
+import WeekNumbersExample from './examples/week-numbers.svelte'
 import YearPickerExample from './examples/year-picker.svelte'
 
 const meta: Meta = {
@@ -123,6 +125,18 @@ export const Unavailable = {
 export const WithTime = {
   render: () => ({
     Component: WithTimeExample,
+  }),
+}
+
+export const OpenOnClick = {
+  render: () => ({
+    Component: OpenOnClickExample,
+  }),
+}
+
+export const WeekNumbers = {
+  render: () => ({
+    Component: WeekNumbersExample,
   }),
 }
 

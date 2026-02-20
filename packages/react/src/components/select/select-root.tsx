@@ -43,6 +43,7 @@ const SelectImpl = <T extends CollectionItem>(props: SelectRootProps<T>, ref: Re
     'readOnly',
     'required',
     'scrollToIndexFn',
+    'autoComplete',
     'value',
   ])
   const select = useSelect(useSelectProps)

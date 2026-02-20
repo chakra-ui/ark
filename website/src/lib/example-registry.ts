@@ -26,14 +26,6 @@ import * as Avatar_Context from '@examples/avatar/examples/context'
 import * as Avatar_Events from '@examples/avatar/examples/events'
 import * as Avatar_Provider from '@examples/avatar/examples/provider'
 import * as Avatar_RootProvider from '@examples/avatar/examples/root-provider'
-import * as BottomSheet_Basic from '@examples/bottom-sheet/examples/basic'
-import * as BottomSheet_Controlled from '@examples/bottom-sheet/examples/controlled'
-import * as BottomSheet_Modal from '@examples/bottom-sheet/examples/modal'
-import * as BottomSheet_NoDragArea from '@examples/bottom-sheet/examples/no-drag-area'
-import * as BottomSheet_NonDraggable from '@examples/bottom-sheet/examples/non-draggable'
-import * as BottomSheet_RootProvider from '@examples/bottom-sheet/examples/root-provider'
-import * as BottomSheet_Scrollable from '@examples/bottom-sheet/examples/scrollable'
-import * as BottomSheet_SnapPoints from '@examples/bottom-sheet/examples/snap-points'
 import * as Carousel_Autoplay from '@examples/carousel/examples/autoplay'
 import * as Carousel_Basic from '@examples/carousel/examples/basic'
 import * as Carousel_Controlled from '@examples/carousel/examples/controlled'
@@ -56,6 +48,7 @@ import * as Checkbox_GroupProvider from '@examples/checkbox/examples/group-provi
 import * as Checkbox_GroupWithFieldset from '@examples/checkbox/examples/group-with-fieldset'
 import * as Checkbox_GroupWithForm from '@examples/checkbox/examples/group-with-form'
 import * as Checkbox_GroupWithInvalid from '@examples/checkbox/examples/group-with-invalid'
+import * as Checkbox_GroupWithMaxSelected from '@examples/checkbox/examples/group-with-max-selected'
 import * as Checkbox_GroupWithSelectAll from '@examples/checkbox/examples/group-with-select-all'
 import * as Checkbox_Group from '@examples/checkbox/examples/group'
 import * as Checkbox_Indeterminate from '@examples/checkbox/examples/indeterminate'
@@ -130,11 +123,13 @@ import * as DatePicker_MonthPicker from '@examples/date-picker/examples/month-pi
 import * as DatePicker_MonthYearSelect from '@examples/date-picker/examples/month-year-select'
 import * as DatePicker_MultiSelection from '@examples/date-picker/examples/multi-selection'
 import * as DatePicker_MultipleMonths from '@examples/date-picker/examples/multiple-months'
+import * as DatePicker_OpenOnClick from '@examples/date-picker/examples/open-on-click'
 import * as DatePicker_Presets from '@examples/date-picker/examples/presets'
 import * as DatePicker_RangeSelection from '@examples/date-picker/examples/range-selection'
 import * as DatePicker_RootProvider from '@examples/date-picker/examples/root-provider'
 import * as DatePicker_TriggerValue from '@examples/date-picker/examples/trigger-value'
 import * as DatePicker_Unavailable from '@examples/date-picker/examples/unavailable'
+import * as DatePicker_WeekNumbers from '@examples/date-picker/examples/week-numbers'
 import * as DatePicker_WithTime from '@examples/date-picker/examples/with-time'
 import * as DatePicker_YearPickerRange from '@examples/date-picker/examples/year-picker-range'
 import * as DatePicker_YearPicker from '@examples/date-picker/examples/year-picker'
@@ -156,6 +151,16 @@ import * as Dialog_RootProvider from '@examples/dialog/examples/root-provider'
 import * as DownloadTrigger_Basic from '@examples/download-trigger/examples/basic'
 import * as DownloadTrigger_Svg from '@examples/download-trigger/examples/svg'
 import * as DownloadTrigger_WithPromise from '@examples/download-trigger/examples/with-promise'
+import * as Drawer_Basic from '@examples/drawer/examples/basic'
+import * as Drawer_Controlled from '@examples/drawer/examples/controlled'
+import * as Drawer_IndentBackground from '@examples/drawer/examples/indent-background'
+import * as Drawer_Modal from '@examples/drawer/examples/modal'
+import * as Drawer_NoDragArea from '@examples/drawer/examples/no-drag-area'
+import * as Drawer_NonDraggable from '@examples/drawer/examples/non-draggable'
+import * as Drawer_RootProvider from '@examples/drawer/examples/root-provider'
+import * as Drawer_Scrollable from '@examples/drawer/examples/scrollable'
+import * as Drawer_SnapPoints from '@examples/drawer/examples/snap-points'
+import * as Drawer_SwipeDirection from '@examples/drawer/examples/swipe-direction'
 import * as Editable_Basic from '@examples/editable/examples/basic'
 import * as Editable_Context from '@examples/editable/examples/context'
 import * as Editable_Controlled from '@examples/editable/examples/controlled'
@@ -578,14 +583,6 @@ const exampleModules: Record<string, ExampleModule> = {
   'avatar/events': Avatar_Events,
   'avatar/provider': Avatar_Provider,
   'avatar/root-provider': Avatar_RootProvider,
-  'bottom-sheet/basic': BottomSheet_Basic,
-  'bottom-sheet/controlled': BottomSheet_Controlled,
-  'bottom-sheet/modal': BottomSheet_Modal,
-  'bottom-sheet/no-drag-area': BottomSheet_NoDragArea,
-  'bottom-sheet/non-draggable': BottomSheet_NonDraggable,
-  'bottom-sheet/root-provider': BottomSheet_RootProvider,
-  'bottom-sheet/scrollable': BottomSheet_Scrollable,
-  'bottom-sheet/snap-points': BottomSheet_SnapPoints,
   'carousel/autoplay': Carousel_Autoplay,
   'carousel/basic': Carousel_Basic,
   'carousel/controlled': Carousel_Controlled,
@@ -608,6 +605,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'checkbox/group-with-fieldset': Checkbox_GroupWithFieldset,
   'checkbox/group-with-form': Checkbox_GroupWithForm,
   'checkbox/group-with-invalid': Checkbox_GroupWithInvalid,
+  'checkbox/group-with-max-selected': Checkbox_GroupWithMaxSelected,
   'checkbox/group-with-select-all': Checkbox_GroupWithSelectAll,
   'checkbox/group': Checkbox_Group,
   'checkbox/indeterminate': Checkbox_Indeterminate,
@@ -682,11 +680,13 @@ const exampleModules: Record<string, ExampleModule> = {
   'date-picker/month-year-select': DatePicker_MonthYearSelect,
   'date-picker/multi-selection': DatePicker_MultiSelection,
   'date-picker/multiple-months': DatePicker_MultipleMonths,
+  'date-picker/open-on-click': DatePicker_OpenOnClick,
   'date-picker/presets': DatePicker_Presets,
   'date-picker/range-selection': DatePicker_RangeSelection,
   'date-picker/root-provider': DatePicker_RootProvider,
   'date-picker/trigger-value': DatePicker_TriggerValue,
   'date-picker/unavailable': DatePicker_Unavailable,
+  'date-picker/week-numbers': DatePicker_WeekNumbers,
   'date-picker/with-time': DatePicker_WithTime,
   'date-picker/year-picker-range': DatePicker_YearPickerRange,
   'date-picker/year-picker': DatePicker_YearPicker,
@@ -708,6 +708,16 @@ const exampleModules: Record<string, ExampleModule> = {
   'download-trigger/basic': DownloadTrigger_Basic,
   'download-trigger/svg': DownloadTrigger_Svg,
   'download-trigger/with-promise': DownloadTrigger_WithPromise,
+  'drawer/basic': Drawer_Basic,
+  'drawer/controlled': Drawer_Controlled,
+  'drawer/indent-background': Drawer_IndentBackground,
+  'drawer/modal': Drawer_Modal,
+  'drawer/no-drag-area': Drawer_NoDragArea,
+  'drawer/non-draggable': Drawer_NonDraggable,
+  'drawer/root-provider': Drawer_RootProvider,
+  'drawer/scrollable': Drawer_Scrollable,
+  'drawer/snap-points': Drawer_SnapPoints,
+  'drawer/swipe-direction': Drawer_SwipeDirection,
   'editable/basic': Editable_Basic,
   'editable/context': Editable_Context,
   'editable/controlled': Editable_Controlled,

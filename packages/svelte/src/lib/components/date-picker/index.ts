@@ -134,6 +134,16 @@ export {
   type DatePickerViewTriggerProps,
 } from './date-picker-view-trigger.svelte'
 export {
+  default as DatePickerWeekNumberCell,
+  type DatePickerWeekNumberCellBaseProps,
+  type DatePickerWeekNumberCellProps,
+} from './date-picker-week-number-cell.svelte'
+export {
+  default as DatePickerWeekNumberHeaderCell,
+  type DatePickerWeekNumberHeaderCellBaseProps,
+  type DatePickerWeekNumberHeaderCellProps,
+} from './date-picker-week-number-header-cell.svelte'
+export {
   default as DatePickerYearSelect,
   type DatePickerYearSelectBaseProps,
   type DatePickerYearSelectProps,

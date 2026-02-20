@@ -33,6 +33,7 @@
   const [presenceProps, selectProps] = $derived(splitPresenceProps(props))
   const [useSelectProps, localProps] = $derived(
     createSplitProps<UseSelectProps<T>>()(selectProps, [
+      'autoComplete',
       'closeOnSelect',
       'collection',
       'composite',
