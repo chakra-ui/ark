@@ -558,8 +558,8 @@
         "@types/react": "19.2.7",
         "@types/react-dom": "19.2.3",
         "@uidotdev/usehooks": "2.4.1",
-        "@zag-js/anatomy-icons": "1.31.1",
-        "@zag-js/docs": "1.31.1",
+        "@zag-js/anatomy-icons": "1.34.1",
+        "@zag-js/docs": "1.34.1",
         "better-auth": "1.4.4",
         "effect": "3.19.8",
         "lucide-react": "0.555.0",
@@ -1728,7 +1728,7 @@
 
     "@zag-js/anatomy": ["@zag-js/anatomy@1.34.1", "", {}, "sha512-FQuhlB5ggZvC2AKy52qITBe8Q8GCHdO+tsSY0A7kOe1C3wDnZNRCKtiNfkcIlEc3uP+alMhF/7xn09N7XXOTcQ=="],
 
-    "@zag-js/anatomy-icons": ["@zag-js/anatomy-icons@1.31.1", "", { "dependencies": { "@svgr/core": "8.1.0", "@svgr/plugin-jsx": "8.1.0", "color2k": "2.0.3" }, "peerDependencies": { "react": ">=16.8.0" } }, "sha512-QXBG4qfuNmrtadpnQT0QxVwvXfY0ktTCVvbV9r7Cf8ilzeUCbf4vaWsfhnx38mXq4Sy4Im9+fmkjIiR0nsFRhg=="],
+    "@zag-js/anatomy-icons": ["@zag-js/anatomy-icons@1.34.1", "", { "dependencies": { "@svgr/core": "8.1.0", "@svgr/plugin-jsx": "8.1.0", "color2k": "2.0.3" }, "peerDependencies": { "react": ">=16.8.0" } }, "sha512-n5R+2sSfOSDgD1Li2YzUCHOSYsa0kZPJalvzO7E57+Tl4ZHmdDJ00enB2xp6G4D70LKLkOJivPczMjQeuQoZnA=="],
 
     "@zag-js/angle-slider": ["@zag-js/angle-slider@1.34.1", "", { "dependencies": { "@zag-js/anatomy": "1.34.1", "@zag-js/core": "1.34.1", "@zag-js/dom-query": "1.34.1", "@zag-js/rect-utils": "1.34.1", "@zag-js/types": "1.34.1", "@zag-js/utils": "1.34.1" } }, "sha512-TQjzs9GZMWX4TKCmO164eWBnmw9R0EzQUkbEMSPgQ5Ue2vxxU4CCFlcn2HNlP0cz1PASk2xnMPRhcoPoRUTM+w=="],
 
@@ -1768,7 +1768,7 @@
 
     "@zag-js/dismissable": ["@zag-js/dismissable@1.34.1", "", { "dependencies": { "@zag-js/dom-query": "1.34.1", "@zag-js/interact-outside": "1.34.1", "@zag-js/utils": "1.34.1" } }, "sha512-7dj7G0Cl6Fu7IHENdLT1tFeePuq8BqxPT6xANdk66hnpVeyDKcrR3XjN+ChWpYxGIkeOfPGYsjRHx1kDiFv89g=="],
 
-    "@zag-js/docs": ["@zag-js/docs@1.31.1", "", {}, "sha512-CoO1PM7+LOGQfN77dFgi5jN51NZ2Cl+S74ibq0iTaXsOGpqDnTwGJzea0hANY1dim7tiwMwImS/RfecnqQ6sxQ=="],
+    "@zag-js/docs": ["@zag-js/docs@1.34.1", "", {}, "sha512-eehCQkfrmmirx9hmHy6uM+D7qKtE4yBFspkbQ8vQP4C+oIv8HaTnN7cyEAzxF2pXaWa5Grk9PvXlxQ0AsgFgxg=="],
 
     "@zag-js/dom-event": ["@zag-js/dom-event@0.62.1", "", { "dependencies": { "@zag-js/dom-query": "0.62.1", "@zag-js/text-selection": "0.62.1", "@zag-js/types": "0.62.1" } }, "sha512-/+okVW69Xdoot7dutJVMz0iciwWM6DvAeLWr7LB5DZsUQMu93oqV/8BE2JArDxEcg5C208HNThGStcWlTaddgA=="],
 
