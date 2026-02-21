@@ -3,14 +3,13 @@
   import type { UsePresenceProps } from '../presence'
   import type { UseCascadeSelectReturn } from './use-cascade-select.svelte'
 
-  export interface CascadeSelectRootProviderBaseProps
-    extends UsePresenceProps,
-      PolymorphicProps<'div'>,
-      RefAttribute {
+  export interface CascadeSelectRootProviderBaseProps extends UsePresenceProps, PolymorphicProps<'div'>, RefAttribute {
     value: UseCascadeSelectReturn
   }
-  export interface CascadeSelectRootProviderProps
-    extends Assign<HTMLProps<'div'>, CascadeSelectRootProviderBaseProps> {}
+  export interface CascadeSelectRootProviderProps extends Assign<
+    HTMLProps<'div'>,
+    CascadeSelectRootProviderBaseProps
+  > {}
 </script>
 
 <script lang="ts">

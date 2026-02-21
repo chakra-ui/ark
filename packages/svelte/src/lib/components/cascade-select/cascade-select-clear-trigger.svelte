@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface CascadeSelectClearTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
-  export interface CascadeSelectClearTriggerProps
-    extends Assign<HTMLProps<'button'>, CascadeSelectClearTriggerBaseProps> {}
+  export interface CascadeSelectClearTriggerProps extends Assign<
+    HTMLProps<'button'>,
+    CascadeSelectClearTriggerBaseProps
+  > {}
 </script>
 
 <script lang="ts">

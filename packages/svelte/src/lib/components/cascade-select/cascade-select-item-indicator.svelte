@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface CascadeSelectItemIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface CascadeSelectItemIndicatorProps
-    extends Assign<HTMLProps<'div'>, CascadeSelectItemIndicatorBaseProps> {}
+  export interface CascadeSelectItemIndicatorProps extends Assign<
+    HTMLProps<'div'>,
+    CascadeSelectItemIndicatorBaseProps
+  > {}
 </script>
 
 <script lang="ts">

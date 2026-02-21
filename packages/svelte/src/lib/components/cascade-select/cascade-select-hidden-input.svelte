@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface CascadeSelectHiddenInputBaseProps extends PolymorphicProps<'input'>, RefAttribute {}
-  export interface CascadeSelectHiddenInputProps
-    extends Assign<HTMLProps<'input'>, CascadeSelectHiddenInputBaseProps> {}
+  export interface CascadeSelectHiddenInputProps extends Assign<
+    HTMLProps<'input'>,
+    CascadeSelectHiddenInputBaseProps
+  > {}
 </script>
 
 <script lang="ts">

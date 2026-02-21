@@ -58,11 +58,7 @@
   {@const nodeState = api().getItemState({ item: node, indexPath, value })}
   <CascadeSelect.List item={node} {indexPath} {value}>
     {#each collection.getNodeChildren(node) as child, i}
-      <CascadeSelect.Item
-        item={child}
-        indexPath={[...indexPath, i]}
-        value={[...value, collection.getNodeValue(child)]}
-      >
+      <CascadeSelect.Item item={child} indexPath={[...indexPath, i]} value={[...value, collection.getNodeValue(child)]}>
         <CascadeSelect.ItemText>{collection.stringifyNode(child)}</CascadeSelect.ItemText>
       </CascadeSelect.Item>
     {/each}
