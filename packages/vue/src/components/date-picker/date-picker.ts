@@ -1,9 +1,13 @@
 export type {
+  DateRangePreset,
   DateValue,
+  DateView,
   FocusChangeDetails,
   OpenChangeDetails,
+  SelectionMode,
   ValueChangeDetails,
   ViewChangeDetails,
+  VisibleRangeChangeDetails,
 } from '@zag-js/date-picker'
 export {
   default as ClearTrigger,

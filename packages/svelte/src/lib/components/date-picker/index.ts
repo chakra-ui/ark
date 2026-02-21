@@ -1,10 +1,14 @@
 export { parse as parseDate } from '@zag-js/date-picker'
 export type {
+  DateRangePreset as DatePickerDateRangePreset,
+  DateValue,
+  DateView as DatePickerDateView,
   FocusChangeDetails as DatePickerFocusChangeDetails,
   OpenChangeDetails as DatePickerOpenChangeDetails,
+  SelectionMode as DatePickerSelectionMode,
   ValueChangeDetails as DatePickerValueChangeDetails,
   ViewChangeDetails as DatePickerViewChangeDetails,
-  DateValue,
+  VisibleRangeChangeDetails as DatePickerVisibleRangeChangeDetails,
 } from '@zag-js/date-picker'
 export {
   default as DatePickerClearTrigger,
