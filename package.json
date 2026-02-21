@@ -55,6 +55,6 @@
   ],
   "overrides": {
     "flexsearch": "0.8.212",
-    "vite": "7.2.4"
+    "vite": "7.3.1"
   }
 }
