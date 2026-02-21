@@ -78,6 +78,5 @@ export const ComponentUnderTest = (props: Optional<CascadeSelect.RootProps<Node>
         <TreeNode node={collection.rootNode} />
       </CascadeSelect.Content>
     </CascadeSelect.Positioner>
-    <CascadeSelect.HiddenInput />
   </CascadeSelect.Root>
 )

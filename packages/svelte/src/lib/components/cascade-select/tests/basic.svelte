@@ -78,7 +78,6 @@
       </CascadeSelect.Context>
     </CascadeSelect.Content>
   </CascadeSelect.Positioner>
-  <CascadeSelect.HiddenInput />
 </CascadeSelect.Root>
 
 {#snippet renderNode(api: UseCascadeSelectReturn, node: Node, indexPath: number[], value: string[])}

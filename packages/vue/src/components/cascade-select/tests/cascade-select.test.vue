@@ -56,6 +56,5 @@ const localProps = useForwardPropsEmits(props, emits)
         <TreeNode :node="collection.rootNode" :collection="collection" />
       </CascadeSelect.Content>
     </CascadeSelect.Positioner>
-    <CascadeSelect.HiddenInput />
   </CascadeSelect.Root>
 </template>
