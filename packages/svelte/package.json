@@ -220,7 +220,7 @@
     "check-password-strength": "3.0.0",
     "clean-package": "2.2.0",
     "image-conversion": "2.1.1",
-    "jsdom": "26.1.0",
+    "jsdom": "28.1.0",
     "lucide-svelte": "0.575.0",
     "storybook": "10.2.10",
     "svelte": "5.53.1",
