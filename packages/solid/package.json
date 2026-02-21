@@ -160,7 +160,7 @@
     "@testing-library/dom": "10.4.1",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/user-event": "14.6.1",
-    "@types/jsdom": "21.1.7",
+    "@types/jsdom": "27.0.0",
     "@vitest/coverage-v8": "^4.0.0",
     "check-password-strength": "3.0.0",
     "clean-package": "2.2.0",
