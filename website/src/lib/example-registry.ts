@@ -38,6 +38,13 @@ import * as Carousel_Spacing from '@examples/carousel/examples/spacing'
 import * as Carousel_ThumbnailIndicator from '@examples/carousel/examples/thumbnail-indicator'
 import * as Carousel_VariableSize from '@examples/carousel/examples/variable-size'
 import * as Carousel_Vertical from '@examples/carousel/examples/vertical'
+import * as CascadeSelect_AllowParentSelection from '@examples/cascade-select/examples/allow-parent-selection'
+import * as CascadeSelect_Basic from '@examples/cascade-select/examples/basic'
+import * as CascadeSelect_Controlled from '@examples/cascade-select/examples/controlled'
+import * as CascadeSelect_Events from '@examples/cascade-select/examples/events'
+import * as CascadeSelect_HoverTrigger from '@examples/cascade-select/examples/hover-trigger'
+import * as CascadeSelect_Multiple from '@examples/cascade-select/examples/multiple'
+import * as CascadeSelect_RootProvider from '@examples/cascade-select/examples/root-provider'
 import * as Checkbox_Basic from '@examples/checkbox/examples/basic'
 import * as Checkbox_Context from '@examples/checkbox/examples/context'
 import * as Checkbox_Controlled from '@examples/checkbox/examples/controlled'
@@ -595,6 +602,13 @@ const exampleModules: Record<string, ExampleModule> = {
   'carousel/thumbnail-indicator': Carousel_ThumbnailIndicator,
   'carousel/variable-size': Carousel_VariableSize,
   'carousel/vertical': Carousel_Vertical,
+  'cascade-select/allow-parent-selection': CascadeSelect_AllowParentSelection,
+  'cascade-select/basic': CascadeSelect_Basic,
+  'cascade-select/controlled': CascadeSelect_Controlled,
+  'cascade-select/events': CascadeSelect_Events,
+  'cascade-select/hover-trigger': CascadeSelect_HoverTrigger,
+  'cascade-select/multiple': CascadeSelect_Multiple,
+  'cascade-select/root-provider': CascadeSelect_RootProvider,
   'checkbox/basic': Checkbox_Basic,
   'checkbox/context': Checkbox_Context,
   'checkbox/controlled': Checkbox_Controlled,
