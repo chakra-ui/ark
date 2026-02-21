@@ -61,6 +61,7 @@ export { CascadeSelectRoot, type CascadeSelectRootBaseProps, type CascadeSelectR
 export {
   CascadeSelectRootProvider,
   type CascadeSelectRootProviderBaseProps,
+  type CascadeSelectRootProviderComponent,
   type CascadeSelectRootProviderProps,
 } from './cascade-select-root-provider'
 export {

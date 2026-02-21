@@ -3,7 +3,11 @@ export type {
   OpenChangeDetails as CascadeSelectOpenChangeDetails,
   ValueChangeDetails as CascadeSelectValueChangeDetails,
 } from '@zag-js/cascade-select'
-export { createTreeCollection as createCascadeCollection } from '../collection'
+export {
+  createTreeCollection as createCascadeCollection,
+  type TreeCollection as CascadeSelectCollection,
+  type TreeNode as CascadeSelectNode,
+} from '../collection'
 export {
   CascadeSelectClearTrigger,
   type CascadeSelectClearTriggerBaseProps,
@@ -57,6 +61,7 @@ export { CascadeSelectRoot, type CascadeSelectRootBaseProps, type CascadeSelectR
 export {
   CascadeSelectRootProvider,
   type CascadeSelectRootProviderBaseProps,
+  type CascadeSelectRootProviderComponent,
   type CascadeSelectRootProviderProps,
 } from './cascade-select-root-provider'
 export {
