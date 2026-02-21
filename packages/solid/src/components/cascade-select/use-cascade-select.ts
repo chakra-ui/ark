@@ -2,16 +2,18 @@ import * as cascadeSelect from '@zag-js/cascade-select'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { MaybeAccessor } from '../../types'
+import type { MaybeAccessor, Optional } from '../../types'
 import type { TreeCollection, TreeNode as CascadeSelectNode } from '../collection'
 import { runIfFn } from '../../utils/run-if-fn'
 import { useFieldContext } from '../field'
 
-export interface UseCascadeSelectProps<T extends CascadeSelectNode> extends Omit<
-  cascadeSelect.Props<T>,
-  'dir' | 'getRootNode' | 'id' | 'collection'
+export interface UseCascadeSelectProps<T extends CascadeSelectNode> extends Optional<
+  Omit<cascadeSelect.Props<T>, 'dir' | 'getRootNode' | 'collection'>,
+  'id'
 > {
-  id?: string
+  /**
+   * The collection of cascade select nodes
+   */
   collection: TreeCollection<T>
 }
 export interface UseCascadeSelectReturn<T extends CascadeSelectNode> extends Accessor<

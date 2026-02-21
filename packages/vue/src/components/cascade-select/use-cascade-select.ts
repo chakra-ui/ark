@@ -12,8 +12,14 @@ export interface UseCascadeSelectProps<T extends CascadeSelectNode> extends Opti
   Omit<cascadeSelect.Props<T>, 'dir' | 'getRootNode' | 'collection'>,
   'id'
 > {
+  /**
+   * The model value of the select
+   */
+  modelValue?: cascadeSelect.Props<T>['value']
+  /**
+   * The collection of cascade select nodes
+   */
   collection: TreeCollection<T>
-  modelValue?: string[][]
 }
 
 export interface UseCascadeSelectReturn<T extends CascadeSelectNode> extends ComputedRef<

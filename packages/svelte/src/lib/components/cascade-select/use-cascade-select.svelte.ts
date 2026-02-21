@@ -10,6 +10,9 @@ export interface UseCascadeSelectProps<T extends CascadeSelectNode> extends Opti
   Omit<cascadeSelect.Props<T>, 'dir' | 'getRootNode' | 'collection'>,
   'id'
 > {
+  /**
+   * The collection of cascade select nodes
+   */
   collection: TreeCollection<T>
 }
 export interface UseCascadeSelectReturn<T extends CascadeSelectNode> extends Accessor<
