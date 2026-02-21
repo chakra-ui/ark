@@ -1,5 +1,5 @@
 import { Field } from '../../field'
-import { CascadeSelect, createCascadeCollection, useCascadeSelectContext } from '../'
+import { CascadeSelect, createCascadeCollection } from '../'
 
 interface Node {
   label: string
@@ -21,23 +21,18 @@ const collection = createCascadeCollection<Node>({
 })
 
 const TreeNode = (props: { node: Node; indexPath?: number[]; value?: string[] }) => {
-  const context = useCascadeSelectContext()
-  const nodeState = () =>
-    context().getItemState({ item: props.node, indexPath: props.indexPath ?? [], value: props.value ?? [] })
   return (
-    <>
-      <CascadeSelect.List item={props.node} indexPath={props.indexPath ?? []} value={props.value ?? []}>
-        {collection.getNodeChildren(props.node).map((child, i) => (
-          <CascadeSelect.Item
-            item={child}
-            indexPath={[...(props.indexPath ?? []), i]}
-            value={[...(props.value ?? []), collection.getNodeValue(child)]}
-          >
-            <CascadeSelect.ItemText>{collection.stringifyNode(child)}</CascadeSelect.ItemText>
-          </CascadeSelect.Item>
-        ))}
-      </CascadeSelect.List>
-    </>
+    <CascadeSelect.List item={props.node} indexPath={props.indexPath ?? []} value={props.value ?? []}>
+      {collection.getNodeChildren(props.node).map((child, i) => (
+        <CascadeSelect.Item
+          item={child}
+          indexPath={[...(props.indexPath ?? []), i]}
+          value={[...(props.value ?? []), collection.getNodeValue(child)]}
+        >
+          <CascadeSelect.ItemText>{collection.stringifyNode(child)}</CascadeSelect.ItemText>
+        </CascadeSelect.Item>
+      ))}
+    </CascadeSelect.List>
   )
 }
 

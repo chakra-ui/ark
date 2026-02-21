@@ -119,9 +119,9 @@ describe('CascadeSelect / Field', () => {
   })
 
   it('should focus on trigger when label is clicked', async () => {
-    render(CascadeSelectWithField)
-    await user.click(screen.getByText(/label/i))
-    await waitFor(() => expect(screen.getByRole('combobox', { name: /label/i })).toHaveFocus())
+    render(ComponentUnderTest)
+    await user.click(screen.getByText('Category'))
+    await waitFor(() => expect(screen.getByRole('combobox', { name: 'Category' })).toHaveFocus())
   })
 
   it('should not display error text when no error is present', async () => {
