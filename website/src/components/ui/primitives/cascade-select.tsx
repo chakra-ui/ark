@@ -137,7 +137,7 @@ const { withProvider, withContext } = createStyleContext(cascadeSelect)
 export type RootProviderProps = ComponentProps<typeof RootProvider>
 export const RootProvider = withProvider<
   HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, CascadeSelect.RootProviderBaseProps>
+  Assign<HTMLStyledProps<'div'>, CascadeSelect.RootProviderBaseProps<CascadeSelectNode>>
 >(CascadeSelect.RootProvider, 'root')
 
 export type RootProps = ComponentProps<typeof Root>
@@ -208,5 +208,3 @@ export const ItemIndicator = withContext<
 
 export const HiddenInput = CascadeSelect.HiddenInput
 export const Context = CascadeSelect.Context
-
-export type ContextProps = CascadeSelect.ContextProps
