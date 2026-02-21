@@ -15,7 +15,7 @@ export interface UseCascadeSelectProps<T extends CascadeSelectNode> extends Opti
    */
   collection: TreeCollection<T>
 }
-export interface UseCascadeSelectReturn<T extends CascadeSelectNode> extends Accessor<
+export interface UseCascadeSelectReturn<T extends CascadeSelectNode = CascadeSelectNode> extends Accessor<
   cascadeSelect.Api<PropTypes, T>
 > {}
 
