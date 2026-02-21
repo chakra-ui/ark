@@ -100,6 +100,13 @@ selected dates as removable tags.
 
 <Example id="multi-selection" />
 
+### Max Selected Dates
+
+Use the `maxSelectedDates` prop with `selectionMode="multiple"` to limit the number of dates that can be selected. In
+this example, users can select up to 3 dates.
+
+<Example id="max-selected-dates" />
+
 ### Multiple Months
 
 To create a date picker that displays multiple months side by side:
@@ -178,6 +185,26 @@ Create a year range picker by combining `selectionMode="range"` with `defaultVie
 useful for selecting multi-year periods.
 
 <Example id="year-picker-range" />
+
+### Select Today
+
+Use the `selectToday` method from the date picker context to add a "Today" button that quickly selects the current date.
+
+<Example id="select-today" />
+
+### Fixed Weeks
+
+Use the `fixedWeeks` prop to always display 6 weeks in the calendar, preventing layout shifts when navigating between
+months.
+
+<Example id="fixed-weeks" />
+
+### Form
+
+Use the `name` prop to integrate the date picker with native HTML forms. The selected date value will be submitted as
+form data. This example also uses `isDateUnavailable` to disable weekends.
+
+<Example id="form" />
 
 ### With Time
 

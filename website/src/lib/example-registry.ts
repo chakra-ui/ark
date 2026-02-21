@@ -114,9 +114,12 @@ import * as DatePicker_Basic from '@examples/date-picker/examples/basic'
 import * as DatePicker_Controlled from '@examples/date-picker/examples/controlled'
 import * as DatePicker_DefaultValue from '@examples/date-picker/examples/default-value'
 import * as DatePicker_DefaultView from '@examples/date-picker/examples/default-view'
+import * as DatePicker_FixedWeeks from '@examples/date-picker/examples/fixed-weeks'
+import * as DatePicker_Form from '@examples/date-picker/examples/form'
 import * as DatePicker_FormatParse from '@examples/date-picker/examples/format-parse'
 import * as DatePicker_Inline from '@examples/date-picker/examples/inline'
 import * as DatePicker_Locale from '@examples/date-picker/examples/locale'
+import * as DatePicker_MaxSelectedDates from '@examples/date-picker/examples/max-selected-dates'
 import * as DatePicker_MinMax from '@examples/date-picker/examples/min-max'
 import * as DatePicker_MonthPickerRange from '@examples/date-picker/examples/month-picker-range'
 import * as DatePicker_MonthPicker from '@examples/date-picker/examples/month-picker'
@@ -127,6 +130,7 @@ import * as DatePicker_OpenOnClick from '@examples/date-picker/examples/open-on-
 import * as DatePicker_Presets from '@examples/date-picker/examples/presets'
 import * as DatePicker_RangeSelection from '@examples/date-picker/examples/range-selection'
 import * as DatePicker_RootProvider from '@examples/date-picker/examples/root-provider'
+import * as DatePicker_SelectToday from '@examples/date-picker/examples/select-today'
 import * as DatePicker_TriggerValue from '@examples/date-picker/examples/trigger-value'
 import * as DatePicker_Unavailable from '@examples/date-picker/examples/unavailable'
 import * as DatePicker_WeekNumbers from '@examples/date-picker/examples/week-numbers'
@@ -671,9 +675,12 @@ const exampleModules: Record<string, ExampleModule> = {
   'date-picker/controlled': DatePicker_Controlled,
   'date-picker/default-value': DatePicker_DefaultValue,
   'date-picker/default-view': DatePicker_DefaultView,
+  'date-picker/fixed-weeks': DatePicker_FixedWeeks,
+  'date-picker/form': DatePicker_Form,
   'date-picker/format-parse': DatePicker_FormatParse,
   'date-picker/inline': DatePicker_Inline,
   'date-picker/locale': DatePicker_Locale,
+  'date-picker/max-selected-dates': DatePicker_MaxSelectedDates,
   'date-picker/min-max': DatePicker_MinMax,
   'date-picker/month-picker-range': DatePicker_MonthPickerRange,
   'date-picker/month-picker': DatePicker_MonthPicker,
@@ -684,6 +691,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'date-picker/presets': DatePicker_Presets,
   'date-picker/range-selection': DatePicker_RangeSelection,
   'date-picker/root-provider': DatePicker_RootProvider,
+  'date-picker/select-today': DatePicker_SelectToday,
   'date-picker/trigger-value': DatePicker_TriggerValue,
   'date-picker/unavailable': DatePicker_Unavailable,
   'date-picker/week-numbers': DatePicker_WeekNumbers,

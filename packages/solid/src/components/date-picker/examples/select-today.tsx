@@ -5,9 +5,9 @@ import { Portal } from 'solid-js/web'
 import button from 'styles/button.module.css'
 import styles from 'styles/date-picker.module.css'
 
-export const WeekNumbers = () => {
+export const SelectToday = () => {
   return (
-    <DatePicker.Root showWeekNumbers class={styles.Root}>
+    <DatePicker.Root class={styles.Root}>
       <DatePicker.Label class={styles.Label}>Label</DatePicker.Label>
       <DatePicker.Control class={styles.Control}>
         <DatePicker.Input class={styles.Input} />
@@ -37,9 +37,6 @@ export const WeekNumbers = () => {
                     <DatePicker.Table class={styles.Table}>
                       <DatePicker.TableHead class={styles.TableHead}>
                         <DatePicker.TableRow class={styles.TableRow}>
-                          <DatePicker.WeekNumberHeaderCell class={styles.WeekNumberHeaderCell}>
-                            Wk
-                          </DatePicker.WeekNumberHeaderCell>
                           <Index each={context().weekDays}>
                             {(weekDay) => (
                               <DatePicker.TableHeader class={styles.TableHeader}>
@@ -51,15 +48,8 @@ export const WeekNumbers = () => {
                       </DatePicker.TableHead>
                       <DatePicker.TableBody class={styles.TableBody}>
                         <Index each={context().weeks}>
-                          {(week, weekIndex) => (
+                          {(week) => (
                             <DatePicker.TableRow class={styles.TableRow}>
-                              <DatePicker.WeekNumberCell
-                                class={styles.WeekNumberCell}
-                                weekIndex={weekIndex}
-                                week={week()}
-                              >
-                                {context().getWeekNumber(week())}
-                              </DatePicker.WeekNumberCell>
                               <Index each={week()}>
                                 {(day) => (
                                   <DatePicker.TableCell class={styles.TableCell} value={day()}>
@@ -74,6 +64,9 @@ export const WeekNumbers = () => {
                         </Index>
                       </DatePicker.TableBody>
                     </DatePicker.Table>
+                    <button class={button.Root} type="button" onClick={() => context().selectToday()}>
+                      Today
+                    </button>
                   </>
                 )}
               </DatePicker.Context>

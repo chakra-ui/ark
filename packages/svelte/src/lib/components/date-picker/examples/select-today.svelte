@@ -8,7 +8,7 @@
   import styles from 'styles/date-picker.module.css'
 </script>
 
-<DatePicker.Root showWeekNumbers class={styles.Root}>
+<DatePicker.Root class={styles.Root}>
   <DatePicker.Label class={styles.Label}>Label</DatePicker.Label>
   <DatePicker.Control class={styles.Control}>
     <DatePicker.Input class={styles.Input} />
@@ -37,16 +37,14 @@
               <DatePicker.Table class={styles.Table}>
                 <DatePicker.TableHead class={styles.TableHead}>
                   <DatePicker.TableRow class={styles.TableRow}>
-                    <DatePicker.WeekNumberHeaderCell class={styles.WeekNumberHeaderCell}>Wk</DatePicker.WeekNumberHeaderCell>
                     {#each datePicker().weekDays as weekDay}
                       <DatePicker.TableHeader class={styles.TableHeader}>{weekDay.short}</DatePicker.TableHeader>
                     {/each}
                   </DatePicker.TableRow>
                 </DatePicker.TableHead>
                 <DatePicker.TableBody class={styles.TableBody}>
-                  {#each datePicker().weeks as week, weekIndex}
+                  {#each datePicker().weeks as week}
                     <DatePicker.TableRow class={styles.TableRow}>
-                      <DatePicker.WeekNumberCell class={styles.WeekNumberCell} weekIndex={weekIndex} week={week}>{datePicker().getWeekNumber(week)}</DatePicker.WeekNumberCell>
                       {#each week as day}
                         <DatePicker.TableCell class={styles.TableCell} value={day}>
                           <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>{day.day}</DatePicker.TableCellTrigger>
@@ -56,6 +54,9 @@
                   {/each}
                 </DatePicker.TableBody>
               </DatePicker.Table>
+              <button class={button.Root} type="button" onclick={() => datePicker().selectToday()}>
+                Today
+              </button>
             {/snippet}
           </DatePicker.Context>
         </DatePicker.View>
