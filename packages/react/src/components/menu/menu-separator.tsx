@@ -8,7 +8,7 @@ export interface MenuSeparatorProps extends HTMLProps<'hr'>, MenuSeparatorBasePr
 
 export const MenuSeparator = forwardRef<HTMLHRElement, MenuSeparatorProps>((props, ref) => {
   const menu = useMenuContext()
-  const mergedProps = mergeProps(menu.getSeparatorProps(), props)
+  const mergedProps = mergeProps(menu?.getSeparatorProps(), props)
 
   return <ark.hr {...mergedProps} ref={ref} />
 })

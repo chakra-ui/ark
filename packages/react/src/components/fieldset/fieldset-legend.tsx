@@ -8,7 +8,7 @@ export interface FieldsetLegendProps extends HTMLProps<'legend'>, FieldsetLegend
 
 export const FieldsetLegend = forwardRef<HTMLLegendElement, FieldsetLegendProps>((props, ref) => {
   const fieldset = useFieldsetContext()
-  const mergedProps = mergeProps(fieldset.getLegendProps(), props)
+  const mergedProps = mergeProps(fieldset?.getLegendProps(), props)
 
   return <ark.legend {...mergedProps} ref={ref} />
 })

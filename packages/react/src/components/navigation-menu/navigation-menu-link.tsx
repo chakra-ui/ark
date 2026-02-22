@@ -16,7 +16,12 @@ export const NavigationMenuLink = forwardRef<HTMLAnchorElement, NavigationMenuLi
   const itemContext = useNavigationMenuItemPropsContext()
   const value = props.value ?? itemContext?.value
 
-  const [linkProps, localProps] = splitLinkProps({ ...props, value }, ['current', 'onSelect', 'value', 'closeOnClick'])
+  const [linkProps, localProps] = splitLinkProps({ ...props, value: value! }, [
+    'current',
+    'onSelect',
+    'value',
+    'closeOnClick',
+  ])
   const navigationMenu = useNavigationMenuContext()
   const mergedProps = mergeProps(navigationMenu.getLinkProps(linkProps), localProps)
 
