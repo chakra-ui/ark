@@ -20,6 +20,10 @@ import WithTimeExample from './examples/with-time.vue'
 import OpenOnClickExample from './examples/open-on-click.vue'
 import WeekNumbersExample from './examples/week-numbers.vue'
 import YearPickerExample from './examples/year-picker.vue'
+import SelectTodayExample from './examples/select-today.vue'
+import FixedWeeksExample from './examples/fixed-weeks.vue'
+import FormExample from './examples/form.vue'
+import MaxSelectedDatesExample from './examples/max-selected-dates.vue'
 
 const meta: Meta = {
   title: 'Components / DatePicker',
@@ -163,6 +167,34 @@ export const WeekNumbers = {
 export const YearPicker = {
   render: () => ({
     components: { Component: YearPickerExample },
+    template: '<Component />',
+  }),
+}
+
+export const SelectToday = {
+  render: () => ({
+    components: { Component: SelectTodayExample },
+    template: '<Component />',
+  }),
+}
+
+export const FixedWeeks = {
+  render: () => ({
+    components: { Component: FixedWeeksExample },
+    template: '<Component />',
+  }),
+}
+
+export const Form = {
+  render: () => ({
+    components: { Component: FormExample },
+    template: '<Component />',
+  }),
+}
+
+export const MaxSelectedDates = {
+  render: () => ({
+    components: { Component: MaxSelectedDatesExample },
     template: '<Component />',
   }),
 }

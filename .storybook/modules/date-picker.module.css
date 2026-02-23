@@ -339,11 +339,24 @@
   letter-spacing: 0.025em;
 }
 
+.WeekNumberHeaderCell {
+  padding: 0.5rem 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--demo-neutral-emphasized);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  background: var(--demo-neutral-subtle);
+  width: 2rem;
+}
+
 .WeekNumberCell {
   padding: 0;
   text-align: center;
   font-size: 0.6875rem;
   color: var(--demo-neutral-emphasized);
+  background: var(--demo-neutral-subtle);
   width: 2rem;
 }
 

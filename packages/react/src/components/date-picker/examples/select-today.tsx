@@ -1,17 +1,19 @@
 import { DatePicker } from '@ark-ui/react/date-picker'
 import { Portal } from '@ark-ui/react/portal'
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
+import button from 'styles/button.module.css'
 import styles from 'styles/date-picker.module.css'
 
-export const WeekNumbers = () => {
+export const SelectToday = () => {
   return (
-    <DatePicker.Root showWeekNumbers className={styles.Root}>
+    <DatePicker.Root className={styles.Root}>
       <DatePicker.Label className={styles.Label}>Label</DatePicker.Label>
       <DatePicker.Control className={styles.Control}>
         <DatePicker.Input className={styles.Input} />
         <DatePicker.Trigger className={styles.Trigger}>
           <CalendarIcon />
         </DatePicker.Trigger>
+        <DatePicker.ClearTrigger className={button.Root}>Clear</DatePicker.ClearTrigger>
       </DatePicker.Control>
       <Portal>
         <DatePicker.Positioner>
@@ -34,9 +36,6 @@ export const WeekNumbers = () => {
                     <DatePicker.Table className={styles.Table}>
                       <DatePicker.TableHead className={styles.TableHead}>
                         <DatePicker.TableRow className={styles.TableRow}>
-                          <DatePicker.WeekNumberHeaderCell className={styles.WeekNumberHeaderCell}>
-                            Wk
-                          </DatePicker.WeekNumberHeaderCell>
                           {datePicker.weekDays.map((weekDay, id) => (
                             <DatePicker.TableHeader className={styles.TableHeader} key={id}>
                               {weekDay.short}
@@ -45,15 +44,8 @@ export const WeekNumbers = () => {
                         </DatePicker.TableRow>
                       </DatePicker.TableHead>
                       <DatePicker.TableBody className={styles.TableBody}>
-                        {datePicker.weeks.map((week, weekIndex) => (
-                          <DatePicker.TableRow className={styles.TableRow} key={weekIndex}>
-                            <DatePicker.WeekNumberCell
-                              className={styles.WeekNumberCell}
-                              weekIndex={weekIndex}
-                              week={week}
-                            >
-                              {datePicker.getWeekNumber(week)}
-                            </DatePicker.WeekNumberCell>
+                        {datePicker.weeks.map((week, id) => (
+                          <DatePicker.TableRow className={styles.TableRow} key={id}>
                             {week.map((day, id) => (
                               <DatePicker.TableCell className={styles.TableCell} key={id} value={day}>
                                 <DatePicker.TableCellTrigger className={styles.TableCellTrigger}>
@@ -65,6 +57,9 @@ export const WeekNumbers = () => {
                         ))}
                       </DatePicker.TableBody>
                     </DatePicker.Table>
+                    <button className={button.Root} type="button" onClick={() => datePicker.selectToday()}>
+                      Today
+                    </button>
                   </>
                 )}
               </DatePicker.Context>

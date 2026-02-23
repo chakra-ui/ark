@@ -19,6 +19,10 @@ import WithTimeExample from './examples/with-time.svelte'
 import OpenOnClickExample from './examples/open-on-click.svelte'
 import WeekNumbersExample from './examples/week-numbers.svelte'
 import YearPickerExample from './examples/year-picker.svelte'
+import SelectTodayExample from './examples/select-today.svelte'
+import FixedWeeksExample from './examples/fixed-weeks.svelte'
+import FormExample from './examples/form.svelte'
+import MaxSelectedDatesExample from './examples/max-selected-dates.svelte'
 
 const meta: Meta = {
   title: 'Components / DatePicker',
@@ -143,5 +147,29 @@ export const WeekNumbers = {
 export const YearPicker = {
   render: () => ({
     Component: YearPickerExample,
+  }),
+}
+
+export const SelectToday = {
+  render: () => ({
+    Component: SelectTodayExample,
+  }),
+}
+
+export const FixedWeeks = {
+  render: () => ({
+    Component: FixedWeeksExample,
+  }),
+}
+
+export const Form = {
+  render: () => ({
+    Component: FormExample,
+  }),
+}
+
+export const MaxSelectedDates = {
+  render: () => ({
+    Component: MaxSelectedDatesExample,
   }),
 }

@@ -6,7 +6,7 @@ import styles from 'styles/date-picker.module.css'
 </script>
 
 <template>
-  <DatePicker.Root :class="styles.Root" showWeekNumbers>
+  <DatePicker.Root fixed-weeks :class="styles.Root">
     <DatePicker.Label :class="styles.Label">Label</DatePicker.Label>
     <DatePicker.Control :class="styles.Control">
       <DatePicker.Input :class="styles.Input" />
@@ -18,7 +18,7 @@ import styles from 'styles/date-picker.module.css'
     <DatePicker.Positioner>
       <DatePicker.Content :class="styles.Content">
         <DatePicker.View view="day" :class="styles.View">
-          <DatePicker.Context v-slot="datePicker">
+          <DatePicker.Context v-slot="api">
             <DatePicker.ViewControl :class="styles.ViewControl">
               <DatePicker.PrevTrigger :class="styles.PrevTrigger">
                 <ChevronLeftIcon />
@@ -33,27 +33,13 @@ import styles from 'styles/date-picker.module.css'
             <DatePicker.Table :class="styles.Table">
               <DatePicker.TableHead :class="styles.TableHead">
                 <DatePicker.TableRow :class="styles.TableRow">
-                  <DatePicker.WeekNumberHeaderCell :class="styles.WeekNumberHeaderCell">
-                    Wk
-                  </DatePicker.WeekNumberHeaderCell>
-                  <DatePicker.TableHeader
-                    v-for="(weekDay, id) in datePicker.weekDays"
-                    :key="id"
-                    :class="styles.TableHeader"
-                  >
+                  <DatePicker.TableHeader v-for="(weekDay, id) in api.weekDays" :key="id" :class="styles.TableHeader">
                     {{ weekDay.short }}
                   </DatePicker.TableHeader>
                 </DatePicker.TableRow>
               </DatePicker.TableHead>
               <DatePicker.TableBody :class="styles.TableBody">
-                <DatePicker.TableRow
-                  v-for="(week, weekIndex) in datePicker.weeks"
-                  :key="weekIndex"
-                  :class="styles.TableRow"
-                >
-                  <DatePicker.WeekNumberCell :class="styles.WeekNumberCell" :weekIndex="weekIndex" :week="week">
-                    {{ datePicker.getWeekNumber(week) }}
-                  </DatePicker.WeekNumberCell>
+                <DatePicker.TableRow v-for="(week, id) in api.weeks" :key="id" :class="styles.TableRow">
                   <DatePicker.TableCell v-for="(day, id) in week" :key="id" :value="day" :class="styles.TableCell">
                     <DatePicker.TableCellTrigger :class="styles.TableCellTrigger">
                       {{ day.day }}
