@@ -7,7 +7,7 @@ import styles from 'styles/format.module.css'
   <div :class="styles.Inline">
     <span :class="styles.InlineLabel">Support window</span>
     <span :class="styles.InlineValue">
-      <Format.Time value="17:15:00" :format="'12h'" :am-pm-labels="{ am: 'morning', pm: 'evening' }" />
+      <Format.Time value="17:15:00" :format="'12h'" am-label="morning" pm-label="evening" />
     </span>
   </div>
 </template>

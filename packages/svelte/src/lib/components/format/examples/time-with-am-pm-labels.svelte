@@ -6,6 +6,6 @@
 <div class={styles.Inline}>
   <span class={styles.InlineLabel}>Support window</span>
   <span class={styles.InlineValue}>
-    <Format.Time value="17:15:00" format="12h" amPmLabels={{ am: 'morning', pm: 'evening' }} />
+    <Format.Time value="17:15:00" format="12h" amLabel="morning" pmLabel="evening" />
   </span>
 </div>

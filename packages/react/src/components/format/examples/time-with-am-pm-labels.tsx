@@ -6,7 +6,7 @@ export const TimeWithAmPmLabels = () => {
     <div className={styles.Inline}>
       <span className={styles.InlineLabel}>Support window</span>
       <span className={styles.InlineValue}>
-        <Format.Time value="17:15:00" format="12h" amPmLabels={{ am: 'morning', pm: 'evening' }} />
+        <Format.Time value="17:15:00" format="12h" amLabel="morning" pmLabel="evening" />
       </span>
     </div>
   )

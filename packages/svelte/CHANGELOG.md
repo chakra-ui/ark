@@ -6,6 +6,23 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Carousel**:
+  - Fixed issue where carousel inside a Portal (e.g., Dialog) computes incorrect page count due to incomplete DOM layout
+    at mount time
+  - Keep page and indicators in sync after drag release and scroll settling
+  - Handle rapid mixed interactions (drag, wheel, buttons, indicators) more consistently
+  - Keep page state valid when `slidesPerPage`, `slidesPerMove`, direction, or orientation change
+  - Make `slidesPerMove` progression more predictable
+- **Combobox, Listbox, Select**: Improved controlled-mode synchronization and callback/item resolution behavior across
+  filtered collections
+
+### Changed
+
+- **Format**: `Format.Time` now accepts `amLabel` and `pmLabel` as separate props instead of the previous `amPmLabels`
+  object
+
 ## [5.19.0] - 2026-02-27
 
 ### Added
@@ -16,8 +33,7 @@ description: All notable changes will be documented in this file.
 ### Fixed
 
 - **Build**: Fixed CJS build issues in downstream Zag.js packages
-- **Download Trigger**: Fixed window resolution to use environment context in custom environments (for example,
-  iframes)
+- **Download Trigger**: Fixed window resolution to use environment context in custom environments (for example, iframes)
 
 ## [5.18.0] - 2026-02-26
 

@@ -1,5 +1,22 @@
 ## [Unreleased]
 
+### Fixed
+
+- **Carousel**:
+  - Fixed issue where carousel inside a Portal (e.g., Dialog) computes incorrect page count due to incomplete DOM layout
+    at mount time
+  - Keep page and indicators in sync after drag release and scroll settling
+  - Handle rapid mixed interactions (drag, wheel, buttons, indicators) more consistently
+  - Keep page state valid when `slidesPerPage`, `slidesPerMove`, direction, or orientation change
+  - Make `slidesPerMove` progression more predictable
+- **Combobox, Listbox, Select**: Improved controlled-mode synchronization and callback/item resolution behavior across
+  filtered collections
+
+### Changed
+
+- **Format**: `Format.Time` now accepts `amLabel` and `pmLabel` as separate props instead of the previous `amPmLabels`
+  object
+
 ## [5.34.0] - 2026-02-27
 
 ### Added
@@ -19,21 +36,22 @@
   and other calendar systems)
 
   ```jsx
-  import { PersianCalendar } from "@internationalized/date"
+  import { PersianCalendar } from '@internationalized/date'
 
   function createCalendar(identifier) {
     switch (identifier) {
-      case "persian":
+      case 'persian':
         return new PersianCalendar()
       default:
         throw new Error(`Unsupported calendar: ${identifier}`)
     }
   }
 
-  <DatePicker.Root locale="fa-IR" createCalendar={createCalendar}>
+  ;<DatePicker.Root locale="fa-IR" createCalendar={createCalendar}>
     {/* ... */}
   </DatePicker.Root>
   ```
+
 - **Date Picker**: Added `data-type` attribute to weekend table header and cell
 
 ### Fixed
