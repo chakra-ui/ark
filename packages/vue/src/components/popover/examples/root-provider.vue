@@ -13,11 +13,10 @@ const popover = usePopover({
 
 <template>
   <div class="stack">
-    <button :class="button.Root" @click="popover.setOpen(true)">
-      Popover is {{ popover.open ? 'open' : 'closed' }}
-    </button>
+    <div>Popover is {{ popover.open ? 'open' : 'closed' }}</div>
 
     <Popover.RootProvider :value="popover">
+      <Popover.Trigger :class="button.Root">Toggle Popover</Popover.Trigger>
       <Teleport to="body">
         <Popover.Positioner :class="styles.Positioner">
           <Popover.Content :class="styles.Content">

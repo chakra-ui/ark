@@ -12,11 +12,10 @@
 </script>
 
 <div class="stack">
-  <button class={button.Root} onclick={() => popover().setOpen(true)}>
-    Popover is {popover().open ? 'open' : 'closed'}
-  </button>
+  <div>Popover is {popover().open ? 'open' : 'closed'}</div>
 
   <Popover.RootProvider value={popover}>
+    <Popover.Trigger class={button.Root}>Toggle Popover</Popover.Trigger>
     <Portal>
       <Popover.Positioner class={styles.Positioner}>
         <Popover.Content class={styles.Content}>
