@@ -42,7 +42,7 @@
     },
     "packages/react": {
       "name": "@ark-ui/react",
-      "version": "5.34.0",
+      "version": "5.34.1",
       "dependencies": {
         "@internationalized/date": "3.11.0",
         "@zag-js/accordion": "1.35.3",
@@ -151,7 +151,7 @@
     },
     "packages/solid": {
       "name": "@ark-ui/solid",
-      "version": "5.34.0",
+      "version": "5.34.1",
       "dependencies": {
         "@internationalized/date": "3.11.0",
         "@zag-js/accordion": "1.35.3",
@@ -256,7 +256,7 @@
     },
     "packages/svelte": {
       "name": "@ark-ui/svelte",
-      "version": "5.19.0",
+      "version": "5.19.1",
       "dependencies": {
         "@internationalized/date": "3.11.0",
         "@zag-js/accordion": "1.35.3",
@@ -359,7 +359,7 @@
     },
     "packages/vue": {
       "name": "@ark-ui/vue",
-      "version": "5.34.0",
+      "version": "5.34.1",
       "dependencies": {
         "@internationalized/date": "3.11.0",
         "@zag-js/accordion": "1.35.3",
