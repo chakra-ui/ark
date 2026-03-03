@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.34.1] - 2026-03-03
+
 ### Fixed
 
 - **Carousel**:
