@@ -6,6 +6,12 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Field**: Added `Field.Item` component and `target` prop on `Field.Root` for multi-control fields (e.g., currency
+  select + amount input). Use `Field.Item` with a `value` to scope controls, and `target` to specify which item the
+  label should focus when clicked.
+
 ## [5.19.1] - 2026-03-03
 
 ### Fixed

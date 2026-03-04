@@ -20,13 +20,13 @@ export const useSwitch = (props?: MaybeFunction<UseSwitchProps>) => {
       dir: locale().dir,
       getRootNode: env().getRootNode,
       ids: {
-        label: field?.().ids.label,
-        hiddenInput: field?.().ids.control,
+        label: field?.()?.ids.label,
+        hiddenInput: field?.()?.ids.control,
       },
-      disabled: field?.().disabled,
-      readOnly: field?.().readOnly,
-      invalid: field?.().invalid,
-      required: field?.().required,
+      disabled: field?.()?.disabled,
+      readOnly: field?.()?.readOnly,
+      invalid: field?.()?.invalid,
+      required: field?.()?.required,
       ...resolvedProps,
     }
   })

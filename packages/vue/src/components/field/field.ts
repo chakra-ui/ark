@@ -19,6 +19,11 @@ export {
   type FieldInputBaseProps as InputBaseProps,
 } from './field-input.vue'
 export {
+  default as Item,
+  type FieldItemProps as ItemProps,
+  type FieldItemBaseProps as ItemBaseProps,
+} from './field-item.vue'
+export {
   default as Textarea,
   type FieldTextareaProps as TextareaProps,
   type FieldTextareaBaseProps as TextareaBaseProps,

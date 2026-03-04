@@ -21,7 +21,7 @@
     },
   })
 
-  const mergedProps = $derived(mergeProps(field?.().getInputProps() ?? {}, nativeInputProps, props))
+  const mergedProps = $derived(mergeProps(field?.()?.getInputProps() ?? {}, nativeInputProps, props))
 </script>
 
 <Ark as="input" bind:ref {...mergedProps} />

@@ -61,3 +61,203 @@ describe('Field / Input', () => {
     await waitFor(() => expect(textbox).toHaveAttribute('aria-describedby'))
   })
 })
+
+describe('Field / Item', () => {
+  function formatFieldParts(parts: Array<{ name: string; element: Element | null; attrs?: string[] }>): string {
+    return parts
+      .filter((p) => p.element)
+      .map((p) => {
+        const el = p.element as Element
+        const attrList = (p.attrs ?? ['id'])
+          .map((a) => `${a}=${a === 'id' ? (el as HTMLElement).id : el.getAttribute(a)}`)
+          .join(', ')
+        return `${p.name} (${attrList})`
+      })
+      .join('\n')
+  }
+
+  it('should render the correct html structure', async () => {
+    const { container } = render(() => (
+      <Field.Root target="amount">
+        <Field.Label>Amount</Field.Label>
+        <Field.Item value="currency">
+          <Field.Select>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+          </Field.Select>
+        </Field.Item>
+        <Field.Item value="amount">
+          <Field.Input />
+        </Field.Item>
+        <Field.HelperText>Enter the amount</Field.HelperText>
+      </Field.Root>
+    ))
+    await waitFor(() => {
+      const root = container.firstElementChild!
+      const structure = formatFieldParts([
+        { name: 'label', element: root.querySelector('[data-part=label]'), attrs: ['id', 'for'] },
+        { name: 'Field.Select', element: root.querySelector('[data-part=select]') },
+        { name: 'Field.Input', element: root.querySelector('[data-part=input]') },
+      ])
+      expect(structure).toMatchInlineSnapshot(`
+        "label (id=field::cl-8::label, for=field::cl-8::item::amount)
+        Field.Select (id=field::cl-8::item::currency)
+        Field.Input (id=field::cl-8::item::amount)"
+      `)
+    })
+  })
+
+  it('should focus the target input when label is clicked', async () => {
+    render(() => (
+      <Field.Root target="amount">
+        <Field.Label>Amount</Field.Label>
+        <Field.Item value="currency">
+          <Field.Select>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+          </Field.Select>
+        </Field.Item>
+        <Field.Item value="amount">
+          <Field.Input />
+        </Field.Item>
+      </Field.Root>
+    ))
+    await user.click(screen.getByText('Amount'))
+    expect(screen.getByRole('textbox')).toHaveFocus()
+  })
+
+  it('should work when mixing Field.Item with a direct control under Field.Root', async () => {
+    const { container } = render(() => (
+      <Field.Root>
+        <Field.Label>Amount</Field.Label>
+        <Field.Item value="currency">
+          <Field.Select data-testid="currency-select">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+          </Field.Select>
+        </Field.Item>
+        <Field.Input data-testid="amount-input" />
+        <Field.HelperText>Enter the amount</Field.HelperText>
+      </Field.Root>
+    ))
+    await waitFor(() => {
+      const root = container.firstElementChild!
+      const structure = formatFieldParts([
+        { name: 'label', element: root.querySelector('[data-part=label]'), attrs: ['id', 'for'] },
+        { name: 'Field.Select', element: root.querySelector('[data-part=select]') },
+        { name: 'Field.Input', element: root.querySelector('[data-part=input]') },
+      ])
+      expect(structure).toMatchInlineSnapshot(`
+        "label (id=field::cl-10::label, for=cl-10)
+        Field.Select (id=field::cl-10::item::currency)
+        Field.Input (id=cl-10)"
+      `)
+    })
+
+    await user.click(screen.getByText('Amount'))
+    expect(screen.getByTestId('amount-input')).toHaveFocus()
+  })
+
+  it('should focus the item control when target is set in mixed usage', async () => {
+    const { container } = render(() => (
+      <Field.Root target="currency">
+        <Field.Label>Currency</Field.Label>
+        <Field.Item value="currency">
+          <Field.Select data-testid="currency-select">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+          </Field.Select>
+        </Field.Item>
+        <Field.Input data-testid="amount-input" />
+        <Field.HelperText>Select a currency</Field.HelperText>
+      </Field.Root>
+    ))
+    await waitFor(() => {
+      const root = container.firstElementChild!
+      const structure = formatFieldParts([
+        { name: 'label', element: root.querySelector('[data-part=label]'), attrs: ['id', 'for'] },
+        { name: 'Field.Select', element: root.querySelector('[data-part=select]') },
+        { name: 'Field.Input', element: root.querySelector('[data-part=input]') },
+      ])
+      expect(structure).toMatchInlineSnapshot(`
+        "label (id=field::cl-11::label, for=field::cl-11::item::currency)
+        Field.Select (id=field::cl-11::item::currency)
+        Field.Input (id=cl-11)"
+      `)
+    })
+
+    await user.click(screen.getByText('Currency'))
+    expect(screen.getByTestId('currency-select')).toHaveFocus()
+  })
+
+  it('should propagate disabled state to items', () => {
+    render(() => (
+      <Field.Root disabled target="amount">
+        <Field.Label>Amount</Field.Label>
+        <Field.Item value="currency">
+          <Field.Select data-testid="currency-select">
+            <option value="USD">USD</option>
+          </Field.Select>
+        </Field.Item>
+        <Field.Item value="amount">
+          <Field.Input data-testid="amount-input" />
+        </Field.Item>
+      </Field.Root>
+    ))
+    expect(screen.getByTestId('currency-select')).toBeDisabled()
+    expect(screen.getByTestId('amount-input')).toBeDisabled()
+    expect(screen.getByText('Amount')).toHaveAttribute('data-disabled')
+  })
+
+  it('should propagate invalid state to items', () => {
+    render(() => (
+      <Field.Root invalid target="amount">
+        <Field.Label>Amount</Field.Label>
+        <Field.Item value="amount">
+          <Field.Input data-testid="amount-input" />
+        </Field.Item>
+        <Field.ErrorText>Invalid amount</Field.ErrorText>
+      </Field.Root>
+    ))
+    expect(screen.getByTestId('amount-input')).toHaveAttribute('aria-invalid', 'true')
+    expect(screen.getByTestId('amount-input')).toHaveAttribute('data-invalid')
+    expect(screen.getByText('Invalid amount')).toBeInTheDocument()
+  })
+
+  it('should work with NumberInput inside Field.Item', async () => {
+    const { NumberInput } = await import('@ark-ui/solid/number-input')
+
+    render(() => (
+      <Field.Root target="amount">
+        <Field.Label>Amount</Field.Label>
+        <Field.Item value="currency">
+          <Field.Select data-testid="currency-select">
+            <option value="USD">USD</option>
+          </Field.Select>
+        </Field.Item>
+        <Field.Item value="amount">
+          <NumberInput.Root>
+            <NumberInput.Input data-testid="number-input" />
+          </NumberInput.Root>
+        </Field.Item>
+        <Field.HelperText>Enter the amount</Field.HelperText>
+      </Field.Root>
+    ))
+
+    const input = screen.getByTestId('number-input')
+    expect(input.id).toContain('item::amount')
+
+    await user.click(screen.getByText('Amount'))
+    expect(input).toHaveFocus()
+  })
+
+  it('should throw when Field.Item is used outside Field.Root', () => {
+    expect(() =>
+      render(() => (
+        <Field.Item value="amount">
+          <Field.Input />
+        </Field.Item>
+      )),
+    ).toThrow('Field.Item must be used within Field.Root')
+  })
+})

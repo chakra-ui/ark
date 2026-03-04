@@ -12,7 +12,7 @@
 
   let { ref = $bindable(null), ...props }: FieldHelperTextProps = $props()
   const field = useFieldContext()
-  const mergedProps = $derived(mergeProps(field?.().getHelperTextProps() ?? {}, props))
+  const mergedProps = $derived(mergeProps(field?.()?.getHelperTextProps() ?? {}, props))
 </script>
 
 <Ark as="span" bind:ref {...mergedProps} />

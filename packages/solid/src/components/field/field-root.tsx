@@ -16,6 +16,7 @@ export const FieldRoot = (props: FieldRootProps) => {
     'invalid',
     'readOnly',
     'required',
+    'target',
   ])
   const field = useField(useFieldProps)
   const mergedProps = mergeProps(() => field().getRootProps(), localProps)

@@ -7,7 +7,7 @@
   <Field.Label class={styles.Label}>Any Control</Field.Label>
   <Field.Context>
     {#snippet render(field)}
-      <input {...field().getInputProps()} />
+      <input {...field?.()?.getInputProps()} />
     {/snippet}
   </Field.Context>
   <Field.HelperText class={styles.HelperText}>Uses getInputProps() for maximum flexibility</Field.HelperText>

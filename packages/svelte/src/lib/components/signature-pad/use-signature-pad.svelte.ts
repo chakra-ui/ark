@@ -20,12 +20,12 @@ export const useSignaturePad = (props?: MaybeFunction<UseSignaturePadProps>) => 
       dir: locale().dir,
       getRootNode: env().getRootNode,
       ids: {
-        label: field?.().ids.label,
-        hiddenInput: field?.().ids.control,
+        label: field?.()?.ids.label,
+        hiddenInput: field?.()?.ids.control,
       },
-      disabled: field?.().disabled,
-      readOnly: field?.().readOnly,
-      required: field?.().required,
+      disabled: field?.()?.disabled,
+      readOnly: field?.()?.readOnly,
+      required: field?.()?.required,
       ...resolvedProps,
     }
   })

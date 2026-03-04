@@ -24,7 +24,7 @@
     },
   })
 
-  const mergedProps = $derived(mergeProps(field?.().getSelectProps() ?? {}, nativeSelectProps, props))
+  const mergedProps = $derived(mergeProps(field?.()?.getSelectProps() ?? {}, nativeSelectProps, props))
 </script>
 
 <Ark as="select" bind:ref {...mergedProps} />

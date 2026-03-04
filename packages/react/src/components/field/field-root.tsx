@@ -19,6 +19,7 @@ export const FieldRoot = forwardRef<HTMLDivElement, FieldRootProps>((props, ref)
     'invalid',
     'readOnly',
     'required',
+    'target',
   ])
 
   const field = useField(useFieldProps)

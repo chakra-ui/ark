@@ -39,6 +39,10 @@ export interface UseFieldProps {
    * Indicates whether the field is read-only.
    */
   readOnly?: boolean | undefined
+  /**
+   * The target field item value the label should point to.
+   */
+  target?: string | undefined
 }
 
 export type UseFieldReturn = ReturnType<typeof useField>
@@ -47,7 +51,14 @@ export const useField = (props: UseFieldProps = {}) => {
   const fieldset = useFieldsetContext()
   const env = useEnvironmentContext()
 
-  const { ids, disabled = Boolean(fieldset?.disabled), invalid = false, readOnly = false, required = false } = props
+  const {
+    ids,
+    target,
+    disabled = Boolean(fieldset?.disabled),
+    invalid = false,
+    readOnly = false,
+    required = false,
+  } = props
 
   const [hasErrorText, setHasErrorText] = useState(false)
   const [hasHelperText, setHasHelperText] = useState(false)
@@ -101,6 +112,8 @@ export const useField = (props: UseFieldProps = {}) => {
     [disabled, invalid, readOnly, rootId],
   )
 
+  const targetControlId = target ? `field::${id}::item::${target}` : undefined
+
   const getLabelProps = useMemo(
     () => () =>
       ({
@@ -110,9 +123,9 @@ export const useField = (props: UseFieldProps = {}) => {
         'data-invalid': dataAttr(invalid),
         'data-readonly': dataAttr(readOnly),
         'data-required': dataAttr(required),
-        htmlFor: id,
+        htmlFor: targetControlId ?? id,
       }) as HTMLProps<'label'>,
-    [disabled, invalid, readOnly, required, id, labelId],
+    [disabled, invalid, readOnly, required, id, labelId, targetControlId],
   )
 
   const getControlProps = useMemo(

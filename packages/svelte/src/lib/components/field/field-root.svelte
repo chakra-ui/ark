@@ -16,7 +16,7 @@
   let { ref = $bindable(null), ...props }: FieldRootProps = $props()
 
   const [useFieldProps, localProps] = $derived(
-    createSplitProps<UseFieldProps>()(props, ['id', 'ids', 'disabled', 'invalid', 'readOnly', 'required']),
+    createSplitProps<UseFieldProps>()(props, ['id', 'ids', 'disabled', 'invalid', 'readOnly', 'required', 'target']),
   )
 
   const providedId = $props.id()

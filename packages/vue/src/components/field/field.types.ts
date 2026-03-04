@@ -31,4 +31,8 @@ export interface RootProps {
    * Indicates whether the field is required.
    */
   required?: boolean
+  /**
+   * The target field item value the label should point to.
+   */
+  target?: string
 }

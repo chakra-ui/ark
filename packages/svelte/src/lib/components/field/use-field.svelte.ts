@@ -39,6 +39,10 @@ export interface UseFieldProps {
    * Indicates whether the field is read-only.
    */
   readOnly?: boolean
+  /**
+   * The target field item value the label should point to.
+   */
+  target?: string
 }
 
 export type UseFieldReturn = ReturnType<typeof useField>
@@ -111,6 +115,8 @@ export const useField = (inProps: MaybeFunction<UseFieldProps> = {}) => {
       'data-readonly': dataAttr(readOnly),
     }) as HTMLProps<'div'>
 
+  const targetControlId = $derived(props.target ? `field::${id}::item::${props.target}` : undefined)
+
   const getLabelProps = () =>
     ({
       ...parts.label.attrs,
@@ -119,7 +125,7 @@ export const useField = (inProps: MaybeFunction<UseFieldProps> = {}) => {
       'data-invalid': dataAttr(invalid),
       'data-readonly': dataAttr(readOnly),
       'data-required': dataAttr(required),
-      for: controlId,
+      for: targetControlId ?? controlId,
     }) as HTMLProps<'label'>
 
   const getControlProps = () =>

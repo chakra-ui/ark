@@ -15,10 +15,10 @@
 
   let { ref = $bindable(null), ...props }: FieldRequiredIndicatorProps = $props()
   const field = useFieldContext()
-  const mergedProps = $derived(mergeProps(field?.().getRequiredIndicatorProps() ?? {}, props))
+  const mergedProps = $derived(mergeProps(field?.()?.getRequiredIndicatorProps() ?? {}, props))
 </script>
 
-{#if field?.().required}
+{#if field?.()?.required}
   <Ark as="span" bind:ref {...mergedProps}>
     {#if props.children}
       {@render props.children?.()}

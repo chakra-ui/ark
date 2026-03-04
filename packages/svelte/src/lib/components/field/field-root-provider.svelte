@@ -17,7 +17,7 @@
 
   const mergedProps = $derived(mergeProps(props.value().getRootProps(), props))
 
-  FieldProvider(props.value)
+  FieldProvider(() => props.value())
 </script>
 
 <Ark as="div" {...mergedProps} />

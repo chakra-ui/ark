@@ -12,9 +12,9 @@
 
   let { ref = $bindable(null), ...props }: FieldErrorTextProps = $props()
   const field = useFieldContext()
-  const mergedProps = $derived(mergeProps(field?.().getErrorTextProps() ?? {}, props))
+  const mergedProps = $derived(mergeProps(field?.()?.getErrorTextProps() ?? {}, props))
 </script>
 
-{#if field?.().invalid}
+{#if field?.()?.invalid}
   <Ark as="span" bind:ref {...mergedProps} />
 {/if}

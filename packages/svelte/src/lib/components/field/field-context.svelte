@@ -1,9 +1,9 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { UseFieldReturn } from './use-field.svelte'
+  import type { UseFieldContext } from './use-field-context'
 
   export interface FieldContextProps {
-    render: Snippet<[UseFieldReturn]>
+    render: Snippet<[UseFieldContext]>
   }
 </script>
 

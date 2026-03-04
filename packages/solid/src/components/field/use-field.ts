@@ -39,6 +39,10 @@ export interface UseFieldProps {
    * Indicates whether the field is read-only.
    */
   readOnly?: boolean
+  /**
+   * The target field item value the label should point to.
+   */
+  target?: string
 }
 
 export type UseFieldReturn = ReturnType<typeof useField>
@@ -91,6 +95,8 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
     'data-readonly': dataAttr(fieldProps.readOnly),
   })
 
+  const targetControlId = fieldProps.target ? `field::${id}::item::${fieldProps.target}` : undefined
+
   const getLabelProps = () => ({
     ...parts.label.attrs,
     id: labelId,
@@ -98,7 +104,7 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
     'data-invalid': dataAttr(fieldProps.invalid),
     'data-readonly': dataAttr(fieldProps.readOnly),
     'data-required': dataAttr(fieldProps.required),
-    htmlFor: id,
+    htmlFor: targetControlId ?? id,
   })
 
   const labelIds = createMemo(() => {

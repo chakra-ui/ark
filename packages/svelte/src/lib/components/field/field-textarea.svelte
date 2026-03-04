@@ -35,7 +35,7 @@
     style: autoresize ? 'resize: none' : undefined,
   })
 
-  const mergedProps = $derived(mergeProps(field?.().getTextareaProps() ?? {}, nativeTextareaProps, props))
+  const mergedProps = $derived(mergeProps(field?.()?.getTextareaProps() ?? {}, nativeTextareaProps, props))
 
   function setNode(node: HTMLTextAreaElement | null) {
     textareaRef = node

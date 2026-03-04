@@ -12,7 +12,7 @@
 
   let { ref = $bindable(null), ...props }: FieldLabelProps = $props()
   const field = useFieldContext()
-  const mergedProps = $derived(mergeProps(field?.().getLabelProps() ?? {}, props))
+  const mergedProps = $derived(mergeProps(field?.()?.getLabelProps() ?? {}, props))
 </script>
 
 <Ark as="label" bind:ref {...mergedProps} />
