@@ -1,0 +1,176 @@
+---
+id: cascade-select
+title: Cascade Select
+description: Displays nested options in cascading dropdown panels.
+status: preview
+---
+
+<ComponentPreview id="CascadeSelect" />
+
+## Anatomy
+
+<Anatomy id="cascade-select" />
+
+```tsx
+<CascadeSelect.Root>
+  <CascadeSelect.Label />
+  <CascadeSelect.Control>
+    <CascadeSelect.Trigger>
+      <CascadeSelect.ValueText />
+      <CascadeSelect.Indicator />
+    </CascadeSelect.Trigger>
+    <CascadeSelect.ClearTrigger />
+  </CascadeSelect.Control>
+  <CascadeSelect.Positioner>
+    <CascadeSelect.Content>
+      <CascadeSelect.List>
+        <CascadeSelect.Item>
+          <CascadeSelect.ItemText />
+          <CascadeSelect.ItemIndicator />
+        </CascadeSelect.Item>
+      </CascadeSelect.List>
+    </CascadeSelect.Content>
+  </CascadeSelect.Positioner>
+  <CascadeSelect.HiddenInput />
+</CascadeSelect.Root>
+```
+
+## Examples
+
+<Example id="basic" />
+
+### Controlled
+
+Use the `value` and `onValueChange` props to control the selected value.
+
+<Example id="controlled" />
+
+### Root Provider
+
+An alternative way to control the cascade select is to use the `RootProvider` component and the `useCascadeSelect` hook.
+This gives you access to state and methods from outside the component.
+
+<Example id="root-provider" />
+
+### Multiple
+
+Enable multiple selection with the `multiple` prop. Users can select more than one leaf value.
+
+<Example id="multiple" />
+
+### Hover Trigger
+
+Use `highlightTrigger="hover"` to highlight items on hover instead of requiring keyboard navigation or click.
+
+<Example id="hover-trigger" />
+
+### Allow Parent Selection
+
+By default, only leaf nodes can be selected. Use `allowParentSelection` to allow branch nodes to be selected as well.
+
+<Example id="allow-parent-selection" />
+
+### Events
+
+Use `onValueChange`, `onHighlightChange`, and `onOpenChange` to respond to state changes.
+
+<Example id="events" />
+
+## Guides
+
+### Building the Tree
+
+The cascade select uses `createCascadeCollection` to define the hierarchical data. Provide `nodeToValue` and
+`nodeToString` functions along with the `rootNode` to configure the collection.
+
+```tsx
+const collection = createCascadeCollection({
+  nodeToValue: (node) => node.value,
+  nodeToString: (node) => node.label,
+  rootNode: {
+    label: 'Root',
+    value: 'root',
+    children: [
+      {
+        label: 'Electronics',
+        value: 'electronics',
+        children: [
+          { label: 'Phones', value: 'phones' },
+          { label: 'Laptops', value: 'laptops' },
+        ],
+      },
+    ],
+  },
+})
+```
+
+### Rendering Panels
+
+The cascade select renders one panel per level of depth. Use a recursive component to render the nested lists. Each
+panel is determined by which item is currently highlighted — use `getItemState` with `highlightedChild` and
+`highlightedIndex` to recurse into the next level.
+
+```tsx
+const TreeNode = ({ node, indexPath = [], value = [] }) => {
+  const api = useCascadeSelectContext()
+  const nodeState = api.getItemState({ item: node, indexPath, value })
+
+  return (
+    <>
+      <CascadeSelect.List item={node} indexPath={indexPath} value={value}>
+        {collection.getNodeChildren(node).map((child, i) => (
+          <CascadeSelect.Item
+            key={collection.getNodeValue(child)}
+            item={child}
+            indexPath={[...indexPath, i]}
+            value={[...value, collection.getNodeValue(child)]}
+          >
+            <CascadeSelect.ItemText>{collection.stringifyNode(child)}</CascadeSelect.ItemText>
+            {collection.isBranchNode(child) ? (
+              <ChevronRightIcon />
+            ) : (
+              <CascadeSelect.ItemIndicator>✓</CascadeSelect.ItemIndicator>
+            )}
+          </CascadeSelect.Item>
+        ))}
+      </CascadeSelect.List>
+
+      {nodeState.highlightedChild && collection.isBranchNode(nodeState.highlightedChild) && (
+        <TreeNode
+          node={nodeState.highlightedChild}
+          indexPath={[...indexPath, nodeState.highlightedIndex]}
+          value={[...value, collection.getNodeValue(nodeState.highlightedChild)]}
+        />
+      )}
+    </>
+  )
+}
+```
+
+### Hidden Input
+
+The `CascadeSelect.HiddenInput` component renders a native `<input>` element that is visually hidden but present in the
+DOM, enabling native form submission with the selected value.
+
+```tsx
+<CascadeSelect.Root>
+  <CascadeSelect.HiddenInput />
+  {/* Other CascadeSelect components */}
+</CascadeSelect.Root>
+```
+
+## API Reference
+
+### Props
+
+<ComponentTypes id="cascade-select" />
+
+### Context
+
+<ContextType id="cascade-select" />
+
+## Accessibility
+
+### Keyboard Support
+
+<KeyBindingsTable id="cascade-select" />
