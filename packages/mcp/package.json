@@ -8,7 +8,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/chakra-ui/ark",
-    "directory": "integrations/mcp"
+    "directory": "packages/mcp"
   },
   "scripts": {
     "build": "tsup && chmod 755 dist/stdio.js",

@@ -5,13 +5,12 @@
   "workspaces": [
     "packages/*",
     "templates/**",
-    "integrations/**",
     "scripts",
     "website"
   ],
   "scripts": {
     "postinstall": "lefthook install",
-    "build": "turbo run build --filter='!./templates/**' --filter='!./website/**' --filter='!./integrations/**'",
+    "build": "turbo run build --filter='!./templates/**' --filter='!./website/**'",
     "check:anatomy": "bun scripts check:anatomy",
     "check:exports": "bun scripts check:exports",
     "check:zag": "bun scripts check:zag",
@@ -29,7 +28,7 @@
     "svelte": "bun run --cwd packages/svelte",
     "vue": "bun run --cwd packages/vue",
     "web": "bun run --cwd website",
-    "mcp": "bun run --cwd integrations/mcp",
+    "mcp": "bun run --cwd packages/mcp",
     "setup": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull website/.env",
     "setup:prod": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull --environment production website/.env"
   },
