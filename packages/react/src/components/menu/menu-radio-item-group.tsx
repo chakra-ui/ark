@@ -18,7 +18,7 @@ export const MenuRadioItemGroup = forwardRef<HTMLDivElement, MenuRadioItemGroupP
   const menu = useMenuContext()
   const id = useId()
   const itemGroupProps = { id, ...optionalItemGroupProps }
-  const mergedProps = mergeProps(menu.getItemGroupProps({ id: itemGroupProps.id }), localProps)
+  const mergedProps = mergeProps(menu?.getItemGroupProps({ id: itemGroupProps.id }), localProps)
 
   return (
     <MenuItemGroupProvider value={itemGroupProps}>
