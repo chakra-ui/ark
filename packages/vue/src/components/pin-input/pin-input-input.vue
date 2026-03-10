@@ -25,16 +25,16 @@ const pinInput = usePinInputContext()
 
 const inputProps = computed(() => pinInput.value.getInputProps(props))
 let lastValue = ''
+function onInput(e: InputEvent) {
+  const target = e.target as HTMLInputElement
+  const nextValue = target.value
 
-function onInput(e: Event) {
-  const v = (e.target as HTMLInputElement).value
+  if (nextValue === lastValue) return
 
-  if (v === lastValue) return
-
-  lastValue = v
+  lastValue = nextValue
   inputProps.value.onInput?.(e)
 }
-const omited = omit(inputProps.value, ['onChange', 'onInput'])
+const omited = computed(() => omit(inputProps.value, ['onInput']))
 
 useForwardExpose()
 </script>
