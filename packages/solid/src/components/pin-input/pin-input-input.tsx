@@ -4,6 +4,7 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePinInputContext } from './use-pin-input-context'
 import { omit } from '@zag-js/utils'
+import { createEffect } from 'solid-js'
 
 export interface PinInputInputBaseProps extends InputProps, PolymorphicProps<'input'> {}
 export interface PinInputInputProps extends HTMLProps<'input'>, PinInputInputBaseProps {}
@@ -14,6 +15,11 @@ export const PinInputInput = (props: PinInputInputProps) => {
   const mergedProps = mergeProps(() => api().getInputProps(inputProps), localProps)
 
   let lastValue = ''
+  // create current index input's value change effect in machine state,
+  // then sync it to lastValue
+  createEffect(() => {
+    lastValue = api().value[inputProps.index] ?? ''
+  })
   function onInput(e: InputEvent & { currentTarget: HTMLInputElement; target: HTMLInputElement }) {
     const nextValue = e.target.value
     if (nextValue === lastValue) return
