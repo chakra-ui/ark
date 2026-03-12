@@ -6,15 +6,9 @@ export type { Modality }
 
 export function useInteractionModality(): Modality | null {
   const { getRootNode } = useEnvironmentContext()
-
-  const subscribe = useCallback(
-    (onStoreChange: () => void) =>
-      trackInteractionModality({
-        root: getRootNode(),
-        onChange: onStoreChange,
-      }),
-    [getRootNode],
+  return useSyncExternalStore(
+    useCallback((onChange) => trackInteractionModality({ root: getRootNode(), onChange }), [getRootNode]),
+    getInteractionModality,
+    () => null,
   )
-
-  return useSyncExternalStore(subscribe, getInteractionModality, () => null)
 }

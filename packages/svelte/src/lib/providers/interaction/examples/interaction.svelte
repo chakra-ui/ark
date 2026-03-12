@@ -9,7 +9,9 @@
     {modality() ?? 'none'}
   </span>
   <p class="hint">Try clicking, pressing a key, or using a screen reader.</p>
-  <button type="button" class="button">Click or Tab to me</button>
+  <button type="button" class="button" data-focus-visible={modality() === 'keyboard' ? '' : undefined}>
+    Click or Tab to me
+  </button>
 </div>
 
 <style>

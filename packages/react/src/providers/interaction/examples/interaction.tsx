@@ -10,7 +10,7 @@ export const InteractionModality = () => {
         {modality ?? 'none'}
       </span>
       <p className={styles.Hint}>Try clicking, pressing a key, or using a screen reader.</p>
-      <button type="button" className={styles.Button}>
+      <button type="button" className={styles.Button} data-focus-visible={modality === 'keyboard' ? '' : undefined}>
         Click or Tab to me
       </button>
     </div>
