@@ -44,6 +44,7 @@ export const SelectRoot = <T extends CollectionItem>(props: SelectRootProps<T>) 
     'readOnly',
     'required',
     'scrollToIndexFn',
+    'translations',
     'value',
   ])
 

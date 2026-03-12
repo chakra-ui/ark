@@ -7,6 +7,11 @@ export interface RootProps {
    */
   addOnPaste?: boolean
   /**
+   * Whether to allow duplicate tags
+   * @default false
+   */
+  allowDuplicates?: boolean
+  /**
    * Whether to allow tags to exceed max. In this case,
    * we'll attach `data-invalid` to the root
    */

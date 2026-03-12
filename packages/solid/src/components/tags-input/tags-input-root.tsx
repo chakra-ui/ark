@@ -10,6 +10,7 @@ export interface TagsInputRootProps extends HTMLProps<'div'>, TagsInputRootBaseP
 export const TagsInputRoot = (props: TagsInputRootProps) => {
   const [useTagsInputProps, localProps] = createSplitProps<UseTagsInputProps>()(props, [
     'addOnPaste',
+    'allowDuplicates',
     'allowOverflow',
     'autoFocus',
     'blurBehavior',

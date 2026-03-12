@@ -31,6 +31,7 @@ export const PopoverRoot = (props: PopoverRootProps) => {
     'persistentElements',
     'portalled',
     'positioning',
+    'translations',
   ])
   const api = usePopover(usePopoverProps)
   const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().open })))

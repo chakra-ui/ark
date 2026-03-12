@@ -27,6 +27,10 @@ export interface RootProps {
    */
   startMs?: number
   /**
+   * Specifies the localized strings that identifies the accessibility elements and their states
+   */
+  translations?: timer.IntlTranslations
+  /**
    * The minimum count of the timer in milliseconds.
    */
   targetMs?: number

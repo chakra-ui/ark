@@ -22,6 +22,7 @@
       'countdown',
       'startMs',
       'targetMs',
+      'translations',
       'onComplete',
       'onTick',
     ]),

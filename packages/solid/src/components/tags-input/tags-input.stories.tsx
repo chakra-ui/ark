@@ -6,6 +6,7 @@ const meta: Meta = {
 
 export default meta
 
+export { AllowDuplicates } from './examples/allow-duplicates'
 export { Basic } from './examples/basic'
 export { BlurBehavior } from './examples/blur-behavior'
 export { Controlled } from './examples/controlled'

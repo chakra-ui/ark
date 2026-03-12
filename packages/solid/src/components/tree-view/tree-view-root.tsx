@@ -39,6 +39,7 @@ export const TreeViewRoot = <T extends TreeNode>(props: TreeViewRootProps<T>) =>
     'onSelectionChange',
     'selectedValue',
     'selectionMode',
+    'translations',
     'typeahead',
     'scrollToIndexFn',
   ])

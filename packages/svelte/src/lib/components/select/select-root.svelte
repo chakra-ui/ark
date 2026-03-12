@@ -62,6 +62,7 @@
       'readOnly',
       'required',
       'scrollToIndexFn',
+      'translations',
       'value',
     ]),
   )

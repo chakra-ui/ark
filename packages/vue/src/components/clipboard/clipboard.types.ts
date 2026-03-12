@@ -2,6 +2,10 @@ import type * as clipboard from '@zag-js/clipboard'
 
 export interface RootProps {
   /**
+   * Specifies the localized strings that identifies the accessibility elements and their states
+   */
+  translations?: clipboard.IntlTranslations
+  /**
    * The initial value to be copied to the clipboard when rendered.
    * Use when you don't need to control the value of the clipboard.
    */

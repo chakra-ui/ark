@@ -23,6 +23,7 @@ import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = withDefaults(defineProps<TagsInputRootProps>(), {
   addOnPaste: undefined,
+  allowDuplicates: undefined,
   allowOverflow: undefined,
   autoFocus: undefined,
   disabled: undefined,

@@ -113,6 +113,10 @@ export interface RootProps<T extends CollectionItem> {
    * Function to scroll to a specific index
    */
   scrollToIndexFn?: (details: select.ScrollToIndexDetails) => void
+  /**
+   * Specifies the localized strings that identifies the accessibility elements and their states
+   */
+  translations?: select.IntlTranslations
 }
 
 export type RootEmits<T extends CollectionItem> = {

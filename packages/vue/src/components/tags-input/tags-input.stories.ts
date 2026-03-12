@@ -1,5 +1,6 @@
 import type { Meta } from '@storybook/vue3-vite'
 
+import AllowDuplicatesExample from './examples/allow-duplicates.vue'
 import BasicExample from './examples/basic.vue'
 import BlurBehaviorExample from './examples/blur-behavior.vue'
 import ControlledExample from './examples/controlled.vue'
@@ -23,6 +24,13 @@ const meta: Meta = {
 }
 
 export default meta
+
+export const AllowDuplicates = {
+  render: () => ({
+    components: { Component: AllowDuplicatesExample },
+    template: '<Component />',
+  }),
+}
 
 export const Basic = {
   render: () => ({

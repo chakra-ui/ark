@@ -22,6 +22,7 @@ export const NavigationMenuRoot = (props: NavigationMenuRootProps) => {
     'onValueChange',
     'openDelay',
     'orientation',
+    'translations',
     'value',
   ])
 

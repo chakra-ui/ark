@@ -23,6 +23,7 @@
   const [useTagsInputProps, localProps] = $derived(
     createSplitProps<UseTagsInputProps>()(props, [
       'addOnPaste',
+      'allowDuplicates',
       'allowOverflow',
       'autoFocus',
       'blurBehavior',

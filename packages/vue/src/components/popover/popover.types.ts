@@ -75,6 +75,10 @@ export interface RootProps {
    * The user provided options used to position the popover content
    */
   positioning?: popover.PositioningOptions
+  /**
+   * Specifies the localized strings that identifies the accessibility elements and their states
+   */
+  translations?: popover.IntlTranslations
 }
 
 export type RootEmits = {

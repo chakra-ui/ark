@@ -15,6 +15,7 @@ export const ClipboardRoot = (props: ClipboardRootProps) => {
     'onStatusChange',
     'onValueChange',
     'timeout',
+    'translations',
     'value',
   ])
   const api = useClipboard(useClipboardProps)

@@ -44,6 +44,7 @@ const TreeViewImpl = <T extends TreeNode>(props: TreeViewRootProps<T>, ref: Reac
     'scrollToIndexFn',
     'selectedValue',
     'selectionMode',
+    'translations',
     'typeahead',
   ])
 

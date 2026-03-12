@@ -19,6 +19,7 @@ export const ClipboardRoot = forwardRef<HTMLDivElement, ClipboardRootProps>((pro
     'onStatusChange',
     'onValueChange',
     'timeout',
+    'translations',
     'value',
   ])
   const clipboard = useClipboard(useClipboardProps)

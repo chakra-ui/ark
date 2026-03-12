@@ -34,6 +34,7 @@
       'onValueChange',
       'openDelay',
       'orientation',
+      'translations',
       'value',
     ]),
   )

@@ -103,7 +103,8 @@ describe('Field / Item', () => {
   it('should render the correct html structure', async () => {
     const { container } = render(<ItemTest />)
     await waitFor(() => {
-      const root = container.firstElementChild!
+      const root = container.firstElementChild
+      if (!root) throw new Error('Expected root element')
       const structure = formatFieldParts([
         { name: 'label', element: root.querySelector('[data-part=label]'), attrs: ['id', 'for'] },
         { name: 'Field.Select', element: root.querySelector('[data-part=select]') },
@@ -157,7 +158,8 @@ describe('Field / Item', () => {
     const { container } = render(<MixedTest />)
 
     await waitFor(() => {
-      const root = container.firstElementChild!
+      const root = container.firstElementChild
+      if (!root) throw new Error('Expected root element')
       const structure = formatFieldParts([
         { name: 'label', element: root.querySelector('[data-part=label]'), attrs: ['id', 'for'] },
         { name: 'Field.Select', element: root.querySelector('[data-part=select]') },
@@ -192,7 +194,8 @@ describe('Field / Item', () => {
     const { container } = render(<MixedWithTargetTest />)
 
     await waitFor(() => {
-      const root = container.firstElementChild!
+      const root = container.firstElementChild
+      if (!root) throw new Error('Expected root element')
       const structure = formatFieldParts([
         { name: 'label', element: root.querySelector('[data-part=label]'), attrs: ['id', 'for'] },
         { name: 'Field.Select', element: root.querySelector('[data-part=select]') },

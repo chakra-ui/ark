@@ -14,6 +14,7 @@ const splitTagsInputProps = createSplitProps<UseTagsInputProps>()
 export const TagsInputRoot = forwardRef<HTMLDivElement, TagsInputRootProps>((props, ref) => {
   const [useTagsInputProps, localProps] = splitTagsInputProps(props, [
     'addOnPaste',
+    'allowDuplicates',
     'allowOverflow',
     'autoFocus',
     'blurBehavior',

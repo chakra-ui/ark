@@ -11,7 +11,7 @@ export interface ListboxInputProps extends HTMLProps<'input'>, ListboxInputBaseP
 const splitInputProps = createSplitProps<InputProps>()
 
 export const ListboxInput = forwardRef<HTMLInputElement, ListboxInputProps>((props, ref) => {
-  const [inputProps, localProps] = splitInputProps(props, ['autoHighlight'])
+  const [inputProps, localProps] = splitInputProps(props, ['autoHighlight', 'keyboardPriority'])
   const listbox = useListboxContext()
   const mergedProps = mergeProps(listbox.getInputProps(inputProps), localProps)
 

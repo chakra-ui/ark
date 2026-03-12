@@ -64,6 +64,10 @@ export interface RootProps<T extends TreeNode> {
    */
   selectionMode?: 'single' | 'multiple'
   /**
+   * Specifies the localized strings that identifies the accessibility elements and their states
+   */
+  translations?: treeView.IntlTranslations
+  /**
    * Whether the tree supports typeahead search
    * @default true
    */

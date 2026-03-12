@@ -16,6 +16,7 @@ export const TimerRoot = (props: TimerRootProps) => {
     'countdown',
     'startMs',
     'targetMs',
+    'translations',
     'onComplete',
     'onTick',
   ])

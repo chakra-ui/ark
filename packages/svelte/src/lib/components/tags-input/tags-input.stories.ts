@@ -1,5 +1,6 @@
 import type { Meta } from '@storybook/svelte'
 
+import AllowDuplicatesExample from './examples/allow-duplicates.svelte'
 import BasicExample from './examples/basic.svelte'
 import BlurBehaviorExample from './examples/blur-behavior.svelte'
 import ControlledExample from './examples/controlled.svelte'
@@ -23,6 +24,12 @@ const meta: Meta = {
 }
 
 export default meta
+
+export const AllowDuplicates = {
+  render: () => ({
+    Component: AllowDuplicatesExample,
+  }),
+}
 
 export const Basic = {
   render: () => ({

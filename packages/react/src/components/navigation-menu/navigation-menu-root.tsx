@@ -29,6 +29,7 @@ export const NavigationMenuRoot = forwardRef<HTMLElement, NavigationMenuRootProp
     'onValueChange',
     'openDelay',
     'orientation',
+    'translations',
     'value',
   ])
   const navigationMenu = useNavigationMenu(useNavigationMenuProps)

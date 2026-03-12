@@ -30,6 +30,7 @@ export function splitTreeViewProps<T extends UseTreeViewProps<TreeNode>>(props: 
     'onSelectionChange',
     'selectedValue',
     'selectionMode',
+    'translations',
     'typeahead',
     'scrollToIndexFn',
   ])

@@ -20,6 +20,7 @@ export const TimerRoot = forwardRef<HTMLDivElement, TimerRootProps>((props, ref)
     'countdown',
     'startMs',
     'targetMs',
+    'translations',
     'onComplete',
     'onTick',
   ])
