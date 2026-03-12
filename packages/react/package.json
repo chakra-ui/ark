@@ -63,6 +63,7 @@
     "./anatomy": "./src/components/anatomy.ts",
     "./environment": "./src/providers/environment/index.ts",
     "./factory": "./src/components/factory.ts",
+    "./interaction": "./src/providers/interaction/index.ts",
     "./locale": "./src/providers/locale/index.ts",
     "./*": "./src/components/*/index.ts"
   },
@@ -108,6 +109,7 @@
     "@zag-js/drawer": "1.36.0",
     "@zag-js/editable": "1.36.0",
     "@zag-js/file-upload": "1.36.0",
+    "@zag-js/focus-visible": "1.36.0",
     "@zag-js/file-utils": "1.36.0",
     "@zag-js/floating-panel": "1.36.0",
     "@zag-js/focus-trap": "1.36.0",

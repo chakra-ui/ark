@@ -79,6 +79,11 @@
       "svelte": "./src/lib/providers/environment/index.ts",
       "default": "./src/lib/providers/environment/index.ts"
     },
+    "./interaction": {
+      "types": "./src/lib/providers/interaction/index.ts",
+      "svelte": "./src/lib/providers/interaction/index.ts",
+      "default": "./src/lib/providers/interaction/index.ts"
+    },
     "./locale": {
       "types": "./src/lib/providers/locale/index.ts",
       "svelte": "./src/lib/providers/locale/index.ts",
@@ -161,6 +166,7 @@
     "@zag-js/editable": "1.36.0",
     "@zag-js/file-upload": "1.36.0",
     "@zag-js/file-utils": "1.36.0",
+    "@zag-js/focus-visible": "1.36.0",
     "@zag-js/floating-panel": "1.36.0",
     "@zag-js/focus-trap": "1.36.0",
     "@zag-js/highlight-word": "1.36.0",

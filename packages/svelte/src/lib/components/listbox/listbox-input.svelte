@@ -14,7 +14,9 @@
 
   let { ref = $bindable(null), ...props }: ListboxInputProps = $props()
 
-  const [inputProps, localProps] = $derived(createSplitProps<InputProps>()(props, ['autoHighlight', 'keyboardPriority']))
+  const [inputProps, localProps] = $derived(
+    createSplitProps<InputProps>()(props, ['autoHighlight', 'keyboardPriority']),
+  )
   const listbox = useListboxContext()
   const mergedProps = $derived(mergeProps(listbox().getInputProps(inputProps), localProps))
 </script>

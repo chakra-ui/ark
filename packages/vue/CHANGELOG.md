@@ -10,9 +10,11 @@
     for `Home`/`End` and horizontal arrows in grid collections
   - Added `highlightFirst`, `highlightLast`, `highlightNext`, and `highlightPrevious` to the API for programmatic
     highlight navigation
-- **Clipboard, Navigation Menu, Popover, Select, Timer, Tree View**: Added `translations` prop for localizing
-  hardcoded accessibility labels
+- **Clipboard, Navigation Menu, Popover, Select, Timer, Tree View**: Added `translations` prop for localizing hardcoded
+  accessibility labels
 - **Tags Input**: Added `allowDuplicates` prop to allow duplicate tags
+- **Interaction**: Added `useInteractionModality` and `useFocusVisible` hooks for tracking user input method (keyboard,
+  pointer, virtual) and conditionally showing focus rings. Import from `@ark-ui/vue/interaction`.
 
 ### Fixed
 

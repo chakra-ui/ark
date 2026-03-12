@@ -1,2 +1,3 @@
-export * from './locale'
 export * from './environment'
+export * from './interaction'
+export * from './locale'

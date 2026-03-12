@@ -62,6 +62,7 @@
     "./anatomy": "./src/components/anatomy.ts",
     "./environment": "./src/providers/environment/index.tsx",
     "./factory": "./src/components/factory.tsx",
+    "./interaction": "./src/providers/interaction/index.ts",
     "./locale": "./src/providers/locale/index.tsx",
     "./*": "./src/components/*/index.tsx"
   },
@@ -108,6 +109,7 @@
     "@zag-js/editable": "1.36.0",
     "@zag-js/file-upload": "1.36.0",
     "@zag-js/file-utils": "1.36.0",
+    "@zag-js/focus-visible": "1.36.0",
     "@zag-js/floating-panel": "1.36.0",
     "@zag-js/focus-trap": "1.36.0",
     "@zag-js/highlight-word": "1.36.0",

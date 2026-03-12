@@ -11,7 +11,7 @@ const config: StorybookConfig = {
       docgen: false,
     },
   },
-  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx|vue)'],
   addons: ['@storybook/addon-a11y'],
   viteFinal(config) {
     config.resolve ??= {}
