@@ -8,7 +8,7 @@ async function main() {
 
   const transport = new StdioServerTransport()
   await server.connect(transport)
-  console.info('Ark UI MCP Server running on stdio')
+  console.error('Ark UI MCP Server running on stdio')
 }
 
 main().catch((error) => {
