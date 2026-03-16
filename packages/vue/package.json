@@ -76,8 +76,7 @@
     "typecheck": "vue-tsc",
     "storybook": "storybook dev -p 6006",
     "prepack": "clean-package",
-    "postpack": "clean-package restore",
-    "release-it": "release-it --config ../../release-it.json"
+    "postpack": "clean-package restore"
   },
   "publishConfig": {
     "access": "public"
