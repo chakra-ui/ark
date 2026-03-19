@@ -1,0 +1,119 @@
+.Root {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+  max-width: 24rem;
+}
+
+.Label {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--demo-neutral-fg);
+  user-select: none;
+
+  &[data-disabled] {
+    opacity: 0.5;
+  }
+
+  &[data-invalid] {
+    color: var(--demo-error);
+  }
+}
+
+.Control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  flex-wrap: wrap;
+
+  > span {
+    flex-shrink: 0;
+    color: var(--demo-neutral-emphasized);
+    font-size: 0.875rem;
+  }
+}
+
+.Input {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-family: inherit;
+  background: transparent;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.375rem;
+  color: var(--demo-neutral-fg);
+  outline: none;
+
+  &::placeholder {
+    color: var(--demo-neutral-solid);
+  }
+
+  &:focus-visible {
+    border-color: var(--demo-coral-solid);
+    box-shadow: 0 0 0 1px var(--demo-coral-solid);
+  }
+
+  &[data-focus] {
+    border-color: var(--demo-coral-solid);
+    box-shadow: 0 0 0 1px var(--demo-coral-solid);
+  }
+
+  &[data-invalid] {
+    border-color: var(--demo-error);
+
+    &[focus-visible] {
+      border-color: var(--demo-error);
+      box-shadow: 0 0 0 1px var(--demo-error);
+    }
+  }
+
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+    cursor: not-allowed;
+  }
+
+  &[data-readonly] {
+    background: var(--demo-neutral-bg-subtle);
+  }
+
+  [data-scope='date-input'][data-part='segment'] {
+    display: inline-block;
+    padding: 0 4px;
+    min-width: 2ch;
+    text-align: center;
+    border-radius: 0.2rem;
+    caret-color: transparent;
+    outline: none;
+    font-variant-numeric: tabular-nums;
+    color: var(--demo-neutral-fg);
+    
+    &[data-placeholder-shown] {
+      color: var(--demo-neutral-emphasized);
+    }
+    &:focus {
+      background: var(--demo-coral-solid);
+      color: var(--demo-coral-contrast);
+    }
+
+    &[data-type='literal'] {
+      padding: 0;
+      user-select: none;
+      min-width: unset;
+      color: var(--demo-neutral-emphasized);
+    }
+
+    &[data-disabled] {
+      cursor: not-allowed;
+    }
+  }
+}
