@@ -1,8 +1,4 @@
----
-id: changelog
-title: Changelog
-description: All notable changes will be documented in this file.
----
+# @ark-ui/svelte
 
 ## [5.19.1] - 2026-03-03
 
