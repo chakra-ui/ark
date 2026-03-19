@@ -23,17 +23,11 @@ const packages = fs.readdirSync(PACKAGES_DIR).filter((dir) => {
   return fs.existsSync(changelogPath)
 })
 
-let changed = 0
-
 for (const pkg of packages) {
   const changelogPath = path.join(PACKAGES_DIR, pkg, 'CHANGELOG.md')
   const content = fs.readFileSync(changelogPath, 'utf-8')
   const formatted = formatChangelog(content)
   if (formatted !== content) {
     fs.writeFileSync(changelogPath, formatted)
-    changed++
-    console.log(`Formatted: ${pkg}/CHANGELOG.md`)
   }
 }
-
-console.log(`Done. ${changed} changelog(s) formatted.`)

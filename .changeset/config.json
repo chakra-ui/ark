@@ -7,5 +7,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": []
+  "ignore": ["@ark-ui/next-js", "@ark-ui/nuxt", "@ark-ui/solid-start", "svelte-kit", "@ark-ui/scripts"]
 }
