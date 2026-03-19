@@ -61,10 +61,10 @@ Use the `indeterminate` prop to create a checkbox in an indeterminate state (par
 The checkbox integrates smoothly with the `Field` component to handle form state, helper text, and error text for proper
 accessibility.
 
-> **Important:** When using Checkbox inside a `Field`, always render a `Checkbox.Label` (or `Field.Label`). The hidden
-> input's `aria-labelledby` references the label element, and omitting it creates a broken ARIA reference. If you don't
-> want a visible label, apply a `sr-only` or `visually-hidden` class to keep it accessible but hidden. Using `aria-label`
-> alone is not sufficient because the Field integration overrides labelling via `aria-labelledby`.
+> **Important:** When using Checkbox inside a `Field`, always render a `Field.Label`. The hidden input's
+> `aria-labelledby` references the label element, and omitting it creates a broken ARIA reference. If you don't want a
+> visible label, apply a `sr-only` or `visually-hidden` class to keep it accessible but hidden. Using `aria-label` alone
+> is not sufficient because the Field integration overrides labelling via `aria-labelledby`.
 
 <Example id="with-field" />
 
