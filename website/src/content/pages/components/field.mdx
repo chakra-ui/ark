@@ -57,7 +57,7 @@ This example demonstrates how to integrate the `Field` and `Checkbox` components
 
 > **Important:** Always render a `Field.Label` when using form controls inside a `Field`. The hidden input's
 > `aria-labelledby` references the label's DOM element—omitting it creates a broken ARIA reference (WCAG 4.1.2 failure).
-> If you don't want a visible label, apply a `sr-only` or `visually-hidden` class. Using `aria-label` alone is not
+> If you don't want a visible label, visually hide it while keeping it in the DOM. Using `aria-label` alone is not
 > sufficient because the Field integration overrides labelling via `aria-labelledby`.
 
 <Example component="checkbox" id="with-field" />
