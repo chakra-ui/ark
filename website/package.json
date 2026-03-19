@@ -51,5 +51,8 @@
     "ts-morph": "27.0.2",
     "typescript": "5.9.3",
     "velite": "0.3.1"
+  },
+  "devDependencies": {
+    "@types/mdast": "4.0.4"
   }
 }

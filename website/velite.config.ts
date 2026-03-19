@@ -10,6 +10,7 @@ import {
 import { join } from 'node:path'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
+import remarkRemoveFirstHeading from './src/lib/remark-remove-first-heading'
 import { defineCollection, defineConfig, s } from 'velite'
 import { replaceComponentTypes, replaceContextType, replaceExample } from './src/lib/mdx-transform'
 
@@ -52,7 +53,9 @@ const pages = defineCollection({
           slug: 'overview/changelog',
           category: 'overview',
           framework: (meta.path as string).replace(/.*\/packages\//, '').replace(/\/[^/]*$/, ''),
-          toc: data.toc.map((entry) => ({ ...entry, items: [] })),
+          toc: data.toc
+            .flatMap((entry) => (entry.url.includes('ark-ui') ? entry.items : [entry]))
+            .map((entry) => ({ ...entry, items: [] })),
         }
       }
       return {
@@ -128,6 +131,7 @@ export default defineConfig({
   root: join(process.cwd(), './src/content'),
   collections: { pages, blogs, types, showcases },
   mdx: {
+    remarkPlugins: [remarkRemoveFirstHeading],
     rehypePlugins: [
       rehypeSlug,
       [
