@@ -1,39 +1,3 @@
-## [Unreleased]
-
-### Added
-
-- **Field**: Added `Field.Item` component and `target` prop on `Field.Root` for multi-control fields (e.g., currency
-  select + amount input). Use `Field.Item` with a `value` to scope controls, and `target` to specify which item the
-  label should focus when clicked.
-- **Listbox**:
-  - Added `keyboardPriority` to input props to control whether key handling prioritizes text editing or list navigation
-    for `Home`/`End` and horizontal arrows in grid collections
-  - Added `highlightFirst`, `highlightLast`, `highlightNext`, and `highlightPrevious` to the API for programmatic
-    highlight navigation
-- **Clipboard, Navigation Menu, Popover, Select, Timer, Tree View**: Added `translations` prop for localizing hardcoded
-  accessibility labels
-- **Tags Input**: Added `allowDuplicates` prop to allow duplicate tags
-- **Interaction**: Added `useInteractionModality` and `useFocusVisible` hooks for tracking user input method (keyboard,
-  pointer, virtual) and conditionally showing focus rings. Import from `@ark-ui/react/interaction`.
-
-### Fixed
-
-- **Carousel**:
-  - Fixed controlled carousel inside dialog jumping or skipping pages
-  - Fixed navigation inside CSS-transformed containers (e.g., dialogs with open/close animations)
-  - Fixed scroll position drifting when container layout shifts (e.g., scrollbar removal)
-- **Color Picker**: Fixed vertical slider orientation not preserved on pointer updates
-- **Date Input**: Improved focus management
-- **Floating Panel**:
-  - Fixed `open` taking precedence over `defaultOpen` during initialization
-  - Fixed `setPosition` and `setSize` to work independently of drag/resize state
-  - Fixed `Maximum update depth exceeded` when content uses `ResizeObserver`
-  - Fixed maximize/minimize restore reverting to `(0, 0)` in controlled mode
-  - Fixed Escape during drag/resize to cancel and revert to original position/size
-- **Menu**: Fixed trigger to keep `aria-expanded="false"` when closed
-- **Pin Input**: Fixed crash when typing the same character in a completed pin input
-- **Radio Group, Tabs**: Fixed indicator only animating on value change, not on initial render or resize
-
 ## [5.34.1] - 2026-03-03
 
 ### Fixed
