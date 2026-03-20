@@ -436,3 +436,24 @@ bun run web build
 # Generate content (Velite)
 bun run web prepare
 ```
+
+## Releases
+
+Versioning and npm publishing use [Changesets](https://github.com/changesets/changesets).
+
+**Contributors:** After a user-facing change, add a changeset from the repo root:
+
+```bash
+bun changeset
+```
+
+Commit the generated file under `.changeset/` with your PR.
+
+**Maintainers:** Pushes to `main` run `.github/workflows/release.yml`. The Changesets GitHub Action either opens a
+**Version packages** PR (when there are `.changeset/*.md` files to consume) or **publishes to npm** when `main` already
+contains version bumps and those versions are not yet on the registry. If everything is already published, the job does
+nothing. The workflow runs `bun run version`, which applies `changeset version` and reformats package `CHANGELOG.md`
+files via `.changeset/format-changelogs.cjs` (semver headings, including pre-releases and build metadata).
+
+The repository needs an **`NPM_TOKEN`** secret (use an npm **automation** or granular token so CI can publish under 2FA)
+with permission to publish the `@ark-ui/*` packages.

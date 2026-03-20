@@ -9,13 +9,16 @@ const SECTION_MAP = {
   'Patch Changes': 'Fixed',
 }
 
+const SEMVER_HEADING_RE =
+  /## (\d+\.\d+\.\d+(?:-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?)\n/g
+
+const CHANGESET_SECTION_HEADING_RE = /### (Major|Minor|Patch) Changes\n/g
+
 function formatChangelog(content) {
+  const date = new Date().toISOString().split('T')[0]
   return content
-    .replace(/## (\d+\.\d+\.\d+)\n/g, (_, version) => {
-      const date = new Date().toISOString().split('T')[0]
-      return `## [${version}] - ${date}\n`
-    })
-    .replace(/### (Major|Minor|Patch) Changes\n/g, (_, type) => `### ${SECTION_MAP[`${type} Changes`]}\n`)
+    .replace(SEMVER_HEADING_RE, (_, version) => `## [${version}] - ${date}\n`)
+    .replace(CHANGESET_SECTION_HEADING_RE, (_, type) => `### ${SECTION_MAP[`${type} Changes`]}\n`)
 }
 
 const packages = fs.readdirSync(PACKAGES_DIR).filter((dir) => {
