@@ -43,11 +43,6 @@ can access the state and methods from outside the component.
 The `Field` component helps manage form-related state and accessibility attributes of a switch. It includes handling
 ARIA labels, helper text, and error text to ensure proper accessibility.
 
-> **Important:** When using Switch inside a `Field`, always render a `Field.Label`. The hidden input's
-> `aria-labelledby` references the label element, and omitting it creates a broken ARIA reference. If you don't want a
-> visible label, visually hide it while keeping it in the DOM. Using `aria-label` alone
-> is not sufficient because the Field integration overrides labelling via `aria-labelledby`.
-
 <Example id="with-field" />
 
 ### Context
