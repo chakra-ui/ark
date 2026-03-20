@@ -110,8 +110,7 @@
     "test:ci": "vitest --run",
     "typecheck": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "prepack": "clean-package",
-    "postpack": "clean-package restore",
-    "release-it": "release-it --config ../../release-it.json"
+    "postpack": "clean-package restore"
   },
   "clean-package": {
     "replace": {

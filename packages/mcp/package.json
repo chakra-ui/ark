@@ -14,8 +14,7 @@
     "build": "tsup && chmod 755 dist/stdio.js",
     "dev": "tsup --watch",
     "serve": "tsx --watch src/http.ts",
-    "inspect": "bun scripts/inspect.js",
-    "release-it": "release-it --config ../../release-it.json"
+    "inspect": "bun scripts/inspect.js"
   },
   "bin": {
     "ark-ui-mcp": "./dist/stdio.js"

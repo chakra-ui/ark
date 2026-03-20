@@ -178,6 +178,7 @@ import * as Field_CustomControl from '@examples/field/examples/custom-control'
 import * as Field_Disabled from '@examples/field/examples/disabled'
 import * as Field_Input from '@examples/field/examples/input'
 import * as Field_Invalid from '@examples/field/examples/invalid'
+import * as Field_Item from '@examples/field/examples/item'
 import * as Field_RequiredIndicator from '@examples/field/examples/required-indicator'
 import * as Field_RootProvider from '@examples/field/examples/root-provider'
 import * as Field_Select from '@examples/field/examples/select'
@@ -484,6 +485,7 @@ import * as Tabs_Links from '@examples/tabs/examples/links'
 import * as Tabs_ManualActivation from '@examples/tabs/examples/manual-activation'
 import * as Tabs_RootProvider from '@examples/tabs/examples/root-provider'
 import * as Tabs_Vertical from '@examples/tabs/examples/vertical'
+import * as TagsInput_AllowDuplicates from '@examples/tags-input/examples/allow-duplicates'
 import * as TagsInput_Basic from '@examples/tags-input/examples/basic'
 import * as TagsInput_BlurBehavior from '@examples/tags-input/examples/blur-behavior'
 import * as TagsInput_ControlledInputValue from '@examples/tags-input/examples/controlled-input-value'
@@ -562,6 +564,9 @@ import * as Environment_Basic from '../../../packages/react/src/providers/enviro
 import * as Environment_Setup from '../../../packages/react/src/providers/environment/examples/setup'
 import * as Environment_ShadowRoot from '../../../packages/react/src/providers/environment/examples/shadow-root'
 import * as Environment_Usage from '../../../packages/react/src/providers/environment/examples/usage'
+import * as Interaction_FocusVisibleTextInput from '../../../packages/react/src/providers/interaction/examples/focus-visible-text-input'
+import * as Interaction_FocusVisible from '../../../packages/react/src/providers/interaction/examples/focus-visible'
+import * as Interaction_Interaction from '../../../packages/react/src/providers/interaction/examples/interaction'
 import * as Locale_Basic from '../../../packages/react/src/providers/locale/examples/basic'
 import * as Locale_Setup from '../../../packages/react/src/providers/locale/examples/setup'
 import * as Locale_Usage from '../../../packages/react/src/providers/locale/examples/usage'
@@ -745,6 +750,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'field/disabled': Field_Disabled,
   'field/input': Field_Input,
   'field/invalid': Field_Invalid,
+  'field/item': Field_Item,
   'field/required-indicator': Field_RequiredIndicator,
   'field/root-provider': Field_RootProvider,
   'field/select': Field_Select,
@@ -1051,6 +1057,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'tabs/manual-activation': Tabs_ManualActivation,
   'tabs/root-provider': Tabs_RootProvider,
   'tabs/vertical': Tabs_Vertical,
+  'tags-input/allow-duplicates': TagsInput_AllowDuplicates,
   'tags-input/basic': TagsInput_Basic,
   'tags-input/blur-behavior': TagsInput_BlurBehavior,
   'tags-input/controlled-input-value': TagsInput_ControlledInputValue,
@@ -1129,6 +1136,9 @@ const exampleModules: Record<string, ExampleModule> = {
   'environment/setup': Environment_Setup,
   'environment/shadow-root': Environment_ShadowRoot,
   'environment/usage': Environment_Usage,
+  'interaction/focus-visible-text-input': Interaction_FocusVisibleTextInput,
+  'interaction/focus-visible': Interaction_FocusVisible,
+  'interaction/interaction': Interaction_Interaction,
   'locale/basic': Locale_Basic,
   'locale/setup': Locale_Setup,
   'locale/usage': Locale_Usage,
