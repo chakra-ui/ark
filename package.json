@@ -33,7 +33,7 @@
     "setup:prod": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull --environment production website/.env",
     "changeset": "changeset",
     "version": "changeset version && node .changeset/format-changelogs.cjs",
-    "release": "bun run build && changeset publish"
+    "release": "changeset publish"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.4",
