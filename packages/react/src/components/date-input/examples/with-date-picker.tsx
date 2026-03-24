@@ -1,6 +1,7 @@
 import { DateInput, useDateInput } from '@ark-ui/react/date-input'
 import { DatePicker, useDatePicker } from '@ark-ui/react/date-picker'
 import { Portal } from '@ark-ui/react/portal'
+import type { DateSegment } from '@zag-js/date-input'
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 import styles from 'styles/date-input.module.css'
 import datePickerStyles from 'styles/date-picker.module.css'
@@ -20,7 +21,17 @@ export const WithDatePicker = () => {
       <DateInput.Control className={styles.Control}>
         <DatePicker.RootProvider className={datePickerStyles.Root} value={datePicker}>
           <DatePicker.Control className={datePickerStyles.Control}>
-            <DateInput.Input className={styles.Input} />
+            <DateInput.SegmentGroup className={styles.Input}>
+              <DateInput.Context>
+                {(dateInput) =>
+                  dateInput
+                    .getSegments()
+                    .map((segment: DateSegment, index: number) => (
+                      <DateInput.Segment key={`${segment.type}-${index}`} segment={segment} />
+                    ))
+                }
+              </DateInput.Context>
+            </DateInput.SegmentGroup>
             <DatePicker.Trigger className={datePickerStyles.Trigger}>
               <CalendarIcon />
             </DatePicker.Trigger>

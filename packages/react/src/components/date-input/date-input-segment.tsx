@@ -14,7 +14,11 @@ export const DateInputSegment = forwardRef<HTMLSpanElement, DateInputSegmentProp
   ({ segment, index, ...props }, ref) => {
     const dateInput = useDateInputContext()
     const mergedProps = mergeProps(dateInput.getSegmentProps({ segment, index }), props)
-    return <ark.span {...mergedProps} ref={ref} />
+    return (
+      <ark.span {...mergedProps} ref={ref}>
+        {segment.text}
+      </ark.span>
+    )
   },
 )
 

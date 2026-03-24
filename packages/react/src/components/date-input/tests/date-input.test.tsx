@@ -1,58 +1,125 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import { parseDate } from '@ark-ui/react/date-input'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { ComponentUnderTest } from './basic'
 
-describe('Date Picker', () => {
+describe('Date Input', () => {
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
-
     expect(results).toHaveNoViolations()
   })
 
-  it('should be able to lazy mount', async () => {
-    render(<ComponentUnderTest lazyMount />)
-
-    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
-
-    await user.click(screen.getByRole('button', { name: 'Open calendar' }))
-    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
-
-    await user.click(screen.getByRole('button', { name: 'Close calendar' }))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+  it('should render label and exactly three spinbutton segments', () => {
+    render(<ComponentUnderTest />)
+    expect(screen.getByText('Date')).toBeInTheDocument()
+    const segments = screen.getAllByRole('spinbutton')
+    expect(segments).toHaveLength(3)
   })
 
-  it('should lazy mount and unmount on exit', async () => {
-    render(<ComponentUnderTest lazyMount unmountOnExit />)
-
-    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
-
-    await user.click(screen.getByRole('button', { name: 'Open calendar' }))
-    await waitFor(() => expect(screen.getByTestId('positioner')).toBeVisible())
-
-    await user.click(screen.getByRole('button', { name: 'Close calendar' }))
-    await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
+  it('should focus the first segment on click', async () => {
+    render(<ComponentUnderTest />)
+    const [monthSegment] = screen.getAllByRole('spinbutton')
+    await user.click(monthSegment)
+    expect(monthSegment).toHaveFocus()
   })
 
-  it('should be fully controlled (true)', async () => {
-    render(<ComponentUnderTest open={true} />)
+  it('should navigate between segments via Arrow keys', async () => {
+    render(<ComponentUnderTest />)
+    const [month, day, year] = screen.getAllByRole('spinbutton')
 
-    const closeButton = screen.getByRole('button', { name: 'Close calendar' })
-
-    expect(closeButton).toBeVisible()
-
-    await user.click(closeButton)
-    expect(closeButton).toBeVisible()
+    await user.click(month)
+    await user.keyboard('{ArrowRight}')
+    expect(day).toHaveFocus()
+    await user.keyboard('{ArrowRight}')
+    expect(year).toHaveFocus()
   })
 
-  it('should be fully controlled (false)', async () => {
-    render(<ComponentUnderTest open={false} />)
+  it('should render all date segments', () => {
+    render(<ComponentUnderTest />)
+    const segments = screen.getAllByRole('spinbutton')
+    expect(segments).toHaveLength(3) // month, day, year
+  })
 
-    const closeButton = screen.queryByRole('button', { name: 'Close calendar' })
-    expect(closeButton).not.toBeInTheDocument()
+  it('should focus segment on click', async () => {
+    render(<ComponentUnderTest />)
+    const [monthSegment] = screen.getAllByRole('spinbutton')
+    await user.click(monthSegment)
+    expect(monthSegment).toHaveFocus()
+  })
 
-    await user.click(screen.getByRole('button', { name: 'Open calendar' }))
-    expect(closeButton).not.toBeInTheDocument()
+  it('should navigate between segments with arrow keys', async () => {
+    render(<ComponentUnderTest />)
+    const [monthSegment, , yearSegment] = screen.getAllByRole('spinbutton')
+    await user.click(monthSegment)
+    await user.keyboard('{ArrowRight}{ArrowRight}')
+    expect(yearSegment).toHaveFocus()
+  })
+
+  it('should update month segment on typing', async () => {
+    render(<ComponentUnderTest />)
+    const [monthSegment] = screen.getAllByRole('spinbutton')
+    await user.click(monthSegment)
+    await user.keyboard('06')
+    expect(monthSegment).toHaveTextContent('06')
+  })
+
+  it('should clear value on Backspace', async () => {
+    render(<ComponentUnderTest defaultValue={[parseDate('2024-06-15')]} />)
+    const [monthSegment] = screen.getAllByRole('spinbutton')
+    await user.click(monthSegment)
+    await user.keyboard('{Backspace}')
+    expect(monthSegment).toHaveAttribute('data-placeholder-shown')
+  })
+
+  it('should be disabled when disabled prop is passed', () => {
+    render(<ComponentUnderTest disabled />)
+    screen.getAllByRole('spinbutton').forEach((segment) => {
+      expect(segment).toHaveAttribute('data-disabled')
+    })
+  })
+
+  it('should be readonly when readOnly prop is passed', () => {
+    render(<ComponentUnderTest readOnly />)
+    screen.getAllByRole('spinbutton').forEach((segment) => {
+      expect(segment).toHaveAttribute('data-readonly')
+    })
+  })
+
+  it('should display defaultValue', () => {
+    render(<ComponentUnderTest defaultValue={[parseDate('2024-06-15')]} />)
+    const [month, day, year] = screen.getAllByRole('spinbutton')
+    expect(month).toHaveAttribute('aria-valuenow', '6')
+    expect(day).toHaveAttribute('aria-valuenow', '15')
+    expect(year).toHaveAttribute('aria-valuenow', '2024')
+  })
+
+  it('should increment segment value with ArrowUp', async () => {
+    render(<ComponentUnderTest defaultValue={[parseDate('2024-06-15')]} />)
+    const [monthSegment] = screen.getAllByRole('spinbutton')
+    await user.click(monthSegment)
+    await user.keyboard('{ArrowUp}')
+    expect(monthSegment).toHaveAttribute('aria-valuenow', '7')
+  })
+
+  it('should decrement segment value with ArrowDown', async () => {
+    render(<ComponentUnderTest defaultValue={[parseDate('2024-06-15')]} />)
+    const [monthSegment] = screen.getAllByRole('spinbutton')
+    await user.click(monthSegment)
+    await user.keyboard('{ArrowDown}')
+    expect(monthSegment).toHaveAttribute('aria-valuenow', '5')
+  })
+
+  it('should mark segments invalid when invalid prop is passed', () => {
+    render(<ComponentUnderTest invalid />)
+    const root = document.querySelector('[data-part="root"]')
+    expect(root).toHaveAttribute('data-invalid')
+  })
+
+  it('should sync hidden input value when date is entered', async () => {
+    render(<ComponentUnderTest name="date" defaultValue={[parseDate('2024-06-15')]} />)
+    const hiddenInput = document.querySelector('input[type="hidden"]')
+    expect(hiddenInput).toHaveValue('6/15/2024')
   })
 })
