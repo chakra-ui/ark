@@ -23,6 +23,7 @@ import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = withDefaults(defineProps<PinInputRootProps>(), {
   autoFocus: undefined,
+  autoSubmit: undefined,
   blurOnComplete: undefined,
   disabled: undefined,
   invalid: undefined,

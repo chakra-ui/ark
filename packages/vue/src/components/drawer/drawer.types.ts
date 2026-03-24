@@ -77,7 +77,7 @@ export interface RootProps {
    * The direction in which the drawer can be swiped.
    * @default "down"
    */
-  swipeDirection?: 'up' | 'down' | 'left' | 'right'
+  swipeDirection?: drawer.SwipeDirection
   /**
    * Whether the drawer should snap to sequential points when swiping.
    * @default false

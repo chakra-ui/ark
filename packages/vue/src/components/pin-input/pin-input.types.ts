@@ -6,6 +6,10 @@ export interface RootProps {
    */
   autoFocus?: boolean
   /**
+   * Whether to auto-submit the owning form when all inputs are filled.
+   */
+  autoSubmit?: boolean
+  /**
    * Whether to blur the input when the value is complete
    */
   blurOnComplete?: boolean
@@ -73,6 +77,11 @@ export interface RootProps {
    * Whether the pin input is required
    */
   required?: boolean
+  /**
+   * Function to sanitize pasted values before validation.
+   * Useful for stripping dashes, spaces, or other formatting.
+   */
+  sanitizeValue?: (value: string) => string
   /**
    * Whether to select input value when input is focused
    */

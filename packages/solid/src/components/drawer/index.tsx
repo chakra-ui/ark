@@ -9,6 +9,7 @@ export {
   type DrawerCloseTriggerProps,
 } from './drawer-close-trigger'
 export { DrawerContent, type DrawerContentBaseProps, type DrawerContentProps } from './drawer-content'
+export { DrawerDescription, type DrawerDescriptionBaseProps, type DrawerDescriptionProps } from './drawer-description'
 export { DrawerContext, type DrawerContextProps } from './drawer-context'
 export { DrawerPositioner, type DrawerPositionerBaseProps, type DrawerPositionerProps } from './drawer-positioner'
 export { DrawerGrabber, type DrawerGrabberBaseProps, type DrawerGrabberProps } from './drawer-grabber'
@@ -32,6 +33,7 @@ export {
   type DrawerIndentBackgroundProps,
 } from './drawer-indent-background'
 export { DrawerStack, type DrawerStackProps } from './drawer-stack'
+export { DrawerSwipeArea, type DrawerSwipeAreaBaseProps, type DrawerSwipeAreaProps } from './drawer-swipe-area'
 export { drawerAnatomy } from './drawer.anatomy'
 export { useDrawer, type UseDrawerProps, type UseDrawerReturn } from './use-drawer'
 export { useDrawerContext, type UseDrawerContext } from './use-drawer-context'

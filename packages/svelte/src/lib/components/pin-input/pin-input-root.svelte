@@ -22,6 +22,7 @@
   const [usePinInputProps, localProps] = $derived(
     createSplitProps<UsePinInputProps>()(props, [
       'autoFocus',
+      'autoSubmit',
       'blurOnComplete',
       'count',
       'defaultValue',
@@ -40,6 +41,7 @@
       'placeholder',
       'readOnly',
       'required',
+      'sanitizeValue',
       'selectOnFocus',
       'translations',
       'type',

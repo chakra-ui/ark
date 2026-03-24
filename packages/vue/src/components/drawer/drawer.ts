@@ -14,6 +14,11 @@ export {
   type DrawerContentBaseProps as ContentBaseProps,
   type DrawerContentProps as ContentProps,
 } from './drawer-content.vue'
+export {
+  default as Description,
+  type DrawerDescriptionBaseProps as DescriptionBaseProps,
+  type DrawerDescriptionProps as DescriptionProps,
+} from './drawer-description.vue'
 export { default as Context, type DrawerContextProps as ContextProps } from './drawer-context.vue'
 export {
   default as Positioner,
@@ -51,6 +56,11 @@ export {
   type DrawerRootProviderProps as RootProviderProps,
 } from './drawer-root-provider.vue'
 export { default as Stack, type DrawerStackProps as StackProps } from './drawer-stack.vue'
+export {
+  default as SwipeArea,
+  type DrawerSwipeAreaBaseProps as SwipeAreaBaseProps,
+  type DrawerSwipeAreaProps as SwipeAreaProps,
+} from './drawer-swipe-area.vue'
 export {
   default as Title,
   type DrawerTitleBaseProps as TitleBaseProps,
