@@ -36,8 +36,3 @@ export {
   type DateInputControlBaseProps as ControlBaseProps,
   type DateInputControlProps as ControlProps,
 } from './date-input-control'
-export {
-  DateInputInput as Input,
-  type DateInputInputBaseProps as InputBaseProps,
-  type DateInputInputProps as InputProps,
-} from './date-input-input'

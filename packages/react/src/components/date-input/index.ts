@@ -1,5 +1,3 @@
-import type { DateInputControlProps } from './date-input-control'
-
 export type { DateValue, FocusChangeDetails, SelectionMode, ValueChangeDetails } from '@zag-js/date-input'
 export { parseDate } from '@internationalized/date'
 export { useDateInput } from './use-date-input'
@@ -39,10 +37,5 @@ export {
   type DateInputControlBaseProps as ControlBaseProps,
   type DateInputControlProps as ControlProps,
 } from './date-input-control'
-export {
-  DateInputInput as Input,
-  type DateInputInputBaseProps as InputBaseProps,
-  type DateInputInputProps as InputProps,
-} from './date-input-input'
 
 export * as DateInput from './date-input'

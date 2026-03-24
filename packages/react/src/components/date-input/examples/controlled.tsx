@@ -1,4 +1,3 @@
-// controlled.tsx
 import { DateInput, parseDate } from '@ark-ui/react/date-input'
 import type { DateValue } from '@internationalized/date'
 import type { DateSegment } from '@zag-js/date-input'
