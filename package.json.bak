@@ -50,6 +50,7 @@
     "vercel": "50.22.1",
     "website": "0.1.1"
   },
+  "packageManager": "bun@1.3.3",
   "trustedDependencies": [
     "@ark-ui/website"
   ],

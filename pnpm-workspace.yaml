@@ -1,0 +1,7 @@
+packages:
+  - 'packages/react'
+  - 'packages/solid'
+  - 'packages/svelte'
+  - 'packages/vue'
+  - 'packages/mcp'
+  - 'scripts'
