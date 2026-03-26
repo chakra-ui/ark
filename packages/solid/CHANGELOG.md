@@ -1,5 +1,93 @@
 # @ark-ui/solid
 
+## [5.35.0] - 2026-03-26
+
+### Added
+
+- **Date Picker**: Improved range picker mode with new data attributes and state properties.
+  - Added missing range data attributes (`data-range-start`, `data-range-end`, `data-in-hover-range`,
+    `data-hover-range-start`, `data-hover-range-end`) to month and year cell triggers.
+  - `TableCellState` now includes `firstInRange`, `lastInRange`, `inHoveredRange`, `firstInHoveredRange`,
+    `lastInHoveredRange`, and `outsideRange`.
+  - Range boundary dates now announce "Starting range from {date}" and "Range ending at {date}" for better screen reader
+    context.
+  - Fixed inverted year cell `selectable` state that caused years outside the visible decade or min/max range to appear
+    selectable.
+  - **Breaking:** `DayTableCellState.formattedDate` removed — use `valueText` instead (inherited from `TableCellState`).
+
+- **Drawer**: Added new anatomy parts and improved swipe gestures.
+  - Added `description` anatomy part with `aria-describedby` support on the content element.
+  - Added `SwipeArea` part for swipe-to-open gestures from screen edges.
+  - Require intentional swipe movement before showing the drawer (no flash on pointer down).
+  - Smooth settle animation from release point to fully open position.
+  - Added cross-axis scroll preservation to prevent drawer drag when scrolling horizontally.
+  - Added initial focus management for non-modal mode.
+  - Set `pointer-events: none` on positioner in non-modal mode so the page stays interactive.
+  - Fixed swipe-to-dismiss in controlled mode (`open: true` without `onOpenChange` now blocks dismiss).
+
+- **Field**: Added `Field.Item` component and `target` prop on `Field.Root` for multi-control fields (e.g., currency
+  select + amount input). Use `Field.Item` with a `value` to scope controls, and `target` to specify which item the
+  label should focus when clicked.
+
+- **Interaction**: Added `useInteractionModality` and `useFocusVisible` hooks for tracking user input method (keyboard,
+  pointer, virtual) and conditionally showing focus rings.
+
+- **Listbox**: Added `keyboardPriority` to input props to control whether key handling prioritizes text editing or list
+  navigation for `Home`/`End` and horizontal arrows in grid collections. Added `highlightFirst`, `highlightLast`,
+  `highlightNext`, and `highlightPrevious` to the API for programmatic highlight navigation.
+
+- **Pin Input**: Overhauled deletion, focus management, and added new props.
+  - Delete and Backspace now splice values left instead of leaving empty gaps. Deleting "2" from `[1, 2, 3]` yields
+    `[1, 3, ""]` — not `[1, "", 3]`.
+  - Smarter focus management: Backspace always moves back, click and ArrowRight are clamped to the insertion point,
+    same-key skip advances focus, and roving tabIndex treats the entire pin input as a single tab stop.
+  - Added Home/End to jump to first slot or last filled slot.
+  - Added `enterKeyHint` showing "next" on intermediate slots and "done" on the last.
+  - Added `autoSubmit` prop to automatically submit the owning form when all inputs are filled.
+  - Added `sanitizeValue` prop to sanitize pasted values before validation (e.g. strip dashes from "1-2-3").
+
+- **Tags Input**: Added `allowDuplicates` prop to allow duplicate tags.
+
+- **Clipboard, Navigation Menu, Popover, Select, Timer, Tree View**: Added `translations` prop for localizing hardcoded
+  accessibility labels.
+
+### Fixed
+
+- **Carousel**: Fixed controlled carousel inside dialog jumping or skipping pages. Fixed navigation inside
+  CSS-transformed containers (e.g., dialogs with open/close animations). Fixed scroll position drifting when container
+  layout shifts (e.g., scrollbar removal).
+
+- **Color Picker**: Fixed vertical slider orientation not preserved on pointer updates.
+
+- **Date Input**: Improved focus management.
+
+- **Dialog**: Improved non-modal mode behavior.
+  - Set `pointer-events: none` on positioner in non-modal mode so the page stays interactive.
+  - Added initial focus management for non-modal mode (mirrors popover behavior).
+  - Fixed `aria-modal` to reflect actual `modal` prop value instead of hardcoded `true`.
+
+- **Floating Panel**: Fixed `open` taking precedence over `defaultOpen` during initialization. Fixed `setPosition` and
+  `setSize` to work independently of drag/resize state. Fixed maximize/minimize restore reverting to `(0, 0)` in
+  controlled mode. Fixed `Maximum update depth exceeded` when content uses `ResizeObserver` (React). Fixed Escape during
+  drag/resize to cancel and revert to original position/size.
+
+- **Focus Trap**: Fixed edge cases in focus trapping.
+  - Fixed focus trapping when the content has a single effective tab stop, such as a native radio group.
+  - Handle disconnected `initialFocus` nodes more safely.
+
+- **Interact Outside**: Fixed Safari-specific interaction issue.
+  - Fixed issue where nested popovers and select within popovers didn't toggle correctly in Safari due to `focusin`
+    events racing with pointer interactions.
+
+- **Menu**: Fixed trigger to keep `aria-expanded="false"` when closed.
+
+- **Pin Input**: Fixed crash when typing the same character in a completed pin input.
+
+- **Radio Group, Tabs**: Fixed indicator only animating on value change, not on initial render or resize.
+
+- **Splitter**: Fixed shadow root compatibility.
+  - Fixed global cursor styles when splitter is used in a shadow root.
+
 ## [5.34.1] - 2026-03-03
 
 ### Fixed
