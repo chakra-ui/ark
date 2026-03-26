@@ -25,6 +25,11 @@ jobs:
       - name: Install
         uses: ./.github/composite-actions/install
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: "https://registry.npmjs.org"
+
       - name: Build packages
         run: bun run build
 
