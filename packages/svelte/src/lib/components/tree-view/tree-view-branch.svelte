@@ -28,6 +28,6 @@
   bind:ref
   open={nodeState().expanded}
   ids={{ content: branchContentProps.id! }}
-  {...renderStrategyProps}
+  {...renderStrategyProps()}
   {...mergedProps}
 />
