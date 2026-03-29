@@ -19,7 +19,7 @@
   const drawer = useDrawerContext()
   const renderStrategyProps = useRenderStrategyPropsContext()
 
-  const presence = usePresence(() => ({ ...renderStrategyProps, present: drawer().open }))
+  const presence = usePresence(() => ({ ...renderStrategyProps(), present: drawer().open }))
   const mergedProps = $derived(mergeProps(drawer().getBackdropProps(), presence().getPresenceProps(), props))
 
   function setNode(node: Element | null) {

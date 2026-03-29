@@ -17,7 +17,7 @@
 
   const tour = useTourContext()
   const presence = usePresence(() => ({
-    ...renderStrategyProps,
+    ...renderStrategyProps(),
     present: tour().open,
   }))
 

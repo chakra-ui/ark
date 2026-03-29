@@ -21,7 +21,7 @@
   const renderStrategyProps = useRenderStrategyPropsContext()
 
   const machineProps = $derived.by<UsePresenceProps>(() => ({
-    ...renderStrategyProps,
+    ...renderStrategyProps(),
     present: tabs().value === contentProps.value,
     immediate: true,
   }))

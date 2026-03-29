@@ -19,7 +19,7 @@
 
   const presence = usePresence(() => ({
     present: tour().open,
-    ...renderStrategyProps,
+    ...renderStrategyProps(),
   }))
 
   const mergedProps = $derived(mergeProps(tour().getSpotlightProps(), presence().getPresenceProps(), props))
