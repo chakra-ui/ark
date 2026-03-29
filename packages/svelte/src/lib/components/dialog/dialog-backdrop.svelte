@@ -19,7 +19,7 @@
   const dialog = useDialogContext()
   const renderStrategyProps = useRenderStrategyPropsContext()
 
-  const presence = usePresence(() => ({ ...renderStrategyProps, present: dialog().open }))
+  const presence = usePresence(() => ({ ...renderStrategyProps(), present: dialog().open }))
   const mergedProps = $derived(mergeProps(dialog().getBackdropProps(), presence().getPresenceProps(), props))
 
   function setNode(node: Element | null) {
