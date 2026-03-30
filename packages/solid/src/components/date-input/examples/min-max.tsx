@@ -1,0 +1,19 @@
+import { DateInput, parseDate } from '@ark-ui/solid/date-input'
+import { Index } from 'solid-js'
+import styles from 'styles/date-input.module.css'
+
+export const MinMax = () => (
+  <DateInput.Root class={styles.Root} min={parseDate('2024-01-01')} max={parseDate('2024-12-31')}>
+    <DateInput.Label class={styles.Label}>Date (2024 only)</DateInput.Label>
+    <DateInput.Control class={styles.Control}>
+      <DateInput.SegmentGroup class={styles.Input}>
+        <DateInput.Context>
+          {(dateInput) => (
+            <Index each={dateInput().getSegments()}>{(segment) => <DateInput.Segment segment={segment()} />}</Index>
+          )}
+        </DateInput.Context>
+      </DateInput.SegmentGroup>
+    </DateInput.Control>
+    <DateInput.HiddenInput />
+  </DateInput.Root>
+)

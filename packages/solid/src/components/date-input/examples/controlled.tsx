@@ -1,0 +1,23 @@
+import { DateInput, parseDate } from '@ark-ui/solid/date-input'
+import { Index, createSignal } from 'solid-js'
+import styles from 'styles/date-input.module.css'
+
+export const Controlled = () => {
+  const [value, setValue] = createSignal<DateInput.DateValue[]>([parseDate('2024-06-15')])
+
+  return (
+    <DateInput.Root class={styles.Root} value={value()} onValueChange={(e) => setValue(e.value)}>
+      <DateInput.Label class={styles.Label}>Date</DateInput.Label>
+      <DateInput.Control class={styles.Control}>
+        <DateInput.SegmentGroup class={styles.Input}>
+          <DateInput.Context>
+            {(dateInput) => (
+              <Index each={dateInput().getSegments()}>{(segment) => <DateInput.Segment segment={segment()} />}</Index>
+            )}
+          </DateInput.Context>
+        </DateInput.SegmentGroup>
+      </DateInput.Control>
+      <DateInput.HiddenInput />
+    </DateInput.Root>
+  )
+}
