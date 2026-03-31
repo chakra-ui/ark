@@ -1,4 +1,5 @@
-import { DateInput, parseDate } from '@ark-ui/react/date-input'
+import { DateInput } from '@ark-ui/react/date-input'
+import { parseDate } from '@internationalized/date'
 import styles from 'styles/date-input.module.css'
 
 export const ReadOnly = () => (

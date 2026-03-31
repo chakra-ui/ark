@@ -1,5 +1,5 @@
-import { DateInput, parseDate } from '@ark-ui/solid/date-input'
-import type { DateValue } from '@internationalized/date'
+import { DateInput } from '@ark-ui/solid/date-input'
+import { parseDate, type DateValue } from '@internationalized/date'
 import { Index, createSignal } from 'solid-js'
 import styles from 'styles/date-input.module.css'
 

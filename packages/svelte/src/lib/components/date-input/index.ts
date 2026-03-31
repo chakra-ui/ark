@@ -1,6 +1,5 @@
-export { parseDate } from '@internationalized/date'
 export type {
-  DateValue,
+  DateValue as DateInputDateValue,
   FocusChangeDetails as DateInputFocusChangeDetails,
   SelectionMode as DateInputSelectionMode,
   ValueChangeDetails as DateInputValueChangeDetails,

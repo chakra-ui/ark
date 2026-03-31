@@ -1,5 +1,5 @@
-import { DateInput, parseDate } from '@ark-ui/react/date-input'
-import type { DateValue } from '@internationalized/date'
+import { DateInput } from '@ark-ui/react/date-input'
+import { parseDate, type DateValue } from '@internationalized/date'
 import { useState } from 'react'
 import styles from 'styles/date-input.module.css'
 

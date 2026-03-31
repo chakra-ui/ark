@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { DateInput, parseDate } from '@ark-ui/vue/date-input'
-import type { DateValue } from '@internationalized/date'
+import { DateInput } from '@ark-ui/vue/date-input'
+import { parseDate, type DateValue } from '@internationalized/date'
 import { type Ref, ref } from 'vue'
 import styles from 'styles/date-input.module.css'
 

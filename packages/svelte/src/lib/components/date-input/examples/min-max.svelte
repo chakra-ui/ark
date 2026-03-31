@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { DateInput, parseDate } from '@ark-ui/svelte/date-input'
+  import { DateInput } from '@ark-ui/svelte/date-input'
+  import { parseDate } from '@internationalized/date'
   import styles from 'styles/date-input.module.css'
 </script>
 
