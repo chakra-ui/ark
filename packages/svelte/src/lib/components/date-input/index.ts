@@ -1,6 +1,10 @@
 export { parseDate } from '@internationalized/date'
-export type { FocusChangeDetails, SelectionMode, ValueChangeDetails } from '@zag-js/date-input'
-export type { DateValue } from '@zag-js/date-input'
+export type {
+  DateValue,
+  FocusChangeDetails as DateInputFocusChangeDetails,
+  SelectionMode as DateInputSelectionMode,
+  ValueChangeDetails as DateInputValueChangeDetails,
+} from '@zag-js/date-input'
 export { default as DateInputContext, type DateInputContextProps } from './date-input-context.svelte'
 export {
   default as DateInputControl,

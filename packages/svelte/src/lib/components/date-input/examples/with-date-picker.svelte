@@ -58,7 +58,9 @@
                     <DatePicker.TableHead class={datePickerStyles.TableHead}>
                       <DatePicker.TableRow class={datePickerStyles.TableRow}>
                         {#each datePicker().weekDays as weekDay}
-                          <DatePicker.TableHeader class={datePickerStyles.TableHeader}>{weekDay.short}</DatePicker.TableHeader>
+                          <DatePicker.TableHeader class={datePickerStyles.TableHeader}>
+                            {weekDay.short}
+                          </DatePicker.TableHeader>
                         {/each}
                       </DatePicker.TableRow>
                     </DatePicker.TableHead>

@@ -13,11 +13,7 @@
   import { useDateInput } from './use-date-input.svelte.js'
   import { DateInputProvider } from './use-date-input-context.js'
 
-  let {
-    ref = $bindable(null),
-    value = $bindable(),
-    ...props
-  }: DateInputRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: DateInputRootProps = $props()
   const providedId = $props.id()
 
   const [useDateInputProps, localProps] = $derived(
@@ -44,12 +40,10 @@
       'hourCycle',
       'granularity',
       'shouldForceLeadingZeros',
-      'createCalendar',
       'allSegments',
       'formatter',
       'placeholderValue',
       'defaultPlaceholderValue',
-      'isDateUnavailable',
       'format',
     ]),
   )

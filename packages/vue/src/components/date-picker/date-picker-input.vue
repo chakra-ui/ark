@@ -25,5 +25,5 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.input v-bind="datePicker.getInputProps(props)" :as-child="asChild"><slot /></ark.input>
+  <ark.input v-bind="datePicker.getInputProps(props as any)" :as-child="asChild"><slot /></ark.input>
 </template>

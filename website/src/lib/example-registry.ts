@@ -110,6 +110,21 @@ import * as Combobox_RehydrateValue from '@examples/combobox/examples/rehydrate-
 import * as Combobox_RootProvider from '@examples/combobox/examples/root-provider'
 import * as Combobox_Virtualized from '@examples/combobox/examples/virtualized'
 import * as Combobox_WithField from '@examples/combobox/examples/with-field'
+import * as DateInput_Basic from '@examples/date-input/examples/basic'
+import * as DateInput_Controlled from '@examples/date-input/examples/controlled'
+import * as DateInput_DefaultValue from '@examples/date-input/examples/default-value'
+import * as DateInput_Disabled from '@examples/date-input/examples/disabled'
+import * as DateInput_Granularity from '@examples/date-input/examples/granularity'
+import * as DateInput_Invalid from '@examples/date-input/examples/invalid'
+import * as DateInput_Localized from '@examples/date-input/examples/localized'
+import * as DateInput_MinMax from '@examples/date-input/examples/min-max'
+import * as DateInput_Range from '@examples/date-input/examples/range'
+import * as DateInput_ReadOnly from '@examples/date-input/examples/read-only'
+import * as DateInput_RootProvider from '@examples/date-input/examples/root-provider'
+import * as DateInput_Rtl from '@examples/date-input/examples/rtl'
+import * as DateInput_WithClearButton from '@examples/date-input/examples/with-clear-button'
+import * as DateInput_WithDatePicker from '@examples/date-input/examples/with-date-picker'
+import * as DateInput_WithField from '@examples/date-input/examples/with-field'
 import * as DatePicker_Basic from '@examples/date-picker/examples/basic'
 import * as DatePicker_Controlled from '@examples/date-picker/examples/controlled'
 import * as DatePicker_CustomCalendar from '@examples/date-picker/examples/custom-calendar'
@@ -178,6 +193,7 @@ import * as Field_CustomControl from '@examples/field/examples/custom-control'
 import * as Field_Disabled from '@examples/field/examples/disabled'
 import * as Field_Input from '@examples/field/examples/input'
 import * as Field_Invalid from '@examples/field/examples/invalid'
+import * as Field_Item from '@examples/field/examples/item'
 import * as Field_RequiredIndicator from '@examples/field/examples/required-indicator'
 import * as Field_RootProvider from '@examples/field/examples/root-provider'
 import * as Field_Select from '@examples/field/examples/select'
@@ -484,6 +500,7 @@ import * as Tabs_Links from '@examples/tabs/examples/links'
 import * as Tabs_ManualActivation from '@examples/tabs/examples/manual-activation'
 import * as Tabs_RootProvider from '@examples/tabs/examples/root-provider'
 import * as Tabs_Vertical from '@examples/tabs/examples/vertical'
+import * as TagsInput_AllowDuplicates from '@examples/tags-input/examples/allow-duplicates'
 import * as TagsInput_Basic from '@examples/tags-input/examples/basic'
 import * as TagsInput_BlurBehavior from '@examples/tags-input/examples/blur-behavior'
 import * as TagsInput_ControlledInputValue from '@examples/tags-input/examples/controlled-input-value'
@@ -562,6 +579,9 @@ import * as Environment_Basic from '../../../packages/react/src/providers/enviro
 import * as Environment_Setup from '../../../packages/react/src/providers/environment/examples/setup'
 import * as Environment_ShadowRoot from '../../../packages/react/src/providers/environment/examples/shadow-root'
 import * as Environment_Usage from '../../../packages/react/src/providers/environment/examples/usage'
+import * as Interaction_FocusVisibleTextInput from '../../../packages/react/src/providers/interaction/examples/focus-visible-text-input'
+import * as Interaction_FocusVisible from '../../../packages/react/src/providers/interaction/examples/focus-visible'
+import * as Interaction_Interaction from '../../../packages/react/src/providers/interaction/examples/interaction'
 import * as Locale_Basic from '../../../packages/react/src/providers/locale/examples/basic'
 import * as Locale_Setup from '../../../packages/react/src/providers/locale/examples/setup'
 import * as Locale_Usage from '../../../packages/react/src/providers/locale/examples/usage'
@@ -677,6 +697,21 @@ const exampleModules: Record<string, ExampleModule> = {
   'combobox/root-provider': Combobox_RootProvider,
   'combobox/virtualized': Combobox_Virtualized,
   'combobox/with-field': Combobox_WithField,
+  'date-input/basic': DateInput_Basic,
+  'date-input/controlled': DateInput_Controlled,
+  'date-input/default-value': DateInput_DefaultValue,
+  'date-input/disabled': DateInput_Disabled,
+  'date-input/granularity': DateInput_Granularity,
+  'date-input/invalid': DateInput_Invalid,
+  'date-input/localized': DateInput_Localized,
+  'date-input/min-max': DateInput_MinMax,
+  'date-input/range': DateInput_Range,
+  'date-input/read-only': DateInput_ReadOnly,
+  'date-input/root-provider': DateInput_RootProvider,
+  'date-input/rtl': DateInput_Rtl,
+  'date-input/with-clear-button': DateInput_WithClearButton,
+  'date-input/with-date-picker': DateInput_WithDatePicker,
+  'date-input/with-field': DateInput_WithField,
   'date-picker/basic': DatePicker_Basic,
   'date-picker/controlled': DatePicker_Controlled,
   'date-picker/custom-calendar': DatePicker_CustomCalendar,
@@ -745,6 +780,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'field/disabled': Field_Disabled,
   'field/input': Field_Input,
   'field/invalid': Field_Invalid,
+  'field/item': Field_Item,
   'field/required-indicator': Field_RequiredIndicator,
   'field/root-provider': Field_RootProvider,
   'field/select': Field_Select,
@@ -1051,6 +1087,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'tabs/manual-activation': Tabs_ManualActivation,
   'tabs/root-provider': Tabs_RootProvider,
   'tabs/vertical': Tabs_Vertical,
+  'tags-input/allow-duplicates': TagsInput_AllowDuplicates,
   'tags-input/basic': TagsInput_Basic,
   'tags-input/blur-behavior': TagsInput_BlurBehavior,
   'tags-input/controlled-input-value': TagsInput_ControlledInputValue,
@@ -1129,6 +1166,9 @@ const exampleModules: Record<string, ExampleModule> = {
   'environment/setup': Environment_Setup,
   'environment/shadow-root': Environment_ShadowRoot,
   'environment/usage': Environment_Usage,
+  'interaction/focus-visible-text-input': Interaction_FocusVisibleTextInput,
+  'interaction/focus-visible': Interaction_FocusVisible,
+  'interaction/interaction': Interaction_Interaction,
   'locale/basic': Locale_Basic,
   'locale/setup': Locale_Setup,
   'locale/usage': Locale_Usage,

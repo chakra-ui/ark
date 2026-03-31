@@ -31,12 +31,10 @@ export const DateInputRoot = (props: DateInputRootProps) => {
     'hourCycle',
     'granularity',
     'shouldForceLeadingZeros',
-    'createCalendar',
     'allSegments',
     'formatter',
     'placeholderValue',
     'defaultPlaceholderValue',
-    'isDateUnavailable',
     'format',
   ])
   const api = useDateInput(useDateInputProps)

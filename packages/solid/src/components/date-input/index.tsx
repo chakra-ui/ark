@@ -1,5 +1,10 @@
-export { parse as parseDate } from '@zag-js/date-input'
-export type { FocusChangeDetails, SelectionMode, ValueChangeDetails } from '@zag-js/date-input'
+export { parseDate } from '@internationalized/date'
+export type {
+  DateValue,
+  FocusChangeDetails as DateInputFocusChangeDetails,
+  SelectionMode as DateInputSelectionMode,
+  ValueChangeDetails as DateInputValueChangeDetails,
+} from '@zag-js/date-input'
 export { useDateInput, type UseDateInputProps, type UseDateInputReturn } from './use-date-input'
 export { useDateInputContext, type UseDateInputContext } from './use-date-input-context'
 export { DateInputContext, type DateInputContextProps } from './date-input-context'

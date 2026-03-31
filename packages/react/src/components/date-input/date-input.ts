@@ -1,5 +1,3 @@
-export { useDateInput } from './use-date-input'
-export type { DateValue, FocusChangeDetails, SelectionMode, ValueChangeDetails } from '@zag-js/date-input'
 export { DateInputContext as Context, type DateInputContextProps as ContextProps } from './date-input-context'
 export {
   DateInputLabel as Label,

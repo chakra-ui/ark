@@ -17,6 +17,7 @@ export interface DateInputSegmentProps
 </script>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { ark } from '../factory'
 import { useDateInputContext } from './use-date-input-context'
 import { useForwardExpose } from '../../utils/use-forward-expose'
@@ -25,8 +26,10 @@ const props = defineProps<DateInputSegmentProps>()
 const dateInput = useDateInputContext()
 
 useForwardExpose()
+
+const segmentProps = computed(() => dateInput.value.getSegmentProps({ segment: props.segment, index: props.index }))
 </script>
 
 <template>
-  <ark.span v-bind="dateInput.getSegmentProps({ segment, index })" :as-child="asChild">{{ segment.text }}</ark.span>
+  <ark.span v-bind="segmentProps" :as-child="asChild">{{ segment.text }}</ark.span>
 </template>

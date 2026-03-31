@@ -21,12 +21,10 @@ export interface RootProps {
   translations?: dateInput.Props['translations']
   value?: dateInput.DateValue[]
   format?: dateInput.Props['format']
-  createCalendar?: dateInput.Props['createCalendar']
   allSegments?: dateInput.Props['allSegments']
   formatter?: dateInput.Props['formatter']
   placeholderValue?: dateInput.Props['placeholderValue']
   defaultPlaceholderValue?: dateInput.Props['defaultPlaceholderValue']
-  isDateUnavailable?: dateInput.Props['isDateUnavailable']
   shouldForceLeadingZeros?: boolean
 }
 

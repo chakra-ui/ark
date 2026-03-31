@@ -8,6 +8,7 @@ export interface DateInputSegmentBaseProps extends PolymorphicProps {
   segment: dateInput.DateSegment
   index?: number
 }
+
 export interface DateInputSegmentProps extends HTMLProps<'span'>, DateInputSegmentBaseProps {}
 
 export const DateInputSegment = forwardRef<HTMLSpanElement, DateInputSegmentProps>(

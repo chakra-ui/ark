@@ -26,7 +26,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="dateInput.getSegmentGroupProps({ index })" :as-child="asChild">
+  <ark.div v-bind="dateInput.getSegmentGroupProps({ index: props.index })" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

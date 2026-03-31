@@ -37,12 +37,10 @@ export const DateInputRoot = forwardRef<HTMLDivElement, DateInputRootProps>((pro
     'hourCycle',
     'granularity',
     'shouldForceLeadingZeros',
-    'createCalendar',
     'allSegments',
     'formatter',
     'placeholderValue',
     'defaultPlaceholderValue',
-    'isDateUnavailable',
     'format',
   ])
   const dateInput = useDateInput(useDateInputProps)

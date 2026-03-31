@@ -11,6 +11,19 @@ export interface DateInputSegmentProps extends HTMLProps<'span'>, DateInputSegme
 
 export const DateInputSegment = ({ segment, index, ...props }: DateInputSegmentProps) => {
   const api = useDateInputContext()
-  const mergedProps = mergeProps(() => api().getSegmentProps({ segment, index }), props)
+  const mergedProps = mergeProps(() => {
+    const segProps = api().getSegmentProps({ segment, index })
+    const origKeyDown = segProps.onKeyDown
+    if (origKeyDown) {
+      return {
+        ...segProps,
+        onKeyDown: (e: KeyboardEvent) => {
+          ;(e as any).nativeEvent ??= e
+          return origKeyDown(e)
+        },
+      }
+    }
+    return segProps
+  }, props)
   return <ark.span {...mergedProps}>{segment.text}</ark.span>
 }

@@ -29,7 +29,7 @@ useForwardExpose()
 <template>
   <ark.input
     :aria-describedby="field?.ariaDescribedby"
-    v-bind="signaturePad.getHiddenInputProps(props)"
+    v-bind="signaturePad.getHiddenInputProps(props as any)"
     :as-child="asChild"
   >
     <slot />

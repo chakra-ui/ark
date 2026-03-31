@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite'
 
 const meta: Meta = {
-  title: 'Components/Date Input',
+  title: 'Components/ Date Input',
 }
 
 export default meta

@@ -1,4 +1,3 @@
-export type { DateValue, FocusChangeDetails, SelectionMode, ValueChangeDetails } from '@zag-js/date-input'
 export { default as Context, type DateInputContextProps as ContextProps } from './date-input-context.svelte'
 export {
   default as Control,

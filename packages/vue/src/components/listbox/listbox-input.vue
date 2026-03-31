@@ -25,7 +25,12 @@ useForwardExpose()
 
 <template>
   <ark.input
-    v-bind="listbox.getInputProps({ autoHighlight: props.autoHighlight, keyboardPriority: props.keyboardPriority })"
+    v-bind="
+      listbox.getInputProps({
+        autoHighlight: (props as any).autoHighlight,
+        keyboardPriority: (props as any).keyboardPriority,
+      })
+    "
     :as-child="asChild"
   >
     <slot />
