@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { DateInput, parseDate } from '@ark-ui/vue/date-input'
-import type { DateValue } from '@ark-ui/vue/date-input'
+import type { DateValue } from '@internationalized/date'
 import { type Ref, ref } from 'vue'
 import styles from 'styles/date-input.module.css'
 
-const value = ref([parseDate('2024-06-15')]) as Ref<DateValue[]>
+const value = ref([parseDate('2022-01-01')]) as Ref<DateValue[]>
 </script>
 
 <template>

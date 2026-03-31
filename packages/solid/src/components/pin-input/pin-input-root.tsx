@@ -10,7 +10,6 @@ export interface PinInputRootProps extends HTMLProps<'div'>, PinInputRootBasePro
 export const PinInputRoot = (props: PinInputRootProps) => {
   const [usePinInputProps, localProps] = createSplitProps<UsePinInputProps>()(props, [
     'autoFocus',
-    'autoSubmit',
     'blurOnComplete',
     'count',
     'defaultValue',
@@ -29,7 +28,6 @@ export const PinInputRoot = (props: PinInputRootProps) => {
     'placeholder',
     'readOnly',
     'required',
-    'sanitizeValue',
     'selectOnFocus',
     'translations',
     'type',

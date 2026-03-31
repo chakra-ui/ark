@@ -3,7 +3,7 @@ import { XIcon } from 'lucide-react'
 import styles from 'styles/drawer.module.css'
 
 export const SwipeDirection = () => (
-  <Drawer.Root swipeDirection="end">
+  <Drawer.Root swipeDirection="right">
     <Drawer.Trigger className={styles.Trigger}>Open Right</Drawer.Trigger>
     <Drawer.Backdrop className={styles.Backdrop} />
     <Drawer.Positioner className={styles.Positioner}>
