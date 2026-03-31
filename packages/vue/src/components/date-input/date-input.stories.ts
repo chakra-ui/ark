@@ -1,4 +1,5 @@
 import type { Meta } from '@storybook/vue3-vite'
+
 import BasicExample from './examples/basic.vue'
 import ControlledExample from './examples/controlled.vue'
 import DefaultValueExample from './examples/default-value.vue'

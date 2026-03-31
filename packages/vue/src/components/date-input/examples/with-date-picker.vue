@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { DateInput, useDateInput } from '@ark-ui/vue/date-input'
 import { DatePicker, useDatePicker } from '@ark-ui/vue/date-picker'
-import { Portal } from '@ark-ui/vue/portal'
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
 import styles from 'styles/date-input.module.css'
@@ -37,124 +36,122 @@ const dateInput = useDateInput(
             <CalendarIcon />
           </DatePicker.Trigger>
         </DatePicker.Control>
-        <Portal>
-          <DatePicker.Positioner>
-            <DatePicker.Content :class="datePickerStyles.Content">
-              <DatePicker.View view="day" :class="datePickerStyles.View">
-                <DatePicker.Context v-slot="api">
-                  <DatePicker.ViewControl :class="datePickerStyles.ViewControl">
-                    <DatePicker.PrevTrigger :class="datePickerStyles.PrevTrigger">
-                      <ChevronLeftIcon />
-                    </DatePicker.PrevTrigger>
-                    <DatePicker.ViewTrigger :class="datePickerStyles.ViewTrigger">
-                      <DatePicker.RangeText />
-                    </DatePicker.ViewTrigger>
-                    <DatePicker.NextTrigger :class="datePickerStyles.NextTrigger">
-                      <ChevronRightIcon />
-                    </DatePicker.NextTrigger>
-                  </DatePicker.ViewControl>
-                  <DatePicker.Table :class="datePickerStyles.Table">
-                    <DatePicker.TableHead :class="datePickerStyles.TableHead">
-                      <DatePicker.TableRow :class="datePickerStyles.TableRow">
-                        <DatePicker.TableHeader
-                          v-for="(weekDay, id) in api.weekDays"
-                          :key="id"
-                          :class="datePickerStyles.TableHeader"
-                        >
-                          {{ weekDay.short }}
-                        </DatePicker.TableHeader>
-                      </DatePicker.TableRow>
-                    </DatePicker.TableHead>
-                    <DatePicker.TableBody :class="datePickerStyles.TableBody">
-                      <DatePicker.TableRow v-for="(week, id) in api.weeks" :key="id" :class="datePickerStyles.TableRow">
-                        <DatePicker.TableCell
-                          v-for="(day, id) in week"
-                          :key="id"
-                          :value="day"
-                          :class="datePickerStyles.TableCell"
-                        >
-                          <DatePicker.TableCellTrigger :class="datePickerStyles.TableCellTrigger">
-                            {{ day.day }}
-                          </DatePicker.TableCellTrigger>
-                        </DatePicker.TableCell>
-                      </DatePicker.TableRow>
-                    </DatePicker.TableBody>
-                  </DatePicker.Table>
-                </DatePicker.Context>
-              </DatePicker.View>
-              <DatePicker.View view="month" :class="datePickerStyles.View">
-                <DatePicker.Context v-slot="api">
-                  <DatePicker.ViewControl :class="datePickerStyles.ViewControl">
-                    <DatePicker.PrevTrigger :class="datePickerStyles.PrevTrigger">
-                      <ChevronLeftIcon />
-                    </DatePicker.PrevTrigger>
-                    <DatePicker.ViewTrigger :class="datePickerStyles.ViewTrigger">
-                      <DatePicker.RangeText />
-                    </DatePicker.ViewTrigger>
-                    <DatePicker.NextTrigger :class="datePickerStyles.NextTrigger">
-                      <ChevronRightIcon />
-                    </DatePicker.NextTrigger>
-                  </DatePicker.ViewControl>
-                  <DatePicker.Table :class="datePickerStyles.Table">
-                    <DatePicker.TableBody :class="datePickerStyles.TableBody">
-                      <DatePicker.TableRow
-                        v-for="(months, id) in api.getMonthsGrid({ columns: 4, format: 'short' })"
+        <DatePicker.Positioner>
+          <DatePicker.Content :class="datePickerStyles.Content">
+            <DatePicker.View view="day" :class="datePickerStyles.View">
+              <DatePicker.Context v-slot="api">
+                <DatePicker.ViewControl :class="datePickerStyles.ViewControl">
+                  <DatePicker.PrevTrigger :class="datePickerStyles.PrevTrigger">
+                    <ChevronLeftIcon />
+                  </DatePicker.PrevTrigger>
+                  <DatePicker.ViewTrigger :class="datePickerStyles.ViewTrigger">
+                    <DatePicker.RangeText />
+                  </DatePicker.ViewTrigger>
+                  <DatePicker.NextTrigger :class="datePickerStyles.NextTrigger">
+                    <ChevronRightIcon />
+                  </DatePicker.NextTrigger>
+                </DatePicker.ViewControl>
+                <DatePicker.Table :class="datePickerStyles.Table">
+                  <DatePicker.TableHead :class="datePickerStyles.TableHead">
+                    <DatePicker.TableRow :class="datePickerStyles.TableRow">
+                      <DatePicker.TableHeader
+                        v-for="(weekDay, id) in api.weekDays"
                         :key="id"
-                        :class="datePickerStyles.TableRow"
+                        :class="datePickerStyles.TableHeader"
                       >
-                        <DatePicker.TableCell
-                          v-for="(month, id) in months"
-                          :key="id"
-                          :value="month.value"
-                          :class="datePickerStyles.TableCell"
-                        >
-                          <DatePicker.TableCellTrigger :class="datePickerStyles.TableCellTrigger">
-                            {{ month.label }}
-                          </DatePicker.TableCellTrigger>
-                        </DatePicker.TableCell>
-                      </DatePicker.TableRow>
-                    </DatePicker.TableBody>
-                  </DatePicker.Table>
-                </DatePicker.Context>
-              </DatePicker.View>
-              <DatePicker.View view="year" :class="datePickerStyles.View">
-                <DatePicker.Context v-slot="api">
-                  <DatePicker.ViewControl :class="datePickerStyles.ViewControl">
-                    <DatePicker.PrevTrigger :class="datePickerStyles.PrevTrigger">
-                      <ChevronLeftIcon />
-                    </DatePicker.PrevTrigger>
-                    <DatePicker.ViewTrigger :class="datePickerStyles.ViewTrigger">
-                      <DatePicker.RangeText />
-                    </DatePicker.ViewTrigger>
-                    <DatePicker.NextTrigger :class="datePickerStyles.NextTrigger">
-                      <ChevronRightIcon />
-                    </DatePicker.NextTrigger>
-                  </DatePicker.ViewControl>
-                  <DatePicker.Table :class="datePickerStyles.Table">
-                    <DatePicker.TableBody :class="datePickerStyles.TableBody">
-                      <DatePicker.TableRow
-                        v-for="(years, id) in api.getYearsGrid({ columns: 4 })"
+                        {{ weekDay.short }}
+                      </DatePicker.TableHeader>
+                    </DatePicker.TableRow>
+                  </DatePicker.TableHead>
+                  <DatePicker.TableBody :class="datePickerStyles.TableBody">
+                    <DatePicker.TableRow v-for="(week, id) in api.weeks" :key="id" :class="datePickerStyles.TableRow">
+                      <DatePicker.TableCell
+                        v-for="(day, id) in week"
                         :key="id"
-                        :class="datePickerStyles.TableRow"
+                        :value="day"
+                        :class="datePickerStyles.TableCell"
                       >
-                        <DatePicker.TableCell
-                          v-for="(year, id) in years"
-                          :key="id"
-                          :value="year.value"
-                          :class="datePickerStyles.TableCell"
-                        >
-                          <DatePicker.TableCellTrigger :class="datePickerStyles.TableCellTrigger">
-                            {{ year.label }}
-                          </DatePicker.TableCellTrigger>
-                        </DatePicker.TableCell>
-                      </DatePicker.TableRow>
-                    </DatePicker.TableBody>
-                  </DatePicker.Table>
-                </DatePicker.Context>
-              </DatePicker.View>
-            </DatePicker.Content>
-          </DatePicker.Positioner>
-        </Portal>
+                        <DatePicker.TableCellTrigger :class="datePickerStyles.TableCellTrigger">
+                          {{ day.day }}
+                        </DatePicker.TableCellTrigger>
+                      </DatePicker.TableCell>
+                    </DatePicker.TableRow>
+                  </DatePicker.TableBody>
+                </DatePicker.Table>
+              </DatePicker.Context>
+            </DatePicker.View>
+            <DatePicker.View view="month" :class="datePickerStyles.View">
+              <DatePicker.Context v-slot="api">
+                <DatePicker.ViewControl :class="datePickerStyles.ViewControl">
+                  <DatePicker.PrevTrigger :class="datePickerStyles.PrevTrigger">
+                    <ChevronLeftIcon />
+                  </DatePicker.PrevTrigger>
+                  <DatePicker.ViewTrigger :class="datePickerStyles.ViewTrigger">
+                    <DatePicker.RangeText />
+                  </DatePicker.ViewTrigger>
+                  <DatePicker.NextTrigger :class="datePickerStyles.NextTrigger">
+                    <ChevronRightIcon />
+                  </DatePicker.NextTrigger>
+                </DatePicker.ViewControl>
+                <DatePicker.Table :class="datePickerStyles.Table">
+                  <DatePicker.TableBody :class="datePickerStyles.TableBody">
+                    <DatePicker.TableRow
+                      v-for="(months, id) in api.getMonthsGrid({ columns: 4, format: 'short' })"
+                      :key="id"
+                      :class="datePickerStyles.TableRow"
+                    >
+                      <DatePicker.TableCell
+                        v-for="(month, id) in months"
+                        :key="id"
+                        :value="month.value"
+                        :class="datePickerStyles.TableCell"
+                      >
+                        <DatePicker.TableCellTrigger :class="datePickerStyles.TableCellTrigger">
+                          {{ month.label }}
+                        </DatePicker.TableCellTrigger>
+                      </DatePicker.TableCell>
+                    </DatePicker.TableRow>
+                  </DatePicker.TableBody>
+                </DatePicker.Table>
+              </DatePicker.Context>
+            </DatePicker.View>
+            <DatePicker.View view="year" :class="datePickerStyles.View">
+              <DatePicker.Context v-slot="api">
+                <DatePicker.ViewControl :class="datePickerStyles.ViewControl">
+                  <DatePicker.PrevTrigger :class="datePickerStyles.PrevTrigger">
+                    <ChevronLeftIcon />
+                  </DatePicker.PrevTrigger>
+                  <DatePicker.ViewTrigger :class="datePickerStyles.ViewTrigger">
+                    <DatePicker.RangeText />
+                  </DatePicker.ViewTrigger>
+                  <DatePicker.NextTrigger :class="datePickerStyles.NextTrigger">
+                    <ChevronRightIcon />
+                  </DatePicker.NextTrigger>
+                </DatePicker.ViewControl>
+                <DatePicker.Table :class="datePickerStyles.Table">
+                  <DatePicker.TableBody :class="datePickerStyles.TableBody">
+                    <DatePicker.TableRow
+                      v-for="(years, id) in api.getYearsGrid({ columns: 4 })"
+                      :key="id"
+                      :class="datePickerStyles.TableRow"
+                    >
+                      <DatePicker.TableCell
+                        v-for="(year, id) in years"
+                        :key="id"
+                        :value="year.value"
+                        :class="datePickerStyles.TableCell"
+                      >
+                        <DatePicker.TableCellTrigger :class="datePickerStyles.TableCellTrigger">
+                          {{ year.label }}
+                        </DatePicker.TableCellTrigger>
+                      </DatePicker.TableCell>
+                    </DatePicker.TableRow>
+                  </DatePicker.TableBody>
+                </DatePicker.Table>
+              </DatePicker.Context>
+            </DatePicker.View>
+          </DatePicker.Content>
+        </DatePicker.Positioner>
       </DatePicker.RootProvider>
     </DateInput.Control>
     <DateInput.HiddenInput />
