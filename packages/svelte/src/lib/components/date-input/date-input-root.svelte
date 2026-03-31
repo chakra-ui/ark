@@ -45,6 +45,8 @@
       'placeholderValue',
       'defaultPlaceholderValue',
       'format',
+      'createCalendar',
+      'isDateUnavailable',
     ]),
   )
 

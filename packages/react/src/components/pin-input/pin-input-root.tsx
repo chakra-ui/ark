@@ -14,6 +14,7 @@ const splitRootProps = createSplitProps<UsePinInputProps>()
 export const PinInputRoot = forwardRef<HTMLDivElement, PinInputRootProps>((props, ref) => {
   const [usePinInputProps, localProps] = splitRootProps(props, [
     'autoFocus',
+    'autoSubmit',
     'blurOnComplete',
     'count',
     'defaultValue',
@@ -32,6 +33,7 @@ export const PinInputRoot = forwardRef<HTMLDivElement, PinInputRootProps>((props
     'placeholder',
     'readOnly',
     'required',
+    'sanitizeValue',
     'selectOnFocus',
     'translations',
     'type',

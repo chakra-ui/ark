@@ -42,6 +42,8 @@ export const DateInputRoot = forwardRef<HTMLDivElement, DateInputRootProps>((pro
     'placeholderValue',
     'defaultPlaceholderValue',
     'format',
+    'createCalendar',
+    'isDateUnavailable',
   ])
   const dateInput = useDateInput(useDateInputProps)
   const mergedProps = mergeProps(dateInput.getRootProps(), localProps)

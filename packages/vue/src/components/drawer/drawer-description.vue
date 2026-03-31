@@ -14,15 +14,17 @@ export interface DrawerDescriptionProps
 
 <script setup lang="ts">
 import { ark } from '../factory'
+import { useDrawerContext } from './use-drawer-context'
 import { useForwardExpose } from '../../utils'
 
 defineProps<DrawerDescriptionProps>()
 
+const drawer = useDrawerContext()
 useForwardExpose()
 </script>
 
 <template>
-  <ark.div :as-child="asChild">
+  <ark.div v-bind="drawer.getDescriptionProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

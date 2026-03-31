@@ -14,15 +14,17 @@ export interface DrawerSwipeAreaProps
 
 <script setup lang="ts">
 import { ark } from '../factory'
+import { useDrawerContext } from './use-drawer-context'
 import { useForwardExpose } from '../../utils'
 
 defineProps<DrawerSwipeAreaProps>()
 
+const drawer = useDrawerContext()
 useForwardExpose()
 </script>
 
 <template>
-  <ark.div :as-child="asChild">
+  <ark.div v-bind="drawer.getSwipeAreaProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

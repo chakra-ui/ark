@@ -36,6 +36,8 @@ export const DateInputRoot = (props: DateInputRootProps) => {
     'placeholderValue',
     'defaultPlaceholderValue',
     'format',
+    'createCalendar',
+    'isDateUnavailable',
   ])
   const api = useDateInput(useDateInputProps)
   const mergedProps = mergeProps(() => api().getRootProps(), localProps)
