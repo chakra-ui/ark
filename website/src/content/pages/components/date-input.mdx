@@ -15,13 +15,7 @@ description: A segment-based date input that allows users to enter dates by navi
   <DateInput.Label />
   <DateInput.Control>
     <DateInput.SegmentGroup>
-      <DateInput.Context>
-        {(api) =>
-           api.getSegments().map((segment: DateSegment, index: number) => (
-            <DateInput.Segment key={`${segment.type}-${index}`} segment={segment} />
-         ))
-        }
-         </DateInput.Context>
+      <DateInput.Segment />
     </DateInput.SegmentGroup>
   </DateInput.Control>
   <DateInput.HiddenInput />
@@ -53,8 +47,8 @@ way you can access the state and methods from outside the component.
 
 ### Granularity
 
-Use the `granularity` prop to control which date fields are displayed. Supported values are `day`, `hour`, `minute`,
-and `second`.
+Use the `granularity` prop to control which date fields are displayed. Supported values are `day`, `hour`, `minute`, and
+`second`.
 
 <Example id="granularity" />
 
@@ -117,8 +111,8 @@ calendar-based date selection.
 
 ### Field
 
-The `Field` component helps manage form-related state and accessibility attributes of a date input. It includes
-handling ARIA labels, helper text, and error text to ensure proper accessibility.
+The `Field` component helps manage form-related state and accessibility attributes of a date input. It includes handling
+ARIA labels, helper text, and error text to ensure proper accessibility.
 
 <Example id="with-field" />
 
