@@ -1,7 +1,9 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface DateInputHiddenInputBaseProps extends PolymorphicProps<'input'>, RefAttribute {}
+  export interface DateInputHiddenInputBaseProps extends PolymorphicProps<'input'>, RefAttribute {
+    index?: number
+  }
   export interface DateInputHiddenInputProps extends Assign<HTMLProps<'input'>, DateInputHiddenInputBaseProps> {}
 </script>
 
@@ -11,11 +13,11 @@
   import { useFieldContext } from '../field/index.js'
   import { useDateInputContext } from './use-date-input-context.js'
 
-  let { ref = $bindable(null), ...props }: DateInputHiddenInputProps = $props()
+  let { ref = $bindable(null), index, ...props }: DateInputHiddenInputProps = $props()
 
   const dateInput = useDateInputContext()
   const field = useFieldContext()
-  const mergedProps = $derived(mergeProps(dateInput().getHiddenInputProps(), props))
+  const mergedProps = $derived(mergeProps(dateInput().getHiddenInputProps({ index }), props))
 </script>
 
 <Ark as="input" bind:ref aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} />

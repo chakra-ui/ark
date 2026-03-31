@@ -19,7 +19,11 @@ export const DateInputSegment = ({ segment, index, ...props }: DateInputSegmentP
         ...segProps,
         onKeyDown: (e: KeyboardEvent) => {
           ;(e as any).nativeEvent ??= e
-          return origKeyDown(e)
+          if (Array.isArray(origKeyDown)) {
+            origKeyDown[0](origKeyDown[1], e as any)
+          } else {
+            ;(origKeyDown as (e: KeyboardEvent) => void)(e)
+          }
         },
       }
     }

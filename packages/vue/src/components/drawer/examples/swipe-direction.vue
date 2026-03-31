@@ -5,7 +5,7 @@ import styles from 'styles/drawer.module.css'
 </script>
 
 <template>
-  <Drawer.Root swipeDirection="end">
+  <Drawer.Root swipeDirection="right">
     <Drawer.Trigger :class="styles.Trigger">Open Right</Drawer.Trigger>
     <Drawer.Backdrop :class="styles.Backdrop" />
     <Drawer.Positioner :class="styles.Positioner">

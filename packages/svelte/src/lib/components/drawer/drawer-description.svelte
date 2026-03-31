@@ -6,14 +6,9 @@
 </script>
 
 <script lang="ts">
-  import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory'
-  import { useDrawerContext } from './use-drawer-context'
 
   let { ref = $bindable(null), ...props }: DrawerDescriptionProps = $props()
-
-  const drawer = useDrawerContext()
-  const mergedProps = $derived(mergeProps(drawer().getDescriptionProps(), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...props} />

@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/vue'
-import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import ComponentUnderTest from './date-input.test.vue'
 import { parseDate } from '@internationalized/date'
