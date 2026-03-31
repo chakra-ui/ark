@@ -48,7 +48,7 @@ export const Frame = forwardRef<HTMLIFrameElement, FrameProps>((props, ref) => {
   }, [frameRef, srcDoc])
 
   useEffect(() => {
-    if (!frameRef || !frameRef.contentDocument) return
+    if (!frameRef?.contentDocument) return
 
     const win = frameRef.contentWindow as Window & typeof globalThis
     if (!win) return

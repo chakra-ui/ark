@@ -79,7 +79,13 @@ const ActionMenu = (props: { slug: string }) => {
   return (
     <Menu.Root size="sm" positioning={{ placement: 'bottom-end' }}>
       <Menu.Trigger asChild>
-        <IconButton size="xs" variant="outline" borderStartRadius="0" borderStartWidth="0px">
+        <IconButton
+          size="xs"
+          variant="outline"
+          borderStartRadius="0"
+          borderStartWidth="0px"
+          aria-label="More Markdown options"
+        >
           <ChevronDownIcon size={16} />
         </IconButton>
       </Menu.Trigger>

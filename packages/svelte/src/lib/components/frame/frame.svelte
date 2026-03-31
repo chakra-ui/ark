@@ -53,7 +53,7 @@
   })
 
   $effect(() => {
-    if (!frameRef || !frameRef.contentDocument) return
+    if (!frameRef?.contentDocument) return
 
     const win = frameRef.contentWindow as Window & typeof globalThis
 

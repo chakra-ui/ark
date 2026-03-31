@@ -113,7 +113,7 @@ export async function main() {
   const port = process.env.PORT ? Number(process.env.PORT) : 3000
 
   app.listen(port, () => {
-    console.info(`Ark MCP SSE Server running on http://localhost:${port}`)
+    console.error(`Ark MCP SSE Server running on http://localhost:${port}`)
   })
 }
 

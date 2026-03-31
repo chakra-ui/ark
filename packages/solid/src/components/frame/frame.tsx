@@ -52,7 +52,7 @@ export const Frame = (props: FrameProps) => {
 
   createEffect(() => {
     const frame = frameRef()
-    if (!frame || !frame.contentDocument) return
+    if (!frame?.contentDocument) return
 
     const win = frame.contentWindow as Window & typeof globalThis
     if (!win) return

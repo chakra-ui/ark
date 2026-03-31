@@ -19,7 +19,7 @@
 
   const navigationMenu = useNavigationMenuContext()
   const renderStrategyProps = useRenderStrategyPropsContext()
-  const presence = usePresence(() => ({ ...renderStrategyProps, present: navigationMenu().open }))
+  const presence = usePresence(() => ({ ...renderStrategyProps(), present: navigationMenu().open }))
   const mergedProps = $derived(
     mergeProps(navigationMenu().getViewportProps(viewportPropsContext?.()), presence().getPresenceProps(), props),
   )

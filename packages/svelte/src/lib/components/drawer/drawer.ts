@@ -14,6 +14,11 @@ export {
   type DrawerContentBaseProps as ContentBaseProps,
   type DrawerContentProps as ContentProps,
 } from './drawer-content.svelte'
+export {
+  default as Description,
+  type DrawerDescriptionBaseProps as DescriptionBaseProps,
+  type DrawerDescriptionProps as DescriptionProps,
+} from './drawer-description.svelte'
 export { default as Context, type DrawerContextProps as ContextProps } from './drawer-context.svelte'
 export {
   default as Positioner,
@@ -61,3 +66,8 @@ export {
   type DrawerIndentBackgroundProps as IndentBackgroundProps,
 } from './drawer-indent-background.svelte'
 export { default as Stack, type DrawerStackProps as StackProps } from './drawer-stack.svelte'
+export {
+  default as SwipeArea,
+  type DrawerSwipeAreaBaseProps as SwipeAreaBaseProps,
+  type DrawerSwipeAreaProps as SwipeAreaProps,
+} from './drawer-swipe-area.svelte'

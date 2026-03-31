@@ -33,7 +33,7 @@
   const renderStrategyProps = useRenderStrategyPropsContext()
 
   const presence = usePresence(() => ({
-    ...renderStrategyProps,
+    ...renderStrategyProps(),
     present: navigationMenu().value === value,
   }))
 

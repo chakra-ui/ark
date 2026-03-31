@@ -13,6 +13,11 @@ export {
   type DrawerCloseTriggerProps,
 } from './drawer-close-trigger.svelte'
 export { default as DrawerContent, type DrawerContentBaseProps, type DrawerContentProps } from './drawer-content.svelte'
+export {
+  default as DrawerDescription,
+  type DrawerDescriptionBaseProps,
+  type DrawerDescriptionProps,
+} from './drawer-description.svelte'
 export { default as DrawerContext, type DrawerContextProps } from './drawer-context.svelte'
 export {
   default as DrawerPositioner,
@@ -40,6 +45,11 @@ export {
   type DrawerIndentBackgroundProps,
 } from './drawer-indent-background.svelte'
 export { default as DrawerStack, type DrawerStackProps } from './drawer-stack.svelte'
+export {
+  default as DrawerSwipeArea,
+  type DrawerSwipeAreaBaseProps,
+  type DrawerSwipeAreaProps,
+} from './drawer-swipe-area.svelte'
 export { drawerAnatomy } from './drawer.anatomy'
 export { useDrawerContext, type UseDrawerContext } from './use-drawer-context'
 export { useDrawerStackContext, type UseDrawerStackContext } from './use-drawer-stack-context'

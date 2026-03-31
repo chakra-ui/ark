@@ -14,13 +14,13 @@
   },
   "dependencies": {
     "@ark-ui/react": "workspace:*",
-    "@biomejs/biome": "2.4.4",
+    "@biomejs/biome": "2.4.9",
     "@chakra-ui/better-auth": "0.3.0",
     "@effect/schema": "0.75.5",
-    "@icons-pack/react-simple-icons": "13.11.2",
-    "@pandacss/dev": "1.8.2",
-    "@pandacss/preset-base": "1.8.2",
-    "@pandacss/preset-panda": "1.8.2",
+    "@icons-pack/react-simple-icons": "13.13.0",
+    "@pandacss/dev": "1.9.1",
+    "@pandacss/preset-base": "1.9.1",
+    "@pandacss/preset-panda": "1.9.1",
     "@park-ui/panda-preset": "0.43.1",
     "@shikijs/langs": "4.0.2",
     "@shikijs/rehype": "4.0.2",
@@ -32,11 +32,11 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@uidotdev/usehooks": "2.4.1",
-    "@zag-js/anatomy-icons": "1.36.0",
-    "@zag-js/docs": "1.36.0",
+    "@zag-js/anatomy-icons": "1.38.2",
+    "@zag-js/docs": "1.38.2",
     "better-auth": "1.4.18",
     "effect": "3.19.19",
-    "lucide-react": "0.575.0",
+    "lucide-react": "1.7.0",
     "match-sorter": "8.2.0",
     "next": "15.5.12",
     "next-themes": "0.4.6",
@@ -51,5 +51,8 @@
     "ts-morph": "27.0.2",
     "typescript": "5.9.3",
     "velite": "0.3.1"
+  },
+  "devDependencies": {
+    "@types/mdast": "4.0.4"
   }
 }

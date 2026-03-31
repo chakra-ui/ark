@@ -14,6 +14,11 @@ export {
   type DrawerContentBaseProps as ContentBaseProps,
   type DrawerContentProps as ContentProps,
 } from './drawer-content'
+export {
+  DrawerDescription as Description,
+  type DrawerDescriptionBaseProps as DescriptionBaseProps,
+  type DrawerDescriptionProps as DescriptionProps,
+} from './drawer-description'
 export { DrawerContext as Context, type DrawerContextProps as ContextProps } from './drawer-context'
 export {
   DrawerIndent as Indent,
@@ -51,6 +56,11 @@ export {
   type DrawerRootProviderProps as RootProviderProps,
 } from './drawer-root-provider'
 export { DrawerStack as Stack, type DrawerStackProps as StackProps } from './drawer-stack'
+export {
+  DrawerSwipeArea as SwipeArea,
+  type DrawerSwipeAreaBaseProps as SwipeAreaBaseProps,
+  type DrawerSwipeAreaProps as SwipeAreaProps,
+} from './drawer-swipe-area'
 export {
   DrawerTitle as Title,
   type DrawerTitleBaseProps as TitleBaseProps,
