@@ -28,7 +28,7 @@ export const ComponentPreview = (props: Props) => {
     <>
       <Flex
         minH="40"
-        bg="bg.default"
+        bg="transparent"
         borderRadius="lg"
         borderWidth="1px"
         width="full"

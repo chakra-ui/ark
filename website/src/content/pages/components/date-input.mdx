@@ -1,0 +1,137 @@
+---
+id: date-input
+title: Date Input
+description: A segment-based date input that allows users to enter dates by navigating individual date parts.
+---
+
+<ComponentPreview id="DateInput" />
+
+## Anatomy
+
+<Anatomy id="date-input" />
+
+```tsx
+<DateInput.Root>
+  <DateInput.Label />
+  <DateInput.Control>
+    <DateInput.SegmentGroup>
+      <DateInput.Context>
+        {(api) =>
+           api.getSegments().map((segment: DateSegment, index: number) => (
+            <DateInput.Segment key={`${segment.type}-${index}`} segment={segment} />
+         ))
+        }
+         </DateInput.Context>
+    </DateInput.SegmentGroup>
+  </DateInput.Control>
+  <DateInput.HiddenInput />
+</DateInput.Root>
+```
+
+## Examples
+
+<Example id="basic" />
+
+### Default Value
+
+Use the `defaultValue` prop with `parseDate` to set the initial date value.
+
+<Example id="default-value" />
+
+### Controlled
+
+Use the `value` and `onValueChange` props to control the date input's value programmatically.
+
+<Example id="controlled" />
+
+### Root Provider
+
+An alternative way to control the date input is to use the `RootProvider` component and the `useDateInput` hook. This
+way you can access the state and methods from outside the component.
+
+<Example id="root-provider" />
+
+### Granularity
+
+Use the `granularity` prop to control which date fields are displayed. Supported values are `day`, `hour`, `minute`,
+and `second`.
+
+<Example id="granularity" />
+
+### Range
+
+To create a date input that allows a range selection, set the `selectionMode` prop to `range` and render two
+`SegmentGroup` components with `index` props set to `0` and `1`.
+
+<Example id="range" />
+
+### Min and Max
+
+Use the `min` and `max` props with `parseDate` to restrict the selectable date range. Dates outside this range will be
+marked as invalid.
+
+<Example id="min-max" />
+
+### Disabled
+
+Use the `disabled` prop to prevent user interaction with the date input.
+
+<Example id="disabled" />
+
+### Read Only
+
+Use the `readOnly` prop to make the date input non-editable while still being focusable.
+
+<Example id="read-only" />
+
+### Invalid
+
+Use the `invalid` prop to indicate an error state on the date input.
+
+<Example id="invalid" />
+
+### Localized
+
+Use the `locale` prop to set the language and regional formatting of the date segments.
+
+<Example id="localized" />
+
+### RTL
+
+Set the `dir` prop to `rtl` for right-to-left language support.
+
+<Example id="rtl" />
+
+### With Clear Button
+
+Use `useDateInput` via `RootProvider` to access the `clearValue` method and render a clear button alongside the input.
+
+<Example id="with-clear-button" />
+
+### With Date Picker
+
+Combine `DateInput` with `DatePicker` by syncing their values using `onValueChange` to provide both typed and
+calendar-based date selection.
+
+<Example id="with-date-picker" />
+
+### Field
+
+The `Field` component helps manage form-related state and accessibility attributes of a date input. It includes
+handling ARIA labels, helper text, and error text to ensure proper accessibility.
+
+<Example id="with-field" />
+
+## API Reference
+
+### Props
+
+<ComponentTypes id="date-input" />
+
+### Context
+
+<ContextType id="date-input" />
+
+## Accessibility
+
+Complies with the [Date Picker WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/).
