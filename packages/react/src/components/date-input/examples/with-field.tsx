@@ -2,7 +2,6 @@ import { Field } from '@ark-ui/react/field'
 import { DateInput } from '@ark-ui/react/date-input'
 import styles from 'styles/date-input.module.css'
 import field from 'styles/field.module.css'
-import type { DateSegment } from '@zag-js/date-input'
 
 export const WithField = () => {
   return (
@@ -15,8 +14,8 @@ export const WithField = () => {
               {(dateInput) =>
                 dateInput
                   .getSegments()
-                  .map((segment: DateSegment, index: number) => (
-                    <DateInput.Segment key={`${segment.type}-${index}`} segment={segment} />
+                  .map((segment, index) => (
+                    <DateInput.Segment className={styles.Segment} key={`${segment.type}-${index}`} segment={segment} />
                   ))
               }
             </DateInput.Context>

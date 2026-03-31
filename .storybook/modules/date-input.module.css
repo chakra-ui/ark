@@ -12,14 +12,14 @@
   font-weight: 500;
   color: var(--demo-neutral-fg);
   user-select: none;
-}
 
-.Label[data-disabled] {
-  opacity: 0.5;
-}
+  &[data-disabled] {
+    opacity: 0.5;
+  }
 
-.Label[data-invalid] {
-  color: var(--demo-error);
+  &[data-invalid] {
+    color: var(--demo-error);
+  }
 }
 
 .Control {
@@ -28,12 +28,12 @@
   gap: 0.5rem;
   width: 100%;
   flex-wrap: wrap;
-}
 
-.Control > span {
-  flex-shrink: 0;
-  color: var(--demo-neutral-emphasized);
-  font-size: 0.875rem;
+  & > span {
+    flex-shrink: 0;
+    color: var(--demo-neutral-emphasized);
+    font-size: 0.875rem;
+  }
 }
 
 .Input {
@@ -52,32 +52,31 @@
   border-radius: 0.375rem;
   outline: none;
   cursor: text;
+
+  &[data-focus] {
+    border-color: var(--demo-coral-solid);
+    box-shadow: 0 0 0 1px var(--demo-coral-solid);
+  }
+
+  &[data-invalid] {
+    border-color: var(--demo-error);
+  }
+
+  &[data-invalid][data-focus] {
+    box-shadow: 0 0 0 1px var(--demo-error);
+  }
+
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
+  &[data-readonly] {
+    background: var(--demo-neutral-bg-subtle);
+  }
 }
 
-.Input[data-focus] {
-  border-color: var(--demo-coral-solid);
-  box-shadow: 0 0 0 1px var(--demo-coral-solid);
-}
-
-.Input[data-invalid] {
-  border-color: var(--demo-error);
-}
-
-.Input[data-invalid][data-focus] {
-  box-shadow: 0 0 0 1px var(--demo-error);
-}
-
-.Input[data-disabled] {
-  opacity: 0.5;
-  filter: grayscale(100%);
-  cursor: not-allowed;
-}
-
-.Input[data-readonly] {
-  background: var(--demo-neutral-bg-subtle);
-}
-
-.Input [data-part='segment'] {
+.Segment {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -88,25 +87,21 @@
   caret-color: transparent;
   outline: none;
   font-variant-numeric: tabular-nums;
-  color: var(--demo-neutral-fg, #1a1a1a);
-}
+  color: var(--demo-neutral-fg);
 
-.Input [data-part='segment'][data-placeholder-shown] {
-  color: var(--demo-neutral-emphasized, #6b7280);
-}
+  &[data-placeholder-shown] {
+    color: var(--demo-neutral-emphasized);
+  }
 
-.Input [data-part='segment']:focus {
-  background: var(--demo-coral-solid, #e05a2b);
-  color: #fff;
-}
+  &:focus {
+    background: var(--demo-coral-solid);
+    color: #fff;
+  }
 
-.Input [data-part='segment'][data-type='literal'] {
-  padding: 0;
-  user-select: none;
-  min-width: unset;
-  color: var(--demo-neutral-emphasized, #6b7280);
-}
-
-.Input [data-part='segment'][data-disabled] {
-  cursor: not-allowed;
+  &[data-type='literal'] {
+    padding: 0;
+    user-select: none;
+    min-width: unset;
+    color: var(--demo-neutral-emphasized);
+  }
 }

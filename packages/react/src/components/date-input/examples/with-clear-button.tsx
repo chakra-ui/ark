@@ -1,5 +1,4 @@
 import { DateInput, useDateInput } from '@ark-ui/react/date-input'
-import type { DateSegment } from '@zag-js/date-input'
 import button from 'styles/button.module.css'
 import styles from 'styles/date-input.module.css'
 
@@ -15,8 +14,8 @@ export const WithClearButton = () => {
             {(dateInput) =>
               dateInput
                 .getSegments()
-                .map((segment: DateSegment, index: number) => (
-                  <DateInput.Segment key={`${segment.type}-${index}`} segment={segment} />
+                .map((segment, index) => (
+                  <DateInput.Segment className={styles.Segment} key={`${segment.type}-${index}`} segment={segment} />
                 ))
             }
           </DateInput.Context>

@@ -11,6 +11,7 @@ import styles from 'styles/date-input.module.css'
         <DateInput.Context v-slot="api">
           <DateInput.Segment
             v-for="(segment, index) in api.getSegments()"
+            :class="styles.Segment"
             :key="`${segment.type}-${index}`"
             :segment="segment"
           />

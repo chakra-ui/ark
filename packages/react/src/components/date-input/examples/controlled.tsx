@@ -1,6 +1,5 @@
 import { DateInput, parseDate } from '@ark-ui/react/date-input'
 import type { DateValue } from '@internationalized/date'
-import type { DateSegment } from '@zag-js/date-input'
 import { useState } from 'react'
 import styles from 'styles/date-input.module.css'
 
@@ -16,8 +15,8 @@ export const Controlled = () => {
             {(dateInput) =>
               dateInput
                 .getSegments()
-                .map((segment: DateSegment, index: number) => (
-                  <DateInput.Segment key={`${segment.type}-${index}`} segment={segment} />
+                .map((segment, index) => (
+                  <DateInput.Segment className={styles.Segment} key={`${segment.type}-${index}`} segment={segment} />
                 ))
             }
           </DateInput.Context>

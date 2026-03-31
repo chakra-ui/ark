@@ -1,5 +1,4 @@
 import { DateInput } from '@ark-ui/react/date-input'
-import type { DateSegment } from '@zag-js/date-input'
 import styles from 'styles/date-input.module.css'
 
 export const Invalid = () => (
@@ -11,8 +10,8 @@ export const Invalid = () => (
           {(dateInput) =>
             dateInput
               .getSegments()
-              .map((segment: DateSegment, index: number) => (
-                <DateInput.Segment key={`${segment.type}-${index}`} segment={segment} />
+              .map((segment, index) => (
+                <DateInput.Segment className={styles.Segment} key={`${segment.type}-${index}`} segment={segment} />
               ))
           }
         </DateInput.Context>

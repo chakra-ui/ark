@@ -12,7 +12,7 @@
       <DateInput.Context>
         {#snippet render(dateInput)}
           {#each dateInput().getSegments() as segment}
-            <DateInput.Segment {segment} />
+            <DateInput.Segment class={styles.Segment} {segment} />
           {/each}
         {/snippet}
       </DateInput.Context>

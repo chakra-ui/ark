@@ -14,6 +14,7 @@ const dateInput = useDateInput()
           <DateInput.Context v-slot="api">
             <DateInput.Segment
               v-for="(segment, index) in api.getSegments()"
+              :class="styles.Segment"
               :key="`${segment.type}-${index}`"
               :segment="segment"
             />

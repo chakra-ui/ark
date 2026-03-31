@@ -9,7 +9,9 @@ export const Range = () => (
       <DateInput.SegmentGroup index={0} class={styles.Input}>
         <DateInput.Context>
           {(dateInput) => (
-            <Index each={dateInput().getSegments()}>{(segment) => <DateInput.Segment segment={segment()} />}</Index>
+            <Index each={dateInput().getSegments()}>
+              {(segment) => <DateInput.Segment class={styles.Segment} segment={segment()} />}
+            </Index>
           )}
         </DateInput.Context>
       </DateInput.SegmentGroup>
@@ -17,7 +19,9 @@ export const Range = () => (
       <DateInput.SegmentGroup index={1} class={styles.Input}>
         <DateInput.Context>
           {(dateInput) => (
-            <Index each={dateInput().getSegments()}>{(segment) => <DateInput.Segment segment={segment()} />}</Index>
+            <Index each={dateInput().getSegments()}>
+              {(segment) => <DateInput.Segment class={styles.Segment} segment={segment()} />}
+            </Index>
           )}
         </DateInput.Context>
       </DateInput.SegmentGroup>

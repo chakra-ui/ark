@@ -27,7 +27,7 @@ export const WithDatePicker = () => {
               <DateInput.Context>
                 {(dateInput) => (
                   <Index each={dateInput().getSegments()}>
-                    {(segment) => <DateInput.Segment segment={segment()} />}
+                    {(segment) => <DateInput.Segment class={styles.Segment} segment={segment()} />}
                   </Index>
                 )}
               </DateInput.Context>
