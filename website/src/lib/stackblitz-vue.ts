@@ -1,4 +1,5 @@
 import sdk from '@stackblitz/sdk'
+import { getCssFiles, rewriteCssImports } from './css-module-transform'
 
 const tsconfigApp = {
   extends: '@vue/tsconfig/tsconfig.dom.json',
@@ -96,10 +97,6 @@ createApp(App).mount('#app')`
 
 const viteEnv = `/// <reference types="vite/client" />`
 
-function transformCssModuleImports(code: string): string {
-  return code.replace(/from\s+['"]styles\/[^'"]+\.module\.css['"]/g, "from './index.module.css'")
-}
-
 function generateGlobalCss(cssModules: Record<string, string>): string {
   const theme = cssModules['theme.css'] ?? ''
   const utilities = cssModules['utilities.css'] ?? ''
@@ -115,7 +112,7 @@ export async function openInStackblitzVue(opts: {
 }) {
   let { code, cssModules, id, component } = opts
 
-  code = transformCssModuleImports(code)
+  code = rewriteCssImports(code)
 
   const files: Record<string, string> = {
     'tsconfig.app.json': JSON.stringify(tsconfigApp, null, 2),
@@ -128,15 +125,7 @@ export async function openInStackblitzVue(opts: {
     'src/global.css': generateGlobalCss(cssModules),
     'src/main.ts': main,
     'src/vite-env.d.ts': viteEnv,
-  }
-
-  const componentCss = Object.entries(cssModules)
-    .filter(([filename]) => filename.endsWith('.module.css'))
-    .map(([, content]) => content)
-    .join('\n\n')
-
-  if (componentCss) {
-    files['src/index.module.css'] = componentCss
+    ...getCssFiles(cssModules),
   }
 
   sdk.openProject(

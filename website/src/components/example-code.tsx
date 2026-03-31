@@ -6,7 +6,7 @@ import { css } from 'styled-system/css'
 import { HStack } from 'styled-system/jsx'
 import { Switch } from '~/components/ui/switch'
 import { Tabs } from '~/components/ui/tabs'
-import { stripCssModuleCode, transformCssModuleImports } from '~/lib/css-module-transform'
+import { getPrimaryCssModules, rewriteCssImports, stripCss } from '~/lib/css-module-transform'
 import type { SupportedLang } from '~/lib/shiki-client'
 import { type Framework, openInStackblitz } from '~/lib/stackblitz'
 import { CodePreview } from './code-preview'
@@ -29,7 +29,7 @@ export const ExampleCodeTabs = (props: Props) => {
   const [showCss, setShowCss] = useState(true)
   const [activeTab, setActiveTab] = useState('code')
 
-  const componentCss = cssModules ? Object.entries(cssModules).filter(([key]) => key.endsWith('.module.css')) : []
+  const componentCss = cssModules ? getPrimaryCssModules(cssModules, meta?.component) : []
 
   const globalCssContent = cssModules
     ? [cssModules['theme.css'], cssModules['utilities.css'], cssModules['global.css']].filter(Boolean).join('\n\n')
@@ -38,12 +38,14 @@ export const ExampleCodeTabs = (props: Props) => {
   const hasComponentCss = componentCss.length > 0
   const hasGlobalCss = globalCssContent.length > 0
 
-  const displayCode = hasComponentCss && showCss ? transformCssModuleImports(code) : stripCssModuleCode(code)
+  const displayCode = hasComponentCss && showCss ? rewriteCssImports(code) : stripCss(code)
   const codeExtension = lang === 'vue' ? 'vue' : lang === 'svelte' ? 'svelte' : 'tsx'
+  const cssTabs =
+    hasComponentCss && showCss ? componentCss.map(([filename]) => ({ value: `css:${filename}`, label: filename })) : []
 
   const tabs = [
     { value: 'code', label: `index.${codeExtension}` },
-    ...(hasComponentCss && showCss ? [{ value: 'styles', label: 'index.module.css' }] : []),
+    ...cssTabs,
     ...(hasComponentCss && hasGlobalCss && showCss ? [{ value: 'global', label: 'global.css' }] : []),
   ]
 
@@ -104,13 +106,13 @@ export const ExampleCodeTabs = (props: Props) => {
         <CodePreview code={displayCode} lang={lang} />
       </Tabs.Content>
 
-      {hasComponentCss && showCss && (
-        <Tabs.Content value="styles" pt="0">
-          {componentCss.map(([filename, content]) => (
-            <CodePreview key={filename} code={content} lang="css" />
-          ))}
-        </Tabs.Content>
-      )}
+      {hasComponentCss &&
+        showCss &&
+        componentCss.map(([filename, content]) => (
+          <Tabs.Content key={filename} value={`css:${filename}`} pt="0">
+            <CodePreview code={content} lang="css" />
+          </Tabs.Content>
+        ))}
 
       {hasComponentCss && hasGlobalCss && showCss && (
         <Tabs.Content value="global" pt="0">

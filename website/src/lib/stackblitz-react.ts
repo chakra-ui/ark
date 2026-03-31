@@ -1,4 +1,5 @@
 import sdk from '@stackblitz/sdk'
+import { getCssFiles, rewriteCssImports } from './css-module-transform'
 
 const tsconfig = {
   compilerOptions: {
@@ -80,10 +81,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   </React.StrictMode>,
 )`
 
-function transformCssModuleImports(code: string): string {
-  return code.replace(/from\s+['"]styles\/[^'"]+\.module\.css['"]/g, "from './index.module.css'")
-}
-
 function generateGlobalCss(cssModules: Record<string, string>): string {
   const theme = cssModules['theme.css'] ?? ''
   const utilities = cssModules['utilities.css'] ?? ''
@@ -100,7 +97,7 @@ export async function openInStackblitzReact(opts: {
   let { code, cssModules, id, component } = opts
 
   code = code.replace(/export const \w+ =/, 'export const App =')
-  code = transformCssModuleImports(code)
+  code = rewriteCssImports(code)
 
   const files: Record<string, string> = {
     'tsconfig.json': JSON.stringify(tsconfig, null, 2),
@@ -110,15 +107,7 @@ export async function openInStackblitzReact(opts: {
     'src/App.tsx': code,
     'src/global.css': generateGlobalCss(cssModules),
     'src/main.tsx': main,
-  }
-
-  const componentCss = Object.entries(cssModules)
-    .filter(([filename]) => filename.endsWith('.module.css'))
-    .map(([, content]) => content)
-    .join('\n\n')
-
-  if (componentCss) {
-    files['src/index.module.css'] = componentCss
+    ...getCssFiles(cssModules),
   }
 
   sdk.openProject(

@@ -34,7 +34,8 @@ export const Example = async (props: Props) => {
           lang={lang}
           cssModules={cssModules}
           meta={{
-            ...props,
+            id: props.id,
+            component,
             framework,
           }}
         />
@@ -57,7 +58,8 @@ export const ExampleCode = async (props: Props) => {
       lang={lang}
       cssModules={cssModules}
       meta={{
-        ...props,
+        id: props.id,
+        component,
         framework,
       }}
     />
