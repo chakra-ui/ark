@@ -3,6 +3,7 @@ import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { ComponentUnderTest } from './basic'
 import { parseDate } from '@internationalized/date'
+import { DateInput } from '..'
 
 describe('Date Input', () => {
   it('should have no a11y violations', async () => {
@@ -79,5 +80,23 @@ describe('Date Input', () => {
     render(<ComponentUnderTest name="date" defaultValue={[parseDate('2024-06-15')]} />)
     const hiddenInput = document.querySelector('input[type="hidden"]')
     expect(hiddenInput).toHaveValue('6/15/2024')
+  })
+
+  it('should sync hidden input values for range selection by index', () => {
+    render(
+      <DateInput.Root
+        name="date"
+        selectionMode="range"
+        defaultValue={[parseDate('2024-06-15'), parseDate('2024-06-20')]}
+      >
+        <DateInput.HiddenInput index={0} />
+        <DateInput.HiddenInput index={1} />
+      </DateInput.Root>,
+    )
+
+    const hiddenInputs = document.querySelectorAll<HTMLInputElement>('input[type="hidden"]')
+    expect(hiddenInputs).toHaveLength(2)
+    expect(hiddenInputs[0]).toHaveValue('6/15/2024')
+    expect(hiddenInputs[1]).toHaveValue('6/20/2024')
   })
 })

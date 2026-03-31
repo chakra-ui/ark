@@ -1,8 +1,9 @@
 <script lang="ts">
+import type { HiddenInputProps } from '@zag-js/date-input'
 import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DateInputHiddenInputBaseProps extends PolymorphicProps {}
+export interface DateInputHiddenInputBaseProps extends PolymorphicProps, HiddenInputProps {}
 export interface DateInputHiddenInputProps
   extends
     DateInputHiddenInputBaseProps,
@@ -13,12 +14,12 @@ export interface DateInputHiddenInputProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useDateInputContext } from './use-date-input-context'
-import { useFieldContext } from '../field'
 import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory'
+import { useFieldContext } from '../field'
+import { useDateInputContext } from './use-date-input-context'
 
-defineProps<DateInputHiddenInputProps>()
+const props = defineProps<DateInputHiddenInputProps>()
 const dateInput = useDateInputContext()
 const field = useFieldContext()
 
@@ -26,7 +27,11 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.input :aria-describedby="field?.ariaDescribedby" v-bind="dateInput.getHiddenInputProps()" :as-child="asChild">
+  <ark.input
+    :aria-describedby="field?.ariaDescribedby"
+    v-bind="dateInput.getHiddenInputProps({ index: props.index, name: props.name })"
+    :as-child="asChild"
+  >
     <slot />
   </ark.input>
 </template>
