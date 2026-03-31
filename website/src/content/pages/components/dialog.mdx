@@ -54,7 +54,7 @@ in important ways:
 ### Lazy Mount
 
 Use `lazyMount` to render dialog content only when first opened. Combine with `unmountOnExit` to unmount when closed,
-freeing up resources.
+freeing up resources. Prefer this over conditionally rendering `Dialog.Root`—see **Conditional Rendering**.
 
 <Example id="lazy-mount" />
 
@@ -128,6 +128,39 @@ Intercept close attempts to show confirmation prompts, preventing data loss from
 - `closeOnInteractOutside={false}` - Prevent closing on outside click
 
 For conditional control, use `onEscapeKeyDown` or `onInteractOutside` with `e.preventDefault()`.
+
+### Conditional Rendering
+
+Unmounting `Dialog.Root` when toggling open state can break focus, scroll lock, and cleanup. Keep the root mounted and
+control it with `open` / `onOpenChange`.
+
+When you want portal content out of the DOM while closed, add `lazyMount` and `unmountOnExit` to the root.
+
+```tsx
+import { Dialog } from '@ark-ui/react/dialog'
+import { Portal } from '@ark-ui/react/portal'
+
+// ❌ Avoid
+const Dont = () => {
+  if (isOpen) {
+    return (
+      <Dialog.Root open={isOpen} onOpenChange={(e) => setOpen(e.open)}>
+        <Portal>...</Portal>
+      </Dialog.Root>
+    )
+  }
+  return null
+}
+
+// ✅ Prefer
+const Do = () => {
+  return (
+    <Dialog.Root open={isOpen} onOpenChange={(e) => setOpen(e.open)} lazyMount unmountOnExit>
+      <Portal>...</Portal>
+    </Dialog.Root>
+  )
+}
+```
 
 ### Z-Index Stacking
 
