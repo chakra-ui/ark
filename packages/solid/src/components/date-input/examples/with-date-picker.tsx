@@ -8,14 +8,12 @@ import datePickerStyles from 'styles/date-picker.module.css'
 
 export const WithDatePicker = () => {
   const datePicker = useDatePicker()
-  const dateInput = useDateInput({
-    get value() {
-      return datePicker().value
-    },
+  const dateInput = useDateInput(() => ({
+    value: datePicker().value,
     onValueChange(details) {
       datePicker().setValue(details.value)
     },
-  })
+  }))
 
   return (
     <DateInput.RootProvider class={styles.Root} value={dateInput}>
