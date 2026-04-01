@@ -1,4 +1,5 @@
 import { DateInput, useDateInput } from '@ark-ui/solid/date-input'
+import { XIcon } from 'lucide-solid'
 import { Index } from 'solid-js'
 import button from 'styles/button.module.css'
 import styles from 'styles/date-input.module.css'
@@ -19,8 +20,8 @@ export const WithClearButton = () => {
             )}
           </DateInput.Context>
         </DateInput.SegmentGroup>
-        <button class={button.Root} type="button" onClick={() => dateInput().clearValue()}>
-          Clear
+        <button aria-label="Clear date" class={button.Root} type="button" onClick={() => dateInput().clearValue()}>
+          <XIcon />
         </button>
       </DateInput.Control>
       <DateInput.HiddenInput />

@@ -1,4 +1,5 @@
 import { DateInput, useDateInput } from '@ark-ui/react/date-input'
+import { XIcon } from 'lucide-react'
 import button from 'styles/button.module.css'
 import styles from 'styles/date-input.module.css'
 
@@ -20,8 +21,8 @@ export const WithClearButton = () => {
             }
           </DateInput.Context>
         </DateInput.SegmentGroup>
-        <button className={button.Root} type="button" onClick={() => dateInput.clearValue()}>
-          Clear
+        <button aria-label="Clear date" className={button.Root} type="button" onClick={() => dateInput.clearValue()}>
+          <XIcon />
         </button>
       </DateInput.Control>
       <DateInput.HiddenInput />

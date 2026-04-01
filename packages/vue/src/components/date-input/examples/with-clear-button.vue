@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { DateInput, useDateInput } from '@ark-ui/vue/date-input'
+import { XIcon } from 'lucide-vue-next'
 import button from 'styles/button.module.css'
 import styles from 'styles/date-input.module.css'
 
@@ -20,7 +21,9 @@ const dateInput = useDateInput()
           />
         </DateInput.Context>
       </DateInput.SegmentGroup>
-      <button :class="button.Root" type="button" @click="dateInput.clearValue()">Clear</button>
+      <button aria-label="Clear date" :class="button.Root" type="button" @click="dateInput.clearValue()">
+        <XIcon />
+      </button>
     </DateInput.Control>
     <DateInput.HiddenInput />
   </DateInput.RootProvider>
