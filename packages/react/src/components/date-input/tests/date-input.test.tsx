@@ -19,12 +19,6 @@ describe('Date Input', () => {
     expect(segments).toHaveLength(3)
   })
 
-  it('should render all date segments', () => {
-    render(<ComponentUnderTest />)
-    const segments = screen.getAllByRole('spinbutton')
-    expect(segments).toHaveLength(3) // month, day, year
-  })
-
   it('should focus segment on click', async () => {
     render(<ComponentUnderTest />)
     const [monthSegment] = screen.getAllByRole('spinbutton')

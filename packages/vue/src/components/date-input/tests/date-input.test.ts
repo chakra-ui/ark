@@ -1,8 +1,9 @@
 import { parseDate } from '@internationalized/date'
 import { render, screen } from '@testing-library/vue'
+import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { DateInput } from '..'
 import ComponentUnderTest from './date-input.test.vue'
+import RangeComponentUnderTest from './date-input-range.test.vue'
 
 describe('Date Input', () => {
   it('should have no a11y violations', async () => {
@@ -16,6 +17,13 @@ describe('Date Input', () => {
     expect(screen.getByText('Date')).toBeInTheDocument()
     const segments = screen.getAllByRole('spinbutton')
     expect(segments).toHaveLength(3)
+  })
+
+  it('should focus segment on click', async () => {
+    render(ComponentUnderTest)
+    const [monthSegment] = screen.getAllByRole('spinbutton')
+    await user.click(monthSegment)
+    expect(monthSegment).toHaveFocus()
   })
 
   it('should be disabled when disabled prop is passed', () => {
@@ -53,23 +61,12 @@ describe('Date Input', () => {
   })
 
   it('should sync hidden input values for range selection by index', () => {
-    render(
-      {
-        components: { DateInput },
-        setup() {
-          return {
-            defaultValue: [parseDate('2024-06-15'), parseDate('2024-06-20')],
-          }
-        },
-        template: `
-          <DateInput.Root name="date" selectionMode="range" :defaultValue="defaultValue">
-            <DateInput.HiddenInput :index="0" />
-            <DateInput.HiddenInput :index="1" />
-          </DateInput.Root>
-        `,
+    render(RangeComponentUnderTest, {
+      props: {
+        name: 'date',
+        defaultValue: [parseDate('2024-06-15'), parseDate('2024-06-20')],
       },
-      {},
-    )
+    })
 
     const hiddenInputs = document.querySelectorAll<HTMLInputElement>('input[type="hidden"]')
     expect(hiddenInputs).toHaveLength(2)
