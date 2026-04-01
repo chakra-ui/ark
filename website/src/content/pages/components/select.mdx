@@ -154,14 +154,6 @@ const App = () => {
 }
 ```
 
-### Nested Usage
-
-When using the Select component within a `Popover` or `Dialog`, avoid rendering its content within a `Portal` or
-`Teleport`.
-
-This ensures the Select's content stays within the Popover/Dialog's DOM hierarchy rather than being portalled to the
-document body, maintaining proper interaction and accessibility behavior.
-
 ### Hidden Select
 
 The `Select.HiddenSelect` component renders a native HTML `<select>` element that's visually hidden but remains in the
@@ -180,6 +172,26 @@ DOM. This component is essential for:
 ```
 
 The hidden select automatically syncs with the Select component's value, ensuring form data is always up-to-date.
+
+### Virtualization
+
+For virtualized lists with many items, avoid using `Select.HiddenSelect` as it renders an `<option>` for every item in
+the collection. Instead, create a lightweight hidden input:
+
+```tsx
+import { Select, useSelectContext } from '@ark-ui/react/select'
+
+const SelectHiddenInput = ({ name }: { name: string }) => {
+  const select = useSelectContext()
+  return (
+    <>
+      {select.value.map((value) => (
+        <input key={value} type="hidden" name={name} value={value} />
+      ))}
+    </>
+  )
+}
+```
 
 ### Empty State
 

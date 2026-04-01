@@ -54,6 +54,25 @@ you can access the state and methods from outside the component.
 
 <Example id="root-provider" />
 
+## Guides
+
+### Styling the Circle
+
+The circular progress component uses CSS variables to control the size and thickness of the circle. Set these variables
+on `Progress.Circle` to customize the appearance:
+
+```css
+[data-scope='progress'][data-part='circle'] {
+  --size: 120px;
+  --thickness: 10px;
+}
+```
+
+| Variable      | Description                          |
+| ------------- | ------------------------------------ |
+| `--size`      | The width and height of the circle   |
+| `--thickness` | The stroke width of the circle track |
+
 ## API Reference
 
 <ComponentTypes id="progress" />
