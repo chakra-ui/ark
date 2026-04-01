@@ -7,6 +7,9 @@ import { cleanProps } from '../../utils/clean-props'
 import type { RootEmits } from './date-input.types'
 
 export interface UseDateInputProps extends Optional<Omit<dateInput.Props, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The v-model value of the date input
+   */
   modelValue?: dateInput.Props['value']
 }
 
@@ -39,6 +42,6 @@ export const useDateInput = (props: MaybeRef<UseDateInputProps> = {}, emit?: Emi
     }
   })
 
-  const service = useMachine(dateInput.machine as any, context)
-  return computed(() => dateInput.connect(service as any, normalizeProps))
+  const service = useMachine(dateInput.machine, context)
+  return computed(() => dateInput.connect(service, normalizeProps))
 }

@@ -10,7 +10,7 @@ const datePicker = useDatePicker()
 const dateInput = useDateInput(
   computed(() => ({
     value: datePicker.value.value,
-    onValueChange(details: { value: typeof datePicker.value.value }) {
+    onValueChange(details) {
       datePicker.value.setValue(details.value)
     },
   })),
