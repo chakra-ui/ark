@@ -22,6 +22,39 @@
   }
 }
 
+.CheckboxLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--demo-neutral-fg);
+  user-select: none;
+}
+
+.Checkbox {
+  accent-color: var(--demo-coral-solid);
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.25rem;
+  background: var(--demo-bg);
+  cursor: pointer;
+  flex-shrink: 0;
+
+  &:checked {
+    border-color: var(--demo-coral-solid);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--demo-coral-solid) 30%, transparent);
+  }
+}
+
 .Control {
   display: flex;
   align-items: center;

@@ -5,6 +5,7 @@ import DefaultValueExample from './examples/default-value.svelte'
 import DisabledExample from './examples/disabled.svelte'
 import GranularityExample from './examples/granularity.svelte'
 import InvalidExample from './examples/invalid.svelte'
+import LeadingZerosExample from './examples/leading-zeros.svelte'
 import LocalizedExample from './examples/localized.svelte'
 import MinMaxExample from './examples/min-max.svelte'
 import RangeExample from './examples/range.svelte'
@@ -53,6 +54,12 @@ export const Granularity = {
 export const Invalid = {
   render: () => ({
     Component: InvalidExample,
+  }),
+}
+
+export const LeadingZeros = {
+  render: () => ({
+    Component: LeadingZerosExample,
   }),
 }
 

@@ -1,14 +1,17 @@
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDateInputContext } from './use-date-input-context'
+import type { SegmentGroupProps } from '@zag-js/date-input'
+import { createSplitProps } from '../../utils/create-split-props'
 
-export interface DateInputSegmentGroupBaseProps extends PolymorphicProps<'div'> {
-  index?: number
-}
+export interface DateInputSegmentGroupBaseProps extends PolymorphicProps<'div'>, SegmentGroupProps {}
 export interface DateInputSegmentGroupProps extends HTMLProps<'div'>, DateInputSegmentGroupBaseProps {}
 
-export const DateInputSegmentGroup = ({ index, ...props }: DateInputSegmentGroupProps) => {
+const splitSegmentGroupProps = createSplitProps<SegmentGroupProps>()
+
+export const DateInputSegmentGroup = (props: DateInputSegmentGroupProps) => {
   const api = useDateInputContext()
-  const mergedProps = mergeProps(() => api().getSegmentGroupProps({ index }), props)
+  const [segmentGroupProps, localProps] = splitSegmentGroupProps(props, ['index'])
+  const mergedProps = mergeProps(() => api().getSegmentGroupProps(segmentGroupProps), localProps)
   return <ark.div {...mergedProps} />
 }

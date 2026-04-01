@@ -116,6 +116,7 @@ import * as DateInput_DefaultValue from '@examples/date-input/examples/default-v
 import * as DateInput_Disabled from '@examples/date-input/examples/disabled'
 import * as DateInput_Granularity from '@examples/date-input/examples/granularity'
 import * as DateInput_Invalid from '@examples/date-input/examples/invalid'
+import * as DateInput_LeadingZeros from '@examples/date-input/examples/leading-zeros'
 import * as DateInput_Localized from '@examples/date-input/examples/localized'
 import * as DateInput_MinMax from '@examples/date-input/examples/min-max'
 import * as DateInput_Range from '@examples/date-input/examples/range'
@@ -702,6 +703,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'date-input/disabled': DateInput_Disabled,
   'date-input/granularity': DateInput_Granularity,
   'date-input/invalid': DateInput_Invalid,
+  'date-input/leading-zeros': DateInput_LeadingZeros,
   'date-input/localized': DateInput_Localized,
   'date-input/min-max': DateInput_MinMax,
   'date-input/range': DateInput_Range,

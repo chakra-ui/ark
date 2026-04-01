@@ -6,6 +6,7 @@ import DefaultValueExample from './examples/default-value.vue'
 import DisabledExample from './examples/disabled.vue'
 import GranularityExample from './examples/granularity.vue'
 import InvalidExample from './examples/invalid.vue'
+import LeadingZerosExample from './examples/leading-zeros.vue'
 import LocalizedExample from './examples/localized.vue'
 import MinMaxExample from './examples/min-max.vue'
 import RangeExample from './examples/range.vue'
@@ -59,6 +60,13 @@ export const Granularity = {
 export const Invalid = {
   render: () => ({
     components: { Component: InvalidExample },
+    template: '<Component />',
+  }),
+}
+
+export const LeadingZeros = {
+  render: () => ({
+    components: { Component: LeadingZerosExample },
     template: '<Component />',
   }),
 }

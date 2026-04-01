@@ -1,10 +1,9 @@
 <script lang="ts">
+import type { SegmentGroupProps } from '@zag-js/date-input'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DateInputSegmentGroupBaseProps extends PolymorphicProps {
-  index?: number
-}
+export interface DateInputSegmentGroupBaseProps extends PolymorphicProps, SegmentGroupProps {}
 export interface DateInputSegmentGroupProps
   extends
     DateInputSegmentGroupBaseProps,
@@ -21,12 +20,13 @@ import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<DateInputSegmentGroupProps>()
 const dateInput = useDateInputContext()
+const segmentGroupProps = { index: props.index }
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="dateInput.getSegmentGroupProps({ index: props.index })" :as-child="asChild">
+  <ark.div v-bind="dateInput.getSegmentGroupProps(segmentGroupProps)" :as-child="asChild">
     <slot />
   </ark.div>
 </template>
