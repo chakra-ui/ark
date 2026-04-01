@@ -110,6 +110,21 @@ import * as Combobox_RehydrateValue from '@examples/combobox/examples/rehydrate-
 import * as Combobox_RootProvider from '@examples/combobox/examples/root-provider'
 import * as Combobox_Virtualized from '@examples/combobox/examples/virtualized'
 import * as Combobox_WithField from '@examples/combobox/examples/with-field'
+import * as DateInput_Basic from '@examples/date-input/examples/basic'
+import * as DateInput_Controlled from '@examples/date-input/examples/controlled'
+import * as DateInput_DefaultValue from '@examples/date-input/examples/default-value'
+import * as DateInput_Disabled from '@examples/date-input/examples/disabled'
+import * as DateInput_Granularity from '@examples/date-input/examples/granularity'
+import * as DateInput_Invalid from '@examples/date-input/examples/invalid'
+import * as DateInput_LeadingZeros from '@examples/date-input/examples/leading-zeros'
+import * as DateInput_Localized from '@examples/date-input/examples/localized'
+import * as DateInput_MinMax from '@examples/date-input/examples/min-max'
+import * as DateInput_Range from '@examples/date-input/examples/range'
+import * as DateInput_ReadOnly from '@examples/date-input/examples/read-only'
+import * as DateInput_RootProvider from '@examples/date-input/examples/root-provider'
+import * as DateInput_Rtl from '@examples/date-input/examples/rtl'
+import * as DateInput_WithClearButton from '@examples/date-input/examples/with-clear-button'
+import * as DateInput_WithDatePicker from '@examples/date-input/examples/with-date-picker'
 import * as DatePicker_Basic from '@examples/date-picker/examples/basic'
 import * as DatePicker_Controlled from '@examples/date-picker/examples/controlled'
 import * as DatePicker_CustomCalendar from '@examples/date-picker/examples/custom-calendar'
@@ -682,6 +697,21 @@ const exampleModules: Record<string, ExampleModule> = {
   'combobox/root-provider': Combobox_RootProvider,
   'combobox/virtualized': Combobox_Virtualized,
   'combobox/with-field': Combobox_WithField,
+  'date-input/basic': DateInput_Basic,
+  'date-input/controlled': DateInput_Controlled,
+  'date-input/default-value': DateInput_DefaultValue,
+  'date-input/disabled': DateInput_Disabled,
+  'date-input/granularity': DateInput_Granularity,
+  'date-input/invalid': DateInput_Invalid,
+  'date-input/leading-zeros': DateInput_LeadingZeros,
+  'date-input/localized': DateInput_Localized,
+  'date-input/min-max': DateInput_MinMax,
+  'date-input/range': DateInput_Range,
+  'date-input/read-only': DateInput_ReadOnly,
+  'date-input/root-provider': DateInput_RootProvider,
+  'date-input/rtl': DateInput_Rtl,
+  'date-input/with-clear-button': DateInput_WithClearButton,
+  'date-input/with-date-picker': DateInput_WithDatePicker,
   'date-picker/basic': DatePicker_Basic,
   'date-picker/controlled': DatePicker_Controlled,
   'date-picker/custom-calendar': DatePicker_CustomCalendar,

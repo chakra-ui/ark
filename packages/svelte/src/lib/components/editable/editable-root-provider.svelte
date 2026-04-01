@@ -15,7 +15,7 @@
 
   let { ref = $bindable(null), value, ...props }: EditableRootProviderProps = $props()
 
-  EditableProvider(value)
+  EditableProvider(() => value())
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 </script>

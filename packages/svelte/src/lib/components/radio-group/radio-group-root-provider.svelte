@@ -19,7 +19,7 @@
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  RadioGroupProvider(value)
+  RadioGroupProvider(() => value())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

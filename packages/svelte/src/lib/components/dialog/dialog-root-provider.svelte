@@ -28,7 +28,7 @@
 
   const presence = usePresence(() => presenceMachineProps)
 
-  DialogProvider(value)
+  DialogProvider(() => value())
   RenderStrategyPropsProvider(() => renderStrategyProps)
   PresenceProvider(presence)
 </script>

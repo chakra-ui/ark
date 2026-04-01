@@ -13,14 +13,14 @@
 
   let { ref = $bindable(null), ...props }: SliderDraggingIndicatorProps = $props()
   const slider = useSliderContext()
-  const { index } = useSliderThumbPropsContext()
-  const mergedProps = $derived(mergeProps(slider().getDraggingIndicatorProps({ index }), props))
+  const thumbProps = useSliderThumbPropsContext()
+  const mergedProps = $derived(mergeProps(slider().getDraggingIndicatorProps(thumbProps()), props))
 </script>
 
 <Ark as="span" bind:ref {...mergedProps}>
   {#if props.children}
     {@render props.children()}
   {:else}
-    {slider().getThumbValue(index)}
+    {slider().getThumbValue(thumbProps().index)}
   {/if}
 </Ark>

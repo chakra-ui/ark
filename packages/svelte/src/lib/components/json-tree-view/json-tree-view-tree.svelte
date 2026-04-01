@@ -10,7 +10,7 @@
   const props: JsonTreeViewTreeProps = $props()
 
   const splitTreeNodeProps = createSplitProps<JsonTreeViewNodeBaseProps>()
-  const [nodeProps, treeProps] = splitTreeNodeProps(props, ['arrow', 'indentGuide', 'renderValue'])
+  const [nodeProps, treeProps] = $derived(splitTreeNodeProps(props, ['arrow', 'indentGuide', 'renderValue']))
 
   const tree = useTreeViewContext()
   const children = $derived(tree().collection.getNodeChildren(tree().collection.rootNode))

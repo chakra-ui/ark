@@ -21,7 +21,7 @@
 
   let { ref = $bindable(null), value, ...props }: PinInputRootProviderProps = $props()
 
-  PinInputProvider(value)
+  PinInputProvider(() => value())
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 </script>
 

@@ -15,11 +15,10 @@
   import { Ark } from '../factory'
   import { MarqueeProvider } from './use-marquee-context'
 
-  let { ref = $bindable(null), ...props }: MarqueeRootProviderProps = $props()
-  const { value: marquee, ...localProps } = props
-  const mergedProps = $derived(mergeProps(marquee().getRootProps(), localProps))
+  let { ref = $bindable(null), value, ...props }: MarqueeRootProviderProps = $props()
+  const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  MarqueeProvider(marquee)
+  MarqueeProvider(() => value())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

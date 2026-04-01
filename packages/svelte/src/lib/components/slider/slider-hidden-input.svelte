@@ -14,7 +14,7 @@
   let { ref = $bindable(null), ...props }: SliderHiddenInputProps = $props()
   const slider = useSliderContext()
   const thumbProps = useSliderThumbPropsContext()
-  const mergedProps = $derived(mergeProps(slider().getHiddenInputProps(thumbProps), props))
+  const mergedProps = $derived(mergeProps(slider().getHiddenInputProps(thumbProps()), props))
 </script>
 
 <Ark as="input" bind:ref {...mergedProps} />

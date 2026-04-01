@@ -15,7 +15,7 @@ export interface DatePickerTableProps
 
 <script setup lang="ts">
 import { ark } from '../factory'
-import { useId } from 'vue'
+import { computed, useId } from 'vue'
 import { useDatePickerContext } from './use-date-picker-context'
 import { DatePickerTablePropsProvider } from './use-date-picker-table-props-context'
 import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
@@ -26,15 +26,15 @@ const datePicker = useDatePickerContext()
 const viewProps = useDatePickerViewPropsContext()
 
 const uid = useId()
-const id = props.id ?? uid
+const tableProps = computed(() => ({ ...props, id: props.id ?? uid, ...viewProps }))
 
-DatePickerTablePropsProvider({ ...props, id, ...viewProps })
+DatePickerTablePropsProvider(tableProps)
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.table v-bind="datePicker.getTableProps(props)" :as-child="asChild">
+  <ark.table v-bind="datePicker.getTableProps(tableProps)" :as-child="asChild">
     <slot />
   </ark.table>
 </template>

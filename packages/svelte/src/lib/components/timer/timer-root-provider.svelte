@@ -12,11 +12,10 @@
   export interface TimerRootProviderBaseProps extends RootProviderProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface TimerRootProviderProps extends HTMLProps<'div'>, TimerRootProviderBaseProps {}
 
-  let { ref = $bindable(null), ...props }: TimerRootProviderProps = $props()
-  const { value: timer, ...localProps } = props
-  const mergedProps = $derived(mergeProps(timer().getRootProps(), localProps))
+  let { ref = $bindable(null), value, ...props }: TimerRootProviderProps = $props()
+  const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  TimerProvider(timer)
+  TimerProvider(() => value())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

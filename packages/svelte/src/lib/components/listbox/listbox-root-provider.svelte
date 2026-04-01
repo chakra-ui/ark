@@ -29,7 +29,7 @@
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  ListboxProvider(value)
+  ListboxProvider(() => value())
 </script>
 
 <Ark as="div" {...mergedProps} />

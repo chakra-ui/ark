@@ -33,7 +33,7 @@
   const [renderStrategyProps, treeViewProps] = $derived(splitRenderStrategyProps(props))
   const mergedProps = $derived(mergeProps(value().getRootProps(), treeViewProps))
 
-  TreeViewProvider(value)
+  TreeViewProvider(() => value())
   RenderStrategyPropsProvider(() => renderStrategyProps)
 </script>
 

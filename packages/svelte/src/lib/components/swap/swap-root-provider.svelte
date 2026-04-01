@@ -17,7 +17,7 @@
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  SwapProvider(value)
+  SwapProvider(() => value())
 </script>
 
 <Ark as="span" bind:ref {...mergedProps}>

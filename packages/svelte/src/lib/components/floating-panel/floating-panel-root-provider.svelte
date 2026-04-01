@@ -21,7 +21,7 @@
   let { value, children, ...presenceProps }: FloatingPanelRootProviderProps = $props()
   const presence = usePresence(() => mergeProps({ present: value().open }, presenceProps))
 
-  FloatingPanelProvider(value)
+  FloatingPanelProvider(() => value())
   PresenceProvider(presence)
 </script>
 

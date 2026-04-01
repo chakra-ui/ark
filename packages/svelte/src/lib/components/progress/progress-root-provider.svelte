@@ -18,7 +18,7 @@
   let { ref = $bindable(null), value: progress, ...localProps }: ProgressRootProviderProps = $props()
   const mergedProps = $derived(mergeProps(progress().getRootProps(), localProps))
 
-  ProgressProvider(progress)
+  ProgressProvider(() => progress())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

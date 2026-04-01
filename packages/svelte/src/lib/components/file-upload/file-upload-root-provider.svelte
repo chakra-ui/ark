@@ -18,7 +18,7 @@
   let { ref = $bindable(null), value, ...props }: FileUploadRootProviderProps = $props()
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  FileUploadProvider(value)
+  FileUploadProvider(() => value())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

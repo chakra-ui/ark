@@ -15,8 +15,9 @@
 
   let { ref = $bindable(null), value, ...props }: ImageCropperRootProviderProps = $props()
 
-  ImageCropperProvider(value)
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
+
+  ImageCropperProvider(() => value())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

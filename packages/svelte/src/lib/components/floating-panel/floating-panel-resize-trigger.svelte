@@ -17,7 +17,7 @@
   import { useFloatingPanelContext } from './use-floating-panel-context.js'
 
   let { ref = $bindable(null), ...props }: FloatingPanelResizeTriggerProps = $props()
-  const [resizeProps, localProps] = createSplitProps<ResizeTriggerProps>()(props, ['axis'])
+  const [resizeProps, localProps] = $derived(createSplitProps<ResizeTriggerProps>()(props, ['axis']))
 
   const floatingPanel = useFloatingPanelContext()
   const mergedProps = $derived(mergeProps(floatingPanel().getResizeTriggerProps(resizeProps), localProps))

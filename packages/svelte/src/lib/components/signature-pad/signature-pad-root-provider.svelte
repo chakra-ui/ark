@@ -17,7 +17,7 @@
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  SignaturePadProvider(value)
+  SignaturePadProvider(() => value())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

@@ -18,7 +18,7 @@
   let { ref = $bindable(null), value, ...props }: CollapsibleRootProviderProps = $props()
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  CollapsibleProvider(value)
+  CollapsibleProvider(() => value())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

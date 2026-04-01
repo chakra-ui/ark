@@ -17,7 +17,7 @@
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  SplitterProvider(value)
+  SplitterProvider(() => value())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

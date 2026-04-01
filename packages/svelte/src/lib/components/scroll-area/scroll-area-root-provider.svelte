@@ -14,7 +14,7 @@
 
   let { value, ref = $bindable(null), ...props }: ScrollAreaRootProviderProps = $props()
 
-  ScrollAreaProvider(value)
+  ScrollAreaProvider(() => value())
 </script>
 
 <Ark as="div" bind:ref {...props} />
