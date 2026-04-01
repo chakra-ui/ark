@@ -25,7 +25,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.input v-bind="colorPicker.getChannelInputProps(props as any)" :as-child="asChild">
+  <ark.input v-bind="colorPicker.getChannelInputProps(props)" :as-child="asChild">
     <slot />
   </ark.input>
 </template>
