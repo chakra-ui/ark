@@ -22,8 +22,8 @@ export const useDateInput = (props?: MaybeFunction<UseDateInputProps>): UseDateI
     }
   })
 
-  const service = useMachine(dateInput.machine as any, () => machineProps)
-  const api = $derived(dateInput.connect(service as any, normalizeProps))
+  const service = useMachine(dateInput.machine, () => machineProps)
+  const api = $derived(dateInput.connect(service, normalizeProps))
 
   return () => api
 }

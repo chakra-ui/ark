@@ -21,6 +21,6 @@ export const useDateInput = (props?: MaybeAccessor<UseDateInputProps>): UseDateI
     ...runIfFn(props),
   }))
 
-  const service = useMachine(dateInput.machine as any, machineProps)
-  return createMemo(() => dateInput.connect(service as any, normalizeProps))
+  const service = useMachine(dateInput.machine, machineProps)
+  return createMemo(() => dateInput.connect(service, normalizeProps))
 }
