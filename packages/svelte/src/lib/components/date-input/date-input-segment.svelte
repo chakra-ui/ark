@@ -8,13 +8,15 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
+  import { createSplitProps } from '$lib/utils/create-split-props.js'
   import { Ark } from '../factory/index.js'
   import { useDateInputContext } from './use-date-input-context.js'
 
-  let { ref = $bindable(null), segment, index, ...props }: DateInputSegmentProps = $props()
+  let { ref = $bindable(null), ...props }: DateInputSegmentProps = $props()
 
   const dateInput = useDateInputContext()
-  const mergedProps = $derived(mergeProps(dateInput().getSegmentProps({ segment, index }), props))
+  const [segmentProps, localProps] = $derived(createSplitProps<SegmentProps>()(props, ['segment', 'index']))
+  const mergedProps = $derived(mergeProps(dateInput().getSegmentProps(segmentProps), localProps))
 </script>
 
-<Ark as="span" bind:ref {...mergedProps}>{segment.text}</Ark>
+<Ark as="span" bind:ref {...mergedProps}>{segmentProps.segment.text}</Ark>
