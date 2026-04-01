@@ -16,22 +16,16 @@ export interface DateInputHiddenInputProps
 <script setup lang="ts">
 import { useForwardExpose } from '../../utils/use-forward-expose'
 import { ark } from '../factory'
-import { useFieldContext } from '../field'
 import { useDateInputContext } from './use-date-input-context'
 
 const props = defineProps<DateInputHiddenInputProps>()
 const dateInput = useDateInputContext()
-const field = useFieldContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.input
-    :aria-describedby="field?.ariaDescribedby"
-    v-bind="dateInput.getHiddenInputProps({ index: props.index, name: props.name })"
-    :as-child="asChild"
-  >
+  <ark.input v-bind="dateInput.getHiddenInputProps({ index: props.index, name: props.name })" :as-child="asChild">
     <slot />
   </ark.input>
 </template>
