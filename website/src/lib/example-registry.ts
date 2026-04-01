@@ -124,7 +124,6 @@ import * as DateInput_RootProvider from '@examples/date-input/examples/root-prov
 import * as DateInput_Rtl from '@examples/date-input/examples/rtl'
 import * as DateInput_WithClearButton from '@examples/date-input/examples/with-clear-button'
 import * as DateInput_WithDatePicker from '@examples/date-input/examples/with-date-picker'
-import * as DateInput_WithField from '@examples/date-input/examples/with-field'
 import * as DatePicker_Basic from '@examples/date-picker/examples/basic'
 import * as DatePicker_Controlled from '@examples/date-picker/examples/controlled'
 import * as DatePicker_CustomCalendar from '@examples/date-picker/examples/custom-calendar'
@@ -711,7 +710,6 @@ const exampleModules: Record<string, ExampleModule> = {
   'date-input/rtl': DateInput_Rtl,
   'date-input/with-clear-button': DateInput_WithClearButton,
   'date-input/with-date-picker': DateInput_WithDatePicker,
-  'date-input/with-field': DateInput_WithField,
   'date-picker/basic': DatePicker_Basic,
   'date-picker/controlled': DatePicker_Controlled,
   'date-picker/custom-calendar': DatePicker_CustomCalendar,

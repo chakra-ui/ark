@@ -13,7 +13,6 @@ import RootProviderExample from './examples/root-provider.svelte'
 import RTLExample from './examples/rtl.svelte'
 import WithClearButtonExample from './examples/with-clear-button.svelte'
 import WithDatePickerExample from './examples/with-date-picker.svelte'
-import WithFieldExample from './examples/with-field.svelte'
 
 const meta: Meta = {
   title: 'Components / Date Input',
@@ -102,11 +101,5 @@ export const WithClearButton = {
 export const WithDatePicker = {
   render: () => ({
     Component: WithDatePickerExample,
-  }),
-}
-
-export const WithField = {
-  render: () => ({
-    Component: WithFieldExample,
   }),
 }

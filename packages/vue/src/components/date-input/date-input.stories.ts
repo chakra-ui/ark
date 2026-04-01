@@ -14,7 +14,6 @@ import RootProviderExample from './examples/root-provider.vue'
 import RTLExample from './examples/rtl.vue'
 import WithClearButtonExample from './examples/with-clear-button.vue'
 import WithDatePickerExample from './examples/with-date-picker.vue'
-import WithFieldExample from './examples/with-field.vue'
 
 const meta: Meta = {
   title: 'Components / Date Input',
@@ -116,13 +115,6 @@ export const WithClearButton = {
 export const WithDatePicker = {
   render: () => ({
     components: { Component: WithDatePickerExample },
-    template: '<Component />',
-  }),
-}
-
-export const WithField = {
-  render: () => ({
-    components: { Component: WithFieldExample },
     template: '<Component />',
   }),
 }
