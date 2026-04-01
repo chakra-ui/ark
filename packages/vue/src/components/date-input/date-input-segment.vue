@@ -1,12 +1,9 @@
 <script lang="ts">
-import type * as dateInput from '@zag-js/date-input'
+import type { SegmentProps } from '@zag-js/date-input'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DateInputSegmentBaseProps extends PolymorphicProps {
-  segment: dateInput.DateSegment
-  index?: number
-}
+export interface DateInputSegmentBaseProps extends PolymorphicProps, SegmentProps {}
 export interface DateInputSegmentProps
   extends
     DateInputSegmentBaseProps,

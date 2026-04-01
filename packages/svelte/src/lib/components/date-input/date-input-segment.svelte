@@ -1,11 +1,8 @@
 <script module lang="ts">
-  import type * as dateInput from '@zag-js/date-input'
+  import type { SegmentProps } from '@zag-js/date-input'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface DateInputSegmentBaseProps extends PolymorphicProps<'span'>, RefAttribute {
-    segment: dateInput.DateSegment
-    index?: number
-  }
+  export interface DateInputSegmentBaseProps extends PolymorphicProps<'span'>, RefAttribute, SegmentProps {}
   export interface DateInputSegmentProps extends Assign<HTMLProps<'span'>, DateInputSegmentBaseProps> {}
 </script>
 

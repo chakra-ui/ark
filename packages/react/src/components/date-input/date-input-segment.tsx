@@ -1,13 +1,10 @@
-import type * as dateInput from '@zag-js/date-input'
+import type { SegmentProps } from '@zag-js/date-input'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDateInputContext } from './use-date-input-context'
 
-export interface DateInputSegmentBaseProps extends PolymorphicProps {
-  segment: dateInput.DateSegment
-  index?: number
-}
+export interface DateInputSegmentBaseProps extends PolymorphicProps, SegmentProps {}
 
 export interface DateInputSegmentProps extends HTMLProps<'span'>, DateInputSegmentBaseProps {}
 
