@@ -22,7 +22,7 @@
   const [presenceProps, localProps] = $derived(splitPresenceProps(props))
   const presence = usePresence(() => ({ present: value().open, ...presenceProps }))
 
-  HoverCardProvider(value)
+  HoverCardProvider(() => value())
   PresenceProvider(presence)
 </script>
 

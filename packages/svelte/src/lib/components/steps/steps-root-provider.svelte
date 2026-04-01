@@ -17,7 +17,7 @@
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  StepsProvider(value)
+  StepsProvider(() => value())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

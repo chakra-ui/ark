@@ -12,7 +12,7 @@
   import { SliderThumbPropsProvider } from './use-slider-thumb-props-context'
 
   let { value, children }: SliderThumbPropsProviderProps = $props()
-  SliderThumbPropsProvider(value)
+  SliderThumbPropsProvider(() => value)
 </script>
 
 {@render children?.()}

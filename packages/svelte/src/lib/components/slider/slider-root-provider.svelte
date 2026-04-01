@@ -18,7 +18,7 @@
   let { ref = $bindable(null), value: slider, ...localProps }: SliderRootProviderProps = $props()
   const mergedProps = $derived(mergeProps(slider().getRootProps(), localProps))
 
-  SliderProvider(slider)
+  SliderProvider(() => slider())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

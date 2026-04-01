@@ -21,7 +21,7 @@
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  PaginationProvider(value)
+  PaginationProvider(() => value())
 </script>
 
 <Ark as="nav" bind:ref {...mergedProps} />

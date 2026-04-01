@@ -8,16 +8,11 @@
 
   const { value, ...props }: JsonTreeViewRootProviderProps = $props()
 
-  const jsonTreeView = value as unknown as UseJsonTreeViewReturn
-
-  const treeView = $derived(() => {
-    const { options: _, ...rest } = jsonTreeView()
-    return rest
-  })
+  const jsonTreeView = $derived(value() as unknown as UseJsonTreeViewReturn)
 
   JsonTreeViewPropsProvider(() => jsonTreeView().options)
 </script>
 
-<TreeViewRootProvider data-scope="json-tree-view" value={treeView} {...props}>
+<TreeViewRootProvider data-scope="json-tree-view" value={jsonTreeView} {...props}>
   {@render props.children?.()}
 </TreeViewRootProvider>

@@ -25,7 +25,7 @@
   const presence = usePresence(() => ({ present: value().open, ...presenceProps }))
   const mergedProps = $derived(mergeProps(value().getRootProps(), localProps))
 
-  DatePickerProvider(value)
+  DatePickerProvider(() => value())
   PresenceProvider(presence)
 </script>
 

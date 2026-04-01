@@ -13,11 +13,11 @@
   import { Ark } from '../factory'
   import { FieldProvider } from './use-field-context'
 
-  const props: FieldRootProviderProps = $props()
+  const { value, ...props }: FieldRootProviderProps = $props()
 
-  const mergedProps = $derived(mergeProps(props.value().getRootProps(), props))
+  const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  FieldProvider(() => props.value())
+  FieldProvider(() => value())
 </script>
 
 <Ark as="div" {...mergedProps} />

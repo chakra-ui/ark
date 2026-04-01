@@ -28,7 +28,7 @@
 
   const presence = usePresence(() => presenceMachineProps)
 
-  DrawerProvider(value)
+  DrawerProvider(() => value())
   RenderStrategyPropsProvider(() => renderStrategyProps)
   PresenceProvider(presence)
 </script>

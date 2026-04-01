@@ -17,7 +17,7 @@
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  NumberInputProvider(value)
+  NumberInputProvider(() => value())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

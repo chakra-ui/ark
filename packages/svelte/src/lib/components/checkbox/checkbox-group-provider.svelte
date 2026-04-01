@@ -18,7 +18,7 @@
 
   const mergedProps = $derived(mergeProps({ role: 'group', ...checkboxAnatomy.build().group.attrs }, props))
 
-  CheckboxGroupContextProvider(value)
+  CheckboxGroupContextProvider(() => value())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

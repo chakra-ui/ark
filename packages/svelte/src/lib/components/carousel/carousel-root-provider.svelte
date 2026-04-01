@@ -16,7 +16,7 @@
   let { ref = $bindable(null), value, ...props }: CarouselRootProviderProps = $props()
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  CarouselProvider(value)
+  CarouselProvider(() => value())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

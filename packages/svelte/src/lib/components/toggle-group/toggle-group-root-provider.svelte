@@ -19,7 +19,7 @@
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  ToggleGroupProvider(value)
+  ToggleGroupProvider(() => value())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

@@ -15,11 +15,10 @@
   import { Ark } from '../factory'
   import { QrCodeProvider } from './use-qr-code-context'
 
-  let { ref = $bindable(null), ...props }: QrCodeRootProviderProps = $props()
-  const { value: qrCode, ...localProps } = props
-  const mergedProps = $derived(mergeProps(qrCode().getRootProps(), localProps))
+  let { ref = $bindable(null), value, ...props }: QrCodeRootProviderProps = $props()
+  const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  QrCodeProvider(qrCode)
+  QrCodeProvider(() => value())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

@@ -23,7 +23,7 @@
   const [renderStrategyProps, localProps] = $derived(splitRenderStrategyProps(props))
   const mergedProps = $derived(mergeProps(value().getRootProps(), localProps))
 
-  AccordionProvider(value)
+  AccordionProvider(() => value())
   RenderStrategyPropsProvider(() => renderStrategyProps)
 </script>
 

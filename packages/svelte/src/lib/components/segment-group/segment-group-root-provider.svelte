@@ -20,7 +20,7 @@
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), parts.root.attrs, props))
 
-  SegmentGroupProvider(value)
+  SegmentGroupProvider(() => value())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

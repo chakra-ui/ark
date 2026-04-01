@@ -13,11 +13,11 @@
   import { Ark } from '../factory'
   import { FieldsetProvider } from './use-fieldset-context'
 
-  let { ref = $bindable(null), ...props }: FieldsetRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: FieldsetRootProviderProps = $props()
 
-  const mergedProps = $derived(mergeProps(props.value().getRootProps(), props))
+  const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  FieldsetProvider(props.value)
+  FieldsetProvider(() => value())
 </script>
 
 <Ark as="fieldset" bind:ref {...mergedProps} />

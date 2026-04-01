@@ -31,11 +31,11 @@
 
   let { ref = $bindable(null), value, children, ...props }: ComboboxRootProviderProps<T> = $props()
 
-  const [presenceProps, otherProps] = splitPresenceProps(props)
+  const [presenceProps, otherProps] = $derived(splitPresenceProps(props))
   const presence = usePresence(() => mergeProps({ present: value().open }, presenceProps))
   const mergedProps = $derived(mergeProps(value().getRootProps(), otherProps))
 
-  ComboboxProvider(value)
+  ComboboxProvider(() => value())
   PresenceProvider(presence)
 </script>
 

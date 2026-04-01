@@ -21,7 +21,7 @@
   const presence = usePresence(() => ({ present: value().open, ...presenceProps }))
   const mergedProps = $derived(mergeProps(value().getRootProps(), localProps))
 
-  ColorPickerProvider(value)
+  ColorPickerProvider(() => value())
   PresenceProvider(presence)
 </script>
 

@@ -17,7 +17,7 @@
 
   const providedId = $props.id()
 
-  const [useEditableProps, localProps] = splitEditableProps(props)
+  const [useEditableProps, localProps] = $derived(splitEditableProps(props))
 
   const machineProps = $derived.by<UseEditableProps>(() => {
     return {

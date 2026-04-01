@@ -18,7 +18,7 @@
   let { ref = $bindable(null), value: angleSlider, ...localProps }: AngleSliderRootProviderProps = $props()
   const mergedProps = $derived(mergeProps(angleSlider().getRootProps(), localProps))
 
-  AngleSliderProvider(angleSlider)
+  AngleSliderProvider(() => angleSlider())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

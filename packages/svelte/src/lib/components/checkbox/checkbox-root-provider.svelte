@@ -17,7 +17,7 @@
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  CheckboxProvider(value)
+  CheckboxProvider(() => value())
 </script>
 
 <Ark as="label" bind:ref {...mergedProps} />

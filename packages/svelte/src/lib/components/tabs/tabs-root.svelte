@@ -20,7 +20,7 @@
 
   let { ref = $bindable(null), value = $bindable(), ...props }: TabsRootProps = $props()
 
-  const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)
+  const [renderStrategyProps, tabsProps] = $derived(splitRenderStrategyProps(props))
 
   const id = $props.id()
 

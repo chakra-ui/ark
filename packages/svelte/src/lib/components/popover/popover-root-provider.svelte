@@ -22,7 +22,7 @@
   const [presenceProps, localProps] = $derived(splitPresenceProps(props))
   const presence = usePresence(() => ({ present: value().open, ...presenceProps }))
 
-  PopoverProvider(value)
+  PopoverProvider(() => value())
   PresenceProvider(presence)
 </script>
 
