@@ -24,6 +24,7 @@ export const useNumberInput = (props: MaybeFunction<UseNumberInputProps> = {}): 
         input: field?.()?.ids.control,
       },
       dir: locale().dir,
+      locale: locale().locale,
       disabled: field?.()?.disabled,
       readOnly: field?.()?.readOnly,
       invalid: field?.()?.invalid,
