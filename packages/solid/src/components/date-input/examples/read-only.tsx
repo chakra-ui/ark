@@ -7,7 +7,7 @@ export const ReadOnly = () => (
   <DateInput.Root class={styles.Root} readOnly defaultValue={[parseDate('2024-06-15')]}>
     <DateInput.Label class={styles.Label}>Date</DateInput.Label>
     <DateInput.Control class={styles.Control}>
-      <DateInput.SegmentGroup class={styles.Input}>
+      <DateInput.SegmentGroup class={styles.SegmentGroup}>
         <DateInput.Context>
           {(dateInput) => (
             <Index each={dateInput().getSegments()}>

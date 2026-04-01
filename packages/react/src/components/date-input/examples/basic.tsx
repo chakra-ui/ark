@@ -5,7 +5,7 @@ export const Basic = () => (
   <DateInput.Root className={styles.Root}>
     <DateInput.Label className={styles.Label}>Date</DateInput.Label>
     <DateInput.Control className={styles.Control}>
-      <DateInput.SegmentGroup className={styles.Input}>
+      <DateInput.SegmentGroup className={styles.SegmentGroup}>
         <DateInput.Context>
           {(dateInput) =>
             dateInput

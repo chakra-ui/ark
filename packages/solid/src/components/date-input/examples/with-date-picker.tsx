@@ -21,7 +21,7 @@ export const WithDatePicker = () => {
       <DateInput.Control class={styles.Control}>
         <DatePicker.RootProvider class={datePickerStyles.Root} value={datePicker}>
           <DatePicker.Control class={datePickerStyles.Control}>
-            <DateInput.SegmentGroup class={styles.Input}>
+            <DateInput.SegmentGroup class={styles.SegmentGroup}>
               <DateInput.Context>
                 {(dateInput) => (
                   <Index each={dateInput().getSegments()}>

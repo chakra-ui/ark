@@ -11,7 +11,7 @@
 <DateInput.RootProvider value={dateInput} class={styles.Root}>
   <DateInput.Label class={styles.Label}>Date</DateInput.Label>
   <DateInput.Control class={styles.Control}>
-    <DateInput.SegmentGroup class={styles.Input}>
+    <DateInput.SegmentGroup class={styles.SegmentGroup}>
       <DateInput.Context>
         {#snippet render(dateInput)}
           {#each dateInput().getSegments() as segment}

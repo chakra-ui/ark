@@ -6,7 +6,7 @@
 <DateInput.Root class={styles.Root} granularity="second">
   <DateInput.Label class={styles.Label}>Date & Time</DateInput.Label>
   <DateInput.Control class={styles.Control}>
-    <DateInput.SegmentGroup class={styles.Input}>
+    <DateInput.SegmentGroup class={styles.SegmentGroup}>
       <DateInput.Context>
         {#snippet render(dateInput)}
           {#each dateInput().getSegments() as segment}

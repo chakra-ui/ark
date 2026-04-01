@@ -20,7 +20,7 @@ export const WithDatePicker = () => {
       <DateInput.Control className={styles.Control}>
         <DatePicker.RootProvider className={datePickerStyles.Root} value={datePicker}>
           <DatePicker.Control className={datePickerStyles.Control}>
-            <DateInput.SegmentGroup className={styles.Input}>
+            <DateInput.SegmentGroup className={styles.SegmentGroup}>
               <DateInput.Context>
                 {(dateInput) =>
                   dateInput

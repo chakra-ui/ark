@@ -7,7 +7,7 @@ export const RTL = () => (
     <DateInput.Root className={styles.Root} dir="rtl">
       <DateInput.Label className={styles.Label}>التاريخ</DateInput.Label>
       <DateInput.Control className={styles.Control}>
-        <DateInput.SegmentGroup className={styles.Input}>
+        <DateInput.SegmentGroup className={styles.SegmentGroup}>
           <DateInput.Context>
             {(dateInput) =>
               dateInput

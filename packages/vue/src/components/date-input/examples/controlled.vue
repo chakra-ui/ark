@@ -11,7 +11,7 @@ const value = ref([parseDate('2022-01-01')]) as Ref<DateValue[]>
   <DateInput.Root v-model="value" :class="styles.Root">
     <DateInput.Label :class="styles.Label">Date</DateInput.Label>
     <DateInput.Control :class="styles.Control">
-      <DateInput.SegmentGroup :class="styles.Input">
+      <DateInput.SegmentGroup :class="styles.SegmentGroup">
         <DateInput.Context v-slot="api">
           <DateInput.Segment
             v-for="(segment, index) in api.getSegments()"

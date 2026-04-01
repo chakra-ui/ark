@@ -9,7 +9,7 @@ export const RootProvider = () => {
       <DateInput.RootProvider className={styles.Root} value={dateInput}>
         <DateInput.Label className={styles.Label}>Date</DateInput.Label>
         <DateInput.Control className={styles.Control}>
-          <DateInput.SegmentGroup className={styles.Input}>
+          <DateInput.SegmentGroup className={styles.SegmentGroup}>
             <DateInput.Context>
               {(dateInput) =>
                 dateInput

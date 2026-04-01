@@ -11,7 +11,7 @@ export const WithClearButton = () => {
     <DateInput.RootProvider class={styles.Root} value={dateInput}>
       <DateInput.Label class={styles.Label}>Date</DateInput.Label>
       <DateInput.Control class={styles.Control}>
-        <DateInput.SegmentGroup class={styles.Input}>
+        <DateInput.SegmentGroup class={styles.SegmentGroup}>
           <DateInput.Context>
             {(dateInput) => (
               <Index each={dateInput().getSegments()}>

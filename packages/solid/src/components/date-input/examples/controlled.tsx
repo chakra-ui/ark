@@ -10,7 +10,7 @@ export const Controlled = () => {
     <DateInput.Root class={styles.Root} value={value()} onValueChange={(e) => setValue(e.value)}>
       <DateInput.Label class={styles.Label}>Date</DateInput.Label>
       <DateInput.Control class={styles.Control}>
-        <DateInput.SegmentGroup class={styles.Input}>
+        <DateInput.SegmentGroup class={styles.SegmentGroup}>
           <DateInput.Context>
             {(dateInput) => (
               <Index each={dateInput().getSegments()}>

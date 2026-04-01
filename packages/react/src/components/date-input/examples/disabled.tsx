@@ -6,7 +6,7 @@ export const Disabled = () => (
   <DateInput.Root className={styles.Root} disabled defaultValue={[parseDate('2024-06-15')]}>
     <DateInput.Label className={styles.Label}>Date</DateInput.Label>
     <DateInput.Control className={styles.Control}>
-      <DateInput.SegmentGroup className={styles.Input}>
+      <DateInput.SegmentGroup className={styles.SegmentGroup}>
         <DateInput.Context>
           {(dateInput) =>
             dateInput

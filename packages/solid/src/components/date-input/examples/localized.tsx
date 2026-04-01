@@ -8,7 +8,7 @@ export const Localized = () => (
     <DateInput.Root class={styles.Root} granularity="minute" hourCycle={24}>
       <DateInput.Label class={styles.Label}>Date et heure</DateInput.Label>
       <DateInput.Control class={styles.Control}>
-        <DateInput.SegmentGroup class={styles.Input}>
+        <DateInput.SegmentGroup class={styles.SegmentGroup}>
           <DateInput.Context>
             {(dateInput) => (
               <Index each={dateInput().getSegments()}>

@@ -6,7 +6,7 @@ export const Range = () => (
   <DateInput.Root class={styles.Root} selectionMode="range">
     <DateInput.Label class={styles.Label}>Date Range</DateInput.Label>
     <DateInput.Control class={styles.Control}>
-      <DateInput.SegmentGroup index={0} class={styles.Input}>
+      <DateInput.SegmentGroup index={0} class={styles.SegmentGroup}>
         <DateInput.Context>
           {(dateInput) => (
             <Index each={dateInput().getSegments()}>
@@ -16,7 +16,7 @@ export const Range = () => (
         </DateInput.Context>
       </DateInput.SegmentGroup>
       <span>→</span>
-      <DateInput.SegmentGroup index={1} class={styles.Input}>
+      <DateInput.SegmentGroup index={1} class={styles.SegmentGroup}>
         <DateInput.Context>
           {(dateInput) => (
             <Index each={dateInput().getSegments()}>

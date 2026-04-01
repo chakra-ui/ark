@@ -24,7 +24,7 @@
   <DateInput.Control class={styles.Control}>
     <DatePicker.RootProvider value={datePicker} class={datePickerStyles.Root}>
       <DatePicker.Control class={datePickerStyles.Control}>
-        <DateInput.SegmentGroup class={styles.Input}>
+        <DateInput.SegmentGroup class={styles.SegmentGroup}>
           <DateInput.Context>
             {#snippet render(dateInput)}
               {#each dateInput().getSegments() as segment}

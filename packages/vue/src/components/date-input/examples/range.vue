@@ -7,7 +7,7 @@ import styles from 'styles/date-input.module.css'
   <DateInput.Root selection-mode="range" :class="styles.Root">
     <DateInput.Label :class="styles.Label">Date Range</DateInput.Label>
     <DateInput.Control :class="styles.Control">
-      <DateInput.SegmentGroup :index="0" :class="styles.Input">
+      <DateInput.SegmentGroup :index="0" :class="styles.SegmentGroup">
         <DateInput.Context v-slot="api">
           <DateInput.Segment
             v-for="(segment, index) in api.getSegments()"
@@ -18,7 +18,7 @@ import styles from 'styles/date-input.module.css'
         </DateInput.Context>
       </DateInput.SegmentGroup>
       <span>→</span>
-      <DateInput.SegmentGroup :index="1" :class="styles.Input">
+      <DateInput.SegmentGroup :index="1" :class="styles.SegmentGroup">
         <DateInput.Context v-slot="api">
           <DateInput.Segment
             v-for="(segment, index) in api.getSegments()"

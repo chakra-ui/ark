@@ -5,7 +5,7 @@ export const Granularity = () => (
   <DateInput.Root className={styles.Root} granularity="second">
     <DateInput.Label className={styles.Label}>Date & Time</DateInput.Label>
     <DateInput.Control className={styles.Control}>
-      <DateInput.SegmentGroup className={styles.Input}>
+      <DateInput.SegmentGroup className={styles.SegmentGroup}>
         <DateInput.Context>
           {(dateInput) =>
             dateInput
