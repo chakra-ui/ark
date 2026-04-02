@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap');
 @import './utilities.css';
 
 body {
   font-family:
+    'Wix Madefor Text',
     system-ui,
     -apple-system,
     sans-serif;
@@ -13,6 +15,7 @@ body {
 *::after {
   box-sizing: border-box;
   margin: 0;
+  font: inherit;
 }
 
 #root,
