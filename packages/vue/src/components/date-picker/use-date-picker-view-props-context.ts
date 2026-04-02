@@ -3,5 +3,7 @@ import { createContext } from '../../utils/create-context'
 
 export interface DatePickerViewPropsContext extends Required<ViewProps> {}
 
+export const DEFAULT_VIEW_PROPS_CONTEXT: DatePickerViewPropsContext = { view: 'day' }
+
 export const [DatePickerViewPropsProvider, useDatePickerViewPropsContext] =
   createContext<DatePickerViewPropsContext>('DatePickerViewPropsContext')

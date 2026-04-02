@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useLocaleContext } from '@ark-ui/vue/locale'
+import { DEFAULT_LOCALE, useLocaleContext } from '@ark-ui/vue/locale'
 
-const locale = useLocaleContext()
+const locale = useLocaleContext(DEFAULT_LOCALE)
 </script>
 
 <template>

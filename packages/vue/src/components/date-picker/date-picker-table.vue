@@ -18,12 +18,12 @@ import { ark } from '../factory'
 import { computed, useId } from 'vue'
 import { useDatePickerContext } from './use-date-picker-context'
 import { DatePickerTablePropsProvider } from './use-date-picker-table-props-context'
-import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
+import { DEFAULT_VIEW_PROPS_CONTEXT, useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
 import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<DatePickerTableProps>()
 const datePicker = useDatePickerContext()
-const viewProps = useDatePickerViewPropsContext()
+const viewProps = useDatePickerViewPropsContext(DEFAULT_VIEW_PROPS_CONTEXT)
 
 const uid = useId()
 const tableProps = computed(() => ({ ...props, id: props.id ?? uid, ...viewProps }))

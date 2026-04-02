@@ -15,12 +15,12 @@ export interface DatePickerViewTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
-import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
+import { DEFAULT_VIEW_PROPS_CONTEXT, useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
 import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<DatePickerViewTriggerProps>()
 const datePicker = useDatePickerContext()
-const viewProps = useDatePickerViewPropsContext()
+const viewProps = useDatePickerViewPropsContext(DEFAULT_VIEW_PROPS_CONTEXT)
 
 useForwardExpose()
 </script>
