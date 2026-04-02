@@ -34,3 +34,7 @@ export {
   type DateInputControlBaseProps as ControlBaseProps,
   type DateInputControlProps as ControlProps,
 } from './date-input-control'
+export {
+  DateInputSegmentContext as SegmentContext,
+  type DateInputSegmentContextProps as SegmentContextProps,
+} from './date-input-segment-context'

@@ -12,13 +12,9 @@ const localProps = useForwardPropsEmits(props, emits)
     <DateInput.Label>Date</DateInput.Label>
     <DateInput.Control>
       <DateInput.SegmentGroup>
-        <DateInput.Context v-slot="api">
-          <DateInput.Segment
-            v-for="(segment, index) in api.getSegments()"
-            :key="`${segment.type}-${index}`"
-            :segment="segment"
-          />
-        </DateInput.Context>
+        <DateInput.SegmentContext v-slot="segment">
+          <DateInput.Segment :segment="segment" />
+        </DateInput.SegmentContext>
       </DateInput.SegmentGroup>
     </DateInput.Control>
     <DateInput.HiddenInput />

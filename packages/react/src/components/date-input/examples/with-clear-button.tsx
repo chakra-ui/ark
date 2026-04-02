@@ -11,15 +11,9 @@ export const WithClearButton = () => {
       <DateInput.Label className={styles.Label}>Date</DateInput.Label>
       <DateInput.Control className={styles.Control}>
         <DateInput.SegmentGroup className={styles.SegmentGroup}>
-          <DateInput.Context>
-            {(dateInput) =>
-              dateInput
-                .getSegments()
-                .map((segment, index) => (
-                  <DateInput.Segment className={styles.Segment} key={`${segment.type}-${index}`} segment={segment} />
-                ))
-            }
-          </DateInput.Context>
+          <DateInput.SegmentContext>
+            {(segment) => <DateInput.Segment className={styles.Segment} segment={segment} />}
+          </DateInput.SegmentContext>
         </DateInput.SegmentGroup>
         <button aria-label="Clear date" className={button.Root} type="button" onClick={() => dateInput.clearValue()}>
           <XIcon />

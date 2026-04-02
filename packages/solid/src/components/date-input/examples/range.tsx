@@ -1,5 +1,4 @@
 import { DateInput } from '@ark-ui/solid/date-input'
-import { Index } from 'solid-js'
 import styles from 'styles/date-input.module.css'
 
 export const Range = () => (
@@ -7,23 +6,15 @@ export const Range = () => (
     <DateInput.Label class={styles.Label}>Date Range</DateInput.Label>
     <DateInput.Control class={styles.Control}>
       <DateInput.SegmentGroup index={0} class={styles.SegmentGroup}>
-        <DateInput.Context>
-          {(dateInput) => (
-            <Index each={dateInput().getSegments({ index: 0 })}>
-              {(segment) => <DateInput.Segment class={styles.Segment} segment={segment()} />}
-            </Index>
-          )}
-        </DateInput.Context>
+        <DateInput.SegmentContext>
+          {(segment) => <DateInput.Segment class={styles.Segment} segment={segment} />}
+        </DateInput.SegmentContext>
       </DateInput.SegmentGroup>
       <span>→</span>
       <DateInput.SegmentGroup index={1} class={styles.SegmentGroup}>
-        <DateInput.Context>
-          {(dateInput) => (
-            <Index each={dateInput().getSegments({ index: 1 })}>
-              {(segment) => <DateInput.Segment class={styles.Segment} segment={segment()} />}
-            </Index>
-          )}
-        </DateInput.Context>
+        <DateInput.SegmentContext>
+          {(segment) => <DateInput.Segment class={styles.Segment} segment={segment} />}
+        </DateInput.SegmentContext>
       </DateInput.SegmentGroup>
     </DateInput.Control>
     <DateInput.HiddenInput index={0} />

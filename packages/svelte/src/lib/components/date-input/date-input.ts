@@ -1,5 +1,9 @@
 export { default as Context, type DateInputContextProps as ContextProps } from './date-input-context.svelte'
 export {
+  default as SegmentContext,
+  type DateInputSegmentContextProps as SegmentContextProps,
+} from './date-input-segment-context.svelte'
+export {
   default as Control,
   type DateInputControlBaseProps as ControlBaseProps,
   type DateInputControlProps as ControlProps,

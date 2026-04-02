@@ -11,15 +11,9 @@ export const Controlled = () => {
       <DateInput.Label className={styles.Label}>Date</DateInput.Label>
       <DateInput.Control className={styles.Control}>
         <DateInput.SegmentGroup className={styles.SegmentGroup}>
-          <DateInput.Context>
-            {(dateInput) =>
-              dateInput
-                .getSegments()
-                .map((segment, index) => (
-                  <DateInput.Segment className={styles.Segment} key={`${segment.type}-${index}`} segment={segment} />
-                ))
-            }
-          </DateInput.Context>
+          <DateInput.SegmentContext>
+            {(segment) => <DateInput.Segment className={styles.Segment} segment={segment} />}
+          </DateInput.SegmentContext>
         </DateInput.SegmentGroup>
       </DateInput.Control>
       <DateInput.HiddenInput />

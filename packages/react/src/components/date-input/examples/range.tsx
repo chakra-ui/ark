@@ -6,27 +6,15 @@ export const Range = () => (
     <DateInput.Label className={styles.Label}>Date Range</DateInput.Label>
     <DateInput.Control className={styles.Control}>
       <DateInput.SegmentGroup index={0} className={styles.SegmentGroup}>
-        <DateInput.Context>
-          {(dateInput) =>
-            dateInput
-              .getSegments({ index: 0 })
-              .map((segment, i) => (
-                <DateInput.Segment className={styles.Segment} key={`${segment.type}-${i}`} segment={segment} />
-              ))
-          }
-        </DateInput.Context>
+        <DateInput.SegmentContext>
+          {(segment) => <DateInput.Segment className={styles.Segment} segment={segment} />}
+        </DateInput.SegmentContext>
       </DateInput.SegmentGroup>
       <span>→</span>
       <DateInput.SegmentGroup index={1} className={styles.SegmentGroup}>
-        <DateInput.Context>
-          {(dateInput) =>
-            dateInput
-              .getSegments({ index: 1 })
-              .map((segment, i) => (
-                <DateInput.Segment className={styles.Segment} key={`${segment.type}-${i}`} segment={segment} />
-              ))
-          }
-        </DateInput.Context>
+        <DateInput.SegmentContext>
+          {(segment) => <DateInput.Segment className={styles.Segment} segment={segment} />}
+        </DateInput.SegmentContext>
       </DateInput.SegmentGroup>
     </DateInput.Control>
     <DateInput.HiddenInput index={0} />

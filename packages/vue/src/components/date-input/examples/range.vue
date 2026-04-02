@@ -8,25 +8,15 @@ import styles from 'styles/date-input.module.css'
     <DateInput.Label :class="styles.Label">Date Range</DateInput.Label>
     <DateInput.Control :class="styles.Control">
       <DateInput.SegmentGroup :index="0" :class="styles.SegmentGroup">
-        <DateInput.Context v-slot="api">
-          <DateInput.Segment
-            v-for="(segment, i) in api.getSegments({ index: 0 })"
-            :class="styles.Segment"
-            :key="`${segment.type}-${i}`"
-            :segment="segment"
-          />
-        </DateInput.Context>
+        <DateInput.SegmentContext v-slot="segment">
+          <DateInput.Segment :class="styles.Segment" :segment="segment" />
+        </DateInput.SegmentContext>
       </DateInput.SegmentGroup>
       <span>→</span>
       <DateInput.SegmentGroup :index="1" :class="styles.SegmentGroup">
-        <DateInput.Context v-slot="api">
-          <DateInput.Segment
-            v-for="(segment, i) in api.getSegments({ index: 1 })"
-            :class="styles.Segment"
-            :key="`${segment.type}-${i}`"
-            :segment="segment"
-          />
-        </DateInput.Context>
+        <DateInput.SegmentContext v-slot="segment">
+          <DateInput.Segment :class="styles.Segment" :segment="segment" />
+        </DateInput.SegmentContext>
       </DateInput.SegmentGroup>
     </DateInput.Control>
     <DateInput.HiddenInput :index="0" />

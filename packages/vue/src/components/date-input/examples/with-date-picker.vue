@@ -24,14 +24,9 @@ const dateInput = useDateInput(
       <DatePicker.RootProvider :value="datePicker" :class="datePickerStyles.Root">
         <DatePicker.Control :class="datePickerStyles.Control">
           <DateInput.SegmentGroup :class="styles.SegmentGroup">
-            <DateInput.Context v-slot="api">
-              <DateInput.Segment
-                v-for="(segment, index) in api.getSegments()"
-                :class="styles.Segment"
-                :key="`${segment.type}-${index}`"
-                :segment="segment"
-              />
-            </DateInput.Context>
+            <DateInput.SegmentContext v-slot="segment">
+              <DateInput.Segment :class="styles.Segment" :segment="segment" />
+            </DateInput.SegmentContext>
           </DateInput.SegmentGroup>
           <DatePicker.Trigger :class="datePickerStyles.Trigger">
             <CalendarIcon />

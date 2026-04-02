@@ -7,23 +7,19 @@
   <DateInput.Label class={styles.Label}>Date Range</DateInput.Label>
   <DateInput.Control class={styles.Control}>
     <DateInput.SegmentGroup index={0} class={styles.SegmentGroup}>
-      <DateInput.Context>
-        {#snippet render(dateInput)}
-          {#each dateInput().getSegments({ index: 0 }) as segment}
-            <DateInput.Segment class={styles.Segment} {segment} />
-          {/each}
+      <DateInput.SegmentContext>
+        {#snippet render(segment)}
+          <DateInput.Segment class={styles.Segment} {segment} />
         {/snippet}
-      </DateInput.Context>
+      </DateInput.SegmentContext>
     </DateInput.SegmentGroup>
     <span>→</span>
     <DateInput.SegmentGroup index={1} class={styles.SegmentGroup}>
-      <DateInput.Context>
-        {#snippet render(dateInput)}
-          {#each dateInput().getSegments({ index: 1 }) as segment}
-            <DateInput.Segment class={styles.Segment} {segment} />
-          {/each}
+      <DateInput.SegmentContext>
+        {#snippet render(segment)}
+          <DateInput.Segment class={styles.Segment} {segment} />
         {/snippet}
-      </DateInput.Context>
+      </DateInput.SegmentContext>
     </DateInput.SegmentGroup>
   </DateInput.Control>
   <DateInput.HiddenInput index={0} />

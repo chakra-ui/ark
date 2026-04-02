@@ -5,6 +5,7 @@ export type {
   ValueChangeDetails as DateInputValueChangeDetails,
 } from '@zag-js/date-input'
 export { default as DateInputContext, type DateInputContextProps } from './date-input-context.vue'
+export { default as DateInputSegmentContext, type DateInputSegmentContextProps } from './date-input-segment-context.vue'
 export {
   default as DateInputControl,
   type DateInputControlBaseProps,

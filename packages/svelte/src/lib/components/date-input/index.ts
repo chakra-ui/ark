@@ -6,6 +6,10 @@ export type {
 } from '@zag-js/date-input'
 export { default as DateInputContext, type DateInputContextProps } from './date-input-context.svelte'
 export {
+  default as DateInputSegmentContext,
+  type DateInputSegmentContextProps,
+} from './date-input-segment-context.svelte'
+export {
   default as DateInputControl,
   type DateInputControlBaseProps,
   type DateInputControlProps,

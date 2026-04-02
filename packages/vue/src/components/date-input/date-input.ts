@@ -1,5 +1,9 @@
 export { default as Context, type DateInputContextProps as ContextProps } from './date-input-context.vue'
 export {
+  default as SegmentContext,
+  type DateInputSegmentContextProps as SegmentContextProps,
+} from './date-input-segment-context.vue'
+export {
   default as Control,
   type DateInputControlProps as ControlProps,
   type DateInputControlBaseProps as ControlBaseProps,

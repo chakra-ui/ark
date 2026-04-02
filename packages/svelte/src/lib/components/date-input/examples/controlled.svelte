@@ -10,13 +10,11 @@
   <DateInput.Label class={styles.Label}>Date</DateInput.Label>
   <DateInput.Control class={styles.Control}>
     <DateInput.SegmentGroup class={styles.SegmentGroup}>
-      <DateInput.Context>
-        {#snippet render(dateInput)}
-          {#each dateInput().getSegments() as segment}
-            <DateInput.Segment class={styles.Segment} {segment} />
-          {/each}
+      <DateInput.SegmentContext>
+        {#snippet render(segment)}
+          <DateInput.Segment class={styles.Segment} {segment} />
         {/snippet}
-      </DateInput.Context>
+      </DateInput.SegmentContext>
     </DateInput.SegmentGroup>
   </DateInput.Control>
   <DateInput.HiddenInput />

@@ -26,6 +26,7 @@ export {
   type DateInputHiddenInputProps,
 } from './date-input-hidden-input'
 export { DateInputControl, type DateInputControlBaseProps, type DateInputControlProps } from './date-input-control'
+export { DateInputSegmentContext, type DateInputSegmentContextProps } from './date-input-segment-context'
 export { dateInputAnatomy } from './date-input.anatomy'
 
 export * as DateInput from './date-input'

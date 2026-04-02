@@ -10,14 +10,9 @@ import styles from 'styles/date-input.module.css'
       <DateInput.Label :class="styles.Label">التاريخ</DateInput.Label>
       <DateInput.Control :class="styles.Control">
         <DateInput.SegmentGroup :class="styles.SegmentGroup">
-          <DateInput.Context v-slot="api">
-            <DateInput.Segment
-              v-for="(segment, index) in api.getSegments()"
-              :class="styles.Segment"
-              :key="`${segment.type}-${index}`"
-              :segment="segment"
-            />
-          </DateInput.Context>
+          <DateInput.SegmentContext v-slot="segment">
+            <DateInput.Segment :class="styles.Segment" :segment="segment" />
+          </DateInput.SegmentContext>
         </DateInput.SegmentGroup>
       </DateInput.Control>
       <DateInput.HiddenInput />

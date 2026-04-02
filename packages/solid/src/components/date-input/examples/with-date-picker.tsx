@@ -22,13 +22,9 @@ export const WithDatePicker = () => {
         <DatePicker.RootProvider class={datePickerStyles.Root} value={datePicker}>
           <DatePicker.Control class={datePickerStyles.Control}>
             <DateInput.SegmentGroup class={styles.SegmentGroup}>
-              <DateInput.Context>
-                {(dateInput) => (
-                  <Index each={dateInput().getSegments()}>
-                    {(segment) => <DateInput.Segment class={styles.Segment} segment={segment()} />}
-                  </Index>
-                )}
-              </DateInput.Context>
+              <DateInput.SegmentContext>
+                {(segment) => <DateInput.Segment class={styles.Segment} segment={segment} />}
+              </DateInput.SegmentContext>
             </DateInput.SegmentGroup>
             <DatePicker.Trigger class={datePickerStyles.Trigger}>
               <CalendarIcon />

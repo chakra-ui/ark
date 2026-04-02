@@ -1,6 +1,6 @@
 import { DateInput } from '@ark-ui/solid/date-input'
 import { parseDate, type DateValue } from '@internationalized/date'
-import { Index, createSignal } from 'solid-js'
+import { createSignal } from 'solid-js'
 import styles from 'styles/date-input.module.css'
 
 export const Controlled = () => {
@@ -11,13 +11,9 @@ export const Controlled = () => {
       <DateInput.Label class={styles.Label}>Date</DateInput.Label>
       <DateInput.Control class={styles.Control}>
         <DateInput.SegmentGroup class={styles.SegmentGroup}>
-          <DateInput.Context>
-            {(dateInput) => (
-              <Index each={dateInput().getSegments()}>
-                {(segment) => <DateInput.Segment class={styles.Segment} segment={segment()} />}
-              </Index>
-            )}
-          </DateInput.Context>
+          <DateInput.SegmentContext>
+            {(segment) => <DateInput.Segment class={styles.Segment} segment={segment} />}
+          </DateInput.SegmentContext>
         </DateInput.SegmentGroup>
       </DateInput.Control>
       <DateInput.HiddenInput />
