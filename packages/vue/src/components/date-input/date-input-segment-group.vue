@@ -14,14 +14,17 @@ export interface DateInputSegmentGroupProps
 </script>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { ark } from '../factory'
 import { useDateInputContext } from './use-date-input-context'
+import { DateInputSegmentGroupPropsProvider } from './use-date-input-segment-group-props-context'
 import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<DateInputSegmentGroupProps>()
 const dateInput = useDateInputContext()
-const segmentGroupProps = { index: props.index }
+const segmentGroupProps = computed(() => ({ index: props.index }))
 
+DateInputSegmentGroupPropsProvider(segmentGroupProps)
 useForwardExpose()
 </script>
 

@@ -9,7 +9,7 @@
     <DateInput.SegmentGroup index={0} class={styles.SegmentGroup}>
       <DateInput.Context>
         {#snippet render(dateInput)}
-          {#each dateInput().getSegments() as segment}
+          {#each dateInput().getSegments({ index: 0 }) as segment}
             <DateInput.Segment class={styles.Segment} {segment} />
           {/each}
         {/snippet}
@@ -19,7 +19,7 @@
     <DateInput.SegmentGroup index={1} class={styles.SegmentGroup}>
       <DateInput.Context>
         {#snippet render(dateInput)}
-          {#each dateInput().getSegments() as segment}
+          {#each dateInput().getSegments({ index: 1 }) as segment}
             <DateInput.Segment class={styles.Segment} {segment} />
           {/each}
         {/snippet}

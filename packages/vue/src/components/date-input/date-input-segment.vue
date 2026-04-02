@@ -3,7 +3,7 @@ import type { SegmentProps } from '@zag-js/date-input'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DateInputSegmentBaseProps extends PolymorphicProps, SegmentProps {}
+export interface DateInputSegmentBaseProps extends PolymorphicProps, Pick<SegmentProps, 'segment'> {}
 export interface DateInputSegmentProps
   extends
     DateInputSegmentBaseProps,
@@ -18,15 +18,19 @@ import { computed } from 'vue'
 import { createSplitProps } from '../create-split-props'
 import { ark } from '../factory'
 import { useDateInputContext } from './use-date-input-context'
+import { useDateInputSegmentGroupPropsContext } from './use-date-input-segment-group-props-context'
 import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<DateInputSegmentProps>()
-const [segmentProps] = createSplitProps<SegmentProps>()(props, ['segment', 'index'])
+const [segmentProps] = createSplitProps<Pick<SegmentProps, 'segment'>>()(props, ['segment'])
+const segmentGroupProps = useDateInputSegmentGroupPropsContext()
 const dateInput = useDateInputContext()
 
 useForwardExpose()
 
-const mergedProps = computed(() => dateInput.value.getSegmentProps(segmentProps))
+const mergedProps = computed(() =>
+  dateInput.value.getSegmentProps({ ...segmentProps, index: segmentGroupProps!.value.index }),
+)
 </script>
 
 <template>

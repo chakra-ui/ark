@@ -11,11 +11,14 @@
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory/index.js'
   import { useDateInputContext } from './use-date-input-context.js'
+  import { DateInputSegmentGroupPropsProvider } from './use-date-input-segment-group-props-context.js'
 
   let { ref = $bindable(null), ...props }: DateInputSegmentGroupProps = $props()
   const dateInput = useDateInputContext()
   const [segmentGroupProps, localProps] = $derived(createSplitProps<SegmentGroupProps>()(props, ['index']))
   const mergedProps = $derived(mergeProps(dateInput().getSegmentGroupProps(segmentGroupProps), localProps))
+
+  DateInputSegmentGroupPropsProvider(() => segmentGroupProps)
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

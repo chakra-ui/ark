@@ -10,9 +10,9 @@ import styles from 'styles/date-input.module.css'
       <DateInput.SegmentGroup :index="0" :class="styles.SegmentGroup">
         <DateInput.Context v-slot="api">
           <DateInput.Segment
-            v-for="(segment, index) in api.getSegments()"
+            v-for="(segment, i) in api.getSegments({ index: 0 })"
             :class="styles.Segment"
-            :key="`${segment.type}-${index}`"
+            :key="`${segment.type}-${i}`"
             :segment="segment"
           />
         </DateInput.Context>
@@ -21,9 +21,9 @@ import styles from 'styles/date-input.module.css'
       <DateInput.SegmentGroup :index="1" :class="styles.SegmentGroup">
         <DateInput.Context v-slot="api">
           <DateInput.Segment
-            v-for="(segment, index) in api.getSegments()"
+            v-for="(segment, i) in api.getSegments({ index: 1 })"
             :class="styles.Segment"
-            :key="`${segment.type}-${index}`"
+            :key="`${segment.type}-${i}`"
             :segment="segment"
           />
         </DateInput.Context>

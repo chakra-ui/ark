@@ -9,9 +9,9 @@ export const Range = () => (
         <DateInput.Context>
           {(dateInput) =>
             dateInput
-              .getSegments()
-              .map((segment, index) => (
-                <DateInput.Segment className={styles.Segment} key={`${segment.type}-${index}`} segment={segment} />
+              .getSegments({ index: 0 })
+              .map((segment, i) => (
+                <DateInput.Segment className={styles.Segment} key={`${segment.type}-${i}`} segment={segment} />
               ))
           }
         </DateInput.Context>
@@ -21,9 +21,9 @@ export const Range = () => (
         <DateInput.Context>
           {(dateInput) =>
             dateInput
-              .getSegments()
-              .map((segment, index) => (
-                <DateInput.Segment className={styles.Segment} key={`${segment.type}-${index}`} segment={segment} />
+              .getSegments({ index: 1 })
+              .map((segment, i) => (
+                <DateInput.Segment className={styles.Segment} key={`${segment.type}-${i}`} segment={segment} />
               ))
           }
         </DateInput.Context>

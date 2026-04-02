@@ -17,7 +17,6 @@ const localProps = useForwardPropsEmits(props, emits)
             v-for="(segment, index) in api.getSegments()"
             :key="`${segment.type}-${index}`"
             :segment="segment"
-            :index="index"
           />
         </DateInput.Context>
       </DateInput.SegmentGroup>

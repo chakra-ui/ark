@@ -8,9 +8,7 @@ export const ComponentUnderTest = (props: DateInput.RootProps) => (
       <DateInput.SegmentGroup>
         <DateInput.Context>
           {(dateInput) => (
-            <Index each={dateInput().getSegments()}>
-              {(segment, index) => <DateInput.Segment segment={segment()} index={index} />}
-            </Index>
+            <Index each={dateInput().getSegments()}>{(segment) => <DateInput.Segment segment={segment()} />}</Index>
           )}
         </DateInput.Context>
       </DateInput.SegmentGroup>
