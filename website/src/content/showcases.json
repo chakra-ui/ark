@@ -64,5 +64,11 @@
     "description": "Guarding brand integrity with a flexible design system",
     "url": "https://cerberus.digitalu.design/",
     "image": "/images/cerberus-design-system.png"
+  },
+  {
+    "title": "Shark UI",
+    "description": "Shadcn-style components built on Ark UI",
+    "url": "https://shark.vini.one/",
+    "image": "https://shark.vini.one/opengraph-image.png"
   }
 ]
