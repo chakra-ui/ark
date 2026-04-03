@@ -11,7 +11,7 @@ export interface MenuContentProps extends HTMLProps<'div'>, MenuContentBaseProps
 export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>((props, ref) => {
   const menu = useMenuContext()
   const presence = usePresenceContext()
-  const mergedProps = mergeProps(menu.getContentProps(), presence.getPresenceProps(), props)
+  const mergedProps = mergeProps(menu?.getContentProps(), presence.getPresenceProps(), props)
 
   if (presence.unmounted) {
     return null

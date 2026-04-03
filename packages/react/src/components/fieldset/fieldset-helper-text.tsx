@@ -8,7 +8,7 @@ export interface FieldsetHelperTextProps extends HTMLProps<'span'>, FieldsetHelp
 
 export const FieldsetHelperText = forwardRef<HTMLSpanElement, FieldsetHelperTextProps>((props, ref) => {
   const fieldset = useFieldsetContext()
-  const mergedProps = mergeProps(fieldset.getHelperTextProps(), props)
+  const mergedProps = mergeProps(fieldset?.getHelperTextProps(), props)
 
   return <ark.span {...mergedProps} ref={ref} />
 })

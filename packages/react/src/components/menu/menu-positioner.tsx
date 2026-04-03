@@ -9,7 +9,7 @@ export interface MenuPositionerProps extends HTMLProps<'div'>, MenuPositionerBas
 
 export const MenuPositioner = forwardRef<HTMLDivElement, MenuPositionerProps>((props, ref) => {
   const menu = useMenuContext()
-  const mergedProps = mergeProps(menu.getPositionerProps(), props)
+  const mergedProps = mergeProps(menu?.getPositionerProps(), props)
   const presence = usePresenceContext()
 
   if (presence.unmounted) {

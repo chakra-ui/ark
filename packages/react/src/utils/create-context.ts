@@ -1,6 +1,10 @@
 import { hasProp, isFunction } from '@zag-js/utils'
 import { createContext as createReactContext, useContext as useReactContext } from 'react'
 
+function getErrorMessage(hook: string, provider: string) {
+  return `${hook} returned \`undefined\`. Seems you forgot to wrap component within ${provider}`
+}
+
 interface CreateContextOptions<T> {
   strict?: boolean | undefined
   hookName?: string | undefined
@@ -10,11 +14,19 @@ interface CreateContextOptions<T> {
   defaultValue?: T | undefined
 }
 
-type CreateContextReturn<T> = [React.Provider<T>, () => T, React.Context<T>]
+type CreateContextReturn<T, HasValue extends boolean> = [
+  React.Provider<T>,
+  HasValue extends true ? () => T : () => T | undefined,
+  HasValue extends true ? React.Context<T> : React.Context<T | undefined>,
+]
 
-function getErrorMessage(hook: string, provider: string) {
-  return `${hook} returned \`undefined\`. Seems you forgot to wrap component within ${provider}`
-}
+export function createContext<T>(options?: CreateContextOptions<T> & { strict?: true }): CreateContextReturn<T, true>
+
+export function createContext<T>(
+  options: CreateContextOptions<T> & { strict: false; defaultValue: T },
+): CreateContextReturn<T, true>
+
+export function createContext<T>(options: CreateContextOptions<T> & { strict: false }): CreateContextReturn<T, false>
 
 export function createContext<T>(options: CreateContextOptions<T> = {}) {
   const {
@@ -45,5 +57,5 @@ export function createContext<T>(options: CreateContextOptions<T> = {}) {
     return context
   }
 
-  return [Context.Provider, useContext, Context] as CreateContextReturn<T>
+  return [Context.Provider, useContext, Context] as any
 }

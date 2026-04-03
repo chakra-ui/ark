@@ -10,7 +10,7 @@ export interface MenuItemTextProps extends HTMLProps<'div'>, MenuItemTextBasePro
 export const MenuItemText = forwardRef<HTMLDivElement, MenuItemTextProps>((props, ref) => {
   const menu = useMenuContext()
   const itemProps = useMenuItemPropsContext()
-  const mergedProps = mergeProps(menu.getItemTextProps(itemProps), props)
+  const mergedProps = mergeProps(menu?.getItemTextProps(itemProps), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })
