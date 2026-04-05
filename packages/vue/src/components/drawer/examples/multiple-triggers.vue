@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Drawer } from '@ark-ui/vue/drawer'
+import { Drawer } from '@ark-ui/vue/drawer'
 import { XIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 import button from 'styles/button.module.css'
@@ -19,14 +19,10 @@ const users: User[] = [
 ]
 
 const activeUser = ref<User | null>(null)
-
-const onTriggerValueChange = (e: Drawer.TriggerValueChangeDetails) => {
-  activeUser.value = users.find((u) => u.id === e.value) ?? null
-}
 </script>
 
 <template>
-  <Drawer.Root @trigger-value-change="onTriggerValueChange">
+  <Drawer.Root @trigger-value-change="(e) => (activeUser = users.find((u) => u.id === e.value) ?? null)">
     <div :class="button.Group">
       <Drawer.Trigger v-for="user in users" :key="user.id" :value="user.id" :class="button.Root">
         Edit {{ user.name }}

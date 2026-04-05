@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Dialog } from '@ark-ui/vue/dialog'
+import { Dialog } from '@ark-ui/vue/dialog'
 import { XIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 import button from 'styles/button.module.css'
@@ -19,14 +19,10 @@ const users: User[] = [
 ]
 
 const activeUser = ref<User | null>(null)
-
-const onTriggerValueChange = (e: Dialog.TriggerValueChangeDetails) => {
-  activeUser.value = users.find((u) => u.id === e.value) ?? null
-}
 </script>
 
 <template>
-  <Dialog.Root @trigger-value-change="onTriggerValueChange">
+  <Dialog.Root @trigger-value-change="(e) => (activeUser = users.find((u) => u.id === e.value) ?? null)">
     <div :class="button.Group">
       <Dialog.Trigger v-for="user in users" :key="user.id" :value="user.id" :class="button.Root">
         Edit {{ user.name }}

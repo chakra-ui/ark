@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Tooltip } from '@ark-ui/vue/tooltip'
+import { Tooltip } from '@ark-ui/vue/tooltip'
 import { BoldIcon, ItalicIcon, StrikethroughIcon, UnderlineIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 import styles from 'styles/tooltip.module.css'
@@ -19,14 +19,10 @@ const tools: Tool[] = [
 ]
 
 const activeTool = ref<Tool | null>(null)
-
-const onTriggerValueChange = (e: Tooltip.TriggerValueChangeDetails) => {
-  activeTool.value = tools.find((t) => t.id === e.value) ?? null
-}
 </script>
 
 <template>
-  <Tooltip.Root @trigger-value-change="onTriggerValueChange">
+  <Tooltip.Root @trigger-value-change="(e) => (activeTool = tools.find((t) => t.id === e.value) ?? null)">
     <div :class="styles.Toolbar">
       <Tooltip.Trigger v-for="tool in tools" :key="tool.id" :value="tool.id" :class="styles.ToolbarButton">
         <component :is="tool.icon" />
