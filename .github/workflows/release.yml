@@ -28,7 +28,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 24
-          registry-url: "https://registry.npmjs.org"
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Build packages
         run: bun run build
@@ -39,7 +39,7 @@ jobs:
         with:
           version: bun run version
           publish: bun run release
-          title: "chore: release packages"
-          commit: "chore: release packages"
+          title: 'chore: release packages'
+          commit: 'chore: release packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

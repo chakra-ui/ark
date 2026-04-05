@@ -3,7 +3,7 @@
   import styles from 'styles/date-input.module.css'
 </script>
 
-<DateInput.Root class={styles.Root} >
+<DateInput.Root class={styles.Root}>
   <DateInput.Label class={styles.Label}>Date</DateInput.Label>
   <DateInput.Control class={styles.Control}>
     <DateInput.SegmentGroup class={styles.SegmentGroup}>

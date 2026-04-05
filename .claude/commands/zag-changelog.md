@@ -5,7 +5,8 @@ description: Sync changelog updates from chakra-ui/zag repo to all Ark UI framew
 ## Steps
 
 1. Fetch the latest CHANGELOG.md from the chakra-ui/zag repository
-   - Use `gh api repos/chakra-ui/zag/contents/CHANGELOG.md -H "Accept: application/vnd.github.raw+json"` to get the changelog content
+   - Use `gh api repos/chakra-ui/zag/contents/CHANGELOG.md -H "Accept: application/vnd.github.raw+json"` to get the
+     changelog content
 
 2. Determine which Zag versions are new
    - Check the current `@zag-js/*` version in `packages/react/package.json`
@@ -15,7 +16,8 @@ description: Sync changelog updates from chakra-ui/zag repo to all Ark UI framew
 3. Parse the new changes from Zag.js changelog
    - Extract all entries from the new Zag versions
    - Identify component-specific changes and general improvements
-   - Filter out Zag.js internal changes that don't affect Ark UI (build system, core state machine internals, docs-only, framework-specific fixes for frameworks Ark doesn't use like Preact/Vanilla)
+   - Filter out Zag.js internal changes that don't affect Ark UI (build system, core state machine internals, docs-only,
+     framework-specific fixes for frameworks Ark doesn't use like Preact/Vanilla)
 
 4. Review the changes with me before applying
    - Show me the extracted changes

@@ -9,8 +9,8 @@
 
 - **Dialog, Drawer, Hover Card, Menu, Popover, Tooltip**: Add support for multiple triggers. A single component instance
   can now be shared across multiple trigger elements. Each trigger is identified by a `value` passed to
-  `getTriggerProps`. When the component is open and a different trigger is activated, it switches and repositions without
-  closing.
+  `getTriggerProps`. When the component is open and a different trigger is activated, it switches and repositions
+  without closing.
 
 - **Splitter**: Add multi-drag support for nested splitter layouts. When a horizontal and vertical splitter meet at the
   same point (e.g. a grid layout), users can drag the intersection to resize both directions at once. Create a shared

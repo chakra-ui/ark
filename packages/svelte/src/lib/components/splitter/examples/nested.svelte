@@ -16,11 +16,7 @@
     <Splitter.ResizeTriggerIndicator class={styles.ResizeTriggerIndicator} />
   </Splitter.ResizeTrigger>
   <Splitter.Panel class={styles.Panel} id="center">
-    <Splitter.Root
-      orientation="vertical"
-      panels={[{ id: 'top' }, { id: 'bottom' }]}
-      {registry}
-    >
+    <Splitter.Root orientation="vertical" panels={[{ id: 'top' }, { id: 'bottom' }]} {registry}>
       <Splitter.Panel class={styles.Panel} id="top">Top</Splitter.Panel>
       <Splitter.ResizeTrigger class={styles.ResizeTrigger} id="top:bottom" aria-label="Resize">
         <Splitter.ResizeTriggerIndicator class={styles.ResizeTriggerIndicator} />
