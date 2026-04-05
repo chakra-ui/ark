@@ -15,6 +15,7 @@ import PasteBehaviorExample from './examples/paste-behavior.vue'
 import ProgrammaticControlExample from './examples/programmatic-control.vue'
 import ReadonlyExample from './examples/readonly.vue'
 import RootProviderExample from './examples/root-provider.vue'
+import SanitizeValueExample from './examples/sanitize-value.vue'
 import ValidationExample from './examples/validation.vue'
 import WithComboboxExample from './examples/with-combobox.vue'
 import WithFieldExample from './examples/with-field.vue'
@@ -126,6 +127,13 @@ export const Readonly = {
 export const RootProvider = {
   render: () => ({
     components: { Component: RootProviderExample },
+    template: '<Component />',
+  }),
+}
+
+export const SanitizeValue = {
+  render: () => ({
+    components: { Component: SanitizeValueExample },
     template: '<Component />',
   }),
 }

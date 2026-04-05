@@ -56,9 +56,17 @@ export interface RootProps {
    */
   gridSize?: number
   /**
+   * The element to receive focus when the panel closes
+   */
+  finalFocusEl?: () => HTMLElement | null
+  /**
    * The unique identifier of the machine.
    */
   id?: string
+  /**
+   * The element to receive focus when the panel opens
+   */
+  initialFocusEl?: () => HTMLElement | null
   /**
    * The ids of the elements in the floating panel. Useful for composition.
    */
@@ -92,6 +100,11 @@ export interface RootProps {
    * @default true
    */
   resizable?: boolean
+  /**
+   * Whether to restore focus to the trigger element when the panel closes
+   * @default true
+   */
+  restoreFocus?: boolean
   /**
    * The size of the panel
    */

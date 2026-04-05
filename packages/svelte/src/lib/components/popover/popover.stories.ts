@@ -6,6 +6,7 @@ import CloseBehaviorExample from './examples/close-behavior.svelte'
 import ContextExample from './examples/context.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import ModalExample from './examples/modal.svelte'
+import MultipleTriggersExample from './examples/multiple-triggers.svelte'
 import NestedExample from './examples/nested.svelte'
 import PositioningExample from './examples/positioning.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
@@ -57,6 +58,12 @@ export const Controlled = {
 export const Modal = {
   render: () => ({
     Component: ModalExample,
+  }),
+}
+
+export const MultipleTriggers = {
+  render: () => ({
+    Component: MultipleTriggersExample,
   }),
 }
 

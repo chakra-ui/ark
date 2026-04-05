@@ -79,6 +79,15 @@ export interface RootProps {
    * Specifies the localized strings that identifies the accessibility elements and their states
    */
   translations?: popover.IntlTranslations
+  /**
+   * The value of the trigger that currently open the popover
+   */
+  triggerValue?: string | null
+  /**
+   * The initial trigger value when rendered.
+   * Use when you don't need to control the trigger value.
+   */
+  defaultTriggerValue?: string | null
 }
 
 export type RootEmits = {
@@ -117,6 +126,10 @@ export type RootEmits = {
       targetIndex: number
     }>,
   ]
+  /**
+   * Function called when the trigger value changes
+   */
+  triggerValueChange: [details: popover.TriggerValueChangeDetails]
   /**
    * The callback fired when the open state changes.
    */

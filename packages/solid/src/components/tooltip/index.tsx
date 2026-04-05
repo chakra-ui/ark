@@ -1,4 +1,7 @@
-export type { OpenChangeDetails as TooltipOpenChangeDetails } from '@zag-js/tooltip'
+export type {
+  OpenChangeDetails as TooltipOpenChangeDetails,
+  TriggerValueChangeDetails as TooltipTriggerValueChangeDetails,
+} from '@zag-js/tooltip'
 export { TooltipArrow, type TooltipArrowBaseProps, type TooltipArrowProps } from './tooltip-arrow'
 export { TooltipArrowTip, type TooltipArrowTipBaseProps, type TooltipArrowTipProps } from './tooltip-arrow-tip'
 export { TooltipContent, type TooltipContentBaseProps, type TooltipContentProps } from './tooltip-content'

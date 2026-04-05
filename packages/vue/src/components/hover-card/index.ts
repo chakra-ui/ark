@@ -3,6 +3,7 @@ export type {
   InteractOutsideEvent as HoverCardInteractOutsideEvent,
   OpenChangeDetails as HoverCardOpenChangeDetails,
   PointerDownOutsideEvent as HoverCardPointerDownOutsideEvent,
+  TriggerValueChangeDetails as HoverCardTriggerValueChangeDetails,
 } from '@zag-js/hover-card'
 export {
   default as HoverCardArrowTip,

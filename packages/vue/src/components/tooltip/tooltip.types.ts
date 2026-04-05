@@ -68,6 +68,15 @@ export interface RootProps {
    * The user provided options used to position the popover content
    */
   positioning?: tooltip.PositioningOptions
+  /**
+   * The value of the trigger that currently open the tooltip
+   */
+  triggerValue?: string | null
+  /**
+   * The initial trigger value when rendered.
+   * Use when you don't need to control the trigger value.
+   */
+  defaultTriggerValue?: string | null
 }
 
 export type RootEmits = {
@@ -79,6 +88,10 @@ export type RootEmits = {
    * Function called when the tooltip is opened.
    */
   openChange: [details: tooltip.OpenChangeDetails]
+  /**
+   * Function called when the trigger value changes
+   */
+  triggerValueChange: [details: tooltip.TriggerValueChangeDetails]
   /**
    * The callback fired when the open state changes.
    */

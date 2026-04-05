@@ -25,6 +25,9 @@ export const HoverCardRoot = (props: HoverCardRootProps) => {
     'open',
     'openDelay',
     'positioning',
+    'triggerValue',
+    'defaultTriggerValue',
+    'onTriggerValueChange',
   ])
   const api = useHoverCard(useHoverCardProps)
   const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().open })))

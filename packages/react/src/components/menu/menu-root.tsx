@@ -37,8 +37,11 @@ export const MenuRoot = (props: MenuRootProps) => {
     'onPointerDownOutside',
     'onRequestDismiss',
     'onSelect',
+    'onTriggerValueChange',
     'open',
     'positioning',
+    'triggerValue',
+    'defaultTriggerValue',
     'typeahead',
   ])
 

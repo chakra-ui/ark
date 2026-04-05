@@ -25,6 +25,7 @@ export const SplitterRoot = forwardRef<HTMLDivElement, SplitterRootProps>((props
     'onResizeStart',
     'orientation',
     'panels',
+    'registry',
     'size',
   ])
   const splitter = useSplitter(useSplitterProps)

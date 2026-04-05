@@ -36,6 +36,15 @@ export interface RootProps {
    * The user provided options used to position the popover content
    */
   positioning?: hoverCard.PositioningOptions
+  /**
+   * The value of the trigger that currently open the hover card
+   */
+  triggerValue?: string | null
+  /**
+   * The initial trigger value when rendered.
+   * Use when you don't need to control the trigger value.
+   */
+  defaultTriggerValue?: string | null
 }
 
 export type RootEmits = {
@@ -59,6 +68,10 @@ export type RootEmits = {
    * Function called when the pointer is pressed down outside the component
    */
   pointerDownOutside: [event: hoverCard.PointerDownOutsideEvent]
+  /**
+   * Function called when the trigger value changes
+   */
+  triggerValueChange: [details: hoverCard.TriggerValueChangeDetails]
   /**
    * The callback fired when the open state changes.
    */

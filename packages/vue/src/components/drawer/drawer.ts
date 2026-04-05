@@ -1,4 +1,4 @@
-export type { OpenChangeDetails, SnapPointChangeDetails } from '@zag-js/drawer'
+export type { OpenChangeDetails, SnapPointChangeDetails, TriggerValueChangeDetails } from '@zag-js/drawer'
 export {
   default as Backdrop,
   type DrawerBackdropBaseProps as BackdropBaseProps,

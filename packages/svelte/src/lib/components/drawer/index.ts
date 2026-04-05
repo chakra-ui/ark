@@ -1,6 +1,7 @@
 export type {
   OpenChangeDetails as DrawerOpenChangeDetails,
   SnapPointChangeDetails as DrawerSnapPointChangeDetails,
+  TriggerValueChangeDetails as DrawerTriggerValueChangeDetails,
 } from '@zag-js/drawer'
 export {
   default as DrawerBackdrop,

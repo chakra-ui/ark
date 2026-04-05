@@ -22,6 +22,7 @@ const props = withDefaults(defineProps<FloatingPanelRootProps>(), {
   lockAspectRatio: undefined,
   persistRect: undefined,
   resizable: undefined,
+  restoreFocus: undefined,
   allowOverflow: undefined,
   disabled: undefined,
   draggable: undefined,

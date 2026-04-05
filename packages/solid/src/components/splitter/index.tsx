@@ -23,6 +23,11 @@ export {
   type SplitterRootProviderBaseProps,
   type SplitterRootProviderProps,
 } from './splitter-root-provider'
+export {
+  createSplitterRegistry,
+  type SplitterRegistryProps,
+  type SplitterRegistryReturn,
+} from './create-splitter-registry'
 export { splitterAnatomy } from './splitter.anatomy'
 export { useSplitter, type UseSplitterProps, type UseSplitterReturn } from './use-splitter'
 export { useSplitterContext, type UseSplitterContext } from './use-splitter-context'

@@ -50,6 +50,7 @@
       'placeholder',
       'readOnly',
       'required',
+      'sanitizeValue',
       'translations',
       'validate',
       'value',

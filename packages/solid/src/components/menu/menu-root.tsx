@@ -37,6 +37,9 @@ export const MenuRoot = (props: MenuRootProps) => {
     'open',
     'positioning',
     'typeahead',
+    'triggerValue',
+    'defaultTriggerValue',
+    'onTriggerValueChange',
   ])
 
   const parentApi = useMenuContext()

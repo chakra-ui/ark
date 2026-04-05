@@ -11,6 +11,7 @@ import LinksExample from './examples/links.vue'
 import MenuInDialogExample from './examples/menu-in-dialog.vue'
 import MenuItemDialogExample from './examples/menu-item-dialog.vue'
 import MultipleMenuExample from './examples/multiple-menu.vue'
+import MultipleTriggersExample from './examples/multiple-triggers.vue'
 import NestedExample from './examples/nested.vue'
 import RadioItemsExample from './examples/radio-items.vue'
 import RootProviderExample from './examples/root-provider.vue'
@@ -95,6 +96,13 @@ export const MenuItemDialog = {
 export const MultipleMenu = {
   render: () => ({
     components: { Component: MultipleMenuExample },
+    template: '<Component />',
+  }),
+}
+
+export const MultipleTriggers = {
+  render: () => ({
+    components: { Component: MultipleTriggersExample },
     template: '<Component />',
   }),
 }

@@ -36,6 +36,9 @@ export const DialogRoot = (props: DialogRootProps) => {
     'restoreFocus',
     'role',
     'trapFocus',
+    'triggerValue',
+    'defaultTriggerValue',
+    'onTriggerValueChange',
   ])
 
   const api = useDialog(useDialogProps)

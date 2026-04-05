@@ -5,6 +5,7 @@ export type {
   OpenChangeDetails as MenuOpenChangeDetails,
   PointerDownOutsideEvent as MenuPointerDownOutsideEvent,
   SelectionDetails as MenuSelectionDetails,
+  TriggerValueChangeDetails as MenuTriggerValueChangeDetails,
 } from '@zag-js/menu'
 export { MenuArrow, type MenuArrowBaseProps, type MenuArrowProps } from './menu-arrow'
 export { MenuArrowTip, type MenuArrowTipBaseProps, type MenuArrowTipProps } from './menu-arrow-tip'

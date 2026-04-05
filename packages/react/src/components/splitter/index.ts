@@ -1,3 +1,8 @@
+export {
+  createSplitterRegistry,
+  type SplitterRegistryProps,
+  type SplitterRegistryReturn,
+} from './create-splitter-registry'
 export { layout as getSplitterLayout } from '@zag-js/splitter'
 export type {
   ExpandCollapseDetails as SplitterExpandCollapseDetails,

@@ -3,6 +3,7 @@ export type {
   InteractOutsideEvent as DialogInteractOutsideEvent,
   OpenChangeDetails as DialogOpenChangeDetails,
   PointerDownOutsideEvent as DialogPointerDownOutsideEvent,
+  TriggerValueChangeDetails as DialogTriggerValueChangeDetails,
 } from '@zag-js/dialog'
 export {
   default as DialogBackdrop,

@@ -40,6 +40,7 @@ export const TagsInputRoot = (props: TagsInputRootProps) => {
     'translations',
     'validate',
     'value',
+    'sanitizeValue',
   ])
 
   const api = useTagsInput(useTagsInputProps)

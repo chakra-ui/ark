@@ -44,6 +44,9 @@ export const DrawerRoot = (props: DrawerRootProps) => {
     'onPointerDownOutside',
     'onFocusOutside',
     'onRequestDismiss',
+    'triggerValue',
+    'defaultTriggerValue',
+    'onTriggerValueChange',
   ])
   const drawer = useDrawer(useDrawerProps)
   const presence = usePresence(mergeProps(presenceProps, () => ({ present: drawer().open })))

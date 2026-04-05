@@ -2,13 +2,14 @@ import type { Meta } from '@storybook/vue3-vite'
 
 import BasicExample from './examples/basic.vue'
 import ControlledExample from './examples/controlled.vue'
+import IndentBackgroundExample from './examples/indent-background.vue'
 import ModalExample from './examples/modal.vue'
-import RootProviderExample from './examples/root-provider.vue'
-import SnapPointsExample from './examples/snap-points.vue'
-import ScrollableExample from './examples/scrollable.vue'
+import MultipleTriggersExample from './examples/multiple-triggers.vue'
 import NoDragAreaExample from './examples/no-drag-area.vue'
 import NonDraggableExample from './examples/non-draggable.vue'
-import IndentBackgroundExample from './examples/indent-background.vue'
+import RootProviderExample from './examples/root-provider.vue'
+import ScrollableExample from './examples/scrollable.vue'
+import SnapPointsExample from './examples/snap-points.vue'
 import SwipeDirectionExample from './examples/swipe-direction.vue'
 
 const meta: Meta = {
@@ -27,6 +28,13 @@ export const Basic = {
 export const Controlled = {
   render: () => ({
     components: { Component: ControlledExample },
+    template: '<Component />',
+  }),
+}
+
+export const MultipleTriggers = {
+  render: () => ({
+    components: { Component: MultipleTriggersExample },
     template: '<Component />',
   }),
 }

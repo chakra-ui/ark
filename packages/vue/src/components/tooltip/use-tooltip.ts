@@ -28,6 +28,10 @@ export const useTooltip = (props: MaybeRef<UseTooltipProps> = {}, emit?: EmitFn<
         emit?.('update:open', details.open)
         localProps.onOpenChange?.(details)
       },
+      onTriggerValueChange: (details) => {
+        emit?.('triggerValueChange', details)
+        localProps.onTriggerValueChange?.(details)
+      },
     }
   })
 

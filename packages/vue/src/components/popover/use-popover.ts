@@ -27,6 +27,10 @@ export const usePopover = (props: MaybeRef<UsePopoverProps> = {}, emit?: EmitFn<
         emit?.('update:open', details.open)
         localeProps.onOpenChange?.(details)
       },
+      onTriggerValueChange: (details) => {
+        emit?.('triggerValueChange', details)
+        localeProps.onTriggerValueChange?.(details)
+      },
       onEscapeKeyDown: (details) => {
         emit?.('escapeKeyDown', details)
         localeProps.onEscapeKeyDown?.(details)

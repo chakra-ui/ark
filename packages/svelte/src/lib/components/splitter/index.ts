@@ -23,6 +23,11 @@ export {
   type SplitterRootProviderProps,
 } from './splitter-root-provider.svelte'
 export { default as SplitterRoot, type SplitterRootBaseProps, type SplitterRootProps } from './splitter-root.svelte'
+export {
+  createSplitterRegistry,
+  type SplitterRegistryProps,
+  type SplitterRegistryReturn,
+} from './create-splitter-registry'
 export { useSplitterContext, type UseSplitterContext } from './use-splitter-context'
 export { useSplitter, type UseSplitterProps, type UseSplitterReturn } from './use-splitter.svelte'
 

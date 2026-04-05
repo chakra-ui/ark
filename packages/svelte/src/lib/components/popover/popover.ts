@@ -3,6 +3,7 @@ export type {
   InteractOutsideEvent,
   OpenChangeDetails,
   PointerDownOutsideEvent,
+  TriggerValueChangeDetails,
 } from '@zag-js/popover'
 export {
   default as Anchor,

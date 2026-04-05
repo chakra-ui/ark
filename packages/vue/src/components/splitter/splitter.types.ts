@@ -37,6 +37,10 @@ export interface RootProps {
    */
   panels: splitter.PanelData[]
   /**
+   * The splitter registry to use for multi-drag support.
+   */
+  registry?: splitter.SplitterRegistry
+  /**
    * The controlled size data of the panels
    */
   size?: number[]

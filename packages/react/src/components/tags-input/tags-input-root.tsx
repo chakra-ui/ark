@@ -41,6 +41,7 @@ export const TagsInputRoot = forwardRef<HTMLDivElement, TagsInputRootProps>((pro
     'placeholder',
     'readOnly',
     'required',
+    'sanitizeValue',
     'translations',
     'validate',
     'value',

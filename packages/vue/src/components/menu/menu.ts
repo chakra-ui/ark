@@ -5,6 +5,7 @@ export type {
   OpenChangeDetails,
   PointerDownOutsideEvent,
   SelectionDetails,
+  TriggerValueChangeDetails,
 } from '@zag-js/menu'
 export {
   default as ArrowTip,

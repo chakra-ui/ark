@@ -27,6 +27,9 @@ export const TooltipRoot = (props: TooltipRootProps) => {
     'open',
     'openDelay',
     'positioning',
+    'triggerValue',
+    'defaultTriggerValue',
+    'onTriggerValueChange',
   ])
 
   const api = useTooltip(useTooltipProps)

@@ -15,6 +15,7 @@ import PasteBehaviorExample from './examples/paste-behavior.svelte'
 import ProgrammaticControlExample from './examples/programmatic-control.svelte'
 import ReadonlyExample from './examples/readonly.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import SanitizeValueExample from './examples/sanitize-value.svelte'
 import ValidationExample from './examples/validation.svelte'
 import WithComboboxExample from './examples/with-combobox.svelte'
 import WithFieldExample from './examples/with-field.svelte'
@@ -106,6 +107,12 @@ export const ProgrammaticControl = {
 export const Readonly = {
   render: () => ({
     Component: ReadonlyExample,
+  }),
+}
+
+export const SanitizeValue = {
+  render: () => ({
+    Component: SanitizeValueExample,
   }),
 }
 

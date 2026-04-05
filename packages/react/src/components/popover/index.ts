@@ -3,6 +3,7 @@ export type {
   InteractOutsideEvent as PopoverInteractOutsideEvent,
   OpenChangeDetails as PopoverOpenChangeDetails,
   PointerDownOutsideEvent as PopoverPointerDownOutsideEvent,
+  TriggerValueChangeDetails as PopoverTriggerValueChangeDetails,
 } from '@zag-js/popover'
 export { PopoverAnchor, type PopoverAnchorBaseProps, type PopoverAnchorProps } from './popover-anchor'
 export { PopoverArrow, type PopoverArrowBaseProps, type PopoverArrowProps } from './popover-arrow'

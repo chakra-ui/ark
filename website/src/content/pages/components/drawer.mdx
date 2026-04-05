@@ -1,0 +1,160 @@
+---
+id: drawer
+title: Drawer
+description: A panel that slides in from the edge of the screen, typically used for navigation or forms.
+---
+
+<ComponentPreview id="Drawer" />
+
+## Anatomy
+
+<Anatomy id="drawer" />
+
+```tsx
+<Drawer.Root>
+  <Drawer.Trigger />
+  <Drawer.Backdrop />
+  <Drawer.Positioner>
+    <Drawer.Content>
+      <Drawer.Grabber>
+        <Drawer.GrabberIndicator />
+      </Drawer.Grabber>
+      <Drawer.Title />
+      <Drawer.Description />
+      <Drawer.CloseTrigger />
+    </Drawer.Content>
+  </Drawer.Positioner>
+</Drawer.Root>
+```
+
+## Examples
+
+<Example id="basic" />
+
+### Swipe Direction
+
+Use the `swipeDirection` prop to control which edge the drawer slides in from.
+
+<Example id="swipe-direction" />
+
+### Snap Points
+
+Use the `snapPoints` prop to define intermediate positions the drawer can snap to.
+
+<Example id="snap-points" />
+
+### Modal
+
+Set `modal` to `false` to allow interaction with the rest of the page while the drawer is open.
+
+<Example id="modal" />
+
+### Controlled
+
+Use the `open` and `onOpenChange` props to control the drawer state.
+
+<Example id="controlled" />
+
+### Scrollable
+
+<Example id="scrollable" />
+
+### No Drag Area
+
+Use `Drawer.NoDragArea` to prevent dragging on specific elements inside the drawer.
+
+<Example id="no-drag-area" />
+
+### Non Draggable
+
+Set `draggable` to `false` to disable drag-to-dismiss entirely.
+
+<Example id="non-draggable" />
+
+### Indent Background
+
+Use `Drawer.IndentBackground` to create a visual indent effect on the page behind the drawer.
+
+<Example id="indent-background" />
+
+### Multiple Triggers
+
+Use the `value` prop on `Drawer.Trigger` to share a single drawer across multiple trigger elements. The
+`onTriggerValueChange` callback fires when a different trigger is activated.
+
+<Example id="multiple-triggers" />
+
+### Using the Root Provider
+
+Use the `useDrawer` hook and `Drawer.RootProvider` to control the drawer from outside the component tree.
+
+<Example id="root-provider" />
+
+## Guides
+
+### Preventing Overdrag Gaps
+
+When a user drags the drawer past its open position, a small gap can appear between the drawer content and the viewport
+edge. To prevent this, extend the drawer's background beyond its visible bounds using a CSS `::after` pseudo-element:
+
+```css
+[data-scope='drawer'][data-part='content'] {
+  --bleed: 3rem;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    height: var(--bleed);
+    background-color: inherit;
+    pointer-events: none;
+  }
+}
+```
+
+For side drawers, adjust the pseudo-element to extend horizontally:
+
+```css
+/* Right drawer */
+[data-scope='drawer'][data-part='content'][data-swipe-direction='right'] {
+  &::after {
+    inset-inline: auto;
+    inset-block: 0;
+    top: 0;
+    left: 100%;
+    width: var(--bleed);
+    height: auto;
+  }
+}
+
+/* Left drawer */
+[data-scope='drawer'][data-part='content'][data-swipe-direction='left'] {
+  &::after {
+    inset-inline: auto;
+    inset-block: 0;
+    top: 0;
+    right: 100%;
+    width: var(--bleed);
+    height: auto;
+  }
+}
+```
+
+The `::after` element inherits the drawer's background color and sits just outside the content bounds. During overdrag,
+the dampened movement reveals this extension instead of an empty gap.
+
+## API Reference
+
+### Props
+
+<ComponentTypes id="drawer" />
+
+### Context
+
+<ContextType id="drawer" />
+
+## Accessibility
+
+<KeyBindingsTable id="drawer" />

@@ -29,6 +29,7 @@
       'composite',
       'defaultHighlightedValue',
       'defaultOpen',
+      'defaultTriggerValue',
       'highlightedValue',
       'id',
       'ids',
@@ -42,8 +43,10 @@
       'onPointerDownOutside',
       'onRequestDismiss',
       'onSelect',
+      'onTriggerValueChange',
       'open',
       'positioning',
+      'triggerValue',
       'typeahead',
     ]),
   )

@@ -9,6 +9,7 @@ import FinalFocusExample from './examples/final-focus.svelte'
 import InitialFocusExample from './examples/initial-focus.svelte'
 import InsideScrollExample from './examples/inside-scroll.svelte'
 import LazyMountExample from './examples/lazy-mount.svelte'
+import MultipleTriggersExample from './examples/multiple-triggers.svelte'
 import NestedExample from './examples/nested.svelte'
 import NonModalExample from './examples/non-modal.svelte'
 import OpenFromMenuExample from './examples/open-from-menu.svelte'
@@ -72,6 +73,12 @@ export const InsideScroll = {
 export const LazyMount = {
   render: () => ({
     Component: LazyMountExample,
+  }),
+}
+
+export const MultipleTriggers = {
+  render: () => ({
+    Component: MultipleTriggersExample,
   }),
 }
 

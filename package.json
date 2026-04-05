@@ -17,6 +17,7 @@
     "clean": "find . -name 'node_modules' -type d -prune -exec rm -rf {} \\;",
     "exports:sync": "bun scripts exports:sync",
     "local:sync": "bun scripts local:sync",
+    "local:sync:full": "bun scripts local:sync --full-clean",
     "local:revert": "bun scripts local:sync --revert",
     "format": "bun prettier --write .",
     "lint": "turbo run lint",

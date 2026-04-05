@@ -79,6 +79,15 @@ export interface RootProps {
    * @default true
    */
   trapFocus?: boolean
+  /**
+   * The value of the trigger that currently open the dialog
+   */
+  triggerValue?: string | null
+  /**
+   * The initial trigger value when rendered.
+   * Use when you don't need to control the trigger value.
+   */
+  defaultTriggerValue?: string | null
 }
 
 export type RootEmits = {
@@ -117,6 +126,10 @@ export type RootEmits = {
       targetIndex: number
     }>,
   ]
+  /**
+   * Function called when the trigger value changes
+   */
+  triggerValueChange: [details: dialog.TriggerValueChangeDetails]
   /**
    * The callback fired when the open state changes.
    */

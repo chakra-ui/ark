@@ -7,6 +7,7 @@ import CloseBehaviorExample from './examples/close-behavior.vue'
 import ContextExample from './examples/context.vue'
 import ControlledExample from './examples/controlled.vue'
 import ModalExample from './examples/modal.vue'
+import MultipleTriggersExample from './examples/multiple-triggers.vue'
 import NestedExample from './examples/nested.vue'
 import PositioningExample from './examples/positioning.vue'
 import RootProviderExample from './examples/root-provider.vue'
@@ -64,6 +65,13 @@ export const Controlled = {
 export const Modal = {
   render: () => ({
     components: { Component: ModalExample },
+    template: '<Component />',
+  }),
+}
+
+export const MultipleTriggers = {
+  render: () => ({
+    components: { Component: MultipleTriggersExample },
     template: '<Component />',
   }),
 }

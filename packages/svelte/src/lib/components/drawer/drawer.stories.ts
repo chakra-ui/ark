@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/svelte'
 
 import BasicExample from './examples/basic.svelte'
+import MultipleTriggersExample from './examples/multiple-triggers.svelte'
 import SnapPointsExample from './examples/snap-points.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import ModalExample from './examples/modal.svelte'
@@ -32,6 +33,12 @@ export const SnapPoints = {
 export const Controlled = {
   render: () => ({
     Component: ControlledExample,
+  }),
+}
+
+export const MultipleTriggers = {
+  render: () => ({
+    Component: MultipleTriggersExample,
   }),
 }
 

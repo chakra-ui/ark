@@ -1,3 +1,4 @@
+export { createSplitterRegistry as createRegistry } from './create-splitter-registry'
 export { layout as getLayout } from '@zag-js/splitter'
 export type { ExpandCollapseDetails, PanelData, ResizeDetails, ResizeEndDetails } from '@zag-js/splitter'
 export { default as Context, type SplitterContextProps as ContextProps } from './splitter-context.vue'

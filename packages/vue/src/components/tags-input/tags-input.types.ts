@@ -113,6 +113,10 @@ export interface RootProps {
    */
   required?: boolean
   /**
+   * Function to sanitize the tag value before adding it
+   */
+  sanitizeValue?: (value: string) => string
+  /**
    * Specifies the localized strings that identifies the accessibility elements and their states
    */
   translations?: tagsInput.IntlTranslations

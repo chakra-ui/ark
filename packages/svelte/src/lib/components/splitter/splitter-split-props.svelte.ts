@@ -15,6 +15,7 @@ export function splitSplitterProps<T extends UseSplitterProps>(props: T) {
     'onResizeStart',
     'orientation',
     'panels',
+    'registry',
     'size',
   ])
 }

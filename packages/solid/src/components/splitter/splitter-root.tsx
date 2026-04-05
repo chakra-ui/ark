@@ -23,6 +23,7 @@ export const SplitterRoot = (props: SplitterRootProps) => {
     'orientation',
     'panels',
     'size',
+    'registry',
   ])
   const api = useSplitter(useSplitterProps)
   const mergedProps = mergeProps(() => api().getRootProps(), localProps)

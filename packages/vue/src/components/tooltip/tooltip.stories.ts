@@ -5,6 +5,7 @@ import BasicExample from './examples/basic.vue'
 import ContextExample from './examples/context.vue'
 import ControlledExample from './examples/controlled.vue'
 import DelayExample from './examples/delay.vue'
+import MultipleTriggersExample from './examples/multiple-triggers.vue'
 import PositioningExample from './examples/positioning.vue'
 import RootProviderExample from './examples/root-provider.vue'
 
@@ -45,6 +46,13 @@ export const Controlled = {
 export const Delay = {
   render: () => ({
     components: { Component: DelayExample },
+    template: '<Component />',
+  }),
+}
+
+export const MultipleTriggers = {
+  render: () => ({
+    components: { Component: MultipleTriggersExample },
     template: '<Component />',
   }),
 }

@@ -4,6 +4,7 @@ import BasicExample from './examples/basic.vue'
 import CollapsibleExample from './examples/collapsible.vue'
 import ContextExample from './examples/context.vue'
 import MultiplePanelsExample from './examples/multiple-panels.vue'
+import NestedExample from './examples/nested.vue'
 import ResizeIndicatorExample from './examples/resize-indicator.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import VerticalExample from './examples/vertical.vue'
@@ -45,6 +46,13 @@ export const Collapsible = {
 export const Context = {
   render: () => ({
     components: { Component: ContextExample },
+    template: '<Component />',
+  }),
+}
+
+export const Nested = {
+  render: () => ({
+    components: { Component: NestedExample },
     template: '<Component />',
   }),
 }

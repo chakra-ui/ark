@@ -30,6 +30,10 @@ export const useDrawer = (props: MaybeRef<UseDrawerProps> = {}, emit?: EmitFn<Ro
         emit?.('openChange', details)
         localeProps.onOpenChange?.(details)
       },
+      onTriggerValueChange: (details) => {
+        emit?.('triggerValueChange', details)
+        localeProps.onTriggerValueChange?.(details)
+      },
       onSnapPointChange: (details) => {
         emit?.('snapPointChange', details)
         localeProps.onSnapPointChange?.(details)

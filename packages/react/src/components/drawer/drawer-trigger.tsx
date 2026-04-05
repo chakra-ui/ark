@@ -1,21 +1,28 @@
 import { mergeProps } from '@zag-js/react'
+import type { TriggerProps } from '@zag-js/drawer'
 import { forwardRef } from 'react'
+import type { Assign } from '../../types'
+import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useDrawerContext } from './use-drawer-context'
 
-export interface DrawerTriggerBaseProps extends PolymorphicProps {}
-export interface DrawerTriggerProps extends HTMLProps<'button'>, DrawerTriggerBaseProps {}
+export interface DrawerTriggerBaseProps extends TriggerProps, PolymorphicProps {}
+export interface DrawerTriggerProps extends Assign<HTMLProps<'button'>, DrawerTriggerBaseProps> {}
+
+const splitTriggerProps = createSplitProps<TriggerProps>()
 
 export const DrawerTrigger = forwardRef<HTMLButtonElement, DrawerTriggerProps>((props, ref) => {
+  const [triggerProps, localProps] = splitTriggerProps(props, ['value'])
   const drawer = useDrawerContext()
   const presence = usePresenceContext()
+  const triggerPropsRaw = drawer.getTriggerProps(triggerProps)
   const mergedProps = mergeProps(
     {
-      ...drawer.getTriggerProps(),
-      'aria-controls': presence.unmounted ? undefined : drawer.getTriggerProps()['aria-controls'],
+      ...triggerPropsRaw,
+      'aria-controls': presence.unmounted ? undefined : triggerPropsRaw['aria-controls'],
     },
-    props,
+    localProps,
   )
 
   return <ark.button {...mergedProps} ref={ref} />
