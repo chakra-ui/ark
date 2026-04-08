@@ -101,6 +101,7 @@
         "@zag-js/tags-input": "1.43.1",
         "@zag-js/timer": "1.43.1",
         "@zag-js/toast": "1.43.1",
+        "@zag-js/toc": "1.43.1",
         "@zag-js/toggle": "1.43.1",
         "@zag-js/toggle-group": "1.43.1",
         "@zag-js/tooltip": "1.43.1",
@@ -212,6 +213,7 @@
         "@zag-js/tags-input": "1.43.1",
         "@zag-js/timer": "1.43.1",
         "@zag-js/toast": "1.43.1",
+        "@zag-js/toc": "1.43.1",
         "@zag-js/toggle": "1.43.1",
         "@zag-js/toggle-group": "1.43.1",
         "@zag-js/tooltip": "1.43.1",
@@ -319,6 +321,7 @@
         "@zag-js/tags-input": "1.43.1",
         "@zag-js/timer": "1.43.1",
         "@zag-js/toast": "1.43.1",
+        "@zag-js/toc": "1.43.1",
         "@zag-js/toggle": "1.43.1",
         "@zag-js/toggle-group": "1.43.1",
         "@zag-js/tooltip": "1.43.1",
@@ -423,6 +426,7 @@
         "@zag-js/tags-input": "1.43.1",
         "@zag-js/timer": "1.43.1",
         "@zag-js/toast": "1.43.1",
+        "@zag-js/toc": "1.43.1",
         "@zag-js/toggle": "1.43.1",
         "@zag-js/toggle-group": "1.43.1",
         "@zag-js/tooltip": "1.43.1",
@@ -1924,6 +1928,8 @@
     "@zag-js/timer": ["@zag-js/timer@1.43.1", "", { "dependencies": { "@zag-js/anatomy": "1.43.1", "@zag-js/core": "1.43.1", "@zag-js/dom-query": "1.43.1", "@zag-js/types": "1.43.1", "@zag-js/utils": "1.43.1" } }, "sha512-t26Cp+HLKqUr3Zx5CFRQ0K/wBT1ZqNQLSUw9yPKC6oKOadhAHALNqPiW6GKlCHeOFS0oba2rZ6Bl4QCYjxw0OA=="],
 
     "@zag-js/toast": ["@zag-js/toast@1.43.1", "", { "dependencies": { "@zag-js/anatomy": "1.43.1", "@zag-js/core": "1.43.1", "@zag-js/dismissable": "1.43.1", "@zag-js/dom-query": "1.43.1", "@zag-js/types": "1.43.1", "@zag-js/utils": "1.43.1" } }, "sha512-I3rGEppExDWrhJbpe1UY2HVDTO1wS2BiZf0pStSBjDUNhDohDpYlxpfvL0nL/P6uihUPmwJ4zOjz05mILGViRw=="],
+
+    "@zag-js/toc": ["@zag-js/toc@1.43.1", "", { "dependencies": { "@zag-js/anatomy": "1.43.1", "@zag-js/core": "1.43.1", "@zag-js/dom-query": "1.43.1", "@zag-js/types": "1.43.1", "@zag-js/utils": "1.43.1" } }, "sha512-+3CAznlV66qY5/xukht2hq951FgVSTzbbALRlnhS1CCXZJmA7Ufz0ItFZOQ2dRdVQYCyODyay1UHKpKZwvSEkw=="],
 
     "@zag-js/toggle": ["@zag-js/toggle@1.43.1", "", { "dependencies": { "@zag-js/anatomy": "1.43.1", "@zag-js/core": "1.43.1", "@zag-js/dom-query": "1.43.1", "@zag-js/types": "1.43.1", "@zag-js/utils": "1.43.1" } }, "sha512-D3DYsT/lD+OSvGrcUGSxTfLTEJPgoxHKBJszzdLyRQZCBqor9R8y9ZrGQq49/xrED8HIMf7sNPTuitcWK7dMtw=="],
 

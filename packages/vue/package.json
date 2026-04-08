@@ -143,6 +143,7 @@
     "@zag-js/tags-input": "1.43.1",
     "@zag-js/timer": "1.43.1",
     "@zag-js/toast": "1.43.1",
+    "@zag-js/toc": "1.43.1",
     "@zag-js/toggle": "1.43.1",
     "@zag-js/toggle-group": "1.43.1",
     "@zag-js/tooltip": "1.43.1",
