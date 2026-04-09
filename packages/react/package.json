@@ -182,7 +182,7 @@
     "resize-observer-polyfill": "1.5.1",
     "storybook": "10.3.3",
     "typescript": "5.9.3",
-    "vite": "7.3.1",
+    "vite": "8.0.8",
     "vite-plugin-dts": "4.5.4",
     "vitest": "^4.0.18",
     "vitest-axe": "1.0.0-pre.5"
