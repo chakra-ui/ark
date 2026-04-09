@@ -20,11 +20,11 @@
   import { SelectItemProvider } from './use-select-item-context'
   import { SelectItemPropsProvider } from './use-select-item-props-context'
 
-  let { ref = $bindable(null), ...props }: SelectItemProps<T> = $props()
+  let { ref = $bindable(null), item, disabled, ...restProps }: SelectItemProps<T> = $props()
 
   const select = useSelectContext()
-  const itemProps = $derived({ item: props.item, disabled: props.disabled })
-  const mergedProps = $derived(mergeProps(select().getItemProps(itemProps), props))
+  const itemProps = $derived({ item, disabled })
+  const mergedProps = $derived(mergeProps(select().getItemProps(itemProps), restProps))
 
   SelectItemProvider(() => select().getItemState(itemProps))
   SelectItemPropsProvider(() => itemProps)
