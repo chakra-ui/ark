@@ -165,7 +165,7 @@
     "@types/jsdom": "21.1.7",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
-    "@vitejs/plugin-react": "5.1.4",
+    "@vitejs/plugin-react": "6.0.1",
     "@vitest/coverage-v8": "^4.0.0",
     "check-password-strength": "3.0.0",
     "clean-package": "2.2.0",
