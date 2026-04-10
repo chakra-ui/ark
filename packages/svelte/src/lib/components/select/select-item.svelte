@@ -14,8 +14,10 @@
 </script>
 
 <script lang="ts" generics="T extends CollectionItem = CollectionItem">
-  import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '$lib/components/factory'
+  import { createSplitProps } from '$lib/utils/create-split-props'
+  import type { ItemProps } from '@zag-js/select'
+  import { mergeProps } from '@zag-js/svelte'
   import { useSelectContext } from './use-select-context'
   import { SelectItemProvider } from './use-select-item-context'
   import { SelectItemPropsProvider } from './use-select-item-props-context'
@@ -23,8 +25,8 @@
   let { ref = $bindable(null), ...props }: SelectItemProps<T> = $props()
 
   const select = useSelectContext()
-  const itemProps = $derived({ item: props.item, disabled: props.disabled })
-  const mergedProps = $derived(mergeProps(select().getItemProps(itemProps), props))
+  const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['item', 'persistFocus']))
+  const mergedProps = $derived(mergeProps(select().getItemProps(itemProps), localProps))
 
   SelectItemProvider(() => select().getItemState(itemProps))
   SelectItemPropsProvider(() => itemProps)
