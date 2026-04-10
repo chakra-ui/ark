@@ -8,6 +8,7 @@
 }
 
 .Backdrop {
+  --z-index: 2;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: var(--z-index);
 }
