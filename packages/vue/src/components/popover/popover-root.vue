@@ -24,6 +24,7 @@ const props = withDefaults(defineProps<PopoverRootProps>(), {
   modal: undefined,
   open: undefined,
   portalled: undefined,
+  restoreFocus: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<PopoverRootEmits>()
