@@ -1,5 +1,8 @@
-import { Toc } from '@ark-ui/react/toc'
+import { Toc } from '@ark-ui/solid/toc'
 import styles from 'styles/toc.module.css'
+import { loremIpsum } from 'lorem-ipsum'
+
+const p = loremIpsum({ count: 1, units: 'paragraphs' })
 
 const items = [
   { value: 'principles', depth: 2 },
@@ -13,26 +16,15 @@ export const HighlightOnEnter = () => (
   <Toc.Root className={styles.Root} items={items}>
     <Toc.Content className={styles.Content}>
       <h2 id="principles">Principles</h2>
-      <p>
-        Good software follows a set of guiding principles that inform every decision from API design to implementation
-        details.
-      </p>
+      <p>{p}</p>
       <h2 id="accessibility">Accessibility</h2>
-      <p>
-        Every component ships with ARIA attributes and keyboard navigation baked in. Accessibility is not an
-        afterthought.
-      </p>
+      <p>{p}</p>
       <h2 id="performance">Performance</h2>
-      <p>Measure before optimizing. The bottleneck is rarely where you expect. Profile first, then act on real data.</p>
+      <p>{p}</p>
       <h2 id="testing">Testing</h2>
-      <p>
-        Tests give you confidence that your code works as intended. A good suite catches regressions before they reach
-        production.
-      </p>
+      <p>{p}</p>
       <h2 id="tooling">Tooling</h2>
-      <p>
-        Great tooling removes friction. Invest in your development environment the same way you invest in your product.
-      </p>
+      <p>{p}</p>
     </Toc.Content>
 
     <Toc.Nav className={styles.Nav}>

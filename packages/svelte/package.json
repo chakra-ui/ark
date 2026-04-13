@@ -209,7 +209,8 @@
     "@zag-js/tour": "1.39.1",
     "@zag-js/tree-view": "1.39.1",
     "@zag-js/types": "1.39.1",
-    "@zag-js/utils": "1.39.1"
+    "@zag-js/utils": "1.39.1",
+    "lorem-ipsum": "2.0.8"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "10.3.3",
