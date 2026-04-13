@@ -1,22 +1,25 @@
-import { Toc } from '@ark-ui/react/toc'
-import { BookOpenIcon } from 'lucide-react'
+import { Toc } from '@ark-ui/solid/toc'
+import { BookOpenIcon } from 'lucide-solid'
 import styles from 'styles/toc.module.css'
+import { loremIpsum } from 'lorem-ipsum'
+
+const p = loremIpsum({ count: 1, units: 'paragraphs' })
 
 const items = [
-  { value: 'introduction', depth: 2 },
-  { value: 'usage', depth: 2 },
-  { value: 'api', depth: 2 },
+  { value: 'introduction', depth: 2, label: 'Introduction' },
+  { value: 'usage', depth: 2, label: 'Usage' },
+  { value: 'api', depth: 2, label: 'API' },
 ]
 
 export const CustomRendering = () => (
   <Toc.Root className={styles.Root} items={items}>
     <Toc.Content className={styles.Content}>
       <h2 id="introduction">Introduction</h2>
-      <p>Custom rendering with icons.</p>
+      <p>{p}</p>
       <h2 id="usage">Usage</h2>
-      <p>How to use custom links in your ToC.</p>
+      <p>{p}</p>
       <h2 id="api">API</h2>
-      <p>API reference section.</p>
+      <p>{p}</p>
     </Toc.Content>
     <Toc.Nav className={styles.Nav}>
       <Toc.List className={styles.List}>
@@ -25,7 +28,7 @@ export const CustomRendering = () => (
             <Toc.Link asChild>
               <a href={`#${item.value}`} className={`${styles.Link} ${styles.LinkWithIcon}`}>
                 <BookOpenIcon size={12} />
-                {item.value.charAt(0).toUpperCase() + item.value.slice(1)}
+                {item.label}
               </a>
             </Toc.Link>
           </Toc.Item>

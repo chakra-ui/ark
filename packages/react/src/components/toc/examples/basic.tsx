@@ -1,58 +1,40 @@
 import { Toc } from '@ark-ui/react/toc'
 import styles from 'styles/toc.module.css'
+import { loremIpsum } from 'lorem-ipsum'
 
 const items = [
-  { value: 'introduction', depth: 2 },
-  { value: 'getting-started', depth: 2 },
-  { value: 'installation', depth: 2 },
-  { value: 'usage', depth: 2 },
-  { value: 'api-reference', depth: 2 },
+  { value: 'introduction', depth: 5, label: 'Introduction' },
+  { value: 'getting-started', depth: 2, label: 'Getting Started' },
+  { value: 'installation', depth: 2, label: 'Installation' },
+  { value: 'usage', depth: 2, label: 'Usage' },
+  { value: 'configuration', depth: 2, label: 'Configuration' },
+  { value: 'migration', depth: 2, label: 'Migration' },
+  { value: 'faq', depth: 2, label: 'FAQ' },
+  { value: 'troubleshooting', depth: 2, label: 'Troubleshooting' },
+  { value: 'api-reference', depth: 2, label: 'API Reference' },
+  { value: 'conclusion', depth: 2, label: 'Conclusion' },
 ]
+
+const paragraphs = loremIpsum({ count: 6, units: 'paragraphs' })
 
 export const Basic = () => (
   <Toc.Root className={styles.Root} items={items}>
     <Toc.Content className={styles.Content}>
-      <h2 id="introduction">Introduction</h2>
-      <p>
-        A table of contents helps readers navigate long documents by providing quick links to each section. It
-        automatically highlights the section currently visible in the viewport.
-      </p>
-      <h2 id="getting-started">Getting Started</h2>
-      <p>
-        To get started, pass an array of items to the root component. Each item has a value matching the heading id and
-        a depth matching the heading level.
-      </p>
-      <h2 id="installation">Installation</h2>
-      <p>
-        Install the package using your preferred package manager. The component has no external dependencies beyond the
-        state machine.
-      </p>
-      <p>
-        You can install it via npm, yarn, pnpm, or bun. The package ships as an ES module and requires a bundler that
-        supports modern JavaScript.
-      </p>
-      <h2 id="usage">Usage</h2>
-      <p>
-        Import the component and compose it using the compound component pattern. The Root component manages the
-        IntersectionObserver internally.
-      </p>
-      <p>
-        Each link in the TOC corresponds to a heading in the document. When the heading enters the viewport, its link
-        becomes active.
-      </p>
-      <h2 id="api-reference">API Reference</h2>
-      <p>
-        The full API reference documents all props, events, and methods available on each component part. Refer to it
-        when customizing behavior.
-      </p>
+      {items.map((item) => (
+        <section key={item.value}>
+          <h2 id={item.value}>{item.label}</h2>
+          <p>{paragraphs}</p>
+        </section>
+      ))}
     </Toc.Content>
-
     <Toc.Nav className={styles.Nav}>
       <Toc.Title className={styles.Title}>On this page</Toc.Title>
       <Toc.List className={styles.List}>
         {items.map((item) => (
           <Toc.Item className={styles.Item} key={item.value} item={item}>
-            <Toc.Link className={styles.Link}>{item.value.replace(/-/g, ' ')}</Toc.Link>
+            <Toc.Link className={styles.Link} href={`#${item.value}`}>
+              {item.label}
+            </Toc.Link>
           </Toc.Item>
         ))}
       </Toc.List>
