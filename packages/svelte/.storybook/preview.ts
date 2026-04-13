@@ -15,6 +15,10 @@ const preview: Preview = {
     controls: { disable: true },
     backgrounds: { disable: true },
     viewport: { disable: true },
+    sveltekit_experimental: {
+      // Disable the experimental SvelteKit mocks that use Svelte 5 runes
+      skip: true,
+    },
   },
 }
 
