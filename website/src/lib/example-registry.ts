@@ -86,6 +86,7 @@ import * as ColorPicker_Disabled from '@examples/color-picker/examples/disabled'
 import * as ColorPicker_FormUsage from '@examples/color-picker/examples/form-usage'
 import * as ColorPicker_Inline from '@examples/color-picker/examples/inline'
 import * as ColorPicker_InputOnly from '@examples/color-picker/examples/input-only'
+import * as ColorPicker_InsideDialog from '@examples/color-picker/examples/inside-dialog'
 import * as ColorPicker_OpenControlled from '@examples/color-picker/examples/open-controlled'
 import * as ColorPicker_RootProvider from '@examples/color-picker/examples/root-provider'
 import * as ColorPicker_SliderOnly from '@examples/color-picker/examples/slider-only'
@@ -162,6 +163,7 @@ import * as Dialog_FinalFocus from '@examples/dialog/examples/final-focus'
 import * as Dialog_InitialFocus from '@examples/dialog/examples/initial-focus'
 import * as Dialog_InsideScroll from '@examples/dialog/examples/inside-scroll'
 import * as Dialog_LazyMount from '@examples/dialog/examples/lazy-mount'
+import * as Dialog_MultipleTriggers from '@examples/dialog/examples/multiple-triggers'
 import * as Dialog_Nested from '@examples/dialog/examples/nested'
 import * as Dialog_NonModal from '@examples/dialog/examples/non-modal'
 import * as Dialog_OpenFromMenu from '@examples/dialog/examples/open-from-menu'
@@ -175,6 +177,7 @@ import * as Drawer_Basic from '@examples/drawer/examples/basic'
 import * as Drawer_Controlled from '@examples/drawer/examples/controlled'
 import * as Drawer_IndentBackground from '@examples/drawer/examples/indent-background'
 import * as Drawer_Modal from '@examples/drawer/examples/modal'
+import * as Drawer_MultipleTriggers from '@examples/drawer/examples/multiple-triggers'
 import * as Drawer_NoDragArea from '@examples/drawer/examples/no-drag-area'
 import * as Drawer_NonDraggable from '@examples/drawer/examples/non-draggable'
 import * as Drawer_RootProvider from '@examples/drawer/examples/root-provider'
@@ -265,6 +268,7 @@ import * as HoverCard_Basic from '@examples/hover-card/examples/basic'
 import * as HoverCard_Context from '@examples/hover-card/examples/context'
 import * as HoverCard_Controlled from '@examples/hover-card/examples/controlled'
 import * as HoverCard_Delay from '@examples/hover-card/examples/delay'
+import * as HoverCard_MultipleTriggers from '@examples/hover-card/examples/multiple-triggers'
 import * as HoverCard_Positioning from '@examples/hover-card/examples/positioning'
 import * as HoverCard_RootProvider from '@examples/hover-card/examples/root-provider'
 import * as ImageCropper_AspectRatio from '@examples/image-cropper/examples/aspect-ratio'
@@ -323,6 +327,7 @@ import * as Menu_Links from '@examples/menu/examples/links'
 import * as Menu_MenuInDialog from '@examples/menu/examples/menu-in-dialog'
 import * as Menu_MenuItemDialog from '@examples/menu/examples/menu-item-dialog'
 import * as Menu_MultipleMenu from '@examples/menu/examples/multiple-menu'
+import * as Menu_MultipleTriggers from '@examples/menu/examples/multiple-triggers'
 import * as Menu_Nested from '@examples/menu/examples/nested'
 import * as Menu_RadioItems from '@examples/menu/examples/radio-items'
 import * as Menu_RootProvider from '@examples/menu/examples/root-provider'
@@ -378,6 +383,7 @@ import * as Popover_Factory from '@examples/popover/examples/factory'
 import * as Popover_InitialFocus from '@examples/popover/examples/initial-focus'
 import * as Popover_LazyMount from '@examples/popover/examples/lazy-mount'
 import * as Popover_Modal from '@examples/popover/examples/modal'
+import * as Popover_MultipleTriggers from '@examples/popover/examples/multiple-triggers'
 import * as Popover_Nested from '@examples/popover/examples/nested'
 import * as Popover_Positioning from '@examples/popover/examples/positioning'
 import * as Popover_RootProvider from '@examples/popover/examples/root-provider'
@@ -473,6 +479,7 @@ import * as Splitter_Collapsible from '@examples/splitter/examples/collapsible'
 import * as Splitter_Context from '@examples/splitter/examples/context'
 import * as Splitter_DynamicCollapsible from '@examples/splitter/examples/dynamic-collapsible'
 import * as Splitter_MultiplePanels from '@examples/splitter/examples/multiple-panels'
+import * as Splitter_Nested from '@examples/splitter/examples/nested'
 import * as Splitter_ResizeIndicator from '@examples/splitter/examples/resize-indicator'
 import * as Splitter_RootProvider from '@examples/splitter/examples/root-provider'
 import * as Splitter_Vertical from '@examples/splitter/examples/vertical'
@@ -515,6 +522,7 @@ import * as TagsInput_PasteBehavior from '@examples/tags-input/examples/paste-be
 import * as TagsInput_ProgrammaticControl from '@examples/tags-input/examples/programmatic-control'
 import * as TagsInput_Readonly from '@examples/tags-input/examples/readonly'
 import * as TagsInput_RootProvider from '@examples/tags-input/examples/root-provider'
+import * as TagsInput_SanitizeValue from '@examples/tags-input/examples/sanitize-value'
 import * as TagsInput_Validation from '@examples/tags-input/examples/validation'
 import * as TagsInput_WithCombobox from '@examples/tags-input/examples/with-combobox'
 import * as TagsInput_WithField from '@examples/tags-input/examples/with-field'
@@ -547,6 +555,7 @@ import * as Tooltip_Basic from '@examples/tooltip/examples/basic'
 import * as Tooltip_Context from '@examples/tooltip/examples/context'
 import * as Tooltip_Controlled from '@examples/tooltip/examples/controlled'
 import * as Tooltip_Delay from '@examples/tooltip/examples/delay'
+import * as Tooltip_MultipleTriggers from '@examples/tooltip/examples/multiple-triggers'
 import * as Tooltip_Positioning from '@examples/tooltip/examples/positioning'
 import * as Tooltip_RootProvider from '@examples/tooltip/examples/root-provider'
 import * as Tooltip_WithinFixed from '@examples/tooltip/examples/within-fixed'
@@ -673,6 +682,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'color-picker/form-usage': ColorPicker_FormUsage,
   'color-picker/inline': ColorPicker_Inline,
   'color-picker/input-only': ColorPicker_InputOnly,
+  'color-picker/inside-dialog': ColorPicker_InsideDialog,
   'color-picker/open-controlled': ColorPicker_OpenControlled,
   'color-picker/root-provider': ColorPicker_RootProvider,
   'color-picker/slider-only': ColorPicker_SliderOnly,
@@ -749,6 +759,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'dialog/initial-focus': Dialog_InitialFocus,
   'dialog/inside-scroll': Dialog_InsideScroll,
   'dialog/lazy-mount': Dialog_LazyMount,
+  'dialog/multiple-triggers': Dialog_MultipleTriggers,
   'dialog/nested': Dialog_Nested,
   'dialog/non-modal': Dialog_NonModal,
   'dialog/open-from-menu': Dialog_OpenFromMenu,
@@ -762,6 +773,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'drawer/controlled': Drawer_Controlled,
   'drawer/indent-background': Drawer_IndentBackground,
   'drawer/modal': Drawer_Modal,
+  'drawer/multiple-triggers': Drawer_MultipleTriggers,
   'drawer/no-drag-area': Drawer_NoDragArea,
   'drawer/non-draggable': Drawer_NonDraggable,
   'drawer/root-provider': Drawer_RootProvider,
@@ -852,6 +864,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'hover-card/context': HoverCard_Context,
   'hover-card/controlled': HoverCard_Controlled,
   'hover-card/delay': HoverCard_Delay,
+  'hover-card/multiple-triggers': HoverCard_MultipleTriggers,
   'hover-card/positioning': HoverCard_Positioning,
   'hover-card/root-provider': HoverCard_RootProvider,
   'image-cropper/aspect-ratio': ImageCropper_AspectRatio,
@@ -910,6 +923,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'menu/menu-in-dialog': Menu_MenuInDialog,
   'menu/menu-item-dialog': Menu_MenuItemDialog,
   'menu/multiple-menu': Menu_MultipleMenu,
+  'menu/multiple-triggers': Menu_MultipleTriggers,
   'menu/nested': Menu_Nested,
   'menu/radio-items': Menu_RadioItems,
   'menu/root-provider': Menu_RootProvider,
@@ -965,6 +979,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'popover/initial-focus': Popover_InitialFocus,
   'popover/lazy-mount': Popover_LazyMount,
   'popover/modal': Popover_Modal,
+  'popover/multiple-triggers': Popover_MultipleTriggers,
   'popover/nested': Popover_Nested,
   'popover/positioning': Popover_Positioning,
   'popover/root-provider': Popover_RootProvider,
@@ -1060,6 +1075,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'splitter/context': Splitter_Context,
   'splitter/dynamic-collapsible': Splitter_DynamicCollapsible,
   'splitter/multiple-panels': Splitter_MultiplePanels,
+  'splitter/nested': Splitter_Nested,
   'splitter/resize-indicator': Splitter_ResizeIndicator,
   'splitter/root-provider': Splitter_RootProvider,
   'splitter/vertical': Splitter_Vertical,
@@ -1102,6 +1118,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'tags-input/programmatic-control': TagsInput_ProgrammaticControl,
   'tags-input/readonly': TagsInput_Readonly,
   'tags-input/root-provider': TagsInput_RootProvider,
+  'tags-input/sanitize-value': TagsInput_SanitizeValue,
   'tags-input/validation': TagsInput_Validation,
   'tags-input/with-combobox': TagsInput_WithCombobox,
   'tags-input/with-field': TagsInput_WithField,
@@ -1134,6 +1151,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'tooltip/context': Tooltip_Context,
   'tooltip/controlled': Tooltip_Controlled,
   'tooltip/delay': Tooltip_Delay,
+  'tooltip/multiple-triggers': Tooltip_MultipleTriggers,
   'tooltip/positioning': Tooltip_Positioning,
   'tooltip/root-provider': Tooltip_RootProvider,
   'tooltip/within-fixed': Tooltip_WithinFixed,

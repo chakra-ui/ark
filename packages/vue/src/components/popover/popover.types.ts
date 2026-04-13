@@ -24,6 +24,10 @@ export interface RootProps {
    */
   defaultOpen?: boolean
   /**
+   * Element to receive focus when the popover is closed
+   */
+  finalFocusEl?: () => HTMLElement | null
+  /**
    * The unique identifier of the machine.
    */
   id?: string
@@ -75,6 +79,12 @@ export interface RootProps {
    * The user provided options used to position the popover content
    */
   positioning?: popover.PositioningOptions
+  /**
+   * Whether to restore focus to the element that had focus before the popover was opened
+   *
+   * @default true
+   */
+  restoreFocus?: boolean
   /**
    * Specifies the localized strings that identifies the accessibility elements and their states
    */
