@@ -16,6 +16,11 @@ const config: StorybookConfig = {
     config.resolve.alias ??= {}
     // @ts-expect-error - alias type mismatch
     config.resolve.alias['styles'] = resolve(__dirname, '../../../.storybook/modules')
+
+    // Prevent Vite from pre-bundling .svelte files through esbuild
+    config.optimizeDeps ??= {}
+    config.optimizeDeps.noDiscovery = true
+
     return config
   },
 }
