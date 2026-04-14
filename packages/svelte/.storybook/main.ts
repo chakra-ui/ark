@@ -20,6 +20,7 @@ const config: StorybookConfig = {
     // Prevent Vite from pre-bundling .svelte files through esbuild
     config.optimizeDeps ??= {}
     config.optimizeDeps.noDiscovery = true
+    config.optimizeDeps.exclude = ['svelte', '@sveltejs/kit', '@ark-ui/svelte']
 
     return config
   },

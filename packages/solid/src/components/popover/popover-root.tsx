@@ -35,7 +35,7 @@ export const PopoverRoot = (props: PopoverRootProps) => {
     'triggerValue',
     'defaultTriggerValue',
     'onTriggerValueChange',
-  ])
+  ] as const)
   const api = usePopover(usePopoverProps)
   const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().open })))
 

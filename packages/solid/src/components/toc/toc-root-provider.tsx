@@ -1,4 +1,4 @@
-import type { Assign } from '../../types'
+import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseTocReturn } from './use-toc'
@@ -8,17 +8,16 @@ interface RootProviderProps {
   value: UseTocReturn
 }
 
-export interface TocRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
-export interface TocRootProviderProps extends Assign<HTMLProps<'div'>, TocRootProviderBaseProps> {}
-
-const splitRootProviderProps = createSplitProps<RootProviderProps>()
+export interface TocRootProviderBaseProps extends RootProviderProps, PolymorphicProps<'div'> {}
+export interface TocRootProviderProps extends HTMLProps<'div'>, TocRootProviderBaseProps {}
 
 export const TocRootProvider = (props: TocRootProviderProps) => {
-  const [{ value: toc }, localProps] = splitRootProviderProps(props, ['value'])
+  const [{ value: toc }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const mergedProps = mergeProps(() => toc().getRootProps(), localProps)
 
   return (
     <TocProvider value={toc}>
-      <ark.div {...localProps} />
+      <ark.div {...mergedProps} />
     </TocProvider>
   )
 }

@@ -1,7 +1,21 @@
-import { Toc } from '@ark-ui/solid/toc'
-import styles from 'styles/toc.module.css'
+import { Toc, useTocContext } from '@ark-ui/solid/toc'
+import { TreeView, createTreeCollection } from '@ark-ui/solid/tree-view'
+import { loremIpsum } from 'lorem-ipsum'
+import { ChevronRightIcon } from 'lucide-solid'
+import { createSignal } from 'solid-js'
+import tocStyles from 'styles/toc.module.css'
+import treeStyles from 'styles/tree-view.module.css'
 
-const sections = [
+const p = loremIpsum({ count: 7, units: 'paragraphs' })
+
+type TocNode = {
+  id: string
+  name: string
+  depth: number
+  children?: TocNode[]
+}
+
+const sections: TocNode[] = [
   {
     id: 'guides',
     name: 'Guides',
@@ -32,36 +46,100 @@ const sections = [
   },
 ]
 
-const flattenSections = (nodes) =>
-  nodes.flatMap((node) => [node, ...(node.children ? flattenSections(node.children) : [])])
+const collection = createTreeCollection<TocNode>({
+  nodeToValue: (node) => node.id,
+  nodeToString: (node) => node.name,
+  rootNode: { id: 'ROOT', name: '', depth: 0, children: sections },
+})
 
-const items = flattenSections(sections).map(({ id, name, depth }) => ({ value: id, label: name, depth }))
+const allItems = sections.flatMap((section) => [
+  { value: section.id, depth: section.depth },
+  ...(section.children ?? []).map((child) => ({ value: child.id, depth: child.depth })),
+])
 
-export default function WithTreeView() {
+const TocTreeNode = ({ node, indexPath }: TreeView.NodeProviderProps<TocNode>) => {
+  const toc = useTocContext()
   return (
-    <Toc.Root class={styles.Root} items={items}>
-      <Toc.Content class={styles.Content}>
+    <TreeView.NodeProvider node={node} indexPath={indexPath}>
+      {node.children ? (
+        <TreeView.Branch class={treeStyles.Branch}>
+          <TreeView.BranchControl class={treeStyles.BranchControl}>
+            <TreeView.BranchIndicator class={treeStyles.BranchIndicator}>
+              <ChevronRightIcon />
+            </TreeView.BranchIndicator>
+            <TreeView.BranchText class={treeStyles.BranchText}>
+              <a class={tocStyles.TreeLink} {...toc().getLinkProps({ item: { value: node.id, depth: node.depth } })}>
+                {node.name}
+              </a>
+            </TreeView.BranchText>
+          </TreeView.BranchControl>
+          <TreeView.BranchContent class={treeStyles.BranchContent}>
+            <TreeView.BranchIndentGuide class={treeStyles.BranchIndentGuide} />
+            {node.children.map((child, index) => (
+              <TocTreeNode node={child} indexPath={[...indexPath, index]} />
+            ))}
+          </TreeView.BranchContent>
+        </TreeView.Branch>
+      ) : (
+        <TreeView.Item class={treeStyles.Item}>
+          <TreeView.ItemText class={treeStyles.ItemText}>
+            <a class={tocStyles.TreeLink} {...toc().getLinkProps({ item: { value: node.id, depth: node.depth } })}>
+              {node.name}
+            </a>
+          </TreeView.ItemText>
+        </TreeView.Item>
+      )}
+    </TreeView.NodeProvider>
+  )
+}
+
+export const WithTreeView = () => {
+  const [expandedValue, setExpandedValue] = createSignal<string[]>([])
+
+  return (
+    <Toc.Root
+      id="toc-with-tree-view"
+      class={tocStyles.Root}
+      items={allItems}
+      onActiveChange={({ activeItems }) => {
+        const activeIds = new Set(activeItems.map((i) => i.value))
+        const next = sections
+          .filter(
+            (section) => activeIds.has(section.id) || (section.children ?? []).some((child) => activeIds.has(child.id)),
+          )
+          .map((s) => s.id)
+        setExpandedValue(next)
+      }}
+    >
+      <Toc.Content class={tocStyles.Content}>
         {sections.map((section) => (
-          <div key={section.id}>
+          <section>
             <h2 id={section.id}>{section.name}</h2>
-            {section.children &&
-              section.children.map((child) => (
-                <h3 id={child.id} key={child.id}>
-                  {child.name}
-                </h3>
-              ))}
-          </div>
+            <p>{p}</p>
+            {section.children?.map((child) => (
+              <div>
+                <h3 id={child.id}>{child.name}</h3>
+                <p>{p}</p>
+              </div>
+            ))}
+          </section>
         ))}
       </Toc.Content>
-      <Toc.Nav class={styles.Nav}>
-        <Toc.Title class={styles.Title}>On this page</Toc.Title>
-        <Toc.List class={styles.List}>
-          {items.map((item) => (
-            <Toc.Item class={styles.Item} item={item}>
-              <Toc.Link class={styles.Link}>{item.label}</Toc.Link>
-            </Toc.Item>
-          ))}
-        </Toc.List>
+
+      <Toc.Nav class={tocStyles.Nav}>
+        <Toc.Title class={tocStyles.Title}>On this page</Toc.Title>
+        <TreeView.Root
+          class={treeStyles.Root}
+          collection={collection}
+          expandedValue={expandedValue()}
+          onExpandedChange={({ expandedValue: next }) => setExpandedValue(next)}
+        >
+          <TreeView.Tree class={treeStyles.Tree}>
+            {sections.map((node, index) => (
+              <TocTreeNode node={node} indexPath={[index]} />
+            ))}
+          </TreeView.Tree>
+        </TreeView.Root>
       </Toc.Nav>
     </Toc.Root>
   )
