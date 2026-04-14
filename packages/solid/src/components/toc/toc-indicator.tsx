@@ -7,6 +7,6 @@ export interface TocIndicatorProps extends HTMLProps<'div'>, TocIndicatorBasePro
 
 export const TocIndicator = (props: TocIndicatorProps) => {
   const toc = useTocContext()
-  const mergedProps = mergeProps(() => toc.getRootProps(), props)
+  const mergedProps = mergeProps(() => toc().getIndicatorProps(), props)
   return <ark.div {...mergedProps} />
 }

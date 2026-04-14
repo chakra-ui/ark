@@ -19,6 +19,7 @@ const config: StorybookConfig = {
     config.resolve.alias['styles'] = resolve(__dirname, '../../../.storybook/modules')
 
     config.optimizeDeps ??= {}
+    config.optimizeDeps.exclude = ['svelte', '@sveltejs/kit', '@ark-ui/svelte']
     if (!config.optimizeDeps.rolldownOptions) {
       config.optimizeDeps.rolldownOptions = {}
     }
