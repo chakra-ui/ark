@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Toc, useTocContext } from '@ark-ui/vue/toc'
+import { Toc } from '@ark-ui/vue/toc'
 import { TreeView, createTreeCollection } from '@ark-ui/vue/tree-view'
 import { loremIpsum } from 'lorem-ipsum'
 import TocTreeNode, { type TocNode } from './toc-tree-node.vue'

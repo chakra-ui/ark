@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { Toc } from '@ark-ui/vue/toc'
 import { Swap } from '@ark-ui/vue/swap'
 import { Pin, PinOff } from 'lucide-vue-next'
