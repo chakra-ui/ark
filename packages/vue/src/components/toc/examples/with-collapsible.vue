@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { Collapsible } from '@ark-ui/vue/collapsible'
 import { Toc } from '@ark-ui/vue/toc'
 import { ChevronRight } from 'lucide-vue-next'
