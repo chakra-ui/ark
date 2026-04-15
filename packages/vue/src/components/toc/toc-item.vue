@@ -3,7 +3,7 @@ import type { ItemProps } from '@zag-js/toc'
 import type { LiHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface TocItemBaseProps extends ItemProps, PolymorphicProps {}
+export interface TocItemBaseProps extends /* @vue-ignore */ ItemProps, PolymorphicProps {}
 export interface TocItemProps
   extends
     TocItemBaseProps,

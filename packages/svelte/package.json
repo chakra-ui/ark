@@ -206,6 +206,7 @@
     "@zag-js/toggle-group": "1.40.0",
     "@zag-js/tooltip": "1.40.0",
     "@zag-js/tour": "1.40.0",
+    "@zag-js/toc": "1.40.0",
     "@zag-js/tree-view": "1.40.0",
     "@zag-js/types": "1.40.0",
     "@zag-js/utils": "1.40.0"
