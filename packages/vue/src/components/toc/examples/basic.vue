@@ -4,7 +4,7 @@ import styles from 'styles/toc.module.css'
 import { loremIpsum } from 'lorem-ipsum'
 
 const items = [
-  { value: 'introduction', depth: 5, label: 'Introduction' },
+  { value: 'introduction', depth: 2, label: 'Introduction' },
   { value: 'getting-started', depth: 2, label: 'Getting Started' },
   { value: 'installation', depth: 2, label: 'Installation' },
   { value: 'usage', depth: 2, label: 'Usage' },

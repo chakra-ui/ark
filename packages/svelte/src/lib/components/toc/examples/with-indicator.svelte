@@ -3,7 +3,7 @@
   import { loremIpsum } from 'lorem-ipsum'
   import styles from 'styles/toc.module.css'
 
-  const p = loremIpsum({ count: 6, units: 'paragraphs' })
+  const p = loremIpsum({ count: 7, units: 'paragraphs' })
 
   const items = [
     { value: 'overview', depth: 2, label: 'Overview' },

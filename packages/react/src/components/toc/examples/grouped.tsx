@@ -26,7 +26,7 @@ const groups = [
   },
 ]
 
-const paragraphs = loremIpsum({ count: 5, units: 'paragraphs' })
+const paragraphs = loremIpsum({ count: 7, units: 'paragraphs' })
 
 const allItems = groups.flatMap((g) => g.items)
 

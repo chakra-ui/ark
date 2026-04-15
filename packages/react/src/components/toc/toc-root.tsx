@@ -1,3 +1,4 @@
+import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
@@ -25,10 +26,11 @@ export const TocRoot = forwardRef<HTMLDivElement, TocRootProps>((props, ref) => 
     'threshold',
   ])
   const toc = useToc(useTocProps)
+  const mergedProps = mergeProps(toc.getRootProps(), localProps)
 
   return (
     <TocProvider value={toc}>
-      <ark.div {...localProps} ref={ref} />
+      <ark.div {...mergedProps} ref={ref} />
     </TocProvider>
   )
 })

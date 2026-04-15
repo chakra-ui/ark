@@ -14,7 +14,7 @@ const items = [
   { value: 'examples', depth: 2, label: 'Examples' },
 ]
 
-const paragraph = loremIpsum({ count: 5, units: 'paragraphs' })
+const paragraph = loremIpsum({ count: 7, units: 'paragraphs' })
 const tagMap = { 2: 'h2', 3: 'h3' } as const
 </script>
 
