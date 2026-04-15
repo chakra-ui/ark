@@ -13,6 +13,9 @@ const config: StorybookConfig = {
   },
   stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx|vue)'],
   addons: ['@storybook/addon-a11y'],
+  core: {
+    disableTelemetry: true,
+  },
   viteFinal(config) {
     config.resolve ??= {}
     config.resolve.alias ??= {}
