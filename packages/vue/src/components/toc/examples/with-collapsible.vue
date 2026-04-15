@@ -63,8 +63,8 @@ const getDashArray = (activeItems: any[]) => {
                     :r="RADIUS"
                     fill="none"
                     stroke="currentColor"
-                    strokeOpacity="0.2"
-                    strokeWidth="2.5"
+                    stroke-opacity="0.2"
+                    stroke-width="2.5"
                   />
                   <circle
                     cx="18"
@@ -72,9 +72,9 @@ const getDashArray = (activeItems: any[]) => {
                     :r="RADIUS"
                     fill="none"
                     stroke="var(--demo-coral-solid)"
-                    strokeWidth="2.5"
-                    :strokeDasharray="getDashArray(contextActiveItems)"
-                    strokeLinecap="round"
+                    stroke-width="2.5"
+                    :stroke-dasharray="getDashArray(contextActiveItems)"
+                    stroke-linecap="round"
                     transform="rotate(-90 18 18)"
                     style="transition: stroke-dasharray 0.4s ease-out"
                   />

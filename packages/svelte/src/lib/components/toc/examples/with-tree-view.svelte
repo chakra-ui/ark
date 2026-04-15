@@ -6,7 +6,7 @@
   import tocStyles from 'styles/toc.module.css'
   import treeStyles from 'styles/tree-view.module.css'
 
-  const p = loremIpsum({ count: 5, units: 'paragraphs' })
+  const p = loremIpsum({ count: 7, units: 'paragraphs' })
 
   type TocNode = {
     id: string

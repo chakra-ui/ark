@@ -5,7 +5,7 @@
   import { PinIcon, PinOffIcon } from 'lucide-svelte'
   import styles from 'styles/toc.module.css'
 
-  const p = loremIpsum({ count: 10, units: 'paragraphs' })
+  const p = loremIpsum({ count: 7, units: 'paragraphs' })
 
   const items = [
     { value: 'introduction', depth: 2, label: 'Introduction' },
@@ -20,18 +20,17 @@
   let hovered = $state(false)
 </script>
 
-<div class="{styles.Root} {styles.HoverRoot}">
-  <article class={styles.Content}>
+<Toc.Root class="{styles.Root} {styles.HoverRoot}" {items}>
+  <Toc.Content class={styles.Content}>
     {#each items as item (item.value)}
       <section>
         <h2 id={item.value}>{item.label}</h2>
         <p>{p}</p>
       </section>
     {/each}
-  </article>
+  </Toc.Content>
   <Toc.Nav
     class={styles.NavHover}
-    {items}
     data-expanded={(hovered || pinned) || undefined}
     onmouseenter={() => (hovered = true)}
     onmouseleave={() => (hovered = false)}
@@ -68,7 +67,7 @@
           <Toc.List class={styles.HoverList}>
             {#each items as item (item.value)}
               <Toc.Item {item} class={styles.Item}>
-                <Toc.Link class={styles.HoverLink}>{item.label}</Toc.Link>
+                <Toc.Link class={styles.HoverLink} href={`#${item.value}`}>{item.label}</Toc.Link>
               </Toc.Item>
             {/each}
           </Toc.List>
@@ -76,4 +75,4 @@
       </Swap.Indicator>
     </Swap.Root>
   </Toc.Nav>
-</div>
+</Toc.Root>

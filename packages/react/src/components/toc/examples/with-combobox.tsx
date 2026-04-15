@@ -7,7 +7,7 @@ import comboboxStyles from 'styles/combobox.module.css'
 import styles from 'styles/toc.module.css'
 import { loremIpsum } from 'lorem-ipsum'
 
-const p = loremIpsum({ count: 6, units: 'paragraphs' })
+const p = loremIpsum({ count: 7, units: 'paragraphs' })
 
 const items = [
   { value: 'introduction', depth: 1, label: 'Introduction' },

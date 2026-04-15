@@ -21,7 +21,7 @@ export const WithHover = () => {
   const [hovered, setHovered] = createSignal(false)
 
   return (
-    <Toc.Root id="toc-with-hover" class={`${styles.Root} ${styles.HoverRoot}`} items={items}>
+    <Toc.Root class={`${styles.Root} ${styles.HoverRoot}`} items={items}>
       <article class={styles.Content}>
         {items.map((item) => (
           <section>

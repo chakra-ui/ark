@@ -2,7 +2,6 @@ import { Collapsible } from '@ark-ui/solid/collapsible'
 import { Toc } from '@ark-ui/solid/toc'
 import { loremIpsum } from 'lorem-ipsum'
 import { ChevronRightIcon } from 'lucide-solid'
-import { createMemo } from 'solid-js'
 import CollapsibleStyles from 'styles/Collapsible.module.css'
 import styles from 'styles/toc.module.css'
 
@@ -20,7 +19,7 @@ const RADIUS = 14
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS
 
 export const WithCollapsible = () => (
-  <Toc.Root id="toc-with-collapsible" class={`${styles.Root} ${styles.RootStacked}`} items={items}>
+  <Toc.Root class={`${styles.Root} ${styles.RootStacked}`} items={items}>
     <Toc.Content class={styles.Content}>
       {items.map((item) => (
         <section>
@@ -34,20 +33,14 @@ export const WithCollapsible = () => (
       <Collapsible.Root class={CollapsibleStyles.Root} style={{ width: '100%' }}>
         <Toc.Context>
           {(toc) => {
-            const api = toc()
-            const activeIndex = createMemo(() => {
-              const items_ = api.activeItems
-              return items_[0] ? items.findIndex((i) => i.value === items_[0].value) : -1
-            })
-            const activeLabel = createMemo(() => {
-              const idx = activeIndex()
-              return idx >= 0 ? items[idx].label : undefined
-            })
-            const progress = createMemo(() => {
-              const idx = activeIndex()
-              return idx >= 0 ? (idx + 1) / items.length : 0
-            })
-            const dashArray = createMemo(() => `${progress() * CIRCUMFERENCE} ${CIRCUMFERENCE}`)
+            const activeIndex = () => {
+              const activeItems = toc().activeItems
+              return activeItems[0] ? items.findIndex((i) => i.value === activeItems[0].value) : -1
+            }
+            const activeLabel = () => (activeIndex() >= 0 ? items[activeIndex()].label : undefined)
+            const dashArray = () =>
+              `${(activeIndex() >= 0 ? (activeIndex() + 1) / items.length : 0) * CIRCUMFERENCE} ${CIRCUMFERENCE}`
+
             return (
               <Collapsible.Trigger class={CollapsibleStyles.Trigger}>
                 <span class={styles.TriggerContent}>

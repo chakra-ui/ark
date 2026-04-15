@@ -2,10 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '../../types'
   import type { UseTocReturn } from './use-toc.svelte'
 
-  export interface TocRootProviderBaseProps extends PolymorphicProps<'nav'>, RefAttribute {
+  export interface TocRootProviderBaseProps extends PolymorphicProps<'div'>, RefAttribute {
     value: UseTocReturn
   }
-  export interface TocRootProviderProps extends Assign<HTMLProps<'nav'>, TocRootProviderBaseProps> {}
+  export interface TocRootProviderProps extends Assign<HTMLProps<'div'>, TocRootProviderBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -18,4 +18,4 @@
   TocProvider(() => value())
 </script>
 
-<Ark as="nav" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

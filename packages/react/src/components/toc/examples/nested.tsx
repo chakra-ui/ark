@@ -2,7 +2,7 @@ import { Toc } from '@ark-ui/react/toc'
 import styles from 'styles/toc.module.css'
 import { loremIpsum } from 'lorem-ipsum'
 
-const paragraphs = loremIpsum({ count: 5, units: 'paragraphs' })
+const paragraphs = loremIpsum({ count: 7, units: 'paragraphs' })
 
 const items = [
   { value: 'introduction', depth: 2, label: 'Introduction' },

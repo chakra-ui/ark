@@ -10,7 +10,7 @@ const items = [
   { value: 'faq', depth: 2, label: 'FAQ' },
 ]
 
-const paragraphs = loremIpsum({ count: 6, units: 'paragraphs' })
+const paragraphs = loremIpsum({ count: 7, units: 'paragraphs' })
 </script>
 
 <template>

@@ -12,7 +12,7 @@ const items = [
   { value: 'conclusion', depth: 2, label: 'Conclusion' },
 ]
 
-const paragraphs = loremIpsum({ count: 6, units: 'paragraphs' })
+const paragraphs = loremIpsum({ count: 7, units: 'paragraphs' })
 
 export const WithIndicator = () => (
   <Toc.Root id="toc-with-indicator" class={styles.Root} items={items}>

@@ -20,16 +20,16 @@
   const CIRCUMFERENCE = 2 * Math.PI * RADIUS
 </script>
 
-<div class="{styles.Root} {styles.RootStacked}">
-  <article class={styles.Content}>
+<Toc.Root class="{styles.Root} {styles.RootStacked}" {items}>
+  <Toc.Content class={styles.Content}>
     {#each items as item (item.value)}
       <section>
         <h2 id={item.value}>{item.label}</h2>
         <p>{p}</p>
       </section>
     {/each}
-  </article>
-  <Toc.Nav class={styles.Nav} {items}>
+  </Toc.Content>
+  <Toc.Nav class={styles.Nav}>
     <Collapsible.Root class={collapsibleStyles.Root} style="width: 100%">
       <Toc.Context>
         {#snippet render(toc)}
@@ -83,7 +83,7 @@
         <Toc.List class={styles.List}>
           {#each items as item, index (item.value)}
             <Toc.Item class={styles.Item} {item}>
-              <Toc.Link class={styles.LinkNumbered}>
+              <Toc.Link class={styles.LinkNumbered} href={`#${item.value}`}>
                 <span class={styles.Number}>{String(index + 1).padStart(2, '0')}</span>
                 {item.label}
               </Toc.Link>
@@ -93,4 +93,4 @@
       </Collapsible.Content>
     </Collapsible.Root>
   </Toc.Nav>
-</div>
+</Toc.Root>

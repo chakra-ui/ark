@@ -6,8 +6,8 @@ export interface TocListBaseProps extends PolymorphicProps<'ul'> {}
 export interface TocListProps extends HTMLProps<'ul'>, TocListBaseProps {}
 
 export const TocList = (props: TocListProps) => {
-  const api = useTocContext()
-  const mergedProps = mergeProps(() => api().getListProps(), props)
+  const toc = useTocContext()
+  const mergedProps = mergeProps(() => toc().getListProps(), props)
 
   return <ark.ul {...mergedProps} />
 }
