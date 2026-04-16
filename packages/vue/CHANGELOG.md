@@ -1,5 +1,28 @@
 # @ark-ui/vue
 
+## [5.36.1] - 2026-04-14
+
+### Fixed
+
+- ### Added
+  - **Popover**: Add `finalFocusEl` and `restoreFocus` props to control focus behavior when the popover closes.
+    `finalFocusEl` lets you specify an element to receive focus instead of the trigger, and `restoreFocus` (default
+    `true`) controls whether focus returns to the trigger at all.
+    ```jsx
+    <Popover.Root finalFocusEl={() => myInputRef} restoreFocus={false}>
+      ...
+    </Popover.Root>
+    ```
+  ### Fixed
+  - **Color Picker**: Fix color value to respect the specified `format` when setting values via props or `setValue`.
+    Previously, the internal color object could retain a mismatched format (e.g., RGB when `format` is `hsla`), causing
+    inconsistent `value` objects in `onValueChange` callbacks.
+  - **Date Input**: Fix min/max constraints resetting other segments mid-keystroke. Validation now defers until the
+    segment is fully typed or on blur.
+  - **Date Picker**: Fix `onValueChange` not firing when only time segments change in `CalendarDateTime` or
+    `ZonedDateTime` values.
+  - **Navigation Menu**: Remove aggressive and redundant default `aria-label`.
+
 ## [5.36.0] - 2026-04-10
 
 ### Added
@@ -73,9 +96,9 @@
 - **File Upload**: Automatically reject duplicate files with `FILE_EXISTS` error. Previously, uploading the same file
   twice was silently accepted and deleting one duplicate removed all of them.
 
-- **Menu**: Fix keyboard navigation for nested menus. ArrowRight now correctly opens submenus when using nested component
-  patterns. Fix issue where quick diagonal pointer movement toward an open submenu could flash the highlight across
-  sibling items you skim past.
+- **Menu**: Fix keyboard navigation for nested menus. ArrowRight now correctly opens submenus when using nested
+  component patterns. Fix issue where quick diagonal pointer movement toward an open submenu could flash the highlight
+  across sibling items you skim past.
 
 - **Splitter**: Fix `onResizeStart` and `onResizeEnd` callbacks to fire for programmatic resizes.
 
