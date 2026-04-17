@@ -1,36 +1,39 @@
 import { Collapsible } from '@ark-ui/solid/collapsible'
 import { Toc } from '@ark-ui/solid/toc'
-import { loremIpsum } from 'lorem-ipsum'
 import { ChevronRightIcon } from 'lucide-solid'
 import CollapsibleStyles from 'styles/Collapsible.module.css'
 import styles from 'styles/toc.module.css'
 
-const p = loremIpsum({ count: 7, units: 'paragraphs' })
-
 const items = [
-  { value: 'introduction', depth: 2, label: 'Introduction' },
-  { value: 'installation', depth: 2, label: 'Installation' },
-  { value: 'usage', depth: 2, label: 'Usage' },
-  { value: 'api-reference', depth: 2, label: 'API Reference' },
-  { value: 'examples', depth: 2, label: 'Examples' },
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
 
 const RADIUS = 14
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS
 
 export const WithCollapsible = () => (
-  <Toc.Root class={`${styles.Root} ${styles.RootStacked}`} items={items}>
+  <Toc.Root class={styles.Root} items={items} rootMargin="0px 0px -80% 0px">
     <Toc.Content class={styles.Content}>
-      {items.map((item) => (
-        <section>
-          <h2 id={item.value}>{item.label}</h2>
-          <p>{p}</p>
-        </section>
-      ))}
+      <div class={styles.ContentSection}>
+        {items.map((item) => (
+          <section>
+            <h2 id={item.value}>{item.label}</h2>
+            <div class={styles.DummyText}>
+              {Array.from({ length: item.lines }).map(() => (
+                <div class={styles.DummyLine} />
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
     </Toc.Content>
 
     <Toc.Nav class={styles.Nav}>
-      <Collapsible.Root class={CollapsibleStyles.Root} style={{ width: '100%' }}>
+      <Collapsible.Root style={{ width: '100%' }}>
         <Toc.Context>
           {(toc) => {
             const activeIndex = () => {

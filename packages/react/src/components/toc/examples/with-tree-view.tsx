@@ -1,17 +1,15 @@
 import { Toc, useTocContext } from '@ark-ui/react/toc'
 import { TreeView, createTreeCollection } from '@ark-ui/react/tree-view'
-import { loremIpsum } from 'lorem-ipsum'
 import { ChevronRightIcon } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import tocStyles from 'styles/toc.module.css'
 import treeStyles from 'styles/tree-view.module.css'
-
-const p = loremIpsum({ count: 7, units: 'paragraphs' })
 
 type TocNode = {
   id: string
   name: string
   depth: number
+  lines: number
   children?: TocNode[]
 }
 
@@ -20,28 +18,31 @@ const sections: TocNode[] = [
     id: 'guides',
     name: 'Guides',
     depth: 2,
+    lines: 10,
     children: [
-      { id: 'quick-start', name: 'Quick Start', depth: 3 },
-      { id: 'manual-setup', name: 'Manual Setup', depth: 3 },
+      { id: 'quick-start', name: 'Quick Start', depth: 3, lines: 6 },
+      { id: 'manual-setup', name: 'Manual Setup', depth: 3, lines: 5 },
     ],
   },
   {
     id: 'core-concepts',
     name: 'Core Concepts',
     depth: 2,
+    lines: 9,
     children: [
-      { id: 'props', name: 'Props', depth: 3 },
-      { id: 'events', name: 'Events', depth: 3 },
-      { id: 'context', name: 'Context', depth: 3 },
+      { id: 'toc-props', name: 'Props', depth: 3, lines: 7 },
+      { id: 'toc-events', name: 'Events', depth: 3, lines: 6 },
+      { id: 'toc-context', name: 'Context', depth: 3, lines: 8 },
     ],
   },
   {
     id: 'advanced',
     name: 'Advanced',
     depth: 2,
+    lines: 11,
     children: [
-      { id: 'root-provider', name: 'Root Provider', depth: 3 },
-      { id: 'custom-rendering', name: 'Custom Rendering', depth: 3 },
+      { id: 'root-api', name: 'Root Provider', depth: 3, lines: 7 },
+      { id: 'custom-rendering', name: 'Custom Rendering', depth: 3, lines: 6 },
     ],
   },
 ]
@@ -49,7 +50,7 @@ const sections: TocNode[] = [
 const collection = createTreeCollection<TocNode>({
   nodeToValue: (node) => node.id,
   nodeToString: (node) => node.name,
-  rootNode: { id: 'ROOT', name: '', depth: 0, children: sections },
+  rootNode: { id: 'ROOT', name: '', depth: 0, lines: 0, children: sections },
 })
 
 const allItems = sections.flatMap((section) => [
@@ -95,11 +96,13 @@ const TocTreeNode = ({ node, indexPath }: TreeView.NodeProviderProps<TocNode>) =
 
 export const WithTreeView = () => {
   const [expandedValue, setExpandedValue] = useState<string[]>([])
+  const contentRef = useRef<HTMLDivElement>(null)
 
   return (
     <Toc.Root
       className={tocStyles.Root}
       items={allItems}
+      getScrollEl={() => contentRef.current}
       onActiveChange={({ activeItems }) => {
         const activeIds = new Set(activeItems.map((i) => i.value))
         const next = sections
@@ -110,15 +113,23 @@ export const WithTreeView = () => {
         setExpandedValue(next)
       }}
     >
-      <Toc.Content className={tocStyles.Content}>
+      <Toc.Content className={tocStyles.Content} ref={contentRef}>
         {sections.map((section) => (
           <section key={section.id}>
             <h2 id={section.id}>{section.name}</h2>
-            <p>{p}</p>
+            <div className={tocStyles.DummyText}>
+              {Array.from({ length: section.lines ?? 5 }, (_, i) => (
+                <div key={i} className={tocStyles.DummyLine} />
+              ))}
+            </div>
             {section.children?.map((child) => (
               <div key={child.id}>
                 <h3 id={child.id}>{child.name}</h3>
-                <p>{p}</p>
+                <div className={tocStyles.DummyText}>
+                  {Array.from({ length: child.lines ?? 3 }, (_, i) => (
+                    <div key={i} className={tocStyles.DummyLine} />
+                  ))}
+                </div>
               </div>
             ))}
           </section>

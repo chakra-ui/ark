@@ -1,18 +1,13 @@
 import { Toc } from '@ark-ui/solid/toc'
 import styles from 'styles/toc.module.css'
-import { loremIpsum } from 'lorem-ipsum'
 
 const items = [
-  { value: 'overview', depth: 2, label: 'Overview' },
-  { value: 'architecture', depth: 2, label: 'Architecture' },
-  { value: 'state-machines', depth: 2, label: 'State Machines' },
-  { value: 'components', depth: 2, label: 'Components' },
-  { value: 'theming', depth: 2, label: 'Theming' },
-  { value: 'accessibility', depth: 2, label: 'Accessibility' },
-  { value: 'conclusion', depth: 2, label: 'Conclusion' },
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
-
-const paragraphs = loremIpsum({ count: 7, units: 'paragraphs' })
 
 export const WithIndicator = () => (
   <Toc.Root id="toc-with-indicator" class={styles.Root} items={items}>
@@ -20,7 +15,11 @@ export const WithIndicator = () => (
       {items.map((item) => (
         <section>
           <h2 id={item.value}>{item.label}</h2>
-          <p>{paragraphs}</p>
+          <div class={styles.DummyText}>
+            {Array.from({ length: item.lines }).map(() => (
+              <div class={styles.DummyLine} />
+            ))}
+          </div>
         </section>
       ))}
     </Toc.Content>

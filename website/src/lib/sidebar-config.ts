@@ -78,6 +78,7 @@ export const sidebarConfig: SidebarGroupConfig[] = [
       { id: 'tabs' },
       { id: 'tags-input' },
       { id: 'timer' },
+      // { id: 'toc' },
       { id: 'toast' },
       { id: 'toggle' },
       { id: 'toggle-group' },

@@ -12,6 +12,7 @@
     id: string
     name: string
     depth: number
+    lines?: number
     children?: TocNode[]
   }
 
@@ -20,28 +21,31 @@
       id: 'guides',
       name: 'Guides',
       depth: 2,
+      lines: 10,
       children: [
-        { id: 'quick-start', name: 'Quick Start', depth: 3 },
-        { id: 'manual-setup', name: 'Manual Setup', depth: 3 },
+        { id: 'quick-start', name: 'Quick Start', depth: 3, lines: 6 },
+        { id: 'manual-setup', name: 'Manual Setup', depth: 3, lines: 5 },
       ],
     },
     {
       id: 'core-concepts',
       name: 'Core Concepts',
       depth: 2,
+      lines: 9,
       children: [
-        { id: 'props', name: 'Props', depth: 3 },
-        { id: 'events', name: 'Events', depth: 3 },
-        { id: 'context', name: 'Context', depth: 3 },
+        { id: 'toc-props', name: 'Props', depth: 3, lines: 7 },
+        { id: 'toc-events', name: 'Events', depth: 3, lines: 6 },
+        { id: 'toc-context', name: 'Context', depth: 3, lines: 8 },
       ],
     },
     {
       id: 'advanced',
       name: 'Advanced',
       depth: 2,
+      lines: 11,
       children: [
-        { id: 'root-provider', name: 'Root Provider', depth: 3 },
-        { id: 'custom-rendering', name: 'Custom Rendering', depth: 3 },
+        { id: 'root-api', name: 'Root Provider', depth: 3, lines: 7 },
+        { id: 'custom-rendering', name: 'Custom Rendering', depth: 3, lines: 6 },
       ],
     },
   ]
@@ -65,11 +69,19 @@
     {#each sections as section (section.id)}
       <section>
         <h2 id={section.id}>{section.name}</h2>
-        <p>{p}</p>
+        <div class={tocStyles.DummyText}>
+          {#each { length: section.lines ?? 5 } as _, i}
+            <div class={tocStyles.DummyLine} />
+          {/each}
+        </div>
         {#each section.children ?? [] as child (child.id)}
           <div>
             <h3 id={child.id}>{child.name}</h3>
-            <p>{p}</p>
+            <div class={tocStyles.DummyText}>
+              {#each { length: child.lines ?? 3 } as _, i}
+                <div class={tocStyles.DummyLine} />
+              {/each}
+            </div>
           </div>
         {/each}
       </section>

@@ -1,47 +1,48 @@
 import { Toc, useToc } from '@ark-ui/solid/toc'
+import { Index } from 'solid-js'
 import styles from 'styles/toc.module.css'
-import { loremIpsum } from 'lorem-ipsum'
 
 const items = [
-  { value: 'introduction', depth: 2, label: 'Introduction' },
-  { value: 'getting-started', depth: 2, label: 'Getting Started' },
-  { value: 'installation', depth: 2, label: 'Installation' },
-  { value: 'usage', depth: 2, label: 'Usage' },
-  { value: 'configuration', depth: 2, label: 'Configuration' },
-  { value: 'migration', depth: 2, label: 'Migration' },
-  { value: 'faq', depth: 2, label: 'FAQ' },
-  { value: 'troubleshooting', depth: 2, label: 'Troubleshooting' },
-  { value: 'api-reference', depth: 2, label: 'API Reference' },
-  { value: 'conclusion', depth: 2, label: 'Conclusion' },
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
 
-const paragraphs = loremIpsum({ count: 7, units: 'paragraphs' })
-
 export const RootProvider = () => {
-  const toc = useToc({ items })
+  const toc = useToc({ items, rootMargin: '0px 0px -80% 0px' })
 
   return (
     <Toc.RootProvider class={styles.Root} value={toc}>
       <Toc.Content class={styles.Content}>
-        {items.map((item) => (
-          <section>
-            <h2 id={item.value}>{item.label}</h2>
-            <p>{paragraphs}</p>
-          </section>
-        ))}
+        <div class={styles.ContentSection}>
+          <Index each={items}>
+            {(item) => (
+              <section>
+                <h2 id={item().value}>{item().label}</h2>
+                <div class={styles.DummyText}>
+                  <Index each={Array.from({ length: item().lines })}>{() => <div class={styles.DummyLine} />}</Index>
+                </div>
+              </section>
+            )}
+          </Index>
+        </div>
       </Toc.Content>
 
       <Toc.Nav class={styles.Nav}>
-        <p class={styles.ActiveIds}>Active: {toc().activeIds.length > 0 ? toc().activeIds.join(', ') : '—'}</p>
+        <output>active: {JSON.stringify(toc().activeIds)}</output>
         <Toc.Title class={styles.Title}>On this page</Toc.Title>
         <Toc.List class={styles.List}>
-          {items.map((item) => (
-            <Toc.Item class={styles.Item} item={item}>
-              <Toc.Link class={styles.Link} href={`#${item.value}`}>
-                {item.label}
-              </Toc.Link>
-            </Toc.Item>
-          ))}
+          <Index each={items}>
+            {(item) => (
+              <Toc.Item class={styles.Item} item={item()}>
+                <Toc.Link class={styles.Link} href={`#${item().value}`}>
+                  {item().label}
+                </Toc.Link>
+              </Toc.Item>
+            )}
+          </Index>
         </Toc.List>
       </Toc.Nav>
     </Toc.RootProvider>

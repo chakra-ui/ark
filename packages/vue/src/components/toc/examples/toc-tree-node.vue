@@ -9,6 +9,7 @@ export interface TocNode {
   id: string
   name: string
   depth: number
+  lines?: number
   children?: TocNode[]
 }
 
