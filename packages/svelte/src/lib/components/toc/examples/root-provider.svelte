@@ -1,37 +1,42 @@
 <script lang="ts">
   import { Toc, useToc } from '@ark-ui/svelte/toc'
-  import { loremIpsum } from 'lorem-ipsum'
   import styles from 'styles/toc.module.css'
 
-  const p = loremIpsum({ count: 7, units: 'paragraphs' })
+const items = [
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
+]
 
-  const items = [
-    { value: 'principles', depth: 2, label: 'Principles' },
-    { value: 'patterns', depth: 2, label: 'Patterns' },
-    { value: 'testing', depth: 2, label: 'Testing' },
-    { value: 'performance', depth: 2, label: 'Performance' },
-  ]
-
-  const toc = useToc({ items })
+  const toc = useToc({ items, rootMargin: '0px 0px -80% 0px' })
 </script>
 
-<div class={styles.Root}>
-  <article class={styles.Content}>
-    {#each items as item (item.value)}
-      <section>
-        <h2 id={item.value}>{item.label}</h2>
-        <p>{p}</p>
-      </section>
-    {/each}
-  </article>
-  <Toc.RootProvider class={styles.Nav} value={toc}>
-    <Toc.Title class={styles.Title}>On this page</Toc.Title>
-    <Toc.List class={styles.List}>
-      {#each items as item (item.value)}
-        <Toc.Item class={styles.Item} {item}>
-          <Toc.Link class={styles.Link}>{item.label}</Toc.Link>
-        </Toc.Item>
-      {/each}
-    </Toc.List>
+  <Toc.RootProvider class={styles.Root} value={toc}>
+    <Toc.Content class={styles.Content}>
+      <div class={styles.ContentSection}>
+        {#each items as item (item.value)}
+          <section>
+            <h2 id={item.value}>{item.label}</h2>
+            <div class={styles.DummyText}>
+              {#each { length: item.lines } as _, i}
+                <div class={styles.DummyLine} />
+              {/each}
+            </div>
+          </section>
+        {/each}
+      </div>
+    </Toc.Content>
+    <Toc.Nav class={styles.Nav}>
+      <output>active: {JSON.stringify(toc().activeIds)}</output>
+      <Toc.Title class={styles.Title}>On this page</Toc.Title>
+      <Toc.List class={styles.List}>
+        {#each items as item (item.value)}
+          <Toc.Item class={styles.Item} {item}>
+            <Toc.Link class={styles.Link} href={`#${item.value}`}>{item.label}</Toc.Link>
+          </Toc.Item>
+        {/each}
+      </Toc.List>
+    </Toc.Nav>
   </Toc.RootProvider>
-</div>

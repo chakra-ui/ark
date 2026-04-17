@@ -1,19 +1,16 @@
 <script lang="ts">
   import { Toc } from '@ark-ui/svelte/toc'
-  import { loremIpsum } from 'lorem-ipsum'
   import styles from 'styles/toc.module.css'
 
-  const p = loremIpsum({ count: 7, units: 'paragraphs' })
-
   const items = [
-    { value: 'introduction', depth: 2, label: 'Introduction' },
-    { value: 'getting-started', depth: 2, label: 'Getting Started' },
-    { value: 'installation', depth: 3, label: 'Installation' },
-    { value: 'configuration', depth: 3, label: 'Configuration' },
-    { value: 'api-reference', depth: 2, label: 'API Reference' },
-    { value: 'hooks', depth: 3, label: 'Hooks' },
-    { value: 'components', depth: 3, label: 'Components' },
-    { value: 'examples', depth: 2, label: 'Examples' },
+    { value: 'introduction', depth: 2, label: 'Introduction', lines: 10 },
+    { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 12 },
+    { value: 'installation', depth: 3, label: 'Installation', lines: 8 },
+    { value: 'configuration', depth: 3, label: 'Configuration', lines: 14 },
+    { value: 'api-ref', depth: 2, label: 'API Reference', lines: 10 },
+    { value: 'hooks', depth: 3, label: 'Hooks', lines: 11 },
+    { value: 'components', depth: 3, label: 'Components', lines: 13 },
+    { value: 'code-examples', depth: 2, label: 'Examples', lines: 10 },
   ]
 </script>
 
@@ -24,7 +21,11 @@
         <svelte:element this={({ 2: 'h2', 3: 'h3', 4: 'h4' } as const)[item.depth as 2 | 3 | 4] ?? 'h2'} id={item.value}>
           {item.label}
         </svelte:element>
-        <p>{p}</p>
+        <div class={styles.DummyText}>
+          {#each { length: item.lines } as _, i}
+            <div class={styles.DummyLine} />
+          {/each}
+        </div>
       </section>
     {/each}
   </article>

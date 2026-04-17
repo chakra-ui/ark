@@ -1,43 +1,41 @@
 import { Toc } from '@ark-ui/solid/toc'
 import styles from 'styles/toc.module.css'
-import { loremIpsum } from 'lorem-ipsum'
 
 const items = [
-  { value: 'introduction', depth: 2, label: 'Introduction' },
-  { value: 'getting-started', depth: 2, label: 'Getting Started' },
-  { value: 'installation', depth: 2, label: 'Installation' },
-  { value: 'usage', depth: 2, label: 'Usage' },
-  { value: 'configuration', depth: 2, label: 'Configuration' },
-  { value: 'migration', depth: 2, label: 'Migration' },
-  { value: 'faq', depth: 2, label: 'FAQ' },
-  { value: 'troubleshooting', depth: 2, label: 'Troubleshooting' },
-  { value: 'api-reference', depth: 2, label: 'API Reference' },
-  { value: 'conclusion', depth: 2, label: 'Conclusion' },
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
 
-const paragraphs = loremIpsum({ count: 7, units: 'paragraphs' })
-
-export const Basic = () => (
-  <Toc.Root class={styles.Root} items={items}>
-    <Toc.Content class={styles.Content}>
-      {items.map((item) => (
-        <section>
-          <h2 id={item.value}>{item.label}</h2>
-          <p>{paragraphs}</p>
-        </section>
-      ))}
-    </Toc.Content>
-    <Toc.Nav class={styles.Nav}>
-      <Toc.Title class={styles.Title}>On this page</Toc.Title>
-      <Toc.List class={styles.List}>
+export const Basic = () => {
+  return (
+    <Toc.Root class={styles.Root} items={items}>
+      <Toc.Content class={styles.Content}>
         {items.map((item) => (
-          <Toc.Item class={styles.Item} item={item}>
-            <Toc.Link class={styles.Link} href={`#${item.value}`}>
-              {item.label}
-            </Toc.Link>
-          </Toc.Item>
+          <section>
+            <h2 id={item.value}>{item.label}</h2>
+            <div class={styles.DummyText}>
+              {Array.from({ length: item.lines }).map(() => (
+                <div class={styles.DummyLine} />
+              ))}
+            </div>
+          </section>
         ))}
-      </Toc.List>
-    </Toc.Nav>
-  </Toc.Root>
-)
+      </Toc.Content>
+      <Toc.Nav class={styles.Nav}>
+        <Toc.Title class={styles.Title}>On this page</Toc.Title>
+        <Toc.List class={styles.List}>
+          {items.map((item) => (
+            <Toc.Item class={styles.Item} item={item}>
+              <Toc.Link class={styles.Link} href={`#${item.value}`}>
+                {item.label}
+              </Toc.Link>
+            </Toc.Item>
+          ))}
+        </Toc.List>
+      </Toc.Nav>
+    </Toc.Root>
+  )
+}

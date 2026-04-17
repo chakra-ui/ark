@@ -1,22 +1,14 @@
 <script lang="ts">
   import { Toc } from '@ark-ui/svelte/toc'
-  import { loremIpsum } from 'lorem-ipsum'
   import styles from 'styles/toc.module.css'
 
-  const paragraphs = loremIpsum({ count: 6, units: 'paragraphs' })
-
-  const items = [
-    { value: 'introduction', depth: 2, label: 'Introduction' },
-    { value: 'getting-started', depth: 2, label: 'Getting Started' },
-    { value: 'installation', depth: 2, label: 'Installation' },
-    { value: 'usage', depth: 2, label: 'Usage' },
-    { value: 'configuration', depth: 2, label: 'Configuration' },
-    { value: 'migration', depth: 2, label: 'Migration' },
-    { value: 'faq', depth: 2, label: 'FAQ' },
-    { value: 'troubleshooting', depth: 2, label: 'Troubleshooting' },
-    { value: 'api-reference', depth: 2, label: 'API Reference' },
-    { value: 'conclusion', depth: 2, label: 'Conclusion' },
-  ]
+const items = [
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
+]
 </script>
 
 <Toc.Root class={styles.Root} {items}>
@@ -24,7 +16,11 @@
     {#each items as item (item.value)}
       <section>
         <h2 id={item.value}>{item.label}</h2>
-        <p>{paragraphs}</p>
+        <div class={styles.DummyText}>
+          {#each { length: item.lines } as _, i}
+            <div class={styles.DummyLine} />
+          {/each}
+        </div>
       </section>
     {/each}
   </Toc.Content>

@@ -1,0 +1,82 @@
+---
+id: toc
+title: Table of Contents
+description: A navigation component that tracks and highlights the active section as users scroll through document content.
+---
+
+<ComponentPreview id="Toc" />
+
+## Anatomy
+
+<Anatomy id="toc" />
+
+```tsx
+<Toc.Root items={items}>
+  <Toc.Content />
+  <Toc.Nav>
+    <Toc.Title />
+    <Toc.List>
+      <Toc.Indicator />
+      <Toc.Item item={item}>
+        <Toc.Link />
+      </Toc.Item>
+    </Toc.List>
+  </Toc.Nav>
+</Toc.Root>
+```
+
+## Examples
+
+<Example id="basic" />
+
+### Nested Headings
+
+Use the `depth` property on each item to represent heading levels. Apply different styles based on depth to create
+visual indentation for `h3` and deeper headings.
+
+<Example id="nested" />
+
+### Root Provider
+
+Use the `useToc` hook with `Toc.RootProvider` to control the TOC from outside the component tree. This gives access
+to `activeIds` and other state directly in the parent.
+
+<Example id="root-provider" />
+
+### With Collapsible
+
+Wrap `Toc.Nav` in a `Collapsible` to let users toggle visibility. Use `Toc.Context` to read `activeItems` and drive
+a progress ring that shows how far through the page the user has scrolled.
+
+<Example id="with-collapsible" />
+
+### With Hover
+
+Use `onMouseEnter` and `onMouseLeave` on `Toc.Nav` to track hover state and apply styles that expand the nav when
+hovered. Combine with a pinned state to keep it expanded when clicked.
+
+<Example id="with-hover" />
+
+
+### With Indicator
+
+Add `Toc.Indicator` inside `Toc.List` to render a sliding element that tracks the currently active item.
+
+<Example id="with-indicator" />
+
+### With Tree View
+
+Combine `Toc.Root` with the `TreeView` component for hierarchical section navigation. Use `onActiveChange` to
+automatically expand the branch containing the active heading.
+
+<Example id="with-tree-view" />
+
+## API Reference
+
+### Props
+
+<ComponentTypes id="toc" />
+
+### Context
+
+<ContextType id="toc" />

@@ -1,37 +1,41 @@
 <script setup lang="ts">
 import { Toc, useToc } from '@ark-ui/vue/toc'
 import styles from 'styles/toc.module.css'
-import { loremIpsum } from 'lorem-ipsum'
 
 const items = [
-  { value: 'principles', depth: 2, label: 'Principles' },
-  { value: 'patterns', depth: 2, label: 'Patterns' },
-  { value: 'testing', depth: 2, label: 'Testing' },
-  { value: 'performance', depth: 2, label: 'Performance' },
-  { value: 'conclusion', depth: 2, label: 'Conclusion' },
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
 
-const paragraphs = loremIpsum({ count: 7, units: 'paragraphs' })
-
-const toc = useToc({ items })
+const toc = useToc({ items, rootMargin: '0px 0px -80% 0px' })
 </script>
 
 <template>
-  <Toc.RootProvider :class="styles.Root" :value="toc">
-    <Toc.Content :class="styles.Content">
-      <section v-for="item in items" :key="item.value">
-        <h2 :id="item.value">{{ item.label }}</h2>
-        <p>{{ paragraphs }}</p>
-      </section>
-    </Toc.Content>
-    <Toc.Nav :class="styles.Nav">
-      <Toc.Title :class="styles.Title">On this page</Toc.Title>
-      <p :class="styles.ActiveIds">Active: {{ toc.activeIds.length > 0 ? toc.activeIds.join(', ') : '—' }}</p>
-      <Toc.List :class="styles.List">
-        <Toc.Item v-for="item in items" :key="item.value" :class="styles.Item" :item="item">
-          <Toc.Link :class="styles.Link">{{ item.label }}</Toc.Link>
-        </Toc.Item>
-      </Toc.List>
-    </Toc.Nav>
-  </Toc.RootProvider>
+  <div class="stack">
+    <output>active: {{ JSON.stringify(toc.activeIds) }}</output>
+
+    <Toc.RootProvider :class="styles.Root" :value="toc">
+      <Toc.Content :class="styles.Content">
+        <div :class="styles.ContentSection">
+          <section v-for="item in items" :key="item.value">
+            <h2 :id="item.value">{{ item.label }}</h2>
+            <div :class="styles.DummyText">
+              <div v-for="i in 5" :key="i" :class="styles.DummyLine" />
+            </div>
+          </section>
+        </div>
+      </Toc.Content>
+      <Toc.Nav :class="styles.Nav">
+        <Toc.Title :class="styles.Title">On this page</Toc.Title>
+        <Toc.List :class="styles.List">
+          <Toc.Item v-for="item in items" :key="item.value" :class="styles.Item" :item="item">
+            <Toc.Link :class="styles.Link" :href="`#${item.value}`">{{ item.label }}</Toc.Link>
+          </Toc.Item>
+        </Toc.List>
+      </Toc.Nav>
+    </Toc.RootProvider>
+  </div>
 </template>

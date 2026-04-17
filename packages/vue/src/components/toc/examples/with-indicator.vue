@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import { Toc } from '@ark-ui/vue/toc'
 import styles from 'styles/toc.module.css'
-import { loremIpsum } from 'lorem-ipsum'
 
 const items = [
-  { value: 'overview', depth: 2, label: 'Overview' },
-  { value: 'details', depth: 2, label: 'Details' },
-  { value: 'examples', depth: 2, label: 'Examples' },
-  { value: 'faq', depth: 2, label: 'FAQ' },
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
-
-const paragraphs = loremIpsum({ count: 7, units: 'paragraphs' })
 </script>
 
 <template>
@@ -18,7 +16,9 @@ const paragraphs = loremIpsum({ count: 7, units: 'paragraphs' })
     <Toc.Content :class="styles.Content">
       <section v-for="item in items" :key="item.value">
         <h2 :id="item.value">{{ item.label }}</h2>
-        <p>{{ paragraphs }}</p>
+        <div :class="styles.DummyText">
+          <div v-for="i in item.lines" :key="i" :class="styles.DummyLine" />
+        </div>
       </section>
     </Toc.Content>
     <Toc.Nav :class="styles.Nav">

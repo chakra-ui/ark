@@ -4,16 +4,13 @@ import { Toc } from '@ark-ui/vue/toc'
 import { ChevronRight } from 'lucide-vue-next'
 import styles from 'styles/toc.module.css'
 import collapsibleStyles from 'styles/Collapsible.module.css'
-import { loremIpsum } from 'lorem-ipsum'
-
-const p = loremIpsum({ count: 7, units: 'paragraphs' })
 
 const items = [
-  { value: 'introduction', depth: 2, label: 'Introduction' },
-  { value: 'installation', depth: 2, label: 'Installation' },
-  { value: 'usage', depth: 2, label: 'Usage' },
-  { value: 'api-reference', depth: 2, label: 'API Reference' },
-  { value: 'examples', depth: 2, label: 'Examples' },
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
 
 const RADIUS = 14
@@ -29,29 +26,29 @@ const getActiveLabel = (activeItems: any[]) => {
   return idx >= 0 ? items[idx].label : undefined
 }
 
-const getProgress = (activeItems: any[]) => {
-  const idx = getActiveIndex(activeItems)
-  return idx >= 0 ? (idx + 1) / items.length : 0
-}
-
 const getDashArray = (activeItems: any[]) => {
-  const progress = getProgress(activeItems)
+  const idx = getActiveIndex(activeItems)
+  const progress = idx >= 0 ? (idx + 1) / items.length : 0
   return `${progress * CIRCUMFERENCE} ${CIRCUMFERENCE}`
 }
 </script>
 
 <template>
-  <Toc.Root :class="`${styles.Root} ${styles.RootStacked}`" :items="items">
+  <Toc.Root :class="styles.Root" :items="items" rootMargin="0px 0px -80% 0px">
     <Toc.Content :class="styles.Content">
-      <section v-for="item in items" :key="item.value">
-        <h2 :id="item.value">{{ item.label }}</h2>
-        <p>{{ p }}</p>
-      </section>
+      <div :class="styles.ContentSection">
+        <section v-for="item in items" :key="item.value">
+          <h2 :id="item.value">{{ item.label }}</h2>
+          <div :class="styles.DummyText">
+            <div v-for="i in item.lines" :key="i" :class="styles.DummyLine" />
+          </div>
+        </section>
+      </div>
     </Toc.Content>
 
     <Toc.Nav :class="styles.Nav">
       <Toc.Context v-slot="{ activeItems: contextActiveItems }">
-        <Collapsible.Root :class="collapsibleStyles.Root" style="width: 100%">
+        <Collapsible.Root style="width: 100%">
           <Collapsible.Trigger :class="collapsibleStyles.Trigger">
             <span :class="styles.TriggerContent">
               <span :class="styles.ProgressRing">

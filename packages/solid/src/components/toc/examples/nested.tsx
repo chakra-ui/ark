@@ -1,19 +1,16 @@
 import { Toc } from '@ark-ui/solid/toc'
 import { Dynamic } from 'solid-js/web'
 import styles from 'styles/toc.module.css'
-import { loremIpsum } from 'lorem-ipsum'
-
-const paragraphs = loremIpsum({ count: 7, units: 'paragraphs' })
 
 const items = [
-  { value: 'introduction', depth: 2, label: 'Introduction' },
-  { value: 'getting-started', depth: 2, label: 'Getting Started' },
-  { value: 'installation', depth: 3, label: 'Installation' },
-  { value: 'configuration', depth: 3, label: 'Configuration' },
-  { value: 'api-reference', depth: 2, label: 'API Reference' },
-  { value: 'hooks', depth: 3, label: 'Hooks' },
-  { value: 'components', depth: 3, label: 'Components' },
-  { value: 'examples', depth: 2, label: 'Examples' },
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 10 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 12 },
+  { value: 'installation', depth: 3, label: 'Installation', lines: 8 },
+  { value: 'configuration', depth: 3, label: 'Configuration', lines: 14 },
+  { value: 'api-ref', depth: 2, label: 'API Reference', lines: 10 },
+  { value: 'hooks', depth: 3, label: 'Hooks', lines: 11 },
+  { value: 'components', depth: 3, label: 'Components', lines: 13 },
+  { value: 'code-examples', depth: 2, label: 'Examples', lines: 10 },
 ]
 
 export const Nested = () => (
@@ -24,7 +21,11 @@ export const Nested = () => (
           <Dynamic component={item.depth === 2 ? 'h2' : 'h3'} id={item.value}>
             {item.label}
           </Dynamic>
-          <p>{paragraphs}</p>
+          <div class={styles.DummyText}>
+            {[...Array(item.lines)].map(() => (
+              <div class={styles.DummyLine} />
+            ))}
+          </div>
         </section>
       ))}
     </Toc.Content>

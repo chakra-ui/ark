@@ -1,29 +1,23 @@
 <script setup lang="ts">
 import { Toc } from '@ark-ui/vue/toc'
 import styles from 'styles/toc.module.css'
-import { loremIpsum } from 'lorem-ipsum'
 
 const items = [
-  { value: 'introduction', depth: 2, label: 'Introduction' },
-  { value: 'getting-started', depth: 2, label: 'Getting Started' },
-  { value: 'installation', depth: 2, label: 'Installation' },
-  { value: 'usage', depth: 2, label: 'Usage' },
-  { value: 'configuration', depth: 2, label: 'Configuration' },
-  { value: 'migration', depth: 2, label: 'Migration' },
-  { value: 'faq', depth: 2, label: 'FAQ' },
-  { value: 'troubleshooting', depth: 2, label: 'Troubleshooting' },
-  { value: 'api-reference', depth: 2, label: 'API Reference' },
-  { value: 'conclusion', depth: 2, label: 'Conclusion' },
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
-
-const paragraphs = loremIpsum({ count: 6, units: 'paragraphs' })
 </script>
 <template>
   <Toc.Root :class="styles.Root" :items="items">
-    <Toc.Content :class="styles.Content">
+    <Toc.Content :class="styles.Content" ref="contentEl">
       <section v-for="item in items" :key="item.value">
         <h2 :id="item.value">{{ item.label }}</h2>
-        <p>{{ paragraphs }}</p>
+        <div :class="styles.DummyText">
+          <div v-for="i in item.lines" :key="i" :class="styles.DummyLine" />
+        </div>
       </section>
     </Toc.Content>
     <Toc.Nav :class="styles.Nav">

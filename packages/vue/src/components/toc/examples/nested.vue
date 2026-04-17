@@ -1,20 +1,15 @@
 <script setup lang="ts">
 import { Toc } from '@ark-ui/vue/toc'
 import styles from 'styles/toc.module.css'
-import { loremIpsum } from 'lorem-ipsum'
 
 const items = [
-  { value: 'introduction', depth: 2, label: 'Introduction' },
-  { value: 'getting-started', depth: 2, label: 'Getting Started' },
-  { value: 'installation', depth: 3, label: 'Installation' },
-  { value: 'configuration', depth: 3, label: 'Configuration' },
-  { value: 'api-reference', depth: 2, label: 'API Reference' },
-  { value: 'hooks', depth: 3, label: 'Hooks' },
-  { value: 'components', depth: 3, label: 'Components' },
-  { value: 'examples', depth: 2, label: 'Examples' },
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
 
-const paragraph = loremIpsum({ count: 7, units: 'paragraphs' })
 const tagMap = { 2: 'h2', 3: 'h3' } as const
 </script>
 
@@ -25,7 +20,9 @@ const tagMap = { 2: 'h2', 3: 'h3' } as const
         <component :is="tagMap[item.depth as 2 | 3]" :id="item.value">
           {{ item.label }}
         </component>
-        <p>{{ paragraph }}</p>
+        <div :class="styles.DummyText">
+          <div v-for="i in item.lines" :key="i" :class="styles.DummyLine" />
+        </div>
       </section>
     </Toc.Content>
     <Toc.Nav :class="styles.Nav">

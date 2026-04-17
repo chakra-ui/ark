@@ -1,38 +1,38 @@
 <script lang="ts">
   import { Toc } from '@ark-ui/svelte/toc'
-  import { loremIpsum } from 'lorem-ipsum'
   import styles from 'styles/toc.module.css'
 
-  const p = loremIpsum({ count: 7, units: 'paragraphs' })
-
-  const items = [
-    { value: 'overview', depth: 2, label: 'Overview' },
-    { value: 'architecture', depth: 2, label: 'Architecture' },
-    { value: 'state-machines', depth: 2, label: 'State Machines' },
-    { value: 'components', depth: 2, label: 'Components' },
-    { value: 'theming', depth: 2, label: 'Theming' },
-    { value: 'accessibility', depth: 2, label: 'Accessibility' },
-  ]
+const items = [
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
+]
 </script>
 
-<div class={styles.Root}>
-  <article class={styles.Content}>
+<Toc.Root class={styles.Root} {items}>
+  <Toc.Content class={styles.Content}>
     {#each items as item (item.value)}
       <section>
         <h2 id={item.value}>{item.label}</h2>
-        <p>{p}</p>
+        <div class={styles.DummyText}>
+          {#each { length: item.lines } as _, i}
+            <div class={styles.DummyLine} />
+          {/each}
+        </div>
       </section>
     {/each}
-  </article>
-  <Toc.Nav class={styles.Nav} {items}>
+  </Toc.Content>
+  <Toc.Nav class={styles.Nav}>
     <Toc.Title class={styles.Title}>On this page</Toc.Title>
     <Toc.Indicator class={styles.Indicator} />
     <Toc.List class={styles.List}>
       {#each items as item (item.value)}
         <Toc.Item class={styles.Item} {item}>
-          <Toc.Link class={styles.Link}>{item.label}</Toc.Link>
+          <Toc.Link class={styles.Link} href={`#${item.value}`}>{item.label}</Toc.Link>
         </Toc.Item>
       {/each}
     </Toc.List>
   </Toc.Nav>
-</div>
+</Toc.Root>

@@ -4,35 +4,32 @@ import { Toc } from '@ark-ui/vue/toc'
 import { Swap } from '@ark-ui/vue/swap'
 import { Pin, PinOff } from 'lucide-vue-next'
 import styles from 'styles/toc.module.css'
-import { loremIpsum } from 'lorem-ipsum'
 
 const items = [
-  { value: 'introduction', depth: 2, label: 'Introduction' },
-  { value: 'getting-started', depth: 2, label: 'Getting Started' },
-  { value: 'installation', depth: 2, label: 'Installation' },
-  { value: 'usage', depth: 2, label: 'Usage' },
-  { value: 'api', depth: 2, label: 'API' },
-  { value: 'examples', depth: 2, label: 'Examples' },
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
-
-const paragraph = loremIpsum({ count: 7, units: 'paragraphs' })
 const pinned = ref(false)
 const hovered = ref(false)
 
-const getSkeletonWidth = (label: string) => {
-  const width = Math.min(Math.max(label.length * 3, 16), 48)
-  return `${width}px`
-}
+const getSkeletonWidth = (label: string) => `${Math.min(Math.max(label.length * 3, 16), 48)}px`
 </script>
 
 <template>
-  <Toc.Root :class="`${styles.Root} ${styles.HoverRoot}`" :items="items">
-    <article :class="styles.Content">
-      <section v-for="item in items" :key="item.value">
-        <h2 :id="item.value">{{ item.label }}</h2>
-        <p>{{ paragraph }}</p>
-      </section>
-    </article>
+  <Toc.Root :class="`${styles.Root} ${styles.HoverRoot}`" :items="items" rootMargin="0px 0px -80% 0px">
+    <Toc.Content :class="styles.Content">
+      <div :class="styles.ContentSection">
+        <section v-for="item in items" :key="item.value">
+          <h2 :id="item.value">{{ item.label }}</h2>
+          <div :class="styles.DummyText">
+            <div v-for="i in item.lines" :key="i" :class="styles.DummyLine" />
+          </div>
+        </section>
+      </div>
+    </Toc.Content>
     <Toc.Nav
       :class="styles.NavHover"
       :data-expanded="hovered || pinned || undefined"
