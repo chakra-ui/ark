@@ -1,12 +1,9 @@
 import { Toc, useTocContext } from '@ark-ui/solid/toc'
 import { TreeView, createTreeCollection } from '@ark-ui/solid/tree-view'
-import { loremIpsum } from 'lorem-ipsum'
 import { ChevronRightIcon } from 'lucide-solid'
 import { createSignal } from 'solid-js'
 import tocStyles from 'styles/toc.module.css'
 import treeStyles from 'styles/tree-view.module.css'
-
-const p = loremIpsum({ count: 7, units: 'paragraphs' })
 
 type TocNode = {
   id: string
@@ -99,12 +96,13 @@ const TocTreeNode = ({ node, indexPath }: TreeView.NodeProviderProps<TocNode>) =
 
 export const WithTreeView = () => {
   const [expandedValue, setExpandedValue] = createSignal<string[]>([])
+  let contentRef: HTMLElement | null = null
 
   return (
     <Toc.Root
-      id="toc-with-tree-view"
       class={tocStyles.Root}
       items={allItems}
+      getScrollEl={() => contentRef}
       onActiveChange={({ activeItems }) => {
         const activeIds = new Set(activeItems.map((i) => i.value))
         const next = sections
@@ -115,7 +113,7 @@ export const WithTreeView = () => {
         setExpandedValue(next)
       }}
     >
-      <Toc.Content class={tocStyles.Content}>
+      <Toc.Content class={tocStyles.Content} ref={(el) => (contentRef = el)}>
         {sections.map((section) => (
           <section>
             <h2 id={section.id}>{section.name}</h2>

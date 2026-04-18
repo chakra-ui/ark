@@ -3,11 +3,11 @@ import { useRef } from 'react'
 import styles from 'styles/toc.module.css'
 
 const items = [
-  { value: 'basic-introduction', depth: 2, label: 'Introduction', lines: 12 },
-  { value: 'basic-getting-started', depth: 2, label: 'Getting Started', lines: 10 },
-  { value: 'basic-installation', depth: 2, label: 'Installation', lines: 8 },
-  { value: 'basic-usage', depth: 2, label: 'Usage', lines: 14 },
-  { value: 'basic-conclusion', depth: 2, label: 'Conclusion', lines: 10 },
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
 
 export const Basic = () => {

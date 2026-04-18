@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Toc } from '@ark-ui/vue/toc'
+import { ref } from 'vue'
 import styles from 'styles/toc.module.css'
 
 const items = [
@@ -9,9 +10,13 @@ const items = [
   { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
   { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
+
+const contentEl = ref()
+const getScrollEl = () => contentEl.value?.$el
 </script>
+
 <template>
-  <Toc.Root :class="styles.Root" :items="items">
+  <Toc.Root :class="styles.Root" :items="items" :getScrollEl="getScrollEl">
     <Toc.Content :class="styles.Content" ref="contentEl">
       <section v-for="item in items" :key="item.value">
         <h2 :id="item.value">{{ item.label }}</h2>

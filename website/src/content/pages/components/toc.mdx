@@ -11,7 +11,7 @@ description: A navigation component that tracks and highlights the active sectio
 <Anatomy id="toc" />
 
 ```tsx
-<Toc.Root items={items}>
+<Toc.Root items={items} getScrollEl={() => scrollContainer}>
   <Toc.Content />
   <Toc.Nav>
     <Toc.Title />
@@ -27,47 +27,54 @@ description: A navigation component that tracks and highlights the active sectio
 
 ## Examples
 
+### Basic
+
+Display a table of contents alongside scrollable content. Use the `items` prop to define the list of headings and
+`getScrollEl` to point to the scrollable container so the TOC can track which section is in view.
+
 <Example id="basic" />
 
 ### Nested Headings
 
-Use the `depth` property on each item to represent heading levels. Apply different styles based on depth to create
-visual indentation for `h3` and deeper headings.
+Use the `depth` property on each item to represent heading levels (`h2`, `h3`, etc). Apply different styles based on
+`depth` to create visual indentation for sub-headings.
 
 <Example id="nested" />
 
 ### Root Provider
 
-Use the `useToc` hook with `Toc.RootProvider` to control the TOC from outside the component tree. This gives access
-to `activeIds` and other state directly in the parent.
+Use the `useToc` hook with `Toc.RootProvider` to access the TOC state — such as `activeIds` — from outside the
+component tree. This is useful when you need to sync the navigation state with other parts of your UI.
 
 <Example id="root-provider" />
 
 ### With Collapsible
 
-Wrap `Toc.Nav` in a `Collapsible` to let users toggle visibility. Use `Toc.Context` to read `activeItems` and drive
-a progress ring that shows how far through the page the user has scrolled.
+Wrap `Toc.Nav` in a `Collapsible` to let users show or hide the navigation. Use `Toc.Context` to read `activeItems`
+and drive a progress ring that reflects how far through the page the user has scrolled.
 
 <Example id="with-collapsible" />
 
 ### With Hover
 
-Use `onMouseEnter` and `onMouseLeave` on `Toc.Nav` to track hover state and apply styles that expand the nav when
-hovered. Combine with a pinned state to keep it expanded when clicked.
+Use `onMouseEnter` and `onMouseLeave` on `Toc.Nav` to expand the navigation when hovered. Combine with a pinned state
+and a toggle button so users can keep it open while reading.
+
+> **Note:** Hover-based interactions are not available on touch screens. Pair this pattern with a pin button or a
+> fallback disclosure control to ensure the navigation remains accessible on mobile devices.
 
 <Example id="with-hover" />
 
-
 ### With Indicator
 
-Add `Toc.Indicator` inside `Toc.List` to render a sliding element that tracks the currently active item.
+Add `Toc.Indicator` inside `Toc.List` to render a sliding element that animates to track the currently active item.
 
 <Example id="with-indicator" />
 
 ### With Tree View
 
 Combine `Toc.Root` with the `TreeView` component for hierarchical section navigation. Use `onActiveChange` to
-automatically expand the branch containing the active heading.
+automatically expand the branch containing the active heading, keeping the tree in sync with the reading position.
 
 <Example id="with-tree-view" />
 

@@ -1,12 +1,18 @@
 
 .Root {
   display: flex;
-  flex-direction: column;
-  gap: 0;
-  align-items: stretch;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: flex-start;
   width: 100%;
   max-width: 800px;
   position: relative;
+}
+
+.RootStacked {
+  flex-direction: column;
+  gap: 1rem;
+  align-items: stretch;
 }
 
 .Title {
@@ -25,6 +31,7 @@
   position: sticky;
   top: 0;
   width: 12rem;
+  flex-shrink: 0;
   align-self: flex-start;
   max-height: calc(100vh - 2rem);
   overflow-y: auto;
@@ -34,7 +41,8 @@
 .Content {
   min-width: 0;
   width: 100%;
-  height: clamp(16rem, 50vh, 28rem);
+  min-height: 20rem;
+  height: clamp(20rem, 50vh, 28rem);
   overflow-y: auto;
   padding-right: 1rem;
 }
@@ -57,7 +65,6 @@
 
 
 .Link,
-.LinkAnimated,
 .LinkNumbered {
   padding: 0.3rem 0.5rem;
   font-size: 0.875rem;
@@ -80,30 +87,9 @@
   }
 }
 
-.Link,
-.LinkAnimated {
+.Link {
   display: block;
   transition: color 0.15s;
-}
-
-.LinkAnimated {
-  transition:
-    color 0.15s,
-    transform 0.2s;
-
-  &[data-active] {
-    background-color: transparent;
-    transform: translateX(0);
-    transition:
-      color 0.15s,
-      background-color 0.7s ease-out,
-      transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-
-    @starting-style {
-      background-color: color-mix(in srgb, var(--demo-coral-solid) 28%, transparent);
-      transform: translateX(-8px);
-    }
-  }
 }
 
 .LinkNumbered {
@@ -191,79 +177,6 @@
 }
 
 
-.ComboboxControl {
-  display: flex;
-  align-items: center;
-  border: 1px solid var(--demo-border-emphasized);
-  border-radius: 0.5rem;
-  background: transparent;
-  overflow: hidden;
-}
-
-.ComboboxInput {
-  flex: 1;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.875rem;
-  color: var(--demo-neutral-fg);
-  background: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-
-  &[data-active] {
-    color: var(--demo-coral-fg);
-    font-weight: 500;
-  }
-}
-
-.ComboboxTrigger {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 0.75rem;
-  background: none;
-  border: none;
-  border-left: 1px solid var(--demo-border-emphasized);
-  cursor: pointer;
-  color: var(--demo-neutral-fg-muted);
-}
-
-.ComboboxContent {
-  background: var(--demo-bg-popover);
-  border: 1px solid var(--demo-border-emphasized);
-  border-radius: 0.5rem;
-  box-shadow: var(--demo-shadow-md);
-  overflow: hidden;
-  z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
-}
-
-.ComboboxItem {
-  padding: 0.5rem 0.75rem;
-  font-size: 0.875rem;
-  color: var(--demo-neutral-fg);
-  cursor: pointer;
-
-  &[data-highlighted] {
-    background: var(--demo-neutral-subtle);
-  }
-
-  &[data-state='checked'] {
-    color: var(--demo-coral-fg);
-    font-weight: 500;
-    background: color-mix(in srgb, var(--demo-coral-solid) 10%, transparent);
-  }
-}
-
-
-.RootWithTopNav {
-  flex-wrap: wrap;
-}
-
-.TopNav {
-  flex-basis: 100%;
-  flex-shrink: 0;
-}
-
 .HoverRoot {
   gap: 0;
 
@@ -276,7 +189,7 @@
   position: absolute;
   right: -0.5rem;
   top: 50%;
-  background: var(var(--colors-bg-default), #fff);
+  background: var(--colors-bg-default, #fff);
   transform: translateY(-50%);
   width: 1.5rem;
   padding: 1rem;
@@ -284,12 +197,14 @@
   overflow: hidden;
   z-index: 100;
   transition: width 0.2s ease;
+  cursor: pointer;
 
   &[data-expanded] {
     width: 12rem;
     background: var(--colors-bg-default);
     box-shadow: 0 6px 24px 0 rgba(0,0,0,0.13), 0 3px 12px 0 rgba(0,0,0,0.07);
     border-radius: 1rem;
+    cursor: default;
   }
 }
 
@@ -414,13 +329,6 @@
   animation: toc-index-pop 0.2s ease-out;
 }
 
-.ActiveOutput {
-  min-width: 140px;
-  font-family: monospace;
-  display: block;
-  white-space: pre;
-}
-
 
 @keyframes toc-label-in {
   from {
@@ -501,7 +409,8 @@
 
   .Content {
     flex: none;
-    height: clamp(14rem, 45vh, 24rem);
+    min-height: 16rem;
+    height: clamp(16rem, 40vh, 22rem);
     overflow-y: auto;
     padding: 0;
     width: 100%;
@@ -513,59 +422,14 @@
   }
 
   .HoverRoot {
-    overflow: clip;
+    overflow: visible;
   }
 
   .NavHover {
-    position: absolute;
-    right: -1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1.5rem;
-    height: 2.5rem;
-    background: var(var(--colors-bg-default), #fff);
-    border-radius: 0.75rem;
-    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08), 0 1.5px 4px 0 rgba(0,0,0,0.04);
-    margin-bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--demo-border-emphasized, #ececec);
-    transition: width 0.22s cubic-bezier(0.4,0,0.2,1), background 0.18s, box-shadow 0.18s;
-    overflow: hidden;
-    z-index: 100;
-
-    &:hover,
-    &:focus-within {
-      background: var(--colors-bg-default);
-      box-shadow: 0 4px 16px 0 rgba(0,0,0,0.12), 0 2px 8px 0 rgba(0,0,0,0.06);
-    }
+    right: 0.5rem;
 
     &[data-expanded] {
-      width: auto;
-      height: auto;
-      background: var(--colors-bg-default);
-      box-shadow: 0 6px 24px 0 rgba(0,0,0,0.13), 0 3px 12px 0 rgba(0,0,0,0.07);
-      border-radius: 1rem;
+      width: 12rem;
     }
   }
-.PinButton {
-  display: none;
-  align-items: center;
-  justify-content: flex-end;
-  width: 100%;
-  padding: 0 0.125rem 0.25rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--demo-neutral-fg-muted);
-
-  .NavHover[data-expanded] & {
-    display: flex;
-  }
-
-  &:hover {
-    color: var(--demo-neutral-fg);
-  }
-}
 }

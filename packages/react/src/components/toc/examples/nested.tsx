@@ -3,14 +3,14 @@ import { useRef } from 'react'
 import styles from 'styles/toc.module.css'
 
 const items = [
-  { value: 'nested-introduction', depth: 2, label: 'Introduction', lines: 10 },
-  { value: 'nested-getting-started', depth: 2, label: 'Getting Started', lines: 12 },
-  { value: 'nested-installation', depth: 3, label: 'Installation', lines: 8 },
-  { value: 'nested-configuration', depth: 3, label: 'Configuration', lines: 18 },
-  { value: 'nested-api-ref', depth: 2, label: 'API Reference', lines: 11 },
-  { value: 'nested-hooks', depth: 3, label: 'Hooks', lines: 6 },
-  { value: 'nested-components', depth: 3, label: 'Components', lines: 20 },
-  { value: 'nested-code-examples', depth: 2, label: 'Examples', lines: 13 },
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 10 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 12 },
+  { value: 'installation', depth: 3, label: 'Installation', lines: 8 },
+  { value: 'configuration', depth: 3, label: 'Configuration', lines: 14 },
+  { value: 'api-reference', depth: 2, label: 'API Reference', lines: 10 },
+  { value: 'hooks', depth: 3, label: 'Hooks', lines: 8 },
+  { value: 'components', depth: 3, label: 'Components', lines: 12 },
+  { value: 'examples', depth: 2, label: 'Examples', lines: 10 },
 ]
 
 export const Nested = () => {

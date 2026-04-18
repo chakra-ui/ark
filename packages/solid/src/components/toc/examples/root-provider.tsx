@@ -11,27 +11,25 @@ const items = [
 ]
 
 export const RootProvider = () => {
-  const toc = useToc({ items, rootMargin: '0px 0px -80% 0px' })
+  let contentRef: HTMLElement | null = null
+  const toc = useToc({ items, rootMargin: '0px 0px -80% 0px', getScrollEl: () => contentRef })
 
   return (
     <Toc.RootProvider class={styles.Root} value={toc}>
-      <Toc.Content class={styles.Content}>
-        <div class={styles.ContentSection}>
-          <Index each={items}>
-            {(item) => (
-              <section>
-                <h2 id={item().value}>{item().label}</h2>
-                <div class={styles.DummyText}>
-                  <Index each={Array.from({ length: item().lines })}>{() => <div class={styles.DummyLine} />}</Index>
-                </div>
-              </section>
-            )}
-          </Index>
-        </div>
+      <Toc.Content class={styles.Content} ref={(el) => (contentRef = el)}>
+        <Index each={items}>
+          {(item) => (
+            <section>
+              <h2 id={item().value}>{item().label}</h2>
+              <div class={styles.DummyText}>
+                <Index each={Array.from({ length: item().lines })}>{() => <div class={styles.DummyLine} />}</Index>
+              </div>
+            </section>
+          )}
+        </Index>
       </Toc.Content>
 
       <Toc.Nav class={styles.Nav}>
-        <output>active: {JSON.stringify(toc().activeIds)}</output>
         <Toc.Title class={styles.Title}>On this page</Toc.Title>
         <Toc.List class={styles.List}>
           <Index each={items}>

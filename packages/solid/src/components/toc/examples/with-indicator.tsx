@@ -9,33 +9,37 @@ const items = [
   { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
 
-export const WithIndicator = () => (
-  <Toc.Root id="toc-with-indicator" class={styles.Root} items={items}>
-    <Toc.Content class={styles.Content}>
-      {items.map((item) => (
-        <section>
-          <h2 id={item.value}>{item.label}</h2>
-          <div class={styles.DummyText}>
-            {Array.from({ length: item.lines }).map(() => (
-              <div class={styles.DummyLine} />
-            ))}
-          </div>
-        </section>
-      ))}
-    </Toc.Content>
+export const WithIndicator = () => {
+  let contentRef: HTMLElement | null = null
 
-    <Toc.Nav class={styles.Nav}>
-      <Toc.Title class={styles.Title}>On this page</Toc.Title>
-      <Toc.List class={styles.List}>
-        <Toc.Indicator class={styles.Indicator} />
+  return (
+    <Toc.Root class={styles.Root} items={items} getScrollEl={() => contentRef}>
+      <Toc.Content class={styles.Content} ref={(el) => (contentRef = el)}>
         {items.map((item) => (
-          <Toc.Item class={styles.Item} item={item}>
-            <Toc.Link class={styles.Link} href={`#${item.value}`}>
-              {item.label}
-            </Toc.Link>
-          </Toc.Item>
+          <section>
+            <h2 id={item.value}>{item.label}</h2>
+            <div class={styles.DummyText}>
+              {Array.from({ length: item.lines }).map(() => (
+                <div class={styles.DummyLine} />
+              ))}
+            </div>
+          </section>
         ))}
-      </Toc.List>
-    </Toc.Nav>
-  </Toc.Root>
-)
+      </Toc.Content>
+
+      <Toc.Nav class={styles.Nav}>
+        <Toc.Title class={styles.Title}>On this page</Toc.Title>
+        <Toc.List class={styles.List}>
+          <Toc.Indicator class={styles.Indicator} />
+          {items.map((item) => (
+            <Toc.Item class={styles.Item} item={item}>
+              <Toc.Link class={styles.Link} href={`#${item.value}`}>
+                {item.label}
+              </Toc.Link>
+            </Toc.Item>
+          ))}
+        </Toc.List>
+      </Toc.Nav>
+    </Toc.Root>
+  )
+}

@@ -3,11 +3,11 @@ import { useRef } from 'react'
 import styles from 'styles/toc.module.css'
 
 const items = [
-  { value: 'affliation', depth: 2, label: 'Affiliation', lines: 12 },
-  { value: 'impact', depth: 2, label: 'Impact', lines: 8 },
-  { value: 'automation', depth: 2, label: 'Automation', lines: 10 },
-  { value: 'faq', depth: 2, label: 'FAQ', lines: 12 },
-  { value: 'application', depth: 2, label: 'Application', lines: 14 },
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
 
 export const RootProvider = () => {
@@ -17,8 +17,6 @@ export const RootProvider = () => {
   return (
     <Toc.RootProvider className={`${styles.Root} ${styles.RootWithMobileNav}`} value={toc}>
       <div className={styles.MobileNav}>
-        <output className={styles.ActiveOutput}>active: {JSON.stringify(toc.activeIds)}</output>
-
         <select
           className={styles.NativeSelect}
           data-active={toc.activeIds.length > 0 || undefined}
@@ -50,7 +48,6 @@ export const RootProvider = () => {
       </Toc.Content>
 
       <Toc.Nav className={styles.Nav}>
-        <output className={styles.ActiveOutput}>active: {JSON.stringify(toc.activeIds)}</output>
         <Toc.Title className={styles.Title}>On this page</Toc.Title>
         <Toc.List className={styles.List}>
           {items.map((item) => (

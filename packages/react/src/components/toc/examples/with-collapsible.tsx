@@ -1,16 +1,16 @@
 import { Collapsible } from '@ark-ui/react/collapsible'
 import { Toc } from '@ark-ui/react/toc'
 import { ChevronRightIcon } from 'lucide-react'
-import CollapsibleStyles from 'styles/Collapsible.module.css'
+import CollapsibleStyles from 'styles/collapsible.module.css'
 import styles from 'styles/toc.module.css'
 import { useRef } from 'react'
 
 const items = [
-  { value: 'with-collapsible-introduction', depth: 2, label: 'Introduction', lines: 12 },
-  { value: 'with-collapsible-getting-started', depth: 2, label: 'Getting Started', lines: 16 },
-  { value: 'with-collapsible-installation', depth: 2, label: 'Installation', lines: 14 },
-  { value: 'with-collapsible-usage', depth: 2, label: 'Usage', lines: 14 },
-  { value: 'with-collapsible-conclusion', depth: 2, label: 'Conclusion', lines: 14 },
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
 
 const RADIUS = 14
@@ -20,7 +20,7 @@ export const WithCollapsible = () => {
   const contentRef = useRef<HTMLDivElement>(null)
 
   return (
-    <Toc.Root className={`${styles.Root} ${styles.RootStacked}`} items={items}>
+    <Toc.Root className={`${styles.Root} ${styles.RootStacked}`} items={items} getScrollEl={() => contentRef.current}>
       {/* Collapsible nav always on top */}
       <div style={{ width: '100%', marginBottom: '1rem' }}>
         <Collapsible.Root className={CollapsibleStyles.Root} style={{ width: '100%' }}>

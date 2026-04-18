@@ -1,7 +1,7 @@
 import { Toc } from '@ark-ui/solid/toc'
 import { Swap } from '@ark-ui/solid/swap'
 import { Pin, PinOff } from 'lucide-solid'
-import { Index, createSignal } from 'solid-js'
+import { createSignal } from 'solid-js'
 import styles from 'styles/toc.module.css'
 
 const items = [
@@ -15,28 +15,35 @@ const items = [
 export const WithHover = () => {
   const [pinned, setPinned] = createSignal(false)
   const [hovered, setHovered] = createSignal(false)
+  let contentRef: HTMLElement | null = null
 
   return (
-    <Toc.Root class={`${styles.Root} ${styles.HoverRoot}`} items={items} rootMargin="0px 0px -80% 0px">
-      <Toc.Content class={styles.Content}>
-        <div class={styles.ContentSection}>
-          <Index each={items}>
-            {(item) => (
-              <section>
-                <h2 id={item().value}>{item().label}</h2>
-                <div class={styles.DummyText}>
-                  <Index each={Array.from({ length: item().lines })}>{() => <div class={styles.DummyLine} />}</Index>
-                </div>
-              </section>
-            )}
-          </Index>
-        </div>
+    <Toc.Root
+      class={`${styles.Root} ${styles.HoverRoot}`}
+      items={items}
+      rootMargin="0px 0px -80% 0px"
+      getScrollEl={() => contentRef}
+    >
+      <Toc.Content class={styles.Content} ref={(el) => (contentRef = el)}>
+        {items.map((item) => (
+          <section>
+            <h2 id={item.value}>{item.label}</h2>
+            <div class={styles.DummyText}>
+              {Array.from({ length: item.lines }).map(() => (
+                <div class={styles.DummyLine} />
+              ))}
+            </div>
+          </section>
+        ))}
       </Toc.Content>
       <Toc.Nav
         class={styles.NavHover}
         data-expanded={hovered() || pinned() || undefined}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
+        onClick={() => {
+          if (!hovered() && !pinned()) setPinned(true)
+        }}
       >
         <button
           type="button"

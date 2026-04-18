@@ -1,11 +1,11 @@
 import { Toc } from '@ark-ui/react/toc'
 import { Swap } from '@ark-ui/react/swap'
 import { Pin, PinOff } from 'lucide-react'
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState } from 'react'
 import styles from 'styles/toc.module.css'
 
 const items = [
-  { value: 'with-hover-introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
   { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
   { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
   { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
@@ -16,18 +16,6 @@ export const WithHover = () => {
   const [pinned, setPinned] = useState(false)
   const [hovered, setHovered] = useState(false)
   const contentRef = useRef<HTMLDivElement>(null)
-  const navRef = useRef<HTMLDivElement>(null)
-
-  // Scroll active link into view when nav opens
-  useEffect(() => {
-    if (!(hovered || pinned)) return
-    const nav = navRef.current
-    if (!nav) return
-    const active = nav.querySelector('[data-active="true"]') as HTMLElement | null
-    if (active) {
-      active.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
-    }
-  }, [hovered, pinned])
 
   return (
     <Toc.Root
@@ -37,25 +25,25 @@ export const WithHover = () => {
       getScrollEl={() => contentRef.current}
     >
       <Toc.Content className={styles.Content} ref={contentRef}>
-        <div className={styles.ContentSection}>
-          {items.map((item) => (
-            <section key={item.value}>
-              <h2 id={item.value}>{item.label}</h2>
-              <div className={styles.DummyText}>
-                {Array.from({ length: item.lines }).map((_, i) => (
-                  <div key={i} className={styles.DummyLine} />
-                ))}
-              </div>
-            </section>
-          ))}
-        </div>
+        {items.map((item) => (
+          <section key={item.value}>
+            <h2 id={item.value}>{item.label}</h2>
+            <div className={styles.DummyText}>
+              {Array.from({ length: item.lines }).map((_, i) => (
+                <div key={i} className={styles.DummyLine} />
+              ))}
+            </div>
+          </section>
+        ))}
       </Toc.Content>
       <Toc.Nav
         className={styles.NavHover}
         data-expanded={hovered || pinned || undefined}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        ref={navRef}
+        onClick={() => {
+          if (!hovered && !pinned) setPinned(true)
+        }}
       >
         <button
           type="button"

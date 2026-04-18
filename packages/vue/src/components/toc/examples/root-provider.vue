@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Toc, useToc } from '@ark-ui/vue/toc'
+import { ref } from 'vue'
 import styles from 'styles/toc.module.css'
 
 const items = [
@@ -10,32 +11,28 @@ const items = [
   { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
 
-const toc = useToc({ items, rootMargin: '0px 0px -80% 0px' })
+const contentEl = ref()
+const getScrollEl = () => contentEl.value?.$el
+const toc = useToc({ items, rootMargin: '0px 0px -80% 0px', getScrollEl })
 </script>
 
 <template>
-  <div class="stack">
-    <output>active: {{ JSON.stringify(toc.activeIds) }}</output>
-
-    <Toc.RootProvider :class="styles.Root" :value="toc">
-      <Toc.Content :class="styles.Content">
-        <div :class="styles.ContentSection">
-          <section v-for="item in items" :key="item.value">
-            <h2 :id="item.value">{{ item.label }}</h2>
-            <div :class="styles.DummyText">
-              <div v-for="i in 5" :key="i" :class="styles.DummyLine" />
-            </div>
-          </section>
+  <Toc.RootProvider :class="styles.Root" :value="toc">
+    <Toc.Content :class="styles.Content" ref="contentEl">
+      <section v-for="item in items" :key="item.value">
+        <h2 :id="item.value">{{ item.label }}</h2>
+        <div :class="styles.DummyText">
+          <div v-for="i in item.lines" :key="i" :class="styles.DummyLine" />
         </div>
-      </Toc.Content>
-      <Toc.Nav :class="styles.Nav">
-        <Toc.Title :class="styles.Title">On this page</Toc.Title>
-        <Toc.List :class="styles.List">
-          <Toc.Item v-for="item in items" :key="item.value" :class="styles.Item" :item="item">
-            <Toc.Link :class="styles.Link" :href="`#${item.value}`">{{ item.label }}</Toc.Link>
-          </Toc.Item>
-        </Toc.List>
-      </Toc.Nav>
-    </Toc.RootProvider>
-  </div>
+      </section>
+    </Toc.Content>
+    <Toc.Nav :class="styles.Nav">
+      <Toc.Title :class="styles.Title">On this page</Toc.Title>
+      <Toc.List :class="styles.List">
+        <Toc.Item v-for="item in items" :key="item.value" :class="styles.Item" :item="item">
+          <Toc.Link :class="styles.Link" :href="`#${item.value}`">{{ item.label }}</Toc.Link>
+        </Toc.Item>
+      </Toc.List>
+    </Toc.Nav>
+  </Toc.RootProvider>
 </template>

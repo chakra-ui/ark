@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { Collapsible } from '@ark-ui/vue/collapsible'
 import { Toc } from '@ark-ui/vue/toc'
 import { ChevronRight } from 'lucide-vue-next'
@@ -15,6 +16,9 @@ const items = [
 
 const RADIUS = 14
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS
+
+const contentEl = ref()
+const getScrollEl = () => contentEl.value?.$el
 
 const getActiveIndex = (activeItems: any[]) => {
   if (!activeItems || activeItems.length === 0) return -1
@@ -34,16 +38,19 @@ const getDashArray = (activeItems: any[]) => {
 </script>
 
 <template>
-  <Toc.Root :class="styles.Root" :items="items" rootMargin="0px 0px -80% 0px">
-    <Toc.Content :class="styles.Content">
-      <div :class="styles.ContentSection">
-        <section v-for="item in items" :key="item.value">
-          <h2 :id="item.value">{{ item.label }}</h2>
-          <div :class="styles.DummyText">
-            <div v-for="i in item.lines" :key="i" :class="styles.DummyLine" />
-          </div>
-        </section>
-      </div>
+  <Toc.Root
+    :class="`${styles.Root} ${styles.RootStacked}`"
+    :items="items"
+    rootMargin="0px 0px -80% 0px"
+    :getScrollEl="getScrollEl"
+  >
+    <Toc.Content :class="styles.Content" ref="contentEl">
+      <section v-for="item in items" :key="item.value">
+        <h2 :id="item.value">{{ item.label }}</h2>
+        <div :class="styles.DummyText">
+          <div v-for="i in item.lines" :key="i" :class="styles.DummyLine" />
+        </div>
+      </section>
     </Toc.Content>
 
     <Toc.Nav :class="styles.Nav">
