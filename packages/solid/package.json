@@ -152,8 +152,7 @@
     "@zag-js/toc": "1.40.0",
     "@zag-js/tree-view": "1.40.0",
     "@zag-js/types": "1.40.0",
-    "@zag-js/utils": "1.40.0",
-    "lorem-ipsum": "2.0.8"
+    "@zag-js/utils": "1.40.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.9",

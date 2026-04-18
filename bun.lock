@@ -131,7 +131,6 @@
         "globby": "16.1.1",
         "happy-dom": "20.7.0",
         "image-conversion": "2.1.1",
-        "lorem-ipsum": "2.0.8",
         "lucide-react": "1.8.0",
         "react": "19.2.4",
         "react-dom": "19.2.4",
@@ -224,7 +223,6 @@
         "@zag-js/tree-view": "1.40.0",
         "@zag-js/types": "1.40.0",
         "@zag-js/utils": "1.40.0",
-        "lorem-ipsum": "2.0.8",
       },
       "devDependencies": {
         "@biomejs/biome": "2.4.9",
@@ -353,7 +351,6 @@
         "clean-package": "2.2.0",
         "image-conversion": "2.1.1",
         "jsdom": "26.1.0",
-        "lorem-ipsum": "2.0.8",
         "lucide-svelte": "1.0.1",
         "storybook": "10.3.5",
         "svelte": "5.55.4",
@@ -462,7 +459,6 @@
         "globby": "16.1.1",
         "image-conversion": "2.1.1",
         "jsdom": "26.1.0",
-        "lorem-ipsum": "2.0.8",
         "lucide-vue-next": "1.0.0",
         "resize-observer-polyfill": "1.5.1",
         "storybook": "10.3.5",
@@ -2189,7 +2185,7 @@
 
     "comma-separated-tokens": ["comma-separated-tokens@2.0.3", "", {}, "sha512-Fu4hJdvzeylCfQPp9SGWidpzrMs7tTrlu6Vb8XGaRGck8QSNZJJp538Wrb60Lax4fPwR64ViY468OIUTbRlGZg=="],
 
-    "commander": ["commander@9.5.0", "", {}, "sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ=="],
+    "commander": ["commander@4.1.1", "", {}, "sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA=="],
 
     "commondir": ["commondir@1.0.1", "", {}, "sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg=="],
 
@@ -2952,8 +2948,6 @@
     "look-it-up": ["look-it-up@2.1.0", "", {}, "sha512-nMoGWW2HurtuJf6XAL56FWTDCWLOTSsanrgwOyaR5Y4e3zfG5N/0cU5xWZSEU3tBxhQugRbV1xL9jb+ug7yZww=="],
 
     "loose-envify": ["loose-envify@1.4.0", "", { "dependencies": { "js-tokens": "^3.0.0 || ^4.0.0" }, "bin": { "loose-envify": "cli.js" } }, "sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q=="],
-
-    "lorem-ipsum": ["lorem-ipsum@2.0.8", "", { "dependencies": { "commander": "^9.3.0" }, "bin": { "lorem-ipsum": "dist/bin/lorem-ipsum.bin.js" } }, "sha512-5RIwHuCb979RASgCJH0VKERn9cQo/+NcAi2BMe9ddj+gp7hujl6BI+qdOG4nVsLDpwWEJwTVYXNKP6BGgbcoGA=="],
 
     "loupe": ["loupe@3.2.1", "", {}, "sha512-CdzqowRJCeLU72bHvWqwRBBlLcMEtIvGrlvef74kMnV2AolS9Y8xUv1I0U/MNAWMhBlKIoyuEgoJ0t/bbwHbLQ=="],
 
@@ -4219,8 +4213,6 @@
 
     "@better-auth/core/jose": ["jose@6.2.2", "", {}, "sha512-d7kPDd34KO/YnzaDOlikGpOurfF0ByC2sEV4cANCtdqLlTfBlw2p14O/5d/zv40gJPbIQxfES3nSx1/oYNyuZQ=="],
 
-    "@bomb.sh/tab/commander": ["commander@4.1.1", "", {}, "sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA=="],
-
     "@changesets/apply-release-plan/fs-extra": ["fs-extra@7.0.1", "", { "dependencies": { "graceful-fs": "^4.1.2", "jsonfile": "^4.0.0", "universalify": "^0.1.0" } }, "sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw=="],
 
     "@changesets/apply-release-plan/prettier": ["prettier@2.8.8", "", { "bin": { "prettier": "bin-prettier.js" } }, "sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q=="],
@@ -4826,8 +4818,6 @@
     "stylehacks/postcss": ["postcss@8.5.9", "", { "dependencies": { "nanoid": "^3.3.11", "picocolors": "^1.1.1", "source-map-js": "^1.2.1" } }, "sha512-7a70Nsot+EMX9fFU3064K/kdHWZqGVY+BADLyXc8Dfv+mTLLVl6JzJpPaCZ2kQL9gIJvKXSLMHhqdRRjwQeFtw=="],
 
     "stylehacks/postcss-selector-parser": ["postcss-selector-parser@7.1.1", "", { "dependencies": { "cssesc": "^3.0.0", "util-deprecate": "^1.0.2" } }, "sha512-orRsuYpJVw8LdAwqqLykBj9ecS5/cRHlI5+nvTo8LcCKmzDmqVORXtOIYEEQuL9D4BxtA1lm5isAqzQZCoQ6Eg=="],
-
-    "sucrase/commander": ["commander@4.1.1", "", {}, "sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA=="],
 
     "svelte/aria-query": ["aria-query@5.3.1", "", {}, "sha512-Z/ZeOgVl7bcSYZ/u/rh0fOpvEpq//LZmdbkXyc7syVzjPAhfOa9ebsdTSjEBDU4vs5nC98Kfduj1uFo0qyET3g=="],
 

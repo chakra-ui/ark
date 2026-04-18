@@ -230,7 +230,6 @@
     "clean-package": "2.2.0",
     "image-conversion": "2.1.1",
     "jsdom": "26.1.0",
-    "lorem-ipsum": "2.0.8",
     "lucide-svelte": "1.0.1",
     "storybook": "10.3.5",
     "svelte": "5.55.4",
