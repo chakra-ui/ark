@@ -3,11 +3,14 @@ import { Toc } from '@ark-ui/vue/toc'
 import styles from 'styles/toc.module.css'
 
 const items = [
-  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
-  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
-  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
-  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
-  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 10 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 12 },
+  { value: 'installation', depth: 3, label: 'Installation', lines: 8 },
+  { value: 'configuration', depth: 3, label: 'Configuration', lines: 14 },
+  { value: 'api-reference', depth: 2, label: 'API Reference', lines: 10 },
+  { value: 'hooks', depth: 3, label: 'Hooks', lines: 8 },
+  { value: 'components', depth: 3, label: 'Components', lines: 12 },
+  { value: 'examples', depth: 2, label: 'Examples', lines: 10 },
 ]
 
 const tagMap = { 2: 'h2', 3: 'h3' } as const

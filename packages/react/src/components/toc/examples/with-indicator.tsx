@@ -3,11 +3,11 @@ import styles from 'styles/toc.module.css'
 import { useRef } from 'react'
 
 const items = [
-  { value: 'with-indicator-introduction', depth: 2, label: 'Introduction', lines: 12 },
-  { value: 'with-indicator-getting-started', depth: 2, label: 'Getting Started', lines: 10 },
-  { value: 'with-indicator-installation', depth: 2, label: 'Installation', lines: 8 },
-  { value: 'with-indicator-usage', depth: 2, label: 'Usage', lines: 14 },
-  { value: 'with-indicator-conclusion', depth: 2, label: 'Conclusion', lines: 10 },
+  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
 
 export const WithIndicator = () => {

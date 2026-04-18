@@ -1,7 +1,18 @@
 <script setup lang="ts">
-import TocTreeNode, { type TocNode } from './toc-tree-node.vue'
+import { Toc } from '@ark-ui/vue/toc'
+import { TreeView, createTreeCollection } from '@ark-ui/vue/tree-view'
+import { ChevronRight } from 'lucide-vue-next'
+import { ref } from 'vue'
 import styles from 'styles/toc.module.css'
 import treeStyles from 'styles/tree-view.module.css'
+
+type TocNode = {
+  id: string
+  name: string
+  depth: number
+  lines?: number
+  children?: TocNode[]
+}
 
 const sections: TocNode[] = [
   {
@@ -37,29 +48,32 @@ const sections: TocNode[] = [
   },
 ]
 
-import { createTreeCollection } from '@ark-ui/vue/tree-view'
-
-defineExpose({
-  tocItems: [
-    ...sections.map((section) => ({ value: section.id, depth: section.depth })),
-    ...sections.flatMap((section) =>
-      (section.children ?? []).map((child) => ({ value: child.id, depth: child.depth })),
-    ),
-  ],
-  collection: createTreeCollection<TocNode>({
-    nodeToValue: (node) => node.id,
-    nodeToString: (node) => node.name,
-    rootNode: { id: 'ROOT', name: '', depth: 0, children: sections },
-  }),
+const collection = createTreeCollection<TocNode>({
+  nodeToValue: (node) => node.id,
+  nodeToString: (node) => node.name,
+  rootNode: { id: 'ROOT', name: '', depth: 0, children: sections },
 })
+
+const tocItems = [
+  ...sections.map((section) => ({ value: section.id, depth: section.depth })),
+  ...sections.flatMap((section) => (section.children ?? []).map((child) => ({ value: child.id, depth: child.depth }))),
+]
+
+const expandedValue = ref<string[]>([])
+const contentEl = ref()
+const getScrollEl = () => contentEl.value?.$el
+
+const onActiveChange = ({ activeItems }: { activeItems: { value: string }[] }) => {
+  const activeIds = new Set(activeItems.map((i) => i.value))
+  expandedValue.value = sections
+    .filter((section) => activeIds.has(section.id) || (section.children ?? []).some((child) => activeIds.has(child.id)))
+    .map((s) => s.id)
+}
 </script>
 
-const tocItems = [ ...sections.map((section) => ({ value: section.id, depth: section.depth })),
-...sections.flatMap((section) => (section.children ?? []).map((child) => ({ value: child.id, depth: child.depth })) ), ]
-
 <template>
-  <Toc.Root :class="styles.Root" :items="tocItems">
-    <Toc.Content :class="styles.Content">
+  <Toc.Root :class="styles.Root" :items="tocItems" :getScrollEl="getScrollEl" @active-change="onActiveChange">
+    <Toc.Content :class="styles.Content" ref="contentEl">
       <section v-for="section in sections" :key="section.id">
         <h2 :id="section.id">{{ section.name }}</h2>
         <div :class="styles.DummyText">
@@ -78,11 +92,53 @@ const tocItems = [ ...sections.map((section) => ({ value: section.id, depth: sec
 
     <Toc.Nav :class="styles.Nav">
       <Toc.Title :class="styles.Title">On this page</Toc.Title>
-      <TreeView.Root :class="treeStyles.Root" :collection="collection">
-        <TreeView.Tree :class="treeStyles.Tree">
-          <TocTreeNode v-for="(node, index) in sections" :key="node.id" :node="node" :index-path="[index]" />
-        </TreeView.Tree>
-      </TreeView.Root>
+      <Toc.Context v-slot="{ getLinkProps }">
+        <TreeView.Root
+          :class="treeStyles.Root"
+          :collection="collection"
+          :expandedValue="expandedValue"
+          @expanded-change="({ expandedValue: next }) => (expandedValue = next)"
+        >
+          <TreeView.Tree :class="treeStyles.Tree">
+            <template v-for="(section, sectionIdx) in sections" :key="section.id">
+              <TreeView.NodeProvider :node="section" :index-path="[sectionIdx]">
+                <TreeView.Branch :class="treeStyles.Branch">
+                  <TreeView.BranchControl :class="treeStyles.BranchControl">
+                    <TreeView.BranchIndicator :class="treeStyles.BranchIndicator">
+                      <ChevronRight />
+                    </TreeView.BranchIndicator>
+                    <TreeView.BranchText :class="treeStyles.BranchText">
+                      <a
+                        :class="styles.TreeLink"
+                        v-bind="getLinkProps({ item: { value: section.id, depth: section.depth } })"
+                      >
+                        {{ section.name }}
+                      </a>
+                    </TreeView.BranchText>
+                  </TreeView.BranchControl>
+                  <TreeView.BranchContent :class="treeStyles.BranchContent">
+                    <TreeView.BranchIndentGuide :class="treeStyles.BranchIndentGuide" />
+                    <template v-for="(child, childIdx) in section.children" :key="child.id">
+                      <TreeView.NodeProvider :node="child" :index-path="[sectionIdx, childIdx]">
+                        <TreeView.Item :class="treeStyles.Item">
+                          <TreeView.ItemText :class="treeStyles.ItemText">
+                            <a
+                              :class="styles.TreeLink"
+                              v-bind="getLinkProps({ item: { value: child.id, depth: child.depth } })"
+                            >
+                              {{ child.name }}
+                            </a>
+                          </TreeView.ItemText>
+                        </TreeView.Item>
+                      </TreeView.NodeProvider>
+                    </template>
+                  </TreeView.BranchContent>
+                </TreeView.Branch>
+              </TreeView.NodeProvider>
+            </template>
+          </TreeView.Tree>
+        </TreeView.Root>
+      </Toc.Context>
     </Toc.Nav>
   </Toc.Root>
 </template>

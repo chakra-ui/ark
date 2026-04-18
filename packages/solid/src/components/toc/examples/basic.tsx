@@ -10,9 +10,11 @@ const items = [
 ]
 
 export const Basic = () => {
+  let contentRef: HTMLElement | null = null
+
   return (
-    <Toc.Root class={styles.Root} items={items}>
-      <Toc.Content class={styles.Content}>
+    <Toc.Root class={styles.Root} items={items} getScrollEl={() => contentRef}>
+      <Toc.Content class={styles.Content} ref={(el) => (contentRef = el)}>
         {items.map((item) => (
           <section>
             <h2 id={item.value}>{item.label}</h2>

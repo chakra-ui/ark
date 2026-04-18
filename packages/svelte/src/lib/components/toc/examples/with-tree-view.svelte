@@ -1,12 +1,9 @@
 <script lang="ts">
   import { Toc } from '@ark-ui/svelte/toc'
   import { TreeView, createTreeCollection } from '@ark-ui/svelte/tree-view'
-  import { loremIpsum } from 'lorem-ipsum'
   import { ChevronRightIcon } from 'lucide-svelte'
   import tocStyles from 'styles/toc.module.css'
   import treeStyles from 'styles/tree-view.module.css'
-
-  const p = loremIpsum({ count: 7, units: 'paragraphs' })
 
   type TocNode = {
     id: string
@@ -62,45 +59,48 @@
   ])
 
   let expandedValue = $state<string[]>([])
+  let contentEl: HTMLElement | null = $state(null)
 </script>
 
-<div class={tocStyles.Root}>
-  <article class={tocStyles.Content}>
+<Toc.Root
+  class={tocStyles.Root}
+  items={allItems}
+  getScrollEl={() => contentEl}
+  onActiveChange={({ activeItems }) => {
+    const activeIds = new Set(activeItems.map((i) => i.value))
+    expandedValue = sections
+      .filter(
+        (section) =>
+          activeIds.has(section.id) ||
+          (section.children ?? []).some((child) => activeIds.has(child.id)),
+      )
+      .map((s) => s.id)
+  }}
+>
+  <Toc.Content bind:ref={contentEl} class={tocStyles.Content}>
     {#each sections as section (section.id)}
       <section>
         <h2 id={section.id}>{section.name}</h2>
         <div class={tocStyles.DummyText}>
-          {#each { length: section.lines ?? 5 } as _, i}
-            <div class={tocStyles.DummyLine} />
+          {#each { length: section.lines ?? 5 } as _}
+            <div class={tocStyles.DummyLine}></div>
           {/each}
         </div>
         {#each section.children ?? [] as child (child.id)}
           <div>
             <h3 id={child.id}>{child.name}</h3>
             <div class={tocStyles.DummyText}>
-              {#each { length: child.lines ?? 3 } as _, i}
-                <div class={tocStyles.DummyLine} />
+              {#each { length: child.lines ?? 3 } as _}
+                <div class={tocStyles.DummyLine}></div>
               {/each}
             </div>
           </div>
         {/each}
       </section>
     {/each}
-  </article>
-  <Toc.Nav
-    class={tocStyles.Nav}
-    items={allItems}
-    onActiveChange={({ activeItems }) => {
-      const activeIds = new Set(activeItems.map((i) => i.value))
-      expandedValue = sections
-        .filter(
-          (section) =>
-            activeIds.has(section.id) ||
-            (section.children ?? []).some((child) => activeIds.has(child.id)),
-        )
-        .map((s) => s.id)
-    }}
-  >
+  </Toc.Content>
+
+  <Toc.Nav class={tocStyles.Nav}>
     <Toc.Title class={tocStyles.Title}>On this page</Toc.Title>
     <TreeView.Root
       class={treeStyles.Root}
@@ -115,7 +115,7 @@
       </TreeView.Tree>
     </TreeView.Root>
   </Toc.Nav>
-</div>
+</Toc.Root>
 
 {#snippet renderNode(node: TocNode, indexPath: number[])}
   <TreeView.NodeProvider {node} {indexPath}>
