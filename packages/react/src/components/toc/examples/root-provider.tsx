@@ -3,11 +3,11 @@ import { useRef } from 'react'
 import styles from 'styles/toc.module.css'
 
 const items = [
-  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
-  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
-  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
-  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
-  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
+  { value: 'billing-info', depth: 2, label: 'Billing & Invoices', lines: 10 },
+  { value: 'security-settings', depth: 2, label: 'Privacy & Security', lines: 35 },
+  { value: 'data-usage', depth: 2, label: 'Data Usage History', lines: 12 },
+  { value: 'user-permissions', depth: 2, label: 'Team Permissions', lines: 28 },
+  { value: 'subscription-plan', depth: 2, label: 'Current Subscription', lines: 8 },
 ]
 
 export const RootProvider = () => {
