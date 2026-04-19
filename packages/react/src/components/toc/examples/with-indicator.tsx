@@ -3,11 +3,11 @@ import styles from 'styles/toc.module.css'
 import { useRef } from 'react'
 
 const items = [
-  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
-  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
-  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
-  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
-  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
+  { value: 'step-validation', depth: 2, label: 'Validation Pending', lines: 5 },
+  { value: 'upload-progress', depth: 2, label: 'Asset Uploading', lines: 90 },
+  { value: 'deployment-sync', depth: 2, label: 'Server Sync Active', lines: 12 },
+  { value: 'build-pipeline', depth: 2, label: 'CI/CD Running', lines: 105 },
+  { value: 'database-health', depth: 2, label: 'DB Connection Stable', lines: 3 },
 ]
 
 export const WithIndicator = () => {

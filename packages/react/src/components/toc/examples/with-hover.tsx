@@ -5,11 +5,11 @@ import { useRef, useState } from 'react'
 import styles from 'styles/toc.module.css'
 
 const items = [
-  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
-  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
-  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
-  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
-  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
+  { value: 'analytics-dashboard', depth: 2, label: 'Real-time Analytics', lines: 55 },
+  { value: 'cloud-storage', depth: 2, label: 'S3 Cloud Storage', lines: 14 },
+  { value: 'automation-tools', depth: 2, label: 'Workflow Automation', lines: 32 },
+  { value: 'crm-integration', depth: 2, label: 'Salesforce Sync', lines: 45 },
+  { value: 'report-generator', depth: 2, label: 'Custom PDF Reports', lines: 20 },
 ]
 
 export const WithHover = () => {

@@ -3,9 +3,9 @@ import { useRef } from 'react'
 import styles from 'styles/toc.module.css'
 
 const items = [
-  { value: 'introduction', depth: 2, label: 'Introduction', lines: 10 },
-  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 12 },
-  { value: 'installation', depth: 3, label: 'Installation', lines: 8 },
+  { value: 'importance', depth: 2, label: 'Importance', lines: 10 },
+  { value: 'integrations', depth: 2, label: 'Integrations', lines: 12 },
+  { value: 'free-blocks', depth: 3, label: 'Free Blocks', lines: 8 },
   { value: 'configuration', depth: 3, label: 'Configuration', lines: 14 },
   { value: 'api-reference', depth: 2, label: 'API Reference', lines: 10 },
   { value: 'hooks', depth: 3, label: 'Hooks', lines: 8 },
