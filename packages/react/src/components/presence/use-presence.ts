@@ -28,10 +28,11 @@ export const usePresence = (props: UsePresenceProps = {}) => {
 
   if (api.present) {
     wasEverPresent.current = true
+  } else if (unmountOnExit) {
+    wasEverPresent.current = false
   }
 
-  const unmounted =
-    (!api.present && !wasEverPresent.current && lazyMount) || (unmountOnExit && !api.present && wasEverPresent.current)
+  const unmounted = !api.present && (wasEverPresent.current ? unmountOnExit : lazyMount)
 
   const getPresenceProps = () => ({
     'data-state': api.skip && skipAnimationOnMount ? undefined : present ? 'open' : 'closed',
@@ -42,6 +43,7 @@ export const usePresence = (props: UsePresenceProps = {}) => {
     ref: api.setNode,
     getPresenceProps,
     present: api.present,
+    wasEverPresent: wasEverPresent.current,
     unmounted,
   }
 }
