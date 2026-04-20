@@ -75,6 +75,7 @@ export default defineConfig({
 })
 
 const renderBanner = (fileName: string) => {
+  if (fileName.startsWith('_virtual/')) return ''
   const file = path.parse(fileName)
   if (['portal', 'frame', 'client-only', 'focus-trap', 'download-trigger'].includes(file.name)) {
     return `'use client';`
