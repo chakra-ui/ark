@@ -2,6 +2,7 @@ export { FieldContext, type FieldContextProps } from './field-context'
 export { FieldErrorText, type FieldErrorTextBaseProps, type FieldErrorTextProps } from './field-error-text'
 export { FieldHelperText, type FieldHelperTextBaseProps, type FieldHelperTextProps } from './field-helper-text'
 export { FieldInput, type FieldInputBaseProps, type FieldInputProps } from './field-input'
+export { FieldItem, type FieldItemBaseProps, type FieldItemProps } from './field-item'
 export { FieldLabel, type FieldLabelBaseProps, type FieldLabelProps } from './field-label'
 export {
   FieldRequiredIndicator,

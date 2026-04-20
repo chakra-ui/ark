@@ -10,6 +10,7 @@ export {
   type FieldHelperTextProps,
 } from './field-helper-text.svelte'
 export { default as FieldInput, type FieldInputBaseProps, type FieldInputProps } from './field-input.svelte'
+export { default as FieldItem, type FieldItemBaseProps, type FieldItemProps } from './field-item.svelte'
 export { default as FieldLabel, type FieldLabelBaseProps, type FieldLabelProps } from './field-label.svelte'
 export {
   default as FieldRequiredIndicator,

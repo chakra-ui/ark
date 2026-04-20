@@ -10,6 +10,7 @@ export {
   type FieldHelperTextProps,
 } from './field-helper-text.vue'
 export { default as FieldInput, type FieldInputBaseProps, type FieldInputProps } from './field-input.vue'
+export { default as FieldItem, type FieldItemBaseProps, type FieldItemProps } from './field-item.vue'
 export { default as FieldLabel, type FieldLabelBaseProps, type FieldLabelProps } from './field-label.vue'
 export {
   default as FieldRequiredIndicator,
