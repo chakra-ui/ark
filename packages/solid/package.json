@@ -163,7 +163,7 @@
     "@testing-library/dom": "10.4.1",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/user-event": "14.6.1",
-    "@types/jsdom": "21.1.7",
+    "@types/jsdom": "28.0.1",
     "@vitest/coverage-v8": "^4.1.4",
     "check-password-strength": "3.0.0",
     "clean-package": "2.2.0",
