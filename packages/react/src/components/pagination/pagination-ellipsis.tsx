@@ -1,3 +1,5 @@
+'use client'
+
 import type { EllipsisProps } from '@zag-js/pagination'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'

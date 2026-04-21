@@ -1,3 +1,5 @@
+'use client'
+
 import type { IndicatorProps } from '@zag-js/carousel'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'

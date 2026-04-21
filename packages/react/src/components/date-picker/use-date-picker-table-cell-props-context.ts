@@ -1,3 +1,5 @@
+'use client'
+
 import type { DayTableCellProps, TableCellProps } from '@zag-js/date-picker'
 import { createContext } from '../../utils/create-context'
 

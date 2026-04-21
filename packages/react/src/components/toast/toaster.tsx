@@ -1,3 +1,5 @@
+'use client'
+
 import { mergeProps, normalizeProps, useMachine } from '@zag-js/react'
 import * as toast from '@zag-js/toast'
 import { type ReactNode, forwardRef, useId } from 'react'

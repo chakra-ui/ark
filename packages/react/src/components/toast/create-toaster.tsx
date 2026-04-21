@@ -1,3 +1,5 @@
+'use client'
+
 import * as toast from '@zag-js/toast'
 
 export interface CreateToasterProps extends toast.StoreProps {}

@@ -1,3 +1,5 @@
+'use client'
+
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as toggleGroup from '@zag-js/toggle-group'
 import { useId } from 'react'

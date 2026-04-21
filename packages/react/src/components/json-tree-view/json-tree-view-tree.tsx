@@ -1,3 +1,5 @@
+'use client'
+
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { TreeView, useTreeViewContext } from '../tree-view'

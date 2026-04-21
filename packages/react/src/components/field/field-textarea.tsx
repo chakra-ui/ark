@@ -1,3 +1,5 @@
+'use client'
+
 import { autoresizeTextarea } from '@zag-js/auto-resize'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, useEffect, useRef } from 'react'

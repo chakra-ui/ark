@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseFieldContext, useFieldContext } from './use-field-context'
 

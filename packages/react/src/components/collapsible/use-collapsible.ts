@@ -1,3 +1,5 @@
+'use client'
+
 import * as collapsible from '@zag-js/collapsible'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId, useRef } from 'react'

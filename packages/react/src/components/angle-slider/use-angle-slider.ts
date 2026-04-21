@@ -1,3 +1,5 @@
+'use client'
+
 import * as angleSlider from '@zag-js/angle-slider'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'

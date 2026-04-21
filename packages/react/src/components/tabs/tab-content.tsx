@@ -1,3 +1,5 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import type { ContentProps } from '@zag-js/tabs'
 import { forwardRef } from 'react'

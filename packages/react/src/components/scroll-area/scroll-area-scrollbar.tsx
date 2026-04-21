@@ -1,3 +1,5 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import type { Orientation } from '@zag-js/types'
 import { forwardRef } from 'react'

@@ -1,3 +1,5 @@
+'use client'
+
 import * as carousel from '@zag-js/carousel'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'

@@ -1,3 +1,5 @@
+'use client'
+
 import * as popover from '@zag-js/popover'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'

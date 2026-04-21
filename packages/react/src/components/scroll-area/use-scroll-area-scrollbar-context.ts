@@ -1,3 +1,5 @@
+'use client'
+
 import type { ScrollbarProps } from '@zag-js/scroll-area'
 import { createContext } from '../../utils/create-context'
 

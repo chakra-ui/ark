@@ -1,3 +1,5 @@
+'use client'
+
 import * as numberInput from '@zag-js/number-input'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'

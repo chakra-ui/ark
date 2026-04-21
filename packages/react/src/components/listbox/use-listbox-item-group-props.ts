@@ -1,3 +1,5 @@
+'use client'
+
 import type { ItemGroupProps } from '@zag-js/listbox'
 import { createContext } from '../../utils/create-context'
 

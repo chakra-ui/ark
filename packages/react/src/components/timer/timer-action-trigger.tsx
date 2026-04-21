@@ -1,3 +1,5 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import type { ActionTriggerProps } from '@zag-js/timer'
 import { forwardRef } from 'react'

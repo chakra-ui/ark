@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UsePopoverContext, usePopoverContext } from './use-popover-context'
 

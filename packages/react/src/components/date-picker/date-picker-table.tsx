@@ -1,3 +1,5 @@
+'use client'
+
 import type { TableProps } from '@zag-js/date-picker'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, useId } from 'react'

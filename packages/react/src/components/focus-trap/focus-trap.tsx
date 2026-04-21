@@ -1,3 +1,5 @@
+'use client'
+
 import { type FocusTrapOptions, trapFocus } from '@zag-js/focus-trap'
 import { forwardRef, useRef } from 'react'
 import type { Assign } from '../../types'

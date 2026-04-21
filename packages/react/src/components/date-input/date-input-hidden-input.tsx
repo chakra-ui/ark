@@ -1,3 +1,5 @@
+'use client'
+
 import type { HiddenInputProps } from '@zag-js/date-input'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'

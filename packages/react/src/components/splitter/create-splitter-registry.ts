@@ -1,3 +1,5 @@
+'use client'
+
 import * as splitter from '@zag-js/splitter'
 
 export interface SplitterRegistryProps extends splitter.SplitterRegistryOptions {}

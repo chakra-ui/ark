@@ -1,3 +1,5 @@
+'use client'
+
 import * as presence from '@zag-js/presence'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useRef } from 'react'

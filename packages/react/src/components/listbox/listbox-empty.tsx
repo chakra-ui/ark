@@ -1,3 +1,5 @@
+'use client'
+
 import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { listboxAnatomy } from './listbox.anatomy'

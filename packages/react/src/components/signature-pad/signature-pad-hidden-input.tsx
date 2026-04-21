@@ -1,3 +1,5 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import type { HiddenInputProps } from '@zag-js/signature-pad'
 import { forwardRef } from 'react'

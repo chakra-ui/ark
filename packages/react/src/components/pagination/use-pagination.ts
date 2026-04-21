@@ -1,3 +1,5 @@
+'use client'
+
 import * as pagination from '@zag-js/pagination'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'

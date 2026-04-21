@@ -1,3 +1,5 @@
+'use client'
+
 import type { JsonNode } from '@zag-js/json-tree-utils'
 import { forwardRef } from 'react'
 import { TreeView } from '../tree-view'

@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import type { CollectionItem } from '../collection'
 import { type UseListboxContext, useListboxContext } from './use-listbox-context'

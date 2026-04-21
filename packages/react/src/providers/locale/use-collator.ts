@@ -1,3 +1,5 @@
+'use client'
+
 import { createCollator } from '@zag-js/i18n-utils'
 import { useLocaleContext } from './use-locale-context'
 import { useMemo } from 'react'

@@ -1,3 +1,5 @@
+'use client'
+
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as tour from '@zag-js/tour'
 import { useId } from 'react'

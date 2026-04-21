@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseRadioGroupItemContext, useRadioGroupItemContext } from './use-radio-group-item-context'
 

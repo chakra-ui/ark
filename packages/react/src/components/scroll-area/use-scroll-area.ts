@@ -1,3 +1,5 @@
+'use client'
+
 import * as scrollArea from '@zag-js/scroll-area'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'

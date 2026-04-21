@@ -1,3 +1,5 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import type { TriggerProps } from '@zag-js/popover'
 import { forwardRef } from 'react'

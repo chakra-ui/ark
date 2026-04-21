@@ -1,3 +1,5 @@
+'use client'
+
 import type { StepAction } from '@zag-js/tour'
 import type { ReactNode } from 'react'
 import { useTourContext } from './use-tour-context'

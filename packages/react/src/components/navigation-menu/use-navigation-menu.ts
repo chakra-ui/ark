@@ -1,3 +1,5 @@
+'use client'
+
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as navigationMenu from '@zag-js/navigation-menu'
 import { useId } from 'react'

@@ -1,3 +1,5 @@
+'use client'
+
 import { formatBytes } from '@zag-js/i18n-utils'
 import { useMemo } from 'react'
 import { useLocaleContext } from '../../providers/locale'

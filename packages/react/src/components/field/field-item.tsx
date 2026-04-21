@@ -1,3 +1,5 @@
+'use client'
+
 import { useMemo, type PropsWithChildren } from 'react'
 import type { HTMLProps } from '../factory'
 import { parts } from './field.anatomy'

@@ -1,3 +1,5 @@
+'use client'
+
 import { createContext } from '../../utils/create-context'
 import type { UsePinInputReturn } from './use-pin-input'
 

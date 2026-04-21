@@ -1,3 +1,5 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import type { ViewportProps } from '@zag-js/navigation-menu'
 import { forwardRef } from 'react'

@@ -1,3 +1,5 @@
+'use client'
+
 import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'

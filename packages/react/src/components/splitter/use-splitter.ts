@@ -1,3 +1,5 @@
+'use client'
+
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as splitter from '@zag-js/splitter'
 import { useId } from 'react'

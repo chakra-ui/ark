@@ -1,3 +1,5 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import type { ItemProps } from '@zag-js/navigation-menu'
 import { ensure } from '@zag-js/utils'

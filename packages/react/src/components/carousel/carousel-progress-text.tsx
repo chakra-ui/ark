@@ -1,3 +1,5 @@
+'use client'
+
 import { forwardRef, useMemo } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { carouselAnatomy } from './carousel.anatomy'

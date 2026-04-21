@@ -1,3 +1,5 @@
+'use client'
+
 import { createContext } from '../../utils/create-context'
 
 export interface ValueChangeDetails {

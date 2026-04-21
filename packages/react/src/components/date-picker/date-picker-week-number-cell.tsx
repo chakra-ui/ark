@@ -1,3 +1,5 @@
+'use client'
+
 import type { DateValue, WeekNumberCellProps } from '@zag-js/date-picker'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'

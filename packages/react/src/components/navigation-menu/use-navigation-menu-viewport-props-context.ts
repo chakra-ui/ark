@@ -1,3 +1,5 @@
+'use client'
+
 import type { ViewportProps } from '@zag-js/navigation-menu'
 import { createContext } from '../../utils/create-context'
 

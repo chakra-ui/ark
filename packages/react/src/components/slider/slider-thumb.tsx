@@ -1,3 +1,5 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import type { ThumbProps } from '@zag-js/slider'
 import { forwardRef } from 'react'

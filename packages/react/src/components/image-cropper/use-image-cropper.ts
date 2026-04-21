@@ -1,3 +1,5 @@
+'use client'
+
 import * as imageCropper from '@zag-js/image-cropper'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'

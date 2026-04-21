@@ -1,3 +1,5 @@
+'use client'
+
 import type { ChannelProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'

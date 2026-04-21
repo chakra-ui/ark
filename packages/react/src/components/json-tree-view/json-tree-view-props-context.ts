@@ -1,3 +1,5 @@
+'use client'
+
 import type { JsonNodePreviewOptions } from '@zag-js/json-tree-utils'
 import { createContext } from '../../utils/create-context'
 

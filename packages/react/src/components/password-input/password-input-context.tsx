@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import type { UsePasswordInputReturn } from './use-password-input'
 import { usePasswordInputContext } from './use-password-input-context'

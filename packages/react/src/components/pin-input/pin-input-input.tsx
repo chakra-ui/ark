@@ -1,3 +1,5 @@
+'use client'
+
 import type { InputProps } from '@zag-js/pin-input'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'

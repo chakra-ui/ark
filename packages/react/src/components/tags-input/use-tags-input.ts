@@ -1,3 +1,5 @@
+'use client'
+
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as tagsInput from '@zag-js/tags-input'
 import { useId } from 'react'

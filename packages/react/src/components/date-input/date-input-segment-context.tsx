@@ -1,3 +1,5 @@
+'use client'
+
 import type { DateSegment } from '@zag-js/date-input'
 import { Fragment, type ReactNode } from 'react'
 import { useDateInputContext } from './use-date-input-context'

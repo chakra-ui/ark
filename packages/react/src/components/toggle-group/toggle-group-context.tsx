@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseToggleGroupContext, useToggleGroupContext } from './use-toggle-group-context'
 

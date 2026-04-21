@@ -1,3 +1,5 @@
+'use client'
+
 import { isFocusVisible, trackFocusVisible } from '@zag-js/focus-visible'
 import { useCallback, useSyncExternalStore } from 'react'
 import { useEnvironmentContext } from '../environment'

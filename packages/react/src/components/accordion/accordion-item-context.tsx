@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseAccordionItemContext, useAccordionItemContext } from './use-accordion-item-context'
 

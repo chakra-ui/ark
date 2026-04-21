@@ -1,3 +1,5 @@
+'use client'
+
 import type { Locale } from '@zag-js/i18n-utils'
 import { createContext } from '../../utils/create-context'
 

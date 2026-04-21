@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseEditableContext, useEditableContext } from './use-editable-context'
 

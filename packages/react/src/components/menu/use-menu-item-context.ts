@@ -1,3 +1,5 @@
+'use client'
+
 import type { OptionItemState } from '@zag-js/menu'
 import type { Optional } from '../../types'
 import { createContext } from '../../utils/create-context'

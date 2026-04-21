@@ -1,3 +1,5 @@
+'use client'
+
 import { Selection, type SelectionMode } from '@zag-js/collection'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useEvent } from '../../utils/use-event'

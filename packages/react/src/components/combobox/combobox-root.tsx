@@ -1,3 +1,5 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import { type JSX, type Ref, type RefAttributes, forwardRef } from 'react'
 import type { Assign } from '../../types'

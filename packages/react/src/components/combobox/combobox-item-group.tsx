@@ -1,3 +1,5 @@
+'use client'
+
 import type { ItemGroupProps } from '@zag-js/combobox'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, useId } from 'react'

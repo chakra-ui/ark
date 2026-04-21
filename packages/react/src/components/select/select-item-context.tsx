@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseSelectItemContext, useSelectItemContext } from './use-select-item-context'
 

@@ -1,3 +1,5 @@
+'use client'
+
 import * as pinInput from '@zag-js/pin-input'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'

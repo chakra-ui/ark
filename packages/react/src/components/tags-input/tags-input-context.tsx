@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseTagsInputContext, useTagsInputContext } from './use-tags-input-context'
 

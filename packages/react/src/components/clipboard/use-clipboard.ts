@@ -1,3 +1,5 @@
+'use client'
+
 import * as clipboard from '@zag-js/clipboard'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'

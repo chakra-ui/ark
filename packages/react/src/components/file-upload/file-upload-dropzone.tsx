@@ -1,3 +1,5 @@
+'use client'
+
 import type { DropzoneProps } from '@zag-js/file-upload'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'

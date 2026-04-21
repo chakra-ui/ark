@@ -1,3 +1,5 @@
+'use client'
+
 import * as avatar from '@zag-js/avatar'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'

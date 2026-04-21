@@ -1,3 +1,5 @@
+'use client'
+
 import { createSplitProps } from '../../utils/create-split-props'
 import type { UseCollapsibleProps } from './use-collapsible'
 

@@ -1,3 +1,5 @@
+'use client'
+
 import { createContext } from '../../utils/create-context'
 import type { CollectionItem } from '../collection'
 import type { UseListboxReturn } from './use-listbox'

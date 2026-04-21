@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseMenuItemContext, useMenuItemContext } from './use-menu-item-context'
 

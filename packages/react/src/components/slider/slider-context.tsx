@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseSliderContext, useSliderContext } from './use-slider-context'
 

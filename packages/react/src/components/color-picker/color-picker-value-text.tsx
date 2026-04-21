@@ -1,3 +1,5 @@
+'use client'
+
 import type { ColorStringFormat } from '@zag-js/color-utils'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'

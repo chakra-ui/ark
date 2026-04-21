@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseQrCodeContext, useQrCodeContext } from './use-qr-code-context'
 

@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseTooltipContext, useTooltipContext } from './use-tooltip-context'
 

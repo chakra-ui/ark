@@ -1,3 +1,5 @@
+'use client'
+
 import { createAnatomy } from '@zag-js/anatomy'
 
 export const fieldAnatomy = createAnatomy('field').parts(

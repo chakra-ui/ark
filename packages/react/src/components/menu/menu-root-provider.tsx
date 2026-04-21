@@ -1,3 +1,5 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import { type ReactNode, useCallback } from 'react'
 import { useEffectOnce } from '../../utils/use-effect-once'

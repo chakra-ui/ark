@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseNumberInputContext, useNumberInputContext } from './use-number-input-context'
 

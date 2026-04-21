@@ -1,3 +1,5 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import type { ItemGroupProps } from '@zag-js/file-upload'
 import { forwardRef } from 'react'

@@ -1,3 +1,5 @@
+'use client'
+
 import { useCallback, useMemo, useRef, useState } from 'react'
 import { useEvent } from '../../utils/use-event'
 import { type CollectionOptions, type ListCollection, createListCollection } from './list-collection'

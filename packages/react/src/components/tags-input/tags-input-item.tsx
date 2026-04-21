@@ -1,3 +1,5 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import type { ItemProps } from '@zag-js/tags-input'
 import { forwardRef } from 'react'

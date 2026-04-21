@@ -1,3 +1,5 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import type { ResizeTriggerProps } from '@zag-js/splitter'
 import { forwardRef } from 'react'

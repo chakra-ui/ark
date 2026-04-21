@@ -1,3 +1,5 @@
+'use client'
+
 import type { AreaProps } from '@zag-js/color-picker'
 import { createContext } from '../../utils/create-context'
 

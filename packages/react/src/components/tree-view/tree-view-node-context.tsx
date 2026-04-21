@@ -1,3 +1,5 @@
+'use client'
+
 import { type UseTreeViewNodeContext, useTreeViewNodeContext } from './use-tree-view-node-context'
 
 export interface TreeViewNodeContextProps {

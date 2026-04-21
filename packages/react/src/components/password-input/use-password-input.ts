@@ -1,3 +1,5 @@
+'use client'
+
 import * as passwordInput from '@zag-js/password-input'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'

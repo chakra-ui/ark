@@ -1,3 +1,5 @@
+'use client'
+
 import type { RenderStrategyProps } from '../../utils/render-strategy'
 import type { HTMLProps } from '../factory'
 import { type UsePresenceReturn, usePresence } from '../presence/use-presence'

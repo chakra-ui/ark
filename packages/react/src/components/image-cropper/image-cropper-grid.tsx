@@ -1,3 +1,5 @@
+'use client'
+
 import type { GridProps } from '@zag-js/image-cropper'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'

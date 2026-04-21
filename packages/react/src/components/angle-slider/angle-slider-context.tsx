@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseAngleSliderContext, useAngleSliderContext } from './use-angle-slider-context'
 

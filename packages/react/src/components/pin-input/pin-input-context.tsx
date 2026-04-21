@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UsePinInputContext, usePinInputContext } from './use-pin-input-context'
 

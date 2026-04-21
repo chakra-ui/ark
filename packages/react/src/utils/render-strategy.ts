@@ -1,3 +1,5 @@
+'use client'
+
 import { createContext } from './create-context'
 import { createSplitProps } from './create-split-props'
 

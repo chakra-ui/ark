@@ -1,3 +1,5 @@
+'use client'
+
 import { type HighlightChunk, type HighlightWordProps, highlightWord } from '@zag-js/highlight-word'
 import { useMemo } from 'react'
 

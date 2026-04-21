@@ -1,3 +1,5 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import { uniq } from '@zag-js/utils'
 import { forwardRef, useMemo } from 'react'

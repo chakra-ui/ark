@@ -1,3 +1,5 @@
+'use client'
+
 import { createContext } from '../../utils/create-context'
 import type { TreeNode } from '../collection'
 import type { UseTreeViewReturn } from './use-tree-view'

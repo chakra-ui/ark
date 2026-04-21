@@ -1,3 +1,5 @@
+'use client'
+
 import type { ResizeTriggerProps } from '@zag-js/floating-panel'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'

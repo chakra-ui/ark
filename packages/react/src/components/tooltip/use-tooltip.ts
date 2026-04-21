@@ -1,3 +1,5 @@
+'use client'
+
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as tooltip from '@zag-js/tooltip'
 import { useId } from 'react'

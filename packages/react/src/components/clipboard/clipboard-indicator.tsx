@@ -1,3 +1,5 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import { type ReactNode, forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'

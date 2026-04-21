@@ -1,3 +1,5 @@
+'use client'
+
 import * as hoverCard from '@zag-js/hover-card'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'

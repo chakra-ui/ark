@@ -1,3 +1,5 @@
+'use client'
+
 import * as floatingPanel from '@zag-js/floating-panel'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'

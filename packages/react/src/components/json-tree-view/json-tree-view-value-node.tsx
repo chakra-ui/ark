@@ -1,3 +1,5 @@
+'use client'
+
 import type { JsonNodeHastElement } from '@zag-js/json-tree-utils'
 
 interface JsonTreeViewValueNodeProps {

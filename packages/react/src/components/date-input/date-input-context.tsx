@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseDateInputContext, useDateInputContext } from './use-date-input-context'
 

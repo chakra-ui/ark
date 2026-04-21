@@ -1,3 +1,5 @@
+'use client'
+
 import { createContext } from '../../utils/create-context'
 import type { UseSignaturePadReturn } from './use-signature-pad'
 

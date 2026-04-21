@@ -1,3 +1,5 @@
+'use client'
+
 import type { PropTypes } from '@zag-js/react'
 import type * as toast from '@zag-js/toast'
 import type { ReactNode } from 'react'

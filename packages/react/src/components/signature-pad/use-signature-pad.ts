@@ -1,3 +1,5 @@
+'use client'
+
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as signaturePad from '@zag-js/signature-pad'
 import { useId } from 'react'

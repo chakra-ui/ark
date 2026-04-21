@@ -1,3 +1,5 @@
+'use client'
+
 import * as radio from '@zag-js/radio-group'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'

@@ -1,3 +1,5 @@
+'use client'
+
 import { getDocument, getWindow } from '@zag-js/dom-query'
 import { type ReactNode, useMemo, useState } from 'react'
 import { runIfFn } from '../../utils/run-if-fn'

@@ -1,3 +1,5 @@
+'use client'
+
 import { createContext } from '../../utils/create-context'
 import type { UseColorPickerReturn } from './use-color-picker'
 

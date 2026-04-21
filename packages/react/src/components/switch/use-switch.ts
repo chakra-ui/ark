@@ -1,3 +1,5 @@
+'use client'
+
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as zagSwitch from '@zag-js/switch'
 import { useId } from 'react'

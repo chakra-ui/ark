@@ -1,3 +1,5 @@
+'use client'
+
 import type { ItemProps } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, useEffect } from 'react'

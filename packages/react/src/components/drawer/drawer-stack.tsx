@@ -1,3 +1,5 @@
+'use client'
+
 import * as drawer from '@zag-js/drawer'
 import { normalizeProps } from '@zag-js/react'
 import { type ReactNode, useMemo, useState, useSyncExternalStore } from 'react'

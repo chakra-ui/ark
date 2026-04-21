@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseRatingGroupContext, useRatingGroupContext } from './use-rating-group-context'
 

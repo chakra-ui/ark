@@ -1,3 +1,5 @@
+'use client'
+
 import type { DateValue } from '@zag-js/date-picker'
 import { Fragment, forwardRef } from 'react'
 import type { Assign } from '../../types'

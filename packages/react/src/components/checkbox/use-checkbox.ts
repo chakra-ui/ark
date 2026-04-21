@@ -1,3 +1,5 @@
+'use client'
+
 import * as checkbox from '@zag-js/checkbox'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/react'
 import { useId, useMemo } from 'react'

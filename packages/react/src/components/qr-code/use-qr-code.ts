@@ -1,3 +1,5 @@
+'use client'
+
 import * as qrcode from '@zag-js/qr-code'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'

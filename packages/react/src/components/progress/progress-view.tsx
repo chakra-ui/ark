@@ -1,3 +1,5 @@
+'use client'
+
 import type { ViewProps } from '@zag-js/progress'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'

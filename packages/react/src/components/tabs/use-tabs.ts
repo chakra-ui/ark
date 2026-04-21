@@ -1,3 +1,5 @@
+'use client'
+
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as tabs from '@zag-js/tabs'
 import { useId } from 'react'

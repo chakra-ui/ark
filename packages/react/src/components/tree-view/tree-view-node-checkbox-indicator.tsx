@@ -1,3 +1,5 @@
+'use client'
+
 import type { HTMLProps } from '../factory'
 import { useTreeViewNodeContext } from './use-tree-view-node-context'
 

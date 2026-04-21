@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseDatePickerContext, useDatePickerContext } from './use-date-picker-context'
 

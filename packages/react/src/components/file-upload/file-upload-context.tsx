@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseFileUploadContext, useFileUploadContext } from './use-file-upload-context'
 

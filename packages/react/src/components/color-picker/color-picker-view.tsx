@@ -1,3 +1,5 @@
+'use client'
+
 import type { ColorFormat } from '@zag-js/color-picker'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'

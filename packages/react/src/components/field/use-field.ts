@@ -1,3 +1,5 @@
+'use client'
+
 import { ariaAttr, dataAttr } from '@zag-js/dom-query'
 import { useId, useMemo, useRef, useState } from 'react'
 import { useEnvironmentContext } from '../../providers'

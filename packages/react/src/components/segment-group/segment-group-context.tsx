@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseSegmentGroupContext, useSegmentGroupContext } from './use-segment-group-context'
 

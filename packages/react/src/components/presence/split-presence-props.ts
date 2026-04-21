@@ -1,3 +1,5 @@
+'use client'
+
 import { createSplitProps } from '../../utils/create-split-props'
 import type { UsePresenceProps } from './use-presence'
 

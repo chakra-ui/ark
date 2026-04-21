@@ -1,3 +1,5 @@
+'use client'
+
 import { getDocument, isShadowRoot } from '@zag-js/dom-query'
 import { Children, type PropsWithChildren, type RefObject, useEffect, useState, useSyncExternalStore } from 'react'
 import { createPortal } from 'react-dom'

@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseStepsContext, useStepsContext } from './use-steps-context'
 

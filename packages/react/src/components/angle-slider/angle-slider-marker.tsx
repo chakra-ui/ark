@@ -1,3 +1,5 @@
+'use client'
+
 import type { MarkerProps } from '@zag-js/angle-slider'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'

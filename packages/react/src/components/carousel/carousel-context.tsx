@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseCarouselContext, useCarouselContext } from './use-carousel-context'
 

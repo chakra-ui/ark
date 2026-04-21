@@ -1,3 +1,5 @@
+'use client'
+
 import { type JsonNode, getRootNode, nodeToString, nodeToValue } from '@zag-js/json-tree-utils'
 import { useMemo } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'

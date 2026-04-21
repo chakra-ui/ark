@@ -1,3 +1,5 @@
+'use client'
+
 import * as dateInput from '@zag-js/date-input'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'

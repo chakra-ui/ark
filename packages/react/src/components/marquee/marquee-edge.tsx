@@ -1,3 +1,5 @@
+'use client'
+
 import type { EdgeProps } from '@zag-js/marquee'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'

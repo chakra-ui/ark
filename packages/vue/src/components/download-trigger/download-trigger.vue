@@ -1,25 +1,9 @@
 <script lang="ts">
-import type { FileMimeType } from '@zag-js/file-utils'
 import type { ButtonHTMLAttributes } from 'vue'
-import type { MaybePromise } from '../../types'
 import type { PolymorphicProps } from '../factory'
+import type { UseDownloadProps } from './use-download'
 
-export type DownloadableData = string | Blob | File
-
-export interface DownloadTriggerBaseProps extends PolymorphicProps {
-  /**
-   * The name of the file to download
-   */
-  fileName: string
-  /**
-   * The data to download
-   */
-  data: DownloadableData | (() => MaybePromise<DownloadableData>)
-  /**
-   * The MIME type of the data to download
-   */
-  mimeType: FileMimeType
-}
+export interface DownloadTriggerBaseProps extends PolymorphicProps, UseDownloadProps {}
 
 export interface DownloadTriggerProps
   extends
@@ -32,30 +16,20 @@ export interface DownloadTriggerProps
 
 <script setup lang="ts">
 import { ark } from '../factory'
-import { downloadFile } from '@zag-js/file-utils'
-import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../../providers'
 import { useForwardExpose } from '../../utils/use-forward-expose'
+import { useDownload } from './use-download'
+
 const props = defineProps<DownloadTriggerProps>()
 
-const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
-
-const download = (data: DownloadableData) => {
-  downloadFile({ file: data, name: props.fileName, type: props.mimeType, win: env?.value.getWindow() || window })
-}
+const { download } = useDownload(() => ({
+  fileName: props.fileName,
+  mimeType: props.mimeType,
+  data: props.data,
+}))
 
 const handleClick = (e: MouseEvent) => {
   if (e.defaultPrevented) return
-
-  if (typeof props.data === 'function') {
-    const maybePromise = props.data()
-    if (maybePromise instanceof Promise) {
-      maybePromise.then((data) => download(data))
-    } else {
-      download(maybePromise)
-    }
-  } else {
-    download(props.data)
-  }
+  download()
 }
 
 useForwardExpose()

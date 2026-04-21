@@ -1,3 +1,5 @@
+'use client'
+
 import type { ViewProps } from '@zag-js/date-picker'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'

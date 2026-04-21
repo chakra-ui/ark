@@ -1,3 +1,5 @@
+'use client'
+
 import { useControllableState } from '../../utils/use-controllable-state'
 import { useEvent } from '../../utils/use-event'
 import { useFieldsetContext } from '../fieldset'

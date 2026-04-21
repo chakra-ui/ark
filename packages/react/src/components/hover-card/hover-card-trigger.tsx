@@ -1,3 +1,5 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import type { TriggerProps } from '@zag-js/hover-card'
 import { forwardRef } from 'react'

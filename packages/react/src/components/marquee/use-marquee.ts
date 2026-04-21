@@ -1,3 +1,5 @@
+'use client'
+
 import * as marquee from '@zag-js/marquee'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'

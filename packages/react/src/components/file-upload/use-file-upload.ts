@@ -1,3 +1,5 @@
+'use client'
+
 import * as fileUpload from '@zag-js/file-upload'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'

@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseScrollAreaContext, useScrollAreaContext } from './use-scroll-area-context'
 

@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { type UseProgressContext, useProgressContext } from './use-progress-context'
 

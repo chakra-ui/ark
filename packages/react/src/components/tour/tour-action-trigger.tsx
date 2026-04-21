@@ -1,3 +1,5 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import type { StepActionTriggerProps } from '@zag-js/tour'
 import { forwardRef } from 'react'

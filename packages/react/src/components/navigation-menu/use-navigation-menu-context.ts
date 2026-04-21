@@ -1,3 +1,5 @@
+'use client'
+
 import { createContext } from '../../utils/create-context'
 import type { UseNavigationMenuReturn } from './use-navigation-menu'
 

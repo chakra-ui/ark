@@ -1,3 +1,5 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import type { ReactNode } from 'react'
 import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '../../utils/render-strategy'

@@ -1,3 +1,5 @@
+'use client'
+
 import type { NodeProps } from '@zag-js/tree-view'
 import { createSplitProps } from '../../utils/create-split-props'
 import { useTreeViewContext } from './use-tree-view-context'

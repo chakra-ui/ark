@@ -1,3 +1,5 @@
+'use client'
+
 import type { ItemState } from '@zag-js/tags-input'
 import { createContext } from '../../utils/create-context'
 

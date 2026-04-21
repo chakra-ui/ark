@@ -1,3 +1,5 @@
+'use client'
+
 import type { ItemProps } from '@zag-js/pagination'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'

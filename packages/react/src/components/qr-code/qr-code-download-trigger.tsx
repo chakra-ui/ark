@@ -1,3 +1,5 @@
+'use client'
+
 import type { DownloadTriggerProps } from '@zag-js/qr-code'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'

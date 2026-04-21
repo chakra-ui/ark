@@ -1,3 +1,5 @@
+'use client'
+
 import type { PropTypes } from '@zag-js/react'
 import type * as tour from '@zag-js/tour'
 import { createContext } from '../../utils/create-context'

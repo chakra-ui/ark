@@ -1,3 +1,5 @@
+'use client'
+
 import * as editable from '@zag-js/editable'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import type { PropTypes } from '@zag-js/types'

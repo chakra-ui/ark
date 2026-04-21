@@ -1,3 +1,5 @@
+'use client'
+
 import type { ItemGroupProps } from '@zag-js/select'
 import { createContext } from '../../utils/create-context'
 

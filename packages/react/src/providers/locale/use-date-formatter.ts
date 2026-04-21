@@ -1,3 +1,5 @@
+'use client'
+
 import { DateFormatter } from '@internationalized/date'
 import { useMemo } from 'react'
 import { useLocaleContext } from './use-locale-context'
