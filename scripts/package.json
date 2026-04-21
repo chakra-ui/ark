@@ -28,7 +28,7 @@
     "glob": "13.0.6",
     "globby": "16.1.1",
     "pkg-dir": "9.0.0",
-    "ts-morph": "27.0.2",
+    "ts-morph": "28.0.0",
     "ts-pattern": "5.9.0",
     "typescript": "5.9.3",
     "voca": "1.4.1"

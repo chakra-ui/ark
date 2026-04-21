@@ -49,7 +49,7 @@
     "rehype-autolink-headings": "7.1.0",
     "rehype-slug": "6.0.0",
     "shiki": "4.0.2",
-    "ts-morph": "27.0.2",
+    "ts-morph": "28.0.0",
     "typescript": "5.9.3",
     "velite": "0.3.1"
   },
