@@ -12,9 +12,6 @@ export const Demo = (props: Drawer.RootProps) => {
       <Drawer.Backdrop />
       <Drawer.Positioner>
         <Drawer.Content>
-          <Drawer.Grabber>
-            <Drawer.GrabberIndicator />
-          </Drawer.Grabber>
           <Drawer.Header>
             <Drawer.Title>Drawer Title</Drawer.Title>
             <Drawer.Description>Drawer Description</Drawer.Description>
