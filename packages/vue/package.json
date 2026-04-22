@@ -161,7 +161,7 @@
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/user-event": "14.6.1",
     "@testing-library/vue": "8.1.0",
-    "@types/jsdom": "21.1.7",
+    "@types/jsdom": "28.0.1",
     "@vitejs/plugin-vue": "6.0.6",
     "@vitejs/plugin-vue-jsx": "5.1.5",
     "@vitest/coverage-v8": "^4.1.4",

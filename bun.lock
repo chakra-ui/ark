@@ -120,7 +120,7 @@
         "@testing-library/jest-dom": "6.9.1",
         "@testing-library/react": "16.3.2",
         "@testing-library/user-event": "14.6.1",
-        "@types/jsdom": "21.1.7",
+        "@types/jsdom": "28.0.1",
         "@types/react": "19.2.14",
         "@types/react-dom": "19.2.3",
         "@vitejs/plugin-react": "6.0.1",
@@ -233,7 +233,7 @@
         "@testing-library/dom": "10.4.1",
         "@testing-library/jest-dom": "6.9.1",
         "@testing-library/user-event": "14.6.1",
-        "@types/jsdom": "21.1.7",
+        "@types/jsdom": "28.0.1",
         "@vitest/coverage-v8": "^4.1.4",
         "check-password-strength": "3.0.0",
         "clean-package": "2.2.0",
@@ -443,7 +443,7 @@
         "@testing-library/jest-dom": "6.9.1",
         "@testing-library/user-event": "14.6.1",
         "@testing-library/vue": "8.1.0",
-        "@types/jsdom": "21.1.7",
+        "@types/jsdom": "28.0.1",
         "@vitejs/plugin-vue": "6.0.6",
         "@vitejs/plugin-vue-jsx": "5.1.5",
         "@vitest/coverage-v8": "^4.1.4",
@@ -1556,7 +1556,7 @@
 
     "@types/js-cookie": ["@types/js-cookie@2.2.7", "", {}, "sha512-aLkWa0C0vO5b4Sr798E26QgOkss68Un0bLjs7u9qxzPT5CG+8DuNTffWES58YzJs3hrVAOs1wonycqEBqNJubA=="],
 
-    "@types/jsdom": ["@types/jsdom@21.1.7", "", { "dependencies": { "@types/node": "*", "@types/tough-cookie": "*", "parse5": "^7.0.0" } }, "sha512-yOriVnggzrnQ3a9OKOCxaVuSug3w3/SbOj5i7VwXWZEyUNl3bLF9V3MfxGbZKuwqJOQyRfqXyROBB1CoZLFWzA=="],
+    "@types/jsdom": ["@types/jsdom@28.0.1", "", { "dependencies": { "@types/node": "*", "@types/tough-cookie": "*", "parse5": "^7.0.0", "undici-types": "^7.21.0" } }, "sha512-GJq2QE4TAZ5ajSoCasn5DOFm8u1mI3tIFvM5tIq3W5U/RTB6gsHwc6Yhpl91X9VSDOUVblgXmG+2+sSvFQrdlw=="],
 
     "@types/json-schema": ["@types/json-schema@7.0.15", "", {}, "sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA=="],
 
@@ -4283,6 +4283,8 @@
     "@testing-library/jest-dom/dom-accessibility-api": ["dom-accessibility-api@0.6.3", "", {}, "sha512-7ZgogeTnjuHbo+ct10G9Ffp0mif17idi0IyWNVA/wcwcm7NPOD/WEHVP3n7n3MhXqxoIYm8d6MuZohYWIZ4T3w=="],
 
     "@testing-library/vue/@testing-library/dom": ["@testing-library/dom@9.3.4", "", { "dependencies": { "@babel/code-frame": "^7.10.4", "@babel/runtime": "^7.12.5", "@types/aria-query": "^5.0.1", "aria-query": "5.1.3", "chalk": "^4.1.0", "dom-accessibility-api": "^0.5.9", "lz-string": "^1.5.0", "pretty-format": "^27.0.2" } }, "sha512-FlS4ZWlp97iiNWig0Muq8p+3rVDjRiYE+YKGbAqXOu9nwJFFOdL00kFpz42M+4huzYi86vAK1sOOfyOG45muIQ=="],
+
+    "@types/jsdom/undici-types": ["undici-types@7.25.0", "", {}, "sha512-AXNgS1Byr27fTI+2bsPEkV9CxkT8H6xNyRI68b3TatlZo3RkzlqQBLL+w7SmGPVpokjHbcuNVQUWE7FRTg+LRA=="],
 
     "@unhead/vue/hookable": ["hookable@6.1.1", "", {}, "sha512-U9LYDy1CwhMCnprUfeAZWZGByVbhd54hwepegYTK7Pi5NvqEj63ifz5z+xukznehT7i6NIZRu89Ay1AZmRsLEQ=="],
 
