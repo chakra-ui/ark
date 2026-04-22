@@ -21,7 +21,7 @@
     "lucide-svelte": "1.0.1",
     "svelte": "5.55.4",
     "svelte-check": "4.4.6",
-    "typescript": "^5.9.2",
+    "typescript": "^6.0.0",
     "vite": "^8.0.8"
   }
 }
