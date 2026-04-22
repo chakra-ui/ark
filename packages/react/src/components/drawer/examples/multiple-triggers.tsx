@@ -22,6 +22,7 @@ export const MultipleTriggers = () => {
 
   return (
     <Drawer.Root
+      swipeDirection="end"
       onTriggerValueChange={(e) => {
         setActiveUser(users.find((u) => u.id === e.value) ?? null)
       }}

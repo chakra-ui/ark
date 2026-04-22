@@ -8,7 +8,12 @@ interface Props {
 }
 
 export const KeyBindingsTable = (props: Props) => {
-  const { keyboard } = getAccessibilityDoc(props.id)
+  let keyboard: ReturnType<typeof getAccessibilityDoc>['keyboard']
+  try {
+    keyboard = getAccessibilityDoc(props.id).keyboard
+  } catch {
+    return null
+  }
 
   return (
     <Box borderWidth="1px" borderRadius="lg" overflowX="auto" className="not-prose">

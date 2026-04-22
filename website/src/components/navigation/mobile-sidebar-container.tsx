@@ -17,7 +17,7 @@ export const MobileSidebarContainer = (props: PropsWithChildren) => {
   }, [pathname])
 
   return (
-    <Drawer.Root open={isOpen} onOpenChange={(e) => setIsOpen(e.open)} variant="left">
+    <Drawer.Root open={isOpen} onOpenChange={(e) => setIsOpen(e.open)} swipeDirection="start">
       <Drawer.Trigger asChild>
         <IconButton aria-label="Open Sidebar" variant="link" size="sm" minH="8">
           <AlignLeftIcon />

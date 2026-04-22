@@ -21,6 +21,7 @@
 </script>
 
 <Drawer.Root
+  swipeDirection="end"
   onTriggerValueChange={(e) => {
     activeUser = users.find((u) => u.id === e.value) ?? null
   }}

@@ -22,7 +22,10 @@ const activeUser = ref<User | null>(null)
 </script>
 
 <template>
-  <Drawer.Root @trigger-value-change="(e) => (activeUser = users.find((u) => u.id === e.value) ?? null)">
+  <Drawer.Root
+    swipe-direction="end"
+    @trigger-value-change="(e) => (activeUser = users.find((u) => u.id === e.value) ?? null)"
+  >
     <div :class="button.Group">
       <Drawer.Trigger v-for="user in users" :key="user.id" :value="user.id" :class="button.Root">
         Edit {{ user.name }}
