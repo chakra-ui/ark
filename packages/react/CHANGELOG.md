@@ -1,5 +1,18 @@
 # @ark-ui/react
 
+## [5.36.2] - 2026-04-22
+
+### Fixed
+
+- - **Field**: Export `FieldItem` component from the top-level package. The component was previously only accessible via
+    the `Field.Item` namespace.
+
+- Fix React Server Components build failure caused by a stray `"use client"` directive on the shared
+  `_virtual/_rolldown/runtime.js` helper emitted by vite 8's rolldown backend.
+
+- - **DownloadTrigger**: Extract the download logic into a `useDownload` hook. The `DownloadTrigger` component now
+    simply consumes this hook, making the browser-download behavior reusable outside of the trigger component.
+
 ## [5.36.1] - 2026-04-14
 
 ### Fixed
