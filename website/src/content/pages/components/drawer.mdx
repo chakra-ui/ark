@@ -92,6 +92,49 @@ Use the `useDrawer` hook and `Drawer.RootProvider` to control the drawer from ou
 
 ## Guides
 
+### Styling by Swipe Direction
+
+The `Drawer.Content` elements expose a `data-swipe-direction` attribute (`up` | `down` | `left` | `right`) that reflects
+the resolved physical direction the drawer slides in from.
+
+Target it to apply direction-aware styles — for example, rounded corners on the side facing the viewport:
+
+```css
+[data-scope='drawer'][data-part='content'] {
+  /* Top drawer */
+  &[data-swipe-direction='up'] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
+
+  /* Bottom drawer */
+  &[data-swipe-direction='down'] {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+
+  /* Left drawer */
+  &[data-swipe-direction='left'] {
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 16px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 0;
+  }
+
+  /* Right drawer */
+  &[data-swipe-direction='right'] {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 16px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 16px;
+  }
+}
+```
+
 ### Preventing Overdrag Gaps
 
 When a user drags the drawer past its open position, a small gap can appear between the drawer content and the viewport
@@ -102,6 +145,7 @@ edge. To prevent this, extend the drawer's background beyond its visible bounds 
   --bleed: 3rem;
   position: relative;
 
+  /* Bleed effect */
   &::after {
     content: '';
     position: absolute;
@@ -117,9 +161,9 @@ edge. To prevent this, extend the drawer's background beyond its visible bounds 
 For side drawers, adjust the pseudo-element to extend horizontally:
 
 ```css
-/* Right drawer */
-[data-scope='drawer'][data-part='content'][data-swipe-direction='right'] {
-  &::after {
+[data-scope='drawer'][data-part='content'] {
+  /* Right drawer */
+  &[data-swipe-direction='right']::after {
     inset-inline: auto;
     inset-block: 0;
     top: 0;
@@ -127,11 +171,9 @@ For side drawers, adjust the pseudo-element to extend horizontally:
     width: var(--bleed);
     height: auto;
   }
-}
 
-/* Left drawer */
-[data-scope='drawer'][data-part='content'][data-swipe-direction='left'] {
-  &::after {
+  /* Left drawer */
+  &[data-swipe-direction='left']::after {
     inset-inline: auto;
     inset-block: 0;
     top: 0;
