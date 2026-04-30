@@ -170,7 +170,7 @@
     "esbuild-plugin-solid": "0.6.0",
     "globby": "16.1.1",
     "image-conversion": "2.1.1",
-    "jsdom": "26.1.0",
+    "jsdom": "29.1.1",
     "lucide-solid": "1.8.0",
     "resize-observer-polyfill": "1.5.1",
     "solid-js": "1.9.12",

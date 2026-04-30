@@ -171,7 +171,7 @@
     "clean-package": "2.2.0",
     "globby": "16.1.1",
     "image-conversion": "2.1.1",
-    "jsdom": "26.1.0",
+    "jsdom": "29.1.1",
     "lucide-vue-next": "1.0.0",
     "resize-observer-polyfill": "1.5.1",
     "storybook": "10.3.5",
