@@ -26,6 +26,14 @@ describe('Date Input', () => {
     expect(monthSegment).toHaveFocus()
   })
 
+  it('should update month segment on typing', async () => {
+    render(() => <ComponentUnderTest />)
+    const [monthSegment] = screen.getAllByRole('spinbutton')
+    await user.click(monthSegment)
+    await user.keyboard('06')
+    expect(monthSegment).toHaveTextContent('6')
+  })
+
   it('should be disabled when disabled prop is passed', () => {
     render(() => <ComponentUnderTest disabled />)
     screen.getAllByRole('spinbutton').forEach((segment) => {

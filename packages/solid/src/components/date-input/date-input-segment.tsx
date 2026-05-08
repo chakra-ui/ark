@@ -14,9 +14,11 @@ export const DateInputSegment = (props: DateInputSegmentProps) => {
   const [segmentProps, localProps] = splitSegmentProps(props, ['segment'])
   const segmentGroupProps = useDateInputSegmentGroupPropsContext()
   const api = useDateInputContext()
+  const segmentIndex = api().getSegments(segmentGroupProps).indexOf(segmentProps.segment)
+  const segment = () => api().getSegments(segmentGroupProps)[segmentIndex] ?? segmentProps.segment
   const mergedProps = mergeProps(
-    () => api().getSegmentProps({ ...segmentProps, index: segmentGroupProps.index }),
+    () => api().getSegmentProps({ ...segmentProps, segment: segment(), index: segmentGroupProps.index }),
     localProps,
   )
-  return <ark.span {...mergedProps}>{segmentProps.segment.text}</ark.span>
+  return <ark.span {...mergedProps}>{segment().text}</ark.span>
 }
