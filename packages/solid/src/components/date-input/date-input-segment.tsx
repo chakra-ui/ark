@@ -1,5 +1,6 @@
 import type { SegmentProps } from '@zag-js/date-input'
 import { mergeProps } from '@zag-js/solid'
+import { createMemo } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDateInputContext } from './use-date-input-context'
@@ -14,9 +15,15 @@ export const DateInputSegment = (props: DateInputSegmentProps) => {
   const [segmentProps, localProps] = splitSegmentProps(props, ['segment'])
   const segmentGroupProps = useDateInputSegmentGroupPropsContext()
   const api = useDateInputContext()
+
+  const currentSegment = createMemo(() => {
+    const segments = api().getSegments(segmentGroupProps)
+    return segments.find((s) => s.type === segmentProps.segment.type) ?? segmentProps.segment
+  })
+
   const mergedProps = mergeProps(
-    () => api().getSegmentProps({ ...segmentProps, index: segmentGroupProps.index }),
+    () => api().getSegmentProps({ segment: currentSegment(), index: segmentGroupProps.index }),
     localProps,
   )
-  return <ark.span {...mergedProps}>{segmentProps.segment.text}</ark.span>
+  return <ark.span {...mergedProps}>{currentSegment().text}</ark.span>
 }
