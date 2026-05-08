@@ -1,5 +1,6 @@
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
+import RootProviderWithComputedProps from './dialog-root-provider-computed-props.test.vue'
 import ComponentUnderTest from './dialog.test.vue'
 
 describe('Dialog', () => {
@@ -23,5 +24,14 @@ describe('Dialog', () => {
 
     await waitFor(() => user.click(screen.getByText('Close')))
     await waitFor(() => expect(onExitComplete).toHaveBeenCalled())
+  })
+
+  it('should apply computed props when using root provider with useDialog', async () => {
+    render(RootProviderWithComputedProps)
+
+    await user.click(screen.getByText('Open Dialog'))
+
+    const dialog = await screen.findByRole('dialog')
+    expect(dialog.id).toContain('test-id')
   })
 })

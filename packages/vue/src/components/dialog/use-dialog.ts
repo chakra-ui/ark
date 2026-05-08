@@ -21,7 +21,7 @@ export const useDialog = (props: MaybeRef<UseDialogProps> = {}, emit?: EmitFn<Ro
       id,
       dir: locale.value.dir,
       getRootNode: env?.value.getRootNode,
-      ...cleanProps(props),
+      ...cleanProps(localeProps),
       onOpenChange: (details) => {
         emit?.('openChange', details)
         emit?.('update:open', details.open)
