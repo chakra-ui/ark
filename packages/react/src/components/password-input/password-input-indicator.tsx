@@ -15,11 +15,12 @@ export interface PasswordInputIndicatorProps extends HTMLProps<'span'>, Password
 
 export const PasswordInputIndicator = forwardRef<HTMLSpanElement, PasswordInputIndicatorProps>((props, ref) => {
   const passwordInput = usePasswordInputContext()
-  const mergedProps = mergeProps(passwordInput.getIndicatorProps(), props)
+  const { fallback, children, ...rest } = props
+  const mergedProps = mergeProps(passwordInput.getIndicatorProps(), rest)
 
   return (
     <ark.span {...mergedProps} ref={ref}>
-      {passwordInput.visible ? props.children : props.fallback}
+      {passwordInput.visible ? children : fallback}
     </ark.span>
   )
 })
