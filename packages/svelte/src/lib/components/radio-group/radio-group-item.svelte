@@ -16,9 +16,7 @@
 
   let { ref = $bindable(null), ...props }: RadioGroupItemProps = $props()
   const radioGroup = useRadioGroupContext()
-  const [itemProps, localProps] = $derived(
-    createSplitProps<ItemProps>()(props, ['value', 'disabled', 'invalid']),
-  )
+  const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['value', 'disabled', 'invalid']))
 
   const itemState = $derived(radioGroup().getItemState(itemProps))
   const mergedProps = $derived(mergeProps(radioGroup().getItemProps(itemProps), localProps))
