@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   resolve: {
-    conditions: ['source'],
+    conditions: ['source', 'module', 'browser', 'import', 'default'],
   },
   define: {
     'import.meta.vitest': mode !== 'production',

@@ -42,6 +42,9 @@ yarn add @ark-ui/angular
 Component imports will be available as the Angular package is implemented. See the
 [project roadmap](https://ark-ui.canny.io/) for status.
 
+For workspace development, use the `source` export condition or run `bun run build` before resolving default package
+exports. Published consumers resolve the APF manifest generated in `dist`.
+
 ## Documentation
 
 For more detailed documentation and examples, please visit the [official documentation](https://ark-ui.com/).

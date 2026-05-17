@@ -38,7 +38,7 @@
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ci": "vitest --run",
-    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.spec.json --noEmit && bun run check:forms-isolation",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.spec.json --noEmit && bun run build && bun run check:forms-isolation",
     "check:forms-isolation": "bun run scripts/check-forms-isolation.ts",
     "storybook": "ng run @ark-ui/angular:storybook"
   },

@@ -107,6 +107,13 @@ const scanFile = (name: string, file: string, visited: Set<string>, stack: strin
 
   const source = readFileSync(resolvedFile, 'utf-8')
   const sourceFile = ts.createSourceFile(resolvedFile, source, ts.ScriptTarget.Latest, true)
+  if (sourceFile.parseDiagnostics.length > 0) {
+    for (const diagnostic of sourceFile.parseDiagnostics) {
+      console.error(ts.flattenDiagnosticMessageText(diagnostic.messageText, '\n'))
+    }
+    return true
+  }
+
   const specifiers = collectImportSpecifiers(sourceFile)
   let failed = false
 
@@ -152,9 +159,14 @@ if (failed) {
 }
 
 if (missingOutputs.length > 0) {
-  console.warn(
+  console.error(
     `forms isolation: build output not found for ${missingOutputs.join(', ')}; source imports were checked, but bare dependency verification requires running build first.`,
   )
+  failed = true
+}
+
+if (failed) {
+  exit(1)
 }
 
 console.log('forms isolation: ok')
