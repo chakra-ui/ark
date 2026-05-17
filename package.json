@@ -23,6 +23,7 @@
     "lint": "turbo run lint",
     "test": "turbo run test:ci --concurrency=1",
     "typecheck": "turbo run typecheck",
+    "angular": "bun run --cwd packages/angular",
     "react": "bun run --cwd packages/react",
     "scripts": "bun run --cwd scripts",
     "solid": "bun run --cwd packages/solid",
