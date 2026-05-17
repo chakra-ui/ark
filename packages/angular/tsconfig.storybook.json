@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [".storybook/**/*.ts", "src/**/*.ts", "avatar/**/*.ts"],
+  "exclude": ["**/*.spec.ts", "**/*.spec.mts", "src/setup-test.ts"]
+}
