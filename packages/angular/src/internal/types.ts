@@ -1,8 +1,6 @@
 import type { DestroyRef, ElementRef, EnvironmentInjector, Injector, Renderer2, Signal } from '@angular/core'
 import type { ArkProps } from '../types'
-
-// TODO step 6: replace with typeof normalizeProps
-type NormalizePropsLike = <T extends Record<string, unknown>>(props: T) => T
+import type { normalizeProps as normalizePropsFn } from '../_zag/normalize-props'
 
 export interface UseMachineReturn<TState, TApi, TService> {
   readonly state: Signal<TState>
@@ -17,7 +15,7 @@ export interface UseMachineOptions<TContext, TState, TApi, TService> {
   connect: (
     state: TState,
     send: UseMachineReturn<TState, TApi, TService>['send'],
-    normalizeProps: NormalizePropsLike,
+    normalizeProps: typeof normalizePropsFn,
   ) => TApi
 }
 
