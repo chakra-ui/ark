@@ -49,3 +49,35 @@ describe('providers aggregation', () => {
     expect(mod.provideArkInteraction).toBeDefined()
   })
 })
+
+describe('package.json exports map', () => {
+  it('includes all phase 2 secondary entrypoints', async () => {
+    const pkg = (await import('../package.json')) as unknown as {
+      default?: { exports: Record<string, unknown> }
+      exports?: Record<string, unknown>
+    }
+    const exportsMap = pkg.default?.exports ?? pkg.exports
+    expect(exportsMap).toBeDefined()
+    const requiredKeys = [
+      '.',
+      './avatar',
+      './client-only',
+      './collection',
+      './download-trigger',
+      './focus-trap',
+      './format',
+      './frame',
+      './highlight',
+      './portal',
+      './presence',
+      './providers/environment',
+      './providers/interaction',
+      './providers/locale',
+      './swap',
+      './package.json',
+    ]
+    for (const key of requiredKeys) {
+      expect((exportsMap as Record<string, unknown>)[key]).toBeDefined()
+    }
+  })
+})

@@ -19,6 +19,71 @@ const entryPoints = [
     file: 'avatar/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-avatar.mjs'],
   },
+  {
+    name: '@ark-ui/angular/client-only',
+    file: 'src/client-only/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-client-only.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/collection',
+    file: 'src/collection/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-collection.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/download-trigger',
+    file: 'src/download-trigger/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-download-trigger.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/focus-trap',
+    file: 'src/focus-trap/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-focus-trap.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/format',
+    file: 'src/format/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-format.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/frame',
+    file: 'src/frame/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-frame.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/highlight',
+    file: 'src/highlight/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-highlight.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/portal',
+    file: 'src/portal/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-portal.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/presence',
+    file: 'src/presence/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-presence.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/providers/environment',
+    file: 'src/providers/environment/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-providers-environment.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/providers/interaction',
+    file: 'src/providers/interaction/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-providers-interaction.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/providers/locale',
+    file: 'src/providers/locale/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-providers-locale.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/swap',
+    file: 'src/swap/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-swap.mjs'],
+  },
 ]
 
 const selfEntryFiles = new Map(entryPoints.map(({ name, file }) => [name, join(root, file)]))
