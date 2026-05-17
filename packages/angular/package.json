@@ -17,8 +17,14 @@
     "dist"
   ],
   "exports": {
-    ".": "./src/index.ts",
-    "./avatar": "./src/avatar/public-api.ts"
+    ".": {
+      "source": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./avatar": {
+      "source": "./avatar/public-api.ts",
+      "default": "./avatar/public-api.ts"
+    }
   },
   "scripts": {
     "build": "ng-packagr -p ng-package.json",
@@ -27,7 +33,8 @@
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ci": "vitest --run",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "typecheck": "tsc -p tsconfig.json --noEmit && bun run check:forms-isolation",
+    "check:forms-isolation": "bun run scripts/check-forms-isolation.ts",
     "storybook": "storybook dev -p 6006"
   },
   "publishConfig": {

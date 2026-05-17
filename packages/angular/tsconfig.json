@@ -21,6 +21,6 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "avatar/**/*.ts"],
   "exclude": ["src/**/*.spec.ts", "src/setup-test.ts"]
 }
