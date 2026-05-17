@@ -21,3 +21,18 @@ describe('phase 2 entrypoint scaffolding', () => {
     await expect(load()).resolves.toBeDefined()
   })
 })
+
+describe('root entrypoint', () => {
+  it('imports without throwing', async () => {
+    await expect(import('./index')).resolves.toBeDefined()
+  })
+
+  it('does not expose _zag or internal symbols', async () => {
+    const mod = await import('./index')
+    const keys = Object.keys(mod)
+    for (const key of keys) {
+      expect(key).not.toMatch(/_zag/)
+      expect(key).not.toMatch(/internal/i)
+    }
+  })
+})
