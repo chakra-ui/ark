@@ -36,3 +36,16 @@ describe('root entrypoint', () => {
     }
   })
 })
+
+describe('providers aggregation', () => {
+  it('imports without throwing', async () => {
+    await expect(import('./providers')).resolves.toBeDefined()
+  })
+
+  it('exposes environment, locale, and interaction APIs', async () => {
+    const mod = await import('./providers')
+    expect(mod.provideArkEnvironment).toBeDefined()
+    expect(mod.provideArkLocale).toBeDefined()
+    expect(mod.provideArkInteraction).toBeDefined()
+  })
+})
