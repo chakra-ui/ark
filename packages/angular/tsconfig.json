@@ -22,5 +22,5 @@
     "strictTemplates": true
   },
   "include": ["src/**/*.ts", "avatar/**/*.ts"],
-  "exclude": ["src/**/*.spec.ts", "src/setup-test.ts"]
+  "exclude": ["**/*.spec.ts", "**/setup-test.ts"]
 }
