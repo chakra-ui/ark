@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { exit } from 'node:process'
 
-const FRAMEWORK_PACKAGES = ['react', 'solid', 'vue', 'svelte']
+const FRAMEWORK_PACKAGES = ['react', 'solid', 'vue', 'svelte', 'angular']
 const FRAMEWORK_SPECIFIC_ZAG_PACKAGES = ['@zag-js/react', '@zag-js/solid', '@zag-js/vue', '@zag-js/svelte']
 
 interface PackageJson {
