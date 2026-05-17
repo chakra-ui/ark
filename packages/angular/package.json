@@ -19,23 +19,28 @@
   "exports": {
     ".": {
       "source": "./src/index.ts",
-      "default": "./src/index.ts"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular.mjs"
     },
     "./avatar": {
       "source": "./avatar/public-api.ts",
-      "default": "./avatar/public-api.ts"
+      "types": "./dist/avatar/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-avatar.mjs"
+    },
+    "./package.json": {
+      "default": "./package.json"
     }
   },
   "scripts": {
-    "build": "ng-packagr -p ng-package.json",
+    "build": "ng build @ark-ui/angular --configuration=production",
     "dev": "bun run storybook",
     "lint": "biome lint ./src",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ci": "vitest --run",
-    "typecheck": "tsc -p tsconfig.json --noEmit && bun run check:forms-isolation",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.spec.json --noEmit && bun run check:forms-isolation",
     "check:forms-isolation": "bun run scripts/check-forms-isolation.ts",
-    "storybook": "storybook dev -p 6006"
+    "storybook": "ng run @ark-ui/angular:storybook"
   },
   "publishConfig": {
     "access": "public"
@@ -67,10 +72,10 @@
     "@zag-js/drawer": "1.40.0",
     "@zag-js/editable": "1.40.0",
     "@zag-js/file-upload": "1.40.0",
-    "@zag-js/focus-visible": "1.40.0",
     "@zag-js/file-utils": "1.40.0",
     "@zag-js/floating-panel": "1.40.0",
     "@zag-js/focus-trap": "1.40.0",
+    "@zag-js/focus-visible": "1.40.0",
     "@zag-js/highlight-word": "1.40.0",
     "@zag-js/hover-card": "1.40.0",
     "@zag-js/i18n-utils": "1.40.0",

@@ -17,12 +17,20 @@
           "configurations": {
             "production": {
               "tsConfig": "tsconfig.prod.json"
-            },
-            "development": {
-              "tsConfig": "tsconfig.json"
             }
           },
           "defaultConfiguration": "production"
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "browserTarget": "@ark-ui/angular:build",
+            "configDir": ".storybook",
+            "port": 6006,
+            "tsConfig": "tsconfig.storybook.json",
+            "compodoc": false,
+            "styles": ["../../.storybook/modules/global.css", "../../.storybook/modules/theme.css"]
+          }
         }
       }
     }
