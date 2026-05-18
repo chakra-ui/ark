@@ -1,28 +1,67 @@
-import { NgTemplateOutlet } from '@angular/common'
-import { ChangeDetectionStrategy, Component, Directive, TemplateRef, contentChild, input } from '@angular/core'
+import { ChangeDetectionStrategy, Component, computed, inject, input, booleanAttribute } from '@angular/core'
+import { ArkPresenceComponent } from '@ark-ui/angular/src/presence'
 
-@Directive({ selector: 'ng-template[arkSwapOn]', standalone: true })
-export class ArkSwapOnDirective {}
+export interface SwapRootProps {
+  swap?: boolean
+  lazyMount?: boolean
+  unmountOnExit?: boolean
+}
 
-@Directive({ selector: 'ng-template[arkSwapOff]', standalone: true })
-export class ArkSwapOffDirective {}
+export interface SwapIndicatorProps {
+  type: 'on' | 'off'
+}
+
+export interface SwapProps extends SwapRootProps {}
 
 @Component({
-  selector: 'ark-swap',
+  selector: 'ark-swap, ark-swap-root',
   standalone: true,
-  imports: [NgTemplateOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { style: 'display: contents' },
+  host: {
+    style: 'display: inline-grid',
+    'data-scope': 'swap',
+    'data-part': 'root',
+    '[attr.data-swap]': "swap() ? 'on' : 'off'",
+  },
   template: `
-    @if (active()) {
-      <ng-container [ngTemplateOutlet]="onContent() ?? null"></ng-container>
-    } @else {
-      <ng-container [ngTemplateOutlet]="offContent() ?? null"></ng-container>
-    }
+    <ng-content />
   `,
 })
-export class ArkSwapComponent {
-  readonly active = input<boolean>(false)
-  protected readonly onContent = contentChild(ArkSwapOnDirective, { read: TemplateRef })
-  protected readonly offContent = contentChild(ArkSwapOffDirective, { read: TemplateRef })
+export class ArkSwapRootComponent {
+  readonly swap = input(false, { transform: booleanAttribute })
+  readonly lazyMount = input(false, { transform: booleanAttribute })
+  readonly unmountOnExit = input(false, { transform: booleanAttribute })
 }
+
+@Component({
+  selector: 'ark-swap-indicator',
+  standalone: true,
+  imports: [ArkPresenceComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    style: 'display: inline-flex; grid-area: 1 / 1',
+    'data-scope': 'swap',
+    'data-part': 'indicator',
+    '[attr.data-type]': 'type()',
+    '[attr.data-state]': "active() ? 'open' : 'closed'",
+  },
+  template: `
+    <ark-presence
+      [present]="active()"
+      [lazyMount]="root.lazyMount()"
+      [unmountOnExit]="root.unmountOnExit()"
+      skipAnimationOnMount
+    >
+      <ng-template>
+        <ng-content />
+      </ng-template>
+    </ark-presence>
+  `,
+})
+export class ArkSwapIndicatorComponent {
+  readonly type = input.required<'on' | 'off'>()
+  protected readonly root = inject(ArkSwapRootComponent)
+  protected readonly active = computed(() => (this.type() === 'on' ? this.root.swap() : !this.root.swap()))
+}
+
+export { ArkSwapRootComponent as ArkSwapComponent }

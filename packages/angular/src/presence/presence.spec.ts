@@ -40,7 +40,7 @@ class HostComponent {
 
 const queryContent = (root: HTMLElement) => root.querySelector('[data-testid="content"]')
 
-describe('ArkPresenceComponent (criterion 35)', () => {
+describe('ArkPresenceComponent', () => {
   beforeEach(() => {
     TestBed.resetTestingModule()
     sentinelCapture.tokenValue = null
@@ -77,6 +77,20 @@ describe('ArkPresenceComponent (criterion 35)', () => {
     fixture.destroy()
   })
 
+  it('renders hidden closed content initially when lazyMount is false', () => {
+    TestBed.configureTestingModule({ imports: [HostComponent] })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.detectChanges()
+
+    const content = queryContent(fixture.nativeElement) as HTMLElement
+    expect(content).not.toBeNull()
+    const presenceNode = content.closest('[data-scope="presence"]') as HTMLElement
+    expect(presenceNode.hidden).toBe(true)
+    expect(presenceNode.getAttribute('data-state')).toBe('closed')
+
+    fixture.destroy()
+  })
+
   it('transitions through exiting before unmount when present flips to false', () => {
     TestBed.configureTestingModule({ imports: [HostComponent] })
     const fixture = TestBed.createComponent(HostComponent)
@@ -90,11 +104,32 @@ describe('ArkPresenceComponent (criterion 35)', () => {
     expect(fixture.componentInstance.presenceRef.status()).toBe('exiting')
     expect(queryContent(fixture.nativeElement)).not.toBeNull()
 
+    fixture.componentInstance.unmountOnExit.set(true)
+    fixture.detectChanges()
     fixture.componentInstance.presenceRef.onExitComplete()
     fixture.detectChanges()
 
     expect(fixture.componentInstance.presenceRef.status()).toBe('unmounted')
     expect(queryContent(fixture.nativeElement)).toBeNull()
+
+    fixture.destroy()
+  })
+
+  it('keeps content mounted but hidden after exit when unmountOnExit is false', () => {
+    TestBed.configureTestingModule({ imports: [HostComponent] })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.componentInstance.present.set(true)
+    fixture.detectChanges()
+
+    fixture.componentInstance.present.set(false)
+    fixture.detectChanges()
+    fixture.componentInstance.presenceRef.onExitComplete()
+    fixture.detectChanges()
+
+    const content = queryContent(fixture.nativeElement) as HTMLElement
+    expect(content).not.toBeNull()
+    expect(fixture.componentInstance.presenceRef.status()).toBe('mounted')
+    expect((content.closest('[data-scope="presence"]') as HTMLElement).hidden).toBe(true)
 
     fixture.destroy()
   })
@@ -114,6 +149,8 @@ describe('ArkPresenceComponent (criterion 35)', () => {
       emitted += 1
     })
 
+    fixture.componentInstance.unmountOnExit.set(true)
+    fixture.detectChanges()
     fixture.componentInstance.presenceRef.onExitComplete()
     fixture.detectChanges()
 
@@ -132,6 +169,7 @@ describe('ArkPresenceComponent (criterion 35)', () => {
     expect(sentinelCapture.tokenValue).toBe('from-host')
 
     sentinelCapture.tokenValue = null
+    fixture.componentInstance.unmountOnExit.set(true)
     fixture.componentInstance.present.set(false)
     fixture.detectChanges()
     fixture.componentInstance.presenceRef.onExitComplete()
@@ -152,7 +190,7 @@ describe('ArkPresenceComponent (criterion 35)', () => {
     fixture.detectChanges()
 
     const host = fixture.nativeElement.querySelector('ark-presence') as HTMLElement
-    expect(host.getAttribute('style')).toContain('display: contents')
+    expect(getComputedStyle(host).display).toBe('contents')
 
     fixture.destroy()
   })

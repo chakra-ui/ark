@@ -1,15 +1,15 @@
 import { Component, signal } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { ArkSwapComponent, ArkSwapOffDirective, ArkSwapOnDirective } from './swap'
+import { ArkSwapIndicatorComponent, ArkSwapRootComponent } from './swap'
 
 @Component({
   standalone: true,
-  imports: [ArkSwapComponent, ArkSwapOnDirective, ArkSwapOffDirective],
+  imports: [ArkSwapRootComponent, ArkSwapIndicatorComponent],
   template: `
-    <ark-swap [active]="active()">
-      <ng-template arkSwapOn><span data-testid="on">On</span></ng-template>
-      <ng-template arkSwapOff><span data-testid="off">Off</span></ng-template>
+    <ark-swap [swap]="active()">
+      <ark-swap-indicator type="on"><span data-testid="on">On</span></ark-swap-indicator>
+      <ark-swap-indicator type="off"><span data-testid="off">Off</span></ark-swap-indicator>
     </ark-swap>
   `,
 })
@@ -17,7 +17,7 @@ class HostComponent {
   readonly active = signal(false)
 }
 
-describe('ArkSwapComponent (criterion 36)', () => {
+describe('ArkSwapComponent', () => {
   beforeEach(() => {
     TestBed.resetTestingModule()
   })
@@ -29,7 +29,9 @@ describe('ArkSwapComponent (criterion 36)', () => {
     fixture.detectChanges()
 
     expect(fixture.nativeElement.querySelector('[data-testid="on"]')).not.toBeNull()
-    expect(fixture.nativeElement.querySelector('[data-testid="off"]')).toBeNull()
+    expect(fixture.nativeElement.querySelector('[data-testid="off"]').closest('[data-scope="presence"]').hidden).toBe(
+      true,
+    )
 
     fixture.destroy()
   })
@@ -41,7 +43,9 @@ describe('ArkSwapComponent (criterion 36)', () => {
     fixture.detectChanges()
 
     expect(fixture.nativeElement.querySelector('[data-testid="off"]')).not.toBeNull()
-    expect(fixture.nativeElement.querySelector('[data-testid="on"]')).toBeNull()
+    expect(fixture.nativeElement.querySelector('[data-testid="on"]').closest('[data-scope="presence"]').hidden).toBe(
+      true,
+    )
 
     fixture.destroy()
   })
@@ -53,13 +57,19 @@ describe('ArkSwapComponent (criterion 36)', () => {
     fixture.detectChanges()
 
     expect(fixture.nativeElement.querySelector('[data-testid="on"]')).not.toBeNull()
-    expect(fixture.nativeElement.querySelector('[data-testid="off"]')).toBeNull()
+    expect(
+      (fixture.nativeElement.querySelector('[data-testid="off"]').closest('[data-scope="presence"]') as HTMLElement)
+        .hidden,
+    ).toBe(true)
 
     fixture.componentInstance.active.set(false)
     fixture.detectChanges()
 
     expect(fixture.nativeElement.querySelector('[data-testid="off"]')).not.toBeNull()
-    expect(fixture.nativeElement.querySelector('[data-testid="on"]')).toBeNull()
+    expect(
+      (fixture.nativeElement.querySelector('[data-testid="on"]').closest('[data-scope="presence"]') as HTMLElement)
+        .hidden,
+    ).toBe(true)
 
     fixture.destroy()
   })
@@ -70,7 +80,8 @@ describe('ArkSwapComponent (criterion 36)', () => {
     fixture.detectChanges()
 
     const host = fixture.nativeElement.querySelector('ark-swap') as HTMLElement
-    expect(host.getAttribute('style')).toContain('display: contents')
+    expect(getComputedStyle(host).display).toBe('inline-grid')
+    expect(host.getAttribute('data-swap')).toBe('off')
 
     fixture.destroy()
   })

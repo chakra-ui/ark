@@ -2,26 +2,42 @@ import { NgTemplateOutlet } from '@angular/common'
 import {
   ChangeDetectionStrategy,
   Component,
-  Injector,
   TemplateRef,
+  booleanAttribute,
   computed,
   contentChild,
   effect,
-  inject,
   input,
   output,
   signal,
+  untracked,
 } from '@angular/core'
-import {
-  type RenderState,
-  type RenderStatus,
-  initialState,
-  onExitComplete,
-  onPresentChange,
-} from '../internal/render-strategy'
 
-export type ArkPresenceStatus = RenderStatus
-export type ArkPresenceState = RenderState
+export type ArkPresenceStatus = 'unmounted' | 'mounted' | 'exiting'
+export type ArkPresenceState = { status: ArkPresenceStatus }
+export interface PresenceProps {
+  present?: boolean
+  lazyMount?: boolean
+  unmountOnExit?: boolean
+  skipAnimationOnMount?: boolean
+}
+export type PresenceInputs = PresenceProps
+
+const initialPresenceState = (present: boolean, lazyMount: boolean): ArkPresenceState => {
+  if (present) return { status: 'mounted' }
+  return lazyMount ? { status: 'unmounted' } : { status: 'mounted' }
+}
+
+const updatePresenceState = (state: ArkPresenceState, present: boolean): ArkPresenceState => {
+  if (present) return state.status === 'mounted' ? state : { status: 'mounted' }
+  if (state.status === 'unmounted') return state
+  return state.status === 'exiting' ? state : { status: 'exiting' }
+}
+
+const completePresenceExit = (state: ArkPresenceState, unmountOnExit: boolean): ArkPresenceState => {
+  if (state.status !== 'exiting') return state
+  return unmountOnExit ? { status: 'unmounted' } : { status: 'mounted' }
+}
 
 @Component({
   selector: 'ark-presence',
@@ -31,36 +47,60 @@ export type ArkPresenceState = RenderState
   host: { style: 'display: contents' },
   template: `
     @if (status() !== 'unmounted') {
-      <ng-container [ngTemplateOutlet]="content() ?? null" [ngTemplateOutletInjector]="elementInjector"></ng-container>
+      <span
+        data-scope="presence"
+        data-part="root"
+        [attr.data-state]="dataState()"
+        [hidden]="hidden()"
+        (animationend)="onExitComplete()"
+        (transitionend)="onExitComplete()"
+      >
+        <ng-container [ngTemplateOutlet]="content() ?? null"></ng-container>
+      </span>
     }
   `,
 })
 export class ArkPresenceComponent {
-  readonly present = input<boolean>(false)
-  readonly lazyMount = input<boolean>(false)
-  readonly unmountOnExit = input<boolean>(false)
+  readonly present = input(false, { transform: booleanAttribute })
+  readonly lazyMount = input(false, { transform: booleanAttribute })
+  readonly unmountOnExit = input(false, { transform: booleanAttribute })
+  readonly skipAnimationOnMount = input(false, { transform: booleanAttribute })
   readonly content = contentChild<TemplateRef<unknown>>(TemplateRef)
   readonly exitComplete = output<void>()
 
-  protected readonly elementInjector = inject(Injector)
-  private readonly state = signal<RenderState>({ status: 'unmounted' })
+  private readonly state = signal<ArkPresenceState>({ status: 'unmounted' })
+  private hasMounted = false
   readonly status = computed(() => this.state().status)
+  readonly hidden = computed(() => !this.present())
+  readonly dataState = computed(() => {
+    if (this.skipAnimationOnMount() && !this.hasMounted && this.present()) return undefined
+    return this.present() ? 'open' : 'closed'
+  })
 
   constructor() {
     let initialized = false
     effect(() => {
       const present = this.present()
       if (!initialized) {
-        this.state.set(initialState(present, this.lazyMount()))
+        this.state.set(
+          initialPresenceState(
+            present,
+            untracked(() => this.lazyMount()),
+          ),
+        )
         initialized = true
+        if (present) this.hasMounted = true
         return
       }
-      this.state.update((current) => onPresentChange(current, present))
+      this.state.update((current) => updatePresenceState(current, present))
+      if (present) this.hasMounted = true
     })
   }
 
   onExitComplete(): void {
-    this.state.update(onExitComplete)
+    const previous = this.state()
+    if (previous.status !== 'exiting') return
+    this.state.set(completePresenceExit(previous, this.unmountOnExit()))
     this.exitComplete.emit()
   }
 }
