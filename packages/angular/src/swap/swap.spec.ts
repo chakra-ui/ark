@@ -76,6 +76,12 @@ describe('ArkSwapComponent', () => {
     fixture.detectChanges()
 
     expect(fixture.nativeElement.querySelector('[data-testid="off"]')).not.toBeNull()
+    const exitingOnPresence = getPresenceForTestId(fixture.nativeElement, 'on')
+    expect(exitingOnPresence.hidden).toBe(false)
+
+    exitingOnPresence.dispatchEvent(new Event('animationend', { bubbles: true }))
+    fixture.detectChanges()
+
     expect(getPresenceForTestId(fixture.nativeElement, 'on').hidden).toBe(true)
 
     fixture.destroy()

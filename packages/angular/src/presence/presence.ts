@@ -71,7 +71,7 @@ export class ArkPresenceComponent {
   private readonly state = signal<ArkPresenceState>({ status: 'unmounted' })
   private readonly skipInitialOpenState = signal(false)
   readonly status = computed(() => this.state().status)
-  readonly hidden = computed(() => !this.present())
+  readonly hidden = computed(() => !this.present() && this.status() !== 'exiting')
   readonly dataState = computed(() => {
     if (this.skipInitialOpenState() && this.present()) return undefined
     return this.present() ? 'open' : 'closed'

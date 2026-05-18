@@ -103,11 +103,14 @@ describe('ArkPresenceComponent', () => {
     fixture.detectChanges()
 
     expect(fixture.componentInstance.presenceRef.status()).toBe('exiting')
-    expect(queryContent(fixture.nativeElement)).not.toBeNull()
+    const content = queryContent(fixture.nativeElement) as HTMLElement
+    expect(content).not.toBeNull()
+    const presenceNode = content.closest('[data-scope="presence"]') as HTMLElement
+    expect(presenceNode.hidden).toBe(false)
 
     fixture.componentInstance.unmountOnExit.set(true)
     fixture.detectChanges()
-    fixture.componentInstance.presenceRef.onExitComplete()
+    presenceNode.dispatchEvent(new Event('animationend', { bubbles: true }))
     fixture.detectChanges()
 
     expect(fixture.componentInstance.presenceRef.status()).toBe('unmounted')
