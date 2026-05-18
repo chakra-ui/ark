@@ -21,7 +21,7 @@ export const Example = async (props: Props) => {
   const component = props.component ?? serverContext.component
 
   const framework = await getFramework()
-  const { code, lang } = await fetchFrameworkCode(framework, component, props.id)
+  const { code, lang, framework: resolvedFramework } = await fetchFrameworkCode(framework, component, props.id)
   const cssModules = await fetchCssModulesFromCode(code)
   const hasPreview = component ? exampleExists(component, props.id) : false
 
@@ -36,7 +36,7 @@ export const Example = async (props: Props) => {
           meta={{
             id: props.id,
             component,
-            framework,
+            framework: resolvedFramework,
           }}
         />
       </CollapsibleCode>
@@ -49,7 +49,7 @@ export const ExampleCode = async (props: Props) => {
   const component = props.component ?? serverContext.component
 
   const framework = await getFramework()
-  const { code, lang } = await fetchFrameworkCode(framework, component, props.id)
+  const { code, lang, framework: resolvedFramework } = await fetchFrameworkCode(framework, component, props.id)
   const cssModules = await fetchCssModulesFromCode(code)
 
   return (
@@ -60,7 +60,7 @@ export const ExampleCode = async (props: Props) => {
       meta={{
         id: props.id,
         component,
-        framework,
+        framework: resolvedFramework,
       }}
     />
   )
@@ -70,25 +70,34 @@ export const frameworkExample = async (
   framework: string,
   component: string,
   id: string,
-): Promise<{ code: string; extension: string }> => {
+): Promise<{ code: string; extension: string; framework: string }> => {
   const extension = getFrameworkExtension(framework)
   const filePath = getFrameworkExampleFilePath(framework, component, id)
 
-  const content = await readFile(filePath, 'utf-8').catch(() => 'Example not found')
+  let content = await readFile(filePath, 'utf-8').catch(() => undefined)
+  let resolvedFramework = framework
+  let resolvedExtension = extension
 
-  const code = cleanExampleCode(framework, content)
-  return { code, extension }
+  if (content === undefined && framework !== 'react') {
+    resolvedFramework = 'react'
+    resolvedExtension = getFrameworkExtension(resolvedFramework)
+    const fallbackPath = getFrameworkExampleFilePath(resolvedFramework, component, id)
+    content = await readFile(fallbackPath, 'utf-8').catch(() => undefined)
+  }
+
+  const code = cleanExampleCode(resolvedFramework, content ?? 'Example not found')
+  return { code, extension: resolvedExtension, framework: resolvedFramework }
 }
 
 const fetchFrameworkCode = async (
   framework: string,
   component: string | undefined,
   id: string,
-): Promise<{ code: string; lang: SupportedLang }> => {
-  if (!component) return { code: 'Example not found', lang: 'tsx' }
+): Promise<{ code: string; lang: SupportedLang; framework: string }> => {
+  if (!component) return { code: 'Example not found', lang: 'tsx', framework }
 
-  const { code, extension } = await frameworkExample(framework, component, id)
-  return { code, lang: extension as SupportedLang }
+  const { code, extension, framework: resolvedFramework } = await frameworkExample(framework, component, id)
+  return { code, lang: extension as SupportedLang, framework: resolvedFramework }
 }
 
 /**

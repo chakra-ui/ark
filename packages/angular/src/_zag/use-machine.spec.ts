@@ -369,4 +369,55 @@ describe('useMachine', () => {
     expect(handle.result.state().matches('active')).toBe(true)
     handle.destroy()
   })
+
+  it('disposes watch-track effects when the service stops', () => {
+    interface WatchSchema extends MachineSchema {
+      props: {
+        open?: boolean
+      }
+      state: 'idle' | 'active'
+      event: { type: 'ACTIVATE' }
+    }
+
+    const open = signal(false)
+    const watchMachine = createMachine<WatchSchema>({
+      initialState: () => 'idle',
+      watch({ prop, send, track }) {
+        track([() => prop('open')], () => {
+          if (prop('open')) send({ type: 'ACTIVATE' })
+        })
+      },
+      states: {
+        idle: {
+          on: {
+            ACTIVATE: { target: 'active' },
+          },
+        },
+        active: {},
+      },
+    })
+    const handle = mountMachine(watchMachine, () => ({ open: open() }))
+    const service = handle.result.service as unknown as { getStatus: () => MachineStatus; stop: () => void }
+    TestBed.tick()
+
+    service.stop()
+    open.set(true)
+    TestBed.tick()
+
+    expect(handle.result.state().matches('idle')).toBe(true)
+    expect(service.getStatus()).toBe(MachineStatus.Stopped)
+    handle.destroy()
+  })
+
+  it('drops events sent after the service stops', () => {
+    const handle = mountHarness(() => ({ open: false }))
+    const service = handle.result.service as unknown as { getStatus: () => MachineStatus; stop: () => void }
+
+    service.stop()
+    handle.result.send({ type: 'ACTIVATE' })
+
+    expect(handle.result.state().matches('idle')).toBe(true)
+    expect(service.getStatus()).toBe(MachineStatus.Stopped)
+    handle.destroy()
+  })
 })

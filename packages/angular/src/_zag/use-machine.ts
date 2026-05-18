@@ -1,4 +1,13 @@
-import { DestroyRef, computed, effect, inject, signal, untracked, type WritableSignal } from '@angular/core'
+import {
+  DestroyRef,
+  computed,
+  effect,
+  inject,
+  signal,
+  untracked,
+  type EffectRef,
+  type WritableSignal,
+} from '@angular/core'
 import {
   INIT_STATE,
   MachineStatus,
@@ -183,6 +192,7 @@ export function useMachine<TSchema extends MachineSchema, TApi>(
   let currentEvent = { type: '' } as EventFor<TSchema>
   let pendingEvents: Array<EventFor<TSchema>> = []
   let effects = new Map<string, VoidFunction>()
+  const trackedEffects = new Set<EffectRef>()
   const listeners = new Set<(state: StateFor<TSchema>) => void>()
 
   let stateSignal: WritableSignal<StateFor<TSchema>>
@@ -301,7 +311,7 @@ export function useMachine<TSchema extends MachineSchema, TApi>(
   const track = (deps: Array<() => unknown>, fn: VoidFunction): void => {
     let initialized = false
     let previous: unknown[] = []
-    effect(() => {
+    const ref = effect(() => {
       const current = deps.map((dep) => dep())
       if (!initialized) {
         initialized = true
@@ -313,6 +323,7 @@ export function useMachine<TSchema extends MachineSchema, TApi>(
         fn()
       }
     })
+    trackedEffects.add(ref)
   }
 
   const state = createBindable<TSchema['state']>(() => ({
@@ -347,6 +358,7 @@ export function useMachine<TSchema extends MachineSchema, TApi>(
   stateSignal = signal(getState())
 
   const send = (event: EventFor<TSchema>): void => {
+    if (status === MachineStatus.Stopped) return
     if (status !== MachineStatus.Started) {
       pendingEvents.push(event)
       return
@@ -377,6 +389,8 @@ export function useMachine<TSchema extends MachineSchema, TApi>(
     if (status === MachineStatus.Stopped) return
     status = MachineStatus.Stopped
     pendingEvents = []
+    for (const ref of trackedEffects) ref.destroy()
+    trackedEffects.clear()
     for (const cleanup of effects.values()) cleanup()
     effects = new Map()
     transitionRef = null
