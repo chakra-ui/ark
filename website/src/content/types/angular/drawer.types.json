@@ -72,7 +72,7 @@
         "description": "Whether the drawer renders as a modal overlay."
       },
       "open": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "model",
         "description": "The controlled open state of the drawer."

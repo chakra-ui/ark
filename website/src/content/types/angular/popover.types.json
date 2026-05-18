@@ -67,7 +67,7 @@
         "description": "Whether the popover renders as a modal overlay."
       },
       "open": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "model",
         "description": "The controlled open state of the popover."

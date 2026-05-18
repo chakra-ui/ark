@@ -1,7 +1,7 @@
 {
   "Root": {
     "props": {
-      "ariaLabel": {
+      "aria-label": {
         "type": "string",
         "isRequired": false,
         "kind": "input",
@@ -14,25 +14,25 @@
         "description": "The close delay of the tooltip."
       },
       "closeOnClick": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "input",
         "description": "Whether the tooltip should close on click."
       },
       "closeOnEscape": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "input",
         "description": "Whether to close the tooltip when the Escape key is pressed."
       },
       "closeOnPointerDown": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "input",
         "description": "Whether to close the tooltip on pointerdown."
       },
       "closeOnScroll": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "input",
         "description": "Whether the tooltip should close on scroll."
@@ -70,13 +70,13 @@
         "description": "The ids of the elements in the tooltip. Useful for composition."
       },
       "interactive": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "input",
         "description": "Whether the tooltip's content is interactive."
       },
       "open": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "model",
         "description": "The controlled open state of the tooltip."

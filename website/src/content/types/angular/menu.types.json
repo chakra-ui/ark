@@ -7,20 +7,20 @@
         "kind": "input",
         "description": "Optional anchor point used when opening the menu (e.g. context menus)."
       },
-      "ariaLabel": {
+      "aria-label": {
         "type": "string",
         "isRequired": false,
         "kind": "input",
         "description": "The accessibility label for the menu."
       },
       "closeOnSelect": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "input",
         "description": "Whether to close the menu when an option is selected."
       },
       "composite": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "input",
         "description": "Whether the menu is composed with other composite widgets."
@@ -76,7 +76,7 @@
         "description": "Function to navigate to the selected item if it's an anchor element."
       },
       "open": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "model",
         "description": "The controlled open state of the menu."
@@ -100,7 +100,7 @@
         "description": "The controlled trigger value."
       },
       "typeahead": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "input",
         "description": "Whether the pressing printable characters should trigger typeahead navigation."
@@ -138,7 +138,7 @@
         "description": "The unique value of the menu item option."
       },
       "closeOnSelect": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "input",
         "description": "Whether the menu should be closed when the option is selected."
@@ -202,18 +202,18 @@
         "description": "The unique value of the checkbox item."
       },
       "checked": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "model",
         "description": "Controlled checked state."
       },
       "closeOnSelect": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "input",
         "description": "Whether the menu should be closed when this option is selected."
       },
-      "disabledInput": {
+      "disabled": {
         "type": "boolean",
         "isRequired": false,
         "kind": "input",
@@ -237,12 +237,12 @@
         "description": "The unique value of the radio item within its group."
       },
       "closeOnSelect": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "input",
         "description": "Whether the menu should be closed when this option is selected."
       },
-      "disabledInput": {
+      "disabled": {
         "type": "boolean",
         "isRequired": false,
         "kind": "input",
@@ -259,7 +259,7 @@
   },
   "RadioItemGroup": {
     "props": {
-      "idInput": {
+      "id": {
         "type": "string",
         "isRequired": false,
         "kind": "input",
@@ -275,7 +275,7 @@
   },
   "ItemGroup": {
     "props": {
-      "idInput": {
+      "id": {
         "type": "string",
         "isRequired": false,
         "kind": "input",

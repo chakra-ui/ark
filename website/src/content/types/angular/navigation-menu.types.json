@@ -111,7 +111,7 @@
   "Link": {
     "props": {
       "closeOnClick": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "input",
         "description": "Whether to close the navigation menu when the link is clicked."

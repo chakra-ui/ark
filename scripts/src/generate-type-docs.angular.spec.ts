@@ -214,6 +214,18 @@ describe('Angular type-doc generator (Menu)', () => {
     expect(defaultTriggerValue.isRequired).toBe(false)
   })
 
+  it('emits public aliases for aliased menu item inputs', async () => {
+    const menuDoc = await doc
+    expect(menuDoc['CheckboxItem'].props['disabled']).toBeDefined()
+    expect(menuDoc['CheckboxItem'].props['disabledInput']).toBeUndefined()
+    expect(menuDoc['RadioItem'].props['disabled']).toBeDefined()
+    expect(menuDoc['RadioItem'].props['disabledInput']).toBeUndefined()
+    expect(menuDoc['ItemGroup'].props['id']).toBeDefined()
+    expect(menuDoc['ItemGroup'].props['idInput']).toBeUndefined()
+    expect(menuDoc['RadioItemGroup'].props['id']).toBeDefined()
+    expect(menuDoc['RadioItemGroup'].props['idInput']).toBeUndefined()
+  })
+
   it('does not expose duplicate change outputs on Root', async () => {
     const rootProps = (await doc)['Root'].props
     expect(rootProps['openChange']).toBeUndefined()

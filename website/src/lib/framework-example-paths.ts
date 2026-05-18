@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { Match } from 'effect'
 
@@ -9,21 +10,8 @@ const getProgressVariant = (component: string) => {
   return { base, variant }
 }
 
-// Components whose Angular source lives under packages/angular/src/<component> instead of the
-// top-level packages/angular/<component> layout used by Avatar/Progress/Toggle. Keep this list
-// explicit so it fails loudly if a component is mislocated.
-const ANGULAR_NESTED_COMPONENTS = new Set([
-  'collapsible',
-  'dialog',
-  'drawer',
-  'hover-card',
-  'menu',
-  'navigation-menu',
-  'popover',
-  'tooltip',
-])
-
-const isAngularNestedComponent = (component: string) => ANGULAR_NESTED_COMPONENTS.has(component)
+const hasAngularNestedExamples = (component: string) =>
+  existsSync(join(getPackageBasePath('angular'), 'src', component, 'examples'))
 
 const getProgressExamplePath = (component: string) => {
   const progressVariant = getProgressVariant(component)
@@ -72,7 +60,7 @@ export const getFrameworkExampleDir = (framework: string, component: string) => 
     if (progressVariant) {
       return join(getPackageBasePath(framework), progressVariant.base, 'examples', progressVariant.variant)
     }
-    if (isAngularNestedComponent(component)) {
+    if (hasAngularNestedExamples(component)) {
       return join(getPackageBasePath(framework), 'src', component, 'examples')
     }
     return join(getPackageBasePath(framework), component, 'examples')
@@ -90,7 +78,7 @@ export const getFrameworkExampleDisplayPath = (framework: string, component: str
     if (progressVariant) {
       return `packages/angular/${progressVariant.base}/examples/${progressVariant.variant}`
     }
-    if (isAngularNestedComponent(component)) {
+    if (hasAngularNestedExamples(component)) {
       return `packages/angular/src/${component}/examples`
     }
     return `packages/angular/${component}/examples`

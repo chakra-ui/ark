@@ -118,6 +118,19 @@ function getDecoratorStringProperty(decoratorCall: CallExpression, propertyName:
   return undefined
 }
 
+function getCallOptionsStringProperty(callExpression: CallExpression, propertyName: string): string | undefined {
+  const optionsArg = callExpression.getArguments()[1]
+  if (!optionsArg || !Node.isObjectLiteralExpression(optionsArg)) return undefined
+  const property = optionsArg.getProperty(propertyName)
+  if (!property || !Node.isPropertyAssignment(property)) return undefined
+  const initializer = property.getInitializer()
+  if (!initializer) return undefined
+  if (Node.isStringLiteral(initializer) || Node.isNoSubstitutionTemplateLiteral(initializer)) {
+    return initializer.getLiteralValue()
+  }
+  return undefined
+}
+
 function pascalCaseComponent(component: string): string {
   return component
     .split('-')
@@ -249,6 +262,17 @@ function getTypeTextWithoutUndefined(type: Type, property: PropertyDeclaration):
   return withoutUndefined.map((unionType) => unionType.getText(property)).join(' | ')
 }
 
+function normalizeTypeText(typeText: string): string {
+  const parts = typeText
+    .split('|')
+    .map((part) => part.trim())
+    .filter(Boolean)
+  if (parts.length === 2 && parts.includes('false') && parts.includes('true')) {
+    return 'boolean'
+  }
+  return typeText
+}
+
 function getDescription(property: PropertyDeclaration): string | undefined {
   const docs = property.getJsDocs()
   if (docs.length === 0) return undefined
@@ -277,8 +301,8 @@ async function extractPropEntry(
   const kind = callKindFromCallee(callee)
   if (!kind) return undefined
 
-  const name = property.getName()
-  if (!name) {
+  const fieldName = property.getName()
+  if (!fieldName) {
     throw new Error(
       `Missing field name in class ${classDeclaration.getName() ?? '<anonymous>'} (${sourceFile.getFilePath()})`,
     )
@@ -291,7 +315,8 @@ async function extractPropEntry(
   }
   const rawType = getTypeTextWithoutUndefined(innerType, property)
   const aliased = applyAliasMap(rawType, aliasMap)
-  const type = await tryPrettier(aliased, rootDir)
+  const type = normalizeTypeText(await tryPrettier(aliased, rootDir))
+  const name = getCallOptionsStringProperty(callExpression, 'alias') ?? fieldName
 
   const isRequired = kind === 'required-input'
 
@@ -372,7 +397,7 @@ function resolveComponentDir(rootDir: string, component: string): string {
   if (fs.existsSync(path.join(topLevel, 'public-api.ts'))) return topLevel
   const nested = path.join(rootDir, 'packages', 'angular', 'src', component)
   if (fs.existsSync(path.join(nested, 'public-api.ts'))) return nested
-  return topLevel
+  throw new Error(`Angular component "${component}" not found in packages/angular/ or packages/angular/src/`)
 }
 
 export async function generateAngularTypeDoc(component: string, rootDir?: string): Promise<AngularTypeDoc> {

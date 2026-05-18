@@ -40,7 +40,7 @@
         "description": "The ids of the elements in the hover card. Useful for composition."
       },
       "open": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "model",
         "description": "The controlled open state of the hover card."

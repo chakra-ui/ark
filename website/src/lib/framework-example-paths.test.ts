@@ -1,5 +1,7 @@
 import { afterAll, beforeAll, describe, expect, test } from 'bun:test'
+import { existsSync } from 'node:fs'
 import { join } from 'node:path'
+import { getAllComponents } from './example-utils'
 import { getFrameworkExampleDir, getFrameworkExampleDisplayPath } from './framework-example-paths'
 
 const websiteDir = join(import.meta.dir, '..', '..')
@@ -38,6 +40,13 @@ describe('framework-example-paths', () => {
         join(websiteDir, '..', 'packages', 'angular', 'progress', 'examples'),
       )
       expect(getFrameworkExampleDisplayPath('angular', 'progress')).toBe('packages/angular/progress/examples')
+    })
+
+    test('resolves every discovered Angular component to an existing examples dir', async () => {
+      const components = await getAllComponents('angular')
+      for (const component of components) {
+        expect(existsSync(getFrameworkExampleDir('angular', component))).toBe(true)
+      }
     })
   })
 

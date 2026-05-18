@@ -42,7 +42,7 @@
         "description": "Whether the dialog renders as a modal overlay."
       },
       "open": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "model",
         "description": "The controlled open state of the dialog."
