@@ -1,1 +1,1 @@
-export const anatomy = {} as Record<string, unknown>
+export { avatarAnatomy } from '@ark-ui/angular/avatar'
