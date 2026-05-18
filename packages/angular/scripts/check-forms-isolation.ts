@@ -35,6 +35,11 @@ const entryPoints = [
     outputs: ['dist/fesm2022/ark-ui-angular-src-drawer.mjs'],
   },
   {
+    name: '@ark-ui/angular/popover',
+    file: 'src/popover/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-popover.mjs'],
+  },
+  {
     name: '@ark-ui/angular/progress',
     file: 'progress/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-progress.mjs'],
