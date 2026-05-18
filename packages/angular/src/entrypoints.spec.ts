@@ -1,4 +1,12 @@
+import { existsSync, readFileSync } from 'node:fs'
+import { dirname, join, normalize } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
+
+const packageRoot = dirname(fileURLToPath(import.meta.url)).replace(/\/src$/, '')
+const pkg = JSON.parse(readFileSync(join(packageRoot, 'package.json'), 'utf-8')) as {
+  exports: Record<string, { source?: string; types?: string; default?: string } | unknown>
+}
 
 const entrypoints = [
   ['providers/environment', () => import('./providers/environment/public-api')],
@@ -51,13 +59,8 @@ describe('providers aggregation', () => {
 })
 
 describe('package.json exports map', () => {
-  it('includes all phase 2 secondary entrypoints', async () => {
-    const pkg = (await import('../package.json')) as unknown as {
-      default?: { exports: Record<string, unknown> }
-      exports?: Record<string, unknown>
-    }
-    const exportsMap = pkg.default?.exports ?? pkg.exports
-    expect(exportsMap).toBeDefined()
+  it('includes valid phase 2 secondary entrypoints', () => {
+    const exportsMap = pkg.exports
     const requiredKeys = [
       '.',
       './avatar',
@@ -77,7 +80,27 @@ describe('package.json exports map', () => {
       './package.json',
     ]
     for (const key of requiredKeys) {
-      expect((exportsMap as Record<string, unknown>)[key]).toBeDefined()
+      expect(exportsMap[key]).toBeDefined()
     }
+    for (const key of requiredKeys.filter((key) => key !== './package.json')) {
+      const entry = exportsMap[key] as { source: string; types: string; default: string }
+      expect(existsSync(join(packageRoot, entry.source))).toBe(true)
+      expect(entry.types).toMatch(/^\.\/dist\//)
+      expect(entry.default).toMatch(/^\.\/dist\/fesm2022\//)
+      if (key !== '.') {
+        const sourceDir = dirname(entry.source)
+        expect(existsSync(join(packageRoot, sourceDir, 'ng-package.json'))).toBe(true)
+      }
+    }
+  })
+
+  it('keeps forms-isolation entrypoints aligned with package exports', () => {
+    const script = readFileSync(join(packageRoot, 'scripts/check-forms-isolation.ts'), 'utf-8')
+    const scriptFiles = [...script.matchAll(/file: '([^']+)'/g)].map((match) => normalize(match[1]))
+    const exportSources = Object.entries(pkg.exports)
+      .filter(([key]) => key !== './package.json' && !key.startsWith('./src/'))
+      .map(([, entry]) => normalize((entry as { source: string }).source.replace(/^\.\//, '')))
+
+    expect(scriptFiles.sort()).toEqual(exportSources.sort())
   })
 })

@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals", "bun"]
   },
   "include": ["**/*.spec.ts", "**/*.spec.mts", "src/setup-test.ts"],
   "exclude": []

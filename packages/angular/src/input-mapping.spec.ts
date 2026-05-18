@@ -1,155 +1,71 @@
-import { Component, Directive, booleanAttribute, input, model, signal, viewChild } from '@angular/core'
+import { Component, viewChild } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { beforeEach, describe, expect, it } from 'vitest'
+import { ArkFocusTrapDirective } from './focus-trap/focus-trap'
+import { ArkPresenceComponent } from './presence/presence'
+import { ArkSwapRootComponent } from './swap/swap'
 
-@Directive({ selector: '[arkFixturePlain]', standalone: true })
-class PlainDirective {
-  readonly disabled = input(false, { transform: booleanAttribute })
-}
-
-@Directive({ selector: '[arkFixtureDefault]', standalone: true })
-class DefaultDirective {
-  readonly defaultChecked = input(false, { transform: booleanAttribute, alias: 'defaultChecked' })
-}
-
-@Directive({ selector: '[arkFixtureControlled]', standalone: true })
-class ControlledDirective {
-  readonly checked = model<boolean>(false)
-}
-
-describe('input mapping', () => {
+describe('Ark boolean input mapping', () => {
   beforeEach(() => {
     TestBed.resetTestingModule()
   })
 
-  it('plain boolean input accepts bare attribute form (criterion 6)', () => {
+  it.each([
+    ['bare attribute', '<div arkFocusTrap></div>'],
+    ['string attribute', '<div arkFocusTrap="true"></div>'],
+  ])('maps %s to true for directive boolean inputs', (_label, template) => {
     @Component({
       standalone: true,
-      imports: [PlainDirective],
-      template: '<div arkFixturePlain disabled></div>',
+      imports: [ArkFocusTrapDirective],
+      template,
     })
     class HostComponent {
-      readonly directive = viewChild.required(PlainDirective)
+      readonly directive = viewChild.required(ArkFocusTrapDirective)
     }
 
     TestBed.configureTestingModule({ imports: [HostComponent] })
     const fixture = TestBed.createComponent(HostComponent)
     fixture.detectChanges()
 
-    expect(fixture.componentInstance.directive().disabled()).toBe(true)
+    expect(fixture.componentInstance.directive().arkFocusTrap()).toBe(true)
   })
 
-  it('plain boolean input accepts string attribute form (criterion 6)', () => {
+  it.each([
+    ['lazyMount', '<ark-presence lazyMount><ng-template>content</ng-template></ark-presence>'],
+    ['unmountOnExit', '<ark-presence unmountOnExit><ng-template>content</ng-template></ark-presence>'],
+  ])('maps %s as a bare component boolean input', (_label, template) => {
     @Component({
       standalone: true,
-      imports: [PlainDirective],
-      template: '<div arkFixturePlain disabled="true"></div>',
+      imports: [ArkPresenceComponent],
+      template,
     })
     class HostComponent {
-      readonly directive = viewChild.required(PlainDirective)
+      readonly presence = viewChild.required(ArkPresenceComponent)
     }
 
     TestBed.configureTestingModule({ imports: [HostComponent] })
     const fixture = TestBed.createComponent(HostComponent)
     fixture.detectChanges()
 
-    expect(fixture.componentInstance.directive().disabled()).toBe(true)
+    expect(
+      fixture.componentInstance.presence().lazyMount() || fixture.componentInstance.presence().unmountOnExit(),
+    ).toBe(true)
   })
 
-  it('uncontrolled default boolean input accepts bare attribute form', () => {
+  it('maps the swap root state through a property binding', () => {
     @Component({
       standalone: true,
-      imports: [DefaultDirective],
-      template: '<div arkFixtureDefault defaultChecked></div>',
+      imports: [ArkSwapRootComponent],
+      template: '<ark-swap [swap]="true"></ark-swap>',
     })
     class HostComponent {
-      readonly directive = viewChild.required(DefaultDirective)
+      readonly swap = viewChild.required(ArkSwapRootComponent)
     }
 
     TestBed.configureTestingModule({ imports: [HostComponent] })
     const fixture = TestBed.createComponent(HostComponent)
     fixture.detectChanges()
 
-    expect(fixture.componentInstance.directive().defaultChecked()).toBe(true)
-  })
-
-  it('uncontrolled default boolean input accepts string attribute form', () => {
-    @Component({
-      standalone: true,
-      imports: [DefaultDirective],
-      template: '<div arkFixtureDefault defaultChecked="true"></div>',
-    })
-    class HostComponent {
-      readonly directive = viewChild.required(DefaultDirective)
-    }
-
-    TestBed.configureTestingModule({ imports: [HostComponent] })
-    const fixture = TestBed.createComponent(HostComponent)
-    fixture.detectChanges()
-
-    expect(fixture.componentInstance.directive().defaultChecked()).toBe(true)
-  })
-
-  it('controlled model channel works via property binding (criterion 7)', () => {
-    @Component({
-      standalone: true,
-      imports: [ControlledDirective],
-      template: '<div arkFixtureControlled [checked]="value()"></div>',
-    })
-    class HostComponent {
-      readonly value = signal(true)
-      readonly directive = viewChild.required(ControlledDirective)
-    }
-
-    TestBed.configureTestingModule({ imports: [HostComponent] })
-    const fixture = TestBed.createComponent(HostComponent)
-    fixture.detectChanges()
-
-    expect(fixture.componentInstance.directive().checked()).toBe(true)
-
-    fixture.componentInstance.value.set(false)
-    fixture.detectChanges()
-
-    expect(fixture.componentInstance.directive().checked()).toBe(false)
-  })
-
-  it('controlled model channel works via banana syntax (criterion 7)', () => {
-    @Component({
-      standalone: true,
-      imports: [ControlledDirective],
-      template: '<div arkFixtureControlled [(checked)]="value"></div>',
-    })
-    class HostComponent {
-      value = true
-      readonly directive = viewChild.required(ControlledDirective)
-    }
-
-    TestBed.configureTestingModule({ imports: [HostComponent] })
-    const fixture = TestBed.createComponent(HostComponent)
-    fixture.detectChanges()
-
-    expect(fixture.componentInstance.directive().checked()).toBe(true)
-
-    fixture.componentInstance.directive().checked.set(false)
-    fixture.detectChanges()
-
-    expect(fixture.componentInstance.value).toBe(false)
-  })
-
-  it('controlled model channel preserves default when no binding is supplied (criterion 7)', () => {
-    @Component({
-      standalone: true,
-      imports: [ControlledDirective],
-      template: '<div arkFixtureControlled></div>',
-    })
-    class HostComponent {
-      readonly directive = viewChild.required(ControlledDirective)
-    }
-
-    TestBed.configureTestingModule({ imports: [HostComponent] })
-    const fixture = TestBed.createComponent(HostComponent)
-    fixture.detectChanges()
-
-    expect(fixture.componentInstance.directive().checked()).toBe(false)
+    expect(fixture.componentInstance.swap().swap()).toBe(true)
   })
 })

@@ -22,67 +22,67 @@ const entryPoints = [
   {
     name: '@ark-ui/angular/client-only',
     file: 'src/client-only/public-api.ts',
-    outputs: ['dist/fesm2022/ark-ui-angular-client-only.mjs'],
+    outputs: ['dist/fesm2022/ark-ui-angular-src-client-only.mjs'],
   },
   {
     name: '@ark-ui/angular/collection',
     file: 'src/collection/public-api.ts',
-    outputs: ['dist/fesm2022/ark-ui-angular-collection.mjs'],
+    outputs: ['dist/fesm2022/ark-ui-angular-src-collection.mjs'],
   },
   {
     name: '@ark-ui/angular/download-trigger',
     file: 'src/download-trigger/public-api.ts',
-    outputs: ['dist/fesm2022/ark-ui-angular-download-trigger.mjs'],
+    outputs: ['dist/fesm2022/ark-ui-angular-src-download-trigger.mjs'],
   },
   {
     name: '@ark-ui/angular/focus-trap',
     file: 'src/focus-trap/public-api.ts',
-    outputs: ['dist/fesm2022/ark-ui-angular-focus-trap.mjs'],
+    outputs: ['dist/fesm2022/ark-ui-angular-src-focus-trap.mjs'],
   },
   {
     name: '@ark-ui/angular/format',
     file: 'src/format/public-api.ts',
-    outputs: ['dist/fesm2022/ark-ui-angular-format.mjs'],
+    outputs: ['dist/fesm2022/ark-ui-angular-src-format.mjs'],
   },
   {
     name: '@ark-ui/angular/frame',
     file: 'src/frame/public-api.ts',
-    outputs: ['dist/fesm2022/ark-ui-angular-frame.mjs'],
+    outputs: ['dist/fesm2022/ark-ui-angular-src-frame.mjs'],
   },
   {
     name: '@ark-ui/angular/highlight',
     file: 'src/highlight/public-api.ts',
-    outputs: ['dist/fesm2022/ark-ui-angular-highlight.mjs'],
+    outputs: ['dist/fesm2022/ark-ui-angular-src-highlight.mjs'],
   },
   {
     name: '@ark-ui/angular/portal',
     file: 'src/portal/public-api.ts',
-    outputs: ['dist/fesm2022/ark-ui-angular-portal.mjs'],
+    outputs: ['dist/fesm2022/ark-ui-angular-src-portal.mjs'],
   },
   {
     name: '@ark-ui/angular/presence',
     file: 'src/presence/public-api.ts',
-    outputs: ['dist/fesm2022/ark-ui-angular-presence.mjs'],
+    outputs: ['dist/fesm2022/ark-ui-angular-src-presence.mjs'],
   },
   {
     name: '@ark-ui/angular/providers/environment',
     file: 'src/providers/environment/public-api.ts',
-    outputs: ['dist/fesm2022/ark-ui-angular-providers-environment.mjs'],
+    outputs: ['dist/fesm2022/ark-ui-angular-src-providers-environment.mjs'],
   },
   {
     name: '@ark-ui/angular/providers/interaction',
     file: 'src/providers/interaction/public-api.ts',
-    outputs: ['dist/fesm2022/ark-ui-angular-providers-interaction.mjs'],
+    outputs: ['dist/fesm2022/ark-ui-angular-src-providers-interaction.mjs'],
   },
   {
     name: '@ark-ui/angular/providers/locale',
     file: 'src/providers/locale/public-api.ts',
-    outputs: ['dist/fesm2022/ark-ui-angular-providers-locale.mjs'],
+    outputs: ['dist/fesm2022/ark-ui-angular-src-providers-locale.mjs'],
   },
   {
     name: '@ark-ui/angular/swap',
     file: 'src/swap/public-api.ts',
-    outputs: ['dist/fesm2022/ark-ui-angular-swap.mjs'],
+    outputs: ['dist/fesm2022/ark-ui-angular-src-swap.mjs'],
   },
 ]
 
