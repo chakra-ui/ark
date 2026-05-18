@@ -1,5 +1,5 @@
-import { DestroyRef, Directive, ElementRef, Renderer2, inject } from '@angular/core'
-import { applyArkProps } from '@ark-ui/angular/src/_zag'
+import { Directive } from '@angular/core'
+import { applyProgressPartProps } from './apply-progress-part-props'
 import { injectArkProgressContext } from './use-progress-context'
 
 @Directive({
@@ -10,11 +10,6 @@ import { injectArkProgressContext } from './use-progress-context'
 export class ArkProgressTrack {
   constructor() {
     const context = injectArkProgressContext()
-    applyArkProps({
-      elementRef: inject(ElementRef),
-      renderer: inject(Renderer2),
-      destroyRef: inject(DestroyRef),
-      props: () => context.api().getTrackProps(),
-    })
+    applyProgressPartProps(() => context.api().getTrackProps())
   }
 }
