@@ -40,6 +40,10 @@ export const getPackageBasePath = (framework: string) => {
 
 export const getFrameworkExampleDir = (framework: string, component: string) => {
   if (framework === 'angular') {
+    if (['progress-circular', 'progress-linear'].includes(component)) {
+      const [base, variant] = component.split('-')
+      return join(getPackageBasePath(framework), base, 'examples', variant)
+    }
     return join(getPackageBasePath(framework), component, 'examples')
   }
   return join(getPackageBasePath(framework), getExamplePath(component))
@@ -51,6 +55,10 @@ export const getFrameworkExampleFilePath = (framework: string, component: string
 
 export const getFrameworkExampleDisplayPath = (framework: string, component: string) => {
   if (framework === 'angular') {
+    if (['progress-circular', 'progress-linear'].includes(component)) {
+      const [base, variant] = component.split('-')
+      return `packages/angular/${base}/examples/${variant}`
+    }
     return `packages/angular/${component}/examples`
   }
   return `packages/${framework}/${getSrcPath(framework)}/${getExamplePath(component)}`
