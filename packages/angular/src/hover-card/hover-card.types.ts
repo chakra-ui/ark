@@ -1,0 +1,12 @@
+export type {
+  Api as HoverCardApi,
+  ElementIds as HoverCardElementIds,
+  Machine as HoverCardMachine,
+  OpenChangeDetails as HoverCardOpenChangeDetails,
+  PositioningOptions as HoverCardPositioningOptions,
+  Placement as HoverCardPlacement,
+  Props as HoverCardMachineProps,
+  Service as HoverCardService,
+  TriggerProps as HoverCardTriggerMachineProps,
+  TriggerValueChangeDetails as HoverCardTriggerValueChangeDetails,
+} from '@zag-js/hover-card'
