@@ -9,11 +9,12 @@ import {
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 
-const frameworks = ['react', 'solid', 'vue', 'svelte'] as const
+const frameworks = ['react', 'solid', 'vue', 'svelte', 'angular'] as const
 
 function getFrameworkExtension(framework: string): string {
   if (framework === 'vue') return 'vue'
   if (framework === 'svelte') return 'svelte'
+  if (framework === 'angular') return 'ts'
   return 'tsx'
 }
 
@@ -29,10 +30,18 @@ function getExamplePath(component: string): string {
 
 function readExampleFile(framework: string, component: string, id: string): string | null {
   const extension = getFrameworkExtension(framework)
-  const examplePath = getExamplePath(component)
-  const srcPath = framework === 'svelte' ? 'src/lib' : 'src'
-  const basePath = join(process.cwd(), '..', 'packages', framework, srcPath)
-  const filePath = join(basePath, examplePath, `${id}.${extension}`)
+  const filePath =
+    framework === 'angular'
+      ? join(process.cwd(), '..', 'packages', 'angular', component, 'examples', `${id}.${extension}`)
+      : join(
+          process.cwd(),
+          '..',
+          'packages',
+          framework,
+          framework === 'svelte' ? 'src/lib' : 'src',
+          getExamplePath(component),
+          `${id}.${extension}`,
+        )
 
   try {
     const content = readFileSync(filePath, 'utf-8')

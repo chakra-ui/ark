@@ -83,6 +83,7 @@ const getExtension = (framework: string) =>
   Match.value(framework).pipe(
     Match.when('vue', () => 'vue'),
     Match.when('svelte', () => 'svelte'),
+    Match.when('angular', () => 'ts'),
     Match.orElse(() => 'tsx'),
   )
 
@@ -98,15 +99,14 @@ export const frameworkExample = async (
   id: string,
 ): Promise<{ code: string; extension: string }> => {
   const extension = getExtension(framework)
-  const examplePath = getExamplePath(component)
-  const srcPath = getSrcPath(framework)
-
-  const basePath = `../packages/${framework}/${srcPath}`
   const fileName = [id, extension].join('.')
 
-  const content = await readFile(join(process.cwd(), basePath, examplePath, fileName), 'utf-8').catch(
-    () => 'Example not found',
-  )
+  const filePath =
+    framework === 'angular'
+      ? join(process.cwd(), '..', 'packages', 'angular', component, 'examples', fileName)
+      : join(process.cwd(), `../packages/${framework}/${getSrcPath(framework)}`, getExamplePath(component), fileName)
+
+  const content = await readFile(filePath, 'utf-8').catch(() => 'Example not found')
 
   const code = content.replaceAll(/from '\.\/icons'/g, `from 'lucide-vue-next'`).replace(/.*@ts-expect-error.*\n/g, '')
   return { code, extension }
