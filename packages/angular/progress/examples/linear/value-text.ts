@@ -30,7 +30,7 @@ export class ProgressLinearValueTextExample {
     context: () => ({
       translations: {
         value: ({ value, max }) => {
-          if (value === null) return 'Loading...'
+          if (value == null) return 'Loading...'
           return `${value} of ${max} items loaded`
         },
       },
