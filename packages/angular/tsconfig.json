@@ -5,6 +5,7 @@
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
+      "@ark-ui/angular/src/_zag/apply-ark-props": ["src/_zag/apply-ark-props.ts"],
       "@ark-ui/angular/src/_zag/use-machine": ["src/_zag/use-machine.ts"],
       "@ark-ui/angular/src/internal/id": ["src/internal/id.ts"],
       "@ark-ui/angular/src/internal/types": ["src/internal/types.ts"],

@@ -15,6 +15,7 @@ export default defineConfig(({ mode }) => ({
   },
   resolve: {
     alias: {
+      '@ark-ui/angular/src/_zag/apply-ark-props': new URL('./src/_zag/apply-ark-props.ts', import.meta.url).pathname,
       '@ark-ui/angular/src/_zag/use-machine': new URL('./src/_zag/use-machine.ts', import.meta.url).pathname,
       '@ark-ui/angular/src/internal/id': new URL('./src/internal/id.ts', import.meta.url).pathname,
       '@ark-ui/angular/src/internal/types': new URL('./src/internal/types.ts', import.meta.url).pathname,
