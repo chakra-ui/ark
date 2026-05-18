@@ -1,0 +1,12 @@
+export type {
+  Api as TooltipApi,
+  ElementIds as TooltipElementIds,
+  Machine as TooltipMachine,
+  OpenChangeDetails as TooltipOpenChangeDetails,
+  PositioningOptions as TooltipPositioningOptions,
+  Placement as TooltipPlacement,
+  Props as TooltipMachineProps,
+  Service as TooltipService,
+  TriggerProps as TooltipTriggerMachineProps,
+  TriggerValueChangeDetails as TooltipTriggerValueChangeDetails,
+} from '@zag-js/tooltip'

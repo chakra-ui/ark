@@ -62,6 +62,11 @@
       "types": "./dist/toggle/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-toggle.mjs"
     },
+    "./tooltip": {
+      "source": "./src/tooltip/public-api.ts",
+      "types": "./dist/src/tooltip/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-tooltip.mjs"
+    },
     "./src/_zag": {
       "source": "./src/_zag/public-api.ts",
       "types": "./dist/src/_zag/index.d.ts",

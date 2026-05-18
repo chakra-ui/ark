@@ -15,6 +15,7 @@
       "@ark-ui/angular/presence": ["src/presence/public-api.ts"],
       "@ark-ui/angular/progress": ["progress/public-api.ts"],
       "@ark-ui/angular/toggle": ["toggle/public-api.ts"],
+      "@ark-ui/angular/tooltip": ["src/tooltip/public-api.ts"],
       "@ark-ui/angular/src/_zag": ["src/_zag/public-api.ts"],
       "@ark-ui/angular/src/_zag/apply-ark-props": ["src/_zag/apply-ark-props.ts"],
       "@ark-ui/angular/src/_zag/use-machine": ["src/_zag/use-machine.ts"],

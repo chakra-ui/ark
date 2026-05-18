@@ -25,6 +25,7 @@ export default defineConfig(({ mode }) => ({
       '@ark-ui/angular/presence': new URL('./src/presence/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/progress': new URL('./progress/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/toggle': new URL('./toggle/public-api.ts', import.meta.url).pathname,
+      '@ark-ui/angular/tooltip': new URL('./src/tooltip/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/src/_zag': new URL('./src/_zag/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/src/_zag/apply-ark-props': new URL('./src/_zag/apply-ark-props.ts', import.meta.url).pathname,
       '@ark-ui/angular/src/_zag/use-machine': new URL('./src/_zag/use-machine.ts', import.meta.url).pathname,
