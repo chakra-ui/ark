@@ -72,17 +72,7 @@
       "types": "./dist/src/presence/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-src-presence.mjs"
     },
-    "./src/presence": {
-      "source": "./src/presence/public-api.ts",
-      "types": "./dist/src/presence/index.d.ts",
-      "default": "./dist/fesm2022/ark-ui-angular-src-presence.mjs"
-    },
     "./providers/environment": {
-      "source": "./src/providers/environment/public-api.ts",
-      "types": "./dist/src/providers/environment/index.d.ts",
-      "default": "./dist/fesm2022/ark-ui-angular-src-providers-environment.mjs"
-    },
-    "./src/providers/environment": {
       "source": "./src/providers/environment/public-api.ts",
       "types": "./dist/src/providers/environment/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-src-providers-environment.mjs"
@@ -93,11 +83,6 @@
       "default": "./dist/fesm2022/ark-ui-angular-src-providers-interaction.mjs"
     },
     "./providers/locale": {
-      "source": "./src/providers/locale/public-api.ts",
-      "types": "./dist/src/providers/locale/index.d.ts",
-      "default": "./dist/fesm2022/ark-ui-angular-src-providers-locale.mjs"
-    },
-    "./src/providers/locale": {
       "source": "./src/providers/locale/public-api.ts",
       "types": "./dist/src/providers/locale/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-src-providers-locale.mjs"

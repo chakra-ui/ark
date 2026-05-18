@@ -3,8 +3,8 @@ import {
   type AsyncListProps,
   type LoadDetails,
   type LoadResult,
-  asyncListMachine,
   connectAsyncList,
+  createAsyncListMachine,
   createFileTreeCollection,
   createGridCollection,
   createListCollection,
@@ -38,7 +38,7 @@ describe('collection entrypoint (criterion 27)', () => {
     expect(createTreeCollection).toBeDefined()
     expect(createFileTreeCollection).toBeDefined()
     expect(createListSelection).toBeDefined()
-    expect(asyncListMachine).toBeDefined()
+    expect(createAsyncListMachine).toBeDefined()
     expect(connectAsyncList).toBeDefined()
   })
 

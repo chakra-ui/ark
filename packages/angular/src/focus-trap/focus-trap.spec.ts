@@ -116,7 +116,7 @@ describe('ArkFocusTrapDirective', () => {
     fixture.destroy()
   })
 
-  it('does not reactivate when options identity changes while active stays true', async () => {
+  it('reactivates when options identity changes while active stays true', async () => {
     @Component({
       standalone: true,
       imports: [ArkFocusTrapDirective],
@@ -135,8 +135,8 @@ describe('ArkFocusTrapDirective', () => {
     fixture.detectChanges()
     await fixture.whenStable()
 
-    expect(trapFocusMock).toHaveBeenCalledTimes(1)
-    expect(deactivateMock).not.toHaveBeenCalled()
+    expect(trapFocusMock).toHaveBeenCalledTimes(2)
+    expect(deactivateMock).toHaveBeenCalledTimes(1)
 
     fixture.destroy()
   })

@@ -1,4 +1,4 @@
-import { DestroyRef, Directive, ElementRef, booleanAttribute, effect, inject, input, untracked } from '@angular/core'
+import { DestroyRef, Directive, ElementRef, booleanAttribute, effect, inject, input } from '@angular/core'
 import { type TrapFocusOptions, trapFocus } from '@zag-js/focus-trap'
 
 export type * from '@zag-js/focus-trap'
@@ -23,9 +23,9 @@ export class ArkFocusTrapDirective {
   constructor() {
     effect(() => {
       const active = this.arkFocusTrap()
+      const options = this.arkFocusTrapOptions()
       this.tearDown()
       if (active) {
-        const options = untracked(() => this.arkFocusTrapOptions())
         this.cleanup = trapFocus(this.elementRef.nativeElement, options)
       }
     })

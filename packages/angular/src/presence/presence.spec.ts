@@ -87,6 +87,7 @@ describe('ArkPresenceComponent', () => {
     const presenceNode = content.closest('[data-scope="presence"]') as HTMLElement
     expect(presenceNode.hidden).toBe(true)
     expect(presenceNode.getAttribute('data-state')).toBe('closed')
+    expect(fixture.componentInstance.presenceRef.status()).toBe('closed')
 
     fixture.destroy()
   })
@@ -128,8 +129,56 @@ describe('ArkPresenceComponent', () => {
 
     const content = queryContent(fixture.nativeElement) as HTMLElement
     expect(content).not.toBeNull()
-    expect(fixture.componentInstance.presenceRef.status()).toBe('mounted')
+    expect(fixture.componentInstance.presenceRef.status()).toBe('closed')
     expect((content.closest('[data-scope="presence"]') as HTMLElement).hidden).toBe(true)
+
+    fixture.destroy()
+  })
+
+  it('ignores bubbled child animation and transition events while exiting', () => {
+    TestBed.configureTestingModule({ imports: [HostComponent] })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.componentInstance.present.set(true)
+    fixture.detectChanges()
+
+    fixture.componentInstance.present.set(false)
+    fixture.detectChanges()
+
+    const content = queryContent(fixture.nativeElement) as HTMLElement
+    content.dispatchEvent(new Event('animationend', { bubbles: true }))
+    content.dispatchEvent(new Event('transitionend', { bubbles: true }))
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.presenceRef.status()).toBe('exiting')
+
+    const presenceNode = content.closest('[data-scope="presence"]') as HTMLElement
+    presenceNode.dispatchEvent(new Event('animationend', { bubbles: true }))
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.presenceRef.status()).toBe('closed')
+
+    fixture.destroy()
+  })
+
+  it('omits the initial open data-state when skipAnimationOnMount is true', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkPresenceComponent],
+      template: `
+        <ark-presence present skipAnimationOnMount>
+          <ng-template><span data-testid="content">Hello</span></ng-template>
+        </ark-presence>
+      `,
+    })
+    class SkipAnimationHostComponent {}
+
+    TestBed.configureTestingModule({ imports: [SkipAnimationHostComponent] })
+    const fixture = TestBed.createComponent(SkipAnimationHostComponent)
+    fixture.detectChanges()
+
+    const content = queryContent(fixture.nativeElement) as HTMLElement
+    const presenceNode = content.closest('[data-scope="presence"]') as HTMLElement
+    expect(presenceNode.getAttribute('data-state')).toBeNull()
 
     fixture.destroy()
   })

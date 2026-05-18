@@ -8,9 +8,11 @@ import {
   ViewContainerRef,
   afterNextRender,
   computed,
+  effect,
   inject,
   input,
   output,
+  signal,
   viewChild,
 } from '@angular/core'
 
@@ -30,19 +32,24 @@ const resetStyle = '<style>*,*::before,*::after { margin: 0; padding: 0; box-siz
 export const initialFrameSrcdoc = `<html><head>${resetStyle}</head><body><div class="frame-root"></div></body></html>`
 let frameId = 0
 
+const createDefaultTitle = (): string => {
+  const randomId = globalThis.crypto?.randomUUID?.()
+  return `frame:${randomId ?? ++frameId}`
+}
+
 @Component({
   selector: 'ark-frame',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <iframe #frame [attr.srcdoc]="srcdoc()" [attr.title]="resolvedTitle()" [attr.name]="name()"></iframe>
+    <iframe #frame [attr.title]="resolvedTitle()" [attr.name]="name()"></iframe>
     <ng-template #content>
       <ng-content></ng-content>
     </ng-template>
   `,
 })
 export class ArkFrameComponent {
-  readonly srcdoc = input<string>(initialFrameSrcdoc)
+  readonly srcdoc = input<string | undefined>(initialFrameSrcdoc)
   readonly title = input<string | undefined>(undefined)
   readonly name = input<string | undefined>(undefined)
   readonly head = input<TemplateRef<unknown> | null>(null)
@@ -53,7 +60,8 @@ export class ArkFrameComponent {
   private readonly contentTpl = viewChild.required<TemplateRef<unknown>>('content')
   private readonly vcRef = inject(ViewContainerRef)
   private readonly destroyRef = inject(DestroyRef)
-  private readonly defaultTitle = `frame:${++frameId}`
+  private readonly defaultTitle = createDefaultTitle()
+  private readonly ready = signal(false)
   private contentView: EmbeddedViewRef<unknown> | undefined
   private headView: EmbeddedViewRef<unknown> | undefined
   private resizeCleanup: (() => void) | undefined
@@ -62,7 +70,14 @@ export class ArkFrameComponent {
 
   constructor() {
     afterNextRender(() => {
-      this.mountFrame()
+      this.ready.set(true)
+    })
+
+    effect(() => {
+      const srcdoc = this.srcdoc() ?? initialFrameSrcdoc
+      const head = this.head()
+      if (!this.ready()) return
+      this.mountFrame(srcdoc, head)
     })
 
     this.destroyRef.onDestroy(() => {
@@ -72,23 +87,25 @@ export class ArkFrameComponent {
     })
   }
 
-  private mountFrame(): void {
+  private mountFrame(srcdoc: string, head: TemplateRef<unknown> | null): void {
     const frame = this.frameElement().nativeElement
     const doc = frame.contentDocument ?? frame.contentWindow?.document
     if (!doc) return
 
+    this.resizeCleanup?.()
+    this.resizeCleanup = undefined
+    this.destroyViews()
+
     doc.open()
-    doc.write(this.srcdoc())
+    doc.write(srcdoc)
     doc.close()
 
     const mountNode = doc.body.querySelector<HTMLElement>('.frame-root') ?? doc.body
-    this.destroyViews()
     this.contentView = this.vcRef.createEmbeddedView(this.contentTpl())
     for (const node of this.contentView.rootNodes as Node[]) {
       mountNode.appendChild(node)
     }
 
-    const head = this.head()
     if (head) {
       this.headView = this.vcRef.createEmbeddedView(head)
       for (const node of this.headView.rootNodes as Node[]) {
@@ -114,8 +131,7 @@ export class ArkFrameComponent {
 
   private observeSize(frame: HTMLIFrameElement, mountNode: HTMLElement): void {
     this.resizeCleanup?.()
-    const win = frame.contentWindow
-    const ResizeObserverCtor = (win as (Window & typeof globalThis) | null)?.ResizeObserver
+    const ResizeObserverCtor = globalThis.ResizeObserver
     if (!ResizeObserverCtor) return
 
     const updateSize = () => {

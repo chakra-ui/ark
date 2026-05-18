@@ -167,6 +167,7 @@ describe('useMachine', () => {
     TestBed.tick()
 
     expect(handle.machine.__service!.__setContextCalls).toEqual([{ label: undefined }])
+    expect(handle.machine.__service!.state.context).toMatchObject({ open: false, label: undefined })
     handle.destroy()
   })
 

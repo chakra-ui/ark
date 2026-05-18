@@ -13,7 +13,7 @@ import {
   untracked,
 } from '@angular/core'
 
-export type ArkPresenceStatus = 'unmounted' | 'mounted' | 'exiting'
+export type ArkPresenceStatus = 'unmounted' | 'mounted' | 'closed' | 'exiting'
 export type ArkPresenceState = { status: ArkPresenceStatus }
 export interface PresenceProps {
   present?: boolean
@@ -25,18 +25,18 @@ export type PresenceInputs = PresenceProps
 
 const initialPresenceState = (present: boolean, lazyMount: boolean): ArkPresenceState => {
   if (present) return { status: 'mounted' }
-  return lazyMount ? { status: 'unmounted' } : { status: 'mounted' }
+  return lazyMount ? { status: 'unmounted' } : { status: 'closed' }
 }
 
 const updatePresenceState = (state: ArkPresenceState, present: boolean): ArkPresenceState => {
   if (present) return state.status === 'mounted' ? state : { status: 'mounted' }
-  if (state.status === 'unmounted') return state
+  if (state.status === 'unmounted' || state.status === 'closed') return state
   return state.status === 'exiting' ? state : { status: 'exiting' }
 }
 
 const completePresenceExit = (state: ArkPresenceState, unmountOnExit: boolean): ArkPresenceState => {
   if (state.status !== 'exiting') return state
-  return unmountOnExit ? { status: 'unmounted' } : { status: 'mounted' }
+  return unmountOnExit ? { status: 'unmounted' } : { status: 'closed' }
 }
 
 @Component({
@@ -52,8 +52,8 @@ const completePresenceExit = (state: ArkPresenceState, unmountOnExit: boolean): 
         data-part="root"
         [attr.data-state]="dataState()"
         [hidden]="hidden()"
-        (animationend)="onExitComplete()"
-        (transitionend)="onExitComplete()"
+        (animationend)="onExitComplete($event)"
+        (transitionend)="onExitComplete($event)"
       >
         <ng-container [ngTemplateOutlet]="content() ?? null"></ng-container>
       </span>
@@ -69,11 +69,11 @@ export class ArkPresenceComponent {
   readonly exitComplete = output<void>()
 
   private readonly state = signal<ArkPresenceState>({ status: 'unmounted' })
-  private hasMounted = false
+  private readonly skipInitialOpenState = signal(false)
   readonly status = computed(() => this.state().status)
   readonly hidden = computed(() => !this.present())
   readonly dataState = computed(() => {
-    if (this.skipAnimationOnMount() && !this.hasMounted && this.present()) return undefined
+    if (this.skipInitialOpenState() && this.present()) return undefined
     return this.present() ? 'open' : 'closed'
   })
 
@@ -89,15 +89,16 @@ export class ArkPresenceComponent {
           ),
         )
         initialized = true
-        if (present) this.hasMounted = true
+        this.skipInitialOpenState.set(this.skipAnimationOnMount() && present)
         return
       }
       this.state.update((current) => updatePresenceState(current, present))
-      if (present) this.hasMounted = true
+      if (!present) this.skipInitialOpenState.set(false)
     })
   }
 
-  onExitComplete(): void {
+  onExitComplete(event?: Event): void {
+    if (event && event.target !== event.currentTarget) return
     const previous = this.state()
     if (previous.status !== 'exiting') return
     this.state.set(completePresenceExit(previous, this.unmountOnExit()))

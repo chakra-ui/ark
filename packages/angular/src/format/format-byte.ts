@@ -26,11 +26,19 @@ export class ArkFormatByteComponent {
 
   private readonly providerLocale = injectArkLocale()
   protected readonly formatted = computed(() => {
-    return formatBytes(this.value(), this.locale() ?? this.providerLocale.locale ?? DEFAULT_LOCALE, {
-      precision: this.precision(),
-      unit: this.unit(),
-      unitDisplay: this.unitDisplay(),
-      unitSystem: this.unitSystem(),
-    })
+    return formatBytes(
+      this.value(),
+      this.locale() ?? this.providerLocale.locale ?? DEFAULT_LOCALE,
+      compactOptions({
+        precision: this.precision(),
+        unit: this.unit(),
+        unitDisplay: this.unitDisplay(),
+        unitSystem: this.unitSystem(),
+      }),
+    )
   })
+}
+
+function compactOptions<T extends Record<string, unknown>>(options: T): T {
+  return Object.fromEntries(Object.entries(options).filter(([, value]) => value !== undefined)) as T
 }

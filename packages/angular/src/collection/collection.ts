@@ -13,7 +13,6 @@ import {
   filePathToTree,
 } from '@zag-js/collection'
 import * as asyncList from '@zag-js/async-list'
-import type { Machine as AsyncListMachineType } from '@zag-js/async-list'
 
 export {
   GridCollection,
@@ -83,6 +82,5 @@ export const createListSelection = (options: CreateListSelectionOptions = {}): S
   return selection
 }
 
-export const createAsyncListMachine: AsyncListMachineType<unknown, unknown> = asyncList.machine
-export const asyncListMachine: AsyncListMachineType<unknown, unknown> = createAsyncListMachine
+export const createAsyncListMachine = asyncList.machine
 export const connectAsyncList = asyncList.connect

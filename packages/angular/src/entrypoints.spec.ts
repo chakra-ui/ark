@@ -3,7 +3,7 @@ import { dirname, join, normalize } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
 
-const packageRoot = dirname(fileURLToPath(import.meta.url)).replace(/\/src$/, '')
+const packageRoot = dirname(dirname(fileURLToPath(import.meta.url)))
 const pkg = JSON.parse(readFileSync(join(packageRoot, 'package.json'), 'utf-8')) as {
   exports: Record<string, { source?: string; types?: string; default?: string } | unknown>
 }
@@ -82,6 +82,7 @@ describe('package.json exports map', () => {
     for (const key of requiredKeys) {
       expect(exportsMap[key]).toBeDefined()
     }
+    expect(Object.keys(exportsMap).filter((key) => key.startsWith('./src/'))).toEqual([])
     for (const key of requiredKeys.filter((key) => key !== './package.json')) {
       const entry = exportsMap[key] as { source: string; types: string; default: string }
       expect(existsSync(join(packageRoot, entry.source))).toBe(true)
@@ -97,10 +98,15 @@ describe('package.json exports map', () => {
   it('keeps forms-isolation entrypoints aligned with package exports', () => {
     const script = readFileSync(join(packageRoot, 'scripts/check-forms-isolation.ts'), 'utf-8')
     const scriptFiles = [...script.matchAll(/file: '([^']+)'/g)].map((match) => normalize(match[1]))
+    const scriptOutputs = [...script.matchAll(/outputs: \['([^']+)'\]/g)].map((match) => normalize(match[1]))
     const exportSources = Object.entries(pkg.exports)
-      .filter(([key]) => key !== './package.json' && !key.startsWith('./src/'))
+      .filter(([key]) => key !== './package.json')
       .map(([, entry]) => normalize((entry as { source: string }).source.replace(/^\.\//, '')))
+    const exportDefaults = Object.entries(pkg.exports)
+      .filter(([key]) => key !== './package.json')
+      .map(([, entry]) => normalize((entry as { default: string }).default.replace(/^\.\//, '')))
 
     expect(scriptFiles.sort()).toEqual(exportSources.sort())
+    expect(scriptOutputs.sort()).toEqual(exportDefaults.sort())
   })
 })

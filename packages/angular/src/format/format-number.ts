@@ -44,21 +44,23 @@ export class ArkFormatNumberComponent {
   private intlOptions(): Intl.NumberFormatOptions {
     return compactOptions({
       ...this.options(),
-      style: this.style(),
-      currency: this.currency(),
-      currencyDisplay: this.currencyDisplay(),
-      currencySign: this.currencySign(),
-      unit: this.unit(),
-      unitDisplay: this.unitDisplay(),
-      notation: this.notation(),
-      compactDisplay: this.compactDisplay(),
-      useGrouping: this.useGrouping(),
-      minimumIntegerDigits: this.minimumIntegerDigits(),
-      minimumFractionDigits: this.minimumFractionDigits(),
-      maximumFractionDigits: this.maximumFractionDigits(),
-      minimumSignificantDigits: this.minimumSignificantDigits(),
-      maximumSignificantDigits: this.maximumSignificantDigits(),
-      signDisplay: this.signDisplay(),
+      ...compactOptions({
+        style: this.style(),
+        currency: this.currency(),
+        currencyDisplay: this.currencyDisplay(),
+        currencySign: this.currencySign(),
+        unit: this.unit(),
+        unitDisplay: this.unitDisplay(),
+        notation: this.notation(),
+        compactDisplay: this.compactDisplay(),
+        useGrouping: this.useGrouping(),
+        minimumIntegerDigits: this.minimumIntegerDigits(),
+        minimumFractionDigits: this.minimumFractionDigits(),
+        maximumFractionDigits: this.maximumFractionDigits(),
+        minimumSignificantDigits: this.minimumSignificantDigits(),
+        maximumSignificantDigits: this.maximumSignificantDigits(),
+        signDisplay: this.signDisplay(),
+      }),
     })
   }
 }

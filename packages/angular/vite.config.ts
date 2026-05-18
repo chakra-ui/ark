@@ -14,6 +14,12 @@ export default defineConfig(({ mode }) => ({
     },
   },
   resolve: {
+    alias: {
+      '@ark-ui/angular/src/presence': new URL('./src/presence/public-api.ts', import.meta.url).pathname,
+      '@ark-ui/angular/src/providers/environment': new URL('./src/providers/environment/public-api.ts', import.meta.url)
+        .pathname,
+      '@ark-ui/angular/src/providers/locale': new URL('./src/providers/locale/public-api.ts', import.meta.url).pathname,
+    },
     conditions: ['source', 'module', 'browser', 'import', 'default'],
   },
   define: {

@@ -24,6 +24,17 @@ class NumberHostComponent {
   standalone: true,
   imports: [ArkFormatNumberComponent],
   template: `
+    <ark-format-number [value]="1234.56" [options]="options" currency="EUR"></ark-format-number>
+  `,
+})
+class NumberOptionsHostComponent {
+  options: Intl.NumberFormatOptions = { style: 'currency', currency: 'USD' }
+}
+
+@Component({
+  standalone: true,
+  imports: [ArkFormatNumberComponent],
+  template: `
     <ark-format-number [value]="1234.56"></ark-format-number>
   `,
 })
@@ -40,6 +51,15 @@ class ByteHostComponent {}
 
 @Component({
   standalone: true,
+  imports: [ArkFormatByteComponent],
+  template: `
+    <ark-format-byte [value]="1024"></ark-format-byte>
+  `,
+})
+class DefaultByteHostComponent {}
+
+@Component({
+  standalone: true,
   imports: [ArkFormatRelativeTimeComponent],
   template: `
     <ark-format-relative-time [value]="value"></ark-format-relative-time>
@@ -47,6 +67,26 @@ class ByteHostComponent {}
 })
 class RelativeTimeHostComponent {
   value = new Date(Date.now() - 24 * 60 * 60 * 1000)
+}
+
+@Component({
+  standalone: true,
+  imports: [ArkFormatRelativeTimeComponent],
+  template: `
+    <ark-format-relative-time [value]="-2" unit="day" numeric="auto"></ark-format-relative-time>
+  `,
+})
+class LegacyRelativeTimeHostComponent {}
+
+@Component({
+  standalone: true,
+  imports: [ArkFormatRelativeTimeComponent],
+  template: `
+    <ark-format-relative-time [value]="-2" unit="day" [options]="options" numeric="auto"></ark-format-relative-time>
+  `,
+})
+class RelativeTimeOptionsHostComponent {
+  options: Intl.RelativeTimeFormatOptions = { numeric: 'always' }
 }
 
 @Component({
@@ -102,6 +142,17 @@ describe('ArkFormatComponents', () => {
     fixture.destroy()
   })
 
+  it('lets explicit number inputs override the options object', () => {
+    TestBed.configureTestingModule({ imports: [NumberOptionsHostComponent] })
+    const fixture = TestBed.createComponent(NumberOptionsHostComponent)
+    fixture.detectChanges()
+
+    const expected = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'EUR' }).format(1234.56)
+    expect(fixture.nativeElement.textContent.trim()).toBe(expected)
+
+    fixture.destroy()
+  })
+
   it('explicit-locale override wins over provider locale', () => {
     TestBed.configureTestingModule({
       imports: [NumberHostComponent],
@@ -127,12 +178,46 @@ describe('ArkFormatComponents', () => {
     fixture.destroy()
   })
 
+  it('omits undefined byte options so formatter defaults still apply', () => {
+    TestBed.configureTestingModule({ imports: [DefaultByteHostComponent] })
+    const fixture = TestBed.createComponent(DefaultByteHostComponent)
+    fixture.detectChanges()
+
+    expect(fixture.nativeElement.textContent.trim()).toBe(
+      formatBytes(1024, 'en-US', { unit: 'byte', unitDisplay: 'short' }),
+    )
+
+    fixture.destroy()
+  })
+
   it('renders relative time from a Date value', () => {
     TestBed.configureTestingModule({ imports: [RelativeTimeHostComponent] })
     const fixture = TestBed.createComponent(RelativeTimeHostComponent)
     fixture.detectChanges()
 
     const expected = formatRelativeTime(fixture.componentInstance.value, 'en-US')
+    expect(fixture.nativeElement.textContent.trim()).toBe(expected)
+
+    fixture.destroy()
+  })
+
+  it('renders relative time from the legacy number and unit inputs', () => {
+    TestBed.configureTestingModule({ imports: [LegacyRelativeTimeHostComponent] })
+    const fixture = TestBed.createComponent(LegacyRelativeTimeHostComponent)
+    fixture.detectChanges()
+
+    const expected = new Intl.RelativeTimeFormat('en-US', { numeric: 'auto' }).format(-2, 'day')
+    expect(fixture.nativeElement.textContent.trim()).toBe(expected)
+
+    fixture.destroy()
+  })
+
+  it('lets explicit relative-time inputs override the options object', () => {
+    TestBed.configureTestingModule({ imports: [RelativeTimeOptionsHostComponent] })
+    const fixture = TestBed.createComponent(RelativeTimeOptionsHostComponent)
+    fixture.detectChanges()
+
+    const expected = new Intl.RelativeTimeFormat('en-US', { numeric: 'auto' }).format(-2, 'day')
     expect(fixture.nativeElement.textContent.trim()).toBe(expected)
 
     fixture.destroy()

@@ -30,7 +30,7 @@ const RTL_LANG_CODES = new Set([
 ])
 
 export function getDirection(locale: string): Direction {
-  const lang = locale.toLowerCase().split('-')[0]
+  const lang = locale.toLowerCase().split('-')[0] ?? ''
   return RTL_LANG_CODES.has(lang) ? 'rtl' : 'ltr'
 }
 
@@ -64,15 +64,36 @@ export function injectArkLocale(): LocaleContext {
 
 const collatorCache = new Map<string, Intl.Collator>()
 const dateFormatterCache = new Map<string, Intl.DateTimeFormat>()
+const filterCache = new Map<string, ArkFilter>()
+const MAX_CACHE_SIZE = 64
 
-const cacheKey = (locale: string, options: object | undefined): string => `${locale}:${JSON.stringify(options ?? {})}`
+const stableSerialize = (value: unknown): string => {
+  if (value === null || typeof value !== 'object') return JSON.stringify(value)
+  if (Array.isArray(value)) return `[${value.map(stableSerialize).join(',')}]`
+  const record = value as Record<string, unknown>
+  return `{${Object.keys(record)
+    .sort()
+    .filter((key) => record[key] !== undefined)
+    .map((key) => `${JSON.stringify(key)}:${stableSerialize(record[key])}`)
+    .join(',')}}`
+}
+
+const cacheKey = (locale: string, options: object | undefined): string => `${locale}:${stableSerialize(options ?? {})}`
+
+const setCached = <K, V>(cache: Map<K, V>, key: K, value: V): void => {
+  if (!cache.has(key) && cache.size >= MAX_CACHE_SIZE) {
+    const oldest = cache.keys().next().value
+    if (oldest !== undefined) cache.delete(oldest)
+  }
+  cache.set(key, value)
+}
 
 export function getCollator(locale: string, options?: Intl.CollatorOptions): Intl.Collator {
   const key = cacheKey(locale, options)
   let collator = collatorCache.get(key)
   if (!collator) {
     collator = new Intl.Collator(locale, options)
-    collatorCache.set(key, collator)
+    setCached(collatorCache, key, collator)
   }
   return collator
 }
@@ -82,7 +103,7 @@ export function getDateFormatter(locale: string, options?: Intl.DateTimeFormatOp
   let formatter = dateFormatterCache.get(key)
   if (!formatter) {
     formatter = new Intl.DateTimeFormat(locale, options)
-    dateFormatterCache.set(key, formatter)
+    setCached(dateFormatterCache, key, formatter)
   }
   return formatter
 }
@@ -92,8 +113,6 @@ export interface ArkFilter {
   startsWith(string: string, substring: string): boolean
   endsWith(string: string, substring: string): boolean
 }
-
-const filterCache = new Map<string, ArkFilter>()
 
 export function getFilter(locale: string, options: Intl.CollatorOptions = { sensitivity: 'base' }): ArkFilter {
   const normalizedOptions = { ...options, usage: 'search' } satisfies Intl.CollatorOptions
@@ -118,6 +137,6 @@ export function getFilter(locale: string, options: Intl.CollatorOptions = { sens
       return collator.compare(s.slice(s.length - sub.length), sub) === 0
     },
   }
-  filterCache.set(key, filter)
+  setCached(filterCache, key, filter)
   return filter
 }

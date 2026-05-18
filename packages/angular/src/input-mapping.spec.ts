@@ -31,9 +31,17 @@ describe('Ark boolean input mapping', () => {
   })
 
   it.each([
-    ['lazyMount', '<ark-presence lazyMount><ng-template>content</ng-template></ark-presence>'],
-    ['unmountOnExit', '<ark-presence unmountOnExit><ng-template>content</ng-template></ark-presence>'],
-  ])('maps %s as a bare component boolean input', (_label, template) => {
+    [
+      'lazyMount',
+      '<ark-presence lazyMount><ng-template>content</ng-template></ark-presence>',
+      (component: ArkPresenceComponent) => component.lazyMount(),
+    ],
+    [
+      'unmountOnExit',
+      '<ark-presence unmountOnExit><ng-template>content</ng-template></ark-presence>',
+      (component: ArkPresenceComponent) => component.unmountOnExit(),
+    ],
+  ] as const)('maps %s as a bare component boolean input', (_label, template, readValue) => {
     @Component({
       standalone: true,
       imports: [ArkPresenceComponent],
@@ -47,9 +55,7 @@ describe('Ark boolean input mapping', () => {
     const fixture = TestBed.createComponent(HostComponent)
     fixture.detectChanges()
 
-    expect(
-      fixture.componentInstance.presence().lazyMount() || fixture.componentInstance.presence().unmountOnExit(),
-    ).toBe(true)
+    expect(readValue(fixture.componentInstance.presence())).toBe(true)
   })
 
   it('maps the swap root state through a property binding', () => {

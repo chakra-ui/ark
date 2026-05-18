@@ -86,7 +86,18 @@ const entryPoints = [
   },
 ]
 
-const selfEntryFiles = new Map(entryPoints.map(({ name, file }) => [name, join(root, file)]))
+const selfEntryFiles = new Map(
+  entryPoints.flatMap(({ name, file }) => {
+    const resolvedFile = join(root, file)
+    const internalName = name.replace('@ark-ui/angular/', '@ark-ui/angular/src/')
+    return internalName === name
+      ? [[name, resolvedFile]]
+      : [
+          [name, resolvedFile],
+          [internalName, resolvedFile],
+        ]
+  }),
+)
 
 const toDisplayPath = (file: string) => relative(root, file)
 

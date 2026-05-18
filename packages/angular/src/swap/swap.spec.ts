@@ -17,6 +17,23 @@ class HostComponent {
   readonly active = signal(false)
 }
 
+@Component({
+  standalone: true,
+  imports: [ArkSwapIndicatorComponent],
+  template: `
+    <ark-swap-indicator type="on">On</ark-swap-indicator>
+  `,
+})
+class OrphanIndicatorHostComponent {}
+
+const getPresenceForTestId = (root: HTMLElement, testId: string): HTMLElement => {
+  const content = root.querySelector(`[data-testid="${testId}"]`)
+  expect(content).not.toBeNull()
+  const presence = content?.closest('[data-scope="presence"]') as HTMLElement | null
+  expect(presence).not.toBeNull()
+  return presence as HTMLElement
+}
+
 describe('ArkSwapComponent', () => {
   beforeEach(() => {
     TestBed.resetTestingModule()
@@ -29,9 +46,7 @@ describe('ArkSwapComponent', () => {
     fixture.detectChanges()
 
     expect(fixture.nativeElement.querySelector('[data-testid="on"]')).not.toBeNull()
-    expect(fixture.nativeElement.querySelector('[data-testid="off"]').closest('[data-scope="presence"]').hidden).toBe(
-      true,
-    )
+    expect(getPresenceForTestId(fixture.nativeElement, 'off').hidden).toBe(true)
 
     fixture.destroy()
   })
@@ -43,9 +58,7 @@ describe('ArkSwapComponent', () => {
     fixture.detectChanges()
 
     expect(fixture.nativeElement.querySelector('[data-testid="off"]')).not.toBeNull()
-    expect(fixture.nativeElement.querySelector('[data-testid="on"]').closest('[data-scope="presence"]').hidden).toBe(
-      true,
-    )
+    expect(getPresenceForTestId(fixture.nativeElement, 'on').hidden).toBe(true)
 
     fixture.destroy()
   })
@@ -57,19 +70,13 @@ describe('ArkSwapComponent', () => {
     fixture.detectChanges()
 
     expect(fixture.nativeElement.querySelector('[data-testid="on"]')).not.toBeNull()
-    expect(
-      (fixture.nativeElement.querySelector('[data-testid="off"]').closest('[data-scope="presence"]') as HTMLElement)
-        .hidden,
-    ).toBe(true)
+    expect(getPresenceForTestId(fixture.nativeElement, 'off').hidden).toBe(true)
 
     fixture.componentInstance.active.set(false)
     fixture.detectChanges()
 
     expect(fixture.nativeElement.querySelector('[data-testid="off"]')).not.toBeNull()
-    expect(
-      (fixture.nativeElement.querySelector('[data-testid="on"]').closest('[data-scope="presence"]') as HTMLElement)
-        .hidden,
-    ).toBe(true)
+    expect(getPresenceForTestId(fixture.nativeElement, 'on').hidden).toBe(true)
 
     fixture.destroy()
   })
@@ -84,5 +91,15 @@ describe('ArkSwapComponent', () => {
     expect(host.getAttribute('data-swap')).toBe('off')
 
     fixture.destroy()
+  })
+
+  it('throws a targeted error when an indicator is rendered without a swap root', () => {
+    TestBed.configureTestingModule({ imports: [OrphanIndicatorHostComponent] })
+
+    expect(() => {
+      const fixture = TestBed.createComponent(OrphanIndicatorHostComponent)
+      fixture.detectChanges()
+      fixture.destroy()
+    }).toThrow(/ArkSwapIndicatorComponent must be used inside an ArkSwapRootComponent/)
   })
 })

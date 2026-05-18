@@ -79,6 +79,68 @@ describe('ArkPortalComponent (criterion 34)', () => {
     fixture.destroy()
   })
 
+  it('moves projected DOM when the target is supplied after mount', async () => {
+    TestBed.configureTestingModule({ imports: [HostComponent] })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.componentInstance.showPortal.set(true)
+    fixture.detectChanges()
+
+    await TestBed.inject(ApplicationRef).whenStable()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    const target = fixture.nativeElement.querySelector('[data-testid="portal-target"]') as HTMLElement
+    expect(target.querySelector('[data-testid="projected"]')).toBeNull()
+
+    fixture.componentInstance.target.set(target)
+    fixture.detectChanges()
+    await TestBed.inject(ApplicationRef).whenStable()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(target.querySelector('[data-testid="projected"]')).not.toBeNull()
+
+    fixture.destroy()
+  })
+
+  it('moves projected DOM between target elements and detaches when target becomes null', async () => {
+    TestBed.configureTestingModule({ imports: [HostComponent] })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.detectChanges()
+
+    const firstTarget = fixture.nativeElement.querySelector('[data-testid="portal-target"]') as HTMLElement
+    const secondTarget = document.createElement('div')
+    fixture.nativeElement.appendChild(secondTarget)
+
+    fixture.componentInstance.target.set(firstTarget)
+    fixture.componentInstance.showPortal.set(true)
+    fixture.detectChanges()
+    await TestBed.inject(ApplicationRef).whenStable()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(firstTarget.querySelector('[data-testid="projected"]')).not.toBeNull()
+
+    fixture.componentInstance.target.set(secondTarget)
+    fixture.detectChanges()
+    await TestBed.inject(ApplicationRef).whenStable()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(firstTarget.querySelector('[data-testid="projected"]')).toBeNull()
+    expect(secondTarget.querySelector('[data-testid="projected"]')).not.toBeNull()
+
+    fixture.componentInstance.target.set(null)
+    fixture.detectChanges()
+    await TestBed.inject(ApplicationRef).whenStable()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(secondTarget.querySelector('[data-testid="projected"]')).toBeNull()
+
+    fixture.destroy()
+  })
+
   it('removes projected DOM from the target on destroy', async () => {
     const { fixture, target } = await mountWithTarget()
     expect(target.querySelector('[data-testid="projected"]')).not.toBeNull()

@@ -46,12 +46,7 @@ export class ArkSwapRootComponent {
     '[attr.data-state]': "active() ? 'open' : 'closed'",
   },
   template: `
-    <ark-presence
-      [present]="active()"
-      [lazyMount]="root.lazyMount()"
-      [unmountOnExit]="root.unmountOnExit()"
-      skipAnimationOnMount
-    >
+    <ark-presence [present]="active()" [lazyMount]="lazyMount()" [unmountOnExit]="unmountOnExit()" skipAnimationOnMount>
       <ng-template>
         <ng-content />
       </ng-template>
@@ -60,8 +55,20 @@ export class ArkSwapRootComponent {
 })
 export class ArkSwapIndicatorComponent {
   readonly type = input.required<'on' | 'off'>()
-  protected readonly root = inject(ArkSwapRootComponent)
-  protected readonly active = computed(() => (this.type() === 'on' ? this.root.swap() : !this.root.swap()))
+  private readonly root = inject(ArkSwapRootComponent, { optional: true })
+  protected readonly lazyMount = computed(() => this.requireRoot().lazyMount())
+  protected readonly unmountOnExit = computed(() => this.requireRoot().unmountOnExit())
+  protected readonly active = computed(() => {
+    const root = this.requireRoot()
+    return this.type() === 'on' ? root.swap() : !root.swap()
+  })
+
+  private requireRoot(): ArkSwapRootComponent {
+    if (!this.root) {
+      throw new Error('ArkSwapIndicatorComponent must be used inside an ArkSwapRootComponent.')
+    }
+    return this.root
+  }
 }
 
 export { ArkSwapRootComponent as ArkSwapComponent }
