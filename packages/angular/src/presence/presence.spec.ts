@@ -1,0 +1,249 @@
+import { Component, Directive, InjectionToken, ViewChild, inject, signal } from '@angular/core'
+import { TestBed } from '@angular/core/testing'
+import { beforeEach, describe, expect, it } from 'vitest'
+import { ArkPresenceComponent } from './presence'
+
+const PRESENCE_TOKEN = new InjectionToken<string>('PRESENCE_TOKEN')
+
+const sentinelCapture: { tokenValue: string | null } = {
+  tokenValue: null,
+}
+
+@Directive({
+  standalone: true,
+  selector: '[presenceSentinel]',
+})
+class PresenceSentinelDirective {
+  constructor() {
+    sentinelCapture.tokenValue = inject(PRESENCE_TOKEN, { optional: true })
+  }
+}
+
+@Component({
+  standalone: true,
+  imports: [ArkPresenceComponent, PresenceSentinelDirective],
+  providers: [{ provide: PRESENCE_TOKEN, useValue: 'from-host' }],
+  template: `
+    <ark-presence [present]="present()" [lazyMount]="lazyMount()" [unmountOnExit]="unmountOnExit()">
+      <ng-template>
+        <span data-testid="content" presenceSentinel>Hello</span>
+      </ng-template>
+    </ark-presence>
+  `,
+})
+class HostComponent {
+  @ViewChild(ArkPresenceComponent) presenceRef!: ArkPresenceComponent
+  readonly present = signal(false)
+  readonly lazyMount = signal(false)
+  readonly unmountOnExit = signal(false)
+}
+
+const queryContent = (root: HTMLElement) => root.querySelector('[data-testid="content"]')
+
+describe('ArkPresenceComponent', () => {
+  beforeEach(() => {
+    TestBed.resetTestingModule()
+    sentinelCapture.tokenValue = null
+  })
+
+  it('mounts content immediately when present is true on initial render', () => {
+    TestBed.configureTestingModule({ imports: [HostComponent] })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.componentInstance.present.set(true)
+    fixture.detectChanges()
+
+    expect(queryContent(fixture.nativeElement)).not.toBeNull()
+    expect(fixture.componentInstance.presenceRef.status()).toBe('mounted')
+
+    fixture.destroy()
+  })
+
+  it('defers rendering until first present transition when lazyMount is true', () => {
+    TestBed.configureTestingModule({ imports: [HostComponent] })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.componentInstance.lazyMount.set(true)
+    fixture.componentInstance.present.set(false)
+    fixture.detectChanges()
+
+    expect(queryContent(fixture.nativeElement)).toBeNull()
+    expect(fixture.componentInstance.presenceRef.status()).toBe('unmounted')
+
+    fixture.componentInstance.present.set(true)
+    fixture.detectChanges()
+
+    expect(queryContent(fixture.nativeElement)).not.toBeNull()
+    expect(fixture.componentInstance.presenceRef.status()).toBe('mounted')
+
+    fixture.destroy()
+  })
+
+  it('renders hidden closed content initially when lazyMount is false', () => {
+    TestBed.configureTestingModule({ imports: [HostComponent] })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.detectChanges()
+
+    const content = queryContent(fixture.nativeElement) as HTMLElement
+    expect(content).not.toBeNull()
+    const presenceNode = content.closest('[data-scope="presence"]') as HTMLElement
+    expect(presenceNode.hidden).toBe(true)
+    expect(presenceNode.getAttribute('data-state')).toBe('closed')
+    expect(fixture.componentInstance.presenceRef.status()).toBe('closed')
+
+    fixture.destroy()
+  })
+
+  it('transitions through exiting before unmount when present flips to false', () => {
+    TestBed.configureTestingModule({ imports: [HostComponent] })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.componentInstance.present.set(true)
+    fixture.detectChanges()
+    expect(fixture.componentInstance.presenceRef.status()).toBe('mounted')
+
+    fixture.componentInstance.present.set(false)
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.presenceRef.status()).toBe('exiting')
+    const content = queryContent(fixture.nativeElement) as HTMLElement
+    expect(content).not.toBeNull()
+    const presenceNode = content.closest('[data-scope="presence"]') as HTMLElement
+    expect(presenceNode.hidden).toBe(false)
+
+    fixture.componentInstance.unmountOnExit.set(true)
+    fixture.detectChanges()
+    presenceNode.dispatchEvent(new Event('animationend', { bubbles: true }))
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.presenceRef.status()).toBe('unmounted')
+    expect(queryContent(fixture.nativeElement)).toBeNull()
+
+    fixture.destroy()
+  })
+
+  it('keeps content mounted but hidden after exit when unmountOnExit is false', () => {
+    TestBed.configureTestingModule({ imports: [HostComponent] })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.componentInstance.present.set(true)
+    fixture.detectChanges()
+
+    fixture.componentInstance.present.set(false)
+    fixture.detectChanges()
+    fixture.componentInstance.presenceRef.onExitComplete()
+    fixture.detectChanges()
+
+    const content = queryContent(fixture.nativeElement) as HTMLElement
+    expect(content).not.toBeNull()
+    expect(fixture.componentInstance.presenceRef.status()).toBe('closed')
+    expect((content.closest('[data-scope="presence"]') as HTMLElement).hidden).toBe(true)
+
+    fixture.destroy()
+  })
+
+  it('ignores bubbled child animation and transition events while exiting', () => {
+    TestBed.configureTestingModule({ imports: [HostComponent] })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.componentInstance.present.set(true)
+    fixture.detectChanges()
+
+    fixture.componentInstance.present.set(false)
+    fixture.detectChanges()
+
+    const content = queryContent(fixture.nativeElement) as HTMLElement
+    content.dispatchEvent(new Event('animationend', { bubbles: true }))
+    content.dispatchEvent(new Event('transitionend', { bubbles: true }))
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.presenceRef.status()).toBe('exiting')
+
+    const presenceNode = content.closest('[data-scope="presence"]') as HTMLElement
+    presenceNode.dispatchEvent(new Event('animationend', { bubbles: true }))
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.presenceRef.status()).toBe('closed')
+
+    fixture.destroy()
+  })
+
+  it('omits the initial open data-state when skipAnimationOnMount is true', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkPresenceComponent],
+      template: `
+        <ark-presence present skipAnimationOnMount>
+          <ng-template><span data-testid="content">Hello</span></ng-template>
+        </ark-presence>
+      `,
+    })
+    class SkipAnimationHostComponent {}
+
+    TestBed.configureTestingModule({ imports: [SkipAnimationHostComponent] })
+    const fixture = TestBed.createComponent(SkipAnimationHostComponent)
+    fixture.detectChanges()
+
+    const content = queryContent(fixture.nativeElement) as HTMLElement
+    const presenceNode = content.closest('[data-scope="presence"]') as HTMLElement
+    expect(presenceNode.getAttribute('data-state')).toBeNull()
+
+    fixture.destroy()
+  })
+
+  it('emits the exitComplete output when onExitComplete is invoked', () => {
+    TestBed.configureTestingModule({ imports: [HostComponent] })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.componentInstance.present.set(true)
+    fixture.detectChanges()
+
+    fixture.componentInstance.present.set(false)
+    fixture.detectChanges()
+    expect(fixture.componentInstance.presenceRef.status()).toBe('exiting')
+
+    let emitted = 0
+    fixture.componentInstance.presenceRef.exitComplete.subscribe(() => {
+      emitted += 1
+    })
+
+    fixture.componentInstance.unmountOnExit.set(true)
+    fixture.detectChanges()
+    fixture.componentInstance.presenceRef.onExitComplete()
+    fixture.detectChanges()
+
+    expect(emitted).toBe(1)
+    expect(fixture.componentInstance.presenceRef.status()).toBe('unmounted')
+
+    fixture.destroy()
+  })
+
+  it('preserves host provider context across enter and exit lifecycles', () => {
+    TestBed.configureTestingModule({ imports: [HostComponent] })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.componentInstance.present.set(true)
+    fixture.detectChanges()
+
+    expect(sentinelCapture.tokenValue).toBe('from-host')
+
+    sentinelCapture.tokenValue = null
+    fixture.componentInstance.unmountOnExit.set(true)
+    fixture.componentInstance.present.set(false)
+    fixture.detectChanges()
+    fixture.componentInstance.presenceRef.onExitComplete()
+    fixture.detectChanges()
+
+    fixture.componentInstance.present.set(true)
+    fixture.detectChanges()
+
+    expect(sentinelCapture.tokenValue).toBe('from-host')
+
+    fixture.destroy()
+  })
+
+  it('applies display: contents on the host element', () => {
+    TestBed.configureTestingModule({ imports: [HostComponent] })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.componentInstance.present.set(true)
+    fixture.detectChanges()
+
+    const host = fixture.nativeElement.querySelector('ark-presence') as HTMLElement
+    expect(getComputedStyle(host).display).toBe('contents')
+
+    fixture.destroy()
+  })
+})

@@ -27,6 +27,71 @@
       "types": "./dist/avatar/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-avatar.mjs"
     },
+    "./client-only": {
+      "source": "./src/client-only/public-api.ts",
+      "types": "./dist/src/client-only/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-client-only.mjs"
+    },
+    "./collection": {
+      "source": "./src/collection/public-api.ts",
+      "types": "./dist/src/collection/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-collection.mjs"
+    },
+    "./download-trigger": {
+      "source": "./src/download-trigger/public-api.ts",
+      "types": "./dist/src/download-trigger/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-download-trigger.mjs"
+    },
+    "./focus-trap": {
+      "source": "./src/focus-trap/public-api.ts",
+      "types": "./dist/src/focus-trap/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-focus-trap.mjs"
+    },
+    "./format": {
+      "source": "./src/format/public-api.ts",
+      "types": "./dist/src/format/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-format.mjs"
+    },
+    "./frame": {
+      "source": "./src/frame/public-api.ts",
+      "types": "./dist/src/frame/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-frame.mjs"
+    },
+    "./highlight": {
+      "source": "./src/highlight/public-api.ts",
+      "types": "./dist/src/highlight/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-highlight.mjs"
+    },
+    "./portal": {
+      "source": "./src/portal/public-api.ts",
+      "types": "./dist/src/portal/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-portal.mjs"
+    },
+    "./presence": {
+      "source": "./src/presence/public-api.ts",
+      "types": "./dist/src/presence/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-presence.mjs"
+    },
+    "./providers/environment": {
+      "source": "./src/providers/environment/public-api.ts",
+      "types": "./dist/src/providers/environment/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-providers-environment.mjs"
+    },
+    "./providers/interaction": {
+      "source": "./src/providers/interaction/public-api.ts",
+      "types": "./dist/src/providers/interaction/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-providers-interaction.mjs"
+    },
+    "./providers/locale": {
+      "source": "./src/providers/locale/public-api.ts",
+      "types": "./dist/src/providers/locale/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-providers-locale.mjs"
+    },
+    "./swap": {
+      "source": "./src/swap/public-api.ts",
+      "types": "./dist/src/swap/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-swap.mjs"
+    },
     "./package.json": {
       "default": "./package.json"
     }

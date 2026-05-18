@@ -19,9 +19,85 @@ const entryPoints = [
     file: 'avatar/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-avatar.mjs'],
   },
+  {
+    name: '@ark-ui/angular/client-only',
+    file: 'src/client-only/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-client-only.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/collection',
+    file: 'src/collection/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-collection.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/download-trigger',
+    file: 'src/download-trigger/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-download-trigger.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/focus-trap',
+    file: 'src/focus-trap/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-focus-trap.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/format',
+    file: 'src/format/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-format.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/frame',
+    file: 'src/frame/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-frame.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/highlight',
+    file: 'src/highlight/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-highlight.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/portal',
+    file: 'src/portal/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-portal.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/presence',
+    file: 'src/presence/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-presence.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/providers/environment',
+    file: 'src/providers/environment/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-providers-environment.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/providers/interaction',
+    file: 'src/providers/interaction/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-providers-interaction.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/providers/locale',
+    file: 'src/providers/locale/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-providers-locale.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/swap',
+    file: 'src/swap/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-swap.mjs'],
+  },
 ]
 
-const selfEntryFiles = new Map(entryPoints.map(({ name, file }) => [name, join(root, file)]))
+const selfEntryFiles = new Map(
+  entryPoints.flatMap(({ name, file }) => {
+    const resolvedFile = join(root, file)
+    const internalName = name.replace('@ark-ui/angular/', '@ark-ui/angular/src/')
+    return internalName === name
+      ? [[name, resolvedFile]]
+      : [
+          [name, resolvedFile],
+          [internalName, resolvedFile],
+        ]
+  }),
+)
 
 const toDisplayPath = (file: string) => relative(root, file)
 
