@@ -7,8 +7,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useMarqueeContext } from './use-marquee-context'
+  import { Ark } from '../factory/index.ts'
+  import { useMarqueeContext } from './use-marquee-context.ts'
 
   let { ref = $bindable(null), ...props }: MarqueeViewportProps = $props()
 

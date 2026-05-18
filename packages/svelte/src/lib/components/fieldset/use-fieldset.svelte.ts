@@ -4,7 +4,7 @@ import { runIfFn } from '$lib/utils/run-if-fn'
 import { dataAttr } from '@zag-js/dom-query'
 import { type MaybeFunction, ensureProps } from '@zag-js/utils'
 import { onMount } from 'svelte'
-import { parts } from './fieldset.anatomy'
+import { parts } from './fieldset.anatomy.ts'
 
 export interface UseFieldsetProps {
   /**

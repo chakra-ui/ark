@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UseDrawerReturn } from './use-drawer.svelte'
+import type { UseDrawerReturn } from './use-drawer.svelte.ts'
 
 export interface UseDrawerContext extends UseDrawerReturn {}
 export const [DrawerProvider, useDrawerContext] = createContext<UseDrawerContext>({

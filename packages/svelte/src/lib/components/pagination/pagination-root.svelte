@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UsePaginationProps } from './use-pagination.svelte'
+  import type { UsePaginationProps } from './use-pagination.svelte.ts'
 
   export interface PaginationRootBaseProps extends UsePaginationProps, PolymorphicProps<'nav'>, RefAttribute {}
   export interface PaginationRootProps extends Assign<HTMLProps<'nav'>, PaginationRootBaseProps> {}
@@ -9,9 +9,9 @@
 <script lang="ts">
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { PaginationProvider } from './use-pagination-context'
-  import { usePagination } from './use-pagination.svelte'
+  import { Ark } from '../factory/index.ts'
+  import { PaginationProvider } from './use-pagination-context.ts'
+  import { usePagination } from './use-pagination.svelte.ts'
 
   let { ref = $bindable(null), page = $bindable(), pageSize = $bindable(), ...props }: PaginationRootProps = $props()
   const providedId = $props.id()

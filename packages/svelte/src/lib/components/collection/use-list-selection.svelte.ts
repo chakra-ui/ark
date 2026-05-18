@@ -1,7 +1,7 @@
 import { Selection, type SelectionMode } from '@zag-js/collection'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 import { untrack } from 'svelte'
-import type { CollectionItem, ListCollection } from './list-collection'
+import type { CollectionItem, ListCollection } from './list-collection.ts'
 
 export interface UseListSelectionProps<T extends CollectionItem> {
   /**

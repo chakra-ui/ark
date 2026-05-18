@@ -12,11 +12,11 @@
   import { useRenderStrategyPropsContext } from '$lib/utils/render-strategy'
   import { mergeProps } from '@zag-js/svelte'
   import type { RequiredBy } from '@zag-js/types'
-  import { Ark } from '../factory'
-  import { Portal } from '../portal'
-  import { usePresence } from '../presence'
-  import { useNavigationMenuContext } from './use-navigation-menu-context'
-  import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context'
+  import { Ark } from '../factory/index.ts'
+  import { Portal } from '../portal/index.ts'
+  import { usePresence } from '../presence/index.ts'
+  import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
+  import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context.ts'
 
   let { ref = $bindable(null), ...props }: NavigationMenuContentProps = $props()
 

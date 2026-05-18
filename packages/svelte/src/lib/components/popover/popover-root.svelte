@@ -1,7 +1,7 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { UsePresenceProps } from '../presence'
-  import type { UsePopoverProps } from './use-popover.svelte'
+  import type { UsePresenceProps } from '../presence/index.ts'
+  import type { UsePopoverProps } from './use-popover.svelte.ts'
 
   export interface PopoverRootBaseProps extends UsePopoverProps, UsePresenceProps {}
   export interface PopoverRootProps extends PopoverRootBaseProps {
@@ -10,10 +10,10 @@
 </script>
 
 <script lang="ts">
-  import { PresenceProvider, usePresence } from '../presence'
-  import { splitPresenceProps } from '../presence/split-presence-props.svelte'
-  import { PopoverProvider } from './use-popover-context'
-  import { usePopover } from './use-popover.svelte'
+  import { PresenceProvider, usePresence } from '../presence/index.ts'
+  import { splitPresenceProps } from '../presence/split-presence-props.svelte.ts'
+  import { PopoverProvider } from './use-popover-context.ts'
+  import { usePopover } from './use-popover.svelte.ts'
 
   let { open = $bindable(), children, ...props }: PopoverRootProps = $props()
 

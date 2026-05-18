@@ -7,10 +7,10 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { usePresence } from '../presence'
-  import { useNavigationMenuContext } from './use-navigation-menu-context'
-  import { getNavigationMenuViewportPropsContext } from './use-navigation-menu-viewport-props-context'
+  import { Ark } from '../factory/index.ts'
+  import { usePresence } from '../presence/index.ts'
+  import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
+  import { getNavigationMenuViewportPropsContext } from './use-navigation-menu-viewport-props-context.ts'
   import { useRenderStrategyPropsContext } from '$lib/utils/render-strategy'
 
   let { ref = $bindable(null), ...props }: NavigationMenuViewportProps = $props()

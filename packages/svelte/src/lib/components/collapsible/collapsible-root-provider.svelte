@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseCollapsibleReturn } from './use-collapsible.svelte'
+  import type { UseCollapsibleReturn } from './use-collapsible.svelte.ts'
 
   interface RootProviderProps {
     value: UseCollapsibleReturn
@@ -12,8 +12,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { CollapsibleProvider } from './use-collapsible-context'
+  import { Ark } from '../factory/index.ts'
+  import { CollapsibleProvider } from './use-collapsible-context.ts'
 
   let { ref = $bindable(null), value, ...props }: CollapsibleRootProviderProps = $props()
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))

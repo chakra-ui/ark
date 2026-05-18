@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseCarouselReturn } from './use-carousel.svelte'
+  import type { UseCarouselReturn } from './use-carousel.svelte.ts'
 
   export interface CarouselRootProviderBaseProps extends PolymorphicProps<'div'>, RefAttribute {
     value: UseCarouselReturn
@@ -10,8 +10,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { CarouselProvider } from './use-carousel-context'
+  import { Ark } from '../factory/index.ts'
+  import { CarouselProvider } from './use-carousel-context.ts'
 
   let { ref = $bindable(null), value, ...props }: CarouselRootProviderProps = $props()
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))

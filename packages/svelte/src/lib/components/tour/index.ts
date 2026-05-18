@@ -1,5 +1,5 @@
 export { waitForElement, waitForElementValue, waitForPromise, type WaitOptions } from '@zag-js/tour'
-export { waitForEvent, type WaitForEventOptions } from './wait-for-event'
+export { waitForEvent, type WaitForEventOptions } from './wait-for-event.ts'
 export type {
   FocusOutsideEvent as TourFocusOutsideEvent,
   InteractOutsideEvent as TourInteractOutsideEvent,
@@ -42,8 +42,8 @@ export {
 export { default as TourRoot, type TourRootBaseProps, type TourRootProps } from './tour-root.svelte'
 export { default as TourSpotlight, type TourSpotlightBaseProps, type TourSpotlightProps } from './tour-spotlight.svelte'
 export { default as TourTitle, type TourTitleBaseProps, type TourTitleProps } from './tour-title.svelte'
-export { tourAnatomy } from './tour.anatomy'
-export { useTourContext, type UseTourContext } from './use-tour-context'
-export { useTour, type UseTourProps, type UseTourReturn } from './use-tour.svelte'
+export { tourAnatomy } from './tour.anatomy.ts'
+export { useTourContext, type UseTourContext } from './use-tour-context.ts'
+export { useTour, type UseTourProps, type UseTourReturn } from './use-tour.svelte.ts'
 
-export * as Tour from './tour'
+export * as Tour from './tour.ts'

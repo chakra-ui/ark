@@ -1,5 +1,5 @@
-import { createContext } from '../../utils/create-context'
-import type { UsePresenceReturn } from './use-presence.svelte'
+import { createContext } from '../../utils/create-context.ts'
+import type { UsePresenceReturn } from './use-presence.svelte.ts'
 
 export interface UsePresenceContext extends UsePresenceReturn {}
 

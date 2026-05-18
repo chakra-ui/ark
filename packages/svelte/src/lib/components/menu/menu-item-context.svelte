@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte'
-  import { useMenuItemContext, type UseMenuItemContext } from './use-menu-item-context'
+  import { useMenuItemContext, type UseMenuItemContext } from './use-menu-item-context.ts'
 
   export interface MenuItemContextProps {
     render: Snippet<[UseMenuItemContext]>

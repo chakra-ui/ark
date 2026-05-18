@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseSignaturePadReturn } from './use-signature-pad.svelte'
+  import type { UseSignaturePadReturn } from './use-signature-pad.svelte.ts'
 
   export interface SignaturePadRootProviderBaseProps extends PolymorphicProps<'div'>, RefAttribute {
     value: UseSignaturePadReturn
@@ -10,8 +10,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { SignaturePadProvider } from './use-signature-pad-context'
+  import { Ark } from '../factory/index.ts'
+  import { SignaturePadProvider } from './use-signature-pad-context.ts'
 
   let { ref = $bindable(null), value, ...props }: SignaturePadRootProviderProps = $props()
 

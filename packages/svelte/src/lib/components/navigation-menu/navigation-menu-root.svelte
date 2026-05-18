@@ -1,7 +1,7 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UsePresenceProps } from '../presence'
-  import type { UseNavigationMenuProps } from './use-navigation-menu.svelte'
+  import type { UsePresenceProps } from '../presence/index.ts'
+  import type { UseNavigationMenuProps } from './use-navigation-menu.svelte.ts'
 
   export interface NavigationMenuRootBaseProps
     extends UseNavigationMenuProps, UsePresenceProps, PolymorphicProps<'nav'>, RefAttribute {}
@@ -10,9 +10,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { NavigationMenuProvider } from './use-navigation-menu-context'
-  import { useNavigationMenu } from './use-navigation-menu.svelte'
+  import { Ark } from '../factory/index.ts'
+  import { NavigationMenuProvider } from './use-navigation-menu-context.ts'
+  import { useNavigationMenu } from './use-navigation-menu.svelte.ts'
   import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '$lib/utils/render-strategy'
   import { createSplitProps } from '$lib/utils/create-split-props'
 

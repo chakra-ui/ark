@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte'
-  import { useTourContext, type UseTourContext } from './use-tour-context'
+  import { useTourContext, type UseTourContext } from './use-tour-context.ts'
 
   export interface TourContextProps {
     render: Snippet<[UseTourContext]>

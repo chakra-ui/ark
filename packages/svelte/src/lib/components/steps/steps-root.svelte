@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseStepsProps } from './use-steps.svelte'
+  import type { UseStepsProps } from './use-steps.svelte.ts'
 
   export interface StepsRootBaseProps extends UseStepsProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface StepsRootProps extends Assign<HTMLProps<'div'>, StepsRootBaseProps> {}
@@ -9,9 +9,9 @@
 <script lang="ts">
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useSteps } from './use-steps.svelte'
-  import { StepsProvider } from './use-steps-context'
+  import { Ark } from '../factory/index.ts'
+  import { useSteps } from './use-steps.svelte.ts'
+  import { StepsProvider } from './use-steps-context.ts'
 
   let { ref = $bindable(null), step = $bindable(), ...props }: StepsRootProps = $props()
   const providedId = $props.id()

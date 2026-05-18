@@ -8,9 +8,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { createSplitProps } from '../../utils/create-split-props'
-  import { Ark } from '../factory'
-  import { useMarqueeContext } from './use-marquee-context'
+  import { createSplitProps } from '../../utils/create-split-props.ts'
+  import { Ark } from '../factory/index.ts'
+  import { useMarqueeContext } from './use-marquee-context.ts'
 
   let { ref = $bindable(null), ...props }: MarqueeEdgeProps = $props()
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Field } from '../'
+  import { Field } from '../index.ts'
 </script>
 
 <Field.Item value="amount">

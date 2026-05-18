@@ -10,12 +10,12 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
+  import { Ark } from '../factory/index.ts'
   import { createSplitProps } from '$lib/utils/create-split-props'
-  import { useMenuContext } from './use-menu-context'
-  import { MenuItemProvider } from './use-menu-item-context'
-  import { useMenuItemGroupContext } from './use-menu-item-group-context'
-  import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
+  import { useMenuContext } from './use-menu-context.ts'
+  import { MenuItemProvider } from './use-menu-item-context.ts'
+  import { useMenuItemGroupContext } from './use-menu-item-group-context.ts'
+  import { MenuItemPropsProvider } from './use-menu-option-item-props-context.ts'
 
   let { ref = $bindable(null), ...props }: MenuRadioItemProps = $props()
 

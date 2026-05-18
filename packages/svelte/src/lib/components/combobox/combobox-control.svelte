@@ -7,8 +7,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useComboboxContext } from './use-combobox-context'
+  import { Ark } from '../factory/index.ts'
+  import { useComboboxContext } from './use-combobox-context.ts'
 
   let { ref = $bindable(null), ...props }: ComboboxControlProps = $props()
 

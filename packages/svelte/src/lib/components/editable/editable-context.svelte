@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { UseEditableContext } from './use-editable-context'
+  import type { UseEditableContext } from './use-editable-context.ts'
 
   export interface EditableContextProps {
     render: Snippet<[UseEditableContext]>
@@ -8,7 +8,7 @@
 </script>
 
 <script lang="ts">
-  import { useEditableContext } from './use-editable-context'
+  import { useEditableContext } from './use-editable-context.ts'
 
   const { render }: EditableContextProps = $props()
 

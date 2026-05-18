@@ -20,8 +20,8 @@ export {
   type FieldsetRootProviderProps,
 } from './fieldset-root-provider.svelte'
 export { default as FieldsetRoot, type FieldsetRootBaseProps, type FieldsetRootProps } from './fieldset-root.svelte'
-export { fieldsetAnatomy } from './fieldset.anatomy'
-export { useFieldsetContext, type UseFieldsetContext } from './use-fieldset-context'
-export { useFieldset, type UseFieldsetProps, type UseFieldsetReturn } from './use-fieldset.svelte'
+export { fieldsetAnatomy } from './fieldset.anatomy.ts'
+export { useFieldsetContext, type UseFieldsetContext } from './use-fieldset-context.ts'
+export { useFieldset, type UseFieldsetProps, type UseFieldsetReturn } from './use-fieldset.svelte.ts'
 
-export * as Fieldset from './fieldset'
+export * as Fieldset from './fieldset.ts'

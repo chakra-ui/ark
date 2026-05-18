@@ -1,5 +1,5 @@
 import { createSplitProps } from '$lib/utils/create-split-props'
-import type { UseCollapsibleProps } from './use-collapsible.svelte'
+import type { UseCollapsibleProps } from './use-collapsible.svelte.ts'
 
 const splitFn = createSplitProps<UseCollapsibleProps>()
 

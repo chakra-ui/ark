@@ -10,8 +10,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useClipboardContext } from './use-clipboard-context'
+  import { Ark } from '../factory/index.ts'
+  import { useClipboardContext } from './use-clipboard-context.ts'
 
   let { ref = $bindable(null), children, copied, ...localProps }: ClipboardIndicatorProps = $props()
 

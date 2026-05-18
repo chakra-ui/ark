@@ -5,8 +5,8 @@ export {
   type SwapRootProviderBaseProps,
   type SwapRootProviderProps,
 } from './swap-root-provider.svelte'
-export { swapAnatomy } from './swap.anatomy'
-export { useSwap, type UseSwapProps, type UseSwapReturn } from './use-swap.svelte'
-export { useSwapContext, type UseSwapContext } from './use-swap-context'
+export { swapAnatomy } from './swap.anatomy.ts'
+export { useSwap, type UseSwapProps, type UseSwapReturn } from './use-swap.svelte.ts'
+export { useSwapContext, type UseSwapContext } from './use-swap-context.ts'
 
-export * as Swap from './swap'
+export * as Swap from './swap.ts'

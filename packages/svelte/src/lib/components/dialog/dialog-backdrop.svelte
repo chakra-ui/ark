@@ -10,9 +10,9 @@
 <script lang="ts">
   import { useRenderStrategyPropsContext } from '$lib/utils/render-strategy'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { usePresence } from '../presence'
-  import { useDialogContext } from './use-dialog-context'
+  import { Ark } from '../factory/index.ts'
+  import { usePresence } from '../presence/index.ts'
+  import { useDialogContext } from './use-dialog-context.ts'
 
   let { ref = $bindable(null), ...props }: DialogBackdropProps = $props()
 

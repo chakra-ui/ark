@@ -12,8 +12,8 @@
 
 <script lang="ts">
   import type { HTMLProps } from '$lib/types'
-  import { parts } from './field.anatomy'
-  import { FieldProvider, useFieldContext } from './use-field-context'
+  import { parts } from './field.anatomy.ts'
+  import { FieldProvider, useFieldContext } from './use-field-context.ts'
 
   let { value, children }: FieldItemProps = $props()
   const parentField = useFieldContext()

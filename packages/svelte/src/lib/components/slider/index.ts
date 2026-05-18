@@ -35,8 +35,8 @@ export {
   type SliderValueTextBaseProps,
   type SliderValueTextProps,
 } from './slider-value-text.svelte'
-export { sliderAnatomy } from './slider.anatomy'
-export { useSliderContext, type UseSliderContext } from './use-slider-context'
-export { useSlider, type UseSliderProps, type UseSliderReturn } from './use-slider.svelte'
+export { sliderAnatomy } from './slider.anatomy.ts'
+export { useSliderContext, type UseSliderContext } from './use-slider-context.ts'
+export { useSlider, type UseSliderProps, type UseSliderReturn } from './use-slider.svelte.ts'
 
-export * as Slider from './slider'
+export * as Slider from './slider.ts'

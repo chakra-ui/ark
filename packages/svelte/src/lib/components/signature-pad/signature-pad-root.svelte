@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseSignaturePadProps } from './use-signature-pad.svelte'
+  import type { UseSignaturePadProps } from './use-signature-pad.svelte.ts'
 
   export interface SignaturePadRootBaseProps extends UseSignaturePadProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface SignaturePadRootProps extends Assign<HTMLProps<'div'>, SignaturePadRootBaseProps> {}
@@ -9,9 +9,9 @@
 <script lang="ts">
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useSignaturePad } from './use-signature-pad.svelte'
-  import { SignaturePadProvider } from './use-signature-pad-context'
+  import { Ark } from '../factory/index.ts'
+  import { useSignaturePad } from './use-signature-pad.svelte.ts'
+  import { SignaturePadProvider } from './use-signature-pad-context.ts'
 
   let { ref = $bindable(null), paths = $bindable(), ...props }: SignaturePadRootProps = $props()
   const providedId = $props.id()

@@ -41,8 +41,8 @@ export {
   type HoverCardTriggerBaseProps,
   type HoverCardTriggerProps,
 } from './hover-card-trigger.svelte'
-export { hoverCardAnatomy } from './hover-card.anatomy'
-export { useHoverCard, type UseHoverCardProps, type UseHoverCardReturn } from './use-hover-card.svelte'
-export { useHoverCardContext, type UseHoverCardContext } from './use-hover-card-context'
+export { hoverCardAnatomy } from './hover-card.anatomy.ts'
+export { useHoverCard, type UseHoverCardProps, type UseHoverCardReturn } from './use-hover-card.svelte.ts'
+export { useHoverCardContext, type UseHoverCardContext } from './use-hover-card-context.ts'
 
-export * as HoverCard from './hover-card'
+export * as HoverCard from './hover-card.ts'

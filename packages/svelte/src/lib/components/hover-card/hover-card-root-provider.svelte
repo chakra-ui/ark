@@ -1,6 +1,6 @@
 <script module lang="ts">
-  import type { UsePresenceProps } from '../presence'
-  import type { UseHoverCardReturn } from './use-hover-card.svelte'
+  import type { UsePresenceProps } from '../presence/index.ts'
+  import type { UseHoverCardReturn } from './use-hover-card.svelte.ts'
 
   interface RootProviderProps {
     value: UseHoverCardReturn
@@ -14,8 +14,8 @@
 
 <script lang="ts">
   import type { Snippet } from 'svelte'
-  import { PresenceProvider, splitPresenceProps, usePresence } from '../presence'
-  import { HoverCardProvider } from './use-hover-card-context'
+  import { PresenceProvider, splitPresenceProps, usePresence } from '../presence/index.ts'
+  import { HoverCardProvider } from './use-hover-card-context.ts'
 
   const { value, ...props }: HoverCardRootProviderProps = $props()
 

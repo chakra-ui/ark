@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseSwitchProps } from './use-switch.svelte'
+  import type { UseSwitchProps } from './use-switch.svelte.ts'
 
   export interface SwitchRootBaseProps extends UseSwitchProps, PolymorphicProps<'label'>, RefAttribute {}
   export interface SwitchRootProps extends Assign<HTMLProps<'label'>, SwitchRootBaseProps> {}
@@ -9,9 +9,9 @@
 <script lang="ts">
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useSwitch } from './use-switch.svelte'
-  import { SwitchProvider } from './use-switch-context'
+  import { Ark } from '../factory/index.ts'
+  import { useSwitch } from './use-switch.svelte.ts'
+  import { SwitchProvider } from './use-switch-context.ts'
 
   let { ref = $bindable(null), checked = $bindable(), ...props }: SwitchRootProps = $props()
   const providedId = $props.id()

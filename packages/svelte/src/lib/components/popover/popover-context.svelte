@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { UsePopoverContext } from './use-popover-context'
+  import type { UsePopoverContext } from './use-popover-context.ts'
 
   export interface PopoverContextProps {
     render?: Snippet<[UsePopoverContext]>
@@ -8,7 +8,7 @@
 </script>
 
 <script lang="ts">
-  import { usePopoverContext } from './use-popover-context'
+  import { usePopoverContext } from './use-popover-context.ts'
 
   const { render }: PopoverContextProps = $props()
 

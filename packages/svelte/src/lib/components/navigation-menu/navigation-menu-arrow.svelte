@@ -7,8 +7,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useNavigationMenuContext } from './use-navigation-menu-context'
+  import { Ark } from '../factory/index.ts'
+  import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
 
   let { ref = $bindable(null), ...props }: NavigationMenuArrowProps = $props()
 

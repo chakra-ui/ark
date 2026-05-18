@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UseSwitchReturn } from './use-switch.svelte'
+import type { UseSwitchReturn } from './use-switch.svelte.ts'
 
 export interface UseSwitchContext extends UseSwitchReturn {}
 

@@ -44,8 +44,8 @@ export {
   type AngleSliderValueTextBaseProps,
   type AngleSliderValueTextProps,
 } from './angle-slider-value-text.svelte'
-export { angleSliderAnatomy } from './angle-slider.anatomy'
-export { useAngleSliderContext, type UseAngleSliderContext } from './use-angle-slider-context'
-export { useAngleSlider, type UseAngleSliderProps, type UseAngleSliderReturn } from './use-angle-slider.svelte'
+export { angleSliderAnatomy } from './angle-slider.anatomy.ts'
+export { useAngleSliderContext, type UseAngleSliderContext } from './use-angle-slider-context.ts'
+export { useAngleSlider, type UseAngleSliderProps, type UseAngleSliderReturn } from './use-angle-slider.svelte.ts'
 
-export * as AngleSlider from './angle-slider'
+export * as AngleSlider from './angle-slider.ts'

@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseTabsProps } from './use-tabs.svelte'
+  import type { UseTabsProps } from './use-tabs.svelte.ts'
 
   export interface TabsRootBaseProps extends UseTabsProps, RenderStrategyProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface TabsRootProps extends Assign<HTMLProps<'div'>, TabsRootBaseProps> {}
@@ -14,9 +14,9 @@
     type RenderStrategyProps,
   } from '$lib/utils/render-strategy'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { TabsProvider } from './use-tabs-context'
-  import { useTabs } from './use-tabs.svelte'
+  import { Ark } from '../factory/index.ts'
+  import { TabsProvider } from './use-tabs-context.ts'
+  import { useTabs } from './use-tabs.svelte.ts'
 
   let { ref = $bindable(null), value = $bindable(), ...props }: TabsRootProps = $props()
 

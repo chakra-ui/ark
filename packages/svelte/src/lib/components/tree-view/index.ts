@@ -11,7 +11,12 @@ export type {
   RenameStartDetails as TreeViewRenameStartDetails,
   SelectionChangeDetails as TreeViewSelectionChangeDetails,
 } from '@zag-js/tree-view'
-export { createFileTreeCollection, createTreeCollection, type TreeCollection, type TreeNode } from '../collection'
+export {
+  createFileTreeCollection,
+  createTreeCollection,
+  type TreeCollection,
+  type TreeNode,
+} from '../collection/index.ts'
 export {
   default as TreeViewBranch,
   type TreeViewBranchBaseProps,
@@ -99,14 +104,14 @@ export {
   type TreeViewRootProviderProps,
 } from './tree-view-root-provider.svelte'
 export { default as TreeViewTree, type TreeViewTreeBaseProps, type TreeViewTreeProps } from './tree-view-tree.svelte'
-export { treeViewAnatomy } from './tree-view.anatomy'
-export { useTreeViewContext } from './use-tree-view-context'
-export type { UseTreeViewContext } from './use-tree-view-context'
-export { useTreeViewNodeContext } from './use-tree-view-node-context'
-export type { UseTreeViewNodeContext } from './use-tree-view-node-context'
-export { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
-export type { UseTreeViewNodePropsContext } from './use-tree-view-node-props-context'
-export { useTreeView } from './use-tree-view.svelte'
-export type { UseTreeViewProps, UseTreeViewReturn } from './use-tree-view.svelte'
+export { treeViewAnatomy } from './tree-view.anatomy.ts'
+export { useTreeViewContext } from './use-tree-view-context.ts'
+export type { UseTreeViewContext } from './use-tree-view-context.ts'
+export { useTreeViewNodeContext } from './use-tree-view-node-context.ts'
+export type { UseTreeViewNodeContext } from './use-tree-view-node-context.ts'
+export { useTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
+export type { UseTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
+export { useTreeView } from './use-tree-view.svelte.ts'
+export type { UseTreeViewProps, UseTreeViewReturn } from './use-tree-view.svelte.ts'
 
-export * as TreeView from './tree-view'
+export * as TreeView from './tree-view.ts'

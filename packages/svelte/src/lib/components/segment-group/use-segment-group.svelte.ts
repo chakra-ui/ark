@@ -1,8 +1,8 @@
 import * as segmentGroup from '@zag-js/radio-group'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Accessor, Optional } from '../../types'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { Accessor, Optional } from '../../types.ts'
 
 export interface UseSegmentGroupProps extends Optional<Omit<segmentGroup.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseSegmentGroupReturn extends Accessor<segmentGroup.Api<PropTypes>> {}

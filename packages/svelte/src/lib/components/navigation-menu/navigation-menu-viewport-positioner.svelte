@@ -12,9 +12,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useNavigationMenuContext } from './use-navigation-menu-context'
-  import { setNavigationMenuViewportPropsContext } from './use-navigation-menu-viewport-props-context'
+  import { Ark } from '../factory/index.ts'
+  import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
+  import { setNavigationMenuViewportPropsContext } from './use-navigation-menu-viewport-props-context.ts'
   import { createSplitProps } from '$lib/utils/create-split-props'
 
   import type { Snippet } from 'svelte'

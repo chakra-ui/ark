@@ -8,11 +8,11 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
+  import { Ark } from '../factory/index.ts'
   import { createSplitProps } from '$lib/utils/create-split-props'
-  import { useTagsInputContext } from './use-tags-input-context'
-  import { TagsInputItemProvider } from './use-tags-input-item-context'
-  import { TagsInputItemPropsProvider } from './use-tags-input-item-props-context'
+  import { useTagsInputContext } from './use-tags-input-context.ts'
+  import { TagsInputItemProvider } from './use-tags-input-item-context.ts'
+  import { TagsInputItemPropsProvider } from './use-tags-input-item-props-context.ts'
 
   let { ref = $bindable(null), ...props }: TagsInputItemProps = $props()
   const tagsInput = useTagsInputContext()

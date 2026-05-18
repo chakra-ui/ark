@@ -10,7 +10,7 @@
 </script>
 
 <script lang="ts">
-  import { useTreeViewNodeContext } from './use-tree-view-node-context'
+  import { useTreeViewNodeContext } from './use-tree-view-node-context.ts'
 
   const { children, indeterminate, fallback }: TreeViewNodeCheckboxIndicatorProps = $props()
 

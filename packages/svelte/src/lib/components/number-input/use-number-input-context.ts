@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UseNumberInputReturn } from './use-number-input.svelte'
+import type { UseNumberInputReturn } from './use-number-input.svelte.ts'
 
 export interface UseNumberInputContext extends UseNumberInputReturn {}
 

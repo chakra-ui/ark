@@ -9,8 +9,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useSwapContext } from './use-swap-context'
+  import { Ark } from '../factory/index.ts'
+  import { useSwapContext } from './use-swap-context.ts'
 
   let { ref = $bindable(null), type, children, ...props }: SwapIndicatorProps = $props()
 

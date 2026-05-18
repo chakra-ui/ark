@@ -7,8 +7,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useRadioGroupContext } from './use-radio-group-context'
+  import { Ark } from '../factory/index.ts'
+  import { useRadioGroupContext } from './use-radio-group-context.ts'
 
   let { ref = $bindable(null), ...props }: RadioGroupLabelProps = $props()
   const radioGroup = useRadioGroupContext()

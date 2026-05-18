@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { UseDialogReturn } from './use-dialog.svelte'
+  import type { UseDialogReturn } from './use-dialog.svelte.ts'
 
   export interface DialogRootProviderBaseProps {
     value: UseDialogReturn
@@ -12,9 +12,9 @@
 
 <script lang="ts">
   import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '$lib/utils/render-strategy'
-  import { PresenceProvider, usePresence } from '../presence'
-  import { splitPresenceProps } from '../presence/split-presence-props.svelte'
-  import { DialogProvider } from './use-dialog-context'
+  import { PresenceProvider, usePresence } from '../presence/index.ts'
+  import { splitPresenceProps } from '../presence/split-presence-props.svelte.ts'
+  import { DialogProvider } from './use-dialog-context.ts'
 
   let { value, children, ...props }: DialogRootProviderProps = $props()
 

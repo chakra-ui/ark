@@ -1,3 +1,3 @@
-export * from './environment'
-export * from './interaction'
-export * from './locale'
+export * from './environment/index.ts'
+export * from './interaction/index.ts'
+export * from './locale/index.ts'

@@ -7,10 +7,10 @@
     keyPathToKey,
   } from '@zag-js/json-tree-utils'
   import type { Snippet } from 'svelte'
-  import { TreeView, useTreeViewContext } from '../tree-view'
+  import { TreeView, useTreeViewContext } from '../tree-view/index.ts'
   import JsonTreeViewKeyNode from './json-tree-view-key-node.svelte'
   import JsonTreeViewNode from './json-tree-view-node.svelte'
-  import { useJsonTreeViewPropsContext } from './json-tree-view-props-context'
+  import { useJsonTreeViewPropsContext } from './json-tree-view-props-context.ts'
   import JsonTreeViewValueNode from './json-tree-view-value-node.svelte'
 
   export interface JsonTreeViewNodeBaseProps {

@@ -1,5 +1,5 @@
 import { createSplitProps } from '$lib/utils/create-split-props'
-import type { UseSplitterProps } from './use-splitter.svelte'
+import type { UseSplitterProps } from './use-splitter.svelte.ts'
 
 export function splitSplitterProps<T extends UseSplitterProps>(props: T) {
   return createSplitProps<UseSplitterProps>()(props, [

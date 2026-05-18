@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseMarqueeProps } from './use-marquee.svelte'
+  import type { UseMarqueeProps } from './use-marquee.svelte.ts'
 
   export interface MarqueeRootBaseProps
     extends Optional<UseMarqueeProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
@@ -9,10 +9,10 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { createSplitProps } from '../../utils/create-split-props'
-  import { Ark } from '../factory'
-  import { MarqueeProvider } from './use-marquee-context'
-  import { useMarquee } from './use-marquee.svelte'
+  import { createSplitProps } from '../../utils/create-split-props.ts'
+  import { Ark } from '../factory/index.ts'
+  import { MarqueeProvider } from './use-marquee-context.ts'
+  import { useMarquee } from './use-marquee.svelte.ts'
 
   let { ref = $bindable(null), ...props }: MarqueeRootProps = $props()
   const providedId = $props.id()

@@ -39,10 +39,10 @@ export {
   type EditableSubmitTriggerBaseProps,
   type EditableSubmitTriggerProps,
 } from './editable-submit-trigger.svelte'
-export { editableAnatomy } from './editable.anatomy'
-export { useEditableContext } from './use-editable-context'
-export type { UseEditableContext } from './use-editable-context'
-export { useEditable } from './use-editable.svelte'
-export type { UseEditableProps, UseEditableReturn } from './use-editable.svelte'
+export { editableAnatomy } from './editable.anatomy.ts'
+export { useEditableContext } from './use-editable-context.ts'
+export type { UseEditableContext } from './use-editable-context.ts'
+export { useEditable } from './use-editable.svelte.ts'
+export type { UseEditableProps, UseEditableReturn } from './use-editable.svelte.ts'
 
-export * as Editable from './editable'
+export * as Editable from './editable.ts'

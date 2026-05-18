@@ -1,8 +1,8 @@
 <script lang="ts">
   import type { JsonNode } from '@zag-js/json-tree-utils'
-  import { TreeViewRootProvider, type TreeViewRootProviderProps } from '../tree-view'
-  import { JsonTreeViewPropsProvider } from './json-tree-view-props-context'
-  import type { UseJsonTreeViewReturn } from './use-json-tree-view.svelte'
+  import { TreeViewRootProvider, type TreeViewRootProviderProps } from '../tree-view/index.ts'
+  import { JsonTreeViewPropsProvider } from './json-tree-view-props-context.ts'
+  import type { UseJsonTreeViewReturn } from './use-json-tree-view.svelte.ts'
 
   export interface JsonTreeViewRootProviderProps extends TreeViewRootProviderProps<JsonNode> {}
 

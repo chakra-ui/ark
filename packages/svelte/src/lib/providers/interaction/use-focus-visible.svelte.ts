@@ -1,6 +1,6 @@
 import type { Accessor } from '$lib/types'
 import { isFocusVisible, trackFocusVisible } from '@zag-js/focus-visible'
-import { useEnvironmentContext } from '../environment'
+import { useEnvironmentContext } from '../environment/index.ts'
 
 export interface UseFocusVisibleProps {
   isTextInput?: boolean

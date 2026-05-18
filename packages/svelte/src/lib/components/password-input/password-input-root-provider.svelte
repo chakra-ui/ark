@@ -1,7 +1,7 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
   import type { Assign, HTMLProps, RefAttribute } from '$lib/types'
-  import type { UsePasswordInputReturn } from './use-password-input.svelte'
+  import type { UsePasswordInputReturn } from './use-password-input.svelte.ts'
 
   interface RootProviderProps {
     value: UsePasswordInputReturn
@@ -15,8 +15,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { PasswordInputProvider } from './use-password-input-context'
+  import { Ark } from '../factory/index.ts'
+  import { PasswordInputProvider } from './use-password-input-context.ts'
 
   let { ref = $bindable(null), ...props }: PasswordInputRootProviderProps = $props()
 

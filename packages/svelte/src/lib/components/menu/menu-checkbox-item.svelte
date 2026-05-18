@@ -11,10 +11,10 @@
 <script lang="ts">
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useMenuContext } from './use-menu-context'
-  import { MenuItemProvider } from './use-menu-item-context'
-  import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
+  import { Ark } from '../factory/index.ts'
+  import { useMenuContext } from './use-menu-context.ts'
+  import { MenuItemProvider } from './use-menu-item-context.ts'
+  import { MenuItemPropsProvider } from './use-menu-option-item-props-context.ts'
 
   let { ref = $bindable(null), checked = $bindable<boolean>(), ...props }: MenuCheckboxItemProps = $props()
 

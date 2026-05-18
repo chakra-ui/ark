@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UseClipboardReturn } from './use-clipboard.svelte'
+import type { UseClipboardReturn } from './use-clipboard.svelte.ts'
 
 export interface UseClipboardContext extends UseClipboardReturn {}
 

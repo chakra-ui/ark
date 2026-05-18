@@ -45,8 +45,8 @@ export {
   type PaginationRootBaseProps,
   type PaginationRootProps,
 } from './pagination-root.svelte'
-export { paginationAnatomy } from './pagination.anatomy'
-export { usePagination, type UsePaginationProps, type UsePaginationReturn } from './use-pagination.svelte'
-export { usePaginationContext, type UsePaginationContext } from './use-pagination-context'
+export { paginationAnatomy } from './pagination.anatomy.ts'
+export { usePagination, type UsePaginationProps, type UsePaginationReturn } from './use-pagination.svelte.ts'
+export { usePaginationContext, type UsePaginationContext } from './use-pagination-context.ts'
 
-export * as Pagination from './pagination'
+export * as Pagination from './pagination.ts'

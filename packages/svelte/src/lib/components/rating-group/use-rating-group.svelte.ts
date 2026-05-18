@@ -1,9 +1,9 @@
 import * as rating from '@zag-js/rating-group'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Accessor, Optional } from '../../types'
-import { useFieldContext } from '../field'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { Accessor, Optional } from '../../types.ts'
+import { useFieldContext } from '../field/index.ts'
 
 export interface UseRatingGroupProps extends Optional<Omit<rating.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseRatingGroupReturn extends Accessor<rating.Api<PropTypes>> {}

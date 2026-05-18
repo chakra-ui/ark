@@ -1,5 +1,5 @@
 import type { ItemGroupProps } from '@zag-js/file-upload'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 import type { Accessor } from '$lib/types'
 
 export interface UseFileUploadItemGroupPropsContext extends Accessor<ItemGroupProps> {}

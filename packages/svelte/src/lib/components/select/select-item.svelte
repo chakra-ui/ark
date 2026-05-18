@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { CollectionItem } from '../collection'
+  import type { CollectionItem } from '../collection/index.ts'
 
   export interface SelectItemBaseProps<T extends CollectionItem = CollectionItem>
     extends PolymorphicProps<'div'>, RefAttribute {
@@ -18,9 +18,9 @@
   import { createSplitProps } from '$lib/utils/create-split-props'
   import type { ItemProps } from '@zag-js/select'
   import { mergeProps } from '@zag-js/svelte'
-  import { useSelectContext } from './use-select-context'
-  import { SelectItemProvider } from './use-select-item-context'
-  import { SelectItemPropsProvider } from './use-select-item-props-context'
+  import { useSelectContext } from './use-select-context.ts'
+  import { SelectItemProvider } from './use-select-item-context.ts'
+  import { SelectItemPropsProvider } from './use-select-item-props-context.ts'
 
   let { ref = $bindable(null), ...props }: SelectItemProps<T> = $props()
 

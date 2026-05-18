@@ -6,7 +6,7 @@ export type {
   PointerDownOutsideEvent,
   ValueChangeDetails,
 } from '@zag-js/select'
-export type { CollectionItem, ListCollection } from '../collection'
+export type { CollectionItem, ListCollection } from '../collection/index.ts'
 export {
   default as ClearTrigger,
   type SelectClearTriggerProps as ClearTriggerProps,

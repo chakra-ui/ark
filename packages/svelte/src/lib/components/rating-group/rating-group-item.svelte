@@ -8,10 +8,10 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
+  import { Ark } from '../factory/index.ts'
   import { createSplitProps } from '$lib/utils/create-split-props'
-  import { useRatingGroupContext } from './use-rating-group-context'
-  import { RatingGroupItemProvider } from './use-rating-group-item-context'
+  import { useRatingGroupContext } from './use-rating-group-context.ts'
+  import { RatingGroupItemProvider } from './use-rating-group-item-context.ts'
 
   let { ref = $bindable(null), ...props }: RatingGroupItemProps = $props()
   const ratingGroup = useRatingGroupContext()

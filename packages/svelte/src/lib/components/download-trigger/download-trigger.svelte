@@ -1,9 +1,9 @@
 <script lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import { Ark } from '../factory'
-  import { type UseDownloadProps, useDownload } from './use-download.svelte'
+  import { Ark } from '../factory/index.ts'
+  import { type UseDownloadProps, useDownload } from './use-download.svelte.ts'
 
-  export type { DownloadableData, MaybePromise } from './use-download.svelte'
+  export type { DownloadableData, MaybePromise } from './use-download.svelte.ts'
 
   export interface DownloadTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute, UseDownloadProps {}
 

@@ -1,9 +1,9 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { Snippet } from 'svelte'
-  import type { CollectionItem } from '../collection'
-  import type { UsePresenceProps } from '../presence'
-  import type { UseComboboxProps } from './use-combobox.svelte'
+  import type { CollectionItem } from '../collection/index.ts'
+  import type { UsePresenceProps } from '../presence/index.ts'
+  import type { UseComboboxProps } from './use-combobox.svelte.ts'
 
   export interface ComboboxRootBaseProps<T extends CollectionItem>
     extends UseComboboxProps<T>, UsePresenceProps, PolymorphicProps<'div'>, RefAttribute {}
@@ -26,10 +26,10 @@
 <script lang="ts" generics="T extends CollectionItem">
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { PresenceProvider, splitPresenceProps, usePresence } from '../presence'
-  import { ComboboxProvider } from './use-combobox-context'
-  import { useCombobox } from './use-combobox.svelte'
+  import { Ark } from '../factory/index.ts'
+  import { PresenceProvider, splitPresenceProps, usePresence } from '../presence/index.ts'
+  import { ComboboxProvider } from './use-combobox-context.ts'
+  import { useCombobox } from './use-combobox.svelte.ts'
 
   let {
     ref = $bindable(null),

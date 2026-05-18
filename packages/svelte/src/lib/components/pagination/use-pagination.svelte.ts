@@ -2,8 +2,8 @@ import { runIfFn } from '$lib/utils/run-if-fn'
 import * as pagination from '@zag-js/pagination'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import type { MaybeFunction } from '@zag-js/utils'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Accessor, Optional } from '../../types'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { Accessor, Optional } from '../../types.ts'
 
 export interface UsePaginationProps extends Optional<Omit<pagination.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UsePaginationReturn extends Accessor<pagination.Api<PropTypes>> {}

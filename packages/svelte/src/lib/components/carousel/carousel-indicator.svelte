@@ -9,8 +9,8 @@
 <script lang="ts">
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useCarouselContext } from './use-carousel-context'
+  import { Ark } from '../factory/index.ts'
+  import { useCarouselContext } from './use-carousel-context.ts'
 
   let { ref = $bindable(null), ...props }: CarouselIndicatorProps = $props()
   const [indicatorProps, localProps] = $derived(createSplitProps<IndicatorProps>()(props, ['index', 'readOnly']))

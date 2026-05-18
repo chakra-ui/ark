@@ -7,9 +7,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useComboboxContext } from './use-combobox-context'
-  import { useComboboxItemGroupPropsContext } from './use-combobox-item-group-props-context'
+  import { Ark } from '../factory/index.ts'
+  import { useComboboxContext } from './use-combobox-context.ts'
+  import { useComboboxItemGroupPropsContext } from './use-combobox-item-group-props-context.ts'
 
   let { ref = $bindable(null), ...props }: ComboboxItemGroupLabelProps = $props()
 

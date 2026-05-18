@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseSliderProps } from './use-slider.svelte'
+  import type { UseSliderProps } from './use-slider.svelte.ts'
 
   export interface SliderRootBaseProps extends Optional<UseSliderProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface SliderRootProps extends Assign<HTMLProps<'div'>, SliderRootBaseProps> {}
@@ -8,10 +8,10 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { createSplitProps } from '../../utils/create-split-props'
-  import { Ark } from '../factory'
-  import { SliderProvider } from './use-slider-context'
-  import { useSlider } from './use-slider.svelte'
+  import { createSplitProps } from '../../utils/create-split-props.ts'
+  import { Ark } from '../factory/index.ts'
+  import { SliderProvider } from './use-slider-context.ts'
+  import { useSlider } from './use-slider.svelte.ts'
 
   let { ref = $bindable(null), value = $bindable(), ...props }: SliderRootProps = $props()
   const providedId = $props.id()

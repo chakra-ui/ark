@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseTagsInputReturn } from './use-tags-input.svelte'
+  import type { UseTagsInputReturn } from './use-tags-input.svelte.ts'
 
   export interface TagsInputRootProviderBaseProps extends PolymorphicProps<'div'>, RefAttribute {
     value: UseTagsInputReturn
@@ -10,8 +10,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { TagsInputProvider } from './use-tags-input-context'
+  import { Ark } from '../factory/index.ts'
+  import { TagsInputProvider } from './use-tags-input-context.ts'
 
   let { ref = $bindable(null), value, ...props }: TagsInputRootProviderProps = $props()
 

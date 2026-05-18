@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseFileUploadProps } from './use-file-upload.svelte'
+  import type { UseFileUploadProps } from './use-file-upload.svelte.ts'
 
   export interface FileUploadRootBaseProps extends UseFileUploadProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface FileUploadRootProps extends Assign<HTMLProps<'div'>, FileUploadRootBaseProps> {}
@@ -8,10 +8,10 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { createSplitProps } from '../../utils/create-split-props'
-  import { Ark } from '../factory'
-  import { FileUploadProvider } from './use-file-upload-context'
-  import { useFileUpload } from './use-file-upload.svelte'
+  import { createSplitProps } from '../../utils/create-split-props.ts'
+  import { Ark } from '../factory/index.ts'
+  import { FileUploadProvider } from './use-file-upload-context.ts'
+  import { useFileUpload } from './use-file-upload.svelte.ts'
 
   let { ref = $bindable(null), acceptedFiles = $bindable(), ...props }: FileUploadRootProps = $props()
   const providedId = $props.id()

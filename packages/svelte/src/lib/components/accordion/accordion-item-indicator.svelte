@@ -7,9 +7,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useAccordionContext } from './use-accordion-context'
-  import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
+  import { Ark } from '../factory/index.ts'
+  import { useAccordionContext } from './use-accordion-context.ts'
+  import { useAccordionItemPropsContext } from './use-accordion-item-props-context.ts'
 
   let { ref = $bindable(null), ...props }: AccordionItemIndicatorProps = $props()
 

@@ -1,9 +1,9 @@
 <script lang="ts">
   import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '$lib/utils/render-strategy'
   import type { Snippet } from 'svelte'
-  import { PresenceProvider, splitPresenceProps, usePresence, type UsePresenceProps } from '../presence'
-  import { TourProvider } from './use-tour-context'
-  import type { UseTourReturn } from './use-tour.svelte'
+  import { PresenceProvider, splitPresenceProps, usePresence, type UsePresenceProps } from '../presence/index.ts'
+  import { TourProvider } from './use-tour-context.ts'
+  import type { UseTourReturn } from './use-tour.svelte.ts'
 
   export interface TourRootBaseProps extends UsePresenceProps {
     tour: UseTourReturn

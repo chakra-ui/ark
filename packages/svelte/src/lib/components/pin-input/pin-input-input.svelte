@@ -8,9 +8,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { createSplitProps } from '../../utils/create-split-props'
-  import { Ark } from '../factory'
-  import { usePinInputContext } from './use-pin-input-context'
+  import { createSplitProps } from '../../utils/create-split-props.ts'
+  import { Ark } from '../factory/index.ts'
+  import { usePinInputContext } from './use-pin-input-context.ts'
 
   let { ref = $bindable(null), ...props }: PinInputInputProps = $props()
   const pinInput = usePinInputContext()

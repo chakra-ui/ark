@@ -3,8 +3,8 @@ import type { HTMLProps } from '$lib/types'
 import { ariaAttr, dataAttr } from '@zag-js/dom-query'
 import { type MaybeFunction, ensureProps, runIfFn } from '@zag-js/utils'
 import { onMount } from 'svelte'
-import { useFieldsetContext } from '../fieldset/use-fieldset-context'
-import { parts } from './field.anatomy'
+import { useFieldsetContext } from '../fieldset/use-fieldset-context.ts'
+import { parts } from './field.anatomy.ts'
 
 export interface ElementIds {
   root?: string

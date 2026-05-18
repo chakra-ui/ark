@@ -1,9 +1,9 @@
 <script lang="ts">
   import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { TimerProvider } from './use-timer-context'
-  import type { UseTimerReturn } from './use-timer.svelte'
+  import { Ark } from '../factory/index.ts'
+  import { TimerProvider } from './use-timer-context.ts'
+  import type { UseTimerReturn } from './use-timer.svelte.ts'
 
   interface RootProviderProps {
     value: UseTimerReturn

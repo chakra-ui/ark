@@ -1,5 +1,5 @@
 import { createSplitProps } from '$lib/utils/create-split-props'
-import type { UseNumberInputProps } from './use-number-input.svelte'
+import type { UseNumberInputProps } from './use-number-input.svelte.ts'
 
 const splitFn = createSplitProps<UseNumberInputProps>()
 
