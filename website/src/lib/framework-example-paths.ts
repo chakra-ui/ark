@@ -49,7 +49,21 @@ export const getFrameworkExampleFilePath = (framework: string, component: string
   return join(getFrameworkExampleDir(framework, component), `${id}.${getFrameworkExtension(framework)}`)
 }
 
+export const getFrameworkExampleDisplayPath = (framework: string, component: string) => {
+  if (framework === 'angular') {
+    return `packages/angular/${component}/examples`
+  }
+  return `packages/${framework}/${getSrcPath(framework)}/${getExamplePath(component)}`
+}
+
 export const cleanExampleCode = (framework: string, content: string): string => {
-  const iconPackage = framework === 'vue' ? 'lucide-vue-next' : 'lucide-react'
-  return content.replaceAll(/from '\.\/icons'/g, `from '${iconPackage}'`).replace(/.*@ts-expect-error.*\n/g, '')
+  const iconPackage = Match.value(framework).pipe(
+    Match.when('react', () => 'lucide-react'),
+    Match.when('solid', () => 'lucide-solid'),
+    Match.when('svelte', () => 'lucide-svelte'),
+    Match.when('vue', () => 'lucide-vue-next'),
+    Match.orElse(() => undefined),
+  )
+  const code = iconPackage ? content.replaceAll(/from '\.\/icons'/g, `from '${iconPackage}'`) : content
+  return code.replace(/.*@ts-expect-error.*\n/g, '')
 }

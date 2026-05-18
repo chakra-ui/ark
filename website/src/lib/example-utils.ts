@@ -4,14 +4,14 @@ import { Project } from 'ts-morph'
 import {
   cleanExampleCode,
   getFrameworkExampleDir,
+  getFrameworkExampleDisplayPath,
   getFrameworkExampleFilePath,
   getFrameworkExtension,
-  getExamplePath,
   getPackageBasePath,
   getSrcPath,
 } from './framework-example-paths'
 
-export { getExamplePath, getFrameworkExtension, getPackageBasePath, getSrcPath }
+export { getFrameworkExampleDisplayPath, getFrameworkExtension, getPackageBasePath, getSrcPath }
 
 export const SUPPORTED_FRAMEWORKS = ['react', 'solid', 'vue', 'svelte', 'angular'] as const
 
@@ -45,8 +45,8 @@ export const extractNpmDependencies = (code: string): string[] => {
   return Array.from(dependencies)
 }
 
-export const cleanCode = (content: string): string => {
-  return cleanExampleCode('vue', content).replaceAll(/from 'styles\//g, `from './`)
+export const cleanCode = (framework: string, content: string): string => {
+  return cleanExampleCode(framework, content).replaceAll(/from 'styles\//g, `from './`)
 }
 
 export const getAllComponents = async (framework: string): Promise<string[]> => {
@@ -65,8 +65,8 @@ export const getAllComponents = async (framework: string): Promise<string[]> => 
           // No examples directory, skip
         }
       }
-    } catch (error) {
-      console.error('Error reading components:', error)
+    } catch {
+      return []
     }
     return Array.from(components).sort()
   }

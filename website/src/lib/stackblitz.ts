@@ -20,7 +20,7 @@ const handlers: Record<Framework, (opts: StackblitzOptions) => void> = {
 }
 
 export const isStackblitzFramework = (framework: string): framework is Framework => {
-  return framework in handlers
+  return Object.hasOwn(handlers, framework)
 }
 
 export const openInStackblitz = (framework: string, opts: StackblitzOptions): void => {

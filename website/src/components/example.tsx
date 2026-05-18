@@ -95,19 +95,7 @@ const fetchFrameworkCode = async (
  * Check if a React example file exists (server-side only)
  */
 function exampleExists(component: string, id: string): boolean {
-  const examplePath = Match.value(component).pipe(
-    Match.when(
-      () => ['progress-circular', 'progress-linear'].includes(component),
-      () => `components/progress/examples/${component.split('-')[1]}`,
-    ),
-    Match.when(
-      () => ['environment', 'locale'].includes(component),
-      () => `providers/${component}/examples`,
-    ),
-    Match.orElse(() => `components/${component}/examples`),
-  )
-
-  const filePath = join(process.cwd(), '..', 'packages', 'react', 'src', examplePath, `${id}.tsx`)
+  const filePath = getFrameworkExampleFilePath('react', component, id)
   return existsSync(filePath)
 }
 

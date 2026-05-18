@@ -35,6 +35,7 @@ const flush = (fn: VoidFunction): void => {
   queueMicrotask(fn)
 }
 
+// Zag does not ship an Angular adapter, so this service shell owns only the Angular signal/DI bridge while delegating state graph traversal to @zag-js/core helpers.
 export function useMachine<TSchema extends MachineSchema, TApi>(
   options: UseMachineOptions<TSchema, TApi>,
 ): UseMachineReturn<StateFor<TSchema>, TApi, Service<TSchema>> {
@@ -68,7 +69,7 @@ export function useMachine<TSchema extends MachineSchema, TApi>(
   const currentProps = signal<Record<string, unknown>>(initialContext)
 
   const scope = computed(() => {
-    const props = currentProps()
+    const props = currentProps() as { id?: unknown; ids?: unknown; getRootNode?: unknown }
     return createScope({
       id: props.id as string | undefined,
       ids: props.ids as Record<string, unknown> | undefined,
