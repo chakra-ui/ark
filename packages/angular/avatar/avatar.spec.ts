@@ -191,11 +191,20 @@ describe('@ark-ui/angular/avatar', () => {
 
     TestBed.configureTestingModule({ imports: [MissingValueHost] })
 
+    let thrown: unknown
     expect(() => {
-      const fixture = TestBed.createComponent(MissingValueHost)
-      fixture.detectChanges()
-      fixture.destroy()
+      try {
+        const fixture = TestBed.createComponent(MissingValueHost)
+        fixture.detectChanges()
+        fixture.destroy()
+      } catch (error) {
+        thrown = error
+        throw error
+      }
     }).toThrow(/required input|NG0950/i)
+    expect(String((thrown as { code?: unknown } | undefined)?.code ?? thrown)).toMatch(
+      /NG0950|-950|value|required input/i,
+    )
   })
 
   it('updating [ids] to changed contents triggers one setContext patch with ids (AC #14)', () => {
@@ -248,12 +257,14 @@ describe('@ark-ui/angular/avatar', () => {
 
     fixture.componentInstance.ids.set({ root: 'r1', image: 'i1', fallback: 'f1' })
     TestBed.tick()
-    const afterEqual = spy.mock.calls.length
+    fixture.componentInstance.ids.set({ root: 'r1', image: 'i1', fallback: 'f1' })
+    TestBed.tick()
+    const afterEqualContentUpdates = spy.mock.calls.length
 
     fixture.componentInstance.ids.set({ root: 'r2', image: 'i1', fallback: 'f1' })
     TestBed.tick()
 
-    expect(afterEqual).toBe(0)
+    expect(afterEqualContentUpdates).toBe(0)
     const idsPatches = spy.mock.calls.filter((args) => {
       const patch = (args as unknown[])[0]
       return !!patch && Object.hasOwn(patch as object, 'ids')

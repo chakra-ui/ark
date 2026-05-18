@@ -1,20 +1,10 @@
 import * as avatar from '@zag-js/avatar'
-import { useMachine } from '@ark-ui/angular/src/_zag/use-machine'
-import { createArkId } from '@ark-ui/angular/src/internal/id'
-import type { UseMachineReturn } from '@ark-ui/angular/src/internal/types'
+import type { Machine } from '@zag-js/core'
+import { useMachine } from '@ark-ui/angular/src/_zag'
+import { createArkId } from '@ark-ui/angular/src/internal'
+import type { UseMachineReturn } from '@ark-ui/angular/src/internal'
 import { injectArkEnvironment } from '@ark-ui/angular/src/providers/environment'
 import { injectArkLocale } from '@ark-ui/angular/src/providers/locale'
-import { startZagMachine, type ZagServiceLike } from './_zag-machine-adapter'
-
-const identityNormalize: unknown = new Proxy(
-  {},
-  {
-    get(_t, key) {
-      if (key === 'style') return (props: Record<string, unknown>) => ({ style: props })
-      return (props: Record<string, unknown>) => props
-    },
-  },
-)
 
 type OptionalId<T extends { id: string }> = Omit<T, 'id'> & { id?: string }
 
@@ -27,26 +17,15 @@ export interface UseAvatarOptions {
 }
 
 type AvatarContext = Record<string, unknown>
-
-interface StartableMachine {
-  start: (context: AvatarContext) => avatar.Service
-}
-
-const startable: StartableMachine = {
-  start: (context: AvatarContext) =>
-    startZagMachine({
-      machine: avatar.machine as never,
-      context,
-    }) as unknown as avatar.Service,
-}
+type AvatarSchema = avatar.Machine extends Machine<infer TSchema> ? TSchema : never
 
 export function useAvatar(options: UseAvatarOptions): UseAvatarReturn {
   const locale = injectArkLocale()
   const environment = injectArkEnvironment()
   const fallbackId = createArkId('avatar')
 
-  return useMachine<AvatarContext, avatar.Service['state'], avatar.Api, avatar.Service>({
-    machine: startable,
+  return useMachine<AvatarSchema, avatar.Api>({
+    machine: avatar.machine,
     context: () => {
       const props = options.context()
       return {
@@ -56,8 +35,6 @@ export function useAvatar(options: UseAvatarOptions): UseAvatarReturn {
         id: props.id ?? fallbackId,
       } as AvatarContext
     },
-    connect: (service) => avatar.connect(service as never, identityNormalize as never),
+    connect: (service, normalize) => avatar.connect(service, normalize),
   })
 }
-
-export type { ZagServiceLike }

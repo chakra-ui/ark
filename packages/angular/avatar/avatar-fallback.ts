@@ -1,5 +1,5 @@
 import { DestroyRef, Directive, ElementRef, Renderer2, inject } from '@angular/core'
-import { applyArkProps } from '@ark-ui/angular/src/_zag/apply-ark-props'
+import { applyArkProps } from '@ark-ui/angular/src/_zag'
 import { injectArkAvatarContext } from './use-avatar-context'
 
 @Directive({

@@ -7,12 +7,13 @@ import {
   type InputSignal,
   type OutputEmitterRef,
   type Signal,
+  computed,
   forwardRef,
   inject,
   input,
   output,
 } from '@angular/core'
-import { applyArkProps } from '@ark-ui/angular/src/_zag/apply-ark-props'
+import { applyArkProps } from '@ark-ui/angular/src/_zag'
 import type { AvatarElementIds, AvatarStatusChangeDetails } from './avatar.types'
 import { ARK_AVATAR_CONTEXT } from './use-avatar-context'
 import { useAvatar, type UseAvatarReturn } from './use-avatar'
@@ -29,11 +30,12 @@ export class ArkAvatarRoot implements UseAvatarReturn {
     undefined,
   )
   readonly statusChange: OutputEmitterRef<AvatarStatusChangeDetails> = output<AvatarStatusChangeDetails>()
+  private readonly stableIds = computed(() => this.stabilizeIds(this.ids()))
 
   private readonly machine = useAvatar({
     context: () => ({
       id: this.id(),
-      ids: this.stabilizeIds(this.ids()),
+      ids: this.stableIds(),
       onStatusChange: (details) => this.statusChange.emit(details),
     }),
   })
@@ -45,18 +47,17 @@ export class ArkAvatarRoot implements UseAvatarReturn {
 
   private prevIds: Partial<AvatarElementIds> | undefined = undefined
 
-  // useMachine diffs context values via Object.is, so a new ids object with equal keys would still patch.
   private stabilizeIds(next: Partial<AvatarElementIds> | undefined): Partial<AvatarElementIds> | undefined {
     if (next === this.prevIds) return this.prevIds
     if (next === undefined || this.prevIds === undefined) {
       this.prevIds = next
       return this.prevIds
     }
-    if (
-      Object.is(next.root, this.prevIds.root) &&
-      Object.is(next.image, this.prevIds.image) &&
-      Object.is(next.fallback, this.prevIds.fallback)
-    ) {
+    const keys = new Set([...Object.keys(next), ...Object.keys(this.prevIds)])
+    const hasEqualEntries = [...keys].every((key) =>
+      Object.is(next[key as keyof AvatarElementIds], this.prevIds?.[key as keyof AvatarElementIds]),
+    )
+    if (hasEqualEntries) {
       return this.prevIds
     }
     this.prevIds = next

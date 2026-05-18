@@ -8,7 +8,7 @@ import {
   inject,
   input,
 } from '@angular/core'
-import { applyArkProps } from '@ark-ui/angular/src/_zag/apply-ark-props'
+import { applyArkProps } from '@ark-ui/angular/src/_zag'
 import { ARK_AVATAR_CONTEXT } from './use-avatar-context'
 import type { UseAvatarReturn } from './use-avatar'
 
