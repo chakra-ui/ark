@@ -17,6 +17,11 @@ import {
   type UseToggleProps,
   type UseToggleReturn,
 } from '@ark-ui/angular/toggle'
+import { ToggleBasicExample } from './examples/basic'
+import { ToggleContextExample } from './examples/context'
+import { ToggleControlledExample } from './examples/controlled'
+import { ToggleDisabledExample } from './examples/disabled'
+import { ToggleIndicatorExample } from './examples/indicator'
 
 @Directive({ selector: '[toggleProbe]', standalone: true, exportAs: 'toggleProbe' })
 class ToggleProbe {
@@ -301,5 +306,102 @@ describe('@ark-ui/angular/toggle', () => {
     const propertyNames = Object.keys(outputs)
     expect(propertyNames).toEqual(['pressedChange'])
     expect(Object.values(outputs)).toEqual(['pressed'])
+  })
+
+  it('ToggleBasicExample renders the root with data-scope="toggle" and data-part="root"', () => {
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [ToggleBasicExample] })
+    const fixture = TestBed.createComponent(ToggleBasicExample)
+    fixture.detectChanges()
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkToggleRoot))
+    const rootEl = rootDebug.nativeElement as HTMLButtonElement
+    expect(rootEl.getAttribute('data-scope')).toBe('toggle')
+    expect(rootEl.getAttribute('data-part')).toBe('root')
+
+    fixture.destroy()
+  })
+
+  it('ToggleControlledExample wires [(pressed)] to a host signal and updates api().pressed', () => {
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [ToggleControlledExample] })
+    const fixture = TestBed.createComponent(ToggleControlledExample)
+    fixture.detectChanges()
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkToggleRoot))
+    const root = rootDebug.injector.get(ArkToggleRoot)
+    expect(root.api().pressed).toBe(false)
+
+    fixture.componentInstance.pressed.set(true)
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(root.api().pressed).toBe(true)
+
+    fixture.destroy()
+  })
+
+  it('ToggleDisabledExample does not change api().pressed on click', () => {
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [ToggleDisabledExample] })
+    const fixture = TestBed.createComponent(ToggleDisabledExample)
+    fixture.detectChanges()
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkToggleRoot))
+    const root = rootDebug.injector.get(ArkToggleRoot)
+    const rootEl = rootDebug.nativeElement as HTMLButtonElement
+
+    expect(root.api().disabled).toBe(true)
+    expect(root.api().pressed).toBe(false)
+
+    rootEl.click()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(root.api().pressed).toBe(false)
+
+    fixture.destroy()
+  })
+
+  it('ToggleIndicatorExample mounts both root and indicator and indicator data-state reflects the root', () => {
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [ToggleIndicatorExample] })
+    const fixture = TestBed.createComponent(ToggleIndicatorExample)
+    fixture.detectChanges()
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkToggleRoot))
+    const indicatorDebug = fixture.debugElement.query(By.directive(ArkToggleIndicator))
+    expect(rootDebug).toBeTruthy()
+    expect(indicatorDebug).toBeTruthy()
+
+    const rootEl = rootDebug.nativeElement as HTMLButtonElement
+    const indicatorEl = indicatorDebug.nativeElement as HTMLElement
+
+    expect(indicatorEl.getAttribute('data-state')).toBe('off')
+
+    rootEl.click()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(indicatorEl.getAttribute('data-state')).toBe('on')
+
+    fixture.destroy()
+  })
+
+  it('ToggleContextExample resolves injectArkToggleContext() to the same instance as the root', () => {
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [ToggleContextExample] })
+    const fixture = TestBed.createComponent(ToggleContextExample)
+    fixture.detectChanges()
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkToggleRoot))
+    const rootInstance = rootDebug.injector.get(ArkToggleRoot)
+
+    const labelDebug = fixture.debugElement.query(By.css('toggle-context-label'))
+    expect(labelDebug).toBeTruthy()
+    const labelContext = labelDebug.injector.get(ARK_TOGGLE_CONTEXT)
+    expect(labelContext).toBe(rootInstance)
+
+    fixture.destroy()
   })
 })
