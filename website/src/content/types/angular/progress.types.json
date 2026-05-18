@@ -1,0 +1,94 @@
+{
+  "Root": {
+    "props": {
+      "defaultValue": {
+        "type": "null | number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial value of the progress bar when uncontrolled."
+      },
+      "formatOptions": {
+        "type": "Intl.NumberFormatOptions",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The options to use for formatting the value."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the progress bar."
+      },
+      "ids": {
+        "type": "Partial<{ root: string; track: string; label: string; circle: string }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the elements in the progress bar. Useful for composition."
+      },
+      "max": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The maximum allowed value of the progress bar."
+      },
+      "min": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The minimum allowed value of the progress bar."
+      },
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The orientation of the progress bar."
+      },
+      "value": {
+        "type": "null | number",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled value of the progress bar."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseProgressReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The progress machine returned by useProgress()."
+      }
+    }
+  },
+  "Label": {
+    "props": {}
+  },
+  "Track": {
+    "props": {}
+  },
+  "Range": {
+    "props": {}
+  },
+  "ValueText": {
+    "props": {}
+  },
+  "View": {
+    "props": {
+      "state": {
+        "type": "import('@zag-js/progress').ProgressState",
+        "isRequired": true,
+        "kind": "required-input"
+      }
+    }
+  },
+  "Circle": {
+    "props": {}
+  },
+  "CircleTrack": {
+    "props": {}
+  },
+  "CircleRange": {
+    "props": {}
+  }
+}
