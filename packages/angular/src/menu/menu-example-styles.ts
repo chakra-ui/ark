@@ -66,4 +66,60 @@ export const menuExampleStyles = `
     --arrow-size: 8px;
     --arrow-background: var(--demo-bg, #ffffff);
   }
+
+  [arkMenuCheckboxItem],
+  [arkMenuRadioItem] {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.5rem;
+    font-size: 0.8125rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  [arkMenuCheckboxItem][data-highlighted],
+  [arkMenuRadioItem][data-highlighted] {
+    background: var(--demo-coral-3, #fde6df);
+    color: var(--demo-coral-11, #8a2d1a);
+  }
+
+  [arkMenuItemIndicator] {
+    display: inline-flex;
+    width: 1rem;
+    height: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  [arkMenuItemIndicator][hidden],
+  [arkMenuItemIndicator][data-state="unchecked"] {
+    visibility: hidden;
+  }
+
+  [arkMenuItemGroupLabel] {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--demo-neutral-muted, #78716c);
+  }
+
+  [arkMenuTriggerItem] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.375rem 0.5rem;
+    font-size: 0.8125rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  [arkMenuTriggerItem][data-highlighted] {
+    background: var(--demo-coral-3, #fde6df);
+    color: var(--demo-coral-11, #8a2d1a);
+  }
 `

@@ -19,16 +19,23 @@ import {
   ARK_MENU_CONTEXT_CARRIER,
   ArkMenuArrow,
   ArkMenuArrowTip,
+  ArkMenuCheckboxItem,
   ArkMenuContent,
   ArkMenuContextTrigger,
   ArkMenuIndicator,
   ArkMenuItem,
+  ArkMenuItemGroup,
+  ArkMenuItemGroupLabel,
+  ArkMenuItemIndicator,
   ArkMenuItemText,
   ArkMenuPositioner,
+  ArkMenuRadioItem,
+  ArkMenuRadioItemGroup,
   ArkMenuRoot,
   ArkMenuRootProvider,
   ArkMenuSeparator,
   ArkMenuTrigger,
+  ArkMenuTriggerItem,
   injectArkMenuContext,
   menuAnatomy,
   useMenu,
@@ -45,8 +52,12 @@ import {
 } from '@ark-ui/angular/menu'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { MenuBasicExample } from './examples/basic'
+import { MenuCheckboxItemsExample } from './examples/checkbox-items'
 import { MenuControlledExample } from './examples/controlled'
 import { MenuControlledHighlightExample } from './examples/controlled-highlight'
+import { MenuItemGroupExample } from './examples/item-group'
+import { MenuNestedSubmenuExample } from './examples/nested-submenu'
+import { MenuRadioItemsExample } from './examples/radio-items'
 import { MenuRootProviderExample } from './examples/root-provider'
 import { MenuWithSeparatorExample } from './examples/with-separator'
 
@@ -108,6 +119,13 @@ describe('@ark-ui/angular/menu', () => {
     expect(ArkMenuIndicator).toBeDefined()
     expect(ArkMenuArrow).toBeDefined()
     expect(ArkMenuArrowTip).toBeDefined()
+    expect(ArkMenuCheckboxItem).toBeDefined()
+    expect(ArkMenuRadioItem).toBeDefined()
+    expect(ArkMenuRadioItemGroup).toBeDefined()
+    expect(ArkMenuItemGroup).toBeDefined()
+    expect(ArkMenuItemGroupLabel).toBeDefined()
+    expect(ArkMenuItemIndicator).toBeDefined()
+    expect(ArkMenuTriggerItem).toBeDefined()
     expect(undefined as MenuPublicTypeSmoke | undefined).toBeUndefined()
   })
 
@@ -570,6 +588,272 @@ describe('@ark-ui/angular/menu', () => {
     fixture.detectChanges()
     expect(fixture.componentInstance.openLabel()).toBe('open')
 
+    fixture.destroy()
+  })
+
+  it('arkMenuCheckboxItem toggles data-state="checked" on click and updates the model', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkMenuRoot, ArkMenuPositioner, ArkMenuContent, ArkMenuCheckboxItem, ArkPortalComponent],
+      template: `
+        <div arkMenu defaultOpen #root="arkMenu">
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkMenuPositioner>
+              <div arkMenuContent>
+                <div arkMenuCheckboxItem value="toolbar" [(checked)]="checked">Toolbar</div>
+              </div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {
+      readonly checked = signal<boolean | undefined>(false)
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+    await flushOpen(fixture)
+
+    const itemEl = fixture.debugElement.query(By.directive(ArkMenuCheckboxItem)).nativeElement as HTMLElement
+    expect(itemEl.getAttribute('data-scope')).toBe('menu')
+    expect(itemEl.getAttribute('data-part')).toBe('item')
+    expect(itemEl.getAttribute('data-state')).toBe('unchecked')
+
+    itemEl.click()
+    await flushOpen(fixture)
+
+    expect(fixture.componentInstance.checked()).toBe(true)
+    const itemElAfter = fixture.debugElement.query(By.directive(ArkMenuCheckboxItem)).nativeElement as HTMLElement
+    expect(itemElAfter.getAttribute('data-state')).toBe('checked')
+
+    fixture.destroy()
+  })
+
+  it('arkMenuRadioItemGroup selects exactly one item and emits the new value', async () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkMenuRoot,
+        ArkMenuPositioner,
+        ArkMenuContent,
+        ArkMenuRadioItemGroup,
+        ArkMenuRadioItem,
+        ArkPortalComponent,
+      ],
+      template: `
+        <div arkMenu defaultOpen #root="arkMenu">
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkMenuPositioner>
+              <div arkMenuContent>
+                <div arkMenuRadioItemGroup [(value)]="sortBy">
+                  <div arkMenuRadioItem value="name">Name</div>
+                  <div arkMenuRadioItem value="date">Date</div>
+                  <div arkMenuRadioItem value="size">Size</div>
+                </div>
+              </div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {
+      readonly sortBy = signal<string | null | undefined>('date')
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+    await flushOpen(fixture)
+
+    const radioItems = fixture.debugElement.queryAll(By.directive(ArkMenuRadioItem))
+    expect(radioItems.length).toBe(3)
+
+    const findItem = (value: string): HTMLElement =>
+      radioItems.find((el) => (el.nativeElement as HTMLElement).getAttribute('data-value') === value)
+        ?.nativeElement as HTMLElement
+
+    expect(findItem('date').getAttribute('data-state')).toBe('checked')
+    expect(findItem('name').getAttribute('data-state')).toBe('unchecked')
+    expect(findItem('size').getAttribute('data-state')).toBe('unchecked')
+
+    findItem('size').click()
+    await flushOpen(fixture)
+
+    expect(fixture.componentInstance.sortBy()).toBe('size')
+
+    const radioItemsAfter = fixture.debugElement.queryAll(By.directive(ArkMenuRadioItem))
+    const findAfter = (value: string): HTMLElement =>
+      radioItemsAfter.find((el) => (el.nativeElement as HTMLElement).getAttribute('data-value') === value)
+        ?.nativeElement as HTMLElement
+
+    expect(findAfter('size').getAttribute('data-state')).toBe('checked')
+    expect(findAfter('date').getAttribute('data-state')).toBe('unchecked')
+    expect(findAfter('name').getAttribute('data-state')).toBe('unchecked')
+
+    fixture.destroy()
+  })
+
+  it('arkMenuItemGroup and arkMenuItemGroupLabel produce Zag menu group/label attributes', async () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkMenuRoot,
+        ArkMenuPositioner,
+        ArkMenuContent,
+        ArkMenuItem,
+        ArkMenuItemGroup,
+        ArkMenuItemGroupLabel,
+        ArkPortalComponent,
+      ],
+      template: `
+        <div arkMenu defaultOpen #root="arkMenu">
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkMenuPositioner>
+              <div arkMenuContent>
+                <div arkMenuItemGroup id="clipboard-group">
+                  <div arkMenuItemGroupLabel>Clipboard</div>
+                  <div arkMenuItem value="cut">Cut</div>
+                  <div arkMenuItem value="copy">Copy</div>
+                </div>
+              </div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+    await flushOpen(fixture)
+
+    const groupEl = fixture.debugElement.query(By.directive(ArkMenuItemGroup)).nativeElement as HTMLElement
+    const labelEl = fixture.debugElement.query(By.directive(ArkMenuItemGroupLabel)).nativeElement as HTMLElement
+
+    expect(groupEl.getAttribute('data-scope')).toBe('menu')
+    expect(groupEl.getAttribute('data-part')).toBe('item-group')
+    expect(labelEl.getAttribute('data-scope')).toBe('menu')
+    expect(labelEl.getAttribute('data-part')).toBe('item-group-label')
+
+    fixture.destroy()
+  })
+
+  it('arkMenuItemIndicator inside a checkbox item reflects the checked data-state', async () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkMenuRoot,
+        ArkMenuPositioner,
+        ArkMenuContent,
+        ArkMenuCheckboxItem,
+        ArkMenuItemIndicator,
+        ArkPortalComponent,
+      ],
+      template: `
+        <div arkMenu defaultOpen #root="arkMenu">
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkMenuPositioner>
+              <div arkMenuContent>
+                <div arkMenuCheckboxItem value="toolbar" [(checked)]="checked">
+                  <span arkMenuItemIndicator></span>
+                </div>
+              </div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {
+      readonly checked = signal<boolean | undefined>(true)
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+    await flushOpen(fixture)
+
+    const indicatorEl = fixture.debugElement.query(By.directive(ArkMenuItemIndicator)).nativeElement as HTMLElement
+    expect(indicatorEl.getAttribute('data-scope')).toBe('menu')
+    expect(indicatorEl.getAttribute('data-part')).toBe('item-indicator')
+    expect(indicatorEl.getAttribute('data-state')).toBe('checked')
+
+    fixture.destroy()
+  })
+
+  it('nested [arkMenu] inside parent applies parent api.getTriggerItemProps via [arkMenuTriggerItem]', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkMenuRoot, ArkMenuPositioner, ArkMenuContent, ArkMenuItem, ArkMenuTriggerItem, ArkPortalComponent],
+      template: `
+        <div arkMenu defaultOpen #root="arkMenu">
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkMenuPositioner>
+              <div arkMenuContent>
+                <div arkMenu #share="arkMenu">
+                  <div arkMenuTriggerItem>Share</div>
+                  <ark-portal [originInjector]="share.getContextCarrier().elementInjector">
+                    <div arkMenuPositioner>
+                      <div arkMenuContent>
+                        <div arkMenuItem value="email">Email</div>
+                      </div>
+                    </div>
+                  </ark-portal>
+                </div>
+              </div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+    await flushOpen(fixture)
+
+    const triggerItemEl = fixture.debugElement.query(By.directive(ArkMenuTriggerItem)).nativeElement as HTMLElement
+
+    expect(triggerItemEl.getAttribute('data-scope')).toBe('menu')
+    expect(triggerItemEl.getAttribute('data-part')).toBe('trigger-item')
+    expect(triggerItemEl.hasAttribute('data-value')).toBe(true)
+
+    fixture.destroy()
+  })
+
+  it('MenuCheckboxItemsExample mounts without throwing', () => {
+    TestBed.configureTestingModule({ imports: [MenuCheckboxItemsExample] })
+    const fixture = TestBed.createComponent(MenuCheckboxItemsExample)
+    fixture.detectChanges()
+    fixture.destroy()
+  })
+
+  it('MenuRadioItemsExample mounts without throwing', () => {
+    TestBed.configureTestingModule({ imports: [MenuRadioItemsExample] })
+    const fixture = TestBed.createComponent(MenuRadioItemsExample)
+    fixture.detectChanges()
+    fixture.destroy()
+  })
+
+  it('MenuItemGroupExample mounts without throwing', () => {
+    TestBed.configureTestingModule({ imports: [MenuItemGroupExample] })
+    const fixture = TestBed.createComponent(MenuItemGroupExample)
+    fixture.detectChanges()
+    fixture.destroy()
+  })
+
+  it('MenuNestedSubmenuExample mounts without throwing', () => {
+    TestBed.configureTestingModule({ imports: [MenuNestedSubmenuExample] })
+    const fixture = TestBed.createComponent(MenuNestedSubmenuExample)
+    fixture.detectChanges()
     fixture.destroy()
   })
 })

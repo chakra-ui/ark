@@ -1,8 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { moduleMetadata } from '@storybook/angular'
 import { MenuBasicExample } from './examples/basic'
+import { MenuCheckboxItemsExample } from './examples/checkbox-items'
 import { MenuControlledExample } from './examples/controlled'
 import { MenuControlledHighlightExample } from './examples/controlled-highlight'
+import { MenuItemGroupExample } from './examples/item-group'
+import { MenuNestedSubmenuExample } from './examples/nested-submenu'
+import { MenuRadioItemsExample } from './examples/radio-items'
 import { MenuRootProviderExample } from './examples/root-provider'
 import { MenuWithSeparatorExample } from './examples/with-separator'
 
@@ -35,4 +39,24 @@ export const ControlledHighlight: StoryObj = {
 export const RootProvider: StoryObj = {
   decorators: [moduleMetadata({ imports: [MenuRootProviderExample] })],
   render: () => ({ template: '<menu-root-provider-example />' }),
+}
+
+export const CheckboxItems: StoryObj = {
+  decorators: [moduleMetadata({ imports: [MenuCheckboxItemsExample] })],
+  render: () => ({ template: '<menu-checkbox-items-example />' }),
+}
+
+export const RadioItems: StoryObj = {
+  decorators: [moduleMetadata({ imports: [MenuRadioItemsExample] })],
+  render: () => ({ template: '<menu-radio-items-example />' }),
+}
+
+export const ItemGroup: StoryObj = {
+  decorators: [moduleMetadata({ imports: [MenuItemGroupExample] })],
+  render: () => ({ template: '<menu-item-group-example />' }),
+}
+
+export const NestedSubmenu: StoryObj = {
+  decorators: [moduleMetadata({ imports: [MenuNestedSubmenuExample] })],
+  render: () => ({ template: '<menu-nested-submenu-example />' }),
 }

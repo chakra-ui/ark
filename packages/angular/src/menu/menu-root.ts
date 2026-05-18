@@ -3,6 +3,7 @@ import {
   Directive,
   EnvironmentInjector,
   Injector,
+  afterNextRender,
   type OutputEmitterRef,
   type ProviderToken,
   booleanAttribute,
@@ -126,6 +127,22 @@ export class ArkMenuRoot implements UseMenuReturn {
     originInjector: inject(Injector),
     environmentInjector: inject(EnvironmentInjector),
   })
+
+  /** @internal Parent menu context (when nested). Resolved at construction. */
+  protected readonly parentMenu: UseMenuReturn | null = inject(ARK_MENU_CONTEXT, {
+    optional: true,
+    skipSelf: true,
+  })
+
+  constructor() {
+    const parent = this.parentMenu
+    if (parent) {
+      afterNextRender(() => {
+        parent.api().setChild(this.machine.service)
+        this.machine.api().setParent(parent.service)
+      })
+    }
+  }
 
   /** @internal Exposed for menu part directives to consume via ARK_MENU_CONTEXT_CARRIER. */
   getContextCarrier(): ArkContextCarrier<ArkMenuRoot> {
