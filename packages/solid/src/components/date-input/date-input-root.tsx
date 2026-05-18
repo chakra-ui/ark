@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseDateInputProps, useDateInput } from './use-date-input'
-import { DateInputProvider } from './use-date-input-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { type UseDateInputProps, useDateInput } from './use-date-input.ts'
+import { DateInputProvider } from './use-date-input-context.ts'
 
 export interface DateInputRootBaseProps extends UseDateInputProps, PolymorphicProps<'div'> {}
 export interface DateInputRootProps extends HTMLProps<'div'>, DateInputRootBaseProps {}

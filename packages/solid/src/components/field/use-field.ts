@@ -1,10 +1,10 @@
 import { ariaAttr, dataAttr } from '@zag-js/dom-query'
 import { createMemo, createSignal, createUniqueId, mergeProps, onCleanup, onMount } from 'solid-js'
-import { useEnvironmentContext } from '../../providers'
-import type { MaybeAccessor } from '../../types'
-import { useFieldsetContext } from '../fieldset'
-import type { UseFieldsetReturn } from '../fieldset/use-fieldset'
-import { parts } from './field.anatomy'
+import { useEnvironmentContext } from '../../providers/index.tsx'
+import type { MaybeAccessor } from '../../types.ts'
+import { useFieldsetContext } from '../fieldset/index.tsx'
+import type { UseFieldsetReturn } from '../fieldset/use-fieldset.ts'
+import { parts } from './field.anatomy.ts'
 
 export interface ElementIds {
   root?: string

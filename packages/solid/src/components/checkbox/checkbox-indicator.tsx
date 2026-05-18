@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useCheckboxContext } from './use-checkbox-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useCheckboxContext } from './use-checkbox-context.ts'
 
 interface IndicatorProps {
   indeterminate?: boolean

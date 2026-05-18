@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
 import { type JSX, onMount } from 'solid-js'
-import { createSplitProps } from '../../utils/create-split-props'
-import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
-import { type UseMenuProps, useMenu } from './use-menu'
-import { MenuProvider, useMenuContext } from './use-menu-context'
-import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context'
-import { MenuTriggerItemProvider } from './use-menu-trigger-item-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.tsx'
+import { type UseMenuProps, useMenu } from './use-menu.ts'
+import { MenuProvider, useMenuContext } from './use-menu-context.ts'
+import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context.ts'
+import { MenuTriggerItemProvider } from './use-menu-trigger-item-context.ts'
 
 export interface MenuRootBaseProps extends UseMenuProps, UsePresenceProps {}
 export interface MenuRootProps extends MenuRootBaseProps {

@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js'
-import { type UseMenuItemContext, useMenuItemContext } from './use-menu-item-context'
+import { type UseMenuItemContext, useMenuItemContext } from './use-menu-item-context.ts'
 
 export interface MenuItemContextProps {
   children: (context: UseMenuItemContext) => JSX.Element

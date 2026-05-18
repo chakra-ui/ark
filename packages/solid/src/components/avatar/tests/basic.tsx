@@ -1,4 +1,4 @@
-import { Avatar } from '../'
+import { Avatar } from '../index.tsx'
 
 export const ComponentUnderTest = (props: Avatar.RootProps) => {
   return (

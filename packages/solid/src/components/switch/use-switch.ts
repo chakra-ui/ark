@@ -1,10 +1,10 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import * as zagSwitch from '@zag-js/switch'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { MaybeAccessor, Optional } from '../../types'
-import { runIfFn } from '../../utils/run-if-fn'
-import { useFieldContext } from '../field'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.tsx'
+import type { MaybeAccessor, Optional } from '../../types.ts'
+import { runIfFn } from '../../utils/run-if-fn.ts'
+import { useFieldContext } from '../field/index.tsx'
 
 export interface UseSwitchProps extends Optional<Omit<zagSwitch.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseSwitchReturn extends Accessor<zagSwitch.Api<PropTypes>> {}

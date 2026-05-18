@@ -1,8 +1,8 @@
 import { type FileMimeType, downloadFile } from '@zag-js/file-utils'
 import { isFunction } from '@zag-js/utils'
-import { useEnvironmentContext } from '../../providers'
-import type { MaybeAccessor, MaybePromise } from '../../types'
-import { runIfFn } from '../../utils/run-if-fn'
+import { useEnvironmentContext } from '../../providers/index.tsx'
+import type { MaybeAccessor, MaybePromise } from '../../types.ts'
+import { runIfFn } from '../../utils/run-if-fn.ts'
 
 export type DownloadableData = string | Blob | File
 

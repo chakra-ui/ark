@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseAvatarProps, useAvatar } from './use-avatar'
-import { AvatarProvider } from './use-avatar-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { type UseAvatarProps, useAvatar } from './use-avatar.ts'
+import { AvatarProvider } from './use-avatar-context.ts'
 
 export interface AvatarRootBaseProps extends UseAvatarProps, PolymorphicProps<'div'> {}
 export interface AvatarRootProps extends HTMLProps<'div'>, AvatarRootBaseProps {}

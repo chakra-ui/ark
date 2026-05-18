@@ -1,6 +1,6 @@
 import { Index } from 'solid-js/web'
-import { Field } from '../../field'
-import { Select, createListCollection } from '../'
+import { Field } from '../../field/index.tsx'
+import { Select, createListCollection } from '../index.tsx'
 
 export const SelectWithField = (props: Field.RootProps) => {
   const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })

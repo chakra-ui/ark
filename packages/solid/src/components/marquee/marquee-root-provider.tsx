@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseMarqueeReturn } from './use-marquee'
-import { MarqueeProvider } from './use-marquee-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import type { UseMarqueeReturn } from './use-marquee.ts'
+import { MarqueeProvider } from './use-marquee-context.ts'
 
 interface RootProviderProps {
   value: UseMarqueeReturn

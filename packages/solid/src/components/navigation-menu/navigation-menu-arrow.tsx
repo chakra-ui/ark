@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useNavigationMenuContext } from './use-navigation-menu-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
 
 export interface NavigationMenuArrowBaseProps extends PolymorphicProps<'div'> {}
 export interface NavigationMenuArrowProps extends HTMLProps<'div'>, NavigationMenuArrowBaseProps {}

@@ -1,5 +1,5 @@
 import { For } from 'solid-js'
-import { RadioGroup } from '../'
+import { RadioGroup } from '../index.tsx'
 
 export const ComponentUnderTest = (props: RadioGroup.RootProps) => {
   const items = [

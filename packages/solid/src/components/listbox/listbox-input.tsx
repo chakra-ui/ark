@@ -1,8 +1,8 @@
 import type { InputProps } from '@zag-js/listbox'
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useListboxContext } from './use-listbox-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useListboxContext } from './use-listbox-context.ts'
 
 export interface ListboxInputBaseProps extends InputProps, PolymorphicProps<'input'> {}
 export interface ListboxInputProps extends HTMLProps<'input'>, ListboxInputBaseProps {}

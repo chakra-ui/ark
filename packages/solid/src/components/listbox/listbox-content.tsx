@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useListboxContext } from './use-listbox-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useListboxContext } from './use-listbox-context.ts'
 
 export interface ListboxContentBaseProps extends PolymorphicProps<'div'> {}
 export interface ListboxContentProps extends HTMLProps<'div'>, ListboxContentBaseProps {}

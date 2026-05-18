@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseTimerReturn } from './use-timer'
-import { TimerProvider } from './use-timer-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import type { UseTimerReturn } from './use-timer.ts'
+import { TimerProvider } from './use-timer-context.ts'
 
 interface RootProviderProps {
   value: UseTimerReturn

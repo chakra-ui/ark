@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useDatePickerContext } from './use-date-picker-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useDatePickerContext } from './use-date-picker-context.ts'
 
 export interface DatePickerLabelBaseProps extends PolymorphicProps<'label'> {}
 export interface DatePickerLabelProps extends HTMLProps<'label'>, DatePickerLabelBaseProps {}

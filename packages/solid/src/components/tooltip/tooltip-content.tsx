@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
-import { composeRefs } from '../../utils/compose-refs'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresenceContext } from '../presence'
-import { useTooltipContext } from './use-tooltip-context'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { usePresenceContext } from '../presence/index.tsx'
+import { useTooltipContext } from './use-tooltip-context.ts'
 
 export interface TooltipContentBaseProps extends PolymorphicProps<'div'> {}
 export interface TooltipContentProps extends HTMLProps<'div'>, TooltipContentBaseProps {}

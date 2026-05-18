@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
-import { composeRefs } from '../../utils/compose-refs'
-import { useRenderStrategyContext } from '../../utils/render-strategy'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresence } from '../presence'
-import { useTourContext } from './use-tour-context'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import { useRenderStrategyContext } from '../../utils/render-strategy.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { usePresence } from '../presence/index.tsx'
+import { useTourContext } from './use-tour-context.ts'
 
 export interface TourBackdropBaseProps extends PolymorphicProps<'div'> {}
 export interface TourBackdropProps extends HTMLProps<'div'>, TourBackdropBaseProps {}

@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useStepsContext } from './use-steps-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useStepsContext } from './use-steps-context.ts'
 
 export interface StepsCompletedContentBaseProps extends PolymorphicProps<'div'> {}
 export interface StepsCompletedContentProps extends HTMLProps<'div'>, StepsCompletedContentBaseProps {}

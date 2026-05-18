@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { LocaleProvider } from '../../../providers'
-import { ComponentUnderTest } from './basic'
+import { LocaleProvider } from '../../../providers/index.tsx'
+import { ComponentUnderTest } from './basic.tsx'
 
 describe('Slider', () => {
   it('should be possible to control it with the arrow keys', async () => {

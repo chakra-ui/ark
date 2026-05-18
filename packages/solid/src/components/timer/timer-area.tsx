@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useTimerContext } from './use-timer-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useTimerContext } from './use-timer-context.ts'
 
 export interface TimerAreaBaseProps extends PolymorphicProps<'div'> {}
 export interface TimerAreaProps extends HTMLProps<'div'>, TimerAreaBaseProps {}

@@ -1,9 +1,9 @@
 import { dataAttr } from '@zag-js/dom-query'
 import { createMemo, createSignal, createUniqueId, mergeProps, onCleanup, onMount } from 'solid-js'
-import { useEnvironmentContext } from '../../providers'
-import type { MaybeAccessor } from '../../types'
-import { runIfFn } from '../../utils/run-if-fn'
-import { parts } from './fieldset.anatomy'
+import { useEnvironmentContext } from '../../providers/index.tsx'
+import type { MaybeAccessor } from '../../types.ts'
+import { runIfFn } from '../../utils/run-if-fn.ts'
+import { parts } from './fieldset.anatomy.ts'
 
 export interface UseFieldsetProps {
   /**

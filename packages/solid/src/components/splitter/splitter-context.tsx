@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js'
-import { type UseSplitterContext, useSplitterContext } from './use-splitter-context'
+import { type UseSplitterContext, useSplitterContext } from './use-splitter-context.ts'
 
 export interface SplitterContextProps {
   children: (context: UseSplitterContext) => JSX.Element

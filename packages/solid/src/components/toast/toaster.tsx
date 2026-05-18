@@ -1,11 +1,11 @@
 import { Key, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import * as toast from '@zag-js/toast'
 import { type Accessor, type JSX, createMemo, createUniqueId, splitProps } from 'solid-js'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Assign } from '../../types'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { CreateToasterReturn } from './create-toaster'
-import { ToastProvider } from './use-toast-context'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.tsx'
+import type { Assign } from '../../types.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import type { CreateToasterReturn } from './create-toaster.tsx'
+import { ToastProvider } from './use-toast-context.ts'
 
 export type ToastOptions = toast.Options<JSX.Element>
 

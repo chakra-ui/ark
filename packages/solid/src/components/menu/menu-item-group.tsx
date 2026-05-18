@@ -1,11 +1,11 @@
 import type { ItemGroupProps } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/solid'
 import { createUniqueId } from 'solid-js'
-import type { Optional } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useMenuContext } from './use-menu-context'
-import { MenuItemGroupProvider } from './use-menu-item-group-context'
+import type { Optional } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useMenuContext } from './use-menu-context.ts'
+import { MenuItemGroupProvider } from './use-menu-item-group-context.ts'
 
 type OptionalItemGroupProps = Optional<ItemGroupProps, 'id'>
 

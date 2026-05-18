@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { SelectWithField } from './field'
-import { ComponentUnderTest } from './basic'
+import { SelectWithField } from './field.tsx'
+import { ComponentUnderTest } from './basic.tsx'
 
 describe('Select', () => {
   it('should handle item selection', async () => {

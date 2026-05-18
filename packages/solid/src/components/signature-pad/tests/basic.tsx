@@ -1,5 +1,5 @@
-import { Field } from '../../field'
-import { SignaturePad } from '../'
+import { Field } from '../../field/index.tsx'
+import { SignaturePad } from '../index.tsx'
 
 export const ComponentUnderTest = (props: SignaturePad.RootProps) => (
   <SignaturePad.Root {...props}>

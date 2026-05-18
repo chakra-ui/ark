@@ -1,4 +1,4 @@
-import { DateInput } from '../'
+import { DateInput } from '../index.tsx'
 
 export const ComponentUnderTest = (props: DateInput.RootProps) => (
   <DateInput.Root {...props}>

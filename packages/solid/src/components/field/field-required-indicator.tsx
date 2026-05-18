@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { type JSX, Show } from 'solid-js'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useFieldContext } from './use-field-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useFieldContext } from './use-field-context.ts'
 
 export interface FieldRequiredIndicatorBaseProps extends PolymorphicProps<'span'> {
   fallback?: JSX.Element

@@ -2,8 +2,8 @@ import { parseDate, parseZonedDateTime } from '@internationalized/date'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { DateInput } from '../'
-import { ComponentUnderTest } from './basic'
+import { DateInput } from '../index.tsx'
+import { ComponentUnderTest } from './basic.tsx'
 
 describe('Date Input', () => {
   it('should have no a11y violations', async () => {

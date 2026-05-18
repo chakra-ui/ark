@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
 import { type JSX, Show, splitProps } from 'solid-js'
-import type { HTMLProps, PolymorphicProps } from '../factory'
-import { ark } from '../factory'
-import { useToggleContext } from './use-toggle-context'
+import type { HTMLProps, PolymorphicProps } from '../factory.tsx'
+import { ark } from '../factory.tsx'
+import { useToggleContext } from './use-toggle-context.ts'
 
 export interface ToggleIndicatorBaseProps extends PolymorphicProps<'div'> {
   fallback?: JSX.Element

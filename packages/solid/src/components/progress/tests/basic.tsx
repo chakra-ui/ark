@@ -1,4 +1,4 @@
-import { Progress } from '../'
+import { Progress } from '../index.tsx'
 
 export const ComponentUnderTest = (props: Progress.RootProps) => (
   <Progress.Root {...props}>

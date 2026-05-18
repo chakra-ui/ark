@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useAngleSliderContext } from './use-angle-slider-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useAngleSliderContext } from './use-angle-slider-context.ts'
 
 export interface AngleSliderLabelBaseProps extends PolymorphicProps<'label'> {}
 export interface AngleSliderLabelProps extends HTMLProps<'label'>, AngleSliderLabelBaseProps {}

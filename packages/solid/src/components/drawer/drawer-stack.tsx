@@ -3,8 +3,8 @@ import { normalizeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js'
 import { createMemo } from 'solid-js'
 import { createStore, reconcile } from 'solid-js/store'
-import { DrawerStackProvider } from './use-drawer-stack-context'
-import { DrawerStackStoreProvider } from './use-drawer-stack-store'
+import { DrawerStackProvider } from './use-drawer-stack-context.ts'
+import { DrawerStackStoreProvider } from './use-drawer-stack-store.ts'
 
 export interface DrawerStackProps {
   children?: JSX.Element

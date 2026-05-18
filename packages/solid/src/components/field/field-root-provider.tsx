@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseFieldReturn } from './use-field'
-import { FieldProvider } from './use-field-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import type { UseFieldReturn } from './use-field.ts'
+import { FieldProvider } from './use-field-context.ts'
 
 interface RootProviderProps {
   value: UseFieldReturn

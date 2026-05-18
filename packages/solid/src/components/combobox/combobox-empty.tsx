@@ -1,7 +1,7 @@
 import { createMemo, Show } from 'solid-js'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { comboboxAnatomy } from './combobox.anatomy'
-import { useComboboxContext } from './use-combobox-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { comboboxAnatomy } from './combobox.anatomy.ts'
+import { useComboboxContext } from './use-combobox-context.ts'
 
 const parts = comboboxAnatomy.build()
 

@@ -1,6 +1,6 @@
 import { ChevronRightIcon } from 'lucide-solid'
 import { For } from 'solid-js'
-import { Accordion } from '../'
+import { Accordion } from '../index.tsx'
 
 export const ComponentUnderTest = (props: Accordion.RootProps) => {
   const items = [{ value: 'React' }, { value: 'Solid' }, { value: 'Svelte', disabled: true }, { value: 'Vue' }]

@@ -6,8 +6,8 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
-export { BothDirections } from './examples/both-directions'
-export { Horizontal } from './examples/horizontal'
-export { Nested } from './examples/nested'
-export { RootProvider } from './examples/root-provider'
+export { Basic } from './examples/basic.tsx'
+export { BothDirections } from './examples/both-directions.tsx'
+export { Horizontal } from './examples/horizontal.tsx'
+export { Nested } from './examples/nested.tsx'
+export { RootProvider } from './examples/root-provider.tsx'

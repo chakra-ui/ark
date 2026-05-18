@@ -1,4 +1,4 @@
-import { runIfFn } from './run-if-fn'
+import { runIfFn } from './run-if-fn.ts'
 
 describe('Util: runIfFn', () => {
   it('should pass through a non function value', () => {

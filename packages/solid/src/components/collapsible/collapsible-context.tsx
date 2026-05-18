@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js'
-import { type UseCollapsibleContext, useCollapsibleContext } from './use-collapsible-context'
+import { type UseCollapsibleContext, useCollapsibleContext } from './use-collapsible-context.ts'
 
 export interface CollapsibleContextProps {
   children: (context: UseCollapsibleContext) => JSX.Element

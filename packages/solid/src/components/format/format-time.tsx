@@ -1,6 +1,6 @@
 import { formatTime, type FormatTimeOptions } from '@zag-js/i18n-utils'
 import { createMemo } from 'solid-js'
-import { useLocaleContext } from '../../providers'
+import { useLocaleContext } from '../../providers/index.tsx'
 
 export interface FormatTimeProps extends FormatTimeOptions {
   /**

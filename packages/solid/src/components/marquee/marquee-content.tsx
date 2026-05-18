@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { type FlowComponent, For } from 'solid-js'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useMarqueeContext } from './use-marquee-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useMarqueeContext } from './use-marquee-context.ts'
 
 export interface MarqueeContentBaseProps extends PolymorphicProps<'div'> {}
 export interface MarqueeContentProps extends HTMLProps<'div'>, MarqueeContentBaseProps {}

@@ -1,11 +1,11 @@
 import type { ItemProps } from '@zag-js/file-upload'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useFileUploadContext } from './use-file-upload-context'
-import { useFileUploadItemGroupPropsContext } from './use-file-upload-item-group-props-context'
-import { FileUploadItemPropsProvider } from './use-file-upload-item-props-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useFileUploadContext } from './use-file-upload-context.ts'
+import { useFileUploadItemGroupPropsContext } from './use-file-upload-item-group-props-context.ts'
+import { FileUploadItemPropsProvider } from './use-file-upload-item-props-context.ts'
 
 type ItemBaseProps = Omit<ItemProps, 'type'>
 

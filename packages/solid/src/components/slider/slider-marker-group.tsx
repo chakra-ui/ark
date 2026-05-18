@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useSliderContext } from './use-slider-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useSliderContext } from './use-slider-context.ts'
 
 export interface SliderMarkerGroupBaseProps extends PolymorphicProps<'div'> {}
 export interface SliderMarkerGroupProps extends HTMLProps<'div'>, SliderMarkerGroupBaseProps {}

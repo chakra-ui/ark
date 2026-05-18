@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js'
-import { createSplitProps } from '../../utils/create-split-props'
-import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
-import { type UsePopoverProps, usePopover } from './use-popover'
-import { PopoverProvider } from './use-popover-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.tsx'
+import { type UsePopoverProps, usePopover } from './use-popover.ts'
+import { PopoverProvider } from './use-popover-context.ts'
 
 export interface PopoverRootBaseProps extends UsePopoverProps, UsePresenceProps {}
 export interface PopoverRootProps extends PopoverRootBaseProps {

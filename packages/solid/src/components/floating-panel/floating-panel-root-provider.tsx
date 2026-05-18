@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js'
-import { createSplitProps } from '../../utils/create-split-props'
-import type { UsePresenceProps } from '../presence'
-import { PresenceProvider, splitPresenceProps, usePresence } from '../presence'
-import type { UseFloatingPanelReturn } from './use-floating-panel'
-import { FloatingPanelProvider } from './use-floating-panel-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import type { UsePresenceProps } from '../presence/index.tsx'
+import { PresenceProvider, splitPresenceProps, usePresence } from '../presence/index.tsx'
+import type { UseFloatingPanelReturn } from './use-floating-panel.ts'
+import { FloatingPanelProvider } from './use-floating-panel-context.ts'
 
 interface RootProviderProps {
   value: UseFloatingPanelReturn

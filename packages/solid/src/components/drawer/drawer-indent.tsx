@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useDrawerStackContext } from './use-drawer-stack-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useDrawerStackContext } from './use-drawer-stack-context.ts'
 
 export interface DrawerIndentBaseProps extends PolymorphicProps<'div'> {}
 export interface DrawerIndentProps extends HTMLProps<'div'>, DrawerIndentBaseProps {}

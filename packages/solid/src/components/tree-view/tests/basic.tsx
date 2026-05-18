@@ -1,6 +1,6 @@
 import { ChevronRightIcon, FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-solid'
 import { For } from 'solid-js'
-import { TreeView, createTreeCollection } from '../'
+import { TreeView, createTreeCollection } from '../index.tsx'
 
 interface Node {
   id: string

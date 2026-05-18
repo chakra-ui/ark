@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { LocaleProvider } from '../../../providers'
-import { ComponentUnderTest } from './basic'
+import { LocaleProvider } from '../../../providers/index.tsx'
+import { ComponentUnderTest } from './basic.tsx'
 
 describe('Accordion', () => {
   it('should not have an expanded item by default', async () => {

@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { ComponentUnderTest } from './basic'
-import { ControlledComponentUnderTest } from './controlled'
+import { ComponentUnderTest } from './basic.tsx'
+import { ControlledComponentUnderTest } from './controlled.tsx'
 
 describe('Popover', () => {
   it('should open and close the popover', async () => {

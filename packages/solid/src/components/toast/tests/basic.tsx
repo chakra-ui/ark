@@ -1,4 +1,4 @@
-import { Toast, Toaster, createToaster } from '../'
+import { Toast, Toaster, createToaster } from '../index.tsx'
 
 const toaster = createToaster({
   placement: 'bottom-end',

@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js'
-import { type UseAccordionContext, useAccordionContext } from './use-accordion-context'
+import { type UseAccordionContext, useAccordionContext } from './use-accordion-context.ts'
 
 export interface AccordionContextProps {
   children: (context: UseAccordionContext) => JSX.Element

@@ -1,8 +1,8 @@
 import * as asyncList from '@zag-js/async-list'
 import { useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo } from 'solid-js'
-import type { MaybeAccessor } from '../../types'
-import { runIfFn } from '../../utils/run-if-fn'
+import type { MaybeAccessor } from '../../types.ts'
+import { runIfFn } from '../../utils/run-if-fn.ts'
 
 export interface UseAsyncListProps<T, C = string> extends asyncList.Props<T, C> {}
 export interface UseAsyncListReturn<T, C = string> extends Accessor<asyncList.Api<T, C>> {}

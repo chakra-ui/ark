@@ -1,6 +1,6 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { WithField } from '../examples/with-field'
+import { WithField } from '../examples/with-field.tsx'
 
 describe('File Upload / Field', () => {
   it('should set file upload as required', async () => {

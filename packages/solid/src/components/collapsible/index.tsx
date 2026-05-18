@@ -3,26 +3,26 @@ export {
   CollapsibleContent,
   type CollapsibleContentBaseProps,
   type CollapsibleContentProps,
-} from './collapsible-content'
-export { CollapsibleContext, type CollapsibleContextProps } from './collapsible-context'
-export { CollapsibleRoot, type CollapsibleRootBaseProps, type CollapsibleRootProps } from './collapsible-root'
+} from './collapsible-content.tsx'
+export { CollapsibleContext, type CollapsibleContextProps } from './collapsible-context.tsx'
+export { CollapsibleRoot, type CollapsibleRootBaseProps, type CollapsibleRootProps } from './collapsible-root.tsx'
 export {
   CollapsibleRootProvider,
   type CollapsibleRootProviderBaseProps,
   type CollapsibleRootProviderProps,
-} from './collapsible-root-provider'
+} from './collapsible-root-provider.tsx'
 export {
   CollapsibleTrigger,
   type CollapsibleTriggerBaseProps,
   type CollapsibleTriggerProps,
-} from './collapsible-trigger'
+} from './collapsible-trigger.tsx'
 export {
   CollapsibleIndicator,
   type CollapsibleIndicatorBaseProps,
   type CollapsibleIndicatorProps,
-} from './collapsible-indicator'
-export { collapsibleAnatomy } from './collapsible.anatomy'
-export { useCollapsible, type UseCollapsibleProps, type UseCollapsibleReturn } from './use-collapsible'
-export { useCollapsibleContext, type UseCollapsibleContext } from './use-collapsible-context'
+} from './collapsible-indicator.tsx'
+export { collapsibleAnatomy } from './collapsible.anatomy.ts'
+export { useCollapsible, type UseCollapsibleProps, type UseCollapsibleReturn } from './use-collapsible.ts'
+export { useCollapsibleContext, type UseCollapsibleContext } from './use-collapsible-context.ts'
 
-export * as Collapsible from './collapsible'
+export * as Collapsible from './collapsible.ts'

@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseNumberInputProps, useNumberInput } from './use-number-input'
-import { NumberInputProvider } from './use-number-input-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { type UseNumberInputProps, useNumberInput } from './use-number-input.ts'
+import { NumberInputProvider } from './use-number-input-context.ts'
 
 export interface NumberInputRootBaseProps extends UseNumberInputProps, PolymorphicProps<'div'> {}
 export interface NumberInputRootProps extends Assign<HTMLProps<'div'>, NumberInputRootBaseProps> {}

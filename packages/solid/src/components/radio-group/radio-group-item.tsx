@@ -1,11 +1,11 @@
 import type { ItemProps } from '@zag-js/radio-group'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useRadioGroupContext } from './use-radio-group-context'
-import { RadioGroupItemProvider } from './use-radio-group-item-context'
-import { RadioGroupItemPropsProvider } from './use-radio-group-item-props-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useRadioGroupContext } from './use-radio-group-context.ts'
+import { RadioGroupItemProvider } from './use-radio-group-item-context.ts'
+import { RadioGroupItemPropsProvider } from './use-radio-group-item-props-context.ts'
 
 export interface RadioGroupItemBaseProps extends ItemProps, PolymorphicProps<'label'> {}
 export interface RadioGroupItemProps extends HTMLProps<'label'>, RadioGroupItemBaseProps {}

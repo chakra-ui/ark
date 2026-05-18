@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
 import type { ActionTriggerProps } from '@zag-js/timer'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useTimerContext } from './use-timer-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useTimerContext } from './use-timer-context.ts'
 
 export interface TimerActionTriggerBaseProps extends ActionTriggerProps, PolymorphicProps<'button'> {}
 export interface TimerActionTriggerProps extends HTMLProps<'button'>, TimerActionTriggerBaseProps {}

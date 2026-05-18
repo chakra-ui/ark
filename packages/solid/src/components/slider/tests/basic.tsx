@@ -1,5 +1,5 @@
 import { Index, createSignal } from 'solid-js'
-import { Slider } from '../'
+import { Slider } from '../index.tsx'
 
 export const ComponentUnderTest = (props: Slider.RootProps) => {
   const [value, setValue] = createSignal([-20, 20])

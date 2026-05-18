@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js/jsx-runtime'
-import { createSplitProps } from '../../utils/create-split-props'
-import type { Assign } from '../../types'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseListboxReturn } from './use-listbox'
-import { ListboxProvider } from './use-listbox-context'
-import type { CollectionItem } from '../collection'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import type { Assign } from '../../types.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import type { UseListboxReturn } from './use-listbox.ts'
+import { ListboxProvider } from './use-listbox-context.ts'
+import type { CollectionItem } from '../collection/index.tsx'
 
 interface RootProviderProps<T extends CollectionItem> {
   value: UseListboxReturn<T>

@@ -1,12 +1,16 @@
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type RenderStrategyProps, RenderStrategyProvider, splitRenderStrategyProps } from '../../utils/render-strategy'
-import type { TreeNode } from '../collection'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseTreeViewReturn } from './use-tree-view'
-import { TreeViewProvider } from './use-tree-view-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import {
+  type RenderStrategyProps,
+  RenderStrategyProvider,
+  splitRenderStrategyProps,
+} from '../../utils/render-strategy.ts'
+import type { TreeNode } from '../collection/index.tsx'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import type { UseTreeViewReturn } from './use-tree-view.ts'
+import { TreeViewProvider } from './use-tree-view-context.ts'
 
 interface RootProviderProps<T extends TreeNode> {
   value: UseTreeViewReturn<T>

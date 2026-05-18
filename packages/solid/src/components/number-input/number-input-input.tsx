@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useFieldContext } from '../field'
-import { useNumberInputContext } from './use-number-input-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useFieldContext } from '../field/index.tsx'
+import { useNumberInputContext } from './use-number-input-context.ts'
 
 export interface NumberInputInputBaseProps extends PolymorphicProps<'input'> {}
 export interface NumberInputInputProps extends HTMLProps<'input'>, NumberInputInputBaseProps {}

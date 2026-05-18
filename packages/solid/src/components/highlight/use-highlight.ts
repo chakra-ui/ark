@@ -1,8 +1,8 @@
 import { type HighlightChunk, type HighlightWordProps, highlightWord } from '@zag-js/highlight-word'
 import type { Accessor } from 'solid-js'
 import { createMemo } from 'solid-js'
-import type { MaybeAccessor } from '../../types'
-import { runIfFn } from '../../utils/run-if-fn'
+import type { MaybeAccessor } from '../../types.ts'
+import { runIfFn } from '../../utils/run-if-fn.ts'
 
 export interface UseHighlightProps extends HighlightWordProps {}
 

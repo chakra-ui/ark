@@ -1,4 +1,4 @@
-import { Splitter } from '../'
+import { Splitter } from '../index.tsx'
 
 export const ComponentUnderTest = () => (
   <Splitter.Root panels={[{ id: 'a' }, { id: 'b' }]}>

@@ -1,6 +1,6 @@
 import { type Locale, isRTL } from '@zag-js/i18n-utils'
 import { type ParentProps, createMemo } from 'solid-js'
-import { LocaleContextProvider } from './use-locale-context'
+import { LocaleContextProvider } from './use-locale-context.ts'
 
 export interface LocaleProviderProps extends ParentProps {
   /**

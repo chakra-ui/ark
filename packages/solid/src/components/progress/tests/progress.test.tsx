@@ -1,6 +1,6 @@
 import { render, screen } from '@solidjs/testing-library'
 import { axe } from 'vitest-axe'
-import { ComponentUnderTest } from './basic'
+import { ComponentUnderTest } from './basic.tsx'
 
 describe('Progress', () => {
   it('should have no a11y violations', async () => {

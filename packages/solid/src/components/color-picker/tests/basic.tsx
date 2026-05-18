@@ -1,4 +1,4 @@
-import { ColorPicker, parseColor } from '../'
+import { ColorPicker, parseColor } from '../index.tsx'
 
 export const ComponentUnderTest = (props: ColorPicker.RootProps) => (
   <ColorPicker.Root defaultValue={parseColor('#eb5e41')} {...props}>

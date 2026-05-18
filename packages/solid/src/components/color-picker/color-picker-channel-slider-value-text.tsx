@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { useLocaleContext } from '../../providers'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context'
-import { useColorPickerContext } from './use-color-picker-context'
+import { useLocaleContext } from '../../providers/index.tsx'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context.ts'
+import { useColorPickerContext } from './use-color-picker-context.ts'
 
 export interface ColorPickerChannelSliderValueTextBaseProps extends PolymorphicProps<'span'> {}
 export interface ColorPickerChannelSliderValueTextProps

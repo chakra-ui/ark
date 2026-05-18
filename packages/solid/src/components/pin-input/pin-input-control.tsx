@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePinInputContext } from './use-pin-input-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { usePinInputContext } from './use-pin-input-context.ts'
 
 export interface PinInputControlBaseProps extends PolymorphicProps<'div'> {}
 export interface PinInputControlProps extends HTMLProps<'div'>, PinInputControlBaseProps {}

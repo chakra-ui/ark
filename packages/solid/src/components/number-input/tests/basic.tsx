@@ -1,5 +1,5 @@
 import { Field } from '@ark-ui/solid/field'
-import { NumberInput } from '../'
+import { NumberInput } from '../index.tsx'
 
 export const ComponentUnderTest = (props: NumberInput.RootProps) => (
   <NumberInput.Root {...props}>

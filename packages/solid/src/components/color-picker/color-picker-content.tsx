@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
-import { composeRefs } from '../../utils/compose-refs'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresenceContext } from '../presence'
-import { useColorPickerContext } from './use-color-picker-context'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { usePresenceContext } from '../presence/index.tsx'
+import { useColorPickerContext } from './use-color-picker-context.ts'
 
 export interface ColorPickerContentBaseProps extends PolymorphicProps<'div'> {}
 export interface ColorPickerContentProps extends HTMLProps<'div'>, ColorPickerContentBaseProps {}

@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseRatingGroupReturn } from './use-rating-group'
-import { RatingGroupProvider } from './use-rating-group-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import type { UseRatingGroupReturn } from './use-rating-group.ts'
+import { RatingGroupProvider } from './use-rating-group-context.ts'
 
 interface RootProviderProps {
   value: UseRatingGroupReturn

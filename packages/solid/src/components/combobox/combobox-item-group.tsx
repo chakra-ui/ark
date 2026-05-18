@@ -1,10 +1,10 @@
 import type { ItemGroupProps } from '@zag-js/combobox'
 import { mergeProps } from '@zag-js/solid'
 import { createUniqueId } from 'solid-js'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useComboboxContext } from './use-combobox-context'
-import { ComboboxItemGroupPropsProvider } from './use-combobox-item-group-props-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useComboboxContext } from './use-combobox-context.ts'
+import { ComboboxItemGroupPropsProvider } from './use-combobox-item-group-props-context.ts'
 
 export interface ComboboxItemGroupBaseProps extends PolymorphicProps<'div'> {}
 export interface ComboboxItemGroupProps extends HTMLProps<'div'>, ComboboxItemGroupBaseProps {}

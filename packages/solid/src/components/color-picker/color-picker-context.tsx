@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js'
-import { type UseColorPickerContext, useColorPickerContext } from './use-color-picker-context'
+import { type UseColorPickerContext, useColorPickerContext } from './use-color-picker-context.ts'
 
 export interface ColorPickerContextProps {
   children: (context: UseColorPickerContext) => JSX.Element

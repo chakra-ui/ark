@@ -1,6 +1,6 @@
 import { createMemo, type JSX } from 'solid-js'
-import { parts } from './field.anatomy'
-import { FieldProvider, useFieldContext, type UseFieldContext } from './use-field-context'
+import { parts } from './field.anatomy.ts'
+import { FieldProvider, useFieldContext, type UseFieldContext } from './use-field-context.ts'
 
 export interface FieldItemBaseProps {
   value: string
