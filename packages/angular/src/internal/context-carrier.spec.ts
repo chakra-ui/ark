@@ -14,7 +14,12 @@ import {
 } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { createArkContextCarrier, createComponentWithCarrier, createEmbeddedViewWithCarrier } from './context-carrier'
+import {
+  buildRootCarrier,
+  createArkContextCarrier,
+  createComponentWithCarrier,
+  createEmbeddedViewWithCarrier,
+} from './context-carrier'
 
 const PROVIDER_TOKEN = new InjectionToken<string>('PROVIDER_TOKEN')
 
@@ -146,5 +151,76 @@ describe('createArkContextCarrier', () => {
     expect(componentRef.instance.root).toBe(rootMarker)
 
     componentRef.destroy()
+  })
+})
+
+const ROOT_TOKEN = new InjectionToken<RootMarker>('ROOT_TOKEN')
+const EXTRA_TOKEN = new InjectionToken<string>('EXTRA_TOKEN')
+
+const rootSentinelCapture: { rootViaToken: RootMarker | null; extra: string | null } = {
+  rootViaToken: null,
+  extra: null,
+}
+
+@Directive({
+  standalone: true,
+  selector: '[rootSentinel]',
+})
+class RootSentinelDirective {
+  constructor() {
+    rootSentinelCapture.rootViaToken = inject(ROOT_TOKEN)
+    rootSentinelCapture.extra = inject(EXTRA_TOKEN)
+  }
+}
+
+@Component({
+  standalone: true,
+  imports: [RootSentinelDirective],
+  template: '<ng-template #tpl><span rootSentinel></span></ng-template>',
+})
+class RootSentinelHostComponent {
+  @ViewChild('tpl', { static: true }) template!: TemplateRef<unknown>
+  readonly vcRef = inject(ViewContainerRef)
+}
+
+describe('buildRootCarrier', () => {
+  beforeEach(() => {
+    TestBed.resetTestingModule()
+    rootSentinelCapture.rootViaToken = null
+    rootSentinelCapture.extra = null
+  })
+
+  it('exposes the live root via the root token and forwards extra provider tokens (criterion 1)', () => {
+    TestBed.configureTestingModule({ imports: [RootSentinelHostComponent] })
+    const fixture = TestBed.createComponent(RootSentinelHostComponent)
+    fixture.detectChanges()
+
+    const rootInstance = new RootMarker()
+    const originInjector = Injector.create({
+      providers: [{ provide: RootMarker, useValue: rootInstance }],
+      parent: TestBed.inject(Injector),
+    })
+
+    const carrier = buildRootCarrier<RootMarker>({
+      root: rootInstance,
+      rootToken: ROOT_TOKEN,
+      originInjector,
+      environmentInjector: TestBed.inject(EnvironmentInjector),
+      providers: [{ provide: EXTRA_TOKEN, useValue: 'from-extra' }],
+    })
+
+    const viewRef = createEmbeddedViewWithCarrier(
+      fixture.componentInstance.vcRef,
+      fixture.componentInstance.template,
+      carrier,
+    )
+    fixture.detectChanges()
+
+    expect(rootSentinelCapture.rootViaToken).toBe(rootInstance)
+    expect(rootSentinelCapture.extra).toBe('from-extra')
+    expect(carrier.root).toBe(rootInstance)
+
+    viewRef.destroy()
+    fixture.destroy()
   })
 })

@@ -1,12 +1,27 @@
-import { ApplicationRef, Component, Directive, InjectionToken, PLATFORM_ID, inject, signal } from '@angular/core'
+import { NgTemplateOutlet } from '@angular/common'
+import {
+  ApplicationRef,
+  Component,
+  Directive,
+  ElementRef,
+  EnvironmentInjector,
+  Injector,
+  InjectionToken,
+  PLATFORM_ID,
+  afterNextRender,
+  inject,
+  signal,
+} from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { ArkPortalComponent } from './portal'
 
 const PORTAL_TOKEN = new InjectionToken<string>('PORTAL_TOKEN')
+const ORIGIN_TOKEN = new InjectionToken<string>('ORIGIN_TOKEN')
 
-const sentinelCapture: { tokenValue: string | null } = {
+const sentinelCapture: { tokenValue: string | null; originValue: string | null } = {
   tokenValue: null,
+  originValue: null,
 }
 
 @Directive({
@@ -16,6 +31,7 @@ const sentinelCapture: { tokenValue: string | null } = {
 class PortalSentinelDirective {
   constructor() {
     sentinelCapture.tokenValue = inject(PORTAL_TOKEN)
+    sentinelCapture.originValue = inject(ORIGIN_TOKEN, { optional: true })
   }
 }
 
@@ -25,7 +41,7 @@ class PortalSentinelDirective {
   template: `
     <div data-testid="host-root">
       @if (showPortal()) {
-        <ark-portal [target]="target()">
+        <ark-portal [target]="target()" [originInjector]="originInjector()">
           <span data-testid="projected" portalSentinel>Projected</span>
         </ark-portal>
       }
@@ -37,12 +53,63 @@ class PortalSentinelDirective {
 class HostComponent {
   readonly target = signal<HTMLElement | null>(null)
   readonly showPortal = signal(false)
+  readonly originInjector = signal<Injector | null>(null)
+}
+
+const originSentinelCapture: { tokenValue: string | null; originValue: string | null } = {
+  tokenValue: null,
+  originValue: null,
+}
+
+@Directive({
+  standalone: true,
+  selector: '[originSentinel]',
+})
+class OriginSentinelDirective {
+  constructor() {
+    originSentinelCapture.tokenValue = inject(PORTAL_TOKEN, { optional: true })
+    originSentinelCapture.originValue = inject(ORIGIN_TOKEN, { optional: true })
+  }
+}
+
+@Component({
+  standalone: true,
+  imports: [ArkPortalComponent, OriginSentinelDirective, NgTemplateOutlet],
+  template: `
+    <div data-testid="origin-target"></div>
+    <ark-portal [target]="target()" [originInjector]="originInjector">
+      <ng-container *ngTemplateOutlet="content; injector: originInjector" />
+    </ark-portal>
+    <ng-template #content>
+      <span data-testid="origin-projected" originSentinel>Origin</span>
+    </ng-template>
+  `,
+})
+class OriginInjectorHostComponent {
+  readonly target = signal<HTMLElement | null>(null)
+  readonly originInjector = Injector.create({
+    providers: [
+      { provide: PORTAL_TOKEN, useValue: 'from-origin' },
+      { provide: ORIGIN_TOKEN, useValue: 'origin-only' },
+    ],
+    parent: inject(EnvironmentInjector),
+  })
+
+  constructor() {
+    const elementRef = inject(ElementRef<HTMLElement>)
+    afterNextRender(() => {
+      this.target.set(elementRef.nativeElement.querySelector('[data-testid="origin-target"]'))
+    })
+  }
 }
 
 describe('ArkPortalComponent (criterion 34)', () => {
   beforeEach(() => {
     TestBed.resetTestingModule()
     sentinelCapture.tokenValue = null
+    sentinelCapture.originValue = null
+    originSentinelCapture.tokenValue = null
+    originSentinelCapture.originValue = null
   })
 
   const mountWithTarget = async () => {
@@ -65,6 +132,23 @@ describe('ArkPortalComponent (criterion 34)', () => {
   it('preserves origin injector context when moving projected content', async () => {
     const { fixture } = await mountWithTarget()
     expect(sentinelCapture.tokenValue).toBe('from-host')
+    fixture.destroy()
+  })
+
+  it('lets projected content inject tokens from a supplied originInjector after moving', async () => {
+    TestBed.configureTestingModule({ imports: [OriginInjectorHostComponent] })
+    const fixture = TestBed.createComponent(OriginInjectorHostComponent)
+    fixture.detectChanges()
+
+    await TestBed.inject(ApplicationRef).whenStable()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    const target = fixture.nativeElement.querySelector('[data-testid="origin-target"]') as HTMLElement
+    expect(target.querySelector('[data-testid="origin-projected"]')).not.toBeNull()
+    expect(originSentinelCapture.tokenValue).toBe('from-origin')
+    expect(originSentinelCapture.originValue).toBe('origin-only')
+
     fixture.destroy()
   })
 

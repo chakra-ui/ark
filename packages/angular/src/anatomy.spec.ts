@@ -6,6 +6,21 @@ describe('package anatomy aggregate', () => {
     expect(mod.avatarAnatomy).toBeDefined()
   })
 
+  it('re-exports collapsibleAnatomy', async () => {
+    const mod = await import('./anatomy')
+    expect(mod.collapsibleAnatomy).toBeDefined()
+  })
+
+  it('re-exports menuAnatomy', async () => {
+    const mod = await import('./anatomy')
+    expect(mod.menuAnatomy).toBeDefined()
+  })
+
+  it('re-exports navigationMenuAnatomy', async () => {
+    const mod = await import('./anatomy')
+    expect(mod.navigationMenuAnatomy).toBeDefined()
+  })
+
   it('re-exports progressAnatomy', async () => {
     const mod = await import('./anatomy')
     expect(mod.progressAnatomy).toBeDefined()
@@ -14,5 +29,10 @@ describe('package anatomy aggregate', () => {
   it('re-exports toggleAnatomy', async () => {
     const mod = await import('./anatomy')
     expect(mod.toggleAnatomy).toBeDefined()
+  })
+
+  it('re-exports tooltipAnatomy', async () => {
+    const mod = await import('./anatomy')
+    expect(mod.tooltipAnatomy).toBeDefined()
   })
 })

@@ -18,6 +18,7 @@ import { injectArkEnvironment } from '@ark-ui/angular/src/providers/environment'
 
 export interface PortalProps {
   target?: HTMLElement | null
+  originInjector?: Injector | null
 }
 
 @Component({
@@ -34,6 +35,7 @@ export interface PortalProps {
 })
 export class ArkPortalComponent {
   readonly target = input<PortalProps['target']>(undefined)
+  readonly originInjector = input<PortalProps['originInjector']>(undefined)
 
   private readonly vcRef = inject(ViewContainerRef)
   private readonly contentTpl = viewChild.required<TemplateRef<unknown>>('content')
@@ -46,7 +48,7 @@ export class ArkPortalComponent {
   constructor() {
     afterNextRender(() => {
       const view = this.vcRef.createEmbeddedView(this.contentTpl(), undefined, {
-        injector: this.elementInjector,
+        injector: this.originInjector() ?? this.elementInjector,
       })
       view.detectChanges()
       this.view.set(view)
@@ -62,13 +64,14 @@ export class ArkPortalComponent {
       const view = this.view()
       if (!view) return
       const target = this.resolveTarget(view)
+      if (!target) return
       for (const node of view.rootNodes as Node[]) {
         target.appendChild(node)
       }
     })
   }
 
-  private resolveTarget(view: EmbeddedViewRef<unknown>): HTMLElement | DocumentFragment {
+  private resolveTarget(view: EmbeddedViewRef<unknown>): HTMLElement | DocumentFragment | null {
     const explicit = this.target()
     if (explicit === null) return this.getParkingFragment(view)
     if (explicit) return explicit
@@ -78,14 +81,14 @@ export class ArkPortalComponent {
     return (root.host as HTMLElement | null) ?? this.getParkingFragment(view)
   }
 
-  private getParkingFragment(view: EmbeddedViewRef<unknown>): DocumentFragment {
-    if (!this.parkingFragment) {
-      const ownerDocument =
-        (view.rootNodes as Node[]).find((node) => node.ownerDocument)?.ownerDocument ??
-        this.environment.getRootNode()?.ownerDocument ??
-        document
-      this.parkingFragment = ownerDocument.createDocumentFragment()
-    }
+  private getParkingFragment(view: EmbeddedViewRef<unknown>): DocumentFragment | null {
+    if (this.parkingFragment) return this.parkingFragment
+    const ownerDocument =
+      (view.rootNodes as Node[]).find((node) => node.ownerDocument)?.ownerDocument ??
+      this.environment.getRootNode()?.ownerDocument ??
+      null
+    if (!ownerDocument) return null
+    this.parkingFragment = ownerDocument.createDocumentFragment()
     return this.parkingFragment
   }
 }

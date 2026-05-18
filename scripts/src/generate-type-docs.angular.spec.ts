@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'bun:test'
-import { readFileSync } from 'node:fs'
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { findUpSync } from 'find-up'
 import { generateAngularTypeDoc } from './generate-type-docs.angular'
@@ -10,6 +11,70 @@ const rootDir = dirname(findUpSync('bun.lock')!)
 const committedAvatarPath = join(rootDir, 'website', 'src', 'content', 'types', 'angular', 'avatar.types.json')
 const committedProgressPath = join(rootDir, 'website', 'src', 'content', 'types', 'angular', 'progress.types.json')
 const committedTogglePath = join(rootDir, 'website', 'src', 'content', 'types', 'angular', 'toggle.types.json')
+const committedDialogPath = join(rootDir, 'website', 'src', 'content', 'types', 'angular', 'dialog.types.json')
+const committedMenuPath = join(rootDir, 'website', 'src', 'content', 'types', 'angular', 'menu.types.json')
+
+const createAngularTypeDocFixture = () => {
+  const fixtureRoot = mkdtempSync(join(tmpdir(), 'ng-ark-angular-type-doc-'))
+  symlinkSync(join(rootDir, 'node_modules'), join(fixtureRoot, 'node_modules'), 'dir')
+  const componentDir = join(fixtureRoot, 'packages', 'angular', 'src', 'alias-fixture')
+  mkdirSync(componentDir, { recursive: true })
+  writeFileSync(join(fixtureRoot, 'package.json'), '{}\n')
+  writeFileSync(
+    join(fixtureRoot, 'packages', 'angular', 'tsconfig.json'),
+    JSON.stringify({
+      compilerOptions: {
+        target: 'ES2022',
+        module: 'ESNext',
+        moduleResolution: 'Bundler',
+        experimentalDecorators: true,
+        strict: true,
+        skipLibCheck: true,
+        types: [],
+      },
+      include: ['src/**/*.ts'],
+    }),
+  )
+  writeFileSync(join(componentDir, 'public-api.ts'), "export { ArkAliasFixtureRoot } from './alias-fixture'\n")
+  writeFileSync(
+    join(componentDir, 'alias-fixture.ts'),
+    `
+      import { Directive, input, output, type InputSignal, type OutputEmitterRef } from '@angular/core'
+
+      @Directive({ selector: '[arkAliasFixture]', standalone: true, exportAs: 'arkAliasFixture' })
+      export class ArkAliasFixtureRoot {
+        readonly internalRequired: InputSignal<string> = input.required<string>({ alias: 'requiredAlias' })
+        readonly internalOutput: OutputEmitterRef<number> = output<number>({ alias: 'outputAlias' })
+        readonly nullableBoolean: InputSignal<true | false | null> = input<true | false | null>(null)
+      }
+    `,
+  )
+  return fixtureRoot
+}
+
+describe('Angular type-doc generator aliases', () => {
+  it('emits aliases from required inputs and outputs and normalizes boolean literal unions', async () => {
+    const fixtureRoot = createAngularTypeDocFixture()
+    try {
+      const doc = await generateAngularTypeDoc('alias-fixture', fixtureRoot)
+      expect(doc['Root'].props['requiredAlias']).toMatchObject({
+        kind: 'required-input',
+        isRequired: true,
+        type: 'string',
+      })
+      expect(doc['Root'].props['internalRequired']).toBeUndefined()
+      expect(doc['Root'].props['outputAlias']).toMatchObject({
+        kind: 'output',
+        isRequired: false,
+        type: 'number',
+      })
+      expect(doc['Root'].props['internalOutput']).toBeUndefined()
+      expect(doc['Root'].props['nullableBoolean'].type).toBe('boolean | null')
+    } finally {
+      rmSync(fixtureRoot, { recursive: true, force: true })
+    }
+  })
+})
 
 describe('Angular type-doc generator (Avatar)', () => {
   const doc = generateAngularTypeDoc('avatar', rootDir)
@@ -139,6 +204,101 @@ describe('Angular type-doc generator (Toggle)', () => {
     for (const [name, entry] of Object.entries(rootProps)) {
       if (entry.kind === 'output') {
         expect(name).not.toBe('pressedChange')
+      }
+    }
+  })
+})
+
+describe('Angular type-doc generator (Dialog)', () => {
+  const doc = generateAngularTypeDoc('dialog', rootDir)
+
+  it('reproduces the committed dialog.types.json byte-for-byte', async () => {
+    const generated = `${JSON.stringify(await doc, null, 2)}\n`
+    const committed = readFileSync(committedDialogPath, 'utf-8')
+    expect(generated).toBe(committed)
+  })
+
+  it('extracts Root.open as a model channel', async () => {
+    const open = (await doc)['Root'].props['open']
+    expect(open.kind).toBe('model')
+    expect(open.isRequired).toBe(false)
+  })
+
+  it('extracts Root.defaultOpen as a plain input', async () => {
+    const defaultOpen = (await doc)['Root'].props['defaultOpen']
+    expect(defaultOpen.kind).toBe('input')
+    expect(defaultOpen.isRequired).toBe(false)
+  })
+
+  it('does not expose a separate openChange output on Root', async () => {
+    const rootProps = (await doc)['Root'].props
+    expect(rootProps['openChange']).toBeUndefined()
+    for (const [name, entry] of Object.entries(rootProps)) {
+      if (entry.kind === 'output') {
+        expect(name).not.toBe('openChange')
+      }
+    }
+  })
+})
+
+describe('Angular type-doc generator (Menu)', () => {
+  const doc = generateAngularTypeDoc('menu', rootDir)
+
+  it('reproduces the committed menu.types.json byte-for-byte', async () => {
+    const generated = `${JSON.stringify(await doc, null, 2)}\n`
+    const committed = readFileSync(committedMenuPath, 'utf-8')
+    expect(generated).toBe(committed)
+  })
+
+  it('extracts Root.open as a model channel and defaultOpen as a plain input', async () => {
+    const open = (await doc)['Root'].props['open']
+    expect(open.kind).toBe('model')
+    expect(open.isRequired).toBe(false)
+    const defaultOpen = (await doc)['Root'].props['defaultOpen']
+    expect(defaultOpen.kind).toBe('input')
+    expect(defaultOpen.isRequired).toBe(false)
+  })
+
+  it('extracts Root.highlightedValue as a model channel and defaultHighlightedValue as a plain input', async () => {
+    const highlighted = (await doc)['Root'].props['highlightedValue']
+    expect(highlighted.kind).toBe('model')
+    expect(highlighted.isRequired).toBe(false)
+    const defaultHighlighted = (await doc)['Root'].props['defaultHighlightedValue']
+    expect(defaultHighlighted.kind).toBe('input')
+    expect(defaultHighlighted.isRequired).toBe(false)
+  })
+
+  it('extracts Root.triggerValue as a model channel and defaultTriggerValue as a plain input', async () => {
+    const triggerValue = (await doc)['Root'].props['triggerValue']
+    expect(triggerValue.kind).toBe('model')
+    expect(triggerValue.isRequired).toBe(false)
+    const defaultTriggerValue = (await doc)['Root'].props['defaultTriggerValue']
+    expect(defaultTriggerValue.kind).toBe('input')
+    expect(defaultTriggerValue.isRequired).toBe(false)
+  })
+
+  it('emits public aliases for aliased menu item inputs', async () => {
+    const menuDoc = await doc
+    expect(menuDoc['CheckboxItem'].props['disabled']).toBeDefined()
+    expect(menuDoc['CheckboxItem'].props['disabledInput']).toBeUndefined()
+    expect(menuDoc['RadioItem'].props['disabled']).toBeDefined()
+    expect(menuDoc['RadioItem'].props['disabledInput']).toBeUndefined()
+    expect(menuDoc['ItemGroup'].props['id']).toBeDefined()
+    expect(menuDoc['ItemGroup'].props['idInput']).toBeUndefined()
+    expect(menuDoc['RadioItemGroup'].props['id']).toBeDefined()
+    expect(menuDoc['RadioItemGroup'].props['idInput']).toBeUndefined()
+  })
+
+  it('does not expose duplicate change outputs on Root', async () => {
+    const rootProps = (await doc)['Root'].props
+    expect(rootProps['openChange']).toBeUndefined()
+    expect(rootProps['highlightedValueChange']).toBeUndefined()
+    expect(rootProps['triggerValueChange']).toBeUndefined()
+    for (const [name, entry] of Object.entries(rootProps)) {
+      if (entry.kind === 'output') {
+        expect(name).not.toBe('openChange')
+        expect(name).not.toBe('highlightedValueChange')
+        expect(name).not.toBe('triggerValueChange')
       }
     }
   })

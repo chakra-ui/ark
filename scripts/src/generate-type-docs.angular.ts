@@ -118,6 +118,23 @@ function getDecoratorStringProperty(decoratorCall: CallExpression, propertyName:
   return undefined
 }
 
+function getCallOptionsStringProperty(
+  callExpression: CallExpression,
+  kind: AngularPropKind,
+  propertyName: string,
+): string | undefined {
+  const optionsArg = callExpression.getArguments()[kind === 'required-input' || kind === 'output' ? 0 : 1]
+  if (!optionsArg || !Node.isObjectLiteralExpression(optionsArg)) return undefined
+  const property = optionsArg.getProperty(propertyName)
+  if (!property || !Node.isPropertyAssignment(property)) return undefined
+  const initializer = property.getInitializer()
+  if (!initializer) return undefined
+  if (Node.isStringLiteral(initializer) || Node.isNoSubstitutionTemplateLiteral(initializer)) {
+    return initializer.getLiteralValue()
+  }
+  return undefined
+}
+
 function pascalCaseComponent(component: string): string {
   return component
     .split('-')
@@ -249,6 +266,18 @@ function getTypeTextWithoutUndefined(type: Type, property: PropertyDeclaration):
   return withoutUndefined.map((unionType) => unionType.getText(property)).join(' | ')
 }
 
+function normalizeTypeText(typeText: string): string {
+  const parts = typeText
+    .split('|')
+    .map((part) => part.trim())
+    .filter(Boolean)
+  if (parts.includes('false') && parts.includes('true')) {
+    const normalized = parts.map((part) => (part === 'false' || part === 'true' ? 'boolean' : part))
+    return [...new Set(normalized)].join(' | ')
+  }
+  return typeText
+}
+
 function getDescription(property: PropertyDeclaration): string | undefined {
   const docs = property.getJsDocs()
   if (docs.length === 0) return undefined
@@ -277,21 +306,22 @@ async function extractPropEntry(
   const kind = callKindFromCallee(callee)
   if (!kind) return undefined
 
-  const name = property.getName()
-  if (!name) {
+  const fieldName = property.getName()
+  if (!fieldName) {
     throw new Error(
       `Missing field name in class ${classDeclaration.getName() ?? '<anonymous>'} (${sourceFile.getFilePath()})`,
     )
   }
 
   const propertyType = property.getType()
-  const innerType = propertyType.getTypeArguments()[0]
+  const innerType = propertyType.getTypeArguments()[0] ?? callExpression.getTypeArguments()[0]?.getType()
   if (!innerType) {
     throw new Error(`Could not resolve inner type for ${property.getName()} (${sourceFile.getFilePath()})`)
   }
   const rawType = getTypeTextWithoutUndefined(innerType, property)
   const aliased = applyAliasMap(rawType, aliasMap)
-  const type = await tryPrettier(aliased, rootDir)
+  const type = normalizeTypeText(await tryPrettier(aliased, rootDir))
+  const name = getCallOptionsStringProperty(callExpression, kind, 'alias') ?? fieldName
 
   const isRequired = kind === 'required-input'
 
@@ -367,9 +397,17 @@ function collectClassesForComponent(project: Project, componentDir: string): Cla
   })
 }
 
+function resolveComponentDir(rootDir: string, component: string): string {
+  const topLevel = path.join(rootDir, 'packages', 'angular', component)
+  if (fs.existsSync(path.join(topLevel, 'public-api.ts'))) return topLevel
+  const nested = path.join(rootDir, 'packages', 'angular', 'src', component)
+  if (fs.existsSync(path.join(nested, 'public-api.ts'))) return nested
+  throw new Error(`Angular component "${component}" not found in packages/angular/ or packages/angular/src/`)
+}
+
 export async function generateAngularTypeDoc(component: string, rootDir?: string): Promise<AngularTypeDoc> {
   const root = rootDir ?? getRepoRoot()
-  const componentDir = path.join(root, 'packages', 'angular', component)
+  const componentDir = resolveComponentDir(root, component)
   const project = getAngularProject(root)
   const classes = collectClassesForComponent(project, componentDir)
 
@@ -409,21 +447,43 @@ export async function generateAngularTypeDoc(component: string, rootDir?: string
 
 async function listAngularComponents(rootDir: string): Promise<string[]> {
   const angularRoot = path.join(rootDir, 'packages', 'angular')
-  const dirs = await globby('*/', {
+  const components = new Set<string>()
+
+  const topLevelDirs = await globby('*/', {
     cwd: angularRoot,
     onlyDirectories: true,
     deep: 1,
   })
-
-  const components: string[] = []
-  for (const dir of dirs) {
+  for (const dir of topLevelDirs) {
     const trimmed = dir.replace(/\/$/, '')
+    if (trimmed === 'src') continue
     const publicApiPath = path.join(angularRoot, trimmed, 'public-api.ts')
     if (fs.existsSync(publicApiPath)) {
-      components.push(trimmed)
+      components.add(trimmed)
     }
   }
-  return components.sort()
+
+  // Batch 2 components live at packages/angular/src/<component>. Filter to directories
+  // that have BOTH a public-api.ts and a <component>.anatomy.ts so utility entrypoints
+  // (internal, format, frame, portal, presence, ...) are not treated as components.
+  const nestedRoot = path.join(angularRoot, 'src')
+  if (fs.existsSync(nestedRoot)) {
+    const nestedDirs = await globby('*/', {
+      cwd: nestedRoot,
+      onlyDirectories: true,
+      deep: 1,
+    })
+    for (const dir of nestedDirs) {
+      const trimmed = dir.replace(/\/$/, '')
+      const publicApiPath = path.join(nestedRoot, trimmed, 'public-api.ts')
+      const anatomyPath = path.join(nestedRoot, trimmed, `${trimmed}.anatomy.ts`)
+      if (fs.existsSync(publicApiPath) && fs.existsSync(anatomyPath)) {
+        components.add(trimmed)
+      }
+    }
+  }
+
+  return Array.from(components).sort()
 }
 
 export async function main(): Promise<void> {

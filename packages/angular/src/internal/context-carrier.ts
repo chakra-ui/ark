@@ -3,7 +3,9 @@ import {
   createComponent,
   type EmbeddedViewRef,
   type EnvironmentInjector,
-  type Injector,
+  Injector,
+  type ProviderToken,
+  type StaticProvider,
   type TemplateRef,
   type Type,
   type ViewContainerRef,
@@ -46,5 +48,26 @@ export function createComponentWithCarrier<C, TRoot>(
   return createComponent(component, {
     environmentInjector: carrier.environmentInjector,
     elementInjector: carrier.elementInjector,
+  })
+}
+
+export interface BuildRootCarrierOptions<TRoot> {
+  root: TRoot
+  rootToken: ProviderToken<TRoot>
+  originInjector: Injector
+  environmentInjector: EnvironmentInjector
+  providers?: StaticProvider[]
+}
+
+export function buildRootCarrier<TRoot>(options: BuildRootCarrierOptions<TRoot>): ArkContextCarrier<TRoot> {
+  const elementInjector = Injector.create({
+    parent: options.originInjector,
+    providers: [{ provide: options.rootToken, useValue: options.root }, ...(options.providers ?? [])],
+  })
+  return createArkContextCarrier({
+    originInjector: options.originInjector,
+    environmentInjector: options.environmentInjector,
+    elementInjector,
+    root: options.root,
   })
 }

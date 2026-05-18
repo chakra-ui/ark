@@ -27,6 +27,41 @@
       "types": "./dist/avatar/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-avatar.mjs"
     },
+    "./collapsible": {
+      "source": "./src/collapsible/public-api.ts",
+      "types": "./dist/src/collapsible/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-collapsible.mjs"
+    },
+    "./dialog": {
+      "source": "./src/dialog/public-api.ts",
+      "types": "./dist/src/dialog/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-dialog.mjs"
+    },
+    "./drawer": {
+      "source": "./src/drawer/public-api.ts",
+      "types": "./dist/src/drawer/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-drawer.mjs"
+    },
+    "./hover-card": {
+      "source": "./src/hover-card/public-api.ts",
+      "types": "./dist/src/hover-card/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-hover-card.mjs"
+    },
+    "./menu": {
+      "source": "./src/menu/public-api.ts",
+      "types": "./dist/src/menu/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-menu.mjs"
+    },
+    "./navigation-menu": {
+      "source": "./src/navigation-menu/public-api.ts",
+      "types": "./dist/src/navigation-menu/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-navigation-menu.mjs"
+    },
+    "./popover": {
+      "source": "./src/popover/public-api.ts",
+      "types": "./dist/src/popover/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-popover.mjs"
+    },
     "./progress": {
       "source": "./progress/public-api.ts",
       "types": "./dist/progress/index.d.ts",
@@ -36,6 +71,11 @@
       "source": "./toggle/public-api.ts",
       "types": "./dist/toggle/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-toggle.mjs"
+    },
+    "./tooltip": {
+      "source": "./src/tooltip/public-api.ts",
+      "types": "./dist/src/tooltip/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-tooltip.mjs"
     },
     "./src/_zag": {
       "source": "./src/_zag/public-api.ts",

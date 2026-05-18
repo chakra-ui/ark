@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { Match } from 'effect'
 
@@ -7,6 +8,21 @@ const getProgressVariant = (component: string) => {
   const [base, variant] = component.split('-')
   if (base !== 'progress' || !variant || !progressExampleVariants.has(variant)) return undefined
   return { base, variant }
+}
+
+const getAngularExamplePath = (component: string) => {
+  const packageBasePath = getPackageBasePath('angular')
+  const nested = join(packageBasePath, 'src', component, 'examples')
+  if (existsSync(nested)) {
+    return { dir: nested, displayPath: `packages/angular/src/${component}/examples` }
+  }
+  const topLevel = join(packageBasePath, component, 'examples')
+  if (existsSync(topLevel)) {
+    return { dir: topLevel, displayPath: `packages/angular/${component}/examples` }
+  }
+  const error = new Error(`Angular examples for "${component}" not found in packages/angular/ or packages/angular/src/`)
+  ;(error as NodeJS.ErrnoException).code = 'ENOENT'
+  throw error
 }
 
 const getProgressExamplePath = (component: string) => {
@@ -56,7 +72,7 @@ export const getFrameworkExampleDir = (framework: string, component: string) => 
     if (progressVariant) {
       return join(getPackageBasePath(framework), progressVariant.base, 'examples', progressVariant.variant)
     }
-    return join(getPackageBasePath(framework), component, 'examples')
+    return getAngularExamplePath(component).dir
   }
   return join(getPackageBasePath(framework), getExamplePath(component))
 }
@@ -71,7 +87,7 @@ export const getFrameworkExampleDisplayPath = (framework: string, component: str
     if (progressVariant) {
       return `packages/angular/${progressVariant.base}/examples/${progressVariant.variant}`
     }
-    return `packages/angular/${component}/examples`
+    return getAngularExamplePath(component).displayPath
   }
   return `packages/${framework}/${getSrcPath(framework)}/${getExamplePath(component)}`
 }

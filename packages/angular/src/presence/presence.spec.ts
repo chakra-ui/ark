@@ -1,12 +1,27 @@
-import { Component, Directive, InjectionToken, ViewChild, inject, signal } from '@angular/core'
+import {
+  Component,
+  Directive,
+  EnvironmentInjector,
+  Injector,
+  InjectionToken,
+  ViewChild,
+  inject,
+  signal,
+} from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { ArkPresenceComponent } from './presence'
 
 const PRESENCE_TOKEN = new InjectionToken<string>('PRESENCE_TOKEN')
+const ORIGIN_TOKEN = new InjectionToken<string>('ORIGIN_TOKEN')
 
 const sentinelCapture: { tokenValue: string | null } = {
   tokenValue: null,
+}
+
+const originSentinelCapture: { tokenValue: string | null; originValue: string | null } = {
+  tokenValue: null,
+  originValue: null,
 }
 
 @Directive({
@@ -17,6 +32,42 @@ class PresenceSentinelDirective {
   constructor() {
     sentinelCapture.tokenValue = inject(PRESENCE_TOKEN, { optional: true })
   }
+}
+
+@Directive({
+  standalone: true,
+  selector: '[originSentinel]',
+})
+class OriginSentinelDirective {
+  constructor() {
+    originSentinelCapture.tokenValue = inject(PRESENCE_TOKEN, { optional: true })
+    originSentinelCapture.originValue = inject(ORIGIN_TOKEN, { optional: true })
+  }
+}
+
+@Component({
+  standalone: true,
+  imports: [ArkPresenceComponent, OriginSentinelDirective],
+  providers: [{ provide: PRESENCE_TOKEN, useValue: 'from-host' }],
+  template: `
+    <ark-presence [present]="present()" [unmountOnExit]="unmountOnExit()" [originInjector]="originInjector">
+      <ng-template>
+        <span data-testid="origin-content" originSentinel>Origin</span>
+      </ng-template>
+    </ark-presence>
+  `,
+})
+class OriginInjectorHostComponent {
+  @ViewChild(ArkPresenceComponent) presenceRef!: ArkPresenceComponent
+  readonly present = signal(false)
+  readonly unmountOnExit = signal(false)
+  readonly originInjector = Injector.create({
+    providers: [
+      { provide: PRESENCE_TOKEN, useValue: 'from-origin' },
+      { provide: ORIGIN_TOKEN, useValue: 'origin-only' },
+    ],
+    parent: inject(EnvironmentInjector),
+  })
 }
 
 @Component({
@@ -44,6 +95,8 @@ describe('ArkPresenceComponent', () => {
   beforeEach(() => {
     TestBed.resetTestingModule()
     sentinelCapture.tokenValue = null
+    originSentinelCapture.tokenValue = null
+    originSentinelCapture.originValue = null
   })
 
   it('mounts content immediately when present is true on initial render', () => {
@@ -231,6 +284,53 @@ describe('ArkPresenceComponent', () => {
     fixture.detectChanges()
 
     expect(sentinelCapture.tokenValue).toBe('from-host')
+
+    fixture.destroy()
+  })
+
+  it('resolves origin injector tokens on initial mount when originInjector is supplied', () => {
+    TestBed.configureTestingModule({ imports: [OriginInjectorHostComponent] })
+    const fixture = TestBed.createComponent(OriginInjectorHostComponent)
+    fixture.componentInstance.present.set(true)
+    fixture.detectChanges()
+
+    expect(fixture.nativeElement.querySelector('[data-testid="origin-content"]')).not.toBeNull()
+    expect(originSentinelCapture.tokenValue).toBe('from-origin')
+    expect(originSentinelCapture.originValue).toBe('origin-only')
+
+    fixture.destroy()
+  })
+
+  it('preserves origin injector tokens across exit, unmount, and remount', () => {
+    TestBed.configureTestingModule({ imports: [OriginInjectorHostComponent] })
+    const fixture = TestBed.createComponent(OriginInjectorHostComponent)
+    fixture.componentInstance.present.set(true)
+    fixture.detectChanges()
+
+    expect(originSentinelCapture.tokenValue).toBe('from-origin')
+    expect(originSentinelCapture.originValue).toBe('origin-only')
+
+    fixture.componentInstance.present.set(false)
+    fixture.detectChanges()
+    expect(fixture.componentInstance.presenceRef.status()).toBe('exiting')
+    expect(fixture.nativeElement.querySelector('[data-testid="origin-content"]')).not.toBeNull()
+
+    fixture.componentInstance.unmountOnExit.set(true)
+    fixture.detectChanges()
+    fixture.componentInstance.presenceRef.onExitComplete()
+    fixture.detectChanges()
+    expect(fixture.componentInstance.presenceRef.status()).toBe('unmounted')
+    expect(fixture.nativeElement.querySelector('[data-testid="origin-content"]')).toBeNull()
+
+    originSentinelCapture.tokenValue = null
+    originSentinelCapture.originValue = null
+
+    fixture.componentInstance.present.set(true)
+    fixture.detectChanges()
+
+    expect(fixture.nativeElement.querySelector('[data-testid="origin-content"]')).not.toBeNull()
+    expect(originSentinelCapture.tokenValue).toBe('from-origin')
+    expect(originSentinelCapture.originValue).toBe('origin-only')
 
     fixture.destroy()
   })

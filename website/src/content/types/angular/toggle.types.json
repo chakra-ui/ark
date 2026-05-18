@@ -19,7 +19,7 @@
         "description": "Whether the toggle is disabled."
       },
       "pressed": {
-        "type": "false | true",
+        "type": "boolean",
         "isRequired": false,
         "kind": "model",
         "description": "The controlled pressed state of the toggle."

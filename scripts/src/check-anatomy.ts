@@ -54,7 +54,7 @@ async function checkPackage(packageName: string): Promise<AnatomyCheck> {
 
   const anatomyTsPath = isAngular ? join(basePath, 'src', 'anatomy.ts') : join(basePath, 'anatomy.ts')
 
-  const anatomyGlob = isAngular ? '*/*.anatomy.ts' : '*/*.anatomy.{ts,tsx}'
+  const anatomyGlob = isAngular ? '{*,src/*}/*.anatomy.ts' : '*/*.anatomy.{ts,tsx}'
 
   // Find all anatomy files
   const anatomyFiles = await glob(anatomyGlob, {

@@ -1,0 +1,295 @@
+{
+  "Root": {
+    "props": {
+      "anchorPoint": {
+        "type": "null | menu.Point",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Optional anchor point used when opening the menu (e.g. context menus)."
+      },
+      "aria-label": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The accessibility label for the menu."
+      },
+      "closeOnSelect": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether to close the menu when an option is selected."
+      },
+      "composite": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether the menu is composed with other composite widgets."
+      },
+      "defaultHighlightedValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial highlighted value when uncontrolled."
+      },
+      "defaultOpen": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "The initial open state of the menu when uncontrolled."
+      },
+      "defaultTriggerValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The default trigger value when uncontrolled."
+      },
+      "highlightedValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled highlighted value of the menu item."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the menu."
+      },
+      "ids": {
+        "type": "Partial<{\n    trigger: string | ((value?: string) => string)\n    contextTrigger: string | ((value?: string) => string)\n    content: string\n    groupLabel: (id: string) => string\n    group: (id: string) => string\n    positioner: string\n    arrow: string\n  }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the elements in the menu. Useful for composition."
+      },
+      "loopFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to loop the keyboard navigation."
+      },
+      "navigate": {
+        "type": "null | (details: menu.NavigateDetails) => void",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Function to navigate to the selected item if it's an anchor element."
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled open state of the menu."
+      },
+      "positioning": {
+        "type": "MenuPositioningOptions",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The positioning options for the menu content."
+      },
+      "select": {
+        "type": "MenuSelectionDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Fired when a menu item is selected. Mirrors Zag `onSelect`."
+      },
+      "triggerValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled trigger value."
+      },
+      "typeahead": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether the pressing printable characters should trigger typeahead navigation."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseMenuReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The menu machine returned by useMenu()."
+      }
+    }
+  },
+  "Trigger": {
+    "props": {}
+  },
+  "ContextTrigger": {
+    "props": {}
+  },
+  "Positioner": {
+    "props": {}
+  },
+  "Content": {
+    "props": {}
+  },
+  "Item": {
+    "props": {
+      "value": {
+        "type": "string",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The unique value of the menu item option."
+      },
+      "closeOnSelect": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether the menu should be closed when the option is selected."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the menu item is disabled."
+      },
+      "valueText": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The textual value of the option. Used in typeahead navigation."
+      }
+    }
+  },
+  "ItemText": {
+    "props": {
+      "value": {
+        "type": "string",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The value of the parent menu item this text belongs to."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the parent menu item is disabled."
+      },
+      "valueText": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The textual value of the parent menu item."
+      }
+    }
+  },
+  "Separator": {
+    "props": {}
+  },
+  "Indicator": {
+    "props": {}
+  },
+  "Arrow": {
+    "props": {}
+  },
+  "ArrowTip": {
+    "props": {}
+  },
+  "CheckboxItem": {
+    "props": {
+      "value": {
+        "type": "string",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The unique value of the checkbox item."
+      },
+      "checked": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "model",
+        "description": "Controlled checked state."
+      },
+      "closeOnSelect": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether the menu should be closed when this option is selected."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the checkbox item is disabled."
+      },
+      "valueText": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The textual value of the option. Used in typeahead navigation."
+      }
+    }
+  },
+  "RadioItem": {
+    "props": {
+      "value": {
+        "type": "string",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The unique value of the radio item within its group."
+      },
+      "closeOnSelect": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether the menu should be closed when this option is selected."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the radio item is disabled."
+      },
+      "valueText": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The textual value of the option. Used in typeahead navigation."
+      }
+    }
+  },
+  "RadioItemGroup": {
+    "props": {
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Optional explicit id for the radio group; auto-generated when omitted."
+      },
+      "value": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "model",
+        "description": "Controlled selected value within this radio group."
+      }
+    }
+  },
+  "ItemGroup": {
+    "props": {
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Optional explicit id for the group; auto-generated when omitted."
+      }
+    }
+  },
+  "ItemGroupLabel": {
+    "props": {}
+  },
+  "TriggerItem": {
+    "props": {}
+  },
+  "ItemIndicator": {
+    "props": {}
+  }
+}

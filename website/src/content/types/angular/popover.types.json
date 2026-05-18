@@ -1,0 +1,143 @@
+{
+  "Root": {
+    "props": {
+      "autoFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to auto-focus the first focusable element inside the popover when opened."
+      },
+      "closeOnEscape": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to close the popover when the escape key is pressed."
+      },
+      "closeOnInteractOutside": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to close the popover when the outside is clicked."
+      },
+      "defaultOpen": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "The initial open state of the popover when uncontrolled."
+      },
+      "defaultTriggerValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The default trigger value when uncontrolled."
+      },
+      "finalFocusEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Element to receive focus when the popover is closed."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the popover."
+      },
+      "ids": {
+        "type": "Partial<{\n    anchor: string\n    trigger: string | ((value?: string) => string)\n    content: string\n    title: string\n    description: string\n    closeTrigger: string\n    positioner: string\n    arrow: string\n  }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the elements in the popover. Useful for composition."
+      },
+      "initialFocusEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Element to receive focus when the popover is opened."
+      },
+      "modal": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the popover renders as a modal overlay."
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled open state of the popover."
+      },
+      "portalled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether the popover content is portalled."
+      },
+      "positioning": {
+        "type": "PopoverPositioningOptions",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The positioning options for the popover content."
+      },
+      "restoreFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to restore focus to the previously focused element when closed."
+      },
+      "triggerValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled trigger value."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UsePopoverReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The popover machine returned by usePopover()."
+      }
+    }
+  },
+  "Trigger": {
+    "props": {}
+  },
+  "Anchor": {
+    "props": {}
+  },
+  "Positioner": {
+    "props": {}
+  },
+  "Content": {
+    "props": {}
+  },
+  "Title": {
+    "props": {}
+  },
+  "Description": {
+    "props": {}
+  },
+  "CloseTrigger": {
+    "props": {}
+  },
+  "Indicator": {
+    "props": {}
+  },
+  "Arrow": {
+    "props": {}
+  },
+  "ArrowTip": {
+    "props": {}
+  }
+}

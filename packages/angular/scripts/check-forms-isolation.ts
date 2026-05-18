@@ -20,6 +20,41 @@ const entryPoints = [
     outputs: ['dist/fesm2022/ark-ui-angular-avatar.mjs'],
   },
   {
+    name: '@ark-ui/angular/collapsible',
+    file: 'src/collapsible/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-collapsible.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/dialog',
+    file: 'src/dialog/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-dialog.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/drawer',
+    file: 'src/drawer/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-drawer.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/hover-card',
+    file: 'src/hover-card/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-hover-card.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/menu',
+    file: 'src/menu/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-menu.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/navigation-menu',
+    file: 'src/navigation-menu/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-navigation-menu.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/popover',
+    file: 'src/popover/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-popover.mjs'],
+  },
+  {
     name: '@ark-ui/angular/progress',
     file: 'progress/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-progress.mjs'],
@@ -28,6 +63,11 @@ const entryPoints = [
     name: '@ark-ui/angular/toggle',
     file: 'toggle/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-toggle.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/tooltip',
+    file: 'src/tooltip/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-tooltip.mjs'],
   },
   {
     name: '@ark-ui/angular/client-only',

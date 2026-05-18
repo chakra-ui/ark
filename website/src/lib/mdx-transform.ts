@@ -13,9 +13,8 @@ import { cleanExampleCode, getFrameworkExampleFilePath, getFrameworkExtension } 
 const frameworks = ['react', 'solid', 'vue', 'svelte', 'angular'] as const
 
 function readExampleFile(framework: string, component: string, id: string): string | null {
-  const filePath = getFrameworkExampleFilePath(framework, component, id)
-
   try {
+    const filePath = getFrameworkExampleFilePath(framework, component, id)
     const content = readFileSync(filePath, 'utf-8')
     return cleanExampleCode(framework, content)
   } catch {

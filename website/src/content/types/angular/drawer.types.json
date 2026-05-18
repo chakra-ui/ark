@@ -1,0 +1,208 @@
+{
+  "Root": {
+    "props": {
+      "closeOnEscape": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to close the drawer when the escape key is pressed."
+      },
+      "closeOnInteractOutside": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to close the drawer when the outside is clicked."
+      },
+      "closeThreshold": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The threshold distance for dismissing the drawer."
+      },
+      "defaultOpen": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "The initial open state of the drawer when uncontrolled."
+      },
+      "defaultSnapPoint": {
+        "type": "null | string | number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The default snap point of the drawer when uncontrolled."
+      },
+      "defaultTriggerValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The default trigger value when uncontrolled."
+      },
+      "finalFocusEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Element to receive focus when the drawer is closed."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the drawer."
+      },
+      "ids": {
+        "type": "Partial<{\n    backdrop: string\n    positioner: string\n    content: string\n    title: string\n    description: string\n    header: string\n    trigger: string | ((value?: string) => string)\n    grabber: string\n    grabberIndicator: string\n    closeTrigger: string\n    swipeArea: string\n  }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the elements in the drawer. Useful for composition."
+      },
+      "initialFocusEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Element to receive focus when the drawer is opened."
+      },
+      "modal": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether the drawer renders as a modal overlay."
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled open state of the drawer."
+      },
+      "preventDragOnScroll": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to prevent dragging on scrollable elements."
+      },
+      "preventScroll": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to prevent scrolling behind the drawer when it's opened."
+      },
+      "restoreFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to restore focus to the element that had focus before the drawer was opened."
+      },
+      "role": {
+        "type": "'dialog' | 'alertdialog'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The drawer's role."
+      },
+      "snapPoint": {
+        "type": "null | string | number",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The currently active snap point."
+      },
+      "snapPoints": {
+        "type": "DrawerSnapPoint[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The snap points of the drawer."
+      },
+      "snapToSequentialPoints": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the drawer should snap to sequential points when swiping."
+      },
+      "stack": {
+        "type": "DrawerStack",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Optional external store for coordinating app-level drawer stack visuals."
+      },
+      "swipeDirection": {
+        "type": "'up' | 'down' | 'start' | 'end'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The direction in which the drawer can be swiped."
+      },
+      "swipeVelocityThreshold": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The threshold velocity (in pixels/s) for closing the drawer."
+      },
+      "trapFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to trap focus inside the drawer when it's opened."
+      },
+      "triggerValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The value of the trigger that currently controls the drawer."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseDrawerReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The drawer machine returned by useDrawer()."
+      }
+    }
+  },
+  "Trigger": {
+    "props": {}
+  },
+  "Backdrop": {
+    "props": {}
+  },
+  "Positioner": {
+    "props": {}
+  },
+  "Content": {
+    "props": {}
+  },
+  "Title": {
+    "props": {}
+  },
+  "Description": {
+    "props": {}
+  },
+  "CloseTrigger": {
+    "props": {}
+  },
+  "Grabber": {
+    "props": {}
+  },
+  "GrabberIndicator": {
+    "props": {}
+  },
+  "SwipeArea": {
+    "props": {}
+  },
+  "Indent": {
+    "props": {}
+  },
+  "IndentBackground": {
+    "props": {}
+  },
+  "Stack": {
+    "props": {}
+  }
+}
