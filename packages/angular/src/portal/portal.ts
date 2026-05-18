@@ -1,18 +1,25 @@
-import { NgTemplateOutlet, isPlatformBrowser } from '@angular/common'
+import { NgTemplateOutlet } from '@angular/common'
 import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
+  type EmbeddedViewRef,
   Injector,
-  PLATFORM_ID,
   type TemplateRef,
   ViewContainerRef,
   afterNextRender,
+  effect,
   inject,
   input,
+  signal,
   viewChild,
 } from '@angular/core'
-import { injectArkEnvironment } from '../providers/environment/environment'
+import { injectArkEnvironment } from '@ark-ui/angular/src/providers/environment'
+
+export interface PortalProps {
+  target?: HTMLElement | null
+}
+export type PortalInputs = PortalProps
 
 @Component({
   selector: 'ark-portal',
@@ -32,25 +39,32 @@ export class ArkPortalComponent {
   private readonly vcRef = inject(ViewContainerRef)
   private readonly contentTpl = viewChild.required<TemplateRef<unknown>>('content')
   private readonly elementInjector = inject(Injector)
-  private readonly platformId = inject(PLATFORM_ID)
   private readonly destroyRef = inject(DestroyRef)
   private readonly environment = injectArkEnvironment()
+  private readonly view = signal<EmbeddedViewRef<unknown> | null>(null)
 
   constructor() {
     afterNextRender(() => {
-      if (!isPlatformBrowser(this.platformId)) return
       const view = this.vcRef.createEmbeddedView(this.contentTpl(), undefined, {
         injector: this.elementInjector,
       })
-      view.detectChanges()
+      this.view.set(view)
+      this.destroyRef.onDestroy(() => {
+        for (const node of view.rootNodes as Node[]) {
+          node.parentNode?.removeChild(node)
+        }
+        view.destroy()
+      })
+    })
+
+    effect(() => {
+      const view = this.view()
+      if (!view) return
       const target = this.resolveTarget()
       if (!target) return
       for (const node of view.rootNodes as Node[]) {
         target.appendChild(node)
       }
-      this.destroyRef.onDestroy(() => {
-        view.destroy()
-      })
     })
   }
 
