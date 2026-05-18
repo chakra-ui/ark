@@ -1,0 +1,69 @@
+{
+  "Root": {
+    "props": {
+      "collapsedHeight": {
+        "type": "string | number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The height of the content when collapsed."
+      },
+      "collapsedWidth": {
+        "type": "string | number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The width of the content when collapsed."
+      },
+      "defaultOpen": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "The initial open state of the collapsible when uncontrolled."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the collapsible is disabled."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the collapsible."
+      },
+      "ids": {
+        "type": "Partial<{ root: string; content: string; trigger: string }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the elements in the collapsible. Useful for composition."
+      },
+      "open": {
+        "type": "false | true",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled open state of the collapsible."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseCollapsibleReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The collapsible machine returned by useCollapsible()."
+      }
+    }
+  },
+  "Trigger": {
+    "props": {}
+  },
+  "Content": {
+    "props": {}
+  },
+  "Indicator": {
+    "props": {}
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "Root": {
+    "props": {
+      "ariaLabel": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Custom aria-label for the tooltip."
+      },
+      "closeDelay": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The close delay of the tooltip."
+      },
+      "closeOnClick": {
+        "type": "false | true",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether the tooltip should close on click."
+      },
+      "closeOnEscape": {
+        "type": "false | true",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether to close the tooltip when the Escape key is pressed."
+      },
+      "closeOnPointerDown": {
+        "type": "false | true",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether to close the tooltip on pointerdown."
+      },
+      "closeOnScroll": {
+        "type": "false | true",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether the tooltip should close on scroll."
+      },
+      "defaultOpen": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "The initial open state of the tooltip when uncontrolled."
+      },
+      "defaultTriggerValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The default trigger value when uncontrolled."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the tooltip is disabled."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the tooltip."
+      },
+      "ids": {
+        "type": "Partial<{ trigger: string | ((value?: string) => string); content: string; arrow: string; positioner: string }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the elements in the tooltip. Useful for composition."
+      },
+      "interactive": {
+        "type": "false | true",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether the tooltip's content is interactive."
+      },
+      "open": {
+        "type": "false | true",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled open state of the tooltip."
+      },
+      "openDelay": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The open delay of the tooltip."
+      },
+      "positioning": {
+        "type": "TooltipPositioningOptions",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The positioning options for the tooltip content."
+      },
+      "triggerValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled trigger value."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseTooltipReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The tooltip machine returned by useTooltip()."
+      }
+    }
+  },
+  "Trigger": {
+    "props": {}
+  },
+  "Positioner": {
+    "props": {}
+  },
+  "Content": {
+    "props": {}
+  },
+  "Arrow": {
+    "props": {}
+  },
+  "ArrowTip": {
+    "props": {}
+  }
+}

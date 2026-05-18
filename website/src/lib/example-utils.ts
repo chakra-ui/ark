@@ -58,6 +58,7 @@ export const getAllComponents = async (framework: string): Promise<string[]> => 
       const componentDirs = await readdir(basePath, { withFileTypes: true })
       for (const dir of componentDirs) {
         if (!dir.isDirectory()) continue
+        if (dir.name === 'src') continue
         try {
           await readdir(join(basePath, dir.name, 'examples'))
           components.add(dir.name)
@@ -67,6 +68,22 @@ export const getAllComponents = async (framework: string): Promise<string[]> => 
       }
     } catch {
       return []
+    }
+    // Batch 2 components live under packages/angular/src/<component>. Only treat a nested
+    // directory as a component when it has an examples/ subdirectory.
+    try {
+      const nestedDirs = await readdir(join(basePath, 'src'), { withFileTypes: true })
+      for (const dir of nestedDirs) {
+        if (!dir.isDirectory()) continue
+        try {
+          await readdir(join(basePath, 'src', dir.name, 'examples'))
+          components.add(dir.name)
+        } catch {
+          // No examples directory, skip
+        }
+      }
+    } catch {
+      // No nested src directory
     }
     return Array.from(components).sort()
   }

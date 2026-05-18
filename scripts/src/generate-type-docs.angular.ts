@@ -367,9 +367,17 @@ function collectClassesForComponent(project: Project, componentDir: string): Cla
   })
 }
 
+function resolveComponentDir(rootDir: string, component: string): string {
+  const topLevel = path.join(rootDir, 'packages', 'angular', component)
+  if (fs.existsSync(path.join(topLevel, 'public-api.ts'))) return topLevel
+  const nested = path.join(rootDir, 'packages', 'angular', 'src', component)
+  if (fs.existsSync(path.join(nested, 'public-api.ts'))) return nested
+  return topLevel
+}
+
 export async function generateAngularTypeDoc(component: string, rootDir?: string): Promise<AngularTypeDoc> {
   const root = rootDir ?? getRepoRoot()
-  const componentDir = path.join(root, 'packages', 'angular', component)
+  const componentDir = resolveComponentDir(root, component)
   const project = getAngularProject(root)
   const classes = collectClassesForComponent(project, componentDir)
 
@@ -409,21 +417,43 @@ export async function generateAngularTypeDoc(component: string, rootDir?: string
 
 async function listAngularComponents(rootDir: string): Promise<string[]> {
   const angularRoot = path.join(rootDir, 'packages', 'angular')
-  const dirs = await globby('*/', {
+  const components = new Set<string>()
+
+  const topLevelDirs = await globby('*/', {
     cwd: angularRoot,
     onlyDirectories: true,
     deep: 1,
   })
-
-  const components: string[] = []
-  for (const dir of dirs) {
+  for (const dir of topLevelDirs) {
     const trimmed = dir.replace(/\/$/, '')
+    if (trimmed === 'src') continue
     const publicApiPath = path.join(angularRoot, trimmed, 'public-api.ts')
     if (fs.existsSync(publicApiPath)) {
-      components.push(trimmed)
+      components.add(trimmed)
     }
   }
-  return components.sort()
+
+  // Batch 2 components live at packages/angular/src/<component>. Filter to directories
+  // that have BOTH a public-api.ts and a <component>.anatomy.ts so utility entrypoints
+  // (internal, format, frame, portal, presence, ...) are not treated as components.
+  const nestedRoot = path.join(angularRoot, 'src')
+  if (fs.existsSync(nestedRoot)) {
+    const nestedDirs = await globby('*/', {
+      cwd: nestedRoot,
+      onlyDirectories: true,
+      deep: 1,
+    })
+    for (const dir of nestedDirs) {
+      const trimmed = dir.replace(/\/$/, '')
+      const publicApiPath = path.join(nestedRoot, trimmed, 'public-api.ts')
+      const anatomyPath = path.join(nestedRoot, trimmed, `${trimmed}.anatomy.ts`)
+      if (fs.existsSync(publicApiPath) && fs.existsSync(anatomyPath)) {
+        components.add(trimmed)
+      }
+    }
+  }
+
+  return Array.from(components).sort()
 }
 
 export async function main(): Promise<void> {

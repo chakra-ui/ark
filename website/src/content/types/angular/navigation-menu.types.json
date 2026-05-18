@@ -1,0 +1,156 @@
+{
+  "Root": {
+    "props": {
+      "closeDelay": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The delay before the navigation menu closes."
+      },
+      "defaultValue": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial value when uncontrolled."
+      },
+      "disableClickTrigger": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to disable the click trigger."
+      },
+      "disableHoverTrigger": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to disable the hover trigger."
+      },
+      "disablePointerLeaveClose": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to disable closing the menu when the pointer leaves."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the navigation menu."
+      },
+      "ids": {
+        "type": "Partial<{\n    root: string\n    list: string\n    item: string\n    trigger: (value: string) => string\n    content: (value: string) => string\n    viewport: string\n  }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the elements in the navigation menu. Useful for composition."
+      },
+      "openDelay": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The delay before the navigation menu opens."
+      },
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The orientation of the navigation menu."
+      },
+      "translations": {
+        "type": "NavigationMenuIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Localized strings for accessibility labels."
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled value of the currently-open item."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseNavigationMenuReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The navigation menu machine returned by useNavigationMenu()."
+      }
+    }
+  },
+  "List": {
+    "props": {}
+  },
+  "Item": {
+    "props": {
+      "value": {
+        "type": "string",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The unique value of the navigation menu item."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the navigation menu item is disabled."
+      }
+    }
+  },
+  "Trigger": {
+    "props": {}
+  },
+  "Content": {
+    "props": {}
+  },
+  "Link": {
+    "props": {
+      "closeOnClick": {
+        "type": "false | true",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether to close the navigation menu when the link is clicked."
+      },
+      "current": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the link is the current link."
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The value of the item this link belongs to (defaults to ancestor item context)."
+      }
+    }
+  },
+  "Indicator": {
+    "props": {}
+  },
+  "ItemIndicator": {
+    "props": {}
+  },
+  "Viewport": {
+    "props": {}
+  },
+  "ViewportPositioner": {
+    "props": {
+      "align": {
+        "type": "'start' | 'center' | 'end'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Alignment of the viewport positioner (controls `--viewport-x`/`--viewport-y`)."
+      }
+    }
+  },
+  "Arrow": {
+    "props": {}
+  }
+}
