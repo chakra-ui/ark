@@ -48,6 +48,12 @@ describe('framework-example-paths', () => {
         expect(existsSync(getFrameworkExampleDir('angular', component))).toBe(true)
       }
     })
+
+    test('throws an ENOENT-compatible error for unknown Angular examples dirs', () => {
+      expect(() => getFrameworkExampleDir('angular', 'definitely-missing')).toThrow(
+        expect.objectContaining({ code: 'ENOENT' }),
+      )
+    })
   })
 
   describe('react', () => {

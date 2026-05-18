@@ -20,7 +20,9 @@ const getAngularExamplePath = (component: string) => {
   if (existsSync(topLevel)) {
     return { dir: topLevel, displayPath: `packages/angular/${component}/examples` }
   }
-  throw new Error(`Angular examples for "${component}" not found in packages/angular/ or packages/angular/src/`)
+  const error = new Error(`Angular examples for "${component}" not found in packages/angular/ or packages/angular/src/`)
+  ;(error as NodeJS.ErrnoException).code = 'ENOENT'
+  throw error
 }
 
 const getProgressExamplePath = (component: string) => {
