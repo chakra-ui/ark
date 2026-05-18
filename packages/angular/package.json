@@ -37,6 +37,11 @@
       "types": "./dist/src/dialog/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-src-dialog.mjs"
     },
+    "./drawer": {
+      "source": "./src/drawer/public-api.ts",
+      "types": "./dist/src/drawer/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-drawer.mjs"
+    },
     "./progress": {
       "source": "./progress/public-api.ts",
       "types": "./dist/progress/index.d.ts",
