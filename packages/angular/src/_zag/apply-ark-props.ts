@@ -1,5 +1,13 @@
-import { effect } from '@angular/core'
-import type { ApplyArkPropsOptions } from '../internal/types'
+import { effect, type DestroyRef, type ElementRef, type Renderer2 } from '@angular/core'
+
+type ArkProps = Record<string, unknown>
+
+export interface ApplyArkPropsOptions {
+  elementRef: ElementRef<HTMLElement>
+  renderer: Renderer2
+  destroyRef: DestroyRef
+  props: () => ArkProps | undefined
+}
 
 const isAttributeKey = (key: string): boolean =>
   key === 'role' || key === 'id' || key === 'tabindex' || key.startsWith('aria-') || key.startsWith('data-')
