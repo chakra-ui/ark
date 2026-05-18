@@ -1,0 +1,29 @@
+{
+  "Indicator": {
+    "props": {}
+  },
+  "Root": {
+    "props": {
+      "defaultPressed": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "The initial pressed state of the toggle when uncontrolled."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the toggle is disabled."
+      },
+      "pressed": {
+        "type": "false | true",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled pressed state of the toggle."
+      }
+    }
+  }
+}
