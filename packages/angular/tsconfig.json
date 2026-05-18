@@ -5,6 +5,7 @@
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
+      "@ark-ui/angular/src/internal/types": ["src/internal/types.ts"],
       "@ark-ui/angular/src/presence": ["src/presence/public-api.ts"],
       "@ark-ui/angular/src/providers/environment": ["src/providers/environment/public-api.ts"],
       "@ark-ui/angular/src/providers/locale": ["src/providers/locale/public-api.ts"]
