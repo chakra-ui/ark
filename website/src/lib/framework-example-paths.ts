@@ -1,6 +1,19 @@
 import { join } from 'node:path'
 import { Match } from 'effect'
 
+const progressExampleVariants = new Set(['circular', 'linear'])
+
+const getProgressVariant = (component: string) => {
+  const [base, variant] = component.split('-')
+  if (base !== 'progress' || !variant || !progressExampleVariants.has(variant)) return undefined
+  return { base, variant }
+}
+
+const getProgressExamplePath = (component: string) => {
+  const progressVariant = getProgressVariant(component)
+  return progressVariant ? `components/progress/examples/${progressVariant.variant}` : undefined
+}
+
 export const getFrameworkExtension = (framework: string) => {
   return Match.value(framework).pipe(
     Match.when('vue', () => 'vue'),
@@ -11,11 +24,10 @@ export const getFrameworkExtension = (framework: string) => {
 }
 
 export const getExamplePath = (component: string) => {
+  const progressPath = getProgressExamplePath(component)
+  if (progressPath) return progressPath
+
   return Match.value(component).pipe(
-    Match.when(
-      () => ['progress-circular', 'progress-linear'].includes(component),
-      () => `components/progress/examples/${component.split('-')[1]}`,
-    ),
     Match.when(
       () => ['environment', 'locale'].includes(component),
       () => `providers/${component}/examples`,
@@ -40,9 +52,9 @@ export const getPackageBasePath = (framework: string) => {
 
 export const getFrameworkExampleDir = (framework: string, component: string) => {
   if (framework === 'angular') {
-    if (['progress-circular', 'progress-linear'].includes(component)) {
-      const [base, variant] = component.split('-')
-      return join(getPackageBasePath(framework), base, 'examples', variant)
+    const progressVariant = getProgressVariant(component)
+    if (progressVariant) {
+      return join(getPackageBasePath(framework), progressVariant.base, 'examples', progressVariant.variant)
     }
     return join(getPackageBasePath(framework), component, 'examples')
   }
@@ -55,9 +67,9 @@ export const getFrameworkExampleFilePath = (framework: string, component: string
 
 export const getFrameworkExampleDisplayPath = (framework: string, component: string) => {
   if (framework === 'angular') {
-    if (['progress-circular', 'progress-linear'].includes(component)) {
-      const [base, variant] = component.split('-')
-      return `packages/angular/${base}/examples/${variant}`
+    const progressVariant = getProgressVariant(component)
+    if (progressVariant) {
+      return `packages/angular/${progressVariant.base}/examples/${progressVariant.variant}`
     }
     return `packages/angular/${component}/examples`
   }
