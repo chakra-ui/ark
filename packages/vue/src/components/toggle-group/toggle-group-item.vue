@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/toggle-group'
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ToggleGroupItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface ToggleGroupItemProps
@@ -14,9 +14,9 @@ export interface ToggleGroupItemProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useToggleGroupContext } from './use-toggle-group-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useToggleGroupContext } from './use-toggle-group-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<ToggleGroupItemProps>()
 const toggleGroup = useToggleGroupContext()

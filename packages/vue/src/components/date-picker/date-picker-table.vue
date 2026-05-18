@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { TableProps } from '@zag-js/date-picker'
 import type { TableHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface DatePickerTableBaseProps extends TableProps, PolymorphicProps {}
 export interface DatePickerTableProps
@@ -14,12 +14,12 @@ export interface DatePickerTableProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
+import { ark } from '../factory.ts'
 import { computed, useId } from 'vue'
-import { useDatePickerContext } from './use-date-picker-context'
-import { DatePickerTablePropsProvider } from './use-date-picker-table-props-context'
-import { DEFAULT_VIEW_PROPS_CONTEXT, useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { useDatePickerContext } from './use-date-picker-context.ts'
+import { DatePickerTablePropsProvider } from './use-date-picker-table-props-context.ts'
+import { DEFAULT_VIEW_PROPS_CONTEXT, useDatePickerViewPropsContext } from './use-date-picker-view-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<DatePickerTableProps>()
 const datePicker = useDatePickerContext()

@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './tags-input.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './tags-input.types.ts'
 
 export interface TagsInputRootBaseProps extends RootProps, PolymorphicProps {}
 export interface TagsInputRootProps
@@ -16,10 +16,10 @@ export interface TagsInputRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useTagsInput } from './use-tags-input'
-import { TagsInputProvider } from './use-tags-input-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useTagsInput } from './use-tags-input.ts'
+import { TagsInputProvider } from './use-tags-input-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<TagsInputRootProps>(), {
   addOnPaste: undefined,

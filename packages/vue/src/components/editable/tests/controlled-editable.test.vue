@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Editable, type EditableRootEmits, type EditableRootProps } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { Editable, type EditableRootEmits, type EditableRootProps } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<EditableRootProps>()
 const emits = defineEmits<EditableRootEmits>()

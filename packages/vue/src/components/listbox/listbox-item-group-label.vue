@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ListboxItemGroupLabelBaseProps extends PolymorphicProps {}
 export interface ListboxItemGroupLabelProps
@@ -13,10 +13,10 @@ export interface ListboxItemGroupLabelProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useListboxContext } from './use-listbox-context'
-import { useListboxItemGroupPropsContext } from './use-listbox-item-group-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useListboxContext } from './use-listbox-context.ts'
+import { useListboxItemGroupPropsContext } from './use-listbox-item-group-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ListboxItemGroupLabelProps>()
 const listbox = useListboxContext()

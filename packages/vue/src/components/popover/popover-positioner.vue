@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface PopoverPositionerBaseProps extends PolymorphicProps {}
 export interface PopoverPositionerProps
@@ -13,10 +13,10 @@ export interface PopoverPositionerProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { usePresenceContext } from '../presence'
-import { usePopoverContext } from './use-popover-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { usePresenceContext } from '../presence/index.ts'
+import { usePopoverContext } from './use-popover-context.ts'
 
 defineProps<PopoverPositionerProps>()
 

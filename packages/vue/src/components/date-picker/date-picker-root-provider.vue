@@ -1,9 +1,9 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { RenderStrategyProps } from '../../utils/use-render-strategy'
-import type { PolymorphicProps } from '../factory'
-import type { UseDatePickerReturn } from './use-date-picker'
-import type { RootEmits as PresenceEmits } from '../presence/presence.types'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseDatePickerReturn } from './use-date-picker.ts'
+import type { RootEmits as PresenceEmits } from '../presence/presence.types.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseDatePickerReturn>
@@ -22,11 +22,11 @@ export interface DatePickerRootProviderEmits extends PresenceEmits {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { PresenceProvider, usePresence } from '../presence'
-import { DatePickerProvider } from './use-date-picker-context'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { DatePickerProvider } from './use-date-picker-context.ts'
 
 const props = defineProps<DatePickerRootProviderProps>()
 const emits = defineEmits<DatePickerRootProviderEmits>()

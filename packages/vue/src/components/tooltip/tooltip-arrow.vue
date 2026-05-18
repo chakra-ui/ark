@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface TooltipArrowBaseProps extends PolymorphicProps {}
 export interface TooltipArrowProps
@@ -13,9 +13,9 @@ export interface TooltipArrowProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useTooltipContext } from './use-tooltip-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useTooltipContext } from './use-tooltip-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<TooltipArrowProps>()
 const tooltip = useTooltipContext()

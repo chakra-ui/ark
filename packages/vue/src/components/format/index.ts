@@ -3,4 +3,4 @@ export { default as FormatNumber, type FormatNumberProps } from './format-number
 export { default as FormatRelativeTime, type FormatRelativeTimeProps } from './format-relative-time.vue'
 export { default as FormatTime, type FormatTimeProps } from './format-time.vue'
 
-export * as Format from './format'
+export * as Format from './format.ts'

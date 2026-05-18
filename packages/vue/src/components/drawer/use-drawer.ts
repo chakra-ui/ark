@@ -1,11 +1,11 @@
 import * as drawer from '@zag-js/drawer'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
-import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { EmitFn, Optional } from '../../types'
-import { cleanProps } from '../../utils/clean-props'
-import type { RootEmits } from './drawer.types'
-import { useDrawerStackStore } from './use-drawer-stack-store'
+import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { EmitFn, Optional } from '../../types.ts'
+import { cleanProps } from '../../utils/clean-props.ts'
+import type { RootEmits } from './drawer.types.ts'
+import { useDrawerStackStore } from './use-drawer-stack-store.ts'
 
 export interface UseDrawerProps extends Optional<Omit<drawer.Props, 'dir' | 'getRootNode' | 'defaultSnapPoint'>, 'id'> {
   defaultSnapPoint?: drawer.SnapPoint | undefined

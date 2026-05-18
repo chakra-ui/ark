@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Menu, type MenuRootEmits, type MenuRootProps } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { Menu, type MenuRootEmits, type MenuRootProps } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<MenuRootProps & { contextMenu?: boolean; dir?: 'ltr' | 'rtl' }>()
 const emits = defineEmits<MenuRootEmits>()

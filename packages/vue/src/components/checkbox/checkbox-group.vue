@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
 import type { GroupEmits, GroupProps } from './checkbox-group.types.ts'
 
 export interface CheckboxGroupBaseProps extends GroupProps, PolymorphicProps {}
@@ -16,11 +16,11 @@ export interface CheckboxGroupEmits extends GroupEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { checkboxAnatomy } from './checkbox.anatomy'
-import { useCheckboxGroup } from './use-checkbox-group'
-import { CheckboxGroupContextProvider } from './use-checkbox-group-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { checkboxAnatomy } from './checkbox.anatomy.ts'
+import { useCheckboxGroup } from './use-checkbox-group.ts'
+import { CheckboxGroupContextProvider } from './use-checkbox-group-context.tsx'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<CheckboxGroupProps>(), {
   disabled: undefined,

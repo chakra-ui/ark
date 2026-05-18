@@ -79,8 +79,8 @@ export {
   type FileUploadTriggerBaseProps,
   type FileUploadTriggerProps,
 } from './file-upload-trigger.vue'
-export { fileUploadAnatomy } from './file-upload.anatomy'
-export { useFileUpload, type UseFileUploadProps, type UseFileUploadReturn } from './use-file-upload'
-export { useFileUploadContext, type UseFileUploadContext } from './use-file-upload-context'
+export { fileUploadAnatomy } from './file-upload.anatomy.ts'
+export { useFileUpload, type UseFileUploadProps, type UseFileUploadReturn } from './use-file-upload.ts'
+export { useFileUploadContext, type UseFileUploadContext } from './use-file-upload-context.ts'
 
-export * as FileUpload from './file-upload'
+export * as FileUpload from './file-upload.ts'

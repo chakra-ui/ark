@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Select, type SelectRootEmits, type SelectRootProps, createListCollection } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { Select, type SelectRootEmits, type SelectRootProps, createListCollection } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 interface Item {
   label: string

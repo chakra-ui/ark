@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/rating-group'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface RatingGroupItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface RatingGroupItemProps
@@ -15,10 +15,10 @@ export interface RatingGroupItemProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { useRatingGroupContext } from './use-rating-group-context'
-import { RatingGroupItemProvider } from './use-rating-group-item-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useRatingGroupContext } from './use-rating-group-context.ts'
+import { RatingGroupItemProvider } from './use-rating-group-item-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<RatingGroupItemProps>()
 const ratingGroup = useRatingGroupContext()

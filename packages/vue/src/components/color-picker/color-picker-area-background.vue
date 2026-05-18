@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ColorPickerAreaBackgroundBaseProps extends PolymorphicProps {}
 export interface ColorPickerAreaBackgroundProps
@@ -13,10 +13,10 @@ export interface ColorPickerAreaBackgroundProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useColorPickerAreaPropsContext } from './use-color-picker-area-props-context'
-import { useColorPickerContext } from './use-color-picker-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useColorPickerAreaPropsContext } from './use-color-picker-area-props-context.ts'
+import { useColorPickerContext } from './use-color-picker-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ColorPickerAreaBackgroundProps>()
 const colorPicker = useColorPickerContext()

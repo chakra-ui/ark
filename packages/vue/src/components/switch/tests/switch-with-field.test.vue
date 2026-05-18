@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Field, type FieldRootProps } from '../../field'
-import { Switch } from '../'
+import { Field, type FieldRootProps } from '../../field/index.ts'
+import { Switch } from '../index.ts'
 
 defineProps<FieldRootProps>()
 </script>

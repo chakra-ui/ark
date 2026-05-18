@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ToastTitleBaseProps extends PolymorphicProps {}
 export interface ToastTitleProps
@@ -13,9 +13,9 @@ export interface ToastTitleProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useToastContext } from './use-toast-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useToastContext } from './use-toast-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ToastTitleProps>()
 const toast = useToastContext()

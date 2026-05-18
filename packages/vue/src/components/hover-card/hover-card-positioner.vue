@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface HoverCardPositionerBaseProps extends PolymorphicProps {}
 export interface HoverCardPositionerProps
@@ -13,10 +13,10 @@ export interface HoverCardPositionerProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { usePresenceContext } from '../presence'
-import { useHoverCardContext } from './use-hover-card-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { usePresenceContext } from '../presence/index.ts'
+import { useHoverCardContext } from './use-hover-card-context.ts'
 
 defineProps<HoverCardPositionerProps>()
 

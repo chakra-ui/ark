@@ -12,13 +12,13 @@ export {
   type AvatarRootBaseProps,
   type AvatarRootProps,
 } from './avatar-root.vue'
-export { useAvatarContext, type UseAvatarContext } from './use-avatar-context'
-export { useAvatar, type UseAvatarProps, type UseAvatarReturn } from './use-avatar'
+export { useAvatarContext, type UseAvatarContext } from './use-avatar-context.ts'
+export { useAvatar, type UseAvatarProps, type UseAvatarReturn } from './use-avatar.ts'
 export {
   default as AvatarRootProvider,
   type AvatarRootProviderProps,
   type AvatarRootProviderBaseProps,
 } from './avatar-root-provider.vue'
-export { avatarAnatomy } from './avatar.anatomy'
+export { avatarAnatomy } from './avatar.anatomy.ts'
 
-export * as Avatar from './avatar'
+export * as Avatar from './avatar.ts'

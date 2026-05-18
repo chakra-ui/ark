@@ -8,8 +8,8 @@ export interface FieldItemProps extends FieldItemBaseProps {}
 
 <script setup lang="ts">
 import { computed, toValue } from 'vue'
-import { parts } from './field.anatomy'
-import { FieldProvider, useFieldContext } from './use-field-context'
+import { parts } from './field.anatomy.ts'
+import { FieldProvider, useFieldContext } from './use-field-context.ts'
 
 const props = defineProps<FieldItemProps>()
 const parentField = useFieldContext()

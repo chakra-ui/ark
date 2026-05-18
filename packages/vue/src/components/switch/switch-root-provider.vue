@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { LabelHTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseSwitchReturn } from './use-switch'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseSwitchReturn } from './use-switch.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseSwitchReturn>
@@ -19,9 +19,9 @@ export interface SwitchRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { SwitchProvider } from './use-switch-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { SwitchProvider } from './use-switch-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<SwitchRootProviderProps>()
 const api = computed(() => props.value)

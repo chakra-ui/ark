@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseQrCodeReturn } from './use-qr-code'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseQrCodeReturn } from './use-qr-code.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseQrCodeReturn>
@@ -19,9 +19,9 @@ export interface QrCodeRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { QrCodeProvider } from './use-qr-code-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { QrCodeProvider } from './use-qr-code-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<QrCodeRootProviderProps>()
 const qrCode = computed(() => props.value)

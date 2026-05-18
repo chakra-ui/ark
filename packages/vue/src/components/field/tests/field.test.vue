@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Field, type FieldRootProps } from '../..'
+import { Field, type FieldRootProps } from '../../index.ts'
 
 const props = defineProps<FieldRootProps>()
 const model = defineModel()

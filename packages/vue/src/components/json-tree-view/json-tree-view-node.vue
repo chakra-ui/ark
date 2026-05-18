@@ -23,9 +23,9 @@ import TreeViewBranchIndentGuide from '../tree-view/tree-view-branch-indent-guid
 import TreeViewBranchIndicator from '../tree-view/tree-view-branch-indicator.vue'
 import TreeViewBranchText from '../tree-view/tree-view-branch-text.vue'
 import TreeViewBranch from '../tree-view/tree-view-branch.vue'
-import { useTreeViewContext } from '../tree-view/use-tree-view-context'
+import { useTreeViewContext } from '../tree-view/use-tree-view-context.ts'
 import JsonTreeViewKeyNode from './json-tree-view-key-node.vue'
-import { useJsonTreeViewPropsContext } from './json-tree-view-props-context'
+import { useJsonTreeViewPropsContext } from './json-tree-view-props-context.ts'
 import JsonTreeViewValueNode from './json-tree-view-value-node.vue'
 
 const props = defineProps<JsonTreeViewNodeProps>()

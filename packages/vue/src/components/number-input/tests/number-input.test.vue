@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { NumberInput, type NumberInputRootEmits, type NumberInputRootProps } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { NumberInput, type NumberInputRootEmits, type NumberInputRootProps } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<NumberInputRootProps>()
 const emits = defineEmits<NumberInputRootEmits>()

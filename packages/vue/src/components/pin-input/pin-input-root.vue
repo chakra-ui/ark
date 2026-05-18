@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './pin-input.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './pin-input.types.ts'
 
 export interface PinInputRootBaseProps extends RootProps, PolymorphicProps {}
 export interface PinInputRootProps
@@ -16,10 +16,10 @@ export interface PinInputRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { usePinInput } from './use-pin-input'
-import { PinInputProvider } from './use-pin-input-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { usePinInput } from './use-pin-input.ts'
+import { PinInputProvider } from './use-pin-input-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<PinInputRootProps>(), {
   autoFocus: undefined,

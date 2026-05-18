@@ -1,6 +1,6 @@
 import { Selection, type SelectionMode } from '@zag-js/collection'
 import { type MaybeRef, type Ref, computed, shallowRef, toValue, watch } from 'vue'
-import type { CollectionItem, ListCollection } from './list-collection'
+import type { CollectionItem, ListCollection } from './list-collection.ts'
 
 export interface UseListSelectionProps<T extends CollectionItem> {
   /**

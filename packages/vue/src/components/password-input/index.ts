@@ -35,8 +35,8 @@ export {
   type PasswordInputVisibilityTriggerBaseProps,
   type PasswordInputVisibilityTriggerProps,
 } from './password-input-visibility-trigger.vue'
-export { passwordInputAnatomy } from './password-input.anatomy'
-export { usePasswordInput, type UsePasswordInputProps, type UsePasswordInputReturn } from './use-password-input'
-export { usePasswordInputContext, type UsePasswordInputContext } from './use-password-input-context'
+export { passwordInputAnatomy } from './password-input.anatomy.ts'
+export { usePasswordInput, type UsePasswordInputProps, type UsePasswordInputReturn } from './use-password-input.ts'
+export { usePasswordInputContext, type UsePasswordInputContext } from './use-password-input-context.ts'
 
-export * as PasswordInput from './password-input'
+export * as PasswordInput from './password-input.ts'

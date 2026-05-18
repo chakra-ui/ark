@@ -40,8 +40,8 @@ export {
   type SliderValueTextBaseProps,
   type SliderValueTextProps,
 } from './slider-value-text.vue'
-export { sliderAnatomy } from './slider.anatomy'
-export { useSlider, type UseSliderProps, type UseSliderReturn } from './use-slider'
-export { useSliderContext, type UseSliderContext } from './use-slider-context'
+export { sliderAnatomy } from './slider.anatomy.ts'
+export { useSlider, type UseSliderProps, type UseSliderReturn } from './use-slider.ts'
+export { useSliderContext, type UseSliderContext } from './use-slider-context.ts'
 
-export * as Slider from './slider'
+export * as Slider from './slider.ts'

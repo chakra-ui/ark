@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Checkbox } from '../..'
-import { Field, type FieldRootProps } from '../../field'
+import { Checkbox } from '../../index.ts'
+import { Field, type FieldRootProps } from '../../field/index.ts'
 import { CheckIcon, MinusIcon } from 'lucide-vue-next'
 
 const props = defineProps<FieldRootProps>()

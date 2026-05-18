@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/timer'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface TimerItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface TimerItemProps
@@ -14,9 +14,9 @@ export interface TimerItemProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useTimerContext } from './use-timer-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useTimerContext } from './use-timer-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<TimerItemProps>()
 const timer = useTimerContext()

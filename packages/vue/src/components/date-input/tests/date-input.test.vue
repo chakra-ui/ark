@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { DateInput, type DateInputRootEmits, type DateInputRootProps } from '..'
-import { useForwardPropsEmits } from '../../..'
+import { DateInput, type DateInputRootEmits, type DateInputRootProps } from '../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<DateInputRootProps>()
 const emits = defineEmits<DateInputRootEmits>()

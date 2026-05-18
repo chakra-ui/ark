@@ -10,4 +10,4 @@ export type {
   SwapIndicatorProps as IndicatorProps,
   SwapIndicatorBaseProps as IndicatorBaseProps,
 } from './swap-indicator.vue'
-export { swapAnatomy } from './swap.anatomy'
+export { swapAnatomy } from './swap.anatomy.ts'

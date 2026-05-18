@@ -1,5 +1,5 @@
-import { createContext } from '../../utils/create-context'
-import type { UseAngleSliderReturn } from './use-angle-slider'
+import { createContext } from '../../utils/create-context.ts'
+import type { UseAngleSliderReturn } from './use-angle-slider.ts'
 
 export interface UseAngleSliderContext extends UseAngleSliderReturn {}
 

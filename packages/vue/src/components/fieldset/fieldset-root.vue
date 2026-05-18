@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { FieldsetHTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
-import type { RootProps } from './fieldset.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootProps } from './fieldset.types.ts'
 
 export interface FieldsetRootBaseProps extends RootProps, PolymorphicProps {}
 export interface FieldsetRootProps
@@ -15,10 +15,10 @@ export interface FieldsetRootProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useFieldset } from './use-fieldset'
-import { FieldsetProvider } from './use-fieldset-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useFieldset } from './use-fieldset.ts'
+import { FieldsetProvider } from './use-fieldset-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<FieldsetRootProps>(), {
   disabled: undefined,

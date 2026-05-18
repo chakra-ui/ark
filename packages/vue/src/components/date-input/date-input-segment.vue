@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { SegmentProps } from '@zag-js/date-input'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface DateInputSegmentBaseProps extends PolymorphicProps, Pick<SegmentProps, 'segment'> {}
 export interface DateInputSegmentProps
@@ -15,11 +15,11 @@ export interface DateInputSegmentProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
-import { useDateInputContext } from './use-date-input-context'
-import { useDateInputSegmentGroupPropsContext } from './use-date-input-segment-group-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { createSplitProps } from '../create-split-props.ts'
+import { ark } from '../factory.ts'
+import { useDateInputContext } from './use-date-input-context.ts'
+import { useDateInputSegmentGroupPropsContext } from './use-date-input-segment-group-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<DateInputSegmentProps>()
 const [segmentProps] = createSplitProps<Pick<SegmentProps, 'segment'>>()(props, ['segment'])

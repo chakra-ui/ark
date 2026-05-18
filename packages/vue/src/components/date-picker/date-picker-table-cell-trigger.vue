@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface DatePickerTableCellTriggerBaseProps extends PolymorphicProps {}
 export interface DatePickerTableCellTriggerProps
@@ -14,11 +14,11 @@ export interface DatePickerTableCellTriggerProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { useDatePickerContext } from './use-date-picker-context'
-import { useDatePickerTableCellPropsContext } from './use-date-picker-table-cell-props-context'
-import { DEFAULT_VIEW_PROPS_CONTEXT, useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useDatePickerContext } from './use-date-picker-context.ts'
+import { useDatePickerTableCellPropsContext } from './use-date-picker-table-cell-props-context.ts'
+import { DEFAULT_VIEW_PROPS_CONTEXT, useDatePickerViewPropsContext } from './use-date-picker-view-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<DatePickerTableCellTriggerProps>()
 const datePicker = useDatePickerContext()

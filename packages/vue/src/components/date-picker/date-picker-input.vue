@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { InputProps } from '@zag-js/date-picker'
 import type { InputHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface DatePickerInputBaseProps extends InputProps, PolymorphicProps {}
 export interface DatePickerInputProps
@@ -14,9 +14,9 @@ export interface DatePickerInputProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useDatePickerContext } from './use-date-picker-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useDatePickerContext } from './use-date-picker-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<DatePickerInputProps>()
 const datePicker = useDatePickerContext()

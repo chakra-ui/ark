@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/steps'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface StepsItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface StepsItemProps
@@ -15,11 +15,11 @@ export interface StepsItemProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { useStepsContext } from './use-steps-context'
-import { StepsItemProvider } from './use-steps-item-context'
-import { StepsItemPropsProvider } from './use-steps-item-props-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { useStepsContext } from './use-steps-context.ts'
+import { StepsItemProvider } from './use-steps-item-context.ts'
+import { StepsItemPropsProvider } from './use-steps-item-props-context.ts'
 
 const props = defineProps<StepsItemProps>()
 const steps = useStepsContext()

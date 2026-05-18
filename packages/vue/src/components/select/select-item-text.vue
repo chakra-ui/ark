@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface SelectItemTextBaseProps extends PolymorphicProps {}
 export interface SelectItemTextProps
@@ -13,10 +13,10 @@ export interface SelectItemTextProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useSelectContext } from './use-select-context'
-import { useSelectItemPropsContext } from './use-select-item-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useSelectContext } from './use-select-context.ts'
+import { useSelectItemPropsContext } from './use-select-item-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<SelectItemTextProps>()
 

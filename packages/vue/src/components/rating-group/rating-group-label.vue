@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { LabelHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface RatingGroupLabelBaseProps extends PolymorphicProps {}
 export interface RatingGroupLabelProps
@@ -13,9 +13,9 @@ export interface RatingGroupLabelProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useRatingGroupContext } from './use-rating-group-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useRatingGroupContext } from './use-rating-group-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<RatingGroupLabelProps>()
 const ratingGroup = useRatingGroupContext()

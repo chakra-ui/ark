@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Dialog, useDialog } from '../..'
+import { Dialog, useDialog } from '../../index.ts'
 
 const dialog = useDialog(
   computed(() => ({

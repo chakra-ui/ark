@@ -1,9 +1,9 @@
 import * as scrollArea from '@zag-js/scroll-area'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
-import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
-import { cleanProps } from '../../utils/clean-props'
+import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { Optional } from '../../types.ts'
+import { cleanProps } from '../../utils/clean-props.ts'
 
 export interface UseScrollAreaProps extends Optional<Omit<scrollArea.Props, 'dir' | 'getRootNode'>, 'id'> {}
 

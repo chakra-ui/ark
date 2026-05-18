@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Progress, type ProgressRootEmits, type ProgressRootProps } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { Progress, type ProgressRootEmits, type ProgressRootProps } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<ProgressRootProps>()
 const emits = defineEmits<ProgressRootEmits>()

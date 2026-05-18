@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface MenuRadioItemGroupBaseProps extends PolymorphicProps {}
 export interface MenuRadioItemGroupProps
@@ -20,11 +20,11 @@ export type MenuRadioItemGroupEmits = {
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
+import { ark } from '../factory.ts'
 import { computed, useId } from 'vue'
-import { useMenuContext } from './use-menu-context'
-import { MenuItemGroupProvider, type UseMenuItemGroupContext } from './use-menu-item-group-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { useMenuContext } from './use-menu-context.ts'
+import { MenuItemGroupProvider, type UseMenuItemGroupContext } from './use-menu-item-group-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<MenuRadioItemGroupProps>()
 const emits = defineEmits<MenuRadioItemGroupEmits>()

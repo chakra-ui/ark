@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseFileUploadReturn } from './use-file-upload'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseFileUploadReturn } from './use-file-upload.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseFileUploadReturn>
@@ -19,9 +19,9 @@ export interface FileUploadRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { FileUploadProvider } from './use-file-upload-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { FileUploadProvider } from './use-file-upload-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<FileUploadRootProviderProps>()
 const fileUpload = computed(() => props.value)

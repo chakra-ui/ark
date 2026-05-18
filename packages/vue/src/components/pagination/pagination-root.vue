@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './pagination.types'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './pagination.types.ts'
 
 export interface PaginationRootBaseProps extends RootProps, PolymorphicProps {}
 export interface PaginationRootProps
@@ -15,10 +15,10 @@ export interface PaginationRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { usePagination } from './use-pagination'
-import { PaginationProvider } from './use-pagination-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { usePagination } from './use-pagination.ts'
+import { PaginationProvider } from './use-pagination-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<PaginationRootProps>()
 const emits = defineEmits<PaginationRootEmits>()

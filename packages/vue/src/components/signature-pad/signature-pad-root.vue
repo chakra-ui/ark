@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './signature-pad.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './signature-pad.types.ts'
 
 export interface SignaturePadRootBaseProps extends RootProps, PolymorphicProps {}
 export interface SignaturePadRootProps
@@ -16,10 +16,10 @@ export interface SignaturePadRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useSignaturePad } from './use-signature-pad'
-import { SignaturePadProvider } from './use-signature-pad-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useSignaturePad } from './use-signature-pad.ts'
+import { SignaturePadProvider } from './use-signature-pad-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<SignaturePadRootBaseProps>(), {
   readOnly: undefined,

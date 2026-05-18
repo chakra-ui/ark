@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseDatePickerContext } from './use-date-picker-context'
+import type { UseDatePickerContext } from './use-date-picker-context.ts'
 
 export interface DatePickerContextProps extends SlotsType<{
   default: UnwrapRef<UseDatePickerContext>
@@ -8,7 +8,7 @@ export interface DatePickerContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useDatePickerContext } from './use-date-picker-context'
+import { useDatePickerContext } from './use-date-picker-context.ts'
 
 const datePicker = useDatePickerContext()
 

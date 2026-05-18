@@ -7,7 +7,7 @@ export type {
   StoreProps as ToastStoreProps,
   Type as ToastType,
 } from '@zag-js/toast'
-export { createToaster, type CreateToasterProps, type CreateToasterReturn } from './create-toaster'
+export { createToaster, type CreateToasterProps, type CreateToasterReturn } from './create-toaster.ts'
 export {
   default as ToastActionTrigger,
   type ToastActionTriggerBaseProps,
@@ -26,8 +26,8 @@ export {
 } from './toast-description.vue'
 export { default as ToastRoot, type ToastRootBaseProps, type ToastRootProps } from './toast-root.vue'
 export { default as ToastTitle, type ToastTitleBaseProps, type ToastTitleProps } from './toast-title.vue'
-export { toastAnatomy } from './toast.anatomy'
+export { toastAnatomy } from './toast.anatomy.ts'
 export { default as Toaster, type ToasterBaseProps, type ToasterProps, type ToastOptions } from './toaster.vue'
-export { useToastContext, type UseToastContext } from './use-toast-context'
+export { useToastContext, type UseToastContext } from './use-toast-context.ts'
 
-export * as Toast from './toast'
+export * as Toast from './toast.ts'

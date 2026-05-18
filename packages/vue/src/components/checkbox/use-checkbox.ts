@@ -1,12 +1,12 @@
 import * as checkbox from '@zag-js/checkbox'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
-import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { EmitFn, Optional } from '../../types'
-import { cleanProps } from '../../utils/clean-props'
-import { useFieldContext } from '../field'
-import type { RootEmits } from './checkbox'
-import { useCheckboxGroupContext } from './use-checkbox-group-context'
+import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { EmitFn, Optional } from '../../types.ts'
+import { cleanProps } from '../../utils/clean-props.ts'
+import { useFieldContext } from '../field/index.ts'
+import type { RootEmits } from './checkbox.ts'
+import { useCheckboxGroupContext } from './use-checkbox-group-context.tsx'
 
 export interface UseCheckboxProps extends Optional<Omit<checkbox.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseCheckboxReturn extends ComputedRef<checkbox.Api<PropTypes>> {}

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ListboxValueTextBaseProps extends PolymorphicProps {}
 export interface ListboxValueTextProps
@@ -15,9 +15,9 @@ export interface ListboxValueTextProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useListboxContext } from './use-listbox-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useListboxContext } from './use-listbox-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<ListboxValueTextProps>()
 const listbox = useListboxContext()

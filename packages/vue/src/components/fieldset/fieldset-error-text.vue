@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface FieldsetErrorTextBaseProps extends PolymorphicProps {}
 export interface FieldsetErrorTextProps
@@ -13,9 +13,9 @@ export interface FieldsetErrorTextProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useFieldsetContext } from './use-fieldset-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useFieldsetContext } from './use-fieldset-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<FieldsetErrorTextProps>()
 const fieldset = useFieldsetContext()

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Splitter, type SplitterRootEmits, type SplitterRootProps } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { Splitter, type SplitterRootEmits, type SplitterRootProps } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const panels = ref([{ id: 'a' }, { id: 'b' }])
 

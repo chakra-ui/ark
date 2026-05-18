@@ -56,8 +56,8 @@ export {
   type PopoverTriggerBaseProps,
   type PopoverTriggerProps,
 } from './popover-trigger.vue'
-export { popoverAnatomy } from './popover.anatomy'
-export { usePopover, type UsePopoverProps, type UsePopoverReturn } from './use-popover'
-export { usePopoverContext, type UsePopoverContext } from './use-popover-context'
+export { popoverAnatomy } from './popover.anatomy.ts'
+export { usePopover, type UsePopoverProps, type UsePopoverReturn } from './use-popover.ts'
+export { usePopoverContext, type UsePopoverContext } from './use-popover-context.ts'
 
-export * as Popover from './popover'
+export * as Popover from './popover.ts'

@@ -1,8 +1,8 @@
 <script lang="ts">
-import type { BooleanDefaults } from '../../types'
-import type { RenderStrategyProps } from '../../utils/use-render-strategy'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './menu.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './menu.types.ts'
 
 export interface MenuRootBaseProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface MenuRootProps extends MenuRootBaseProps {}
@@ -11,13 +11,13 @@ export interface MenuRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { PresenceProvider, usePresence } from '../presence'
-import { useMenu } from './use-menu'
-import { MenuProvider, useMenuContext } from './use-menu-context'
-import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context'
-import { MenuTriggerItemProvider } from './use-menu-trigger-item-context'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { useMenu } from './use-menu.ts'
+import { MenuProvider, useMenuContext } from './use-menu-context.ts'
+import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context.ts'
+import { MenuTriggerItemProvider } from './use-menu-trigger-item-context.ts'
 
 const props = withDefaults(defineProps<MenuRootProps>(), {
   closeOnSelect: undefined,

@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { OptionItemProps } from '@zag-js/menu'
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
 
 type RadioItemProps = Omit<OptionItemProps, 'type' | 'onCheckedChange' | 'checked'>
 
@@ -17,13 +17,13 @@ export interface MenuRadioItemProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
+import { ark } from '../factory.ts'
 import { computed, type ComputedRef } from 'vue'
-import { useMenuContext } from './use-menu-context'
-import { MenuItemProvider } from './use-menu-item-context'
-import { useMenuItemGroupContext } from './use-menu-item-group-context'
-import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { useMenuContext } from './use-menu-context.ts'
+import { MenuItemProvider } from './use-menu-item-context.ts'
+import { useMenuItemGroupContext } from './use-menu-item-group-context.ts'
+import { MenuItemPropsProvider } from './use-menu-option-item-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<MenuRadioItemProps>(), {
   disabled: undefined,

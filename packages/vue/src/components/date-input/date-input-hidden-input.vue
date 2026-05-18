@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HiddenInputProps } from '@zag-js/date-input'
 import type { InputHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface DateInputHiddenInputBaseProps extends PolymorphicProps, HiddenInputProps {}
 export interface DateInputHiddenInputProps
@@ -14,9 +14,9 @@ export interface DateInputHiddenInputProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { useDateInputContext } from './use-date-input-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { useDateInputContext } from './use-date-input-context.ts'
 
 const props = defineProps<DateInputHiddenInputProps>()
 const dateInput = useDateInputContext()

@@ -22,7 +22,7 @@ export interface FormatByteProps {
 <script setup lang="ts">
 import { formatBytes } from '@zag-js/i18n-utils'
 import { computed } from 'vue'
-import { DEFAULT_LOCALE, useLocaleContext } from '../../providers'
+import { DEFAULT_LOCALE, useLocaleContext } from '../../providers/index.ts'
 
 const props = defineProps<FormatByteProps>()
 const locale = useLocaleContext(DEFAULT_LOCALE)

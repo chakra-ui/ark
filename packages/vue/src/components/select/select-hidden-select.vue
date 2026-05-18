@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SelectHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface SelectHiddenSelectBaseProps extends PolymorphicProps {}
 export interface SelectHiddenSelectProps
@@ -13,10 +13,10 @@ export interface SelectHiddenSelectProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { useFieldContext } from '../field'
-import { useSelectContext } from './use-select-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { useFieldContext } from '../field/index.ts'
+import { useSelectContext } from './use-select-context.ts'
 
 defineProps<SelectHiddenSelectProps>()
 

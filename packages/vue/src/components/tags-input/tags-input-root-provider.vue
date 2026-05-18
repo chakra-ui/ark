@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseTagsInputReturn } from './use-tags-input'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseTagsInputReturn } from './use-tags-input.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseTagsInputReturn>
@@ -19,9 +19,9 @@ export interface TagsInputRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { TagsInputProvider } from './use-tags-input-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { TagsInputProvider } from './use-tags-input-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<TagsInputRootProviderProps>()
 const tagsInput = computed(() => props.value)

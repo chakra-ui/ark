@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SelectHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface FieldSelectBaseProps extends PolymorphicProps {}
 export interface FieldSelectProps
@@ -15,9 +15,9 @@ export interface FieldSelectProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useFieldContext } from './use-field-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useFieldContext } from './use-field-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<FieldSelectProps & { modelValue?: string }>()
 const field = useFieldContext()

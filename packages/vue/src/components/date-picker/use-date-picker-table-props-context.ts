@@ -1,6 +1,6 @@
 import type { TableProps } from '@zag-js/date-picker'
 import type { ComputedRef } from 'vue'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface DatePickerTablePropsContext extends TableProps {}
 

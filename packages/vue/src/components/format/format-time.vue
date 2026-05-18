@@ -12,7 +12,7 @@ export interface FormatTimeProps extends FormatTimeOptions {
 <script setup lang="ts">
 import { formatTime } from '@zag-js/i18n-utils'
 import { computed } from 'vue'
-import { DEFAULT_LOCALE, useLocaleContext } from '../../providers'
+import { DEFAULT_LOCALE, useLocaleContext } from '../../providers/index.ts'
 
 const props = defineProps<FormatTimeProps>()
 const locale = useLocaleContext(DEFAULT_LOCALE)

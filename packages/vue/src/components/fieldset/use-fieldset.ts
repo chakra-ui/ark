@@ -11,9 +11,9 @@ import {
   toValue,
   useId,
 } from 'vue'
-import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../../providers'
-import { unrefElement } from '../../utils/unref-element'
-import { parts } from './fieldset.anatomy'
+import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../../providers/index.ts'
+import { unrefElement } from '../../utils/unref-element.ts'
+import { parts } from './fieldset.anatomy.ts'
 
 export interface UseFieldsetProps {
   /**

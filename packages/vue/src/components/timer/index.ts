@@ -23,8 +23,8 @@ export {
   type TimerSeparatorBaseProps,
   type TimerSeparatorProps,
 } from './timer-separator.vue'
-export { timerAnatomy } from './timer.anatomy'
-export { useTimer, type UseTimerProps, type UseTimerReturn } from './use-timer'
-export { useTimerContext, type UseTimerContext } from './use-timer-context'
+export { timerAnatomy } from './timer.anatomy.ts'
+export { useTimer, type UseTimerProps, type UseTimerReturn } from './use-timer.ts'
+export { useTimerContext, type UseTimerContext } from './use-timer-context.ts'
 
-export * as Timer from './timer'
+export * as Timer from './timer.ts'

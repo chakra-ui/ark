@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Switch, type SwitchRootEmits, type SwitchRootProps } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { Switch, type SwitchRootEmits, type SwitchRootProps } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<SwitchRootProps>()
 const emits = defineEmits<SwitchRootEmits>()

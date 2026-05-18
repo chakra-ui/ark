@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseSignaturePadContext } from './use-signature-pad-context'
+import type { UseSignaturePadContext } from './use-signature-pad-context.ts'
 
 export interface SignaturePadContextProps extends SlotsType<{
   default: UnwrapRef<UseSignaturePadContext>
@@ -8,7 +8,7 @@ export interface SignaturePadContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useSignaturePadContext } from './use-signature-pad-context'
+import { useSignaturePadContext } from './use-signature-pad-context.ts'
 
 const signaturepad = useSignaturePadContext()
 

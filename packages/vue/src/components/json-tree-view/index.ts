@@ -4,6 +4,6 @@ export {
   type JsonTreeViewRootProviderProps,
 } from './json-tree-view-root-provider.vue'
 export { default as JsonTreeViewTree, type JsonTreeViewTreeProps } from './json-tree-view-tree.vue'
-export { useJsonTreeView, type UseJsonTreeViewProps, type UseJsonTreeViewReturn } from './use-json-tree-view'
+export { useJsonTreeView, type UseJsonTreeViewProps, type UseJsonTreeViewReturn } from './use-json-tree-view.ts'
 
-export * as JsonTreeView from './json-tree-view'
+export * as JsonTreeView from './json-tree-view.ts'

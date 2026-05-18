@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './segment-group.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './segment-group.types.ts'
 
 export interface SegmentGroupRootBaseProps extends RootProps, PolymorphicProps {}
 export interface SegmentGroupRootProps
@@ -16,11 +16,11 @@ export interface SegmentGroupRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useSegmentGroup } from './use-segment-group'
-import { SegmentGroupProvider } from './use-segment-group-context'
-import { parts } from './segment-group.anatomy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useSegmentGroup } from './use-segment-group.ts'
+import { SegmentGroupProvider } from './use-segment-group-context.ts'
+import { parts } from './segment-group.anatomy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<SegmentGroupRootProps>(), {
   disabled: undefined,

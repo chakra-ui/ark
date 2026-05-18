@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './carousel.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './carousel.types.ts'
 
 export interface CarouselRootBaseProps extends RootProps, PolymorphicProps {}
 export interface CarouselRootProps
@@ -16,10 +16,10 @@ export interface CarouselRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useCarousel } from './use-carousel'
-import { CarouselProvider } from './use-carousel-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useCarousel } from './use-carousel.ts'
+import { CarouselProvider } from './use-carousel-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<CarouselRootProps>(), {
   allowMouseDrag: undefined,

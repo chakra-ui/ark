@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Popover, type PopoverRootEmits, type PopoverRootProps } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { Popover, type PopoverRootEmits, type PopoverRootProps } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<PopoverRootProps>()
 const emits = defineEmits<PopoverRootEmits>()

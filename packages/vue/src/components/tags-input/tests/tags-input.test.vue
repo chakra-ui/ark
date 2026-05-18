@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { TagsInput, type TagsInputRootEmits, type TagsInputRootProps } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { TagsInput, type TagsInputRootEmits, type TagsInputRootProps } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<TagsInputRootProps>()
 const emits = defineEmits<TagsInputRootEmits>()

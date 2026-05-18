@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './angle-slider.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './angle-slider.types.ts'
 
 export interface AngleSliderRootBaseProps extends RootProps, PolymorphicProps {}
 export interface AngleSliderRootProps
@@ -16,10 +16,10 @@ export interface AngleSliderRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useAngleSlider } from './use-angle-slider'
-import { AngleSliderProvider } from './use-angle-slider-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useAngleSlider } from './use-angle-slider.ts'
+import { AngleSliderProvider } from './use-angle-slider-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<AngleSliderRootProps>(), {
   disabled: undefined,

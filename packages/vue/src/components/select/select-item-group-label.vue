@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface SelectItemGroupLabelBaseProps extends PolymorphicProps {}
 export interface SelectItemGroupLabelProps
@@ -13,10 +13,10 @@ export interface SelectItemGroupLabelProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useSelectContext } from './use-select-context'
-import { useSelectItemGroupPropsContext } from './use-select-item-group-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useSelectContext } from './use-select-context.ts'
+import { useSelectItemGroupPropsContext } from './use-select-item-group-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<SelectItemGroupLabelProps>()
 

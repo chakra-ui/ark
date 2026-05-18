@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ColorPicker, parseColor } from '../..'
-import { Field, type FieldRootProps } from '../../field'
+import { ColorPicker, parseColor } from '../../index.ts'
+import { Field, type FieldRootProps } from '../../field/index.ts'
 
 const props = defineProps<FieldRootProps>()
 </script>

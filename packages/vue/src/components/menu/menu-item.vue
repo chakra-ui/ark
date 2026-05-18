@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/menu'
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface MenuItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface MenuItemProps
@@ -15,12 +15,12 @@ export interface MenuItemProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
+import { ark } from '../factory.ts'
 import { computed, onBeforeUnmount, onMounted } from 'vue'
-import { useMenuContext } from './use-menu-context'
-import { MenuItemProvider } from './use-menu-item-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
+import { useMenuContext } from './use-menu-context.ts'
+import { MenuItemProvider } from './use-menu-item-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { MenuItemPropsProvider } from './use-menu-option-item-props-context.ts'
 
 const props = withDefaults(defineProps<MenuItemProps>(), {
   disabled: undefined,

@@ -26,8 +26,8 @@ export {
   type CollapsibleIndicatorProps,
   type CollapsibleIndicatorBaseProps,
 } from './collapsible-indicator.vue'
-export { useCollapsible, type UseCollapsibleProps, type UseCollapsibleReturn } from './use-collapsible'
-export { useCollapsibleContext, type UseCollapsibleContext } from './use-collapsible-context'
-export { collapsibleAnatomy } from './collapsible.anatomy'
+export { useCollapsible, type UseCollapsibleProps, type UseCollapsibleReturn } from './use-collapsible.ts'
+export { useCollapsibleContext, type UseCollapsibleContext } from './use-collapsible-context.ts'
+export { collapsibleAnatomy } from './collapsible.anatomy.ts'
 
-export * as Collapsible from './collapsible'
+export * as Collapsible from './collapsible.ts'

@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseSplitterReturn } from './use-splitter'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseSplitterReturn } from './use-splitter.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseSplitterReturn>
@@ -19,9 +19,9 @@ export interface SplitterRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { SplitterProvider } from './use-splitter-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { SplitterProvider } from './use-splitter-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<SplitterRootProviderProps>()
 

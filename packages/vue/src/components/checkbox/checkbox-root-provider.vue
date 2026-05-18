@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { LabelHTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseCheckboxReturn } from './use-checkbox'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseCheckboxReturn } from './use-checkbox.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseCheckboxReturn>
@@ -19,9 +19,9 @@ export interface CheckboxRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { CheckboxProvider } from './use-checkbox-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { CheckboxProvider } from './use-checkbox-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<CheckboxRootProviderProps>()
 const checkbox = computed(() => props.value)

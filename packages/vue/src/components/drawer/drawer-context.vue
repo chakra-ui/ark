@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseDrawerContext } from './use-drawer-context'
+import type { UseDrawerContext } from './use-drawer-context.ts'
 
 export interface DrawerContextProps extends SlotsType<{
   default: UnwrapRef<UseDrawerContext>
@@ -8,7 +8,7 @@ export interface DrawerContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useDrawerContext } from './use-drawer-context'
+import { useDrawerContext } from './use-drawer-context.ts'
 
 const drawer = useDrawerContext()
 

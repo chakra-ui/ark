@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface FileUploadTriggerBaseProps extends PolymorphicProps {}
 export interface FileUploadTriggerProps
@@ -13,9 +13,9 @@ export interface FileUploadTriggerProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useFileUploadContext } from './use-file-upload-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useFileUploadContext } from './use-file-upload-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<FileUploadTriggerProps>()
 const fileUpload = useFileUploadContext()

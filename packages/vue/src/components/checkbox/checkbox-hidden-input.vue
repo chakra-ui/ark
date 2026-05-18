@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { InputHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface CheckboxHiddenInputBaseProps extends PolymorphicProps {}
 export interface CheckboxHiddenInputProps
@@ -13,10 +13,10 @@ export interface CheckboxHiddenInputProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useCheckboxContext } from './use-checkbox-context'
-import { useFieldContext } from '../field'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useCheckboxContext } from './use-checkbox-context.ts'
+import { useFieldContext } from '../field/index.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<CheckboxHiddenInputProps>()
 const checkbox = useCheckboxContext()

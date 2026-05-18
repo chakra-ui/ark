@@ -1,7 +1,7 @@
 import { getInteractionModality, trackInteractionModality, type Modality } from '@zag-js/focus-visible'
 import { useSyncExternalStore } from '@zag-js/vue'
 import type { DeepReadonly, ShallowRef } from 'vue'
-import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../environment'
+import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../environment/index.ts'
 
 export type { Modality }
 

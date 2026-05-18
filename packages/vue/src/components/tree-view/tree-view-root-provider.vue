@@ -1,10 +1,10 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { Assign } from '../../types'
-import type { RenderStrategyProps } from '../../utils/use-render-strategy'
-import type { TreeNode } from '../collection'
-import type { PolymorphicProps } from '../factory'
-import type { UseTreeViewReturn } from './use-tree-view'
+import type { Assign } from '../../types.ts'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import type { TreeNode } from '../collection/index.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseTreeViewReturn } from './use-tree-view.ts'
 
 interface RootProviderProps<T extends TreeNode> {
   value: UnwrapRef<UseTreeViewReturn<T>>
@@ -27,10 +27,10 @@ export type TreeViewRootProviderComponent<P = {}> = <T extends TreeNode>(
 
 <script setup lang="ts" generic="T extends TreeNode">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { TreeViewProvider } from './use-tree-view-context'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { TreeViewProvider } from './use-tree-view-context.ts'
 
 const props = defineProps<TreeViewRootProviderProps<T>>()
 const treeView = computed(() => props.value)

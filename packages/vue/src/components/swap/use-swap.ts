@@ -1,7 +1,7 @@
 import { type MaybeRef, computed, toValue } from 'vue'
-import type { UsePresenceReturn } from '../presence/use-presence'
-import { usePresence } from '../presence/use-presence'
-import { parts } from './swap.anatomy'
+import type { UsePresenceReturn } from '../presence/use-presence.ts'
+import { usePresence } from '../presence/use-presence.ts'
+import { parts } from './swap.anatomy.ts'
 
 export interface UseSwapProps {
   /**

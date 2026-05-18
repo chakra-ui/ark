@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UsePinInputReturn } from './use-pin-input'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UsePinInputReturn } from './use-pin-input.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UsePinInputReturn>
@@ -19,9 +19,9 @@ export interface PinInputRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { PinInputProvider } from './use-pin-input-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { PinInputProvider } from './use-pin-input-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<PinInputRootProviderProps>()
 const pinInput = computed(() => props.value)

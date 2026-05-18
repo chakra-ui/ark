@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { HoverCard, type HoverCardRootEmits, type HoverCardRootProps } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { HoverCard, type HoverCardRootEmits, type HoverCardRootProps } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<HoverCardRootProps>()
 const emits = defineEmits<HoverCardRootEmits>()

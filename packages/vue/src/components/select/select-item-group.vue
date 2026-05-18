@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ItemGroupProps } from '@zag-js/select'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface SelectItemGroupBaseProps extends Partial<ItemGroupProps>, PolymorphicProps {}
 export interface SelectItemGroupProps
@@ -15,10 +15,10 @@ export interface SelectItemGroupProps
 
 <script setup lang="ts">
 import { useId } from 'vue'
-import { ark } from '../factory'
-import { useSelectContext } from './use-select-context'
-import { SelectItemGroupPropsProvider } from './use-select-item-group-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useSelectContext } from './use-select-context.ts'
+import { SelectItemGroupPropsProvider } from './use-select-item-group-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<SelectItemGroupProps>()
 

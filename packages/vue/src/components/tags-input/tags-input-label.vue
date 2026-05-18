@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { LabelHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface TagsInputLabelBaseProps extends PolymorphicProps {}
 export interface TagsInputLabelProps
@@ -13,9 +13,9 @@ export interface TagsInputLabelProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useTagsInputContext } from './use-tags-input-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useTagsInputContext } from './use-tags-input-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<TagsInputLabelProps>()
 const tagsInput = useTagsInputContext()

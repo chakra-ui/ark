@@ -61,8 +61,8 @@ export {
   type NavigationMenuViewportPositionerBaseProps,
   type NavigationMenuViewportPositionerProps,
 } from './navigation-menu-viewport-positioner.vue'
-export { navigationMenuAnatomy } from './navigation-menu.anatomy'
-export { useNavigationMenu, type UseNavigationMenuProps, type UseNavigationMenuReturn } from './use-navigation-menu'
-export { useNavigationMenuContext, type UseNavigationMenuContext } from './use-navigation-menu-context'
+export { navigationMenuAnatomy } from './navigation-menu.anatomy.ts'
+export { useNavigationMenu, type UseNavigationMenuProps, type UseNavigationMenuReturn } from './use-navigation-menu.ts'
+export { useNavigationMenuContext, type UseNavigationMenuContext } from './use-navigation-menu-context.ts'
 
-export * as NavigationMenu from './navigation-menu'
+export * as NavigationMenu from './navigation-menu.ts'

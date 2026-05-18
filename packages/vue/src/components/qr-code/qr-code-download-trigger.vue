@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { DownloadTriggerProps } from '@zag-js/qr-code'
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface QrCodeDownloadTriggerBaseProps extends DownloadTriggerProps, PolymorphicProps {}
 export interface QrCodeDownloadTriggerProps
@@ -14,9 +14,9 @@ export interface QrCodeDownloadTriggerProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { useQrCodeContext } from './use-qr-code-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { useQrCodeContext } from './use-qr-code-context.ts'
 
 const props = defineProps<QrCodeDownloadTriggerProps>()
 const qrCode = useQrCodeContext()

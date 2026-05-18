@@ -1,9 +1,9 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { RenderStrategyProps } from '../../utils/use-render-strategy'
-import type { PolymorphicProps } from '../factory'
-import type { UseColorPickerReturn } from './use-color-picker'
-import type { RootEmits as PresenceEmits } from '../presence/presence.types'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseColorPickerReturn } from './use-color-picker.ts'
+import type { RootEmits as PresenceEmits } from '../presence/presence.types.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseColorPickerReturn>
@@ -22,11 +22,11 @@ export interface ColorPickerRootProviderEmits extends PresenceEmits {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { PresenceProvider, usePresence } from '../presence'
-import { ColorPickerProvider } from './use-color-picker-context'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { ColorPickerProvider } from './use-color-picker-context.ts'
 
 const props = defineProps<ColorPickerRootProviderProps>()
 const emits = defineEmits<ColorPickerRootProviderEmits>()

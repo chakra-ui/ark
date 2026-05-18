@@ -1,7 +1,7 @@
 <script lang="ts">
 import { type HTMLAttributes, computed } from 'vue'
-import { useRenderStrategyProps } from '../../utils/use-render-strategy'
-import type { PolymorphicProps } from '../factory'
+import { useRenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface TourSpotlightBaseProps extends PolymorphicProps {}
 export interface TourSpotlightProps
@@ -14,10 +14,10 @@ export interface TourSpotlightProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { PresenceProvider, usePresence } from '../presence'
-import { useTourContext } from './use-tour-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { useTourContext } from './use-tour-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<TourSpotlightProps>()
 

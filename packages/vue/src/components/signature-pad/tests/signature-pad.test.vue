@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SignaturePad, type SignaturePadRootEmits, type SignaturePadRootProps } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { SignaturePad, type SignaturePadRootEmits, type SignaturePadRootProps } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<SignaturePadRootProps>()
 const emits = defineEmits<SignaturePadRootEmits>()

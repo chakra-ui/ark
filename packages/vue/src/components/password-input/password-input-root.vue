@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './password-input.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './password-input.types.ts'
 
 export interface PasswordInputRootBaseProps extends RootProps, PolymorphicProps {}
 export interface PasswordInputRootProps
@@ -16,10 +16,10 @@ export interface PasswordInputRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { usePasswordInput } from './use-password-input'
-import { PasswordInputProvider } from './use-password-input-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { usePasswordInput } from './use-password-input.ts'
+import { PasswordInputProvider } from './use-password-input-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<PasswordInputRootProps>(), {
   defaultVisible: undefined,

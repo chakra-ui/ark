@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, VNodeRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { BaseEmits, BaseProps } from './focus-trap.types'
+import type { PolymorphicProps } from '../factory.ts'
+import type { BaseEmits, BaseProps } from './focus-trap.types.ts'
 
 export interface FocusTrapBaseProps extends BaseProps, PolymorphicProps {}
 export interface FocusTrapProps
@@ -17,9 +17,9 @@ export interface FocusTrapEmits extends BaseEmits {}
 <script setup lang="ts">
 import { trapFocus, type FocusTrapOptions } from '@zag-js/focus-trap'
 import { watchEffect, ref, onWatcherCleanup, onBeforeUnmount } from 'vue'
-import { ark } from '../factory'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { cleanProps } from '../../utils/clean-props'
+import { ark } from '../factory.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { cleanProps } from '../../utils/clean-props.ts'
 
 const props = withDefaults(defineProps<FocusTrapProps>(), {
   disabled: undefined,

@@ -1,7 +1,7 @@
 <script lang="ts">
 import { mergeProps } from '@zag-js/vue'
 import { type HTMLAttributes, computed } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface FloatingPanelContentBaseProps extends PolymorphicProps {}
 export interface FloatingPanelContentProps
@@ -14,10 +14,10 @@ export interface FloatingPanelContentProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useFloatingPanelContext } from './use-floating-panel-context'
-import { usePresenceContext } from '../presence'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useFloatingPanelContext } from './use-floating-panel-context.ts'
+import { usePresenceContext } from '../presence/index.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<FloatingPanelContentProps>()
 

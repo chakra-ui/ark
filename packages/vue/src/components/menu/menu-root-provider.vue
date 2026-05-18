@@ -1,8 +1,8 @@
 <script lang="ts">
-import type { RenderStrategyProps } from '../../utils/use-render-strategy'
-import type { PolymorphicProps } from '../factory'
-import type { UseMenuReturn } from './use-menu'
-import type { RootEmits as PresenceEmits } from '../presence/presence.types'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseMenuReturn } from './use-menu.ts'
+import type { RootEmits as PresenceEmits } from '../presence/presence.types.ts'
 
 interface RootProviderProps {
   value: UseMenuReturn
@@ -15,12 +15,12 @@ export interface MenuRootProviderEmits extends PresenceEmits {}
 
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { PresenceProvider, usePresence } from '../presence'
-import { MenuProvider, useMenuContext } from './use-menu-context'
-import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context'
-import { MenuTriggerItemProvider } from './use-menu-trigger-item-context'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { MenuProvider, useMenuContext } from './use-menu-context.ts'
+import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context.ts'
+import { MenuTriggerItemProvider } from './use-menu-trigger-item-context.ts'
 
 const props = defineProps<MenuRootProviderProps>()
 const emits = defineEmits<MenuRootProviderEmits>()

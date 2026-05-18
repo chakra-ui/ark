@@ -1,6 +1,6 @@
 <script lang="ts">
 import { type HTMLAttributes, computed } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface TreeViewBranchBaseProps extends PolymorphicProps {}
 export interface TreeViewBranchProps
@@ -13,12 +13,12 @@ export interface TreeViewBranchProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { useRenderStrategyProps } from '../../utils/use-render-strategy'
-import { Collapsible } from '../collapsible'
-import { useTreeViewContext } from './use-tree-view-context'
-import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
-import { useTreeViewNodeContext } from './use-tree-view-node-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { useRenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import { Collapsible } from '../collapsible/index.ts'
+import { useTreeViewContext } from './use-tree-view-context.ts'
+import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
+import { useTreeViewNodeContext } from './use-tree-view-node-context.ts'
 
 defineProps<TreeViewBranchProps>()
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Dialog, type DialogRootEmits, type DialogRootProps } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { Dialog, type DialogRootEmits, type DialogRootProps } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<DialogRootProps>()
 const emits = defineEmits<DialogRootEmits>()

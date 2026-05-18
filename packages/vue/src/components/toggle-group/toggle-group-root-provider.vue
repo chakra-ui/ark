@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseToggleGroupReturn } from './use-toggle-group'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseToggleGroupReturn } from './use-toggle-group.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseToggleGroupReturn>
@@ -19,9 +19,9 @@ export interface ToggleGroupRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { ToggleGroupProvider } from './use-toggle-group-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { ToggleGroupProvider } from './use-toggle-group-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<ToggleGroupRootProviderProps>()
 const toggleGroup = computed(() => props.value)

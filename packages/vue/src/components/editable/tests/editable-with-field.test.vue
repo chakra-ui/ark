@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Editable } from '../..'
-import { Field } from '../../field'
-import type { RootProps } from '../../field/field.types'
+import { Editable } from '../../index.ts'
+import { Field } from '../../field/index.ts'
+import type { RootProps } from '../../field/field.types.ts'
 
 defineProps<RootProps>()
 </script>

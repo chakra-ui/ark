@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface RadioGroupIndicatorBaseProps extends PolymorphicProps {}
 export interface RadioGroupIndicatorProps
@@ -13,9 +13,9 @@ export interface RadioGroupIndicatorProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useRadioGroupContext } from './use-radio-group-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useRadioGroupContext } from './use-radio-group-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<RadioGroupIndicatorProps>()
 const radioGroup = useRadioGroupContext()

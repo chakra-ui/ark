@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/accordion'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface AccordionItemProps
@@ -15,12 +15,12 @@ export interface AccordionItemProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRenderStrategyProps } from '../../utils/use-render-strategy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { Collapsible } from '../collapsible'
-import { useAccordionContext } from './use-accordion-context'
-import { AccordionItemProvider } from './use-accordion-item-context'
-import { AccordionItemPropsProvider } from './use-accordion-item-props-context'
+import { useRenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { Collapsible } from '../collapsible/index.ts'
+import { useAccordionContext } from './use-accordion-context.ts'
+import { AccordionItemProvider } from './use-accordion-item-context.ts'
+import { AccordionItemPropsProvider } from './use-accordion-item-props-context.ts'
 
 const accordion = useAccordionContext()
 const props = defineProps<AccordionItemProps>()

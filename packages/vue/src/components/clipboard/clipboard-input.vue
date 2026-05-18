@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { InputHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ClipboardInputBaseProps extends PolymorphicProps {}
 export interface ClipboardInputProps
@@ -13,9 +13,9 @@ export interface ClipboardInputProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useClipboardContext } from './use-clipboard-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useClipboardContext } from './use-clipboard-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ClipboardInputProps>()
 const clipboard = useClipboardContext()
