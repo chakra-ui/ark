@@ -1,0 +1,93 @@
+{
+  "Root": {
+    "props": {
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the field is disabled."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The id of the field."
+      },
+      "ids": {
+        "type": "FieldElementIds",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The element ids for the field parts."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the field is invalid."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the field is read-only."
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the field is required."
+      },
+      "target": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The target field item value the label should point to."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseFieldReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The field primitive returned by useField()."
+      }
+    }
+  },
+  "Label": {
+    "props": {}
+  },
+  "Input": {
+    "props": {}
+  },
+  "Textarea": {
+    "props": {}
+  },
+  "Select": {
+    "props": {}
+  },
+  "HelperText": {
+    "props": {}
+  },
+  "ErrorText": {
+    "props": {}
+  },
+  "RequiredIndicator": {
+    "props": {}
+  },
+  "Item": {
+    "props": {
+      "value": {
+        "type": "string",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The value of this field item; used to derive the per-item control id."
+      }
+    }
+  }
+}

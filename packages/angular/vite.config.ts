@@ -19,6 +19,7 @@ export default defineConfig(({ mode }) => ({
       '@ark-ui/angular/collapsible': new URL('./src/collapsible/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/dialog': new URL('./src/dialog/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/drawer': new URL('./src/drawer/public-api.ts', import.meta.url).pathname,
+      '@ark-ui/angular/field': new URL('./field/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/hover-card': new URL('./src/hover-card/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/menu': new URL('./src/menu/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/navigation-menu': new URL('./src/navigation-menu/public-api.ts', import.meta.url).pathname,
