@@ -316,6 +316,3 @@ vite.config.mts.timestamp-*
 # Release
 .npmrc
 release.sh
-
-# Angular
-.angular
