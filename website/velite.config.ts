@@ -105,6 +105,7 @@ const PropDefintion = s.object({
   isRequired: s.boolean(),
   defaultValue: s.string().optional(),
   description: s.string().optional(),
+  kind: s.enum(['input', 'required-input', 'model', 'output']).optional(),
 })
 
 const types = defineCollection({
