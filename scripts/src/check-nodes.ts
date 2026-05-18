@@ -1,3 +1,5 @@
+// Angular is intentionally excluded: Angular directive selectors (e.g. `arkFoo`) do not match the `<ark.Foo>`
+// JSX/template tag pattern this script greps for, so the check is not meaningful against Angular sources.
 import { parse } from 'node:path'
 import { readFileSync } from 'fs-extra'
 import { globby } from 'globby'
@@ -43,7 +45,7 @@ function groupItems(items: Item[]): void {
 
   if (result.length > 0) {
     console.log('The following components have mixed nodes:')
-    result.map(([name, nodes]) => {
+    result.forEach(([name, nodes]) => {
       console.log(name, nodes)
     })
     process.exit(1)

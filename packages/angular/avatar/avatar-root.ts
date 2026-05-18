@@ -25,10 +25,13 @@ import { useAvatar, type UseAvatarReturn } from './use-avatar'
   providers: [{ provide: ARK_AVATAR_CONTEXT, useExisting: forwardRef(() => ArkAvatarRoot) }],
 })
 export class ArkAvatarRoot implements UseAvatarReturn {
+  /** The unique identifier of the avatar. */
   readonly id: InputSignal<string | undefined> = input<string | undefined>(undefined)
+  /** The ids of the elements in the avatar. Useful for composition. */
   readonly ids: InputSignal<Partial<AvatarElementIds> | undefined> = input<Partial<AvatarElementIds> | undefined>(
     undefined,
   )
+  /** Emits when the image loading status changes. */
   readonly statusChange: OutputEmitterRef<AvatarStatusChangeDetails> = output<AvatarStatusChangeDetails>()
   private readonly stableIds = computed(() => this.stabilizeIds(this.ids()))
 

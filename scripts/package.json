@@ -11,12 +11,15 @@
     "exports:files": "bun run src/exports-files.ts",
     "exports:sync": "bun run src/exports-sync.ts",
     "document:types": "bun run src/generate-type-docs.ts",
+    "document:types:angular": "bun run src/generate-type-docs.angular.ts",
     "document:tags": "bun run src/extend-types-with-tags.ts",
     "vue:props": "bun run src/generate-vue-props.ts",
     "generate-example-registry": "bun run src/generate-example-registry.ts",
     "play": "bun run src/play.ts",
     "local:sync": "bun run src/symlink.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "test:ci": "bun test"
   },
   "dependencies": {
     "@types/fs-extra": "11.0.4",

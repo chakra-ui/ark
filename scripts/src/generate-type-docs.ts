@@ -360,6 +360,11 @@ const frameworkConfig: Record<string, FrameworkConfig> = {
 const main = async () => {
   const framework = process.argv.slice(2)[0]
   console.log('Generating type docs for', framework)
+  if (framework === 'angular') {
+    const { main: angularMain } = await import('./generate-type-docs.angular.ts')
+    await angularMain()
+    return
+  }
   extractTypesForFramework(framework)
 }
 

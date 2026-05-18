@@ -1,3 +1,5 @@
+// Angular is intentionally excluded: Angular's per-secondary-entry layout (`packages/angular/<comp>/public-api.ts`)
+// is incompatible with the React-source-of-truth `src/components/<comp>/index.ts` pattern this script assumes.
 import { readFileSync } from 'node:fs'
 import { basename, dirname } from 'node:path'
 import { globby } from 'globby'
@@ -28,7 +30,7 @@ const main = async () => {
       name: entry.name,
       diff: diffArray(entry.indexExports, entry.componentExports),
     }))
-    .map((diff) => {
+    .forEach((diff) => {
       if (diff.diff.inFirstOnly.length > 0 || diff.diff.inSecondOnly.length > 0) {
         console.log(diff)
       }

@@ -22,6 +22,7 @@ import type { UseAvatarReturn } from './use-avatar'
   providers: [{ provide: ARK_AVATAR_CONTEXT, useExisting: forwardRef(() => ArkAvatarRootProvider) }],
 })
 export class ArkAvatarRootProvider implements UseAvatarReturn {
+  /** The avatar machine returned by useAvatar(). */
   readonly value: InputSignal<UseAvatarReturn> = input.required<UseAvatarReturn>()
   readonly state: Signal<avatar.Service['state']> = computed(() => this.value().state())
   readonly api: Signal<avatar.Api> = computed(() => this.value().api())
