@@ -32,8 +32,9 @@ export function useProgress(options: UseProgressOptions): UseProgressReturn {
         dir: locale.dir,
         id: props.id ?? fallbackId,
       }
-      if (environment.getRootNode) {
-        context.getRootNode = () => environment.getRootNode?.() ?? document
+      const getRootNode = environment.getRootNode as (() => ShadowRoot | Document | Node) | undefined
+      if (getRootNode) {
+        context.getRootNode = () => getRootNode()
       }
       return context
     },

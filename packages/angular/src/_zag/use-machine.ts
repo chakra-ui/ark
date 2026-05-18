@@ -94,6 +94,8 @@ export function useMachine<TSchema extends MachineSchema, TApi>(
 
   const createBindable = <T>(params: () => BindableParams<T>): Bindable<T> => {
     const initialParams = params()
+    // Only `undefined` means uncontrolled. `null` is a deliberate controlled
+    // value for machines such as Progress, where it represents indeterminate.
     const initial = initialParams.value !== undefined ? initialParams.value : initialParams.defaultValue
     const value = signal<T | undefined>(initial)
     const ref = { current: initial }
@@ -108,9 +110,10 @@ export function useMachine<TSchema extends MachineSchema, TApi>(
     // bindable's `initial` may capture an undefined/fallback default that is
     // later patched in via setContext. While the consumer hasn't called set()
     // and the bindable remains uncontrolled, run one hydration check against
-    // the first params().defaultValue seen by Angular's effect scheduler. This
-    // bypasses onChange (which only fires from bindable.set), so no spurious
-    // change events are emitted.
+    // the first params().defaultValue seen by Angular's effect scheduler.
+    // defaultX is an initial seed, not a continuous input, so later default
+    // changes intentionally do not re-seed the bindable. This bypasses onChange
+    // (which only fires from bindable.set), so no spurious change events are emitted.
     effect(() => {
       const nextParams = params()
       const nextDefault = nextParams.defaultValue

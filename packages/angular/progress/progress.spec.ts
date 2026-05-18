@@ -199,6 +199,7 @@ describe('@ark-ui/angular/progress', () => {
     expect(fixture.componentInstance.emissions.at(-1)).toBe(80)
     expect(fixture.componentInstance.emissions).toHaveLength(emissionsBeforeSet + 1)
     expect(root.value()).toBe(80)
+    expect('valueChange' in root).toBe(false)
 
     fixture.destroy()
   })

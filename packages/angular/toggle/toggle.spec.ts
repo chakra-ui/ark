@@ -122,6 +122,7 @@ describe('@ark-ui/angular/toggle', () => {
     expect(root.api().pressed).toBe(true)
     expect(rootEl.getAttribute('data-state')).toBe('on')
     expect(fixture.componentInstance.emissions).toEqual([true])
+    expect('pressedChange' in root).toBe(false)
 
     fixture.destroy()
   })
@@ -262,6 +263,12 @@ describe('@ark-ui/angular/toggle', () => {
     rootEl.click()
     TestBed.tick()
     fixture.detectChanges()
+    expect(root.api().pressed).toBe(true)
+
+    fixture.componentInstance.defaultPressed.set(true)
+    TestBed.tick()
+    fixture.detectChanges()
+
     expect(root.api().pressed).toBe(true)
 
     fixture.componentInstance.defaultPressed.set(false)
