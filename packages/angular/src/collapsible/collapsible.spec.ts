@@ -168,7 +168,7 @@ describe('@ark-ui/angular/collapsible', () => {
     fixture.destroy()
   })
 
-  it('keyboard Enter/Space on the trigger toggles open', () => {
+  it('native trigger activation toggles open from keyboard-generated clicks', () => {
     @Component({
       standalone: true,
       imports: [ArkCollapsibleRoot, ArkCollapsibleTrigger],
@@ -187,14 +187,12 @@ describe('@ark-ui/angular/collapsible', () => {
     expect(root.api().open).toBe(false)
 
     triggerEl.focus()
-    triggerEl.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }))
-    triggerEl.click()
+    triggerEl.dispatchEvent(new MouseEvent('click', { bubbles: true, detail: 0 }))
     TestBed.tick()
     fixture.detectChanges()
     expect(root.api().open).toBe(true)
 
-    triggerEl.dispatchEvent(new KeyboardEvent('keydown', { key: ' ', bubbles: true }))
-    triggerEl.click()
+    triggerEl.dispatchEvent(new MouseEvent('click', { bubbles: true, detail: 0 }))
     TestBed.tick()
     fixture.detectChanges()
     expect(root.api().open).toBe(false)

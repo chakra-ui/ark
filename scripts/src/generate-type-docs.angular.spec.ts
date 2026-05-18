@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'bun:test'
-import { readFileSync } from 'node:fs'
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { findUpSync } from 'find-up'
 import { generateAngularTypeDoc } from './generate-type-docs.angular'
@@ -12,6 +13,68 @@ const committedProgressPath = join(rootDir, 'website', 'src', 'content', 'types'
 const committedTogglePath = join(rootDir, 'website', 'src', 'content', 'types', 'angular', 'toggle.types.json')
 const committedDialogPath = join(rootDir, 'website', 'src', 'content', 'types', 'angular', 'dialog.types.json')
 const committedMenuPath = join(rootDir, 'website', 'src', 'content', 'types', 'angular', 'menu.types.json')
+
+const createAngularTypeDocFixture = () => {
+  const fixtureRoot = mkdtempSync(join(tmpdir(), 'ng-ark-angular-type-doc-'))
+  symlinkSync(join(rootDir, 'node_modules'), join(fixtureRoot, 'node_modules'), 'dir')
+  const componentDir = join(fixtureRoot, 'packages', 'angular', 'src', 'alias-fixture')
+  mkdirSync(componentDir, { recursive: true })
+  writeFileSync(join(fixtureRoot, 'package.json'), '{}\n')
+  writeFileSync(
+    join(fixtureRoot, 'packages', 'angular', 'tsconfig.json'),
+    JSON.stringify({
+      compilerOptions: {
+        target: 'ES2022',
+        module: 'ESNext',
+        moduleResolution: 'Bundler',
+        experimentalDecorators: true,
+        strict: true,
+        skipLibCheck: true,
+        types: [],
+      },
+      include: ['src/**/*.ts'],
+    }),
+  )
+  writeFileSync(join(componentDir, 'public-api.ts'), "export { ArkAliasFixtureRoot } from './alias-fixture'\n")
+  writeFileSync(
+    join(componentDir, 'alias-fixture.ts'),
+    `
+      import { Directive, input, output, type InputSignal, type OutputEmitterRef } from '@angular/core'
+
+      @Directive({ selector: '[arkAliasFixture]', standalone: true, exportAs: 'arkAliasFixture' })
+      export class ArkAliasFixtureRoot {
+        readonly internalRequired: InputSignal<string> = input.required<string>({ alias: 'requiredAlias' })
+        readonly internalOutput: OutputEmitterRef<number> = output<number>({ alias: 'outputAlias' })
+        readonly nullableBoolean: InputSignal<true | false | null> = input<true | false | null>(null)
+      }
+    `,
+  )
+  return fixtureRoot
+}
+
+describe('Angular type-doc generator aliases', () => {
+  it('emits aliases from required inputs and outputs and normalizes boolean literal unions', async () => {
+    const fixtureRoot = createAngularTypeDocFixture()
+    try {
+      const doc = await generateAngularTypeDoc('alias-fixture', fixtureRoot)
+      expect(doc['Root'].props['requiredAlias']).toMatchObject({
+        kind: 'required-input',
+        isRequired: true,
+        type: 'string',
+      })
+      expect(doc['Root'].props['internalRequired']).toBeUndefined()
+      expect(doc['Root'].props['outputAlias']).toMatchObject({
+        kind: 'output',
+        isRequired: false,
+        type: 'number',
+      })
+      expect(doc['Root'].props['internalOutput']).toBeUndefined()
+      expect(doc['Root'].props['nullableBoolean'].type).toBe('boolean | null')
+    } finally {
+      rmSync(fixtureRoot, { recursive: true, force: true })
+    }
+  })
+})
 
 describe('Angular type-doc generator (Avatar)', () => {
   const doc = generateAngularTypeDoc('avatar', rootDir)

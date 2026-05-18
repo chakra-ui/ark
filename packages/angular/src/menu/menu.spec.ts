@@ -834,6 +834,48 @@ describe('@ark-ui/angular/menu', () => {
     fixture.destroy()
   })
 
+  it('removes a nested submenu from its parent during teardown without warnings', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkMenuRoot, ArkMenuPositioner, ArkMenuContent, ArkMenuTriggerItem],
+      template: `
+        <div arkMenu defaultOpen>
+          <div arkMenuPositioner>
+            <div arkMenuContent>
+              @if (showChild()) {
+                <div arkMenu>
+                  <div arkMenuTriggerItem>Share</div>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly showChild = signal(true)
+    }
+
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flushOpen(fixture)
+
+    fixture.componentInstance.showChild.set(false)
+    fixture.detectChanges()
+    await flushOpen(fixture)
+
+    expect(errorSpy).not.toHaveBeenCalled()
+    expect(warnSpy).not.toHaveBeenCalled()
+
+    fixture.destroy()
+    errorSpy.mockRestore()
+    warnSpy.mockRestore()
+  })
+
   it('MenuCheckboxItemsExample mounts without throwing', () => {
     TestBed.configureTestingModule({ imports: [MenuCheckboxItemsExample] })
     const fixture = TestBed.createComponent(MenuCheckboxItemsExample)

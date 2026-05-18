@@ -148,8 +148,9 @@ export class ArkMenuRoot implements UseMenuReturn {
         const childId = this.machine.service.prop('id')
         if (!childId) return
         const children = parent.service.refs.get('children')
-        delete children[childId]
-        parent.service.refs.set('children', children)
+        const nextChildren = { ...children }
+        delete nextChildren[childId]
+        parent.service.refs.set('children', nextChildren)
         this.machine.service.refs.set('parent', null)
         this.machine.service.context.set('isSubmenu', false)
       })

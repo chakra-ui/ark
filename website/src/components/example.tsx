@@ -72,17 +72,22 @@ export const frameworkExample = async (
   id: string,
 ): Promise<{ code: string; extension: string; framework: string }> => {
   const extension = getFrameworkExtension(framework)
-  const filePath = getFrameworkExampleFilePath(framework, component, id)
+  const readFrameworkExample = async (targetFramework: string) => {
+    try {
+      return await readFile(getFrameworkExampleFilePath(targetFramework, component, id), 'utf-8')
+    } catch {
+      return undefined
+    }
+  }
 
-  let content = await readFile(filePath, 'utf-8').catch(() => undefined)
+  let content = await readFrameworkExample(framework)
   let resolvedFramework = framework
   let resolvedExtension = extension
 
   if (content === undefined && framework !== 'react') {
     resolvedFramework = 'react'
     resolvedExtension = getFrameworkExtension(resolvedFramework)
-    const fallbackPath = getFrameworkExampleFilePath(resolvedFramework, component, id)
-    content = await readFile(fallbackPath, 'utf-8').catch(() => undefined)
+    content = await readFrameworkExample(resolvedFramework)
   }
 
   const code = cleanExampleCode(resolvedFramework, content ?? 'Example not found')

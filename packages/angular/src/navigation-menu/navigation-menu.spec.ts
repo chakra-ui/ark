@@ -163,6 +163,26 @@ describe('@ark-ui/angular/navigation-menu', () => {
     expect(() => TestBed.createComponent(OrphanHost)).toThrow(/ARK_NAVIGATION_MENU|No provider|NG0201/i)
   })
 
+  it('[arkNavigationMenuLink] without a value or item ancestor throws a contract-specific error', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkNavigationMenuRoot, ArkNavigationMenuLink],
+      template: `
+        <nav arkNavigationMenu>
+          <a arkNavigationMenuLink href="/docs">Docs</a>
+        </nav>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    expect(() => fixture.detectChanges()).toThrow(
+      /\[arkNavigationMenuLink\] requires either a \[value\] input or an ancestor \[arkNavigationMenuItem\]\./,
+    )
+    fixture.destroy()
+  })
+
   it('list/item/link directives apply Zag prop bags (data-scope/data-part attributes)', async () => {
     @Component({
       standalone: true,

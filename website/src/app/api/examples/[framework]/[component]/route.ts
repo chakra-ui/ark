@@ -35,7 +35,7 @@ export const GET = async (_: NextRequest, segmentData: { params: Params }) => {
       component,
       examples,
       count: examples.length,
-      path: getFrameworkExampleDisplayPath(framework, component),
+      path: examples.length > 0 ? getFrameworkExampleDisplayPath(framework, component) : null,
     })
   } catch (error) {
     if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {

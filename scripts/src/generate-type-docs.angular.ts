@@ -118,8 +118,12 @@ function getDecoratorStringProperty(decoratorCall: CallExpression, propertyName:
   return undefined
 }
 
-function getCallOptionsStringProperty(callExpression: CallExpression, propertyName: string): string | undefined {
-  const optionsArg = callExpression.getArguments()[1]
+function getCallOptionsStringProperty(
+  callExpression: CallExpression,
+  kind: AngularPropKind,
+  propertyName: string,
+): string | undefined {
+  const optionsArg = callExpression.getArguments()[kind === 'required-input' || kind === 'output' ? 0 : 1]
   if (!optionsArg || !Node.isObjectLiteralExpression(optionsArg)) return undefined
   const property = optionsArg.getProperty(propertyName)
   if (!property || !Node.isPropertyAssignment(property)) return undefined
@@ -267,8 +271,9 @@ function normalizeTypeText(typeText: string): string {
     .split('|')
     .map((part) => part.trim())
     .filter(Boolean)
-  if (parts.length === 2 && parts.includes('false') && parts.includes('true')) {
-    return 'boolean'
+  if (parts.includes('false') && parts.includes('true')) {
+    const normalized = parts.map((part) => (part === 'false' || part === 'true' ? 'boolean' : part))
+    return [...new Set(normalized)].join(' | ')
   }
   return typeText
 }
@@ -309,14 +314,14 @@ async function extractPropEntry(
   }
 
   const propertyType = property.getType()
-  const innerType = propertyType.getTypeArguments()[0]
+  const innerType = propertyType.getTypeArguments()[0] ?? callExpression.getTypeArguments()[0]?.getType()
   if (!innerType) {
     throw new Error(`Could not resolve inner type for ${property.getName()} (${sourceFile.getFilePath()})`)
   }
   const rawType = getTypeTextWithoutUndefined(innerType, property)
   const aliased = applyAliasMap(rawType, aliasMap)
   const type = normalizeTypeText(await tryPrettier(aliased, rootDir))
-  const name = getCallOptionsStringProperty(callExpression, 'alias') ?? fieldName
+  const name = getCallOptionsStringProperty(callExpression, kind, 'alias') ?? fieldName
 
   const isRequired = kind === 'required-input'
 

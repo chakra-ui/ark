@@ -10,8 +10,18 @@ const getProgressVariant = (component: string) => {
   return { base, variant }
 }
 
-const hasAngularNestedExamples = (component: string) =>
-  existsSync(join(getPackageBasePath('angular'), 'src', component, 'examples'))
+const getAngularExamplePath = (component: string) => {
+  const packageBasePath = getPackageBasePath('angular')
+  const nested = join(packageBasePath, 'src', component, 'examples')
+  if (existsSync(nested)) {
+    return { dir: nested, displayPath: `packages/angular/src/${component}/examples` }
+  }
+  const topLevel = join(packageBasePath, component, 'examples')
+  if (existsSync(topLevel)) {
+    return { dir: topLevel, displayPath: `packages/angular/${component}/examples` }
+  }
+  throw new Error(`Angular examples for "${component}" not found in packages/angular/ or packages/angular/src/`)
+}
 
 const getProgressExamplePath = (component: string) => {
   const progressVariant = getProgressVariant(component)
@@ -60,10 +70,7 @@ export const getFrameworkExampleDir = (framework: string, component: string) => 
     if (progressVariant) {
       return join(getPackageBasePath(framework), progressVariant.base, 'examples', progressVariant.variant)
     }
-    if (hasAngularNestedExamples(component)) {
-      return join(getPackageBasePath(framework), 'src', component, 'examples')
-    }
-    return join(getPackageBasePath(framework), component, 'examples')
+    return getAngularExamplePath(component).dir
   }
   return join(getPackageBasePath(framework), getExamplePath(component))
 }
@@ -78,10 +85,7 @@ export const getFrameworkExampleDisplayPath = (framework: string, component: str
     if (progressVariant) {
       return `packages/angular/${progressVariant.base}/examples/${progressVariant.variant}`
     }
-    if (hasAngularNestedExamples(component)) {
-      return `packages/angular/src/${component}/examples`
-    }
-    return `packages/angular/${component}/examples`
+    return getAngularExamplePath(component).displayPath
   }
   return `packages/${framework}/${getSrcPath(framework)}/${getExamplePath(component)}`
 }
