@@ -2,6 +2,7 @@ import { NgTemplateOutlet } from '@angular/common'
 import {
   ChangeDetectionStrategy,
   Component,
+  type Injector,
   TemplateRef,
   booleanAttribute,
   computed,
@@ -20,6 +21,7 @@ export interface PresenceProps {
   lazyMount?: boolean
   unmountOnExit?: boolean
   skipAnimationOnMount?: boolean
+  originInjector?: Injector | null
 }
 export type PresenceInputs = PresenceProps
 
@@ -55,7 +57,10 @@ const completePresenceExit = (state: ArkPresenceState, unmountOnExit: boolean): 
         (animationend)="onExitComplete($event)"
         (transitionend)="onExitComplete($event)"
       >
-        <ng-container [ngTemplateOutlet]="content() ?? null"></ng-container>
+        <ng-container
+          [ngTemplateOutlet]="content() ?? null"
+          [ngTemplateOutletInjector]="originInjector() ?? null"
+        ></ng-container>
       </span>
     }
   `,
@@ -65,6 +70,7 @@ export class ArkPresenceComponent {
   readonly lazyMount = input(false, { transform: booleanAttribute })
   readonly unmountOnExit = input(false, { transform: booleanAttribute })
   readonly skipAnimationOnMount = input(false, { transform: booleanAttribute })
+  readonly originInjector = input<PresenceProps['originInjector']>(undefined)
   readonly content = contentChild<TemplateRef<unknown>>(TemplateRef)
   readonly exitComplete = output<void>()
 
