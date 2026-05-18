@@ -1,0 +1,575 @@
+import { readFileSync } from 'node:fs'
+import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import {
+  ApplicationRef,
+  Component,
+  Directive,
+  Injector,
+  InjectionToken,
+  inject,
+  runInInjectionContext,
+  signal,
+} from '@angular/core'
+import { By } from '@angular/platform-browser'
+import { TestBed } from '@angular/core/testing'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
+import {
+  ARK_MENU_CONTEXT,
+  ARK_MENU_CONTEXT_CARRIER,
+  ArkMenuArrow,
+  ArkMenuArrowTip,
+  ArkMenuContent,
+  ArkMenuContextTrigger,
+  ArkMenuIndicator,
+  ArkMenuItem,
+  ArkMenuItemText,
+  ArkMenuPositioner,
+  ArkMenuRoot,
+  ArkMenuRootProvider,
+  ArkMenuSeparator,
+  ArkMenuTrigger,
+  injectArkMenuContext,
+  menuAnatomy,
+  useMenu,
+  type MenuApi,
+  type MenuElementIds,
+  type MenuMachine,
+  type MenuMachineProps,
+  type MenuOpenChangeDetails,
+  type MenuSelectionDetails,
+  type MenuService,
+  type UseMenuOptions,
+  type UseMenuProps,
+  type UseMenuReturn,
+} from '@ark-ui/angular/menu'
+import { ArkPortalComponent } from '@ark-ui/angular/portal'
+import { MenuBasicExample } from './examples/basic'
+import { MenuControlledExample } from './examples/controlled'
+import { MenuControlledHighlightExample } from './examples/controlled-highlight'
+import { MenuRootProviderExample } from './examples/root-provider'
+import { MenuWithSeparatorExample } from './examples/with-separator'
+
+type MenuPublicTypeSmoke = [
+  MenuApi,
+  MenuElementIds,
+  MenuMachine,
+  MenuMachineProps,
+  MenuOpenChangeDetails,
+  MenuSelectionDetails,
+  MenuService,
+  UseMenuOptions,
+  UseMenuProps,
+  UseMenuReturn,
+]
+
+const LABEL_PREFIX = new InjectionToken<string>('LABEL_PREFIX')
+
+@Directive({ selector: '[menuProbe]', standalone: true, exportAs: 'menuProbe' })
+class MenuProbe {
+  private readonly _injector = inject(Injector)
+  get capturedRoot(): UseMenuReturn {
+    return this._injector.get(ARK_MENU_CONTEXT)
+  }
+  get capturedLabelPrefix(): string | null {
+    return this._injector.get(LABEL_PREFIX, null)
+  }
+}
+
+const flushOpen = async (fixture: ReturnType<typeof TestBed.createComponent>) => {
+  await TestBed.inject(ApplicationRef).whenStable()
+  TestBed.tick()
+  fixture.detectChanges()
+  await new Promise((resolve) => requestAnimationFrame(() => resolve(null)))
+  TestBed.tick()
+  fixture.detectChanges()
+}
+
+describe('@ark-ui/angular/menu', () => {
+  beforeEach(() => {
+    TestBed.resetTestingModule()
+  })
+
+  it('exposes the documented public surface', () => {
+    expect(typeof ARK_MENU_CONTEXT).toBe('object')
+    expect(typeof ARK_MENU_CONTEXT_CARRIER).toBe('object')
+    expect(typeof injectArkMenuContext).toBe('function')
+    expect(typeof useMenu).toBe('function')
+    expect(typeof menuAnatomy).toBe('object')
+    expect(ArkMenuRoot).toBeDefined()
+    expect(ArkMenuRootProvider).toBeDefined()
+    expect(ArkMenuTrigger).toBeDefined()
+    expect(ArkMenuContextTrigger).toBeDefined()
+    expect(ArkMenuPositioner).toBeDefined()
+    expect(ArkMenuContent).toBeDefined()
+    expect(ArkMenuItem).toBeDefined()
+    expect(ArkMenuItemText).toBeDefined()
+    expect(ArkMenuSeparator).toBeDefined()
+    expect(ArkMenuIndicator).toBeDefined()
+    expect(ArkMenuArrow).toBeDefined()
+    expect(ArkMenuArrowTip).toBeDefined()
+    expect(undefined as MenuPublicTypeSmoke | undefined).toBeUndefined()
+  })
+
+  it('useMenu({ context: () => ({}) }) produces a non-empty fallback id', () => {
+    @Component({ standalone: true, template: '' })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    const injector = fixture.componentRef.injector
+
+    const result = runInInjectionContext(injector, () => useMenu({ context: () => ({}) }))
+    const id = (result.api().getTriggerProps() as Record<string, unknown>)['id'] as string
+
+    expect(typeof id).toBe('string')
+    expect(id.length).toBeGreaterThan(0)
+    expect(id).toMatch(/menu::/)
+
+    fixture.destroy()
+  })
+
+  it('descendant probe under [arkMenu] receives the Root directive via ARK_MENU_CONTEXT', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkMenuRoot, MenuProbe],
+      template: '<div arkMenu><span menuProbe></span></div>',
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkMenuRoot))
+    const probeDebug = fixture.debugElement.query(By.directive(MenuProbe))
+    const rootInstance = rootDebug.injector.get(ArkMenuRoot)
+    const probeInstance = probeDebug.injector.get(MenuProbe)
+
+    expect(probeInstance.capturedRoot).toBe(rootInstance)
+
+    fixture.destroy()
+  })
+
+  it('orphan [arkMenuTrigger] without ancestor [arkMenu] throws missing-provider error', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkMenuTrigger],
+      template: '<button arkMenuTrigger></button>',
+    })
+    class OrphanHost {}
+
+    TestBed.configureTestingModule({ imports: [OrphanHost] })
+    expect(() => TestBed.createComponent(OrphanHost)).toThrow(/ARK_MENU_CONTEXT|No provider|NG0201/i)
+  })
+
+  it('clicking the trigger opens the menu and the model emits exactly once', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkMenuRoot, ArkMenuTrigger, ArkMenuPositioner, ArkMenuContent, ArkMenuItem, ArkPortalComponent],
+      template: `
+        <div arkMenu #root="arkMenu" (openChange)="emissions.push($event)">
+          <button arkMenuTrigger></button>
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkMenuPositioner>
+              <div arkMenuContent>
+                <div arkMenuItem value="a">A</div>
+                <div arkMenuItem value="b">B</div>
+              </div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {
+      readonly emissions: Array<boolean | undefined> = []
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flushOpen(fixture)
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkMenuRoot))
+    const root = rootDebug.injector.get(ArkMenuRoot)
+    const triggerEl = fixture.debugElement.query(By.directive(ArkMenuTrigger)).nativeElement as HTMLButtonElement
+
+    expect(root.api().open).toBe(false)
+
+    triggerEl.click()
+    await flushOpen(fixture)
+
+    expect(root.api().open).toBe(true)
+    expect(fixture.componentInstance.emissions).toEqual([true])
+    expect('openChange' in root).toBe(false)
+
+    fixture.destroy()
+  })
+
+  it('closes the menu via api.setOpen(false)', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkMenuRoot, ArkMenuTrigger, ArkMenuPositioner, ArkMenuContent, ArkMenuItem, ArkPortalComponent],
+      template: `
+        <div arkMenu defaultOpen #root="arkMenu">
+          <button arkMenuTrigger></button>
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkMenuPositioner>
+              <div arkMenuContent>
+                <div arkMenuItem value="a">A</div>
+              </div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flushOpen(fixture)
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkMenuRoot))
+    const root = rootDebug.injector.get(ArkMenuRoot)
+
+    expect(root.api().open).toBe(true)
+
+    root.api().setOpen(false)
+    await flushOpen(fixture)
+
+    expect(root.api().open).toBe(false)
+
+    fixture.destroy()
+  })
+
+  it('keyboard ArrowDown/ArrowUp/Home/End moves the highlighted value through items', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkMenuRoot, ArkMenuPositioner, ArkMenuContent, ArkMenuItem, ArkPortalComponent],
+      template: `
+        <div arkMenu defaultOpen #root="arkMenu" (highlightedValueChange)="highlights.push($event)">
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkMenuPositioner>
+              <div arkMenuContent>
+                <div arkMenuItem value="one">One</div>
+                <div arkMenuItem value="two">Two</div>
+                <div arkMenuItem value="three">Three</div>
+              </div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {
+      readonly highlights: Array<string | null | undefined> = []
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+    await flushOpen(fixture)
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkMenuRoot))
+    const root = rootDebug.injector.get(ArkMenuRoot)
+
+    expect(root.api().open).toBe(true)
+
+    root.api().setHighlightedValue('one')
+    await flushOpen(fixture)
+    expect(root.api().highlightedValue).toBe('one')
+
+    const contentEl = fixture.debugElement.query(By.directive(ArkMenuContent)).nativeElement as HTMLElement
+    contentEl.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowDown', code: 'ArrowDown', bubbles: true, cancelable: true }),
+    )
+    await flushOpen(fixture)
+    expect(root.api().highlightedValue).toBe('two')
+
+    contentEl.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowUp', code: 'ArrowUp', bubbles: true, cancelable: true }),
+    )
+    await flushOpen(fixture)
+    expect(root.api().highlightedValue).toBe('one')
+
+    contentEl.dispatchEvent(new KeyboardEvent('keydown', { key: 'End', code: 'End', bubbles: true, cancelable: true }))
+    await flushOpen(fixture)
+    expect(root.api().highlightedValue).toBe('three')
+
+    contentEl.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'Home', code: 'Home', bubbles: true, cancelable: true }),
+    )
+    await flushOpen(fixture)
+    expect(root.api().highlightedValue).toBe('one')
+
+    fixture.destroy()
+  })
+
+  it('item selection emits (select) exactly once when an item is clicked', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkMenuRoot, ArkMenuPositioner, ArkMenuContent, ArkMenuItem, ArkPortalComponent],
+      template: `
+        <div arkMenu defaultOpen #root="arkMenu" (select)="selected.push($event)">
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkMenuPositioner>
+              <div arkMenuContent>
+                <div arkMenuItem value="alpha">Alpha</div>
+                <div arkMenuItem value="beta">Beta</div>
+              </div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {
+      readonly selected: MenuSelectionDetails[] = []
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+    await flushOpen(fixture)
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkMenuRoot))
+    const root = rootDebug.injector.get(ArkMenuRoot)
+    const emitSpy = vi.spyOn(root.select, 'emit')
+
+    root.api().setHighlightedValue('alpha')
+    await flushOpen(fixture)
+
+    const alphaItem = fixture.debugElement
+      .queryAll(By.directive(ArkMenuItem))
+      .find((el) => (el.nativeElement as HTMLElement).getAttribute('data-value') === 'alpha')
+      ?.nativeElement as HTMLElement
+
+    expect(alphaItem).toBeDefined()
+    alphaItem.click()
+    await flushOpen(fixture)
+
+    expect(emitSpy).toHaveBeenCalledTimes(1)
+    expect(fixture.componentInstance.selected.length).toBe(1)
+    expect(fixture.componentInstance.selected[0]).toEqual({ value: 'alpha' })
+
+    emitSpy.mockRestore()
+    fixture.destroy()
+  })
+
+  it('arrow, arrow-tip, indicator, and separator parts emit menu data-scope/data-part attributes', async () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkMenuRoot,
+        ArkMenuTrigger,
+        ArkMenuIndicator,
+        ArkMenuPositioner,
+        ArkMenuContent,
+        ArkMenuItem,
+        ArkMenuSeparator,
+        ArkMenuArrow,
+        ArkMenuArrowTip,
+        ArkPortalComponent,
+      ],
+      template: `
+        <div arkMenu defaultOpen #root="arkMenu">
+          <button arkMenuTrigger>
+            <span arkMenuIndicator></span>
+          </button>
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkMenuPositioner>
+              <div arkMenuContent>
+                <div arkMenuArrow>
+                  <div arkMenuArrowTip></div>
+                </div>
+                <div arkMenuItem value="a">A</div>
+                <div arkMenuSeparator></div>
+                <div arkMenuItem value="b">B</div>
+              </div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flushOpen(fixture)
+
+    const arrowEl = fixture.debugElement.query(By.directive(ArkMenuArrow)).nativeElement as HTMLElement
+    const arrowTipEl = fixture.debugElement.query(By.directive(ArkMenuArrowTip)).nativeElement as HTMLElement
+    const indicatorEl = fixture.debugElement.query(By.directive(ArkMenuIndicator)).nativeElement as HTMLElement
+    const separatorEl = fixture.debugElement.query(By.directive(ArkMenuSeparator)).nativeElement as HTMLElement
+
+    expect(arrowEl.getAttribute('data-scope')).toBe('menu')
+    expect(arrowEl.getAttribute('data-part')).toBe('arrow')
+    expect(arrowTipEl.getAttribute('data-scope')).toBe('menu')
+    expect(arrowTipEl.getAttribute('data-part')).toBe('arrow-tip')
+    expect(indicatorEl.getAttribute('data-scope')).toBe('menu')
+    expect(indicatorEl.getAttribute('data-part')).toBe('indicator')
+    expect(separatorEl.getAttribute('data-scope')).toBe('menu')
+    expect(separatorEl.getAttribute('data-part')).toBe('separator')
+
+    fixture.destroy()
+  })
+
+  it('content rendered through ark-portal can inject ArkMenuRoot and read api().open (AC 24)', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkMenuRoot, ArkMenuPositioner, ArkMenuContent, ArkPortalComponent, MenuProbe],
+      template: `
+        <div arkMenu defaultOpen #root="arkMenu">
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkMenuPositioner>
+              <div arkMenuContent>
+                <span menuProbe></span>
+              </div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await TestBed.inject(ApplicationRef).whenStable()
+    fixture.detectChanges()
+
+    const probeDebug = fixture.debugElement.query(By.directive(MenuProbe))
+    const probe = probeDebug.injector.get(MenuProbe)
+    const rootInstance = fixture.debugElement.query(By.directive(ArkMenuRoot)).injector.get(ArkMenuRoot)
+
+    expect(probe.capturedRoot).toBe(rootInstance)
+    expect(probe.capturedRoot.api().open).toBe(true)
+
+    fixture.destroy()
+  })
+
+  it('controlled [(open)] round-trips a host signal without redundant emissions', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkMenuRoot, ArkMenuPositioner, ArkMenuContent, ArkPortalComponent],
+      template: `
+        <div arkMenu #root="arkMenu" [(open)]="open" (openChange)="emissions.push($event)">
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkMenuPositioner>
+              <div arkMenuContent></div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {
+      readonly open = signal<boolean | undefined>(false)
+      readonly emissions: Array<boolean | undefined> = []
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkMenuRoot))
+    const root = rootDebug.injector.get(ArkMenuRoot)
+
+    fixture.componentInstance.open.set(true)
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(root.api().open).toBe(true)
+    const emissionsAfterFirstWrite = fixture.componentInstance.emissions.length
+
+    fixture.componentInstance.open.set(true)
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(root.api().open).toBe(true)
+    expect(fixture.componentInstance.emissions.length).toBe(emissionsAfterFirstWrite)
+
+    fixture.destroy()
+  })
+
+  it('[defaultOpen] property binding starts the menu open', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkMenuRoot, ArkMenuPositioner, ArkMenuContent, ArkPortalComponent],
+      template: `
+        <div arkMenu [defaultOpen]="true" #root="arkMenu">
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkMenuPositioner>
+              <div arkMenuContent></div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkMenuRoot))
+    const root = rootDebug.injector.get(ArkMenuRoot)
+
+    expect(root.api().open).toBe(true)
+
+    fixture.destroy()
+  })
+
+  it('public-api source does not import @angular/forms', () => {
+    const source = readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'public-api.ts'), 'utf-8')
+    expect(source).not.toMatch(/@angular\/forms/)
+  })
+
+  it('MenuBasicExample renders trigger with menu data attributes', () => {
+    TestBed.configureTestingModule({ imports: [MenuBasicExample] })
+    const fixture = TestBed.createComponent(MenuBasicExample)
+    fixture.detectChanges()
+
+    const triggerEl = fixture.debugElement.query(By.directive(ArkMenuTrigger)).nativeElement as HTMLButtonElement
+    expect(triggerEl.getAttribute('data-scope')).toBe('menu')
+    expect(triggerEl.getAttribute('data-part')).toBe('trigger')
+
+    fixture.destroy()
+  })
+
+  it('MenuControlledExample mounts without throwing', () => {
+    TestBed.configureTestingModule({ imports: [MenuControlledExample] })
+    const fixture = TestBed.createComponent(MenuControlledExample)
+    fixture.detectChanges()
+    fixture.destroy()
+  })
+
+  it('MenuWithSeparatorExample renders a separator part', () => {
+    TestBed.configureTestingModule({ imports: [MenuWithSeparatorExample] })
+    const fixture = TestBed.createComponent(MenuWithSeparatorExample)
+    fixture.detectChanges()
+    fixture.destroy()
+  })
+
+  it('MenuControlledHighlightExample mounts without throwing', () => {
+    TestBed.configureTestingModule({ imports: [MenuControlledHighlightExample] })
+    const fixture = TestBed.createComponent(MenuControlledHighlightExample)
+    fixture.detectChanges()
+    fixture.destroy()
+  })
+
+  it('MenuRootProviderExample shares state between hook and directives', () => {
+    TestBed.configureTestingModule({ imports: [MenuRootProviderExample] })
+    const fixture = TestBed.createComponent(MenuRootProviderExample)
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.openLabel()).toBe('closed')
+    fixture.componentInstance.menu.send({ type: 'OPEN' })
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(fixture.componentInstance.openLabel()).toBe('open')
+
+    fixture.destroy()
+  })
+})

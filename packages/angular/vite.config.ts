@@ -20,6 +20,7 @@ export default defineConfig(({ mode }) => ({
       '@ark-ui/angular/dialog': new URL('./src/dialog/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/drawer': new URL('./src/drawer/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/hover-card': new URL('./src/hover-card/public-api.ts', import.meta.url).pathname,
+      '@ark-ui/angular/menu': new URL('./src/menu/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/popover': new URL('./src/popover/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/portal': new URL('./src/portal/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/presence': new URL('./src/presence/public-api.ts', import.meta.url).pathname,

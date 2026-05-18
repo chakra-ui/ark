@@ -11,6 +11,11 @@ describe('package anatomy aggregate', () => {
     expect(mod.collapsibleAnatomy).toBeDefined()
   })
 
+  it('re-exports menuAnatomy', async () => {
+    const mod = await import('./anatomy')
+    expect(mod.menuAnatomy).toBeDefined()
+  })
+
   it('re-exports progressAnatomy', async () => {
     const mod = await import('./anatomy')
     expect(mod.progressAnatomy).toBeDefined()
