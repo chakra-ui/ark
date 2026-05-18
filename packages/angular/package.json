@@ -52,6 +52,11 @@
       "types": "./dist/src/menu/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-src-menu.mjs"
     },
+    "./navigation-menu": {
+      "source": "./src/navigation-menu/public-api.ts",
+      "types": "./dist/src/navigation-menu/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-navigation-menu.mjs"
+    },
     "./popover": {
       "source": "./src/popover/public-api.ts",
       "types": "./dist/src/popover/index.d.ts",

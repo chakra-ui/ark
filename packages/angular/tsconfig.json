@@ -11,6 +11,7 @@
       "@ark-ui/angular/drawer": ["src/drawer/public-api.ts"],
       "@ark-ui/angular/hover-card": ["src/hover-card/public-api.ts"],
       "@ark-ui/angular/menu": ["src/menu/public-api.ts"],
+      "@ark-ui/angular/navigation-menu": ["src/navigation-menu/public-api.ts"],
       "@ark-ui/angular/popover": ["src/popover/public-api.ts"],
       "@ark-ui/angular/portal": ["src/portal/public-api.ts"],
       "@ark-ui/angular/presence": ["src/presence/public-api.ts"],

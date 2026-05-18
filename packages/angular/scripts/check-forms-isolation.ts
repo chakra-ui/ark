@@ -45,6 +45,11 @@ const entryPoints = [
     outputs: ['dist/fesm2022/ark-ui-angular-src-menu.mjs'],
   },
   {
+    name: '@ark-ui/angular/navigation-menu',
+    file: 'src/navigation-menu/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-navigation-menu.mjs'],
+  },
+  {
     name: '@ark-ui/angular/popover',
     file: 'src/popover/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-src-popover.mjs'],
