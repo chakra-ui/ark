@@ -33,7 +33,7 @@ export class ArkAvatarRoot implements UseAvatarReturn {
   private readonly machine = useAvatar({
     context: () => ({
       id: this.id(),
-      ids: this.ids(),
+      ids: this.stabilizeIds(this.ids()),
       onStatusChange: (details) => this.statusChange.emit(details),
     }),
   })
@@ -42,6 +42,26 @@ export class ArkAvatarRoot implements UseAvatarReturn {
   readonly api: Signal<avatar.Api> = this.machine.api
   readonly service: avatar.Service = this.machine.service
   readonly send: avatar.Service['send'] = this.machine.send
+
+  private prevIds: Partial<AvatarElementIds> | undefined = undefined
+
+  // useMachine diffs context values via Object.is, so a new ids object with equal keys would still patch.
+  private stabilizeIds(next: Partial<AvatarElementIds> | undefined): Partial<AvatarElementIds> | undefined {
+    if (next === this.prevIds) return this.prevIds
+    if (next === undefined || this.prevIds === undefined) {
+      this.prevIds = next
+      return this.prevIds
+    }
+    if (
+      Object.is(next.root, this.prevIds.root) &&
+      Object.is(next.image, this.prevIds.image) &&
+      Object.is(next.fallback, this.prevIds.fallback)
+    ) {
+      return this.prevIds
+    }
+    this.prevIds = next
+    return this.prevIds
+  }
 
   constructor() {
     applyArkProps({
