@@ -93,23 +93,36 @@ export function useMachine<TSchema extends MachineSchema, TApi>(
   const prop = ((key: string) => props()[key]) as Service<TSchema>['prop']
 
   const createBindable = <T>(params: () => BindableParams<T>): Bindable<T> => {
-    const initial = params().value ?? params().defaultValue
+    const initialParams = params()
+    const initial = initialParams.value !== undefined ? initialParams.value : initialParams.defaultValue
     const value = signal<T | undefined>(initial)
     const ref = { current: initial }
+    let defaultEffectInitialized = false
+    let defaultHydrationChecked = false
+    // Sticky for this bindable's lifetime: once the consumer mutates the value,
+    // defaultValue should not re-seed uncontrolled state.
     let userTouched = false
 
     // Track late-arriving defaultValue changes. Angular signal inputs are not
     // populated until after the directive is constructed, so an uncontrolled
     // bindable's `initial` may capture an undefined/fallback default that is
     // later patched in via setContext. While the consumer hasn't called set()
-    // and the bindable remains uncontrolled, re-seed the stored value from
-    // the latest params().defaultValue. This bypasses onChange (which only
-    // fires from bindable.set), so no spurious change events are emitted.
+    // and the bindable remains uncontrolled, run one hydration check against
+    // the first params().defaultValue seen by Angular's effect scheduler. This
+    // bypasses onChange (which only fires from bindable.set), so no spurious
+    // change events are emitted.
     effect(() => {
-      const nextDefault = params().defaultValue
-      const controlled = params().value !== undefined
-      if (userTouched || controlled) return
-      if (!Object.is(untracked(value), nextDefault)) {
+      const nextParams = params()
+      const nextDefault = nextParams.defaultValue
+      const controlled = nextParams.value !== undefined
+      if (!defaultEffectInitialized) {
+        defaultEffectInitialized = true
+        return
+      }
+      if (userTouched || controlled || defaultHydrationChecked) return
+      defaultHydrationChecked = true
+      if (nextDefault === undefined) return
+      if (!(nextParams.isEqual ?? Object.is)(untracked(value), nextDefault)) {
         value.set(nextDefault)
       }
     })

@@ -16,7 +16,6 @@ export interface UseProgressOptions {
   context: () => UseProgressProps
 }
 
-type ProgressContext = Record<string, unknown>
 type ProgressSchema = progress.Machine extends Machine<infer TSchema> ? TSchema : never
 
 export function useProgress(options: UseProgressOptions): UseProgressReturn {
@@ -28,12 +27,15 @@ export function useProgress(options: UseProgressOptions): UseProgressReturn {
     machine: progress.machine,
     context: () => {
       const props = options.context()
-      return {
+      const context: Partial<ProgressSchema['props']> = {
         ...props,
         dir: locale.dir,
-        getRootNode: environment.getRootNode,
         id: props.id ?? fallbackId,
-      } as ProgressContext
+      }
+      if (environment.getRootNode) {
+        context.getRootNode = () => environment.getRootNode?.() ?? document
+      }
+      return context
     },
     connect: (service, normalize) => progress.connect(service, normalize),
   })

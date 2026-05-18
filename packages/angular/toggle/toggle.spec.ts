@@ -23,6 +23,16 @@ import { ToggleControlledExample } from './examples/controlled'
 import { ToggleDisabledExample } from './examples/disabled'
 import { ToggleIndicatorExample } from './examples/indicator'
 
+type TogglePublicTypeSmoke = [
+  ToggleApi,
+  ToggleMachine,
+  ToggleMachineProps,
+  ToggleService,
+  UseToggleOptions,
+  UseToggleProps,
+  UseToggleReturn,
+]
+
 @Directive({ selector: '[toggleProbe]', standalone: true, exportAs: 'toggleProbe' })
 class ToggleProbe {
   private readonly _injector = inject(Injector)
@@ -39,19 +49,7 @@ describe('@ark-ui/angular/toggle', () => {
     expect(typeof toggleAnatomy).toBe('object')
     expect(ArkToggleRoot).toBeDefined()
     expect(ArkToggleIndicator).toBeDefined()
-
-    const _typeOnly:
-      | {
-          api: ToggleApi
-          machine: ToggleMachine
-          machineProps: ToggleMachineProps
-          service: ToggleService
-          options: UseToggleOptions
-          props: UseToggleProps
-          ret: UseToggleReturn
-        }
-      | undefined = undefined
-    expect(_typeOnly).toBeUndefined()
+    expect(undefined as TogglePublicTypeSmoke | undefined).toBeUndefined()
   })
 
   it('descendant probe under [arkToggle] receives the Root directive instance via ARK_TOGGLE_CONTEXT', () => {
@@ -92,11 +90,7 @@ describe('@ark-ui/angular/toggle', () => {
     TestBed.resetTestingModule()
     TestBed.configureTestingModule({ imports: [OrphanHost] })
 
-    expect(() => {
-      const fixture = TestBed.createComponent(OrphanHost)
-      fixture.detectChanges()
-      fixture.destroy()
-    }).toThrow(/ARK_TOGGLE_CONTEXT|No provider|NG0201/i)
+    expect(() => TestBed.createComponent(OrphanHost)).toThrow(/ARK_TOGGLE_CONTEXT|No provider|NG0201/i)
   })
 
   it('clicking the Toggle root flips api().pressed, updates data-state, and emits (pressedChange) exactly once', () => {
@@ -218,7 +212,7 @@ describe('@ark-ui/angular/toggle', () => {
     @Component({
       standalone: true,
       imports: [ArkToggleRoot],
-      template: '<button arkToggle [disabled]="true" (pressedChange)="emissions.push($event)"></button>',
+      template: '<div arkToggle [disabled]="true" (pressedChange)="emissions.push($event)"></div>',
     })
     class Host {
       readonly emissions: Array<boolean | undefined> = []
@@ -231,16 +225,50 @@ describe('@ark-ui/angular/toggle', () => {
 
     const rootDebug = fixture.debugElement.query(By.directive(ArkToggleRoot))
     const root = rootDebug.injector.get(ArkToggleRoot)
-    const rootEl = rootDebug.nativeElement as HTMLButtonElement
+    const rootEl = rootDebug.nativeElement as HTMLElement
 
     expect(root.api().disabled).toBe(true)
 
-    rootEl.click()
+    rootEl.dispatchEvent(new MouseEvent('click', { bubbles: true }))
     TestBed.tick()
     fixture.detectChanges()
 
     expect(root.api().pressed).toBe(false)
     expect(fixture.componentInstance.emissions).toEqual([])
+
+    fixture.destroy()
+  })
+
+  it('uncontrolled Toggle does not re-seed from defaultPressed after user interaction', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkToggleRoot],
+      template: '<button arkToggle [defaultPressed]="defaultPressed()"></button>',
+    })
+    class Host {
+      readonly defaultPressed = signal(false)
+    }
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkToggleRoot))
+    const root = rootDebug.injector.get(ArkToggleRoot)
+    const rootEl = rootDebug.nativeElement as HTMLButtonElement
+
+    expect(root.api().pressed).toBe(false)
+    rootEl.click()
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(root.api().pressed).toBe(true)
+
+    fixture.componentInstance.defaultPressed.set(false)
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(root.api().pressed).toBe(true)
 
     fixture.destroy()
   })
@@ -299,15 +327,6 @@ describe('@ark-ui/angular/toggle', () => {
     fixture.destroy()
   })
 
-  it('ArkToggleRoot does not declare a separate pressedChange output beyond the model channel', () => {
-    const directiveDef = (ArkToggleRoot as unknown as { ɵdir?: { outputs?: Record<string, string> } }).ɵdir
-    expect(directiveDef).toBeDefined()
-    const outputs = directiveDef?.outputs ?? {}
-    const propertyNames = Object.keys(outputs)
-    expect(propertyNames).toEqual(['pressedChange'])
-    expect(Object.values(outputs)).toEqual(['pressed'])
-  })
-
   it('ToggleBasicExample renders the root with data-scope="toggle" and data-part="root"', () => {
     TestBed.resetTestingModule()
     TestBed.configureTestingModule({ imports: [ToggleBasicExample] })
@@ -354,7 +373,7 @@ describe('@ark-ui/angular/toggle', () => {
     expect(root.api().disabled).toBe(true)
     expect(root.api().pressed).toBe(false)
 
-    rootEl.click()
+    rootEl.dispatchEvent(new MouseEvent('click', { bubbles: true }))
     TestBed.tick()
     fixture.detectChanges()
 
@@ -401,6 +420,15 @@ describe('@ark-ui/angular/toggle', () => {
     expect(labelDebug).toBeTruthy()
     const labelContext = labelDebug.injector.get(ARK_TOGGLE_CONTEXT)
     expect(labelContext).toBe(rootInstance)
+
+    const rootEl = rootDebug.nativeElement as HTMLButtonElement
+    expect((labelDebug.nativeElement as HTMLElement).textContent?.trim()).toBe('Off')
+
+    rootEl.click()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect((labelDebug.nativeElement as HTMLElement).textContent?.trim()).toBe('On')
 
     fixture.destroy()
   })

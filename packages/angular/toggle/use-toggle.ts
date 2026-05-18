@@ -12,18 +12,12 @@ export interface UseToggleOptions {
   context: () => UseToggleProps
 }
 
-type ToggleContext = Record<string, unknown>
 type ToggleSchema = toggle.Machine extends Machine<infer TSchema> ? TSchema : never
 
 export function useToggle(options: UseToggleOptions): UseToggleReturn {
   return useMachine<ToggleSchema, toggle.Api>({
     machine: toggle.machine,
-    context: () => {
-      const props = options.context()
-      return {
-        ...props,
-      } as ToggleContext
-    },
+    context: () => options.context() as Partial<ToggleSchema['props']>,
     connect: (service, normalize) => toggle.connect(service, normalize),
   })
 }

@@ -32,10 +32,6 @@ export class ArkProgressRootProvider implements UseProgressReturn {
     return this.value().service
   }
 
-  resolveValue(): UseProgressReturn {
-    return this.value()
-  }
-
   constructor() {
     applyArkProps({
       elementRef: inject(ElementRef),

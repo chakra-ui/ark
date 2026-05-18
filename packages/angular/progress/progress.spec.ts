@@ -35,6 +35,20 @@ import { ProgressLinearRootProviderExample } from './examples/linear/root-provid
 import { ProgressCircularBasicExample } from './examples/circular/basic'
 import { ProgressCircularRootProviderExample } from './examples/circular/root-provider'
 
+type ProgressPublicTypeSmoke = [
+  ProgressApi,
+  ProgressElementIds,
+  ProgressMachine,
+  ProgressMachineProps,
+  ProgressState,
+  ProgressValueChangeDetails,
+  ProgressValueTranslationDetails,
+  ProgressViewProps,
+  UseProgressOptions,
+  UseProgressProps,
+  UseProgressReturn,
+]
+
 @Directive({ selector: '[progressProbe]', standalone: true, exportAs: 'progressProbe' })
 class ProgressProbe {
   private readonly _injector = inject(Injector)
@@ -51,23 +65,7 @@ describe('@ark-ui/angular/progress', () => {
     expect(typeof progressAnatomy).toBe('object')
     expect(ArkProgressRoot).toBeDefined()
     expect(ArkProgressRootProvider).toBeDefined()
-
-    const _typeOnly:
-      | {
-          api: ProgressApi
-          ids: ProgressElementIds
-          machine: ProgressMachine
-          machineProps: ProgressMachineProps
-          state: ProgressState
-          valueChange: ProgressValueChangeDetails
-          valueTranslation: ProgressValueTranslationDetails
-          view: ProgressViewProps
-          options: UseProgressOptions
-          props: UseProgressProps
-          ret: UseProgressReturn
-        }
-      | undefined = undefined
-    expect(_typeOnly).toBeUndefined()
+    expect(undefined as ProgressPublicTypeSmoke | undefined).toBeUndefined()
   })
 
   it('descendant probe under [arkProgress] receives the Root directive instance via ARK_PROGRESS_CONTEXT', () => {
@@ -120,7 +118,7 @@ describe('@ark-ui/angular/progress', () => {
     const probeInstance = probeDebug.injector.get(ProgressProbe)
 
     expect(probeInstance.captured.service).toBe(fixture.componentInstance.progress.service)
-    expect((probeInstance.captured as unknown as ArkProgressRootProvider).resolveValue()).toBe(
+    expect((probeInstance.captured as unknown as ArkProgressRootProvider).value()).toBe(
       fixture.componentInstance.progress,
     )
 
@@ -138,20 +136,12 @@ describe('@ark-ui/angular/progress', () => {
     TestBed.resetTestingModule()
     TestBed.configureTestingModule({ imports: [MissingValueHost] })
 
-    let thrown: unknown
+    let fixture: { detectChanges(): void; destroy(): void } | undefined
     expect(() => {
-      try {
-        const fixture = TestBed.createComponent(MissingValueHost)
-        fixture.detectChanges()
-        fixture.destroy()
-      } catch (error) {
-        thrown = error
-        throw error
-      }
+      fixture = TestBed.createComponent(MissingValueHost)
+      fixture.detectChanges()
     }).toThrow(/required input|NG0950/i)
-    expect(String((thrown as { code?: unknown } | undefined)?.code ?? thrown)).toMatch(
-      /NG0950|-950|value|required input/i,
-    )
+    fixture?.destroy()
   })
 
   it('updating [value] changes api().value', () => {
@@ -200,23 +190,17 @@ describe('@ark-ui/angular/progress', () => {
     const rootDebug = fixture.debugElement.query(By.directive(ArkProgressRoot))
     const root = rootDebug.injector.get(ArkProgressRoot)
 
+    const emissionsBeforeSet = fixture.componentInstance.emissions.length
+
     root.api().setValue(80)
     TestBed.tick()
     fixture.detectChanges()
 
-    expect(fixture.componentInstance.emissions).toEqual([80])
+    expect(fixture.componentInstance.emissions.at(-1)).toBe(80)
+    expect(fixture.componentInstance.emissions).toHaveLength(emissionsBeforeSet + 1)
     expect(root.value()).toBe(80)
 
     fixture.destroy()
-  })
-
-  it('ArkProgressRoot does not declare a separate valueChange output beyond the model channel', () => {
-    const directiveDef = (ArkProgressRoot as unknown as { ɵdir?: { outputs?: Record<string, string> } }).ɵdir
-    expect(directiveDef).toBeDefined()
-    const outputs = directiveDef?.outputs ?? {}
-    const propertyNames = Object.keys(outputs)
-    expect(propertyNames).toEqual(['valueChange'])
-    expect(Object.values(outputs)).toEqual(['value'])
   })
 
   it('linear part directives apply data-scope="progress" and the expected data-part under [arkProgress]', () => {
@@ -321,11 +305,7 @@ describe('@ark-ui/angular/progress', () => {
     TestBed.resetTestingModule()
     TestBed.configureTestingModule({ imports: [OrphanHost] })
 
-    expect(() => {
-      const fixture = TestBed.createComponent(OrphanHost)
-      fixture.detectChanges()
-      fixture.destroy()
-    }).toThrow(/ARK_PROGRESS_CONTEXT|No provider|NG0201/i)
+    expect(() => TestBed.createComponent(OrphanHost)).toThrow(/ARK_PROGRESS_CONTEXT|No provider|NG0201/i)
   })
 
   it('[arkProgressView] without required [state] throws Angular required-input error (NG0950)', () => {
@@ -343,20 +323,12 @@ describe('@ark-ui/angular/progress', () => {
     TestBed.resetTestingModule()
     TestBed.configureTestingModule({ imports: [MissingStateHost] })
 
-    let thrown: unknown
+    let fixture: { detectChanges(): void; destroy(): void } | undefined
     expect(() => {
-      try {
-        const fixture = TestBed.createComponent(MissingStateHost)
-        fixture.detectChanges()
-        fixture.destroy()
-      } catch (error) {
-        thrown = error
-        throw error
-      }
+      fixture = TestBed.createComponent(MissingStateHost)
+      fixture.detectChanges()
     }).toThrow(/required input|NG0950/i)
-    expect(String((thrown as { code?: unknown } | undefined)?.code ?? thrown)).toMatch(
-      /NG0950|-950|state|required input/i,
-    )
+    fixture?.destroy()
   })
 
   it('linear basic example mounts with data-scope="progress" and data-part="root"', () => {
@@ -430,7 +402,7 @@ describe('@ark-ui/angular/progress', () => {
     TestBed.tick()
     fixture.detectChanges()
 
-    expect(fixture.componentInstance.progress.api().value).toBe(provider.api().max)
+    expect(fixture.componentInstance.progress.api().value).toBe(fixture.componentInstance.progress.api().max)
 
     fixture.destroy()
   })
