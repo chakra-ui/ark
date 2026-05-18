@@ -6,6 +6,7 @@
     "baseUrl": ".",
     "paths": {
       "@ark-ui/angular/avatar": ["avatar/public-api.ts"],
+      "@ark-ui/angular/progress": ["progress/public-api.ts"],
       "@ark-ui/angular/src/_zag": ["src/_zag/public-api.ts"],
       "@ark-ui/angular/src/_zag/apply-ark-props": ["src/_zag/apply-ark-props.ts"],
       "@ark-ui/angular/src/_zag/use-machine": ["src/_zag/use-machine.ts"],
@@ -35,6 +36,6 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
-  "include": ["src/**/*.ts", "avatar/**/*.ts"],
+  "include": ["src/**/*.ts", "avatar/**/*.ts", "progress/**/*.ts"],
   "exclude": ["**/*.spec.ts", "**/setup-test.ts"]
 }
