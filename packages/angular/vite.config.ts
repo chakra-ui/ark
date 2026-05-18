@@ -17,6 +17,9 @@ export default defineConfig(({ mode }) => ({
     alias: {
       '@ark-ui/angular/avatar': new URL('./avatar/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/collapsible': new URL('./src/collapsible/public-api.ts', import.meta.url).pathname,
+      '@ark-ui/angular/dialog': new URL('./src/dialog/public-api.ts', import.meta.url).pathname,
+      '@ark-ui/angular/portal': new URL('./src/portal/public-api.ts', import.meta.url).pathname,
+      '@ark-ui/angular/presence': new URL('./src/presence/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/progress': new URL('./progress/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/toggle': new URL('./toggle/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/src/_zag': new URL('./src/_zag/public-api.ts', import.meta.url).pathname,

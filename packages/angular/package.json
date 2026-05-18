@@ -32,6 +32,11 @@
       "types": "./dist/src/collapsible/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-src-collapsible.mjs"
     },
+    "./dialog": {
+      "source": "./src/dialog/public-api.ts",
+      "types": "./dist/src/dialog/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-dialog.mjs"
+    },
     "./progress": {
       "source": "./progress/public-api.ts",
       "types": "./dist/progress/index.d.ts",

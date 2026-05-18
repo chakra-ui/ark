@@ -25,6 +25,11 @@ const entryPoints = [
     outputs: ['dist/fesm2022/ark-ui-angular-src-collapsible.mjs'],
   },
   {
+    name: '@ark-ui/angular/dialog',
+    file: 'src/dialog/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-dialog.mjs'],
+  },
+  {
     name: '@ark-ui/angular/progress',
     file: 'progress/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-progress.mjs'],
