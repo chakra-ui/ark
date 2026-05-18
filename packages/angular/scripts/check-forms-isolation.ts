@@ -1,14 +1,20 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { dirname, extname, join, relative, resolve } from 'node:path'
-import { exit } from 'node:process'
-import { fileURLToPath } from 'node:url'
+import { argv, exit } from 'node:process'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import ts from 'typescript'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = join(here, '..')
 const formsImportPattern = /^@angular\/forms(?:\/|$)/
 
-const entryPoints = [
+export type EntryPoint = {
+  name: string
+  file: string
+  outputs: string[]
+}
+
+export const entryPoints: EntryPoint[] = [
   {
     name: '@ark-ui/angular',
     file: 'src/index.ts',
@@ -136,6 +142,16 @@ const entryPoints = [
   },
 ]
 
+export const formBearingEntryPoints = new Set<string>([
+  '@ark-ui/angular/editable',
+  '@ark-ui/angular/number-input',
+  '@ark-ui/angular/pin-input',
+  '@ark-ui/angular/password-input',
+  '@ark-ui/angular/tags-input',
+  '@ark-ui/angular/select',
+  '@ark-ui/angular/combobox',
+])
+
 const selfEntryFiles = new Map(
   entryPoints.flatMap(({ name, file }) => {
     const resolvedFile = join(root, file)
@@ -161,7 +177,6 @@ const resolveLocalModule = (fromFile: string, specifier: string) => {
   }
 
   if (!specifier.startsWith('.') && !specifier.startsWith('/')) {
-    // Bare dependency coverage comes from the optional FESM scan after build output exists.
     return undefined
   }
 
@@ -223,7 +238,24 @@ const collectImportSpecifiers = (sourceFile: ts.SourceFile) => {
   return specifiers
 }
 
-const scanFile = (name: string, file: string, visited: Set<string>, stack: string[]) => {
+export type Reporter = {
+  error: (message: string) => void
+  warn?: (message: string) => void
+}
+
+const defaultReporter: Reporter = {
+  error: (message) => console.error(message),
+  warn: (message) => console.warn(message),
+}
+
+const scanFile = (
+  name: string,
+  file: string,
+  visited: Set<string>,
+  stack: string[],
+  allowForms: boolean,
+  reporter: Reporter,
+) => {
   const resolvedFile = resolve(file)
   if (visited.has(resolvedFile)) {
     return false
@@ -235,7 +267,7 @@ const scanFile = (name: string, file: string, visited: Set<string>, stack: strin
   const sourceFile = ts.createSourceFile(resolvedFile, source, ts.ScriptTarget.Latest, true)
   if (sourceFile.parseDiagnostics.length > 0) {
     for (const diagnostic of sourceFile.parseDiagnostics) {
-      console.error(ts.flattenDiagnosticMessageText(diagnostic.messageText, '\n'))
+      reporter.error(ts.flattenDiagnosticMessageText(diagnostic.messageText, '\n'))
     }
     return true
   }
@@ -245,7 +277,10 @@ const scanFile = (name: string, file: string, visited: Set<string>, stack: strin
 
   for (const specifier of specifiers) {
     if (formsImportPattern.test(specifier)) {
-      console.error(
+      if (allowForms) {
+        continue
+      }
+      reporter.error(
         `${name} imports from ${specifier} through ${[...stack, resolvedFile].map(toDisplayPath).join(' -> ')}`,
       )
       failed = true
@@ -253,7 +288,7 @@ const scanFile = (name: string, file: string, visited: Set<string>, stack: strin
     }
 
     const nextFile = resolveLocalModule(resolvedFile, specifier)
-    if (nextFile && scanFile(name, nextFile, visited, [...stack, resolvedFile])) {
+    if (nextFile && scanFile(name, nextFile, visited, [...stack, resolvedFile], allowForms, reporter)) {
       failed = true
     }
   }
@@ -261,38 +296,53 @@ const scanFile = (name: string, file: string, visited: Set<string>, stack: strin
   return failed
 }
 
-let failed = false
-const missingOutputs: string[] = []
-for (const { name, file, outputs } of entryPoints) {
+export const scanEntryPoint = (entryPoint: { name: string; file: string }, reporter: Reporter = defaultReporter) => {
+  const allowForms = formBearingEntryPoints.has(entryPoint.name)
   const visited = new Set<string>()
-  if (scanFile(name, join(root, file), visited, [])) {
-    failed = true
-  }
+  return scanFile(entryPoint.name, entryPoint.file, visited, [], allowForms, reporter)
+}
 
-  for (const output of outputs) {
-    const outputFile = join(root, output)
-    if (existsSync(outputFile) && scanFile(name, outputFile, visited, [])) {
+export const runFormsIsolationCheck = (reporter: Reporter = defaultReporter) => {
+  let failed = false
+  const missingOutputs: string[] = []
+  for (const { name, file, outputs } of entryPoints) {
+    const allowForms = formBearingEntryPoints.has(name)
+    const visited = new Set<string>()
+    if (scanFile(name, join(root, file), visited, [], allowForms, reporter)) {
       failed = true
-    } else if (!existsSync(outputFile)) {
-      missingOutputs.push(`${name} (${output})`)
+    }
+
+    for (const output of outputs) {
+      const outputFile = join(root, output)
+      if (existsSync(outputFile) && scanFile(name, outputFile, visited, [], allowForms, reporter)) {
+        failed = true
+      } else if (!existsSync(outputFile)) {
+        missingOutputs.push(`${name} (${output})`)
+      }
     }
   }
+
+  if (failed) {
+    reporter.error('forms isolation failed: non-form entry points must not import @angular/forms transitively.')
+    return { failed: true, missingOutputs }
+  }
+
+  if (missingOutputs.length > 0) {
+    reporter.error(
+      `forms isolation: build output not found for ${missingOutputs.join(', ')}; source imports were checked, but bare dependency verification requires running build first.`,
+    )
+    return { failed: true, missingOutputs }
+  }
+
+  return { failed: false, missingOutputs }
 }
 
-if (failed) {
-  console.error('forms isolation failed: non-form entry points must not import @angular/forms transitively.')
-  exit(1)
-}
+const isMain = argv[1] ? import.meta.url === pathToFileURL(argv[1]).href : false
 
-if (missingOutputs.length > 0) {
-  console.error(
-    `forms isolation: build output not found for ${missingOutputs.join(', ')}; source imports were checked, but bare dependency verification requires running build first.`,
-  )
-  failed = true
+if (isMain) {
+  const result = runFormsIsolationCheck()
+  if (result.failed) {
+    exit(1)
+  }
+  console.log('forms isolation: ok')
 }
-
-if (failed) {
-  exit(1)
-}
-
-console.log('forms isolation: ok')
