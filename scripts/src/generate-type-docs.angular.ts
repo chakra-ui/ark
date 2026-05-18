@@ -30,13 +30,18 @@ export interface AngularPartEntry {
 
 export type AngularTypeDoc = Record<string, AngularPartEntry>
 
-let prettierConfig: Awaited<ReturnType<typeof prettier.resolveConfig>> | undefined
+type PrettierConfig = Awaited<ReturnType<typeof prettier.resolveConfig>>
 
-async function getPrettierConfig(rootDir: string): Promise<NonNullable<typeof prettierConfig>> {
-  if (prettierConfig === undefined) {
-    prettierConfig = await prettier.resolveConfig(path.join(rootDir, 'package.json'))
+const prettierConfigs = new Map<string, PrettierConfig>()
+
+async function getPrettierConfig(rootDir: string): Promise<NonNullable<PrettierConfig>> {
+  const cached = prettierConfigs.get(rootDir)
+  if (cached !== undefined) {
+    return cached ?? {}
   }
-  return prettierConfig ?? {}
+  const config = await prettier.resolveConfig(path.join(rootDir, 'package.json'))
+  prettierConfigs.set(rootDir, config)
+  return config ?? {}
 }
 
 async function tryPrettier(typeName: string, rootDir: string): Promise<string> {
@@ -45,7 +50,7 @@ async function tryPrettier(typeName: string, rootDir: string): Promise<string> {
       ...(await getPrettierConfig(rootDir)),
       parser: 'typescript',
     })
-    return collapseRedundantPartial(
+    return collapseTopLevelDoublePartial(
       prettyType
         .replace(/^type ONLY_FOR_FORMAT\s*=\s*/, '')
         .replace(/;\s*$/, '')
@@ -56,7 +61,8 @@ async function tryPrettier(typeName: string, rootDir: string): Promise<string> {
   }
 }
 
-function collapseRedundantPartial(typeName: string): string {
+function collapseTopLevelDoublePartial(typeName: string): string {
+  // Alias rewriting can wrap an already-partial Zag type at the top level.
   let result = typeName
   while (/^Partial<\s*Partial<[\s\S]*>\s*>$/.test(result)) {
     result = result.replace(/^Partial<\s*Partial<([\s\S]*)>\s*>$/, 'Partial<$1>')
@@ -120,22 +126,16 @@ function pascalCaseComponent(component: string): string {
     .join('')
 }
 
-function camelCaseComponent(component: string): string {
-  const pascal = pascalCaseComponent(component)
-  return pascal.charAt(0).toLowerCase() + pascal.slice(1)
-}
-
 function derivePartName(classDeclaration: ClassDeclaration, component: string): string | undefined {
   const className = classDeclaration.getName()
   if (!className) return undefined
   const componentPascal = pascalCaseComponent(component)
-  const componentCamel = camelCaseComponent(component)
   const arkPrefix = `Ark${componentPascal}`
 
   const decoratorCall = getDirectiveDecorator(classDeclaration)
   const exportAs = decoratorCall ? getDecoratorStringProperty(decoratorCall, 'exportAs') : undefined
 
-  if (exportAs === `ark${componentCamel}` || className === `${arkPrefix}Root` || className === arkPrefix) {
+  if (exportAs === `ark${componentPascal}` || className === `${arkPrefix}Root` || className === arkPrefix) {
     return 'Root'
   }
   if (exportAs === `ark${componentPascal}RootProvider` || className.endsWith('RootProvider')) {
@@ -240,6 +240,7 @@ function getTypeTextWithoutUndefined(type: Type, property: PropertyDeclaration):
   const unionTypes = type.getUnionTypes()
   if (unionTypes.length === 0) return type.getText(property)
 
+  // Undefined means "input omitted"; null is a meaningful value and should stay visible in docs.
   const withoutUndefined = unionTypes.filter((unionType) => !unionType.isUndefined())
   if (withoutUndefined.length === unionTypes.length || withoutUndefined.length === 0) {
     return type.getText(property)

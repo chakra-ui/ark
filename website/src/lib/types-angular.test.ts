@@ -22,11 +22,12 @@ describe('velite types collection for Angular', () => {
     const types = await getTypesCollection()
     const avatar = types.find((entry) => entry.framework === 'angular' && entry.component === 'avatar')
     expect(avatar).toBeDefined()
+    if (!avatar) return
 
     const committed = JSON.parse(
       readFileSync(join(websiteDir, 'src', 'content', 'types', 'angular', 'avatar.types.json'), 'utf-8'),
     ) as Record<string, unknown>
 
-    expect(avatar!.parts).toEqual(committed)
+    expect(avatar.parts).toEqual(committed)
   })
 })
