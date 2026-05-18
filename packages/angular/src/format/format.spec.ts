@@ -1,10 +1,12 @@
 import { Component } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
+import { formatBytes, formatRelativeTime, formatTime } from '@zag-js/i18n-utils'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { provideArkLocale } from '../providers/locale/locale'
 import { ArkFormatByteComponent } from './format-byte'
 import { ArkFormatNumberComponent } from './format-number'
 import { ArkFormatRelativeTimeComponent } from './format-relative-time'
+import { ArkFormatTimeComponent } from './format-time'
 
 @Component({
   standalone: true,
@@ -31,7 +33,7 @@ class NumberProviderHostComponent {}
   standalone: true,
   imports: [ArkFormatByteComponent],
   template: `
-    <ark-format-byte [value]="1024"></ark-format-byte>
+    <ark-format-byte [value]="1024" unitSystem="decimal"></ark-format-byte>
   `,
 })
 class ByteHostComponent {}
@@ -40,10 +42,23 @@ class ByteHostComponent {}
   standalone: true,
   imports: [ArkFormatRelativeTimeComponent],
   template: `
-    <ark-format-relative-time [value]="-1" unit="day"></ark-format-relative-time>
+    <ark-format-relative-time [value]="value"></ark-format-relative-time>
   `,
 })
-class RelativeTimeHostComponent {}
+class RelativeTimeHostComponent {
+  value = new Date(Date.now() - 24 * 60 * 60 * 1000)
+}
+
+@Component({
+  standalone: true,
+  imports: [ArkFormatTimeComponent],
+  template: `
+    <ark-format-time [value]="value" format="24h" [withSeconds]="true"></ark-format-time>
+  `,
+})
+class TimeHostComponent {
+  value = new Date('2024-01-01T13:05:06Z')
+}
 
 @Component({
   standalone: true,
@@ -56,7 +71,7 @@ class InvalidNumberHostComponent {
   value = Number.NaN
 }
 
-describe('Format components (criterion 28)', () => {
+describe('ArkFormatComponents', () => {
   beforeEach(() => {
     TestBed.resetTestingModule()
   })
@@ -68,8 +83,7 @@ describe('Format components (criterion 28)', () => {
     fixture.detectChanges()
 
     const expected = new Intl.NumberFormat('fr-FR').format(1234.56)
-    expect(fixture.nativeElement.textContent).toContain(expected)
-    expect(expected).toContain(',')
+    expect(fixture.nativeElement.textContent.trim()).toBe(expected)
 
     fixture.destroy()
   })
@@ -83,8 +97,7 @@ describe('Format components (criterion 28)', () => {
     fixture.detectChanges()
 
     const expected = new Intl.NumberFormat('de-DE').format(1234.56)
-    expect(fixture.nativeElement.textContent).toContain(expected)
-    expect(expected).toContain(',')
+    expect(fixture.nativeElement.textContent.trim()).toBe(expected)
 
     fixture.destroy()
   })
@@ -99,36 +112,28 @@ describe('Format components (criterion 28)', () => {
     fixture.detectChanges()
 
     const expected = new Intl.NumberFormat('en-US').format(1234.56)
-    expect(fixture.nativeElement.textContent).toContain(expected)
-    expect(expected).toContain('.')
+    expect(fixture.nativeElement.textContent.trim()).toBe(expected)
 
     fixture.destroy()
   })
 
-  it('renders Format.Byte using Intl unit formatting in the default locale', () => {
+  it('renders human-readable byte sizes in the default locale', () => {
     TestBed.configureTestingModule({ imports: [ByteHostComponent] })
     const fixture = TestBed.createComponent(ByteHostComponent)
     fixture.detectChanges()
 
-    const expected = new Intl.NumberFormat('en-US', {
-      style: 'unit',
-      unit: 'byte',
-      unitDisplay: 'short',
-    }).format(1024)
-    expect(fixture.nativeElement.textContent).toContain(expected)
-    expect(fixture.nativeElement.textContent.toLowerCase()).toMatch(/byte|b/)
+    expect(fixture.nativeElement.textContent.trim()).toBe(formatBytes(1024, 'en-US', { unitSystem: 'decimal' }))
 
     fixture.destroy()
   })
 
-  it('renders Format.RelativeTime for value=-1, unit=day in en-US', () => {
+  it('renders relative time from a Date value', () => {
     TestBed.configureTestingModule({ imports: [RelativeTimeHostComponent] })
     const fixture = TestBed.createComponent(RelativeTimeHostComponent)
     fixture.detectChanges()
 
-    const expected = new Intl.RelativeTimeFormat('en-US').format(-1, 'day')
-    expect(fixture.nativeElement.textContent).toContain(expected)
-    expect(fixture.nativeElement.textContent).toMatch(/1 day ago/)
+    const expected = formatRelativeTime(fixture.componentInstance.value, 'en-US')
+    expect(fixture.nativeElement.textContent.trim()).toBe(expected)
 
     fixture.destroy()
   })
@@ -139,7 +144,19 @@ describe('Format components (criterion 28)', () => {
     fixture.detectChanges()
 
     const expected = new Intl.NumberFormat('en-US').format(Number.NaN)
-    expect(fixture.nativeElement.textContent).toContain(expected)
+    expect(fixture.nativeElement.textContent.trim()).toBe(expected)
+
+    fixture.destroy()
+  })
+
+  it('renders time values with the requested options', () => {
+    TestBed.configureTestingModule({ imports: [TimeHostComponent] })
+    const fixture = TestBed.createComponent(TimeHostComponent)
+    fixture.detectChanges()
+
+    expect(fixture.nativeElement.textContent.trim()).toBe(
+      formatTime(fixture.componentInstance.value, 'en-US', { format: '24h', withSeconds: true }),
+    )
 
     fixture.destroy()
   })

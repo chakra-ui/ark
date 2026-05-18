@@ -1,7 +1,11 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core'
-import { DEFAULT_LOCALE, injectArkLocale } from '../providers/locale/locale'
+import { DEFAULT_LOCALE, injectArkLocale } from '@ark-ui/angular/src/providers/locale'
+import { formatRelativeTime } from '@zag-js/i18n-utils'
 
-type RelativeUnit = 'year' | 'quarter' | 'month' | 'week' | 'day' | 'hour' | 'minute' | 'second'
+export interface FormatRelativeTimeProps extends Intl.RelativeTimeFormatOptions {
+  value: Date
+  locale?: string
+}
 
 @Component({
   selector: 'ark-format-relative-time',
@@ -13,14 +17,20 @@ type RelativeUnit = 'year' | 'quarter' | 'month' | 'week' | 'day' | 'hour' | 'mi
   `,
 })
 export class ArkFormatRelativeTimeComponent {
-  readonly value = input.required<number>()
-  readonly unit = input<RelativeUnit>('second')
+  readonly value = input.required<Date>()
   readonly locale = input<string | undefined>(undefined)
   readonly options = input<Intl.RelativeTimeFormatOptions | undefined>(undefined)
+  readonly localeMatcher = input<Intl.RelativeTimeFormatOptions['localeMatcher'] | undefined>(undefined)
+  readonly numeric = input<Intl.RelativeTimeFormatOptions['numeric'] | undefined>(undefined)
+  readonly style = input<Intl.RelativeTimeFormatOptions['style'] | undefined>(undefined)
 
   private readonly providerLocale = injectArkLocale()
   protected readonly formatted = computed(() => {
-    const lcl = this.locale() ?? this.providerLocale.locale ?? DEFAULT_LOCALE
-    return new Intl.RelativeTimeFormat(lcl, this.options()).format(this.value(), this.unit())
+    return formatRelativeTime(this.value(), this.locale() ?? this.providerLocale.locale ?? DEFAULT_LOCALE, {
+      ...this.options(),
+      localeMatcher: this.localeMatcher(),
+      numeric: this.numeric(),
+      style: this.style(),
+    })
   })
 }
