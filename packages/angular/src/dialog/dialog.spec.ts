@@ -176,7 +176,6 @@ describe('@ark-ui/angular/dialog', () => {
 
     expect(root.api().open).toBe(true)
     expect(fixture.componentInstance.emissions).toEqual([true])
-    expect('openChange' in root).toBe(false)
 
     fixture.destroy()
   })

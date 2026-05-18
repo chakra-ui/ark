@@ -17,7 +17,10 @@ import { injectArkMenuContext } from './use-menu-context'
 export class ArkMenuTriggerItem {
   constructor() {
     const childContext = injectArkMenuContext()
-    const parentContext = inject(ARK_MENU_CONTEXT, { skipSelf: true })
+    const parentContext = inject(ARK_MENU_CONTEXT, { optional: true, skipSelf: true })
+    if (!parentContext) {
+      throw new Error('[arkMenuTriggerItem] must live inside a nested [arkMenu] under a parent [arkMenu] root.')
+    }
     applyArkProps({
       elementRef: inject(ElementRef),
       renderer: inject(Renderer2),

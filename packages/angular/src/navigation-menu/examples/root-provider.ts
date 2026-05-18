@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector, computed, inject, runInInjectionContext } from '@angular/core'
+import { ChangeDetectionStrategy, Component, computed } from '@angular/core'
 import {
   ArkNavigationMenuContent,
   ArkNavigationMenuItem,
@@ -66,9 +66,7 @@ import { NavigationMenuChevronDownIcon } from './icons'
   styles: [navigationMenuExampleStyles],
 })
 export class NavigationMenuRootProviderExample {
-  readonly navigationMenu: UseNavigationMenuReturn = runInInjectionContext(inject(Injector), () =>
-    useNavigationMenu({ context: () => ({}) }),
-  )
+  readonly navigationMenu: UseNavigationMenuReturn = useNavigationMenu({ context: () => ({}) })
   readonly openValue = computed(() => {
     const value = this.navigationMenu.api().value
     return value ? value : 'none'

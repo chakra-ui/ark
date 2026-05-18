@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector, computed, inject, runInInjectionContext } from '@angular/core'
+import { ChangeDetectionStrategy, Component, computed } from '@angular/core'
 import {
   ArkMenuContent,
   ArkMenuItem,
@@ -33,6 +33,6 @@ import { menuExampleStyles } from '../menu-example-styles'
   styles: [menuExampleStyles],
 })
 export class MenuRootProviderExample {
-  readonly menu: UseMenuReturn = runInInjectionContext(inject(Injector), () => useMenu({ context: () => ({}) }))
+  readonly menu: UseMenuReturn = useMenu({ context: () => ({}) })
   readonly openLabel = computed(() => (this.menu.api().open ? 'open' : 'closed'))
 }

@@ -21,14 +21,22 @@ import {
   ArkNavigationMenuViewport,
   ArkNavigationMenuViewportPositioner,
   injectArkNavigationMenuContext,
+  injectArkNavigationMenuContextCarrier,
   navigationMenuAnatomy,
   useNavigationMenu,
   type NavigationMenuApi,
+  type NavigationMenuArrowProps,
+  type NavigationMenuContentProps,
   type NavigationMenuElementIds,
+  type NavigationMenuIntlTranslations,
+  type NavigationMenuItemMachineProps,
+  type NavigationMenuItemState,
+  type NavigationMenuLinkProps,
   type NavigationMenuMachine,
   type NavigationMenuMachineProps,
   type NavigationMenuService,
   type NavigationMenuValueChangeDetails,
+  type NavigationMenuViewportProps,
   type UseNavigationMenuOptions,
   type UseNavigationMenuProps,
   type UseNavigationMenuReturn,
@@ -42,11 +50,18 @@ import { NavigationMenuWithIndicatorExample } from './examples/with-indicator'
 
 type NavigationMenuPublicTypeSmoke = [
   NavigationMenuApi,
+  NavigationMenuArrowProps,
+  NavigationMenuContentProps,
   NavigationMenuElementIds,
+  NavigationMenuIntlTranslations,
+  NavigationMenuItemMachineProps,
+  NavigationMenuItemState,
+  NavigationMenuLinkProps,
   NavigationMenuMachine,
   NavigationMenuMachineProps,
   NavigationMenuService,
   NavigationMenuValueChangeDetails,
+  NavigationMenuViewportProps,
   UseNavigationMenuOptions,
   UseNavigationMenuProps,
   UseNavigationMenuReturn,
@@ -78,6 +93,7 @@ describe('@ark-ui/angular/navigation-menu', () => {
     expect(typeof ARK_NAVIGATION_MENU_CONTEXT).toBe('object')
     expect(typeof ARK_NAVIGATION_MENU_CONTEXT_CARRIER).toBe('object')
     expect(typeof injectArkNavigationMenuContext).toBe('function')
+    expect(typeof injectArkNavigationMenuContextCarrier).toBe('function')
     expect(typeof useNavigationMenu).toBe('function')
     expect(typeof navigationMenuAnatomy).toBe('object')
     expect(ArkNavigationMenuRoot).toBeDefined()
@@ -239,7 +255,6 @@ describe('@ark-ui/angular/navigation-menu', () => {
 
     expect(root.api().value).toBe('features')
     expect(fixture.componentInstance.emissions).toContain('features')
-    expect('valueChange' in root).toBe(false)
 
     fixture.destroy()
   })

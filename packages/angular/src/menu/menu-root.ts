@@ -1,6 +1,7 @@
 import type * as menu from '@zag-js/menu'
 import {
   Directive,
+  DestroyRef,
   EnvironmentInjector,
   Injector,
   afterNextRender,
@@ -137,9 +138,27 @@ export class ArkMenuRoot implements UseMenuReturn {
   constructor() {
     const parent = this.parentMenu
     if (parent) {
+      const destroyRef = inject(DestroyRef)
+      let connected = false
+      let destroyed = false
+
+      destroyRef.onDestroy(() => {
+        destroyed = true
+        if (!connected) return
+        const childId = this.machine.service.prop('id')
+        if (!childId) return
+        const children = parent.service.refs.get('children')
+        delete children[childId]
+        parent.service.refs.set('children', children)
+        this.machine.service.refs.set('parent', null)
+        this.machine.service.context.set('isSubmenu', false)
+      })
+
       afterNextRender(() => {
+        if (destroyed) return
         parent.api().setChild(this.machine.service)
         this.machine.api().setParent(parent.service)
+        connected = true
       })
     }
   }

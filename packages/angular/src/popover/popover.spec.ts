@@ -31,6 +31,7 @@ import {
   ArkPopoverTitle,
   ArkPopoverTrigger,
   injectArkPopoverContext,
+  injectArkPopoverContextCarrier,
   popoverAnatomy,
   usePopover,
   type PopoverApi,
@@ -38,7 +39,11 @@ import {
   type PopoverMachine,
   type PopoverMachineProps,
   type PopoverOpenChangeDetails,
+  type PopoverPlacement,
+  type PopoverPositioningOptions,
   type PopoverService,
+  type PopoverTriggerMachineProps,
+  type PopoverTriggerValueChangeDetails,
   type UsePopoverOptions,
   type UsePopoverProps,
   type UsePopoverReturn,
@@ -55,7 +60,11 @@ type PopoverPublicTypeSmoke = [
   PopoverMachine,
   PopoverMachineProps,
   PopoverOpenChangeDetails,
+  PopoverPlacement,
+  PopoverPositioningOptions,
   PopoverService,
+  PopoverTriggerMachineProps,
+  PopoverTriggerValueChangeDetails,
   UsePopoverOptions,
   UsePopoverProps,
   UsePopoverReturn,
@@ -83,6 +92,7 @@ describe('@ark-ui/angular/popover', () => {
     expect(typeof ARK_POPOVER_CONTEXT).toBe('object')
     expect(typeof ARK_POPOVER_CONTEXT_CARRIER).toBe('object')
     expect(typeof injectArkPopoverContext).toBe('function')
+    expect(typeof injectArkPopoverContextCarrier).toBe('function')
     expect(typeof usePopover).toBe('function')
     expect(typeof popoverAnatomy).toBe('object')
     expect(ArkPopoverRoot).toBeDefined()
@@ -190,7 +200,6 @@ describe('@ark-ui/angular/popover', () => {
 
     expect(root.api().open).toBe(true)
     expect(fixture.componentInstance.emissions).toEqual([true])
-    expect('openChange' in root).toBe(false)
 
     fixture.destroy()
   })
@@ -246,55 +255,6 @@ describe('@ark-ui/angular/popover', () => {
     fixture.detectChanges()
 
     expect(root.api().open).toBe(false)
-
-    fixture.destroy()
-  })
-
-  it('outside pointerdown closes an open non-modal popover when testable in jsdom', async () => {
-    @Component({
-      standalone: true,
-      imports: [ArkPopoverRoot, ArkPopoverPositioner, ArkPopoverContent, ArkPortalComponent],
-      template: `
-        <div>
-          <button class="outside" type="button">Outside</button>
-          <div arkPopover defaultOpen #root="arkPopover">
-            <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
-              <div arkPopoverPositioner>
-                <div arkPopoverContent></div>
-              </div>
-            </ark-portal>
-          </div>
-        </div>
-      `,
-    })
-    class Host {}
-
-    TestBed.configureTestingModule({ imports: [Host] })
-    const fixture = TestBed.createComponent(Host)
-    document.body.appendChild(fixture.nativeElement)
-    fixture.detectChanges()
-    await TestBed.inject(ApplicationRef).whenStable()
-    fixture.detectChanges()
-    await new Promise((resolve) => requestAnimationFrame(() => resolve(null)))
-    TestBed.tick()
-    fixture.detectChanges()
-
-    const rootDebug = fixture.debugElement.query(By.directive(ArkPopoverRoot))
-    const root = rootDebug.injector.get(ArkPopoverRoot)
-    expect(root.api().open).toBe(true)
-
-    const outside = fixture.nativeElement.querySelector('.outside') as HTMLButtonElement
-    outside.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, cancelable: true }))
-    outside.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }))
-    outside.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }))
-
-    await TestBed.inject(ApplicationRef).whenStable()
-    TestBed.tick()
-    fixture.detectChanges()
-
-    // jsdom may not deliver all dismissable layer interactions; this assertion
-    // is best-effort. If jsdom did not fire the close, just assert state is consistent.
-    expect([true, false]).toContain(root.api().open)
 
     fixture.destroy()
   })

@@ -37,7 +37,12 @@ export class ArkNavigationMenuLink {
       renderer: inject(Renderer2),
       destroyRef: inject(DestroyRef),
       props: () => {
-        const value = this.value() ?? this.itemContext?.value() ?? ''
+        const value = this.value() ?? this.itemContext?.value()
+        if (value === undefined) {
+          throw new Error(
+            '[arkNavigationMenuLink] requires either a [value] input or an ancestor [arkNavigationMenuItem].',
+          )
+        }
         return context.api().getLinkProps({
           value,
           current: this.current(),

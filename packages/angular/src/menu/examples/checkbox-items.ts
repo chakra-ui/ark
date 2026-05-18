@@ -42,13 +42,13 @@ import { MenuCheckIcon, MenuChevronDownIcon } from './icons'
         <div arkMenuPositioner>
           <div arkMenuContent>
             <div arkMenuCheckboxItem value="toolbar" [(checked)]="showToolbar">
-              <span arkMenuItemIndicator value="toolbar">
+              <span arkMenuItemIndicator>
                 <menu-check-icon />
               </span>
               <span arkMenuItemText value="toolbar">Show Toolbar</span>
             </div>
             <div arkMenuCheckboxItem value="status-bar" [(checked)]="showStatusBar">
-              <span arkMenuItemIndicator value="status-bar">
+              <span arkMenuItemIndicator>
                 <menu-check-icon />
               </span>
               <span arkMenuItemText value="status-bar">Show Status Bar</span>

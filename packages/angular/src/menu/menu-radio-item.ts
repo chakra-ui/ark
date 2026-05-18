@@ -45,7 +45,6 @@ export class ArkMenuRadioItem implements ArkMenuItemContext {
   readonly checked: Signal<boolean | undefined> = computed(() => this.radioGroup.value() === this.value())
 
   constructor() {
-    const radioGroup = this.radioGroup
     applyArkProps({
       elementRef: inject(ElementRef),
       renderer: inject(Renderer2),
@@ -54,11 +53,11 @@ export class ArkMenuRadioItem implements ArkMenuItemContext {
         this.context.api().getOptionItemProps({
           type: 'radio',
           value: this.value(),
-          checked: radioGroup.value() === this.value(),
+          checked: this.checked() ?? false,
           disabled: this.disabledInput(),
           valueText: this.valueText(),
           closeOnSelect: this.closeOnSelect(),
-          onCheckedChange: () => radioGroup.setValue(this.value()),
+          onCheckedChange: () => this.radioGroup.setValue(this.value()),
         }),
     })
   }

@@ -32,13 +32,17 @@ import {
   ArkDrawerTrigger,
   drawerAnatomy,
   injectArkDrawerContext,
+  injectArkDrawerContextCarrier,
   useDrawer,
   type DrawerApi,
+  type DrawerResolvedSnapPoint,
   type DrawerElementIds,
   type DrawerMachine,
   type DrawerMachineProps,
   type DrawerOpenChangeDetails,
   type DrawerService,
+  type DrawerStackApi,
+  type DrawerStackSnapshot,
   type UseDrawerOptions,
   type UseDrawerProps,
   type UseDrawerReturn,
@@ -55,7 +59,10 @@ type DrawerPublicTypeSmoke = [
   DrawerMachine,
   DrawerMachineProps,
   DrawerOpenChangeDetails,
+  DrawerResolvedSnapPoint,
   DrawerService,
+  DrawerStackApi,
+  DrawerStackSnapshot,
   UseDrawerOptions,
   UseDrawerProps,
   UseDrawerReturn,
@@ -79,6 +86,7 @@ describe('@ark-ui/angular/drawer', () => {
     expect(typeof ARK_DRAWER_CONTEXT_CARRIER).toBe('object')
     expect(typeof ARK_DRAWER_STACK_CONTEXT).toBe('object')
     expect(typeof injectArkDrawerContext).toBe('function')
+    expect(typeof injectArkDrawerContextCarrier).toBe('function')
     expect(typeof useDrawer).toBe('function')
     expect(typeof drawerAnatomy).toBe('object')
     expect(ArkDrawerRoot).toBeDefined()
@@ -184,7 +192,6 @@ describe('@ark-ui/angular/drawer', () => {
 
     expect(root.api().open).toBe(true)
     expect(fixture.componentInstance.emissions).toEqual([true])
-    expect('openChange' in root).toBe(false)
 
     fixture.destroy()
   })

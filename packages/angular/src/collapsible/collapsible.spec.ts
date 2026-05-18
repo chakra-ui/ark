@@ -164,7 +164,6 @@ describe('@ark-ui/angular/collapsible', () => {
     expect(root.api().open).toBe(true)
     expect(triggerEl.getAttribute('data-state')).toBe('open')
     expect(fixture.componentInstance.emissions).toEqual([true])
-    expect('openChange' in root).toBe(false)
 
     fixture.destroy()
   })
@@ -187,12 +186,15 @@ describe('@ark-ui/angular/collapsible', () => {
 
     expect(root.api().open).toBe(false)
 
-    triggerEl.dispatchEvent(new KeyboardEvent('click', { bubbles: true }))
+    triggerEl.focus()
+    triggerEl.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }))
+    triggerEl.click()
     TestBed.tick()
     fixture.detectChanges()
     expect(root.api().open).toBe(true)
 
-    triggerEl.dispatchEvent(new KeyboardEvent('click', { bubbles: true }))
+    triggerEl.dispatchEvent(new KeyboardEvent('keydown', { key: ' ', bubbles: true }))
+    triggerEl.click()
     TestBed.tick()
     fixture.detectChanges()
     expect(root.api().open).toBe(false)

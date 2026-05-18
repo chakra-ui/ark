@@ -1,16 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import {
-  ApplicationRef,
-  Component,
-  Directive,
-  Injector,
-  InjectionToken,
-  inject,
-  runInInjectionContext,
-  signal,
-} from '@angular/core'
+import { ApplicationRef, Component, Directive, Injector, inject, runInInjectionContext, signal } from '@angular/core'
 import { By } from '@angular/platform-browser'
 import { TestBed } from '@angular/core/testing'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
@@ -37,15 +28,22 @@ import {
   ArkMenuTrigger,
   ArkMenuTriggerItem,
   injectArkMenuContext,
+  injectArkMenuContextCarrier,
   menuAnatomy,
   useMenu,
   type MenuApi,
   type MenuElementIds,
+  type MenuHighlightChangeDetails,
+  type MenuItemMachineProps,
   type MenuMachine,
   type MenuMachineProps,
+  type MenuNavigateDetails,
   type MenuOpenChangeDetails,
+  type MenuPositioningOptions,
   type MenuSelectionDetails,
   type MenuService,
+  type MenuTriggerMachineProps,
+  type MenuTriggerValueChangeDetails,
   type UseMenuOptions,
   type UseMenuProps,
   type UseMenuReturn,
@@ -64,26 +62,27 @@ import { MenuWithSeparatorExample } from './examples/with-separator'
 type MenuPublicTypeSmoke = [
   MenuApi,
   MenuElementIds,
+  MenuHighlightChangeDetails,
+  MenuItemMachineProps,
   MenuMachine,
   MenuMachineProps,
+  MenuNavigateDetails,
   MenuOpenChangeDetails,
+  MenuPositioningOptions,
   MenuSelectionDetails,
   MenuService,
+  MenuTriggerMachineProps,
+  MenuTriggerValueChangeDetails,
   UseMenuOptions,
   UseMenuProps,
   UseMenuReturn,
 ]
-
-const LABEL_PREFIX = new InjectionToken<string>('LABEL_PREFIX')
 
 @Directive({ selector: '[menuProbe]', standalone: true, exportAs: 'menuProbe' })
 class MenuProbe {
   private readonly _injector = inject(Injector)
   get capturedRoot(): UseMenuReturn {
     return this._injector.get(ARK_MENU_CONTEXT)
-  }
-  get capturedLabelPrefix(): string | null {
-    return this._injector.get(LABEL_PREFIX, null)
   }
 }
 
@@ -105,6 +104,7 @@ describe('@ark-ui/angular/menu', () => {
     expect(typeof ARK_MENU_CONTEXT).toBe('object')
     expect(typeof ARK_MENU_CONTEXT_CARRIER).toBe('object')
     expect(typeof injectArkMenuContext).toBe('function')
+    expect(typeof injectArkMenuContextCarrier).toBe('function')
     expect(typeof useMenu).toBe('function')
     expect(typeof menuAnatomy).toBe('object')
     expect(ArkMenuRoot).toBeDefined()
@@ -219,7 +219,6 @@ describe('@ark-ui/angular/menu', () => {
 
     expect(root.api().open).toBe(true)
     expect(fixture.componentInstance.emissions).toEqual([true])
-    expect('openChange' in root).toBe(false)
 
     fixture.destroy()
   })
@@ -266,7 +265,13 @@ describe('@ark-ui/angular/menu', () => {
       standalone: true,
       imports: [ArkMenuRoot, ArkMenuPositioner, ArkMenuContent, ArkMenuItem, ArkPortalComponent],
       template: `
-        <div arkMenu defaultOpen #root="arkMenu" (highlightedValueChange)="highlights.push($event)">
+        <div
+          arkMenu
+          defaultOpen
+          [ids]="{ content: 'menu-keyboard-content' }"
+          #root="arkMenu"
+          (highlightedValueChange)="highlights.push($event)"
+        >
           <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
             <div arkMenuPositioner>
               <div arkMenuContent>

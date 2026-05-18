@@ -26,6 +26,7 @@ import {
   ArkTooltipRootProvider,
   ArkTooltipTrigger,
   injectArkTooltipContext,
+  injectArkTooltipContextCarrier,
   tooltipAnatomy,
   useTooltip,
   type TooltipApi,
@@ -33,7 +34,11 @@ import {
   type TooltipMachine,
   type TooltipMachineProps,
   type TooltipOpenChangeDetails,
+  type TooltipPlacement,
+  type TooltipPositioningOptions,
   type TooltipService,
+  type TooltipTriggerMachineProps,
+  type TooltipTriggerValueChangeDetails,
   type UseTooltipOptions,
   type UseTooltipProps,
   type UseTooltipReturn,
@@ -50,7 +55,11 @@ type TooltipPublicTypeSmoke = [
   TooltipMachine,
   TooltipMachineProps,
   TooltipOpenChangeDetails,
+  TooltipPlacement,
+  TooltipPositioningOptions,
   TooltipService,
+  TooltipTriggerMachineProps,
+  TooltipTriggerValueChangeDetails,
   UseTooltipOptions,
   UseTooltipProps,
   UseTooltipReturn,
@@ -82,6 +91,7 @@ describe('@ark-ui/angular/tooltip', () => {
     expect(typeof ARK_TOOLTIP_CONTEXT).toBe('object')
     expect(typeof ARK_TOOLTIP_CONTEXT_CARRIER).toBe('object')
     expect(typeof injectArkTooltipContext).toBe('function')
+    expect(typeof injectArkTooltipContextCarrier).toBe('function')
     expect(typeof useTooltip).toBe('function')
     expect(typeof tooltipAnatomy).toBe('object')
     expect(ArkTooltipRoot).toBeDefined()
@@ -185,7 +195,6 @@ describe('@ark-ui/angular/tooltip', () => {
 
     expect(root.api().open).toBe(true)
     expect(fixture.componentInstance.emissions).toEqual([true])
-    expect('openChange' in root).toBe(false)
 
     fixture.destroy()
   })

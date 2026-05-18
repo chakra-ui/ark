@@ -72,7 +72,7 @@ export class ArkNavigationMenuRoot implements UseNavigationMenuReturn {
     context: () => ({
       id: this.id(),
       ids: this.ids(),
-      value: this.value() ?? this.defaultValue(),
+      value: this.value(),
       defaultValue: this.defaultValue(),
       orientation: this.orientation(),
       openDelay: this.openDelay(),

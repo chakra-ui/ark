@@ -48,19 +48,19 @@ import { MenuCheckIcon, MenuChevronDownIcon } from './icons'
             <div arkMenuRadioItemGroup [(value)]="sortBy">
               <div arkMenuItemGroupLabel>Sort By</div>
               <div arkMenuRadioItem value="name">
-                <span arkMenuItemIndicator value="name">
+                <span arkMenuItemIndicator>
                   <menu-check-icon />
                 </span>
                 <span arkMenuItemText value="name">Name</span>
               </div>
               <div arkMenuRadioItem value="date">
-                <span arkMenuItemIndicator value="date">
+                <span arkMenuItemIndicator>
                   <menu-check-icon />
                 </span>
                 <span arkMenuItemText value="date">Date Modified</span>
               </div>
               <div arkMenuRadioItem value="size">
-                <span arkMenuItemIndicator value="size">
+                <span arkMenuItemIndicator>
                   <menu-check-icon />
                 </span>
                 <span arkMenuItemText value="size">Size</span>

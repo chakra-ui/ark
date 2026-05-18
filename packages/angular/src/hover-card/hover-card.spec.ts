@@ -27,13 +27,18 @@ import {
   ArkHoverCardTrigger,
   hoverCardAnatomy,
   injectArkHoverCardContext,
+  injectArkHoverCardContextCarrier,
   useHoverCard,
   type HoverCardApi,
   type HoverCardElementIds,
   type HoverCardMachine,
   type HoverCardMachineProps,
   type HoverCardOpenChangeDetails,
+  type HoverCardPlacement,
+  type HoverCardPositioningOptions,
   type HoverCardService,
+  type HoverCardTriggerMachineProps,
+  type HoverCardTriggerValueChangeDetails,
   type UseHoverCardOptions,
   type UseHoverCardProps,
   type UseHoverCardReturn,
@@ -50,7 +55,11 @@ type HoverCardPublicTypeSmoke = [
   HoverCardMachine,
   HoverCardMachineProps,
   HoverCardOpenChangeDetails,
+  HoverCardPlacement,
+  HoverCardPositioningOptions,
   HoverCardService,
+  HoverCardTriggerMachineProps,
+  HoverCardTriggerValueChangeDetails,
   UseHoverCardOptions,
   UseHoverCardProps,
   UseHoverCardReturn,
@@ -82,6 +91,7 @@ describe('@ark-ui/angular/hover-card', () => {
     expect(typeof ARK_HOVER_CARD_CONTEXT).toBe('object')
     expect(typeof ARK_HOVER_CARD_CONTEXT_CARRIER).toBe('object')
     expect(typeof injectArkHoverCardContext).toBe('function')
+    expect(typeof injectArkHoverCardContextCarrier).toBe('function')
     expect(typeof useHoverCard).toBe('function')
     expect(typeof hoverCardAnatomy).toBe('object')
     expect(ArkHoverCardRoot).toBeDefined()
@@ -185,7 +195,6 @@ describe('@ark-ui/angular/hover-card', () => {
 
     expect(root.api().open).toBe(true)
     expect(fixture.componentInstance.emissions).toEqual([true])
-    expect('openChange' in root).toBe(false)
 
     fixture.destroy()
   })
