@@ -27,6 +27,11 @@
       "types": "./dist/avatar/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-avatar.mjs"
     },
+    "./src/_zag": {
+      "source": "./src/_zag/public-api.ts",
+      "types": "./dist/src/_zag/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-_zag.mjs"
+    },
     "./client-only": {
       "source": "./src/client-only/public-api.ts",
       "types": "./dist/src/client-only/index.d.ts",
@@ -61,6 +66,11 @@
       "source": "./src/highlight/public-api.ts",
       "types": "./dist/src/highlight/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-src-highlight.mjs"
+    },
+    "./src/internal": {
+      "source": "./src/internal/public-api.ts",
+      "types": "./dist/src/internal/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-internal.mjs"
     },
     "./portal": {
       "source": "./src/portal/public-api.ts",

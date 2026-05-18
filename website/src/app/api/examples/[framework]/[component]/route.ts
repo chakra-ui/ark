@@ -2,9 +2,8 @@ import type { NextRequest } from 'next/server'
 import {
   SUPPORTED_FRAMEWORKS,
   getComponentExamples,
-  getExamplePath,
+  getFrameworkExampleDisplayPath,
   getFrameworkExtension,
-  getSrcPath,
   validateFramework,
 } from '~/lib/example-utils'
 
@@ -23,8 +22,6 @@ export const GET = async (_: NextRequest, segmentData: { params: Params }) => {
     }
 
     const exampleIds = await getComponentExamples(framework, component)
-    const examplePath = getExamplePath(component)
-    const srcPath = getSrcPath(framework)
     const extension = getFrameworkExtension(framework)
 
     const examples = exampleIds.map((id) => ({
@@ -38,7 +35,7 @@ export const GET = async (_: NextRequest, segmentData: { params: Params }) => {
       component,
       examples,
       count: examples.length,
-      path: `packages/${framework}/${srcPath}/${examplePath}`,
+      path: getFrameworkExampleDisplayPath(framework, component),
     })
   } catch (error) {
     if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {

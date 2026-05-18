@@ -1,3 +1,5 @@
-export function normalizeProps<T extends Record<string, unknown>>(props: T): T {
-  return props
-}
+import { createNormalizer, type PropTypes as ZagPropTypes } from '@zag-js/types'
+
+export type PropTypes = ZagPropTypes<Record<string, unknown>>
+
+export const normalizeProps = createNormalizer<PropTypes>((props) => props)

@@ -1,0 +1,40 @@
+{
+  "Root": {
+    "props": {
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the avatar."
+      },
+      "ids": {
+        "type": "Partial<{ root: string; image: string; fallback: string }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the elements in the avatar. Useful for composition."
+      },
+      "statusChange": {
+        "type": "AvatarStatusChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when the image loading status changes."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseAvatarReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The avatar machine returned by useAvatar()."
+      }
+    }
+  },
+  "Image": {
+    "props": {}
+  },
+  "Fallback": {
+    "props": {}
+  }
+}

@@ -10,6 +10,7 @@ const collection = createListCollection({
     { label: 'Solid', value: 'solid' },
     { label: 'Vue', value: 'vue' },
     { label: 'Svelte', value: 'svelte' },
+    { label: 'Angular', value: 'angular' },
   ],
 })
 

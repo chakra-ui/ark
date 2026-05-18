@@ -1,10 +1,10 @@
 import { existsSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
-import { Match } from 'effect'
 import { css, cx } from 'styled-system/css'
 import { Stack } from 'styled-system/jsx'
 import type { SupportedLang } from '~/lib/shiki-client'
+import { cleanExampleCode, getFrameworkExampleFilePath, getFrameworkExtension } from '~/lib/framework-example-paths'
 import { getFramework } from '~/lib/frameworks'
 import { getServerContext } from '~/lib/server-context'
 import { CollapsibleCode } from './collapsible-code'
@@ -21,7 +21,7 @@ export const Example = async (props: Props) => {
   const component = props.component ?? serverContext.component
 
   const framework = await getFramework()
-  const { code, lang } = await fetchFrameworkCode(framework, component, props.id)
+  const { code, lang, framework: resolvedFramework } = await fetchFrameworkCode(framework, component, props.id)
   const cssModules = await fetchCssModulesFromCode(code)
   const hasPreview = component ? exampleExists(component, props.id) : false
 
@@ -36,7 +36,7 @@ export const Example = async (props: Props) => {
           meta={{
             id: props.id,
             component,
-            framework,
+            framework: resolvedFramework,
           }}
         />
       </CollapsibleCode>
@@ -49,7 +49,7 @@ export const ExampleCode = async (props: Props) => {
   const component = props.component ?? serverContext.component
 
   const framework = await getFramework()
-  const { code, lang } = await fetchFrameworkCode(framework, component, props.id)
+  const { code, lang, framework: resolvedFramework } = await fetchFrameworkCode(framework, component, props.id)
   const cssModules = await fetchCssModulesFromCode(code)
 
   return (
@@ -60,86 +60,51 @@ export const ExampleCode = async (props: Props) => {
       meta={{
         id: props.id,
         component,
-        framework,
+        framework: resolvedFramework,
       }}
     />
   )
 }
 
-const getExamplePath = (component: string) =>
-  Match.value(component).pipe(
-    Match.when(
-      () => ['progress-circular', 'progress-linear'].includes(component),
-      () => `components/progress/examples/${component.split('-')[1]}`,
-    ),
-    Match.when(
-      () => ['environment', 'locale'].includes(component),
-      () => `providers/${component}/examples`,
-    ),
-    Match.orElse(() => `components/${component}/examples`),
-  )
-
-const getExtension = (framework: string) =>
-  Match.value(framework).pipe(
-    Match.when('vue', () => 'vue'),
-    Match.when('svelte', () => 'svelte'),
-    Match.orElse(() => 'tsx'),
-  )
-
-const getSrcPath = (framework: string) =>
-  Match.value(framework).pipe(
-    Match.when('svelte', () => 'src/lib'),
-    Match.orElse(() => 'src'),
-  )
-
 export const frameworkExample = async (
   framework: string,
   component: string,
   id: string,
-): Promise<{ code: string; extension: string }> => {
-  const extension = getExtension(framework)
-  const examplePath = getExamplePath(component)
-  const srcPath = getSrcPath(framework)
+): Promise<{ code: string; extension: string; framework: string }> => {
+  const extension = getFrameworkExtension(framework)
+  const filePath = getFrameworkExampleFilePath(framework, component, id)
 
-  const basePath = `../packages/${framework}/${srcPath}`
-  const fileName = [id, extension].join('.')
+  let content = await readFile(filePath, 'utf-8').catch(() => undefined)
+  let resolvedFramework = framework
+  let resolvedExtension = extension
 
-  const content = await readFile(join(process.cwd(), basePath, examplePath, fileName), 'utf-8').catch(
-    () => 'Example not found',
-  )
+  if (content === undefined && framework !== 'react') {
+    resolvedFramework = 'react'
+    resolvedExtension = getFrameworkExtension(resolvedFramework)
+    const fallbackPath = getFrameworkExampleFilePath(resolvedFramework, component, id)
+    content = await readFile(fallbackPath, 'utf-8').catch(() => undefined)
+  }
 
-  const code = content.replaceAll(/from '\.\/icons'/g, `from 'lucide-vue-next'`).replace(/.*@ts-expect-error.*\n/g, '')
-  return { code, extension }
+  const code = cleanExampleCode(resolvedFramework, content ?? 'Example not found')
+  return { code, extension: resolvedExtension, framework: resolvedFramework }
 }
 
 const fetchFrameworkCode = async (
   framework: string,
   component: string | undefined,
   id: string,
-): Promise<{ code: string; lang: SupportedLang }> => {
-  if (!component) return { code: 'Example not found', lang: 'tsx' }
+): Promise<{ code: string; lang: SupportedLang; framework: string }> => {
+  if (!component) return { code: 'Example not found', lang: 'tsx', framework }
 
-  const { code, extension } = await frameworkExample(framework, component, id)
-  return { code, lang: extension as SupportedLang }
+  const { code, extension, framework: resolvedFramework } = await frameworkExample(framework, component, id)
+  return { code, lang: extension as SupportedLang, framework: resolvedFramework }
 }
 
 /**
  * Check if a React example file exists (server-side only)
  */
 function exampleExists(component: string, id: string): boolean {
-  const examplePath = Match.value(component).pipe(
-    Match.when(
-      () => ['progress-circular', 'progress-linear'].includes(component),
-      () => `components/progress/examples/${component.split('-')[1]}`,
-    ),
-    Match.when(
-      () => ['environment', 'locale'].includes(component),
-      () => `providers/${component}/examples`,
-    ),
-    Match.orElse(() => `components/${component}/examples`),
-  )
-
-  const filePath = join(process.cwd(), '..', 'packages', 'react', 'src', examplePath, `${id}.tsx`)
+  const filePath = getFrameworkExampleFilePath('react', component, id)
   return existsSync(filePath)
 }
 

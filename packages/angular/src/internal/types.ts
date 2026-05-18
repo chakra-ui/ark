@@ -1,6 +1,6 @@
-import type { DestroyRef, ElementRef, EnvironmentInjector, Injector, Renderer2, Signal } from '@angular/core'
-import type { ArkProps } from '../types'
-import type { normalizeProps as normalizePropsFn } from '../_zag/normalize-props'
+import type { EnvironmentInjector, Injector, Signal } from '@angular/core'
+import type { Machine, MachineSchema, Service } from '@zag-js/core'
+import type { NormalizeProps, PropTypes } from '@zag-js/types'
 
 export interface UseMachineReturn<TState, TApi, TService> {
   readonly state: Signal<TState>
@@ -9,21 +9,10 @@ export interface UseMachineReturn<TState, TApi, TService> {
   readonly api: Signal<TApi>
 }
 
-export interface UseMachineOptions<TContext, TState, TApi, TService> {
-  machine: { start: (context: TContext) => TService }
-  context: () => TContext
-  connect: (
-    state: TState,
-    send: UseMachineReturn<TState, TApi, TService>['send'],
-    normalizeProps: typeof normalizePropsFn,
-  ) => TApi
-}
-
-export interface ApplyArkPropsOptions {
-  elementRef: ElementRef<HTMLElement>
-  renderer: Renderer2
-  destroyRef: DestroyRef
-  props: () => ArkProps | undefined
+export interface UseMachineOptions<TSchema extends MachineSchema, TApi> {
+  machine: Machine<TSchema>
+  context: () => Partial<TSchema['props']>
+  connect: (service: Service<TSchema>, normalizeProps: NormalizeProps<PropTypes<Record<string, unknown>>>) => TApi
 }
 
 export interface ArkContextCarrier<TRoot> {

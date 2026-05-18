@@ -6,6 +6,7 @@ import { Icon } from '~/components/ui/icon'
 import { Link } from '~/components/ui/link'
 import { Table } from '~/components/ui/table'
 import { Text } from '~/components/ui/text'
+import { type AngularPropKind, formatAngularPropName, isAngularRequiredKind } from '~/lib/angular-prop-binding'
 
 interface Props {
   framework: string
@@ -16,6 +17,7 @@ interface Props {
       isRequired: boolean
       defaultValue?: string | undefined
       description?: string | undefined
+      kind?: AngularPropKind
     }
   >
   replace?: Record<string, string>
@@ -52,8 +54,13 @@ export const PropsTable = (props: Props) => {
             <Table.Row key={name}>
               <Table.Cell width="36" px="4" py="2" verticalAlign="top">
                 <Code size="sm" color="colorPalette.default">
-                  {name}
+                  {formatAngularPropName(name, property.kind)}
                 </Code>
+                {(property.isRequired || isAngularRequiredKind(property.kind)) && (
+                  <Text as="span" color="fg.error" ml="1" role="img" aria-label="required">
+                    *
+                  </Text>
+                )}
               </Table.Cell>
               <Table.Cell width="28" px="4" py="2" verticalAlign="top">
                 {property.defaultValue ? (
