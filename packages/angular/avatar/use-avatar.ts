@@ -4,6 +4,17 @@ import { createArkId } from '@ark-ui/angular/src/internal/id'
 import type { UseMachineReturn } from '@ark-ui/angular/src/internal/types'
 import { injectArkEnvironment } from '@ark-ui/angular/src/providers/environment'
 import { injectArkLocale } from '@ark-ui/angular/src/providers/locale'
+import { startZagMachine, type ZagServiceLike } from './_zag-machine-adapter'
+
+const identityNormalize: unknown = new Proxy(
+  {},
+  {
+    get(_t, key) {
+      if (key === 'style') return (props: Record<string, unknown>) => ({ style: props })
+      return (props: Record<string, unknown>) => props
+    },
+  },
+)
 
 type OptionalId<T extends { id: string }> = Omit<T, 'id'> & { id?: string }
 
@@ -17,13 +28,25 @@ export interface UseAvatarOptions {
 
 type AvatarContext = Record<string, unknown>
 
+interface StartableMachine {
+  start: (context: AvatarContext) => avatar.Service
+}
+
+const startable: StartableMachine = {
+  start: (context: AvatarContext) =>
+    startZagMachine({
+      machine: avatar.machine as never,
+      context,
+    }) as unknown as avatar.Service,
+}
+
 export function useAvatar(options: UseAvatarOptions): UseAvatarReturn {
   const locale = injectArkLocale()
   const environment = injectArkEnvironment()
   const fallbackId = createArkId('avatar')
 
   return useMachine<AvatarContext, avatar.Service['state'], avatar.Api, avatar.Service>({
-    machine: avatar.machine as unknown as { start: (context: AvatarContext) => avatar.Service },
+    machine: startable,
     context: () => {
       const props = options.context()
       return {
@@ -33,6 +56,8 @@ export function useAvatar(options: UseAvatarOptions): UseAvatarReturn {
         id: props.id ?? fallbackId,
       } as AvatarContext
     },
-    connect: (service, normalize) => avatar.connect(service, normalize as never),
+    connect: (service) => avatar.connect(service as never, identityNormalize as never),
   })
 }
+
+export type { ZagServiceLike }

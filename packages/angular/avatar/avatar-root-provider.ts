@@ -2,7 +2,6 @@ import {
   DestroyRef,
   Directive,
   ElementRef,
-  Injector,
   Renderer2,
   type InputSignal,
   forwardRef,
@@ -20,8 +19,8 @@ import type { UseAvatarReturn } from './use-avatar'
   providers: [
     {
       provide: ARK_AVATAR_CONTEXT,
-      useFactory: (injector: Injector) => injector.get(forwardRef(() => ArkAvatarRootProvider)).resolveValue(),
-      deps: [Injector],
+      useFactory: (host: ArkAvatarRootProvider) => host.resolveValue(),
+      deps: [forwardRef(() => ArkAvatarRootProvider)],
     },
   ],
 })

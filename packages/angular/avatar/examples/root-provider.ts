@@ -7,7 +7,7 @@ import { ArkAvatarFallback, ArkAvatarImage, ArkAvatarRootProvider, useAvatar } f
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArkAvatarRootProvider, ArkAvatarImage, ArkAvatarFallback],
   template: `
-    <div [arkAvatarRootProvider]="avatar">
+    <div arkAvatarRootProvider [value]="avatar">
       <span arkAvatarFallback>PA</span>
       <img arkAvatarImage src="https://i.pravatar.cc/300?u=a" alt="avatar" />
     </div>
