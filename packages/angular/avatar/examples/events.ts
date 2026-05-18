@@ -15,17 +15,17 @@ import { avatarExampleStyles } from '../avatar-example-styles'
   imports: [ArkAvatarRoot, ArkAvatarImage, ArkAvatarFallback],
   template: `
     <div class="vstack">
-      <p>Status: {{ status() }}</p>
+      <output>Status: {{ status() }}</output>
       <div arkAvatar (statusChange)="onStatusChange($event)">
         <span arkAvatarFallback>PA</span>
-        <img arkAvatarImage src="https://i.pravatar.cc/300?u=a" alt="avatar" />
+        <img arkAvatarImage src="https://i.pravatar.cc/3000?u=a" alt="avatar" />
       </div>
     </div>
   `,
   styles: [avatarExampleStyles],
 })
 export class EventsExample {
-  readonly status = signal<AvatarLoadStatus | null>(null)
+  readonly status = signal<AvatarLoadStatus | 'loading...'>('loading...')
 
   onStatusChange(details: AvatarStatusChangeDetails) {
     this.status.set(details.status)
