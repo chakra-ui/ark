@@ -31,6 +31,19 @@ export type AngularTypeDoc = Record<string, AngularPartEntry>
 
 const prettierConfig = await prettier.resolveConfig('.')
 
+async function tryPrettier(typeName: string): Promise<string> {
+  try {
+    const prefix = 'type ONLY_FOR_FORMAT = '
+    const prettyType = await prettier.format(prefix + typeName, {
+      ...prettierConfig,
+      parser: 'typescript',
+    })
+    return prettyType.replace(prefix, '').trim()
+  } catch {
+    return typeName
+  }
+}
+
 function getRepoRoot(): string {
   // biome-ignore lint/style/noNonNullAssertion: bun.lock is always present at repo root
   return dirname(findUpSync('bun.lock')!)
@@ -120,13 +133,6 @@ function getPropertyCallInitializer(property: PropertyDeclaration): CallExpressi
   return initializer
 }
 
-function stripUndefinedUnion(type: string): string {
-  return type
-    .replace(/\s*\|\s*undefined\s*$/, '')
-    .replace(/^undefined\s*\|\s*/, '')
-    .trim()
-}
-
 function isLiteralArg(node: Node): boolean {
   if (Node.isStringLiteral(node)) return true
   if (Node.isNoSubstitutionTemplateLiteral(node)) return true
@@ -135,6 +141,65 @@ function isLiteralArg(node: Node): boolean {
   if (node.getKind() === SyntaxKind.FalseKeyword) return true
   if (Node.isNullLiteral(node)) return true
   return false
+}
+
+function buildNamespaceAliasMap(sourceFile: SourceFile): Map<string, string> {
+  const result = new Map<string, string>()
+  const namespaceImports = new Map<string, string>()
+  for (const decl of sourceFile.getImportDeclarations()) {
+    const ns = decl.getNamespaceImport()
+    if (ns) {
+      namespaceImports.set(ns.getText(), decl.getModuleSpecifierValue())
+    }
+  }
+  if (namespaceImports.size === 0) return result
+
+  for (const decl of sourceFile.getImportDeclarations()) {
+    const moduleSpec = decl.getModuleSpecifierValue()
+    if (!moduleSpec.startsWith('.')) continue
+    const resolvedSourceFile = decl.getModuleSpecifierSourceFile()
+    if (!resolvedSourceFile) continue
+    for (const named of decl.getNamedImports()) {
+      const localName = named.getAliasNode()?.getText() ?? named.getNameNode().getText()
+      const originalName = named.getNameNode().getText()
+      const reExport = findReExport(resolvedSourceFile, originalName)
+      if (!reExport) continue
+      const upstreamModule = reExport.module
+      const upstreamName = reExport.name
+      for (const [nsLocal, nsModule] of namespaceImports.entries()) {
+        if (nsModule === upstreamModule) {
+          result.set(`${nsLocal}.${upstreamName}`, localName)
+        }
+      }
+    }
+  }
+  return result
+}
+
+function findReExport(sourceFile: SourceFile, exportedName: string): { module: string; name: string } | undefined {
+  for (const decl of sourceFile.getExportDeclarations()) {
+    const moduleSpec = decl.getModuleSpecifierValue()
+    if (!moduleSpec) continue
+    for (const named of decl.getNamedExports()) {
+      const alias = named.getAliasNode()?.getText()
+      const original = named.getNameNode().getText()
+      const localName = alias ?? original
+      if (localName === exportedName) {
+        return { module: moduleSpec, name: original }
+      }
+    }
+  }
+  return undefined
+}
+
+function applyAliasMap(typeText: string, aliasMap: Map<string, string>): string {
+  if (aliasMap.size === 0) return typeText
+  let result = typeText
+  for (const [qualified, local] of aliasMap.entries()) {
+    const escaped = qualified.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    result = result.replace(new RegExp(`\\b${escaped}\\b`, 'g'), local)
+  }
+  return result
 }
 
 function getDescription(property: PropertyDeclaration): string | undefined {
@@ -147,11 +212,12 @@ function getDescription(property: PropertyDeclaration): string | undefined {
   return text.length > 0 ? text : undefined
 }
 
-function extractPropEntry(
+async function extractPropEntry(
   property: PropertyDeclaration,
   classDeclaration: ClassDeclaration,
   sourceFile: SourceFile,
-): { name: string; entry: AngularPropEntry } | undefined {
+  aliasMap: Map<string, string>,
+): Promise<{ name: string; entry: AngularPropEntry } | undefined> {
   if (!property.hasModifier(SyntaxKind.ReadonlyKeyword)) return undefined
   if (property.hasModifier(SyntaxKind.PrivateKeyword)) return undefined
   if (property.hasModifier(SyntaxKind.ProtectedKeyword)) return undefined
@@ -170,9 +236,15 @@ function extractPropEntry(
     )
   }
 
-  const typeArg = callExpression.getTypeArguments()[0]
-  const rawType = typeArg ? typeArg.getText() : property.getType().getText(property)
-  const type = stripUndefinedUnion(rawType)
+  const propertyType = property.getType()
+  const innerType = propertyType.getTypeArguments()[0]
+  if (!innerType) {
+    throw new Error(`Could not resolve inner type for ${property.getName()} (${sourceFile.getFilePath()})`)
+  }
+  const nonNullable = innerType.getNonNullableType()
+  const rawType = nonNullable.getText(property)
+  const aliased = applyAliasMap(rawType, aliasMap)
+  const type = await tryPrettier(aliased)
 
   const isRequired = kind === 'required-input'
 
@@ -268,8 +340,9 @@ export async function generateAngularTypeDoc(component: string, rootDir?: string
     }
 
     const props: Record<string, AngularPropEntry> = {}
+    const aliasMap = buildNamespaceAliasMap(classDeclaration.getSourceFile())
     for (const property of classDeclaration.getProperties()) {
-      const extracted = extractPropEntry(property, classDeclaration, classDeclaration.getSourceFile())
+      const extracted = await extractPropEntry(property, classDeclaration, classDeclaration.getSourceFile(), aliasMap)
       if (extracted) {
         props[extracted.name] = extracted.entry
       }
@@ -307,10 +380,7 @@ export async function main(): Promise<void> {
 
   for (const component of components) {
     const typeDoc = await generateAngularTypeDoc(component, rootDir)
-    const formatted = await prettier.format(JSON.stringify(typeDoc), {
-      ...prettierConfig,
-      parser: 'json',
-    })
+    const formatted = `${JSON.stringify(typeDoc, null, 2)}\n`
     fs.outputFileSync(path.join(outDir, `${component}.types.json`), formatted)
     console.log(`Generated angular type docs for ${component}`)
   }
