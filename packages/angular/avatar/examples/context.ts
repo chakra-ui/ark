@@ -8,12 +8,9 @@ import { avatarExampleStyles } from '../avatar-example-styles'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArkAvatarRoot, ArkAvatarImage, ArkAvatarFallback],
   template: `
-    <div class="vstack">
-      <div arkAvatar #avatar="arkAvatar">
-        <span arkAvatarFallback>{{ avatar.api().loaded ? 'PA' : 'Loading' }}</span>
-        <img arkAvatarImage src="https://i.pravatar.cc/300?u=a" alt="avatar" />
-      </div>
-      <p>Loaded: {{ avatar.api().loaded }}</p>
+    <div arkAvatar #avatar="arkAvatar">
+      <span arkAvatarFallback>{{ avatar.api().loaded ? 'PA' : 'Loading' }}</span>
+      <img arkAvatarImage src="https://i.pravatar.cc/300?u=a" alt="avatar" />
     </div>
   `,
   styles: [avatarExampleStyles],

@@ -313,20 +313,20 @@ describe('@ark-ui/angular/avatar', () => {
     fixture.detectChanges()
 
     const host: HTMLElement = fixture.nativeElement
-    expect(host.textContent).toContain('Loaded: false')
+    expect(host.textContent).toContain('Loading')
 
     const img = host.querySelector('img') as HTMLImageElement
     img.dispatchEvent(new Event('load'))
     TestBed.tick()
     fixture.detectChanges()
 
-    expect(host.textContent).toContain('Loaded: true')
+    expect(host.textContent).toContain('PA')
 
     img.dispatchEvent(new Event('error'))
     TestBed.tick()
     fixture.detectChanges()
 
-    expect(host.textContent).toContain('Loaded: false')
+    expect(host.textContent).toContain('Loading')
 
     fixture.destroy()
   })
