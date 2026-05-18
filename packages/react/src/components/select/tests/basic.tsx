@@ -1,6 +1,6 @@
-import { Select, createListCollection } from '../'
-import type { Optional } from '../../../types'
-import { Portal } from '../../portal'
+import { Select, createListCollection } from '../index.ts'
+import type { Optional } from '../../../types.ts'
+import { Portal } from '../../portal/index.ts'
 
 interface Item {
   label: string

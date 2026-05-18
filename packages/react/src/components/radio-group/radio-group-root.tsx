@@ -2,11 +2,11 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseRadioGroupProps, useRadioGroup } from './use-radio-group'
-import { RadioGroupProvider } from './use-radio-group-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { type UseRadioGroupProps, useRadioGroup } from './use-radio-group.ts'
+import { RadioGroupProvider } from './use-radio-group-context.ts'
 
 export interface RadioGroupRootBaseProps extends UseRadioGroupProps, PolymorphicProps {}
 export interface RadioGroupRootProps extends Assign<HTMLProps<'div'>, RadioGroupRootBaseProps> {}

@@ -2,7 +2,7 @@
 
 import { type FilterOptions, type FilterReturn, createFilter } from '@zag-js/i18n-utils'
 import { useMemo } from 'react'
-import { useLocaleContext } from './use-locale-context'
+import { useLocaleContext } from './use-locale-context.ts'
 
 export interface UseFilterProps extends FilterOptions {}
 

@@ -2,9 +2,9 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresenceContext } from '../presence'
-import { useMenuContext } from './use-menu-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { usePresenceContext } from '../presence/index.ts'
+import { useMenuContext } from './use-menu-context.ts'
 
 export interface MenuPositionerBaseProps extends PolymorphicProps {}
 export interface MenuPositionerProps extends HTMLProps<'div'>, MenuPositionerBaseProps {}

@@ -6,11 +6,11 @@ const meta: Meta = {
 
 export default meta
 
-export { Autocomplete } from './examples/autocomplete'
-export { Basic } from './examples/basic'
-export { ControlledVisibility } from './examples/controlled-visibility'
-export { IgnorePasswordManager } from './examples/ignore-password-manager'
-export { RootProvider } from './examples/root-provider'
-export { WithField } from './examples/with-field'
-export { StrengthMeter } from './examples/strength-meter'
-export { WithValidation } from './examples/with-validation'
+export { Autocomplete } from './examples/autocomplete.tsx'
+export { Basic } from './examples/basic.tsx'
+export { ControlledVisibility } from './examples/controlled-visibility.tsx'
+export { IgnorePasswordManager } from './examples/ignore-password-manager.tsx'
+export { RootProvider } from './examples/root-provider.tsx'
+export { WithField } from './examples/with-field.tsx'
+export { StrengthMeter } from './examples/strength-meter.tsx'
+export { WithValidation } from './examples/with-validation.tsx'

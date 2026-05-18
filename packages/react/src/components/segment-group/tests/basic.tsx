@@ -1,4 +1,4 @@
-import { SegmentGroup } from '../'
+import { SegmentGroup } from '../index.ts'
 
 export const ComponentUnderTest = (props: SegmentGroup.RootProps) => {
   const items = [

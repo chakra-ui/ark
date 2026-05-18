@@ -6,10 +6,10 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
-export { Controlled } from './examples/controlled'
-export { Download } from './examples/download'
-export { ErrorCorrection } from './examples/error-correction'
-export { Fill } from './examples/fill'
-export { Overlay } from './examples/overlay'
-export { RootProvider } from './examples/root-provider'
+export { Basic } from './examples/basic.tsx'
+export { Controlled } from './examples/controlled.tsx'
+export { Download } from './examples/download.tsx'
+export { ErrorCorrection } from './examples/error-correction.tsx'
+export { Fill } from './examples/fill.tsx'
+export { Overlay } from './examples/overlay.tsx'
+export { RootProvider } from './examples/root-provider.tsx'

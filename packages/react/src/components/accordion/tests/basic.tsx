@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from 'lucide-react'
-import { Accordion } from '../'
+import { Accordion } from '../index.ts'
 
 export const ComponentUnderTest = (props: Accordion.RootProps) => {
   const items = [{ value: 'React' }, { value: 'Solid' }, { value: 'Svelte', disabled: true }, { value: 'Vue' }]

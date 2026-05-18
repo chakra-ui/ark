@@ -3,9 +3,9 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as treeView from '@zag-js/tree-view'
 import { useId } from 'react'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
-import type { TreeCollection, TreeNode } from '../collection'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { Optional } from '../../types.ts'
+import type { TreeCollection, TreeNode } from '../collection/index.ts'
 
 export interface UseTreeViewProps<T extends TreeNode> extends Optional<
   Omit<treeView.Props<T>, 'dir' | 'getRootNode' | 'collection'>,

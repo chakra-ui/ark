@@ -3,9 +3,9 @@
 import type { DropzoneProps } from '@zag-js/file-upload'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useFileUploadContext } from './use-file-upload-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useFileUploadContext } from './use-file-upload-context.ts'
 
 export interface FileUploadDropzoneBaseProps extends PolymorphicProps, DropzoneProps {}
 export interface FileUploadDropzoneProps extends HTMLProps<'div'>, FileUploadDropzoneBaseProps {}

@@ -3,10 +3,10 @@
 import { mergeProps } from '@zag-js/react'
 import type { ItemGroupProps } from '@zag-js/select'
 import { forwardRef, useId } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useSelectContext } from './use-select-context'
-import { SelectItemGroupPropsProvider } from './use-select-item-group-props'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useSelectContext } from './use-select-context.ts'
+import { SelectItemGroupPropsProvider } from './use-select-item-group-props.tsx'
 
 export interface SelectItemGroupBaseProps extends PolymorphicProps {}
 export interface SelectItemGroupProps extends HTMLProps<'div'>, SelectItemGroupBaseProps {}

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Slider } from '../'
+import { Slider } from '../index.ts'
 
 export const ComponentUnderTest = (props: Slider.RootProps) => {
   const [value, setValue] = useState([-20, 20])

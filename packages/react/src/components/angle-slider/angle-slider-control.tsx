@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useAngleSliderContext } from './use-angle-slider-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useAngleSliderContext } from './use-angle-slider-context.ts'
 
 export interface AngleSliderControlBaseProps extends PolymorphicProps {}
 export interface AngleSliderControlProps extends HTMLProps<'div'>, AngleSliderControlBaseProps {}

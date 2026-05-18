@@ -3,8 +3,8 @@
 import { mergeProps } from '@zag-js/react'
 import { uniq } from '@zag-js/utils'
 import { forwardRef, useMemo } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useDatePickerContext } from './use-date-picker-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useDatePickerContext } from './use-date-picker-context.ts'
 
 export interface DatePickerRangeTextBaseProps extends PolymorphicProps {}
 export interface DatePickerRangeTextProps extends HTMLProps<'div'>, DatePickerRangeTextBaseProps {}

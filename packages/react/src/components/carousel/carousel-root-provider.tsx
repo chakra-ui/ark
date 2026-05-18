@@ -2,10 +2,10 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseCarouselReturn } from './use-carousel'
-import { CarouselProvider } from './use-carousel-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import type { UseCarouselReturn } from './use-carousel.ts'
+import { CarouselProvider } from './use-carousel-context.ts'
 
 interface RootProviderProps {
   value: UseCarouselReturn

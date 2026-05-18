@@ -2,11 +2,11 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { ReactNode } from 'react'
-import type { UsePresenceProps } from '../presence'
-import { PresenceProvider, usePresence } from '../presence'
-import { splitPresenceProps } from '../presence/split-presence-props'
-import { type UsePopoverProps, usePopover } from './use-popover'
-import { PopoverProvider } from './use-popover-context'
+import type { UsePresenceProps } from '../presence/index.ts'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { splitPresenceProps } from '../presence/split-presence-props.ts'
+import { type UsePopoverProps, usePopover } from './use-popover.ts'
+import { PopoverProvider } from './use-popover-context.ts'
 
 export interface PopoverRootBaseProps extends UsePopoverProps, UsePresenceProps {}
 export interface PopoverRootProps extends PopoverRootBaseProps {

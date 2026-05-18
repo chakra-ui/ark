@@ -2,10 +2,10 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { HTMLProps, PolymorphicProps } from '../factory'
-import { ark } from '../factory'
-import { type UseSwapProps, useSwap } from './use-swap'
-import { SwapProvider } from './use-swap-context'
+import type { HTMLProps, PolymorphicProps } from '../factory.ts'
+import { ark } from '../factory.ts'
+import { type UseSwapProps, useSwap } from './use-swap.ts'
+import { SwapProvider } from './use-swap-context.ts'
 
 export interface SwapRootBaseProps extends UseSwapProps, PolymorphicProps {}
 

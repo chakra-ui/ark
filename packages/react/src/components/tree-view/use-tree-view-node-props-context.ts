@@ -1,7 +1,7 @@
 'use client'
 
 import type { NodeProps } from '@zag-js/tree-view'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface UseTreeViewNodePropsContext extends NodeProps {}
 

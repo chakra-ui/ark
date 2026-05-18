@@ -2,9 +2,9 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useFieldContext } from '../field'
-import { usePasswordInputContext } from './use-password-input-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useFieldContext } from '../field/index.ts'
+import { usePasswordInputContext } from './use-password-input-context.ts'
 
 export interface PasswordInputInputBaseProps extends PolymorphicProps {}
 export interface PasswordInputInputProps extends HTMLProps<'input'>, PasswordInputInputBaseProps {}

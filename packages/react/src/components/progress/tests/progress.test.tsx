@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { axe } from 'vitest-axe'
-import { ComponentUnderTest } from './basic'
+import { ComponentUnderTest } from './basic.tsx'
 
 describe('Progress', () => {
   it('should have no a11y violations', async () => {

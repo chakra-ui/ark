@@ -3,9 +3,9 @@
 import type { InputProps } from '@zag-js/pin-input'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePinInputContext } from './use-pin-input-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { usePinInputContext } from './use-pin-input-context.ts'
 
 export interface PinInputInputBaseProps extends InputProps, PolymorphicProps {}
 export interface PinInputInputProps extends HTMLProps<'input'>, PinInputInputBaseProps {}

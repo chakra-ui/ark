@@ -3,11 +3,11 @@
 import type { TableProps } from '@zag-js/date-picker'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, useId } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useDatePickerContext } from './use-date-picker-context'
-import { DatePickerTablePropsProvider } from './use-date-picker-table-props-context'
-import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useDatePickerContext } from './use-date-picker-context.ts'
+import { DatePickerTablePropsProvider } from './use-date-picker-table-props-context.ts'
+import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context.ts'
 
 export interface DatePickerTableBaseProps extends Pick<TableProps, 'columns'>, PolymorphicProps {}
 export interface DatePickerTableProps extends HTMLProps<'table'>, DatePickerTableBaseProps {}

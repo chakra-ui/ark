@@ -4,9 +4,9 @@ import * as editable from '@zag-js/editable'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import type { PropTypes } from '@zag-js/types'
 import { useId } from 'react'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
-import { useFieldContext } from '../field'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { Optional } from '../../types.ts'
+import { useFieldContext } from '../field/index.ts'
 
 export interface UseEditableProps extends Optional<Omit<editable.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseEditableReturn extends editable.Api<PropTypes> {}

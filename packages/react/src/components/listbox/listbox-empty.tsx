@@ -1,9 +1,9 @@
 'use client'
 
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { listboxAnatomy } from './listbox.anatomy'
-import { useListboxContext } from './use-listbox-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { listboxAnatomy } from './listbox.anatomy.ts'
+import { useListboxContext } from './use-listbox-context.ts'
 
 const parts = listboxAnatomy.build()
 

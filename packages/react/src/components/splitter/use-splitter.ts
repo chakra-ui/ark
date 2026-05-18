@@ -3,8 +3,8 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as splitter from '@zag-js/splitter'
 import { useId } from 'react'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { Optional } from '../../types.ts'
 
 export interface UseSplitterProps extends Optional<Omit<splitter.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseSplitterReturn extends splitter.Api<PropTypes> {}

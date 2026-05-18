@@ -3,11 +3,11 @@
 import { mergeProps } from '@zag-js/react'
 import type { TriggerProps } from '@zag-js/menu'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresenceContext } from '../presence'
-import { useMenuContext } from './use-menu-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { usePresenceContext } from '../presence/index.ts'
+import { useMenuContext } from './use-menu-context.ts'
 
 export interface MenuTriggerBaseProps extends TriggerProps, PolymorphicProps {}
 export interface MenuTriggerProps extends Assign<HTMLProps<'button'>, MenuTriggerBaseProps> {}

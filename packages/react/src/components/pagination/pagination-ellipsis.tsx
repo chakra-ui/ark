@@ -3,9 +3,9 @@
 import type { EllipsisProps } from '@zag-js/pagination'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePaginationContext } from './use-pagination-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { usePaginationContext } from './use-pagination-context.ts'
 
 export interface PaginationEllipsisBaseProps extends EllipsisProps, PolymorphicProps {}
 export interface PaginationEllipsisProps extends HTMLProps<'div'>, PaginationEllipsisBaseProps {}

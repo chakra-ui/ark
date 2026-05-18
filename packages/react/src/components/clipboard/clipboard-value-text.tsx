@@ -1,8 +1,8 @@
 'use client'
 
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useClipboardContext } from './use-clipboard-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useClipboardContext } from './use-clipboard-context.ts'
 
 export interface ClipboardValueTextBaseProps extends PolymorphicProps {}
 export interface ClipboardValueTextProps extends HTMLProps<'span'>, ClipboardValueTextBaseProps {}

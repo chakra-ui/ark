@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseAngleSliderContext, useAngleSliderContext } from './use-angle-slider-context'
+import { type UseAngleSliderContext, useAngleSliderContext } from './use-angle-slider-context.ts'
 
 export interface AngleSliderContextProps {
   children: (context: UseAngleSliderContext) => ReactNode

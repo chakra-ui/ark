@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { ComponentUnderTest } from './basic'
 import { parseDate, parseZonedDateTime } from '@internationalized/date'
+import { ComponentUnderTest } from './basic.tsx'
 import { DateInput } from '..'
 
 describe('Date Input', () => {

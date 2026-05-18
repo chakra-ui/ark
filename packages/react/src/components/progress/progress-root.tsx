@@ -2,11 +2,11 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseProgressProps, useProgress } from './use-progress'
-import { ProgressProvider } from './use-progress-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { type UseProgressProps, useProgress } from './use-progress.ts'
+import { ProgressProvider } from './use-progress-context.ts'
 
 export interface ProgressRootBaseProps extends UseProgressProps, PolymorphicProps {}
 export interface ProgressRootProps extends Assign<HTMLProps<'div'>, ProgressRootBaseProps> {}

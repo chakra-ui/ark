@@ -2,9 +2,9 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresenceContext } from '../presence'
-import { useDialogContext } from './use-dialog-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { usePresenceContext } from '../presence/index.ts'
+import { useDialogContext } from './use-dialog-context.ts'
 
 export interface DialogPositionerBaseProps extends PolymorphicProps {}
 export interface DialogPositionerProps extends HTMLProps<'div'>, DialogPositionerBaseProps {}

@@ -1,7 +1,7 @@
 'use client'
 
 import type { ChannelProps } from '@zag-js/color-picker'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface UseColorPickerChannelPropsContext extends ChannelProps {}
 

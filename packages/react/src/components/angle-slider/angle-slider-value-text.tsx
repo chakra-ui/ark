@@ -1,8 +1,8 @@
 'use client'
 
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useAngleSliderContext } from './use-angle-slider-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useAngleSliderContext } from './use-angle-slider-context.ts'
 
 export interface AngleSliderValueTextBaseProps extends PolymorphicProps {}
 export interface AngleSliderValueTextProps extends HTMLProps<'div'>, AngleSliderValueTextBaseProps {}

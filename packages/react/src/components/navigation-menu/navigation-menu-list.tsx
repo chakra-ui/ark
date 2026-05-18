@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useNavigationMenuContext } from './use-navigation-menu-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
 
 export interface NavigationMenuListBaseProps extends PolymorphicProps {}
 export interface NavigationMenuListProps extends HTMLProps<'div'>, NavigationMenuListBaseProps {}

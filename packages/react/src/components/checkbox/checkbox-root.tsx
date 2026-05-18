@@ -2,11 +2,11 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseCheckboxProps, useCheckbox } from './use-checkbox'
-import { CheckboxProvider } from './use-checkbox-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { type UseCheckboxProps, useCheckbox } from './use-checkbox.ts'
+import { CheckboxProvider } from './use-checkbox-context.ts'
 
 export interface CheckboxRootBaseProps extends UseCheckboxProps, PolymorphicProps {}
 export interface CheckboxRootProps extends Assign<HTMLProps<'label'>, CheckboxRootBaseProps> {}

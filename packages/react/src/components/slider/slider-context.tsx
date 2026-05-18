@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseSliderContext, useSliderContext } from './use-slider-context'
+import { type UseSliderContext, useSliderContext } from './use-slider-context.ts'
 
 export interface SliderContextProps {
   children: (context: UseSliderContext) => ReactNode

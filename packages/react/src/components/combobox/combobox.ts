@@ -8,92 +8,92 @@ export type {
   SelectionDetails,
   ValueChangeDetails,
 } from '@zag-js/combobox'
-export type { CollectionItem } from '../collection'
+export type { CollectionItem } from '../collection/index.ts'
 export {
   ComboboxClearTrigger as ClearTrigger,
   type ComboboxClearTriggerBaseProps as ClearTriggerBaseProps,
   type ComboboxClearTriggerProps as ClearTriggerProps,
-} from './combobox-clear-trigger'
+} from './combobox-clear-trigger.tsx'
 export {
   ComboboxContent as Content,
   type ComboboxContentBaseProps as ContentBaseProps,
   type ComboboxContentProps as ContentProps,
-} from './combobox-content'
-export { ComboboxContext as Context, type ComboboxContextProps as ContextProps } from './combobox-context'
+} from './combobox-content.tsx'
+export { ComboboxContext as Context, type ComboboxContextProps as ContextProps } from './combobox-context.tsx'
 export {
   ComboboxControl as Control,
   type ComboboxControlBaseProps as ControlBaseProps,
   type ComboboxControlProps as ControlProps,
-} from './combobox-control'
+} from './combobox-control.tsx'
 export {
   ComboboxEmpty as Empty,
   type ComboboxEmptyBaseProps as EmptyBaseProps,
   type ComboboxEmptyProps as EmptyProps,
-} from './combobox-empty'
+} from './combobox-empty.tsx'
 export {
   ComboboxInput as Input,
   type ComboboxInputBaseProps as InputBaseProps,
   type ComboboxInputProps as InputProps,
-} from './combobox-input'
+} from './combobox-input.tsx'
 export {
   ComboboxItem as Item,
   type ComboboxItemBaseProps as ItemBaseProps,
   type ComboboxItemProps as ItemProps,
-} from './combobox-item'
+} from './combobox-item.tsx'
 export {
   ComboboxItemContext as ItemContext,
   type ComboboxItemContextProps as ItemContextProps,
-} from './combobox-item-context'
+} from './combobox-item-context.tsx'
 export {
   ComboboxItemGroup as ItemGroup,
   type ComboboxItemGroupBaseProps as ItemGroupBaseProps,
   type ComboboxItemGroupProps as ItemGroupProps,
-} from './combobox-item-group'
+} from './combobox-item-group.tsx'
 export {
   ComboboxItemGroupLabel as ItemGroupLabel,
   type ComboboxItemGroupLabelBaseProps as ItemGroupLabelBaseProps,
   type ComboboxItemGroupLabelProps as ItemGroupLabelProps,
-} from './combobox-item-group-label'
+} from './combobox-item-group-label.tsx'
 export {
   ComboboxItemIndicator as ItemIndicator,
   type ComboboxItemIndicatorBaseProps as ItemIndicatorBaseProps,
   type ComboboxItemIndicatorProps as ItemIndicatorProps,
-} from './combobox-item-indicator'
+} from './combobox-item-indicator.tsx'
 export {
   ComboboxItemText as ItemText,
   type ComboboxItemTextBaseProps as ItemTextBaseProps,
   type ComboboxItemTextProps as ItemTextProps,
-} from './combobox-item-text'
+} from './combobox-item-text.tsx'
 export {
   ComboboxLabel as Label,
   type ComboboxLabelBaseProps as LabelBaseProps,
   type ComboboxLabelProps as LabelProps,
-} from './combobox-label'
+} from './combobox-label.tsx'
 export {
   ComboboxList as List,
   type ComboboxListBaseProps as ListBaseProps,
   type ComboboxListProps as ListProps,
-} from './combobox-list'
+} from './combobox-list.tsx'
 export {
   ComboboxPositioner as Positioner,
   type ComboboxPositionerBaseProps as PositionerBaseProps,
   type ComboboxPositionerProps as PositionerProps,
-} from './combobox-positioner'
+} from './combobox-positioner.tsx'
 export {
   ComboboxRoot as Root,
   type ComboboxRootBaseProps as RootBaseProps,
   type ComboboxRootComponent as RootComponent,
   type ComboboxRootComponentProps as RootComponentProps,
   type ComboboxRootProps as RootProps,
-} from './combobox-root'
+} from './combobox-root.tsx'
 export {
   ComboboxRootProvider as RootProvider,
   type ComboboxRootProviderBaseProps as RootProviderBaseProps,
   type ComboboxRootProviderComponent as RootProviderComponent,
   type ComboboxRootProviderProps as RootProviderProps,
-} from './combobox-root-provider'
+} from './combobox-root-provider.tsx'
 export {
   ComboboxTrigger as Trigger,
   type ComboboxTriggerBaseProps as TriggerBaseProps,
   type ComboboxTriggerProps as TriggerProps,
-} from './combobox-trigger'
+} from './combobox-trigger.tsx'

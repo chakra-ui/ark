@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseFloatingPanelContext, useFloatingPanelContext } from './use-floating-panel-context'
+import { type UseFloatingPanelContext, useFloatingPanelContext } from './use-floating-panel-context.ts'
 
 export interface FloatingPanelContextProps {
   children: (context: UseFloatingPanelContext) => ReactNode

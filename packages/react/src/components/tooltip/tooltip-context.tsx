@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseTooltipContext, useTooltipContext } from './use-tooltip-context'
+import { type UseTooltipContext, useTooltipContext } from './use-tooltip-context.ts'
 
 export interface TooltipContextProps {
   children: (context: UseTooltipContext) => ReactNode

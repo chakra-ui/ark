@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useDialogContext } from './use-dialog-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useDialogContext } from './use-dialog-context.ts'
 
 export interface DialogCloseTriggerBaseProps extends PolymorphicProps {}
 export interface DialogCloseTriggerProps extends HTMLProps<'button'>, DialogCloseTriggerBaseProps {}

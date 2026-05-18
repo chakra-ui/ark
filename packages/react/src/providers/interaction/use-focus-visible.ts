@@ -2,7 +2,7 @@
 
 import { isFocusVisible, trackFocusVisible } from '@zag-js/focus-visible'
 import { useCallback, useSyncExternalStore } from 'react'
-import { useEnvironmentContext } from '../environment'
+import { useEnvironmentContext } from '../environment/index.ts'
 
 export interface UseFocusVisibleProps {
   isTextInput?: boolean

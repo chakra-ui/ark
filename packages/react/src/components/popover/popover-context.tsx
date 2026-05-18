@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UsePopoverContext, usePopoverContext } from './use-popover-context'
+import { type UsePopoverContext, usePopoverContext } from './use-popover-context.ts'
 
 export interface PopoverContextProps {
   children: (context: UsePopoverContext) => ReactNode

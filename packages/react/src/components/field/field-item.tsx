@@ -1,9 +1,9 @@
 'use client'
 
 import { useMemo, type PropsWithChildren } from 'react'
-import type { HTMLProps } from '../factory'
-import { parts } from './field.anatomy'
-import { FieldProvider, useFieldContext } from './use-field-context'
+import type { HTMLProps } from '../factory.ts'
+import { parts } from './field.anatomy.ts'
+import { FieldProvider, useFieldContext } from './use-field-context.ts'
 
 export interface FieldItemBaseProps {
   value: string

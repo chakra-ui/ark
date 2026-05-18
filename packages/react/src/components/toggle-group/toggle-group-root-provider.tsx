@@ -2,10 +2,10 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseToggleGroupReturn } from './use-toggle-group'
-import { ToggleGroupProvider } from './use-toggle-group-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import type { UseToggleGroupReturn } from './use-toggle-group.ts'
+import { ToggleGroupProvider } from './use-toggle-group-context.ts'
 
 interface RootProviderProps {
   value: UseToggleGroupReturn

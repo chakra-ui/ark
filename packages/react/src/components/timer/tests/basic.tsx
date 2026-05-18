@@ -1,4 +1,4 @@
-import { Timer } from '../'
+import { Timer } from '../index.ts'
 
 export const ComponentUnderTest = () => (
   <Timer.Root>

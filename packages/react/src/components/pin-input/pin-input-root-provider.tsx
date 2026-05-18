@@ -2,10 +2,10 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UsePinInputReturn } from './use-pin-input'
-import { PinInputProvider } from './use-pin-input-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import type { UsePinInputReturn } from './use-pin-input.ts'
+import { PinInputProvider } from './use-pin-input-context.ts'
 
 interface RootProviderProps {
   value: UsePinInputReturn

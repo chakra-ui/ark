@@ -3,9 +3,9 @@
 import type { TriggerProps } from '@zag-js/combobox'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useComboboxContext } from './use-combobox-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useComboboxContext } from './use-combobox-context.ts'
 
 export interface ComboboxTriggerBaseProps extends TriggerProps, PolymorphicProps {}
 export interface ComboboxTriggerProps extends HTMLProps<'button'>, ComboboxTriggerBaseProps {}

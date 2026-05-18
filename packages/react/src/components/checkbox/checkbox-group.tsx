@@ -1,12 +1,12 @@
 'use client'
 
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { checkboxAnatomy } from './checkbox.anatomy'
-import { type UseCheckboxGroupProps, useCheckboxGroup } from './use-checkbox-group'
-import { CheckboxGroupContextProvider } from './use-checkbox-group-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { checkboxAnatomy } from './checkbox.anatomy.ts'
+import { type UseCheckboxGroupProps, useCheckboxGroup } from './use-checkbox-group.ts'
+import { CheckboxGroupContextProvider } from './use-checkbox-group-context.tsx'
 
 export interface CheckboxGroupBaseProps extends UseCheckboxGroupProps, PolymorphicProps {}
 export interface CheckboxGroupProps extends Assign<HTMLProps<'div'>, CheckboxGroupBaseProps> {}

@@ -2,15 +2,15 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
+import { createSplitProps } from '../../utils/create-split-props.ts'
 import {
   type RenderStrategyProps,
   RenderStrategyPropsProvider,
   splitRenderStrategyProps,
-} from '../../utils/render-strategy'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseTabsReturn } from './use-tabs'
-import { TabsProvider } from './use-tabs-context'
+} from '../../utils/render-strategy.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import type { UseTabsReturn } from './use-tabs.ts'
+import { TabsProvider } from './use-tabs-context.ts'
 
 interface RootProviderProps {
   value: UseTabsReturn

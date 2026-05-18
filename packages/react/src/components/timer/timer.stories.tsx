@@ -6,9 +6,9 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
-export { Countdown } from './examples/countdown'
-export { Interval } from './examples/interval'
-export { Events } from './examples/events'
-export { Pomodoro } from './examples/pomodoro'
-export { RootProvider } from './examples/root-provider'
+export { Basic } from './examples/basic.tsx'
+export { Countdown } from './examples/countdown.tsx'
+export { Interval } from './examples/interval.tsx'
+export { Events } from './examples/events.tsx'
+export { Pomodoro } from './examples/pomodoro.tsx'
+export { RootProvider } from './examples/root-provider.tsx'

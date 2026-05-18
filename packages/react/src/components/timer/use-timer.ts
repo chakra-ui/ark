@@ -3,8 +3,8 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as timer from '@zag-js/timer'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers'
-import type { Optional } from '../../types'
+import { useEnvironmentContext } from '../../providers/index.ts'
+import type { Optional } from '../../types.ts'
 
 export interface UseTimerProps extends Optional<Omit<timer.Props, 'dir' | 'getRootNode'>, 'id'> {}
 

@@ -1,9 +1,9 @@
 'use client'
 
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { TreeView, useTreeViewContext } from '../tree-view'
-import { JsonTreeViewNode, type JsonTreeViewNodeBaseProps } from './json-tree-view-node'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { TreeView, useTreeViewContext } from '../tree-view/index.ts'
+import { JsonTreeViewNode, type JsonTreeViewNodeBaseProps } from './json-tree-view-node.tsx'
 
 export interface JsonTreeViewTreeProps extends TreeView.TreeProps, JsonTreeViewNodeBaseProps {}
 

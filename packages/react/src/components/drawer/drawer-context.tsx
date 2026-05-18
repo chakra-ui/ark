@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseDrawerContext, useDrawerContext } from './use-drawer-context'
+import { type UseDrawerContext, useDrawerContext } from './use-drawer-context.ts'
 
 export interface DrawerContextProps {
   children: (context: UseDrawerContext) => ReactNode

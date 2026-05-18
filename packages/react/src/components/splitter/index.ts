@@ -2,7 +2,7 @@ export {
   createSplitterRegistry,
   type SplitterRegistryProps,
   type SplitterRegistryReturn,
-} from './create-splitter-registry'
+} from './create-splitter-registry.ts'
 export { layout as getSplitterLayout } from '@zag-js/splitter'
 export type {
   ExpandCollapseDetails as SplitterExpandCollapseDetails,
@@ -10,26 +10,26 @@ export type {
   ResizeDetails as SplitterResizeDetails,
   ResizeEndDetails as SplitterResizeEndDetails,
 } from '@zag-js/splitter'
-export { SplitterContext, type SplitterContextProps } from './splitter-context'
-export { SplitterPanel, type SplitterPanelBaseProps, type SplitterPanelProps } from './splitter-panel'
+export { SplitterContext, type SplitterContextProps } from './splitter-context.tsx'
+export { SplitterPanel, type SplitterPanelBaseProps, type SplitterPanelProps } from './splitter-panel.tsx'
 export {
   SplitterResizeTrigger,
   type SplitterResizeTriggerBaseProps,
   type SplitterResizeTriggerProps,
-} from './splitter-resize-trigger'
+} from './splitter-resize-trigger.tsx'
 export {
   SplitterResizeTriggerIndicator,
   type SplitterResizeTriggerIndicatorBaseProps,
   type SplitterResizeTriggerIndicatorProps,
-} from './splitter-resize-trigger-indicator'
-export { SplitterRoot, type SplitterRootBaseProps, type SplitterRootProps } from './splitter-root'
+} from './splitter-resize-trigger-indicator.tsx'
+export { SplitterRoot, type SplitterRootBaseProps, type SplitterRootProps } from './splitter-root.tsx'
 export {
   SplitterRootProvider,
   type SplitterRootProviderBaseProps,
   type SplitterRootProviderProps,
-} from './splitter-root-provider'
-export { splitterAnatomy } from './splitter.anatomy'
-export { useSplitter, type UseSplitterProps, type UseSplitterReturn } from './use-splitter'
-export { useSplitterContext, type UseSplitterContext } from './use-splitter-context'
+} from './splitter-root-provider.tsx'
+export { splitterAnatomy } from './splitter.anatomy.ts'
+export { useSplitter, type UseSplitterProps, type UseSplitterReturn } from './use-splitter.ts'
+export { useSplitterContext, type UseSplitterContext } from './use-splitter-context.ts'
 
-export * as Splitter from './splitter'
+export * as Splitter from './splitter.ts'

@@ -1,6 +1,6 @@
 import { RotateCcwIcon } from 'lucide-react'
-import { Field } from '../../field'
-import { SignaturePad } from '../'
+import { Field } from '../../field/index.ts'
+import { SignaturePad } from '../index.ts'
 
 export const ComponentUnderTest = (props: SignaturePad.RootProps) => (
   <SignaturePad.Root {...props}>

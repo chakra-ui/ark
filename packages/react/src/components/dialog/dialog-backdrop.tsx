@@ -2,11 +2,11 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { composeRefs } from '../../utils/compose-refs'
-import { useRenderStrategyPropsContext } from '../../utils/render-strategy'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresence } from '../presence'
-import { useDialogContext } from './use-dialog-context'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import { useRenderStrategyPropsContext } from '../../utils/render-strategy.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { usePresence } from '../presence/index.ts'
+import { useDialogContext } from './use-dialog-context.ts'
 
 export interface DialogBackdropBaseProps extends PolymorphicProps {}
 export interface DialogBackdropProps extends HTMLProps<'div'>, DialogBackdropBaseProps {}

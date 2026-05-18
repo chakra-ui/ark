@@ -2,9 +2,9 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { parts } from './segment-group.anatomy'
-import { useSegmentGroupContext } from './use-segment-group-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { parts } from './segment-group.anatomy.ts'
+import { useSegmentGroupContext } from './use-segment-group-context.ts'
 
 export interface SegmentGroupIndicatorBaseProps extends PolymorphicProps {}
 export interface SegmentGroupIndicatorProps extends HTMLProps<'div'>, SegmentGroupIndicatorBaseProps {}

@@ -1,7 +1,7 @@
 'use client'
 
 import type { AreaProps } from '@zag-js/color-picker'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface UseColorPickerAreaPropsContext extends AreaProps {}
 

@@ -2,11 +2,11 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseAngleSliderProps, useAngleSlider } from './use-angle-slider'
-import { AngleSliderProvider } from './use-angle-slider-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { type UseAngleSliderProps, useAngleSlider } from './use-angle-slider.ts'
+import { AngleSliderProvider } from './use-angle-slider-context.ts'
 
 export interface AngleSliderRootBaseProps extends UseAngleSliderProps, PolymorphicProps {}
 

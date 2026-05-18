@@ -2,17 +2,17 @@
 
 import { mergeProps } from '@zag-js/react'
 import { type JSX, forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
 import {
   type RenderStrategyProps,
   RenderStrategyPropsProvider,
   splitRenderStrategyProps,
-} from '../../utils/render-strategy'
-import type { TreeNode } from '../collection'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseTreeViewProps, useTreeView } from './use-tree-view'
-import { TreeViewProvider } from './use-tree-view-context'
+} from '../../utils/render-strategy.ts'
+import type { TreeNode } from '../collection/index.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { type UseTreeViewProps, useTreeView } from './use-tree-view.ts'
+import { TreeViewProvider } from './use-tree-view-context.ts'
 
 export interface TreeViewRootBaseProps<T extends TreeNode>
   extends UseTreeViewProps<T>, RenderStrategyProps, PolymorphicProps {}

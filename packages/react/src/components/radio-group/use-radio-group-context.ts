@@ -1,7 +1,7 @@
 'use client'
 
-import { createContext } from '../../utils/create-context'
-import type { UseRadioGroupReturn } from './use-radio-group'
+import { createContext } from '../../utils/create-context.ts'
+import type { UseRadioGroupReturn } from './use-radio-group.ts'
 
 export interface UseRadioGroupContext extends UseRadioGroupReturn {}
 

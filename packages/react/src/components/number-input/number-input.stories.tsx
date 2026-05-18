@@ -6,12 +6,12 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
-export { Formatting } from './examples/formatting'
-export { FractionDigits } from './examples/fraction-digits'
-export { MinMax } from './examples/min-max'
-export { MouseWheel } from './examples/mouse-wheel'
-export { Context } from './examples/context'
-export { RootProvider } from './examples/root-provider'
-export { Scrubber } from './examples/scrubber'
-export { WithField } from './examples/with-field'
+export { Basic } from './examples/basic.tsx'
+export { Formatting } from './examples/formatting.tsx'
+export { FractionDigits } from './examples/fraction-digits.tsx'
+export { MinMax } from './examples/min-max.tsx'
+export { MouseWheel } from './examples/mouse-wheel.tsx'
+export { Context } from './examples/context.tsx'
+export { RootProvider } from './examples/root-provider.tsx'
+export { Scrubber } from './examples/scrubber.tsx'
+export { WithField } from './examples/with-field.tsx'

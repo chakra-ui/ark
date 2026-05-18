@@ -2,15 +2,15 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
+import { createSplitProps } from '../../utils/create-split-props.ts'
 import {
   type RenderStrategyProps,
   RenderStrategyPropsProvider,
   splitRenderStrategyProps,
-} from '../../utils/render-strategy'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseAccordionReturn } from './use-accordion'
-import { AccordionProvider } from './use-accordion-context'
+} from '../../utils/render-strategy.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import type { UseAccordionReturn } from './use-accordion.ts'
+import { AccordionProvider } from './use-accordion-context.ts'
 
 interface RootProviderProps {
   value: UseAccordionReturn

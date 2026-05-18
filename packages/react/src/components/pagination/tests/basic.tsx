@@ -1,4 +1,4 @@
-import { Pagination } from '../'
+import { Pagination } from '../index.ts'
 
 export const ComponentUnderTest = (props: Pagination.RootProps) => (
   <Pagination.Root {...props}>

@@ -2,10 +2,10 @@
 
 import { type JsonNode, getRootNode, nodeToString, nodeToValue } from '@zag-js/json-tree-utils'
 import { useMemo } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type UseTreeViewProps, type UseTreeViewReturn, createTreeCollection, useTreeView } from '../tree-view'
-import { getBranchValues } from './get-branch-value'
-import type { JsonTreeViewOptions } from './json-tree-view-props-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type UseTreeViewProps, type UseTreeViewReturn, createTreeCollection, useTreeView } from '../tree-view/index.ts'
+import { getBranchValues } from './get-branch-value.ts'
+import type { JsonTreeViewOptions } from './json-tree-view-props-context.ts'
 
 export interface UseJsonTreeViewProps extends Omit<UseTreeViewProps<JsonNode>, 'collection'>, JsonTreeViewOptions {
   data: unknown

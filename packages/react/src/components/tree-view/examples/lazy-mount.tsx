@@ -1,6 +1,6 @@
 import { TreeView, createTreeCollection } from '@ark-ui/react/tree-view'
 import { ChevronRightIcon, FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-react'
-import { useTreeViewNodeContext } from '../use-tree-view-node-context'
+import { useTreeViewNodeContext } from '../use-tree-view-node-context.ts'
 import styles from 'styles/tree-view.module.css'
 
 export const LazyMount = () => {

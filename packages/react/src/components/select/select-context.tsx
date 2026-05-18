@@ -1,8 +1,8 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import type { CollectionItem } from '../collection'
-import { type UseSelectContext, useSelectContext } from './use-select-context'
+import type { CollectionItem } from '../collection/index.ts'
+import { type UseSelectContext, useSelectContext } from './use-select-context.ts'
 
 export interface SelectContextProps<T extends CollectionItem> {
   children: (context: UseSelectContext<T>) => ReactNode

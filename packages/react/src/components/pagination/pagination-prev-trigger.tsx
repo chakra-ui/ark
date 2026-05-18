@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePaginationContext } from './use-pagination-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { usePaginationContext } from './use-pagination-context.ts'
 
 export interface PaginationPrevTriggerBaseProps extends PolymorphicProps {}
 export interface PaginationPrevTriggerProps extends HTMLProps<'button'>, PaginationPrevTriggerBaseProps {}

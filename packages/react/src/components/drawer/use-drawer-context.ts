@@ -1,7 +1,7 @@
 'use client'
 
-import { createContext } from '../../utils/create-context'
-import type { UseDrawerReturn } from './use-drawer'
+import { createContext } from '../../utils/create-context.ts'
+import type { UseDrawerReturn } from './use-drawer.ts'
 
 export interface UseDrawerContext extends UseDrawerReturn {}
 

@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseTabsContext, useTabsContext } from './use-tabs-context'
+import { type UseTabsContext, useTabsContext } from './use-tabs-context.ts'
 
 export interface TabsContextProps {
   children: (context: UseTabsContext) => ReactNode

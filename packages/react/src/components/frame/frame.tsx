@@ -2,11 +2,11 @@
 
 import { forwardRef, useEffect, useId, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { EnvironmentProvider } from '../../providers'
-import type { Assign } from '../../types'
-import { composeRefs } from '../../utils/compose-refs'
-import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
-import { FrameContent } from './frame-content'
+import { EnvironmentProvider } from '../../providers/index.ts'
+import type { Assign } from '../../types.ts'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect.ts'
+import { FrameContent } from './frame-content.tsx'
 
 export interface FrameBaseProps {
   /** Additional content to be inserted into the frame's <head> */

@@ -6,8 +6,8 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
-export { Context } from './examples/context'
-export { Events } from './examples/events'
-export { Provider } from './examples/provider'
-export { RootProvider } from './examples/root-provider'
+export { Basic } from './examples/basic.tsx'
+export { Context } from './examples/context.tsx'
+export { Events } from './examples/events.tsx'
+export { Provider } from './examples/provider.tsx'
+export { RootProvider } from './examples/root-provider.tsx'

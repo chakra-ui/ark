@@ -1,7 +1,7 @@
 'use client'
 
-import { createContext } from '../../utils/create-context'
-import type { UseSignaturePadReturn } from './use-signature-pad'
+import { createContext } from '../../utils/create-context.ts'
+import type { UseSignaturePadReturn } from './use-signature-pad.ts'
 
 export interface UseSignaturePadContext extends UseSignaturePadReturn {}
 

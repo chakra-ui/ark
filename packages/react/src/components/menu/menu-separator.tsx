@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useMenuContext } from './use-menu-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useMenuContext } from './use-menu-context.ts'
 
 export interface MenuSeparatorBaseProps extends PolymorphicProps {}
 export interface MenuSeparatorProps extends HTMLProps<'hr'>, MenuSeparatorBaseProps {}

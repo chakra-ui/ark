@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { ComponentUnderTest, SignaturePadWithField } from './basic'
+import { ComponentUnderTest, SignaturePadWithField } from './basic.tsx'
 
 describe('SignaturePad ', () => {
   it('should have no a11y violations', async () => {

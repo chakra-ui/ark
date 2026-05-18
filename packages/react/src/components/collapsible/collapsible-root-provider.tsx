@@ -2,10 +2,10 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseCollapsibleReturn } from './use-collapsible'
-import { CollapsibleProvider } from './use-collapsible-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import type { UseCollapsibleReturn } from './use-collapsible.ts'
+import { CollapsibleProvider } from './use-collapsible-context.ts'
 
 interface RootProviderProps {
   value: UseCollapsibleReturn

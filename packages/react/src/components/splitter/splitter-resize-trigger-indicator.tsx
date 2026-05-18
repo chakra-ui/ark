@@ -2,9 +2,9 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useSplitterContext } from './use-splitter-context'
-import { useSplitterResizeTriggerPropsContext } from './use-splitter-resize-trigger-props-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useSplitterContext } from './use-splitter-context.ts'
+import { useSplitterResizeTriggerPropsContext } from './use-splitter-resize-trigger-props-context.ts'
 
 export interface SplitterResizeTriggerIndicatorBaseProps extends PolymorphicProps {}
 export interface SplitterResizeTriggerIndicatorProps

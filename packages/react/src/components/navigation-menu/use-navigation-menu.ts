@@ -3,8 +3,8 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as navigationMenu from '@zag-js/navigation-menu'
 import { useId } from 'react'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { Optional } from '../../types.ts'
 
 export interface UseNavigationMenuProps extends Optional<Omit<navigationMenu.Props, 'dir' | 'getRootNode'>, 'id'> {}
 

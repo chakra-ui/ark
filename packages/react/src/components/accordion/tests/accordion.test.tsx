@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { LocaleProvider } from '../../../providers'
-import { ComponentUnderTest } from './basic'
+import { LocaleProvider } from '../../../providers/index.ts'
+import { ComponentUnderTest } from './basic.tsx'
 
 describe('Accordion', () => {
   it('should have no a11y violations', async () => {

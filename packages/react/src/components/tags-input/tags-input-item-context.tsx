@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseTagsInputItemContext, useTagsInputItemContext } from './use-tags-input-item-context'
+import { type UseTagsInputItemContext, useTagsInputItemContext } from './use-tags-input-item-context.ts'
 
 export interface TagsInputItemContextProps {
   children: (context: UseTagsInputItemContext) => ReactNode

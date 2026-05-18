@@ -1,5 +1,5 @@
-import { Dialog } from '../'
-import { Portal } from '../../portal'
+import { Dialog } from '../index.ts'
+import { Portal } from '../../portal/index.ts'
 
 export const ComponentUnderTest = (props: Dialog.RootProps) => (
   <Dialog.Root {...props}>

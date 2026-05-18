@@ -2,7 +2,7 @@
 
 import { formatRelativeTime } from '@zag-js/i18n-utils'
 import { useMemo } from 'react'
-import { useLocaleContext } from '../../providers/locale'
+import { useLocaleContext } from '../../providers/locale/index.ts'
 
 export interface FormatRelativeTimeProps extends Intl.RelativeTimeFormatOptions {
   /**

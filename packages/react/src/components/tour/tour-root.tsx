@@ -2,10 +2,10 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { ReactNode } from 'react'
-import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '../../utils/render-strategy'
-import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
-import type { UseTourReturn } from './use-tour'
-import { TourProvider } from './use-tour-context'
+import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '../../utils/render-strategy.ts'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.ts'
+import type { UseTourReturn } from './use-tour.ts'
+import { TourProvider } from './use-tour-context.ts'
 
 export interface TourRootBaseProps extends UsePresenceProps {
   tour: UseTourReturn

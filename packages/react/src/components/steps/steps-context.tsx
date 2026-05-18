@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseStepsContext, useStepsContext } from './use-steps-context'
+import { type UseStepsContext, useStepsContext } from './use-steps-context.ts'
 
 export interface StepsContextProps {
   children: (context: UseStepsContext) => ReactNode

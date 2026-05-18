@@ -2,9 +2,9 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useScrollAreaContext } from './use-scroll-area-context'
-import { useScrollAreaScrollbarContext } from './use-scroll-area-scrollbar-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useScrollAreaContext } from './use-scroll-area-context.ts'
+import { useScrollAreaScrollbarContext } from './use-scroll-area-scrollbar-context.ts'
 
 export interface ScrollAreaThumbBaseProps extends PolymorphicProps {}
 export interface ScrollAreaThumbProps extends HTMLProps<'div'>, ScrollAreaThumbBaseProps {}

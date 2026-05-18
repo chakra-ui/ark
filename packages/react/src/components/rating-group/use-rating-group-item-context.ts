@@ -1,7 +1,7 @@
 'use client'
 
 import type { ItemState } from '@zag-js/rating-group'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface UseRatingGroupItemContext extends ItemState {}
 

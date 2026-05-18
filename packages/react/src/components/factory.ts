@@ -11,7 +11,7 @@ import {
   isValidElement,
   memo,
 } from 'react'
-import { composeRefs } from '../utils/compose-refs'
+import { composeRefs } from '../utils/compose-refs.ts'
 
 export interface PolymorphicProps {
   /**

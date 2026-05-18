@@ -2,9 +2,9 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useColorPickerContext } from './use-color-picker-context'
-import { useColorPickerSwatchPropsContext } from './use-color-picker-swatch-props-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useColorPickerContext } from './use-color-picker-context.ts'
+import { useColorPickerSwatchPropsContext } from './use-color-picker-swatch-props-context.ts'
 
 export interface ColorPickerSwatchIndicatorBaseProps extends PolymorphicProps {}
 export interface ColorPickerSwatchIndicatorProps extends HTMLProps<'div'>, ColorPickerSwatchIndicatorBaseProps {}

@@ -1,5 +1,5 @@
 import { Field } from '@ark-ui/react/field'
-import { Switch } from '../'
+import { Switch } from '../index.ts'
 
 export const ComponentUnderTest = (props: Switch.RootProps) => {
   return (

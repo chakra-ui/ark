@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useImageCropperContext } from './use-image-cropper-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useImageCropperContext } from './use-image-cropper-context.ts'
 
 export interface ImageCropperImageBaseProps extends PolymorphicProps {}
 export interface ImageCropperImageProps extends HTMLProps<'img'>, ImageCropperImageBaseProps {}

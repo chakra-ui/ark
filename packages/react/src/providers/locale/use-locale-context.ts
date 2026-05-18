@@ -1,7 +1,7 @@
 'use client'
 
 import type { Locale } from '@zag-js/i18n-utils'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface UseLocaleContext extends Locale {}
 

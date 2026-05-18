@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseTimerContext, useTimerContext } from './use-timer-context'
+import { type UseTimerContext, useTimerContext } from './use-timer-context.ts'
 
 export interface TimerContextProps {
   children: (context: UseTimerContext) => ReactNode

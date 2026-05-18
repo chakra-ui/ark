@@ -2,11 +2,11 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseQrCodeProps, useQrCode } from './use-qr-code'
-import { QrCodeProvider } from './use-qr-code-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { type UseQrCodeProps, useQrCode } from './use-qr-code.ts'
+import { QrCodeProvider } from './use-qr-code-context.ts'
 
 export interface QrCodeRootBaseProps extends UseQrCodeProps, PolymorphicProps {}
 export interface QrCodeRootProps extends Assign<HTMLProps<'div'>, QrCodeRootBaseProps> {}

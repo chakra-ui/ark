@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { Field } from '../'
+import { Field } from '../index.ts'
 
 const ComponentUnderTest = (props: Field.RootProps) => (
   <Field.Root {...props}>

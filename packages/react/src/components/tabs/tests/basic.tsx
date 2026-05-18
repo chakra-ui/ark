@@ -1,4 +1,4 @@
-import { Tabs } from '../'
+import { Tabs } from '../index.ts'
 
 export const ComponentUnderTest = (props: Tabs.RootProps) => {
   const items = [{ value: 'React' }, { value: 'Solid' }, { value: 'Svelte', disabled: true }, { value: 'Vue' }]

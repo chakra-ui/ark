@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import { useRef } from 'react'
-import { EnvironmentProvider } from '../../providers'
-import { Portal } from './portal'
+import { EnvironmentProvider } from '../../providers/index.ts'
+import { Portal } from './portal.tsx'
 
 const PortalWithContainerTest = (props: { disabled?: boolean | undefined }) => {
   const container = useRef<HTMLDivElement>(null)

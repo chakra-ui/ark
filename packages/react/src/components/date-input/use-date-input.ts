@@ -3,8 +3,8 @@
 import * as dateInput from '@zag-js/date-input'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { Optional } from '../../types.ts'
 
 export interface UseDateInputProps extends Optional<dateInput.Props, 'id'> {}
 export type UseDateInputReturn = ReturnType<typeof useDateInput>

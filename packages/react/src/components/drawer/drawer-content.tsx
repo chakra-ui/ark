@@ -3,11 +3,11 @@
 import { mergeProps } from '@zag-js/react'
 import type { ContentProps } from '@zag-js/drawer'
 import { forwardRef } from 'react'
-import { composeRefs } from '../../utils/compose-refs'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresenceContext } from '../presence'
-import { useDrawerContext } from './use-drawer-context'
-import { createSplitProps } from '../../utils/create-split-props'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { usePresenceContext } from '../presence/index.ts'
+import { useDrawerContext } from './use-drawer-context.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
 
 export interface DrawerContentBaseProps extends PolymorphicProps, ContentProps {}
 export interface DrawerContentProps extends Omit<HTMLProps<'div'>, 'draggable'>, DrawerContentBaseProps {}

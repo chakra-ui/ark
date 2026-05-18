@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseAvatarContext, useAvatarContext } from './use-avatar-context'
+import { type UseAvatarContext, useAvatarContext } from './use-avatar-context.ts'
 
 export interface AvatarContextProps {
   children: (context: UseAvatarContext) => ReactNode

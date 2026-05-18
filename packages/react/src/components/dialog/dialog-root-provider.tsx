@@ -2,13 +2,13 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { ReactNode } from 'react'
-import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '../../utils/render-strategy'
-import type { PolymorphicProps } from '../factory'
-import type { UsePresenceProps } from '../presence'
-import { PresenceProvider, usePresence } from '../presence'
-import { splitPresenceProps } from '../presence/split-presence-props'
-import type { UseDialogReturn } from './use-dialog'
-import { DialogProvider } from './use-dialog-context'
+import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '../../utils/render-strategy.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UsePresenceProps } from '../presence/index.ts'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { splitPresenceProps } from '../presence/split-presence-props.ts'
+import type { UseDialogReturn } from './use-dialog.ts'
+import { DialogProvider } from './use-dialog-context.ts'
 
 interface RootProviderProps {
   value: UseDialogReturn

@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useFieldContext } from './use-field-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useFieldContext } from './use-field-context.ts'
 
 export interface FieldErrorTextBaseProps extends PolymorphicProps {}
 export interface FieldErrorTextProps extends HTMLProps<'span'>, FieldErrorTextBaseProps {}

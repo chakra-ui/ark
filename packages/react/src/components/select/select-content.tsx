@@ -2,10 +2,10 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { composeRefs } from '../../utils/compose-refs'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresenceContext } from '../presence'
-import { useSelectContext } from './use-select-context'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { usePresenceContext } from '../presence/index.ts'
+import { useSelectContext } from './use-select-context.ts'
 
 export interface SelectContentBaseProps extends PolymorphicProps {}
 export interface SelectContentProps extends HTMLProps<'div'>, SelectContentBaseProps {}

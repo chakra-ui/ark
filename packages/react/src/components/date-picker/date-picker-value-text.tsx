@@ -2,10 +2,10 @@
 
 import type { DateValue } from '@zag-js/date-picker'
 import { Fragment, forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { datePickerAnatomy } from './date-picker.anatomy'
-import { useDatePickerContext } from './use-date-picker-context'
+import type { Assign } from '../../types.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { datePickerAnatomy } from './date-picker.anatomy.ts'
+import { useDatePickerContext } from './use-date-picker-context.ts'
 
 export interface DatePickerValueTextRenderProps {
   value: DateValue

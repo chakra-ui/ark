@@ -3,12 +3,12 @@
 import type { OptionItemProps } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useMenuContext } from './use-menu-context'
-import { MenuItemProvider } from './use-menu-item-context'
-import { useMenuItemGroupContext } from './use-menu-item-group-context'
-import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useMenuContext } from './use-menu-context.ts'
+import { MenuItemProvider } from './use-menu-item-context.ts'
+import { useMenuItemGroupContext } from './use-menu-item-group-context.ts'
+import { MenuItemPropsProvider } from './use-menu-option-item-props-context.ts'
 
 type PartialOptionItemProps = Omit<OptionItemProps, 'type' | 'checked' | 'onCheckedChange'>
 

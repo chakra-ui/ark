@@ -2,11 +2,11 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { composeRefs } from '../../utils/compose-refs'
-import { useRenderStrategyPropsContext } from '../../utils/render-strategy'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { PresenceProvider, usePresence } from '../presence'
-import { useNavigationMenuContext } from './use-navigation-menu-context'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import { useRenderStrategyPropsContext } from '../../utils/render-strategy.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
 
 export interface NavigationMenuIndicatorBaseProps extends PolymorphicProps {}
 export interface NavigationMenuIndicatorProps extends HTMLProps<'div'>, NavigationMenuIndicatorBaseProps {}

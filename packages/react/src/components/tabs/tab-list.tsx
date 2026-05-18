@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useTabsContext } from './use-tabs-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useTabsContext } from './use-tabs-context.ts'
 
 export interface TabListBaseProps extends PolymorphicProps {}
 export interface TabListProps extends HTMLProps<'div'>, TabListBaseProps {}

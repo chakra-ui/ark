@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useListboxContext } from './use-listbox-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useListboxContext } from './use-listbox-context.ts'
 
 export interface ListboxLabelBaseProps extends PolymorphicProps {}
 export interface ListboxLabelProps extends HTMLProps<'span'>, ListboxLabelBaseProps {}

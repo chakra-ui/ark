@@ -1,7 +1,7 @@
 'use client'
 
-import { createContext } from '../../utils/create-context'
-import type { UseEditableReturn } from './use-editable'
+import { createContext } from '../../utils/create-context.ts'
+import type { UseEditableReturn } from './use-editable.ts'
 
 export interface UseEditableContext extends UseEditableReturn {}
 

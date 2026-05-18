@@ -2,12 +2,12 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { ReactNode } from 'react'
-import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '../../utils/render-strategy'
-import type { UsePresenceProps } from '../presence'
-import { PresenceProvider, usePresence } from '../presence'
-import { splitPresenceProps } from '../presence/split-presence-props'
-import { type UseDialogProps, useDialog } from './use-dialog'
-import { DialogProvider } from './use-dialog-context'
+import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '../../utils/render-strategy.ts'
+import type { UsePresenceProps } from '../presence/index.ts'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { splitPresenceProps } from '../presence/split-presence-props.ts'
+import { type UseDialogProps, useDialog } from './use-dialog.ts'
+import { DialogProvider } from './use-dialog-context.ts'
 
 export interface DialogRootBaseProps extends UseDialogProps, UsePresenceProps {}
 export interface DialogRootProps extends DialogRootBaseProps {

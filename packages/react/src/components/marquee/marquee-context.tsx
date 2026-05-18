@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseMarqueeContext, useMarqueeContext } from './use-marquee-context'
+import { type UseMarqueeContext, useMarqueeContext } from './use-marquee-context.ts'
 
 export interface MarqueeContextProps {
   children: (context: UseMarqueeContext) => ReactNode

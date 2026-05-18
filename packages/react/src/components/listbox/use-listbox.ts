@@ -3,9 +3,9 @@
 import * as listbox from '@zag-js/listbox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
-import type { CollectionItem, ListCollection } from '../collection'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { Optional } from '../../types.ts'
+import type { CollectionItem, ListCollection } from '../collection/index.ts'
 
 export interface UseListboxProps<T extends CollectionItem> extends Optional<
   Omit<listbox.Props<T>, 'dir' | 'getRootNode' | 'collection'>,

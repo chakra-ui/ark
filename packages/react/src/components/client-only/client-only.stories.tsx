@@ -6,5 +6,5 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
-export { WithFallback } from './examples/with-fallback'
+export { Basic } from './examples/basic.tsx'
+export { WithFallback } from './examples/with-fallback.tsx'

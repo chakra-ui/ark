@@ -3,10 +3,10 @@
 import type { ItemProps } from '@zag-js/rating-group'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useRatingGroupContext } from './use-rating-group-context'
-import { RatingGroupItemProvider } from './use-rating-group-item-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useRatingGroupContext } from './use-rating-group-context.ts'
+import { RatingGroupItemProvider } from './use-rating-group-item-context.ts'
 
 export interface RatingGroupItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface RatingGroupItemProps extends HTMLProps<'span'>, RatingGroupItemBaseProps {}

@@ -6,10 +6,10 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
-export { Controlled } from './examples/controlled'
-export { Delay } from './examples/delay'
-export { Positioning } from './examples/positioning'
-export { Context } from './examples/context'
-export { MultipleTriggers } from './examples/multiple-triggers'
-export { RootProvider } from './examples/root-provider'
+export { Basic } from './examples/basic.tsx'
+export { Controlled } from './examples/controlled.tsx'
+export { Delay } from './examples/delay.tsx'
+export { Positioning } from './examples/positioning.tsx'
+export { Context } from './examples/context.tsx'
+export { MultipleTriggers } from './examples/multiple-triggers.tsx'
+export { RootProvider } from './examples/root-provider.tsx'

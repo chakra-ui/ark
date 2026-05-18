@@ -2,10 +2,10 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseSignaturePadProps, useSignaturePad } from './use-signature-pad'
-import { SignaturePadProvider } from './use-signature-pad-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { type UseSignaturePadProps, useSignaturePad } from './use-signature-pad.ts'
+import { SignaturePadProvider } from './use-signature-pad-context.ts'
 
 export interface SignaturePadRootBaseProps extends UseSignaturePadProps, PolymorphicProps {}
 export interface SignaturePadRootProps extends HTMLProps<'div'>, SignaturePadRootBaseProps {}

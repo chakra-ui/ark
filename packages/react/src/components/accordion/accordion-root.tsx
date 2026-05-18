@@ -2,16 +2,16 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
 import {
   type RenderStrategyProps,
   RenderStrategyPropsProvider,
   splitRenderStrategyProps,
-} from '../../utils/render-strategy'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseAccordionProps, useAccordion } from './use-accordion'
-import { AccordionProvider } from './use-accordion-context'
+} from '../../utils/render-strategy.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { type UseAccordionProps, useAccordion } from './use-accordion.ts'
+import { AccordionProvider } from './use-accordion-context.ts'
 
 export interface AccordionRootBaseProps extends UseAccordionProps, RenderStrategyProps, PolymorphicProps {}
 export interface AccordionRootProps extends Assign<HTMLProps<'div'>, AccordionRootBaseProps> {}

@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { SelectWithField } from './field'
-import { ComponentUnderTest } from './basic'
+import { SelectWithField } from './field.tsx'
+import { ComponentUnderTest } from './basic.tsx'
 
 describe('Select', () => {
   it('should have no a11y violations', async () => {

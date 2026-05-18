@@ -6,12 +6,12 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
-export { Collapsible } from './examples/collapsible'
-export { Context } from './examples/context'
-export { MultiplePanels } from './examples/multiple-panels'
-export { Nested } from './examples/nested'
-export { ResizeIndicator } from './examples/resize-indicator'
-export { RootProvider } from './examples/root-provider'
-export { Vertical } from './examples/vertical'
-export { DynamicCollapsible } from './examples/dynamic-collapsible'
+export { Basic } from './examples/basic.tsx'
+export { Collapsible } from './examples/collapsible.tsx'
+export { Context } from './examples/context.tsx'
+export { MultiplePanels } from './examples/multiple-panels.tsx'
+export { Nested } from './examples/nested.tsx'
+export { ResizeIndicator } from './examples/resize-indicator.tsx'
+export { RootProvider } from './examples/root-provider.tsx'
+export { Vertical } from './examples/vertical.tsx'
+export { DynamicCollapsible } from './examples/dynamic-collapsible.tsx'

@@ -2,10 +2,10 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { composeRefs } from '../../utils/compose-refs'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresenceContext } from '../presence'
-import { useComboboxContext } from './use-combobox-context'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { usePresenceContext } from '../presence/index.ts'
+import { useComboboxContext } from './use-combobox-context.ts'
 
 export interface ComboboxContentBaseProps extends PolymorphicProps {}
 export interface ComboboxContentProps extends HTMLProps<'div'>, ComboboxContentBaseProps {}

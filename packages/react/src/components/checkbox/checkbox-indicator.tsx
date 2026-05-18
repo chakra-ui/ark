@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useCheckboxContext } from './use-checkbox-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useCheckboxContext } from './use-checkbox-context.ts'
 
 export interface CheckboxIndicatorBaseProps extends PolymorphicProps {
   indeterminate?: boolean | undefined

@@ -1,7 +1,7 @@
 'use client'
 
-import { createContext } from '../../utils/create-context'
-import type { UseSwitchReturn } from './use-switch'
+import { createContext } from '../../utils/create-context.ts'
+import type { UseSwitchReturn } from './use-switch.ts'
 
 export interface UseSwitchContext extends UseSwitchReturn {}
 

@@ -1,7 +1,7 @@
 'use client'
 
 import type { ResizeTriggerProps } from '@zag-js/splitter'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export const [SplitterResizeTriggerPropsProvider, useSplitterResizeTriggerPropsContext] =
   createContext<ResizeTriggerProps>({

@@ -1,6 +1,6 @@
 import { EnvironmentProvider } from '@ark-ui/react/environment'
 import Frame from 'react-frame-component'
-import { Usage } from './usage'
+import { Usage } from './usage.tsx'
 
 export const Basic = () => {
   return (

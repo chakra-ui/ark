@@ -2,11 +2,11 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { ReactNode } from 'react'
-import type { UsePresenceProps } from '../presence'
-import { PresenceProvider, usePresence } from '../presence'
-import { splitPresenceProps } from '../presence/split-presence-props'
-import type { UseHoverCardReturn } from './use-hover-card'
-import { HoverCardProvider } from './use-hover-card-context'
+import type { UsePresenceProps } from '../presence/index.ts'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { splitPresenceProps } from '../presence/split-presence-props.ts'
+import type { UseHoverCardReturn } from './use-hover-card.ts'
+import { HoverCardProvider } from './use-hover-card-context.ts'
 
 interface RootProviderProps {
   value: UseHoverCardReturn

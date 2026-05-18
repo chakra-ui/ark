@@ -2,8 +2,8 @@
 
 import { Selection, type SelectionMode } from '@zag-js/collection'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useEvent } from '../../utils/use-event'
-import type { CollectionItem, ListCollection } from './list-collection'
+import { useEvent } from '../../utils/use-event.ts'
+import type { CollectionItem, ListCollection } from './list-collection.ts'
 
 export interface UseListSelectionProps<T extends CollectionItem> {
   /**

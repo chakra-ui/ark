@@ -2,11 +2,11 @@
 
 import type { ColorFormat } from '@zag-js/color-picker'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { colorPickerAnatomy } from './color-picker.anatomy'
-import { useColorPickerContext } from './use-color-picker-context'
-import { ColorPickerFormatPropsProvider } from './use-color-picker-format-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { colorPickerAnatomy } from './color-picker.anatomy.ts'
+import { useColorPickerContext } from './use-color-picker-context.ts'
+import { ColorPickerFormatPropsProvider } from './use-color-picker-format-context.ts'
 
 interface FormatOptions {
   format: ColorFormat
