@@ -1,3 +1,5 @@
+// Angular is intentionally excluded: Angular's per-secondary-entry layout (`packages/angular/<comp>/public-api.ts`)
+// is incompatible with the React-source-of-truth `src/components/<comp>/index.ts` pattern this script assumes.
 import { globby, globbySync } from 'globby'
 
 const frameworks = ['react', 'solid', 'vue']

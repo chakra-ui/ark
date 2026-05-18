@@ -1,3 +1,5 @@
+// Angular is intentionally excluded: per docs/technical-requirements.md §5, Angular's directive-centric public API
+// (e.g. ArkAvatarRoot) intentionally differs from React/Solid/Vue's component-namespace surface — name parity is moot.
 import { readFileSync } from 'node:fs'
 import { globby } from 'globby'
 import { type ExportDeclaration, Node, Project } from 'ts-morph'
