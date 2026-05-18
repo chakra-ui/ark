@@ -11,6 +11,7 @@
     "exports:files": "bun run src/exports-files.ts",
     "exports:sync": "bun run src/exports-sync.ts",
     "document:types": "bun run src/generate-type-docs.ts",
+    "document:types:angular": "bun run src/generate-type-docs.angular.ts",
     "document:tags": "bun run src/extend-types-with-tags.ts",
     "vue:props": "bun run src/generate-vue-props.ts",
     "generate-example-registry": "bun run src/generate-example-registry.ts",
