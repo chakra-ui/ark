@@ -17,7 +17,9 @@
     "generate-example-registry": "bun run src/generate-example-registry.ts",
     "play": "bun run src/play.ts",
     "local:sync": "bun run src/symlink.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "test:ci": "bun test"
   },
   "dependencies": {
     "@types/fs-extra": "11.0.4",
