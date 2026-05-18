@@ -7,3 +7,4 @@ export type {
   AvatarStatusChangeDetails,
 } from './avatar.types'
 export { ARK_AVATAR_CONTEXT, injectArkAvatarContext } from './use-avatar-context'
+export { useAvatar, type UseAvatarOptions, type UseAvatarProps, type UseAvatarReturn } from './use-avatar'

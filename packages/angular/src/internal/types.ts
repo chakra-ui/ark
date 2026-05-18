@@ -12,11 +12,7 @@ export interface UseMachineReturn<TState, TApi, TService> {
 export interface UseMachineOptions<TContext, TState, TApi, TService> {
   machine: { start: (context: TContext) => TService }
   context: () => TContext
-  connect: (
-    state: TState,
-    send: UseMachineReturn<TState, TApi, TService>['send'],
-    normalizeProps: typeof normalizePropsFn,
-  ) => TApi
+  connect: (service: TService, normalizeProps: typeof normalizePropsFn) => TApi
 }
 
 export interface ApplyArkPropsOptions {

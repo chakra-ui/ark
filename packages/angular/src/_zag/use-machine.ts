@@ -83,7 +83,10 @@ export function useMachine<TContext extends Record<string, unknown>, TState, TAp
     prevResolvedContext = nextResolvedContext
   })
 
-  const api = computed(() => options.connect(state(), service.send as never, normalizeProps))
+  const api = computed(() => {
+    state()
+    return options.connect(service as unknown as TService, normalizeProps)
+  })
 
   destroyRef.onDestroy(() => {
     unsubscribe()

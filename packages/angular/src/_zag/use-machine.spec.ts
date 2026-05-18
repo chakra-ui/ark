@@ -82,7 +82,7 @@ interface HarnessHandle<TApi> {
 
 function mountHarness<TContext extends Record<string, unknown>, TApi>(
   context: () => TContext,
-  connect: (state: FakeState, send: FakeService['send']) => TApi = ((s: FakeState) => s) as never,
+  connect: (service: FakeService) => TApi = ((service: FakeService) => service.state) as never,
 ): HarnessHandle<TApi> {
   const machine = createFakeMachine()
 
@@ -96,7 +96,7 @@ function mountHarness<TContext extends Record<string, unknown>, TApi>(
   const options: UseMachineOptions<TContext, FakeState, TApi, FakeService> = {
     machine: machine as unknown as { start: (context: TContext) => FakeService },
     context,
-    connect: (state, send) => connect(state, send as FakeService['send']),
+    connect: (service) => connect(service),
   }
 
   const result = runInInjectionContext(injector, () => useMachine<TContext, FakeState, TApi, FakeService>(options))
