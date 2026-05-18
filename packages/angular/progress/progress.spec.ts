@@ -29,6 +29,11 @@ import {
   type UseProgressProps,
   type UseProgressReturn,
 } from '@ark-ui/angular/progress'
+import { ProgressLinearBasicExample } from './examples/linear/basic'
+import { ProgressLinearIndeterminateExample } from './examples/linear/indeterminate'
+import { ProgressLinearRootProviderExample } from './examples/linear/root-provider'
+import { ProgressCircularBasicExample } from './examples/circular/basic'
+import { ProgressCircularRootProviderExample } from './examples/circular/root-provider'
 
 @Directive({ selector: '[progressProbe]', standalone: true, exportAs: 'progressProbe' })
 class ProgressProbe {
@@ -352,5 +357,118 @@ describe('@ark-ui/angular/progress', () => {
     expect(String((thrown as { code?: unknown } | undefined)?.code ?? thrown)).toMatch(
       /NG0950|-950|state|required input/i,
     )
+  })
+
+  it('linear basic example mounts with data-scope="progress" and data-part="root"', () => {
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [ProgressLinearBasicExample] })
+    const fixture = TestBed.createComponent(ProgressLinearBasicExample)
+    fixture.detectChanges()
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkProgressRoot))
+    const rootEl = rootDebug.nativeElement as HTMLElement
+    expect(rootEl.getAttribute('data-scope')).toBe('progress')
+    expect(rootEl.getAttribute('data-part')).toBe('root')
+
+    const host: HTMLElement = fixture.nativeElement
+    const labelEl = host.querySelector('[arkProgressLabel]') as HTMLElement
+    expect(labelEl.getAttribute('data-part')).toBe('label')
+    const trackEl = host.querySelector('[arkProgressTrack]') as HTMLElement
+    expect(trackEl.getAttribute('data-part')).toBe('track')
+    const rangeEl = host.querySelector('[arkProgressRange]') as HTMLElement
+    expect(rangeEl.getAttribute('data-part')).toBe('range')
+
+    fixture.destroy()
+  })
+
+  it('linear indeterminate example sets api().indeterminate === true and data-state="indeterminate"', () => {
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [ProgressLinearIndeterminateExample] })
+    const fixture = TestBed.createComponent(ProgressLinearIndeterminateExample)
+    fixture.detectChanges()
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkProgressRoot))
+    const root = rootDebug.injector.get(ArkProgressRoot)
+    expect(root.api().indeterminate).toBe(true)
+
+    const rootEl = rootDebug.nativeElement as HTMLElement
+    expect(rootEl.getAttribute('data-state')).toBe('indeterminate')
+
+    fixture.destroy()
+  })
+
+  it('circular basic example mounts with data-scope="progress" and the circle parts present', () => {
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [ProgressCircularBasicExample] })
+    const fixture = TestBed.createComponent(ProgressCircularBasicExample)
+    fixture.detectChanges()
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkProgressRoot))
+    const rootEl = rootDebug.nativeElement as HTMLElement
+    expect(rootEl.getAttribute('data-scope')).toBe('progress')
+    expect(rootEl.getAttribute('data-part')).toBe('root')
+
+    const host: HTMLElement = fixture.nativeElement
+    const circleEl = host.querySelector('svg[arkProgressCircle]') as SVGSVGElement
+    expect(circleEl.getAttribute('data-scope')).toBe('progress')
+    expect(circleEl.getAttribute('data-part')).toBe('circle')
+
+    fixture.destroy()
+  })
+
+  it('linear root-provider example wires useProgress() through ArkProgressRootProvider', () => {
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [ProgressLinearRootProviderExample] })
+    const fixture = TestBed.createComponent(ProgressLinearRootProviderExample)
+    fixture.detectChanges()
+
+    const providerDebug = fixture.debugElement.query(By.directive(ArkProgressRootProvider))
+    const provider = providerDebug.injector.get(ArkProgressRootProvider)
+    expect(provider.service).toBe(fixture.componentInstance.progress.service)
+
+    fixture.componentInstance.setToMax()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.progress.api().value).toBe(provider.api().max)
+
+    fixture.destroy()
+  })
+
+  it('circular root-provider example wires useProgress() through ArkProgressRootProvider', () => {
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [ProgressCircularRootProviderExample] })
+    const fixture = TestBed.createComponent(ProgressCircularRootProviderExample)
+    fixture.detectChanges()
+
+    const providerDebug = fixture.debugElement.query(By.directive(ArkProgressRootProvider))
+    const provider = providerDebug.injector.get(ArkProgressRootProvider)
+    expect(provider.service).toBe(fixture.componentInstance.progress.service)
+
+    fixture.destroy()
+  })
+
+  it('[defaultValue] seeds api().value on first change detection without emitting (valueChange)', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkProgressRoot],
+      template: '<div arkProgress [defaultValue]="42" (valueChange)="emissions.push($event)"></div>',
+    })
+    class Host {
+      readonly emissions: Array<number | null | undefined> = []
+    }
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkProgressRoot))
+    const root = rootDebug.injector.get(ArkProgressRoot)
+
+    expect(root.api().value).toBe(42)
+    expect(fixture.componentInstance.emissions).toEqual([])
+
+    fixture.destroy()
   })
 })

@@ -96,6 +96,23 @@ export function useMachine<TSchema extends MachineSchema, TApi>(
     const initial = params().value ?? params().defaultValue
     const value = signal<T | undefined>(initial)
     const ref = { current: initial }
+    let userTouched = false
+
+    // Track late-arriving defaultValue changes. Angular signal inputs are not
+    // populated until after the directive is constructed, so an uncontrolled
+    // bindable's `initial` may capture an undefined/fallback default that is
+    // later patched in via setContext. While the consumer hasn't called set()
+    // and the bindable remains uncontrolled, re-seed the stored value from
+    // the latest params().defaultValue. This bypasses onChange (which only
+    // fires from bindable.set), so no spurious change events are emitted.
+    effect(() => {
+      const nextDefault = params().defaultValue
+      const controlled = params().value !== undefined
+      if (userTouched || controlled) return
+      if (!Object.is(untracked(value), nextDefault)) {
+        value.set(nextDefault)
+      }
+    })
 
     const get = (): T => {
       const controlled = params().value !== undefined
@@ -115,6 +132,7 @@ export function useMachine<TSchema extends MachineSchema, TApi>(
           console.log(`[bindable > ${params().debug}] setValue`, { next, prev })
         }
         if (params().value === undefined) {
+          userTouched = true
           value.set(next)
         }
         if (!(params().isEqual ?? Object.is)(next, prev)) {
