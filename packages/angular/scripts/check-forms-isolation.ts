@@ -25,6 +25,11 @@ const entryPoints = [
     outputs: ['dist/fesm2022/ark-ui-angular-progress.mjs'],
   },
   {
+    name: '@ark-ui/angular/toggle',
+    file: 'toggle/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-toggle.mjs'],
+  },
+  {
     name: '@ark-ui/angular/client-only',
     file: 'src/client-only/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-src-client-only.mjs'],

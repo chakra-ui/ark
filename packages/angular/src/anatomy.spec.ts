@@ -10,4 +10,9 @@ describe('package anatomy aggregate', () => {
     const mod = await import('./anatomy')
     expect(mod.progressAnatomy).toBeDefined()
   })
+
+  it('re-exports toggleAnatomy', async () => {
+    const mod = await import('./anatomy')
+    expect(mod.toggleAnatomy).toBeDefined()
+  })
 })

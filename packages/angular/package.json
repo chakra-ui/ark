@@ -32,6 +32,11 @@
       "types": "./dist/progress/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-progress.mjs"
     },
+    "./toggle": {
+      "source": "./toggle/public-api.ts",
+      "types": "./dist/toggle/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-toggle.mjs"
+    },
     "./src/_zag": {
       "source": "./src/_zag/public-api.ts",
       "types": "./dist/src/_zag/index.d.ts",
