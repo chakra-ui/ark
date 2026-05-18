@@ -1,6 +1,7 @@
 import { type AccessibilityDocKey, type DataAttrDocKey, getAccessibilityDoc, getDataAttrDoc } from '@zag-js/docs'
 import { frameworkExample } from '~/components/example'
 import { cmdMap } from '~/components/install-cmd'
+import { formatAngularPropName, isAngularRequiredKind } from '~/lib/angular-prop-binding'
 import type { Pages } from '.velite'
 import { types } from '.velite'
 
@@ -57,15 +58,17 @@ type Part = (typeof types)[number]['parts'][keyof (typeof types)[number]['parts'
 
 // Component type formatting
 const formatPropTypes = (props: NonNullable<Part['props']>) =>
-  Object.entries(props ?? {}).map(([propName, propDetails]) =>
-    [
-      `**\`${propName}\`**`,
+  Object.entries(props ?? {}).map(([propName, propDetails]) => {
+    const displayName = formatAngularPropName(propName, propDetails.kind)
+    const required = propDetails.isRequired || isAngularRequiredKind(propDetails.kind)
+    return [
+      `**\`${displayName}\`**`,
       `Type: \`${propDetails.type}\``,
-      `Required: ${propDetails.isRequired ? 'true' : 'false'}`,
+      `Required: ${required ? 'true' : 'false'}`,
       `Default Value: \`${propDetails.defaultValue}\``,
       `Description: ${propDetails.description}`,
-    ].join('\n'),
-  )
+    ].join('\n')
+  })
 
 const formatEmitTypes = (emits: NonNullable<Part['emits']>) =>
   Object.entries(emits ?? {}).map(([emitName, emitDetails]) =>
