@@ -23,35 +23,35 @@ describe('Angular type-doc generator (Avatar)', () => {
   })
 
   it('extracts Root.id as a plain input', async () => {
-    const id = (await doc).Root.props.id
+    const id = (await doc)['Root'].props['id']
     expect(id.kind).toBe('input')
     expect(id.isRequired).toBe(false)
     expect(id.type).toBe('string')
   })
 
   it('extracts Root.ids with the alias-resolved Partial type', async () => {
-    const ids = (await doc).Root.props.ids
+    const ids = (await doc)['Root'].props['ids']
     expect(ids.kind).toBe('input')
     expect(ids.isRequired).toBe(false)
     expect(ids.type).toBe('Partial<{ root: string; image: string; fallback: string }>')
   })
 
   it('extracts Root.statusChange as an output with the locally-aliased details type', async () => {
-    const statusChange = (await doc).Root.props.statusChange
+    const statusChange = (await doc)['Root'].props['statusChange']
     expect(statusChange.kind).toBe('output')
     expect(statusChange.isRequired).toBe(false)
     expect(statusChange.type).toBe('AvatarStatusChangeDetails')
   })
 
   it('extracts RootProvider.value as a required input', async () => {
-    const value = (await doc).RootProvider.props.value
+    const value = (await doc)['RootProvider'].props['value']
     expect(value.kind).toBe('required-input')
     expect(value.isRequired).toBe(true)
     expect(value.type).toBe('UseAvatarReturn')
   })
 
   it('emits empty props for Image and Fallback', async () => {
-    expect((await doc).Image.props).toEqual({})
-    expect((await doc).Fallback.props).toEqual({})
+    expect((await doc)['Image'].props).toEqual({})
+    expect((await doc)['Fallback'].props).toEqual({})
   })
 })

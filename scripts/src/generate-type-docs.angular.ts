@@ -8,6 +8,7 @@ import {
   type ClassDeclaration,
   type PropertyDeclaration,
   type SourceFile,
+  type Type,
   Node,
   Project,
   SyntaxKind,
@@ -29,19 +30,38 @@ export interface AngularPartEntry {
 
 export type AngularTypeDoc = Record<string, AngularPartEntry>
 
-const prettierConfig = await prettier.resolveConfig('.')
+let prettierConfig: Awaited<ReturnType<typeof prettier.resolveConfig>> | undefined
 
-async function tryPrettier(typeName: string): Promise<string> {
+async function getPrettierConfig(rootDir: string): Promise<NonNullable<typeof prettierConfig>> {
+  if (prettierConfig === undefined) {
+    prettierConfig = await prettier.resolveConfig(path.join(rootDir, 'package.json'))
+  }
+  return prettierConfig ?? {}
+}
+
+async function tryPrettier(typeName: string, rootDir: string): Promise<string> {
   try {
-    const prefix = 'type ONLY_FOR_FORMAT = '
-    const prettyType = await prettier.format(prefix + typeName, {
-      ...prettierConfig,
+    const prettyType = await prettier.format(`type ONLY_FOR_FORMAT = ${typeName}`, {
+      ...(await getPrettierConfig(rootDir)),
       parser: 'typescript',
     })
-    return prettyType.replace(prefix, '').trim()
+    return collapseRedundantPartial(
+      prettyType
+        .replace(/^type ONLY_FOR_FORMAT\s*=\s*/, '')
+        .replace(/;\s*$/, '')
+        .trim(),
+    )
   } catch {
     return typeName
   }
+}
+
+function collapseRedundantPartial(typeName: string): string {
+  let result = typeName
+  while (/^Partial<\s*Partial<[\s\S]*>\s*>$/.test(result)) {
+    result = result.replace(/^Partial<\s*Partial<([\s\S]*)>\s*>$/, 'Partial<$1>')
+  }
+  return result
 }
 
 function getRepoRoot(): string {
@@ -92,16 +112,30 @@ function getDecoratorStringProperty(decoratorCall: CallExpression, propertyName:
   return undefined
 }
 
+function pascalCaseComponent(component: string): string {
+  return component
+    .split('-')
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('')
+}
+
+function camelCaseComponent(component: string): string {
+  const pascal = pascalCaseComponent(component)
+  return pascal.charAt(0).toLowerCase() + pascal.slice(1)
+}
+
 function derivePartName(classDeclaration: ClassDeclaration, component: string): string | undefined {
   const className = classDeclaration.getName()
   if (!className) return undefined
-  const componentPascal = component.charAt(0).toUpperCase() + component.slice(1)
+  const componentPascal = pascalCaseComponent(component)
+  const componentCamel = camelCaseComponent(component)
   const arkPrefix = `Ark${componentPascal}`
 
   const decoratorCall = getDirectiveDecorator(classDeclaration)
   const exportAs = decoratorCall ? getDecoratorStringProperty(decoratorCall, 'exportAs') : undefined
 
-  if (exportAs === `ark${componentPascal}` || className === `${arkPrefix}Root` || className === arkPrefix) {
+  if (exportAs === `ark${componentCamel}` || className === `${arkPrefix}Root` || className === arkPrefix) {
     return 'Root'
   }
   if (exportAs === `ark${componentPascal}RootProvider` || className.endsWith('RootProvider')) {
@@ -202,6 +236,18 @@ function applyAliasMap(typeText: string, aliasMap: Map<string, string>): string 
   return result
 }
 
+function getTypeTextWithoutUndefined(type: Type, property: PropertyDeclaration): string {
+  const unionTypes = type.getUnionTypes()
+  if (unionTypes.length === 0) return type.getText(property)
+
+  const withoutUndefined = unionTypes.filter((unionType) => !unionType.isUndefined())
+  if (withoutUndefined.length === unionTypes.length || withoutUndefined.length === 0) {
+    return type.getText(property)
+  }
+
+  return withoutUndefined.map((unionType) => unionType.getText(property)).join(' | ')
+}
+
 function getDescription(property: PropertyDeclaration): string | undefined {
   const docs = property.getJsDocs()
   if (docs.length === 0) return undefined
@@ -217,6 +263,7 @@ async function extractPropEntry(
   classDeclaration: ClassDeclaration,
   sourceFile: SourceFile,
   aliasMap: Map<string, string>,
+  rootDir: string,
 ): Promise<{ name: string; entry: AngularPropEntry } | undefined> {
   if (!property.hasModifier(SyntaxKind.ReadonlyKeyword)) return undefined
   if (property.hasModifier(SyntaxKind.PrivateKeyword)) return undefined
@@ -241,10 +288,9 @@ async function extractPropEntry(
   if (!innerType) {
     throw new Error(`Could not resolve inner type for ${property.getName()} (${sourceFile.getFilePath()})`)
   }
-  const nonNullable = innerType.getNonNullableType()
-  const rawType = nonNullable.getText(property)
+  const rawType = getTypeTextWithoutUndefined(innerType, property)
   const aliased = applyAliasMap(rawType, aliasMap)
-  const type = await tryPrettier(aliased)
+  const type = await tryPrettier(aliased, rootDir)
 
   const isRequired = kind === 'required-input'
 
@@ -254,7 +300,7 @@ async function extractPropEntry(
     kind,
   }
 
-  if (kind === 'input') {
+  if (kind === 'input' || kind === 'model') {
     const firstArg = callExpression.getArguments()[0]
     if (firstArg && isLiteralArg(firstArg)) {
       entry.defaultValue = firstArg.getText()
@@ -342,7 +388,13 @@ export async function generateAngularTypeDoc(component: string, rootDir?: string
     const props: Record<string, AngularPropEntry> = {}
     const aliasMap = buildNamespaceAliasMap(classDeclaration.getSourceFile())
     for (const property of classDeclaration.getProperties()) {
-      const extracted = await extractPropEntry(property, classDeclaration, classDeclaration.getSourceFile(), aliasMap)
+      const extracted = await extractPropEntry(
+        property,
+        classDeclaration,
+        classDeclaration.getSourceFile(),
+        aliasMap,
+        root,
+      )
       if (extracted) {
         props[extracted.name] = extracted.entry
       }
