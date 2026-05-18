@@ -3,6 +3,7 @@ import {
   Directive,
   EnvironmentInjector,
   Injector,
+  type OnInit,
   type ProviderToken,
   booleanAttribute,
   forwardRef,
@@ -37,7 +38,7 @@ import { useHoverCard, type UseHoverCardReturn } from './use-hover-card'
     },
   ],
 })
-export class ArkHoverCardRoot implements UseHoverCardReturn {
+export class ArkHoverCardRoot implements OnInit, UseHoverCardReturn {
   /** The unique identifier of the hover card. */
   readonly id: InputSignal<string | undefined> = input<string | undefined>(undefined)
   /** The ids of the elements in the hover card. Useful for composition. */
@@ -67,8 +68,8 @@ export class ArkHoverCardRoot implements UseHoverCardReturn {
     context: () => ({
       id: this.id(),
       ids: this.ids(),
-      open: this.open() ?? this.defaultOpen(),
-      defaultOpen: this.defaultOpen(),
+      open: this.open(),
+      defaultOpen: false,
       disabled: this.disabled(),
       openDelay: this.openDelay(),
       closeDelay: this.closeDelay(),
@@ -97,6 +98,13 @@ export class ArkHoverCardRoot implements UseHoverCardReturn {
     originInjector: inject(Injector),
     environmentInjector: inject(EnvironmentInjector),
   })
+
+  ngOnInit(): void {
+    const defaultOpen = this.defaultOpen()
+    if (defaultOpen && this.open() === undefined) {
+      this.send({ type: 'CONTROLLED.OPEN' })
+    }
+  }
 
   /** @internal Exposed for hover card part directives to consume via ARK_HOVER_CARD_CONTEXT_CARRIER. */
   getContextCarrier(): ArkContextCarrier<ArkHoverCardRoot> {

@@ -419,7 +419,7 @@ describe('@ark-ui/angular/hover-card', () => {
     }).not.toThrow()
   })
 
-  it('controlled [(open)] round-trips a host signal and does not re-emit when same value written twice', () => {
+  it('controlled [(open)] round-trips a host signal and does not re-emit when same value written twice', async () => {
     @Component({
       standalone: true,
       imports: [ArkHoverCardRoot, ArkHoverCardPositioner, ArkHoverCardContent, ArkPortalComponent],
@@ -448,12 +448,16 @@ describe('@ark-ui/angular/hover-card', () => {
     fixture.componentInstance.open.set(true)
     TestBed.tick()
     fixture.detectChanges()
+    await TestBed.inject(ApplicationRef).whenStable()
+    fixture.detectChanges()
 
     expect(root.api().open).toBe(true)
     const emissionsAfterFirstWrite = fixture.componentInstance.emissions.length
 
     fixture.componentInstance.open.set(true)
     TestBed.tick()
+    fixture.detectChanges()
+    await TestBed.inject(ApplicationRef).whenStable()
     fixture.detectChanges()
 
     expect(root.api().open).toBe(true)
@@ -527,6 +531,42 @@ describe('@ark-ui/angular/hover-card', () => {
     const root = rootDebug.injector.get(ArkHoverCardRoot)
 
     expect(root.api().open).toBe(true)
+
+    fixture.destroy()
+  })
+
+  it('[defaultOpen] is initial-only for uncontrolled hover cards', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkHoverCardRoot, ArkHoverCardPositioner, ArkHoverCardContent, ArkPortalComponent],
+      template: `
+        <div arkHoverCard [defaultOpen]="defaultOpen()" #root="arkHoverCard">
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkHoverCardPositioner>
+              <div arkHoverCardContent></div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {
+      readonly defaultOpen = signal(false)
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkHoverCardRoot))
+    const root = rootDebug.injector.get(ArkHoverCardRoot)
+
+    expect(root.api().open).toBe(false)
+
+    fixture.componentInstance.defaultOpen.set(true)
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(root.api().open).toBe(false)
 
     fixture.destroy()
   })
