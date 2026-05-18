@@ -6,6 +6,11 @@ describe('package anatomy aggregate', () => {
     expect(mod.avatarAnatomy).toBeDefined()
   })
 
+  it('re-exports collapsibleAnatomy', async () => {
+    const mod = await import('./anatomy')
+    expect(mod.collapsibleAnatomy).toBeDefined()
+  })
+
   it('re-exports progressAnatomy', async () => {
     const mod = await import('./anatomy')
     expect(mod.progressAnatomy).toBeDefined()

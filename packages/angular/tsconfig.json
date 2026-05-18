@@ -6,6 +6,7 @@
     "baseUrl": ".",
     "paths": {
       "@ark-ui/angular/avatar": ["avatar/public-api.ts"],
+      "@ark-ui/angular/collapsible": ["src/collapsible/public-api.ts"],
       "@ark-ui/angular/progress": ["progress/public-api.ts"],
       "@ark-ui/angular/toggle": ["toggle/public-api.ts"],
       "@ark-ui/angular/src/_zag": ["src/_zag/public-api.ts"],
