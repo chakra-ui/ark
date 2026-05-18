@@ -6,7 +6,7 @@ import { css } from 'styled-system/css'
 import { Box } from 'styled-system/jsx'
 import { Tabs } from '~/components/ui/tabs'
 import type { SupportedLang } from '~/lib/shiki-client'
-import { type Framework, openInStackblitz } from '~/lib/stackblitz'
+import { isStackblitzFramework, openInStackblitz } from '~/lib/stackblitz'
 import { CodePreview } from './code-preview'
 
 export interface CodeExample {
@@ -98,6 +98,8 @@ function StackblitzButton(props: {
 
   const example = examples.find((example) => example.value === tabs.value)
   if (!example) return null
+  const selectedFramework = tabs.value ?? framework
+  if (!isStackblitzFramework(selectedFramework)) return null
 
   return (
     <button
@@ -115,7 +117,6 @@ function StackblitzButton(props: {
         _icon: { boxSize: '4', color: 'coral.8' },
       })}
       onClick={() => {
-        const selectedFramework = (tabs.value ?? framework) as Framework
         openInStackblitz(selectedFramework, {
           code: example.code,
           cssModules,

@@ -2,6 +2,7 @@ import { type AccessibilityDocKey, type DataAttrDocKey, getAccessibilityDoc, get
 import { frameworkExample } from '~/components/example'
 import { cmdMap } from '~/components/install-cmd'
 import { formatAngularPropName, isAngularRequiredKind } from '~/lib/angular-prop-binding'
+import type { Framework } from '~/lib/frameworks'
 import type { Pages } from '.velite'
 import { types } from '.velite'
 
@@ -131,7 +132,7 @@ const replaceExamples = async (content: string, page: Pages, framework: string) 
   return res
 }
 
-export const cleanupPageContent = async (page: Pages, framework: 'react' | 'solid' | 'vue' | 'svelte') => {
+export const cleanupPageContent = async (page: Pages, framework: Framework) => {
   if (!page.llm) return ''
   let res = page.llm
 

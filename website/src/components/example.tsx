@@ -1,10 +1,10 @@
 import { existsSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
-import { Match } from 'effect'
 import { css, cx } from 'styled-system/css'
 import { Stack } from 'styled-system/jsx'
 import type { SupportedLang } from '~/lib/shiki-client'
+import { cleanExampleCode, getFrameworkExampleFilePath, getFrameworkExtension } from '~/lib/framework-example-paths'
 import { getFramework } from '~/lib/frameworks'
 import { getServerContext } from '~/lib/server-context'
 import { CollapsibleCode } from './collapsible-code'
@@ -66,49 +66,17 @@ export const ExampleCode = async (props: Props) => {
   )
 }
 
-const getExamplePath = (component: string) =>
-  Match.value(component).pipe(
-    Match.when(
-      () => ['progress-circular', 'progress-linear'].includes(component),
-      () => `components/progress/examples/${component.split('-')[1]}`,
-    ),
-    Match.when(
-      () => ['environment', 'locale'].includes(component),
-      () => `providers/${component}/examples`,
-    ),
-    Match.orElse(() => `components/${component}/examples`),
-  )
-
-const getExtension = (framework: string) =>
-  Match.value(framework).pipe(
-    Match.when('vue', () => 'vue'),
-    Match.when('svelte', () => 'svelte'),
-    Match.when('angular', () => 'ts'),
-    Match.orElse(() => 'tsx'),
-  )
-
-const getSrcPath = (framework: string) =>
-  Match.value(framework).pipe(
-    Match.when('svelte', () => 'src/lib'),
-    Match.orElse(() => 'src'),
-  )
-
 export const frameworkExample = async (
   framework: string,
   component: string,
   id: string,
 ): Promise<{ code: string; extension: string }> => {
-  const extension = getExtension(framework)
-  const fileName = [id, extension].join('.')
-
-  const filePath =
-    framework === 'angular'
-      ? join(process.cwd(), '..', 'packages', 'angular', component, 'examples', fileName)
-      : join(process.cwd(), `../packages/${framework}/${getSrcPath(framework)}`, getExamplePath(component), fileName)
+  const extension = getFrameworkExtension(framework)
+  const filePath = getFrameworkExampleFilePath(framework, component, id)
 
   const content = await readFile(filePath, 'utf-8').catch(() => 'Example not found')
 
-  const code = content.replaceAll(/from '\.\/icons'/g, `from 'lucide-vue-next'`).replace(/.*@ts-expect-error.*\n/g, '')
+  const code = cleanExampleCode(framework, content)
   return { code, extension }
 }
 

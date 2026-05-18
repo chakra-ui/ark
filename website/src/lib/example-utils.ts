@@ -1,48 +1,24 @@
 import { readFile, readdir } from 'node:fs/promises'
 import { join } from 'node:path'
-import { Match } from 'effect'
 import { Project } from 'ts-morph'
+import {
+  cleanExampleCode,
+  getFrameworkExampleDir,
+  getFrameworkExampleFilePath,
+  getFrameworkExtension,
+  getExamplePath,
+  getPackageBasePath,
+  getSrcPath,
+} from './framework-example-paths'
 
-export const SUPPORTED_FRAMEWORKS = ['react', 'solid', 'vue', 'svelte'] as const
+export { getExamplePath, getFrameworkExtension, getPackageBasePath, getSrcPath }
+
+export const SUPPORTED_FRAMEWORKS = ['react', 'solid', 'vue', 'svelte', 'angular'] as const
 
 export type Framework = (typeof SUPPORTED_FRAMEWORKS)[number]
 
 export const validateFramework = (framework: string): framework is Framework => {
   return SUPPORTED_FRAMEWORKS.includes(framework as Framework)
-}
-
-export const getFrameworkExtension = (framework: string) => {
-  return Match.value(framework).pipe(
-    Match.when('vue', () => 'vue'),
-    Match.when('svelte', () => 'svelte'),
-    Match.orElse(() => 'tsx'),
-  )
-}
-
-export const getExamplePath = (component: string) => {
-  return Match.value(component).pipe(
-    Match.when(
-      () => ['progress-circular', 'progress-linear'].includes(component),
-      () => `components/progress/examples/${component.split('-')[1]}`,
-    ),
-    Match.when(
-      () => ['environment', 'locale'].includes(component),
-      () => `providers/${component}/examples`,
-    ),
-    Match.orElse(() => `components/${component}/examples`),
-  )
-}
-
-export const getSrcPath = (framework: string) => {
-  return Match.value(framework).pipe(
-    Match.when('svelte', () => 'src/lib'),
-    Match.orElse(() => 'src'),
-  )
-}
-
-export const getPackageBasePath = (framework: string) => {
-  const srcPath = getSrcPath(framework)
-  return join(process.cwd(), `../packages/${framework}/${srcPath}`)
 }
 
 export const extractNpmDependencies = (code: string): string[] => {
@@ -70,15 +46,30 @@ export const extractNpmDependencies = (code: string): string[] => {
 }
 
 export const cleanCode = (content: string): string => {
-  return content
-    .replaceAll(/from '\.\/icons'/g, `from 'lucide-vue-next'`)
-    .replaceAll(/from 'styles\//g, `from './`)
-    .replace(/.*@ts-expect-error.*\n/g, '')
+  return cleanExampleCode('vue', content).replaceAll(/from 'styles\//g, `from './`)
 }
 
 export const getAllComponents = async (framework: string): Promise<string[]> => {
   const basePath = getPackageBasePath(framework)
   const components = new Set<string>()
+
+  if (framework === 'angular') {
+    try {
+      const componentDirs = await readdir(basePath, { withFileTypes: true })
+      for (const dir of componentDirs) {
+        if (!dir.isDirectory()) continue
+        try {
+          await readdir(join(basePath, dir.name, 'examples'))
+          components.add(dir.name)
+        } catch {
+          // No examples directory, skip
+        }
+      }
+    } catch (error) {
+      console.error('Error reading components:', error)
+    }
+    return Array.from(components).sort()
+  }
 
   try {
     // Check components directory
@@ -138,11 +129,8 @@ export const getAllComponents = async (framework: string): Promise<string[]> => 
 }
 
 export const getComponentExamples = async (framework: string, component: string): Promise<string[]> => {
-  const basePath = getPackageBasePath(framework)
-  const examplePath = getExamplePath(component)
   const extension = getFrameworkExtension(framework)
-
-  const fullPath = join(basePath, examplePath)
+  const fullPath = getFrameworkExampleDir(framework, component)
 
   try {
     const files = await readdir(fullPath)
@@ -156,13 +144,7 @@ export const getComponentExamples = async (framework: string, component: string)
 }
 
 export const readExampleFile = async (framework: string, component: string, exampleId: string): Promise<string> => {
-  const extension = getFrameworkExtension(framework)
-  const examplePath = getExamplePath(component)
-  const basePath = getPackageBasePath(framework)
-  const fileName = `${exampleId}.${extension}`
-  const fullPath = join(basePath, examplePath, fileName)
-
-  return await readFile(fullPath, 'utf-8')
+  return await readFile(getFrameworkExampleFilePath(framework, component, exampleId), 'utf-8')
 }
 
 const STYLE_IMPORT_RE = /from '\.\/([\w-]+\.module\.css)'/g

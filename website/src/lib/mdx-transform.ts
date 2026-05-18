@@ -8,44 +8,16 @@ import {
 } from '@zag-js/docs'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
+import { cleanExampleCode, getFrameworkExampleFilePath, getFrameworkExtension } from './framework-example-paths'
 
 const frameworks = ['react', 'solid', 'vue', 'svelte', 'angular'] as const
 
-function getFrameworkExtension(framework: string): string {
-  if (framework === 'vue') return 'vue'
-  if (framework === 'svelte') return 'svelte'
-  if (framework === 'angular') return 'ts'
-  return 'tsx'
-}
-
-function getExamplePath(component: string): string {
-  if (['progress-circular', 'progress-linear'].includes(component)) {
-    return `components/progress/examples/${component.split('-')[1]}`
-  }
-  if (['environment', 'locale'].includes(component)) {
-    return `providers/${component}/examples`
-  }
-  return `components/${component}/examples`
-}
-
 function readExampleFile(framework: string, component: string, id: string): string | null {
-  const extension = getFrameworkExtension(framework)
-  const filePath =
-    framework === 'angular'
-      ? join(process.cwd(), '..', 'packages', 'angular', component, 'examples', `${id}.${extension}`)
-      : join(
-          process.cwd(),
-          '..',
-          'packages',
-          framework,
-          framework === 'svelte' ? 'src/lib' : 'src',
-          getExamplePath(component),
-          `${id}.${extension}`,
-        )
+  const filePath = getFrameworkExampleFilePath(framework, component, id)
 
   try {
     const content = readFileSync(filePath, 'utf-8')
-    return content.replaceAll(/from '\.\/icons'/g, `from 'lucide-react'`).replace(/.*@ts-expect-error.*\n/g, '')
+    return cleanExampleCode(framework, content)
   } catch {
     return null
   }

@@ -56,8 +56,8 @@ export const PropsTable = (props: Props) => {
                 <Code size="sm" color="colorPalette.default">
                   {formatAngularPropName(name, property.kind)}
                 </Code>
-                {isAngularRequiredKind(property.kind) && (
-                  <Text as="span" color="fg.error" ml="1" aria-label="required">
+                {(property.isRequired || isAngularRequiredKind(property.kind)) && (
+                  <Text as="span" color="fg.error" ml="1" role="img" aria-label="required">
                     *
                   </Text>
                 )}

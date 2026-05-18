@@ -8,7 +8,7 @@ import { Switch } from '~/components/ui/switch'
 import { Tabs } from '~/components/ui/tabs'
 import { getPrimaryCssModules, rewriteCssImports, stripCss } from '~/lib/css-module-transform'
 import type { SupportedLang } from '~/lib/shiki-client'
-import { type Framework, openInStackblitz } from '~/lib/stackblitz'
+import { isStackblitzFramework, openInStackblitz } from '~/lib/stackblitz'
 import { CodePreview } from './code-preview'
 
 interface ExampleMeta {
@@ -130,6 +130,8 @@ function StackblitzButton(props: { code: string; cssModules: Record<string, stri
     meta: { id, component, framework },
   } = props
 
+  if (!isStackblitzFramework(framework)) return null
+
   return (
     <button
       type="button"
@@ -146,7 +148,7 @@ function StackblitzButton(props: { code: string; cssModules: Record<string, stri
         _icon: { boxSize: '4', color: 'coral.8' },
       })}
       onClick={() => {
-        openInStackblitz(framework as Framework, {
+        openInStackblitz(framework, {
           code,
           cssModules,
           id,

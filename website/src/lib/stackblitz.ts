@@ -19,6 +19,11 @@ const handlers: Record<Framework, (opts: StackblitzOptions) => void> = {
   svelte: openInStackblitzSvelte,
 }
 
-export const openInStackblitz = (framework: Framework, opts: StackblitzOptions): void => {
-  handlers[framework]?.(opts)
+export const isStackblitzFramework = (framework: string): framework is Framework => {
+  return framework in handlers
+}
+
+export const openInStackblitz = (framework: string, opts: StackblitzOptions): void => {
+  if (!isStackblitzFramework(framework)) return
+  handlers[framework](opts)
 }
