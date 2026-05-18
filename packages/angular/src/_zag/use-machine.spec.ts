@@ -1,4 +1,4 @@
-import { Component, Injector, runInInjectionContext, signal } from '@angular/core'
+import { Component, runInInjectionContext, signal } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { beforeEach, describe, expect, it } from 'vitest'
 import type { UseMachineOptions, UseMachineReturn } from '../internal/types'
@@ -113,9 +113,8 @@ describe('useMachine', () => {
     TestBed.resetTestingModule()
   })
 
-  it('initializes the service exactly once with the initial context (criterion 8)', async () => {
+  it('initializes the service exactly once with the initial context (criterion 8)', () => {
     const handle = mountHarness(() => ({ open: false, label: 'foo' }))
-    await TestBed.inject(Injector).get(Injector) // no-op to satisfy lints
     expect(handle.machine.__startCalls).toBe(1)
     expect(handle.machine.__initialContext).toMatchObject({ open: false, label: 'foo' })
     handle.destroy()
@@ -154,10 +153,20 @@ describe('useMachine', () => {
     handler.set(() => 'second')
     TestBed.tick()
 
-    const calls = handle.machine.__service!.__setContextCalls
-    expect(calls.length).toBe(1)
-    expect(calls[0]!['onSelect']).toBe(initialWrapper)
-    expect((calls[0]!['onSelect'] as () => string)()).toBe('second')
+    expect(handle.machine.__service!.__setContextCalls.length).toBe(0)
+    expect((initialWrapper as () => string)()).toBe('second')
+    handle.destroy()
+  })
+
+  it('patches disappeared context keys to undefined', () => {
+    const ctx = signal<Record<string, unknown>>({ open: false, label: 'foo' })
+    const handle = mountHarness(() => ctx())
+    TestBed.tick()
+
+    ctx.set({ open: false })
+    TestBed.tick()
+
+    expect(handle.machine.__service!.__setContextCalls).toEqual([{ label: undefined }])
     handle.destroy()
   })
 

@@ -46,6 +46,7 @@ export function useMachine<TContext extends Record<string, unknown>, TState, TAp
     initialContext[key] = resolveValue(key, (initialContextRaw as Record<string, unknown>)[key])
   }
   let prevRawContext: TContext = initialContextRaw
+  let prevResolvedContext = initialContext
 
   const service = options.machine.start(initialContext as TContext) as unknown as ZagServiceLike<TState> & TService
 
@@ -56,13 +57,22 @@ export function useMachine<TContext extends Record<string, unknown>, TState, TAp
 
   effect(() => {
     const nextRaw = options.context()
+    const nextKeys = new Set(Object.keys(nextRaw))
+    for (const key of Object.keys(prevRawContext)) {
+      nextKeys.add(key)
+    }
     const patch: Record<string, unknown> = {}
     let hasChanges = false
-    for (const key of Object.keys(nextRaw)) {
+    const nextResolvedContext: Record<string, unknown> = {}
+    for (const key of nextKeys) {
       const nextRawValue = (nextRaw as Record<string, unknown>)[key]
       const prevRawValue = (prevRawContext as Record<string, unknown>)[key]
-      if (!Object.is(prevRawValue, nextRawValue)) {
-        patch[key] = resolveValue(key, nextRawValue)
+      const nextResolvedValue = key in nextRaw ? resolveValue(key, nextRawValue) : undefined
+      if (key in nextRaw) {
+        nextResolvedContext[key] = nextResolvedValue
+      }
+      if (!Object.is(prevRawValue, nextRawValue) && !Object.is(prevResolvedContext[key], nextResolvedValue)) {
+        patch[key] = nextResolvedValue
         hasChanges = true
       }
     }
@@ -70,6 +80,7 @@ export function useMachine<TContext extends Record<string, unknown>, TState, TAp
       service.setContext(patch)
     }
     prevRawContext = nextRaw
+    prevResolvedContext = nextResolvedContext
   })
 
   const api = computed(() => options.connect(state(), service.send as never, normalizeProps))

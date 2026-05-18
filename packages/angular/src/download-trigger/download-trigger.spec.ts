@@ -1,8 +1,8 @@
-import { Component, PLATFORM_ID, signal } from '@angular/core'
+import { Component, ErrorHandler, PLATFORM_ID, signal } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
-const downloadFileMock = vi.fn()
+const { downloadFileMock } = vi.hoisted(() => ({ downloadFileMock: vi.fn() }))
 
 vi.mock('@zag-js/file-utils', () => ({
   downloadFile: (...args: unknown[]) => downloadFileMock(...args),
@@ -10,7 +10,7 @@ vi.mock('@zag-js/file-utils', () => ({
 
 import { ArkDownloadTriggerDirective, type DownloadData } from './download-trigger'
 
-describe('ArkDownloadTriggerDirective (criterion 30)', () => {
+describe('ArkDownloadTriggerDirective', () => {
   beforeEach(() => {
     TestBed.resetTestingModule()
     downloadFileMock.mockReset()
@@ -72,13 +72,13 @@ describe('ArkDownloadTriggerDirective (criterion 30)', () => {
 
   it('awaits a function returning a Promise before delegating to downloadFile', async () => {
     const blob = new Blob(['async-bytes'], { type: 'application/octet-stream' })
-    const provider = vi.fn<() => Promise<Blob>>(() => Promise.resolve(blob))
+    const promise = Promise.resolve(blob)
+    const provider = vi.fn<() => Promise<Blob>>(() => promise)
     const { button } = mount(provider, 'async.bin', 'application/octet-stream')
     button.click()
 
     expect(downloadFileMock).not.toHaveBeenCalled()
-    await Promise.resolve()
-    await Promise.resolve()
+    await promise
 
     expect(provider).toHaveBeenCalledTimes(1)
     expect(downloadFileMock).toHaveBeenCalledTimes(1)
@@ -86,6 +86,50 @@ describe('ArkDownloadTriggerDirective (criterion 30)', () => {
       file: blob,
       name: 'async.bin',
       type: 'application/octet-stream',
+      win: window,
+    })
+  })
+
+  it('routes rejected async providers through Angular error handling', async () => {
+    const error = new Error('download failed')
+    const handleError = vi.fn()
+    const provider = vi.fn<() => Promise<Blob>>(() => Promise.reject(error))
+
+    const dataSignal = signal<DownloadData | undefined>(provider)
+
+    @Component({
+      standalone: true,
+      imports: [ArkDownloadTriggerDirective],
+      template: '<button type="button" arkDownloadTrigger [data]="data()"></button>',
+    })
+    class HostComponent {
+      readonly data = dataSignal
+    }
+
+    TestBed.configureTestingModule({
+      imports: [HostComponent],
+      providers: [{ provide: ErrorHandler, useValue: { handleError } }],
+    })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.detectChanges()
+    const button = fixture.nativeElement.querySelector('button') as HTMLButtonElement
+    button.click()
+    await Promise.resolve()
+    await Promise.resolve()
+
+    expect(handleError).toHaveBeenCalledWith(error)
+    expect(downloadFileMock).not.toHaveBeenCalled()
+  })
+
+  it('passes direct Blob values to downloadFile', () => {
+    const blob = new Blob(['direct'], { type: 'text/plain' })
+    const { button } = mount(blob)
+    button.click()
+
+    expect(downloadFileMock).toHaveBeenCalledWith({
+      file: blob,
+      name: 'report.txt',
+      type: 'text/plain',
       win: window,
     })
   })

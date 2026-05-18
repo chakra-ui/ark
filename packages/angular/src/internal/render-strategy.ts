@@ -2,18 +2,18 @@ export type RenderStatus = 'unmounted' | 'mounted' | 'exiting'
 
 export type RenderState = { status: RenderStatus }
 
-export const initialState = (present: boolean, _lazy: boolean): RenderState => {
+export const initialState = (present: boolean, lazyMount: boolean): RenderState => {
   if (present) return { status: 'mounted' }
-  return { status: 'unmounted' }
+  return lazyMount ? { status: 'unmounted' } : { status: 'mounted' }
 }
 
 export const onPresentChange = (state: RenderState, present: boolean): RenderState => {
-  if (present) return { status: 'mounted' }
-  if (state.status === 'mounted') return { status: 'exiting' }
-  if (state.status === 'exiting') return { status: 'exiting' }
-  return { status: 'unmounted' }
+  if (present) return state.status === 'mounted' ? state : { status: 'mounted' }
+  if (state.status === 'unmounted') return state
+  return state.status === 'exiting' ? state : { status: 'exiting' }
 }
 
-export const onExitComplete = (_state: RenderState): RenderState => {
-  return { status: 'unmounted' }
+export const onExitComplete = (state: RenderState, unmountOnExit = true): RenderState => {
+  if (state.status !== 'exiting') return state
+  return unmountOnExit ? { status: 'unmounted' } : { status: 'mounted' }
 }

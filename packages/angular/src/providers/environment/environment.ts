@@ -12,18 +12,18 @@ export interface ProvideArkEnvironmentConfig {
 export const ARK_ENVIRONMENT_TOKEN = new InjectionToken<EnvironmentContext>('ARK_ENVIRONMENT_TOKEN')
 
 const createDefaultContext = (platformId: object): EnvironmentContext => ({
-  getRootNode: isPlatformBrowser(platformId) ? () => document : () => undefined,
+  getRootNode: () => (isPlatformBrowser(platformId) ? document : undefined),
 })
 
 export function provideArkEnvironment(config: ProvideArkEnvironmentConfig = {}): Provider {
   return {
     provide: ARK_ENVIRONMENT_TOKEN,
     useFactory: () => {
-      const platformId = inject(PLATFORM_ID)
       if (config.getRootNode) {
         const getRootNode = config.getRootNode
         return { getRootNode }
       }
+      const platformId = inject(PLATFORM_ID)
       return createDefaultContext(platformId)
     },
   }

@@ -1,6 +1,6 @@
-import { Directive, input } from '@angular/core'
+import { Directive, ErrorHandler, inject, input } from '@angular/core'
+import { type EnvironmentContext, injectArkEnvironment } from '@ark-ui/angular/src/providers/environment'
 import { downloadFile } from '@zag-js/file-utils'
-import { type EnvironmentContext, injectArkEnvironment } from '../providers/environment/environment'
 
 export type DownloadableData = string | Blob | File
 
@@ -17,6 +17,7 @@ export class ArkDownloadTriggerDirective {
   readonly data = input<DownloadData | undefined>(undefined)
 
   private readonly environment: EnvironmentContext = injectArkEnvironment()
+  private readonly errorHandler = inject(ErrorHandler)
 
   onClick(): void {
     const root = this.environment.getRootNode()
@@ -31,14 +32,16 @@ export class ArkDownloadTriggerDirective {
         file: value,
         name: this.fileName(),
         type: this.mimeType(),
-        win,
+        win: win as Window & typeof globalThis,
       })
     }
 
     if (typeof source === 'function') {
       const result = source()
       if (result instanceof Promise) {
-        result.then(saveToDisk)
+        result.then(saveToDisk).catch((error: unknown) => {
+          this.errorHandler.handleError(error)
+        })
         return
       }
       saveToDisk(result)
@@ -49,9 +52,9 @@ export class ArkDownloadTriggerDirective {
   }
 }
 
-function resolveWindow(root: Document | ShadowRoot): (Window & typeof globalThis) | null {
+function resolveWindow(root: Document | ShadowRoot): Window | null {
   if (root instanceof ShadowRoot) {
-    return root.ownerDocument.defaultView as (Window & typeof globalThis) | null
+    return root.ownerDocument.defaultView
   }
-  return root.defaultView as (Window & typeof globalThis) | null
+  return root.defaultView
 }

@@ -3,8 +3,13 @@ import { TestBed } from '@angular/core/testing'
 import type { TrapFocusOptions } from '@zag-js/focus-trap'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
-const deactivateMock = vi.fn()
-const trapFocusMock = vi.fn<(el: HTMLElement, options?: TrapFocusOptions) => () => void>(() => deactivateMock)
+const { deactivateMock, trapFocusMock } = vi.hoisted(() => {
+  const deactivate = vi.fn()
+  return {
+    deactivateMock: deactivate,
+    trapFocusMock: vi.fn<(el: HTMLElement, options?: TrapFocusOptions) => () => void>(() => deactivate),
+  }
+})
 
 vi.mock('@zag-js/focus-trap', () => ({
   trapFocus: (el: HTMLElement, options?: TrapFocusOptions) => trapFocusMock(el, options),
@@ -12,7 +17,7 @@ vi.mock('@zag-js/focus-trap', () => ({
 
 import { ArkFocusTrapDirective } from './focus-trap'
 
-describe('ArkFocusTrapDirective (criterion 31)', () => {
+describe('ArkFocusTrapDirective', () => {
   beforeEach(() => {
     TestBed.resetTestingModule()
     trapFocusMock.mockClear()
@@ -107,6 +112,31 @@ describe('ArkFocusTrapDirective (criterion 31)', () => {
     expect(trapFocusMock).toHaveBeenCalledTimes(1)
     const [, passedOptions] = trapFocusMock.mock.calls[0]
     expect(passedOptions).toEqual({ onActivate, returnFocusOnDeactivate: false })
+
+    fixture.destroy()
+  })
+
+  it('does not reactivate when options identity changes while active stays true', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFocusTrapDirective],
+      template: '<div tabindex="-1" [arkFocusTrap]="true" [arkFocusTrapOptions]="options()"></div>',
+    })
+    class HostComponent {
+      readonly options = signal<TrapFocusOptions>({ returnFocusOnDeactivate: false })
+    }
+
+    TestBed.configureTestingModule({ imports: [HostComponent] })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.detectChanges()
+    await fixture.whenStable()
+
+    fixture.componentInstance.options.set({ returnFocusOnDeactivate: true })
+    fixture.detectChanges()
+    await fixture.whenStable()
+
+    expect(trapFocusMock).toHaveBeenCalledTimes(1)
+    expect(deactivateMock).not.toHaveBeenCalled()
 
     fixture.destroy()
   })

@@ -1,14 +1,19 @@
-import { DestroyRef, Directive, ElementRef, type Signal, effect, inject, input } from '@angular/core'
+import { DestroyRef, Directive, ElementRef, booleanAttribute, effect, inject, input, untracked } from '@angular/core'
 import { type TrapFocusOptions, trapFocus } from '@zag-js/focus-trap'
 
-export type { TrapFocusOptions }
+export type * from '@zag-js/focus-trap'
+
+export interface FocusTrapProps {
+  arkFocusTrap?: boolean
+  arkFocusTrapOptions?: TrapFocusOptions
+}
 
 @Directive({
   selector: '[arkFocusTrap]',
   standalone: true,
 })
 export class ArkFocusTrapDirective {
-  readonly arkFocusTrap = input<boolean>(false)
+  readonly arkFocusTrap = input(false, { transform: booleanAttribute })
   readonly arkFocusTrapOptions = input<TrapFocusOptions | undefined>(undefined)
 
   private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef)
@@ -18,9 +23,9 @@ export class ArkFocusTrapDirective {
   constructor() {
     effect(() => {
       const active = this.arkFocusTrap()
-      const options = (this.arkFocusTrapOptions as Signal<TrapFocusOptions | undefined>)()
       this.tearDown()
       if (active) {
+        const options = untracked(() => this.arkFocusTrapOptions())
         this.cleanup = trapFocus(this.elementRef.nativeElement, options)
       }
     })

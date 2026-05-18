@@ -6,10 +6,14 @@ describe('render-strategy', () => {
     expect(initialState(true, false).status).toBe('mounted')
   })
 
-  it('supports lazy mount on first present transition', () => {
+  it('keeps lazy content unmounted until the first present transition', () => {
     const initial = initialState(false, true)
     expect(initial.status).toBe('unmounted')
     expect(onPresentChange(initial, true).status).toBe('mounted')
+  })
+
+  it('mounts non-lazy content even when initially not present', () => {
+    expect(initialState(false, false).status).toBe('mounted')
   })
 
   it('transitions through unmount-on-exit when present becomes false', () => {
@@ -21,7 +25,7 @@ describe('render-strategy', () => {
   })
 
   it('keeps unmounted state idempotent when present stays false', () => {
-    const unmounted = initialState(false, false)
+    const unmounted = initialState(false, true)
     expect(onPresentChange(unmounted, false).status).toBe('unmounted')
   })
 
@@ -29,5 +33,15 @@ describe('render-strategy', () => {
     const mounted = initialState(true, false)
     const exiting = onPresentChange(mounted, false)
     expect(onPresentChange(exiting, false).status).toBe('exiting')
+  })
+
+  it('ignores exit completion unless a node is exiting', () => {
+    const mounted = initialState(true, false)
+    expect(onExitComplete(mounted).status).toBe('mounted')
+  })
+
+  it('keeps content mounted after exit when unmountOnExit is false', () => {
+    const exiting = onPresentChange(initialState(true, false), false)
+    expect(onExitComplete(exiting, false).status).toBe('mounted')
   })
 })

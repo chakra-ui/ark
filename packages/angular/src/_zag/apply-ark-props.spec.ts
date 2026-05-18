@@ -9,7 +9,7 @@ import {
   signal,
 } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
-import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import type { ArkProps } from '../types'
 import { applyArkProps } from './apply-ark-props'
 
@@ -53,8 +53,15 @@ function mountHost<E extends HTMLElement = HTMLDivElement>(
 }
 
 describe('applyArkProps', () => {
+  let cleanup: (() => void) | undefined
+
   beforeEach(() => {
     TestBed.resetTestingModule()
+    cleanup = undefined
+  })
+
+  afterEach(() => {
+    cleanup?.()
   })
 
   it('writes aria-*, data-*, role, id, and tabindex as attributes (criterion 14)', () => {
@@ -66,36 +73,38 @@ describe('applyArkProps', () => {
       tabindex: 0,
     })
     const handle = mountHost('<div #target></div>', () => props())
+    cleanup = handle.destroy
 
     expect(handle.el.getAttribute('id')).toBe('x')
     expect(handle.el.getAttribute('role')).toBe('button')
     expect(handle.el.getAttribute('aria-label')).toBe('foo')
     expect(handle.el.getAttribute('data-state')).toBe('open')
     expect(handle.el.getAttribute('tabindex')).toBe('0')
-    handle.destroy()
   })
 
   it('writes property-only DOM values as properties (criterion 15)', () => {
     const props = signal<ArkProps>({ value: 'bar' })
     const handle = mountHost<HTMLInputElement>('<input #target />', () => props())
+    cleanup = handle.destroy
 
     expect(handle.el.value).toBe('bar')
-    handle.destroy()
+    props.set({})
+    TestBed.tick()
+    expect(handle.el.value).toBe('')
   })
 
   it('installs, replaces, and disposes event listeners (criterion 16)', () => {
     const first = vi.fn()
     const second = vi.fn()
-    const handler = signal<(e: Event) => void>(first)
-    const props = signal<ArkProps>({ onClick: handler() })
+    const props = signal<ArkProps>({ onClick: first })
 
     const handle = mountHost('<button #target></button>', () => props())
+    cleanup = handle.destroy
     handle.el.dispatchEvent(new Event('click'))
     expect(first).toHaveBeenCalledTimes(1)
     expect(second).toHaveBeenCalledTimes(0)
 
-    handler.set(second)
-    props.set({ onClick: handler() })
+    props.set({ onClick: second })
     TestBed.tick()
 
     handle.el.dispatchEvent(new Event('click'))
@@ -103,13 +112,29 @@ describe('applyArkProps', () => {
     expect(second).toHaveBeenCalledTimes(1)
 
     handle.destroy()
+    cleanup = undefined
     handle.el.dispatchEvent(new Event('click'))
     expect(second).toHaveBeenCalledTimes(1)
+  })
+
+  it('removes an installed listener when an event prop changes to a non-function value', () => {
+    const first = vi.fn()
+    const props = signal<ArkProps>({ onClick: first })
+    const handle = mountHost('<button #target></button>', () => props())
+    cleanup = handle.destroy
+
+    props.set({ onClick: false })
+    TestBed.tick()
+    handle.el.dispatchEvent(new Event('click'))
+
+    expect(first).not.toHaveBeenCalled()
+    expect((handle.el as unknown as { onClick?: unknown }).onClick).toBeUndefined()
   })
 
   it('manages classes from string, array, and object inputs without touching consumer classes (criterion 17)', () => {
     const props = signal<ArkProps>({ class: 'a b' })
     const handle = mountHost('<div #target></div>', () => props())
+    cleanup = handle.destroy
     handle.el.classList.add('untouched')
 
     expect(handle.el.classList.contains('a')).toBe(true)
@@ -131,13 +156,12 @@ describe('applyArkProps', () => {
     expect(handle.el.classList.contains('f')).toBe(false)
     expect(handle.el.classList.contains('c')).toBe(true)
     expect(handle.el.classList.contains('untouched')).toBe(true)
-
-    handle.destroy()
   })
 
   it('manages styles from string and object inputs (criterion 17)', () => {
     const props = signal<ArkProps>({ style: 'color: red; padding: 4px' })
     const handle = mountHost('<div #target></div>', () => props())
+    cleanup = handle.destroy
     handle.el.style.setProperty('margin', '8px')
 
     expect(handle.el.style.getPropertyValue('color')).toBe('red')
@@ -149,13 +173,12 @@ describe('applyArkProps', () => {
     expect(handle.el.style.getPropertyValue('color')).toBe('blue')
     expect(handle.el.style.getPropertyValue('padding')).toBe('')
     expect(handle.el.style.getPropertyValue('margin')).toBe('8px')
-
-    handle.destroy()
   })
 
   it('removes attributes when a prop is dropped or set to null (criterion 18)', () => {
     const props = signal<ArkProps>({ id: 'a', 'aria-label': 'hello' })
     const handle = mountHost('<div #target></div>', () => props())
+    cleanup = handle.destroy
     expect(handle.el.getAttribute('id')).toBe('a')
     expect(handle.el.getAttribute('aria-label')).toBe('hello')
 
@@ -166,20 +189,17 @@ describe('applyArkProps', () => {
     props.set({})
     TestBed.tick()
     expect(handle.el.getAttribute('id')).toBeNull()
-
-    handle.destroy()
   })
 
   it('removes boolean-false attribute contracts (criterion 18)', () => {
     const props = signal<ArkProps>({ 'aria-expanded': true })
     const handle = mountHost('<div #target></div>', () => props())
+    cleanup = handle.destroy
     expect(handle.el.getAttribute('aria-expanded')).toBe('true')
 
     props.set({ 'aria-expanded': false })
     TestBed.tick()
     expect(handle.el.getAttribute('aria-expanded')).toBeNull()
-
-    handle.destroy()
   })
 
   it('module load does not access window or document (criterion 19)', async () => {

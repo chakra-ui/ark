@@ -30,7 +30,7 @@ const RTL_LANG_CODES = new Set([
 ])
 
 export function getDirection(locale: string): Direction {
-  const lang = locale.toLowerCase().split('-')[0] ?? ''
+  const lang = locale.toLowerCase().split('-')[0]
   return RTL_LANG_CODES.has(lang) ? 'rtl' : 'ltr'
 }
 
@@ -62,12 +62,29 @@ export function injectArkLocale(): LocaleContext {
   return ctx ?? { locale: DEFAULT_LOCALE, dir: getDirection(DEFAULT_LOCALE) }
 }
 
+const collatorCache = new Map<string, Intl.Collator>()
+const dateFormatterCache = new Map<string, Intl.DateTimeFormat>()
+
+const cacheKey = (locale: string, options: object | undefined): string => `${locale}:${JSON.stringify(options ?? {})}`
+
 export function getCollator(locale: string, options?: Intl.CollatorOptions): Intl.Collator {
-  return new Intl.Collator(locale, options)
+  const key = cacheKey(locale, options)
+  let collator = collatorCache.get(key)
+  if (!collator) {
+    collator = new Intl.Collator(locale, options)
+    collatorCache.set(key, collator)
+  }
+  return collator
 }
 
 export function getDateFormatter(locale: string, options?: Intl.DateTimeFormatOptions): Intl.DateTimeFormat {
-  return new Intl.DateTimeFormat(locale, options)
+  const key = cacheKey(locale, options)
+  let formatter = dateFormatterCache.get(key)
+  if (!formatter) {
+    formatter = new Intl.DateTimeFormat(locale, options)
+    dateFormatterCache.set(key, formatter)
+  }
+  return formatter
 }
 
 export interface ArkFilter {
@@ -76,9 +93,15 @@ export interface ArkFilter {
   endsWith(string: string, substring: string): boolean
 }
 
+const filterCache = new Map<string, ArkFilter>()
+
 export function getFilter(locale: string, options: Intl.CollatorOptions = { sensitivity: 'base' }): ArkFilter {
-  const collator = new Intl.Collator(locale, { ...options, usage: 'search' })
-  return {
+  const normalizedOptions = { ...options, usage: 'search' } satisfies Intl.CollatorOptions
+  const key = cacheKey(locale, normalizedOptions)
+  const cached = filterCache.get(key)
+  if (cached) return cached
+  const collator = getCollator(locale, normalizedOptions)
+  const filter: ArkFilter = {
     contains(s, sub) {
       if (sub.length === 0) return true
       for (let i = 0; i + sub.length <= s.length; i++) {
@@ -95,4 +118,6 @@ export function getFilter(locale: string, options: Intl.CollatorOptions = { sens
       return collator.compare(s.slice(s.length - sub.length), sub) === 0
     },
   }
+  filterCache.set(key, filter)
+  return filter
 }

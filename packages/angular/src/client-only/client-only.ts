@@ -11,7 +11,7 @@ import { ChangeDetectionStrategy, Component, type TemplateRef, afterNextRender, 
     @if (isClient()) {
       <ng-content />
     } @else if (fallback()) {
-      <ng-container *ngTemplateOutlet="fallback() ?? null"></ng-container>
+      <ng-container [ngTemplateOutlet]="fallback()!"></ng-container>
     }
   `,
 })

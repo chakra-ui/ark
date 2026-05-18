@@ -27,12 +27,23 @@ describe('provideArkLocale / injectArkLocale', () => {
     expect(ctx.locale).toBe('fr-FR')
     expect(ctx.dir).toBe('ltr')
   })
+
+  it('lets an explicit direction override the locale-derived direction', () => {
+    TestBed.configureTestingModule({ providers: [provideArkLocale({ locale: 'ar-EG', dir: 'ltr' })] })
+    const ctx = TestBed.runInInjectionContext(() => injectArkLocale())
+    expect(ctx.locale).toBe('ar-EG')
+    expect(ctx.dir).toBe('ltr')
+  })
 })
 
 describe('getCollator', () => {
   it('returns an Intl.Collator that orders strings deterministically', () => {
     const collator = getCollator('en-US')
     expect(collator.compare('a', 'b')).toBeLessThan(0)
+  })
+
+  it('memoizes collators for matching locale and options', () => {
+    expect(getCollator('en-US', { sensitivity: 'base' })).toBe(getCollator('en-US', { sensitivity: 'base' }))
   })
 })
 

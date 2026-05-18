@@ -98,7 +98,7 @@ export function applyArkProps(options: ApplyArkPropsOptions): void {
   }
 
   const removeProperty = (el: HTMLElement, key: string): void => {
-    renderer.setProperty(el, key, null)
+    renderer.setProperty(el, key, '')
   }
 
   const applyClasses = (el: HTMLElement, nextValue: unknown): void => {
@@ -162,17 +162,19 @@ export function applyArkProps(options: ApplyArkPropsOptions): void {
         listeners.set(eventName, dispose)
         continue
       }
-      if (eventName && prevValue !== undefined && nextValue == null) {
+      if (eventName && listeners.has(eventName) && typeof nextValue !== 'function') {
         removeListener(eventName)
-        continue
+        if (nextValue == null || nextValue === false) continue
       }
 
       if (isClassKey(key)) {
+        if (Object.is(prevValue, nextValue)) continue
         applyClasses(el, nextValue)
         continue
       }
 
       if (isStyleKey(key)) {
+        if (Object.is(prevValue, nextValue)) continue
         applyStyles(el, nextValue)
         continue
       }

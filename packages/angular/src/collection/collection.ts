@@ -9,9 +9,11 @@ import {
   TreeCollection,
   type TreeCollectionOptions,
   type TreeNode,
+  type FilePathTreeNode,
   filePathToTree,
 } from '@zag-js/collection'
 import * as asyncList from '@zag-js/async-list'
+import type { Machine as AsyncListMachineType } from '@zag-js/async-list'
 
 export {
   GridCollection,
@@ -62,7 +64,7 @@ export const createGridCollection = <T extends CollectionItem>(options: GridColl
 export const createTreeCollection = <T extends TreeNode>(options: TreeCollectionOptions<T>): TreeCollection<T> =>
   new TreeCollection(options)
 
-export const createFileTreeCollection = (paths: string[]) => filePathToTree(paths)
+export const createFileTreeCollection = (paths: string[]): TreeCollection<FilePathTreeNode> => filePathToTree(paths)
 
 export interface CreateListSelectionOptions {
   values?: Iterable<string>
@@ -81,5 +83,6 @@ export const createListSelection = (options: CreateListSelectionOptions = {}): S
   return selection
 }
 
-export const asyncListMachine = asyncList.machine
+export const createAsyncListMachine: AsyncListMachineType<unknown, unknown> = asyncList.machine
+export const asyncListMachine: AsyncListMachineType<unknown, unknown> = createAsyncListMachine
 export const connectAsyncList = asyncList.connect

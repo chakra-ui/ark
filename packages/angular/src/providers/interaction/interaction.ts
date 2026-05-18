@@ -11,7 +11,7 @@ import {
   signal,
 } from '@angular/core'
 
-export type InteractionModality = 'pointer' | 'keyboard' | 'virtual' | null
+export type InteractionModality = 'pointer' | 'keyboard' | null
 
 export interface InteractionContext {
   readonly modality: Signal<InteractionModality>
@@ -22,10 +22,6 @@ const MODALITY_KEYS = new Set(['Tab', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'Arro
 
 function isModalityKey(key: string): boolean {
   return MODALITY_KEYS.has(key)
-}
-
-function isKeyboardEvent(event: Event): event is KeyboardEvent {
-  return 'key' in event && typeof (event as KeyboardEvent).key === 'string'
 }
 
 @Injectable()
@@ -41,20 +37,15 @@ export class ArkInteractionService implements InteractionContext {
     if (!isPlatformBrowser(platformId)) return
 
     const onPointer = () => this._modality.set('pointer')
-    const onKey = (event: Event) => {
-      if (!isKeyboardEvent(event)) return
+    const onKey = (event: KeyboardEvent) => {
       if (isModalityKey(event.key)) this._modality.set('keyboard')
     }
 
     document.addEventListener('pointerdown', onPointer, true)
-    document.addEventListener('mousedown', onPointer, true)
-    document.addEventListener('touchstart', onPointer, true)
     document.addEventListener('keydown', onKey, true)
 
     destroyRef.onDestroy(() => {
       document.removeEventListener('pointerdown', onPointer, true)
-      document.removeEventListener('mousedown', onPointer, true)
-      document.removeEventListener('touchstart', onPointer, true)
       document.removeEventListener('keydown', onKey, true)
     })
   }
@@ -62,15 +53,15 @@ export class ArkInteractionService implements InteractionContext {
 
 export const ARK_INTERACTION_TOKEN = new InjectionToken<InteractionContext>('ARK_INTERACTION_TOKEN')
 
-const DEFAULT_INTERACTION: InteractionContext = {
-  modality: signal<InteractionModality>(null).asReadonly(),
-  isFocusVisible: signal(false).asReadonly(),
-}
-
 export function provideArkInteraction(): Provider[] {
   return [ArkInteractionService, { provide: ARK_INTERACTION_TOKEN, useExisting: ArkInteractionService }]
 }
 
 export function injectArkInteraction(): InteractionContext {
-  return inject(ARK_INTERACTION_TOKEN, { optional: true }) ?? DEFAULT_INTERACTION
+  const ctx = inject(ARK_INTERACTION_TOKEN, { optional: true })
+  if (ctx) return ctx
+  return {
+    modality: signal<InteractionModality>(null).asReadonly(),
+    isFocusVisible: signal(false).asReadonly(),
+  }
 }
