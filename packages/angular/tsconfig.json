@@ -10,6 +10,7 @@
       "@ark-ui/angular/dialog": ["src/dialog/public-api.ts"],
       "@ark-ui/angular/drawer": ["src/drawer/public-api.ts"],
       "@ark-ui/angular/field": ["field/public-api.ts"],
+      "@ark-ui/angular/fieldset": ["fieldset/public-api.ts"],
       "@ark-ui/angular/hover-card": ["src/hover-card/public-api.ts"],
       "@ark-ui/angular/menu": ["src/menu/public-api.ts"],
       "@ark-ui/angular/navigation-menu": ["src/navigation-menu/public-api.ts"],
@@ -48,6 +49,13 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
-  "include": ["src/**/*.ts", "avatar/**/*.ts", "field/**/*.ts", "progress/**/*.ts", "toggle/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "avatar/**/*.ts",
+    "field/**/*.ts",
+    "fieldset/**/*.ts",
+    "progress/**/*.ts",
+    "toggle/**/*.ts"
+  ],
   "exclude": ["**/*.spec.ts", "**/setup-test.ts"]
 }

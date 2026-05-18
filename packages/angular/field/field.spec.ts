@@ -24,6 +24,7 @@ import {
   type UseFieldProps,
   type UseFieldReturn,
 } from '@ark-ui/angular/field'
+import { ArkFieldsetRoot } from '@ark-ui/angular/fieldset'
 import { FieldInputExample } from './examples/input'
 import { FieldItemExample } from './examples/item'
 import { FieldInvalidExample } from './examples/invalid'
@@ -289,6 +290,88 @@ describe('@ark-ui/angular/field', () => {
 
     const inputEl = fixture.debugElement.query(By.directive(ArkFieldInput)).nativeElement as HTMLInputElement
     expect(inputEl.getAttribute('aria-invalid')).toBe('true')
+
+    fixture.destroy()
+  })
+
+  it('inherits Fieldset disabled and invalid state when Field does not override them', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFieldsetRoot, ArkFieldRoot, ArkFieldInput, ArkFieldLabel],
+      template: `
+        <fieldset arkFieldsetRoot [disabled]="true" [invalid]="true">
+          <div arkFieldRoot>
+            <label arkFieldLabel>Name</label>
+            <input arkFieldInput />
+          </div>
+        </fieldset>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const inputEl = fixture.debugElement.query(By.directive(ArkFieldInput)).nativeElement as HTMLInputElement
+    const labelEl = fixture.debugElement.query(By.directive(ArkFieldLabel)).nativeElement as HTMLLabelElement
+
+    // The merged disabled/invalid flows into Field's getInputProps() and getLabelProps()
+    expect(inputEl.getAttribute('aria-invalid')).toBe('true')
+    expect(inputEl.getAttribute('data-invalid')).toBe('')
+    expect(inputEl.hasAttribute('disabled')).toBe(true)
+    expect(labelEl.getAttribute('data-disabled')).toBe('')
+    expect(labelEl.getAttribute('data-invalid')).toBe('')
+
+    fixture.destroy()
+  })
+
+  it('field-level explicit disabled/invalid overrides Fieldset state', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFieldsetRoot, ArkFieldRoot, ArkFieldInput],
+      template: `
+        <fieldset arkFieldsetRoot>
+          <div arkFieldRoot [disabled]="true" [invalid]="true">
+            <input arkFieldInput />
+          </div>
+        </fieldset>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const inputEl = fixture.debugElement.query(By.directive(ArkFieldInput)).nativeElement as HTMLInputElement
+    expect(inputEl.hasAttribute('disabled')).toBe(true)
+    expect(inputEl.getAttribute('aria-invalid')).toBe('true')
+
+    fixture.destroy()
+  })
+
+  it('Field without explicit override falls back to no disabled/invalid when Fieldset is not invalid', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFieldsetRoot, ArkFieldRoot, ArkFieldInput],
+      template: `
+        <fieldset arkFieldsetRoot>
+          <div arkFieldRoot>
+            <input arkFieldInput />
+          </div>
+        </fieldset>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const inputEl = fixture.debugElement.query(By.directive(ArkFieldInput)).nativeElement as HTMLInputElement
+    expect(inputEl.hasAttribute('disabled')).toBe(false)
+    expect(inputEl.getAttribute('aria-invalid')).toBe(null)
 
     fixture.destroy()
   })

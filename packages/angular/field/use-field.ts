@@ -1,5 +1,6 @@
-import { type Signal, computed, signal } from '@angular/core'
+import { type Signal, computed, inject, signal } from '@angular/core'
 import { createArkId } from '@ark-ui/angular/src/internal'
+import { ARK_FIELDSET_CONTEXT } from '@ark-ui/angular/fieldset'
 import { fieldParts } from './field.anatomy'
 import type { FieldElementIds, FieldResolvedIds } from './field.types'
 
@@ -48,6 +49,7 @@ const ariaAttr = (value: boolean | undefined): 'true' | undefined => (value ? 't
 
 export function useField(options: UseFieldOptions): UseFieldReturn {
   const fallbackId = createArkId('field')
+  const fieldsetContext = inject(ARK_FIELDSET_CONTEXT, { optional: true })
 
   const propsSignal = computed(() => options.context())
 
@@ -64,8 +66,14 @@ export function useField(options: UseFieldOptions): UseFieldReturn {
     }
   })
 
-  const disabled = computed(() => Boolean(propsSignal().disabled))
-  const invalid = computed(() => Boolean(propsSignal().invalid))
+  const disabled = computed(() => {
+    if (propsSignal().disabled) return true
+    return fieldsetContext ? fieldsetContext.disabled() : false
+  })
+  const invalid = computed(() => {
+    if (propsSignal().invalid) return true
+    return fieldsetContext ? fieldsetContext.invalid() : false
+  })
   const readOnly = computed(() => Boolean(propsSignal().readOnly))
   const required = computed(() => Boolean(propsSignal().required))
 

@@ -1,0 +1,109 @@
+import { type Signal, computed, signal } from '@angular/core'
+import { createArkId } from '@ark-ui/angular/src/internal'
+import { fieldsetParts } from './fieldset.anatomy'
+import type { FieldsetResolvedIds } from './fieldset.types'
+
+export type ArkProps = Record<string, unknown>
+
+export interface UseFieldsetProps {
+  id?: string
+  disabled?: boolean
+  invalid?: boolean
+}
+
+export interface UseFieldsetReturn {
+  ids: FieldsetResolvedIds
+  disabled: Signal<boolean>
+  invalid: Signal<boolean>
+  hasErrorText: Signal<boolean>
+  hasHelperText: Signal<boolean>
+  ariaDescribedby: Signal<string | undefined>
+  setHasErrorText(value: boolean): void
+  setHasHelperText(value: boolean): void
+  getRootProps(): ArkProps
+  getLegendProps(): ArkProps
+  getHelperTextProps(): ArkProps
+  getErrorTextProps(): ArkProps
+}
+
+export interface UseFieldsetOptions {
+  context: () => UseFieldsetProps
+}
+
+const dataAttr = (value: boolean | undefined): string | undefined => (value ? '' : undefined)
+
+export function useFieldset(options: UseFieldsetOptions): UseFieldsetReturn {
+  const fallbackId = createArkId('fieldset')
+
+  const propsSignal = computed(() => options.context())
+
+  const id = computed(() => propsSignal().id ?? fallbackId)
+  const ids = computed<FieldsetResolvedIds>(() => {
+    const baseId = id()
+    return {
+      root: `fieldset::${baseId}`,
+      legend: `fieldset::${baseId}::legend`,
+      errorText: `fieldset::${baseId}::error-text`,
+      helperText: `fieldset::${baseId}::helper-text`,
+    }
+  })
+
+  const disabled = computed(() => Boolean(propsSignal().disabled))
+  const invalid = computed(() => Boolean(propsSignal().invalid))
+
+  const hasErrorTextSignal = signal(false)
+  const hasHelperTextSignal = signal(false)
+
+  const ariaDescribedby = computed<string | undefined>(() => {
+    const list: string[] = []
+    if (hasErrorTextSignal() && invalid()) list.push(ids().errorText)
+    if (hasHelperTextSignal()) list.push(ids().helperText)
+    return list.length > 0 ? list.join(' ') : undefined
+  })
+
+  const getRootProps = (): ArkProps => ({
+    ...fieldsetParts.root.attrs,
+    id: ids().root,
+    disabled: disabled() || undefined,
+    'data-disabled': dataAttr(disabled()),
+    'data-invalid': dataAttr(invalid()),
+    'aria-labelledby': ids().legend,
+    'aria-describedby': ariaDescribedby(),
+  })
+
+  const getLegendProps = (): ArkProps => ({
+    ...fieldsetParts.legend.attrs,
+    id: ids().legend,
+    'data-disabled': dataAttr(disabled()),
+    'data-invalid': dataAttr(invalid()),
+  })
+
+  const getHelperTextProps = (): ArkProps => ({
+    ...fieldsetParts.helperText.attrs,
+    id: ids().helperText,
+    'data-disabled': dataAttr(disabled()),
+  })
+
+  const getErrorTextProps = (): ArkProps => ({
+    ...fieldsetParts.errorText.attrs,
+    id: ids().errorText,
+    'aria-live': 'polite',
+  })
+
+  return {
+    get ids(): FieldsetResolvedIds {
+      return ids()
+    },
+    disabled,
+    invalid,
+    hasErrorText: hasErrorTextSignal.asReadonly(),
+    hasHelperText: hasHelperTextSignal.asReadonly(),
+    ariaDescribedby,
+    setHasErrorText: (value: boolean) => hasErrorTextSignal.set(value),
+    setHasHelperText: (value: boolean) => hasHelperTextSignal.set(value),
+    getRootProps,
+    getLegendProps,
+    getHelperTextProps,
+    getErrorTextProps,
+  }
+}

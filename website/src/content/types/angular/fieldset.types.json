@@ -1,0 +1,45 @@
+{
+  "Root": {
+    "props": {
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the fieldset is disabled."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The id of the fieldset."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the fieldset is invalid."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseFieldsetReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The fieldset primitive returned by useFieldset()."
+      }
+    }
+  },
+  "Legend": {
+    "props": {}
+  },
+  "HelperText": {
+    "props": {}
+  },
+  "ErrorText": {
+    "props": {}
+  }
+}
