@@ -138,7 +138,7 @@ describe('@ark-ui/angular/avatar', () => {
     fixture.destroy()
   })
 
-  it('descendant probe under [arkAvatarRootProvider] receives the exact useAvatar return reference (AC #11)', () => {
+  it('descendant probe under [arkAvatarRootProvider] receives the provided avatar service (AC #11)', () => {
     @Component({
       standalone: true,
       imports: [ArkAvatarRootProvider, AvatarProbe],
@@ -159,7 +159,10 @@ describe('@ark-ui/angular/avatar', () => {
     const probeDebug = fixture.debugElement.query(By.directive(AvatarProbe))
     const probeInstance = probeDebug.injector.get(AvatarProbe)
 
-    expect(probeInstance.captured).toBe(fixture.componentInstance.avatar)
+    expect(probeInstance.captured.service).toBe(fixture.componentInstance.avatar.service)
+    expect((probeInstance.captured as unknown as ArkAvatarRootProvider).resolveValue()).toBe(
+      fixture.componentInstance.avatar,
+    )
 
     fixture.destroy()
   })
