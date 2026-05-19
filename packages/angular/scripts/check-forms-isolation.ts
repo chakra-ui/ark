@@ -76,6 +76,11 @@ export const entryPoints: EntryPoint[] = [
     outputs: ['dist/fesm2022/ark-ui-angular-number-input.mjs'],
   },
   {
+    name: '@ark-ui/angular/password-input',
+    file: 'password-input/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-password-input.mjs'],
+  },
+  {
     name: '@ark-ui/angular/pin-input',
     file: 'pin-input/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-pin-input.mjs'],
