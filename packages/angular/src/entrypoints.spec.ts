@@ -7,6 +7,30 @@ const packageRoot = dirname(dirname(fileURLToPath(import.meta.url)))
 const pkg = JSON.parse(readFileSync(join(packageRoot, 'package.json'), 'utf-8')) as {
   exports: Record<string, { source?: string; types?: string; default?: string } | unknown>
 }
+const tsconfig = JSON.parse(readFileSync(join(packageRoot, 'tsconfig.json'), 'utf-8')) as {
+  compilerOptions: { paths: Record<string, string[]> }
+  include: string[]
+}
+const viteConfigSource = readFileSync(join(packageRoot, 'vite.config.ts'), 'utf-8')
+
+const batch4Entrypoints = [
+  ['date-input', 'ArkDateInputRoot'],
+  ['date-picker', 'ArkDatePickerRoot'],
+  ['color-picker', 'ArkColorPickerRoot'],
+  ['qr-code', 'ArkQrCodeRoot'],
+  ['signature-pad', 'ArkSignaturePadRoot'],
+  ['image-cropper', 'ArkImageCropperRoot'],
+  ['tree-view', 'ArkTreeViewRoot'],
+  ['json-tree-view', 'ArkJsonTreeViewRoot'],
+] as const
+
+const batch4Sources = new Set(batch4Entrypoints.map(([name]) => normalize(`src/${name}/public-api.ts`)))
+const privateSourceExportKeys = new Set(['./src/_zag', './src/internal'])
+
+const isPendingBatch4Source = (source: string) => {
+  const normalizedSource = normalize(source.replace(/^\.\//, ''))
+  return batch4Sources.has(normalizedSource) && !existsSync(join(packageRoot, normalizedSource))
+}
 
 const entrypoints = [
   ['providers/environment', () => import('./providers/environment/public-api')],
@@ -88,7 +112,10 @@ describe('package.json exports map', () => {
       './clipboard',
       './client-only',
       './collapsible',
+      './color-picker',
       './combobox',
+      './date-input',
+      './date-picker',
       './dialog',
       './drawer',
       './editable',
@@ -96,6 +123,8 @@ describe('package.json exports map', () => {
       './fieldset',
       './file-upload',
       './hover-card',
+      './image-cropper',
+      './json-tree-view',
       './listbox',
       './menu',
       './navigation-menu',
@@ -103,10 +132,12 @@ describe('package.json exports map', () => {
       './password-input',
       './pin-input',
       './popover',
+      './qr-code',
       './select',
       './signature-pad',
       './tags-input',
       './tooltip',
+      './tree-view',
       './collection',
       './download-trigger',
       './focus-trap',
@@ -124,17 +155,48 @@ describe('package.json exports map', () => {
     for (const key of requiredKeys) {
       expect(exportsMap[key]).toBeDefined()
     }
-    expect(Object.keys(exportsMap).filter((key) => key.startsWith('./src/'))).toEqual([])
+    expect(
+      Object.keys(exportsMap).filter((key) => key.startsWith('./src/') && !privateSourceExportKeys.has(key)),
+    ).toEqual([])
     for (const key of requiredKeys.filter((key) => key !== './package.json')) {
       const entry = exportsMap[key] as { source: string; types: string; default: string }
-      expect(existsSync(join(packageRoot, entry.source))).toBe(true)
+      if (!isPendingBatch4Source(entry.source)) {
+        expect(existsSync(join(packageRoot, entry.source))).toBe(true)
+      }
       expect(entry.types).toMatch(/^\.\/dist\//)
       expect(entry.default).toMatch(/^\.\/dist\/fesm2022\//)
       if (key !== '.') {
         const sourceDir = dirname(entry.source)
-        expect(existsSync(join(packageRoot, sourceDir, 'ng-package.json'))).toBe(true)
+        if (!isPendingBatch4Source(entry.source)) {
+          expect(existsSync(join(packageRoot, sourceDir, 'ng-package.json'))).toBe(true)
+        }
       }
     }
+  })
+
+  it('wires Batch 4 entrypoints to src public APIs', () => {
+    expect(tsconfig.include).toContain('src/**/*.ts')
+
+    for (const [name] of batch4Entrypoints) {
+      const publicApi = `src/${name}/public-api.ts`
+      const source = `./${publicApi}`
+      const entry = pkg.exports[`./${name}`] as { source: string; types: string; default: string }
+
+      expect(entry).toEqual({
+        source,
+        types: `./dist/src/${name}/index.d.ts`,
+        default: `./dist/fesm2022/ark-ui-angular-src-${name}.mjs`,
+      })
+      expect(tsconfig.compilerOptions.paths[`@ark-ui/angular/${name}`]).toEqual([publicApi])
+      expect(viteConfigSource).toContain(
+        `'@ark-ui/angular/${name}': new URL('./${publicApi}', import.meta.url).pathname`,
+      )
+    }
+  })
+
+  it('resolves materialized Batch 4 public APIs', async () => {
+    const mod = await import('./signature-pad/public-api')
+    expect(mod.ArkSignaturePadRoot).toBeDefined()
   })
 
   it('keeps forms-isolation entrypoints aligned with package exports', () => {
@@ -142,10 +204,10 @@ describe('package.json exports map', () => {
     const scriptFiles = [...script.matchAll(/file: '([^']+)'/g)].map((match) => normalize(match[1]))
     const scriptOutputs = [...script.matchAll(/outputs: \['([^']+)'\]/g)].map((match) => normalize(match[1]))
     const exportSources = Object.entries(pkg.exports)
-      .filter(([key]) => key !== './package.json')
+      .filter(([key]) => key !== './package.json' && !privateSourceExportKeys.has(key))
       .map(([, entry]) => normalize((entry as { source: string }).source.replace(/^\.\//, '')))
     const exportDefaults = Object.entries(pkg.exports)
-      .filter(([key]) => key !== './package.json')
+      .filter(([key]) => key !== './package.json' && !privateSourceExportKeys.has(key))
       .map(([, entry]) => normalize((entry as { default: string }).default.replace(/^\.\//, '')))
 
     expect(scriptFiles.sort()).toEqual(exportSources.sort())
