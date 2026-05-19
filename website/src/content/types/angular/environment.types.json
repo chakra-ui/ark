@@ -1,0 +1,12 @@
+{
+  "Provider": {
+    "props": {
+      "getRootNode": {
+        "type": "() => Document | ShadowRoot | undefined",
+        "isRequired": false,
+        "description": "Returns the root node Ark UI components should use for DOM queries.",
+        "kind": "input"
+      }
+    }
+  }
+}

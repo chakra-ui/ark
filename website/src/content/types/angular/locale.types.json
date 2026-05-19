@@ -1,0 +1,19 @@
+{
+  "Provider": {
+    "props": {
+      "locale": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The BCP 47 locale used by Ark UI formatters and locale-aware components.",
+        "kind": "input",
+        "defaultValue": "'en-US'"
+      },
+      "dir": {
+        "type": "'ltr' | 'rtl'",
+        "isRequired": false,
+        "description": "The text direction. When omitted, Ark UI derives it from the locale.",
+        "kind": "input"
+      }
+    }
+  }
+}
