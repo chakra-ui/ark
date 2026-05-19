@@ -1,4 +1,4 @@
-import { DestroyRef, Directive, ElementRef, Renderer2, effect, inject } from '@angular/core'
+import { DestroyRef, Directive, ElementRef, Renderer2, inject } from '@angular/core'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
 import { injectArkNumberInputContext } from './use-number-input-context'
 
@@ -20,19 +20,9 @@ export class ArkNumberInputInput {
       destroyRef,
       props: () => {
         const props = context.api().getInputProps() as Record<string, unknown>
-        const { onChange, defaultValue: _defaultValue, ...rest } = props
-        if (typeof onChange === 'function') {
-          rest['onInput'] = onChange
-        }
+        const { defaultValue: _defaultValue, ...rest } = props
         return rest
       },
-    })
-
-    effect(() => {
-      const el = elementRef.nativeElement as HTMLInputElement | null
-      if (!el) return
-      const next = context.api().value
-      if (el.value !== next) el.value = next
     })
   }
 }

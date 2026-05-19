@@ -10,10 +10,12 @@ import {
   inject,
   input,
   model,
+  output,
   signal,
   type InputSignal,
   type InputSignalWithTransform,
   type ModelSignal,
+  type OutputEmitterRef,
   type Signal,
 } from '@angular/core'
 import { NG_VALUE_ACCESSOR, type ControlValueAccessor } from '@angular/forms'
@@ -95,10 +97,13 @@ export class ArkPinInputRoot implements ControlValueAccessor, UsePinInputReturn,
   readonly translations: InputSignal<PinInputIntlTranslations | undefined> = input<
     PinInputIntlTranslations | undefined
   >(undefined)
+  /** Emits when the entered value is rejected by the machine. */
+  readonly valueInvalid: OutputEmitterRef<PinInputValueInvalidDetails> = output<PinInputValueInvalidDetails>()
 
   private readonly _disabledFromForm = signal(false)
   private _pendingInternalWrites = 0
   private _hasExternalBinding = false
+  private _hasReceivedFormWrite = false
   private readonly _registeredIndices = new Set<number>()
 
   private readonly cva = createArkCvaController<string[]>({
@@ -142,8 +147,8 @@ export class ArkPinInputRoot implements ControlValueAccessor, UsePinInputReturn,
       onValueComplete: (_details: PinInputValueChangeDetails) => {
         this.cva.markTouched()
       },
-      onValueInvalid: (_details: PinInputValueInvalidDetails) => {
-        // no-op; surface via consumer if needed
+      onValueInvalid: (details: PinInputValueInvalidDetails) => {
+        this.valueInvalid.emit(details)
       },
     }),
   })
@@ -159,6 +164,7 @@ export class ArkPinInputRoot implements ControlValueAccessor, UsePinInputReturn,
       void this.value()
       if (firstRun) {
         firstRun = false
+        this._pendingInternalWrites = 0
         return
       }
       if (this._pendingInternalWrites > 0) {
@@ -178,9 +184,10 @@ export class ArkPinInputRoot implements ControlValueAccessor, UsePinInputReturn,
 
   writeValue(value: string[] | null): void {
     const next = value === null ? undefined : value
-    if (this.value() !== undefined) {
+    if (!this._hasReceivedFormWrite && this.value() !== undefined) {
       this._hasExternalBinding = true
     }
+    this._hasReceivedFormWrite = true
     if (this.value() !== next) {
       this._pendingInternalWrites++
     }

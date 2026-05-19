@@ -57,7 +57,7 @@ export function useTagsInput(options: UseTagsInputOptions): UseTagsInputReturn {
         const baseIds = (props.ids ?? {}) as NonNullable<TagsInputMachineProps['ids']>
         merged.ids = {
           label: fieldIds.label,
-          hiddenInput: fieldIds.control,
+          input: fieldIds.control,
           ...baseIds,
         }
         const disabled = Boolean(props.disabled) || field.disabled()

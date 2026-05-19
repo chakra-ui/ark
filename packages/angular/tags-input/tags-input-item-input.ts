@@ -21,10 +21,7 @@ export class ArkTagsInputItemInput {
           string,
           unknown
         >
-        const { onChange, defaultValue: _defaultValue, value: _value, ...rest } = props
-        if (typeof onChange === 'function') {
-          rest['onInput'] = onChange
-        }
+        const { defaultValue: _defaultValue, ...rest } = props
         return rest
       },
     })

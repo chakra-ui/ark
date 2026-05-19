@@ -42,7 +42,7 @@ export function useEditable(options: UseEditableOptions): UseEditableReturn {
         const fieldIds = field.ids
         merged['ids'] = {
           label: fieldIds.label,
-          control: fieldIds.control,
+          input: fieldIds.control,
           ...(props.ids ?? {}),
         }
         merged['disabled'] = Boolean(props.disabled) || field.disabled()

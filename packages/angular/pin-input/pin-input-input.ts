@@ -51,10 +51,7 @@ export class ArkPinInputInput {
       destroyRef,
       props: () => {
         const props = context.api().getInputProps({ index: this.index() }) as Record<string, unknown>
-        const { onChange, defaultValue: _defaultValue, ...rest } = props
-        if (typeof onChange === 'function') {
-          rest['onInput'] = onChange
-        }
+        const { defaultValue: _defaultValue, ...rest } = props
         return rest
       },
     })

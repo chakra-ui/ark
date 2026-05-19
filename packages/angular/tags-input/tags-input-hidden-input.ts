@@ -20,7 +20,7 @@ export class ArkTagsInputHiddenInput {
       destroyRef,
       props: () => {
         const props = context.api().getHiddenInputProps() as Record<string, unknown>
-        const { defaultValue: _defaultValue, value: _value, ...rest } = props
+        const { defaultValue: _defaultValue, ...rest } = props
         return rest
       },
     })

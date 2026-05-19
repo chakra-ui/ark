@@ -96,6 +96,7 @@ export class ArkNumberInputRoot implements ControlValueAccessor, UseNumberInputR
   private readonly _disabledFromForm = signal(false)
   private _pendingInternalWrites = 0
   private _hasExternalBinding = false
+  private _hasReceivedFormWrite = false
 
   private readonly cva = createArkCvaController<string>({
     value: this.value,
@@ -157,6 +158,7 @@ export class ArkNumberInputRoot implements ControlValueAccessor, UseNumberInputR
       void this.value()
       if (firstRun) {
         firstRun = false
+        this._pendingInternalWrites = 0
         return
       }
       if (this._pendingInternalWrites > 0) {
@@ -176,9 +178,10 @@ export class ArkNumberInputRoot implements ControlValueAccessor, UseNumberInputR
 
   writeValue(value: string | null): void {
     const next = value === null ? undefined : value
-    if (this.value() !== undefined) {
+    if (!this._hasReceivedFormWrite && this.value() !== undefined) {
       this._hasExternalBinding = true
     }
+    this._hasReceivedFormWrite = true
     if (this.value() !== next) {
       this._pendingInternalWrites++
     }

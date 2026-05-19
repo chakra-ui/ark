@@ -1,4 +1,4 @@
-import { DestroyRef, Directive, ElementRef, Renderer2, effect, inject } from '@angular/core'
+import { DestroyRef, Directive, ElementRef, Renderer2, inject } from '@angular/core'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
 import { ARK_PASSWORD_INPUT_VALUE_WRITER, injectArkPasswordInputContext } from './use-password-input-context'
 import { ArkPasswordInputRoot } from './password-input-root'
@@ -24,9 +24,6 @@ export class ArkPasswordInputInput {
       props: () => {
         const props = context.api().getInputProps() as Record<string, unknown>
         const { onChange, defaultValue: _defaultValue, ...rest } = props
-        if (typeof onChange === 'function') {
-          rest['onInput'] = onChange
-        }
         if (writer) {
           rest['onInput'] = (event: Event) => {
             if (typeof onChange === 'function') {
@@ -38,19 +35,16 @@ export class ArkPasswordInputInput {
           }
         }
         if (root) {
-          rest['onBlur'] = () => {
+          const upstreamOnBlur = rest['onBlur']
+          rest['onBlur'] = (event: Event) => {
+            if (typeof upstreamOnBlur === 'function') {
+              ;(upstreamOnBlur as (event: Event) => void)(event)
+            }
             root.markTouched()
           }
         }
         return rest
       },
-    })
-
-    effect(() => {
-      const el = elementRef.nativeElement as HTMLInputElement | null
-      if (!el) return
-      const next = root ? (root.value() ?? '') : ''
-      if (el.value !== next) el.value = next
     })
   }
 }

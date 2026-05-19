@@ -13,6 +13,7 @@ export class ArkEditablePreview {
     const elementRef = inject(ElementRef)
     const renderer = inject(Renderer2)
     const destroyRef = inject(DestroyRef)
+    const ownsTextContent = elementRef.nativeElement.childNodes.length === 0
 
     applyArkProps({
       elementRef,
@@ -26,6 +27,7 @@ export class ArkEditablePreview {
     })
 
     effect(() => {
+      if (!ownsTextContent) return
       const el = elementRef.nativeElement as HTMLElement
       if (!el) return
       const text = context.api().valueText

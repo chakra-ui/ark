@@ -12,8 +12,16 @@ export interface ApplyArkPropsOptions {
 const isAttributeKey = (key: string): boolean =>
   key === 'role' || key === 'id' || key === 'tabindex' || key.startsWith('aria-') || key.startsWith('data-')
 
-const eventNameFromHandlerKey = (key: string): string | undefined => {
+const eventNameFromHandlerKey = (key: string, el: HTMLElement): string | undefined => {
   if (!/^on[A-Z]/.test(key)) return undefined
+  if (key === 'onChange') {
+    const tagName = el.tagName.toLowerCase()
+    if (tagName === 'textarea') return 'input'
+    if (tagName === 'input') {
+      const type = (el as HTMLInputElement).type
+      return type === 'checkbox' || type === 'radio' || type === 'file' ? 'change' : 'input'
+    }
+  }
   return key.slice(2).toLowerCase()
 }
 
@@ -162,7 +170,7 @@ export function applyArkProps(options: ApplyArkPropsOptions): void {
       const nextValue = next[key]
       const prevValue = prev[key]
 
-      const eventName = eventNameFromHandlerKey(key)
+      const eventName = eventNameFromHandlerKey(key, el)
       if (eventName && typeof nextValue === 'function') {
         if (prevValue === nextValue) continue
         removeListener(eventName)
@@ -214,7 +222,7 @@ export function applyArkProps(options: ApplyArkPropsOptions): void {
       if (key in next) continue
       const prevValue = prev[key]
 
-      const eventName = eventNameFromHandlerKey(key)
+      const eventName = eventNameFromHandlerKey(key, el)
       if (eventName && typeof prevValue === 'function') {
         removeListener(eventName)
         continue
