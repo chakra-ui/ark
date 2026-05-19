@@ -1,8 +1,7 @@
-import { JsonPipe } from '@angular/common'
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import {
-  ArkTagsInputControl,
   ArkTagsInputClearTrigger,
+  ArkTagsInputControl,
   ArkTagsInputHiddenInput,
   ArkTagsInputInput,
   ArkTagsInputItem,
@@ -11,21 +10,20 @@ import {
   ArkTagsInputItemPreview,
   ArkTagsInputItemText,
   ArkTagsInputLabel,
-  ArkTagsInputRootProvider,
-  useTagsInput,
+  ArkTagsInputRoot,
 } from '@ark-ui/angular/tags-input'
 import { tagsInputExampleStyles } from '../tags-input-example-styles'
 
+const DELIMITER_PATTERN = /[,;\s]/
+
 @Component({
-  selector: 'tags-input-root-provider-example',
+  selector: 'tags-input-delimiter-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    ArkTagsInputRootProvider,
-    JsonPipe,
+    ArkTagsInputRoot,
     ArkTagsInputLabel,
     ArkTagsInputControl,
-    ArkTagsInputClearTrigger,
     ArkTagsInputInput,
     ArkTagsInputHiddenInput,
     ArkTagsInputItem,
@@ -33,12 +31,13 @@ import { tagsInputExampleStyles } from '../tags-input-example-styles'
     ArkTagsInputItemPreview,
     ArkTagsInputItemText,
     ArkTagsInputItemDeleteTrigger,
+    ArkTagsInputClearTrigger,
   ],
   template: `
-    <div arkTagsInputRootProvider [value]="tagsInput">
-      <span arkTagsInputLabel>Frameworks</span>
+    <div arkTagsInputRoot #root="arkTagsInputRoot" [delimiter]="delimiter">
+      <span arkTagsInputLabel>Frameworks (add with comma, semicolon, or space)</span>
       <div arkTagsInputControl>
-        @for (tag of tagsInput.api().value; track tag; let i = $index) {
+        @for (tag of root.api().value; track tag; let i = $index) {
           <span arkTagsInputItem [index]="i" [value]="tag">
             <div arkTagsInputItemPreview>
               <span arkTagsInputItemText>{{ tag }}</span>
@@ -47,15 +46,14 @@ import { tagsInputExampleStyles } from '../tags-input-example-styles'
             <input arkTagsInputItemInput />
           </span>
         }
-        <input arkTagsInputInput placeholder="Add Framework" />
+        <input arkTagsInputInput placeholder="Add tag" />
         <button type="button" arkTagsInputClearTrigger>x</button>
       </div>
       <input arkTagsInputHiddenInput />
     </div>
-    <output class="tags-input-output">values: {{ tagsInput.api().value | json }}</output>
   `,
   styles: [tagsInputExampleStyles],
 })
-export class TagsInputRootProviderExample {
-  readonly tagsInput = useTagsInput({ context: () => ({}) })
+export class TagsInputDelimiterExample {
+  readonly delimiter = DELIMITER_PATTERN
 }

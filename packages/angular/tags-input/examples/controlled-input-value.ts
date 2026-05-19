@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { ArkFieldErrorText, ArkFieldHelperText, ArkFieldRoot } from '@ark-ui/angular/field'
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
 import {
+  ArkTagsInputClearTrigger,
   ArkTagsInputControl,
   ArkTagsInputHiddenInput,
   ArkTagsInputInput,
@@ -15,13 +15,10 @@ import {
 import { tagsInputExampleStyles } from '../tags-input-example-styles'
 
 @Component({
-  selector: 'tags-input-with-field-example',
+  selector: 'tags-input-controlled-input-value-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    ArkFieldRoot,
-    ArkFieldErrorText,
-    ArkFieldHelperText,
     ArkTagsInputRoot,
     ArkTagsInputLabel,
     ArkTagsInputControl,
@@ -32,10 +29,17 @@ import { tagsInputExampleStyles } from '../tags-input-example-styles'
     ArkTagsInputItemPreview,
     ArkTagsInputItemText,
     ArkTagsInputItemDeleteTrigger,
+    ArkTagsInputClearTrigger,
   ],
   template: `
-    <div arkFieldRoot>
-      <div arkTagsInputRoot #root="arkTagsInputRoot">
+    <div class="tags-input-stack">
+      <div class="tags-input-toolbar">
+        <button class="tags-input-button" type="button" (click)="inputValue.set('React')">Set to "React"</button>
+        <button class="tags-input-button" type="button" (click)="inputValue.set('')">Clear Input</button>
+        <span class="tags-input-output">Current: "{{ inputValue() }}"</span>
+      </div>
+
+      <div arkTagsInputRoot #root="arkTagsInputRoot" [(inputValue)]="inputValue">
         <span arkTagsInputLabel>Frameworks</span>
         <div arkTagsInputControl>
           @for (tag of root.api().value; track tag; let i = $index) {
@@ -48,13 +52,14 @@ import { tagsInputExampleStyles } from '../tags-input-example-styles'
             </span>
           }
           <input arkTagsInputInput placeholder="Add Framework" />
+          <button type="button" arkTagsInputClearTrigger>x</button>
         </div>
         <input arkTagsInputHiddenInput />
       </div>
-      <span arkFieldHelperText>Additional info</span>
-      <span arkFieldErrorText>Error info</span>
     </div>
   `,
   styles: [tagsInputExampleStyles],
 })
-export class TagsInputWithFieldExample {}
+export class TagsInputControlledInputValueExample {
+  readonly inputValue = signal('')
+}

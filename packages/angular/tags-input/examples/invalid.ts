@@ -1,8 +1,7 @@
-import { JsonPipe } from '@angular/common'
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import {
-  ArkTagsInputControl,
   ArkTagsInputClearTrigger,
+  ArkTagsInputControl,
   ArkTagsInputHiddenInput,
   ArkTagsInputInput,
   ArkTagsInputItem,
@@ -11,21 +10,18 @@ import {
   ArkTagsInputItemPreview,
   ArkTagsInputItemText,
   ArkTagsInputLabel,
-  ArkTagsInputRootProvider,
-  useTagsInput,
+  ArkTagsInputRoot,
 } from '@ark-ui/angular/tags-input'
 import { tagsInputExampleStyles } from '../tags-input-example-styles'
 
 @Component({
-  selector: 'tags-input-root-provider-example',
+  selector: 'tags-input-invalid-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    ArkTagsInputRootProvider,
-    JsonPipe,
+    ArkTagsInputRoot,
     ArkTagsInputLabel,
     ArkTagsInputControl,
-    ArkTagsInputClearTrigger,
     ArkTagsInputInput,
     ArkTagsInputHiddenInput,
     ArkTagsInputItem,
@@ -33,12 +29,13 @@ import { tagsInputExampleStyles } from '../tags-input-example-styles'
     ArkTagsInputItemPreview,
     ArkTagsInputItemText,
     ArkTagsInputItemDeleteTrigger,
+    ArkTagsInputClearTrigger,
   ],
   template: `
-    <div arkTagsInputRootProvider [value]="tagsInput">
+    <div arkTagsInputRoot #root="arkTagsInputRoot" invalid>
       <span arkTagsInputLabel>Frameworks</span>
       <div arkTagsInputControl>
-        @for (tag of tagsInput.api().value; track tag; let i = $index) {
+        @for (tag of root.api().value; track tag; let i = $index) {
           <span arkTagsInputItem [index]="i" [value]="tag">
             <div arkTagsInputItemPreview>
               <span arkTagsInputItemText>{{ tag }}</span>
@@ -52,10 +49,7 @@ import { tagsInputExampleStyles } from '../tags-input-example-styles'
       </div>
       <input arkTagsInputHiddenInput />
     </div>
-    <output class="tags-input-output">values: {{ tagsInput.api().value | json }}</output>
   `,
   styles: [tagsInputExampleStyles],
 })
-export class TagsInputRootProviderExample {
-  readonly tagsInput = useTagsInput({ context: () => ({}) })
-}
+export class TagsInputInvalidExample {}

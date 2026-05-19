@@ -1,12 +1,11 @@
 import * as tagsInput from '@zag-js/tags-input'
 import type { Machine } from '@zag-js/core'
-import { inject } from '@angular/core'
 import { useMachine } from '@ark-ui/angular/src/_zag'
 import { createArkId } from '@ark-ui/angular/src/internal'
 import type { UseMachineReturn } from '@ark-ui/angular/src/internal'
 import { injectArkEnvironment } from '@ark-ui/angular/src/providers/environment'
 import { injectArkLocale } from '@ark-ui/angular/src/providers/locale'
-import { ARK_FIELD_CONTEXT } from '@ark-ui/angular/field'
+import { injectArkFieldContextOptional } from '@ark-ui/angular/field'
 import type { TagsInputMachineProps } from './tags-input.types'
 
 type OptionalId<T extends { id: string }> = Omit<T, 'id'> & { id?: string }
@@ -37,7 +36,7 @@ type MergedContext = {
 export function useTagsInput(options: UseTagsInputOptions): UseTagsInputReturn {
   const locale = injectArkLocale()
   const environment = injectArkEnvironment()
-  const field = inject(ARK_FIELD_CONTEXT, { optional: true })
+  const field = injectArkFieldContextOptional()
   const fallbackId = createArkId('tags-input')
 
   return useMachine<TagsInputSchema, tagsInput.Api>({
@@ -57,7 +56,7 @@ export function useTagsInput(options: UseTagsInputOptions): UseTagsInputReturn {
         const baseIds = (props.ids ?? {}) as NonNullable<TagsInputMachineProps['ids']>
         merged.ids = {
           label: fieldIds.label,
-          input: fieldIds.control,
+          hiddenInput: fieldIds.control,
           ...baseIds,
         }
         const disabled = Boolean(props.disabled) || field.disabled()

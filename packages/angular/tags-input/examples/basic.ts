@@ -32,7 +32,7 @@ import { tagsInputExampleStyles } from '../tags-input-example-styles'
     ArkTagsInputClearTrigger,
   ],
   template: `
-    <div arkTagsInputRoot #root="arkTagsInputRoot" [defaultValue]="['react', 'solid']">
+    <div arkTagsInputRoot #root="arkTagsInputRoot">
       <span arkTagsInputLabel>Frameworks</span>
       <div arkTagsInputControl>
         @for (tag of root.api().value; track tag; let i = $index) {
@@ -45,7 +45,7 @@ import { tagsInputExampleStyles } from '../tags-input-example-styles'
           </span>
         }
         <input arkTagsInputInput placeholder="Add Framework" />
-        <button type="button" arkTagsInputClearTrigger>clear</button>
+        <button type="button" arkTagsInputClearTrigger>x</button>
       </div>
       <input arkTagsInputHiddenInput />
     </div>

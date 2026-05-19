@@ -1,10 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import {
+  ArkTagsInputClearTrigger,
   ArkTagsInputControl,
   ArkTagsInputHiddenInput,
   ArkTagsInputInput,
   ArkTagsInputItem,
   ArkTagsInputItemDeleteTrigger,
+  ArkTagsInputItemInput,
   ArkTagsInputItemPreview,
   ArkTagsInputItemText,
   ArkTagsInputLabel,
@@ -13,7 +15,7 @@ import {
 import { tagsInputExampleStyles } from '../tags-input-example-styles'
 
 @Component({
-  selector: 'tags-input-max-tags-example',
+  selector: 'tags-input-sanitize-value-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -23,13 +25,15 @@ import { tagsInputExampleStyles } from '../tags-input-example-styles'
     ArkTagsInputInput,
     ArkTagsInputHiddenInput,
     ArkTagsInputItem,
+    ArkTagsInputItemInput,
     ArkTagsInputItemPreview,
     ArkTagsInputItemText,
     ArkTagsInputItemDeleteTrigger,
+    ArkTagsInputClearTrigger,
   ],
   template: `
-    <div arkTagsInputRoot #root="arkTagsInputRoot" [defaultValue]="['react']" [max]="3">
-      <span arkTagsInputLabel>Up to 3 tags</span>
+    <div arkTagsInputRoot #root="arkTagsInputRoot" [sanitizeValue]="sanitizeValue">
+      <span arkTagsInputLabel>Email Addresses</span>
       <div arkTagsInputControl>
         @for (tag of root.api().value; track tag; let i = $index) {
           <span arkTagsInputItem [index]="i" [value]="tag">
@@ -37,13 +41,17 @@ import { tagsInputExampleStyles } from '../tags-input-example-styles'
               <span arkTagsInputItemText>{{ tag }}</span>
               <button type="button" arkTagsInputItemDeleteTrigger>x</button>
             </div>
+            <input arkTagsInputItemInput />
           </span>
         }
-        <input arkTagsInputInput placeholder="Add tag" />
+        <input arkTagsInputInput placeholder="Add email" />
+        <button type="button" arkTagsInputClearTrigger>x</button>
       </div>
       <input arkTagsInputHiddenInput />
     </div>
   `,
   styles: [tagsInputExampleStyles],
 })
-export class TagsInputMaxTagsExample {}
+export class TagsInputSanitizeValueExample {
+  readonly sanitizeValue = (value: string) => value.trim().toLowerCase()
+}

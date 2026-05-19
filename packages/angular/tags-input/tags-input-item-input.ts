@@ -17,10 +17,11 @@ export class ArkTagsInputItemInput {
       renderer: inject(Renderer2),
       destroyRef: inject(DestroyRef),
       props: () => {
-        const props = context.api().getItemInputProps({ index: item.index(), value: item.value() }) as Record<
-          string,
-          unknown
-        >
+        const props = context.api().getItemInputProps({
+          index: item.index(),
+          value: item.value(),
+          disabled: item.disabled(),
+        }) as Record<string, unknown>
         const { defaultValue: _defaultValue, ...rest } = props
         return rest
       },

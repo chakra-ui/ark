@@ -1,5 +1,6 @@
 import { DestroyRef, Directive, ElementRef, Renderer2, effect, inject } from '@angular/core'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
+import { injectArkFieldContextOptional } from '@ark-ui/angular/field'
 import { injectArkTagsInputContext } from './use-tags-input-context'
 
 @Directive({
@@ -10,6 +11,7 @@ import { injectArkTagsInputContext } from './use-tags-input-context'
 export class ArkTagsInputHiddenInput {
   constructor() {
     const context = injectArkTagsInputContext()
+    const field = injectArkFieldContextOptional()
     const elementRef = inject(ElementRef)
     const renderer = inject(Renderer2)
     const destroyRef = inject(DestroyRef)
@@ -21,7 +23,10 @@ export class ArkTagsInputHiddenInput {
       props: () => {
         const props = context.api().getHiddenInputProps() as Record<string, unknown>
         const { defaultValue: _defaultValue, ...rest } = props
-        return rest
+        return {
+          'aria-describedby': field?.ariaDescribedby(),
+          ...rest,
+        }
       },
     })
 

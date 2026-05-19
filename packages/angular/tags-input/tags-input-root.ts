@@ -10,11 +10,13 @@ import {
   inject,
   input,
   model,
+  output,
   numberAttribute,
   signal,
   type InputSignal,
   type InputSignalWithTransform,
   type ModelSignal,
+  type OutputEmitterRef,
   type Signal,
 } from '@angular/core'
 import { NG_VALUE_ACCESSOR, type ControlValueAccessor } from '@angular/forms'
@@ -22,9 +24,12 @@ import { applyArkProps } from '@ark-ui/angular/src/_zag'
 import { createArkCvaController } from '@ark-ui/angular/src/internal'
 import type {
   TagsInputElementIds,
+  TagsInputFocusOutsideEvent,
   TagsInputHighlightChangeDetails,
   TagsInputInputValueChangeDetails,
+  TagsInputInteractOutsideEvent,
   TagsInputIntlTranslations,
+  TagsInputPointerDownOutsideEvent,
   TagsInputValidateArgs,
   TagsInputValidityChangeDetails,
   TagsInputValueChangeDetails,
@@ -113,6 +118,19 @@ export class ArkTagsInputRoot implements ControlValueAccessor, UseTagsInputRetur
     TagsInputIntlTranslations | undefined
   >(undefined)
 
+  /** Emits when the highlighted tag changes. */
+  readonly highlightChange: OutputEmitterRef<TagsInputHighlightChangeDetails> =
+    output<TagsInputHighlightChangeDetails>()
+  /** Emits when a tag value is rejected. */
+  readonly valueInvalid: OutputEmitterRef<TagsInputValidityChangeDetails> = output<TagsInputValidityChangeDetails>()
+  /** Emits when focus moves outside the tags input. */
+  readonly focusOutside: OutputEmitterRef<TagsInputFocusOutsideEvent> = output<TagsInputFocusOutsideEvent>()
+  /** Emits when pointer down occurs outside the tags input. */
+  readonly pointerDownOutside: OutputEmitterRef<TagsInputPointerDownOutsideEvent> =
+    output<TagsInputPointerDownOutsideEvent>()
+  /** Emits when interaction occurs outside the tags input. */
+  readonly interactOutside: OutputEmitterRef<TagsInputInteractOutsideEvent> = output<TagsInputInteractOutsideEvent>()
+
   private readonly _disabledFromForm = signal(false)
   private _pendingInternalWrites = 0
   private _hasExternalBinding = false
@@ -166,12 +184,15 @@ export class ArkTagsInputRoot implements ControlValueAccessor, UseTagsInputRetur
           this.inputValue.set(details.inputValue)
         }
       },
-      onHighlightChange: (_details: TagsInputHighlightChangeDetails) => {
-        // no-op; consumers can listen via root-provider api if needed
+      onHighlightChange: (details: TagsInputHighlightChangeDetails) => {
+        this.highlightChange.emit(details)
       },
-      onValueInvalid: (_details: TagsInputValidityChangeDetails) => {
-        // no-op
+      onValueInvalid: (details: TagsInputValidityChangeDetails) => {
+        this.valueInvalid.emit(details)
       },
+      onFocusOutside: (event: TagsInputFocusOutsideEvent) => this.focusOutside.emit(event),
+      onPointerDownOutside: (event: TagsInputPointerDownOutsideEvent) => this.pointerDownOutside.emit(event),
+      onInteractOutside: (event: TagsInputInteractOutsideEvent) => this.interactOutside.emit(event),
     }),
   })
 
