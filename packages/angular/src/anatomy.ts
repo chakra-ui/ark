@@ -36,6 +36,7 @@ export { selectAnatomy } from '../select/select.anatomy'
 export { signaturePadAnatomy } from './signature-pad/signature-pad.anatomy'
 export { stepsAnatomy } from './steps/steps.anatomy'
 export { tabsAnatomy } from './tabs/tabs.anatomy'
+export { timerAnatomy } from './timer/timer.anatomy'
 // Use a relative import so this aggregate stays form-isolation safe.
 export { tagsInputAnatomy } from '../tags-input/tags-input.anatomy'
 export { toggleAnatomy } from '@ark-ui/angular/toggle'
