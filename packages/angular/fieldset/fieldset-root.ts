@@ -62,6 +62,14 @@ export class ArkFieldsetRoot implements UseFieldsetReturn {
     this.fieldset.setHasHelperText(value)
   }
 
+  registerErrorText(): () => void {
+    return this.fieldset.registerErrorText()
+  }
+
+  registerHelperText(): () => void {
+    return this.fieldset.registerHelperText()
+  }
+
   getRootProps(): ArkProps {
     return this.fieldset.getRootProps()
   }

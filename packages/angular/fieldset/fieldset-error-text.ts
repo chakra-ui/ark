@@ -12,8 +12,8 @@ export class ArkFieldsetErrorText {
     const context = injectArkFieldsetContext()
 
     effect((onCleanup) => {
-      untracked(() => context.setHasErrorText(true))
-      onCleanup(() => untracked(() => context.setHasErrorText(false)))
+      const unregister = untracked(() => context.registerErrorText())
+      onCleanup(() => untracked(unregister))
     })
 
     applyArkProps({

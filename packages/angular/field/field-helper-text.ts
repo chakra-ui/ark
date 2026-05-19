@@ -12,8 +12,8 @@ export class ArkFieldHelperText {
     const context = injectArkFieldContext()
 
     effect((onCleanup) => {
-      untracked(() => context.setHasHelperText(true))
-      onCleanup(() => untracked(() => context.setHasHelperText(false)))
+      const unregister = untracked(() => context.registerHelperText())
+      onCleanup(() => untracked(unregister))
     })
 
     applyArkProps({

@@ -76,6 +76,14 @@ export class ArkFieldRoot implements UseFieldReturn {
     this.field.setHasHelperText(value)
   }
 
+  registerErrorText(): () => void {
+    return this.field.registerErrorText()
+  }
+
+  registerHelperText(): () => void {
+    return this.field.registerHelperText()
+  }
+
   getRootProps(): ArkProps {
     return this.field.getRootProps()
   }

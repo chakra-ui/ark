@@ -8,14 +8,14 @@ import { injectArkFieldContext } from './use-field-context'
   exportAs: 'arkFieldRequiredIndicator',
 })
 export class ArkFieldRequiredIndicator {
-  readonly context = injectArkFieldContext()
-
   constructor() {
+    const context = injectArkFieldContext()
+
     applyArkProps({
       elementRef: inject(ElementRef),
       renderer: inject(Renderer2),
       destroyRef: inject(DestroyRef),
-      props: () => this.context.getRequiredIndicatorProps(),
+      props: () => context.getRequiredIndicatorProps(),
     })
   }
 }

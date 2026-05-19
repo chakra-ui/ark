@@ -44,6 +44,14 @@ export class ArkFieldItem implements UseFieldReturn {
     this.parent.setHasHelperText(value)
   }
 
+  registerErrorText(): () => void {
+    return this.parent.registerErrorText()
+  }
+
+  registerHelperText(): () => void {
+    return this.parent.registerHelperText()
+  }
+
   getRootProps(): ArkProps {
     return this.parent.getRootProps()
   }

@@ -27,6 +27,8 @@ export interface UseFieldReturn {
   ariaDescribedby: Signal<string | undefined>
   setHasErrorText(value: boolean): void
   setHasHelperText(value: boolean): void
+  registerErrorText(): () => void
+  registerHelperText(): () => void
   getRootProps(): ArkProps
   getControlProps(): ArkProps
   getLabelProps(): ArkProps
@@ -77,8 +79,10 @@ export function useField(options: UseFieldOptions): UseFieldReturn {
   const readOnly = computed(() => Boolean(propsSignal().readOnly))
   const required = computed(() => Boolean(propsSignal().required))
 
-  const hasErrorTextSignal = signal(false)
-  const hasHelperTextSignal = signal(false)
+  const errorTextCount = signal(0)
+  const helperTextCount = signal(0)
+  const hasErrorTextSignal = computed(() => errorTextCount() > 0)
+  const hasHelperTextSignal = computed(() => helperTextCount() > 0)
 
   const ariaDescribedby = computed<string | undefined>(() => {
     const list: string[] = []
@@ -142,12 +146,15 @@ export function useField(options: UseFieldOptions): UseFieldReturn {
     ...fieldParts.helperText.attrs,
     id: ids().helperText,
     'data-disabled': dataAttr(disabled()),
+    'data-invalid': dataAttr(invalid()),
   })
 
   const getErrorTextProps = (): ArkProps => ({
     ...fieldParts.errorText.attrs,
     id: ids().errorText,
-    'aria-live': 'polite',
+    'aria-live': invalid() ? 'polite' : undefined,
+    'data-disabled': dataAttr(disabled()),
+    'data-invalid': dataAttr(invalid()),
   })
 
   const getRequiredIndicatorProps = (): ArkProps => ({
@@ -163,11 +170,19 @@ export function useField(options: UseFieldOptions): UseFieldReturn {
     invalid,
     readOnly,
     required,
-    hasErrorText: hasErrorTextSignal.asReadonly(),
-    hasHelperText: hasHelperTextSignal.asReadonly(),
+    hasErrorText: hasErrorTextSignal,
+    hasHelperText: hasHelperTextSignal,
     ariaDescribedby,
-    setHasErrorText: (value: boolean) => hasErrorTextSignal.set(value),
-    setHasHelperText: (value: boolean) => hasHelperTextSignal.set(value),
+    setHasErrorText: (value: boolean) => errorTextCount.set(value ? 1 : 0),
+    setHasHelperText: (value: boolean) => helperTextCount.set(value ? 1 : 0),
+    registerErrorText: () => {
+      errorTextCount.update((count) => count + 1)
+      return () => errorTextCount.update((count) => Math.max(0, count - 1))
+    },
+    registerHelperText: () => {
+      helperTextCount.update((count) => count + 1)
+      return () => helperTextCount.update((count) => Math.max(0, count - 1))
+    },
     getRootProps,
     getControlProps,
     getLabelProps,
