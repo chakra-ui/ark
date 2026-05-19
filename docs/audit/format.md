@@ -33,5 +33,5 @@
 - [x] Diff hygiene: `git diff --check` passed.
 
 ## Commit
-- Hash: Final commit hash reported in handoff.
+- Hash: `d3fb379f3`
 - Message: `fix(angular): align format examples with react parity`
