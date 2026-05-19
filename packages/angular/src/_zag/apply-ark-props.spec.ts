@@ -131,6 +131,45 @@ describe('applyArkProps', () => {
     expect((handle.el as unknown as { onClick?: unknown }).onClick).toBeUndefined()
   })
 
+  it('moves onChange listeners when an input type changes event contracts', () => {
+    const onChange = vi.fn()
+    const props = signal<ArkProps>({ type: 'text', onChange })
+    const handle = mountHost<HTMLInputElement>('<input #target />', () => props())
+    cleanup = handle.destroy
+
+    handle.el.dispatchEvent(new Event('input'))
+    handle.el.dispatchEvent(new Event('change'))
+    expect(onChange).toHaveBeenCalledTimes(1)
+
+    props.set({ type: 'checkbox', onChange })
+    TestBed.tick()
+
+    handle.el.dispatchEvent(new Event('input'))
+    handle.el.dispatchEvent(new Event('change'))
+    expect(onChange).toHaveBeenCalledTimes(2)
+  })
+
+  it('maps onChange to native input/change events by element type', () => {
+    const textChange = vi.fn()
+    const textarea = mountHost<HTMLTextAreaElement>('<textarea #target></textarea>', () => ({
+      onChange: textChange,
+    }))
+    cleanup = textarea.destroy
+    textarea.el.dispatchEvent(new Event('input'))
+    textarea.el.dispatchEvent(new Event('change'))
+    expect(textChange).toHaveBeenCalledTimes(1)
+    textarea.destroy()
+    cleanup = undefined
+    TestBed.resetTestingModule()
+
+    const selectChange = vi.fn()
+    const select = mountHost<HTMLSelectElement>('<select #target></select>', () => ({ onChange: selectChange }))
+    cleanup = select.destroy
+    select.el.dispatchEvent(new Event('input'))
+    select.el.dispatchEvent(new Event('change'))
+    expect(selectChange).toHaveBeenCalledTimes(1)
+  })
+
   it('manages classes from string, array, and object inputs without touching consumer classes (criterion 17)', () => {
     const props = signal<ArkProps>({ class: 'a b' })
     const handle = mountHost('<div #target></div>', () => props())

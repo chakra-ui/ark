@@ -103,7 +103,7 @@ export class ArkPinInputRoot implements ControlValueAccessor, UsePinInputReturn,
   private readonly _disabledFromForm = signal(false)
   private _pendingInternalWrites = 0
   private _hasExternalBinding = false
-  private _hasReceivedFormWrite = false
+  private _lastFormValue: string[] | undefined = undefined
   private readonly _registeredIndices = new Set<number>()
 
   private readonly cva = createArkCvaController<string[]>({
@@ -184,13 +184,14 @@ export class ArkPinInputRoot implements ControlValueAccessor, UsePinInputReturn,
 
   writeValue(value: string[] | null): void {
     const next = value === null ? undefined : value
-    if (!this._hasReceivedFormWrite && this.value() !== undefined) {
+    const current = this.value()
+    if (current !== undefined && !arraysShallowEqual(current, this._lastFormValue)) {
       this._hasExternalBinding = true
     }
-    this._hasReceivedFormWrite = true
-    if (this.value() !== next) {
+    if (!arraysShallowEqual(current, next)) {
       this._pendingInternalWrites++
     }
+    this._lastFormValue = next
     this.cva.writeValue(value)
   }
 
@@ -223,4 +224,11 @@ export class ArkPinInputRoot implements ControlValueAccessor, UsePinInputReturn,
       ctx.set('count', next)
     }
   }
+}
+
+function arraysShallowEqual(a: string[] | undefined, b: string[] | undefined): boolean {
+  if (a === b) return true
+  if (!a || !b) return false
+  if (a.length !== b.length) return false
+  return a.every((item, index) => item === b[index])
 }

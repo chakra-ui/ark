@@ -133,7 +133,7 @@ export class ArkSelectRoot<T extends CollectionItem = CollectionItem>
   private readonly _fallbackCollection = new ListCollection<T>({ items: [] })
   private _pendingInternalWrites = 0
   private _hasExternalBinding = false
-  private _hasReceivedFormWrite = false
+  private _lastFormValue: string[] | undefined = undefined
 
   private readCollection(): ListCollection<T> {
     try {
@@ -247,13 +247,14 @@ export class ArkSelectRoot<T extends CollectionItem = CollectionItem>
 
   writeValue(value: string[] | null): void {
     const next = value === null ? undefined : value
-    if (!this._hasReceivedFormWrite && this.value() !== undefined) {
+    const current = this.value()
+    if (current !== undefined && !arraysShallowEqual(current, this._lastFormValue)) {
       this._hasExternalBinding = true
     }
-    this._hasReceivedFormWrite = true
-    if (!arraysShallowEqual(this.value(), next)) {
+    if (!arraysShallowEqual(current, next)) {
       this._pendingInternalWrites++
     }
+    this._lastFormValue = next
     this.cva.writeValue(value)
   }
 

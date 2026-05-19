@@ -15,6 +15,20 @@ export class ArkComboboxInput {
     const destroyRef = inject(DestroyRef)
     const inputValue = computed(() => context.api().inputValue)
     let composing = false
+    let upstreamCompositionStart: unknown
+    let upstreamCompositionEnd: unknown
+    const onCompositionStart = (event: Event) => {
+      composing = true
+      if (typeof upstreamCompositionStart === 'function') {
+        ;(upstreamCompositionStart as (event: Event) => void)(event)
+      }
+    }
+    const onCompositionEnd = (event: Event) => {
+      composing = false
+      if (typeof upstreamCompositionEnd === 'function') {
+        ;(upstreamCompositionEnd as (event: Event) => void)(event)
+      }
+    }
 
     applyArkProps({
       elementRef,
@@ -23,20 +37,10 @@ export class ArkComboboxInput {
       props: () => {
         const props = context.api().getInputProps() as Record<string, unknown>
         const { defaultValue: _defaultValue, ...rest } = props
-        const upstreamCompositionStart = rest['onCompositionStart']
-        const upstreamCompositionEnd = rest['onCompositionEnd']
-        rest['onCompositionStart'] = (event: Event) => {
-          composing = true
-          if (typeof upstreamCompositionStart === 'function') {
-            ;(upstreamCompositionStart as (event: Event) => void)(event)
-          }
-        }
-        rest['onCompositionEnd'] = (event: Event) => {
-          composing = false
-          if (typeof upstreamCompositionEnd === 'function') {
-            ;(upstreamCompositionEnd as (event: Event) => void)(event)
-          }
-        }
+        upstreamCompositionStart = rest['onCompositionStart']
+        upstreamCompositionEnd = rest['onCompositionEnd']
+        rest['onCompositionStart'] = onCompositionStart
+        rest['onCompositionEnd'] = onCompositionEnd
         return rest
       },
     })

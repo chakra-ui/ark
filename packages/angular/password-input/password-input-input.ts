@@ -37,10 +37,13 @@ export class ArkPasswordInputInput {
         if (root) {
           const upstreamOnBlur = rest['onBlur']
           rest['onBlur'] = (event: Event) => {
-            if (typeof upstreamOnBlur === 'function') {
-              ;(upstreamOnBlur as (event: Event) => void)(event)
+            try {
+              if (typeof upstreamOnBlur === 'function') {
+                ;(upstreamOnBlur as (event: Event) => void)(event)
+              }
+            } finally {
+              root.markTouched()
             }
-            root.markTouched()
           }
         }
         return rest

@@ -37,7 +37,12 @@ export class ArkSelectHiddenSelect {
       const collection = api.collection
       const value = api.value
       const signature = `${value.join('\u0000')}::${collection.items
-        .map((item) => `${collection.getItemValue(item) ?? ''}:${collection.getItemDisabled(item) ? '1' : '0'}`)
+        .map(
+          (item) =>
+            `${collection.getItemValue(item) ?? ''}:${collection.getItemDisabled(item) ? '1' : '0'}:${
+              collection.stringifyItem(item) ?? ''
+            }`,
+        )
         .join('\u0001')}`
       if (signature === previousSignature) return
       previousSignature = signature
