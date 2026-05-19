@@ -61,6 +61,11 @@ export const entryPoints: EntryPoint[] = [
     outputs: ['dist/fesm2022/ark-ui-angular-fieldset.mjs'],
   },
   {
+    name: '@ark-ui/angular/file-upload',
+    file: 'file-upload/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-file-upload.mjs'],
+  },
+  {
     name: '@ark-ui/angular/hover-card',
     file: 'src/hover-card/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-src-hover-card.mjs'],

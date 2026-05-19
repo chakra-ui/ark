@@ -23,6 +23,7 @@ export default defineConfig(({ mode }) => ({
       '@ark-ui/angular/editable': new URL('./editable/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/field': new URL('./field/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/fieldset': new URL('./fieldset/public-api.ts', import.meta.url).pathname,
+      '@ark-ui/angular/file-upload': new URL('./file-upload/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/hover-card': new URL('./src/hover-card/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/menu': new URL('./src/menu/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/navigation-menu': new URL('./src/navigation-menu/public-api.ts', import.meta.url).pathname,
