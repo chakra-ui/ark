@@ -6,35 +6,58 @@ export const marqueeExampleStyles = `
   }
 
   .marquee-root {
-    width: min(100%, 640px);
-    min-height: 72px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+    overflow: hidden;
     background: #ffffff;
+    color: #111827;
+  }
+
+  .marquee-root[data-orientation='horizontal'] {
+    height: 80px;
   }
 
   .marquee-root[data-orientation='vertical'] {
     width: 280px;
-    height: 260px;
+    height: 240px;
   }
 
   .marquee-viewport {
-    align-items: center;
+    width: 100%;
+    height: 100%;
   }
 
   .marquee-content {
     align-items: center;
-    animation: marquee-scroll var(--marquee-duration) linear var(--marquee-delay) var(--marquee-loop-count);
-    animation-direction: normal;
-    animation-play-state: running;
+    animation-delay: var(--marquee-delay);
+    animation-duration: var(--marquee-duration);
+    animation-iteration-count: var(--marquee-loop-count);
+    animation-timing-function: linear;
   }
 
-  .marquee-root[data-paused] .marquee-content {
-    animation-play-state: paused;
+  .marquee-content[data-side='start'],
+  .marquee-content[data-side='end'] {
+    animation-name: marquee-x;
+  }
+
+  .marquee-content[data-side='top'],
+  .marquee-content[data-side='bottom'] {
+    animation-name: marquee-y;
+  }
+
+  .marquee-root[data-paused],
+  .marquee-root[data-paused] * {
+    animation-play-state: paused !important;
   }
 
   .marquee-content[data-reverse] {
     animation-direction: reverse;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-content {
+      animation: none !important;
+    }
   }
 
   .marquee-item {
@@ -65,27 +88,41 @@ export const marqueeExampleStyles = `
   }
 
   .marquee-edge {
-    width: 48px;
-    height: 100%;
-    background: linear-gradient(to var(--edge-direction, right), #ffffff, rgba(255, 255, 255, 0));
     z-index: 1;
+    pointer-events: none;
+  }
+
+  .marquee-edge[data-side='start'] {
+    width: 20%;
+    background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
+  }
+
+  .marquee-edge[data-side='start'][dir='rtl'] {
+    background: linear-gradient(to left, #ffffff, rgba(255, 255, 255, 0));
   }
 
   .marquee-edge[data-side='end'] {
-    --edge-direction: left;
+    width: 20%;
+    background: linear-gradient(to left, #ffffff, rgba(255, 255, 255, 0));
+  }
+
+  .marquee-edge[data-side='end'][dir='rtl'] {
+    background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
+  }
+
+  .marquee-edge[data-side='top'] {
+    height: 20%;
+    background: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0));
+  }
+
+  .marquee-edge[data-side='bottom'] {
+    height: 20%;
+    background: linear-gradient(to top, #ffffff, rgba(255, 255, 255, 0));
   }
 
   .marquee-root[data-orientation='vertical'] .marquee-edge {
     width: 100%;
-    height: 48px;
-  }
-
-  .marquee-root[data-orientation='vertical'] .marquee-edge[data-side='top'] {
-    --edge-direction: bottom;
-  }
-
-  .marquee-root[data-orientation='vertical'] .marquee-edge[data-side='bottom'] {
-    --edge-direction: top;
+    height: 20%;
   }
 
   .marquee-controls {
@@ -119,12 +156,21 @@ export const marqueeExampleStyles = `
     font-size: 14px;
   }
 
-  @keyframes marquee-scroll {
+  @keyframes marquee-x {
     from {
-      transform: translate3d(0, 0, 0);
+      transform: translateX(0%);
     }
     to {
-      transform: var(--marquee-translate);
+      transform: translateX(var(--marquee-translate));
+    }
+  }
+
+  @keyframes marquee-y {
+    from {
+      transform: translateY(0%);
+    }
+    to {
+      transform: translateY(var(--marquee-translate));
     }
   }
 `

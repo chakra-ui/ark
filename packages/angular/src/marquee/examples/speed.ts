@@ -34,8 +34,8 @@ import { marqueeExampleStyles } from '../marquee-example-styles'
 export class MarqueeSpeedExample {
   readonly items = marqueeExampleItems
   readonly speeds = [
-    { label: 'Slow', value: 25 },
-    { label: 'Normal', value: 50 },
-    { label: 'Fast', value: 100 },
+    { label: 'Slow (25px/s)', value: 25 },
+    { label: 'Normal (50px/s)', value: 50 },
+    { label: 'Fast (100px/s)', value: 100 },
   ]
 }

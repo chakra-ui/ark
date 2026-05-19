@@ -29,8 +29,8 @@ import { marqueeExampleStyles } from '../marquee-example-styles'
         </div>
       </div>
       <div class="marquee-meta">
-        <span>Loops: {{ loopCount() }}</span>
-        <span>Completed: {{ completedCount() }}</span>
+        <p>Loop completed: {{ loopCount() }} times</p>
+        <p>Animation completed: {{ completedCount() }} times</p>
       </div>
     </div>
   `,
