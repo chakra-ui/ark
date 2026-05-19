@@ -5,7 +5,9 @@ import type { Machine } from '@zag-js/select'
 export type {
   Api as SelectApi,
   ElementIds as SelectElementIds,
+  FocusOutsideEvent as SelectFocusOutsideEvent,
   HighlightChangeDetails as SelectHighlightChangeDetails,
+  InteractOutsideEvent as SelectInteractOutsideEvent,
   IntlTranslations as SelectIntlTranslations,
   ItemGroupLabelProps as SelectItemGroupLabelProps,
   ItemGroupProps as SelectItemGroupProps,
@@ -13,6 +15,7 @@ export type {
   ItemState as SelectItemState,
   Machine as SelectMachine,
   OpenChangeDetails as SelectOpenChangeDetails,
+  PointerDownOutsideEvent as SelectPointerDownOutsideEvent,
   PositioningOptions as SelectPositioningOptions,
   Props as SelectMachineProps,
   ScrollToIndexDetails as SelectScrollToIndexDetails,

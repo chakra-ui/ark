@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Injector, inject, runInInjectionContext } from '@angular/core'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { createListCollection, type ListCollection } from '@ark-ui/angular/collection'
 import {
@@ -14,25 +14,21 @@ import {
   ArkSelectItemText,
   ArkSelectLabel,
   ArkSelectPositioner,
-  ArkSelectRoot,
+  ArkSelectRootProvider,
   ArkSelectTrigger,
   ArkSelectValueText,
+  useSelect,
+  type UseSelectReturn,
 } from '@ark-ui/angular/select'
 import { selectExampleStyles } from '../select-example-styles'
 
-interface Item {
-  label: string
-  value: string
-  disabled?: boolean
-}
-
 @Component({
-  selector: 'select-controlled-example',
+  selector: 'select-on-highlight-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ArkPortalComponent,
-    ArkSelectRoot,
+    ArkSelectRootProvider,
     ArkSelectLabel,
     ArkSelectControl,
     ArkSelectTrigger,
@@ -49,25 +45,23 @@ interface Item {
     ArkSelectHiddenSelect,
   ],
   template: `
-    <div arkSelectRoot #root="arkSelectRoot" [collection]="collection" [(value)]="value">
+    <div arkSelectRootProvider #provider="arkSelectRootProvider" [value]="select">
       <span arkSelectLabel>Framework</span>
       <div arkSelectControl>
         <button arkSelectTrigger>
-          <span arkSelectValueText>Select a framework</span>
-        </button>
-        <div class="select-indicators">
-          <button arkSelectClearTrigger>×</button>
+          <span arkSelectValueText>Select a Framework</span>
           <span arkSelectIndicator>▾</span>
-        </div>
+        </button>
+        <button arkSelectClearTrigger>Clear</button>
       </div>
-      <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+      <ark-portal [originInjector]="provider.getContextCarrier().elementInjector">
         <div arkSelectPositioner>
           <div arkSelectContent>
             <div arkSelectItemGroup>
               <span arkSelectItemGroupLabel>Frameworks</span>
-              @for (item of collection.items; track item.value) {
+              @for (item of collection.items; track item) {
                 <div arkSelectItem [item]="item">
-                  <span arkSelectItemText>{{ item.label }}</span>
+                  <span arkSelectItemText>{{ item }}</span>
                   <span arkSelectItemIndicator>✓</span>
                 </div>
               }
@@ -80,14 +74,18 @@ interface Item {
   `,
   styles: [selectExampleStyles],
 })
-export class SelectControlledExample {
-  readonly value = signal<string[] | undefined>([])
-  readonly collection: ListCollection<Item> = createListCollection<Item>({
-    items: [
-      { label: 'React', value: 'react' },
-      { label: 'Solid', value: 'solid' },
-      { label: 'Vue', value: 'vue' },
-      { label: 'Svelte', value: 'svelte', disabled: true },
-    ],
+export class SelectOnHighlightExample {
+  readonly collection: ListCollection<string> = createListCollection<string>({
+    items: ['React', 'Solid', 'Vue', 'Svelte'],
   })
+  readonly select: UseSelectReturn<string> = runInInjectionContext(inject(Injector), () =>
+    useSelect<string>({
+      context: () => ({
+        collection: this.collection,
+        onHighlightChange: ({ highlightedValue }) => {
+          if (highlightedValue) this.select.api().selectValue(highlightedValue)
+        },
+      }),
+    }),
+  )
 }

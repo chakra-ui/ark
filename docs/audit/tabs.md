@@ -34,5 +34,5 @@
 - [ ] Manual/visual checks: Deferred; browser inspection was blocked by the Storybook port conflict above.
 
 ## Commit
-- Hash:
+- Hash: Recorded in final response after commit creation.
 - Message: `fix(angular): align tabs with react parity`

@@ -34,8 +34,11 @@ import {
   selectAnatomy,
   useSelect,
   type SelectApi,
+  type SelectFocusOutsideEvent,
+  type SelectInteractOutsideEvent,
   type SelectMachine,
   type SelectMachineProps,
+  type SelectPointerDownOutsideEvent,
   type SelectService,
   type UseSelectOptions,
   type UseSelectProps,
@@ -44,8 +47,11 @@ import {
 
 type SelectPublicTypeSmoke = [
   SelectApi,
+  SelectFocusOutsideEvent,
+  SelectInteractOutsideEvent,
   SelectMachine,
   SelectMachineProps,
+  SelectPointerDownOutsideEvent,
   SelectService,
   UseSelectOptions,
   UseSelectProps,
@@ -503,6 +509,40 @@ describe('@ark-ui/angular/select', () => {
     TestBed.tick()
     fixture.detectChanges()
     expect(root.api().highlightedValue).toBe('solid')
+
+    fixture.destroy()
+  })
+
+  it('emits outside interaction callbacks from the Zag layer', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkSelectRoot],
+      template: `
+        <div
+          arkSelectRoot
+          [collection]="collection"
+          (focusOutside)="events.push('focus')"
+          (pointerDownOutside)="events.push('pointer')"
+          (interactOutside)="events.push('interact')"
+        ></div>
+      `,
+    })
+    class Host {
+      readonly collection = makeCollection()
+      readonly events: string[] = []
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+
+    const root = fixture.debugElement.query(By.directive(ArkSelectRoot)).injector.get(ArkSelectRoot)
+    root.service.prop('onFocusOutside')?.({} as SelectFocusOutsideEvent)
+    root.service.prop('onPointerDownOutside')?.({} as SelectPointerDownOutsideEvent)
+    root.service.prop('onInteractOutside')?.({} as SelectInteractOutsideEvent)
+
+    expect(fixture.componentInstance.events).toEqual(['focus', 'pointer', 'interact'])
 
     fixture.destroy()
   })

@@ -6,6 +6,7 @@ import {
   ArkSelectContent,
   ArkSelectControl,
   ArkSelectHiddenSelect,
+  ArkSelectIndicator,
   ArkSelectItem,
   ArkSelectItemIndicator,
   ArkSelectItemText,
@@ -36,6 +37,7 @@ interface Option {
     ArkSelectControl,
     ArkSelectTrigger,
     ArkSelectValueText,
+    ArkSelectIndicator,
     ArkSelectPositioner,
     ArkSelectContent,
     ArkSelectItem,
@@ -46,10 +48,11 @@ interface Option {
   template: `
     <div arkFieldRoot [invalid]="true">
       <div arkSelectRoot #root="arkSelectRoot" [collection]="collection">
-        <span arkSelectLabel>Color</span>
+        <span arkSelectLabel>Label</span>
         <div arkSelectControl>
           <button arkSelectTrigger>
-            <span arkSelectValueText>Pick a color</span>
+            <span arkSelectValueText>Select a framework</span>
+            <span arkSelectIndicator>▾</span>
           </button>
         </div>
         <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
@@ -66,8 +69,8 @@ interface Option {
         </ark-portal>
         <select arkSelectHiddenSelect></select>
       </div>
-      <span arkFieldHelperText>Pick a color</span>
-      <span arkFieldErrorText>Selection required</span>
+      <span arkFieldHelperText>Additional Info</span>
+      <span arkFieldErrorText>Error Info</span>
     </div>
   `,
   styles: [selectExampleStyles],
@@ -75,9 +78,10 @@ interface Option {
 export class SelectWithFieldExample {
   readonly collection: ListCollection<Option> = createListCollection<Option>({
     items: [
-      { label: 'Red', value: 'red' },
-      { label: 'Green', value: 'green' },
-      { label: 'Blue', value: 'blue' },
+      { label: 'React', value: 'react' },
+      { label: 'Solid', value: 'solid' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Svelte', value: 'svelte' },
     ],
   })
 }

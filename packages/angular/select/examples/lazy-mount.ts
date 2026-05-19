@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
+import { ArkPresenceComponent } from '@ark-ui/angular/presence'
 import { createListCollection, type ListCollection } from '@ark-ui/angular/collection'
 import {
   ArkSelectClearTrigger,
@@ -20,17 +21,13 @@ import {
 } from '@ark-ui/angular/select'
 import { selectExampleStyles } from '../select-example-styles'
 
-interface Framework {
-  label: string
-  value: string
-}
-
 @Component({
-  selector: 'select-basic-example',
+  selector: 'select-lazy-mount-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ArkPortalComponent,
+    ArkPresenceComponent,
     ArkSelectRoot,
     ArkSelectLabel,
     ArkSelectControl,
@@ -52,40 +49,42 @@ interface Framework {
       <span arkSelectLabel>Framework</span>
       <div arkSelectControl>
         <button arkSelectTrigger>
-          <span arkSelectValueText>Select a framework</span>
-        </button>
-        <div class="select-indicators">
-          <button arkSelectClearTrigger>×</button>
+          <span arkSelectValueText>Select a Framework</span>
           <span arkSelectIndicator>▾</span>
-        </div>
+        </button>
+        <button arkSelectClearTrigger>Clear</button>
       </div>
-      <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
-        <div arkSelectPositioner>
-          <div arkSelectContent>
-            <div arkSelectItemGroup>
-              <span arkSelectItemGroupLabel>Frameworks</span>
-              @for (item of collection.items; track item.value) {
-                <div arkSelectItem [item]="item">
-                  <span arkSelectItemText>{{ item.label }}</span>
-                  <span arkSelectItemIndicator>✓</span>
+      <ark-presence
+        [present]="root.api().open"
+        lazyMount
+        unmountOnExit
+        [originInjector]="root.getContextCarrier().elementInjector"
+      >
+        <ng-template>
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkSelectPositioner>
+              <div arkSelectContent>
+                <div arkSelectItemGroup>
+                  <span arkSelectItemGroupLabel>Frameworks</span>
+                  @for (item of collection.items; track item) {
+                    <div arkSelectItem [item]="item">
+                      <span arkSelectItemText>{{ item }}</span>
+                      <span arkSelectItemIndicator>✓</span>
+                    </div>
+                  }
                 </div>
-              }
+              </div>
             </div>
-          </div>
-        </div>
-      </ark-portal>
+          </ark-portal>
+        </ng-template>
+      </ark-presence>
       <select arkSelectHiddenSelect></select>
     </div>
   `,
   styles: [selectExampleStyles],
 })
-export class SelectBasicExample {
-  readonly collection: ListCollection<Framework> = createListCollection<Framework>({
-    items: [
-      { label: 'React', value: 'react' },
-      { label: 'Solid', value: 'solid' },
-      { label: 'Vue', value: 'vue' },
-      { label: 'Svelte', value: 'svelte' },
-    ],
+export class SelectLazyMountExample {
+  readonly collection: ListCollection<string> = createListCollection<string>({
+    items: ['React', 'Solid', 'Vue', 'Svelte', 'Angular', 'Alpine'],
   })
 }

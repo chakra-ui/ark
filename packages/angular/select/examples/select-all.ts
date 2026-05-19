@@ -18,13 +18,8 @@ import {
 } from '@ark-ui/angular/select'
 import { selectExampleStyles } from '../select-example-styles'
 
-interface Day {
-  label: string
-  value: string
-}
-
 @Component({
-  selector: 'select-multiple-example',
+  selector: 'select-all-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -44,23 +39,29 @@ interface Day {
     ArkSelectHiddenSelect,
   ],
   template: `
-    <div arkSelectRoot #root="arkSelectRoot" [collection]="collection" [multiple]="true">
-      <span arkSelectLabel>Days</span>
+    <div arkSelectRoot #root="arkSelectRoot" [collection]="collection">
+      <span arkSelectLabel>Framework</span>
       <div arkSelectControl>
         <button arkSelectTrigger>
-          <span arkSelectValueText>Select days</span>
-        </button>
-        <div class="select-indicators">
-          <button arkSelectClearTrigger>×</button>
+          <span arkSelectValueText>Select a Framework</span>
           <span arkSelectIndicator>▾</span>
-        </div>
+        </button>
+        <button arkSelectClearTrigger>Clear</button>
       </div>
       <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
         <div arkSelectPositioner>
           <div arkSelectContent>
-            @for (item of collection.items; track item.value) {
+            <button
+              class="select-button"
+              style="width: 100%; margin-bottom: 0.25rem"
+              type="button"
+              (click)="root.api().selectAll(); root.api().setOpen(false)"
+            >
+              Select All
+            </button>
+            @for (item of collection.items; track item) {
               <div arkSelectItem [item]="item">
-                <span arkSelectItemText>{{ item.label }}</span>
+                <span arkSelectItemText>{{ item }}</span>
                 <span arkSelectItemIndicator>✓</span>
               </div>
             }
@@ -72,14 +73,8 @@ interface Day {
   `,
   styles: [selectExampleStyles],
 })
-export class SelectMultipleExample {
-  readonly collection: ListCollection<Day> = createListCollection<Day>({
-    items: [
-      { label: 'Monday', value: 'mon' },
-      { label: 'Tuesday', value: 'tue' },
-      { label: 'Wednesday', value: 'wed' },
-      { label: 'Thursday', value: 'thu' },
-      { label: 'Friday', value: 'fri' },
-    ],
+export class SelectAllExample {
+  readonly collection: ListCollection<string> = createListCollection<string>({
+    items: ['React', 'Solid', 'Vue', 'Svelte'],
   })
 }

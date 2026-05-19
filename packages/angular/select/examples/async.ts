@@ -1,15 +1,12 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { createListCollection, type ListCollection } from '@ark-ui/angular/collection'
 import {
-  ArkSelectClearTrigger,
   ArkSelectContent,
   ArkSelectControl,
   ArkSelectHiddenSelect,
   ArkSelectIndicator,
   ArkSelectItem,
-  ArkSelectItemGroup,
-  ArkSelectItemGroupLabel,
   ArkSelectItemIndicator,
   ArkSelectItemText,
   ArkSelectLabel,
@@ -17,17 +14,17 @@ import {
   ArkSelectRoot,
   ArkSelectTrigger,
   ArkSelectValueText,
+  type SelectOpenChangeDetails,
 } from '@ark-ui/angular/select'
 import { selectExampleStyles } from '../select-example-styles'
 
-interface Item {
-  label: string
-  value: string
-  disabled?: boolean
-}
+const loadData = () =>
+  new Promise<string[]>((resolve) => {
+    setTimeout(() => resolve(['React', 'Solid', 'Vue', 'Svelte', 'Angular', 'Ember']), 500)
+  })
 
 @Component({
-  selector: 'select-controlled-example',
+  selector: 'select-async-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -37,41 +34,38 @@ interface Item {
     ArkSelectControl,
     ArkSelectTrigger,
     ArkSelectValueText,
-    ArkSelectClearTrigger,
     ArkSelectIndicator,
     ArkSelectPositioner,
     ArkSelectContent,
-    ArkSelectItemGroup,
-    ArkSelectItemGroupLabel,
     ArkSelectItem,
     ArkSelectItemText,
     ArkSelectItemIndicator,
     ArkSelectHiddenSelect,
   ],
   template: `
-    <div arkSelectRoot #root="arkSelectRoot" [collection]="collection" [(value)]="value">
+    <div arkSelectRoot #root="arkSelectRoot" [collection]="collection()" (openChange)="handleOpenChange($event)">
       <span arkSelectLabel>Framework</span>
       <div arkSelectControl>
         <button arkSelectTrigger>
-          <span arkSelectValueText>Select a framework</span>
-        </button>
-        <div class="select-indicators">
-          <button arkSelectClearTrigger>×</button>
+          <span arkSelectValueText>Select</span>
           <span arkSelectIndicator>▾</span>
-        </div>
+        </button>
       </div>
       <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
         <div arkSelectPositioner>
           <div arkSelectContent>
-            <div arkSelectItemGroup>
-              <span arkSelectItemGroupLabel>Frameworks</span>
-              @for (item of collection.items; track item.value) {
+            @if (loading()) {
+              <div class="select-button">Loading...</div>
+            } @else if (error()) {
+              <div class="select-button">Error: {{ error()?.message }}</div>
+            } @else {
+              @for (item of collection().items; track item) {
                 <div arkSelectItem [item]="item">
-                  <span arkSelectItemText>{{ item.label }}</span>
+                  <span arkSelectItemText>{{ item }}</span>
                   <span arkSelectItemIndicator>✓</span>
                 </div>
               }
-            </div>
+            }
           </div>
         </div>
       </ark-portal>
@@ -80,14 +74,21 @@ interface Item {
   `,
   styles: [selectExampleStyles],
 })
-export class SelectControlledExample {
-  readonly value = signal<string[] | undefined>([])
-  readonly collection: ListCollection<Item> = createListCollection<Item>({
-    items: [
-      { label: 'React', value: 'react' },
-      { label: 'Solid', value: 'solid' },
-      { label: 'Vue', value: 'vue' },
-      { label: 'Svelte', value: 'svelte', disabled: true },
-    ],
-  })
+export class SelectAsyncExample {
+  readonly items = signal<string[] | null>(null)
+  readonly loading = signal(false)
+  readonly error = signal<Error | null>(null)
+  readonly collection = computed<ListCollection<string>>(() =>
+    createListCollection<string>({ items: this.items() ?? [] }),
+  )
+
+  handleOpenChange(details: SelectOpenChangeDetails): void {
+    if (!details.open || this.items() !== null) return
+    this.loading.set(true)
+    this.error.set(null)
+    loadData()
+      .then((items) => this.items.set(items))
+      .catch((error) => this.error.set(error instanceof Error ? error : new Error(String(error))))
+      .finally(() => this.loading.set(false))
+  }
 }

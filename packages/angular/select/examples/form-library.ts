@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
-import { ArkPortalComponent } from '@ark-ui/angular/portal'
+import { ReactiveFormsModule, FormControl } from '@angular/forms'
 import { createListCollection, type ListCollection } from '@ark-ui/angular/collection'
 import {
   ArkSelectClearTrigger,
@@ -20,18 +20,12 @@ import {
 } from '@ark-ui/angular/select'
 import { selectExampleStyles } from '../select-example-styles'
 
-interface Item {
-  label: string
-  value: string
-  disabled?: boolean
-}
-
 @Component({
-  selector: 'select-controlled-example',
+  selector: 'select-form-library-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    ArkPortalComponent,
+    ReactiveFormsModule,
     ArkSelectRoot,
     ArkSelectLabel,
     ArkSelectControl,
@@ -49,45 +43,43 @@ interface Item {
     ArkSelectHiddenSelect,
   ],
   template: `
-    <div arkSelectRoot #root="arkSelectRoot" [collection]="collection" [(value)]="value">
-      <span arkSelectLabel>Framework</span>
-      <div arkSelectControl>
-        <button arkSelectTrigger>
-          <span arkSelectValueText>Select a framework</span>
-        </button>
-        <div class="select-indicators">
-          <button arkSelectClearTrigger>×</button>
-          <span arkSelectIndicator>▾</span>
+    <form class="select-stack" (ngSubmit)="submitted.set(control.value?.join(', ') || 'none')">
+      <div arkSelectRoot [collection]="collection" [formControl]="control" name="framework">
+        <span arkSelectLabel>Framework</span>
+        <select arkSelectHiddenSelect></select>
+        <div arkSelectControl>
+          <button arkSelectTrigger>
+            <span arkSelectValueText>Select a Framework</span>
+          </button>
+          <div class="select-indicators">
+            <button arkSelectClearTrigger>×</button>
+            <span arkSelectIndicator>▾</span>
+          </div>
         </div>
-      </div>
-      <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
         <div arkSelectPositioner>
           <div arkSelectContent>
             <div arkSelectItemGroup>
               <span arkSelectItemGroupLabel>Frameworks</span>
-              @for (item of collection.items; track item.value) {
+              @for (item of collection.items; track item) {
                 <div arkSelectItem [item]="item">
-                  <span arkSelectItemText>{{ item.label }}</span>
+                  <span arkSelectItemText>{{ item }}</span>
                   <span arkSelectItemIndicator>✓</span>
                 </div>
               }
             </div>
           </div>
         </div>
-      </ark-portal>
-      <select arkSelectHiddenSelect></select>
-    </div>
+      </div>
+      <button class="select-button" type="submit">Submit</button>
+      <output class="select-output">submitted: {{ submitted() }}</output>
+    </form>
   `,
   styles: [selectExampleStyles],
 })
-export class SelectControlledExample {
-  readonly value = signal<string[] | undefined>([])
-  readonly collection: ListCollection<Item> = createListCollection<Item>({
-    items: [
-      { label: 'React', value: 'react' },
-      { label: 'Solid', value: 'solid' },
-      { label: 'Vue', value: 'vue' },
-      { label: 'Svelte', value: 'svelte', disabled: true },
-    ],
+export class SelectFormLibraryExample {
+  readonly control = new FormControl<string[] | null>(['React'])
+  readonly submitted = signal('none')
+  readonly collection: ListCollection<string> = createListCollection<string>({
+    items: ['React', 'Solid', 'Vue', 'Svelte'],
   })
 }
