@@ -35,5 +35,5 @@
 - [x] Manual/visual checks: Reviewed the Angular and React QR Code stories side by side. Story set still covers `Basic`, `Controlled`, `Download`, `ErrorCorrection`, `Fill`, `Overlay`, `RootProvider`. The `Fill` example now matches React's pattern of binding the frame fill inline; `applyArkProps` keeps consumer-set styles, and `.Pattern { fill: inherit; }` (still present as the `[data-part='pattern']` selector) cascades the color to the pattern path.
 
 ## Commit
-- Hash: <pending>
+- Hash: d6a22ddab4388a353f6eb91db6c6995b5de14233
 - Message: `fix(angular): align qr-code with react parity`
