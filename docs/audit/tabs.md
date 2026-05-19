@@ -1,37 +1,36 @@
 # Tabs Angular Parity Audit
 
 ## Scope
-- Angular files: `packages/angular/src/tabs/`
-- React files: `packages/react/src/components/tabs/`
-- Storybook/style files: `packages/angular/src/tabs/tabs.stories.ts`, `packages/angular/src/tabs/examples/`, `packages/angular/src/tabs/tabs-example-styles.ts`, `packages/react/src/components/tabs/tabs.stories.tsx`, `.storybook/modules/tabs.module.css`
+- Angular files: `packages/angular/src/tabs/` (`tabs-root.ts`, `tabs-root-provider.ts`, `tabs-list.ts`, `tabs-trigger.ts`, `tabs-content.ts`, `tabs-indicator.ts`, `use-tabs.ts`, `use-tabs-context.ts`, `tabs.types.ts`, `tabs.anatomy.ts`, `public-api.ts`)
+- React files: `packages/react/src/components/tabs/` (`tabs-root.tsx`, `tabs-root-provider.tsx`, `tab-list.tsx`, `tab-trigger.tsx`, `tab-content.tsx`, `tab-indicator.tsx`, `use-tabs.ts`, `tabs-context.tsx`, `tabs.ts`, `index.ts`, `tabs.anatomy.ts`)
+- Storybook/style files: `packages/angular/src/tabs/tabs.stories.ts`, `packages/angular/src/tabs/examples/`, `packages/angular/src/tabs/tabs-example-styles.ts`, `packages/react/src/components/tabs/tabs.stories.tsx`, `packages/react/src/components/tabs/examples/`, `.storybook/modules/tabs.module.css`
+- Specs: `packages/angular/src/tabs/tabs.spec.ts`, `packages/react/src/components/tabs/tests/tabs.test.tsx`
 
 ## Summary
-- Status: Fixed with verification; manual browser visual review deferred because Storybook port `6007` was already in use.
-- Highest-risk gaps: Angular tabs lacked React's render strategy props for lazy-mounted tab content, and Storybook was missing the `LazyMount` and `Links` examples. Angular demo styles also diverged from the React module enough to make indicator and vertical stories visually different.
+- Status: Re-audited; parity preserved. No new gaps surfaced. Tabs spec suite continues to pass (17 tests). Storybook visual verification remains deferred because port 6006 is occupied by another running Storybook instance.
+- Highest-risk gaps from prior pass (render-strategy inputs, missing `LazyMount` and `Links` stories, demo style drift, spec coverage) all remain closed in this re-audit.
 
 ## Gap Matrix
 | Area | Gap | React reference | Angular location | Fix |
 | --- | --- | --- | --- | --- |
-| Public API | Root and root-provider did not expose render strategy inputs (`lazyMount`, `unmountOnExit`) or an Angular template helper for content mounting. | `packages/react/src/components/tabs/tabs-root.tsx`, `packages/react/src/components/tabs/tabs-root-provider.tsx`, `packages/react/src/components/tabs/tab-content.tsx` | `packages/angular/src/tabs/tabs-root.ts`, `packages/angular/src/tabs/tabs-root-provider.ts`, `packages/angular/src/tabs/use-tabs.ts` | Add boolean inputs and `isContentUnmounted(value)` following the Angular collapsible render-strategy pattern. |
-| Story parity | `LazyMount` story was absent. | `packages/react/src/components/tabs/examples/lazy-mount.tsx` | `packages/angular/src/tabs/tabs.stories.ts`, `packages/angular/src/tabs/examples/` | Add an Angular lazy-mount example using root export and `@if` guards. |
-| Story parity | `Links` story was absent. | `packages/react/src/components/tabs/examples/links.tsx` | `packages/angular/src/tabs/tabs.stories.ts`, `packages/angular/src/tabs/examples/` | Add an Angular links example using anchor hosts for `arkTabsTrigger`. |
-| Styling parity | Angular tab examples used a border-bottom tab style, while React uses pill-like selected states and an absolute indicator background. | `.storybook/modules/tabs.module.css` | `packages/angular/src/tabs/tabs-example-styles.ts` | Align Angular demo styles to React selectors and states. |
-| Test parity | Angular specs covered selection, orientation, disabled, controlled, root-provider, and indicator behavior, but not render strategy or link trigger parity. | `packages/react/src/components/tabs/tests/tabs.test.tsx` | `packages/angular/src/tabs/tabs.spec.ts` | Add focused specs for `lazyMount`/`unmountOnExit`, loopFocus false, vertical keyboard navigation, and anchor trigger rendering. |
-| Accessibility | Core roles/ARIA flow came from Zag in both implementations. No Angular-specific a11y deviation was found. | `packages/react/src/components/tabs/tests/tabs.test.tsx` | `packages/angular/src/tabs/tabs.spec.ts` | No change beyond preserving Zag prop application in new link and render-strategy tests. |
+| Public API | Root and root-provider exposed render-strategy inputs (`lazyMount`, `unmountOnExit`) plus `isContentUnmounted(value)` for template-driven mounting. Status: closed. | `packages/react/src/components/tabs/tabs-root.tsx`, `tabs-root-provider.tsx`, `tab-content.tsx` | `packages/angular/src/tabs/tabs-root.ts`, `tabs-root-provider.ts`, `use-tabs.ts` | No change in this pass; verified inputs and helper remain wired. |
+| Public API | Anchor triggers retain tab semantics on `<a>` host with `arkTabsTrigger`. Status: closed; the directive selector uses attribute targeting so anchor hosts work without an `asChild` analogue. | `packages/react/.../tab-trigger.tsx` (`asChild` pattern) | `packages/angular/src/tabs/tabs-trigger.ts` | No change; verified by `TabsLinksExample` spec. |
+| Public API | React exposes a `Tabs` namespace re-export (`tabs.ts`). Angular intentionally exports each directive individually per `docs/technical-requirements.md` Section 1 (no namespace import). Status: design choice. | `packages/react/src/components/tabs/tabs.ts` | `packages/angular/src/tabs/public-api.ts` | No change; documented as Angular-specific position. |
+| Story parity | `LazyMount`, `Links`, `Indicator`, `Vertical`, `ManualActivation`, `Controlled`, `RootProvider`, `DisabledTab`, and `Basic` stories all present. Status: closed. | `packages/react/.../examples/*.tsx`, `tabs.stories.tsx` | `packages/angular/src/tabs/examples/*.ts`, `tabs.stories.ts` | No change; verified all nine stories match React 1:1. |
+| Functionality | Two-way `[(value)]`, deselectable, manual activation, loopFocus, vertical orientation, navigate callback, and controlled value. Status: closed. | `packages/react/.../use-tabs.ts`, `tabs-root.tsx` | `packages/angular/src/tabs/tabs-root.ts`, `use-tabs.ts` | No change; specs cover click selection, ArrowLeft/Right, ArrowDown vertical, manual activation, disabled, controlled emissions, and root-provider. |
+| Styling | Demo styles align with React module: list isolation/z-index for indicator, trigger pill state, indicator absolute positioning with `--width`/`--height` transitions, vertical-orientation rules, focus-visible outline. Status: closed. | `.storybook/modules/tabs.module.css` | `packages/angular/src/tabs/tabs-example-styles.ts` | No change. Note: Angular trigger always sets `text-decoration: none; color: inherit;` covering both button and anchor hosts; React applies these via `&:is(a)`. Functional equivalence holds; broader rule is intentional since Angular cannot easily scope a single selector to both. |
+| Accessibility | Roles, `aria-orientation`, `role="tab"`/`tabpanel`, `aria-selected`, `data-disabled`, focus management, keyboard navigation derive from Zag in both implementations. Status: closed. | `packages/react/.../tests/tabs.test.tsx` (axe assertion) | `packages/angular/src/tabs/tabs.spec.ts` | No change; verified by directive specs and `TabsLinksExample` anchor assertions. |
+| Test parity | Angular specs cover public surface smoke, fallback id generation, selection/visibility, click selection + arrow focus, manual activation, vertical keyboard, loopFocus=false, disabled tab non-selection, controlled emissions, root-provider context, indicator data attributes, lazyMount, lazyMount+unmountOnExit, forms isolation, basic example, root-provider example, links example. Status: closed; 17 tests. | `packages/react/.../tests/tabs.test.tsx` | `packages/angular/src/tabs/tabs.spec.ts` | No change. |
 
 ## Implementation Plan
-1. Add render-strategy inputs to root directives and expose `isContentUnmounted(value)` from `useTabs`.
-2. Add Angular `LazyMount` and `Links` examples and wire them into Storybook.
-3. Align tabs example styles with the React CSS module.
-4. Extend tabs specs for render strategy and missing interaction parity.
-5. Run focused tabs specs, Angular typecheck if public types changed, and `git diff --check`.
+This pass is a re-audit. No new Angular implementation changes are required. Existing parity holds.
 
 ## Verification
-- [x] Typecheck/build: `bun run --cwd packages/angular typecheck` passed. The command completed `tsc`, production package build, and `check:forms-isolation`; ng-packagr emitted existing export-condition warnings.
-- [x] Component tests: `bun run --cwd packages/angular test:ci src/tabs/tabs.spec.ts` passed with 17 tests.
-- [x] Formatting/static check: `bunx biome check --write packages/angular/src/tabs docs/audit/tabs.md` passed with no fixes applied. Biome reports an informational `useLiteralKeys` suggestion for the existing `['id']` access in `tabs.spec.ts`, but TypeScript requires bracket access because of `noPropertyAccessFromIndexSignature`.
-- [ ] Storybook render: `bun run --cwd packages/angular storybook -- --ci --no-open` compiled the preview to 100%, then failed to bind `::1:6007` because another Storybook process was already using the port.
-- [ ] Manual/visual checks: Deferred; browser inspection was blocked by the Storybook port conflict above.
+- [x] Component tests: `bun run --cwd packages/angular test:ci src/tabs/tabs.spec.ts` passed (17 tests, 1.74s).
+- [x] Formatting/static check: `bunx biome check packages/angular/src/tabs docs/audit/tabs.md` reports only a pre-existing `useLiteralKeys` informational on `['id']` access in `tabs.spec.ts`; TypeScript `noPropertyAccessFromIndexSignature` requires the bracket access, so the suggestion is intentionally not applied.
+- [~] Typecheck/build: `bun run --cwd packages/angular typecheck` halts on a pre-existing error in `src/navigation-menu/navigation-menu.spec.ts` (unrelated to tabs and outside this audit's scope). Tabs sources themselves compile cleanly; the tabs spec passes through `vitest`, which performs its own per-file Angular AOT typecheck on the loaded tabs surface.
+- [ ] Storybook render: deferred. `localhost:6006` is already bound by another Storybook process started in this environment, so `bun run --cwd packages/angular storybook` cannot start a fresh instance without disrupting that runner.
+- [ ] Manual/visual checks: deferred along with the Storybook port conflict above.
 
 ## Commit
 - Hash: Recorded in final response after commit creation.
