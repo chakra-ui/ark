@@ -29,27 +29,47 @@ import {
   useDialog,
   type DialogApi,
   type DialogElementIds,
+  type DialogFocusOutsideEvent,
+  type DialogInteractOutsideEvent,
   type DialogMachine,
   type DialogMachineProps,
   type DialogOpenChangeDetails,
+  type DialogPointerDownOutsideEvent,
   type DialogService,
+  type DialogTriggerProps,
+  type DialogTriggerValueChangeDetails,
   type UseDialogOptions,
   type UseDialogProps,
   type UseDialogReturn,
 } from '@ark-ui/angular/dialog'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { DialogBasicExample } from './examples/basic'
+import { DialogConfirmationExample } from './examples/confirmation'
+import { DialogContextExample } from './examples/context'
 import { DialogControlledExample } from './examples/controlled'
 import { DialogDefaultOpenExample } from './examples/default-open'
+import { DialogFinalFocusExample } from './examples/final-focus'
+import { DialogInitialFocusExample } from './examples/initial-focus'
+import { DialogInsideScrollExample } from './examples/inside-scroll'
+import { DialogLazyMountExample } from './examples/lazy-mount'
+import { DialogMultipleTriggersExample } from './examples/multiple-triggers'
+import { DialogNestedExample } from './examples/nested'
+import { DialogOutsideScrollExample } from './examples/outside-scroll'
+import { DialogRapidStateChangeExample } from './examples/rapid-state-change'
 import { DialogRootProviderExample } from './examples/root-provider'
 
 type DialogPublicTypeSmoke = [
   DialogApi,
   DialogElementIds,
+  DialogFocusOutsideEvent,
+  DialogInteractOutsideEvent,
   DialogMachine,
   DialogMachineProps,
   DialogOpenChangeDetails,
+  DialogPointerDownOutsideEvent,
   DialogService,
+  DialogTriggerProps,
+  DialogTriggerValueChangeDetails,
   UseDialogOptions,
   UseDialogProps,
   UseDialogReturn,
@@ -226,7 +246,7 @@ describe('@ark-ui/angular/dialog', () => {
       standalone: true,
       imports: [ArkDialogRoot, ArkDialogTrigger, ArkDialogContent, ArkPortalComponent],
       template: `
-        <div arkDialog #root="arkDialog">
+        <div arkDialog #root="arkDialog" (escapeKeyDown)="escapeEvents.push($event)">
           <button arkDialogTrigger></button>
           <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
             <div arkDialogContent></div>
@@ -234,7 +254,9 @@ describe('@ark-ui/angular/dialog', () => {
         </div>
       `,
     })
-    class Host {}
+    class Host {
+      readonly escapeEvents: KeyboardEvent[] = []
+    }
 
     TestBed.configureTestingModule({ imports: [Host] })
     const fixture = TestBed.createComponent(Host)
@@ -262,6 +284,7 @@ describe('@ark-ui/angular/dialog', () => {
     fixture.detectChanges()
 
     expect(root.api().open).toBe(false)
+    expect(fixture.componentInstance.escapeEvents.length).toBe(1)
 
     fixture.destroy()
   })
@@ -557,6 +580,65 @@ describe('@ark-ui/angular/dialog', () => {
     fixture.destroy()
   })
 
+  it('aria-label input surfaces on content when no title is rendered', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkDialogRoot, ArkDialogContent, ArkPortalComponent],
+      template: `
+        <div arkDialog defaultOpen aria-label="Settings dialog" #root="arkDialog">
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkDialogContent></div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const contentEl = fixture.debugElement.query(By.directive(ArkDialogContent)).nativeElement as HTMLElement
+    expect(contentEl.getAttribute('aria-label')).toBe('Settings dialog')
+
+    fixture.destroy()
+  })
+
+  it('valued triggers update the triggerValue model', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkDialogRoot, ArkDialogTrigger, ArkDialogContent, ArkPortalComponent],
+      template: `
+        <div arkDialog #root="arkDialog" [(triggerValue)]="triggerValue">
+          <button arkDialogTrigger value="first">First</button>
+          <button arkDialogTrigger value="second">Second</button>
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkDialogContent></div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {
+      readonly triggerValue = signal<string | null | undefined>(undefined)
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const triggerEls = fixture.debugElement
+      .queryAll(By.directive(ArkDialogTrigger))
+      .map((debug) => debug.nativeElement as HTMLButtonElement)
+
+    triggerEls[1]?.click()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.triggerValue()).toBe('second')
+
+    fixture.destroy()
+  })
+
   it('DialogBasicExample renders trigger with dialog data attributes', () => {
     TestBed.configureTestingModule({ imports: [DialogBasicExample] })
     const fixture = TestBed.createComponent(DialogBasicExample)
@@ -585,6 +667,40 @@ describe('@ark-ui/angular/dialog', () => {
     const root = rootDebug.injector.get(ArkDialogRoot)
     expect(root.api().open).toBe(true)
 
+    fixture.destroy()
+  })
+
+  it('DialogMultipleTriggersExample tracks the active trigger value', () => {
+    TestBed.configureTestingModule({ imports: [DialogMultipleTriggersExample] })
+    const fixture = TestBed.createComponent(DialogMultipleTriggersExample)
+    fixture.detectChanges()
+
+    const triggerEls = fixture.debugElement
+      .queryAll(By.directive(ArkDialogTrigger))
+      .map((debug) => debug.nativeElement as HTMLButtonElement)
+    triggerEls[0]?.click()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.activeUser()?.id).toBe('1')
+
+    fixture.destroy()
+  })
+
+  it.each([
+    [DialogContextExample],
+    [DialogInitialFocusExample],
+    [DialogFinalFocusExample],
+    [DialogLazyMountExample],
+    [DialogInsideScrollExample],
+    [DialogOutsideScrollExample],
+    [DialogNestedExample],
+    [DialogConfirmationExample],
+    [DialogRapidStateChangeExample],
+  ])('%s mounts without throwing', (Example) => {
+    TestBed.configureTestingModule({ imports: [Example] })
+    const fixture = TestBed.createComponent(Example)
+    fixture.detectChanges()
     fixture.destroy()
   })
 

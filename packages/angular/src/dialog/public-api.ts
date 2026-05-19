@@ -2,10 +2,15 @@ export { dialogAnatomy } from './dialog.anatomy'
 export type {
   DialogApi,
   DialogElementIds,
+  DialogFocusOutsideEvent,
+  DialogInteractOutsideEvent,
   DialogMachine,
   DialogMachineProps,
   DialogOpenChangeDetails,
+  DialogPointerDownOutsideEvent,
   DialogService,
+  DialogTriggerProps,
+  DialogTriggerValueChangeDetails,
 } from './dialog.types'
 export {
   ARK_DIALOG_CONTEXT,
