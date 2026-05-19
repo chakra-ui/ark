@@ -48,7 +48,7 @@ import { stepExampleItems } from './_data'
         <div arkStepsContent class="steps-content" [index]="index">{{ item.title }} - {{ item.description }}</div>
       }
 
-      <div arkStepsCompletedContent class="steps-completed">Steps Complete - thank you.</div>
+      <div arkStepsCompletedContent class="steps-completed">Steps Complete - Thank you for filling out the form!</div>
 
       <div class="steps-actions">
         <button arkStepsPrevTrigger class="steps-button">Back</button>
