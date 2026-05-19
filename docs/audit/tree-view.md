@@ -31,6 +31,11 @@
 - [x] Storybook render: `bun run --cwd packages/angular storybook -- --ci --smoke-test` compiled and exited successfully; Storybook emitted existing unused-compilation warnings and a `DefinePlugin` warning.
 - [x] Manual/visual checks: Compared Angular example styles against `.storybook/modules/tree-view.module.css`; deferred browser pixel inspection for this pass.
 
+## Re-audit
+- Re-audit confirmed all addressable React parity gaps remain closed: `DisabledNode`, `Filtering`, `Links`, `Mutation`, `RenameNode`, `AsyncLoading`, `CheckboxTree`, `ControlledExpanded`, `ControlledSelected`, `ExpandCollapseAll`, `RootProvider`, and `Basic` stories are present and exported from `tree-view.stories.ts`; example styles in `tree-view-example-styles.ts` match the React module's selectors for branch, item, indicator, indent guide, node-checkbox, rename input, action group, filter input, and presence animations.
+- Re-verified `bun run --cwd packages/angular test:ci src/tree-view/tree-view.spec.ts` — 14 tests pass.
+- The three originally deferred gaps remain deferred with the same rationale: `LazyMount` (render-strategy on branch content requires changing `arkTreeViewBranchContent` from a directive to a structural-control or component that gates rendering via collapsible state per node; risks regressing the directive-centric public API and existing branch-content tests), `ContextMenu` (requires `asChild` composition with `Menu.ContextTrigger` which the Angular directive-centric API does not currently expose), and `Virtualized` (requires an Angular virtualizer dependency not in scope for this component-only pass).
+
 ## Commit
-- Hash: Recorded in final status after commit creation.
+- Hash: e770b4326 (initial pass) — re-audit confirmed no additional source changes required for this iteration; audit doc updated to record re-audit verification.
 - Message: `fix(angular): align tree-view with react parity`
