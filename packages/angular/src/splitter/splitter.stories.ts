@@ -3,6 +3,7 @@ import { moduleMetadata } from '@storybook/angular'
 import { SplitterBasicExample } from './examples/basic'
 import { SplitterCollapsibleExample } from './examples/collapsible'
 import { SplitterContextExample } from './examples/context'
+import { SplitterDynamicCollapsibleExample } from './examples/dynamic-collapsible'
 import { SplitterMultiplePanelsExample } from './examples/multiple-panels'
 import { SplitterNestedExample } from './examples/nested'
 import { SplitterResizeIndicatorExample } from './examples/resize-indicator'
@@ -53,4 +54,9 @@ export const RootProvider: StoryObj = {
 export const Vertical: StoryObj = {
   decorators: [moduleMetadata({ imports: [SplitterVerticalExample] })],
   render: () => ({ template: '<splitter-vertical-example />' }),
+}
+
+export const DynamicCollapsible: StoryObj = {
+  decorators: [moduleMetadata({ imports: [SplitterDynamicCollapsibleExample] })],
+  render: () => ({ template: '<splitter-dynamic-collapsible-example />' }),
 }
