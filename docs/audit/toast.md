@@ -33,5 +33,5 @@
 - [ ] Manual/visual checks: Not run in browser automation. Visual parity reviewed by static comparison of `.storybook/modules/toast.module.css` against `packages/angular/src/toast/toast-example-styles.ts`.
 
 ## Commit
-- Hash: <to-be-filled>
+- Hash: `99c7fb210`
 - Message: `fix(angular): align toast with react parity`
