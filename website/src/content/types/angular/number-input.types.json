@@ -1,0 +1,178 @@
+{
+  "Root": {
+    "props": {
+      "allowMouseWheel": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to allow mouse wheel to change the value."
+      },
+      "allowOverflow": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to allow the value to overflow the min/max range."
+      },
+      "clampValueOnBlur": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to clamp the value when the input loses focus."
+      },
+      "defaultValue": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial value of the number input when uncontrolled."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the number input is disabled."
+      },
+      "focusInputOnChange": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to focus the input when the value changes."
+      },
+      "form": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The form attribute of the number input."
+      },
+      "formatOptions": {
+        "type": "Intl.NumberFormatOptions",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The format options for the number input."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The id of the number input."
+      },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  label: string\n  input: string\n  incrementTrigger: string\n  decrementTrigger: string\n  scrubber: string\n}>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The element ids for the number input parts."
+      },
+      "inputMode": {
+        "type": "'text' | 'tel' | 'numeric' | 'decimal'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The input mode for the number input."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the number input is invalid."
+      },
+      "max": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The maximum value of the number input."
+      },
+      "min": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The minimum value of the number input."
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The name attribute of the number input."
+      },
+      "pattern": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The pattern used to check the input value against."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the number input is read-only."
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the number input is required."
+      },
+      "spinOnPress": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to spin the value when the increment/decrement button is held."
+      },
+      "step": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The amount to increment or decrement the value by."
+      },
+      "translations": {
+        "type": "NumberInputIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The translations for the number input."
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled value of the number input."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseNumberInputReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The number input primitive returned by useNumberInput()."
+      }
+    }
+  },
+  "Label": {
+    "props": {}
+  },
+  "Control": {
+    "props": {}
+  },
+  "Input": {
+    "props": {}
+  },
+  "IncrementTrigger": {
+    "props": {}
+  },
+  "DecrementTrigger": {
+    "props": {}
+  },
+  "Scrubber": {
+    "props": {}
+  },
+  "ValueText": {
+    "props": {}
+  }
+}

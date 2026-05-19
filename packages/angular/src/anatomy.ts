@@ -11,6 +11,8 @@ export { fieldsetAnatomy } from '@ark-ui/angular/fieldset'
 export { hoverCardAnatomy } from './hover-card/hover-card.anatomy'
 export { menuAnatomy } from './menu/menu.anatomy'
 export { navigationMenuAnatomy } from './navigation-menu/navigation-menu.anatomy'
+// Use a relative import so this aggregate stays form-isolation safe.
+export { numberInputAnatomy } from '../number-input/number-input.anatomy'
 export { popoverAnatomy } from './popover/popover.anatomy'
 export { progressAnatomy } from '@ark-ui/angular/progress'
 export { toggleAnatomy } from '@ark-ui/angular/toggle'

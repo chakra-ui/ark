@@ -72,6 +72,11 @@
       "types": "./dist/src/navigation-menu/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-src-navigation-menu.mjs"
     },
+    "./number-input": {
+      "source": "./number-input/public-api.ts",
+      "types": "./dist/number-input/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-number-input.mjs"
+    },
     "./popover": {
       "source": "./src/popover/public-api.ts",
       "types": "./dist/src/popover/index.d.ts",
