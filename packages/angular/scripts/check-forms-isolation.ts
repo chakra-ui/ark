@@ -121,6 +121,11 @@ export const entryPoints: EntryPoint[] = [
     outputs: ['dist/fesm2022/ark-ui-angular-select.mjs'],
   },
   {
+    name: '@ark-ui/angular/signature-pad',
+    file: 'src/signature-pad/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-signature-pad.mjs'],
+  },
+  {
     name: '@ark-ui/angular/tags-input',
     file: 'tags-input/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-tags-input.mjs'],

@@ -28,6 +28,7 @@
       "@ark-ui/angular/presence": ["src/presence/public-api.ts"],
       "@ark-ui/angular/progress": ["progress/public-api.ts"],
       "@ark-ui/angular/select": ["select/public-api.ts"],
+      "@ark-ui/angular/signature-pad": ["src/signature-pad/public-api.ts"],
       "@ark-ui/angular/tags-input": ["tags-input/public-api.ts"],
       "@ark-ui/angular/toggle": ["toggle/public-api.ts"],
       "@ark-ui/angular/tooltip": ["src/tooltip/public-api.ts"],

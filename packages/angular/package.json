@@ -122,6 +122,11 @@
       "types": "./dist/select/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-select.mjs"
     },
+    "./signature-pad": {
+      "source": "./src/signature-pad/public-api.ts",
+      "types": "./dist/src/signature-pad/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-src-signature-pad.mjs"
+    },
     "./toggle": {
       "source": "./toggle/public-api.ts",
       "types": "./dist/toggle/index.d.ts",
