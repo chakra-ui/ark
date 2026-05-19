@@ -1,13 +1,13 @@
 export interface MarqueeExampleItem {
-  code: string
   name: string
+  logo: string
 }
 
 export const marqueeExampleItems: MarqueeExampleItem[] = [
-  { code: 'AP', name: 'Apple' },
-  { code: 'BN', name: 'Banana' },
-  { code: 'CH', name: 'Cherry' },
-  { code: 'GR', name: 'Grape' },
-  { code: 'WM', name: 'Watermelon' },
-  { code: 'ST', name: 'Strawberry' },
+  { name: 'Apple', logo: '🍎' },
+  { name: 'Banana', logo: '🍌' },
+  { name: 'Cherry', logo: '🍒' },
+  { name: 'Grape', logo: '🍇' },
+  { name: 'Watermelon', logo: '🍉' },
+  { name: 'Strawberry', logo: '🍓' },
 ]

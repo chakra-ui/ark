@@ -9,13 +9,13 @@ import { marqueeExampleStyles } from '../marquee-example-styles'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArkMarqueeRoot, ArkMarqueeViewport, ArkMarqueeContent, ArkMarqueeItem],
   template: `
-    <div arkMarquee pauseOnInteraction class="marquee-root">
-      <div arkMarqueeViewport class="marquee-viewport">
-        <div arkMarqueeContent class="marquee-content">
-          @for (item of items; track item.code) {
-            <button arkMarqueeItem type="button" class="marquee-item">
-              <span class="marquee-code">{{ item.code }}</span>
-              <span>{{ item.name }}</span>
+    <div arkMarquee pauseOnInteraction class="Root">
+      <div arkMarqueeViewport class="Viewport">
+        <div arkMarqueeContent class="Content">
+          @for (item of items; track item.name) {
+            <button arkMarqueeItem type="button" class="Item">
+              <span class="ItemLogo">{{ item.logo }}</span>
+              <span class="ItemName">{{ item.name }}</span>
             </button>
           }
         </div>

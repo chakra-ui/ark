@@ -9,26 +9,26 @@ import { marqueeExampleStyles } from '../marquee-example-styles'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArkMarqueeRoot, ArkMarqueeViewport, ArkMarqueeContent, ArkMarqueeItem],
   template: `
-    <div class="marquee-stack">
+    <div class="stack">
       <div
         arkMarquee
         [loopCount]="3"
         (loopComplete)="loopCount.update(increment)"
         (complete)="completedCount.update(increment)"
-        class="marquee-root"
+        class="Root"
       >
-        <div arkMarqueeViewport class="marquee-viewport">
-          <div arkMarqueeContent class="marquee-content">
-            @for (item of items; track item.code) {
-              <div arkMarqueeItem class="marquee-item">
-                <span class="marquee-code">{{ item.code }}</span>
-                <span>{{ item.name }}</span>
+        <div arkMarqueeViewport class="Viewport">
+          <div arkMarqueeContent class="Content">
+            @for (item of items; track item.name) {
+              <div arkMarqueeItem class="Item">
+                <span class="ItemLogo">{{ item.logo }}</span>
+                <span class="ItemName">{{ item.name }}</span>
               </div>
             }
           </div>
         </div>
       </div>
-      <div class="marquee-meta">
+      <div>
         <p>Loop completed: {{ loopCount() }} times</p>
         <p>Animation completed: {{ completedCount() }} times</p>
       </div>
