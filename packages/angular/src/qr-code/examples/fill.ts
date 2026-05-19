@@ -11,7 +11,7 @@ import { qrCodeExampleStyles } from '../qr-code-example-styles'
     <div class="hstack">
       @for (fill of fills; track fill) {
         <div arkQrCode defaultValue="http://ark-ui.com">
-          <svg class="fill-frame" arkQrCodeFrame [style.--qr-code-fill]="fill">
+          <svg arkQrCodeFrame [style.fill]="fill">
             <path arkQrCodePattern />
           </svg>
         </div>

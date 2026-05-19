@@ -84,10 +84,6 @@ export const qrCodeExampleStyles = `
     outline-offset: 2px;
   }
 
-  .fill-frame {
-    fill: var(--qr-code-fill);
-  }
-
   .radio-item {
     display: inline-flex;
     align-items: center;
