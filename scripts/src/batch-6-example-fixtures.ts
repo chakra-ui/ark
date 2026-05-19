@@ -1,5 +1,13 @@
 export const batch6Examples = {
   'client-only': ['basic', 'with-fallback'],
+  collection: [
+    'async-list-filter',
+    'async-list-reload',
+    'async-list-sort-client-side',
+    'list-selection-basic',
+    'list-selection-multiple',
+    'list-selection-range',
+  ],
   'download-trigger': ['basic', 'svg', 'with-promise'],
   'focus-trap': ['autofocus', 'basic', 'initial-focus'],
   format: [
@@ -27,6 +35,12 @@ export const batch6Examples = {
   highlight: ['basic', 'dynamic-query', 'exact-match', 'ignore-case', 'match-all', 'multiple', 'repeating-text'],
   presence: ['basic', 'lazy-mount', 'lazy-mount-and-unmount-on-exit', 'skip-animation-on-mount', 'unmount-on-exit'],
   swap: ['fade', 'flip', 'rotate', 'scale'],
+} as const
+
+export const batch6ProviderExamples = {
+  environment: ['setup', 'usage'],
+  interaction: ['focus-visible', 'focus-visible-text-input', 'interaction'],
+  locale: ['setup', 'usage'],
 } as const
 
 export const batch6Utilities = Object.keys(batch6Examples)
