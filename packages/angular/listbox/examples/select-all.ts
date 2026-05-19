@@ -23,7 +23,7 @@ interface Framework {
     <div arkListboxRoot [collection]="collection" selectionMode="multiple" [(value)]="value">
       <button class="select-all-header" type="button" (click)="toggleSelectAll()">
         <span class="select-all-header-indicator">{{ selectAllIndicator() }}</span>
-        <span arkListboxLabel>Select All</span>
+        <span class="select-all-header-label">Select All</span>
       </button>
       <div arkListboxContent>
         @for (item of collection.items; track item.value) {

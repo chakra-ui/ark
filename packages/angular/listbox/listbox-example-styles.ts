@@ -229,6 +229,14 @@ export const listboxExampleStyles = `
     border-color: var(--demo-border-emphasized, #d1d5db);
   }
 
+  .select-all-header-label {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    color: var(--demo-neutral-fg, #111827);
+    user-select: none;
+  }
+
   [arkListboxItemGroup] {
     display: flex;
     flex-direction: column;

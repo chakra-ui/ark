@@ -14,6 +14,7 @@ export type {
   ListboxSchema,
   ListboxScrollToIndexDetails,
   ListboxSelectionDetails,
+  ListboxSelectionMode,
   ListboxService,
   ListboxValueChangeDetails,
 } from './listbox.types'

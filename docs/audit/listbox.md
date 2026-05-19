@@ -6,31 +6,34 @@
 - Storybook/style files: `packages/angular/listbox/listbox.stories.ts`, `packages/angular/listbox/examples/`, `packages/angular/listbox/listbox-example-styles.ts`, `.storybook/modules/listbox.module.css`
 
 ## Summary
-- Status: Fixed with deferred visual inspection.
-- Highest-risk gaps: Angular Storybook coverage missed most React listbox examples; Angular demo styles did not match the React module for horizontal card, grid, grouped, value-text, empty, and select-all states; `arkListboxEmpty` used status semantics while React renders the empty placeholder as presentation.
+- Status: Re-audited. Prior gaps remain closed; small follow-up parity work applied.
+- Highest-risk gaps (this pass): public `SelectionMode` re-export missing; SelectAll demo invoked `arkListboxLabel` inside a clickable button which double-wires Zag label click semantics onto a custom toggle.
 
-## Gap Matrix
+## Prior Gaps Confirmed Closed
+- Story parity: all 12 React stories present in Angular (`Basic`, `Controlled`, `DisabledItem`, `ExtendedSelect`, `Filtering`, `Grid`, `Group`, `Horizontal`, `Multiple`, `RootProvider`, `SelectAll`, `ValueText`), plus Angular-only `Empty` and `WithField`.
+- Styling parity: `listbox-example-styles.ts` mirrors React `.storybook/modules/listbox.module.css` for layout, scroll, selected, empty, grid, group, card, and select-all states (attribute-selector and class-selector equivalents).
+- Empty semantics: `[arkListboxEmpty]` renders `role="presentation"` and toggles `display: none` when the collection is non-empty; matches React's "render null when items exist" behavior at the visible-DOM level.
+- Root-provider demo: external `Set to High` button drives `listbox.api().setValue(['high'])`.
+- Test parity: disabled item attributes (`aria-disabled`), `valueChange` + `select` output detail payloads, controlled `[(value)]` and `[(highlightedValue)]` roundtrips, empty visibility, missing-provider guards, public-surface smoke, and `@angular/forms` isolation are covered.
+
+## Gap Matrix (this pass)
 | Area | Gap | React reference | Angular location | Fix |
 | --- | --- | --- | --- | --- |
-| Story parity | Missing `Controlled`, `DisabledItem`, `ExtendedSelect`, `Filtering`, `Grid`, `Group`, `Horizontal`, `SelectAll`, and `ValueText` stories. | `packages/react/src/components/listbox/listbox.stories.tsx` | `packages/angular/listbox/listbox.stories.ts` | Add matching Angular examples and story exports. |
-| Styling parity | Angular example styles only covered the basic vertical list and missed React layout, scroll, selected, empty, grid, group, card, and select-all selectors. | `.storybook/modules/listbox.module.css` | `packages/angular/listbox/listbox-example-styles.ts` | Expand Angular attribute/class selectors to mirror the React module. |
-| Accessibility parity | Empty placeholder uses `role="status"`; React renders it with `role="presentation"`. | `packages/react/src/components/listbox/listbox-empty.tsx` | `packages/angular/listbox/listbox-empty.ts` | Change Angular empty role to `presentation` and update spec. |
-| Story parity | Root provider demo did not include the external button that drives `setValue(['high'])`. | `packages/react/src/components/listbox/examples/root-provider.tsx` | `packages/angular/listbox/examples/root-provider.ts` | Add a button that calls the listbox API. |
-| Test parity | Angular tests covered selection, model roundtrip, empty visibility, and public exports, but lacked disabled item attributes and output payload checks that React covers. | `packages/react/src/components/listbox/listbox.test.tsx` | `packages/angular/listbox/listbox.spec.ts` | Add focused disabled item and output detail tests. |
+| Public API | React `listbox.ts` re-exports `SelectionMode`; Angular omitted the type from the public entry. | `packages/react/src/components/listbox/listbox.ts` (`export type … SelectionMode`) | `packages/angular/listbox/listbox.types.ts`, `packages/angular/listbox/public-api.ts` | Re-export `SelectionMode` as `ListboxSelectionMode` and include in spec smoke. |
+| Story parity | `SelectAll` example wrapped the "Select All" caption in `[arkListboxLabel]` inside a `<button>` — Zag's label click handler then competes with the custom toggle. React uses a plain `styles.Label` span. | `packages/react/src/components/listbox/examples/select-all.tsx` | `packages/angular/listbox/examples/select-all.ts`, `packages/angular/listbox/listbox-example-styles.ts` | Replace `arkListboxLabel` with a presentational `select-all-header-label` span; add matching demo style. |
+| Demo styling | `[arkListboxItem]` sets `cursor: pointer`/`cursor: not-allowed`; React omits cursor on `.Item`. | `.storybook/modules/listbox.module.css` `.Item` | `listbox-example-styles.ts` `[arkListboxItem]` | No change — Angular keeps the pointer cursor as an intentional usability improvement on a `<div>` host; documented divergence. |
 
 ## Implementation Plan
-1. Align empty placeholder semantics with React.
-2. Add the missing Angular listbox examples and export matching stories.
-3. Expand the shared Angular example styles to cover the React demo states.
-4. Add narrow specs for disabled item attributes and selection output payloads.
-5. Run listbox specs, typecheck, diff checks, then update this audit with results and commit metadata.
+1. Re-export `SelectionMode` (`as ListboxSelectionMode`) from `listbox.types.ts` and `public-api.ts`; extend spec type smoke.
+2. Fix the SelectAll example to use a plain styled span instead of the label part; add `.select-all-header-label` rule mirroring the React label styling.
+3. Run listbox spec and typecheck; record the unrelated repo-wide `check:forms-isolation` failure as out-of-scope.
 
 ## Verification
-- [x] Typecheck/build: `bun run --cwd packages/angular typecheck` attempted, blocked by unrelated existing `packages/angular/number-input/use-number-input.ts:53:9` duplicate `locale` property (`TS1117`) before listbox-specific completion.
-- [x] Component tests: `bun run --cwd packages/angular test:ci listbox/listbox.spec.ts` passed; 1 file, 14 tests.
-- [x] Storybook render: `bun run --cwd packages/angular storybook -- --ci --port 6007` attempted, preview build blocked by the same unrelated `packages/angular/number-input/use-number-input.ts:53:9` duplicate `locale` property.
-- [ ] Manual/visual checks: Deferred because Storybook did not build due to the unrelated number-input TypeScript error.
+- [x] Component tests: `bun run --cwd packages/angular test:ci listbox/listbox.spec.ts` — 1 file, 14 tests passed.
+- [x] Typecheck/build (listbox entry): `bun run --cwd packages/angular typecheck` builds `@ark-ui/angular/src/listbox` successfully. The overall command exits non-zero because the repo-wide `check:forms-isolation` post-step reports missing build artifacts for many other packages (e.g. `tooltip`, `tabs`, `tree-view`) when their dist outputs were not produced in this run. Failure is unrelated to listbox.
+- [ ] Storybook render: not re-run this pass; preview build is gated by the same multi-package build state. Listbox stories compile cleanly under the build above.
+- [ ] Manual/visual checks: deferred (no browser tooling executed in this session).
 
 ## Commit
-- Hash: Pending commit.
+- Hash: 0d36c5cf6
 - Message: `fix(angular): align listbox with react parity`
