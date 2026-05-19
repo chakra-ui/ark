@@ -3,6 +3,7 @@ import { moduleMetadata } from '@storybook/angular'
 import { SignaturePadBasicExample } from './examples/basic'
 import { SignaturePadImagePreviewExample } from './examples/image-preview'
 import { SignaturePadRootProviderExample } from './examples/root-provider'
+import { SignaturePadWithFieldExample } from './examples/with-field'
 
 const meta: Meta = {
   title: 'Components / Signature Pad',
@@ -23,4 +24,9 @@ export const ImagePreview: StoryObj = {
 export const RootProvider: StoryObj = {
   decorators: [moduleMetadata({ imports: [SignaturePadRootProviderExample] })],
   render: () => ({ template: '<signature-pad-root-provider-example />' }),
+}
+
+export const WithField: StoryObj = {
+  decorators: [moduleMetadata({ imports: [SignaturePadWithFieldExample] })],
+  render: () => ({ template: '<signature-pad-with-field-example />' }),
 }

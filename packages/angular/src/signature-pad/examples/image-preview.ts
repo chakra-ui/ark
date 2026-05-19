@@ -33,9 +33,12 @@ import { signaturePadExampleStyles } from '../signature-pad-example-styles'
         </div>
       </div>
 
-      @if (imageUrl()) {
-        <img [src]="imageUrl()" alt="Signature" />
-      }
+      <div class="stack">
+        <span>Image Preview</span>
+        @if (imageUrl()) {
+          <img class="signature-pad-image" [src]="imageUrl()" alt="Signature" />
+        }
+      </div>
     </div>
   `,
   styles: [
@@ -46,10 +49,10 @@ import { signaturePadExampleStyles } from '../signature-pad-example-styles'
         gap: 1rem;
       }
 
-      img {
-        width: min(100%, 28rem);
-        border: 1px solid var(--demo-border, #d6d3d1);
-        border-radius: 0.5rem;
+      span {
+        color: var(--demo-neutral-fg, #1c1917);
+        font-size: 0.875rem;
+        line-height: 1.25rem;
       }
     `,
   ],

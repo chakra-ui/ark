@@ -1,6 +1,7 @@
 import { ApplicationRef, Component, Injector, inject, runInInjectionContext, signal } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
+import { ArkFieldErrorText, ArkFieldHelperText, ArkFieldRoot } from '@ark-ui/angular/field'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import {
   ARK_SIGNATURE_PAD_CONTEXT,
@@ -415,5 +416,111 @@ describe('@ark-ui/angular/signature-pad', () => {
       fixture.detectChanges()
       fixture.destroy()
     }).not.toThrow()
+  })
+
+  it('merges Field required, disabled, and readonly state into the signature pad api', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFieldRoot, ArkSignaturePadRoot, ArkSignaturePadControl, ArkSignaturePadHiddenInput],
+      template: `
+        <div arkFieldRoot id="sig" required disabled readOnly>
+          <div arkSignaturePad>
+            <div arkSignaturePadControl></div>
+            <input arkSignaturePadHiddenInput />
+          </div>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flush(fixture)
+
+    const control = fixture.nativeElement.querySelector('[data-part="control"]') as HTMLElement
+    const input = fixture.nativeElement.querySelector('input') as HTMLInputElement
+
+    expect(control.getAttribute('aria-disabled')).toBe('true')
+    expect(input.id).toBe('sig')
+    expect(input.disabled).toBe(true)
+    expect(input.required).toBe(true)
+    expect(input.readOnly).toBe(true)
+
+    fixture.destroy()
+  })
+
+  it('wires Field label and helper/error text ids to the signature pad hidden input', async () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkFieldRoot,
+        ArkFieldHelperText,
+        ArkFieldErrorText,
+        ArkSignaturePadRoot,
+        ArkSignaturePadLabel,
+        ArkSignaturePadHiddenInput,
+      ],
+      template: `
+        <div arkFieldRoot id="sig" [invalid]="true">
+          <div arkSignaturePad>
+            <label arkSignaturePadLabel>Label</label>
+            <input arkSignaturePadHiddenInput />
+          </div>
+          <span arkFieldHelperText>Additional Info</span>
+          <span arkFieldErrorText>Error Info</span>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flush(fixture)
+
+    const label = fixture.nativeElement.querySelector('label') as HTMLLabelElement
+    const input = fixture.nativeElement.querySelector('input') as HTMLInputElement
+    const helper = fixture.nativeElement.querySelector('[data-part="helper-text"]') as HTMLElement
+    const error = fixture.nativeElement.querySelector('[data-part="error-text"]') as HTMLElement
+
+    expect(label.htmlFor).toBe(input.id)
+    expect(input.id).toBe('sig')
+    expect(input.getAttribute('aria-describedby')).toContain(helper.id)
+    expect(input.getAttribute('aria-describedby')).toContain(error.id)
+    expect(helper.textContent).toContain('Additional Info')
+    expect(error.textContent).toContain('Error Info')
+    expect(error.hidden).toBe(false)
+
+    fixture.destroy()
+  })
+
+  it('hides Field error text when the field is not invalid', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFieldRoot, ArkFieldErrorText, ArkSignaturePadRoot, ArkSignaturePadHiddenInput],
+      template: `
+        <div arkFieldRoot>
+          <div arkSignaturePad>
+            <input arkSignaturePadHiddenInput />
+          </div>
+          <span arkFieldErrorText>Error Info</span>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flush(fixture)
+
+    const input = fixture.nativeElement.querySelector('input') as HTMLInputElement
+    const error = fixture.nativeElement.querySelector('[data-part="error-text"]') as HTMLElement
+
+    expect(input.getAttribute('aria-describedby')).toBeNull()
+    expect(error.hidden).toBe(true)
+
+    fixture.destroy()
   })
 })

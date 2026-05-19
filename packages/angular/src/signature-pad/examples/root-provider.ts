@@ -23,16 +23,33 @@ import { signaturePadExampleStyles } from '../signature-pad-example-styles'
     ArkSignaturePadGuide,
   ],
   template: `
-    <div arkSignaturePadRootProvider [value]="signaturePad">
-      <label arkSignaturePadLabel>Sign below</label>
-      <div arkSignaturePadControl>
-        <svg arkSignaturePadSegment></svg>
-        <button arkSignaturePadClearTrigger>Clear</button>
-        <div arkSignaturePadGuide></div>
+    <div class="stack">
+      <output>no of paths: {{ signaturePad.api().paths.length }}</output>
+      <div arkSignaturePadRootProvider [value]="signaturePad">
+        <label arkSignaturePadLabel>Sign below</label>
+        <div arkSignaturePadControl>
+          <svg arkSignaturePadSegment></svg>
+          <button arkSignaturePadClearTrigger>Clear</button>
+          <div arkSignaturePadGuide></div>
+        </div>
       </div>
     </div>
   `,
-  styles: [signaturePadExampleStyles],
+  styles: [
+    signaturePadExampleStyles,
+    `
+      .stack {
+        display: grid;
+        gap: 1rem;
+      }
+
+      output {
+        color: var(--demo-neutral-fg, #1c1917);
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+      }
+    `,
+  ],
 })
 export class SignaturePadRootProviderExample {
   private readonly injector = inject(Injector)
