@@ -35,5 +35,5 @@
 - [x] Manual/visual checks: Compared React `.storybook/modules/date-input.module.css` to `packages/angular/src/date-input/date-input-example-styles.ts` selector-by-selector and matched every rule via `data-scope='date-input'`/`data-part` targets and story utility classes (`date-input-stack`, `date-input-checkbox*`, `date-input-clear-button`, `date-input-output`). Browser side-by-side inspection was not run.
 
 ## Commit
-- Hash: <pending>
+- Hash: Recorded in final status after commit creation.
 - Message: `fix(angular): align date-input with react parity`
