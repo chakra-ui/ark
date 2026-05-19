@@ -18,7 +18,7 @@ import {
 } from '@ark-ui/angular/src/tree-view'
 import { treeViewExampleStyles } from '../tree-view-example-styles'
 import { TreeViewChevronRightIcon, TreeViewFileIcon, TreeViewFolderIcon, TreeViewFolderOpenIcon } from './_icons'
-import { childIndexPath, fileTreeCollection, replaceNodeName, type FileTreeNode } from './_tree-data'
+import { childIndexPath, fileTreeCollection, replaceNodeName } from './_tree-data'
 
 @Component({
   selector: 'tree-view-rename-node-example',

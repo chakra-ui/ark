@@ -1,4 +1,4 @@
-import { Directive, HostBinding, computed, inject, input, type InputSignal, type Signal } from '@angular/core'
+import { Directive, HostBinding, computed, input, type InputSignal, type Signal } from '@angular/core'
 import type { TreeNode } from '@ark-ui/angular/src/collection'
 import type { TreeViewCheckedState } from './tree-view.types'
 import { createTreeViewNodePropsResolver } from './tree-view-node-props'
