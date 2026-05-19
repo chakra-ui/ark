@@ -36,5 +36,5 @@
 - [x] Manual/visual checks: Compared Angular `fieldExampleStyles` and examples against `.storybook/modules/field.module.css` and React field examples by source inspection; browser visual inspection deferred because Storybook is blocked by the unrelated editable missing-file error above.
 
 ## Commit
-- Hash:
+- Hash: `978c4d04f`
 - Message: `fix(angular): align field with react parity`
