@@ -25,6 +25,7 @@
       "@ark-ui/angular/portal": ["src/portal/public-api.ts"],
       "@ark-ui/angular/presence": ["src/presence/public-api.ts"],
       "@ark-ui/angular/progress": ["progress/public-api.ts"],
+      "@ark-ui/angular/select": ["select/public-api.ts"],
       "@ark-ui/angular/tags-input": ["tags-input/public-api.ts"],
       "@ark-ui/angular/toggle": ["toggle/public-api.ts"],
       "@ark-ui/angular/tooltip": ["src/tooltip/public-api.ts"],
@@ -70,6 +71,7 @@
     "password-input/**/*.ts",
     "pin-input/**/*.ts",
     "progress/**/*.ts",
+    "select/**/*.ts",
     "tags-input/**/*.ts",
     "toggle/**/*.ts"
   ],

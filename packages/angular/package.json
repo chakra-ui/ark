@@ -112,6 +112,11 @@
       "types": "./dist/progress/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-progress.mjs"
     },
+    "./select": {
+      "source": "./select/public-api.ts",
+      "types": "./dist/select/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-select.mjs"
+    },
     "./toggle": {
       "source": "./toggle/public-api.ts",
       "types": "./dist/toggle/index.d.ts",

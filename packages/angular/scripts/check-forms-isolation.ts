@@ -111,6 +111,11 @@ export const entryPoints: EntryPoint[] = [
     outputs: ['dist/fesm2022/ark-ui-angular-progress.mjs'],
   },
   {
+    name: '@ark-ui/angular/select',
+    file: 'select/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-select.mjs'],
+  },
+  {
     name: '@ark-ui/angular/tags-input',
     file: 'tags-input/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-tags-input.mjs'],

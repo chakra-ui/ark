@@ -23,6 +23,8 @@ export { pinInputAnatomy } from '../pin-input/pin-input.anatomy'
 export { popoverAnatomy } from './popover/popover.anatomy'
 export { progressAnatomy } from '@ark-ui/angular/progress'
 // Use a relative import so this aggregate stays form-isolation safe.
+export { selectAnatomy } from '../select/select.anatomy'
+// Use a relative import so this aggregate stays form-isolation safe.
 export { tagsInputAnatomy } from '../tags-input/tags-input.anatomy'
 export { toggleAnatomy } from '@ark-ui/angular/toggle'
 export { tooltipAnatomy } from './tooltip/tooltip.anatomy'
