@@ -1,4 +1,4 @@
-import { Component, Directive, Injector, inject, runInInjectionContext, signal } from '@angular/core'
+import { Component, Directive, Injector, inject, runInInjectionContext, signal, type Type } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { beforeEach, describe, expect, it } from 'vitest'
@@ -52,6 +52,10 @@ import {
   type UseTreeViewProps,
   type UseTreeViewReturn,
 } from './public-api'
+import { TreeViewDisabledNodeExample } from './examples/disabled-node'
+import { TreeViewFilteringExample } from './examples/filtering'
+import { TreeViewLinksExample } from './examples/links'
+import { TreeViewMutationExample } from './examples/mutation'
 
 interface Node {
   id: string
@@ -691,5 +695,25 @@ describe('@ark-ui/angular/src/tree-view', () => {
     )
 
     fixture.destroy()
+  })
+
+  it('compiles the additional React parity story examples', () => {
+    const examples: Array<Type<unknown>> = [
+      TreeViewDisabledNodeExample,
+      TreeViewFilteringExample,
+      TreeViewLinksExample,
+      TreeViewMutationExample,
+    ]
+
+    for (const Example of examples) {
+      TestBed.resetTestingModule()
+      TestBed.configureTestingModule({ imports: [Example] })
+      const fixture = TestBed.createComponent(Example)
+      fixture.detectChanges()
+
+      expect(fixture.nativeElement.querySelector('[role="tree"]')).toBeTruthy()
+
+      fixture.destroy()
+    }
   })
 })

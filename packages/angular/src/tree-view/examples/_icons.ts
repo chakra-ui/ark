@@ -84,3 +84,46 @@ export class TreeViewMinusIcon {}
   `,
 })
 export class TreeViewLoaderIcon {}
+
+@Component({
+  selector: 'tree-view-external-link-icon',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M15 3h6v6" />
+      <path d="M10 14 21 3" />
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+    </svg>
+  `,
+})
+export class TreeViewExternalLinkIcon {}
+
+@Component({
+  selector: 'tree-view-plus-icon',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M5 12h14" />
+      <path d="M12 5v14" />
+    </svg>
+  `,
+})
+export class TreeViewPlusIcon {}
+
+@Component({
+  selector: 'tree-view-trash-icon',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M3 6h18" />
+      <path d="M8 6V4h8v2" />
+      <path d="M19 6 18 20H6L5 6" />
+      <path d="M10 11v6" />
+      <path d="M14 11v6" />
+    </svg>
+  `,
+})
+export class TreeViewTrashIcon {}
