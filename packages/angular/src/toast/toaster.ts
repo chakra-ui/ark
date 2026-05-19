@@ -79,9 +79,12 @@ export class ArkToaster implements OnInit {
   private readonly injector = inject(Injector)
   private readonly locale = injectArkLocale()
   private readonly environment = injectArkEnvironment()
+  private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef)
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID))
   private readonly fallbackId = createArkId('toast-group')
   private readonly machine = signal<UseToastGroupReturn | null>(null)
+  private readonly getRootNode = (): Node | ShadowRoot | Document =>
+    this.environment.getRootNode() ?? this.elementRef.nativeElement.getRootNode()
 
   readonly state: Signal<toast.GroupService['state']> = computed(() => {
     const machine = this.machine()
@@ -101,7 +104,7 @@ export class ArkToaster implements OnInit {
 
   constructor() {
     applyArkProps({
-      elementRef: inject(ElementRef),
+      elementRef: this.elementRef,
       renderer: inject(Renderer2),
       destroyRef: inject(DestroyRef),
       props: () => this.api().getGroupProps(this.label() ? { label: this.label() } : undefined),
@@ -119,7 +122,7 @@ export class ArkToaster implements OnInit {
         store: this.toaster(),
         id: this.id() ?? this.fallbackId,
         dir: this.locale.dir,
-        getRootNode: this.environment.getRootNode,
+        getRootNode: this.getRootNode,
       }),
     })
   }

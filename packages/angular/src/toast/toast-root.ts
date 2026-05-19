@@ -84,6 +84,8 @@ export class ArkToastRoot implements OnInit {
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID))
   private readonly fallbackId = createArkId('toast')
   private readonly machine = signal<UseToastReturn | null>(null)
+  private readonly getRootNode = (): Node | ShadowRoot | Document =>
+    this.environment.getRootNode() ?? this.elementRef.nativeElement.getRootNode()
 
   readonly state: Signal<toast.Service['state']> = computed(() => {
     const machine = this.machine()
@@ -140,7 +142,7 @@ export class ArkToastRoot implements OnInit {
           parent,
           index: this.index(),
           dir: this.locale.dir,
-          getRootNode: this.environment.getRootNode,
+          getRootNode: this.getRootNode,
           id: value.id ?? this.fallbackId,
         }
       },
