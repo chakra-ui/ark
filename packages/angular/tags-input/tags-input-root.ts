@@ -116,7 +116,7 @@ export class ArkTagsInputRoot implements ControlValueAccessor, UseTagsInputRetur
   private readonly _disabledFromForm = signal(false)
   private _pendingInternalWrites = 0
   private _hasExternalBinding = false
-  private _lastFormValue: string[] | undefined = undefined
+  private _hasReceivedFormWrite = false
 
   private readonly cva = createArkCvaController<string[]>({
     value: this.value,
@@ -206,13 +206,13 @@ export class ArkTagsInputRoot implements ControlValueAccessor, UseTagsInputRetur
   writeValue(value: string[] | null): void {
     const next = value === null ? undefined : value
     const current = this.value()
-    if (current !== undefined && !arraysShallowEqual(current, this._lastFormValue)) {
+    if (!this._hasReceivedFormWrite && current !== undefined) {
       this._hasExternalBinding = true
     }
+    this._hasReceivedFormWrite = true
     if (!arraysShallowEqual(current, next)) {
       this._pendingInternalWrites++
     }
-    this._lastFormValue = next
     this.cva.writeValue(value)
   }
 

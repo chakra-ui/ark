@@ -170,6 +170,18 @@ describe('applyArkProps', () => {
     expect(selectChange).toHaveBeenCalledTimes(1)
   })
 
+  it('allows distinct handler props to share the same native event', () => {
+    const onChange = vi.fn()
+    const onInput = vi.fn()
+    const handle = mountHost<HTMLInputElement>('<input #target />', () => ({ onChange, onInput }))
+    cleanup = handle.destroy
+
+    handle.el.dispatchEvent(new Event('input'))
+
+    expect(onChange).toHaveBeenCalledTimes(1)
+    expect(onInput).toHaveBeenCalledTimes(1)
+  })
+
   it('manages classes from string, array, and object inputs without touching consumer classes (criterion 17)', () => {
     const props = signal<ArkProps>({ class: 'a b' })
     const handle = mountHost('<div #target></div>', () => props())

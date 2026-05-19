@@ -77,6 +77,30 @@ describe('@ark-ui/angular/editable', () => {
     expect(() => TestBed.createComponent(Orphan)).toThrow(/ARK_EDITABLE_CONTEXT|No provider|NG0201/i)
   })
 
+  it('empty preview renders the initial value text after content init', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkEditableRoot, ArkEditablePreview],
+      template: `
+        <div arkEditableRoot value="initial">
+          <span arkEditablePreview></span>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    const previewEl = fixture.debugElement.query(By.directive(ArkEditablePreview)).nativeElement as HTMLElement
+    expect(previewEl.textContent).toBe('initial')
+
+    fixture.destroy()
+  })
+
   it('edit / submit / cancel flow updates api().editing and api().value', () => {
     @Component({
       standalone: true,

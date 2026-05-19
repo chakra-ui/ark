@@ -179,7 +179,7 @@ export class ArkComboboxRoot<T extends CollectionItem = CollectionItem>
   private readonly _fallbackCollection = new ListCollection<T>({ items: [] })
   private _pendingInternalWrites = 0
   private _hasExternalBinding = false
-  private _lastFormValue: string[] | undefined = undefined
+  private _hasReceivedFormWrite = false
 
   private readCollection(): ListCollection<T> {
     try {
@@ -311,13 +311,13 @@ export class ArkComboboxRoot<T extends CollectionItem = CollectionItem>
   writeValue(value: string[] | null): void {
     const next = value === null ? undefined : value
     const current = this.value()
-    if (current !== undefined && !arraysShallowEqual(current, this._lastFormValue)) {
+    if (!this._hasReceivedFormWrite && current !== undefined) {
       this._hasExternalBinding = true
     }
+    this._hasReceivedFormWrite = true
     if (!arraysShallowEqual(current, next)) {
       this._pendingInternalWrites++
     }
-    this._lastFormValue = next
     this.cva.writeValue(value)
   }
 
