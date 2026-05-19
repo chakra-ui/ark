@@ -1,12 +1,11 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
 import {
+  ArkCarouselContext,
   ArkCarouselControl,
   ArkCarouselIndicator,
   ArkCarouselIndicatorGroup,
   ArkCarouselItem,
   ArkCarouselItemGroup,
-  ArkCarouselNextTrigger,
-  ArkCarouselPrevTrigger,
   ArkCarouselRoot,
 } from '@ark-ui/angular/carousel'
 import { carouselExampleStyles } from '../carousel-example-styles'
@@ -20,32 +19,34 @@ const images = [
 ]
 
 @Component({
-  selector: 'carousel-controlled-example',
+  selector: 'carousel-pause-on-hover-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ArkCarouselRoot,
+    ArkCarouselContext,
     ArkCarouselControl,
     ArkCarouselItemGroup,
     ArkCarouselItem,
-    ArkCarouselPrevTrigger,
-    ArkCarouselNextTrigger,
     ArkCarouselIndicatorGroup,
     ArkCarouselIndicator,
   ],
   template: `
-    <div arkCarousel class="Root" [slideCount]="images.length" [(page)]="page">
+    <div arkCarousel class="Root" [slideCount]="images.length" autoplay loop>
       <div arkCarouselControl class="Control">
-        <button type="button" arkCarouselPrevTrigger class="Trigger">&lt;</button>
-        <div arkCarouselItemGroup class="ItemGroup">
+        <ng-template arkCarouselContext let-api>
+          <span class="StatusText">Autoplay is: {{ api().isPlaying ? 'playing' : 'paused' }}</span>
+        </ng-template>
+      </div>
+      <ng-template arkCarouselContext let-api>
+        <div arkCarouselItemGroup class="ItemGroup" (pointerover)="api().pause()" (pointerleave)="api().play()">
           @for (image of images; track image.src; let index = $index) {
             <div arkCarouselItem class="Item" [index]="index">
               <img [src]="image.src" [alt]="image.alt" width="500" height="300" />
             </div>
           }
         </div>
-        <button type="button" arkCarouselNextTrigger class="Trigger">&gt;</button>
-      </div>
+      </ng-template>
       <div arkCarouselIndicatorGroup class="IndicatorGroup">
         @for (image of images; track image.src; let index = $index) {
           <button type="button" arkCarouselIndicator class="Indicator" [index]="index"></button>
@@ -55,7 +56,6 @@ const images = [
   `,
   styles: [carouselExampleStyles],
 })
-export class CarouselControlledExample {
-  readonly page = signal<number | undefined>(0)
+export class CarouselPauseOnHoverExample {
   readonly images = images
 }

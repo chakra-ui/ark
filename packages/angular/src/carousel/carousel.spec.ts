@@ -1,4 +1,4 @@
-import { ApplicationRef, Component, Injector, inject, runInInjectionContext, signal } from '@angular/core'
+import { ApplicationRef, Component, Injector, inject, runInInjectionContext, signal, type Type } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
@@ -37,8 +37,18 @@ import {
   type UseCarouselProps,
   type UseCarouselReturn,
 } from '@ark-ui/angular/carousel'
+import { CarouselAutoplayExample } from './examples/autoplay'
 import { CarouselBasicExample } from './examples/basic'
+import { CarouselControlledExample } from './examples/controlled'
+import { CarouselDynamicSlidesExample } from './examples/dynamic-slides'
+import { CarouselPauseOnHoverExample } from './examples/pause-on-hover'
 import { CarouselRootProviderExample } from './examples/root-provider'
+import { CarouselScrollToExample } from './examples/scroll-to'
+import { CarouselSlidesPerPageExample } from './examples/slides-per-page'
+import { CarouselSpacingExample } from './examples/spacing'
+import { CarouselThumbnailIndicatorExample } from './examples/thumbnail-indicator'
+import { CarouselVariableSizeExample } from './examples/variable-size'
+import { CarouselVerticalExample } from './examples/vertical'
 
 type CarouselPublicTypeSmoke = [
   CarouselApi,
@@ -455,17 +465,44 @@ describe('@ark-ui/angular/carousel', () => {
     fixture.destroy()
   })
 
+  it('compiles the Storybook example components', async () => {
+    const examples: Array<Type<unknown>> = [
+      CarouselAutoplayExample,
+      CarouselBasicExample,
+      CarouselControlledExample,
+      CarouselDynamicSlidesExample,
+      CarouselPauseOnHoverExample,
+      CarouselScrollToExample,
+      CarouselSlidesPerPageExample,
+      CarouselSpacingExample,
+      CarouselThumbnailIndicatorExample,
+      CarouselVariableSizeExample,
+      CarouselVerticalExample,
+    ]
+
+    for (const example of examples) {
+      TestBed.resetTestingModule()
+      installDomStubs()
+      TestBed.configureTestingModule({ imports: [example] })
+      const fixture = TestBed.createComponent(example)
+      fixture.detectChanges()
+      await flush(fixture)
+      expect(fixture.nativeElement.querySelector('[data-scope="carousel"]')).not.toBeNull()
+      fixture.destroy()
+    }
+  })
+
   it('CarouselRootProviderExample shares hook state with trigger directives', async () => {
     TestBed.configureTestingModule({ imports: [CarouselRootProviderExample] })
     const fixture = TestBed.createComponent(CarouselRootProviderExample)
     fixture.detectChanges()
     await flush(fixture)
 
-    expect(fixture.componentInstance.pageLabel()).toBe(1)
-    const next = Array.from(fixture.nativeElement.querySelectorAll('button')).at(-1) as HTMLButtonElement
+    expect(fixture.componentInstance.pageLabel()).toBe(0)
+    const next = fixture.nativeElement.querySelector('[data-part="next-trigger"]') as HTMLButtonElement
     next.click()
     await flush(fixture)
-    expect(fixture.componentInstance.pageLabel()).toBe(2)
+    expect(fixture.componentInstance.pageLabel()).toBe(1)
 
     fixture.destroy()
   })

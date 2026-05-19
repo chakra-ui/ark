@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
 import {
   ArkCarouselControl,
   ArkCarouselIndicator,
@@ -20,7 +20,7 @@ const images = [
 ]
 
 @Component({
-  selector: 'carousel-controlled-example',
+  selector: 'carousel-thumbnail-indicator-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -34,7 +34,7 @@ const images = [
     ArkCarouselIndicator,
   ],
   template: `
-    <div arkCarousel class="Root" [slideCount]="images.length" [(page)]="page">
+    <div arkCarousel class="Root" [slideCount]="images.length" [defaultPage]="0">
       <div arkCarouselControl class="Control">
         <button type="button" arkCarouselPrevTrigger class="Trigger">&lt;</button>
         <div arkCarouselItemGroup class="ItemGroup">
@@ -48,14 +48,15 @@ const images = [
       </div>
       <div arkCarouselIndicatorGroup class="IndicatorGroup">
         @for (image of images; track image.src; let index = $index) {
-          <button type="button" arkCarouselIndicator class="Indicator" [index]="index"></button>
+          <button type="button" arkCarouselIndicator class="ThumbnailIndicator" [index]="index">
+            <img [src]="image.src" [alt]="image.alt" width="500" height="300" />
+          </button>
         }
       </div>
     </div>
   `,
   styles: [carouselExampleStyles],
 })
-export class CarouselControlledExample {
-  readonly page = signal<number | undefined>(0)
+export class CarouselThumbnailIndicatorExample {
   readonly images = images
 }

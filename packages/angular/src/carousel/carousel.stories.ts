@@ -4,7 +4,13 @@ import { CarouselAutoplayExample } from './examples/autoplay'
 import { CarouselBasicExample } from './examples/basic'
 import { CarouselControlledExample } from './examples/controlled'
 import { CarouselDynamicSlidesExample } from './examples/dynamic-slides'
+import { CarouselPauseOnHoverExample } from './examples/pause-on-hover'
 import { CarouselRootProviderExample } from './examples/root-provider'
+import { CarouselScrollToExample } from './examples/scroll-to'
+import { CarouselSlidesPerPageExample } from './examples/slides-per-page'
+import { CarouselSpacingExample } from './examples/spacing'
+import { CarouselThumbnailIndicatorExample } from './examples/thumbnail-indicator'
+import { CarouselVariableSizeExample } from './examples/variable-size'
 import { CarouselVerticalExample } from './examples/vertical'
 
 const meta: Meta = {
@@ -23,6 +29,11 @@ export const Controlled: StoryObj = {
   render: () => ({ template: '<carousel-controlled-example />' }),
 }
 
+export const ThumbnailIndicator: StoryObj = {
+  decorators: [moduleMetadata({ imports: [CarouselThumbnailIndicatorExample] })],
+  render: () => ({ template: '<carousel-thumbnail-indicator-example />' }),
+}
+
 export const Autoplay: StoryObj = {
   decorators: [moduleMetadata({ imports: [CarouselAutoplayExample] })],
   render: () => ({ template: '<carousel-autoplay-example />' }),
@@ -33,6 +44,11 @@ export const DynamicSlides: StoryObj = {
   render: () => ({ template: '<carousel-dynamic-slides-example />' }),
 }
 
+export const PauseOnHover: StoryObj = {
+  decorators: [moduleMetadata({ imports: [CarouselPauseOnHoverExample] })],
+  render: () => ({ template: '<carousel-pause-on-hover-example />' }),
+}
+
 export const Vertical: StoryObj = {
   decorators: [moduleMetadata({ imports: [CarouselVerticalExample] })],
   render: () => ({ template: '<carousel-vertical-example />' }),
@@ -41,4 +57,24 @@ export const Vertical: StoryObj = {
 export const RootProvider: StoryObj = {
   decorators: [moduleMetadata({ imports: [CarouselRootProviderExample] })],
   render: () => ({ template: '<carousel-root-provider-example />' }),
+}
+
+export const ScrollTo: StoryObj = {
+  decorators: [moduleMetadata({ imports: [CarouselScrollToExample] })],
+  render: () => ({ template: '<carousel-scroll-to-example />' }),
+}
+
+export const SlidesPerPage: StoryObj = {
+  decorators: [moduleMetadata({ imports: [CarouselSlidesPerPageExample] })],
+  render: () => ({ template: '<carousel-slides-per-page-example />' }),
+}
+
+export const Spacing: StoryObj = {
+  decorators: [moduleMetadata({ imports: [CarouselSpacingExample] })],
+  render: () => ({ template: '<carousel-spacing-example />' }),
+}
+
+export const VariableSize: StoryObj = {
+  decorators: [moduleMetadata({ imports: [CarouselVariableSizeExample] })],
+  render: () => ({ template: '<carousel-variable-size-example />' }),
 }
