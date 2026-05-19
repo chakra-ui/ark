@@ -131,7 +131,7 @@ describe('@ark-ui/angular/scroll-area', () => {
     const injector = fixture.componentRef.injector
 
     const result = runInInjectionContext(injector, () => useScrollArea({ context: () => ({}) }))
-    const id = (result.api().getRootProps() as Record<string, unknown>).id as string
+    const id = (result.api().getRootProps() as Record<string, unknown>)['id'] as string
 
     expect(typeof id).toBe('string')
     expect(id.length).toBeGreaterThan(0)
@@ -176,20 +176,20 @@ describe('@ark-ui/angular/scroll-area', () => {
     const thumb = fixture.debugElement.query(By.directive(ArkScrollAreaThumb)).nativeElement as HTMLElement
     const corner = fixture.debugElement.query(By.directive(ArkScrollAreaCorner)).nativeElement as HTMLElement
 
-    expect(root.dataset.scope).toBe('scroll-area')
-    expect(root.dataset.part).toBe('root')
+    expect(root.dataset['scope']).toBe('scroll-area')
+    expect(root.dataset['part']).toBe('root')
     expect(root.getAttribute('role')).toBe('presentation')
-    expect(viewport.dataset.part).toBe('viewport')
-    expect(viewport.dataset.ownedby).toBe(root.id)
-    expect(content.dataset.part).toBe('content')
-    expect(scrollbar.dataset.part).toBe('scrollbar')
-    expect(scrollbar.dataset.orientation).toBe('vertical')
-    expect(scrollbar.dataset.ownedby).toBe(root.id)
-    expect(thumb.dataset.part).toBe('thumb')
-    expect(thumb.dataset.orientation).toBe('vertical')
-    expect(thumb.dataset.ownedby).toBe(root.id)
-    expect(corner.dataset.part).toBe('corner')
-    expect(corner.dataset.ownedby).toBe(root.id)
+    expect(viewport.dataset['part']).toBe('viewport')
+    expect(viewport.dataset['ownedby']).toBe(root.id)
+    expect(content.dataset['part']).toBe('content')
+    expect(scrollbar.dataset['part']).toBe('scrollbar')
+    expect(scrollbar.dataset['orientation']).toBe('vertical')
+    expect(scrollbar.dataset['ownedby']).toBe(root.id)
+    expect(thumb.dataset['part']).toBe('thumb')
+    expect(thumb.dataset['orientation']).toBe('vertical')
+    expect(thumb.dataset['ownedby']).toBe(root.id)
+    expect(corner.dataset['part']).toBe('corner')
+    expect(corner.dataset['ownedby']).toBe(root.id)
 
     fixture.destroy()
   })
@@ -273,8 +273,8 @@ describe('@ark-ui/angular/scroll-area', () => {
 
     expect(outerProbeRoot).toBe(outerRoot)
     expect(innerProbeRoot).toBe(innerRoot)
-    expect(innerThumb.dataset.ownedby).toBe('scroll-area-inner')
-    expect(outerThumb.dataset.ownedby).toBe('scroll-area-outer')
+    expect(innerThumb.dataset['ownedby']).toBe('scroll-area-inner')
+    expect(outerThumb.dataset['ownedby']).toBe('scroll-area-outer')
 
     fixture.destroy()
   })
@@ -411,9 +411,9 @@ describe('@ark-ui/angular/scroll-area', () => {
     const thumb = fixture.debugElement.query(By.directive(ArkScrollAreaThumb)).nativeElement as HTMLElement
 
     expect(root.id).toBe('scroll-area-provided')
-    expect(root.dataset.part).toBe('root')
-    expect(viewport.dataset.ownedby).toBe('scroll-area-provided')
-    expect(thumb.dataset.ownedby).toBe('scroll-area-provided')
+    expect(root.dataset['part']).toBe('root')
+    expect(viewport.dataset['ownedby']).toBe('scroll-area-provided')
+    expect(thumb.dataset['ownedby']).toBe('scroll-area-provided')
 
     fixture.destroy()
   })

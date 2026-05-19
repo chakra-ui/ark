@@ -92,7 +92,7 @@ function installDomStubs(): void {
   Object.defineProperty(HTMLElement.prototype, 'offsetWidth', {
     configurable: true,
     get() {
-      return this.getAttribute('data-part') === 'item-group' ? 100 : Number(this.dataset.index != null) * 0 + 100
+      return this.getAttribute('data-part') === 'item-group' ? 100 : Number(this.dataset['index'] != null) * 0 + 100
     },
   })
   Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
@@ -115,7 +115,7 @@ function installDomStubs(): void {
   })
   HTMLElement.prototype.getBoundingClientRect = function getBoundingClientRect() {
     if (this.getAttribute('data-part') === 'item') {
-      const index = Number(this.dataset.index ?? 0)
+      const index = Number(this.dataset['index'] ?? 0)
       return rect(index * 100, 0, 100, 100)
     }
     return rect(0, 0, 100, 100)

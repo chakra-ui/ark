@@ -122,7 +122,7 @@ describe('@ark-ui/angular/tabs', () => {
     const injector = fixture.componentRef.injector
 
     const result = runInInjectionContext(injector, () => useTabs({ context: () => ({}) }))
-    const id = (result.api().getRootProps() as Record<string, unknown>).id as string
+    const id = (result.api().getRootProps() as Record<string, unknown>)['id'] as string
 
     expect(typeof id).toBe('string')
     expect(id.length).toBeGreaterThan(0)
