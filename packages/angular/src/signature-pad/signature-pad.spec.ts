@@ -1,4 +1,4 @@
-import { ApplicationRef, Component, runInInjectionContext, signal } from '@angular/core'
+import { ApplicationRef, Component, Injector, inject, runInInjectionContext, signal } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
@@ -128,6 +128,41 @@ describe('@ark-ui/angular/signature-pad', () => {
     fixture.destroy()
   })
 
+  it('renders paths from a root-provider machine', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkSignaturePadRootProvider, ArkSignaturePadControl, ArkSignaturePadSegment],
+      template: `
+        <div arkSignaturePadRootProvider [value]="signaturePad">
+          <div arkSignaturePadControl>
+            <svg arkSignaturePadSegment></svg>
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      private readonly injector = inject(Injector)
+      readonly signaturePad = runInInjectionContext(this.injector, () =>
+        useSignaturePad({ context: () => ({ defaultPaths: ['M 1 1 L 12 12'] }) }),
+      )
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flush(fixture)
+
+    const provider = fixture.debugElement
+      .query(By.directive(ArkSignaturePadRootProvider))
+      .injector.get(ArkSignaturePadRootProvider)
+    const path = fixture.nativeElement.querySelector('path') as SVGPathElement
+
+    expect(provider.api().paths).toEqual(['M 1 1 L 12 12'])
+    expect(path.getAttribute('d')).toBe('M 1 1 L 12 12')
+
+    fixture.destroy()
+  })
+
   it('renders default paths through the segment SVG', async () => {
     @Component({
       standalone: true,
@@ -151,6 +186,36 @@ describe('@ark-ui/angular/signature-pad', () => {
 
     const path = fixture.nativeElement.querySelector('path') as SVGPathElement
     expect(path.getAttribute('d')).toBe('M 0 0 L 10 10')
+
+    fixture.destroy()
+  })
+
+  it('returns a non-empty SVG data URL for drawn paths', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkSignaturePadRoot, ArkSignaturePadControl, ArkSignaturePadSegment],
+      template: `
+        <div arkSignaturePad [defaultPaths]="paths">
+          <div arkSignaturePadControl>
+            <svg arkSignaturePadSegment></svg>
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly paths = ['M 0 0 L 10 10']
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flush(fixture)
+
+    const root = fixture.debugElement.query(By.directive(ArkSignaturePadRoot)).injector.get(ArkSignaturePadRoot)
+    const url = await root.api().getDataUrl('image/svg+xml')
+
+    expect(url).toMatch(/^data:image\/svg\+xml;charset=utf-8,/)
+    expect(decodeURIComponent(url)).toContain('<path')
 
     fixture.destroy()
   })
