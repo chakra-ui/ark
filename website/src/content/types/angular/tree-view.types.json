@@ -1,0 +1,414 @@
+{
+  "Root": {
+    "props": {
+      "collection": {
+        "type": "TreeCollection<T>",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The collection of tree nodes."
+      },
+      "beforeRename": {
+        "type": "TreeViewRenameCompleteDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits before node rename completes."
+      },
+      "canRename": {
+        "type": "(node: T, indexPath: number[]) => boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Function to determine if a node can be renamed."
+      },
+      "checkedChange": {
+        "type": "TreeViewCheckedChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when checked nodes change."
+      },
+      "checkedValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled checked node values."
+      },
+      "defaultCheckedValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial checked node values when uncontrolled."
+      },
+      "defaultExpandedValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial expanded node values when uncontrolled."
+      },
+      "defaultFocusedValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial focused node value when uncontrolled."
+      },
+      "defaultSelectedValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial selected node values when uncontrolled."
+      },
+      "expandedChange": {
+        "type": "TreeViewExpandedChangeDetails<T>",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when expanded nodes change."
+      },
+      "expandedValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled expanded node values."
+      },
+      "expandOnClick": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether clicking on a branch should open it."
+      },
+      "focusChange": {
+        "type": "TreeViewFocusChangeDetails<T>",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when focus changes."
+      },
+      "focusedValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled focused node value."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the tree view."
+      },
+      "ids": {
+        "type": "Partial<{ root: string; tree: string; label: string; node: (value: string) => string }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the tree view elements. Useful for composition."
+      },
+      "loadChildren": {
+        "type": "(details: TreeViewLoadChildrenDetails<T>) => Promise<T[]>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Function to load children for a node asynchronously."
+      },
+      "loadChildrenComplete": {
+        "type": "TreeViewLoadChildrenCompleteDetails<T>",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when async children load successfully."
+      },
+      "loadChildrenError": {
+        "type": "TreeViewLoadChildrenErrorDetails<T>",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when async children fail to load."
+      },
+      "renameComplete": {
+        "type": "TreeViewRenameCompleteDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when node rename completes."
+      },
+      "renameStart": {
+        "type": "TreeViewRenameStartDetails<T>",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when node rename starts."
+      },
+      "scrollToIndexFn": {
+        "type": "(details: TreeViewScrollToIndexDetails<T>) => void",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Function to scroll to a specific visible node index."
+      },
+      "selectedValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled selected node values."
+      },
+      "selectionChange": {
+        "type": "TreeViewSelectionChangeDetails<T>",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when selection changes."
+      },
+      "selectionMode": {
+        "type": "'single' | 'multiple'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "How selection should behave."
+      },
+      "translations": {
+        "type": "TreeViewIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The localized strings for the tree view."
+      },
+      "typeahead": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether the tree supports typeahead search."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseTreeViewReturn<T>",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The tree view machine returned by useTreeView()."
+      }
+    }
+  },
+  "NodeProvider": {
+    "props": {
+      "indexPath": {
+        "type": "number[]",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The index path of the tree node."
+      },
+      "node": {
+        "type": "T",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The tree node."
+      }
+    }
+  },
+  "Branch": {
+    "props": {
+      "indexPath": {
+        "type": "number[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The index path of the tree node. Required when not rendered under arkTreeViewNodeProvider."
+      },
+      "node": {
+        "type": "T",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The tree node. Required when not rendered under arkTreeViewNodeProvider."
+      }
+    }
+  },
+  "BranchContent": {
+    "props": {
+      "indexPath": {
+        "type": "number[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The index path of the tree node. Required when not rendered under arkTreeViewNodeProvider."
+      },
+      "node": {
+        "type": "T",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The tree node. Required when not rendered under arkTreeViewNodeProvider."
+      }
+    }
+  },
+  "BranchControl": {
+    "props": {
+      "indexPath": {
+        "type": "number[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The index path of the tree node. Required when not rendered under arkTreeViewNodeProvider."
+      },
+      "node": {
+        "type": "T",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The tree node. Required when not rendered under arkTreeViewNodeProvider."
+      }
+    }
+  },
+  "BranchIndentGuide": {
+    "props": {
+      "indexPath": {
+        "type": "number[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The index path of the tree node. Required when not rendered under arkTreeViewNodeProvider."
+      },
+      "node": {
+        "type": "T",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The tree node. Required when not rendered under arkTreeViewNodeProvider."
+      }
+    }
+  },
+  "BranchIndicator": {
+    "props": {
+      "indexPath": {
+        "type": "number[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The index path of the tree node. Required when not rendered under arkTreeViewNodeProvider."
+      },
+      "node": {
+        "type": "T",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The tree node. Required when not rendered under arkTreeViewNodeProvider."
+      }
+    }
+  },
+  "BranchText": {
+    "props": {
+      "indexPath": {
+        "type": "number[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The index path of the tree node. Required when not rendered under arkTreeViewNodeProvider."
+      },
+      "node": {
+        "type": "T",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The tree node. Required when not rendered under arkTreeViewNodeProvider."
+      }
+    }
+  },
+  "BranchTrigger": {
+    "props": {
+      "indexPath": {
+        "type": "number[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The index path of the tree node. Required when not rendered under arkTreeViewNodeProvider."
+      },
+      "node": {
+        "type": "T",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The tree node. Required when not rendered under arkTreeViewNodeProvider."
+      }
+    }
+  },
+  "Item": {
+    "props": {
+      "indexPath": {
+        "type": "number[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The index path of the tree node. Required when not rendered under arkTreeViewNodeProvider."
+      },
+      "node": {
+        "type": "T",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The tree node. Required when not rendered under arkTreeViewNodeProvider."
+      }
+    }
+  },
+  "ItemIndicator": {
+    "props": {
+      "indexPath": {
+        "type": "number[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The index path of the tree node. Required when not rendered under arkTreeViewNodeProvider."
+      },
+      "node": {
+        "type": "T",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The tree node. Required when not rendered under arkTreeViewNodeProvider."
+      }
+    }
+  },
+  "ItemText": {
+    "props": {
+      "indexPath": {
+        "type": "number[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The index path of the tree node. Required when not rendered under arkTreeViewNodeProvider."
+      },
+      "node": {
+        "type": "T",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The tree node. Required when not rendered under arkTreeViewNodeProvider."
+      }
+    }
+  },
+  "Label": {
+    "props": {}
+  },
+  "NodeCheckbox": {
+    "props": {
+      "indexPath": {
+        "type": "number[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The index path of the tree node. Required when not rendered under arkTreeViewNodeProvider."
+      },
+      "node": {
+        "type": "T",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The tree node. Required when not rendered under arkTreeViewNodeProvider."
+      }
+    }
+  },
+  "NodeCheckboxIndicator": {
+    "props": {
+      "indexPath": {
+        "type": "number[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The index path of the tree node. Required when not rendered under arkTreeViewNodeProvider."
+      },
+      "node": {
+        "type": "T",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The tree node. Required when not rendered under arkTreeViewNodeProvider."
+      },
+      "state": {
+        "type": "'checked' | 'unchecked' | 'indeterminate'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Optional state filter that hides the host when the node is in a different checked state."
+      }
+    }
+  },
+  "NodeRenameInput": {
+    "props": {
+      "indexPath": {
+        "type": "number[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The index path of the tree node. Required when not rendered under arkTreeViewNodeProvider."
+      },
+      "node": {
+        "type": "T",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The tree node. Required when not rendered under arkTreeViewNodeProvider."
+      }
+    }
+  },
+  "Tree": {
+    "props": {}
+  }
+}

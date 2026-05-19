@@ -35,4 +35,9 @@ describe('package anatomy aggregate', () => {
     const mod = await import('./anatomy')
     expect(mod.tooltipAnatomy).toBeDefined()
   })
+
+  it('re-exports treeViewAnatomy', async () => {
+    const mod = await import('./anatomy')
+    expect(mod.treeViewAnatomy).toBeDefined()
+  })
 })
