@@ -40,6 +40,7 @@ export { scrollAreaAnatomy } from './scroll-area/scroll-area.anatomy'
 export { signaturePadAnatomy } from './signature-pad/signature-pad.anatomy'
 export { splitterAnatomy } from './splitter/splitter.anatomy'
 export { stepsAnatomy } from './steps/steps.anatomy'
+export { swapAnatomy } from './swap/swap.anatomy'
 export { tabsAnatomy } from './tabs/tabs.anatomy'
 export { timerAnatomy } from './timer/timer.anatomy'
 // Use a relative import so this aggregate stays form-isolation safe.

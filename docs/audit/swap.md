@@ -34,5 +34,5 @@
 - [x] Manual/visual checks: Compared React swap examples and `.storybook/modules/swap.module.css` against Angular examples. Angular now uses icon-only Fade, Flip, Rotate, and Scale demos with matching animation class names, `data-state` selectors, root perspective on Flip, and accessible button labels.
 
 ## Commit
-- Hash:
+- Hash: `eebe8a568`
 - Message: `fix(angular): align swap with react parity`

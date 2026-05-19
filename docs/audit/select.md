@@ -35,5 +35,5 @@
 - [ ] Manual/visual checks: Deferred; Storybook startup was verified, but no browser side-by-side visual pass was performed.
 
 ## Commit
-- Hash: Pending final commit
+- Hash: 9edac0f89
 - Message: `fix(angular): align select with react parity`
