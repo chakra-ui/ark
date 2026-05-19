@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core'
+import { Component, PLATFORM_ID, signal, viewChild } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import type { TrapFocusOptions } from '@zag-js/focus-trap'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
@@ -71,6 +71,47 @@ describe('ArkFocusTrapDirective', () => {
     expect(trapFocusMock).toHaveBeenCalledWith(host, undefined)
 
     fixture.destroy()
+  })
+
+  it('exports the directive instance for template references', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFocusTrapDirective],
+      template: '<div arkFocusTrap #trap="arkFocusTrap"></div>',
+    })
+    class HostComponent {
+      readonly directive = viewChild.required<ArkFocusTrapDirective>('trap')
+    }
+
+    TestBed.configureTestingModule({ imports: [HostComponent] })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.directive()).toBeInstanceOf(ArkFocusTrapDirective)
+
+    fixture.destroy()
+  })
+
+  it('does not activate the focus trap on the server platform', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFocusTrapDirective],
+      template: '<div tabindex="-1" [arkFocusTrap]="true"></div>',
+    })
+    class HostComponent {}
+
+    TestBed.configureTestingModule({
+      imports: [HostComponent],
+      providers: [{ provide: PLATFORM_ID, useValue: 'server' }],
+    })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.detectChanges()
+    await fixture.whenStable()
+
+    expect(trapFocusMock).not.toHaveBeenCalled()
+
+    fixture.destroy()
+    expect(deactivateMock).not.toHaveBeenCalled()
   })
 
   it('deactivates the focus trap when the signal toggles back to false', async () => {
