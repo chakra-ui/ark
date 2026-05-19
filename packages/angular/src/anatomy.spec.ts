@@ -1,38 +1,42 @@
 import { describe, expect, it } from 'vitest'
+import * as anatomy from './anatomy'
 
 describe('package anatomy aggregate', () => {
   it('re-exports avatarAnatomy', async () => {
-    const mod = await import('./anatomy')
-    expect(mod.avatarAnatomy).toBeDefined()
+    expect(anatomy.avatarAnatomy).toBeDefined()
   })
 
   it('re-exports collapsibleAnatomy', async () => {
-    const mod = await import('./anatomy')
-    expect(mod.collapsibleAnatomy).toBeDefined()
+    expect(anatomy.collapsibleAnatomy).toBeDefined()
+  })
+
+  it('re-exports Batch 4 anatomies', async () => {
+    expect(anatomy.colorPickerAnatomy).toBeDefined()
+    expect(anatomy.dateInputAnatomy).toBeDefined()
+    expect(anatomy.datePickerAnatomy).toBeDefined()
+    expect(anatomy.imageCropperAnatomy).toBeDefined()
+    expect(anatomy.qrCodeAnatomy).toBeDefined()
+    expect(anatomy.signaturePadAnatomy).toBeDefined()
+    expect(anatomy.treeViewAnatomy).toBeDefined()
   })
 
   it('re-exports menuAnatomy', async () => {
-    const mod = await import('./anatomy')
-    expect(mod.menuAnatomy).toBeDefined()
+    expect(anatomy.menuAnatomy).toBeDefined()
   })
 
   it('re-exports navigationMenuAnatomy', async () => {
-    const mod = await import('./anatomy')
-    expect(mod.navigationMenuAnatomy).toBeDefined()
+    expect(anatomy.navigationMenuAnatomy).toBeDefined()
   })
 
   it('re-exports progressAnatomy', async () => {
-    const mod = await import('./anatomy')
-    expect(mod.progressAnatomy).toBeDefined()
+    expect(anatomy.progressAnatomy).toBeDefined()
   })
 
   it('re-exports toggleAnatomy', async () => {
-    const mod = await import('./anatomy')
-    expect(mod.toggleAnatomy).toBeDefined()
+    expect(anatomy.toggleAnatomy).toBeDefined()
   })
 
   it('re-exports tooltipAnatomy', async () => {
-    const mod = await import('./anatomy')
-    expect(mod.tooltipAnatomy).toBeDefined()
+    expect(anatomy.tooltipAnatomy).toBeDefined()
   })
 })

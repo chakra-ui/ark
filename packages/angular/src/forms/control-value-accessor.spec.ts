@@ -1,5 +1,9 @@
 import { model } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
+import {
+  createArkCvaController as createArkCvaControllerFromInternal,
+  warnMixedFormAndModelBinding,
+} from '@ark-ui/angular/src/internal'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { type ArkCvaControllerOptions, createArkCvaController } from './control-value-accessor'
 
@@ -84,5 +88,10 @@ describe('createArkCvaController', () => {
     controller.writeValue('x')
     controller.registerOnChange(() => {})
     expect(warn).not.toHaveBeenCalled()
+  })
+
+  it('is exposed with diagnostics through the internal entrypoint', () => {
+    expect(createArkCvaControllerFromInternal).toBe(createArkCvaController)
+    expect(warnMixedFormAndModelBinding).toBeTypeOf('function')
   })
 })

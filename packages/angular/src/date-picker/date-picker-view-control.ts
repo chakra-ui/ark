@@ -1,0 +1,21 @@
+import { DestroyRef, Directive, ElementRef, Renderer2, inject } from '@angular/core'
+import { applyArkProps } from '@ark-ui/angular/src/_zag'
+import { injectArkDatePickerContext, injectArkDatePickerViewContext } from './use-date-picker-context'
+
+@Directive({
+  selector: '[arkDatePickerViewControl]',
+  standalone: true,
+  exportAs: 'arkDatePickerViewControl',
+})
+export class ArkDatePickerViewControl {
+  constructor() {
+    const context = injectArkDatePickerContext()
+    const view = injectArkDatePickerViewContext()
+    applyArkProps({
+      elementRef: inject(ElementRef),
+      renderer: inject(Renderer2),
+      destroyRef: inject(DestroyRef),
+      props: () => context.api().getViewControlProps(view()),
+    })
+  }
+}

@@ -2,7 +2,7 @@ import { mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
-import { formBearingEntryPoints, scanEntryPoint } from './check-forms-isolation'
+import { entryPoints, scanEntryPoint } from './check-forms-isolation'
 
 const createReporter = () => {
   const errors: string[] = []
@@ -31,7 +31,7 @@ describe('check-forms-isolation', () => {
     writeFileSync(file, "import { FormsModule } from '@angular/forms'\nexport { FormsModule }\n", 'utf-8')
 
     const { reporter, errors } = createReporter()
-    const failed = scanEntryPoint({ name: '@ark-ui/angular/synthetic-forms-free', file }, reporter)
+    const failed = scanEntryPoint({ name: '@ark-ui/angular/synthetic-forms-free', file, formsAllowed: false }, reporter)
 
     expect(failed).toBe(true)
     expect(errors).toHaveLength(1)
@@ -46,7 +46,7 @@ describe('check-forms-isolation', () => {
     writeFileSync(inner, "import { FormsModule } from '@angular/forms'\nexport { FormsModule }\n", 'utf-8')
 
     const { reporter, errors } = createReporter()
-    const failed = scanEntryPoint({ name: '@ark-ui/angular/synthetic-forms-free', file }, reporter)
+    const failed = scanEntryPoint({ name: '@ark-ui/angular/synthetic-forms-free', file, formsAllowed: false }, reporter)
 
     expect(failed).toBe(true)
     expect(errors).toHaveLength(1)
@@ -59,7 +59,7 @@ describe('check-forms-isolation', () => {
     writeFileSync(file, "import { FormsModule } from '@angular/forms'\nexport { FormsModule }\n", 'utf-8')
 
     const { reporter, errors } = createReporter()
-    const failed = scanEntryPoint({ name: '@ark-ui/angular/editable', file }, reporter)
+    const failed = scanEntryPoint({ name: '@ark-ui/angular/editable', file, formsAllowed: true }, reporter)
 
     expect(failed).toBe(false)
     expect(errors).toEqual([])
@@ -72,10 +72,55 @@ describe('check-forms-isolation', () => {
     writeFileSync(inner, "import { FormsModule } from '@angular/forms'\nexport { FormsModule }\n", 'utf-8')
 
     const { reporter, errors } = createReporter()
-    const failed = scanEntryPoint({ name: '@ark-ui/angular/editable', file }, reporter)
+    const failed = scanEntryPoint({ name: '@ark-ui/angular/editable', file, formsAllowed: true }, reporter)
 
     expect(failed).toBe(false)
     expect(errors).toEqual([])
+  })
+
+  it('reports form-bearing entrypoints that do not import @angular/forms transitively', () => {
+    const file = join(workDir, 'public-api.ts')
+    const inner = join(workDir, 'inner.ts')
+    writeFileSync(file, "export * from './inner'\n", 'utf-8')
+    writeFileSync(inner, 'export const ok = true\n', 'utf-8')
+
+    const { reporter, errors } = createReporter()
+    const failed = scanEntryPoint({ name: '@ark-ui/angular/date-input', file, formsAllowed: true }, reporter)
+
+    expect(failed).toBe(true)
+    expect(errors).toEqual([
+      'forms isolation: @ark-ui/angular/date-input allows forms but its source entry does not import @angular/forms transitively.',
+    ])
+  })
+
+  it('does not count output-only forms imports as source CVA coverage', () => {
+    const file = join(workDir, 'public-api.ts')
+    const output = join(workDir, 'output.mjs')
+    writeFileSync(file, 'export const ok = true\n', 'utf-8')
+    writeFileSync(output, "import { FormsModule } from '@angular/forms'\nexport { FormsModule }\n", 'utf-8')
+
+    const { reporter, errors } = createReporter()
+    const failed = scanEntryPoint(
+      { name: '@ark-ui/angular/date-picker', file, formsAllowed: true, outputs: [output] },
+      reporter,
+    )
+
+    expect(failed).toBe(true)
+    expect(errors).toEqual([
+      'forms isolation: @ark-ui/angular/date-picker allows forms but its source entry does not import @angular/forms transitively.',
+    ])
+  })
+
+  it('reports missing source entries without throwing', () => {
+    const file = join(workDir, 'missing.ts')
+
+    const { reporter, errors } = createReporter()
+    const failed = scanEntryPoint({ name: '@ark-ui/angular/missing', file, formsAllowed: false }, reporter)
+
+    expect(failed).toBe(true)
+    expect(errors).toHaveLength(1)
+    expect(errors[0]).toContain('forms isolation: source entry not found for @ark-ui/angular/missing')
+    expect(errors[0]).toContain('missing.ts')
   })
 
   it('reports forms imports found only in declared outputs', () => {
@@ -85,7 +130,10 @@ describe('check-forms-isolation', () => {
     writeFileSync(output, "import { FormsModule } from '@angular/forms'\nexport { FormsModule }\n", 'utf-8')
 
     const { reporter, errors } = createReporter()
-    const failed = scanEntryPoint({ name: '@ark-ui/angular/synthetic-forms-free', file, outputs: [output] }, reporter)
+    const failed = scanEntryPoint(
+      { name: '@ark-ui/angular/synthetic-forms-free', file, formsAllowed: false, outputs: [output] },
+      reporter,
+    )
 
     expect(failed).toBe(true)
     expect(errors).toHaveLength(1)
@@ -99,7 +147,10 @@ describe('check-forms-isolation', () => {
     writeFileSync(file, 'export const ok = true\n', 'utf-8')
 
     const { reporter, errors } = createReporter()
-    const failed = scanEntryPoint({ name: '@ark-ui/angular/synthetic-forms-free', file, outputs: [output] }, reporter)
+    const failed = scanEntryPoint(
+      { name: '@ark-ui/angular/synthetic-forms-free', file, formsAllowed: false, outputs: [output] },
+      reporter,
+    )
 
     expect(failed).toBe(true)
     expect(errors).toEqual([
@@ -107,7 +158,9 @@ describe('check-forms-isolation', () => {
     ])
   })
 
-  it('classifies Batch 3 form-bearing entrypoints', () => {
+  it('classifies form-bearing entrypoints', () => {
+    const entriesByName = new Map(entryPoints.map((entryPoint) => [entryPoint.name, entryPoint]))
+
     for (const name of [
       '@ark-ui/angular/editable',
       '@ark-ui/angular/number-input',
@@ -116,20 +169,30 @@ describe('check-forms-isolation', () => {
       '@ark-ui/angular/tags-input',
       '@ark-ui/angular/select',
       '@ark-ui/angular/combobox',
+      '@ark-ui/angular/date-input',
+      '@ark-ui/angular/date-picker',
+      '@ark-ui/angular/color-picker',
     ]) {
-      expect(formBearingEntryPoints.has(name)).toBe(true)
+      expect(entriesByName.get(name)?.formsAllowed).toBe(true)
     }
   })
 
-  it('classifies Batch 3 forms-free entrypoints', () => {
+  it('classifies forms-free entrypoints', () => {
+    const entriesByName = new Map(entryPoints.map((entryPoint) => [entryPoint.name, entryPoint]))
+
     for (const name of [
       '@ark-ui/angular/field',
       '@ark-ui/angular/fieldset',
       '@ark-ui/angular/clipboard',
       '@ark-ui/angular/file-upload',
       '@ark-ui/angular/listbox',
+      '@ark-ui/angular/qr-code',
+      '@ark-ui/angular/signature-pad',
+      '@ark-ui/angular/image-cropper',
+      '@ark-ui/angular/json-tree-view',
+      '@ark-ui/angular/tree-view',
     ]) {
-      expect(formBearingEntryPoints.has(name)).toBe(false)
+      expect(entriesByName.get(name)?.formsAllowed).toBe(false)
     }
   })
 })

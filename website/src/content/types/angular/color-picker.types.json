@@ -1,0 +1,333 @@
+{
+  "Area": {
+    "props": {
+      "xChannel": {
+        "type": "'hue' | 'saturation' | 'brightness' | 'lightness' | 'red' | 'green' | 'blue' | 'alpha'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The horizontal channel controlled by the color area."
+      },
+      "yChannel": {
+        "type": "'hue' | 'saturation' | 'brightness' | 'lightness' | 'red' | 'green' | 'blue' | 'alpha'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The vertical channel controlled by the color area."
+      }
+    }
+  },
+  "AreaBackground": {
+    "props": {}
+  },
+  "AreaThumb": {
+    "props": {}
+  },
+  "ChannelInput": {
+    "props": {
+      "channel": {
+        "type": "colorPicker.ExtendedColorChannel",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The color channel controlled by the input."
+      },
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The input orientation."
+      }
+    }
+  },
+  "ChannelSlider": {
+    "props": {
+      "channel": {
+        "type": "colorPicker.ColorChannel",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The color channel controlled by the slider."
+      },
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The slider orientation."
+      }
+    }
+  },
+  "ChannelSliderLabel": {
+    "props": {}
+  },
+  "ChannelSliderThumb": {
+    "props": {}
+  },
+  "ChannelSliderTrack": {
+    "props": {}
+  },
+  "ChannelSliderValueText": {
+    "props": {}
+  },
+  "Content": {
+    "props": {}
+  },
+  "Context": {
+    "props": {}
+  },
+  "Control": {
+    "props": {}
+  },
+  "EyeDropperTrigger": {
+    "props": {}
+  },
+  "FormatSelect": {
+    "props": {}
+  },
+  "FormatTrigger": {
+    "props": {}
+  },
+  "HiddenInput": {
+    "props": {}
+  },
+  "Label": {
+    "props": {}
+  },
+  "Positioner": {
+    "props": {}
+  },
+  "Root": {
+    "props": {
+      "closeOnSelect": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to close the color picker when a swatch is selected."
+      },
+      "defaultFormat": {
+        "type": "'rgba' | 'hsla' | 'hsba'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial color format when uncontrolled."
+      },
+      "defaultOpen": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "The initial open state when uncontrolled."
+      },
+      "defaultValue": {
+        "type": "colorPicker.Color",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial color value when uncontrolled."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the color picker is disabled."
+      },
+      "focusOutside": {
+        "type": "colorPicker.FocusOutsideEvent",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when focus moves outside the color picker."
+      },
+      "format": {
+        "type": "'rgba' | 'hsla' | 'hsba'",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled color format."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the color picker."
+      },
+      "ids": {
+        "type": "Partial<{\n    root: string\n    control: string\n    trigger: string\n    label: string\n    input: string\n    hiddenInput: string\n    content: string\n    area: string\n    areaGradient: string\n    positioner: string\n    formatSelect: string\n    areaThumb: string\n    channelInput: (id: string) => string\n    channelSliderTrack: (id: colorPicker.ColorChannel) => string\n    channelSliderThumb: (id: colorPicker.ColorChannel) => string\n  }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the color picker elements. Useful for composition."
+      },
+      "initialFocusEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Element to receive focus when the color picker opens."
+      },
+      "inline": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to render the color picker inline."
+      },
+      "interactOutside": {
+        "type": "colorPicker.InteractOutsideEvent",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when interaction occurs outside the color picker."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the color picker is invalid."
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The name of the hidden input used for form submission."
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled open state."
+      },
+      "openAutoFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to auto focus the color picker when it opens."
+      },
+      "pointerDownOutside": {
+        "type": "colorPicker.PointerDownOutsideEvent",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when pointer down occurs outside the color picker."
+      },
+      "positioning": {
+        "type": "colorPicker.PositioningOptions",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The positioning options for floating content."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the color picker is read-only."
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the color picker is required."
+      },
+      "value": {
+        "type": "colorPicker.Color",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled color value."
+      },
+      "valueChangeEnd": {
+        "type": "colorPicker.ValueChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when the user finishes changing the color value."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseColorPickerReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The color picker machine returned by useColorPicker()."
+      }
+    }
+  },
+  "Swatch": {
+    "props": {
+      "value": {
+        "type": "string | colorPicker.Color",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The swatch color value."
+      },
+      "respectAlpha": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to include the alpha channel in the rendered swatch color."
+      }
+    }
+  },
+  "SwatchGroup": {
+    "props": {}
+  },
+  "SwatchIndicator": {
+    "props": {}
+  },
+  "SwatchTrigger": {
+    "props": {
+      "value": {
+        "type": "string | colorPicker.Color",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The swatch color value to select."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the swatch trigger is disabled."
+      }
+    }
+  },
+  "TransparencyGrid": {
+    "props": {
+      "size": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The checkerboard cell size."
+      }
+    }
+  },
+  "Trigger": {
+    "props": {}
+  },
+  "ValueSwatch": {
+    "props": {
+      "respectAlpha": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to include the alpha channel in the rendered swatch color."
+      }
+    }
+  },
+  "ValueText": {
+    "props": {
+      "format": {
+        "type": "'hex' | 'css' | 'rgba' | 'hsla' | 'hsba' | 'hexa' | 'rgb' | 'hsl' | 'hsb'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The string format used to render the color."
+      }
+    }
+  },
+  "View": {
+    "props": {
+      "format": {
+        "type": "colorPicker.ColorFormat",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The color format rendered by this view."
+      }
+    }
+  }
+}

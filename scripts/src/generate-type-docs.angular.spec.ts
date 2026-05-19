@@ -3,7 +3,7 @@ import { mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSyn
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { findUpSync } from 'find-up'
-import { generateAngularTypeDoc } from './generate-type-docs.angular'
+import { generateAngularTypeDoc, listAngularComponents } from './generate-type-docs.angular'
 
 // biome-ignore lint/style/noNonNullAssertion: bun.lock is always present at repo root
 const rootDir = dirname(findUpSync('bun.lock')!)
@@ -51,6 +51,61 @@ const createAngularTypeDocFixture = () => {
   )
   return fixtureRoot
 }
+
+const createAngularDiscoveryFixture = () => {
+  const fixtureRoot = mkdtempSync(join(tmpdir(), 'ng-ark-angular-discovery-'))
+
+  const legacyDir = join(fixtureRoot, 'packages', 'angular', 'legacy-fixture')
+  const nestedDir = join(fixtureRoot, 'packages', 'angular', 'src', 'nested-fixture')
+  const utilityDir = join(fixtureRoot, 'packages', 'angular', 'src', 'internal')
+
+  mkdirSync(legacyDir, { recursive: true })
+  mkdirSync(nestedDir, { recursive: true })
+  mkdirSync(utilityDir, { recursive: true })
+
+  writeFileSync(join(legacyDir, 'public-api.ts'), "export { ArkLegacyFixtureRoot } from './legacy-fixture-root'\n")
+  writeFileSync(join(legacyDir, 'legacy-fixture-root.ts'), 'export class ArkLegacyFixtureRoot {}\n')
+  writeFileSync(join(nestedDir, 'public-api.ts'), "export { ArkNestedFixtureRoot } from './nested-fixture-root'\n")
+  writeFileSync(join(nestedDir, 'nested-fixture-root.ts'), 'export class ArkNestedFixtureRoot {}\n')
+  writeFileSync(join(utilityDir, 'public-api.ts'), 'export const internal = true\n')
+
+  return fixtureRoot
+}
+
+const createAngularCollisionFixture = () => {
+  const fixtureRoot = mkdtempSync(join(tmpdir(), 'ng-ark-angular-collision-'))
+  const legacyDir = join(fixtureRoot, 'packages', 'angular', 'collision-fixture')
+  const nestedDir = join(fixtureRoot, 'packages', 'angular', 'src', 'collision-fixture')
+
+  mkdirSync(legacyDir, { recursive: true })
+  mkdirSync(nestedDir, { recursive: true })
+  writeFileSync(join(legacyDir, 'public-api.ts'), 'export const legacy = true\n')
+  writeFileSync(join(nestedDir, 'public-api.ts'), 'export const nested = true\n')
+
+  return fixtureRoot
+}
+
+describe('Angular type-doc generator discovery', () => {
+  it('merges legacy and src component layouts', async () => {
+    const fixtureRoot = createAngularDiscoveryFixture()
+    try {
+      await expect(listAngularComponents(fixtureRoot)).resolves.toEqual(['legacy-fixture', 'nested-fixture'])
+    } finally {
+      rmSync(fixtureRoot, { recursive: true, force: true })
+    }
+  })
+
+  it('throws when a component exists in both layouts', async () => {
+    const fixtureRoot = createAngularCollisionFixture()
+    try {
+      await expect(generateAngularTypeDoc('collision-fixture', fixtureRoot)).rejects.toThrow(
+        'exists in both packages/angular/collision-fixture/public-api.ts and packages/angular/src/collision-fixture/public-api.ts',
+      )
+    } finally {
+      rmSync(fixtureRoot, { recursive: true, force: true })
+    }
+  })
+})
 
 describe('Angular type-doc generator aliases', () => {
   it('emits aliases from required inputs and outputs and normalizes boolean literal unions', async () => {
