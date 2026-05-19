@@ -1,15 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { ArkFormatRelativeTimeComponent } from '../public-api'
+import { formatExampleStyles } from '../format-example-styles'
 
 @Component({
   selector: 'format-relative-time-short-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArkFormatRelativeTimeComponent],
+  styles: [formatExampleStyles],
   template: `
-    <div>
-      <span>Edited</span>
-      <ark-format-relative-time [value]="value" [style]="'short'" />
+    <div class="Inline">
+      <span class="InlineLabel">Edited</span>
+      <span class="InlineValue">
+        <ark-format-relative-time [value]="value" [style]="'short'" />
+      </span>
     </div>
   `,
 })
