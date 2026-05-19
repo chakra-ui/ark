@@ -34,7 +34,7 @@ export const batch6Examples = {
   frame: ['basic', 'inherit-styles', 'script', 'src-doc'],
   highlight: ['basic', 'dynamic-query', 'exact-match', 'ignore-case', 'match-all', 'multiple', 'repeating-text'],
   presence: ['basic', 'lazy-mount', 'lazy-mount-and-unmount-on-exit', 'skip-animation-on-mount', 'unmount-on-exit'],
-  swap: ['fade', 'flip', 'rotate', 'scale'],
+  swap: ['fade', 'flip', 'icons', 'rotate', 'scale'],
 } as const
 
 export const batch6ProviderExamples = {

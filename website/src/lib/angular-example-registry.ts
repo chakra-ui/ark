@@ -34,6 +34,12 @@ import * as Collapsible_LazyMount from '../../../packages/angular/src/collapsibl
 import * as Collapsible_Nested from '../../../packages/angular/src/collapsible/examples/nested'
 import * as Collapsible_PartialCollapse from '../../../packages/angular/src/collapsible/examples/partial-collapse'
 import * as Collapsible_RootProvider from '../../../packages/angular/src/collapsible/examples/root-provider'
+import * as Collection_AsyncListFilter from '../../../packages/angular/src/collection/examples/async-list-filter'
+import * as Collection_AsyncListReload from '../../../packages/angular/src/collection/examples/async-list-reload'
+import * as Collection_AsyncListSortClientSide from '../../../packages/angular/src/collection/examples/async-list-sort-client-side'
+import * as Collection_ListSelectionBasic from '../../../packages/angular/src/collection/examples/list-selection-basic'
+import * as Collection_ListSelectionMultiple from '../../../packages/angular/src/collection/examples/list-selection-multiple'
+import * as Collection_ListSelectionRange from '../../../packages/angular/src/collection/examples/list-selection-range'
 import * as DateInput_Basic from '../../../packages/angular/src/date-input/examples/basic'
 import * as DateInput_Controlled from '../../../packages/angular/src/date-input/examples/controlled'
 import * as DateInput_DefaultValue from '../../../packages/angular/src/date-input/examples/default-value'
@@ -232,6 +238,8 @@ import * as Presence_SkipAnimationOnMount from '../../../packages/angular/src/pr
 import * as Presence_UnmountOnExit from '../../../packages/angular/src/presence/examples/unmount-on-exit'
 import * as Environment_Setup from '../../../packages/angular/src/providers/environment/examples/setup'
 import * as Environment_Usage from '../../../packages/angular/src/providers/environment/examples/usage'
+import * as Interaction_FocusVisibleTextInput from '../../../packages/angular/src/providers/interaction/examples/focus-visible-text-input'
+import * as Interaction_FocusVisible from '../../../packages/angular/src/providers/interaction/examples/focus-visible'
 import * as Interaction_Interaction from '../../../packages/angular/src/providers/interaction/examples/interaction'
 import * as Locale_Setup from '../../../packages/angular/src/providers/locale/examples/setup'
 import * as Locale_Usage from '../../../packages/angular/src/providers/locale/examples/usage'
@@ -374,6 +382,30 @@ const angularExampleModules: Record<string, AngularExampleEntry> = {
     exportName: 'CollapsiblePartialCollapseExample',
   },
   'collapsible/root-provider': { module: Collapsible_RootProvider, exportName: 'CollapsibleRootProviderExample' },
+  'collection/async-list-filter': {
+    module: Collection_AsyncListFilter,
+    exportName: 'CollectionAsyncListFilterExample',
+  },
+  'collection/async-list-reload': {
+    module: Collection_AsyncListReload,
+    exportName: 'CollectionAsyncListReloadExample',
+  },
+  'collection/async-list-sort-client-side': {
+    module: Collection_AsyncListSortClientSide,
+    exportName: 'CollectionAsyncListSortClientSideExample',
+  },
+  'collection/list-selection-basic': {
+    module: Collection_ListSelectionBasic,
+    exportName: 'CollectionListSelectionBasicExample',
+  },
+  'collection/list-selection-multiple': {
+    module: Collection_ListSelectionMultiple,
+    exportName: 'CollectionListSelectionMultipleExample',
+  },
+  'collection/list-selection-range': {
+    module: Collection_ListSelectionRange,
+    exportName: 'CollectionListSelectionRangeExample',
+  },
   'date-input/basic': { module: DateInput_Basic, exportName: 'DateInputBasicExample' },
   'date-input/controlled': { module: DateInput_Controlled, exportName: 'DateInputControlledExample' },
   'date-input/default-value': { module: DateInput_DefaultValue, exportName: 'DateInputDefaultValueExample' },
@@ -629,6 +661,11 @@ const angularExampleModules: Record<string, AngularExampleEntry> = {
   'presence/unmount-on-exit': { module: Presence_UnmountOnExit, exportName: 'PresenceUnmountOnExitExample' },
   'environment/setup': { module: Environment_Setup, exportName: 'EnvironmentSetupExample' },
   'environment/usage': { module: Environment_Usage, exportName: 'EnvironmentUsageExample' },
+  'interaction/focus-visible-text-input': {
+    module: Interaction_FocusVisibleTextInput,
+    exportName: 'InteractionFocusVisibleTextInputExample',
+  },
+  'interaction/focus-visible': { module: Interaction_FocusVisible, exportName: 'InteractionFocusVisibleExample' },
   'interaction/interaction': { module: Interaction_Interaction, exportName: 'InteractionInteractionExample' },
   'locale/setup': { module: Locale_Setup, exportName: 'LocaleSetupExample' },
   'locale/usage': { module: Locale_Usage, exportName: 'LocaleUsageExample' },
