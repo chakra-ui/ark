@@ -44,5 +44,6 @@ export { timerAnatomy } from './timer/timer.anatomy'
 // Use a relative import so this aggregate stays form-isolation safe.
 export { tagsInputAnatomy } from '../tags-input/tags-input.anatomy'
 export { toggleAnatomy } from '@ark-ui/angular/toggle'
+export { toastAnatomy } from './toast/toast.anatomy'
 export { tooltipAnatomy } from './tooltip/tooltip.anatomy'
 export { treeViewAnatomy } from './tree-view/tree-view.anatomy'
