@@ -1,21 +1,12 @@
 import { afterAll, beforeAll, describe, expect, test } from 'bun:test'
 import { existsSync } from 'node:fs'
 import { join } from 'node:path'
+import { batch6Utilities } from '../../../scripts/src/batch-6-example-fixtures'
 import { getAllComponents } from './example-utils'
 import { getFrameworkExampleDir, getFrameworkExampleDisplayPath } from './framework-example-paths'
 
 const websiteDir = join(import.meta.dir, '..', '..')
 const originalCwd = process.cwd()
-const batch6Utilities = [
-  'client-only',
-  'download-trigger',
-  'focus-trap',
-  'format',
-  'frame',
-  'highlight',
-  'presence',
-  'swap',
-]
 const rootLevelComponents = ['avatar', 'progress', 'toggle']
 
 describe('framework-example-paths', () => {
@@ -54,9 +45,9 @@ describe('framework-example-paths', () => {
     })
 
     test.each(batch6Utilities)('resolves Batch 6 %s examples to the src-level path', (component) => {
-      expect(getFrameworkExampleDir('angular', component)).toBe(
-        join(websiteDir, '..', 'packages', 'angular', 'src', component, 'examples'),
-      )
+      const dir = getFrameworkExampleDir('angular', component)
+      expect(dir).toBe(join(websiteDir, '..', 'packages', 'angular', 'src', component, 'examples'))
+      expect(existsSync(dir)).toBe(true)
       expect(getFrameworkExampleDisplayPath('angular', component)).toBe(`packages/angular/src/${component}/examples`)
     })
 

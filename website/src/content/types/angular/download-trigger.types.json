@@ -2,7 +2,7 @@
   "Directive": {
     "props": {
       "data": {
-        "type": "string | Blob | File | () => DownloadableData | Promise<DownloadableData>",
+        "type": "string | Blob | File | (() => DownloadableData | Promise<DownloadableData>)",
         "isRequired": false,
         "kind": "input"
       },

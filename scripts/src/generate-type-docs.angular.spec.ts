@@ -58,6 +58,7 @@ const createAngularDiscoveryFixture = () => {
   const legacyDir = join(fixtureRoot, 'packages', 'angular', 'legacy-fixture')
   const nestedDir = join(fixtureRoot, 'packages', 'angular', 'src', 'nested-fixture')
   const utilityDir = join(fixtureRoot, 'packages', 'angular', 'src', 'presence')
+  const unexportedDir = join(fixtureRoot, 'packages', 'angular', 'src', 'unexported-fixture')
   const privateDirs = ['_zag', 'internal', 'providers'].map((dir) =>
     join(fixtureRoot, 'packages', 'angular', 'src', dir),
   )
@@ -65,16 +66,28 @@ const createAngularDiscoveryFixture = () => {
   mkdirSync(legacyDir, { recursive: true })
   mkdirSync(nestedDir, { recursive: true })
   mkdirSync(utilityDir, { recursive: true })
+  mkdirSync(unexportedDir, { recursive: true })
   for (const privateDir of privateDirs) {
     mkdirSync(privateDir, { recursive: true })
   }
 
+  writeFileSync(
+    join(fixtureRoot, 'packages', 'angular', 'package.json'),
+    JSON.stringify({
+      exports: {
+        './legacy-fixture': { source: './legacy-fixture/public-api.ts' },
+        './nested-fixture': { source: './src/nested-fixture/public-api.ts' },
+        './presence': { source: './src/presence/public-api.ts' },
+      },
+    }),
+  )
   writeFileSync(join(legacyDir, 'public-api.ts'), "export { ArkLegacyFixtureRoot } from './legacy-fixture-root'\n")
   writeFileSync(join(legacyDir, 'legacy-fixture-root.ts'), 'export class ArkLegacyFixtureRoot {}\n')
   writeFileSync(join(nestedDir, 'public-api.ts'), "export { ArkNestedFixtureRoot } from './nested-fixture-root'\n")
   writeFileSync(join(nestedDir, 'nested-fixture-root.ts'), 'export class ArkNestedFixtureRoot {}\n')
   writeFileSync(join(utilityDir, 'public-api.ts'), "export { ArkPresence } from './presence'\n")
   writeFileSync(join(utilityDir, 'presence.ts'), 'export class ArkPresence {}\n')
+  writeFileSync(join(unexportedDir, 'public-api.ts'), 'export const unexported = true\n')
   for (const privateDir of privateDirs) {
     writeFileSync(join(privateDir, 'public-api.ts'), 'export const privateEntry = true\n')
   }
@@ -100,6 +113,7 @@ const createAngularUnresolvablePartFixture = () => {
   symlinkSync(join(rootDir, 'node_modules'), join(fixtureRoot, 'node_modules'), 'dir')
   const componentDir = join(fixtureRoot, 'packages', 'angular', 'src', 'part-fixture')
   mkdirSync(componentDir, { recursive: true })
+  // Minimal package metadata is enough here because this fixture exercises direct type-doc generation.
   writeFileSync(join(fixtureRoot, 'package.json'), '{}\n')
   writeFileSync(
     join(fixtureRoot, 'packages', 'angular', 'tsconfig.json'),
@@ -151,6 +165,7 @@ describe('Angular type-doc generator discovery', () => {
       expect(components).not.toContain('_zag')
       expect(components).not.toContain('internal')
       expect(components).not.toContain('providers')
+      expect(components).not.toContain('unexported-fixture')
     } finally {
       rmSync(fixtureRoot, { recursive: true, force: true })
     }

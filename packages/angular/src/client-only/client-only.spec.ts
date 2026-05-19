@@ -29,8 +29,6 @@ describe('ArkClientOnlyComponent', () => {
     const client = fixture.nativeElement.querySelector('[data-testid="client"]')
     expect(fallback).not.toBeNull()
     expect(client).toBeNull()
-
-    fixture.destroy()
   })
 
   it('renders client content after browser render', async () => {

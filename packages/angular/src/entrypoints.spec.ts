@@ -42,7 +42,7 @@ const batch5Entrypoints = [
 const pendingSourceEntrypoints = new Set(
   [...batch4Entrypoints, ...batch5Entrypoints].map(([name]) => normalize(`src/${name}/public-api.ts`)),
 )
-const privateSourceExportKeys = new Set(['./src/_zag', './src/collection', './src/internal', './src/tree-view'])
+const privateSourceExportKeys = new Set(['./src/collection', './src/tree-view'])
 
 const isPendingSource = (source: string) => {
   const normalizedSource = normalize(source.replace(/^\.\//, ''))
@@ -198,6 +198,8 @@ describe('package.json exports map', () => {
       expect(exportsMap[key]).toBeDefined()
     }
     expect(exportsMap['./factory']).toBeUndefined()
+    expect(exportsMap['./src/_zag']).toBeUndefined()
+    expect(exportsMap['./src/internal']).toBeUndefined()
     expect(
       Object.keys(exportsMap).filter((key) => key.startsWith('./src/') && !privateSourceExportKeys.has(key)),
     ).toEqual([])

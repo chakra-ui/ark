@@ -271,7 +271,12 @@ function getTypeTextWithoutUndefined(type: Type, property: PropertyDeclaration):
     return type.getText(property)
   }
 
-  return withoutUndefined.map((unionType) => unionType.getText(property)).join(' | ')
+  return withoutUndefined
+    .map((unionType) => {
+      const text = unionType.getText(property)
+      return text.startsWith('() =>') ? `(${text})` : text
+    })
+    .join(' | ')
 }
 
 function normalizeTypeText(typeText: string): string {
@@ -468,9 +473,22 @@ function isAngularComponentDir(componentRoot: string, component: string): boolea
 
 const excludedAngularSrcTypeDocDirs = new Set(['_zag', 'internal', 'providers'])
 
+function listAngularExportedComponents(rootDir: string): Set<string> {
+  const packageJsonPath = path.join(rootDir, 'packages', 'angular', 'package.json')
+  if (!fs.existsSync(packageJsonPath)) return new Set()
+
+  const pkg = fs.readJsonSync(packageJsonPath) as { exports?: Record<string, unknown> }
+  return new Set(
+    Object.keys(pkg.exports ?? {})
+      .filter((key) => key.startsWith('./') && key !== './package.json' && !key.startsWith('./src/'))
+      .map((key) => key.slice(2)),
+  )
+}
+
 export async function listAngularComponents(rootDir: string): Promise<string[]> {
   const angularRoot = path.join(rootDir, 'packages', 'angular')
   const components = new Set<string>()
+  const exportedComponents = listAngularExportedComponents(rootDir)
 
   const legacyPublicApis = await globby('*/public-api.ts', {
     cwd: angularRoot,
@@ -486,7 +504,7 @@ export async function listAngularComponents(rootDir: string): Promise<string[]> 
   const nestedPublicApis = fs.existsSync(nestedRoot) ? await globby('*/public-api.ts', { cwd: nestedRoot }) : []
   for (const publicApi of nestedPublicApis) {
     const component = publicApi.split('/')[0]
-    if (!excludedAngularSrcTypeDocDirs.has(component)) {
+    if (exportedComponents.has(component) && !excludedAngularSrcTypeDocDirs.has(component)) {
       components.add(component)
     }
   }

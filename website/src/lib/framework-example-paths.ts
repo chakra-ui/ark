@@ -3,16 +3,6 @@ import { join } from 'node:path'
 import { Match } from 'effect'
 
 const progressExampleVariants = new Set(['circular', 'linear'])
-const angularNestedExampleComponents = new Set([
-  'client-only',
-  'download-trigger',
-  'focus-trap',
-  'format',
-  'frame',
-  'highlight',
-  'presence',
-  'swap',
-])
 
 const getProgressVariant = (component: string) => {
   const [base, variant] = component.split('-')
@@ -23,11 +13,12 @@ const getProgressVariant = (component: string) => {
 const getAngularExamplePath = (component: string) => {
   const packageBasePath = getPackageBasePath('angular')
   const topLevel = join(packageBasePath, component, 'examples')
+  // Prefer the established root-level Angular layout when both layouts exist during migrations.
   if (existsSync(topLevel)) {
     return { dir: topLevel, displayPath: `packages/angular/${component}/examples` }
   }
   const nested = join(packageBasePath, 'src', component, 'examples')
-  if (existsSync(nested) || angularNestedExampleComponents.has(component)) {
+  if (existsSync(nested)) {
     return { dir: nested, displayPath: `packages/angular/src/${component}/examples` }
   }
   const error = new Error(`Angular examples for "${component}" not found in packages/angular/ or packages/angular/src/`)

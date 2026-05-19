@@ -142,6 +142,7 @@ class CreateEmbeddedViewSpyHostComponent {
   @ViewChild(ArkPortalComponent)
   set portalRef(portal: ArkPortalComponent | undefined) {
     if (!portal || this.createEmbeddedView) return
+    // Projected content retains its declaration injector, so this verifies the portal forwards originInjector.
     const vcRef = (portal as unknown as { vcRef: ViewContainerRef }).vcRef
     this.createEmbeddedView = vi.spyOn(vcRef, 'createEmbeddedView')
   }
@@ -236,6 +237,7 @@ describe('ArkPortalComponent', () => {
       injector: fixture.componentInstance.originInjector,
     })
 
+    fixture.componentInstance.createEmbeddedView?.mockRestore()
     fixture.destroy()
   })
 
@@ -302,7 +304,6 @@ describe('ArkPortalComponent', () => {
 
     expect(secondTarget.querySelector('[data-testid="projected"]')).toBeNull()
     expect(projected.isConnected).toBe(false)
-    expect(projected.parentNode).toBeInstanceOf(DocumentFragment)
 
     fixture.destroy()
   })

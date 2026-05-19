@@ -317,7 +317,7 @@
     }
   },
   "scripts": {
-    "build": "ng build @ark-ui/angular --configuration=production",
+    "build": "ng build @ark-ui/angular --configuration=production && bun run scripts/hide-private-entrypoints.ts",
     "dev": "bun run storybook",
     "lint": "biome lint ./src",
     "test": "vitest",

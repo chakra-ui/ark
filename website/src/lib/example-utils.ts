@@ -155,7 +155,10 @@ export const getComponentExamples = async (framework: string, component: string)
       .filter((file) => file.endsWith(`.${extension}`))
       .map((file) => file.replace(`.${extension}`, ''))
       .sort()
-  } catch {
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
+      throw error
+    }
     return []
   }
 }
