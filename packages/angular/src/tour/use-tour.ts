@@ -45,6 +45,6 @@ function ensureVisualViewportGlobal(): void {
   Object.defineProperty(globalThis, 'visualViewport', {
     configurable: true,
     writable: true,
-    value: undefined,
+    value: null,
   })
 }

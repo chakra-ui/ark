@@ -11,9 +11,12 @@ export function waitForEvent<
   let cleanup: VoidFunction | undefined
   const { predicate, ...listenerOptions } = options ?? {}
 
-  const promise = new Promise<HTMLElementEventMap[K]>((resolve) => {
+  const promise = new Promise<HTMLElementEventMap[K]>((resolve, reject) => {
     const element = target?.()
-    if (!element) return
+    if (!element) {
+      reject(new Error(`waitForEvent could not find a target element for "${String(event)}".`))
+      return
+    }
 
     const handler = (e: HTMLElementEventMap[K]) => {
       if (!predicate || predicate(element as T)) {

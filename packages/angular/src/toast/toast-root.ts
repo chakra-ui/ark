@@ -84,13 +84,16 @@ export class ArkToastRoot implements OnInit {
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID))
   private readonly fallbackId = createArkId('toast')
   private readonly machine = signal<UseToastReturn | null>(null)
-  private readonly getRootNode = (): Node | ShadowRoot | Document =>
-    this.environment.getRootNode() ?? this.elementRef.nativeElement.getRootNode()
+  private readonly getRootNode = (): Document | ShadowRoot => {
+    const rootNode = this.environment.getRootNode() ?? this.elementRef.nativeElement.getRootNode()
+    return rootNode.nodeType === 9 || rootNode.nodeType === 11
+      ? (rootNode as Document | ShadowRoot)
+      : this.elementRef.nativeElement.ownerDocument
+  }
 
   readonly state: Signal<toast.Service['state']> = computed(() => {
     const machine = this.machine()
-    if (!machine) throw new Error('ArkToastRoot state is unavailable before the toast machine starts.')
-    return machine.state()
+    return machine?.state() ?? ({} as toast.Service['state'])
   })
   readonly api: Signal<toast.Api> = computed(() => this.machine()?.api() ?? fallbackToastApi)
 
@@ -121,6 +124,7 @@ export class ArkToastRoot implements OnInit {
 
   ngOnInit(): void {
     if (!this.isBrowser) return
+    if (!this.value() || !this.parent()) return
     this.machine.set(runInInjectionContext(this.injector, () => this.createMachine()))
   }
 
@@ -135,7 +139,11 @@ export class ArkToastRoot implements OnInit {
         const value = this.value()
         const parent = this.parent()
         if (!value || !parent) {
-          throw new Error('ArkToastRoot requires [value] and [parent] from an ArkToaster item.')
+          return {
+            dir: this.locale.dir,
+            getRootNode: this.getRootNode,
+            id: this.fallbackId,
+          }
         }
         return {
           ...value,
@@ -152,6 +160,7 @@ export class ArkToastRoot implements OnInit {
   private renderGhostElements(): void {
     const before = this.renderer.createElement('div') as HTMLElement
     const after = this.renderer.createElement('div') as HTMLElement
+    let destroyed = false
 
     applyArkProps({
       elementRef: new ElementRef(before),
@@ -166,14 +175,17 @@ export class ArkToastRoot implements OnInit {
       props: () => this.api().getGhostAfterProps(),
     })
 
+    this.destroyRef.onDestroy(() => {
+      destroyed = true
+      before.parentNode?.removeChild(before)
+      after.parentNode?.removeChild(after)
+    })
+
     afterNextRender(() => {
+      if (destroyed) return
       const host = this.elementRef.nativeElement
       this.renderer.insertBefore(host, before, host.firstChild)
       this.renderer.appendChild(host, after)
-      this.destroyRef.onDestroy(() => {
-        before.parentNode?.removeChild(before)
-        after.parentNode?.removeChild(after)
-      })
     })
   }
 }

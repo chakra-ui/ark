@@ -24,7 +24,7 @@ const observeResize = (scrollArea: UseScrollAreaReturn, root: HTMLElement): Clea
   if (!ResizeObserverCtor || !content) return undefined
 
   const observer = new ResizeObserverCtor(() => {
-    window.setTimeout(() => measure(scrollArea), 1)
+    scrollArea.service.scope.getWin().setTimeout(() => measure(scrollArea), 1)
   })
   observer.observe(content)
   observer.observe(root)
@@ -63,8 +63,18 @@ const addWheelListener = (
     const viewportId = (scrollArea.api().getViewportProps() as { id?: string }).id
     const viewport = viewportId ? scrollArea.service.scope.getById<HTMLElement>(viewportId) : null
     if (!viewport || event.ctrlKey) return
-    if (orientation === 'vertical' && event.deltaY !== 0) viewport.scrollTop += event.deltaY
-    if (orientation === 'horizontal' && event.deltaX !== 0) viewport.scrollLeft += event.deltaX
+    const lineHeight = 16
+    const scale = event.deltaMode === 1 ? lineHeight : event.deltaMode === 2 ? viewport.clientHeight : 1
+    let handled = false
+    if (orientation === 'vertical' && event.deltaY !== 0) {
+      viewport.scrollTop += event.deltaY * scale
+      handled = true
+    }
+    if (orientation === 'horizontal' && event.deltaX !== 0) {
+      viewport.scrollLeft += event.deltaX * scale
+      handled = true
+    }
+    if (handled) event.preventDefault()
   }
 
   scrollbar.addEventListener('wheel', listener, { passive: false })

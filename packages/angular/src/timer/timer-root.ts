@@ -59,7 +59,6 @@ export class ArkTimerRoot implements UseTimerReturn {
     context: () => ({
       id: this.id(),
       ids: this.ids(),
-      autoStart: this.autoStart() || undefined,
       countdown: this.countdown() || undefined,
       interval: this.interval(),
       startMs: this.startMs(),

@@ -24,7 +24,9 @@ import { toastExampleStyles } from '../toast-example-styles'
       <div arkToastTitle>{{ toast.title }}</div>
       <div arkToastDescription>{{ toast.description }}</div>
       <div class="toast-footer">
-        <button type="button" arkToastActionTrigger class="toast-action">{{ toast.action?.label }}</button>
+        @if (toast.action) {
+          <button type="button" arkToastActionTrigger class="toast-action">{{ toast.action.label }}</button>
+        }
         <button type="button" arkToastCloseTrigger class="toast-close">Dismiss</button>
       </div>
     </ng-template>

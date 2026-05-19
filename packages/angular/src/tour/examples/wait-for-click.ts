@@ -62,8 +62,16 @@ export class TourWaitForClickExample {
       effect({ next, show, target }) {
         show()
         const [promise, cancel] = waitForEvent(target, 'click')
-        promise.then(() => next())
-        return cancel
+        let cancelled = false
+        promise
+          .then(() => {
+            if (!cancelled) next()
+          })
+          .catch(() => {})
+        return () => {
+          cancelled = true
+          cancel()
+        }
       },
     },
     {

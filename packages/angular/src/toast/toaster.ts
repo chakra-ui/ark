@@ -83,13 +83,16 @@ export class ArkToaster implements OnInit {
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID))
   private readonly fallbackId = createArkId('toast-group')
   private readonly machine = signal<UseToastGroupReturn | null>(null)
-  private readonly getRootNode = (): Node | ShadowRoot | Document =>
-    this.environment.getRootNode() ?? this.elementRef.nativeElement.getRootNode()
+  private readonly getRootNode = (): Document | ShadowRoot => {
+    const rootNode = this.environment.getRootNode() ?? this.elementRef.nativeElement.getRootNode()
+    return rootNode.nodeType === 9 || rootNode.nodeType === 11
+      ? (rootNode as Document | ShadowRoot)
+      : this.elementRef.nativeElement.ownerDocument
+  }
 
   readonly state: Signal<toast.GroupService['state']> = computed(() => {
     const machine = this.machine()
-    if (!machine) throw new Error('ArkToaster state is unavailable before the toast group machine starts.')
-    return machine.state()
+    return machine?.state() ?? ({} as toast.GroupService['state'])
   })
   readonly api: Signal<toast.GroupApi> = computed(() => this.machine()?.api() ?? fallbackGroupApi)
   readonly toasts: Signal<toast.Props[]> = computed(() => this.api().getToasts())
