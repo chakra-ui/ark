@@ -34,5 +34,5 @@
 - [ ] Manual/visual checks: Deferred; no browser side-by-side visual pass performed in this re-audit.
 
 ## Commit
-- Hash: pending
+- Hash: 07f7cd1ef
 - Message: `fix(angular): align select with react parity`
