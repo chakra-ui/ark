@@ -1,5 +1,5 @@
 import { Directive, computed, forwardRef, input, type InputSignal, type Signal } from '@angular/core'
-import type { TreeNode } from '@ark-ui/angular/collection'
+import type { TreeNode } from '@ark-ui/angular/src/collection'
 import type { TreeViewNodeProps, TreeViewNodeState } from './tree-view.types'
 import {
   ARK_TREE_VIEW_NODE_CONTEXT,

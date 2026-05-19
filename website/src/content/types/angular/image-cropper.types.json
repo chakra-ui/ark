@@ -1,0 +1,199 @@
+{
+  "Root": {
+    "props": {
+      "aspectRatio": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The crop area aspect ratio."
+      },
+      "cropChange": {
+        "type": "ImageCropperCropChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when the crop area changes."
+      },
+      "cropShape": {
+        "type": "'rectangle' | 'circle'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The shape of the crop area."
+      },
+      "defaultFlip": {
+        "type": "ImageCropperFlipState",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial flip state to apply to the image."
+      },
+      "defaultRotation": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial rotation to apply to the image in degrees."
+      },
+      "defaultZoom": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial zoom factor to apply to the image."
+      },
+      "fixedCropArea": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the crop area is fixed in size and position."
+      },
+      "flip": {
+        "type": "ImageCropperFlipState",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled flip state of the image."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the image cropper."
+      },
+      "ids": {
+        "type": "Partial<{ root: string; viewport: string; image: string; selection: string; handle: (position: string) => string }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the image cropper elements. Useful for composition."
+      },
+      "initialCrop": {
+        "type": "import('@zag-js/types').Rect",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial rectangle of the crop area."
+      },
+      "maxHeight": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The maximum height of the crop area."
+      },
+      "maxWidth": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The maximum width of the crop area."
+      },
+      "maxZoom": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The maximum zoom factor allowed."
+      },
+      "minHeight": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The minimum height of the crop area."
+      },
+      "minWidth": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The minimum width of the crop area."
+      },
+      "minZoom": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The minimum zoom factor allowed."
+      },
+      "nudgeStep": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The base nudge step for keyboard arrow keys."
+      },
+      "nudgeStepCtrl": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The nudge step when Ctrl or Cmd is held."
+      },
+      "nudgeStepShift": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The nudge step when Shift is held."
+      },
+      "rotation": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled rotation of the image in degrees."
+      },
+      "translations": {
+        "type": "ImageCropperIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The localized strings for the image cropper."
+      },
+      "zoom": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled zoom level of the image."
+      },
+      "zoomSensitivity": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Controls how responsive pinch-to-zoom is."
+      },
+      "zoomStep": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The amount of zoom applied per wheel step."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseImageCropperReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The image cropper machine returned by useImageCropper()."
+      }
+    }
+  },
+  "Viewport": {
+    "props": {}
+  },
+  "Image": {
+    "props": {}
+  },
+  "Selection": {
+    "props": {}
+  },
+  "Handle": {
+    "props": {
+      "position": {
+        "type": "ImageCropperHandlePosition",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The position of the resize handle."
+      }
+    }
+  },
+  "Grid": {
+    "props": {
+      "axis": {
+        "type": "'horizontal' | 'vertical'",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The grid line axis to display."
+      }
+    }
+  },
+  "Context": {
+    "props": {}
+  }
+}

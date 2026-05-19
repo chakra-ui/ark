@@ -5,7 +5,7 @@ import {
   useTreeView,
   type TreeCollection,
   type UseTreeViewProps,
-} from '@ark-ui/angular/tree-view'
+} from '@ark-ui/angular/src/tree-view'
 import { getBranchValues } from './get-branch-values'
 import type { JsonTreeViewOptions, UseJsonTreeViewReturn } from './json-tree-view.types'
 

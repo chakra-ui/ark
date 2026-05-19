@@ -1,5 +1,5 @@
 import { type InputSignal, inject } from '@angular/core'
-import type { TreeNode } from '@ark-ui/angular/collection'
+import type { TreeNode } from '@ark-ui/angular/src/collection'
 import type { TreeViewNodeProps } from './tree-view.types'
 import { ARK_TREE_VIEW_NODE_PROPS_CONTEXT, type UseTreeViewNodePropsContext } from './use-tree-view-context'
 

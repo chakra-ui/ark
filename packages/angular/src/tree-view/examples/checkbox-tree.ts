@@ -15,7 +15,7 @@ import {
   ArkTreeViewNodeProvider,
   ArkTreeViewRoot,
   ArkTreeViewTree,
-} from '@ark-ui/angular/tree-view'
+} from '@ark-ui/angular/src/tree-view'
 import { treeViewExampleStyles } from '../tree-view-example-styles'
 import { TreeViewCheckIcon, TreeViewChevronRightIcon, TreeViewMinusIcon } from './_icons'
 import { childIndexPath, fileTreeCollection } from './_tree-data'

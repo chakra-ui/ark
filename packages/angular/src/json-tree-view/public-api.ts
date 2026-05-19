@@ -14,7 +14,7 @@ export {
   TreeCollection,
   type TreeCollectionOptions,
   type TreeNode,
-} from '@ark-ui/angular/tree-view'
+} from '@ark-ui/angular/src/tree-view'
 export type {
   JsonTreeViewApi,
   JsonTreeViewCheckedChangeDetails,

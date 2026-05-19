@@ -13,7 +13,7 @@ import {
 import type * as treeView from '@zag-js/tree-view'
 import type { JsonNode } from '@zag-js/json-tree-utils'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
-import { ARK_TREE_VIEW_CONTEXT, type UseTreeViewApi } from '@ark-ui/angular/tree-view'
+import { ARK_TREE_VIEW_CONTEXT, type UseTreeViewApi } from '@ark-ui/angular/src/tree-view'
 import type { JsonTreeViewOptions, UseJsonTreeViewReturn } from './json-tree-view.types'
 import { ARK_JSON_TREE_VIEW_CONTEXT, ARK_JSON_TREE_VIEW_OPTIONS } from './use-json-tree-view-context'
 

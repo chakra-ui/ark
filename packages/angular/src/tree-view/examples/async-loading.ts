@@ -15,7 +15,7 @@ import {
   ArkTreeViewTree,
   type TreeViewLoadChildrenCompleteDetails,
   type TreeViewLoadChildrenDetails,
-} from '@ark-ui/angular/tree-view'
+} from '@ark-ui/angular/src/tree-view'
 import { treeViewExampleStyles } from '../tree-view-example-styles'
 import {
   TreeViewChevronRightIcon,

@@ -18,7 +18,7 @@ import {
 } from '@angular/core'
 import { NG_VALUE_ACCESSOR, type ControlValueAccessor } from '@angular/forms'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
-import { createArkCvaController } from '../src/forms/control-value-accessor'
+import { createArkCvaController } from '@ark-ui/angular/src/internal'
 import type { EditableElementIds } from './editable.types'
 import { ARK_EDITABLE_CONTEXT } from './use-editable-context'
 import { useEditable, type UseEditableReturn } from './use-editable'

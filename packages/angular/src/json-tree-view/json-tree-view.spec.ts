@@ -314,7 +314,7 @@ describe('@ark-ui/angular/json-tree-view', () => {
   it('public-api imports tree-view only through the package entry point', () => {
     const source = readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'public-api.ts'), 'utf-8')
 
-    expect(source).toContain("from '@ark-ui/angular/tree-view'")
+    expect(source).toContain("from '@ark-ui/angular/src/tree-view'")
     expect(source).not.toMatch(/from ['"]\.\.?\/tree-view/)
   })
 })

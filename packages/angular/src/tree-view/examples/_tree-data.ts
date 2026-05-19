@@ -1,4 +1,4 @@
-import { createTreeCollection, type TreeCollection } from '@ark-ui/angular/collection'
+import { createTreeCollection, type TreeCollection } from '@ark-ui/angular/src/collection'
 
 export interface FileTreeNode {
   id: string

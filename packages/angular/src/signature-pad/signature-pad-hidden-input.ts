@@ -1,6 +1,6 @@
 import { DestroyRef, Directive, ElementRef, Renderer2, inject, input, type InputSignal } from '@angular/core'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
-import { injectArkFieldContextOptional } from '../../field/use-field-context'
+import { injectArkFieldContextOptional } from '@ark-ui/angular/field'
 import { injectArkSignaturePadContext } from './use-signature-pad-context'
 
 @Directive({

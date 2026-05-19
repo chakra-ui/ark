@@ -11,7 +11,7 @@ import {
   type Signal,
 } from '@angular/core'
 import type * as treeView from '@zag-js/tree-view'
-import type { TreeNode } from '@ark-ui/angular/collection'
+import type { TreeNode } from '@ark-ui/angular/src/collection'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
 import { ARK_TREE_VIEW_CONTEXT } from './use-tree-view-context'
 import type { UseTreeViewApi, UseTreeViewReturn } from './use-tree-view'

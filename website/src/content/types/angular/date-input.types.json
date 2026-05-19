@@ -1,0 +1,250 @@
+{
+  "Root": {
+    "props": {
+      "allSegments": {
+        "type": "Partial<{\n  year: boolean\n  month: boolean\n  day: boolean\n  hour: boolean\n  minute: boolean\n  second: boolean\n  dayPeriod: boolean\n  era: boolean\n  literal: boolean\n  timeZoneName: boolean\n  weekday: boolean\n  unknown: boolean\n  fractionalSecond: boolean\n}>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The computed segments map for the formatter."
+      },
+      "createCalendar": {
+        "type": "(identifier: dateInput.CalendarIdentifier) => dateInput.Calendar",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Function that creates a calendar object for a calendar identifier."
+      },
+      "defaultPlaceholderValue": {
+        "type": "dateInput.CalendarDate | dateInput.CalendarDateTime | dateInput.ZonedDateTime",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial placeholder date when uncontrolled."
+      },
+      "defaultValue": {
+        "type": "DateValue[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial selected date(s) when uncontrolled."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the date input is disabled."
+      },
+      "focusChange": {
+        "type": "DateInputFocusChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when the focused segment changes."
+      },
+      "form": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The associated form of the hidden input."
+      },
+      "format": {
+        "type": "(date: DateValue, details: DateInputFormatDateDetails) => string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The format function for converting a DateValue to a string."
+      },
+      "formatter": {
+        "type": "dateInput.DateFormatter",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The date formatter to use."
+      },
+      "granularity": {
+        "type": "'day' | 'hour' | 'minute' | 'second'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The smallest unit displayed in the date input."
+      },
+      "hourCycle": {
+        "type": "12 | 24",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether to use 12-hour or 24-hour time format."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the date input."
+      },
+      "ids": {
+        "type": "Partial<{\n    root: string\n    label: (index: number) => string\n    control: string\n    segmentGroup: (index: number) => string\n    hiddenInput: (index: number) => string\n  }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the date input elements. Useful for composition."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the date input is invalid."
+      },
+      "isDateUnavailable": {
+        "type": "(date: DateValue, locale: string) => boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Returns whether a date is unavailable."
+      },
+      "locale": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The locale used to format date segments."
+      },
+      "max": {
+        "type": "dateInput.CalendarDate | dateInput.CalendarDateTime | dateInput.ZonedDateTime",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The maximum date that can be selected."
+      },
+      "min": {
+        "type": "dateInput.CalendarDate | dateInput.CalendarDateTime | dateInput.ZonedDateTime",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The minimum date that can be selected."
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The name attribute of the hidden input."
+      },
+      "placeholderChange": {
+        "type": "DateInputPlaceholderChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when the placeholder date changes."
+      },
+      "placeholderValue": {
+        "type": "dateInput.CalendarDate | dateInput.CalendarDateTime | dateInput.ZonedDateTime",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The controlled placeholder date."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the date input is read-only."
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the date input is required."
+      },
+      "selectionMode": {
+        "type": "'single' | 'range'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The date input selection mode."
+      },
+      "shouldForceLeadingZeros": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to always show leading zeros in numeric fields."
+      },
+      "timeZone": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The time zone used to format date segments."
+      },
+      "translations": {
+        "type": "DateInputIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The localized strings for the date input."
+      },
+      "value": {
+        "type": "DateValue[]",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled selected date(s)."
+      },
+      "valueDetailsChange": {
+        "type": "DateInputValueChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when the selected value changes."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseDateInputReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The date input machine returned by useDateInput()."
+      }
+    }
+  },
+  "Label": {
+    "props": {
+      "index": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The range index for the label."
+      }
+    }
+  },
+  "Control": {
+    "props": {}
+  },
+  "SegmentGroup": {
+    "props": {
+      "index": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The range index for this segment group."
+      }
+    }
+  },
+  "Segment": {
+    "props": {
+      "segment": {
+        "type": "DateInputDateSegment",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The date segment to render."
+      }
+    }
+  },
+  "HiddenInput": {
+    "props": {
+      "index": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The range index for the hidden input."
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The submitted field name."
+      }
+    }
+  },
+  "Context": {
+    "props": {}
+  },
+  "SegmentContext": {
+    "props": {}
+  }
+}

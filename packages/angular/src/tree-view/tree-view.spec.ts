@@ -117,7 +117,7 @@ class TreeViewNodeProbe {
   readonly nodeProps = injectArkTreeViewNodePropsContext<Node>()
 }
 
-describe('@ark-ui/angular/tree-view', () => {
+describe('@ark-ui/angular/src/tree-view', () => {
   beforeEach(() => {
     TestBed.resetTestingModule()
   })

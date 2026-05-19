@@ -1,5 +1,5 @@
 import { DestroyRef, Directive, ElementRef, Renderer2, inject, input, type InputSignal } from '@angular/core'
-import type { TreeNode } from '@ark-ui/angular/collection'
+import type { TreeNode } from '@ark-ui/angular/src/collection'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
 import { createTreeViewNodePropsResolver } from './tree-view-node-props'
 import { injectArkTreeViewContext } from './use-tree-view-context'

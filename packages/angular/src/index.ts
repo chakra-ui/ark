@@ -1,6 +1,5 @@
 export * from './types'
 export * from './ark-props'
-export * from './anatomy'
 export * from './providers'
 export * from './collection/public-api'
 export * from './client-only/public-api'

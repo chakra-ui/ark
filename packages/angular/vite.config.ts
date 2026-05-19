@@ -51,6 +51,7 @@ export default defineConfig(({ mode }) => ({
       '@ark-ui/angular/src/_zag': new URL('./src/_zag/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/src/_zag/apply-ark-props': new URL('./src/_zag/apply-ark-props.ts', import.meta.url).pathname,
       '@ark-ui/angular/src/_zag/use-machine': new URL('./src/_zag/use-machine.ts', import.meta.url).pathname,
+      '@ark-ui/angular/src/collection': new URL('./src/collection/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/src/internal': new URL('./src/internal/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/src/internal/id': new URL('./src/internal/id.ts', import.meta.url).pathname,
       '@ark-ui/angular/src/internal/types': new URL('./src/internal/types.ts', import.meta.url).pathname,
@@ -58,6 +59,7 @@ export default defineConfig(({ mode }) => ({
       '@ark-ui/angular/src/providers/environment': new URL('./src/providers/environment/public-api.ts', import.meta.url)
         .pathname,
       '@ark-ui/angular/src/providers/locale': new URL('./src/providers/locale/public-api.ts', import.meta.url).pathname,
+      '@ark-ui/angular/src/tree-view': new URL('./src/tree-view/public-api.ts', import.meta.url).pathname,
     },
     conditions: ['source', 'module', 'browser', 'import', 'default'],
   },

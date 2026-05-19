@@ -1,7 +1,7 @@
 import * as treeView from '@zag-js/tree-view'
 import type { Machine } from '@zag-js/core'
 import type { PropTypes } from '@zag-js/types'
-import type { TreeCollection, TreeNode } from '@ark-ui/angular/collection'
+import type { TreeCollection, TreeNode } from '@ark-ui/angular/src/collection'
 import { useMachine } from '@ark-ui/angular/src/_zag'
 import { createArkId } from '@ark-ui/angular/src/internal'
 import type { UseMachineReturn } from '@ark-ui/angular/src/internal'

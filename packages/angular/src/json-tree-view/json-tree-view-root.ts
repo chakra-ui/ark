@@ -17,7 +17,7 @@ import {
   type Signal,
 } from '@angular/core'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
-import { ARK_TREE_VIEW_CONTEXT, type UseTreeViewApi } from '@ark-ui/angular/tree-view'
+import { ARK_TREE_VIEW_CONTEXT, type UseTreeViewApi } from '@ark-ui/angular/src/tree-view'
 import { ARK_JSON_TREE_VIEW_CONTEXT, ARK_JSON_TREE_VIEW_OPTIONS } from './use-json-tree-view-context'
 import { useJsonTreeView } from './use-json-tree-view'
 import type {

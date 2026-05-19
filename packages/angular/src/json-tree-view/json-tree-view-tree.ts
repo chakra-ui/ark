@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, type TemplateRef, input, type InputSignal } from '@angular/core'
 import type { JsonNode } from '@zag-js/json-tree-utils'
-import { ArkTreeViewTree, injectArkTreeViewContext } from '@ark-ui/angular/tree-view'
+import { ArkTreeViewTree, injectArkTreeViewContext } from '@ark-ui/angular/src/tree-view'
 import { ArkJsonTreeViewNode } from './json-tree-view-node'
 import type { JsonTreeViewValueTemplate } from './json-tree-view.types'
 

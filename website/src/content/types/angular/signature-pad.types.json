@@ -1,0 +1,120 @@
+{
+  "Root": {
+    "props": {
+      "defaultPaths": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial SVG paths of the signature pad when uncontrolled."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the signature pad is disabled."
+      },
+      "draw": {
+        "type": "SignaturePadDrawDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits while the user is drawing."
+      },
+      "drawEnd": {
+        "type": "SignaturePadDrawEndDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when drawing completes or the pad is cleared."
+      },
+      "drawing": {
+        "type": "SignaturePadDrawingOptions",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The drawing options."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the signature pad."
+      },
+      "ids": {
+        "type": "Partial<{ root: string; control: string; hiddenInput: string; label: string }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the signature pad elements. Useful for composition."
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The name of the hidden input used for form submission."
+      },
+      "paths": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled SVG paths of the signature pad."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the signature pad is read-only."
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the signature pad is required."
+      },
+      "translations": {
+        "type": "SignaturePadIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The localized strings for the signature pad."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseSignaturePadReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The signature pad machine returned by useSignaturePad()."
+      }
+    }
+  },
+  "Control": {
+    "props": {}
+  },
+  "Segment": {
+    "props": {}
+  },
+  "ClearTrigger": {
+    "props": {}
+  },
+  "Guide": {
+    "props": {}
+  },
+  "HiddenInput": {
+    "props": {
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "''",
+        "description": "The serialized value submitted with the form."
+      }
+    }
+  },
+  "Label": {
+    "props": {}
+  },
+  "Context": {
+    "props": {}
+  }
+}

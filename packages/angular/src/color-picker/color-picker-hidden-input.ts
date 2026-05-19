@@ -1,6 +1,6 @@
 import { DestroyRef, Directive, ElementRef, Renderer2, inject } from '@angular/core'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
-import { injectArkFieldContextOptional } from '../../field/use-field-context'
+import { injectArkFieldContextOptional } from '@ark-ui/angular/field'
 import { injectArkColorPickerContext } from './use-color-picker-context'
 
 @Directive({

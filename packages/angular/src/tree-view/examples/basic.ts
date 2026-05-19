@@ -13,7 +13,7 @@ import {
   ArkTreeViewNodeProvider,
   ArkTreeViewRoot,
   ArkTreeViewTree,
-} from '@ark-ui/angular/tree-view'
+} from '@ark-ui/angular/src/tree-view'
 import { treeViewExampleStyles } from '../tree-view-example-styles'
 import { TreeViewChevronRightIcon, TreeViewFileIcon, TreeViewFolderIcon, TreeViewFolderOpenIcon } from './_icons'
 import { childIndexPath, fileTreeCollection, type FileTreeNode } from './_tree-data'

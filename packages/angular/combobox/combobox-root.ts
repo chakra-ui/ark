@@ -24,7 +24,7 @@ import {
 import { NG_VALUE_ACCESSOR, type ControlValueAccessor } from '@angular/forms'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
 import { buildRootCarrier, type ArkContextCarrier } from '@ark-ui/angular/src/internal'
-import { createArkCvaController } from '../src/forms/control-value-accessor'
+import { createArkCvaController } from '@ark-ui/angular/src/internal'
 import type {
   ComboboxElementIds,
   ComboboxHighlightChangeDetails,

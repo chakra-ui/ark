@@ -1,3 +1,4 @@
+import type { Signal } from '@angular/core'
 import type { JsonNode, JsonNodeHastElement, JsonNodePreviewOptions, JsonNodeText } from '@zag-js/json-tree-utils'
 import type {
   TreeViewCheckedChangeDetails,
@@ -8,7 +9,7 @@ import type {
   TreeViewService,
   UseTreeViewApi,
   UseTreeViewReturn,
-} from '@ark-ui/angular/tree-view'
+} from '@ark-ui/angular/src/tree-view'
 
 export interface JsonTreeViewOptions extends Partial<JsonNodePreviewOptions> {
   /** Whether to show quotes on object keys. */
@@ -32,5 +33,5 @@ export type JsonTreeViewFocusChangeDetails = TreeViewFocusChangeDetails<JsonNode
 export type JsonTreeViewElementIds = TreeViewElementIds
 
 export interface UseJsonTreeViewReturn extends UseTreeViewReturn<JsonNode> {
-  readonly options: () => JsonTreeViewOptions
+  readonly options: Signal<JsonTreeViewOptions>
 }

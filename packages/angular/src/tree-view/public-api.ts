@@ -66,4 +66,4 @@ export {
   TreeCollection,
   type TreeCollectionOptions,
   type TreeNode,
-} from '@ark-ui/angular/collection'
+} from '@ark-ui/angular/src/collection'

@@ -16,7 +16,7 @@ import {
   type OutputEmitterRef,
   type Signal,
 } from '@angular/core'
-import { TreeCollection, type TreeNode } from '@ark-ui/angular/collection'
+import { TreeCollection, type TreeNode } from '@ark-ui/angular/src/collection'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
 import type {
   TreeViewCheckedChangeDetails,

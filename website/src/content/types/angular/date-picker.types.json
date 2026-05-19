@@ -1,0 +1,467 @@
+{
+  "Root": {
+    "props": {
+      "closeOnSelect": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether the calendar should close after date selection is complete."
+      },
+      "createCalendar": {
+        "type": "(identifier: datePicker.CalendarIdentifier) => datePicker.Calendar",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Function that creates a calendar object for a calendar identifier."
+      },
+      "defaultFocusedValue": {
+        "type": "datePicker.CalendarDate | datePicker.CalendarDateTime | datePicker.ZonedDateTime",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial focused date when uncontrolled."
+      },
+      "defaultOpen": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "The initial open state when uncontrolled."
+      },
+      "defaultValue": {
+        "type": "DateValue[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial selected date(s) when uncontrolled."
+      },
+      "defaultView": {
+        "type": "'day' | 'month' | 'year'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial calendar view when uncontrolled."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the date picker is disabled."
+      },
+      "fixedWeeks": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the calendar should render a fixed number of weeks."
+      },
+      "focusChange": {
+        "type": "DatePickerFocusChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when the focused date changes."
+      },
+      "focusedValue": {
+        "type": "datePicker.CalendarDate | datePicker.CalendarDateTime | datePicker.ZonedDateTime",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled focused date."
+      },
+      "format": {
+        "type": "(date: DateValue, details: datePicker.LocaleDetails) => string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The date formatting function."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the date picker."
+      },
+      "ids": {
+        "type": "Partial<{\n    root: string\n    label: (index: number) => string\n    table: (id: string) => string\n    tableHeader: (id: string) => string\n    tableBody: (id: string) => string\n    tableRow: (id: string) => string\n    content: string\n    cellTrigger: (id: string) => string\n    prevTrigger: (view: DatePickerView) => string\n    nextTrigger: (view: DatePickerView) => string\n    viewTrigger: (view: DatePickerView) => string\n    clearTrigger: string\n    control: string\n    input: (index: number) => string\n    trigger: string\n    monthSelect: string\n    yearSelect: string\n    positioner: string\n  }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the date picker elements. Useful for composition."
+      },
+      "inline": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to render the calendar inline."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the date picker is invalid."
+      },
+      "isDateUnavailable": {
+        "type": "(date: DateValue, locale: string) => boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Returns whether a date is unavailable."
+      },
+      "locale": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The locale used to format dates."
+      },
+      "max": {
+        "type": "datePicker.CalendarDate | datePicker.CalendarDateTime | datePicker.ZonedDateTime",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The maximum selectable date."
+      },
+      "maxSelectedDates": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The maximum number of selectable dates in multiple selection mode."
+      },
+      "maxView": {
+        "type": "'day' | 'month' | 'year'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The maximum view of the calendar."
+      },
+      "min": {
+        "type": "datePicker.CalendarDate | datePicker.CalendarDateTime | datePicker.ZonedDateTime",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The minimum selectable date."
+      },
+      "minView": {
+        "type": "'day' | 'month' | 'year'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The minimum view of the calendar."
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The name attribute of the input element."
+      },
+      "numOfMonths": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The number of months to display."
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled open state. Use property or two-way binding, not a bare static attribute."
+      },
+      "openDetailsChange": {
+        "type": "DatePickerOpenChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when the open state changes."
+      },
+      "openOnClick": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to open the calendar when the input is clicked."
+      },
+      "outsideDaySelectable": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether dates outside the visible range can be selected."
+      },
+      "parse": {
+        "type": "(value: string, details: datePicker.LocaleDetails) => DateValue | undefined",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The date parsing function."
+      },
+      "placeholder": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The placeholder text for the input."
+      },
+      "positioning": {
+        "type": "DatePickerPositioningOptions",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The positioning options for the date picker content."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the date picker is read-only."
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the date picker is required."
+      },
+      "selectionMode": {
+        "type": "'single' | 'multiple' | 'range'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The date picker selection mode."
+      },
+      "showWeekNumbers": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to show the week number column."
+      },
+      "startOfWeek": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The first day of the week, where 0 is Sunday."
+      },
+      "timeZone": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The time zone used to format dates."
+      },
+      "translations": {
+        "type": "DatePickerIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The localized strings for the date picker."
+      },
+      "value": {
+        "type": "DateValue[]",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled selected date(s)."
+      },
+      "valueDetailsChange": {
+        "type": "DatePickerValueChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when the selected value changes."
+      },
+      "view": {
+        "type": "'day' | 'month' | 'year'",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled calendar view."
+      },
+      "viewDetailsChange": {
+        "type": "DatePickerViewChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when the calendar view changes."
+      },
+      "visibleRangeChange": {
+        "type": "DatePickerVisibleRangeChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when the visible range changes."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseDatePickerReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The date picker machine returned by useDatePicker()."
+      }
+    }
+  },
+  "Context": {
+    "props": {}
+  },
+  "Label": {
+    "props": {
+      "index": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The index of the input this label is associated with."
+      }
+    }
+  },
+  "Control": {
+    "props": {}
+  },
+  "Input": {
+    "props": {
+      "fixOnBlur": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to fix the input value on blur."
+      },
+      "index": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The index of the input to focus."
+      }
+    }
+  },
+  "Trigger": {
+    "props": {}
+  },
+  "Content": {
+    "props": {}
+  },
+  "Positioner": {
+    "props": {}
+  },
+  "ClearTrigger": {
+    "props": {}
+  },
+  "PrevTrigger": {
+    "props": {}
+  },
+  "NextTrigger": {
+    "props": {}
+  },
+  "ViewTrigger": {
+    "props": {}
+  },
+  "ViewControl": {
+    "props": {}
+  },
+  "PresetTrigger": {
+    "props": {
+      "value": {
+        "type": "DatePickerPresetTriggerValue",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The preset range or date values to select."
+      }
+    }
+  },
+  "MonthSelect": {
+    "props": {}
+  },
+  "YearSelect": {
+    "props": {}
+  },
+  "RangeText": {
+    "props": {}
+  },
+  "ValueText": {
+    "props": {
+      "placeholder": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Text to display when no date is selected."
+      },
+      "separator": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "', '",
+        "description": "Separator between multiple selected values."
+      }
+    }
+  },
+  "View": {
+    "props": {
+      "view": {
+        "type": "DatePickerViewValue",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The calendar view rendered by this container."
+      }
+    }
+  },
+  "Table": {
+    "props": {
+      "columns": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The number of columns in the table grid."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The table id."
+      }
+    }
+  },
+  "TableHead": {
+    "props": {}
+  },
+  "TableHeader": {
+    "props": {}
+  },
+  "TableBody": {
+    "props": {}
+  },
+  "TableRow": {
+    "props": {}
+  },
+  "TableCell": {
+    "props": {
+      "value": {
+        "type": "number | DateValue",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The date, month, or year value represented by this cell."
+      },
+      "columns": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The number of columns in the month/year grid."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the cell is disabled."
+      },
+      "visibleRange": {
+        "type": "DatePickerVisibleRange",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The day-view visible range for the cell."
+      }
+    }
+  },
+  "TableCellTrigger": {
+    "props": {}
+  },
+  "WeekNumberHeaderCell": {
+    "props": {}
+  },
+  "WeekNumberCell": {
+    "props": {
+      "week": {
+        "type": "DateValue[]",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The dates in the represented week."
+      },
+      "weekIndex": {
+        "type": "number",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The week index in the visible month."
+      }
+    }
+  }
+}

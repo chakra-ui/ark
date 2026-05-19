@@ -1,10 +1,13 @@
 export { avatarAnatomy } from '@ark-ui/angular/avatar'
 export { clipboardAnatomy } from '@ark-ui/angular/clipboard'
+export { colorPickerAnatomy } from './color-picker/color-picker.anatomy'
 // Batch 2 components live under src/. Relative imports avoid ng-packagr resolving
 // these secondary entry points as @ark-ui/angular/src/<name> during graph analysis.
 export { collapsibleAnatomy } from './collapsible/collapsible.anatomy'
 // Use a relative import so this aggregate stays form-isolation safe.
 export { comboboxAnatomy } from '../combobox/combobox.anatomy'
+export { dateInputAnatomy } from './date-input/date-input.anatomy'
+export { datePickerAnatomy } from './date-picker/date-picker.anatomy'
 export { dialogAnatomy } from './dialog/dialog.anatomy'
 export { drawerAnatomy } from './drawer/drawer.anatomy'
 // Use a relative import so this aggregate stays form-isolation safe.
@@ -13,6 +16,7 @@ export { fieldAnatomy } from '../field/field.anatomy'
 export { fieldsetAnatomy } from '../fieldset/fieldset.anatomy'
 export { fileUploadAnatomy } from '../file-upload/file-upload.anatomy'
 export { hoverCardAnatomy } from './hover-card/hover-card.anatomy'
+export { imageCropperAnatomy } from './image-cropper/image-cropper.anatomy'
 export { listboxAnatomy } from '../listbox/listbox.anatomy'
 export { menuAnatomy } from './menu/menu.anatomy'
 export { navigationMenuAnatomy } from './navigation-menu/navigation-menu.anatomy'
@@ -24,6 +28,7 @@ export { passwordInputAnatomy } from '../password-input/password-input.anatomy'
 export { pinInputAnatomy } from '../pin-input/pin-input.anatomy'
 export { popoverAnatomy } from './popover/popover.anatomy'
 export { progressAnatomy } from '@ark-ui/angular/progress'
+export { qrCodeAnatomy } from './qr-code/qr-code.anatomy'
 // Use a relative import so this aggregate stays form-isolation safe.
 export { selectAnatomy } from '../select/select.anatomy'
 export { signaturePadAnatomy } from './signature-pad/signature-pad.anatomy'

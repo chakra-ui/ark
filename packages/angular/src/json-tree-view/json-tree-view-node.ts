@@ -12,7 +12,7 @@ import {
   ArkTreeViewItemText,
   ArkTreeViewNodeProvider,
   injectArkTreeViewContext,
-} from '@ark-ui/angular/tree-view'
+} from '@ark-ui/angular/src/tree-view'
 import { ArkJsonTreeViewKeyNode } from './json-tree-view-key-node'
 import type { JsonTreeViewValueTemplate } from './json-tree-view.types'
 import { ArkJsonTreeViewValueNode } from './json-tree-view-value-node'

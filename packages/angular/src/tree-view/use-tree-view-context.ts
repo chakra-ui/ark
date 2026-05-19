@@ -1,5 +1,5 @@
 import { InjectionToken, type Signal, inject } from '@angular/core'
-import type { TreeNode } from '@ark-ui/angular/collection'
+import type { TreeNode } from '@ark-ui/angular/src/collection'
 import type { TreeViewNodeProps, TreeViewNodeState } from './tree-view.types'
 import type { UseTreeViewReturn } from './use-tree-view'
 

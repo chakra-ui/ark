@@ -1,0 +1,243 @@
+{
+  "Root": {
+    "props": {
+      "data": {
+        "type": "unknown",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The data to display in the tree."
+      },
+      "checkedChange": {
+        "type": "treeView.CheckedChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when checked nodes change."
+      },
+      "checkedValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled checked node values."
+      },
+      "collapseStringsAfterLength": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The string length after which string previews are collapsed."
+      },
+      "defaultCheckedValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial checked node values when uncontrolled."
+      },
+      "defaultExpandedDepth": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The default depth to expand."
+      },
+      "defaultExpandedValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial expanded node values when uncontrolled."
+      },
+      "defaultFocusedValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial focused node value when uncontrolled."
+      },
+      "defaultSelectedValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial selected node values when uncontrolled."
+      },
+      "expandedChange": {
+        "type": "JsonTreeViewExpandedChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when expanded nodes change."
+      },
+      "expandedValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled expanded node values."
+      },
+      "expandOnClick": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether clicking on a branch should open it."
+      },
+      "focusChange": {
+        "type": "JsonTreeViewFocusChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when focus changes."
+      },
+      "focusedValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled focused node value."
+      },
+      "groupArraysAfterLength": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The array length after which array previews are grouped."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the tree view."
+      },
+      "ids": {
+        "type": "Partial<{ root: string; tree: string; label: string; node: (value: string) => string }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the tree view elements. Useful for composition."
+      },
+      "maxPreviewItems": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The maximum number of preview items to render for composite values."
+      },
+      "quotesOnKeys": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether to show quotes on object keys."
+      },
+      "selectedValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled selected node values."
+      },
+      "selectionChange": {
+        "type": "JsonTreeViewSelectionChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when selection changes."
+      },
+      "selectionMode": {
+        "type": "'single' | 'multiple'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "How selection should behave."
+      },
+      "showNonenumerable": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether to show non-enumerable properties."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseJsonTreeViewReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The json tree view machine returned by useJsonTreeView()."
+      }
+    }
+  },
+  "Tree": {
+    "props": {
+      "arrow": {
+        "type": "TemplateRef<unknown> | null",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "null",
+        "description": "Template for the branch arrow."
+      },
+      "indentGuide": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to render branch indent guides."
+      },
+      "renderValue": {
+        "type": "TemplateRef<JsonTreeViewValueTemplate> | null",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "null",
+        "description": "Template used to render text value nodes."
+      }
+    }
+  },
+  "Node": {
+    "props": {
+      "indexPath": {
+        "type": "number[]",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The index path of the node."
+      },
+      "node": {
+        "type": "JsonNode<any>",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The node to render."
+      },
+      "arrow": {
+        "type": "TemplateRef<unknown> | null",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "null",
+        "description": "Template for the branch arrow."
+      },
+      "indentGuide": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to render branch indent guides."
+      },
+      "renderValue": {
+        "type": "TemplateRef<JsonTreeViewValueTemplate> | null",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "null",
+        "description": "Template used to render text value nodes."
+      }
+    }
+  },
+  "KeyNode": {
+    "props": {
+      "node": {
+        "type": "JsonNode<any>",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The node to render."
+      }
+    }
+  },
+  "ValueNode": {
+    "props": {
+      "node": {
+        "type": "JsonNodeHastElement",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The value node to render."
+      },
+      "renderValue": {
+        "type": "TemplateRef<JsonTreeViewValueTemplate> | null",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "null",
+        "description": "Template used to render text nodes."
+      }
+    }
+  }
+}
