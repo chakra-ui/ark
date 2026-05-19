@@ -1,8 +1,10 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import {
   type AsyncListProps,
+  type AsyncListService,
   type LoadDetails,
   type LoadResult,
+  type SortDescriptor,
   connectAsyncList,
   createAsyncListMachine,
   createFileTreeCollection,
@@ -25,6 +27,77 @@ interface Item {
 interface Node {
   value: string
   children?: Node[]
+}
+
+type AsyncListContext<T, C> = {
+  items: T[]
+  filterText: string
+  cursor?: C | null
+  sortDescriptor?: SortDescriptor<T>
+  error?: Error
+}
+
+const getAsyncListAction = (name: string) => {
+  const action = createAsyncListMachine.implementations?.actions?.[name]
+  expect(action).toBeDefined()
+  return action as (params: Record<string, unknown>) => void
+}
+
+const createAsyncListParams = <T, C>(
+  props: AsyncListProps<T, C>,
+  context: AsyncListContext<T, C>,
+  event: Record<string, unknown> = { type: 'RELOAD' },
+) => {
+  const refs = {
+    abort: null as AbortController | null,
+    seq: 0,
+  }
+  const sent: Array<Record<string, unknown>> = []
+
+  return {
+    params: {
+      context: {
+        get: (key: keyof AsyncListContext<T, C>) => context[key],
+        set: <K extends keyof AsyncListContext<T, C>>(
+          key: K,
+          value: AsyncListContext<T, C>[K] | ((previous: AsyncListContext<T, C>[K]) => AsyncListContext<T, C>[K]),
+        ) => {
+          const previous = context[key]
+          context[key] = typeof value === 'function' ? value(previous) : value
+        },
+      },
+      event,
+      prop: (key: keyof AsyncListProps<T, C>) => props[key],
+      refs: {
+        get: (key: keyof typeof refs) => refs[key],
+        set: <K extends keyof typeof refs>(key: K, value: (typeof refs)[K]) => {
+          refs[key] = value
+        },
+      },
+      send: (nextEvent: Record<string, unknown>) => {
+        sent.push(nextEvent)
+      },
+    },
+    refs,
+    sent,
+  }
+}
+
+const connectAsyncListSnapshot = <T, C>(context: AsyncListContext<T, C>, state: 'idle' | 'loading' | 'sorting') =>
+  connectAsyncList({
+    context: {
+      get: (key: keyof AsyncListContext<T, C>) => context[key],
+    },
+    send: vi.fn(),
+    state: {
+      matches: (...values: string[]) => values.includes(state),
+    },
+  } as unknown as AsyncListService<T, C>)
+
+const waitForAsyncListEvent = async (sent: Array<Record<string, unknown>>) => {
+  await new Promise((resolve) => setTimeout(resolve, 0))
+  expect(sent).toHaveLength(1)
+  return sent[0]
 }
 
 describe('collection entrypoint (criterion 27)', () => {
@@ -52,6 +125,9 @@ describe('collection entrypoint (criterion 27)', () => {
 
     expect(collection).toBeInstanceOf(ListCollection)
     expect(collection.find('b')?.label).toBe('Banana')
+    expect(collection.findMany(['c', 'a']).map((item) => item.label)).toEqual(['Cherry', 'Apple'])
+    expect(collection.stringify('a')).toBe('Apple')
+    expect(collection.getValues()).toEqual(['a', 'b', 'c'])
     expect(collection.indexOf('c')).toBe(2)
     expect(collection.has('z')).toBe(false)
   })
@@ -67,7 +143,12 @@ describe('collection entrypoint (criterion 27)', () => {
 
     expect(grid).toBeInstanceOf(GridCollection)
     expect(grid.getRowCount()).toBe(2)
+    expect(grid.getRows().map((row) => row.map((item) => item.value))).toEqual([
+      ['00', '01'],
+      ['10', '11'],
+    ])
     expect(grid.getCell(1, 0)?.value).toBe('10')
+    expect(grid.getValueCell('11')).toEqual({ row: 1, column: 1 })
     expect(grid.getNextRowValue('00')).toBe('10')
     expect(grid.getPreviousRowValue('10')).toBe('00')
   })
@@ -87,12 +168,18 @@ describe('collection entrypoint (criterion 27)', () => {
     expect(tree).toBeInstanceOf(TreeCollection)
     const order = tree.flatten().map((node) => node.value)
     expect(order).toEqual(['root', 'a', 'a1', 'a2', 'b'])
+    expect(tree.getValuePath([0, 1])).toEqual(['a', 'a2'])
+    expect(tree.getDescendantValues('a')).toEqual(['a1', 'a2'])
+    expect(tree.getDepth('a1')).toBe(2)
   })
 
   it('builds tree collections from file paths', () => {
-    const tree = createFileTreeCollection(['src/index.ts', 'src/lib/util.ts'])
+    const tree = createFileTreeCollection(['src/index.ts', 'src/lib/util.ts', 'README.md'])
     expect(tree).toBeInstanceOf(TreeCollection)
-    expect(tree.getValues().length).toBeGreaterThan(0)
+    expect(tree.rootNode.value).toBe('ROOT')
+    expect(tree.getValues()).toEqual(['src', 'src/index.ts', 'src/lib', 'src/lib/util.ts', 'README.md'])
+    expect(tree.findNode('src/lib/util.ts')?.label).toBe('util.ts')
+    expect(tree.getParentNode('src/lib/util.ts')?.value).toBe('src/lib')
   })
 
   it('updates list selection state', () => {
@@ -106,6 +193,8 @@ describe('collection entrypoint (criterion 27)', () => {
     const selection = createListSelection({ selectionMode: 'multiple', deselectable: true })
     expect(selection).toBeInstanceOf(Selection)
     expect(selection.isEmpty()).toBe(true)
+    expect(selection.selectionMode).toBe('multiple')
+    expect(selection.deselectable).toBe(true)
 
     const next = selection.select(collection, 'a').select(collection, 'b')
     expect(next.isSelected('a')).toBe(true)
@@ -115,29 +204,88 @@ describe('collection entrypoint (criterion 27)', () => {
     const toggled = next.toggleSelection(collection, 'a')
     expect(toggled.isSelected('a')).toBe(false)
     expect(toggled.isSelected('b')).toBe(true)
+
+    const replaced = toggled.replaceSelection(collection, 'c')
+    expect(replaced.isSelected('b')).toBe(false)
+    expect(replaced.isSelected('c')).toBe(true)
+    expect(replaced.clearSelection().isEmpty()).toBe(true)
   })
 
-  it('invokes async list load handler for success', async () => {
+  it('loads async list items through the machine and connected api', async () => {
     const items = [{ value: 1 }, { value: 2 }]
+    let details: LoadDetails<{ value: number }, string> | undefined
+    const onSuccess = vi.fn()
     const props: AsyncListProps<{ value: number }, string> = {
       load: async (
-        _details: LoadDetails<{ value: number }, string>,
-      ): Promise<LoadResult<{ value: number }, string>> => ({
-        items,
-      }),
+        loadDetails: LoadDetails<{ value: number }, string>,
+      ): Promise<LoadResult<{ value: number }, string>> => {
+        details = loadDetails
+        return {
+          items,
+          cursor: 'next-page',
+        }
+      },
+      onSuccess,
     }
+    const context: AsyncListContext<{ value: number }, string> = {
+      items: [],
+      filterText: 'ap',
+      cursor: null,
+    }
+    const { params, sent } = createAsyncListParams(props, context)
 
-    const result = await props.load({ signal: undefined, filterText: '' })
-    expect(result.items).toEqual(items)
+    getAsyncListAction('performFetch')(params)
+    const success = await waitForAsyncListEvent(sent)
+
+    expect(success).toMatchObject({ type: 'SUCCESS', items, cursor: 'next-page', append: false })
+    expect(details?.filterText).toBe('ap')
+    expect(details?.cursor).toBeNull()
+    expect(details?.signal).toBeInstanceOf(AbortSignal)
+
+    getAsyncListAction('setItems')({ ...params, event: success })
+    getAsyncListAction('setCursor')({ ...params, event: success })
+    getAsyncListAction('clearError')(params)
+    getAsyncListAction('invokeOnSuccess')({ ...params, event: success })
+
+    const api = connectAsyncListSnapshot(context, 'idle')
+
+    expect(api.items).toEqual(items)
+    expect(api.cursor).toBe('next-page')
+    expect(api.hasMore).toBe(true)
+    expect(api.empty).toBe(false)
+    expect(api.error).toBeUndefined()
+    expect(onSuccess).toHaveBeenCalledWith({ items })
   })
 
-  it('invokes async list load handler for failure', async () => {
+  it('exposes async list load failures through the connected api', async () => {
+    const error = new Error('boom')
+    const onError = vi.fn()
     const props: AsyncListProps<{ value: number }, string> = {
       load: async () => {
-        throw new Error('boom')
+        throw error
       },
+      onError,
     }
+    const context: AsyncListContext<{ value: number }, string> = {
+      items: [{ value: 1 }],
+      filterText: '',
+      cursor: null,
+    }
+    const { params, sent } = createAsyncListParams(props, context)
 
-    await expect(props.load({ signal: undefined, filterText: '' })).rejects.toThrow('boom')
+    getAsyncListAction('performFetch')(params)
+    const failure = await waitForAsyncListEvent(sent)
+
+    expect(failure).toEqual({ type: 'ERROR', error })
+
+    getAsyncListAction('setError')({ ...params, event: failure })
+    getAsyncListAction('invokeOnError')({ ...params, event: failure })
+
+    const api = connectAsyncListSnapshot(context, 'idle')
+
+    expect(api.items).toEqual([{ value: 1 }])
+    expect(api.error).toBe(error)
+    expect(api.loading).toBe(false)
+    expect(onError).toHaveBeenCalledWith({ error })
   })
 })
