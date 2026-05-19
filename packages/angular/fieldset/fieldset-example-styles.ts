@@ -36,20 +36,10 @@ export const fieldsetExampleStyles = `
     color: var(--demo-neutral-fg-muted, #6b7280);
   }
 
-  [arkFieldsetHelperText][data-disabled] {
-    opacity: 0.5;
-    filter: grayscale(100%);
-  }
-
   [arkFieldsetErrorText] {
     font-size: 0.875rem;
     line-height: 1.25rem;
     color: var(--demo-coral-fg, #b91c1c);
-  }
-
-  [arkFieldsetErrorText][data-disabled] {
-    opacity: 0.5;
-    filter: grayscale(100%);
   }
 
   [arkFieldRoot] {
