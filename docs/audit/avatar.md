@@ -30,5 +30,5 @@
 - [x] Manual/visual checks: Static comparison of rendered selectors (`[arkAvatar]`/`[arkAvatarRootProvider]`, `[arkAvatarImage]`, `[arkAvatarFallback]`) against React `.Root`, `.Image`, `.Fallback` selectors. Identical layout, sizing, typography, and border-radius rules. Browser-level visual inspection deferred.
 
 ## Commit
-- Hash: 8c4d3ba43
+- Hash: 172192b76
 - Message: `fix(angular): align avatar with react parity`
