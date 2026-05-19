@@ -6,6 +6,17 @@ import { getFrameworkExampleDir, getFrameworkExampleDisplayPath } from './framew
 
 const websiteDir = join(import.meta.dir, '..', '..')
 const originalCwd = process.cwd()
+const batch6Utilities = [
+  'client-only',
+  'download-trigger',
+  'focus-trap',
+  'format',
+  'frame',
+  'highlight',
+  'presence',
+  'swap',
+]
+const rootLevelComponents = ['avatar', 'progress', 'toggle']
 
 describe('framework-example-paths', () => {
   beforeAll(() => {
@@ -40,6 +51,20 @@ describe('framework-example-paths', () => {
         join(websiteDir, '..', 'packages', 'angular', 'progress', 'examples'),
       )
       expect(getFrameworkExampleDisplayPath('angular', 'progress')).toBe('packages/angular/progress/examples')
+    })
+
+    test.each(batch6Utilities)('resolves Batch 6 %s examples to the src-level path', (component) => {
+      expect(getFrameworkExampleDir('angular', component)).toBe(
+        join(websiteDir, '..', 'packages', 'angular', 'src', component, 'examples'),
+      )
+      expect(getFrameworkExampleDisplayPath('angular', component)).toBe(`packages/angular/src/${component}/examples`)
+    })
+
+    test.each(rootLevelComponents)('resolves %s to its root-level examples path', (component) => {
+      expect(getFrameworkExampleDir('angular', component)).toBe(
+        join(websiteDir, '..', 'packages', 'angular', component, 'examples'),
+      )
+      expect(getFrameworkExampleDisplayPath('angular', component)).toBe(`packages/angular/${component}/examples`)
     })
 
     test('resolves every discovered Angular component to an existing examples dir', async () => {
