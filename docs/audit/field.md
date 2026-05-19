@@ -30,10 +30,10 @@
 7. Run focused tests, typecheck, and `git diff --check`; update this file with results and commit metadata.
 
 ## Verification
-- [x] Typecheck/build: `bun run --cwd packages/angular typecheck` attempted; blocked before build by unrelated `packages/angular/src/collapsible/collapsible.spec.ts(79,73): error TS4111: Property 'id' comes from an index signature, so it must be accessed with ['id']`.
+- [x] Typecheck/build: `bun run --cwd packages/angular typecheck` passed: `tsc -p tsconfig.json --noEmit`, `tsc -p tsconfig.spec.json --noEmit`, production package build, and forms isolation check.
 - [x] Component tests: `bun run --cwd packages/angular test:ci field/field.spec.ts` passed: 1 file, 20 tests.
-- [x] Storybook render: `bun run --cwd packages/angular storybook` compiled then failed because `::1:6006` was already in use; retry with `bun run --cwd packages/angular storybook -- --port 6007` compiled the preview but failed on unrelated missing root file `packages/angular/editable/examples/with-trigger.ts`.
-- [x] Manual/visual checks: Compared Angular `fieldExampleStyles` and examples against `.storybook/modules/field.module.css` and React field examples by source inspection; browser visual inspection deferred because Storybook is blocked by the unrelated editable missing-file error above.
+- [x] Storybook render: `bun run --cwd packages/angular storybook -- --port 6007` reached "Storybook ready!" at `http://localhost:6007/`; stopped with Ctrl-C after startup verification.
+- [x] Manual/visual checks: Compared Angular `fieldExampleStyles` and examples against `.storybook/modules/field.module.css` and React field examples by source inspection; live browser story-by-story visual inspection not performed.
 
 ## Commit
 - Hash: `978c4d04f`
