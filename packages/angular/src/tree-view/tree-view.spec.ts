@@ -6,9 +6,24 @@ import {
   ARK_TREE_VIEW_CONTEXT,
   ARK_TREE_VIEW_NODE_CONTEXT,
   ARK_TREE_VIEW_NODE_PROPS_CONTEXT,
+  ArkTreeViewBranch,
+  ArkTreeViewBranchContent,
+  ArkTreeViewBranchControl,
+  ArkTreeViewBranchIndentGuide,
+  ArkTreeViewBranchIndicator,
+  ArkTreeViewBranchText,
+  ArkTreeViewBranchTrigger,
+  ArkTreeViewItem,
+  ArkTreeViewItemIndicator,
+  ArkTreeViewItemText,
+  ArkTreeViewLabel,
+  ArkTreeViewNodeCheckbox,
+  ArkTreeViewNodeCheckboxIndicator,
   ArkTreeViewNodeProvider,
+  ArkTreeViewNodeRenameInput,
   ArkTreeViewRoot,
   ArkTreeViewRootProvider,
+  ArkTreeViewTree,
   createTreeCollection,
   injectArkTreeViewContext,
   injectArkTreeViewNodeContext,
@@ -119,6 +134,21 @@ describe('@ark-ui/angular/tree-view', () => {
     expect(ArkTreeViewRoot).toBeDefined()
     expect(ArkTreeViewRootProvider).toBeDefined()
     expect(ArkTreeViewNodeProvider).toBeDefined()
+    expect(ArkTreeViewTree).toBeDefined()
+    expect(ArkTreeViewLabel).toBeDefined()
+    expect(ArkTreeViewItem).toBeDefined()
+    expect(ArkTreeViewItemText).toBeDefined()
+    expect(ArkTreeViewItemIndicator).toBeDefined()
+    expect(ArkTreeViewBranch).toBeDefined()
+    expect(ArkTreeViewBranchContent).toBeDefined()
+    expect(ArkTreeViewBranchControl).toBeDefined()
+    expect(ArkTreeViewBranchTrigger).toBeDefined()
+    expect(ArkTreeViewBranchText).toBeDefined()
+    expect(ArkTreeViewBranchIndicator).toBeDefined()
+    expect(ArkTreeViewBranchIndentGuide).toBeDefined()
+    expect(ArkTreeViewNodeCheckbox).toBeDefined()
+    expect(ArkTreeViewNodeCheckboxIndicator).toBeDefined()
+    expect(ArkTreeViewNodeRenameInput).toBeDefined()
     expect(undefined as TreeViewPublicTypeSmoke | undefined).toBeUndefined()
   })
 
@@ -347,6 +377,318 @@ describe('@ark-ui/angular/tree-view', () => {
     expect(probe.nodeState().value).toBe('src')
     expect(probe.nodeState().expanded).toBe(true)
     expect(probe.nodeState().selected).toBe(true)
+
+    fixture.destroy()
+  })
+
+  it('part directives apply tree, label, branch, and item props from provider context', () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkTreeViewRoot,
+        ArkTreeViewTree,
+        ArkTreeViewLabel,
+        ArkTreeViewNodeProvider,
+        ArkTreeViewBranch,
+        ArkTreeViewBranchControl,
+        ArkTreeViewBranchTrigger,
+        ArkTreeViewBranchText,
+        ArkTreeViewBranchIndicator,
+        ArkTreeViewBranchContent,
+        ArkTreeViewBranchIndentGuide,
+        ArkTreeViewItem,
+        ArkTreeViewItemText,
+        ArkTreeViewItemIndicator,
+      ],
+      template: `
+        <div
+          arkTreeView
+          [collection]="collection"
+          [defaultExpandedValue]="['src']"
+          [defaultSelectedValue]="['package.json']"
+        >
+          <h3 arkTreeViewLabel>Files</h3>
+          <div arkTreeViewTree>
+            <ng-container arkTreeViewNodeProvider [node]="branch" [indexPath]="[0]">
+              <div arkTreeViewBranch>
+                <div arkTreeViewBranchControl>
+                  <span arkTreeViewBranchIndicator></span>
+                  <span arkTreeViewBranchText>src</span>
+                  <button arkTreeViewBranchTrigger type="button">toggle</button>
+                </div>
+                <div arkTreeViewBranchContent>
+                  <span arkTreeViewBranchIndentGuide></span>
+                </div>
+              </div>
+            </ng-container>
+            <ng-container arkTreeViewNodeProvider [node]="item" [indexPath]="[1]">
+              <div arkTreeViewItem>
+                <span arkTreeViewItemIndicator></span>
+                <span arkTreeViewItemText>package.json</span>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly collection = collection
+      readonly branch = requireNode('src')
+      readonly item = requireNode('package.json')
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const label = fixture.nativeElement.querySelector('[data-part="label"]') as HTMLElement
+    const tree = fixture.nativeElement.querySelector('[data-part="tree"]') as HTMLElement
+    const branch = fixture.nativeElement.querySelector('[data-part="branch"]') as HTMLElement
+    const branchControl = fixture.nativeElement.querySelector('[data-part="branch-control"]') as HTMLElement
+    const branchContent = fixture.nativeElement.querySelector('[data-part="branch-content"]') as HTMLElement
+    const item = fixture.nativeElement.querySelector('[data-part="item"]') as HTMLElement
+    const itemIndicator = fixture.nativeElement.querySelector('[data-part="item-indicator"]') as HTMLElement
+
+    expect(label.id).toBeTruthy()
+    expect(tree.getAttribute('role')).toBe('tree')
+    expect(branch.getAttribute('data-state')).toBe('open')
+    expect(branchControl.getAttribute('data-value')).toBe('src')
+    expect(branchContent.hidden).toBe(false)
+    expect(item.getAttribute('aria-selected')).toBe('true')
+    expect(itemIndicator.hidden).toBe(false)
+
+    fixture.destroy()
+  })
+
+  it('supports explicit node and indexPath inputs without a node provider', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkTreeViewRoot, ArkTreeViewItem, ArkTreeViewItemText],
+      template: `
+        <div arkTreeView [collection]="collection">
+          <div arkTreeViewItem [node]="item" [indexPath]="[1]">
+            <span arkTreeViewItemText [node]="item" [indexPath]="[1]">package.json</span>
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly collection = collection
+      readonly item = requireNode('package.json')
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const item = fixture.nativeElement.querySelector('[data-part="item"]') as HTMLElement
+    const itemText = fixture.nativeElement.querySelector('[data-part="item-text"]') as HTMLElement
+
+    expect(item.getAttribute('data-value')).toBe('package.json')
+    expect(itemText.getAttribute('data-part')).toBe('item-text')
+
+    fixture.destroy()
+  })
+
+  it('toggles branch expansion and content visibility through branch trigger clicks', () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkTreeViewRoot,
+        ArkTreeViewNodeProvider,
+        ArkTreeViewBranch,
+        ArkTreeViewBranchTrigger,
+        ArkTreeViewBranchContent,
+      ],
+      template: `
+        <div arkTreeView [collection]="collection" (expandedValueChange)="expandedValues.push($event)">
+          <ng-container arkTreeViewNodeProvider [node]="branch" [indexPath]="[0]">
+            <div arkTreeViewBranch>
+              <button arkTreeViewBranchTrigger type="button">toggle</button>
+              <div arkTreeViewBranchContent>content</div>
+            </div>
+          </ng-container>
+        </div>
+      `,
+    })
+    class Host {
+      readonly collection = collection
+      readonly branch = requireNode('src')
+      readonly expandedValues: string[][] = []
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const trigger = fixture.nativeElement.querySelector('[data-part="branch-trigger"]') as HTMLButtonElement
+    const content = fixture.nativeElement.querySelector('[data-part="branch-content"]') as HTMLElement
+
+    expect(trigger.getAttribute('data-state')).toBe('closed')
+    expect(content.hidden).toBe(true)
+
+    trigger.click()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.expandedValues).toEqual([['src']])
+    expect(trigger.getAttribute('data-state')).toBe('open')
+    expect(content.hidden).toBe(false)
+
+    trigger.click()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.expandedValues).toEqual([['src'], []])
+    expect(trigger.getAttribute('data-state')).toBe('closed')
+    expect(content.hidden).toBe(true)
+
+    fixture.destroy()
+  })
+
+  it('updates selection and checked state through item and node checkbox parts', () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkTreeViewRoot,
+        ArkTreeViewNodeProvider,
+        ArkTreeViewItem,
+        ArkTreeViewItemIndicator,
+        ArkTreeViewItemText,
+        ArkTreeViewNodeCheckbox,
+        ArkTreeViewNodeCheckboxIndicator,
+      ],
+      template: `
+        <div
+          arkTreeView
+          [collection]="collection"
+          [defaultCheckedValue]="[]"
+          (selectedValueChange)="selectedValues.push($event)"
+          (checkedValueChange)="checkedValues.push($event)"
+        >
+          <ng-container arkTreeViewNodeProvider [node]="item" [indexPath]="[1]">
+            <div arkTreeViewItem>
+              <span arkTreeViewNodeCheckbox>
+                <span arkTreeViewNodeCheckboxIndicator state="checked">checked</span>
+                <span arkTreeViewNodeCheckboxIndicator state="unchecked">unchecked</span>
+              </span>
+              <span arkTreeViewItemIndicator>selected</span>
+              <span arkTreeViewItemText>package.json</span>
+            </div>
+          </ng-container>
+        </div>
+      `,
+    })
+    class Host {
+      readonly collection = collection
+      readonly item = requireNode('package.json')
+      readonly selectedValues: string[][] = []
+      readonly checkedValues: string[][] = []
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const item = fixture.nativeElement.querySelector('[data-part="item"]') as HTMLElement
+    const checkbox = fixture.nativeElement.querySelector('[data-part="node-checkbox"]') as HTMLElement
+    const selectedIndicator = fixture.nativeElement.querySelector('[data-part="item-indicator"]') as HTMLElement
+    const checkedIndicator = fixture.nativeElement.querySelector(
+      '[arkTreeViewNodeCheckboxIndicator][state="checked"]',
+    ) as HTMLElement
+    const uncheckedIndicator = fixture.nativeElement.querySelector(
+      '[arkTreeViewNodeCheckboxIndicator][state="unchecked"]',
+    ) as HTMLElement
+
+    expect(selectedIndicator.hidden).toBe(true)
+    expect(checkbox.getAttribute('aria-checked')).toBe('false')
+    expect(checkedIndicator.hidden).toBe(true)
+    expect(uncheckedIndicator.hidden).toBe(false)
+
+    item.click()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.selectedValues).toEqual([['package.json']])
+    expect(item.getAttribute('aria-selected')).toBe('true')
+    expect(selectedIndicator.hidden).toBe(false)
+
+    checkbox.click()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.checkedValues).toEqual([['package.json']])
+    expect(checkbox.getAttribute('aria-checked')).toBe('true')
+    expect(checkedIndicator.hidden).toBe(false)
+    expect(uncheckedIndicator.hidden).toBe(true)
+
+    fixture.destroy()
+  })
+
+  it('submits rename input changes through node rename input props', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkTreeViewRoot, ArkTreeViewNodeProvider, ArkTreeViewItem, ArkTreeViewNodeRenameInput],
+      template: `
+        <div
+          arkTreeView
+          [collection]="collection"
+          [canRename]="canRename"
+          (renameStart)="renameStarts.push($event.value)"
+          (renameComplete)="renameCompletions.push($event.label)"
+        >
+          <ng-container arkTreeViewNodeProvider [node]="item" [indexPath]="[1]">
+            <div arkTreeViewItem></div>
+            <input arkTreeViewNodeRenameInput />
+          </ng-container>
+        </div>
+      `,
+    })
+    class Host {
+      readonly collection = collection
+      readonly item = requireNode('package.json')
+      readonly canRename = () => true
+      readonly renameStarts: string[] = []
+      readonly renameCompletions: string[] = []
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const root = fixture.debugElement.query(By.directive(ArkTreeViewRoot)).injector.get(ArkTreeViewRoot<Node>)
+    const input = fixture.nativeElement.querySelector('[data-part="node-rename-input"]') as HTMLInputElement
+
+    expect(input.hidden).toBe(true)
+
+    root.api().startRenaming('package.json')
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.renameStarts).toEqual(['package.json'])
+    expect(input.hidden).toBe(false)
+
+    input.value = 'package-lock.json'
+    input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }))
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.renameCompletions).toEqual(['package-lock.json'])
+    expect(input.hidden).toBe(true)
+
+    fixture.destroy()
+  })
+
+  it('throws a contextual error when a node part has no node props source', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkTreeViewRoot, ArkTreeViewItem],
+      template: '<div arkTreeView [collection]="collection"><div arkTreeViewItem></div></div>',
+    })
+    class Host {
+      readonly collection = collection
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+
+    expect(() => fixture.detectChanges()).toThrow(
+      'ArkTreeViewItem requires [node] and [indexPath] inputs or an ancestor [arkTreeViewNodeProvider].',
+    )
 
     fixture.destroy()
   })
