@@ -163,6 +163,7 @@ export function useField(options: UseFieldOptions): UseFieldReturn {
   const getRequiredIndicatorProps = (): ArkProps => ({
     ...fieldParts.requiredIndicator.attrs,
     'aria-hidden': 'true',
+    hidden: !required() || undefined,
   })
 
   return {

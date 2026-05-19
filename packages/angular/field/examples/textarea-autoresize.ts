@@ -4,27 +4,23 @@ import {
   ArkFieldHelperText,
   ArkFieldLabel,
   ArkFieldRoot,
-  ArkFieldSelect,
+  ArkFieldTextarea,
 } from '@ark-ui/angular/field'
 import { fieldExampleStyles } from '../field-example-styles'
 
 @Component({
-  selector: 'field-select-example',
+  selector: 'field-textarea-autoresize-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ArkFieldRoot, ArkFieldLabel, ArkFieldSelect, ArkFieldHelperText, ArkFieldErrorText],
+  imports: [ArkFieldRoot, ArkFieldLabel, ArkFieldTextarea, ArkFieldHelperText, ArkFieldErrorText],
   template: `
     <div arkFieldRoot>
       <label arkFieldLabel>Label</label>
-      <select arkFieldSelect>
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-      </select>
+      <textarea arkFieldTextarea autoresize></textarea>
       <span arkFieldHelperText>Some additional Info</span>
       <span arkFieldErrorText>Error Info</span>
     </div>
   `,
   styles: [fieldExampleStyles],
 })
-export class FieldSelectExample {}
+export class FieldTextareaAutoresizeExample {}
