@@ -83,11 +83,23 @@ export const tooltipExampleStyles = `
   }
 
   .ToolbarButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: 2.25rem;
     height: 2.25rem;
     padding: 0;
     border: none;
+    border-radius: 0.375rem;
     background: transparent;
+    color: var(--demo-neutral-fg, #1c1917);
+    cursor: pointer;
+    transition: background 150ms;
+  }
+
+  .ToolbarButton svg {
+    width: 1rem;
+    height: 1rem;
   }
 
   .ToolbarButton:hover {
