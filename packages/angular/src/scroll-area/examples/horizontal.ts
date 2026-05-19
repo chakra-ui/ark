@@ -24,11 +24,13 @@ import { scrollAreaExampleStyles } from '../scroll-area-example-styles'
   template: `
     <div arkScrollArea class="scroll-area-root" style="height: auto">
       <div arkScrollAreaViewport class="scroll-area-viewport">
-        <div arkScrollAreaContent class="scroll-area-content scroll-area-content--wide">
-          <p class="scroll-area-paragraph">
+        <div arkScrollAreaContent class="scroll-area-content">
+          <p class="scroll-area-paragraph scroll-area-paragraph--wide">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
           </p>
         </div>
       </div>

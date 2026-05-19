@@ -14,6 +14,7 @@ import {
   ARK_SCROLL_AREA_CONTEXT,
   ARK_SCROLL_AREA_SCROLLBAR_CONTEXT,
   ArkScrollAreaContent,
+  ArkScrollAreaContext,
   ArkScrollAreaCorner,
   ArkScrollAreaRoot,
   ArkScrollAreaRootProvider,
@@ -25,6 +26,7 @@ import {
   scrollAreaAnatomy,
   useScrollArea,
   type ScrollAreaApi,
+  type ScrollAreaContextTemplate,
   type ScrollAreaElementIds,
   type ScrollAreaMachine,
   type ScrollAreaMachineProps,
@@ -52,6 +54,7 @@ import { ScrollAreaRootProviderExample } from './examples/root-provider'
 
 type ScrollAreaPublicTypeSmoke = [
   ScrollAreaApi,
+  ScrollAreaContextTemplate,
   ScrollAreaElementIds,
   ScrollAreaMachine,
   ScrollAreaMachineProps,
@@ -111,6 +114,7 @@ describe('@ark-ui/angular/scroll-area', () => {
     expect(ArkScrollAreaRootProvider).toBeDefined()
     expect(ArkScrollAreaViewport).toBeDefined()
     expect(ArkScrollAreaContent).toBeDefined()
+    expect(ArkScrollAreaContext).toBeDefined()
     expect(ArkScrollAreaScrollbar).toBeDefined()
     expect(ArkScrollAreaThumb).toBeDefined()
     expect(ArkScrollAreaCorner).toBeDefined()
@@ -221,6 +225,30 @@ describe('@ark-ui/angular/scroll-area', () => {
 
     expect(vertical.orientation()).toBe('vertical')
     expect(horizontal.orientation()).toBe('horizontal')
+
+    fixture.destroy()
+  })
+
+  it('renders the scroll area context template with the current api signal', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkScrollAreaRoot, ArkScrollAreaContext],
+      template: `
+        <div arkScrollArea id="area">
+          <ng-container *arkScrollAreaContext="let api">
+            <span id="status">{{ api().isAtTop }}</span>
+          </ng-container>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const status = fixture.nativeElement.querySelector('#status') as HTMLElement
+    expect(status.textContent?.trim()).toBe('true')
 
     fixture.destroy()
   })

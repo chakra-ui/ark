@@ -22,7 +22,7 @@ import { scrollAreaExampleStyles } from '../scroll-area-example-styles'
     ArkScrollAreaCorner,
   ],
   template: `
-    <div arkScrollArea class="scroll-area-root">
+    <div arkScrollArea class="scroll-area-root" style="height: 12rem">
       <div arkScrollAreaViewport class="scroll-area-viewport">
         <div arkScrollAreaContent class="scroll-area-content">
           <p class="scroll-area-paragraph">
@@ -33,12 +33,11 @@ import { scrollAreaExampleStyles } from '../scroll-area-example-styles'
             <div arkScrollAreaViewport class="scroll-area-viewport">
               <div arkScrollAreaContent class="scroll-area-content">
                 <p class="scroll-area-paragraph">
-                  This nested region has its own viewport, scrollbar, and thumb context. Duis aute irure dolor in
-                  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                </p>
-                <p class="scroll-area-paragraph">
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                  laborum.
+                  This is a nested scroll area. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                  officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit
+                  voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+                  veritatis et quasi architecto beatae vitae dicta sunt explicabo.
                 </p>
               </div>
             </div>
