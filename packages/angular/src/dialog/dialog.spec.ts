@@ -54,6 +54,7 @@ import { DialogInsideScrollExample } from './examples/inside-scroll'
 import { DialogLazyMountExample } from './examples/lazy-mount'
 import { DialogMultipleTriggersExample } from './examples/multiple-triggers'
 import { DialogNestedExample } from './examples/nested'
+import { DialogOpenFromMenuExample } from './examples/open-from-menu'
 import { DialogOutsideScrollExample } from './examples/outside-scroll'
 import { DialogRapidStateChangeExample } from './examples/rapid-state-change'
 import { DialogRootProviderExample } from './examples/root-provider'
@@ -697,6 +698,7 @@ describe('@ark-ui/angular/dialog', () => {
     [DialogNestedExample],
     [DialogConfirmationExample],
     [DialogRapidStateChangeExample],
+    [DialogOpenFromMenuExample],
   ])('%s mounts without throwing', (Example) => {
     TestBed.configureTestingModule({ imports: [Example] })
     const fixture = TestBed.createComponent(Example)

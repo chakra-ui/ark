@@ -13,6 +13,7 @@ import { DialogLazyMountExample } from './examples/lazy-mount'
 import { DialogMultipleTriggersExample } from './examples/multiple-triggers'
 import { DialogNestedExample } from './examples/nested'
 import { DialogNonModalExample } from './examples/non-modal'
+import { DialogOpenFromMenuExample } from './examples/open-from-menu'
 import { DialogOutsideScrollExample } from './examples/outside-scroll'
 import { DialogRapidStateChangeExample } from './examples/rapid-state-change'
 import { DialogRootProviderExample } from './examples/root-provider'
@@ -81,6 +82,11 @@ export const Nested: StoryObj = {
 export const NonModal: StoryObj = {
   decorators: [moduleMetadata({ imports: [DialogNonModalExample] })],
   render: () => ({ template: '<dialog-non-modal-example />' }),
+}
+
+export const OpenFromMenu: StoryObj = {
+  decorators: [moduleMetadata({ imports: [DialogOpenFromMenuExample] })],
+  render: () => ({ template: '<dialog-open-from-menu-example />' }),
 }
 
 export const OutsideScroll: StoryObj = {
