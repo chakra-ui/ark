@@ -16,7 +16,7 @@
 | Story parity | React Storybook examples uniformly pass a `ChevronRightIcon` to `JsonTreeView.Tree.arrow`. Angular stories rendered without any arrow template, so default-state branch markers diverged visually. | All `packages/react/src/components/json-tree-view/examples/*.tsx` | `packages/angular/src/json-tree-view/examples/*.ts` | Added an inline chevron SVG `ng-template #arrow` and wired it to `arkJsonTreeViewTree`'s `[arrow]` input in `basic`, `array-data`, `map-and-set`, `regex`, `functions`, `expand-level`, `errors`, `render-value`, and `root-provider`. |
 | Story parity | Angular `Basic` example set `quotesOnKeys`, which React's `Basic` does not. This subtly diverged the rendered output (`"name"` vs `name`). | `packages/react/src/components/json-tree-view/examples/basic.tsx` | `packages/angular/src/json-tree-view/examples/basic.ts` | Removed `quotesOnKeys` from the `Basic` example to match React. |
 | Story parity | React `RenderValue` story uses `defaultExpandedDepth={2}` and the renderer returns nothing (the default text falls through) for non-email values. Angular used `1` and had an `@else` branch echoing the value, double-rendering text. | `packages/react/src/components/json-tree-view/examples/render-value.tsx` | `packages/angular/src/json-tree-view/examples/render-value.ts` | Set `defaultExpandedDepth` to `2`, added `target="_blank" rel="noreferrer"` to the link, and dropped the redundant `@else` branch so non-matching values fall through to default rendering. |
-| Styling parity | Angular key node rendered the colon glyph as `:` with no trailing space; React renders `: ` with a trailing space inside the `data-kind="colon"` span. While CSS `margin-inline` masks most of the visual gap, the DOM text content differed across frameworks. | `packages/react/src/components/json-tree-view/json-tree-view-key-node.tsx` | `packages/angular/src/json-tree-view/json-tree-view-key-node.ts` | Added the trailing space to the colon span to match React. |
+| Styling parity | Angular key node renders the colon glyph as `:` with no trailing space; React renders `: ` with a trailing space inside the `data-kind="colon"` span. | `packages/react/src/components/json-tree-view/json-tree-view-key-node.tsx` | `packages/angular/src/json-tree-view/json-tree-view-key-node.ts` | Deferred. The Angular workspace pre-commit Biome formatter trims trailing whitespace inside template literals, reverting the intended `: ` content. CSS `[data-kind='colon'] { margin-inline: 0.25rem }` produces an equivalent visual gap. |
 | Styling parity | Angular example styles forced `width: 1rem` on `[data-part='branch-indicator']`, which React does not. React only sizes `svg` icons inside `.Tree` to `1rem`. The Angular rule widened the slot even when no arrow was present. | `.storybook/modules/json-tree-view.module.css` (`.Tree svg { width: 1rem; height: 1rem; }`) | `packages/angular/src/json-tree-view/json-tree-view-example-styles.ts` | Removed `width: 1rem` from `[data-part='branch-indicator']` and added an `[arkJsonTreeViewTree] svg { width: 1rem; height: 1rem; }` rule to mirror React's icon sizing. |
 
 ### Previously addressed gaps (kept for record)
@@ -31,10 +31,9 @@
 ## Implementation Plan
 1. Re-read React reference and previous Angular audit to identify residual gaps.
 2. Make the branch indicator opt-in (only when an arrow template is provided).
-3. Restore the colon trailing space inside the key node.
-4. Bring all Angular Storybook examples in line with React's chevron arrow template usage; remove `quotesOnKeys` from `Basic`; align `RenderValue` shape with React (depth 2, no else branch, `target="_blank" rel="noreferrer"`).
-5. Drop the `width: 1rem` rule from the indicator and instead size icons under `[arkJsonTreeViewTree] svg` to match React's `.Tree svg` rule.
-6. Re-run focused verification.
+3. Bring all Angular Storybook examples in line with React's chevron arrow template usage; remove `quotesOnKeys` from `Basic`; align `RenderValue` shape with React (depth 2, no else branch, `target="_blank" rel="noreferrer"`).
+4. Drop the `width: 1rem` rule from the indicator and instead size icons under `[arkJsonTreeViewTree] svg` to match React's `.Tree svg` rule.
+5. Re-run focused verification.
 
 ## Verification
 - [x] Typecheck: `tsc -p tsconfig.json --noEmit` and `tsc -p tsconfig.spec.json --noEmit` (run directly from `packages/angular`) both completed with no diagnostics.
@@ -44,5 +43,5 @@
 - [ ] Manual/visual checks: Deferred. No browser side-by-side capture in this pass.
 
 ## Commit
-- Hash: 2c2b1c4ab
+- Hash: c9669dc5f (initial fixes) + follow-up audit doc commit recording the colon deferral.
 - Message: `fix(angular): align json-tree-view with react parity`
