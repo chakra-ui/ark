@@ -37,5 +37,5 @@
 - [ ] Manual/visual checks: Not completed in a browser. Storybook compilation covered the added stories; visual inspection remains deferred.
 
 ## Commit
-- Hash: To be filled after commit.
+- Hash: `3674a0a8d`
 - Message: `fix(angular): align tooltip with react parity`
