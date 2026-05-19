@@ -399,9 +399,18 @@ function collectClassesForComponent(project: Project, componentDir: string): Cla
 
 function resolveComponentDir(rootDir: string, component: string): string {
   const topLevel = path.join(rootDir, 'packages', 'angular', component)
-  if (fs.existsSync(path.join(topLevel, 'public-api.ts'))) return topLevel
   const nested = path.join(rootDir, 'packages', 'angular', 'src', component)
-  if (fs.existsSync(path.join(nested, 'public-api.ts'))) return nested
+
+  const hasTopLevel = fs.existsSync(path.join(topLevel, 'public-api.ts'))
+  const hasNested = fs.existsSync(path.join(nested, 'public-api.ts'))
+
+  if (hasTopLevel && hasNested) {
+    throw new Error(
+      `Angular component "${component}" exists in both packages/angular/${component}/public-api.ts and packages/angular/src/${component}/public-api.ts`,
+    )
+  }
+  if (hasNested) return nested
+  if (hasTopLevel) return topLevel
   throw new Error(`Angular component "${component}" not found in packages/angular/ or packages/angular/src/`)
 }
 
@@ -445,41 +454,30 @@ export async function generateAngularTypeDoc(component: string, rootDir?: string
   return result
 }
 
-async function listAngularComponents(rootDir: string): Promise<string[]> {
+function isAngularComponentDir(componentRoot: string, component: string): boolean {
+  return fs.existsSync(path.join(componentRoot, component, `${component}-root.ts`))
+}
+
+export async function listAngularComponents(rootDir: string): Promise<string[]> {
   const angularRoot = path.join(rootDir, 'packages', 'angular')
   const components = new Set<string>()
 
-  const topLevelDirs = await globby('*/', {
+  const legacyPublicApis = await globby('*/public-api.ts', {
     cwd: angularRoot,
-    onlyDirectories: true,
-    deep: 1,
   })
-  for (const dir of topLevelDirs) {
-    const trimmed = dir.replace(/\/$/, '')
-    if (trimmed === 'src') continue
-    const publicApiPath = path.join(angularRoot, trimmed, 'public-api.ts')
-    if (fs.existsSync(publicApiPath)) {
-      components.add(trimmed)
+  for (const publicApi of legacyPublicApis) {
+    const component = publicApi.split('/')[0]
+    if (component !== 'src' && isAngularComponentDir(angularRoot, component)) {
+      components.add(component)
     }
   }
 
-  // Batch 2 components live at packages/angular/src/<component>. Filter to directories
-  // that have BOTH a public-api.ts and a <component>.anatomy.ts so utility entrypoints
-  // (internal, format, frame, portal, presence, ...) are not treated as components.
   const nestedRoot = path.join(angularRoot, 'src')
-  if (fs.existsSync(nestedRoot)) {
-    const nestedDirs = await globby('*/', {
-      cwd: nestedRoot,
-      onlyDirectories: true,
-      deep: 1,
-    })
-    for (const dir of nestedDirs) {
-      const trimmed = dir.replace(/\/$/, '')
-      const publicApiPath = path.join(nestedRoot, trimmed, 'public-api.ts')
-      const anatomyPath = path.join(nestedRoot, trimmed, `${trimmed}.anatomy.ts`)
-      if (fs.existsSync(publicApiPath) && fs.existsSync(anatomyPath)) {
-        components.add(trimmed)
-      }
+  const nestedPublicApis = fs.existsSync(nestedRoot) ? await globby('*/public-api.ts', { cwd: nestedRoot }) : []
+  for (const publicApi of nestedPublicApis) {
+    const component = publicApi.split('/')[0]
+    if (isAngularComponentDir(nestedRoot, component)) {
+      components.add(component)
     }
   }
 
