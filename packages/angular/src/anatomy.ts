@@ -24,6 +24,7 @@ export { navigationMenuAnatomy } from './navigation-menu/navigation-menu.anatomy
 export { numberInputAnatomy } from '../number-input/number-input.anatomy'
 // Use a relative import so this aggregate stays form-isolation safe.
 export { passwordInputAnatomy } from '../password-input/password-input.anatomy'
+export { paginationAnatomy } from './pagination/pagination.anatomy'
 // Use a relative import so this aggregate stays form-isolation safe.
 export { pinInputAnatomy } from '../pin-input/pin-input.anatomy'
 export { popoverAnatomy } from './popover/popover.anatomy'
