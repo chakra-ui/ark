@@ -102,6 +102,51 @@ class TimeHostComponent {
 
 @Component({
   standalone: true,
+  imports: [ArkFormatByteComponent, ArkFormatNumberComponent, ArkFormatRelativeTimeComponent, ArkFormatTimeComponent],
+  template: `
+    <span data-testid="byte-basic"><ark-format-byte [value]="120000" /></span>
+    <span data-testid="byte-locale"><ark-format-byte [value]="1450.45" locale="de-DE" /></span>
+    <span data-testid="byte-unit"><ark-format-byte [value]="1450.45" unit="bit" /></span>
+    <span data-testid="byte-unit-display">
+      <ark-format-byte [value]="50345.53" unitDisplay="long" />
+    </span>
+    <span data-testid="byte-unit-system"><ark-format-byte [value]="1024" unitSystem="binary" /></span>
+    <span data-testid="number-basic"><ark-format-number [value]="1450.45" /></span>
+    <span data-testid="number-compact">
+      <ark-format-number [value]="1500000" notation="compact" compactDisplay="short" />
+    </span>
+    <span data-testid="number-currency">
+      <ark-format-number [value]="1234.45" [style]="'currency'" currency="USD" />
+    </span>
+    <span data-testid="number-locale"><ark-format-number [value]="1450.45" locale="de-DE" /></span>
+    <span data-testid="number-percentage">
+      <ark-format-number [value]="0.145" [style]="'percent'" [maximumFractionDigits]="2" [minimumFractionDigits]="2" />
+    </span>
+    <span data-testid="number-unit">
+      <ark-format-number [value]="384.4" [style]="'unit'" unit="kilometer" />
+    </span>
+    <span data-testid="relative-basic"><ark-format-relative-time [value]="relativeValue" /></span>
+    <span data-testid="relative-short">
+      <ark-format-relative-time [value]="relativeValue" [style]="'short'" />
+    </span>
+    <span data-testid="time-basic"><ark-format-time value="18:47:12" format="12h" /></span>
+    <span data-testid="time-am-pm">
+      <ark-format-time value="17:15:00" format="12h" amLabel="morning" pmLabel="evening" />
+    </span>
+    <span data-testid="time-date"><ark-format-time [value]="timeValue" /></span>
+    <span data-testid="time-locale"><ark-format-time value="13:05" format="12h" locale="ar-EG" /></span>
+    <span data-testid="time-seconds">
+      <ark-format-time value="03:07:19" format="12h" [withSeconds]="true" />
+    </span>
+  `,
+})
+class FormatExamplesHostComponent {
+  readonly relativeValue = new Date('2025-05-05')
+  readonly timeValue = new Date(2026, 1, 27, 18, 45, 34)
+}
+
+@Component({
+  standalone: true,
   imports: [ArkFormatNumberComponent],
   template: `
     <ark-format-number [value]="value"></ark-format-number>
@@ -245,4 +290,65 @@ describe('ArkFormatComponents', () => {
 
     fixture.destroy()
   })
+
+  it('renders deterministic text for every format option covered by the examples', () => {
+    TestBed.configureTestingModule({ imports: [FormatExamplesHostComponent] })
+    const fixture = TestBed.createComponent(FormatExamplesHostComponent)
+    fixture.detectChanges()
+
+    expect(text(fixture.nativeElement, 'byte-basic')).toBe(
+      formatBytes(120000, 'en-US', { unit: 'byte', unitDisplay: 'short' }),
+    )
+    expect(text(fixture.nativeElement, 'byte-locale')).toBe(
+      formatBytes(1450.45, 'de-DE', { unit: 'byte', unitDisplay: 'short' }),
+    )
+    expect(text(fixture.nativeElement, 'byte-unit')).toBe(
+      formatBytes(1450.45, 'en-US', { unit: 'bit', unitDisplay: 'short' }),
+    )
+    expect(text(fixture.nativeElement, 'byte-unit-display')).toBe(
+      formatBytes(50345.53, 'en-US', { unit: 'byte', unitDisplay: 'long' }),
+    )
+    expect(text(fixture.nativeElement, 'byte-unit-system')).toBe(
+      formatBytes(1024, 'en-US', { unit: 'byte', unitDisplay: 'short', unitSystem: 'binary' }),
+    )
+    expect(text(fixture.nativeElement, 'number-basic')).toBe(new Intl.NumberFormat('en-US').format(1450.45))
+    expect(text(fixture.nativeElement, 'number-compact')).toBe(
+      new Intl.NumberFormat('en-US', { notation: 'compact', compactDisplay: 'short' }).format(1500000),
+    )
+    expect(text(fixture.nativeElement, 'number-currency')).toBe(
+      new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(1234.45),
+    )
+    expect(text(fixture.nativeElement, 'number-locale')).toBe(new Intl.NumberFormat('de-DE').format(1450.45))
+    expect(text(fixture.nativeElement, 'number-percentage')).toBe(
+      new Intl.NumberFormat('en-US', {
+        style: 'percent',
+        maximumFractionDigits: 2,
+        minimumFractionDigits: 2,
+      }).format(0.145),
+    )
+    expect(text(fixture.nativeElement, 'number-unit')).toBe(
+      new Intl.NumberFormat('en-US', { style: 'unit', unit: 'kilometer' }).format(384.4),
+    )
+    expect(text(fixture.nativeElement, 'relative-basic')).toBe(
+      formatRelativeTime(fixture.componentInstance.relativeValue, 'en-US'),
+    )
+    expect(text(fixture.nativeElement, 'relative-short')).toBe(
+      formatRelativeTime(fixture.componentInstance.relativeValue, 'en-US', { style: 'short' }),
+    )
+    expect(text(fixture.nativeElement, 'time-basic')).toBe(formatTime('18:47:12', 'en-US', { format: '12h' }))
+    expect(text(fixture.nativeElement, 'time-am-pm')).toBe(
+      formatTime('17:15:00', 'en-US', { format: '12h', amLabel: 'morning', pmLabel: 'evening' }),
+    )
+    expect(text(fixture.nativeElement, 'time-date')).toBe(formatTime(fixture.componentInstance.timeValue, 'en-US', {}))
+    expect(text(fixture.nativeElement, 'time-locale')).toBe(formatTime('13:05', 'ar-EG', { format: '12h' }))
+    expect(text(fixture.nativeElement, 'time-seconds')).toBe(
+      formatTime('03:07:19', 'en-US', { format: '12h', withSeconds: true }),
+    )
+
+    fixture.destroy()
+  })
 })
+
+function text(root: HTMLElement, testId: string): string {
+  return root.querySelector(`[data-testid="${testId}"]`)?.textContent?.trim() ?? ''
+}
