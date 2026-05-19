@@ -39,5 +39,5 @@
 - [x] Diff check: `git diff --check -- packages/angular/src/drawer docs/audit/drawer.md` passed.
 
 ## Commit
-- Hash: <pending>
+- Hash: `99a719264`
 - Message: `fix(angular): align drawer with react parity`
