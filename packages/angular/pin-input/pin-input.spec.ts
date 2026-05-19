@@ -22,7 +22,7 @@ import {
   type UsePinInputProps,
   type UsePinInputReturn,
 } from '@ark-ui/angular/pin-input'
-import { ArkFieldRoot } from '@ark-ui/angular/field'
+import { ArkFieldHelperText, ArkFieldRoot } from '@ark-ui/angular/field'
 
 type PinInputPublicTypeSmoke = [
   PinInputApi,
@@ -417,6 +417,44 @@ describe('@ark-ui/angular/pin-input', () => {
 
     const root = fixture.debugElement.query(By.directive(ArkPinInputRoot)).injector.get(ArkPinInputRoot)
     expect((root.api().getInputProps({ index: 0 }) as { disabled?: boolean }).disabled).toBe(true)
+
+    fixture.destroy()
+  })
+
+  it('forwards field helper text id to the hidden input via aria-describedby', () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkFieldRoot,
+        ArkFieldHelperText,
+        ArkPinInputRoot,
+        ArkPinInputControl,
+        ArkPinInputInput,
+        ArkPinInputHiddenInput,
+      ],
+      template: `
+        <div arkFieldRoot>
+          <div arkPinInputRoot>
+            <div arkPinInputControl>
+              <input arkPinInputInput [index]="0" />
+            </div>
+            <input arkPinInputHiddenInput />
+          </div>
+          <span arkFieldHelperText>Additional info</span>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+
+    const hidden = fixture.debugElement.query(By.directive(ArkPinInputHiddenInput)).nativeElement as HTMLInputElement
+    const describedBy = hidden.getAttribute('aria-describedby')
+    expect(describedBy).toBeTruthy()
+    expect(describedBy).toContain('helper-text')
 
     fixture.destroy()
   })

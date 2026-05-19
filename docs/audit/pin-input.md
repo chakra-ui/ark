@@ -6,31 +6,36 @@
 - Storybook/style files: `packages/angular/pin-input/pin-input.stories.ts`, `packages/angular/pin-input/examples/`, `packages/angular/pin-input/pin-input-example-styles.ts`, `.storybook/modules/pin-input.module.css`
 
 ## Summary
-- Status: Fixed and verified.
-- Highest-risk gaps: Angular root did not expose the React `onValueComplete` callback as a `(valueComplete)` output, root-provider child inputs did not register slot count through the same Angular path as root child inputs, and Angular Storybook missed React's `BlurOnComplete`, `CustomPlaceholder`, and `Mask` examples.
+- Status: Re-audited; one new parity gap fixed.
+- Previously closed (prior pass): Root `(valueComplete)` output, root-provider count registrar wiring, missing `BlurOnComplete`/`CustomPlaceholder`/`Mask` stories, OTP story rename to `OTPMode`, demo styling alignment, and behavior specs for value-complete / OTP autocomplete / placeholder / mask / root-provider count.
+- New gap closed this pass: Hidden input did not propagate `field.ariaDescribedby` to its host element, while React's `PinInputHiddenInput` spreads `aria-describedby={field?.ariaDescribedby}` from the surrounding `Field` context. Without this, helper/error text ids were not announced for users of `[(ngModel)]`/`formControl`-driven hidden inputs nested in `arkFieldRoot`.
 
 ## Gap Matrix
 | Area | Gap | React reference | Angular location | Fix |
 | --- | --- | --- | --- | --- |
-| Public API parity | React root accepts `onValueComplete`; Angular only marked the CVA touched and exposed no `(valueComplete)` output. | `packages/react/src/components/pin-input/pin-input-root.tsx`, `packages/react/src/components/pin-input/tests/pin-input.test.tsx` | `packages/angular/pin-input/pin-input-root.ts` | Add `valueComplete` output that emits `PinInputValueChangeDetails` from Zag's `onValueComplete`, preserving CVA touched behavior. |
-| Functionality parity | Root-provider children could not register input indices with the parent count registrar, so Angular root-provider examples relied on Zag DOM counting after construction instead of the explicit slot-count path used by `ArkPinInputRoot`. | `packages/react/src/components/pin-input/examples/root-provider.tsx` | `packages/angular/pin-input/pin-input-root-provider.ts`, `packages/angular/pin-input/pin-input-input.ts` | Provide `ARK_PIN_INPUT_COUNT_REGISTRAR` from `ArkPinInputRootProvider` and update its machine context count from registered indices. |
-| Story parity | Missing React stories: `BlurOnComplete`, `CustomPlaceholder`, and `Mask`; OTP story name differed from React's `OTPMode`. | `packages/react/src/components/pin-input/pin-input.stories.tsx`, `packages/react/src/components/pin-input/examples/` | `packages/angular/pin-input/pin-input.stories.ts`, `packages/angular/pin-input/examples/` | Add the three examples and stories, and export the OTP story as `OTPMode`. Keep Angular's controlled story as an Angular-specific additional coverage story. |
-| Storybook styling parity | Angular example styles used smaller inputs, tighter gaps, different border tokens, and lacked placeholder, disabled, and invalid selectors present in React demo CSS. | `.storybook/modules/pin-input.module.css` | `packages/angular/pin-input/pin-input-example-styles.ts` | Align root/control/input sizing, focus, placeholder, disabled, and invalid selectors with React's CSS module using Angular attribute selectors. |
-| Test parity | React tests cover `onValueComplete`, OTP autocomplete, placeholder/mask behavior indirectly through examples, and root-provider focus. Angular tests lacked `(valueComplete)` and root-provider count coverage. | `packages/react/src/components/pin-input/tests/pin-input.test.tsx` | `packages/angular/pin-input/pin-input.spec.ts` | Add component specs for `(valueComplete)`, OTP autocomplete, placeholder/mask props, and root-provider count/focus behavior. |
+| Public API parity (prior pass) | React root accepts `onValueComplete`; Angular only marked CVA touched and exposed no `(valueComplete)` output. | `packages/react/src/components/pin-input/pin-input-root.tsx` | `packages/angular/pin-input/pin-input-root.ts` | Added `valueComplete` output emitting `PinInputValueChangeDetails`, preserving CVA touched behavior. (Resolved previously.) |
+| Functionality parity (prior pass) | Root-provider children could not register input indices with the parent count registrar. | `packages/react/src/components/pin-input/examples/root-provider.tsx` | `packages/angular/pin-input/pin-input-root-provider.ts`, `pin-input-input.ts` | Provided `ARK_PIN_INPUT_COUNT_REGISTRAR` from `ArkPinInputRootProvider`. (Resolved previously.) |
+| Story parity (prior pass) | Missing `BlurOnComplete`, `CustomPlaceholder`, `Mask` stories; OTP story name differed. | `packages/react/src/components/pin-input/pin-input.stories.tsx` | `packages/angular/pin-input/pin-input.stories.ts`, `examples/` | Added the three stories and exported `OTPMode`. (Resolved previously.) |
+| Storybook styling parity (prior pass) | Angular example styles diverged from React CSS. | `.storybook/modules/pin-input.module.css` | `packages/angular/pin-input/pin-input-example-styles.ts` | Aligned sizing, focus, placeholder, disabled, invalid selectors. (Resolved previously.) |
+| Test parity (prior pass) | Missing coverage for `valueComplete`, OTP autocomplete, placeholder/mask, and root-provider count/focus. | `packages/react/src/components/pin-input/tests/pin-input.test.tsx` | `packages/angular/pin-input/pin-input.spec.ts` | Added specs for those areas. (Resolved previously.) |
+| Accessibility parity (this pass) | Angular `ArkPinInputHiddenInput` did not forward `field.ariaDescribedby`. React's `PinInputHiddenInput` spreads `aria-describedby={field?.ariaDescribedby}` so helper/error text ids reach assistive tech. | `packages/react/src/components/pin-input/pin-input-hidden-input.tsx` | `packages/angular/pin-input/pin-input-hidden-input.ts` | Inject the optional `ArkField` context and merge `'aria-describedby': field?.ariaDescribedby()` into the hidden-input prop bag (same pattern used by `tags-input`/`file-upload`/`signature-pad` hidden inputs). |
+| Test parity (this pass) | No regression coverage for the hidden input picking up `field.ariaDescribedby`. | `packages/react/src/components/pin-input/tests/pin-input.test.tsx` (`PinInput / Field` group) | `packages/angular/pin-input/pin-input.spec.ts` | Added a spec that mounts `arkFieldRoot` + `arkFieldHelperText` around the pin input and asserts the hidden input's `aria-describedby` contains the field's `helper-text` id. |
 
 ## Implementation Plan
-1. Add `(valueComplete)` output to `ArkPinInputRoot`.
-2. Make `ArkPinInputRootProvider` implement the pin-input count registrar and provide it to child inputs.
-3. Add missing Angular examples/stories for blur-on-complete, custom-placeholder, and mask; align OTP story export name.
-4. Align Angular Storybook styles with the React `pin-input.module.css` selectors.
-5. Add focused Angular specs for the closed gaps.
+1. Update `ArkPinInputHiddenInput` to inject the optional field context and merge `'aria-describedby'` from `field.ariaDescribedby()` into the applied prop bag.
+2. Add a spec verifying the hidden input receives `aria-describedby` from a surrounding `arkFieldRoot` with `arkFieldHelperText`.
+3. Re-run typecheck/build and the focused pin-input spec.
 
 ## Verification
-- [x] Typecheck/build: `bun run --cwd packages/angular typecheck` passed. This ran `tsc -p tsconfig.json --noEmit`, `tsc -p tsconfig.spec.json --noEmit`, production `ng build @ark-ui/angular`, and `scripts/check-forms-isolation.ts`.
-- [x] Component tests: `bun run --cwd packages/angular test:ci pin-input/pin-input.spec.ts` passed with 13 tests.
-- [x] Storybook render: `bun run --cwd packages/angular storybook` started successfully on port 6007 after port 6006 was occupied; webpack compiled to 100% with existing unused-compilation warnings, then the dev server was interrupted.
-- [x] Manual/visual checks: Compared `.storybook/modules/pin-input.module.css` against `packages/angular/pin-input/pin-input-example-styles.ts`; Angular examples now cover Basic, BlurOnComplete, CustomPlaceholder, OTPMode, RootProvider, WithField, Mask, plus an Angular-only Controlled story.
+- [x] Typecheck/build: `bun run --cwd packages/angular typecheck` passed (`tsc -p tsconfig.json --noEmit`, `tsc -p tsconfig.spec.json --noEmit`, production `ng build @ark-ui/angular`, and `scripts/check-forms-isolation.ts` all succeeded).
+- [x] Component tests: `bun run --cwd packages/angular test:ci pin-input/pin-input.spec.ts` passed with 14 tests (13 prior + the new aria-describedby test).
+- [x] Storybook render: Not re-run this pass; storybook startup was verified in the prior audit pass and only Angular files for pin-input changed in this pass (no story/example changes).
+- [x] Manual/visual checks: Re-read React `pin-input-hidden-input.tsx` to confirm the `aria-describedby` forward pattern; compared to neighboring Angular hidden inputs (`tags-input-hidden-input`, `file-upload-hidden-input`, `signature-pad-hidden-input`, `date-input-hidden-input`, `color-picker-hidden-input`) for the same wiring shape.
+
+## Deferred / Notes
+- Angular keeps an additional `Controlled` story not in the React stories file. It mirrors the existing React example pattern for controlled state on other components and is retained as Angular-specific coverage. No change.
+- Angular's `usePinInput` composes a colon-free `safeRootId` to satisfy jsdom selector parsers when ids contain double-colon separators. This is an intentional Angular-side hardening — React's React-DOM environment does not need it. No change.
 
 ## Commit
-- Hash: See commit metadata.
+- Hash: See commit metadata after commit.
 - Message: `fix(angular): align pin-input with react parity`
