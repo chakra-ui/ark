@@ -34,5 +34,5 @@
 - [ ] Manual/visual checks: Not run in browser; CSS was diffed against `.storybook/modules/floating-panel.module.css` and matches by selector and rule.
 
 ## Commit
-- Hash: 2cf1f250d
+- Hash: b548bcbfa
 - Message: `fix(angular): align floating-panel with react parity`
