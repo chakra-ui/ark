@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { ArkPropsDirective } from '@ark-ui/angular'
 import {
   ArkFieldErrorText,
   ArkFieldHelperText,
@@ -7,6 +6,7 @@ import {
   ArkFieldRootProvider,
   useField,
 } from '@ark-ui/angular/field'
+import { ArkPropsDirective } from '../../src/ark-props'
 import { fieldExampleStyles } from '../field-example-styles'
 
 @Component({

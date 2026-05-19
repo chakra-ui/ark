@@ -47,6 +47,7 @@ type ListboxPublicTypeSmoke = [
 interface Country {
   label: string
   value: string
+  disabled?: boolean
 }
 
 const makeCollection = (): ListCollection<Country> =>

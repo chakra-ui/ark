@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { provideArkLocale } from '@ark-ui/angular/providers/locale'
+import { provideArkLocale } from '../../providers/locale/locale'
 import {
   ArkDateInputControl,
   ArkDateInputHiddenInput,
