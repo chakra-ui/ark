@@ -55,5 +55,5 @@
 
 ## Commit
 
-- Hash:
+- Hash: `02fc46dc1`
 - Message: `fix(angular): align pagination with react parity`
