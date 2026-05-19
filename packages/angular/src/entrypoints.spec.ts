@@ -25,21 +25,19 @@ const batch4Entrypoints = [
 ] as const
 
 const batch5Entrypoints = [
-  ['accordion', './accordion/public-api'],
-  ['tabs', './tabs/public-api'],
-  ['pagination', './pagination/public-api'],
-  ['steps', './steps/public-api'],
-  ['splitter', './splitter/public-api'],
-  ['carousel', './carousel/public-api'],
-  ['scroll-area', './scroll-area/public-api'],
-  ['floating-panel', './floating-panel/public-api'],
-  ['marquee', './marquee/public-api'],
-  ['tour', './tour/public-api'],
-  ['timer', './timer/public-api'],
-  ['toast', './toast/public-api'],
+  ['accordion', () => import('./accordion/public-api')],
+  ['tabs', () => import('./tabs/public-api')],
+  ['pagination', () => import('./pagination/public-api')],
+  ['steps', () => import('./steps/public-api')],
+  ['splitter', () => import('./splitter/public-api')],
+  ['carousel', () => import('./carousel/public-api')],
+  ['scroll-area', () => import('./scroll-area/public-api')],
+  ['floating-panel', () => import('./floating-panel/public-api')],
+  ['marquee', () => import('./marquee/public-api')],
+  ['tour', () => import('./tour/public-api')],
+  ['timer', () => import('./timer/public-api')],
+  ['toast', () => import('./toast/public-api')],
 ] as const
-
-const loadBatch5Entrypoint = (specifier: string) => import(/* @vite-ignore */ specifier)
 
 const pendingSourceEntrypoints = new Set(
   [...batch4Entrypoints, ...batch5Entrypoints].map(([name]) => normalize(`src/${name}/public-api.ts`)),
@@ -95,8 +93,8 @@ describe('phase 2 entrypoint scaffolding', () => {
 })
 
 describe('Batch 5 entrypoint scaffolding', () => {
-  it.each(batch5Entrypoints)('%s resolves', async (_name, specifier) => {
-    await expect(loadBatch5Entrypoint(specifier)).resolves.toBeDefined()
+  it.each(batch5Entrypoints)('%s resolves', async (_name, load) => {
+    await expect(load()).resolves.toBeDefined()
   })
 })
 

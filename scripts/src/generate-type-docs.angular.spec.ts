@@ -146,6 +146,36 @@ describe('Angular type-doc generator (Accordion)', () => {
   })
 })
 
+describe('Angular type-doc generator (Batch 5)', () => {
+  const cases = [
+    ['carousel', 'Root'],
+    ['floating-panel', 'Root'],
+    ['marquee', 'Root'],
+    ['pagination', 'Root'],
+    ['scroll-area', 'Root'],
+    ['splitter', 'Root'],
+    ['steps', 'Root'],
+    ['tabs', 'Root'],
+    ['timer', 'Root'],
+    ['toast', 'Toaster'],
+    ['tour', 'Root'],
+  ] as const
+
+  it.each(cases)('extracts the %s %s API surface', async (component, part) => {
+    const doc = await generateAngularTypeDoc(component, rootDir)
+    expect(doc[part]).toBeDefined()
+  })
+
+  it('extracts Tour.stepId as a controlled model channel', async () => {
+    const doc = await generateAngularTypeDoc('tour', rootDir)
+    expect(doc['Root'].props['stepId']).toMatchObject({
+      kind: 'model',
+      isRequired: false,
+      type: 'null | string',
+    })
+  })
+})
+
 describe('Angular type-doc generator (Avatar)', () => {
   const doc = generateAngularTypeDoc('avatar', rootDir)
 
