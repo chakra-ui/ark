@@ -39,5 +39,5 @@
 - `RootProvider` story toggle: Angular keeps the demo-only "Toggle Disabled" button because it exercises root-provider signal propagation (and the matching spec) without changing the public component API.
 
 ## Commit
-- Hash: 9b9b0e5b1
+- Hash: 9e88c878c
 - Message: `fix(angular): align fieldset with react parity`
