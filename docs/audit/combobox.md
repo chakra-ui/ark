@@ -37,5 +37,5 @@
 - [ ] Manual/visual checks: Deferred for the four stories that require unshipped Angular helpers (`HighlightMatchingText`, `RehydrateValue`/`Creatable`, `AsyncSearch`, `Virtualized`) and the React `Context` render-prop demo.
 
 ## Commit
-- Hash: 67f3aa31a
+- Hash: 7b3d6582e
 - Message: `fix(angular): align combobox with react parity`
