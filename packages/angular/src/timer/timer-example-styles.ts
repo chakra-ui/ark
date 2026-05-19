@@ -1,8 +1,9 @@
 export const timerExampleStyles = `
   .timer-root {
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
-    gap: 12px;
+    align-items: flex-start;
+    gap: 1rem;
     color: #111827;
   }
 
@@ -14,42 +15,34 @@ export const timerExampleStyles = `
 
   .timer-area {
     display: flex;
-    align-items: end;
-    gap: 8px;
-    font-variant-numeric: tabular-nums;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .timer-item-group {
-    display: grid;
-    justify-items: center;
-    gap: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
   }
 
   .timer-item {
-    display: inline-flex;
-    min-width: 44px;
-    height: 44px;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    background: #ffffff;
+    min-width: 2ch;
     color: #111827;
-    font-size: 20px;
+    font-size: 1.5rem;
     font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
   }
 
   .timer-label {
     color: #4b5563;
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 
   .timer-separator {
-    display: inline-flex;
-    height: 44px;
-    align-items: center;
     color: #4b5563;
-    font-size: 20px;
+    font-size: 1.5rem;
     font-weight: 600;
   }
 

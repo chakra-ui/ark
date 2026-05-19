@@ -23,14 +23,14 @@ export const Countdown: StoryObj = {
   render: () => ({ template: '<timer-countdown-example />' }),
 }
 
-export const Events: StoryObj = {
-  decorators: [moduleMetadata({ imports: [TimerEventsExample] })],
-  render: () => ({ template: '<timer-events-example />' }),
-}
-
 export const Interval: StoryObj = {
   decorators: [moduleMetadata({ imports: [TimerIntervalExample] })],
   render: () => ({ template: '<timer-interval-example />' }),
+}
+
+export const Events: StoryObj = {
+  decorators: [moduleMetadata({ imports: [TimerEventsExample] })],
+  render: () => ({ template: '<timer-events-example />' }),
 }
 
 export const Pomodoro: StoryObj = {
