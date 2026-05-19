@@ -4,13 +4,11 @@ import {
   ElementRef,
   Renderer2,
   booleanAttribute,
-  computed,
   forwardRef,
   inject,
   input,
   type InputSignal,
   type InputSignalWithTransform,
-  type Signal,
 } from '@angular/core'
 import type { CollectionItem } from '@zag-js/collection'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
@@ -36,13 +34,11 @@ export class ArkListboxItem<T extends CollectionItem = CollectionItem> implement
 
   constructor() {
     const context = injectArkListboxContext<T>()
-    const itemSignal: Signal<T> = computed(() => this.item())
-    const hoverSignal: Signal<boolean | undefined> = computed(() => this.highlightOnHover())
     applyArkProps({
       elementRef: inject(ElementRef),
       renderer: inject(Renderer2),
       destroyRef: inject(DestroyRef),
-      props: () => context.api().getItemProps({ item: itemSignal(), highlightOnHover: hoverSignal() }),
+      props: () => context.api().getItemProps({ item: this.item(), highlightOnHover: this.highlightOnHover() }),
     })
   }
 }

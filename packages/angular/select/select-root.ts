@@ -130,11 +130,10 @@ export class ArkSelectRoot<T extends CollectionItem = CollectionItem>
   readonly select: OutputEmitterRef<SelectSelectionDetails> = output<SelectSelectionDetails>()
 
   private readonly _disabledFromForm = signal(false)
-  private _pendingInternalWrites = 0
-  private _pendingOpenWrites = 0
-  private _pendingHighlightWrites = 0
-  private _hasExternalBinding = false
   private readonly _fallbackCollection = new ListCollection<T>({ items: [] })
+  private _pendingInternalWrites = 0
+  private _hasExternalBinding = false
+  private _hasReceivedFormWrite = false
 
   private readCollection(): ListCollection<T> {
     try {
@@ -189,14 +188,12 @@ export class ArkSelectRoot<T extends CollectionItem = CollectionItem>
       onHighlightChange: (details: SelectHighlightChangeDetails<T>) => {
         const next = details.highlightedValue
         if (this.highlightedValue() !== next) {
-          this._pendingHighlightWrites++
           this.highlightedValue.set(next)
         }
         this.highlightChange.emit(details)
       },
       onOpenChange: (details: SelectOpenChangeDetails) => {
         if (this.open() !== details.open) {
-          this._pendingOpenWrites++
           this.open.set(details.open)
         }
         this.openChange.emit(details)
@@ -230,6 +227,7 @@ export class ArkSelectRoot<T extends CollectionItem = CollectionItem>
       void this.value()
       if (firstRunValue) {
         firstRunValue = false
+        this._pendingInternalWrites = 0
         return
       }
       if (this._pendingInternalWrites > 0) {
@@ -237,30 +235,6 @@ export class ArkSelectRoot<T extends CollectionItem = CollectionItem>
         return
       }
       this._hasExternalBinding = true
-    })
-
-    let firstRunOpen = true
-    effect(() => {
-      void this.open()
-      if (firstRunOpen) {
-        firstRunOpen = false
-        return
-      }
-      if (this._pendingOpenWrites > 0) {
-        this._pendingOpenWrites--
-      }
-    })
-
-    let firstRunHighlight = true
-    effect(() => {
-      void this.highlightedValue()
-      if (firstRunHighlight) {
-        firstRunHighlight = false
-        return
-      }
-      if (this._pendingHighlightWrites > 0) {
-        this._pendingHighlightWrites--
-      }
     })
 
     applyArkProps({
@@ -273,9 +247,10 @@ export class ArkSelectRoot<T extends CollectionItem = CollectionItem>
 
   writeValue(value: string[] | null): void {
     const next = value === null ? undefined : value
-    if (this.value() !== undefined) {
+    if (!this._hasReceivedFormWrite && this.value() !== undefined) {
       this._hasExternalBinding = true
     }
+    this._hasReceivedFormWrite = true
     if (!arraysShallowEqual(this.value(), next)) {
       this._pendingInternalWrites++
     }

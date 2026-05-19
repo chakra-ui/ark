@@ -1,6 +1,12 @@
 {
   "Root": {
     "props": {
+      "collection": {
+        "type": "ListCollection<T>",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The item collection."
+      },
       "autoComplete": {
         "type": "string",
         "isRequired": false,
@@ -12,12 +18,6 @@
         "isRequired": false,
         "kind": "input",
         "description": "Whether the select should close after an item is selected."
-      },
-      "collection": {
-        "type": "ListCollection<T>",
-        "isRequired": true,
-        "kind": "required-input",
-        "description": "The item collection."
       },
       "composite": {
         "type": "boolean",

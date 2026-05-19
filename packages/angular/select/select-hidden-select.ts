@@ -30,11 +30,17 @@ export class ArkSelectHiddenSelect {
       },
     })
 
+    let previousSignature = ''
     effect(() => {
       const select = elementRef.nativeElement
       const api = context.api()
       const collection = api.collection
       const value = api.value
+      const signature = `${value.join('\u0000')}::${collection.items
+        .map((item) => `${collection.getItemValue(item) ?? ''}:${collection.getItemDisabled(item) ? '1' : '0'}`)
+        .join('\u0001')}`
+      if (signature === previousSignature) return
+      previousSignature = signature
       while (select.firstChild) {
         renderer.removeChild(select, select.firstChild)
       }
@@ -52,7 +58,6 @@ export class ArkSelectHiddenSelect {
         }
         if (value.includes(itemValue)) {
           renderer.setAttribute(opt, 'selected', '')
-          ;(opt as HTMLOptionElement).selected = true
         }
         const text = renderer.createText(String(collection.stringifyItem(item) ?? ''))
         renderer.appendChild(opt, text)

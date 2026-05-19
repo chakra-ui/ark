@@ -176,12 +176,10 @@ export class ArkComboboxRoot<T extends CollectionItem = CollectionItem>
   readonly select: OutputEmitterRef<ComboboxSelectionDetails> = output<ComboboxSelectionDetails>()
 
   private readonly _disabledFromForm = signal(false)
-  private _pendingInternalWrites = 0
-  private _pendingOpenWrites = 0
-  private _pendingHighlightWrites = 0
-  private _pendingInputValueWrites = 0
-  private _hasExternalBinding = false
   private readonly _fallbackCollection = new ListCollection<T>({ items: [] })
+  private _pendingInternalWrites = 0
+  private _hasExternalBinding = false
+  private _hasReceivedFormWrite = false
 
   private readCollection(): ListCollection<T> {
     try {
@@ -246,7 +244,6 @@ export class ArkComboboxRoot<T extends CollectionItem = CollectionItem>
       },
       onInputValueChange: (details: ComboboxInputValueChangeDetails) => {
         if (this.inputValue() !== details.inputValue) {
-          this._pendingInputValueWrites++
           this.inputValue.set(details.inputValue)
         }
         this.inputValueChange.emit(details)
@@ -254,14 +251,12 @@ export class ArkComboboxRoot<T extends CollectionItem = CollectionItem>
       onHighlightChange: (details: ComboboxHighlightChangeDetails<T>) => {
         const next = details.highlightedValue
         if (this.highlightedValue() !== next) {
-          this._pendingHighlightWrites++
           this.highlightedValue.set(next)
         }
         this.highlightChange.emit(details)
       },
       onOpenChange: (details: ComboboxOpenChangeDetails) => {
         if (this.open() !== details.open) {
-          this._pendingOpenWrites++
           this.open.set(details.open)
         }
         this.openChange.emit(details)
@@ -295,6 +290,7 @@ export class ArkComboboxRoot<T extends CollectionItem = CollectionItem>
       void this.value()
       if (firstRunValue) {
         firstRunValue = false
+        this._pendingInternalWrites = 0
         return
       }
       if (this._pendingInternalWrites > 0) {
@@ -302,42 +298,6 @@ export class ArkComboboxRoot<T extends CollectionItem = CollectionItem>
         return
       }
       this._hasExternalBinding = true
-    })
-
-    let firstRunOpen = true
-    effect(() => {
-      void this.open()
-      if (firstRunOpen) {
-        firstRunOpen = false
-        return
-      }
-      if (this._pendingOpenWrites > 0) {
-        this._pendingOpenWrites--
-      }
-    })
-
-    let firstRunHighlight = true
-    effect(() => {
-      void this.highlightedValue()
-      if (firstRunHighlight) {
-        firstRunHighlight = false
-        return
-      }
-      if (this._pendingHighlightWrites > 0) {
-        this._pendingHighlightWrites--
-      }
-    })
-
-    let firstRunInputValue = true
-    effect(() => {
-      void this.inputValue()
-      if (firstRunInputValue) {
-        firstRunInputValue = false
-        return
-      }
-      if (this._pendingInputValueWrites > 0) {
-        this._pendingInputValueWrites--
-      }
     })
 
     applyArkProps({
@@ -350,9 +310,10 @@ export class ArkComboboxRoot<T extends CollectionItem = CollectionItem>
 
   writeValue(value: string[] | null): void {
     const next = value === null ? undefined : value
-    if (this.value() !== undefined) {
+    if (!this._hasReceivedFormWrite && this.value() !== undefined) {
       this._hasExternalBinding = true
     }
+    this._hasReceivedFormWrite = true
     if (!arraysShallowEqual(this.value(), next)) {
       this._pendingInternalWrites++
     }

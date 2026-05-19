@@ -5,7 +5,6 @@ import {
   ElementRef,
   Renderer2,
   booleanAttribute,
-  effect,
   forwardRef,
   inject,
   input,
@@ -87,9 +86,6 @@ export class ArkListboxRoot<T extends CollectionItem = CollectionItem> implement
     output<ListboxHighlightChangeDetails<T>>()
   /** Emits when an item is selected. */
   readonly select: OutputEmitterRef<ListboxSelectionDetails> = output<ListboxSelectionDetails>()
-
-  private _pendingValueWrites = 0
-  private _pendingHighlightWrites = 0
   private readonly _fallbackCollection = new ListCollection<T>({ items: [] })
 
   private readCollection(): ListCollection<T> {
@@ -121,7 +117,6 @@ export class ArkListboxRoot<T extends CollectionItem = CollectionItem> implement
       onValueChange: (details: ListboxValueChangeDetails<T>) => {
         const current = this.value()
         if (!arraysShallowEqual(current, details.value)) {
-          this._pendingValueWrites++
           this.value.set([...details.value])
         }
         this.valueChange.emit(details)
@@ -129,7 +124,6 @@ export class ArkListboxRoot<T extends CollectionItem = CollectionItem> implement
       onHighlightChange: (details: ListboxHighlightChangeDetails<T>) => {
         const next = details.highlightedValue
         if (this.highlightedValue() !== next) {
-          this._pendingHighlightWrites++
           this.highlightedValue.set(next)
         }
         this.highlightChange.emit(details)
@@ -146,30 +140,6 @@ export class ArkListboxRoot<T extends CollectionItem = CollectionItem> implement
   readonly send: ListboxService<T>['send'] = this.machine.send
 
   constructor() {
-    let firstRunValue = true
-    effect(() => {
-      void this.value()
-      if (firstRunValue) {
-        firstRunValue = false
-        return
-      }
-      if (this._pendingValueWrites > 0) {
-        this._pendingValueWrites--
-      }
-    })
-
-    let firstRunHighlight = true
-    effect(() => {
-      void this.highlightedValue()
-      if (firstRunHighlight) {
-        firstRunHighlight = false
-        return
-      }
-      if (this._pendingHighlightWrites > 0) {
-        this._pendingHighlightWrites--
-      }
-    })
-
     applyArkProps({
       elementRef: inject(ElementRef),
       renderer: inject(Renderer2),
