@@ -11,7 +11,7 @@ import { numberInputExampleStyles } from '../number-input-example-styles'
 import { NumberInputChevronDownIcon, NumberInputChevronUpIcon } from './icons'
 
 @Component({
-  selector: 'number-input-min-max-example',
+  selector: 'number-input-context-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -25,8 +25,8 @@ import { NumberInputChevronDownIcon, NumberInputChevronUpIcon } from './icons'
     NumberInputChevronDownIcon,
   ],
   template: `
-    <div arkNumberInputRoot [min]="0" [max]="10">
-      <span arkNumberInputLabel>Label</span>
+    <div arkNumberInputRoot #numberInput="arkNumberInputRoot">
+      <span arkNumberInputLabel>Value: {{ numberInput.api().valueAsNumber }}</span>
       <div arkNumberInputControl>
         <input arkNumberInputInput />
         <div class="trigger-group">
@@ -38,4 +38,4 @@ import { NumberInputChevronDownIcon, NumberInputChevronUpIcon } from './icons'
   `,
   styles: [numberInputExampleStyles],
 })
-export class NumberInputMinMaxExample {}
+export class NumberInputContextExample {}

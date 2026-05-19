@@ -10,10 +10,12 @@ import {
   inject,
   input,
   model,
+  output,
   signal,
   type InputSignal,
   type InputSignalWithTransform,
   type ModelSignal,
+  type OutputEmitterRef,
   type Signal,
 } from '@angular/core'
 import { NG_VALUE_ACCESSOR, type ControlValueAccessor } from '@angular/forms'
@@ -25,6 +27,7 @@ import type {
   NumberInputInputMode,
   NumberInputIntlTranslations,
   NumberInputValueChangeDetails,
+  NumberInputValueInvalidDetails,
 } from './number-input.types'
 import { ARK_NUMBER_INPUT_CONTEXT } from './use-number-input-context'
 import { useNumberInput, type UseNumberInputReturn } from './use-number-input'
@@ -84,6 +87,8 @@ export class ArkNumberInputRoot implements ControlValueAccessor, UseNumberInputR
   readonly spinOnPress: InputSignalWithTransform<boolean, unknown> = input(true, { transform: booleanAttribute })
   /** The input mode for the number input. */
   readonly inputMode: InputSignal<NumberInputInputMode | undefined> = input<NumberInputInputMode | undefined>(undefined)
+  /** The locale used to format the number input value. */
+  readonly locale: InputSignal<string | undefined> = input<string | undefined>(undefined)
   /** The format options for the number input. */
   readonly formatOptions: InputSignal<Intl.NumberFormatOptions | undefined> = input<
     Intl.NumberFormatOptions | undefined
@@ -92,6 +97,12 @@ export class ArkNumberInputRoot implements ControlValueAccessor, UseNumberInputR
   readonly translations: InputSignal<NumberInputIntlTranslations | undefined> = input<
     NumberInputIntlTranslations | undefined
   >(undefined)
+  /** Emits when the number input focus state changes. */
+  readonly focusChange: OutputEmitterRef<NumberInputFocusChangeDetails> = output<NumberInputFocusChangeDetails>()
+  /** Emits when the current value is committed. */
+  readonly valueCommit: OutputEmitterRef<NumberInputValueChangeDetails> = output<NumberInputValueChangeDetails>()
+  /** Emits when the user enters a value rejected by the machine. */
+  readonly valueInvalid: OutputEmitterRef<NumberInputValueInvalidDetails> = output<NumberInputValueInvalidDetails>()
 
   private readonly _disabledFromForm = signal(false)
   private _pendingInternalWrites = 0
@@ -127,6 +138,7 @@ export class ArkNumberInputRoot implements ControlValueAccessor, UseNumberInputR
       focusInputOnChange: this.focusInputOnChange(),
       spinOnPress: this.spinOnPress(),
       inputMode: this.inputMode(),
+      locale: this.locale(),
       formatOptions: this.formatOptions(),
       translations: this.translations(),
       onValueChange: (details: NumberInputValueChangeDetails) => {
@@ -136,13 +148,18 @@ export class ArkNumberInputRoot implements ControlValueAccessor, UseNumberInputR
         }
         this.cva.notifyValueChange(details.value)
       },
-      onValueCommit: () => {
+      onValueCommit: (details: NumberInputValueChangeDetails) => {
+        this.valueCommit.emit(details)
         this.cva.markTouched()
       },
       onFocusChange: (details: NumberInputFocusChangeDetails) => {
+        this.focusChange.emit(details)
         if (!details.focused) {
           this.cva.markTouched()
         }
+      },
+      onValueInvalid: (details: NumberInputValueInvalidDetails) => {
+        this.valueInvalid.emit(details)
       },
     }),
   })

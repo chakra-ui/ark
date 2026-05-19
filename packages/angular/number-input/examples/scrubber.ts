@@ -6,29 +6,35 @@ import {
   ArkNumberInputInput,
   ArkNumberInputLabel,
   ArkNumberInputRoot,
+  ArkNumberInputScrubber,
 } from '@ark-ui/angular/number-input'
 import { numberInputExampleStyles } from '../number-input-example-styles'
-import { NumberInputChevronDownIcon, NumberInputChevronUpIcon } from './icons'
+import { NumberInputArrowLeftRightIcon, NumberInputChevronDownIcon, NumberInputChevronUpIcon } from './icons'
 
 @Component({
-  selector: 'number-input-min-max-example',
+  selector: 'number-input-scrubber-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ArkNumberInputRoot,
     ArkNumberInputLabel,
     ArkNumberInputControl,
+    ArkNumberInputScrubber,
     ArkNumberInputInput,
     ArkNumberInputIncrementTrigger,
     ArkNumberInputDecrementTrigger,
+    NumberInputArrowLeftRightIcon,
     NumberInputChevronUpIcon,
     NumberInputChevronDownIcon,
   ],
   template: `
-    <div arkNumberInputRoot [min]="0" [max]="10">
+    <div arkNumberInputRoot defaultValue="32">
       <span arkNumberInputLabel>Label</span>
       <div arkNumberInputControl>
-        <input arkNumberInputInput />
+        <div arkNumberInputScrubber>
+          <number-input-arrow-left-right-icon />
+        </div>
+        <input arkNumberInputInput data-has-scrubber />
         <div class="trigger-group">
           <button arkNumberInputIncrementTrigger><number-input-chevron-up-icon /></button>
           <button arkNumberInputDecrementTrigger><number-input-chevron-down-icon /></button>
@@ -38,4 +44,4 @@ import { NumberInputChevronDownIcon, NumberInputChevronUpIcon } from './icons'
   `,
   styles: [numberInputExampleStyles],
 })
-export class NumberInputMinMaxExample {}
+export class NumberInputScrubberExample {}

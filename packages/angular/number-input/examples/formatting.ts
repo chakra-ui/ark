@@ -11,7 +11,7 @@ import { numberInputExampleStyles } from '../number-input-example-styles'
 import { NumberInputChevronDownIcon, NumberInputChevronUpIcon } from './icons'
 
 @Component({
-  selector: 'number-input-min-max-example',
+  selector: 'number-input-formatting-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -25,7 +25,7 @@ import { NumberInputChevronDownIcon, NumberInputChevronUpIcon } from './icons'
     NumberInputChevronDownIcon,
   ],
   template: `
-    <div arkNumberInputRoot [min]="0" [max]="10">
+    <div arkNumberInputRoot [formatOptions]="{ style: 'currency', currency: 'USD' }">
       <span arkNumberInputLabel>Label</span>
       <div arkNumberInputControl>
         <input arkNumberInputInput />
@@ -38,4 +38,4 @@ import { NumberInputChevronDownIcon, NumberInputChevronUpIcon } from './icons'
   `,
   styles: [numberInputExampleStyles],
 })
-export class NumberInputMinMaxExample {}
+export class NumberInputFormattingExample {}
