@@ -10,7 +10,7 @@ import { ArkFieldErrorText, ArkFieldHelperText, ArkFieldRoot } from '@ark-ui/ang
 import { editableExampleStyles } from '../editable-example-styles'
 
 @Component({
-  selector: 'editable-with-field-validation-example',
+  selector: 'editable-with-field-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -24,7 +24,7 @@ import { editableExampleStyles } from '../editable-example-styles'
     ArkEditablePreview,
   ],
   template: `
-    <div arkFieldRoot [invalid]="true">
+    <div arkFieldRoot>
       <div arkEditableRoot placeholder="Enter your bio">
         <span arkEditableLabel>Bio</span>
         <div arkEditableArea>
@@ -38,4 +38,4 @@ import { editableExampleStyles } from '../editable-example-styles'
   `,
   styles: [editableExampleStyles],
 })
-export class EditableWithFieldValidationExample {}
+export class EditableWithFieldExample {}

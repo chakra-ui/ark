@@ -10,16 +10,25 @@ import {
   inject,
   input,
   model,
+  output,
   signal,
   type InputSignal,
   type InputSignalWithTransform,
   type ModelSignal,
+  type OutputEmitterRef,
   type Signal,
 } from '@angular/core'
 import { NG_VALUE_ACCESSOR, type ControlValueAccessor } from '@angular/forms'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
 import { createArkCvaController } from '@ark-ui/angular/src/internal'
-import type { EditableElementIds } from './editable.types'
+import type {
+  EditableEditChangeDetails,
+  EditableElementIds,
+  EditableFocusOutsideEvent,
+  EditableInteractOutsideEvent,
+  EditablePointerDownOutsideEvent,
+  EditableValueChangeDetails,
+} from './editable.types'
 import { ARK_EDITABLE_CONTEXT } from './use-editable-context'
 import { useEditable, type UseEditableReturn } from './use-editable'
 
@@ -84,6 +93,20 @@ export class ArkEditableRoot implements ControlValueAccessor, UseEditableReturn 
     (() => HTMLElement | null) | undefined
   >(undefined)
 
+  /** Emits when the edit state changes with Zag details. */
+  readonly editChange: OutputEmitterRef<EditableEditChangeDetails> = output<EditableEditChangeDetails>()
+  /** Emits when the editable value is committed. */
+  readonly valueCommit: OutputEmitterRef<EditableValueChangeDetails> = output<EditableValueChangeDetails>()
+  /** Emits when the editable value is reverted. */
+  readonly valueRevert: OutputEmitterRef<EditableValueChangeDetails> = output<EditableValueChangeDetails>()
+  /** Emits when focus moves outside the editable while editing. */
+  readonly focusOutside: OutputEmitterRef<EditableFocusOutsideEvent> = output<EditableFocusOutsideEvent>()
+  /** Emits when pointer down happens outside the editable while editing. */
+  readonly pointerDownOutside: OutputEmitterRef<EditablePointerDownOutsideEvent> =
+    output<EditablePointerDownOutsideEvent>()
+  /** Emits when an interaction happens outside the editable while editing. */
+  readonly interactOutside: OutputEmitterRef<EditableInteractOutsideEvent> = output<EditableInteractOutsideEvent>()
+
   private readonly _disabledFromForm = signal(false)
   private _pendingInternalWrites = 0
   private _hasExternalBinding = false
@@ -125,15 +148,23 @@ export class ArkEditableRoot implements ControlValueAccessor, UseEditableReturn 
         }
         this.cva.notifyValueChange(details.value)
       },
-      onValueCommit: () => {
+      onValueCommit: (details) => {
+        this.valueCommit.emit(details)
         this.cva.markTouched()
+      },
+      onValueRevert: (details) => {
+        this.valueRevert.emit(details)
       },
       onEditChange: (details) => {
         this.editing.set(details.edit)
+        this.editChange.emit(details)
         if (!details.edit) {
           this.cva.markTouched()
         }
       },
+      onFocusOutside: (event) => this.focusOutside.emit(event),
+      onPointerDownOutside: (event) => this.pointerDownOutside.emit(event),
+      onInteractOutside: (event) => this.interactOutside.emit(event),
     }),
   })
 

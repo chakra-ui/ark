@@ -32,7 +32,11 @@ export class ArkEditablePreview implements AfterContentInit {
       destroyRef,
       props: () => {
         const props = context.api().getPreviewProps() as Record<string, unknown>
-        const { children: _children, ...rest } = props
+        const { children: _children, onDoubleClick, ...rest } = props
+        if (typeof onDoubleClick === 'function') {
+          const remapped = rest as { onDblClick?: unknown }
+          remapped.onDblClick = onDoubleClick
+        }
         return rest
       },
     })
