@@ -24,12 +24,31 @@ const batch4Entrypoints = [
   ['json-tree-view', 'ArkJsonTreeViewRoot', () => import('./json-tree-view/public-api')],
 ] as const
 
-const batch4Sources = new Set(batch4Entrypoints.map(([name]) => normalize(`src/${name}/public-api.ts`)))
-const privateSourceExportKeys = new Set(['./src/_zag', './src/internal'])
+const batch5Entrypoints = [
+  ['accordion', './accordion/public-api'],
+  ['tabs', './tabs/public-api'],
+  ['pagination', './pagination/public-api'],
+  ['steps', './steps/public-api'],
+  ['splitter', './splitter/public-api'],
+  ['carousel', './carousel/public-api'],
+  ['scroll-area', './scroll-area/public-api'],
+  ['floating-panel', './floating-panel/public-api'],
+  ['marquee', './marquee/public-api'],
+  ['tour', './tour/public-api'],
+  ['timer', './timer/public-api'],
+  ['toast', './toast/public-api'],
+] as const
 
-const isPendingBatch4Source = (source: string) => {
+const loadBatch5Entrypoint = (specifier: string) => import(/* @vite-ignore */ specifier)
+
+const pendingSourceEntrypoints = new Set(
+  [...batch4Entrypoints, ...batch5Entrypoints].map(([name]) => normalize(`src/${name}/public-api.ts`)),
+)
+const privateSourceExportKeys = new Set(['./src/_zag', './src/collection', './src/internal', './src/tree-view'])
+
+const isPendingSource = (source: string) => {
   const normalizedSource = normalize(source.replace(/^\.\//, ''))
-  return batch4Sources.has(normalizedSource) && !existsSync(join(packageRoot, normalizedSource))
+  return pendingSourceEntrypoints.has(normalizedSource) && !existsSync(join(packageRoot, normalizedSource))
 }
 
 const entrypoints = [
@@ -75,6 +94,12 @@ describe('phase 2 entrypoint scaffolding', () => {
   })
 })
 
+describe('Batch 5 entrypoint scaffolding', () => {
+  it.each(batch5Entrypoints)('%s resolves', async (_name, specifier) => {
+    await expect(loadBatch5Entrypoint(specifier)).resolves.toBeDefined()
+  })
+})
+
 describe('root entrypoint', () => {
   it('imports without throwing', async () => {
     await expect(import('./index')).resolves.toBeDefined()
@@ -108,7 +133,9 @@ describe('package.json exports map', () => {
     const exportsMap = pkg.exports
     const requiredKeys = [
       '.',
+      './accordion',
       './avatar',
+      './carousel',
       './clipboard',
       './client-only',
       './collapsible',
@@ -122,21 +149,31 @@ describe('package.json exports map', () => {
       './field',
       './fieldset',
       './file-upload',
+      './floating-panel',
       './hover-card',
       './image-cropper',
       './json-tree-view',
       './listbox',
+      './marquee',
       './menu',
       './navigation-menu',
       './number-input',
+      './pagination',
       './password-input',
       './pin-input',
       './popover',
       './qr-code',
+      './scroll-area',
       './select',
       './signature-pad',
+      './splitter',
+      './steps',
+      './tabs',
       './tags-input',
+      './timer',
+      './toast',
       './tooltip',
+      './tour',
       './tree-view',
       './collection',
       './download-trigger',
@@ -160,14 +197,14 @@ describe('package.json exports map', () => {
     ).toEqual([])
     for (const key of requiredKeys.filter((key) => key !== './package.json')) {
       const entry = exportsMap[key] as { source: string; types: string; default: string }
-      if (!isPendingBatch4Source(entry.source)) {
+      if (!isPendingSource(entry.source)) {
         expect(existsSync(join(packageRoot, entry.source))).toBe(true)
       }
       expect(entry.types).toMatch(/^\.\/dist\//)
       expect(entry.default).toMatch(/^\.\/dist\/fesm2022\//)
       if (key !== '.') {
         const sourceDir = dirname(entry.source)
-        if (!isPendingBatch4Source(entry.source)) {
+        if (!isPendingSource(entry.source)) {
           expect(existsSync(join(packageRoot, sourceDir, 'ng-package.json'))).toBe(true)
         }
       }
@@ -199,6 +236,26 @@ describe('package.json exports map', () => {
       if (!existsSync(join(packageRoot, 'src', name, 'public-api.ts'))) continue
       const mod = await load()
       expect(mod[rootExport as keyof typeof mod]).toBeDefined()
+    }
+  })
+
+  it('wires Batch 5 entrypoints to src public APIs', () => {
+    expect(tsconfig.include).toContain('src/**/*.ts')
+
+    for (const [name] of batch5Entrypoints) {
+      const publicApi = `src/${name}/public-api.ts`
+      const source = `./${publicApi}`
+      const entry = pkg.exports[`./${name}`] as { source: string; types: string; default: string }
+
+      expect(entry).toEqual({
+        source,
+        types: `./dist/src/${name}/index.d.ts`,
+        default: `./dist/fesm2022/ark-ui-angular-src-${name}.mjs`,
+      })
+      expect(tsconfig.compilerOptions.paths[`@ark-ui/angular/${name}`]).toEqual([publicApi])
+      expect(viteConfigSource).toContain(
+        `'@ark-ui/angular/${name}': new URL('./${publicApi}', import.meta.url).pathname`,
+      )
     }
   })
 
