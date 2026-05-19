@@ -35,5 +35,5 @@
 - [ ] Manual/visual checks: Not run in browser automation. The Storybook bundle compiled, and visual parity was reviewed from React `.storybook/modules/toast.module.css` against Angular `toast-example-styles.ts`.
 
 ## Commit
-- Hash: `47d85c98b` contains the toast implementation changes, alongside unrelated parallel toggle work.
-- Message: `fix(angular): align toast with react parity`
+- Hash: `7a8c742c1`
+- Message: `fix(angular): align toast stories with react parity`
