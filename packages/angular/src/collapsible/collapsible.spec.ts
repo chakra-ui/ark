@@ -76,7 +76,7 @@ describe('@ark-ui/angular/collapsible', () => {
     const injector = fixture.componentRef.injector
 
     const result = runInInjectionContext(injector, () => useCollapsible({ context: () => ({}) }))
-    const id = (result.api().getRootProps() as Record<string, unknown>).id as string
+    const id = (result.api().getRootProps() as Record<string, unknown>)['id'] as string
 
     expect(typeof id).toBe('string')
     expect(id.length).toBeGreaterThan(0)
