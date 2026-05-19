@@ -8,6 +8,7 @@ const previewSource = readFileSync(join(packageRoot, '.storybook/preview.ts'), '
 
 const requiredProviderStories = [
   ['src/providers/environment/environment.stories.ts', 'Utilities / Environment'],
+  ['src/providers/interaction/interaction.stories.ts', 'Utilities / Interaction'],
   ['src/providers/locale/locale.stories.ts', 'Utilities / Locale'],
 ] as const
 
