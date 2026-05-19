@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector, inject, runInInjectionContext } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Injector, computed, inject, runInInjectionContext } from '@angular/core'
 import {
   ArkTimerActionTrigger,
   ArkTimerArea,
@@ -24,7 +24,7 @@ import { timerExampleStyles } from '../timer-example-styles'
   ],
   template: `
     <div class="timer-root">
-      <output class="timer-output">Seconds: {{ timer.api().time.seconds }}</output>
+      <output class="timer-output">timer: {{ time() }}</output>
       <div arkTimerRootProvider [value]="timer">
         <div arkTimerArea class="timer-area">
           <div class="timer-item-group">
@@ -58,4 +58,5 @@ export class TimerRootProviderExample {
   readonly timer = runInInjectionContext(this.injector, () =>
     useTimer({ context: () => ({ targetMs: 60 * 60 * 1000 }) }),
   )
+  readonly time = computed(() => JSON.stringify(this.timer.api().time))
 }
