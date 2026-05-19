@@ -35,5 +35,5 @@
 - [x] Manual/visual checks: re-compared `packages/angular/src/hover-card/hover-card-example-styles.ts` against `.storybook/modules/hover-card.module.css` selector-by-selector — trigger, content, arrow, arrow-tip, avatar/avatar-fallback, header, body, name, username, bio, stats/stat/stat-value/stat-label, follow-button, paragraph, and both scale-fade keyframes all map across with equivalent values. CSS-variable fallbacks in the Angular string match the demo token defaults.
 
 ## Commit
-- Hash: bd01bd34c
+- Hash: Recorded in final status after commit creation.
 - Message: `fix(angular): align hover-card with react parity`
