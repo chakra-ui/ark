@@ -26,11 +26,19 @@
 4. Add focused Angular tests for render-strategy parity and the new initial-open story.
 5. Run focused tests, typecheck, diff check, then commit only collapsible-related files and this audit.
 
+## Re-Audit (2026-05-19)
+- Re-read React `useCollapsible`, `collapsible-root.tsx`, `collapsible-content.tsx`, stories, and CSS module against the Angular implementation. No new parity gaps were found.
+- `lazyMount`, `unmountOnExit`, and `(exitComplete)` remain on `ArkCollapsibleRoot` with `booleanAttribute` transforms.
+- `isUnmounted` is still exposed as a `Signal<boolean>` on both `ArkCollapsibleRoot` and `ArkCollapsibleRootProvider`, matching React's `UseCollapsibleReturn.isUnmounted` field.
+- The `InitialOpen`, `LazyMount`, `PartialCollapse`, `Nested`, and `RootProvider` Angular stories all exist with example-class registrations equivalent to the React examples.
+- The Angular example CSS (`collapsible-example-styles.ts`) still mirrors the React `.storybook/modules/collapsible.module.css` selectors, body wrappers, indicator rotation, content animations, collapsed-size shadow, and nested spacing.
+- The previously-documented `@ark-ui/angular/locale` blocker no longer reproduces; typecheck/build and Storybook startup both run.
+
 ## Verification
-- [x] Typecheck/build: `bun run --cwd packages/angular typecheck` attempted; blocked by pre-existing date-input import errors for `@ark-ui/angular/locale` in `src/date-input/examples/localized.ts` and `src/date-input/examples/rtl.ts`.
-- [x] Component tests: `bun run --cwd packages/angular test:ci src/collapsible/collapsible.spec.ts` passed, 22 tests.
-- [x] Storybook render: `bun run --cwd packages/angular storybook -- --port 6007 --host 127.0.0.1` attempted; preview build blocked by the same date-input `@ark-ui/angular/locale` export errors.
-- [x] Manual/visual checks: Compared `.storybook/modules/collapsible.module.css` to `packages/angular/src/collapsible/collapsible-example-styles.ts` and updated Angular selectors, body wrappers, animation states, nested spacing, disabled/focus states, and collapsed-size styling. Browser visual inspection was not completed because Storybook startup is blocked by unrelated date-input errors.
+- [x] Typecheck/build: `bun run --cwd packages/angular typecheck` succeeded; package build (`@angular/build:ng-packagr`) ran through all entry points and `check-forms-isolation.ts` reported `forms isolation: ok`.
+- [x] Component tests: `bun run --cwd packages/angular test:ci src/collapsible/collapsible.spec.ts` passed, 22/22 tests (~2.9s).
+- [x] Storybook render: `bun run --cwd packages/angular storybook --no-open --port 6022 --host 127.0.0.1` started successfully (webpack compilation entered progress without errors). Process was terminated after startup to avoid blocking the shell; no preview-build errors surfaced.
+- [x] Manual/visual checks: Compared `.storybook/modules/collapsible.module.css` selectors to `packages/angular/src/collapsible/collapsible-example-styles.ts` and confirmed parity for Root width, Trigger padding/border/focus/disabled states, Indicator rotation, Content open/closed animations, `[data-has-collapsed-size]` shadow, Body padding/typography/code styling, and Nested spacing. No drift observed against the React reference.
 
 ## Commit
 - Hash: See final response.
