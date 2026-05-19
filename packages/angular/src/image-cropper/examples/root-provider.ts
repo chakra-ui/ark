@@ -57,8 +57,6 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
 })
 export class ImageCropperRootProviderExample {
   private readonly injector = inject(Injector)
-  readonly imageCropper = runInInjectionContext(this.injector, () =>
-    useImageCropper({ context: () => ({ defaultZoom: 1.25 }) }),
-  )
+  readonly imageCropper = runInInjectionContext(this.injector, () => useImageCropper({ context: () => ({}) }))
   readonly handles = imageCropperHandles
 }
