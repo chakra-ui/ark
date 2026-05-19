@@ -1,7 +1,10 @@
 import {
+  DestroyRef,
   Directive,
+  ElementRef,
   EnvironmentInjector,
   Injector,
+  Renderer2,
   type InputSignal,
   type ProviderToken,
   type Signal,
@@ -11,6 +14,7 @@ import {
   input,
 } from '@angular/core'
 import type * as navigationMenu from '@zag-js/navigation-menu'
+import { applyArkProps } from '@ark-ui/angular/src/_zag'
 import { buildRootCarrier } from '@ark-ui/angular/src/internal'
 import type { ArkContextCarrier } from '@ark-ui/angular/src/internal'
 import { ARK_NAVIGATION_MENU_CONTEXT, ARK_NAVIGATION_MENU_CONTEXT_CARRIER } from './use-navigation-menu-context'
@@ -51,5 +55,14 @@ export class ArkNavigationMenuRootProvider implements UseNavigationMenuReturn {
   /** @internal Exposed for navigation menu part directives to consume via ARK_NAVIGATION_MENU_CONTEXT_CARRIER. */
   getContextCarrier(): ArkContextCarrier<ArkNavigationMenuRootProvider> {
     return this.arkContextCarrier
+  }
+
+  constructor() {
+    applyArkProps({
+      elementRef: inject(ElementRef),
+      renderer: inject(Renderer2),
+      destroyRef: inject(DestroyRef),
+      props: () => this.api().getRootProps(),
+    })
   }
 }

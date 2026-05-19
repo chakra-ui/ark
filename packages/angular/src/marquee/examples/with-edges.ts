@@ -9,19 +9,19 @@ import { marqueeExampleStyles } from '../marquee-example-styles'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArkMarqueeRoot, ArkMarqueeViewport, ArkMarqueeContent, ArkMarqueeItem, ArkMarqueeEdge],
   template: `
-    <div arkMarquee class="marquee-root">
-      <div arkMarqueeEdge side="start" class="marquee-edge"></div>
-      <div arkMarqueeViewport class="marquee-viewport">
-        <div arkMarqueeContent class="marquee-content">
-          @for (item of items; track item.code) {
-            <div arkMarqueeItem class="marquee-item">
-              <span class="marquee-code">{{ item.code }}</span>
-              <span>{{ item.name }}</span>
+    <div arkMarquee class="Root">
+      <div arkMarqueeEdge side="start" class="Edge"></div>
+      <div arkMarqueeViewport class="Viewport">
+        <div arkMarqueeContent class="Content">
+          @for (item of items; track item.name) {
+            <div arkMarqueeItem class="Item">
+              <span class="ItemLogo">{{ item.logo }}</span>
+              <span class="ItemName">{{ item.name }}</span>
             </div>
           }
         </div>
       </div>
-      <div arkMarqueeEdge side="end" class="marquee-edge"></div>
+      <div arkMarqueeEdge side="end" class="Edge"></div>
     </div>
   `,
   styles: [marqueeExampleStyles],

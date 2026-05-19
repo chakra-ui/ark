@@ -9,14 +9,24 @@ import {
   inject,
   input,
   model,
+  output,
   type InputSignal,
   type InputSignalWithTransform,
   type ModelSignal,
+  type OutputEmitterRef,
   type Signal,
 } from '@angular/core'
 import { buildRootCarrier } from '@ark-ui/angular/src/internal'
 import type { ArkContextCarrier } from '@ark-ui/angular/src/internal'
-import type { PopoverElementIds, PopoverPositioningOptions, PopoverTriggerValueChangeDetails } from './popover.types'
+import type {
+  PopoverElementIds,
+  PopoverFocusOutsideEvent,
+  PopoverInteractOutsideEvent,
+  PopoverIntlTranslations,
+  PopoverPointerDownOutsideEvent,
+  PopoverPositioningOptions,
+  PopoverTriggerValueChangeDetails,
+} from './popover.types'
 import { ARK_POPOVER_CONTEXT, ARK_POPOVER_CONTEXT_CARRIER } from './use-popover-context'
 import { usePopover, type UsePopoverReturn } from './use-popover'
 
@@ -70,10 +80,44 @@ export class ArkPopoverRoot implements UsePopoverReturn {
   readonly finalFocusEl: InputSignal<(() => HTMLElement | null) | undefined> = input<
     (() => HTMLElement | null) | undefined
   >(undefined)
+  /** Elements that remain interactive and do not dismiss the popover. */
+  readonly persistentElements: InputSignal<(() => Element | null)[] | undefined> = input<
+    (() => Element | null)[] | undefined
+  >(undefined)
+  /** Localized strings for popover accessibility labels. */
+  readonly translations: InputSignal<PopoverIntlTranslations | undefined> = input<PopoverIntlTranslations | undefined>(
+    undefined,
+  )
   /** The controlled trigger value. */
   readonly triggerValue: ModelSignal<string | null | undefined> = model<string | null | undefined>(undefined)
   /** The default trigger value when uncontrolled. */
   readonly defaultTriggerValue: InputSignal<string | null | undefined> = input<string | null | undefined>(undefined)
+
+  /** Emits details when the escape key is pressed. */
+  readonly escapeKeyDown: OutputEmitterRef<KeyboardEvent> = output<KeyboardEvent>()
+  /** Emits details when focus moves outside the popover content. */
+  readonly focusOutside: OutputEmitterRef<PopoverFocusOutsideEvent> = output<PopoverFocusOutsideEvent>()
+  /** Emits details when an interaction happens outside the popover content. */
+  readonly interactOutside: OutputEmitterRef<PopoverInteractOutsideEvent> = output<PopoverInteractOutsideEvent>()
+  /** Emits details when pointer down occurs outside the popover content. */
+  readonly pointerDownOutside: OutputEmitterRef<PopoverPointerDownOutsideEvent> =
+    output<PopoverPointerDownOutsideEvent>()
+  /** Emits when this layer is closed due to a parent layer being closed. */
+  readonly requestDismiss: OutputEmitterRef<
+    CustomEvent<{
+      originalLayer: HTMLElement
+      targetLayer: HTMLElement | undefined
+      originalIndex: number
+      targetIndex: number
+    }>
+  > = output<
+    CustomEvent<{
+      originalLayer: HTMLElement
+      targetLayer: HTMLElement | undefined
+      originalIndex: number
+      targetIndex: number
+    }>
+  >()
 
   private readonly machine = usePopover({
     context: () => ({
@@ -90,6 +134,8 @@ export class ArkPopoverRoot implements UsePopoverReturn {
       positioning: this.positioning(),
       initialFocusEl: this.initialFocusEl(),
       finalFocusEl: this.finalFocusEl(),
+      persistentElements: this.persistentElements(),
+      translations: this.translations(),
       triggerValue: this.triggerValue(),
       defaultTriggerValue: this.defaultTriggerValue(),
       onOpenChange: (details) => {
@@ -100,6 +146,11 @@ export class ArkPopoverRoot implements UsePopoverReturn {
         if (this.triggerValue() === details.value) return
         this.triggerValue.set(details.value)
       },
+      onEscapeKeyDown: (event) => this.escapeKeyDown.emit(event),
+      onFocusOutside: (event) => this.focusOutside.emit(event),
+      onInteractOutside: (event) => this.interactOutside.emit(event),
+      onPointerDownOutside: (event) => this.pointerDownOutside.emit(event),
+      onRequestDismiss: (event) => this.requestDismiss.emit(event),
     }),
   })
 

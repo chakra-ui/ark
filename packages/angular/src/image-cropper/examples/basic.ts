@@ -6,6 +6,7 @@ import {
   ArkImageCropperRoot,
   ArkImageCropperSelection,
   ArkImageCropperViewport,
+  imageCropperHandles,
 } from '../public-api'
 import { imageCropperExampleStyles } from '../image-cropper-example-styles'
 
@@ -22,20 +23,27 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
     ArkImageCropperGrid,
   ],
   template: `
-    <div arkImageCropper>
-      <div arkImageCropperViewport>
-        <img arkImageCropperImage src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900" alt="" />
-        <div arkImageCropperSelection>
-          <div arkImageCropperGrid axis="horizontal"></div>
-          <div arkImageCropperGrid axis="vertical"></div>
-          <div arkImageCropperHandle position="nw"></div>
-          <div arkImageCropperHandle position="ne"></div>
-          <div arkImageCropperHandle position="sw"></div>
-          <div arkImageCropperHandle position="se"></div>
+    <div class="layout">
+      <div class="root" arkImageCropper>
+        <div arkImageCropperViewport>
+          <img
+            arkImageCropperImage
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800"
+            alt="Sample"
+          />
+          <div arkImageCropperSelection>
+            <div arkImageCropperGrid axis="horizontal"></div>
+            <div arkImageCropperGrid axis="vertical"></div>
+            @for (position of handles; track position) {
+              <div arkImageCropperHandle [position]="position"><span></span></div>
+            }
+          </div>
         </div>
       </div>
     </div>
   `,
   styles: [imageCropperExampleStyles],
 })
-export class ImageCropperBasicExample {}
+export class ImageCropperBasicExample {
+  readonly handles = imageCropperHandles
+}

@@ -1,0 +1,166 @@
+export const swapExampleStyles = `
+  .Button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border: 1px solid var(--demo-border-emphasized);
+    border-radius: 0.375rem;
+    background: transparent;
+    color: var(--demo-neutral-fg);
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .Button svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .Button:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: 2px;
+  }
+
+  .FadeIndicator[data-state='open'] {
+    animation-name: fade-in, blur-in;
+    animation-duration: 200ms;
+    animation-timing-function: ease-out;
+  }
+
+  .FadeIndicator[data-state='closed'] {
+    animation-name: fade-out, blur-out;
+    animation-duration: 100ms;
+    animation-timing-function: ease-in;
+  }
+
+  .FlipIndicator {
+    backface-visibility: hidden;
+  }
+
+  .FlipIndicator[data-state='open'] {
+    animation-name: flip-in, blur-in;
+    animation-duration: 400ms;
+    animation-timing-function: ease;
+  }
+
+  .FlipIndicator[data-state='closed'] {
+    animation-name: flip-out, blur-out;
+    animation-duration: 200ms;
+    animation-timing-function: ease;
+  }
+
+  .ScaleIndicator[data-state='open'] {
+    animation-name: scale-in, fade-in, blur-in;
+    animation-duration: 200ms;
+    animation-timing-function: ease-out;
+  }
+
+  .ScaleIndicator[data-state='closed'] {
+    animation-name: scale-out, fade-out, blur-out;
+    animation-duration: 100ms;
+    animation-timing-function: ease-in;
+  }
+
+  .RotateIndicator[data-state='open'] {
+    animation-name: rotate-in, fade-in, blur-in;
+    animation-duration: 250ms;
+    animation-timing-function: ease-out;
+  }
+
+  .RotateIndicator[data-state='closed'] {
+    animation-name: rotate-out, fade-out, blur-out;
+    animation-duration: 100ms;
+    animation-timing-function: ease-in;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes rotate-in {
+    from {
+      transform: rotate(-90deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes rotate-out {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(90deg);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes scale-out {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(0);
+    }
+  }
+
+  @keyframes flip-in {
+    from {
+      transform: rotateY(180deg);
+    }
+    to {
+      transform: rotateY(0deg);
+    }
+  }
+
+  @keyframes flip-out {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(180deg);
+    }
+  }
+
+  @keyframes blur-in {
+    from {
+      filter: blur(2px);
+    }
+    to {
+      filter: blur(0);
+    }
+  }
+
+  @keyframes blur-out {
+    from {
+      filter: blur(0);
+    }
+    to {
+      filter: blur(2px);
+    }
+  }
+`

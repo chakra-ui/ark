@@ -36,13 +36,18 @@ import {
   usePopover,
   type PopoverApi,
   type PopoverElementIds,
+  type PopoverFocusOutsideEvent,
+  type PopoverInteractOutsideEvent,
+  type PopoverIntlTranslations,
   type PopoverMachine,
   type PopoverMachineProps,
   type PopoverOpenChangeDetails,
+  type PopoverPointerDownOutsideEvent,
   type PopoverPlacement,
   type PopoverPositioningOptions,
   type PopoverService,
   type PopoverTriggerMachineProps,
+  type PopoverTriggerProps,
   type PopoverTriggerValueChangeDetails,
   type UsePopoverOptions,
   type UsePopoverProps,
@@ -50,20 +55,34 @@ import {
 } from '@ark-ui/angular/popover'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { PopoverBasicExample } from './examples/basic'
+import { PopoverCloseBehaviorExample } from './examples/close-behavior'
+import { PopoverContextExample } from './examples/context'
 import { PopoverControlledExample } from './examples/controlled'
 import { PopoverDefaultOpenExample } from './examples/default-open'
+import { PopoverDisableOutsideClickExample } from './examples/disable-outside-click'
+import { PopoverInitialFocusExample } from './examples/initial-focus'
+import { PopoverLazyMountExample } from './examples/lazy-mount'
+import { PopoverMultipleTriggersExample } from './examples/multiple-triggers'
+import { PopoverNestedExample } from './examples/nested'
+import { PopoverPositioningExample } from './examples/positioning'
 import { PopoverRootProviderExample } from './examples/root-provider'
+import { PopoverSameWidthExample } from './examples/same-width'
 
 type PopoverPublicTypeSmoke = [
   PopoverApi,
   PopoverElementIds,
+  PopoverFocusOutsideEvent,
+  PopoverInteractOutsideEvent,
+  PopoverIntlTranslations,
   PopoverMachine,
   PopoverMachineProps,
   PopoverOpenChangeDetails,
+  PopoverPointerDownOutsideEvent,
   PopoverPlacement,
   PopoverPositioningOptions,
   PopoverService,
   PopoverTriggerMachineProps,
+  PopoverTriggerProps,
   PopoverTriggerValueChangeDetails,
   UsePopoverOptions,
   UsePopoverProps,
@@ -547,6 +566,43 @@ describe('@ark-ui/angular/popover', () => {
     fixture.destroy()
   })
 
+  it('[arkPopoverTrigger] forwards value into the trigger value model', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkPopoverRoot, ArkPopoverTrigger, ArkPopoverPositioner, ArkPopoverContent, ArkPortalComponent],
+      template: `
+        <div arkPopover #root="arkPopover" [(triggerValue)]="triggerValue">
+          <button arkPopoverTrigger value="share">Share</button>
+          <button arkPopoverTrigger value="export">Export</button>
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkPopoverPositioner>
+              <div arkPopoverContent></div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {
+      readonly triggerValue = signal<string | null | undefined>(undefined)
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await TestBed.inject(ApplicationRef).whenStable()
+    fixture.detectChanges()
+
+    const triggers = fixture.debugElement.queryAll(By.directive(ArkPopoverTrigger))
+    ;(triggers[1].nativeElement as HTMLButtonElement).click()
+    await TestBed.inject(ApplicationRef).whenStable()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.triggerValue()).toBe('export')
+
+    fixture.destroy()
+  })
+
   it('public-api source does not import @angular/forms', () => {
     const source = readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'public-api.ts'), 'utf-8')
     expect(source).not.toMatch(/@angular\/forms/)
@@ -595,5 +651,27 @@ describe('@ark-ui/angular/popover', () => {
     expect(fixture.componentInstance.openLabel()).toBe('open')
 
     fixture.destroy()
+  })
+
+  it('new parity examples mount without throwing', () => {
+    const examples = [
+      PopoverCloseBehaviorExample,
+      PopoverContextExample,
+      PopoverDisableOutsideClickExample,
+      PopoverInitialFocusExample,
+      PopoverLazyMountExample,
+      PopoverMultipleTriggersExample,
+      PopoverNestedExample,
+      PopoverPositioningExample,
+      PopoverSameWidthExample,
+    ]
+
+    for (const example of examples) {
+      TestBed.resetTestingModule()
+      TestBed.configureTestingModule({ imports: [example] })
+      const fixture = TestBed.createComponent(example)
+      fixture.detectChanges()
+      fixture.destroy()
+    }
   })
 })

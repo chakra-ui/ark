@@ -3,6 +3,7 @@ import { moduleMetadata } from '@storybook/angular'
 import { FieldsetBasicExample } from './examples/basic'
 import { FieldsetDisabledExample } from './examples/disabled'
 import { FieldsetInvalidExample } from './examples/invalid'
+import { FieldsetPhoneInputExample } from './examples/phone-input'
 import { FieldsetRootProviderExample } from './examples/root-provider'
 import { FieldsetWithFieldExample } from './examples/with-field'
 
@@ -25,6 +26,11 @@ export const Disabled: StoryObj = {
 export const Invalid: StoryObj = {
   decorators: [moduleMetadata({ imports: [FieldsetInvalidExample] })],
   render: () => ({ template: '<fieldset-invalid-example />' }),
+}
+
+export const PhoneInput: StoryObj = {
+  decorators: [moduleMetadata({ imports: [FieldsetPhoneInputExample] })],
+  render: () => ({ template: '<fieldset-phone-input-example />' }),
 }
 
 export const WithField: StoryObj = {

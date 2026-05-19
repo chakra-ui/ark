@@ -19,7 +19,7 @@ import { progressLinearExampleStyles } from '../../progress-example-styles'
       <button class="progress-button" type="button" (click)="setToMax()">Set to max</button>
       <div arkProgressRootProvider [value]="progress">
         <span arkProgressLabel>Label</span>
-        <span arkProgressValueText></span>
+        <span arkProgressValueText #valueText="arkProgressValueText">{{ valueText.percentAsString() }}</span>
         <div arkProgressTrack>
           <div arkProgressRange></div>
         </div>

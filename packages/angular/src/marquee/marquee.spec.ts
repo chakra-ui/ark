@@ -381,4 +381,37 @@ describe('@ark-ui/angular/marquee', () => {
 
     fixture.destroy()
   })
+
+  it('renders Storybook examples with React-matching labels and contextual auto-fill content', async () => {
+    @Component({
+      standalone: true,
+      imports: [MarqueeAutoFillExample, MarqueeFiniteLoopsExample, MarqueeSpeedExample],
+      template: `
+        <marquee-auto-fill-example />
+        <marquee-finite-loops-example />
+        <marquee-speed-example />
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flush(fixture)
+
+    const text = fixture.nativeElement.textContent as string
+    expect(text).toContain('Loop completed: 0 times')
+    expect(text).toContain('Animation completed: 0 times')
+    expect(text).toContain('Slow (25px/s)')
+    expect(text).toContain('Normal (50px/s)')
+    expect(text).toContain('Fast (100px/s)')
+
+    const autoFill = fixture.debugElement.query(By.css('marquee-auto-fill-example'))
+    const autoFillRoot = autoFill.query(By.directive(ArkMarqueeRoot)).injector.get(ArkMarqueeRoot)
+    const autoFillContents = autoFill.queryAll(By.directive(ArkMarqueeContent))
+    expect(autoFillContents.length).toBe(autoFillRoot.api().contentCount)
+    expect(autoFillContents.length).toBeGreaterThan(0)
+
+    fixture.destroy()
+  })
 })

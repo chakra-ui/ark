@@ -9,6 +9,7 @@ import {
   ArkNumberInputRoot,
 } from '@ark-ui/angular/number-input'
 import { numberInputExampleStyles } from '../number-input-example-styles'
+import { NumberInputChevronDownIcon, NumberInputChevronUpIcon } from './icons'
 
 @Component({
   selector: 'number-input-with-field-example',
@@ -24,6 +25,8 @@ import { numberInputExampleStyles } from '../number-input-example-styles'
     ArkNumberInputInput,
     ArkNumberInputIncrementTrigger,
     ArkNumberInputDecrementTrigger,
+    NumberInputChevronUpIcon,
+    NumberInputChevronDownIcon,
   ],
   template: `
     <div arkFieldRoot [invalid]="true">
@@ -31,8 +34,10 @@ import { numberInputExampleStyles } from '../number-input-example-styles'
         <span arkNumberInputLabel>Quantity</span>
         <div arkNumberInputControl>
           <input arkNumberInputInput />
-          <button arkNumberInputIncrementTrigger>+</button>
-          <button arkNumberInputDecrementTrigger>-</button>
+          <div class="trigger-group">
+            <button arkNumberInputIncrementTrigger><number-input-chevron-up-icon /></button>
+            <button arkNumberInputDecrementTrigger><number-input-chevron-down-icon /></button>
+          </div>
         </div>
       </div>
       <span arkFieldHelperText>Additional info</span>

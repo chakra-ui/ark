@@ -3,6 +3,7 @@ import { InjectionToken, inject, type Signal } from '@angular/core'
 export interface ArkTagsInputItemContext {
   index: Signal<number>
   value: Signal<string>
+  disabled: Signal<boolean>
 }
 
 export const ARK_TAGS_INPUT_ITEM_CONTEXT = new InjectionToken<ArkTagsInputItemContext>('ARK_TAGS_INPUT_ITEM_CONTEXT')

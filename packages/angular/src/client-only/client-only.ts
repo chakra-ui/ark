@@ -9,14 +9,19 @@ import { ChangeDetectionStrategy, Component, type TemplateRef, afterNextRender, 
   host: { style: 'display: contents' },
   template: `
     @if (isClient()) {
-      <ng-content />
-    } @else if (fallback()) {
-      <ng-container [ngTemplateOutlet]="fallback()!"></ng-container>
+      @if (clientTemplate(); as tpl) {
+        <ng-container [ngTemplateOutlet]="tpl"></ng-container>
+      } @else {
+        <ng-content />
+      }
+    } @else if (fallback(); as fb) {
+      <ng-container [ngTemplateOutlet]="fb"></ng-container>
     }
   `,
 })
 export class ArkClientOnlyComponent {
   readonly fallback = input<TemplateRef<unknown> | null>(null)
+  readonly clientTemplate = input<TemplateRef<unknown> | null>(null)
   protected readonly isClient = signal(false)
 
   constructor() {

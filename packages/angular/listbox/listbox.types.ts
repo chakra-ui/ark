@@ -1,4 +1,4 @@
-import type { CollectionItem } from '@zag-js/collection'
+import type { CollectionItem, SelectionMode } from '@zag-js/collection'
 import type { Machine as ZagMachine } from '@zag-js/core'
 import type { Machine } from '@zag-js/listbox'
 
@@ -18,6 +18,8 @@ export type {
   Service as ListboxService,
   ValueChangeDetails as ListboxValueChangeDetails,
 } from '@zag-js/listbox'
+
+export type { SelectionMode as ListboxSelectionMode }
 
 export type { CollectionItem }
 

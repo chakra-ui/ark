@@ -6,6 +6,7 @@ import {
   ArkTagsInputInput,
   ArkTagsInputItem,
   ArkTagsInputItemDeleteTrigger,
+  ArkTagsInputItemInput,
   ArkTagsInputItemPreview,
   ArkTagsInputItemText,
   ArkTagsInputLabel,
@@ -27,13 +28,14 @@ import { tagsInputExampleStyles } from '../tags-input-example-styles'
     ArkTagsInputInput,
     ArkTagsInputHiddenInput,
     ArkTagsInputItem,
+    ArkTagsInputItemInput,
     ArkTagsInputItemPreview,
     ArkTagsInputItemText,
     ArkTagsInputItemDeleteTrigger,
   ],
   template: `
-    <div arkFieldRoot [invalid]="true">
-      <div arkTagsInputRoot #root="arkTagsInputRoot" [defaultValue]="['react']">
+    <div arkFieldRoot>
+      <div arkTagsInputRoot #root="arkTagsInputRoot">
         <span arkTagsInputLabel>Frameworks</span>
         <div arkTagsInputControl>
           @for (tag of root.api().value; track tag; let i = $index) {
@@ -42,9 +44,10 @@ import { tagsInputExampleStyles } from '../tags-input-example-styles'
                 <span arkTagsInputItemText>{{ tag }}</span>
                 <button type="button" arkTagsInputItemDeleteTrigger>x</button>
               </div>
+              <input arkTagsInputItemInput />
             </span>
           }
-          <input arkTagsInputInput placeholder="Add framework" />
+          <input arkTagsInputInput placeholder="Add Framework" />
         </div>
         <input arkTagsInputHiddenInput />
       </div>

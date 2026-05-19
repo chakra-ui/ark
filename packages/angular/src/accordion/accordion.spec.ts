@@ -5,7 +5,9 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import {
   ARK_ACCORDION_CONTEXT,
   ARK_ACCORDION_ITEM_CONTEXT,
+  ArkAccordionContext,
   ArkAccordionItem,
+  ArkAccordionItemContextDirective,
   ArkAccordionItemContent,
   ArkAccordionItemIndicator,
   ArkAccordionItemTrigger,
@@ -15,9 +17,11 @@ import {
   injectArkAccordionContext,
   injectArkAccordionItemContext,
   useAccordion,
+  type AccordionContextTemplate,
   type AccordionApi,
   type AccordionElementIds,
   type AccordionFocusChangeDetails,
+  type AccordionItemContextTemplate,
   type AccordionItemProps,
   type AccordionItemState,
   type AccordionMachine,
@@ -30,6 +34,7 @@ import {
   type UseAccordionReturn,
 } from '@ark-ui/angular/accordion'
 import { AccordionBasicExample } from './examples/basic'
+import { AccordionContextExample } from './examples/context'
 import { AccordionDisabledExample } from './examples/disabled'
 import { AccordionMultipleExample } from './examples/multiple'
 import { AccordionRootProviderExample } from './examples/root-provider'
@@ -38,6 +43,8 @@ type AccordionPublicTypeSmoke = [
   AccordionApi,
   AccordionElementIds,
   AccordionFocusChangeDetails,
+  AccordionContextTemplate,
+  AccordionItemContextTemplate,
   AccordionItemProps,
   AccordionItemState,
   AccordionMachine,
@@ -84,6 +91,8 @@ describe('@ark-ui/angular/accordion', () => {
     expect(ArkAccordionItemTrigger).toBeDefined()
     expect(ArkAccordionItemContent).toBeDefined()
     expect(ArkAccordionItemIndicator).toBeDefined()
+    expect(ArkAccordionContext).toBeDefined()
+    expect(ArkAccordionItemContextDirective).toBeDefined()
     expect(undefined as AccordionPublicTypeSmoke | undefined).toBeUndefined()
   })
 
@@ -128,6 +137,58 @@ describe('@ark-ui/angular/accordion', () => {
     expect(rootProbe.captured).toBe(root)
     expect(itemProbe.captured.value()).toBe('one')
     expect(itemProbe.captured.state().expanded).toBe(false)
+
+    fixture.destroy()
+  })
+
+  it('[arkAccordionContext] exposes the root api in templates', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkAccordionRoot, ArkAccordionContext],
+      template: `
+        <div arkAccordion [defaultValue]="['one']">
+          <ng-container *arkAccordionContext="let accordion">
+            <output>{{ accordion().value.join(',') || 'none' }}</output>
+          </ng-container>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const outputEl = fixture.debugElement.query(By.css('output')).nativeElement as HTMLOutputElement
+    expect(outputEl.textContent?.trim()).toBe('one')
+
+    fixture.destroy()
+  })
+
+  it('[arkAccordionItemContext] exposes item state in templates', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkAccordionRoot, ArkAccordionItem, ArkAccordionItemTrigger, ArkAccordionItemContextDirective],
+      template: `
+        <div arkAccordion [defaultValue]="['one']">
+          <div arkAccordionItem value="one">
+            <button arkAccordionItemTrigger>
+              <ng-container *arkAccordionItemContext="let context">
+                <span>{{ context.state().expanded ? 'expanded' : 'collapsed' }}</span>
+              </ng-container>
+            </button>
+          </div>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const stateEl = fixture.debugElement.query(By.css('span')).nativeElement as HTMLSpanElement
+    expect(stateEl.textContent?.trim()).toBe('expanded')
 
     fixture.destroy()
   })
@@ -195,6 +256,42 @@ describe('@ark-ui/angular/accordion', () => {
     expect(triggerEl.getAttribute('data-state')).toBe('open')
     expect(contentEl.hasAttribute('hidden')).toBe(false)
     expect(fixture.componentInstance.emissions).toEqual([['one']])
+
+    fixture.destroy()
+  })
+
+  it('emits (focusChange) when focus moves between item triggers', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkAccordionRoot, ArkAccordionItem, ArkAccordionItemTrigger],
+      template: `
+        <div arkAccordion (focusChange)="focusDetails.push($event)">
+          <div arkAccordionItem value="one"><button arkAccordionItemTrigger>One</button></div>
+          <div arkAccordionItem value="two"><button arkAccordionItemTrigger>Two</button></div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly focusDetails: AccordionFocusChangeDetails[] = []
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const triggers = fixture.debugElement
+      .queryAll(By.directive(ArkAccordionItemTrigger))
+      .map((debug) => debug.nativeElement as HTMLButtonElement)
+
+    triggers[0].focus()
+    TestBed.tick()
+    fixture.detectChanges()
+    triggers[1].focus()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.focusDetails.length).toBeGreaterThan(0)
+    expect(document.activeElement).toBe(triggers[1])
 
     fixture.destroy()
   })
@@ -460,18 +557,31 @@ describe('@ark-ui/angular/accordion', () => {
     const triggers = fixture.debugElement
       .queryAll(By.directive(ArkAccordionItemTrigger))
       .map((debug) => debug.nativeElement as HTMLButtonElement)
-    expect(triggers.map((trigger) => trigger.disabled)).toEqual([false, true])
+    expect(triggers.map((trigger) => trigger.disabled)).toEqual([false, true, false])
 
     fixture.destroy()
   })
 
-  it('AccordionMultipleExample starts with both default items expanded', () => {
+  it('AccordionMultipleExample starts with the React default item expanded', () => {
     TestBed.configureTestingModule({ imports: [AccordionMultipleExample] })
     const fixture = TestBed.createComponent(AccordionMultipleExample)
     fixture.detectChanges()
 
     const root = fixture.debugElement.query(By.directive(ArkAccordionRoot)).injector.get(ArkAccordionRoot)
-    expect(root.api().value).toEqual(['shipping', 'returns'])
+    expect(root.api().value).toEqual(['ark-ui'])
+
+    fixture.destroy()
+  })
+
+  it('AccordionContextExample renders root context details', () => {
+    TestBed.configureTestingModule({ imports: [AccordionContextExample] })
+    const fixture = TestBed.createComponent(AccordionContextExample)
+    fixture.detectChanges()
+
+    const outputEl = fixture.debugElement.query(By.css('output')).nativeElement as HTMLOutputElement
+    expect(outputEl.textContent).toContain('context.value')
+    expect(outputEl.textContent).toContain('ark-ui')
+    expect(outputEl.textContent).toContain('context.focusedValue')
 
     fixture.destroy()
   })
@@ -481,16 +591,18 @@ describe('@ark-ui/angular/accordion', () => {
     const fixture = TestBed.createComponent(AccordionRootProviderExample)
     fixture.detectChanges()
 
-    const triggerEl = fixture.debugElement.query(By.directive(ArkAccordionItemTrigger))
-      .nativeElement as HTMLButtonElement
-    expect(fixture.componentInstance.valueLabel()).toBe('none')
+    const triggers = fixture.debugElement
+      .queryAll(By.directive(ArkAccordionItemTrigger))
+      .map((debug) => debug.nativeElement as HTMLButtonElement)
+    const triggerEl = triggers[1]
+    expect(fixture.componentInstance.valueLabel()).toBe('ark-ui')
 
     triggerEl.focus()
     triggerEl.click()
     TestBed.tick()
     fixture.detectChanges()
 
-    expect(fixture.componentInstance.valueLabel()).toBe('provider')
+    expect(fixture.componentInstance.valueLabel()).toBe('ark-ui, getting-started')
 
     fixture.destroy()
   })

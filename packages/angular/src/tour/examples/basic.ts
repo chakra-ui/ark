@@ -4,6 +4,8 @@ import type { TourStepDetails } from '../public-api'
 import {
   ArkTourActionTrigger,
   ArkTourActions,
+  ArkTourArrow,
+  ArkTourArrowTip,
   ArkTourBackdrop,
   ArkTourCloseTrigger,
   ArkTourContent,
@@ -12,6 +14,7 @@ import {
   ArkTourPositioner,
   ArkTourProgressText,
   ArkTourRoot,
+  ArkTourSpotlight,
   ArkTourTitle,
 } from '../public-api'
 import { tourExampleStyles } from '../tour-example-styles'
@@ -24,8 +27,11 @@ import { tourExampleStyles } from '../tour-example-styles'
     ArkPortalComponent,
     ArkTourRoot,
     ArkTourBackdrop,
+    ArkTourSpotlight,
     ArkTourPositioner,
     ArkTourContent,
+    ArkTourArrow,
+    ArkTourArrowTip,
     ArkTourCloseTrigger,
     ArkTourProgressText,
     ArkTourTitle,
@@ -36,26 +42,30 @@ import { tourExampleStyles } from '../tour-example-styles'
   ],
   template: `
     <div class="tour-root" arkTour #tour="arkTour" [steps]="steps">
-      <button type="button" class="tour-button" (click)="tour.api().start()">Start Tour</button>
+      <button type="button" class="tour-button" data-variant="solid" (click)="tour.api().start()">Start Tour</button>
 
       <div class="tour-targets">
-        <div id="tour-item-1" class="tour-target">Profile</div>
-        <div id="tour-item-2" class="tour-target">Settings</div>
-        <div id="tour-item-3" class="tour-target">Billing</div>
+        <button id="btn-upload" type="button" class="tour-button">Upload</button>
+        <button id="btn-save" type="button" class="tour-button">Save</button>
+        <button id="btn-more" type="button" class="tour-button">More</button>
       </div>
 
       <ark-portal [originInjector]="tour.getContextCarrier().elementInjector">
         <div arkTourBackdrop class="tour-backdrop"></div>
+        <div arkTourSpotlight class="tour-spotlight"></div>
         <div arkTourPositioner class="tour-positioner">
           <div arkTourContent class="tour-content">
-            <button type="button" arkTourCloseTrigger class="tour-button" aria-label="Close">Close</button>
-            <div arkTourProgressText></div>
+            <div arkTourArrow class="tour-arrow">
+              <div arkTourArrowTip class="tour-arrow-tip"></div>
+            </div>
+            <button type="button" arkTourCloseTrigger class="tour-close-trigger" aria-label="Close">x</button>
+            <div arkTourProgressText class="tour-progress-text"></div>
             <h2 arkTourTitle class="tour-title"></h2>
             <p arkTourDescription class="tour-description"></p>
             <div arkTourControl class="tour-control">
               <ng-template arkTourActions let-actions>
                 @for (action of actions; track action.label) {
-                  <button type="button" arkTourActionTrigger [action]="action" class="tour-button"></button>
+                  <button type="button" arkTourActionTrigger [action]="action" class="tour-action-trigger"></button>
                 }
               </ng-template>
             </div>
@@ -69,34 +79,51 @@ import { tourExampleStyles } from '../tour-example-styles'
 export class TourBasicExample {
   readonly steps: TourStepDetails[] = [
     {
-      id: 'profile',
-      type: 'tooltip',
-      title: 'Profile',
-      description: 'Review the current user profile here.',
-      target: () => document.querySelector<HTMLElement>('#tour-item-1'),
-      actions: [{ label: 'Next', action: 'next' }],
+      id: 'welcome',
+      type: 'dialog',
+      title: 'Welcome to the App!',
+      description: "Let's take a quick tour to get you started with the main features.",
+      actions: [{ label: 'Start Tour', action: 'next' }],
     },
     {
-      id: 'settings',
+      id: 'upload',
       type: 'tooltip',
-      title: 'Settings',
-      description: 'Adjust workspace preferences from this area.',
-      target: () => document.querySelector<HTMLElement>('#tour-item-2'),
+      title: 'Upload Files',
+      description: 'Click here to upload your files to the cloud.',
+      target: () => document.querySelector<HTMLElement>('#btn-upload'),
       actions: [
         { label: 'Back', action: 'prev' },
         { label: 'Next', action: 'next' },
       ],
     },
     {
-      id: 'billing',
+      id: 'save',
       type: 'tooltip',
-      title: 'Billing',
-      description: 'Manage plan and payment details from billing.',
-      target: () => document.querySelector<HTMLElement>('#tour-item-3'),
+      title: 'Save Changes',
+      description: 'Save your work to keep your progress.',
+      target: () => document.querySelector<HTMLElement>('#btn-save'),
       actions: [
         { label: 'Back', action: 'prev' },
-        { label: 'Finish', action: 'dismiss' },
+        { label: 'Next', action: 'next' },
       ],
+    },
+    {
+      id: 'more',
+      type: 'tooltip',
+      title: 'More Options',
+      description: 'Access additional settings and actions from this menu.',
+      target: () => document.querySelector<HTMLElement>('#btn-more'),
+      actions: [
+        { label: 'Back', action: 'prev' },
+        { label: 'Next', action: 'next' },
+      ],
+    },
+    {
+      id: 'complete',
+      type: 'dialog',
+      title: "You're all set!",
+      description: 'You now know the basics. Enjoy using the app!',
+      actions: [{ label: 'Finish', action: 'dismiss' }],
     },
   ]
 }

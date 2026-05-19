@@ -32,7 +32,9 @@ import { CollapsibleChevronIcon } from './icons'
           </span>
         </button>
         <div arkCollapsibleContent>
-          This panel can be toggled by the button above, which uses the useCollapsible hook for state management.
+          <div class="collapsible-body">
+            This panel can be toggled by the button above, which uses the useCollapsible hook for state management.
+          </div>
         </div>
       </div>
     </div>

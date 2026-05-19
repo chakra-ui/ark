@@ -218,6 +218,49 @@ describe('@ark-ui/angular/date-input', () => {
     fixture.destroy()
   })
 
+  it('two-way binds placeholderValue when segment editing advances the placeholder', async () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkDateInputRoot,
+        ArkDateInputControl,
+        ArkDateInputSegmentGroup,
+        ArkDateInputSegment,
+        ArkDateInputSegmentContext,
+      ],
+      template: `
+        <div arkDateInput [(placeholderValue)]="placeholderValue">
+          <div arkDateInputControl>
+            <div arkDateInputSegmentGroup>
+              <ng-container *arkDateInputSegmentContext="let segment">
+                <span arkDateInputSegment [segment]="segment"></span>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly placeholderValue = signal<DateValue | undefined>(parseDate('2026-05-19'))
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flush(fixture)
+
+    const root = fixture.debugElement.query(By.directive(ArkDateInputRoot)).injector.get(ArkDateInputRoot)
+    const next = parseDate('2026-05-20')
+    ;(root.service as unknown as { setContext: (context: Partial<DateInputMachineProps>) => void }).setContext({
+      placeholderValue: next,
+    })
+    await flush(fixture)
+
+    expect(String(fixture.componentInstance.placeholderValue())).toBe('2026-05-20')
+
+    fixture.destroy()
+  })
+
   it('reactive FormControl writes update the same value channel and user changes notify once', async () => {
     @Component({
       standalone: true,
@@ -313,6 +356,132 @@ describe('@ark-ui/angular/date-input', () => {
     expect(root.api().disabled).toBe(true)
     expect(hidden.disabled).toBe(true)
     expect(segment.getAttribute('data-disabled')).toBe('')
+
+    fixture.destroy()
+  })
+
+  it('applies disabled, read-only, and invalid state attributes from root inputs', async () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkDateInputRoot,
+        ArkDateInputControl,
+        ArkDateInputSegmentGroup,
+        ArkDateInputSegment,
+        ArkDateInputSegmentContext,
+      ],
+      template: `
+        <div arkDateInput disabled readOnly invalid>
+          <div arkDateInputControl>
+            <div arkDateInputSegmentGroup>
+              <ng-container *arkDateInputSegmentContext="let segment">
+                <span arkDateInputSegment [segment]="segment"></span>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flush(fixture)
+
+    const rootElement = fixture.debugElement.query(By.directive(ArkDateInputRoot)).nativeElement as HTMLElement
+    const group = fixture.debugElement.query(By.directive(ArkDateInputSegmentGroup)).nativeElement as HTMLElement
+    const segment = fixture.debugElement.query(By.directive(ArkDateInputSegment)).nativeElement as HTMLElement
+
+    expect(rootElement.getAttribute('data-disabled')).toBe('')
+    expect(rootElement.getAttribute('data-invalid')).toBe('')
+    expect(group.getAttribute('data-disabled')).toBe('')
+    expect(group.getAttribute('data-invalid')).toBe('')
+    expect(group.getAttribute('data-readonly')).toBe('')
+    expect(segment.getAttribute('data-disabled')).toBe('')
+    expect(segment.getAttribute('data-readonly')).toBe('')
+
+    fixture.destroy()
+  })
+
+  it('updates a focused segment on typing and reflects cleared values', async () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkDateInputRoot,
+        ArkDateInputControl,
+        ArkDateInputSegmentGroup,
+        ArkDateInputSegment,
+        ArkDateInputSegmentContext,
+      ],
+      template: `
+        <div arkDateInput [defaultValue]="value">
+          <div arkDateInputControl>
+            <div arkDateInputSegmentGroup>
+              <ng-container *arkDateInputSegmentContext="let segment">
+                <span arkDateInputSegment [segment]="segment"></span>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly value = [parseDate('2024-06-15')]
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flush(fixture)
+
+    const [monthSegment] = fixture.debugElement.queryAll(By.directive(ArkDateInputSegment))
+    const month = monthSegment.nativeElement as HTMLElement
+    month.dispatchEvent(new MouseEvent('click', { bubbles: true }))
+    month.focus()
+    await flush(fixture)
+    expect(document.activeElement).toBe(month)
+    month.dispatchEvent(new InputEvent('beforeinput', { data: '7', inputType: 'insertText', bubbles: true }))
+    await flush(fixture)
+
+    expect(month.textContent).toBe('7')
+
+    const root = fixture.debugElement.query(By.directive(ArkDateInputRoot)).injector.get(ArkDateInputRoot)
+    root.api().clearValue()
+    await flush(fixture)
+
+    expect(month.hasAttribute('aria-valuenow')).toBe(false)
+
+    fixture.destroy()
+  })
+
+  it('syncs indexed hidden input values for range selection', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkDateInputRoot, ArkDateInputHiddenInput],
+      template: `
+        <div arkDateInput name="date" selectionMode="range" [defaultValue]="range">
+          <input arkDateInputHiddenInput [index]="0" />
+          <input arkDateInputHiddenInput [index]="1" />
+        </div>
+      `,
+    })
+    class Host {
+      readonly range = [parseDate('2024-06-15'), parseDate('2024-06-20')]
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flush(fixture)
+
+    const hiddenInputs = fixture.debugElement
+      .queryAll(By.directive(ArkDateInputHiddenInput))
+      .map((debugElement) => debugElement.nativeElement as HTMLInputElement)
+
+    expect(hiddenInputs).toHaveLength(2)
+    expect(hiddenInputs[0].value).toBe('6/15/2024')
+    expect(hiddenInputs[1].value).toBe('6/20/2024')
 
     fixture.destroy()
   })

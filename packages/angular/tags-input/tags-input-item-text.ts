@@ -16,7 +16,8 @@ export class ArkTagsInputItemText {
       elementRef: inject(ElementRef),
       renderer: inject(Renderer2),
       destroyRef: inject(DestroyRef),
-      props: () => context.api().getItemTextProps({ index: item.index(), value: item.value() }),
+      props: () =>
+        context.api().getItemTextProps({ index: item.index(), value: item.value(), disabled: item.disabled() }),
     })
   }
 }

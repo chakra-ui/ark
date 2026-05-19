@@ -1,10 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { moduleMetadata } from '@storybook/angular'
 import { EditableBasicExample } from './examples/basic'
+import { EditableContextExample } from './examples/context'
 import { EditableControlledExample } from './examples/controlled'
+import { EditableControlsExample } from './examples/controls'
+import { EditableDoubleClickExample } from './examples/double-click'
 import { EditableRootProviderExample } from './examples/root-provider'
-import { EditableWithFieldValidationExample } from './examples/with-field-validation'
-import { EditableWithTriggerExample } from './examples/with-trigger'
+import { EditableTextareaExample } from './examples/textarea'
+import { EditableWithFieldExample } from './examples/with-field'
 
 const meta: Meta = {
   title: 'Components / Editable',
@@ -17,9 +20,9 @@ export const Basic: StoryObj = {
   render: () => ({ template: '<editable-basic-example />' }),
 }
 
-export const WithTrigger: StoryObj = {
-  decorators: [moduleMetadata({ imports: [EditableWithTriggerExample] })],
-  render: () => ({ template: '<editable-with-trigger-example />' }),
+export const Context: StoryObj = {
+  decorators: [moduleMetadata({ imports: [EditableContextExample] })],
+  render: () => ({ template: '<editable-context-example />' }),
 }
 
 export const Controlled: StoryObj = {
@@ -27,12 +30,27 @@ export const Controlled: StoryObj = {
   render: () => ({ template: '<editable-controlled-example />' }),
 }
 
-export const WithFieldValidation: StoryObj = {
-  decorators: [moduleMetadata({ imports: [EditableWithFieldValidationExample] })],
-  render: () => ({ template: '<editable-with-field-validation-example />' }),
+export const Controls: StoryObj = {
+  decorators: [moduleMetadata({ imports: [EditableControlsExample] })],
+  render: () => ({ template: '<editable-controls-example />' }),
+}
+
+export const DoubleClick: StoryObj = {
+  decorators: [moduleMetadata({ imports: [EditableDoubleClickExample] })],
+  render: () => ({ template: '<editable-double-click-example />' }),
 }
 
 export const RootProvider: StoryObj = {
   decorators: [moduleMetadata({ imports: [EditableRootProviderExample] })],
   render: () => ({ template: '<editable-root-provider-example />' }),
+}
+
+export const Textarea: StoryObj = {
+  decorators: [moduleMetadata({ imports: [EditableTextareaExample] })],
+  render: () => ({ template: '<editable-textarea-example />' }),
+}
+
+export const WithField: StoryObj = {
+  decorators: [moduleMetadata({ imports: [EditableWithFieldExample] })],
+  render: () => ({ template: '<editable-with-field-example />' }),
 }

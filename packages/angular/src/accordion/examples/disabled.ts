@@ -7,6 +7,7 @@ import {
   ArkAccordionRoot,
 } from '@ark-ui/angular/accordion'
 import { accordionExampleStyles } from '../accordion-example-styles'
+import { AccordionChevronDownIcon } from './icons'
 
 @Component({
   selector: 'accordion-disabled-example',
@@ -18,25 +19,43 @@ import { accordionExampleStyles } from '../accordion-example-styles'
     ArkAccordionItemTrigger,
     ArkAccordionItemContent,
     ArkAccordionItemIndicator,
+    AccordionChevronDownIcon,
   ],
   template: `
     <div arkAccordion>
-      <div arkAccordionItem value="enabled">
-        <button type="button" arkAccordionItemTrigger>
-          Enabled item
-          <span arkAccordionItemIndicator>+</span>
-        </button>
-        <div arkAccordionItemContent>This item can be expanded.</div>
-      </div>
-      <div arkAccordionItem value="disabled" disabled>
-        <button type="button" arkAccordionItemTrigger>
-          Disabled item
-          <span arkAccordionItemIndicator>+</span>
-        </button>
-        <div arkAccordionItemContent>This item cannot be expanded.</div>
-      </div>
+      @for (item of items; track item.value) {
+        <div arkAccordionItem [value]="item.value" [disabled]="item.value === 'getting-started'">
+          <button type="button" arkAccordionItemTrigger>
+            {{ item.title }}
+            <span arkAccordionItemIndicator><accordion-chevron-down-icon /></span>
+          </button>
+          <div arkAccordionItemContent>
+            <div class="item-body">{{ item.content }}</div>
+          </div>
+        </div>
+      }
     </div>
   `,
   styles: [accordionExampleStyles],
 })
-export class AccordionDisabledExample {}
+export class AccordionDisabledExample {
+  readonly items = accordionItems
+}
+
+const accordionItems = [
+  {
+    value: 'ark-ui',
+    title: 'What is Ark UI?',
+    content: 'A headless component library for building accessible web apps.',
+  },
+  {
+    value: 'getting-started',
+    title: 'How to get started?',
+    content: 'Install the package and import the components you need.',
+  },
+  {
+    value: 'maintainers',
+    title: 'Who maintains this project?',
+    content: 'Ark UI is maintained by the Chakra UI team.',
+  },
+]

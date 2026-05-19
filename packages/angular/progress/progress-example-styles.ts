@@ -120,9 +120,9 @@ export const progressCircularExampleStyles = `
   [arkProgress],
   [arkProgressRootProvider] {
     color: var(--demo-neutral-fg);
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.5rem;
   }
 
@@ -134,6 +134,8 @@ export const progressCircularExampleStyles = `
   }
 
   .progress-circle-container {
+    --size: 4rem;
+    --thickness: 0.375rem;
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -141,10 +143,12 @@ export const progressCircularExampleStyles = `
   }
 
   svg[arkProgressCircle] {
-    --size: 6rem;
-    --thickness: 0.5rem;
     width: var(--size);
     height: var(--size);
+  }
+
+  svg[arkProgressCircle][data-state='indeterminate'] {
+    animation: ark-progress-circle-spin 2s linear infinite;
   }
 
   circle[arkProgressCircleTrack] {
@@ -153,15 +157,44 @@ export const progressCircularExampleStyles = `
 
   circle[arkProgressCircleRange] {
     stroke: var(--demo-coral-solid);
-    transition: stroke-dashoffset 0.3s ease-out;
+    transition:
+      stroke-dasharray 0.6s ease-out,
+      stroke 0.6s ease-out;
+  }
+
+  circle[arkProgressCircleRange][data-state='indeterminate'] {
+    animation: ark-progress-circle-range-indeterminate 1.5s ease-in-out infinite;
   }
 
   [arkProgressValueText] {
     position: absolute;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+    font-size: calc(var(--size) * 0.25);
     font-weight: 500;
     color: var(--demo-neutral-fg);
+  }
+
+  @keyframes ark-progress-circle-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes ark-progress-circle-range-indeterminate {
+    0% {
+      stroke-dasharray: 1px 181px;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 91px 91px;
+      stroke-dashoffset: -45px;
+    }
+    100% {
+      stroke-dasharray: 91px 91px;
+      stroke-dashoffset: -182px;
+    }
   }
 
   ${progressButtonStyles}

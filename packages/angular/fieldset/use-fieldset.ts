@@ -87,8 +87,6 @@ export function useFieldset(options: UseFieldsetOptions): UseFieldsetReturn {
   const getHelperTextProps = (): ArkProps => ({
     ...fieldsetParts.helperText.attrs,
     id: ids().helperText,
-    'data-disabled': dataAttr(disabled()),
-    'data-invalid': dataAttr(invalid()),
   })
 
   const getErrorTextProps = (): ArkProps => ({
@@ -96,8 +94,6 @@ export function useFieldset(options: UseFieldsetOptions): UseFieldsetReturn {
     id: ids().errorText,
     'aria-live': 'polite',
     hidden: !invalid() || undefined,
-    'data-disabled': dataAttr(disabled()),
-    'data-invalid': dataAttr(invalid()),
   })
 
   return {

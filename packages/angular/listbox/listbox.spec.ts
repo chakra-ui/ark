@@ -28,6 +28,7 @@ import {
   type ListboxApi,
   type ListboxMachine,
   type ListboxMachineProps,
+  type ListboxSelectionMode,
   type ListboxService,
   type UseListboxOptions,
   type UseListboxProps,
@@ -38,6 +39,7 @@ type ListboxPublicTypeSmoke = [
   ListboxApi,
   ListboxMachine,
   ListboxMachineProps,
+  ListboxSelectionMode,
   ListboxService,
   UseListboxOptions,
   UseListboxProps,
@@ -47,6 +49,7 @@ type ListboxPublicTypeSmoke = [
 interface Country {
   label: string
   value: string
+  disabled?: boolean
 }
 
 const makeCollection = (): ListCollection<Country> =>
@@ -273,6 +276,7 @@ describe('@ark-ui/angular/listbox', () => {
     const emptyEl = fixture.debugElement.query(By.directive(ArkListboxEmpty)).nativeElement as HTMLElement
     expect(emptyEl.getAttribute('data-scope')).toBe('listbox')
     expect(emptyEl.getAttribute('data-part')).toBe('empty')
+    expect(emptyEl.getAttribute('role')).toBe('presentation')
     expect(emptyEl.style.display).not.toBe('none')
 
     fixture.destroy()
@@ -335,6 +339,95 @@ describe('@ark-ui/angular/listbox', () => {
     const indicator = fixture.debugElement.query(By.directive(ArkListboxItemIndicator)).nativeElement as HTMLElement
     expect(text.getAttribute('data-part')).toBe('item-text')
     expect(indicator.getAttribute('data-part')).toBe('item-indicator')
+
+    fixture.destroy()
+  })
+
+  it('renders disabled items with aria-disabled attributes', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkListboxRoot, ArkListboxContent, ArkListboxItem, ArkListboxItemText],
+      template: `
+        <div arkListboxRoot [collection]="collection">
+          <div arkListboxContent>
+            @for (item of collection.items; track item.value) {
+              <div arkListboxItem [item]="item">
+                <span arkListboxItemText>{{ item.label }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly collection = createListCollection<Country>({
+        items: [
+          { label: 'Alpha', value: 'a' },
+          { label: 'Bravo', value: 'b', disabled: true },
+          { label: 'Charlie', value: 'c' },
+        ],
+      })
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+
+    const items = fixture.debugElement.queryAll(By.directive(ArkListboxItem))
+    const disabledItem = items[1].nativeElement as HTMLElement
+    expect(disabledItem.getAttribute('role')).toBe('option')
+    expect(disabledItem.getAttribute('aria-disabled')).toBe('true')
+
+    fixture.destroy()
+  })
+
+  it('emits valueChange and select details when an item is selected', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkListboxRoot, ArkListboxContent, ArkListboxItem, ArkListboxItemText],
+      template: `
+        <div arkListboxRoot [collection]="collection" (valueChange)="onValueChange($event)" (select)="onSelect($event)">
+          <div arkListboxContent>
+            @for (item of collection.items; track item.value) {
+              <div arkListboxItem [item]="item">
+                <span arkListboxItemText>{{ item.label }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly collection = makeCollection()
+      valueDetails: unknown
+      selectDetails: unknown
+
+      onValueChange(details: unknown): void {
+        this.valueDetails = details
+      }
+
+      onSelect(details: unknown): void {
+        this.selectDetails = details
+      }
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+
+    const items = fixture.debugElement.queryAll(By.directive(ArkListboxItem))
+    ;(items[0].nativeElement as HTMLElement).click()
+    await flushMicrotasks()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.valueDetails).toEqual({
+      items: [{ label: 'Alpha', value: 'a' }],
+      value: ['a'],
+    })
+    expect(fixture.componentInstance.selectDetails).toEqual({ value: 'a' })
 
     fixture.destroy()
   })

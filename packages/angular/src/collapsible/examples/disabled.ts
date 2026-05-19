@@ -27,7 +27,9 @@ import { CollapsibleChevronIcon } from './icons'
           <collapsible-chevron-icon />
         </span>
       </button>
-      <div arkCollapsibleContent>This section is currently unavailable.</div>
+      <div arkCollapsibleContent>
+        <div class="collapsible-body">This section is currently unavailable.</div>
+      </div>
     </div>
   `,
   styles: [collapsibleExampleStyles],

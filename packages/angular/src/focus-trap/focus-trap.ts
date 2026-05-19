@@ -1,4 +1,5 @@
-import { DestroyRef, Directive, ElementRef, booleanAttribute, effect, inject, input } from '@angular/core'
+import { isPlatformBrowser } from '@angular/common'
+import { DestroyRef, Directive, ElementRef, PLATFORM_ID, booleanAttribute, effect, inject, input } from '@angular/core'
 import { type TrapFocusOptions, trapFocus } from '@zag-js/focus-trap'
 
 export type * from '@zag-js/focus-trap'
@@ -11,6 +12,7 @@ export interface FocusTrapProps {
 @Directive({
   selector: '[arkFocusTrap]',
   standalone: true,
+  exportAs: 'arkFocusTrap',
 })
 export class ArkFocusTrapDirective {
   readonly arkFocusTrap = input(false, { transform: booleanAttribute })
@@ -18,6 +20,7 @@ export class ArkFocusTrapDirective {
 
   private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef)
   private readonly destroyRef = inject(DestroyRef)
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID))
   private cleanup: (() => void) | undefined
 
   constructor() {
@@ -25,7 +28,7 @@ export class ArkFocusTrapDirective {
       const active = this.arkFocusTrap()
       const options = this.arkFocusTrapOptions()
       this.tearDown()
-      if (active) {
+      if (active && this.isBrowser) {
         this.cleanup = trapFocus(this.elementRef.nativeElement, options)
       }
     })

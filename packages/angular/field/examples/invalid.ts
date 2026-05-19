@@ -15,10 +15,9 @@ import { fieldExampleStyles } from '../field-example-styles'
   imports: [ArkFieldRoot, ArkFieldLabel, ArkFieldInput, ArkFieldHelperText, ArkFieldErrorText],
   template: `
     <div arkFieldRoot [invalid]="true">
-      <label arkFieldLabel>Label</label>
-      <input arkFieldInput />
-      <span arkFieldHelperText>Some additional Info</span>
-      <span arkFieldErrorText>Error Info</span>
+      <label arkFieldLabel>Email</label>
+      <input arkFieldInput placeholder="me@example.com" />
+      <span arkFieldErrorText>This is an error text</span>
     </div>
   `,
   styles: [fieldExampleStyles],

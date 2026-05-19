@@ -80,4 +80,61 @@ export const comboboxExampleStyles = `
     font-size: 0.875rem;
     color: var(--demo-neutral-muted, #6b7280);
   }
+
+  .combobox-indicators {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.125rem;
+  }
+
+  .combobox-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    min-height: 1.5rem;
+    align-items: center;
+  }
+
+  .combobox-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    background: var(--demo-neutral-bg, #f3f4f6);
+    color: var(--demo-neutral-fg, #111827);
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .combobox-tag-placeholder {
+    color: var(--demo-neutral-muted, #6b7280);
+    font-size: 0.75rem;
+  }
+
+  .combobox-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--demo-neutral-muted, #6b7280);
+  }
+
+  .combobox-item-title {
+    display: block;
+    font-weight: 500;
+  }
+
+  .combobox-item-subtitle {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--demo-neutral-muted, #6b7280);
+  }
+
+  [arkComboboxItem] mark {
+    background: transparent;
+    color: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+  }
 `

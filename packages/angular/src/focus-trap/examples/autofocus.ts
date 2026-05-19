@@ -31,7 +31,6 @@ import { ArkFocusTrapDirective } from '../public-api'
         flex-direction: column;
         gap: 1rem;
         padding-block: 1rem;
-        max-width: 320px;
       }
 
       button,

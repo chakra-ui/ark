@@ -27,14 +27,25 @@ import { hoverCardExampleStyles } from '../hover-card-example-styles'
     <div class="stack">
       <button type="button" (click)="toggle()">Toggle</button>
       <div arkHoverCard #root="arkHoverCard" [(open)]="open">
-        <a arkHoverCardTrigger href="#profile">&#64;sarah_chen</a>
+        <p>
+          Liked by
+          <a arkHoverCardTrigger href="#profile">&#64;sarah_chen</a>
+          and 3 others
+        </p>
         <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
           <div arkHoverCardPositioner>
             <div arkHoverCardContent>
               <div arkHoverCardArrow>
                 <div arkHoverCardArrowTip></div>
               </div>
-              <p>Sarah Chen — Design Engineer at Acme Inc.</p>
+              <div class="Body">
+                <img class="Avatar" src="https://i.pravatar.cc/300?u=sarah" alt="Sarah Chen" />
+                <div>
+                  <p class="Name">Sarah Chen</p>
+                  <p class="Username">&#64;sarah_chen</p>
+                </div>
+                <p class="Bio">Design Engineer at Acme Inc.</p>
+              </div>
             </div>
           </div>
         </ark-portal>

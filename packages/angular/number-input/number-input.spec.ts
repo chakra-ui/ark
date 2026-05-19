@@ -175,6 +175,49 @@ describe('@ark-ui/angular/number-input', () => {
     fixture.destroy()
   })
 
+  it('emits valueInvalid details when an unclamped blur commits an out-of-range value', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkNumberInputRoot, ArkNumberInputControl, ArkNumberInputInput, ArkNumberInputIncrementTrigger],
+      template: `
+        <div
+          arkNumberInputRoot
+          defaultValue="99"
+          [max]="10"
+          allowOverflow
+          [clampValueOnBlur]="false"
+          (valueInvalid)="invalidValues.push($event.value)"
+        >
+          <div arkNumberInputControl>
+            <input arkNumberInputInput />
+            <button arkNumberInputIncrementTrigger>+</button>
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly invalidValues: string[] = []
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const inputEl = fixture.debugElement.query(By.directive(ArkNumberInputInput)).nativeElement as HTMLInputElement
+    inputEl.focus()
+    inputEl.dispatchEvent(new FocusEvent('focusin', { bubbles: true }))
+    TestBed.tick()
+    fixture.detectChanges()
+    inputEl.dispatchEvent(new FocusEvent('focusout', { bubbles: true }))
+    inputEl.blur()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.invalidValues).toContain('99')
+
+    fixture.destroy()
+  })
+
   it('reports invalid value through api when value is out of range', () => {
     @Component({
       standalone: true,
@@ -196,6 +239,78 @@ describe('@ark-ui/angular/number-input', () => {
     const root = fixture.debugElement.query(By.directive(ArkNumberInputRoot)).injector.get(ArkNumberInputRoot)
     expect(root.api().invalid).toBe(true)
     expect(root.api().valueAsNumber).toBe(99)
+
+    fixture.destroy()
+  })
+
+  it('emits focusChange and valueCommit details on input blur', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkNumberInputRoot, ArkNumberInputControl, ArkNumberInputInput],
+      template: `
+        <div
+          arkNumberInputRoot
+          defaultValue="2"
+          (focusChange)="focusStates.push($event.focused)"
+          (valueCommit)="commits.push($event.value)"
+        >
+          <div arkNumberInputControl>
+            <input arkNumberInputInput />
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly focusStates: boolean[] = []
+      readonly commits: string[] = []
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const inputEl = fixture.debugElement.query(By.directive(ArkNumberInputInput)).nativeElement as HTMLInputElement
+    inputEl.focus()
+    inputEl.dispatchEvent(new FocusEvent('focusin', { bubbles: true }))
+    TestBed.tick()
+    fixture.detectChanges()
+    inputEl.dispatchEvent(new FocusEvent('focusout', { bubbles: true }))
+    inputEl.blur()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.focusStates).toContain(true)
+    expect(fixture.componentInstance.focusStates).toContain(false)
+    expect(fixture.componentInstance.commits).toContain('2')
+
+    fixture.destroy()
+  })
+
+  it('applies locale and fraction digit formatting options to the input value', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkNumberInputRoot, ArkNumberInputControl, ArkNumberInputInput],
+      template: `
+        <div
+          arkNumberInputRoot
+          defaultValue="1,2"
+          locale="de-DE"
+          [formatOptions]="{ minimumFractionDigits: 2, maximumFractionDigits: 2 }"
+        >
+          <div arkNumberInputControl>
+            <input arkNumberInputInput />
+          </div>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const root = fixture.debugElement.query(By.directive(ArkNumberInputRoot)).injector.get(ArkNumberInputRoot)
+    expect(root.api().value).toBe('1,20')
 
     fixture.destroy()
   })

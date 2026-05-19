@@ -19,6 +19,7 @@ import {
   useProgress,
   type ProgressApi,
   type ProgressElementIds,
+  type ProgressIntlTranslations,
   type ProgressMachine,
   type ProgressMachineProps,
   type ProgressState,
@@ -29,15 +30,21 @@ import {
   type UseProgressProps,
   type UseProgressReturn,
 } from '@ark-ui/angular/progress'
+import { provideArkLocale } from '@ark-ui/angular/providers/locale'
 import { ProgressLinearBasicExample } from './examples/linear/basic'
+import { ProgressLinearControlledExample } from './examples/linear/controlled'
 import { ProgressLinearIndeterminateExample } from './examples/linear/indeterminate'
+import { ProgressLinearInitialValueExample } from './examples/linear/initial-value'
 import { ProgressLinearRootProviderExample } from './examples/linear/root-provider'
 import { ProgressCircularBasicExample } from './examples/circular/basic'
+import { ProgressCircularControlledExample } from './examples/circular/controlled'
+import { ProgressCircularInitialValueExample } from './examples/circular/initial-value'
 import { ProgressCircularRootProviderExample } from './examples/circular/root-provider'
 
 type ProgressPublicTypeSmoke = [
   ProgressApi,
   ProgressElementIds,
+  ProgressIntlTranslations,
   ProgressMachine,
   ProgressMachineProps,
   ProgressState,
@@ -443,5 +450,98 @@ describe('@ark-ui/angular/progress', () => {
     expect(fixture.componentInstance.emissions).toEqual([])
 
     fixture.destroy()
+  })
+
+  it('[translations] and [locale] are forwarded to value formatting', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkProgressRoot, ArkProgressValueText],
+      template: `
+        <div arkProgress [defaultValue]="50" locale="de-DE" [translations]="translations">
+          <span arkProgressValueText #valueText="arkProgressValueText">
+            {{ valueText.valueAsString() }} / {{ valueText.percentAsString() }}
+          </span>
+        </div>
+      `,
+    })
+    class Host {
+      readonly translations: ProgressIntlTranslations = {
+        value: ({ value, max, formatter }) => `${value} von ${max} (${formatter.format((value ?? 0) / max)})`,
+      }
+    }
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const host: HTMLElement = fixture.nativeElement
+    const expectedPercent = new Intl.NumberFormat('de-DE', { style: 'percent' }).format(0.5)
+    expect(host.textContent).toContain(`50 von 100 (${expectedPercent})`)
+    expect(host.textContent).toContain(expectedPercent)
+
+    fixture.destroy()
+  })
+
+  it('useProgress() inherits the Ark locale provider', () => {
+    @Component({
+      standalone: true,
+      template: '',
+    })
+    class Host {
+      readonly progress = useProgress({ context: () => ({ value: 50 }) })
+    }
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({
+      imports: [Host],
+      providers: [provideArkLocale({ locale: 'de-DE' })],
+    })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.progress.api().percentAsString).toBe(
+      new Intl.NumberFormat('de-DE', { style: 'percent' }).format(0.5),
+    )
+
+    fixture.destroy()
+  })
+
+  it('controlled and initial-value Storybook examples mount with expected values', () => {
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({
+      imports: [
+        ProgressLinearControlledExample,
+        ProgressLinearInitialValueExample,
+        ProgressCircularControlledExample,
+        ProgressCircularInitialValueExample,
+      ],
+    })
+
+    const linearControlledFixture = TestBed.createComponent(ProgressLinearControlledExample)
+    linearControlledFixture.detectChanges()
+    expect(linearControlledFixture.componentInstance.value()).toBe(42)
+    linearControlledFixture.destroy()
+
+    const linearInitialFixture = TestBed.createComponent(ProgressLinearInitialValueExample)
+    linearInitialFixture.detectChanges()
+    const linearRoot = linearInitialFixture.debugElement
+      .query(By.directive(ArkProgressRoot))
+      .injector.get(ArkProgressRoot)
+    expect(linearRoot.api().value).toBe(70)
+    linearInitialFixture.destroy()
+
+    const circularControlledFixture = TestBed.createComponent(ProgressCircularControlledExample)
+    circularControlledFixture.detectChanges()
+    expect(circularControlledFixture.componentInstance.value()).toBe(42)
+    circularControlledFixture.destroy()
+
+    const circularInitialFixture = TestBed.createComponent(ProgressCircularInitialValueExample)
+    circularInitialFixture.detectChanges()
+    const circularRoot = circularInitialFixture.debugElement
+      .query(By.directive(ArkProgressRoot))
+      .injector.get(ArkProgressRoot)
+    expect(circularRoot.api().value).toBe(42)
+    circularInitialFixture.destroy()
   })
 })

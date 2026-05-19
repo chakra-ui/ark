@@ -14,7 +14,7 @@ import { splitterExampleStyles } from '../splitter-example-styles'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArkSplitterRoot, ArkSplitterPanel, ArkSplitterResizeTrigger, ArkSplitterResizeTriggerIndicator],
   template: `
-    <div arkSplitter class="splitter-root" [panels]="panels" [defaultSize]="[15, 85]">
+    <div arkSplitter class="splitter-root" [panels]="panels" [defaultSize]="[15, 20]">
       <div arkSplitterPanel class="splitter-panel" id="a">A</div>
       <button type="button" arkSplitterResizeTrigger class="splitter-trigger" id="a:b" aria-label="Resize">
         <span arkSplitterResizeTriggerIndicator class="splitter-indicator"></span>

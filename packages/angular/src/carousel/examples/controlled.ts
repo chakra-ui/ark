@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
 import {
+  ArkCarouselControl,
+  ArkCarouselIndicator,
+  ArkCarouselIndicatorGroup,
   ArkCarouselItem,
   ArkCarouselItemGroup,
   ArkCarouselNextTrigger,
@@ -8,24 +11,73 @@ import {
 } from '@ark-ui/angular/carousel'
 import { carouselExampleStyles } from '../carousel-example-styles'
 
+const images = [
+  { src: 'https://picsum.photos/seed/1/500/300', alt: 'Nature landscape' },
+  { src: 'https://picsum.photos/seed/2/500/300', alt: 'City skyline' },
+  { src: 'https://picsum.photos/seed/3/500/300', alt: 'Mountain view' },
+  { src: 'https://picsum.photos/seed/4/500/300', alt: 'Ocean sunset' },
+  { src: 'https://picsum.photos/seed/5/500/300', alt: 'Forest path' },
+]
+
 @Component({
   selector: 'carousel-controlled-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ArkCarouselRoot, ArkCarouselItemGroup, ArkCarouselItem, ArkCarouselPrevTrigger, ArkCarouselNextTrigger],
+  imports: [
+    ArkCarouselRoot,
+    ArkCarouselControl,
+    ArkCarouselItemGroup,
+    ArkCarouselItem,
+    ArkCarouselPrevTrigger,
+    ArkCarouselNextTrigger,
+    ArkCarouselIndicatorGroup,
+    ArkCarouselIndicator,
+  ],
   template: `
-    <div class="stack">
-      <p>Page {{ page() + 1 }}</p>
-      <div arkCarousel [slideCount]="slides.length" [(page)]="page">
-        <div arkCarouselItemGroup>
-          @for (slide of slides; track slide; let index = $index) {
-            <div arkCarouselItem [index]="index">{{ slide }}</div>
+    <div arkCarousel class="Root" [slideCount]="images.length" [(page)]="page">
+      <div arkCarouselControl class="Control">
+        <button type="button" arkCarouselPrevTrigger class="Trigger">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M19 12H5" />
+            <path d="M12 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <div arkCarouselItemGroup class="ItemGroup">
+          @for (image of images; track image.src; let index = $index) {
+            <div arkCarouselItem class="Item" [index]="index">
+              <img [src]="image.src" [alt]="image.alt" width="500" height="300" />
+            </div>
           }
         </div>
-        <div>
-          <button type="button" arkCarouselPrevTrigger>Prev</button>
-          <button type="button" arkCarouselNextTrigger>Next</button>
-        </div>
+        <button type="button" arkCarouselNextTrigger class="Trigger">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+      <div arkCarouselIndicatorGroup class="IndicatorGroup">
+        @for (image of images; track image.src; let index = $index) {
+          <button type="button" arkCarouselIndicator class="Indicator" [index]="index"></button>
+        }
       </div>
     </div>
   `,
@@ -33,5 +85,5 @@ import { carouselExampleStyles } from '../carousel-example-styles'
 })
 export class CarouselControlledExample {
   readonly page = signal<number | undefined>(0)
-  readonly slides = ['01', '02', '03']
+  readonly images = images
 }

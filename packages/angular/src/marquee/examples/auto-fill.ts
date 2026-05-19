@@ -9,15 +9,15 @@ import { marqueeExampleStyles } from '../marquee-example-styles'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArkMarqueeRoot, ArkMarqueeViewport, ArkMarqueeContent, ArkMarqueeItem, ArkMarqueeContext],
   template: `
-    <div arkMarquee autoFill spacing="2rem" class="marquee-root">
-      <div arkMarqueeViewport class="marquee-viewport">
+    <div arkMarquee autoFill spacing="2rem" class="Root">
+      <div arkMarqueeViewport class="Viewport">
         <ng-container *arkMarqueeContext="let marquee">
           @for (_ of contentCopies(marquee().contentCount); track $index) {
-            <div arkMarqueeContent [index]="$index" class="marquee-content">
-              @for (item of compactItems; track item.code) {
-                <div arkMarqueeItem class="marquee-item">
-                  <span class="marquee-code">{{ item.code }}</span>
-                  <span>{{ item.name }}</span>
+            <div arkMarqueeContent [index]="$index" class="Content">
+              @for (item of compactItems; track item.name) {
+                <div arkMarqueeItem class="Item">
+                  <span class="ItemLogo">{{ item.logo }}</span>
+                  <span class="ItemName">{{ item.name }}</span>
                 </div>
               }
             </div>

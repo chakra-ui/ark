@@ -20,8 +20,8 @@ describe('ArkDownloadTriggerDirective', () => {
     downloadFileMock.mockReset()
   })
 
-  const mount = (data: DownloadData | undefined, fileName = 'report.txt', mimeType = 'text/plain') => {
-    const dataSignal = signal<DownloadData | undefined>(data)
+  const mount = (data: DownloadData, fileName = 'report.txt', mimeType = 'text/plain') => {
+    const dataSignal = signal<DownloadData>(data)
 
     @Component({
       standalone: true,
@@ -41,6 +41,11 @@ describe('ArkDownloadTriggerDirective', () => {
     const button = fixture.nativeElement.querySelector('button') as HTMLButtonElement
     return { fixture, button }
   }
+
+  it('sets the host button type to button', () => {
+    const { button } = mount('hello world')
+    expect(button.type).toBe('button')
+  })
 
   it('resolves a synchronous string and calls downloadFile with the expected args', () => {
     const { button } = mount('hello world')
@@ -100,7 +105,8 @@ describe('ArkDownloadTriggerDirective', () => {
     @Component({
       standalone: true,
       imports: [ArkDownloadTriggerDirective],
-      template: '<button type="button" arkDownloadTrigger [data]="data()"></button>',
+      template:
+        '<button arkDownloadTrigger fileName="download" mimeType="application/octet-stream" [data]="data()"></button>',
     })
     class HostComponent {
       readonly data = dataSignal
@@ -148,12 +154,13 @@ describe('ArkDownloadTriggerDirective', () => {
   })
 
   it('does not call downloadFile when PLATFORM_ID indicates a non-browser platform', () => {
-    const dataSignal = signal<DownloadData | undefined>('ssr-payload')
+    const dataSignal = signal<DownloadData>('ssr-payload')
 
     @Component({
       standalone: true,
       imports: [ArkDownloadTriggerDirective],
-      template: '<button type="button" arkDownloadTrigger [data]="data()"></button>',
+      template:
+        '<button arkDownloadTrigger fileName="download" mimeType="application/octet-stream" [data]="data()"></button>',
     })
     class HostComponent {
       readonly data = dataSignal
@@ -171,9 +178,12 @@ describe('ArkDownloadTriggerDirective', () => {
     expect(downloadFileMock).not.toHaveBeenCalled()
   })
 
-  it('does nothing when data is undefined', () => {
-    const { button } = mount(undefined)
-    button.click()
+  it('does not call downloadFile when the click event is default-prevented', () => {
+    const { button } = mount('hello world')
+    const event = new MouseEvent('click', { bubbles: true, cancelable: true })
+    event.preventDefault()
+    button.dispatchEvent(event)
+
     expect(downloadFileMock).not.toHaveBeenCalled()
   })
 })

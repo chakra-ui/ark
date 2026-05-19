@@ -1,6 +1,6 @@
 import { Directive, ErrorHandler, inject, input } from '@angular/core'
 import { type EnvironmentContext, injectArkEnvironment } from '@ark-ui/angular/src/providers/environment'
-import { downloadFile } from '@zag-js/file-utils'
+import { type FileMimeType, downloadFile } from '@zag-js/file-utils'
 
 export type DownloadableData = string | Blob | File
 
@@ -9,23 +9,24 @@ export type DownloadData = DownloadableData | (() => DownloadableData | Promise<
 @Directive({
   selector: '[arkDownloadTrigger]',
   standalone: true,
-  host: { '(click)': 'onClick()' },
+  host: { type: 'button', '(click)': 'onClick($event)' },
 })
 export class ArkDownloadTriggerDirective {
-  readonly fileName = input<string>('download')
-  readonly mimeType = input<string>('application/octet-stream')
-  readonly data = input<DownloadData | undefined>(undefined)
+  readonly fileName = input.required<string>()
+  readonly mimeType = input.required<FileMimeType>()
+  readonly data = input.required<DownloadData>()
 
   private readonly environment: EnvironmentContext = injectArkEnvironment()
   private readonly errorHandler = inject(ErrorHandler)
 
-  onClick(): void {
+  onClick(event: MouseEvent): void {
+    if (event.defaultPrevented) return
+
     const root = this.environment.getRootNode()
     if (!root) return
     const win = resolveWindow(root)
     if (!win) return
     const source = this.data()
-    if (source === undefined) return
 
     const saveToDisk = (value: DownloadableData): void => {
       downloadFile({
@@ -53,8 +54,6 @@ export class ArkDownloadTriggerDirective {
 }
 
 function resolveWindow(root: Document | ShadowRoot): Window | null {
-  if (root instanceof ShadowRoot) {
-    return root.ownerDocument.defaultView
-  }
-  return root.defaultView
+  if ('defaultView' in root) return root.defaultView
+  return root.ownerDocument.defaultView
 }

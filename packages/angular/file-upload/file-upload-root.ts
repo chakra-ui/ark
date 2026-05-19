@@ -8,10 +8,12 @@ import {
   forwardRef,
   inject,
   input,
+  model,
   numberAttribute,
   output,
   type InputSignal,
   type InputSignalWithTransform,
+  type ModelSignal,
   type OutputEmitterRef,
   type Signal,
 } from '@angular/core'
@@ -100,7 +102,7 @@ export class ArkFileUploadRoot implements UseFileUploadReturn {
   /** The default accepted files when rendered. Use when uncontrolled. */
   readonly defaultAcceptedFiles: InputSignal<File[] | undefined> = input<File[] | undefined>(undefined)
   /** The controlled accepted files. */
-  readonly acceptedFiles: InputSignal<File[] | undefined> = input<File[] | undefined>(undefined)
+  readonly acceptedFiles: ModelSignal<File[] | undefined> = model<File[] | undefined>(undefined)
   /** The default camera to use when capturing media. */
   readonly capture: InputSignal<'user' | 'environment' | undefined> = input<'user' | 'environment' | undefined>(
     undefined,
@@ -147,7 +149,12 @@ export class ArkFileUploadRoot implements UseFileUploadReturn {
       directory: this.directory(),
       transformFiles: this.transformFiles(),
       locale: this.locale(),
-      onFileChange: (details: FileChangeDetails) => this.fileChange.emit(details),
+      onFileChange: (details: FileChangeDetails) => {
+        if (!filesShallowEqual(this.acceptedFiles(), details.acceptedFiles)) {
+          this.acceptedFiles.set([...details.acceptedFiles])
+        }
+        this.fileChange.emit(details)
+      },
       onFileAccept: (details: FileAcceptDetails) => this.fileAccept.emit(details),
       onFileReject: (details: FileRejectDetails) => this.fileReject.emit(details),
     }),
@@ -167,3 +174,6 @@ export class ArkFileUploadRoot implements UseFileUploadReturn {
     })
   }
 }
+
+const filesShallowEqual = (a: File[] | undefined, b: File[]): boolean =>
+  Array.isArray(a) && a.length === b.length && a.every((file, index) => file === b[index])

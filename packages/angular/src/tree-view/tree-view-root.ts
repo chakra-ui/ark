@@ -3,6 +3,9 @@ import {
   DestroyRef,
   Directive,
   ElementRef,
+  EnvironmentInjector,
+  Injector,
+  type ProviderToken,
   Renderer2,
   booleanAttribute,
   forwardRef,
@@ -18,6 +21,7 @@ import {
 } from '@angular/core'
 import { TreeCollection, type TreeNode } from '@ark-ui/angular/src/collection'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
+import { buildRootCarrier, type ArkContextCarrier } from '@ark-ui/angular/src/internal'
 import type {
   TreeViewCheckedChangeDetails,
   TreeViewElementIds,
@@ -207,6 +211,13 @@ export class ArkTreeViewRoot<T extends TreeNode = TreeNode> implements UseTreeVi
   readonly service: treeView.Service<T> = this.machine.service
   readonly send: treeView.Service<T>['send'] = this.machine.send
 
+  protected readonly arkContextCarrier: ArkContextCarrier<ArkTreeViewRoot<T>> = buildRootCarrier<ArkTreeViewRoot<T>>({
+    root: this,
+    rootToken: ARK_TREE_VIEW_CONTEXT as ProviderToken<ArkTreeViewRoot<T>>,
+    originInjector: inject(Injector),
+    environmentInjector: inject(EnvironmentInjector),
+  })
+
   constructor() {
     applyArkProps({
       elementRef: inject(ElementRef),
@@ -214,6 +225,11 @@ export class ArkTreeViewRoot<T extends TreeNode = TreeNode> implements UseTreeVi
       destroyRef: inject(DestroyRef),
       props: () => this.api().getRootProps(),
     })
+  }
+
+  /** @internal Exposed for recursive or dynamic tree-view templates. */
+  getContextCarrier(): ArkContextCarrier<ArkTreeViewRoot<T>> {
+    return this.arkContextCarrier
   }
 }
 

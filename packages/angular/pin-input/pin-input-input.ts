@@ -51,7 +51,11 @@ export class ArkPinInputInput {
       destroyRef,
       props: () => {
         const props = context.api().getInputProps({ index: this.index() }) as Record<string, unknown>
-        const { defaultValue: _defaultValue, ...rest } = props
+        const { autoComplete, defaultValue: _defaultValue, ...rest } = props
+        if (autoComplete !== undefined) {
+          const nextProps = rest as Record<string, unknown> & { autocomplete?: unknown }
+          nextProps.autocomplete = autoComplete
+        }
         return rest
       },
     })

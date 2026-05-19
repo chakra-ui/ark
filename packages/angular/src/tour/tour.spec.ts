@@ -57,9 +57,17 @@ import {
   type WaitOptions,
 } from '@ark-ui/angular/tour'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
+import { TourAsyncStepExample } from './examples/async-step'
 import { TourBasicExample } from './examples/basic'
 import { TourControlledExample } from './examples/controlled'
+import { TourEventsExample } from './examples/events'
+import { TourKeyboardNavigationExample } from './examples/keyboard-navigation'
+import { TourMixedTypesExample } from './examples/mixed-types'
+import { TourProgressBarExample } from './examples/progress-bar'
+import { TourSkipTourExample } from './examples/skip-tour'
 import { TourWaitForClickExample } from './examples/wait-for-click'
+import { TourWaitForElementExample } from './examples/wait-for-element'
+import { TourWaitForInputExample } from './examples/wait-for-input'
 
 type TourPublicTypeSmoke = [
   TourApi,
@@ -146,9 +154,17 @@ describe('@ark-ui/angular/tour', () => {
     expect(ArkTourArrow).toBeDefined()
     expect(ArkTourArrowTip).toBeDefined()
     expect(ArkTourContext).toBeDefined()
+    expect(TourAsyncStepExample).toBeDefined()
     expect(TourBasicExample).toBeDefined()
     expect(TourControlledExample).toBeDefined()
+    expect(TourEventsExample).toBeDefined()
+    expect(TourKeyboardNavigationExample).toBeDefined()
+    expect(TourMixedTypesExample).toBeDefined()
+    expect(TourProgressBarExample).toBeDefined()
+    expect(TourSkipTourExample).toBeDefined()
     expect(TourWaitForClickExample).toBeDefined()
+    expect(TourWaitForElementExample).toBeDefined()
+    expect(TourWaitForInputExample).toBeDefined()
     expect(undefined as TourPublicTypeSmoke | undefined).toBeUndefined()
   })
 

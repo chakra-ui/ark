@@ -1,53 +1,30 @@
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core'
-import { highlightWord } from '../public-api'
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
+import { ArkHighlightComponent } from '../public-api'
+import { highlightExampleStyles } from '../highlight-example-styles'
 
 @Component({
   selector: 'highlight-dynamic-query-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ArkHighlightComponent],
   template: `
-    <div class="root">
+    <div class="Root">
       <input
+        class="Input"
         type="text"
         placeholder="Search text..."
         [value]="query()"
         (input)="query.set($any($event.target).value)"
       />
-      <p>
-        @for (chunk of chunks(); track $index) {
-          @if (chunk.match) {
-            <mark [textContent]="chunk.text"></mark>
-          } @else {
-            <span [textContent]="chunk.text"></span>
-          }
-        }
+      <p class="Text">
+        <ark-highlight [query]="query()" [text]="text" markClass="Mark" />
       </p>
     </div>
   `,
-  styles: [
-    `
-      .root {
-        display: grid;
-        gap: 12px;
-      }
-
-      input {
-        max-width: 320px;
-        border: 1px solid #d4d4d8;
-        border-radius: 6px;
-        padding: 8px 10px;
-        font: inherit;
-      }
-    `,
-  ],
+  styles: [highlightExampleStyles],
 })
 export class HighlightDynamicQueryExample {
   readonly query = signal('component')
-
-  readonly chunks = computed(() =>
-    highlightWord({
-      query: this.query(),
-      text: 'With Ark UI, you can build accessible, custom components. Each component is fully typed and works seamlessly with React, Solid, Svelte, and Vue.',
-    }),
-  )
+  readonly text =
+    'With Ark UI, you can build accessible, custom components. Each component is fully typed and works seamlessly with React, Solid, Svelte, and Vue.'
 }

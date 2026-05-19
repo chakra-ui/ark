@@ -23,14 +23,17 @@ import {
   tagsInputAnatomy,
   useTagsInput,
   type TagsInputApi,
+  type TagsInputFocusOutsideEvent,
   type TagsInputMachine,
   type TagsInputMachineProps,
+  type TagsInputPointerDownOutsideEvent,
   type TagsInputService,
+  type TagsInputInteractOutsideEvent,
   type UseTagsInputOptions,
   type UseTagsInputProps,
   type UseTagsInputReturn,
 } from '@ark-ui/angular/tags-input'
-import { ArkFieldRoot } from '@ark-ui/angular/field'
+import { ArkFieldErrorText, ArkFieldHelperText, ArkFieldRoot } from '@ark-ui/angular/field'
 
 type TagsInputPublicTypeSmoke = [
   TagsInputApi,
@@ -474,6 +477,8 @@ describe('@ark-ui/angular/tags-input', () => {
       standalone: true,
       imports: [
         ArkFieldRoot,
+        ArkFieldHelperText,
+        ArkFieldErrorText,
         ArkTagsInputRoot,
         ArkTagsInputLabel,
         ArkTagsInputControl,
@@ -489,6 +494,8 @@ describe('@ark-ui/angular/tags-input', () => {
             </div>
             <input arkTagsInputHiddenInput />
           </div>
+          <span arkFieldHelperText>Help</span>
+          <span arkFieldErrorText>Error</span>
         </div>
       `,
     })
@@ -503,10 +510,13 @@ describe('@ark-ui/angular/tags-input', () => {
     const inputProps = root.api().getInputProps() as { disabled?: boolean; readOnly?: boolean }
     const hiddenProps = root.api().getHiddenInputProps() as { disabled?: boolean }
     const labelProps = root.api().getLabelProps() as { htmlFor?: string; id?: string }
+    const hidden = fixture.debugElement.query(By.directive(ArkTagsInputHiddenInput)).nativeElement as HTMLInputElement
 
     expect(inputProps.disabled).toBe(true)
     expect(hiddenProps.disabled).toBe(true)
     expect(labelProps.htmlFor ?? labelProps.id).toBeDefined()
+    expect(hidden.id).toBe('fld')
+    expect(hidden.getAttribute('aria-describedby')).toBe('field::fld::error-text field::fld::helper-text')
 
     fixture.destroy()
   })
@@ -545,6 +555,71 @@ describe('@ark-ui/angular/tags-input', () => {
 
     const warnCalls = warn.mock.calls.filter((args) => String(args[0]).includes('ArkTagsInputRoot'))
     expect(warnCalls.length).toBe(1)
+
+    fixture.destroy()
+  })
+
+  it('forwards tags input callback props as Angular outputs', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkTagsInputRoot],
+      template: `
+        <div
+          arkTagsInputRoot
+          (highlightChange)="events.push('highlight')"
+          (valueInvalid)="events.push('invalid')"
+          (focusOutside)="events.push('focus')"
+          (pointerDownOutside)="events.push('pointer')"
+          (interactOutside)="events.push('interact')"
+        ></div>
+      `,
+    })
+    class Host {
+      readonly events: string[] = []
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const root = fixture.debugElement.query(By.directive(ArkTagsInputRoot)).injector.get(ArkTagsInputRoot)
+    root.service.prop('onHighlightChange')?.({ highlightedValue: 'a' })
+    root.service.prop('onValueInvalid')?.({} as Parameters<NonNullable<TagsInputMachineProps['onValueInvalid']>>[0])
+    root.service.prop('onFocusOutside')?.({} as TagsInputFocusOutsideEvent)
+    root.service.prop('onPointerDownOutside')?.({} as TagsInputPointerDownOutsideEvent)
+    root.service.prop('onInteractOutside')?.({} as TagsInputInteractOutsideEvent)
+
+    expect(fixture.componentInstance.events).toEqual(['highlight', 'invalid', 'focus', 'pointer', 'interact'])
+
+    fixture.destroy()
+  })
+
+  it('passes item disabled state to Zag item props', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkTagsInputRoot, ArkTagsInputControl, ArkTagsInputItem, ArkTagsInputItemInput],
+      template: `
+        <div arkTagsInputRoot #root="arkTagsInputRoot" [defaultValue]="['a']">
+          <div arkTagsInputControl>
+            @for (tag of root.api().value; track tag; let i = $index) {
+              <span arkTagsInputItem [index]="i" [value]="tag" disabled>
+                {{ tag }}
+                <input arkTagsInputItemInput />
+              </span>
+            }
+          </div>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+
+    const item = fixture.debugElement.query(By.directive(ArkTagsInputItem)).injector.get(ArkTagsInputItem)
+    expect(item.disabled()).toBe(true)
 
     fixture.destroy()
   })

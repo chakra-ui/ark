@@ -27,10 +27,13 @@ import { buildRootCarrier, type ArkContextCarrier } from '@ark-ui/angular/src/in
 import { createArkCvaController } from '@ark-ui/angular/src/internal'
 import type {
   ComboboxElementIds,
+  ComboboxFocusOutsideEvent,
   ComboboxHighlightChangeDetails,
   ComboboxInputValueChangeDetails,
+  ComboboxInteractOutsideEvent,
   ComboboxIntlTranslations,
   ComboboxOpenChangeDetails,
+  ComboboxPointerDownOutsideEvent,
   ComboboxPositioningOptions,
   ComboboxScrollToIndexDetails,
   ComboboxSelectionDetails,
@@ -174,6 +177,13 @@ export class ArkComboboxRoot<T extends CollectionItem = CollectionItem>
   readonly openChange: OutputEmitterRef<ComboboxOpenChangeDetails> = output<ComboboxOpenChangeDetails>()
   /** Emits when an item is selected. */
   readonly select: OutputEmitterRef<ComboboxSelectionDetails> = output<ComboboxSelectionDetails>()
+  /** Emits when focus moves outside the combobox content. */
+  readonly focusOutside: OutputEmitterRef<ComboboxFocusOutsideEvent> = output<ComboboxFocusOutsideEvent>()
+  /** Emits when pointer down occurs outside the combobox content. */
+  readonly pointerDownOutside: OutputEmitterRef<ComboboxPointerDownOutsideEvent> =
+    output<ComboboxPointerDownOutsideEvent>()
+  /** Emits when interaction occurs outside the combobox content. */
+  readonly interactOutside: OutputEmitterRef<ComboboxInteractOutsideEvent> = output<ComboboxInteractOutsideEvent>()
 
   private readonly _disabledFromForm = signal(false)
   private readonly _fallbackCollection = new ListCollection<T>({ items: [] })
@@ -264,6 +274,15 @@ export class ArkComboboxRoot<T extends CollectionItem = CollectionItem>
       },
       onSelect: (details: ComboboxSelectionDetails) => {
         this.select.emit(details)
+      },
+      onFocusOutside: (event: ComboboxFocusOutsideEvent) => {
+        this.focusOutside.emit(event)
+      },
+      onPointerDownOutside: (event: ComboboxPointerDownOutsideEvent) => {
+        this.pointerDownOutside.emit(event)
+      },
+      onInteractOutside: (event: ComboboxInteractOutsideEvent) => {
+        this.interactOutside.emit(event)
       },
     }),
   })

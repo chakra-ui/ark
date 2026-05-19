@@ -17,11 +17,12 @@ import { fieldExampleStyles } from '../field-example-styles'
     <div arkFieldRoot>
       <label arkFieldLabel>Label</label>
       <select arkFieldSelect>
-        <option value="apple">Apple</option>
-        <option value="banana">Banana</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
       </select>
-      <span arkFieldHelperText>Choose one</span>
-      <span arkFieldErrorText>Selection required</span>
+      <span arkFieldHelperText>Some additional Info</span>
+      <span arkFieldErrorText>Error Info</span>
     </div>
   `,
   styles: [fieldExampleStyles],

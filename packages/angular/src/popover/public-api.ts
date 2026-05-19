@@ -2,13 +2,18 @@ export { popoverAnatomy } from './popover.anatomy'
 export type {
   PopoverApi,
   PopoverElementIds,
+  PopoverFocusOutsideEvent,
+  PopoverInteractOutsideEvent,
+  PopoverIntlTranslations,
   PopoverMachine,
   PopoverMachineProps,
   PopoverOpenChangeDetails,
+  PopoverPointerDownOutsideEvent,
   PopoverPlacement,
   PopoverPositioningOptions,
   PopoverService,
   PopoverTriggerMachineProps,
+  PopoverTriggerProps,
   PopoverTriggerValueChangeDetails,
 } from './popover.types'
 export {

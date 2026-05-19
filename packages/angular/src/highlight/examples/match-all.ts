@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { highlightWord } from '../public-api'
+import { ArkHighlightComponent } from '../public-api'
+import { highlightExampleStyles } from '../highlight-example-styles'
 
 const text = 'Each component follows WAI-ARIA guidelines. Every component is rigorously tested to ensure accessibility.'
 
@@ -7,52 +8,26 @@ const text = 'Each component follows WAI-ARIA guidelines. Every component is rig
   selector: 'highlight-match-all-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ArkHighlightComponent],
   template: `
-    <div class="root">
-      <section>
-        <span>Match All</span>
-        <p>
-          @for (chunk of allChunks; track $index) {
-            @if (chunk.match) {
-              <mark [textContent]="chunk.text"></mark>
-            } @else {
-              <span [textContent]="chunk.text"></span>
-            }
-          }
+    <div class="Root">
+      <section class="Section">
+        <span class="Label">Match All</span>
+        <p class="Text">
+          <ark-highlight [text]="text" query="component" [matchAll]="true" markClass="Mark" />
         </p>
       </section>
 
-      <section>
-        <span>Match First Only</span>
-        <p>
-          @for (chunk of firstChunks; track $index) {
-            @if (chunk.match) {
-              <mark [textContent]="chunk.text"></mark>
-            } @else {
-              <span [textContent]="chunk.text"></span>
-            }
-          }
+      <section class="Section">
+        <span class="Label">Match First Only</span>
+        <p class="Text">
+          <ark-highlight [text]="text" query="component" [matchAll]="false" markClass="Mark" />
         </p>
       </section>
     </div>
   `,
-  styles: [
-    `
-      .root {
-        display: grid;
-        gap: 16px;
-      }
-
-      span {
-        display: inline-block;
-        margin-block-end: 4px;
-        font-size: 12px;
-        font-weight: 600;
-      }
-    `,
-  ],
+  styles: [highlightExampleStyles],
 })
 export class HighlightMatchAllExample {
-  readonly allChunks = highlightWord({ text, query: 'component', matchAll: true })
-  readonly firstChunks = highlightWord({ text, query: 'component', matchAll: false })
+  readonly text = text
 }

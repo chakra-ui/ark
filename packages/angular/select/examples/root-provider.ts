@@ -5,6 +5,7 @@ import {
   ArkSelectContent,
   ArkSelectControl,
   ArkSelectHiddenSelect,
+  ArkSelectIndicator,
   ArkSelectItem,
   ArkSelectItemIndicator,
   ArkSelectItemText,
@@ -34,6 +35,7 @@ interface Priority {
     ArkSelectControl,
     ArkSelectTrigger,
     ArkSelectValueText,
+    ArkSelectIndicator,
     ArkSelectPositioner,
     ArkSelectContent,
     ArkSelectItem,
@@ -42,12 +44,16 @@ interface Priority {
     ArkSelectHiddenSelect,
   ],
   template: `
+    <output class="select-output">selected: {{ select.api().value.join(', ') || 'none' }}</output>
     <div arkSelectRootProvider #provider="arkSelectRootProvider" [value]="select">
       <span arkSelectLabel>Priority</span>
       <div arkSelectControl>
         <button arkSelectTrigger>
           <span arkSelectValueText>Pick priority</span>
         </button>
+        <div class="select-indicators">
+          <span arkSelectIndicator>▾</span>
+        </div>
       </div>
       <ark-portal [originInjector]="provider.getContextCarrier().elementInjector">
         <div arkSelectPositioner>

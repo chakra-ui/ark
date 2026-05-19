@@ -15,8 +15,8 @@ import { fieldExampleStyles } from '../field-example-styles'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArkFieldRootProvider, ArkFieldLabel, ArkFieldInput, ArkFieldHelperText, ArkFieldErrorText],
   template: `
-    <div class="vstack">
-      <button type="button" (click)="toggleInvalid()">Toggle Invalid</button>
+    <div class="field-demo-stack">
+      <button class="field-demo-button" type="button" (click)="toggleInvalid()">Toggle Invalid</button>
       <div arkFieldRootProvider [value]="field">
         <label arkFieldLabel>Label</label>
         <input arkFieldInput />

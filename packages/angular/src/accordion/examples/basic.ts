@@ -7,6 +7,7 @@ import {
   ArkAccordionRoot,
 } from '@ark-ui/angular/accordion'
 import { accordionExampleStyles } from '../accordion-example-styles'
+import { AccordionChevronDownIcon } from './icons'
 
 @Component({
   selector: 'accordion-basic-example',
@@ -18,6 +19,7 @@ import { accordionExampleStyles } from '../accordion-example-styles'
     ArkAccordionItemTrigger,
     ArkAccordionItemContent,
     ArkAccordionItemIndicator,
+    AccordionChevronDownIcon,
   ],
   template: `
     <div arkAccordion [defaultValue]="['ark-ui']">
@@ -25,9 +27,11 @@ import { accordionExampleStyles } from '../accordion-example-styles'
         <div arkAccordionItem [value]="item.value">
           <button type="button" arkAccordionItemTrigger>
             {{ item.title }}
-            <span arkAccordionItemIndicator>+</span>
+            <span arkAccordionItemIndicator><accordion-chevron-down-icon /></span>
           </button>
-          <div arkAccordionItemContent>{{ item.content }}</div>
+          <div arkAccordionItemContent>
+            <div class="item-body">{{ item.content }}</div>
+          </div>
         </div>
       }
     </div>

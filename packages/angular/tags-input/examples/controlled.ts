@@ -37,9 +37,10 @@ import { tagsInputExampleStyles } from '../tags-input-example-styles'
               <span arkTagsInputItemText>{{ tag }}</span>
               <button type="button" arkTagsInputItemDeleteTrigger>x</button>
             </div>
+            <input arkTagsInputItemInput />
           </span>
         }
-        <input arkTagsInputInput placeholder="Add tag" />
+        <input arkTagsInputInput placeholder="Add Framework" />
       </div>
       <input arkTagsInputHiddenInput />
     </div>
@@ -47,5 +48,5 @@ import { tagsInputExampleStyles } from '../tags-input-example-styles'
   styles: [tagsInputExampleStyles],
 })
 export class TagsInputControlledExample {
-  readonly value = signal<string[] | undefined>(['react', 'vue'])
+  readonly value = signal<string[] | undefined>(['React', 'Solid'])
 }

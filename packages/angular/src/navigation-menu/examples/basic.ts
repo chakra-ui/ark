@@ -33,7 +33,7 @@ import { NavigationMenuChevronDownIcon } from './icons'
         <div arkNavigationMenuItem value="features">
           <button type="button" arkNavigationMenuTrigger>
             Features
-            <span>
+            <span class="navigation-menu__trigger-icon">
               <navigation-menu-chevron-down-icon />
             </span>
           </button>
@@ -49,7 +49,7 @@ import { NavigationMenuChevronDownIcon } from './icons'
         <div arkNavigationMenuItem value="docs">
           <button type="button" arkNavigationMenuTrigger>
             Documentation
-            <span>
+            <span class="navigation-menu__trigger-icon">
               <navigation-menu-chevron-down-icon />
             </span>
           </button>

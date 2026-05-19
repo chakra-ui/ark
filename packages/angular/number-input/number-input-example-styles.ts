@@ -1,40 +1,90 @@
 export const numberInputExampleStyles = `
+  :host {
+    display: block;
+    color: var(--demo-neutral-fg);
+  }
+
+  .stack {
+    display: grid;
+    gap: 0.75rem;
+  }
+
   [arkNumberInputRoot], [arkNumberInputRootProvider] {
+    color: var(--demo-neutral-fg);
+    --stepper-width: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
-    max-width: 240px;
-    font-family: inherit;
+    gap: 0.375rem;
+    width: 100%;
+    max-width: 12rem;
+  }
+
+  [arkNumberInputRoot][data-disabled],
+  [arkNumberInputRootProvider][data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
   }
 
   [arkNumberInputLabel] {
     font-size: 0.875rem;
     font-weight: 500;
-    color: var(--demo-neutral-fg, #111827);
+    color: var(--demo-neutral-fg);
   }
 
   [arkNumberInputControl] {
-    display: inline-flex;
-    align-items: stretch;
-    border: 1px solid var(--demo-border-emphasized, #d1d5db);
-    border-radius: 0.375rem;
-    overflow: hidden;
+    position: relative;
+    isolation: isolate;
   }
 
   [arkNumberInputInput] {
-    flex: 1;
-    min-width: 0;
-    border: none;
-    padding: 0.375rem 0.5rem;
+    width: 100%;
+    height: 2.5rem;
+    padding-inline: 0.75rem calc(var(--stepper-width) + 0.5rem);
     font-size: 0.875rem;
-    font-family: inherit;
-    color: inherit;
-    background: transparent;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: var(--demo-neutral-fg);
+    background-color: transparent;
+    border: 1px solid var(--demo-border);
+    border-radius: 0.375rem;
+    outline: none;
+  }
+
+  [arkNumberInputInput][data-has-scrubber] {
+    padding-inline-start: 2.5rem;
+  }
+
+  [arkNumberInputInput]::placeholder {
+    color: var(--demo-neutral-solid);
   }
 
   [arkNumberInputInput]:focus-visible {
-    outline: 2px solid var(--demo-coral-focus-ring, #f97316);
-    outline-offset: -2px;
+    z-index: 1;
+    border-color: var(--demo-coral-solid);
+    box-shadow: 0 0 0 1px var(--demo-coral-solid);
+  }
+
+  [arkNumberInputInput][data-invalid] {
+    border-color: var(--demo-error);
+  }
+
+  [arkNumberInputInput][data-invalid]:focus-visible {
+    border-color: var(--demo-error);
+    box-shadow: 0 0 0 1px var(--demo-error);
+  }
+
+  .trigger-group {
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    right: 1px;
+    display: inline-flex;
+    flex-direction: column;
+    width: var(--stepper-width);
+    border-left: 1px solid var(--demo-border);
+    border-radius: 0 calc(0.375rem - 1px) calc(0.375rem - 1px) 0;
+    overflow: hidden;
+    z-index: 1;
   }
 
   [arkNumberInputIncrementTrigger],
@@ -42,19 +92,75 @@ export const numberInputExampleStyles = `
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.75rem;
-    padding: 0.125rem 0.5rem;
+    flex: 1;
+    color: var(--demo-neutral-emphasized);
+    background-color: transparent;
     border: none;
-    border-left: 1px solid var(--demo-border-emphasized, #d1d5db);
-    background: transparent;
+    user-select: none;
     cursor: pointer;
   }
 
+  [arkNumberInputIncrementTrigger] svg,
+  [arkNumberInputDecrementTrigger] svg {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+  }
+
+  [arkNumberInputIncrementTrigger]:hover:not(:disabled, [data-disabled]),
+  [arkNumberInputDecrementTrigger]:hover:not(:disabled, [data-disabled]) {
+    background-color: var(--demo-neutral-subtle);
+  }
+
+  [arkNumberInputIncrementTrigger]:active:not(:disabled, [data-disabled]),
+  [arkNumberInputDecrementTrigger]:active:not(:disabled, [data-disabled]) {
+    background-color: var(--demo-neutral-muted);
+  }
+
+  [arkNumberInputIncrementTrigger]:focus-visible,
+  [arkNumberInputDecrementTrigger]:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: -2px;
+  }
+
+  [arkNumberInputIncrementTrigger]:is(:disabled, [data-disabled]),
+  [arkNumberInputDecrementTrigger]:is(:disabled, [data-disabled]) {
+    color: var(--demo-border);
+    cursor: not-allowed;
+  }
+
+  [arkNumberInputIncrementTrigger] {
+    border-bottom: 1px solid var(--demo-border);
+  }
+
   [arkNumberInputScrubber] {
-    cursor: ew-resize;
-    padding: 0 0.375rem;
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    left: 1px;
     display: inline-flex;
     align-items: center;
-    border-right: 1px solid var(--demo-border-emphasized, #d1d5db);
+    justify-content: center;
+    width: 2.5rem;
+    color: var(--demo-neutral-emphasized);
+    cursor: ew-resize;
+    user-select: none;
+    z-index: 1;
+  }
+
+  [arkNumberInputScrubber] svg {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  [arkNumberInputValueText] {
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--demo-neutral-fg);
+  }
+
+  output {
+    display: block;
+    font-size: 0.875rem;
   }
 `

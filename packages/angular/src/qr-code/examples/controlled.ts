@@ -8,12 +8,14 @@ import { qrCodeExampleStyles } from '../qr-code-example-styles'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArkQrCodeRoot, ArkQrCodeFrame, ArkQrCodePattern],
   template: `
-    <div arkQrCode [(value)]="value">
-      <svg arkQrCodeFrame>
-        <path arkQrCodePattern />
-      </svg>
+    <div class="stack">
+      <div arkQrCode [(value)]="value">
+        <svg arkQrCodeFrame>
+          <path arkQrCodePattern />
+        </svg>
+      </div>
+      <button class="button" type="button" (click)="value.set('https://chakra-ui.com')">Set value</button>
     </div>
-    <button type="button" (click)="value.set('https://chakra-ui.com')">Set value</button>
   `,
   styles: [qrCodeExampleStyles],
 })

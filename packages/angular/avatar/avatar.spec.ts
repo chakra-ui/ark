@@ -23,6 +23,7 @@ import {
 import { BasicExample } from './examples/basic'
 import { ContextExample } from './examples/context'
 import { EventsExample } from './examples/events'
+import { ProviderExample } from './examples/provider'
 
 @Directive({ selector: '[avatarProbe]', standalone: true, exportAs: 'avatarProbe' })
 class AvatarProbe {
@@ -163,6 +164,26 @@ describe('@ark-ui/angular/avatar', () => {
     expect((probeInstance.captured as unknown as ArkAvatarRootProvider).resolveValue()).toBe(
       fixture.componentInstance.avatar,
     )
+
+    fixture.destroy()
+  })
+
+  it('ProviderExample wires a useAvatar() instance through [arkAvatarRootProvider]', () => {
+    TestBed.configureTestingModule({ imports: [ProviderExample] })
+    const fixture = TestBed.createComponent(ProviderExample)
+    fixture.detectChanges()
+
+    const provider = fixture.debugElement.query(By.directive(ArkAvatarRootProvider)).injector.get(ArkAvatarRootProvider)
+    const rootEl = fixture.nativeElement.querySelector('[arkAvatarRootProvider]') as HTMLElement
+    const fallbackEl = fixture.nativeElement.querySelector('[arkAvatarFallback]') as HTMLElement
+    const imageEl = fixture.nativeElement.querySelector('img') as HTMLImageElement
+
+    expect(provider.resolveValue()).toBe(fixture.componentInstance.avatar)
+    expect(rootEl.getAttribute('data-scope')).toBe('avatar')
+    expect(rootEl.getAttribute('data-part')).toBe('root')
+    expect(fallbackEl.textContent).toContain('PA')
+    expect(imageEl.getAttribute('src')).toBe('https://i.pravatar.cc/300?u=a')
+    expect(imageEl.getAttribute('alt')).toBe('avatar')
 
     fixture.destroy()
   })

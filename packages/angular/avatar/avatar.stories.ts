@@ -3,6 +3,7 @@ import { moduleMetadata } from '@storybook/angular'
 import { BasicExample } from './examples/basic'
 import { ContextExample } from './examples/context'
 import { EventsExample } from './examples/events'
+import { ProviderExample } from './examples/provider'
 import { RootProviderExample } from './examples/root-provider'
 
 const meta: Meta = {
@@ -24,6 +25,11 @@ export const Context: StoryObj = {
 export const Events: StoryObj = {
   decorators: [moduleMetadata({ imports: [EventsExample] })],
   render: () => ({ template: '<avatar-events-example />' }),
+}
+
+export const Provider: StoryObj = {
+  decorators: [moduleMetadata({ imports: [ProviderExample] })],
+  render: () => ({ template: '<avatar-provider-example />' }),
 }
 
 export const RootProvider: StoryObj = {

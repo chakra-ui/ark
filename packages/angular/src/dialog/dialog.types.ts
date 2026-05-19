@@ -1,8 +1,13 @@
 export type {
   Api as DialogApi,
   ElementIds as DialogElementIds,
+  FocusOutsideEvent as DialogFocusOutsideEvent,
+  InteractOutsideEvent as DialogInteractOutsideEvent,
   Machine as DialogMachine,
   OpenChangeDetails as DialogOpenChangeDetails,
+  PointerDownOutsideEvent as DialogPointerDownOutsideEvent,
   Props as DialogMachineProps,
   Service as DialogService,
+  TriggerProps as DialogTriggerProps,
+  TriggerValueChangeDetails as DialogTriggerValueChangeDetails,
 } from '@zag-js/dialog'

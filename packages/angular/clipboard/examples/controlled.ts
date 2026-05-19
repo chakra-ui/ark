@@ -8,6 +8,7 @@ import {
   ArkClipboardTrigger,
 } from '@ark-ui/angular/clipboard'
 import { clipboardExampleStyles } from '../clipboard-example-styles'
+import { ClipboardCheckIcon, ClipboardCopyIcon } from './icons'
 
 @Component({
   selector: 'clipboard-controlled-example',
@@ -20,16 +21,28 @@ import { clipboardExampleStyles } from '../clipboard-example-styles'
     ArkClipboardInput,
     ArkClipboardTrigger,
     ArkClipboardIndicator,
+    ClipboardCheckIcon,
+    ClipboardCopyIcon,
   ],
   template: `
-    <div arkClipboard [(value)]="url">
-      <label arkClipboardLabel>Copy this link</label>
-      <div arkClipboardControl>
-        <input arkClipboardInput />
-        <button arkClipboardTrigger>
-          <span arkClipboardIndicator>Copy</span>
-        </button>
+    <div class="stack">
+      <div arkClipboard [(value)]="url">
+        <label arkClipboardLabel>Copy this link</label>
+        <div arkClipboardControl>
+          <input arkClipboardInput />
+          <button arkClipboardTrigger>
+            <span arkClipboardIndicator #indicator="arkClipboardIndicator">
+              @if (indicator.copied()) {
+                <clipboard-check-icon />
+              } @else {
+                <clipboard-copy-icon />
+              }
+            </span>
+          </button>
+        </div>
       </div>
+
+      <button type="button" class="button" (click)="url.set('https://chakra-ui.com')">Change Url</button>
     </div>
   `,
   styles: [clipboardExampleStyles],

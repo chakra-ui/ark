@@ -8,6 +8,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import {
   ARK_CLIPBOARD_CONTEXT,
   ArkClipboardControl,
+  ArkClipboardContext,
   ArkClipboardIndicator,
   ArkClipboardInput,
   ArkClipboardLabel,
@@ -19,6 +20,7 @@ import {
   injectArkClipboardContext,
   useClipboard,
   type ClipboardApi,
+  type ClipboardContextTemplate,
   type ClipboardCopyStatusDetails,
   type ClipboardElementIds,
   type ClipboardIndicatorProps,
@@ -32,12 +34,16 @@ import {
   type UseClipboardReturn,
 } from '@ark-ui/angular/clipboard'
 import { ClipboardBasicExample } from './examples/basic'
+import { ClipboardContextExample } from './examples/context'
 import { ClipboardControlledExample } from './examples/controlled'
+import { ClipboardCopyStatusExample } from './examples/copy-status'
 import { ClipboardRootProviderExample } from './examples/root-provider'
-import { ClipboardWithTriggerExample } from './examples/with-trigger'
+import { ClipboardTimeoutExample } from './examples/timeout'
+import { ClipboardValueTextExample } from './examples/value-text'
 
 type ClipboardPublicTypeSmoke = [
   ClipboardApi,
+  ClipboardContextTemplate,
   ClipboardCopyStatusDetails,
   ClipboardElementIds,
   ClipboardIndicatorProps,
@@ -87,6 +93,7 @@ describe('@ark-ui/angular/clipboard', () => {
     expect(ArkClipboardRootProvider).toBeDefined()
     expect(ArkClipboardLabel).toBeDefined()
     expect(ArkClipboardControl).toBeDefined()
+    expect(ArkClipboardContext).toBeDefined()
     expect(ArkClipboardInput).toBeDefined()
     expect(ArkClipboardTrigger).toBeDefined()
     expect(ArkClipboardIndicator).toBeDefined()
@@ -234,6 +241,7 @@ describe('@ark-ui/angular/clipboard', () => {
       'clipboard-root-provider.ts',
       'clipboard-label.ts',
       'clipboard-control.ts',
+      'clipboard-context.ts',
       'clipboard-input.ts',
       'clipboard-trigger.ts',
       'clipboard-indicator.ts',
@@ -281,19 +289,6 @@ describe('@ark-ui/angular/clipboard', () => {
     fixture.destroy()
   })
 
-  it('ClipboardWithTriggerExample renders trigger and indicator under root', () => {
-    installClipboardMock()
-    TestBed.configureTestingModule({ imports: [ClipboardWithTriggerExample] })
-    const fixture = TestBed.createComponent(ClipboardWithTriggerExample)
-    fixture.detectChanges()
-
-    expect(fixture.debugElement.query(By.directive(ArkClipboardRoot))).toBeTruthy()
-    expect(fixture.debugElement.query(By.directive(ArkClipboardTrigger))).toBeTruthy()
-    expect(fixture.debugElement.query(By.directive(ArkClipboardIndicator))).toBeTruthy()
-
-    fixture.destroy()
-  })
-
   it('ClipboardControlledExample two-way binds [(value)] to a host signal', () => {
     installClipboardMock()
     TestBed.configureTestingModule({ imports: [ClipboardControlledExample] })
@@ -308,6 +303,66 @@ describe('@ark-ui/angular/clipboard', () => {
     fixture.detectChanges()
 
     expect(root.api().value).toBe('https://chakra-ui.com')
+
+    fixture.destroy()
+  })
+
+  it('ClipboardContextExample exposes the clipboard api to a template', async () => {
+    const writeText = installClipboardMock()
+    TestBed.configureTestingModule({ imports: [ClipboardContextExample] })
+    const fixture = TestBed.createComponent(ClipboardContextExample)
+    fixture.detectChanges()
+
+    const button = fixture.nativeElement.querySelector('button') as HTMLButtonElement
+    expect(button.textContent?.trim()).toBe('Copy')
+
+    button.click()
+    await flushCopy()
+    fixture.detectChanges()
+
+    expect(writeText).toHaveBeenCalledWith('https://ark-ui.com')
+    expect(button.textContent?.trim()).toBe('Copied!')
+
+    fixture.destroy()
+  })
+
+  it('ClipboardCopyStatusExample increments the copy count from (statusChange)', async () => {
+    installClipboardMock()
+    TestBed.configureTestingModule({ imports: [ClipboardCopyStatusExample] })
+    const fixture = TestBed.createComponent(ClipboardCopyStatusExample)
+    fixture.detectChanges()
+
+    const button = fixture.nativeElement.querySelector('button') as HTMLButtonElement
+    button.click()
+    await flushCopy()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.copyCount()).toBe(1)
+    expect(fixture.nativeElement.textContent).toContain('Copied 1 times')
+
+    fixture.destroy()
+  })
+
+  it('ClipboardTimeoutExample passes timeout to the machine context', () => {
+    installClipboardMock()
+    TestBed.configureTestingModule({ imports: [ClipboardTimeoutExample] })
+    const fixture = TestBed.createComponent(ClipboardTimeoutExample)
+    fixture.detectChanges()
+
+    const root = fixture.debugElement.query(By.directive(ArkClipboardRoot)).injector.get(ArkClipboardRoot)
+    expect(root.timeout()).toBe(5000)
+
+    fixture.destroy()
+  })
+
+  it('ClipboardValueTextExample renders the value text story', () => {
+    installClipboardMock()
+    TestBed.configureTestingModule({ imports: [ClipboardValueTextExample] })
+    const fixture = TestBed.createComponent(ClipboardValueTextExample)
+    fixture.detectChanges()
+
+    const valueTextEl = fixture.debugElement.query(By.directive(ArkClipboardValueText)).nativeElement as HTMLElement
+    expect(valueTextEl.textContent?.trim()).toBe('https://ark-ui.com')
 
     fixture.destroy()
   })

@@ -70,6 +70,10 @@ export class ArkTabsRoot implements UseTabsReturn {
     undefined,
     { transform: optionalBooleanAttribute },
   )
+  /** Whether tab content should be lazy mounted. */
+  readonly lazyMount: InputSignalWithTransform<boolean, unknown> = input(false, { transform: booleanAttribute })
+  /** Whether tab content should be unmounted when hidden. */
+  readonly unmountOnExit: InputSignalWithTransform<boolean, unknown> = input(false, { transform: booleanAttribute })
   /** Function to navigate to the selected tab when trigger elements are anchors. */
   readonly navigate: InputSignal<tabs.Props['navigate']> = input<tabs.Props['navigate']>(undefined)
   /** Localized strings for accessibility labels. */
@@ -93,6 +97,8 @@ export class ArkTabsRoot implements UseTabsReturn {
       loopFocus: this.loopFocus(),
       composite: this.composite(),
       deselectable: this.deselectable(),
+      lazyMount: this.lazyMount(),
+      unmountOnExit: this.unmountOnExit(),
       navigate: (details) => {
         this.navigate()?.(details)
         this.navigateChange.emit(details)
@@ -110,6 +116,7 @@ export class ArkTabsRoot implements UseTabsReturn {
 
   readonly state: Signal<tabs.Service['state']> = this.machine.state
   readonly api: Signal<tabs.Api> = this.machine.api
+  readonly mountedValues: Signal<ReadonlySet<string>> = this.machine.mountedValues
   readonly service: tabs.Service = this.machine.service
   readonly send: tabs.Service['send'] = this.machine.send
 
@@ -132,5 +139,9 @@ export class ArkTabsRoot implements UseTabsReturn {
   /** @internal Exposed for tabs part directives to consume via ARK_TABS_CONTEXT_CARRIER. */
   getContextCarrier(): ArkContextCarrier<ArkTabsRoot> {
     return this.arkContextCarrier
+  }
+
+  isContentUnmounted(value: string): boolean {
+    return this.machine.isContentUnmounted(value)
   }
 }

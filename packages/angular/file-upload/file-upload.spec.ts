@@ -36,10 +36,21 @@ import {
   type UseFileUploadProps,
   type UseFileUploadReturn,
 } from '@ark-ui/angular/file-upload'
-import { ArkFieldRoot } from '@ark-ui/angular/field'
+import { ArkFieldErrorText, ArkFieldHelperText, ArkFieldRoot } from '@ark-ui/angular/field'
+import { FileUploadAcceptedFileTypesExample } from './examples/accepted-file-types'
 import { FileUploadBasicExample } from './examples/basic'
+import { FileUploadClearTriggerExample } from './examples/clear-trigger'
+import { FileUploadDirectoryUploadExample } from './examples/directory-upload'
+import { FileUploadErrorHandlingExample } from './examples/error-handling'
+import { FileUploadFormUsageExample } from './examples/form-usage'
+import { FileUploadInitialFilesExample } from './examples/initial-files'
 import { FileUploadMaxFilesExample } from './examples/max-files'
+import { FileUploadMediaCaptureExample } from './examples/media-capture'
+import { FileUploadPastingFilesExample } from './examples/pasting-files'
+import { FileUploadRejectedFilesExample } from './examples/rejected-files'
 import { FileUploadRootProviderExample } from './examples/root-provider'
+import { FileUploadTransformFilesExample } from './examples/transform-files'
+import { FileUploadWithFieldExample } from './examples/with-field'
 import { FileUploadWithDropzoneExample } from './examples/with-dropzone'
 import { FileUploadWithImagePreviewExample } from './examples/with-image-preview'
 
@@ -333,6 +344,7 @@ describe('@ark-ui/angular/file-upload', () => {
     await flushMicrotasks()
     TestBed.tick()
     fixture.detectChanges()
+    await flushMicrotasks()
 
     const nameEl = fixture.debugElement.query(By.directive(ArkFileUploadItemName)).nativeElement as HTMLElement
     const sizeEl = fixture.debugElement.query(By.directive(ArkFileUploadItemSizeText)).nativeElement as HTMLElement
@@ -345,6 +357,38 @@ describe('@ark-ui/angular/file-upload', () => {
     expect(sizeEl.getAttribute('data-part')).toBe('item-size-text')
     expect(previewEl.getAttribute('data-part')).toBe('item-preview')
     expect(deleteEl.getAttribute('data-part')).toBe('item-delete-trigger')
+    expect(nameEl.textContent).toBe('a.txt')
+    expect(sizeEl.textContent?.trim()).not.toBe('')
+
+    fixture.destroy()
+  })
+
+  it('item-name and item-size-text preserve consumer-authored content', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFileUploadRoot, ArkFileUploadItem, ArkFileUploadItemName, ArkFileUploadItemSizeText],
+      template: `
+        <div arkFileUpload>
+          <div arkFileUploadItem [file]="file">
+            <span arkFileUploadItemName>Custom name</span>
+            <span arkFileUploadItemSizeText>Custom size</span>
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly file = makeFile('a.txt')
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flushMicrotasks()
+
+    const nameEl = fixture.debugElement.query(By.directive(ArkFileUploadItemName)).nativeElement as HTMLElement
+    const sizeEl = fixture.debugElement.query(By.directive(ArkFileUploadItemSizeText)).nativeElement as HTMLElement
+    expect(nameEl.textContent).toBe('Custom name')
+    expect(sizeEl.textContent).toBe('Custom size')
 
     fixture.destroy()
   })
@@ -433,12 +477,47 @@ describe('@ark-ui/angular/file-upload', () => {
     const previews = fixture.debugElement
       .queryAll(By.directive(ArkFileUploadItemPreview))
       .map((debug) => debug.injector.get(ArkFileUploadItemPreview))
+    const previewEls = fixture.debugElement
+      .queryAll(By.directive(ArkFileUploadItemPreview))
+      .map((debug) => debug.nativeElement as HTMLElement)
     expect(previews.map((preview) => preview.matches())).toEqual([true, true, true, false])
+    expect(previewEls.map((el) => el.hidden)).toEqual([false, false, false, true])
 
     fixture.componentInstance.file.set(makeFile('sheet.xls', 4, 'application/vnd.ms-excel'))
     TestBed.tick()
     fixture.detectChanges()
     expect(previews.map((preview) => preview.matches())).toEqual([false, false, false, true])
+    expect(previewEls.map((el) => el.hidden)).toEqual([true, true, true, false])
+
+    fixture.destroy()
+  })
+
+  it('[(acceptedFiles)] follows file selection changes', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFileUploadRoot, ArkFileUploadHiddenInput],
+      template: `
+        <div arkFileUpload [(acceptedFiles)]="acceptedFiles">
+          <input arkFileUploadHiddenInput />
+        </div>
+      `,
+    })
+    class Host {
+      readonly acceptedFiles = signal<File[] | undefined>(undefined)
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+
+    const inputEl = fixture.debugElement.query(By.directive(ArkFileUploadHiddenInput)).nativeElement as HTMLInputElement
+    dispatchInputChange(inputEl, [makeFile('a.txt')])
+    await flushMicrotasks()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.acceptedFiles()?.map((file) => file.name)).toEqual(['a.txt'])
 
     fixture.destroy()
   })
@@ -504,15 +583,17 @@ describe('@ark-ui/angular/file-upload', () => {
     fixture.destroy()
   })
 
-  it('field disabled and invalid state flow into the machine context', () => {
+  it('field disabled, invalid, and description state flow into the machine context and hidden input', () => {
     @Component({
       standalone: true,
-      imports: [ArkFieldRoot, ArkFileUploadRoot, ArkFileUploadHiddenInput],
+      imports: [ArkFieldRoot, ArkFieldHelperText, ArkFieldErrorText, ArkFileUploadRoot, ArkFileUploadHiddenInput],
       template: `
         <div arkFieldRoot [disabled]="true" [invalid]="true">
           <div arkFileUpload>
             <input arkFileUploadHiddenInput />
           </div>
+          <p arkFieldHelperText>Help</p>
+          <p arkFieldErrorText>Error</p>
         </div>
       `,
     })
@@ -524,8 +605,11 @@ describe('@ark-ui/angular/file-upload', () => {
     fixture.detectChanges()
 
     const root = fixture.debugElement.query(By.directive(ArkFileUploadRoot)).injector.get(ArkFileUploadRoot)
+    const inputEl = fixture.debugElement.query(By.directive(ArkFileUploadHiddenInput)).nativeElement as HTMLInputElement
     const hiddenProps = root.api().getHiddenInputProps() as { disabled?: boolean }
     expect(hiddenProps.disabled).toBe(true)
+    expect(inputEl.getAttribute('aria-describedby')).toContain('error')
+    expect(inputEl.getAttribute('aria-describedby')).toContain('helper')
 
     fixture.destroy()
   })
@@ -586,5 +670,30 @@ describe('@ark-ui/angular/file-upload', () => {
       .injector.get(ArkFileUploadRootProvider)
     expect(provider.resolveValue()).toBe(fixture.componentInstance.fileUpload)
     fixture.destroy()
+  })
+
+  it('React-parity Storybook examples compile', () => {
+    const examples = [
+      FileUploadAcceptedFileTypesExample,
+      FileUploadClearTriggerExample,
+      FileUploadDirectoryUploadExample,
+      FileUploadErrorHandlingExample,
+      FileUploadFormUsageExample,
+      FileUploadInitialFilesExample,
+      FileUploadMediaCaptureExample,
+      FileUploadPastingFilesExample,
+      FileUploadRejectedFilesExample,
+      FileUploadTransformFilesExample,
+      FileUploadWithFieldExample,
+    ]
+
+    for (const example of examples) {
+      TestBed.resetTestingModule()
+      TestBed.configureTestingModule({ imports: [example] })
+      const fixture = TestBed.createComponent(example)
+      fixture.detectChanges()
+      expect(fixture.nativeElement).toBeTruthy()
+      fixture.destroy()
+    }
   })
 })

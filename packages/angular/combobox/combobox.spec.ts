@@ -6,7 +6,7 @@ import { By } from '@angular/platform-browser'
 import { TestBed } from '@angular/core/testing'
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { ArkFieldRoot } from '@ark-ui/angular/field'
+import { ArkFieldErrorText, ArkFieldHelperText, ArkFieldRoot } from '@ark-ui/angular/field'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { createListCollection, type ListCollection } from '@ark-ui/angular/collection'
 import {
@@ -35,6 +35,9 @@ import {
   type ComboboxApi,
   type ComboboxMachine,
   type ComboboxMachineProps,
+  type ComboboxFocusOutsideEvent,
+  type ComboboxInteractOutsideEvent,
+  type ComboboxPointerDownOutsideEvent,
   type ComboboxService,
   type UseComboboxOptions,
   type UseComboboxProps,
@@ -45,6 +48,9 @@ type ComboboxPublicTypeSmoke = [
   ComboboxApi,
   ComboboxMachine,
   ComboboxMachineProps,
+  ComboboxFocusOutsideEvent,
+  ComboboxInteractOutsideEvent,
+  ComboboxPointerDownOutsideEvent,
   ComboboxService,
   UseComboboxOptions,
   UseComboboxProps,
@@ -345,6 +351,35 @@ describe('@ark-ui/angular/combobox', () => {
     fixture.destroy()
   })
 
+  it('focusable trigger opts into normal tab focus', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkComboboxRoot, ArkComboboxControl, ArkComboboxInput, ArkComboboxTrigger],
+      template: `
+        <div arkComboboxRoot [collection]="collection">
+          <div arkComboboxControl>
+            <input arkComboboxInput />
+            <button arkComboboxTrigger focusable>Toggle</button>
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly collection = makeCollection()
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+
+    const trigger = fixture.debugElement.query(By.directive(ArkComboboxTrigger)).nativeElement as HTMLButtonElement
+    expect(trigger.getAttribute('tabindex')).toBeNull()
+    expect(trigger.hasAttribute('data-focusable')).toBe(true)
+
+    fixture.destroy()
+  })
+
   it('reactive [formControl] writeValue propagates to the Zag api', () => {
     @Component({
       standalone: true,
@@ -452,10 +487,18 @@ describe('@ark-ui/angular/combobox', () => {
     fixture.destroy()
   })
 
-  it('merges Field disabled/invalid/readOnly state and IDs into the combobox api', () => {
+  it('merges Field disabled/invalid/readOnly state, IDs, and describedby into the combobox api', () => {
     @Component({
       standalone: true,
-      imports: [ArkFieldRoot, ArkComboboxRoot, ArkComboboxLabel, ArkComboboxControl, ArkComboboxInput],
+      imports: [
+        ArkFieldRoot,
+        ArkFieldHelperText,
+        ArkFieldErrorText,
+        ArkComboboxRoot,
+        ArkComboboxLabel,
+        ArkComboboxControl,
+        ArkComboboxInput,
+      ],
       template: `
         <div arkFieldRoot id="fld" [disabled]="true" [invalid]="true" [readOnly]="true">
           <div arkComboboxRoot [collection]="collection">
@@ -464,6 +507,8 @@ describe('@ark-ui/angular/combobox', () => {
               <input arkComboboxInput />
             </div>
           </div>
+          <span arkFieldHelperText>Helper</span>
+          <span arkFieldErrorText>Error</span>
         </div>
       `,
     })
@@ -480,6 +525,9 @@ describe('@ark-ui/angular/combobox', () => {
     expect(root.api().disabled).toBe(true)
     const labelProps = root.api().getLabelProps() as { htmlFor?: string; id?: string }
     expect(labelProps.htmlFor ?? labelProps.id).toBeDefined()
+    const field = fixture.debugElement.query(By.directive(ArkFieldRoot)).injector.get(ArkFieldRoot)
+    const input = fixture.debugElement.query(By.directive(ArkComboboxInput)).nativeElement as HTMLInputElement
+    expect(input.getAttribute('aria-describedby')).toBe(`${field.ids.errorText} ${field.ids.helperText}`)
 
     fixture.destroy()
   })
@@ -567,6 +615,7 @@ describe('@ark-ui/angular/combobox', () => {
     fixture.detectChanges()
 
     const empty = fixture.debugElement.query(By.directive(ArkComboboxEmpty)).nativeElement as HTMLElement
+    expect(empty.getAttribute('role')).toBe('presentation')
     expect(empty.style.display).toBe('none')
 
     fixture.componentInstance.collection.set(makeCollection([]))

@@ -1,54 +1,150 @@
 export const jsonTreeViewExampleStyles = `
   [arkJsonTreeView],
   [arkJsonTreeViewRootProvider] {
-    display: grid;
-    gap: 0.5rem;
-    max-width: 36rem;
+    width: 100%;
+    color: var(--demo-neutral-fg);
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    font-size: 0.875rem;
-    line-height: 1.7;
   }
 
   [arkJsonTreeViewTree] {
-    display: grid;
-    gap: 0.125rem;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.75rem;
+    line-height: 1.8;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  [data-part='branch-content'] {
+    position: relative;
+  }
+
+  [data-part='branch-indent-guide'] {
+    height: 100%;
+    width: 1px;
+    background: var(--demo-border);
+    position: absolute;
+    inset-inline-start: calc((var(--depth) - 1) * 1rem);
+  }
+
+  [data-part='branch-indent-guide'][data-depth='1'] {
+    inset-inline-start: 0.75rem;
   }
 
   [data-part='branch-control'],
   [data-part='item'] {
     display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding-inline-start: calc(var(--line-length, 0) * 1rem);
+    position: relative;
+    user-select: none;
+  }
+
+  [data-part='branch-control'] {
+    padding-inline-start: calc((var(--depth) - 1) * 0.75rem);
+  }
+
+  [data-part='branch-control'][data-depth='1'] {
+    padding-inline-start: 0.25rem;
+  }
+
+  [data-part='item'] {
+    padding-inline-start: calc(((var(--depth) - 1) * 0.75rem) + 0.75rem);
+  }
+
+  [data-part='item'][data-depth='1'] {
+    padding-inline-start: 1.5rem;
+  }
+
+  [data-part='branch-control']:hover,
+  [data-part='item']:hover {
+    background: var(--demo-neutral-subtle);
   }
 
   [data-part='branch-indicator'] {
-    display: inline-grid;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline-end: 0.25rem;
+    transform-origin: center;
+  }
+
+  [arkJsonTreeViewTree] svg {
     width: 1rem;
-    place-items: center;
+    height: 1rem;
   }
 
   [data-part='branch-indicator'][data-state='open'] {
-    rotate: 90deg;
+    transform: rotate(90deg);
+  }
+
+  [data-part='item-text'],
+  [data-part='branch-text'] {
+    display: flex;
+    align-items: baseline;
   }
 
   [data-kind='key'] {
-    color: #6f3cc3;
+    color: var(--demo-json-key);
+    font-weight: 500;
   }
 
-  [data-kind='colon'],
-  [data-kind='brace'],
-  [data-kind='operator'] {
-    color: #687076;
+  [data-kind='colon'] {
+    color: var(--demo-neutral-emphasized);
+    margin-inline: 0.25rem;
+  }
+
+  [data-kind='brace'] {
+    color: var(--demo-neutral-fg);
+    font-weight: 700;
+  }
+
+  [data-kind='preview-text'] {
+    color: var(--demo-neutral-emphasized);
+    font-style: italic;
+  }
+
+  [data-kind='constructor'] {
+    color: var(--demo-json-accent);
+    font-weight: 500;
   }
 
   [data-type='string'] {
-    color: #0b7285;
+    color: var(--demo-json-string);
   }
 
-  [data-type='number'],
+  [data-type='number'] {
+    color: var(--demo-json-number);
+  }
+
   [data-type='boolean'],
-  [data-type='null'] {
-    color: #b45309;
+  [data-type='function'] {
+    color: var(--demo-json-boolean);
+  }
+
+  [data-type='boolean'],
+  [data-type='null'],
+  [data-type='undefined'] {
+    font-weight: 600;
+  }
+
+  [data-type='null'],
+  [data-type='undefined'] {
+    color: var(--demo-neutral-emphasized);
+    font-style: italic;
+  }
+
+  [data-type='function'] {
+    font-style: italic;
+  }
+
+  [data-type='date'] {
+    color: var(--demo-json-number);
+  }
+
+  [data-type='error'] {
+    color: var(--demo-json-string);
+    font-weight: 500;
+  }
+
+  [data-type='regex'] {
+    color: var(--demo-json-accent);
   }
 `

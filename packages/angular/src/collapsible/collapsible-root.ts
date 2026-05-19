@@ -8,13 +8,16 @@ import {
   type ProviderToken,
   Renderer2,
   booleanAttribute,
+  computed,
   forwardRef,
   inject,
   input,
   model,
+  output,
   type InputSignal,
   type InputSignalWithTransform,
   type ModelSignal,
+  type OutputEmitterRef,
   type Signal,
 } from '@angular/core'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
@@ -47,6 +50,12 @@ export class ArkCollapsibleRoot implements UseCollapsibleReturn {
   readonly collapsedHeight: InputSignal<number | string | undefined> = input<number | string | undefined>(undefined)
   /** The width of the content when collapsed. */
   readonly collapsedWidth: InputSignal<number | string | undefined> = input<number | string | undefined>(undefined)
+  /** Whether the content should be lazy mounted. */
+  readonly lazyMount: InputSignalWithTransform<boolean, unknown> = input(false, { transform: booleanAttribute })
+  /** Whether the content should be unmounted when collapsed. */
+  readonly unmountOnExit: InputSignalWithTransform<boolean, unknown> = input(false, { transform: booleanAttribute })
+  /** Callback invoked when the exit animation completes. */
+  readonly exitComplete: OutputEmitterRef<void> = output<void>()
 
   private readonly machine = useCollapsible({
     context: () => ({
@@ -57,15 +66,21 @@ export class ArkCollapsibleRoot implements UseCollapsibleReturn {
       disabled: this.disabled(),
       collapsedHeight: this.collapsedHeight(),
       collapsedWidth: this.collapsedWidth(),
+      lazyMount: this.lazyMount(),
+      unmountOnExit: this.unmountOnExit(),
       onOpenChange: (details) => {
         if (this.open() === details.open) return
         this.open.set(details.open)
+      },
+      onExitComplete: () => {
+        this.exitComplete.emit()
       },
     }),
   })
 
   readonly state: Signal<collapsible.Service['state']> = this.machine.state
   readonly api: Signal<collapsible.Api> = this.machine.api
+  readonly isUnmounted: Signal<boolean> = computed(() => this.machine.isUnmounted())
   readonly service: collapsible.Service = this.machine.service
   readonly send: collapsible.Service['send'] = this.machine.send
 

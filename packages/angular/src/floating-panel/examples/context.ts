@@ -1,16 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
-import {
-  ArkFloatingPanelBody,
-  ArkFloatingPanelContent,
-  ArkFloatingPanelContext,
-  ArkFloatingPanelHeader,
-  ArkFloatingPanelPositioner,
-  ArkFloatingPanelRoot,
-  ArkFloatingPanelTitle,
-  ArkFloatingPanelTrigger,
-} from '../public-api'
+import { ArkFloatingPanelContext, ArkFloatingPanelRoot, ArkFloatingPanelTrigger } from '../public-api'
 import { floatingPanelExampleStyles } from '../floating-panel-example-styles'
+import { FloatingPanelDemoPanel } from './panel'
 
 @Component({
   selector: 'floating-panel-context-example',
@@ -20,12 +12,8 @@ import { floatingPanelExampleStyles } from '../floating-panel-example-styles'
     ArkFloatingPanelRoot,
     ArkFloatingPanelTrigger,
     ArkFloatingPanelContext,
-    ArkFloatingPanelPositioner,
-    ArkFloatingPanelContent,
-    ArkFloatingPanelHeader,
-    ArkFloatingPanelTitle,
-    ArkFloatingPanelBody,
     ArkPortalComponent,
+    FloatingPanelDemoPanel,
   ],
   template: `
     <div arkFloatingPanel #root="arkFloatingPanel">
@@ -34,14 +22,9 @@ import { floatingPanelExampleStyles } from '../floating-panel-example-styles'
         <p>Floating panel is {{ floatingPanel().open ? 'open' : 'closed' }}</p>
       </ng-container>
       <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
-        <div arkFloatingPanelPositioner>
-          <div arkFloatingPanelContent>
-            <div arkFloatingPanelHeader>
-              <h2 arkFloatingPanelTitle>Floating Panel</h2>
-            </div>
-            <div arkFloatingPanelBody>Some content</div>
-          </div>
-        </div>
+        <floating-panel-demo-panel>
+          <p>Some content</p>
+        </floating-panel-demo-panel>
       </ark-portal>
     </div>
   `,

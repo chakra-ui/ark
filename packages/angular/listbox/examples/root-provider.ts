@@ -29,15 +29,18 @@ interface Priority {
     ArkListboxItemIndicator,
   ],
   template: `
-    <div arkListboxRootProvider [value]="listbox">
-      <span arkListboxLabel>Select Priority</span>
-      <div arkListboxContent>
-        @for (item of collection.items; track item.value) {
-          <div arkListboxItem [item]="item">
-            <span arkListboxItemText>{{ item.label }}</span>
-            <span arkListboxItemIndicator>✓</span>
-          </div>
-        }
+    <div class="stack">
+      <button class="button" type="button" (click)="setHigh()">Set to High</button>
+      <div arkListboxRootProvider [value]="listbox">
+        <span arkListboxLabel>Select Priority</span>
+        <div arkListboxContent>
+          @for (item of collection.items; track item.value) {
+            <div arkListboxItem [item]="item">
+              <span arkListboxItemText>{{ item.label }}</span>
+              <span arkListboxItemIndicator>✓</span>
+            </div>
+          }
+        </div>
       </div>
     </div>
   `,
@@ -53,4 +56,8 @@ export class ListboxRootProviderExample {
     ],
   })
   readonly listbox = useListbox<Priority>({ context: () => ({ collection: this.collection }) })
+
+  setHigh(): void {
+    this.listbox.api().setValue(['high'])
+  }
 }

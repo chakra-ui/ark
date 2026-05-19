@@ -4,10 +4,12 @@ import { TestBed } from '@angular/core/testing'
 import { describe, expect, it } from 'vitest'
 import {
   ARK_TOGGLE_CONTEXT,
+  ArkToggleContext,
   ArkToggleIndicator,
   ArkToggleRoot,
   injectArkToggleContext,
   toggleAnatomy,
+  type ToggleContextTemplate,
   useToggle,
   type ToggleApi,
   type ToggleMachine,
@@ -28,6 +30,7 @@ type TogglePublicTypeSmoke = [
   ToggleMachine,
   ToggleMachineProps,
   ToggleService,
+  ToggleContextTemplate,
   UseToggleOptions,
   UseToggleProps,
   UseToggleReturn,
@@ -48,6 +51,7 @@ describe('@ark-ui/angular/toggle', () => {
     expect(typeof useToggle).toBe('function')
     expect(typeof toggleAnatomy).toBe('object')
     expect(ArkToggleRoot).toBeDefined()
+    expect(ArkToggleContext).toBeDefined()
     expect(ArkToggleIndicator).toBeDefined()
     expect(undefined as TogglePublicTypeSmoke | undefined).toBeUndefined()
   })
@@ -414,28 +418,55 @@ describe('@ark-ui/angular/toggle', () => {
     fixture.destroy()
   })
 
-  it('ToggleContextExample resolves injectArkToggleContext() to the same instance as the root', () => {
+  it('arkToggleContext exposes the root api signal to an inline template and updates after interaction', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkToggleRoot, ArkToggleContext],
+      template: `
+        <button arkToggle>
+          <ng-template arkToggleContext let-api>
+            <span data-testid="state">{{ api().pressed ? 'On' : 'Off' }}</span>
+          </ng-template>
+        </button>
+      `,
+    })
+    class Host {}
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const rootEl = fixture.debugElement.query(By.directive(ArkToggleRoot)).nativeElement as HTMLButtonElement
+    const stateEl = fixture.nativeElement.querySelector('[data-testid="state"]') as HTMLElement
+
+    expect(stateEl.textContent?.trim()).toBe('Off')
+
+    rootEl.click()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(stateEl.textContent?.trim()).toBe('On')
+
+    fixture.destroy()
+  })
+
+  it('ToggleContextExample renders inline context content from arkToggleContext', () => {
     TestBed.resetTestingModule()
     TestBed.configureTestingModule({ imports: [ToggleContextExample] })
     const fixture = TestBed.createComponent(ToggleContextExample)
     fixture.detectChanges()
 
     const rootDebug = fixture.debugElement.query(By.directive(ArkToggleRoot))
-    const rootInstance = rootDebug.injector.get(ArkToggleRoot)
-
-    const labelDebug = fixture.debugElement.query(By.css('toggle-context-label'))
-    expect(labelDebug).toBeTruthy()
-    const labelContext = labelDebug.injector.get(ARK_TOGGLE_CONTEXT)
-    expect(labelContext).toBe(rootInstance)
-
     const rootEl = rootDebug.nativeElement as HTMLButtonElement
-    expect((labelDebug.nativeElement as HTMLElement).textContent?.trim()).toBe('Off')
+    const host = fixture.nativeElement as HTMLElement
+    expect(host.textContent?.trim()).toContain('Off')
 
     rootEl.click()
     TestBed.tick()
     fixture.detectChanges()
 
-    expect((labelDebug.nativeElement as HTMLElement).textContent?.trim()).toBe('On')
+    expect(host.textContent?.trim()).toContain('On')
 
     fixture.destroy()
   })

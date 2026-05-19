@@ -5,6 +5,7 @@ import { createArkId } from '@ark-ui/angular/src/internal'
 import type { UseMachineReturn } from '@ark-ui/angular/src/internal'
 import { injectArkEnvironment } from '@ark-ui/angular/src/providers/environment'
 import { injectArkLocale } from '@ark-ui/angular/src/providers/locale'
+import { injectArkDrawerStackContextOptional } from './use-drawer-stack-context'
 
 type OptionalId<T extends { id: string }> = Omit<T, 'id'> & { id?: string }
 
@@ -22,6 +23,7 @@ type DrawerSchema = drawer.Machine extends Machine<infer TSchema> ? TSchema : ne
 export function useDrawer(options: UseDrawerOptions): UseDrawerReturn {
   const locale = injectArkLocale()
   const environment = injectArkEnvironment()
+  const ancestorStack = injectArkDrawerStackContextOptional()
   const fallbackId = createArkId('drawer')
 
   return useMachine<DrawerSchema, drawer.Api>({
@@ -33,6 +35,7 @@ export function useDrawer(options: UseDrawerOptions): UseDrawerReturn {
         dir: locale.dir,
         getRootNode: environment.getRootNode,
         id: props.id ?? fallbackId,
+        stack: props.stack ?? ancestorStack?.stack,
       } as DrawerContext
     },
     connect: (service, normalize) => drawer.connect(service, normalize),

@@ -1,0 +1,39 @@
+# Date Input Angular Parity Audit
+
+## Scope
+- Angular files: `packages/angular/src/date-input/*`, `packages/angular/src/date-input/examples/*`, `packages/angular/src/date-input/date-input.stories.ts`, `packages/angular/src/date-input/date-input.spec.ts`
+- React files: `packages/react/src/components/date-input/*`, `packages/react/src/components/date-input/examples/*`, `packages/react/src/components/date-input/tests/*`
+- Storybook/style files: `.storybook/modules/date-input.module.css`, `packages/angular/src/date-input/date-input-example-styles.ts`
+
+## Summary
+- Status: Re-audited 2026-05-19. All single-component parity gaps remain closed: placeholder model channel, story coverage matching React's single-component states, range hidden inputs, segment-context indexed segments, and Storybook demo styling. Stories `Basic`, `Controlled`, `DefaultValue`, `Disabled`, `Granularity`, `Invalid`, `LeadingZeros`, `Localized`, `MinMax`, `Range`, `ReadOnly`, `RootProvider`, `RTL`, and `WithClearButton` are all present in Angular and match the React example IDs.
+- Deferred: `WithDatePicker` from React (`packages/react/src/components/date-input/examples/with-date-picker.tsx`) is still a Date Picker integration story — it composes `DatePicker.RootProvider`, `DatePicker.Trigger`, `DatePicker.Content`, three `DatePicker.View` modes, `Portal`, and the full date-picker view/table chrome. The Angular `@ark-ui/angular/date-picker` entry point is now complete with the matching parts and types, so the story is technically buildable; however, it belongs under the Date Picker component audit (`docs/component-audit-fix/components.md` row for `date-picker`) because the demo CSS, calendar/chevron icons, and view-control wiring are Date Picker concerns. Tracked there to keep this audit scoped to Date Input.
+- Highest-risk residual: visual parity was not browser-inspected side by side; everything else has narrow specs and the Storybook smoke build.
+
+## Gap Matrix
+| Area | Gap | React reference | Angular location | Fix |
+| --- | --- | --- | --- | --- |
+| Public API | `placeholderValue` is a controlled Zag prop but Angular previously exposed it as one-way `input()`, blocking two-way placeholder binding. | `packages/react/src/components/date-input/date-input-root.tsx`; Zag `DateInputProps.placeholderValue` / `onPlaceholderChange` | `packages/angular/src/date-input/date-input-root.ts` | Closed: `placeholderValue` is now `model<DateValue \| undefined>()` and updated from `onPlaceholderChange` (re-verified by the `[(placeholderValue)]` spec). |
+| Stories | Angular previously only had `Basic`, `Controlled`, `Range`, and `RootProvider`; React documents default value, disabled, granularity, invalid, leading zeros, localized, min/max, read-only, RTL, clear button, and date-picker composition. | `packages/react/src/components/date-input/date-input.stories.tsx`; `packages/react/src/components/date-input/examples/*` | `packages/angular/src/date-input/date-input.stories.ts`; `packages/angular/src/date-input/examples/*` | Closed for all single-component states. `WithDatePicker` deferred to Date Picker audit (see Summary). |
+| Story styling | Angular styles only covered root/control/group/segment basics and focus color; React adds max width, label states, checkbox styling, focus/invalid/disabled/read-only segment group states, placeholder/literal segment styles, and clear-button layout support. | `.storybook/modules/date-input.module.css` | `packages/angular/src/date-input/date-input-example-styles.ts` | Closed: example styles target Zag `data-*` selectors and story utility classes that match every React selector. |
+| Range functionality | Angular range example previously rendered two segment groups without indexed hidden inputs, so form submission parity for range indexes was undemonstrated. | `packages/react/src/components/date-input/examples/range.tsx`; `packages/react/src/components/date-input/tests/date-input.test.tsx` | `packages/angular/src/date-input/examples/range.ts`; `packages/angular/src/date-input/date-input.spec.ts` | Closed: range example renders `[index]="0"` and `[index]="1"` hidden inputs and the spec `syncs indexed hidden input values for range selection` asserts both values. |
+| Story content | Existing Angular controlled/root-provider examples previously omitted labels and hidden inputs that React examples include, reducing a11y and form coverage in Storybook. | `packages/react/src/components/date-input/examples/controlled.tsx`; `packages/react/src/components/date-input/examples/root-provider.tsx` | `packages/angular/src/date-input/examples/controlled.ts`; `packages/angular/src/date-input/examples/root-provider.ts` | Closed: examples include labels, hidden inputs, and `<output>` text. |
+| Tests | React covers focus, typing, backspace clearing, disabled/read-only/invalid flags, default values, hidden input value, and range hidden inputs. | `packages/react/src/components/date-input/tests/date-input.test.tsx` | `packages/angular/src/date-input/date-input.spec.ts` | Closed: spec covers placeholder model sync, disabled/read-only/invalid state attributes, segment typing + clear, indexed range hidden input values, plus existing CVA, form-control disabled, touched, and mixed-binding diagnostics. |
+| Date Picker composition (deferred) | React ships `WithDatePicker` combining Date Input + Date Picker. | `packages/react/src/components/date-input/examples/with-date-picker.tsx` | n/a | No change. Cross-component composition; track under the Date Picker audit. The Angular date-picker package now exposes the required parts (`ArkDatePickerRootProvider`, `Trigger`, `Content`, `View`, `Table*`, `Positioner`, `RangeText`, `ViewControl`, `Prev/NextTrigger`, `ViewTrigger`), `ArkPortalComponent`, `useDatePicker` with `weeks` / `getMonthsGrid` / `getYearsGrid` on `api()`, and `ArkDateInputContext` for rendering segments from a `useDateInput` carrier outside its own `SegmentGroup`. |
+
+## Implementation Plan
+1. `ArkDateInputRoot.placeholderValue` was promoted to a `model()` channel and synchronized from `onPlaceholderChange` (done).
+2. Angular examples for the React single-component story IDs were added; existing examples were updated for labels, hidden inputs, output text, and indexed range hidden inputs (done).
+3. `date-input-example-styles.ts` was expanded to mirror the React CSS module via `data-scope` / `data-part` / `data-*` selectors plus the demo utility classes (done).
+4. Focused Angular specs were added for the public API and behavior gaps (done — 15 specs total).
+5. Re-verification run after sibling component fixes: date-input specs, package typecheck (now clean), Storybook smoke test, and `git diff --check`.
+
+## Verification
+- [x] Typecheck/build: `bun run --cwd packages/angular typecheck` — clean. Built every entry point through `ng-packagr` and `scripts/check-forms-isolation.ts` reported `forms isolation: ok`.
+- [x] Component tests: `bun run --cwd packages/angular test:ci src/date-input/date-input.spec.ts` — 1 file, 15 tests passed in 3.17s.
+- [x] Storybook render: `bun run --cwd packages/angular storybook -- --smoke-test --quiet` — exit 0. Pre-existing unused-compilation warnings emitted by Angular's webpack-dev-middleware are present across the entire `packages/angular` tree and are not Date Input regressions.
+- [x] Manual/visual checks: Compared React `.storybook/modules/date-input.module.css` to `packages/angular/src/date-input/date-input-example-styles.ts` selector-by-selector and matched every rule via `data-scope='date-input'`/`data-part` targets and story utility classes (`date-input-stack`, `date-input-checkbox*`, `date-input-clear-button`, `date-input-output`). Browser side-by-side inspection was not run.
+
+## Commit
+- Hash: Recorded in final status after commit creation.
+- Message: `fix(angular): align date-input with react parity`

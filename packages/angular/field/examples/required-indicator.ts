@@ -10,7 +10,7 @@ import { fieldExampleStyles } from '../field-example-styles'
   template: `
     <div arkFieldRoot [required]="true">
       <label arkFieldLabel>
-        Label
+        Username
         <span arkFieldRequiredIndicator>*</span>
       </label>
       <input arkFieldInput />

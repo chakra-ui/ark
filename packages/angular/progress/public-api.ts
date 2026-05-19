@@ -2,6 +2,7 @@ export { progressAnatomy } from './progress.anatomy'
 export type {
   ProgressApi,
   ProgressElementIds,
+  ProgressIntlTranslations,
   ProgressMachine,
   ProgressMachineProps,
   ProgressState,

@@ -44,11 +44,12 @@ export function useNumberInput(options: UseNumberInputOptions): UseNumberInputRe
     machine: numberInput.machine,
     context: () => {
       const props = options.context()
+      const { locale: valueLocale, ...restProps } = props
       const merged: MergedContext = {
         dir: locale.dir,
-        locale: locale.locale,
+        locale: valueLocale ?? locale.locale,
         getRootNode: environment.getRootNode,
-        ...props,
+        ...restProps,
         id: props.id ?? fallbackId,
       }
       if (field) {

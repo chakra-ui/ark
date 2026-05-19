@@ -26,6 +26,7 @@ export class ArkCollapsibleRootProvider implements UseCollapsibleReturn {
   readonly value: InputSignal<UseCollapsibleReturn> = input.required<UseCollapsibleReturn>()
   readonly state: Signal<collapsible.Service['state']> = computed(() => this.value().state())
   readonly api: Signal<collapsible.Api> = computed(() => this.value().api())
+  readonly isUnmounted: Signal<boolean> = computed(() => this.value().isUnmounted())
   readonly send: collapsible.Service['send'] = (event) => this.value().send(event)
 
   get service(): collapsible.Service {

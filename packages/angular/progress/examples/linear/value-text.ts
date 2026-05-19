@@ -17,7 +17,7 @@ import { progressLinearExampleStyles } from '../../progress-example-styles'
   template: `
     <div arkProgressRootProvider [value]="progress">
       <span arkProgressLabel>Label</span>
-      <span arkProgressValueText></span>
+      <span arkProgressValueText #valueText="arkProgressValueText">{{ valueText.percentAsString() }}</span>
       <div arkProgressTrack>
         <div arkProgressRange></div>
       </div>

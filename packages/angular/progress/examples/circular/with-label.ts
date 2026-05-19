@@ -29,7 +29,7 @@ import { progressCircularExampleStyles } from '../../progress-example-styles'
           <circle arkProgressCircleTrack></circle>
           <circle arkProgressCircleRange></circle>
         </svg>
-        <span arkProgressValueText></span>
+        <span arkProgressValueText #valueText="arkProgressValueText">{{ valueText.percentAsString() }}</span>
       </div>
     </div>
   `,

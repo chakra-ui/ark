@@ -28,14 +28,31 @@ import { signaturePadExampleStyles } from '../signature-pad-example-styles'
         <label arkSignaturePadLabel>Sign below</label>
         <div arkSignaturePadControl>
           <svg arkSignaturePadSegment></svg>
-          <button arkSignaturePadClearTrigger>Clear</button>
+          <button arkSignaturePadClearTrigger aria-label="Clear signature">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+              <path d="M3 3v5h5" />
+            </svg>
+          </button>
           <div arkSignaturePadGuide></div>
         </div>
       </div>
 
-      @if (imageUrl()) {
-        <img [src]="imageUrl()" alt="Signature" />
-      }
+      <div class="stack">
+        <span>Image Preview</span>
+        @if (imageUrl()) {
+          <img class="signature-pad-image" [src]="imageUrl()" alt="Signature" />
+        }
+      </div>
     </div>
   `,
   styles: [
@@ -46,10 +63,10 @@ import { signaturePadExampleStyles } from '../signature-pad-example-styles'
         gap: 1rem;
       }
 
-      img {
-        width: min(100%, 28rem);
-        border: 1px solid var(--demo-border, #d6d3d1);
-        border-radius: 0.5rem;
+      span {
+        color: var(--demo-neutral-fg, #1c1917);
+        font-size: 0.875rem;
+        line-height: 1.25rem;
       }
     `,
   ],

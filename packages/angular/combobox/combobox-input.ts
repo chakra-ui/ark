@@ -1,5 +1,6 @@
 import { DestroyRef, Directive, ElementRef, Renderer2, computed, effect, inject } from '@angular/core'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
+import { injectArkFieldContextOptional } from '@ark-ui/angular/field'
 import { injectArkComboboxContext } from './use-combobox-context'
 
 @Directive({
@@ -10,6 +11,7 @@ import { injectArkComboboxContext } from './use-combobox-context'
 export class ArkComboboxInput {
   constructor() {
     const context = injectArkComboboxContext()
+    const field = injectArkFieldContextOptional()
     const elementRef = inject(ElementRef)
     const renderer = inject(Renderer2)
     const destroyRef = inject(DestroyRef)
@@ -37,6 +39,10 @@ export class ArkComboboxInput {
       props: () => {
         const props = context.api().getInputProps() as Record<string, unknown>
         const { defaultValue: _defaultValue, ...rest } = props
+        const describedBy = field?.ariaDescribedby()
+        if (describedBy) {
+          rest['aria-describedby'] = describedBy
+        }
         upstreamCompositionStart = rest['onCompositionStart']
         upstreamCompositionEnd = rest['onCompositionEnd']
         rest['onCompositionStart'] = onCompositionStart

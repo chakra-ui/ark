@@ -2,6 +2,9 @@ import {
   DestroyRef,
   Directive,
   ElementRef,
+  EnvironmentInjector,
+  Injector,
+  type ProviderToken,
   Renderer2,
   computed,
   forwardRef,
@@ -13,6 +16,7 @@ import {
 import type * as treeView from '@zag-js/tree-view'
 import type { TreeNode } from '@ark-ui/angular/src/collection'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
+import { buildRootCarrier, type ArkContextCarrier } from '@ark-ui/angular/src/internal'
 import { ARK_TREE_VIEW_CONTEXT } from './use-tree-view-context'
 import type { UseTreeViewApi, UseTreeViewReturn } from './use-tree-view'
 
@@ -33,6 +37,15 @@ export class ArkTreeViewRootProvider<T extends TreeNode = TreeNode> implements U
     return this.value().service
   }
 
+  protected readonly arkContextCarrier: ArkContextCarrier<ArkTreeViewRootProvider<T>> = buildRootCarrier<
+    ArkTreeViewRootProvider<T>
+  >({
+    root: this,
+    rootToken: ARK_TREE_VIEW_CONTEXT as ProviderToken<ArkTreeViewRootProvider<T>>,
+    originInjector: inject(Injector),
+    environmentInjector: inject(EnvironmentInjector),
+  })
+
   constructor() {
     applyArkProps({
       elementRef: inject(ElementRef),
@@ -40,5 +53,10 @@ export class ArkTreeViewRootProvider<T extends TreeNode = TreeNode> implements U
       destroyRef: inject(DestroyRef),
       props: () => this.api().getRootProps(),
     })
+  }
+
+  /** @internal Exposed for recursive or dynamic tree-view templates. */
+  getContextCarrier(): ArkContextCarrier<ArkTreeViewRootProvider<T>> {
+    return this.arkContextCarrier
   }
 }

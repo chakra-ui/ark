@@ -19,9 +19,11 @@ import {
   injectArkEditableContext,
   useEditable,
   type EditableApi,
+  type EditableEditChangeDetails,
   type EditableMachine,
   type EditableMachineProps,
   type EditableService,
+  type EditableValueChangeDetails,
   type UseEditableOptions,
   type UseEditableProps,
   type UseEditableReturn,
@@ -178,6 +180,82 @@ describe('@ark-ui/angular/editable', () => {
     fixture.destroy()
   })
 
+  it('emits edit, commit, and revert detail outputs from Zag callbacks', () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkEditableRoot,
+        ArkEditableArea,
+        ArkEditableInput,
+        ArkEditablePreview,
+        ArkEditableEditTrigger,
+        ArkEditableSubmitTrigger,
+        ArkEditableCancelTrigger,
+      ],
+      template: `
+        <div
+          arkEditableRoot
+          defaultValue="Hello"
+          (editChange)="editChanges.push($event)"
+          (valueCommit)="commits.push($event)"
+          (valueRevert)="reverts.push($event)"
+        >
+          <div arkEditableArea>
+            <input arkEditableInput />
+            <span arkEditablePreview></span>
+          </div>
+          <button arkEditableEditTrigger>Edit</button>
+          <button arkEditableSubmitTrigger>Save</button>
+          <button arkEditableCancelTrigger>Cancel</button>
+        </div>
+      `,
+    })
+    class Host {
+      readonly editChanges: EditableEditChangeDetails[] = []
+      readonly commits: EditableValueChangeDetails[] = []
+      readonly reverts: EditableValueChangeDetails[] = []
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const inputEl = fixture.debugElement.query(By.directive(ArkEditableInput)).nativeElement as HTMLInputElement
+    const editBtn = fixture.debugElement.query(By.directive(ArkEditableEditTrigger)).nativeElement as HTMLButtonElement
+    const submitBtn = fixture.debugElement.query(By.directive(ArkEditableSubmitTrigger))
+      .nativeElement as HTMLButtonElement
+    const cancelBtn = fixture.debugElement.query(By.directive(ArkEditableCancelTrigger))
+      .nativeElement as HTMLButtonElement
+
+    editBtn.click()
+    TestBed.tick()
+    fixture.detectChanges()
+    inputEl.value = 'World'
+    inputEl.dispatchEvent(new Event('input', { bubbles: true }))
+    TestBed.tick()
+    fixture.detectChanges()
+    submitBtn.click()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    editBtn.click()
+    TestBed.tick()
+    fixture.detectChanges()
+    inputEl.value = 'Discarded'
+    inputEl.dispatchEvent(new Event('input', { bubbles: true }))
+    TestBed.tick()
+    fixture.detectChanges()
+    cancelBtn.click()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.editChanges.map((details) => details.edit)).toEqual([true, false, true, false])
+    expect(fixture.componentInstance.commits.at(-1)?.value).toBe('World')
+    expect(fixture.componentInstance.reverts.at(-1)?.value).toBe('World')
+
+    fixture.destroy()
+  })
+
   it('controlled [(value)] roundtrips and api reflects parent writes', () => {
     @Component({
       standalone: true,
@@ -213,6 +291,80 @@ describe('@ark-ui/angular/editable', () => {
     TestBed.tick()
     fixture.detectChanges()
     expect(fixture.componentInstance.emissions.length).toBe(emissionsAfterFirst)
+
+    fixture.destroy()
+  })
+
+  it('dblclick activation keeps a single click in preview mode and enters edit on double click', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkEditableRoot, ArkEditableArea, ArkEditableInput, ArkEditablePreview],
+      template: `
+        <div arkEditableRoot defaultValue="Double-click to edit" activationMode="dblclick">
+          <div arkEditableArea>
+            <input arkEditableInput />
+            <span arkEditablePreview></span>
+          </div>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const root = fixture.debugElement.query(By.directive(ArkEditableRoot)).injector.get(ArkEditableRoot)
+    const previewEl = fixture.debugElement.query(By.directive(ArkEditablePreview)).nativeElement as HTMLElement
+
+    previewEl.dispatchEvent(new MouseEvent('click', { bubbles: true }))
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(root.api().editing).toBe(false)
+
+    previewEl.dispatchEvent(new MouseEvent('dblclick', { bubbles: true }))
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(root.api().editing).toBe(true)
+
+    fixture.destroy()
+  })
+
+  it('supports textarea as the editable input host', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkEditableRoot, ArkEditableArea, ArkEditableInput, ArkEditablePreview, ArkEditableEditTrigger],
+      template: `
+        <div arkEditableRoot defaultValue="Seed">
+          <div arkEditableArea>
+            <textarea arkEditableInput></textarea>
+            <span arkEditablePreview></span>
+          </div>
+          <button arkEditableEditTrigger>Edit</button>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const root = fixture.debugElement.query(By.directive(ArkEditableRoot)).injector.get(ArkEditableRoot)
+    fixture.debugElement
+      .query(By.directive(ArkEditableEditTrigger))
+      .nativeElement.dispatchEvent(new MouseEvent('click', { bubbles: true }))
+    TestBed.tick()
+    fixture.detectChanges()
+
+    const textarea = fixture.debugElement.query(By.directive(ArkEditableInput)).nativeElement as HTMLTextAreaElement
+    expect(textarea.tagName).toBe('TEXTAREA')
+
+    textarea.value = 'Multi-line\nvalue'
+    textarea.dispatchEvent(new Event('input', { bubbles: true }))
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(root.api().value).toBe('Multi-line\nvalue')
 
     fixture.destroy()
   })
@@ -501,6 +653,35 @@ describe('@ark-ui/angular/editable', () => {
 
     const root = fixture.debugElement.query(By.directive(ArkEditableRoot)).injector.get(ArkEditableRoot)
     expect((root.api().getInputProps() as { disabled?: boolean }).disabled).toBe(true)
+
+    fixture.destroy()
+  })
+
+  it('merges Field required and readOnly into editable input props', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFieldRoot, ArkEditableRoot, ArkEditableArea, ArkEditableInput, ArkEditablePreview],
+      template: `
+        <div arkFieldRoot [required]="true" [readOnly]="true">
+          <div arkEditableRoot>
+            <div arkEditableArea>
+              <input arkEditableInput />
+              <span arkEditablePreview></span>
+            </div>
+          </div>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const root = fixture.debugElement.query(By.directive(ArkEditableRoot)).injector.get(ArkEditableRoot)
+    const inputProps = root.api().getInputProps() as { required?: boolean; readOnly?: boolean }
+    expect(inputProps.required).toBe(true)
+    expect(inputProps.readOnly).toBe(true)
 
     fixture.destroy()
   })

@@ -125,6 +125,30 @@ describe('@ark-ui/angular/json-tree-view', () => {
     fixture.destroy()
   })
 
+  it('defaults useJsonTreeView to one expanded level and disabled typeahead', () => {
+    @Component({ standalone: true, template: '' })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    const injector = fixture.componentRef.injector
+
+    const jsonTreeView = runInInjectionContext(injector, () =>
+      useJsonTreeView({
+        context: () => ({
+          data: { child: { name: 'Ada' } },
+        }),
+      }),
+    )
+
+    const rootNode = jsonTreeView.api().collection.getNodeChildren(jsonTreeView.api().collection.rootNode)[0]
+
+    expect(jsonTreeView.api().expandedValue).toEqual([jsonTreeView.api().collection.getNodeValue(rootNode)])
+    expect(jsonTreeView.service.prop('typeahead')).toBe(false)
+
+    fixture.destroy()
+  })
+
   it('renders object, array, and primitive nodes through the tree renderer', () => {
     @Component({
       standalone: true,

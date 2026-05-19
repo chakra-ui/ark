@@ -1,6 +1,11 @@
 import { Component, signal, viewChild } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { beforeEach, describe, expect, it } from 'vitest'
+import { SwapFadeExample } from './examples/fade'
+import { SwapFlipExample } from './examples/flip'
+import { SwapRotateExample } from './examples/rotate'
+import { SwapScaleExample } from './examples/scale'
+import { swapAnatomy } from './swap.anatomy'
 import { ArkSwapIndicatorComponent, ArkSwapRootComponent } from './swap'
 
 @Component({
@@ -52,6 +57,16 @@ const getPresenceForTestId = (root: HTMLElement, testId: string): HTMLElement =>
 describe('ArkSwapComponent', () => {
   beforeEach(() => {
     TestBed.resetTestingModule()
+  })
+
+  it('exposes the documented public surface and examples', () => {
+    expect(typeof swapAnatomy).toBe('object')
+    expect(ArkSwapRootComponent).toBeDefined()
+    expect(ArkSwapIndicatorComponent).toBeDefined()
+    expect(SwapFadeExample).toBeDefined()
+    expect(SwapFlipExample).toBeDefined()
+    expect(SwapRotateExample).toBeDefined()
+    expect(SwapScaleExample).toBeDefined()
   })
 
   it('binds the controlled swap state through a property binding', () => {
@@ -152,6 +167,37 @@ describe('ArkSwapComponent', () => {
     const host = fixture.nativeElement.querySelector('ark-swap') as HTMLElement
     expect(getComputedStyle(host).display).toBe('inline-grid')
     expect(host.getAttribute('data-swap')).toBe('off')
+
+    fixture.destroy()
+  })
+
+  it('renders icon-only demos with accessible button labels', () => {
+    TestBed.configureTestingModule({ imports: [SwapFadeExample] })
+    const fixture = TestBed.createComponent(SwapFadeExample)
+    fixture.detectChanges()
+
+    const button = fixture.nativeElement.querySelector('button') as HTMLButtonElement
+    expect(button.getAttribute('aria-label')).toBe('Toggle completion')
+    expect(button.getAttribute('aria-pressed')).toBe('false')
+    expect(fixture.nativeElement.querySelector('swap-check-icon svg')).not.toBeNull()
+    expect(fixture.nativeElement.querySelector('swap-x-icon svg')).not.toBeNull()
+
+    button.click()
+    fixture.detectChanges()
+
+    expect(button.getAttribute('aria-pressed')).toBe('true')
+
+    fixture.destroy()
+  })
+
+  it('keeps the flip example root perspective from the React demo', () => {
+    TestBed.configureTestingModule({ imports: [SwapFlipExample] })
+    const fixture = TestBed.createComponent(SwapFlipExample)
+    fixture.detectChanges()
+
+    const root = fixture.nativeElement.querySelector('ark-swap') as HTMLElement
+    expect(root.style.perspective).toBe('200px')
+    expect(fixture.nativeElement.querySelector('.FlipIndicator')).not.toBeNull()
 
     fixture.destroy()
   })

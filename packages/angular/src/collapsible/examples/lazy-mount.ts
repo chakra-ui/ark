@@ -20,16 +20,18 @@ import { CollapsibleChevronIcon } from './icons'
     CollapsibleChevronIcon,
   ],
   template: `
-    <div arkCollapsible #collapsible="arkCollapsible">
+    <div arkCollapsible lazyMount unmountOnExit #collapsible="arkCollapsible">
       <button type="button" arkCollapsibleTrigger>
         Session Details
         <span arkCollapsibleIndicator>
           <collapsible-chevron-icon />
         </span>
       </button>
-      @if (collapsible.api().visible) {
+      @if (!collapsible.isUnmounted()) {
         <div arkCollapsibleContent>
-          This content is lazily mounted when first opened and removed from the DOM when collapsed.
+          <div class="collapsible-body">
+            This content is lazily mounted when first opened and removed from the DOM when collapsed.
+          </div>
         </div>
       }
     </div>

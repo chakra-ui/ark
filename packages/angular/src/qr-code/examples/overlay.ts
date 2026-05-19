@@ -12,7 +12,9 @@ import { qrCodeExampleStyles } from '../qr-code-example-styles'
       <svg arkQrCodeFrame>
         <path arkQrCodePattern />
       </svg>
-      <div arkQrCodeOverlay>Ark</div>
+      <div arkQrCodeOverlay>
+        <img src="https://ark-ui.com/icon-192.png" alt="Ark UI Logo" />
+      </div>
     </div>
   `,
   styles: [qrCodeExampleStyles],

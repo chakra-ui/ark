@@ -7,7 +7,7 @@ import { PresenceSkipAnimationOnMountExample } from './examples/skip-animation-o
 import { PresenceUnmountOnExitExample } from './examples/unmount-on-exit'
 
 const meta: Meta = {
-  title: 'Utilities / Presence',
+  title: 'Components / Presence',
 }
 
 export default meta

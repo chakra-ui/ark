@@ -6,7 +6,7 @@ import { SwapRotateExample } from './examples/rotate'
 import { SwapScaleExample } from './examples/scale'
 
 const meta: Meta = {
-  title: 'Utilities / Swap',
+  title: 'Components / Swap',
 }
 
 export default meta

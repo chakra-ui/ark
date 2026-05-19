@@ -49,9 +49,11 @@ interface Day {
       <div arkSelectControl>
         <button arkSelectTrigger>
           <span arkSelectValueText>Select days</span>
-          <span arkSelectIndicator>▾</span>
         </button>
-        <button arkSelectClearTrigger>×</button>
+        <div class="select-indicators">
+          <button arkSelectClearTrigger>×</button>
+          <span arkSelectIndicator>▾</span>
+        </div>
       </div>
       <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
         <div arkSelectPositioner>

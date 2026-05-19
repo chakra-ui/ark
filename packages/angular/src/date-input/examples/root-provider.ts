@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, Injector, inject, runInInjectionContext } from '@angular/core'
 import {
   ArkDateInputControl,
+  ArkDateInputHiddenInput,
+  ArkDateInputLabel,
   ArkDateInputRootProvider,
   ArkDateInputSegment,
   ArkDateInputSegmentContext,
@@ -15,13 +17,19 @@ import { dateInputExampleStyles } from '../date-input-example-styles'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ArkDateInputRootProvider,
+    ArkDateInputLabel,
     ArkDateInputControl,
     ArkDateInputSegmentGroup,
     ArkDateInputSegment,
     ArkDateInputSegmentContext,
+    ArkDateInputHiddenInput,
   ],
   template: `
     <div arkDateInputRootProvider [value]="dateInput">
+      <output class="date-input-output">
+        {{ dateInput.api().valueAsString.length > 0 ? dateInput.api().valueAsString : 'N/A' }}
+      </output>
+      <label arkDateInputLabel>Date</label>
       <div arkDateInputControl>
         <div arkDateInputSegmentGroup>
           <ng-container *arkDateInputSegmentContext="let segment">
@@ -29,6 +37,7 @@ import { dateInputExampleStyles } from '../date-input-example-styles'
           </ng-container>
         </div>
       </div>
+      <input arkDateInputHiddenInput />
     </div>
   `,
   styles: [dateInputExampleStyles],

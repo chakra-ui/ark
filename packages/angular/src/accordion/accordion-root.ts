@@ -9,13 +9,15 @@ import {
   inject,
   input,
   model,
+  output,
   type InputSignal,
   type InputSignalWithTransform,
   type ModelSignal,
+  type OutputEmitterRef,
   type Signal,
 } from '@angular/core'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
-import type { AccordionElementIds } from './accordion.types'
+import type { AccordionElementIds, AccordionFocusChangeDetails } from './accordion.types'
 import { ARK_ACCORDION_CONTEXT } from './use-accordion-context'
 import { useAccordion, type UseAccordionReturn } from './use-accordion'
 
@@ -47,6 +49,9 @@ export class ArkAccordionRoot implements UseAccordionReturn {
   /** The orientation of the accordion items. */
   readonly orientation: InputSignal<accordion.Props['orientation']> = input<accordion.Props['orientation']>(undefined)
 
+  /** Emits when focus moves between accordion item triggers. Mirrors Zag `onFocusChange`. */
+  readonly focusChange: OutputEmitterRef<AccordionFocusChangeDetails> = output<AccordionFocusChangeDetails>()
+
   private readonly machine = useAccordion({
     context: () => ({
       id: this.id(),
@@ -60,6 +65,9 @@ export class ArkAccordionRoot implements UseAccordionReturn {
       onValueChange: (details) => {
         if (areStringArraysEqual(this.value(), details.value)) return
         this.value.set(details.value)
+      },
+      onFocusChange: (details) => {
+        this.focusChange.emit(details)
       },
     }),
   })

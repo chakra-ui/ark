@@ -7,6 +7,7 @@ import {
   ArkAccordionRoot,
 } from '@ark-ui/angular/accordion'
 import { accordionExampleStyles } from '../accordion-example-styles'
+import { AccordionChevronDownIcon } from './icons'
 
 @Component({
   selector: 'accordion-controlled-example',
@@ -18,31 +19,48 @@ import { accordionExampleStyles } from '../accordion-example-styles'
     ArkAccordionItemTrigger,
     ArkAccordionItemContent,
     ArkAccordionItemIndicator,
+    AccordionChevronDownIcon,
   ],
   template: `
     <div class="stack">
       <output>value: {{ valueLabel() }}</output>
       <div arkAccordion [(value)]="value">
-        <div arkAccordionItem value="details">
-          <button type="button" arkAccordionItemTrigger>
-            Details
-            <span arkAccordionItemIndicator>+</span>
-          </button>
-          <div arkAccordionItemContent>The selected value is owned by the host component.</div>
-        </div>
-        <div arkAccordionItem value="settings">
-          <button type="button" arkAccordionItemTrigger>
-            Settings
-            <span arkAccordionItemIndicator>+</span>
-          </button>
-          <div arkAccordionItemContent>Two-way binding keeps the machine and signal in sync.</div>
-        </div>
+        @for (item of items; track item.value) {
+          <div arkAccordionItem [value]="item.value">
+            <button type="button" arkAccordionItemTrigger>
+              {{ item.title }}
+              <span arkAccordionItemIndicator><accordion-chevron-down-icon /></span>
+            </button>
+            <div arkAccordionItemContent>
+              <div class="item-body">{{ item.content }}</div>
+            </div>
+          </div>
+        }
       </div>
     </div>
   `,
   styles: [accordionExampleStyles],
 })
 export class AccordionControlledExample {
-  readonly value = signal<string[] | undefined>(['details'])
+  readonly items = accordionItems
+  readonly value = signal<string[] | undefined>([])
   readonly valueLabel = computed(() => this.value()?.join(', ') || 'none')
 }
+
+const accordionItems = [
+  {
+    value: 'ark-ui',
+    title: 'What is Ark UI?',
+    content: 'A headless component library for building accessible web apps.',
+  },
+  {
+    value: 'getting-started',
+    title: 'How to get started?',
+    content: 'Install the package and import the components you need.',
+  },
+  {
+    value: 'maintainers',
+    title: 'Who maintains this project?',
+    content: 'Ark UI is maintained by the Chakra UI team.',
+  },
+]

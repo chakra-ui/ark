@@ -27,9 +27,12 @@ import { buildRootCarrier, type ArkContextCarrier } from '@ark-ui/angular/src/in
 import { createArkCvaController } from '@ark-ui/angular/src/internal'
 import type {
   SelectElementIds,
+  SelectFocusOutsideEvent,
   SelectHighlightChangeDetails,
+  SelectInteractOutsideEvent,
   SelectIntlTranslations,
   SelectOpenChangeDetails,
+  SelectPointerDownOutsideEvent,
   SelectPositioningOptions,
   SelectScrollToIndexDetails,
   SelectSelectionDetails,
@@ -128,6 +131,12 @@ export class ArkSelectRoot<T extends CollectionItem = CollectionItem>
   readonly openChange: OutputEmitterRef<SelectOpenChangeDetails> = output<SelectOpenChangeDetails>()
   /** Emits when an item is selected. */
   readonly select: OutputEmitterRef<SelectSelectionDetails> = output<SelectSelectionDetails>()
+  /** Emits when focus moves outside the select content. */
+  readonly focusOutside: OutputEmitterRef<SelectFocusOutsideEvent> = output<SelectFocusOutsideEvent>()
+  /** Emits when pointer down occurs outside the select content. */
+  readonly pointerDownOutside: OutputEmitterRef<SelectPointerDownOutsideEvent> = output<SelectPointerDownOutsideEvent>()
+  /** Emits when interaction occurs outside the select content. */
+  readonly interactOutside: OutputEmitterRef<SelectInteractOutsideEvent> = output<SelectInteractOutsideEvent>()
 
   private readonly _disabledFromForm = signal(false)
   private readonly _fallbackCollection = new ListCollection<T>({ items: [] })
@@ -201,6 +210,15 @@ export class ArkSelectRoot<T extends CollectionItem = CollectionItem>
       },
       onSelect: (details: SelectSelectionDetails) => {
         this.select.emit(details)
+      },
+      onFocusOutside: (event: SelectFocusOutsideEvent) => {
+        this.focusOutside.emit(event)
+      },
+      onPointerDownOutside: (event: SelectPointerDownOutsideEvent) => {
+        this.pointerDownOutside.emit(event)
+      },
+      onInteractOutside: (event: SelectInteractOutsideEvent) => {
+        this.interactOutside.emit(event)
       },
     }),
   })

@@ -332,4 +332,41 @@ describe('@ark-ui/angular/pagination', () => {
 
     fixture.destroy()
   })
+
+  it('supports link pagination with generated hrefs', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkPaginationRoot, ArkPaginationItem, ArkPaginationPrevTrigger, ArkPaginationNextTrigger],
+      template: `
+        <nav arkPagination type="link" [count]="30" [pageSize]="10" [page]="2" [getPageUrl]="getPageUrl">
+          <a arkPaginationPrevTrigger>Prev</a>
+          <a arkPaginationItem [value]="1">1</a>
+          <a arkPaginationItem [value]="2">2</a>
+          <a arkPaginationItem [value]="3">3</a>
+          <a arkPaginationNextTrigger>Next</a>
+        </nav>
+      `,
+    })
+    class Host {
+      readonly getPageUrl = ({ page }: PaginationPageUrlDetails) => `/page=${page}`
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flush(fixture)
+
+    const links = Array.from(fixture.nativeElement.querySelectorAll('a')) as HTMLAnchorElement[]
+
+    expect(links.map((link) => link.getAttribute('href'))).toEqual([
+      '/page=1',
+      '/page=1',
+      '/page=2',
+      '/page=3',
+      '/page=3',
+    ])
+    expect(links[2]?.getAttribute('aria-current')).toBe('page')
+
+    fixture.destroy()
+  })
 })

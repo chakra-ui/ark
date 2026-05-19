@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  Injector,
   type ElementRef,
   type EmbeddedViewRef,
   type OnDestroy,
@@ -9,12 +10,14 @@ import {
   afterNextRender,
   computed,
   effect,
+  forwardRef,
   inject,
   input,
   output,
   signal,
   viewChild,
 } from '@angular/core'
+import { ARK_ENVIRONMENT_TOKEN, type EnvironmentContext } from '@ark-ui/angular/src/providers/environment'
 
 export interface FrameBaseProps {
   head?: TemplateRef<unknown> | null
@@ -41,12 +44,32 @@ const createDefaultTitle = (): string => {
   selector: 'ark-frame',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    style: 'display: block;',
+  },
+  providers: [
+    {
+      provide: ARK_ENVIRONMENT_TOKEN,
+      useFactory: (frame: ArkFrameComponent) => frame.environment,
+      deps: [forwardRef(() => ArkFrameComponent)],
+    },
+  ],
   template: `
     <iframe #frame [attr.title]="resolvedTitle()" [attr.name]="name()"></iframe>
     <ng-template #content>
       <ng-content></ng-content>
     </ng-template>
   `,
+  styles: [
+    `
+      iframe {
+        border: 0;
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+    `,
+  ],
 })
 export class ArkFrameComponent implements OnDestroy {
   readonly srcdoc = input<string | undefined>(initialFrameSrcdoc)
@@ -59,11 +82,17 @@ export class ArkFrameComponent implements OnDestroy {
 
   private readonly contentTpl = viewChild.required<TemplateRef<unknown>>('content')
   private readonly vcRef = inject(ViewContainerRef)
+  private readonly injector = inject(Injector)
   private readonly defaultTitle = createDefaultTitle()
   private readonly ready = signal(false)
+  private readonly frameDocument = signal<Document | undefined>(undefined)
   private contentView: EmbeddedViewRef<unknown> | undefined
   private headView: EmbeddedViewRef<unknown> | undefined
   private resizeCleanup: (() => void) | undefined
+
+  readonly environment: EnvironmentContext = {
+    getRootNode: () => this.frameDocument(),
+  }
 
   protected readonly resolvedTitle = computed(() => this.title() ?? this.defaultTitle)
 
@@ -101,15 +130,20 @@ export class ArkFrameComponent implements OnDestroy {
     doc.open()
     doc.write(srcdoc)
     doc.close()
+    this.frameDocument.set(doc)
 
     const mountNode = doc.body.querySelector<HTMLElement>('.frame-root') ?? doc.body
-    this.contentView = this.vcRef.createEmbeddedView(this.contentTpl())
+    const frameInjector = this.createFrameInjector(doc)
+
+    this.contentView = this.vcRef.createEmbeddedView(this.contentTpl(), undefined, { injector: frameInjector })
+    this.contentView.detectChanges()
     for (const node of this.contentView.rootNodes as Node[]) {
       mountNode.appendChild(node)
     }
 
     if (head) {
-      this.headView = this.vcRef.createEmbeddedView(head)
+      this.headView = this.vcRef.createEmbeddedView(head, undefined, { injector: frameInjector })
+      this.headView.detectChanges()
       for (const node of this.headView.rootNodes as Node[]) {
         doc.head.appendChild(node)
       }
@@ -129,6 +163,15 @@ export class ArkFrameComponent implements OnDestroy {
     }
     this.contentView = undefined
     this.headView = undefined
+  }
+
+  private createFrameInjector(doc: Document): Injector {
+    return Injector.create({
+      providers: [
+        { provide: ARK_ENVIRONMENT_TOKEN, useValue: { getRootNode: () => doc } satisfies EnvironmentContext },
+      ],
+      parent: this.injector,
+    })
   }
 
   private observeSize(frame: HTMLIFrameElement, mountNode: HTMLElement): void {

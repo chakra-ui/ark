@@ -1,130 +1,127 @@
 export const marqueeExampleStyles = `
-  .marquee-stack {
-    display: grid;
-    gap: 16px;
-    color: #111827;
+  .Root {
+    color: var(--demo-neutral-fg);
+    width: 100%;
+    max-width: 600px;
+    overflow: hidden;
   }
 
-  .marquee-root {
-    width: min(100%, 640px);
-    min-height: 72px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    background: #ffffff;
+  .Root[data-orientation='vertical'] {
+    height: 240px;
   }
 
-  .marquee-root[data-orientation='vertical'] {
-    width: 280px;
-    height: 260px;
+  .Root[data-orientation='horizontal'] {
+    height: 80px;
   }
 
-  .marquee-viewport {
-    align-items: center;
+  .Root[data-paused],
+  .Root[data-paused] * {
+    animation-play-state: paused !important;
   }
 
-  .marquee-content {
-    align-items: center;
-    animation: marquee-scroll var(--marquee-duration) linear var(--marquee-delay) var(--marquee-loop-count);
-    animation-direction: normal;
-    animation-play-state: running;
+  .Viewport {
+    width: 100%;
+    height: 100%;
   }
 
-  .marquee-root[data-paused] .marquee-content {
-    animation-play-state: paused;
+  .Content {
+    animation-timing-function: linear;
+    animation-duration: var(--marquee-duration);
+    animation-delay: var(--marquee-delay);
+    animation-iteration-count: var(--marquee-loop-count);
   }
 
-  .marquee-content[data-reverse] {
+  .Content[data-side='start'],
+  .Content[data-side='end'] {
+    animation-name: marqueeX;
+  }
+
+  .Content[data-side='top'],
+  .Content[data-side='bottom'] {
+    animation-name: marqueeY;
+  }
+
+  .Content[data-reverse] {
     animation-direction: reverse;
   }
 
-  .marquee-item {
-    display: inline-flex;
-    min-width: 132px;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 12px;
-    border: 1px solid #e5e7eb;
-    border-radius: 6px;
-    background: #f9fafb;
-    color: #111827;
-    font-size: 14px;
-    line-height: 1;
-    white-space: nowrap;
+  @media (prefers-reduced-motion: reduce) {
+    .Content {
+      animation: none !important;
+    }
   }
 
-  .marquee-code {
-    display: inline-grid;
-    width: 28px;
-    height: 28px;
-    place-items: center;
-    border-radius: 50%;
-    background: #111827;
-    color: #ffffff;
-    font-size: 11px;
-    font-weight: 700;
+  .Edge {
+    z-index: 10;
+    pointer-events: none;
   }
 
-  .marquee-edge {
-    width: 48px;
-    height: 100%;
-    background: linear-gradient(to var(--edge-direction, right), #ffffff, rgba(255, 255, 255, 0));
-    z-index: 1;
+  .Edge[data-side='start'] {
+    width: 20%;
+    background: linear-gradient(to right, var(--demo-bg-popover), transparent);
   }
 
-  .marquee-edge[data-side='end'] {
-    --edge-direction: left;
+  .Edge[data-side='start'][dir='rtl'] {
+    background: linear-gradient(to left, var(--demo-bg-popover), transparent);
   }
 
-  .marquee-root[data-orientation='vertical'] .marquee-edge {
-    width: 100%;
-    height: 48px;
+  .Edge[data-side='end'] {
+    width: 20%;
+    background: linear-gradient(to left, var(--demo-bg-popover), transparent);
   }
 
-  .marquee-root[data-orientation='vertical'] .marquee-edge[data-side='top'] {
-    --edge-direction: bottom;
+  .Edge[data-side='end'][dir='rtl'] {
+    background: linear-gradient(to right, var(--demo-bg-popover), transparent);
   }
 
-  .marquee-root[data-orientation='vertical'] .marquee-edge[data-side='bottom'] {
-    --edge-direction: top;
+  .Edge[data-side='top'] {
+    height: 20%;
+    background: linear-gradient(to bottom, var(--demo-bg-popover), transparent);
   }
 
-  .marquee-controls {
+  .Edge[data-side='bottom'] {
+    height: 20%;
+    background: linear-gradient(to top, var(--demo-bg-popover), transparent);
+  }
+
+  .Item {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .marquee-button {
-    display: inline-flex;
-    min-height: 34px;
     align-items: center;
     justify-content: center;
-    padding: 0 12px;
-    border: 1px solid #d1d5db;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--demo-border);
     border-radius: 6px;
-    background: #ffffff;
-    color: #111827;
-    font: inherit;
-    cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
   }
 
-  .marquee-button:hover {
-    background: #f3f4f6;
+  .ItemLogo {
+    font-size: 1.5rem;
+    line-height: 1;
   }
 
-  .marquee-meta {
-    display: flex;
-    gap: 16px;
-    color: #4b5563;
-    font-size: 14px;
+  .ItemName {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--demo-neutral-fg);
   }
 
-  @keyframes marquee-scroll {
-    from {
-      transform: translate3d(0, 0, 0);
+  @keyframes marqueeX {
+    0% {
+      transform: translateX(0%);
     }
-    to {
-      transform: var(--marquee-translate);
+    100% {
+      transform: translateX(var(--marquee-translate));
+    }
+  }
+
+  @keyframes marqueeY {
+    0% {
+      transform: translateY(0%);
+    }
+    100% {
+      transform: translateY(var(--marquee-translate));
     }
   }
 `

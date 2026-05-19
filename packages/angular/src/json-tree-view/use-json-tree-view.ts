@@ -29,7 +29,7 @@ export function useJsonTreeView(options: UseJsonTreeViewOptions): UseJsonTreeVie
       const props = options.context()
       const {
         data: _data,
-        defaultExpandedDepth,
+        defaultExpandedDepth = 1,
         maxPreviewItems: _maxPreviewItems,
         collapseStringsAfterLength: _collapseStringsAfterLength,
         quotesOnKeys: _quotesOnKeys,
@@ -47,7 +47,7 @@ export function useJsonTreeView(options: UseJsonTreeViewOptions): UseJsonTreeVie
         ...treeProps,
         collection: collection(),
         defaultExpandedValue,
-        typeahead: treeProps.typeahead,
+        typeahead: false,
       }
     },
   })

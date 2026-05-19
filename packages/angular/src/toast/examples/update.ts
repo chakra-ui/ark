@@ -1,30 +1,21 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import {
-  ArkToaster,
-  ArkToastCloseTrigger,
-  ArkToastDescription,
-  ArkToastTitle,
-  createToaster,
-} from '@ark-ui/angular/toast'
+import { ArkToaster, ArkToastDescription, ArkToastTitle, createToaster } from '@ark-ui/angular/toast'
 import { toastExampleStyles } from '../toast-example-styles'
 
 @Component({
   selector: 'toast-update-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ArkToaster, ArkToastTitle, ArkToastDescription, ArkToastCloseTrigger],
+  imports: [ArkToaster, ArkToastTitle, ArkToastDescription],
   template: `
-    <div class="toast-demo">
-      <button type="button" class="toast-button" (click)="show()">Create</button>
-      <button type="button" class="toast-button" (click)="update()">Update</button>
+    <div class="hstack">
+      <button type="button" class="toast-button" (click)="show()">Send message</button>
+      <button type="button" class="toast-button" (click)="update()">Mark as sent</button>
     </div>
 
     <ng-template #toastTemplate let-toast>
-      <div arkToastTitle>{{ toast.title }}</div>
-      <div arkToastDescription>{{ toast.description }}</div>
-      <div class="toast-footer">
-        <button type="button" arkToastCloseTrigger class="toast-close">Dismiss</button>
-      </div>
+      <div arkToastTitle class="Title">{{ toast.title }}</div>
+      <div arkToastDescription class="Description">{{ toast.description }}</div>
     </ng-template>
 
     <ark-toaster [toaster]="toaster" [itemTemplate]="toastTemplate" />
@@ -32,24 +23,23 @@ import { toastExampleStyles } from '../toast-example-styles'
   styles: [toastExampleStyles],
 })
 export class ToastUpdateExample {
-  readonly toaster = createToaster({ placement: 'bottom-end' })
-  private toastId = 'upload-toast'
+  readonly toaster = createToaster({ placement: 'bottom-end', overlap: true, gap: 24 })
+  private toastId: string | undefined
 
   show(): void {
-    this.toaster.create({
-      id: this.toastId,
-      title: 'Uploading',
-      description: 'Upload in progress.',
+    this.toastId = this.toaster.create({
+      title: 'Sending message...',
+      description: 'Please wait while we deliver your message.',
       type: 'loading',
     })
   }
 
   update(): void {
+    if (!this.toastId) return
     this.toaster.update(this.toastId, {
-      title: 'Upload complete',
-      description: 'The file is available now.',
+      title: 'Message sent',
+      description: 'Your message has been delivered successfully.',
       type: 'success',
-      duration: 3000,
     })
   }
 }

@@ -25,11 +25,13 @@ import {
   type UseFieldReturn,
 } from '@ark-ui/angular/field'
 import { ArkFieldsetRoot } from '@ark-ui/angular/fieldset'
+import { FieldCustomControlExample } from './examples/custom-control'
 import { FieldInputExample } from './examples/input'
 import { FieldItemExample } from './examples/item'
 import { FieldInvalidExample } from './examples/invalid'
 import { FieldRequiredIndicatorExample } from './examples/required-indicator'
 import { FieldRootProviderExample } from './examples/root-provider'
+import { FieldTextareaAutoresizeExample } from './examples/textarea-autoresize'
 
 type FieldPublicTypeSmoke = [FieldElementIds, FieldResolvedIds, UseFieldOptions, UseFieldProps, UseFieldReturn]
 
@@ -190,6 +192,37 @@ describe('@ark-ui/angular/field', () => {
     fixture.destroy()
   })
 
+  it('helper text and error text only carry data-disabled (React parity)', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFieldRoot, ArkFieldInput, ArkFieldHelperText, ArkFieldErrorText],
+      template: `
+        <div arkFieldRoot [disabled]="true" [invalid]="true">
+          <input arkFieldInput />
+          <span arkFieldHelperText>helper</span>
+          <span arkFieldErrorText>error</span>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const helperEl = fixture.debugElement.query(By.directive(ArkFieldHelperText)).nativeElement as HTMLElement
+    const errorEl = fixture.debugElement.query(By.directive(ArkFieldErrorText)).nativeElement as HTMLElement
+
+    expect(helperEl.getAttribute('data-disabled')).toBe('')
+    expect(helperEl.hasAttribute('data-invalid')).toBe(false)
+
+    expect(errorEl.hasAttribute('data-disabled')).toBe(false)
+    expect(errorEl.hasAttribute('data-invalid')).toBe(false)
+    expect(errorEl.getAttribute('aria-live')).toBe('polite')
+
+    fixture.destroy()
+  })
+
   it('boolean text-presence setters remain idempotent alongside registrations', () => {
     @Component({
       standalone: true,
@@ -238,6 +271,29 @@ describe('@ark-ui/angular/field', () => {
     expect(indicatorEl.getAttribute('data-scope')).toBe('field')
     expect(indicatorEl.getAttribute('data-part')).toBe('required-indicator')
     expect(indicatorEl.getAttribute('aria-hidden')).toBe('true')
+    expect(indicatorEl.hidden).toBe(false)
+
+    fixture.destroy()
+  })
+
+  it('required indicator is hidden when the field is not required', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFieldRoot, ArkFieldRequiredIndicator],
+      template: `
+        <div arkFieldRoot>
+          <span arkFieldRequiredIndicator>*</span>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const indicatorEl = fixture.debugElement.query(By.directive(ArkFieldRequiredIndicator)).nativeElement as HTMLElement
+    expect(indicatorEl.hidden).toBe(true)
 
     fixture.destroy()
   })
@@ -417,6 +473,31 @@ describe('@ark-ui/angular/field', () => {
 
     const indicatorEl = fixture.debugElement.query(By.directive(ArkFieldRequiredIndicator)).nativeElement as HTMLElement
     expect(indicatorEl.getAttribute('data-part')).toBe('required-indicator')
+
+    fixture.destroy()
+  })
+
+  it('FieldTextareaAutoresizeExample disables manual resize on the textarea', () => {
+    TestBed.configureTestingModule({ imports: [FieldTextareaAutoresizeExample] })
+    const fixture = TestBed.createComponent(FieldTextareaAutoresizeExample)
+    fixture.detectChanges()
+
+    const textareaEl = fixture.debugElement.query(By.directive(ArkFieldTextarea)).nativeElement as HTMLTextAreaElement
+    expect(textareaEl.style.resize).toBe('none')
+
+    fixture.destroy()
+  })
+
+  it('FieldCustomControlExample applies field props through [arkProps]', () => {
+    TestBed.configureTestingModule({ imports: [FieldCustomControlExample] })
+    const fixture = TestBed.createComponent(FieldCustomControlExample)
+    fixture.detectChanges()
+
+    const inputEl = fixture.nativeElement.querySelector('input') as HTMLInputElement
+    const labelEl = fixture.debugElement.query(By.directive(ArkFieldLabel)).nativeElement as HTMLLabelElement
+    expect(inputEl.getAttribute('data-part')).toBe('input')
+    expect(inputEl.getAttribute('aria-invalid')).toBe('true')
+    expect(labelEl.htmlFor).toBe(inputEl.id)
 
     fixture.destroy()
   })

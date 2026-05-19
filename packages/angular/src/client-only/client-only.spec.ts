@@ -15,6 +15,17 @@ import { ArkClientOnlyComponent } from './client-only'
 })
 class HostComponent {}
 
+@Component({
+  standalone: true,
+  imports: [ArkClientOnlyComponent],
+  template: `
+    <ark-client-only [clientTemplate]="client" [fallback]="fb"></ark-client-only>
+    <ng-template #client><span data-testid="client">Client</span></ng-template>
+    <ng-template #fb><span data-testid="fallback">Fallback</span></ng-template>
+  `,
+})
+class HostWithClientTemplate {}
+
 describe('ArkClientOnlyComponent', () => {
   beforeEach(() => {
     TestBed.resetTestingModule()
@@ -46,6 +57,25 @@ describe('ArkClientOnlyComponent', () => {
     const fallback = fixture.nativeElement.querySelector('[data-testid="fallback"]')
     expect(client).not.toBeNull()
     expect(fallback).toBeNull()
+
+    fixture.destroy()
+  })
+
+  it('renders clientTemplate when provided, deferring its bindings until after browser render', async () => {
+    TestBed.configureTestingModule({ imports: [HostWithClientTemplate] })
+    const fixture = TestBed.createComponent(HostWithClientTemplate)
+    fixture.detectChanges()
+
+    // Before browser render: fallback visible, client template not yet instantiated.
+    expect(fixture.nativeElement.querySelector('[data-testid="fallback"]')).not.toBeNull()
+    expect(fixture.nativeElement.querySelector('[data-testid="client"]')).toBeNull()
+
+    await TestBed.inject(ApplicationRef).whenStable()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(fixture.nativeElement.querySelector('[data-testid="client"]')).not.toBeNull()
+    expect(fixture.nativeElement.querySelector('[data-testid="fallback"]')).toBeNull()
 
     fixture.destroy()
   })

@@ -12,7 +12,7 @@ import { qrCodeExampleStyles } from '../qr-code-example-styles'
       <svg arkQrCodeFrame>
         <path arkQrCodePattern />
       </svg>
-      <button arkQrCodeDownloadTrigger fileName="qr-code.png" mimeType="image/png">Download</button>
+      <button class="button" arkQrCodeDownloadTrigger fileName="qr-code.png" mimeType="image/png">Download</button>
     </div>
   `,
   styles: [qrCodeExampleStyles],

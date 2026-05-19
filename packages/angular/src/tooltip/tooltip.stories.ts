@@ -2,11 +2,14 @@ import type { Meta, StoryObj } from '@storybook/angular'
 import { moduleMetadata } from '@storybook/angular'
 import { TooltipArrowExample } from './examples/arrow'
 import { TooltipBasicExample } from './examples/basic'
+import { TooltipContextExample } from './examples/context'
 import { TooltipControlledExample } from './examples/controlled'
 import { TooltipDelayExample } from './examples/delay'
 import { TooltipInteractiveExample } from './examples/interactive'
+import { TooltipMultipleTriggersExample } from './examples/multiple-triggers'
 import { TooltipPositioningExample } from './examples/positioning'
 import { TooltipRootProviderExample } from './examples/root-provider'
+import { TooltipWithinFixedExample } from './examples/within-fixed'
 
 const meta: Meta = {
   title: 'Components / Tooltip',
@@ -44,7 +47,22 @@ export const Positioning: StoryObj = {
   render: () => ({ template: '<tooltip-positioning-example />' }),
 }
 
+export const Context: StoryObj = {
+  decorators: [moduleMetadata({ imports: [TooltipContextExample] })],
+  render: () => ({ template: '<tooltip-context-example />' }),
+}
+
+export const MultipleTriggers: StoryObj = {
+  decorators: [moduleMetadata({ imports: [TooltipMultipleTriggersExample] })],
+  render: () => ({ template: '<tooltip-multiple-triggers-example />' }),
+}
+
 export const RootProvider: StoryObj = {
   decorators: [moduleMetadata({ imports: [TooltipRootProviderExample] })],
   render: () => ({ template: '<tooltip-root-provider-example />' }),
+}
+
+export const WithinFixed: StoryObj = {
+  decorators: [moduleMetadata({ imports: [TooltipWithinFixedExample] })],
+  render: () => ({ template: '<tooltip-within-fixed-example />' }),
 }

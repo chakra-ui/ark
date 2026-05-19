@@ -24,6 +24,8 @@ import {
 } from '@ark-ui/angular/collapsible'
 import { CollapsibleBasicExample } from './examples/basic'
 import { CollapsibleDisabledExample } from './examples/disabled'
+import { CollapsibleInitialOpenExample } from './examples/initial-open'
+import { CollapsibleLazyMountExample } from './examples/lazy-mount'
 import { CollapsibleNestedExample } from './examples/nested'
 import { CollapsibleRootProviderExample } from './examples/root-provider'
 
@@ -296,6 +298,104 @@ describe('@ark-ui/angular/collapsible', () => {
     fixture.destroy()
   })
 
+  it('[lazyMount] exposes isUnmounted until the collapsible is opened', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkCollapsibleRoot, ArkCollapsibleTrigger, ArkCollapsibleContent],
+      template: `
+        <div arkCollapsible lazyMount #collapsible="arkCollapsible">
+          <button arkCollapsibleTrigger></button>
+          @if (!collapsible.isUnmounted()) {
+            <div arkCollapsibleContent>Content</div>
+          }
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkCollapsibleRoot))
+    const root = rootDebug.injector.get(ArkCollapsibleRoot)
+
+    expect(root.isUnmounted()).toBe(true)
+    expect(fixture.debugElement.query(By.directive(ArkCollapsibleContent))).toBeNull()
+
+    const triggerEl = fixture.debugElement.query(By.directive(ArkCollapsibleTrigger)).nativeElement as HTMLButtonElement
+    triggerEl.click()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(root.isUnmounted()).toBe(false)
+    expect(fixture.debugElement.query(By.directive(ArkCollapsibleContent))).not.toBeNull()
+
+    triggerEl.click()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(root.isUnmounted()).toBe(false)
+    expect(fixture.debugElement.query(By.directive(ArkCollapsibleContent))).not.toBeNull()
+
+    fixture.destroy()
+  })
+
+  it('[lazyMount][unmountOnExit] exposes isUnmounted after closing again', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkCollapsibleRoot, ArkCollapsibleTrigger, ArkCollapsibleContent],
+      template: `
+        <div arkCollapsible lazyMount unmountOnExit #collapsible="arkCollapsible" (exitComplete)="onExitComplete()">
+          <button arkCollapsibleTrigger></button>
+          @if (!collapsible.isUnmounted()) {
+            <div arkCollapsibleContent>Content</div>
+          }
+        </div>
+      `,
+    })
+    class Host {
+      exitCount = 0
+      onExitComplete(): void {
+        this.exitCount += 1
+      }
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkCollapsibleRoot))
+    const root = rootDebug.injector.get(ArkCollapsibleRoot)
+    const triggerEl = fixture.debugElement.query(By.directive(ArkCollapsibleTrigger)).nativeElement as HTMLButtonElement
+
+    expect(root.isUnmounted()).toBe(true)
+
+    triggerEl.click()
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(root.isUnmounted()).toBe(false)
+    expect(fixture.debugElement.query(By.directive(ArkCollapsibleContent))).not.toBeNull()
+
+    triggerEl.click()
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(root.isUnmounted()).toBe(false)
+    const contentDebug = fixture.debugElement.query(By.directive(ArkCollapsibleContent))
+    expect(contentDebug).not.toBeNull()
+
+    contentDebug.nativeElement.dispatchEvent(new Event('animationend', { bubbles: true }))
+    root.send({ type: 'animation.end' })
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(root.isUnmounted()).toBe(true)
+    expect(fixture.debugElement.query(By.directive(ArkCollapsibleContent))).toBeNull()
+    expect(fixture.componentInstance.exitCount).toBe(1)
+
+    fixture.destroy()
+  })
+
   it('bare static defaultOpen attribute starts the collapsible open via booleanAttribute (AC 21)', () => {
     @Component({
       standalone: true,
@@ -445,6 +545,39 @@ describe('@ark-ui/angular/collapsible', () => {
     const rootDebug = fixture.debugElement.query(By.directive(ArkCollapsibleRoot))
     const root = rootDebug.injector.get(ArkCollapsibleRoot)
     expect(root.api().disabled).toBe(true)
+
+    fixture.destroy()
+  })
+
+  it('CollapsibleInitialOpenExample starts open', () => {
+    TestBed.configureTestingModule({ imports: [CollapsibleInitialOpenExample] })
+    const fixture = TestBed.createComponent(CollapsibleInitialOpenExample)
+    fixture.detectChanges()
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkCollapsibleRoot))
+    const root = rootDebug.injector.get(ArkCollapsibleRoot)
+    expect(root.api().open).toBe(true)
+
+    fixture.destroy()
+  })
+
+  it('CollapsibleLazyMountExample starts unmounted and mounts content after trigger click', () => {
+    TestBed.configureTestingModule({ imports: [CollapsibleLazyMountExample] })
+    const fixture = TestBed.createComponent(CollapsibleLazyMountExample)
+    fixture.detectChanges()
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkCollapsibleRoot))
+    const root = rootDebug.injector.get(ArkCollapsibleRoot)
+    expect(root.isUnmounted()).toBe(true)
+    expect(fixture.debugElement.query(By.directive(ArkCollapsibleContent))).toBeNull()
+
+    const triggerEl = fixture.debugElement.query(By.directive(ArkCollapsibleTrigger)).nativeElement as HTMLButtonElement
+    triggerEl.click()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(root.isUnmounted()).toBe(false)
+    expect(fixture.debugElement.query(By.directive(ArkCollapsibleContent))).not.toBeNull()
 
     fixture.destroy()
   })

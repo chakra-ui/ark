@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { moduleMetadata } from '@storybook/angular'
 import { HoverCardBasicExample } from './examples/basic'
+import { HoverCardContextExample } from './examples/context'
 import { HoverCardControlledExample } from './examples/controlled'
 import { HoverCardDelayExample } from './examples/delay'
 import { HoverCardMultipleTriggersExample } from './examples/multiple-triggers'
@@ -31,6 +32,11 @@ export const Delay: StoryObj = {
 export const Positioning: StoryObj = {
   decorators: [moduleMetadata({ imports: [HoverCardPositioningExample] })],
   render: () => ({ template: '<hover-card-positioning-example />' }),
+}
+
+export const Context: StoryObj = {
+  decorators: [moduleMetadata({ imports: [HoverCardContextExample] })],
+  render: () => ({ template: '<hover-card-context-example />' }),
 }
 
 export const MultipleTriggers: StoryObj = {

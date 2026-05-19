@@ -97,6 +97,8 @@ export class ArkPinInputRoot implements ControlValueAccessor, UsePinInputReturn,
   readonly translations: InputSignal<PinInputIntlTranslations | undefined> = input<
     PinInputIntlTranslations | undefined
   >(undefined)
+  /** Emits when all pin input slots are filled. */
+  readonly valueComplete: OutputEmitterRef<PinInputValueChangeDetails> = output<PinInputValueChangeDetails>()
   /** Emits when the entered value is rejected by the machine. */
   readonly valueInvalid: OutputEmitterRef<PinInputValueInvalidDetails> = output<PinInputValueInvalidDetails>()
 
@@ -144,7 +146,8 @@ export class ArkPinInputRoot implements ControlValueAccessor, UsePinInputReturn,
         }
         this.cva.notifyValueChange(details.value)
       },
-      onValueComplete: (_details: PinInputValueChangeDetails) => {
+      onValueComplete: (details: PinInputValueChangeDetails) => {
+        this.valueComplete.emit(details)
         this.cva.markTouched()
       },
       onValueInvalid: (details: PinInputValueInvalidDetails) => {

@@ -31,30 +31,32 @@ import { stepExampleItems } from './_data'
     ArkStepsNextTrigger,
   ],
   template: `
-    <output>current step: {{ step() + 1 }}</output>
+    <div class="stack">
+      <output>current step: {{ step() + 1 }}</output>
 
-    <div arkSteps class="steps-root" [count]="items.length" [(step)]="step">
-      <ol arkStepsList class="steps-list">
+      <div arkSteps class="steps-root" [count]="items.length" [(step)]="step">
+        <ol arkStepsList class="steps-list">
+          @for (item of items; track item.title; let index = $index) {
+            <li arkStepsItem class="steps-item" [index]="index">
+              <button arkStepsTrigger class="steps-trigger">
+                <span arkStepsIndicator class="steps-indicator">{{ index + 1 }}</span>
+                <span>{{ item.title }}</span>
+              </button>
+              <span arkStepsSeparator class="steps-separator"></span>
+            </li>
+          }
+        </ol>
+
         @for (item of items; track item.title; let index = $index) {
-          <li arkStepsItem class="steps-item" [index]="index">
-            <button arkStepsTrigger class="steps-trigger">
-              <span arkStepsIndicator class="steps-indicator">{{ index + 1 }}</span>
-              <span>{{ item.title }}</span>
-            </button>
-            <span arkStepsSeparator class="steps-separator"></span>
-          </li>
+          <div arkStepsContent class="steps-content" [index]="index">{{ item.title }} - {{ item.description }}</div>
         }
-      </ol>
 
-      @for (item of items; track item.title; let index = $index) {
-        <div arkStepsContent class="steps-content" [index]="index">{{ item.title }} - {{ item.description }}</div>
-      }
+        <div arkStepsCompletedContent class="steps-completed">Steps Complete - Thank you for filling out the form!</div>
 
-      <div arkStepsCompletedContent class="steps-completed">Steps Complete - thank you.</div>
-
-      <div class="steps-actions">
-        <button arkStepsPrevTrigger class="steps-button">Back</button>
-        <button arkStepsNextTrigger class="steps-button" data-variant="solid">Next</button>
+        <div class="steps-actions">
+          <button arkStepsPrevTrigger class="steps-button">Back</button>
+          <button arkStepsNextTrigger class="steps-button" data-variant="solid">Next</button>
+        </div>
       </div>
     </div>
   `,
