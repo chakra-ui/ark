@@ -1,7 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { moduleMetadata } from '@storybook/angular'
 import { PaginationBasicExample } from './examples/basic'
+import { PaginationContextExample } from './examples/context'
 import { PaginationControlledExample } from './examples/controlled'
+import { PaginationCustomizedExample } from './examples/customized'
+import { PaginationDataSlicingExample } from './examples/data-slicing'
+import { PaginationLinkExample } from './examples/link'
+import { PaginationPageRangeExample } from './examples/page-range'
 import { PaginationPageSizeControlExample } from './examples/page-size-control'
 import { PaginationRootProviderExample } from './examples/root-provider'
 import { PaginationWithEdgesExample } from './examples/with-edges'
@@ -17,9 +22,34 @@ export const Basic: StoryObj = {
   render: () => ({ template: '<pagination-basic-example />' }),
 }
 
+export const Context: StoryObj = {
+  decorators: [moduleMetadata({ imports: [PaginationContextExample] })],
+  render: () => ({ template: '<pagination-context-example />' }),
+}
+
 export const Controlled: StoryObj = {
   decorators: [moduleMetadata({ imports: [PaginationControlledExample] })],
   render: () => ({ template: '<pagination-controlled-example />' }),
+}
+
+export const Customized: StoryObj = {
+  decorators: [moduleMetadata({ imports: [PaginationCustomizedExample] })],
+  render: () => ({ template: '<pagination-customized-example />' }),
+}
+
+export const DataSlicing: StoryObj = {
+  decorators: [moduleMetadata({ imports: [PaginationDataSlicingExample] })],
+  render: () => ({ template: '<pagination-data-slicing-example />' }),
+}
+
+export const Link: StoryObj = {
+  decorators: [moduleMetadata({ imports: [PaginationLinkExample] })],
+  render: () => ({ template: '<pagination-link-example />' }),
+}
+
+export const PageRange: StoryObj = {
+  decorators: [moduleMetadata({ imports: [PaginationPageRangeExample] })],
+  render: () => ({ template: '<pagination-page-range-example />' }),
 }
 
 export const PageSizeControl: StoryObj = {
