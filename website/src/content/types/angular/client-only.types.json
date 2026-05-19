@@ -1,0 +1,12 @@
+{
+  "Component": {
+    "props": {
+      "fallback": {
+        "type": "TemplateRef<unknown> | null",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "null"
+      }
+    }
+  }
+}

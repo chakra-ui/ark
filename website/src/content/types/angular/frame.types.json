@@ -1,0 +1,37 @@
+{
+  "Component": {
+    "props": {
+      "head": {
+        "type": "TemplateRef<unknown> | null",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "null"
+      },
+      "mount": {
+        "type": "void",
+        "isRequired": false,
+        "kind": "output"
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "srcdoc": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "title": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "unmount": {
+        "type": "void",
+        "isRequired": false,
+        "kind": "output"
+      }
+    }
+  }
+}

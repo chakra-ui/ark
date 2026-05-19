@@ -1,0 +1,206 @@
+{
+  "ByteComponent": {
+    "props": {
+      "value": {
+        "type": "number",
+        "isRequired": true,
+        "kind": "required-input"
+      },
+      "locale": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "precision": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "unit": {
+        "type": "'bit' | 'byte'",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "'byte'"
+      },
+      "unitDisplay": {
+        "type": "'long' | 'short' | 'narrow'",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "'short'"
+      },
+      "unitSystem": {
+        "type": "'binary' | 'decimal'",
+        "isRequired": false,
+        "kind": "input"
+      }
+    }
+  },
+  "NumberComponent": {
+    "props": {
+      "value": {
+        "type": "number",
+        "isRequired": true,
+        "kind": "required-input"
+      },
+      "compactDisplay": {
+        "type": "'long' | 'short'",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "currency": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "currencyDisplay": {
+        "type": "'symbol' | 'code' | 'name' | 'narrowSymbol'",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "currencySign": {
+        "type": "'standard' | 'accounting'",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "locale": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "maximumFractionDigits": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "maximumSignificantDigits": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "minimumFractionDigits": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "minimumIntegerDigits": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "minimumSignificantDigits": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "notation": {
+        "type": "'standard' | 'scientific' | 'engineering' | 'compact'",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "options": {
+        "type": "Intl.NumberFormatOptions",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "signDisplay": {
+        "type": "'auto' | 'never' | 'always' | 'exceptZero'",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "style": {
+        "type": "'unit' | 'decimal' | 'percent' | 'currency'",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "unit": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "unitDisplay": {
+        "type": "'long' | 'short' | 'narrow'",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "useGrouping": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input"
+      }
+    }
+  },
+  "RelativeTimeComponent": {
+    "props": {
+      "value": {
+        "type": "number | Date",
+        "isRequired": true,
+        "kind": "required-input"
+      },
+      "locale": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "localeMatcher": {
+        "type": "'lookup' | 'best fit'",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "numeric": {
+        "type": "'auto' | 'always'",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "options": {
+        "type": "Intl.RelativeTimeFormatOptions",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "style": {
+        "type": "'long' | 'short' | 'narrow'",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "unit": {
+        "type": "Intl.RelativeTimeFormatUnit",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "'day'"
+      }
+    }
+  },
+  "TimeComponent": {
+    "props": {
+      "value": {
+        "type": "string | Date",
+        "isRequired": true,
+        "kind": "required-input"
+      },
+      "amLabel": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "format": {
+        "type": "'12h' | '24h'",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "locale": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "pmLabel": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "withSeconds": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input"
+      }
+    }
+  }
+}

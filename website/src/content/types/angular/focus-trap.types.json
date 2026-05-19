@@ -1,0 +1,17 @@
+{
+  "Directive": {
+    "props": {
+      "arkFocusTrap": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false"
+      },
+      "arkFocusTrapOptions": {
+        "type": "TrapFocusOptions",
+        "isRequired": false,
+        "kind": "input"
+      }
+    }
+  }
+}
