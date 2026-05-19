@@ -215,6 +215,25 @@ describe('collection entrypoint (criterion 27)', () => {
     expect(replaced.clearSelection().isEmpty()).toBe(true)
   })
 
+  it('extends list selection across a collection range', () => {
+    const items: Item[] = [
+      { value: 'a', label: 'A' },
+      { value: 'b', label: 'B' },
+      { value: 'c', label: 'C' },
+      { value: 'd', label: 'D' },
+    ]
+    const collection = createListCollection<Item>({ items })
+    const selection = createListSelection({ selectionMode: 'multiple' })
+
+    const extended = selection.extendSelection(collection, 'b', 'd')
+    expect(Array.from(extended)).toEqual(['b', 'c', 'd'])
+    expect(extended.firstSelectedValue(collection)).toBe('b')
+    expect(extended.lastSelectedValue(collection)).toBe('d')
+
+    const narrowed = extended.extendSelection(collection, 'b', 'c')
+    expect(Array.from(narrowed)).toEqual(['b', 'c'])
+  })
+
   it('loads async list items through the machine and connected api', async () => {
     const items = [{ value: 1 }, { value: 2 }]
     let details: LoadDetails<{ value: number }, string> | undefined
@@ -259,6 +278,114 @@ describe('collection entrypoint (criterion 27)', () => {
     expect(api.empty).toBe(false)
     expect(api.error).toBeUndefined()
     expect(onSuccess).toHaveBeenCalledWith({ items })
+  })
+
+  it('replaces async list items when reloaded', async () => {
+    let value = 1
+    const props: AsyncListProps<{ value: number }, string> = {
+      load: async () => ({ items: [{ value: value++ }] }),
+    }
+    const context: AsyncListContext<{ value: number }, string> = {
+      items: [{ value: 0 }],
+      filterText: '',
+      cursor: null,
+    }
+
+    let fetch = createAsyncListParams(props, context)
+    let { params, sent } = fetch
+    getAsyncListAction('clearItems')(params)
+    getAsyncListAction('performFetch')(params)
+    let success = await waitForAsyncListEvent(sent)
+    getAsyncListAction('setItems')({ ...params, event: success })
+
+    expect(connectAsyncListSnapshot(context, 'idle').items).toEqual([{ value: 1 }])
+
+    fetch = createAsyncListParams(props, context)
+    params = fetch.params
+    sent = fetch.sent
+    getAsyncListAction('clearItems')(params)
+    getAsyncListAction('performFetch')(params)
+    success = await waitForAsyncListEvent(sent)
+    getAsyncListAction('setItems')({ ...params, event: success })
+
+    expect(connectAsyncListSnapshot(context, 'idle').items).toEqual([{ value: 2 }])
+  })
+
+  it('filters async list items through filter text', async () => {
+    interface User {
+      value: string
+      name: string
+      team: string
+    }
+
+    const users: User[] = [
+      { value: 'alice', name: 'Alice Johnson', team: 'Engineering' },
+      { value: 'bob', name: 'Bob Smith', team: 'Marketing' },
+      { value: 'carol', name: 'Carol Davis', team: 'Engineering' },
+    ]
+    const props: AsyncListProps<User, string> = {
+      load: async ({ filterText }) => ({
+        items: users.filter((user) => `${user.name} ${user.team}`.toLowerCase().includes(filterText.toLowerCase())),
+      }),
+    }
+    const context: AsyncListContext<User, string> = {
+      items: users,
+      filterText: '',
+      cursor: null,
+    }
+    const event = { type: 'FILTER', filterText: 'engineering' }
+    const { params, sent } = createAsyncListParams(props, context, event)
+
+    getAsyncListAction('setFilterText')(params)
+    getAsyncListAction('clearCursor')(params)
+    getAsyncListAction('performFetch')(params)
+    const success = await waitForAsyncListEvent(sent)
+    getAsyncListAction('setItems')({ ...params, event: success })
+
+    const api = connectAsyncListSnapshot(context, 'idle')
+
+    expect(api.filterText).toBe('engineering')
+    expect(api.items.map((user) => user.value)).toEqual(['alice', 'carol'])
+  })
+
+  it('sorts async list items deterministically on the client', async () => {
+    interface User {
+      value: string
+      name: string
+    }
+
+    const sortDescriptor: SortDescriptor<User> = { column: 'name', direction: 'ascending' }
+    const props: AsyncListProps<User, string> = {
+      load: async () => ({ items: [] }),
+      sort: ({ items, descriptor }) => ({
+        items: [...items].sort((a, b) => {
+          const comparison = String(a[descriptor.column]).localeCompare(String(b[descriptor.column]))
+          return descriptor.direction === 'ascending' ? comparison : comparison * -1
+        }),
+      }),
+    }
+    const context: AsyncListContext<User, string> = {
+      items: [
+        { value: 'charlie', name: 'Charlie' },
+        { value: 'alice', name: 'Alice' },
+        { value: 'bob', name: 'Bob' },
+      ],
+      filterText: '',
+      cursor: null,
+    }
+    const event = { type: 'SORT', sortDescriptor }
+    const { params, sent } = createAsyncListParams(props, context, event)
+
+    getAsyncListAction('setSortDescriptor')(params)
+    getAsyncListAction('clearCursor')(params)
+    getAsyncListAction('performSort')(params)
+    const success = await waitForAsyncListEvent(sent)
+    getAsyncListAction('setItems')({ ...params, event: success })
+
+    const api = connectAsyncListSnapshot(context, 'idle')
+
+    expect(api.sortDescriptor).toEqual(sortDescriptor)
+    expect(api.items.map((user) => user.value)).toEqual(['alice', 'bob', 'charlie'])
   })
 
   it('exposes async list load failures through the connected api', async () => {

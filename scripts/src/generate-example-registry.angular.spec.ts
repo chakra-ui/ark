@@ -2,7 +2,7 @@ import { describe, expect, it } from 'bun:test'
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { batch6Examples, toPascalCase } from './batch-6-example-fixtures'
+import { batch6Examples, batch6ProviderExamples, toPascalCase } from './batch-6-example-fixtures'
 import { buildAngularRegistry } from './generate-example-registry'
 
 const createFixture = (options: { includeBatch6?: boolean } = {}) => {
@@ -36,6 +36,15 @@ const createFixture = (options: { includeBatch6?: boolean } = {}) => {
         writeFileSync(
           join(examplesRoot, component, 'examples', `${example}.ts`),
           `export class ${toPascalCase(component)}${toPascalCase(example)}Example {}\n`,
+        )
+      }
+    }
+    for (const [provider, examples] of Object.entries(batch6ProviderExamples)) {
+      mkdirSync(join(examplesRoot, 'providers', provider, 'examples'), { recursive: true })
+      for (const example of examples) {
+        writeFileSync(
+          join(examplesRoot, 'providers', provider, 'examples', `${example}.ts`),
+          `export class ${toPascalCase(provider)}${toPascalCase(example)}Example {}\n`,
         )
       }
     }
@@ -73,7 +82,7 @@ describe('Angular example registry generator', () => {
     }
   })
 
-  it('registers src-level Batch 6 utility example keys', async () => {
+  it('registers src-level and provider Batch 6 utility example keys', async () => {
     const fixtureRoot = createFixture({ includeBatch6: true })
     try {
       const registry = await buildAngularRegistry(fixtureRoot)
@@ -82,6 +91,13 @@ describe('Angular example registry generator', () => {
         for (const example of examples) {
           expect(registry.entries).toContain(
             `  '${component}/${example}': { module: ${toPascalCase(component)}_${toPascalCase(example)}, exportName: '${toPascalCase(component)}${toPascalCase(example)}Example' }`,
+          )
+        }
+      }
+      for (const [provider, examples] of Object.entries(batch6ProviderExamples)) {
+        for (const example of examples) {
+          expect(registry.entries).toContain(
+            `  '${provider}/${example}': { module: ${toPascalCase(provider)}_${toPascalCase(example)}, exportName: '${toPascalCase(provider)}${toPascalCase(example)}Example' }`,
           )
         }
       }

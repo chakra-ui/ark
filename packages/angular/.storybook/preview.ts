@@ -8,6 +8,12 @@ export default {
     backgrounds: { disable: true },
     controls: { disable: true },
     layout: 'padded',
+    options: {
+      storySort: {
+        order: ['Utilities', 'Providers', 'Components'],
+        method: 'alphabetical',
+      },
+    },
     viewport: { disable: true },
   },
 }

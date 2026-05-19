@@ -57,6 +57,25 @@ describe('provideArkInteraction / injectArkInteraction', () => {
     fixture.destroy()
   })
 
+  it('sets isFocusVisible to false after pointer input follows keyboard input', () => {
+    TestBed.configureTestingModule({
+      imports: [HostComponent],
+      providers: [provideArkInteraction()],
+    })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.detectChanges()
+
+    const ctx = fixture.componentInstance.ctx
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab' }))
+    expect(ctx.isFocusVisible()).toBe(true)
+
+    document.dispatchEvent(new Event('pointerdown'))
+    expect(ctx.modality()).toBe('pointer')
+    expect(ctx.isFocusVisible()).toBe(false)
+
+    fixture.destroy()
+  })
+
   it('ignores non-navigation keys', () => {
     TestBed.configureTestingModule({
       imports: [HostComponent],
