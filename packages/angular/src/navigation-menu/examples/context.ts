@@ -1,8 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import {
-  ArkNavigationMenuArrow,
   ArkNavigationMenuContent,
-  ArkNavigationMenuIndicator,
   ArkNavigationMenuItem,
   ArkNavigationMenuLink,
   ArkNavigationMenuList,
@@ -13,7 +11,7 @@ import { navigationMenuExampleStyles } from '../navigation-menu-example-styles'
 import { NavigationMenuChevronDownIcon } from './icons'
 
 @Component({
-  selector: 'navigation-menu-basic-example',
+  selector: 'navigation-menu-context-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -22,13 +20,12 @@ import { NavigationMenuChevronDownIcon } from './icons'
     ArkNavigationMenuItem,
     ArkNavigationMenuTrigger,
     ArkNavigationMenuContent,
-    ArkNavigationMenuIndicator,
-    ArkNavigationMenuArrow,
     ArkNavigationMenuLink,
     NavigationMenuChevronDownIcon,
   ],
   template: `
-    <nav arkNavigationMenu>
+    <nav arkNavigationMenu #root="arkNavigationMenu">
+      <output>value: {{ root.api().value || 'none' }}</output>
       <div arkNavigationMenuList>
         <div arkNavigationMenuItem value="features">
           <button type="button" arkNavigationMenuTrigger>
@@ -38,9 +35,6 @@ import { NavigationMenuChevronDownIcon } from './icons'
             </span>
           </button>
           <div arkNavigationMenuContent>
-            <span arkNavigationMenuIndicator>
-              <span arkNavigationMenuArrow></span>
-            </span>
             <a arkNavigationMenuLink href="#overview">Overview</a>
             <a arkNavigationMenuLink href="#features">Features</a>
           </div>
@@ -54,12 +48,8 @@ import { NavigationMenuChevronDownIcon } from './icons'
             </span>
           </button>
           <div arkNavigationMenuContent>
-            <span arkNavigationMenuIndicator>
-              <span arkNavigationMenuArrow></span>
-            </span>
             <a arkNavigationMenuLink href="#introduction">Introduction</a>
             <a arkNavigationMenuLink href="#installation">Installation</a>
-            <a arkNavigationMenuLink href="#components">Components</a>
           </div>
         </div>
 
@@ -71,4 +61,4 @@ import { NavigationMenuChevronDownIcon } from './icons'
   `,
   styles: [navigationMenuExampleStyles],
 })
-export class NavigationMenuBasicExample {}
+export class NavigationMenuContextExample {}

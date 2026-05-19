@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { moduleMetadata } from '@storybook/angular'
 import { NavigationMenuBasicExample } from './examples/basic'
+import { NavigationMenuContextExample } from './examples/context'
 import { NavigationMenuControlledExample } from './examples/controlled'
 import { NavigationMenuRootProviderExample } from './examples/root-provider'
 import { NavigationMenuViewportExample } from './examples/viewport'
@@ -20,6 +21,11 @@ export const Basic: StoryObj = {
 export const Controlled: StoryObj = {
   decorators: [moduleMetadata({ imports: [NavigationMenuControlledExample] })],
   render: () => ({ template: '<navigation-menu-controlled-example />' }),
+}
+
+export const Context: StoryObj = {
+  decorators: [moduleMetadata({ imports: [NavigationMenuContextExample] })],
+  render: () => ({ template: '<navigation-menu-context-example />' }),
 }
 
 export const RootProvider: StoryObj = {

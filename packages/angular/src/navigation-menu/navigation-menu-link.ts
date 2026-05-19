@@ -6,8 +6,10 @@ import {
   booleanAttribute,
   inject,
   input,
+  output,
   type InputSignal,
   type InputSignalWithTransform,
+  type OutputEmitterRef,
 } from '@angular/core'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
 import { injectArkNavigationMenuContext } from './use-navigation-menu-context'
@@ -25,6 +27,8 @@ export class ArkNavigationMenuLink {
   readonly current: InputSignalWithTransform<boolean, unknown> = input(false, { transform: booleanAttribute })
   /** Whether to close the navigation menu when the link is clicked. */
   readonly closeOnClick: InputSignal<boolean | undefined> = input<boolean | undefined>(undefined)
+  /** Fired when the link is selected. Calling preventDefault() prevents close-on-click. */
+  readonly select: OutputEmitterRef<CustomEvent> = output<CustomEvent>()
 
   private readonly itemContext: ArkNavigationMenuItemContext | null = inject(ARK_NAVIGATION_MENU_ITEM_CONTEXT, {
     optional: true,
@@ -47,6 +51,9 @@ export class ArkNavigationMenuLink {
           value,
           current: this.current(),
           closeOnClick: this.closeOnClick(),
+          onSelect: (event) => {
+            this.select.emit(event)
+          },
         })
       },
     })

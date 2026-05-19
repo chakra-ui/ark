@@ -43,6 +43,7 @@ import {
 } from '@ark-ui/angular/navigation-menu'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { NavigationMenuBasicExample } from './examples/basic'
+import { NavigationMenuContextExample } from './examples/context'
 import { NavigationMenuControlledExample } from './examples/controlled'
 import { NavigationMenuRootProviderExample } from './examples/root-provider'
 import { NavigationMenuViewportExample } from './examples/viewport'
@@ -120,7 +121,7 @@ describe('@ark-ui/angular/navigation-menu', () => {
     const injector = fixture.componentRef.injector
 
     const result = runInInjectionContext(injector, () => useNavigationMenu({ context: () => ({}) }))
-    const id = (result.api().getListProps() as Record<string, unknown>)['id'] as string
+    const id = (result.api().getListProps() as Record<string, unknown>).id as string
 
     expect(typeof id).toBe('string')
     expect(id.length).toBeGreaterThan(0)
@@ -214,12 +215,15 @@ describe('@ark-ui/angular/navigation-menu', () => {
     fixture.detectChanges()
     await flushOpen(fixture)
 
+    const rootDebug = fixture.debugElement.query(By.directive(ArkNavigationMenuRoot))
     const listEl = fixture.debugElement.query(By.directive(ArkNavigationMenuList)).nativeElement as HTMLElement
     const itemEl = fixture.debugElement.query(By.directive(ArkNavigationMenuItem)).nativeElement as HTMLElement
     const triggerEl = fixture.debugElement.query(By.directive(ArkNavigationMenuTrigger))
       .nativeElement as HTMLButtonElement
     const linkEl = fixture.debugElement.query(By.directive(ArkNavigationMenuLink)).nativeElement as HTMLElement
 
+    expect(rootDebug.nativeElement.getAttribute('data-scope')).toBe('navigation-menu')
+    expect(rootDebug.nativeElement.getAttribute('data-part')).toBe('root')
     expect(listEl.getAttribute('data-scope')).toBe('navigation-menu')
     expect(listEl.getAttribute('data-part')).toBe('list')
     expect(itemEl.getAttribute('data-scope')).toBe('navigation-menu')
@@ -228,6 +232,28 @@ describe('@ark-ui/angular/navigation-menu', () => {
     expect(triggerEl.getAttribute('data-part')).toBe('trigger')
     expect(linkEl.getAttribute('data-scope')).toBe('navigation-menu')
     expect(linkEl.getAttribute('data-part')).toBe('link')
+
+    fixture.destroy()
+  })
+
+  it('[arkNavigationMenuRootProvider] applies Zag root props to its host', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkNavigationMenuRootProvider],
+      template: '<nav arkNavigationMenuRootProvider [value]="navigationMenu"></nav>',
+    })
+    class Host {
+      readonly navigationMenu = useNavigationMenu({ context: () => ({}) })
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flushOpen(fixture)
+
+    const rootEl = fixture.debugElement.query(By.directive(ArkNavigationMenuRootProvider)).nativeElement as HTMLElement
+    expect(rootEl.getAttribute('data-scope')).toBe('navigation-menu')
+    expect(rootEl.getAttribute('data-part')).toBe('root')
 
     fixture.destroy()
   })
@@ -458,6 +484,86 @@ describe('@ark-ui/angular/navigation-menu', () => {
     fixture.destroy()
   })
 
+  it('[arkNavigationMenuTrigger] disabled input overrides ancestor item disabled state', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkNavigationMenuRoot, ArkNavigationMenuList, ArkNavigationMenuItem, ArkNavigationMenuTrigger],
+      template: `
+        <nav arkNavigationMenu>
+          <div arkNavigationMenuList>
+            <div arkNavigationMenuItem value="features" disabled>
+              <button type="button" arkNavigationMenuTrigger [disabled]="false">Features</button>
+            </div>
+          </div>
+        </nav>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flushOpen(fixture)
+
+    const triggerEl = fixture.debugElement.query(By.directive(ArkNavigationMenuTrigger))
+      .nativeElement as HTMLButtonElement
+    expect(triggerEl.hasAttribute('disabled')).toBe(false)
+    expect(triggerEl.getAttribute('data-disabled')).toBeNull()
+
+    fixture.destroy()
+  })
+
+  it('[arkNavigationMenuLink] emits (select) and respects preventDefault for close-on-click', async () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkNavigationMenuRoot,
+        ArkNavigationMenuList,
+        ArkNavigationMenuItem,
+        ArkNavigationMenuTrigger,
+        ArkNavigationMenuContent,
+        ArkNavigationMenuLink,
+      ],
+      template: `
+        <nav arkNavigationMenu defaultValue="features" #root="arkNavigationMenu">
+          <div arkNavigationMenuList>
+            <div arkNavigationMenuItem value="features">
+              <button type="button" arkNavigationMenuTrigger>Features</button>
+              <div arkNavigationMenuContent>
+                <a arkNavigationMenuLink href="#overview" (select)="onSelect($event)">Overview</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      `,
+    })
+    class Host {
+      readonly events: CustomEvent[] = []
+
+      onSelect(event: CustomEvent): void {
+        this.events.push(event)
+        event.preventDefault()
+      }
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flushOpen(fixture)
+
+    const root = fixture.debugElement.query(By.directive(ArkNavigationMenuRoot)).injector.get(ArkNavigationMenuRoot)
+    const linkEl = fixture.debugElement.query(By.directive(ArkNavigationMenuLink)).nativeElement as HTMLAnchorElement
+
+    linkEl.click()
+    await flushOpen(fixture)
+
+    expect(fixture.componentInstance.events).toHaveLength(1)
+    expect(fixture.componentInstance.events[0].type).toBe('link.select')
+    expect(root.api().value).toBe('features')
+
+    fixture.destroy()
+  })
+
   it('content rendered through ark-portal can inject ArkNavigationMenuRoot (AC 24)', async () => {
     @Component({
       standalone: true,
@@ -525,6 +631,14 @@ describe('@ark-ui/angular/navigation-menu', () => {
     TestBed.configureTestingModule({ imports: [NavigationMenuControlledExample] })
     const fixture = TestBed.createComponent(NavigationMenuControlledExample)
     fixture.detectChanges()
+    fixture.destroy()
+  })
+
+  it('NavigationMenuContextExample renders current value output', () => {
+    TestBed.configureTestingModule({ imports: [NavigationMenuContextExample] })
+    const fixture = TestBed.createComponent(NavigationMenuContextExample)
+    fixture.detectChanges()
+    expect((fixture.nativeElement as HTMLElement).textContent).toContain('value: none')
     fixture.destroy()
   })
 
