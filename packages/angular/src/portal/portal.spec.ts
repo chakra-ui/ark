@@ -304,6 +304,7 @@ describe('ArkPortalComponent', () => {
 
     expect(secondTarget.querySelector('[data-testid="projected"]')).toBeNull()
     expect(projected.isConnected).toBe(false)
+    expect(projected.parentNode?.nodeType).toBe(Node.DOCUMENT_FRAGMENT_NODE)
 
     fixture.destroy()
   })

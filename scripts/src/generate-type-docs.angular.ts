@@ -274,7 +274,7 @@ function getTypeTextWithoutUndefined(type: Type, property: PropertyDeclaration):
   return withoutUndefined
     .map((unionType) => {
       const text = unionType.getText(property)
-      return text.startsWith('() =>') ? `(${text})` : text
+      return text.includes('=>') ? `(${text})` : text
     })
     .join(' | ')
 }
@@ -473,15 +473,30 @@ function isAngularComponentDir(componentRoot: string, component: string): boolea
 
 const excludedAngularSrcTypeDocDirs = new Set(['_zag', 'internal', 'providers'])
 
+function getAngularExportSource(exportTarget: unknown): string | undefined {
+  if (typeof exportTarget === 'string') return exportTarget
+  if (typeof exportTarget !== 'object' || exportTarget === null) return undefined
+  const source = (exportTarget as { source?: unknown }).source
+  return typeof source === 'string' ? source : undefined
+}
+
+function getAngularComponentFromExportSource(source: string): string | undefined {
+  const match = source.match(/^\.\/(?:src\/)?([^/]+)\/public-api\.ts$/)
+  return match?.[1]
+}
+
 function listAngularExportedComponents(rootDir: string): Set<string> {
   const packageJsonPath = path.join(rootDir, 'packages', 'angular', 'package.json')
   if (!fs.existsSync(packageJsonPath)) return new Set()
 
   const pkg = fs.readJsonSync(packageJsonPath) as { exports?: Record<string, unknown> }
   return new Set(
-    Object.keys(pkg.exports ?? {})
-      .filter((key) => key.startsWith('./') && key !== './package.json' && !key.startsWith('./src/'))
-      .map((key) => key.slice(2)),
+    Object.values(pkg.exports ?? {})
+      .map((exportTarget) => {
+        const source = getAngularExportSource(exportTarget)
+        return source ? getAngularComponentFromExportSource(source) : undefined
+      })
+      .filter((component): component is string => Boolean(component)),
   )
 }
 

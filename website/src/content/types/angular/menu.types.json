@@ -70,7 +70,7 @@
         "description": "Whether to loop the keyboard navigation."
       },
       "navigate": {
-        "type": "null | (details: menu.NavigateDetails) => void",
+        "type": "null | ((details: menu.NavigateDetails) => void)",
         "isRequired": false,
         "kind": "input",
         "description": "Function to navigate to the selected item if it's an anchor element."

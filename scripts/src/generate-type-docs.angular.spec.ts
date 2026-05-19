@@ -46,6 +46,7 @@ const createAngularTypeDocFixture = () => {
         readonly internalRequired: InputSignal<string> = input.required<string>({ alias: 'requiredAlias' })
         readonly internalOutput: OutputEmitterRef<number> = output<number>({ alias: 'outputAlias' })
         readonly nullableBoolean: InputSignal<true | false | null> = input<true | false | null>(null)
+        readonly transform: InputSignal<string | ((value: string) => string) | undefined> = input<string | ((value: string) => string) | undefined>()
       }
     `,
   )
@@ -78,6 +79,7 @@ const createAngularDiscoveryFixture = () => {
         './legacy-fixture': { source: './legacy-fixture/public-api.ts' },
         './nested-fixture': { source: './src/nested-fixture/public-api.ts' },
         './presence': { source: './src/presence/public-api.ts' },
+        './style.css': { default: './dist/style.css' },
       },
     }),
   )
@@ -212,6 +214,7 @@ describe('Angular type-doc generator aliases', () => {
       })
       expect(doc['Root'].props['internalOutput']).toBeUndefined()
       expect(doc['Root'].props['nullableBoolean'].type).toBe('boolean | null')
+      expect(doc['Root'].props['transform'].type).toBe('string | ((value: string) => string)')
     } finally {
       rmSync(fixtureRoot, { recursive: true, force: true })
     }

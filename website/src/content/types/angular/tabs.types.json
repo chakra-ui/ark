@@ -50,7 +50,7 @@
         "description": "Whether keyboard navigation loops from last tab to first and vice versa."
       },
       "navigate": {
-        "type": "null | (details: TabsNavigateDetails) => void",
+        "type": "null | ((details: TabsNavigateDetails) => void)",
         "isRequired": false,
         "kind": "input",
         "description": "Function to navigate to the selected tab when trigger elements are anchors."

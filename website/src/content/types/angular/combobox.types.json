@@ -153,7 +153,7 @@
         "description": "The name attribute of the underlying input."
       },
       "navigate": {
-        "type": "null | (details: import(\"./combobox.types\").ComboboxNavigateDetails) => void",
+        "type": "null | ((details: import('./combobox.types').ComboboxNavigateDetails) => void)",
         "isRequired": false,
         "kind": "input",
         "description": "Function to navigate to the selected item."
@@ -171,7 +171,7 @@
         "description": "Emits when the open state changes."
       },
       "openOnChange": {
-        "type": "boolean | (details: ComboboxInputValueChangeDetails) => boolean",
+        "type": "boolean | ((details: ComboboxInputValueChangeDetails) => boolean)",
         "isRequired": false,
         "kind": "input",
         "description": "Whether to open the combobox on input change."
