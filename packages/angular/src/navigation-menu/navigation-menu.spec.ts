@@ -121,6 +121,7 @@ describe('@ark-ui/angular/navigation-menu', () => {
     const injector = fixture.componentRef.injector
 
     const result = runInInjectionContext(injector, () => useNavigationMenu({ context: () => ({}) }))
+    // biome-ignore lint/complexity/useLiteralKeys: TS4111 (noPropertyAccessFromIndexSignature) requires bracket access on Record<string, unknown>
     const id = (result.api().getListProps() as Record<string, unknown>)['id'] as string
 
     expect(typeof id).toBe('string')
