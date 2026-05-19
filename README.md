@@ -31,7 +31,7 @@
 
 Ark UI is a headless component library that provides the foundation for building high-quality, accessible design systems
 and web applications. Built on top of [Zag.js](https://zagjs.com) state machines, Ark UI delivers robust,
-framework-agnostic component logic with perfect parity across **React**, **Solid**, **Vue**, and **Svelte**.
+framework-agnostic component logic with perfect parity across **React**, **Solid**, **Vue**, **Svelte**, and **Angular**.
 
 ### Why Ark UI?
 
@@ -39,7 +39,7 @@ framework-agnostic component logic with perfect parity across **React**, **Solid
   any styling solution
 - **♿️ Accessibility First** - WCAG compliant components tested with real assistive technologies out of the box
 - **🔄 State Machine Powered** - Predictable, testable behavior powered by Zag.js finite state machines
-- **🌍 Multi-Framework** - Same API across React, Solid, Vue, and Svelte - write once, use everywhere
+- **🌍 Multi-Framework** - Same API across React, Solid, Vue, Svelte, and Angular - write once, use everywhere
 - **📦 Truly Composable** - Granular component primitives that work together seamlessly
 - **⚡️ Production Ready** - Battle-tested in products like Chakra UI, used by teams at OVHCloud, PluralSight, and more
 - **🎯 Type-Safe** - Fully typed with TypeScript for exceptional developer experience
@@ -60,6 +60,9 @@ npm install @ark-ui/vue
 
 # Svelte
 npm install @ark-ui/svelte
+
+# Angular
+npm install @ark-ui/angular
 ```
 
 ## Quick Start
@@ -148,6 +151,51 @@ export const MyDialog = () => (
 </Dialog.Root>
 ```
 
+### Angular
+
+```ts
+import { Component } from '@angular/core'
+import {
+  ArkDialogBackdrop,
+  ArkDialogCloseTrigger,
+  ArkDialogContent,
+  ArkDialogDescription,
+  ArkDialogPositioner,
+  ArkDialogRoot,
+  ArkDialogTitle,
+  ArkDialogTrigger,
+} from '@ark-ui/angular/dialog'
+
+@Component({
+  selector: 'my-dialog',
+  standalone: true,
+  imports: [
+    ArkDialogRoot,
+    ArkDialogTrigger,
+    ArkDialogBackdrop,
+    ArkDialogPositioner,
+    ArkDialogContent,
+    ArkDialogTitle,
+    ArkDialogDescription,
+    ArkDialogCloseTrigger,
+  ],
+  template: `
+    <ng-container arkDialog>
+      <button arkDialogTrigger>Open Dialog</button>
+      <div arkDialogBackdrop></div>
+      <div arkDialogPositioner>
+        <div arkDialogContent>
+          <h2 arkDialogTitle>Dialog Title</h2>
+          <p arkDialogDescription>Dialog description</p>
+          <button arkDialogCloseTrigger>Close</button>
+        </div>
+      </div>
+    </ng-container>
+  `,
+})
+export class MyDialog {}
+```
+
 ## Features
 
 ### Zero-Styling Freedom
@@ -190,7 +238,7 @@ Maintain a single design system across multiple frameworks without rewriting com
 
 ```tsx
 // Same API, same behavior, different frameworks
-const packages = ['@ark-ui/react', '@ark-ui/solid', '@ark-ui/vue', '@ark-ui/svelte']
+const packages = ['@ark-ui/react', '@ark-ui/solid', '@ark-ui/vue', '@ark-ui/svelte', '@ark-ui/angular']
 ```
 
 ## Components
