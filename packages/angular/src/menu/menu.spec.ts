@@ -52,11 +52,18 @@ import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { MenuBasicExample } from './examples/basic'
 import { MenuCheckboxItemsExample } from './examples/checkbox-items'
 import { MenuContextExample } from './examples/context'
+import { MenuContextLazyMountExample } from './examples/context-lazy-mount'
 import { MenuControlledExample } from './examples/controlled'
 import { MenuControlledHighlightExample } from './examples/controlled-highlight'
+import { MenuGroupExample } from './examples/group'
 import { MenuItemContextExample } from './examples/item-context'
+import { MenuItemDialogExample } from './examples/menu-item-dialog'
+import { MenuInDialogExample } from './examples/menu-in-dialog'
 import { MenuItemGroupExample } from './examples/item-group'
+import { MenuLinksExample } from './examples/links'
+import { MenuMultipleMenuExample } from './examples/multiple-menu'
 import { MenuMultipleTriggersExample } from './examples/multiple-triggers'
+import { MenuNestedExample } from './examples/nested'
 import { MenuNestedSubmenuExample } from './examples/nested-submenu'
 import { MenuRadioItemsExample } from './examples/radio-items'
 import { MenuRootProviderExample } from './examples/root-provider'
@@ -1053,6 +1060,71 @@ describe('@ark-ui/angular/menu', () => {
   it('MenuNestedSubmenuExample mounts without throwing', () => {
     TestBed.configureTestingModule({ imports: [MenuNestedSubmenuExample] })
     const fixture = TestBed.createComponent(MenuNestedSubmenuExample)
+    fixture.detectChanges()
+    fixture.destroy()
+  })
+
+  it('MenuLinksExample renders anchor menu items with href attributes', () => {
+    TestBed.configureTestingModule({ imports: [MenuLinksExample] })
+    const fixture = TestBed.createComponent(MenuLinksExample)
+    fixture.detectChanges()
+
+    const anchors = fixture.debugElement
+      .queryAll(By.directive(ArkMenuItem))
+      .map((el) => el.nativeElement as HTMLAnchorElement)
+
+    expect(anchors.length).toBe(3)
+    for (const anchor of anchors) {
+      expect(anchor.tagName).toBe('A')
+      expect(anchor.getAttribute('href')).toBeTruthy()
+      expect(anchor.getAttribute('data-scope')).toBe('menu')
+      expect(anchor.getAttribute('data-part')).toBe('item')
+    }
+
+    fixture.destroy()
+  })
+
+  it('MenuGroupExample mounts without throwing', () => {
+    TestBed.configureTestingModule({ imports: [MenuGroupExample] })
+    const fixture = TestBed.createComponent(MenuGroupExample)
+    fixture.detectChanges()
+    fixture.destroy()
+  })
+
+  it('MenuNestedExample mounts without throwing', () => {
+    TestBed.configureTestingModule({ imports: [MenuNestedExample] })
+    const fixture = TestBed.createComponent(MenuNestedExample)
+    fixture.detectChanges()
+    fixture.destroy()
+  })
+
+  it('MenuMultipleMenuExample mounts two independent menus', () => {
+    TestBed.configureTestingModule({ imports: [MenuMultipleMenuExample] })
+    const fixture = TestBed.createComponent(MenuMultipleMenuExample)
+    fixture.detectChanges()
+
+    expect(fixture.debugElement.queryAll(By.directive(ArkMenuRoot)).length).toBe(2)
+
+    fixture.destroy()
+  })
+
+  it('MenuContextLazyMountExample mounts without throwing', () => {
+    TestBed.configureTestingModule({ imports: [MenuContextLazyMountExample] })
+    const fixture = TestBed.createComponent(MenuContextLazyMountExample)
+    fixture.detectChanges()
+    fixture.destroy()
+  })
+
+  it('MenuInDialogExample mounts without throwing', () => {
+    TestBed.configureTestingModule({ imports: [MenuInDialogExample] })
+    const fixture = TestBed.createComponent(MenuInDialogExample)
+    fixture.detectChanges()
+    fixture.destroy()
+  })
+
+  it('MenuItemDialogExample mounts without throwing', () => {
+    TestBed.configureTestingModule({ imports: [MenuItemDialogExample] })
+    const fixture = TestBed.createComponent(MenuItemDialogExample)
     fixture.detectChanges()
     fixture.destroy()
   })

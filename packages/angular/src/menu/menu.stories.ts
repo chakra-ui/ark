@@ -3,11 +3,17 @@ import { moduleMetadata } from '@storybook/angular'
 import { MenuBasicExample } from './examples/basic'
 import { MenuCheckboxItemsExample } from './examples/checkbox-items'
 import { MenuContextExample } from './examples/context'
+import { MenuContextLazyMountExample } from './examples/context-lazy-mount'
 import { MenuControlledExample } from './examples/controlled'
 import { MenuControlledHighlightExample } from './examples/controlled-highlight'
+import { MenuGroupExample } from './examples/group'
 import { MenuItemContextExample } from './examples/item-context'
-import { MenuItemGroupExample } from './examples/item-group'
+import { MenuItemDialogExample } from './examples/menu-item-dialog'
+import { MenuInDialogExample } from './examples/menu-in-dialog'
+import { MenuLinksExample } from './examples/links'
+import { MenuMultipleMenuExample } from './examples/multiple-menu'
 import { MenuMultipleTriggersExample } from './examples/multiple-triggers'
+import { MenuNestedExample } from './examples/nested'
 import { MenuNestedSubmenuExample } from './examples/nested-submenu'
 import { MenuRadioItemsExample } from './examples/radio-items'
 import { MenuRootProviderExample } from './examples/root-provider'
@@ -35,6 +41,11 @@ export const Context: StoryObj = {
   render: () => ({ template: '<menu-context-example />' }),
 }
 
+export const ContextLazyMount: StoryObj = {
+  decorators: [moduleMetadata({ imports: [MenuContextLazyMountExample] })],
+  render: () => ({ template: '<menu-context-lazy-mount-example />' }),
+}
+
 export const WithSeparator: StoryObj = {
   decorators: [moduleMetadata({ imports: [MenuWithSeparatorExample] })],
   render: () => ({ template: '<menu-with-separator-example />' }),
@@ -60,9 +71,9 @@ export const RadioItems: StoryObj = {
   render: () => ({ template: '<menu-radio-items-example />' }),
 }
 
-export const ItemGroup: StoryObj = {
-  decorators: [moduleMetadata({ imports: [MenuItemGroupExample] })],
-  render: () => ({ template: '<menu-item-group-example />' }),
+export const Group: StoryObj = {
+  decorators: [moduleMetadata({ imports: [MenuGroupExample] })],
+  render: () => ({ template: '<menu-group-example />' }),
 }
 
 export const ItemContext: StoryObj = {
@@ -70,9 +81,34 @@ export const ItemContext: StoryObj = {
   render: () => ({ template: '<menu-item-context-example />' }),
 }
 
+export const Links: StoryObj = {
+  decorators: [moduleMetadata({ imports: [MenuLinksExample] })],
+  render: () => ({ template: '<menu-links-example />' }),
+}
+
+export const MenuInDialog: StoryObj = {
+  decorators: [moduleMetadata({ imports: [MenuInDialogExample] })],
+  render: () => ({ template: '<menu-in-dialog-example />' }),
+}
+
+export const MenuItemDialog: StoryObj = {
+  decorators: [moduleMetadata({ imports: [MenuItemDialogExample] })],
+  render: () => ({ template: '<menu-item-dialog-example />' }),
+}
+
+export const MultipleMenu: StoryObj = {
+  decorators: [moduleMetadata({ imports: [MenuMultipleMenuExample] })],
+  render: () => ({ template: '<menu-multiple-menu-example />' }),
+}
+
 export const MultipleTriggers: StoryObj = {
   decorators: [moduleMetadata({ imports: [MenuMultipleTriggersExample] })],
   render: () => ({ template: '<menu-multiple-triggers-example />' }),
+}
+
+export const Nested: StoryObj = {
+  decorators: [moduleMetadata({ imports: [MenuNestedExample] })],
+  render: () => ({ template: '<menu-nested-example />' }),
 }
 
 export const NestedSubmenu: StoryObj = {
