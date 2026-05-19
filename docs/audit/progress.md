@@ -39,5 +39,5 @@
 - [ ] Manual/visual checks: Not run; styles were compared directly against React CSS modules.
 
 ## Commit
-- Hash: 9a2a3870d
+- Hash: f1779eeca
 - Message: `fix(angular): align progress with react parity`
