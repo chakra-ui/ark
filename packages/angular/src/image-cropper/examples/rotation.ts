@@ -1,22 +1,21 @@
-import { ChangeDetectionStrategy, Component, Injector, inject, runInInjectionContext } from '@angular/core'
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
 import {
   ArkImageCropperGrid,
   ArkImageCropperHandle,
   ArkImageCropperImage,
-  ArkImageCropperRootProvider,
+  ArkImageCropperRoot,
   ArkImageCropperSelection,
   ArkImageCropperViewport,
   imageCropperHandles,
-  useImageCropper,
 } from '../public-api'
 import { imageCropperExampleStyles } from '../image-cropper-example-styles'
 
 @Component({
-  selector: 'image-cropper-root-provider-example',
+  selector: 'image-cropper-rotation-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    ArkImageCropperRootProvider,
+    ArkImageCropperRoot,
     ArkImageCropperViewport,
     ArkImageCropperImage,
     ArkImageCropperSelection,
@@ -26,16 +25,16 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
   template: `
     <div class="layout">
       <div class="toolbar">
-        <button type="button" aria-label="Zoom out" (click)="imageCropper.api().setZoom(imageCropper.api().zoom - 0.1)">
-          -
+        <button type="button" aria-label="Rotate counterclockwise" (click)="rotation.set((rotation() ?? 0) - 90)">
+          Rotate left
         </button>
-        <span class="meter">{{ imageCropper.api().zoom.toFixed(1) }}x</span>
-        <button type="button" aria-label="Zoom in" (click)="imageCropper.api().setZoom(imageCropper.api().zoom + 0.1)">
-          +
+        <button type="button" aria-label="Rotate clockwise" (click)="rotation.set((rotation() ?? 0) + 90)">
+          Rotate right
         </button>
+        <span class="meter">{{ rotation() }} deg</span>
       </div>
 
-      <div class="root" arkImageCropperRootProvider [value]="imageCropper">
+      <div class="root" arkImageCropper [(rotation)]="rotation">
         <div arkImageCropperViewport>
           <img
             arkImageCropperImage
@@ -55,10 +54,7 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
   `,
   styles: [imageCropperExampleStyles],
 })
-export class ImageCropperRootProviderExample {
-  private readonly injector = inject(Injector)
-  readonly imageCropper = runInInjectionContext(this.injector, () =>
-    useImageCropper({ context: () => ({ defaultZoom: 1.25 }) }),
-  )
+export class ImageCropperRotationExample {
   readonly handles = imageCropperHandles
+  readonly rotation = signal<number | undefined>(0)
 }

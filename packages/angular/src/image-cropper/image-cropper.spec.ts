@@ -41,8 +41,21 @@ import {
   type UseImageCropperReturn,
 } from '@ark-ui/angular/image-cropper'
 import { ImageCropperBasicExample } from './examples/basic'
+import { ImageCropperAspectRatioExample } from './examples/aspect-ratio'
+import { ImageCropperCircleExample } from './examples/circle'
+import { ImageCropperContextExample } from './examples/context'
 import { ImageCropperControlledExample } from './examples/controlled'
+import { ImageCropperControlledZoomExample } from './examples/controlled-zoom'
+import { ImageCropperCropPreviewExample } from './examples/crop-preview'
+import { ImageCropperEventsExample } from './examples/events'
+import { ImageCropperFixedExample } from './examples/fixed'
+import { ImageCropperFlipExample } from './examples/flip'
+import { ImageCropperInitialCropExample } from './examples/initial-crop'
+import { ImageCropperMinMaxSizeExample } from './examples/min-max-size'
+import { ImageCropperResetExample } from './examples/reset'
+import { ImageCropperRotationExample } from './examples/rotation'
 import { ImageCropperRootProviderExample } from './examples/root-provider'
+import { ImageCropperZoomLimitsExample } from './examples/zoom-limits'
 
 type ImageCropperPublicTypeSmoke = [
   ImageCropperApi,
@@ -126,10 +139,54 @@ describe('@ark-ui/angular/image-cropper', () => {
     expect(ArkImageCropperHandle).toBeDefined()
     expect(ArkImageCropperGrid).toBeDefined()
     expect(ArkImageCropperContext).toBeDefined()
+    expect(ImageCropperAspectRatioExample).toBeDefined()
     expect(ImageCropperBasicExample).toBeDefined()
+    expect(ImageCropperCircleExample).toBeDefined()
+    expect(ImageCropperContextExample).toBeDefined()
     expect(ImageCropperControlledExample).toBeDefined()
+    expect(ImageCropperControlledZoomExample).toBeDefined()
+    expect(ImageCropperCropPreviewExample).toBeDefined()
+    expect(ImageCropperEventsExample).toBeDefined()
+    expect(ImageCropperFixedExample).toBeDefined()
+    expect(ImageCropperFlipExample).toBeDefined()
+    expect(ImageCropperInitialCropExample).toBeDefined()
+    expect(ImageCropperMinMaxSizeExample).toBeDefined()
+    expect(ImageCropperResetExample).toBeDefined()
+    expect(ImageCropperRotationExample).toBeDefined()
     expect(ImageCropperRootProviderExample).toBeDefined()
+    expect(ImageCropperZoomLimitsExample).toBeDefined()
     expect(undefined as ImageCropperPublicTypeSmoke | undefined).toBeUndefined()
+  })
+
+  it('renders all documented Storybook examples', () => {
+    const examples = [
+      ImageCropperAspectRatioExample,
+      ImageCropperBasicExample,
+      ImageCropperCircleExample,
+      ImageCropperContextExample,
+      ImageCropperControlledExample,
+      ImageCropperControlledZoomExample,
+      ImageCropperCropPreviewExample,
+      ImageCropperEventsExample,
+      ImageCropperFixedExample,
+      ImageCropperFlipExample,
+      ImageCropperInitialCropExample,
+      ImageCropperMinMaxSizeExample,
+      ImageCropperResetExample,
+      ImageCropperRotationExample,
+      ImageCropperRootProviderExample,
+      ImageCropperZoomLimitsExample,
+    ]
+
+    for (const Example of examples) {
+      TestBed.resetTestingModule()
+      TestBed.configureTestingModule({ imports: [Example] })
+      const fixture = TestBed.createComponent(Example)
+      fixture.detectChanges()
+
+      expect(fixture.nativeElement.querySelector('[data-scope="image-cropper"][data-part="root"]')).toBeTruthy()
+      fixture.destroy()
+    }
   })
 
   it('useImageCropper({ context: () => ({}) }) produces a non-empty fallback id', () => {
@@ -362,6 +419,48 @@ describe('@ark-ui/angular/image-cropper', () => {
 
     expect(root.api().crop).toEqual(initial)
     expect(handle.getAttribute('data-disabled')).toBe('')
+
+    fixture.destroy()
+  })
+
+  it('applies edge configuration props used by parity stories', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkImageCropperRoot, ArkImageCropperViewport, ArkImageCropperImage, ArkImageCropperSelection],
+      template: `
+        <div
+          arkImageCropper
+          [aspectRatio]="16 / 9"
+          [initialCrop]="{ x: 50, y: 30, width: 200, height: 120 }"
+          [minWidth]="80"
+          [minHeight]="80"
+          [maxWidth]="200"
+          [maxHeight]="200"
+          [minZoom]="0.5"
+          [maxZoom]="2"
+        >
+          <div arkImageCropperViewport>
+            <img arkImageCropperImage src="/crop.jpg" />
+            <div arkImageCropperSelection></div>
+          </div>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await prepareImage(fixture)
+
+    const root = fixture.debugElement.query(By.directive(ArkImageCropperRoot)).injector.get(ArkImageCropperRoot)
+    root.api().setZoom(10)
+    root.api().resize('se', 500)
+    await flush(fixture)
+
+    expect(root.api().zoom).toBeLessThanOrEqual(2)
+    expect(root.api().crop.width).toBeLessThanOrEqual(200)
+    expect(root.api().crop.height).toBeLessThanOrEqual(200)
 
     fixture.destroy()
   })

@@ -1,22 +1,22 @@
-import { ChangeDetectionStrategy, Component, Injector, inject, runInInjectionContext } from '@angular/core'
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
 import {
   ArkImageCropperGrid,
   ArkImageCropperHandle,
   ArkImageCropperImage,
-  ArkImageCropperRootProvider,
+  ArkImageCropperRoot,
   ArkImageCropperSelection,
   ArkImageCropperViewport,
   imageCropperHandles,
-  useImageCropper,
+  type ImageCropperCropData,
 } from '../public-api'
 import { imageCropperExampleStyles } from '../image-cropper-example-styles'
 
 @Component({
-  selector: 'image-cropper-root-provider-example',
+  selector: 'image-cropper-events-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    ArkImageCropperRootProvider,
+    ArkImageCropperRoot,
     ArkImageCropperViewport,
     ArkImageCropperImage,
     ArkImageCropperSelection,
@@ -25,17 +25,7 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
   ],
   template: `
     <div class="layout">
-      <div class="toolbar">
-        <button type="button" aria-label="Zoom out" (click)="imageCropper.api().setZoom(imageCropper.api().zoom - 0.1)">
-          -
-        </button>
-        <span class="meter">{{ imageCropper.api().zoom.toFixed(1) }}x</span>
-        <button type="button" aria-label="Zoom in" (click)="imageCropper.api().setZoom(imageCropper.api().zoom + 0.1)">
-          +
-        </button>
-      </div>
-
-      <div class="root" arkImageCropperRootProvider [value]="imageCropper">
+      <div class="root" arkImageCropper (cropChange)="cropData.set($event.crop)" (zoomChange)="zoom.set($event)">
         <div arkImageCropperViewport>
           <img
             arkImageCropperImage
@@ -51,14 +41,36 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
           </div>
         </div>
       </div>
+
+      <div class="data-display">
+        <div class="data-item">
+          <span class="data-label">Zoom</span>
+          <span class="data-value">{{ zoom().toFixed(2) }}x</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">Position</span>
+          <span class="data-value">{{ rounded(cropData().x) }}, {{ rounded(cropData().y) }}</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">Size</span>
+          <span class="data-value">{{ rounded(cropData().width) }} x {{ rounded(cropData().height) }}</span>
+        </div>
+      </div>
     </div>
   `,
   styles: [imageCropperExampleStyles],
 })
-export class ImageCropperRootProviderExample {
-  private readonly injector = inject(Injector)
-  readonly imageCropper = runInInjectionContext(this.injector, () =>
-    useImageCropper({ context: () => ({ defaultZoom: 1.25 }) }),
-  )
+export class ImageCropperEventsExample {
+  readonly cropData = signal<Pick<ImageCropperCropData, 'x' | 'y' | 'width' | 'height'>>({
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+  })
   readonly handles = imageCropperHandles
+  readonly zoom = signal(1)
+
+  rounded(value: number): number {
+    return Math.round(value)
+  }
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector, inject, runInInjectionContext } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Injector, inject, runInInjectionContext, signal } from '@angular/core'
 import {
   ArkImageCropperGrid,
   ArkImageCropperHandle,
@@ -12,7 +12,7 @@ import {
 import { imageCropperExampleStyles } from '../image-cropper-example-styles'
 
 @Component({
-  selector: 'image-cropper-root-provider-example',
+  selector: 'image-cropper-crop-preview-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -26,13 +26,7 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
   template: `
     <div class="layout">
       <div class="toolbar">
-        <button type="button" aria-label="Zoom out" (click)="imageCropper.api().setZoom(imageCropper.api().zoom - 0.1)">
-          -
-        </button>
-        <span class="meter">{{ imageCropper.api().zoom.toFixed(1) }}x</span>
-        <button type="button" aria-label="Zoom in" (click)="imageCropper.api().setZoom(imageCropper.api().zoom + 0.1)">
-          +
-        </button>
+        <button type="button" data-variant="solid" (click)="cropImage()">Crop image</button>
       </div>
 
       <div class="root" arkImageCropperRootProvider [value]="imageCropper">
@@ -41,6 +35,7 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
             arkImageCropperImage
             src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800"
             alt="Sample"
+            crossorigin="anonymous"
           />
           <div arkImageCropperSelection>
             @for (position of handles; track position) {
@@ -51,14 +46,27 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
           </div>
         </div>
       </div>
+
+      <div class="preview">
+        <span class="preview-label">Preview</span>
+        @if (preview()) {
+          <img class="preview-image" [src]="preview()" alt="Cropped preview" />
+        }
+      </div>
     </div>
   `,
   styles: [imageCropperExampleStyles],
 })
-export class ImageCropperRootProviderExample {
+export class ImageCropperCropPreviewExample {
   private readonly injector = inject(Injector)
-  readonly imageCropper = runInInjectionContext(this.injector, () =>
-    useImageCropper({ context: () => ({ defaultZoom: 1.25 }) }),
-  )
   readonly handles = imageCropperHandles
+  readonly imageCropper = runInInjectionContext(this.injector, () => useImageCropper({ context: () => ({}) }))
+  readonly preview = signal<string | null>(null)
+
+  async cropImage(): Promise<void> {
+    const result = await this.imageCropper.api().getCroppedImage({ output: 'dataUrl' })
+    if (typeof result === 'string') {
+      this.preview.set(result)
+    }
+  }
 }

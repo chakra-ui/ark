@@ -1,22 +1,21 @@
-import { ChangeDetectionStrategy, Component, Injector, inject, runInInjectionContext } from '@angular/core'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
 import {
   ArkImageCropperGrid,
   ArkImageCropperHandle,
   ArkImageCropperImage,
-  ArkImageCropperRootProvider,
+  ArkImageCropperRoot,
   ArkImageCropperSelection,
   ArkImageCropperViewport,
   imageCropperHandles,
-  useImageCropper,
 } from '../public-api'
 import { imageCropperExampleStyles } from '../image-cropper-example-styles'
 
 @Component({
-  selector: 'image-cropper-root-provider-example',
+  selector: 'image-cropper-initial-crop-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    ArkImageCropperRootProvider,
+    ArkImageCropperRoot,
     ArkImageCropperViewport,
     ArkImageCropperImage,
     ArkImageCropperSelection,
@@ -25,17 +24,9 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
   ],
   template: `
     <div class="layout">
-      <div class="toolbar">
-        <button type="button" aria-label="Zoom out" (click)="imageCropper.api().setZoom(imageCropper.api().zoom - 0.1)">
-          -
-        </button>
-        <span class="meter">{{ imageCropper.api().zoom.toFixed(1) }}x</span>
-        <button type="button" aria-label="Zoom in" (click)="imageCropper.api().setZoom(imageCropper.api().zoom + 0.1)">
-          +
-        </button>
-      </div>
+      <p class="description">Starts with a pre-defined crop area</p>
 
-      <div class="root" arkImageCropperRootProvider [value]="imageCropper">
+      <div class="root" arkImageCropper [initialCrop]="{ x: 50, y: 30, width: 200, height: 120 }">
         <div arkImageCropperViewport>
           <img
             arkImageCropperImage
@@ -55,10 +46,6 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
   `,
   styles: [imageCropperExampleStyles],
 })
-export class ImageCropperRootProviderExample {
-  private readonly injector = inject(Injector)
-  readonly imageCropper = runInInjectionContext(this.injector, () =>
-    useImageCropper({ context: () => ({ defaultZoom: 1.25 }) }),
-  )
+export class ImageCropperInitialCropExample {
   readonly handles = imageCropperHandles
 }

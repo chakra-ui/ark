@@ -1,17 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import {
   ArkImageCropperGrid,
-  ArkImageCropperHandle,
   ArkImageCropperImage,
   ArkImageCropperRoot,
   ArkImageCropperSelection,
   ArkImageCropperViewport,
-  imageCropperHandles,
 } from '../public-api'
 import { imageCropperExampleStyles } from '../image-cropper-example-styles'
 
 @Component({
-  selector: 'image-cropper-basic-example',
+  selector: 'image-cropper-fixed-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -19,12 +17,11 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
     ArkImageCropperViewport,
     ArkImageCropperImage,
     ArkImageCropperSelection,
-    ArkImageCropperHandle,
     ArkImageCropperGrid,
   ],
   template: `
     <div class="layout">
-      <div class="root" arkImageCropper>
+      <div class="root" arkImageCropper fixedCropArea>
         <div arkImageCropperViewport>
           <img
             arkImageCropperImage
@@ -34,9 +31,6 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
           <div arkImageCropperSelection>
             <div arkImageCropperGrid axis="horizontal"></div>
             <div arkImageCropperGrid axis="vertical"></div>
-            @for (position of handles; track position) {
-              <div arkImageCropperHandle [position]="position"><span></span></div>
-            }
           </div>
         </div>
       </div>
@@ -44,6 +38,4 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
   `,
   styles: [imageCropperExampleStyles],
 })
-export class ImageCropperBasicExample {
-  readonly handles = imageCropperHandles
-}
+export class ImageCropperFixedExample {}

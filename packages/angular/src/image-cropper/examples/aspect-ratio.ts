@@ -1,22 +1,27 @@
-import { ChangeDetectionStrategy, Component, Injector, inject, runInInjectionContext } from '@angular/core'
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
 import {
   ArkImageCropperGrid,
   ArkImageCropperHandle,
   ArkImageCropperImage,
-  ArkImageCropperRootProvider,
+  ArkImageCropperRoot,
   ArkImageCropperSelection,
   ArkImageCropperViewport,
   imageCropperHandles,
-  useImageCropper,
 } from '../public-api'
 import { imageCropperExampleStyles } from '../image-cropper-example-styles'
 
+const aspects = [
+  { label: '16:9', value: 16 / 9 },
+  { label: '1:1', value: 1 },
+  { label: '9:16', value: 9 / 16 },
+]
+
 @Component({
-  selector: 'image-cropper-root-provider-example',
+  selector: 'image-cropper-aspect-ratio-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    ArkImageCropperRootProvider,
+    ArkImageCropperRoot,
     ArkImageCropperViewport,
     ArkImageCropperImage,
     ArkImageCropperSelection,
@@ -26,16 +31,18 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
   template: `
     <div class="layout">
       <div class="toolbar">
-        <button type="button" aria-label="Zoom out" (click)="imageCropper.api().setZoom(imageCropper.api().zoom - 0.1)">
-          -
-        </button>
-        <span class="meter">{{ imageCropper.api().zoom.toFixed(1) }}x</span>
-        <button type="button" aria-label="Zoom in" (click)="imageCropper.api().setZoom(imageCropper.api().zoom + 0.1)">
-          +
-        </button>
+        @for (aspect of aspects; track aspect.label) {
+          <button
+            type="button"
+            [attr.data-variant]="aspectRatio() === aspect.value ? 'solid' : null"
+            (click)="aspectRatio.set(aspect.value)"
+          >
+            {{ aspect.label }}
+          </button>
+        }
       </div>
 
-      <div class="root" arkImageCropperRootProvider [value]="imageCropper">
+      <div class="root" arkImageCropper [aspectRatio]="aspectRatio()">
         <div arkImageCropperViewport>
           <img
             arkImageCropperImage
@@ -55,10 +62,8 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
   `,
   styles: [imageCropperExampleStyles],
 })
-export class ImageCropperRootProviderExample {
-  private readonly injector = inject(Injector)
-  readonly imageCropper = runInInjectionContext(this.injector, () =>
-    useImageCropper({ context: () => ({ defaultZoom: 1.25 }) }),
-  )
+export class ImageCropperAspectRatioExample {
+  readonly aspects = aspects
+  readonly aspectRatio = signal(16 / 9)
   readonly handles = imageCropperHandles
 }

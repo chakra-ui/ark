@@ -1,22 +1,21 @@
-import { ChangeDetectionStrategy, Component, Injector, inject, runInInjectionContext } from '@angular/core'
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
 import {
   ArkImageCropperGrid,
   ArkImageCropperHandle,
   ArkImageCropperImage,
-  ArkImageCropperRootProvider,
+  ArkImageCropperRoot,
   ArkImageCropperSelection,
   ArkImageCropperViewport,
   imageCropperHandles,
-  useImageCropper,
 } from '../public-api'
 import { imageCropperExampleStyles } from '../image-cropper-example-styles'
 
 @Component({
-  selector: 'image-cropper-root-provider-example',
+  selector: 'image-cropper-zoom-limits-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    ArkImageCropperRootProvider,
+    ArkImageCropperRoot,
     ArkImageCropperViewport,
     ArkImageCropperImage,
     ArkImageCropperSelection,
@@ -26,16 +25,16 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
   template: `
     <div class="layout">
       <div class="toolbar">
-        <button type="button" aria-label="Zoom out" (click)="imageCropper.api().setZoom(imageCropper.api().zoom - 0.1)">
+        <button type="button" aria-label="Zoom out" (click)="zoom.set(Math.max(minZoom, (zoom() ?? 1) - 0.1))">
           -
         </button>
-        <span class="meter">{{ imageCropper.api().zoom.toFixed(1) }}x</span>
-        <button type="button" aria-label="Zoom in" (click)="imageCropper.api().setZoom(imageCropper.api().zoom + 0.1)">
-          +
-        </button>
+        <span class="meter">{{ zoom()?.toFixed(1) }}x</span>
+        <button type="button" aria-label="Zoom in" (click)="zoom.set(Math.min(maxZoom, (zoom() ?? 1) + 0.1))">+</button>
       </div>
 
-      <div class="root" arkImageCropperRootProvider [value]="imageCropper">
+      <p class="description">Zoom constrained between {{ minZoom }}x and {{ maxZoom }}x</p>
+
+      <div class="root" arkImageCropper [(zoom)]="zoom" [minZoom]="minZoom" [maxZoom]="maxZoom">
         <div arkImageCropperViewport>
           <img
             arkImageCropperImage
@@ -55,10 +54,10 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
   `,
   styles: [imageCropperExampleStyles],
 })
-export class ImageCropperRootProviderExample {
-  private readonly injector = inject(Injector)
-  readonly imageCropper = runInInjectionContext(this.injector, () =>
-    useImageCropper({ context: () => ({ defaultZoom: 1.25 }) }),
-  )
+export class ImageCropperZoomLimitsExample {
+  readonly Math = Math
   readonly handles = imageCropperHandles
+  readonly maxZoom = 2
+  readonly minZoom = 0.5
+  readonly zoom = signal<number | undefined>(1)
 }

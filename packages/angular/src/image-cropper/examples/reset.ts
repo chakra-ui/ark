@@ -12,7 +12,7 @@ import {
 import { imageCropperExampleStyles } from '../image-cropper-example-styles'
 
 @Component({
-  selector: 'image-cropper-root-provider-example',
+  selector: 'image-cropper-reset-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -26,13 +26,12 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
   template: `
     <div class="layout">
       <div class="toolbar">
-        <button type="button" aria-label="Zoom out" (click)="imageCropper.api().setZoom(imageCropper.api().zoom - 0.1)">
-          -
-        </button>
-        <span class="meter">{{ imageCropper.api().zoom.toFixed(1) }}x</span>
-        <button type="button" aria-label="Zoom in" (click)="imageCropper.api().setZoom(imageCropper.api().zoom + 0.1)">
-          +
-        </button>
+        <button type="button" aria-label="Zoom out" (click)="imageCropper.api().zoomBy(-0.1)">-</button>
+        <button type="button" aria-label="Zoom in" (click)="imageCropper.api().zoomBy(0.1)">+</button>
+        <button type="button" (click)="imageCropper.api().rotateBy(-90)">Rotate left</button>
+        <button type="button" (click)="imageCropper.api().rotateBy(90)">Rotate right</button>
+        <button type="button" (click)="imageCropper.api().flipHorizontally()">Flip horizontal</button>
+        <button type="button" data-variant="surface" (click)="imageCropper.api().reset()">Reset</button>
       </div>
 
       <div class="root" arkImageCropperRootProvider [value]="imageCropper">
@@ -55,10 +54,8 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
   `,
   styles: [imageCropperExampleStyles],
 })
-export class ImageCropperRootProviderExample {
+export class ImageCropperResetExample {
   private readonly injector = inject(Injector)
-  readonly imageCropper = runInInjectionContext(this.injector, () =>
-    useImageCropper({ context: () => ({ defaultZoom: 1.25 }) }),
-  )
   readonly handles = imageCropperHandles
+  readonly imageCropper = runInInjectionContext(this.injector, () => useImageCropper({ context: () => ({}) }))
 }
