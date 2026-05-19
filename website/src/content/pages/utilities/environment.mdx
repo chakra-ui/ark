@@ -20,6 +20,21 @@ provide the environment context to all Ark UI components.
 
 <ExampleCode id="setup" component="environment" />
 
+In Angular, register `provideArkEnvironment` in your application config or component providers.
+
+```ts
+import { ApplicationConfig } from '@angular/core'
+import { provideArkEnvironment } from '@ark-ui/angular/providers/environment'
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideArkEnvironment({
+      getRootNode: () => (typeof document === 'undefined' ? undefined : document),
+    }),
+  ],
+}
+```
+
 ### Usage in iframe
 
 The `EnvironmentProvider` component will automatically detect the current environment and set the correct environment
@@ -61,6 +76,26 @@ export const App = () => {
 Use the `useEnvironmentContext` hook to access the `RootNode`, `Document`, and `Window`.
 
 <ExampleCode id="usage" component="environment" />
+
+In Angular, inject the current environment context with `injectArkEnvironment`.
+
+```ts
+import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { injectArkEnvironment } from '@ark-ui/angular/providers/environment'
+
+@Component({
+  selector: 'app-environment-status',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
+    <p>Root node: {{ rootNodeName }}</p>
+  `,
+})
+export class AppEnvironmentStatus {
+  private readonly environment = injectArkEnvironment()
+  readonly rootNodeName = this.environment.getRootNode()?.nodeName ?? 'unknown'
+}
+```
 
 ## API Reference
 

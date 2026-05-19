@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: '%s | Ark UI',
   },
   description,
-  keywords: ['react', 'solid', 'vue', 'svelte', 'design systems', 'headless', 'components', 'library'],
+  keywords: ['react', 'solid', 'vue', 'svelte', 'angular', 'design systems', 'headless', 'components', 'library'],
   openGraph: {
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },

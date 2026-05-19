@@ -124,9 +124,12 @@ export async function buildReactRegistry(repoRoot: string): Promise<RegistryBuil
 }
 
 export async function buildAngularRegistry(repoRoot: string): Promise<RegistryBuild> {
-  const allFiles = await globby(['packages/angular/src/*/examples/**/*.ts'], {
-    cwd: repoRoot,
-  })
+  const allFiles = await globby(
+    ['packages/angular/src/*/examples/**/*.ts', 'packages/angular/src/providers/*/examples/*.ts'],
+    {
+      cwd: repoRoot,
+    },
+  )
 
   const imports: string[] = []
   const registryEntries: string[] = []
@@ -138,7 +141,7 @@ export async function buildAngularRegistry(repoRoot: string): Promise<RegistryBu
     if (exampleFileName.startsWith('_') || /\.(spec|test)\.ts$/.test(exampleFileName)) continue
 
     const examplesIdx = parts.indexOf('examples')
-    const componentName = parts[examplesIdx - 1]
+    const componentName = parts.includes('providers') ? parts[parts.indexOf('providers') + 1] : parts[examplesIdx - 1]
     const pathAfterExamples = parts.slice(examplesIdx + 1)
     const exampleKey = pathAfterExamples.join('/').replace(/\.ts$/, '')
     const nestedPath = pathAfterExamples.slice(0, -1).join('-')

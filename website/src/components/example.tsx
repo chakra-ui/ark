@@ -84,6 +84,14 @@ export const frameworkExample = async (
   let resolvedFramework = framework
   let resolvedExtension = extension
 
+  if (content === undefined && framework === 'angular') {
+    return {
+      code: '// Angular example not available for this component yet',
+      extension,
+      framework,
+    }
+  }
+
   if (content === undefined && framework !== 'react') {
     resolvedFramework = 'react'
     resolvedExtension = getFrameworkExtension(resolvedFramework)

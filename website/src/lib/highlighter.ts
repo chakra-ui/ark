@@ -15,7 +15,7 @@ export async function getHighlighter(): Promise<Highlighter> {
   return cachePromise('highlighter', () =>
     createHighlighter({
       themes: ['github-dark-default'],
-      langs: ['tsx', 'vue', 'bash', 'javascript', 'typescript', 'json', 'svelte'],
+      langs: ['tsx', 'vue', 'bash', 'javascript', 'typescript', 'json', 'svelte', 'angular-html'],
     }),
   )
 }

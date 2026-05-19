@@ -1,14 +1,14 @@
 # Ark UI MCP Server
 
 An MCP server providing AI assistants with access to Ark UI components, examples, and styling guides across React, Vue,
-Svelte, and Solid.js frameworks.
+Svelte, Solid.js, and Angular frameworks.
 
 ## Features
 
 - **Component Discovery**: List all available components for any framework
 - **Example Retrieval**: Get complete, runnable code examples
 - **Styling Guides**: Access CSS variables and data attributes for customization
-- **Multi-Framework**: Support for React, Vue, Svelte, and Solid.js
+- **Multi-Framework**: Support for React, Vue, Svelte, Solid.js, and Angular
 
 ## Available Tools
 

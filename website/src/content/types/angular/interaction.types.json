@@ -1,0 +1,18 @@
+{
+  "Provider": {
+    "props": {
+      "modality": {
+        "type": "Signal<'pointer' | 'keyboard' | null>",
+        "isRequired": false,
+        "description": "Tracks the most recent pointer or keyboard interaction modality.",
+        "kind": "input"
+      },
+      "isFocusVisible": {
+        "type": "Signal<boolean>",
+        "isRequired": false,
+        "description": "Returns true when keyboard modality should show focus-visible styles.",
+        "kind": "input"
+      }
+    }
+  }
+}

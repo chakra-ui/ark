@@ -4,6 +4,33 @@ title: Presence
 description: Helps control the rendering and unmounting of your content based on a given state.
 ---
 
+## Usage
+
+In Angular, import the standalone component from `@ark-ui/angular/presence` and pass the content through an
+`ng-template`.
+
+```ts
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
+import { ArkPresenceComponent } from '@ark-ui/angular/presence'
+
+@Component({
+  selector: 'app-presence',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ArkPresenceComponent],
+  template: `
+    <button type="button" (click)="present.set(!present())">Toggle</button>
+
+    <ark-presence [present]="present()">
+      <ng-template>Content</ng-template>
+    </ark-presence>
+  `,
+})
+export class AppPresence {
+  readonly present = signal(false)
+}
+```
+
 ## Examples
 
 By default the child component starts out as hidden and remains hidden after the `present` state is toggled off. This is
