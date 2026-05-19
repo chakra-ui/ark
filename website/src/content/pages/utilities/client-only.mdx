@@ -9,6 +9,29 @@ description: Render content only on the client side.
 The `ClientOnly` component renders its children only on the client side. This is useful for components that need to
 access the DOM or browser APIs that are not available on the server side.
 
+## Usage
+
+In Angular, import the standalone component from `@ark-ui/angular/client-only` and wrap content that should only render
+in the browser.
+
+```ts
+import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ArkClientOnlyComponent } from '@ark-ui/angular/client-only'
+
+@Component({
+  selector: 'app-client-only',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ArkClientOnlyComponent],
+  template: `
+    <ark-client-only>
+      <div>This content is only rendered on the client side.</div>
+    </ark-client-only>
+  `,
+})
+export class AppClientOnly {}
+```
+
 ## Examples
 
 ### Basic

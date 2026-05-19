@@ -9,6 +9,29 @@ description: Trigger file downloads programmatically.
 The `DownloadTrigger` component provides a convenient way to programmatically trigger file downloads in web
 applications. It handles the complexities of downloading files, whether they are URLs, Blobs, or other data types.
 
+## Usage
+
+In Angular, import the standalone directive from `@ark-ui/angular/download-trigger` and apply it to the element that
+starts the download.
+
+```ts
+import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ArkDownloadTriggerDirective } from '@ark-ui/angular/download-trigger'
+
+@Component({
+  selector: 'app-download-trigger',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ArkDownloadTriggerDirective],
+  template: `
+    <button arkDownloadTrigger [data]="content" fileName="hello.txt" mimeType="text/plain">Download txt</button>
+  `,
+})
+export class AppDownloadTrigger {
+  readonly content = 'Hello, World!'
+}
+```
+
 ## Examples
 
 ### Basic

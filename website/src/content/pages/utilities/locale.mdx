@@ -13,11 +13,41 @@ The `LocaleProvider` component sets the locale for your app, formatting dates, n
 
 <ExampleCode id="setup" component="locale" />
 
+In Angular, register `provideArkLocale` in your application config or component providers.
+
+```ts
+import { ApplicationConfig } from '@angular/core'
+import { provideArkLocale } from '@ark-ui/angular/providers/locale'
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideArkLocale({ locale: 'ar-AE' })],
+}
+```
+
 ## Usage
 
 To access the current locale and direction settings, use the `useLocaleContext` hook.
 
 <ExampleCode id="usage" component="locale" />
+
+In Angular, inject the current locale context with `injectArkLocale`.
+
+```ts
+import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { injectArkLocale } from '@ark-ui/angular/providers/locale'
+
+@Component({
+  selector: 'app-locale-status',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
+    <p>{{ locale.locale }} / {{ locale.dir }}</p>
+  `,
+})
+export class AppLocaleStatus {
+  readonly locale = injectArkLocale()
+}
+```
 
 ## API Reference
 

@@ -11,6 +11,28 @@ description: Used to emphasize specific words or phrases within a larger body of
 The Highlight component takes a `text` prop containing the full text and a `query` prop specifying the text to
 highlight. It then renders the text with highlighted portions wrapped in `<mark>` tags.
 
+In Angular, import `ArkHighlightComponent` from `@ark-ui/angular/highlight`.
+
+```ts
+import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ArkHighlightComponent } from '@ark-ui/angular/highlight'
+
+@Component({
+  selector: 'app-highlight',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ArkHighlightComponent],
+  template: `
+    <ark-highlight
+      query="component"
+      text="Ark UI is a headless component library for building accessible web applications."
+      markClass="highlight-mark"
+    />
+  `,
+})
+export class AppHighlight {}
+```
+
 <Example id="basic" />
 
 ### Dynamic Query
@@ -52,7 +74,7 @@ match the query exactly.
 ## Customization
 
 The Highlight component wraps matched text in `<mark>` tags. Pass a `className` (or `class` in Solid/Svelte/Vue) to
-style the highlighted portions.
+style the highlighted portions. In Angular, use the `markClass` input.
 
 ```tsx
 <Highlight

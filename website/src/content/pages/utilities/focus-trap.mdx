@@ -11,6 +11,34 @@ Focus trapping is essential for modal interfaces and other interactive elements 
 The `FocusTrap` component helps maintain accessibility by ensuring keyboard focus remains within a designated container
 until explicitly released.
 
+## Usage
+
+In Angular, import the standalone directive from `@ark-ui/angular/focus-trap` and bind it to the active state of the
+trap.
+
+```ts
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
+import { ArkFocusTrapDirective } from '@ark-ui/angular/focus-trap'
+
+@Component({
+  selector: 'app-focus-trap',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ArkFocusTrapDirective],
+  template: `
+    <button type="button" (click)="trapped.set(true)">Start Trap</button>
+
+    <div [arkFocusTrap]="trapped()">
+      <input type="text" placeholder="input" />
+      <button type="button" (click)="trapped.set(false)">End Trap</button>
+    </div>
+  `,
+})
+export class AppFocusTrap {
+  readonly trapped = signal(false)
+}
+```
+
 ## Examples
 
 <Example id="basic" />

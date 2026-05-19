@@ -16,6 +16,12 @@ description: Animate between two visual states with smooth transitions.
 </Swap.Root>
 ```
 
+For Angular, import the standalone root and indicator components from `@ark-ui/angular/swap`.
+
+```ts
+import { ArkSwapIndicatorComponent, ArkSwapRootComponent } from '@ark-ui/angular/swap'
+```
+
 ## Examples
 
 ### Fade
@@ -144,6 +150,15 @@ indicators aren't visible.
   <Swap.Indicator type="on">...</Swap.Indicator>
   <Swap.Indicator type="off">...</Swap.Indicator>
 </Swap.Root>
+```
+
+Angular uses elements and property bindings for the same API:
+
+```html
+<ark-swap [swap]="swapped()" lazyMount unmountOnExit>
+  <ark-swap-indicator type="on">...</ark-swap-indicator>
+  <ark-swap-indicator type="off">...</ark-swap-indicator>
+</ark-swap>
 ```
 
 ## API Reference
