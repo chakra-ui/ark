@@ -3,6 +3,7 @@ import { moduleMetadata } from '@storybook/angular'
 import { SelectAsyncExample } from './examples/async'
 import { SelectBasicExample } from './examples/basic'
 import { SelectControlledExample } from './examples/controlled'
+import { SelectDynamicItemsExample } from './examples/dynamic-items'
 import { SelectFormLibraryExample } from './examples/form-library'
 import { SelectFullyControlledExample } from './examples/fully-controlled'
 import { SelectGroupingExample } from './examples/grouping'
@@ -95,4 +96,9 @@ export const SelectOnHighlight: StoryObj = {
 export const Async: StoryObj = {
   decorators: [moduleMetadata({ imports: [SelectAsyncExample] })],
   render: () => ({ template: '<select-async-example />' }),
+}
+
+export const DynamicItems: StoryObj = {
+  decorators: [moduleMetadata({ imports: [SelectDynamicItemsExample] })],
+  render: () => ({ template: '<select-dynamic-items-example />' }),
 }
