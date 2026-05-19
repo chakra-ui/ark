@@ -35,5 +35,5 @@
 - [x] Diff hygiene: `git diff --check -- docs/audit/steps.md packages/angular/src/steps` produced no warnings.
 
 ## Commit
-- Hash: (recorded below after commit)
+- Hash: `52b7aeda7`
 - Message: `fix(angular): align steps with react parity`
