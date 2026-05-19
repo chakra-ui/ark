@@ -1,0 +1,15 @@
+export type {
+  Api as MarqueeApi,
+  ContentProps as MarqueeContentMachineProps,
+  DimensionSnapshot as MarqueeDimensionSnapshot,
+  EdgeProps as MarqueeEdgeMachineProps,
+  ElementIds as MarqueeElementIds,
+  IntlTranslations as MarqueeIntlTranslations,
+  Machine as MarqueeMachine,
+  Orientation as MarqueeOrientation,
+  PauseStatusDetails as MarqueePauseStatusDetails,
+  Props as MarqueeMachineProps,
+  Service as MarqueeService,
+  Side as MarqueeSide,
+  UserDefinedContext as MarqueeUserDefinedContext,
+} from '@zag-js/marquee'
