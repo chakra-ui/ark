@@ -7,7 +7,6 @@ import { ClipboardCopyStatusExample } from './examples/copy-status'
 import { ClipboardRootProviderExample } from './examples/root-provider'
 import { ClipboardTimeoutExample } from './examples/timeout'
 import { ClipboardValueTextExample } from './examples/value-text'
-import { ClipboardWithTriggerExample } from './examples/with-trigger'
 
 const meta: Meta = {
   title: 'Components / Clipboard',
@@ -18,11 +17,6 @@ export default meta
 export const Basic: StoryObj = {
   decorators: [moduleMetadata({ imports: [ClipboardBasicExample] })],
   render: () => ({ template: '<clipboard-basic-example />' }),
-}
-
-export const WithTrigger: StoryObj = {
-  decorators: [moduleMetadata({ imports: [ClipboardWithTriggerExample] })],
-  render: () => ({ template: '<clipboard-with-trigger-example />' }),
 }
 
 export const Context: StoryObj = {

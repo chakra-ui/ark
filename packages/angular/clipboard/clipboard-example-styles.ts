@@ -102,8 +102,7 @@ export const clipboardExampleStyles = `
     cursor: not-allowed;
   }
 
-  [arkClipboardIndicator],
-  [arkClipboardValueText] {
+  [arkClipboardIndicator] {
     display: inline-flex;
     align-items: center;
     justify-content: center;

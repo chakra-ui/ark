@@ -40,7 +40,6 @@ import { ClipboardCopyStatusExample } from './examples/copy-status'
 import { ClipboardRootProviderExample } from './examples/root-provider'
 import { ClipboardTimeoutExample } from './examples/timeout'
 import { ClipboardValueTextExample } from './examples/value-text'
-import { ClipboardWithTriggerExample } from './examples/with-trigger'
 
 type ClipboardPublicTypeSmoke = [
   ClipboardApi,
@@ -284,19 +283,6 @@ describe('@ark-ui/angular/clipboard', () => {
     expect(fixture.debugElement.query(By.directive(ArkClipboardLabel))).toBeTruthy()
     expect(fixture.debugElement.query(By.directive(ArkClipboardControl))).toBeTruthy()
     expect(fixture.debugElement.query(By.directive(ArkClipboardInput))).toBeTruthy()
-    expect(fixture.debugElement.query(By.directive(ArkClipboardTrigger))).toBeTruthy()
-    expect(fixture.debugElement.query(By.directive(ArkClipboardIndicator))).toBeTruthy()
-
-    fixture.destroy()
-  })
-
-  it('ClipboardWithTriggerExample renders trigger and indicator under root', () => {
-    installClipboardMock()
-    TestBed.configureTestingModule({ imports: [ClipboardWithTriggerExample] })
-    const fixture = TestBed.createComponent(ClipboardWithTriggerExample)
-    fixture.detectChanges()
-
-    expect(fixture.debugElement.query(By.directive(ArkClipboardRoot))).toBeTruthy()
     expect(fixture.debugElement.query(By.directive(ArkClipboardTrigger))).toBeTruthy()
     expect(fixture.debugElement.query(By.directive(ArkClipboardIndicator))).toBeTruthy()
 
