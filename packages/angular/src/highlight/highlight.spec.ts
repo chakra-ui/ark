@@ -1,52 +1,53 @@
-import { Component, computed, signal } from '@angular/core'
+import { Component, signal } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { highlightWord } from './highlight'
+import { HighlightBasicExample } from './examples/basic'
+import { HighlightDynamicQueryExample } from './examples/dynamic-query'
+import { HighlightExactMatchExample } from './examples/exact-match'
+import { HighlightIgnoreCaseExample } from './examples/ignore-case'
+import { HighlightMatchAllExample } from './examples/match-all'
+import { HighlightMultipleExample } from './examples/multiple'
+import { HighlightRepeatingTextExample } from './examples/repeating-text'
+import { ArkHighlightComponent, highlightWord } from './highlight'
 
 @Component({
   standalone: true,
+  imports: [ArkHighlightComponent],
   template: `
     <p>
-      @for (chunk of chunks(); track $index) {
-        @if (chunk.match) {
-          <mark [textContent]="chunk.text"></mark>
-        } @else {
-          <span [textContent]="chunk.text"></span>
-        }
-      }
+      <ark-highlight [query]="query()" [text]="text" markClass="highlighted" />
     </p>
   `,
 })
 class DynamicQueryHostComponent {
   readonly query = signal('component')
-  readonly chunks = computed(() =>
-    highlightWord({
-      query: this.query(),
-      text: 'Each component is accessible. Each primitive is composable.',
-    }),
-  )
+  readonly text = 'Each component is accessible. Each primitive is composable.'
 }
 
 @Component({
   standalone: true,
+  imports: [ArkHighlightComponent],
   template: `
     <p>
-      @for (chunk of chunks; track $index) {
-        @if (chunk.match) {
-          <mark [textContent]="chunk.text"></mark>
-        } @else {
-          <span [textContent]="chunk.text"></span>
-        }
-      }
+      <ark-highlight
+        query="@ark-ui.com"
+        text="Contact us at support@ark-ui.com or sales@ark-ui.com for assistance."
+        matchAll
+      />
     </p>
   `,
 })
-class RepeatingTextHostComponent {
-  readonly chunks = highlightWord({
-    query: '@ark-ui.com',
-    text: 'Contact us at support@ark-ui.com or sales@ark-ui.com for assistance.',
-    matchAll: true,
-  })
+class RepeatingTextHostComponent {}
+
+@Component({
+  standalone: true,
+  imports: [ArkHighlightComponent],
+  template: `
+    <ark-highlight query="value" [text]="text()" />
+  `,
+})
+class InvalidTextHostComponent {
+  readonly text = signal<unknown>(42)
 }
 
 describe('highlightWord', () => {
@@ -177,6 +178,7 @@ describe('highlightWord', () => {
     fixture.detectChanges()
 
     expect(markTexts(fixture.nativeElement)).toEqual(['component'])
+    expect(fixture.nativeElement.querySelector('mark')?.className).toContain('highlighted')
     expect(fixture.nativeElement.textContent.trim()).toBe('Each component is accessible. Each primitive is composable.')
 
     fixture.componentInstance.query.set('primitive')
@@ -201,9 +203,37 @@ describe('highlightWord', () => {
     fixture.destroy()
   })
 
+  it('throws when the component text input is not a string', () => {
+    TestBed.configureTestingModule({ imports: [InvalidTextHostComponent] })
+
+    expect(() => {
+      const fixture = TestBed.createComponent(InvalidTextHostComponent)
+      fixture.detectChanges()
+    }).toThrow('[ark-ui/highlight] text must be a string')
+  })
+
   it('returns a single non-match chunk when there is no match', () => {
     const chunks = highlightWord({ text: 'Hello', query: 'World' })
     expect(chunks).toEqual([{ text: 'Hello', match: false }])
+  })
+
+  it.each([
+    ['Basic', HighlightBasicExample],
+    ['DynamicQuery', HighlightDynamicQueryExample],
+    ['ExactMatch', HighlightExactMatchExample],
+    ['IgnoreCase', HighlightIgnoreCaseExample],
+    ['MatchAll', HighlightMatchAllExample],
+    ['Multiple', HighlightMultipleExample],
+    ['RepeatingText', HighlightRepeatingTextExample],
+  ])('%s example mounts and renders highlighted text', (_name, example) => {
+    TestBed.configureTestingModule({ imports: [example] })
+    const fixture = TestBed.createComponent(example)
+    fixture.detectChanges()
+
+    expect(fixture.nativeElement.querySelector('mark')).not.toBeNull()
+    expect(fixture.nativeElement.textContent.trim().length).toBeGreaterThan(0)
+
+    fixture.destroy()
   })
 })
 

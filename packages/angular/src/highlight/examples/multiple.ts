@@ -1,25 +1,21 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { highlightWord } from '../public-api'
+import { ArkHighlightComponent } from '../public-api'
+import { highlightExampleStyles } from '../highlight-example-styles'
 
 @Component({
   selector: 'highlight-multiple-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ArkHighlightComponent],
   template: `
-    <p>
-      @for (chunk of chunks; track $index) {
-        @if (chunk.match) {
-          <mark [textContent]="chunk.text"></mark>
-        } @else {
-          <span [textContent]="chunk.text"></span>
-        }
-      }
+    <p class="Text">
+      <ark-highlight
+        [query]="['React', 'Vue']"
+        text="Ark UI provides React, Solid, Vue, and Svelte components that are accessible and customizable."
+        markClass="Mark"
+      />
     </p>
   `,
+  styles: [highlightExampleStyles],
 })
-export class HighlightMultipleExample {
-  readonly chunks = highlightWord({
-    query: ['React', 'Vue'],
-    text: 'Ark UI provides React, Solid, Vue, and Svelte components that are accessible and customizable.',
-  })
-}
+export class HighlightMultipleExample {}
