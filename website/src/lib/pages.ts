@@ -1,6 +1,7 @@
 import 'server-only'
 
 import { type Pages, pages } from '.velite'
+import { frameworks } from './frameworks'
 import { getSidebarGroupsWithPages } from './sidebar'
 
 const orderedPages = getSidebarGroupsWithPages().flatMap((group) => group.items)
@@ -36,7 +37,5 @@ export function getPageNavigation(slug: string[]): { prev?: NavItem; next?: NavI
 }
 
 export function getAllPageSlugs(): Array<{ slug: string[]; framework: string }> {
-  return ['react', 'solid', 'vue'].flatMap((framework) =>
-    orderedPages.map((page) => ({ framework, slug: page.slug.split('/') })),
-  )
+  return frameworks.flatMap((framework) => orderedPages.map((page) => ({ framework, slug: page.slug.split('/') })))
 }

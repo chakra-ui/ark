@@ -12,6 +12,12 @@ const getProgressVariant = (component: string) => {
 
 const getAngularExamplePath = (component: string) => {
   const packageBasePath = getPackageBasePath('angular')
+  if (['environment', 'interaction', 'locale'].includes(component)) {
+    const provider = join(packageBasePath, 'src', 'providers', component, 'examples')
+    if (existsSync(provider)) {
+      return { dir: provider, displayPath: `packages/angular/src/providers/${component}/examples` }
+    }
+  }
   const topLevel = join(packageBasePath, component, 'examples')
   // Prefer the established root-level Angular layout when both layouts exist during migrations.
   if (existsSync(topLevel)) {
@@ -46,7 +52,7 @@ export const getExamplePath = (component: string) => {
 
   return Match.value(component).pipe(
     Match.when(
-      () => ['environment', 'locale'].includes(component),
+      () => ['environment', 'interaction', 'locale'].includes(component),
       () => `providers/${component}/examples`,
     ),
     Match.orElse(() => `components/${component}/examples`),

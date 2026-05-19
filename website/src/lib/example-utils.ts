@@ -85,6 +85,20 @@ export const getAllComponents = async (framework: string): Promise<string[]> => 
     } catch {
       // No nested src directory
     }
+    try {
+      const providerDirs = await readdir(join(basePath, 'src', 'providers'), { withFileTypes: true })
+      for (const dir of providerDirs) {
+        if (!dir.isDirectory()) continue
+        try {
+          await readdir(join(basePath, 'src', 'providers', dir.name, 'examples'))
+          components.add(dir.name)
+        } catch {
+          // No examples directory, skip
+        }
+      }
+    } catch {
+      // No Angular providers directory
+    }
     return Array.from(components).sort()
   }
 

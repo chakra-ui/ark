@@ -5,7 +5,16 @@ import type { HighlighterCore } from 'shiki/core'
 
 let highlighterPromise: Promise<HighlighterCore> | null = null
 
-export type SupportedLang = 'tsx' | 'vue' | 'svelte' | 'typescript' | 'javascript' | 'bash' | 'json' | 'css'
+export type SupportedLang =
+  | 'tsx'
+  | 'vue'
+  | 'svelte'
+  | 'typescript'
+  | 'javascript'
+  | 'bash'
+  | 'json'
+  | 'css'
+  | 'angular-html'
 
 async function createHighlighter(): Promise<HighlighterCore> {
   const [
@@ -19,6 +28,7 @@ async function createHighlighter(): Promise<HighlighterCore> {
     langJson,
     langBash,
     langCss,
+    langAngularHtml,
   ] = await Promise.all([
     import('shiki/core'),
     import('shiki/engine/javascript'),
@@ -30,6 +40,7 @@ async function createHighlighter(): Promise<HighlighterCore> {
     import('@shikijs/langs/json'),
     import('@shikijs/langs/bash'),
     import('@shikijs/langs/css'),
+    import('@shikijs/langs/angular-html'),
   ])
 
   return createHighlighterCore({
@@ -42,6 +53,7 @@ async function createHighlighter(): Promise<HighlighterCore> {
       langJson.default,
       langBash.default,
       langCss.default,
+      langAngularHtml.default,
     ],
     engine: createJavaScriptRegexEngine(),
   })

@@ -4,9 +4,11 @@
 
 import * as Accordion_Basic from '../../../packages/angular/src/accordion/examples/basic'
 import * as Accordion_Collapsible from '../../../packages/angular/src/accordion/examples/collapsible'
+import * as Accordion_Context from '../../../packages/angular/src/accordion/examples/context'
 import * as Accordion_Controlled from '../../../packages/angular/src/accordion/examples/controlled'
 import * as Accordion_Disabled from '../../../packages/angular/src/accordion/examples/disabled'
 import * as Accordion_Horizontal from '../../../packages/angular/src/accordion/examples/horizontal'
+import * as Accordion_Icons from '../../../packages/angular/src/accordion/examples/icons'
 import * as Accordion_ItemContext from '../../../packages/angular/src/accordion/examples/item-context'
 import * as Accordion_Multiple from '../../../packages/angular/src/accordion/examples/multiple'
 import * as Accordion_RootProvider from '../../../packages/angular/src/accordion/examples/root-provider'
@@ -14,27 +16,56 @@ import * as Carousel_Autoplay from '../../../packages/angular/src/carousel/examp
 import * as Carousel_Basic from '../../../packages/angular/src/carousel/examples/basic'
 import * as Carousel_Controlled from '../../../packages/angular/src/carousel/examples/controlled'
 import * as Carousel_DynamicSlides from '../../../packages/angular/src/carousel/examples/dynamic-slides'
+import * as Carousel_PauseOnHover from '../../../packages/angular/src/carousel/examples/pause-on-hover'
 import * as Carousel_RootProvider from '../../../packages/angular/src/carousel/examples/root-provider'
+import * as Carousel_ScrollTo from '../../../packages/angular/src/carousel/examples/scroll-to'
+import * as Carousel_SlidesPerPage from '../../../packages/angular/src/carousel/examples/slides-per-page'
+import * as Carousel_Spacing from '../../../packages/angular/src/carousel/examples/spacing'
+import * as Carousel_ThumbnailIndicator from '../../../packages/angular/src/carousel/examples/thumbnail-indicator'
+import * as Carousel_VariableSize from '../../../packages/angular/src/carousel/examples/variable-size'
 import * as Carousel_Vertical from '../../../packages/angular/src/carousel/examples/vertical'
 import * as ClientOnly_Basic from '../../../packages/angular/src/client-only/examples/basic'
 import * as ClientOnly_WithFallback from '../../../packages/angular/src/client-only/examples/with-fallback'
 import * as Collapsible_Basic from '../../../packages/angular/src/collapsible/examples/basic'
 import * as Collapsible_Disabled from '../../../packages/angular/src/collapsible/examples/disabled'
 import * as Collapsible_Icons from '../../../packages/angular/src/collapsible/examples/icons'
+import * as Collapsible_InitialOpen from '../../../packages/angular/src/collapsible/examples/initial-open'
 import * as Collapsible_LazyMount from '../../../packages/angular/src/collapsible/examples/lazy-mount'
 import * as Collapsible_Nested from '../../../packages/angular/src/collapsible/examples/nested'
 import * as Collapsible_PartialCollapse from '../../../packages/angular/src/collapsible/examples/partial-collapse'
 import * as Collapsible_RootProvider from '../../../packages/angular/src/collapsible/examples/root-provider'
 import * as DateInput_Basic from '../../../packages/angular/src/date-input/examples/basic'
 import * as DateInput_Controlled from '../../../packages/angular/src/date-input/examples/controlled'
+import * as DateInput_DefaultValue from '../../../packages/angular/src/date-input/examples/default-value'
+import * as DateInput_Disabled from '../../../packages/angular/src/date-input/examples/disabled'
+import * as DateInput_Granularity from '../../../packages/angular/src/date-input/examples/granularity'
+import * as DateInput_Icons from '../../../packages/angular/src/date-input/examples/icons'
+import * as DateInput_Invalid from '../../../packages/angular/src/date-input/examples/invalid'
+import * as DateInput_LeadingZeros from '../../../packages/angular/src/date-input/examples/leading-zeros'
+import * as DateInput_Localized from '../../../packages/angular/src/date-input/examples/localized'
+import * as DateInput_MinMax from '../../../packages/angular/src/date-input/examples/min-max'
 import * as DateInput_Range from '../../../packages/angular/src/date-input/examples/range'
+import * as DateInput_ReadOnly from '../../../packages/angular/src/date-input/examples/read-only'
 import * as DateInput_RootProvider from '../../../packages/angular/src/date-input/examples/root-provider'
+import * as DateInput_Rtl from '../../../packages/angular/src/date-input/examples/rtl'
+import * as DateInput_WithClearButton from '../../../packages/angular/src/date-input/examples/with-clear-button'
 import * as Dialog_AlertDialog from '../../../packages/angular/src/dialog/examples/alert-dialog'
 import * as Dialog_Basic from '../../../packages/angular/src/dialog/examples/basic'
+import * as Dialog_Confirmation from '../../../packages/angular/src/dialog/examples/confirmation'
+import * as Dialog_Context from '../../../packages/angular/src/dialog/examples/context'
 import * as Dialog_Controlled from '../../../packages/angular/src/dialog/examples/controlled'
 import * as Dialog_DefaultOpen from '../../../packages/angular/src/dialog/examples/default-open'
+import * as Dialog_FinalFocus from '../../../packages/angular/src/dialog/examples/final-focus'
 import * as Dialog_Icons from '../../../packages/angular/src/dialog/examples/icons'
+import * as Dialog_InitialFocus from '../../../packages/angular/src/dialog/examples/initial-focus'
+import * as Dialog_InsideScroll from '../../../packages/angular/src/dialog/examples/inside-scroll'
+import * as Dialog_LazyMount from '../../../packages/angular/src/dialog/examples/lazy-mount'
+import * as Dialog_MultipleTriggers from '../../../packages/angular/src/dialog/examples/multiple-triggers'
+import * as Dialog_Nested from '../../../packages/angular/src/dialog/examples/nested'
 import * as Dialog_NonModal from '../../../packages/angular/src/dialog/examples/non-modal'
+import * as Dialog_OpenFromMenu from '../../../packages/angular/src/dialog/examples/open-from-menu'
+import * as Dialog_OutsideScroll from '../../../packages/angular/src/dialog/examples/outside-scroll'
+import * as Dialog_RapidStateChange from '../../../packages/angular/src/dialog/examples/rapid-state-change'
 import * as Dialog_RootProvider from '../../../packages/angular/src/dialog/examples/root-provider'
 import * as DownloadTrigger_Basic from '../../../packages/angular/src/download-trigger/examples/basic'
 import * as DownloadTrigger_Svg from '../../../packages/angular/src/download-trigger/examples/svg'
@@ -43,7 +74,14 @@ import * as Drawer_Basic from '../../../packages/angular/src/drawer/examples/bas
 import * as Drawer_Controlled from '../../../packages/angular/src/drawer/examples/controlled'
 import * as Drawer_DefaultOpen from '../../../packages/angular/src/drawer/examples/default-open'
 import * as Drawer_Icons from '../../../packages/angular/src/drawer/examples/icons'
+import * as Drawer_IndentBackground from '../../../packages/angular/src/drawer/examples/indent-background'
+import * as Drawer_Modal from '../../../packages/angular/src/drawer/examples/modal'
+import * as Drawer_MultipleTriggers from '../../../packages/angular/src/drawer/examples/multiple-triggers'
+import * as Drawer_NoDragArea from '../../../packages/angular/src/drawer/examples/no-drag-area'
+import * as Drawer_NonDraggable from '../../../packages/angular/src/drawer/examples/non-draggable'
 import * as Drawer_RootProvider from '../../../packages/angular/src/drawer/examples/root-provider'
+import * as Drawer_Scrollable from '../../../packages/angular/src/drawer/examples/scrollable'
+import * as Drawer_SnapPoints from '../../../packages/angular/src/drawer/examples/snap-points'
 import * as Drawer_SwipeDirection from '../../../packages/angular/src/drawer/examples/swipe-direction'
 import * as Drawer_WithTitleDescription from '../../../packages/angular/src/drawer/examples/with-title-description'
 import * as FloatingPanel_AnchorPosition from '../../../packages/angular/src/floating-panel/examples/anchor-position'
@@ -52,6 +90,8 @@ import * as FloatingPanel_Context from '../../../packages/angular/src/floating-p
 import * as FloatingPanel_ControlledOpen from '../../../packages/angular/src/floating-panel/examples/controlled-open'
 import * as FloatingPanel_ControlledPosition from '../../../packages/angular/src/floating-panel/examples/controlled-position'
 import * as FloatingPanel_ControlledSize from '../../../packages/angular/src/floating-panel/examples/controlled-size'
+import * as FloatingPanel_LazyMount from '../../../packages/angular/src/floating-panel/examples/lazy-mount'
+import * as FloatingPanel_Panel from '../../../packages/angular/src/floating-panel/examples/panel'
 import * as FloatingPanel_RootProvider from '../../../packages/angular/src/floating-panel/examples/root-provider'
 import * as FocusTrap_Autofocus from '../../../packages/angular/src/focus-trap/examples/autofocus'
 import * as FocusTrap_Basic from '../../../packages/angular/src/focus-trap/examples/basic'
@@ -87,16 +127,36 @@ import * as Highlight_MatchAll from '../../../packages/angular/src/highlight/exa
 import * as Highlight_Multiple from '../../../packages/angular/src/highlight/examples/multiple'
 import * as Highlight_RepeatingText from '../../../packages/angular/src/highlight/examples/repeating-text'
 import * as HoverCard_Basic from '../../../packages/angular/src/hover-card/examples/basic'
+import * as HoverCard_Context from '../../../packages/angular/src/hover-card/examples/context'
 import * as HoverCard_Controlled from '../../../packages/angular/src/hover-card/examples/controlled'
 import * as HoverCard_Delay from '../../../packages/angular/src/hover-card/examples/delay'
 import * as HoverCard_MultipleTriggers from '../../../packages/angular/src/hover-card/examples/multiple-triggers'
 import * as HoverCard_Positioning from '../../../packages/angular/src/hover-card/examples/positioning'
 import * as HoverCard_RootProvider from '../../../packages/angular/src/hover-card/examples/root-provider'
+import * as ImageCropper_AspectRatio from '../../../packages/angular/src/image-cropper/examples/aspect-ratio'
 import * as ImageCropper_Basic from '../../../packages/angular/src/image-cropper/examples/basic'
+import * as ImageCropper_Circle from '../../../packages/angular/src/image-cropper/examples/circle'
+import * as ImageCropper_Context from '../../../packages/angular/src/image-cropper/examples/context'
+import * as ImageCropper_ControlledZoom from '../../../packages/angular/src/image-cropper/examples/controlled-zoom'
 import * as ImageCropper_Controlled from '../../../packages/angular/src/image-cropper/examples/controlled'
+import * as ImageCropper_CropPreview from '../../../packages/angular/src/image-cropper/examples/crop-preview'
+import * as ImageCropper_Events from '../../../packages/angular/src/image-cropper/examples/events'
+import * as ImageCropper_Fixed from '../../../packages/angular/src/image-cropper/examples/fixed'
+import * as ImageCropper_Flip from '../../../packages/angular/src/image-cropper/examples/flip'
+import * as ImageCropper_InitialCrop from '../../../packages/angular/src/image-cropper/examples/initial-crop'
+import * as ImageCropper_MinMaxSize from '../../../packages/angular/src/image-cropper/examples/min-max-size'
+import * as ImageCropper_Reset from '../../../packages/angular/src/image-cropper/examples/reset'
 import * as ImageCropper_RootProvider from '../../../packages/angular/src/image-cropper/examples/root-provider'
+import * as ImageCropper_Rotation from '../../../packages/angular/src/image-cropper/examples/rotation'
+import * as ImageCropper_ZoomLimits from '../../../packages/angular/src/image-cropper/examples/zoom-limits'
+import * as JsonTreeView_ArrayData from '../../../packages/angular/src/json-tree-view/examples/array-data'
 import * as JsonTreeView_Basic from '../../../packages/angular/src/json-tree-view/examples/basic'
 import * as JsonTreeView_DataTypes from '../../../packages/angular/src/json-tree-view/examples/data-types'
+import * as JsonTreeView_Errors from '../../../packages/angular/src/json-tree-view/examples/errors'
+import * as JsonTreeView_ExpandLevel from '../../../packages/angular/src/json-tree-view/examples/expand-level'
+import * as JsonTreeView_Functions from '../../../packages/angular/src/json-tree-view/examples/functions'
+import * as JsonTreeView_MapAndSet from '../../../packages/angular/src/json-tree-view/examples/map-and-set'
+import * as JsonTreeView_Regex from '../../../packages/angular/src/json-tree-view/examples/regex'
 import * as JsonTreeView_RenderValue from '../../../packages/angular/src/json-tree-view/examples/render-value'
 import * as JsonTreeView_RootProvider from '../../../packages/angular/src/json-tree-view/examples/root-provider'
 import * as Marquee_AutoFill from '../../../packages/angular/src/marquee/examples/auto-fill'
@@ -111,41 +171,75 @@ import * as Marquee_Vertical from '../../../packages/angular/src/marquee/example
 import * as Marquee_WithEdges from '../../../packages/angular/src/marquee/examples/with-edges'
 import * as Menu_Basic from '../../../packages/angular/src/menu/examples/basic'
 import * as Menu_CheckboxItems from '../../../packages/angular/src/menu/examples/checkbox-items'
+import * as Menu_ContextLazyMount from '../../../packages/angular/src/menu/examples/context-lazy-mount'
+import * as Menu_Context from '../../../packages/angular/src/menu/examples/context'
 import * as Menu_ControlledHighlight from '../../../packages/angular/src/menu/examples/controlled-highlight'
 import * as Menu_Controlled from '../../../packages/angular/src/menu/examples/controlled'
+import * as Menu_Group from '../../../packages/angular/src/menu/examples/group'
 import * as Menu_Icons from '../../../packages/angular/src/menu/examples/icons'
+import * as Menu_ItemContext from '../../../packages/angular/src/menu/examples/item-context'
 import * as Menu_ItemGroup from '../../../packages/angular/src/menu/examples/item-group'
+import * as Menu_Links from '../../../packages/angular/src/menu/examples/links'
+import * as Menu_MenuInDialog from '../../../packages/angular/src/menu/examples/menu-in-dialog'
+import * as Menu_MenuItemDialog from '../../../packages/angular/src/menu/examples/menu-item-dialog'
+import * as Menu_MultipleMenu from '../../../packages/angular/src/menu/examples/multiple-menu'
+import * as Menu_MultipleTriggers from '../../../packages/angular/src/menu/examples/multiple-triggers'
 import * as Menu_NestedSubmenu from '../../../packages/angular/src/menu/examples/nested-submenu'
+import * as Menu_Nested from '../../../packages/angular/src/menu/examples/nested'
 import * as Menu_RadioItems from '../../../packages/angular/src/menu/examples/radio-items'
 import * as Menu_RootProvider from '../../../packages/angular/src/menu/examples/root-provider'
+import * as Menu_SelectEvent from '../../../packages/angular/src/menu/examples/select-event'
 import * as Menu_WithSeparator from '../../../packages/angular/src/menu/examples/with-separator'
 import * as NavigationMenu_Basic from '../../../packages/angular/src/navigation-menu/examples/basic'
+import * as NavigationMenu_Context from '../../../packages/angular/src/navigation-menu/examples/context'
 import * as NavigationMenu_Controlled from '../../../packages/angular/src/navigation-menu/examples/controlled'
 import * as NavigationMenu_Icons from '../../../packages/angular/src/navigation-menu/examples/icons'
 import * as NavigationMenu_RootProvider from '../../../packages/angular/src/navigation-menu/examples/root-provider'
 import * as NavigationMenu_Viewport from '../../../packages/angular/src/navigation-menu/examples/viewport'
 import * as NavigationMenu_WithIndicator from '../../../packages/angular/src/navigation-menu/examples/with-indicator'
 import * as Pagination_Basic from '../../../packages/angular/src/pagination/examples/basic'
+import * as Pagination_Context from '../../../packages/angular/src/pagination/examples/context'
 import * as Pagination_Controlled from '../../../packages/angular/src/pagination/examples/controlled'
+import * as Pagination_Customized from '../../../packages/angular/src/pagination/examples/customized'
+import * as Pagination_DataSlicing from '../../../packages/angular/src/pagination/examples/data-slicing'
+import * as Pagination_Link from '../../../packages/angular/src/pagination/examples/link'
+import * as Pagination_PageRange from '../../../packages/angular/src/pagination/examples/page-range'
 import * as Pagination_PageSizeControl from '../../../packages/angular/src/pagination/examples/page-size-control'
 import * as Pagination_RootProvider from '../../../packages/angular/src/pagination/examples/root-provider'
 import * as Pagination_WithEdges from '../../../packages/angular/src/pagination/examples/with-edges'
 import * as Popover_Anchor from '../../../packages/angular/src/popover/examples/anchor'
 import * as Popover_Arrow from '../../../packages/angular/src/popover/examples/arrow'
 import * as Popover_Basic from '../../../packages/angular/src/popover/examples/basic'
+import * as Popover_CloseBehavior from '../../../packages/angular/src/popover/examples/close-behavior'
+import * as Popover_Context from '../../../packages/angular/src/popover/examples/context'
 import * as Popover_Controlled from '../../../packages/angular/src/popover/examples/controlled'
 import * as Popover_DefaultOpen from '../../../packages/angular/src/popover/examples/default-open'
+import * as Popover_DisableOutsideClick from '../../../packages/angular/src/popover/examples/disable-outside-click'
 import * as Popover_Icons from '../../../packages/angular/src/popover/examples/icons'
+import * as Popover_InitialFocus from '../../../packages/angular/src/popover/examples/initial-focus'
+import * as Popover_LazyMount from '../../../packages/angular/src/popover/examples/lazy-mount'
 import * as Popover_Modal from '../../../packages/angular/src/popover/examples/modal'
+import * as Popover_MultipleTriggers from '../../../packages/angular/src/popover/examples/multiple-triggers'
+import * as Popover_Nested from '../../../packages/angular/src/popover/examples/nested'
+import * as Popover_Positioning from '../../../packages/angular/src/popover/examples/positioning'
 import * as Popover_RootProvider from '../../../packages/angular/src/popover/examples/root-provider'
+import * as Popover_SameWidth from '../../../packages/angular/src/popover/examples/same-width'
+import * as Portal_Basic from '../../../packages/angular/src/portal/examples/basic'
 import * as Presence_Basic from '../../../packages/angular/src/presence/examples/basic'
 import * as Presence_LazyMountAndUnmountOnExit from '../../../packages/angular/src/presence/examples/lazy-mount-and-unmount-on-exit'
 import * as Presence_LazyMount from '../../../packages/angular/src/presence/examples/lazy-mount'
 import * as Presence_SkipAnimationOnMount from '../../../packages/angular/src/presence/examples/skip-animation-on-mount'
 import * as Presence_UnmountOnExit from '../../../packages/angular/src/presence/examples/unmount-on-exit'
+import * as Environment_Setup from '../../../packages/angular/src/providers/environment/examples/setup'
+import * as Environment_Usage from '../../../packages/angular/src/providers/environment/examples/usage'
+import * as Interaction_Interaction from '../../../packages/angular/src/providers/interaction/examples/interaction'
+import * as Locale_Setup from '../../../packages/angular/src/providers/locale/examples/setup'
+import * as Locale_Usage from '../../../packages/angular/src/providers/locale/examples/usage'
 import * as QrCode_Basic from '../../../packages/angular/src/qr-code/examples/basic'
 import * as QrCode_Controlled from '../../../packages/angular/src/qr-code/examples/controlled'
 import * as QrCode_Download from '../../../packages/angular/src/qr-code/examples/download'
+import * as QrCode_ErrorCorrection from '../../../packages/angular/src/qr-code/examples/error-correction'
+import * as QrCode_Fill from '../../../packages/angular/src/qr-code/examples/fill'
 import * as QrCode_Overlay from '../../../packages/angular/src/qr-code/examples/overlay'
 import * as QrCode_RootProvider from '../../../packages/angular/src/qr-code/examples/root-provider'
 import * as ScrollArea_Basic from '../../../packages/angular/src/scroll-area/examples/basic'
@@ -156,9 +250,11 @@ import * as ScrollArea_RootProvider from '../../../packages/angular/src/scroll-a
 import * as SignaturePad_Basic from '../../../packages/angular/src/signature-pad/examples/basic'
 import * as SignaturePad_ImagePreview from '../../../packages/angular/src/signature-pad/examples/image-preview'
 import * as SignaturePad_RootProvider from '../../../packages/angular/src/signature-pad/examples/root-provider'
+import * as SignaturePad_WithField from '../../../packages/angular/src/signature-pad/examples/with-field'
 import * as Splitter_Basic from '../../../packages/angular/src/splitter/examples/basic'
 import * as Splitter_Collapsible from '../../../packages/angular/src/splitter/examples/collapsible'
 import * as Splitter_Context from '../../../packages/angular/src/splitter/examples/context'
+import * as Splitter_DynamicCollapsible from '../../../packages/angular/src/splitter/examples/dynamic-collapsible'
 import * as Splitter_MultiplePanels from '../../../packages/angular/src/splitter/examples/multiple-panels'
 import * as Splitter_Nested from '../../../packages/angular/src/splitter/examples/nested'
 import * as Splitter_ResizeIndicator from '../../../packages/angular/src/splitter/examples/resize-indicator'
@@ -170,12 +266,15 @@ import * as Steps_RootProvider from '../../../packages/angular/src/steps/example
 import * as Steps_Vertical from '../../../packages/angular/src/steps/examples/vertical'
 import * as Swap_Fade from '../../../packages/angular/src/swap/examples/fade'
 import * as Swap_Flip from '../../../packages/angular/src/swap/examples/flip'
+import * as Swap_Icons from '../../../packages/angular/src/swap/examples/icons'
 import * as Swap_Rotate from '../../../packages/angular/src/swap/examples/rotate'
 import * as Swap_Scale from '../../../packages/angular/src/swap/examples/scale'
 import * as Tabs_Basic from '../../../packages/angular/src/tabs/examples/basic'
 import * as Tabs_Controlled from '../../../packages/angular/src/tabs/examples/controlled'
 import * as Tabs_DisabledTab from '../../../packages/angular/src/tabs/examples/disabled-tab'
 import * as Tabs_Indicator from '../../../packages/angular/src/tabs/examples/indicator'
+import * as Tabs_LazyMount from '../../../packages/angular/src/tabs/examples/lazy-mount'
+import * as Tabs_Links from '../../../packages/angular/src/tabs/examples/links'
 import * as Tabs_ManualActivation from '../../../packages/angular/src/tabs/examples/manual-activation'
 import * as Tabs_RootProvider from '../../../packages/angular/src/tabs/examples/root-provider'
 import * as Tabs_Vertical from '../../../packages/angular/src/tabs/examples/vertical'
@@ -188,25 +287,44 @@ import * as Timer_RootProvider from '../../../packages/angular/src/timer/example
 import * as Toast_Action from '../../../packages/angular/src/toast/examples/action'
 import * as Toast_Basic from '../../../packages/angular/src/toast/examples/basic'
 import * as Toast_Duration from '../../../packages/angular/src/toast/examples/duration'
+import * as Toast_Icons from '../../../packages/angular/src/toast/examples/icons'
 import * as Toast_MaxToasts from '../../../packages/angular/src/toast/examples/max-toasts'
 import * as Toast_Placement from '../../../packages/angular/src/toast/examples/placement'
+import * as Toast_PromiseToast from '../../../packages/angular/src/toast/examples/promise-toast'
+import * as Toast_Types from '../../../packages/angular/src/toast/examples/types'
 import * as Toast_Update from '../../../packages/angular/src/toast/examples/update'
+import * as Toast_VaryingHeight from '../../../packages/angular/src/toast/examples/varying-height'
 import * as Tooltip_Arrow from '../../../packages/angular/src/tooltip/examples/arrow'
 import * as Tooltip_Basic from '../../../packages/angular/src/tooltip/examples/basic'
+import * as Tooltip_Context from '../../../packages/angular/src/tooltip/examples/context'
 import * as Tooltip_Controlled from '../../../packages/angular/src/tooltip/examples/controlled'
 import * as Tooltip_Delay from '../../../packages/angular/src/tooltip/examples/delay'
 import * as Tooltip_Interactive from '../../../packages/angular/src/tooltip/examples/interactive'
+import * as Tooltip_MultipleTriggers from '../../../packages/angular/src/tooltip/examples/multiple-triggers'
 import * as Tooltip_Positioning from '../../../packages/angular/src/tooltip/examples/positioning'
 import * as Tooltip_RootProvider from '../../../packages/angular/src/tooltip/examples/root-provider'
+import * as Tooltip_WithinFixed from '../../../packages/angular/src/tooltip/examples/within-fixed'
+import * as Tour_AsyncStep from '../../../packages/angular/src/tour/examples/async-step'
 import * as Tour_Basic from '../../../packages/angular/src/tour/examples/basic'
 import * as Tour_Controlled from '../../../packages/angular/src/tour/examples/controlled'
+import * as Tour_Events from '../../../packages/angular/src/tour/examples/events'
+import * as Tour_KeyboardNavigation from '../../../packages/angular/src/tour/examples/keyboard-navigation'
+import * as Tour_MixedTypes from '../../../packages/angular/src/tour/examples/mixed-types'
+import * as Tour_ProgressBar from '../../../packages/angular/src/tour/examples/progress-bar'
+import * as Tour_SkipTour from '../../../packages/angular/src/tour/examples/skip-tour'
 import * as Tour_WaitForClick from '../../../packages/angular/src/tour/examples/wait-for-click'
+import * as Tour_WaitForElement from '../../../packages/angular/src/tour/examples/wait-for-element'
+import * as Tour_WaitForInput from '../../../packages/angular/src/tour/examples/wait-for-input'
 import * as TreeView_AsyncLoading from '../../../packages/angular/src/tree-view/examples/async-loading'
 import * as TreeView_Basic from '../../../packages/angular/src/tree-view/examples/basic'
 import * as TreeView_CheckboxTree from '../../../packages/angular/src/tree-view/examples/checkbox-tree'
 import * as TreeView_ControlledExpanded from '../../../packages/angular/src/tree-view/examples/controlled-expanded'
 import * as TreeView_ControlledSelected from '../../../packages/angular/src/tree-view/examples/controlled-selected'
+import * as TreeView_DisabledNode from '../../../packages/angular/src/tree-view/examples/disabled-node'
 import * as TreeView_ExpandCollapseAll from '../../../packages/angular/src/tree-view/examples/expand-collapse-all'
+import * as TreeView_Filtering from '../../../packages/angular/src/tree-view/examples/filtering'
+import * as TreeView_Links from '../../../packages/angular/src/tree-view/examples/links'
+import * as TreeView_Mutation from '../../../packages/angular/src/tree-view/examples/mutation'
 import * as TreeView_RenameNode from '../../../packages/angular/src/tree-view/examples/rename-node'
 import * as TreeView_RootProvider from '../../../packages/angular/src/tree-view/examples/root-provider'
 
@@ -220,9 +338,11 @@ type AngularExampleEntry = {
 const angularExampleModules: Record<string, AngularExampleEntry> = {
   'accordion/basic': { module: Accordion_Basic, exportName: 'AccordionBasicExample' },
   'accordion/collapsible': { module: Accordion_Collapsible, exportName: 'AccordionCollapsibleExample' },
+  'accordion/context': { module: Accordion_Context, exportName: 'AccordionContextExample' },
   'accordion/controlled': { module: Accordion_Controlled, exportName: 'AccordionControlledExample' },
   'accordion/disabled': { module: Accordion_Disabled, exportName: 'AccordionDisabledExample' },
   'accordion/horizontal': { module: Accordion_Horizontal, exportName: 'AccordionHorizontalExample' },
+  'accordion/icons': { module: Accordion_Icons, exportName: 'AccordionIconsExample' },
   'accordion/item-context': { module: Accordion_ItemContext, exportName: 'AccordionItemContextExample' },
   'accordion/multiple': { module: Accordion_Multiple, exportName: 'AccordionMultipleExample' },
   'accordion/root-provider': { module: Accordion_RootProvider, exportName: 'AccordionRootProviderExample' },
@@ -230,13 +350,23 @@ const angularExampleModules: Record<string, AngularExampleEntry> = {
   'carousel/basic': { module: Carousel_Basic, exportName: 'CarouselBasicExample' },
   'carousel/controlled': { module: Carousel_Controlled, exportName: 'CarouselControlledExample' },
   'carousel/dynamic-slides': { module: Carousel_DynamicSlides, exportName: 'CarouselDynamicSlidesExample' },
+  'carousel/pause-on-hover': { module: Carousel_PauseOnHover, exportName: 'CarouselPauseOnHoverExample' },
   'carousel/root-provider': { module: Carousel_RootProvider, exportName: 'CarouselRootProviderExample' },
+  'carousel/scroll-to': { module: Carousel_ScrollTo, exportName: 'CarouselScrollToExample' },
+  'carousel/slides-per-page': { module: Carousel_SlidesPerPage, exportName: 'CarouselSlidesPerPageExample' },
+  'carousel/spacing': { module: Carousel_Spacing, exportName: 'CarouselSpacingExample' },
+  'carousel/thumbnail-indicator': {
+    module: Carousel_ThumbnailIndicator,
+    exportName: 'CarouselThumbnailIndicatorExample',
+  },
+  'carousel/variable-size': { module: Carousel_VariableSize, exportName: 'CarouselVariableSizeExample' },
   'carousel/vertical': { module: Carousel_Vertical, exportName: 'CarouselVerticalExample' },
   'client-only/basic': { module: ClientOnly_Basic, exportName: 'ClientOnlyBasicExample' },
   'client-only/with-fallback': { module: ClientOnly_WithFallback, exportName: 'ClientOnlyWithFallbackExample' },
   'collapsible/basic': { module: Collapsible_Basic, exportName: 'CollapsibleBasicExample' },
   'collapsible/disabled': { module: Collapsible_Disabled, exportName: 'CollapsibleDisabledExample' },
   'collapsible/icons': { module: Collapsible_Icons, exportName: 'CollapsibleIconsExample' },
+  'collapsible/initial-open': { module: Collapsible_InitialOpen, exportName: 'CollapsibleInitialOpenExample' },
   'collapsible/lazy-mount': { module: Collapsible_LazyMount, exportName: 'CollapsibleLazyMountExample' },
   'collapsible/nested': { module: Collapsible_Nested, exportName: 'CollapsibleNestedExample' },
   'collapsible/partial-collapse': {
@@ -246,14 +376,36 @@ const angularExampleModules: Record<string, AngularExampleEntry> = {
   'collapsible/root-provider': { module: Collapsible_RootProvider, exportName: 'CollapsibleRootProviderExample' },
   'date-input/basic': { module: DateInput_Basic, exportName: 'DateInputBasicExample' },
   'date-input/controlled': { module: DateInput_Controlled, exportName: 'DateInputControlledExample' },
+  'date-input/default-value': { module: DateInput_DefaultValue, exportName: 'DateInputDefaultValueExample' },
+  'date-input/disabled': { module: DateInput_Disabled, exportName: 'DateInputDisabledExample' },
+  'date-input/granularity': { module: DateInput_Granularity, exportName: 'DateInputGranularityExample' },
+  'date-input/icons': { module: DateInput_Icons, exportName: 'DateInputIconsExample' },
+  'date-input/invalid': { module: DateInput_Invalid, exportName: 'DateInputInvalidExample' },
+  'date-input/leading-zeros': { module: DateInput_LeadingZeros, exportName: 'DateInputLeadingZerosExample' },
+  'date-input/localized': { module: DateInput_Localized, exportName: 'DateInputLocalizedExample' },
+  'date-input/min-max': { module: DateInput_MinMax, exportName: 'DateInputMinMaxExample' },
   'date-input/range': { module: DateInput_Range, exportName: 'DateInputRangeExample' },
+  'date-input/read-only': { module: DateInput_ReadOnly, exportName: 'DateInputReadOnlyExample' },
   'date-input/root-provider': { module: DateInput_RootProvider, exportName: 'DateInputRootProviderExample' },
+  'date-input/rtl': { module: DateInput_Rtl, exportName: 'DateInputRtlExample' },
+  'date-input/with-clear-button': { module: DateInput_WithClearButton, exportName: 'DateInputWithClearButtonExample' },
   'dialog/alert-dialog': { module: Dialog_AlertDialog, exportName: 'DialogAlertDialogExample' },
   'dialog/basic': { module: Dialog_Basic, exportName: 'DialogBasicExample' },
+  'dialog/confirmation': { module: Dialog_Confirmation, exportName: 'DialogConfirmationExample' },
+  'dialog/context': { module: Dialog_Context, exportName: 'DialogContextExample' },
   'dialog/controlled': { module: Dialog_Controlled, exportName: 'DialogControlledExample' },
   'dialog/default-open': { module: Dialog_DefaultOpen, exportName: 'DialogDefaultOpenExample' },
+  'dialog/final-focus': { module: Dialog_FinalFocus, exportName: 'DialogFinalFocusExample' },
   'dialog/icons': { module: Dialog_Icons, exportName: 'DialogIconsExample' },
+  'dialog/initial-focus': { module: Dialog_InitialFocus, exportName: 'DialogInitialFocusExample' },
+  'dialog/inside-scroll': { module: Dialog_InsideScroll, exportName: 'DialogInsideScrollExample' },
+  'dialog/lazy-mount': { module: Dialog_LazyMount, exportName: 'DialogLazyMountExample' },
+  'dialog/multiple-triggers': { module: Dialog_MultipleTriggers, exportName: 'DialogMultipleTriggersExample' },
+  'dialog/nested': { module: Dialog_Nested, exportName: 'DialogNestedExample' },
   'dialog/non-modal': { module: Dialog_NonModal, exportName: 'DialogNonModalExample' },
+  'dialog/open-from-menu': { module: Dialog_OpenFromMenu, exportName: 'DialogOpenFromMenuExample' },
+  'dialog/outside-scroll': { module: Dialog_OutsideScroll, exportName: 'DialogOutsideScrollExample' },
+  'dialog/rapid-state-change': { module: Dialog_RapidStateChange, exportName: 'DialogRapidStateChangeExample' },
   'dialog/root-provider': { module: Dialog_RootProvider, exportName: 'DialogRootProviderExample' },
   'download-trigger/basic': { module: DownloadTrigger_Basic, exportName: 'DownloadTriggerBasicExample' },
   'download-trigger/svg': { module: DownloadTrigger_Svg, exportName: 'DownloadTriggerSvgExample' },
@@ -265,7 +417,14 @@ const angularExampleModules: Record<string, AngularExampleEntry> = {
   'drawer/controlled': { module: Drawer_Controlled, exportName: 'DrawerControlledExample' },
   'drawer/default-open': { module: Drawer_DefaultOpen, exportName: 'DrawerDefaultOpenExample' },
   'drawer/icons': { module: Drawer_Icons, exportName: 'DrawerIconsExample' },
+  'drawer/indent-background': { module: Drawer_IndentBackground, exportName: 'DrawerIndentBackgroundExample' },
+  'drawer/modal': { module: Drawer_Modal, exportName: 'DrawerModalExample' },
+  'drawer/multiple-triggers': { module: Drawer_MultipleTriggers, exportName: 'DrawerMultipleTriggersExample' },
+  'drawer/no-drag-area': { module: Drawer_NoDragArea, exportName: 'DrawerNoDragAreaExample' },
+  'drawer/non-draggable': { module: Drawer_NonDraggable, exportName: 'DrawerNonDraggableExample' },
   'drawer/root-provider': { module: Drawer_RootProvider, exportName: 'DrawerRootProviderExample' },
+  'drawer/scrollable': { module: Drawer_Scrollable, exportName: 'DrawerScrollableExample' },
+  'drawer/snap-points': { module: Drawer_SnapPoints, exportName: 'DrawerSnapPointsExample' },
   'drawer/swipe-direction': { module: Drawer_SwipeDirection, exportName: 'DrawerSwipeDirectionExample' },
   'drawer/with-title-description': {
     module: Drawer_WithTitleDescription,
@@ -289,6 +448,8 @@ const angularExampleModules: Record<string, AngularExampleEntry> = {
     module: FloatingPanel_ControlledSize,
     exportName: 'FloatingPanelControlledSizeExample',
   },
+  'floating-panel/lazy-mount': { module: FloatingPanel_LazyMount, exportName: 'FloatingPanelLazyMountExample' },
+  'floating-panel/panel': { module: FloatingPanel_Panel, exportName: 'FloatingPanelPanelExample' },
   'floating-panel/root-provider': {
     module: FloatingPanel_RootProvider,
     exportName: 'FloatingPanelRootProviderExample',
@@ -333,6 +494,7 @@ const angularExampleModules: Record<string, AngularExampleEntry> = {
   'highlight/multiple': { module: Highlight_Multiple, exportName: 'HighlightMultipleExample' },
   'highlight/repeating-text': { module: Highlight_RepeatingText, exportName: 'HighlightRepeatingTextExample' },
   'hover-card/basic': { module: HoverCard_Basic, exportName: 'HoverCardBasicExample' },
+  'hover-card/context': { module: HoverCard_Context, exportName: 'HoverCardContextExample' },
   'hover-card/controlled': { module: HoverCard_Controlled, exportName: 'HoverCardControlledExample' },
   'hover-card/delay': { module: HoverCard_Delay, exportName: 'HoverCardDelayExample' },
   'hover-card/multiple-triggers': {
@@ -341,11 +503,33 @@ const angularExampleModules: Record<string, AngularExampleEntry> = {
   },
   'hover-card/positioning': { module: HoverCard_Positioning, exportName: 'HoverCardPositioningExample' },
   'hover-card/root-provider': { module: HoverCard_RootProvider, exportName: 'HoverCardRootProviderExample' },
+  'image-cropper/aspect-ratio': { module: ImageCropper_AspectRatio, exportName: 'ImageCropperAspectRatioExample' },
   'image-cropper/basic': { module: ImageCropper_Basic, exportName: 'ImageCropperBasicExample' },
+  'image-cropper/circle': { module: ImageCropper_Circle, exportName: 'ImageCropperCircleExample' },
+  'image-cropper/context': { module: ImageCropper_Context, exportName: 'ImageCropperContextExample' },
+  'image-cropper/controlled-zoom': {
+    module: ImageCropper_ControlledZoom,
+    exportName: 'ImageCropperControlledZoomExample',
+  },
   'image-cropper/controlled': { module: ImageCropper_Controlled, exportName: 'ImageCropperControlledExample' },
+  'image-cropper/crop-preview': { module: ImageCropper_CropPreview, exportName: 'ImageCropperCropPreviewExample' },
+  'image-cropper/events': { module: ImageCropper_Events, exportName: 'ImageCropperEventsExample' },
+  'image-cropper/fixed': { module: ImageCropper_Fixed, exportName: 'ImageCropperFixedExample' },
+  'image-cropper/flip': { module: ImageCropper_Flip, exportName: 'ImageCropperFlipExample' },
+  'image-cropper/initial-crop': { module: ImageCropper_InitialCrop, exportName: 'ImageCropperInitialCropExample' },
+  'image-cropper/min-max-size': { module: ImageCropper_MinMaxSize, exportName: 'ImageCropperMinMaxSizeExample' },
+  'image-cropper/reset': { module: ImageCropper_Reset, exportName: 'ImageCropperResetExample' },
   'image-cropper/root-provider': { module: ImageCropper_RootProvider, exportName: 'ImageCropperRootProviderExample' },
+  'image-cropper/rotation': { module: ImageCropper_Rotation, exportName: 'ImageCropperRotationExample' },
+  'image-cropper/zoom-limits': { module: ImageCropper_ZoomLimits, exportName: 'ImageCropperZoomLimitsExample' },
+  'json-tree-view/array-data': { module: JsonTreeView_ArrayData, exportName: 'JsonTreeViewArrayDataExample' },
   'json-tree-view/basic': { module: JsonTreeView_Basic, exportName: 'JsonTreeViewBasicExample' },
   'json-tree-view/data-types': { module: JsonTreeView_DataTypes, exportName: 'JsonTreeViewDataTypesExample' },
+  'json-tree-view/errors': { module: JsonTreeView_Errors, exportName: 'JsonTreeViewErrorsExample' },
+  'json-tree-view/expand-level': { module: JsonTreeView_ExpandLevel, exportName: 'JsonTreeViewExpandLevelExample' },
+  'json-tree-view/functions': { module: JsonTreeView_Functions, exportName: 'JsonTreeViewFunctionsExample' },
+  'json-tree-view/map-and-set': { module: JsonTreeView_MapAndSet, exportName: 'JsonTreeViewMapAndSetExample' },
+  'json-tree-view/regex': { module: JsonTreeView_Regex, exportName: 'JsonTreeViewRegexExample' },
   'json-tree-view/render-value': { module: JsonTreeView_RenderValue, exportName: 'JsonTreeViewRenderValueExample' },
   'json-tree-view/root-provider': { module: JsonTreeView_RootProvider, exportName: 'JsonTreeViewRootProviderExample' },
   'marquee/auto-fill': { module: Marquee_AutoFill, exportName: 'MarqueeAutoFillExample' },
@@ -366,15 +550,27 @@ const angularExampleModules: Record<string, AngularExampleEntry> = {
   'marquee/with-edges': { module: Marquee_WithEdges, exportName: 'MarqueeWithEdgesExample' },
   'menu/basic': { module: Menu_Basic, exportName: 'MenuBasicExample' },
   'menu/checkbox-items': { module: Menu_CheckboxItems, exportName: 'MenuCheckboxItemsExample' },
+  'menu/context-lazy-mount': { module: Menu_ContextLazyMount, exportName: 'MenuContextLazyMountExample' },
+  'menu/context': { module: Menu_Context, exportName: 'MenuContextExample' },
   'menu/controlled-highlight': { module: Menu_ControlledHighlight, exportName: 'MenuControlledHighlightExample' },
   'menu/controlled': { module: Menu_Controlled, exportName: 'MenuControlledExample' },
+  'menu/group': { module: Menu_Group, exportName: 'MenuGroupExample' },
   'menu/icons': { module: Menu_Icons, exportName: 'MenuIconsExample' },
+  'menu/item-context': { module: Menu_ItemContext, exportName: 'MenuItemContextExample' },
   'menu/item-group': { module: Menu_ItemGroup, exportName: 'MenuItemGroupExample' },
+  'menu/links': { module: Menu_Links, exportName: 'MenuLinksExample' },
+  'menu/menu-in-dialog': { module: Menu_MenuInDialog, exportName: 'MenuMenuInDialogExample' },
+  'menu/menu-item-dialog': { module: Menu_MenuItemDialog, exportName: 'MenuMenuItemDialogExample' },
+  'menu/multiple-menu': { module: Menu_MultipleMenu, exportName: 'MenuMultipleMenuExample' },
+  'menu/multiple-triggers': { module: Menu_MultipleTriggers, exportName: 'MenuMultipleTriggersExample' },
   'menu/nested-submenu': { module: Menu_NestedSubmenu, exportName: 'MenuNestedSubmenuExample' },
+  'menu/nested': { module: Menu_Nested, exportName: 'MenuNestedExample' },
   'menu/radio-items': { module: Menu_RadioItems, exportName: 'MenuRadioItemsExample' },
   'menu/root-provider': { module: Menu_RootProvider, exportName: 'MenuRootProviderExample' },
+  'menu/select-event': { module: Menu_SelectEvent, exportName: 'MenuSelectEventExample' },
   'menu/with-separator': { module: Menu_WithSeparator, exportName: 'MenuWithSeparatorExample' },
   'navigation-menu/basic': { module: NavigationMenu_Basic, exportName: 'NavigationMenuBasicExample' },
+  'navigation-menu/context': { module: NavigationMenu_Context, exportName: 'NavigationMenuContextExample' },
   'navigation-menu/controlled': { module: NavigationMenu_Controlled, exportName: 'NavigationMenuControlledExample' },
   'navigation-menu/icons': { module: NavigationMenu_Icons, exportName: 'NavigationMenuIconsExample' },
   'navigation-menu/root-provider': {
@@ -387,7 +583,12 @@ const angularExampleModules: Record<string, AngularExampleEntry> = {
     exportName: 'NavigationMenuWithIndicatorExample',
   },
   'pagination/basic': { module: Pagination_Basic, exportName: 'PaginationBasicExample' },
+  'pagination/context': { module: Pagination_Context, exportName: 'PaginationContextExample' },
   'pagination/controlled': { module: Pagination_Controlled, exportName: 'PaginationControlledExample' },
+  'pagination/customized': { module: Pagination_Customized, exportName: 'PaginationCustomizedExample' },
+  'pagination/data-slicing': { module: Pagination_DataSlicing, exportName: 'PaginationDataSlicingExample' },
+  'pagination/link': { module: Pagination_Link, exportName: 'PaginationLinkExample' },
+  'pagination/page-range': { module: Pagination_PageRange, exportName: 'PaginationPageRangeExample' },
   'pagination/page-size-control': {
     module: Pagination_PageSizeControl,
     exportName: 'PaginationPageSizeControlExample',
@@ -397,11 +598,24 @@ const angularExampleModules: Record<string, AngularExampleEntry> = {
   'popover/anchor': { module: Popover_Anchor, exportName: 'PopoverAnchorExample' },
   'popover/arrow': { module: Popover_Arrow, exportName: 'PopoverArrowExample' },
   'popover/basic': { module: Popover_Basic, exportName: 'PopoverBasicExample' },
+  'popover/close-behavior': { module: Popover_CloseBehavior, exportName: 'PopoverCloseBehaviorExample' },
+  'popover/context': { module: Popover_Context, exportName: 'PopoverContextExample' },
   'popover/controlled': { module: Popover_Controlled, exportName: 'PopoverControlledExample' },
   'popover/default-open': { module: Popover_DefaultOpen, exportName: 'PopoverDefaultOpenExample' },
+  'popover/disable-outside-click': {
+    module: Popover_DisableOutsideClick,
+    exportName: 'PopoverDisableOutsideClickExample',
+  },
   'popover/icons': { module: Popover_Icons, exportName: 'PopoverIconsExample' },
+  'popover/initial-focus': { module: Popover_InitialFocus, exportName: 'PopoverInitialFocusExample' },
+  'popover/lazy-mount': { module: Popover_LazyMount, exportName: 'PopoverLazyMountExample' },
   'popover/modal': { module: Popover_Modal, exportName: 'PopoverModalExample' },
+  'popover/multiple-triggers': { module: Popover_MultipleTriggers, exportName: 'PopoverMultipleTriggersExample' },
+  'popover/nested': { module: Popover_Nested, exportName: 'PopoverNestedExample' },
+  'popover/positioning': { module: Popover_Positioning, exportName: 'PopoverPositioningExample' },
   'popover/root-provider': { module: Popover_RootProvider, exportName: 'PopoverRootProviderExample' },
+  'popover/same-width': { module: Popover_SameWidth, exportName: 'PopoverSameWidthExample' },
+  'portal/basic': { module: Portal_Basic, exportName: 'PortalBasicExample' },
   'presence/basic': { module: Presence_Basic, exportName: 'PresenceBasicExample' },
   'presence/lazy-mount-and-unmount-on-exit': {
     module: Presence_LazyMountAndUnmountOnExit,
@@ -413,9 +627,16 @@ const angularExampleModules: Record<string, AngularExampleEntry> = {
     exportName: 'PresenceSkipAnimationOnMountExample',
   },
   'presence/unmount-on-exit': { module: Presence_UnmountOnExit, exportName: 'PresenceUnmountOnExitExample' },
+  'environment/setup': { module: Environment_Setup, exportName: 'EnvironmentSetupExample' },
+  'environment/usage': { module: Environment_Usage, exportName: 'EnvironmentUsageExample' },
+  'interaction/interaction': { module: Interaction_Interaction, exportName: 'InteractionInteractionExample' },
+  'locale/setup': { module: Locale_Setup, exportName: 'LocaleSetupExample' },
+  'locale/usage': { module: Locale_Usage, exportName: 'LocaleUsageExample' },
   'qr-code/basic': { module: QrCode_Basic, exportName: 'QrCodeBasicExample' },
   'qr-code/controlled': { module: QrCode_Controlled, exportName: 'QrCodeControlledExample' },
   'qr-code/download': { module: QrCode_Download, exportName: 'QrCodeDownloadExample' },
+  'qr-code/error-correction': { module: QrCode_ErrorCorrection, exportName: 'QrCodeErrorCorrectionExample' },
+  'qr-code/fill': { module: QrCode_Fill, exportName: 'QrCodeFillExample' },
   'qr-code/overlay': { module: QrCode_Overlay, exportName: 'QrCodeOverlayExample' },
   'qr-code/root-provider': { module: QrCode_RootProvider, exportName: 'QrCodeRootProviderExample' },
   'scroll-area/basic': { module: ScrollArea_Basic, exportName: 'ScrollAreaBasicExample' },
@@ -426,9 +647,14 @@ const angularExampleModules: Record<string, AngularExampleEntry> = {
   'signature-pad/basic': { module: SignaturePad_Basic, exportName: 'SignaturePadBasicExample' },
   'signature-pad/image-preview': { module: SignaturePad_ImagePreview, exportName: 'SignaturePadImagePreviewExample' },
   'signature-pad/root-provider': { module: SignaturePad_RootProvider, exportName: 'SignaturePadRootProviderExample' },
+  'signature-pad/with-field': { module: SignaturePad_WithField, exportName: 'SignaturePadWithFieldExample' },
   'splitter/basic': { module: Splitter_Basic, exportName: 'SplitterBasicExample' },
   'splitter/collapsible': { module: Splitter_Collapsible, exportName: 'SplitterCollapsibleExample' },
   'splitter/context': { module: Splitter_Context, exportName: 'SplitterContextExample' },
+  'splitter/dynamic-collapsible': {
+    module: Splitter_DynamicCollapsible,
+    exportName: 'SplitterDynamicCollapsibleExample',
+  },
   'splitter/multiple-panels': { module: Splitter_MultiplePanels, exportName: 'SplitterMultiplePanelsExample' },
   'splitter/nested': { module: Splitter_Nested, exportName: 'SplitterNestedExample' },
   'splitter/resize-indicator': { module: Splitter_ResizeIndicator, exportName: 'SplitterResizeIndicatorExample' },
@@ -440,12 +666,15 @@ const angularExampleModules: Record<string, AngularExampleEntry> = {
   'steps/vertical': { module: Steps_Vertical, exportName: 'StepsVerticalExample' },
   'swap/fade': { module: Swap_Fade, exportName: 'SwapFadeExample' },
   'swap/flip': { module: Swap_Flip, exportName: 'SwapFlipExample' },
+  'swap/icons': { module: Swap_Icons, exportName: 'SwapIconsExample' },
   'swap/rotate': { module: Swap_Rotate, exportName: 'SwapRotateExample' },
   'swap/scale': { module: Swap_Scale, exportName: 'SwapScaleExample' },
   'tabs/basic': { module: Tabs_Basic, exportName: 'TabsBasicExample' },
   'tabs/controlled': { module: Tabs_Controlled, exportName: 'TabsControlledExample' },
   'tabs/disabled-tab': { module: Tabs_DisabledTab, exportName: 'TabsDisabledTabExample' },
   'tabs/indicator': { module: Tabs_Indicator, exportName: 'TabsIndicatorExample' },
+  'tabs/lazy-mount': { module: Tabs_LazyMount, exportName: 'TabsLazyMountExample' },
+  'tabs/links': { module: Tabs_Links, exportName: 'TabsLinksExample' },
   'tabs/manual-activation': { module: Tabs_ManualActivation, exportName: 'TabsManualActivationExample' },
   'tabs/root-provider': { module: Tabs_RootProvider, exportName: 'TabsRootProviderExample' },
   'tabs/vertical': { module: Tabs_Vertical, exportName: 'TabsVerticalExample' },
@@ -458,19 +687,34 @@ const angularExampleModules: Record<string, AngularExampleEntry> = {
   'toast/action': { module: Toast_Action, exportName: 'ToastActionExample' },
   'toast/basic': { module: Toast_Basic, exportName: 'ToastBasicExample' },
   'toast/duration': { module: Toast_Duration, exportName: 'ToastDurationExample' },
+  'toast/icons': { module: Toast_Icons, exportName: 'ToastIconsExample' },
   'toast/max-toasts': { module: Toast_MaxToasts, exportName: 'ToastMaxToastsExample' },
   'toast/placement': { module: Toast_Placement, exportName: 'ToastPlacementExample' },
+  'toast/promise-toast': { module: Toast_PromiseToast, exportName: 'ToastPromiseToastExample' },
+  'toast/types': { module: Toast_Types, exportName: 'ToastTypesExample' },
   'toast/update': { module: Toast_Update, exportName: 'ToastUpdateExample' },
+  'toast/varying-height': { module: Toast_VaryingHeight, exportName: 'ToastVaryingHeightExample' },
   'tooltip/arrow': { module: Tooltip_Arrow, exportName: 'TooltipArrowExample' },
   'tooltip/basic': { module: Tooltip_Basic, exportName: 'TooltipBasicExample' },
+  'tooltip/context': { module: Tooltip_Context, exportName: 'TooltipContextExample' },
   'tooltip/controlled': { module: Tooltip_Controlled, exportName: 'TooltipControlledExample' },
   'tooltip/delay': { module: Tooltip_Delay, exportName: 'TooltipDelayExample' },
   'tooltip/interactive': { module: Tooltip_Interactive, exportName: 'TooltipInteractiveExample' },
+  'tooltip/multiple-triggers': { module: Tooltip_MultipleTriggers, exportName: 'TooltipMultipleTriggersExample' },
   'tooltip/positioning': { module: Tooltip_Positioning, exportName: 'TooltipPositioningExample' },
   'tooltip/root-provider': { module: Tooltip_RootProvider, exportName: 'TooltipRootProviderExample' },
+  'tooltip/within-fixed': { module: Tooltip_WithinFixed, exportName: 'TooltipWithinFixedExample' },
+  'tour/async-step': { module: Tour_AsyncStep, exportName: 'TourAsyncStepExample' },
   'tour/basic': { module: Tour_Basic, exportName: 'TourBasicExample' },
   'tour/controlled': { module: Tour_Controlled, exportName: 'TourControlledExample' },
+  'tour/events': { module: Tour_Events, exportName: 'TourEventsExample' },
+  'tour/keyboard-navigation': { module: Tour_KeyboardNavigation, exportName: 'TourKeyboardNavigationExample' },
+  'tour/mixed-types': { module: Tour_MixedTypes, exportName: 'TourMixedTypesExample' },
+  'tour/progress-bar': { module: Tour_ProgressBar, exportName: 'TourProgressBarExample' },
+  'tour/skip-tour': { module: Tour_SkipTour, exportName: 'TourSkipTourExample' },
   'tour/wait-for-click': { module: Tour_WaitForClick, exportName: 'TourWaitForClickExample' },
+  'tour/wait-for-element': { module: Tour_WaitForElement, exportName: 'TourWaitForElementExample' },
+  'tour/wait-for-input': { module: Tour_WaitForInput, exportName: 'TourWaitForInputExample' },
   'tree-view/async-loading': { module: TreeView_AsyncLoading, exportName: 'TreeViewAsyncLoadingExample' },
   'tree-view/basic': { module: TreeView_Basic, exportName: 'TreeViewBasicExample' },
   'tree-view/checkbox-tree': { module: TreeView_CheckboxTree, exportName: 'TreeViewCheckboxTreeExample' },
@@ -482,10 +726,14 @@ const angularExampleModules: Record<string, AngularExampleEntry> = {
     module: TreeView_ControlledSelected,
     exportName: 'TreeViewControlledSelectedExample',
   },
+  'tree-view/disabled-node': { module: TreeView_DisabledNode, exportName: 'TreeViewDisabledNodeExample' },
   'tree-view/expand-collapse-all': {
     module: TreeView_ExpandCollapseAll,
     exportName: 'TreeViewExpandCollapseAllExample',
   },
+  'tree-view/filtering': { module: TreeView_Filtering, exportName: 'TreeViewFilteringExample' },
+  'tree-view/links': { module: TreeView_Links, exportName: 'TreeViewLinksExample' },
+  'tree-view/mutation': { module: TreeView_Mutation, exportName: 'TreeViewMutationExample' },
   'tree-view/rename-node': { module: TreeView_RenameNode, exportName: 'TreeViewRenameNodeExample' },
   'tree-view/root-provider': { module: TreeView_RootProvider, exportName: 'TreeViewRootProviderExample' },
 }
