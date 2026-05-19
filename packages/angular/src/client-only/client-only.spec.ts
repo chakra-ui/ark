@@ -20,7 +20,20 @@ describe('ArkClientOnlyComponent', () => {
     TestBed.resetTestingModule()
   })
 
-  it('renders client content after browser render (criterion 29)', async () => {
+  it('renders fallback content before the browser render callback runs', () => {
+    TestBed.configureTestingModule({ imports: [HostComponent] })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.detectChanges()
+
+    const fallback = fixture.nativeElement.querySelector('[data-testid="fallback"]')
+    const client = fixture.nativeElement.querySelector('[data-testid="client"]')
+    expect(fallback).not.toBeNull()
+    expect(client).toBeNull()
+
+    fixture.destroy()
+  })
+
+  it('renders client content after browser render', async () => {
     TestBed.configureTestingModule({ imports: [HostComponent] })
     const fixture = TestBed.createComponent(HostComponent)
     fixture.detectChanges()

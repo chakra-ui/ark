@@ -21,7 +21,9 @@ export class ArkClientOnlyComponent {
 
   constructor() {
     afterNextRender(() => {
-      this.isClient.set(true)
+      queueMicrotask(() => {
+        this.isClient.set(true)
+      })
     })
   }
 }
