@@ -1,0 +1,14 @@
+export type {
+  Api as TabsApi,
+  ContentProps as TabsContentProps,
+  ElementIds as TabsElementIds,
+  FocusChangeDetails as TabsFocusChangeDetails,
+  IntlTranslations as TabsIntlTranslations,
+  Machine as TabsMachine,
+  NavigateDetails as TabsNavigateDetails,
+  Props as TabsMachineProps,
+  Service as TabsService,
+  TriggerProps as TabsTriggerProps,
+  TriggerState as TabsTriggerState,
+  ValueChangeDetails as TabsValueChangeDetails,
+} from '@zag-js/tabs'
