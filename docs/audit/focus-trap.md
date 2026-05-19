@@ -6,32 +6,33 @@
 - Storybook/style files: no `.storybook/modules/focus-trap.module.css`; both frameworks use local inline/component styles for the three focus-trap examples.
 
 ## Summary
-- Status: Fixed, with Storybook startup blocked by an unrelated `src/highlight/highlight.ts` type import error.
-- Highest-risk gaps: Angular activated `trapFocus` without an SSR/browser guard, the directive was missing an `exportAs` handle expected for root-like Angular parts, and Angular examples added a `max-width` not present in the React demos.
+- Status: Aligned. Re-audit on 2026-05-19 confirmed all previously closed gaps remain fixed; no new drift detected. Storybook still fails to start because of an unrelated `src/highlight/highlight.ts` type import error.
+- Highest-risk gaps: none open. Historical fixes covered SSR guarding, `exportAs` for template references, and removal of an Angular-only `max-width` override on the demo `.trap` block.
 
 ## Gap Matrix
 | Area | Gap | React reference | Angular location | Fix |
 | --- | --- | --- | --- | --- |
-| Public API parity | Angular exposes a directive-centric API with `[arkFocusTrap]` plus `[arkFocusTrapOptions]` instead of a React component with individual trap props. | `packages/react/src/components/focus-trap/focus-trap.tsx` | `packages/angular/src/focus-trap/focus-trap.ts` | No change. This is the expected Angular shape for a behavior-only primitive: the selector activates the host directive and options remain typed as Zag `TrapFocusOptions`. |
-| Public API parity | Directive lacked an `exportAs` name for template-reference access, unlike the package's root directive convention. | `FocusTrap.displayName = 'FocusTrap'` in `packages/react/src/components/focus-trap/focus-trap.tsx`; Angular technical requirements root directive convention | `packages/angular/src/focus-trap/focus-trap.ts` | Add `exportAs: 'arkFocusTrap'`. |
-| Functionality/SSR | `trapFocus` is DOM-only and could be invoked during server rendering. | React uses `useSafeLayoutEffect`, so activation happens after browser layout effects. | `packages/angular/src/focus-trap/focus-trap.ts` | Guard activation with Angular platform detection. |
+| Public API parity | Angular exposes a directive-centric API with `[arkFocusTrap]` plus `[arkFocusTrapOptions]` instead of a React component with individual trap props. | `packages/react/src/components/focus-trap/focus-trap.tsx` | `packages/angular/src/focus-trap/focus-trap.ts` | No change. Behavior-only primitive must follow the directive convention from `docs/technical-requirements.md`; options keep the Zag `TrapFocusOptions` shape so all React-equivalent options (`onActivate`, `onDeactivate`, `initialFocus`, `fallbackFocus`, `returnFocusOnDeactivate`, `setReturnFocus`) are reachable. |
+| Public API parity | Directive needs an `exportAs` name for template-reference access to match the package's root directive convention. | `FocusTrap.displayName = 'FocusTrap'` in `packages/react/src/components/focus-trap/focus-trap.tsx`; Angular technical requirements root directive convention | `packages/angular/src/focus-trap/focus-trap.ts` | Already applied: `exportAs: 'arkFocusTrap'`. |
+| Public API parity | Active flag declared as `input(false, { transform: booleanAttribute })` to accept HTML attribute coercion. | React `disabled` is plain boolean. | `packages/angular/src/focus-trap/focus-trap.ts` | Already applied; matches Angular boolean-input policy in `docs/technical-requirements.md`. |
+| Functionality/SSR | `trapFocus` is DOM-only and could be invoked during server rendering. | React uses `useSafeLayoutEffect`, so activation happens after browser layout effects. | `packages/angular/src/focus-trap/focus-trap.ts` | Already applied: activation gated by `isPlatformBrowser(inject(PLATFORM_ID))` inside the reactive `effect`. |
+| Functionality parity | Options identity changes must reactivate the trap with new options while the active flag stays true. | React reactivates via `useSafeLayoutEffect` dependency on `trapProps`. | `packages/angular/src/focus-trap/focus-trap.ts` | Already covered: the `effect` reads both `arkFocusTrap()` and `arkFocusTrapOptions()`, tears down, and re-arms when either changes. |
 | Story parity | Story names match: `Basic`, `InitialFocus`, `Autofocus`. | `packages/react/src/components/focus-trap/focus-trap.stories.tsx` | `packages/angular/src/focus-trap/focus-trap.stories.ts` | No change. |
-| Styling parity | Angular demos add `max-width: 320px`, which is not present in the React inline demo styles. | `packages/react/src/components/focus-trap/examples/basic.tsx`, `initial-focus.tsx`, `autofocus.tsx` | `packages/angular/src/focus-trap/examples/basic.ts`, `initial-focus.ts`, `autofocus.ts` | Remove the extra max-width. |
-| Accessibility parity | Focus trap behavior, initial focus, autofocus, return focus, textarea/input/button paths are represented. | React examples under `packages/react/src/components/focus-trap/examples/` | Angular examples under `packages/angular/src/focus-trap/examples/` | No change beyond SSR hardening. |
-| Test parity | Existing Angular tests cover activation, deactivation, destroy cleanup, option forwarding, and option-identity reactivation. Missing coverage for SSR guard and `exportAs`. | React has no component-local test file for focus-trap. | `packages/angular/src/focus-trap/focus-trap.spec.ts` | Add focused tests. |
+| Story parity | Each example mirrors the React flow (toggle start/end button, initial-focus second input, autofocus + setReturnFocus to trigger). | `packages/react/src/components/focus-trap/examples/*.tsx` | `packages/angular/src/focus-trap/examples/*.ts` | No change. |
+| Styling parity | Demo `.trap` block uses `display: flex; flex-direction: column; gap: 1rem; padding-block: 1rem;` to mirror React inline styles. | React inline `style` on `<div>` in each example. | `packages/angular/src/focus-trap/examples/*.ts` | Already aligned (Angular-only `max-width` was previously removed). |
+| Accessibility parity | Focus trap behavior, initial focus, autofocus, return focus, and textarea/input/button paths are represented. | React examples under `packages/react/src/components/focus-trap/examples/` | Angular examples under `packages/angular/src/focus-trap/examples/` | No change beyond SSR hardening. |
+| Test parity | Angular specs cover activation, no-op for falsy values, options forwarding, options-identity reactivation, deactivation toggle, destroy cleanup, `exportAs` template reference, and SSR (`PLATFORM_ID: 'server'`) no-op. | React has no component-local test file for focus-trap. | `packages/angular/src/focus-trap/focus-trap.spec.ts` | No change; coverage exceeds React. |
 
 ## Implementation Plan
-1. Add `exportAs: 'arkFocusTrap'` to the directive metadata.
-2. Guard focus-trap activation so `trapFocus` only runs in browser platform contexts.
-3. Add specs for the template export and SSR no-op behavior.
-4. Remove extra `max-width` styling from the Angular focus-trap examples.
-5. Run focused component tests, Angular typecheck, and `git diff --check`.
+1. Re-audit pass: confirmed no new drift; no Angular code or story changes required.
+2. Refresh the audit file to mark status as Aligned and document the re-audit verification results.
+3. Run focused component tests and Angular typecheck/build to lock in verification.
 
 ## Verification
-- [x] Typecheck/build: `bun run --cwd packages/angular typecheck` passed; this ran `tsc -p tsconfig.json --noEmit`, `tsc -p tsconfig.spec.json --noEmit`, `ng build @ark-ui/angular --configuration=production`, and `scripts/check-forms-isolation.ts`.
-- [x] Component tests: `bun run --cwd packages/angular test:ci src/focus-trap/focus-trap.spec.ts` passed with 10 tests.
-- [ ] Storybook render: `bun run --cwd packages/angular storybook` reached preview compilation but failed on unrelated `src/highlight/highlight.ts:4:24 - error TS2305: Module '"@angular/common"' has no exported member 'NgClassSupportedTypes'.`
-- [x] Manual/visual checks: Compared React and Angular `Basic`, `InitialFocus`, and `Autofocus` example source; removed the Angular-only `.trap` `max-width` so the local demo layout rules match React's display, direction, gap, and padding.
+- [x] Typecheck/build: `bun run --cwd packages/angular typecheck` (re-audit 2026-05-19) ran `tsc -p tsconfig.json --noEmit`, `tsc -p tsconfig.spec.json --noEmit`, `ng build @ark-ui/angular --configuration=production`, and `scripts/check-forms-isolation.ts`; all passed.
+- [x] Component tests: `bun run --cwd packages/angular test:ci src/focus-trap/focus-trap.spec.ts` (re-audit 2026-05-19) passed with 10 tests.
+- [ ] Storybook render: `bun run --cwd packages/angular storybook` still blocked by unrelated `src/highlight/highlight.ts:4:24 - error TS2305: Module '"@angular/common"' has no exported member 'NgClassSupportedTypes'.` Deferred — outside focus-trap scope.
+- [x] Manual/visual checks: Compared React and Angular `Basic`, `InitialFocus`, and `Autofocus` example source; flex/gap/padding-block layout matches React inline styles; no Angular-only overrides remain.
 
 ## Commit
 - Hash: Reported in final response.
