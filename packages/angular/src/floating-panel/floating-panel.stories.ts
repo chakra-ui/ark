@@ -6,6 +6,7 @@ import { FloatingPanelContextExample } from './examples/context'
 import { FloatingPanelControlledOpenExample } from './examples/controlled-open'
 import { FloatingPanelControlledPositionExample } from './examples/controlled-position'
 import { FloatingPanelControlledSizeExample } from './examples/controlled-size'
+import { FloatingPanelLazyMountExample } from './examples/lazy-mount'
 import { FloatingPanelRootProviderExample } from './examples/root-provider'
 
 const meta: Meta = {
@@ -32,6 +33,11 @@ export const ControlledPosition: StoryObj = {
 export const ControlledSize: StoryObj = {
   decorators: [moduleMetadata({ imports: [FloatingPanelControlledSizeExample] })],
   render: () => ({ template: '<floating-panel-controlled-size-example />' }),
+}
+
+export const LazyMount: StoryObj = {
+  decorators: [moduleMetadata({ imports: [FloatingPanelLazyMountExample] })],
+  render: () => ({ template: '<floating-panel-lazy-mount-example />' }),
 }
 
 export const AnchorPosition: StoryObj = {

@@ -57,6 +57,7 @@ import {
 } from '@ark-ui/angular/floating-panel'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { FloatingPanelBasicExample } from './examples/basic'
+import { FloatingPanelLazyMountExample } from './examples/lazy-mount'
 import { FloatingPanelRootProviderExample } from './examples/root-provider'
 
 type FloatingPanelPublicTypeSmoke = [
@@ -553,10 +554,15 @@ describe('@ark-ui/angular/floating-panel', () => {
   })
 
   it('example components instantiate', () => {
-    TestBed.configureTestingModule({ imports: [FloatingPanelBasicExample, FloatingPanelRootProviderExample] })
+    TestBed.configureTestingModule({
+      imports: [FloatingPanelBasicExample, FloatingPanelLazyMountExample, FloatingPanelRootProviderExample],
+    })
     const basic = TestBed.createComponent(FloatingPanelBasicExample)
     basic.detectChanges()
     basic.destroy()
+    const lazyMount = TestBed.createComponent(FloatingPanelLazyMountExample)
+    lazyMount.detectChanges()
+    lazyMount.destroy()
     const rootProvider = TestBed.createComponent(FloatingPanelRootProviderExample)
     rootProvider.detectChanges()
     rootProvider.destroy()
