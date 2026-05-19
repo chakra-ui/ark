@@ -29,6 +29,7 @@ import {
 import { FieldsetBasicExample } from './examples/basic'
 import { FieldsetDisabledExample } from './examples/disabled'
 import { FieldsetInvalidExample } from './examples/invalid'
+import { FieldsetPhoneInputExample } from './examples/phone-input'
 import { FieldsetRootProviderExample } from './examples/root-provider'
 import { FieldsetWithFieldExample } from './examples/with-field'
 
@@ -249,6 +250,24 @@ describe('@ark-ui/angular/fieldset', () => {
     expect(fieldRoots.length).toBe(2)
     const helperEl = fixture.debugElement.query(By.directive(ArkFieldHelperText)).nativeElement as HTMLElement
     expect(helperEl.getAttribute('data-scope')).toBe('field')
+
+    fixture.destroy()
+  })
+
+  it('FieldsetPhoneInputExample renders select and phone input composition', () => {
+    TestBed.configureTestingModule({ imports: [FieldsetPhoneInputExample] })
+    const fixture = TestBed.createComponent(FieldsetPhoneInputExample)
+    fixture.detectChanges()
+
+    const rootEl = fixture.debugElement.query(By.directive(ArkFieldsetRoot)).nativeElement as HTMLFieldSetElement
+    const fieldInputs = fixture.debugElement.queryAll(By.directive(ArkFieldInput))
+    const hiddenSelect = fixture.nativeElement.querySelector(
+      'select[arkSelectHiddenSelect]',
+    ) as HTMLSelectElement | null
+
+    expect(rootEl.getAttribute('aria-labelledby')).toContain('legend')
+    expect(fieldInputs.length).toBe(1)
+    expect(hiddenSelect).not.toBeNull()
 
     fixture.destroy()
   })
