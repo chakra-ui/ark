@@ -37,5 +37,5 @@
 - Angular's `usePinInput` composes a colon-free `safeRootId` to satisfy jsdom selector parsers when ids contain double-colon separators. This is an intentional Angular-side hardening — React's React-DOM environment does not need it. No change.
 
 ## Commit
-- Hash: See commit metadata after commit.
+- Hash: `4591cc52b`
 - Message: `fix(angular): align pin-input with react parity`
