@@ -148,7 +148,6 @@ export function useField(options: UseFieldOptions): UseFieldReturn {
     ...fieldParts.helperText.attrs,
     id: ids().helperText,
     'data-disabled': dataAttr(disabled()),
-    'data-invalid': dataAttr(invalid()),
   })
 
   const getErrorTextProps = (): ArkProps => ({
@@ -156,8 +155,6 @@ export function useField(options: UseFieldOptions): UseFieldReturn {
     id: ids().errorText,
     'aria-live': 'polite',
     hidden: !invalid() || undefined,
-    'data-disabled': dataAttr(disabled()),
-    'data-invalid': dataAttr(invalid()),
   })
 
   const getRequiredIndicatorProps = (): ArkProps => ({

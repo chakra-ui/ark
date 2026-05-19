@@ -192,6 +192,37 @@ describe('@ark-ui/angular/field', () => {
     fixture.destroy()
   })
 
+  it('helper text and error text only carry data-disabled (React parity)', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFieldRoot, ArkFieldInput, ArkFieldHelperText, ArkFieldErrorText],
+      template: `
+        <div arkFieldRoot [disabled]="true" [invalid]="true">
+          <input arkFieldInput />
+          <span arkFieldHelperText>helper</span>
+          <span arkFieldErrorText>error</span>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const helperEl = fixture.debugElement.query(By.directive(ArkFieldHelperText)).nativeElement as HTMLElement
+    const errorEl = fixture.debugElement.query(By.directive(ArkFieldErrorText)).nativeElement as HTMLElement
+
+    expect(helperEl.getAttribute('data-disabled')).toBe('')
+    expect(helperEl.hasAttribute('data-invalid')).toBe(false)
+
+    expect(errorEl.hasAttribute('data-disabled')).toBe(false)
+    expect(errorEl.hasAttribute('data-invalid')).toBe(false)
+    expect(errorEl.getAttribute('aria-live')).toBe('polite')
+
+    fixture.destroy()
+  })
+
   it('boolean text-presence setters remain idempotent alongside registrations', () => {
     @Component({
       standalone: true,
