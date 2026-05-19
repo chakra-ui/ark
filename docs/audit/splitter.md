@@ -33,5 +33,5 @@
 - [x] Manual/visual checks: Cross-referenced React `splitter.module.css`, `splitter.stories.tsx`, and each `examples/*.tsx` against the Angular counterparts. No diffs detected in story names, args, ids, default sizes, registries, orientation, or class-to-selector mapping. No browser visual check executed.
 
 ## Commit
-- Hash: TBD on commit
+- Hash: e5e1bbb8f
 - Message: `fix(angular): align splitter with react parity`
