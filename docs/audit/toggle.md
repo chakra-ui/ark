@@ -6,8 +6,9 @@
 - Storybook/style files: `packages/react/src/components/toggle/toggle.stories.tsx`, `packages/react/src/components/toggle/examples/*`, `.storybook/modules/toggle.module.css`, `packages/angular/toggle/toggle.stories.ts`, `packages/angular/toggle/examples/*`, `packages/angular/toggle/toggle-example-styles.ts`
 
 ## Summary
-- Status: Fixed and verified.
-- Highest-risk gaps: Angular now exposes a template context directive equivalent for the React `Toggle.Context` story; Angular indicator examples now demonstrate the pressed/fallback rendering pattern. No implementation gaps remain for the audited Toggle surface.
+- Status: Fixed and verified (re-audited).
+- Highest-risk gaps: Angular exposes a template context directive equivalent for the React `Toggle.Context` story; Angular indicator examples demonstrate the pressed/fallback rendering pattern. Re-audit confirms no remaining implementation gaps in the audited Toggle surface.
+- Re-audit notes: Re-read React `toggle-root.tsx`, `toggle-indicator.tsx`, `toggle-context.tsx`, `use-toggle.ts`, `use-toggle-context.ts`, `toggle.stories.tsx`, all five React `examples/*.tsx`, and `.storybook/modules/toggle.module.css`. Re-read Angular `toggle-root.ts`, `toggle-indicator.ts`, `toggle-context.ts`, `use-toggle.ts`, `use-toggle-context.ts`, `public-api.ts`, `toggle.types.ts`, `toggle.anatomy.ts`, `toggle.spec.ts`, `toggle.stories.ts`, all six Angular `examples/*.ts`, and `toggle-example-styles.ts`. Public surface, controlled/uncontrolled semantics, disabled handling, indicator data-state, focus-visible styling, and stories all match within the directive-centric Angular idiom. No code changes required this pass; this commit records the re-verification.
 
 ## Gap Matrix
 | Area | Gap | React reference | Angular location | Fix |
@@ -26,11 +27,11 @@
 5. Run focused toggle tests, typecheck, and diff hygiene checks.
 
 ## Verification
-- [x] Typecheck/build: `bun run --cwd packages/angular typecheck` passed. This ran `tsc -p tsconfig.json --noEmit`, `tsc -p tsconfig.spec.json --noEmit`, package build, and `scripts/check-forms-isolation.ts` (`forms isolation: ok`).
-- [x] Component tests: `bun run --cwd packages/angular test:ci toggle/toggle.spec.ts` passed with 1 file and 17 tests.
-- [x] Storybook render: `bun run --cwd packages/angular storybook` compiled and reported Storybook ready at `http://localhost:6007/`; port 6006 was already occupied, and the dev server was stopped after startup.
-- [x] Manual/visual checks: Source-level comparison confirmed `packages/angular/toggle/toggle-example-styles.ts` matches `.storybook/modules/toggle.module.css` for root layout, icon sizing, hover, pressed, focus-visible, disabled, and indicator selectors. No screenshot capture was performed.
+- [x] Typecheck/build: Prior pass — `bun run --cwd packages/angular typecheck` passed. Re-audit pass — `bun run --cwd packages/angular typecheck` fails on an unrelated `src/navigation-menu/navigation-menu.spec.ts(124,73): error TS4111` outside the toggle scope; toggle sources participate in the same `tsc -p tsconfig.json --noEmit` step without errors.
+- [x] Component tests: `bun run --cwd packages/angular test:ci toggle/toggle.spec.ts` passed with 1 file and 17 tests (re-run during re-audit).
+- [x] Storybook render: Prior pass — `bun run --cwd packages/angular storybook` compiled and reported Storybook ready at `http://localhost:6007/`. Not re-run this pass because the toggle Storybook configuration and example components are unchanged.
+- [x] Manual/visual checks: Source-level comparison reconfirmed `packages/angular/toggle/toggle-example-styles.ts` matches `.storybook/modules/toggle.module.css` for root layout, icon sizing, hover, pressed (`data-state='on'`), focus-visible, disabled, and indicator selectors. No screenshot capture was performed.
 
 ## Commit
-- Hash: `61140dcc1`
+- Hash: `61140dcc1` (initial), re-audit commit pending.
 - Message: `fix(angular): align toggle with react parity`
