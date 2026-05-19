@@ -9,6 +9,7 @@
       "@ark-ui/angular/collapsible": ["src/collapsible/public-api.ts"],
       "@ark-ui/angular/dialog": ["src/dialog/public-api.ts"],
       "@ark-ui/angular/drawer": ["src/drawer/public-api.ts"],
+      "@ark-ui/angular/editable": ["editable/public-api.ts"],
       "@ark-ui/angular/field": ["field/public-api.ts"],
       "@ark-ui/angular/fieldset": ["fieldset/public-api.ts"],
       "@ark-ui/angular/hover-card": ["src/hover-card/public-api.ts"],
@@ -52,6 +53,7 @@
   "include": [
     "src/**/*.ts",
     "avatar/**/*.ts",
+    "editable/**/*.ts",
     "field/**/*.ts",
     "fieldset/**/*.ts",
     "progress/**/*.ts",

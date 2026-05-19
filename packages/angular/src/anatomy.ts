@@ -4,6 +4,8 @@ export { avatarAnatomy } from '@ark-ui/angular/avatar'
 export { collapsibleAnatomy } from './collapsible/collapsible.anatomy'
 export { dialogAnatomy } from './dialog/dialog.anatomy'
 export { drawerAnatomy } from './drawer/drawer.anatomy'
+// Use a relative import so this aggregate stays form-isolation safe.
+export { editableAnatomy } from '../editable/editable.anatomy'
 export { fieldAnatomy } from '@ark-ui/angular/field'
 export { fieldsetAnatomy } from '@ark-ui/angular/fieldset'
 export { hoverCardAnatomy } from './hover-card/hover-card.anatomy'
