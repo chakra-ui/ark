@@ -3,6 +3,8 @@ import { moduleMetadata } from '@storybook/angular'
 import { QrCodeBasicExample } from './examples/basic'
 import { QrCodeControlledExample } from './examples/controlled'
 import { QrCodeDownloadExample } from './examples/download'
+import { QrCodeErrorCorrectionExample } from './examples/error-correction'
+import { QrCodeFillExample } from './examples/fill'
 import { QrCodeOverlayExample } from './examples/overlay'
 import { QrCodeRootProviderExample } from './examples/root-provider'
 
@@ -25,6 +27,16 @@ export const Controlled: StoryObj = {
 export const Download: StoryObj = {
   decorators: [moduleMetadata({ imports: [QrCodeDownloadExample] })],
   render: () => ({ template: '<qr-code-download-example />' }),
+}
+
+export const ErrorCorrection: StoryObj = {
+  decorators: [moduleMetadata({ imports: [QrCodeErrorCorrectionExample] })],
+  render: () => ({ template: '<qr-code-error-correction-example />' }),
+}
+
+export const Fill: StoryObj = {
+  decorators: [moduleMetadata({ imports: [QrCodeFillExample] })],
+  render: () => ({ template: '<qr-code-fill-example />' }),
 }
 
 export const Overlay: StoryObj = {
