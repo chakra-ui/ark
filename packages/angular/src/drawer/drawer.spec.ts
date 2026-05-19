@@ -725,6 +725,69 @@ describe('@ark-ui/angular/drawer', () => {
     fixture.destroy()
   })
 
+  it('(triggerValueChange) emits the raw value (string | null | undefined)', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkDrawerRoot, ArkDrawerTrigger, ArkDrawerContent, ArkPortalComponent],
+      template: `
+        <div arkDrawer #root="arkDrawer" (triggerValueChange)="emissions.push($event)">
+          <button arkDrawerTrigger value="settings"></button>
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkDrawerContent></div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {
+      readonly emissions: Array<string | null | undefined> = []
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const triggerEl = fixture.debugElement.query(By.directive(ArkDrawerTrigger)).nativeElement as HTMLButtonElement
+    triggerEl.click()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.emissions).toEqual(['settings'])
+
+    fixture.destroy()
+  })
+
+  it('[arkDrawer] inside <ark-drawer-stack> auto-consumes the ancestor stack context', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkDrawerStack, ArkDrawerRoot, ArkDrawerContent, ArkPortalComponent],
+      template: `
+        <ark-drawer-stack>
+          <div arkDrawer #root="arkDrawer">
+            <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+              <div arkDrawerContent></div>
+            </ark-portal>
+          </div>
+        </ark-drawer-stack>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const rootDebug = fixture.debugElement.query(By.directive(ArkDrawerRoot))
+    const root = rootDebug.injector.get(ArkDrawerRoot)
+    const stackDebug = fixture.debugElement.query(By.directive(ArkDrawerStack))
+    const stack = stackDebug.componentInstance as ArkDrawerStack
+
+    const observedStack = root.service.prop('stack') as { getSnapshot: () => unknown } | undefined
+    expect(observedStack).toBeDefined()
+    expect(observedStack?.getSnapshot()).toBe(stack.context.stack.getSnapshot())
+
+    fixture.destroy()
+  })
+
   it('React parity Storybook examples mount without throwing', () => {
     const examples = [
       DrawerSnapPointsExample,

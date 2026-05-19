@@ -9,7 +9,6 @@ import {
   ArkDrawerRoot,
   ArkDrawerTitle,
   ArkDrawerTrigger,
-  type DrawerTriggerValueChangeDetails,
 } from '@ark-ui/angular/drawer'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { drawerExampleStyles } from '../drawer-example-styles'
@@ -45,7 +44,7 @@ const users: User[] = [
     DrawerXIcon,
   ],
   template: `
-    <div arkDrawer swipeDirection="end" (triggerValueChange)="setActiveUser($event)" #root="arkDrawer">
+    <div arkDrawer swipeDirection="end" (triggerValueChange)="onTriggerValueChange($event)" #root="arkDrawer">
       <div class="button-group">
         @for (user of users; track user.id) {
           <button type="button" arkDrawerTrigger [value]="user.id">Edit {{ user.name }}</button>
@@ -89,7 +88,7 @@ export class DrawerMultipleTriggersExample {
   readonly users = users
   readonly activeUser = signal<User | null>(null)
 
-  setActiveUser(details: DrawerTriggerValueChangeDetails): void {
-    this.activeUser.set(this.users.find((user) => user.id === details.value) ?? null)
+  onTriggerValueChange(value: string | null | undefined): void {
+    this.activeUser.set(this.users.find((user) => user.id === value) ?? null)
   }
 }
