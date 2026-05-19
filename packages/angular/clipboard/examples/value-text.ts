@@ -2,23 +2,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core'
 import {
   ArkClipboardControl,
   ArkClipboardIndicator,
-  ArkClipboardInput,
-  ArkClipboardLabel,
   ArkClipboardRoot,
   ArkClipboardTrigger,
+  ArkClipboardValueText,
 } from '@ark-ui/angular/clipboard'
 import { clipboardExampleStyles } from '../clipboard-example-styles'
 import { ClipboardCheckIcon, ClipboardCopyIcon } from './icons'
 
 @Component({
-  selector: 'clipboard-basic-example',
+  selector: 'clipboard-value-text-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ArkClipboardRoot,
-    ArkClipboardLabel,
     ArkClipboardControl,
-    ArkClipboardInput,
+    ArkClipboardValueText,
     ArkClipboardTrigger,
     ArkClipboardIndicator,
     ClipboardCheckIcon,
@@ -26,9 +24,8 @@ import { ClipboardCheckIcon, ClipboardCopyIcon } from './icons'
   ],
   template: `
     <div arkClipboard value="https://ark-ui.com">
-      <label arkClipboardLabel>Copy this link</label>
       <div arkClipboardControl>
-        <input arkClipboardInput />
+        <span arkClipboardValueText #valueText="arkClipboardValueText">{{ valueText.value() }}</span>
         <button arkClipboardTrigger>
           <span arkClipboardIndicator #indicator="arkClipboardIndicator">
             @if (indicator.copied()) {
@@ -43,4 +40,4 @@ import { ClipboardCheckIcon, ClipboardCopyIcon } from './icons'
   `,
   styles: [clipboardExampleStyles],
 })
-export class ClipboardBasicExample {}
+export class ClipboardValueTextExample {}

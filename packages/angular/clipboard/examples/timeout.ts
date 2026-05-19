@@ -11,7 +11,7 @@ import { clipboardExampleStyles } from '../clipboard-example-styles'
 import { ClipboardCheckIcon, ClipboardCopyIcon } from './icons'
 
 @Component({
-  selector: 'clipboard-basic-example',
+  selector: 'clipboard-timeout-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -25,8 +25,8 @@ import { ClipboardCheckIcon, ClipboardCopyIcon } from './icons'
     ClipboardCopyIcon,
   ],
   template: `
-    <div arkClipboard value="https://ark-ui.com">
-      <label arkClipboardLabel>Copy this link</label>
+    <div arkClipboard value="https://ark-ui.com" [timeout]="5000">
+      <label arkClipboardLabel>Copy this link (5 second timeout)</label>
       <div arkClipboardControl>
         <input arkClipboardInput />
         <button arkClipboardTrigger>
@@ -43,4 +43,4 @@ import { ClipboardCheckIcon, ClipboardCopyIcon } from './icons'
   `,
   styles: [clipboardExampleStyles],
 })
-export class ClipboardBasicExample {}
+export class ClipboardTimeoutExample {}

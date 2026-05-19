@@ -9,6 +9,7 @@ import {
   useClipboard,
 } from '@ark-ui/angular/clipboard'
 import { clipboardExampleStyles } from '../clipboard-example-styles'
+import { ClipboardCheckIcon, ClipboardCopyIcon } from './icons'
 
 @Component({
   selector: 'clipboard-root-provider-example',
@@ -21,15 +22,26 @@ import { clipboardExampleStyles } from '../clipboard-example-styles'
     ArkClipboardInput,
     ArkClipboardTrigger,
     ArkClipboardIndicator,
+    ClipboardCheckIcon,
+    ClipboardCopyIcon,
   ],
   template: `
-    <div arkClipboardRootProvider [value]="clipboard">
-      <label arkClipboardLabel>Copy this link</label>
-      <div arkClipboardControl>
-        <input arkClipboardInput />
-        <button arkClipboardTrigger>
-          <span arkClipboardIndicator>Copy</span>
-        </button>
+    <div class="stack">
+      <output>value: {{ clipboard.api().value }}, copied: {{ clipboard.api().copied }}</output>
+      <div arkClipboardRootProvider [value]="clipboard">
+        <label arkClipboardLabel>Copy this link</label>
+        <div arkClipboardControl>
+          <input arkClipboardInput />
+          <button arkClipboardTrigger>
+            <span arkClipboardIndicator #indicator="arkClipboardIndicator">
+              @if (indicator.copied()) {
+                <clipboard-check-icon />
+              } @else {
+                <clipboard-copy-icon />
+              }
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   `,
