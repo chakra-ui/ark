@@ -9,6 +9,7 @@ import {
   ArkPasswordInputVisibilityTrigger,
 } from '@ark-ui/angular/password-input'
 import { passwordInputExampleStyles } from '../password-input-example-styles'
+import { PasswordInputEyeIcon, PasswordInputEyeOffIcon } from './icons'
 
 @Component({
   selector: 'password-input-with-field-example',
@@ -24,6 +25,8 @@ import { passwordInputExampleStyles } from '../password-input-example-styles'
     ArkPasswordInputInput,
     ArkPasswordInputVisibilityTrigger,
     ArkPasswordInputIndicator,
+    PasswordInputEyeIcon,
+    PasswordInputEyeOffIcon,
   ],
   template: `
     <div arkFieldRoot [invalid]="true">
@@ -32,7 +35,13 @@ import { passwordInputExampleStyles } from '../password-input-example-styles'
         <div arkPasswordInputControl>
           <input arkPasswordInputInput />
           <button arkPasswordInputVisibilityTrigger>
-            <span arkPasswordInputIndicator>Toggle</span>
+            <span arkPasswordInputIndicator #indicator="arkPasswordInputIndicator">
+              @if (indicator.visible()) {
+                <password-input-eye-icon />
+              } @else {
+                <password-input-eye-off-icon />
+              }
+            </span>
           </button>
         </div>
       </div>

@@ -9,6 +9,7 @@ import {
   usePasswordInput,
 } from '@ark-ui/angular/password-input'
 import { passwordInputExampleStyles } from '../password-input-example-styles'
+import { PasswordInputEyeIcon, PasswordInputEyeOffIcon } from './icons'
 
 @Component({
   selector: 'password-input-root-provider-example',
@@ -21,15 +22,26 @@ import { passwordInputExampleStyles } from '../password-input-example-styles'
     ArkPasswordInputInput,
     ArkPasswordInputVisibilityTrigger,
     ArkPasswordInputIndicator,
+    PasswordInputEyeIcon,
+    PasswordInputEyeOffIcon,
   ],
   template: `
-    <div arkPasswordInputRootProvider [value]="passwordInput">
-      <span arkPasswordInputLabel>Password</span>
-      <div arkPasswordInputControl>
-        <input arkPasswordInputInput />
-        <button arkPasswordInputVisibilityTrigger>
-          <span arkPasswordInputIndicator>Toggle</span>
-        </button>
+    <div class="stack">
+      <output>password input is {{ passwordInput.api().visible ? 'visible' : 'hidden' }}</output>
+      <div arkPasswordInputRootProvider [value]="passwordInput">
+        <span arkPasswordInputLabel>Password</span>
+        <div arkPasswordInputControl>
+          <input arkPasswordInputInput />
+          <button arkPasswordInputVisibilityTrigger>
+            <span arkPasswordInputIndicator #indicator="arkPasswordInputIndicator">
+              @if (indicator.visible()) {
+                <password-input-eye-icon />
+              } @else {
+                <password-input-eye-off-icon />
+              }
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   `,

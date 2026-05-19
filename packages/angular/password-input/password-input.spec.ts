@@ -24,6 +24,15 @@ import {
   type UsePasswordInputReturn,
 } from '@ark-ui/angular/password-input'
 import { ArkFieldRoot } from '@ark-ui/angular/field'
+import { PasswordInputAutocompleteExample } from './examples/autocomplete'
+import { PasswordInputBasicExample } from './examples/basic'
+import { PasswordInputControlledExample } from './examples/controlled'
+import { PasswordInputDefaultVisibleExample } from './examples/default-visible'
+import { PasswordInputIgnorePasswordManagerExample } from './examples/ignore-password-manager'
+import { PasswordInputRootProviderExample } from './examples/root-provider'
+import { PasswordInputStrengthMeterExample } from './examples/strength-meter'
+import { PasswordInputWithFieldExample } from './examples/with-field'
+import { PasswordInputWithValidationExample } from './examples/with-validation'
 
 type PasswordInputPublicTypeSmoke = [
   PasswordInputApi,
@@ -120,6 +129,51 @@ describe('@ark-ui/angular/password-input', () => {
 
     expect(root.api().visible).toBe(true)
     expect(inputEl.getAttribute('type')).toBe('text')
+
+    fixture.destroy()
+  })
+
+  it('indicator exposes visibility state for Angular templates', () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkPasswordInputRoot,
+        ArkPasswordInputControl,
+        ArkPasswordInputInput,
+        ArkPasswordInputVisibilityTrigger,
+        ArkPasswordInputIndicator,
+      ],
+      template: `
+        <div arkPasswordInputRoot>
+          <div arkPasswordInputControl>
+            <input arkPasswordInputInput />
+            <button arkPasswordInputVisibilityTrigger>
+              <span arkPasswordInputIndicator #indicator="arkPasswordInputIndicator">
+                {{ indicator.visible() ? 'visible' : 'hidden' }}
+              </span>
+            </button>
+          </div>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+
+    const triggerEl = fixture.debugElement.query(By.directive(ArkPasswordInputVisibilityTrigger))
+      .nativeElement as HTMLButtonElement
+    const indicatorEl = fixture.debugElement.query(By.directive(ArkPasswordInputIndicator)).nativeElement as HTMLElement
+
+    expect(indicatorEl.textContent?.trim()).toBe('hidden')
+
+    clickTrigger(triggerEl)
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(indicatorEl.textContent?.trim()).toBe('visible')
 
     fixture.destroy()
   })
@@ -447,5 +501,28 @@ describe('@ark-ui/angular/password-input', () => {
     expect(warnCalls.length).toBe(1)
 
     fixture.destroy()
+  })
+
+  it('Storybook examples mount without throwing', () => {
+    const examples = [
+      PasswordInputAutocompleteExample,
+      PasswordInputBasicExample,
+      PasswordInputControlledExample,
+      PasswordInputDefaultVisibleExample,
+      PasswordInputIgnorePasswordManagerExample,
+      PasswordInputRootProviderExample,
+      PasswordInputStrengthMeterExample,
+      PasswordInputWithFieldExample,
+      PasswordInputWithValidationExample,
+    ]
+
+    for (const Example of examples) {
+      TestBed.resetTestingModule()
+      TestBed.configureTestingModule({ imports: [Example] })
+      const fixture = TestBed.createComponent(Example)
+      document.body.appendChild(fixture.nativeElement)
+      expect(() => fixture.detectChanges()).not.toThrow()
+      fixture.destroy()
+    }
   })
 })

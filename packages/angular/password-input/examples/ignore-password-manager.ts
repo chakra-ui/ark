@@ -11,7 +11,7 @@ import { passwordInputExampleStyles } from '../password-input-example-styles'
 import { PasswordInputEyeIcon, PasswordInputEyeOffIcon } from './icons'
 
 @Component({
-  selector: 'password-input-basic-example',
+  selector: 'password-input-ignore-password-manager-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -25,8 +25,8 @@ import { PasswordInputEyeIcon, PasswordInputEyeOffIcon } from './icons'
     PasswordInputEyeOffIcon,
   ],
   template: `
-    <div arkPasswordInputRoot>
-      <span arkPasswordInputLabel>Password</span>
+    <div arkPasswordInputRoot ignorePasswordManagers defaultValue="spd_1234567890">
+      <span arkPasswordInputLabel>API Key</span>
       <div arkPasswordInputControl>
         <input arkPasswordInputInput />
         <button arkPasswordInputVisibilityTrigger>
@@ -43,4 +43,4 @@ import { PasswordInputEyeIcon, PasswordInputEyeOffIcon } from './icons'
   `,
   styles: [passwordInputExampleStyles],
 })
-export class PasswordInputBasicExample {}
+export class PasswordInputIgnorePasswordManagerExample {}

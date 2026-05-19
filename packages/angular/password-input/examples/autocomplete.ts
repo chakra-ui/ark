@@ -11,7 +11,7 @@ import { passwordInputExampleStyles } from '../password-input-example-styles'
 import { PasswordInputEyeIcon, PasswordInputEyeOffIcon } from './icons'
 
 @Component({
-  selector: 'password-input-basic-example',
+  selector: 'password-input-autocomplete-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -25,7 +25,7 @@ import { PasswordInputEyeIcon, PasswordInputEyeOffIcon } from './icons'
     PasswordInputEyeOffIcon,
   ],
   template: `
-    <div arkPasswordInputRoot>
+    <div arkPasswordInputRoot autoComplete="new-password">
       <span arkPasswordInputLabel>Password</span>
       <div arkPasswordInputControl>
         <input arkPasswordInputInput />
@@ -43,4 +43,4 @@ import { PasswordInputEyeIcon, PasswordInputEyeOffIcon } from './icons'
   `,
   styles: [passwordInputExampleStyles],
 })
-export class PasswordInputBasicExample {}
+export class PasswordInputAutocompleteExample {}
