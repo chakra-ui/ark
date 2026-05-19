@@ -23,7 +23,7 @@ export class ArkListboxEmpty {
       destroyRef,
       props: () => ({
         ...parts.empty.attrs,
-        role: 'status',
+        role: 'presentation',
         style: { display: context.api().collection.size === 0 ? undefined : 'none' },
       }),
     })
