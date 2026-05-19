@@ -21,7 +21,10 @@ export class ArkClientOnlyComponent {
 
   constructor() {
     afterNextRender(() => {
-      this.isClient.set(true)
+      // Leave one observable turn for fallback content before the browser-only projection swaps in.
+      queueMicrotask(() => {
+        this.isClient.set(true)
+      })
     })
   }
 }

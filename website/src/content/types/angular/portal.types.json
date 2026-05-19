@@ -1,0 +1,16 @@
+{
+  "Component": {
+    "props": {
+      "originInjector": {
+        "type": "null | Injector",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "target": {
+        "type": "null | HTMLElement",
+        "isRequired": false,
+        "kind": "input"
+      }
+    }
+  }
+}

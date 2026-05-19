@@ -134,6 +134,19 @@ describe('ArkDownloadTriggerDirective', () => {
     })
   })
 
+  it('passes direct File values to downloadFile', () => {
+    const file = new File(['direct'], 'direct.txt', { type: 'text/plain' })
+    const { button } = mount(file, 'renamed.txt', 'text/plain')
+    button.click()
+
+    expect(downloadFileMock).toHaveBeenCalledWith({
+      file,
+      name: 'renamed.txt',
+      type: 'text/plain',
+      win: window,
+    })
+  })
+
   it('does not call downloadFile when PLATFORM_ID indicates a non-browser platform', () => {
     const dataSignal = signal<DownloadData | undefined>('ssr-payload')
 

@@ -242,11 +242,6 @@
       "types": "./dist/src/tree-view/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-src-tree-view.mjs"
     },
-    "./src/_zag": {
-      "source": "./src/_zag/public-api.ts",
-      "types": "./dist/src/_zag/index.d.ts",
-      "default": "./dist/fesm2022/ark-ui-angular-src-_zag.mjs"
-    },
     "./client-only": {
       "source": "./src/client-only/public-api.ts",
       "types": "./dist/src/client-only/index.d.ts",
@@ -287,11 +282,6 @@
       "types": "./dist/src/highlight/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-src-highlight.mjs"
     },
-    "./src/internal": {
-      "source": "./src/internal/public-api.ts",
-      "types": "./dist/src/internal/index.d.ts",
-      "default": "./dist/fesm2022/ark-ui-angular-src-internal.mjs"
-    },
     "./portal": {
       "source": "./src/portal/public-api.ts",
       "types": "./dist/src/portal/index.d.ts",
@@ -327,7 +317,7 @@
     }
   },
   "scripts": {
-    "build": "ng build @ark-ui/angular --configuration=production",
+    "build": "ng build @ark-ui/angular --configuration=production && bun run scripts/hide-private-entrypoints.ts",
     "dev": "bun run storybook",
     "lint": "biome lint ./src",
     "test": "vitest",

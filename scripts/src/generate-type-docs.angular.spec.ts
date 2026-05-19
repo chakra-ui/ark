@@ -46,6 +46,7 @@ const createAngularTypeDocFixture = () => {
         readonly internalRequired: InputSignal<string> = input.required<string>({ alias: 'requiredAlias' })
         readonly internalOutput: OutputEmitterRef<number> = output<number>({ alias: 'outputAlias' })
         readonly nullableBoolean: InputSignal<true | false | null> = input<true | false | null>(null)
+        readonly transform: InputSignal<string | ((value: string) => string) | undefined> = input<string | ((value: string) => string) | undefined>()
       }
     `,
   )
@@ -57,17 +58,41 @@ const createAngularDiscoveryFixture = () => {
 
   const legacyDir = join(fixtureRoot, 'packages', 'angular', 'legacy-fixture')
   const nestedDir = join(fixtureRoot, 'packages', 'angular', 'src', 'nested-fixture')
-  const utilityDir = join(fixtureRoot, 'packages', 'angular', 'src', 'internal')
+  const utilityDir = join(fixtureRoot, 'packages', 'angular', 'src', 'presence')
+  const unexportedDir = join(fixtureRoot, 'packages', 'angular', 'src', 'unexported-fixture')
+  const privateDirs = ['_zag', 'internal', 'providers'].map((dir) =>
+    join(fixtureRoot, 'packages', 'angular', 'src', dir),
+  )
 
   mkdirSync(legacyDir, { recursive: true })
   mkdirSync(nestedDir, { recursive: true })
   mkdirSync(utilityDir, { recursive: true })
+  mkdirSync(unexportedDir, { recursive: true })
+  for (const privateDir of privateDirs) {
+    mkdirSync(privateDir, { recursive: true })
+  }
 
+  writeFileSync(
+    join(fixtureRoot, 'packages', 'angular', 'package.json'),
+    JSON.stringify({
+      exports: {
+        './legacy-fixture': { source: './legacy-fixture/public-api.ts' },
+        './nested-fixture': { source: './src/nested-fixture/public-api.ts' },
+        './presence': { source: './src/presence/public-api.ts' },
+        './style.css': { default: './dist/style.css' },
+      },
+    }),
+  )
   writeFileSync(join(legacyDir, 'public-api.ts'), "export { ArkLegacyFixtureRoot } from './legacy-fixture-root'\n")
   writeFileSync(join(legacyDir, 'legacy-fixture-root.ts'), 'export class ArkLegacyFixtureRoot {}\n')
   writeFileSync(join(nestedDir, 'public-api.ts'), "export { ArkNestedFixtureRoot } from './nested-fixture-root'\n")
   writeFileSync(join(nestedDir, 'nested-fixture-root.ts'), 'export class ArkNestedFixtureRoot {}\n')
-  writeFileSync(join(utilityDir, 'public-api.ts'), 'export const internal = true\n')
+  writeFileSync(join(utilityDir, 'public-api.ts'), "export { ArkPresence } from './presence'\n")
+  writeFileSync(join(utilityDir, 'presence.ts'), 'export class ArkPresence {}\n')
+  writeFileSync(join(unexportedDir, 'public-api.ts'), 'export const unexported = true\n')
+  for (const privateDir of privateDirs) {
+    writeFileSync(join(privateDir, 'public-api.ts'), 'export const privateEntry = true\n')
+  }
 
   return fixtureRoot
 }
@@ -85,11 +110,64 @@ const createAngularCollisionFixture = () => {
   return fixtureRoot
 }
 
+const createAngularUnresolvablePartFixture = () => {
+  const fixtureRoot = mkdtempSync(join(tmpdir(), 'ng-ark-angular-part-name-'))
+  symlinkSync(join(rootDir, 'node_modules'), join(fixtureRoot, 'node_modules'), 'dir')
+  const componentDir = join(fixtureRoot, 'packages', 'angular', 'src', 'part-fixture')
+  mkdirSync(componentDir, { recursive: true })
+  // Minimal package metadata is enough here because this fixture exercises direct type-doc generation.
+  writeFileSync(join(fixtureRoot, 'package.json'), '{}\n')
+  writeFileSync(
+    join(fixtureRoot, 'packages', 'angular', 'tsconfig.json'),
+    JSON.stringify({
+      compilerOptions: {
+        target: 'ES2022',
+        module: 'ESNext',
+        moduleResolution: 'Bundler',
+        experimentalDecorators: true,
+        strict: true,
+        skipLibCheck: true,
+        types: [],
+      },
+      include: ['src/**/*.ts'],
+    }),
+  )
+  writeFileSync(join(componentDir, 'public-api.ts'), "export { UnmappedWidget } from './part-fixture'\n")
+  writeFileSync(
+    join(componentDir, 'part-fixture.ts'),
+    `
+      import { Directive } from '@angular/core'
+
+      @Directive({ selector: '[unmappedWidget]', standalone: true })
+      export class UnmappedWidget {}
+    `,
+  )
+  return fixtureRoot
+}
+
 describe('Angular type-doc generator discovery', () => {
   it('merges legacy and src component layouts', async () => {
     const fixtureRoot = createAngularDiscoveryFixture()
     try {
-      await expect(listAngularComponents(fixtureRoot)).resolves.toEqual(['legacy-fixture', 'nested-fixture'])
+      await expect(listAngularComponents(fixtureRoot)).resolves.toEqual([
+        'legacy-fixture',
+        'nested-fixture',
+        'presence',
+      ])
+    } finally {
+      rmSync(fixtureRoot, { recursive: true, force: true })
+    }
+  })
+
+  it('discovers src utility entry points without anatomy files and excludes private src directories', async () => {
+    const fixtureRoot = createAngularDiscoveryFixture()
+    try {
+      const components = await listAngularComponents(fixtureRoot)
+      expect(components).toContain('presence')
+      expect(components).not.toContain('_zag')
+      expect(components).not.toContain('internal')
+      expect(components).not.toContain('providers')
+      expect(components).not.toContain('unexported-fixture')
     } finally {
       rmSync(fixtureRoot, { recursive: true, force: true })
     }
@@ -100,6 +178,17 @@ describe('Angular type-doc generator discovery', () => {
     try {
       await expect(generateAngularTypeDoc('collision-fixture', fixtureRoot)).rejects.toThrow(
         'exists in both packages/angular/collision-fixture/public-api.ts and packages/angular/src/collision-fixture/public-api.ts',
+      )
+    } finally {
+      rmSync(fixtureRoot, { recursive: true, force: true })
+    }
+  })
+
+  it('throws a contextual error when a decorated public class cannot be mapped to a part name', async () => {
+    const fixtureRoot = createAngularUnresolvablePartFixture()
+    try {
+      await expect(generateAngularTypeDoc('part-fixture', fixtureRoot)).rejects.toThrow(
+        /Could not derive part name for class UnmappedWidget in .*part-fixture\.ts/,
       )
     } finally {
       rmSync(fixtureRoot, { recursive: true, force: true })
@@ -125,6 +214,7 @@ describe('Angular type-doc generator aliases', () => {
       })
       expect(doc['Root'].props['internalOutput']).toBeUndefined()
       expect(doc['Root'].props['nullableBoolean'].type).toBe('boolean | null')
+      expect(doc['Root'].props['transform'].type).toBe('string | ((value: string) => string)')
     } finally {
       rmSync(fixtureRoot, { recursive: true, force: true })
     }

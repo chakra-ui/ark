@@ -12,13 +12,14 @@ const getProgressVariant = (component: string) => {
 
 const getAngularExamplePath = (component: string) => {
   const packageBasePath = getPackageBasePath('angular')
+  const topLevel = join(packageBasePath, component, 'examples')
+  // Prefer the established root-level Angular layout when both layouts exist during migrations.
+  if (existsSync(topLevel)) {
+    return { dir: topLevel, displayPath: `packages/angular/${component}/examples` }
+  }
   const nested = join(packageBasePath, 'src', component, 'examples')
   if (existsSync(nested)) {
     return { dir: nested, displayPath: `packages/angular/src/${component}/examples` }
-  }
-  const topLevel = join(packageBasePath, component, 'examples')
-  if (existsSync(topLevel)) {
-    return { dir: topLevel, displayPath: `packages/angular/${component}/examples` }
   }
   const error = new Error(`Angular examples for "${component}" not found in packages/angular/ or packages/angular/src/`)
   ;(error as NodeJS.ErrnoException).code = 'ENOENT'

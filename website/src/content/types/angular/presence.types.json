@@ -1,0 +1,40 @@
+{
+  "Component": {
+    "props": {
+      "exitComplete": {
+        "type": "void",
+        "isRequired": false,
+        "kind": "output"
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false"
+      },
+      "originInjector": {
+        "type": "null | Injector",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "present": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false"
+      },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false"
+      }
+    }
+  }
+}

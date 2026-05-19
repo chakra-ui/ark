@@ -1,9 +1,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  DestroyRef,
   type ElementRef,
   type EmbeddedViewRef,
+  type OnDestroy,
   type TemplateRef,
   ViewContainerRef,
   afterNextRender,
@@ -48,7 +48,7 @@ const createDefaultTitle = (): string => {
     </ng-template>
   `,
 })
-export class ArkFrameComponent {
+export class ArkFrameComponent implements OnDestroy {
   readonly srcdoc = input<string | undefined>(initialFrameSrcdoc)
   readonly title = input<string | undefined>(undefined)
   readonly name = input<string | undefined>(undefined)
@@ -59,7 +59,6 @@ export class ArkFrameComponent {
 
   private readonly contentTpl = viewChild.required<TemplateRef<unknown>>('content')
   private readonly vcRef = inject(ViewContainerRef)
-  private readonly destroyRef = inject(DestroyRef)
   private readonly defaultTitle = createDefaultTitle()
   private readonly ready = signal(false)
   private contentView: EmbeddedViewRef<unknown> | undefined
@@ -79,12 +78,12 @@ export class ArkFrameComponent {
       if (!this.ready()) return
       this.mountFrame(srcdoc, head)
     })
+  }
 
-    this.destroyRef.onDestroy(() => {
-      this.destroyViews()
-      this.resizeCleanup?.()
-      this.unmount.emit()
-    })
+  ngOnDestroy(): void {
+    this.destroyViews()
+    this.resizeCleanup?.()
+    this.unmount.emit()
   }
 
   private mountFrame(srcdoc: string, head: TemplateRef<unknown> | null): void {
@@ -94,6 +93,9 @@ export class ArkFrameComponent {
 
     this.resizeCleanup?.()
     this.resizeCleanup = undefined
+    if (this.contentView || this.headView) {
+      this.unmount.emit()
+    }
     this.destroyViews()
 
     doc.open()

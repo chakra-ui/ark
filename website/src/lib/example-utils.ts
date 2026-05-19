@@ -147,15 +147,18 @@ export const getAllComponents = async (framework: string): Promise<string[]> => 
 
 export const getComponentExamples = async (framework: string, component: string): Promise<string[]> => {
   const extension = getFrameworkExtension(framework)
-  const fullPath = getFrameworkExampleDir(framework, component)
 
   try {
+    const fullPath = getFrameworkExampleDir(framework, component)
     const files = await readdir(fullPath)
     return files
       .filter((file) => file.endsWith(`.${extension}`))
       .map((file) => file.replace(`.${extension}`, ''))
       .sort()
-  } catch {
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
+      throw error
+    }
     return []
   }
 }

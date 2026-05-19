@@ -1,6 +1,7 @@
 import { afterAll, beforeAll, describe, expect, test } from 'bun:test'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
+import { batch6Examples } from '../../../scripts/src/batch-6-example-fixtures'
 import { getAllComponents, getComponentExamples, readExampleFile } from './example-utils'
 
 const websiteDir = join(import.meta.dir, '..', '..')
@@ -38,5 +39,25 @@ describe('example-utils for Angular', () => {
   test('returns empty list for an Angular component that does not exist', async () => {
     const ids = await getComponentExamples('angular', 'does-not-exist')
     expect(ids).toEqual([])
+  })
+
+  test('discovers src-level Batch 6 utility examples in the generated Angular registry', async () => {
+    const registry = readFileSync(join(websiteDir, 'src', 'lib', 'angular-example-registry.ts'), 'utf-8')
+
+    for (const [component, expectedIds] of Object.entries(batch6Examples)) {
+      const ids = await getComponentExamples('angular', component)
+
+      expect(ids.slice().sort()).toEqual(expectedIds.slice().sort())
+      for (const id of expectedIds) {
+        expect(registry).toContain(`'${component}/${id}':`)
+      }
+    }
+  })
+
+  test('keeps non-Angular registry keys unchanged', () => {
+    const registry = readFileSync(join(websiteDir, 'src', 'lib', 'example-registry.ts'), 'utf-8')
+
+    expect(registry).toContain("'avatar/basic': Avatar_Basic")
+    expect(registry).toContain("'progress/circular/basic': ProgressCircular_Basic")
   })
 })

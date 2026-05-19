@@ -1,0 +1,33 @@
+{
+  "RootComponent": {
+    "props": {
+      "lazyMount": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false"
+      },
+      "swap": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false"
+      }
+    }
+  },
+  "IndicatorComponent": {
+    "props": {
+      "type": {
+        "type": "'on' | 'off'",
+        "isRequired": true,
+        "kind": "required-input"
+      }
+    }
+  }
+}

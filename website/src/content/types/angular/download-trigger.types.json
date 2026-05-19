@@ -1,0 +1,23 @@
+{
+  "Directive": {
+    "props": {
+      "data": {
+        "type": "string | Blob | File | (() => DownloadableData | Promise<DownloadableData>)",
+        "isRequired": false,
+        "kind": "input"
+      },
+      "fileName": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "'download'"
+      },
+      "mimeType": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "'application/octet-stream'"
+      }
+    }
+  }
+}

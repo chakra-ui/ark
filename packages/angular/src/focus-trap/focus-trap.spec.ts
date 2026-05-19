@@ -29,8 +29,8 @@ describe('ArkFocusTrapDirective', () => {
     deactivateMock.mockClear()
   })
 
-  const mount = (initialActive: boolean) => {
-    const active = signal(initialActive)
+  const mount = (initialActive: boolean | null | undefined) => {
+    const active = signal<boolean | null | undefined>(initialActive)
 
     @Component({
       standalone: true,
@@ -47,6 +47,17 @@ describe('ArkFocusTrapDirective', () => {
     const host = fixture.nativeElement.querySelector('[data-testid="trap"]') as HTMLElement
     return { fixture, host, active }
   }
+
+  it.each([false, null, undefined])('does not activate when arkFocusTrap is %s', async (initialActive) => {
+    const { fixture } = mount(initialActive)
+    await fixture.whenStable()
+    fixture.detectChanges()
+
+    expect(trapFocusMock).not.toHaveBeenCalled()
+
+    fixture.destroy()
+    expect(deactivateMock).not.toHaveBeenCalled()
+  })
 
   it('activates the focus trap on the host element when the signal becomes true', async () => {
     const { fixture, host, active } = mount(false)
@@ -76,6 +87,7 @@ describe('ArkFocusTrapDirective', () => {
     expect(deactivateMock).toHaveBeenCalledTimes(1)
 
     fixture.destroy()
+    expect(deactivateMock).toHaveBeenCalledTimes(1)
   })
 
   it('tears down the focus trap on directive destruction', async () => {
@@ -90,8 +102,12 @@ describe('ArkFocusTrapDirective', () => {
     expect(deactivateMock).toHaveBeenCalledTimes(1)
   })
 
-  it('passes pass-through options to trapFocus', async () => {
+  it('passes supported focus trap options to trapFocus', async () => {
     const onActivate = vi.fn()
+    const onDeactivate = vi.fn()
+    const initialFocus = vi.fn<() => HTMLElement | false>(() => false)
+    const fallbackFocus = vi.fn<() => HTMLElement>(() => document.body)
+    const setReturnFocus = vi.fn<() => HTMLElement | false>(() => false)
 
     @Component({
       standalone: true,
@@ -100,7 +116,14 @@ describe('ArkFocusTrapDirective', () => {
     })
     class HostComponent {
       readonly active = signal(true)
-      readonly options: TrapFocusOptions = { onActivate, returnFocusOnDeactivate: false }
+      readonly options: TrapFocusOptions = {
+        onActivate,
+        onDeactivate,
+        initialFocus,
+        fallbackFocus,
+        returnFocusOnDeactivate: false,
+        setReturnFocus,
+      }
     }
 
     TestBed.configureTestingModule({ imports: [HostComponent] })
@@ -111,7 +134,14 @@ describe('ArkFocusTrapDirective', () => {
 
     expect(trapFocusMock).toHaveBeenCalledTimes(1)
     const [, passedOptions] = trapFocusMock.mock.calls[0]
-    expect(passedOptions).toEqual({ onActivate, returnFocusOnDeactivate: false })
+    expect(passedOptions).toEqual({
+      onActivate,
+      onDeactivate,
+      initialFocus,
+      fallbackFocus,
+      returnFocusOnDeactivate: false,
+      setReturnFocus,
+    })
 
     fixture.destroy()
   })
