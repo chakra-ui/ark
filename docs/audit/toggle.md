@@ -33,5 +33,5 @@
 - [x] Manual/visual checks: Source-level comparison reconfirmed `packages/angular/toggle/toggle-example-styles.ts` matches `.storybook/modules/toggle.module.css` for root layout, icon sizing, hover, pressed (`data-state='on'`), focus-visible, disabled, and indicator selectors. No screenshot capture was performed.
 
 ## Commit
-- Hash: `61140dcc1` (initial), re-audit commit pending.
+- Hash: `61140dcc1` (initial), `da67f6dba` (re-audit).
 - Message: `fix(angular): align toggle with react parity`
