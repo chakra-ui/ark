@@ -1,5 +1,6 @@
 export { accordionAnatomy } from './accordion/accordion.anatomy'
 export { avatarAnatomy } from '@ark-ui/angular/avatar'
+export { carouselAnatomy } from './carousel/carousel.anatomy'
 export { clipboardAnatomy } from '@ark-ui/angular/clipboard'
 export { colorPickerAnatomy } from './color-picker/color-picker.anatomy'
 // Batch 2 components live under src/. Relative imports avoid ng-packagr resolving

@@ -1,0 +1,14 @@
+export type {
+  Api as CarouselApi,
+  AutoplayStatusDetails as CarouselAutoplayStatusDetails,
+  DragStatusDetails as CarouselDragStatusDetails,
+  ElementIds as CarouselElementIds,
+  IndicatorProps as CarouselIndicatorProps,
+  IntlTranslations as CarouselIntlTranslations,
+  ItemProps as CarouselItemProps,
+  Machine as CarouselMachine,
+  PageChangeDetails as CarouselPageChangeDetails,
+  ProgressTextDetails as CarouselProgressTextDetails,
+  Props as CarouselMachineProps,
+  Service as CarouselService,
+} from '@zag-js/carousel'
