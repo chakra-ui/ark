@@ -14,13 +14,32 @@ interface Profile {
   id: string
   name: string
   username: string
+  avatar: string
   bio: string
 }
 
 const profiles: Profile[] = [
-  { id: 'sarah', name: 'Sarah Chen', username: '@sarah_chen', bio: 'Design Engineer at Acme Inc.' },
-  { id: 'alex', name: 'Alex Rivera', username: '@alex_r', bio: 'Full-stack developer.' },
-  { id: 'jordan', name: 'Jordan Lee', username: '@jordan_lee', bio: 'DevOps lead.' },
+  {
+    id: 'sarah',
+    name: 'Sarah Chen',
+    username: '@sarah_chen',
+    avatar: 'https://i.pravatar.cc/300?u=sarah',
+    bio: 'Design Engineer at Acme Inc. Building beautiful interfaces.',
+  },
+  {
+    id: 'alex',
+    name: 'Alex Rivera',
+    username: '@alex_r',
+    avatar: 'https://i.pravatar.cc/300?u=alex',
+    bio: 'Full-stack developer and open source contributor.',
+  },
+  {
+    id: 'jordan',
+    name: 'Jordan Lee',
+    username: '@jordan_lee',
+    avatar: 'https://i.pravatar.cc/300?u=jordan',
+    bio: 'DevOps lead. Automating all the things.',
+  },
 ]
 
 @Component({
@@ -38,7 +57,7 @@ const profiles: Profile[] = [
   ],
   template: `
     <div arkHoverCard [(triggerValue)]="activeValue" #root="arkHoverCard">
-      <p>
+      <p class="Paragraph">
         Reviewed by
         <a arkHoverCardTrigger value="sarah" href="#">&#64;sarah_chen</a>
         ,
@@ -53,7 +72,16 @@ const profiles: Profile[] = [
               <div arkHoverCardArrowTip></div>
             </div>
             @if (activeProfile(); as profile) {
-              <p>{{ profile.name }} — {{ profile.bio }}</p>
+              <div class="Body">
+                <div class="Header">
+                  <img class="Avatar" [src]="profile.avatar" [alt]="profile.name" />
+                </div>
+                <div>
+                  <p class="Name">{{ profile.name }}</p>
+                  <p class="Username">{{ profile.username }}</p>
+                </div>
+                <p class="Bio">{{ profile.bio }}</p>
+              </div>
             }
           </div>
         </div>

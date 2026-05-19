@@ -6,13 +6,12 @@ import {
   ArkHoverCardPositioner,
   ArkHoverCardRoot,
   ArkHoverCardTrigger,
-  type HoverCardPositioningOptions,
 } from '@ark-ui/angular/hover-card'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { hoverCardExampleStyles } from '../hover-card-example-styles'
 
 @Component({
-  selector: 'hover-card-positioning-example',
+  selector: 'hover-card-context-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -25,10 +24,13 @@ import { hoverCardExampleStyles } from '../hover-card-example-styles'
     ArkPortalComponent,
   ],
   template: `
-    <div arkHoverCard [positioning]="positioning" #root="arkHoverCard">
+    <div arkHoverCard #root="arkHoverCard">
       <p>
         Liked by
-        <a arkHoverCardTrigger href="#profile">&#64;sarah_chen</a>
+        <a arkHoverCardTrigger href="#profile">
+          &#64;sarah_chen
+          <span aria-hidden="true">{{ root.api().open ? '^' : 'v' }}</span>
+        </a>
         and 3 others
       </p>
       <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
@@ -52,6 +54,4 @@ import { hoverCardExampleStyles } from '../hover-card-example-styles'
   `,
   styles: [hoverCardExampleStyles],
 })
-export class HoverCardPositioningExample {
-  readonly positioning: HoverCardPositioningOptions = { placement: 'right', gutter: 12 }
-}
+export class HoverCardContextExample {}

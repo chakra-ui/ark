@@ -45,8 +45,10 @@ import {
 } from '@ark-ui/angular/hover-card'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { HoverCardBasicExample } from './examples/basic'
+import { HoverCardContextExample } from './examples/context'
 import { HoverCardControlledExample } from './examples/controlled'
 import { HoverCardDelayExample } from './examples/delay'
+import { HoverCardMultipleTriggersExample } from './examples/multiple-triggers'
 import { HoverCardRootProviderExample } from './examples/root-provider'
 
 type HoverCardPublicTypeSmoke = [
@@ -599,6 +601,40 @@ describe('@ark-ui/angular/hover-card', () => {
     fixture.destroy()
   })
 
+  it('passes trigger value input through to Zag and updates [(triggerValue)]', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkHoverCardRoot, ArkHoverCardTrigger],
+      template: `
+        <div arkHoverCard [openDelay]="0" [closeDelay]="0" [(triggerValue)]="triggerValue">
+          <a arkHoverCardTrigger value="sarah" href="#">Sarah</a>
+          <a arkHoverCardTrigger value="alex" href="#">Alex</a>
+        </div>
+      `,
+    })
+    class Host {
+      readonly triggerValue = signal<string | null | undefined>(null)
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await TestBed.inject(ApplicationRef).whenStable()
+
+    const triggers = fixture.debugElement.queryAll(By.directive(ArkHoverCardTrigger))
+    const secondTrigger = triggers[1].nativeElement as HTMLElement
+
+    secondTrigger.dispatchEvent(new PointerEvent('pointerenter', { bubbles: true, pointerType: 'mouse' }))
+    await flushTimers()
+    await TestBed.inject(ApplicationRef).whenStable()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.triggerValue()).toBe('alex')
+
+    fixture.destroy()
+  })
+
   it('public-api source does not import @angular/forms', () => {
     const source = readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'public-api.ts'), 'utf-8')
     expect(source).not.toMatch(/@angular\/forms/)
@@ -627,6 +663,46 @@ describe('@ark-ui/angular/hover-card', () => {
     TestBed.configureTestingModule({ imports: [HoverCardDelayExample] })
     const fixture = TestBed.createComponent(HoverCardDelayExample)
     fixture.detectChanges()
+    fixture.destroy()
+  })
+
+  it('HoverCardContextExample reflects root api open state in the trigger affordance', async () => {
+    TestBed.configureTestingModule({ imports: [HoverCardContextExample] })
+    const fixture = TestBed.createComponent(HoverCardContextExample)
+    fixture.detectChanges()
+    await TestBed.inject(ApplicationRef).whenStable()
+
+    const triggerEl = fixture.debugElement.query(By.directive(ArkHoverCardTrigger)).nativeElement as HTMLElement
+    expect(triggerEl.textContent).toContain('v')
+
+    triggerEl.dispatchEvent(new PointerEvent('pointerenter', { bubbles: true, pointerType: 'mouse' }))
+    await flushTimers(800)
+    await TestBed.inject(ApplicationRef).whenStable()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(triggerEl.textContent).toContain('^')
+
+    fixture.destroy()
+  })
+
+  it('HoverCardMultipleTriggersExample mounts and updates the active profile from trigger value', async () => {
+    TestBed.configureTestingModule({ imports: [HoverCardMultipleTriggersExample] })
+    const fixture = TestBed.createComponent(HoverCardMultipleTriggersExample)
+    fixture.detectChanges()
+    await TestBed.inject(ApplicationRef).whenStable()
+
+    const triggers = fixture.debugElement.queryAll(By.directive(ArkHoverCardTrigger))
+    const alexTrigger = triggers[1].nativeElement as HTMLElement
+
+    alexTrigger.dispatchEvent(new PointerEvent('pointerenter', { bubbles: true, pointerType: 'mouse' }))
+    await flushTimers()
+    await TestBed.inject(ApplicationRef).whenStable()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.activeProfile()?.name).toBe('Alex Rivera')
+
     fixture.destroy()
   })
 
