@@ -111,6 +111,13 @@ describe('root entrypoint', () => {
       expect(key).not.toMatch(/internal/i)
     }
   })
+
+  it('does not expose factory or Ark namespace exports', async () => {
+    const mod = (await import('./index')) as Record<string, unknown>
+
+    expect(mod.factory).toBeUndefined()
+    expect(mod.Ark).toBeUndefined()
+  })
 })
 
 describe('providers aggregation', () => {
@@ -190,6 +197,7 @@ describe('package.json exports map', () => {
     for (const key of requiredKeys) {
       expect(exportsMap[key]).toBeDefined()
     }
+    expect(exportsMap['./factory']).toBeUndefined()
     expect(
       Object.keys(exportsMap).filter((key) => key.startsWith('./src/') && !privateSourceExportKeys.has(key)),
     ).toEqual([])
