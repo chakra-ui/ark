@@ -1,0 +1,130 @@
+{
+  "Root": {
+    "props": {
+      "panels": {
+        "type": "SplitterPanelData[]",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The size constraints of the panels."
+      },
+      "collapse": {
+        "type": "SplitterExpandCollapseDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when a collapsible panel is collapsed."
+      },
+      "defaultSize": {
+        "type": "number[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial size data of the panels when uncontrolled."
+      },
+      "expand": {
+        "type": "SplitterExpandCollapseDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when a collapsible panel is expanded."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the splitter."
+      },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  resizeTrigger: (id: string) => string\n  label: (id: string) => string\n  panel: (id: string | number) => string\n}>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the elements in the splitter. Useful for composition."
+      },
+      "keyboardResizeBy": {
+        "type": "null | number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The number of pixels to resize the panel by when the keyboard is used."
+      },
+      "nonce": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The nonce for the injected splitter cursor stylesheet."
+      },
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The orientation of the splitter."
+      },
+      "registry": {
+        "type": "splitter.SplitterRegistry",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The splitter registry to use for multi-drag support."
+      },
+      "resize": {
+        "type": "SplitterResizeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when panel sizes are resized."
+      },
+      "resizeEnd": {
+        "type": "SplitterResizeEndDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when a resize interaction ends."
+      },
+      "resizeStart": {
+        "type": "void",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when a resize interaction starts."
+      },
+      "size": {
+        "type": "number[]",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled size data of the panels."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseSplitterReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The splitter machine returned by useSplitter()."
+      }
+    }
+  },
+  "Panel": {
+    "props": {
+      "id": {
+        "type": "string",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The id of the panel."
+      }
+    }
+  },
+  "ResizeTrigger": {
+    "props": {
+      "id": {
+        "type": "`${string}:${string}`",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The id of the resize trigger in the form \"before:after\"."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the resize trigger is disabled."
+      }
+    }
+  },
+  "ResizeTriggerIndicator": {
+    "props": {}
+  }
+}

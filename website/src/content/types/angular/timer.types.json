@@ -1,0 +1,110 @@
+{
+  "Root": {
+    "props": {
+      "autoStart": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the timer should start automatically."
+      },
+      "complete": {
+        "type": "void",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when the timer completes."
+      },
+      "countdown": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the timer should count down, decrementing the timer on each tick."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the timer."
+      },
+      "ids": {
+        "type": "Partial<{ root: string; area: string }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the timer elements. Useful for composition."
+      },
+      "interval": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The interval in milliseconds to update the timer count."
+      },
+      "startMs": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The total duration of the timer in milliseconds."
+      },
+      "targetMs": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The target count of the timer in milliseconds."
+      },
+      "tick": {
+        "type": "TimerTickDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when the timer ticks."
+      },
+      "translations": {
+        "type": "TimerIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Localized strings for accessibility labels."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseTimerReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The timer machine returned by useTimer()."
+      }
+    }
+  },
+  "Area": {
+    "props": {}
+  },
+  "Item": {
+    "props": {
+      "type": {
+        "type": "keyof import('@zag-js/timer').Time<number>",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The timer part to render."
+      }
+    }
+  },
+  "Separator": {
+    "props": {}
+  },
+  "Control": {
+    "props": {}
+  },
+  "ActionTrigger": {
+    "props": {
+      "action": {
+        "type": "TimerAction",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The action to perform when the trigger is clicked."
+      }
+    }
+  },
+  "Context": {
+    "props": {}
+  }
+}

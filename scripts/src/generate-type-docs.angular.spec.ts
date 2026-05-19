@@ -131,6 +131,21 @@ describe('Angular type-doc generator aliases', () => {
   })
 })
 
+describe('Angular type-doc generator (Accordion)', () => {
+  const doc = generateAngularTypeDoc('accordion', rootDir)
+
+  it('extracts Root.value as a controlled model channel', async () => {
+    const accordionDoc = await doc
+    expect(accordionDoc['Root']).toBeDefined()
+    expect(accordionDoc['Root'].props['value']).toMatchObject({
+      kind: 'model',
+      isRequired: false,
+      type: 'string[]',
+    })
+    expect(accordionDoc['Root'].props['valueChange']).toBeUndefined()
+  })
+})
+
 describe('Angular type-doc generator (Avatar)', () => {
   const doc = generateAngularTypeDoc('avatar', rootDir)
 

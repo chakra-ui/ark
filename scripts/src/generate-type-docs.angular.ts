@@ -159,6 +159,10 @@ function derivePartName(classDeclaration: ClassDeclaration, component: string): 
     return 'RootProvider'
   }
 
+  if (component === 'toast' && className === 'ArkToaster') {
+    return 'Toaster'
+  }
+
   if (className.startsWith(arkPrefix)) {
     return className.slice(arkPrefix.length)
   }

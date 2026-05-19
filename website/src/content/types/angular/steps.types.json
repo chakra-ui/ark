@@ -1,0 +1,139 @@
+{
+  "Root": {
+    "props": {
+      "count": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The total number of steps."
+      },
+      "defaultStep": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial step index when uncontrolled."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the steps machine."
+      },
+      "ids": {
+        "type": "StepsElementIds",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the steps elements. Useful for composition."
+      },
+      "isStepSkippable": {
+        "type": "(index: number) => boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Returns whether the step at the provided index can be skipped."
+      },
+      "isStepValid": {
+        "type": "(index: number) => boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Returns whether the step at the provided index is valid."
+      },
+      "linear": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether steps must be completed in order."
+      },
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The orientation of the steps."
+      },
+      "step": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled current step index."
+      },
+      "stepComplete": {
+        "type": "void",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when all steps are completed."
+      },
+      "stepDetailsChange": {
+        "type": "StepsStepChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when the current step changes."
+      },
+      "stepInvalid": {
+        "type": "StepsStepInvalidDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when navigation to a step is blocked."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseStepsReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The steps machine returned by useSteps()."
+      }
+    }
+  },
+  "List": {
+    "props": {}
+  },
+  "Item": {
+    "props": {
+      "index": {
+        "type": "number",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The zero-based step index."
+      }
+    }
+  },
+  "Trigger": {
+    "props": {}
+  },
+  "Indicator": {
+    "props": {}
+  },
+  "Separator": {
+    "props": {}
+  },
+  "Content": {
+    "props": {
+      "index": {
+        "type": "number",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The zero-based step index for this content panel."
+      }
+    }
+  },
+  "CompletedContent": {
+    "props": {}
+  },
+  "Progress": {
+    "props": {}
+  },
+  "NextTrigger": {
+    "props": {}
+  },
+  "PrevTrigger": {
+    "props": {}
+  },
+  "Context": {
+    "props": {}
+  },
+  "ItemContext": {
+    "props": {}
+  }
+}

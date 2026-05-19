@@ -1,0 +1,146 @@
+{
+  "Root": {
+    "props": {
+      "autoFill": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to duplicate content to fill the container."
+      },
+      "complete": {
+        "type": "void",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when a finite marquee animation completes."
+      },
+      "defaultPaused": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "The initial pause state when uncontrolled."
+      },
+      "delay": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The delay before the animation starts, in seconds."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the marquee."
+      },
+      "ids": {
+        "type": "Partial<{ root: string; viewport: string; content: (index: number) => string }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the marquee elements. Useful for composition."
+      },
+      "loopComplete": {
+        "type": "void",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when the marquee completes one loop iteration."
+      },
+      "loopCount": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The number of animation loops. Use 0 for infinite looping."
+      },
+      "paused": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled pause state."
+      },
+      "pauseDetailsChange": {
+        "type": "MarqueePauseStatusDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when the pause state changes."
+      },
+      "pauseOnInteraction": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to pause the marquee on hover or focus."
+      },
+      "reverse": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to reverse the animation direction."
+      },
+      "side": {
+        "type": "'start' | 'end' | 'top' | 'bottom'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The side the marquee scrolls towards."
+      },
+      "spacing": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The spacing between marquee items."
+      },
+      "speed": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The animation speed in pixels per second."
+      },
+      "translations": {
+        "type": "MarqueeIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Localized strings for accessibility labels."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseMarqueeReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The marquee machine returned by useMarquee()."
+      }
+    }
+  },
+  "Viewport": {
+    "props": {}
+  },
+  "Content": {
+    "props": {
+      "index": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "0",
+        "description": "The content copy index. Use 0 for the original content."
+      }
+    }
+  },
+  "Item": {
+    "props": {}
+  },
+  "Edge": {
+    "props": {
+      "side": {
+        "type": "MarqueeSide",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The side where the edge gradient should appear."
+      }
+    }
+  },
+  "Context": {
+    "props": {}
+  }
+}

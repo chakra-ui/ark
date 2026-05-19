@@ -1,0 +1,255 @@
+{
+  "Root": {
+    "props": {
+      "allowOverflow": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether the panel may overflow the boundary while dragging."
+      },
+      "closeOnEscape": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the floating panel closes when the escape key is pressed."
+      },
+      "defaultOpen": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "The initial open state of the floating panel when uncontrolled."
+      },
+      "defaultPosition": {
+        "type": "FloatingPanelPoint",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial position of the floating panel when uncontrolled."
+      },
+      "defaultSize": {
+        "type": "FloatingPanelSize",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial size of the floating panel when uncontrolled."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the floating panel is disabled."
+      },
+      "draggable": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether the floating panel is draggable."
+      },
+      "finalFocusEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Element to receive focus when the floating panel closes."
+      },
+      "getAnchorPosition": {
+        "type": "(details: FloatingPanelAnchorPositionDetails) => FloatingPanelPoint",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Function that returns the initial panel position when opened."
+      },
+      "getBoundaryEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Function that returns the boundary element for dragging and resizing."
+      },
+      "gridSize": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The snap grid for dragging and keyboard movement."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the floating panel."
+      },
+      "ids": {
+        "type": "Partial<{ trigger: string; positioner: string; content: string; title: string; header: string }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the floating panel elements. Useful for composition."
+      },
+      "initialFocusEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Element to receive focus when the floating panel opens."
+      },
+      "lockAspectRatio": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether resizing locks the panel to its aspect ratio."
+      },
+      "maxSize": {
+        "type": "FloatingPanelSize",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The maximum size of the floating panel."
+      },
+      "minSize": {
+        "type": "FloatingPanelSize",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The minimum size of the floating panel."
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled open state of the floating panel."
+      },
+      "persistRect": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether size and position should be preserved when the floating panel closes."
+      },
+      "position": {
+        "type": "FloatingPanelPoint",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled position of the floating panel."
+      },
+      "positionChangeEnd": {
+        "type": "FloatingPanelPositionChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when a position-changing drag interaction ends."
+      },
+      "positionDetailsChange": {
+        "type": "FloatingPanelPositionChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when the panel position changes via dragging or API calls."
+      },
+      "resizable": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether the floating panel is resizable."
+      },
+      "restoreFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether focus should be restored when the floating panel closes."
+      },
+      "size": {
+        "type": "FloatingPanelSize",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled size of the floating panel."
+      },
+      "sizeChangeEnd": {
+        "type": "FloatingPanelSizeChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when a size-changing resize interaction ends."
+      },
+      "sizeDetailsChange": {
+        "type": "FloatingPanelSizeChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when the panel size changes via resizing or API calls."
+      },
+      "stageChange": {
+        "type": "FloatingPanelStageChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when the panel stage changes."
+      },
+      "strategy": {
+        "type": "'absolute' | 'fixed'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The positioning strategy to use."
+      },
+      "translations": {
+        "type": "FloatingPanelIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Localized strings for control labels."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseFloatingPanelReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The floating panel machine returned by useFloatingPanel()."
+      }
+    }
+  },
+  "Trigger": {
+    "props": {}
+  },
+  "Positioner": {
+    "props": {}
+  },
+  "Content": {
+    "props": {}
+  },
+  "Control": {
+    "props": {}
+  },
+  "Header": {
+    "props": {}
+  },
+  "Body": {
+    "props": {}
+  },
+  "Title": {
+    "props": {}
+  },
+  "CloseTrigger": {
+    "props": {}
+  },
+  "DragTrigger": {
+    "props": {}
+  },
+  "ResizeTrigger": {
+    "props": {
+      "axis": {
+        "type": "FloatingPanelResizeTriggerAxis",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The axis of the resize handle."
+      }
+    }
+  },
+  "StageTrigger": {
+    "props": {
+      "stage": {
+        "type": "FloatingPanelStage",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The stage to apply when the trigger is clicked."
+      }
+    }
+  },
+  "Context": {
+    "props": {}
+  }
+}

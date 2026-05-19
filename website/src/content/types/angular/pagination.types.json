@@ -1,0 +1,135 @@
+{
+  "Root": {
+    "props": {
+      "boundaryCount": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Number of pages to show at the beginning and end."
+      },
+      "count": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Total number of data items."
+      },
+      "defaultPage": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial active page when uncontrolled."
+      },
+      "defaultPageSize": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial number of data items per page when uncontrolled."
+      },
+      "getPageUrl": {
+        "type": "(details: PaginationPageUrlDetails) => string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Function to generate href attributes for pagination links."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the pagination."
+      },
+      "ids": {
+        "type": "Partial<{\n    root: string\n    ellipsis: (index: number) => string\n    firstTrigger: string\n    prevTrigger: string\n    nextTrigger: string\n    lastTrigger: string\n    item: (page: number) => string\n  }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the pagination elements. Useful for composition."
+      },
+      "page": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled active page."
+      },
+      "pageDetailsChange": {
+        "type": "PaginationPageChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when the active page changes."
+      },
+      "pageSize": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled number of data items per page."
+      },
+      "pageSizeDetailsChange": {
+        "type": "PaginationPageSizeChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when the page size changes."
+      },
+      "siblingCount": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Number of pages to show beside active page."
+      },
+      "translations": {
+        "type": "PaginationIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Localized strings for accessibility labels."
+      },
+      "type": {
+        "type": "'button' | 'link'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The type of trigger elements to render."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UsePaginationReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The pagination machine returned by usePagination()."
+      }
+    }
+  },
+  "Item": {
+    "props": {
+      "value": {
+        "type": "number",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The page value this item represents."
+      }
+    }
+  },
+  "Ellipsis": {
+    "props": {
+      "index": {
+        "type": "number",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The ellipsis index in the rendered page range."
+      }
+    }
+  },
+  "PrevTrigger": {
+    "props": {}
+  },
+  "NextTrigger": {
+    "props": {}
+  },
+  "FirstTrigger": {
+    "props": {}
+  },
+  "LastTrigger": {
+    "props": {}
+  },
+  "Context": {
+    "props": {}
+  }
+}
