@@ -1,0 +1,218 @@
+{
+  "Root": {
+    "props": {
+      "addOnPaste": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to add a tag when pasting into the input."
+      },
+      "allowDuplicates": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to allow duplicate tags."
+      },
+      "allowOverflow": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to allow tags to exceed max."
+      },
+      "autoFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to auto-focus the entry input."
+      },
+      "blurBehavior": {
+        "type": "'clear' | 'add'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The blur behavior of the entry input."
+      },
+      "defaultInputValue": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial entry input value when uncontrolled."
+      },
+      "defaultValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial value of the tags input when uncontrolled."
+      },
+      "delimiter": {
+        "type": "string | RegExp",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The delimiter character or regex used to add tags."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the tags input is disabled."
+      },
+      "editable": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether tags are editable after creation."
+      },
+      "form": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The form attribute of the hidden input."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The id of the tags input."
+      },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  input: string\n  hiddenInput: string\n  clearBtn: string\n  label: string\n  control: string\n  item: (opts: tagsInput.ItemProps) => string\n  itemDeleteTrigger: (opts: tagsInput.ItemProps) => string\n  itemInput: (opts: tagsInput.ItemProps) => string\n}>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The element ids for the tags input parts."
+      },
+      "inputValue": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled value of the entry input."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the tags input is invalid."
+      },
+      "max": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Max number of tags."
+      },
+      "maxLength": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Max length of the entry input."
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The name attribute of the hidden input."
+      },
+      "placeholder": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The placeholder text for the entry input."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the tags input is read-only."
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the tags input is required."
+      },
+      "sanitizeValue": {
+        "type": "(value: string) => string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Function used to sanitize a tag value before adding."
+      },
+      "translations": {
+        "type": "TagsInputIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The translations for the tags input."
+      },
+      "validate": {
+        "type": "(details: TagsInputValidateArgs) => boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Predicate used to determine whether a tag can be added."
+      },
+      "value": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled value of the tags input as an array of tag strings."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseTagsInputReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The tags input primitive returned by useTagsInput()."
+      }
+    }
+  },
+  "Label": {
+    "props": {}
+  },
+  "Control": {
+    "props": {}
+  },
+  "Input": {
+    "props": {}
+  },
+  "HiddenInput": {
+    "props": {}
+  },
+  "ClearTrigger": {
+    "props": {}
+  },
+  "Item": {
+    "props": {
+      "index": {
+        "type": "number",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "Zero-based index of this tag item."
+      },
+      "value": {
+        "type": "string",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The value string of this tag item."
+      }
+    }
+  },
+  "ItemText": {
+    "props": {}
+  },
+  "ItemPreview": {
+    "props": {}
+  },
+  "ItemInput": {
+    "props": {}
+  },
+  "ItemDeleteTrigger": {
+    "props": {}
+  }
+}

@@ -102,6 +102,11 @@
       "types": "./dist/toggle/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-toggle.mjs"
     },
+    "./tags-input": {
+      "source": "./tags-input/public-api.ts",
+      "types": "./dist/tags-input/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-tags-input.mjs"
+    },
     "./tooltip": {
       "source": "./src/tooltip/public-api.ts",
       "types": "./dist/src/tooltip/index.d.ts",
