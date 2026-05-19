@@ -103,6 +103,7 @@ export const popoverExampleStyles = `
     font-size: 0.9375rem;
     font-weight: 600;
     line-height: 1.1875rem;
+    color: var(--demo-neutral-fg, #1c1917);
   }
 
   [arkPopoverDescription] {
@@ -114,8 +115,8 @@ export const popoverExampleStyles = `
 
   [arkPopoverCloseTrigger] {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
+    top: 4px;
+    right: 4px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -123,8 +124,7 @@ export const popoverExampleStyles = `
     height: 1.5rem;
     background: transparent;
     border: 0;
-    border-radius: 0.25rem;
-    color: inherit;
+    color: var(--demo-neutral-emphasized, #44403c);
     cursor: pointer;
   }
 
@@ -132,10 +132,6 @@ export const popoverExampleStyles = `
     width: 1.25rem;
     height: 1.25rem;
     flex-shrink: 0;
-  }
-
-  [arkPopoverCloseTrigger]:hover {
-    background: var(--demo-neutral-muted, #f5f5f4);
   }
 
   [arkPopoverCloseTrigger]:focus-visible {
@@ -151,6 +147,11 @@ export const popoverExampleStyles = `
     display: inline-flex;
     margin-inline-start: 4px;
     transition: rotate 200ms ease;
+  }
+
+  [arkPopoverIndicator] svg {
+    width: 1rem;
+    height: 1rem;
   }
 
   [arkPopoverArrow] {
