@@ -6,32 +6,30 @@
 - Storybook/style files: `packages/angular/password-input/password-input.stories.ts`, `packages/angular/password-input/password-input-example-styles.ts`, `.storybook/modules/password-input.module.css`
 
 ## Summary
-- Status: Fixed and verified, with one unrelated package-wide typecheck blocker recorded below.
-- Highest-risk gaps: Angular Storybook examples and demo styling did not match the React reference; the Angular indicator had no template-readable visibility state for swapping visible/hidden icon content.
+- Status: Re-audited. Angular implementation remains at React parity. Previous fixes (commit `ff8829f2a`) verified against current React reference; no React-side updates have landed since that commit. No new code changes were required.
+- Highest-risk gaps: None remaining for password-input specifically. One unrelated package-wide ng-packagr `rootDir` error blocks a full `typecheck` build (affects every entry point that imports `@ark-ui/angular/src/providers/environment`), but it is not introduced by password-input and falls outside the component's scope.
 
 ## Gap Matrix
 | Area | Gap | React reference | Angular location | Fix |
 | --- | --- | --- | --- | --- |
-| Story parity | Missing `Autocomplete`, `IgnorePasswordManager`, `StrengthMeter`, and `WithValidation`; controlled story is named `Controlled` instead of `ControlledVisibility`. | `packages/react/src/components/password-input/password-input.stories.tsx` | `packages/angular/password-input/password-input.stories.ts` | Fixed: added missing examples and parity story names. |
-| Demo content | Angular examples render text `Toggle` instead of React's visible/hidden icon indicator pattern. | `packages/react/src/components/password-input/examples/*.tsx` | `packages/angular/password-input/examples/*.ts` | Fixed: added local eye icons and use indicator state in examples. |
-| Public API ergonomics | React indicator renders children or fallback from `passwordInput.visible`; Angular templates cannot read visibility from `arkPasswordInputIndicator`. | `packages/react/src/components/password-input/password-input-indicator.tsx` | `packages/angular/password-input/password-input-indicator.ts` | Fixed: exposed `visible: Signal<boolean>` on the indicator export. |
-| Styling parity | Angular demo styles use inline input/trigger layout; React uses a positioned trigger, max-width root, invalid/focus states, strength meter, and validation message styles. | `.storybook/modules/password-input.module.css` | `packages/angular/password-input/password-input-example-styles.ts` | Fixed: aligned Angular example styles with React CSS selectors. |
-| Accessibility | Existing root/input tests cover label IDs, disabled/readOnly/invalid propagation, CVA, and visibility toggle. Story examples should keep labeled inputs and button indicators. | `packages/react/src/components/password-input/*` | `packages/angular/password-input/password-input.spec.ts` | Fixed: added example mount coverage and indicator visibility coverage. |
-| Functionality | Core Zag mapping, field context, form integration, boolean transforms, and visibility/value model channels are present. | `packages/react/src/components/password-input/use-password-input.ts` | `packages/angular/password-input/use-password-input.ts`, `packages/angular/password-input/password-input-root.ts` | No change. |
+| Story parity | All eight React stories (`Autocomplete`, `Basic`, `ControlledVisibility`, `IgnorePasswordManager`, `RootProvider`, `WithField`, `StrengthMeter`, `WithValidation`) exported. Angular adds an extra `DefaultVisible` story exercising the `defaultVisible` boolean transform. | `packages/react/src/components/password-input/password-input.stories.tsx` | `packages/angular/password-input/password-input.stories.ts` | No change. Already aligned. |
+| Demo content | Angular examples render local eye / eye-off SVG icon components driven by `arkPasswordInputIndicator.visible()` (mirrors React's `<Indicator fallback={<EyeOffIcon />}><EyeIcon /></Indicator>`). | `packages/react/src/components/password-input/examples/*.tsx` | `packages/angular/password-input/examples/icons.ts`, plus each example | No change. Already aligned. |
+| Public API ergonomics | Angular indicator exports `visible: Signal<boolean>` via `exportAs: 'arkPasswordInputIndicator'`, matching React's runtime branching on `passwordInput.visible`. | `packages/react/src/components/password-input/password-input-indicator.tsx` | `packages/angular/password-input/password-input-indicator.ts` | No change. Already aligned. |
+| Styling parity | Angular example styles in `password-input-example-styles.ts` mirror `.storybook/modules/password-input.module.css`: root layout, max-width, positioned `[arkPasswordInputVisibilityTrigger]`, focus/invalid input states, strength meter, validation message. | `.storybook/modules/password-input.module.css` | `packages/angular/password-input/password-input-example-styles.ts` | No change. Already aligned. |
+| Functionality | Zag wiring (`useMachine`, `connect`), field-context merge (`disabled`/`invalid`/`readOnly`/`required`), `model()` channels for `value` and `visible`, `defaultValue`/`defaultVisible` seeding, `booleanAttribute` transforms, CVA, single-emission rule, dev warning for mixed `[formControl] + [(value)]`. | `packages/react/src/components/password-input/use-password-input.ts`, `password-input-root.tsx` | `packages/angular/password-input/use-password-input.ts`, `password-input-root.ts`, `password-input-input.ts` | No change. Already aligned. |
+| Accessibility | Indicator `aria-hidden="true"` is applied on local SVG icons in examples. Visibility trigger uses `<button>` host. Label/input id wiring flows through Zag + field-context. | `packages/react/src/components/password-input/*` | `packages/angular/password-input/examples/icons.ts`, `password-input-label.ts`, `password-input-input.ts` | No change. Already aligned. |
+| Tests | 15 specs covering public surface, orphan provider error, visibility toggle, indicator visibility signal, input → value writes, reactive forms `writeValue`, `defaultValue` seeding, template-driven `[(ngModel)]`, single-emission rule, blur-touched, `setDisabledState`, `readOnly`, field-merge, mixed binding diagnostic, and Storybook example mount smoke test. | `packages/react/src/components/password-input/*` (no equivalent Angular regression) | `packages/angular/password-input/password-input.spec.ts` | No change. Already aligned. |
 
 ## Implementation Plan
-1. Expose visibility on `ArkPasswordInputIndicator`.
-2. Add local Angular eye icon components and update examples to use indicator state.
-3. Add missing React-parity examples and story exports.
-4. Align example styles with the React CSS module.
-5. Add focused tests for indicator visibility and Storybook example mounting.
+1. Re-audit confirmed no new gaps; no code changes required.
+2. Refresh the audit file with the prior commit hash and current verification results.
 
 ## Verification
-- [x] Typecheck/build: `bun run --cwd packages/angular typecheck` attempted; blocked by unrelated existing `number-input/use-number-input.ts(53,9): error TS1117: An object literal cannot have multiple properties with the same name.`
-- [x] Component tests: `bun run --cwd packages/angular test:ci password-input/password-input.spec.ts` passed, 1 file / 15 tests.
-- [x] Storybook render: `bun run --cwd packages/angular storybook -- --ci` reached "Storybook ready" at `http://localhost:6007/`; process stopped after startup verification.
-- [x] Manual/visual checks: Confirmed from code and Storybook startup that `Basic`, `Autocomplete`, `ControlledVisibility`, `IgnorePasswordManager`, `RootProvider`, `WithField`, `StrengthMeter`, `WithValidation`, and the extra Angular `DefaultVisible` story are registered and mount through tests.
+- [x] Typecheck/build: `bun run --cwd packages/angular typecheck` fails at the `avatar` entry point with `TS6059: File '.../src/providers/environment/environment.ngtypecheck.ts' is not under 'rootDir' '.../packages/angular/avatar'`. This is a package-wide ng-packagr/rootDir regression affecting every entry point that imports `@ark-ui/angular/src/providers/environment`; it predates this re-audit and is not specific to `password-input`. Deferred — fix belongs in shared package wiring, not the component scope.
+- [x] Component tests: `bun run --cwd packages/angular test:ci password-input/password-input.spec.ts` — 1 file / 15 tests passed.
+- [x] Storybook render: not re-run in this pass; Storybook startup was verified in the previous audit (`ff8829f2a`) and no source files changed since then.
+- [x] Manual/visual checks: Confirmed from code that all React stories (`Basic`, `Autocomplete`, `ControlledVisibility`, `IgnorePasswordManager`, `RootProvider`, `WithField`, `StrengthMeter`, `WithValidation`) plus the extra Angular `DefaultVisible` are registered and exercised by the Storybook-example mount test in the spec file.
 
 ## Commit
-- Hash:
-- Message: fix(angular): align password input with react parity
+- Hash: ff8829f2a (prior fix); re-audit commit recorded below.
+- Message: fix(angular): align password-input with react parity
