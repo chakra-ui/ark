@@ -215,6 +215,25 @@ describe('collection entrypoint (criterion 27)', () => {
     expect(replaced.clearSelection().isEmpty()).toBe(true)
   })
 
+  it('extends list selection across a collection range', () => {
+    const items: Item[] = [
+      { value: 'a', label: 'A' },
+      { value: 'b', label: 'B' },
+      { value: 'c', label: 'C' },
+      { value: 'd', label: 'D' },
+    ]
+    const collection = createListCollection<Item>({ items })
+    const selection = createListSelection({ selectionMode: 'multiple' })
+
+    const extended = selection.extendSelection(collection, 'b', 'd')
+    expect(Array.from(extended)).toEqual(['b', 'c', 'd'])
+    expect(extended.firstSelectedValue(collection)).toBe('b')
+    expect(extended.lastSelectedValue(collection)).toBe('d')
+
+    const narrowed = extended.extendSelection(collection, 'b', 'c')
+    expect(Array.from(narrowed)).toEqual(['b', 'c'])
+  })
+
   it('loads async list items through the machine and connected api', async () => {
     const items = [{ value: 1 }, { value: 2 }]
     let details: LoadDetails<{ value: number }, string> | undefined
