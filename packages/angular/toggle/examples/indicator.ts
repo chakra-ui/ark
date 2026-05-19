@@ -11,7 +11,11 @@ import { ToggleHeartIcon } from './icons'
   template: `
     <button arkToggle #toggle="arkToggle">
       <span arkToggleIndicator>
-        <toggle-heart-icon [filled]="toggle.api().pressed" />
+        @if (toggle.api().pressed) {
+          <toggle-heart-icon [filled]="true" />
+        } @else {
+          <toggle-heart-icon />
+        }
       </span>
     </button>
   `,

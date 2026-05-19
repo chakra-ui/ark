@@ -1,27 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { ArkToggleRoot, injectArkToggleContext } from '@ark-ui/angular/toggle'
+import { ArkToggleContext, ArkToggleRoot } from '@ark-ui/angular/toggle'
 import { toggleExampleStyles } from '../toggle-example-styles'
 import { ToggleBoldIcon } from './icons'
-
-@Component({
-  selector: 'toggle-context-label',
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<span>{{ context.api().pressed ? "On" : "Off" }}</span>',
-})
-export class ToggleContextLabel {
-  readonly context = injectArkToggleContext()
-}
 
 @Component({
   selector: 'toggle-context-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ArkToggleRoot, ToggleBoldIcon, ToggleContextLabel],
+  imports: [ArkToggleRoot, ArkToggleContext, ToggleBoldIcon],
   template: `
     <button arkToggle>
       <toggle-bold-icon />
-      <toggle-context-label />
+      <ng-template arkToggleContext let-toggle="api">
+        <span>{{ toggle().pressed ? 'On' : 'Off' }}</span>
+      </ng-template>
     </button>
   `,
   styles: [toggleExampleStyles],

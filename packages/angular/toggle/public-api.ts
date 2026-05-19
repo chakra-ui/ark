@@ -1,4 +1,5 @@
 export { toggleAnatomy } from './toggle.anatomy'
+export { ArkToggleContext, type ToggleContextTemplate } from './toggle-context'
 export { ArkToggleIndicator } from './toggle-indicator'
 export { ArkToggleRoot } from './toggle-root'
 export type { ToggleApi, ToggleMachine, ToggleMachineProps, ToggleService } from './toggle.types'
