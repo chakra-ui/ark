@@ -10,6 +10,7 @@ const requiredUtilityStories = [
   ['src/providers/environment/environment.stories.ts', 'Utilities / Environment'],
   ['src/providers/interaction/interaction.stories.ts', 'Utilities / Interaction'],
   ['src/providers/locale/locale.stories.ts', 'Utilities / Locale'],
+  ['src/collection/async-list.stories.ts', 'Utilities / Async List'],
   ['src/collection/list-selection.stories.ts', 'Utilities / List Selection'],
 ] as const
 
