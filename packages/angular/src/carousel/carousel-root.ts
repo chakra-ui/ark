@@ -30,7 +30,7 @@ import { useCarousel, type UseCarouselReturn } from './use-carousel'
 
 const autoplayAttribute = (value: unknown): boolean | { delay: number } | undefined => {
   if (value === undefined || value === null) return undefined
-  if (typeof value === 'object') return value as { delay: number }
+  if (typeof value === 'object' && !Array.isArray(value) && 'delay' in value) return value as { delay: number }
   return booleanAttribute(value)
 }
 
@@ -89,6 +89,8 @@ export class ArkCarouselRoot implements UseCarouselReturn {
   readonly autoplayStatusChange: OutputEmitterRef<CarouselAutoplayStatusDetails> =
     output<CarouselAutoplayStatusDetails>()
 
+  private lastPageDetails: number | undefined
+
   private readonly machine = useCarousel({
     context: () => ({
       id: this.id(),
@@ -109,10 +111,14 @@ export class ArkCarouselRoot implements UseCarouselReturn {
       snapType: this.snapType(),
       translations: this.translations(),
       onPageChange: (details) => {
-        if (this.page() !== details.page) {
+        const currentPage = this.page()
+        if (currentPage !== undefined && currentPage !== details.page) {
           this.page.set(details.page)
         }
-        this.pageDetailsChange.emit(details)
+        if (this.lastPageDetails !== details.page) {
+          this.lastPageDetails = details.page
+          this.pageDetailsChange.emit(details)
+        }
       },
       onDragStatusChange: (details) => {
         this.dragStatusChange.emit(details)
@@ -131,13 +137,24 @@ export class ArkCarouselRoot implements UseCarouselReturn {
   constructor() {
     const destroyRef = inject(DestroyRef)
     let destroyed = false
+    let hasObservedSlideCount = false
+    let previousSlideCount: number | undefined
     destroyRef.onDestroy(() => {
       destroyed = true
     })
 
     effect(() => {
-      this.slideCount()
-      queueMicrotask(() => {
+      const slideCount = this.slideCount()
+      if (!hasObservedSlideCount) {
+        hasObservedSlideCount = true
+        previousSlideCount = slideCount
+        return
+      }
+      if (Object.is(previousSlideCount, slideCount)) return
+      previousSlideCount = slideCount
+      const win = this.service.scope.getWin()
+      const scheduleMicrotask = win.queueMicrotask?.bind(win) ?? queueMicrotask
+      scheduleMicrotask(() => {
         if (!destroyed) this.api().refresh()
       })
     })

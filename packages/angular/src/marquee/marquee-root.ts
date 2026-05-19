@@ -68,6 +68,8 @@ export class ArkMarqueeRoot implements UseMarqueeReturn {
   /** Emits when a finite marquee animation completes. */
   readonly complete: OutputEmitterRef<void> = output<void>()
 
+  private lastPauseDetails: boolean | undefined
+
   private readonly machine = useMarquee({
     context: () => ({
       id: this.id(),
@@ -84,10 +86,14 @@ export class ArkMarqueeRoot implements UseMarqueeReturn {
       paused: this.paused(),
       defaultPaused: this.defaultPaused(),
       onPauseChange: (details) => {
-        if (this.paused() !== details.paused) {
+        const currentPaused = this.paused()
+        if (currentPaused !== undefined && currentPaused !== details.paused) {
           this.paused.set(details.paused)
         }
-        this.pauseDetailsChange.emit(details)
+        if (this.lastPauseDetails !== details.paused) {
+          this.lastPauseDetails = details.paused
+          this.pauseDetailsChange.emit(details)
+        }
       },
       onLoopComplete: () => this.loopComplete.emit(),
       onComplete: () => this.complete.emit(),

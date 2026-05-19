@@ -91,6 +91,8 @@ export class ArkTourRoot implements UseTourReturn {
   /** Emits details when the step list changes. */
   readonly stepsChange: OutputEmitterRef<TourStepsChangeDetails> = output<TourStepsChangeDetails>()
 
+  private lastStepDetails: string | null | undefined
+
   private readonly machine = useTour({
     context: () => ({
       id: this.id(),
@@ -109,10 +111,14 @@ export class ArkTourRoot implements UseTourReturn {
       onPointerDownOutside: (event) => this.pointerDownOutside.emit(event),
       onStatusChange: (details) => this.statusChange.emit(details),
       onStepChange: (details) => {
-        if (this.stepId() !== details.stepId) {
+        const currentStepId = this.stepId()
+        if (currentStepId !== undefined && currentStepId !== details.stepId) {
           this.stepId.set(details.stepId)
         }
-        this.stepChange.emit(details)
+        if (this.lastStepDetails !== details.stepId) {
+          this.lastStepDetails = details.stepId
+          this.stepChange.emit(details)
+        }
       },
       onStepsChange: (details) => this.stepsChange.emit(details),
     }),

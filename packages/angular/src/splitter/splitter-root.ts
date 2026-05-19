@@ -71,6 +71,7 @@ export class ArkSplitterRoot implements UseSplitterReturn {
 
   private readonly fallbackPanels: SplitterPanelData[] = [{ id: '__ark_splitter_a__' }, { id: '__ark_splitter_b__' }]
   private hasHydratedDefaultSize = false
+  private lastResizeDetails: number[] | undefined
 
   private readPanels(): SplitterPanelData[] {
     try {
@@ -86,16 +87,19 @@ export class ArkSplitterRoot implements UseSplitterReturn {
       ids: this.ids(),
       orientation: this.orientation(),
       size: this.size(),
-      defaultSize: this.defaultSize(),
       panels: this.readPanels(),
       keyboardResizeBy: this.keyboardResizeBy(),
       nonce: this.nonce(),
       registry: this.registry(),
       onResize: (details) => {
-        if (!areNumberArraysEqual(this.size(), details.size)) {
+        const currentSize = this.size()
+        if (currentSize !== undefined && !areNumberArraysEqual(currentSize, details.size)) {
           this.size.set([...details.size])
         }
-        this.resize.emit(details)
+        if (!areNumberArraysEqual(this.lastResizeDetails, details.size)) {
+          this.lastResizeDetails = [...details.size]
+          this.resize.emit(details)
+        }
       },
       onResizeStart: () => {
         this.resizeStart.emit()

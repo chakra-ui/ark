@@ -58,7 +58,7 @@ export class ArkAccordionRoot implements UseAccordionReturn {
       disabled: this.disabled(),
       orientation: this.orientation(),
       onValueChange: (details) => {
-        if (areStringArraysEqual(this.value(), details.value)) return
+        if (this.value() === undefined || areStringArraysEqual(this.value(), details.value)) return
         this.value.set(details.value)
       },
     }),

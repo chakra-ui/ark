@@ -243,13 +243,14 @@ describe('@ark-ui/angular/marquee', () => {
     root.api().pause()
     await flush(fixture)
     expect(root.api().paused).toBe(true)
-    expect(fixture.componentInstance.pausedChanges).toEqual([true])
+    expect(fixture.componentInstance.pausedChanges).toEqual([])
     expect(fixture.componentInstance.detailChanges).toEqual([{ paused: true }])
 
     root.api().resume()
     await flush(fixture)
     expect(root.api().paused).toBe(false)
-    expect(fixture.componentInstance.pausedChanges).toEqual([true, false])
+    expect(fixture.componentInstance.pausedChanges).toEqual([])
+    expect(fixture.componentInstance.detailChanges).toEqual([{ paused: true }, { paused: false }])
 
     root.api().togglePause()
     await flush(fixture)

@@ -99,7 +99,7 @@ export class ArkTabsRoot implements UseTabsReturn {
       },
       translations: this.translations(),
       onValueChange: (details) => {
-        if (this.value() === details.value) return
+        if (this.value() === undefined || this.value() === details.value) return
         this.value.set(details.value)
       },
       onFocusChange: (details) => {

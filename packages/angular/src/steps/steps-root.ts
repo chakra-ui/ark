@@ -58,6 +58,8 @@ export class ArkStepsRoot implements UseStepsReturn {
   /** Emits details when navigation to a step is blocked. */
   readonly stepInvalid: OutputEmitterRef<StepsStepInvalidDetails> = output<StepsStepInvalidDetails>()
 
+  private lastStepDetails: number | undefined
+
   private readonly machine = useSteps({
     context: () => ({
       id: this.id(),
@@ -70,10 +72,14 @@ export class ArkStepsRoot implements UseStepsReturn {
       isStepValid: this.isStepValid(),
       isStepSkippable: this.isStepSkippable(),
       onStepChange: (details) => {
-        if (this.step() !== details.step) {
+        const currentStep = this.step()
+        if (currentStep !== undefined && currentStep !== details.step) {
           this.step.set(details.step)
         }
-        this.stepDetailsChange.emit(details)
+        if (this.lastStepDetails !== details.step) {
+          this.lastStepDetails = details.step
+          this.stepDetailsChange.emit(details)
+        }
       },
       onStepComplete: () => {
         this.stepComplete.emit()
