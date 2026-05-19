@@ -120,7 +120,7 @@ export const progressCircularExampleStyles = `
   [arkProgress],
   [arkProgressRootProvider] {
     color: var(--demo-neutral-fg);
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
