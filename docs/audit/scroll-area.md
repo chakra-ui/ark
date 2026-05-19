@@ -56,5 +56,5 @@
       sizing, and thumb rules; example dimensions match each React example.
 
 ## Commit
-- Hash: 1de8d29ca
+- Hash: 146ad0c20
 - Message: `fix(angular): align scroll-area with react parity`
