@@ -32,7 +32,7 @@ export class ArkFileUploadItemPreview {
     if (pattern.endsWith('/*')) {
       return mimeType.startsWith(pattern.slice(0, -1))
     }
-    if (/[\\^$.*+?()[\]{}|]/.test(pattern)) {
+    if (/[\^$*?()[\]{}|\\]/.test(pattern)) {
       try {
         return new RegExp(pattern).test(mimeType)
       } catch {

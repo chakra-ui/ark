@@ -407,6 +407,42 @@ describe('@ark-ui/angular/file-upload', () => {
     }
   })
 
+  it('item-preview matches exact, wildcard, and explicit regex MIME patterns', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFileUploadRoot, ArkFileUploadItem, ArkFileUploadItemPreview],
+      template: `
+        <div arkFileUpload>
+          <div arkFileUploadItem [file]="file()">
+            <div arkFileUploadItemPreview type="image/svg+xml"></div>
+            <div arkFileUploadItemPreview type="image/*"></div>
+            <div arkFileUploadItemPreview type="^image/"></div>
+            <div arkFileUploadItemPreview type="application/vnd.ms-excel"></div>
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly file = signal(makeFile('icon.svg', 4, 'image/svg+xml'))
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const previews = fixture.debugElement
+      .queryAll(By.directive(ArkFileUploadItemPreview))
+      .map((debug) => debug.injector.get(ArkFileUploadItemPreview))
+    expect(previews.map((preview) => preview.matches())).toEqual([true, true, true, false])
+
+    fixture.componentInstance.file.set(makeFile('sheet.xls', 4, 'application/vnd.ms-excel'))
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(previews.map((preview) => preview.matches())).toEqual([false, false, false, true])
+
+    fixture.destroy()
+  })
+
   it('dropzone applies data-dragging when a dragenter is dispatched', async () => {
     @Component({
       standalone: true,

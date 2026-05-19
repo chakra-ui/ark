@@ -44,7 +44,8 @@ export class ArkFileUploadItemPreviewImage {
       props: () => {
         const url = this.urlSignal() ?? ''
         const props = context.api().getItemPreviewImageProps({ file: item.file(), type: item.type(), url })
-        return url ? props : { ...props, hidden: true }
+        const { src: _src, ...rest } = props
+        return url ? props : { ...rest, hidden: true }
       },
     })
   }

@@ -182,7 +182,38 @@ describe('@ark-ui/angular/field', () => {
 
     const root = fixture.debugElement.query(By.directive(ArkFieldRoot)).injector.get(ArkFieldRoot)
     const inputEl = fixture.debugElement.query(By.directive(ArkFieldInput)).nativeElement as HTMLInputElement
+    const errorEl = fixture.debugElement.query(By.directive(ArkFieldErrorText)).nativeElement as HTMLElement
     expect(inputEl.getAttribute('aria-describedby')).toBe(root.ids.helperText)
+    expect(errorEl.getAttribute('aria-live')).toBe('polite')
+    expect(errorEl.hidden).toBe(true)
+
+    fixture.destroy()
+  })
+
+  it('boolean text-presence setters remain idempotent alongside registrations', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFieldRoot],
+      template: '<div arkFieldRoot></div>',
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const root = fixture.debugElement.query(By.directive(ArkFieldRoot)).injector.get(ArkFieldRoot)
+    root.setHasErrorText(true)
+    root.setHasErrorText(true)
+    expect(root.hasErrorText()).toBe(true)
+    root.setHasErrorText(false)
+    expect(root.hasErrorText()).toBe(false)
+
+    const unregister = root.registerErrorText()
+    root.setHasErrorText(false)
+    expect(root.hasErrorText()).toBe(true)
+    unregister()
+    expect(root.hasErrorText()).toBe(false)
 
     fixture.destroy()
   })

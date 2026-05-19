@@ -81,8 +81,10 @@ export function useField(options: UseFieldOptions): UseFieldReturn {
 
   const errorTextCount = signal(0)
   const helperTextCount = signal(0)
-  const hasErrorTextSignal = computed(() => errorTextCount() > 0)
-  const hasHelperTextSignal = computed(() => helperTextCount() > 0)
+  const explicitHasErrorText = signal(false)
+  const explicitHasHelperText = signal(false)
+  const hasErrorTextSignal = computed(() => explicitHasErrorText() || errorTextCount() > 0)
+  const hasHelperTextSignal = computed(() => explicitHasHelperText() || helperTextCount() > 0)
 
   const ariaDescribedby = computed<string | undefined>(() => {
     const list: string[] = []
@@ -153,6 +155,7 @@ export function useField(options: UseFieldOptions): UseFieldReturn {
     ...fieldParts.errorText.attrs,
     id: ids().errorText,
     'aria-live': 'polite',
+    hidden: !invalid() || undefined,
     'data-disabled': dataAttr(disabled()),
     'data-invalid': dataAttr(invalid()),
   })
@@ -173,8 +176,8 @@ export function useField(options: UseFieldOptions): UseFieldReturn {
     hasErrorText: hasErrorTextSignal,
     hasHelperText: hasHelperTextSignal,
     ariaDescribedby,
-    setHasErrorText: (value: boolean) => errorTextCount.update((count) => Math.max(0, count + (value ? 1 : -1))),
-    setHasHelperText: (value: boolean) => helperTextCount.update((count) => Math.max(0, count + (value ? 1 : -1))),
+    setHasErrorText: (value: boolean) => explicitHasErrorText.set(value),
+    setHasHelperText: (value: boolean) => explicitHasHelperText.set(value),
     registerErrorText: () => {
       errorTextCount.update((count) => count + 1)
       return () => errorTextCount.update((count) => Math.max(0, count - 1))
