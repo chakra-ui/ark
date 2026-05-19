@@ -47,14 +47,14 @@ Use this list with `docs/component-audit-fix/SKILL.md`. Check off a component on
 | [x] | splitter | `packages/angular/src/splitter` | `packages/angular/src/splitter/splitter.stories.ts` | `packages/react/src/components/splitter` | `packages/react/src/components/splitter/splitter.stories.tsx` |  |
 | [x] | steps | `packages/angular/src/steps` | `packages/angular/src/steps/steps.stories.ts` | `packages/react/src/components/steps` | `packages/react/src/components/steps/steps.stories.tsx` |  |
 | [x] | swap | `packages/angular/src/swap` | `packages/angular/src/swap/swap.stories.ts` | `packages/react/src/components/swap` | `packages/react/src/components/swap/swap.stories.tsx` |  |
-| [ ] | tabs | `packages/angular/src/tabs` | `packages/angular/src/tabs/tabs.stories.ts` | `packages/react/src/components/tabs` | `packages/react/src/components/tabs/tabs.stories.tsx` |  |
-| [ ] | tags-input | `packages/angular/tags-input` | `packages/angular/tags-input/tags-input.stories.ts` | `packages/react/src/components/tags-input` | `packages/react/src/components/tags-input/tags-input.stories.tsx` |  |
-| [ ] | timer | `packages/angular/src/timer` | `packages/angular/src/timer/timer.stories.ts` | `packages/react/src/components/timer` | `packages/react/src/components/timer/timer.stories.tsx` |  |
-| [ ] | toast | `packages/angular/src/toast` | `packages/angular/src/toast/toast.stories.ts` | `packages/react/src/components/toast` | `packages/react/src/components/toast/toast.stories.tsx` |  |
-| [ ] | toggle | `packages/angular/toggle` | `packages/angular/toggle/toggle.stories.ts` | `packages/react/src/components/toggle` | `packages/react/src/components/toggle/toggle.stories.tsx` |  |
-| [ ] | tooltip | `packages/angular/src/tooltip` | `packages/angular/src/tooltip/tooltip.stories.ts` | `packages/react/src/components/tooltip` | `packages/react/src/components/tooltip/tooltip.stories.tsx` |  |
-| [ ] | tour | `packages/angular/src/tour` | `packages/angular/src/tour/tour.stories.ts` | `packages/react/src/components/tour` | `packages/react/src/components/tour/tour.stories.tsx` |  |
-| [ ] | tree-view | `packages/angular/src/tree-view` | `packages/angular/src/tree-view/tree-view.stories.ts` | `packages/react/src/components/tree-view` | `packages/react/src/components/tree-view/tree-view.stories.tsx` |  |
+| [x] | tabs | `packages/angular/src/tabs` | `packages/angular/src/tabs/tabs.stories.ts` | `packages/react/src/components/tabs` | `packages/react/src/components/tabs/tabs.stories.tsx` |  |
+| [x] | tags-input | `packages/angular/tags-input` | `packages/angular/tags-input/tags-input.stories.ts` | `packages/react/src/components/tags-input` | `packages/react/src/components/tags-input/tags-input.stories.tsx` |  |
+| [x] | timer | `packages/angular/src/timer` | `packages/angular/src/timer/timer.stories.ts` | `packages/react/src/components/timer` | `packages/react/src/components/timer/timer.stories.tsx` |  |
+| [x] | toast | `packages/angular/src/toast` | `packages/angular/src/toast/toast.stories.ts` | `packages/react/src/components/toast` | `packages/react/src/components/toast/toast.stories.tsx` |  |
+| [x] | toggle | `packages/angular/toggle` | `packages/angular/toggle/toggle.stories.ts` | `packages/react/src/components/toggle` | `packages/react/src/components/toggle/toggle.stories.tsx` |  |
+| [x] | tooltip | `packages/angular/src/tooltip` | `packages/angular/src/tooltip/tooltip.stories.ts` | `packages/react/src/components/tooltip` | `packages/react/src/components/tooltip/tooltip.stories.tsx` |  |
+| [x] | tour | `packages/angular/src/tour` | `packages/angular/src/tour/tour.stories.ts` | `packages/react/src/components/tour` | `packages/react/src/components/tour/tour.stories.tsx` |  |
+| [x] | tree-view | `packages/angular/src/tree-view` | `packages/angular/src/tree-view/tree-view.stories.ts` | `packages/react/src/components/tree-view` | `packages/react/src/components/tree-view/tree-view.stories.tsx` |  |
 
 ## Needs Angular Story Or Component Gap Triage
 
