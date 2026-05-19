@@ -36,5 +36,5 @@
 - [x] Diff check: `git diff --check` — clean.
 
 ## Commit
-- Hash: f6bd32dea
+- Hash: 5b6441e79
 - Message: fix(angular): align number-input with react parity
