@@ -31,6 +31,7 @@ export function useProgress(options: UseProgressOptions): UseProgressReturn {
         ...props,
         dir: locale.dir,
         id: props.id ?? fallbackId,
+        locale: props.locale ?? locale.locale,
       }
       const getRootNode = environment.getRootNode as (() => ShadowRoot | Document | Node) | undefined
       if (getRootNode) {

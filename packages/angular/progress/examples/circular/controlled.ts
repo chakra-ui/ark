@@ -1,29 +1,20 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
 import {
   ArkProgressCircle,
   ArkProgressCircleRange,
   ArkProgressCircleTrack,
-  ArkProgressLabel,
   ArkProgressRoot,
   ArkProgressValueText,
 } from '@ark-ui/angular/progress'
 import { progressCircularExampleStyles } from '../../progress-example-styles'
 
 @Component({
-  selector: 'progress-circular-with-label-example',
+  selector: 'progress-circular-controlled-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ArkProgressRoot,
-    ArkProgressLabel,
-    ArkProgressCircle,
-    ArkProgressCircleTrack,
-    ArkProgressCircleRange,
-    ArkProgressValueText,
-  ],
+  imports: [ArkProgressRoot, ArkProgressCircle, ArkProgressCircleTrack, ArkProgressCircleRange, ArkProgressValueText],
   template: `
-    <div arkProgress [defaultValue]="42">
-      <span arkProgressLabel>Label</span>
+    <div arkProgress [(value)]="value">
       <div class="progress-circle-container">
         <svg arkProgressCircle>
           <circle arkProgressCircleTrack></circle>
@@ -35,4 +26,6 @@ import { progressCircularExampleStyles } from '../../progress-example-styles'
   `,
   styles: [progressCircularExampleStyles],
 })
-export class ProgressCircularWithLabelExample {}
+export class ProgressCircularControlledExample {
+  readonly value = signal<number | null | undefined>(42)
+}

@@ -9,12 +9,12 @@ import {
 import { progressLinearExampleStyles } from '../../progress-example-styles'
 
 @Component({
-  selector: 'progress-linear-vertical-example',
+  selector: 'progress-linear-initial-value-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArkProgressRoot, ArkProgressLabel, ArkProgressValueText, ArkProgressTrack, ArkProgressRange],
   template: `
-    <div arkProgress orientation="vertical">
+    <div arkProgress [defaultValue]="70">
       <span arkProgressLabel>Label</span>
       <span arkProgressValueText #valueText="arkProgressValueText">{{ valueText.percentAsString() }}</span>
       <div arkProgressTrack>
@@ -24,4 +24,4 @@ import { progressLinearExampleStyles } from '../../progress-example-styles'
   `,
   styles: [progressLinearExampleStyles],
 })
-export class ProgressLinearVerticalExample {}
+export class ProgressLinearInitialValueExample {}

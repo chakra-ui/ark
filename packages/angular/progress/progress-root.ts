@@ -13,7 +13,7 @@ import {
   model,
 } from '@angular/core'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
-import type { ProgressElementIds } from './progress.types'
+import type { ProgressElementIds, ProgressIntlTranslations } from './progress.types'
 import { ARK_PROGRESS_CONTEXT } from './use-progress-context'
 import { useProgress, type UseProgressReturn } from './use-progress'
 
@@ -46,6 +46,12 @@ export class ArkProgressRoot implements UseProgressReturn {
   readonly formatOptions: InputSignal<Intl.NumberFormatOptions | undefined> = input<
     Intl.NumberFormatOptions | undefined
   >(undefined)
+  /** The localized messages to use. */
+  readonly translations: InputSignal<ProgressIntlTranslations | undefined> = input<
+    ProgressIntlTranslations | undefined
+  >(undefined)
+  /** The locale to use for formatting the value. */
+  readonly locale: InputSignal<string | undefined> = input<string | undefined>(undefined)
 
   private readonly machine = useProgress({
     context: () => ({
@@ -57,6 +63,8 @@ export class ArkProgressRoot implements UseProgressReturn {
       max: this.max(),
       orientation: this.orientation(),
       formatOptions: this.formatOptions(),
+      translations: this.translations(),
+      locale: this.locale(),
       onValueChange: (details) => this.value.set(details.value),
     }),
   })

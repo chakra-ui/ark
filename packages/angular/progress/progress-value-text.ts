@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core'
+import { Directive, type Signal, computed } from '@angular/core'
 import { applyProgressPartProps } from './apply-progress-part-props'
 import { injectArkProgressContext } from './use-progress-context'
 
@@ -8,8 +8,11 @@ import { injectArkProgressContext } from './use-progress-context'
   exportAs: 'arkProgressValueText',
 })
 export class ArkProgressValueText {
+  private readonly context = injectArkProgressContext()
+  readonly percentAsString: Signal<string> = computed(() => this.context.api().percentAsString)
+  readonly valueAsString: Signal<string> = computed(() => this.context.api().valueAsString)
+
   constructor() {
-    const context = injectArkProgressContext()
-    applyProgressPartProps(() => context.api().getValueTextProps())
+    applyProgressPartProps(() => this.context.api().getValueTextProps())
   }
 }

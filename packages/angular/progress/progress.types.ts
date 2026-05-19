@@ -1,6 +1,7 @@
 export type {
   Api as ProgressApi,
   ElementIds as ProgressElementIds,
+  IntlTranslations as ProgressIntlTranslations,
   Machine as ProgressMachine,
   Props as ProgressMachineProps,
   ProgressState,

@@ -14,13 +14,13 @@ import { progressCircularExampleStyles } from '../../progress-example-styles'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArkProgressRoot, ArkProgressCircle, ArkProgressCircleTrack, ArkProgressCircleRange, ArkProgressValueText],
   template: `
-    <div arkProgress [value]="null">
+    <div arkProgress [defaultValue]="null">
       <div class="progress-circle-container">
         <svg arkProgressCircle>
           <circle arkProgressCircleTrack></circle>
           <circle arkProgressCircleRange></circle>
         </svg>
-        <span arkProgressValueText></span>
+        <span arkProgressValueText #valueText="arkProgressValueText">{{ valueText.percentAsString() }}</span>
       </div>
     </div>
   `,

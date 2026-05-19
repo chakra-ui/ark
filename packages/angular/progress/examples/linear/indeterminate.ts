@@ -14,9 +14,9 @@ import { progressLinearExampleStyles } from '../../progress-example-styles'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArkProgressRoot, ArkProgressLabel, ArkProgressValueText, ArkProgressTrack, ArkProgressRange],
   template: `
-    <div arkProgress [value]="null">
+    <div arkProgress [defaultValue]="null">
       <span arkProgressLabel>Label</span>
-      <span arkProgressValueText></span>
+      <span arkProgressValueText #valueText="arkProgressValueText">{{ valueText.percentAsString() }}</span>
       <div arkProgressTrack>
         <div arkProgressRange></div>
       </div>

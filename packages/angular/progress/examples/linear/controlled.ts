@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
 import {
   ArkProgressLabel,
   ArkProgressRange,
@@ -9,12 +9,12 @@ import {
 import { progressLinearExampleStyles } from '../../progress-example-styles'
 
 @Component({
-  selector: 'progress-linear-vertical-example',
+  selector: 'progress-linear-controlled-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArkProgressRoot, ArkProgressLabel, ArkProgressValueText, ArkProgressTrack, ArkProgressRange],
   template: `
-    <div arkProgress orientation="vertical">
+    <div arkProgress [(value)]="value">
       <span arkProgressLabel>Label</span>
       <span arkProgressValueText #valueText="arkProgressValueText">{{ valueText.percentAsString() }}</span>
       <div arkProgressTrack>
@@ -24,4 +24,6 @@ import { progressLinearExampleStyles } from '../../progress-example-styles'
   `,
   styles: [progressLinearExampleStyles],
 })
-export class ProgressLinearVerticalExample {}
+export class ProgressLinearControlledExample {
+  readonly value = signal<number | null | undefined>(42)
+}
