@@ -45,9 +45,12 @@ import {
 } from '@ark-ui/angular/tooltip'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { TooltipBasicExample } from './examples/basic'
+import { TooltipContextExample } from './examples/context'
 import { TooltipControlledExample } from './examples/controlled'
 import { TooltipDelayExample } from './examples/delay'
+import { TooltipMultipleTriggersExample } from './examples/multiple-triggers'
 import { TooltipRootProviderExample } from './examples/root-provider'
+import { TooltipWithinFixedExample } from './examples/within-fixed'
 
 type TooltipPublicTypeSmoke = [
   TooltipApi,
@@ -313,6 +316,46 @@ describe('@ark-ui/angular/tooltip', () => {
 
     const triggerEl = fixture.debugElement.query(By.directive(ArkTooltipTrigger)).nativeElement as HTMLElement
     expect(triggerEl.getAttribute('aria-describedby')).toBe(contentId)
+
+    fixture.destroy()
+  })
+
+  it('[arkTooltipTrigger] forwards value to Zag and updates triggerValue', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkTooltipRoot, ArkTooltipTrigger, ArkTooltipPositioner, ArkTooltipContent, ArkPortalComponent],
+      template: `
+        <div arkTooltip [openDelay]="0" [closeDelay]="0" #root="arkTooltip">
+          <button type="button" arkTooltipTrigger value="bold">Bold</button>
+          <button type="button" arkTooltipTrigger value="italic">Italic</button>
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkTooltipPositioner>
+              <div arkTooltipContent>Content</div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await TestBed.inject(ApplicationRef).whenStable()
+    fixture.detectChanges()
+
+    const root = fixture.debugElement.query(By.directive(ArkTooltipRoot)).injector.get(ArkTooltipRoot)
+    const triggerEls = fixture.debugElement
+      .queryAll(By.directive(ArkTooltipTrigger))
+      .map((debugElement) => debugElement.nativeElement as HTMLElement)
+
+    triggerEls[1]?.dispatchEvent(new PointerEvent('pointermove', { bubbles: true, pointerType: 'mouse' }))
+    await flushTimers()
+    await TestBed.inject(ApplicationRef).whenStable()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(root.api().triggerValue).toBe('italic')
 
     fixture.destroy()
   })
@@ -633,6 +676,31 @@ describe('@ark-ui/angular/tooltip', () => {
   it('TooltipDelayExample mounts without throwing', () => {
     TestBed.configureTestingModule({ imports: [TooltipDelayExample] })
     const fixture = TestBed.createComponent(TooltipDelayExample)
+    fixture.detectChanges()
+    fixture.destroy()
+  })
+
+  it('TooltipContextExample mounts without throwing', () => {
+    TestBed.configureTestingModule({ imports: [TooltipContextExample] })
+    const fixture = TestBed.createComponent(TooltipContextExample)
+    fixture.detectChanges()
+    fixture.destroy()
+  })
+
+  it('TooltipMultipleTriggersExample mounts and exposes toolbar triggers', () => {
+    TestBed.configureTestingModule({ imports: [TooltipMultipleTriggersExample] })
+    const fixture = TestBed.createComponent(TooltipMultipleTriggersExample)
+    fixture.detectChanges()
+
+    const triggerEls = fixture.debugElement.queryAll(By.directive(ArkTooltipTrigger))
+    expect(triggerEls).toHaveLength(4)
+
+    fixture.destroy()
+  })
+
+  it('TooltipWithinFixedExample mounts without throwing', () => {
+    TestBed.configureTestingModule({ imports: [TooltipWithinFixedExample] })
+    const fixture = TestBed.createComponent(TooltipWithinFixedExample)
     fixture.detectChanges()
     fixture.destroy()
   })
