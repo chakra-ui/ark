@@ -1,0 +1,198 @@
+{
+  "Root": {
+    "props": {
+      "collection": {
+        "type": "ListCollection<T>",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The item collection."
+      },
+      "defaultHighlightedValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial highlighted value when uncontrolled."
+      },
+      "defaultValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial value of the listbox when uncontrolled."
+      },
+      "deselectable": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to disallow empty selection."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the listbox is disabled."
+      },
+      "disallowSelectAll": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to disallow selecting all items via meta+a."
+      },
+      "highlightChange": {
+        "type": "ListboxHighlightChangeDetails<T>",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when the highlighted value changes."
+      },
+      "highlightedValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled highlighted value of the listbox."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the listbox."
+      },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  content: string\n  label: string\n  item: (id: string | number) => string\n  itemGroup: (id: string | number) => string\n  itemGroupLabel: (id: string | number) => string\n}>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The element ids for the listbox parts."
+      },
+      "loopFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to loop keyboard navigation through the items."
+      },
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The orientation of the listbox."
+      },
+      "scrollToIndexFn": {
+        "type": "(details: ListboxScrollToIndexDetails) => void",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Function to scroll to a specific index."
+      },
+      "select": {
+        "type": "ListboxSelectionDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when an item is selected."
+      },
+      "selectionMode": {
+        "type": "'single' | 'multiple' | 'none' | 'extended'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "How multiple selection should behave."
+      },
+      "selectOnHighlight": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to select the item when it is highlighted."
+      },
+      "typeahead": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether to enable typeahead on the listbox."
+      },
+      "value": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled value of the listbox (array of selected keys)."
+      },
+      "valueChange": {
+        "type": "ListboxValueChangeDetails<T>",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when the selected value changes."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseListboxReturn<T>",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The listbox primitive returned by useListbox()."
+      }
+    }
+  },
+  "Label": {
+    "props": {}
+  },
+  "Input": {
+    "props": {
+      "autoHighlight": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether to automatically highlight the item when typing."
+      },
+      "keyboardPriority": {
+        "type": "'caret' | 'navigate'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Determines how keyboard conflicts in the input are resolved."
+      }
+    }
+  },
+  "Content": {
+    "props": {}
+  },
+  "Empty": {
+    "props": {}
+  },
+  "ItemGroup": {
+    "props": {
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The id of the item group."
+      }
+    }
+  },
+  "ItemGroupLabel": {
+    "props": {}
+  },
+  "Item": {
+    "props": {
+      "item": {
+        "type": "T",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The item to render."
+      },
+      "highlightOnHover": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether to highlight the item on hover."
+      }
+    }
+  },
+  "ItemText": {
+    "props": {}
+  },
+  "ItemIndicator": {
+    "props": {}
+  },
+  "ValueText": {
+    "props": {}
+  }
+}

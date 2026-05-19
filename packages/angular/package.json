@@ -72,6 +72,11 @@
       "types": "./dist/src/hover-card/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-src-hover-card.mjs"
     },
+    "./listbox": {
+      "source": "./listbox/public-api.ts",
+      "types": "./dist/listbox/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-listbox.mjs"
+    },
     "./menu": {
       "source": "./src/menu/public-api.ts",
       "types": "./dist/src/menu/index.d.ts",

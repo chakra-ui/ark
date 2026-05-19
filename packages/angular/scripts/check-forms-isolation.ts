@@ -71,6 +71,11 @@ export const entryPoints: EntryPoint[] = [
     outputs: ['dist/fesm2022/ark-ui-angular-src-hover-card.mjs'],
   },
   {
+    name: '@ark-ui/angular/listbox',
+    file: 'listbox/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-listbox.mjs'],
+  },
+  {
     name: '@ark-ui/angular/menu',
     file: 'src/menu/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-src-menu.mjs'],

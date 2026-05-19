@@ -11,6 +11,7 @@ export { fieldAnatomy } from '@ark-ui/angular/field'
 export { fieldsetAnatomy } from '@ark-ui/angular/fieldset'
 export { fileUploadAnatomy } from '@ark-ui/angular/file-upload'
 export { hoverCardAnatomy } from './hover-card/hover-card.anatomy'
+export { listboxAnatomy } from '@ark-ui/angular/listbox'
 export { menuAnatomy } from './menu/menu.anatomy'
 export { navigationMenuAnatomy } from './navigation-menu/navigation-menu.anatomy'
 // Use a relative import so this aggregate stays form-isolation safe.

@@ -2,7 +2,7 @@
   "Root": {
     "props": {
       "accept": {
-        "type": "Record<string, string[]> | FileMimeType | FileMimeType[]",
+        "type": "| Record<string, string[]>\n  | 'image/png'\n  | 'image/gif'\n  | 'image/jpeg'\n  | 'image/svg+xml'\n  | 'image/webp'\n  | 'image/avif'\n  | 'image/heic'\n  | 'image/bmp'\n  | 'application/pdf'\n  | 'application/zip'\n  | 'application/json'\n  | 'application/xml'\n  | 'application/msword'\n  | 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'\n  | 'application/vnd.ms-excel'\n  | 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'\n  | 'application/vnd.ms-powerpoint'\n  | 'application/vnd.openxmlformats-officedocument.presentationml.presentation'\n  | 'application/rtf'\n  | 'application/x-rar'\n  | 'application/x-7z-compressed'\n  | 'application/x-tar'\n  | 'application/vnd.microsoft.portable-executable'\n  | 'text/css'\n  | 'text/csv'\n  | 'text/html'\n  | 'text/markdown'\n  | 'text/plain'\n  | 'font/ttf'\n  | 'font/otf'\n  | 'font/woff'\n  | 'font/woff2'\n  | 'font/eot'\n  | 'font/svg'\n  | 'video/mp4'\n  | 'video/webm'\n  | 'video/ogg'\n  | 'video/quicktime'\n  | 'video/x-msvideo'\n  | 'audio/mpeg'\n  | 'audio/ogg'\n  | 'audio/wav'\n  | 'audio/webm'\n  | 'audio/aac'\n  | 'audio/flac'\n  | 'audio/x-m4a'\n  | 'image/*'\n  | 'audio/*'\n  | 'video/*'\n  | 'text/*'\n  | 'application/*'\n  | 'font/*'\n  | (string & {})\n  | FileMimeType[]",
         "isRequired": false,
         "kind": "input",
         "description": "The accept file types."
@@ -69,7 +69,7 @@
         "description": "The unique identifier of the file upload."
       },
       "ids": {
-        "type": "FileUploadElementIds",
+        "type": "Partial<{\n  root: string\n  dropzone: string\n  hiddenInput: string\n  trigger: string\n  label: string\n  item: (id: string) => string\n  itemName: (id: string) => string\n  itemSizeText: (id: string) => string\n  itemPreview: (id: string) => string\n  itemDeleteTrigger: (id: string) => string\n}>",
         "isRequired": false,
         "kind": "input",
         "description": "The element ids for the file-upload parts."
@@ -87,17 +87,17 @@
         "kind": "input",
         "description": "The locale (BCP 47)."
       },
-      "maxFileSize": {
-        "type": "number",
-        "isRequired": false,
-        "kind": "input",
-        "description": "The maximum file size in bytes."
-      },
       "maxFiles": {
         "type": "number",
         "isRequired": false,
         "kind": "input",
         "description": "The maximum number of files."
+      },
+      "maxFileSize": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The maximum file size in bytes."
       },
       "minFileSize": {
         "type": "number",
@@ -161,8 +161,12 @@
       }
     }
   },
-  "Label": { "props": {} },
-  "Trigger": { "props": {} },
+  "Label": {
+    "props": {}
+  },
+  "Trigger": {
+    "props": {}
+  },
   "Dropzone": {
     "props": {
       "disableClick": {
@@ -173,12 +177,16 @@
       }
     }
   },
-  "HiddenInput": { "props": {} },
-  "ClearTrigger": { "props": {} },
+  "HiddenInput": {
+    "props": {}
+  },
+  "ClearTrigger": {
+    "props": {}
+  },
   "ItemGroup": {
     "props": {
       "type": {
-        "type": "FileUploadItemType",
+        "type": "'accepted' | 'rejected'",
         "isRequired": false,
         "kind": "input",
         "description": "The item type that this group renders."
@@ -195,19 +203,26 @@
       }
     }
   },
-  "ItemName": { "props": {} },
-  "ItemSizeText": { "props": {} },
+  "ItemName": {
+    "props": {}
+  },
+  "ItemSizeText": {
+    "props": {}
+  },
   "ItemPreview": {
     "props": {
       "type": {
         "type": "string",
         "isRequired": false,
         "kind": "input",
-        "defaultValue": "'.*'",
         "description": "The file type to match against. Matches all file types by default."
       }
     }
   },
-  "ItemPreviewImage": { "props": {} },
-  "ItemDeleteTrigger": { "props": {} }
+  "ItemPreviewImage": {
+    "props": {}
+  },
+  "ItemDeleteTrigger": {
+    "props": {}
+  }
 }

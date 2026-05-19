@@ -25,6 +25,7 @@ export default defineConfig(({ mode }) => ({
       '@ark-ui/angular/fieldset': new URL('./fieldset/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/file-upload': new URL('./file-upload/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/hover-card': new URL('./src/hover-card/public-api.ts', import.meta.url).pathname,
+      '@ark-ui/angular/listbox': new URL('./listbox/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/menu': new URL('./src/menu/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/navigation-menu': new URL('./src/navigation-menu/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/number-input': new URL('./number-input/public-api.ts', import.meta.url).pathname,
