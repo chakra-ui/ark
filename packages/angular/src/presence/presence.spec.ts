@@ -98,6 +98,7 @@ class HostComponent {
 }
 
 const queryContent = (root: HTMLElement) => root.querySelector('[data-testid="content"]')
+const nextAnimationFrame = () => new Promise((resolve) => requestAnimationFrame(() => resolve(null)))
 
 describe('ArkPresenceComponent', () => {
   beforeEach(() => {
@@ -172,6 +173,28 @@ describe('ArkPresenceComponent', () => {
     fixture.componentInstance.unmountOnExit.set(true)
     fixture.detectChanges()
     presenceNode.dispatchEvent(new Event('animationend', { bubbles: true }))
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.presenceRef.status()).toBe('unmounted')
+    expect(queryContent(fixture.nativeElement)).toBeNull()
+
+    fixture.destroy()
+  })
+
+  it('completes unmountOnExit automatically when no exit motion is active', async () => {
+    TestBed.configureTestingModule({ imports: [HostComponent] })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.componentInstance.present.set(true)
+    fixture.componentInstance.unmountOnExit.set(true)
+    fixture.detectChanges()
+
+    fixture.componentInstance.present.set(false)
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.presenceRef.status()).toBe('exiting')
+    expect(queryContent(fixture.nativeElement)).not.toBeNull()
+
+    await nextAnimationFrame()
     fixture.detectChanges()
 
     expect(fixture.componentInstance.presenceRef.status()).toBe('unmounted')
@@ -303,6 +326,29 @@ describe('ArkPresenceComponent', () => {
 
     expect(emitted).toBe(1)
     expect(fixture.componentInstance.presenceRef.status()).toBe('unmounted')
+
+    fixture.destroy()
+  })
+
+  it('maps the immediate boolean input from a bare attribute', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkPresenceComponent],
+      template: `
+        <ark-presence immediate>
+          <ng-template><span data-testid="content">Hello</span></ng-template>
+        </ark-presence>
+      `,
+    })
+    class ImmediateHostComponent {
+      @ViewChild(ArkPresenceComponent) presenceRef!: ArkPresenceComponent
+    }
+
+    TestBed.configureTestingModule({ imports: [ImmediateHostComponent] })
+    const fixture = TestBed.createComponent(ImmediateHostComponent)
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.presenceRef.immediate()).toBe(true)
 
     fixture.destroy()
   })
