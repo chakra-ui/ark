@@ -41,6 +41,12 @@ const createFixture = (options: { includeBatch6?: boolean } = {}) => {
     }
   }
 
+  mkdirSync(join(examplesRoot, 'providers', 'environment', 'examples'), { recursive: true })
+  writeFileSync(
+    join(examplesRoot, 'providers', 'environment', 'examples', 'setup.ts'),
+    'export class EnvironmentSetupExample {}\n',
+  )
+
   return fixtureRoot
 }
 
@@ -53,10 +59,12 @@ describe('Angular example registry generator', () => {
       expect(registry.imports).toEqual([
         "import * as ColorPickerSwatches_Basic from '../../../packages/angular/src/color-picker/examples/swatches/basic'",
         "import * as DatePicker_RangeSelection from '../../../packages/angular/src/date-picker/examples/range-selection'",
+        "import * as Environment_Setup from '../../../packages/angular/src/providers/environment/examples/setup'",
       ])
       expect(registry.entries).toEqual([
         "  'color-picker/swatches/basic': { module: ColorPickerSwatches_Basic, exportName: 'ColorPickerSwatchesBasicExample' }",
         "  'date-picker/range-selection': { module: DatePicker_RangeSelection, exportName: 'DatePickerRangeSelectionExample' }",
+        "  'environment/setup': { module: Environment_Setup, exportName: 'EnvironmentSetupExample' }",
       ])
       expect(registry.entries.some((entry) => entry.includes('_template'))).toBe(false)
       expect(registry.entries.some((entry) => entry.includes('spec'))).toBe(false)
