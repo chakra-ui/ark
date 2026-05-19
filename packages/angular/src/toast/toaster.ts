@@ -90,9 +90,9 @@ export class ArkToaster implements OnInit {
       : this.elementRef.nativeElement.ownerDocument
   }
 
-  readonly state: Signal<toast.GroupService['state']> = computed(() => {
+  readonly state: Signal<toast.GroupService['state'] | undefined> = computed(() => {
     const machine = this.machine()
-    return machine?.state() ?? ({} as toast.GroupService['state'])
+    return machine?.state()
   })
   readonly api: Signal<toast.GroupApi> = computed(() => this.machine()?.api() ?? fallbackGroupApi)
   readonly toasts: Signal<toast.Props[]> = computed(() => this.api().getToasts())

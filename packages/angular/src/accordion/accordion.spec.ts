@@ -156,7 +156,7 @@ describe('@ark-ui/angular/accordion', () => {
     expect(() => TestBed.createComponent(OrphanHost)).toThrow(/ARK_ACCORDION_ITEM_CONTEXT|No provider|NG0201/i)
   })
 
-  it('clicking an item trigger expands it and updates part state', () => {
+  it('clicking an item trigger expands it, updates part state, and emits (valueChange) exactly once', () => {
     @Component({
       standalone: true,
       imports: [ArkAccordionRoot, ArkAccordionItem, ArkAccordionItemTrigger, ArkAccordionItemContent],
@@ -194,7 +194,7 @@ describe('@ark-ui/angular/accordion', () => {
     expect(root.api().value).toEqual(['one'])
     expect(triggerEl.getAttribute('data-state')).toBe('open')
     expect(contentEl.hasAttribute('hidden')).toBe(false)
-    expect(fixture.componentInstance.emissions).toEqual([])
+    expect(fixture.componentInstance.emissions).toEqual([['one']])
 
     fixture.destroy()
   })

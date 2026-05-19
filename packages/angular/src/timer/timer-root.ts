@@ -82,6 +82,7 @@ export class ArkTimerRoot implements UseTimerReturn {
     effect(() => {
       if (this.hasAutoStarted || !this.autoStart()) return
       this.hasAutoStarted = true
+      // Keep autoStart out of reactive context patches so input changes do not restart the timer.
       this.api().start()
     })
 

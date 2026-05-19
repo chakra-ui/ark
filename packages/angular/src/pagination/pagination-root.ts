@@ -71,9 +71,6 @@ export class ArkPaginationRoot implements UsePaginationReturn {
   readonly pageSizeDetailsChange: OutputEmitterRef<PaginationPageSizeChangeDetails> =
     output<PaginationPageSizeChangeDetails>()
 
-  private lastPageDetails: number | undefined
-  private lastPageSizeDetails: number | undefined
-
   private readonly machine = usePagination({
     context: () => ({
       id: this.id(),
@@ -90,23 +87,17 @@ export class ArkPaginationRoot implements UsePaginationReturn {
       translations: this.translations(),
       onPageChange: (details) => {
         const currentPage = this.page()
-        if (currentPage !== undefined && currentPage !== details.page) {
+        if (currentPage !== details.page) {
           this.page.set(details.page)
         }
-        if (this.lastPageDetails !== details.page) {
-          this.lastPageDetails = details.page
-          this.pageDetailsChange.emit(details)
-        }
+        this.pageDetailsChange.emit(details)
       },
       onPageSizeChange: (details) => {
         const currentPageSize = this.pageSize()
-        if (currentPageSize !== undefined && currentPageSize !== details.pageSize) {
+        if (currentPageSize !== details.pageSize) {
           this.pageSize.set(details.pageSize)
         }
-        if (this.lastPageSizeDetails !== details.pageSize) {
-          this.lastPageSizeDetails = details.pageSize
-          this.pageSizeDetailsChange.emit(details)
-        }
+        this.pageSizeDetailsChange.emit(details)
       },
     }),
   })

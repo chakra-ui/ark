@@ -254,7 +254,7 @@ describe('@ark-ui/angular/tour', () => {
     fixture.destroy()
   })
 
-  it('emits step, status, and completion outputs without coercing uncontrolled stepId', async () => {
+  it('emits step, status, completion, skip, and model outputs', async () => {
     @Component({
       standalone: true,
       imports: [ArkTourRoot, ArkTourContent, ArkTourActions, ArkTourActionTrigger],
@@ -302,7 +302,8 @@ describe('@ark-ui/angular/tour', () => {
     root.send({ type: 'DISMISS' } as Parameters<TourService['send']>[0])
     await flush(fixture)
 
-    expect(fixture.componentInstance.stepIds).toEqual([])
+    expect(fixture.componentInstance.stepIds).toContain('one')
+    expect(fixture.componentInstance.stepIds).toContain('two')
     expect(fixture.componentInstance.stepChanges.some((details) => details.stepId === 'two' && details.complete)).toBe(
       true,
     )
@@ -344,8 +345,8 @@ describe('@ark-ui/angular/tour', () => {
             const [promise, cancel] = waitForEvent(target, 'click')
             let cancelled = false
             promise
-              .then(() => {
-                if (!cancelled) next()
+              .then((event) => {
+                if (!cancelled && event) next()
               })
               .catch(() => {})
             return () => {

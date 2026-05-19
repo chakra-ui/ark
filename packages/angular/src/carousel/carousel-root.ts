@@ -89,8 +89,6 @@ export class ArkCarouselRoot implements UseCarouselReturn {
   readonly autoplayStatusChange: OutputEmitterRef<CarouselAutoplayStatusDetails> =
     output<CarouselAutoplayStatusDetails>()
 
-  private lastPageDetails: number | undefined
-
   private readonly machine = useCarousel({
     context: () => ({
       id: this.id(),
@@ -112,13 +110,10 @@ export class ArkCarouselRoot implements UseCarouselReturn {
       translations: this.translations(),
       onPageChange: (details) => {
         const currentPage = this.page()
-        if (currentPage !== undefined && currentPage !== details.page) {
+        if (currentPage !== details.page) {
           this.page.set(details.page)
         }
-        if (this.lastPageDetails !== details.page) {
-          this.lastPageDetails = details.page
-          this.pageDetailsChange.emit(details)
-        }
+        this.pageDetailsChange.emit(details)
       },
       onDragStatusChange: (details) => {
         this.dragStatusChange.emit(details)

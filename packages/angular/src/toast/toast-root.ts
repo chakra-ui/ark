@@ -10,6 +10,7 @@ import {
   type Signal,
   afterNextRender,
   computed,
+  effect,
   forwardRef,
   inject,
   input,
@@ -84,6 +85,8 @@ export class ArkToastRoot implements OnInit {
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID))
   private readonly fallbackId = createArkId('toast')
   private readonly machine = signal<UseToastReturn | null>(null)
+  private machineStartQueued = false
+  private destroyed = false
   private readonly getRootNode = (): Document | ShadowRoot => {
     const rootNode = this.environment.getRootNode() ?? this.elementRef.nativeElement.getRootNode()
     return rootNode.nodeType === 9 || rootNode.nodeType === 11
@@ -91,9 +94,9 @@ export class ArkToastRoot implements OnInit {
       : this.elementRef.nativeElement.ownerDocument
   }
 
-  readonly state: Signal<toast.Service['state']> = computed(() => {
+  readonly state: Signal<toast.Service['state'] | undefined> = computed(() => {
     const machine = this.machine()
-    return machine?.state() ?? ({} as toast.Service['state'])
+    return machine?.state()
   })
   readonly api: Signal<toast.Api> = computed(() => this.machine()?.api() ?? fallbackToastApi)
 
@@ -113,6 +116,10 @@ export class ArkToastRoot implements OnInit {
   })
 
   constructor() {
+    this.destroyRef.onDestroy(() => {
+      this.destroyed = true
+    })
+
     applyArkProps({
       elementRef: this.elementRef,
       renderer: this.renderer,
@@ -124,8 +131,22 @@ export class ArkToastRoot implements OnInit {
 
   ngOnInit(): void {
     if (!this.isBrowser) return
-    if (!this.value() || !this.parent()) return
-    this.machine.set(runInInjectionContext(this.injector, () => this.createMachine()))
+    if (this.value() && this.parent()) {
+      this.machine.set(runInInjectionContext(this.injector, () => this.createMachine()))
+      return
+    }
+
+    effect(() => {
+      if (!this.isBrowser || this.machine() || this.machineStartQueued || this.destroyed) return
+      if (!this.value() || !this.parent()) return
+      this.machineStartQueued = true
+      queueMicrotask(() => {
+        this.machineStartQueued = false
+        if (this.destroyed || this.machine()) return
+        if (!this.value() || !this.parent()) return
+        this.machine.set(runInInjectionContext(this.injector, () => this.createMachine()))
+      })
+    })
   }
 
   /** @internal Exposed for dynamically rendered toast content. */
@@ -139,11 +160,7 @@ export class ArkToastRoot implements OnInit {
         const value = this.value()
         const parent = this.parent()
         if (!value || !parent) {
-          return {
-            dir: this.locale.dir,
-            getRootNode: this.getRootNode,
-            id: this.fallbackId,
-          }
+          throw new Error('ArkToastRoot requires [value] and [parent] from an ArkToaster item.')
         }
         return {
           ...value,

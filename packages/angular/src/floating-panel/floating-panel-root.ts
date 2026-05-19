@@ -37,6 +37,8 @@ const arePointsEqual = (left: FloatingPanelPoint | undefined, right: FloatingPan
 const areSizesEqual = (left: FloatingPanelSize | undefined, right: FloatingPanelSize): boolean =>
   left !== undefined && Object.is(left.width, right.width) && Object.is(left.height, right.height)
 
+const areDetailsEqual = (left: unknown, right: unknown): boolean => JSON.stringify(left) === JSON.stringify(right)
+
 @Directive({
   selector: '[arkFloatingPanel]',
   standalone: true,
@@ -130,11 +132,11 @@ export class ArkFloatingPanelRoot implements UseFloatingPanelReturn {
   /** Emits details when the panel stage changes. */
   readonly stageChange: OutputEmitterRef<FloatingPanelStageChangeDetails> = output<FloatingPanelStageChangeDetails>()
 
-  private lastPositionDetails: FloatingPanelPoint | undefined
-  private lastSizeDetails: FloatingPanelSize | undefined
-  private lastPositionEndDetails: FloatingPanelPoint | undefined
-  private lastSizeEndDetails: FloatingPanelSize | undefined
-  private lastStageDetails: FloatingPanelStageChangeDetails['stage'] | undefined
+  private lastPositionDetails: FloatingPanelPositionChangeDetails | undefined
+  private lastPositionEndDetails: FloatingPanelPositionChangeDetails | undefined
+  private lastSizeDetails: FloatingPanelSizeChangeDetails | undefined
+  private lastSizeEndDetails: FloatingPanelSizeChangeDetails | undefined
+  private lastStageDetails: FloatingPanelStageChangeDetails | undefined
 
   private readonly machine = useFloatingPanel({
     context: () => ({
@@ -164,39 +166,39 @@ export class ArkFloatingPanelRoot implements UseFloatingPanelReturn {
       initialFocusEl: this.initialFocusEl(),
       finalFocusEl: this.finalFocusEl(),
       onOpenChange: (details) => {
-        if (this.open() !== undefined && this.open() !== details.open) {
+        if (this.open() !== details.open) {
           this.open.set(details.open)
         }
       },
       onPositionChange: (details) => {
-        if (arePointsEqual(this.lastPositionDetails, details.position)) return
-        this.lastPositionDetails = { ...details.position }
-        if (this.position() !== undefined && !arePointsEqual(this.position(), details.position)) {
+        if (areDetailsEqual(this.lastPositionDetails, details)) return
+        this.lastPositionDetails = details
+        if (!arePointsEqual(this.position(), details.position)) {
           this.position.set({ ...details.position })
         }
         this.positionDetailsChange.emit(details)
       },
       onPositionChangeEnd: (details) => {
-        if (arePointsEqual(this.lastPositionEndDetails, details.position)) return
-        this.lastPositionEndDetails = { ...details.position }
+        if (areDetailsEqual(this.lastPositionEndDetails, details)) return
+        this.lastPositionEndDetails = details
         this.positionChangeEnd.emit(details)
       },
       onSizeChange: (details) => {
-        if (areSizesEqual(this.lastSizeDetails, details.size)) return
-        this.lastSizeDetails = { ...details.size }
-        if (this.size() !== undefined && !areSizesEqual(this.size(), details.size)) {
+        if (areDetailsEqual(this.lastSizeDetails, details)) return
+        this.lastSizeDetails = details
+        if (!areSizesEqual(this.size(), details.size)) {
           this.size.set({ ...details.size })
         }
         this.sizeDetailsChange.emit(details)
       },
       onSizeChangeEnd: (details) => {
-        if (areSizesEqual(this.lastSizeEndDetails, details.size)) return
-        this.lastSizeEndDetails = { ...details.size }
+        if (areDetailsEqual(this.lastSizeEndDetails, details)) return
+        this.lastSizeEndDetails = details
         this.sizeChangeEnd.emit(details)
       },
       onStageChange: (details) => {
-        if (this.lastStageDetails === details.stage) return
-        this.lastStageDetails = details.stage
+        if (areDetailsEqual(this.lastStageDetails, details)) return
+        this.lastStageDetails = details
         this.stageChange.emit(details)
       },
     }),

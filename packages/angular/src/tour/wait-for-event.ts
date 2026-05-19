@@ -1,4 +1,4 @@
-type WaitForEventReturn<K extends keyof HTMLElementEventMap> = [Promise<HTMLElementEventMap[K]>, VoidFunction]
+type WaitForEventReturn<K extends keyof HTMLElementEventMap> = [Promise<HTMLElementEventMap[K] | null>, VoidFunction]
 
 export interface WaitForEventOptions<T extends HTMLElement = HTMLElement> extends AddEventListenerOptions {
   predicate?: (element: T) => boolean
@@ -11,10 +11,10 @@ export function waitForEvent<
   let cleanup: VoidFunction | undefined
   const { predicate, ...listenerOptions } = options ?? {}
 
-  const promise = new Promise<HTMLElementEventMap[K]>((resolve, reject) => {
+  const promise = new Promise<HTMLElementEventMap[K] | null>((resolve) => {
     const element = target?.()
     if (!element) {
-      reject(new Error(`waitForEvent could not find a target element for "${String(event)}".`))
+      resolve(null)
       return
     }
 

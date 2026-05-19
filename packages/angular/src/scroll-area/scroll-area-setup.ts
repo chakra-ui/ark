@@ -64,7 +64,8 @@ const addWheelListener = (
     const viewport = viewportId ? scrollArea.service.scope.getById<HTMLElement>(viewportId) : null
     if (!viewport || event.ctrlKey) return
     const lineHeight = 16
-    const scale = event.deltaMode === 1 ? lineHeight : event.deltaMode === 2 ? viewport.clientHeight : 1
+    const pageSize = orientation === 'horizontal' ? viewport.clientWidth : viewport.clientHeight
+    const scale = event.deltaMode === 1 ? lineHeight : event.deltaMode === 2 ? pageSize : 1
     let handled = false
     if (orientation === 'vertical' && event.deltaY !== 0) {
       viewport.scrollTop += event.deltaY * scale
