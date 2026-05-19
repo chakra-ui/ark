@@ -11,6 +11,7 @@ import {
   input,
   model,
   signal,
+  untracked,
   type InputSignal,
   type InputSignalWithTransform,
   type ModelSignal,
@@ -84,6 +85,7 @@ export class ArkPasswordInputRoot implements ControlValueAccessor, UsePasswordIn
   private _pendingInternalWrites = 0
   private _hasExternalBinding = false
   private _hasReceivedFormWrite = false
+  private _hasSeededDefaultValue = false
 
   private readonly cva = createArkCvaController<string>({
     value: this.value,
@@ -135,11 +137,13 @@ export class ArkPasswordInputRoot implements ControlValueAccessor, UsePasswordIn
       this._hasExternalBinding = true
     })
 
-    const defaultValue = this.defaultValue()
-    if (this.value() === undefined && defaultValue !== undefined) {
+    effect(() => {
+      const defaultValue = this.defaultValue()
+      if (this._hasSeededDefaultValue || this.value() !== undefined || defaultValue === undefined) return
+      this._hasSeededDefaultValue = true
       this._pendingInternalWrites++
-      this.value.set(defaultValue)
-    }
+      untracked(() => this.value.set(defaultValue))
+    })
 
     applyArkProps({
       elementRef: inject(ElementRef),

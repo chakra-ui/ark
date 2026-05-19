@@ -368,6 +368,50 @@ describe('@ark-ui/angular/select', () => {
     fixture.destroy()
   })
 
+  it('marks reactive form controls touched when an item is selected', async () => {
+    @Component({
+      standalone: true,
+      imports: [ReactiveFormsModule, ArkSelectRoot, ArkSelectContent, ArkSelectItem, ArkSelectItemText],
+      template: `
+        <div arkSelectRoot [collection]="collection" [formControl]="control">
+          <div arkSelectContent>
+            @for (item of collection.items; track item.value) {
+              <div arkSelectItem [item]="item">
+                <span arkSelectItemText>{{ item.label }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly collection = makeCollection()
+      readonly control = new FormControl<string[] | null>([])
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.control.touched).toBe(false)
+    const root = fixture.debugElement.query(By.directive(ArkSelectRoot)).injector.get(ArkSelectRoot)
+    root.api().setOpen(true)
+    await flushMicrotasks()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    const items = fixture.debugElement.queryAll(By.directive(ArkSelectItem))
+    ;(items[0].nativeElement as HTMLElement).click()
+    await flushMicrotasks()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.control.touched).toBe(true)
+
+    fixture.destroy()
+  })
+
   it('template-driven [(ngModel)] writes reach the Zag api', async () => {
     @Component({
       standalone: true,

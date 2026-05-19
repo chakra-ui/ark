@@ -335,6 +335,40 @@ describe('@ark-ui/angular/tags-input', () => {
     fixture.destroy()
   })
 
+  it('marks reactive form controls touched when a tag is added', async () => {
+    @Component({
+      standalone: true,
+      imports: [ReactiveFormsModule, ArkTagsInputRoot, ArkTagsInputControl, ArkTagsInputInput],
+      template: `
+        <div arkTagsInputRoot [formControl]="control">
+          <div arkTagsInputControl>
+            <input arkTagsInputInput />
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly control = new FormControl<string[] | null>([])
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.control.touched).toBe(false)
+    const input = fixture.debugElement.query(By.directive(ArkTagsInputInput)).nativeElement as HTMLInputElement
+    await focusInput(input)
+    await typeText(input, 'one')
+    pressEnter(input)
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.control.touched).toBe(true)
+
+    fixture.destroy()
+  })
+
   it('template-driven [(ngModel)] writes reach the Zag api', async () => {
     @Component({
       standalone: true,

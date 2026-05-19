@@ -159,6 +159,7 @@ export class ArkTagsInputRoot implements ControlValueAccessor, UseTagsInputRetur
           this.value.set([...details.value])
         }
         this.cva.notifyValueChange(details.value)
+        this.cva.markTouched()
       },
       onInputValueChange: (details: TagsInputInputValueChangeDetails) => {
         if (this.inputValue() !== details.inputValue) {

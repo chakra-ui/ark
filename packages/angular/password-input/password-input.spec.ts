@@ -176,12 +176,44 @@ describe('@ark-ui/angular/password-input', () => {
     fixture.detectChanges()
 
     const root = fixture.debugElement.query(By.directive(ArkPasswordInputRoot)).injector.get(ArkPasswordInputRoot)
+    const inputEl = fixture.debugElement.query(By.directive(ArkPasswordInputInput)).nativeElement as HTMLInputElement
     expect(root.value()).toBe('initial')
+    expect(inputEl.value).toBe('initial')
 
     fixture.componentInstance.control.setValue('updated')
     TestBed.tick()
     fixture.detectChanges()
     expect(root.value()).toBe('updated')
+    expect(inputEl.value).toBe('updated')
+
+    fixture.destroy()
+  })
+
+  it('defaultValue seeds the input after Angular inputs initialize', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkPasswordInputRoot, ArkPasswordInputControl, ArkPasswordInputInput],
+      template: `
+        <div arkPasswordInputRoot defaultValue="secret">
+          <div arkPasswordInputControl>
+            <input arkPasswordInputInput />
+          </div>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    const root = fixture.debugElement.query(By.directive(ArkPasswordInputRoot)).injector.get(ArkPasswordInputRoot)
+    const inputEl = fixture.debugElement.query(By.directive(ArkPasswordInputInput)).nativeElement as HTMLInputElement
+    expect(root.value()).toBe('secret')
+    expect(inputEl.value).toBe('secret')
 
     fixture.destroy()
   })

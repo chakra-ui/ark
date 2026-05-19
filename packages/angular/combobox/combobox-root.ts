@@ -240,6 +240,7 @@ export class ArkComboboxRoot<T extends CollectionItem = CollectionItem>
           this.value.set([...details.value])
         }
         this.cva.notifyValueChange(details.value)
+        this.cva.markTouched()
         this.valueChange.emit(details)
       },
       onInputValueChange: (details: ComboboxInputValueChangeDetails) => {

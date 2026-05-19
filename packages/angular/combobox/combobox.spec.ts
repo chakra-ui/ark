@@ -378,6 +378,50 @@ describe('@ark-ui/angular/combobox', () => {
     fixture.destroy()
   })
 
+  it('marks reactive form controls touched when an item is selected', async () => {
+    @Component({
+      standalone: true,
+      imports: [ReactiveFormsModule, ArkComboboxRoot, ArkComboboxContent, ArkComboboxItem, ArkComboboxItemText],
+      template: `
+        <div arkComboboxRoot [collection]="collection" [formControl]="control">
+          <div arkComboboxContent>
+            @for (item of collection.items; track item.value) {
+              <div arkComboboxItem [item]="item">
+                <span arkComboboxItemText>{{ item.label }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly collection = makeCollection()
+      readonly control = new FormControl<string[] | null>([])
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.control.touched).toBe(false)
+    const root = fixture.debugElement.query(By.directive(ArkComboboxRoot)).injector.get(ArkComboboxRoot)
+    root.api().setOpen(true)
+    await flushMicrotasks()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    const items = fixture.debugElement.queryAll(By.directive(ArkComboboxItem))
+    ;(items[0].nativeElement as HTMLElement).click()
+    await flushMicrotasks()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.control.touched).toBe(true)
+
+    fixture.destroy()
+  })
+
   it('template-driven [(ngModel)] writes reach the Zag api', async () => {
     @Component({
       standalone: true,

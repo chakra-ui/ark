@@ -1,4 +1,4 @@
-import { DestroyRef, Directive, ElementRef, Renderer2, inject } from '@angular/core'
+import { DestroyRef, Directive, ElementRef, Renderer2, effect, inject } from '@angular/core'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
 import { ARK_PASSWORD_INPUT_VALUE_WRITER, injectArkPasswordInputContext } from './use-password-input-context'
 import { ArkPasswordInputRoot } from './password-input-root'
@@ -49,5 +49,14 @@ export class ArkPasswordInputInput {
         return rest
       },
     })
+
+    if (root) {
+      effect(() => {
+        const el = elementRef.nativeElement as HTMLInputElement | null
+        if (!el) return
+        const next = root.value() ?? ''
+        if (el.value !== next) el.value = next
+      })
+    }
   }
 }

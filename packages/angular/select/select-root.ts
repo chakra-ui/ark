@@ -183,6 +183,7 @@ export class ArkSelectRoot<T extends CollectionItem = CollectionItem>
           this.value.set([...details.value])
         }
         this.cva.notifyValueChange(details.value)
+        this.cva.markTouched()
         this.valueChange.emit(details)
       },
       onHighlightChange: (details: SelectHighlightChangeDetails<T>) => {
