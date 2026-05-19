@@ -51,7 +51,14 @@ import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { DrawerBasicExample } from './examples/basic'
 import { DrawerControlledExample } from './examples/controlled'
 import { DrawerDefaultOpenExample } from './examples/default-open'
+import { DrawerIndentBackgroundExample } from './examples/indent-background'
+import { DrawerModalExample } from './examples/modal'
+import { DrawerMultipleTriggersExample } from './examples/multiple-triggers'
+import { DrawerNoDragAreaExample } from './examples/no-drag-area'
+import { DrawerNonDraggableExample } from './examples/non-draggable'
 import { DrawerRootProviderExample } from './examples/root-provider'
+import { DrawerScrollableExample } from './examples/scrollable'
+import { DrawerSnapPointsExample } from './examples/snap-points'
 
 type DrawerPublicTypeSmoke = [
   DrawerApi,
@@ -196,6 +203,37 @@ describe('@ark-ui/angular/drawer', () => {
     fixture.destroy()
   })
 
+  it('[arkDrawerTrigger] forwards value to the active trigger channel', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkDrawerRoot, ArkDrawerTrigger, ArkDrawerContent, ArkPortalComponent],
+      template: `
+        <div arkDrawer #root="arkDrawer">
+          <button arkDrawerTrigger value="settings"></button>
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkDrawerContent></div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const root = fixture.debugElement.query(By.directive(ArkDrawerRoot)).injector.get(ArkDrawerRoot)
+    const triggerEl = fixture.debugElement.query(By.directive(ArkDrawerTrigger)).nativeElement as HTMLButtonElement
+
+    triggerEl.click()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(root.api().triggerValue).toBe('settings')
+
+    fixture.destroy()
+  })
+
   it('clicking the close trigger closes the drawer', () => {
     @Component({
       standalone: true,
@@ -329,6 +367,61 @@ describe('@ark-ui/angular/drawer', () => {
     const swipeAreaEl = fixture.debugElement.query(By.directive(ArkDrawerSwipeArea)).nativeElement as HTMLElement
     expect(swipeAreaEl.getAttribute('data-scope')).toBe('drawer')
     expect(swipeAreaEl.getAttribute('data-part')).toBe('swipe-area')
+
+    fixture.destroy()
+  })
+
+  it('[arkDrawerContent] forwards the draggable part prop', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkDrawerRoot, ArkDrawerContent, ArkPortalComponent],
+      template: `
+        <div arkDrawer defaultOpen #root="arkDrawer">
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkDrawerContent [draggable]="false"></div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await TestBed.inject(ApplicationRef).whenStable()
+    fixture.detectChanges()
+
+    const content = fixture.debugElement.query(By.directive(ArkDrawerContent)).injector.get(ArkDrawerContent)
+    expect(content.draggable()).toBe(false)
+
+    fixture.destroy()
+  })
+
+  it('[arkDrawerSwipeArea] forwards disabled and swipeDirection part props', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkDrawerRoot, ArkDrawerContent, ArkDrawerSwipeArea, ArkPortalComponent],
+      template: `
+        <div arkDrawer defaultOpen #root="arkDrawer">
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkDrawerContent>
+              <div arkDrawerSwipeArea disabled swipeDirection="up"></div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await TestBed.inject(ApplicationRef).whenStable()
+    fixture.detectChanges()
+
+    const swipeAreaEl = fixture.debugElement.query(By.directive(ArkDrawerSwipeArea)).nativeElement as HTMLElement
+    expect(swipeAreaEl.getAttribute('data-disabled')).toBe('')
+    expect(swipeAreaEl.getAttribute('data-swipe-direction')).toBe('up')
 
     fixture.destroy()
   })
@@ -590,7 +683,7 @@ describe('@ark-ui/angular/drawer', () => {
     fixture.detectChanges()
 
     expect(fixture.componentInstance.openLabel()).toBe('closed')
-    fixture.componentInstance.drawer.send({ type: 'OPEN' })
+    fixture.componentInstance.drawer.api().setOpen(true)
     TestBed.tick()
     fixture.detectChanges()
     expect(fixture.componentInstance.openLabel()).toBe('open')
@@ -630,5 +723,25 @@ describe('@ark-ui/angular/drawer', () => {
     expect(positionerEl.getAttribute('data-part')).toBe('positioner')
 
     fixture.destroy()
+  })
+
+  it('React parity Storybook examples mount without throwing', () => {
+    const examples = [
+      DrawerSnapPointsExample,
+      DrawerModalExample,
+      DrawerMultipleTriggersExample,
+      DrawerScrollableExample,
+      DrawerNoDragAreaExample,
+      DrawerNonDraggableExample,
+      DrawerIndentBackgroundExample,
+    ]
+
+    for (const example of examples) {
+      TestBed.resetTestingModule()
+      TestBed.configureTestingModule({ imports: [example] })
+      const fixture = TestBed.createComponent(example)
+      fixture.detectChanges()
+      fixture.destroy()
+    }
   })
 })

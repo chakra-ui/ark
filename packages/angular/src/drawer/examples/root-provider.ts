@@ -33,7 +33,11 @@ import { DrawerXIcon } from './icons'
   ],
   template: `
     <div class="stack">
-      <button type="button" (click)="drawer.send({ type: 'OPEN' })">Drawer is {{ openLabel() }}</button>
+      <div class="hstack">
+        <button type="button" (click)="drawer.api().setOpen(true)">Open via API</button>
+        <button type="button" (click)="drawer.api().setSnapPoint(0.25)">Set to 25%</button>
+        <button type="button" (click)="drawer.api().setSnapPoint(1)">Set to 100%</button>
+      </div>
       <div arkDrawerRootProvider [value]="drawer" #provider="arkDrawerRootProvider">
         <ark-portal [originInjector]="provider.getContextCarrier().elementInjector">
           <div arkDrawerBackdrop></div>
@@ -44,6 +48,7 @@ import { DrawerXIcon } from './icons'
               </div>
               <h2 arkDrawerTitle>Drawer with RootProvider</h2>
               <p>This drawer is controlled via the useDrawer hook and RootProvider.</p>
+              <p>Active snap point: {{ drawer.api().snapPoint }}</p>
               <button type="button" arkDrawerCloseTrigger aria-label="Close">
                 <drawer-x-icon />
               </button>
@@ -56,6 +61,8 @@ import { DrawerXIcon } from './icons'
   styles: [drawerExampleStyles],
 })
 export class DrawerRootProviderExample {
-  readonly drawer: UseDrawerReturn = runInInjectionContext(inject(Injector), () => useDrawer({ context: () => ({}) }))
+  readonly drawer: UseDrawerReturn = runInInjectionContext(inject(Injector), () =>
+    useDrawer({ context: () => ({ defaultSnapPoint: 0.5, snapPoints: [0.25, 0.5, 1] }) }),
+  )
   readonly openLabel = computed(() => (this.drawer.api().open ? 'open' : 'closed'))
 }
