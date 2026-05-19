@@ -332,8 +332,8 @@ const scanFile = (
 
   const source = readFileSync(resolvedFile, 'utf-8')
   const sourceFile = ts.createSourceFile(resolvedFile, source, ts.ScriptTarget.Latest, true)
-  const parseDiagnostics =
-    (sourceFile as ts.SourceFile & { parseDiagnostics?: readonly ts.Diagnostic[] }).parseDiagnostics ?? []
+  const parseDiagnostics = (sourceFile as ts.SourceFile & { parseDiagnostics: readonly ts.Diagnostic[] })
+    .parseDiagnostics
   if (parseDiagnostics.length > 0) {
     for (const diagnostic of parseDiagnostics) {
       reporter.error(ts.flattenDiagnosticMessageText(diagnostic.messageText, '\n'))
@@ -377,6 +377,9 @@ export const scanEntryPoint = (
   for (const output of entryPoint.outputs ?? []) {
     const outputFile = isAbsolute(output) ? output : join(root, output)
     if (existsSync(outputFile) && scanFile(entryPoint.name, outputFile, visited, [], allowForms, reporter)) {
+      failed = true
+    } else if (!existsSync(outputFile)) {
+      reporter.error(`forms isolation: build output not found for ${entryPoint.name} (${output})`)
       failed = true
     }
   }

@@ -78,6 +78,35 @@ describe('check-forms-isolation', () => {
     expect(errors).toEqual([])
   })
 
+  it('reports forms imports found only in declared outputs', () => {
+    const file = join(workDir, 'public-api.ts')
+    const output = join(workDir, 'output.mjs')
+    writeFileSync(file, 'export const ok = true\n', 'utf-8')
+    writeFileSync(output, "import { FormsModule } from '@angular/forms'\nexport { FormsModule }\n", 'utf-8')
+
+    const { reporter, errors } = createReporter()
+    const failed = scanEntryPoint({ name: '@ark-ui/angular/synthetic-forms-free', file, outputs: [output] }, reporter)
+
+    expect(failed).toBe(true)
+    expect(errors).toHaveLength(1)
+    expect(errors[0]).toContain('output.mjs')
+    expect(errors[0]).toContain('@angular/forms')
+  })
+
+  it('reports missing declared outputs', () => {
+    const file = join(workDir, 'public-api.ts')
+    const output = join(workDir, 'missing.mjs')
+    writeFileSync(file, 'export const ok = true\n', 'utf-8')
+
+    const { reporter, errors } = createReporter()
+    const failed = scanEntryPoint({ name: '@ark-ui/angular/synthetic-forms-free', file, outputs: [output] }, reporter)
+
+    expect(failed).toBe(true)
+    expect(errors).toEqual([
+      `forms isolation: build output not found for @ark-ui/angular/synthetic-forms-free (${output})`,
+    ])
+  })
+
   it('classifies Batch 3 form-bearing entrypoints', () => {
     for (const name of [
       '@ark-ui/angular/editable',
