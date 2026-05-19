@@ -1,5 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { ArkAvatarFallback, ArkAvatarImage, ArkAvatarRootProvider, useAvatar } from '@ark-ui/angular/avatar'
+import {
+  ArkAvatarFallback,
+  ArkAvatarImage,
+  ArkAvatarRootProvider,
+  type AvatarStatusChangeDetails,
+  useAvatar,
+} from '@ark-ui/angular/avatar'
 import { avatarExampleStyles } from '../avatar-example-styles'
 
 @Component({
@@ -16,5 +22,9 @@ import { avatarExampleStyles } from '../avatar-example-styles'
   styles: [avatarExampleStyles],
 })
 export class ProviderExample {
-  readonly avatar = useAvatar({ context: () => ({}) })
+  readonly avatar = useAvatar({
+    context: () => ({
+      onStatusChange: (details: AvatarStatusChangeDetails) => console.log('status changed', details),
+    }),
+  })
 }
