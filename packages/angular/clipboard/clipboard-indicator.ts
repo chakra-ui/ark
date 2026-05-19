@@ -14,7 +14,10 @@ export class ArkClipboardIndicator {
       elementRef: inject(ElementRef),
       renderer: inject(Renderer2),
       destroyRef: inject(DestroyRef),
-      props: () => context.api().getIndicatorProps({ copied: context.api().copied }),
+      props: () => {
+        const api = context.api()
+        return api.getIndicatorProps({ copied: api.copied })
+      },
     })
   }
 }

@@ -29,6 +29,12 @@ import type {
 import { ARK_FILE_UPLOAD_CONTEXT } from './use-file-upload-context'
 import { useFileUpload, type UseFileUploadReturn } from './use-file-upload'
 
+const optionalNumberAttribute = (value: unknown): number | undefined => {
+  if (value === null || value === undefined || value === '') return undefined
+  const next = numberAttribute(value)
+  return Number.isFinite(next) ? next : undefined
+}
+
 @Directive({
   selector: '[arkFileUpload]',
   standalone: true,
@@ -69,26 +75,17 @@ export class ArkFileUploadRoot implements UseFileUploadReturn {
   /** The maximum file size in bytes. */
   readonly maxFileSize: InputSignalWithTransform<number | undefined, unknown> = input<number | undefined, unknown>(
     undefined,
-    {
-      transform: (value: unknown) =>
-        value === null || value === undefined || value === '' ? undefined : numberAttribute(value),
-    },
+    { transform: optionalNumberAttribute },
   )
   /** The minimum file size in bytes. */
   readonly minFileSize: InputSignalWithTransform<number | undefined, unknown> = input<number | undefined, unknown>(
     undefined,
-    {
-      transform: (value: unknown) =>
-        value === null || value === undefined || value === '' ? undefined : numberAttribute(value),
-    },
+    { transform: optionalNumberAttribute },
   )
   /** The maximum number of files. */
   readonly maxFiles: InputSignalWithTransform<number | undefined, unknown> = input<number | undefined, unknown>(
     undefined,
-    {
-      transform: (value: unknown) =>
-        value === null || value === undefined || value === '' ? undefined : numberAttribute(value),
-    },
+    { transform: optionalNumberAttribute },
   )
   /** Whether to prevent the drop event on the document. */
   readonly preventDocumentDrop: InputSignalWithTransform<boolean | undefined, unknown> = input<

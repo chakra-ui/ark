@@ -26,8 +26,13 @@ export class ArkFileUploadItemPreview {
   private readonly item = injectArkFileUploadItemContext()
 
   readonly matches: Signal<boolean> = computed(() => {
-    const pattern = this.type() ?? '.*'
-    return Boolean(this.item.file().type.match(pattern))
+    const pattern = this.type()
+    if (!pattern || pattern === '*/*') return true
+    const mimeType = this.item.file().type
+    if (pattern.endsWith('/*')) {
+      return mimeType.startsWith(pattern.slice(0, -1))
+    }
+    return mimeType === pattern
   })
 
   constructor() {

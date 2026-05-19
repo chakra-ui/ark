@@ -30,8 +30,9 @@ type MergedContext = {
   ids?: FileUploadElementIds
   disabled?: boolean
   invalid?: boolean
+  readOnly?: boolean
   required?: boolean
-} & Omit<UseFileUploadProps, 'id' | 'ids' | 'disabled' | 'invalid' | 'required'>
+} & Omit<UseFileUploadProps, 'id' | 'ids' | 'disabled' | 'invalid' | 'readOnly' | 'required'>
 
 export function useFileUpload(options: UseFileUploadOptions): UseFileUploadReturn {
   const locale = injectArkLocale()
@@ -61,9 +62,11 @@ export function useFileUpload(options: UseFileUploadOptions): UseFileUploadRetur
         }
         const disabled = Boolean(props.disabled) || field.disabled()
         const invalid = Boolean(props.invalid) || field.invalid()
+        const readOnly = Boolean(props.readOnly) || field.readOnly()
         const required = Boolean(props.required) || field.required()
         merged.disabled = disabled || undefined
         merged.invalid = invalid || undefined
+        merged.readOnly = readOnly || undefined
         merged.required = required || undefined
       }
       return merged as unknown as FileUploadContext
