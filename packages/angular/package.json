@@ -77,6 +77,11 @@
       "types": "./dist/number-input/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-number-input.mjs"
     },
+    "./pin-input": {
+      "source": "./pin-input/public-api.ts",
+      "types": "./dist/pin-input/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-pin-input.mjs"
+    },
     "./popover": {
       "source": "./src/popover/public-api.ts",
       "types": "./dist/src/popover/index.d.ts",
