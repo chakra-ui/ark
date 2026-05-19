@@ -41,5 +41,5 @@
 - [ ] Manual/visual checks: Deferred because Storybook was not opened in a browser during this re-audit. Styling was verified against `.storybook/modules/highlight.module.css` and `.storybook/modules/field.module.css` in code; example classes match React selectors 1:1.
 
 ## Commit
-- Hash: recorded after commit
+- Hash: cd0ae3477
 - Message: `fix(angular): align highlight with react parity`
