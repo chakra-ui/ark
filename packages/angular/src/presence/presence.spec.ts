@@ -50,7 +50,13 @@ class OriginSentinelDirective {
   imports: [ArkPresenceComponent, OriginSentinelDirective],
   providers: [{ provide: PRESENCE_TOKEN, useValue: 'from-host' }],
   template: `
-    <ark-presence [present]="present()" [unmountOnExit]="unmountOnExit()" [originInjector]="originInjector">
+    <ark-presence
+      [present]="present()"
+      [lazyMount]="lazyMount()"
+      [unmountOnExit]="unmountOnExit()"
+      [skipAnimationOnMount]="skipAnimationOnMount()"
+      [originInjector]="originInjector"
+    >
       <ng-template>
         <span data-testid="origin-content" originSentinel>Origin</span>
       </ng-template>
@@ -60,7 +66,9 @@ class OriginSentinelDirective {
 class OriginInjectorHostComponent {
   @ViewChild(ArkPresenceComponent) presenceRef!: ArkPresenceComponent
   readonly present = signal(false)
+  readonly lazyMount = signal(false)
   readonly unmountOnExit = signal(false)
+  readonly skipAnimationOnMount = signal(false)
   readonly originInjector = Injector.create({
     providers: [
       { provide: PRESENCE_TOKEN, useValue: 'from-origin' },
@@ -239,6 +247,40 @@ describe('ArkPresenceComponent', () => {
     fixture.destroy()
   })
 
+  it('restores open data-state on later enters when skipAnimationOnMount is true', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkPresenceComponent],
+      template: `
+        <ark-presence [present]="present()" skipAnimationOnMount>
+          <ng-template><span data-testid="content">Hello</span></ng-template>
+        </ark-presence>
+      `,
+    })
+    class SkipAnimationHostComponent {
+      readonly present = signal(true)
+    }
+
+    TestBed.configureTestingModule({ imports: [SkipAnimationHostComponent] })
+    const fixture = TestBed.createComponent(SkipAnimationHostComponent)
+    fixture.detectChanges()
+
+    let content = queryContent(fixture.nativeElement) as HTMLElement
+    let presenceNode = content.closest('[data-scope="presence"]') as HTMLElement
+    expect(presenceNode.getAttribute('data-state')).toBeNull()
+
+    fixture.componentInstance.present.set(false)
+    fixture.detectChanges()
+    fixture.componentInstance.present.set(true)
+    fixture.detectChanges()
+
+    content = queryContent(fixture.nativeElement) as HTMLElement
+    presenceNode = content.closest('[data-scope="presence"]') as HTMLElement
+    expect(presenceNode.getAttribute('data-state')).toBe('open')
+
+    fixture.destroy()
+  })
+
   it('emits the exitComplete output when onExitComplete is invoked', () => {
     TestBed.configureTestingModule({ imports: [HostComponent] })
     const fixture = TestBed.createComponent(HostComponent)
@@ -331,6 +373,28 @@ describe('ArkPresenceComponent', () => {
     expect(fixture.nativeElement.querySelector('[data-testid="origin-content"]')).not.toBeNull()
     expect(originSentinelCapture.tokenValue).toBe('from-origin')
     expect(originSentinelCapture.originValue).toBe('origin-only')
+
+    fixture.destroy()
+  })
+
+  it('preserves origin injector tokens after lazy mount with skipAnimationOnMount', () => {
+    TestBed.configureTestingModule({ imports: [OriginInjectorHostComponent] })
+    const fixture = TestBed.createComponent(OriginInjectorHostComponent)
+    fixture.componentInstance.lazyMount.set(true)
+    fixture.componentInstance.skipAnimationOnMount.set(true)
+    fixture.detectChanges()
+
+    expect(fixture.nativeElement.querySelector('[data-testid="origin-content"]')).toBeNull()
+    expect(fixture.componentInstance.presenceRef.status()).toBe('unmounted')
+
+    fixture.componentInstance.present.set(true)
+    fixture.detectChanges()
+
+    const content = fixture.nativeElement.querySelector('[data-testid="origin-content"]') as HTMLElement
+    expect(content).not.toBeNull()
+    expect(originSentinelCapture.tokenValue).toBe('from-origin')
+    expect(originSentinelCapture.originValue).toBe('origin-only')
+    expect((content.closest('[data-scope="presence"]') as HTMLElement).getAttribute('data-state')).toBe('open')
 
     fixture.destroy()
   })
