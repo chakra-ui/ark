@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
 import {
   ArkToaster,
   ArkToastActionTrigger,
-  ArkToastCloseTrigger,
   ArkToastDescription,
   ArkToastTitle,
   createToaster,
@@ -13,22 +12,18 @@ import { toastExampleStyles } from '../toast-example-styles'
   selector: 'toast-action-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ArkToaster, ArkToastTitle, ArkToastDescription, ArkToastActionTrigger, ArkToastCloseTrigger],
+  imports: [ArkToaster, ArkToastTitle, ArkToastDescription, ArkToastActionTrigger],
   template: `
     <div class="toast-demo">
-      <button type="button" class="toast-button" (click)="show()">Show action toast</button>
-      <span>{{ actionCount() }} actions</span>
+      <button type="button" class="toast-button" (click)="show()">Create event</button>
     </div>
 
     <ng-template #toastTemplate let-toast>
-      <div arkToastTitle>{{ toast.title }}</div>
-      <div arkToastDescription>{{ toast.description }}</div>
-      <div class="toast-footer">
-        @if (toast.action) {
-          <button type="button" arkToastActionTrigger class="toast-action">{{ toast.action.label }}</button>
-        }
-        <button type="button" arkToastCloseTrigger class="toast-close">Dismiss</button>
-      </div>
+      <div arkToastTitle class="Title">{{ toast.title }}</div>
+      <div arkToastDescription class="Description">{{ toast.description }}</div>
+      @if (toast.action) {
+        <button type="button" arkToastActionTrigger class="ActionTrigger">{{ toast.action.label }}</button>
+      }
     </ng-template>
 
     <ark-toaster [toaster]="toaster" [itemTemplate]="toastTemplate" />
@@ -36,13 +31,14 @@ import { toastExampleStyles } from '../toast-example-styles'
   styles: [toastExampleStyles],
 })
 export class ToastActionExample {
-  readonly toaster = createToaster({ placement: 'bottom-end' })
+  readonly toaster = createToaster({ placement: 'bottom-end', gap: 24 })
   readonly actionCount = signal(0)
 
   show(): void {
     this.toaster.create({
-      title: 'File archived',
-      description: 'You can undo this action.',
+      title: 'Event has been created',
+      description: 'We have sent you an email with the event details.',
+      type: 'info',
       action: {
         label: 'Undo',
         onClick: () => this.actionCount.update((count) => count + 1),
