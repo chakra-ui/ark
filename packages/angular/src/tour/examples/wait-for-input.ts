@@ -21,7 +21,7 @@ import {
 import { tourExampleStyles } from '../tour-example-styles'
 
 @Component({
-  selector: 'tour-wait-for-click-example',
+  selector: 'tour-wait-for-input-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -42,15 +42,24 @@ import { tourExampleStyles } from '../tour-example-styles'
     ArkTourActionTrigger,
   ],
   template: `
-    <div arkTour #tour="arkTour" [steps]="steps" class="tour-root">
+    <div class="tour-root" arkTour #tour="arkTour" [steps]="steps">
       <button type="button" class="tour-button" data-variant="solid" (click)="tour.api().start()">
-        Start Interactive Tour
+        Start Form Tutorial
       </button>
 
-      <div class="tour-targets">
-        <button id="btn-add" type="button" class="tour-button">Add Item</button>
-        <button id="btn-edit" type="button" class="tour-button">Edit</button>
-        <button id="btn-delete" type="button" class="tour-button">Delete</button>
+      <div class="tour-form">
+        <div class="tour-form-field">
+          <label for="input-name">Name</label>
+          <input id="input-name" type="text" placeholder="Enter your name" class="tour-input" />
+        </div>
+        <div class="tour-form-field">
+          <label for="input-email">Email</label>
+          <input id="input-email" type="email" placeholder="Enter your email" class="tour-input" />
+        </div>
+        <div class="tour-form-field-inline">
+          <input id="checkbox-terms" type="checkbox" class="tour-checkbox" />
+          <label for="checkbox-terms">I accept the terms and conditions</label>
+        </div>
       </div>
 
       <ark-portal [originInjector]="tour.getContextCarrier().elementInjector">
@@ -79,84 +88,67 @@ import { tourExampleStyles } from '../tour-example-styles'
   `,
   styles: [tourExampleStyles],
 })
-export class TourWaitForClickExample {
+export class TourWaitForInputExample {
   readonly steps: TourStepDetails[] = [
     {
       id: 'intro',
       type: 'dialog',
-      title: 'Interactive Tour',
-      description: 'This tour will guide you through actions. You must complete each step to proceed.',
-      actions: [{ label: 'Begin', action: 'next' }],
+      title: 'Form Tutorial',
+      description: 'Learn how to fill out the form by following the guided steps.',
+      actions: [{ label: 'Start', action: 'next' }],
     },
     {
-      id: 'click-add',
+      id: 'enter-name',
       type: 'tooltip',
-      title: 'Click the Add Button',
-      description: 'Click the "Add Item" button to continue.',
-      target: () => document.querySelector<HTMLElement>('#btn-add'),
-      effect({ next, show, target }) {
+      title: 'Enter Your Name',
+      description: 'Type your name in the input field to continue.',
+      target: () => document.querySelector<HTMLInputElement>('#input-name'),
+      effect({ next, target, show }) {
         show()
-        const [promise, cancel] = waitForEvent(target, 'click')
-        let cancelled = false
-        promise
-          .then(() => {
-            if (!cancelled) next()
-          })
-          .catch(() => {})
-        return () => {
-          cancelled = true
-          cancel()
-        }
+        const [promise, cancel] = waitForEvent<HTMLInputElement>(target, 'input', {
+          predicate: (element) => element.value.trim().length >= 2,
+        })
+        promise.then(() => next()).catch(() => {})
+        return cancel
       },
     },
     {
-      id: 'click-edit',
+      id: 'enter-email',
       type: 'tooltip',
-      title: 'Click the Edit Button',
-      description: 'Now click the "Edit" button.',
-      target: () => document.querySelector<HTMLElement>('#btn-edit'),
-      effect({ next, show, target }) {
+      title: 'Enter Your Email',
+      description: 'Now enter a valid email address.',
+      target: () => document.querySelector<HTMLInputElement>('#input-email'),
+      effect({ next, target, show }) {
         show()
-        const [promise, cancel] = waitForEvent(target, 'click')
-        let cancelled = false
-        promise
-          .then(() => {
-            if (!cancelled) next()
-          })
-          .catch(() => {})
-        return () => {
-          cancelled = true
-          cancel()
-        }
+        const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/
+        const [promise, cancel] = waitForEvent<HTMLInputElement>(target, 'input', {
+          predicate: (element) => emailRegex.test(element.value),
+        })
+        promise.then(() => next()).catch(() => {})
+        return cancel
       },
     },
     {
-      id: 'click-delete',
+      id: 'check-terms',
       type: 'tooltip',
-      title: 'Click the Delete Button',
-      description: 'Finally, click the "Delete" button.',
-      target: () => document.querySelector<HTMLElement>('#btn-delete'),
-      effect({ next, show, target }) {
+      title: 'Accept Terms',
+      description: 'Check the checkbox to accept the terms.',
+      target: () => document.querySelector<HTMLInputElement>('#checkbox-terms'),
+      effect({ next, target, show }) {
         show()
-        const [promise, cancel] = waitForEvent(target, 'click')
-        let cancelled = false
-        promise
-          .then(() => {
-            if (!cancelled) next()
-          })
-          .catch(() => {})
-        return () => {
-          cancelled = true
-          cancel()
-        }
+        const [promise, cancel] = waitForEvent<HTMLInputElement>(target, 'change', {
+          predicate: (element) => element.checked,
+        })
+        promise.then(() => next()).catch(() => {})
+        return cancel
       },
     },
     {
       id: 'complete',
       type: 'dialog',
-      title: 'Well Done!',
-      description: 'You completed all the interactive steps.',
-      actions: [{ label: 'Finish', action: 'dismiss' }],
+      title: 'Form Complete!',
+      description: 'You have successfully filled out the form.',
+      actions: [{ label: 'Done', action: 'dismiss' }],
     },
   ]
 }

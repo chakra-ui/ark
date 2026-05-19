@@ -20,7 +20,7 @@ import {
 import { tourExampleStyles } from '../tour-example-styles'
 
 @Component({
-  selector: 'tour-basic-example',
+  selector: 'tour-progress-bar-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -45,9 +45,10 @@ import { tourExampleStyles } from '../tour-example-styles'
       <button type="button" class="tour-button" data-variant="solid" (click)="tour.api().start()">Start Tour</button>
 
       <div class="tour-targets">
-        <button id="btn-upload" type="button" class="tour-button">Upload</button>
-        <button id="btn-save" type="button" class="tour-button">Save</button>
-        <button id="btn-more" type="button" class="tour-button">More</button>
+        <div id="progress-1" class="tour-target">Step 1</div>
+        <div id="progress-2" class="tour-target">Step 2</div>
+        <div id="progress-3" class="tour-target">Step 3</div>
+        <div id="progress-4" class="tour-target">Step 4</div>
       </div>
 
       <ark-portal [originInjector]="tour.getContextCarrier().elementInjector">
@@ -69,6 +70,9 @@ import { tourExampleStyles } from '../tour-example-styles'
                 }
               </ng-template>
             </div>
+            <div class="tour-progress-bar-bottom">
+              <div class="tour-progress-fill" [style.width.%]="tour.api().getProgressPercent()"></div>
+            </div>
           </div>
         </div>
       </ark-portal>
@@ -76,54 +80,48 @@ import { tourExampleStyles } from '../tour-example-styles'
   `,
   styles: [tourExampleStyles],
 })
-export class TourBasicExample {
+export class TourProgressBarExample {
   readonly steps: TourStepDetails[] = [
     {
-      id: 'welcome',
-      type: 'dialog',
-      title: 'Welcome to the App!',
-      description: "Let's take a quick tour to get you started with the main features.",
-      actions: [{ label: 'Start Tour', action: 'next' }],
+      id: 'step-1',
+      type: 'tooltip',
+      title: 'Progress Tracking',
+      description: 'Watch the progress bar at the bottom as you navigate.',
+      target: () => document.querySelector<HTMLElement>('#progress-1'),
+      actions: [{ label: 'Next', action: 'next' }],
     },
     {
-      id: 'upload',
+      id: 'step-2',
       type: 'tooltip',
-      title: 'Upload Files',
-      description: 'Click here to upload your files to the cloud.',
-      target: () => document.querySelector<HTMLElement>('#btn-upload'),
+      title: 'Halfway There',
+      description: 'The progress bar shows how far along you are.',
+      target: () => document.querySelector<HTMLElement>('#progress-2'),
       actions: [
         { label: 'Back', action: 'prev' },
         { label: 'Next', action: 'next' },
       ],
     },
     {
-      id: 'save',
+      id: 'step-3',
       type: 'tooltip',
-      title: 'Save Changes',
-      description: 'Save your work to keep your progress.',
-      target: () => document.querySelector<HTMLElement>('#btn-save'),
+      title: 'Almost Done',
+      description: 'One more step to complete the tour.',
+      target: () => document.querySelector<HTMLElement>('#progress-3'),
       actions: [
         { label: 'Back', action: 'prev' },
         { label: 'Next', action: 'next' },
       ],
     },
     {
-      id: 'more',
+      id: 'step-4',
       type: 'tooltip',
-      title: 'More Options',
-      description: 'Access additional settings and actions from this menu.',
-      target: () => document.querySelector<HTMLElement>('#btn-more'),
+      title: 'Complete!',
+      description: 'You have completed all the steps.',
+      target: () => document.querySelector<HTMLElement>('#progress-4'),
       actions: [
         { label: 'Back', action: 'prev' },
-        { label: 'Next', action: 'next' },
+        { label: 'Finish', action: 'dismiss' },
       ],
-    },
-    {
-      id: 'complete',
-      type: 'dialog',
-      title: "You're all set!",
-      description: 'You now know the basics. Enjoy using the app!',
-      actions: [{ label: 'Finish', action: 'dismiss' }],
     },
   ]
 }

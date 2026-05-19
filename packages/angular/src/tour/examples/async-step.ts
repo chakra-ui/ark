@@ -20,7 +20,7 @@ import {
 import { tourExampleStyles } from '../tour-example-styles'
 
 @Component({
-  selector: 'tour-basic-example',
+  selector: 'tour-async-step-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -44,11 +44,7 @@ import { tourExampleStyles } from '../tour-example-styles'
     <div class="tour-root" arkTour #tour="arkTour" [steps]="steps">
       <button type="button" class="tour-button" data-variant="solid" (click)="tour.api().start()">Start Tour</button>
 
-      <div class="tour-targets">
-        <button id="btn-upload" type="button" class="tour-button">Upload</button>
-        <button id="btn-save" type="button" class="tour-button">Save</button>
-        <button id="btn-more" type="button" class="tour-button">More</button>
-      </div>
+      <div id="user-card" class="tour-target">User Profile Card</div>
 
       <ark-portal [originInjector]="tour.getContextCarrier().elementInjector">
         <div arkTourBackdrop class="tour-backdrop"></div>
@@ -76,54 +72,54 @@ import { tourExampleStyles } from '../tour-example-styles'
   `,
   styles: [tourExampleStyles],
 })
-export class TourBasicExample {
+export class TourAsyncStepExample {
   readonly steps: TourStepDetails[] = [
     {
-      id: 'welcome',
+      id: 'intro',
       type: 'dialog',
-      title: 'Welcome to the App!',
-      description: "Let's take a quick tour to get you started with the main features.",
-      actions: [{ label: 'Start Tour', action: 'next' }],
+      title: 'Async Data Loading',
+      description: 'This tour demonstrates loading data before showing a step.',
+      actions: [{ label: 'Next', action: 'next' }],
     },
     {
-      id: 'upload',
+      id: 'user-info',
       type: 'tooltip',
-      title: 'Upload Files',
-      description: 'Click here to upload your files to the cloud.',
-      target: () => document.querySelector<HTMLElement>('#btn-upload'),
+      title: 'Loading...',
+      description: 'Fetching user data...',
+      target: () => document.querySelector<HTMLElement>('#user-card'),
       actions: [
         { label: 'Back', action: 'prev' },
         { label: 'Next', action: 'next' },
       ],
-    },
-    {
-      id: 'save',
-      type: 'tooltip',
-      title: 'Save Changes',
-      description: 'Save your work to keep your progress.',
-      target: () => document.querySelector<HTMLElement>('#btn-save'),
-      actions: [
-        { label: 'Back', action: 'prev' },
-        { label: 'Next', action: 'next' },
-      ],
-    },
-    {
-      id: 'more',
-      type: 'tooltip',
-      title: 'More Options',
-      description: 'Access additional settings and actions from this menu.',
-      target: () => document.querySelector<HTMLElement>('#btn-more'),
-      actions: [
-        { label: 'Back', action: 'prev' },
-        { label: 'Next', action: 'next' },
-      ],
+      effect({ show, update }) {
+        const controller = new AbortController()
+
+        fetch('https://api.github.com/users/segunadebayo', { signal: controller.signal })
+          .then((response) => response.json())
+          .then((data: { followers?: number; login?: string; name?: string; public_repos?: number }) => {
+            update({
+              title: `Welcome, ${data.name || data.login}!`,
+              description: `You have ${data.public_repos} public repositories and ${data.followers} followers.`,
+            })
+            show()
+          })
+          .catch(() => {
+            update({
+              title: 'User Profile',
+              description: 'Could not load user data. Please try again.',
+            })
+            show()
+          })
+
+        return () => controller.abort()
+      },
     },
     {
       id: 'complete',
       type: 'dialog',
-      title: "You're all set!",
-      description: 'You now know the basics. Enjoy using the app!',
-      actions: [{ label: 'Finish', action: 'dismiss' }],
+      title: 'Tour Complete',
+      description: 'The async step loaded data from the GitHub API before displaying.',
+      actions: [{ label: 'Done', action: 'dismiss' }],
     },
   ]
 }

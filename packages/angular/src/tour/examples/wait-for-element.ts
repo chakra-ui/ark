@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import type { TourStepDetails } from '../public-api'
 import {
@@ -16,11 +16,13 @@ import {
   ArkTourRoot,
   ArkTourSpotlight,
   ArkTourTitle,
+  waitForElement,
+  waitForEvent,
 } from '../public-api'
 import { tourExampleStyles } from '../tour-example-styles'
 
 @Component({
-  selector: 'tour-basic-example',
+  selector: 'tour-wait-for-element-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -44,10 +46,17 @@ import { tourExampleStyles } from '../tour-example-styles'
     <div class="tour-root" arkTour #tour="arkTour" [steps]="steps">
       <button type="button" class="tour-button" data-variant="solid" (click)="tour.api().start()">Start Tour</button>
 
-      <div class="tour-targets">
-        <button id="btn-upload" type="button" class="tour-button">Upload</button>
-        <button id="btn-save" type="button" class="tour-button">Save</button>
-        <button id="btn-more" type="button" class="tour-button">More</button>
+      <button id="btn-add-item" type="button" class="tour-button" (click)="addItem()">Add Item</button>
+
+      <div class="tour-list">
+        @for (item of items(); track item; let index = $index) {
+          <div
+            class="tour-list-item"
+            [attr.data-item]="index === items().length - 1 && items().length > 2 ? 'new' : null"
+          >
+            {{ item }}
+          </div>
+        }
       </div>
 
       <ark-portal [originInjector]="tour.getContextCarrier().elementInjector">
@@ -76,54 +85,54 @@ import { tourExampleStyles } from '../tour-example-styles'
   `,
   styles: [tourExampleStyles],
 })
-export class TourBasicExample {
+export class TourWaitForElementExample {
+  readonly items = signal(['Item 1', 'Item 2'])
   readonly steps: TourStepDetails[] = [
     {
-      id: 'welcome',
+      id: 'intro',
       type: 'dialog',
-      title: 'Welcome to the App!',
-      description: "Let's take a quick tour to get you started with the main features.",
-      actions: [{ label: 'Start Tour', action: 'next' }],
+      title: 'Dynamic Elements',
+      description: 'This tour demonstrates waiting for elements that appear dynamically.',
+      actions: [{ label: 'Start', action: 'next' }],
     },
     {
-      id: 'upload',
+      id: 'add-item',
       type: 'tooltip',
-      title: 'Upload Files',
-      description: 'Click here to upload your files to the cloud.',
-      target: () => document.querySelector<HTMLElement>('#btn-upload'),
-      actions: [
-        { label: 'Back', action: 'prev' },
-        { label: 'Next', action: 'next' },
-      ],
+      title: 'Add an Item',
+      description: 'Click the button to add a new item to the list.',
+      target: () => document.querySelector<HTMLElement>('#btn-add-item'),
+      effect({ next, target, show }) {
+        show()
+        const [promise, cancel] = waitForEvent(target, 'click')
+        promise.then(() => next()).catch(() => {})
+        return cancel
+      },
     },
     {
-      id: 'save',
+      id: 'new-item',
       type: 'tooltip',
-      title: 'Save Changes',
-      description: 'Save your work to keep your progress.',
-      target: () => document.querySelector<HTMLElement>('#btn-save'),
-      actions: [
-        { label: 'Back', action: 'prev' },
-        { label: 'Next', action: 'next' },
-      ],
-    },
-    {
-      id: 'more',
-      type: 'tooltip',
-      title: 'More Options',
-      description: 'Access additional settings and actions from this menu.',
-      target: () => document.querySelector<HTMLElement>('#btn-more'),
-      actions: [
-        { label: 'Back', action: 'prev' },
-        { label: 'Next', action: 'next' },
-      ],
+      title: 'New Item Added!',
+      description: 'The tour waited for this element to appear before showing this step.',
+      target: () => document.querySelector<HTMLElement>('[data-item="new"]'),
+      effect({ show }) {
+        const [promise, cancel] = waitForElement(() => document.querySelector<HTMLElement>('[data-item="new"]'), {
+          timeout: 5000,
+        })
+        promise.then(() => show()).catch(() => {})
+        return () => cancel()
+      },
+      actions: [{ label: 'Next', action: 'next' }],
     },
     {
       id: 'complete',
       type: 'dialog',
-      title: "You're all set!",
-      description: 'You now know the basics. Enjoy using the app!',
-      actions: [{ label: 'Finish', action: 'dismiss' }],
+      title: 'Tour Complete',
+      description: 'You learned how to use waitForElement for dynamic content.',
+      actions: [{ label: 'Done', action: 'dismiss' }],
     },
   ]
+
+  addItem(): void {
+    this.items.update((items) => [...items, `Item ${items.length + 1}`])
+  }
 }

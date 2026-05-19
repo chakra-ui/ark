@@ -20,7 +20,7 @@ import {
 import { tourExampleStyles } from '../tour-example-styles'
 
 @Component({
-  selector: 'tour-basic-example',
+  selector: 'tour-keyboard-navigation-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -41,13 +41,15 @@ import { tourExampleStyles } from '../tour-example-styles'
     ArkTourActionTrigger,
   ],
   template: `
-    <div class="tour-root" arkTour #tour="arkTour" [steps]="steps">
+    <div class="tour-root" arkTour #tour="arkTour" [steps]="steps" [keyboardNavigation]="true">
       <button type="button" class="tour-button" data-variant="solid" (click)="tour.api().start()">Start Tour</button>
 
+      <p class="tour-hint">Use arrow keys to navigate, Escape to close</p>
+
       <div class="tour-targets">
-        <button id="btn-upload" type="button" class="tour-button">Upload</button>
-        <button id="btn-save" type="button" class="tour-button">Save</button>
-        <button id="btn-more" type="button" class="tour-button">More</button>
+        <div id="key-1" class="tour-target">Step 1</div>
+        <div id="key-2" class="tour-target">Step 2</div>
+        <div id="key-3" class="tour-target">Step 3</div>
       </div>
 
       <ark-portal [originInjector]="tour.getContextCarrier().elementInjector">
@@ -76,54 +78,37 @@ import { tourExampleStyles } from '../tour-example-styles'
   `,
   styles: [tourExampleStyles],
 })
-export class TourBasicExample {
+export class TourKeyboardNavigationExample {
   readonly steps: TourStepDetails[] = [
     {
-      id: 'welcome',
-      type: 'dialog',
-      title: 'Welcome to the App!',
-      description: "Let's take a quick tour to get you started with the main features.",
-      actions: [{ label: 'Start Tour', action: 'next' }],
+      id: 'step-1',
+      type: 'tooltip',
+      title: 'Keyboard Navigation',
+      description: 'Press the right arrow key to go to the next step.',
+      target: () => document.querySelector<HTMLElement>('#key-1'),
+      actions: [{ label: 'Next', action: 'next' }],
     },
     {
-      id: 'upload',
+      id: 'step-2',
       type: 'tooltip',
-      title: 'Upload Files',
-      description: 'Click here to upload your files to the cloud.',
-      target: () => document.querySelector<HTMLElement>('#btn-upload'),
+      title: 'Go Back',
+      description: 'Press the left arrow key to go back.',
+      target: () => document.querySelector<HTMLElement>('#key-2'),
       actions: [
         { label: 'Back', action: 'prev' },
         { label: 'Next', action: 'next' },
       ],
     },
     {
-      id: 'save',
+      id: 'step-3',
       type: 'tooltip',
-      title: 'Save Changes',
-      description: 'Save your work to keep your progress.',
-      target: () => document.querySelector<HTMLElement>('#btn-save'),
+      title: 'Close Tour',
+      description: 'Press Escape to close the tour at any time.',
+      target: () => document.querySelector<HTMLElement>('#key-3'),
       actions: [
         { label: 'Back', action: 'prev' },
-        { label: 'Next', action: 'next' },
+        { label: 'Finish', action: 'dismiss' },
       ],
-    },
-    {
-      id: 'more',
-      type: 'tooltip',
-      title: 'More Options',
-      description: 'Access additional settings and actions from this menu.',
-      target: () => document.querySelector<HTMLElement>('#btn-more'),
-      actions: [
-        { label: 'Back', action: 'prev' },
-        { label: 'Next', action: 'next' },
-      ],
-    },
-    {
-      id: 'complete',
-      type: 'dialog',
-      title: "You're all set!",
-      description: 'You now know the basics. Enjoy using the app!',
-      actions: [{ label: 'Finish', action: 'dismiss' }],
     },
   ]
 }

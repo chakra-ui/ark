@@ -20,7 +20,7 @@ import {
 import { tourExampleStyles } from '../tour-example-styles'
 
 @Component({
-  selector: 'tour-basic-example',
+  selector: 'tour-mixed-types-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -44,11 +44,7 @@ import { tourExampleStyles } from '../tour-example-styles'
     <div class="tour-root" arkTour #tour="arkTour" [steps]="steps">
       <button type="button" class="tour-button" data-variant="solid" (click)="tour.api().start()">Start Tour</button>
 
-      <div class="tour-targets">
-        <button id="btn-upload" type="button" class="tour-button">Upload</button>
-        <button id="btn-save" type="button" class="tour-button">Save</button>
-        <button id="btn-more" type="button" class="tour-button">More</button>
-      </div>
+      <div id="target-element" class="tour-target">Target Element</div>
 
       <ark-portal [originInjector]="tour.getContextCarrier().elementInjector">
         <div arkTourBackdrop class="tour-backdrop"></div>
@@ -76,43 +72,32 @@ import { tourExampleStyles } from '../tour-example-styles'
   `,
   styles: [tourExampleStyles],
 })
-export class TourBasicExample {
+export class TourMixedTypesExample {
   readonly steps: TourStepDetails[] = [
     {
       id: 'welcome',
       type: 'dialog',
-      title: 'Welcome to the App!',
-      description: "Let's take a quick tour to get you started with the main features.",
+      title: 'Welcome!',
+      description: 'This tour demonstrates different step types: dialog, tooltip, and floating.',
       actions: [{ label: 'Start Tour', action: 'next' }],
     },
     {
-      id: 'upload',
+      id: 'tooltip-step',
       type: 'tooltip',
-      title: 'Upload Files',
-      description: 'Click here to upload your files to the cloud.',
-      target: () => document.querySelector<HTMLElement>('#btn-upload'),
+      title: 'Tooltip Step',
+      description: 'This step appears as a tooltip anchored to a specific element.',
+      target: () => document.querySelector<HTMLElement>('#target-element'),
       actions: [
         { label: 'Back', action: 'prev' },
         { label: 'Next', action: 'next' },
       ],
     },
     {
-      id: 'save',
-      type: 'tooltip',
-      title: 'Save Changes',
-      description: 'Save your work to keep your progress.',
-      target: () => document.querySelector<HTMLElement>('#btn-save'),
-      actions: [
-        { label: 'Back', action: 'prev' },
-        { label: 'Next', action: 'next' },
-      ],
-    },
-    {
-      id: 'more',
-      type: 'tooltip',
-      title: 'More Options',
-      description: 'Access additional settings and actions from this menu.',
-      target: () => document.querySelector<HTMLElement>('#btn-more'),
+      id: 'floating-step',
+      type: 'floating',
+      placement: 'bottom-end',
+      title: 'Floating Step',
+      description: 'This step floats at a fixed position on the screen, independent of any target.',
       actions: [
         { label: 'Back', action: 'prev' },
         { label: 'Next', action: 'next' },
@@ -121,9 +106,9 @@ export class TourBasicExample {
     {
       id: 'complete',
       type: 'dialog',
-      title: "You're all set!",
-      description: 'You now know the basics. Enjoy using the app!',
-      actions: [{ label: 'Finish', action: 'dismiss' }],
+      title: 'Tour Complete!',
+      description: 'You have seen all the different step types available.',
+      actions: [{ label: 'Done', action: 'dismiss' }],
     },
   ]
 }
