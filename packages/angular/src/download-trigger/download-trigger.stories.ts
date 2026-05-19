@@ -5,7 +5,7 @@ import { DownloadTriggerSvgExample } from './examples/svg'
 import { DownloadTriggerWithPromiseExample } from './examples/with-promise'
 
 const meta: Meta = {
-  title: 'Components / Download Trigger',
+  title: 'Utilities / Download Trigger',
 }
 
 export default meta

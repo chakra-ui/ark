@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { ArkDownloadTriggerDirective } from '../public-api'
+import { downloadTriggerExampleStyles } from '../download-trigger-example-styles'
 
 const content = 'Hello, World! This is a sample text file.'
 
@@ -10,58 +11,24 @@ const content = 'Hello, World! This is a sample text file.'
   imports: [ArkDownloadTriggerDirective],
   template: `
     <div class="root">
-      <div class="preview" aria-label="Text file preview">
-        <span class="icon" aria-hidden="true">TXT</span>
-        <span>{{ content }}</span>
+      <div class="preview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+          <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+        </svg>
+        <span class="preview-text">{{ content }}</span>
       </div>
-      <button type="button" arkDownloadTrigger [data]="content" fileName="hello.txt" mimeType="text/plain">
+      <button class="button" arkDownloadTrigger [data]="content" fileName="hello.txt" mimeType="text/plain">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <path d="M7 10l5 5 5-5" />
+          <path d="M12 15V3" />
+        </svg>
         Download txt
       </button>
     </div>
   `,
-  styles: [
-    `
-      .root {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        align-items: flex-start;
-      }
-
-      .preview {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 12px;
-        border: 1px solid #d4d4d8;
-        border-radius: 8px;
-        color: #18181b;
-        max-width: 360px;
-      }
-
-      .icon {
-        display: inline-grid;
-        place-items: center;
-        width: 40px;
-        height: 40px;
-        border-radius: 6px;
-        background: #f4f4f5;
-        font-size: 12px;
-        font-weight: 600;
-      }
-
-      button {
-        border: 0;
-        border-radius: 6px;
-        background: #18181b;
-        color: white;
-        font: inherit;
-        font-weight: 500;
-        padding: 10px 14px;
-        cursor: pointer;
-      }
-    `,
-  ],
+  styles: [downloadTriggerExampleStyles],
 })
 export class DownloadTriggerBasicExample {
   readonly content = content
