@@ -47,7 +47,10 @@ export class ArkFileUploadItemPreview {
       elementRef: inject(ElementRef),
       renderer: inject(Renderer2),
       destroyRef: inject(DestroyRef),
-      props: () => this.context.api().getItemPreviewProps({ file: this.item.file(), type: this.item.type() }),
+      props: () => ({
+        ...this.context.api().getItemPreviewProps({ file: this.item.file(), type: this.item.type() }),
+        hidden: this.matches() ? undefined : true,
+      }),
     })
   }
 }

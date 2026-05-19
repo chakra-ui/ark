@@ -1,5 +1,6 @@
 import { DestroyRef, Directive, ElementRef, Renderer2, inject } from '@angular/core'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
+import { ARK_FIELD_CONTEXT } from '@ark-ui/angular/field'
 import { injectArkFileUploadContext } from './use-file-upload-context'
 
 @Directive({
@@ -10,11 +11,15 @@ import { injectArkFileUploadContext } from './use-file-upload-context'
 export class ArkFileUploadHiddenInput {
   constructor() {
     const context = injectArkFileUploadContext()
+    const field = inject(ARK_FIELD_CONTEXT, { optional: true })
     applyArkProps({
       elementRef: inject(ElementRef),
       renderer: inject(Renderer2),
       destroyRef: inject(DestroyRef),
-      props: () => context.api().getHiddenInputProps(),
+      props: () => ({
+        ...context.api().getHiddenInputProps(),
+        'aria-describedby': field?.ariaDescribedby(),
+      }),
     })
   }
 }
