@@ -6,6 +6,7 @@
     "baseUrl": ".",
     "paths": {
       "@ark-ui/angular/avatar": ["avatar/public-api.ts"],
+      "@ark-ui/angular/clipboard": ["clipboard/public-api.ts"],
       "@ark-ui/angular/collapsible": ["src/collapsible/public-api.ts"],
       "@ark-ui/angular/dialog": ["src/dialog/public-api.ts"],
       "@ark-ui/angular/drawer": ["src/drawer/public-api.ts"],
@@ -57,6 +58,7 @@
   "include": [
     "src/**/*.ts",
     "avatar/**/*.ts",
+    "clipboard/**/*.ts",
     "editable/**/*.ts",
     "field/**/*.ts",
     "fieldset/**/*.ts",

@@ -12,6 +12,7 @@ const entrypoints = [
   ['providers/environment', () => import('./providers/environment/public-api')],
   ['providers/locale', () => import('./providers/locale/public-api')],
   ['providers/interaction', () => import('./providers/interaction/public-api')],
+  ['clipboard', () => import('../clipboard/public-api')],
   ['collapsible', () => import('./collapsible/public-api')],
   ['dialog', () => import('./dialog/public-api')],
   ['drawer', () => import('./drawer/public-api')],
@@ -79,6 +80,7 @@ describe('package.json exports map', () => {
     const requiredKeys = [
       '.',
       './avatar',
+      './clipboard',
       './client-only',
       './collapsible',
       './dialog',

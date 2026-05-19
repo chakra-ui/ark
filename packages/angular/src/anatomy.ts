@@ -1,4 +1,5 @@
 export { avatarAnatomy } from '@ark-ui/angular/avatar'
+export { clipboardAnatomy } from '@ark-ui/angular/clipboard'
 // Batch 2 components live under src/. Relative imports avoid ng-packagr resolving
 // these secondary entry points as @ark-ui/angular/src/<name> during graph analysis.
 export { collapsibleAnatomy } from './collapsible/collapsible.anatomy'

@@ -1,0 +1,76 @@
+{
+  "Root": {
+    "props": {
+      "defaultValue": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial value to copy when uncontrolled."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the clipboard."
+      },
+      "ids": {
+        "type": "Partial<{ root: string; input: string; label: string }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the elements in the clipboard. Useful for composition."
+      },
+      "statusChange": {
+        "type": "ClipboardCopyStatusDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when the copy status changes."
+      },
+      "timeout": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The timeout for the copied state, in milliseconds."
+      },
+      "translations": {
+        "type": "ClipboardIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The localized strings for the clipboard."
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled value to copy to the clipboard."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseClipboardReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The clipboard machine returned by useClipboard()."
+      }
+    }
+  },
+  "Label": {
+    "props": {}
+  },
+  "Control": {
+    "props": {}
+  },
+  "Input": {
+    "props": {}
+  },
+  "Trigger": {
+    "props": {}
+  },
+  "Indicator": {
+    "props": {}
+  },
+  "ValueText": {
+    "props": {}
+  }
+}

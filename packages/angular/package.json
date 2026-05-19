@@ -27,6 +27,11 @@
       "types": "./dist/avatar/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-avatar.mjs"
     },
+    "./clipboard": {
+      "source": "./clipboard/public-api.ts",
+      "types": "./dist/clipboard/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-clipboard.mjs"
+    },
     "./collapsible": {
       "source": "./src/collapsible/public-api.ts",
       "types": "./dist/src/collapsible/index.d.ts",

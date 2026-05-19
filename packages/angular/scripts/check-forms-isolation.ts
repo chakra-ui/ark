@@ -26,6 +26,11 @@ export const entryPoints: EntryPoint[] = [
     outputs: ['dist/fesm2022/ark-ui-angular-avatar.mjs'],
   },
   {
+    name: '@ark-ui/angular/clipboard',
+    file: 'clipboard/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-clipboard.mjs'],
+  },
+  {
     name: '@ark-ui/angular/collapsible',
     file: 'src/collapsible/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-src-collapsible.mjs'],

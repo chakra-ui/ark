@@ -1,0 +1,11 @@
+export type {
+  Api as ClipboardApi,
+  CopyStatusDetails as ClipboardCopyStatusDetails,
+  ElementIds as ClipboardElementIds,
+  IndicatorProps as ClipboardIndicatorProps,
+  IntlTranslations as ClipboardIntlTranslations,
+  Machine as ClipboardMachine,
+  Props as ClipboardMachineProps,
+  Service as ClipboardService,
+  ValueChangeDetails as ClipboardValueChangeDetails,
+} from '@zag-js/clipboard'
