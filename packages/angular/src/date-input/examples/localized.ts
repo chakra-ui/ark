@@ -1,22 +1,23 @@
-import { ChangeDetectionStrategy, Component, Injector, inject, runInInjectionContext } from '@angular/core'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { provideArkLocale } from '@ark-ui/angular/providers/locale'
 import {
   ArkDateInputControl,
   ArkDateInputHiddenInput,
   ArkDateInputLabel,
-  ArkDateInputRootProvider,
+  ArkDateInputRoot,
   ArkDateInputSegment,
   ArkDateInputSegmentContext,
   ArkDateInputSegmentGroup,
-  useDateInput,
 } from '../public-api'
 import { dateInputExampleStyles } from '../date-input-example-styles'
 
 @Component({
-  selector: 'date-input-root-provider-example',
+  selector: 'date-input-localized-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [provideArkLocale({ locale: 'fr-FR' })],
   imports: [
-    ArkDateInputRootProvider,
+    ArkDateInputRoot,
     ArkDateInputLabel,
     ArkDateInputControl,
     ArkDateInputSegmentGroup,
@@ -25,11 +26,8 @@ import { dateInputExampleStyles } from '../date-input-example-styles'
     ArkDateInputHiddenInput,
   ],
   template: `
-    <div arkDateInputRootProvider [value]="dateInput">
-      <output class="date-input-output">
-        {{ dateInput.api().valueAsString.length > 0 ? dateInput.api().valueAsString : 'N/A' }}
-      </output>
-      <label arkDateInputLabel>Date</label>
+    <div arkDateInput granularity="minute" [hourCycle]="24">
+      <label arkDateInputLabel>Date et heure</label>
       <div arkDateInputControl>
         <div arkDateInputSegmentGroup>
           <ng-container *arkDateInputSegmentContext="let segment">
@@ -42,7 +40,4 @@ import { dateInputExampleStyles } from '../date-input-example-styles'
   `,
   styles: [dateInputExampleStyles],
 })
-export class DateInputRootProviderExample {
-  private readonly injector = inject(Injector)
-  readonly dateInput = runInInjectionContext(this.injector, () => useDateInput({ context: () => ({}) }))
-}
+export class DateInputLocalizedExample {}

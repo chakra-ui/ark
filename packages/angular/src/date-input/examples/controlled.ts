@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
 import { parseDate } from '@internationalized/date'
 import {
   ArkDateInputControl,
+  ArkDateInputHiddenInput,
+  ArkDateInputLabel,
   ArkDateInputRoot,
   ArkDateInputSegment,
   ArkDateInputSegmentContext,
@@ -16,13 +18,16 @@ import { dateInputExampleStyles } from '../date-input-example-styles'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ArkDateInputRoot,
+    ArkDateInputLabel,
     ArkDateInputControl,
     ArkDateInputSegmentGroup,
     ArkDateInputSegment,
     ArkDateInputSegmentContext,
+    ArkDateInputHiddenInput,
   ],
   template: `
     <div arkDateInput [(value)]="value">
+      <label arkDateInputLabel>Date</label>
       <div arkDateInputControl>
         <div arkDateInputSegmentGroup>
           <ng-container *arkDateInputSegmentContext="let segment">
@@ -30,12 +35,11 @@ import { dateInputExampleStyles } from '../date-input-example-styles'
           </ng-container>
         </div>
       </div>
+      <input arkDateInputHiddenInput />
     </div>
-    <button type="button" (click)="value.set([tomorrow])">Set value</button>
   `,
   styles: [dateInputExampleStyles],
 })
 export class DateInputControlledExample {
-  readonly tomorrow = parseDate('2026-05-20')
   readonly value = signal<DateValue[] | undefined>([parseDate('2026-05-19')])
 }

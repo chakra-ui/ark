@@ -56,7 +56,7 @@ export class ArkDateInputRoot implements ControlValueAccessor, UseDateInputRetur
   /** The initial selected date(s) when uncontrolled. */
   readonly defaultValue: InputSignal<DateValue[] | undefined> = input<DateValue[] | undefined>(undefined)
   /** The controlled placeholder date. */
-  readonly placeholderValue: InputSignal<DateValue | undefined> = input<DateValue | undefined>(undefined)
+  readonly placeholderValue: ModelSignal<DateValue | undefined> = model<DateValue | undefined>(undefined)
   /** The initial placeholder date when uncontrolled. */
   readonly defaultPlaceholderValue: InputSignal<DateValue | undefined> = input<DateValue | undefined>(undefined)
   /** The minimum date that can be selected. */
@@ -176,6 +176,9 @@ export class ArkDateInputRoot implements ControlValueAccessor, UseDateInputRetur
         this.valueDetailsChange.emit(details)
       },
       onPlaceholderChange: (details) => {
+        if (!dateValuesEqual(this.placeholderValue(), details.placeholderValue)) {
+          this.placeholderValue.set(details.placeholderValue)
+        }
         this.placeholderChange.emit(details)
       },
       onFocusChange: (details) => {
@@ -250,4 +253,10 @@ function dateValueArraysEqual(a: DateValue[] | undefined, b: DateValue[] | undef
     if (String(a[i]) !== String(b[i])) return false
   }
   return true
+}
+
+function dateValuesEqual(a: DateValue | undefined, b: DateValue | undefined): boolean {
+  if (a === b) return true
+  if (!a || !b) return false
+  return String(a) === String(b)
 }

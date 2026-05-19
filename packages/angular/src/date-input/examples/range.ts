@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { parseDate } from '@internationalized/date'
 import {
   ArkDateInputControl,
+  ArkDateInputHiddenInput,
+  ArkDateInputLabel,
   ArkDateInputRoot,
   ArkDateInputSegment,
   ArkDateInputSegmentContext,
@@ -15,26 +17,31 @@ import { dateInputExampleStyles } from '../date-input-example-styles'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ArkDateInputRoot,
+    ArkDateInputLabel,
     ArkDateInputControl,
     ArkDateInputSegmentGroup,
     ArkDateInputSegment,
     ArkDateInputSegmentContext,
+    ArkDateInputHiddenInput,
   ],
   template: `
-    <div arkDateInput selectionMode="range" [defaultValue]="range">
+    <div arkDateInput name="date" selectionMode="range" [defaultValue]="range">
+      <label arkDateInputLabel>Date Range</label>
       <div arkDateInputControl>
         <div arkDateInputSegmentGroup [index]="0">
           <ng-container *arkDateInputSegmentContext="let segment">
             <span arkDateInputSegment [segment]="segment"></span>
           </ng-container>
         </div>
-        <span aria-hidden="true">-</span>
+        <span aria-hidden="true">&rarr;</span>
         <div arkDateInputSegmentGroup [index]="1">
           <ng-container *arkDateInputSegmentContext="let segment">
             <span arkDateInputSegment [segment]="segment"></span>
           </ng-container>
         </div>
       </div>
+      <input arkDateInputHiddenInput [index]="0" />
+      <input arkDateInputHiddenInput [index]="1" />
     </div>
   `,
   styles: [dateInputExampleStyles],

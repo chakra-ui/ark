@@ -10,9 +10,10 @@ import {
   useDateInput,
 } from '../public-api'
 import { dateInputExampleStyles } from '../date-input-example-styles'
+import { DateInputXIcon } from './icons'
 
 @Component({
-  selector: 'date-input-root-provider-example',
+  selector: 'date-input-with-clear-button-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -23,12 +24,10 @@ import { dateInputExampleStyles } from '../date-input-example-styles'
     ArkDateInputSegment,
     ArkDateInputSegmentContext,
     ArkDateInputHiddenInput,
+    DateInputXIcon,
   ],
   template: `
     <div arkDateInputRootProvider [value]="dateInput">
-      <output class="date-input-output">
-        {{ dateInput.api().valueAsString.length > 0 ? dateInput.api().valueAsString : 'N/A' }}
-      </output>
       <label arkDateInputLabel>Date</label>
       <div arkDateInputControl>
         <div arkDateInputSegmentGroup>
@@ -36,13 +35,21 @@ import { dateInputExampleStyles } from '../date-input-example-styles'
             <span arkDateInputSegment [segment]="segment"></span>
           </ng-container>
         </div>
+        <button
+          class="date-input-clear-button"
+          type="button"
+          aria-label="Clear date"
+          (click)="dateInput.api().clearValue()"
+        >
+          <date-input-x-icon />
+        </button>
       </div>
       <input arkDateInputHiddenInput />
     </div>
   `,
   styles: [dateInputExampleStyles],
 })
-export class DateInputRootProviderExample {
+export class DateInputWithClearButtonExample {
   private readonly injector = inject(Injector)
   readonly dateInput = runInInjectionContext(this.injector, () => useDateInput({ context: () => ({}) }))
 }

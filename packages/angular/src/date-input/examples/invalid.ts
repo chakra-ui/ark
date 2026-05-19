@@ -1,22 +1,21 @@
-import { ChangeDetectionStrategy, Component, Injector, inject, runInInjectionContext } from '@angular/core'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
 import {
   ArkDateInputControl,
   ArkDateInputHiddenInput,
   ArkDateInputLabel,
-  ArkDateInputRootProvider,
+  ArkDateInputRoot,
   ArkDateInputSegment,
   ArkDateInputSegmentContext,
   ArkDateInputSegmentGroup,
-  useDateInput,
 } from '../public-api'
 import { dateInputExampleStyles } from '../date-input-example-styles'
 
 @Component({
-  selector: 'date-input-root-provider-example',
+  selector: 'date-input-invalid-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    ArkDateInputRootProvider,
+    ArkDateInputRoot,
     ArkDateInputLabel,
     ArkDateInputControl,
     ArkDateInputSegmentGroup,
@@ -25,10 +24,7 @@ import { dateInputExampleStyles } from '../date-input-example-styles'
     ArkDateInputHiddenInput,
   ],
   template: `
-    <div arkDateInputRootProvider [value]="dateInput">
-      <output class="date-input-output">
-        {{ dateInput.api().valueAsString.length > 0 ? dateInput.api().valueAsString : 'N/A' }}
-      </output>
+    <div arkDateInput invalid>
       <label arkDateInputLabel>Date</label>
       <div arkDateInputControl>
         <div arkDateInputSegmentGroup>
@@ -42,7 +38,4 @@ import { dateInputExampleStyles } from '../date-input-example-styles'
   `,
   styles: [dateInputExampleStyles],
 })
-export class DateInputRootProviderExample {
-  private readonly injector = inject(Injector)
-  readonly dateInput = runInInjectionContext(this.injector, () => useDateInput({ context: () => ({}) }))
-}
+export class DateInputInvalidExample {}
