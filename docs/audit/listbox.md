@@ -35,5 +35,5 @@
 - [ ] Manual/visual checks: deferred (no browser tooling executed in this session).
 
 ## Commit
-- Hash: 0d36c5cf6
+- Hash: 8240d46a8
 - Message: `fix(angular): align listbox with react parity`
