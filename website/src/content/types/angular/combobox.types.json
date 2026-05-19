@@ -1,0 +1,328 @@
+{
+  "Root": {
+    "props": {
+      "collection": {
+        "type": "ListCollection<T>",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The item collection."
+      },
+      "allowCustomValue": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to allow typing custom values."
+      },
+      "alwaysSubmitOnEnter": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to always submit on Enter even when popup is open."
+      },
+      "autoFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the popup auto-focuses on mount."
+      },
+      "closeOnSelect": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether the combobox should close after an item is selected."
+      },
+      "composite": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether the combobox is composed with other composite widgets."
+      },
+      "defaultHighlightedValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial highlighted value when uncontrolled."
+      },
+      "defaultInputValue": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial input value of the combobox when uncontrolled."
+      },
+      "defaultOpen": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "The initial open state of the combobox when uncontrolled."
+      },
+      "defaultValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial value of the combobox when uncontrolled."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the combobox is disabled."
+      },
+      "disableLayer": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether to disable registering this as a dismissable layer."
+      },
+      "form": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The associated form of the underlying input."
+      },
+      "highlightChange": {
+        "type": "ComboboxHighlightChangeDetails<T>",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when the highlighted value changes."
+      },
+      "highlightedValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled highlighted value of the combobox."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the combobox."
+      },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  trigger: string\n  clearTrigger: string\n  item: (id: string, index?: number) => string\n  positioner: string\n  itemGroup: (id: string | number) => string\n  itemGroupLabel: (id: string | number) => string\n}>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The element ids for the combobox parts."
+      },
+      "inputBehavior": {
+        "type": "'autohighlight' | 'autocomplete' | 'none'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Auto-completion behavior."
+      },
+      "inputValue": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled input value of the combobox."
+      },
+      "inputValueChange": {
+        "type": "ComboboxInputValueChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when the input value changes."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the combobox is invalid."
+      },
+      "loopFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether to loop keyboard navigation through the items."
+      },
+      "multiple": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether multiple values can be selected."
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The name attribute of the underlying input."
+      },
+      "navigate": {
+        "type": "null | (details: import(\"./combobox.types\").ComboboxNavigateDetails) => void",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Function to navigate to the selected item."
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled open state of the combobox menu."
+      },
+      "openChange": {
+        "type": "ComboboxOpenChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when the open state changes."
+      },
+      "openOnChange": {
+        "type": "boolean | (details: ComboboxInputValueChangeDetails) => boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether to open the combobox on input change."
+      },
+      "openOnClick": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to open the popup on input click."
+      },
+      "openOnKeyPress": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether to open the popup on arrow key press."
+      },
+      "placeholder": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The placeholder text."
+      },
+      "positioning": {
+        "type": "ComboboxPositioningOptions",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The positioning options of the menu."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the combobox is read-only."
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the combobox is required."
+      },
+      "scrollToIndexFn": {
+        "type": "(details: ComboboxScrollToIndexDetails) => void",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Function to scroll to a specific index."
+      },
+      "select": {
+        "type": "ComboboxSelectionDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when an item is selected."
+      },
+      "selectionBehavior": {
+        "type": "'clear' | 'replace' | 'preserve'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Behavior when an item is selected."
+      },
+      "translations": {
+        "type": "ComboboxIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Localized strings for accessibility."
+      },
+      "value": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled value of the combobox (array of selected keys)."
+      },
+      "valueChange": {
+        "type": "ComboboxValueChangeDetails<T>",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when the selected value changes."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseComboboxReturn<T>",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The combobox primitive returned by useCombobox()."
+      }
+    }
+  },
+  "Label": {
+    "props": {}
+  },
+  "Control": {
+    "props": {}
+  },
+  "Input": {
+    "props": {}
+  },
+  "Trigger": {
+    "props": {}
+  },
+  "ClearTrigger": {
+    "props": {}
+  },
+  "Positioner": {
+    "props": {}
+  },
+  "Content": {
+    "props": {}
+  },
+  "List": {
+    "props": {}
+  },
+  "Empty": {
+    "props": {}
+  },
+  "ItemGroup": {
+    "props": {
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The id of the item group."
+      }
+    }
+  },
+  "ItemGroupLabel": {
+    "props": {}
+  },
+  "Item": {
+    "props": {
+      "item": {
+        "type": "T",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The item to render."
+      },
+      "persistFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether hovering outside should clear the highlighted state."
+      }
+    }
+  },
+  "ItemText": {
+    "props": {}
+  },
+  "ItemIndicator": {
+    "props": {}
+  }
+}

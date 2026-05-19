@@ -18,6 +18,7 @@ export default defineConfig(({ mode }) => ({
       '@ark-ui/angular/avatar': new URL('./avatar/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/clipboard': new URL('./clipboard/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/collapsible': new URL('./src/collapsible/public-api.ts', import.meta.url).pathname,
+      '@ark-ui/angular/combobox': new URL('./combobox/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/dialog': new URL('./src/dialog/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/drawer': new URL('./src/drawer/public-api.ts', import.meta.url).pathname,
       '@ark-ui/angular/editable': new URL('./editable/public-api.ts', import.meta.url).pathname,

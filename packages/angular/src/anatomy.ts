@@ -3,6 +3,8 @@ export { clipboardAnatomy } from '@ark-ui/angular/clipboard'
 // Batch 2 components live under src/. Relative imports avoid ng-packagr resolving
 // these secondary entry points as @ark-ui/angular/src/<name> during graph analysis.
 export { collapsibleAnatomy } from './collapsible/collapsible.anatomy'
+// Use a relative import so this aggregate stays form-isolation safe.
+export { comboboxAnatomy } from '../combobox/combobox.anatomy'
 export { dialogAnatomy } from './dialog/dialog.anatomy'
 export { drawerAnatomy } from './drawer/drawer.anatomy'
 // Use a relative import so this aggregate stays form-isolation safe.

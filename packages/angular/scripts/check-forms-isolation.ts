@@ -36,6 +36,11 @@ export const entryPoints: EntryPoint[] = [
     outputs: ['dist/fesm2022/ark-ui-angular-src-collapsible.mjs'],
   },
   {
+    name: '@ark-ui/angular/combobox',
+    file: 'combobox/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-combobox.mjs'],
+  },
+  {
     name: '@ark-ui/angular/dialog',
     file: 'src/dialog/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-src-dialog.mjs'],
