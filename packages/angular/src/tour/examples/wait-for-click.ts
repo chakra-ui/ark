@@ -84,7 +84,7 @@ export class TourWaitForClickExample {
     {
       id: 'intro',
       type: 'dialog',
-      title: 'Interactive Tour',
+      title: 'Interactive Tutorial',
       description: 'This tour will guide you through actions. You must complete each step to proceed.',
       actions: [{ label: 'Begin', action: 'next' }],
     },

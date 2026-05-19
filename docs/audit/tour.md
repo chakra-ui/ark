@@ -6,37 +6,39 @@
 - Storybook/style files: `packages/angular/src/tour/tour.stories.ts`, `packages/angular/src/tour/examples/`, `packages/angular/src/tour/tour-example-styles.ts`, `.storybook/modules/tour.module.css`
 
 ## Summary
-- Status: Fixed with one unrelated verification blocker noted.
+- Status: Re-audited. Earlier story/example/style gaps remain closed; this pass corrected two residual copy mismatches in the wait-for-click and keyboard-navigation examples.
 - Highest-risk gaps:
-  - Angular Storybook exposed only `Basic`, `Controlled`, and `WaitForClick`; React exposes `Basic`, `AsyncStep`, `Events`, `KeyboardNavigation`, `MixedTypes`, `SkipTour`, `WaitForClick`, `WaitForElement`, `WaitForInput`, and `ProgressBar`.
-  - Angular examples did not exercise several public tour behaviors already supported by the implementation: async step updates, event callbacks, keyboard navigation, mixed dialog/tooltip/floating steps, dynamic element waiting, input predicates, progress percentage, spotlight, and arrow parts.
-  - Angular demo styles were much thinner than the React `tour.module.css`, missing focused action styling, event log, form, list, progress-bar, floating/dialog width, arrow, spotlight, and focus-visible selectors.
+  - Previously: Angular Storybook exposed only `Basic`, `Controlled`, and `WaitForClick`; now exposes every React story plus the Angular-only `Controlled`.
+  - Previously: thin Angular demo styles; now `tour-example-styles.ts` mirrors the React `tour.module.css` selectors (targets, hint, event log, form, list, progress bar, floating, dialog, focus-visible).
+  - This re-audit: minor wording drift in two examples versus React reference.
 
 ## Gap Matrix
 | Area | Gap | React reference | Angular location | Fix |
 | --- | --- | --- | --- | --- |
-| Story parity | Missing seven React stories and demos. | `packages/react/src/components/tour/tour.stories.tsx` | `packages/angular/src/tour/tour.stories.ts` | Add Angular `AsyncStep`, `Events`, `KeyboardNavigation`, `MixedTypes`, `SkipTour`, `WaitForElement`, `WaitForInput`, and `ProgressBar` stories. |
-| Story parity | Angular `Basic` covered only three tooltip steps and did not render arrow/spotlight parts. | `packages/react/src/components/tour/examples/basic.tsx` | `packages/angular/src/tour/examples/basic.ts` | Align the basic scenario with React's welcome/upload/save/more/complete flow and render backdrop, spotlight, arrow, and close/progress/content parts through a portal. |
-| Story parity | Angular `WaitForClick` covered a single wait target instead of React's add/edit/delete sequence. | `packages/react/src/components/tour/examples/wait-for-click.tsx` | `packages/angular/src/tour/examples/wait-for-click.ts` | Align the wait-for-click scenario with the multi-step React flow. |
-| Styling parity | Angular example CSS lacked most React tour demo states and helper selectors. | `.storybook/modules/tour.module.css` | `packages/angular/src/tour/tour-example-styles.ts` | Expand Angular demo styles to cover React-equivalent content, action buttons, targets, hint, progress, event log, form, list, arrow, focus, and floating/dialog variants. |
-| Test parity | Story/example smoke test only covered the three existing Angular examples. | `packages/react/src/components/tour/tour.stories.tsx` | `packages/angular/src/tour/tour.spec.ts` | Import and assert all new Angular tour examples so the Storybook surface compiles under the component spec. |
-| Public API | Root inputs, outputs, parts, context helpers, anatomy, and wait helpers are present. | `packages/react/src/components/tour/index.ts`, `packages/react/src/components/tour/tour.ts`, `packages/react/src/components/tour/*.tsx` | `packages/angular/src/tour/public-api.ts`, `packages/angular/src/tour/tour-root.ts`, `packages/angular/src/tour/*.ts` | No change. Angular directive-centric API intentionally differs from React's namespace/polymorphic API per technical requirements. |
-| Functionality | Presence/lazy mount APIs from React root are not exposed as Angular inputs. | `packages/react/src/components/tour/tour-root.tsx` | `packages/angular/src/tour/tour-root.ts` | No change. Angular currently keeps tour parts mounted and uses Zag state/attributes; this is an implementation model difference to revisit only if a package-wide Angular presence pattern is added. |
+| Story parity | Angular Storybook now mirrors all 10 React stories. | `packages/react/src/components/tour/tour.stories.tsx` | `packages/angular/src/tour/tour.stories.ts` | No change (closed in prior pass). |
+| Example copy | Angular `WaitForClick` first dialog title read `Interactive Tour`; React uses `Interactive Tutorial`. | `packages/react/src/components/tour/examples/wait-for-click.tsx` | `packages/angular/src/tour/examples/wait-for-click.ts` | Updated Angular title to `Interactive Tutorial`. |
+| Example copy | Angular `KeyboardNavigation` step descriptions omitted the `→` and `←` symbols that appear in the React copy. | `packages/react/src/components/tour/examples/keyboard-navigation.tsx` | `packages/angular/src/tour/examples/keyboard-navigation.ts` | Restored the `(→)` and `(←)` annotations in the matching descriptions. |
+| Styling parity | Angular `tour-example-styles.ts` covers all React `tour.module.css` selectors used by ported examples (root, targets, backdrop, spotlight, positioner, content, arrow, close, control, action triggers, hint, progress, event log, form, list, animations). | `.storybook/modules/tour.module.css` | `packages/angular/src/tour/tour-example-styles.ts` | No change. Selector names differ by Angular convention (`tour-` prefix instead of PascalCase modules) but value parity is intact. |
+| Functionality | Root inputs (`steps`, `stepId` model, `closeOnInteractOutside`, `closeOnEscape`, `keyboardNavigation`, `preventInteraction`, `spotlightOffset`, `spotlightRadius`, `translations`, `ids`, `id`) plus outputs (`focusOutside`, `interactOutside`, `pointerDownOutside`, `statusChange`, `stepChange`, `stepsChange`, `stepIdChange` via the model) match the React `useTour` surface. | `packages/react/src/components/tour/use-tour.ts`, `packages/react/src/components/tour/tour-root.tsx` | `packages/angular/src/tour/tour-root.ts` | No change. |
+| Public API | Directive-centric Angular API (`ArkTourRoot` + descendant parts, `ARK_TOUR_CONTEXT`, `injectArkTourContext`, `useTour`, wait helpers, anatomy) intentionally diverges from React's namespace/polymorphic API per technical-requirements §4–5. | `packages/react/src/components/tour/index.ts` | `packages/angular/src/tour/public-api.ts` | No change. |
+| Functionality | Presence/lazy mount (`UsePresenceProps` on `TourRoot`) is not exposed as Angular inputs. | `packages/react/src/components/tour/tour-root.tsx` | `packages/angular/src/tour/tour-root.ts` | No change. Tracked as Angular-wide presence pattern follow-up; flag here but defer until the package introduces a shared presence directive. |
+| Stories | Angular keeps an extra `Controlled` story demonstrating `[(stepId)]`; no React analogue. | n/a | `packages/angular/src/tour/tour.stories.ts`, `packages/angular/src/tour/examples/controlled.ts` | No change. Angular-only example exercising the `model()` channel required by technical-requirements §3. |
+| Tests | `tour.spec.ts` imports every example and asserts root inputs/outputs, action-trigger flow, wait helpers, dynamic portaled context propagation, and orphan-provider diagnostics. | `packages/react/src/components/tour/*.test.tsx` (n/a in this repo) | `packages/angular/src/tour/tour.spec.ts` | No change. |
+| Icons / copy | Angular examples drop the `lucide-react` icons (SparklesIcon, KeyboardIcon, XIcon, etc.) and replace `<XIcon />` close affordance with a textual `x`. | React example files | Angular example files | No change. Icon parity is not in scope for Angular Storybook (no equivalent icon dependency); plain text matches the existing Angular component convention. |
 
 ## Implementation Plan
-1. Add the missing Angular tour examples for the React Storybook scenarios.
-2. Align existing `Basic` and `WaitForClick` examples with the React scenarios and render all relevant tour parts.
-3. Expand Angular example styles to cover the React tour demo selectors and states.
-4. Register the missing stories and update the tour spec smoke imports/assertions.
-5. Run focused tour specs, Angular typecheck, and `git diff --check`; record results here.
+1. Reconcile copy drift in `wait-for-click` (`Interactive Tutorial`) and `keyboard-navigation` (`(→)`/`(←)`).
+2. Re-run focused tour specs to confirm no regression.
+3. Re-confirm Angular typecheck and Storybook smoke.
+4. Update this audit and commit only tour-scoped files.
 
 ## Verification
-- [x] Typecheck/build: `bun run --cwd packages/angular typecheck` attempted; blocked by unrelated `src/tree-view/tree-view.spec.ts(709,47)` type incompatibility in active tree-view work before build/forms checks ran.
-- [x] Component tests: `bun run --cwd packages/angular test:ci src/tour/tour.spec.ts` passed, 10 tests.
-- [x] Storybook render: `bun run --cwd packages/angular storybook -- --ci --smoke-test` passed; emitted existing unused-compilation and `process.env.NODE_ENV` warnings.
-- [x] Manual/visual checks: compared Angular tour example templates/styles against React `Basic`, `AsyncStep`, `Events`, `KeyboardNavigation`, `MixedTypes`, `SkipTour`, `WaitForClick`, `WaitForElement`, `WaitForInput`, and `ProgressBar` references. Browser-level visual inspection was not run beyond Storybook smoke startup.
-- [x] Whitespace: `git diff --check -- docs/audit/tour.md packages/angular/src/tour` passed.
+- [x] Component tests: `bun run --cwd packages/angular test:ci src/tour/tour.spec.ts` — 10/10 tests passed in 1.33s.
+- [x] Typecheck: `bun run --cwd packages/angular typecheck` — blocked by unrelated `src/navigation-menu/navigation-menu.spec.ts(124,73)` TS4111 error owned by a sibling parallel agent; no tour-scoped errors reported.
+- [x] Whitespace: `git diff --check -- docs/audit/tour.md packages/angular/src/tour` — clean (exit 0).
+- [ ] Storybook render: not re-run this pass; previously verified `--ci --smoke-test` after the comprehensive fix. Copy-only diffs in this pass cannot affect Storybook compilation.
+- [x] Manual/visual checks: diffed React example sources against Angular counterparts; only the two flagged copy mismatches remained and both were corrected.
 
 ## Commit
-- Hash: Reported in final status after commit.
+- Hash: filled in post-commit
 - Message: `fix(angular): align tour with react parity`

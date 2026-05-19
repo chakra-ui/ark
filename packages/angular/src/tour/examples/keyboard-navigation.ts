@@ -84,7 +84,7 @@ export class TourKeyboardNavigationExample {
       id: 'step-1',
       type: 'tooltip',
       title: 'Keyboard Navigation',
-      description: 'Press the right arrow key to go to the next step.',
+      description: 'Press the right arrow key (→) to go to the next step.',
       target: () => document.querySelector<HTMLElement>('#key-1'),
       actions: [{ label: 'Next', action: 'next' }],
     },
@@ -92,7 +92,7 @@ export class TourKeyboardNavigationExample {
       id: 'step-2',
       type: 'tooltip',
       title: 'Go Back',
-      description: 'Press the left arrow key to go back.',
+      description: 'Press the left arrow key (←) to go back.',
       target: () => document.querySelector<HTMLElement>('#key-2'),
       actions: [
         { label: 'Back', action: 'prev' },
