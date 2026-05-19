@@ -35,5 +35,5 @@
 - [x] Manual/visual checks: Compared Angular examples and CSS against React `Basic`, `ImagePreview`, `RootProvider`, `WithField`. After this pass Angular clear trigger renders the same `RotateCcw` glyph at the same 1rem size as React.
 
 ## Commit
-- Hash: e2e8e7d2c
+- Hash: 76b0be388
 - Message: `fix(angular): align signature-pad with react parity`
