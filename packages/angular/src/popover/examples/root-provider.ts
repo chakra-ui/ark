@@ -6,6 +6,7 @@ import {
   ArkPopoverPositioner,
   ArkPopoverRootProvider,
   ArkPopoverTitle,
+  ArkPopoverTrigger,
   usePopover,
   type UsePopoverReturn,
 } from '@ark-ui/angular/popover'
@@ -19,6 +20,7 @@ import { PopoverXIcon } from './icons'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ArkPopoverRootProvider,
+    ArkPopoverTrigger,
     ArkPopoverPositioner,
     ArkPopoverContent,
     ArkPopoverTitle,
@@ -29,8 +31,9 @@ import { PopoverXIcon } from './icons'
   ],
   template: `
     <div class="stack">
-      <button type="button" (click)="popover.send({ type: 'OPEN' })">Popover is {{ openLabel() }}</button>
+      <div>Popover is {{ openLabel() }}</div>
       <div arkPopoverRootProvider [value]="popover" #provider="arkPopoverRootProvider">
+        <button type="button" arkPopoverTrigger>Toggle Popover</button>
         <ark-portal [originInjector]="provider.getContextCarrier().elementInjector">
           <div arkPopoverPositioner>
             <div arkPopoverContent>

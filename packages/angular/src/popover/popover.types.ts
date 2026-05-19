@@ -1,12 +1,17 @@
 export type {
   Api as PopoverApi,
   ElementIds as PopoverElementIds,
+  FocusOutsideEvent as PopoverFocusOutsideEvent,
+  InteractOutsideEvent as PopoverInteractOutsideEvent,
+  IntlTranslations as PopoverIntlTranslations,
   Machine as PopoverMachine,
   OpenChangeDetails as PopoverOpenChangeDetails,
+  PointerDownOutsideEvent as PopoverPointerDownOutsideEvent,
   PositioningOptions as PopoverPositioningOptions,
   Placement as PopoverPlacement,
   Props as PopoverMachineProps,
   Service as PopoverService,
   TriggerProps as PopoverTriggerMachineProps,
+  TriggerProps as PopoverTriggerProps,
   TriggerValueChangeDetails as PopoverTriggerValueChangeDetails,
 } from '@zag-js/popover'
