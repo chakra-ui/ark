@@ -35,5 +35,5 @@
 - [x] Manual/visual checks: Compared React `presence.stories.tsx` title against Angular meta; confirmed they now share `Components / Presence`. Example markup and styles unchanged from the previous parity pass.
 
 ## Commit
-- Hash: 5ed62b96d
+- Hash: b18f62c43
 - Message: `fix(angular): align presence with react parity`
