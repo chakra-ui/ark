@@ -1,14 +1,20 @@
 import { existsSync, readFileSync } from 'node:fs'
-import { dirname, extname, join, relative, resolve } from 'node:path'
-import { exit } from 'node:process'
-import { fileURLToPath } from 'node:url'
+import { dirname, extname, isAbsolute, join, relative, resolve } from 'node:path'
+import { argv, exit } from 'node:process'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import ts from 'typescript'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = join(here, '..')
 const formsImportPattern = /^@angular\/forms(?:\/|$)/
 
-const entryPoints = [
+export type EntryPoint = {
+  name: string
+  file: string
+  outputs: string[]
+}
+
+export const entryPoints: EntryPoint[] = [
   {
     name: '@ark-ui/angular',
     file: 'src/index.ts',
@@ -20,9 +26,19 @@ const entryPoints = [
     outputs: ['dist/fesm2022/ark-ui-angular-avatar.mjs'],
   },
   {
+    name: '@ark-ui/angular/clipboard',
+    file: 'clipboard/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-clipboard.mjs'],
+  },
+  {
     name: '@ark-ui/angular/collapsible',
     file: 'src/collapsible/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-src-collapsible.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/combobox',
+    file: 'combobox/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-combobox.mjs'],
   },
   {
     name: '@ark-ui/angular/dialog',
@@ -35,9 +51,34 @@ const entryPoints = [
     outputs: ['dist/fesm2022/ark-ui-angular-src-drawer.mjs'],
   },
   {
+    name: '@ark-ui/angular/editable',
+    file: 'editable/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-editable.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/field',
+    file: 'field/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-field.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/fieldset',
+    file: 'fieldset/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-fieldset.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/file-upload',
+    file: 'file-upload/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-file-upload.mjs'],
+  },
+  {
     name: '@ark-ui/angular/hover-card',
     file: 'src/hover-card/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-src-hover-card.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/listbox',
+    file: 'listbox/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-listbox.mjs'],
   },
   {
     name: '@ark-ui/angular/menu',
@@ -50,6 +91,21 @@ const entryPoints = [
     outputs: ['dist/fesm2022/ark-ui-angular-src-navigation-menu.mjs'],
   },
   {
+    name: '@ark-ui/angular/number-input',
+    file: 'number-input/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-number-input.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/password-input',
+    file: 'password-input/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-password-input.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/pin-input',
+    file: 'pin-input/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-pin-input.mjs'],
+  },
+  {
     name: '@ark-ui/angular/popover',
     file: 'src/popover/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-src-popover.mjs'],
@@ -58,6 +114,16 @@ const entryPoints = [
     name: '@ark-ui/angular/progress',
     file: 'progress/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-progress.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/select',
+    file: 'select/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-select.mjs'],
+  },
+  {
+    name: '@ark-ui/angular/tags-input',
+    file: 'tags-input/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-tags-input.mjs'],
   },
   {
     name: '@ark-ui/angular/toggle',
@@ -136,6 +202,23 @@ const entryPoints = [
   },
 ]
 
+export const formBearingEntryPoints = new Set<string>([
+  '@ark-ui/angular/editable',
+  '@ark-ui/angular/number-input',
+  '@ark-ui/angular/pin-input',
+  '@ark-ui/angular/password-input',
+  '@ark-ui/angular/tags-input',
+  '@ark-ui/angular/select',
+  '@ark-ui/angular/combobox',
+])
+
+const entryPointNames = new Set(entryPoints.map((entryPoint) => entryPoint.name))
+for (const entryPointName of formBearingEntryPoints) {
+  if (!entryPointNames.has(entryPointName)) {
+    throw new Error(`forms isolation allowlist references unknown entry point: ${entryPointName}`)
+  }
+}
+
 const selfEntryFiles = new Map(
   entryPoints.flatMap(({ name, file }) => {
     const resolvedFile = join(root, file)
@@ -161,7 +244,6 @@ const resolveLocalModule = (fromFile: string, specifier: string) => {
   }
 
   if (!specifier.startsWith('.') && !specifier.startsWith('/')) {
-    // Bare dependency coverage comes from the optional FESM scan after build output exists.
     return undefined
   }
 
@@ -223,7 +305,24 @@ const collectImportSpecifiers = (sourceFile: ts.SourceFile) => {
   return specifiers
 }
 
-const scanFile = (name: string, file: string, visited: Set<string>, stack: string[]) => {
+export type Reporter = {
+  error: (message: string) => void
+  warn?: (message: string) => void
+}
+
+const defaultReporter: Reporter = {
+  error: (message) => console.error(message),
+  warn: (message) => console.warn(message),
+}
+
+const scanFile = (
+  name: string,
+  file: string,
+  visited: Set<string>,
+  stack: string[],
+  allowForms: boolean,
+  reporter: Reporter,
+) => {
   const resolvedFile = resolve(file)
   if (visited.has(resolvedFile)) {
     return false
@@ -233,9 +332,11 @@ const scanFile = (name: string, file: string, visited: Set<string>, stack: strin
 
   const source = readFileSync(resolvedFile, 'utf-8')
   const sourceFile = ts.createSourceFile(resolvedFile, source, ts.ScriptTarget.Latest, true)
-  if (sourceFile.parseDiagnostics.length > 0) {
-    for (const diagnostic of sourceFile.parseDiagnostics) {
-      console.error(ts.flattenDiagnosticMessageText(diagnostic.messageText, '\n'))
+  const parseDiagnostics =
+    (sourceFile as ts.SourceFile & { parseDiagnostics?: readonly ts.Diagnostic[] }).parseDiagnostics ?? []
+  if (parseDiagnostics.length > 0) {
+    for (const diagnostic of parseDiagnostics) {
+      reporter.error(ts.flattenDiagnosticMessageText(diagnostic.messageText, '\n'))
     }
     return true
   }
@@ -245,7 +346,10 @@ const scanFile = (name: string, file: string, visited: Set<string>, stack: strin
 
   for (const specifier of specifiers) {
     if (formsImportPattern.test(specifier)) {
-      console.error(
+      if (allowForms) {
+        continue
+      }
+      reporter.error(
         `${name} imports from ${specifier} through ${[...stack, resolvedFile].map(toDisplayPath).join(' -> ')}`,
       )
       failed = true
@@ -253,7 +357,7 @@ const scanFile = (name: string, file: string, visited: Set<string>, stack: strin
     }
 
     const nextFile = resolveLocalModule(resolvedFile, specifier)
-    if (nextFile && scanFile(name, nextFile, visited, [...stack, resolvedFile])) {
+    if (nextFile && scanFile(name, nextFile, visited, [...stack, resolvedFile], allowForms, reporter)) {
       failed = true
     }
   }
@@ -261,38 +365,71 @@ const scanFile = (name: string, file: string, visited: Set<string>, stack: strin
   return failed
 }
 
-let failed = false
-const missingOutputs: string[] = []
-for (const { name, file, outputs } of entryPoints) {
+export const scanEntryPoint = (
+  entryPoint: Pick<EntryPoint, 'name' | 'file'> & { outputs?: string[] },
+  reporter: Reporter = defaultReporter,
+) => {
+  const allowForms = formBearingEntryPoints.has(entryPoint.name)
   const visited = new Set<string>()
-  if (scanFile(name, join(root, file), visited, [])) {
-    failed = true
-  }
+  const sourceFile = isAbsolute(entryPoint.file) ? entryPoint.file : join(root, entryPoint.file)
+  let failed = scanFile(entryPoint.name, sourceFile, visited, [], allowForms, reporter)
 
-  for (const output of outputs) {
-    const outputFile = join(root, output)
-    if (existsSync(outputFile) && scanFile(name, outputFile, visited, [])) {
+  for (const output of entryPoint.outputs ?? []) {
+    const outputFile = isAbsolute(output) ? output : join(root, output)
+    if (!existsSync(outputFile)) {
+      reporter.error(`forms isolation: build output not found for ${entryPoint.name} (${output})`)
       failed = true
-    } else if (!existsSync(outputFile)) {
-      missingOutputs.push(`${name} (${output})`)
+      continue
+    }
+    if (scanFile(entryPoint.name, outputFile, visited, [], allowForms, reporter)) {
+      failed = true
     }
   }
+
+  return failed
 }
 
-if (failed) {
-  console.error('forms isolation failed: non-form entry points must not import @angular/forms transitively.')
-  exit(1)
+export const runFormsIsolationCheck = (reporter: Reporter = defaultReporter) => {
+  let failed = false
+  const missingOutputs: string[] = []
+  for (const { name, file, outputs } of entryPoints) {
+    const allowForms = formBearingEntryPoints.has(name)
+    const visited = new Set<string>()
+    if (scanFile(name, join(root, file), visited, [], allowForms, reporter)) {
+      failed = true
+    }
+
+    for (const output of outputs) {
+      const outputFile = join(root, output)
+      if (existsSync(outputFile) && scanFile(name, outputFile, visited, [], allowForms, reporter)) {
+        failed = true
+      } else if (!existsSync(outputFile)) {
+        missingOutputs.push(`${name} (${output})`)
+      }
+    }
+  }
+
+  if (failed) {
+    reporter.error('forms isolation failed: non-form entry points must not import @angular/forms transitively.')
+    return { failed: true, missingOutputs }
+  }
+
+  if (missingOutputs.length > 0) {
+    reporter.error(
+      `forms isolation: build output not found for ${missingOutputs.join(', ')}; source imports were checked, but bare dependency verification requires running build first.`,
+    )
+    return { failed: true, missingOutputs }
+  }
+
+  return { failed: false, missingOutputs }
 }
 
-if (missingOutputs.length > 0) {
-  console.error(
-    `forms isolation: build output not found for ${missingOutputs.join(', ')}; source imports were checked, but bare dependency verification requires running build first.`,
-  )
-  failed = true
-}
+const isMain = argv[1] ? import.meta.url === pathToFileURL(argv[1]).href : false
 
-if (failed) {
-  exit(1)
+if (isMain) {
+  const result = runFormsIsolationCheck()
+  if (result.failed) {
+    exit(1)
+  }
+  console.log('forms isolation: ok')
 }
-
-console.log('forms isolation: ok')

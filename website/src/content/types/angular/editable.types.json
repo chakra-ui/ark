@@ -1,0 +1,167 @@
+{
+  "Root": {
+    "props": {
+      "activationMode": {
+        "type": "'focus' | 'dblclick' | 'click' | 'none'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The activation mode for the preview element."
+      },
+      "autoResize": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the editable should auto-resize to fit content."
+      },
+      "defaultEditing": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "The initial edit state of the editable when uncontrolled."
+      },
+      "defaultValue": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial value of the editable when uncontrolled."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the editable is disabled."
+      },
+      "editing": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled edit state of the editable."
+      },
+      "finalFocusEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The element that should receive focus when edit mode exits."
+      },
+      "form": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The form attribute of the editable input."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The id of the editable."
+      },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  area: string\n  label: string\n  preview: string\n  input: string\n  control: string\n  submitTrigger: string\n  cancelTrigger: string\n  editTrigger: string\n}>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The element ids for the editable parts."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the editable is invalid."
+      },
+      "maxLength": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The maximum number of characters allowed."
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The name attribute of the editable input."
+      },
+      "placeholder": {
+        "type": "string | { edit: string; preview: string }",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The placeholder text for the editable."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the editable is read-only."
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the editable is required."
+      },
+      "selectOnFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to select the text in the input when focused."
+      },
+      "submitMode": {
+        "type": "'none' | 'enter' | 'blur' | 'both'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The action that triggers submit in edit mode."
+      },
+      "translations": {
+        "type": "editable.IntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The translations for the editable."
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled value of the editable."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseEditableReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The editable primitive returned by useEditable()."
+      }
+    }
+  },
+  "Area": {
+    "props": {}
+  },
+  "Input": {
+    "props": {}
+  },
+  "Preview": {
+    "props": {}
+  },
+  "Label": {
+    "props": {}
+  },
+  "Control": {
+    "props": {}
+  },
+  "EditTrigger": {
+    "props": {}
+  },
+  "SubmitTrigger": {
+    "props": {}
+  },
+  "CancelTrigger": {
+    "props": {}
+  }
+}

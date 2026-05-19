@@ -12,8 +12,17 @@ export interface ApplyArkPropsOptions {
 const isAttributeKey = (key: string): boolean =>
   key === 'role' || key === 'id' || key === 'tabindex' || key.startsWith('aria-') || key.startsWith('data-')
 
-const eventNameFromHandlerKey = (key: string): string | undefined => {
+const eventNameFromHandlerKey = (key: string, el: HTMLElement): string | undefined => {
   if (!/^on[A-Z]/.test(key)) return undefined
+  if (key === 'onChange') {
+    const tagName = el.tagName.toLowerCase()
+    if (tagName === 'textarea') return 'input'
+    if (tagName === 'input') {
+      const type = (el as HTMLInputElement).type
+      return type === 'checkbox' || type === 'radio' || type === 'file' ? 'change' : 'input'
+    }
+    if (tagName === 'select') return 'change'
+  }
   return key.slice(2).toLowerCase()
 }
 
@@ -88,17 +97,17 @@ export function applyArkProps(options: ApplyArkPropsOptions): void {
   let prev: Record<string, unknown> = {}
   // Tracks listeners this helper installed so we can dispose them precisely
   // on update (handler swap) and on destroy.
-  const listeners = new Map<string, () => void>()
+  const listeners = new Map<string, { eventName: string; dispose: () => void }>()
   // Tracks classes/styles this helper added so the diff never removes
   // consumer-owned tokens that originated outside applyArkProps.
   const appliedClasses = new Set<string>()
   const appliedStyles = new Set<string>()
 
-  const removeListener = (eventName: string): void => {
-    const dispose = listeners.get(eventName)
-    if (!dispose) return
-    dispose()
-    listeners.delete(eventName)
+  const removeListener = (key: string): void => {
+    const listener = listeners.get(key)
+    if (!listener) return
+    listener.dispose()
+    listeners.delete(key)
   }
 
   const removeAttribute = (el: HTMLElement, key: string): void => {
@@ -162,16 +171,17 @@ export function applyArkProps(options: ApplyArkPropsOptions): void {
       const nextValue = next[key]
       const prevValue = prev[key]
 
-      const eventName = eventNameFromHandlerKey(key)
+      const eventName = eventNameFromHandlerKey(key, el)
       if (eventName && typeof nextValue === 'function') {
-        if (prevValue === nextValue) continue
-        removeListener(eventName)
+        const listener = listeners.get(key)
+        if (prevValue === nextValue && listener?.eventName === eventName) continue
+        removeListener(key)
         const dispose = renderer.listen(el, eventName, nextValue as (event: Event) => void)
-        listeners.set(eventName, dispose)
+        listeners.set(key, { eventName, dispose })
         continue
       }
-      if (eventName && listeners.has(eventName) && typeof nextValue !== 'function') {
-        removeListener(eventName)
+      if (eventName && listeners.has(key) && typeof nextValue !== 'function') {
+        removeListener(key)
         if (nextValue == null || nextValue === false) continue
       }
 
@@ -214,9 +224,9 @@ export function applyArkProps(options: ApplyArkPropsOptions): void {
       if (key in next) continue
       const prevValue = prev[key]
 
-      const eventName = eventNameFromHandlerKey(key)
+      const eventName = eventNameFromHandlerKey(key, el)
       if (eventName && typeof prevValue === 'function') {
-        removeListener(eventName)
+        removeListener(key)
         continue
       }
 
@@ -243,7 +253,7 @@ export function applyArkProps(options: ApplyArkPropsOptions): void {
 
   destroyRef.onDestroy(() => {
     const el = elementRef.nativeElement
-    for (const dispose of listeners.values()) {
+    for (const { dispose } of listeners.values()) {
       dispose()
     }
     listeners.clear()

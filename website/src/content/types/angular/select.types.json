@@ -1,0 +1,257 @@
+{
+  "Root": {
+    "props": {
+      "collection": {
+        "type": "ListCollection<T>",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The item collection."
+      },
+      "autoComplete": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The autocomplete attribute for the hidden select."
+      },
+      "closeOnSelect": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether the select should close after an item is selected."
+      },
+      "composite": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether the select is composed with other composite widgets."
+      },
+      "defaultHighlightedValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial highlighted value when uncontrolled."
+      },
+      "defaultOpen": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "The initial open state of the select when uncontrolled."
+      },
+      "defaultValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial value of the select when uncontrolled."
+      },
+      "deselectable": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the value can be cleared by clicking the selected item."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the select is disabled."
+      },
+      "form": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The associated form of the underlying hidden select."
+      },
+      "highlightChange": {
+        "type": "SelectHighlightChangeDetails<T>",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when the highlighted value changes."
+      },
+      "highlightedValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled highlighted value of the select."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the select."
+      },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  content: string\n  control: string\n  trigger: string\n  clearTrigger: string\n  label: string\n  hiddenSelect: string\n  positioner: string\n  item: (id: string | number) => string\n  itemGroup: (id: string | number) => string\n  itemGroupLabel: (id: string | number) => string\n}>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The element ids for the select parts."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the select is invalid."
+      },
+      "loopFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to loop keyboard navigation through the items."
+      },
+      "multiple": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether multiple values can be selected."
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The name attribute of the underlying hidden select."
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled open state of the select menu."
+      },
+      "openChange": {
+        "type": "SelectOpenChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when the open state changes."
+      },
+      "positioning": {
+        "type": "SelectPositioningOptions",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The positioning options of the menu."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the select is read-only."
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the select is required."
+      },
+      "scrollToIndexFn": {
+        "type": "(details: SelectScrollToIndexDetails) => void",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Function to scroll to a specific index."
+      },
+      "select": {
+        "type": "SelectSelectionDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when an item is selected."
+      },
+      "translations": {
+        "type": "SelectIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Localized strings for accessibility."
+      },
+      "value": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled value of the select (array of selected keys)."
+      },
+      "valueChange": {
+        "type": "SelectValueChangeDetails<T>",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when the selected value changes."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseSelectReturn<T>",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The select primitive returned by useSelect()."
+      }
+    }
+  },
+  "Label": {
+    "props": {}
+  },
+  "Control": {
+    "props": {}
+  },
+  "Trigger": {
+    "props": {}
+  },
+  "Indicator": {
+    "props": {}
+  },
+  "ClearTrigger": {
+    "props": {}
+  },
+  "ValueText": {
+    "props": {}
+  },
+  "HiddenSelect": {
+    "props": {}
+  },
+  "Positioner": {
+    "props": {}
+  },
+  "Content": {
+    "props": {}
+  },
+  "List": {
+    "props": {}
+  },
+  "ItemGroup": {
+    "props": {
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The id of the item group."
+      }
+    }
+  },
+  "ItemGroupLabel": {
+    "props": {}
+  },
+  "Item": {
+    "props": {
+      "item": {
+        "type": "T",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The item to render."
+      },
+      "persistFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether hovering outside should clear the highlighted state."
+      }
+    }
+  },
+  "ItemText": {
+    "props": {}
+  },
+  "ItemIndicator": {
+    "props": {}
+  }
+}

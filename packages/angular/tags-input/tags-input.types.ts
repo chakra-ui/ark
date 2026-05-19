@@ -1,0 +1,16 @@
+export type {
+  Api as TagsInputApi,
+  ElementIds as TagsInputElementIds,
+  HighlightChangeDetails as TagsInputHighlightChangeDetails,
+  InputValueChangeDetails as TagsInputInputValueChangeDetails,
+  IntlTranslations as TagsInputIntlTranslations,
+  ItemProps as TagsInputItemProps,
+  ItemState as TagsInputItemState,
+  Machine as TagsInputMachine,
+  Props as TagsInputMachineProps,
+  Service as TagsInputService,
+  ValidateArgs as TagsInputValidateArgs,
+  ValidityChangeDetails as TagsInputValidityChangeDetails,
+  ValidityState as TagsInputValidityState,
+  ValueChangeDetails as TagsInputValueChangeDetails,
+} from '@zag-js/tags-input'

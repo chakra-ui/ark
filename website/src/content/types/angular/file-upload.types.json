@@ -1,0 +1,228 @@
+{
+  "Root": {
+    "props": {
+      "accept": {
+        "type": "| Record<string, string[]>\n  | 'image/png'\n  | 'image/gif'\n  | 'image/jpeg'\n  | 'image/svg+xml'\n  | 'image/webp'\n  | 'image/avif'\n  | 'image/heic'\n  | 'image/bmp'\n  | 'application/pdf'\n  | 'application/zip'\n  | 'application/json'\n  | 'application/xml'\n  | 'application/msword'\n  | 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'\n  | 'application/vnd.ms-excel'\n  | 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'\n  | 'application/vnd.ms-powerpoint'\n  | 'application/vnd.openxmlformats-officedocument.presentationml.presentation'\n  | 'application/rtf'\n  | 'application/x-rar'\n  | 'application/x-7z-compressed'\n  | 'application/x-tar'\n  | 'application/vnd.microsoft.portable-executable'\n  | 'text/css'\n  | 'text/csv'\n  | 'text/html'\n  | 'text/markdown'\n  | 'text/plain'\n  | 'font/ttf'\n  | 'font/otf'\n  | 'font/woff'\n  | 'font/woff2'\n  | 'font/eot'\n  | 'font/svg'\n  | 'video/mp4'\n  | 'video/webm'\n  | 'video/ogg'\n  | 'video/quicktime'\n  | 'video/x-msvideo'\n  | 'audio/mpeg'\n  | 'audio/ogg'\n  | 'audio/wav'\n  | 'audio/webm'\n  | 'audio/aac'\n  | 'audio/flac'\n  | 'audio/x-m4a'\n  | 'image/*'\n  | 'audio/*'\n  | 'video/*'\n  | 'text/*'\n  | 'application/*'\n  | 'font/*'\n  | (string & {})\n  | FileMimeType[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The accept file types."
+      },
+      "acceptedFiles": {
+        "type": "File[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The controlled accepted files."
+      },
+      "allowDrop": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether to allow drag and drop in the dropzone element."
+      },
+      "capture": {
+        "type": "'user' | 'environment'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The default camera to use when capturing media."
+      },
+      "defaultAcceptedFiles": {
+        "type": "File[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The default accepted files when rendered. Use when uncontrolled."
+      },
+      "directory": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether to accept directories (webkit browsers only)."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the file input is disabled."
+      },
+      "fileAccept": {
+        "type": "FileAcceptDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when files are accepted."
+      },
+      "fileChange": {
+        "type": "FileChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when the file selection changes."
+      },
+      "fileReject": {
+        "type": "FileRejectDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when files are rejected."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the file upload."
+      },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  dropzone: string\n  hiddenInput: string\n  trigger: string\n  label: string\n  item: (id: string) => string\n  itemName: (id: string) => string\n  itemSizeText: (id: string) => string\n  itemPreview: (id: string) => string\n  itemDeleteTrigger: (id: string) => string\n}>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The element ids for the file-upload parts."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the file input is invalid."
+      },
+      "locale": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The locale (BCP 47)."
+      },
+      "maxFiles": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The maximum number of files."
+      },
+      "maxFileSize": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The maximum file size in bytes."
+      },
+      "minFileSize": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The minimum file size in bytes."
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The name attribute of the hidden file input."
+      },
+      "preventDocumentDrop": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether to prevent the drop event on the document."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the file input is read-only."
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the file input is required."
+      },
+      "transformFiles": {
+        "type": "(files: File[]) => Promise<File[]>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Function to transform the accepted files."
+      },
+      "translations": {
+        "type": "FileUploadIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The localized strings for the file upload."
+      },
+      "validate": {
+        "type": "(file: File, details: FileValidateDetails) => FileError[] | null",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Function to validate a file."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseFileUploadReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The file-upload machine returned by useFileUpload()."
+      }
+    }
+  },
+  "Label": {
+    "props": {}
+  },
+  "Trigger": {
+    "props": {}
+  },
+  "Dropzone": {
+    "props": {
+      "disableClick": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether to disable the click event on the dropzone."
+      }
+    }
+  },
+  "HiddenInput": {
+    "props": {}
+  },
+  "ClearTrigger": {
+    "props": {}
+  },
+  "ItemGroup": {
+    "props": {
+      "type": {
+        "type": "'accepted' | 'rejected'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The item type that this group renders."
+      }
+    }
+  },
+  "Item": {
+    "props": {
+      "file": {
+        "type": "File",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The file represented by this item."
+      }
+    }
+  },
+  "ItemName": {
+    "props": {}
+  },
+  "ItemSizeText": {
+    "props": {}
+  },
+  "ItemPreview": {
+    "props": {
+      "type": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The file type to match against. Matches all file types by default."
+      }
+    }
+  },
+  "ItemPreviewImage": {
+    "props": {}
+  },
+  "ItemDeleteTrigger": {
+    "props": {}
+  }
+}

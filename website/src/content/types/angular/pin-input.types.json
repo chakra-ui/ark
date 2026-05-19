@@ -1,0 +1,177 @@
+{
+  "Root": {
+    "props": {
+      "autoFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to auto-focus the first input."
+      },
+      "autoSubmit": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to auto-submit the owning form when complete."
+      },
+      "blurOnComplete": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to blur the input when the value is complete."
+      },
+      "count": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The number of input slots."
+      },
+      "defaultValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial value of the pin input when uncontrolled."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the pin input is disabled."
+      },
+      "form": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The form attribute of the hidden input."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The id of the pin input."
+      },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  hiddenInput: string\n  label: string\n  control: string\n  input: (id: string) => string\n}>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The element ids for the pin input parts."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the pin input is invalid."
+      },
+      "mask": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to mask the input value like a password."
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The name attribute of the hidden input."
+      },
+      "otp": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to flag inputs as OTP for autocomplete."
+      },
+      "pattern": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The regular expression checked against user-entered values."
+      },
+      "placeholder": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The placeholder text for each input slot."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the pin input is read-only."
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the pin input is required."
+      },
+      "sanitizeValue": {
+        "type": "(value: string) => string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Function to sanitize pasted values."
+      },
+      "selectOnFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to select the input value when focused."
+      },
+      "translations": {
+        "type": "PinInputIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The translations for the pin input."
+      },
+      "type": {
+        "type": "'alphanumeric' | 'numeric' | 'alphabetic'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The type of value the pin-input should allow."
+      },
+      "value": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled value of the pin input as an array of digit strings."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UsePinInputReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The pin input primitive returned by usePinInput()."
+      }
+    }
+  },
+  "Label": {
+    "props": {}
+  },
+  "Control": {
+    "props": {}
+  },
+  "Input": {
+    "props": {
+      "index": {
+        "type": "number",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The zero-based index of this input slot."
+      }
+    }
+  },
+  "HiddenInput": {
+    "props": {}
+  }
+}

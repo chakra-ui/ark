@@ -27,10 +27,20 @@
       "types": "./dist/avatar/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-avatar.mjs"
     },
+    "./clipboard": {
+      "source": "./clipboard/public-api.ts",
+      "types": "./dist/clipboard/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-clipboard.mjs"
+    },
     "./collapsible": {
       "source": "./src/collapsible/public-api.ts",
       "types": "./dist/src/collapsible/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-src-collapsible.mjs"
+    },
+    "./combobox": {
+      "source": "./combobox/public-api.ts",
+      "types": "./dist/combobox/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-combobox.mjs"
     },
     "./dialog": {
       "source": "./src/dialog/public-api.ts",
@@ -42,10 +52,35 @@
       "types": "./dist/src/drawer/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-src-drawer.mjs"
     },
+    "./editable": {
+      "source": "./editable/public-api.ts",
+      "types": "./dist/editable/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-editable.mjs"
+    },
+    "./field": {
+      "source": "./field/public-api.ts",
+      "types": "./dist/field/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-field.mjs"
+    },
+    "./fieldset": {
+      "source": "./fieldset/public-api.ts",
+      "types": "./dist/fieldset/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-fieldset.mjs"
+    },
+    "./file-upload": {
+      "source": "./file-upload/public-api.ts",
+      "types": "./dist/file-upload/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-file-upload.mjs"
+    },
     "./hover-card": {
       "source": "./src/hover-card/public-api.ts",
       "types": "./dist/src/hover-card/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-src-hover-card.mjs"
+    },
+    "./listbox": {
+      "source": "./listbox/public-api.ts",
+      "types": "./dist/listbox/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-listbox.mjs"
     },
     "./menu": {
       "source": "./src/menu/public-api.ts",
@@ -57,6 +92,21 @@
       "types": "./dist/src/navigation-menu/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-src-navigation-menu.mjs"
     },
+    "./number-input": {
+      "source": "./number-input/public-api.ts",
+      "types": "./dist/number-input/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-number-input.mjs"
+    },
+    "./password-input": {
+      "source": "./password-input/public-api.ts",
+      "types": "./dist/password-input/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-password-input.mjs"
+    },
+    "./pin-input": {
+      "source": "./pin-input/public-api.ts",
+      "types": "./dist/pin-input/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-pin-input.mjs"
+    },
     "./popover": {
       "source": "./src/popover/public-api.ts",
       "types": "./dist/src/popover/index.d.ts",
@@ -67,10 +117,20 @@
       "types": "./dist/progress/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-progress.mjs"
     },
+    "./select": {
+      "source": "./select/public-api.ts",
+      "types": "./dist/select/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-select.mjs"
+    },
     "./toggle": {
       "source": "./toggle/public-api.ts",
       "types": "./dist/toggle/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-toggle.mjs"
+    },
+    "./tags-input": {
+      "source": "./tags-input/public-api.ts",
+      "types": "./dist/tags-input/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-tags-input.mjs"
     },
     "./tooltip": {
       "source": "./src/tooltip/public-api.ts",
@@ -247,6 +307,7 @@
     "@angular/cli": "20.3.7",
     "@angular/compiler": "20.3.7",
     "@angular/compiler-cli": "20.3.7",
+    "@angular/forms": "20.3.7",
     "@angular/platform-browser": "20.3.7",
     "@angular/platform-browser-dynamic": "20.3.7",
     "@biomejs/biome": "2.4.9",
