@@ -11,7 +11,7 @@ import {
 } from '@angular/core'
 import { TestBed, type ComponentFixture } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { beforeEach, describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import {
   ARK_TOUR_CONTEXT,
   ARK_TOUR_CONTEXT_CARRIER,
@@ -254,6 +254,26 @@ describe('@ark-ui/angular/tour', () => {
     fixture.destroy()
   })
 
+  it('waitForEvent waits for a conditionally rendered target', async () => {
+    vi.useFakeTimers()
+    let target: HTMLButtonElement | null = null
+    const [promise, cancel] = waitForEvent(() => target, 'click')
+
+    try {
+      await vi.advanceTimersByTimeAsync(16)
+      target = document.createElement('button')
+      document.body.appendChild(target)
+      await vi.advanceTimersByTimeAsync(16)
+
+      target.click()
+      await expect(promise).resolves.toMatchObject({ type: 'click' })
+    } finally {
+      cancel()
+      target?.remove()
+      vi.useRealTimers()
+    }
+  })
+
   it('emits step, status, completion, skip, and model outputs', async () => {
     @Component({
       standalone: true,
@@ -345,8 +365,8 @@ describe('@ark-ui/angular/tour', () => {
             const [promise, cancel] = waitForEvent(target, 'click')
             let cancelled = false
             promise
-              .then((event) => {
-                if (!cancelled && event) next()
+              .then(() => {
+                if (!cancelled) next()
               })
               .catch(() => {})
             return () => {
