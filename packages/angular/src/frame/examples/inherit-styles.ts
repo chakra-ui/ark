@@ -10,7 +10,7 @@ import { ArkFrameComponent } from '../public-api'
   template: `
     <ark-frame #frame class="frame" title="Inherited Styles Frame" (mount)="inheritStyles()">
       <h1>Ark UI / Frame</h1>
-      <p>This Angular content is wrapped in an iframe and styled through the frame head.</p>
+      <p>This is an Angular component wrapped in an iframe.</p>
     </ark-frame>
   `,
   styles: [
@@ -29,11 +29,15 @@ import { ArkFrameComponent } from '../public-api'
       }
 
       .frame {
-        border: 1px solid #d4d4d8;
-        border-radius: 8px;
+        border: 1px solid #ccc;
         display: block;
         width: 100%;
         height: var(--height, 160px);
+      }
+
+      p {
+        margin-bottom: 10px;
+        margin-top: 4px;
       }
     `,
   ],

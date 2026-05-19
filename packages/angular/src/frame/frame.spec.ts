@@ -1,5 +1,6 @@
 import { ApplicationRef, Component, PLATFORM_ID, signal } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
+import { type EnvironmentContext, injectArkEnvironment } from '@ark-ui/angular/src/providers/environment'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { ArkFrameComponent } from './frame'
 
@@ -31,9 +32,36 @@ class HostComponent {
 })
 class FrameWithHeadComponent {}
 
+let capturedEnvironment: EnvironmentContext | undefined
+
+@Component({
+  selector: 'frame-environment-probe',
+  standalone: true,
+  template: `
+    <span data-testid="environment-probe">Probe</span>
+  `,
+})
+class FrameEnvironmentProbeComponent {
+  constructor() {
+    capturedEnvironment = injectArkEnvironment()
+  }
+}
+
+@Component({
+  standalone: true,
+  imports: [ArkFrameComponent, FrameEnvironmentProbeComponent],
+  template: `
+    <ark-frame>
+      <frame-environment-probe />
+    </ark-frame>
+  `,
+})
+class FrameEnvironmentHostComponent {}
+
 describe('ArkFrameComponent', () => {
   beforeEach(() => {
     TestBed.resetTestingModule()
+    capturedEnvironment = undefined
   })
 
   it('renders an iframe element (criterion 32)', () => {
@@ -124,6 +152,19 @@ describe('ArkFrameComponent', () => {
     expect(iframe.contentDocument?.body.querySelector('[data-testid="projected"]')?.textContent).toBe(
       'Projected content',
     )
+
+    fixture.destroy()
+  })
+
+  it('provides the iframe document as the Ark environment for projected descendants', async () => {
+    TestBed.configureTestingModule({ imports: [FrameEnvironmentHostComponent] })
+    const fixture = TestBed.createComponent(FrameEnvironmentHostComponent)
+    fixture.detectChanges()
+    await settleFrame()
+
+    const iframe = fixture.nativeElement.querySelector('iframe') as HTMLIFrameElement
+    expect(capturedEnvironment?.getRootNode()).toBe(iframe.contentDocument)
+    expect(iframe.contentDocument?.body.querySelector('[data-testid="environment-probe"]')?.textContent).toBe('Probe')
 
     fixture.destroy()
   })

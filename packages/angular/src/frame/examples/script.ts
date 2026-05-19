@@ -7,21 +7,24 @@ import { ArkFrameComponent } from '../public-api'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArkFrameComponent],
   template: `
-    <ark-frame #frame class="frame" title="Script Frame" (mount)="appendScript()">
+    <ark-frame #frame class="frame" title="Custom Frame" (mount)="appendScript()">
       <div class="content">
         <h1>Hello from inside the frame!</h1>
-        <p>This frame appends a script after the iframe document mounts.</p>
+        <p>This content is rendered within our custom frame component using a Portal.</p>
       </div>
     </ark-frame>
   `,
   styles: [
     `
       .frame {
-        border: 1px solid #d4d4d8;
-        border-radius: 8px;
+        border: 1px solid #ccc;
         display: block;
-        width: 100%;
         height: var(--height, 180px);
+        width: 100%;
+      }
+
+      .content {
+        padding: 40px;
       }
     `,
   ],
