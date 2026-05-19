@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import {
-  ArkCarouselAutoplayIndicator,
   ArkCarouselAutoplayTrigger,
+  ArkCarouselContext,
   ArkCarouselControl,
   ArkCarouselItem,
   ArkCarouselItemGroup,
@@ -31,7 +31,7 @@ const images = [
     ArkCarouselPrevTrigger,
     ArkCarouselNextTrigger,
     ArkCarouselAutoplayTrigger,
-    ArkCarouselAutoplayIndicator,
+    ArkCarouselContext,
   ],
   template: `
     <div arkCarousel class="Root" [slideCount]="images.length" autoplay loop>
@@ -43,11 +43,66 @@ const images = [
         }
       </div>
       <div arkCarouselControl class="Control" data-justify="center">
-        <button type="button" arkCarouselPrevTrigger class="Trigger">&lt;</button>
-        <button type="button" arkCarouselAutoplayTrigger class="AutoplayTrigger">
-          <span arkCarouselAutoplayIndicator label="||" fallback=">"></span>
+        <button type="button" arkCarouselPrevTrigger class="Trigger">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
         </button>
-        <button type="button" arkCarouselNextTrigger class="Trigger">&gt;</button>
+        <button type="button" arkCarouselAutoplayTrigger class="AutoplayTrigger">
+          <ng-template arkCarouselContext let-api>
+            @if (api().isPlaying) {
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="6" y="4" width="4" height="16" />
+                <rect x="14" y="4" width="4" height="16" />
+              </svg>
+            } @else {
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polygon points="6 3 20 12 6 21 6 3" />
+              </svg>
+            }
+          </ng-template>
+        </button>
+        <button type="button" arkCarouselNextTrigger class="Trigger">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
       </div>
     </div>
   `,

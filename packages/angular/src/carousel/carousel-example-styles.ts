@@ -1,7 +1,6 @@
 export const carouselExampleStyles = `
   :host {
     display: block;
-    max-width: 32rem;
   }
 
   .stack,
@@ -100,6 +99,13 @@ export const carouselExampleStyles = `
     background: transparent;
     border: 1px solid var(--demo-border-emphasized);
     color: var(--demo-neutral-fg);
+  }
+
+  .Trigger svg,
+  .AutoplayTrigger svg,
+  .Button svg {
+    width: 1rem;
+    height: 1rem;
   }
 
   .AutoplayTrigger {
