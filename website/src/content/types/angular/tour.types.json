@@ -1,0 +1,161 @@
+{
+  "Root": {
+    "props": {
+      "closeOnEscape": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to close the tour when the escape key is pressed."
+      },
+      "closeOnInteractOutside": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether to close the tour when the user clicks outside the tour."
+      },
+      "focusOutside": {
+        "type": "TourFocusOutsideEvent",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when focus moves outside the tour content."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the tour."
+      },
+      "ids": {
+        "type": "Partial<{\n  content: string\n  title: string\n  description: string\n  positioner: string\n  backdrop: string\n  arrow: string\n}>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the elements in the tour. Useful for composition."
+      },
+      "interactOutside": {
+        "type": "TourInteractOutsideEvent",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when an interaction happens outside the tour content."
+      },
+      "keyboardNavigation": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "true",
+        "description": "Whether left/right arrow keys navigate between steps."
+      },
+      "pointerDownOutside": {
+        "type": "TourPointerDownOutsideEvent",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when the pointer is pressed outside the tour content."
+      },
+      "preventInteraction": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether interaction with the rest of the page is prevented while the tour is open."
+      },
+      "spotlightOffset": {
+        "type": "TourPoint",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The offsets to apply to the spotlight."
+      },
+      "spotlightRadius": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The radius of the spotlight clip path."
+      },
+      "statusChange": {
+        "type": "TourStatusChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when the tour status changes, including completion and skips."
+      },
+      "stepChange": {
+        "type": "TourStepChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when the highlighted step changes."
+      },
+      "stepId": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled id of the currently highlighted step."
+      },
+      "steps": {
+        "type": "TourStepDetails[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The steps of the tour."
+      },
+      "stepsChange": {
+        "type": "TourStepsChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when the step list changes."
+      },
+      "translations": {
+        "type": "TourIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Localized strings for the tour."
+      }
+    }
+  },
+  "Positioner": {
+    "props": {}
+  },
+  "Content": {
+    "props": {}
+  },
+  "Title": {
+    "props": {}
+  },
+  "Description": {
+    "props": {}
+  },
+  "CloseTrigger": {
+    "props": {}
+  },
+  "ActionTrigger": {
+    "props": {
+      "action": {
+        "type": "TourStepAction",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The step action this trigger performs."
+      }
+    }
+  },
+  "Actions": {
+    "props": {}
+  },
+  "Control": {
+    "props": {}
+  },
+  "ProgressText": {
+    "props": {}
+  },
+  "Backdrop": {
+    "props": {}
+  },
+  "Spotlight": {
+    "props": {}
+  },
+  "Arrow": {
+    "props": {}
+  },
+  "ArrowTip": {
+    "props": {}
+  },
+  "Context": {
+    "props": {}
+  }
+}

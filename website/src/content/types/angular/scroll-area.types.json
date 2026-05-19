@@ -1,0 +1,50 @@
+{
+  "Root": {
+    "props": {
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the scroll area."
+      },
+      "ids": {
+        "type": "Partial<{ root: string; viewport: string; content: string; scrollbar: string; thumb: string }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the scroll area elements. Useful for composition."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseScrollAreaReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The scroll area machine returned by useScrollArea()."
+      }
+    }
+  },
+  "Viewport": {
+    "props": {}
+  },
+  "Content": {
+    "props": {}
+  },
+  "Scrollbar": {
+    "props": {
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The orientation of the scrollbar."
+      }
+    }
+  },
+  "Thumb": {
+    "props": {}
+  },
+  "Corner": {
+    "props": {}
+  }
+}

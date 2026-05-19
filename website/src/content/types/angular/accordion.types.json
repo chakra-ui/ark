@@ -1,0 +1,93 @@
+{
+  "Root": {
+    "props": {
+      "collapsible": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether an accordion item can be closed after it has been expanded."
+      },
+      "defaultValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial value of the expanded accordion items when uncontrolled."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the accordion items are disabled."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the accordion."
+      },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  item: (value: string) => string\n  itemContent: (value: string) => string\n  itemTrigger: (value: string) => string\n}>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the elements in the accordion. Useful for composition."
+      },
+      "multiple": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether multiple accordion items can be expanded at the same time."
+      },
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The orientation of the accordion items."
+      },
+      "value": {
+        "type": "string[]",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled value of the expanded accordion items."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseAccordionReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The accordion machine returned by useAccordion()."
+      }
+    }
+  },
+  "Item": {
+    "props": {
+      "value": {
+        "type": "string",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The value of the accordion item."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the accordion item is disabled."
+      }
+    }
+  },
+  "ItemTrigger": {
+    "props": {}
+  },
+  "ItemContent": {
+    "props": {}
+  },
+  "ItemIndicator": {
+    "props": {}
+  }
+}

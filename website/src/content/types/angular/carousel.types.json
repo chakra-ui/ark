@@ -1,0 +1,212 @@
+{
+  "Root": {
+    "props": {
+      "allowMouseDrag": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether mouse dragging is enabled."
+      },
+      "autoplay": {
+        "type": "boolean | { delay: number }",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether to scroll automatically."
+      },
+      "autoplayStatusChange": {
+        "type": "CarouselAutoplayStatusDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when autoplay starts, advances, or stops."
+      },
+      "autoSize": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether to enable variable-size slides."
+      },
+      "defaultPage": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial page when uncontrolled."
+      },
+      "dragStatusChange": {
+        "type": "CarouselDragStatusDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when dragging starts, moves, or ends."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the carousel."
+      },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  item: (index: number) => string\n  itemGroup: string\n  nextTrigger: string\n  prevTrigger: string\n  indicatorGroup: string\n  indicator: (index: number) => string\n}>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the carousel elements. Useful for composition."
+      },
+      "inViewThreshold": {
+        "type": "number | number[]",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The threshold for determining if an item is in view."
+      },
+      "loop": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the carousel should loop around."
+      },
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The carousel orientation."
+      },
+      "padding": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Extra space around the scrollable area."
+      },
+      "page": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled page of the carousel."
+      },
+      "pageDetailsChange": {
+        "type": "CarouselPageChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits details when the current page changes."
+      },
+      "slideCount": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The total number of slides."
+      },
+      "slidesPerMove": {
+        "type": "number | 'auto'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The number of slides to scroll at a time."
+      },
+      "slidesPerPage": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The number of slides to show at a time."
+      },
+      "snapType": {
+        "type": "'proximity' | 'mandatory'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The snap type of the item group."
+      },
+      "spacing": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The amount of space between items."
+      },
+      "translations": {
+        "type": "CarouselIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Localized strings for accessibility labels."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseCarouselReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The carousel machine returned by useCarousel()."
+      }
+    }
+  },
+  "ItemGroup": {
+    "props": {}
+  },
+  "Item": {
+    "props": {
+      "index": {
+        "type": "number",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The zero-based slide index."
+      },
+      "snapAlign": {
+        "type": "'start' | 'end' | 'center'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The snap alignment of the slide."
+      }
+    }
+  },
+  "Control": {
+    "props": {}
+  },
+  "PrevTrigger": {
+    "props": {}
+  },
+  "NextTrigger": {
+    "props": {}
+  },
+  "IndicatorGroup": {
+    "props": {}
+  },
+  "Indicator": {
+    "props": {
+      "index": {
+        "type": "number",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The zero-based page index this indicator selects."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the indicator should avoid changing the page when clicked."
+      }
+    }
+  },
+  "AutoplayTrigger": {
+    "props": {}
+  },
+  "AutoplayIndicator": {
+    "props": {
+      "fallback": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Text to render when autoplay is paused and the element has no content."
+      },
+      "label": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Text to render when autoplay is active and the element has no content."
+      }
+    }
+  },
+  "ProgressText": {
+    "props": {}
+  },
+  "Context": {
+    "props": {}
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "Root": {
+    "props": {
+      "activationMode": {
+        "type": "'manual' | 'automatic'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The activation mode of the tabs."
+      },
+      "composite": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether the tabs are composed with other composite widgets."
+      },
+      "defaultValue": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The initial selected tab value when uncontrolled."
+      },
+      "deselectable": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether the active tab can be deselected when clicking on it."
+      },
+      "focusChange": {
+        "type": "TabsFocusChangeDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when focus moves between tab triggers. Mirrors Zag `onFocusChange`."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the tabs."
+      },
+      "ids": {
+        "type": "Partial<{\n    root: string\n    trigger: (value: string) => string\n    list: string\n    content: (value: string) => string\n    indicator: string\n  }>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The ids of the elements in the tabs. Useful for composition."
+      },
+      "loopFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Whether keyboard navigation loops from last tab to first and vice versa."
+      },
+      "navigate": {
+        "type": "null | (details: TabsNavigateDetails) => void",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Function to navigate to the selected tab when trigger elements are anchors."
+      },
+      "navigateChange": {
+        "type": "TabsNavigateDetails",
+        "isRequired": false,
+        "kind": "output",
+        "description": "Emits when an anchor trigger requests navigation. Mirrors Zag `navigate`."
+      },
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The orientation of the tabs."
+      },
+      "translations": {
+        "type": "TabsIntlTranslations",
+        "isRequired": false,
+        "kind": "input",
+        "description": "Localized strings for accessibility labels."
+      },
+      "value": {
+        "type": "null | string",
+        "isRequired": false,
+        "kind": "model",
+        "description": "The controlled selected tab value."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseTabsReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The tabs machine returned by useTabs()."
+      }
+    }
+  },
+  "List": {
+    "props": {}
+  },
+  "Trigger": {
+    "props": {
+      "value": {
+        "type": "string",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The unique value of the tab."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "false",
+        "description": "Whether the tab is disabled."
+      }
+    }
+  },
+  "Content": {
+    "props": {
+      "value": {
+        "type": "string",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The value of the tab content."
+      }
+    }
+  },
+  "Indicator": {
+    "props": {}
+  }
+}

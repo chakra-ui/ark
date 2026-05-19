@@ -23,9 +23,21 @@ export const entryPoints: FormsIsolationEntry[] = [
     formsAllowed: false,
   },
   {
+    name: '@ark-ui/angular/accordion',
+    file: 'src/accordion/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-accordion.mjs'],
+    formsAllowed: false,
+  },
+  {
     name: '@ark-ui/angular/avatar',
     file: 'avatar/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-avatar.mjs'],
+    formsAllowed: false,
+  },
+  {
+    name: '@ark-ui/angular/carousel',
+    file: 'src/carousel/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-carousel.mjs'],
     formsAllowed: false,
   },
   {
@@ -101,6 +113,12 @@ export const entryPoints: FormsIsolationEntry[] = [
     formsAllowed: false,
   },
   {
+    name: '@ark-ui/angular/floating-panel',
+    file: 'src/floating-panel/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-floating-panel.mjs'],
+    formsAllowed: false,
+  },
+  {
     name: '@ark-ui/angular/hover-card',
     file: 'src/hover-card/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-src-hover-card.mjs'],
@@ -125,6 +143,12 @@ export const entryPoints: FormsIsolationEntry[] = [
     formsAllowed: false,
   },
   {
+    name: '@ark-ui/angular/marquee',
+    file: 'src/marquee/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-marquee.mjs'],
+    formsAllowed: false,
+  },
+  {
     name: '@ark-ui/angular/menu',
     file: 'src/menu/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-src-menu.mjs'],
@@ -141,6 +165,12 @@ export const entryPoints: FormsIsolationEntry[] = [
     file: 'number-input/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-number-input.mjs'],
     formsAllowed: true,
+  },
+  {
+    name: '@ark-ui/angular/pagination',
+    file: 'src/pagination/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-pagination.mjs'],
+    formsAllowed: false,
   },
   {
     name: '@ark-ui/angular/password-input',
@@ -173,6 +203,12 @@ export const entryPoints: FormsIsolationEntry[] = [
     formsAllowed: false,
   },
   {
+    name: '@ark-ui/angular/scroll-area',
+    file: 'src/scroll-area/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-scroll-area.mjs'],
+    formsAllowed: false,
+  },
+  {
     name: '@ark-ui/angular/select',
     file: 'select/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-select.mjs'],
@@ -185,10 +221,40 @@ export const entryPoints: FormsIsolationEntry[] = [
     formsAllowed: false,
   },
   {
+    name: '@ark-ui/angular/splitter',
+    file: 'src/splitter/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-splitter.mjs'],
+    formsAllowed: false,
+  },
+  {
+    name: '@ark-ui/angular/steps',
+    file: 'src/steps/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-steps.mjs'],
+    formsAllowed: false,
+  },
+  {
+    name: '@ark-ui/angular/tabs',
+    file: 'src/tabs/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-tabs.mjs'],
+    formsAllowed: false,
+  },
+  {
     name: '@ark-ui/angular/tags-input',
     file: 'tags-input/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-tags-input.mjs'],
     formsAllowed: true,
+  },
+  {
+    name: '@ark-ui/angular/timer',
+    file: 'src/timer/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-timer.mjs'],
+    formsAllowed: false,
+  },
+  {
+    name: '@ark-ui/angular/toast',
+    file: 'src/toast/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-toast.mjs'],
+    formsAllowed: false,
   },
   {
     name: '@ark-ui/angular/toggle',
@@ -200,6 +266,12 @@ export const entryPoints: FormsIsolationEntry[] = [
     name: '@ark-ui/angular/tooltip',
     file: 'src/tooltip/public-api.ts',
     outputs: ['dist/fesm2022/ark-ui-angular-src-tooltip.mjs'],
+    formsAllowed: false,
+  },
+  {
+    name: '@ark-ui/angular/tour',
+    file: 'src/tour/public-api.ts',
+    outputs: ['dist/fesm2022/ark-ui-angular-src-tour.mjs'],
     formsAllowed: false,
   },
   {

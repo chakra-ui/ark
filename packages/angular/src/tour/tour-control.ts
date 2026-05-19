@@ -1,0 +1,19 @@
+import { DestroyRef, Directive, ElementRef, Renderer2, inject } from '@angular/core'
+import { applyArkProps } from '@ark-ui/angular/src/_zag'
+import { tourAnatomy } from './tour.anatomy'
+
+@Directive({
+  selector: '[arkTourControl]',
+  standalone: true,
+  exportAs: 'arkTourControl',
+})
+export class ArkTourControl {
+  constructor() {
+    applyArkProps({
+      elementRef: inject(ElementRef),
+      renderer: inject(Renderer2),
+      destroyRef: inject(DestroyRef),
+      props: () => tourAnatomy.build().control.attrs,
+    })
+  }
+}

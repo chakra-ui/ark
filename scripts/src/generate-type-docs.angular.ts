@@ -143,11 +143,19 @@ function pascalCaseComponent(component: string): string {
     .join('')
 }
 
+const partNameOverrides: Record<string, Record<string, string>> = {
+  toast: {
+    ArkToaster: 'Toaster',
+  },
+}
+
 function derivePartName(classDeclaration: ClassDeclaration, component: string): string | undefined {
   const className = classDeclaration.getName()
   if (!className) return undefined
   const componentPascal = pascalCaseComponent(component)
   const arkPrefix = `Ark${componentPascal}`
+  const override = partNameOverrides[component]?.[className]
+  if (override) return override
 
   const decoratorCall = getDirectiveDecorator(classDeclaration)
   const exportAs = decoratorCall ? getDecoratorStringProperty(decoratorCall, 'exportAs') : undefined

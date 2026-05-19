@@ -1,0 +1,65 @@
+{
+  "Toaster": {
+    "props": {
+      "itemTemplate": {
+        "type": "TemplateRef<{ $implicit: toast.Options }>",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "Template used to render each toast item."
+      },
+      "toaster": {
+        "type": "CreateToasterReturn",
+        "isRequired": true,
+        "kind": "required-input",
+        "description": "The toaster store instance created by createToaster()."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The unique identifier of the toast group."
+      },
+      "label": {
+        "type": "string",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The human-readable label for the toast region."
+      }
+    }
+  },
+  "Root": {
+    "props": {
+      "index": {
+        "type": "number",
+        "isRequired": false,
+        "kind": "input",
+        "defaultValue": "0",
+        "description": "The toast's index within the rendered group."
+      },
+      "parent": {
+        "type": "toast.GroupService",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The parent toast group service."
+      },
+      "value": {
+        "type": "toast.Props<any>",
+        "isRequired": false,
+        "kind": "input",
+        "description": "The toast options supplied by the toaster store."
+      }
+    }
+  },
+  "Title": {
+    "props": {}
+  },
+  "Description": {
+    "props": {}
+  },
+  "ActionTrigger": {
+    "props": {}
+  },
+  "CloseTrigger": {
+    "props": {}
+  }
+}
