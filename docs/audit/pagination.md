@@ -1,41 +1,59 @@
 # Pagination Angular Parity Audit
 
 ## Scope
+
 - Angular files: `packages/angular/src/pagination/`
 - React files: `packages/react/src/components/pagination/`
-- Storybook/style files: `packages/angular/src/pagination/pagination.stories.ts`, `packages/angular/src/pagination/examples/`, `packages/angular/src/pagination/pagination-example-styles.ts`, `.storybook/modules/pagination.module.css`
+- Storybook/style files: `packages/angular/src/pagination/pagination.stories.ts`,
+  `packages/angular/src/pagination/examples/`, `packages/angular/src/pagination/pagination-example-styles.ts`,
+  `.storybook/modules/pagination.module.css`
 
 ## Summary
-- Status: Fixed; Storybook render is blocked by an unrelated `number-input` TypeScript error.
-- Highest-risk gaps: Angular Storybook lacked five React parity examples (`Context`, `Customized`, `DataSlicing`, `Link`, `PageRange`), and demo styles did not fully match React hover, focus, selected, select, grid, and layout states.
+
+- Status: Re-audited. Public API, stories, examples, demo styles, exports, anatomy, and specs match React parity. No new
+  fixes were required on this pass; the previous `number-input` TypeScript blocker no longer reproduces and
+  typecheck/build pass cleanly. Storybook static build fails at the framework level due to an unrelated legacy
+  `@storybook/angular` builder migration, not anything in pagination.
+- Highest-risk gaps: None outstanding for pagination.
 
 ## Gap Matrix
-| Area | Gap | React reference | Angular location | Fix |
-| --- | --- | --- | --- | --- |
-| Story parity | Missing `Context` story demonstrating direct context API navigation. | `packages/react/src/components/pagination/examples/context.tsx` | `packages/angular/src/pagination/pagination.stories.ts` | Add `examples/context.ts` and story export. |
-| Story parity | Missing `Customized` story demonstrating translations. | `packages/react/src/components/pagination/examples/customized.tsx` | `packages/angular/src/pagination/pagination.stories.ts` | Add `examples/customized.ts` and story export. |
-| Story parity | Missing `DataSlicing` story demonstrating `api.slice()`. | `packages/react/src/components/pagination/examples/data-slicing.tsx` | `packages/angular/src/pagination/pagination.stories.ts` | Add `examples/data-slicing.ts` and story export. |
-| Story parity | Missing `Link` story demonstrating `type="link"` and `getPageUrl`. | `packages/react/src/components/pagination/examples/link.tsx` | `packages/angular/src/pagination/pagination.stories.ts` | Add `examples/link.ts` and story export. |
-| Story parity | Missing `PageRange` story demonstrating `pageRange`, `count`, and `totalPages`. | `packages/react/src/components/pagination/examples/page-range.tsx` | `packages/angular/src/pagination/pagination.stories.ts` | Add `examples/page-range.ts` and story export. |
-| Styling parity | Angular demo styles used fixed widths and lacked React hover, selected hover, focus-visible, select, grid, max-width, and SVG sizing rules. | `.storybook/modules/pagination.module.css` | `packages/angular/src/pagination/pagination-example-styles.ts` | Align Angular classes with React module behavior using existing Angular class names. |
-| Functionality parity | Root, root-provider, item, ellipsis, first/prev/next/last triggers, controlled `page`, controlled `pageSize`, generated ids, disabled boundary triggers, context helper, exports, and anatomy are implemented and tested. | `packages/react/src/components/pagination/` | `packages/angular/src/pagination/` | No implementation change. |
-| Public API parity | React `Pagination.Item` accepts Zag `ItemProps` including `type`; Angular item directive requires `value` and always passes `{ type: 'page', value }`. The current Zag pagination pages only render page items through this directive; link mode is controlled by root `type`. | `packages/react/src/components/pagination/pagination-item.tsx` | `packages/angular/src/pagination/pagination-item.ts` | No change; Angular directive API remains value-centric for page items. |
+
+| Area              | Gap                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | React reference                                                         | Angular location                                               | Fix                                                                                                                    |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Story parity      | All ten React stories (`Basic`, `Context`, `Controlled`, `Customized`, `DataSlicing`, `Link`, `PageRange`, `PageSizeControl`, `RootProvider`, `WithEdges`) have matching Angular `StoryObj` exports and example components.                                                                                                                                                                                                                                                                                                                     | `packages/react/src/components/pagination/pagination.stories.tsx`       | `packages/angular/src/pagination/pagination.stories.ts`        | No change.                                                                                                             |
+| Example parity    | Every Angular example mirrors its React counterpart for count, pageSize, siblingCount, translations, data slicing, link/`getPageUrl`, page-range derivations, and root-provider composition. Controlled mode uses `[(page)]` (banana syntax) per tech requirements §3.                                                                                                                                                                                                                                                                          | `packages/react/src/components/pagination/examples/*.tsx`               | `packages/angular/src/pagination/examples/*.ts`                | No change.                                                                                                             |
+| Styling parity    | Angular demo styles cover root, controls, item, trigger, ellipsis, focus-visible, selected (+ hover), disabled, page-size select, stack, grid, grid-item, page-count, and SVG sizing — same rules as the React CSS module.                                                                                                                                                                                                                                                                                                                      | `.storybook/modules/pagination.module.css`                              | `packages/angular/src/pagination/pagination-example-styles.ts` | No change.                                                                                                             |
+| Public API parity | Root inputs: `id`, `ids`, `count`, `page` (model), `defaultPage`, `pageSize` (model), `defaultPageSize`, `siblingCount`, `boundaryCount`, `type`, `getPageUrl`, `translations`. Outputs: model-derived `pageChange`/`pageSizeChange` plus explicit `pageDetailsChange`/`pageSizeDetailsChange` for full Zag details — the same dual-output pattern used by carousel and steps.                                                                                                                                                                  | `packages/react/src/components/pagination/pagination-root.tsx`          | `packages/angular/src/pagination/pagination-root.ts`           | No change.                                                                                                             |
+| Public API parity | Angular `[arkPaginationItem]` requires a numeric `value` and always passes `{ type: 'page', value }` to Zag. React `Pagination.Item` accepts the full Zag `ItemProps` (including `type`), but Zag's pagination machine only produces `type: 'page'` entries through `pagination.pages`. Link mode is controlled by root `type` and `getPageUrl`.                                                                                                                                                                                                | `packages/react/src/components/pagination/pagination-item.tsx`          | `packages/angular/src/pagination/pagination-item.ts`           | No change; the value-centric directive API is idiomatic for the framework and matches the only Zag-emitted item shape. |
+| Public API parity | Root-provider directive (`[arkPaginationRootProvider]`) accepts `value: UsePaginationReturn`, re-exposes state/api/send/service, and re-provides itself through DI on the same `ARK_PAGINATION_CONTEXT` token used by the root directive.                                                                                                                                                                                                                                                                                                       | `packages/react/src/components/pagination/pagination-root-provider.tsx` | `packages/angular/src/pagination/pagination-root-provider.ts`  | No change.                                                                                                             |
+| Slot parity       | Render-prop access to the live `api()` signal is delivered through the `*arkPaginationContext` structural directive (`<ng-container *arkPaginationContext="let pagination">{{ pagination().page }}</ng-container>`), matching tech requirements §5 (TemplateRef + injector-aware view). Consumers may also use `#root="arkPagination"` and read `root.api()` directly.                                                                                                                                                                          | `packages/react/src/components/pagination/pagination-context.tsx`       | `packages/angular/src/pagination/pagination-context.ts`        | No change.                                                                                                             |
+| Public exports    | `paginationAnatomy`, `usePagination`, `ARK_PAGINATION_CONTEXT`, `injectArkPaginationContext`, every directive, and the full Zag type re-export set (`PaginationApi`, `PaginationElementIds`, `PaginationEllipsisMachineProps`, `PaginationIntlTranslations`, `PaginationItemLabelDetails`, `PaginationItemMachineProps`, `PaginationMachine`, `PaginationMachineProps`, `PaginationPageChangeDetails`, `PaginationPageSizeChangeDetails`, `PaginationPageUrlDetails`, `PaginationPages`, `PaginationService`) are exported via `public-api.ts`. | `packages/react/src/components/pagination/index.ts`                     | `packages/angular/src/pagination/public-api.ts`                | No change.                                                                                                             |
+| Test parity       | Angular specs cover: documented public surface, fallback `usePagination` id, item/ellipsis attributes, first/prev/next/last triggers, controlled `[(page)]` single-emission, derived state on count/pageSize change, boundary disabled state on first/last page, root-provider composition, and link-mode generated `href` values.                                                                                                                                                                                                              | `packages/react/src/components/pagination/tests/pagination.test.tsx`    | `packages/angular/src/pagination/pagination.spec.ts`           | No change.                                                                                                             |
 
 ## Implementation Plan
-1. Add missing Angular examples for React story parity.
-2. Update pagination stories to export all React-equivalent examples.
-3. Align Angular demo styles with the React pagination CSS module.
-4. Add focused link-mode coverage for generated pagination hrefs.
-5. Verify pagination specs, formatting, Storybook compile, typecheck, and diff hygiene.
+
+1. Re-run parity comparison across stories, examples, styles, public API, exports, types, anatomy, and tests.
+2. Verify pagination specs, formatting, typecheck/build, and diff hygiene.
+3. Record the unrelated Storybook framework migration error as a deferred gap.
+4. Commit the audit refresh.
 
 ## Verification
+
 - [x] Formatting: `bunx prettier --check packages/angular/src/pagination docs/audit/pagination.md` passed.
-- [x] Component tests: `bun run --cwd packages/angular test:ci src/pagination/pagination.spec.ts` passed, 9 tests.
-- [x] Diff hygiene: `git diff --check -- packages/angular/src/pagination docs/audit/pagination.md` passed.
-- [ ] Typecheck/build: `bun run --cwd packages/angular typecheck` failed outside pagination at `number-input/use-number-input.ts:53:9` with TS1117 duplicate `locale` property.
-- [ ] Storybook render: `bun run --cwd packages/angular storybook -- --ci --port 6011` failed outside pagination at `number-input/use-number-input.ts:53:9` with TS1117 duplicate `locale` property.
-- [ ] Manual/visual checks: Deferred because Storybook preview cannot compile until the unrelated `number-input` TypeScript error is fixed.
+- [x] Component tests: `bun run --cwd packages/angular test:ci src/pagination/pagination.spec.ts` passed, 9 tests in 1
+      file.
+- [x] Diff hygiene: `git diff --check -- packages/angular/src/pagination docs/audit/pagination.md` clean.
+- [x] Typecheck/build: `bun run --cwd packages/angular typecheck` succeeded for every entry point including
+      `pagination`; the previously reported `number-input/use-number-input.ts` TS1117 error no longer reproduces. Forms
+      isolation check also passed.
+- [ ] Storybook render: `bunx --cwd packages/angular storybook build` fails at framework level with "Storybook 10 drops
+      support for calling storybook directly … please run `npx storybook automigrate`" originating from
+      `@storybook/angular`'s legacy build option check. Not pagination-specific; affects all stories until the workspace
+      adopts the new Angular Storybook builder.
+- [ ] Manual/visual checks: Deferred for the same Storybook framework migration reason. Pagination examples themselves
+      are unchanged from the previous fix pass.
 
 ## Commit
+
 - Hash:
 - Message: `fix(angular): align pagination with react parity`
