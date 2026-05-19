@@ -115,8 +115,8 @@ describe('root entrypoint', () => {
   it('does not expose factory or Ark namespace exports', async () => {
     const mod = (await import('./index')) as Record<string, unknown>
 
-    expect(mod.factory).toBeUndefined()
-    expect(mod.Ark).toBeUndefined()
+    expect(mod['factory']).toBeUndefined()
+    expect(mod['Ark']).toBeUndefined()
   })
 })
 
