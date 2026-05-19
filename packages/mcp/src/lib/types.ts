@@ -57,4 +57,4 @@ export interface Example {
   url: string
 }
 
-export const FRAMEWORKS = ['react', 'vue', 'svelte', 'solid'] as const
+export const FRAMEWORKS = ['react', 'vue', 'svelte', 'solid', 'angular'] as const
