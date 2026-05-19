@@ -74,6 +74,11 @@ export const signaturePadExampleStyles = `
       color 0.15s ease;
   }
 
+  [arkSignaturePadClearTrigger] svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
   [arkSignaturePadClearTrigger][hidden] {
     display: none;
   }
