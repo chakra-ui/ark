@@ -28,8 +28,10 @@ import { CollapsibleChevronIcon } from './icons'
         </span>
       </button>
       <div arkCollapsibleContent>
-        Ark UI is a headless component library for building accessible, high-quality UI components for React, Solid,
-        Vue, Svelte, and Angular.
+        <div class="collapsible-body">
+          Ark UI is a headless component library for building accessible, high-quality UI components for React, Solid,
+          Vue, and Svelte.
+        </div>
       </div>
     </div>
   `,

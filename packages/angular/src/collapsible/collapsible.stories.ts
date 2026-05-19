@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular'
 import { moduleMetadata } from '@storybook/angular'
 import { CollapsibleBasicExample } from './examples/basic'
 import { CollapsibleDisabledExample } from './examples/disabled'
+import { CollapsibleInitialOpenExample } from './examples/initial-open'
 import { CollapsibleLazyMountExample } from './examples/lazy-mount'
 import { CollapsibleNestedExample } from './examples/nested'
 import { CollapsiblePartialCollapseExample } from './examples/partial-collapse'
@@ -21,6 +22,11 @@ export const Basic: StoryObj = {
 export const Disabled: StoryObj = {
   decorators: [moduleMetadata({ imports: [CollapsibleDisabledExample] })],
   render: () => ({ template: '<collapsible-disabled-example />' }),
+}
+
+export const InitialOpen: StoryObj = {
+  decorators: [moduleMetadata({ imports: [CollapsibleInitialOpenExample] })],
+  render: () => ({ template: '<collapsible-initial-open-example />' }),
 }
 
 export const PartialCollapse: StoryObj = {

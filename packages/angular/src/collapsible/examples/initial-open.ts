@@ -9,7 +9,7 @@ import { collapsibleExampleStyles } from '../collapsible-example-styles'
 import { CollapsibleChevronIcon } from './icons'
 
 @Component({
-  selector: 'collapsible-lazy-mount-example',
+  selector: 'collapsible-initial-open-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -20,22 +20,20 @@ import { CollapsibleChevronIcon } from './icons'
     CollapsibleChevronIcon,
   ],
   template: `
-    <div arkCollapsible lazyMount unmountOnExit #collapsible="arkCollapsible">
+    <div arkCollapsible defaultOpen>
       <button type="button" arkCollapsibleTrigger>
-        Session Details
+        What is Ark UI?
         <span arkCollapsibleIndicator>
           <collapsible-chevron-icon />
         </span>
       </button>
-      @if (!collapsible.isUnmounted()) {
-        <div arkCollapsibleContent>
-          <div class="collapsible-body">
-            This content is lazily mounted when first opened and removed from the DOM when collapsed.
-          </div>
+      <div arkCollapsibleContent>
+        <div class="collapsible-body">
+          Ark UI is a headless component library that works across React, Solid, Vue, and Svelte frameworks.
         </div>
-      }
+      </div>
     </div>
   `,
   styles: [collapsibleExampleStyles],
 })
-export class CollapsibleLazyMountExample {}
+export class CollapsibleInitialOpenExample {}
