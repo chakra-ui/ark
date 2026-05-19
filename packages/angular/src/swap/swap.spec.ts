@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core'
+import { Component, signal, viewChild } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { ArkSwapIndicatorComponent, ArkSwapRootComponent } from './swap'
@@ -14,6 +14,21 @@ import { ArkSwapIndicatorComponent, ArkSwapRootComponent } from './swap'
   `,
 })
 class HostComponent {
+  readonly swap = viewChild.required(ArkSwapRootComponent)
+  readonly active = signal(false)
+}
+
+@Component({
+  standalone: true,
+  imports: [ArkSwapRootComponent, ArkSwapIndicatorComponent],
+  template: `
+    <ark-swap [swap]="active()" unmountOnExit>
+      <ark-swap-indicator type="on"><span data-testid="on">On</span></ark-swap-indicator>
+      <ark-swap-indicator type="off"><span data-testid="off">Off</span></ark-swap-indicator>
+    </ark-swap>
+  `,
+})
+class UnmountOnExitHostComponent {
   readonly active = signal(false)
 }
 
@@ -37,6 +52,23 @@ const getPresenceForTestId = (root: HTMLElement, testId: string): HTMLElement =>
 describe('ArkSwapComponent', () => {
   beforeEach(() => {
     TestBed.resetTestingModule()
+  })
+
+  it('binds the controlled swap state through a property binding', () => {
+    TestBed.configureTestingModule({ imports: [HostComponent] })
+    const fixture = TestBed.createComponent(HostComponent)
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.swap().swap()).toBe(false)
+    expect(fixture.nativeElement.querySelector('ark-swap').getAttribute('data-swap')).toBe('off')
+
+    fixture.componentInstance.active.set(true)
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.swap().swap()).toBe(true)
+    expect(fixture.nativeElement.querySelector('ark-swap').getAttribute('data-swap')).toBe('on')
+
+    fixture.destroy()
   })
 
   it('renders the "on" template when active=true', () => {
@@ -87,7 +119,32 @@ describe('ArkSwapComponent', () => {
     fixture.destroy()
   })
 
-  it('applies display: contents on the host element', () => {
+  it('completes indicator exit through presence when unmountOnExit is enabled', () => {
+    TestBed.configureTestingModule({ imports: [UnmountOnExitHostComponent] })
+    const fixture = TestBed.createComponent(UnmountOnExitHostComponent)
+    fixture.componentInstance.active.set(true)
+    fixture.detectChanges()
+
+    expect(fixture.nativeElement.querySelector('[data-testid="on"]')).not.toBeNull()
+    expect(getPresenceForTestId(fixture.nativeElement, 'off').hidden).toBe(true)
+
+    fixture.componentInstance.active.set(false)
+    fixture.detectChanges()
+
+    const exitingOnPresence = getPresenceForTestId(fixture.nativeElement, 'on')
+    expect(exitingOnPresence.hidden).toBe(false)
+    expect(fixture.nativeElement.querySelector('[data-testid="off"]')).not.toBeNull()
+
+    exitingOnPresence.dispatchEvent(new Event('animationend', { bubbles: true }))
+    fixture.detectChanges()
+
+    expect(fixture.nativeElement.querySelector('[data-testid="on"]')).toBeNull()
+    expect(fixture.nativeElement.querySelector('[data-testid="off"]')).not.toBeNull()
+
+    fixture.destroy()
+  })
+
+  it('applies root host attributes', () => {
     TestBed.configureTestingModule({ imports: [HostComponent] })
     const fixture = TestBed.createComponent(HostComponent)
     fixture.detectChanges()
