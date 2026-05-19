@@ -39,9 +39,37 @@ describe('check-forms-isolation', () => {
     expect(errors[0]).toContain('@angular/forms')
   })
 
+  it('reports transitive forms imports through relative re-exports', () => {
+    const file = join(workDir, 'public-api.ts')
+    const inner = join(workDir, 'inner.ts')
+    writeFileSync(file, "export * from './inner'\n", 'utf-8')
+    writeFileSync(inner, "import { FormsModule } from '@angular/forms'\nexport { FormsModule }\n", 'utf-8')
+
+    const { reporter, errors } = createReporter()
+    const failed = scanEntryPoint({ name: '@ark-ui/angular/synthetic-forms-free', file }, reporter)
+
+    expect(failed).toBe(true)
+    expect(errors).toHaveLength(1)
+    expect(errors[0]).toContain('public-api.ts')
+    expect(errors[0]).toContain('inner.ts')
+  })
+
   it('allows form-bearing entrypoints to import @angular/forms', () => {
     const file = join(workDir, 'public-api.ts')
     writeFileSync(file, "import { FormsModule } from '@angular/forms'\nexport { FormsModule }\n", 'utf-8')
+
+    const { reporter, errors } = createReporter()
+    const failed = scanEntryPoint({ name: '@ark-ui/angular/editable', file }, reporter)
+
+    expect(failed).toBe(false)
+    expect(errors).toEqual([])
+  })
+
+  it('allows transitive forms imports for form-bearing entrypoints', () => {
+    const file = join(workDir, 'public-api.ts')
+    const inner = join(workDir, 'inner.ts')
+    writeFileSync(file, "export * from './inner'\n", 'utf-8')
+    writeFileSync(inner, "import { FormsModule } from '@angular/forms'\nexport { FormsModule }\n", 'utf-8')
 
     const { reporter, errors } = createReporter()
     const failed = scanEntryPoint({ name: '@ark-ui/angular/editable', file }, reporter)

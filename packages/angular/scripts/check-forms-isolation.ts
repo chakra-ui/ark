@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from 'node:fs'
-import { dirname, extname, join, relative, resolve } from 'node:path'
+import { dirname, extname, isAbsolute, join, relative, resolve } from 'node:path'
 import { argv, exit } from 'node:process'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import ts from 'typescript'
@@ -212,6 +212,13 @@ export const formBearingEntryPoints = new Set<string>([
   '@ark-ui/angular/combobox',
 ])
 
+const entryPointNames = new Set(entryPoints.map((entryPoint) => entryPoint.name))
+for (const entryPointName of formBearingEntryPoints) {
+  if (!entryPointNames.has(entryPointName)) {
+    throw new Error(`forms isolation allowlist references unknown entry point: ${entryPointName}`)
+  }
+}
+
 const selfEntryFiles = new Map(
   entryPoints.flatMap(({ name, file }) => {
     const resolvedFile = join(root, file)
@@ -325,8 +332,10 @@ const scanFile = (
 
   const source = readFileSync(resolvedFile, 'utf-8')
   const sourceFile = ts.createSourceFile(resolvedFile, source, ts.ScriptTarget.Latest, true)
-  if (sourceFile.parseDiagnostics.length > 0) {
-    for (const diagnostic of sourceFile.parseDiagnostics) {
+  const parseDiagnostics =
+    (sourceFile as ts.SourceFile & { parseDiagnostics?: readonly ts.Diagnostic[] }).parseDiagnostics ?? []
+  if (parseDiagnostics.length > 0) {
+    for (const diagnostic of parseDiagnostics) {
       reporter.error(ts.flattenDiagnosticMessageText(diagnostic.messageText, '\n'))
     }
     return true
@@ -356,10 +365,23 @@ const scanFile = (
   return failed
 }
 
-export const scanEntryPoint = (entryPoint: { name: string; file: string }, reporter: Reporter = defaultReporter) => {
+export const scanEntryPoint = (
+  entryPoint: Pick<EntryPoint, 'name' | 'file'> & { outputs?: string[] },
+  reporter: Reporter = defaultReporter,
+) => {
   const allowForms = formBearingEntryPoints.has(entryPoint.name)
   const visited = new Set<string>()
-  return scanFile(entryPoint.name, entryPoint.file, visited, [], allowForms, reporter)
+  const sourceFile = isAbsolute(entryPoint.file) ? entryPoint.file : join(root, entryPoint.file)
+  let failed = scanFile(entryPoint.name, sourceFile, visited, [], allowForms, reporter)
+
+  for (const output of entryPoint.outputs ?? []) {
+    const outputFile = isAbsolute(output) ? output : join(root, output)
+    if (existsSync(outputFile) && scanFile(entryPoint.name, outputFile, visited, [], allowForms, reporter)) {
+      failed = true
+    }
+  }
+
+  return failed
 }
 
 export const runFormsIsolationCheck = (reporter: Reporter = defaultReporter) => {

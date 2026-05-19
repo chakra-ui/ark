@@ -7,6 +7,7 @@
     "paths": {
       "@ark-ui/angular/avatar": ["avatar/public-api.ts"],
       "@ark-ui/angular/clipboard": ["clipboard/public-api.ts"],
+      "@ark-ui/angular/collection": ["src/collection/public-api.ts"],
       "@ark-ui/angular/collapsible": ["src/collapsible/public-api.ts"],
       "@ark-ui/angular/combobox": ["combobox/public-api.ts"],
       "@ark-ui/angular/dialog": ["src/dialog/public-api.ts"],
