@@ -62,9 +62,13 @@ export const jsonTreeViewExampleStyles = `
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1rem;
     margin-inline-end: 0.25rem;
     transform-origin: center;
+  }
+
+  [arkJsonTreeViewTree] svg {
+    width: 1rem;
+    height: 1rem;
   }
 
   [data-part='branch-indicator'][data-state='open'] {

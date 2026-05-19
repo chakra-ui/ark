@@ -50,13 +50,11 @@ import { injectArkJsonTreeViewOptions } from './use-json-tree-view-context'
               [attr.data-line]="line(currentIndexPath)"
               [style.--line-length]="lineLength(currentIndexPath)"
             >
-              <span arkTreeViewBranchIndicator data-scope="json-tree-view">
-                @if (arrow(); as arrowTemplate) {
+              @if (arrow(); as arrowTemplate) {
+                <span arkTreeViewBranchIndicator data-scope="json-tree-view">
                   <ng-container *ngTemplateOutlet="arrowTemplate" />
-                } @else {
-                  <span aria-hidden="true">›</span>
-                }
-              </span>
+                </span>
+              }
               <span arkTreeViewBranchText data-scope="json-tree-view">
                 @if (key(current)) {
                   <ark-json-tree-view-key-node [node]="current" />
