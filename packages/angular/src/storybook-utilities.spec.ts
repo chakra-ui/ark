@@ -6,6 +6,11 @@ import { describe, expect, it } from 'vitest'
 const packageRoot = dirname(dirname(fileURLToPath(import.meta.url)))
 const previewSource = readFileSync(join(packageRoot, '.storybook/preview.ts'), 'utf-8')
 
+const requiredProviderStories = [
+  ['src/providers/environment/environment.stories.ts', 'Utilities / Environment'],
+  ['src/providers/locale/locale.stories.ts', 'Utilities / Locale'],
+] as const
+
 describe('Angular Storybook utility navigation', () => {
   it('orders utility stories before providers and components', () => {
     expect(previewSource).toMatch(/order:\s*\[\s*['"]Utilities['"],\s*['"]Providers['"],\s*['"]Components['"],?\s*\]/)
@@ -13,5 +18,11 @@ describe('Angular Storybook utility navigation', () => {
 
   it('sorts stories alphabetically within sidebar groups', () => {
     expect(previewSource).toMatch(/method:\s*['"]alphabetical['"]/)
+  })
+
+  it.each(requiredProviderStories)('defines the %s story title', (storyPath, title) => {
+    const storySource = readFileSync(join(packageRoot, storyPath), 'utf-8')
+
+    expect(storySource).toContain(`title: '${title}'`)
   })
 })
