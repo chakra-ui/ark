@@ -34,6 +34,7 @@ export { progressAnatomy } from '@ark-ui/angular/progress'
 export { qrCodeAnatomy } from './qr-code/qr-code.anatomy'
 // Use a relative import so this aggregate stays form-isolation safe.
 export { selectAnatomy } from '../select/select.anatomy'
+export { scrollAreaAnatomy } from './scroll-area/scroll-area.anatomy'
 export { signaturePadAnatomy } from './signature-pad/signature-pad.anatomy'
 export { stepsAnatomy } from './steps/steps.anatomy'
 export { tabsAnatomy } from './tabs/tabs.anatomy'
