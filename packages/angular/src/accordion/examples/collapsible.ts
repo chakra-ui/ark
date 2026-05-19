@@ -7,6 +7,7 @@ import {
   ArkAccordionRoot,
 } from '@ark-ui/angular/accordion'
 import { accordionExampleStyles } from '../accordion-example-styles'
+import { AccordionChevronDownIcon } from './icons'
 
 @Component({
   selector: 'accordion-collapsible-example',
@@ -18,25 +19,43 @@ import { accordionExampleStyles } from '../accordion-example-styles'
     ArkAccordionItemTrigger,
     ArkAccordionItemContent,
     ArkAccordionItemIndicator,
+    AccordionChevronDownIcon,
   ],
   template: `
-    <div arkAccordion collapsible [defaultValue]="['shipping']">
-      <div arkAccordionItem value="shipping">
-        <button type="button" arkAccordionItemTrigger>
-          Shipping
-          <span arkAccordionItemIndicator>+</span>
-        </button>
-        <div arkAccordionItemContent>Standard delivery arrives in three to five business days.</div>
-      </div>
-      <div arkAccordionItem value="returns">
-        <button type="button" arkAccordionItemTrigger>
-          Returns
-          <span arkAccordionItemIndicator>+</span>
-        </button>
-        <div arkAccordionItemContent>Unused items can be returned within 30 days.</div>
-      </div>
+    <div arkAccordion collapsible [defaultValue]="['ark-ui']">
+      @for (item of items; track item.value) {
+        <div arkAccordionItem [value]="item.value">
+          <button type="button" arkAccordionItemTrigger>
+            {{ item.title }}
+            <span arkAccordionItemIndicator><accordion-chevron-down-icon /></span>
+          </button>
+          <div arkAccordionItemContent>
+            <div class="item-body">{{ item.content }}</div>
+          </div>
+        </div>
+      }
     </div>
   `,
   styles: [accordionExampleStyles],
 })
-export class AccordionCollapsibleExample {}
+export class AccordionCollapsibleExample {
+  readonly items = accordionItems
+}
+
+const accordionItems = [
+  {
+    value: 'ark-ui',
+    title: 'What is Ark UI?',
+    content: 'A headless component library for building accessible web apps.',
+  },
+  {
+    value: 'getting-started',
+    title: 'How to get started?',
+    content: 'Install the package and import the components you need.',
+  },
+  {
+    value: 'maintainers',
+    title: 'Who maintains this project?',
+    content: 'Ark UI is maintained by the Chakra UI team.',
+  },
+]

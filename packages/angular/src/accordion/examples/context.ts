@@ -1,5 +1,7 @@
+import { JsonPipe } from '@angular/common'
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import {
+  ArkAccordionContext,
   ArkAccordionItem,
   ArkAccordionItemContent,
   ArkAccordionItemIndicator,
@@ -10,21 +12,30 @@ import { accordionExampleStyles } from '../accordion-example-styles'
 import { AccordionChevronDownIcon } from './icons'
 
 @Component({
-  selector: 'accordion-disabled-example',
+  selector: 'accordion-context-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ArkAccordionRoot,
+    ArkAccordionContext,
     ArkAccordionItem,
     ArkAccordionItemTrigger,
     ArkAccordionItemContent,
     ArkAccordionItemIndicator,
     AccordionChevronDownIcon,
+    JsonPipe,
   ],
   template: `
-    <div arkAccordion>
+    <div arkAccordion [defaultValue]="['ark-ui']">
+      <ng-container *arkAccordionContext="let accordion">
+        <output>
+          <div>context.value: {{ accordion().value | json }}</div>
+          <div>context.focusedValue: {{ accordion().focusedValue || 'null' }}</div>
+        </output>
+      </ng-container>
+
       @for (item of items; track item.value) {
-        <div arkAccordionItem [value]="item.value" [disabled]="item.value === 'getting-started'">
+        <div arkAccordionItem [value]="item.value">
           <button type="button" arkAccordionItemTrigger>
             {{ item.title }}
             <span arkAccordionItemIndicator><accordion-chevron-down-icon /></span>
@@ -38,7 +49,7 @@ import { AccordionChevronDownIcon } from './icons'
   `,
   styles: [accordionExampleStyles],
 })
-export class AccordionDisabledExample {
+export class AccordionContextExample {
   readonly items = accordionItems
 }
 

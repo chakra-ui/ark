@@ -9,6 +9,7 @@ import {
   type UseAccordionReturn,
 } from '@ark-ui/angular/accordion'
 import { accordionExampleStyles } from '../accordion-example-styles'
+import { AccordionChevronDownIcon } from './icons'
 
 @Component({
   selector: 'accordion-root-provider-example',
@@ -20,18 +21,23 @@ import { accordionExampleStyles } from '../accordion-example-styles'
     ArkAccordionItemTrigger,
     ArkAccordionItemContent,
     ArkAccordionItemIndicator,
+    AccordionChevronDownIcon,
   ],
   template: `
     <div class="stack">
       <output>value: {{ valueLabel() }}</output>
       <div arkAccordionRootProvider [value]="accordion">
-        <div arkAccordionItem value="provider">
-          <button type="button" arkAccordionItemTrigger>
-            Root provider
-            <span arkAccordionItemIndicator>+</span>
-          </button>
-          <div arkAccordionItemContent>The directives read from an externally created accordion machine.</div>
-        </div>
+        @for (item of items; track item.value) {
+          <div arkAccordionItem [value]="item.value">
+            <button type="button" arkAccordionItemTrigger>
+              {{ item.title }}
+              <span arkAccordionItemIndicator><accordion-chevron-down-icon /></span>
+            </button>
+            <div arkAccordionItemContent>
+              <div class="item-body">{{ item.content }}</div>
+            </div>
+          </div>
+        }
       </div>
     </div>
   `,
@@ -39,7 +45,26 @@ import { accordionExampleStyles } from '../accordion-example-styles'
 })
 export class AccordionRootProviderExample {
   readonly accordion: UseAccordionReturn = runInInjectionContext(inject(Injector), () =>
-    useAccordion({ context: () => ({}) }),
+    useAccordion({ context: () => ({ multiple: true, defaultValue: ['ark-ui'] }) }),
   )
+  readonly items = accordionItems
   readonly valueLabel = computed(() => this.accordion.api().value.join(', ') || 'none')
 }
+
+const accordionItems = [
+  {
+    value: 'ark-ui',
+    title: 'What is Ark UI?',
+    content: 'A headless component library for building accessible web apps.',
+  },
+  {
+    value: 'getting-started',
+    title: 'How to get started?',
+    content: 'Install the package and import the components you need.',
+  },
+  {
+    value: 'maintainers',
+    title: 'Who maintains this project?',
+    content: 'Ark UI is maintained by the Chakra UI team.',
+  },
+]

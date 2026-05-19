@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular'
 import { moduleMetadata } from '@storybook/angular'
 import { AccordionBasicExample } from './examples/basic'
 import { AccordionCollapsibleExample } from './examples/collapsible'
+import { AccordionContextExample } from './examples/context'
 import { AccordionControlledExample } from './examples/controlled'
 import { AccordionDisabledExample } from './examples/disabled'
 import { AccordionHorizontalExample } from './examples/horizontal'
@@ -23,6 +24,11 @@ export const Basic: StoryObj = {
 export const Collapsible: StoryObj = {
   decorators: [moduleMetadata({ imports: [AccordionCollapsibleExample] })],
   render: () => ({ template: '<accordion-collapsible-example />' }),
+}
+
+export const Context: StoryObj = {
+  decorators: [moduleMetadata({ imports: [AccordionContextExample] })],
+  render: () => ({ template: '<accordion-context-example />' }),
 }
 
 export const Controlled: StoryObj = {
