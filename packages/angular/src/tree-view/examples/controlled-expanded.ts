@@ -53,7 +53,7 @@ import { childIndexPath, fileTreeCollection } from './_tree-data'
         }
       </div>
     </div>
-    <output>expanded: {{ expandedValue().join(', ') || 'none' }}</output>
+    <output>expanded: {{ expandedValue()?.join(', ') || 'none' }}</output>
 
     <ng-template #nodeTemplate let-node let-indexPath="indexPath">
       <ng-container

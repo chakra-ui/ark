@@ -223,7 +223,7 @@ export class ArkDateInputRoot implements ControlValueAccessor, UseDateInputRetur
       this.hasExternalBinding = true
     }
     this.hasReceivedFormWrite = true
-    if (!dateValueArraysEqual(current, next)) {
+    if (current !== next) {
       this.pendingInternalWrites++
     }
     this.cva.writeValue(value)

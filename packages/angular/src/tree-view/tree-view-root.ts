@@ -124,11 +124,10 @@ export class ArkTreeViewRoot<T extends TreeNode = TreeNode> implements UseTreeVi
   readonly renameComplete: OutputEmitterRef<TreeViewRenameCompleteDetails> = output<TreeViewRenameCompleteDetails>()
 
   private readonly fallbackCollection = new TreeCollection<T>({
-    rootNode: { value: 'ROOT' } as T,
-    nodeToValue: (node) => String((node as { value?: string }).value ?? ''),
-    nodeToString: (node) =>
-      String((node as { label?: string; value?: string }).label ?? (node as { value?: string }).value ?? ''),
-    nodeToChildren: (node) => ((node as { children?: T[] }).children ?? []) as T[],
+    rootNode: { id: '__ark_tree_view_root__' } as unknown as T,
+    nodeToValue: () => '__ark_tree_view_root__',
+    nodeToString: () => '',
+    nodeToChildren: () => [],
   })
 
   private readCollection(): TreeCollection<T> {
@@ -194,7 +193,8 @@ export class ArkTreeViewRoot<T extends TreeNode = TreeNode> implements UseTreeVi
       },
       onBeforeRename: (details) => {
         this.beforeRename.emit(details)
-        return true
+        const renameDetails = details as unknown as { node: T; indexPath: number[] }
+        return this.canRename()?.(renameDetails.node, renameDetails.indexPath) ?? true
       },
       onRenameComplete: (details) => {
         this.renameComplete.emit(details)

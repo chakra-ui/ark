@@ -22,6 +22,9 @@ import type { JsonTreeViewValueTemplate } from './json-tree-view.types'
         @switch (current.tagName) {
           @case ('a') {
             <a
+              [attr.href]="element(current).properties['href'] ?? null"
+              [attr.target]="element(current).properties['target'] ?? null"
+              [attr.rel]="element(current).properties['rel'] ?? null"
               [attr.data-root]="element(current).properties.root ? '' : null"
               [attr.data-type]="element(current).properties.nodeType ?? null"
               [attr.data-kind]="element(current).properties.kind ?? null"

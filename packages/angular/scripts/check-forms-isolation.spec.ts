@@ -89,8 +89,38 @@ describe('check-forms-isolation', () => {
 
     expect(failed).toBe(true)
     expect(errors).toEqual([
-      'forms isolation: @ark-ui/angular/date-input allows forms but does not import @angular/forms transitively.',
+      'forms isolation: @ark-ui/angular/date-input allows forms but its source entry does not import @angular/forms transitively.',
     ])
+  })
+
+  it('does not count output-only forms imports as source CVA coverage', () => {
+    const file = join(workDir, 'public-api.ts')
+    const output = join(workDir, 'output.mjs')
+    writeFileSync(file, 'export const ok = true\n', 'utf-8')
+    writeFileSync(output, "import { FormsModule } from '@angular/forms'\nexport { FormsModule }\n", 'utf-8')
+
+    const { reporter, errors } = createReporter()
+    const failed = scanEntryPoint(
+      { name: '@ark-ui/angular/date-picker', file, formsAllowed: true, outputs: [output] },
+      reporter,
+    )
+
+    expect(failed).toBe(true)
+    expect(errors).toEqual([
+      'forms isolation: @ark-ui/angular/date-picker allows forms but its source entry does not import @angular/forms transitively.',
+    ])
+  })
+
+  it('reports missing source entries without throwing', () => {
+    const file = join(workDir, 'missing.ts')
+
+    const { reporter, errors } = createReporter()
+    const failed = scanEntryPoint({ name: '@ark-ui/angular/missing', file, formsAllowed: false }, reporter)
+
+    expect(failed).toBe(true)
+    expect(errors).toHaveLength(1)
+    expect(errors[0]).toContain('forms isolation: source entry not found for @ark-ui/angular/missing')
+    expect(errors[0]).toContain('missing.ts')
   })
 
   it('reports forms imports found only in declared outputs', () => {

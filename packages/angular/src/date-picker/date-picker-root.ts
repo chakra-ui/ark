@@ -299,7 +299,7 @@ export class ArkDatePickerRoot implements ControlValueAccessor, UseDatePickerRet
       this.hasExternalBinding = true
     }
     this.hasReceivedFormWrite = true
-    if (!dateValueArraysEqual(current, next)) {
+    if (current !== next) {
       this.pendingInternalWrites++
     }
     this.cva.writeValue(value)

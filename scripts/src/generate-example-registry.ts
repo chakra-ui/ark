@@ -2,7 +2,7 @@ import { writeFileSync } from 'node:fs'
 import { basename, join } from 'node:path'
 import { globby } from 'globby'
 
-const rootDir = join(import.meta.dirname, '../..')
+const repoRoot = join(import.meta.dirname, '../..')
 type RegistryBuild = { imports: string[]; entries: string[] }
 
 /**
@@ -30,20 +30,24 @@ function toImportAlias(componentName: string, exampleName: string): string {
   return `${component}_${example}`
 }
 
-export async function buildReactRegistry(rootDir: string): Promise<RegistryBuild> {
+function toAngularExportName(componentName: string, exampleKey: string): string {
+  return `${toExportName(`${componentName}-${exampleKey.replace(/\//g, '-')}.ts`)}Example`
+}
+
+export async function buildReactRegistry(repoRoot: string): Promise<RegistryBuild> {
   // Find all example files in React components
   const exampleFiles = await globby(['packages/react/src/components/*/examples/*.tsx'], {
-    cwd: rootDir,
+    cwd: repoRoot,
   })
 
   // Also find nested examples (like progress/examples/circular/*.tsx)
   const nestedExampleFiles = await globby(['packages/react/src/components/*/examples/*/*.tsx'], {
-    cwd: rootDir,
+    cwd: repoRoot,
   })
 
   // Also find provider examples
   const providerExampleFiles = await globby(['packages/react/src/providers/*/examples/*.tsx'], {
-    cwd: rootDir,
+    cwd: repoRoot,
   })
 
   const allFiles = [...exampleFiles, ...nestedExampleFiles, ...providerExampleFiles]
@@ -119,9 +123,9 @@ export async function buildReactRegistry(rootDir: string): Promise<RegistryBuild
   return { imports, entries: registryEntries }
 }
 
-export async function buildAngularRegistry(rootDir: string): Promise<RegistryBuild> {
+export async function buildAngularRegistry(repoRoot: string): Promise<RegistryBuild> {
   const allFiles = await globby(['packages/angular/src/*/examples/**/*.ts'], {
-    cwd: rootDir,
+    cwd: repoRoot,
   })
 
   const imports: string[] = []
@@ -131,7 +135,7 @@ export async function buildAngularRegistry(rootDir: string): Promise<RegistryBui
     const parts = file.split('/')
     const exampleFileName = basename(file)
 
-    if (exampleFileName.startsWith('_')) continue
+    if (exampleFileName.startsWith('_') || /\.(spec|test)\.ts$/.test(exampleFileName)) continue
 
     const examplesIdx = parts.indexOf('examples')
     const componentName = parts[examplesIdx - 1]
@@ -145,9 +149,10 @@ export async function buildAngularRegistry(rootDir: string): Promise<RegistryBui
       .join('/')
       .replace(/\.ts$/, '')
     const importPath = `../../../packages/angular/src/${rest}`
+    const exportName = toAngularExportName(componentName, exampleKey)
 
     imports.push(`import * as ${importAlias} from '${importPath}'`)
-    registryEntries.push(`  '${componentName}/${exampleKey}': ${importAlias}`)
+    registryEntries.push(`  '${componentName}/${exampleKey}': { module: ${importAlias}, exportName: '${exportName}' }`)
   }
 
   return { imports, entries: registryEntries }
@@ -211,31 +216,30 @@ ${imports.join('\n')}
 
 // Registry maps Angular example keys to their module namespace.
 type AngularExampleModule = Record<string, unknown>
+type AngularExampleEntry = {
+  module: AngularExampleModule
+  exportName: string
+}
 
-const angularExampleModules: Record<string, AngularExampleModule> = {
+const angularExampleModules: Record<string, AngularExampleEntry> = {
 ${registryEntries.join(',\n')}
 }
 
 /**
- * Get the first Angular component export from a module
+ * Get the Angular component export from a module
  */
-function getComponentFromModule(mod: AngularExampleModule): unknown {
-  for (const key of Object.keys(mod)) {
-    const value = mod[key]
-    if (typeof value === 'function') {
-      return value
-    }
-  }
-  return undefined
+function getComponentFromModule(entry: AngularExampleEntry): unknown {
+  const value = entry.module[entry.exportName]
+  return typeof value === 'function' ? value : undefined
 }
 
 /**
  * Get an Angular example component by component name and example id
  */
 export function getAngularExample(component: string, example: string): unknown {
-  const mod = angularExampleModules[\`\${component}/\${example}\`]
-  if (!mod) return undefined
-  return getComponentFromModule(mod)
+  const entry = angularExampleModules[\`\${component}/\${example}\`]
+  if (!entry) return undefined
+  return getComponentFromModule(entry)
 }
 
 /**
@@ -248,16 +252,16 @@ export function hasAngularExample(component: string, example: string): boolean {
 }
 
 const main = async () => {
-  const reactRegistry = await buildReactRegistry(rootDir)
+  const reactRegistry = await buildReactRegistry(repoRoot)
   const reactOutput = buildReactRegistryOutput(reactRegistry.imports, reactRegistry.entries)
 
   // Write to website/src/lib/example-registry.ts
-  const reactOutputPath = join(rootDir, 'website/src/lib/example-registry.ts')
+  const reactOutputPath = join(repoRoot, 'website/src/lib/example-registry.ts')
   writeFileSync(reactOutputPath, reactOutput)
 
-  const angularRegistry = await buildAngularRegistry(rootDir)
+  const angularRegistry = await buildAngularRegistry(repoRoot)
   const angularOutput = buildAngularRegistryOutput(angularRegistry.imports, angularRegistry.entries)
-  const angularOutputPath = join(rootDir, 'website/src/lib/angular-example-registry.ts')
+  const angularOutputPath = join(repoRoot, 'website/src/lib/angular-example-registry.ts')
   writeFileSync(angularOutputPath, angularOutput)
 
   console.log(`Generated example registry with ${reactRegistry.entries.length} examples`)

@@ -47,6 +47,10 @@ export class ArkDatePickerValueText implements AfterContentInit {
   }
 
   ngAfterContentInit(): void {
-    this.ownsTextContent.set(this.elementRef.nativeElement.childNodes.length === 0)
+    this.ownsTextContent.set(hasOnlyWhitespaceContent(this.elementRef.nativeElement))
   }
+}
+
+function hasOnlyWhitespaceContent(element: HTMLElement): boolean {
+  return element.firstElementChild === null && (element.textContent?.trim() ?? '') === ''
 }

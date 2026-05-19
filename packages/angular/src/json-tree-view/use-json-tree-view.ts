@@ -47,7 +47,7 @@ export function useJsonTreeView(options: UseJsonTreeViewOptions): UseJsonTreeVie
         ...treeProps,
         collection: collection(),
         defaultExpandedValue,
-        typeahead: treeProps.typeahead ?? false,
+        typeahead: treeProps.typeahead,
       }
     },
   })

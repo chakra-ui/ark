@@ -90,115 +90,138 @@ import * as TreeView_RootProvider from '../../../packages/angular/src/tree-view/
 
 // Registry maps Angular example keys to their module namespace.
 type AngularExampleModule = Record<string, unknown>
+type AngularExampleEntry = {
+  module: AngularExampleModule
+  exportName: string
+}
 
-const angularExampleModules: Record<string, AngularExampleModule> = {
-  'collapsible/basic': Collapsible_Basic,
-  'collapsible/disabled': Collapsible_Disabled,
-  'collapsible/icons': Collapsible_Icons,
-  'collapsible/lazy-mount': Collapsible_LazyMount,
-  'collapsible/nested': Collapsible_Nested,
-  'collapsible/partial-collapse': Collapsible_PartialCollapse,
-  'collapsible/root-provider': Collapsible_RootProvider,
-  'date-input/basic': DateInput_Basic,
-  'date-input/controlled': DateInput_Controlled,
-  'date-input/range': DateInput_Range,
-  'date-input/root-provider': DateInput_RootProvider,
-  'dialog/alert-dialog': Dialog_AlertDialog,
-  'dialog/basic': Dialog_Basic,
-  'dialog/controlled': Dialog_Controlled,
-  'dialog/default-open': Dialog_DefaultOpen,
-  'dialog/icons': Dialog_Icons,
-  'dialog/non-modal': Dialog_NonModal,
-  'dialog/root-provider': Dialog_RootProvider,
-  'drawer/basic': Drawer_Basic,
-  'drawer/controlled': Drawer_Controlled,
-  'drawer/default-open': Drawer_DefaultOpen,
-  'drawer/icons': Drawer_Icons,
-  'drawer/root-provider': Drawer_RootProvider,
-  'drawer/swipe-direction': Drawer_SwipeDirection,
-  'drawer/with-title-description': Drawer_WithTitleDescription,
-  'hover-card/basic': HoverCard_Basic,
-  'hover-card/controlled': HoverCard_Controlled,
-  'hover-card/delay': HoverCard_Delay,
-  'hover-card/multiple-triggers': HoverCard_MultipleTriggers,
-  'hover-card/positioning': HoverCard_Positioning,
-  'hover-card/root-provider': HoverCard_RootProvider,
-  'image-cropper/basic': ImageCropper_Basic,
-  'image-cropper/controlled': ImageCropper_Controlled,
-  'image-cropper/root-provider': ImageCropper_RootProvider,
-  'json-tree-view/basic': JsonTreeView_Basic,
-  'json-tree-view/data-types': JsonTreeView_DataTypes,
-  'json-tree-view/render-value': JsonTreeView_RenderValue,
-  'json-tree-view/root-provider': JsonTreeView_RootProvider,
-  'menu/basic': Menu_Basic,
-  'menu/checkbox-items': Menu_CheckboxItems,
-  'menu/controlled-highlight': Menu_ControlledHighlight,
-  'menu/controlled': Menu_Controlled,
-  'menu/icons': Menu_Icons,
-  'menu/item-group': Menu_ItemGroup,
-  'menu/nested-submenu': Menu_NestedSubmenu,
-  'menu/radio-items': Menu_RadioItems,
-  'menu/root-provider': Menu_RootProvider,
-  'menu/with-separator': Menu_WithSeparator,
-  'navigation-menu/basic': NavigationMenu_Basic,
-  'navigation-menu/controlled': NavigationMenu_Controlled,
-  'navigation-menu/icons': NavigationMenu_Icons,
-  'navigation-menu/root-provider': NavigationMenu_RootProvider,
-  'navigation-menu/viewport': NavigationMenu_Viewport,
-  'navigation-menu/with-indicator': NavigationMenu_WithIndicator,
-  'popover/anchor': Popover_Anchor,
-  'popover/arrow': Popover_Arrow,
-  'popover/basic': Popover_Basic,
-  'popover/controlled': Popover_Controlled,
-  'popover/default-open': Popover_DefaultOpen,
-  'popover/icons': Popover_Icons,
-  'popover/modal': Popover_Modal,
-  'popover/root-provider': Popover_RootProvider,
-  'qr-code/basic': QrCode_Basic,
-  'qr-code/controlled': QrCode_Controlled,
-  'qr-code/download': QrCode_Download,
-  'qr-code/overlay': QrCode_Overlay,
-  'qr-code/root-provider': QrCode_RootProvider,
-  'signature-pad/basic': SignaturePad_Basic,
-  'signature-pad/image-preview': SignaturePad_ImagePreview,
-  'signature-pad/root-provider': SignaturePad_RootProvider,
-  'tooltip/arrow': Tooltip_Arrow,
-  'tooltip/basic': Tooltip_Basic,
-  'tooltip/controlled': Tooltip_Controlled,
-  'tooltip/delay': Tooltip_Delay,
-  'tooltip/interactive': Tooltip_Interactive,
-  'tooltip/positioning': Tooltip_Positioning,
-  'tooltip/root-provider': Tooltip_RootProvider,
-  'tree-view/async-loading': TreeView_AsyncLoading,
-  'tree-view/basic': TreeView_Basic,
-  'tree-view/checkbox-tree': TreeView_CheckboxTree,
-  'tree-view/controlled-expanded': TreeView_ControlledExpanded,
-  'tree-view/controlled-selected': TreeView_ControlledSelected,
-  'tree-view/expand-collapse-all': TreeView_ExpandCollapseAll,
-  'tree-view/rename-node': TreeView_RenameNode,
-  'tree-view/root-provider': TreeView_RootProvider,
+const angularExampleModules: Record<string, AngularExampleEntry> = {
+  'collapsible/basic': { module: Collapsible_Basic, exportName: 'CollapsibleBasicExample' },
+  'collapsible/disabled': { module: Collapsible_Disabled, exportName: 'CollapsibleDisabledExample' },
+  'collapsible/icons': { module: Collapsible_Icons, exportName: 'CollapsibleIconsExample' },
+  'collapsible/lazy-mount': { module: Collapsible_LazyMount, exportName: 'CollapsibleLazyMountExample' },
+  'collapsible/nested': { module: Collapsible_Nested, exportName: 'CollapsibleNestedExample' },
+  'collapsible/partial-collapse': {
+    module: Collapsible_PartialCollapse,
+    exportName: 'CollapsiblePartialCollapseExample',
+  },
+  'collapsible/root-provider': { module: Collapsible_RootProvider, exportName: 'CollapsibleRootProviderExample' },
+  'date-input/basic': { module: DateInput_Basic, exportName: 'DateInputBasicExample' },
+  'date-input/controlled': { module: DateInput_Controlled, exportName: 'DateInputControlledExample' },
+  'date-input/range': { module: DateInput_Range, exportName: 'DateInputRangeExample' },
+  'date-input/root-provider': { module: DateInput_RootProvider, exportName: 'DateInputRootProviderExample' },
+  'dialog/alert-dialog': { module: Dialog_AlertDialog, exportName: 'DialogAlertDialogExample' },
+  'dialog/basic': { module: Dialog_Basic, exportName: 'DialogBasicExample' },
+  'dialog/controlled': { module: Dialog_Controlled, exportName: 'DialogControlledExample' },
+  'dialog/default-open': { module: Dialog_DefaultOpen, exportName: 'DialogDefaultOpenExample' },
+  'dialog/icons': { module: Dialog_Icons, exportName: 'DialogIconsExample' },
+  'dialog/non-modal': { module: Dialog_NonModal, exportName: 'DialogNonModalExample' },
+  'dialog/root-provider': { module: Dialog_RootProvider, exportName: 'DialogRootProviderExample' },
+  'drawer/basic': { module: Drawer_Basic, exportName: 'DrawerBasicExample' },
+  'drawer/controlled': { module: Drawer_Controlled, exportName: 'DrawerControlledExample' },
+  'drawer/default-open': { module: Drawer_DefaultOpen, exportName: 'DrawerDefaultOpenExample' },
+  'drawer/icons': { module: Drawer_Icons, exportName: 'DrawerIconsExample' },
+  'drawer/root-provider': { module: Drawer_RootProvider, exportName: 'DrawerRootProviderExample' },
+  'drawer/swipe-direction': { module: Drawer_SwipeDirection, exportName: 'DrawerSwipeDirectionExample' },
+  'drawer/with-title-description': {
+    module: Drawer_WithTitleDescription,
+    exportName: 'DrawerWithTitleDescriptionExample',
+  },
+  'hover-card/basic': { module: HoverCard_Basic, exportName: 'HoverCardBasicExample' },
+  'hover-card/controlled': { module: HoverCard_Controlled, exportName: 'HoverCardControlledExample' },
+  'hover-card/delay': { module: HoverCard_Delay, exportName: 'HoverCardDelayExample' },
+  'hover-card/multiple-triggers': {
+    module: HoverCard_MultipleTriggers,
+    exportName: 'HoverCardMultipleTriggersExample',
+  },
+  'hover-card/positioning': { module: HoverCard_Positioning, exportName: 'HoverCardPositioningExample' },
+  'hover-card/root-provider': { module: HoverCard_RootProvider, exportName: 'HoverCardRootProviderExample' },
+  'image-cropper/basic': { module: ImageCropper_Basic, exportName: 'ImageCropperBasicExample' },
+  'image-cropper/controlled': { module: ImageCropper_Controlled, exportName: 'ImageCropperControlledExample' },
+  'image-cropper/root-provider': { module: ImageCropper_RootProvider, exportName: 'ImageCropperRootProviderExample' },
+  'json-tree-view/basic': { module: JsonTreeView_Basic, exportName: 'JsonTreeViewBasicExample' },
+  'json-tree-view/data-types': { module: JsonTreeView_DataTypes, exportName: 'JsonTreeViewDataTypesExample' },
+  'json-tree-view/render-value': { module: JsonTreeView_RenderValue, exportName: 'JsonTreeViewRenderValueExample' },
+  'json-tree-view/root-provider': { module: JsonTreeView_RootProvider, exportName: 'JsonTreeViewRootProviderExample' },
+  'menu/basic': { module: Menu_Basic, exportName: 'MenuBasicExample' },
+  'menu/checkbox-items': { module: Menu_CheckboxItems, exportName: 'MenuCheckboxItemsExample' },
+  'menu/controlled-highlight': { module: Menu_ControlledHighlight, exportName: 'MenuControlledHighlightExample' },
+  'menu/controlled': { module: Menu_Controlled, exportName: 'MenuControlledExample' },
+  'menu/icons': { module: Menu_Icons, exportName: 'MenuIconsExample' },
+  'menu/item-group': { module: Menu_ItemGroup, exportName: 'MenuItemGroupExample' },
+  'menu/nested-submenu': { module: Menu_NestedSubmenu, exportName: 'MenuNestedSubmenuExample' },
+  'menu/radio-items': { module: Menu_RadioItems, exportName: 'MenuRadioItemsExample' },
+  'menu/root-provider': { module: Menu_RootProvider, exportName: 'MenuRootProviderExample' },
+  'menu/with-separator': { module: Menu_WithSeparator, exportName: 'MenuWithSeparatorExample' },
+  'navigation-menu/basic': { module: NavigationMenu_Basic, exportName: 'NavigationMenuBasicExample' },
+  'navigation-menu/controlled': { module: NavigationMenu_Controlled, exportName: 'NavigationMenuControlledExample' },
+  'navigation-menu/icons': { module: NavigationMenu_Icons, exportName: 'NavigationMenuIconsExample' },
+  'navigation-menu/root-provider': {
+    module: NavigationMenu_RootProvider,
+    exportName: 'NavigationMenuRootProviderExample',
+  },
+  'navigation-menu/viewport': { module: NavigationMenu_Viewport, exportName: 'NavigationMenuViewportExample' },
+  'navigation-menu/with-indicator': {
+    module: NavigationMenu_WithIndicator,
+    exportName: 'NavigationMenuWithIndicatorExample',
+  },
+  'popover/anchor': { module: Popover_Anchor, exportName: 'PopoverAnchorExample' },
+  'popover/arrow': { module: Popover_Arrow, exportName: 'PopoverArrowExample' },
+  'popover/basic': { module: Popover_Basic, exportName: 'PopoverBasicExample' },
+  'popover/controlled': { module: Popover_Controlled, exportName: 'PopoverControlledExample' },
+  'popover/default-open': { module: Popover_DefaultOpen, exportName: 'PopoverDefaultOpenExample' },
+  'popover/icons': { module: Popover_Icons, exportName: 'PopoverIconsExample' },
+  'popover/modal': { module: Popover_Modal, exportName: 'PopoverModalExample' },
+  'popover/root-provider': { module: Popover_RootProvider, exportName: 'PopoverRootProviderExample' },
+  'qr-code/basic': { module: QrCode_Basic, exportName: 'QrCodeBasicExample' },
+  'qr-code/controlled': { module: QrCode_Controlled, exportName: 'QrCodeControlledExample' },
+  'qr-code/download': { module: QrCode_Download, exportName: 'QrCodeDownloadExample' },
+  'qr-code/overlay': { module: QrCode_Overlay, exportName: 'QrCodeOverlayExample' },
+  'qr-code/root-provider': { module: QrCode_RootProvider, exportName: 'QrCodeRootProviderExample' },
+  'signature-pad/basic': { module: SignaturePad_Basic, exportName: 'SignaturePadBasicExample' },
+  'signature-pad/image-preview': { module: SignaturePad_ImagePreview, exportName: 'SignaturePadImagePreviewExample' },
+  'signature-pad/root-provider': { module: SignaturePad_RootProvider, exportName: 'SignaturePadRootProviderExample' },
+  'tooltip/arrow': { module: Tooltip_Arrow, exportName: 'TooltipArrowExample' },
+  'tooltip/basic': { module: Tooltip_Basic, exportName: 'TooltipBasicExample' },
+  'tooltip/controlled': { module: Tooltip_Controlled, exportName: 'TooltipControlledExample' },
+  'tooltip/delay': { module: Tooltip_Delay, exportName: 'TooltipDelayExample' },
+  'tooltip/interactive': { module: Tooltip_Interactive, exportName: 'TooltipInteractiveExample' },
+  'tooltip/positioning': { module: Tooltip_Positioning, exportName: 'TooltipPositioningExample' },
+  'tooltip/root-provider': { module: Tooltip_RootProvider, exportName: 'TooltipRootProviderExample' },
+  'tree-view/async-loading': { module: TreeView_AsyncLoading, exportName: 'TreeViewAsyncLoadingExample' },
+  'tree-view/basic': { module: TreeView_Basic, exportName: 'TreeViewBasicExample' },
+  'tree-view/checkbox-tree': { module: TreeView_CheckboxTree, exportName: 'TreeViewCheckboxTreeExample' },
+  'tree-view/controlled-expanded': {
+    module: TreeView_ControlledExpanded,
+    exportName: 'TreeViewControlledExpandedExample',
+  },
+  'tree-view/controlled-selected': {
+    module: TreeView_ControlledSelected,
+    exportName: 'TreeViewControlledSelectedExample',
+  },
+  'tree-view/expand-collapse-all': {
+    module: TreeView_ExpandCollapseAll,
+    exportName: 'TreeViewExpandCollapseAllExample',
+  },
+  'tree-view/rename-node': { module: TreeView_RenameNode, exportName: 'TreeViewRenameNodeExample' },
+  'tree-view/root-provider': { module: TreeView_RootProvider, exportName: 'TreeViewRootProviderExample' },
 }
 
 /**
- * Get the first Angular component export from a module
+ * Get the Angular component export from a module
  */
-function getComponentFromModule(mod: AngularExampleModule): unknown {
-  for (const key of Object.keys(mod)) {
-    const value = mod[key]
-    if (typeof value === 'function') {
-      return value
-    }
-  }
-  return undefined
+function getComponentFromModule(entry: AngularExampleEntry): unknown {
+  const value = entry.module[entry.exportName]
+  return typeof value === 'function' ? value : undefined
 }
 
 /**
  * Get an Angular example component by component name and example id
  */
 export function getAngularExample(component: string, example: string): unknown {
-  const mod = angularExampleModules[`${component}/${example}`]
-  if (!mod) return undefined
-  return getComponentFromModule(mod)
+  const entry = angularExampleModules[`${component}/${example}`]
+  if (!entry) return undefined
+  return getComponentFromModule(entry)
 }
 
 /**

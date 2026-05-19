@@ -11,6 +11,7 @@ export const signaturePadExampleStyles = `
   }
 
   [arkSignaturePadControl] {
+    position: relative;
     min-height: 12rem;
     border: 1px solid var(--demo-border, #d6d3d1);
     border-radius: 0.5rem;

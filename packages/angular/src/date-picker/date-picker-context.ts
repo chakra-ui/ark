@@ -1,4 +1,4 @@
-import { Directive, TemplateRef, ViewContainerRef, effect, inject } from '@angular/core'
+import { DestroyRef, Directive, TemplateRef, ViewContainerRef, effect, inject } from '@angular/core'
 import type { UseDatePickerReturn } from './use-date-picker'
 import { injectArkDatePickerContext } from './use-date-picker-context'
 
@@ -34,5 +34,7 @@ export class ArkDatePickerContext {
       this.datePicker.api()
       view.detectChanges()
     })
+
+    inject(DestroyRef).onDestroy(() => view.destroy())
   }
 }

@@ -14,14 +14,14 @@ const tsconfig = JSON.parse(readFileSync(join(packageRoot, 'tsconfig.json'), 'ut
 const viteConfigSource = readFileSync(join(packageRoot, 'vite.config.ts'), 'utf-8')
 
 const batch4Entrypoints = [
-  ['date-input', 'ArkDateInputRoot'],
-  ['date-picker', 'ArkDatePickerRoot'],
-  ['color-picker', 'ArkColorPickerRoot'],
-  ['qr-code', 'ArkQrCodeRoot'],
-  ['signature-pad', 'ArkSignaturePadRoot'],
-  ['image-cropper', 'ArkImageCropperRoot'],
-  ['tree-view', 'ArkTreeViewRoot'],
-  ['json-tree-view', 'ArkJsonTreeViewRoot'],
+  ['date-input', 'ArkDateInputRoot', () => import('./date-input/public-api')],
+  ['date-picker', 'ArkDatePickerRoot', () => import('./date-picker/public-api')],
+  ['color-picker', 'ArkColorPickerRoot', () => import('./color-picker/public-api')],
+  ['qr-code', 'ArkQrCodeRoot', () => import('./qr-code/public-api')],
+  ['signature-pad', 'ArkSignaturePadRoot', () => import('./signature-pad/public-api')],
+  ['image-cropper', 'ArkImageCropperRoot', () => import('./image-cropper/public-api')],
+  ['tree-view', 'ArkTreeViewRoot', () => import('./tree-view/public-api')],
+  ['json-tree-view', 'ArkJsonTreeViewRoot', () => import('./json-tree-view/public-api')],
 ] as const
 
 const batch4Sources = new Set(batch4Entrypoints.map(([name]) => normalize(`src/${name}/public-api.ts`)))
@@ -195,8 +195,11 @@ describe('package.json exports map', () => {
   })
 
   it('resolves materialized Batch 4 public APIs', async () => {
-    const mod = await import('./signature-pad/public-api')
-    expect(mod.ArkSignaturePadRoot).toBeDefined()
+    for (const [name, rootExport, load] of batch4Entrypoints) {
+      if (!existsSync(join(packageRoot, 'src', name, 'public-api.ts'))) continue
+      const mod = await load()
+      expect(mod[rootExport as keyof typeof mod]).toBeDefined()
+    }
   })
 
   it('keeps forms-isolation entrypoints aligned with package exports', () => {

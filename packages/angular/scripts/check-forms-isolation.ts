@@ -407,6 +407,11 @@ const scanFile = (
     return { failed: false, foundFormsImport: false }
   }
 
+  if (!existsSync(resolvedFile)) {
+    reporter.error(`forms isolation: source entry not found for ${name} (${toDisplayPath(resolvedFile)})`)
+    return { failed: true, foundFormsImport: false }
+  }
+
   visited.add(resolvedFile)
 
   const source = readFileSync(resolvedFile, 'utf-8')
@@ -458,7 +463,9 @@ export const scanEntryPoint = (
   let failed = sourceResult.failed
 
   if (entryPoint.formsAllowed && !sourceResult.foundFormsImport) {
-    reporter.error(`forms isolation: ${entryPoint.name} allows forms but does not import @angular/forms transitively.`)
+    reporter.error(
+      `forms isolation: ${entryPoint.name} allows forms but its source entry does not import @angular/forms transitively.`,
+    )
     failed = true
   }
 
@@ -488,7 +495,9 @@ export const runFormsIsolationCheck = (reporter: Reporter = defaultReporter) => 
     }
 
     if (formsAllowed && !sourceResult.foundFormsImport) {
-      reporter.error(`forms isolation: ${name} allows forms but does not import @angular/forms transitively.`)
+      reporter.error(
+        `forms isolation: ${name} allows forms but its source entry does not import @angular/forms transitively.`,
+      )
       failed = true
     }
 

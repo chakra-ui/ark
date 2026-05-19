@@ -39,7 +39,7 @@ export class ArkDatePickerMonthSelect implements AfterContentInit {
   }
 
   ngAfterContentInit(): void {
-    this.ownsOptions.set(this.elementRef.nativeElement.childNodes.length === 0)
+    this.ownsOptions.set(hasOnlyWhitespaceContent(this.elementRef.nativeElement))
   }
 
   private syncOptions(options: DatePickerCell[]): void {
@@ -56,4 +56,8 @@ export class ArkDatePickerMonthSelect implements AfterContentInit {
       return option
     })
   }
+}
+
+function hasOnlyWhitespaceContent(element: HTMLElement): boolean {
+  return element.firstElementChild === null && (element.textContent?.trim() ?? '') === ''
 }

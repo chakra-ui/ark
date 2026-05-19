@@ -17,6 +17,10 @@ const createFixture = () => {
     join(examplesRoot, 'date-picker', 'examples', '_template.ts'),
     'export class DatePickerTemplateExample {}\n',
   )
+  writeFileSync(
+    join(examplesRoot, 'date-picker', 'examples', 'range-selection.spec.ts'),
+    'export class DatePickerRangeSelectionSpecExample {}\n',
+  )
 
   mkdirSync(join(examplesRoot, 'color-picker', 'examples', 'swatches'), { recursive: true })
   writeFileSync(
@@ -38,9 +42,11 @@ describe('Angular example registry generator', () => {
         "import * as DatePicker_RangeSelection from '../../../packages/angular/src/date-picker/examples/range-selection'",
       ])
       expect(registry.entries).toEqual([
-        "  'color-picker/swatches/basic': ColorPickerSwatches_Basic",
-        "  'date-picker/range-selection': DatePicker_RangeSelection",
+        "  'color-picker/swatches/basic': { module: ColorPickerSwatches_Basic, exportName: 'ColorPickerSwatchesBasicExample' }",
+        "  'date-picker/range-selection': { module: DatePicker_RangeSelection, exportName: 'DatePickerRangeSelectionExample' }",
       ])
+      expect(registry.entries.some((entry) => entry.includes('_template'))).toBe(false)
+      expect(registry.entries.some((entry) => entry.includes('spec'))).toBe(false)
     } finally {
       rmSync(fixtureRoot, { recursive: true, force: true })
     }

@@ -12,21 +12,21 @@ type SvgNode = SVGElement & ChildNode
 export class ArkSignaturePadSegment {
   private readonly elementRef = inject<ElementRef<SVGSVGElement>>(ElementRef)
   private readonly renderer = inject(Renderer2)
+  private readonly context = injectArkSignaturePadContext()
   private readonly managedNodes: SvgNode[] = []
 
   constructor() {
-    const context = injectArkSignaturePadContext()
     const destroyRef = inject(DestroyRef)
 
     applyArkProps({
       elementRef: this.elementRef as unknown as ElementRef<HTMLElement>,
       renderer: this.renderer,
       destroyRef,
-      props: () => context.api().getSegmentProps(),
+      props: () => this.context.api().getSegmentProps(),
     })
 
     effect(() => {
-      const api = context.api()
+      const api = this.context.api()
       const paths = [...api.paths]
       if (api.currentPath) paths.push(api.currentPath)
       this.renderPaths(paths.map((path) => api.getSegmentPathProps({ path }) as Record<string, unknown>))
@@ -39,7 +39,7 @@ export class ArkSignaturePadSegment {
     this.clearManagedNodes()
 
     const title = this.renderer.createElement('title', 'svg') as SVGTitleElement
-    this.renderer.setProperty(title, 'textContent', 'Signature')
+    this.renderer.setProperty(title, 'textContent', this.resolveTitleText())
     this.appendManagedNode(title)
 
     for (const props of pathProps) {
@@ -53,18 +53,12 @@ export class ArkSignaturePadSegment {
 
   private applyPathProp(path: SVGPathElement, key: string, value: unknown): void {
     if (value == null || value === false) return
-    if (
-      key === 'd' ||
-      key === 'id' ||
-      key === 'role' ||
-      key === 'tabindex' ||
-      key.startsWith('aria-') ||
-      key.startsWith('data-')
-    ) {
-      this.renderer.setAttribute(path, key, String(value))
-      return
-    }
-    this.renderer.setProperty(path, key, value)
+    this.renderer.setAttribute(path, toSvgAttributeName(key), String(value))
+  }
+
+  private resolveTitleText(): string {
+    const api = this.context.api() as { translations?: { label?: string } }
+    return api.translations?.label ?? 'Signature'
   }
 
   private appendManagedNode(node: SvgNode): void {
@@ -78,4 +72,8 @@ export class ArkSignaturePadSegment {
     }
     this.managedNodes.length = 0
   }
+}
+
+function toSvgAttributeName(key: string): string {
+  return key.replace(/[A-Z]/g, (char) => `-${char.toLowerCase()}`)
 }
