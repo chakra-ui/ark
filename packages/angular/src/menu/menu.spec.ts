@@ -51,12 +51,16 @@ import {
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { MenuBasicExample } from './examples/basic'
 import { MenuCheckboxItemsExample } from './examples/checkbox-items'
+import { MenuContextExample } from './examples/context'
 import { MenuControlledExample } from './examples/controlled'
 import { MenuControlledHighlightExample } from './examples/controlled-highlight'
+import { MenuItemContextExample } from './examples/item-context'
 import { MenuItemGroupExample } from './examples/item-group'
+import { MenuMultipleTriggersExample } from './examples/multiple-triggers'
 import { MenuNestedSubmenuExample } from './examples/nested-submenu'
 import { MenuRadioItemsExample } from './examples/radio-items'
 import { MenuRootProviderExample } from './examples/root-provider'
+import { MenuSelectEventExample } from './examples/select-event'
 import { MenuWithSeparatorExample } from './examples/with-separator'
 
 type MenuPublicTypeSmoke = [
@@ -380,6 +384,124 @@ describe('@ark-ui/angular/menu', () => {
     fixture.destroy()
   })
 
+  it('item-level (select) emits for the selected item only', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkMenuRoot, ArkMenuPositioner, ArkMenuContent, ArkMenuItem, ArkPortalComponent],
+      template: `
+        <div arkMenu defaultOpen #root="arkMenu">
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkMenuPositioner>
+              <div arkMenuContent>
+                <div arkMenuItem value="alpha" (select)="selected.push('alpha')">Alpha</div>
+                <div arkMenuItem value="beta" (select)="selected.push('beta')">Beta</div>
+              </div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {
+      readonly selected: string[] = []
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+    await flushOpen(fixture)
+
+    const root = fixture.debugElement.query(By.directive(ArkMenuRoot)).injector.get(ArkMenuRoot)
+    root.api().setHighlightedValue('alpha')
+    await flushOpen(fixture)
+
+    const alphaItem = fixture.debugElement
+      .queryAll(By.directive(ArkMenuItem))
+      .find((el) => (el.nativeElement as HTMLElement).getAttribute('data-value') === 'alpha')
+      ?.nativeElement as HTMLElement
+
+    alphaItem.click()
+    await flushOpen(fixture)
+
+    expect(fixture.componentInstance.selected).toEqual(['alpha'])
+
+    fixture.destroy()
+  })
+
+  it('arkMenuTrigger value updates triggerValue for multiple trigger menus', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkMenuRoot, ArkMenuTrigger, ArkMenuPositioner, ArkMenuContent, ArkMenuItem, ArkPortalComponent],
+      template: `
+        <div arkMenu #root="arkMenu" (triggerValueChange)="triggerValues.push($event)">
+          <button type="button" arkMenuTrigger value="first">First</button>
+          <button type="button" arkMenuTrigger value="second">Second</button>
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkMenuPositioner>
+              <div arkMenuContent>
+                <div arkMenuItem value="reply">Reply</div>
+              </div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {
+      readonly triggerValues: Array<string | null | undefined> = []
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+    await flushOpen(fixture)
+
+    const root = fixture.debugElement.query(By.directive(ArkMenuRoot)).injector.get(ArkMenuRoot)
+    const secondTrigger = fixture.debugElement.queryAll(By.directive(ArkMenuTrigger))[1]
+      .nativeElement as HTMLButtonElement
+
+    secondTrigger.click()
+    await flushOpen(fixture)
+
+    expect(root.api().triggerValue).toBe('second')
+    expect(fixture.componentInstance.triggerValues).toContain('second')
+
+    fixture.destroy()
+  })
+
+  it('arkMenuItemText can derive item props from its parent item context', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkMenuRoot, ArkMenuPositioner, ArkMenuContent, ArkMenuItem, ArkMenuItemText, ArkPortalComponent],
+      template: `
+        <div arkMenu defaultOpen #root="arkMenu">
+          <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+            <div arkMenuPositioner>
+              <div arkMenuContent>
+                <div arkMenuItem value="profile">
+                  <span arkMenuItemText>Profile Settings</span>
+                </div>
+              </div>
+            </div>
+          </ark-portal>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+    await flushOpen(fixture)
+
+    const textEl = fixture.debugElement.query(By.directive(ArkMenuItemText)).nativeElement as HTMLElement
+    expect(textEl.getAttribute('data-scope')).toBe('menu')
+    expect(textEl.getAttribute('data-part')).toBe('item-text')
+
+    fixture.destroy()
+  })
+
   it('arrow, arrow-tip, indicator, and separator parts emit menu data-scope/data-part attributes', async () => {
     @Component({
       standalone: true,
@@ -578,6 +700,37 @@ describe('@ark-ui/angular/menu', () => {
   it('MenuControlledHighlightExample mounts without throwing', () => {
     TestBed.configureTestingModule({ imports: [MenuControlledHighlightExample] })
     const fixture = TestBed.createComponent(MenuControlledHighlightExample)
+    fixture.detectChanges()
+    fixture.destroy()
+  })
+
+  it('MenuContextExample mounts without throwing', () => {
+    TestBed.configureTestingModule({ imports: [MenuContextExample] })
+    const fixture = TestBed.createComponent(MenuContextExample)
+    fixture.detectChanges()
+    fixture.destroy()
+  })
+
+  it('MenuItemContextExample mounts without throwing', () => {
+    TestBed.configureTestingModule({ imports: [MenuItemContextExample] })
+    const fixture = TestBed.createComponent(MenuItemContextExample)
+    fixture.detectChanges()
+    fixture.destroy()
+  })
+
+  it('MenuMultipleTriggersExample renders one trigger per message', () => {
+    TestBed.configureTestingModule({ imports: [MenuMultipleTriggersExample] })
+    const fixture = TestBed.createComponent(MenuMultipleTriggersExample)
+    fixture.detectChanges()
+
+    expect(fixture.debugElement.queryAll(By.directive(ArkMenuTrigger)).length).toBe(3)
+
+    fixture.destroy()
+  })
+
+  it('MenuSelectEventExample mounts without throwing', () => {
+    TestBed.configureTestingModule({ imports: [MenuSelectEventExample] })
+    const fixture = TestBed.createComponent(MenuSelectEventExample)
     fixture.detectChanges()
     fixture.destroy()
   })
