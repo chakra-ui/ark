@@ -263,6 +263,106 @@ describe('@ark-ui/angular/pin-input', () => {
     fixture.destroy()
   })
 
+  it('emits valueComplete details when all slots are filled', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkPinInputRoot, ArkPinInputControl, ArkPinInputInput],
+      template: `
+        <div arkPinInputRoot (valueComplete)="completed.push($event)">
+          <div arkPinInputControl>
+            <input arkPinInputInput [index]="0" />
+            <input arkPinInputInput [index]="1" />
+            <input arkPinInputInput [index]="2" />
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly completed: Array<{ value: string[]; valueAsString: string }> = []
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+
+    const inputs = fixture.debugElement
+      .queryAll(By.directive(ArkPinInputInput))
+      .map((d) => d.nativeElement as HTMLInputElement)
+
+    await typeChar(inputs[0], '1')
+    await typeChar(inputs[1], '2')
+    await typeChar(inputs[2], '3')
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(fixture.componentInstance.completed).toEqual([{ value: ['1', '2', '3'], valueAsString: '123' }])
+
+    fixture.destroy()
+  })
+
+  it('applies otp, placeholder, and mask props to input slots', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkPinInputRoot, ArkPinInputControl, ArkPinInputInput],
+      template: `
+        <div arkPinInputRoot otp placeholder="*" mask>
+          <div arkPinInputControl>
+            <input arkPinInputInput [index]="0" />
+          </div>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+
+    const input = fixture.debugElement.query(By.directive(ArkPinInputInput)).nativeElement as HTMLInputElement
+    expect(input.autocomplete).toBe('one-time-code')
+    expect(input.placeholder).toBe('*')
+    expect(input.type).toBe('password')
+
+    fixture.destroy()
+  })
+
+  it('root-provider registers child input count and exposes focus api', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkPinInputRootProvider, ArkPinInputControl, ArkPinInputInput],
+      template: `
+        <div arkPinInputRootProvider [value]="pinInput">
+          <div arkPinInputControl>
+            <input arkPinInputInput [index]="0" />
+            <input arkPinInputInput [index]="1" />
+            <input arkPinInputInput [index]="2" />
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly pinInput = usePinInput({ context: () => ({}) })
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    const provider = fixture.debugElement
+      .query(By.directive(ArkPinInputRootProvider))
+      .injector.get(ArkPinInputRootProvider)
+    const inputProps = provider.api().getInputProps({ index: 2 }) as { 'aria-label'?: string }
+    expect(inputProps['aria-label']).toBe('pin code 3 of 3')
+    expect(typeof provider.api().focus).toBe('function')
+
+    fixture.destroy()
+  })
+
   it('setDisabledState(true) disables the inputs through the same path as [disabled]', () => {
     @Component({
       standalone: true,
