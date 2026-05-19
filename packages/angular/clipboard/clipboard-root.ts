@@ -8,6 +8,7 @@ import {
   type ModelSignal,
   type OutputEmitterRef,
   type Signal,
+  computed,
   forwardRef,
   inject,
   input,
@@ -44,12 +45,13 @@ export class ArkClipboardRoot implements UseClipboardReturn {
   readonly timeout: InputSignal<number | undefined> = input<number | undefined>(undefined)
   /** Emits when the copy status changes. */
   readonly statusChange: OutputEmitterRef<ClipboardCopyStatusDetails> = output<ClipboardCopyStatusDetails>()
+  private readonly stableIds = computed(() => this.stabilizeIds(this.ids()))
   private prevIds: Partial<ClipboardElementIds> | undefined = undefined
 
   private readonly machine = useClipboard({
     context: () => ({
       id: this.id(),
-      ids: this.stabilizeIds(this.ids()),
+      ids: this.stableIds(),
       translations: this.translations(),
       value: this.value(),
       defaultValue: this.defaultValue(),

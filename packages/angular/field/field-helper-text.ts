@@ -1,4 +1,4 @@
-import { DestroyRef, Directive, ElementRef, Renderer2, effect, inject, untracked } from '@angular/core'
+import { DestroyRef, Directive, ElementRef, Renderer2, effect, inject } from '@angular/core'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
 import { injectArkFieldContext } from './use-field-context'
 
@@ -12,8 +12,7 @@ export class ArkFieldHelperText {
     const context = injectArkFieldContext()
 
     effect((onCleanup) => {
-      const unregister = untracked(() => context.registerHelperText())
-      onCleanup(() => untracked(unregister))
+      onCleanup(context.registerHelperText())
     })
 
     applyArkProps({

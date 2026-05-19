@@ -152,7 +152,7 @@ export function useField(options: UseFieldOptions): UseFieldReturn {
   const getErrorTextProps = (): ArkProps => ({
     ...fieldParts.errorText.attrs,
     id: ids().errorText,
-    'aria-live': invalid() ? 'polite' : undefined,
+    'aria-live': 'polite',
     'data-disabled': dataAttr(disabled()),
     'data-invalid': dataAttr(invalid()),
   })
@@ -173,8 +173,8 @@ export function useField(options: UseFieldOptions): UseFieldReturn {
     hasErrorText: hasErrorTextSignal,
     hasHelperText: hasHelperTextSignal,
     ariaDescribedby,
-    setHasErrorText: (value: boolean) => errorTextCount.set(value ? 1 : 0),
-    setHasHelperText: (value: boolean) => helperTextCount.set(value ? 1 : 0),
+    setHasErrorText: (value: boolean) => errorTextCount.update((count) => Math.max(0, count + (value ? 1 : -1))),
+    setHasHelperText: (value: boolean) => helperTextCount.update((count) => Math.max(0, count + (value ? 1 : -1))),
     registerErrorText: () => {
       errorTextCount.update((count) => count + 1)
       return () => errorTextCount.update((count) => Math.max(0, count - 1))

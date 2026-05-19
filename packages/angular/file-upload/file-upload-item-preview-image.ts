@@ -28,7 +28,9 @@ export class ArkFileUploadItemPreviewImage {
 
     effect((onCleanup) => {
       const file = item.file()
-      const revoke = untracked(() => context.api().createFileUrl(file, (url) => this.urlSignal.set(url)))
+      const revoke = untracked(() =>
+        context.api().createFileUrl(file, (url) => untracked(() => this.urlSignal.set(url))),
+      )
       onCleanup(() => {
         this.urlSignal.set(undefined)
         revoke()
@@ -40,8 +42,9 @@ export class ArkFileUploadItemPreviewImage {
       renderer: inject(Renderer2),
       destroyRef: inject(DestroyRef),
       props: () => {
-        const url = this.urlSignal()
-        return url ? context.api().getItemPreviewImageProps({ file: item.file(), type: item.type(), url }) : {}
+        const url = this.urlSignal() ?? ''
+        const props = context.api().getItemPreviewImageProps({ file: item.file(), type: item.type(), url })
+        return url ? props : { ...props, hidden: true }
       },
     })
   }
