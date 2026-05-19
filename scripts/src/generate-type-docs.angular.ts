@@ -466,6 +466,8 @@ function isAngularComponentDir(componentRoot: string, component: string): boolea
   return fs.existsSync(path.join(componentRoot, component, `${component}-root.ts`))
 }
 
+const excludedAngularSrcTypeDocDirs = new Set(['_zag', 'internal', 'providers'])
+
 export async function listAngularComponents(rootDir: string): Promise<string[]> {
   const angularRoot = path.join(rootDir, 'packages', 'angular')
   const components = new Set<string>()
@@ -484,7 +486,7 @@ export async function listAngularComponents(rootDir: string): Promise<string[]> 
   const nestedPublicApis = fs.existsSync(nestedRoot) ? await globby('*/public-api.ts', { cwd: nestedRoot }) : []
   for (const publicApi of nestedPublicApis) {
     const component = publicApi.split('/')[0]
-    if (isAngularComponentDir(nestedRoot, component)) {
+    if (!excludedAngularSrcTypeDocDirs.has(component)) {
       components.add(component)
     }
   }
