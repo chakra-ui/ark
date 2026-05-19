@@ -38,5 +38,5 @@
 - [x] Manual/visual checks: Re-diffed each Angular example against its React reference. Recorded remaining demo deltas (Dropzone/RootProvider richness, Lucide-vs-text placeholders) as deferred `No change` rows above.
 
 ## Commit
-- Hash: recorded in final status
+- Hash: 9b1025a9b
 - Message: `fix(angular): align file-upload with react parity`
