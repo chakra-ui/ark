@@ -42,5 +42,5 @@
 - [ ] Manual/visual checks: deferred. The added examples are exercised by Angular component mount tests covering directive wiring, but pixel-level Storybook comparison against the React reference is not part of this re-audit pass.
 
 ## Commit
-- Hash: see final status for the immutable commit hash.
+- Hash: `bf27092e3`
 - Message: `fix(angular): align menu with react parity`
