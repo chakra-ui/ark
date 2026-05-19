@@ -54,5 +54,5 @@
 
 ## Commit
 
-- Hash: Pending.
+- Hash: `6398061652886b0d9ae123b43aec5b042e03caa3`
 - Message: `fix(angular): align image-cropper with react parity`
