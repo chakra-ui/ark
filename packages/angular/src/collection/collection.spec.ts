@@ -40,7 +40,7 @@ type AsyncListContext<T, C> = {
 const getAsyncListAction = (name: string) => {
   const action = createAsyncListMachine.implementations?.actions?.[name]
   expect(action).toBeDefined()
-  return action as (params: Record<string, unknown>) => void
+  return action as unknown as (params: Record<string, unknown>) => void
 }
 
 const createAsyncListParams = <T, C>(
@@ -63,7 +63,11 @@ const createAsyncListParams = <T, C>(
           value: AsyncListContext<T, C>[K] | ((previous: AsyncListContext<T, C>[K]) => AsyncListContext<T, C>[K]),
         ) => {
           const previous = context[key]
-          context[key] = typeof value === 'function' ? value(previous) : value
+          const next =
+            typeof value === 'function'
+              ? (value as (previous: AsyncListContext<T, C>[K]) => AsyncListContext<T, C>[K])(previous)
+              : value
+          context[key] = next
         },
       },
       event,
