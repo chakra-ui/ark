@@ -35,6 +35,7 @@ import {
   type UseTabsReturn,
 } from '@ark-ui/angular/tabs'
 import { TabsBasicExample } from './examples/basic'
+import { TabsLinksExample } from './examples/links'
 import { TabsRootProviderExample } from './examples/root-provider'
 
 type TabsPublicTypeSmoke = [
@@ -250,6 +251,7 @@ describe('@ark-ui/angular/tabs', () => {
     fixture.detectChanges()
     await flushTabs(fixture)
 
+    const root = fixture.debugElement.query(By.directive(ArkTabsRoot)).injector.get(ArkTabsRoot)
     const rootEl = fixture.debugElement.query(By.directive(ArkTabsRoot)).nativeElement as HTMLElement
     const listEl = fixture.debugElement.query(By.directive(ArkTabsList)).nativeElement as HTMLElement
     const [accountTrigger] = triggers(fixture)
@@ -258,6 +260,51 @@ describe('@ark-ui/angular/tabs', () => {
     expect(listEl.getAttribute('aria-orientation')).toBe('vertical')
     expect(listEl.getAttribute('data-orientation')).toBe('vertical')
     expect(accountTrigger.getAttribute('data-orientation')).toBe('vertical')
+
+    accountTrigger.focus()
+    await flushTabs(fixture)
+    keydown(listEl, 'ArrowDown')
+    await flushTabs(fixture)
+
+    expect(root.api().focusedValue).toBe('password')
+
+    fixture.destroy()
+  })
+
+  it('does not loop focus when loopFocus is false', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkTabsRoot, ArkTabsList, ArkTabsTrigger, ArkTabsContent],
+      template: `
+        <div arkTabs [loopFocus]="false">
+          <div arkTabsList>
+            <button type="button" arkTabsTrigger value="account">Account</button>
+            <button type="button" arkTabsTrigger value="password">Password</button>
+          </div>
+          <div arkTabsContent value="account">Account content</div>
+          <div arkTabsContent value="password">Password content</div>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+    await flushTabs(fixture)
+
+    const root = fixture.debugElement.query(By.directive(ArkTabsRoot)).injector.get(ArkTabsRoot)
+    const listEl = fixture.debugElement.query(By.directive(ArkTabsList)).nativeElement as HTMLElement
+    const [, passwordTrigger] = triggers(fixture)
+
+    passwordTrigger.click()
+    await flushTabs(fixture)
+    expect(root.api().focusedValue).toBe('password')
+
+    keydown(listEl, 'ArrowRight')
+    await flushTabs(fixture)
+    expect(root.api().focusedValue).toBe('password')
 
     fixture.destroy()
   })
@@ -410,6 +457,90 @@ describe('@ark-ui/angular/tabs', () => {
     fixture.destroy()
   })
 
+  it('lazyMount keeps inactive content unmounted until selected', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkTabsRoot, ArkTabsList, ArkTabsTrigger, ArkTabsContent],
+      template: `
+        <div arkTabs lazyMount defaultValue="account" #tabs="arkTabs">
+          <div arkTabsList>
+            <button type="button" arkTabsTrigger value="account">Account</button>
+            <button type="button" arkTabsTrigger value="password">Password</button>
+          </div>
+          @if (!tabs.isContentUnmounted('account')) {
+            <div arkTabsContent value="account">Account content</div>
+          }
+          @if (!tabs.isContentUnmounted('password')) {
+            <div arkTabsContent value="password">Password content</div>
+          }
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flushTabs(fixture)
+
+    const root = fixture.debugElement.query(By.directive(ArkTabsRoot)).injector.get(ArkTabsRoot)
+    expect(root.isContentUnmounted('account')).toBe(false)
+    expect(root.isContentUnmounted('password')).toBe(true)
+    expect(contents(fixture).map((content) => content.textContent?.trim())).toEqual(['Account content'])
+
+    const [, passwordTrigger] = triggers(fixture)
+    passwordTrigger.click()
+    await flushTabs(fixture)
+
+    expect(root.isContentUnmounted('account')).toBe(false)
+    expect(root.isContentUnmounted('password')).toBe(false)
+    expect(contents(fixture).map((content) => content.textContent?.trim())).toEqual([
+      'Account content',
+      'Password content',
+    ])
+
+    fixture.destroy()
+  })
+
+  it('unmountOnExit removes previously mounted inactive content', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkTabsRoot, ArkTabsList, ArkTabsTrigger, ArkTabsContent],
+      template: `
+        <div arkTabs lazyMount unmountOnExit defaultValue="account" #tabs="arkTabs">
+          <div arkTabsList>
+            <button type="button" arkTabsTrigger value="account">Account</button>
+            <button type="button" arkTabsTrigger value="password">Password</button>
+          </div>
+          @if (!tabs.isContentUnmounted('account')) {
+            <div arkTabsContent value="account">Account content</div>
+          }
+          @if (!tabs.isContentUnmounted('password')) {
+            <div arkTabsContent value="password">Password content</div>
+          }
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+    await flushTabs(fixture)
+
+    const root = fixture.debugElement.query(By.directive(ArkTabsRoot)).injector.get(ArkTabsRoot)
+    const [, passwordTrigger] = triggers(fixture)
+
+    passwordTrigger.click()
+    await flushTabs(fixture)
+
+    expect(root.isContentUnmounted('account')).toBe(true)
+    expect(root.isContentUnmounted('password')).toBe(false)
+    expect(contents(fixture).map((content) => content.textContent?.trim())).toEqual(['Password content'])
+
+    fixture.destroy()
+  })
+
   it('public-api source does not import @angular/forms', () => {
     const source = readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'public-api.ts'), 'utf-8')
     expect(source).not.toMatch(/@angular\/forms/)
@@ -438,6 +569,21 @@ describe('@ark-ui/angular/tabs', () => {
     const rootEl = fixture.debugElement.query(By.directive(ArkTabsRootProvider)).nativeElement as HTMLElement
     expect(rootEl.getAttribute('data-scope')).toBe('tabs')
     expect(rootEl.getAttribute('data-part')).toBe('root')
+
+    fixture.destroy()
+  })
+
+  it('TabsLinksExample renders anchor triggers with tab semantics', async () => {
+    TestBed.configureTestingModule({ imports: [TabsLinksExample] })
+    const fixture = TestBed.createComponent(TabsLinksExample)
+    fixture.detectChanges()
+    await flushTabs(fixture)
+
+    const [accountTrigger] = triggers(fixture)
+    expect(accountTrigger.tagName).toBe('A')
+    expect(accountTrigger.getAttribute('href')).toBe('#account')
+    expect(accountTrigger.getAttribute('role')).toBe('tab')
+    expect(accountTrigger.hasAttribute('data-selected')).toBe(true)
 
     fixture.destroy()
   })

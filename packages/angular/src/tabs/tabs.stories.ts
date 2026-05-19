@@ -4,6 +4,8 @@ import { TabsBasicExample } from './examples/basic'
 import { TabsControlledExample } from './examples/controlled'
 import { TabsDisabledTabExample } from './examples/disabled-tab'
 import { TabsIndicatorExample } from './examples/indicator'
+import { TabsLazyMountExample } from './examples/lazy-mount'
+import { TabsLinksExample } from './examples/links'
 import { TabsManualActivationExample } from './examples/manual-activation'
 import { TabsRootProviderExample } from './examples/root-provider'
 import { TabsVerticalExample } from './examples/vertical'
@@ -32,6 +34,16 @@ export const DisabledTab: StoryObj = {
 export const Indicator: StoryObj = {
   decorators: [moduleMetadata({ imports: [TabsIndicatorExample] })],
   render: () => ({ template: '<tabs-indicator-example />' }),
+}
+
+export const LazyMount: StoryObj = {
+  decorators: [moduleMetadata({ imports: [TabsLazyMountExample] })],
+  render: () => ({ template: '<tabs-lazy-mount-example />' }),
+}
+
+export const Links: StoryObj = {
+  decorators: [moduleMetadata({ imports: [TabsLinksExample] })],
+  render: () => ({ template: '<tabs-links-example />' }),
 }
 
 export const ManualActivation: StoryObj = {

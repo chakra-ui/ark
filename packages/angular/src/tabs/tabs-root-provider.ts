@@ -38,6 +38,7 @@ export class ArkTabsRootProvider implements UseTabsReturn {
   readonly value: InputSignal<UseTabsReturn> = input.required<UseTabsReturn>()
   readonly state: Signal<tabs.Service['state']> = computed(() => this.value().state())
   readonly api: Signal<tabs.Api> = computed(() => this.value().api())
+  readonly mountedValues: Signal<ReadonlySet<string>> = computed(() => this.value().mountedValues())
   readonly send: tabs.Service['send'] = (event) => this.value().send(event)
 
   get service(): tabs.Service {
@@ -63,5 +64,9 @@ export class ArkTabsRootProvider implements UseTabsReturn {
   /** @internal Exposed for tabs part directives to consume via ARK_TABS_CONTEXT_CARRIER. */
   getContextCarrier(): ArkContextCarrier<ArkTabsRootProvider> {
     return this.arkContextCarrier
+  }
+
+  isContentUnmounted(value: string): boolean {
+    return this.value().isContentUnmounted(value)
   }
 }
