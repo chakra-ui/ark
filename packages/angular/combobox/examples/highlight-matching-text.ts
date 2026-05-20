@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
+import { ArkHighlightComponent } from '@ark-ui/angular/highlight'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { createListCollection, type ListCollection } from '@ark-ui/angular/collection'
 import {
@@ -7,7 +8,6 @@ import {
   ArkComboboxControl,
   ArkComboboxInput,
   ArkComboboxItem,
-  ArkComboboxItemIndicator,
   ArkComboboxItemText,
   ArkComboboxLabel,
   ArkComboboxPositioner,
@@ -17,25 +17,26 @@ import {
 } from '@ark-ui/angular/combobox'
 import { comboboxExampleStyles } from '../combobox-example-styles'
 
-interface Fruit {
+interface Assignee {
   label: string
   value: string
 }
 
-const initialItems: Fruit[] = [
-  { label: 'Apple', value: 'apple' },
-  { label: 'Banana', value: 'banana' },
-  { label: 'Orange', value: 'orange' },
-  { label: 'Mango', value: 'mango' },
-  { label: 'Pineapple', value: 'pineapple' },
-  { label: 'Strawberry', value: 'strawberry' },
+const initialItems: Assignee[] = [
+  { label: 'John Smith', value: 'john-smith' },
+  { label: 'Jane Doe', value: 'jane-doe' },
+  { label: 'Bob Johnson', value: 'bob-johnson' },
+  { label: 'Alice Williams', value: 'alice-williams' },
+  { label: 'Charlie Brown', value: 'charlie-brown' },
+  { label: 'Diana Ross', value: 'diana-ross' },
 ]
 
 @Component({
-  selector: 'combobox-basic-example',
+  selector: 'combobox-highlight-matching-text-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    ArkHighlightComponent,
     ArkPortalComponent,
     ArkComboboxRoot,
     ArkComboboxLabel,
@@ -47,7 +48,6 @@ const initialItems: Fruit[] = [
     ArkComboboxContent,
     ArkComboboxItem,
     ArkComboboxItemText,
-    ArkComboboxItemIndicator,
   ],
   template: `
     <div
@@ -56,9 +56,9 @@ const initialItems: Fruit[] = [
       [collection]="collection()"
       (inputValueChange)="onInputValueChange($event)"
     >
-      <span arkComboboxLabel>Favorite Fruit</span>
+      <span arkComboboxLabel>Assignee</span>
       <div arkComboboxControl>
-        <input arkComboboxInput placeholder="e.g. Apple" />
+        <input arkComboboxInput placeholder="e.g. John Smith" />
         <button arkComboboxClearTrigger>×</button>
         <button arkComboboxTrigger>▾</button>
       </div>
@@ -67,8 +67,9 @@ const initialItems: Fruit[] = [
           <div arkComboboxContent>
             @for (item of collection().items; track item.value) {
               <div arkComboboxItem [item]="item">
-                <span arkComboboxItemText>{{ item.label }}</span>
-                <span arkComboboxItemIndicator>✓</span>
+                <span arkComboboxItemText>
+                  <ark-highlight [text]="item.label" [query]="root.api().inputValue" ignoreCase />
+                </span>
               </div>
             }
           </div>
@@ -78,12 +79,12 @@ const initialItems: Fruit[] = [
   `,
   styles: [comboboxExampleStyles],
 })
-export class ComboboxBasicExample {
-  readonly collection = signal<ListCollection<Fruit>>(createListCollection<Fruit>({ items: initialItems }))
+export class ComboboxHighlightMatchingTextExample {
+  readonly collection = signal<ListCollection<Assignee>>(createListCollection<Assignee>({ items: initialItems }))
 
   onInputValueChange(details: ComboboxInputValueChangeDetails): void {
     const query = details.inputValue.toLowerCase()
     const filtered = initialItems.filter((item) => item.label.toLowerCase().includes(query))
-    this.collection.set(createListCollection<Fruit>({ items: filtered }))
+    this.collection.set(createListCollection<Assignee>({ items: filtered }))
   }
 }
