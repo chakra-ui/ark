@@ -53,7 +53,7 @@ interface Framework {
       <span arkSelectLabel>Framework</span>
       <div arkSelectControl>
         <button arkSelectTrigger>
-          <span arkSelectValueText>Select</span>
+          <span arkSelectValueText placeholder="Select"></span>
         </button>
         <div class="select-indicators">
           <button arkSelectClearTrigger>×</button>

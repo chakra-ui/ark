@@ -47,7 +47,7 @@ const loadData = () =>
       <span arkSelectLabel>Framework</span>
       <div arkSelectControl>
         <button arkSelectTrigger>
-          <span arkSelectValueText>Select</span>
+          <span arkSelectValueText placeholder="Select"></span>
           <span arkSelectIndicator>▾</span>
         </button>
       </div>
