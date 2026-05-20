@@ -11,6 +11,7 @@ import {
   ArkFloatingPanelStageTrigger,
   ArkFloatingPanelTitle,
 } from '../public-api'
+import { floatingPanelExampleStyles } from '../floating-panel-example-styles'
 import {
   FloatingPanelArrowDownLeftIcon,
   FloatingPanelGripVerticalIcon,
@@ -75,6 +76,7 @@ import {
       </div>
     </div>
   `,
+  styles: [floatingPanelExampleStyles],
 })
 export class FloatingPanelDemoPanel {
   readonly axes = ['n', 'e', 'w', 's', 'ne', 'se', 'sw', 'nw'] as const

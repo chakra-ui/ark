@@ -44,19 +44,24 @@ import { childIndexPath, fileTreeCollection, type FileTreeNode } from './_tree-d
   ],
   template: `
     <output>selected: {{ treeView.api().selectedValue.join(', ') || 'none' }}</output>
-    <div arkTreeViewRootProvider [value]="treeView">
+    <div arkTreeViewRootProvider [value]="treeView" #treeViewProvider="arkTreeViewRootProvider">
       <h3 arkTreeViewLabel>Root Provider Tree</h3>
       <div arkTreeViewTree>
         @for (node of collection.rootNode.children ?? []; track node.id; let index = $index) {
           <ng-container
             [ngTemplateOutlet]="nodeTemplate"
-            [ngTemplateOutletContext]="{ $implicit: node, indexPath: [index] }"
+            [ngTemplateOutletContext]="{
+              $implicit: node,
+              indexPath: [index],
+              treeViewInjector: treeViewProvider.getContextCarrier().elementInjector,
+            }"
+            [ngTemplateOutletInjector]="treeViewProvider.getContextCarrier().elementInjector"
           />
         }
       </div>
     </div>
 
-    <ng-template #nodeTemplate let-node let-indexPath="indexPath">
+    <ng-template #nodeTemplate let-node let-indexPath="indexPath" let-treeViewInjector="treeViewInjector">
       <ng-container
         arkTreeViewNodeProvider
         [node]="node"
@@ -84,7 +89,9 @@ import { childIndexPath, fileTreeCollection, type FileTreeNode } from './_tree-d
                   [ngTemplateOutletContext]="{
                     $implicit: child,
                     indexPath: childIndexPath(indexPath, childIndex),
+                    treeViewInjector,
                   }"
+                  [ngTemplateOutletInjector]="treeViewInjector"
                 />
               }
             </div>

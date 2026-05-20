@@ -47,7 +47,7 @@ import { selectExampleStyles } from '../select-example-styles'
       <span arkSelectLabel>Framework</span>
       <div arkSelectControl>
         <button arkSelectTrigger>
-          <span arkSelectValueText>Select a Framework</span>
+          <span arkSelectValueText placeholder="Select a Framework"></span>
         </button>
         <div class="select-indicators">
           <button arkSelectClearTrigger>×</button>

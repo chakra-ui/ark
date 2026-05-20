@@ -4,6 +4,22 @@ import { ChangeDetectionStrategy, Component } from '@angular/core'
   selector: 'password-input-eye-icon',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: [
+    `
+      :host {
+        display: inline-flex;
+        width: 1rem;
+        height: 1rem;
+        flex-shrink: 0;
+      }
+
+      svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    `,
+  ],
   template: `
     <svg
       width="1em"
@@ -25,6 +41,22 @@ export class PasswordInputEyeIcon {}
   selector: 'password-input-eye-off-icon',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: [
+    `
+      :host {
+        display: inline-flex;
+        width: 1rem;
+        height: 1rem;
+        flex-shrink: 0;
+      }
+
+      svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    `,
+  ],
   template: `
     <svg
       width="1em"

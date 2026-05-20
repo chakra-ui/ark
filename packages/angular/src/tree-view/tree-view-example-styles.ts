@@ -29,8 +29,8 @@ export const treeViewExampleStyles = `
     line-height: 1.25rem;
   }
 
-  [arkTreeViewTree] svg,
-  .icon {
+  [arkTreeViewTree] ::ng-deep svg,
+  ::ng-deep .icon {
     width: var(--tree-icon-size);
     height: var(--tree-icon-size);
     flex-shrink: 0;
@@ -142,7 +142,7 @@ export const treeViewExampleStyles = `
     transform: rotate(90deg);
   }
 
-  [arkTreeViewBranchIndicator] svg {
+  [arkTreeViewBranchIndicator] ::ng-deep svg {
     width: 0.875rem;
     height: 0.875rem;
   }
@@ -172,7 +172,7 @@ export const treeViewExampleStyles = `
     flex-shrink: 0;
   }
 
-  [arkTreeViewItemIndicator] svg {
+  [arkTreeViewItemIndicator] ::ng-deep svg {
     width: 0.875rem;
     height: 0.875rem;
   }
@@ -202,7 +202,7 @@ export const treeViewExampleStyles = `
     outline-offset: 2px;
   }
 
-  [arkTreeViewNodeCheckbox] svg {
+  [arkTreeViewNodeCheckbox] ::ng-deep svg {
     width: 0.75rem;
     height: 0.75rem;
   }
@@ -240,7 +240,7 @@ export const treeViewExampleStyles = `
     flex-shrink: 0;
   }
 
-  .action svg {
+  .action ::ng-deep svg {
     width: 0.875rem;
     height: 0.875rem;
   }
@@ -284,7 +284,7 @@ export const treeViewExampleStyles = `
     outline-offset: 1px;
   }
 
-  .loader {
+  ::ng-deep .loader {
     animation: spin 1s infinite;
   }
 

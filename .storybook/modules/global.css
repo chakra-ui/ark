@@ -27,3 +27,17 @@ body {
   padding: 3rem;
   isolation: isolate;
 }
+
+#storybook-root > storybook-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#storybook-root > storybook-root > * {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}

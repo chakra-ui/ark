@@ -189,6 +189,54 @@ describe('@ark-ui/angular/select', () => {
     fixture.destroy()
   })
 
+  it('renders selected item text in value text when using a placeholder', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkSelectRoot, ArkSelectValueText, ArkSelectContent, ArkSelectItem, ArkSelectItemText],
+      template: `
+        <div arkSelectRoot [collection]="collection">
+          <span arkSelectValueText placeholder="Pick one"></span>
+          <div arkSelectContent>
+            @for (item of collection.items; track item.value) {
+              <div arkSelectItem [item]="item">
+                <span arkSelectItemText>{{ item.label }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly collection = makeCollection()
+    }
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    const valueText = fixture.debugElement.query(By.directive(ArkSelectValueText)).nativeElement as HTMLElement
+    expect(valueText.textContent).toBe('Pick one')
+
+    const root = fixture.debugElement.query(By.directive(ArkSelectRoot)).injector.get(ArkSelectRoot)
+    root.api().setOpen(true)
+    await flushMicrotasks()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    const items = fixture.debugElement.queryAll(By.directive(ArkSelectItem))
+    ;(items[1].nativeElement as HTMLElement).click()
+    await flushMicrotasks()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(valueText.textContent).toBe('Solid')
+
+    fixture.destroy()
+  })
+
   it('controlled [(value)] roundtrips with the Zag api', async () => {
     @Component({
       standalone: true,

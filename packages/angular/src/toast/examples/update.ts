@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core'
 import { ArkToaster, ArkToastDescription, ArkToastTitle, createToaster } from '@ark-ui/angular/toast'
 import { toastExampleStyles } from '../toast-example-styles'
 
@@ -6,6 +6,7 @@ import { toastExampleStyles } from '../toast-example-styles'
   selector: 'toast-update-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   imports: [ArkToaster, ArkToastTitle, ArkToastDescription],
   template: `
     <div class="hstack">

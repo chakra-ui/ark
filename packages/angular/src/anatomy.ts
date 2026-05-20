@@ -1,7 +1,11 @@
 export { accordionAnatomy } from './accordion/accordion.anatomy'
+// Use a relative import so this aggregate stays form-isolation safe.
+export { angleSliderAnatomy } from '../angle-slider/angle-slider.anatomy'
 export { avatarAnatomy } from '@ark-ui/angular/avatar'
 export { carouselAnatomy } from './carousel/carousel.anatomy'
 export { clipboardAnatomy } from '@ark-ui/angular/clipboard'
+// Use a relative import so this aggregate stays form-isolation safe.
+export { checkboxAnatomy } from '../checkbox/checkbox.anatomy'
 export { colorPickerAnatomy } from './color-picker/color-picker.anatomy'
 // Batch 2 components live under src/. Relative imports avoid ng-packagr resolving
 // these secondary entry points as @ark-ui/angular/src/<name> during graph analysis.
@@ -35,17 +39,28 @@ export { popoverAnatomy } from './popover/popover.anatomy'
 export { progressAnatomy } from '@ark-ui/angular/progress'
 export { qrCodeAnatomy } from './qr-code/qr-code.anatomy'
 // Use a relative import so this aggregate stays form-isolation safe.
+export { radioGroupAnatomy } from '../radio-group/radio-group.anatomy'
+// Use a relative import so this aggregate stays form-isolation safe.
+export { ratingGroupAnatomy } from '../rating-group/rating-group.anatomy'
+// Use a relative import so this aggregate stays form-isolation safe.
 export { selectAnatomy } from '../select/select.anatomy'
 export { scrollAreaAnatomy } from './scroll-area/scroll-area.anatomy'
+// Use a relative import so this aggregate stays form-isolation safe.
+export { segmentGroupAnatomy } from '../segment-group/segment-group.anatomy'
 export { signaturePadAnatomy } from './signature-pad/signature-pad.anatomy'
+// Use a relative import so this aggregate stays form-isolation safe.
+export { sliderAnatomy } from '../slider/slider.anatomy'
 export { splitterAnatomy } from './splitter/splitter.anatomy'
 export { stepsAnatomy } from './steps/steps.anatomy'
 export { swapAnatomy } from './swap/swap.anatomy'
+// Use a relative import so this aggregate stays form-isolation safe.
+export { switchAnatomy } from '../switch/switch.anatomy'
 export { tabsAnatomy } from './tabs/tabs.anatomy'
 export { timerAnatomy } from './timer/timer.anatomy'
 // Use a relative import so this aggregate stays form-isolation safe.
 export { tagsInputAnatomy } from '../tags-input/tags-input.anatomy'
 export { toggleAnatomy } from '@ark-ui/angular/toggle'
+export { toggleGroupAnatomy } from '../toggle-group/toggle-group.anatomy'
 export { toastAnatomy } from './toast/toast.anatomy'
 export { tooltipAnatomy } from './tooltip/tooltip.anatomy'
 export { tourAnatomy } from './tour/tour.anatomy'

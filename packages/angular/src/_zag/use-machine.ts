@@ -1,5 +1,6 @@
 import {
   DestroyRef,
+  afterNextRender,
   computed,
   effect,
   inject,
@@ -489,13 +490,23 @@ export function useMachine<TSchema extends MachineSchema, TApi>(
 
   machine.watch?.(getParams() as never)
 
-  status = MachineStatus.Started
-  state.invoke(state.initial, INIT_STATE as TSchema['state'])
-  const events = pendingEvents
-  pendingEvents = []
-  for (const event of events) {
-    send(event)
-  }
+  // Defer state.invoke(INIT_STATE) until after the directive subtree has
+  // rendered. Entry actions and machine.effects (e.g. setSnapPoints,
+  // ResizeObserver/IntersectionObserver attachments) resolve descendants via
+  // scope.getById/getElementById, which returns null until the part directives'
+  // applyArkProps effects have written their id attributes. afterNextRender
+  // schedules past the effect flush so DOM lookup succeeds. Mirrors zag-js/react's
+  // useSafeLayoutEffect + queueMicrotask pattern.
+  afterNextRender(() => {
+    if (status === MachineStatus.Stopped) return
+    status = MachineStatus.Started
+    state.invoke(state.initial, INIT_STATE as TSchema['state'])
+    const events = pendingEvents
+    pendingEvents = []
+    for (const event of events) {
+      send(event)
+    }
+  })
 
   const api = computed(() => {
     // Register state as the api dependency; prop reads happen inside part prop getters.

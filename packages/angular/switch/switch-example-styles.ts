@@ -1,0 +1,61 @@
+export const switchExampleStyles = `
+  [arkSwitch], [arkSwitchRootProvider] {
+    color: var(--demo-neutral-fg);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+  }
+
+  [arkSwitch][data-disabled], [arkSwitchRootProvider][data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
+  [arkSwitchLabel] {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    color: var(--demo-neutral-fg);
+    user-select: none;
+  }
+
+  [arkSwitchControl] {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 1.5rem;
+    padding: 0.125rem;
+    background: var(--demo-neutral-muted);
+    border-radius: 9999px;
+    transition:
+      background-color 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  [arkSwitchControl][data-state='checked'] {
+    background: var(--demo-coral-solid);
+  }
+
+  [arkSwitchControl][data-focus-visible] {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: 2px;
+  }
+
+  [arkSwitchThumb] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: var(--demo-bg-thumb);
+    border-radius: 9999px;
+    box-shadow: var(--demo-shadow-sm);
+    transition: transform 0.15s ease;
+  }
+
+  [arkSwitchThumb][data-state='checked'] {
+    transform: translateX(1rem);
+  }
+`

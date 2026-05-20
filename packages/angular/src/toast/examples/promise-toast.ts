@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core'
 import {
   ArkToaster,
   ArkToastCloseTrigger,
@@ -21,6 +21,7 @@ const uploadFile = (): Promise<void> =>
   selector: 'toast-promise-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   imports: [
     ArkToaster,
     ArkToastTitle,
