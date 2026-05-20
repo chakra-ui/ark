@@ -269,6 +269,59 @@ describe('@ark-ui/angular/angle-slider', () => {
     fixture.destroy()
   })
 
+  it('sets the thumb as readonly', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkAngleSliderRoot, ArkAngleSliderControl, ArkAngleSliderThumb],
+      template: `
+        <div arkAngleSlider readOnly>
+          <div arkAngleSliderControl>
+            <div arkAngleSliderThumb></div>
+          </div>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const thumb = fixture.debugElement.query(By.directive(ArkAngleSliderThumb)).nativeElement as HTMLElement
+    expect(thumb.getAttribute('data-readonly')).toBe('')
+
+    fixture.destroy()
+  })
+
+  it('coerces static marker value attributes to numbers', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkAngleSliderRoot, ArkAngleSliderMarkerGroup, ArkAngleSliderMarker],
+      template: `
+        <div arkAngleSlider>
+          <div arkAngleSliderMarkerGroup>
+            <div arkAngleSliderMarker value="45"></div>
+          </div>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const marker = fixture.debugElement.query(By.directive(ArkAngleSliderMarker)).injector.get(ArkAngleSliderMarker)
+    const markerEl = fixture.debugElement.query(By.directive(ArkAngleSliderMarker)).nativeElement as HTMLElement
+
+    expect(marker.value()).toBe(45)
+    expect(markerEl.getAttribute('data-value')).toBe('45')
+
+    fixture.destroy()
+  })
+
   it('hidden input receives name and current value for form submission', () => {
     @Component({
       standalone: true,
@@ -376,6 +429,17 @@ describe('@ark-ui/angular/angle-slider', () => {
     expect(root).not.toBeNull()
     expect(thumb).not.toBeNull()
     expect(markers.length).toBe(8)
+
+    fixture.destroy()
+  })
+
+  it('Basic example displays the default value text', () => {
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [AngleSliderBasicExample] })
+    const fixture = TestBed.createComponent(AngleSliderBasicExample)
+    fixture.detectChanges()
+
+    expect(fixture.nativeElement.textContent).toContain('0deg')
 
     fixture.destroy()
   })

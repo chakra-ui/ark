@@ -1,4 +1,4 @@
-import { Component, Directive, Injector, inject, signal } from '@angular/core'
+import { ApplicationRef, Component, Directive, Injector, inject, signal } from '@angular/core'
 import { By } from '@angular/platform-browser'
 import { TestBed } from '@angular/core/testing'
 import { describe, expect, it } from 'vitest'
@@ -52,6 +52,19 @@ class ToggleGroupProbe {
   get captured(): UseToggleGroupReturn {
     return this.injector.get(ARK_TOGGLE_GROUP_CONTEXT)
   }
+}
+
+function keydown(el: HTMLElement, key: string): void {
+  el.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true }))
+}
+
+const flushToggleGroup = async (fixture: ReturnType<typeof TestBed.createComponent>) => {
+  await TestBed.inject(ApplicationRef).whenStable()
+  TestBed.tick()
+  fixture.detectChanges()
+  await new Promise((resolve) => requestAnimationFrame(() => resolve(null)))
+  TestBed.tick()
+  fixture.detectChanges()
 }
 
 describe('@ark-ui/angular/toggle-group', () => {
@@ -186,6 +199,111 @@ describe('@ark-ui/angular/toggle-group', () => {
     const item = fixture.debugElement.query(By.directive(ArkToggleGroupItem)).nativeElement as HTMLButtonElement
     expect(root.api().value).toEqual(['left'])
     expect(item.getAttribute('data-state')).toBe('on')
+    fixture.destroy()
+  })
+
+  it('multiple selection accumulates values and emits the selected set', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkToggleGroupRoot, ArkToggleGroupItem],
+      template: `
+        <div arkToggleGroup multiple (valueChange)="emissions.push($event)">
+          <button arkToggleGroupItem value="a">A</button>
+          <button arkToggleGroupItem value="b">B</button>
+          <button arkToggleGroupItem value="c">C</button>
+        </div>
+      `,
+    })
+    class Host {
+      readonly emissions: Array<string[] | undefined> = []
+    }
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const root = fixture.debugElement.query(By.directive(ArkToggleGroupRoot)).injector.get(ArkToggleGroupRoot)
+    const items = fixture.debugElement.queryAll(By.directive(ArkToggleGroupItem))
+    const a = items[0].nativeElement as HTMLButtonElement
+    const b = items[1].nativeElement as HTMLButtonElement
+
+    a.click()
+    TestBed.tick()
+    fixture.detectChanges()
+    b.click()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(root.api().value).toEqual(['a', 'b'])
+    expect(fixture.componentInstance.emissions.at(-1)).toEqual(['a', 'b'])
+    fixture.destroy()
+  })
+
+  it('loops focus from the last item to the first item by default', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkToggleGroupRoot, ArkToggleGroupItem],
+      template: `
+        <div arkToggleGroup>
+          <button arkToggleGroupItem value="a">A</button>
+          <button arkToggleGroupItem value="b">B</button>
+          <button arkToggleGroupItem value="c">C</button>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+    await flushToggleGroup(fixture)
+
+    const items = fixture.debugElement.queryAll(By.directive(ArkToggleGroupItem))
+    const first = items[0].nativeElement as HTMLButtonElement
+    const last = items[2].nativeElement as HTMLButtonElement
+
+    last.focus()
+    await flushToggleGroup(fixture)
+    keydown(last, 'ArrowRight')
+    await flushToggleGroup(fixture)
+
+    expect(document.activeElement).toBe(first)
+    fixture.destroy()
+  })
+
+  it('keeps focus on the last item when loopFocus is false', async () => {
+    @Component({
+      standalone: true,
+      imports: [ArkToggleGroupRoot, ArkToggleGroupItem],
+      template: `
+        <div arkToggleGroup [loopFocus]="false">
+          <button arkToggleGroupItem value="a">A</button>
+          <button arkToggleGroupItem value="b">B</button>
+          <button arkToggleGroupItem value="c">C</button>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    document.body.appendChild(fixture.nativeElement)
+    fixture.detectChanges()
+    await flushToggleGroup(fixture)
+
+    const items = fixture.debugElement.queryAll(By.directive(ArkToggleGroupItem))
+    const last = items[2].nativeElement as HTMLButtonElement
+
+    last.focus()
+    await flushToggleGroup(fixture)
+    keydown(last, 'ArrowRight')
+    await flushToggleGroup(fixture)
+
+    expect(document.activeElement).toBe(last)
     fixture.destroy()
   })
 

@@ -2,6 +2,7 @@ import { Component, Directive, Injector, inject, signal } from '@angular/core'
 import { By } from '@angular/platform-browser'
 import { TestBed } from '@angular/core/testing'
 import { FormControl, ReactiveFormsModule } from '@angular/forms'
+import { ArkFieldErrorText, ArkFieldHelperText, ArkFieldRoot } from '@ark-ui/angular/field'
 import { describe, expect, it } from 'vitest'
 import {
   ARK_SWITCH_CONTEXT,
@@ -133,6 +134,88 @@ describe('@ark-ui/angular/switch', () => {
 
     expect(root.api().checked).toBe(true)
     expect(fixture.componentInstance.emissions).toEqual([true])
+    fixture.destroy()
+  })
+
+  it('disabled switch does not toggle or emit', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkSwitchRoot, ArkSwitchControl, ArkSwitchHiddenInput],
+      template: `
+        <label arkSwitch disabled (checkedChange)="emissions.push($event)">
+          <span arkSwitchControl></span>
+          <input arkSwitchHiddenInput />
+        </label>
+      `,
+    })
+    class Host {
+      readonly emissions: Array<boolean | undefined> = []
+    }
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const root = fixture.debugElement.query(By.directive(ArkSwitchRoot)).injector.get(ArkSwitchRoot)
+    const input = fixture.debugElement.query(By.directive(ArkSwitchHiddenInput)).nativeElement as HTMLInputElement
+
+    expect(input.disabled).toBe(true)
+    input.click()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(root.api().checked).toBe(false)
+    expect(fixture.componentInstance.emissions).toEqual([])
+    fixture.destroy()
+  })
+
+  it('applies invalid and required state to the hidden input', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkSwitchRoot, ArkSwitchHiddenInput],
+      template: '<label arkSwitch invalid required><input arkSwitchHiddenInput /></label>',
+    })
+    class Host {}
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const input = fixture.debugElement.query(By.directive(ArkSwitchHiddenInput)).nativeElement as HTMLInputElement
+    expect(input.getAttribute('aria-invalid')).toBe('true')
+    expect(input.required).toBe(true)
+    fixture.destroy()
+  })
+
+  it('merges Field required, disabled, and invalid state into the hidden input', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFieldRoot, ArkFieldHelperText, ArkFieldErrorText, ArkSwitchRoot, ArkSwitchHiddenInput],
+      template: `
+        <div arkFieldRoot required disabled invalid>
+          <label arkSwitch>
+            <input arkSwitchHiddenInput />
+          </label>
+          <span arkFieldHelperText>Additional Info</span>
+          <span arkFieldErrorText>Error Info</span>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const input = fixture.debugElement.query(By.directive(ArkSwitchHiddenInput)).nativeElement as HTMLInputElement
+    expect(input.required).toBe(true)
+    expect(input.disabled).toBe(true)
+    expect(input.getAttribute('aria-invalid')).toBe('true')
+    expect(fixture.nativeElement.textContent).toContain('Additional Info')
+    expect(fixture.nativeElement.textContent).toContain('Error Info')
     fixture.destroy()
   })
 

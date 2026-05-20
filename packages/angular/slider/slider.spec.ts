@@ -2,6 +2,7 @@ import { Component, Directive, Injector, inject, signal } from '@angular/core'
 import { By } from '@angular/platform-browser'
 import { TestBed } from '@angular/core/testing'
 import { FormControl, ReactiveFormsModule } from '@angular/forms'
+import { provideArkLocale } from '@ark-ui/angular/providers/locale'
 import { describe, expect, it, vi } from 'vitest'
 import {
   ARK_SLIDER_CONTEXT,
@@ -127,6 +128,32 @@ describe('@ark-ui/angular/slider', () => {
     fixture.destroy()
   })
 
+  it('descendant probe under [arkSliderRootProvider] receives the provided service via ARK_SLIDER_CONTEXT', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkSliderRootProvider, SliderProbe],
+      template: `
+        <div arkSliderRootProvider [value]="slider">
+          <span sliderProbe></span>
+        </div>
+      `,
+    })
+    class Host {
+      readonly slider = useSlider({ context: () => ({}) })
+    }
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const probe = fixture.debugElement.query(By.directive(SliderProbe)).injector.get(SliderProbe)
+
+    expect(probe.captured.service).toBe(fixture.componentInstance.slider.service)
+
+    fixture.destroy()
+  })
+
   it('an orphan [arkSliderThumb] without an ancestor [arkSlider] throws missing-provider', () => {
     @Component({
       standalone: true,
@@ -200,6 +227,230 @@ describe('@ark-ui/angular/slider', () => {
     expect(root.api().value).toEqual([41])
     expect(thumbEl.getAttribute('aria-valuenow')).toBe('41')
     expect(fixture.componentInstance.emissions).toEqual([[41]])
+
+    fixture.destroy()
+  })
+
+  it('supports React-parity two-thumb arrow key interaction within min/max bounds', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkSliderRoot, ArkSliderControl, ArkSliderTrack, ArkSliderRange, ArkSliderThumb, ArkSliderHiddenInput],
+      template: `
+        <div arkSlider [min]="-50" [max]="50" [(value)]="value">
+          <div arkSliderControl>
+            <div arkSliderTrack>
+              <div arkSliderRange></div>
+            </div>
+            <div arkSliderThumb index="0">
+              <input arkSliderHiddenInput />
+            </div>
+            <div arkSliderThumb index="1">
+              <input arkSliderHiddenInput />
+            </div>
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly value = signal<number[] | undefined>([-20, 20])
+    }
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const thumbs = fixture.debugElement
+      .queryAll(By.directive(ArkSliderThumb))
+      .map((debug) => debug.nativeElement as HTMLElement)
+    const [leftThumb, rightThumb] = thumbs
+
+    leftThumb.focus()
+    keydown(leftThumb, 'ArrowRight')
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(leftThumb.getAttribute('aria-valuenow')).toBe('-19')
+
+    keydown(leftThumb, 'ArrowLeft')
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(leftThumb.getAttribute('aria-valuenow')).toBe('-20')
+
+    rightThumb.focus()
+    keydown(rightThumb, 'ArrowRight')
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(rightThumb.getAttribute('aria-valuenow')).toBe('21')
+
+    keydown(rightThumb, 'ArrowLeft')
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(rightThumb.getAttribute('aria-valuenow')).toBe('20')
+    expect(fixture.componentInstance.value()).toEqual([-20, 20])
+
+    fixture.destroy()
+  })
+
+  it('prevents the lower thumb from overlapping the upper thumb', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkSliderRoot, ArkSliderControl, ArkSliderTrack, ArkSliderRange, ArkSliderThumb, ArkSliderHiddenInput],
+      template: `
+        <div arkSlider [min]="-50" [max]="50" [(value)]="value">
+          <div arkSliderControl>
+            <div arkSliderTrack>
+              <div arkSliderRange></div>
+            </div>
+            <div arkSliderThumb index="0">
+              <input arkSliderHiddenInput />
+            </div>
+            <div arkSliderThumb index="1">
+              <input arkSliderHiddenInput />
+            </div>
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly value = signal<number[] | undefined>([-20, 20])
+    }
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const leftThumb = fixture.debugElement.queryAll(By.directive(ArkSliderThumb))[0].nativeElement as HTMLElement
+
+    leftThumb.focus()
+    keydown(leftThumb, 'End')
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(leftThumb.getAttribute('aria-valuenow')).toBe('20')
+
+    keydown(leftThumb, 'ArrowRight')
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(leftThumb.getAttribute('aria-valuenow')).toBe('20')
+    expect(fixture.componentInstance.value()).toEqual([20, 20])
+
+    fixture.destroy()
+  })
+
+  it('reverses horizontal arrow keys in RTL locale', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkSliderRoot, ArkSliderControl, ArkSliderTrack, ArkSliderRange, ArkSliderThumb, ArkSliderHiddenInput],
+      template: `
+        <div arkSlider [min]="-50" [max]="50" [(value)]="value">
+          <div arkSliderControl>
+            <div arkSliderTrack>
+              <div arkSliderRange></div>
+            </div>
+            <div arkSliderThumb index="0">
+              <input arkSliderHiddenInput />
+            </div>
+            <div arkSliderThumb index="1">
+              <input arkSliderHiddenInput />
+            </div>
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly value = signal<number[] | undefined>([-20, 20])
+    }
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host], providers: [provideArkLocale({ locale: 'ar-AE' })] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const thumbs = fixture.debugElement
+      .queryAll(By.directive(ArkSliderThumb))
+      .map((debug) => debug.nativeElement as HTMLElement)
+    const [leftThumb, rightThumb] = thumbs
+
+    leftThumb.focus()
+    keydown(leftThumb, 'ArrowRight')
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(leftThumb.getAttribute('aria-valuenow')).toBe('-21')
+
+    keydown(leftThumb, 'ArrowLeft')
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(leftThumb.getAttribute('aria-valuenow')).toBe('-20')
+
+    rightThumb.focus()
+    keydown(rightThumb, 'ArrowRight')
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(rightThumb.getAttribute('aria-valuenow')).toBe('19')
+
+    keydown(rightThumb, 'ArrowLeft')
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(rightThumb.getAttribute('aria-valuenow')).toBe('20')
+
+    fixture.destroy()
+  })
+
+  it('supports vertical two-thumb arrow key interaction', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkSliderRoot, ArkSliderControl, ArkSliderTrack, ArkSliderRange, ArkSliderThumb, ArkSliderHiddenInput],
+      template: `
+        <div arkSlider orientation="vertical" [min]="-50" [max]="50" [(value)]="value">
+          <div arkSliderControl>
+            <div arkSliderTrack>
+              <div arkSliderRange></div>
+            </div>
+            <div arkSliderThumb index="0">
+              <input arkSliderHiddenInput />
+            </div>
+            <div arkSliderThumb index="1">
+              <input arkSliderHiddenInput />
+            </div>
+          </div>
+        </div>
+      `,
+    })
+    class Host {
+      readonly value = signal<number[] | undefined>([-20, 20])
+    }
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const thumbs = fixture.debugElement
+      .queryAll(By.directive(ArkSliderThumb))
+      .map((debug) => debug.nativeElement as HTMLElement)
+    const [leftThumb, rightThumb] = thumbs
+
+    leftThumb.focus()
+    keydown(leftThumb, 'ArrowUp')
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(leftThumb.getAttribute('aria-valuenow')).toBe('-19')
+
+    keydown(leftThumb, 'ArrowDown')
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(leftThumb.getAttribute('aria-valuenow')).toBe('-20')
+
+    rightThumb.focus()
+    keydown(rightThumb, 'ArrowUp')
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(rightThumb.getAttribute('aria-valuenow')).toBe('21')
+
+    keydown(rightThumb, 'ArrowDown')
+    TestBed.tick()
+    fixture.detectChanges()
+    expect(rightThumb.getAttribute('aria-valuenow')).toBe('20')
 
     fixture.destroy()
   })

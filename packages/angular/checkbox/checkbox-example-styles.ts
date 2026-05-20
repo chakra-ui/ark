@@ -91,11 +91,39 @@ export const checkboxExampleStyles = `
     background: transparent;
     border: 1px solid var(--demo-border-emphasized);
     border-radius: 0.375rem;
+    transition:
+      background 150ms,
+      border-color 150ms,
+      color 150ms;
+  }
+
+  .checkbox-demo-button:hover:not(:disabled, [data-disabled]) {
+    background: var(--demo-neutral-subtle);
+  }
+
+  .checkbox-demo-button:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: -1px;
+  }
+
+  .checkbox-demo-button:disabled,
+  .checkbox-demo-button[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
   }
 
   .checkbox-demo-button[data-variant='solid'] {
     color: var(--demo-coral-contrast);
     background: var(--demo-coral-solid);
     border-color: var(--demo-coral-solid);
+  }
+
+  .checkbox-demo-button[data-variant='solid']:hover:not(:disabled, [data-disabled]) {
+    background: var(--demo-coral-fg);
+    border-color: var(--demo-coral-fg);
+  }
+
+  .checkbox-demo-button[data-variant='solid']:focus-visible {
+    outline-offset: 2px;
   }
 `

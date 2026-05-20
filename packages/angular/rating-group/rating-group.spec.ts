@@ -2,6 +2,7 @@ import { Component, Directive, Injector, inject, signal } from '@angular/core'
 import { By } from '@angular/platform-browser'
 import { FormControl, ReactiveFormsModule } from '@angular/forms'
 import { TestBed } from '@angular/core/testing'
+import { ArkFieldErrorText, ArkFieldHelperText, ArkFieldRoot } from '@ark-ui/angular/field'
 import { describe, expect, it } from 'vitest'
 import {
   ARK_RATING_GROUP_CONTEXT,
@@ -243,6 +244,34 @@ describe('@ark-ui/angular/rating-group', () => {
     fixture.destroy()
   })
 
+  it('controlled [value] takes precedence over [defaultValue] for the hidden input', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkRatingGroupRoot, ArkRatingGroupControl, ArkRatingGroupHiddenInput],
+      template: `
+        <div arkRatingGroup [value]="1" [defaultValue]="2" name="review">
+          <div arkRatingGroupControl>
+            <input arkRatingGroupHiddenInput />
+          </div>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const root = fixture.debugElement.query(By.directive(ArkRatingGroupRoot)).injector.get(ArkRatingGroupRoot)
+    const input = fixture.debugElement.query(By.directive(ArkRatingGroupHiddenInput)).nativeElement as HTMLInputElement
+
+    expect(root.api().value).toBe(1)
+    expect(input.value).toBe('1')
+
+    fixture.destroy()
+  })
+
   it('clicking a disabled rating group does not change value', () => {
     @Component({
       standalone: true,
@@ -347,6 +376,171 @@ describe('@ark-ui/angular/rating-group', () => {
     fixture.detectChanges()
 
     expect(fixture.componentInstance.control.value).toBe(1)
+
+    fixture.destroy()
+  })
+
+  it('inherits required, disabled, and readonly state from ArkFieldRoot', () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkFieldRoot,
+        ArkRatingGroupRoot,
+        ArkRatingGroupControl,
+        ArkRatingGroupContext,
+        ArkRatingGroupItem,
+        ArkRatingGroupHiddenInput,
+      ],
+      template: `
+        <div arkFieldRoot required disabled readOnly>
+          <div arkRatingGroup [defaultValue]="3">
+            <div arkRatingGroupControl>
+              <ng-template arkRatingGroupContext let-api>
+                @for (item of api().items; track item) {
+                  <span arkRatingGroupItem [index]="item"></span>
+                }
+              </ng-template>
+              <input arkRatingGroupHiddenInput />
+            </div>
+          </div>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const input = fixture.debugElement.query(By.directive(ArkRatingGroupHiddenInput)).nativeElement as HTMLInputElement
+    const item = fixture.debugElement.query(By.directive(ArkRatingGroupItem)).nativeElement as HTMLElement
+
+    expect(input.required).toBe(true)
+    expect(input.disabled).toBe(true)
+    expect(input.readOnly).toBe(true)
+    expect(item.getAttribute('aria-disabled')).toBe('true')
+    expect(item.getAttribute('data-readonly')).toBe('')
+
+    fixture.destroy()
+  })
+
+  it('links field helper and error text to the hidden input description', () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkFieldRoot,
+        ArkFieldHelperText,
+        ArkFieldErrorText,
+        ArkRatingGroupRoot,
+        ArkRatingGroupControl,
+        ArkRatingGroupHiddenInput,
+      ],
+      template: `
+        <div arkFieldRoot invalid>
+          <div arkRatingGroup>
+            <div arkRatingGroupControl>
+              <input arkRatingGroupHiddenInput />
+            </div>
+          </div>
+          <span arkFieldHelperText>Additional Info</span>
+          <span arkFieldErrorText>Error Info</span>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const input = fixture.debugElement.query(By.directive(ArkRatingGroupHiddenInput)).nativeElement as HTMLInputElement
+    const helper = fixture.debugElement.query(By.directive(ArkFieldHelperText)).nativeElement as HTMLElement
+    const error = fixture.debugElement.query(By.directive(ArkFieldErrorText)).nativeElement as HTMLElement
+    const describedBy = input.getAttribute('aria-describedby') ?? ''
+
+    expect(describedBy).toContain(helper.id)
+    expect(describedBy).toContain(error.id)
+    expect(error.hasAttribute('hidden')).toBe(false)
+
+    fixture.destroy()
+  })
+
+  it('hides field error text when the field is not invalid', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFieldRoot, ArkFieldErrorText, ArkRatingGroupRoot, ArkRatingGroupControl, ArkRatingGroupHiddenInput],
+      template: `
+        <div arkFieldRoot>
+          <div arkRatingGroup>
+            <div arkRatingGroupControl>
+              <input arkRatingGroupHiddenInput />
+            </div>
+          </div>
+          <span arkFieldErrorText>Error Info</span>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const input = fixture.debugElement.query(By.directive(ArkRatingGroupHiddenInput)).nativeElement as HTMLInputElement
+    const error = fixture.debugElement.query(By.directive(ArkFieldErrorText)).nativeElement as HTMLElement
+
+    expect(input.getAttribute('aria-describedby')).toBeNull()
+    expect(error.hidden).toBe(true)
+
+    fixture.destroy()
+  })
+
+  it('focuses the checked rating item when the rating group label is clicked', () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkFieldRoot,
+        ArkRatingGroupRoot,
+        ArkRatingGroupLabel,
+        ArkRatingGroupControl,
+        ArkRatingGroupContext,
+        ArkRatingGroupItem,
+        ArkRatingGroupHiddenInput,
+      ],
+      template: `
+        <div arkFieldRoot>
+          <div arkRatingGroup [defaultValue]="3">
+            <label arkRatingGroupLabel>Label</label>
+            <div arkRatingGroupControl>
+              <ng-template arkRatingGroupContext let-api>
+                @for (item of api().items; track item) {
+                  <span arkRatingGroupItem [index]="item"></span>
+                }
+              </ng-template>
+              <input arkRatingGroupHiddenInput />
+            </div>
+          </div>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const label = fixture.debugElement.query(By.directive(ArkRatingGroupLabel)).nativeElement as HTMLLabelElement
+    const items = fixture.debugElement.queryAll(By.directive(ArkRatingGroupItem))
+
+    label.click()
+    TestBed.tick()
+    fixture.detectChanges()
+
+    expect(document.activeElement).toBe(items[2].nativeElement)
 
     fixture.destroy()
   })

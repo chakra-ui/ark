@@ -11,6 +11,7 @@ import {
   type Signal,
 } from '@angular/core'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
+import { segmentGroupParts } from './segment-group.anatomy'
 import { ARK_SEGMENT_GROUP_CONTEXT } from './use-segment-group-context'
 import type { UseSegmentGroupReturn } from './use-segment-group'
 
@@ -42,7 +43,10 @@ export class ArkSegmentGroupRootProvider implements UseSegmentGroupReturn {
       elementRef: inject(ElementRef),
       renderer: inject(Renderer2),
       destroyRef: inject(DestroyRef),
-      props: () => this.value().api().getRootProps(),
+      props: () => ({
+        ...this.value().api().getRootProps(),
+        ...segmentGroupParts.root.attrs,
+      }),
     })
   }
 }

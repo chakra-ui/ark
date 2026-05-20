@@ -112,6 +112,54 @@ describe('@ark-ui/angular/segment-group', () => {
     fixture.destroy()
   })
 
+  it('applies renamed segment-group data attributes to visible parts', () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkSegmentGroupRoot,
+        ArkSegmentGroupLabel,
+        ArkSegmentGroupIndicator,
+        ArkSegmentGroupItem,
+        ArkSegmentGroupItemText,
+        ArkSegmentGroupItemControl,
+        ArkSegmentGroupItemHiddenInput,
+      ],
+      template: `
+        <div arkSegmentGroupRoot defaultValue="React">
+          <span arkSegmentGroupLabel>Framework</span>
+          <div arkSegmentGroupIndicator></div>
+          <label arkSegmentGroupItem value="React">
+            <span arkSegmentGroupItemText>React</span>
+            <div arkSegmentGroupItemControl></div>
+            <input arkSegmentGroupItemHiddenInput />
+          </label>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const visibleParts = fixture.nativeElement.querySelectorAll('[data-scope="segment-group"]')
+    const hiddenInput = fixture.debugElement.query(By.directive(ArkSegmentGroupItemHiddenInput))
+      .nativeElement as HTMLInputElement
+
+    expect(Array.from(visibleParts, (element) => (element as HTMLElement).getAttribute('data-part'))).toEqual([
+      'root',
+      'label',
+      'indicator',
+      'item',
+      'item-text',
+      'item-control',
+    ])
+    expect(hiddenInput.getAttribute('data-scope')).toBeNull()
+
+    fixture.destroy()
+  })
+
   it('an orphan item part without an ancestor [arkSegmentGroupItem] throws a missing-provider error', () => {
     @Component({
       standalone: true,
@@ -381,7 +429,7 @@ describe('@ark-ui/angular/segment-group', () => {
       TestBed.configureTestingModule({ imports: [Example] })
       const fixture = TestBed.createComponent(Example)
       fixture.detectChanges()
-      const root = fixture.nativeElement.querySelector('[data-scope="radio-group"]')
+      const root = fixture.nativeElement.querySelector('[data-scope="segment-group"][data-part="root"]')
       expect(root || fixture.nativeElement.querySelector('button')).toBeTruthy()
       fixture.destroy()
     }

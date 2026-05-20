@@ -265,6 +265,60 @@ describe('@ark-ui/angular/radio-group', () => {
     fixture.destroy()
   })
 
+  it('wires radiogroup label and hidden radio input accessibility attributes', () => {
+    @Component({
+      standalone: true,
+      imports: [
+        ArkRadioGroupRoot,
+        ArkRadioGroupLabel,
+        ArkRadioGroupItem,
+        ArkRadioGroupItemControl,
+        ArkRadioGroupItemHiddenInput,
+        ArkRadioGroupItemText,
+      ],
+      template: `
+        <div arkRadioGroup name="framework" defaultValue="react" required invalid>
+          <span arkRadioGroupLabel>Framework</span>
+          <label arkRadioGroupItem value="react">
+            <span arkRadioGroupItemText>React</span>
+            <span arkRadioGroupItemControl></span>
+            <input arkRadioGroupItemHiddenInput />
+          </label>
+          <label arkRadioGroupItem value="solid">
+            <span arkRadioGroupItemText>Solid</span>
+            <span arkRadioGroupItemControl></span>
+            <input arkRadioGroupItemHiddenInput />
+          </label>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.resetTestingModule()
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const host = fixture.nativeElement as HTMLElement
+    const rootEl = host.querySelector('[arkRadioGroup]') as HTMLElement
+    const labelEl = host.querySelector('[arkRadioGroupLabel]') as HTMLElement
+    const inputs = Array.from(host.querySelectorAll('input')) as HTMLInputElement[]
+
+    expect(rootEl.getAttribute('role')).toBe('radiogroup')
+    expect(rootEl.getAttribute('aria-labelledby')).toBe(labelEl.id)
+    expect(rootEl.getAttribute('aria-required')).toBe('true')
+    expect(rootEl.getAttribute('data-invalid')).toBe('')
+    expect(inputs.map((input) => input.type)).toEqual(['radio', 'radio'])
+    expect(inputs.map((input) => input.name)).toEqual(['framework', 'framework'])
+    expect(inputs.map((input) => input.value)).toEqual(['react', 'solid'])
+    expect(inputs.map((input) => input.getAttribute('aria-invalid'))).toEqual(['true', 'true'])
+    expect(inputs[0].checked).toBe(true)
+    expect(inputs[1].checked).toBe(false)
+    expect(inputs.every((input) => input.required)).toBe(true)
+
+    fixture.destroy()
+  })
+
   it('disabled group and disabled item do not change value', async () => {
     @Component({
       standalone: true,

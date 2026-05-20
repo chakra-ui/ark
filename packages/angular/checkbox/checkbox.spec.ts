@@ -2,6 +2,7 @@ import { Component, Directive, Injector, inject, signal } from '@angular/core'
 import { By } from '@angular/platform-browser'
 import { TestBed } from '@angular/core/testing'
 import { FormControl, ReactiveFormsModule } from '@angular/forms'
+import { ArkFieldRoot } from '@ark-ui/angular/field'
 import { beforeEach, describe, expect, it } from 'vitest'
 import {
   ARK_CHECKBOX_CONTEXT,
@@ -291,6 +292,106 @@ describe('@ark-ui/angular/checkbox', () => {
 
     expect(root.api().checked).toBe(false)
     expect(fixture.componentInstance.emissions).toEqual([])
+    fixture.destroy()
+  })
+
+  it('field context marks the checkbox required', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFieldRoot, ...checkboxImports],
+      template: `
+        <div arkFieldRoot required>
+          <label arkCheckbox>
+            <span arkCheckboxLabel>Label</span>
+            <input arkCheckboxHiddenInput />
+          </label>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const input = fixture.debugElement.query(By.directive(ArkCheckboxHiddenInput)).nativeElement as HTMLInputElement
+    expect(input.required).toBe(true)
+    fixture.destroy()
+  })
+
+  it('field context disables the checkbox input', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFieldRoot, ...checkboxImports],
+      template: `
+        <div arkFieldRoot disabled>
+          <label arkCheckbox>
+            <span arkCheckboxLabel>Label</span>
+            <input arkCheckboxHiddenInput />
+          </label>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const input = fixture.debugElement.query(By.directive(ArkCheckboxHiddenInput)).nativeElement as HTMLInputElement
+    expect(input.disabled).toBe(true)
+    fixture.destroy()
+  })
+
+  it('field context marks the checkbox label as read-only', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFieldRoot, ...checkboxImports],
+      template: `
+        <div arkFieldRoot readOnly>
+          <label arkCheckbox>
+            <span arkCheckboxLabel>Label</span>
+            <input arkCheckboxHiddenInput />
+          </label>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const label = fixture.debugElement.query(By.directive(ArkCheckboxLabel)).nativeElement as HTMLElement
+    expect(label.hasAttribute('data-readonly')).toBe(true)
+    fixture.destroy()
+  })
+
+  it('associates the checkbox label with the hidden input for accessible naming', () => {
+    @Component({
+      standalone: true,
+      imports: [ArkFieldRoot, ...checkboxImports],
+      template: `
+        <div arkFieldRoot>
+          <label arkCheckbox>
+            <span arkCheckboxLabel>Label</span>
+            <input arkCheckboxHiddenInput />
+          </label>
+        </div>
+      `,
+    })
+    class Host {}
+
+    TestBed.configureTestingModule({ imports: [Host] })
+    const fixture = TestBed.createComponent(Host)
+    fixture.detectChanges()
+
+    const root = fixture.debugElement.query(By.directive(ArkCheckboxRoot)).nativeElement as HTMLLabelElement
+    const label = fixture.debugElement.query(By.directive(ArkCheckboxLabel)).nativeElement as HTMLElement
+    const input = fixture.debugElement.query(By.directive(ArkCheckboxHiddenInput)).nativeElement as HTMLInputElement
+
+    expect(root.htmlFor).toBe(input.id)
+    expect(input.getAttribute('aria-labelledby')).toBe(label.id)
     fixture.destroy()
   })
 

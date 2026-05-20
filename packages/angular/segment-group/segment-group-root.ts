@@ -19,6 +19,7 @@ import {
 import { NG_VALUE_ACCESSOR, type ControlValueAccessor } from '@angular/forms'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
 import { createArkCvaController } from '@ark-ui/angular/src/internal'
+import { segmentGroupParts } from './segment-group.anatomy'
 import type { SegmentGroupElementIds, SegmentGroupValueChangeDetails } from './segment-group.types'
 import { ARK_SEGMENT_GROUP_CONTEXT } from './use-segment-group-context'
 import { useSegmentGroup, type UseSegmentGroupReturn } from './use-segment-group'
@@ -122,7 +123,10 @@ export class ArkSegmentGroupRoot implements ControlValueAccessor, UseSegmentGrou
       elementRef: inject(ElementRef),
       renderer: inject(Renderer2),
       destroyRef: inject(DestroyRef),
-      props: () => this.api().getRootProps(),
+      props: () => ({
+        ...this.api().getRootProps(),
+        ...segmentGroupParts.root.attrs,
+      }),
     })
   }
 

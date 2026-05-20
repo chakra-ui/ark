@@ -13,6 +13,7 @@ import {
   type Signal,
 } from '@angular/core'
 import { applyArkProps } from '@ark-ui/angular/src/_zag'
+import { segmentGroupParts } from './segment-group.anatomy'
 import type { SegmentGroupItemProps, SegmentGroupItemState } from './segment-group.types'
 import { injectArkSegmentGroupContext } from './use-segment-group-context'
 import { ARK_SEGMENT_GROUP_ITEM_CONTEXT, ARK_SEGMENT_GROUP_ITEM_PROPS_CONTEXT } from './use-segment-group-item-context'
@@ -57,7 +58,10 @@ export class ArkSegmentGroupItem {
       elementRef: inject(ElementRef),
       renderer: inject(Renderer2),
       destroyRef: inject(DestroyRef),
-      props: () => this.segmentGroup.api().getItemProps(this.itemProps()),
+      props: () => ({
+        ...this.segmentGroup.api().getItemProps(this.itemProps()),
+        ...segmentGroupParts.item.attrs,
+      }),
     })
   }
 }
