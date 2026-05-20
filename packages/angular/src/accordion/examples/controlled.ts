@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
 import {
   ArkAccordionItem,
   ArkAccordionItemContent,
@@ -22,21 +22,18 @@ import { AccordionChevronDownIcon } from './icons'
     AccordionChevronDownIcon,
   ],
   template: `
-    <div class="stack">
-      <output>value: {{ valueLabel() }}</output>
-      <div arkAccordion [(value)]="value">
-        @for (item of items; track item.value) {
-          <div arkAccordionItem [value]="item.value">
-            <button type="button" arkAccordionItemTrigger>
-              {{ item.title }}
-              <span arkAccordionItemIndicator><accordion-chevron-down-icon /></span>
-            </button>
-            <div arkAccordionItemContent>
-              <div class="item-body">{{ item.content }}</div>
-            </div>
+    <div arkAccordion [(value)]="value">
+      @for (item of items; track item.value) {
+        <div arkAccordionItem [value]="item.value">
+          <button type="button" arkAccordionItemTrigger>
+            {{ item.title }}
+            <span arkAccordionItemIndicator><accordion-chevron-down-icon /></span>
+          </button>
+          <div arkAccordionItemContent>
+            <div class="item-body">{{ item.content }}</div>
           </div>
-        }
-      </div>
+        </div>
+      }
     </div>
   `,
   styles: [accordionExampleStyles],
@@ -44,7 +41,6 @@ import { AccordionChevronDownIcon } from './icons'
 export class AccordionControlledExample {
   readonly items = accordionItems
   readonly value = signal<string[] | undefined>([])
-  readonly valueLabel = computed(() => this.value()?.join(', ') || 'none')
 }
 
 const accordionItems = [
