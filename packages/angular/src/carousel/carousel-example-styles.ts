@@ -102,8 +102,7 @@ export const carouselExampleStyles = `
   }
 
   .Trigger svg,
-  .AutoplayTrigger svg,
-  .Button svg {
+  .AutoplayTrigger svg {
     width: 1rem;
     height: 1rem;
   }
@@ -115,8 +114,7 @@ export const carouselExampleStyles = `
   }
 
   .Trigger:hover:not(:disabled, [data-disabled]),
-  .AutoplayTrigger:hover:not(:disabled, [data-disabled]),
-  .Button:hover {
+  .AutoplayTrigger:hover:not(:disabled, [data-disabled]) {
     background: var(--demo-neutral-subtle);
   }
 
@@ -206,14 +204,45 @@ export const carouselExampleStyles = `
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.375rem;
-    width: fit-content;
-    min-height: 2.25rem;
-    padding: 0 0.75rem;
-    font: 500 0.875rem/1 system-ui, sans-serif;
+    gap: 0.5rem;
+    min-height: 2.5rem;
+    min-width: 2.5rem;
+    padding-inline: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: inherit;
+    line-height: 1.25rem;
     border-radius: 0.375rem;
-    border: 1px solid var(--demo-border-emphasized);
+    user-select: none;
+    white-space: nowrap;
+    transition:
+      background 150ms,
+      border-color 150ms,
+      color 150ms;
+  }
+
+  .Button svg {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+  }
+
+  .Button:has(> svg:only-child) {
+    padding-inline: 0.625rem !important;
+  }
+
+  .Button {
     background: transparent;
+    border: 1px solid var(--demo-border-emphasized);
     color: var(--demo-neutral-fg);
+  }
+
+  .Button:is(:hover, [aria-expanded='true']):not(:disabled, [data-disabled]) {
+    background: var(--demo-neutral-subtle);
+  }
+
+  .Button:is(:disabled, [data-disabled]) {
+    opacity: 0.5;
+    filter: grayscale(100%);
   }
 `

@@ -19,6 +19,11 @@ const meta: Meta = {
 
 export default meta
 
+export const Autoplay: StoryObj = {
+  decorators: [moduleMetadata({ imports: [CarouselAutoplayExample] })],
+  render: () => ({ template: '<carousel-autoplay-example />' }),
+}
+
 export const Basic: StoryObj = {
   decorators: [moduleMetadata({ imports: [CarouselBasicExample] })],
   render: () => ({ template: '<carousel-basic-example />' }),
@@ -34,11 +39,6 @@ export const ThumbnailIndicator: StoryObj = {
   render: () => ({ template: '<carousel-thumbnail-indicator-example />' }),
 }
 
-export const Autoplay: StoryObj = {
-  decorators: [moduleMetadata({ imports: [CarouselAutoplayExample] })],
-  render: () => ({ template: '<carousel-autoplay-example />' }),
-}
-
 export const DynamicSlides: StoryObj = {
   decorators: [moduleMetadata({ imports: [CarouselDynamicSlidesExample] })],
   render: () => ({ template: '<carousel-dynamic-slides-example />' }),
@@ -47,11 +47,6 @@ export const DynamicSlides: StoryObj = {
 export const PauseOnHover: StoryObj = {
   decorators: [moduleMetadata({ imports: [CarouselPauseOnHoverExample] })],
   render: () => ({ template: '<carousel-pause-on-hover-example />' }),
-}
-
-export const Vertical: StoryObj = {
-  decorators: [moduleMetadata({ imports: [CarouselVerticalExample] })],
-  render: () => ({ template: '<carousel-vertical-example />' }),
 }
 
 export const RootProvider: StoryObj = {
@@ -77,4 +72,9 @@ export const Spacing: StoryObj = {
 export const VariableSize: StoryObj = {
   decorators: [moduleMetadata({ imports: [CarouselVariableSizeExample] })],
   render: () => ({ template: '<carousel-variable-size-example />' }),
+}
+
+export const Vertical: StoryObj = {
+  decorators: [moduleMetadata({ imports: [CarouselVerticalExample] })],
+  render: () => ({ template: '<carousel-vertical-example />' }),
 }
