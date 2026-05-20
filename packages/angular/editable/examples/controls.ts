@@ -11,6 +11,7 @@ import {
   ArkEditableSubmitTrigger,
 } from '@ark-ui/angular/editable'
 import { editableExampleStyles } from '../editable-example-styles'
+import { EditableCheckIcon, EditablePencilIcon, EditableXIcon } from './icons'
 
 @Component({
   selector: 'editable-controls-example',
@@ -26,6 +27,9 @@ import { editableExampleStyles } from '../editable-example-styles'
     ArkEditableLabel,
     ArkEditablePreview,
     ArkEditableSubmitTrigger,
+    EditableCheckIcon,
+    EditablePencilIcon,
+    EditableXIcon,
   ],
   template: `
     <div arkEditableRoot #editable="arkEditableRoot" defaultValue="Click edit to start">
@@ -36,10 +40,16 @@ import { editableExampleStyles } from '../editable-example-styles'
       </div>
       <div arkEditableControl>
         @if (editable.api().editing) {
-          <button arkEditableSubmitTrigger>Save</button>
-          <button arkEditableCancelTrigger>Cancel</button>
+          <button arkEditableSubmitTrigger aria-label="Save">
+            <editable-check-icon />
+          </button>
+          <button arkEditableCancelTrigger aria-label="Cancel">
+            <editable-x-icon />
+          </button>
         } @else {
-          <button arkEditableEditTrigger>Edit</button>
+          <button arkEditableEditTrigger aria-label="Edit">
+            <editable-pencil-icon />
+          </button>
         }
       </div>
     </div>
