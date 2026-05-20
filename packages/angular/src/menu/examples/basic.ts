@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import {
+  ArkMenuArrow,
+  ArkMenuArrowTip,
   ArkMenuContent,
   ArkMenuIndicator,
   ArkMenuItem,
@@ -21,6 +23,8 @@ import { MenuChevronDownIcon } from './icons'
     ArkMenuIndicator,
     ArkMenuPositioner,
     ArkMenuContent,
+    ArkMenuArrow,
+    ArkMenuArrowTip,
     ArkMenuItem,
     ArkPortalComponent,
     MenuChevronDownIcon,
@@ -36,6 +40,9 @@ import { MenuChevronDownIcon } from './icons'
       <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
         <div arkMenuPositioner>
           <div arkMenuContent>
+            <div arkMenuArrow>
+              <div arkMenuArrowTip></div>
+            </div>
             <div arkMenuItem value="new-file">New File</div>
             <div arkMenuItem value="open">Open...</div>
             <div arkMenuItem value="save">Save</div>

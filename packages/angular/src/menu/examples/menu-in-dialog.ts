@@ -22,7 +22,7 @@ import {
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { ArkPresenceComponent } from '@ark-ui/angular/presence'
 import { menuExampleStyles } from '../menu-example-styles'
-import { MenuChevronDownIcon } from './icons'
+import { MenuChevronDownIcon, MenuXIcon } from './icons'
 
 @Component({
   selector: 'menu-in-dialog-example',
@@ -48,6 +48,7 @@ import { MenuChevronDownIcon } from './icons'
     ArkPortalComponent,
     ArkPresenceComponent,
     MenuChevronDownIcon,
+    MenuXIcon,
   ],
   template: `
     <div arkDialog #dialog="arkDialog">
@@ -58,35 +59,39 @@ import { MenuChevronDownIcon } from './icons'
           <div arkDialogContent>
             <h2 arkDialogTitle>Settings</h2>
             <p arkDialogDescription>Configure your preferences below.</p>
-            <button type="button" arkDialogCloseTrigger aria-label="Close">x</button>
-            <div arkMenu #menu="arkMenu">
-              <button type="button" arkMenuTrigger>
-                Select theme
-                <span arkMenuIndicator>
-                  <menu-chevron-down-icon />
-                </span>
-              </button>
-              <ark-presence
-                [present]="menu.api().open"
-                lazyMount
-                unmountOnExit
-                [originInjector]="menu.getContextCarrier().elementInjector"
-              >
-                <ng-template>
-                  <ark-portal [originInjector]="menu.getContextCarrier().elementInjector">
-                    <div arkMenuPositioner>
-                      <div arkMenuContent>
-                        <div arkMenuArrow>
-                          <div arkMenuArrowTip></div>
+            <button type="button" arkDialogCloseTrigger aria-label="Close">
+              <menu-x-icon />
+            </button>
+            <div class="dialog-body">
+              <div arkMenu #menu="arkMenu">
+                <button type="button" arkMenuTrigger>
+                  Select theme
+                  <span arkMenuIndicator>
+                    <menu-chevron-down-icon />
+                  </span>
+                </button>
+                <ark-presence
+                  [present]="menu.api().open"
+                  lazyMount
+                  unmountOnExit
+                  [originInjector]="menu.getContextCarrier().elementInjector"
+                >
+                  <ng-template>
+                    <ark-portal [originInjector]="menu.getContextCarrier().elementInjector">
+                      <div arkMenuPositioner>
+                        <div arkMenuContent>
+                          <div arkMenuArrow>
+                            <div arkMenuArrowTip></div>
+                          </div>
+                          <div arkMenuItem value="light">Light</div>
+                          <div arkMenuItem value="dark">Dark</div>
+                          <div arkMenuItem value="system">System</div>
                         </div>
-                        <div arkMenuItem value="light">Light</div>
-                        <div arkMenuItem value="dark">Dark</div>
-                        <div arkMenuItem value="system">System</div>
                       </div>
-                    </div>
-                  </ark-portal>
-                </ng-template>
-              </ark-presence>
+                    </ark-portal>
+                  </ng-template>
+                </ark-presence>
+              </div>
             </div>
           </div>
         </div>

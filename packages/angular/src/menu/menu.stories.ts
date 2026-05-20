@@ -5,7 +5,6 @@ import { MenuCheckboxItemsExample } from './examples/checkbox-items'
 import { MenuContextExample } from './examples/context'
 import { MenuContextLazyMountExample } from './examples/context-lazy-mount'
 import { MenuControlledExample } from './examples/controlled'
-import { MenuControlledHighlightExample } from './examples/controlled-highlight'
 import { MenuGroupExample } from './examples/group'
 import { MenuItemContextExample } from './examples/item-context'
 import { MenuItemDialogExample } from './examples/menu-item-dialog'
@@ -14,11 +13,9 @@ import { MenuLinksExample } from './examples/links'
 import { MenuMultipleMenuExample } from './examples/multiple-menu'
 import { MenuMultipleTriggersExample } from './examples/multiple-triggers'
 import { MenuNestedExample } from './examples/nested'
-import { MenuNestedSubmenuExample } from './examples/nested-submenu'
 import { MenuRadioItemsExample } from './examples/radio-items'
 import { MenuRootProviderExample } from './examples/root-provider'
 import { MenuSelectEventExample } from './examples/select-event'
-import { MenuWithSeparatorExample } from './examples/with-separator'
 
 const meta: Meta = {
   title: 'Components / Menu',
@@ -31,9 +28,9 @@ export const Basic: StoryObj = {
   render: () => ({ template: '<menu-basic-example />' }),
 }
 
-export const Controlled: StoryObj = {
-  decorators: [moduleMetadata({ imports: [MenuControlledExample] })],
-  render: () => ({ template: '<menu-controlled-example />' }),
+export const CheckboxItems: StoryObj = {
+  decorators: [moduleMetadata({ imports: [MenuCheckboxItemsExample] })],
+  render: () => ({ template: '<menu-checkbox-items-example />' }),
 }
 
 export const Context: StoryObj = {
@@ -46,39 +43,14 @@ export const ContextLazyMount: StoryObj = {
   render: () => ({ template: '<menu-context-lazy-mount-example />' }),
 }
 
-export const WithSeparator: StoryObj = {
-  decorators: [moduleMetadata({ imports: [MenuWithSeparatorExample] })],
-  render: () => ({ template: '<menu-with-separator-example />' }),
-}
-
-export const ControlledHighlight: StoryObj = {
-  decorators: [moduleMetadata({ imports: [MenuControlledHighlightExample] })],
-  render: () => ({ template: '<menu-controlled-highlight-example />' }),
-}
-
-export const RootProvider: StoryObj = {
-  decorators: [moduleMetadata({ imports: [MenuRootProviderExample] })],
-  render: () => ({ template: '<menu-root-provider-example />' }),
-}
-
-export const CheckboxItems: StoryObj = {
-  decorators: [moduleMetadata({ imports: [MenuCheckboxItemsExample] })],
-  render: () => ({ template: '<menu-checkbox-items-example />' }),
-}
-
-export const RadioItems: StoryObj = {
-  decorators: [moduleMetadata({ imports: [MenuRadioItemsExample] })],
-  render: () => ({ template: '<menu-radio-items-example />' }),
+export const Controlled: StoryObj = {
+  decorators: [moduleMetadata({ imports: [MenuControlledExample] })],
+  render: () => ({ template: '<menu-controlled-example />' }),
 }
 
 export const Group: StoryObj = {
   decorators: [moduleMetadata({ imports: [MenuGroupExample] })],
   render: () => ({ template: '<menu-group-example />' }),
-}
-
-export const ItemContext: StoryObj = {
-  decorators: [moduleMetadata({ imports: [MenuItemContextExample] })],
-  render: () => ({ template: '<menu-item-context-example />' }),
 }
 
 export const Links: StoryObj = {
@@ -111,9 +83,19 @@ export const Nested: StoryObj = {
   render: () => ({ template: '<menu-nested-example />' }),
 }
 
-export const NestedSubmenu: StoryObj = {
-  decorators: [moduleMetadata({ imports: [MenuNestedSubmenuExample] })],
-  render: () => ({ template: '<menu-nested-submenu-example />' }),
+export const RadioItems: StoryObj = {
+  decorators: [moduleMetadata({ imports: [MenuRadioItemsExample] })],
+  render: () => ({ template: '<menu-radio-items-example />' }),
+}
+
+export const ItemContext: StoryObj = {
+  decorators: [moduleMetadata({ imports: [MenuItemContextExample] })],
+  render: () => ({ template: '<menu-item-context-example />' }),
+}
+
+export const RootProvider: StoryObj = {
+  decorators: [moduleMetadata({ imports: [MenuRootProviderExample] })],
+  render: () => ({ template: '<menu-root-provider-example />' }),
 }
 
 export const SelectEvent: StoryObj = {

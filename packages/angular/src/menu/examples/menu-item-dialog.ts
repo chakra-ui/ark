@@ -19,7 +19,7 @@ import {
 } from '@ark-ui/angular/menu'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { menuExampleStyles } from '../menu-example-styles'
-import { MenuChevronDownIcon } from './icons'
+import { MenuChevronDownIcon, MenuXIcon } from './icons'
 
 @Component({
   selector: 'menu-item-dialog-example',
@@ -42,6 +42,7 @@ import { MenuChevronDownIcon } from './icons'
     ArkMenuSeparator,
     ArkPortalComponent,
     MenuChevronDownIcon,
+    MenuXIcon,
   ],
   template: `
     <div arkMenu #menu="arkMenu">
@@ -70,10 +71,12 @@ import { MenuChevronDownIcon } from './icons'
           <div arkDialogContent>
             <h2 arkDialogTitle>Confirm Delete</h2>
             <p arkDialogDescription>Are you sure you want to delete this item? This action cannot be undone.</p>
-            <button type="button" arkDialogCloseTrigger aria-label="Close">x</button>
-            <div>
+            <button type="button" arkDialogCloseTrigger aria-label="Close">
+              <menu-x-icon />
+            </button>
+            <div class="dialog-actions">
               <button type="button" (click)="dialogOpen.set(false)">Cancel</button>
-              <button type="button" (click)="dialogOpen.set(false)">Delete</button>
+              <button type="button" data-variant="solid" (click)="dialogOpen.set(false)">Delete</button>
             </div>
           </div>
         </div>
