@@ -52,8 +52,7 @@ export const clipboardExampleStyles = `
     cursor: not-allowed;
   }
 
-  [arkClipboardTrigger],
-  .button {
+  [arkClipboardTrigger] {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -77,28 +76,73 @@ export const clipboardExampleStyles = `
       color 150ms;
   }
 
-  [arkClipboardTrigger] svg,
-  .button svg {
+  [arkClipboardTrigger] svg {
     width: 1rem;
     height: 1rem;
   }
 
-  [arkClipboardTrigger]:hover:not(:disabled, [data-disabled]),
-  .button:hover:not(:disabled, [data-disabled]) {
+  [arkClipboardTrigger]:hover:not(:disabled, [data-disabled]) {
     background: var(--demo-neutral-subtle);
   }
 
-  [arkClipboardTrigger]:focus-visible,
-  .button:focus-visible {
+  [arkClipboardTrigger]:focus-visible {
     outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: -1px;
   }
 
   [arkClipboardTrigger]:disabled,
-  [arkClipboardTrigger][data-disabled],
-  .button:disabled,
-  .button[data-disabled] {
+  [arkClipboardTrigger][data-disabled] {
     opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-inline: 1rem;
+    min-height: 2.5rem;
+    min-width: 2.5rem;
+    font: inherit;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    border-radius: 0.375rem;
+    user-select: none;
+    white-space: nowrap;
+    transition:
+      background 150ms,
+      border-color 150ms,
+      color 150ms;
+    background: transparent;
+    border: 1px solid var(--demo-border-emphasized);
+    color: var(--demo-neutral-fg);
+    cursor: pointer;
+  }
+
+  .button svg {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+  }
+
+  .button:has(> svg:only-child) {
+    padding-inline: 0.625rem !important;
+  }
+
+  .button:is(:hover, [aria-expanded='true']):not(:disabled, [data-disabled]) {
+    background: var(--demo-neutral-subtle);
+  }
+
+  .button:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: -1px;
+  }
+
+  .button:is(:disabled, [data-disabled]) {
+    opacity: 0.5;
+    filter: grayscale(100%);
     cursor: not-allowed;
   }
 
