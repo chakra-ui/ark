@@ -7,6 +7,8 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core'
   template: `
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -28,6 +30,8 @@ export class ToggleBoldIcon {}
   template: `
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
       viewBox="0 0 24 24"
       [attr.fill]="filled() ? 'currentColor' : 'none'"
       stroke="currentColor"
