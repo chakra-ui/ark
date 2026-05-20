@@ -9,12 +9,22 @@ import {
   ArkTimerSeparator,
 } from '../public-api'
 import { timerExampleStyles } from '../timer-example-styles'
+import { TimerPlayIcon, TimerRotateCcwIcon } from './icons'
 
 @Component({
   selector: 'timer-events-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ArkTimerRoot, ArkTimerArea, ArkTimerItem, ArkTimerSeparator, ArkTimerControl, ArkTimerActionTrigger],
+  imports: [
+    ArkTimerRoot,
+    ArkTimerArea,
+    ArkTimerItem,
+    ArkTimerSeparator,
+    ArkTimerControl,
+    ArkTimerActionTrigger,
+    TimerPlayIcon,
+    TimerRotateCcwIcon,
+  ],
   template: `
     <div arkTimer [targetMs]="60 * 1000" (complete)="onComplete()" (tick)="handleTick($event)" class="timer-root">
       <div arkTimerArea class="timer-area">
@@ -29,8 +39,14 @@ import { timerExampleStyles } from '../timer-example-styles'
         </div>
       </div>
       <div arkTimerControl class="timer-control">
-        <button arkTimerActionTrigger action="start" class="timer-button">Start</button>
-        <button arkTimerActionTrigger action="reset" class="timer-button">Reset</button>
+        <button arkTimerActionTrigger action="start" class="timer-button">
+          <timer-play-icon />
+          Start
+        </button>
+        <button arkTimerActionTrigger action="reset" class="timer-button">
+          <timer-rotate-ccw-icon />
+          Reset
+        </button>
       </div>
       <output class="timer-output">Ticks: {{ ticks() }}</output>
     </div>
