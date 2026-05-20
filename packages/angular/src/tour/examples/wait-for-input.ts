@@ -19,6 +19,7 @@ import {
   waitForEvent,
 } from '../public-api'
 import { tourExampleStyles } from '../tour-example-styles'
+import { TourSparklesIcon, TourXIcon } from './icons'
 
 @Component({
   selector: 'tour-wait-for-input-example',
@@ -40,10 +41,13 @@ import { tourExampleStyles } from '../tour-example-styles'
     ArkTourControl,
     ArkTourActions,
     ArkTourActionTrigger,
+    TourSparklesIcon,
+    TourXIcon,
   ],
   template: `
     <div class="tour-root" arkTour #tour="arkTour" [steps]="steps">
-      <button type="button" class="tour-button" data-variant="solid" (click)="tour.api().start()">
+      <button type="button" class="tour-button" data-variant="surface" (click)="tour.api().start()">
+        <tour-sparkles-icon />
         Start Form Tutorial
       </button>
 
@@ -70,7 +74,9 @@ import { tourExampleStyles } from '../tour-example-styles'
             <div arkTourArrow class="tour-arrow">
               <div arkTourArrowTip class="tour-arrow-tip"></div>
             </div>
-            <button type="button" arkTourCloseTrigger class="tour-close-trigger" aria-label="Close">x</button>
+            <button type="button" arkTourCloseTrigger class="tour-close-trigger" aria-label="Close">
+              <tour-x-icon />
+            </button>
             <div arkTourProgressText class="tour-progress-text"></div>
             <h2 arkTourTitle class="tour-title"></h2>
             <p arkTourDescription class="tour-description"></p>

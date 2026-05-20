@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/angular'
 import { moduleMetadata } from '@storybook/angular'
 import { TourAsyncStepExample } from './examples/async-step'
 import { TourBasicExample } from './examples/basic'
-import { TourControlledExample } from './examples/controlled'
 import { TourEventsExample } from './examples/events'
 import { TourKeyboardNavigationExample } from './examples/keyboard-navigation'
 import { TourMixedTypesExample } from './examples/mixed-types'
@@ -46,11 +45,6 @@ export const MixedTypes: StoryObj = {
 export const SkipTour: StoryObj = {
   decorators: [moduleMetadata({ imports: [TourSkipTourExample] })],
   render: () => ({ template: '<tour-skip-tour-example />' }),
-}
-
-export const Controlled: StoryObj = {
-  decorators: [moduleMetadata({ imports: [TourControlledExample] })],
-  render: () => ({ template: '<tour-controlled-example />' }),
 }
 
 export const WaitForClick: StoryObj = {

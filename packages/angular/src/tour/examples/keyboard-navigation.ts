@@ -18,6 +18,7 @@ import {
   ArkTourTitle,
 } from '../public-api'
 import { tourExampleStyles } from '../tour-example-styles'
+import { TourKeyboardIcon, TourSparklesIcon, TourXIcon } from './icons'
 
 @Component({
   selector: 'tour-keyboard-navigation-example',
@@ -39,12 +40,21 @@ import { tourExampleStyles } from '../tour-example-styles'
     ArkTourControl,
     ArkTourActions,
     ArkTourActionTrigger,
+    TourSparklesIcon,
+    TourKeyboardIcon,
+    TourXIcon,
   ],
   template: `
     <div class="tour-root" arkTour #tour="arkTour" [steps]="steps" [keyboardNavigation]="true">
-      <button type="button" class="tour-button" data-variant="solid" (click)="tour.api().start()">Start Tour</button>
+      <button type="button" class="tour-button" data-variant="surface" (click)="tour.api().start()">
+        <tour-sparkles-icon />
+        Start Tour
+      </button>
 
-      <p class="tour-hint">Use arrow keys to navigate, Escape to close</p>
+      <p class="tour-hint">
+        <tour-keyboard-icon />
+        Use arrow keys to navigate, Escape to close
+      </p>
 
       <div class="tour-targets">
         <div id="key-1" class="tour-target">Step 1</div>
@@ -60,7 +70,9 @@ import { tourExampleStyles } from '../tour-example-styles'
             <div arkTourArrow class="tour-arrow">
               <div arkTourArrowTip class="tour-arrow-tip"></div>
             </div>
-            <button type="button" arkTourCloseTrigger class="tour-close-trigger" aria-label="Close">x</button>
+            <button type="button" arkTourCloseTrigger class="tour-close-trigger" aria-label="Close">
+              <tour-x-icon />
+            </button>
             <div arkTourProgressText class="tour-progress-text"></div>
             <h2 arkTourTitle class="tour-title"></h2>
             <p arkTourDescription class="tour-description"></p>
