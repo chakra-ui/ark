@@ -24,20 +24,23 @@ import { scrollAreaExampleStyles } from '../scroll-area-example-styles'
     ArkScrollAreaCorner,
   ],
   template: `
-    <div class="scroll-area-actions">
-      <button type="button" (click)="scrollArea.api().scrollToEdge({ edge: 'top' })">Scroll to Top</button>
-      <button type="button" (click)="scrollArea.api().scrollToEdge({ edge: 'bottom' })">Scroll to Bottom</button>
-    </div>
-    <div arkScrollAreaRootProvider [value]="scrollArea" class="scroll-area-root">
-      <div arkScrollAreaViewport class="scroll-area-viewport">
-        <div arkScrollAreaContent class="scroll-area-content">
-          <p class="scroll-area-paragraph">{{ content }}</p>
+    <div class="stack">
+      <div class="hstack">
+        <button type="button" (click)="scrollArea.api().scrollToEdge({ edge: 'top' })">Scroll to Top</button>
+        <button type="button" (click)="scrollArea.api().scrollToEdge({ edge: 'bottom' })">Scroll to Bottom</button>
+      </div>
+
+      <div arkScrollAreaRootProvider [value]="scrollArea" class="scroll-area-root">
+        <div arkScrollAreaViewport class="scroll-area-viewport">
+          <div arkScrollAreaContent class="scroll-area-content">
+            <p class="scroll-area-paragraph">{{ content }}</p>
+          </div>
         </div>
+        <div arkScrollAreaScrollbar class="scroll-area-scrollbar">
+          <div arkScrollAreaThumb class="scroll-area-thumb"></div>
+        </div>
+        <div arkScrollAreaCorner class="scroll-area-corner"></div>
       </div>
-      <div arkScrollAreaScrollbar class="scroll-area-scrollbar">
-        <div arkScrollAreaThumb class="scroll-area-thumb"></div>
-      </div>
-      <div arkScrollAreaCorner class="scroll-area-corner"></div>
     </div>
   `,
   styles: [scrollAreaExampleStyles],

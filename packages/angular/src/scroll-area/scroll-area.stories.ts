@@ -17,14 +17,14 @@ export const Basic: StoryObj = {
   render: () => ({ template: '<scroll-area-basic-example />' }),
 }
 
-export const Horizontal: StoryObj = {
-  decorators: [moduleMetadata({ imports: [ScrollAreaHorizontalExample] })],
-  render: () => ({ template: '<scroll-area-horizontal-example />' }),
-}
-
 export const BothDirections: StoryObj = {
   decorators: [moduleMetadata({ imports: [ScrollAreaBothDirectionsExample] })],
   render: () => ({ template: '<scroll-area-both-directions-example />' }),
+}
+
+export const Horizontal: StoryObj = {
+  decorators: [moduleMetadata({ imports: [ScrollAreaHorizontalExample] })],
+  render: () => ({ template: '<scroll-area-horizontal-example />' }),
 }
 
 export const Nested: StoryObj = {
