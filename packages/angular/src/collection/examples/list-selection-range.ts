@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
 import { createListCollection, createListSelection } from '../public-api'
+import { listSelectionExampleStyles } from '../list-selection-example-styles'
 
 interface ListSelectionItem {
   label: string
@@ -11,44 +12,22 @@ interface ListSelectionItem {
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="list-selection">
-      <output>Selected: {{ selectedValues().join(', ') || 'none' }}</output>
-      <div class="items">
-        @for (item of collection.items; track item.value) {
-          <label class="item" [attr.data-selected]="isSelected(item.value) || undefined">
-            <input type="checkbox" [checked]="isSelected(item.value)" (change)="toggle(item.value)" />
-            {{ item.label }}
-          </label>
-        }
-      </div>
-      <div class="controls">
-        <button type="button" (click)="extendSelection('vue', 'svelte')">Select Vue to Svelte</button>
-        <button type="button" (click)="extendSelection('angular', 'solid')">Select Angular to Solid</button>
-        <button type="button" (click)="clearSelection()">Clear selection</button>
-      </div>
+    <div class="list-selection-root">
+      <output>Selected: {{ selectedValues().join(', ') || 'None' }}</output>
+      @for (item of collection.items; track item.value) {
+        <label
+          class="list-selection-item"
+          [attr.data-selected]="isSelected(item.value) || undefined"
+          (click)="handleItemClick(item.value, $event)"
+        >
+          <input type="checkbox" class="list-selection-checkbox" [checked]="isSelected(item.value)" />
+          <span class="list-selection-item-text">{{ item.label }}</span>
+        </label>
+      }
+      <p class="list-selection-helper-text">Click to select • Shift+Click for range • Cmd/Ctrl+Click to toggle</p>
     </div>
   `,
-  styles: [
-    `
-      .list-selection {
-        display: grid;
-        gap: 0.75rem;
-        max-width: 22rem;
-      }
-
-      .items,
-      .controls {
-        display: grid;
-        gap: 0.5rem;
-      }
-
-      .item {
-        align-items: center;
-        display: flex;
-        gap: 0.5rem;
-      }
-    `,
-  ],
+  styles: [listSelectionExampleStyles],
 })
 export class CollectionListSelectionRangeExample {
   protected readonly items: ListSelectionItem[] = [
@@ -70,15 +49,19 @@ export class CollectionListSelectionRangeExample {
     return this.selection().isSelected(value)
   }
 
-  protected toggle(value: string): void {
-    this.selection.update((selection) => selection.toggleSelection(this.collection, value))
-  }
+  protected handleItemClick(value: string, event: MouseEvent): void {
+    this.selection.update((selection) => {
+      const anchorValue = selection.firstSelectedValue(this.collection)
 
-  protected extendSelection(anchorValue: string, targetValue: string): void {
-    this.selection.update((selection) => selection.extendSelection(this.collection, anchorValue, targetValue))
-  }
+      if (event.shiftKey && anchorValue) {
+        return selection.extendSelection(this.collection, anchorValue, value)
+      }
 
-  protected clearSelection(): void {
-    this.selection.update((selection) => selection.clearSelection())
+      if (event.ctrlKey || event.metaKey) {
+        return selection.toggleSelection(this.collection, value)
+      }
+
+      return selection.replaceSelection(this.collection, value)
+    })
   }
 }

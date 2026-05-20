@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
 import { createListCollection, createListSelection } from '../public-api'
+import { listSelectionExampleStyles } from '../list-selection-example-styles'
 
 interface ListSelectionItem {
   label: string
@@ -11,48 +12,29 @@ interface ListSelectionItem {
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="list-selection">
-      <div class="header">
-        <output>{{ selectedValues().length }} of {{ collection.size }} selected</output>
-        <button type="button" (click)="toggleAll()">{{ isAllSelected() ? 'Deselect all' : 'Select all' }}</button>
+    <div class="list-selection-root">
+      <div class="list-selection-header">
+        <span class="list-selection-count">
+          {{ selectedValues().length }} of {{ collection.items.length }} selected
+        </span>
+        <button type="button" class="list-selection-select-all-button" (click)="toggleAll()">
+          {{ isAllSelected() ? 'Deselect all' : 'Select all' }}
+        </button>
       </div>
-      <div class="items">
-        @for (item of collection.items; track item.value) {
-          <label class="item" [attr.data-selected]="isSelected(item.value) || undefined">
-            <input type="checkbox" [checked]="isSelected(item.value)" (change)="select(item.value)" />
-            {{ item.label }}
-          </label>
-        }
-      </div>
+      @for (item of collection.items; track item.value) {
+        <label class="list-selection-item" [attr.data-selected]="isSelected(item.value) || undefined">
+          <input
+            type="checkbox"
+            class="list-selection-checkbox"
+            [checked]="isSelected(item.value)"
+            (change)="select(item.value)"
+          />
+          <span class="list-selection-item-text">{{ item.label }}</span>
+        </label>
+      }
     </div>
   `,
-  styles: [
-    `
-      .list-selection {
-        display: grid;
-        gap: 0.75rem;
-        max-width: 20rem;
-      }
-
-      .header {
-        align-items: center;
-        display: flex;
-        gap: 0.75rem;
-        justify-content: space-between;
-      }
-
-      .items {
-        display: grid;
-        gap: 0.5rem;
-      }
-
-      .item {
-        align-items: center;
-        display: flex;
-        gap: 0.5rem;
-      }
-    `,
-  ],
+  styles: [listSelectionExampleStyles],
 })
 export class CollectionListSelectionMultipleExample {
   protected readonly items: ListSelectionItem[] = [
