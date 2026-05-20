@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/angular'
 import { moduleMetadata } from '@storybook/angular'
 import { NumberInputBasicExample } from './examples/basic'
 import { NumberInputContextExample } from './examples/context'
-import { NumberInputControlledExample } from './examples/controlled'
 import { NumberInputFormattingExample } from './examples/formatting'
 import { NumberInputFractionDigitsExample } from './examples/fraction-digits'
 import { NumberInputMinMaxExample } from './examples/min-max'
@@ -20,11 +19,6 @@ export default meta
 export const Basic: StoryObj = {
   decorators: [moduleMetadata({ imports: [NumberInputBasicExample] })],
   render: () => ({ template: '<number-input-basic-example />' }),
-}
-
-export const Controlled: StoryObj = {
-  decorators: [moduleMetadata({ imports: [NumberInputControlledExample] })],
-  render: () => ({ template: '<number-input-controlled-example />' }),
 }
 
 export const Formatting: StoryObj = {
@@ -52,11 +46,6 @@ export const Context: StoryObj = {
   render: () => ({ template: '<number-input-context-example />' }),
 }
 
-export const WithField: StoryObj = {
-  decorators: [moduleMetadata({ imports: [NumberInputWithFieldExample] })],
-  render: () => ({ template: '<number-input-with-field-example />' }),
-}
-
 export const RootProvider: StoryObj = {
   decorators: [moduleMetadata({ imports: [NumberInputRootProviderExample] })],
   render: () => ({ template: '<number-input-root-provider-example />' }),
@@ -65,4 +54,9 @@ export const RootProvider: StoryObj = {
 export const Scrubber: StoryObj = {
   decorators: [moduleMetadata({ imports: [NumberInputScrubberExample] })],
   render: () => ({ template: '<number-input-scrubber-example />' }),
+}
+
+export const WithField: StoryObj = {
+  decorators: [moduleMetadata({ imports: [NumberInputWithFieldExample] })],
+  render: () => ({ template: '<number-input-with-field-example />' }),
 }
