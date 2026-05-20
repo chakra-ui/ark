@@ -77,12 +77,12 @@ describe('useMachine', () => {
     handle.destroy()
   })
 
-  it('mirrors service state updates into an Angular signal (criterion 9)', async () => {
+  it('mirrors service state updates into an Angular signal (criterion 9)', () => {
     const handle = mountHarness(() => ({ open: false }))
-    await Promise.resolve()
+    TestBed.tick()
     expect(handle.result.state().matches('idle')).toBe(true)
     handle.result.send({ type: 'ACTIVATE' })
-    await Promise.resolve()
+    TestBed.tick()
     expect(handle.result.state().matches('active')).toBe(true)
     handle.destroy()
   })
@@ -152,6 +152,7 @@ describe('useMachine', () => {
 
   it('stops the service and clears subscribers on destroy', () => {
     const handle = mountHarness(() => ({ open: false }))
+    TestBed.tick()
     const listener = vi.fn()
     const service = handle.result.service as unknown as {
       subscribe: (listener: (state: unknown) => void) => () => void
@@ -269,6 +270,7 @@ describe('useMachine', () => {
       },
     })
     const handle = mountMachine(advancedMachine, () => ({ allow: allow() }))
+    TestBed.tick()
 
     handle.result.send({ type: 'ACTIVATE' })
     expect(handle.result.state().matches('idle')).toBe(true)
@@ -329,6 +331,7 @@ describe('useMachine', () => {
       },
     })
     const handle = mountMachine(queuedMachine, () => ({}))
+    TestBed.tick()
 
     expect(handle.result.state().matches('active')).toBe(true)
     handle.destroy()
