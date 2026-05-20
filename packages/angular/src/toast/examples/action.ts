@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core'
 import {
   ArkToaster,
   ArkToastActionTrigger,
@@ -12,6 +12,7 @@ import { toastExampleStyles } from '../toast-example-styles'
   selector: 'toast-action-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   imports: [ArkToaster, ArkToastTitle, ArkToastDescription, ArkToastActionTrigger],
   template: `
     <div class="toast-demo">

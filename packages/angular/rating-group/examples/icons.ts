@@ -4,6 +4,27 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core'
   selector: 'rating-group-star-icon',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[attr.data-bg]': "background() ? '' : null",
+    '[attr.data-fg]': "foreground() ? '' : null",
+  },
+  styles: [
+    `
+      :host {
+        position: absolute;
+        inset: 0;
+        display: inline-flex;
+        width: 100%;
+        height: 100%;
+      }
+
+      svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    `,
+  ],
   template: `
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15,8 +36,6 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core'
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
-      [attr.data-bg]="background() ? '' : null"
-      [attr.data-fg]="foreground() ? '' : null"
       aria-hidden="true"
     >
       <path

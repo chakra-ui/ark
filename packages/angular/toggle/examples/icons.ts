@@ -4,6 +4,21 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core'
   selector: 'toggle-bold-icon',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: [
+    `
+      :host {
+        display: inline-flex;
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+
+      svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    `,
+  ],
   template: `
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -27,6 +42,21 @@ export class ToggleBoldIcon {}
   selector: 'toggle-heart-icon',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: [
+    `
+      :host {
+        display: inline-flex;
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+
+      svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    `,
+  ],
   template: `
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -4,12 +4,28 @@ import { ChangeDetectionStrategy, Component } from '@angular/core'
   selector: 'menu-chevron-down-icon',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: [
+    `
+      :host {
+        display: inline-flex;
+        width: 1rem;
+        height: 1rem;
+        flex-shrink: 0;
+      }
+
+      svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    `,
+  ],
   template: `
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      width="14"
-      height="14"
+      width="16"
+      height="16"
       fill="none"
       stroke="currentColor"
       stroke-width="2"

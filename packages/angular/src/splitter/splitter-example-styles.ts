@@ -8,7 +8,7 @@ export const splitterExampleStyles = `
 
 .splitter-root {
   --splitter-border-color: var(--demo-border-emphasized);
-  --splitter-thumb-color: var(--demo-bg-thumb);
+  --splitter-thumb-color: var(--demo-neutral-emphasized);
   --splitter-thumb-size: 0.5rem;
   --splitter-thumb-inset: calc(var(--splitter-thumb-size) * -0.5);
   --splitter-border-size: 1px;
@@ -86,7 +86,7 @@ export const splitterExampleStyles = `
 
 .splitter-indicator {
   background: var(--splitter-thumb-color);
-  border: 1px solid var(--demo-border);
+  border: 1px solid var(--demo-border-emphasized);
   border-radius: 999px;
   box-shadow: var(--demo-shadow-sm);
   display: block;
@@ -96,11 +96,11 @@ export const splitterExampleStyles = `
 
 .splitter-indicator[data-orientation='horizontal'] {
   height: var(--splitter-handle-size);
-  width: 100%;
+  width: var(--splitter-thumb-size);
 }
 
 .splitter-indicator[data-orientation='vertical'] {
-  height: 100%;
+  height: var(--splitter-thumb-size);
   width: var(--splitter-handle-size);
 }
 

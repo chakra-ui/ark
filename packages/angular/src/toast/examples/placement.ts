@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core'
 import {
   ArkToaster,
   ArkToastCloseTrigger,
@@ -13,6 +13,7 @@ import { ToastXIcon } from './icons'
   selector: 'toast-placement-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   imports: [ArkToaster, ArkToastTitle, ArkToastDescription, ArkToastCloseTrigger, ToastXIcon],
   template: `
     <div class="toast-demo">

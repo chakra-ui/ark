@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, ViewEncapsulation, signal } from '@angular/core'
 import {
   ArkToaster,
   ArkToastCloseTrigger,
@@ -20,6 +20,7 @@ const descriptions = [
   selector: 'toast-varying-height-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   imports: [ArkToaster, ArkToastTitle, ArkToastDescription, ArkToastCloseTrigger, ToastXIcon],
   template: `
     <div class="toast-demo">

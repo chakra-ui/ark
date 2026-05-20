@@ -42,7 +42,7 @@ export const tooltipExampleStyles = `
     --arrow-size: 10px;
     position: relative;
     background: var(--demo-bg-popover, #1c1917);
-    color: var(--fg-inverted, #ffffff);
+    color: var(--demo-neutral-fg, #1c1917);
     border-radius: 0.25rem;
     border: 1px solid var(--demo-border-muted, #44403c);
     padding-block: 0.25rem;

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core'
 import {
   ArkToaster,
   ArkToastCloseTrigger,
@@ -20,6 +20,7 @@ const durations = [
   selector: 'toast-duration-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   imports: [ArkToaster, ArkToastTitle, ArkToastDescription, ArkToastCloseTrigger, ToastClockIcon, ToastXIcon],
   template: `
     <div class="toast-demo">
