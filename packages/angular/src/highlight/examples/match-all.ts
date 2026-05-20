@@ -11,19 +11,19 @@ const text = 'Each component follows WAI-ARIA guidelines. Every component is rig
   imports: [ArkHighlightComponent],
   template: `
     <div class="Root">
-      <section class="Section">
+      <div class="Section">
         <span class="Label">Match All</span>
         <p class="Text">
           <ark-highlight [text]="text" query="component" [matchAll]="true" markClass="Mark" />
         </p>
-      </section>
+      </div>
 
-      <section class="Section">
+      <div class="Section">
         <span class="Label">Match First Only</span>
         <p class="Text">
           <ark-highlight [text]="text" query="component" [matchAll]="false" markClass="Mark" />
         </p>
-      </section>
+      </div>
     </div>
   `,
   styles: [highlightExampleStyles],
