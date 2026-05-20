@@ -56,19 +56,25 @@ import { asyncChildrenByPath, childIndexPath, initialAsyncCollection, isBranch, 
       [collection]="collection()"
       [loadChildren]="loadChildren"
       (loadChildrenComplete)="handleLoadChildrenComplete($event)"
+      #treeView="arkTreeView"
     >
       <h3 arkTreeViewLabel>Tree</h3>
       <div arkTreeViewTree>
         @for (node of collection().rootNode.children ?? []; track node.id; let index = $index) {
           <ng-container
             [ngTemplateOutlet]="nodeTemplate"
-            [ngTemplateOutletContext]="{ $implicit: node, indexPath: [index] }"
+            [ngTemplateOutletContext]="{
+              $implicit: node,
+              indexPath: [index],
+              treeViewInjector: treeView.getContextCarrier().elementInjector,
+            }"
+            [ngTemplateOutletInjector]="treeView.getContextCarrier().elementInjector"
           />
         }
       </div>
     </div>
 
-    <ng-template #nodeTemplate let-node let-indexPath="indexPath">
+    <ng-template #nodeTemplate let-node let-indexPath="indexPath" let-treeViewInjector="treeViewInjector">
       <ng-container
         arkTreeViewNodeProvider
         [node]="node"
@@ -98,7 +104,9 @@ import { asyncChildrenByPath, childIndexPath, initialAsyncCollection, isBranch, 
                   [ngTemplateOutletContext]="{
                     $implicit: child,
                     indexPath: childIndexPath(indexPath, childIndex),
+                    treeViewInjector,
                   }"
+                  [ngTemplateOutletInjector]="treeViewInjector"
                 />
               }
             </div>

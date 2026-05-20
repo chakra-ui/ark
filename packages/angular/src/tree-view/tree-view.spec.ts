@@ -52,10 +52,18 @@ import {
   type UseTreeViewProps,
   type UseTreeViewReturn,
 } from './public-api'
+import { TreeViewAsyncLoadingExample } from './examples/async-loading'
+import { TreeViewBasicExample } from './examples/basic'
+import { TreeViewCheckboxTreeExample } from './examples/checkbox-tree'
+import { TreeViewControlledExpandedExample } from './examples/controlled-expanded'
+import { TreeViewControlledSelectedExample } from './examples/controlled-selected'
 import { TreeViewDisabledNodeExample } from './examples/disabled-node'
+import { TreeViewExpandCollapseAllExample } from './examples/expand-collapse-all'
 import { TreeViewFilteringExample } from './examples/filtering'
 import { TreeViewLinksExample } from './examples/links'
 import { TreeViewMutationExample } from './examples/mutation'
+import { TreeViewRenameNodeExample } from './examples/rename-node'
+import { TreeViewRootProviderExample } from './examples/root-provider'
 
 interface Node {
   id: string
@@ -697,12 +705,20 @@ describe('@ark-ui/angular/src/tree-view', () => {
     fixture.destroy()
   })
 
-  it('compiles the additional React parity story examples', () => {
+  it('compiles every story example and renders tree items', () => {
     const examples: Array<Type<unknown>> = [
+      TreeViewAsyncLoadingExample,
+      TreeViewBasicExample,
+      TreeViewCheckboxTreeExample,
+      TreeViewControlledExpandedExample,
+      TreeViewControlledSelectedExample,
       TreeViewDisabledNodeExample,
+      TreeViewExpandCollapseAllExample,
       TreeViewFilteringExample,
       TreeViewLinksExample,
       TreeViewMutationExample,
+      TreeViewRenameNodeExample,
+      TreeViewRootProviderExample,
     ]
 
     for (const Example of examples) {
@@ -712,6 +728,7 @@ describe('@ark-ui/angular/src/tree-view', () => {
       fixture.detectChanges()
 
       expect(fixture.nativeElement.querySelector('[role="tree"]')).toBeTruthy()
+      expect(fixture.nativeElement.querySelectorAll('[role="treeitem"]').length).toBeGreaterThan(0)
 
       fixture.destroy()
     }

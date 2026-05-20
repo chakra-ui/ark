@@ -52,13 +52,18 @@ import { childIndexPath, fileTreeCollection, type FileTreeNode } from './_tree-d
         @for (node of collection.rootNode.children ?? []; track node.id; let index = $index) {
           <ng-container
             [ngTemplateOutlet]="nodeTemplate"
-            [ngTemplateOutletContext]="{ $implicit: node, indexPath: [index] }"
+            [ngTemplateOutletContext]="{
+              $implicit: node,
+              indexPath: [index],
+              treeViewInjector: treeView.getContextCarrier().elementInjector,
+            }"
+            [ngTemplateOutletInjector]="treeView.getContextCarrier().elementInjector"
           />
         }
       </div>
     </div>
 
-    <ng-template #nodeTemplate let-node let-indexPath="indexPath">
+    <ng-template #nodeTemplate let-node let-indexPath="indexPath" let-treeViewInjector="treeViewInjector">
       <ng-container
         arkTreeViewNodeProvider
         [node]="node"
@@ -86,7 +91,9 @@ import { childIndexPath, fileTreeCollection, type FileTreeNode } from './_tree-d
                   [ngTemplateOutletContext]="{
                     $implicit: child,
                     indexPath: childIndexPath(indexPath, childIndex),
+                    treeViewInjector,
                   }"
+                  [ngTemplateOutletInjector]="treeViewInjector"
                 />
               }
             </div>

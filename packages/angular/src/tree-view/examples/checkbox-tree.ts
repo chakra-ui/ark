@@ -45,32 +45,37 @@ import { childIndexPath, fileTreeCollection } from './_tree-data'
     TreeViewMinusIcon,
   ],
   template: `
-    <div arkTreeView [collection]="collection" [defaultCheckedValue]="[]">
+    <div arkTreeView [collection]="collection" [defaultCheckedValue]="[]" #treeView="arkTreeView">
       <h3 arkTreeViewLabel>Tree</h3>
       <div arkTreeViewTree>
         @for (node of collection.rootNode.children ?? []; track node.id; let index = $index) {
           <ng-container
             [ngTemplateOutlet]="nodeTemplate"
-            [ngTemplateOutletContext]="{ $implicit: node, indexPath: [index] }"
+            [ngTemplateOutletContext]="{
+              $implicit: node,
+              indexPath: [index],
+              treeViewInjector: treeView.getContextCarrier().elementInjector,
+            }"
+            [ngTemplateOutletInjector]="treeView.getContextCarrier().elementInjector"
           />
         }
       </div>
     </div>
 
-    <ng-template #checkboxTemplate>
-      <span arkTreeViewNodeCheckbox>
-        <span arkTreeViewNodeCheckboxIndicator state="checked"><tree-view-check-icon /></span>
-        <span arkTreeViewNodeCheckboxIndicator state="indeterminate"><tree-view-minus-icon /></span>
-      </span>
-    </ng-template>
-
-    <ng-template #nodeTemplate let-node let-indexPath="indexPath">
+    <ng-template #nodeTemplate let-node let-indexPath="indexPath" let-treeViewInjector="treeViewInjector">
       <ng-container arkTreeViewNodeProvider [node]="node" [indexPath]="indexPath">
         @if (node.children?.length) {
           <div arkTreeViewBranch>
             <div arkTreeViewBranchControl>
               <span arkTreeViewBranchIndicator><tree-view-chevron-right-icon /></span>
-              <ng-container [ngTemplateOutlet]="checkboxTemplate" />
+              <span arkTreeViewNodeCheckbox [node]="node" [indexPath]="indexPath">
+                <span arkTreeViewNodeCheckboxIndicator state="checked" [node]="node" [indexPath]="indexPath">
+                  <tree-view-check-icon />
+                </span>
+                <span arkTreeViewNodeCheckboxIndicator state="indeterminate" [node]="node" [indexPath]="indexPath">
+                  <tree-view-minus-icon />
+                </span>
+              </span>
               <span arkTreeViewBranchText>{{ node.name }}</span>
             </div>
             <div arkTreeViewBranchContent>
@@ -81,14 +86,23 @@ import { childIndexPath, fileTreeCollection } from './_tree-data'
                   [ngTemplateOutletContext]="{
                     $implicit: child,
                     indexPath: childIndexPath(indexPath, childIndex),
+                    treeViewInjector,
                   }"
+                  [ngTemplateOutletInjector]="treeViewInjector"
                 />
               }
             </div>
           </div>
         } @else {
           <div arkTreeViewItem>
-            <ng-container [ngTemplateOutlet]="checkboxTemplate" />
+            <span arkTreeViewNodeCheckbox [node]="node" [indexPath]="indexPath">
+              <span arkTreeViewNodeCheckboxIndicator state="checked" [node]="node" [indexPath]="indexPath">
+                <tree-view-check-icon />
+              </span>
+              <span arkTreeViewNodeCheckboxIndicator state="indeterminate" [node]="node" [indexPath]="indexPath">
+                <tree-view-minus-icon />
+              </span>
+            </span>
             <span arkTreeViewItemText>{{ node.name }}</span>
           </div>
         }
