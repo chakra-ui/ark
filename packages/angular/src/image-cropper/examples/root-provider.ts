@@ -10,6 +10,7 @@ import {
   useImageCropper,
 } from '../public-api'
 import { imageCropperExampleStyles } from '../image-cropper-example-styles'
+import { ImageCropperZoomInIcon, ImageCropperZoomOutIcon } from './icons'
 
 @Component({
   selector: 'image-cropper-root-provider-example',
@@ -22,16 +23,18 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
     ArkImageCropperSelection,
     ArkImageCropperHandle,
     ArkImageCropperGrid,
+    ImageCropperZoomOutIcon,
+    ImageCropperZoomInIcon,
   ],
   template: `
     <div class="layout">
       <div class="toolbar">
         <button type="button" aria-label="Zoom out" (click)="imageCropper.api().setZoom(imageCropper.api().zoom - 0.1)">
-          -
+          <image-cropper-zoom-out-icon />
         </button>
         <span class="meter">{{ imageCropper.api().zoom.toFixed(1) }}x</span>
         <button type="button" aria-label="Zoom in" (click)="imageCropper.api().setZoom(imageCropper.api().zoom + 0.1)">
-          +
+          <image-cropper-zoom-in-icon />
         </button>
       </div>
 

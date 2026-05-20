@@ -9,6 +9,7 @@ import {
   imageCropperHandles,
 } from '../public-api'
 import { imageCropperExampleStyles } from '../image-cropper-example-styles'
+import { ImageCropperRectangleHorizontalIcon, ImageCropperRectangleVerticalIcon, ImageCropperSquareIcon } from './icons'
 
 const aspects = [
   { label: '16:9', value: 16 / 9 },
@@ -27,19 +28,37 @@ const aspects = [
     ArkImageCropperSelection,
     ArkImageCropperHandle,
     ArkImageCropperGrid,
+    ImageCropperRectangleHorizontalIcon,
+    ImageCropperSquareIcon,
+    ImageCropperRectangleVerticalIcon,
   ],
   template: `
     <div class="layout">
       <div class="toolbar">
-        @for (aspect of aspects; track aspect.label) {
-          <button
-            type="button"
-            [attr.data-variant]="aspectRatio() === aspect.value ? 'solid' : null"
-            (click)="aspectRatio.set(aspect.value)"
-          >
-            {{ aspect.label }}
-          </button>
-        }
+        <button
+          type="button"
+          [attr.data-variant]="aspectRatio() === horizontalAspect.value ? 'solid' : null"
+          (click)="aspectRatio.set(horizontalAspect.value)"
+        >
+          <image-cropper-rectangle-horizontal-icon />
+          {{ horizontalAspect.label }}
+        </button>
+        <button
+          type="button"
+          [attr.data-variant]="aspectRatio() === squareAspect.value ? 'solid' : null"
+          (click)="aspectRatio.set(squareAspect.value)"
+        >
+          <image-cropper-square-icon />
+          {{ squareAspect.label }}
+        </button>
+        <button
+          type="button"
+          [attr.data-variant]="aspectRatio() === verticalAspect.value ? 'solid' : null"
+          (click)="aspectRatio.set(verticalAspect.value)"
+        >
+          <image-cropper-rectangle-vertical-icon />
+          {{ verticalAspect.label }}
+        </button>
       </div>
 
       <div class="root" arkImageCropper [aspectRatio]="aspectRatio()">
@@ -63,7 +82,9 @@ const aspects = [
   styles: [imageCropperExampleStyles],
 })
 export class ImageCropperAspectRatioExample {
-  readonly aspects = aspects
   readonly aspectRatio = signal(16 / 9)
+  readonly horizontalAspect = aspects[0]!
+  readonly squareAspect = aspects[1]!
+  readonly verticalAspect = aspects[2]!
   readonly handles = imageCropperHandles
 }

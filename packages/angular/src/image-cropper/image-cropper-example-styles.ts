@@ -15,7 +15,8 @@ export const imageCropperExampleStyles = `
 
   .layout,
   .root {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
   }
 
@@ -29,6 +30,7 @@ export const imageCropperExampleStyles = `
     --cropper-overlay-color: rgb(0 0 0 / 0.5);
     position: relative;
     max-width: 28rem;
+    color: var(--demo-neutral-fg);
   }
 
   [data-scope='image-cropper'][data-part='viewport'] {
@@ -196,29 +198,74 @@ export const imageCropperExampleStyles = `
 
   .toolbar {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     gap: 0.5rem;
   }
 
   button {
-    min-height: 2.25rem;
-    border: 1px solid var(--demo-border);
-    border-radius: 6px;
-    background: var(--demo-bg);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    border: 1px solid var(--demo-border-emphasized);
+    border-radius: 0.375rem;
+    background: transparent;
     color: var(--demo-neutral-fg);
-    padding: 0.375rem 0.625rem;
-    font: inherit;
+    padding-inline: 1rem;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    white-space: nowrap;
+    user-select: none;
+    transition:
+      background 150ms,
+      border-color 150ms,
+      color 150ms;
+  }
+
+  button > * {
+    flex-shrink: 0;
+  }
+
+  button[aria-label] {
+    padding-inline: 0.625rem;
+  }
+
+  button:is(:hover, [aria-expanded='true']):not(:disabled, [data-disabled]) {
+    background: var(--demo-neutral-subtle);
+  }
+
+  button:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: -1px;
+  }
+
+  button:is(:disabled, [data-disabled]) {
+    opacity: 0.5;
+    filter: grayscale(100%);
   }
 
   button[data-variant='solid'] {
     border-color: var(--demo-coral-solid);
     background: var(--demo-coral-solid);
-    color: white;
+    color: var(--demo-coral-contrast);
+  }
+
+  button[data-variant='solid']:hover {
+    border-color: var(--demo-coral-fg);
+    background: var(--demo-coral-fg);
+  }
+
+  button[data-variant='solid']:focus-visible {
+    outline-offset: 2px;
   }
 
   button[data-variant='surface'] {
-    background: var(--demo-neutral-subtle);
+    border-color: var(--demo-border-emphasized);
+    color: var(--demo-coral-fg);
   }
 
   .meter {
@@ -265,13 +312,13 @@ export const imageCropperExampleStyles = `
 
   .data-display {
     display: flex;
-    flex-wrap: wrap;
     gap: 1.5rem;
     padding: 0.75rem 1rem;
   }
 
   .data-item {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 0.125rem;
   }
 

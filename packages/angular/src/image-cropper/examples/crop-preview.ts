@@ -10,6 +10,7 @@ import {
   useImageCropper,
 } from '../public-api'
 import { imageCropperExampleStyles } from '../image-cropper-example-styles'
+import { ImageCropperCropIcon } from './icons'
 
 @Component({
   selector: 'image-cropper-crop-preview-example',
@@ -22,11 +23,15 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
     ArkImageCropperSelection,
     ArkImageCropperHandle,
     ArkImageCropperGrid,
+    ImageCropperCropIcon,
   ],
   template: `
     <div class="layout">
       <div class="toolbar">
-        <button type="button" data-variant="solid" (click)="cropImage()">Crop image</button>
+        <button type="button" data-variant="solid" (click)="cropImage()">
+          <image-cropper-crop-icon />
+          Crop Image
+        </button>
       </div>
 
       <div class="root" arkImageCropperRootProvider [value]="imageCropper">
