@@ -42,7 +42,7 @@ import { PopoverXIcon } from './icons'
               <input #firstNameInput class="field" placeholder="First Name" value="John" />
               <input class="field" placeholder="Last Name" />
               <textarea class="field" placeholder="Add details"></textarea>
-              <button type="button" data-variant="solid">Save</button>
+              <button type="button" class="popover-button" data-variant="solid">Save</button>
             </div>
           </div>
         </div>

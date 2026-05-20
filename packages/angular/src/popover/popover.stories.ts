@@ -6,7 +6,6 @@ import { PopoverBasicExample } from './examples/basic'
 import { PopoverCloseBehaviorExample } from './examples/close-behavior'
 import { PopoverContextExample } from './examples/context'
 import { PopoverControlledExample } from './examples/controlled'
-import { PopoverDefaultOpenExample } from './examples/default-open'
 import { PopoverDisableOutsideClickExample } from './examples/disable-outside-click'
 import { PopoverInitialFocusExample } from './examples/initial-focus'
 import { PopoverLazyMountExample } from './examples/lazy-mount'
@@ -16,17 +15,13 @@ import { PopoverNestedExample } from './examples/nested'
 import { PopoverPositioningExample } from './examples/positioning'
 import { PopoverRootProviderExample } from './examples/root-provider'
 import { PopoverSameWidthExample } from './examples/same-width'
+import { PopoverWithDialogExample } from './examples/with-dialog'
 
 const meta: Meta = {
   title: 'Components / Popover',
 }
 
 export default meta
-
-export const Basic: StoryObj = {
-  decorators: [moduleMetadata({ imports: [PopoverBasicExample] })],
-  render: () => ({ template: '<popover-basic-example />' }),
-}
 
 export const Anchor: StoryObj = {
   decorators: [moduleMetadata({ imports: [PopoverAnchorExample] })],
@@ -36,6 +31,11 @@ export const Anchor: StoryObj = {
 export const Arrow: StoryObj = {
   decorators: [moduleMetadata({ imports: [PopoverArrowExample] })],
   render: () => ({ template: '<popover-arrow-example />' }),
+}
+
+export const Basic: StoryObj = {
+  decorators: [moduleMetadata({ imports: [PopoverBasicExample] })],
+  render: () => ({ template: '<popover-basic-example />' }),
 }
 
 export const CloseBehavior: StoryObj = {
@@ -51,11 +51,6 @@ export const Context: StoryObj = {
 export const Controlled: StoryObj = {
   decorators: [moduleMetadata({ imports: [PopoverControlledExample] })],
   render: () => ({ template: '<popover-controlled-example />' }),
-}
-
-export const DefaultOpen: StoryObj = {
-  decorators: [moduleMetadata({ imports: [PopoverDefaultOpenExample] })],
-  render: () => ({ template: '<popover-default-open-example />' }),
 }
 
 export const DisableOutsideClick: StoryObj = {
@@ -101,4 +96,9 @@ export const RootProvider: StoryObj = {
 export const SameWidth: StoryObj = {
   decorators: [moduleMetadata({ imports: [PopoverSameWidthExample] })],
   render: () => ({ template: '<popover-same-width-example />' }),
+}
+
+export const WithDialog: StoryObj = {
+  decorators: [moduleMetadata({ imports: [PopoverWithDialogExample] })],
+  render: () => ({ template: '<popover-with-dialog-example />' }),
 }
