@@ -8,12 +8,14 @@ import { qrCodeExampleStyles } from '../qr-code-example-styles'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArkQrCodeRootProvider, ArkQrCodeFrame, ArkQrCodePattern],
   template: `
-    <div arkQrCodeRootProvider [value]="qrCode">
-      <svg arkQrCodeFrame>
-        <path arkQrCodePattern />
-      </svg>
+    <div class="stack">
+      <div arkQrCodeRootProvider [value]="qrCode">
+        <svg arkQrCodeFrame>
+          <path arkQrCodePattern />
+        </svg>
+      </div>
+      <output>{{ qrCode.api().value }}</output>
     </div>
-    <output>{{ qrCode.api().value }}</output>
   `,
   styles: [qrCodeExampleStyles],
 })

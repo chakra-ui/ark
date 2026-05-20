@@ -14,7 +14,7 @@ import { qrCodeExampleStyles } from '../qr-code-example-styles'
           <path arkQrCodePattern />
         </svg>
       </div>
-      <button class="button" type="button" (click)="value.set('https://chakra-ui.com')">Set value</button>
+      <button class="button" type="button" (click)="value.set('https://chakra-ui.com')">Set to chakra-ui.com</button>
     </div>
   `,
   styles: [qrCodeExampleStyles],
