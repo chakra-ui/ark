@@ -7,12 +7,13 @@ const progressButtonStyles = `
     padding-inline: 1rem;
     min-height: 2.5rem;
     min-width: 2.5rem;
-    font: inherit;
     font-size: 0.875rem;
     font-weight: 500;
+    font-family: inherit;
     line-height: 1.25rem;
-    border: 1px solid var(--demo-border-emphasized);
     border-radius: 0.375rem;
+
+    border: 1px solid var(--demo-border-emphasized);
     background: transparent;
     color: var(--demo-neutral-fg);
     white-space: nowrap;
@@ -23,13 +24,48 @@ const progressButtonStyles = `
       color 150ms;
   }
 
-  .progress-button:hover {
+  .progress-button svg {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+  }
+
+  .progress-button:has(> svg:only-child) {
+    padding-inline: 0.625rem !important;
+  }
+
+  .progress-button:is(:hover, [aria-expanded='true']):not(:disabled, [data-disabled]) {
     background: var(--demo-neutral-subtle);
   }
 
   .progress-button:focus-visible {
     outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: -1px;
+  }
+
+  .progress-button:is(:disabled, [data-disabled]) {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
+  .progress-button[data-variant='surface'] {
+    border-color: var(--demo-border-emphasized);
+    color: var(--demo-coral-fg);
+  }
+
+  .progress-button[data-variant='solid'] {
+    background: var(--demo-coral-solid);
+    border-color: var(--demo-coral-solid);
+    color: var(--demo-coral-contrast);
+  }
+
+  .progress-button[data-variant='solid']:hover {
+    background: var(--demo-coral-fg);
+    border-color: var(--demo-coral-fg);
+  }
+
+  .progress-button[data-variant='solid']:focus-visible {
+    outline-offset: 2px;
   }
 `
 

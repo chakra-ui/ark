@@ -7,7 +7,6 @@ import { ProgressLinearInitialValueExample } from './examples/linear/initial-val
 import { ProgressLinearMinMaxExample } from './examples/linear/min-max'
 import { ProgressLinearRootProviderExample } from './examples/linear/root-provider'
 import { ProgressLinearValueTextExample } from './examples/linear/value-text'
-import { ProgressLinearVerticalExample } from './examples/linear/vertical'
 import { ProgressCircularBasicExample } from './examples/circular/basic'
 import { ProgressCircularControlledExample } from './examples/circular/controlled'
 import { ProgressCircularIndeterminateExample } from './examples/circular/indeterminate'
@@ -32,11 +31,6 @@ export const LinearControlled: StoryObj = {
   render: () => ({ template: '<progress-linear-controlled-example />' }),
 }
 
-export const LinearMinMax: StoryObj = {
-  decorators: [moduleMetadata({ imports: [ProgressLinearMinMaxExample] })],
-  render: () => ({ template: '<progress-linear-min-max-example />' }),
-}
-
 export const LinearIndeterminate: StoryObj = {
   decorators: [moduleMetadata({ imports: [ProgressLinearIndeterminateExample] })],
   render: () => ({ template: '<progress-linear-indeterminate-example />' }),
@@ -47,19 +41,19 @@ export const LinearInitialValue: StoryObj = {
   render: () => ({ template: '<progress-linear-initial-value-example />' }),
 }
 
-export const LinearValueText: StoryObj = {
-  decorators: [moduleMetadata({ imports: [ProgressLinearValueTextExample] })],
-  render: () => ({ template: '<progress-linear-value-text-example />' }),
-}
-
-export const LinearVertical: StoryObj = {
-  decorators: [moduleMetadata({ imports: [ProgressLinearVerticalExample] })],
-  render: () => ({ template: '<progress-linear-vertical-example />' }),
+export const LinearMinMax: StoryObj = {
+  decorators: [moduleMetadata({ imports: [ProgressLinearMinMaxExample] })],
+  render: () => ({ template: '<progress-linear-min-max-example />' }),
 }
 
 export const LinearRootProvider: StoryObj = {
   decorators: [moduleMetadata({ imports: [ProgressLinearRootProviderExample] })],
   render: () => ({ template: '<progress-linear-root-provider-example />' }),
+}
+
+export const LinearValueText: StoryObj = {
+  decorators: [moduleMetadata({ imports: [ProgressLinearValueTextExample] })],
+  render: () => ({ template: '<progress-linear-value-text-example />' }),
 }
 
 export const CircularBasic: StoryObj = {
@@ -72,11 +66,6 @@ export const CircularControlled: StoryObj = {
   render: () => ({ template: '<progress-circular-controlled-example />' }),
 }
 
-export const CircularMinMax: StoryObj = {
-  decorators: [moduleMetadata({ imports: [ProgressCircularMinMaxExample] })],
-  render: () => ({ template: '<progress-circular-min-max-example />' }),
-}
-
 export const CircularIndeterminate: StoryObj = {
   decorators: [moduleMetadata({ imports: [ProgressCircularIndeterminateExample] })],
   render: () => ({ template: '<progress-circular-indeterminate-example />' }),
@@ -87,12 +76,17 @@ export const CircularInitialValue: StoryObj = {
   render: () => ({ template: '<progress-circular-initial-value-example />' }),
 }
 
-export const CircularWithLabel: StoryObj = {
-  decorators: [moduleMetadata({ imports: [ProgressCircularWithLabelExample] })],
-  render: () => ({ template: '<progress-circular-with-label-example />' }),
+export const CircularMinMax: StoryObj = {
+  decorators: [moduleMetadata({ imports: [ProgressCircularMinMaxExample] })],
+  render: () => ({ template: '<progress-circular-min-max-example />' }),
 }
 
 export const CircularRootProvider: StoryObj = {
   decorators: [moduleMetadata({ imports: [ProgressCircularRootProviderExample] })],
   render: () => ({ template: '<progress-circular-root-provider-example />' }),
+}
+
+export const CircularWithLabel: StoryObj = {
+  decorators: [moduleMetadata({ imports: [ProgressCircularWithLabelExample] })],
+  render: () => ({ template: '<progress-circular-with-label-example />' }),
 }
