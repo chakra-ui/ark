@@ -9,6 +9,7 @@ import {
   ArkListboxRootProvider,
   useListbox,
 } from '@ark-ui/angular/listbox'
+import { ListboxCheckIcon } from './icons'
 import { listboxExampleStyles } from '../listbox-example-styles'
 
 interface Priority {
@@ -27,6 +28,7 @@ interface Priority {
     ArkListboxItem,
     ArkListboxItemText,
     ArkListboxItemIndicator,
+    ListboxCheckIcon,
   ],
   template: `
     <div class="stack">
@@ -37,7 +39,7 @@ interface Priority {
           @for (item of collection.items; track item.value) {
             <div arkListboxItem [item]="item">
               <span arkListboxItemText>{{ item.label }}</span>
-              <span arkListboxItemIndicator>✓</span>
+              <span arkListboxItemIndicator><listbox-check-icon /></span>
             </div>
           }
         </div>

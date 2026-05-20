@@ -3,7 +3,6 @@ import { moduleMetadata } from '@storybook/angular'
 import { ListboxBasicExample } from './examples/basic'
 import { ListboxControlledExample } from './examples/controlled'
 import { ListboxDisabledItemExample } from './examples/disabled-item'
-import { ListboxEmptyExample } from './examples/empty'
 import { ListboxExtendedSelectExample } from './examples/extended-select'
 import { ListboxFilteringExample } from './examples/filtering'
 import { ListboxGridExample } from './examples/grid'
@@ -13,7 +12,6 @@ import { ListboxMultipleExample } from './examples/multiple'
 import { ListboxRootProviderExample } from './examples/root-provider'
 import { ListboxSelectAllExample } from './examples/select-all'
 import { ListboxValueTextExample } from './examples/value-text'
-import { ListboxWithFieldExample } from './examples/with-field'
 
 const meta: Meta = {
   title: 'Components / Listbox',
@@ -79,14 +77,4 @@ export const SelectAll: StoryObj = {
 export const ValueText: StoryObj = {
   decorators: [moduleMetadata({ imports: [ListboxValueTextExample] })],
   render: () => ({ template: '<listbox-value-text-example />' }),
-}
-
-export const Empty: StoryObj = {
-  decorators: [moduleMetadata({ imports: [ListboxEmptyExample] })],
-  render: () => ({ template: '<listbox-empty-example />' }),
-}
-
-export const WithField: StoryObj = {
-  decorators: [moduleMetadata({ imports: [ListboxWithFieldExample] })],
-  render: () => ({ template: '<listbox-with-field-example />' }),
 }

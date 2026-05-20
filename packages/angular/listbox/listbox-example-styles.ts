@@ -119,6 +119,11 @@ export const listboxExampleStyles = `
     flex-shrink: 0;
   }
 
+  [arkListboxItemIndicator] svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
   [arkListboxItemIndicator][data-state="unchecked"] {
     visibility: hidden;
   }
@@ -174,6 +179,11 @@ export const listboxExampleStyles = `
     border-radius: 9999px;
   }
 
+  .item-card-indicator svg {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
   .item-card-image {
     width: 150px;
     height: 150px;
@@ -224,6 +234,11 @@ export const listboxExampleStyles = `
     border-radius: 0.25rem;
   }
 
+  .select-all-header-indicator svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
   .select-all-header-indicator:empty {
     background: transparent;
     border-color: var(--demo-border-emphasized, #d1d5db);
@@ -262,25 +277,79 @@ export const listboxExampleStyles = `
   }
 
   .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
     align-self: flex-start;
-    min-height: 2.25rem;
-    padding-inline: 0.75rem;
+    min-height: 2.5rem;
+    min-width: 2.5rem;
+    padding-inline: 1rem;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    white-space: nowrap;
+    user-select: none;
     border: 1px solid var(--demo-border-emphasized, #d1d5db);
     border-radius: 0.375rem;
     background: var(--demo-bg-popover, #ffffff);
     color: var(--demo-neutral-fg, #111827);
-    font: inherit;
     cursor: pointer;
+    transition:
+      background 150ms,
+      border-color 150ms,
+      color 150ms;
+  }
+
+  .button svg {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+  }
+
+  .button:has(> svg:only-child) {
+    padding-inline: 0.625rem !important;
+  }
+
+  .button:is(:hover, [aria-expanded="true"]):not(:disabled, [data-disabled]) {
+    background: var(--demo-neutral-subtle, #f3f4f6);
+  }
+
+  .button:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring, #fb7185);
+    outline-offset: -1px;
+  }
+
+  .button:is(:disabled, [data-disabled]) {
+    opacity: 0.5;
+    filter: grayscale(100%);
+    cursor: not-allowed;
   }
 
   input[arkListboxInput] {
-    min-height: 2.5rem;
-    padding-inline: 0.75rem;
+    width: 100%;
+    min-width: 0;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-family: inherit;
     border: 1px solid var(--demo-border-emphasized, #d1d5db);
     border-radius: 0.375rem;
     color: var(--demo-neutral-fg, #111827);
-    background: var(--demo-bg-popover, #ffffff);
-    font: inherit;
+    background: transparent;
     outline: none;
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  input[arkListboxInput]::placeholder {
+    color: var(--demo-neutral-emphasized, #6b7280);
+  }
+
+  input[arkListboxInput]:focus {
+    border-color: var(--demo-coral-solid, #e11d48);
+    box-shadow: 0 0 0 1px var(--demo-coral-solid, #e11d48);
   }
 `

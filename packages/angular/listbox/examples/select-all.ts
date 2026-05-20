@@ -7,6 +7,7 @@ import {
   ArkListboxItemText,
   ArkListboxRoot,
 } from '@ark-ui/angular/listbox'
+import { ListboxCheckIcon, ListboxMinusIcon } from './icons'
 import { listboxExampleStyles } from '../listbox-example-styles'
 
 interface Framework {
@@ -18,18 +19,32 @@ interface Framework {
   selector: 'listbox-select-all-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ArkListboxRoot, ArkListboxContent, ArkListboxItem, ArkListboxItemText, ArkListboxItemIndicator],
+  imports: [
+    ArkListboxRoot,
+    ArkListboxContent,
+    ArkListboxItem,
+    ArkListboxItemText,
+    ArkListboxItemIndicator,
+    ListboxCheckIcon,
+    ListboxMinusIcon,
+  ],
   template: `
     <div arkListboxRoot [collection]="collection" selectionMode="multiple" [(value)]="value">
       <button class="select-all-header" type="button" (click)="toggleSelectAll()">
-        <span class="select-all-header-indicator">{{ selectAllIndicator() }}</span>
+        <span class="select-all-header-indicator">
+          @if (selectAllIndicator() === 'checked') {
+            <listbox-check-icon />
+          } @else if (selectAllIndicator() === 'mixed') {
+            <listbox-minus-icon />
+          }
+        </span>
         <span class="select-all-header-label">Select All</span>
       </button>
       <div arkListboxContent>
         @for (item of collection.items; track item.value) {
           <div arkListboxItem [item]="item">
             <span arkListboxItemText>{{ item.label }}</span>
-            <span arkListboxItemIndicator>✓</span>
+            <span arkListboxItemIndicator><listbox-check-icon /></span>
           </div>
         }
       </div>
@@ -54,9 +69,9 @@ export class ListboxSelectAllExample {
 
   readonly selectAllIndicator = computed(() => {
     const selectedCount = this.value()?.length ?? 0
-    if (selectedCount === this.collection.items.length) return '✓'
-    if (selectedCount > 0) return '−'
-    return ''
+    if (selectedCount === this.collection.items.length) return 'checked'
+    if (selectedCount > 0) return 'mixed'
+    return 'unchecked'
   })
 
   toggleSelectAll(): void {
