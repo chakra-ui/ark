@@ -4,11 +4,6 @@ export const accordionExampleStyles = `
     color: var(--demo-neutral-fg);
   }
 
-  .stack {
-    display: grid;
-    gap: 0.75rem;
-  }
-
   [arkAccordion],
   [arkAccordionRootProvider] {
     color: var(--demo-neutral-fg);
@@ -158,13 +153,10 @@ export const accordionExampleStyles = `
     width: 100%;
   }
 
-  output {
-    display: flex;
-    flex-direction: column;
+  code {
+    display: inline-flex;
     gap: 0.5rem;
-    border: 1px solid var(--demo-border);
-    padding: 0.5rem;
-    margin-bottom: 1rem;
+    font-size: 0.75rem;
   }
 
   @keyframes expand-height {

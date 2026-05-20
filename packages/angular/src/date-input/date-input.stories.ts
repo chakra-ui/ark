@@ -14,6 +14,7 @@ import { DateInputReadOnlyExample } from './examples/read-only'
 import { DateInputRootProviderExample } from './examples/root-provider'
 import { DateInputRtlExample } from './examples/rtl'
 import { DateInputWithClearButtonExample } from './examples/with-clear-button'
+import { DateInputWithDatePickerExample } from './examples/with-date-picker'
 
 const meta: Meta = {
   title: 'Components / Date Input',
@@ -89,4 +90,9 @@ export const RTL: StoryObj = {
 export const WithClearButton: StoryObj = {
   decorators: [moduleMetadata({ imports: [DateInputWithClearButtonExample] })],
   render: () => ({ template: '<date-input-with-clear-button-example />' }),
+}
+
+export const WithDatePicker: StoryObj = {
+  decorators: [moduleMetadata({ imports: [DateInputWithDatePickerExample] })],
+  render: () => ({ template: '<date-input-with-date-picker-example />' }),
 }

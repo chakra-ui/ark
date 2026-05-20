@@ -8,17 +8,78 @@ export const toastExampleStyles = `
   }
 
   .toast-button {
-    border: 1px solid #d4d4d8;
-    border-radius: 6px;
-    background: #fff;
-    color: #18181b;
-    font: inherit;
-    padding: 8px 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-inline: 1rem;
+    min-height: 2.5rem;
+    min-width: 2.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: inherit;
+    line-height: 1.25rem;
+    border-radius: 0.375rem;
+
+    user-select: none;
+    white-space: nowrap;
+    transition:
+      background 150ms,
+      border-color 150ms,
+      color 150ms;
+
+    background: transparent;
+    border: 1px solid var(--demo-border-emphasized);
+    color: var(--demo-neutral-fg);
     cursor: pointer;
   }
 
-  .toast-button:hover {
-    background: #f4f4f5;
+  .toast-button svg {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+  }
+
+  .toast-button:has(> svg:only-child) {
+    padding-inline: 0.625rem !important;
+  }
+
+  .toast-button:is(:hover, [aria-expanded='true']):not(:disabled, [data-disabled]) {
+    background: var(--demo-neutral-subtle);
+  }
+
+  .toast-button:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: -1px;
+  }
+
+  .toast-button:is(:disabled, [data-disabled]) {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
+  .toast-button[data-variant='surface'] {
+    border-color: var(--demo-border-emphasized);
+    color: var(--demo-coral-fg);
+  }
+
+  .toast-button[data-variant='solid'] {
+    background: var(--demo-coral-solid);
+    border-color: var(--demo-coral-solid);
+    color: var(--demo-coral-contrast);
+  }
+
+  .toast-button[data-variant='solid']:hover {
+    background: var(--demo-coral-fg);
+    border-color: var(--demo-coral-fg);
+  }
+
+  .toast-button[data-variant='solid']:focus-visible {
+    outline-offset: 2px;
+  }
+
+  .toast-demo-types {
+    gap: 12px;
   }
 
   [data-scope='toast'][data-part='group'] {
@@ -57,11 +118,11 @@ export const toastExampleStyles = `
       box-shadow 200ms;
     transition-timing-function: cubic-bezier(0.21, 1.02, 0.73, 1);
 
-    background: #fff;
-    color: #18181b;
+    background: var(--demo-bg-popover);
+    color: var(--demo-neutral-fg);
 
-    --toast-trigger-bg: #f4f4f5;
-    --toast-accent: #18181b;
+    --toast-trigger-bg: var(--demo-neutral-muted);
+    --toast-accent: var(--demo-neutral-fg);
   }
 
   .Root[data-placement^='top'],
@@ -94,7 +155,7 @@ export const toastExampleStyles = `
 
   .Root[data-type='loading'],
   [data-scope='toast'][data-part='root'][data-type='loading'] {
-    --toast-accent: #6b7280;
+    --toast-accent: var(--demo-neutral-emphasized, #6b7280);
   }
 
   .Root[data-type='success'],
@@ -102,7 +163,7 @@ export const toastExampleStyles = `
     background: #16a34a;
     color: white;
     --toast-accent: white;
-    --toast-trigger-bg: rgb(255 255 255 / 15%);
+    --toast-trigger-bg: rgba(255, 255, 255, 0.15);
   }
 
   .Root[data-type='error'],
@@ -110,7 +171,7 @@ export const toastExampleStyles = `
     background: #dc2626;
     color: white;
     --toast-accent: white;
-    --toast-trigger-bg: rgb(255 255 255 / 15%);
+    --toast-trigger-bg: rgba(255, 255, 255, 0.15);
   }
 
   .Root[data-type='warning'],
@@ -118,7 +179,7 @@ export const toastExampleStyles = `
     background: #ea580c;
     color: white;
     --toast-accent: white;
-    --toast-trigger-bg: rgb(255 255 255 / 15%);
+    --toast-trigger-bg: rgba(255, 255, 255, 0.15);
   }
 
   .Title {
@@ -177,7 +238,7 @@ export const toastExampleStyles = `
       color 150ms;
 
     background: transparent;
-    border: 1px solid currentColor;
+    border: 1px solid var(--demo-border-emphasized, currentColor);
     color: inherit;
   }
 

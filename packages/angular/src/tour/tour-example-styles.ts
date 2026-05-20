@@ -171,8 +171,63 @@ export const tourExampleStyles = `
     margin-top: 12px;
   }
 
-  .tour-action-trigger,
   .tour-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-inline: 1rem;
+    min-height: 2.5rem;
+    min-width: 2.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: inherit;
+    line-height: 1.25rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition:
+      background 150ms,
+      border-color 150ms,
+      color 150ms;
+    background: transparent;
+    border: 1px solid var(--demo-border-emphasized, #a1a1aa);
+    color: var(--demo-neutral-fg, #18181b);
+  }
+
+  .tour-button:hover:not(:disabled, [data-disabled]),
+  .tour-button[aria-expanded="true"]:not(:disabled, [data-disabled]) {
+    background: var(--demo-neutral-subtle, #f4f4f5);
+  }
+
+  .tour-button:disabled,
+  .tour-button[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
+  .tour-button[data-variant="surface"] {
+    border-color: var(--demo-border-emphasized, #a1a1aa);
+    color: var(--demo-coral-fg, #be123c);
+  }
+
+  .tour-button[data-variant="solid"] {
+    background: var(--demo-coral-solid, #e11d48);
+    border-color: var(--demo-coral-solid, #e11d48);
+    color: var(--demo-coral-contrast, #fff);
+  }
+
+  .tour-button[data-variant="solid"]:hover:not(:disabled) {
+    background: var(--demo-coral-fg, #be123c);
+    border-color: var(--demo-coral-fg, #be123c);
+  }
+
+  .tour-button[data-variant="solid"]:focus-visible {
+    outline-offset: 2px;
+  }
+
+  .tour-action-trigger {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -196,20 +251,17 @@ export const tourExampleStyles = `
     color: var(--demo-neutral-fg, #18181b);
   }
 
-  .tour-action-trigger:hover:not(:disabled),
-  .tour-button:hover:not(:disabled) {
+  .tour-action-trigger:hover:not(:disabled) {
     background: var(--demo-neutral-subtle, #f4f4f5);
   }
 
-  .tour-action-trigger:last-child,
-  .tour-button[data-variant="solid"] {
+  .tour-action-trigger:last-child {
     background: var(--demo-coral-solid, #e11d48);
     border-color: var(--demo-coral-solid, #e11d48);
     color: var(--demo-coral-contrast, #fff);
   }
 
-  .tour-action-trigger:last-child:hover:not(:disabled),
-  .tour-button[data-variant="solid"]:hover:not(:disabled) {
+  .tour-action-trigger:last-child:hover:not(:disabled) {
     background: var(--demo-coral-fg, #be123c);
     border-color: var(--demo-coral-fg, #be123c);
   }

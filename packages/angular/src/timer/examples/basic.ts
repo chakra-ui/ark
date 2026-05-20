@@ -8,12 +8,22 @@ import {
   ArkTimerSeparator,
 } from '../public-api'
 import { timerExampleStyles } from '../timer-example-styles'
+import { TimerPauseIcon, TimerPlayIcon } from './icons'
 
 @Component({
   selector: 'timer-basic-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ArkTimerRoot, ArkTimerArea, ArkTimerItem, ArkTimerSeparator, ArkTimerControl, ArkTimerActionTrigger],
+  imports: [
+    ArkTimerRoot,
+    ArkTimerArea,
+    ArkTimerItem,
+    ArkTimerSeparator,
+    ArkTimerControl,
+    ArkTimerActionTrigger,
+    TimerPlayIcon,
+    TimerPauseIcon,
+  ],
   template: `
     <div arkTimer [targetMs]="60 * 60 * 1000" [startMs]="40 * 60 * 1000" class="timer-root">
       <div arkTimerArea class="timer-area">
@@ -38,9 +48,18 @@ import { timerExampleStyles } from '../timer-example-styles'
         </div>
       </div>
       <div arkTimerControl class="timer-control">
-        <button arkTimerActionTrigger action="start" class="timer-button">Start</button>
-        <button arkTimerActionTrigger action="resume" class="timer-button">Resume</button>
-        <button arkTimerActionTrigger action="pause" class="timer-button">Pause</button>
+        <button arkTimerActionTrigger action="start" class="timer-button">
+          <timer-play-icon />
+          Play
+        </button>
+        <button arkTimerActionTrigger action="resume" class="timer-button">
+          <timer-play-icon />
+          Resume
+        </button>
+        <button arkTimerActionTrigger action="pause" class="timer-button">
+          <timer-pause-icon />
+          Pause
+        </button>
       </div>
     </div>
   `,

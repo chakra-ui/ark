@@ -9,20 +9,17 @@ import { fieldsetExampleStyles } from '../fieldset-example-styles'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArkFieldsetRootProvider, ArkFieldsetLegend, ArkFieldRoot, ArkFieldLabel, ArkFieldInput],
   template: `
-    <div class="vstack">
-      <button type="button" (click)="toggleDisabled()">Toggle Disabled</button>
-      <fieldset arkFieldsetRootProvider [value]="fieldset">
-        <legend arkFieldsetLegend>Contact Details</legend>
-        <div arkFieldRoot>
-          <label arkFieldLabel>Name</label>
-          <input arkFieldInput placeholder="John Doe" />
-        </div>
-        <div arkFieldRoot>
-          <label arkFieldLabel>Email</label>
-          <input arkFieldInput type="email" placeholder="john@example.com" />
-        </div>
-      </fieldset>
-    </div>
+    <fieldset arkFieldsetRootProvider [value]="fieldset">
+      <legend arkFieldsetLegend>Contact Details</legend>
+      <div arkFieldRoot>
+        <label arkFieldLabel>Name</label>
+        <input arkFieldInput placeholder="John Doe" />
+      </div>
+      <div arkFieldRoot>
+        <label arkFieldLabel>Email</label>
+        <input arkFieldInput type="email" placeholder="john@example.com" />
+      </div>
+    </fieldset>
   `,
   styles: [fieldsetExampleStyles],
 })

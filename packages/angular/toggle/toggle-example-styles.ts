@@ -26,7 +26,7 @@ export const toggleExampleStyles = `
   }
 
   [arkToggle][data-state='on'] {
-    background: var(--demo-coral-subtle);
+    background: var(--demo-coral-subtle) !important;
     border-color: var(--demo-coral-muted);
     color: var(--demo-coral-fg);
   }

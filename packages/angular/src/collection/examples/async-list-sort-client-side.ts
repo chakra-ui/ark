@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, computed, signal, type OnInit } from '@angular/core'
+import { asyncListExampleStyles } from '../async-list-example-styles'
 import { type AsyncListProps, type AsyncListService, connectAsyncList, createAsyncListMachine } from '../public-api'
 
 interface User {
@@ -6,6 +7,8 @@ interface User {
   name: string
   username: string
   email: string
+  phone: string
+  website: string
 }
 
 type AsyncListState = 'idle' | 'loading' | 'sorting'
@@ -24,30 +27,34 @@ interface AsyncListContext<T, C> {
   error?: Error
 }
 
-const users: User[] = [
-  { id: 1, name: 'Charlie Lane', username: 'charlie', email: 'charlie@example.com' },
-  { id: 2, name: 'Alice Moore', username: 'alice', email: 'alice@example.com' },
-  { id: 3, name: 'Bob Stone', username: 'bob', email: 'bob@example.com' },
-]
-
 @Component({
   selector: 'collection-async-list-sort-client-side-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="async-list">
-      <output>Sorted by: {{ sortLabel() }}</output>
+    <div class="root">
+      @if (api().loading) {
+        <div class="loading">
+          <span class="spinner" aria-hidden="true"></span>
+          Loading
+        </div>
+      }
+      @if (api().error) {
+        <div class="error">Error: {{ api().error.message }}</div>
+      }
+      <div class="status">Sorted by: {{ sortLabel() }}</div>
 
-      <table>
+      <table class="table">
         <thead>
           <tr>
-            <th scope="col" [attr.aria-sort]="ariaSort('name')">
-              <button type="button" (click)="sort('name')">Name {{ sortMarker('name') }}</button>
-            </th>
-            <th scope="col" [attr.aria-sort]="ariaSort('username')">
-              <button type="button" (click)="sort('username')">Username {{ sortMarker('username') }}</button>
-            </th>
-            <th scope="col">Email</th>
+            @for (column of columns; track column.key) {
+              <th scope="col" [attr.aria-sort]="ariaSort(column.key)" (click)="sort(column.key)">
+                <button type="button">
+                  {{ column.label }}
+                  <span class="sort-icon" aria-hidden="true" [innerHTML]="sortIcon(column.key)"></span>
+                </button>
+              </th>
+            }
           </tr>
         </thead>
         <tbody>
@@ -62,73 +69,55 @@ const users: User[] = [
       </table>
     </div>
   `,
-  styles: [
-    `
-      .async-list {
-        display: grid;
-        gap: 0.75rem;
-        max-width: 42rem;
-      }
-
-      table {
-        border-collapse: collapse;
-        width: 100%;
-      }
-
-      th,
-      td {
-        border-bottom: 1px solid #e4e4e7;
-        padding: 0.5rem;
-        text-align: left;
-      }
-
-      th {
-        color: #3f3f46;
-        font-size: 0.875rem;
-      }
-
-      th button {
-        background: transparent;
-        border: 0;
-        color: inherit;
-        cursor: pointer;
-        font: inherit;
-        padding: 0;
-      }
-
-      output {
-        color: #52525b;
-      }
-    `,
-  ],
+  styles: [asyncListExampleStyles],
 })
-export class CollectionAsyncListSortClientSideExample {
+export class CollectionAsyncListSortClientSideExample implements OnInit {
+  protected readonly columns: Array<{ key: keyof User; label: string }> = [
+    { key: 'name', label: 'Name' },
+    { key: 'username', label: 'Username' },
+    { key: 'email', label: 'Email' },
+  ]
+
+  private readonly collator = new Intl.Collator()
   private readonly refs = { abort: null as AbortController | null, seq: 0 }
   private readonly state = signal<AsyncListState>('idle')
-  private readonly context = signal<AsyncListContext<User, string>>({
-    items: users,
+  private readonly context = signal<AsyncListContext<User, undefined>>({
+    items: [],
     filterText: '',
     cursor: null,
   })
 
-  private readonly props: AsyncListProps<User, string> = {
-    initialItems: users,
-    load: async () => ({ items: users }),
+  private readonly props: AsyncListProps<User, undefined> = {
+    load: async () => {
+      const response = await fetch('https://jsonplaceholder.typicode.com/users?_limit=5')
+      if (!response.ok) {
+        throw new Error('Failed to fetch users')
+      }
+      const data = (await response.json()) as User[]
+      return { items: data }
+    },
     sort: ({ items, descriptor }) => ({
       items: [...items].sort((a, b) => {
-        const compare = String(a[descriptor.column]).localeCompare(String(b[descriptor.column]))
-        return descriptor.direction === 'ascending' ? compare : compare * -1
+        let compare = this.collator.compare(String(a[descriptor.column]), String(b[descriptor.column]))
+        if (descriptor.direction === 'descending') {
+          compare *= -1
+        }
+        return compare
       }),
     }),
   }
 
   protected readonly api = computed(() =>
     connectAsyncList({
-      context: { get: (key: keyof AsyncListContext<User, string>) => this.context()[key] },
+      context: { get: (key: keyof AsyncListContext<User, undefined>) => this.context()[key] },
       send: (event: Record<string, unknown>) => this.handleEvent(event),
       state: { matches: (...values: string[]) => values.includes(this.state()) },
-    } as unknown as AsyncListService<User, string>),
+    } as unknown as AsyncListService<User, undefined>),
   )
+
+  ngOnInit(): void {
+    this.api().reload()
+  }
 
   protected sort(column: keyof User): void {
     const current = this.api().sortDescriptor
@@ -139,13 +128,7 @@ export class CollectionAsyncListSortClientSideExample {
 
   protected sortLabel(): string {
     const descriptor = this.api().sortDescriptor
-    return descriptor ? `${String(descriptor.column)} ${descriptor.direction}` : 'none'
-  }
-
-  protected sortMarker(column: keyof User): string {
-    const descriptor = this.api().sortDescriptor
-    if (descriptor?.column !== column) return ''
-    return descriptor.direction === 'ascending' ? 'asc' : 'desc'
+    return descriptor ? `${String(descriptor.column)} (${descriptor.direction})` : 'none'
   }
 
   protected ariaSort(column: keyof User): 'ascending' | 'descending' | 'none' {
@@ -153,7 +136,25 @@ export class CollectionAsyncListSortClientSideExample {
     return descriptor?.column === column ? descriptor.direction : 'none'
   }
 
+  protected sortIcon(column: keyof User): string {
+    const descriptor = this.api().sortDescriptor
+    if (descriptor?.column !== column) {
+      return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>'
+    }
+    if (descriptor.direction === 'ascending') {
+      return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>'
+    }
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>'
+  }
+
   private handleEvent(event: Record<string, unknown>): void {
+    if (event['type'] === 'RELOAD') {
+      this.state.set('loading')
+      this.runAction('clearItems', event)
+      this.runAction('performFetch', event)
+      return
+    }
+
     if (event['type'] === 'SORT') {
       this.state.set('sorting')
       this.runAction('setSortDescriptor', event)
@@ -187,11 +188,11 @@ export class CollectionAsyncListSortClientSideExample {
   private createActionParams(event: Record<string, unknown>): Record<string, unknown> {
     return {
       context: {
-        get: (key: keyof AsyncListContext<User, string>) => this.context()[key],
+        get: (key: keyof AsyncListContext<User, undefined>) => this.context()[key],
         set: this.setContext,
       },
       event,
-      prop: (key: keyof AsyncListProps<User, string>) => this.props[key],
+      prop: (key: keyof AsyncListProps<User, undefined>) => this.props[key],
       refs: {
         get: (key: keyof typeof this.refs) => this.refs[key],
         set: <K extends keyof typeof this.refs>(key: K, value: (typeof this.refs)[K]) => {
@@ -202,11 +203,11 @@ export class CollectionAsyncListSortClientSideExample {
     }
   }
 
-  private readonly setContext = <K extends keyof AsyncListContext<User, string>>(
+  private readonly setContext = <K extends keyof AsyncListContext<User, undefined>>(
     key: K,
     value:
-      | AsyncListContext<User, string>[K]
-      | ((previous: AsyncListContext<User, string>[K]) => AsyncListContext<User, string>[K]),
+      | AsyncListContext<User, undefined>[K]
+      | ((previous: AsyncListContext<User, undefined>[K]) => AsyncListContext<User, undefined>[K]),
   ): void => {
     this.context.update((context) => ({
       ...context,

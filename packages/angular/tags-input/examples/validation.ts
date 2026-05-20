@@ -14,6 +14,7 @@ import {
   type TagsInputValidateArgs,
 } from '@ark-ui/angular/tags-input'
 import { tagsInputExampleStyles } from '../tags-input-example-styles'
+import { TagsInputXIcon } from './icons'
 
 const TAG_PATTERN = /^[a-zA-Z0-9-]+$/
 
@@ -33,6 +34,7 @@ const TAG_PATTERN = /^[a-zA-Z0-9-]+$/
     ArkTagsInputItemText,
     ArkTagsInputItemDeleteTrigger,
     ArkTagsInputClearTrigger,
+    TagsInputXIcon,
   ],
   template: `
     <div arkTagsInputRoot #root="arkTagsInputRoot" [validate]="validateTag">
@@ -42,13 +44,17 @@ const TAG_PATTERN = /^[a-zA-Z0-9-]+$/
           <span arkTagsInputItem [index]="i" [value]="tag">
             <div arkTagsInputItemPreview>
               <span arkTagsInputItemText>{{ tag }}</span>
-              <button type="button" arkTagsInputItemDeleteTrigger>x</button>
+              <button type="button" arkTagsInputItemDeleteTrigger>
+                <tags-input-x-icon />
+              </button>
             </div>
             <input arkTagsInputItemInput />
           </span>
         }
         <input arkTagsInputInput placeholder="Add Framework" />
-        <button type="button" arkTagsInputClearTrigger>x</button>
+        <button type="button" arkTagsInputClearTrigger>
+          <tags-input-x-icon />
+        </button>
       </div>
       <input arkTagsInputHiddenInput />
     </div>

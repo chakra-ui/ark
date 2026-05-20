@@ -13,6 +13,7 @@ import {
   ArkFileUploadRoot,
 } from '@ark-ui/angular/file-upload'
 import { fileUploadExampleStyles } from '../file-upload-example-styles'
+import { FileUploadFileIcon, FileUploadUploadIcon, FileUploadXIcon } from './icons'
 
 @Component({
   selector: 'file-upload-form-usage-example',
@@ -30,13 +31,16 @@ import { fileUploadExampleStyles } from '../file-upload-example-styles'
     ArkFileUploadItemSizeText,
     ArkFileUploadItemDeleteTrigger,
     ArkFileUploadHiddenInput,
+    FileUploadFileIcon,
+    FileUploadUploadIcon,
+    FileUploadXIcon,
   ],
   template: `
     <form class="stack" (submit)="onSubmit($event)">
       <div arkFileUpload #root="arkFileUpload" [maxFiles]="5">
         <label arkFileUploadLabel>File Upload</label>
         <div arkFileUploadDropzone>
-          <span class="dropzone-icon">+</span>
+          <file-upload-upload-icon class="dropzone-icon" />
           <div class="dropzone-content">
             <span class="dropzone-title">Drop files here</span>
             <span class="dropzone-description">or click to browse</span>
@@ -48,16 +52,18 @@ import { fileUploadExampleStyles } from '../file-upload-example-styles'
               <div arkFileUploadItemPreview type="image/*">
                 <img arkFileUploadItemPreviewImage alt="" />
               </div>
-              <div arkFileUploadItemPreview type=".*">file</div>
+              <div arkFileUploadItemPreview type=".*">
+                <file-upload-file-icon />
+              </div>
               <span arkFileUploadItemName></span>
               <span arkFileUploadItemSizeText></span>
-              <button type="button" arkFileUploadItemDeleteTrigger>x</button>
+              <button type="button" arkFileUploadItemDeleteTrigger><file-upload-x-icon /></button>
             </li>
           }
         </ul>
         <input arkFileUploadHiddenInput name="files" />
       </div>
-      <button type="submit">Submit</button>
+      <button class="demo-button" type="submit" data-variant="solid">Submit</button>
     </form>
   `,
   styles: [fileUploadExampleStyles],

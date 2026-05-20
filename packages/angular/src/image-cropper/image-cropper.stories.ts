@@ -4,7 +4,6 @@ import { ImageCropperAspectRatioExample } from './examples/aspect-ratio'
 import { ImageCropperBasicExample } from './examples/basic'
 import { ImageCropperCircleExample } from './examples/circle'
 import { ImageCropperContextExample } from './examples/context'
-import { ImageCropperControlledExample } from './examples/controlled'
 import { ImageCropperControlledZoomExample } from './examples/controlled-zoom'
 import { ImageCropperCropPreviewExample } from './examples/crop-preview'
 import { ImageCropperEventsExample } from './examples/events'
@@ -41,11 +40,6 @@ export const Circle: StoryObj = {
 export const Context: StoryObj = {
   decorators: [moduleMetadata({ imports: [ImageCropperContextExample] })],
   render: () => ({ template: '<image-cropper-context-example />' }),
-}
-
-export const Controlled: StoryObj = {
-  decorators: [moduleMetadata({ imports: [ImageCropperControlledExample] })],
-  render: () => ({ template: '<image-cropper-controlled-example />' }),
 }
 
 export const ControlledZoom: StoryObj = {

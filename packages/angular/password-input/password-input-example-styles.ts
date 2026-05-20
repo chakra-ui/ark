@@ -9,6 +9,21 @@ export const passwordInputExampleStyles = `
     gap: 0.75rem;
   }
 
+  [arkFieldRoot] {
+    color: var(--demo-neutral-fg);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.25rem;
+    width: 100%;
+    max-width: 24rem;
+  }
+
+  [arkFieldRoot][data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
   [arkPasswordInputRoot], [arkPasswordInputRootProvider] {
     color: var(--demo-neutral-fg);
     display: flex;
@@ -158,5 +173,17 @@ export const passwordInputExampleStyles = `
 
   .validation-message[data-valid='false'] {
     color: var(--demo-error);
+  }
+
+  [arkFieldHelperText] {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--demo-neutral-fg-muted);
+  }
+
+  [arkFieldErrorText] {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--demo-coral-fg);
   }
 `

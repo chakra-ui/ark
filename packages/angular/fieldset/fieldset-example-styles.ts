@@ -11,11 +11,6 @@ export const fieldsetExampleStyles = `
     font-family: inherit;
   }
 
-  [arkFieldsetRoot][data-disabled], [arkFieldsetRootProvider][data-disabled] {
-    opacity: 0.5;
-    filter: grayscale(100%);
-  }
-
   [arkFieldsetLegend] {
     font-size: 1rem;
     line-height: 1.5rem;
@@ -36,10 +31,20 @@ export const fieldsetExampleStyles = `
     color: var(--demo-neutral-fg-muted, #6b7280);
   }
 
+  [arkFieldsetHelperText][data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
   [arkFieldsetErrorText] {
     font-size: 0.875rem;
     line-height: 1.25rem;
     color: var(--demo-coral-fg, #b91c1c);
+  }
+
+  [arkFieldsetErrorText][data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
   }
 
   [arkFieldRoot] {
@@ -164,6 +169,24 @@ export const fieldsetExampleStyles = `
     box-shadow: 0 0 0 1px var(--demo-coral-solid, #e11d48);
   }
 
+  [arkSelectTrigger][data-placeholder-shown] {
+    color: var(--demo-neutral-emphasized, #6b7280);
+  }
+
+  [arkSelectTrigger][data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
+  [arkSelectTrigger][data-invalid] {
+    border-color: var(--demo-error, #dc2626);
+  }
+
+  [arkSelectTrigger][data-invalid]:focus-visible {
+    border-color: var(--demo-error, #dc2626);
+    box-shadow: 0 0 0 1px var(--demo-error, #dc2626);
+  }
+
   [arkSelectTrigger] svg,
   [arkSelectIndicator] {
     width: 1rem;
@@ -191,11 +214,35 @@ export const fieldsetExampleStyles = `
     max-height: min(var(--available-height, 300px), 300px);
     overflow-y: auto;
     outline: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--demo-border-emphasized, #d1d5db) var(--demo-bg-popover, white);
+  }
+
+  [arkSelectContent]::-webkit-scrollbar {
+    width: 8px;
+    background: var(--demo-bg-popover, white);
+    border-radius: 4px;
+  }
+
+  [arkSelectContent]::-webkit-scrollbar-thumb {
+    border-radius: 0.375rem;
+  }
+
+  [arkSelectContent][data-state='open'] {
+    animation: scale-fade-in 0.15s ease-out;
+  }
+
+  [arkSelectContent][data-state='closed'] {
+    animation: scale-fade-out 0.1s ease-in;
   }
 
   [arkSelectItemGroup] {
     display: flex;
     flex-direction: column;
+  }
+
+  [arkSelectItemGroup] + [arkSelectItemGroup] {
+    margin-top: 0.5rem;
   }
 
   [arkSelectItem] {
@@ -228,5 +275,88 @@ export const fieldsetExampleStyles = `
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .checkbox-root {
+    color: var(--demo-neutral-fg, #111827);
+    display: inline-flex;
+    align-items: center;
+    vertical-align: top;
+    gap: 0.5rem;
+    position: relative;
+  }
+
+  .checkbox-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .checkbox-control {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 1px solid var(--demo-border-emphasized, #d1d5db);
+    border-radius: 0.25rem;
+    background: transparent;
+    color: var(--demo-coral-contrast, #ffffff);
+  }
+
+  .checkbox-control svg {
+    display: none;
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  .checkbox-input:checked + .checkbox-control {
+    background: var(--demo-coral-solid, #e11d48);
+    border-color: var(--demo-coral-solid, #e11d48);
+  }
+
+  .checkbox-input:checked + .checkbox-control svg {
+    display: block;
+  }
+
+  .checkbox-input:focus-visible + .checkbox-control {
+    outline: 2px solid var(--demo-coral-focus-ring, #fb7185);
+    outline-offset: 2px;
+  }
+
+  .checkbox-label {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    user-select: none;
+    color: var(--demo-neutral-fg, #111827);
+  }
+
+  @keyframes scale-fade-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes scale-fade-out {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.95);
+    }
   }
 `

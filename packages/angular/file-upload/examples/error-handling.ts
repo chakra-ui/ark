@@ -14,6 +14,13 @@ import {
   type FileError,
 } from '@ark-ui/angular/file-upload'
 import { fileUploadExampleStyles } from '../file-upload-example-styles'
+import {
+  FileUploadAlertCircleIcon,
+  FileUploadCheckCircleIcon,
+  FileUploadFileIcon,
+  FileUploadUploadIcon,
+  FileUploadXIcon,
+} from './icons'
 
 const errorMessages: Record<FileError, string> = {
   TOO_MANY_FILES: 'Too many files selected (max 3 allowed)',
@@ -40,6 +47,11 @@ const errorMessages: Record<FileError, string> = {
     ArkFileUploadItemSizeText,
     ArkFileUploadItemDeleteTrigger,
     ArkFileUploadHiddenInput,
+    FileUploadAlertCircleIcon,
+    FileUploadCheckCircleIcon,
+    FileUploadFileIcon,
+    FileUploadUploadIcon,
+    FileUploadXIcon,
   ],
   template: `
     <div
@@ -52,7 +64,7 @@ const errorMessages: Record<FileError, string> = {
     >
       <label arkFileUploadLabel>Upload Documents</label>
       <div arkFileUploadDropzone>
-        <span class="dropzone-icon">+</span>
+        <file-upload-upload-icon class="dropzone-icon" />
         <div class="dropzone-content">
           <span class="dropzone-title">Drop files here</span>
           <span class="dropzone-description">Images and PDFs, max 1MB each</span>
@@ -61,17 +73,22 @@ const errorMessages: Record<FileError, string> = {
 
       @if (root.api().acceptedFiles.length > 0) {
         <div class="section">
-          <div class="section-title" data-status="accepted">Accepted Files</div>
+          <div class="section-title" data-status="accepted">
+            <file-upload-check-circle-icon class="status-icon" />
+            Accepted Files
+          </div>
           <ul arkFileUploadItemGroup>
             @for (file of root.api().acceptedFiles; track file.name) {
               <li arkFileUploadItem [file]="file">
                 <div arkFileUploadItemPreview type="image/*">
                   <img arkFileUploadItemPreviewImage alt="" />
                 </div>
-                <div arkFileUploadItemPreview type="application/pdf">pdf</div>
+                <div arkFileUploadItemPreview type="application/pdf">
+                  <file-upload-file-icon />
+                </div>
                 <span arkFileUploadItemName></span>
                 <span arkFileUploadItemSizeText></span>
-                <button type="button" arkFileUploadItemDeleteTrigger>x</button>
+                <button type="button" arkFileUploadItemDeleteTrigger><file-upload-x-icon /></button>
               </li>
             }
           </ul>
@@ -80,11 +97,14 @@ const errorMessages: Record<FileError, string> = {
 
       @if (root.api().rejectedFiles.length > 0) {
         <div class="section">
-          <div class="section-title" data-status="rejected">Rejected Files</div>
+          <div class="section-title" data-status="rejected">
+            <file-upload-alert-circle-icon class="status-icon" />
+            Rejected Files
+          </div>
           <ul arkFileUploadItemGroup>
             @for (rejection of root.api().rejectedFiles; track rejection.file.name) {
               <li arkFileUploadItem [file]="rejection.file" data-rejected>
-                <div class="item-preview">!</div>
+                <div class="item-preview"><file-upload-alert-circle-icon /></div>
                 <span arkFileUploadItemName></span>
                 <span arkFileUploadItemSizeText></span>
                 <div class="error-list">

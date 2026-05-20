@@ -10,6 +10,7 @@ import {
   type ImageCropperFlipState,
 } from '../public-api'
 import { imageCropperExampleStyles } from '../image-cropper-example-styles'
+import { ImageCropperFlipHorizontalIcon, ImageCropperFlipVerticalIcon } from './icons'
 
 @Component({
   selector: 'image-cropper-flip-example',
@@ -22,15 +23,19 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
     ArkImageCropperSelection,
     ArkImageCropperHandle,
     ArkImageCropperGrid,
+    ImageCropperFlipHorizontalIcon,
+    ImageCropperFlipVerticalIcon,
   ],
   template: `
     <div class="layout">
       <div class="toolbar">
         <button type="button" [attr.data-variant]="flip()?.horizontal ? 'solid' : null" (click)="toggleHorizontal()">
-          Flip horizontal
+          <image-cropper-flip-horizontal-icon />
+          Horizontal
         </button>
         <button type="button" [attr.data-variant]="flip()?.vertical ? 'solid' : null" (click)="toggleVertical()">
-          Flip vertical
+          <image-cropper-flip-vertical-icon />
+          Vertical
         </button>
       </div>
 

@@ -8,6 +8,7 @@ import {
   ArkListboxLabel,
   ArkListboxRoot,
 } from '@ark-ui/angular/listbox'
+import { ListboxCheckIcon } from './icons'
 import { listboxExampleStyles } from '../listbox-example-styles'
 
 interface Country {
@@ -26,6 +27,7 @@ interface Country {
     ArkListboxItem,
     ArkListboxItemText,
     ArkListboxItemIndicator,
+    ListboxCheckIcon,
   ],
   template: `
     <div arkListboxRoot [collection]="collection">
@@ -34,7 +36,7 @@ interface Country {
         @for (item of collection.items; track item.value) {
           <div arkListboxItem [item]="item">
             <span arkListboxItemText>{{ item.label }}</span>
-            <span arkListboxItemIndicator>✓</span>
+            <span arkListboxItemIndicator><listbox-check-icon /></span>
           </div>
         }
       </div>

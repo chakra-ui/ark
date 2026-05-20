@@ -26,7 +26,7 @@ import { signaturePadExampleStyles } from '../signature-pad-example-styles'
     ArkSignaturePadGuide,
   ],
   template: `
-    <div arkFieldRoot [invalid]="true">
+    <div arkFieldRoot>
       <div arkSignaturePad>
         <label arkSignaturePadLabel>Label</label>
         <div arkSignaturePadControl>

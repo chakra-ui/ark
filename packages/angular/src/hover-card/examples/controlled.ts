@@ -25,7 +25,7 @@ import { hoverCardExampleStyles } from '../hover-card-example-styles'
   ],
   template: `
     <div class="stack">
-      <button type="button" (click)="toggle()">Toggle</button>
+      <button type="button" class="button" (click)="toggle()">Toggle</button>
       <div arkHoverCard #root="arkHoverCard" [(open)]="open">
         <p>
           Liked by

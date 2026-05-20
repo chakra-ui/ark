@@ -1,4 +1,5 @@
 export const timerExampleStyles = `
+  .timer-stack,
   .timer-root {
     display: flex;
     flex-direction: column;
@@ -55,20 +56,51 @@ export const timerExampleStyles = `
 
   .timer-button {
     display: inline-flex;
-    min-height: 32px;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    padding-inline: 1rem;
     border: 1px solid var(--demo-border-emphasized);
-    border-radius: 6px;
+    border-radius: 0.375rem;
     background: transparent;
     color: var(--demo-neutral-fg);
-    font: inherit;
-    padding: 0 12px;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    user-select: none;
+    white-space: nowrap;
+    transition:
+      background 150ms,
+      border-color 150ms,
+      color 150ms;
     cursor: pointer;
   }
 
-  .timer-button:hover:not(:disabled) {
+  .timer-button svg,
+  .timer-button timer-play-icon,
+  .timer-button timer-pause-icon,
+  .timer-button timer-rotate-ccw-icon {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+  }
+
+  .timer-button:hover:not(:disabled, [data-disabled]) {
     background: var(--demo-neutral-subtle);
+  }
+
+  .timer-button:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: -1px;
+  }
+
+  .timer-button:disabled,
+  .timer-button[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
   }
 
   .timer-button[hidden] {

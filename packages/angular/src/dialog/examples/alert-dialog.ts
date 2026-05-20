@@ -40,8 +40,8 @@ import { dialogExampleStyles } from '../dialog-example-styles'
               servers.
             </p>
             <div class="actions">
-              <button type="button" arkDialogCloseTrigger>Cancel</button>
-              <button type="button">Delete Account</button>
+              <button type="button" arkDialogCloseTrigger class="button">Cancel</button>
+              <button type="button" data-variant="solid">Delete Account</button>
             </div>
           </div>
         </div>

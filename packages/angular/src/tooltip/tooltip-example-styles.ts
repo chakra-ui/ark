@@ -37,10 +37,6 @@ export const tooltipExampleStyles = `
     filter: grayscale(100%);
   }
 
-  [arkTooltipPositioner] {
-    z-index: calc(var(--demo-popover-z-index, 50) + var(--layer-index, 0));
-  }
-
   [arkTooltipContent] {
     --arrow-background: var(--demo-bg-popover, #1c1917);
     --arrow-size: 10px;
@@ -56,7 +52,47 @@ export const tooltipExampleStyles = `
     line-height: 1.25rem;
     max-width: 20rem;
     box-shadow: var(--demo-shadow-md, 0 4px 6px rgba(0, 0, 0, 0.1));
+    z-index: calc(var(--demo-popover-z-index, 50) + var(--layer-index, 0));
     transform-origin: var(--transform-origin);
+  }
+
+  .Button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-inline: 1rem;
+    min-height: 2.5rem;
+    min-width: 2.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: inherit;
+    line-height: 1.25rem;
+    border-radius: 0.375rem;
+    user-select: none;
+    white-space: nowrap;
+    transition:
+      background 150ms,
+      border-color 150ms,
+      color 150ms;
+    background: transparent;
+    border: 1px solid var(--demo-border-emphasized, #d6d3d1);
+    color: var(--demo-neutral-fg, #1c1917);
+    cursor: pointer;
+  }
+
+  .Button:is(:hover, [aria-expanded='true']):not(:disabled, [data-disabled]) {
+    background: var(--demo-neutral-subtle, #f5f5f4);
+  }
+
+  .Button:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring, #ff7a5c);
+    outline-offset: -1px;
+  }
+
+  .Button:is(:disabled, [data-disabled]) {
+    opacity: 0.5;
+    filter: grayscale(100%);
   }
 
   [arkTooltipContent][data-state='open'] {
@@ -98,6 +134,11 @@ export const tooltipExampleStyles = `
   }
 
   .ToolbarButton svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
     width: 1rem;
     height: 1rem;
   }
@@ -116,7 +157,7 @@ export const tooltipExampleStyles = `
     top: 40px;
     left: 40px;
     padding: 40px;
-    background: #ef4444;
+    background: red;
   }
 
   @keyframes tooltip-scale-fade-in {

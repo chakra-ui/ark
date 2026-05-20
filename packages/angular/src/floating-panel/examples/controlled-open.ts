@@ -14,7 +14,7 @@ import { FloatingPanelDemoPanel } from './panel'
       <button type="button" arkFloatingPanelTrigger>Toggle Panel</button>
       <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
         <floating-panel-demo-panel>
-          <p>Open: {{ open() }}</p>
+          <p>Some content</p>
         </floating-panel-demo-panel>
       </ark-portal>
     </div>

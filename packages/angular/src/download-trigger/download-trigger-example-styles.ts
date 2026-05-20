@@ -63,6 +63,10 @@ export const downloadTriggerExampleStyles = `
     height: 1em;
   }
 
+  .button:has(> svg:only-child) {
+    padding-inline: 0.625rem !important;
+  }
+
   .button:is(:hover, [aria-expanded='true']):not(:disabled, [data-disabled]) {
     background: var(--demo-neutral-subtle);
   }
@@ -75,5 +79,25 @@ export const downloadTriggerExampleStyles = `
   .button:is(:disabled, [data-disabled]) {
     opacity: 0.5;
     filter: grayscale(100%);
+  }
+
+  .button[data-variant='surface'] {
+    border-color: var(--demo-border-emphasized);
+    color: var(--demo-coral-fg);
+  }
+
+  .button[data-variant='solid'] {
+    background: var(--demo-coral-solid);
+    border-color: var(--demo-coral-solid);
+    color: var(--demo-coral-contrast);
+  }
+
+  .button[data-variant='solid']:hover {
+    background: var(--demo-coral-fg);
+    border-color: var(--demo-coral-fg);
+  }
+
+  .button[data-variant='solid']:focus-visible {
+    outline-offset: 2px;
   }
 `

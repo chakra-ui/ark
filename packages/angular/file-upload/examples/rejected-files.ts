@@ -13,6 +13,7 @@ import {
   ArkFileUploadRoot,
 } from '@ark-ui/angular/file-upload'
 import { fileUploadExampleStyles } from '../file-upload-example-styles'
+import { FileUploadAlertCircleIcon, FileUploadCheckCircleIcon, FileUploadUploadIcon, FileUploadXIcon } from './icons'
 
 @Component({
   selector: 'file-upload-rejected-files-example',
@@ -30,12 +31,16 @@ import { fileUploadExampleStyles } from '../file-upload-example-styles'
     ArkFileUploadItemSizeText,
     ArkFileUploadItemDeleteTrigger,
     ArkFileUploadHiddenInput,
+    FileUploadAlertCircleIcon,
+    FileUploadCheckCircleIcon,
+    FileUploadUploadIcon,
+    FileUploadXIcon,
   ],
   template: `
     <div arkFileUpload #root="arkFileUpload" [maxFiles]="2" (fileReject)="onFileReject($event)">
       <label arkFileUploadLabel>Upload Files (Max 2)</label>
       <div arkFileUploadDropzone>
-        <span class="dropzone-icon">+</span>
+        <file-upload-upload-icon class="dropzone-icon" />
         <div class="dropzone-content">
           <span class="dropzone-title">Drop files here</span>
           <span class="dropzone-description">Maximum 2 files allowed</span>
@@ -44,7 +49,10 @@ import { fileUploadExampleStyles } from '../file-upload-example-styles'
 
       @if (root.api().acceptedFiles.length > 0) {
         <div class="section">
-          <div class="section-title" data-status="accepted">Accepted Files</div>
+          <div class="section-title" data-status="accepted">
+            <file-upload-check-circle-icon class="status-icon" />
+            Accepted Files
+          </div>
           <ul arkFileUploadItemGroup type="accepted">
             @for (file of root.api().acceptedFiles; track file.name) {
               <li arkFileUploadItem [file]="file">
@@ -53,7 +61,7 @@ import { fileUploadExampleStyles } from '../file-upload-example-styles'
                 </div>
                 <span arkFileUploadItemName></span>
                 <span arkFileUploadItemSizeText></span>
-                <button type="button" arkFileUploadItemDeleteTrigger>x</button>
+                <button type="button" arkFileUploadItemDeleteTrigger><file-upload-x-icon /></button>
               </li>
             }
           </ul>
@@ -62,11 +70,14 @@ import { fileUploadExampleStyles } from '../file-upload-example-styles'
 
       @if (root.api().rejectedFiles.length > 0) {
         <div class="section">
-          <div class="section-title" data-status="rejected">Rejected Files</div>
+          <div class="section-title" data-status="rejected">
+            <file-upload-alert-circle-icon class="status-icon" />
+            Rejected Files
+          </div>
           <ul arkFileUploadItemGroup type="rejected">
             @for (rejection of root.api().rejectedFiles; track rejection.file.name) {
               <li arkFileUploadItem [file]="rejection.file" data-rejected>
-                <div class="item-preview">!</div>
+                <div class="item-preview"><file-upload-alert-circle-icon /></div>
                 <span arkFileUploadItemName></span>
                 <span arkFileUploadItemSizeText></span>
                 <div class="error-list">

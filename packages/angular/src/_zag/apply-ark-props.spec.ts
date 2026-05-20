@@ -226,6 +226,24 @@ describe('applyArkProps', () => {
     expect(handle.el.style.getPropertyValue('margin')).toBe('8px')
   })
 
+  it('writes and removes CSS custom properties (--*) on the element', () => {
+    const props = signal<ArkProps>({
+      style: { '--slide-item-size': '50%', '--slide-spacing': '8px', color: 'red' },
+    })
+    const handle = mountHost('<div #target></div>', () => props())
+    cleanup = handle.destroy
+
+    expect(handle.el.style.getPropertyValue('--slide-item-size')).toBe('50%')
+    expect(handle.el.style.getPropertyValue('--slide-spacing')).toBe('8px')
+    expect(handle.el.style.getPropertyValue('color')).toBe('red')
+
+    props.set({ style: { '--slide-item-size': '25%' } })
+    TestBed.tick()
+    expect(handle.el.style.getPropertyValue('--slide-item-size')).toBe('25%')
+    expect(handle.el.style.getPropertyValue('--slide-spacing')).toBe('')
+    expect(handle.el.style.getPropertyValue('color')).toBe('')
+  })
+
   it('removes attributes when a prop is dropped or set to null (criterion 18)', () => {
     const props = signal<ArkProps>({ id: 'a', 'aria-label': 'hello' })
     const handle = mountHost('<div #target></div>', () => props())

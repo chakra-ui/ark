@@ -29,9 +29,9 @@ import { NumberInputChevronDownIcon, NumberInputChevronUpIcon } from './icons'
     NumberInputChevronDownIcon,
   ],
   template: `
-    <div arkFieldRoot [invalid]="true">
+    <div arkFieldRoot>
       <div arkNumberInputRoot>
-        <span arkNumberInputLabel>Quantity</span>
+        <span arkNumberInputLabel>Label</span>
         <div arkNumberInputControl>
           <input arkNumberInputInput />
           <div class="trigger-group">
@@ -40,8 +40,8 @@ import { NumberInputChevronDownIcon, NumberInputChevronUpIcon } from './icons'
           </div>
         </div>
       </div>
-      <span arkFieldHelperText>Additional info</span>
-      <span arkFieldErrorText>Error info</span>
+      <span arkFieldHelperText>Additional Info</span>
+      <span arkFieldErrorText>Error Info</span>
     </div>
   `,
   styles: [numberInputExampleStyles],

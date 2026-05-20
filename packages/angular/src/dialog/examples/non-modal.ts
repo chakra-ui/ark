@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import {
+  ArkDialogBackdrop,
   ArkDialogCloseTrigger,
   ArkDialogContent,
   ArkDialogDescription,
@@ -19,6 +20,7 @@ import { DialogXIcon } from './icons'
   imports: [
     ArkDialogRoot,
     ArkDialogTrigger,
+    ArkDialogBackdrop,
     ArkDialogPositioner,
     ArkDialogContent,
     ArkDialogTitle,
@@ -31,6 +33,7 @@ import { DialogXIcon } from './icons'
     <div arkDialog [modal]="false" #root="arkDialog">
       <button type="button" arkDialogTrigger>Open Non-Modal Dialog</button>
       <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
+        <div arkDialogBackdrop></div>
         <div arkDialogPositioner>
           <div arkDialogContent>
             <button type="button" arkDialogCloseTrigger aria-label="Close">

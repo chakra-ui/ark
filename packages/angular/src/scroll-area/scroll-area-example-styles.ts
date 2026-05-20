@@ -119,20 +119,4 @@ export const scrollAreaExampleStyles = `
   .scroll-area-corner {
     background-color: transparent;
   }
-
-  .scroll-area-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .scroll-area-actions button {
-    min-height: 2.75rem;
-    border: 1px solid #a1a1aa;
-    background: #ffffff;
-    color: #18181b;
-    padding: 0 0.875rem;
-    font: inherit;
-  }
 `

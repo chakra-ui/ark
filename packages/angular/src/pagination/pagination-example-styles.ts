@@ -43,7 +43,11 @@ export const paginationExampleStyles = `
   }
 
   .pagination-trigger svg,
-  .pagination-item svg {
+  .pagination-item svg,
+  .pagination-trigger pagination-chevron-left-icon,
+  .pagination-trigger pagination-chevron-right-icon,
+  .pagination-trigger pagination-chevrons-left-icon,
+  .pagination-trigger pagination-chevrons-right-icon {
     width: 1rem;
     height: 1rem;
   }
@@ -92,10 +96,10 @@ export const paginationExampleStyles = `
   .pagination-page-size {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
   }
 
-  .pagination-page-size select {
+  .pagination-page-size-select {
     height: 2.25rem;
     padding-inline: 0.5rem;
     border: 1px solid var(--demo-border-emphasized);
@@ -109,7 +113,8 @@ export const paginationExampleStyles = `
   .pagination-stack {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    align-items: flex-start;
+    gap: 1rem;
   }
 
   .pagination-text,

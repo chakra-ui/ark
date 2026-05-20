@@ -11,19 +11,19 @@ const text = 'The checkbox component renders a box element. Use combobox for aut
   imports: [ArkHighlightComponent],
   template: `
     <div class="Root">
-      <section class="Section">
+      <div class="Section">
         <span class="Label">Partial Match</span>
         <p class="Text">
           <ark-highlight [text]="text" query="box" [matchAll]="true" markClass="Mark" />
         </p>
-      </section>
+      </div>
 
-      <section class="Section">
+      <div class="Section">
         <span class="Label">Exact Match</span>
         <p class="Text">
           <ark-highlight [text]="text" query="box" [exactMatch]="true" [matchAll]="true" markClass="Mark" />
         </p>
-      </section>
+      </div>
     </div>
   `,
   styles: [highlightExampleStyles],

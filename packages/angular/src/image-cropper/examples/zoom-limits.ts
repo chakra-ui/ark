@@ -9,6 +9,7 @@ import {
   imageCropperHandles,
 } from '../public-api'
 import { imageCropperExampleStyles } from '../image-cropper-example-styles'
+import { ImageCropperZoomInIcon, ImageCropperZoomOutIcon } from './icons'
 
 @Component({
   selector: 'image-cropper-zoom-limits-example',
@@ -21,15 +22,19 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
     ArkImageCropperSelection,
     ArkImageCropperHandle,
     ArkImageCropperGrid,
+    ImageCropperZoomOutIcon,
+    ImageCropperZoomInIcon,
   ],
   template: `
     <div class="layout">
       <div class="toolbar">
         <button type="button" aria-label="Zoom out" (click)="zoom.set(Math.max(minZoom, (zoom() ?? 1) - 0.1))">
-          -
+          <image-cropper-zoom-out-icon />
         </button>
         <span class="meter">{{ zoom()?.toFixed(1) }}x</span>
-        <button type="button" aria-label="Zoom in" (click)="zoom.set(Math.min(maxZoom, (zoom() ?? 1) + 0.1))">+</button>
+        <button type="button" aria-label="Zoom in" (click)="zoom.set(Math.min(maxZoom, (zoom() ?? 1) + 0.1))">
+          <image-cropper-zoom-in-icon />
+        </button>
       </div>
 
       <p class="description">Zoom constrained between {{ minZoom }}x and {{ maxZoom }}x</p>

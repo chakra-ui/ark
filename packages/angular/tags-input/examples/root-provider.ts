@@ -15,6 +15,7 @@ import {
   useTagsInput,
 } from '@ark-ui/angular/tags-input'
 import { tagsInputExampleStyles } from '../tags-input-example-styles'
+import { TagsInputXIcon } from './icons'
 
 @Component({
   selector: 'tags-input-root-provider-example',
@@ -33,26 +34,33 @@ import { tagsInputExampleStyles } from '../tags-input-example-styles'
     ArkTagsInputItemPreview,
     ArkTagsInputItemText,
     ArkTagsInputItemDeleteTrigger,
+    TagsInputXIcon,
   ],
   template: `
-    <div arkTagsInputRootProvider [value]="tagsInput">
-      <span arkTagsInputLabel>Frameworks</span>
-      <div arkTagsInputControl>
-        @for (tag of tagsInput.api().value; track tag; let i = $index) {
-          <span arkTagsInputItem [index]="i" [value]="tag">
-            <div arkTagsInputItemPreview>
-              <span arkTagsInputItemText>{{ tag }}</span>
-              <button type="button" arkTagsInputItemDeleteTrigger>x</button>
-            </div>
-            <input arkTagsInputItemInput />
-          </span>
-        }
-        <input arkTagsInputInput placeholder="Add Framework" />
-        <button type="button" arkTagsInputClearTrigger>x</button>
+    <div class="tags-input-stack">
+      <div arkTagsInputRootProvider [value]="tagsInput">
+        <span arkTagsInputLabel>Frameworks</span>
+        <div arkTagsInputControl>
+          @for (tag of tagsInput.api().value; track tag; let i = $index) {
+            <span arkTagsInputItem [index]="i" [value]="tag">
+              <div arkTagsInputItemPreview>
+                <span arkTagsInputItemText>{{ tag }}</span>
+                <button type="button" arkTagsInputItemDeleteTrigger>
+                  <tags-input-x-icon />
+                </button>
+              </div>
+              <input arkTagsInputItemInput />
+            </span>
+          }
+          <input arkTagsInputInput placeholder="Add Framework" />
+          <button type="button" arkTagsInputClearTrigger>
+            <tags-input-x-icon />
+          </button>
+        </div>
+        <input arkTagsInputHiddenInput />
       </div>
-      <input arkTagsInputHiddenInput />
+      <output class="tags-input-output">values: {{ tagsInput.api().value | json }}</output>
     </div>
-    <output class="tags-input-output">values: {{ tagsInput.api().value | json }}</output>
   `,
   styles: [tagsInputExampleStyles],
 })

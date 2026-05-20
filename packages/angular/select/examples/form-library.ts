@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
-import { ReactiveFormsModule, FormControl } from '@angular/forms'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { FormControl, ReactiveFormsModule } from '@angular/forms'
 import { createListCollection, type ListCollection } from '@ark-ui/angular/collection'
 import {
   ArkSelectClearTrigger,
@@ -43,7 +43,7 @@ import { selectExampleStyles } from '../select-example-styles'
     ArkSelectHiddenSelect,
   ],
   template: `
-    <form class="select-stack" (ngSubmit)="submitted.set(control.value?.join(', ') || 'none')">
+    <form (ngSubmit)="onSubmit()">
       <div arkSelectRoot [collection]="collection" [formControl]="control" name="framework">
         <span arkSelectLabel>Framework</span>
         <select arkSelectHiddenSelect></select>
@@ -70,16 +70,18 @@ import { selectExampleStyles } from '../select-example-styles'
           </div>
         </div>
       </div>
-      <button class="select-button" type="submit">Submit</button>
-      <output class="select-output">submitted: {{ submitted() }}</output>
+      <button class="select-button" style="margin-top: 1rem" type="submit">Submit</button>
     </form>
   `,
   styles: [selectExampleStyles],
 })
 export class SelectFormLibraryExample {
   readonly control = new FormControl<string[] | null>(['React'])
-  readonly submitted = signal('none')
   readonly collection: ListCollection<string> = createListCollection<string>({
     items: ['React', 'Solid', 'Vue', 'Svelte'],
   })
+
+  onSubmit(): void {
+    window.alert(JSON.stringify({ framework: this.control.value?.[0] ?? '' }))
+  }
 }

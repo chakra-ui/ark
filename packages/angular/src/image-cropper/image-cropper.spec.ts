@@ -44,7 +44,6 @@ import { ImageCropperBasicExample } from './examples/basic'
 import { ImageCropperAspectRatioExample } from './examples/aspect-ratio'
 import { ImageCropperCircleExample } from './examples/circle'
 import { ImageCropperContextExample } from './examples/context'
-import { ImageCropperControlledExample } from './examples/controlled'
 import { ImageCropperControlledZoomExample } from './examples/controlled-zoom'
 import { ImageCropperCropPreviewExample } from './examples/crop-preview'
 import { ImageCropperEventsExample } from './examples/events'
@@ -143,7 +142,6 @@ describe('@ark-ui/angular/image-cropper', () => {
     expect(ImageCropperBasicExample).toBeDefined()
     expect(ImageCropperCircleExample).toBeDefined()
     expect(ImageCropperContextExample).toBeDefined()
-    expect(ImageCropperControlledExample).toBeDefined()
     expect(ImageCropperControlledZoomExample).toBeDefined()
     expect(ImageCropperCropPreviewExample).toBeDefined()
     expect(ImageCropperEventsExample).toBeDefined()
@@ -164,7 +162,6 @@ describe('@ark-ui/angular/image-cropper', () => {
       ImageCropperBasicExample,
       ImageCropperCircleExample,
       ImageCropperContextExample,
-      ImageCropperControlledExample,
       ImageCropperControlledZoomExample,
       ImageCropperCropPreviewExample,
       ImageCropperEventsExample,

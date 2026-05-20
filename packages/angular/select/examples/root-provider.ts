@@ -2,11 +2,14 @@ import { ChangeDetectionStrategy, Component, Injector, inject, runInInjectionCon
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { createListCollection, type ListCollection } from '@ark-ui/angular/collection'
 import {
+  ArkSelectClearTrigger,
   ArkSelectContent,
   ArkSelectControl,
   ArkSelectHiddenSelect,
   ArkSelectIndicator,
   ArkSelectItem,
+  ArkSelectItemGroup,
+  ArkSelectItemGroupLabel,
   ArkSelectItemIndicator,
   ArkSelectItemText,
   ArkSelectLabel,
@@ -19,7 +22,7 @@ import {
 } from '@ark-ui/angular/select'
 import { selectExampleStyles } from '../select-example-styles'
 
-interface Priority {
+interface Framework {
   label: string
   value: string
 }
@@ -35,35 +38,42 @@ interface Priority {
     ArkSelectControl,
     ArkSelectTrigger,
     ArkSelectValueText,
+    ArkSelectClearTrigger,
     ArkSelectIndicator,
     ArkSelectPositioner,
     ArkSelectContent,
+    ArkSelectItemGroup,
+    ArkSelectItemGroupLabel,
     ArkSelectItem,
     ArkSelectItemText,
     ArkSelectItemIndicator,
     ArkSelectHiddenSelect,
   ],
   template: `
-    <output class="select-output">selected: {{ select.api().value.join(', ') || 'none' }}</output>
+    <output>selected: {{ stringify(select.api().value) }}</output>
     <div arkSelectRootProvider #provider="arkSelectRootProvider" [value]="select">
-      <span arkSelectLabel>Priority</span>
+      <span arkSelectLabel>Framework</span>
       <div arkSelectControl>
         <button arkSelectTrigger>
-          <span arkSelectValueText>Pick priority</span>
+          <span arkSelectValueText>Select a Framework</span>
         </button>
         <div class="select-indicators">
+          <button arkSelectClearTrigger>×</button>
           <span arkSelectIndicator>▾</span>
         </div>
       </div>
       <ark-portal [originInjector]="provider.getContextCarrier().elementInjector">
         <div arkSelectPositioner>
           <div arkSelectContent>
-            @for (item of collection.items; track item.value) {
-              <div arkSelectItem [item]="item">
-                <span arkSelectItemText>{{ item.label }}</span>
-                <span arkSelectItemIndicator>✓</span>
-              </div>
-            }
+            <div arkSelectItemGroup>
+              <span arkSelectItemGroupLabel>Frameworks</span>
+              @for (item of collection.items; track item.value) {
+                <div arkSelectItem [item]="item">
+                  <span arkSelectItemText>{{ item.label }}</span>
+                  <span arkSelectItemIndicator>✓</span>
+                </div>
+              }
+            </div>
           </div>
         </div>
       </ark-portal>
@@ -73,15 +83,19 @@ interface Priority {
   styles: [selectExampleStyles],
 })
 export class SelectRootProviderExample {
-  readonly collection: ListCollection<Priority> = createListCollection<Priority>({
+  readonly collection: ListCollection<Framework> = createListCollection<Framework>({
     items: [
-      { label: 'Low', value: 'low' },
-      { label: 'Medium', value: 'medium' },
-      { label: 'High', value: 'high' },
-      { label: 'Critical', value: 'critical' },
+      { label: 'React', value: 'react' },
+      { label: 'Solid', value: 'solid' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Svelte', value: 'svelte' },
     ],
   })
-  readonly select: UseSelectReturn<Priority> = runInInjectionContext(inject(Injector), () =>
-    useSelect<Priority>({ context: () => ({ collection: this.collection }) }),
+  readonly select: UseSelectReturn<Framework> = runInInjectionContext(inject(Injector), () =>
+    useSelect<Framework>({ context: () => ({ collection: this.collection }) }),
   )
+
+  stringify(value: string[]): string {
+    return JSON.stringify(value)
+  }
 }

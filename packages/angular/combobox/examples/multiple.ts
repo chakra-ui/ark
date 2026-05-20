@@ -58,6 +58,7 @@ const initialItems: Skill[] = [
       [multiple]="true"
       [(value)]="selected"
       (inputValueChange)="onInputValueChange($event)"
+      (valueChange)="onValueChange($event)"
     >
       <span arkComboboxLabel>Skills</span>
       <div class="combobox-tags">
@@ -100,11 +101,16 @@ export class ComboboxMultipleExample {
 
   onInputValueChange(details: ComboboxInputValueChangeDetails): void {
     const query = details.inputValue.toLowerCase()
-    const filtered = initialItems.filter((item) => item.label.toLowerCase().includes(query))
+    const selected = this.selected() ?? []
+    const filtered = initialItems.filter(
+      (item) => item.label.toLowerCase().includes(query) && !selected.includes(item.value),
+    )
     this.collection.set(createListCollection<Skill>({ items: filtered }))
   }
 
-  onValueChange(_details: ComboboxValueChangeDetails<Skill>): void {
-    // selected is bound via [(value)]
+  onValueChange(details: ComboboxValueChangeDetails<Skill>): void {
+    const selected = details.value
+    const filtered = this.collection().items.filter((item) => !selected.includes(item.value))
+    this.collection.set(createListCollection<Skill>({ items: filtered }))
   }
 }

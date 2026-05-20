@@ -8,7 +8,6 @@ import {
   ArkDrawerPositioner,
   ArkDrawerRoot,
   ArkDrawerTitle,
-  ArkDrawerTrigger,
 } from '@ark-ui/angular/drawer'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { drawerExampleStyles } from '../drawer-example-styles'
@@ -20,7 +19,6 @@ import { DrawerXIcon } from './icons'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ArkDrawerRoot,
-    ArkDrawerTrigger,
     ArkDrawerBackdrop,
     ArkDrawerPositioner,
     ArkDrawerContent,
@@ -32,8 +30,8 @@ import { DrawerXIcon } from './icons'
     DrawerXIcon,
   ],
   template: `
+    <button type="button" class="button" (click)="open.set(!open())">{{ open() ? 'Close' : 'Open' }} Drawer</button>
     <div arkDrawer #root="arkDrawer" [(open)]="open">
-      <button type="button" arkDrawerTrigger>{{ open() ? 'Close' : 'Open' }} Drawer</button>
       <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
         <div arkDrawerBackdrop></div>
         <div arkDrawerPositioner>

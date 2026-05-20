@@ -9,6 +9,7 @@ import {
   useTimer,
 } from '../public-api'
 import { timerExampleStyles } from '../timer-example-styles'
+import { TimerPauseIcon, TimerPlayIcon, TimerRotateCcwIcon } from './icons'
 
 @Component({
   selector: 'timer-root-provider-example',
@@ -21,11 +22,14 @@ import { timerExampleStyles } from '../timer-example-styles'
     ArkTimerSeparator,
     ArkTimerControl,
     ArkTimerActionTrigger,
+    TimerPlayIcon,
+    TimerPauseIcon,
+    TimerRotateCcwIcon,
   ],
   template: `
-    <div class="timer-root">
+    <div class="timer-stack">
       <output class="timer-output">timer: {{ time() }}</output>
-      <div arkTimerRootProvider [value]="timer">
+      <div arkTimerRootProvider [value]="timer" class="timer-root">
         <div arkTimerArea class="timer-area">
           <div class="timer-item-group">
             <span arkTimerItem type="hours" class="timer-item"></span>
@@ -43,10 +47,22 @@ import { timerExampleStyles } from '../timer-example-styles'
           </div>
         </div>
         <div arkTimerControl class="timer-control">
-          <button arkTimerActionTrigger action="start" class="timer-button">Start</button>
-          <button arkTimerActionTrigger action="resume" class="timer-button">Resume</button>
-          <button arkTimerActionTrigger action="pause" class="timer-button">Pause</button>
-          <button arkTimerActionTrigger action="reset" class="timer-button">Reset</button>
+          <button arkTimerActionTrigger action="start" class="timer-button">
+            <timer-play-icon />
+            Start
+          </button>
+          <button arkTimerActionTrigger action="resume" class="timer-button">
+            <timer-play-icon />
+            Resume
+          </button>
+          <button arkTimerActionTrigger action="pause" class="timer-button">
+            <timer-pause-icon />
+            Pause
+          </button>
+          <button arkTimerActionTrigger action="reset" class="timer-button">
+            <timer-rotate-ccw-icon />
+            Reset
+          </button>
         </div>
       </div>
     </div>

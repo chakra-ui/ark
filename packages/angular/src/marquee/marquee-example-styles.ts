@@ -107,6 +107,74 @@ export const marqueeExampleStyles = `
     color: var(--demo-neutral-fg);
   }
 
+  .Button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.5rem;
+    min-width: 2.5rem;
+    padding-inline: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: inherit;
+    line-height: 1.25rem;
+    border-radius: 0.375rem;
+    user-select: none;
+    white-space: nowrap;
+    transition:
+      background 150ms,
+      border-color 150ms,
+      color 150ms;
+    background: transparent;
+    border: 1px solid var(--demo-border-emphasized);
+    color: var(--demo-neutral-fg);
+  }
+
+  .Button svg {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+  }
+
+  .Button:has(> svg:only-child) {
+    padding-inline: 0.625rem !important;
+  }
+
+  .Button:is(:hover, [aria-expanded='true']):not(:disabled, [data-disabled]) {
+    background: var(--demo-neutral-subtle);
+  }
+
+  .Button:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: -1px;
+  }
+
+  .Button:is(:disabled, [data-disabled]) {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
+  .Button[data-variant='surface'] {
+    border-color: var(--demo-border-emphasized);
+    color: var(--demo-coral-fg);
+  }
+
+  .Button[data-variant='solid'] {
+    background: var(--demo-coral-solid);
+    border-color: var(--demo-coral-solid);
+    color: var(--demo-coral-contrast);
+  }
+
+  .Button[data-variant='solid']:hover {
+    background: var(--demo-coral-fg);
+    border-color: var(--demo-coral-fg);
+  }
+
+  .Button[data-variant='solid']:focus-visible {
+    outline-offset: 2px;
+  }
+
   @keyframes marqueeX {
     0% {
       transform: translateX(0%);

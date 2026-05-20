@@ -6,7 +6,6 @@ import { MarqueeFiniteLoopsExample } from './examples/finite-loops'
 import { MarqueePauseOnInteractionExample } from './examples/pause-on-interaction'
 import { MarqueeProgrammaticControlExample } from './examples/programmatic-control'
 import { MarqueeReverseExample } from './examples/reverse'
-import { MarqueeRootProviderExample } from './examples/root-provider'
 import { MarqueeSpeedExample } from './examples/speed'
 import { MarqueeVerticalExample } from './examples/vertical'
 import { MarqueeWithEdgesExample } from './examples/with-edges'
@@ -17,14 +16,14 @@ const meta: Meta = {
 
 export default meta
 
-export const Basic: StoryObj = {
-  decorators: [moduleMetadata({ imports: [MarqueeBasicExample] })],
-  render: () => ({ template: '<marquee-basic-example />' }),
-}
-
 export const AutoFill: StoryObj = {
   decorators: [moduleMetadata({ imports: [MarqueeAutoFillExample] })],
   render: () => ({ template: '<marquee-auto-fill-example />' }),
+}
+
+export const Basic: StoryObj = {
+  decorators: [moduleMetadata({ imports: [MarqueeBasicExample] })],
+  render: () => ({ template: '<marquee-basic-example />' }),
 }
 
 export const FiniteLoops: StoryObj = {
@@ -45,11 +44,6 @@ export const ProgrammaticControl: StoryObj = {
 export const Reverse: StoryObj = {
   decorators: [moduleMetadata({ imports: [MarqueeReverseExample] })],
   render: () => ({ template: '<marquee-reverse-example />' }),
-}
-
-export const RootProvider: StoryObj = {
-  decorators: [moduleMetadata({ imports: [MarqueeRootProviderExample] })],
-  render: () => ({ template: '<marquee-root-provider-example />' }),
 }
 
 export const Speed: StoryObj = {

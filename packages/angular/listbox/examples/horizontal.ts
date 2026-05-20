@@ -7,6 +7,7 @@ import {
   ArkListboxLabel,
   ArkListboxRoot,
 } from '@ark-ui/angular/listbox'
+import { ListboxCheckIcon } from './icons'
 import { listboxExampleStyles } from '../listbox-example-styles'
 
 interface Album {
@@ -19,14 +20,21 @@ interface Album {
   selector: 'listbox-horizontal-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ArkListboxRoot, ArkListboxLabel, ArkListboxContent, ArkListboxItem, ArkListboxItemIndicator],
+  imports: [
+    ArkListboxRoot,
+    ArkListboxLabel,
+    ArkListboxContent,
+    ArkListboxItem,
+    ArkListboxItemIndicator,
+    ListboxCheckIcon,
+  ],
   template: `
     <div arkListboxRoot [collection]="collection" orientation="horizontal">
       <span arkListboxLabel>Select Album</span>
       <div arkListboxContent>
         @for (item of collection.items; track item.title) {
           <div arkListboxItem class="item-card" [item]="item">
-            <span arkListboxItemIndicator class="item-card-indicator">✓</span>
+            <span arkListboxItemIndicator class="item-card-indicator"><listbox-check-icon /></span>
             <img class="item-card-image" [src]="item.image" [alt]="item.title" />
             <span class="item-card-title">{{ item.title }}</span>
             <span class="item-card-artist">{{ item.artist }}</span>

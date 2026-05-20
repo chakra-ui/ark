@@ -5,7 +5,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core'
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      aria-hidden="true"
+    >
       <path d="m18 15-6-6-6 6" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   `,
@@ -17,7 +25,15 @@ export class NumberInputChevronUpIcon {}
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      aria-hidden="true"
+    >
       <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   `,
@@ -29,7 +45,15 @@ export class NumberInputChevronDownIcon {}
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      aria-hidden="true"
+    >
       <path d="m8 3-4 4 4 4" stroke-linecap="round" stroke-linejoin="round" />
       <path d="M4 7h16" stroke-linecap="round" />
       <path d="m16 21 4-4-4-4" stroke-linecap="round" stroke-linejoin="round" />

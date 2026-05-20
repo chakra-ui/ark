@@ -7,6 +7,7 @@ import {
   ArkPaginationPrevTrigger,
   ArkPaginationRoot,
 } from '../public-api'
+import { PaginationChevronLeftIcon, PaginationChevronRightIcon } from './icons'
 import { paginationExampleStyles } from '../pagination-example-styles'
 
 interface User {
@@ -49,6 +50,8 @@ const users: User[] = [
     ArkPaginationContext,
     ArkPaginationItem,
     ArkPaginationEllipsis,
+    PaginationChevronLeftIcon,
+    PaginationChevronRightIcon,
   ],
   template: `
     <nav arkPagination [count]="users.length" [pageSize]="5" class="pagination-root">
@@ -63,7 +66,7 @@ const users: User[] = [
         </div>
 
         <div class="pagination-controls">
-          <button arkPaginationPrevTrigger class="pagination-trigger">&lt;</button>
+          <button arkPaginationPrevTrigger class="pagination-trigger"><pagination-chevron-left-icon /></button>
           @for (entry of pagination().pages; track $index) {
             @if (entry.type === 'page') {
               <button arkPaginationItem [value]="entry.value" class="pagination-item">{{ entry.value }}</button>
@@ -71,7 +74,7 @@ const users: User[] = [
               <span arkPaginationEllipsis [index]="$index" class="pagination-ellipsis">...</span>
             }
           }
-          <button arkPaginationNextTrigger class="pagination-trigger">&gt;</button>
+          <button arkPaginationNextTrigger class="pagination-trigger"><pagination-chevron-right-icon /></button>
         </div>
       </ng-container>
     </nav>

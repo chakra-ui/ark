@@ -1,29 +1,30 @@
 export const splitterExampleStyles = `
 .stack {
-  display: grid;
-  gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
 .splitter-root {
-  --splitter-border-color: #a1a1aa;
-  --splitter-thumb-color: #71717a;
+  --splitter-border-color: var(--demo-border-emphasized);
+  --splitter-thumb-color: var(--demo-bg-thumb);
   --splitter-thumb-size: 0.5rem;
   --splitter-thumb-inset: calc(var(--splitter-thumb-size) * -0.5);
   --splitter-border-size: 1px;
   --splitter-handle-size: 1.5rem;
 
-  border: 1px solid #d4d4d8;
   display: flex;
   min-height: 20rem;
-  min-width: 18rem;
+  border: 1px solid var(--demo-border);
   width: 100%;
 }
 
 .splitter-panel {
   align-items: center;
-  color: #18181b;
+  color: var(--demo-neutral-fg);
   display: flex;
-  font-weight: 600;
+  font-weight: 500;
   justify-content: center;
   min-height: 0;
   min-width: 0;
@@ -55,8 +56,8 @@ export const splitterExampleStyles = `
 
 .splitter-trigger:focus,
 .splitter-trigger[data-dragging] {
-  --splitter-border-color: #e11d48;
-  --splitter-thumb-color: #f43f5e;
+  --splitter-border-color: var(--demo-coral-emphasized);
+  --splitter-thumb-color: var(--demo-coral-solid);
 }
 
 .splitter-trigger[data-disabled] {
@@ -85,9 +86,9 @@ export const splitterExampleStyles = `
 
 .splitter-indicator {
   background: var(--splitter-thumb-color);
-  border: 1px solid #d4d4d8;
+  border: 1px solid var(--demo-border);
   border-radius: 999px;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.12);
+  box-shadow: var(--demo-shadow-sm);
   display: block;
   position: relative;
   z-index: 1;
@@ -104,7 +105,7 @@ export const splitterExampleStyles = `
 }
 
 .splitter-indicator[data-focus]:focus-visible {
-  outline: 2px solid #f43f5e;
+  outline: 2px solid var(--demo-coral-focus-ring);
   outline-offset: 2px;
 }
 
@@ -113,13 +114,71 @@ export const splitterExampleStyles = `
 }
 
 .splitter-button {
-  border: 1px solid #d4d4d8;
-  border-radius: 0.375rem;
-  background: #ffffff;
-  color: #18181b;
-  cursor: pointer;
-  font: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-inline: 1rem;
+  min-height: 2.5rem;
+  min-width: 2.5rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  padding: 0.5rem 0.75rem;
+  font-family: inherit;
+  line-height: 1.25rem;
+  border-radius: 0.375rem;
+  user-select: none;
+  white-space: nowrap;
+  transition:
+    background 150ms,
+    border-color 150ms,
+    color 150ms;
+  background: transparent;
+  border: 1px solid var(--demo-border-emphasized);
+  color: var(--demo-neutral-fg);
+  cursor: pointer;
+}
+
+.splitter-button > svg {
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+}
+
+.splitter-button:has(> svg:only-child) {
+  padding-inline: 0.625rem !important;
+}
+
+.splitter-button:is(:hover, [aria-expanded='true']):not(:disabled, [data-disabled]) {
+  background: var(--demo-neutral-subtle);
+}
+
+.splitter-button:focus-visible {
+  outline: 2px solid var(--demo-coral-focus-ring);
+  outline-offset: -1px;
+}
+
+.splitter-button:is(:disabled, [data-disabled]) {
+  opacity: 0.5;
+  filter: grayscale(100%);
+}
+
+.splitter-button[data-variant='surface'] {
+  border-color: var(--demo-border-emphasized);
+  color: var(--demo-coral-fg);
+}
+
+.splitter-button[data-variant='solid'] {
+  background: var(--demo-coral-solid);
+  border-color: var(--demo-coral-solid);
+  color: var(--demo-coral-contrast);
+}
+
+.splitter-button[data-variant='solid']:hover {
+  background: var(--demo-coral-fg);
+  border-color: var(--demo-coral-fg);
+}
+
+.splitter-button[data-variant='solid']:focus-visible {
+  outline-offset: 2px;
 }
 `

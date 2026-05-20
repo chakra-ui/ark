@@ -7,6 +7,7 @@ import {
   ArkPaginationRootProvider,
   usePagination,
 } from '../public-api'
+import { PaginationChevronLeftIcon, PaginationChevronRightIcon } from './icons'
 import { paginationExampleStyles } from '../pagination-example-styles'
 
 @Component({
@@ -19,11 +20,13 @@ import { paginationExampleStyles } from '../pagination-example-styles'
     ArkPaginationNextTrigger,
     ArkPaginationItem,
     ArkPaginationEllipsis,
+    PaginationChevronLeftIcon,
+    PaginationChevronRightIcon,
   ],
   template: `
     <nav arkPaginationRootProvider [value]="pagination" class="pagination-root">
       <div class="pagination-controls">
-        <a arkPaginationPrevTrigger class="pagination-trigger">&lt;</a>
+        <a arkPaginationPrevTrigger class="pagination-trigger"><pagination-chevron-left-icon /></a>
         @for (entry of pagination.api().pages; track $index) {
           @if (entry.type === 'page') {
             <a arkPaginationItem [value]="entry.value" class="pagination-item">{{ entry.value }}</a>
@@ -31,7 +34,7 @@ import { paginationExampleStyles } from '../pagination-example-styles'
             <span arkPaginationEllipsis [index]="$index" class="pagination-ellipsis">...</span>
           }
         }
-        <a arkPaginationNextTrigger class="pagination-trigger">&gt;</a>
+        <a arkPaginationNextTrigger class="pagination-trigger"><pagination-chevron-right-icon /></a>
       </div>
     </nav>
   `,

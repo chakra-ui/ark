@@ -34,7 +34,7 @@ import { PopoverXIcon } from './icons'
       <div class="hstack">
         <button type="button" arkPopoverTrigger>Click Me</button>
         <span arkPopoverAnchor>
-          <input placeholder="Type here..." />
+          <input class="field" placeholder="Type here..." />
         </span>
       </div>
       <ark-portal [originInjector]="root.getContextCarrier().elementInjector">

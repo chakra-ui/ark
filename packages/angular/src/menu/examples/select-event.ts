@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
 import {
   ArkMenuContent,
   ArkMenuIndicator,
@@ -46,12 +46,10 @@ import { MenuChevronDownIcon } from './icons'
         </div>
       </ark-portal>
     </div>
-    <p>Selected: {{ selected() }}</p>
   `,
   styles: [menuExampleStyles],
 })
 export class MenuSelectEventExample {
-  readonly selected = signal('none')
   readonly items = [
     { value: 'profile', label: 'My Profile' },
     { value: 'settings', label: 'Settings' },
@@ -60,7 +58,7 @@ export class MenuSelectEventExample {
   ]
 
   onRootSelect(details: MenuSelectionDetails): void {
-    this.selected.set(details.value)
+    console.log('Selected:', details.value)
   }
 
   onItemSelect(label: string): void {

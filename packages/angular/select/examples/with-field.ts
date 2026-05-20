@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { ArkFieldErrorText, ArkFieldHelperText, ArkFieldRoot } from '@ark-ui/angular/field'
-import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { createListCollection, type ListCollection } from '@ark-ui/angular/collection'
 import {
   ArkSelectContent,
@@ -18,11 +17,6 @@ import {
 } from '@ark-ui/angular/select'
 import { selectExampleStyles } from '../select-example-styles'
 
-interface Option {
-  label: string
-  value: string
-}
-
 @Component({
   selector: 'select-with-field-example',
   standalone: true,
@@ -31,7 +25,6 @@ interface Option {
     ArkFieldRoot,
     ArkFieldErrorText,
     ArkFieldHelperText,
-    ArkPortalComponent,
     ArkSelectRoot,
     ArkSelectLabel,
     ArkSelectControl,
@@ -46,27 +39,25 @@ interface Option {
     ArkSelectHiddenSelect,
   ],
   template: `
-    <div arkFieldRoot [invalid]="true">
-      <div arkSelectRoot #root="arkSelectRoot" [collection]="collection">
+    <div arkFieldRoot>
+      <div arkSelectRoot [collection]="collection">
         <span arkSelectLabel>Label</span>
         <div arkSelectControl>
           <button arkSelectTrigger>
-            <span arkSelectValueText>Select a framework</span>
+            <span arkSelectValueText>Select a Framework</span>
             <span arkSelectIndicator>▾</span>
           </button>
         </div>
-        <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
-          <div arkSelectPositioner>
-            <div arkSelectContent>
-              @for (item of collection.items; track item.value) {
-                <div arkSelectItem [item]="item">
-                  <span arkSelectItemText>{{ item.label }}</span>
-                  <span arkSelectItemIndicator>✓</span>
-                </div>
+        <div arkSelectPositioner>
+          <div arkSelectContent>
+            @for (item of collection.items; track item) {
+              <div arkSelectItem [item]="item">
+                <span arkSelectItemText>{{ item }}</span>
+                <span arkSelectItemIndicator>✓</span>
               }
-            </div>
+            }
           </div>
-        </ark-portal>
+        </div>
         <select arkSelectHiddenSelect></select>
       </div>
       <span arkFieldHelperText>Additional Info</span>
@@ -76,12 +67,7 @@ interface Option {
   styles: [selectExampleStyles],
 })
 export class SelectWithFieldExample {
-  readonly collection: ListCollection<Option> = createListCollection<Option>({
-    items: [
-      { label: 'React', value: 'react' },
-      { label: 'Solid', value: 'solid' },
-      { label: 'Vue', value: 'vue' },
-      { label: 'Svelte', value: 'svelte' },
-    ],
+  readonly collection: ListCollection<string> = createListCollection<string>({
+    items: ['React', 'Solid', 'Vue', 'Svelte'],
   })
 }

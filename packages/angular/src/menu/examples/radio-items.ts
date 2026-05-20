@@ -65,6 +65,12 @@ import { MenuCheckIcon, MenuChevronDownIcon } from './icons'
                 </span>
                 <span arkMenuItemText value="size">Size</span>
               </div>
+              <div arkMenuRadioItem value="type">
+                <span arkMenuItemIndicator>
+                  <menu-check-icon />
+                </span>
+                <span arkMenuItemText value="type">Type</span>
+              </div>
             </div>
           </div>
         </div>

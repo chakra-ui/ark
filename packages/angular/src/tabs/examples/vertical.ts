@@ -14,11 +14,9 @@ import { tabsExampleStyles } from '../tabs-example-styles'
         <button type="button" arkTabsTrigger value="password">Password</button>
         <button type="button" arkTabsTrigger value="billing">Billing</button>
       </div>
-      <div>
-        <div arkTabsContent value="account">Make changes to your account here.</div>
-        <div arkTabsContent value="password">Change your password here.</div>
-        <div arkTabsContent value="billing">Manage your billing and payment details.</div>
-      </div>
+      <div arkTabsContent value="account">Make changes to your account here.</div>
+      <div arkTabsContent value="password">Change your password here.</div>
+      <div arkTabsContent value="billing">Manage your billing and payment details.</div>
     </div>
   `,
   styles: [tabsExampleStyles],

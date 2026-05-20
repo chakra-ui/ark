@@ -6,10 +6,10 @@ import { injectArkEnvironment } from '../public-api'
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <p>Root node: {{ rootNodeName }}</p>
+    <pre>{{ rootNodeJson }}</pre>
   `,
 })
 export class EnvironmentUsageExample {
   private readonly environment = injectArkEnvironment()
-  protected readonly rootNodeName = this.environment.getRootNode()?.nodeName ?? 'Unavailable'
+  protected readonly rootNodeJson = JSON.stringify(this.environment.getRootNode(), null, 2)
 }

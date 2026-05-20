@@ -24,9 +24,9 @@ import { pinInputExampleStyles } from '../pin-input-example-styles'
     ArkPinInputHiddenInput,
   ],
   template: `
-    <div arkFieldRoot [invalid]="true">
+    <div arkFieldRoot>
       <div arkPinInputRoot>
-        <span arkPinInputLabel>Code</span>
+        <span arkPinInputLabel>Label</span>
         <div arkPinInputControl>
           <input arkPinInputInput [index]="0" />
           <input arkPinInputInput [index]="1" />
@@ -34,8 +34,8 @@ import { pinInputExampleStyles } from '../pin-input-example-styles'
         </div>
         <input arkPinInputHiddenInput />
       </div>
-      <span arkFieldHelperText>Additional info</span>
-      <span arkFieldErrorText>Error info</span>
+      <span arkFieldHelperText>Additional Info</span>
+      <span arkFieldErrorText>Error Info</span>
     </div>
   `,
   styles: [pinInputExampleStyles],

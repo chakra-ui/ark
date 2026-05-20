@@ -90,6 +90,13 @@ export const editableExampleStyles = `
     cursor: pointer;
   }
 
+  [arkEditableEditTrigger] svg,
+  [arkEditableSubmitTrigger] svg,
+  [arkEditableCancelTrigger] svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
   [arkEditableEditTrigger]:hover,
   [arkEditableSubmitTrigger]:hover,
   [arkEditableCancelTrigger]:hover {
@@ -145,5 +152,44 @@ export const editableExampleStyles = `
   .helper-text {
     font-size: 0.75rem;
     color: var(--demo-neutral-fg-muted, #6b7280);
+  }
+
+  [arkFieldRoot] {
+    color: var(--demo-neutral-fg, #111827);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.25rem;
+    width: 100%;
+    max-width: 24rem;
+  }
+
+  [arkFieldRoot][data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
+  [arkFieldRoot][data-inline] {
+    width: auto;
+  }
+
+  [arkFieldRoot] [arkEditableLabel],
+  [arkFieldHelperText],
+  [arkFieldErrorText] {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  [arkFieldRoot] [arkEditableLabel] {
+    font-weight: 500;
+    color: var(--demo-neutral-fg, #111827);
+  }
+
+  [arkFieldHelperText] {
+    color: var(--demo-neutral-fg-muted, #6b7280);
+  }
+
+  [arkFieldErrorText] {
+    color: var(--demo-coral-fg, #c2410c);
   }
 `

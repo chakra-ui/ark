@@ -33,7 +33,7 @@ import { stepExampleItems } from './_data'
   template: `
     <div arkSteps class="steps-root" [count]="items.length" orientation="vertical">
       <ol arkStepsList class="steps-list">
-        @for (item of items; track item.title; let index = $index) {
+        @for (item of items; track item.value; let index = $index) {
           <li arkStepsItem class="steps-item" [index]="index">
             <button arkStepsTrigger class="steps-trigger">
               <span arkStepsIndicator class="steps-indicator">{{ index + 1 }}</span>
@@ -44,7 +44,7 @@ import { stepExampleItems } from './_data'
         }
       </ol>
 
-      @for (item of items; track item.title; let index = $index) {
+      @for (item of items; track item.value; let index = $index) {
         <div arkStepsContent class="steps-content" [index]="index">
           <div class="vstack">
             <span>{{ item.title }} - {{ item.description }}</span>

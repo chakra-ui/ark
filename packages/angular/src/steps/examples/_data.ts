@@ -1,10 +1,11 @@
 export interface StepExampleItem {
+  readonly value: string
   readonly title: string
   readonly description: string
 }
 
 export const stepExampleItems: StepExampleItem[] = [
-  { title: 'First', description: 'Contact Info' },
-  { title: 'Second', description: 'Date & Time' },
-  { title: 'Third', description: 'Select Rooms' },
+  { value: 'first', title: 'First', description: 'Contact Info' },
+  { value: 'second', title: 'Second', description: 'Date & Time' },
+  { value: 'third', title: 'Third', description: 'Select Rooms' },
 ]

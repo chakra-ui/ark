@@ -7,7 +7,6 @@ import { FileUploadDirectoryUploadExample } from './examples/directory-upload'
 import { FileUploadErrorHandlingExample } from './examples/error-handling'
 import { FileUploadFormUsageExample } from './examples/form-usage'
 import { FileUploadInitialFilesExample } from './examples/initial-files'
-import { FileUploadMaxFilesExample } from './examples/max-files'
 import { FileUploadMediaCaptureExample } from './examples/media-capture'
 import { FileUploadPastingFilesExample } from './examples/pasting-files'
 import { FileUploadRejectedFilesExample } from './examples/rejected-files'
@@ -15,7 +14,6 @@ import { FileUploadRootProviderExample } from './examples/root-provider'
 import { FileUploadTransformFilesExample } from './examples/transform-files'
 import { FileUploadWithFieldExample } from './examples/with-field'
 import { FileUploadWithDropzoneExample } from './examples/with-dropzone'
-import { FileUploadWithImagePreviewExample } from './examples/with-image-preview'
 
 const meta: Meta = {
   title: 'Components / File Upload',
@@ -23,14 +21,14 @@ const meta: Meta = {
 
 export default meta
 
-export const Basic: StoryObj = {
-  decorators: [moduleMetadata({ imports: [FileUploadBasicExample] })],
-  render: () => ({ template: '<file-upload-basic-example />' }),
-}
-
 export const AcceptedFileTypes: StoryObj = {
   decorators: [moduleMetadata({ imports: [FileUploadAcceptedFileTypesExample] })],
   render: () => ({ template: '<file-upload-accepted-file-types-example />' }),
+}
+
+export const Basic: StoryObj = {
+  decorators: [moduleMetadata({ imports: [FileUploadBasicExample] })],
+  render: () => ({ template: '<file-upload-basic-example />' }),
 }
 
 export const ClearTrigger: StoryObj = {
@@ -63,11 +61,6 @@ export const InitialFiles: StoryObj = {
   render: () => ({ template: '<file-upload-initial-files-example />' }),
 }
 
-export const MaxFiles: StoryObj = {
-  decorators: [moduleMetadata({ imports: [FileUploadMaxFilesExample] })],
-  render: () => ({ template: '<file-upload-max-files-example />' }),
-}
-
 export const MediaCapture: StoryObj = {
   decorators: [moduleMetadata({ imports: [FileUploadMediaCaptureExample] })],
   render: () => ({ template: '<file-upload-media-capture-example />' }),
@@ -96,9 +89,4 @@ export const TransformFiles: StoryObj = {
 export const WithField: StoryObj = {
   decorators: [moduleMetadata({ imports: [FileUploadWithFieldExample] })],
   render: () => ({ template: '<file-upload-with-field-example />' }),
-}
-
-export const WithImagePreview: StoryObj = {
-  decorators: [moduleMetadata({ imports: [FileUploadWithImagePreviewExample] })],
-  render: () => ({ template: '<file-upload-with-image-preview-example />' }),
 }

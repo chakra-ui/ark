@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from '@storybook/angular'
 import { moduleMetadata } from '@storybook/angular'
 import { JsonTreeViewArrayDataExample } from './examples/array-data'
 import { JsonTreeViewBasicExample } from './examples/basic'
-import { JsonTreeViewDataTypesExample } from './examples/data-types'
-import { JsonTreeViewErrorsExample } from './examples/errors'
 import { JsonTreeViewExpandLevelExample } from './examples/expand-level'
 import { JsonTreeViewFunctionsExample } from './examples/functions'
 import { JsonTreeViewMapAndSetExample } from './examples/map-and-set'
@@ -45,16 +43,6 @@ export const Functions: StoryObj = {
 export const ExpandLevel: StoryObj = {
   decorators: [moduleMetadata({ imports: [JsonTreeViewExpandLevelExample] })],
   render: () => ({ template: '<json-tree-view-expand-level-example />' }),
-}
-
-export const DataTypes: StoryObj = {
-  decorators: [moduleMetadata({ imports: [JsonTreeViewDataTypesExample] })],
-  render: () => ({ template: '<json-tree-view-data-types-example />' }),
-}
-
-export const Errors: StoryObj = {
-  decorators: [moduleMetadata({ imports: [JsonTreeViewErrorsExample] })],
-  render: () => ({ template: '<json-tree-view-errors-example />' }),
 }
 
 export const RenderValue: StoryObj = {

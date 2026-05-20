@@ -22,11 +22,6 @@ export const LazyMount: StoryObj = {
   render: () => ({ template: '<presence-lazy-mount-example />' }),
 }
 
-export const UnmountOnExit: StoryObj = {
-  decorators: [moduleMetadata({ imports: [PresenceUnmountOnExitExample] })],
-  render: () => ({ template: '<presence-unmount-on-exit-example />' }),
-}
-
 export const LazyMountAndUnmountOnExit: StoryObj = {
   decorators: [moduleMetadata({ imports: [PresenceLazyMountAndUnmountOnExitExample] })],
   render: () => ({ template: '<presence-lazy-mount-and-unmount-on-exit-example />' }),
@@ -35,4 +30,9 @@ export const LazyMountAndUnmountOnExit: StoryObj = {
 export const SkipAnimationOnMount: StoryObj = {
   decorators: [moduleMetadata({ imports: [PresenceSkipAnimationOnMountExample] })],
   render: () => ({ template: '<presence-skip-animation-on-mount-example />' }),
+}
+
+export const UnmountOnExit: StoryObj = {
+  decorators: [moduleMetadata({ imports: [PresenceUnmountOnExitExample] })],
+  render: () => ({ template: '<presence-unmount-on-exit-example />' }),
 }

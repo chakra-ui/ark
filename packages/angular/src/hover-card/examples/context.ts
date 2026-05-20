@@ -9,6 +9,7 @@ import {
 } from '@ark-ui/angular/hover-card'
 import { ArkPortalComponent } from '@ark-ui/angular/portal'
 import { hoverCardExampleStyles } from '../hover-card-example-styles'
+import { HoverCardChevronDownIcon, HoverCardChevronUpIcon } from './icons'
 
 @Component({
   selector: 'hover-card-context-example',
@@ -22,6 +23,8 @@ import { hoverCardExampleStyles } from '../hover-card-example-styles'
     ArkHoverCardArrow,
     ArkHoverCardArrowTip,
     ArkPortalComponent,
+    HoverCardChevronDownIcon,
+    HoverCardChevronUpIcon,
   ],
   template: `
     <div arkHoverCard #root="arkHoverCard">
@@ -29,7 +32,11 @@ import { hoverCardExampleStyles } from '../hover-card-example-styles'
         Liked by
         <a arkHoverCardTrigger href="#profile">
           &#64;sarah_chen
-          <span aria-hidden="true">{{ root.api().open ? '^' : 'v' }}</span>
+          @if (root.api().open) {
+            <hover-card-chevron-up-icon />
+          } @else {
+            <hover-card-chevron-down-icon />
+          }
         </a>
         and 3 others
       </p>

@@ -29,9 +29,9 @@ export const InitialOpen: StoryObj = {
   render: () => ({ template: '<collapsible-initial-open-example />' }),
 }
 
-export const PartialCollapse: StoryObj = {
-  decorators: [moduleMetadata({ imports: [CollapsiblePartialCollapseExample] })],
-  render: () => ({ template: '<collapsible-partial-collapse-example />' }),
+export const LazyMount: StoryObj = {
+  decorators: [moduleMetadata({ imports: [CollapsibleLazyMountExample] })],
+  render: () => ({ template: '<collapsible-lazy-mount-example />' }),
 }
 
 export const Nested: StoryObj = {
@@ -39,9 +39,9 @@ export const Nested: StoryObj = {
   render: () => ({ template: '<collapsible-nested-example />' }),
 }
 
-export const LazyMount: StoryObj = {
-  decorators: [moduleMetadata({ imports: [CollapsibleLazyMountExample] })],
-  render: () => ({ template: '<collapsible-lazy-mount-example />' }),
+export const PartialCollapse: StoryObj = {
+  decorators: [moduleMetadata({ imports: [CollapsiblePartialCollapseExample] })],
+  render: () => ({ template: '<collapsible-partial-collapse-example />' }),
 }
 
 export const RootProvider: StoryObj = {

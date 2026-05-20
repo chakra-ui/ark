@@ -29,8 +29,8 @@ import { marqueeExampleStyles } from '../marquee-example-styles'
         </div>
       </div>
       <div class="hstack">
-        <button type="button" (click)="marquee.api().pause()">Pause</button>
-        <button type="button" (click)="marquee.api().resume()">Resume</button>
+        <button type="button" class="Button" (click)="marquee.api().pause()">Pause</button>
+        <button type="button" class="Button" (click)="marquee.api().resume()">Resume</button>
       </div>
     </div>
   `,

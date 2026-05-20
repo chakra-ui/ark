@@ -1,11 +1,15 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core'
+import { asyncListExampleStyles } from '../async-list-example-styles'
 import { type AsyncListProps, type AsyncListService, connectAsyncList, createAsyncListMachine } from '../public-api'
+
+const LIMIT = 4
 
 interface User {
   id: number
   name: string
   email: string
-  team: string
+  department: string
+  role: string
 }
 
 type AsyncListState = 'idle' | 'loading' | 'sorting'
@@ -18,116 +22,110 @@ interface AsyncListContext<T, C> {
   error?: Error
 }
 
-const users: User[] = [
-  { id: 1, name: 'Alice Johnson', email: 'alice@example.com', team: 'Engineering' },
-  { id: 2, name: 'Bob Smith', email: 'bob@example.com', team: 'Marketing' },
-  { id: 3, name: 'Carol Davis', email: 'carol@example.com', team: 'Engineering' },
-  { id: 4, name: 'David Wilson', email: 'david@example.com', team: 'Sales' },
-]
-
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+
+const mockUsers: User[] = [
+  { id: 1, name: 'Alice Johnson', email: 'alice@example.com', department: 'Engineering', role: 'Senior Developer' },
+  { id: 2, name: 'Bob Smith', email: 'bob@example.com', department: 'Marketing', role: 'Marketing Manager' },
+  { id: 3, name: 'Carol Davis', email: 'carol@example.com', department: 'Engineering', role: 'Frontend Developer' },
+  { id: 4, name: 'David Wilson', email: 'david@example.com', department: 'Sales', role: 'Sales Representative' },
+  { id: 5, name: 'Eva Brown', email: 'eva@example.com', department: 'Engineering', role: 'DevOps Engineer' },
+  { id: 6, name: 'Frank Miller', email: 'frank@example.com', department: 'Support', role: 'Customer Success' },
+  { id: 7, name: 'Grace Lee', email: 'grace@example.com', department: 'Marketing', role: 'Content Creator' },
+  { id: 8, name: 'Henry Taylor', email: 'henry@example.com', department: 'Engineering', role: 'Backend Developer' },
+  { id: 9, name: 'Ivy Anderson', email: 'ivy@example.com', department: 'Sales', role: 'Account Manager' },
+  { id: 10, name: 'Jack Thompson', email: 'jack@example.com', department: 'Support', role: 'Technical Support' },
+  { id: 11, name: 'Kate Martinez', email: 'kate@example.com', department: 'Marketing', role: 'Brand Manager' },
+  { id: 12, name: 'Liam Garcia', email: 'liam@example.com', department: 'Engineering', role: 'Full Stack Developer' },
+  { id: 13, name: 'Mia Rodriguez', email: 'mia@example.com', department: 'Sales', role: 'Sales Director' },
+  { id: 14, name: 'Noah Lopez', email: 'noah@example.com', department: 'Support', role: 'Support Manager' },
+  { id: 15, name: 'Olivia White', email: 'olivia@example.com', department: 'Engineering', role: 'UI Designer' },
+  { id: 16, name: 'Paul Harris', email: 'paul@example.com', department: 'Marketing', role: 'Digital Marketer' },
+  { id: 17, name: 'Quinn Clark', email: 'quinn@example.com', department: 'Engineering', role: 'Mobile Developer' },
+  { id: 18, name: 'Ruby Lewis', email: 'ruby@example.com', department: 'Sales', role: 'Business Development' },
+  { id: 19, name: 'Sam Young', email: 'sam@example.com', department: 'Support', role: 'Documentation Specialist' },
+  { id: 20, name: 'Tina Walker', email: 'tina@example.com', department: 'Marketing', role: 'Social Media Manager' },
+]
 
 @Component({
   selector: 'collection-async-list-filter-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="async-list">
-      <label class="field">
-        <span>Search users</span>
-        <input type="search" [value]="api().filterText" (input)="search($event)" />
-      </label>
+    <div class="root">
+      <div class="header">
+        <input
+          class="input"
+          type="text"
+          placeholder="Search users..."
+          [value]="api().filterText"
+          (input)="search($event)"
+        />
+        @if (api().loading) {
+          <span class="loading">
+            <span class="spinner" aria-hidden="true"></span>
+            Searching
+          </span>
+        }
+      </div>
 
-      @if (api().loading) {
-        <p class="status">Searching</p>
+      @if (api().error) {
+        <div class="error">Error: {{ api().error.message }}</div>
       }
 
-      <div class="items">
+      <div class="item-group">
         @for (user of api().items; track user.id) {
-          <article class="item">
-            <strong>{{ user.name }}</strong>
-            <span>{{ user.email }}</span>
-            <small>{{ user.team }}</small>
-          </article>
+          <div class="item">
+            <div class="item-content">
+              <div class="item-title">{{ user.name }}</div>
+              <div class="item-description">{{ user.email }}</div>
+              <div class="item-meta">{{ user.department }} &bull; {{ user.role }}</div>
+            </div>
+          </div>
         }
       </div>
 
       @if (api().empty && !api().loading) {
-        <p class="status">No results</p>
+        <div class="empty">No results found</div>
       }
     </div>
   `,
-  styles: [
-    `
-      .async-list {
-        display: grid;
-        gap: 0.75rem;
-        max-width: 28rem;
-      }
-
-      .field {
-        display: grid;
-        gap: 0.375rem;
-      }
-
-      input {
-        border: 1px solid #a1a1aa;
-        border-radius: 0.375rem;
-        min-height: 2.5rem;
-        padding: 0 0.75rem;
-      }
-
-      .items {
-        display: grid;
-        gap: 0.5rem;
-      }
-
-      .item {
-        border-bottom: 1px solid #e4e4e7;
-        display: grid;
-        gap: 0.125rem;
-        padding: 0.5rem 0;
-      }
-
-      .item span,
-      .item small,
-      .status {
-        color: #52525b;
-      }
-
-      .status {
-        margin: 0;
-      }
-    `,
-  ],
+  styles: [asyncListExampleStyles],
 })
 export class CollectionAsyncListFilterExample {
   private readonly refs = { abort: null as AbortController | null, seq: 0 }
   private readonly state = signal<AsyncListState>('idle')
-  private readonly context = signal<AsyncListContext<User, string>>({
-    items: users,
+  private readonly context = signal<AsyncListContext<User, undefined>>({
+    items: mockUsers.slice(0, LIMIT),
     filterText: '',
     cursor: null,
   })
 
-  private readonly props: AsyncListProps<User, string> = {
-    initialItems: users,
+  private readonly props: AsyncListProps<User, undefined> = {
+    initialItems: mockUsers.slice(0, LIMIT),
     load: async ({ filterText }) => {
-      await delay(200)
-      const query = filterText.trim().toLowerCase()
-      const items = query
-        ? users.filter((user) => `${user.name} ${user.email} ${user.team}`.toLowerCase().includes(query))
-        : users
-      return { items }
+      await delay(500)
+
+      if (!filterText) {
+        return { items: mockUsers.slice(0, LIMIT) }
+      }
+
+      const filtered = mockUsers.filter(
+        (user) =>
+          user.name.toLowerCase().includes(filterText.toLowerCase()) ||
+          user.email.toLowerCase().includes(filterText.toLowerCase()),
+      )
+
+      return { items: filtered.slice(0, LIMIT) }
     },
   }
 
   protected readonly api = computed(() =>
     connectAsyncList({
-      context: { get: (key: keyof AsyncListContext<User, string>) => this.context()[key] },
+      context: { get: (key: keyof AsyncListContext<User, undefined>) => this.context()[key] },
       send: (event: Record<string, unknown>) => this.handleEvent(event),
       state: { matches: (...values: string[]) => values.includes(this.state()) },
-    } as unknown as AsyncListService<User, string>),
+    } as unknown as AsyncListService<User, undefined>),
   )
 
   protected search(event: Event): void {
@@ -168,11 +166,11 @@ export class CollectionAsyncListFilterExample {
   private createActionParams(event: Record<string, unknown>): Record<string, unknown> {
     return {
       context: {
-        get: (key: keyof AsyncListContext<User, string>) => this.context()[key],
+        get: (key: keyof AsyncListContext<User, undefined>) => this.context()[key],
         set: this.setContext,
       },
       event,
-      prop: (key: keyof AsyncListProps<User, string>) => this.props[key],
+      prop: (key: keyof AsyncListProps<User, undefined>) => this.props[key],
       refs: {
         get: (key: keyof typeof this.refs) => this.refs[key],
         set: <K extends keyof typeof this.refs>(key: K, value: (typeof this.refs)[K]) => {
@@ -183,11 +181,11 @@ export class CollectionAsyncListFilterExample {
     }
   }
 
-  private readonly setContext = <K extends keyof AsyncListContext<User, string>>(
+  private readonly setContext = <K extends keyof AsyncListContext<User, undefined>>(
     key: K,
     value:
-      | AsyncListContext<User, string>[K]
-      | ((previous: AsyncListContext<User, string>[K]) => AsyncListContext<User, string>[K]),
+      | AsyncListContext<User, undefined>[K]
+      | ((previous: AsyncListContext<User, undefined>[K]) => AsyncListContext<User, undefined>[K]),
   ): void => {
     this.context.update((context) => ({
       ...context,

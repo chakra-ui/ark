@@ -5,65 +5,116 @@ export const popoverExampleStyles = `
     font-family: inherit;
   }
 
-  [arkPopoverTrigger] {
+  [arkPopoverTrigger],
+  .popover-button,
+  [arkPopoverCloseTrigger].button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem 0.875rem;
+    gap: 0.5rem;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    padding-inline: 1rem;
     font-size: 0.875rem;
     font-weight: 500;
     font-family: inherit;
     line-height: 1.25rem;
     border-radius: 0.375rem;
-    background: var(--demo-coral-9, #c7553f);
-    color: white;
-    border: 1px solid transparent;
-    cursor: pointer;
-  }
-
-  button:not([arkPopoverTrigger]):not([arkPopoverCloseTrigger]),
-  [arkPopoverCloseTrigger].button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem 0.875rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    line-height: 1.25rem;
-    border-radius: 0.375rem;
+    user-select: none;
+    white-space: nowrap;
+    transition:
+      background 150ms,
+      border-color 150ms,
+      color 150ms;
     background: var(--demo-bg, #ffffff);
     color: var(--demo-neutral-fg, #1c1917);
-    border: 1px solid var(--demo-border, #d6d3d1);
+    border: 1px solid var(--demo-border-emphasized, var(--demo-border, #d6d3d1));
     cursor: pointer;
   }
 
-  button[data-variant='solid'],
+  [arkPopoverTrigger] svg,
+  .popover-button svg,
+  [arkPopoverCloseTrigger].button svg {
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+  }
+
+  [arkPopoverTrigger]:has(> svg:only-child),
+  .popover-button:has(> svg:only-child),
+  [arkPopoverCloseTrigger].button:has(> svg:only-child) {
+    padding-inline: 0.625rem !important;
+  }
+
+  [arkPopoverTrigger]:is(:hover, [aria-expanded='true']):not(:disabled, [data-disabled]),
+  .popover-button:is(:hover, [aria-expanded='true']):not(:disabled, [data-disabled]),
+  [arkPopoverCloseTrigger].button:is(:hover, [aria-expanded='true']):not(:disabled, [data-disabled]) {
+    background: var(--demo-neutral-subtle, #f5f5f4);
+  }
+
+  [arkPopoverTrigger]:focus-visible,
+  .popover-button:focus-visible,
+  [arkPopoverCloseTrigger].button:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring, #ff7a5c);
+    outline-offset: -1px;
+  }
+
+  [arkPopoverTrigger]:is(:disabled, [data-disabled]),
+  .popover-button:is(:disabled, [data-disabled]),
+  [arkPopoverCloseTrigger].button:is(:disabled, [data-disabled]) {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
+  [arkPopoverTrigger][data-variant='surface'],
+  .popover-button[data-variant='surface'],
+  [arkPopoverCloseTrigger].button[data-variant='surface'] {
+    border-color: var(--demo-border-emphasized, var(--demo-border, #d6d3d1));
+    color: var(--demo-coral-fg, #9f3f2f);
+  }
+
+  [arkPopoverTrigger][data-variant='solid'],
+  .popover-button[data-variant='solid'],
   [arkPopoverCloseTrigger].button[data-variant='solid'] {
-    background: var(--demo-coral-9, #c7553f);
-    color: white;
-    border-color: transparent;
+    background: var(--demo-coral-solid, var(--demo-coral-9, #c7553f));
+    color: var(--demo-coral-contrast, #ffffff);
+    border-color: var(--demo-coral-solid, var(--demo-coral-9, #c7553f));
+  }
+
+  [arkPopoverTrigger][data-variant='solid']:hover,
+  .popover-button[data-variant='solid']:hover,
+  [arkPopoverCloseTrigger].button[data-variant='solid']:hover {
+    background: var(--demo-coral-fg, #9f3f2f);
+    border-color: var(--demo-coral-fg, #9f3f2f);
+  }
+
+  [arkPopoverTrigger][data-variant='solid']:focus-visible,
+  .popover-button[data-variant='solid']:focus-visible,
+  [arkPopoverCloseTrigger].button[data-variant='solid']:focus-visible {
+    outline-offset: 2px;
   }
 
   .stack,
   .button-group,
   .hstack {
     display: flex;
-    gap: 0.75rem;
     flex-wrap: wrap;
+  }
+
+  .button-group {
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .stack {
     flex-direction: column;
     align-items: flex-start;
+    gap: 0.75rem;
   }
 
   .hstack {
     align-items: center;
-  }
-
-  [arkPopoverTrigger]:focus-visible {
-    outline: 2px solid var(--demo-coral-focus-ring, #ff7a5c);
-    outline-offset: 2px;
+    gap: 0.75rem;
   }
 
   [arkPopoverPositioner] {
@@ -181,6 +232,11 @@ export const popoverExampleStyles = `
     border-radius: 0.375rem;
     padding: 0.5rem 0.75rem;
     font: inherit;
+  }
+
+  .field:focus {
+    outline: 2px solid var(--demo-coral-focus-ring, #ff7a5c);
+    outline-offset: -1px;
   }
 
   @keyframes popover-scale-fade-in {

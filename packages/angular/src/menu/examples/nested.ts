@@ -71,6 +71,38 @@ import { MenuChevronDownIcon } from './icons'
                 </div>
               </ark-portal>
             </div>
+            <div arkMenu #shareSecond="arkMenu">
+              <div arkMenuTriggerItem>Share</div>
+              <ark-portal [originInjector]="shareSecond.getContextCarrier().elementInjector">
+                <div arkMenuPositioner>
+                  <div arkMenuContent>
+                    <div arkMenuItem value="email">Email</div>
+                    <div arkMenuItem value="message">Message</div>
+                    <div arkMenuItem value="airdrop">AirDrop</div>
+                    <div arkMenuItem value="test1">Test1</div>
+                    <div arkMenuItem value="test2">Test2</div>
+                    <div arkMenuItem value="test3">Test3</div>
+                    <div arkMenuItem value="test4">Test4</div>
+                  </div>
+                </div>
+              </ark-portal>
+            </div>
+            <div arkMenu #shareThird="arkMenu">
+              <div arkMenuTriggerItem>Share</div>
+              <ark-portal [originInjector]="shareThird.getContextCarrier().elementInjector">
+                <div arkMenuPositioner>
+                  <div arkMenuContent>
+                    <div arkMenuItem value="email">Email</div>
+                    <div arkMenuItem value="message">Message</div>
+                    <div arkMenuItem value="airdrop">AirDrop</div>
+                    <div arkMenuItem value="test1">Test1</div>
+                    <div arkMenuItem value="test2">Test2</div>
+                    <div arkMenuItem value="test3">Test3</div>
+                    <div arkMenuItem value="test4">Test4</div>
+                  </div>
+                </div>
+              </ark-portal>
+            </div>
             <div arkMenuSeparator></div>
             <div arkMenuItem value="print">Print...</div>
           </div>

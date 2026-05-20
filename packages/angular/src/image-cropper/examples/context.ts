@@ -10,6 +10,7 @@ import {
   imageCropperHandles,
 } from '../public-api'
 import { imageCropperExampleStyles } from '../image-cropper-example-styles'
+import { ImageCropperZoomInIcon, ImageCropperZoomOutIcon } from './icons'
 
 @Component({
   selector: 'image-cropper-context-example',
@@ -23,15 +24,21 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
     ArkImageCropperHandle,
     ArkImageCropperGrid,
     ArkImageCropperContext,
+    ImageCropperZoomOutIcon,
+    ImageCropperZoomInIcon,
   ],
   template: `
     <div class="layout">
       <div class="root" arkImageCropper>
         <ng-template arkImageCropperContext let-api="api">
           <div class="toolbar">
-            <button type="button" aria-label="Zoom out" (click)="api().zoomBy(-0.1)">-</button>
+            <button type="button" aria-label="Zoom out" (click)="api().zoomBy(-0.1)">
+              <image-cropper-zoom-out-icon />
+            </button>
             <span class="meter">{{ api().zoom.toFixed(1) }}x</span>
-            <button type="button" aria-label="Zoom in" (click)="api().zoomBy(0.1)">+</button>
+            <button type="button" aria-label="Zoom in" (click)="api().zoomBy(0.1)">
+              <image-cropper-zoom-in-icon />
+            </button>
           </div>
         </ng-template>
 

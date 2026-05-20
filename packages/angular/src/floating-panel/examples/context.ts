@@ -19,7 +19,7 @@ import { FloatingPanelDemoPanel } from './panel'
     <div arkFloatingPanel #root="arkFloatingPanel">
       <button type="button" arkFloatingPanelTrigger>Toggle Panel</button>
       <ng-container *arkFloatingPanelContext="let floatingPanel">
-        <p>Floating panel is {{ floatingPanel().open ? 'open' : 'closed' }}</p>
+        <p>floatingPanel is {{ floatingPanel().open ? 'open' : 'closed' }}</p>
       </ng-container>
       <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
         <floating-panel-demo-panel>

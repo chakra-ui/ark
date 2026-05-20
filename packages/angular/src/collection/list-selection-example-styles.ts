@@ -1,0 +1,106 @@
+export const listSelectionExampleStyles = `
+  .list-selection-root {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    width: 100%;
+    max-width: 24rem;
+  }
+
+  .list-selection-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--demo-border);
+    margin-bottom: 0.25rem;
+  }
+
+  .list-selection-count {
+    font-size: 0.875rem;
+    color: var(--demo-neutral-emphasized);
+  }
+
+  .list-selection-select-all-button {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--demo-coral-fg);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .list-selection-select-all-button:hover {
+    text-decoration: underline;
+  }
+
+  .list-selection-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 0.75rem;
+    border-radius: 0.25rem;
+    user-select: none;
+    border: 1px solid transparent;
+  }
+
+  .list-selection-item:hover {
+    background: var(--demo-neutral-subtle);
+  }
+
+  .list-selection-item[data-selected] {
+    background: var(--demo-coral-subtle);
+    border-color: var(--demo-coral-muted);
+  }
+
+  .list-selection-checkbox {
+    appearance: none;
+    width: 1.125rem;
+    height: 1.125rem;
+    border: 1.5px solid var(--demo-border-emphasized);
+    border-radius: 0.25rem;
+    background: var(--demo-bg-checkbox);
+    cursor: pointer;
+    flex-shrink: 0;
+    display: grid;
+    place-content: center;
+  }
+
+  .list-selection-checkbox::before {
+    content: '';
+    width: 0.625rem;
+    height: 0.625rem;
+    rotate: 15deg;
+    scale: 0;
+    transition: scale 0.1s ease-in-out;
+    box-shadow: inset 1rem 1rem var(--demo-coral-contrast);
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  }
+
+  .list-selection-checkbox:checked {
+    background: var(--demo-coral-solid);
+    border-color: var(--demo-coral-solid);
+  }
+
+  .list-selection-checkbox:checked::before {
+    scale: 1;
+  }
+
+  .list-selection-checkbox:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: 2px;
+  }
+
+  .list-selection-item-text {
+    font-size: 0.9375rem;
+    color: var(--demo-neutral-fg);
+    flex: 1;
+  }
+
+  .list-selection-helper-text {
+    font-size: 0.75rem;
+    color: var(--demo-neutral-fg-muted);
+    margin-top: 0.5rem;
+  }
+`

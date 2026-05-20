@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common'
 import { ChangeDetectionStrategy, Component, Injector, computed, inject, runInInjectionContext } from '@angular/core'
 import {
   ArkAccordionItem,
@@ -22,10 +23,11 @@ import { AccordionChevronDownIcon } from './icons'
     ArkAccordionItemContent,
     ArkAccordionItemIndicator,
     AccordionChevronDownIcon,
+    JsonPipe,
   ],
   template: `
     <div class="stack">
-      <output>value: {{ valueLabel() }}</output>
+      <output>Value: {{ accordion.api().value | json }}</output>
       <div arkAccordionRootProvider [value]="accordion">
         @for (item of items; track item.value) {
           <div arkAccordionItem [value]="item.value">

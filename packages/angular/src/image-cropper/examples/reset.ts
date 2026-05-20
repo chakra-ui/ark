@@ -10,6 +10,14 @@ import {
   useImageCropper,
 } from '../public-api'
 import { imageCropperExampleStyles } from '../image-cropper-example-styles'
+import {
+  ImageCropperFlipHorizontalIcon,
+  ImageCropperRefreshCwIcon,
+  ImageCropperRotateCcwIcon,
+  ImageCropperRotateCwIcon,
+  ImageCropperZoomInIcon,
+  ImageCropperZoomOutIcon,
+} from './icons'
 
 @Component({
   selector: 'image-cropper-reset-example',
@@ -22,16 +30,35 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
     ArkImageCropperSelection,
     ArkImageCropperHandle,
     ArkImageCropperGrid,
+    ImageCropperZoomOutIcon,
+    ImageCropperZoomInIcon,
+    ImageCropperRotateCcwIcon,
+    ImageCropperRotateCwIcon,
+    ImageCropperFlipHorizontalIcon,
+    ImageCropperRefreshCwIcon,
   ],
   template: `
     <div class="layout">
       <div class="toolbar">
-        <button type="button" aria-label="Zoom out" (click)="imageCropper.api().zoomBy(-0.1)">-</button>
-        <button type="button" aria-label="Zoom in" (click)="imageCropper.api().zoomBy(0.1)">+</button>
-        <button type="button" (click)="imageCropper.api().rotateBy(-90)">Rotate left</button>
-        <button type="button" (click)="imageCropper.api().rotateBy(90)">Rotate right</button>
-        <button type="button" (click)="imageCropper.api().flipHorizontally()">Flip horizontal</button>
-        <button type="button" data-variant="surface" (click)="imageCropper.api().reset()">Reset</button>
+        <button type="button" aria-label="Zoom out" (click)="imageCropper.api().zoomBy(-0.1)">
+          <image-cropper-zoom-out-icon />
+        </button>
+        <button type="button" aria-label="Zoom in" (click)="imageCropper.api().zoomBy(0.1)">
+          <image-cropper-zoom-in-icon />
+        </button>
+        <button type="button" aria-label="Rotate counterclockwise" (click)="imageCropper.api().rotateBy(-90)">
+          <image-cropper-rotate-ccw-icon />
+        </button>
+        <button type="button" aria-label="Rotate clockwise" (click)="imageCropper.api().rotateBy(90)">
+          <image-cropper-rotate-cw-icon />
+        </button>
+        <button type="button" aria-label="Flip horizontally" (click)="imageCropper.api().flipHorizontally()">
+          <image-cropper-flip-horizontal-icon />
+        </button>
+        <button type="button" data-variant="surface" (click)="imageCropper.api().reset()">
+          <image-cropper-refresh-cw-icon />
+          Reset
+        </button>
       </div>
 
       <div class="root" arkImageCropperRootProvider [value]="imageCropper">

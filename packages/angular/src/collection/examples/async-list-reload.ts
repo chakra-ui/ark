@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, signal, type OnInit } from '@angular/core'
+import { asyncListExampleStyles } from '../async-list-example-styles'
 import { type AsyncListProps, type AsyncListService, connectAsyncList, createAsyncListMachine } from '../public-api'
 
 interface Quote {
   id: number
-  text: string
+  quote: string
   author: string
 }
 
@@ -17,114 +18,69 @@ interface AsyncListContext<T, C> {
   error?: Error
 }
 
-const quoteBatches: Quote[][] = [
-  [
-    { id: 1, text: 'Clarity beats cleverness.', author: 'Ada Lovelace' },
-    { id: 2, text: 'Make it work, then make it obvious.', author: 'Grace Hopper' },
-  ],
-  [
-    { id: 3, text: 'Small systems reveal large truths.', author: 'Katherine Johnson' },
-    { id: 4, text: 'Good tools remove ceremony.', author: 'Mary Jackson' },
-  ],
-]
-
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
-
 @Component({
   selector: 'collection-async-list-reload-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="async-list">
+    <div class="root">
       <div class="header">
-        <output>{{ api().items.length }} quotes</output>
-        <button type="button" (click)="reload()" [disabled]="api().loading">
-          {{ api().loading ? 'Loading' : 'Reload quotes' }}
+        <button class="button" type="button" (click)="reload()" [disabled]="api().loading">
+          @if (api().loading) {
+            <span class="spinner" aria-hidden="true"></span>
+            Loading
+          } @else {
+            Reload Quotes
+          }
         </button>
       </div>
 
       @if (api().error) {
-        <p class="error">Error: {{ api().error.message }}</p>
+        <div class="error">Error: {{ api().error.message }}</div>
       }
 
-      <div class="items">
+      <div class="item-group">
         @for (quote of api().items; track quote.id) {
-          <article class="item">
-            <p>{{ quote.text }}</p>
-            <small>{{ quote.author }}</small>
-          </article>
+          <div class="item">
+            <div class="item-content">
+              <div class="item-description">"{{ quote.quote }}"</div>
+              <div class="item-meta">- {{ quote.author }}</div>
+            </div>
+          </div>
         }
       </div>
     </div>
   `,
-  styles: [
-    `
-      .async-list {
-        display: grid;
-        gap: 0.75rem;
-        max-width: 30rem;
-      }
-
-      .header {
-        align-items: center;
-        display: flex;
-        gap: 0.75rem;
-        justify-content: space-between;
-      }
-
-      .items {
-        display: grid;
-        gap: 0.5rem;
-      }
-
-      .item {
-        border: 1px solid #d4d4d8;
-        border-radius: 0.375rem;
-        display: grid;
-        gap: 0.25rem;
-        padding: 0.75rem;
-      }
-
-      .item p {
-        margin: 0;
-      }
-
-      .item small {
-        color: #52525b;
-      }
-
-      .error {
-        color: #b91c1c;
-        margin: 0;
-      }
-    `,
-  ],
+  styles: [asyncListExampleStyles],
 })
 export class CollectionAsyncListReloadExample implements OnInit {
-  private quoteBatch = 0
   private readonly refs = { abort: null as AbortController | null, seq: 0 }
   private readonly state = signal<AsyncListState>('idle')
-  private readonly context = signal<AsyncListContext<Quote, string>>({
+  private readonly context = signal<AsyncListContext<Quote, undefined>>({
     items: [],
     filterText: '',
     cursor: null,
   })
 
-  private readonly props: AsyncListProps<Quote, string> = {
+  private readonly props: AsyncListProps<Quote, undefined> = {
     load: async () => {
-      await delay(250)
-      const items = quoteBatches[this.quoteBatch % quoteBatches.length]
-      this.quoteBatch += 1
-      return { items }
+      const response = await fetch(`https://dummyjson.com/quotes?limit=4&skip=${Math.floor(Math.random() * 50)}`)
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch quotes')
+      }
+
+      const data = (await response.json()) as { quotes: Quote[] }
+      return { items: data.quotes }
     },
   }
 
   protected readonly api = computed(() =>
     connectAsyncList({
-      context: { get: (key: keyof AsyncListContext<Quote, string>) => this.context()[key] },
+      context: { get: (key: keyof AsyncListContext<Quote, undefined>) => this.context()[key] },
       send: (event: Record<string, unknown>) => this.handleEvent(event),
       state: { matches: (...values: string[]) => values.includes(this.state()) },
-    } as unknown as AsyncListService<Quote, string>),
+    } as unknown as AsyncListService<Quote, undefined>),
   )
 
   ngOnInit(): void {
@@ -168,11 +124,11 @@ export class CollectionAsyncListReloadExample implements OnInit {
   private createActionParams(event: Record<string, unknown>): Record<string, unknown> {
     return {
       context: {
-        get: (key: keyof AsyncListContext<Quote, string>) => this.context()[key],
+        get: (key: keyof AsyncListContext<Quote, undefined>) => this.context()[key],
         set: this.setContext,
       },
       event,
-      prop: (key: keyof AsyncListProps<Quote, string>) => this.props[key],
+      prop: (key: keyof AsyncListProps<Quote, undefined>) => this.props[key],
       refs: {
         get: (key: keyof typeof this.refs) => this.refs[key],
         set: <K extends keyof typeof this.refs>(key: K, value: (typeof this.refs)[K]) => {
@@ -183,11 +139,11 @@ export class CollectionAsyncListReloadExample implements OnInit {
     }
   }
 
-  private readonly setContext = <K extends keyof AsyncListContext<Quote, string>>(
+  private readonly setContext = <K extends keyof AsyncListContext<Quote, undefined>>(
     key: K,
     value:
-      | AsyncListContext<Quote, string>[K]
-      | ((previous: AsyncListContext<Quote, string>[K]) => AsyncListContext<Quote, string>[K]),
+      | AsyncListContext<Quote, undefined>[K]
+      | ((previous: AsyncListContext<Quote, undefined>[K]) => AsyncListContext<Quote, undefined>[K]),
   ): void => {
     this.context.update((context) => ({
       ...context,

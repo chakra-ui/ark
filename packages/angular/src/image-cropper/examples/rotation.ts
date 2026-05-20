@@ -9,6 +9,7 @@ import {
   imageCropperHandles,
 } from '../public-api'
 import { imageCropperExampleStyles } from '../image-cropper-example-styles'
+import { ImageCropperRotateCcwIcon, ImageCropperRotateCwIcon } from './icons'
 
 @Component({
   selector: 'image-cropper-rotation-example',
@@ -21,17 +22,19 @@ import { imageCropperExampleStyles } from '../image-cropper-example-styles'
     ArkImageCropperSelection,
     ArkImageCropperHandle,
     ArkImageCropperGrid,
+    ImageCropperRotateCcwIcon,
+    ImageCropperRotateCwIcon,
   ],
   template: `
     <div class="layout">
       <div class="toolbar">
         <button type="button" aria-label="Rotate counterclockwise" (click)="rotation.set((rotation() ?? 0) - 90)">
-          Rotate left
+          <image-cropper-rotate-ccw-icon />
         </button>
         <button type="button" aria-label="Rotate clockwise" (click)="rotation.set((rotation() ?? 0) + 90)">
-          Rotate right
+          <image-cropper-rotate-cw-icon />
         </button>
-        <span class="meter">{{ rotation() }} deg</span>
+        <span class="meter">{{ rotation() }}°</span>
       </div>
 
       <div class="root" arkImageCropper [(rotation)]="rotation">

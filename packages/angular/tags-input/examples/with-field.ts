@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { ArkFieldErrorText, ArkFieldHelperText, ArkFieldRoot } from '@ark-ui/angular/field'
 import {
+  ArkTagsInputClearTrigger,
   ArkTagsInputControl,
   ArkTagsInputHiddenInput,
   ArkTagsInputInput,
@@ -13,6 +14,7 @@ import {
   ArkTagsInputRoot,
 } from '@ark-ui/angular/tags-input'
 import { tagsInputExampleStyles } from '../tags-input-example-styles'
+import { TagsInputXIcon } from './icons'
 
 @Component({
   selector: 'tags-input-with-field-example',
@@ -32,6 +34,8 @@ import { tagsInputExampleStyles } from '../tags-input-example-styles'
     ArkTagsInputItemPreview,
     ArkTagsInputItemText,
     ArkTagsInputItemDeleteTrigger,
+    ArkTagsInputClearTrigger,
+    TagsInputXIcon,
   ],
   template: `
     <div arkFieldRoot>
@@ -42,17 +46,22 @@ import { tagsInputExampleStyles } from '../tags-input-example-styles'
             <span arkTagsInputItem [index]="i" [value]="tag">
               <div arkTagsInputItemPreview>
                 <span arkTagsInputItemText>{{ tag }}</span>
-                <button type="button" arkTagsInputItemDeleteTrigger>x</button>
+                <button type="button" arkTagsInputItemDeleteTrigger>
+                  <tags-input-x-icon />
+                </button>
               </div>
               <input arkTagsInputItemInput />
             </span>
           }
           <input arkTagsInputInput placeholder="Add Framework" />
+          <button type="button" arkTagsInputClearTrigger>
+            <tags-input-x-icon />
+          </button>
         </div>
         <input arkTagsInputHiddenInput />
       </div>
-      <span arkFieldHelperText>Additional info</span>
-      <span arkFieldErrorText>Error info</span>
+      <span arkFieldHelperText>Additional Info</span>
+      <span arkFieldErrorText>Error Info</span>
     </div>
   `,
   styles: [tagsInputExampleStyles],

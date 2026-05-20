@@ -1,4 +1,4 @@
-import { effect, type DestroyRef, type ElementRef, type Renderer2 } from '@angular/core'
+import { RendererStyleFlags2, effect, type DestroyRef, type ElementRef, type Renderer2 } from '@angular/core'
 
 type ArkProps = Record<string, unknown>
 
@@ -141,23 +141,26 @@ export function applyArkProps(options: ApplyArkPropsOptions): void {
     appliedClasses.clear()
   }
 
+  const styleFlags = (name: string): RendererStyleFlags2 | undefined =>
+    name.startsWith('--') ? RendererStyleFlags2.DashCase : undefined
+
   const applyStyles = (el: HTMLElement, nextValue: unknown): void => {
     const nextMap = computeStyleMap(nextValue)
     for (const name of appliedStyles) {
       if (!nextMap.has(name)) {
-        renderer.removeStyle(el, name)
+        renderer.removeStyle(el, name, styleFlags(name))
         appliedStyles.delete(name)
       }
     }
     for (const [name, styleValue] of nextMap) {
-      renderer.setStyle(el, name, styleValue)
+      renderer.setStyle(el, name, styleValue, styleFlags(name))
       appliedStyles.add(name)
     }
   }
 
   const removeAllStyles = (el: HTMLElement): void => {
     for (const name of appliedStyles) {
-      renderer.removeStyle(el, name)
+      renderer.removeStyle(el, name, styleFlags(name))
     }
     appliedStyles.clear()
   }

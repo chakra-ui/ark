@@ -29,7 +29,7 @@ import { PasswordInputEyeIcon, PasswordInputEyeOffIcon } from './icons'
     PasswordInputEyeOffIcon,
   ],
   template: `
-    <div arkFieldRoot [invalid]="true">
+    <div arkFieldRoot>
       <div arkPasswordInputRoot>
         <span arkPasswordInputLabel>Password</span>
         <div arkPasswordInputControl>

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { moduleMetadata } from '@storybook/angular'
-import { EnvironmentSetupExample } from './examples/setup'
-import { EnvironmentUsageExample } from './examples/usage'
+import { EnvironmentBasicExample } from './examples/basic'
+import { EnvironmentShadowRootExample } from './examples/shadow-root'
 
 const meta: Meta = {
   title: 'Utilities / Environment',
@@ -9,12 +9,12 @@ const meta: Meta = {
 
 export default meta
 
-export const Setup: StoryObj = {
-  decorators: [moduleMetadata({ imports: [EnvironmentSetupExample] })],
-  render: () => ({ template: '<environment-setup-example />' }),
+export const Basic: StoryObj = {
+  decorators: [moduleMetadata({ imports: [EnvironmentBasicExample] })],
+  render: () => ({ template: '<environment-basic-example />' }),
 }
 
-export const Usage: StoryObj = {
-  decorators: [moduleMetadata({ imports: [EnvironmentUsageExample] })],
-  render: () => ({ template: '<environment-usage-example />' }),
+export const ShadowRoot: StoryObj = {
+  decorators: [moduleMetadata({ imports: [EnvironmentShadowRootExample] })],
+  render: () => ({ template: '<environment-shadow-root-example />' }),
 }

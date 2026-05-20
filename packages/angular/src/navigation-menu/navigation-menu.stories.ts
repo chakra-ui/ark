@@ -5,7 +5,6 @@ import { NavigationMenuContextExample } from './examples/context'
 import { NavigationMenuControlledExample } from './examples/controlled'
 import { NavigationMenuRootProviderExample } from './examples/root-provider'
 import { NavigationMenuViewportExample } from './examples/viewport'
-import { NavigationMenuWithIndicatorExample } from './examples/with-indicator'
 
 const meta: Meta = {
   title: 'Components / Navigation Menu',
@@ -36,9 +35,4 @@ export const RootProvider: StoryObj = {
 export const Viewport: StoryObj = {
   decorators: [moduleMetadata({ imports: [NavigationMenuViewportExample] })],
   render: () => ({ template: '<navigation-menu-viewport-example />' }),
-}
-
-export const WithIndicator: StoryObj = {
-  decorators: [moduleMetadata({ imports: [NavigationMenuWithIndicatorExample] })],
-  render: () => ({ template: '<navigation-menu-with-indicator-example />' }),
 }

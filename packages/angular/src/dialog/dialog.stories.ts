@@ -5,7 +5,6 @@ import { DialogBasicExample } from './examples/basic'
 import { DialogConfirmationExample } from './examples/confirmation'
 import { DialogContextExample } from './examples/context'
 import { DialogControlledExample } from './examples/controlled'
-import { DialogDefaultOpenExample } from './examples/default-open'
 import { DialogFinalFocusExample } from './examples/final-focus'
 import { DialogInitialFocusExample } from './examples/initial-focus'
 import { DialogInsideScrollExample } from './examples/inside-scroll'
@@ -15,7 +14,6 @@ import { DialogNestedExample } from './examples/nested'
 import { DialogNonModalExample } from './examples/non-modal'
 import { DialogOpenFromMenuExample } from './examples/open-from-menu'
 import { DialogOutsideScrollExample } from './examples/outside-scroll'
-import { DialogRapidStateChangeExample } from './examples/rapid-state-change'
 import { DialogRootProviderExample } from './examples/root-provider'
 
 const meta: Meta = {
@@ -24,14 +22,14 @@ const meta: Meta = {
 
 export default meta
 
+export const AlertDialog: StoryObj = {
+  decorators: [moduleMetadata({ imports: [DialogAlertDialogExample] })],
+  render: () => ({ template: '<dialog-alert-dialog-example />' }),
+}
+
 export const Basic: StoryObj = {
   decorators: [moduleMetadata({ imports: [DialogBasicExample] })],
   render: () => ({ template: '<dialog-basic-example />' }),
-}
-
-export const Controlled: StoryObj = {
-  decorators: [moduleMetadata({ imports: [DialogControlledExample] })],
-  render: () => ({ template: '<dialog-controlled-example />' }),
 }
 
 export const Confirmation: StoryObj = {
@@ -44,9 +42,9 @@ export const Context: StoryObj = {
   render: () => ({ template: '<dialog-context-example />' }),
 }
 
-export const DefaultOpen: StoryObj = {
-  decorators: [moduleMetadata({ imports: [DialogDefaultOpenExample] })],
-  render: () => ({ template: '<dialog-default-open-example />' }),
+export const Controlled: StoryObj = {
+  decorators: [moduleMetadata({ imports: [DialogControlledExample] })],
+  render: () => ({ template: '<dialog-controlled-example />' }),
 }
 
 export const FinalFocus: StoryObj = {
@@ -92,16 +90,6 @@ export const OpenFromMenu: StoryObj = {
 export const OutsideScroll: StoryObj = {
   decorators: [moduleMetadata({ imports: [DialogOutsideScrollExample] })],
   render: () => ({ template: '<dialog-outside-scroll-example />' }),
-}
-
-export const RapidStateChange: StoryObj = {
-  decorators: [moduleMetadata({ imports: [DialogRapidStateChangeExample] })],
-  render: () => ({ template: '<dialog-rapid-state-change-example />' }),
-}
-
-export const AlertDialog: StoryObj = {
-  decorators: [moduleMetadata({ imports: [DialogAlertDialogExample] })],
-  render: () => ({ template: '<dialog-alert-dialog-example />' }),
 }
 
 export const RootProvider: StoryObj = {

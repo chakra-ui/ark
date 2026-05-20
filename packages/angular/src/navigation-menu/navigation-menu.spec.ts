@@ -647,7 +647,7 @@ describe('@ark-ui/angular/navigation-menu', () => {
     TestBed.configureTestingModule({ imports: [NavigationMenuRootProviderExample] })
     const fixture = TestBed.createComponent(NavigationMenuRootProviderExample)
     fixture.detectChanges()
-    expect(fixture.componentInstance.openValue()).toBe('none')
+    expect(fixture.componentInstance.openValue()).toBe('')
     fixture.destroy()
   })
 

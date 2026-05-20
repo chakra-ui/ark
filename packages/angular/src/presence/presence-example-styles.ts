@@ -11,6 +11,7 @@ export const presenceExampleStyles = `
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
     min-height: 2.5rem;
     min-width: 2.5rem;
     padding-inline: 1rem;
@@ -31,13 +32,18 @@ export const presenceExampleStyles = `
       color 150ms;
   }
 
-  .ToggleButton:hover {
+  .ToggleButton:hover:not(:disabled, [data-disabled]) {
     background: var(--demo-neutral-subtle);
   }
 
   .ToggleButton:focus-visible {
     outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: -1px;
+  }
+
+  .ToggleButton:is(:disabled, [data-disabled]) {
+    opacity: 0.5;
+    filter: grayscale(100%);
   }
 
   :host ::ng-deep [data-scope='presence'] {

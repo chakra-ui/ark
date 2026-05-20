@@ -10,7 +10,7 @@ import { tooltipExampleStyles } from '../tooltip-example-styles'
   imports: [ArkTooltipRoot, ArkTooltipTrigger, ArkTooltipPositioner, ArkTooltipContent, ArkPortalComponent],
   template: `
     <div class="stack">
-      <button type="button" (click)="toggle()">Toggle</button>
+      <button type="button" class="Button" (click)="toggle()">Toggle</button>
       <div arkTooltip #root="arkTooltip" [(open)]="open">
         <button type="button" arkTooltipTrigger>Hover Me</button>
         <ark-portal [originInjector]="root.getContextCarrier().elementInjector">

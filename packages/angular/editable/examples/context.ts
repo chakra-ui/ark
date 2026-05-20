@@ -9,6 +9,7 @@ import {
   ArkEditableRoot,
 } from '@ark-ui/angular/editable'
 import { editableExampleStyles } from '../editable-example-styles'
+import { EditablePencilIcon } from './icons'
 
 @Component({
   selector: 'editable-context-example',
@@ -22,6 +23,7 @@ import { editableExampleStyles } from '../editable-example-styles'
     ArkEditableInput,
     ArkEditableLabel,
     ArkEditablePreview,
+    EditablePencilIcon,
   ],
   template: `
     <div arkEditableRoot #editable="arkEditableRoot" placeholder="Enter text..." defaultValue="Hello World">
@@ -34,7 +36,9 @@ import { editableExampleStyles } from '../editable-example-styles'
         <span class="helper-text">Enter to save, Esc to cancel</span>
       } @else {
         <div arkEditableControl>
-          <button arkEditableEditTrigger>Edit</button>
+          <button arkEditableEditTrigger aria-label="Edit">
+            <editable-pencil-icon />
+          </button>
         </div>
       }
     </div>

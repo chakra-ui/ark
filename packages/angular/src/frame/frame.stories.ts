@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { moduleMetadata } from '@storybook/angular'
 import { FrameBasicExample } from './examples/basic'
-import { FrameInheritStylesExample } from './examples/inherit-styles'
 import { FrameScriptExample } from './examples/script'
 import { FrameSrcDocExample } from './examples/src-doc'
 
@@ -14,11 +13,6 @@ export default meta
 export const Basic: StoryObj = {
   decorators: [moduleMetadata({ imports: [FrameBasicExample] })],
   render: () => ({ template: '<frame-basic-example />' }),
-}
-
-export const InheritStyles: StoryObj = {
-  decorators: [moduleMetadata({ imports: [FrameInheritStylesExample] })],
-  render: () => ({ template: '<frame-inherit-styles-example />' }),
 }
 
 export const Script: StoryObj = {

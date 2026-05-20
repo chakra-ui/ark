@@ -5,7 +5,6 @@ import { TooltipBasicExample } from './examples/basic'
 import { TooltipContextExample } from './examples/context'
 import { TooltipControlledExample } from './examples/controlled'
 import { TooltipDelayExample } from './examples/delay'
-import { TooltipInteractiveExample } from './examples/interactive'
 import { TooltipMultipleTriggersExample } from './examples/multiple-triggers'
 import { TooltipPositioningExample } from './examples/positioning'
 import { TooltipRootProviderExample } from './examples/root-provider'
@@ -17,6 +16,11 @@ const meta: Meta = {
 
 export default meta
 
+export const Arrow: StoryObj = {
+  decorators: [moduleMetadata({ imports: [TooltipArrowExample] })],
+  render: () => ({ template: '<tooltip-arrow-example />' }),
+}
+
 export const Basic: StoryObj = {
   decorators: [moduleMetadata({ imports: [TooltipBasicExample] })],
   render: () => ({ template: '<tooltip-basic-example />' }),
@@ -25,21 +29,6 @@ export const Basic: StoryObj = {
 export const Controlled: StoryObj = {
   decorators: [moduleMetadata({ imports: [TooltipControlledExample] })],
   render: () => ({ template: '<tooltip-controlled-example />' }),
-}
-
-export const Delay: StoryObj = {
-  decorators: [moduleMetadata({ imports: [TooltipDelayExample] })],
-  render: () => ({ template: '<tooltip-delay-example />' }),
-}
-
-export const Arrow: StoryObj = {
-  decorators: [moduleMetadata({ imports: [TooltipArrowExample] })],
-  render: () => ({ template: '<tooltip-arrow-example />' }),
-}
-
-export const Interactive: StoryObj = {
-  decorators: [moduleMetadata({ imports: [TooltipInteractiveExample] })],
-  render: () => ({ template: '<tooltip-interactive-example />' }),
 }
 
 export const Positioning: StoryObj = {
@@ -60,6 +49,11 @@ export const MultipleTriggers: StoryObj = {
 export const RootProvider: StoryObj = {
   decorators: [moduleMetadata({ imports: [TooltipRootProviderExample] })],
   render: () => ({ template: '<tooltip-root-provider-example />' }),
+}
+
+export const Delay: StoryObj = {
+  decorators: [moduleMetadata({ imports: [TooltipDelayExample] })],
+  render: () => ({ template: '<tooltip-delay-example />' }),
 }
 
 export const WithinFixed: StoryObj = {

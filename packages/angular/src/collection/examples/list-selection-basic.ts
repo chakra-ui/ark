@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
 import { createListCollection, createListSelection } from '../public-api'
+import { listSelectionExampleStyles } from '../list-selection-example-styles'
 
 interface ListSelectionItem {
   label: string
@@ -11,39 +12,22 @@ interface ListSelectionItem {
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="list-selection">
-      <output>Selected: {{ selectedValues().join(', ') || 'none' }}</output>
-      <div class="items">
-        @for (item of collection.items; track item.value) {
-          <label class="item" [attr.data-selected]="isSelected(item.value) || undefined">
-            <input type="checkbox" [checked]="isSelected(item.value)" (change)="select(item.value)" />
-            {{ item.label }}
-          </label>
-        }
-      </div>
-      <button type="button" (click)="clearSelection()">Clear selection</button>
+    <div class="list-selection-root">
+      <output>Selected: {{ selectedValues().join(', ') || 'None' }}</output>
+      @for (item of collection.items; track item.value) {
+        <label class="list-selection-item" [attr.data-selected]="isSelected(item.value) || undefined">
+          <input
+            type="checkbox"
+            class="list-selection-checkbox"
+            [checked]="isSelected(item.value)"
+            (change)="select(item.value)"
+          />
+          <span class="list-selection-item-text">{{ item.label }}</span>
+        </label>
+      }
     </div>
   `,
-  styles: [
-    `
-      .list-selection {
-        display: grid;
-        gap: 0.75rem;
-        max-width: 18rem;
-      }
-
-      .items {
-        display: grid;
-        gap: 0.5rem;
-      }
-
-      .item {
-        align-items: center;
-        display: flex;
-        gap: 0.5rem;
-      }
-    `,
-  ],
+  styles: [listSelectionExampleStyles],
 })
 export class CollectionListSelectionBasicExample {
   protected readonly items: ListSelectionItem[] = [
@@ -66,9 +50,5 @@ export class CollectionListSelectionBasicExample {
 
   protected select(value: string): void {
     this.selection.update((selection) => selection.select(this.collection, value))
-  }
-
-  protected clearSelection(): void {
-    this.selection.update((selection) => selection.clearSelection())
   }
 }

@@ -673,7 +673,7 @@ describe('@ark-ui/angular/hover-card', () => {
     await TestBed.inject(ApplicationRef).whenStable()
 
     const triggerEl = fixture.debugElement.query(By.directive(ArkHoverCardTrigger)).nativeElement as HTMLElement
-    expect(triggerEl.textContent).toContain('v')
+    expect(fixture.debugElement.query(By.css('hover-card-chevron-down-icon'))).not.toBeNull()
 
     triggerEl.dispatchEvent(new PointerEvent('pointerenter', { bubbles: true, pointerType: 'mouse' }))
     await flushTimers(800)
@@ -681,7 +681,7 @@ describe('@ark-ui/angular/hover-card', () => {
     TestBed.tick()
     fixture.detectChanges()
 
-    expect(triggerEl.textContent).toContain('^')
+    expect(fixture.debugElement.query(By.css('hover-card-chevron-up-icon'))).not.toBeNull()
 
     fixture.destroy()
   })
@@ -711,12 +711,12 @@ describe('@ark-ui/angular/hover-card', () => {
     const fixture = TestBed.createComponent(HoverCardRootProviderExample)
     fixture.detectChanges()
 
-    expect(fixture.componentInstance.openLabel()).toBe('closed')
+    expect(fixture.componentInstance.openLabel()).toBe('false')
     fixture.componentInstance.hoverCard.send({ type: 'OPEN' })
     await new Promise((resolve) => setTimeout(resolve, 700))
     TestBed.tick()
     fixture.detectChanges()
-    expect(fixture.componentInstance.openLabel()).toBe('open')
+    expect(fixture.componentInstance.openLabel()).toBe('true')
 
     fixture.destroy()
   })

@@ -19,14 +19,20 @@ export const qrCodeExampleStyles = `
   }
 
   [data-scope='qr-code'][data-part='root'] {
-    width: var(--qrcode-width);
-    height: var(--qrcode-height);
+    color: var(--demo-neutral-fg);
+    --qr-code-size: 100px;
+    --qr-code-overlay-size: calc(var(--qr-code-size) / 3);
+    position: relative;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
   }
 
   [data-scope='qr-code'][data-part='frame'] {
     display: block;
-    width: var(--qrcode-width);
-    height: var(--qrcode-height);
+    width: var(--qr-code-size, var(--qrcode-width));
+    height: var(--qr-code-size, var(--qrcode-height));
+    fill: var(--demo-neutral-fg);
   }
 
   [data-scope='qr-code'][data-part='pattern'] {
@@ -37,11 +43,11 @@ export const qrCodeExampleStyles = `
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    padding: 4px;
-    background: white;
-    border-radius: 4px;
+    width: var(--qr-code-overlay-size);
+    height: var(--qr-code-overlay-size);
+    padding: 0.25rem;
+    background: var(--demo-bg-popover);
+    border-radius: 0.25rem;
   }
 
   [data-scope='qr-code'][data-part='overlay'] img,
@@ -55,6 +61,7 @@ export const qrCodeExampleStyles = `
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
     min-width: 40px;
     min-height: 40px;
     padding-inline: 16px;
@@ -66,6 +73,7 @@ export const qrCodeExampleStyles = `
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
+    user-select: none;
     white-space: nowrap;
     cursor: pointer;
     transition:
@@ -74,11 +82,28 @@ export const qrCodeExampleStyles = `
       color 150ms;
   }
 
-  .button:hover {
+  .button:hover:not(:disabled, [data-disabled]),
+  .button[aria-expanded='true']:not(:disabled, [data-disabled]) {
     background: var(--demo-neutral-subtle);
   }
 
-  .button:focus-visible,
+  .button:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: -1px;
+  }
+
+  .button:disabled,
+  .button[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
+  .button svg {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+  }
+
   .radio-input:focus-visible + .radio-control {
     outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: 2px;
@@ -115,5 +140,9 @@ export const qrCodeExampleStyles = `
   .radio-input:checked + .radio-control {
     border-color: var(--demo-coral-solid);
     border-width: 5px;
+  }
+
+  .radio-item:has(.radio-input:disabled) {
+    opacity: 0.5;
   }
 `

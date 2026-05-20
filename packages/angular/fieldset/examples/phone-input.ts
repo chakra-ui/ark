@@ -61,7 +61,12 @@ interface Extension {
             <div arkSelectControl>
               <button arkSelectTrigger>
                 <span arkSelectValueText>+1</span>
-                <span arkSelectIndicator>▾</span>
+                <span arkSelectIndicator>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="m7 15 5 5 5-5" />
+                    <path d="m7 9 5-5 5 5" />
+                  </svg>
+                </span>
               </button>
             </div>
             <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
