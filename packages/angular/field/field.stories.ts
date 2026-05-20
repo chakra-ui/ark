@@ -8,6 +8,7 @@ import { FieldItemExample } from './examples/item'
 import { FieldRequiredIndicatorExample } from './examples/required-indicator'
 import { FieldRootProviderExample } from './examples/root-provider'
 import { FieldSelectExample } from './examples/select'
+import { FieldShadowDomExample } from './examples/shadow-dom'
 import { FieldTextareaAutoresizeExample } from './examples/textarea-autoresize'
 import { FieldTextareaExample } from './examples/textarea'
 
@@ -22,26 +23,6 @@ export const Input: StoryObj = {
   render: () => ({ template: '<field-input-example />' }),
 }
 
-export const Textarea: StoryObj = {
-  decorators: [moduleMetadata({ imports: [FieldTextareaExample] })],
-  render: () => ({ template: '<field-textarea-example />' }),
-}
-
-export const TextareaAutoresize: StoryObj = {
-  decorators: [moduleMetadata({ imports: [FieldTextareaAutoresizeExample] })],
-  render: () => ({ template: '<field-textarea-autoresize-example />' }),
-}
-
-export const Select: StoryObj = {
-  decorators: [moduleMetadata({ imports: [FieldSelectExample] })],
-  render: () => ({ template: '<field-select-example />' }),
-}
-
-export const Disabled: StoryObj = {
-  decorators: [moduleMetadata({ imports: [FieldDisabledExample] })],
-  render: () => ({ template: '<field-disabled-example />' }),
-}
-
 export const Invalid: StoryObj = {
   decorators: [moduleMetadata({ imports: [FieldInvalidExample] })],
   render: () => ({ template: '<field-invalid-example />' }),
@@ -52,17 +33,42 @@ export const RequiredIndicator: StoryObj = {
   render: () => ({ template: '<field-required-indicator-example />' }),
 }
 
-export const Item: StoryObj = {
-  decorators: [moduleMetadata({ imports: [FieldItemExample] })],
-  render: () => ({ template: '<field-item-example />' }),
-}
-
 export const RootProvider: StoryObj = {
   decorators: [moduleMetadata({ imports: [FieldRootProviderExample] })],
   render: () => ({ template: '<field-root-provider-example />' }),
 }
 
+export const Select: StoryObj = {
+  decorators: [moduleMetadata({ imports: [FieldSelectExample] })],
+  render: () => ({ template: '<field-select-example />' }),
+}
+
+export const ShadowDom: StoryObj = {
+  decorators: [moduleMetadata({ imports: [FieldShadowDomExample] })],
+  render: () => ({ template: '<field-shadow-dom-example />' }),
+}
+
+export const Textarea: StoryObj = {
+  decorators: [moduleMetadata({ imports: [FieldTextareaExample] })],
+  render: () => ({ template: '<field-textarea-example />' }),
+}
+
+export const TextareaAutoresize: StoryObj = {
+  decorators: [moduleMetadata({ imports: [FieldTextareaAutoresizeExample] })],
+  render: () => ({ template: '<field-textarea-autoresize-example />' }),
+}
+
+export const Disabled: StoryObj = {
+  decorators: [moduleMetadata({ imports: [FieldDisabledExample] })],
+  render: () => ({ template: '<field-disabled-example />' }),
+}
+
 export const CustomControl: StoryObj = {
   decorators: [moduleMetadata({ imports: [FieldCustomControlExample] })],
   render: () => ({ template: '<field-custom-control-example />' }),
+}
+
+export const Item: StoryObj = {
+  decorators: [moduleMetadata({ imports: [FieldItemExample] })],
+  render: () => ({ template: '<field-item-example />' }),
 }
