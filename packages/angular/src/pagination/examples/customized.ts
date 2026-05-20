@@ -7,6 +7,7 @@ import {
   ArkPaginationPrevTrigger,
   ArkPaginationRoot,
 } from '../public-api'
+import { PaginationChevronLeftIcon, PaginationChevronRightIcon } from './icons'
 import { paginationExampleStyles } from '../pagination-example-styles'
 
 @Component({
@@ -20,6 +21,8 @@ import { paginationExampleStyles } from '../pagination-example-styles'
     ArkPaginationContext,
     ArkPaginationItem,
     ArkPaginationEllipsis,
+    PaginationChevronLeftIcon,
+    PaginationChevronRightIcon,
   ],
   template: `
     <nav
@@ -31,7 +34,7 @@ import { paginationExampleStyles } from '../pagination-example-styles'
       class="pagination-root"
     >
       <div class="pagination-controls">
-        <button arkPaginationPrevTrigger class="pagination-trigger">Prev</button>
+        <button arkPaginationPrevTrigger class="pagination-trigger"><pagination-chevron-left-icon /></button>
         <ng-container *arkPaginationContext="let pagination">
           @for (entry of pagination().pages; track $index) {
             @if (entry.type === 'page') {
@@ -41,7 +44,7 @@ import { paginationExampleStyles } from '../pagination-example-styles'
             }
           }
         </ng-container>
-        <button arkPaginationNextTrigger class="pagination-trigger">Next</button>
+        <button arkPaginationNextTrigger class="pagination-trigger"><pagination-chevron-right-icon /></button>
       </div>
     </nav>
   `,
