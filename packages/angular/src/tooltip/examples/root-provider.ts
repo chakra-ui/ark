@@ -16,23 +16,21 @@ import { tooltipExampleStyles } from '../tooltip-example-styles'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArkTooltipRootProvider, ArkTooltipTrigger, ArkTooltipPositioner, ArkTooltipContent, ArkPortalComponent],
   template: `
-    <div class="stack">
-      <output>Open: {{ openLabel() }}</output>
-      <div arkTooltipRootProvider [value]="tooltip" #provider="arkTooltipRootProvider">
-        <button type="button" arkTooltipTrigger>Hover Me</button>
-        <ark-portal [originInjector]="provider.getContextCarrier().elementInjector">
-          <div arkTooltipPositioner>
-            <div arkTooltipContent>I am a tooltip!</div>
-          </div>
-        </ark-portal>
-      </div>
+    <output>Open: {{ tooltip.api().open }}</output>
+    <div arkTooltipRootProvider [value]="tooltip" #provider="arkTooltipRootProvider">
+      <button type="button" arkTooltipTrigger>Hover Me</button>
+      <ark-portal [originInjector]="provider.getContextCarrier().elementInjector">
+        <div arkTooltipPositioner>
+          <div arkTooltipContent>I am a tooltip!</div>
+        </div>
+      </ark-portal>
     </div>
   `,
   styles: [tooltipExampleStyles],
 })
 export class TooltipRootProviderExample {
   readonly tooltip: UseTooltipReturn = runInInjectionContext(inject(Injector), () =>
-    useTooltip({ context: () => ({ openDelay: 0, closeDelay: 0 }) }),
+    useTooltip({ context: () => ({}) }),
   )
   readonly openLabel = computed(() => (this.tooltip.api().open ? 'open' : 'closed'))
 }
