@@ -1,0 +1,15 @@
+export type {
+  Api as SliderApi,
+  DraggingIndicatorProps as SliderDraggingIndicatorProps,
+  ElementIds as SliderElementIds,
+  FocusChangeDetails as SliderFocusChangeDetails,
+  Machine as SliderMachine,
+  MarkerProps as SliderMarkerProps,
+  Props as SliderMachineProps,
+  Service as SliderService,
+  ThumbAlignment as SliderThumbAlignment,
+  ThumbCollisionBehavior as SliderThumbCollisionBehavior,
+  ThumbProps as SliderThumbProps,
+  ValueChangeDetails as SliderValueChangeDetails,
+  ValueTextDetails as SliderValueTextDetails,
+} from '@zag-js/slider'

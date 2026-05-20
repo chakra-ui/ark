@@ -27,6 +27,11 @@
       "types": "./dist/src/accordion/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-src-accordion.mjs"
     },
+    "./angle-slider": {
+      "source": "./angle-slider/public-api.ts",
+      "types": "./dist/angle-slider/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-angle-slider.mjs"
+    },
     "./avatar": {
       "source": "./avatar/public-api.ts",
       "types": "./dist/avatar/index.d.ts",
@@ -41,6 +46,11 @@
       "source": "./clipboard/public-api.ts",
       "types": "./dist/clipboard/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-clipboard.mjs"
+    },
+    "./checkbox": {
+      "source": "./checkbox/public-api.ts",
+      "types": "./dist/checkbox/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-checkbox.mjs"
     },
     "./collapsible": {
       "source": "./src/collapsible/public-api.ts",
@@ -172,10 +182,25 @@
       "types": "./dist/src/qr-code/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-src-qr-code.mjs"
     },
+    "./radio-group": {
+      "source": "./radio-group/public-api.ts",
+      "types": "./dist/radio-group/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-radio-group.mjs"
+    },
+    "./rating-group": {
+      "source": "./rating-group/public-api.ts",
+      "types": "./dist/rating-group/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-rating-group.mjs"
+    },
     "./scroll-area": {
       "source": "./src/scroll-area/public-api.ts",
       "types": "./dist/src/scroll-area/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-src-scroll-area.mjs"
+    },
+    "./segment-group": {
+      "source": "./segment-group/public-api.ts",
+      "types": "./dist/segment-group/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-segment-group.mjs"
     },
     "./select": {
       "source": "./select/public-api.ts",
@@ -196,6 +221,16 @@
       "source": "./src/steps/public-api.ts",
       "types": "./dist/src/steps/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-src-steps.mjs"
+    },
+    "./slider": {
+      "source": "./slider/public-api.ts",
+      "types": "./dist/slider/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-slider.mjs"
+    },
+    "./switch": {
+      "source": "./switch/public-api.ts",
+      "types": "./dist/switch/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-switch.mjs"
     },
     "./tabs": {
       "source": "./src/tabs/public-api.ts",
@@ -221,6 +256,11 @@
       "source": "./toggle/public-api.ts",
       "types": "./dist/toggle/index.d.ts",
       "default": "./dist/fesm2022/ark-ui-angular-toggle.mjs"
+    },
+    "./toggle-group": {
+      "source": "./toggle-group/public-api.ts",
+      "types": "./dist/toggle-group/index.d.ts",
+      "default": "./dist/fesm2022/ark-ui-angular-toggle-group.mjs"
     },
     "./tooltip": {
       "source": "./src/tooltip/public-api.ts",
