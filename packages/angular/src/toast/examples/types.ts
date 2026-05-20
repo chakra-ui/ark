@@ -26,7 +26,7 @@ import { ToastAlertIcon, ToastCheckIcon, ToastInfoIcon, ToastWarningIcon, ToastX
     ToastXIcon,
   ],
   template: `
-    <div class="toast-demo">
+    <div class="toast-demo toast-demo-types">
       <button type="button" class="toast-button" (click)="success()">Success</button>
       <button type="button" class="toast-button" (click)="error()">Error</button>
       <button type="button" class="toast-button" (click)="warning()">Warning</button>

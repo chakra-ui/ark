@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
 import {
   ArkToaster,
   ArkToastActionTrigger,
@@ -32,7 +32,6 @@ import { toastExampleStyles } from '../toast-example-styles'
 })
 export class ToastActionExample {
   readonly toaster = createToaster({ placement: 'bottom-end', gap: 24 })
-  readonly actionCount = signal(0)
 
   show(): void {
     this.toaster.create({
@@ -41,7 +40,9 @@ export class ToastActionExample {
       type: 'info',
       action: {
         label: 'Undo',
-        onClick: () => this.actionCount.update((count) => count + 1),
+        onClick: () => {
+          console.log('Undo')
+        },
       },
     })
   }
