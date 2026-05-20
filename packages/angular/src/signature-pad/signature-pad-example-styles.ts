@@ -4,8 +4,9 @@ export const signaturePadExampleStyles = `
     display: flex;
     flex-direction: column;
     gap: 0.375rem;
-    width: min(100%, 20rem);
+    --width: 20rem;
     --signature-pad-height: 10rem;
+    width: var(--width);
   }
 
   [arkSignaturePad][data-disabled],
@@ -110,7 +111,36 @@ export const signaturePadExampleStyles = `
     width: 100%;
     height: auto;
     max-width: 20rem;
-    border: 1px solid var(--demo-border-emphasized, #a8a29e);
-    border-radius: 0.5rem;
+  }
+
+  [arkFieldRoot] {
+    color: var(--demo-neutral-fg, #1c1917);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.25rem;
+    width: 100%;
+    max-width: 24rem;
+  }
+
+  [arkFieldRoot][data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
+  [arkFieldRoot][data-inline] {
+    width: auto;
+  }
+
+  [arkFieldHelperText] {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--demo-neutral-fg-muted, #57534e);
+  }
+
+  [arkFieldErrorText] {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--demo-coral-fg, #9f3f2f);
   }
 `
