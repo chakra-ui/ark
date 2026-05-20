@@ -13,6 +13,7 @@ import {
   ArkFileUploadRoot,
 } from '@ark-ui/angular/file-upload'
 import { fileUploadExampleStyles } from '../file-upload-example-styles'
+import { FileUploadAlertCircleIcon, FileUploadImageIcon, FileUploadUploadIcon, FileUploadXIcon } from './icons'
 
 @Component({
   selector: 'file-upload-accepted-file-types-example',
@@ -30,12 +31,16 @@ import { fileUploadExampleStyles } from '../file-upload-example-styles'
     ArkFileUploadItemSizeText,
     ArkFileUploadItemDeleteTrigger,
     ArkFileUploadHiddenInput,
+    FileUploadAlertCircleIcon,
+    FileUploadImageIcon,
+    FileUploadUploadIcon,
+    FileUploadXIcon,
   ],
   template: `
     <div arkFileUpload #root="arkFileUpload" accept="image/png,image/jpeg">
       <label arkFileUploadLabel>Upload Images (PNG and JPEG only)</label>
       <div arkFileUploadDropzone>
-        <span class="dropzone-icon">+</span>
+        <file-upload-upload-icon class="dropzone-icon" />
         <div class="dropzone-content">
           <span class="dropzone-title">Drop your images here</span>
           <span class="dropzone-description">Only PNG and JPEG files</span>
@@ -49,9 +54,12 @@ import { fileUploadExampleStyles } from '../file-upload-example-styles'
               <div arkFileUploadItemPreview type="image/*">
                 <img arkFileUploadItemPreviewImage alt="" />
               </div>
+              <div arkFileUploadItemPreview type=".*">
+                <file-upload-image-icon />
+              </div>
               <span arkFileUploadItemName></span>
               <span arkFileUploadItemSizeText></span>
-              <button type="button" arkFileUploadItemDeleteTrigger>x</button>
+              <button type="button" arkFileUploadItemDeleteTrigger><file-upload-x-icon /></button>
             </li>
           }
         </ul>
@@ -61,7 +69,7 @@ import { fileUploadExampleStyles } from '../file-upload-example-styles'
         <ul arkFileUploadItemGroup>
           @for (rejection of root.api().rejectedFiles; track rejection.file.name) {
             <li arkFileUploadItem [file]="rejection.file" data-rejected>
-              <div class="item-preview">!</div>
+              <div class="item-preview"><file-upload-alert-circle-icon /></div>
               <span arkFileUploadItemName></span>
               <span arkFileUploadItemSizeText></span>
               <div class="error-list">

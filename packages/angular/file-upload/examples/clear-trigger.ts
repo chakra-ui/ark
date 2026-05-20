@@ -14,6 +14,7 @@ import {
   ArkFileUploadTrigger,
 } from '@ark-ui/angular/file-upload'
 import { fileUploadExampleStyles } from '../file-upload-example-styles'
+import { FileUploadPaperclipIcon, FileUploadXIcon } from './icons'
 
 @Component({
   selector: 'file-upload-clear-trigger-example',
@@ -32,12 +33,17 @@ import { fileUploadExampleStyles } from '../file-upload-example-styles'
     ArkFileUploadItemSizeText,
     ArkFileUploadItemDeleteTrigger,
     ArkFileUploadHiddenInput,
+    FileUploadPaperclipIcon,
+    FileUploadXIcon,
   ],
   template: `
     <div arkFileUpload #root="arkFileUpload" [maxFiles]="5" accept="image/png,image/jpeg">
       <label arkFileUploadLabel>File Upload</label>
       <div class="actions">
-        <button type="button" arkFileUploadTrigger>Choose file(s)</button>
+        <button type="button" arkFileUploadTrigger>
+          <file-upload-paperclip-icon />
+          Choose file(s)
+        </button>
         <button type="button" arkFileUploadClearTrigger>Clear Files</button>
       </div>
       <ul arkFileUploadItemGroup>
@@ -48,7 +54,7 @@ import { fileUploadExampleStyles } from '../file-upload-example-styles'
             </div>
             <span arkFileUploadItemName></span>
             <span arkFileUploadItemSizeText></span>
-            <button type="button" arkFileUploadItemDeleteTrigger>x</button>
+            <button type="button" arkFileUploadItemDeleteTrigger><file-upload-x-icon /></button>
           </li>
         }
       </ul>
