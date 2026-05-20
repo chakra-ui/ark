@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/angular'
 import { moduleMetadata } from '@storybook/angular'
 import { DrawerBasicExample } from './examples/basic'
 import { DrawerControlledExample } from './examples/controlled'
-import { DrawerDefaultOpenExample } from './examples/default-open'
 import { DrawerIndentBackgroundExample } from './examples/indent-background'
 import { DrawerModalExample } from './examples/modal'
 import { DrawerMultipleTriggersExample } from './examples/multiple-triggers'
@@ -12,7 +11,6 @@ import { DrawerRootProviderExample } from './examples/root-provider'
 import { DrawerScrollableExample } from './examples/scrollable'
 import { DrawerSnapPointsExample } from './examples/snap-points'
 import { DrawerSwipeDirectionExample } from './examples/swipe-direction'
-import { DrawerWithTitleDescriptionExample } from './examples/with-title-description'
 
 const meta: Meta = {
   title: 'Components / Drawer',
@@ -70,17 +68,7 @@ export const IndentBackground: StoryObj = {
   render: () => ({ template: '<drawer-indent-background-example />' }),
 }
 
-export const DefaultOpen: StoryObj = {
-  decorators: [moduleMetadata({ imports: [DrawerDefaultOpenExample] })],
-  render: () => ({ template: '<drawer-default-open-example />' }),
-}
-
 export const SwipeDirection: StoryObj = {
   decorators: [moduleMetadata({ imports: [DrawerSwipeDirectionExample] })],
   render: () => ({ template: '<drawer-swipe-direction-example />' }),
-}
-
-export const WithTitleDescription: StoryObj = {
-  decorators: [moduleMetadata({ imports: [DrawerWithTitleDescriptionExample] })],
-  render: () => ({ template: '<drawer-with-title-description-example />' }),
 }

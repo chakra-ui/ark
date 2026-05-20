@@ -34,9 +34,9 @@ import { DrawerXIcon } from './icons'
   template: `
     <div class="stack">
       <div class="hstack">
-        <button type="button" (click)="drawer.api().setOpen(true)">Open via API</button>
-        <button type="button" (click)="drawer.api().setSnapPoint(0.25)">Set to 25%</button>
-        <button type="button" (click)="drawer.api().setSnapPoint(1)">Set to 100%</button>
+        <button type="button" class="button" (click)="drawer.api().setOpen(true)">Open via API</button>
+        <button type="button" class="button" (click)="drawer.api().setSnapPoint(0.25)">Set to 25%</button>
+        <button type="button" class="button" (click)="drawer.api().setSnapPoint(1)">Set to 100%</button>
       </div>
       <div arkDrawerRootProvider [value]="drawer" #provider="arkDrawerRootProvider">
         <ark-portal [originInjector]="provider.getContextCarrier().elementInjector">

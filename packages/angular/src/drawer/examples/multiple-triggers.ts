@@ -47,7 +47,7 @@ const users: User[] = [
     <div arkDrawer swipeDirection="end" (triggerValueChange)="onTriggerValueChange($event)" #root="arkDrawer">
       <div class="button-group">
         @for (user of users; track user.id) {
-          <button type="button" arkDrawerTrigger [value]="user.id">Edit {{ user.name }}</button>
+          <button type="button" class="button" arkDrawerTrigger [value]="user.id">Edit {{ user.name }}</button>
         }
       </div>
       <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
@@ -69,8 +69,8 @@ const users: User[] = [
                   <input [value]="user.email" />
                 </div>
                 <div class="button-group">
-                  <button type="button" arkDrawerCloseTrigger>Cancel</button>
-                  <button type="button" arkDrawerCloseTrigger>Save Changes</button>
+                  <button type="button" class="button" arkDrawerCloseTrigger>Cancel</button>
+                  <button type="button" class="button" data-variant="solid" arkDrawerCloseTrigger>Save Changes</button>
                 </div>
               </div>
             }
