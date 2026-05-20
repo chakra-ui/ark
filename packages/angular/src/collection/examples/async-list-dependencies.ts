@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/c
 import { asyncListExampleStyles } from '../async-list-example-styles'
 import { type AsyncListProps, type AsyncListService, connectAsyncList, createAsyncListMachine } from '../public-api'
 
-const LIMIT = 4
+const LIMIT = 5
 
 interface User {
   id: number
@@ -23,6 +23,31 @@ interface AsyncListContext<T, C> {
 }
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+
+const departments = ['Engineering', 'Marketing', 'Sales', 'Support']
+
+const roles = [
+  'Senior Developer',
+  'Marketing Manager',
+  'Frontend Developer',
+  'Sales Representative',
+  'DevOps Engineer',
+  'Customer Success',
+  'Content Creator',
+  'Backend Developer',
+  'Account Manager',
+  'Technical Support',
+  'Brand Manager',
+  'Full Stack Developer',
+  'Sales Director',
+  'Support Manager',
+  'UI Designer',
+  'Digital Marketer',
+  'Mobile Developer',
+  'Business Development',
+  'Documentation Specialist',
+  'Social Media Manager',
+]
 
 const mockUsers: User[] = [
   { id: 1, name: 'Alice Johnson', email: 'alice@example.com', department: 'Engineering', role: 'Senior Developer' },
@@ -48,23 +73,32 @@ const mockUsers: User[] = [
 ]
 
 @Component({
-  selector: 'collection-async-list-filter-example',
+  selector: 'collection-async-list-dependencies-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="root">
       <div class="header">
-        <input
-          class="input"
-          type="text"
-          placeholder="Search users..."
-          [value]="api().filterText"
-          (input)="search($event)"
-        />
+        <select class="select" [value]="selectedDepartment()" (change)="selectDepartment($event)">
+          <option value="">All Departments</option>
+          @for (department of departments; track department) {
+            <option [value]="department">{{ department }}</option>
+          }
+        </select>
+
+        <select class="select" [value]="selectedRole()" (change)="selectRole($event)">
+          <option value="">All Roles</option>
+          @for (role of roles; track role) {
+            <option [value]="role">{{ role }}</option>
+          }
+        </select>
+
+        <input class="input" type="text" placeholder="Search..." [value]="api().filterText" (input)="search($event)" />
+
         @if (api().loading) {
           <span class="loading">
             <span class="spinner" aria-hidden="true"></span>
-            Searching
+            Loading
           </span>
         }
       </div>
@@ -72,6 +106,8 @@ const mockUsers: User[] = [
       @if (api().error) {
         <div class="error">Error: {{ api().error.message }}</div>
       }
+
+      <div class="status">Found {{ api().items.length }} users</div>
 
       <div class="item-group">
         @for (user of api().items; track user.id) {
@@ -86,13 +122,18 @@ const mockUsers: User[] = [
       </div>
 
       @if (api().empty && !api().loading) {
-        <div class="empty">No results found</div>
+        <div class="empty">No users found with current filters</div>
       }
     </div>
   `,
   styles: [asyncListExampleStyles],
 })
-export class CollectionAsyncListFilterExample {
+export class CollectionAsyncListDependenciesExample {
+  protected readonly departments = departments
+  protected readonly roles = roles
+  protected readonly selectedDepartment = signal('')
+  protected readonly selectedRole = signal('')
+
   private readonly refs = { abort: null as AbortController | null, seq: 0 }
   private readonly state = signal<AsyncListState>('idle')
   private readonly context = signal<AsyncListContext<User, undefined>>({
@@ -103,20 +144,29 @@ export class CollectionAsyncListFilterExample {
 
   private readonly props: AsyncListProps<User, undefined> = {
     initialItems: mockUsers.slice(0, LIMIT),
+    dependencies: [this.selectedDepartment(), this.selectedRole()],
     load: async ({ filterText }) => {
-      await delay(500)
+      await delay(400)
 
-      if (!filterText) {
-        return { items: mockUsers.slice(0, LIMIT) }
+      let items = mockUsers
+
+      if (this.selectedDepartment()) {
+        items = items.filter((user) => user.department === this.selectedDepartment())
       }
 
-      const filtered = mockUsers.filter(
-        (user) =>
-          user.name.toLowerCase().includes(filterText.toLowerCase()) ||
-          user.email.toLowerCase().includes(filterText.toLowerCase()),
-      )
+      if (this.selectedRole()) {
+        items = items.filter((user) => user.role === this.selectedRole())
+      }
 
-      return { items: filtered.slice(0, LIMIT) }
+      if (filterText) {
+        items = items.filter(
+          (user) =>
+            user.name.toLowerCase().includes(filterText.toLowerCase()) ||
+            user.email.toLowerCase().includes(filterText.toLowerCase()),
+        )
+      }
+
+      return { items: items.slice(0, LIMIT) }
     },
   }
 
@@ -128,11 +178,28 @@ export class CollectionAsyncListFilterExample {
     } as unknown as AsyncListService<User, undefined>),
   )
 
+  protected selectDepartment(event: Event): void {
+    this.selectedDepartment.set((event.target as HTMLSelectElement).value)
+    this.api().reload()
+  }
+
+  protected selectRole(event: Event): void {
+    this.selectedRole.set((event.target as HTMLSelectElement).value)
+    this.api().reload()
+  }
+
   protected search(event: Event): void {
     this.api().setFilterText((event.target as HTMLInputElement).value)
   }
 
   private handleEvent(event: Record<string, unknown>): void {
+    if (event['type'] === 'RELOAD') {
+      this.state.set('loading')
+      this.runAction('clearItems', event)
+      this.runAction('performFetch', event)
+      return
+    }
+
     if (event['type'] === 'FILTER') {
       this.state.set('loading')
       this.runAction('setFilterText', event)
@@ -170,7 +237,8 @@ export class CollectionAsyncListFilterExample {
         set: this.setContext,
       },
       event,
-      prop: (key: keyof AsyncListProps<User, undefined>) => this.props[key],
+      prop: (key: keyof AsyncListProps<User, undefined>) =>
+        key === 'dependencies' ? [this.selectedDepartment(), this.selectedRole()] : this.props[key],
       refs: {
         get: (key: keyof typeof this.refs) => this.refs[key],
         set: <K extends keyof typeof this.refs>(key: K, value: (typeof this.refs)[K]) => {

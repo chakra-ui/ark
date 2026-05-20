@@ -2,10 +2,13 @@ import { ChangeDetectionStrategy, Component, computed, signal, type OnInit } fro
 import { asyncListExampleStyles } from '../async-list-example-styles'
 import { type AsyncListProps, type AsyncListService, connectAsyncList, createAsyncListMachine } from '../public-api'
 
-interface Quote {
+const LIMIT = 4
+
+interface Post {
+  userId: number
   id: number
-  quote: string
-  author: string
+  title: string
+  body: string
 }
 
 type AsyncListState = 'idle' | 'loading' | 'sorting'
@@ -19,20 +22,28 @@ interface AsyncListContext<T, C> {
 }
 
 @Component({
-  selector: 'collection-async-list-reload-example',
+  selector: 'collection-async-list-infinite-loading-example',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="root">
       <div class="header">
-        <button class="button" type="button" (click)="reload()" [disabled]="api().loading">
-          @if (api().loading) {
-            <span class="spinner" aria-hidden="true"></span>
-            Loading
-          } @else {
-            Reload Quotes
+        <span class="status">
+          Loaded {{ api().items.length }} posts
+          @if (api().cursor) {
+            (more available)
           }
-        </button>
+        </span>
+        @if (api().cursor) {
+          <button class="button" type="button" (click)="loadMore()" [disabled]="api().loading">
+            @if (api().loading) {
+              <span class="spinner" aria-hidden="true"></span>
+              Loading
+            } @else {
+              Load More
+            }
+          </button>
+        }
       </div>
 
       @if (api().error) {
@@ -40,11 +51,11 @@ interface AsyncListContext<T, C> {
       }
 
       <div class="item-group">
-        @for (quote of api().items; track quote.id) {
+        @for (post of api().items; track post.id; let index = $index) {
           <div class="item">
             <div class="item-content">
-              <div class="item-description">"{{ quote.quote }}"</div>
-              <div class="item-meta">- {{ quote.author }}</div>
+              <div class="item-title">{{ index + 1 }}. {{ post.title }}</div>
+              <div class="item-description">{{ post.body }}</div>
             </div>
           </div>
         }
@@ -53,48 +64,61 @@ interface AsyncListContext<T, C> {
   `,
   styles: [asyncListExampleStyles],
 })
-export class CollectionAsyncListReloadExample implements OnInit {
+export class CollectionAsyncListInfiniteLoadingExample implements OnInit {
   private readonly refs = { abort: null as AbortController | null, seq: 0 }
   private readonly state = signal<AsyncListState>('idle')
-  private readonly context = signal<AsyncListContext<Quote, undefined>>({
+  private readonly context = signal<AsyncListContext<Post, number>>({
     items: [],
     filterText: '',
     cursor: null,
   })
 
-  private readonly props: AsyncListProps<Quote, undefined> = {
-    load: async () => {
-      const response = await fetch(`https://dummyjson.com/quotes?limit=4&skip=${Math.floor(Math.random() * 50)}`)
+  private readonly props: AsyncListProps<Post, number> = {
+    load: async ({ cursor }) => {
+      const page = cursor || 1
+      const start = (page - 1) * LIMIT
+      const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=${LIMIT}`)
 
       if (!response.ok) {
-        throw new Error('Failed to fetch quotes')
+        throw new Error('Failed to fetch posts')
       }
 
-      const data = (await response.json()) as { quotes: Quote[] }
-      return { items: data.quotes }
+      const posts = (await response.json()) as Post[]
+      const hasNextPage = posts.length === LIMIT
+
+      return {
+        items: posts,
+        cursor: hasNextPage ? page + 1 : undefined,
+      }
     },
   }
 
   protected readonly api = computed(() =>
     connectAsyncList({
-      context: { get: (key: keyof AsyncListContext<Quote, undefined>) => this.context()[key] },
+      context: { get: (key: keyof AsyncListContext<Post, number>) => this.context()[key] },
       send: (event: Record<string, unknown>) => this.handleEvent(event),
       state: { matches: (...values: string[]) => values.includes(this.state()) },
-    } as unknown as AsyncListService<Quote, undefined>),
+    } as unknown as AsyncListService<Post, number>),
   )
 
   ngOnInit(): void {
-    this.reload()
+    this.api().reload()
   }
 
-  protected reload(): void {
-    this.api().reload()
+  protected loadMore(): void {
+    this.api().loadMore()
   }
 
   private handleEvent(event: Record<string, unknown>): void {
     if (event['type'] === 'RELOAD') {
       this.state.set('loading')
       this.runAction('clearItems', event)
+      this.runAction('performFetch', event)
+      return
+    }
+
+    if (event['type'] === 'LOAD_MORE') {
+      this.state.set('loading')
       this.runAction('performFetch', event)
       return
     }
@@ -124,11 +148,11 @@ export class CollectionAsyncListReloadExample implements OnInit {
   private createActionParams(event: Record<string, unknown>): Record<string, unknown> {
     return {
       context: {
-        get: (key: keyof AsyncListContext<Quote, undefined>) => this.context()[key],
+        get: (key: keyof AsyncListContext<Post, number>) => this.context()[key],
         set: this.setContext,
       },
       event,
-      prop: (key: keyof AsyncListProps<Quote, undefined>) => this.props[key],
+      prop: (key: keyof AsyncListProps<Post, number>) => this.props[key],
       refs: {
         get: (key: keyof typeof this.refs) => this.refs[key],
         set: <K extends keyof typeof this.refs>(key: K, value: (typeof this.refs)[K]) => {
@@ -139,11 +163,11 @@ export class CollectionAsyncListReloadExample implements OnInit {
     }
   }
 
-  private readonly setContext = <K extends keyof AsyncListContext<Quote, undefined>>(
+  private readonly setContext = <K extends keyof AsyncListContext<Post, number>>(
     key: K,
     value:
-      | AsyncListContext<Quote, undefined>[K]
-      | ((previous: AsyncListContext<Quote, undefined>[K]) => AsyncListContext<Quote, undefined>[K]),
+      | AsyncListContext<Post, number>[K]
+      | ((previous: AsyncListContext<Post, number>[K]) => AsyncListContext<Post, number>[K]),
   ): void => {
     this.context.update((context) => ({
       ...context,
