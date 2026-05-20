@@ -60,5 +60,5 @@ export class HoverCardRootProviderExample {
   readonly hoverCard: UseHoverCardReturn = runInInjectionContext(inject(Injector), () =>
     useHoverCard({ context: () => ({}) }),
   )
-  readonly openLabel = computed(() => (this.hoverCard.api().open ? 'open' : 'closed'))
+  readonly openLabel = computed(() => String(this.hoverCard.api().open))
 }
