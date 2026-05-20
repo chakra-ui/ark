@@ -7,13 +7,17 @@ import { FloatingPanelControlledOpenExample } from './examples/controlled-open'
 import { FloatingPanelControlledPositionExample } from './examples/controlled-position'
 import { FloatingPanelControlledSizeExample } from './examples/controlled-size'
 import { FloatingPanelLazyMountExample } from './examples/lazy-mount'
-import { FloatingPanelRootProviderExample } from './examples/root-provider'
 
 const meta: Meta = {
   title: 'Components / Floating Panel',
 }
 
 export default meta
+
+export const AnchorPosition: StoryObj = {
+  decorators: [moduleMetadata({ imports: [FloatingPanelAnchorPositionExample] })],
+  render: () => ({ template: '<floating-panel-anchor-position-example />' }),
+}
 
 export const Basic: StoryObj = {
   decorators: [moduleMetadata({ imports: [FloatingPanelBasicExample] })],
@@ -40,17 +44,7 @@ export const LazyMount: StoryObj = {
   render: () => ({ template: '<floating-panel-lazy-mount-example />' }),
 }
 
-export const AnchorPosition: StoryObj = {
-  decorators: [moduleMetadata({ imports: [FloatingPanelAnchorPositionExample] })],
-  render: () => ({ template: '<floating-panel-anchor-position-example />' }),
-}
-
 export const Context: StoryObj = {
   decorators: [moduleMetadata({ imports: [FloatingPanelContextExample] })],
   render: () => ({ template: '<floating-panel-context-example />' }),
-}
-
-export const RootProvider: StoryObj = {
-  decorators: [moduleMetadata({ imports: [FloatingPanelRootProviderExample] })],
-  render: () => ({ template: '<floating-panel-root-provider-example />' }),
 }

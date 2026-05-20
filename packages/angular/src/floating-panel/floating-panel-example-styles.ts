@@ -75,9 +75,10 @@ export const floatingPanelExampleStyles = `
     font-weight: 500;
   }
 
-  [arkFloatingPanelTitle] [aria-hidden='true'] {
+  [arkFloatingPanelTitle] floating-panel-grip-vertical-icon {
+    width: 1rem;
+    height: 1rem;
     color: var(--demo-neutral-solid);
-    line-height: 1;
   }
 
   [arkFloatingPanelBody] {
@@ -115,6 +116,14 @@ export const floatingPanelExampleStyles = `
   [arkFloatingPanelStageTrigger]:hover,
   [arkFloatingPanelCloseTrigger]:hover {
     background-color: var(--demo-neutral-subtle);
+  }
+
+  [arkFloatingPanelStageTrigger] floating-panel-minus-icon,
+  [arkFloatingPanelStageTrigger] floating-panel-maximize-icon,
+  [arkFloatingPanelStageTrigger] floating-panel-arrow-down-left-icon,
+  [arkFloatingPanelCloseTrigger] floating-panel-x-icon {
+    width: 0.875rem;
+    height: 0.875rem;
   }
 
   [arkFloatingPanelResizeTrigger][data-axis='n'],

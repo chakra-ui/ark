@@ -11,6 +11,13 @@ import {
   ArkFloatingPanelStageTrigger,
   ArkFloatingPanelTitle,
 } from '../public-api'
+import {
+  FloatingPanelArrowDownLeftIcon,
+  FloatingPanelGripVerticalIcon,
+  FloatingPanelMaximizeIcon,
+  FloatingPanelMinusIcon,
+  FloatingPanelXIcon,
+} from './icons'
 
 @Component({
   selector: 'floating-panel-demo-panel',
@@ -27,6 +34,11 @@ import {
     ArkFloatingPanelCloseTrigger,
     ArkFloatingPanelBody,
     ArkFloatingPanelResizeTrigger,
+    FloatingPanelArrowDownLeftIcon,
+    FloatingPanelGripVerticalIcon,
+    FloatingPanelMaximizeIcon,
+    FloatingPanelMinusIcon,
+    FloatingPanelXIcon,
   ],
   template: `
     <div arkFloatingPanelPositioner>
@@ -34,21 +46,21 @@ import {
         <div arkFloatingPanelDragTrigger>
           <div arkFloatingPanelHeader>
             <h2 arkFloatingPanelTitle>
-              <span aria-hidden="true">::</span>
+              <floating-panel-grip-vertical-icon />
               Floating Panel
             </h2>
             <div arkFloatingPanelControl>
               <button type="button" arkFloatingPanelStageTrigger stage="minimized" aria-label="Minimize">
-                <span aria-hidden="true">-</span>
+                <floating-panel-minus-icon />
               </button>
               <button type="button" arkFloatingPanelStageTrigger stage="maximized" aria-label="Maximize">
-                <span aria-hidden="true">+</span>
+                <floating-panel-maximize-icon />
               </button>
               <button type="button" arkFloatingPanelStageTrigger stage="default" aria-label="Restore">
-                <span aria-hidden="true">\\</span>
+                <floating-panel-arrow-down-left-icon />
               </button>
               <button type="button" arkFloatingPanelCloseTrigger aria-label="Close">
-                <span aria-hidden="true">x</span>
+                <floating-panel-x-icon />
               </button>
             </div>
           </div>
