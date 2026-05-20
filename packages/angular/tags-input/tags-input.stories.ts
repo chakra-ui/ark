@@ -25,14 +25,14 @@ const meta: Meta = {
 
 export default meta
 
-export const Basic: StoryObj = {
-  decorators: [moduleMetadata({ imports: [TagsInputBasicExample] })],
-  render: () => ({ template: '<tags-input-basic-example />' }),
-}
-
 export const AllowDuplicates: StoryObj = {
   decorators: [moduleMetadata({ imports: [TagsInputAllowDuplicatesExample] })],
   render: () => ({ template: '<tags-input-allow-duplicates-example />' }),
+}
+
+export const Basic: StoryObj = {
+  decorators: [moduleMetadata({ imports: [TagsInputBasicExample] })],
+  render: () => ({ template: '<tags-input-basic-example />' }),
 }
 
 export const BlurBehavior: StoryObj = {
@@ -100,6 +100,11 @@ export const SanitizeValue: StoryObj = {
   render: () => ({ template: '<tags-input-sanitize-value-example />' }),
 }
 
+export const RootProvider: StoryObj = {
+  decorators: [moduleMetadata({ imports: [TagsInputRootProviderExample] })],
+  render: () => ({ template: '<tags-input-root-provider-example />' }),
+}
+
 export const Validation: StoryObj = {
   decorators: [moduleMetadata({ imports: [TagsInputValidationExample] })],
   render: () => ({ template: '<tags-input-validation-example />' }),
@@ -108,9 +113,4 @@ export const Validation: StoryObj = {
 export const WithField: StoryObj = {
   decorators: [moduleMetadata({ imports: [TagsInputWithFieldExample] })],
   render: () => ({ template: '<tags-input-with-field-example />' }),
-}
-
-export const RootProvider: StoryObj = {
-  decorators: [moduleMetadata({ imports: [TagsInputRootProviderExample] })],
-  render: () => ({ template: '<tags-input-root-provider-example />' }),
 }

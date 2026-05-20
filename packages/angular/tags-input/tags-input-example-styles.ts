@@ -180,19 +180,84 @@ export const tagsInputExampleStyles = `
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 2rem;
-    padding: 0 0.75rem;
+    gap: 0.5rem;
+    min-height: 2.5rem;
+    min-width: 2.5rem;
+    padding-inline: 1rem;
     border: 1px solid var(--demo-border-emphasized, #d1d5db);
     border-radius: 0.375rem;
-    background: var(--demo-neutral-bg, #fff);
+    background: transparent;
     color: var(--demo-neutral-fg, #111827);
     font: inherit;
     font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
     cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition:
+      background 150ms,
+      border-color 150ms,
+      color 150ms;
+  }
+
+  .tags-input-button svg {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+  }
+
+  .tags-input-button:has(> svg:only-child) {
+    padding-inline: 0.625rem !important;
+  }
+
+  .tags-input-button:is(:hover, [aria-expanded='true']):not(:disabled, [data-disabled]) {
+    background: var(--demo-neutral-subtle, #f3f4f6);
+  }
+
+  .tags-input-button:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring, #fb7185);
+    outline-offset: -1px;
+  }
+
+  .tags-input-button:is(:disabled, [data-disabled]) {
+    opacity: 0.5;
+    filter: grayscale(100%);
   }
 
   .tags-input-output {
     font-size: 0.875rem;
     color: var(--demo-neutral-emphasized, #6b7280);
+  }
+
+  [arkFieldRoot] {
+    color: var(--demo-neutral-fg, #111827);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.25rem;
+    width: 100%;
+    max-width: 24rem;
+  }
+
+  [arkFieldRoot] [arkTagsInputRoot] {
+    max-width: none;
+  }
+
+  [arkFieldRoot][data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
+  [arkFieldHelperText] {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--demo-neutral-fg-muted, #4b5563);
+  }
+
+  [arkFieldErrorText] {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--demo-coral-fg, #9f1239);
   }
 `

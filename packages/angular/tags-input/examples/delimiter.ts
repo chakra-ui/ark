@@ -13,6 +13,7 @@ import {
   ArkTagsInputRoot,
 } from '@ark-ui/angular/tags-input'
 import { tagsInputExampleStyles } from '../tags-input-example-styles'
+import { TagsInputXIcon } from './icons'
 
 const DELIMITER_PATTERN = /[,;\s]/
 
@@ -32,6 +33,7 @@ const DELIMITER_PATTERN = /[,;\s]/
     ArkTagsInputItemText,
     ArkTagsInputItemDeleteTrigger,
     ArkTagsInputClearTrigger,
+    TagsInputXIcon,
   ],
   template: `
     <div arkTagsInputRoot #root="arkTagsInputRoot" [delimiter]="delimiter">
@@ -41,13 +43,17 @@ const DELIMITER_PATTERN = /[,;\s]/
           <span arkTagsInputItem [index]="i" [value]="tag">
             <div arkTagsInputItemPreview>
               <span arkTagsInputItemText>{{ tag }}</span>
-              <button type="button" arkTagsInputItemDeleteTrigger>x</button>
+              <button type="button" arkTagsInputItemDeleteTrigger>
+                <tags-input-x-icon />
+              </button>
             </div>
             <input arkTagsInputItemInput />
           </span>
         }
         <input arkTagsInputInput placeholder="Add tag" />
-        <button type="button" arkTagsInputClearTrigger>x</button>
+        <button type="button" arkTagsInputClearTrigger>
+          <tags-input-x-icon />
+        </button>
       </div>
       <input arkTagsInputHiddenInput />
     </div>

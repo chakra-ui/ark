@@ -14,6 +14,7 @@ import {
   useTagsInput,
 } from '@ark-ui/angular/tags-input'
 import { tagsInputExampleStyles } from '../tags-input-example-styles'
+import { TagsInputXIcon } from './icons'
 
 @Component({
   selector: 'tags-input-programmatic-control-example',
@@ -31,6 +32,7 @@ import { tagsInputExampleStyles } from '../tags-input-example-styles'
     ArkTagsInputItemText,
     ArkTagsInputItemDeleteTrigger,
     ArkTagsInputClearTrigger,
+    TagsInputXIcon,
   ],
   template: `
     <div class="tags-input-stack">
@@ -50,13 +52,17 @@ import { tagsInputExampleStyles } from '../tags-input-example-styles'
             <span arkTagsInputItem [index]="i" [value]="tag">
               <div arkTagsInputItemPreview>
                 <span arkTagsInputItemText>{{ tag }}</span>
-                <button type="button" arkTagsInputItemDeleteTrigger>x</button>
+                <button type="button" arkTagsInputItemDeleteTrigger>
+                  <tags-input-x-icon />
+                </button>
               </div>
               <input arkTagsInputItemInput />
             </span>
           }
           <input arkTagsInputInput placeholder="Add Framework" />
-          <button type="button" arkTagsInputClearTrigger>x</button>
+          <button type="button" arkTagsInputClearTrigger>
+            <tags-input-x-icon />
+          </button>
         </div>
         <input arkTagsInputHiddenInput />
       </div>
