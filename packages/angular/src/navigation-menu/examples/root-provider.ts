@@ -69,6 +69,6 @@ export class NavigationMenuRootProviderExample {
   readonly navigationMenu: UseNavigationMenuReturn = useNavigationMenu({ context: () => ({}) })
   readonly openValue = computed(() => {
     const value = this.navigationMenu.api().value
-    return value ? value : 'none'
+    return value ?? ''
   })
 }
