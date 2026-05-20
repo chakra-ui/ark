@@ -3,7 +3,6 @@ import { moduleMetadata } from '@storybook/angular'
 import { PasswordInputAutocompleteExample } from './examples/autocomplete'
 import { PasswordInputBasicExample } from './examples/basic'
 import { PasswordInputControlledExample } from './examples/controlled'
-import { PasswordInputDefaultVisibleExample } from './examples/default-visible'
 import { PasswordInputIgnorePasswordManagerExample } from './examples/ignore-password-manager'
 import { PasswordInputRootProviderExample } from './examples/root-provider'
 import { PasswordInputStrengthMeterExample } from './examples/strength-meter'
@@ -16,14 +15,14 @@ const meta: Meta = {
 
 export default meta
 
-export const Basic: StoryObj = {
-  decorators: [moduleMetadata({ imports: [PasswordInputBasicExample] })],
-  render: () => ({ template: '<password-input-basic-example />' }),
-}
-
 export const Autocomplete: StoryObj = {
   decorators: [moduleMetadata({ imports: [PasswordInputAutocompleteExample] })],
   render: () => ({ template: '<password-input-autocomplete-example />' }),
+}
+
+export const Basic: StoryObj = {
+  decorators: [moduleMetadata({ imports: [PasswordInputBasicExample] })],
+  render: () => ({ template: '<password-input-basic-example />' }),
 }
 
 export const ControlledVisibility: StoryObj = {
@@ -54,9 +53,4 @@ export const StrengthMeter: StoryObj = {
 export const WithValidation: StoryObj = {
   decorators: [moduleMetadata({ imports: [PasswordInputWithValidationExample] })],
   render: () => ({ template: '<password-input-with-validation-example />' }),
-}
-
-export const DefaultVisible: StoryObj = {
-  decorators: [moduleMetadata({ imports: [PasswordInputDefaultVisibleExample] })],
-  render: () => ({ template: '<password-input-default-visible-example />' }),
 }
