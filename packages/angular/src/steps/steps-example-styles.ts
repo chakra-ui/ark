@@ -249,7 +249,17 @@ export const stepsExampleStyles = `
     cursor: pointer;
   }
 
-  .steps-button:is(:hover):not(:disabled, [data-disabled]) {
+  .steps-button svg {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+  }
+
+  .steps-button:has(> svg:only-child) {
+    padding-inline: 0.625rem !important;
+  }
+
+  .steps-button:is(:hover, [aria-expanded='true']):not(:disabled, [data-disabled]) {
     background: var(--demo-neutral-subtle, #f5f5f4);
   }
 
