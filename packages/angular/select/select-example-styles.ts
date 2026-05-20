@@ -9,6 +9,33 @@ export const selectExampleStyles = `
     color: var(--demo-neutral-fg, #111827);
   }
 
+  [arkFieldRoot] {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.25rem;
+    width: 100%;
+    max-width: 24rem;
+    color: var(--demo-neutral-fg, #111827);
+  }
+
+  [arkFieldRoot][data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
+  [arkFieldHelperText] {
+    color: var(--demo-neutral-fg-muted, #4b5563);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  [arkFieldErrorText] {
+    color: var(--demo-coral-fg, #be123c);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
   [arkSelectLabel] {
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -152,6 +179,18 @@ export const selectExampleStyles = `
     user-select: none;
   }
 
+  .select-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    user-select: none;
+  }
+
   [arkSelectItem][data-highlighted] {
     background: var(--demo-neutral-subtle, #f3f4f6);
   }
@@ -215,14 +254,47 @@ export const selectExampleStyles = `
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.375rem;
+    gap: 0.5rem;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    padding-inline: 1rem;
     border: 1px solid var(--demo-border-emphasized, #d1d5db);
     border-radius: 0.375rem;
-    background: var(--demo-bg-subtle, #f9fafb);
+    background: transparent;
     color: var(--demo-neutral-fg, #111827);
-    padding: 0.5rem 0.75rem;
-    font: inherit;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
     cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition:
+      background 150ms,
+      border-color 150ms,
+      color 150ms;
+  }
+
+  .select-button:hover:not(:disabled, [data-disabled]),
+  .select-button[aria-expanded='true']:not(:disabled, [data-disabled]) {
+    background: var(--demo-neutral-subtle, #f3f4f6);
+  }
+
+  .select-button:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring, #fb7185);
+    outline-offset: -1px;
+  }
+
+  .select-button:disabled,
+  .select-button[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
+  .select-button svg {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
   }
 
   .select-output {

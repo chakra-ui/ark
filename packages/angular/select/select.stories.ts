@@ -3,7 +3,6 @@ import { moduleMetadata } from '@storybook/angular'
 import { SelectAsyncExample } from './examples/async'
 import { SelectBasicExample } from './examples/basic'
 import { SelectControlledExample } from './examples/controlled'
-import { SelectDynamicItemsExample } from './examples/dynamic-items'
 import { SelectFormLibraryExample } from './examples/form-library'
 import { SelectFullyControlledExample } from './examples/fully-controlled'
 import { SelectGroupingExample } from './examples/grouping'
@@ -22,6 +21,11 @@ const meta: Meta = {
 }
 
 export default meta
+
+export const Async: StoryObj = {
+  decorators: [moduleMetadata({ imports: [SelectAsyncExample] })],
+  render: () => ({ template: '<select-async-example />' }),
+}
 
 export const Basic: StoryObj = {
   decorators: [moduleMetadata({ imports: [SelectBasicExample] })],
@@ -73,11 +77,6 @@ export const ReactiveCollection: StoryObj = {
   render: () => ({ template: '<select-reactive-collection-example />' }),
 }
 
-export const WithField: StoryObj = {
-  decorators: [moduleMetadata({ imports: [SelectWithFieldExample] })],
-  render: () => ({ template: '<select-with-field-example />' }),
-}
-
 export const RootProvider: StoryObj = {
   decorators: [moduleMetadata({ imports: [SelectRootProviderExample] })],
   render: () => ({ template: '<select-root-provider-example />' }),
@@ -93,12 +92,7 @@ export const SelectOnHighlight: StoryObj = {
   render: () => ({ template: '<select-on-highlight-example />' }),
 }
 
-export const Async: StoryObj = {
-  decorators: [moduleMetadata({ imports: [SelectAsyncExample] })],
-  render: () => ({ template: '<select-async-example />' }),
-}
-
-export const DynamicItems: StoryObj = {
-  decorators: [moduleMetadata({ imports: [SelectDynamicItemsExample] })],
-  render: () => ({ template: '<select-dynamic-items-example />' }),
+export const WithField: StoryObj = {
+  decorators: [moduleMetadata({ imports: [SelectWithFieldExample] })],
+  render: () => ({ template: '<select-with-field-example />' }),
 }

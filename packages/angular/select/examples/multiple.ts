@@ -8,6 +8,8 @@ import {
   ArkSelectHiddenSelect,
   ArkSelectIndicator,
   ArkSelectItem,
+  ArkSelectItemGroup,
+  ArkSelectItemGroupLabel,
   ArkSelectItemIndicator,
   ArkSelectItemText,
   ArkSelectLabel,
@@ -18,9 +20,10 @@ import {
 } from '@ark-ui/angular/select'
 import { selectExampleStyles } from '../select-example-styles'
 
-interface Day {
+interface Framework {
   label: string
   value: string
+  disabled?: boolean
 }
 
 @Component({
@@ -38,6 +41,8 @@ interface Day {
     ArkSelectIndicator,
     ArkSelectPositioner,
     ArkSelectContent,
+    ArkSelectItemGroup,
+    ArkSelectItemGroupLabel,
     ArkSelectItem,
     ArkSelectItemText,
     ArkSelectItemIndicator,
@@ -45,10 +50,10 @@ interface Day {
   ],
   template: `
     <div arkSelectRoot #root="arkSelectRoot" [collection]="collection" [multiple]="true">
-      <span arkSelectLabel>Days</span>
+      <span arkSelectLabel>Framework</span>
       <div arkSelectControl>
         <button arkSelectTrigger>
-          <span arkSelectValueText>Select days</span>
+          <span arkSelectValueText>Select</span>
         </button>
         <div class="select-indicators">
           <button arkSelectClearTrigger>×</button>
@@ -58,12 +63,15 @@ interface Day {
       <ark-portal [originInjector]="root.getContextCarrier().elementInjector">
         <div arkSelectPositioner>
           <div arkSelectContent>
-            @for (item of collection.items; track item.value) {
-              <div arkSelectItem [item]="item">
-                <span arkSelectItemText>{{ item.label }}</span>
-                <span arkSelectItemIndicator>✓</span>
-              </div>
-            }
+            <div arkSelectItemGroup>
+              <span arkSelectItemGroupLabel>Frameworks</span>
+              @for (item of collection.items; track item.value) {
+                <div arkSelectItem [item]="item">
+                  <span arkSelectItemText>{{ item.label }}</span>
+                  <span arkSelectItemIndicator>✓</span>
+                </div>
+              }
+            </div>
           </div>
         </div>
       </ark-portal>
@@ -73,13 +81,12 @@ interface Day {
   styles: [selectExampleStyles],
 })
 export class SelectMultipleExample {
-  readonly collection: ListCollection<Day> = createListCollection<Day>({
+  readonly collection: ListCollection<Framework> = createListCollection<Framework>({
     items: [
-      { label: 'Monday', value: 'mon' },
-      { label: 'Tuesday', value: 'tue' },
-      { label: 'Wednesday', value: 'wed' },
-      { label: 'Thursday', value: 'thu' },
-      { label: 'Friday', value: 'fri' },
+      { label: 'React', value: 'react' },
+      { label: 'Solid', value: 'solid' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Svelte', value: 'svelte', disabled: true },
     ],
   })
 }

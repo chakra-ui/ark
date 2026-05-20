@@ -55,9 +55,9 @@ const loadData = () =>
         <div arkSelectPositioner>
           <div arkSelectContent>
             @if (loading()) {
-              <div class="select-button">Loading...</div>
+              <div class="select-status">Loading...</div>
             } @else if (error()) {
-              <div class="select-button">Error: {{ error()?.message }}</div>
+              <div class="select-status">Error: {{ error()?.message }}</div>
             } @else {
               @for (item of collection().items; track item) {
                 <div arkSelectItem [item]="item">
