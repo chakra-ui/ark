@@ -54,4 +54,31 @@ export const pinInputExampleStyles = `
     border-color: var(--demo-error, #ef4444);
     box-shadow: 0 0 0 1px var(--demo-error, #ef4444);
   }
+
+  [arkFieldRoot] {
+    color: var(--demo-neutral-fg, #111827);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.25rem;
+    width: 100%;
+    max-width: 24rem;
+  }
+
+  [arkFieldRoot][data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
+  [arkFieldHelperText] {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--demo-neutral-fg-muted, #6b7280);
+  }
+
+  [arkFieldErrorText] {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--demo-coral-fg, #ea580c);
+  }
 `
