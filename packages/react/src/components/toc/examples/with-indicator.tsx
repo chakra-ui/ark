@@ -18,7 +18,9 @@ export const WithIndicator = () => {
       <Toc.Content className={styles.Content} ref={contentRef}>
         {items.map((item) => (
           <section key={item.value}>
-            <h2 id={item.value}>{item.label}</h2>
+            <h2 id={item.value} className={styles.Heading} data-depth={item.depth}>
+              {item.label}
+            </h2>
             <div className={styles.DummyText}>
               {Array.from({ length: item.lines }).map((_, i) => (
                 <div key={i} className={styles.DummyLine} />

@@ -10,14 +10,40 @@ const items = [
   { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
 
-export const Basic = () => {
+export const WithSelect = () => {
   const contentRef = useRef<HTMLDivElement>(null)
 
   return (
-    <Toc.Root className={styles.Root} items={items} getScrollEl={() => contentRef.current}>
+    <Toc.Root
+      className={`${styles.Root} ${styles.RootWithMobileNav}`}
+      items={items}
+      getScrollEl={() => contentRef.current}
+    >
+      <Toc.Context>
+        {({ activeItems }) => (
+          <div className={styles.MobileNav}>
+            <select
+              className={styles.NativeSelect}
+              data-active={activeItems.length > 0 || undefined}
+              value={activeItems[0]?.value ?? items[0].value}
+              onChange={(e) => {
+                const el = contentRef.current?.querySelector(`#${e.target.value}`)
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              }}
+            >
+              {items.map((item) => (
+                <option key={item.value} value={item.value}>
+                  {item.label}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+      </Toc.Context>
+
       <Toc.Content className={styles.Content} ref={contentRef}>
         {items.map((item) => (
-          <section key={item.value} className={styles.Section}>
+          <section key={item.value}>
             <h2 id={item.value} className={styles.Heading} data-depth={item.depth}>
               {item.label}
             </h2>
