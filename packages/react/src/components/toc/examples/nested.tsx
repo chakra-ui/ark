@@ -19,19 +19,18 @@ export const Nested = () => {
   return (
     <Toc.Root className={`${styles.Root}`} items={items} getScrollEl={() => contentRef.current}>
       <Toc.Content className={styles.Content} ref={contentRef}>
-        {items.map((item) => {
-          const Heading = item.depth === 2 ? 'h2' : 'h3'
-          return (
-            <section key={item.value}>
-              <Heading id={item.value}>{item.label}</Heading>
-              <div className={styles.DummyText}>
-                {Array.from({ length: item.lines }).map((_, i) => (
-                  <div key={i} className={styles.DummyLine} />
-                ))}
-              </div>
-            </section>
-          )
-        })}
+        {items.map((item) => (
+          <section key={item.value}>
+            <div id={item.value} className={styles.Heading} data-depth={item.depth}>
+              {item.label}
+            </div>
+            <div className={styles.DummyText}>
+              {Array.from({ length: item.lines }).map((_, i) => (
+                <div key={i} className={styles.DummyLine} />
+              ))}
+            </div>
+          </section>
+        ))}
       </Toc.Content>
 
       <Toc.Nav className={styles.Nav}>

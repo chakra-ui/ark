@@ -116,7 +116,9 @@ export const WithTreeView = () => {
       <Toc.Content className={tocStyles.Content} ref={contentRef}>
         {sections.map((section) => (
           <section key={section.id}>
-            <h2 id={section.id}>{section.name}</h2>
+            <h2 id={section.id} className={tocStyles.Heading} data-depth={section.depth}>
+              {section.name}
+            </h2>
             <div className={tocStyles.DummyText}>
               {Array.from({ length: section.lines ?? 5 }, (_, i) => (
                 <div key={i} className={tocStyles.DummyLine} />
@@ -124,7 +126,9 @@ export const WithTreeView = () => {
             </div>
             {section.children?.map((child) => (
               <div key={child.id}>
-                <h3 id={child.id}>{child.name}</h3>
+                <h3 id={child.id} className={tocStyles.Heading} data-depth={child.depth}>
+                  {child.name}
+                </h3>
                 <div className={tocStyles.DummyText}>
                   {Array.from({ length: child.lines ?? 3 }, (_, i) => (
                     <div key={i} className={tocStyles.DummyLine} />
