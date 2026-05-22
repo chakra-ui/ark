@@ -9,7 +9,6 @@ import styles from 'styles/dialog.module.css'
   <Dialog.Root :modal="false">
     <Dialog.Trigger :class="button.Root">Open Non-Modal</Dialog.Trigger>
     <Teleport to="body">
-      <Dialog.Backdrop :class="styles.Backdrop" />
       <Dialog.Positioner :class="styles.Positioner">
         <Dialog.Content :class="styles.Content">
           <Dialog.CloseTrigger :class="styles.CloseTrigger">
