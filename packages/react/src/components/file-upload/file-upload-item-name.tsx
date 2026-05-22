@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
@@ -9,7 +8,7 @@ import { useFileUploadItemPropsContext } from './use-file-upload-item-props-cont
 export interface FileUploadItemNameBaseProps extends PolymorphicProps {}
 export interface FileUploadItemNameProps extends HTMLProps<'div'>, FileUploadItemNameBaseProps {}
 
-export const FileUploadItemName = forwardRef<HTMLDivElement, FileUploadItemNameProps>((props, ref) => {
+export const FileUploadItemName = ({ ref, ...props }: FileUploadItemNameProps) => {
   const { children, ...rest } = props
   const fileUpload = useFileUploadContext()
   const itemProps = useFileUploadItemPropsContext()
@@ -20,6 +19,6 @@ export const FileUploadItemName = forwardRef<HTMLDivElement, FileUploadItemNameP
       {children || itemProps.file.name}
     </ark.div>
   )
-})
+}
 
 FileUploadItemName.displayName = 'FileUploadItemName'

@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { HTMLProps, PolymorphicProps } from '../factory'
 import { ark } from '../factory'
 import { type UseSwapProps, useSwap } from './use-swap'
@@ -11,7 +10,7 @@ export interface SwapRootBaseProps extends UseSwapProps, PolymorphicProps {}
 
 export interface SwapRootProps extends HTMLProps<'span'>, SwapRootBaseProps {}
 
-export const SwapRoot = forwardRef<HTMLSpanElement, SwapRootProps>((props, ref) => {
+export const SwapRoot = ({ ref, ...props }: SwapRootProps) => {
   const { children, swap: swapProp, lazyMount, unmountOnExit, ...restProps } = props
   const swap = useSwap({ swap: swapProp, lazyMount, unmountOnExit })
   const mergedProps = mergeProps(swap.getRootProps(), restProps)
@@ -23,6 +22,6 @@ export const SwapRoot = forwardRef<HTMLSpanElement, SwapRootProps>((props, ref) 
       </ark.span>
     </SwapProvider>
   )
-})
+}
 
 SwapRoot.displayName = 'SwapRoot'

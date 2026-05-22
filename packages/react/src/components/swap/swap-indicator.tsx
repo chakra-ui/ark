@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { composeRefs } from '../../utils/compose-refs'
 import type { HTMLProps, PolymorphicProps } from '../factory'
 import { ark } from '../factory'
@@ -13,7 +12,7 @@ export interface SwapIndicatorBaseProps extends PolymorphicProps {
 
 export interface SwapIndicatorProps extends HTMLProps<'span'>, SwapIndicatorBaseProps {}
 
-export const SwapIndicator = forwardRef<HTMLSpanElement, SwapIndicatorProps>((props, ref) => {
+export const SwapIndicator = ({ ref, ...props }: SwapIndicatorProps) => {
   const { type, ...restProps } = props
   const swap = useSwapContext()
   const presence = type === 'on' ? swap.onPresence : swap.offPresence
@@ -23,6 +22,6 @@ export const SwapIndicator = forwardRef<HTMLSpanElement, SwapIndicatorProps>((pr
   const mergedProps = mergeProps(swap.getIndicatorProps({ type }), restProps)
 
   return <ark.span {...mergedProps} ref={composeRefs(presence.ref, ref)} />
-})
+}
 
 SwapIndicator.displayName = 'SwapIndicator'

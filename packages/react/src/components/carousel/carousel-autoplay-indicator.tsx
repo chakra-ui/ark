@@ -1,6 +1,5 @@
 'use client'
 
-import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { carouselAnatomy } from './carousel.anatomy'
 import { useCarouselContext } from './use-carousel-context'
@@ -15,7 +14,7 @@ export interface CarouselAutoplayIndicatorBaseProps extends PolymorphicProps {
 }
 export interface CarouselAutoplayIndicatorProps extends HTMLProps<'span'>, CarouselAutoplayIndicatorBaseProps {}
 
-export const CarouselAutoplayIndicator = forwardRef<HTMLSpanElement, CarouselAutoplayIndicatorProps>((props, ref) => {
+export const CarouselAutoplayIndicator = ({ ref, ...props }: CarouselAutoplayIndicatorProps) => {
   const { children, fallback, ...restProps } = props
   const carousel = useCarouselContext()
   return (
@@ -23,6 +22,6 @@ export const CarouselAutoplayIndicator = forwardRef<HTMLSpanElement, CarouselAut
       {carousel.isPlaying ? children : fallback}
     </ark.span>
   )
-})
+}
 
 CarouselAutoplayIndicator.displayName = 'CarouselAutoplayIndicator'

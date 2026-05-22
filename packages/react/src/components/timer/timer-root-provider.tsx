@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseTimerReturn } from './use-timer'
@@ -16,7 +15,7 @@ export interface TimerRootProviderProps extends HTMLProps<'div'>, TimerRootProvi
 
 const splitRootProviderProps = createSplitProps<RootProviderProps>()
 
-export const TimerRootProvider = forwardRef<HTMLDivElement, TimerRootProviderProps>((props, ref) => {
+export const TimerRootProvider = ({ ref, ...props }: TimerRootProviderProps) => {
   const [{ value: timer }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(timer.getRootProps(), localProps)
 
@@ -25,6 +24,6 @@ export const TimerRootProvider = forwardRef<HTMLDivElement, TimerRootProviderPro
       <ark.div {...mergedProps} ref={ref} />
     </TimerProvider>
   )
-})
+}
 
 TimerRootProvider.displayName = 'TimerRootProvider'

@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
@@ -9,7 +8,7 @@ import { useFileUploadItemPropsContext } from './use-file-upload-item-props-cont
 export interface FileUploadItemSizeTextBaseProps extends PolymorphicProps {}
 export interface FileUploadItemSizeTextProps extends HTMLProps<'div'>, FileUploadItemSizeTextBaseProps {}
 
-export const FileUploadItemSizeText = forwardRef<HTMLDivElement, FileUploadItemSizeTextProps>((props, ref) => {
+export const FileUploadItemSizeText = ({ ref, ...props }: FileUploadItemSizeTextProps) => {
   const { children, ...rest } = props
   const fileUpload = useFileUploadContext()
   const itemProps = useFileUploadItemPropsContext()
@@ -20,6 +19,6 @@ export const FileUploadItemSizeText = forwardRef<HTMLDivElement, FileUploadItemS
       {children || fileUpload.getFileSize(itemProps.file)}
     </ark.div>
   )
-})
+}
 
 FileUploadItemSizeText.displayName = 'FileUploadItemSizeText'

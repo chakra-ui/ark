@@ -2,7 +2,6 @@
 
 import type { EdgeProps } from '@zag-js/marquee'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useMarqueeContext } from './use-marquee-context'
@@ -12,12 +11,12 @@ export interface MarqueeEdgeProps extends HTMLProps<'div'>, MarqueeEdgeBaseProps
 
 const splitEdgeProps = createSplitProps<EdgeProps>()
 
-export const MarqueeEdge = forwardRef<HTMLDivElement, MarqueeEdgeProps>((props, ref) => {
+export const MarqueeEdge = ({ ref, ...props }: MarqueeEdgeProps) => {
   const [edgeProps, localProps] = splitEdgeProps(props, ['side'])
   const marquee = useMarqueeContext()
   const mergedProps = mergeProps(marquee.getEdgeProps(edgeProps), localProps)
 
   return <ark.div {...mergedProps} ref={ref} />
-})
+}
 
 MarqueeEdge.displayName = 'MarqueeEdge'

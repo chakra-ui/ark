@@ -1,6 +1,5 @@
 'use client'
 
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { TreeView, useTreeViewContext } from '../tree-view'
 import { JsonTreeViewNode, type JsonTreeViewNodeBaseProps } from './json-tree-view-node'
@@ -9,7 +8,7 @@ export interface JsonTreeViewTreeProps extends TreeView.TreeProps, JsonTreeViewN
 
 const splitTreeNodeProps = createSplitProps<JsonTreeViewNodeBaseProps>()
 
-export const JsonTreeViewTree = forwardRef<HTMLDivElement, JsonTreeViewTreeProps>((props, ref) => {
+export const JsonTreeViewTree = ({ ref, ...props }: JsonTreeViewTreeProps) => {
   const [nodeProps, treeProps] = splitTreeNodeProps(props, ['arrow', 'indentGuide', 'renderValue'])
   const tree = useTreeViewContext()
   const children = tree.collection.getNodeChildren(tree.collection.rootNode)
@@ -20,6 +19,6 @@ export const JsonTreeViewTree = forwardRef<HTMLDivElement, JsonTreeViewTreeProps
       ))}
     </TreeView.Tree>
   )
-})
+}
 
 JsonTreeViewTree.displayName = 'JsonTreeViewTree'

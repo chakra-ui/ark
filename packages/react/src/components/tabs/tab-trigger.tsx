@@ -2,7 +2,6 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { TriggerProps } from '@zag-js/tabs'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -13,12 +12,12 @@ export interface TabTriggerProps extends Assign<HTMLProps<'button'>, TabTriggerB
 
 const splitTriggerProps = createSplitProps<TriggerProps>()
 
-export const TabTrigger = forwardRef<HTMLButtonElement, TabTriggerProps>((props, ref) => {
+export const TabTrigger = ({ ref, ...props }: TabTriggerProps) => {
   const [tabProps, localProps] = splitTriggerProps(props, ['disabled', 'value'])
   const tabs = useTabsContext()
   const mergedProps = mergeProps(tabs.getTriggerProps(tabProps), localProps)
 
   return <ark.button {...mergedProps} ref={ref} />
-})
+}
 
 TabTrigger.displayName = 'TabTrigger'

@@ -2,7 +2,6 @@
 
 import type { ItemProps } from '@zag-js/listbox'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useListboxContext } from './use-listbox-context'
@@ -14,7 +13,7 @@ export interface ListboxItemProps extends HTMLProps<'div'>, ListboxItemBaseProps
 
 const splitItemProps = createSplitProps<ItemProps>()
 
-export const ListboxItem = forwardRef<HTMLDivElement, ListboxItemProps>((props, ref) => {
+export const ListboxItem = ({ ref, ...props }: ListboxItemProps) => {
   const [itemProps, localProps] = splitItemProps(props, ['item', 'highlightOnHover'])
   const listbox = useListboxContext()
   const mergedProps = mergeProps(listbox.getItemProps(itemProps), localProps)
@@ -27,6 +26,6 @@ export const ListboxItem = forwardRef<HTMLDivElement, ListboxItemProps>((props, 
       </ListboxItemProvider>
     </ListboxItemPropsProvider>
   )
-})
+}
 
 ListboxItem.displayName = 'ListboxItem'

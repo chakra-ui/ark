@@ -2,7 +2,6 @@
 
 import type { ItemProps } from '@zag-js/radio-group'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { parts } from './segment-group.anatomy'
@@ -15,7 +14,7 @@ export interface SegmentGroupItemProps extends HTMLProps<'label'>, SegmentGroupI
 
 const splitItemProps = createSplitProps<ItemProps>()
 
-export const SegmentGroupItem = forwardRef<HTMLLabelElement, SegmentGroupItemProps>((props, ref) => {
+export const SegmentGroupItem = ({ ref, ...props }: SegmentGroupItemProps) => {
   const [itemProps, localProps] = splitItemProps(props, ['value', 'disabled', 'invalid'])
   const segmentGroup = useSegmentGroupContext()
   const mergedProps = mergeProps(
@@ -32,6 +31,6 @@ export const SegmentGroupItem = forwardRef<HTMLLabelElement, SegmentGroupItemPro
       </SegmentGroupItemProvider>
     </SegmentGroupItemPropsProvider>
   )
-})
+}
 
 SegmentGroupItem.displayName = 'SegmentGroupItem'

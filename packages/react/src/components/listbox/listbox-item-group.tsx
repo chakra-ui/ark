@@ -2,7 +2,7 @@
 
 import type { ItemGroupProps } from '@zag-js/listbox'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, useId } from 'react'
+import { useId } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useListboxContext } from './use-listbox-context'
@@ -13,7 +13,7 @@ export interface ListboxItemGroupProps extends HTMLProps<'div'>, ListboxItemGrou
 
 const splitItemGroupProps = createSplitProps<Partial<ItemGroupProps>>()
 
-export const ListboxItemGroup = forwardRef<HTMLDivElement, ListboxItemGroupProps>((props, ref) => {
+export const ListboxItemGroup = ({ ref, ...props }: ListboxItemGroupProps) => {
   const id = useId()
   const [_itemGroupProps, localProps] = splitItemGroupProps(props, ['id'])
   const itemGroupProps = { id, ..._itemGroupProps }
@@ -26,6 +26,6 @@ export const ListboxItemGroup = forwardRef<HTMLDivElement, ListboxItemGroupProps
       <ark.div {...mergedProps} ref={ref} />
     </ListboxItemGroupPropsProvider>
   )
-})
+}
 
 ListboxItemGroup.displayName = 'ListboxItemGroup'

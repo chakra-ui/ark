@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { HTMLArkProps } from '../factory'
 import { ark } from '../factory'
 import { useToggleContext } from './use-toggle-context'
@@ -15,7 +14,7 @@ export interface ToggleIndicatorBaseProps {
 
 export interface ToggleIndicatorProps extends HTMLArkProps<'div'>, ToggleIndicatorBaseProps {}
 
-export const ToggleIndicator = forwardRef<HTMLDivElement, ToggleIndicatorProps>((props, ref) => {
+export const ToggleIndicator = ({ ref, ...props }: ToggleIndicatorProps) => {
   const { children, fallback, ...restProps } = props
   const toggle = useToggleContext()
   const mergedProps = mergeProps(toggle.getIndicatorProps(), restProps)
@@ -24,6 +23,6 @@ export const ToggleIndicator = forwardRef<HTMLDivElement, ToggleIndicatorProps>(
       {toggle.pressed ? children : fallback}
     </ark.div>
   )
-})
+}
 
 ToggleIndicator.displayName = 'ToggleIndicator'

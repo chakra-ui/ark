@@ -2,7 +2,6 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { TriggerProps } from '@zag-js/dialog'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -14,7 +13,7 @@ export interface DialogTriggerProps extends Assign<HTMLProps<'button'>, DialogTr
 
 const splitTriggerProps = createSplitProps<TriggerProps>()
 
-export const DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>((props, ref) => {
+export const DialogTrigger = ({ ref, ...props }: DialogTriggerProps) => {
   const [triggerProps, localProps] = splitTriggerProps(props, ['value'])
   const dialog = useDialogContext()
   const presence = usePresenceContext()
@@ -29,6 +28,6 @@ export const DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>((
   )
 
   return <ark.button {...mergedProps} ref={ref} />
-})
+}
 
 DialogTrigger.displayName = 'DialogTrigger'

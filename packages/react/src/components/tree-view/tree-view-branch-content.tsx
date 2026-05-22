@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { Collapsible } from '../collapsible'
 import type { HTMLProps, PolymorphicProps } from '../factory'
@@ -18,7 +17,7 @@ interface VisibilityProps {
 
 const splitVisibilityProps = createSplitProps<VisibilityProps>()
 
-export const TreeViewBranchContent = forwardRef<HTMLDivElement, TreeViewBranchContentProps>((props, ref) => {
+export const TreeViewBranchContent = ({ ref, ...props }: TreeViewBranchContentProps) => {
   const treeView = useTreeViewContext()
   const nodeProps = useTreeViewNodePropsContext()
   const contentProps = treeView.getBranchContentProps(nodeProps)
@@ -27,6 +26,6 @@ export const TreeViewBranchContent = forwardRef<HTMLDivElement, TreeViewBranchCo
   const mergedProps = mergeProps(branchContentProps, props)
 
   return <Collapsible.Content ref={ref} {...mergedProps} />
-})
+}
 
 TreeViewBranchContent.displayName = 'TreeViewBranchContent'

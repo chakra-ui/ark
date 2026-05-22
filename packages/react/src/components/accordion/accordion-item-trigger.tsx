@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { useCollapsibleContext } from '../collapsible'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useAccordionContext } from './use-accordion-context'
@@ -10,7 +9,7 @@ import { useAccordionItemPropsContext } from './use-accordion-item-props-context
 export interface AccordionItemTriggerBaseProps extends PolymorphicProps {}
 export interface AccordionItemTriggerProps extends HTMLProps<'button'>, AccordionItemTriggerBaseProps {}
 
-export const AccordionItemTrigger = forwardRef<HTMLButtonElement, AccordionItemTriggerProps>((props, ref) => {
+export const AccordionItemTrigger = ({ ref, ...props }: AccordionItemTriggerProps) => {
   const accordion = useAccordionContext()
   const itemProps = useAccordionItemPropsContext()
   const collapsible = useCollapsibleContext()
@@ -24,6 +23,6 @@ export const AccordionItemTrigger = forwardRef<HTMLButtonElement, AccordionItemT
   )
 
   return <ark.button {...mergedProps} ref={ref} />
-})
+}
 
 AccordionItemTrigger.displayName = 'AccordionItemTrigger'

@@ -1,7 +1,7 @@
 'use client'
 
 import { type FocusTrapOptions, trapFocus } from '@zag-js/focus-trap'
-import { forwardRef, useRef } from 'react'
+import { useRef } from 'react'
 import type { Assign } from '../../types'
 import { composeRefs } from '../../utils/compose-refs'
 import { createSplitProps } from '../../utils/create-split-props'
@@ -24,7 +24,7 @@ export interface FocusTrapProps extends Assign<HTMLProps<'div'>, FocusTrapBasePr
 
 const splitTrapProps = createSplitProps<TrapOptions>()
 
-export const FocusTrap = forwardRef<HTMLDivElement, FocusTrapProps>((props, ref) => {
+export const FocusTrap = ({ ref, ...props }: FocusTrapProps) => {
   const localRef = useRef<HTMLDivElement | null>(null)
   const [trapProps, localProps] = splitTrapProps(props, [
     'disabled',
@@ -43,6 +43,6 @@ export const FocusTrap = forwardRef<HTMLDivElement, FocusTrapProps>((props, ref)
   }, [ref, trapProps])
 
   return <ark.div ref={composeRefs(localRef, ref)} {...localProps} />
-})
+}
 
 FocusTrap.displayName = 'FocusTrap'

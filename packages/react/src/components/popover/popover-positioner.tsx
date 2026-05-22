@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { usePopoverContext } from './use-popover-context'
@@ -9,7 +8,7 @@ import { usePopoverContext } from './use-popover-context'
 export interface PopoverPositionerBaseProps extends PolymorphicProps {}
 export interface PopoverPositionerProps extends HTMLProps<'div'>, PopoverPositionerBaseProps {}
 
-export const PopoverPositioner = forwardRef<HTMLDivElement, PopoverPositionerProps>((props, ref) => {
+export const PopoverPositioner = ({ ref, ...props }: PopoverPositionerProps) => {
   const popover = usePopoverContext()
   const presence = usePresenceContext()
   const mergedProps = mergeProps(popover.getPositionerProps(), props)
@@ -19,6 +18,6 @@ export const PopoverPositioner = forwardRef<HTMLDivElement, PopoverPositionerPro
   }
 
   return <ark.div {...mergedProps} ref={ref} />
-})
+}
 
 PopoverPositioner.displayName = 'PopoverPositioner'

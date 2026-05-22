@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useMenuContext } from './use-menu-context'
@@ -9,7 +8,7 @@ import { useMenuContext } from './use-menu-context'
 export interface MenuPositionerBaseProps extends PolymorphicProps {}
 export interface MenuPositionerProps extends HTMLProps<'div'>, MenuPositionerBaseProps {}
 
-export const MenuPositioner = forwardRef<HTMLDivElement, MenuPositionerProps>((props, ref) => {
+export const MenuPositioner = ({ ref, ...props }: MenuPositionerProps) => {
   const menu = useMenuContext()
   const mergedProps = mergeProps(menu.getPositionerProps(), props)
   const presence = usePresenceContext()
@@ -19,6 +18,6 @@ export const MenuPositioner = forwardRef<HTMLDivElement, MenuPositionerProps>((p
   }
 
   return <ark.div {...mergedProps} ref={ref} />
-})
+}
 
 MenuPositioner.displayName = 'MenuPositioner'

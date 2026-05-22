@@ -2,7 +2,6 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { ContentProps } from '@zag-js/drawer'
-import { forwardRef } from 'react'
 import { composeRefs } from '../../utils/compose-refs'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
@@ -14,7 +13,7 @@ export interface DrawerContentProps extends Omit<HTMLProps<'div'>, 'draggable'>,
 
 const splitContentProps = createSplitProps<ContentProps>()
 
-export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>((props, ref) => {
+export const DrawerContent = ({ ref, ...props }: DrawerContentProps) => {
   const [contentProps, localProps] = splitContentProps(props, ['draggable'])
   const drawer = useDrawerContext()
   const presence = usePresenceContext()
@@ -29,6 +28,6 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>((pro
   }
 
   return <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} />
-})
+}
 
 DrawerContent.displayName = 'DrawerContent'

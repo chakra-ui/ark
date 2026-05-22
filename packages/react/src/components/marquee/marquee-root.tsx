@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseMarqueeProps, useMarquee } from './use-marquee'
@@ -12,7 +11,7 @@ export interface MarqueeRootProps extends HTMLProps<'div'>, MarqueeRootBaseProps
 
 const splitRootProps = createSplitProps<UseMarqueeProps>()
 
-export const MarqueeRoot = forwardRef<HTMLDivElement, MarqueeRootProps>((props, ref) => {
+export const MarqueeRoot = ({ ref, ...props }: MarqueeRootProps) => {
   const [useMarqueeProps, localProps] = splitRootProps(props, [
     'autoFill',
     'defaultPaused',
@@ -39,6 +38,6 @@ export const MarqueeRoot = forwardRef<HTMLDivElement, MarqueeRootProps>((props, 
       <ark.div {...mergedProps} ref={ref} />
     </MarqueeProvider>
   )
-})
+}
 
 MarqueeRoot.displayName = 'MarqueeRoot'

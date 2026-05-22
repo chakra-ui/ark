@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -14,7 +13,7 @@ export interface DatePickerRootProps extends Assign<HTMLProps<'div'>, DatePicker
 
 const splitRootProps = createSplitProps<UseDatePickerProps>()
 
-export const DatePickerRoot = forwardRef<HTMLDivElement, DatePickerRootProps>((props, ref) => {
+export const DatePickerRoot = ({ ref, ...props }: DatePickerRootProps) => {
   const [presenceProps, datePickerProps] = splitPresenceProps(props)
   const [useDatePickerProps, localProps] = splitRootProps(datePickerProps, [
     'closeOnSelect',
@@ -72,6 +71,6 @@ export const DatePickerRoot = forwardRef<HTMLDivElement, DatePickerRootProps>((p
       </PresenceProvider>
     </DatePickerProvider>
   )
-})
+}
 
 DatePickerRoot.displayName = 'DatePickerRoot'

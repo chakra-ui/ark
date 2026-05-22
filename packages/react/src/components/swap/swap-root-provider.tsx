@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { HTMLProps, PolymorphicProps } from '../factory'
 import { ark } from '../factory'
 import type { UseSwapReturn } from './use-swap'
@@ -13,7 +12,7 @@ export interface SwapRootProviderBaseProps extends PolymorphicProps {
 
 export interface SwapRootProviderProps extends HTMLProps<'span'>, SwapRootProviderBaseProps {}
 
-export const SwapRootProvider = forwardRef<HTMLSpanElement, SwapRootProviderProps>((props, ref) => {
+export const SwapRootProvider = ({ ref, ...props }: SwapRootProviderProps) => {
   const { value, children, ...restProps } = props
   const mergedProps = mergeProps(value.getRootProps(), restProps)
 
@@ -24,6 +23,6 @@ export const SwapRootProvider = forwardRef<HTMLSpanElement, SwapRootProviderProp
       </ark.span>
     </SwapProvider>
   )
-})
+}
 
 SwapRootProvider.displayName = 'SwapRootProvider'

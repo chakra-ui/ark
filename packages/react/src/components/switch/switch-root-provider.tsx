@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseSwitchReturn } from './use-switch'
@@ -16,7 +15,7 @@ export interface SwitchRootProviderProps extends HTMLProps<'label'>, SwitchRootP
 
 const splitRootProviderProps = createSplitProps<RootProviderProps>()
 
-export const SwitchRootProvider = forwardRef<HTMLLabelElement, SwitchRootProviderProps>((props, ref) => {
+export const SwitchRootProvider = ({ ref, ...props }: SwitchRootProviderProps) => {
   const [{ value: api }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(api.getRootProps(), localProps)
 
@@ -25,6 +24,6 @@ export const SwitchRootProvider = forwardRef<HTMLLabelElement, SwitchRootProvide
       <ark.label {...mergedProps} ref={ref} />
     </SwitchProvider>
   )
-})
+}
 
 SwitchRootProvider.displayName = 'SwitchRootProvider'

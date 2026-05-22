@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
@@ -17,7 +16,7 @@ export interface ColorPickerRootProviderProps extends HTMLProps<'div'>, ColorPic
 
 const splitRootProviderProps = createSplitProps<RootProviderProps>()
 
-export const ColorPickerRootProvider = forwardRef<HTMLDivElement, ColorPickerRootProviderProps>((props, ref) => {
+export const ColorPickerRootProvider = ({ ref, ...props }: ColorPickerRootProviderProps) => {
   const [presenceProps, colorPickerProps] = splitPresenceProps(props)
   const [{ value: colorPicker }, localProps] = splitRootProviderProps(colorPickerProps, ['value'])
   const presence = usePresence(mergeProps({ present: colorPicker.open }, presenceProps))
@@ -30,6 +29,6 @@ export const ColorPickerRootProvider = forwardRef<HTMLDivElement, ColorPickerRoo
       </PresenceProvider>
     </ColorPickerProvider>
   )
-})
+}
 
 ColorPickerRootProvider.displayName = 'ColorPickerRootProvider'

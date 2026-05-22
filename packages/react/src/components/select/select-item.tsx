@@ -2,7 +2,6 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { ItemProps } from '@zag-js/select'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
@@ -14,7 +13,7 @@ export interface SelectItemProps extends HTMLProps<'div'>, SelectItemBaseProps {
 
 const splitItemProps = createSplitProps<ItemProps>()
 
-export const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>((props, ref) => {
+export const SelectItem = ({ ref, ...props }: SelectItemProps) => {
   const [itemProps, localProps] = splitItemProps(props, ['item', 'persistFocus'])
   const select = useSelectContext()
   const mergedProps = mergeProps(select.getItemProps(itemProps), localProps)
@@ -27,6 +26,6 @@ export const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>((props, re
       </SelectItemProvider>
     </SelectItemPropsProvider>
   )
-})
+}
 
 SelectItem.displayName = 'SelectItem'

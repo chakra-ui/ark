@@ -1,14 +1,13 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSignaturePadContext } from './use-signature-pad-context'
 
 export interface SignaturePadSegmentBaseProps extends PolymorphicProps {}
 export interface SignaturePadSegmentProps extends HTMLProps<'svg'>, SignaturePadSegmentBaseProps {}
 
-export const SignaturePadSegment = forwardRef<SVGSVGElement, SignaturePadSegmentProps>((props, ref) => {
+export const SignaturePadSegment = ({ ref, ...props }: SignaturePadSegmentProps) => {
   const signaturePad = useSignaturePadContext()
   const mergedProps = mergeProps(signaturePad.getSegmentProps(), props)
 
@@ -21,6 +20,6 @@ export const SignaturePadSegment = forwardRef<SVGSVGElement, SignaturePadSegment
       {signaturePad.currentPath && <path {...signaturePad.getSegmentPathProps({ path: signaturePad.currentPath })} />}
     </ark.svg>
   )
-})
+}
 
 SignaturePadSegment.displayName = 'SignaturePadSegment'

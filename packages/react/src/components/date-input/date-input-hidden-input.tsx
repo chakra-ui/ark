@@ -2,7 +2,6 @@
 
 import type { HiddenInputProps } from '@zag-js/date-input'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDateInputContext } from './use-date-input-context'
@@ -12,12 +11,12 @@ export interface DateInputHiddenInputProps extends HTMLProps<'input'>, DateInput
 
 const splitHiddenInputProps = createSplitProps<HiddenInputProps>()
 
-export const DateInputHiddenInput = forwardRef<HTMLInputElement, DateInputHiddenInputProps>((props, ref) => {
+export const DateInputHiddenInput = ({ ref, ...props }: DateInputHiddenInputProps) => {
   const [hiddenInputProps, localProps] = splitHiddenInputProps(props, ['index', 'name'])
   const dateInput = useDateInputContext()
   const mergedProps = mergeProps(dateInput.getHiddenInputProps(hiddenInputProps), localProps)
 
   return <ark.input {...mergedProps} ref={ref} />
-})
+}
 
 DateInputHiddenInput.displayName = 'DateInputHiddenInput'

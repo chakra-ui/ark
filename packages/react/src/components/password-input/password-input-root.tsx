@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -13,7 +12,7 @@ export interface PasswordInputRootProps extends Assign<HTMLProps<'div'>, Passwor
 
 const splitRootProps = createSplitProps<UsePasswordInputProps>()
 
-export const PasswordInputRoot = forwardRef<HTMLDivElement, PasswordInputRootProps>((props, ref) => {
+export const PasswordInputRoot = ({ ref, ...props }: PasswordInputRootProps) => {
   const [usePasswordInputProps, localProps] = splitRootProps(props, [
     'autoComplete',
     'defaultVisible',
@@ -37,6 +36,6 @@ export const PasswordInputRoot = forwardRef<HTMLDivElement, PasswordInputRootPro
       <ark.div {...mergedProps} ref={ref} />
     </PasswordInputProvider>
   )
-})
+}
 
 PasswordInputRoot.displayName = 'PasswordInputRoot'

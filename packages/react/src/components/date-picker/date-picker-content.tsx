@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { composeRefs } from '../../utils/compose-refs'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
@@ -10,7 +9,7 @@ import { useDatePickerContext } from './use-date-picker-context'
 export interface DatePickerContentBaseProps extends PolymorphicProps {}
 export interface DatePickerContentProps extends HTMLProps<'div'>, DatePickerContentBaseProps {}
 
-export const DatePickerContent = forwardRef<HTMLDivElement, DatePickerContentProps>((props, ref) => {
+export const DatePickerContent = ({ ref, ...props }: DatePickerContentProps) => {
   const datePicker = useDatePickerContext()
   const presence = usePresenceContext()
   const mergedProps = mergeProps(datePicker.getContentProps(), presence.getPresenceProps(), props)
@@ -20,6 +19,6 @@ export const DatePickerContent = forwardRef<HTMLDivElement, DatePickerContentPro
   }
 
   return <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} />
-})
+}
 
 DatePickerContent.displayName = 'DatePickerContent'

@@ -2,7 +2,6 @@
 
 import type { SegmentProps } from '@zag-js/date-input'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDateInputContext } from './use-date-input-context'
@@ -14,7 +13,7 @@ export interface DateInputSegmentProps extends HTMLProps<'span'>, DateInputSegme
 
 const splitSegmentProps = createSplitProps<Pick<SegmentProps, 'segment'>>()
 
-export const DateInputSegment = forwardRef<HTMLSpanElement, DateInputSegmentProps>((props, ref) => {
+export const DateInputSegment = ({ ref, ...props }: DateInputSegmentProps) => {
   const [segmentProps, localProps] = splitSegmentProps(props, ['segment'])
   const segmentGroupProps = useDateInputSegmentGroupPropsContext()
   const dateInput = useDateInputContext()
@@ -27,6 +26,6 @@ export const DateInputSegment = forwardRef<HTMLSpanElement, DateInputSegmentProp
       {segmentProps.segment.text}
     </ark.span>
   )
-})
+}
 
 DateInputSegment.displayName = 'DateInputSegment'

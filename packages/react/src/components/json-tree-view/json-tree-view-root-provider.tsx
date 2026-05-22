@@ -1,7 +1,6 @@
 'use client'
 
 import type { JsonNode } from '@zag-js/json-tree-utils'
-import { forwardRef } from 'react'
 import { TreeView } from '../tree-view'
 import { JsonTreeViewPropsProvider } from './json-tree-view-props-context'
 import type { UseJsonTreeViewReturn } from './use-json-tree-view'
@@ -10,7 +9,7 @@ export interface JsonTreeViewRootProviderProps extends Omit<TreeView.RootProvide
   value: UseJsonTreeViewReturn
 }
 
-export const JsonTreeViewRootProvider = forwardRef<HTMLDivElement, JsonTreeViewRootProviderProps>((props, ref) => {
+export const JsonTreeViewRootProvider = ({ ref, ...props }: JsonTreeViewRootProviderProps) => {
   const { value, ...restProps } = props
   const { options, ...treeView } = value
 
@@ -19,6 +18,6 @@ export const JsonTreeViewRootProvider = forwardRef<HTMLDivElement, JsonTreeViewR
       <TreeView.RootProvider data-scope="json-tree-view" value={treeView} {...restProps} ref={ref} />
     </JsonTreeViewPropsProvider>
   )
-})
+}
 
 JsonTreeViewRootProvider.displayName = 'JsonTreeViewRootProvider'

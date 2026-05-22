@@ -2,7 +2,6 @@
 
 import type { OptionItemProps } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
@@ -16,7 +15,7 @@ export interface MenuCheckboxItemProps extends HTMLProps<'div'>, MenuCheckboxIte
 
 const splitOptionItemProps = createSplitProps<PartialOptionItemProps>()
 
-export const MenuCheckboxItem = forwardRef<HTMLDivElement, MenuCheckboxItemProps>((props, ref) => {
+export const MenuCheckboxItem = ({ ref, ...props }: MenuCheckboxItemProps) => {
   const [partialOptionItemProps, localProps] = splitOptionItemProps(props, [
     'checked',
     'closeOnSelect',
@@ -40,6 +39,6 @@ export const MenuCheckboxItem = forwardRef<HTMLDivElement, MenuCheckboxItemProps
       </MenuItemProvider>
     </MenuItemPropsProvider>
   )
-})
+}
 
 MenuCheckboxItem.displayName = 'MenuCheckboxItem'

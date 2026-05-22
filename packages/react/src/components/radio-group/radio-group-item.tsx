@@ -2,7 +2,6 @@
 
 import type { ItemProps } from '@zag-js/radio-group'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useRadioGroupContext } from './use-radio-group-context'
@@ -14,7 +13,7 @@ export interface RadioGroupItemProps extends HTMLProps<'label'>, RadioGroupItemB
 
 const splitItemProps = createSplitProps<ItemProps>()
 
-export const RadioGroupItem = forwardRef<HTMLLabelElement, RadioGroupItemProps>((props, ref) => {
+export const RadioGroupItem = ({ ref, ...props }: RadioGroupItemProps) => {
   const [itemProps, localProps] = splitItemProps(props, ['value', 'disabled', 'invalid'])
   const radioGroup = useRadioGroupContext()
   const mergedProps = mergeProps(radioGroup.getItemProps(itemProps), localProps)
@@ -27,6 +26,6 @@ export const RadioGroupItem = forwardRef<HTMLLabelElement, RadioGroupItemProps>(
       </RadioGroupItemPropsProvider>
     </RadioGroupItemProvider>
   )
-})
+}
 
 RadioGroupItem.displayName = 'RadioGroupItem'

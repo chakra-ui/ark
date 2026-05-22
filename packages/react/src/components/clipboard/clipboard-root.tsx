@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -13,7 +12,7 @@ export interface ClipboardRootProps extends Assign<HTMLProps<'div'>, ClipboardRo
 
 const splitRootProps = createSplitProps<UseClipboardProps>()
 
-export const ClipboardRoot = forwardRef<HTMLDivElement, ClipboardRootProps>((props, ref) => {
+export const ClipboardRoot = ({ ref, ...props }: ClipboardRootProps) => {
   const [useClipboardProps, localProps] = splitRootProps(props, [
     'defaultValue',
     'id',
@@ -32,6 +31,6 @@ export const ClipboardRoot = forwardRef<HTMLDivElement, ClipboardRootProps>((pro
       <ark.div ref={ref} {...mergedProps} />
     </ClipboardProvider>
   )
-})
+}
 
 ClipboardRoot.displayName = 'ClipboardRoot'

@@ -2,7 +2,6 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { ItemProps } from '@zag-js/tags-input'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
@@ -14,7 +13,7 @@ export interface TagsInputItemProps extends HTMLProps<'div'>, TagsInputItemBaseP
 
 const splitItemProps = createSplitProps<ItemProps>()
 
-export const TagsInputItem = forwardRef<HTMLDivElement, TagsInputItemProps>((props, ref) => {
+export const TagsInputItem = ({ ref, ...props }: TagsInputItemProps) => {
   const [itemProps, localProps] = splitItemProps(props, ['index', 'disabled', 'value'])
   const tagsInput = useTagsInputContext()
   const mergedProps = mergeProps(tagsInput.getItemProps(itemProps), localProps)
@@ -27,6 +26,6 @@ export const TagsInputItem = forwardRef<HTMLDivElement, TagsInputItemProps>((pro
       </TagsInputItemProvider>
     </TagsInputItemPropsProvider>
   )
-})
+}
 
 TagsInputItem.displayName = 'TagsInputItem'

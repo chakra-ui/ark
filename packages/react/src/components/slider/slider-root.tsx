@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -13,7 +12,7 @@ export interface SliderRootProps extends Assign<HTMLProps<'div'>, SliderRootBase
 
 const splitRootProps = createSplitProps<UseSliderProps>()
 
-export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>((props, ref) => {
+export const SliderRoot = ({ ref, ...props }: SliderRootProps) => {
   const [useSliderProps, localProps] = splitRootProps(props, [
     'aria-label',
     'aria-labelledby',
@@ -48,6 +47,6 @@ export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>((props, re
       <ark.div {...mergedProps} ref={ref} />
     </SliderProvider>
   )
-})
+}
 
 SliderRoot.displayName = 'SliderRoot'

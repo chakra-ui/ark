@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
@@ -16,7 +15,7 @@ export interface DatePickerTableCellProps extends HTMLProps<'td'>, DatePickerTab
 
 const splitTableCellProps = createSplitProps<UseDatePickerTableCellPropsContext>()
 
-export const DatePickerTableCell = forwardRef<HTMLTableCellElement, DatePickerTableCellProps>((props, ref) => {
+export const DatePickerTableCell = ({ ref, ...props }: DatePickerTableCellProps) => {
   const [cellProps, localProps] = splitTableCellProps(props, ['disabled', 'value', 'visibleRange', 'columns'])
 
   const datePicker = useDatePickerContext()
@@ -35,6 +34,6 @@ export const DatePickerTableCell = forwardRef<HTMLTableCellElement, DatePickerTa
       <ark.td ref={ref} {...mergedProps} />
     </DatePickerTableCellPropsProvider>
   )
-})
+}
 
 DatePickerTableCell.displayName = 'DatePickerTableCell'

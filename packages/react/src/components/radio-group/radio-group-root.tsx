@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -13,7 +12,7 @@ export interface RadioGroupRootProps extends Assign<HTMLProps<'div'>, RadioGroup
 
 const splitRootProps = createSplitProps<UseRadioGroupProps>()
 
-export const RadioGroupRoot = forwardRef<HTMLDivElement, RadioGroupRootProps>((props, ref) => {
+export const RadioGroupRoot = ({ ref, ...props }: RadioGroupRootProps) => {
   const [useRadioGroupProps, localProps] = splitRootProps(props, [
     'defaultValue',
     'disabled',
@@ -36,6 +35,6 @@ export const RadioGroupRoot = forwardRef<HTMLDivElement, RadioGroupRootProps>((p
       <ark.div {...mergedProps} ref={ref} />
     </RadioGroupProvider>
   )
-})
+}
 
 RadioGroupRoot.displayName = 'RadioGroupRoot'

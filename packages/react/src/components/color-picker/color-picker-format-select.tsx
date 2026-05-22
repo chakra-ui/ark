@@ -1,14 +1,13 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerFormatSelectBaseProps extends PolymorphicProps {}
 export interface ColorPickerFormatSelectProps extends HTMLProps<'select'>, ColorPickerFormatSelectBaseProps {}
 
-export const ColorPickerFormatSelect = forwardRef<HTMLSelectElement, ColorPickerFormatSelectProps>((props, ref) => {
+export const ColorPickerFormatSelect = ({ ref, ...props }: ColorPickerFormatSelectProps) => {
   const colorPicker = useColorPickerContext()
   const mergedProps = mergeProps(colorPicker.getFormatSelectProps(), props)
 
@@ -21,6 +20,6 @@ export const ColorPickerFormatSelect = forwardRef<HTMLSelectElement, ColorPicker
       ))}
     </ark.select>
   )
-})
+}
 
 ColorPickerFormatSelect.displayName = 'ColorPickerFormatSelect'

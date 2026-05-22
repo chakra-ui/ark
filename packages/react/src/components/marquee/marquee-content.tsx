@@ -1,7 +1,7 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { type ReactNode, forwardRef } from 'react'
+import type { ReactNode } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useMarqueeContext } from './use-marquee-context'
 
@@ -10,7 +10,7 @@ export interface MarqueeContentBaseProps extends PolymorphicProps {
 }
 export interface MarqueeContentProps extends Omit<HTMLProps<'div'>, 'children'>, MarqueeContentBaseProps {}
 
-export const MarqueeContent = forwardRef<HTMLDivElement, MarqueeContentProps>((props, ref) => {
+export const MarqueeContent = ({ ref, ...props }: MarqueeContentProps) => {
   const { children, ...localProps } = props
   const marquee = useMarqueeContext()
 
@@ -26,6 +26,6 @@ export const MarqueeContent = forwardRef<HTMLDivElement, MarqueeContentProps>((p
       })}
     </>
   )
-})
+}
 
 MarqueeContent.displayName = 'MarqueeContent'

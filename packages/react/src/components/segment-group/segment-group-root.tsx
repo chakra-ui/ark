@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -14,7 +13,7 @@ export interface SegmentGroupRootProps extends Assign<HTMLProps<'div'>, SegmentG
 
 const splitRootProps = createSplitProps<UseSegmentGroupProps>()
 
-export const SegmentGroupRoot = forwardRef<HTMLDivElement, SegmentGroupRootProps>((props, ref) => {
+export const SegmentGroupRoot = ({ ref, ...props }: SegmentGroupRootProps) => {
   const [useSegmentGroupProps, localProps] = splitRootProps(props, [
     'defaultValue',
     'disabled',
@@ -37,6 +36,6 @@ export const SegmentGroupRoot = forwardRef<HTMLDivElement, SegmentGroupRootProps
       <ark.div {...mergedProps} ref={ref} />
     </SegmentGroupProvider>
   )
-})
+}
 
 SegmentGroupRoot.displayName = 'SegmentGroupRoot'

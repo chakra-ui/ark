@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -13,7 +12,7 @@ export interface TagsInputRootProps extends Assign<HTMLProps<'div'>, TagsInputRo
 
 const splitTagsInputProps = createSplitProps<UseTagsInputProps>()
 
-export const TagsInputRoot = forwardRef<HTMLDivElement, TagsInputRootProps>((props, ref) => {
+export const TagsInputRoot = ({ ref, ...props }: TagsInputRootProps) => {
   const [useTagsInputProps, localProps] = splitTagsInputProps(props, [
     'addOnPaste',
     'allowDuplicates',
@@ -56,6 +55,6 @@ export const TagsInputRoot = forwardRef<HTMLDivElement, TagsInputRootProps>((pro
       <ark.div {...mergedProps} ref={ref} />
     </TagsInputProvider>
   )
-})
+}
 
 TagsInputRoot.displayName = 'TagsInputRoot'

@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useDrawerContext } from './use-drawer-context'
@@ -9,7 +8,7 @@ import { useDrawerContext } from './use-drawer-context'
 export interface DrawerPositionerBaseProps extends PolymorphicProps {}
 export interface DrawerPositionerProps extends HTMLProps<'div'>, DrawerPositionerBaseProps {}
 
-export const DrawerPositioner = forwardRef<HTMLDivElement, DrawerPositionerProps>((props, ref) => {
+export const DrawerPositioner = ({ ref, ...props }: DrawerPositionerProps) => {
   const drawer = useDrawerContext()
   const presence = usePresenceContext()
   const mergedProps = mergeProps(drawer.getPositionerProps(), props)
@@ -19,6 +18,6 @@ export const DrawerPositioner = forwardRef<HTMLDivElement, DrawerPositionerProps
   }
 
   return <ark.div {...mergedProps} ref={ref} />
-})
+}
 
 DrawerPositioner.displayName = 'DrawerPositioner'

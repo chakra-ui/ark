@@ -2,14 +2,14 @@
 
 import { mergeProps } from '@zag-js/react'
 import { uniq } from '@zag-js/utils'
-import { forwardRef, useMemo } from 'react'
+import { useMemo } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 
 export interface DatePickerRangeTextBaseProps extends PolymorphicProps {}
 export interface DatePickerRangeTextProps extends HTMLProps<'div'>, DatePickerRangeTextBaseProps {}
 
-export const DatePickerRangeText = forwardRef<HTMLDivElement, DatePickerRangeTextProps>((props, ref) => {
+export const DatePickerRangeText = ({ ref, ...props }: DatePickerRangeTextProps) => {
   const datePicker = useDatePickerContext()
   const mergedProps = mergeProps(datePicker.getRangeTextProps(), props)
   const visibleRangeText = useMemo(() => {
@@ -22,6 +22,6 @@ export const DatePickerRangeText = forwardRef<HTMLDivElement, DatePickerRangeTex
       {visibleRangeText}
     </ark.div>
   )
-})
+}
 
 DatePickerRangeText.displayName = 'DatePickerRangeText'

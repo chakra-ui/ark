@@ -2,7 +2,6 @@
 
 import type { SwatchProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
@@ -15,7 +14,7 @@ export interface ColorPickerValueSwatchProps extends HTMLProps<'div'>, ColorPick
 
 const splitValueSwatchProps = createSplitProps<ValueSwatchProps>()
 
-export const ColorPickerValueSwatch = forwardRef<HTMLDivElement, ColorPickerValueSwatchProps>((props, ref) => {
+export const ColorPickerValueSwatch = ({ ref, ...props }: ColorPickerValueSwatchProps) => {
   const [{ respectAlpha }, localProps] = splitValueSwatchProps(props, ['respectAlpha'])
   const colorPicker = useColorPickerContext()
   const swatchProps = {
@@ -29,6 +28,6 @@ export const ColorPickerValueSwatch = forwardRef<HTMLDivElement, ColorPickerValu
       <ark.div {...mergedProps} ref={ref} />
     </ColorPickerSwatchPropsProvider>
   )
-})
+}
 
 ColorPickerValueSwatch.displayName = 'ColorPickerValueSwatch'

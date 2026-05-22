@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -13,7 +12,7 @@ export interface NumberInputRootProps extends Assign<HTMLProps<'div'>, NumberInp
 
 const splitRootProps = createSplitProps<UseNumberInputProps>()
 
-export const NumberInputRoot = forwardRef<HTMLDivElement, NumberInputRootProps>((props, ref) => {
+export const NumberInputRoot = ({ ref, ...props }: NumberInputRootProps) => {
   const [useNumberInputProps, localProps] = splitRootProps(props, [
     'allowMouseWheel',
     'allowOverflow',
@@ -51,6 +50,6 @@ export const NumberInputRoot = forwardRef<HTMLDivElement, NumberInputRootProps>(
       <ark.div {...mergedProps} ref={ref} />
     </NumberInputProvider>
   )
-})
+}
 
 NumberInputRoot.displayName = 'NumberInputRoot'

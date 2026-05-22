@@ -1,6 +1,5 @@
 'use client'
 
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -16,7 +15,7 @@ export interface CheckboxGroupProviderProps extends Assign<HTMLProps<'div'>, Che
 
 const splitProviderProps = createSplitProps<ProviderProps>()
 
-export const CheckboxGroupProvider = forwardRef<HTMLDivElement, CheckboxGroupProviderProps>((props, ref) => {
+export const CheckboxGroupProvider = ({ ref, ...props }: CheckboxGroupProviderProps) => {
   const [localProps, restProps] = splitProviderProps(props, ['value'])
 
   return (
@@ -24,6 +23,6 @@ export const CheckboxGroupProvider = forwardRef<HTMLDivElement, CheckboxGroupPro
       <ark.div ref={ref} role="group" {...restProps} {...checkboxAnatomy.build().group.attrs} />
     </CheckboxGroupContextProvider>
   )
-})
+}
 
 CheckboxGroupProvider.displayName = 'CheckboxGroupProvider'

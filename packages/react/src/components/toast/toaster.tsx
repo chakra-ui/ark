@@ -2,7 +2,7 @@
 
 import { mergeProps, normalizeProps, useMachine } from '@zag-js/react'
 import * as toast from '@zag-js/toast'
-import { type ReactNode, forwardRef, useId } from 'react'
+import { type ReactNode, useId } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Assign } from '../../types'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -18,7 +18,7 @@ export interface ToasterBaseProps extends PolymorphicProps, Omit<toast.GroupProp
 
 export interface ToasterProps extends Assign<HTMLProps<'div'>, ToasterBaseProps> {}
 
-export const Toaster = forwardRef<HTMLDivElement, ToasterProps>((props, ref) => {
+export const Toaster = ({ ref, ...props }: ToasterProps) => {
   const { toaster, children, ...localProps } = props
 
   const locale = useLocaleContext()
@@ -44,7 +44,7 @@ export const Toaster = forwardRef<HTMLDivElement, ToasterProps>((props, ref) => 
       ))}
     </ark.div>
   )
-})
+}
 
 Toaster.displayName = 'Toaster'
 

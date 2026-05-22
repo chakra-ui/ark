@@ -2,7 +2,6 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { ContentProps } from '@zag-js/tabs'
-import { forwardRef } from 'react'
 import { composeRefs } from '../../utils/compose-refs'
 import { createSplitProps } from '../../utils/create-split-props'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy'
@@ -15,7 +14,7 @@ export interface TabContentProps extends HTMLProps<'div'>, TabContentBaseProps {
 
 const splitContentProps = createSplitProps<ContentProps>()
 
-export const TabContent = forwardRef<HTMLDivElement, TabContentProps>((props, ref) => {
+export const TabContent = ({ ref, ...props }: TabContentProps) => {
   const [contentProps, localProps] = splitContentProps(props, ['value'])
   const tabs = useTabsContext()
   const renderStrategyProps = useRenderStrategyPropsContext()
@@ -33,6 +32,6 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>((props, re
       {presence.unmounted ? null : <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} />}
     </PresenceProvider>
   )
-})
+}
 
 TabContent.displayName = 'TabContent'

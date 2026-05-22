@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import {
@@ -18,7 +17,7 @@ export interface AccordionRootProps extends Assign<HTMLProps<'div'>, AccordionRo
 
 const splitRootProps = createSplitProps<UseAccordionProps>()
 
-export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>((props, ref) => {
+export const AccordionRoot = ({ ref, ...props }: AccordionRootProps) => {
   const [renderStrategyProps, accordionProps] = splitRenderStrategyProps(props)
   const [useAccordionProps, localProps] = splitRootProps(accordionProps, [
     'collapsible',
@@ -42,6 +41,6 @@ export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>((pro
       </RenderStrategyPropsProvider>
     </AccordionProvider>
   )
-})
+}
 
 AccordionRoot.displayName = 'AccordionRoot'

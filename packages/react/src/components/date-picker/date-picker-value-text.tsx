@@ -1,7 +1,7 @@
 'use client'
 
 import type { DateValue } from '@zag-js/date-picker'
-import { Fragment, forwardRef } from 'react'
+import { Fragment } from 'react'
 import type { Assign } from '../../types'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { datePickerAnatomy } from './date-picker.anatomy'
@@ -33,7 +33,7 @@ export interface DatePickerValueTextBaseProps extends PolymorphicProps {
 
 export interface DatePickerValueTextProps extends Assign<HTMLProps<'span'>, DatePickerValueTextBaseProps> {}
 
-export const DatePickerValueText = forwardRef<HTMLSpanElement, DatePickerValueTextProps>((props, ref) => {
+export const DatePickerValueText = ({ ref, ...props }: DatePickerValueTextProps) => {
   const { children, placeholder, separator = ', ', ...localProps } = props
   const datePicker = useDatePickerContext()
 
@@ -65,6 +65,6 @@ export const DatePickerValueText = forwardRef<HTMLSpanElement, DatePickerValueTe
       {hasValue ? datePicker.valueAsString.join(separator) : placeholder}
     </ark.span>
   )
-})
+}
 
 DatePickerValueText.displayName = 'DatePickerValueText'

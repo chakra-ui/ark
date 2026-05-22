@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseSliderReturn } from './use-slider'
@@ -16,7 +15,7 @@ export interface SliderRootProviderProps extends HTMLProps<'div'>, SliderRootPro
 
 const splitRootProviderProps = createSplitProps<RootProviderProps>()
 
-export const SliderRootProvider = forwardRef<HTMLDivElement, SliderRootProviderProps>((props, ref) => {
+export const SliderRootProvider = ({ ref, ...props }: SliderRootProviderProps) => {
   const [{ value: slider }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(slider.getRootProps(), localProps)
 
@@ -25,6 +24,6 @@ export const SliderRootProvider = forwardRef<HTMLDivElement, SliderRootProviderP
       <ark.div {...mergedProps} ref={ref} />
     </SliderProvider>
   )
-})
+}
 
 SliderRootProvider.displayName = 'SliderRootProvider'

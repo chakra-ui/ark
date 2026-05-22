@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseProgressReturn } from './use-progress'
@@ -16,7 +15,7 @@ export interface ProgressRootProviderProps extends HTMLProps<'div'>, ProgressRoo
 
 const splitRootProviderProps = createSplitProps<RootProviderProps>()
 
-export const ProgressRootProvider = forwardRef<HTMLDivElement, ProgressRootProviderProps>((props, ref) => {
+export const ProgressRootProvider = ({ ref, ...props }: ProgressRootProviderProps) => {
   const [{ value: progress }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(progress.getRootProps(), localProps)
 
@@ -25,6 +24,6 @@ export const ProgressRootProvider = forwardRef<HTMLDivElement, ProgressRootProvi
       <ark.div {...mergedProps} ref={ref} />
     </ProgressProvider>
   )
-})
+}
 
 ProgressRootProvider.displayName = 'ProgressRootProvider'

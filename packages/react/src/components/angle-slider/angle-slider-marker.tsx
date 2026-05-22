@@ -2,7 +2,6 @@
 
 import type { MarkerProps } from '@zag-js/angle-slider'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -13,13 +12,13 @@ export interface AngleSliderMarkerProps extends Assign<HTMLProps<'div'>, AngleSl
 
 const splitMarkerProps = createSplitProps<MarkerProps>()
 
-export const AngleSliderMarker = forwardRef<HTMLDivElement, AngleSliderMarkerProps>((props, ref) => {
+export const AngleSliderMarker = ({ ref, ...props }: AngleSliderMarkerProps) => {
   const [markerProps, localProps] = splitMarkerProps(props, ['value'])
 
   const angleSlider = useAngleSliderContext()
   const mergedProps = mergeProps(angleSlider.getMarkerProps(markerProps), localProps)
 
   return <ark.div {...mergedProps} ref={ref} />
-})
+}
 
 AngleSliderMarker.displayName = 'AngleSliderMarker'

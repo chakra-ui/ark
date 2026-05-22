@@ -2,7 +2,6 @@
 
 import type { ItemProps } from '@zag-js/combobox'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
@@ -14,7 +13,7 @@ export interface ComboboxItemProps extends HTMLProps<'div'>, ComboboxItemBasePro
 
 const splitItemProps = createSplitProps<ItemProps>()
 
-export const ComboboxItem = forwardRef<HTMLDivElement, ComboboxItemProps>((props, ref) => {
+export const ComboboxItem = ({ ref, ...props }: ComboboxItemProps) => {
   const [itemProps, localProps] = splitItemProps(props, ['item', 'persistFocus'])
   const combobox = useComboboxContext()
   const mergedProps = mergeProps(combobox.getItemProps(itemProps), localProps)
@@ -27,6 +26,6 @@ export const ComboboxItem = forwardRef<HTMLDivElement, ComboboxItemProps>((props
       </ComboboxItemProvider>
     </ComboboxItemPropsProvider>
   )
-})
+}
 
 ComboboxItem.displayName = 'ComboboxItem'

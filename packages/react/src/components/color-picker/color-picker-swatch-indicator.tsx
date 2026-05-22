@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 import { useColorPickerSwatchPropsContext } from './use-color-picker-swatch-props-context'
@@ -9,12 +8,12 @@ import { useColorPickerSwatchPropsContext } from './use-color-picker-swatch-prop
 export interface ColorPickerSwatchIndicatorBaseProps extends PolymorphicProps {}
 export interface ColorPickerSwatchIndicatorProps extends HTMLProps<'div'>, ColorPickerSwatchIndicatorBaseProps {}
 
-export const ColorPickerSwatchIndicator = forwardRef<HTMLDivElement, ColorPickerSwatchIndicatorProps>((props, ref) => {
+export const ColorPickerSwatchIndicator = ({ ref, ...props }: ColorPickerSwatchIndicatorProps) => {
   const colorPicker = useColorPickerContext()
   const swatchProps = useColorPickerSwatchPropsContext()
   const mergedProps = mergeProps(colorPicker.getSwatchIndicatorProps(swatchProps), props)
 
   return <ark.div {...mergedProps} ref={ref} />
-})
+}
 
 ColorPickerSwatchIndicator.displayName = 'ColorPickerSwatchIndicator'

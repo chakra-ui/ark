@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 
@@ -13,7 +12,7 @@ export interface SelectValueTextBaseProps extends PolymorphicProps {
 }
 export interface SelectValueTextProps extends HTMLProps<'span'>, SelectValueTextBaseProps {}
 
-export const SelectValueText = forwardRef<HTMLSpanElement, SelectValueTextProps>((props, ref) => {
+export const SelectValueText = ({ ref, ...props }: SelectValueTextProps) => {
   const { children, placeholder, ...localprops } = props
   const select = useSelectContext()
   const mergedProps = mergeProps(select.getValueTextProps(), localprops)
@@ -23,6 +22,6 @@ export const SelectValueText = forwardRef<HTMLSpanElement, SelectValueTextProps>
       {children || select.valueAsString || placeholder}
     </ark.span>
   )
-})
+}
 
 SelectValueText.displayName = 'SelectValueText'

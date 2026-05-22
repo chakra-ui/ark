@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -13,7 +12,7 @@ export interface ProgressRootProps extends Assign<HTMLProps<'div'>, ProgressRoot
 
 const splitRootProps = createSplitProps<UseProgressProps>()
 
-export const ProgressRoot = forwardRef<HTMLDivElement, ProgressRootProps>((props, ref) => {
+export const ProgressRoot = ({ ref, ...props }: ProgressRootProps) => {
   const [progressProps, localProps] = splitRootProps(props, [
     'defaultValue',
     'formatOptions',
@@ -35,6 +34,6 @@ export const ProgressRoot = forwardRef<HTMLDivElement, ProgressRootProps>((props
       <ark.div {...mergedProps} ref={ref} />
     </ProgressProvider>
   )
-})
+}
 
 ProgressRoot.displayName = 'ProgressRoot'

@@ -2,7 +2,6 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { ResizeTriggerProps } from '@zag-js/splitter'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -14,7 +13,7 @@ export interface SplitterResizeTriggerProps extends Assign<HTMLProps<'button'>, 
 
 const splitResizeTriggerProps = createSplitProps<ResizeTriggerProps>()
 
-export const SplitterResizeTrigger = forwardRef<HTMLButtonElement, SplitterResizeTriggerProps>((props, ref) => {
+export const SplitterResizeTrigger = ({ ref, ...props }: SplitterResizeTriggerProps) => {
   const [triggerProps, localProps] = splitResizeTriggerProps(props, ['disabled', 'id'])
   const splitter = useSplitterContext()
   const mergedProps = mergeProps(splitter.getResizeTriggerProps(triggerProps), localProps)
@@ -24,6 +23,6 @@ export const SplitterResizeTrigger = forwardRef<HTMLButtonElement, SplitterResiz
       <ark.button ref={ref} {...mergedProps} />
     </SplitterResizeTriggerPropsProvider>
   )
-})
+}
 
 SplitterResizeTrigger.displayName = 'SplitterResizeTrigger'

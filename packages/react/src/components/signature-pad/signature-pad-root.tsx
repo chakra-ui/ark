@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseSignaturePadProps, useSignaturePad } from './use-signature-pad'
@@ -12,7 +11,7 @@ export interface SignaturePadRootProps extends HTMLProps<'div'>, SignaturePadRoo
 
 const splitRootProps = createSplitProps<UseSignaturePadProps>()
 
-export const SignaturePadRoot = forwardRef<HTMLDivElement, SignaturePadRootProps>((props, ref) => {
+export const SignaturePadRoot = ({ ref, ...props }: SignaturePadRootProps) => {
   const [useSignaturePadProps, localProps] = splitRootProps(props, [
     'id',
     'ids',
@@ -36,6 +35,6 @@ export const SignaturePadRoot = forwardRef<HTMLDivElement, SignaturePadRootProps
       <ark.div {...mergedProps} ref={ref} />
     </SignaturePadProvider>
   )
-})
+}
 
 SignaturePadRoot.displayName = 'SignaturePadRoot'

@@ -2,7 +2,7 @@
 
 import type { ItemGroupProps } from '@zag-js/combobox'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, useId } from 'react'
+import { useId } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
@@ -13,7 +13,7 @@ export interface ComboboxItemGroupProps extends HTMLProps<'div'>, ComboboxItemGr
 
 const splitItemGroupProps = createSplitProps<Partial<ItemGroupProps>>()
 
-export const ComboboxItemGroup = forwardRef<HTMLDivElement, ComboboxItemGroupProps>((props, ref) => {
+export const ComboboxItemGroup = ({ ref, ...props }: ComboboxItemGroupProps) => {
   const id = useId()
   const [_itemGroupProps, localProps] = splitItemGroupProps(props, ['id'])
   const itemGroupProps = { id, ..._itemGroupProps }
@@ -26,6 +26,6 @@ export const ComboboxItemGroup = forwardRef<HTMLDivElement, ComboboxItemGroupPro
       <ark.div {...mergedProps} ref={ref} />
     </ComboboxItemGroupPropsProvider>
   )
-})
+}
 
 ComboboxItemGroup.displayName = 'ComboboxItemGroup'

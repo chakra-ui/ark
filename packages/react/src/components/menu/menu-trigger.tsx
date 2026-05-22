@@ -2,7 +2,6 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { TriggerProps } from '@zag-js/menu'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -14,7 +13,7 @@ export interface MenuTriggerProps extends Assign<HTMLProps<'button'>, MenuTrigge
 
 const splitTriggerProps = createSplitProps<TriggerProps>()
 
-export const MenuTrigger = forwardRef<HTMLButtonElement, MenuTriggerProps>((props, ref) => {
+export const MenuTrigger = ({ ref, ...props }: MenuTriggerProps) => {
   const [triggerProps, localProps] = splitTriggerProps(props, ['value'])
   const menu = useMenuContext()
   const presence = usePresenceContext()
@@ -28,6 +27,6 @@ export const MenuTrigger = forwardRef<HTMLButtonElement, MenuTriggerProps>((prop
   )
 
   return <ark.button {...mergedProps} ref={ref} />
-})
+}
 
 MenuTrigger.displayName = 'MenuTrigger'

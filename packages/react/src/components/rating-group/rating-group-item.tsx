@@ -2,7 +2,6 @@
 
 import type { ItemProps } from '@zag-js/rating-group'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useRatingGroupContext } from './use-rating-group-context'
@@ -13,7 +12,7 @@ export interface RatingGroupItemProps extends HTMLProps<'span'>, RatingGroupItem
 
 const splitItemProps = createSplitProps<ItemProps>()
 
-export const RatingGroupItem = forwardRef<HTMLSpanElement, RatingGroupItemProps>((props, ref) => {
+export const RatingGroupItem = ({ ref, ...props }: RatingGroupItemProps) => {
   const [itemProps, localProps] = splitItemProps(props, ['index'])
   const ratingGroup = useRatingGroupContext()
   const mergedProps = mergeProps(ratingGroup.getItemProps(itemProps), localProps)
@@ -24,6 +23,6 @@ export const RatingGroupItem = forwardRef<HTMLSpanElement, RatingGroupItemProps>
       <ark.span {...mergedProps} ref={ref} />
     </RatingGroupItemProvider>
   )
-})
+}
 
 RatingGroupItem.displayName = 'RatingGroupItem'

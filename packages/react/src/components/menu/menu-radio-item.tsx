@@ -2,7 +2,6 @@
 
 import type { OptionItemProps } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
@@ -17,7 +16,7 @@ export interface MenuRadioItemProps extends HTMLProps<'div'>, MenuRadioItemBaseP
 
 const splitOptionItemProps = createSplitProps<PartialOptionItemProps>()
 
-export const MenuRadioItem = forwardRef<HTMLDivElement, MenuRadioItemProps>((props, ref) => {
+export const MenuRadioItem = ({ ref, ...props }: MenuRadioItemProps) => {
   const [partialItemProps, localProps] = splitOptionItemProps(props, [
     'closeOnSelect',
     'disabled',
@@ -42,6 +41,6 @@ export const MenuRadioItem = forwardRef<HTMLDivElement, MenuRadioItemProps>((pro
       </MenuItemProvider>
     </MenuItemPropsProvider>
   )
-})
+}
 
 MenuRadioItem.displayName = 'MenuRadioItem'

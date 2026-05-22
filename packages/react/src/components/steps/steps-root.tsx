@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseStepsProps, useSteps } from './use-steps'
@@ -12,7 +11,7 @@ export interface StepsRootProps extends HTMLProps<'div'>, StepsRootBaseProps {}
 
 const splitRootProps = createSplitProps<UseStepsProps>()
 
-export const StepsRoot = forwardRef<HTMLDivElement, StepsRootProps>((props, ref) => {
+export const StepsRoot = ({ ref, ...props }: StepsRootProps) => {
   const [useStepsProps, localProps] = splitRootProps(props, [
     'count',
     'defaultStep',
@@ -36,6 +35,6 @@ export const StepsRoot = forwardRef<HTMLDivElement, StepsRootProps>((props, ref)
       <ark.div {...mergedProps} ref={ref} />
     </StepsProvider>
   )
-})
+}
 
 StepsRoot.displayName = 'StepsRoot'

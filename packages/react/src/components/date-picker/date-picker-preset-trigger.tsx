@@ -2,7 +2,6 @@
 
 import type { PresetTriggerProps } from '@zag-js/date-picker'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -13,12 +12,12 @@ export interface DatePickerPresetTriggerProps extends Assign<HTMLProps<'button'>
 
 const splitPresetTriggerProps = createSplitProps<PresetTriggerProps>()
 
-export const DatePickerPresetTrigger = forwardRef<HTMLButtonElement, DatePickerPresetTriggerProps>((props, ref) => {
+export const DatePickerPresetTrigger = ({ ref, ...props }: DatePickerPresetTriggerProps) => {
   const [presetTriggerProps, localProps] = splitPresetTriggerProps(props, ['value'])
   const datePicker = useDatePickerContext()
   const mergedProps = mergeProps(datePicker.getPresetTriggerProps(presetTriggerProps), localProps)
 
   return <ark.button {...mergedProps} ref={ref} />
-})
+}
 
 DatePickerPresetTrigger.displayName = 'DatePickerPresetTrigger'

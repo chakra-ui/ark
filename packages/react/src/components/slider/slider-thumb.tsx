@@ -2,7 +2,6 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { ThumbProps } from '@zag-js/slider'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
@@ -13,7 +12,7 @@ export interface SliderThumbProps extends HTMLProps<'div'>, SliderThumbBaseProps
 
 const splitThumbProps = createSplitProps<ThumbProps>()
 
-export const SliderThumb = forwardRef<HTMLDivElement, SliderThumbProps>((props, ref) => {
+export const SliderThumb = ({ ref, ...props }: SliderThumbProps) => {
   const [thumbProps, localProps] = splitThumbProps(props, ['index', 'name'])
   const slider = useSliderContext()
   const mergedProps = mergeProps(slider.getThumbProps(thumbProps), localProps)
@@ -23,6 +22,6 @@ export const SliderThumb = forwardRef<HTMLDivElement, SliderThumbProps>((props, 
       <ark.div {...mergedProps} ref={ref} />
     </SliderThumbPropsProvider>
   )
-})
+}
 
 SliderThumb.displayName = 'SliderThumb'

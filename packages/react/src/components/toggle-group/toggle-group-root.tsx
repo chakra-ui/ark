@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -13,7 +12,7 @@ export interface ToggleGroupRootProps extends Assign<HTMLProps<'div'>, ToggleGro
 
 const splitRootProps = createSplitProps<UseToggleGroupProps>()
 
-export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupRootProps>((props, ref) => {
+export const ToggleGroupRoot = ({ ref, ...props }: ToggleGroupRootProps) => {
   const [useToggleGroupProps, localProps] = splitRootProps(props, [
     'defaultValue',
     'deselectable',
@@ -35,6 +34,6 @@ export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupRootProps>(
       <ark.div {...mergedProps} ref={ref} />
     </ToggleGroupProvider>
   )
-})
+}
 
 ToggleGroupRoot.displayName = 'ToggleGroupRoot'

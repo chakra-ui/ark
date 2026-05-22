@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { Collapsible } from '../collapsible'
 import type { HTMLProps, PolymorphicProps } from '../factory'
@@ -18,7 +17,7 @@ interface VisibilityProps {
 
 const splitVisibilityProps = createSplitProps<VisibilityProps>()
 
-export const AccordionItemContent = forwardRef<HTMLDivElement, AccordionItemContentProps>((props, ref) => {
+export const AccordionItemContent = ({ ref, ...props }: AccordionItemContentProps) => {
   const accordion = useAccordionContext()
   const itemProps = useAccordionItemPropsContext()
 
@@ -28,6 +27,6 @@ export const AccordionItemContent = forwardRef<HTMLDivElement, AccordionItemCont
   const mergedProps = mergeProps(itemContentProps, props)
 
   return <Collapsible.Content ref={ref} {...mergedProps} />
-})
+}
 
 AccordionItemContent.displayName = 'AccordionItemContent'

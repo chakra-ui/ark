@@ -2,7 +2,6 @@
 
 import type { InputProps } from '@zag-js/date-picker'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
@@ -12,12 +11,12 @@ export interface DatePickerInputProps extends HTMLProps<'input'>, DatePickerInpu
 
 const splitInputProps = createSplitProps<InputProps>()
 
-export const DatePickerInput = forwardRef<HTMLInputElement, DatePickerInputProps>((props, ref) => {
+export const DatePickerInput = ({ ref, ...props }: DatePickerInputProps) => {
   const [inputProps, localProps] = splitInputProps(props, ['index', 'fixOnBlur'])
   const datePicker = useDatePickerContext()
   const mergedProps = mergeProps(datePicker.getInputProps(inputProps), localProps)
 
   return <ark.input {...mergedProps} ref={ref} />
-})
+}
 
 DatePickerInput.displayName = 'DatePickerInput'

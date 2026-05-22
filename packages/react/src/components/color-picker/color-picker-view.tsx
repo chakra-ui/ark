@@ -1,7 +1,6 @@
 'use client'
 
 import type { ColorFormat } from '@zag-js/color-picker'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { colorPickerAnatomy } from './color-picker.anatomy'
@@ -17,7 +16,7 @@ export interface ColorPickerViewProps extends HTMLProps<'div'>, ColorPickerViewB
 
 const splitFormatOptions = createSplitProps<FormatOptions>()
 
-export const ColorPickerView = forwardRef<HTMLDivElement, ColorPickerViewProps>((props, ref) => {
+export const ColorPickerView = ({ ref, ...props }: ColorPickerViewProps) => {
   const colorPicker = useColorPickerContext()
   const [formatProps, restProps] = splitFormatOptions(props, ['format'])
 
@@ -30,6 +29,6 @@ export const ColorPickerView = forwardRef<HTMLDivElement, ColorPickerViewProps>(
       <ark.div ref={ref} data-format={props.format} {...colorPickerAnatomy.build().view.attrs} {...restProps} />
     </ColorPickerFormatPropsProvider>
   )
-})
+}
 
 ColorPickerView.displayName = 'ColorPickerView'

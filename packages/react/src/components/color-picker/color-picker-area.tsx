@@ -2,7 +2,6 @@
 
 import type { AreaProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { ColorPickerAreaPropsProvider } from './use-color-picker-area-props-context'
@@ -13,7 +12,7 @@ export interface ColorPickerAreaProps extends HTMLProps<'div'>, ColorPickerAreaB
 
 const splitAreaProps = createSplitProps<AreaProps>()
 
-export const ColorPickerArea = forwardRef<HTMLDivElement, ColorPickerAreaProps>((props, ref) => {
+export const ColorPickerArea = ({ ref, ...props }: ColorPickerAreaProps) => {
   const [areaProps, localProps] = splitAreaProps(props, ['xChannel', 'yChannel'])
   const colorPicker = useColorPickerContext()
   const mergedProps = mergeProps(colorPicker.getAreaProps(areaProps), localProps)
@@ -23,6 +22,6 @@ export const ColorPickerArea = forwardRef<HTMLDivElement, ColorPickerAreaProps>(
       <ark.div {...mergedProps} ref={ref} />
     </ColorPickerAreaPropsProvider>
   )
-})
+}
 
 ColorPickerArea.displayName = 'ColorPickerArea'

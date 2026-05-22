@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useMenuTriggerItemContext } from './use-menu-trigger-item-context'
 import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
@@ -9,7 +8,7 @@ import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
 export interface MenuTriggerItemBaseProps extends PolymorphicProps {}
 export interface MenuTriggerItemProps extends HTMLProps<'div'>, MenuTriggerItemBaseProps {}
 
-export const MenuTriggerItem = forwardRef<HTMLDivElement, MenuTriggerItemProps>((props, ref) => {
+export const MenuTriggerItem = ({ ref, ...props }: MenuTriggerItemProps) => {
   const getTriggerItemProps = useMenuTriggerItemContext()
   const mergedProps = mergeProps(getTriggerItemProps?.() ?? {}, props)
 
@@ -18,6 +17,6 @@ export const MenuTriggerItem = forwardRef<HTMLDivElement, MenuTriggerItemProps>(
       <ark.div {...mergedProps} ref={ref} />
     </MenuItemPropsProvider>
   )
-})
+}
 
 MenuTriggerItem.displayName = 'MenuTriggerItem'

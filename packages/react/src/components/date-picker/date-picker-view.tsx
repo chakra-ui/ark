@@ -1,7 +1,6 @@
 'use client'
 
 import type { ViewProps } from '@zag-js/date-picker'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { datePickerAnatomy } from './date-picker.anatomy'
@@ -13,7 +12,7 @@ export interface DatePickerViewProps extends HTMLProps<'div'>, DatePickerViewBas
 
 const splitViewProps = createSplitProps<Required<ViewProps>>()
 
-export const DatePickerView = forwardRef<HTMLDivElement, DatePickerViewProps>((props, ref) => {
+export const DatePickerView = ({ ref, ...props }: DatePickerViewProps) => {
   const [viewProps, localProps] = splitViewProps(props, ['view'])
   const datePicker = useDatePickerContext()
 
@@ -27,6 +26,6 @@ export const DatePickerView = forwardRef<HTMLDivElement, DatePickerViewProps>((p
       />
     </DatePickerViewPropsProvider>
   )
-})
+}
 
 DatePickerView.displayName = 'DatePickerView'

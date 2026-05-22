@@ -3,7 +3,7 @@ import { mergeProps } from '@zag-js/core'
 import type React from 'react'
 import {
   Children,
-  type ComponentPropsWithoutRef,
+  type ComponentPropsWithRef,
   type JSX,
   cloneElement,
   createElement,
@@ -73,7 +73,7 @@ const withAsChild = (Component: React.ElementType) => {
   return Comp
 }
 
-export type HTMLProps<T extends keyof JSX.IntrinsicElements> = ComponentPropsWithoutRef<T>
+export type HTMLProps<T extends keyof JSX.IntrinsicElements> = ComponentPropsWithRef<T>
 export type HTMLArkProps<T extends keyof JSX.IntrinsicElements> = HTMLProps<T> & PolymorphicProps
 
 export const jsxFactory = () => {

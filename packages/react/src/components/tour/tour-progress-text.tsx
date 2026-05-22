@@ -1,14 +1,13 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useTourContext } from './use-tour-context'
 
 export interface TourProgressTextBaseProps extends PolymorphicProps {}
 export interface TourProgressTextProps extends HTMLProps<'div'>, TourProgressTextBaseProps {}
 
-export const TourProgressText = forwardRef<HTMLDivElement, TourProgressTextProps>((props, ref) => {
+export const TourProgressText = ({ ref, ...props }: TourProgressTextProps) => {
   const tour = useTourContext()
   const mergedProps = mergeProps(tour.getProgressTextProps(), props)
 
@@ -17,6 +16,6 @@ export const TourProgressText = forwardRef<HTMLDivElement, TourProgressTextProps
       {mergedProps.children || tour.getProgressText()}
     </ark.div>
   )
-})
+}
 
 TourProgressText.displayName = 'TourProgressText'

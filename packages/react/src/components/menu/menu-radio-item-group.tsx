@@ -1,7 +1,7 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, useId } from 'react'
+import { useId } from 'react'
 import type { Optional } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -15,7 +15,7 @@ export interface MenuRadioItemGroupProps extends HTMLProps<'div'>, MenuRadioItem
 
 const splitItemGroupProps = createSplitProps<OptionalUseMenuItemGroupContext>()
 
-export const MenuRadioItemGroup = forwardRef<HTMLDivElement, MenuRadioItemGroupProps>((props, ref) => {
+export const MenuRadioItemGroup = ({ ref, ...props }: MenuRadioItemGroupProps) => {
   const [optionalItemGroupProps, localProps] = splitItemGroupProps(props, ['id', 'onValueChange', 'value'])
   const menu = useMenuContext()
   const id = useId()
@@ -27,6 +27,6 @@ export const MenuRadioItemGroup = forwardRef<HTMLDivElement, MenuRadioItemGroupP
       <ark.div {...mergedProps} ref={ref} />
     </MenuItemGroupProvider>
   )
-})
+}
 
 MenuRadioItemGroup.displayName = 'MenuRadioItemGroup'

@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseImageCropperProps, useImageCropper } from './use-image-cropper'
@@ -12,7 +11,7 @@ export interface ImageCropperRootProps extends HTMLProps<'div'>, ImageCropperRoo
 
 const splitRootProps = createSplitProps<UseImageCropperProps>()
 
-export const ImageCropperRoot = forwardRef<HTMLDivElement, ImageCropperRootProps>((props, ref) => {
+export const ImageCropperRoot = ({ ref, ...props }: ImageCropperRootProps) => {
   const [useImageCropperProps, localProps] = splitRootProps(props, [
     'aspectRatio',
     'cropShape',
@@ -51,6 +50,6 @@ export const ImageCropperRoot = forwardRef<HTMLDivElement, ImageCropperRootProps
       <ark.div {...mergedProps} ref={ref} />
     </ImageCropperProvider>
   )
-})
+}
 
 ImageCropperRoot.displayName = 'ImageCropperRoot'

@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy'
 import { Collapsible } from '../collapsible'
@@ -13,7 +12,7 @@ import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
 export interface TreeViewBranchBaseProps extends PolymorphicProps {}
 export interface TreeViewBranchProps extends Assign<HTMLProps<'div'>, TreeViewBranchBaseProps> {}
 
-export const TreeViewBranch = forwardRef<HTMLDivElement, TreeViewBranchProps>((props, ref) => {
+export const TreeViewBranch = ({ ref, ...props }: TreeViewBranchProps) => {
   const treeView = useTreeViewContext()
   const nodeProps = useTreeViewNodePropsContext()
   const nodeState = useTreeViewNodeContext()
@@ -30,6 +29,6 @@ export const TreeViewBranch = forwardRef<HTMLDivElement, TreeViewBranchProps>((p
       {...mergedProps}
     />
   )
-})
+}
 
 TreeViewBranch.displayName = 'TreeViewBranch'

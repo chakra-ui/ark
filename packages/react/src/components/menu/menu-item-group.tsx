@@ -2,7 +2,7 @@
 
 import type { ItemGroupProps } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, useId } from 'react'
+import { useId } from 'react'
 import type { Optional } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -16,7 +16,7 @@ export interface MenuItemGroupProps extends HTMLProps<'div'>, MenuItemGroupBaseP
 
 const splitItemGroupProps = createSplitProps<OptionalItemGroupProps>()
 
-export const MenuItemGroup = forwardRef<HTMLDivElement, MenuItemGroupProps>((props, ref) => {
+export const MenuItemGroup = ({ ref, ...props }: MenuItemGroupProps) => {
   const [optionalItemGroupProps, localProps] = splitItemGroupProps(props, ['id'])
   const menu = useMenuContext()
   const id = useId()
@@ -28,6 +28,6 @@ export const MenuItemGroup = forwardRef<HTMLDivElement, MenuItemGroupProps>((pro
       <ark.div {...mergedProps} ref={ref} />
     </MenuItemGroupProvider>
   )
-})
+}
 
 MenuItemGroup.displayName = 'MenuItemGroup'

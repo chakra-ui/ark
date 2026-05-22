@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -13,7 +12,7 @@ export interface SplitterRootProps extends Assign<HTMLProps<'div'>, SplitterRoot
 
 const splitRootProps = createSplitProps<UseSplitterProps>()
 
-export const SplitterRoot = forwardRef<HTMLDivElement, SplitterRootProps>((props, ref) => {
+export const SplitterRoot = ({ ref, ...props }: SplitterRootProps) => {
   const [useSplitterProps, localProps] = splitRootProps(props, [
     'defaultSize',
     'id',
@@ -38,6 +37,6 @@ export const SplitterRoot = forwardRef<HTMLDivElement, SplitterRootProps>((props
       <ark.div {...mergedProps} ref={ref} />
     </SplitterProvider>
   )
-})
+}
 
 SplitterRoot.displayName = 'SplitterRoot'

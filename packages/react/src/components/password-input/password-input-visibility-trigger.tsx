@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePasswordInputContext } from './use-password-input-context'
 
@@ -9,13 +8,11 @@ export interface PasswordInputVisibilityTriggerBaseProps extends PolymorphicProp
 export interface PasswordInputVisibilityTriggerProps
   extends HTMLProps<'button'>, PasswordInputVisibilityTriggerBaseProps {}
 
-export const PasswordInputVisibilityTrigger = forwardRef<HTMLButtonElement, PasswordInputVisibilityTriggerProps>(
-  (props, ref) => {
-    const passwordInput = usePasswordInputContext()
-    const mergedProps = mergeProps(passwordInput.getVisibilityTriggerProps(), props)
+export const PasswordInputVisibilityTrigger = ({ ref, ...props }: PasswordInputVisibilityTriggerProps) => {
+  const passwordInput = usePasswordInputContext()
+  const mergedProps = mergeProps(passwordInput.getVisibilityTriggerProps(), props)
 
-    return <ark.button {...mergedProps} ref={ref} />
-  },
-)
+  return <ark.button {...mergedProps} ref={ref} />
+}
 
 PasswordInputVisibilityTrigger.displayName = 'PasswordInputVisibilityTrigger'

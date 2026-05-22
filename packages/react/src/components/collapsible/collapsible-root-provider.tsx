@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseCollapsibleReturn } from './use-collapsible'
@@ -16,7 +15,7 @@ export interface CollapsibleRootProviderProps extends HTMLProps<'div'>, Collapsi
 
 const splitRootProviderProps = createSplitProps<RootProviderProps>()
 
-export const CollapsibleRootProvider = forwardRef<HTMLDivElement, CollapsibleRootProviderProps>((props, ref) => {
+export const CollapsibleRootProvider = ({ ref, ...props }: CollapsibleRootProviderProps) => {
   const [{ value: collapsible }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(collapsible.getRootProps(), localProps)
 
@@ -25,6 +24,6 @@ export const CollapsibleRootProvider = forwardRef<HTMLDivElement, CollapsibleRoo
       <ark.div {...mergedProps} ref={ref} />
     </CollapsibleProvider>
   )
-})
+}
 
 CollapsibleRootProvider.displayName = 'CollapsibleRootProvider'

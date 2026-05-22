@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -14,7 +13,7 @@ export interface ColorPickerRootProps extends Assign<HTMLProps<'div'>, ColorPick
 
 const splitRootProps = createSplitProps<UseColorPickerProps>()
 
-export const ColorPickerRoot = forwardRef<HTMLDivElement, ColorPickerRootProps>((props, ref) => {
+export const ColorPickerRoot = ({ ref, ...props }: ColorPickerRootProps) => {
   const [presenceProps, colorPickerProps] = splitPresenceProps(props)
   const [useColorPickerProps, localProps] = splitRootProps(colorPickerProps, [
     'closeOnSelect',
@@ -55,6 +54,6 @@ export const ColorPickerRoot = forwardRef<HTMLDivElement, ColorPickerRootProps>(
       </PresenceProvider>
     </ColorPickerProvider>
   )
-})
+}
 
 ColorPickerRoot.displayName = 'ColorPickerRoot'

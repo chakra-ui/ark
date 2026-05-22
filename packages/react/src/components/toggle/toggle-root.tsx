@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import type { HTMLProps, PolymorphicProps } from '../factory'
 import { ark } from '../factory'
@@ -14,7 +13,7 @@ export interface ToggleRootProps extends HTMLProps<'button'>, ToggleRootBaseProp
 
 const splitRootProps = createSplitProps<UseToggleProps>()
 
-export const ToggleRoot = forwardRef<HTMLButtonElement, ToggleRootProps>((props, ref) => {
+export const ToggleRoot = ({ ref, ...props }: ToggleRootProps) => {
   const [useToggleProps, localProps] = splitRootProps(props, [
     'pressed',
     'defaultPressed',
@@ -30,6 +29,6 @@ export const ToggleRoot = forwardRef<HTMLButtonElement, ToggleRootProps>((props,
       <ark.button {...mergedProps} ref={ref} />
     </ToggleProvider>
   )
-})
+}
 
 ToggleRoot.displayName = 'ToggleRoot'

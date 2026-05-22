@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { composeRefs } from '../../utils/compose-refs'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
@@ -10,7 +9,7 @@ import { useSelectContext } from './use-select-context'
 export interface SelectContentBaseProps extends PolymorphicProps {}
 export interface SelectContentProps extends HTMLProps<'div'>, SelectContentBaseProps {}
 
-export const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>((props, ref) => {
+export const SelectContent = ({ ref, ...props }: SelectContentProps) => {
   const select = useSelectContext()
   const presence = usePresenceContext()
   const mergedProps = mergeProps(select.getContentProps(), presence.getPresenceProps(), props)
@@ -20,6 +19,6 @@ export const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>((pro
   }
 
   return <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} />
-})
+}
 
 SelectContent.displayName = 'SelectContent'

@@ -2,7 +2,6 @@
 
 import type { ContentProps } from '@zag-js/navigation-menu'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { composeRefs } from '../../utils/compose-refs'
 import { createSplitProps } from '../../utils/create-split-props'
@@ -18,7 +17,7 @@ export interface NavigationMenuContentProps extends Assign<HTMLProps<'div'>, Nav
 
 const splitContentProps = createSplitProps<ContentProps>()
 
-export const NavigationMenuContent = forwardRef<HTMLDivElement, NavigationMenuContentProps>((props, ref) => {
+export const NavigationMenuContent = ({ ref, ...props }: NavigationMenuContentProps) => {
   const api = useNavigationMenuContext()
   const itemContext = useNavigationMenuItemPropsContext()
 
@@ -47,6 +46,6 @@ export const NavigationMenuContent = forwardRef<HTMLDivElement, NavigationMenuCo
   }
 
   return content
-})
+}
 
 NavigationMenuContent.displayName = 'NavigationMenuContent'

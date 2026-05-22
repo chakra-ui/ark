@@ -2,7 +2,6 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { ItemGroupProps } from '@zag-js/file-upload'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
@@ -13,7 +12,7 @@ export interface FileUploadItemGroupProps extends HTMLProps<'ul'>, FileUploadIte
 
 const splitItemGroupProps = createSplitProps<ItemGroupProps>()
 
-export const FileUploadItemGroup = forwardRef<HTMLUListElement, FileUploadItemGroupProps>((props, ref) => {
+export const FileUploadItemGroup = ({ ref, ...props }: FileUploadItemGroupProps) => {
   const [itemGroupProps, localProps] = splitItemGroupProps(props, ['type'])
   const fileUpload = useFileUploadContext()
   const mergedProps = mergeProps(fileUpload.getItemGroupProps(itemGroupProps), localProps)
@@ -23,6 +22,6 @@ export const FileUploadItemGroup = forwardRef<HTMLUListElement, FileUploadItemGr
       <ark.ul {...mergedProps} ref={ref} />
     </FileUploadItemGroupPropsProvider>
   )
-})
+}
 
 FileUploadItemGroup.displayName = 'FileUploadItemGroup'

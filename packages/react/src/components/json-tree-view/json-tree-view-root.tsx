@@ -1,7 +1,7 @@
 'use client'
 
 import { type JsonNode, getRootNode, nodeToString, nodeToValue } from '@zag-js/json-tree-utils'
-import { forwardRef, useMemo } from 'react'
+import { useMemo } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { TreeView, createTreeCollection } from '../tree-view'
 import { getBranchValues } from './get-branch-value'
@@ -20,7 +20,7 @@ export interface JsonTreeViewRootProps extends Omit<TreeView.RootProps<JsonNode>
 
 const splitJsonTreeViewProps = createSplitProps<JsonTreeViewOptions>()
 
-export const JsonTreeViewRoot = forwardRef<HTMLDivElement, JsonTreeViewRootProps>((props, ref) => {
+export const JsonTreeViewRoot = ({ ref, ...props }: JsonTreeViewRootProps) => {
   const [jsonTreeProps, localProps] = splitJsonTreeViewProps(props, [
     'maxPreviewItems',
     'collapseStringsAfterLength',
@@ -54,6 +54,6 @@ export const JsonTreeViewRoot = forwardRef<HTMLDivElement, JsonTreeViewRootProps
       />
     </JsonTreeViewPropsProvider>
   )
-})
+}
 
 JsonTreeViewRoot.displayName = 'JsonTreeViewRoot'

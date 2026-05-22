@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePasswordInputContext } from './use-password-input-context'
 
@@ -13,7 +12,7 @@ export interface PasswordInputIndicatorBaseProps extends PolymorphicProps {
 }
 export interface PasswordInputIndicatorProps extends HTMLProps<'span'>, PasswordInputIndicatorBaseProps {}
 
-export const PasswordInputIndicator = forwardRef<HTMLSpanElement, PasswordInputIndicatorProps>((props, ref) => {
+export const PasswordInputIndicator = ({ ref, ...props }: PasswordInputIndicatorProps) => {
   const passwordInput = usePasswordInputContext()
   const { fallback, children, ...rest } = props
   const mergedProps = mergeProps(passwordInput.getIndicatorProps(), rest)
@@ -23,6 +22,6 @@ export const PasswordInputIndicator = forwardRef<HTMLSpanElement, PasswordInputI
       {passwordInput.visible ? children : fallback}
     </ark.span>
   )
-})
+}
 
 PasswordInputIndicator.displayName = 'PasswordInputIndicator'

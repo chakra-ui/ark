@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { parts } from './segment-group.anatomy'
@@ -17,7 +16,7 @@ export interface SegmentGroupRootProviderProps extends HTMLProps<'div'>, Segment
 
 const splitRootProviderProps = createSplitProps<RootProviderProps>()
 
-export const SegmentGroupRootProvider = forwardRef<HTMLDivElement, SegmentGroupRootProviderProps>((props, ref) => {
+export const SegmentGroupRootProvider = ({ ref, ...props }: SegmentGroupRootProviderProps) => {
   const [{ value: segmentGroup }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(segmentGroup.getRootProps(), parts.root.attrs as Record<string, string>, localProps)
 
@@ -26,6 +25,6 @@ export const SegmentGroupRootProvider = forwardRef<HTMLDivElement, SegmentGroupR
       <ark.div {...mergedProps} ref={ref} />
     </SegmentGroupProvider>
   )
-})
+}
 
 SegmentGroupRootProvider.displayName = 'SegmentGroupRootProvider'

@@ -2,7 +2,6 @@
 
 import type { LinkProps } from '@zag-js/navigation-menu'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -14,7 +13,7 @@ export interface NavigationMenuLinkProps extends Assign<HTMLProps<'a'>, Navigati
 
 const splitLinkProps = createSplitProps<LinkProps>()
 
-export const NavigationMenuLink = forwardRef<HTMLAnchorElement, NavigationMenuLinkProps>((props, ref) => {
+export const NavigationMenuLink = ({ ref, ...props }: NavigationMenuLinkProps) => {
   const itemContext = useNavigationMenuItemPropsContext()
   const value = props.value ?? itemContext?.value
 
@@ -23,6 +22,6 @@ export const NavigationMenuLink = forwardRef<HTMLAnchorElement, NavigationMenuLi
   const mergedProps = mergeProps(navigationMenu.getLinkProps(linkProps), localProps)
 
   return <ark.a {...mergedProps} ref={ref} />
-})
+}
 
 NavigationMenuLink.displayName = 'NavigationMenuLink'

@@ -2,7 +2,6 @@
 
 import type { ItemProps } from '@zag-js/accordion'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { Collapsible } from '../../components'
 import { createSplitProps } from '../../utils/create-split-props'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy'
@@ -16,7 +15,7 @@ export interface AccordionItemProps extends HTMLProps<'div'>, AccordionItemBaseP
 
 const splitItemProps = createSplitProps<ItemProps>()
 
-export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((props, ref) => {
+export const AccordionItem = ({ ref, ...props }: AccordionItemProps) => {
   const [itemProps, localProps] = splitItemProps(props, ['value', 'disabled'])
   const accordion = useAccordionContext()
   const renderStrategy = useRenderStrategyPropsContext()
@@ -37,6 +36,6 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((pro
       </AccordionItemProvider>
     </AccordionItemPropsProvider>
   )
-})
+}
 
 AccordionItem.displayName = 'AccordionItem'

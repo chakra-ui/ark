@@ -2,7 +2,6 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { ItemProps } from '@zag-js/steps'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useStepsContext } from './use-steps-context'
@@ -14,7 +13,7 @@ export interface StepsItemProps extends HTMLProps<'div'>, StepsItemBaseProps {}
 
 const splitItemProps = createSplitProps<ItemProps>()
 
-export const StepsItem = forwardRef<HTMLDivElement, StepsItemProps>((props, ref) => {
+export const StepsItem = ({ ref, ...props }: StepsItemProps) => {
   const [itemProps, localProps] = splitItemProps(props, ['index'])
   const steps = useStepsContext()
   const mergedProps = mergeProps(steps.getItemProps(itemProps), localProps)
@@ -27,6 +26,6 @@ export const StepsItem = forwardRef<HTMLDivElement, StepsItemProps>((props, ref)
       </StepsItemProvider>
     </StepsItemPropsProvider>
   )
-})
+}
 
 StepsItem.displayName = 'StepsItem'

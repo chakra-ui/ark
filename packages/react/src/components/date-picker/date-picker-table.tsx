@@ -2,7 +2,7 @@
 
 import type { TableProps } from '@zag-js/date-picker'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, useId } from 'react'
+import { useId } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
@@ -14,7 +14,7 @@ export interface DatePickerTableProps extends HTMLProps<'table'>, DatePickerTabl
 
 const splitTableProps = createSplitProps<Pick<TableProps, 'columns'>>()
 
-export const DatePickerTable = forwardRef<HTMLTableElement, DatePickerTableProps>((props, ref) => {
+export const DatePickerTable = ({ ref, ...props }: DatePickerTableProps) => {
   const [{ columns }, localProps] = splitTableProps(props, ['columns'])
   const datePicker = useDatePickerContext()
   const viewProps = useDatePickerViewPropsContext()
@@ -26,6 +26,6 @@ export const DatePickerTable = forwardRef<HTMLTableElement, DatePickerTableProps
       <ark.table {...mergedProps} ref={ref} />
     </DatePickerTablePropsProvider>
   )
-})
+}
 
 DatePickerTable.displayName = 'DatePickerTable'

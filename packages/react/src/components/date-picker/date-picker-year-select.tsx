@@ -1,14 +1,13 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 
 export interface DatePickerYearSelectBaseProps extends PolymorphicProps {}
 export interface DatePickerYearSelectProps extends HTMLProps<'select'>, DatePickerYearSelectBaseProps {}
 
-export const DatePickerYearSelect = forwardRef<HTMLSelectElement, DatePickerYearSelectProps>((props, ref) => {
+export const DatePickerYearSelect = ({ ref, ...props }: DatePickerYearSelectProps) => {
   const datePicker = useDatePickerContext()
   const mergedProps = mergeProps(datePicker.getYearSelectProps(), props)
 
@@ -21,6 +20,6 @@ export const DatePickerYearSelect = forwardRef<HTMLSelectElement, DatePickerYear
       ))}
     </ark.select>
   )
-})
+}
 
 DatePickerYearSelect.displayName = 'DatePickerYearSelect'

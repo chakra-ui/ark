@@ -1,6 +1,6 @@
 'use client'
 
-import { forwardRef, useEffect, useId, useState } from 'react'
+import { useEffect, useId, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { EnvironmentProvider } from '../../providers'
 import type { Assign } from '../../types'
@@ -30,7 +30,7 @@ function getMountNode(frame: HTMLIFrameElement) {
   return mountNode
 }
 
-export const Frame = forwardRef<HTMLIFrameElement, FrameProps>((props, ref) => {
+export const Frame = ({ ref, ...props }: FrameProps) => {
   const { children, head, onMount, onUnmount, srcDoc = initialSrcDoc, ...rest } = props
 
   const [frameRef, setFrameRef] = useState<HTMLIFrameElement | null>(null)
@@ -95,4 +95,4 @@ export const Frame = forwardRef<HTMLIFrameElement, FrameProps>((props, ref) => {
       </iframe>
     </EnvironmentProvider>
   )
-})
+}

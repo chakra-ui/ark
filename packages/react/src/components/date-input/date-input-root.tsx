@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseDateInputProps, useDateInput } from './use-date-input'
@@ -13,7 +12,7 @@ export interface DateInputRootProps extends Assign<HTMLProps<'div'>, DateInputRo
 
 const splitRootProps = createSplitProps<UseDateInputProps>()
 
-export const DateInputRoot = forwardRef<HTMLDivElement, DateInputRootProps>((props, ref) => {
+export const DateInputRoot = ({ ref, ...props }: DateInputRootProps) => {
   const [useDateInputProps, localProps] = splitRootProps(props, [
     'dir',
     'disabled',
@@ -56,6 +55,6 @@ export const DateInputRoot = forwardRef<HTMLDivElement, DateInputRootProps>((pro
       <ark.div {...mergedProps} ref={ref} />
     </DateInputProvider>
   )
-})
+}
 
 DateInputRoot.displayName = 'DateInputRoot'

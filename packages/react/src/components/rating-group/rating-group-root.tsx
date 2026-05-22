@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -13,7 +12,7 @@ export interface RatingGroupRootProps extends Assign<HTMLProps<'div'>, RatingGro
 
 const splitRootProps = createSplitProps<UseRatingGroupProps>()
 
-export const RatingGroupRoot = forwardRef<HTMLDivElement, RatingGroupRootProps>((props, ref) => {
+export const RatingGroupRoot = ({ ref, ...props }: RatingGroupRootProps) => {
   const [useRatingProps, localProps] = splitRootProps(props, [
     'allowHalf',
     'autoFocus',
@@ -40,6 +39,6 @@ export const RatingGroupRoot = forwardRef<HTMLDivElement, RatingGroupRootProps>(
       <ark.div {...mergedProps} ref={ref} />
     </RatingGroupProvider>
   )
-})
+}
 
 RatingGroupRoot.displayName = 'RatingGroupRoot'

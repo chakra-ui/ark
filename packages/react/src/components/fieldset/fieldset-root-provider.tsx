@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseFieldsetReturn } from './use-fieldset'
@@ -16,7 +15,7 @@ export interface FieldsetRootProviderProps extends HTMLProps<'fieldset'>, Fields
 
 const splitRootProviderProps = createSplitProps<RootProviderProps>()
 
-export const FieldsetRootProvider = forwardRef<HTMLFieldSetElement, FieldsetRootProviderProps>((props, ref) => {
+export const FieldsetRootProvider = ({ ref, ...props }: FieldsetRootProviderProps) => {
   const [{ value: fieldset }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(fieldset.getRootProps(), localProps)
 
@@ -25,6 +24,6 @@ export const FieldsetRootProvider = forwardRef<HTMLFieldSetElement, FieldsetRoot
       <ark.fieldset {...mergedProps} ref={ref} />
     </FieldsetProvider>
   )
-})
+}
 
 FieldsetRootProvider.displayName = 'FieldsetRootProvider'

@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseQrCodeReturn } from './use-qr-code'
@@ -16,7 +15,7 @@ export interface QrCodeRootProviderProps extends HTMLProps<'div'>, QrCodeRootPro
 
 const splitRootProviderProps = createSplitProps<RootProviderProps>()
 
-export const QrCodeRootProvider = forwardRef<HTMLDivElement, QrCodeRootProviderProps>((props, ref) => {
+export const QrCodeRootProvider = ({ ref, ...props }: QrCodeRootProviderProps) => {
   const [{ value: qrCode }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(qrCode.getRootProps(), localProps)
 
@@ -25,6 +24,6 @@ export const QrCodeRootProvider = forwardRef<HTMLDivElement, QrCodeRootProviderP
       <ark.div {...mergedProps} ref={ref} />
     </QrCodeProvider>
   )
-})
+}
 
 QrCodeRootProvider.displayName = 'QrCodeRootProvider'

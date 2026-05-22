@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 import { useDatePickerTableCellPropsContext } from './use-date-picker-table-cell-props-context'
@@ -10,7 +9,7 @@ import { useDatePickerViewPropsContext } from './use-date-picker-view-props-cont
 export interface DatePickerTableCellTriggerBaseProps extends PolymorphicProps {}
 export interface DatePickerTableCellTriggerProps extends HTMLProps<'div'>, DatePickerTableCellTriggerBaseProps {}
 
-export const DatePickerTableCellTrigger = forwardRef<HTMLDivElement, DatePickerTableCellTriggerProps>((props, ref) => {
+export const DatePickerTableCellTrigger = ({ ref, ...props }: DatePickerTableCellTriggerProps) => {
   const datePicker = useDatePickerContext()
   const tableCellProps = useDatePickerTableCellPropsContext()
   const viewProps = useDatePickerViewPropsContext()
@@ -29,6 +28,6 @@ export const DatePickerTableCellTrigger = forwardRef<HTMLDivElement, DatePickerT
   const mergedProps = mergeProps(triggerProps, props)
 
   return <ark.div ref={ref} {...mergedProps} />
-})
+}
 
 DatePickerTableCellTrigger.displayName = 'DatePickerTableCellTrigger'

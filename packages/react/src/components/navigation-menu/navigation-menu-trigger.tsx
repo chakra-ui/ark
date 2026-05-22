@@ -3,7 +3,6 @@
 import { mergeProps } from '@zag-js/react'
 import type { ItemProps } from '@zag-js/navigation-menu'
 import { ensure } from '@zag-js/utils'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useNavigationMenuContext } from './use-navigation-menu-context'
@@ -15,7 +14,7 @@ export interface NavigationMenuTriggerProps extends Assign<HTMLProps<'button'>, 
 
 const splitItemProps = createSplitProps<ItemProps>()
 
-export const NavigationMenuTrigger = forwardRef<HTMLButtonElement, NavigationMenuTriggerProps>((props, ref) => {
+export const NavigationMenuTrigger = ({ ref, ...props }: NavigationMenuTriggerProps) => {
   const itemContext = useNavigationMenuItemPropsContext()
   ensure(itemContext, () => 'NavigationMenu.Trigger must be used within NavigationMenu.Item')
 
@@ -27,6 +26,6 @@ export const NavigationMenuTrigger = forwardRef<HTMLButtonElement, NavigationMen
   const mergedProps = mergeProps(navigationMenu.getTriggerProps(triggerProps), localProps)
 
   return <ark.button {...mergedProps} ref={ref} />
-})
+}
 
 NavigationMenuTrigger.displayName = 'NavigationMenuTrigger'

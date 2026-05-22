@@ -2,7 +2,7 @@
 
 import type { ItemProps } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, useEffect } from 'react'
+import { useEffect } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -23,7 +23,7 @@ export interface MenuItemProps extends Assign<HTMLProps<'div'>, MenuItemBaseProp
 
 const splitItemBaseProps = createSplitProps<ItemBaseProps>()
 
-export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>((props, ref) => {
+export const MenuItem = ({ ref, ...props }: MenuItemProps) => {
   const [itemProps, localProps] = splitItemBaseProps(props, [
     'closeOnSelect',
     'disabled',
@@ -48,6 +48,6 @@ export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>((props, ref) =
       </MenuItemProvider>
     </MenuItemPropsProvider>
   )
-})
+}
 
 MenuItem.displayName = 'MenuItem'

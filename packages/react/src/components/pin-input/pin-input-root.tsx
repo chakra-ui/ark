@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -13,7 +12,7 @@ export interface PinInputRootProps extends Assign<HTMLProps<'div'>, PinInputRoot
 
 const splitRootProps = createSplitProps<UsePinInputProps>()
 
-export const PinInputRoot = forwardRef<HTMLDivElement, PinInputRootProps>((props, ref) => {
+export const PinInputRoot = ({ ref, ...props }: PinInputRootProps) => {
   const [usePinInputProps, localProps] = splitRootProps(props, [
     'autoFocus',
     'autoSubmit',
@@ -49,6 +48,6 @@ export const PinInputRoot = forwardRef<HTMLDivElement, PinInputRootProps>((props
       <ark.div {...mergedProps} ref={ref} />
     </PinInputProvider>
   )
-})
+}
 
 PinInputRoot.displayName = 'PinInputRoot'

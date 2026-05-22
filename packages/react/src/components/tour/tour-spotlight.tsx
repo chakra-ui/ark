@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { composeRefs } from '../../utils/compose-refs'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -11,7 +10,7 @@ import { useTourContext } from './use-tour-context'
 export interface TourSpotlightBaseProps extends PolymorphicProps {}
 export interface TourSpotlightProps extends HTMLProps<'div'>, TourSpotlightBaseProps {}
 
-export const TourSpotlight = forwardRef<HTMLDivElement, TourSpotlightProps>((props, ref) => {
+export const TourSpotlight = ({ ref, ...props }: TourSpotlightProps) => {
   const tour = useTourContext()
   const renderStrategyProps = useRenderStrategyPropsContext()
   const presence = usePresence({
@@ -26,6 +25,6 @@ export const TourSpotlight = forwardRef<HTMLDivElement, TourSpotlightProps>((pro
   }
 
   return <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} hidden={hidden} />
-})
+}
 
 TourSpotlight.displayName = 'TourSpotlight'

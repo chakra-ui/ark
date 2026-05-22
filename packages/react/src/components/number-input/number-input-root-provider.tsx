@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseNumberInputReturn } from './use-number-input'
@@ -16,7 +15,7 @@ export interface NumberInputRootProviderProps extends HTMLProps<'div'>, NumberIn
 
 const splitRootProviderProps = createSplitProps<RootProviderProps>()
 
-export const NumberInputRootProvider = forwardRef<HTMLDivElement, NumberInputRootProviderProps>((props, ref) => {
+export const NumberInputRootProvider = ({ ref, ...props }: NumberInputRootProviderProps) => {
   const [{ value: numberInput }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(numberInput.getRootProps(), localProps)
 
@@ -25,6 +24,6 @@ export const NumberInputRootProvider = forwardRef<HTMLDivElement, NumberInputRoo
       <ark.div {...mergedProps} ref={ref} />
     </NumberInputProvider>
   )
-})
+}
 
 NumberInputRootProvider.displayName = 'NumberInputRootProvider'

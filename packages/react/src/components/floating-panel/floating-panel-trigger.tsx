@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useFloatingPanelContext } from './use-floating-panel-context'
@@ -9,7 +8,7 @@ import { useFloatingPanelContext } from './use-floating-panel-context'
 export interface FloatingPanelTriggerBaseProps extends PolymorphicProps {}
 export interface FloatingPanelTriggerProps extends HTMLProps<'button'>, FloatingPanelTriggerBaseProps {}
 
-export const FloatingPanelTrigger = forwardRef<HTMLButtonElement, FloatingPanelTriggerProps>((props, ref) => {
+export const FloatingPanelTrigger = ({ ref, ...props }: FloatingPanelTriggerProps) => {
   const floatingPanel = useFloatingPanelContext()
   const presence = usePresenceContext()
 
@@ -23,6 +22,6 @@ export const FloatingPanelTrigger = forwardRef<HTMLButtonElement, FloatingPanelT
   )
 
   return <ark.button {...mergedProps} ref={ref} />
-})
+}
 
 FloatingPanelTrigger.displayName = 'FloatingPanelTrigger'

@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -13,7 +12,7 @@ export interface CheckboxRootProps extends Assign<HTMLProps<'label'>, CheckboxRo
 
 const splitRootProps = createSplitProps<UseCheckboxProps>()
 
-export const CheckboxRoot = forwardRef<HTMLLabelElement, CheckboxRootProps>((props, ref) => {
+export const CheckboxRoot = ({ ref, ...props }: CheckboxRootProps) => {
   const [useCheckboxProps, localProps] = splitRootProps(props, [
     'checked',
     'defaultChecked',
@@ -36,6 +35,6 @@ export const CheckboxRoot = forwardRef<HTMLLabelElement, CheckboxRootProps>((pro
       <ark.label {...mergedProps} ref={ref} />
     </CheckboxProvider>
   )
-})
+}
 
 CheckboxRoot.displayName = 'CheckboxRoot'

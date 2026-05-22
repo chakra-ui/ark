@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseScrollAreaProps, useScrollArea } from './use-scroll-area'
@@ -12,7 +11,7 @@ export interface ScrollAreaRootProps extends HTMLProps<'div'>, ScrollAreaRootBas
 
 const splitRootProps = createSplitProps<UseScrollAreaProps>()
 
-export const ScrollAreaRoot = forwardRef<HTMLDivElement, ScrollAreaRootProps>((props, ref) => {
+export const ScrollAreaRoot = ({ ref, ...props }: ScrollAreaRootProps) => {
   const [useScrollAreaProps, localProps] = splitRootProps(props, ['id', 'ids'])
   const scrollArea = useScrollArea(useScrollAreaProps)
   const mergedProps = mergeProps(scrollArea.getRootProps(), localProps)
@@ -22,6 +21,6 @@ export const ScrollAreaRoot = forwardRef<HTMLDivElement, ScrollAreaRootProps>((p
       <ark.div {...mergedProps} ref={ref} />
     </ScrollAreaProvider>
   )
-})
+}
 
 ScrollAreaRoot.displayName = 'ScrollAreaRoot'

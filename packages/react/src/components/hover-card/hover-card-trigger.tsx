@@ -2,7 +2,6 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { TriggerProps } from '@zag-js/hover-card'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -13,12 +12,12 @@ export interface HoverCardTriggerProps extends Assign<HTMLProps<'button'>, Hover
 
 const splitTriggerProps = createSplitProps<TriggerProps>()
 
-export const HoverCardTrigger = forwardRef<HTMLButtonElement, HoverCardTriggerProps>((props, ref) => {
+export const HoverCardTrigger = ({ ref, ...props }: HoverCardTriggerProps) => {
   const [triggerProps, localProps] = splitTriggerProps(props, ['value'])
   const hoverCard = useHoverCardContext()
   const mergedProps = mergeProps(hoverCard.getTriggerProps(triggerProps), localProps)
 
   return <ark.button {...mergedProps} ref={ref} />
-})
+}
 
 HoverCardTrigger.displayName = 'HoverCardTrigger'

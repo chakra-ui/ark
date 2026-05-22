@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import {
   type RenderStrategyProps,
@@ -21,7 +20,7 @@ export interface NavigationMenuRootProviderProps extends HTMLProps<'nav'>, Navig
 
 const splitRootProviderProps = createSplitProps<RootProviderProps>()
 
-export const NavigationMenuRootProvider = forwardRef<HTMLElement, NavigationMenuRootProviderProps>((props, ref) => {
+export const NavigationMenuRootProvider = ({ ref, ...props }: NavigationMenuRootProviderProps) => {
   const [renderStrategyProps, navigationMenuProps] = splitRenderStrategyProps(props)
   const [{ value: navigationMenu }, localProps] = splitRootProviderProps(navigationMenuProps, ['value'])
   const mergedProps = mergeProps(navigationMenu.getRootProps(), localProps)
@@ -33,6 +32,6 @@ export const NavigationMenuRootProvider = forwardRef<HTMLElement, NavigationMenu
       </RenderStrategyPropsProvider>
     </NavigationMenuProvider>
   )
-})
+}
 
 NavigationMenuRootProvider.displayName = 'NavigationMenuRootProvider'

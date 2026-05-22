@@ -2,7 +2,6 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { Orientation } from '@zag-js/types'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useScrollAreaContext } from './use-scroll-area-context'
@@ -17,7 +16,7 @@ export interface ScrollAreaScrollbarProps extends HTMLProps<'div'>, ScrollAreaSc
 
 const splitScrollbarProps = createSplitProps<ScrollbarProps>()
 
-export const ScrollAreaScrollbar = forwardRef<HTMLDivElement, ScrollAreaScrollbarProps>((props, ref) => {
+export const ScrollAreaScrollbar = ({ ref, ...props }: ScrollAreaScrollbarProps) => {
   const [scrollbarProps, localProps] = splitScrollbarProps(props, ['orientation'])
   const scrollAreaApi = useScrollAreaContext()
   const mergedProps = mergeProps(scrollAreaApi.getScrollbarProps(scrollbarProps), localProps)
@@ -27,6 +26,6 @@ export const ScrollAreaScrollbar = forwardRef<HTMLDivElement, ScrollAreaScrollba
       <ark.div {...mergedProps} ref={ref} />
     </ScrollAreaScrollbarProvider>
   )
-})
+}
 
 ScrollAreaScrollbar.displayName = 'ScrollAreaScrollbar'

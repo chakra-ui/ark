@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -14,7 +13,7 @@ export interface AngleSliderRootProps extends Assign<HTMLProps<'div'>, AngleSlid
 
 const splitRootProps = createSplitProps<UseAngleSliderProps>()
 
-export const AngleSliderRoot = forwardRef<HTMLDivElement, AngleSliderRootProps>((props, ref) => {
+export const AngleSliderRoot = ({ ref, ...props }: AngleSliderRootProps) => {
   const [useAngleSliderProps, localProps] = splitRootProps(props, [
     'id',
     'ids',
@@ -39,6 +38,6 @@ export const AngleSliderRoot = forwardRef<HTMLDivElement, AngleSliderRootProps>(
       <ark.div {...mergedProps} ref={ref} />
     </AngleSliderProvider>
   )
-})
+}
 
 AngleSliderRoot.displayName = 'AngleSliderRoot'

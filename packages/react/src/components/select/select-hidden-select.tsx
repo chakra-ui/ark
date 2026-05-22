@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useFieldContext } from '../field'
 import { useSelectContext } from './use-select-context'
@@ -9,7 +8,7 @@ import { useSelectContext } from './use-select-context'
 export interface SelectHiddenSelectBaseProps extends PolymorphicProps {}
 export interface SelectHiddenSelectProps extends HTMLProps<'select'>, SelectHiddenSelectBaseProps {}
 
-export const SelectHiddenSelect = forwardRef<HTMLSelectElement, SelectHiddenSelectProps>((props, ref) => {
+export const SelectHiddenSelect = ({ ref, ...props }: SelectHiddenSelectProps) => {
   const select = useSelectContext()
   const mergedProps = mergeProps(select.getHiddenSelectProps(), props)
   const isValueEmpty = select.value.length === 0
@@ -29,5 +28,5 @@ export const SelectHiddenSelect = forwardRef<HTMLSelectElement, SelectHiddenSele
       ))}
     </ark.select>
   )
-})
+}
 SelectHiddenSelect.displayName = 'SelectHiddenSelect'

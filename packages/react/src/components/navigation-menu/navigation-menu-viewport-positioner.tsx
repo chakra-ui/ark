@@ -2,7 +2,6 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { ViewportProps } from '@zag-js/navigation-menu'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useNavigationMenuContext } from './use-navigation-menu-context'
@@ -14,18 +13,16 @@ export interface NavigationMenuViewportPositionerProps
 
 const splitViewportProps = createSplitProps<ViewportProps>()
 
-export const NavigationMenuViewportPositioner = forwardRef<HTMLDivElement, NavigationMenuViewportPositionerProps>(
-  (props, ref) => {
-    const [viewportProps, localProps] = splitViewportProps(props, ['align'])
-    const navigationMenu = useNavigationMenuContext()
-    const mergedProps = mergeProps(navigationMenu.getViewportPositionerProps(viewportProps), localProps)
+export const NavigationMenuViewportPositioner = ({ ref, ...props }: NavigationMenuViewportPositionerProps) => {
+  const [viewportProps, localProps] = splitViewportProps(props, ['align'])
+  const navigationMenu = useNavigationMenuContext()
+  const mergedProps = mergeProps(navigationMenu.getViewportPositionerProps(viewportProps), localProps)
 
-    return (
-      <NavigationMenuViewportPropsProvider value={viewportProps}>
-        <ark.div {...mergedProps} ref={ref} />
-      </NavigationMenuViewportPropsProvider>
-    )
-  },
-)
+  return (
+    <NavigationMenuViewportPropsProvider value={viewportProps}>
+      <ark.div {...mergedProps} ref={ref} />
+    </NavigationMenuViewportPropsProvider>
+  )
+}
 
 NavigationMenuViewportPositioner.displayName = 'NavigationMenuViewportPositioner'

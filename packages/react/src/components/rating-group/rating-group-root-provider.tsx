@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseRatingGroupReturn } from './use-rating-group'
@@ -16,7 +15,7 @@ export interface RatingGroupRootProviderProps extends HTMLProps<'div'>, RatingGr
 
 const splitRootProviderProps = createSplitProps<RootProviderProps>()
 
-export const RatingGroupRootProvider = forwardRef<HTMLDivElement, RatingGroupRootProviderProps>((props, ref) => {
+export const RatingGroupRootProvider = ({ ref, ...props }: RatingGroupRootProviderProps) => {
   const [{ value: ratingGroup }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(ratingGroup.getRootProps(), localProps)
 
@@ -25,6 +24,6 @@ export const RatingGroupRootProvider = forwardRef<HTMLDivElement, RatingGroupRoo
       <ark.div {...mergedProps} ref={ref} />
     </RatingGroupProvider>
   )
-})
+}
 
 RatingGroupRootProvider.displayName = 'RatingGroupRootProvider'

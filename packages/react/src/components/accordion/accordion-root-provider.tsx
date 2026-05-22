@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import {
   type RenderStrategyProps,
@@ -21,7 +20,7 @@ export interface AccordionRootProviderProps extends HTMLProps<'div'>, AccordionR
 
 const splitRootProviderProps = createSplitProps<RootProviderProps>()
 
-export const AccordionRootProvider = forwardRef<HTMLDivElement, AccordionRootProviderProps>((props, ref) => {
+export const AccordionRootProvider = ({ ref, ...props }: AccordionRootProviderProps) => {
   const [renderStrategyProps, accordionProps] = splitRenderStrategyProps(props)
   const [{ value: accordion }, localProps] = splitRootProviderProps(accordionProps, ['value'])
   const mergedProps = mergeProps(accordion.getRootProps(), localProps)
@@ -33,6 +32,6 @@ export const AccordionRootProvider = forwardRef<HTMLDivElement, AccordionRootPro
       </RenderStrategyPropsProvider>
     </AccordionProvider>
   )
-})
+}
 
 AccordionRootProvider.displayName = 'AccordionRootProvider'

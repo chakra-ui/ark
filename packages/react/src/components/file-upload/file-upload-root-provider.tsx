@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseFileUploadReturn } from './use-file-upload'
@@ -16,7 +15,7 @@ export interface FileUploadRootProviderProps extends HTMLProps<'div'>, FileUploa
 
 const splitRootProviderProps = createSplitProps<RootProviderProps>()
 
-export const FileUploadRootProvider = forwardRef<HTMLDivElement, FileUploadRootProviderProps>((props, ref) => {
+export const FileUploadRootProvider = ({ ref, ...props }: FileUploadRootProviderProps) => {
   const [{ value: fileUpload }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(fileUpload.getRootProps(), localProps)
 
@@ -25,6 +24,6 @@ export const FileUploadRootProvider = forwardRef<HTMLDivElement, FileUploadRootP
       <ark.div {...mergedProps} ref={ref} />
     </FileUploadProvider>
   )
-})
+}
 
 FileUploadRootProvider.displayName = 'FileUploadRootProvider'

@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UsePaginationProps, usePagination } from './use-pagination'
@@ -12,7 +11,7 @@ export interface PaginationRootProps extends HTMLProps<'nav'>, PaginationRootBas
 
 const splitRootProps = createSplitProps<UsePaginationProps>()
 
-export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>((props, ref) => {
+export const PaginationRoot = ({ ref, ...props }: PaginationRootProps) => {
   const [paginationProps, localProps] = splitRootProps(props, [
     'boundaryCount',
     'count',
@@ -38,6 +37,6 @@ export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>((prop
       <ark.nav {...mergedProps} ref={ref} />
     </PaginationProvider>
   )
-})
+}
 
 PaginationRoot.displayName = 'PaginationRoot'

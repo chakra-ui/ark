@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useColorPickerContext } from './use-color-picker-context'
@@ -9,7 +8,7 @@ import { useColorPickerContext } from './use-color-picker-context'
 export interface ColorPickerPositionerBaseProps extends PolymorphicProps {}
 export interface ColorPickerPositionerProps extends HTMLProps<'div'>, ColorPickerPositionerBaseProps {}
 
-export const ColorPickerPositioner = forwardRef<HTMLDivElement, ColorPickerPositionerProps>((props, ref) => {
+export const ColorPickerPositioner = ({ ref, ...props }: ColorPickerPositionerProps) => {
   const colorPicker = useColorPickerContext()
   const mergedProps = mergeProps(colorPicker.getPositionerProps(), props)
   const presence = usePresenceContext()
@@ -19,6 +18,6 @@ export const ColorPickerPositioner = forwardRef<HTMLDivElement, ColorPickerPosit
   }
 
   return <ark.div {...mergedProps} ref={ref} />
-})
+}
 
 ColorPickerPositioner.displayName = 'ColorPickerPositioner'

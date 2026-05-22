@@ -2,7 +2,6 @@
 
 import type { SwatchTriggerProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -13,12 +12,12 @@ export interface ColorPickerSwatchTriggerProps extends Assign<HTMLProps<'button'
 
 const splitSwatchTriggerProps = createSplitProps<SwatchTriggerProps>()
 
-export const ColorPickerSwatchTrigger = forwardRef<HTMLButtonElement, ColorPickerSwatchTriggerProps>((props, ref) => {
+export const ColorPickerSwatchTrigger = ({ ref, ...props }: ColorPickerSwatchTriggerProps) => {
   const [triggerProps, localProps] = splitSwatchTriggerProps(props, ['value', 'disabled'])
   const colorPicker = useColorPickerContext()
   const mergedProps = mergeProps(colorPicker.getSwatchTriggerProps(triggerProps), localProps)
 
   return <ark.button {...mergedProps} ref={ref} />
-})
+}
 
 ColorPickerSwatchTrigger.displayName = 'ColorPickerSwatchTrigger'

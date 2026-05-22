@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { composeRefs } from '../../utils/compose-refs'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -11,7 +10,7 @@ import { useNavigationMenuContext } from './use-navigation-menu-context'
 export interface NavigationMenuIndicatorBaseProps extends PolymorphicProps {}
 export interface NavigationMenuIndicatorProps extends HTMLProps<'div'>, NavigationMenuIndicatorBaseProps {}
 
-export const NavigationMenuIndicator = forwardRef<HTMLDivElement, NavigationMenuIndicatorProps>((props, ref) => {
+export const NavigationMenuIndicator = ({ ref, ...props }: NavigationMenuIndicatorProps) => {
   const navigationMenu = useNavigationMenuContext()
   const renderStrategyProps = useRenderStrategyPropsContext()
   const presence = usePresence({ ...renderStrategyProps, present: navigationMenu.open })
@@ -22,6 +21,6 @@ export const NavigationMenuIndicator = forwardRef<HTMLDivElement, NavigationMenu
       {presence.unmounted ? null : <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} />}
     </PresenceProvider>
   )
-})
+}
 
 NavigationMenuIndicator.displayName = 'NavigationMenuIndicator'

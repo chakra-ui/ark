@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseEditableReturn } from './use-editable'
@@ -16,7 +15,7 @@ export interface EditableRootProviderProps extends HTMLProps<'div'>, EditableRoo
 
 const splitRootProviderProps = createSplitProps<RootProviderProps>()
 
-export const EditableRootProvider = forwardRef<HTMLDivElement, EditableRootProviderProps>((props, ref) => {
+export const EditableRootProvider = ({ ref, ...props }: EditableRootProviderProps) => {
   const [{ value: editable }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(editable.getRootProps(), localProps)
 
@@ -25,6 +24,6 @@ export const EditableRootProvider = forwardRef<HTMLDivElement, EditableRootProvi
       <ark.div {...mergedProps} ref={ref} />
     </EditableProvider>
   )
-})
+}
 
 EditableRootProvider.displayName = 'EditableRootProvider'

@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import {
@@ -18,7 +17,7 @@ export interface TabsRootProps extends Assign<HTMLProps<'div'>, TabsRootBaseProp
 
 const splitRootProps = createSplitProps<UseTabsProps>()
 
-export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) => {
+export const TabsRoot = ({ ref, ...props }: TabsRootProps) => {
   const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)
   const [useTabsProps, localProps] = splitRootProps(tabsProps, [
     'activationMode',
@@ -45,6 +44,6 @@ export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) =
       </RenderStrategyPropsProvider>
     </TabsProvider>
   )
-})
+}
 
 TabsRoot.displayName = 'TabsRoot'

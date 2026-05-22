@@ -1,7 +1,6 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseAvatarReturn } from './use-avatar'
@@ -16,7 +15,7 @@ export interface AvatarRootProviderProps extends HTMLProps<'div'>, AvatarRootPro
 
 const splitRootProviderProps = createSplitProps<RootProviderProps>()
 
-export const AvatarRootProvider = forwardRef<HTMLDivElement, AvatarRootProviderProps>((props, ref) => {
+export const AvatarRootProvider = ({ ref, ...props }: AvatarRootProviderProps) => {
   const [{ value: avatar }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(avatar.getRootProps(), localProps)
 
@@ -25,6 +24,6 @@ export const AvatarRootProvider = forwardRef<HTMLDivElement, AvatarRootProviderP
       <ark.div {...mergedProps} ref={ref} />
     </AvatarProvider>
   )
-})
+}
 
 AvatarRootProvider.displayName = 'AvatarRootProvider'
