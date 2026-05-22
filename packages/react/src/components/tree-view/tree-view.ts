@@ -79,14 +79,11 @@ export {
 export {
   TreeViewRoot as Root,
   type TreeViewRootBaseProps as RootBaseProps,
-  type TreeViewRootComponent as RootComponent,
-  type TreeViewRootComponentProps as RootComponentProps,
   type TreeViewRootProps as RootProps,
 } from './tree-view-root'
 export {
   TreeViewRootProvider as RootProvider,
   type TreeViewRootProviderBaseProps as RootProviderBaseProps,
-  type TreeViewRootProviderComponent as RootProviderComponent,
   type TreeViewRootProviderProps as RootProviderProps,
 } from './tree-view-root-provider'
 export {

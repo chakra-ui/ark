@@ -1,8 +1,7 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { type JSX, type Ref, type RefAttributes, forwardRef } from 'react'
-import type { Assign } from '../../types'
+import type { JSX } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import type { CollectionItem } from '../collection'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -13,12 +12,17 @@ import { ComboboxProvider } from './use-combobox-context'
 interface RootProviderProps<T extends CollectionItem> {
   value: UseComboboxReturn<T>
 }
+
 export interface ComboboxRootProviderBaseProps<T extends CollectionItem>
   extends RootProviderProps<T>, UsePresenceProps, PolymorphicProps {}
+
 export interface ComboboxRootProviderProps<T extends CollectionItem>
   extends HTMLProps<'div'>, ComboboxRootProviderBaseProps<T> {}
 
-const ComboboxImpl = <T extends CollectionItem>(props: ComboboxRootProviderProps<T>, ref: Ref<HTMLDivElement>) => {
+export const ComboboxRootProvider = <T extends CollectionItem>({
+  ref,
+  ...props
+}: ComboboxRootProviderProps<T>): JSX.Element => {
   const [presenceProps, comboboxProps] = splitPresenceProps(props)
   const [{ value: combobox }, localProps] = createSplitProps<RootProviderProps<T>>()(comboboxProps, ['value'])
   const presence = usePresence(mergeProps({ present: combobox.open }, presenceProps))
@@ -32,9 +36,3 @@ const ComboboxImpl = <T extends CollectionItem>(props: ComboboxRootProviderProps
     </ComboboxProvider>
   )
 }
-
-export type ComboboxRootProviderComponent<P = {}> = <T extends CollectionItem>(
-  props: Assign<ComboboxRootProviderProps<T>, P> & RefAttributes<HTMLDivElement>,
-) => JSX.Element
-
-export const ComboboxRootProvider = forwardRef(ComboboxImpl) as ComboboxRootProviderComponent

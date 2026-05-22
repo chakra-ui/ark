@@ -59,14 +59,11 @@ export {
   ListboxRoot as Root,
   type ListboxRootBaseProps as RootBaseProps,
   type ListboxRootProps as RootProps,
-  type ListboxRootComponent as RootComponent,
-  type ListboxRootComponentProps as RootComponentProps,
 } from './listbox-root'
 export {
   ListboxRootProvider as RootProvider,
   type ListboxRootProviderBaseProps as RootProviderBaseProps,
   type ListboxRootProviderProps as RootProviderProps,
-  type ListboxRootProviderComponent as RootProviderComponent,
 } from './listbox-root-provider'
 export {
   ListboxValueText as ValueText,

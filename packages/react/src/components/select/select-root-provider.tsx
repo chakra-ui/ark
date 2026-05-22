@@ -1,8 +1,7 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { type JSX, forwardRef } from 'react'
-import type { Assign } from '../../types'
+import type { JSX } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import type { CollectionItem } from '../collection'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -13,12 +12,17 @@ import { SelectProvider } from './use-select-context'
 interface RootProviderProps<T extends CollectionItem> {
   value: UseSelectReturn<T>
 }
+
 export interface SelectRootProviderBaseProps<T extends CollectionItem>
   extends RootProviderProps<T>, UsePresenceProps, PolymorphicProps {}
+
 export interface SelectRootProviderProps<T extends CollectionItem>
   extends HTMLProps<'div'>, SelectRootProviderBaseProps<T> {}
 
-const SelectImpl = <T extends CollectionItem>(props: SelectRootProviderProps<T>, ref: React.Ref<HTMLDivElement>) => {
+export const SelectRootProvider = <T extends CollectionItem>({
+  ref,
+  ...props
+}: SelectRootProviderProps<T>): JSX.Element => {
   const [presenceProps, selectProps] = splitPresenceProps(props)
   const [{ value: select }, localProps] = createSplitProps<RootProviderProps<T>>()(selectProps, ['value'])
   const presence = usePresence(mergeProps({ present: select.open }, presenceProps))
@@ -32,9 +36,3 @@ const SelectImpl = <T extends CollectionItem>(props: SelectRootProviderProps<T>,
     </SelectProvider>
   )
 }
-
-export type SelectRootProviderComponent<P = {}> = <T extends CollectionItem>(
-  props: Assign<SelectRootProviderProps<T>, P> & React.RefAttributes<HTMLDivElement>,
-) => JSX.Element
-
-export const SelectRootProvider = forwardRef(SelectImpl) as SelectRootProviderComponent

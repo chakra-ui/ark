@@ -82,14 +82,11 @@ export {
 export {
   ComboboxRoot as Root,
   type ComboboxRootBaseProps as RootBaseProps,
-  type ComboboxRootComponent as RootComponent,
-  type ComboboxRootComponentProps as RootComponentProps,
   type ComboboxRootProps as RootProps,
 } from './combobox-root'
 export {
   ComboboxRootProvider as RootProvider,
   type ComboboxRootProviderBaseProps as RootProviderBaseProps,
-  type ComboboxRootProviderComponent as RootProviderComponent,
   type ComboboxRootProviderProps as RootProviderProps,
 } from './combobox-root-provider'
 export {

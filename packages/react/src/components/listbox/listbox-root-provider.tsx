@@ -1,8 +1,7 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { type JSX, forwardRef } from 'react'
-import type { Assign } from '../../types'
+import type { JSX } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import type { CollectionItem } from '../collection'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -12,12 +11,17 @@ import { ListboxProvider } from './use-listbox-context'
 interface RootProviderProps<T extends CollectionItem> {
   value: UseListboxReturn<T>
 }
+
 export interface ListboxRootProviderBaseProps<T extends CollectionItem>
   extends RootProviderProps<T>, PolymorphicProps {}
+
 export interface ListboxRootProviderProps<T extends CollectionItem>
   extends HTMLProps<'div'>, ListboxRootProviderBaseProps<T> {}
 
-const ListboxImpl = <T extends CollectionItem>(props: ListboxRootProviderProps<T>, ref: React.Ref<HTMLDivElement>) => {
+export const ListboxRootProvider = <T extends CollectionItem>({
+  ref,
+  ...props
+}: ListboxRootProviderProps<T>): JSX.Element => {
   const [{ value: listbox }, localProps] = createSplitProps<RootProviderProps<T>>()(props, ['value'])
   const mergedProps = mergeProps(listbox.getRootProps(), localProps)
 
@@ -27,9 +31,3 @@ const ListboxImpl = <T extends CollectionItem>(props: ListboxRootProviderProps<T
     </ListboxProvider>
   )
 }
-
-export type ListboxRootProviderComponent<P = {}> = <T extends CollectionItem>(
-  props: Assign<ListboxRootProviderProps<T>, P> & React.RefAttributes<HTMLDivElement>,
-) => JSX.Element
-
-export const ListboxRootProvider = forwardRef(ListboxImpl) as ListboxRootProviderComponent

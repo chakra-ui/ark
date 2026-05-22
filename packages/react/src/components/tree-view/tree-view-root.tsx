@@ -1,8 +1,7 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import { type JSX, forwardRef } from 'react'
-import type { Assign } from '../../types'
+import type { JSX } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import {
   type RenderStrategyProps,
@@ -18,7 +17,7 @@ export interface TreeViewRootBaseProps<T extends TreeNode>
   extends UseTreeViewProps<T>, RenderStrategyProps, PolymorphicProps {}
 export interface TreeViewRootProps<T extends TreeNode> extends HTMLProps<'div'>, TreeViewRootBaseProps<T> {}
 
-const TreeViewImpl = <T extends TreeNode>(props: TreeViewRootProps<T>, ref: React.Ref<HTMLDivElement>) => {
+export const TreeViewRoot = <T extends TreeNode>({ ref, ...props }: TreeViewRootProps<T>): JSX.Element => {
   const [renderStrategyProps, treeViewProps] = splitRenderStrategyProps(props)
   const [useTreeViewProps, localProps] = createSplitProps<UseTreeViewProps<T>>()(treeViewProps, [
     'canRename',
@@ -61,10 +60,3 @@ const TreeViewImpl = <T extends TreeNode>(props: TreeViewRootProps<T>, ref: Reac
     </TreeViewProvider>
   )
 }
-
-export type TreeViewRootComponentProps<T extends TreeNode = TreeNode, P = {}> = Assign<TreeViewRootProps<T>, P> &
-  React.RefAttributes<HTMLDivElement>
-
-export type TreeViewRootComponent<P = {}> = <T extends TreeNode>(props: TreeViewRootComponentProps<T, P>) => JSX.Element
-
-export const TreeViewRoot = forwardRef(TreeViewImpl) as TreeViewRootComponent

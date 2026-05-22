@@ -25,18 +25,11 @@ export {
 } from './listbox-item-indicator'
 export { ListboxItemText, type ListboxItemTextBaseProps, type ListboxItemTextProps } from './listbox-item-text'
 export { ListboxLabel, type ListboxLabelBaseProps, type ListboxLabelProps } from './listbox-label'
-export {
-  ListboxRoot,
-  type ListboxRootBaseProps,
-  type ListboxRootProps,
-  type ListboxRootComponent,
-  type ListboxRootComponentProps,
-} from './listbox-root'
+export { ListboxRoot, type ListboxRootBaseProps, type ListboxRootProps } from './listbox-root'
 export {
   ListboxRootProvider,
   type ListboxRootProviderBaseProps,
   type ListboxRootProviderProps,
-  type ListboxRootProviderComponent,
 } from './listbox-root-provider'
 export { ListboxValueText, type ListboxValueTextBaseProps, type ListboxValueTextProps } from './listbox-value-text'
 export { listboxAnatomy } from './listbox.anatomy'
