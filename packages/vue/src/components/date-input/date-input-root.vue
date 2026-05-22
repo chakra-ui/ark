@@ -23,6 +23,7 @@ import { DateInputProvider } from './use-date-input-context'
 
 const props = withDefaults(defineProps<DateInputRootProps>(), {
   disabled: undefined,
+  hideTimeZone: undefined,
   invalid: undefined,
   readOnly: undefined,
   required: undefined,

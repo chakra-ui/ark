@@ -34,6 +34,7 @@
       'required',
       'selectionMode',
       'timeZone',
+      'hideTimeZone',
       'translations',
       'value',
       'defaultValue',

@@ -13,6 +13,7 @@ import RangeExample from './examples/range.vue'
 import ReadOnlyExample from './examples/read-only.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import RTLExample from './examples/rtl.vue'
+import TimeZoneExample from './examples/time-zone.vue'
 import WithClearButtonExample from './examples/with-clear-button.vue'
 import WithDatePickerExample from './examples/with-date-picker.vue'
 
@@ -109,6 +110,13 @@ export const RootProvider = {
 export const RTL = {
   render: () => ({
     components: { Component: RTLExample },
+    template: '<Component />',
+  }),
+}
+
+export const TimeZone = {
+  render: () => ({
+    components: { Component: TimeZoneExample },
     template: '<Component />',
   }),
 }

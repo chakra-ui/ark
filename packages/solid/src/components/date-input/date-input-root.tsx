@@ -25,6 +25,7 @@ export const DateInputRoot = (props: DateInputRootProps) => {
     'required',
     'selectionMode',
     'timeZone',
+    'hideTimeZone',
     'translations',
     'value',
     'defaultValue',

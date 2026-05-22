@@ -1,4 +1,4 @@
-import { parseDate } from '@internationalized/date'
+import { parseDate, parseZonedDateTime } from '@internationalized/date'
 import { render, screen } from '@testing-library/vue'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
@@ -58,6 +58,27 @@ describe('Date Input', () => {
     render(ComponentUnderTest, { props: { name: 'date', defaultValue: [parseDate('2024-06-15')] } })
     const hiddenInput = document.querySelector('input[type="hidden"]')
     expect(hiddenInput).toHaveValue('6/15/2024')
+  })
+
+  it('should render timeZoneName segment for ZonedDateTime values', () => {
+    render(ComponentUnderTest, {
+      props: {
+        defaultValue: [parseZonedDateTime('2025-02-03T08:45:00[America/Los_Angeles]')],
+        granularity: 'minute',
+      },
+    })
+    expect(document.querySelector('[data-type="timeZoneName"]')).toBeInTheDocument()
+  })
+
+  it('should hide timeZoneName segment when hideTimeZone is true', () => {
+    render(ComponentUnderTest, {
+      props: {
+        defaultValue: [parseZonedDateTime('2025-02-03T08:45:00[America/Los_Angeles]')],
+        granularity: 'minute',
+        hideTimeZone: true,
+      },
+    })
+    expect(document.querySelector('[data-type="timeZoneName"]')).not.toBeInTheDocument()
   })
 
   it('should sync hidden input values for range selection by index', () => {

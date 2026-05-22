@@ -33,6 +33,7 @@ export const DateInputRoot = forwardRef<HTMLDivElement, DateInputRootProps>((pro
     'required',
     'selectionMode',
     'timeZone',
+    'hideTimeZone',
     'translations',
     'value',
     'defaultValue',

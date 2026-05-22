@@ -15,6 +15,11 @@ export interface RootProps {
    */
   granularity?: dateInput.Props['granularity']
   /**
+   * Whether to hide the time zone segment when the value is a `ZonedDateTime`.
+   * @default false
+   */
+  hideTimeZone?: boolean
+  /**
    * The hour cycle used for formatting time segments.
    */
   hourCycle?: dateInput.Props['hourCycle']
