@@ -541,6 +541,13 @@ import * as Toast_PromiseToast from '@examples/toast/examples/promise-toast'
 import * as Toast_Types from '@examples/toast/examples/types'
 import * as Toast_Update from '@examples/toast/examples/update'
 import * as Toast_VaryingHeight from '@examples/toast/examples/varying-height'
+import * as Toc_Basic from '@examples/toc/examples/basic'
+import * as Toc_Nested from '@examples/toc/examples/nested'
+import * as Toc_RootProvider from '@examples/toc/examples/root-provider'
+import * as Toc_WithCollapsible from '@examples/toc/examples/with-collapsible'
+import * as Toc_WithHover from '@examples/toc/examples/with-hover'
+import * as Toc_WithIndicator from '@examples/toc/examples/with-indicator'
+import * as Toc_WithTreeView from '@examples/toc/examples/with-tree-view'
 import * as ToggleGroup_Basic from '@examples/toggle-group/examples/basic'
 import * as ToggleGroup_Controlled from '@examples/toggle-group/examples/controlled'
 import * as ToggleGroup_Multiple from '@examples/toggle-group/examples/multiple'
@@ -1137,6 +1144,13 @@ const exampleModules: Record<string, ExampleModule> = {
   'toast/types': Toast_Types,
   'toast/update': Toast_Update,
   'toast/varying-height': Toast_VaryingHeight,
+  'toc/basic': Toc_Basic,
+  'toc/nested': Toc_Nested,
+  'toc/root-provider': Toc_RootProvider,
+  'toc/with-collapsible': Toc_WithCollapsible,
+  'toc/with-hover': Toc_WithHover,
+  'toc/with-indicator': Toc_WithIndicator,
+  'toc/with-tree-view': Toc_WithTreeView,
   'toggle-group/basic': ToggleGroup_Basic,
   'toggle-group/controlled': ToggleGroup_Controlled,
   'toggle-group/multiple': ToggleGroup_Multiple,

@@ -1,10 +1,12 @@
-import { dirname, resolve } from 'node:path'
+import { createHash } from 'node:crypto'
+import { dirname, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { mergeConfig } from 'vite'
 
 import type { StorybookConfig } from 'storybook-solidjs-vite'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
+const stylesDir = resolve(__dirname, '../../../.storybook/modules')
 
 export default {
   framework: 'storybook-solidjs-vite',
@@ -19,7 +21,15 @@ export default {
       },
       resolve: {
         alias: {
-          styles: resolve(__dirname, '../../../.storybook/modules'),
+          styles: stylesDir,
+        },
+      },
+      css: {
+        modules: {
+          generateScopedName: (name: string, filename: string) => {
+            const hash = createHash('md5').update(relative(stylesDir, filename)).digest('hex').slice(0, 5)
+            return `_${name}_${hash}`
+          },
         },
       },
     })
