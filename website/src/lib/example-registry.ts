@@ -124,6 +124,7 @@ import * as DateInput_Range from '@examples/date-input/examples/range'
 import * as DateInput_ReadOnly from '@examples/date-input/examples/read-only'
 import * as DateInput_RootProvider from '@examples/date-input/examples/root-provider'
 import * as DateInput_Rtl from '@examples/date-input/examples/rtl'
+import * as DateInput_TimeZone from '@examples/date-input/examples/time-zone'
 import * as DateInput_WithClearButton from '@examples/date-input/examples/with-clear-button'
 import * as DateInput_WithDatePicker from '@examples/date-input/examples/with-date-picker'
 import * as DatePicker_Basic from '@examples/date-picker/examples/basic'
@@ -720,6 +721,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'date-input/read-only': DateInput_ReadOnly,
   'date-input/root-provider': DateInput_RootProvider,
   'date-input/rtl': DateInput_Rtl,
+  'date-input/time-zone': DateInput_TimeZone,
   'date-input/with-clear-button': DateInput_WithClearButton,
   'date-input/with-date-picker': DateInput_WithDatePicker,
   'date-picker/basic': DatePicker_Basic,

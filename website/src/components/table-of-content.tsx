@@ -30,9 +30,24 @@ export const TableOfContent = (props: Props) => {
   const activeItem = useScrollSpy(entries.map((entry) => entry.url))
   const router = useRouter()
   const [{ y }] = useWindowScroll()
+  const navRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    if (!activeItem || !navRef.current) return
+    const scroller = navRef.current.parentElement
+    const scrollActiveIntoView = () => {
+      const link = navRef.current?.querySelector<HTMLElement>(`a[href='${activeItem}']`)
+      link?.scrollIntoView({ block: 'nearest' })
+    }
+    scrollActiveIntoView()
+    if (!scroller) return
+    const observer = new ResizeObserver(scrollActiveIntoView)
+    observer.observe(scroller)
+    return () => observer.disconnect()
+  }, [activeItem])
 
   return (
-    <nav>
+    <nav ref={navRef}>
       <Text textStyle="sm" fontWeight="semibold" py="1.5" borderLeftWidth="1px" ps="4">
         On this page
       </Text>

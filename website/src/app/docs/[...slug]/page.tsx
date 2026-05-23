@@ -53,10 +53,19 @@ export default async function Page(props: Props) {
 
           <DocsFooter nextPage={next} prevPage={prev} />
         </Stack>
-        <Box flexShrink="0" width="14rem" hideBelow="xl">
-          <Box position="fixed" width="14rem">
-            <TableOfContent entries={currentPage.toc} />
-          </Box>
+        <Box
+          className="scroller"
+          flexShrink="0"
+          width="14rem"
+          hideBelow="xl"
+          position="sticky"
+          top="20"
+          alignSelf="flex-start"
+          maxH="calc(100dvh - 100px)"
+          overflowY="auto"
+          overscrollBehavior="contain"
+        >
+          <TableOfContent entries={currentPage.toc} />
         </Box>
       </Container>
     )
