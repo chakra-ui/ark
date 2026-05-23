@@ -12,6 +12,7 @@ import RangeExample from './examples/range.svelte'
 import ReadOnlyExample from './examples/read-only.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import RTLExample from './examples/rtl.svelte'
+import TimeOnlyExample from './examples/time-only.svelte'
 import TimeZoneExample from './examples/time-zone.svelte'
 import WithClearButtonExample from './examples/with-clear-button.svelte'
 import WithDatePickerExample from './examples/with-date-picker.svelte'
@@ -97,6 +98,12 @@ export const RootProvider = {
 export const RTL = {
   render: () => ({
     Component: RTLExample,
+  }),
+}
+
+export const TimeOnly = {
+  render: () => ({
+    Component: TimeOnlyExample,
   }),
 }
 

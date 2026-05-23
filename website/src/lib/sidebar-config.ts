@@ -44,7 +44,7 @@ export const sidebarConfig: SidebarGroupConfig[] = [
       { id: 'collapsible' },
       { id: 'color-picker' },
       { id: 'combobox' },
-      // { id: 'date-input' },
+      { id: 'date-input' },
       { id: 'date-picker' },
       { id: 'dialog' },
       { id: 'drawer' },

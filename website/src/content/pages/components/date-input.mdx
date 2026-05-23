@@ -2,6 +2,7 @@
 id: date-input
 title: Date Input
 description: A segment-based date input that allows users to enter dates by navigating individual date parts.
+status: Preview
 ---
 
 <ComponentPreview id="DateInput" />
@@ -51,6 +52,13 @@ Use the `granularity` prop to control which date fields are displayed. Supported
 `second`.
 
 <Example id="granularity" />
+
+### Time Only
+
+To create a time-only input, set `granularity` to `minute` (or `second`) and provide a `formatter` that only includes
+time fields. Use the `hourCycle` prop to switch between 12 and 24 hour formats.
+
+<Example id="time-only" />
 
 ### Range
 
