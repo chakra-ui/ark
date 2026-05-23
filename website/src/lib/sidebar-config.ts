@@ -47,7 +47,7 @@ export const sidebarConfig: SidebarGroupConfig[] = [
       // { id: 'date-input' },
       { id: 'date-picker' },
       { id: 'dialog' },
-      // { id: 'drawer' },
+      { id: 'drawer' },
       { id: 'editable' },
       { id: 'field' },
       { id: 'fieldset' },
