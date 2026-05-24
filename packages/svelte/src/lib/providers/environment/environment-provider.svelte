@@ -2,7 +2,7 @@
   import { getDocument, getWindow } from '@zag-js/dom-query'
   import type { MaybeFunction } from '@zag-js/utils'
   import type { Snippet } from 'svelte'
-  import type { RootNode, UseEnvironmentContext } from './use-environment-context'
+  import type { RootNode, UseEnvironmentContext } from './use-environment-context.ts'
 
   export interface EnvironmentProviderProps {
     /**
@@ -18,7 +18,7 @@
 
 <script lang="ts">
   import { runIfFn } from '$lib/utils/run-if-fn'
-  import { EnvironmentContextProvider } from './use-environment-context'
+  import { EnvironmentContextProvider } from './use-environment-context.ts'
 
   const { value, children }: EnvironmentProviderProps = $props()
   let spanRef: HTMLSpanElement | null = $state(null)

@@ -1,7 +1,7 @@
 <script lang="ts">
-import type { RenderStrategyProps } from '../../utils/use-render-strategy'
-import type { UseFloatingPanelReturn } from './use-floating-panel'
-import type { RootEmits as PresenceEmits } from '../presence/presence.types'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import type { UseFloatingPanelReturn } from './use-floating-panel.ts'
+import type { RootEmits as PresenceEmits } from '../presence/presence.types.ts'
 
 export interface FloatingPanelRootProviderBaseProps extends RenderStrategyProps {
   value: UnwrapRef<UseFloatingPanelReturn>
@@ -12,9 +12,9 @@ export interface FloatingPanelRootProviderEmits extends PresenceEmits {}
 
 <script setup lang="ts">
 import { computed, type UnwrapRef } from 'vue'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { PresenceProvider, usePresence } from '../presence'
-import { FloatingPanelProvider } from './use-floating-panel-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { FloatingPanelProvider } from './use-floating-panel-context.ts'
 
 const props = defineProps<FloatingPanelRootProviderProps>()
 const emits = defineEmits<FloatingPanelRootProviderEmits>()

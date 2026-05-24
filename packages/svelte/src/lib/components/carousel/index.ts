@@ -56,8 +56,8 @@ export {
   type CarouselRootProviderBaseProps,
   type CarouselRootProviderProps,
 } from './carousel-root-provider.svelte'
-export { carouselAnatomy } from './carousel.anatomy'
-export { useCarousel, type UseCarouselProps, type UseCarouselReturn } from './use-carousel.svelte'
-export { useCarouselContext, type UseCarouselContext } from './use-carousel-context'
+export { carouselAnatomy } from './carousel.anatomy.ts'
+export { useCarousel, type UseCarouselProps, type UseCarouselReturn } from './use-carousel.svelte.ts'
+export { useCarouselContext, type UseCarouselContext } from './use-carousel-context.ts'
 
-export * as Carousel from './carousel'
+export * as Carousel from './carousel.ts'

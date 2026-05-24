@@ -1,17 +1,17 @@
 export type { ValueChangeDetails } from '@zag-js/toggle-group'
-export { ToggleGroupContext as Context, type ToggleGroupContextProps as ContextProps } from './toggle-group-context'
+export { ToggleGroupContext as Context, type ToggleGroupContextProps as ContextProps } from './toggle-group-context.tsx'
 export {
   ToggleGroupItem as Item,
   type ToggleGroupItemBaseProps as ItemBaseProps,
   type ToggleGroupItemProps as ItemProps,
-} from './toggle-group-item'
+} from './toggle-group-item.tsx'
 export {
   ToggleGroupRoot as Root,
   type ToggleGroupRootBaseProps as RootBaseProps,
   type ToggleGroupRootProps as RootProps,
-} from './toggle-group-root'
+} from './toggle-group-root.tsx'
 export {
   ToggleGroupRootProvider as RootProvider,
   type ToggleGroupRootProviderBaseProps as RootProviderBaseProps,
   type ToggleGroupRootProviderProps as RootProviderProps,
-} from './toggle-group-root-provider'
+} from './toggle-group-root-provider.tsx'

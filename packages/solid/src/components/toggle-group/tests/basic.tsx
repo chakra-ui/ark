@@ -1,4 +1,4 @@
-import { ToggleGroup } from '../'
+import { ToggleGroup } from '../index.tsx'
 
 export const ComponentUnderTest = (props: ToggleGroup.RootProps) => (
   <ToggleGroup.Root {...props}>

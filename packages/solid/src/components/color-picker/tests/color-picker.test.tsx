@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { ColorPicker, parseColor } from '../'
-import { Field } from '../../field'
-import { ComponentUnderTest } from './basic'
+import { ColorPicker, parseColor } from '../index.tsx'
+import { Field } from '../../field/index.tsx'
+import { ComponentUnderTest } from './basic.tsx'
 
 describe('ColorPicker', () => {
   it('should be able to lazy mount', async () => {

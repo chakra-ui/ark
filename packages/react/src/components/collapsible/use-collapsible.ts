@@ -3,9 +3,9 @@
 import * as collapsible from '@zag-js/collapsible'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId, useRef } from 'react'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
-import type { RenderStrategyProps } from '../../utils/render-strategy'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { Optional } from '../../types.ts'
+import type { RenderStrategyProps } from '../../utils/render-strategy.ts'
 
 export interface UseCollapsibleProps
   extends Optional<Omit<collapsible.Props, 'dir' | 'getRootNode'>, 'id'>, RenderStrategyProps {}

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface TourControlBaseProps extends PolymorphicProps {}
 export interface TourControlProps
@@ -13,9 +13,9 @@ export interface TourControlProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { tourAnatomy } from './tour.anatomy'
+import { ark } from '../factory.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { tourAnatomy } from './tour.anatomy.ts'
 
 defineProps<TourControlProps>()
 

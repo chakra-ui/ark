@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UsePaginationContext, usePaginationContext } from './use-pagination-context'
+import { type UsePaginationContext, usePaginationContext } from './use-pagination-context.ts'
 
 export interface PaginationContextProps {
   children: (context: UsePaginationContext) => ReactNode

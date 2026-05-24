@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { LabelHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface DatePickerLabelBaseProps extends PolymorphicProps {}
 export interface DatePickerLabelProps
@@ -13,9 +13,9 @@ export interface DatePickerLabelProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useDatePickerContext } from './use-date-picker-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useDatePickerContext } from './use-date-picker-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<DatePickerLabelProps>()
 const datePicker = useDatePickerContext()

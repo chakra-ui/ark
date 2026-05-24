@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseProgressContext } from './use-progress-context'
+import type { UseProgressContext } from './use-progress-context.ts'
 
 export interface ProgressContextProps extends SlotsType<{
   default: UnwrapRef<UseProgressContext>
@@ -8,7 +8,7 @@ export interface ProgressContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useProgressContext } from './use-progress-context'
+import { useProgressContext } from './use-progress-context.ts'
 
 const progress = useProgressContext()
 

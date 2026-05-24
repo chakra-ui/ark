@@ -3,11 +3,11 @@
 import type { LinkProps } from '@zag-js/navigation-menu'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useNavigationMenuContext } from './use-navigation-menu-context'
-import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
+import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context.ts'
 
 export interface NavigationMenuLinkBaseProps extends Partial<LinkProps>, PolymorphicProps {}
 export interface NavigationMenuLinkProps extends Assign<HTMLProps<'a'>, NavigationMenuLinkBaseProps> {}

@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useProgressContext } from './use-progress-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useProgressContext } from './use-progress-context.ts'
 
 export interface ProgressCircleTrackBaseProps extends PolymorphicProps {}
 export interface ProgressCircleTrackProps extends HTMLProps<'circle'>, ProgressCircleTrackBaseProps {}

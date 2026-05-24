@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
 import type { ItemProps } from '@zag-js/navigation-menu'
 import { createMemo } from 'solid-js'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useNavigationMenuContext } from './use-navigation-menu-context'
-import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context'
-import type { Assign } from '../../types'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
+import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context.ts'
+import type { Assign } from '../../types.ts'
 
 export interface NavigationMenuTriggerBaseProps extends Omit<ItemProps, 'value'>, PolymorphicProps<'button'> {}
 export interface NavigationMenuTriggerProps extends Assign<HTMLProps<'button'>, NavigationMenuTriggerBaseProps> {}

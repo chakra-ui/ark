@@ -7,8 +7,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useDialogContext } from './use-dialog-context'
+  import { Ark } from '../factory/index.ts'
+  import { useDialogContext } from './use-dialog-context.ts'
 
   let { ref = $bindable(null), ...props }: DialogDescriptionProps = $props()
 

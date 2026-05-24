@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js'
-import { type UseStepsItemContext, useStepsItemContext } from './use-steps-item-context'
+import { type UseStepsItemContext, useStepsItemContext } from './use-steps-item-context.ts'
 
 export interface StepsItemContextProps {
   children: (context: UseStepsItemContext) => JSX.Element

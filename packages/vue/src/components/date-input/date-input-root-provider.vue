@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseDateInputReturn } from './use-date-input'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseDateInputReturn } from './use-date-input.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseDateInputReturn>
@@ -19,9 +19,9 @@ export interface DateInputRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { DateInputProvider } from './use-date-input-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { DateInputProvider } from './use-date-input-context.ts'
 
 const props = defineProps<DateInputRootProviderProps>()
 

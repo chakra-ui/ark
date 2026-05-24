@@ -94,8 +94,8 @@ export {
   type FloatingPanelControlBaseProps,
 } from './floating-panel-control.vue'
 
-export { useFloatingPanel, type UseFloatingPanelProps, type UseFloatingPanelReturn } from './use-floating-panel'
-export { useFloatingPanelContext, type UseFloatingPanelContext } from './use-floating-panel-context'
-export { floatingPanelAnatomy } from './floating-panel.anatomy'
+export { useFloatingPanel, type UseFloatingPanelProps, type UseFloatingPanelReturn } from './use-floating-panel.ts'
+export { useFloatingPanelContext, type UseFloatingPanelContext } from './use-floating-panel-context.ts'
+export { floatingPanelAnatomy } from './floating-panel.anatomy.ts'
 
-export * as FloatingPanel from './floating-panel'
+export * as FloatingPanel from './floating-panel.ts'

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { PinInput, type PinInputRootEmits, type PinInputRootProps } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { PinInput, type PinInputRootEmits, type PinInputRootProps } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<PinInputRootProps>()
 const emits = defineEmits<PinInputRootEmits>()

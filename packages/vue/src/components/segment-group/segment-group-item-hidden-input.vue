@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { InputHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface SegmentGroupItemHiddenInputBaseProps extends PolymorphicProps {}
 export interface SegmentGroupItemHiddenInputProps
@@ -13,10 +13,10 @@ export interface SegmentGroupItemHiddenInputProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useSegmentGroupContext } from './use-segment-group-context'
-import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useSegmentGroupContext } from './use-segment-group-context.ts'
+import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<SegmentGroupItemHiddenInputProps>()
 

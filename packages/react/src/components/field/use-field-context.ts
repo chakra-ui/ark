@@ -1,7 +1,7 @@
 'use client'
 
-import { createContext } from '../../utils/create-context'
-import type { UseFieldReturn } from './use-field'
+import { createContext } from '../../utils/create-context.ts'
+import type { UseFieldReturn } from './use-field.ts'
 
 export interface UseFieldContext extends UseFieldReturn {}
 

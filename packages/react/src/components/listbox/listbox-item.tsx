@@ -3,11 +3,11 @@
 import type { ItemProps } from '@zag-js/listbox'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useListboxContext } from './use-listbox-context'
-import { ListboxItemProvider } from './use-listbox-item-context'
-import { ListboxItemPropsProvider } from './use-listbox-item-props-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useListboxContext } from './use-listbox-context.ts'
+import { ListboxItemProvider } from './use-listbox-item-context.ts'
+import { ListboxItemPropsProvider } from './use-listbox-item-props-context.ts'
 
 export interface ListboxItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface ListboxItemProps extends HTMLProps<'div'>, ListboxItemBaseProps {}

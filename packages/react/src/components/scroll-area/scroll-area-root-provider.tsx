@@ -2,10 +2,10 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseScrollAreaReturn } from './use-scroll-area'
-import { ScrollAreaProvider } from './use-scroll-area-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import type { UseScrollAreaReturn } from './use-scroll-area.ts'
+import { ScrollAreaProvider } from './use-scroll-area-context.ts'
 
 interface RootProviderProps {
   value: UseScrollAreaReturn

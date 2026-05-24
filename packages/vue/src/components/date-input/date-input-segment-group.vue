@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { SegmentGroupProps } from '@zag-js/date-input'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface DateInputSegmentGroupBaseProps extends PolymorphicProps, SegmentGroupProps {}
 export interface DateInputSegmentGroupProps
@@ -15,10 +15,10 @@ export interface DateInputSegmentGroupProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { useDateInputContext } from './use-date-input-context'
-import { DateInputSegmentGroupPropsProvider } from './use-date-input-segment-group-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useDateInputContext } from './use-date-input-context.ts'
+import { DateInputSegmentGroupPropsProvider } from './use-date-input-segment-group-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<DateInputSegmentGroupProps>()
 const dateInput = useDateInputContext()

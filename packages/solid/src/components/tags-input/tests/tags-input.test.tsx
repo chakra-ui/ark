@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { ComponentUnderTest, TagsInputWithField } from './basic'
+import { ComponentUnderTest, TagsInputWithField } from './basic.tsx'
 
 describe('TagsInput', () => {
   it('should allow to add a new item', async () => {

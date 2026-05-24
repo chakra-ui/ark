@@ -10,9 +10,9 @@
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { useRenderStrategyPropsContext } from '$lib/utils/render-strategy'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence'
-  import { useTabsContext } from './use-tabs-context'
+  import { Ark } from '../factory/index.ts'
+  import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence/index.ts'
+  import { useTabsContext } from './use-tabs-context.ts'
 
   let { ref = $bindable(null), ...props }: TabsContentProps = $props()
   const [contentProps, localProps] = $derived(createSplitProps<ContentProps>()(props, ['value']))

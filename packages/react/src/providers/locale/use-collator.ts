@@ -1,7 +1,7 @@
 'use client'
 
 import { createCollator } from '@zag-js/i18n-utils'
-import { useLocaleContext } from './use-locale-context'
+import { useLocaleContext } from './use-locale-context.ts'
 import { useMemo } from 'react'
 
 export interface UseCollatorProps extends Intl.CollatorOptions {

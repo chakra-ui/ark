@@ -1,6 +1,6 @@
 import type { Accessor } from '$lib/types'
 import { getInteractionModality, trackInteractionModality, type Modality } from '@zag-js/focus-visible'
-import { useEnvironmentContext } from '../environment'
+import { useEnvironmentContext } from '../environment/index.ts'
 
 export type { Modality }
 

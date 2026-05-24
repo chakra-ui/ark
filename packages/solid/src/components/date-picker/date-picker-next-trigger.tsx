@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useDatePickerContext } from './use-date-picker-context'
-import { useDatePickerViewContext } from './use-date-picker-view-props-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useDatePickerContext } from './use-date-picker-context.ts'
+import { useDatePickerViewContext } from './use-date-picker-view-props-context.ts'
 
 export interface DatePickerNextTriggerBaseProps extends PolymorphicProps<'button'> {}
 export interface DatePickerNextTriggerProps extends HTMLProps<'button'>, DatePickerNextTriggerBaseProps {}

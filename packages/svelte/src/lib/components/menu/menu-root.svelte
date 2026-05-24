@@ -1,7 +1,7 @@
 <script module lang="ts">
   import { onMount, type Snippet } from 'svelte'
-  import type { UsePresenceProps } from '../presence'
-  import type { UseMenuProps } from './use-menu.svelte'
+  import type { UsePresenceProps } from '../presence/index.ts'
+  import type { UseMenuProps } from './use-menu.svelte.ts'
 
   export interface MenuRootBaseProps extends UseMenuProps, UsePresenceProps {
     children?: Snippet
@@ -11,11 +11,11 @@
 
 <script lang="ts">
   import { createSplitProps } from '$lib/utils/create-split-props'
-  import { PresenceProvider, splitPresenceProps, usePresence } from '../presence'
-  import { MenuProvider, useMenuContext } from './use-menu-context'
-  import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context'
-  import { MenuTriggerItemProvider } from './use-menu-trigger-item-context'
-  import { useMenu } from './use-menu.svelte'
+  import { PresenceProvider, splitPresenceProps, usePresence } from '../presence/index.ts'
+  import { MenuProvider, useMenuContext } from './use-menu-context.ts'
+  import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context.ts'
+  import { MenuTriggerItemProvider } from './use-menu-trigger-item-context.ts'
+  import { useMenu } from './use-menu.svelte.ts'
 
   let { open = $bindable<boolean>(), ...props }: MenuRootProps = $props()
   const providedId = $props.id()

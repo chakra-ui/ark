@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { CheckIcon, ClipboardCopyIcon } from 'lucide-react'
 import { axe } from 'vitest-axe'
-import { Clipboard } from '../'
+import { Clipboard } from '../index.ts'
 
 const ComponentUnderTest = () => (
   <Clipboard.Root value="https://ark-ui.com">

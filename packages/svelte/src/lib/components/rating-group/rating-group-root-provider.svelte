@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseRatingGroupReturn } from './use-rating-group.svelte'
+  import type { UseRatingGroupReturn } from './use-rating-group.svelte.ts'
 
   interface RootProviderProps {
     value: UseRatingGroupReturn
@@ -12,8 +12,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { RatingGroupProvider } from './use-rating-group-context'
+  import { Ark } from '../factory/index.ts'
+  import { RatingGroupProvider } from './use-rating-group-context.ts'
 
   let { ref = $bindable(null), value, ...props }: RatingGroupRootProviderProps = $props()
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))

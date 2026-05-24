@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import { useTabsContext, type UseTabsContext } from './use-tabs-context'
+  import { useTabsContext, type UseTabsContext } from './use-tabs-context.ts'
 
   export interface TabsContextProps {
     render: Snippet<[UseTabsContext]>

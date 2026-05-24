@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
-import type { UseDatePickerReturn } from './use-date-picker'
-import { DatePickerProvider } from './use-date-picker-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.tsx'
+import type { UseDatePickerReturn } from './use-date-picker.ts'
+import { DatePickerProvider } from './use-date-picker-context.ts'
 
 interface RootProviderProps {
   value: UseDatePickerReturn

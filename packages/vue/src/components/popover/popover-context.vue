@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UsePopoverContext } from './use-popover-context'
+import type { UsePopoverContext } from './use-popover-context.ts'
 
 export interface PopoverContextProps extends SlotsType<{
   default: UnwrapRef<UsePopoverContext>
@@ -8,7 +8,7 @@ export interface PopoverContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { usePopoverContext } from './use-popover-context'
+import { usePopoverContext } from './use-popover-context.ts'
 
 const popover = usePopoverContext()
 

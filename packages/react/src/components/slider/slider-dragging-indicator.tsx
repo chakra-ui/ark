@@ -2,9 +2,9 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useSliderContext } from './use-slider-context'
-import { useSliderThumbPropsContext } from './use-slider-thumb-props-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useSliderContext } from './use-slider-context.ts'
+import { useSliderThumbPropsContext } from './use-slider-thumb-props-context.ts'
 
 export interface SliderDraggingIndicatorBaseProps extends PolymorphicProps {}
 export interface SliderDraggingIndicatorProps extends HTMLProps<'span'>, SliderDraggingIndicatorBaseProps {}

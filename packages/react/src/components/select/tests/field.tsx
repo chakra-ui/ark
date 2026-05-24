@@ -1,5 +1,5 @@
-import { Field } from '../../field'
-import { Select, createListCollection } from '../'
+import { Field } from '../../field/index.ts'
+import { Select, createListCollection } from '../index.ts'
 
 export const SelectWithField = (props: Field.RootProps) => {
   const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })

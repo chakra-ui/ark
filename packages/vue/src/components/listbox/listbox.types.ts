@@ -1,5 +1,5 @@
 import type * as listbox from '@zag-js/listbox'
-import type { CollectionItem, ListCollection } from '../collection'
+import type { CollectionItem, ListCollection } from '../collection/index.ts'
 
 export interface RootProps<T extends CollectionItem> {
   /**

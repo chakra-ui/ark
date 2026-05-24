@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
-import { composeRefs } from '../../utils/compose-refs'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresenceContext } from '../presence'
-import { useDatePickerContext } from './use-date-picker-context'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { usePresenceContext } from '../presence/index.tsx'
+import { useDatePickerContext } from './use-date-picker-context.ts'
 
 export interface DatePickerContentBaseProps extends PolymorphicProps<'div'> {}
 export interface DatePickerContentProps extends HTMLProps<'div'>, DatePickerContentBaseProps {}

@@ -8,10 +8,10 @@
 <script lang="ts">
   import { useRenderStrategyPropsContext } from '$lib/utils/render-strategy'
   import { mergeProps } from '@zag-js/svelte'
-  import { Collapsible } from '../collapsible'
-  import { useTreeViewContext } from './use-tree-view-context'
-  import { useTreeViewNodeContext } from './use-tree-view-node-context'
-  import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
+  import { Collapsible } from '../collapsible/index.ts'
+  import { useTreeViewContext } from './use-tree-view-context.ts'
+  import { useTreeViewNodeContext } from './use-tree-view-node-context.ts'
+  import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
 
   let { ref = $bindable(null), ...props }: TreeViewBranchProps = $props()
 

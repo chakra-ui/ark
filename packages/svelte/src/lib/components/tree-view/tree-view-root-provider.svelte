@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { Snippet } from 'svelte'
-  import type { TreeNode } from '../collection'
-  import type { UseTreeViewReturn } from './use-tree-view.svelte'
+  import type { TreeNode } from '../collection/index.ts'
+  import type { UseTreeViewReturn } from './use-tree-view.svelte.ts'
 
   export interface TreeViewRootProviderBaseProps<T extends TreeNode>
     extends RenderStrategyProps, PolymorphicProps<'div'>, RefAttribute {
@@ -25,8 +25,8 @@
     type RenderStrategyProps,
   } from '$lib/utils/render-strategy'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { TreeViewProvider } from './use-tree-view-context'
+  import { Ark } from '../factory/index.ts'
+  import { TreeViewProvider } from './use-tree-view-context.ts'
 
   let { ref = $bindable(null), value, ...props }: TreeViewRootProviderProps<T> = $props()
 

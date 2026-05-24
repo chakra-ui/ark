@@ -2,12 +2,12 @@
 
 import { mergeProps } from '@zag-js/react'
 import type { ReactNode } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import type { UsePresenceProps } from '../presence'
-import { PresenceProvider, usePresence } from '../presence'
-import { splitPresenceProps } from '../presence/split-presence-props'
-import { type UseFloatingPanelProps, useFloatingPanel } from './use-floating-panel'
-import { FloatingPanelProvider } from './use-floating-panel-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import type { UsePresenceProps } from '../presence/index.ts'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { splitPresenceProps } from '../presence/split-presence-props.ts'
+import { type UseFloatingPanelProps, useFloatingPanel } from './use-floating-panel.ts'
+import { FloatingPanelProvider } from './use-floating-panel-context.ts'
 
 export interface FloatingPanelRootBaseProps extends UseFloatingPanelProps, UsePresenceProps {}
 export interface FloatingPanelRootProps extends FloatingPanelRootBaseProps {

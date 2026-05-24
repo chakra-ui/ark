@@ -1,7 +1,7 @@
 import { type JSX, splitProps } from 'solid-js'
-import type { HTMLProps, PolymorphicProps } from '../factory'
-import { ark } from '../factory'
-import { type UseDownloadProps, useDownload } from './use-download'
+import type { HTMLProps, PolymorphicProps } from '../factory.tsx'
+import { ark } from '../factory.tsx'
+import { type UseDownloadProps, useDownload } from './use-download.ts'
 
 export interface DownloadTriggerBaseProps extends PolymorphicProps<'button'>, UseDownloadProps {}
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { RatingGroup, type RatingGroupRootEmits, type RatingGroupRootProps } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { RatingGroup, type RatingGroupRootEmits, type RatingGroupRootProps } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<RatingGroupRootProps>()
 const emits = defineEmits<RatingGroupRootEmits>()

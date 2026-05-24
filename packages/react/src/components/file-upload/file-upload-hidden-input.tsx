@@ -2,9 +2,9 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useFieldContext } from '../field'
-import { useFileUploadContext } from './use-file-upload-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useFieldContext } from '../field/index.ts'
+import { useFileUploadContext } from './use-file-upload-context.ts'
 
 export interface FileUploadHiddenInputBaseProps extends PolymorphicProps {}
 export interface FileUploadHiddenInputProps extends HTMLProps<'input'>, FileUploadHiddenInputBaseProps {}

@@ -1,7 +1,7 @@
 <script lang="ts">
-import type { BooleanDefaults } from '../../types'
-import type { RenderStrategyProps } from '../../utils/use-render-strategy'
-import type { RootEmits, RootProps } from './tooltip.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import type { RootEmits, RootProps } from './tooltip.types.ts'
 
 export interface TooltipRootBaseProps extends RootProps, RenderStrategyProps {}
 export interface TooltipRootProps extends TooltipRootBaseProps {}
@@ -10,11 +10,11 @@ export interface TooltipRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { PresenceProvider, usePresence } from '../presence'
-import { useTooltip } from './use-tooltip'
-import { TooltipProvider } from './use-tooltip-context'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { useTooltip } from './use-tooltip.ts'
+import { TooltipProvider } from './use-tooltip-context.ts'
 
 const props = withDefaults(defineProps<TooltipRootProps>(), {
   closeOnClick: undefined,

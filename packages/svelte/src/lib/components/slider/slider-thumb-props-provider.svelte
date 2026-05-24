@@ -9,7 +9,7 @@
 </script>
 
 <script lang="ts">
-  import { SliderThumbPropsProvider } from './use-slider-thumb-props-context'
+  import { SliderThumbPropsProvider } from './use-slider-thumb-props-context.ts'
 
   let { value, children }: SliderThumbPropsProviderProps = $props()
   SliderThumbPropsProvider(() => value)

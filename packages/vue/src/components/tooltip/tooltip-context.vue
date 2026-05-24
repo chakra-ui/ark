@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseTooltipContext } from './use-tooltip-context'
+import type { UseTooltipContext } from './use-tooltip-context.ts'
 
 export interface TooltipContextProps extends SlotsType<{
   default: UnwrapRef<UseTooltipContext>
@@ -8,7 +8,7 @@ export interface TooltipContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useTooltipContext } from './use-tooltip-context'
+import { useTooltipContext } from './use-tooltip-context.ts'
 
 const tooltip = useTooltipContext()
 

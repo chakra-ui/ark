@@ -9,9 +9,9 @@
 </script>
 
 <script lang="ts">
-  import { useMarqueeContext } from './use-marquee-context'
+  import { useMarqueeContext } from './use-marquee-context.ts'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
+  import { Ark } from '../factory/index.ts'
 
   let { ref = $bindable(null), children, ...props }: MarqueeContentProps = $props()
 

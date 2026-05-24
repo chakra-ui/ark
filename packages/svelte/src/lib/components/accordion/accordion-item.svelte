@@ -10,10 +10,10 @@
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { useRenderStrategyPropsContext } from '$lib/utils/render-strategy'
   import { mergeProps } from '@zag-js/svelte'
-  import { CollapsibleRoot } from '../collapsible'
-  import { useAccordionContext } from './use-accordion-context'
-  import { AccordionItemProvider } from './use-accordion-item-context'
-  import { AccordionItemPropsProvider } from './use-accordion-item-props-context'
+  import { CollapsibleRoot } from '../collapsible/index.ts'
+  import { useAccordionContext } from './use-accordion-context.ts'
+  import { AccordionItemProvider } from './use-accordion-item-context.ts'
+  import { AccordionItemPropsProvider } from './use-accordion-item-props-context.ts'
 
   let { ref = $bindable(null), ...props }: AccordionItemProps = $props()
   const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['value', 'disabled']))

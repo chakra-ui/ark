@@ -9,9 +9,9 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { createSplitProps } from '$lib/utils/create-split-props'
-  import { Ark } from '../factory'
-  import { usePresenceContext } from '../presence'
-  import { useDialogContext } from './use-dialog-context'
+  import { Ark } from '../factory/index.ts'
+  import { usePresenceContext } from '../presence/index.ts'
+  import { useDialogContext } from './use-dialog-context.ts'
 
   let { ref = $bindable(null), ...props }: DialogTriggerProps = $props()
   const [triggerProps, localProps] = $derived(createSplitProps<TriggerProps>()(props, ['value']))

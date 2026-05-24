@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Tabs, type TabsRootEmits, type TabsRootProps } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { Tabs, type TabsRootEmits, type TabsRootProps } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<TabsRootProps>()
 const emits = defineEmits<TabsRootEmits>()

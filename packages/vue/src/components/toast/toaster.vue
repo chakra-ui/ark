@@ -2,10 +2,10 @@
 import * as toast from '@zag-js/toast'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { type HTMLAttributes, type SlotsType, type VNodeChild, computed, useId } from 'vue'
-import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { type PolymorphicProps, ark } from '../factory'
-import type { CreateToasterReturn } from './create-toaster'
+import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { type PolymorphicProps, ark } from '../factory.ts'
+import type { CreateToasterReturn } from './create-toaster.ts'
 import ToasterItem from './toaster-item.vue'
 
 export type ToastOptions = toast.Options<VNodeChild>

@@ -60,11 +60,11 @@ export {
   type NavigationMenuViewportPositionerBaseProps,
   type NavigationMenuViewportPositionerProps,
 } from './navigation-menu-viewport-positioner.svelte'
-export { navigationMenuAnatomy } from './navigation-menu.anatomy'
+export { navigationMenuAnatomy } from './navigation-menu.anatomy.ts'
 export {
   useNavigationMenu,
   type UseNavigationMenuProps,
   type UseNavigationMenuReturn,
-} from './use-navigation-menu.svelte'
-export { useNavigationMenuContext, type UseNavigationMenuContext } from './use-navigation-menu-context'
-export * as NavigationMenu from './navigation-menu'
+} from './use-navigation-menu.svelte.ts'
+export { useNavigationMenuContext, type UseNavigationMenuContext } from './use-navigation-menu-context.ts'
+export * as NavigationMenu from './navigation-menu.ts'

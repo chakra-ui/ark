@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UsePasswordInputReturn } from './use-password-input'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UsePasswordInputReturn } from './use-password-input.ts'
 
 export interface PasswordInputRootProviderBaseProps extends PolymorphicProps {
   value: UnwrapRef<UsePasswordInputReturn>
@@ -17,9 +17,9 @@ export interface PasswordInputRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { PasswordInputProvider } from './use-password-input-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { PasswordInputProvider } from './use-password-input-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<PasswordInputRootProviderProps>()
 

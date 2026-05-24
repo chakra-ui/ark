@@ -15,9 +15,9 @@
 <script lang="ts">
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
-  import { Collapsible } from '../collapsible'
-  import { useTreeViewContext } from './use-tree-view-context'
-  import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
+  import { Collapsible } from '../collapsible/index.ts'
+  import { useTreeViewContext } from './use-tree-view-context.ts'
+  import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
 
   let { ref = $bindable(null), ...props }: TreeViewBranchContentProps = $props()
 

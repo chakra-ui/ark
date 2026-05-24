@@ -3,9 +3,9 @@
 import * as radio from '@zag-js/radio-group'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
-import { useFieldsetContext } from '../fieldset'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { Optional } from '../../types.ts'
+import { useFieldsetContext } from '../fieldset/index.ts'
 
 export interface UseRadioGroupProps extends Optional<Omit<radio.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseRadioGroupReturn extends radio.Api<PropTypes> {}

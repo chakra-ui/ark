@@ -6,9 +6,9 @@
 </script>
 
 <script lang="ts">
-  import { Ark } from '../factory'
+  import { Ark } from '../factory/index.ts'
   import { mergeProps } from '@zag-js/svelte'
-  import { useAvatarContext } from './use-avatar-context'
+  import { useAvatarContext } from './use-avatar-context.ts'
 
   let { ref = $bindable(null), ...props }: AvatarImageProps = $props()
   const avatar = useAvatarContext()

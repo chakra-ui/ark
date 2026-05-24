@@ -1,5 +1,5 @@
 import { type JSX, createMemo } from 'solid-js'
-import { useTreeViewNodeContext } from './use-tree-view-node-context'
+import { useTreeViewNodeContext } from './use-tree-view-node-context.ts'
 
 export interface TreeViewNodeCheckboxIndicatorBaseProps {
   children?: JSX.Element

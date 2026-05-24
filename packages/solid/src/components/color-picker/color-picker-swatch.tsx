@@ -1,9 +1,9 @@
 import type { SwatchProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useColorPickerContext } from './use-color-picker-context'
-import { ColorPickerSwatchPropsProvider } from './use-color-picker-swatch-props-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useColorPickerContext } from './use-color-picker-context.ts'
+import { ColorPickerSwatchPropsProvider } from './use-color-picker-swatch-props-context.ts'
 
 export interface ColorPickerSwatchBaseProps extends SwatchProps, PolymorphicProps<'div'> {}
 export interface ColorPickerSwatchProps extends HTMLProps<'div'>, ColorPickerSwatchBaseProps {}

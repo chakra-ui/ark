@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js'
-import { type UseMarqueeContext, useMarqueeContext } from './use-marquee-context'
+import { type UseMarqueeContext, useMarqueeContext } from './use-marquee-context.ts'
 
 export interface MarqueeContextProps {
   children: (context: UseMarqueeContext) => JSX.Element

@@ -3,8 +3,8 @@
 import type { ColorStringFormat } from '@zag-js/color-utils'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useColorPickerContext } from './use-color-picker-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useColorPickerContext } from './use-color-picker-context.ts'
 
 export interface ColorPickerValueTextBaseProps extends PolymorphicProps {
   format?: ColorStringFormat | undefined

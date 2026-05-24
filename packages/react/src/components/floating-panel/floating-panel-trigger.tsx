@@ -2,9 +2,9 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresenceContext } from '../presence'
-import { useFloatingPanelContext } from './use-floating-panel-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { usePresenceContext } from '../presence/index.ts'
+import { useFloatingPanelContext } from './use-floating-panel-context.ts'
 
 export interface FloatingPanelTriggerBaseProps extends PolymorphicProps {}
 export interface FloatingPanelTriggerProps extends HTMLProps<'button'>, FloatingPanelTriggerBaseProps {}

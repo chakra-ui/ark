@@ -11,7 +11,7 @@ export interface LocaleProviderProps {
 <script setup lang="ts">
 import { isRTL, type Locale } from '@zag-js/i18n-utils'
 import { computed } from 'vue'
-import { LocaleContextProvider } from './use-locale-context'
+import { LocaleContextProvider } from './use-locale-context.ts'
 
 const props = defineProps<LocaleProviderProps>()
 const context = computed<Locale>(() => ({

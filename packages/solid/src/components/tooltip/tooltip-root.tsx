@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js'
-import { createSplitProps } from '../../utils/create-split-props'
-import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
-import { type UseTooltipProps, useTooltip } from './use-tooltip'
-import { TooltipProvider } from './use-tooltip-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.tsx'
+import { type UseTooltipProps, useTooltip } from './use-tooltip.ts'
+import { TooltipProvider } from './use-tooltip-context.ts'
 
 export interface TooltipRootBaseProps extends UseTooltipProps, UsePresenceProps {}
 export interface TooltipRootProps extends TooltipRootBaseProps {

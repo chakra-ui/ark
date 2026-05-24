@@ -1,9 +1,9 @@
 'use client'
 
 import { forwardRef } from 'react'
-import type { HTMLProps, PolymorphicProps } from '../factory'
-import { ark } from '../factory'
-import { type UseDownloadProps, useDownload } from './use-download'
+import type { HTMLProps, PolymorphicProps } from '../factory.ts'
+import { ark } from '../factory.ts'
+import { type UseDownloadProps, useDownload } from './use-download.ts'
 
 export interface DownloadTriggerBaseProps extends PolymorphicProps, UseDownloadProps {}
 

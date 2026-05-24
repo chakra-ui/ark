@@ -1,7 +1,7 @@
 'use client'
 
-import { createContext } from '../../utils/create-context'
-import type { UseToggleReturn } from './use-toggle'
+import { createContext } from '../../utils/create-context.ts'
+import type { UseToggleReturn } from './use-toggle.ts'
 
 export interface UseToggleContext extends UseToggleReturn {}
 

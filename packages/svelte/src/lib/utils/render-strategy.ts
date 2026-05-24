@@ -1,6 +1,6 @@
 import type { Accessor } from '$lib/types'
-import { createContext } from './create-context'
-import { createSplitProps } from './create-split-props'
+import { createContext } from './create-context.ts'
+import { createSplitProps } from './create-split-props.ts'
 
 export interface RenderStrategyProps {
   /**

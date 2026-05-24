@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { ComboboxWithField, ComponentUnderTest } from './basic'
+import { ComboboxWithField, ComponentUnderTest } from './basic.tsx'
 
 describe('Combobox', () => {
   it('should have no a11y violations', async () => {

@@ -2,11 +2,11 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import type { HTMLProps, PolymorphicProps } from '../factory'
-import { ark } from '../factory'
-import { type UseToggleProps, useToggle } from './use-toggle'
-import { ToggleProvider } from './use-toggle-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import type { HTMLProps, PolymorphicProps } from '../factory.ts'
+import { ark } from '../factory.ts'
+import { type UseToggleProps, useToggle } from './use-toggle.ts'
+import { ToggleProvider } from './use-toggle-context.ts'
 
 export interface ToggleRootBaseProps extends UseToggleProps, PolymorphicProps {}
 

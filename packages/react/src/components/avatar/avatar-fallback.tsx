@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useAvatarContext } from './use-avatar-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useAvatarContext } from './use-avatar-context.ts'
 
 export interface AvatarFallbackBaseProps extends PolymorphicProps {}
 export interface AvatarFallbackProps extends HTMLProps<'span'>, AvatarFallbackBaseProps {}

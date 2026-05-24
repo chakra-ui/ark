@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { TriggerProps } from '@zag-js/dialog'
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface DialogTriggerBaseProps extends TriggerProps, PolymorphicProps {}
 export interface DialogTriggerProps
@@ -14,9 +14,9 @@ export interface DialogTriggerProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useDialogContext } from './use-dialog-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useDialogContext } from './use-dialog-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<DialogTriggerProps>()
 const dialog = useDialogContext()

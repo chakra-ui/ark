@@ -1,6 +1,6 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { ComponentUnderTest, SwitchWithField } from './basic'
+import { ComponentUnderTest, SwitchWithField } from './basic.tsx'
 
 describe('Switch', () => {
   it('should toggle state when clicked', async () => {

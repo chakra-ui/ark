@@ -7,8 +7,8 @@
 <script lang="ts">
   import * as drawer from '@zag-js/drawer'
   import { normalizeProps } from '@zag-js/svelte'
-  import { DrawerStackProvider } from './use-drawer-stack-context'
-  import { provideDrawerStackStore } from './use-drawer-stack-store'
+  import { DrawerStackProvider } from './use-drawer-stack-context.ts'
+  import { provideDrawerStackStore } from './use-drawer-stack-store.ts'
 
   let { children }: DrawerStackProps = $props()
 

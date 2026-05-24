@@ -1,8 +1,8 @@
 'use client'
 
 import type { OptionItemState } from '@zag-js/menu'
-import type { Optional } from '../../types'
-import { createContext } from '../../utils/create-context'
+import type { Optional } from '../../types.ts'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface UseMenuItemContext extends Optional<OptionItemState, 'checked'> {}
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface StepsCompletedContentBaseProps extends PolymorphicProps {}
 export interface StepsCompletedContentProps
@@ -14,9 +14,9 @@ export interface StepsCompletedContentProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { useStepsContext } from './use-steps-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useStepsContext } from './use-steps-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<StepsCompletedContentProps>()
 

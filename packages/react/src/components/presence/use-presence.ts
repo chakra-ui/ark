@@ -3,9 +3,9 @@
 import * as presence from '@zag-js/presence'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useRef } from 'react'
-import type { Optional } from '../../types'
-import type { RenderStrategyProps } from '../../utils/render-strategy'
-import { useEvent } from '../../utils/use-event'
+import type { Optional } from '../../types.ts'
+import type { RenderStrategyProps } from '../../utils/render-strategy.ts'
+import { useEvent } from '../../utils/use-event.ts'
 
 export interface UsePresenceProps extends Optional<presence.Props, 'present'>, RenderStrategyProps {
   /**

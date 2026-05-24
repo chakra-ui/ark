@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Field, Fieldset, type FieldsetRootProps } from '../..'
+import { Field, Fieldset, type FieldsetRootProps } from '../../index.ts'
 
 const props = defineProps<FieldsetRootProps>()
 </script>

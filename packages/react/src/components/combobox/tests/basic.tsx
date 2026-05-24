@@ -1,7 +1,7 @@
-import { Combobox, createListCollection } from '../'
-import type { Optional } from '../../../types'
-import { Field } from '../../field'
-import { Portal } from '../../portal'
+import { Combobox, createListCollection } from '../index.ts'
+import type { Optional } from '../../../types.ts'
+import { Field } from '../../field/index.ts'
+import { Portal } from '../../portal/index.ts'
 
 interface Item {
   label: string

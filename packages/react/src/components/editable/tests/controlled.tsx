@@ -1,4 +1,4 @@
-import { Editable } from '../'
+import { Editable } from '../index.ts'
 
 export const ControlledComponentUnderTest = (props: Editable.RootProps) => (
   <Editable.Root placeholder="Placeholder" {...props}>

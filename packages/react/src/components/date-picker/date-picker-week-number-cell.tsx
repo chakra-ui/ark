@@ -3,9 +3,9 @@
 import type { DateValue, WeekNumberCellProps } from '@zag-js/date-picker'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useDatePickerContext } from './use-date-picker-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useDatePickerContext } from './use-date-picker-context.ts'
 
 export interface DatePickerWeekNumberCellBaseProps extends PolymorphicProps {
   weekIndex: number

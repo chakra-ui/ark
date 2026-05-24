@@ -1,7 +1,7 @@
 <script lang="ts">
   import { createSplitProps } from '$lib/utils/create-split-props'
   import type { HTMLProps, Assign } from '$lib/types'
-  import { useHighlight, type UseHighlightProps } from './use-highlight.svelte'
+  import { useHighlight, type UseHighlightProps } from './use-highlight.svelte.ts'
 
   export interface HighlightBaseProps extends UseHighlightProps {}
   export interface HighlightProps extends Assign<HTMLProps<'mark'>, HighlightBaseProps> {}

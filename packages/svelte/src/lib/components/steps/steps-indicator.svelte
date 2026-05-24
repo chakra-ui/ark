@@ -7,9 +7,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useStepsContext } from './use-steps-context'
-  import { useStepsItemPropsContext } from './use-steps-item-props-context'
+  import { Ark } from '../factory/index.ts'
+  import { useStepsContext } from './use-steps-context.ts'
+  import { useStepsItemPropsContext } from './use-steps-item-props-context.ts'
 
   let { ref = $bindable(null), ...props }: StepsIndicatorProps = $props()
 

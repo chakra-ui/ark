@@ -3,10 +3,10 @@
 import { mergeProps } from '@zag-js/react'
 import type { ViewportProps } from '@zag-js/navigation-menu'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useNavigationMenuContext } from './use-navigation-menu-context'
-import { NavigationMenuViewportPropsProvider } from './use-navigation-menu-viewport-props-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
+import { NavigationMenuViewportPropsProvider } from './use-navigation-menu-viewport-props-context.ts'
 
 export interface NavigationMenuViewportPositionerBaseProps extends ViewportProps, PolymorphicProps {}
 export interface NavigationMenuViewportPositionerProps

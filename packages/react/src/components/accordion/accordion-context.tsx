@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseAccordionContext, useAccordionContext } from './use-accordion-context'
+import { type UseAccordionContext, useAccordionContext } from './use-accordion-context.ts'
 
 export interface AccordionContextProps {
   children: (context: UseAccordionContext) => ReactNode

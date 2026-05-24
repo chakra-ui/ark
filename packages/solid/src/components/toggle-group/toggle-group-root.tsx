@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseToggleGroupProps, useToggleGroup } from './use-toggle-group'
-import { ToggleGroupProvider } from './use-toggle-group-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { type UseToggleGroupProps, useToggleGroup } from './use-toggle-group.ts'
+import { ToggleGroupProvider } from './use-toggle-group-context.ts'
 
 export interface ToggleGroupRootBaseProps extends UseToggleGroupProps, PolymorphicProps<'div'> {}
 export interface ToggleGroupRootProps extends HTMLProps<'div'>, ToggleGroupRootBaseProps {}

@@ -2,11 +2,11 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { Collapsible } from '../collapsible'
-import type { HTMLProps, PolymorphicProps } from '../factory'
-import { useAccordionContext } from './use-accordion-context'
-import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { Collapsible } from '../collapsible/index.ts'
+import type { HTMLProps, PolymorphicProps } from '../factory.ts'
+import { useAccordionContext } from './use-accordion-context.ts'
+import { useAccordionItemPropsContext } from './use-accordion-item-props-context.ts'
 
 export interface AccordionItemContentBaseProps extends PolymorphicProps {}
 export interface AccordionItemContentProps extends HTMLProps<'div'>, AccordionItemContentBaseProps {}

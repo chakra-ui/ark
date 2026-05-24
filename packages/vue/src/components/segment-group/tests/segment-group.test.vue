@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { SegmentGroup, type SegmentGroupRootEmits, type SegmentGroupRootProps } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { SegmentGroup, type SegmentGroupRootEmits, type SegmentGroupRootProps } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<SegmentGroupRootProps>()
 const emits = defineEmits<SegmentGroupRootEmits>()

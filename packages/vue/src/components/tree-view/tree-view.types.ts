@@ -1,5 +1,5 @@
 import type * as treeView from '@zag-js/tree-view'
-import type { TreeCollection, TreeNode } from '../collection'
+import type { TreeCollection, TreeNode } from '../collection/index.ts'
 
 export interface RootProps<T extends TreeNode> {
   /**

@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { TriggerProps } from '@zag-js/menu'
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface MenuTriggerBaseProps extends TriggerProps, PolymorphicProps {}
 export interface MenuTriggerProps
@@ -14,9 +14,9 @@ export interface MenuTriggerProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useMenuContext } from './use-menu-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useMenuContext } from './use-menu-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<MenuTriggerProps>()
 const menu = useMenuContext()

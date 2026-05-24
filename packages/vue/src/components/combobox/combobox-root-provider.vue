@@ -1,11 +1,11 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { Assign } from '../../types'
-import type { RenderStrategyProps } from '../../utils/use-render-strategy'
-import type { CollectionItem } from '../collection'
-import type { PolymorphicProps } from '../factory'
-import type { UseComboboxReturn } from './use-combobox'
-import type { RootEmits as PresenceEmits } from '../presence/presence.types'
+import type { Assign } from '../../types.ts'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import type { CollectionItem } from '../collection/index.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseComboboxReturn } from './use-combobox.ts'
+import type { RootEmits as PresenceEmits } from '../presence/presence.types.ts'
 
 interface RootProviderProps<T extends CollectionItem> {
   value: UnwrapRef<UseComboboxReturn<T>>
@@ -30,11 +30,11 @@ export interface ComboboxRootProviderEmits extends PresenceEmits {}
 
 <script setup lang="ts" generic="T extends CollectionItem">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { PresenceProvider, usePresence } from '../presence'
-import { ComboboxProvider } from './use-combobox-context'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { ComboboxProvider } from './use-combobox-context.ts'
 
 const props = defineProps<ComboboxRootProviderProps<T>>()
 const emits = defineEmits<ComboboxRootProviderEmits>()

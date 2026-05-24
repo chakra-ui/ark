@@ -1,7 +1,7 @@
 'use client'
 
-import type { HTMLProps } from '../factory'
-import { useTreeViewNodeContext } from './use-tree-view-node-context'
+import type { HTMLProps } from '../factory.ts'
+import { useTreeViewNodeContext } from './use-tree-view-node-context.ts'
 
 export interface TreeViewNodeCheckboxIndicatorBaseProps {
   children?: React.ReactNode | undefined

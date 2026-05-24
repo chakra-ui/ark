@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useSelectContext } from './use-select-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useSelectContext } from './use-select-context.ts'
 
 export interface SelectValueTextBaseProps extends PolymorphicProps<'span'> {
   /**

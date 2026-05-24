@@ -1,5 +1,5 @@
 import { Field } from '@ark-ui/react/field'
-import { FileUpload } from '../'
+import { FileUpload } from '../index.ts'
 
 export const ComponentUnderTest = (props: FileUpload.RootProps) => (
   <FileUpload.Root {...props}>

@@ -2,7 +2,7 @@ import { Combobox, useCombobox, useComboboxContext, useListCollection } from '@a
 import { For, createEffect, createRenderEffect, createSignal, on } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import styles from 'styles/combobox.module.css'
-import { useAsync } from './use-async'
+import { useAsync } from './use-async.ts'
 
 function ComboboxRehydrateValue() {
   const combobox = useComboboxContext()

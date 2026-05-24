@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseCheckboxContext, useCheckboxContext } from './use-checkbox-context'
+import { type UseCheckboxContext, useCheckboxContext } from './use-checkbox-context.ts'
 
 export interface CheckboxContextProps {
   children: (context: UseCheckboxContext) => ReactNode

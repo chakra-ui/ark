@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { LabelHTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './switch.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './switch.types.ts'
 
 export interface SwitchRootBaseProps extends RootProps, PolymorphicProps {}
 export interface SwitchRootProps
@@ -16,10 +16,10 @@ export interface SwitchRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useSwitch } from './use-switch'
-import { SwitchProvider } from './use-switch-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useSwitch } from './use-switch.ts'
+import { SwitchProvider } from './use-switch-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<SwitchRootProps>(), {
   checked: undefined,

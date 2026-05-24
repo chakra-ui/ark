@@ -2,11 +2,11 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
-import type { UseColorPickerReturn } from './use-color-picker'
-import { ColorPickerProvider } from './use-color-picker-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.ts'
+import type { UseColorPickerReturn } from './use-color-picker.ts'
+import { ColorPickerProvider } from './use-color-picker-context.ts'
 
 interface RootProviderProps {
   value: UseColorPickerReturn

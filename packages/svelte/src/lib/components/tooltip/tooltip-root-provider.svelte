@@ -1,7 +1,7 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { UsePresenceProps } from '../presence'
-  import type { UseTooltipReturn } from './use-tooltip.svelte'
+  import type { UsePresenceProps } from '../presence/index.ts'
+  import type { UseTooltipReturn } from './use-tooltip.svelte.ts'
 
   interface RootProviderProps {
     value: UseTooltipReturn
@@ -14,9 +14,9 @@
 </script>
 
 <script lang="ts">
-  import { PresenceProvider, usePresence } from '../presence'
-  import { splitPresenceProps } from '../presence/split-presence-props.svelte'
-  import { TooltipProvider } from './use-tooltip-context'
+  import { PresenceProvider, usePresence } from '../presence/index.ts'
+  import { splitPresenceProps } from '../presence/split-presence-props.svelte.ts'
+  import { TooltipProvider } from './use-tooltip-context.ts'
 
   const props: TooltipRootProviderProps = $props()
 

@@ -4,11 +4,11 @@ import { mergeProps } from '@zag-js/react'
 import type { ItemProps } from '@zag-js/navigation-menu'
 import { ensure } from '@zag-js/utils'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useNavigationMenuContext } from './use-navigation-menu-context'
-import { createSplitProps } from '../../utils/create-split-props'
-import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context'
+import type { Assign } from '../../types.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context.ts'
 
 export interface NavigationMenuTriggerBaseProps extends Omit<ItemProps, 'value'>, PolymorphicProps {}
 export interface NavigationMenuTriggerProps extends Assign<HTMLProps<'button'>, NavigationMenuTriggerBaseProps> {}

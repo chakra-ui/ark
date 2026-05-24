@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Combobox, type ComboboxRootEmits, type ComboboxRootProps, createListCollection } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { Combobox, type ComboboxRootEmits, type ComboboxRootProps, createListCollection } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 interface Item {
   label: string

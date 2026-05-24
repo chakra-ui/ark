@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { Snippet } from 'svelte'
-  import type { CollectionItem } from '../collection'
-  import type { UseSelectProps } from './use-select.svelte'
+  import type { CollectionItem } from '../collection/index.ts'
+  import type { UseSelectProps } from './use-select.svelte.ts'
 
   export interface SelectRootBaseProps<T extends CollectionItem = CollectionItem>
     extends UseSelectProps<T>, UsePresenceProps, PolymorphicProps<'div'>, RefAttribute {}
@@ -24,9 +24,9 @@
   import { Ark } from '$lib/components/factory'
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
-  import { PresenceProvider, splitPresenceProps, usePresence, type UsePresenceProps } from '../presence'
-  import { SelectProvider } from './use-select-context'
-  import { useSelect } from './use-select.svelte'
+  import { PresenceProvider, splitPresenceProps, usePresence, type UsePresenceProps } from '../presence/index.ts'
+  import { SelectProvider } from './use-select-context.ts'
+  import { useSelect } from './use-select.svelte.ts'
 
   let { ref = $bindable(null), value = $bindable<string[] | undefined>(), ...props }: SelectRootProps<T> = $props()
 

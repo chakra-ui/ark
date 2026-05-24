@@ -1,9 +1,9 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { ColorPicker, parseColor } from '../'
-import { Field } from '../../field'
-import { ComponentUnderTest } from './basic'
+import { ColorPicker, parseColor } from '../index.ts'
+import { Field } from '../../field/index.ts'
+import { ComponentUnderTest } from './basic.tsx'
 
 describe('ColorPicker', () => {
   it('should have no a11y violations', async () => {

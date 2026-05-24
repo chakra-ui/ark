@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface ValueChangeDetails {
   value: string

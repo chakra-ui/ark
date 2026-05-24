@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseEditableContext, useEditableContext } from './use-editable-context'
+import { type UseEditableContext, useEditableContext } from './use-editable-context.ts'
 
 export interface EditableContextProps {
   children: (context: UseEditableContext) => ReactNode

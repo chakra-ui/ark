@@ -1,9 +1,13 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type RenderStrategyProps, RenderStrategyProvider, splitRenderStrategyProps } from '../../utils/render-strategy'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseNavigationMenuProps, useNavigationMenu } from './use-navigation-menu'
-import { NavigationMenuProvider } from './use-navigation-menu-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import {
+  type RenderStrategyProps,
+  RenderStrategyProvider,
+  splitRenderStrategyProps,
+} from '../../utils/render-strategy.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { type UseNavigationMenuProps, useNavigationMenu } from './use-navigation-menu.ts'
+import { NavigationMenuProvider } from './use-navigation-menu-context.ts'
 
 export interface NavigationMenuRootBaseProps
   extends UseNavigationMenuProps, RenderStrategyProps, PolymorphicProps<'nav'> {}

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { type IframeHTMLAttributes, type VNode, ref, watch } from 'vue'
-import { EnvironmentProvider } from '../../providers'
+import { EnvironmentProvider } from '../../providers/index.ts'
 import FrameContent from './frame-content.vue'
 
 export interface FrameBaseProps {

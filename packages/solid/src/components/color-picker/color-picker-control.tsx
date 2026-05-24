@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useColorPickerContext } from './use-color-picker-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useColorPickerContext } from './use-color-picker-context.ts'
 
 export interface ColorPickerControlBaseProps extends PolymorphicProps<'div'> {}
 export interface ColorPickerControlProps extends HTMLProps<'div'>, ColorPickerControlBaseProps {}

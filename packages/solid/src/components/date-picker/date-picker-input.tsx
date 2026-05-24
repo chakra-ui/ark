@@ -1,8 +1,8 @@
 import type { InputProps } from '@zag-js/date-picker'
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useDatePickerContext } from './use-date-picker-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useDatePickerContext } from './use-date-picker-context.ts'
 
 export interface DatePickerInputBaseProps extends InputProps, PolymorphicProps<'input'> {}
 export interface DatePickerInputProps extends HTMLProps<'input'>, DatePickerInputBaseProps {}

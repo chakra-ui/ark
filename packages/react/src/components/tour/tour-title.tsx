@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useTourContext } from './use-tour-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useTourContext } from './use-tour-context.ts'
 
 export interface TourTitleBaseProps extends PolymorphicProps {}
 export interface TourTitleProps extends HTMLProps<'h2'>, TourTitleBaseProps {}

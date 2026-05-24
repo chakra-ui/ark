@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js'
-import { type UseCarouselContext, useCarouselContext } from './use-carousel-context'
+import { type UseCarouselContext, useCarouselContext } from './use-carousel-context.ts'
 
 export interface CarouselContextProps {
   children: (context: UseCarouselContext) => JSX.Element

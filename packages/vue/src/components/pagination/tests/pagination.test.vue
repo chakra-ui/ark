@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Pagination, type PaginationRootEmits, type PaginationRootProps } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { Pagination, type PaginationRootEmits, type PaginationRootProps } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<PaginationRootProps>()
 const emits = defineEmits<PaginationRootEmits>()

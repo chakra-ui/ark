@@ -2,9 +2,9 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useListboxContext } from './use-listbox-context'
-import { useListboxItemPropsContext } from './use-listbox-item-props-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useListboxContext } from './use-listbox-context.ts'
+import { useListboxItemPropsContext } from './use-listbox-item-props-context.ts'
 
 export interface ListboxItemTextBaseProps extends PolymorphicProps {}
 export interface ListboxItemTextProps extends HTMLProps<'div'>, ListboxItemTextBaseProps {}

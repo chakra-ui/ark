@@ -1,7 +1,7 @@
 <script lang="ts">
-import type { BooleanDefaults } from '../../types'
-import type { RootEmits, RootProps } from './floating-panel.types'
-import type { RenderStrategyProps } from '../../utils/use-render-strategy'
+import type { BooleanDefaults } from '../../types.ts'
+import type { RootEmits, RootProps } from './floating-panel.types.ts'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
 
 export interface FloatingPanelRootBaseProps extends RootProps, RenderStrategyProps {}
 export interface FloatingPanelRootEmits extends RootEmits {}
@@ -9,10 +9,10 @@ export interface FloatingPanelRootProps extends FloatingPanelRootBaseProps {}
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { PresenceProvider, usePresence } from '../presence'
-import { useFloatingPanel } from './use-floating-panel'
-import { FloatingPanelProvider } from './use-floating-panel-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { useFloatingPanel } from './use-floating-panel.ts'
+import { FloatingPanelProvider } from './use-floating-panel-context.ts'
 import { computed } from 'vue'
 
 const props = withDefaults(defineProps<FloatingPanelRootProps>(), {

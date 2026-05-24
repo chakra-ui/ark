@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import { axe } from 'vitest-axe'
-import { Field, Fieldset } from '../'
+import { Field, Fieldset } from '../index.ts'
 
 const ComponentUnderTest = (props: Fieldset.RootProps) => (
   <Fieldset.Root {...props}>

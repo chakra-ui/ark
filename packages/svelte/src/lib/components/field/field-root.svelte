@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseFieldProps } from './use-field.svelte'
+  import type { UseFieldProps } from './use-field.svelte.ts'
 
   export interface FieldRootBaseProps extends UseFieldProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface FieldRootProps extends Assign<HTMLProps<'div'>, FieldRootBaseProps> {}
@@ -9,9 +9,9 @@
 <script lang="ts">
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { FieldProvider } from './use-field-context'
-  import { useField } from './use-field.svelte'
+  import { Ark } from '../factory/index.ts'
+  import { FieldProvider } from './use-field-context.ts'
+  import { useField } from './use-field.svelte.ts'
 
   let { ref = $bindable(null), ...props }: FieldRootProps = $props()
 

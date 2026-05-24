@@ -1,4 +1,4 @@
-import { AngleSlider } from '../'
+import { AngleSlider } from '../index.ts'
 
 export const ComponentUnderTest = (props: AngleSlider.RootProps) => {
   return (

@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useDateInputContext } from './use-date-input-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useDateInputContext } from './use-date-input-context.ts'
 
 export interface DateInputControlBaseProps extends PolymorphicProps {}
 export interface DateInputControlProps extends HTMLProps<'div'>, DateInputControlBaseProps {}

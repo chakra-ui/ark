@@ -1,4 +1,4 @@
-export { EnvironmentProvider, type EnvironmentProviderProps } from './environment-provider'
+export { EnvironmentProvider, type EnvironmentProviderProps } from './environment-provider.tsx'
 export {
   useEnvironmentContext,
   /**
@@ -7,4 +7,4 @@ export {
   type UseEnvironmentContext as EnvironmentContext,
   type RootNode,
   type UseEnvironmentContext,
-} from './use-environment-context'
+} from './use-environment-context.ts'

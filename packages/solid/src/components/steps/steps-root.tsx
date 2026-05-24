@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseStepsProps, useSteps } from './use-steps'
-import { StepsProvider } from './use-steps-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { type UseStepsProps, useSteps } from './use-steps.ts'
+import { StepsProvider } from './use-steps-context.ts'
 
 export interface StepsRootBaseProps extends UseStepsProps, PolymorphicProps<'div'> {}
 export interface StepsRootProps extends HTMLProps<'div'>, StepsRootBaseProps {}

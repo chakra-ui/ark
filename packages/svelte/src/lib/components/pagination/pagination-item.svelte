@@ -8,9 +8,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
+  import { Ark } from '../factory/index.ts'
   import { createSplitProps } from '$lib/utils/create-split-props'
-  import { usePaginationContext } from './use-pagination-context'
+  import { usePaginationContext } from './use-pagination-context.ts'
 
   let { ref = $bindable(null), ...props }: PaginationItemProps = $props()
   const pagination = usePaginationContext()

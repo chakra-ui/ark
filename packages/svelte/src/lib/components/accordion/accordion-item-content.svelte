@@ -8,9 +8,9 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { omit } from '@zag-js/utils'
-  import { CollapsibleContent } from '../collapsible'
-  import { useAccordionContext } from './use-accordion-context'
-  import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
+  import { CollapsibleContent } from '../collapsible/index.ts'
+  import { useAccordionContext } from './use-accordion-context.ts'
+  import { useAccordionItemPropsContext } from './use-accordion-item-props-context.ts'
 
   let { ref = $bindable(null), ...props }: AccordionItemContentProps = $props()
 

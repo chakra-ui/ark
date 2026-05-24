@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { UseColorPickerContext } from './use-color-picker-context'
+  import type { UseColorPickerContext } from './use-color-picker-context.ts'
 
   export interface ColorPickerContextProps {
     render: Snippet<[UseColorPickerContext]>
@@ -8,7 +8,7 @@
 </script>
 
 <script lang="ts">
-  import { useColorPickerContext } from './use-color-picker-context'
+  import { useColorPickerContext } from './use-color-picker-context.ts'
 
   const { render }: ColorPickerContextProps = $props()
 

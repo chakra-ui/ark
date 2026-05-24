@@ -17,6 +17,13 @@ export default defineConfig({
       entryRoot: 'src',
       staticImport: true,
       exclude: ['**/*.stories.*', '**/*.test.*', '**/tests/*', '**/examples/*', '**/setup-test.ts'],
+      beforeWriteFile: (filePath, content) => ({
+        filePath,
+        content: content.replace(
+          /(\bfrom\s*['"])(\.\.?\/[^'"]*?)\.tsx?(['"])/g,
+          (_m, pre, spec, post) => `${pre}${spec}.js${post}`,
+        ),
+      }),
       afterBuild: () => {
         globbySync(['dist/**/*.d.ts', 'dist/**.d.ts']).forEach((file) => {
           copyFileSync(file, file.replace(/\.d\.ts$/, '.d.cts'))

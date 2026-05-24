@@ -2,7 +2,7 @@
   import type { Snippet } from 'svelte'
   import type { HTMLIframeAttributes } from 'svelte/elements'
 
-  import type { Assign } from '../../types'
+  import type { Assign } from '../../types.ts'
 
   export interface FrameBaseProps {
     /** Additional content to be inserted into the frame's <head> */

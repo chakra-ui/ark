@@ -7,9 +7,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useSliderContext } from './use-slider-context'
-  import { useSliderThumbPropsContext } from './use-slider-thumb-props-context'
+  import { Ark } from '../factory/index.ts'
+  import { useSliderContext } from './use-slider-context.ts'
+  import { useSliderThumbPropsContext } from './use-slider-thumb-props-context.ts'
 
   let { ref = $bindable(null), ...props }: SliderHiddenInputProps = $props()
   const slider = useSliderContext()

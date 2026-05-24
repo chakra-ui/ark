@@ -1,7 +1,7 @@
 'use client'
 
 import type { TableProps } from '@zag-js/date-picker'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface UseDatePickerTablePropsContext extends TableProps {}
 

@@ -13,8 +13,8 @@ export {
   type TabsRootProviderProps,
 } from './tabs-root-provider.vue'
 export { default as TabsRoot, type TabsRootBaseProps, type TabsRootEmits, type TabsRootProps } from './tabs-root.vue'
-export { tabsAnatomy } from './tabs.anatomy'
-export { useTabs, type UseTabsProps, type UseTabsReturn } from './use-tabs'
-export { useTabsContext, type UseTabsContext } from './use-tabs-context'
+export { tabsAnatomy } from './tabs.anatomy.ts'
+export { useTabs, type UseTabsProps, type UseTabsReturn } from './use-tabs.ts'
+export { useTabsContext, type UseTabsContext } from './use-tabs-context.ts'
 
-export * as Tabs from './tabs'
+export * as Tabs from './tabs.ts'

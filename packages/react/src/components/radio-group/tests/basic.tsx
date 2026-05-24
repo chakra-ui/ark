@@ -1,4 +1,4 @@
-import { RadioGroup } from '../'
+import { RadioGroup } from '../index.ts'
 
 export const ComponentUnderTest = (props: RadioGroup.RootProps) => {
   const items = [

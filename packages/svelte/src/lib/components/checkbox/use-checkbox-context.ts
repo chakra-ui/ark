@@ -1,5 +1,5 @@
 import { getContext, setContext } from 'svelte'
-import type { UseCheckboxReturn } from './use-checkbox.svelte'
+import type { UseCheckboxReturn } from './use-checkbox.svelte.ts'
 
 const CHECKBOX_CONTEXT_KEY = Symbol('CheckboxContext')
 

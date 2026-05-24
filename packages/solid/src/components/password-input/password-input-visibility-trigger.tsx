@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePasswordInputContext } from './use-password-input-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { usePasswordInputContext } from './use-password-input-context.ts'
 
 export interface PasswordInputVisibilityTriggerBaseProps extends PolymorphicProps<'button'> {}
 export interface PasswordInputVisibilityTriggerProps

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ComboboxControlBaseProps extends PolymorphicProps {}
 export interface ComboboxControlProps
@@ -13,9 +13,9 @@ export interface ComboboxControlProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useComboboxContext } from './use-combobox-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useComboboxContext } from './use-combobox-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ComboboxControlProps>()
 const combobox = useComboboxContext()

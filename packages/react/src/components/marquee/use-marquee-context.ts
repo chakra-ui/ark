@@ -1,7 +1,7 @@
 'use client'
 
-import { createContext } from '../../utils/create-context'
-import type { UseMarqueeReturn } from './use-marquee'
+import { createContext } from '../../utils/create-context.ts'
+import type { UseMarqueeReturn } from './use-marquee.ts'
 
 export interface UseMarqueeContext extends UseMarqueeReturn {}
 

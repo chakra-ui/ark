@@ -1,9 +1,9 @@
 import * as navigationMenu from '@zag-js/navigation-menu'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
-import { runIfFn } from '../../utils/run-if-fn'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.tsx'
+import type { Optional } from '../../types.ts'
+import { runIfFn } from '../../utils/run-if-fn.ts'
 
 export interface UseNavigationMenuProps extends Optional<Omit<navigationMenu.Props, 'dir' | 'getRootNode'>, 'id'> {}
 

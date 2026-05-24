@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ColorPicker, type ColorPickerRootBaseProps, type ColorPickerRootEmits, parseColor } from '..'
-import { useForwardPropsEmits } from '../../..'
+import { ColorPicker, type ColorPickerRootBaseProps, type ColorPickerRootEmits, parseColor } from '../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<ColorPickerRootBaseProps>()
 const emits = defineEmits<ColorPickerRootEmits>()

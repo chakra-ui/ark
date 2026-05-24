@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UsePaginationReturn } from './use-pagination.svelte'
+import type { UsePaginationReturn } from './use-pagination.svelte.ts'
 
 export interface UsePaginationContext extends UsePaginationReturn {}
 

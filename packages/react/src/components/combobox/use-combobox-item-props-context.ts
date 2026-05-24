@@ -1,7 +1,7 @@
 'use client'
 
 import type { ItemProps } from '@zag-js/combobox'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface UseComboboxItemPropsContext extends ItemProps {}
 

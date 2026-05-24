@@ -1,7 +1,7 @@
 import { isFocusVisible, trackFocusVisible } from '@zag-js/focus-visible'
 import { useSyncExternalStore } from '@zag-js/vue'
 import type { ShallowRef } from 'vue'
-import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../environment'
+import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../environment/index.ts'
 
 export interface UseFocusVisibleProps {
   isTextInput?: boolean

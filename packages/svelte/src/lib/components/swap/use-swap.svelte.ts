@@ -1,8 +1,8 @@
 import type { Accessor } from '$lib/types'
 import type { RenderStrategyProps } from '$lib/utils/render-strategy'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
-import { type UsePresenceReturn, usePresence } from '../presence/use-presence.svelte'
-import { parts } from './swap.anatomy'
+import { type UsePresenceReturn, usePresence } from '../presence/use-presence.svelte.ts'
+import { parts } from './swap.anatomy.ts'
 
 export interface UseSwapProps extends RenderStrategyProps {
   /**

@@ -1,7 +1,7 @@
 import type { Accessor } from '$lib/types'
 import type { Api } from '@zag-js/accordion'
 import type { PropTypes } from '@zag-js/svelte'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface UseAccordionContext extends Accessor<Api<PropTypes>> {}
 

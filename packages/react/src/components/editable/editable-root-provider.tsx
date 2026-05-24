@@ -2,10 +2,10 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseEditableReturn } from './use-editable'
-import { EditableProvider } from './use-editable-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import type { UseEditableReturn } from './use-editable.ts'
+import { EditableProvider } from './use-editable-context.ts'
 
 interface RootProviderProps {
   value: UseEditableReturn

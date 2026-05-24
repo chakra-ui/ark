@@ -3,9 +3,9 @@
 import type { HiddenInputProps } from '@zag-js/date-input'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useDateInputContext } from './use-date-input-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useDateInputContext } from './use-date-input-context.ts'
 
 export interface DateInputHiddenInputBaseProps extends PolymorphicProps, HiddenInputProps {}
 export interface DateInputHiddenInputProps extends HTMLProps<'input'>, DateInputHiddenInputBaseProps {}

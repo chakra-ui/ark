@@ -6,6 +6,6 @@ const meta: Meta = {
 
 export default meta
 
-export { InteractionModality } from './examples/interaction'
-export { FocusVisible } from './examples/focus-visible'
-export { FocusVisibleTextInput } from './examples/focus-visible-text-input'
+export { InteractionModality } from './examples/interaction.tsx'
+export { FocusVisible } from './examples/focus-visible.tsx'
+export { FocusVisibleTextInput } from './examples/focus-visible-text-input.tsx'

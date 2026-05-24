@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useDrawerStackContext } from './use-drawer-stack-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useDrawerStackContext } from './use-drawer-stack-context.ts'
 
 export interface DrawerIndentBackgroundBaseProps extends PolymorphicProps {}
 export interface DrawerIndentBackgroundProps extends HTMLProps<'div'>, DrawerIndentBackgroundBaseProps {}

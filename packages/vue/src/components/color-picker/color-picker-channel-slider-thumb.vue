@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ColorPickerChannelSliderThumbBaseProps extends PolymorphicProps {}
 export interface ColorPickerChannelSliderThumbProps
@@ -14,11 +14,11 @@ export interface ColorPickerChannelSliderThumbProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { useColorPickerContext } from './use-color-picker-context'
-import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context'
-import { useColorPickerFormatPropsContext } from './use-color-picker-format-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useColorPickerContext } from './use-color-picker-context.ts'
+import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context.ts'
+import { useColorPickerFormatPropsContext } from './use-color-picker-format-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ColorPickerChannelSliderThumbProps>()
 const colorPicker = useColorPickerContext()

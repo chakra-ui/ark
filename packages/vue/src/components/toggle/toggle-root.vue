@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import type { ButtonHTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import type { PolymorphicProps } from '../factory'
-import { ark } from '../factory'
-import type { RootEmits, RootProps } from './toggle.types'
-import { useToggle } from './use-toggle'
-import { ToggleProvider } from './use-toggle-context'
+import type { BooleanDefaults } from '../../types.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import { ark } from '../factory.ts'
+import type { RootEmits, RootProps } from './toggle.types.ts'
+import { useToggle } from './use-toggle.ts'
+import { ToggleProvider } from './use-toggle-context.ts'
 
 export interface ToggleRootBaseProps extends RootProps, PolymorphicProps {}
 export interface ToggleRootProps

@@ -1,4 +1,4 @@
-import { Avatar } from '../'
+import { Avatar } from '../index.ts'
 
 interface Props extends Avatar.RootProps {
   src?: string | undefined

@@ -2,9 +2,9 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresenceContext } from '../presence'
-import { useSelectContext } from './use-select-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { usePresenceContext } from '../presence/index.ts'
+import { useSelectContext } from './use-select-context.ts'
 
 export interface SelectPositionerBaseProps extends PolymorphicProps {}
 export interface SelectPositionerProps extends HTMLProps<'div'>, SelectPositionerBaseProps {}

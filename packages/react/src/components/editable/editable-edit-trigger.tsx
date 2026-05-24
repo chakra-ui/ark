@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useEditableContext } from './use-editable-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useEditableContext } from './use-editable-context.ts'
 
 export interface EditableEditTriggerBaseProps extends PolymorphicProps {}
 export interface EditableEditTriggerProps extends HTMLProps<'button'>, EditableEditTriggerBaseProps {}

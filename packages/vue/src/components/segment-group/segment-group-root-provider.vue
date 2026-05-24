@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseSegmentGroupReturn } from './use-segment-group'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseSegmentGroupReturn } from './use-segment-group.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseSegmentGroupReturn>
@@ -19,10 +19,10 @@ export interface SegmentGroupRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { SegmentGroupProvider } from './use-segment-group-context'
-import { parts } from './segment-group.anatomy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { SegmentGroupProvider } from './use-segment-group-context.ts'
+import { parts } from './segment-group.anatomy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<SegmentGroupRootProviderProps>()
 const segmentGroup = computed(() => props.value)

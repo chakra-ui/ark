@@ -2,11 +2,11 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UsePasswordInputProps, usePasswordInput } from './use-password-input'
-import { PasswordInputProvider } from './use-password-input-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { type UsePasswordInputProps, usePasswordInput } from './use-password-input.ts'
+import { PasswordInputProvider } from './use-password-input-context.ts'
 
 export interface PasswordInputRootBaseProps extends UsePasswordInputProps, PolymorphicProps {}
 export interface PasswordInputRootProps extends Assign<HTMLProps<'div'>, PasswordInputRootBaseProps> {}

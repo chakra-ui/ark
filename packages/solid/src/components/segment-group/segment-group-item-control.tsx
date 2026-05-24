@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { parts } from './segment-group.anatomy'
-import { useSegmentGroupContext } from './use-segment-group-context'
-import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { parts } from './segment-group.anatomy.ts'
+import { useSegmentGroupContext } from './use-segment-group-context.ts'
+import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context.ts'
 
 export interface SegmentGroupItemControlBaseProps extends PolymorphicProps<'div'> {}
 export interface SegmentGroupItemControlProps extends HTMLProps<'div'>, SegmentGroupItemControlBaseProps {}

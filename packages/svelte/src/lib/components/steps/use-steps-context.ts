@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UseStepsReturn } from './use-steps.svelte'
+import type { UseStepsReturn } from './use-steps.svelte.ts'
 
 export interface UseStepsContext extends UseStepsReturn {}
 

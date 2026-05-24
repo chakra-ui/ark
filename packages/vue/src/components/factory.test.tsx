@@ -1,6 +1,6 @@
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { ark } from './factory'
+import { ark } from './factory.ts'
 
 const ComponentUnderTest = (
   <ark.div id="parent" data-part="parent" data-testid="parent" className="parent" style={{ background: 'red' }} asChild>

@@ -1,7 +1,7 @@
 import { type FileMimeType, downloadFile } from '@zag-js/file-utils'
 import { type MaybeRefOrGetter, toValue } from 'vue'
-import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../../providers'
-import type { MaybePromise } from '../../types'
+import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../../providers/index.ts'
+import type { MaybePromise } from '../../types.ts'
 
 export type DownloadableData = string | Blob | File
 

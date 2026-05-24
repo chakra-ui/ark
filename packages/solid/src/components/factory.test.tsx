@@ -1,6 +1,6 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { ark } from './factory'
+import { ark } from './factory.tsx'
 
 const ComponentUnderTest = () => (
   <ark.div

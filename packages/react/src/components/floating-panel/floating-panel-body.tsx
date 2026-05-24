@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useFloatingPanelContext } from './use-floating-panel-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useFloatingPanelContext } from './use-floating-panel-context.ts'
 
 export interface FloatingPanelBodyBaseProps extends PolymorphicProps {}
 export interface FloatingPanelBodyProps extends HTMLProps<'div'>, FloatingPanelBodyBaseProps {}

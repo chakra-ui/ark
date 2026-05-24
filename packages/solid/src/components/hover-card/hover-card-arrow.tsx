@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useHoverCardContext } from './use-hover-card-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useHoverCardContext } from './use-hover-card-context.ts'
 
 export interface HoverCardArrowBaseProps extends PolymorphicProps<'div'> {}
 export interface HoverCardArrowProps extends HTMLProps<'div'>, HoverCardArrowBaseProps {}

@@ -2,11 +2,11 @@
 
 import { ariaAttr, dataAttr } from '@zag-js/dom-query'
 import { useId, useMemo, useRef, useState } from 'react'
-import { useEnvironmentContext } from '../../providers'
-import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
-import type { HTMLProps } from '../factory'
-import { useFieldsetContext } from '../fieldset/use-fieldset-context'
-import { parts } from './field.anatomy'
+import { useEnvironmentContext } from '../../providers/index.ts'
+import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect.ts'
+import type { HTMLProps } from '../factory.ts'
+import { useFieldsetContext } from '../fieldset/use-fieldset-context.ts'
+import { parts } from './field.anatomy.ts'
 
 export interface ElementIds {
   root?: string | undefined

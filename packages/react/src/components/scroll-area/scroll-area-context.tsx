@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseScrollAreaContext, useScrollAreaContext } from './use-scroll-area-context'
+import { type UseScrollAreaContext, useScrollAreaContext } from './use-scroll-area-context.ts'
 
 export interface ScrollAreaContextProps {
   children: (context: UseScrollAreaContext) => ReactNode

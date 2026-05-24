@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Listbox, type ListboxRootEmits, type ListboxRootProps, createListCollection } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { Listbox, type ListboxRootEmits, type ListboxRootProps, createListCollection } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 interface Item {
   label: string

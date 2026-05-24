@@ -1,7 +1,7 @@
 import { createMemo, Show } from 'solid-js'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { listboxAnatomy } from './listbox.anatomy'
-import { useListboxContext } from './use-listbox-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { listboxAnatomy } from './listbox.anatomy.ts'
+import { useListboxContext } from './use-listbox-context.ts'
 
 const parts = listboxAnatomy.build()
 

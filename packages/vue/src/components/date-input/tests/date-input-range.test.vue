@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DateInput, type DateInputRootProps } from '..'
+import { DateInput, type DateInputRootProps } from '../index.ts'
 
 const props = defineProps<DateInputRootProps>()
 </script>

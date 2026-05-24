@@ -6,6 +6,6 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
-export { Svg } from './examples/svg'
-export { WithPromise } from './examples/with-promise'
+export { Basic } from './examples/basic.tsx'
+export { Svg } from './examples/svg.tsx'
+export { WithPromise } from './examples/with-promise.tsx'

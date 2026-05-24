@@ -4,7 +4,7 @@ import type { Accessor, Optional } from '$lib/types'
 import * as numberInput from '@zag-js/number-input'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, ensureProps, runIfFn } from '@zag-js/utils'
-import { useFieldContext } from '../field'
+import { useFieldContext } from '../field/index.ts'
 
 export interface UseNumberInputProps extends Optional<Omit<numberInput.Props, 'dir' | 'getRootNode'>, 'id'> {}
 

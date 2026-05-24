@@ -2,11 +2,11 @@
 
 import { type FocusTrapOptions, trapFocus } from '@zag-js/focus-trap'
 import { forwardRef, useRef } from 'react'
-import type { Assign } from '../../types'
-import { composeRefs } from '../../utils/compose-refs'
-import { createSplitProps } from '../../utils/create-split-props'
-import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
+import type { Assign } from '../../types.ts'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 
 export interface TrapOptions extends Pick<
   FocusTrapOptions,

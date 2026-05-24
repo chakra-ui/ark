@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { TdHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { DatePickerTableCellPropsContext } from './use-date-picker-table-cell-props-context'
+import type { PolymorphicProps } from '../factory.ts'
+import type { DatePickerTableCellPropsContext } from './use-date-picker-table-cell-props-context.ts'
 
 export interface DatePickerTableCellBaseProps extends DatePickerTableCellPropsContext, PolymorphicProps {}
 export interface DatePickerTableCellProps
@@ -15,11 +15,11 @@ export interface DatePickerTableCellProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { useDatePickerContext } from './use-date-picker-context'
-import { DatePickerTableCellPropsProvider } from './use-date-picker-table-cell-props-context'
-import { DEFAULT_VIEW_PROPS_CONTEXT, useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useDatePickerContext } from './use-date-picker-context.ts'
+import { DatePickerTableCellPropsProvider } from './use-date-picker-table-cell-props-context.ts'
+import { DEFAULT_VIEW_PROPS_CONTEXT, useDatePickerViewPropsContext } from './use-date-picker-view-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<DatePickerTableCellProps>()
 const datePicker = useDatePickerContext()

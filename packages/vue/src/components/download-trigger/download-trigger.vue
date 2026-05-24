@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseDownloadProps } from './use-download'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseDownloadProps } from './use-download.ts'
 
 export interface DownloadTriggerBaseProps extends PolymorphicProps, UseDownloadProps {}
 
@@ -15,9 +15,9 @@ export interface DownloadTriggerProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { useDownload } from './use-download'
+import { ark } from '../factory.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { useDownload } from './use-download.ts'
 
 const props = defineProps<DownloadTriggerProps>()
 

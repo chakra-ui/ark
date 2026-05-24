@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePopoverContext } from './use-popover-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { usePopoverContext } from './use-popover-context.ts'
 
 export interface PopoverArrowTipBaseProps extends PolymorphicProps {}
 export interface PopoverArrowTipProps extends HTMLProps<'div'>, PopoverArrowTipBaseProps {}

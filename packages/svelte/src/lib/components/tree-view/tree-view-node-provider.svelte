@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { TreeNode } from '../collection'
+  import type { TreeNode } from '../collection/index.ts'
 
   export interface TreeViewNodeProviderBaseProps<T extends TreeNode> {
     node: T
@@ -12,9 +12,9 @@
 </script>
 
 <script lang="ts" generics="T extends TreeNode">
-  import { useTreeViewContext } from './use-tree-view-context'
-  import { TreeViewNodeProvider } from './use-tree-view-node-context'
-  import { TreeViewNodePropsProvider } from './use-tree-view-node-props-context'
+  import { useTreeViewContext } from './use-tree-view-context.ts'
+  import { TreeViewNodeProvider } from './use-tree-view-node-context.ts'
+  import { TreeViewNodePropsProvider } from './use-tree-view-node-props-context.ts'
 
   let { node, indexPath, children }: TreeViewNodeProviderProps<T> = $props()
 

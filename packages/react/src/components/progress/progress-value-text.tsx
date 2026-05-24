@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useProgressContext } from './use-progress-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useProgressContext } from './use-progress-context.ts'
 
 export interface ProgressValueTextBaseProps extends PolymorphicProps {}
 export interface ProgressValueTextProps extends HTMLProps<'span'>, ProgressValueTextBaseProps {}

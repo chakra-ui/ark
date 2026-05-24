@@ -1,5 +1,5 @@
 import type { ComputedRef } from 'vue'
-import { createContext } from './create-context'
+import { createContext } from './create-context.ts'
 
 export interface RenderStrategyProps {
   /**

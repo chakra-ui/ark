@@ -1,6 +1,6 @@
 import { createMemo, createSignal, splitProps } from 'solid-js'
-import type { MaybeAccessor } from '../../types'
-import { type CollectionOptions, type ListCollection, createListCollection } from './list-collection'
+import type { MaybeAccessor } from '../../types.ts'
+import { type CollectionOptions, type ListCollection, createListCollection } from './list-collection.ts'
 
 export interface UseListCollectionProps<T> extends Omit<CollectionOptions<T>, 'items'> {
   /**

@@ -1,10 +1,10 @@
 import type { SegmentProps } from '@zag-js/date-input'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useDateInputContext } from './use-date-input-context'
-import { useDateInputSegmentGroupPropsContext } from './use-date-input-segment-group-props-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useDateInputContext } from './use-date-input-context.ts'
+import { useDateInputSegmentGroupPropsContext } from './use-date-input-segment-group-props-context.ts'
 
 export interface DateInputSegmentBaseProps extends PolymorphicProps<'span'>, Pick<SegmentProps, 'segment'> {}
 export interface DateInputSegmentProps extends HTMLProps<'span'>, DateInputSegmentBaseProps {}

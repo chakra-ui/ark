@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './splitter.types'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './splitter.types.ts'
 
 export interface SplitterRootBaseProps extends RootProps, PolymorphicProps {}
 export interface SplitterRootProps
@@ -15,10 +15,10 @@ export interface SplitterRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useSplitter } from './use-splitter'
-import { SplitterProvider } from './use-splitter-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useSplitter } from './use-splitter.ts'
+import { SplitterProvider } from './use-splitter-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<SplitterRootProps>()
 const emits = defineEmits<SplitterRootEmits>()

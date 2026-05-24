@@ -1,7 +1,7 @@
 import type { Accessor } from '$lib/types'
 import type { PropTypes } from '@zag-js/svelte'
 import type * as tour from '@zag-js/tour'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface UseTourContext extends Accessor<tour.Api<PropTypes>> {}
 

@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseDatePickerContext, useDatePickerContext } from './use-date-picker-context'
+import { type UseDatePickerContext, useDatePickerContext } from './use-date-picker-context.ts'
 
 export interface DatePickerContextProps {
   children: (context: UseDatePickerContext) => ReactNode

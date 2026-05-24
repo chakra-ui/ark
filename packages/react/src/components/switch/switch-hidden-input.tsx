@@ -2,9 +2,9 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useFieldContext } from '../field'
-import { useSwitchContext } from './use-switch-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useFieldContext } from '../field/index.ts'
+import { useSwitchContext } from './use-switch-context.ts'
 
 export interface SwitchHiddenInputBaseProps extends PolymorphicProps {}
 export interface SwitchHiddenInputProps extends HTMLProps<'input'>, SwitchHiddenInputBaseProps {}

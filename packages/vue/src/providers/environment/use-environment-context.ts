@@ -1,5 +1,5 @@
 import { type ComputedRef, computed } from 'vue'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export type RootNode = ShadowRoot | Document | Node
 

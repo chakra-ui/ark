@@ -32,9 +32,9 @@ export {
   createSplitterRegistry,
   type SplitterRegistryProps,
   type SplitterRegistryReturn,
-} from './create-splitter-registry'
-export { splitterAnatomy } from './splitter.anatomy'
-export { useSplitter, type UseSplitterProps, type UseSplitterReturn } from './use-splitter'
-export { useSplitterContext, type UseSplitterContext } from './use-splitter-context'
+} from './create-splitter-registry.ts'
+export { splitterAnatomy } from './splitter.anatomy.ts'
+export { useSplitter, type UseSplitterProps, type UseSplitterReturn } from './use-splitter.ts'
+export { useSplitterContext, type UseSplitterContext } from './use-splitter-context.ts'
 
-export * as Splitter from './splitter'
+export * as Splitter from './splitter.ts'

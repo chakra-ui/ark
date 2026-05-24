@@ -7,9 +7,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useFieldContext } from '../field'
-  import { useCheckboxContext } from './use-checkbox-context'
+  import { Ark } from '../factory/index.ts'
+  import { useFieldContext } from '../field/index.ts'
+  import { useCheckboxContext } from './use-checkbox-context.ts'
 
   let { ref = $bindable(null), ...props }: CheckboxHiddenInputProps = $props()
 

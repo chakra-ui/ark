@@ -7,8 +7,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useRatingGroupContext } from './use-rating-group-context'
+  import { Ark } from '../factory/index.ts'
+  import { useRatingGroupContext } from './use-rating-group-context.ts'
 
   let { ref = $bindable(null), ...props }: RatingGroupLabelProps = $props()
   const ratingGroup = useRatingGroupContext()

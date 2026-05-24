@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Field } from '../'
+import { Field } from '../index.tsx'
 
 const ComponentUnderTest = (props: Field.RootProps) => (
   <Field.Root {...props}>

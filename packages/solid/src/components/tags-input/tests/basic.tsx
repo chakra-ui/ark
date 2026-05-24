@@ -1,6 +1,6 @@
 import { Index } from 'solid-js'
-import { Field } from '../../field'
-import { TagsInput } from '../'
+import { Field } from '../../field/index.tsx'
+import { TagsInput } from '../index.tsx'
 
 export const ComponentUnderTest = (props: TagsInput.RootProps) => {
   return (

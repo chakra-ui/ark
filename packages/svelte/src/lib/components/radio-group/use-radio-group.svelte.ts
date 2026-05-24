@@ -1,9 +1,9 @@
 import * as radio from '@zag-js/radio-group'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Accessor, Optional } from '../../types'
-import { useFieldsetContext } from '../fieldset'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { Accessor, Optional } from '../../types.ts'
+import { useFieldsetContext } from '../fieldset/index.ts'
 
 export interface UseRadioGroupProps extends Optional<Omit<radio.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseRadioGroupReturn extends Accessor<radio.Api<PropTypes>> {}

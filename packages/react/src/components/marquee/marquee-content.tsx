@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { type ReactNode, forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useMarqueeContext } from './use-marquee-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useMarqueeContext } from './use-marquee-context.ts'
 
 export interface MarqueeContentBaseProps extends PolymorphicProps {
   children: ReactNode

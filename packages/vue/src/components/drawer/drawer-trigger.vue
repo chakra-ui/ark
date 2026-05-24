@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { TriggerProps } from '@zag-js/drawer'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface DrawerTriggerBaseProps extends TriggerProps, PolymorphicProps {}
 export interface DrawerTriggerProps
@@ -14,9 +14,9 @@ export interface DrawerTriggerProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useDrawerContext } from './use-drawer-context'
-import { useForwardExpose } from '../../utils'
+import { ark } from '../factory.ts'
+import { useDrawerContext } from './use-drawer-context.ts'
+import { useForwardExpose } from '../../utils/index.ts'
 
 const props = defineProps<DrawerTriggerProps>()
 

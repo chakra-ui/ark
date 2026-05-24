@@ -2,11 +2,11 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { parts } from './segment-group.anatomy'
-import type { UseSegmentGroupReturn } from './use-segment-group'
-import { SegmentGroupProvider } from './use-segment-group-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { parts } from './segment-group.anatomy.ts'
+import type { UseSegmentGroupReturn } from './use-segment-group.ts'
+import { SegmentGroupProvider } from './use-segment-group-context.ts'
 
 interface RootProviderProps {
   value: UseSegmentGroupReturn

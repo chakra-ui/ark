@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { SwatchProps } from '@zag-js/color-picker'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 interface ValueSwatchProps extends Omit<SwatchProps, 'value'> {}
 
@@ -17,10 +17,10 @@ export interface ColorPickerValueSwatchProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { useColorPickerContext } from './use-color-picker-context'
-import { ColorPickerSwatchPropsProvider } from './use-color-picker-swatch-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useColorPickerContext } from './use-color-picker-context.ts'
+import { ColorPickerSwatchPropsProvider } from './use-color-picker-swatch-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<ColorPickerValueSwatchBaseProps>()
 const colorPicker = useColorPickerContext()

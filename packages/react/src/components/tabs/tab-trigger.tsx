@@ -3,10 +3,10 @@
 import { mergeProps } from '@zag-js/react'
 import type { TriggerProps } from '@zag-js/tabs'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useTabsContext } from './use-tabs-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useTabsContext } from './use-tabs-context.ts'
 
 export interface TabTriggerBaseProps extends TriggerProps, PolymorphicProps {}
 export interface TabTriggerProps extends Assign<HTMLProps<'button'>, TabTriggerBaseProps> {}

@@ -2,9 +2,9 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UsePasswordInputReturn } from './use-password-input'
-import { PasswordInputProvider } from './use-password-input-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import type { UsePasswordInputReturn } from './use-password-input.ts'
+import { PasswordInputProvider } from './use-password-input-context.ts'
 
 interface RootProviderProps {
   value: UsePasswordInputReturn

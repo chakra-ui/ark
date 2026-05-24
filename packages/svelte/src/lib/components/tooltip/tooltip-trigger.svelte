@@ -9,8 +9,8 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { createSplitProps } from '$lib/utils/create-split-props'
-  import { Ark } from '../factory'
-  import { useTooltipContext } from './use-tooltip-context'
+  import { Ark } from '../factory/index.ts'
+  import { useTooltipContext } from './use-tooltip-context.ts'
 
   let { ref = $bindable(null), ...props }: TooltipTriggerProps = $props()
   const [triggerProps, localProps] = $derived(createSplitProps<TriggerProps>()(props, ['value']))

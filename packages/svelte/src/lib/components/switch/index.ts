@@ -14,8 +14,8 @@ export {
   type SwitchRootProviderProps,
 } from './switch-root-provider.svelte'
 export { default as SwitchThumb, type SwitchThumbBaseProps, type SwitchThumbProps } from './switch-thumb.svelte'
-export { switchAnatomy } from './switch.anatomy'
-export { useSwitch, type UseSwitchProps, type UseSwitchReturn } from './use-switch.svelte'
-export { useSwitchContext, type UseSwitchContext } from './use-switch-context'
+export { switchAnatomy } from './switch.anatomy.ts'
+export { useSwitch, type UseSwitchProps, type UseSwitchReturn } from './use-switch.svelte.ts'
+export { useSwitchContext, type UseSwitchContext } from './use-switch-context.ts'
 
-export * as Switch from './switch'
+export * as Switch from './switch.ts'

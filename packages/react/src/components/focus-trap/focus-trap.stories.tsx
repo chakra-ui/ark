@@ -6,6 +6,6 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
-export { InitialFocus } from './examples/initial-focus'
-export { Autofocus } from './examples/autofocus'
+export { Basic } from './examples/basic.tsx'
+export { InitialFocus } from './examples/initial-focus.tsx'
+export { Autofocus } from './examples/autofocus.tsx'

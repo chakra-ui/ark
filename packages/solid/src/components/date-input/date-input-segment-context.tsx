@@ -1,7 +1,7 @@
 import type { DateSegment } from '@zag-js/date-input'
 import { Index, type JSX } from 'solid-js'
-import { useDateInputContext } from './use-date-input-context'
-import { useDateInputSegmentGroupPropsContext } from './use-date-input-segment-group-props-context'
+import { useDateInputContext } from './use-date-input-context.ts'
+import { useDateInputSegmentGroupPropsContext } from './use-date-input-segment-group-props-context.ts'
 
 export interface DateInputSegmentContextProps {
   children: (segment: DateSegment) => JSX.Element

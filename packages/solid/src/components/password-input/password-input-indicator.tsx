@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { type JSX, Show, splitProps } from 'solid-js'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePasswordInputContext } from './use-password-input-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { usePasswordInputContext } from './use-password-input-context.ts'
 
 export interface PasswordInputIndicatorBaseProps extends PolymorphicProps<'span'> {
   /**

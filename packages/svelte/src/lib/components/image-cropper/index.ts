@@ -43,8 +43,8 @@ export {
   type ImageCropperViewportBaseProps,
   type ImageCropperViewportProps,
 } from './image-cropper-viewport.svelte'
-export { imageCropperAnatomy } from './image-cropper.anatomy'
-export { useImageCropperContext, type UseImageCropperContext } from './use-image-cropper-context'
-export { useImageCropper, type UseImageCropperProps, type UseImageCropperReturn } from './use-image-cropper.svelte'
+export { imageCropperAnatomy } from './image-cropper.anatomy.ts'
+export { useImageCropperContext, type UseImageCropperContext } from './use-image-cropper-context.ts'
+export { useImageCropper, type UseImageCropperProps, type UseImageCropperReturn } from './use-image-cropper.svelte.ts'
 
-export * as ImageCropper from './image-cropper'
+export * as ImageCropper from './image-cropper.ts'

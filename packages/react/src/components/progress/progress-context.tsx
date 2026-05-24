@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseProgressContext, useProgressContext } from './use-progress-context'
+import { type UseProgressContext, useProgressContext } from './use-progress-context.ts'
 
 export interface ProgressContextProps {
   children: (context: UseProgressContext) => ReactNode

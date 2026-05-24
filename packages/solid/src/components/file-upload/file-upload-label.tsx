@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useFileUploadContext } from './use-file-upload-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useFileUploadContext } from './use-file-upload-context.ts'
 
 export interface FileUploadLabelBaseProps extends PolymorphicProps<'label'> {}
 export interface FileUploadLabelProps extends HTMLProps<'label'>, FileUploadLabelBaseProps {}

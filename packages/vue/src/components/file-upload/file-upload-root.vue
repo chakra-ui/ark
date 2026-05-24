@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './file-upload.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './file-upload.types.ts'
 
 export interface FileUploadRootBaseProps extends RootProps, PolymorphicProps {}
 export interface FileUploadRootProps
@@ -16,10 +16,10 @@ export interface FileUploadRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useFileUpload } from './use-file-upload'
-import { FileUploadProvider } from './use-file-upload-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useFileUpload } from './use-file-upload.ts'
+import { FileUploadProvider } from './use-file-upload-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<FileUploadRootProps>(), {
   allowDrop: undefined,

@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useCollapsibleContext } from './use-collapsible-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useCollapsibleContext } from './use-collapsible-context.ts'
 
 export interface CollapsibleIndicatorBaseProps extends PolymorphicProps {}
 export interface CollapsibleIndicatorProps extends HTMLProps<'div'>, CollapsibleIndicatorBaseProps {}

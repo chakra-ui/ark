@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseColorPickerContext, useColorPickerContext } from './use-color-picker-context'
+import { type UseColorPickerContext, useColorPickerContext } from './use-color-picker-context.ts'
 
 export interface ColorPickerContextProps {
   children: (context: UseColorPickerContext) => ReactNode

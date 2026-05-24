@@ -1,5 +1,5 @@
 import { For } from 'solid-js'
-import { FileUpload } from '../'
+import { FileUpload } from '../index.tsx'
 
 export const ComponentUnderTest = (props: FileUpload.RootProps) => (
   <FileUpload.Root {...props}>

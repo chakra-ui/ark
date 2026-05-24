@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseFieldsetReturn } from './use-fieldset'
-import { FieldsetProvider } from './use-fieldset-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import type { UseFieldsetReturn } from './use-fieldset.ts'
+import { FieldsetProvider } from './use-fieldset-context.ts'
 
 interface RootProviderProps {
   value: UseFieldsetReturn

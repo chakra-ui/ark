@@ -1,11 +1,11 @@
 import * as listbox from '@zag-js/listbox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
-import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { EmitFn, Optional } from '../../types'
-import { cleanProps } from '../../utils/clean-props'
-import type { CollectionItem, ListCollection } from '../collection'
-import type { RootEmits } from './listbox'
+import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { EmitFn, Optional } from '../../types.ts'
+import { cleanProps } from '../../utils/clean-props.ts'
+import type { CollectionItem, ListCollection } from '../collection/index.ts'
+import type { RootEmits } from './listbox.ts'
 
 export interface UseListboxProps<T extends CollectionItem> extends Optional<
   Omit<listbox.Props<T>, 'dir' | 'getRootNode' | 'collection'>,

@@ -1,8 +1,8 @@
 'use client'
 
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { tourAnatomy } from './tour.anatomy'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { tourAnatomy } from './tour.anatomy.ts'
 
 export interface TourControlBaseProps extends PolymorphicProps {}
 export interface TourControlProps extends HTMLProps<'div'>, TourControlBaseProps {}

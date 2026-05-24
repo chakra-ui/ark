@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Clipboard, type ClipboardRootEmits, type ClipboardRootProps } from '../'
-import { useForwardPropsEmits } from '../../..'
+import { Clipboard, type ClipboardRootEmits, type ClipboardRootProps } from '../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<ClipboardRootProps>()
 const emits = defineEmits<ClipboardRootEmits>()

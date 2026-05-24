@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Field, type FieldRootProps } from '../../field'
-import { SignaturePad } from '../'
+import { Field, type FieldRootProps } from '../../field/index.ts'
+import { SignaturePad } from '../index.ts'
 
 defineProps<FieldRootProps>()
 </script>

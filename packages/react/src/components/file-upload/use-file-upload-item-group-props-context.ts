@@ -1,7 +1,7 @@
 'use client'
 
 import type { ItemGroupProps } from '@zag-js/file-upload'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface UseFileUploadItemGroupContext extends ItemGroupProps {}
 

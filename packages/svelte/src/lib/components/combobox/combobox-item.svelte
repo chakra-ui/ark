@@ -11,10 +11,10 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { createSplitProps } from '$lib/utils/create-split-props'
-  import { Ark } from '../factory'
-  import { useComboboxContext } from './use-combobox-context'
-  import { ComboboxItemProvider } from './use-combobox-item-context'
-  import { ComboboxItemPropsProvider } from './use-combobox-item-props-context'
+  import { Ark } from '../factory/index.ts'
+  import { useComboboxContext } from './use-combobox-context.ts'
+  import { ComboboxItemProvider } from './use-combobox-item-context.ts'
+  import { ComboboxItemPropsProvider } from './use-combobox-item-props-context.ts'
 
   let { ref = $bindable(null), ...props }: ComboboxItemProps = $props()
 

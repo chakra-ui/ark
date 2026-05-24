@@ -1,8 +1,8 @@
 'use client'
 
 import { useCallback, useMemo, useRef, useState } from 'react'
-import { useEvent } from '../../utils/use-event'
-import { type CollectionOptions, type ListCollection, createListCollection } from './list-collection'
+import { useEvent } from '../../utils/use-event.ts'
+import { type CollectionOptions, type ListCollection, createListCollection } from './list-collection.ts'
 
 export interface UseListCollectionProps<T> extends Omit<CollectionOptions<T>, 'items'> {
   /**

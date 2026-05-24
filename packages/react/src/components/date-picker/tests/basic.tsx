@@ -1,5 +1,5 @@
-import { DatePicker } from '../'
-import { Portal } from '../../portal'
+import { DatePicker } from '../index.ts'
+import { Portal } from '../../portal/index.ts'
 
 export const ComponentUnderTest = (props: DatePicker.RootProps) => (
   <DatePicker.Root {...props}>

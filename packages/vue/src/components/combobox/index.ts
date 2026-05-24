@@ -14,7 +14,7 @@ export {
   type ListCollection,
   useListCollection,
   type UseListCollectionProps,
-} from '../collection'
+} from '../collection/index.ts'
 export {
   default as ComboboxClearTrigger,
   type ComboboxClearTriggerBaseProps,
@@ -82,9 +82,9 @@ export {
   type ComboboxTriggerBaseProps,
   type ComboboxTriggerProps,
 } from './combobox-trigger.vue'
-export { comboboxAnatomy } from './combobox.anatomy'
-export { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox'
-export { useComboboxContext, type UseComboboxContext } from './use-combobox-context'
-export { useComboboxItemContext, type UseComboboxItemContext } from './use-combobox-item-context'
+export { comboboxAnatomy } from './combobox.anatomy.ts'
+export { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox.ts'
+export { useComboboxContext, type UseComboboxContext } from './use-combobox-context.ts'
+export { useComboboxItemContext, type UseComboboxItemContext } from './use-combobox-item-context.ts'
 
-export * as Combobox from './combobox'
+export * as Combobox from './combobox.ts'

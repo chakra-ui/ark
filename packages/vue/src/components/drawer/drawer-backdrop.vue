@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface DrawerBackdropBaseProps extends PolymorphicProps {}
 export interface DrawerBackdropProps
@@ -15,11 +15,11 @@ export interface DrawerBackdropProps
 <script setup lang="ts">
 import { mergeProps } from '@zag-js/vue'
 import { computed } from 'vue'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { useRenderStrategyProps } from '../../utils/use-render-strategy'
-import { usePresence } from '../presence'
-import { ark } from '../factory'
-import { useDrawerContext } from './use-drawer-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { useRenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import { usePresence } from '../presence/index.ts'
+import { ark } from '../factory.ts'
+import { useDrawerContext } from './use-drawer-context.ts'
 
 defineProps<DrawerBackdropProps>()
 

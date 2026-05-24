@@ -2,11 +2,11 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseRatingGroupProps, useRatingGroup } from './use-rating-group'
-import { RatingGroupProvider } from './use-rating-group-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { type UseRatingGroupProps, useRatingGroup } from './use-rating-group.ts'
+import { RatingGroupProvider } from './use-rating-group-context.ts'
 
 export interface RatingGroupRootBaseProps extends UseRatingGroupProps, PolymorphicProps {}
 export interface RatingGroupRootProps extends Assign<HTMLProps<'div'>, RatingGroupRootBaseProps> {}

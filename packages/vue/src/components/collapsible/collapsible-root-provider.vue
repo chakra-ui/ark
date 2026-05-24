@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseCollapsibleReturn } from './use-collapsible'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseCollapsibleReturn } from './use-collapsible.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseCollapsibleReturn>
@@ -19,9 +19,9 @@ export interface CollapsibleRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { CollapsibleProvider } from './use-collapsible-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { CollapsibleProvider } from './use-collapsible-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<CollapsibleRootProviderProps>()
 const collapsible = computed(() => props.value)

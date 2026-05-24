@@ -7,8 +7,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useEditableContext } from './use-editable-context'
+  import { Ark } from '../factory/index.ts'
+  import { useEditableContext } from './use-editable-context.ts'
 
   let { ref = $bindable(null), ...props }: EditableControlProps = $props()
 

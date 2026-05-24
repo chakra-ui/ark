@@ -22,7 +22,7 @@ export interface FormatRelativeTimeProps {
 <script setup lang="ts">
 import { formatRelativeTime } from '@zag-js/i18n-utils'
 import { computed } from 'vue'
-import { DEFAULT_LOCALE, useLocaleContext } from '../../providers'
+import { DEFAULT_LOCALE, useLocaleContext } from '../../providers/index.ts'
 
 const props = defineProps<FormatRelativeTimeProps>()
 const locale = useLocaleContext(DEFAULT_LOCALE)

@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseRadioGroupProps, useRadioGroup } from './use-radio-group'
-import { RadioGroupProvider } from './use-radio-group-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { type UseRadioGroupProps, useRadioGroup } from './use-radio-group.ts'
+import { RadioGroupProvider } from './use-radio-group-context.ts'
 
 export interface RadioGroupRootBaseProps extends UseRadioGroupProps, PolymorphicProps<'div'> {}
 export interface RadioGroupRootProps extends HTMLProps<'div'>, RadioGroupRootBaseProps {}

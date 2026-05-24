@@ -3,9 +3,9 @@
 import { mergeProps } from '@zag-js/react'
 import type { MarkerProps } from '@zag-js/slider'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useSliderContext } from './use-slider-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useSliderContext } from './use-slider-context.ts'
 
 export interface SliderMarkerBaseProps extends MarkerProps, PolymorphicProps {}
 export interface SliderMarkerProps extends HTMLProps<'span'>, SliderMarkerBaseProps {}

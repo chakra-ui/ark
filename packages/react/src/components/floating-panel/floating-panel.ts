@@ -16,68 +16,68 @@ export {
   FloatingPanelBody as Body,
   type FloatingPanelBodyBaseProps as BodyBaseProps,
   type FloatingPanelBodyProps as BodyProps,
-} from './floating-panel-body'
+} from './floating-panel-body.tsx'
 export {
   FloatingPanelCloseTrigger as CloseTrigger,
   type FloatingPanelCloseTriggerBaseProps as CloseTriggerBaseProps,
   type FloatingPanelCloseTriggerProps as CloseTriggerProps,
-} from './floating-panel-close-trigger'
+} from './floating-panel-close-trigger.tsx'
 export {
   FloatingPanelContent as Content,
   type FloatingPanelContentBaseProps as ContentBaseProps,
   type FloatingPanelContentProps as ContentProps,
-} from './floating-panel-content'
+} from './floating-panel-content.tsx'
 export {
   FloatingPanelContext as Context,
   type FloatingPanelContextProps as ContextProps,
-} from './floating-panel-context'
+} from './floating-panel-context.tsx'
 export {
   FloatingPanelControl as Control,
   type FloatingPanelControlBaseProps as ControlBaseProps,
   type FloatingPanelControlProps as ControlProps,
-} from './floating-panel-control'
+} from './floating-panel-control.tsx'
 export {
   FloatingPanelDragTrigger as DragTrigger,
   type FloatingPanelDragTriggerBaseProps as DragTriggerBaseProps,
   type FloatingPanelDragTriggerProps as DragTriggerProps,
-} from './floating-panel-drag-trigger'
+} from './floating-panel-drag-trigger.tsx'
 export {
   FloatingPanelHeader as Header,
   type FloatingPanelHeaderBaseProps as HeaderBaseProps,
   type FloatingPanelHeaderProps as HeaderProps,
-} from './floating-panel-header'
+} from './floating-panel-header.tsx'
 export {
   FloatingPanelPositioner as Positioner,
   type FloatingPanelPositionerBaseProps as PositionerBaseProps,
   type FloatingPanelPositionerProps as PositionerProps,
-} from './floating-panel-positioner'
+} from './floating-panel-positioner.tsx'
 export {
   FloatingPanelResizeTrigger as ResizeTrigger,
   type FloatingPanelResizeTriggerBaseProps as ResizeTriggerBaseProps,
   type FloatingPanelResizeTriggerProps as ResizeTriggerProps,
-} from './floating-panel-resize-trigger'
+} from './floating-panel-resize-trigger.tsx'
 export {
   FloatingPanelRoot as Root,
   type FloatingPanelRootBaseProps as RootBaseProps,
   type FloatingPanelRootProps as RootProps,
-} from './floating-panel-root'
+} from './floating-panel-root.tsx'
 export {
   FloatingPanelRootProvider as RootProvider,
   type FloatingPanelRootProviderBaseProps as RootProviderBaseProps,
   type FloatingPanelRootProviderProps as RootProviderProps,
-} from './floating-panel-root-provider'
+} from './floating-panel-root-provider.tsx'
 export {
   FloatingPanelStageTrigger as StageTrigger,
   type FloatingPanelStageTriggerBaseProps as StageTriggerBaseProps,
   type FloatingPanelStageTriggerProps as StageTriggerProps,
-} from './floating-panel-stage-trigger'
+} from './floating-panel-stage-trigger.tsx'
 export {
   FloatingPanelTitle as Title,
   type FloatingPanelTitleBaseProps as TitleBaseProps,
   type FloatingPanelTitleProps as TitleProps,
-} from './floating-panel-title'
+} from './floating-panel-title.tsx'
 export {
   FloatingPanelTrigger as Trigger,
   type FloatingPanelTriggerBaseProps as TriggerBaseProps,
   type FloatingPanelTriggerProps as TriggerProps,
-} from './floating-panel-trigger'
+} from './floating-panel-trigger.tsx'

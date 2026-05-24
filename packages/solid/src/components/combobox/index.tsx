@@ -14,55 +14,59 @@ export {
   type ListCollection,
   useListCollection,
   type UseListCollectionProps,
-} from '../collection'
+} from '../collection/index.tsx'
 export {
   ComboboxClearTrigger,
   type ComboboxClearTriggerBaseProps,
   type ComboboxClearTriggerProps,
-} from './combobox-clear-trigger'
-export { ComboboxContent, type ComboboxContentBaseProps, type ComboboxContentProps } from './combobox-content'
-export { ComboboxEmpty, type ComboboxEmptyBaseProps, type ComboboxEmptyProps } from './combobox-empty'
-export { ComboboxContext, type ComboboxContextProps } from './combobox-context'
-export { ComboboxControl, type ComboboxControlBaseProps, type ComboboxControlProps } from './combobox-control'
-export { ComboboxInput, type ComboboxInputBaseProps, type ComboboxInputProps } from './combobox-input'
-export { ComboboxItem, type ComboboxItemBaseProps, type ComboboxItemProps } from './combobox-item'
-export { ComboboxItemContext, type ComboboxItemContextProps } from './combobox-item-context'
-export { ComboboxItemGroup, type ComboboxItemGroupBaseProps, type ComboboxItemGroupProps } from './combobox-item-group'
+} from './combobox-clear-trigger.tsx'
+export { ComboboxContent, type ComboboxContentBaseProps, type ComboboxContentProps } from './combobox-content.tsx'
+export { ComboboxEmpty, type ComboboxEmptyBaseProps, type ComboboxEmptyProps } from './combobox-empty.tsx'
+export { ComboboxContext, type ComboboxContextProps } from './combobox-context.tsx'
+export { ComboboxControl, type ComboboxControlBaseProps, type ComboboxControlProps } from './combobox-control.tsx'
+export { ComboboxInput, type ComboboxInputBaseProps, type ComboboxInputProps } from './combobox-input.tsx'
+export { ComboboxItem, type ComboboxItemBaseProps, type ComboboxItemProps } from './combobox-item.tsx'
+export { ComboboxItemContext, type ComboboxItemContextProps } from './combobox-item-context.tsx'
+export {
+  ComboboxItemGroup,
+  type ComboboxItemGroupBaseProps,
+  type ComboboxItemGroupProps,
+} from './combobox-item-group.tsx'
 export {
   ComboboxItemGroupLabel,
   type ComboboxItemGroupLabelBaseProps,
   type ComboboxItemGroupLabelProps,
-} from './combobox-item-group-label'
+} from './combobox-item-group-label.tsx'
 export {
   ComboboxItemIndicator,
   type ComboboxItemIndicatorBaseProps,
   type ComboboxItemIndicatorProps,
-} from './combobox-item-indicator'
-export { ComboboxItemText, type ComboboxItemTextBaseProps, type ComboboxItemTextProps } from './combobox-item-text'
-export { ComboboxLabel, type ComboboxLabelBaseProps, type ComboboxLabelProps } from './combobox-label'
-export { ComboboxList, type ComboboxListBaseProps, type ComboboxListProps } from './combobox-list'
+} from './combobox-item-indicator.tsx'
+export { ComboboxItemText, type ComboboxItemTextBaseProps, type ComboboxItemTextProps } from './combobox-item-text.tsx'
+export { ComboboxLabel, type ComboboxLabelBaseProps, type ComboboxLabelProps } from './combobox-label.tsx'
+export { ComboboxList, type ComboboxListBaseProps, type ComboboxListProps } from './combobox-list.tsx'
 export {
   ComboboxPositioner,
   type ComboboxPositionerBaseProps,
   type ComboboxPositionerProps,
-} from './combobox-positioner'
+} from './combobox-positioner.tsx'
 export {
   ComboboxRoot,
   type ComboboxRootBaseProps,
   type ComboboxRootProps,
   type ComboboxRootComponent,
   type ComboboxRootComponentProps,
-} from './combobox-root'
+} from './combobox-root.tsx'
 export {
   ComboboxRootProvider,
   type ComboboxRootProviderBaseProps,
   type ComboboxRootProviderProps,
   type ComboboxRootProviderComponent,
-} from './combobox-root-provider'
-export { ComboboxTrigger, type ComboboxTriggerBaseProps, type ComboboxTriggerProps } from './combobox-trigger'
-export { comboboxAnatomy } from './combobox.anatomy'
-export { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox'
-export { useComboboxContext, type UseComboboxContext } from './use-combobox-context'
-export { useComboboxItemContext, type UseComboboxItemContext } from './use-combobox-item-context'
+} from './combobox-root-provider.tsx'
+export { ComboboxTrigger, type ComboboxTriggerBaseProps, type ComboboxTriggerProps } from './combobox-trigger.tsx'
+export { comboboxAnatomy } from './combobox.anatomy.ts'
+export { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox.ts'
+export { useComboboxContext, type UseComboboxContext } from './use-combobox-context.ts'
+export { useComboboxItemContext, type UseComboboxItemContext } from './use-combobox-item-context.ts'
 
-export * as Combobox from './combobox'
+export * as Combobox from './combobox.ts'

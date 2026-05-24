@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ToggleGroup, type ToggleGroupRootEmits, type ToggleGroupRootProps } from '../'
-import { useForwardPropsEmits } from '../../..'
+import { ToggleGroup, type ToggleGroupRootEmits, type ToggleGroupRootProps } from '../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<ToggleGroupRootProps>()
 const emits = defineEmits<ToggleGroupRootEmits>()

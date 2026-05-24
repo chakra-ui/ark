@@ -3,10 +3,10 @@
 import type { AreaProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { ColorPickerAreaPropsProvider } from './use-color-picker-area-props-context'
-import { useColorPickerContext } from './use-color-picker-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { ColorPickerAreaPropsProvider } from './use-color-picker-area-props-context.ts'
+import { useColorPickerContext } from './use-color-picker-context.ts'
 
 export interface ColorPickerAreaBaseProps extends AreaProps, PolymorphicProps {}
 export interface ColorPickerAreaProps extends HTMLProps<'div'>, ColorPickerAreaBaseProps {}

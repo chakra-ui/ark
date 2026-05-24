@@ -6,8 +6,8 @@
 </script>
 
 <script lang="ts">
-  import { Ark } from '../factory'
-  import { tourAnatomy } from './tour.anatomy'
+  import { Ark } from '../factory/index.ts'
+  import { tourAnatomy } from './tour.anatomy.ts'
 
   let { ref = $bindable(null), ...props }: TourControlProps = $props()
 </script>

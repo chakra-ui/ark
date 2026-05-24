@@ -2,10 +2,10 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { composeRefs } from '../../utils/compose-refs'
-import type { HTMLProps, PolymorphicProps } from '../factory'
-import { ark } from '../factory'
-import { useSwapContext } from './use-swap-context'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import type { HTMLProps, PolymorphicProps } from '../factory.ts'
+import { ark } from '../factory.ts'
+import { useSwapContext } from './use-swap-context.ts'
 
 export interface SwapIndicatorBaseProps extends PolymorphicProps {
   type: 'on' | 'off'

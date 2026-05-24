@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 import type { ContentProps } from '@zag-js/drawer'
 
 export interface DrawerContentBaseProps extends PolymorphicProps, ContentProps {}
@@ -15,12 +15,12 @@ export interface DrawerContentProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { useDrawerContext } from './use-drawer-context'
-import { useForwardExpose } from '../../utils'
-import { usePresenceContext } from '../presence'
+import { ark } from '../factory.ts'
+import { useDrawerContext } from './use-drawer-context.ts'
+import { useForwardExpose } from '../../utils/index.ts'
+import { usePresenceContext } from '../presence/index.ts'
 import { mergeProps } from '@zag-js/vue'
-import { createSplitProps } from '../create-split-props'
+import { createSplitProps } from '../create-split-props.ts'
 
 const props = withDefaults(defineProps<DrawerContentProps>(), {
   draggable: true,

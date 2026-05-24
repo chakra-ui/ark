@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ResizeTriggerProps } from '@zag-js/floating-panel'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface FloatingPanelResizeTriggerBaseProps extends ResizeTriggerProps, PolymorphicProps {}
 export interface FloatingPanelResizeTriggerProps
@@ -14,9 +14,9 @@ export interface FloatingPanelResizeTriggerProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useFloatingPanelContext } from './use-floating-panel-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useFloatingPanelContext } from './use-floating-panel-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<FloatingPanelResizeTriggerProps>()
 const floatingPanel = useFloatingPanelContext()

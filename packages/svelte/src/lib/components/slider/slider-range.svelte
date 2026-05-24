@@ -7,8 +7,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useSliderContext } from './use-slider-context'
+  import { Ark } from '../factory/index.ts'
+  import { useSliderContext } from './use-slider-context.ts'
 
   let { ref = $bindable(null), ...props }: SliderRangeProps = $props()
   const slider = useSliderContext()

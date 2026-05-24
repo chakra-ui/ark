@@ -3,9 +3,9 @@
 import type { ItemProps } from '@zag-js/carousel'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useCarouselContext } from './use-carousel-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useCarouselContext } from './use-carousel-context.ts'
 
 export interface CarouselItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface CarouselItemProps extends HTMLProps<'div'>, CarouselItemBaseProps {}

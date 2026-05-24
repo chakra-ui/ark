@@ -1,6 +1,6 @@
 import type { Accessor } from '$lib/types'
 import { createContext } from '$lib/utils/create-context'
-import type { UseSwapReturn } from './use-swap.svelte'
+import type { UseSwapReturn } from './use-swap.svelte.ts'
 
 export interface UseSwapContext extends Accessor<UseSwapReturn> {}
 

@@ -2,12 +2,12 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { parts } from './segment-group.anatomy'
-import { type UseSegmentGroupProps, useSegmentGroup } from './use-segment-group'
-import { SegmentGroupProvider } from './use-segment-group-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { parts } from './segment-group.anatomy.ts'
+import { type UseSegmentGroupProps, useSegmentGroup } from './use-segment-group.ts'
+import { SegmentGroupProvider } from './use-segment-group-context.ts'
 
 export interface SegmentGroupRootBaseProps extends UseSegmentGroupProps, PolymorphicProps {}
 export interface SegmentGroupRootProps extends Assign<HTMLProps<'div'>, SegmentGroupRootBaseProps> {}

@@ -78,8 +78,12 @@ export {
   type FloatingPanelControlBaseProps,
 } from './floating-panel-control.svelte'
 
-export { useFloatingPanel, type UseFloatingPanelProps, type UseFloatingPanelReturn } from './use-floating-panel.svelte'
-export { useFloatingPanelContext, type UseFloatingPanelContext } from './use-floating-panel-context'
-export { floatingPanelAnatomy } from './floating-panel.anatomy'
+export {
+  useFloatingPanel,
+  type UseFloatingPanelProps,
+  type UseFloatingPanelReturn,
+} from './use-floating-panel.svelte.ts'
+export { useFloatingPanelContext, type UseFloatingPanelContext } from './use-floating-panel-context.ts'
+export { floatingPanelAnatomy } from './floating-panel.anatomy.ts'
 
-export * as FloatingPanel from './floating-panel'
+export * as FloatingPanel from './floating-panel.ts'

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface SegmentGroupItemControlBaseProps extends PolymorphicProps {}
 export interface SegmentGroupItemControlProps
@@ -13,11 +13,11 @@ export interface SegmentGroupItemControlProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useSegmentGroupContext } from './use-segment-group-context'
-import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
-import { parts } from './segment-group.anatomy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useSegmentGroupContext } from './use-segment-group-context.ts'
+import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context.ts'
+import { parts } from './segment-group.anatomy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<SegmentGroupItemControlProps>()
 

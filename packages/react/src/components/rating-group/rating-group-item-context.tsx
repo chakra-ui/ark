@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseRatingGroupItemContext, useRatingGroupItemContext } from './use-rating-group-item-context'
+import { type UseRatingGroupItemContext, useRatingGroupItemContext } from './use-rating-group-item-context.ts'
 
 export interface RatingGroupItemContextProps {
   children: (context: UseRatingGroupItemContext) => ReactNode

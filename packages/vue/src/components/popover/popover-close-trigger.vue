@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface PopoverCloseTriggerBaseProps extends PolymorphicProps {}
 export interface PopoverCloseTriggerProps
@@ -13,9 +13,9 @@ export interface PopoverCloseTriggerProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { usePopoverContext } from './use-popover-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { usePopoverContext } from './use-popover-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<PopoverCloseTriggerProps>()
 const popover = usePopoverContext()

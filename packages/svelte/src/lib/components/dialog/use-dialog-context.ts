@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UseDialogReturn } from './use-dialog.svelte'
+import type { UseDialogReturn } from './use-dialog.svelte.ts'
 
 export interface UseDialogContext extends UseDialogReturn {}
 

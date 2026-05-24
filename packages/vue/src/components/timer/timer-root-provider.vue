@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseTimerReturn } from './use-timer'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseTimerReturn } from './use-timer.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseTimerReturn>
@@ -19,9 +19,9 @@ export interface TimerRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { TimerProvider } from './use-timer-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { TimerProvider } from './use-timer-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<TimerRootProviderProps>()
 const timer = computed(() => props.value)

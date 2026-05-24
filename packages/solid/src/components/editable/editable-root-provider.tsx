@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseEditableReturn } from './use-editable'
-import { EditableProvider } from './use-editable-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import type { UseEditableReturn } from './use-editable.ts'
+import { EditableProvider } from './use-editable-context.ts'
 
 interface RootProviderProps {
   value: UseEditableReturn

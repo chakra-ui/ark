@@ -1,7 +1,7 @@
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { ComponentUnderTest, NumberInputWithField } from './basic'
+import { ComponentUnderTest, NumberInputWithField } from './basic.tsx'
 
 describe('NumberInput', () => {
   it('should have no a11y violations', async () => {

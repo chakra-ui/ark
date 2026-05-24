@@ -41,8 +41,8 @@ export {
 } from './dialog-root.vue'
 export { default as DialogTitle, type DialogTitleBaseProps, type DialogTitleProps } from './dialog-title.vue'
 export { default as DialogTrigger, type DialogTriggerBaseProps, type DialogTriggerProps } from './dialog-trigger.vue'
-export { dialogAnatomy } from './dialog.anatomy'
-export { useDialog, type UseDialogProps, type UseDialogReturn } from './use-dialog'
-export { useDialogContext, type UseDialogContext } from './use-dialog-context'
+export { dialogAnatomy } from './dialog.anatomy.ts'
+export { useDialog, type UseDialogProps, type UseDialogReturn } from './use-dialog.ts'
+export { useDialogContext, type UseDialogContext } from './use-dialog-context.ts'
 
-export * as Dialog from './dialog'
+export * as Dialog from './dialog.ts'

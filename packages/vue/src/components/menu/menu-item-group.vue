@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ItemGroupProps } from '@zag-js/menu'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface MenuItemGroupBaseProps extends Partial<ItemGroupProps>, PolymorphicProps {}
 export interface MenuItemGroupProps
@@ -15,10 +15,10 @@ export interface MenuItemGroupProps
 
 <script setup lang="ts">
 import { computed, useId } from 'vue'
-import { ark } from '../factory'
-import { useMenuContext } from './use-menu-context'
-import { MenuItemGroupProvider } from './use-menu-item-group-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useMenuContext } from './use-menu-context.ts'
+import { MenuItemGroupProvider } from './use-menu-item-group-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<MenuItemGroupProps>()
 

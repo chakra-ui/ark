@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useMenuContext } from './use-menu-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useMenuContext } from './use-menu-context.ts'
 
 export interface MenuSeparatorBaseProps extends PolymorphicProps<'hr'> {}
 export interface MenuSeparatorProps extends HTMLProps<'hr'>, MenuSeparatorBaseProps {}

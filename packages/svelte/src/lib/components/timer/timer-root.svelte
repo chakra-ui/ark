@@ -2,10 +2,10 @@
   import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps, reflect } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { TimerProvider } from './use-timer-context'
-  import type { UseTimerProps } from './use-timer.svelte'
-  import { useTimer } from './use-timer.svelte'
+  import { Ark } from '../factory/index.ts'
+  import { TimerProvider } from './use-timer-context.ts'
+  import type { UseTimerProps } from './use-timer.svelte.ts'
+  import { useTimer } from './use-timer.svelte.ts'
 
   export interface TimerRootBaseProps extends Optional<UseTimerProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface TimerRootProps extends Assign<HTMLProps<'div'>, TimerRootBaseProps> {}

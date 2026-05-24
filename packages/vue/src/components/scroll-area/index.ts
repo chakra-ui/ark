@@ -41,8 +41,8 @@ export {
   type ScrollAreaViewportBaseProps,
   type ScrollAreaViewportProps,
 } from './scroll-area-viewport.vue'
-export { scrollAreaAnatomy } from './scroll-area.anatomy'
-export { useScrollArea, type UseScrollAreaProps, type UseScrollAreaReturn } from './use-scroll-area'
-export { useScrollAreaContext, type UseScrollAreaContext } from './use-scroll-area-context'
+export { scrollAreaAnatomy } from './scroll-area.anatomy.ts'
+export { useScrollArea, type UseScrollAreaProps, type UseScrollAreaReturn } from './use-scroll-area.ts'
+export { useScrollAreaContext, type UseScrollAreaContext } from './use-scroll-area-context.ts'
 
-export * as ScrollArea from './scroll-area'
+export * as ScrollArea from './scroll-area.ts'

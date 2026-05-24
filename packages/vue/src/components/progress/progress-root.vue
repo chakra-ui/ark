@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './progress.types'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './progress.types.ts'
 
 export interface ProgressRootBaseProps extends RootProps, PolymorphicProps {}
 export interface ProgressRootProps
@@ -15,10 +15,10 @@ export interface ProgressRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { useProgress } from './use-progress'
-import { ProgressProvider } from './use-progress-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { useProgress } from './use-progress.ts'
+import { ProgressProvider } from './use-progress-context.ts'
 
 const props = defineProps<ProgressRootProps>()
 const progress = useProgress(props)

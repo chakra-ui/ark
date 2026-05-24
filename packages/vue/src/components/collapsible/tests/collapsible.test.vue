@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Collapsible, type CollapsibleRootEmits, type CollapsibleRootProps } from '../'
-import { useForwardPropsEmits } from '../../..'
+import { Collapsible, type CollapsibleRootEmits, type CollapsibleRootProps } from '../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<CollapsibleRootProps>()
 const emits = defineEmits<CollapsibleRootEmits>()

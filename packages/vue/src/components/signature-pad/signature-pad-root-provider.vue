@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseSignaturePadReturn } from './use-signature-pad'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseSignaturePadReturn } from './use-signature-pad.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseSignaturePadReturn>
@@ -19,9 +19,9 @@ export interface SignaturePadRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { SignaturePadProvider } from './use-signature-pad-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { SignaturePadProvider } from './use-signature-pad-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<SignaturePadRootProviderProps>()
 const signaturePad = computed(() => props.value)

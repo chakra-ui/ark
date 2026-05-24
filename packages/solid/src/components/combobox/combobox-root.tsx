@@ -1,12 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js/jsx-runtime'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
-import { type UseComboboxProps, useCombobox } from './use-combobox'
-import { ComboboxProvider } from './use-combobox-context'
-import type { CollectionItem } from '../collection'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.tsx'
+import { type UseComboboxProps, useCombobox } from './use-combobox.ts'
+import { ComboboxProvider } from './use-combobox-context.ts'
+import type { CollectionItem } from '../collection/index.tsx'
 
 export interface ComboboxRootBaseProps<T extends CollectionItem>
   extends UseComboboxProps<T>, UsePresenceProps, PolymorphicProps<'div'> {}

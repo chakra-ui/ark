@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface SliderValueTextBaseProps extends PolymorphicProps {}
 export interface SliderValueTextProps
@@ -13,9 +13,9 @@ export interface SliderValueTextProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { useSliderContext } from './use-slider-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { useSliderContext } from './use-slider-context.ts'
 
 defineProps<SliderValueTextProps>()
 const slider = useSliderContext()

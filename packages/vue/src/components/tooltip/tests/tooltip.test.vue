@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Tooltip, type TooltipRootEmits, type TooltipRootProps } from '../'
-import { useForwardPropsEmits } from '../../..'
+import { Tooltip, type TooltipRootEmits, type TooltipRootProps } from '../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<TooltipRootProps>()
 const emits = defineEmits<TooltipRootEmits>()

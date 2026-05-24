@@ -1,7 +1,7 @@
 'use client'
 
-import { createContext } from '../../utils/create-context'
-import type { UseAvatarReturn } from './use-avatar'
+import { createContext } from '../../utils/create-context.ts'
+import type { UseAvatarReturn } from './use-avatar.ts'
 
 export interface UseAvatarContext extends UseAvatarReturn {}
 

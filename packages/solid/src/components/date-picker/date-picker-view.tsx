@@ -1,10 +1,10 @@
 import type { ViewProps } from '@zag-js/date-picker'
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { datePickerAnatomy } from './date-picker.anatomy'
-import { useDatePickerContext } from './use-date-picker-context'
-import { DatePickerViewProvider } from './use-date-picker-view-props-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { datePickerAnatomy } from './date-picker.anatomy.ts'
+import { useDatePickerContext } from './use-date-picker-context.ts'
+import { DatePickerViewProvider } from './use-date-picker-view-props-context.ts'
 
 export interface DatePickerViewBaseProps extends Required<ViewProps>, PolymorphicProps<'div'> {}
 export interface DatePickerViewProps extends HTMLProps<'div'>, DatePickerViewBaseProps {}

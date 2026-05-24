@@ -2,10 +2,10 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UsePaginationReturn } from './use-pagination'
-import { PaginationProvider } from './use-pagination-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import type { UsePaginationReturn } from './use-pagination.ts'
+import { PaginationProvider } from './use-pagination-context.ts'
 
 interface RootProviderProps {
   value: UsePaginationReturn

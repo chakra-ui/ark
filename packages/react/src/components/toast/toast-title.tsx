@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useToastContext } from './use-toast-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useToastContext } from './use-toast-context.ts'
 
 export interface ToastTitleBaseProps extends PolymorphicProps {}
 export interface ToastTitleProps extends HTMLProps<'div'>, ToastTitleBaseProps {}

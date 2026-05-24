@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface DrawerIndentBaseProps extends PolymorphicProps {}
 export interface DrawerIndentProps
@@ -13,9 +13,9 @@ export interface DrawerIndentProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useDrawerStackContext } from './use-drawer-stack-context'
-import { useForwardExpose } from '../../utils'
+import { ark } from '../factory.ts'
+import { useDrawerStackContext } from './use-drawer-stack-context.ts'
+import { useForwardExpose } from '../../utils/index.ts'
 
 defineProps<DrawerIndentProps>()
 

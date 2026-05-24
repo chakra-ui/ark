@@ -1,6 +1,6 @@
 import type { NodeState } from '@zag-js/tree-view'
 import type { Accessor } from 'solid-js'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface UseTreeViewNodeContext extends Accessor<NodeState> {}
 

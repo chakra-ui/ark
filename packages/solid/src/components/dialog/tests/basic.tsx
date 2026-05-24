@@ -1,5 +1,5 @@
 import { Portal } from 'solid-js/web'
-import { Dialog } from '../'
+import { Dialog } from '../index.tsx'
 
 export const ComponentUnderTest = (props: Dialog.RootProps) => (
   <Dialog.Root {...props}>

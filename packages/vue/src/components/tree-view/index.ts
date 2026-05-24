@@ -11,7 +11,12 @@ export type {
   RenameStartDetails as TreeViewRenameStartDetails,
   SelectionChangeDetails as TreeViewSelectionChangeDetails,
 } from '@zag-js/tree-view'
-export { createFileTreeCollection, createTreeCollection, type TreeCollection, type TreeNode } from '../collection'
+export {
+  createFileTreeCollection,
+  createTreeCollection,
+  type TreeCollection,
+  type TreeNode,
+} from '../collection/index.ts'
 export {
   default as TreeViewBranchContent,
   type TreeViewBranchContentBaseProps,
@@ -95,9 +100,9 @@ export {
   type TreeViewRootProps,
 } from './tree-view-root.vue'
 export { default as TreeViewTree, type TreeViewTreeBaseProps, type TreeViewTreeProps } from './tree-view-tree.vue'
-export { treeViewAnatomy } from './tree-view.anatomy'
-export { useTreeView, type UseTreeViewProps, type UseTreeViewReturn } from './use-tree-view'
-export { useTreeViewContext, type UseTreeViewContext } from './use-tree-view-context'
-export { useTreeViewNodeContext, type UseTreeViewNodeContext } from './use-tree-view-node-context'
+export { treeViewAnatomy } from './tree-view.anatomy.ts'
+export { useTreeView, type UseTreeViewProps, type UseTreeViewReturn } from './use-tree-view.ts'
+export { useTreeViewContext, type UseTreeViewContext } from './use-tree-view-context.ts'
+export { useTreeViewNodeContext, type UseTreeViewNodeContext } from './use-tree-view-node-context.ts'
 
-export * as TreeView from './tree-view'
+export * as TreeView from './tree-view.ts'

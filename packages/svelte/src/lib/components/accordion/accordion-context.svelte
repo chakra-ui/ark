@@ -7,7 +7,7 @@
 </script>
 
 <script lang="ts">
-  import { useAccordionContext, type UseAccordionContext } from './use-accordion-context'
+  import { useAccordionContext, type UseAccordionContext } from './use-accordion-context.ts'
 
   const { render }: AccordionContextProps = $props()
 

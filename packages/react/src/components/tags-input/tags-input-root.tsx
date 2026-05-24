@@ -2,11 +2,11 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseTagsInputProps, useTagsInput } from './use-tags-input'
-import { TagsInputProvider } from './use-tags-input-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { type UseTagsInputProps, useTagsInput } from './use-tags-input.ts'
+import { TagsInputProvider } from './use-tags-input-context.ts'
 
 export interface TagsInputRootBaseProps extends UseTagsInputProps, PolymorphicProps {}
 export interface TagsInputRootProps extends Assign<HTMLProps<'div'>, TagsInputRootBaseProps> {}

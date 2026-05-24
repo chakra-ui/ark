@@ -6,8 +6,8 @@ export type DateInputSegmentContextProps = {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useDateInputContext } from './use-date-input-context'
-import { useDateInputSegmentGroupPropsContext } from './use-date-input-segment-group-props-context'
+import { useDateInputContext } from './use-date-input-context.ts'
+import { useDateInputSegmentGroupPropsContext } from './use-date-input-segment-group-props-context.ts'
 
 const dateInput = useDateInputContext()
 const segmentGroupProps = useDateInputSegmentGroupPropsContext()

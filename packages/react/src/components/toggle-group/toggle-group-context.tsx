@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseToggleGroupContext, useToggleGroupContext } from './use-toggle-group-context'
+import { type UseToggleGroupContext, useToggleGroupContext } from './use-toggle-group-context.ts'
 
 export interface ToggleGroupContextProps {
   children: (context: UseToggleGroupContext) => ReactNode

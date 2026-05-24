@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { ComponentUnderTest } from './tests/basic'
+import { ComponentUnderTest } from './tests/basic.tsx'
 
 describe('Splitter', () => {
   it('should have no a11y violations', async () => {

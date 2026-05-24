@@ -1,4 +1,4 @@
-import { Popover } from '../'
+import { Popover } from '../index.ts'
 
 export const ComponentUnderTest = (props: Popover.RootProps) => (
   <Popover.Root {...props}>

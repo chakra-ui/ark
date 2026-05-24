@@ -3,10 +3,10 @@
 import type { MarkerProps } from '@zag-js/angle-slider'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useAngleSliderContext } from './use-angle-slider-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useAngleSliderContext } from './use-angle-slider-context.ts'
 
 export interface AngleSliderMarkerBaseProps extends MarkerProps, PolymorphicProps {}
 export interface AngleSliderMarkerProps extends Assign<HTMLProps<'div'>, AngleSliderMarkerBaseProps> {}

@@ -1,7 +1,7 @@
 <script lang="ts">
-import type { BooleanDefaults } from '../../types'
-import type { RenderStrategyProps } from '../../utils/use-render-strategy'
-import type { RootEmits, RootProps } from './popover.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import type { RootEmits, RootProps } from './popover.types.ts'
 
 export interface PopoverRootBaseProps extends RootProps, RenderStrategyProps {}
 export interface PopoverRootProps extends PopoverRootBaseProps {}
@@ -10,11 +10,11 @@ export interface PopoverRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { PresenceProvider, usePresence } from '../presence'
-import { usePopover } from './use-popover'
-import { PopoverProvider } from './use-popover-context'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { usePopover } from './use-popover.ts'
+import { PopoverProvider } from './use-popover-context.ts'
 
 const props = withDefaults(defineProps<PopoverRootProps>(), {
   autoFocus: undefined,

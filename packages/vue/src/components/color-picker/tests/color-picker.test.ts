@@ -1,6 +1,6 @@
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { parseColor } from '../'
+import { parseColor } from '../index.ts'
 import ComponentUnderTest from './color-picker.test.vue'
 import ColorPickerWithField from './field.test.vue'
 

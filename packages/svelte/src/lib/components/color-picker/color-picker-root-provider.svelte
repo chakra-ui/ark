@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseColorPickerReturn } from './use-color-picker.svelte'
+  import type { UseColorPickerReturn } from './use-color-picker.svelte.ts'
 
   export interface ColorPickerRootProviderBaseProps extends PolymorphicProps<'div'>, UsePresenceProps, RefAttribute {
     value: UseColorPickerReturn
@@ -10,9 +10,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { PresenceProvider, splitPresenceProps, usePresence, type UsePresenceProps } from '../presence'
-  import { ColorPickerProvider } from './use-color-picker-context'
+  import { Ark } from '../factory/index.ts'
+  import { PresenceProvider, splitPresenceProps, usePresence, type UsePresenceProps } from '../presence/index.ts'
+  import { ColorPickerProvider } from './use-color-picker-context.ts'
 
   let { ref = $bindable(null), value, ...props }: ColorPickerRootProviderProps = $props()
 

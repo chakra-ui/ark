@@ -1,7 +1,7 @@
 'use client'
 
-import { createContext } from '../../utils/create-context'
-import type { UsePasswordInputReturn } from './use-password-input'
+import { createContext } from '../../utils/create-context.ts'
+import type { UsePasswordInputReturn } from './use-password-input.ts'
 
 export interface UsePasswordInputContext extends UsePasswordInputReturn {}
 

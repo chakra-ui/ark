@@ -1,6 +1,6 @@
 import { createContext } from '$lib/utils/create-context'
-import type { TreeNode } from '../collection'
-import type { UseTreeViewReturn } from './use-tree-view.svelte'
+import type { TreeNode } from '../collection/index.ts'
+import type { UseTreeViewReturn } from './use-tree-view.svelte.ts'
 
 export interface UseTreeViewContext<T extends TreeNode> extends UseTreeViewReturn<T> {}
 

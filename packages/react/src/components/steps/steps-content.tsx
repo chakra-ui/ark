@@ -3,9 +3,9 @@
 import { mergeProps } from '@zag-js/react'
 import type { ItemProps } from '@zag-js/steps'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useStepsContext } from './use-steps-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useStepsContext } from './use-steps-context.ts'
 
 export interface StepsContentBaseProps extends PolymorphicProps, ItemProps {}
 export interface StepsContentProps extends HTMLProps<'div'>, StepsContentBaseProps {}

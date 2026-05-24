@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface CarouselIndicatorGroupBaseProps extends PolymorphicProps {}
 export interface CarouselIndicatorGroupProps
@@ -13,9 +13,9 @@ export interface CarouselIndicatorGroupProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useCarouselContext } from './use-carousel-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useCarouselContext } from './use-carousel-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<CarouselIndicatorGroupProps>()
 const carousel = useCarouselContext()

@@ -3,8 +3,8 @@
 import * as drawer from '@zag-js/drawer'
 import { normalizeProps } from '@zag-js/react'
 import { type ReactNode, useMemo, useState, useSyncExternalStore } from 'react'
-import { DrawerStackProvider } from './use-drawer-stack-context'
-import { DrawerStackStoreProvider } from './use-drawer-stack-store'
+import { DrawerStackProvider } from './use-drawer-stack-context.ts'
+import { DrawerStackStoreProvider } from './use-drawer-stack-store.ts'
 
 export interface DrawerStackProps {
   children?: ReactNode | undefined

@@ -4,7 +4,7 @@ import { runIfFn } from '$lib/utils/run-if-fn'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import * as tagsInput from '@zag-js/tags-input'
 import { type MaybeFunction, ensureProps } from '@zag-js/utils'
-import { useFieldContext } from '../field'
+import { useFieldContext } from '../field/index.ts'
 
 export interface UseTagsInputProps extends Optional<Omit<tagsInput.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseTagsInputReturn extends Accessor<tagsInput.Api<PropTypes>> {}

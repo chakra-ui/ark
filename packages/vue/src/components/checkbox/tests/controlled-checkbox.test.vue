@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Checkbox, type CheckboxCheckedState, type CheckboxRootEmits, type CheckboxRootProps } from '../'
-import { useForwardPropsEmits } from '../../..'
+import { Checkbox, type CheckboxCheckedState, type CheckboxRootEmits, type CheckboxRootProps } from '../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const checked = ref<CheckboxCheckedState>(false)
 

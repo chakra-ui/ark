@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js'
-import { type UseNavigationMenuContext, useNavigationMenuContext } from './use-navigation-menu-context'
+import { type UseNavigationMenuContext, useNavigationMenuContext } from './use-navigation-menu-context.ts'
 
 export interface NavigationMenuContextProps {
   children: (context: UseNavigationMenuContext) => JSX.Element

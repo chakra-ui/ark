@@ -37,9 +37,9 @@ export {
   type StepsSeparatorProps,
 } from './steps-separator.vue'
 export { default as StepsTrigger, type StepsTriggerBaseProps, type StepsTriggerProps } from './steps-trigger.vue'
-export { stepsAnatomy } from './steps.anatomy'
-export { useSteps, type UseStepsProps, type UseStepsReturn } from './use-steps'
-export { useStepsContext, type UseStepsContext } from './use-steps-context'
-export { useStepsItemContext, type UseStepsItemContext } from './use-steps-item-context'
+export { stepsAnatomy } from './steps.anatomy.ts'
+export { useSteps, type UseStepsProps, type UseStepsReturn } from './use-steps.ts'
+export { useStepsContext, type UseStepsContext } from './use-steps-context.ts'
+export { useStepsItemContext, type UseStepsItemContext } from './use-steps-item-context.ts'
 
-export * as Steps from './steps'
+export * as Steps from './steps.ts'

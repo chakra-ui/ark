@@ -1,9 +1,9 @@
 'use client'
 
-import type { RenderStrategyProps } from '../../utils/render-strategy'
-import type { HTMLProps } from '../factory'
-import { type UsePresenceReturn, usePresence } from '../presence/use-presence'
-import { parts } from './swap.anatomy'
+import type { RenderStrategyProps } from '../../utils/render-strategy.ts'
+import type { HTMLProps } from '../factory.ts'
+import { type UsePresenceReturn, usePresence } from '../presence/use-presence.ts'
+import { parts } from './swap.anatomy.ts'
 
 export interface UseSwapProps extends RenderStrategyProps {
   /**

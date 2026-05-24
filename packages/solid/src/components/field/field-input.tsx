@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useFieldContext } from './use-field-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useFieldContext } from './use-field-context.ts'
 
 export interface FieldInputBaseProps extends PolymorphicProps<'input'> {}
 export interface FieldInputProps extends HTMLProps<'input'>, FieldInputBaseProps {}

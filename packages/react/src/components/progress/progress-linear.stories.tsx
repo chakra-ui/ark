@@ -6,10 +6,10 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/linear/basic'
-export { Controlled } from './examples/linear/controlled'
-export { Indeterminate } from './examples/linear/indeterminate'
-export { InitialValue } from './examples/linear/initial-value'
-export { MinMax } from './examples/linear/min-max'
-export { RootProvider } from './examples/linear/root-provider'
-export { ValueText } from './examples/linear/value-text'
+export { Basic } from './examples/linear/basic.tsx'
+export { Controlled } from './examples/linear/controlled.tsx'
+export { Indeterminate } from './examples/linear/indeterminate.tsx'
+export { InitialValue } from './examples/linear/initial-value.tsx'
+export { MinMax } from './examples/linear/min-max.tsx'
+export { RootProvider } from './examples/linear/root-provider.tsx'
+export { ValueText } from './examples/linear/value-text.tsx'

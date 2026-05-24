@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Combobox, createListCollection } from '../..'
-import { Field } from '../../field'
+import { Combobox, createListCollection } from '../../index.ts'
+import { Field } from '../../field/index.ts'
 
 interface Item {
   label: string

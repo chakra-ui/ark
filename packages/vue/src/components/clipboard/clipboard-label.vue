@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { LabelHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ClipboardLabelBaseProps extends PolymorphicProps {}
 export interface ClipboardLabelProps
@@ -13,9 +13,9 @@ export interface ClipboardLabelProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useClipboardContext } from './use-clipboard-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useClipboardContext } from './use-clipboard-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ClipboardLabelProps>()
 const clipboard = useClipboardContext()

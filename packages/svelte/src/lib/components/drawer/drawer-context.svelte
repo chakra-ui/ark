@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { UseDrawerContext } from './use-drawer-context'
+  import type { UseDrawerContext } from './use-drawer-context.ts'
 
   export interface DrawerContextProps {
     children: Snippet<[UseDrawerContext]>
@@ -8,7 +8,7 @@
 </script>
 
 <script lang="ts">
-  import { useDrawerContext } from './use-drawer-context'
+  import { useDrawerContext } from './use-drawer-context.ts'
 
   const { children }: DrawerContextProps = $props()
 

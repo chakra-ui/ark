@@ -3,9 +3,9 @@
 import type { ViewProps } from '@zag-js/progress'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useProgressContext } from './use-progress-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useProgressContext } from './use-progress-context.ts'
 
 export interface ProgressViewBaseProps extends ViewProps, PolymorphicProps {}
 export interface ProgressViewProps extends HTMLProps<'span'>, ProgressViewBaseProps {}

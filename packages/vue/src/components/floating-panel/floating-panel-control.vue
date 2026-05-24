@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface FloatingPanelControlBaseProps extends PolymorphicProps {}
 export interface FloatingPanelControlProps
@@ -13,9 +13,9 @@ export interface FloatingPanelControlProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useFloatingPanelContext } from './use-floating-panel-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useFloatingPanelContext } from './use-floating-panel-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<FloatingPanelControlProps>()
 const floatingPanel = useFloatingPanelContext()

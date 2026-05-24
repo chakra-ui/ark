@@ -6,13 +6,13 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
-export { AsyncStep } from './examples/async-step'
-export { Events } from './examples/events'
-export { KeyboardNavigation } from './examples/keyboard-navigation'
-export { MixedTypes } from './examples/mixed-types'
-export { ProgressBar } from './examples/progress-bar'
-export { SkipTour } from './examples/skip-tour'
-export { WaitForClick } from './examples/wait-for-click'
-export { WaitForElement } from './examples/wait-for-element'
-export { WaitForInput } from './examples/wait-for-input'
+export { Basic } from './examples/basic.tsx'
+export { AsyncStep } from './examples/async-step.tsx'
+export { Events } from './examples/events.tsx'
+export { KeyboardNavigation } from './examples/keyboard-navigation.tsx'
+export { MixedTypes } from './examples/mixed-types.tsx'
+export { ProgressBar } from './examples/progress-bar.tsx'
+export { SkipTour } from './examples/skip-tour.tsx'
+export { WaitForClick } from './examples/wait-for-click.tsx'
+export { WaitForElement } from './examples/wait-for-element.tsx'
+export { WaitForInput } from './examples/wait-for-input.tsx'

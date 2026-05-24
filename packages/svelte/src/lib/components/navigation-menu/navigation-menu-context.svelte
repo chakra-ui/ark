@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { UseNavigationMenuContext } from './use-navigation-menu-context'
+  import type { UseNavigationMenuContext } from './use-navigation-menu-context.ts'
 
   export interface NavigationMenuContextProps {
     render?: Snippet<[UseNavigationMenuContext]>
@@ -8,7 +8,7 @@
 </script>
 
 <script lang="ts">
-  import { useNavigationMenuContext } from './use-navigation-menu-context'
+  import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
 
   const { render }: NavigationMenuContextProps = $props()
 

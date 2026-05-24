@@ -63,10 +63,10 @@ export {
   type MenuTriggerItemProps,
 } from './menu-trigger-item.vue'
 export { default as MenuTrigger, type MenuTriggerBaseProps, type MenuTriggerProps } from './menu-trigger.vue'
-export { menuAnatomy } from './menu.anatomy'
-export { useMenu, type UseMenuProps, type UseMenuReturn } from './use-menu'
-export { useMenuContext, type UseMenuContext } from './use-menu-context'
-export { useMenuItemContext, type UseMenuItemContext } from './use-menu-item-context'
-export type { ValueChangeDetails as MenuValueChangeDetails } from './use-menu-item-group-context'
+export { menuAnatomy } from './menu.anatomy.ts'
+export { useMenu, type UseMenuProps, type UseMenuReturn } from './use-menu.ts'
+export { useMenuContext, type UseMenuContext } from './use-menu-context.ts'
+export { useMenuItemContext, type UseMenuItemContext } from './use-menu-item-context.ts'
+export type { ValueChangeDetails as MenuValueChangeDetails } from './use-menu-item-group-context.ts'
 
-export * as Menu from './menu'
+export * as Menu from './menu.ts'

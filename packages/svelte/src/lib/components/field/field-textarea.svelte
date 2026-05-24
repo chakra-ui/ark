@@ -14,8 +14,8 @@
 <script lang="ts">
   import { autoresizeTextarea } from '@zag-js/auto-resize'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useFieldContext } from './use-field-context'
+  import { Ark } from '../factory/index.ts'
+  import { useFieldContext } from './use-field-context.ts'
 
   let { ref = $bindable(null), value = $bindable(), autoresize, ...props }: FieldTextareaProps = $props()
 

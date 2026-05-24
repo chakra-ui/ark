@@ -2,10 +2,10 @@
 
 import { dataAttr } from '@zag-js/dom-query'
 import { useId, useRef, useState } from 'react'
-import { useEnvironmentContext } from '../../providers'
-import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
-import type { HTMLProps } from '../factory'
-import { parts } from './fieldset.anatomy'
+import { useEnvironmentContext } from '../../providers/index.ts'
+import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect.ts'
+import type { HTMLProps } from '../factory.ts'
+import { parts } from './fieldset.anatomy.ts'
 
 export interface UseFieldsetProps {
   /**

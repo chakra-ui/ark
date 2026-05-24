@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ColorPickerFormatTriggerBaseProps extends PolymorphicProps {}
 export interface ColorPickerFormatTriggerProps
@@ -13,9 +13,9 @@ export interface ColorPickerFormatTriggerProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useColorPickerContext } from './use-color-picker-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useColorPickerContext } from './use-color-picker-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ColorPickerFormatTriggerProps>()
 const colorPicker = useColorPickerContext()

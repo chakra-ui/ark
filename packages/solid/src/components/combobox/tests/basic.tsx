@@ -1,8 +1,8 @@
 import { For } from 'solid-js'
 import { Portal } from 'solid-js/web'
-import { Field } from '../../field'
-import { Combobox, createListCollection } from '../'
-import type { Optional } from '../../../types'
+import { Field } from '../../field/index.tsx'
+import { Combobox, createListCollection } from '../index.tsx'
+import type { Optional } from '../../../types.ts'
 
 interface Item {
   label: string

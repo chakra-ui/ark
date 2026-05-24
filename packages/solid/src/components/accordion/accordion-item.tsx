@@ -1,13 +1,13 @@
 import type { ItemProps } from '@zag-js/accordion'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
-import { createSplitProps } from '../../utils/create-split-props'
-import { useRenderStrategyContext } from '../../utils/render-strategy'
-import { Collapsible } from '../collapsible'
-import type { HTMLProps, PolymorphicProps } from '../factory'
-import { useAccordionContext } from './use-accordion-context'
-import { AccordionItemProvider } from './use-accordion-item-context'
-import { AccordionItemPropsProvider } from './use-accordion-item-props-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { useRenderStrategyContext } from '../../utils/render-strategy.ts'
+import { Collapsible } from '../collapsible/index.tsx'
+import type { HTMLProps, PolymorphicProps } from '../factory.tsx'
+import { useAccordionContext } from './use-accordion-context.ts'
+import { AccordionItemProvider } from './use-accordion-item-context.ts'
+import { AccordionItemPropsProvider } from './use-accordion-item-props-context.ts'
 
 export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps<'div'> {}
 export interface AccordionItemProps extends HTMLProps<'div'>, AccordionItemBaseProps {}

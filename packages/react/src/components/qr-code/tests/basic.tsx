@@ -1,4 +1,4 @@
-import { QrCode } from '../..'
+import { QrCode } from '../../index.ts'
 
 export const ComponentUnderTest = () => {
   return (

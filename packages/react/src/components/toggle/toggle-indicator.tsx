@@ -2,9 +2,9 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { HTMLArkProps } from '../factory'
-import { ark } from '../factory'
-import { useToggleContext } from './use-toggle-context'
+import type { HTMLArkProps } from '../factory.ts'
+import { ark } from '../factory.ts'
+import { useToggleContext } from './use-toggle-context.ts'
 
 export interface ToggleIndicatorBaseProps {
   /**

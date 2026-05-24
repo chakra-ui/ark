@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
-import { composeRefs } from '../../utils/compose-refs'
-import { useRenderStrategyContext } from '../../utils/render-strategy'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresence } from '../presence'
-import { useDialogContext } from './use-dialog-context'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import { useRenderStrategyContext } from '../../utils/render-strategy.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { usePresence } from '../presence/index.tsx'
+import { useDialogContext } from './use-dialog-context.ts'
 
 export interface DialogBackdropBaseProps extends PolymorphicProps<'div'> {}
 export interface DialogBackdropProps extends HTMLProps<'div'>, DialogBackdropBaseProps {}

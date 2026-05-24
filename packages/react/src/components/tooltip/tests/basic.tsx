@@ -1,4 +1,4 @@
-import { Tooltip } from '../'
+import { Tooltip } from '../index.ts'
 
 export const ComponentUnderTest = (props: Tooltip.RootProps) => (
   <Tooltip.Root openDelay={0} closeDelay={0} {...props}>

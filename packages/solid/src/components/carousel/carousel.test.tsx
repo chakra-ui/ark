@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
-import { Basic as ComponentUnderTest } from './examples/basic'
+import { Basic as ComponentUnderTest } from './examples/basic.tsx'
 
 describe('Carousel', () => {
   it.skip('should have the correct disabled / enabled states for control buttons', async () => {

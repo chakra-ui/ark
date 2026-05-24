@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './editable.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './editable.types.ts'
 
 export interface EditableRootBaseProps extends RootProps, PolymorphicProps {}
 export interface EditableRootProps
@@ -16,10 +16,10 @@ export interface EditableRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useEditable } from './use-editable'
-import { EditableProvider } from './use-editable-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useEditable } from './use-editable.ts'
+import { EditableProvider } from './use-editable-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<EditableRootProps>(), {
   autoResize: undefined,

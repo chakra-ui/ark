@@ -1,5 +1,5 @@
 import { type Accessor, createMemo, createSignal, untrack } from 'solid-js'
-import { runIfFn } from './run-if-fn'
+import { runIfFn } from './run-if-fn.ts'
 
 export interface UseControllableStateProps<T> {
   value?: Accessor<T | undefined>

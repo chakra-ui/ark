@@ -42,8 +42,8 @@ export {
   type DateInputSegmentBaseProps,
   type DateInputSegmentProps,
 } from './date-input-segment.vue'
-export { dateInputAnatomy } from './date-input.anatomy'
-export { useDateInput, type UseDateInputProps, type UseDateInputReturn } from './use-date-input'
-export { useDateInputContext, type UseDateInputContext } from './use-date-input-context'
+export { dateInputAnatomy } from './date-input.anatomy.ts'
+export { useDateInput, type UseDateInputProps, type UseDateInputReturn } from './use-date-input.ts'
+export { useDateInputContext, type UseDateInputContext } from './use-date-input-context.ts'
 
-export * as DateInput from './date-input'
+export * as DateInput from './date-input.ts'

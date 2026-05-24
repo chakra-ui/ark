@@ -1,7 +1,7 @@
 import { TreeView, createTreeCollection } from '@ark-ui/solid/tree-view'
 import { SquareCheckBigIcon, ChevronRightIcon, FileIcon, FolderIcon, LoaderCircleIcon } from 'lucide-solid'
 import { For, createSignal } from 'solid-js'
-import { useTreeViewNodeContext } from '../use-tree-view-node-context'
+import { useTreeViewNodeContext } from '../use-tree-view-node-context.ts'
 
 // mock api result
 const response: Record<string, Node[]> = {

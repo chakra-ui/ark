@@ -4,8 +4,8 @@ import type { Accessor, Optional } from '$lib/types'
 import * as combobox from '@zag-js/combobox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
-import type { CollectionItem, ListCollection } from '../collection'
-import { useFieldContext } from '../field'
+import type { CollectionItem, ListCollection } from '../collection/index.ts'
+import { useFieldContext } from '../field/index.ts'
 
 export interface UseComboboxProps<T extends CollectionItem> extends Optional<
   Omit<combobox.Props<T>, 'dir' | 'getRootNode' | 'collection'>,

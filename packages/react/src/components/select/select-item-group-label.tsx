@@ -2,9 +2,9 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useSelectContext } from './use-select-context'
-import { useSelectItemGroupPropsContext } from './use-select-item-group-props'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useSelectContext } from './use-select-context.ts'
+import { useSelectItemGroupPropsContext } from './use-select-item-group-props.tsx'
 
 export interface SelectItemGroupLabelBaseProps extends PolymorphicProps {}
 export interface SelectItemGroupLabelProps extends HTMLProps<'div'>, SelectItemGroupLabelBaseProps {}

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { FileUpload, type FileUploadRootEmits, type FileUploadRootProps } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { FileUpload, type FileUploadRootEmits, type FileUploadRootProps } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const testProps = ref<string[]>([])
 

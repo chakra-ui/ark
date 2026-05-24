@@ -36,8 +36,8 @@ export {
   type TooltipTriggerBaseProps,
   type TooltipTriggerProps,
 } from './tooltip-trigger.vue'
-export { tooltipAnatomy } from './tooltip.anatomy'
-export { useTooltip, type UseTooltipProps, type UseTooltipReturn } from './use-tooltip'
-export { useTooltipContext, type UseTooltipContext } from './use-tooltip-context'
+export { tooltipAnatomy } from './tooltip.anatomy.ts'
+export { useTooltip, type UseTooltipProps, type UseTooltipReturn } from './use-tooltip.ts'
+export { useTooltipContext, type UseTooltipContext } from './use-tooltip-context.ts'
 
-export * as Tooltip from './tooltip'
+export * as Tooltip from './tooltip.ts'

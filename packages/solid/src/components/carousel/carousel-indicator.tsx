@@ -1,8 +1,8 @@
 import type { IndicatorProps } from '@zag-js/carousel'
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useCarouselContext } from './use-carousel-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useCarouselContext } from './use-carousel-context.ts'
 
 export interface CarouselIndicatorBaseProps extends IndicatorProps, PolymorphicProps<'button'> {}
 export interface CarouselIndicatorProps extends HTMLProps<'button'>, CarouselIndicatorBaseProps {}

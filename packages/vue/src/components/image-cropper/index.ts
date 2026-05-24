@@ -43,8 +43,8 @@ export {
   type ImageCropperViewportProps,
   type ImageCropperViewportBaseProps,
 } from './image-cropper-viewport.vue'
-export { useImageCropper, type UseImageCropperProps, type UseImageCropperReturn } from './use-image-cropper'
-export { useImageCropperContext, type UseImageCropperContext } from './use-image-cropper-context'
-export { imageCropperAnatomy } from './image-cropper.anatomy'
+export { useImageCropper, type UseImageCropperProps, type UseImageCropperReturn } from './use-image-cropper.ts'
+export { useImageCropperContext, type UseImageCropperContext } from './use-image-cropper-context.ts'
+export { imageCropperAnatomy } from './image-cropper.anatomy.ts'
 
-export * as ImageCropper from './image-cropper'
+export * as ImageCropper from './image-cropper.ts'

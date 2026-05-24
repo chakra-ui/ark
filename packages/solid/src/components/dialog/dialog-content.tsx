@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
-import { composeRefs } from '../../utils/compose-refs'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresenceContext } from '../presence'
-import { useDialogContext } from './use-dialog-context'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { usePresenceContext } from '../presence/index.tsx'
+import { useDialogContext } from './use-dialog-context.ts'
 
 export interface DialogContentBaseProps extends PolymorphicProps<'div'> {}
 export interface DialogContentProps extends HTMLProps<'div'>, DialogContentBaseProps {}

@@ -1,6 +1,6 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { SignaturePadWithField } from './basic'
+import { SignaturePadWithField } from './basic.tsx'
 
 describe('Signature Pad / Field', () => {
   it('should set signature pad as required', async () => {

@@ -10,11 +10,11 @@ import {
   toValue,
   useId,
 } from 'vue'
-import { useEnvironmentContext } from '../../providers'
-import { DEFAULT_ENVIRONMENT } from '../../providers/environment/use-environment-context'
-import { unrefElement } from '../../utils/unref-element'
-import { parts } from './field.anatomy'
-import type { ElementIds } from './field.types'
+import { useEnvironmentContext } from '../../providers/index.ts'
+import { DEFAULT_ENVIRONMENT } from '../../providers/environment/use-environment-context.ts'
+import { unrefElement } from '../../utils/unref-element.ts'
+import { parts } from './field.anatomy.ts'
+import type { ElementIds } from './field.types.ts'
 
 export interface UseFieldProps {
   /**

@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useStepsContext } from './use-steps-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useStepsContext } from './use-steps-context.ts'
 
 export interface StepsNextTriggerBaseProps extends PolymorphicProps {}
 export interface StepsNextTriggerProps extends HTMLProps<'button'>, StepsNextTriggerBaseProps {}

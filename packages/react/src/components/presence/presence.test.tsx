@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useState } from 'react'
 import { axe } from 'vitest-axe'
-import { Presence, type PresenceProps } from './'
+import { Presence, type PresenceProps } from './index.ts'
 
 const ComponentUnderTest = (props: PresenceProps) => {
   const [present, setPresent] = useState(false)

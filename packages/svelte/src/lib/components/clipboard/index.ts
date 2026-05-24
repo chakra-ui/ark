@@ -36,10 +36,10 @@ export {
   type ClipboardValueTextBaseProps,
   type ClipboardValueTextProps,
 } from './clipboard-value-text.svelte'
-export { clipboardAnatomy } from './clipboard.anatomy'
-export { ClipboardProvider, useClipboardContext } from './use-clipboard-context'
-export type { UseClipboardContext } from './use-clipboard-context'
-export { useClipboard } from './use-clipboard.svelte'
-export type { UseClipboardProps, UseClipboardReturn } from './use-clipboard.svelte'
+export { clipboardAnatomy } from './clipboard.anatomy.ts'
+export { ClipboardProvider, useClipboardContext } from './use-clipboard-context.ts'
+export type { UseClipboardContext } from './use-clipboard-context.ts'
+export { useClipboard } from './use-clipboard.svelte.ts'
+export type { UseClipboardProps, UseClipboardReturn } from './use-clipboard.svelte.ts'
 
-export * as Clipboard from './clipboard'
+export * as Clipboard from './clipboard.ts'

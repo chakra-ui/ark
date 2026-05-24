@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { InputHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface SwitchHiddenInputBaseProps extends PolymorphicProps {}
 export interface SwitchHiddenInputProps
@@ -13,10 +13,10 @@ export interface SwitchHiddenInputProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useSwitchContext } from './use-switch-context'
-import { useFieldContext } from '../field'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useSwitchContext } from './use-switch-context.ts'
+import { useFieldContext } from '../field/index.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<SwitchHiddenInputProps>()
 

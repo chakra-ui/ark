@@ -1,5 +1,5 @@
 import { For } from 'solid-js'
-import { SegmentGroup } from '../'
+import { SegmentGroup } from '../index.tsx'
 
 export const ComponentUnderTest = (props: SegmentGroup.RootProps) => {
   const items = [

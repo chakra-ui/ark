@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { UnwrapRef } from 'vue'
-import type { RenderStrategyProps } from '../../utils/use-render-strategy'
-import type { UsePopoverReturn } from './use-popover'
-import type { RootEmits as PresenceEmits } from '../presence/presence.types'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import type { UsePopoverReturn } from './use-popover.ts'
+import type { RootEmits as PresenceEmits } from '../presence/presence.types.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UsePopoverReturn>
@@ -15,10 +15,10 @@ export interface PopoverRootProviderEmits extends PresenceEmits {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { PresenceProvider, usePresence } from '../presence'
-import { PopoverProvider } from './use-popover-context'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { PopoverProvider } from './use-popover-context.ts'
 
 const props = defineProps<PopoverRootProviderProps>()
 const emits = defineEmits<PopoverRootProviderEmits>()

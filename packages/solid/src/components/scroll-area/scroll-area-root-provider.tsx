@@ -1,6 +1,6 @@
-import type { Assign } from '../../types'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseScrollAreaContext, ScrollAreaProvider } from './use-scroll-area-context'
+import type { Assign } from '../../types.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { type UseScrollAreaContext, ScrollAreaProvider } from './use-scroll-area-context.ts'
 
 export interface ScrollAreaRootProviderBaseProps extends PolymorphicProps<'div'> {
   value: UseScrollAreaContext

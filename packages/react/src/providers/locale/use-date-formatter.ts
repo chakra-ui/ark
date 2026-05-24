@@ -2,7 +2,7 @@
 
 import { DateFormatter } from '@internationalized/date'
 import { useMemo } from 'react'
-import { useLocaleContext } from './use-locale-context'
+import { useLocaleContext } from './use-locale-context.ts'
 
 export interface UseDateFormatterProps extends Intl.DateTimeFormatOptions {
   locale?: string

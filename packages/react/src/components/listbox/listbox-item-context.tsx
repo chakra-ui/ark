@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { type UseListboxItemContext, useListboxItemContext } from './use-listbox-item-context'
+import { type UseListboxItemContext, useListboxItemContext } from './use-listbox-item-context.ts'
 
 export interface ListboxItemContextProps {
   children: (context: UseListboxItemContext) => ReactNode

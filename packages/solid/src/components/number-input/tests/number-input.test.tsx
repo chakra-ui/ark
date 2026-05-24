@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { ComponentUnderTest, NumberInputWithField } from './basic'
+import { ComponentUnderTest, NumberInputWithField } from './basic.tsx'
 
 describe('NumberInput', () => {
   it('should handle wheel event when allowMouseWheel is true', async () => {

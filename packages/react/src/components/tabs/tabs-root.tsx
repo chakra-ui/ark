@@ -2,16 +2,16 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
 import {
   type RenderStrategyProps,
   RenderStrategyPropsProvider,
   splitRenderStrategyProps,
-} from '../../utils/render-strategy'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseTabsProps, useTabs } from './use-tabs'
-import { TabsProvider } from './use-tabs-context'
+} from '../../utils/render-strategy.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { type UseTabsProps, useTabs } from './use-tabs.ts'
+import { TabsProvider } from './use-tabs-context.ts'
 
 export interface TabsRootBaseProps extends UseTabsProps, RenderStrategyProps, PolymorphicProps {}
 export interface TabsRootProps extends Assign<HTMLProps<'div'>, TabsRootBaseProps> {}

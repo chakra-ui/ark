@@ -107,4 +107,4 @@ export {
   type MenuTriggerProps as TriggerProps,
   type MenuTriggerBaseProps as TriggerBaseProps,
 } from './menu-trigger.vue'
-export type { ValueChangeDetails } from './use-menu-item-group-context'
+export type { ValueChangeDetails } from './use-menu-item-group-context.ts'

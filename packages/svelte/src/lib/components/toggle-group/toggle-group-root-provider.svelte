@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseToggleGroupReturn } from './use-toggle-group.svelte'
+  import type { UseToggleGroupReturn } from './use-toggle-group.svelte.ts'
 
   interface RootProviderProps {
     value: UseToggleGroupReturn
@@ -12,8 +12,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { ToggleGroupProvider } from './use-toggle-group-context'
+  import { Ark } from '../factory/index.ts'
+  import { ToggleGroupProvider } from './use-toggle-group-context.ts'
 
   let { ref = $bindable(null), value, ...props }: ToggleGroupRootProviderProps = $props()
 

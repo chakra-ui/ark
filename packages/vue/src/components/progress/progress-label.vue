@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ProgressLabelBaseProps extends PolymorphicProps {}
 export interface ProgressLabelProps
@@ -13,9 +13,9 @@ export interface ProgressLabelProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useProgressContext } from './use-progress-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useProgressContext } from './use-progress-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ProgressLabelProps>()
 const progress = useProgressContext()

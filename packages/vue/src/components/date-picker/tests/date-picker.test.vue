@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { DatePicker, type DatePickerRootEmits, type DatePickerRootProps } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { DatePicker, type DatePickerRootEmits, type DatePickerRootProps } from '../../index.ts'
+import { useForwardPropsEmits } from '../../../index.ts'
 
 const props = defineProps<DatePickerRootProps>()
 const emits = defineEmits<DatePickerRootEmits>()

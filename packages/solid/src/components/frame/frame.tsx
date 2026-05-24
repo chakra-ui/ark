@@ -1,11 +1,11 @@
 import type { JSX } from 'solid-js'
 import { Show, createEffect, createMemo, createSignal, onCleanup, splitProps } from 'solid-js'
 import { Portal } from 'solid-js/web'
-import { EnvironmentProvider } from '../../providers'
-import type { Assign } from '../../types'
-import { composeRefs } from '../../utils/compose-refs'
-import { ark } from '../factory'
-import { FrameContent } from './frame-content'
+import { EnvironmentProvider } from '../../providers/index.tsx'
+import type { Assign } from '../../types.ts'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import { ark } from '../factory.tsx'
+import { FrameContent } from './frame-content.tsx'
 
 export interface FrameBaseProps {
   /** Additional content to be inserted into the frame's <head> */

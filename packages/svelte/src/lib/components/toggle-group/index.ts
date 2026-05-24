@@ -15,8 +15,8 @@ export {
   type ToggleGroupRootProviderBaseProps,
   type ToggleGroupRootProviderProps,
 } from './toggle-group-root-provider.svelte'
-export { toggleGroupAnatomy } from './toggle-group.anatomy'
-export { useToggleGroup, type UseToggleGroupProps, type UseToggleGroupReturn } from './use-toggle-group.svelte'
-export { useToggleGroupContext, type UseToggleGroupContext } from './use-toggle-group-context'
+export { toggleGroupAnatomy } from './toggle-group.anatomy.ts'
+export { useToggleGroup, type UseToggleGroupProps, type UseToggleGroupReturn } from './use-toggle-group.svelte.ts'
+export { useToggleGroupContext, type UseToggleGroupContext } from './use-toggle-group-context.ts'
 
-export * as ToggleGroup from './toggle-group'
+export * as ToggleGroup from './toggle-group.ts'

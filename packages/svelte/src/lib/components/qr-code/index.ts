@@ -22,8 +22,8 @@ export {
   type QrCodeRootProviderProps,
 } from './qr-code-root-provider.svelte'
 export { default as QrCodeRoot, type QrCodeRootBaseProps, type QrCodeRootProps } from './qr-code-root.svelte'
-export { qrCodeAnatomy } from './qr-code.anatomy'
-export { useQrCodeContext, type UseQrCodeContext } from './use-qr-code-context'
-export { useQrCode, type UseQrCodeProps, type UseQrCodeReturn } from './use-qr-code.svelte'
+export { qrCodeAnatomy } from './qr-code.anatomy.ts'
+export { useQrCodeContext, type UseQrCodeContext } from './use-qr-code-context.ts'
+export { useQrCode, type UseQrCodeProps, type UseQrCodeReturn } from './use-qr-code.svelte.ts'
 
-export * as QrCode from './qr-code'
+export * as QrCode from './qr-code.ts'

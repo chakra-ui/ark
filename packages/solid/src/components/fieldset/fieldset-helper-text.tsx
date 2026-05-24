@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useFieldsetContext } from './use-fieldset-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useFieldsetContext } from './use-fieldset-context.ts'
 
 export interface FieldsetHelperTextBaseProps extends PolymorphicProps<'span'> {}
 export interface FieldsetHelperTextProps extends HTMLProps<'span'>, FieldsetHelperTextBaseProps {}

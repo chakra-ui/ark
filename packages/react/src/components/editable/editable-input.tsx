@@ -2,9 +2,9 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useFieldContext } from '../field'
-import { useEditableContext } from './use-editable-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useFieldContext } from '../field/index.ts'
+import { useEditableContext } from './use-editable-context.ts'
 
 export interface EditableInputBaseProps extends PolymorphicProps {}
 export interface EditableInputProps extends HTMLProps<'input'>, EditableInputBaseProps {}

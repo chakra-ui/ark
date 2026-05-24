@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { LabelHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ComboboxLabelBaseProps extends PolymorphicProps {}
 export interface ComboboxLabelProps
@@ -13,9 +13,9 @@ export interface ComboboxLabelProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useComboboxContext } from './use-combobox-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useComboboxContext } from './use-combobox-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ComboboxLabelProps>()
 const combobox = useComboboxContext()

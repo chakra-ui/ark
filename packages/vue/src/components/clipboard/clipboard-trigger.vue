@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ClipboardTriggerBaseProps extends PolymorphicProps {}
 export interface ClipboardTriggerProps
@@ -13,9 +13,9 @@ export interface ClipboardTriggerProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useClipboardContext } from './use-clipboard-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useClipboardContext } from './use-clipboard-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ClipboardTriggerProps>()
 const clipboard = useClipboardContext()

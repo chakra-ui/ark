@@ -2,11 +2,11 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseSliderProps, useSlider } from './use-slider'
-import { SliderProvider } from './use-slider-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { type UseSliderProps, useSlider } from './use-slider.ts'
+import { SliderProvider } from './use-slider-context.ts'
 
 export interface SliderRootBaseProps extends UseSliderProps, PolymorphicProps {}
 export interface SliderRootProps extends Assign<HTMLProps<'div'>, SliderRootBaseProps> {}

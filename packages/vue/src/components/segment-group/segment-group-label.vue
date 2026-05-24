@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface SegmentGroupLabelBaseProps extends PolymorphicProps {}
 export interface SegmentGroupLabelProps
@@ -13,10 +13,10 @@ export interface SegmentGroupLabelProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useSegmentGroupContext } from './use-segment-group-context'
-import { parts } from './segment-group.anatomy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useSegmentGroupContext } from './use-segment-group-context.ts'
+import { parts } from './segment-group.anatomy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<SegmentGroupLabelProps>()
 const segmentGroup = useSegmentGroupContext()

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SVGAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface QrCodeFrameBaseProps extends PolymorphicProps {}
 export interface QrCodeFrameProps
@@ -13,9 +13,9 @@ export interface QrCodeFrameProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useQrCodeContext } from './use-qr-code-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useQrCodeContext } from './use-qr-code-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<QrCodeFrameProps>()
 const qrCode = useQrCodeContext()

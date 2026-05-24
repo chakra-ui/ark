@@ -3,10 +3,10 @@
 import { mergeProps } from '@zag-js/react'
 import type { Orientation } from '@zag-js/types'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useScrollAreaContext } from './use-scroll-area-context'
-import { ScrollAreaScrollbarProvider } from './use-scroll-area-scrollbar-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useScrollAreaContext } from './use-scroll-area-context.ts'
+import { ScrollAreaScrollbarProvider } from './use-scroll-area-scrollbar-context.ts'
 
 interface ScrollbarProps {
   orientation?: Orientation

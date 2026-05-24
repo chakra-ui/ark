@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseDateInputContext } from './use-date-input-context'
+import type { UseDateInputContext } from './use-date-input-context.ts'
 
 export interface DateInputContextProps extends SlotsType<{
   default: UnwrapRef<UseDateInputContext>
@@ -8,7 +8,7 @@ export interface DateInputContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useDateInputContext } from './use-date-input-context'
+import { useDateInputContext } from './use-date-input-context.ts'
 
 const dateInput = useDateInputContext()
 

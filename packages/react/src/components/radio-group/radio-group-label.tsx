@@ -2,8 +2,8 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useRadioGroupContext } from './use-radio-group-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useRadioGroupContext } from './use-radio-group-context.ts'
 
 export interface RadioGroupLabelBaseProps extends PolymorphicProps {}
 export interface RadioGroupLabelProps extends HTMLProps<'span'>, RadioGroupLabelBaseProps {}

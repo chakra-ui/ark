@@ -1,5 +1,5 @@
 import { Field } from '@ark-ui/react/field'
-import { RatingGroup } from '../'
+import { RatingGroup } from '../index.ts'
 
 export const ComponentUnderTest = (props: RatingGroup.RootProps) => (
   <RatingGroup.Root {...props}>

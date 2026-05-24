@@ -2,9 +2,9 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresenceContext } from '../presence'
-import { useDrawerContext } from './use-drawer-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { usePresenceContext } from '../presence/index.ts'
+import { useDrawerContext } from './use-drawer-context.ts'
 
 export interface DrawerPositionerBaseProps extends PolymorphicProps {}
 export interface DrawerPositionerProps extends HTMLProps<'div'>, DrawerPositionerBaseProps {}

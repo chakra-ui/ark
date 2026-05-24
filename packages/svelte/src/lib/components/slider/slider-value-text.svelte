@@ -10,8 +10,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useSliderContext } from './use-slider-context'
+  import { Ark } from '../factory/index.ts'
+  import { useSliderContext } from './use-slider-context.ts'
 
   let { ref = $bindable(null), children, ...props }: SliderValueTextProps = $props()
   const slider = useSliderContext()

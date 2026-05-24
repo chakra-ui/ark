@@ -2,9 +2,9 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresenceContext } from '../presence'
-import { usePopoverContext } from './use-popover-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { usePresenceContext } from '../presence/index.ts'
+import { usePopoverContext } from './use-popover-context.ts'
 
 export interface PopoverPositionerBaseProps extends PolymorphicProps {}
 export interface PopoverPositionerProps extends HTMLProps<'div'>, PopoverPositionerBaseProps {}

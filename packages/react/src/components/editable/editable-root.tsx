@@ -2,11 +2,11 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseEditableProps, useEditable } from './use-editable'
-import { EditableProvider } from './use-editable-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { type UseEditableProps, useEditable } from './use-editable.ts'
+import { EditableProvider } from './use-editable-context.ts'
 
 export interface EditableRootBaseProps extends UseEditableProps, PolymorphicProps {}
 export interface EditableRootProps extends Assign<HTMLProps<'div'>, EditableRootBaseProps> {}

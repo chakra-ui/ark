@@ -9,10 +9,10 @@
 <script lang="ts">
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useStepsContext } from './use-steps-context'
-  import { StepsItemProvider } from './use-steps-item-context'
-  import { StepsItemPropsProvider } from './use-steps-item-props-context'
+  import { Ark } from '../factory/index.ts'
+  import { useStepsContext } from './use-steps-context.ts'
+  import { StepsItemProvider } from './use-steps-item-context.ts'
+  import { StepsItemPropsProvider } from './use-steps-item-props-context.ts'
 
   let { ref = $bindable(null), ...props }: StepsItemProps = $props()
   const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['index']))

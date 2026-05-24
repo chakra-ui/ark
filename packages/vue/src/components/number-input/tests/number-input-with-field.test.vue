@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Field, type FieldRootProps } from '../../field'
-import { NumberInput } from '../'
+import { Field, type FieldRootProps } from '../../field/index.ts'
+import { NumberInput } from '../index.ts'
 
 defineProps<FieldRootProps>()
 </script>

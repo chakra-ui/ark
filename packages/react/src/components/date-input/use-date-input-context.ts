@@ -1,7 +1,7 @@
 'use client'
 
-import { createContext } from '../../utils/create-context'
-import type { UseDateInputReturn } from './use-date-input'
+import { createContext } from '../../utils/create-context.ts'
+import type { UseDateInputReturn } from './use-date-input.ts'
 
 export interface UseDateInputContext extends UseDateInputReturn {}
 

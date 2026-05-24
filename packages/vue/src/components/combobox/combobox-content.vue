@@ -1,8 +1,8 @@
 <script lang="ts">
 import { mergeProps } from '@zag-js/vue'
 import { type HTMLAttributes, computed } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import { usePresenceContext } from '../presence'
+import type { PolymorphicProps } from '../factory.ts'
+import { usePresenceContext } from '../presence/index.ts'
 
 export interface ComboboxContentBaseProps extends PolymorphicProps {}
 export interface ComboboxContentProps
@@ -15,9 +15,9 @@ export interface ComboboxContentProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useComboboxContext } from './use-combobox-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useComboboxContext } from './use-combobox-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ComboboxContentProps>()
 const combobox = useComboboxContext()

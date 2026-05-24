@@ -1,5 +1,5 @@
-import { Splitter } from '../'
-import type { Optional } from '../../../types'
+import { Splitter } from '../index.ts'
+import type { Optional } from '../../../types.ts'
 
 export const ComponentUnderTest = (props: Optional<Splitter.RootProps, 'panels'>) => (
   <Splitter.Root defaultSize={[50, 50]} panels={[{ id: 'a' }, { id: 'b' }]} {...props}>

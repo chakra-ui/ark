@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseMenuItemGroupContext } from './use-menu-item-group-context'
+  import type { UseMenuItemGroupContext } from './use-menu-item-group-context.ts'
 
   type OptionalUseMenuItemGroupContext = Optional<ReturnType<UseMenuItemGroupContext>, 'id'>
 
@@ -11,10 +11,10 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
+  import { Ark } from '../factory/index.ts'
   import { createSplitProps } from '$lib/utils/create-split-props'
-  import { useMenuContext } from './use-menu-context'
-  import { MenuItemGroupProvider } from './use-menu-item-group-context'
+  import { useMenuContext } from './use-menu-context.ts'
+  import { MenuItemGroupProvider } from './use-menu-item-group-context.ts'
 
   let { ref = $bindable(null), value = $bindable(), ...props }: MenuRadioItemGroupProps = $props()
   const id = $props.id()

@@ -2,10 +2,10 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseImageCropperProps, useImageCropper } from './use-image-cropper'
-import { ImageCropperProvider } from './use-image-cropper-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { type UseImageCropperProps, useImageCropper } from './use-image-cropper.ts'
+import { ImageCropperProvider } from './use-image-cropper-context.ts'
 
 export interface ImageCropperRootBaseProps extends UseImageCropperProps, PolymorphicProps {}
 export interface ImageCropperRootProps extends HTMLProps<'div'>, ImageCropperRootBaseProps {}

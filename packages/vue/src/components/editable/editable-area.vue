@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface EditableAreaBaseProps extends PolymorphicProps {}
 export interface EditableAreaProps
@@ -13,9 +13,9 @@ export interface EditableAreaProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useEditableContext } from './use-editable-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useEditableContext } from './use-editable-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<EditableAreaProps>()
 const editable = useEditableContext()

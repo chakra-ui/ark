@@ -51,9 +51,9 @@ export {
   type DrawerSwipeAreaBaseProps,
   type DrawerSwipeAreaProps,
 } from './drawer-swipe-area.svelte'
-export { drawerAnatomy } from './drawer.anatomy'
-export { useDrawerContext, type UseDrawerContext } from './use-drawer-context'
-export { useDrawerStackContext, type UseDrawerStackContext } from './use-drawer-stack-context'
-export { useDrawer, type UseDrawerProps, type UseDrawerReturn } from './use-drawer.svelte'
+export { drawerAnatomy } from './drawer.anatomy.ts'
+export { useDrawerContext, type UseDrawerContext } from './use-drawer-context.ts'
+export { useDrawerStackContext, type UseDrawerStackContext } from './use-drawer-stack-context.ts'
+export { useDrawer, type UseDrawerProps, type UseDrawerReturn } from './use-drawer.svelte.ts'
 
-export * as Drawer from './drawer'
+export * as Drawer from './drawer.ts'

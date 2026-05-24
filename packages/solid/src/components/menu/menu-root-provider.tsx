@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
 import { type JSX, createEffect } from 'solid-js'
-import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
-import type { UseMenuReturn } from './use-menu'
-import { MenuProvider, useMenuContext } from './use-menu-context'
-import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context'
-import { MenuTriggerItemProvider } from './use-menu-trigger-item-context'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.tsx'
+import type { UseMenuReturn } from './use-menu.ts'
+import { MenuProvider, useMenuContext } from './use-menu-context.ts'
+import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context.ts'
+import { MenuTriggerItemProvider } from './use-menu-trigger-item-context.ts'
 
 interface RootProviderProps {
   value: UseMenuReturn
