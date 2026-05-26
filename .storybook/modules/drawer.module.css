@@ -300,10 +300,11 @@
 }
 
 .Indent {
-  transition: border-radius 0.3s ease;
+  transition: border-radius 0.3s ease, transform 0.3s ease;
 
   &[data-active] {
     border-radius: calc(16px * (1 - var(--drawer-swipe-progress, 0)));
+    transform: scale(calc(1 - 0.05 * (1 - var(--drawer-swipe-progress, 0))));
   }
 }
 
