@@ -1,0 +1,226 @@
+.Sandbox {
+  position: relative;
+  width: 100%;
+  max-width: 42rem;
+  min-height: 320px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--demo-border-emphasized);
+  background: var(--demo-bg-popover);
+  contain: layout;
+}
+
+.IndentBackground {
+  position: absolute;
+  inset: 0;
+  background-color: black;
+}
+
+.Indent {
+  --indent-radius: calc(12px * (1 - var(--drawer-swipe-progress, 0)));
+  --indent-transition: calc(1 - clamp(0, calc(var(--drawer-swipe-progress, 0) * 100000), 1));
+  position: relative;
+  z-index: 0;
+  min-height: 320px;
+  background: var(--demo-bg-popover);
+  color: var(--demo-neutral-fg);
+  transform-origin: center top;
+  will-change: transform;
+  transition:
+    transform 0.4s cubic-bezier(0.32, 0.72, 0, 1),
+    border-radius 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+  transition-duration: calc(400ms * var(--indent-transition)), calc(250ms * var(--indent-transition));
+
+  &[data-active] {
+    transform: scale(calc(0.97 + (0.03 * var(--drawer-swipe-progress, 0))))
+      translateY(calc(0.5rem * (1 - var(--drawer-swipe-progress, 0))));
+    border-top-left-radius: var(--indent-radius);
+    border-top-right-radius: var(--indent-radius);
+  }
+}
+
+.IndentCenter {
+  display: flex;
+  min-height: 320px;
+  align-items: center;
+  justify-content: center;
+}
+
+.Trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  padding: 0 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid var(--demo-border-emphasized);
+  background: var(--demo-bg-popover);
+  color: var(--demo-neutral-fg);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--demo-neutral-subtle);
+    border-color: var(--demo-neutral-muted);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: 2px;
+  }
+}
+
+.Backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+
+  &[data-state='open'] {
+    animation: indent-fade-in 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  &[data-state='closed'] {
+    animation: indent-fade-out 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.Positioner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.Content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  max-height: 85%;
+  padding: 0 1.25rem 1.25rem;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  background: var(--demo-bg-popover);
+  color: var(--demo-neutral-fg);
+  outline: none;
+
+  &[data-state='open'] {
+    animation: indent-slide-in 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  &[data-state='closed'] {
+    animation: indent-slide-out 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.Grabber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 100%;
+  padding: 0.75rem 0;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.GrabberIndicator {
+  width: 40px;
+  height: 4px;
+  background-color: var(--demo-neutral-muted);
+  border-radius: 1000px;
+
+  .Grabber:hover & {
+    background-color: var(--demo-neutral-emphasized);
+  }
+}
+
+.Title {
+  margin: 0 0 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.75rem;
+  color: var(--demo-neutral-fg);
+}
+
+.Description {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--demo-neutral-fg-muted);
+}
+
+.CloseTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--demo-neutral-emphasized);
+  cursor: pointer;
+
+  & svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &:hover {
+    background: var(--demo-neutral-muted);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--demo-coral-focus-ring);
+    outline-offset: -1px;
+  }
+}
+
+@keyframes indent-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes indent-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes indent-slide-in {
+  from {
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    transform: translate3d(var(--drawer-translate-x, 0), var(--drawer-translate-y, 0), 0);
+  }
+}
+
+@keyframes indent-slide-out {
+  from {
+    transform: translate3d(var(--drawer-translate-x, 0), var(--drawer-translate-y, 0), 0);
+  }
+  to {
+    transform: translate3d(0, 100%, 0);
+  }
+}

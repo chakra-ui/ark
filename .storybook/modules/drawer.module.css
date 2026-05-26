@@ -299,28 +299,6 @@
   }
 }
 
-.Indent {
-  transition: border-radius 0.3s ease;
-
-  &[data-active] {
-    border-radius: calc(16px * (1 - var(--drawer-swipe-progress, 0)));
-  }
-}
-
-.IndentBackground {
-  position: fixed;
-  inset: 0;
-  z-index: var(--demo-popover-z-index);
-  pointer-events: none;
-  background: black;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-
-  &[data-active] {
-    opacity: calc(0.1 * (1 - var(--drawer-swipe-progress, 0)));
-  }
-}
-
 @keyframes fade-in {
   from {
     opacity: 0;
