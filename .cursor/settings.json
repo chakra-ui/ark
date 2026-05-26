@@ -1,0 +1,7 @@
+{
+  "plugins": {
+    "svelte": {
+      "enabled": true
+    }
+  }
+}
