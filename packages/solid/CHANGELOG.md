@@ -1,5 +1,85 @@
 # @ark-ui/solid
 
+## [5.37.0] - 2026-05-26
+
+### Added
+
+- ### Added
+  - **Floating Components**: Add `data-side` to placement-aware parts so you can style them based on the current
+    placement (`top`, `bottom`, `left`, `right`).
+    > Affects Color Picker, Combobox, Date Picker, Hover Card, Menu, Popover, Select, Tooltip, and Tour.
+  - **Date Input**: Add `hideTimeZone` prop. When the value is a `ZonedDateTime`, the `timeZoneName` segment now renders
+    automatically — set `hideTimeZone` to hide it. Arrow navigation and auto-advance after typing now reach read-only
+    focusable segments too.
+  - **Splitter**
+    - Accept CSS units (`px`, `em`, `rem`, `vh`, `vw`) for `defaultSize`, `minSize`, and `maxSize` in addition to
+      percentages.
+      ```jsx
+      <Splitter.Root
+        panels={[
+          { id: 'nav', minSize: '240px', maxSize: '480px' },
+          { id: 'main', minSize: 30 },
+        ]}
+        defaultSize={['240px', '60vw']}
+      />
+      ```
+    - Add `resizeBehavior` per panel. Set to `"preserve-pixel-size"` to keep a panel's pixel size constant when the
+      parent splitter group resizes.
+    - Allow non-panel children (toolbars, rails, status bars) inside the splitter root. Use partial trigger ids
+      (`"left:"`, `":right"`) to bind handles around the fixed element.
+  ### Fixed
+  - **Accordion**: Remove redundant `aria-disabled` from item triggers.
+  - **Color Picker**: Fire `onValueChangeEnd` when you pick a color with the EyeDropper API — matches the behavior when
+    ending a drag on the area or channel sliders.
+  - **Combobox**: Stop `Enter` from submitting the form when an item is highlighted, or when the typed value will be
+    rejected by `allowCustomValue: false`.
+  - **Date Input**
+    - Preserve entered segments when applying min/max. Values clamp segment-by-segment on blur, so `06/15/1999` with min
+      `2000-01-01` becomes `06/15/2000` instead of snapping to `01/01/2000`.
+    - Fix range mode keyboard navigation so `ArrowRight` moves from the last segment of the start date to the first
+      segment of the end date.
+    - Fix time-only formatters (no `year` segment) never firing `onValueChange`.
+    - Fix `setSegmentValue` reading stale display values.
+    - Fix `dayPeriod` (AM/PM) arrow up/down not updating the visible segment when `hourCycle` changes at runtime.
+    - Fix typing "A" / "P" on the `dayPeriod` segment not updating the visible AM/PM.
+  - **Date Picker**
+    - Fix clearing the value not resetting `activeIndex` and `hoveredValue` in range mode when input parts are not
+      rendered.
+    - Fix date input not being writable in locales with multi-character separators (e.g. `cs-CZ`, `sk-SK`, `hu-HU`,
+      `ko-KR`).
+    - Fix Firefox issue where the native month/year `<select>` was not interactive when the picker is inside a modal
+      dialog.
+    - Fix range selection with `outsideDaySelectable`: hovering outside-month days no longer changes the visible month;
+      hover preview for the end date still updates.
+  - **Dialog, Drawer, Hover Card, Menu, Popover, Tooltip**: Fix custom trigger elements (via `ids.trigger`) being
+    ignored when shared across components — e.g. wrapping a `Popover.Trigger` in a `Tooltip` with the same id no longer
+    breaks positioning. Also fix trigger lookups in shadow root.
+  - **Dialog, Drawer, Popover**: Fix dismissable layers losing their `pointer-events` in Svelte and Vue, where a spread
+    update could rewrite the whole `style` attribute and wipe the value.
+  - **Drawer**
+    - Fix controlled drawers snapping back open before the close animation when dismissed by swipe.
+    - Fix the indent and indent background snapping into place after the close animation instead of transitioning in
+      sync.
+    - Fix `--drawer-swipe-progress` jumping straight to `1` at the start of a dismiss swipe — it now moves smoothly from
+      `0` (at rest) to `1` (fully dismissed).
+    - Fix the drawer freezing mid-drag on release when its content mounts lazily, which left snap points unmeasured.
+  - **React 19 Strict Mode**: Fix dialog, drawer, and popover leaving `<body>` uninteractive (`data-scroll-lock`,
+    `data-inert`, `overflow: hidden`, `pointer-events: none`) after closing.
+  - **Number Input**: Fix inconsistent blur behavior when the input is cleared and `min` is greater than `0`.
+  - **Splitter**
+    - Fix clicking a resize trigger not moving focus to it, which prevented arrow keys from resizing the splitter until
+      it was tab-focused (notably on Safari).
+    - Fix `data-focus` being applied on hover — it now only sets when the trigger is actually focused.
+  - **Tabs**: Observe the tab list with `ResizeObserver` so the indicator updates when the list resizes without
+    individual tab triggers changing size (e.g. responsive grid reflow).
+
+### Fixed
+
+- **Date Input**: Fix `DateInput.Segment` to stay in sync with the latest segment state while typing.
+
+- **Floating Panel**: Re-export additional types (`ResizeTriggerAxis`, `Stage`, `ElementIds`, `IntlTranslations`,
+  `AnchorPositionDetails`, `Point`, `Size`) and the `resizeTriggerAxes` constant from `@zag-js/floating-panel`.
+
 ## [5.36.2] - 2026-04-22
 
 ### Fixed
