@@ -47,12 +47,13 @@ const pages = defineCollection({
       }),
     })
     .transform((data, { meta }) => {
+      const path = (meta.path as string).replace(/\\/g, '/')
       if (data.id === 'changelog') {
         return {
           ...data,
           slug: 'overview/changelog',
           category: 'overview',
-          framework: (meta.path as string).replace(/.*\/packages\//, '').replace(/\/[^/]*$/, ''),
+          framework: path.replace(/.*\/packages\//, '').replace(/\/[^/]*$/, ''),
           toc: data.toc
             .flatMap((entry) => (entry.url.includes('ark-ui') ? entry.items : [entry]))
             .map((entry) => ({ ...entry, items: [] })),
@@ -60,8 +61,8 @@ const pages = defineCollection({
       }
       return {
         ...data,
-        slug: (meta.path as string).replace(/.*\/pages\//, '').replace(/\.mdx$/, ''),
-        category: (meta.path as string).replace(/.*\/pages\//, '').replace(/\/[^/]*$/, ''),
+        slug: path.replace(/.*\/pages\//, '').replace(/\.mdx$/, ''),
+        category: path.replace(/.*\/pages\//, '').replace(/\/[^/]*$/, ''),
       }
     }),
 })
@@ -82,11 +83,14 @@ const blogs = defineCollection({
       toc: s.toc(),
       code: s.mdx(),
     })
-    .transform((data, { meta }) => ({
-      ...data,
-      slug: (meta.path as string).replace(/.*\/blog\//, '').replace(/\.mdx$/, ''),
-      category: 'blog',
-    })),
+    .transform((data, { meta }) => {
+      const path = (meta.path as string).replace(/\\/g, '/')
+      return {
+        ...data,
+        slug: path.replace(/.*\/blog\//, '').replace(/\.mdx$/, ''),
+        category: 'blog',
+      }
+    }),
 })
 
 const showcases = defineCollection({
@@ -120,11 +124,14 @@ const types = defineCollection({
         emits: s.record(s.string(), PropDefintion).optional(),
       }),
     )
-    .transform((data, { meta }) => ({
-      parts: data,
-      component: (meta.basename as string)?.split('.')[0] ?? '',
-      framework: (meta.path as string).replace(/.*\/types\//, '').replace(/\/[^/]*$/, ''),
-    })),
+    .transform((data, { meta }) => {
+      const path = (meta.path as string).replace(/\\/g, '/')
+      return {
+        parts: data,
+        component: (meta.basename as string)?.split('.')[0] ?? '',
+        framework: path.replace(/.*\/types\//, '').replace(/\/[^/]*$/, ''),
+      }
+    }),
 })
 
 export default defineConfig({
