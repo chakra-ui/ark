@@ -1,10 +1,13 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
+  import type { UsePresenceProps } from '../presence/index.ts'
   import type { UseDrawerReturn } from './use-drawer.svelte.ts'
 
-  export interface DrawerRootProviderBaseProps {
+  interface RootProviderProps {
     value: UseDrawerReturn
   }
+
+  export interface DrawerRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
   export interface DrawerRootProviderProps extends DrawerRootProviderBaseProps {
     children?: Snippet
   }

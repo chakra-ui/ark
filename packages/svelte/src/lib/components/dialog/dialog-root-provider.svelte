@@ -1,10 +1,13 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
+  import type { UsePresenceProps } from '../presence/index.ts'
   import type { UseDialogReturn } from './use-dialog.svelte.ts'
 
-  export interface DialogRootProviderBaseProps {
+  interface RootProviderProps {
     value: UseDialogReturn
   }
+
+  export interface DialogRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
   export interface DialogRootProviderProps extends DialogRootProviderBaseProps {
     children?: Snippet
   }
