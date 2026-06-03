@@ -11,6 +11,7 @@ import NoDragAreaExample from './examples/no-drag-area.svelte'
 import NonDraggableExample from './examples/non-draggable.svelte'
 import IndentBackgroundExample from './examples/indent-background.svelte'
 import SwipeDirectionExample from './examples/swipe-direction.svelte'
+import NestedExample from './examples/nested.svelte'
 
 const meta: Meta = {
   title: 'Components / Drawer',
@@ -81,5 +82,11 @@ export const IndentBackground = {
 export const SwipeDirection = {
   render: () => ({
     Component: SwipeDirectionExample,
+  }),
+}
+
+export const Nested = {
+  render: () => ({
+    Component: NestedExample,
   }),
 }

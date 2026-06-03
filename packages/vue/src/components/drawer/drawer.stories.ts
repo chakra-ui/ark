@@ -5,6 +5,7 @@ import ControlledExample from './examples/controlled.vue'
 import IndentBackgroundExample from './examples/indent-background.vue'
 import ModalExample from './examples/modal.vue'
 import MultipleTriggersExample from './examples/multiple-triggers.vue'
+import NestedExample from './examples/nested.vue'
 import NoDragAreaExample from './examples/no-drag-area.vue'
 import NonDraggableExample from './examples/non-draggable.vue'
 import RootProviderExample from './examples/root-provider.vue'
@@ -91,6 +92,13 @@ export const IndentBackground = {
 export const SwipeDirection = {
   render: () => ({
     components: { Component: SwipeDirectionExample },
+    template: '<Component />',
+  }),
+}
+
+export const Nested = {
+  render: () => ({
+    components: { Component: NestedExample },
     template: '<Component />',
   }),
 }
