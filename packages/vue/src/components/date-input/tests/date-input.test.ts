@@ -81,6 +81,15 @@ describe('Date Input', () => {
     expect(document.querySelector('[data-type="timeZoneName"]')).not.toBeInTheDocument()
   })
 
+  it('should update the displayed segment text while typing', async () => {
+    render(ComponentUnderTest)
+    const [monthSegment] = screen.getAllByRole('spinbutton')
+    await user.click(monthSegment)
+    await user.keyboard('8')
+    expect(monthSegment).toHaveAttribute('aria-valuenow', '8')
+    expect(monthSegment).toHaveTextContent('8')
+  })
+
   it('should sync hidden input values for range selection by index', () => {
     render(RangeComponentUnderTest, {
       props: {

@@ -15,24 +15,27 @@ export interface DateInputSegmentProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { createSplitProps } from '../create-split-props.ts'
 import { ark } from '../factory.ts'
 import { useDateInputContext } from './use-date-input-context.ts'
 import { useDateInputSegmentGroupPropsContext } from './use-date-input-segment-group-props-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<DateInputSegmentProps>()
-const [segmentProps] = createSplitProps<Pick<SegmentProps, 'segment'>>()(props, ['segment'])
 const segmentGroupProps = useDateInputSegmentGroupPropsContext()
 const dateInput = useDateInputContext()
 
 useForwardExpose()
 
+const currentSegment = computed(() => {
+  const segments = dateInput.value.getSegments(segmentGroupProps!.value)
+  return segments.find((s) => s.type === props.segment.type) ?? props.segment
+})
+
 const mergedProps = computed(() =>
-  dateInput.value.getSegmentProps({ ...segmentProps, index: segmentGroupProps!.value.index }),
+  dateInput.value.getSegmentProps({ segment: currentSegment.value, index: segmentGroupProps!.value.index }),
 )
 </script>
 
 <template>
-  <ark.span v-bind="mergedProps" :as-child="asChild">{{ segmentProps.segment.text }}</ark.span>
+  <ark.span v-bind="mergedProps" :as-child="asChild">{{ currentSegment.text }}</ark.span>
 </template>
