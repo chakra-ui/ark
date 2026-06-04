@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@ark-ui/react": "workspace:*",
-    "lucide-react": "1.8.0",
+    "lucide-react": "1.17.0",
     "next": "15.5.12",
     "react": "19.2.7",
     "react-dom": "19.2.7"
