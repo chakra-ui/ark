@@ -68,14 +68,12 @@ Don't list all components in the bold prefix. Name the feature instead and use a
 Add a short code snippet for significant new features (new components, new APIs, new props). Keep them minimal — show
 the anatomy or key prop, not a full working example.
 
-```md
+````md
 - **Tags Input**: Add `sanitizeValue` prop to clean up tag values before they're added — trim whitespace, lowercase,
   strip special characters, whatever you need. Defaults to `(v) => v.trim()`.
 
-  \```jsx
-  <TagsInput.Root sanitizeValue={(v) => v.trim().toLowerCase()} />
-  \```
-```
+  \```jsx <TagsInput.Root sanitizeValue={(v) => v.trim().toLowerCase()} /> \```
+````
 
 Don't add snippets for bug fixes or minor tweaks.
 

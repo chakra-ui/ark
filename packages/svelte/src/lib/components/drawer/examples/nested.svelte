@@ -78,9 +78,9 @@
             </div>
             <div class={styles.field}>
               <label class={styles.label} for="notes">Notes</label>
-              <textarea id="notes" class={styles.textarea} rows={3}
-                >Rotate recovery codes and revoke older sessions.</textarea
-              >
+              <textarea id="notes" class={styles.textarea} rows={3}>
+                Rotate recovery codes and revoke older sessions.
+              </textarea>
             </div>
             <div class={styles.actions}>
               <Drawer.CloseTrigger class={styles.button}>Done</Drawer.CloseTrigger>

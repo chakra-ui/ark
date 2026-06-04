@@ -153,7 +153,7 @@
     "@zag-js/utils": "1.41.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.9",
+    "@biomejs/biome": "2.4.16",
     "@modular-forms/solid": "0.25.1",
     "@solidjs/testing-library": "0.8.10",
     "@storybook/addon-a11y": "10.3.5",
@@ -168,7 +168,7 @@
     "check-password-strength": "3.0.0",
     "clean-package": "2.2.0",
     "esbuild-plugin-solid": "0.6.0",
-    "globby": "16.1.1",
+    "globby": "16.2.0",
     "image-conversion": "2.1.1",
     "jsdom": "26.1.0",
     "lucide-solid": "1.8.0",
