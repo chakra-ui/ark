@@ -223,7 +223,7 @@
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/svelte": "5.3.1",
     "@testing-library/user-event": "14.6.1",
-    "@vitest/coverage-v8": "^4.1.4",
+    "@vitest/coverage-v8": "4.1.7",
     "check-password-strength": "3.0.0",
     "clean-package": "2.2.0",
     "image-conversion": "2.1.1",
@@ -235,7 +235,7 @@
     "tslib": "2.8.1",
     "typescript": "6.0.3",
     "vite": "8.0.8",
-    "vitest": "^4.1.4",
+    "vitest": "4.1.7",
     "vitest-axe": "1.0.0-pre.5"
   },
   "peerDependencies": {
