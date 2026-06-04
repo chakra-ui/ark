@@ -233,7 +233,7 @@
     "svelte": "5.55.4",
     "svelte-check": "4.4.6",
     "tslib": "2.8.1",
-    "typescript": "5.9.3",
+    "typescript": "6.0.3",
     "vite": "8.0.8",
     "vitest": "^4.1.4",
     "vitest-axe": "1.0.0-pre.5"

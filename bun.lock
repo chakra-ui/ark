@@ -34,7 +34,7 @@
         "@types/express": "^5.0.3",
         "tsup": "^8.5.0",
         "tsx": "^4.20.5",
-        "typescript": "^5.9.2",
+        "typescript": "6.0.3",
       },
     },
     "packages/react": {
@@ -137,7 +137,7 @@
         "react-use": "17.6.0",
         "resize-observer-polyfill": "1.5.1",
         "storybook": "10.3.5",
-        "typescript": "5.9.3",
+        "typescript": "6.0.3",
         "vite": "8.0.8",
         "vite-plugin-dts": "4.5.4",
         "vitest": "^4.1.4",
@@ -245,7 +245,7 @@
         "storybook": "10.3.5",
         "storybook-solidjs-vite": "10.0.12",
         "tsup": "8.5.1",
-        "typescript": "5.9.3",
+        "typescript": "6.0.3",
         "vite": "8.0.8",
         "vite-plugin-solid": "2.11.12",
         "vitest": "^4.1.4",
@@ -351,7 +351,7 @@
         "svelte": "5.55.4",
         "svelte-check": "4.4.6",
         "tslib": "2.8.1",
-        "typescript": "5.9.3",
+        "typescript": "6.0.3",
         "vite": "8.0.8",
         "vitest": "^4.1.4",
         "vitest-axe": "1.0.0-pre.5",
@@ -456,7 +456,7 @@
         "lucide-vue-next": "1.0.0",
         "resize-observer-polyfill": "1.5.1",
         "storybook": "10.3.5",
-        "typescript": "5.9.3",
+        "typescript": "6.0.3",
         "vee-validate": "4.15.1",
         "vite": "8.0.8",
         "vite-plugin-dts": "4.5.4",
@@ -484,7 +484,7 @@
         "pkg-dir": "9.0.0",
         "ts-morph": "28.0.0",
         "ts-pattern": "5.9.0",
-        "typescript": "5.9.3",
+        "typescript": "6.0.3",
         "voca": "1.4.1",
       },
     },
@@ -501,7 +501,7 @@
         "@types/node": "25.3.0",
         "@types/react": "19.2.14",
         "@types/react-dom": "19.2.3",
-        "typescript": "5.9.3",
+        "typescript": "6.0.3",
       },
     },
     "templates/nuxt": {
@@ -539,8 +539,8 @@
         "lucide-svelte": "1.0.1",
         "svelte": "5.55.4",
         "svelte-check": "4.4.6",
-        "typescript": "^5.9.2",
-        "vite": "^8.0.8",
+        "typescript": "6.0.3",
+        "vite": "8.0.8",
       },
     },
     "website": {
@@ -582,7 +582,7 @@
         "rehype-slug": "6.0.0",
         "shiki": "4.0.2",
         "ts-morph": "28.0.0",
-        "typescript": "5.9.3",
+        "typescript": "6.0.3",
         "velite": "0.3.1",
       },
       "devDependencies": {
@@ -4028,6 +4028,22 @@
 
     "zwitch": ["zwitch@2.0.4", "", {}, "sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A=="],
 
+    "@ark-ui/mcp/typescript": ["typescript@6.0.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw=="],
+
+    "@ark-ui/next-js/typescript": ["typescript@6.0.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw=="],
+
+    "@ark-ui/react/typescript": ["typescript@6.0.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw=="],
+
+    "@ark-ui/scripts/typescript": ["typescript@6.0.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw=="],
+
+    "@ark-ui/solid/typescript": ["typescript@6.0.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw=="],
+
+    "@ark-ui/svelte/typescript": ["typescript@6.0.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw=="],
+
+    "@ark-ui/vue/typescript": ["typescript@6.0.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw=="],
+
+    "@ark-ui/website/typescript": ["typescript@6.0.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw=="],
+
     "@asamuzakjp/css-color/lru-cache": ["lru-cache@10.4.3", "", {}, "sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ=="],
 
     "@babel/core/semver": ["semver@6.3.1", "", { "bin": { "semver": "bin/semver.js" } }, "sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA=="],
@@ -4657,6 +4673,8 @@
     "svelte/aria-query": ["aria-query@5.3.1", "", {}, "sha512-Z/ZeOgVl7bcSYZ/u/rh0fOpvEpq//LZmdbkXyc7syVzjPAhfOa9ebsdTSjEBDU4vs5nC98Kfduj1uFo0qyET3g=="],
 
     "svelte-check/chokidar": ["chokidar@4.0.3", "", { "dependencies": { "readdirp": "^4.0.1" } }, "sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA=="],
+
+    "svelte-kit/typescript": ["typescript@6.0.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw=="],
 
     "svgo/commander": ["commander@11.1.0", "", {}, "sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ=="],
 

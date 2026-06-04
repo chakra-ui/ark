@@ -175,7 +175,7 @@
     "lucide-vue-next": "1.0.0",
     "resize-observer-polyfill": "1.5.1",
     "storybook": "10.3.5",
-    "typescript": "5.9.3",
+    "typescript": "6.0.3",
     "vee-validate": "4.15.1",
     "axe-core": "4.11.1",
     "vitest-axe": "1.0.0-pre.5",

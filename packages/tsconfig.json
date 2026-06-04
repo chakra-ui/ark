@@ -15,6 +15,7 @@
 
     // Best practices
     "strict": true,
+    "ignoreDeprecations": "6.0",
     "skipLibCheck": true,
     "noFallthroughCasesInSwitch": true,
     "noPropertyAccessFromIndexSignature": true,
