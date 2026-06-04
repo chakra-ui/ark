@@ -180,6 +180,7 @@ import * as Drawer_Controlled from '@examples/drawer/examples/controlled'
 import * as Drawer_IndentBackground from '@examples/drawer/examples/indent-background'
 import * as Drawer_Modal from '@examples/drawer/examples/modal'
 import * as Drawer_MultipleTriggers from '@examples/drawer/examples/multiple-triggers'
+import * as Drawer_Nested from '@examples/drawer/examples/nested'
 import * as Drawer_NoDragArea from '@examples/drawer/examples/no-drag-area'
 import * as Drawer_NonDraggable from '@examples/drawer/examples/non-draggable'
 import * as Drawer_RootProvider from '@examples/drawer/examples/root-provider'
@@ -778,6 +779,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'drawer/indent-background': Drawer_IndentBackground,
   'drawer/modal': Drawer_Modal,
   'drawer/multiple-triggers': Drawer_MultipleTriggers,
+  'drawer/nested': Drawer_Nested,
   'drawer/no-drag-area': Drawer_NoDragArea,
   'drawer/non-draggable': Drawer_NonDraggable,
   'drawer/root-provider': Drawer_RootProvider,
