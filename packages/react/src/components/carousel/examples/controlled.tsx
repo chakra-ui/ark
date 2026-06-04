@@ -15,7 +15,7 @@ export const Controlled = () => {
   const [page, setPage] = useState(0)
 
   return (
-    <Carousel.Root className={styles.Root} slideCount={images.length} page={page} onPageChange={(e) => setPage(e.page)}>
+    <Carousel.Root className={styles.Root} count={images.length} page={page} onPageChange={(e) => setPage(e.page)}>
       <Carousel.Control className={styles.Control}>
         <Carousel.PrevTrigger className={styles.Trigger}>
           <ArrowLeftIcon />

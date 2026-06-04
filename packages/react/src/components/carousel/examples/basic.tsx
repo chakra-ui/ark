@@ -12,7 +12,7 @@ const images = [
 
 export const Basic = () => {
   return (
-    <Carousel.Root className={styles.Root} slideCount={images.length}>
+    <Carousel.Root className={styles.Root} count={images.length}>
       <Carousel.Control className={styles.Control}>
         <Carousel.PrevTrigger className={styles.Trigger}>
           <ArrowLeftIcon />
