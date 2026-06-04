@@ -21,7 +21,7 @@
     "local:revert": "bun scripts local:sync --revert",
     "format": "bun prettier --write .",
     "lint": "bun run --filter='*' lint",
-    "test": "bun run --filter='*' test:ci",
+    "test": "bun run --sequential --filter='*' test:ci",
     "typecheck": "bun run --filter='*' typecheck",
     "react": "bun run --cwd packages/react",
     "scripts": "bun run --cwd scripts",
