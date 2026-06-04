@@ -84,7 +84,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@internationalized/date": "3.12.0",
+    "@internationalized/date": "3.12.2",
     "@zag-js/accordion": "1.41.1",
     "@zag-js/anatomy": "1.41.1",
     "@zag-js/angle-slider": "1.41.1",
@@ -159,7 +159,7 @@
     "@storybook/addon-a11y": "10.3.5",
     "@storybook/addon-links": "10.3.5",
     "@storybook/addon-vitest": "10.3.5",
-    "@tanstack/solid-virtual": "3.13.23",
+    "@tanstack/solid-virtual": "3.13.28",
     "@testing-library/dom": "10.4.1",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/user-event": "14.6.1",
@@ -173,7 +173,7 @@
     "jsdom": "26.1.0",
     "lucide-solid": "1.8.0",
     "resize-observer-polyfill": "1.5.1",
-    "solid-js": "1.9.12",
+    "solid-js": "1.9.13",
     "storybook": "10.3.5",
     "storybook-solidjs-vite": "10.0.12",
     "tsup": "8.5.1",
@@ -187,6 +187,6 @@
     "solid-js": ">=1.6.0"
   },
   "overrides": {
-    "solid-js": "1.9.12"
+    "solid-js": "1.9.13"
   }
 }
