@@ -15,12 +15,12 @@ export const Announcement = () => {
   }
 
   return (
-    <NextLink href="/docs/utilities/swap">
+    <NextLink href="/docs/components/date-input">
       <Badge size="lg" variant="outline">
         <Icon color="colorPalette.default">
           <SparklesIcon />
         </Icon>
-        [New] Swap component
+        [New] Date Input component
         <ArrowRightIcon />
       </Badge>
     </NextLink>
