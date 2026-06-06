@@ -33,7 +33,7 @@
     "setup": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull website/.env",
     "setup:prod": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull --environment production website/.env",
     "changeset": "changeset",
-    "version": "changeset version && node .changeset/format-changelogs.cjs",
+    "version": "changeset version && node .changeset/postprocess-changelogs.cjs",
     "release": "changeset publish"
   },
   "devDependencies": {
