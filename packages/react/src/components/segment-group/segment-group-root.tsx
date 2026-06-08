@@ -5,7 +5,6 @@ import { forwardRef } from 'react'
 import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
-import { parts } from './segment-group.anatomy.ts'
 import { type UseSegmentGroupProps, useSegmentGroup } from './use-segment-group.ts'
 import { SegmentGroupProvider } from './use-segment-group-context.ts'
 
@@ -30,7 +29,7 @@ export const SegmentGroupRoot = forwardRef<HTMLDivElement, SegmentGroupRootProps
     'value',
   ])
   const segmentGroup = useSegmentGroup(useSegmentGroupProps)
-  const mergedProps = mergeProps(segmentGroup.getRootProps(), parts.root.attrs as Record<string, string>, localProps)
+  const mergedProps = mergeProps(segmentGroup.getRootProps(), localProps)
 
   return (
     <SegmentGroupProvider value={segmentGroup}>

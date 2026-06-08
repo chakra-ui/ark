@@ -39,14 +39,14 @@ export const ControlledPosition = () => {
               <p>Some content</p>
             </FloatingPanel.Body>
 
-            <FloatingPanel.ResizeTrigger axis="n" className={styles.ResizeTrigger} />
-            <FloatingPanel.ResizeTrigger axis="e" className={styles.ResizeTrigger} />
-            <FloatingPanel.ResizeTrigger axis="w" className={styles.ResizeTrigger} />
-            <FloatingPanel.ResizeTrigger axis="s" className={styles.ResizeTrigger} />
-            <FloatingPanel.ResizeTrigger axis="ne" className={styles.ResizeTrigger} />
-            <FloatingPanel.ResizeTrigger axis="se" className={styles.ResizeTrigger} />
-            <FloatingPanel.ResizeTrigger axis="sw" className={styles.ResizeTrigger} />
-            <FloatingPanel.ResizeTrigger axis="nw" className={styles.ResizeTrigger} />
+            <FloatingPanel.ResizeTrigger placement="n" className={styles.ResizeTrigger} />
+            <FloatingPanel.ResizeTrigger placement="e" className={styles.ResizeTrigger} />
+            <FloatingPanel.ResizeTrigger placement="w" className={styles.ResizeTrigger} />
+            <FloatingPanel.ResizeTrigger placement="s" className={styles.ResizeTrigger} />
+            <FloatingPanel.ResizeTrigger placement="ne" className={styles.ResizeTrigger} />
+            <FloatingPanel.ResizeTrigger placement="se" className={styles.ResizeTrigger} />
+            <FloatingPanel.ResizeTrigger placement="sw" className={styles.ResizeTrigger} />
+            <FloatingPanel.ResizeTrigger placement="nw" className={styles.ResizeTrigger} />
           </FloatingPanel.Content>
         </FloatingPanel.Positioner>
       </Portal>

@@ -2,7 +2,7 @@ import { PinInput } from '@ark-ui/react/pin-input'
 import styles from 'styles/pin-input.module.css'
 
 export const Mask = () => (
-  <PinInput.Root className={styles.Root} mask>
+  <PinInput.Root className={styles.Root} count={3} mask>
     <PinInput.Label className={styles.Label}>Label</PinInput.Label>
     <PinInput.Control className={styles.Control}>
       {[0, 1, 2].map((id, index) => (

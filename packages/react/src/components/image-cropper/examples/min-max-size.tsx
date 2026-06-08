@@ -14,8 +14,8 @@ export const MinMaxSize = () => {
             alt="Sample"
           />
           <ImageCropper.Selection className={styles.Selection}>
-            {ImageCropper.handles.map((position) => (
-              <ImageCropper.Handle className={styles.Handle} key={position} position={position}>
+            {ImageCropper.placements.map((placement) => (
+              <ImageCropper.Handle className={styles.Handle} key={placement} placement={placement}>
                 <div />
               </ImageCropper.Handle>
             ))}

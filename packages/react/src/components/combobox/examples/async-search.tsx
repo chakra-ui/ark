@@ -15,8 +15,8 @@ interface Movie {
 
 export const AsyncSearch = () => {
   const list = useAsyncList<Movie>({
-    async load({ filterText, signal }) {
-      if (!filterText) return { items: [] }
+    async load({ filter, signal }) {
+      if (!filter) return { items: [] }
 
       await new Promise((resolve) => setTimeout(resolve, 300))
 
@@ -24,9 +24,9 @@ export const AsyncSearch = () => {
 
       const items = allMovies.filter(
         (movie) =>
-          movie.title.toLowerCase().includes(filterText.toLowerCase()) ||
-          movie.director.toLowerCase().includes(filterText.toLowerCase()) ||
-          movie.genre.toLowerCase().includes(filterText.toLowerCase()),
+          movie.title.toLowerCase().includes(filter.toLowerCase()) ||
+          movie.director.toLowerCase().includes(filter.toLowerCase()) ||
+          movie.genre.toLowerCase().includes(filter.toLowerCase()),
       )
 
       return { items }
@@ -42,7 +42,7 @@ export const AsyncSearch = () => {
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
     if (details.reason === 'input-change') {
       startTransition(() => {
-        list.setFilterText(details.inputValue)
+        list.setFilter(details.inputValue)
       })
     }
   }
@@ -64,7 +64,7 @@ export const AsyncSearch = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content className={styles.Content}>
-            {list.loading ? (
+            {list.isLoading ? (
               <div className={styles.Status}>
                 <LoaderIcon className={styles.Spinner} />
                 <span>Searching...</span>
@@ -73,7 +73,7 @@ export const AsyncSearch = () => {
               <div className={styles.Status}>{list.error.message}</div>
             ) : list.items.length === 0 ? (
               <div className={styles.Status}>
-                {list.filterText ? 'No results found' : 'Start typing to search movies...'}
+                {list.filter ? 'No results found' : 'Start typing to search movies...'}
               </div>
             ) : (
               collection.items.map((movie) => (

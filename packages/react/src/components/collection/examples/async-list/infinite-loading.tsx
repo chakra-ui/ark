@@ -16,7 +16,7 @@ export const InfiniteLoading = () => {
   const list = useAsyncList<Post, number>({
     autoReload: true,
     async load({ cursor }) {
-      const page = cursor || 1
+      const page = Number(cursor) || 1
       const start = (page - 1) * LIMIT
 
       const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=${LIMIT}`)
@@ -30,7 +30,7 @@ export const InfiniteLoading = () => {
 
       return {
         items: posts,
-        cursor: hasNextPage ? page + 1 : undefined,
+        cursor: hasNextPage ? String(page + 1) : undefined,
       }
     },
   })
@@ -43,8 +43,8 @@ export const InfiniteLoading = () => {
           {list.cursor && ` (more available)`}
         </span>
         {list.cursor && (
-          <button className={button.Root} onClick={() => list.loadMore()} disabled={list.loading}>
-            {list.loading ? (
+          <button className={button.Root} onClick={() => list.loadMore()} disabled={list.isLoading}>
+            {list.isLoading ? (
               <>
                 <LoaderIcon className={styles.Spinner} /> Loading
               </>

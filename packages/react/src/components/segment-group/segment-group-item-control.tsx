@@ -3,7 +3,6 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
-import { parts } from './segment-group.anatomy.ts'
 import { useSegmentGroupContext } from './use-segment-group-context.ts'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context.ts'
 
@@ -13,11 +12,7 @@ export interface SegmentGroupItemControlProps extends HTMLProps<'div'>, SegmentG
 export const SegmentGroupItemControl = forwardRef<HTMLDivElement, SegmentGroupItemControlProps>((props, ref) => {
   const segmentGroup = useSegmentGroupContext()
   const itemProps = useSegmentGroupItemPropsContext()
-  const mergedProps = mergeProps(
-    segmentGroup.getItemControlProps(itemProps),
-    parts.itemControl.attrs as Record<string, string>,
-    props,
-  )
+  const mergedProps = mergeProps(segmentGroup.getItemControlProps(itemProps), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

@@ -22,10 +22,10 @@ export const SortClientSide = () => {
       const data = await response.json()
       return { items: data }
     },
-    sort({ items, descriptor }) {
+    sort({ items, sorting }) {
       return {
         items: items.sort((a, b) => {
-          const { column, direction } = descriptor
+          const { column, direction } = sorting
           let cmp = collator.compare(String(a[column]), String(b[column]))
           if (direction === 'descending') {
             cmp *= -1
@@ -37,27 +37,27 @@ export const SortClientSide = () => {
   })
 
   const handleSort = (column: keyof User) => {
-    const currentSort = list.sortDescriptor
+    const currentSort = list.sorting
     let direction: 'ascending' | 'descending' = 'ascending'
 
     if (currentSort?.column === column && currentSort.direction === 'ascending') {
       direction = 'descending'
     }
 
-    list.sort({ column, direction })
+    list.setSorting({ column, direction })
   }
 
   const getSortIcon = (column: keyof User) => {
-    const current = list.sortDescriptor
+    const current = list.sorting
     if (current?.column !== column) return <ArrowUpDownIcon />
     return current.direction === 'ascending' ? <ArrowUpIcon /> : <ArrowDownIcon />
   }
 
-  const descriptor = list.sortDescriptor
+  const descriptor = list.sorting
 
   return (
     <div className={styles.Root}>
-      {list.loading && (
+      {list.isLoading && (
         <div className={styles.Loading}>
           <LoaderIcon className={styles.Spinner} /> Loading
         </div>

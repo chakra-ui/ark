@@ -2,7 +2,7 @@ import { PinInput } from '@ark-ui/react/pin-input'
 import styles from 'styles/pin-input.module.css'
 
 export const CustomPlaceholder = () => (
-  <PinInput.Root className={styles.Root} placeholder="*">
+  <PinInput.Root className={styles.Root} count={3} placeholder="*">
     <PinInput.Label className={styles.Label}>Label</PinInput.Label>
     <PinInput.Control className={styles.Control}>
       {[0, 1, 2].map((id, index) => (
