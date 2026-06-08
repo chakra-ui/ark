@@ -9,6 +9,8 @@ import pkg from './package.json'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
+const normalizeDeclarationPath = (filePath: string) => filePath.replace(/([/\\]dist)[/\\]src[/\\]/, '$1/')
+
 export default defineConfig({
   logLevel: 'warn',
   plugins: [
@@ -17,7 +19,7 @@ export default defineConfig({
       staticImport: true,
       exclude: ['**/*.stories.tsx', '**/*.test.tsx', '**/tests/*', '**/examples/*', '**/setup-test.ts'],
       beforeWriteFile: (filePath, content) => ({
-        filePath,
+        filePath: normalizeDeclarationPath(filePath),
         content: content.replace(
           /(\bfrom\s*['"])(\.\.?\/[^'"]*?)\.tsx?(['"])/g,
           (_m, pre, spec, post) => `${pre}${spec}.js${post}`,
