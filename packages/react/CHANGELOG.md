@@ -1,5 +1,11 @@
 # @ark-ui/react
 
+## [5.37.2] - 2026-06-08
+
+### Fixed
+
+- Fix declaration file output paths so published package export maps resolve to existing types.
+
 ## [5.37.1] - 2026-06-06
 
 ### Fixed
