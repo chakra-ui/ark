@@ -71,16 +71,20 @@ const TreeNode = (props: TreeNodeProps) => {
   return (
     <TreeView.NodeProvider key={node.id} node={node} indexPath={indexPath}>
       {nodeState.isBranch ? (
-        <TreeView.Branch className={styles.Branch}>
-          <TreeView.BranchControl className={styles.BranchControl}>
-            <TreeView.BranchIndicator className={styles.BranchIndicator}>
-              <ChevronRightIcon />
-            </TreeView.BranchIndicator>
-            <TreeView.BranchText className={styles.BranchText}>{node.name}</TreeView.BranchText>
-            <TreeNodeActions {...props} />
-          </TreeView.BranchControl>
-          <TreeView.BranchContent className={styles.BranchContent}>
-            <TreeView.BranchIndentGuide className={styles.BranchIndentGuide} />
+        <TreeView.NodeGroup className={styles.NodeGroup}>
+          <TreeView.Node className={styles.Node}>
+            <TreeView.Cell className={styles.Cell}>
+              <TreeView.NodeExpandTrigger className={styles.NodeExpandTrigger}>
+                <TreeView.NodeIndicator type="expanded" className={styles.NodeIndicator}>
+                  <ChevronRightIcon />
+                </TreeView.NodeIndicator>
+              </TreeView.NodeExpandTrigger>
+              <TreeView.NodeText className={styles.NodeText}>{node.name}</TreeView.NodeText>
+              <TreeNodeActions {...props} />
+            </TreeView.Cell>
+          </TreeView.Node>
+          <TreeView.NodeGroupContent className={styles.NodeGroupContent}>
+            <TreeView.IndentGuide className={styles.IndentGuide} />
             {node.children?.map((child, index) => (
               <TreeNode
                 key={child.id}
@@ -90,13 +94,15 @@ const TreeNode = (props: TreeNodeProps) => {
                 onAdd={props.onAdd}
               />
             ))}
-          </TreeView.BranchContent>
-        </TreeView.Branch>
+          </TreeView.NodeGroupContent>
+        </TreeView.NodeGroup>
       ) : (
-        <TreeView.Item className={styles.Item}>
-          <TreeView.ItemText className={styles.ItemText}>{node.name}</TreeView.ItemText>
-          <TreeNodeActions {...props} />
-        </TreeView.Item>
+        <TreeView.Node className={styles.Node}>
+          <TreeView.Cell className={styles.Cell}>
+            <TreeView.NodeText className={styles.NodeText}>{node.name}</TreeView.NodeText>
+            <TreeNodeActions {...props} />
+          </TreeView.Cell>
+        </TreeView.Node>
       )}
     </TreeView.NodeProvider>
   )

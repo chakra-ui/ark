@@ -57,36 +57,42 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node> & { triggerId: string 
       <TreeView.NodeContext>
         {(nodeState) =>
           node.children ? (
-            <TreeView.Branch className={styles.Branch}>
-              <TreeNodeContextMenu triggerId={triggerId}>
-                <TreeView.BranchControl className={styles.BranchControl} asChild>
-                  <Menu.ContextTrigger>
-                    <TreeView.BranchIndicator className={styles.BranchIndicator}>
-                      <ChevronRightIcon />
-                    </TreeView.BranchIndicator>
-                    <TreeView.BranchText className={styles.BranchText}>
-                      {nodeState.expanded ? <FolderOpenIcon /> : <FolderIcon />}
-                      {node.name}
-                    </TreeView.BranchText>
-                  </Menu.ContextTrigger>
-                </TreeView.BranchControl>
-              </TreeNodeContextMenu>
-              <TreeView.BranchContent className={styles.BranchContent}>
-                <TreeView.BranchIndentGuide className={styles.BranchIndentGuide} />
+            <TreeView.NodeGroup className={styles.NodeGroup}>
+              <TreeView.Node className={styles.Node}>
+                <TreeNodeContextMenu triggerId={triggerId}>
+                  <TreeView.Cell className={styles.Cell} asChild>
+                    <Menu.ContextTrigger>
+                      <TreeView.NodeExpandTrigger className={styles.NodeExpandTrigger}>
+                        <TreeView.NodeIndicator type="expanded" className={styles.NodeIndicator}>
+                          <ChevronRightIcon />
+                        </TreeView.NodeIndicator>
+                      </TreeView.NodeExpandTrigger>
+                      <TreeView.NodeText className={styles.NodeText}>
+                        {nodeState.expanded ? <FolderOpenIcon /> : <FolderIcon />}
+                        {node.name}
+                      </TreeView.NodeText>
+                    </Menu.ContextTrigger>
+                  </TreeView.Cell>
+                </TreeNodeContextMenu>
+              </TreeView.Node>
+              <TreeView.NodeGroupContent className={styles.NodeGroupContent}>
+                <TreeView.IndentGuide className={styles.IndentGuide} />
                 {node.children.map((child, index) => (
                   <TreeNode key={child.id} node={child} indexPath={[...indexPath, index]} triggerId={triggerId} />
                 ))}
-              </TreeView.BranchContent>
-            </TreeView.Branch>
+              </TreeView.NodeGroupContent>
+            </TreeView.NodeGroup>
           ) : (
-            <TreeNodeContextMenu triggerId={triggerId}>
-              <TreeView.Item className={styles.Item} asChild>
-                <Menu.ContextTrigger>
-                  <FileIcon />
-                  <TreeView.ItemText className={styles.ItemText}>{node.name}</TreeView.ItemText>
-                </Menu.ContextTrigger>
-              </TreeView.Item>
-            </TreeNodeContextMenu>
+            <TreeView.Node className={styles.Node}>
+              <TreeNodeContextMenu triggerId={triggerId}>
+                <TreeView.Cell className={styles.Cell} asChild>
+                  <Menu.ContextTrigger>
+                    <FileIcon />
+                    <TreeView.NodeText className={styles.NodeText}>{node.name}</TreeView.NodeText>
+                  </Menu.ContextTrigger>
+                </TreeView.Cell>
+              </TreeNodeContextMenu>
+            </TreeView.Node>
           )
         }
       </TreeView.NodeContext>
