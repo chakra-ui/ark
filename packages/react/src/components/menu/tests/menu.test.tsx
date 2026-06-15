@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { Menu } from '..'
@@ -60,16 +60,16 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
 
 describe('Menu', () => {
   it('should have no a11y violations', async () => {
-    const { container } = render(<ComponentUnderTest />)
+    const { container } = await act(async () => render(<ComponentUnderTest />))
     const results = await axe(container)
 
     expect(results).toHaveNoViolations()
   })
 
-  it('should set correct aria attributes on disabled MenuItems', () => {
+  it('should set correct aria attributes on disabled MenuItems', async () => {
     render(<ComponentUnderTest />)
 
-    expect(screen.getByText('Dialog')).toHaveAttribute('aria-disabled', 'true')
+    expect(await screen.findByText('Dialog')).toHaveAttribute('aria-disabled', 'true')
   })
 
   it('should not fire onValueChange on disabled MenuItems', async () => {
@@ -77,7 +77,7 @@ describe('Menu', () => {
 
     render(<ComponentUnderTest onValueChange={onValueChange} />)
 
-    fireEvent.click(screen.getByText(/svelte/i))
+    fireEvent.click(await screen.findByText(/svelte/i))
     expect(onValueChange).not.toHaveBeenCalled()
   })
 

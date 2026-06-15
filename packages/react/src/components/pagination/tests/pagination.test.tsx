@@ -1,11 +1,11 @@
-import { render, screen } from '@testing-library/react'
+import { act, render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { ComponentUnderTest } from './basic.tsx'
 
 describe('Pagination', () => {
   it('should have no a11y violations', async () => {
-    const { container } = render(<ComponentUnderTest count={100} pageSize={10} />)
+    const { container } = await act(async () => render(<ComponentUnderTest count={100} pageSize={10} />))
     const results = await axe(container)
 
     expect(results).toHaveNoViolations()
