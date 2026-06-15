@@ -3,7 +3,7 @@ import { axe } from 'vitest-axe'
 import { ComponentUnderTest } from './basic.tsx'
 
 describe('AngleSlider', () => {
-  it.skip('should have no a11y violations', async () => {
+  it('should have no a11y violations', async () => {
     const { container } = await act(async () => render(<ComponentUnderTest />))
     const results = await axe(container)
 

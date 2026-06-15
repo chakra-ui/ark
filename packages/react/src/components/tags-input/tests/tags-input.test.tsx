@@ -4,7 +4,7 @@ import { axe } from 'vitest-axe'
 import { ComponentUnderTest, TagsInputWithField } from './basic.tsx'
 
 describe('TagsInput', () => {
-  it.skip('should have no a11y violations', async () => {
+  it('should have no a11y violations', async () => {
     const { container } = await act(async () => render(<ComponentUnderTest />))
     const results = await axe(container)
 
