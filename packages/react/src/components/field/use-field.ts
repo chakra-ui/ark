@@ -103,7 +103,7 @@ export const useField = (props: UseFieldProps = {}) => {
   const getRootProps = useMemo(
     () => () =>
       ({
-        ...parts.root.attrs,
+        ...parts.root.attrs(id),
         id: rootId,
         ref: rootRef,
         role: 'group',
@@ -111,7 +111,7 @@ export const useField = (props: UseFieldProps = {}) => {
         'data-invalid': dataAttr(invalid),
         'data-readonly': dataAttr(readOnly),
       }) as HTMLProps<'div'>,
-    [disabled, invalid, readOnly, rootId],
+    [disabled, invalid, readOnly, rootId, id],
   )
 
   const targetControlId = target ? `field::${id}::item::${target}` : undefined
@@ -119,7 +119,7 @@ export const useField = (props: UseFieldProps = {}) => {
   const getLabelProps = useMemo(
     () => () =>
       ({
-        ...parts.label.attrs,
+        ...parts.label.attrs(id),
         id: labelId,
         'data-disabled': dataAttr(disabled),
         'data-invalid': dataAttr(invalid),
@@ -150,56 +150,56 @@ export const useField = (props: UseFieldProps = {}) => {
     () => () =>
       ({
         ...getControlProps(),
-        ...parts.input.attrs,
+        ...parts.input.attrs(id),
       }) as HTMLProps<'input'>,
-    [getControlProps],
+    [getControlProps, id],
   )
 
   const getTextareaProps = useMemo(
     () => () =>
       ({
         ...getControlProps(),
-        ...parts.textarea.attrs,
+        ...parts.textarea.attrs(id),
       }) as HTMLProps<'textarea'>,
-    [getControlProps],
+    [getControlProps, id],
   )
 
   const getSelectProps = useMemo(
     () => () =>
       ({
         ...getControlProps(),
-        ...parts.select.attrs,
+        ...parts.select.attrs(id),
       }) as HTMLProps<'select'>,
-    [getControlProps],
+    [getControlProps, id],
   )
 
   const getHelperTextProps = useMemo(
     () => () =>
       ({
         id: helperTextId,
-        ...parts.helperText.attrs,
+        ...parts.helperText.attrs(id),
         'data-disabled': dataAttr(disabled),
       }) as HTMLProps<'span'>,
-    [disabled, helperTextId],
+    [disabled, helperTextId, id],
   )
 
   const getErrorTextProps = useMemo(
     () => () =>
       ({
         id: errorTextId,
-        ...parts.errorText.attrs,
+        ...parts.errorText.attrs(id),
         'aria-live': 'polite',
       }) as HTMLProps<'span'>,
-    [errorTextId],
+    [errorTextId, id],
   )
 
   const getRequiredIndicatorProps = useMemo(
     () => () =>
       ({
         'aria-hidden': true,
-        ...parts.requiredIndicator.attrs,
+        ...parts.requiredIndicator.attrs(id),
       }) as HTMLProps<'span'>,
-    [],
+    [id],
   )
 
   return {
