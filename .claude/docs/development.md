@@ -453,7 +453,7 @@ Commit the generated file under `.changeset/` with your PR.
 **Version packages** PR (when there are `.changeset/*.md` files to consume) or **publishes to npm** when `main` already
 contains version bumps and those versions are not yet on the registry. If everything is already published, the job does
 nothing. The workflow runs `bun run version`, which applies `changeset version` and reformats package `CHANGELOG.md`
-files via `.changeset/format-changelogs.cjs` (semver headings, including pre-releases and build metadata).
+files via `.changeset/postprocess-changelogs.cjs` (semver headings, including pre-releases and build metadata).
 
 The repository needs an **`NPM_TOKEN`** secret (use an npm **automation** or granular token so CI can publish under 2FA)
 with permission to publish the `@ark-ui/*` packages.

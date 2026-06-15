@@ -1,5 +1,25 @@
 # @ark-ui/vue
 
+## [5.37.2] - 2026-06-08
+
+### Fixed
+
+- Fix declaration file output paths so published package export maps resolve to existing types.
+
+## [5.37.1] - 2026-06-06
+
+### Fixed
+
+- **Date Input**: Fix `DateInput.Segment` to stay in sync with the latest segment state while typing.
+
+- - **Date Input**: Fix segment placeholders for locales with explicit script subtags.
+  - **Drawer**: Fix flickering when a controlled drawer is swiped or backdrop-closed while the `open` setter is async
+    (e.g. the History API or a delayed state update).
+  - **Image Cropper**: Fix `getCroppedImage` and `getCropData` returning the wrong region when the image is shown at a
+    size different from its natural resolution (e.g. `width` / `height` of `100%`).
+  - **Pin Input**: Fix `data-filled` being set on every input on first render.
+  - **Signature Pad**: Fix the `dir` prop being accepted but never forwarded to the DOM.
+
 ## [5.37.0] - 2026-05-26
 
 ### Added
