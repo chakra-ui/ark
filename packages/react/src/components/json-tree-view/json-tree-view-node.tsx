@@ -62,28 +62,36 @@ export function JsonTreeViewNode(props: JsonTreeViewNodeProps) {
   return (
     <TreeView.NodeProvider node={node} indexPath={indexPath}>
       {nodeState.isBranch ? (
-        <TreeView.Branch {...scopeProps}>
-          <TreeView.BranchControl {...nodeProps}>
-            {arrow && <TreeView.BranchIndicator {...scopeProps}>{arrow}</TreeView.BranchIndicator>}
-            <TreeView.BranchText {...scopeProps}>
-              {key && <JsonTreeViewKeyNode node={node} showQuotes={options.quotesOnKeys} />}
-              <JsonTreeViewValueNode node={valueNode} renderValue={renderValue} />
-            </TreeView.BranchText>
-          </TreeView.BranchControl>
-          <TreeView.BranchContent {...scopeProps}>
-            {typeof indentGuide === 'boolean' ? <TreeView.BranchIndentGuide /> : indentGuide}
+        <TreeView.NodeGroup {...scopeProps}>
+          <TreeView.Node {...nodeProps}>
+            <TreeView.Cell {...scopeProps}>
+              {arrow && (
+                <TreeView.NodeIndicator type="expanded" {...scopeProps}>
+                  {arrow}
+                </TreeView.NodeIndicator>
+              )}
+              <TreeView.NodeText {...scopeProps}>
+                {key && <JsonTreeViewKeyNode node={node} showQuotes={options.quotesOnKeys} />}
+                <JsonTreeViewValueNode node={valueNode} renderValue={renderValue} />
+              </TreeView.NodeText>
+            </TreeView.Cell>
+          </TreeView.Node>
+          <TreeView.NodeGroupContent {...scopeProps}>
+            {typeof indentGuide === 'boolean' ? <TreeView.IndentGuide /> : indentGuide}
             {node.children?.map((child, index) => (
               <JsonTreeViewNode key={index} {...props} node={child} indexPath={[...indexPath, index]} />
             ))}
-          </TreeView.BranchContent>
-        </TreeView.Branch>
+          </TreeView.NodeGroupContent>
+        </TreeView.NodeGroup>
       ) : (
-        <TreeView.Item {...nodeProps}>
-          <TreeView.ItemText {...scopeProps}>
-            {key && <JsonTreeViewKeyNode node={node} showQuotes={options.quotesOnKeys} />}
-            <JsonTreeViewValueNode node={valueNode} renderValue={renderValue} />
-          </TreeView.ItemText>
-        </TreeView.Item>
+        <TreeView.Node {...nodeProps}>
+          <TreeView.Cell {...scopeProps}>
+            <TreeView.NodeText {...scopeProps}>
+              {key && <JsonTreeViewKeyNode node={node} showQuotes={options.quotesOnKeys} />}
+              <JsonTreeViewValueNode node={valueNode} renderValue={renderValue} />
+            </TreeView.NodeText>
+          </TreeView.Cell>
+        </TreeView.Node>
       )}
     </TreeView.NodeProvider>
   )
