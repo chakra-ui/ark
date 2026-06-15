@@ -22,14 +22,16 @@ export const RootProvider = () => {
       <Listbox.RootProvider className={styles.Root} value={listbox}>
         <Listbox.Label className={styles.Label}>Select Priority</Listbox.Label>
         <Listbox.Content className={styles.Content}>
-          {collection.items.map((item) => (
-            <Listbox.Item className={styles.Item} key={item.value} item={item}>
-              <Listbox.ItemText className={styles.ItemText}>{item.label}</Listbox.ItemText>
-              <Listbox.ItemIndicator className={styles.ItemIndicator}>
-                <CheckIcon />
-              </Listbox.ItemIndicator>
-            </Listbox.Item>
-          ))}
+          <Listbox.List className={styles.List}>
+            {collection.items.map((item) => (
+              <Listbox.Item className={styles.Item} key={item.value} item={item}>
+                <Listbox.ItemText className={styles.ItemText}>{item.label}</Listbox.ItemText>
+                <Listbox.ItemIndicator className={styles.ItemIndicator}>
+                  <CheckIcon />
+                </Listbox.ItemIndicator>
+              </Listbox.Item>
+            ))}
+          </Listbox.List>
         </Listbox.Content>
       </Listbox.RootProvider>
     </div>

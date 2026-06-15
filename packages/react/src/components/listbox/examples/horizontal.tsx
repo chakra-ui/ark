@@ -39,16 +39,18 @@ export const Horizontal = () => {
     <Listbox.Root className={styles.Root} collection={collection} orientation="horizontal">
       <Listbox.Label className={styles.Label}>Select Album</Listbox.Label>
       <Listbox.Content className={styles.Content}>
-        {collection.items.map((item) => (
-          <Listbox.Item className={styles.ItemCard} key={item.title} item={item}>
-            <Listbox.ItemIndicator className={styles.ItemCardIndicator}>
-              <CheckIcon />
-            </Listbox.ItemIndicator>
-            <img className={styles.ItemCardImage} src={item.image} alt={item.title} />
-            <span className={styles.ItemCardTitle}>{item.title}</span>
-            <span className={styles.ItemCardArtist}>{item.artist}</span>
-          </Listbox.Item>
-        ))}
+        <Listbox.List className={styles.List}>
+          {collection.items.map((item) => (
+            <Listbox.Item className={styles.ItemCard} key={item.title} item={item}>
+              <Listbox.ItemIndicator className={styles.ItemCardIndicator}>
+                <CheckIcon />
+              </Listbox.ItemIndicator>
+              <img className={styles.ItemCardImage} src={item.image} alt={item.title} />
+              <span className={styles.ItemCardTitle}>{item.title}</span>
+              <span className={styles.ItemCardArtist}>{item.artist}</span>
+            </Listbox.Item>
+          ))}
+        </Listbox.List>
       </Listbox.Content>
     </Listbox.Root>
   )

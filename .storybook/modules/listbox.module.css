@@ -57,6 +57,10 @@
   }
 }
 
+.List {
+  display: contents;
+}
+
 .ItemCard {
   position: relative;
   display: flex;

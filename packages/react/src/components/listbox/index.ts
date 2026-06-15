@@ -25,6 +25,7 @@ export {
 } from './listbox-item-indicator.tsx'
 export { ListboxItemText, type ListboxItemTextBaseProps, type ListboxItemTextProps } from './listbox-item-text.tsx'
 export { ListboxLabel, type ListboxLabelBaseProps, type ListboxLabelProps } from './listbox-label.tsx'
+export { ListboxList, type ListboxListBaseProps, type ListboxListProps } from './listbox-list.tsx'
 export {
   ListboxRoot,
   type ListboxRootBaseProps,

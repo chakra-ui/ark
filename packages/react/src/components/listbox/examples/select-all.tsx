@@ -43,14 +43,16 @@ export const SelectAll = () => {
     <Listbox.Root className={styles.Root} collection={frameworks} selectionMode="multiple">
       <SelectAllHeader />
       <Listbox.Content className={styles.Content}>
-        {frameworks.items.map((item) => (
-          <Listbox.Item className={styles.Item} key={item.value} item={item}>
-            <Listbox.ItemText className={styles.ItemText}>{item.label}</Listbox.ItemText>
-            <Listbox.ItemIndicator className={styles.ItemIndicator}>
-              <CheckIcon />
-            </Listbox.ItemIndicator>
-          </Listbox.Item>
-        ))}
+        <Listbox.List className={styles.List}>
+          {frameworks.items.map((item) => (
+            <Listbox.Item className={styles.Item} key={item.value} item={item}>
+              <Listbox.ItemText className={styles.ItemText}>{item.label}</Listbox.ItemText>
+              <Listbox.ItemIndicator className={styles.ItemIndicator}>
+                <CheckIcon />
+              </Listbox.ItemIndicator>
+            </Listbox.Item>
+          ))}
+        </Listbox.List>
       </Listbox.Content>
     </Listbox.Root>
   )

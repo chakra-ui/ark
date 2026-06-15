@@ -33,11 +33,13 @@ export const Grid = () => {
     <Listbox.Root className={styles.Root} collection={collection}>
       <Listbox.Label className={styles.Label}>Pick a reaction</Listbox.Label>
       <Listbox.Content className={styles.GridContent}>
-        {collection.items.map((item) => (
-          <Listbox.Item className={styles.GridItem} key={item.value} item={item}>
-            <Listbox.ItemText>{item.label}</Listbox.ItemText>
-          </Listbox.Item>
-        ))}
+        <Listbox.List className={styles.List}>
+          {collection.items.map((item) => (
+            <Listbox.Item className={styles.GridItem} key={item.value} item={item}>
+              <Listbox.ItemText>{item.label}</Listbox.ItemText>
+            </Listbox.Item>
+          ))}
+        </Listbox.List>
       </Listbox.Content>
     </Listbox.Root>
   )
