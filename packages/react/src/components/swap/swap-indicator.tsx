@@ -2,7 +2,7 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { composeRefs } from '../../utils/compose-refs.ts'
+import { useComposedRefs } from '../../utils/compose-refs.ts'
 import type { HTMLProps, PolymorphicProps } from '../factory.ts'
 import { ark } from '../factory.ts'
 import { useSwapContext } from './use-swap-context.ts'
@@ -17,12 +17,13 @@ export const SwapIndicator = forwardRef<HTMLSpanElement, SwapIndicatorProps>((pr
   const { type, ...restProps } = props
   const swap = useSwapContext()
   const presence = type === 'on' ? swap.onPresence : swap.offPresence
+  const composedRefs = useComposedRefs(presence.ref, ref)
 
   if (presence.unmounted) return null
 
   const mergedProps = mergeProps(swap.getIndicatorProps({ type }), restProps)
 
-  return <ark.span {...mergedProps} ref={composeRefs(presence.ref, ref)} />
+  return <ark.span {...mergedProps} ref={composedRefs} />
 })
 
 SwapIndicator.displayName = 'SwapIndicator'

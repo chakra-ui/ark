@@ -2,7 +2,7 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { composeRefs } from '../../utils/compose-refs.ts'
+import { useComposedRefs } from '../../utils/compose-refs.ts'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { usePresence } from '../presence/index.ts'
@@ -19,12 +19,13 @@ export const TourBackdrop = forwardRef<HTMLDivElement, TourBackdropProps>((props
     present: tour.open,
   })
   const mergedProps = mergeProps(tour.getBackdropProps(), presence.getPresenceProps(), props)
+  const composedRefs = useComposedRefs(presence.ref, ref)
 
   if (presence.unmounted) {
     return null
   }
 
-  return <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} hidden={!tour.step?.backdrop} />
+  return <ark.div {...mergedProps} ref={composedRefs} hidden={!tour.step?.backdrop} />
 })
 
 TourBackdrop.displayName = 'TourBackdrop'

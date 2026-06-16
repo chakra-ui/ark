@@ -1,5 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { useCallback, useReducer } from 'react'
 import { axe } from 'vitest-axe'
 import { Field } from '../index.ts'
 
@@ -282,5 +283,35 @@ describe('Field / Item', () => {
         </Field.Item>,
       ),
     ).toThrow('Field.Item must be used within Field.Root')
+  })
+})
+
+describe('Field / Textarea', () => {
+  it('should not detach stable callback ref on parent re-render', async () => {
+    const callbackRef = vi.fn()
+
+    const TextareaTest = () => {
+      const [, rerender] = useReducer((count) => count + 1, 0)
+      const setRef = useCallback((node: HTMLTextAreaElement | null) => {
+        callbackRef(node)
+      }, [])
+
+      return (
+        <Field.Root>
+          <Field.Textarea ref={setRef} />
+          <button type="button" onClick={() => rerender()}>
+            re-render
+          </button>
+        </Field.Root>
+      )
+    }
+
+    render(<TextareaTest />)
+    await waitFor(() => expect(callbackRef).toHaveBeenCalledWith(expect.any(HTMLTextAreaElement)))
+
+    const callsAfterMount = callbackRef.mock.calls.length
+    await user.click(screen.getByRole('button', { name: /re-render/i }))
+
+    expect(callbackRef).toHaveBeenCalledTimes(callsAfterMount)
   })
 })

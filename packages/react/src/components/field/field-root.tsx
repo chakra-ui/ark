@@ -2,7 +2,7 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { composeRefs } from '../../utils/compose-refs.ts'
+import { useComposedRefs } from '../../utils/compose-refs.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { type UseFieldProps, useField } from './use-field.ts'
@@ -26,10 +26,11 @@ export const FieldRoot = forwardRef<HTMLDivElement, FieldRootProps>((props, ref)
 
   const field = useField(useFieldProps)
   const mergedProps = mergeProps<HTMLProps<'div'>>(field.getRootProps(), localProps)
+  const composedRefs = useComposedRefs(ref, field.refs.rootRef)
 
   return (
     <FieldProvider value={field}>
-      <ark.div {...mergedProps} ref={composeRefs(ref, field.refs.rootRef)} />
+      <ark.div {...mergedProps} ref={composedRefs} />
     </FieldProvider>
   )
 })

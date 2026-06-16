@@ -1,8 +1,9 @@
-import type { Ref } from 'react'
+import { useCallback } from 'react'
+import type { Ref, RefCallback } from 'react'
 
 type PossibleRef<T> = Ref<T | null> | undefined
 
-export function composeRefs<T>(...refs: PossibleRef<T>[]): (node: T | null) => void {
+export function composeRefs<T>(...refs: PossibleRef<T>[]): RefCallback<T> {
   return (node) => {
     const cleanUps: VoidFunction[] = []
 
@@ -25,4 +26,9 @@ export function composeRefs<T>(...refs: PossibleRef<T>[]): (node: T | null) => v
       }
     }
   }
+}
+
+export function useComposedRefs<T>(...refs: PossibleRef<T>[]): RefCallback<T> {
+  // biome-ignore lint/correctness/useExhaustiveDependencies: refs is the dependency list for the composed callback
+  return useCallback(composeRefs(...refs), refs)
 }
