@@ -39,7 +39,7 @@
     },
     "packages/react": {
       "name": "@ark-ui/react",
-      "version": "5.37.1",
+      "version": "5.37.2",
       "dependencies": {
         "@internationalized/date": "3.12.2",
         "@zag-js/accordion": "1.41.2",
@@ -362,7 +362,7 @@
     },
     "packages/vue": {
       "name": "@ark-ui/vue",
-      "version": "5.37.1",
+      "version": "5.37.2",
       "dependencies": {
         "@internationalized/date": "3.12.2",
         "@zag-js/accordion": "1.41.2",
