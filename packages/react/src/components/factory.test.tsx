@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { useCallback, useReducer } from 'react'
 import { ark } from './factory.ts'
 
 const ComponentUnderTest = () => (
@@ -68,5 +69,35 @@ describe('Ark Factory', () => {
       </ark.div>,
     )
     expect(screen.getByText('Ark UI')).not.toHaveAttribute('data-testid', 'parent')
+  })
+
+  it('should not detach stable asChild callback ref on parent re-render', async () => {
+    const callbackRef = vi.fn()
+
+    const AsChildTest = () => {
+      const [, rerender] = useReducer((count) => count + 1, 0)
+      const setRef = useCallback((node: HTMLSpanElement | null) => {
+        callbackRef(node)
+      }, [])
+
+      return (
+        <>
+          <ark.span ref={setRef} asChild>
+            <span data-testid="child">Ark UI</span>
+          </ark.span>
+          <button type="button" onClick={() => rerender()}>
+            re-render
+          </button>
+        </>
+      )
+    }
+
+    render(<AsChildTest />)
+    expect(callbackRef).toHaveBeenCalledWith(screen.getByTestId('child'))
+
+    const callsAfterMount = callbackRef.mock.calls.length
+    await user.click(screen.getByRole('button', { name: /re-render/i }))
+
+    expect(callbackRef).toHaveBeenCalledTimes(callsAfterMount)
   })
 })

@@ -3,7 +3,7 @@
 import { type FocusTrapOptions, trapFocus } from '@zag-js/focus-trap'
 import { forwardRef, useRef } from 'react'
 import type { Assign } from '../../types.ts'
-import { composeRefs } from '../../utils/compose-refs.ts'
+import { useComposedRefs } from '../../utils/compose-refs.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
@@ -35,6 +35,7 @@ export const FocusTrap = forwardRef<HTMLDivElement, FocusTrapProps>((props, ref)
     'returnFocusOnDeactivate',
     'setReturnFocus',
   ])
+  const composedRefs = useComposedRefs(localRef, ref)
 
   useSafeLayoutEffect(() => {
     const node = localRef.current
@@ -42,7 +43,7 @@ export const FocusTrap = forwardRef<HTMLDivElement, FocusTrapProps>((props, ref)
     return trapFocus(node, trapProps)
   }, [ref, trapProps])
 
-  return <ark.div ref={composeRefs(localRef, ref)} {...localProps} />
+  return <ark.div ref={composedRefs} {...localProps} />
 })
 
 FocusTrap.displayName = 'FocusTrap'

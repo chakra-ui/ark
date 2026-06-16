@@ -2,7 +2,7 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { composeRefs } from '../../utils/compose-refs.ts'
+import { useComposedRefs } from '../../utils/compose-refs.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { usePresenceContext } from '../presence/index.ts'
 import { useDialogContext } from './use-dialog-context.ts'
@@ -14,12 +14,13 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>((pro
   const dialog = useDialogContext()
   const presence = usePresenceContext()
   const mergedProps = mergeProps(dialog.getContentProps(), presence.getPresenceProps(), props)
+  const composedRefs = useComposedRefs(presence.ref, ref)
 
   if (presence.unmounted) {
     return null
   }
 
-  return <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} />
+  return <ark.div {...mergedProps} ref={composedRefs} />
 })
 
 DialogContent.displayName = 'DialogContent'

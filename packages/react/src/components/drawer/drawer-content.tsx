@@ -3,7 +3,7 @@
 import { mergeProps } from '@zag-js/react'
 import type { ContentProps } from '@zag-js/drawer'
 import { forwardRef } from 'react'
-import { composeRefs } from '../../utils/compose-refs.ts'
+import { useComposedRefs } from '../../utils/compose-refs.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { usePresenceContext } from '../presence/index.ts'
 import { useDrawerContext } from './use-drawer-context.ts'
@@ -23,12 +23,13 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>((pro
     presence.getPresenceProps(),
     localProps,
   )
+  const composedRefs = useComposedRefs(presence.ref, ref)
 
   if (presence.unmounted) {
     return null
   }
 
-  return <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} />
+  return <ark.div {...mergedProps} ref={composedRefs} />
 })
 
 DrawerContent.displayName = 'DrawerContent'
