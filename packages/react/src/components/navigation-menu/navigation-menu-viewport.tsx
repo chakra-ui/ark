@@ -2,7 +2,7 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { composeRefs } from '../../utils/compose-refs.ts'
+import { useComposedRefs } from '../../utils/compose-refs.ts'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { PresenceProvider, usePresence } from '../presence/index.ts'
@@ -27,10 +27,11 @@ export const NavigationMenuViewport = forwardRef<HTMLDivElement, NavigationMenuV
     presence.getPresenceProps(),
     props,
   )
+  const composedRefs = useComposedRefs(presence.ref, ref)
 
   return (
     <PresenceProvider value={presence}>
-      {presence.unmounted ? null : <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} />}
+      {presence.unmounted ? null : <ark.div {...mergedProps} ref={composedRefs} />}
     </PresenceProvider>
   )
 })

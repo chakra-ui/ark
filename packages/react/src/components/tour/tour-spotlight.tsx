@@ -2,7 +2,7 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { composeRefs } from '../../utils/compose-refs.ts'
+import { useComposedRefs } from '../../utils/compose-refs.ts'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { usePresence } from '../presence/index.ts'
@@ -20,12 +20,13 @@ export const TourSpotlight = forwardRef<HTMLDivElement, TourSpotlightProps>((pro
   })
   const mergedProps = mergeProps(tour.getSpotlightProps(), presence.getPresenceProps(), props)
   const hidden = !tour.open || !tour.step?.target?.()
+  const composedRefs = useComposedRefs(presence.ref, ref)
 
   if (presence.unmounted) {
     return null
   }
 
-  return <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} hidden={hidden} />
+  return <ark.div {...mergedProps} ref={composedRefs} hidden={hidden} />
 })
 
 TourSpotlight.displayName = 'TourSpotlight'

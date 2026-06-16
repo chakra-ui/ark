@@ -11,7 +11,7 @@ import {
   isValidElement,
   memo,
 } from 'react'
-import { composeRefs } from '../utils/compose-refs.ts'
+import { useComposedRefs } from '../utils/compose-refs.ts'
 
 export interface PolymorphicProps {
   /**
@@ -47,22 +47,22 @@ const withAsChild = (Component: React.ElementType) => {
   const Comp = memo(
     forwardRef<unknown, ArkPropsWithRef<typeof Component>>((props, ref) => {
       const { asChild, children, ...restProps } = props
+      const onlyChild =
+        asChild && isValidElement<Record<string, unknown>>(children) ? Children.only(children) : undefined
+      const childRef = onlyChild ? getRef(onlyChild) : undefined
+      const composedRef = useComposedRefs(ref, childRef)
 
       if (!asChild) {
         return createElement(Component, { ...restProps, ref }, children)
       }
 
-      if (!isValidElement<Record<string, unknown>>(children)) {
+      if (!onlyChild) {
         return null
       }
 
-      const onlyChild: React.ReactElement<Record<string, unknown>> = Children.only(children)
-
-      const childRef = getRef(onlyChild)
-
       return cloneElement(onlyChild, {
         ...mergeProps(restProps, onlyChild.props),
-        ref: ref ? composeRefs(ref, childRef) : childRef,
+        ref: ref ? composedRef : childRef,
       })
     }),
   )

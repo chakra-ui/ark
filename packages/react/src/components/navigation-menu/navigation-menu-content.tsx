@@ -4,7 +4,7 @@ import type { ContentProps } from '@zag-js/navigation-menu'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types.ts'
-import { composeRefs } from '../../utils/compose-refs.ts'
+import { useComposedRefs } from '../../utils/compose-refs.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
@@ -28,10 +28,11 @@ export const NavigationMenuContent = forwardRef<HTMLDivElement, NavigationMenuCo
   const renderStrategyProps = useRenderStrategyPropsContext()
   const presence = usePresence({ ...renderStrategyProps, present: api.value === value })
   const mergedProps = mergeProps(api.getContentProps(contentProps), presence.getPresenceProps(), localProps)
+  const composedRefs = useComposedRefs(presence.ref, ref)
 
   const content = (
     <PresenceProvider value={presence}>
-      {presence.unmounted ? null : <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} />}
+      {presence.unmounted ? null : <ark.div {...mergedProps} ref={composedRefs} />}
     </PresenceProvider>
   )
 
