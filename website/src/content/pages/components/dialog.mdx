@@ -171,13 +171,23 @@ const Do = () => {
 
 ### Z-Index Stacking
 
-Use the `--layer-index` CSS variable for z-index management of stacked dialogs:
+Use a shared overlay z-index with `--layer-index` to keep stacked dialogs and nested overlays in order:
 
 ```css
-[data-part='content'] {
-  z-index: calc(var(--layer-index));
+[data-scope='dialog'][data-part='content'] {
+  z-index: calc(var(--z-index-overlay) + var(--layer-index, 0));
+}
+
+[data-scope='dialog'][data-part='positioner'] {
+  z-index: var(--z-index, var(--z-index-overlay));
+}
+
+[data-scope='dialog'][data-part='backdrop'] {
+  z-index: calc(var(--z-index, var(--z-index-overlay)) - 1);
 }
 ```
+
+Read the [Styling guide](/docs/guides/styling#z-index) for more details.
 
 ### Dynamic Imports
 
