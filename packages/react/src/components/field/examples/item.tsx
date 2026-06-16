@@ -5,7 +5,7 @@ export const Item = () => (
   <Field.Root className={styles.Root} target="amount">
     <Field.Label className={styles.Label}>Amount</Field.Label>
     <Field.Item value="currency">
-      <Field.Select className={styles.Select}>
+      <Field.Select className={styles.Select} aria-label="Currency">
         <option value="USD">USD</option>
         <option value="EUR">EUR</option>
       </Field.Select>
