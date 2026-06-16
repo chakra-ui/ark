@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { act, render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { parseDate, parseZonedDateTime } from '@internationalized/date'
@@ -7,7 +7,7 @@ import { DateInput } from '..'
 
 describe('Date Input', () => {
   it('should have no a11y violations', async () => {
-    const { container } = render(<ComponentUnderTest />)
+    const { container } = await act(async () => render(<ComponentUnderTest />))
     const results = await axe(container)
     expect(results).toHaveNoViolations()
   })
@@ -66,7 +66,7 @@ describe('Date Input', () => {
 
   it('should mark segments invalid when invalid prop is passed', () => {
     render(<ComponentUnderTest invalid />)
-    const root = document.querySelector('[data-part="root"]')
+    const root = document.querySelector('[data-date-input-root]')
     expect(root).toHaveAttribute('data-invalid')
   })
 

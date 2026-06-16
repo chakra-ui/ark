@@ -96,23 +96,26 @@ export const Virtualized = () => {
               >
                 <TreeView.NodeProvider node={node} indexPath={indexPath}>
                   {nodeState.isBranch ? (
-                    <TreeView.BranchControl
-                      className={styles.BranchControl}
-                      style={{ paddingLeft: nodeState.depth * 22 }}
-                    >
-                      <TreeView.BranchIndicator className={styles.BranchIndicator}>
-                        <ChevronRightIcon />
-                      </TreeView.BranchIndicator>
-                      <TreeView.BranchText className={styles.BranchText}>
-                        <FolderIcon /> {node.name}
-                      </TreeView.BranchText>
-                    </TreeView.BranchControl>
+                    <TreeView.Node className={styles.Node}>
+                      <TreeView.Cell className={styles.Cell} style={{ paddingLeft: nodeState.depth * 22 }}>
+                        <TreeView.NodeExpandTrigger className={styles.NodeExpandTrigger}>
+                          <TreeView.NodeIndicator type="expanded" className={styles.NodeIndicator}>
+                            <ChevronRightIcon />
+                          </TreeView.NodeIndicator>
+                        </TreeView.NodeExpandTrigger>
+                        <TreeView.NodeText className={styles.NodeText}>
+                          <FolderIcon /> {node.name}
+                        </TreeView.NodeText>
+                      </TreeView.Cell>
+                    </TreeView.Node>
                   ) : (
-                    <TreeView.Item className={styles.Item} style={{ paddingLeft: nodeState.depth * 22 }}>
-                      <TreeView.ItemText className={styles.ItemText}>
-                        <FileIcon /> {node.name}
-                      </TreeView.ItemText>
-                    </TreeView.Item>
+                    <TreeView.Node className={styles.Node}>
+                      <TreeView.Cell className={styles.Cell} style={{ paddingLeft: nodeState.depth * 22 }}>
+                        <TreeView.NodeText className={styles.NodeText}>
+                          <FileIcon /> {node.name}
+                        </TreeView.NodeText>
+                      </TreeView.Cell>
+                    </TreeView.Node>
                   )}
                 </TreeView.NodeProvider>
               </div>

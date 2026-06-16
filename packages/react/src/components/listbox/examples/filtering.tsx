@@ -30,15 +30,17 @@ export const Filtering = () => {
         onChange={(e) => filter(e.target.value)}
       />
       <Listbox.Content className={styles.Content}>
-        {collection.items.map((item) => (
-          <Listbox.Item className={styles.Item} key={item.value} item={item}>
-            <Listbox.ItemText className={styles.ItemText}>{item.label}</Listbox.ItemText>
-            <Listbox.ItemIndicator className={styles.ItemIndicator}>
-              <CheckIcon />
-            </Listbox.ItemIndicator>
-          </Listbox.Item>
-        ))}
-        <Listbox.Empty className={styles.Empty}>No frameworks found</Listbox.Empty>
+        <Listbox.List className={styles.List}>
+          {collection.items.map((item) => (
+            <Listbox.Item className={styles.Item} key={item.value} item={item}>
+              <Listbox.ItemText className={styles.ItemText}>{item.label}</Listbox.ItemText>
+              <Listbox.ItemIndicator className={styles.ItemIndicator}>
+                <CheckIcon />
+              </Listbox.ItemIndicator>
+            </Listbox.Item>
+          ))}
+          <Listbox.Empty className={styles.Empty}>No frameworks found</Listbox.Empty>
+        </Listbox.List>
       </Listbox.Content>
     </Listbox.Root>
   )

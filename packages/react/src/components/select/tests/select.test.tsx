@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { act, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { SelectWithField } from './field.tsx'
@@ -6,7 +6,7 @@ import { ComponentUnderTest } from './basic.tsx'
 
 describe('Select', () => {
   it('should have no a11y violations', async () => {
-    const { container } = render(<ComponentUnderTest />)
+    const { container } = await act(async () => render(<ComponentUnderTest />))
     const results = await axe(container)
 
     expect(results).toHaveNoViolations()
@@ -18,7 +18,7 @@ describe('Select', () => {
     const trigger = screen.getByRole('combobox', { name: 'Framework' })
     await user.click(trigger)
 
-    const item = screen.getByText('React', { ignore: 'option' })
+    const item = screen.getByRole('option', { name: 'React' })
 
     await user.click(item)
     await waitFor(() => expect(trigger).toHaveTextContent('React'))
@@ -30,7 +30,7 @@ describe('Select', () => {
     const trigger = screen.getByRole('combobox', { name: 'Framework' })
     await user.click(trigger)
 
-    const item = screen.getByText('React', { ignore: 'option' })
+    const item = screen.getByRole('option', { name: 'React' })
 
     await user.click(item)
     await waitFor(() => expect(screen.queryByText('Frameworks')).not.toBeVisible())
@@ -51,8 +51,8 @@ describe('Select', () => {
 
     await user.click(trigger)
 
-    const itemReact = screen.getByText('React', { ignore: 'option' })
-    const itemVue = screen.getByText('Vue', { ignore: 'option' })
+    const itemReact = screen.getByRole('option', { name: 'React' })
+    const itemVue = screen.getByRole('option', { name: 'Vue' })
 
     await user.click(itemReact)
     await user.click(itemVue)
@@ -67,7 +67,7 @@ describe('Select', () => {
 
     await user.click(trigger)
 
-    const item = screen.getByText('React', { ignore: 'option' })
+    const item = screen.getByRole('option', { name: 'React' })
 
     await user.click(item)
     await waitFor(() => {
@@ -91,7 +91,8 @@ describe('Select', () => {
     const trigger = screen.getByRole('combobox', { name: 'Framework' })
 
     await user.click(trigger)
-    await waitFor(() => expect(screen.queryByText('React', { ignore: 'option' })).not.toBeVisible())
+    await waitFor(() => expect(trigger).toHaveAttribute('aria-expanded', 'false'))
+    expect(screen.queryByRole('option', { name: 'React' })).not.toBeInTheDocument()
   })
 
   it('should be able to lazy mount its items', async () => {

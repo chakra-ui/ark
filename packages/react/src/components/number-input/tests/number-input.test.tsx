@@ -6,6 +6,7 @@ import { ComponentUnderTest, NumberInputWithField } from './basic.tsx'
 describe('NumberInput', () => {
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
+    await screen.findByRole('spinbutton')
     const results = await axe(container)
 
     expect(results).toHaveNoViolations()
@@ -42,7 +43,7 @@ describe('NumberInput', () => {
   it('should allow value to exceed max when allowOverflow is true', async () => {
     render(<ComponentUnderTest allowOverflow max={10} defaultValue="15" />)
 
-    const input = screen.getByRole('spinbutton')
+    const input = await screen.findByRole('spinbutton')
 
     expect(input).toHaveValue('15')
   })
@@ -99,27 +100,27 @@ describe('NumberInput', () => {
 describe('NumberInput / Field', () => {
   it('should set input as required', async () => {
     render(<NumberInputWithField required />)
-    expect(screen.getByRole('spinbutton', { name: /label/i })).toBeRequired()
+    expect(await screen.findByRole('spinbutton', { name: /label/i })).toBeRequired()
   })
 
   it('should set input as disabled', async () => {
     render(<NumberInputWithField disabled />)
-    expect(screen.getByRole('spinbutton', { name: /label/i })).toBeDisabled()
+    expect(await screen.findByRole('spinbutton', { name: /label/i })).toBeDisabled()
   })
 
   it('should set input as readonly', async () => {
     render(<NumberInputWithField readOnly />)
-    expect(screen.getByRole('spinbutton', { name: /label/i })).toHaveAttribute('readonly')
+    expect(await screen.findByRole('spinbutton', { name: /label/i })).toHaveAttribute('readonly')
   })
 
   it('should display helper text', async () => {
     render(<NumberInputWithField />)
-    expect(screen.getByText('Additional Info')).toBeInTheDocument()
+    expect(await screen.findByText('Additional Info')).toBeInTheDocument()
   })
 
   it('should display error text when error is present', async () => {
     render(<NumberInputWithField invalid />)
-    expect(screen.getByText('Error Info')).toBeInTheDocument()
+    expect(await screen.findByText('Error Info')).toBeInTheDocument()
   })
 
   it('should focus on input when label is clicked', async () => {
@@ -130,6 +131,7 @@ describe('NumberInput / Field', () => {
 
   it('should not display error text when no error is present', async () => {
     render(<NumberInputWithField />)
+    await screen.findByRole('spinbutton', { name: /label/i })
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })

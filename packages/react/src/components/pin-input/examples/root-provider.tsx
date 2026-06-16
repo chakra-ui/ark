@@ -2,7 +2,7 @@ import { PinInput, usePinInput } from '@ark-ui/react/pin-input'
 import styles from 'styles/pin-input.module.css'
 
 export const RootProvider = () => {
-  const pinInput = usePinInput({ onValueComplete: (e) => alert(e.valueAsString) })
+  const pinInput = usePinInput({ count: 3, onValueComplete: (e) => alert(e.valueAsString) })
 
   return (
     <div className="stack">

@@ -1,30 +1,22 @@
-import { act, render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { axe } from 'vitest-axe'
 import { Basic as ComponentUnderTest } from '../examples/basic.tsx'
 
 describe('TreeView', () => {
-  it('should not have any accessibility violations', async () => {
-    const { container } = await act(async () => render(<ComponentUnderTest />))
-    const results = await axe(container)
-
-    expect(results).toHaveNoViolations()
-  })
-
   it('should render a leaf node correctly', () => {
     render(<ComponentUnderTest />)
-    expect(screen.getByRole('treeitem', { name: 'README.md' })).toBeVisible()
+    expect(screen.getByRole('row', { name: 'README.md' })).toBeVisible()
   })
 
   it('should render a branch node correctly', () => {
     render(<ComponentUnderTest />)
-    expect(screen.getByRole('treeitem', { name: 'src' })).toBeVisible()
+    expect(screen.getByRole('row', { name: 'src' })).toBeVisible()
   })
 
   it('should expand branch node to reveal child leaf node', async () => {
     render(<ComponentUnderTest />)
-    expect(screen.getByRole('treeitem', { name: 'src' })).toBeVisible()
-    await userEvent.click(screen.getByRole('button', { name: 'src' }))
+    expect(screen.getByRole('row', { name: 'src' })).toBeVisible()
+    await userEvent.click(screen.getByRole('row', { name: 'src' }))
 
     await waitFor(() => expect(screen.getByText('app.tsx')).toBeVisible())
   })

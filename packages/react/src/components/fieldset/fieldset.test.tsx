@@ -74,4 +74,12 @@ describe('Fieldset', () => {
       expect(describedBy).toContain('helper-text')
     })
   })
+
+  it('should render anatomy part attributes', async () => {
+    const { container } = render(<ComponentUnderTest invalid />)
+    expect(container.querySelector('[data-fieldset-root]')).toBeInTheDocument()
+    expect(container.querySelector('[data-fieldset-legend]')).toBeInTheDocument()
+    expect(container.querySelector('[data-fieldset-helper-text]')).toBeInTheDocument()
+    expect(container.querySelector('[data-fieldset-error-text]')).toBeInTheDocument()
+  })
 })

@@ -19,15 +19,17 @@ const ComponentUnderTest = (props: Omit<Listbox.RootProps<CollectionItem>, 'coll
         Select your Framework: <Listbox.ValueText />
       </Listbox.Label>
       <Listbox.Content>
-        <Listbox.ItemGroup>
-          <Listbox.ItemGroupLabel>JS Frameworks</Listbox.ItemGroupLabel>
-          {collection.items.map((item) => (
-            <Listbox.Item key={item.value} item={item}>
-              <Listbox.ItemText>{item.label}</Listbox.ItemText>
-              <Listbox.ItemIndicator />
-            </Listbox.Item>
-          ))}
-        </Listbox.ItemGroup>
+        <Listbox.List>
+          <Listbox.ItemGroup>
+            <Listbox.ItemGroupLabel>JS Frameworks</Listbox.ItemGroupLabel>
+            {collection.items.map((item) => (
+              <Listbox.Item key={item.value} item={item}>
+                <Listbox.ItemText>{item.label}</Listbox.ItemText>
+                <Listbox.ItemIndicator />
+              </Listbox.Item>
+            ))}
+          </Listbox.ItemGroup>
+        </Listbox.List>
       </Listbox.Content>
     </Listbox.Root>
   )

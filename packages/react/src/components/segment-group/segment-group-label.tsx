@@ -3,7 +3,6 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
-import { parts } from './segment-group.anatomy.ts'
 import { useSegmentGroupContext } from './use-segment-group-context.ts'
 
 export interface SegmentGroupLabelBaseProps extends PolymorphicProps {}
@@ -11,7 +10,7 @@ export interface SegmentGroupLabelProps extends HTMLProps<'span'>, SegmentGroupL
 
 export const SegmentGroupLabel = forwardRef<HTMLSpanElement, SegmentGroupLabelProps>((props, ref) => {
   const segmentGroup = useSegmentGroupContext()
-  const mergedProps = mergeProps(segmentGroup.getLabelProps(), parts.label.attrs as Record<string, string>, props)
+  const mergedProps = mergeProps(segmentGroup.getLabelProps(), props)
 
   return <ark.span {...mergedProps} ref={ref} />
 })

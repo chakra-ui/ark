@@ -21,7 +21,7 @@ export const Dependencies = () => {
   const list = useAsyncList<User>({
     initialItems: mockUsers.slice(0, LIMIT),
     dependencies: [selectedDepartment, selectedRole],
-    async load({ filterText }) {
+    async load({ filter }) {
       await delay(400)
 
       let items = mockUsers
@@ -34,11 +34,11 @@ export const Dependencies = () => {
         items = items.filter((user) => user.role === selectedRole)
       }
 
-      if (filterText) {
+      if (filter) {
         items = items.filter(
           (user) =>
-            user.name.toLowerCase().includes(filterText.toLowerCase()) ||
-            user.email.toLowerCase().includes(filterText.toLowerCase()),
+            user.name.toLowerCase().includes(filter.toLowerCase()) ||
+            user.email.toLowerCase().includes(filter.toLowerCase()),
         )
       }
 
@@ -75,11 +75,11 @@ export const Dependencies = () => {
           className={field.Input}
           type="text"
           placeholder="Search..."
-          value={list.filterText}
-          onChange={(e) => list.setFilterText(e.target.value)}
+          value={list.filter}
+          onChange={(e) => list.setFilter(e.target.value)}
         />
 
-        {list.loading && (
+        {list.isLoading && (
           <span className={styles.Loading}>
             <LoaderIcon className={styles.Spinner} /> Loading
           </span>
@@ -104,7 +104,7 @@ export const Dependencies = () => {
         ))}
       </div>
 
-      {list.items.length === 0 && !list.loading && (
+      {list.items.length === 0 && !list.isLoading && (
         <div className={styles.Empty}>No users found with current filters</div>
       )}
     </div>

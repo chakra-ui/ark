@@ -22,19 +22,21 @@ export const Group = () => {
     <Listbox.Root className={styles.Root} collection={collection}>
       <Listbox.Label className={styles.Label}>Select Region</Listbox.Label>
       <Listbox.Content className={styles.Content}>
-        {collection.group().map(([region, items]) => (
-          <Listbox.ItemGroup className={styles.ItemGroup} key={region}>
-            <Listbox.ItemGroupLabel className={styles.ItemGroupLabel}>{region}</Listbox.ItemGroupLabel>
-            {items.map((item) => (
-              <Listbox.Item className={styles.Item} key={item.value} item={item}>
-                <Listbox.ItemText className={styles.ItemText}>{item.label}</Listbox.ItemText>
-                <Listbox.ItemIndicator className={styles.ItemIndicator}>
-                  <CheckIcon />
-                </Listbox.ItemIndicator>
-              </Listbox.Item>
-            ))}
-          </Listbox.ItemGroup>
-        ))}
+        <Listbox.List className={styles.List}>
+          {collection.group().map(([region, items]) => (
+            <Listbox.ItemGroup className={styles.ItemGroup} key={region}>
+              <Listbox.ItemGroupLabel className={styles.ItemGroupLabel}>{region}</Listbox.ItemGroupLabel>
+              {items.map((item) => (
+                <Listbox.Item className={styles.Item} key={item.value} item={item}>
+                  <Listbox.ItemText className={styles.ItemText}>{item.label}</Listbox.ItemText>
+                  <Listbox.ItemIndicator className={styles.ItemIndicator}>
+                    <CheckIcon />
+                  </Listbox.ItemIndicator>
+                </Listbox.Item>
+              ))}
+            </Listbox.ItemGroup>
+          ))}
+        </Listbox.List>
       </Listbox.Content>
     </Listbox.Root>
   )

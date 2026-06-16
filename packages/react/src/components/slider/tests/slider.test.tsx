@@ -5,8 +5,8 @@ import { LocaleProvider } from '../../../providers/index.ts'
 import { ComponentUnderTest } from './basic.tsx'
 
 describe('Slider', () => {
-  it.skip('should have no a11y violations', async () => {
-    const { container } = await act(() => render(<ComponentUnderTest />))
+  it('should have no a11y violations', async () => {
+    const { container } = await act(async () => render(<ComponentUnderTest />))
     const results = await axe(container)
 
     expect(results).toHaveNoViolations()

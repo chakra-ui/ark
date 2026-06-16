@@ -19,7 +19,7 @@ export const DynamicSlides = () => {
     <div className="stack">
       <Carousel.Root
         className={styles.Root}
-        slideCount={slides.length}
+        count={slides.length}
         page={page}
         onPageChange={(details) => setPage(details.page)}
       >

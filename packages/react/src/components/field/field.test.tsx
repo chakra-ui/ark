@@ -33,7 +33,7 @@ describe('Field / Input', () => {
   it('should set textbox as disabled', async () => {
     render(<ComponentUnderTest disabled />)
     expect(screen.getByRole('textbox', { name: /label/i })).toBeDisabled()
-    expect(document.querySelector('[data-part="root"]')).toHaveAttribute('data-disabled')
+    expect(document.querySelector('[data-field-root]')).toHaveAttribute('data-disabled')
     expect(screen.getByText('Label')).toHaveAttribute('data-disabled')
     expect(screen.getByText('Some additional Info')).toHaveAttribute('data-disabled')
   })
@@ -51,6 +51,7 @@ describe('Field / Input', () => {
   it('should display error text when error is present', async () => {
     render(<ComponentUnderTest invalid />)
     expect(screen.getByText('Error Info')).toBeInTheDocument()
+    expect(screen.getByRole('textbox')).toHaveAccessibleErrorMessage('Error Info')
   })
 
   it('should focus on input when label is clicked', async () => {
@@ -107,9 +108,9 @@ describe('Field / Item', () => {
       const root = container.firstElementChild
       if (!root) throw new Error('Expected root element')
       const structure = formatFieldParts([
-        { name: 'label', element: root.querySelector('[data-part=label]'), attrs: ['id', 'for'] },
-        { name: 'Field.Select', element: root.querySelector('[data-part=select]') },
-        { name: 'Field.Input', element: root.querySelector('[data-part=input]') },
+        { name: 'label', element: root.querySelector('[data-field-label]'), attrs: ['id', 'for'] },
+        { name: 'Field.Select', element: root.querySelector('[data-field-select]') },
+        { name: 'Field.Input', element: root.querySelector('[data-field-input]') },
       ])
       expect(structure).toMatchInlineSnapshot(`
         "label (id=field::_r_9_::label, for=field::_r_9_::item::amount)
@@ -162,9 +163,9 @@ describe('Field / Item', () => {
       const root = container.firstElementChild
       if (!root) throw new Error('Expected root element')
       const structure = formatFieldParts([
-        { name: 'label', element: root.querySelector('[data-part=label]'), attrs: ['id', 'for'] },
-        { name: 'Field.Select', element: root.querySelector('[data-part=select]') },
-        { name: 'Field.Input', element: root.querySelector('[data-part=input]') },
+        { name: 'label', element: root.querySelector('[data-field-label]'), attrs: ['id', 'for'] },
+        { name: 'Field.Select', element: root.querySelector('[data-field-select]') },
+        { name: 'Field.Input', element: root.querySelector('[data-field-input]') },
       ])
       expect(structure).toMatchInlineSnapshot(`
         "label (id=field::_r_c_::label, for=_r_c_)
@@ -198,9 +199,9 @@ describe('Field / Item', () => {
       const root = container.firstElementChild
       if (!root) throw new Error('Expected root element')
       const structure = formatFieldParts([
-        { name: 'label', element: root.querySelector('[data-part=label]'), attrs: ['id', 'for'] },
-        { name: 'Field.Select', element: root.querySelector('[data-part=select]') },
-        { name: 'Field.Input', element: root.querySelector('[data-part=input]') },
+        { name: 'label', element: root.querySelector('[data-field-label]'), attrs: ['id', 'for'] },
+        { name: 'Field.Select', element: root.querySelector('[data-field-select]') },
+        { name: 'Field.Input', element: root.querySelector('[data-field-input]') },
       ])
       expect(structure).toMatchInlineSnapshot(`
         "label (id=field::_r_d_::label, for=field::_r_d_::item::currency)

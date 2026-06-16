@@ -10,8 +10,8 @@ import {
   splitRenderStrategyProps,
 } from '../../utils/render-strategy.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
-import { type UseAccordionProps, useAccordion } from './use-accordion.ts'
 import { AccordionProvider } from './use-accordion-context.ts'
+import { type UseAccordionProps, useAccordion } from './use-accordion.ts'
 
 export interface AccordionRootBaseProps extends UseAccordionProps, RenderStrategyProps, PolymorphicProps {}
 export interface AccordionRootProps extends Assign<HTMLProps<'div'>, AccordionRootBaseProps> {}
@@ -26,6 +26,7 @@ export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>((pro
     'disabled',
     'id',
     'ids',
+    'loopFocus',
     'multiple',
     'onFocusChange',
     'onValueChange',

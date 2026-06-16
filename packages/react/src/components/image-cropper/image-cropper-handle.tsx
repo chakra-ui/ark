@@ -10,9 +10,9 @@ export interface ImageCropperHandleBaseProps extends PolymorphicProps, HandlePro
 export interface ImageCropperHandleProps extends HTMLProps<'div'>, ImageCropperHandleBaseProps {}
 
 export const ImageCropperHandle = forwardRef<HTMLDivElement, ImageCropperHandleProps>((props, ref) => {
-  const { position, ...localProps } = props
+  const { placement, ...localProps } = props
   const imageCropper = useImageCropperContext()
-  const mergedProps = mergeProps(imageCropper.getHandleProps({ position }), localProps)
+  const mergedProps = mergeProps(imageCropper.getHandleProps({ placement }), localProps)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

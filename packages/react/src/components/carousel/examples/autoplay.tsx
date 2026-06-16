@@ -12,7 +12,7 @@ const images = [
 
 export const Autoplay = () => {
   return (
-    <Carousel.Root className={styles.Root} slideCount={images.length} autoplay loop>
+    <Carousel.Root className={styles.Root} count={images.length} autoPlay loop>
       <Carousel.ItemGroup className={styles.ItemGroup}>
         {images.map((image, index) => (
           <Carousel.Item className={styles.Item} key={index} index={index}>

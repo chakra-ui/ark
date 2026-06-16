@@ -19,15 +19,31 @@ describe('Splitter', () => {
     expect(screen.getByRole('separator')).toBeInTheDocument()
   })
 
-  it.skip('should call onResizeStart callback', () => {
-    const onResizeStart = vi.fn()
-    render(<ComponentUnderTest onResizeEnd={onResizeStart} />)
+  it('should call onResizeEnd callback', async () => {
+    // happy-dom reports a zero-sized layout, so the splitter machine cannot
+    // resolve panel sizes. Mock the measured rect so keyboard resizing works.
+    const rectSpy = vi.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({
+      width: 300,
+      height: 300,
+      top: 0,
+      left: 0,
+      right: 300,
+      bottom: 300,
+      x: 0,
+      y: 0,
+      toJSON: () => ({}),
+    } as DOMRect)
+
+    const onResizeEnd = vi.fn()
+    render(<ComponentUnderTest onResizeEnd={onResizeEnd} />)
 
     const trigger = screen.getByRole('separator')
 
     trigger.focus()
-    user.keyboard('{ArrowRight}')
+    await user.keyboard('{ArrowRight}')
 
-    expect(onResizeStart).toHaveBeenCalled()
+    expect(onResizeEnd).toHaveBeenCalled()
+
+    rectSpy.mockRestore()
   })
 })

@@ -9,7 +9,7 @@ export type {
   PreviewDescriptionDetails,
   SelectionValueTextDetails,
 } from '@zag-js/image-cropper'
-export { handles } from '@zag-js/image-cropper'
+export { placements } from '@zag-js/image-cropper'
 export {
   ImageCropperContext as Context,
   type ImageCropperContextProps as ContextProps,

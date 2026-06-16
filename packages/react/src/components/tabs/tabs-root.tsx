@@ -22,7 +22,6 @@ export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) =
   const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)
   const [useTabsProps, localProps] = splitRootProps(tabsProps, [
     'activationMode',
-    'composite',
     'defaultValue',
     'deselectable',
     'id',
@@ -34,6 +33,7 @@ export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) =
     'orientation',
     'translations',
     'value',
+    'virtualFocus',
   ])
   const tabs = useTabs(useTabsProps)
   const mergedProps = mergeProps(tabs.getRootProps(), localProps)

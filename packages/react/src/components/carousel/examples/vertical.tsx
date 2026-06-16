@@ -12,7 +12,7 @@ const images = [
 
 export const Vertical = () => {
   return (
-    <Carousel.Root className={styles.Root} defaultPage={0} orientation="vertical" slideCount={images.length}>
+    <Carousel.Root className={styles.Root} defaultPage={0} orientation="vertical" count={images.length}>
       <Carousel.ItemGroup className={styles.ItemGroup}>
         {images.map((image, index) => (
           <Carousel.Item className={styles.Item} key={index} index={index}>

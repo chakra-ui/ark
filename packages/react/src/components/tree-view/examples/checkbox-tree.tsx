@@ -18,9 +18,12 @@ export const CheckboxTree = () => {
 const TreeNodeCheckbox = (props: TreeView.NodeCheckboxProps) => {
   return (
     <TreeView.NodeCheckbox className={styles.NodeCheckbox} {...props}>
-      <TreeView.NodeCheckboxIndicator className={styles.NodeCheckboxIndicator} indeterminate={<MinusIcon />}>
+      <TreeView.NodeIndicator type="checked" className={styles.NodeIndicator}>
         <CheckIcon />
-      </TreeView.NodeCheckboxIndicator>
+      </TreeView.NodeIndicator>
+      <TreeView.NodeIndicator type="indeterminate" className={styles.NodeIndicator}>
+        <MinusIcon />
+      </TreeView.NodeIndicator>
     </TreeView.NodeCheckbox>
   )
 }
@@ -30,26 +33,32 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
   return (
     <TreeView.NodeProvider key={node.id} node={node} indexPath={indexPath}>
       {node.children ? (
-        <TreeView.Branch className={styles.Branch}>
-          <TreeView.BranchControl className={styles.BranchControl}>
-            <TreeView.BranchIndicator className={styles.BranchIndicator}>
-              <ChevronRightIcon />
-            </TreeView.BranchIndicator>
-            <TreeNodeCheckbox />
-            <TreeView.BranchText className={styles.BranchText}>{node.name}</TreeView.BranchText>
-          </TreeView.BranchControl>
-          <TreeView.BranchContent className={styles.BranchContent}>
-            <TreeView.BranchIndentGuide className={styles.BranchIndentGuide} />
+        <TreeView.NodeGroup className={styles.NodeGroup}>
+          <TreeView.Node className={styles.Node}>
+            <TreeView.Cell className={styles.Cell}>
+              <TreeView.NodeExpandTrigger className={styles.NodeExpandTrigger}>
+                <TreeView.NodeIndicator type="expanded" className={styles.NodeIndicator}>
+                  <ChevronRightIcon />
+                </TreeView.NodeIndicator>
+              </TreeView.NodeExpandTrigger>
+              <TreeNodeCheckbox />
+              <TreeView.NodeText className={styles.NodeText}>{node.name}</TreeView.NodeText>
+            </TreeView.Cell>
+          </TreeView.Node>
+          <TreeView.NodeGroupContent className={styles.NodeGroupContent}>
+            <TreeView.IndentGuide className={styles.IndentGuide} />
             {node.children.map((child, index) => (
               <TreeNode key={child.id} node={child} indexPath={[...indexPath, index]} />
             ))}
-          </TreeView.BranchContent>
-        </TreeView.Branch>
+          </TreeView.NodeGroupContent>
+        </TreeView.NodeGroup>
       ) : (
-        <TreeView.Item className={styles.Item}>
-          <TreeNodeCheckbox />
-          <TreeView.ItemText className={styles.ItemText}>{node.name}</TreeView.ItemText>
-        </TreeView.Item>
+        <TreeView.Node className={styles.Node}>
+          <TreeView.Cell className={styles.Cell}>
+            <TreeNodeCheckbox />
+            <TreeView.NodeText className={styles.NodeText}>{node.name}</TreeView.NodeText>
+          </TreeView.Cell>
+        </TreeView.Node>
       )}
     </TreeView.NodeProvider>
   )

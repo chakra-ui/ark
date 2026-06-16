@@ -27,8 +27,8 @@ export const Reload = () => {
   return (
     <div className={styles.Root}>
       <div className={styles.Header}>
-        <button className={button.Root} onClick={() => list.reload()} disabled={list.loading}>
-          {list.loading ? (
+        <button className={button.Root} onClick={() => list.reload()} disabled={list.isLoading}>
+          {list.isLoading ? (
             <>
               <LoaderIcon className={styles.Spinner} /> Loading
             </>

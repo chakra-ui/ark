@@ -12,7 +12,7 @@ const images = [
 
 export const ThumbnailIndicator = () => {
   return (
-    <Carousel.Root className={styles.Root} defaultPage={0} slideCount={images.length}>
+    <Carousel.Root className={styles.Root} defaultPage={0} count={images.length}>
       <Carousel.Control className={styles.Control}>
         <Carousel.PrevTrigger className={styles.Trigger}>
           <ArrowLeftIcon />

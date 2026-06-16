@@ -35,37 +35,43 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
     <TreeView.NodeProvider key={node.id} node={node} indexPath={indexPath}>
       <TreeView.NodeContext>
         {(nodeState) =>
-          node.children ? (
-            <TreeView.Branch className={styles.Branch}>
-              <TreeView.BranchControl className={styles.BranchControl}>
-                <TreeView.BranchIndicator className={styles.BranchIndicator}>
-                  <ChevronRightIcon />
-                </TreeView.BranchIndicator>
+          nodeState.isBranch ? (
+            <TreeView.NodeGroup className={styles.NodeGroup}>
+              <TreeView.Node className={styles.Node}>
+                <TreeView.Cell className={styles.Cell}>
+                  <TreeView.NodeExpandTrigger className={styles.NodeExpandTrigger}>
+                    <TreeView.NodeIndicator type="expanded" className={styles.NodeIndicator}>
+                      <ChevronRightIcon />
+                    </TreeView.NodeIndicator>
+                  </TreeView.NodeExpandTrigger>
+                  {nodeState.renaming ? (
+                    <TreeView.NodeRenameInput className={styles.NodeRenameInput} />
+                  ) : (
+                    <TreeView.NodeText className={styles.NodeText}>
+                      {nodeState.expanded ? <FolderOpenIcon /> : <FolderIcon />}
+                      {node.name}
+                    </TreeView.NodeText>
+                  )}
+                </TreeView.Cell>
+              </TreeView.Node>
+              <TreeView.NodeGroupContent className={styles.NodeGroupContent}>
+                <TreeView.IndentGuide className={styles.IndentGuide} />
+                {node.children?.map((child, index) => (
+                  <TreeNode key={child.id} node={child} indexPath={[...indexPath, index]} />
+                ))}
+              </TreeView.NodeGroupContent>
+            </TreeView.NodeGroup>
+          ) : (
+            <TreeView.Node className={styles.Node}>
+              <TreeView.Cell className={styles.Cell}>
+                <FileIcon />
                 {nodeState.renaming ? (
                   <TreeView.NodeRenameInput className={styles.NodeRenameInput} />
                 ) : (
-                  <TreeView.BranchText className={styles.BranchText}>
-                    {nodeState.expanded ? <FolderOpenIcon /> : <FolderIcon />}
-                    {node.name}
-                  </TreeView.BranchText>
+                  <TreeView.NodeText className={styles.NodeText}>{node.name}</TreeView.NodeText>
                 )}
-              </TreeView.BranchControl>
-              <TreeView.BranchContent className={styles.BranchContent}>
-                <TreeView.BranchIndentGuide className={styles.BranchIndentGuide} />
-                {node.children.map((child, index) => (
-                  <TreeNode key={child.id} node={child} indexPath={[...indexPath, index]} />
-                ))}
-              </TreeView.BranchContent>
-            </TreeView.Branch>
-          ) : (
-            <TreeView.Item className={styles.Item}>
-              <FileIcon />
-              {nodeState.renaming ? (
-                <TreeView.NodeRenameInput className={styles.NodeRenameInput} />
-              ) : (
-                <TreeView.ItemText className={styles.ItemText}>{node.name}</TreeView.ItemText>
-              )}
-            </TreeView.Item>
+              </TreeView.Cell>
+            </TreeView.Node>
           )
         }
       </TreeView.NodeContext>

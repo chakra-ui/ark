@@ -23,9 +23,9 @@ export const FieldItem = (props: FieldItemProps) => {
     const controlId = `field::${parentField.ids.control}::item::${value}`
     const labelId = `${controlId}::label`
 
-    const getControlProps = () =>
+    const getControlProps = (getParentProps: () => Record<string, unknown>) =>
       ({
-        ...parentField.getInputProps(),
+        ...getParentProps(),
         id: controlId,
       }) as HTMLProps<'input'>
 
@@ -44,18 +44,18 @@ export const FieldItem = (props: FieldItemProps) => {
         }) as HTMLProps<'label'>,
       getInputProps: () =>
         ({
-          ...getControlProps(),
-          ...parts.input.attrs,
+          ...getControlProps(parentField.getInputProps),
+          ...parts.input.attrs(controlId),
         }) as HTMLProps<'input'>,
       getSelectProps: () =>
         ({
-          ...getControlProps(),
-          ...parts.select.attrs,
+          ...getControlProps(parentField.getSelectProps),
+          ...parts.select.attrs(controlId),
         }) as HTMLProps<'select'>,
       getTextareaProps: () =>
         ({
-          ...getControlProps(),
-          ...parts.textarea.attrs,
+          ...getControlProps(parentField.getTextareaProps),
+          ...parts.textarea.attrs(controlId),
         }) as HTMLProps<'textarea'>,
     }
   }, [parentField, value])

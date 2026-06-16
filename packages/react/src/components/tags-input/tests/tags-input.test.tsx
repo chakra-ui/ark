@@ -1,11 +1,11 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { act, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { ComponentUnderTest, TagsInputWithField } from './basic.tsx'
 
 describe('TagsInput', () => {
-  it.skip('should have no a11y violations', async () => {
-    const { container } = render(<ComponentUnderTest />)
+  it('should have no a11y violations', async () => {
+    const { container } = await act(async () => render(<ComponentUnderTest />))
     const results = await axe(container)
 
     expect(results).toHaveNoViolations()
@@ -27,7 +27,7 @@ describe('TagsInput', () => {
     const input = screen.getByPlaceholderText('Add tag')
     await user.type(input, 'angular[enter]')
 
-    expect(screen.queryByText('angular')).toHaveAttribute('data-part', 'item-text')
+    expect(screen.queryByText('angular')).toHaveAttribute('data-tags-input-item-text')
 
     await user.type(input, '[ArrowLeft]', { delay: 10 })
     await waitFor(() => expect(screen.getByText('angular')).toHaveAttribute('data-highlighted', ''))
@@ -44,7 +44,7 @@ describe('TagsInput', () => {
 
     expect(screen.getByText('angular')).toBeInTheDocument()
 
-    expect(await screen.findByText('angular')).toHaveAttribute('data-scope', 'tags-input')
+    expect(await screen.findByText('angular')).toHaveAttribute('data-tags-input-item-text')
 
     await user.type(input, '[ArrowLeft]')
     await user.type(input, '[ArrowLeft]')

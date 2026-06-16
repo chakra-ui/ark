@@ -66,7 +66,7 @@ export const useFieldset = (props: UseFieldsetProps = {}) => {
 
   const getRootProps = () =>
     ({
-      ...parts.root.attrs,
+      ...parts.root.attrs(id),
       ref: rootRef,
       disabled,
       'data-disabled': dataAttr(disabled),
@@ -78,7 +78,7 @@ export const useFieldset = (props: UseFieldsetProps = {}) => {
   const getLegendProps = () =>
     ({
       id: legendId,
-      ...parts.legend.attrs,
+      ...parts.legend.attrs(id),
       'data-disabled': dataAttr(disabled),
       'data-invalid': dataAttr(invalid),
     }) as HTMLProps<'legend'>
@@ -86,13 +86,13 @@ export const useFieldset = (props: UseFieldsetProps = {}) => {
   const getHelperTextProps = () =>
     ({
       id: helperTextId,
-      ...parts.helperText.attrs,
+      ...parts.helperText.attrs(id),
     }) as HTMLProps<'span'>
 
   const getErrorTextProps = () =>
     ({
       id: errorTextId,
-      ...parts.errorText.attrs,
+      ...parts.errorText.attrs(id),
       'aria-live': 'polite',
     }) as HTMLProps<'span'>
 

@@ -24,14 +24,16 @@ export const ValueText = () => {
         Colors: <Listbox.ValueText className={styles.ValueText} />
       </Listbox.Label>
       <Listbox.Content className={styles.Content}>
-        {collection.items.map((item) => (
-          <Listbox.Item className={styles.Item} key={item.value} item={item}>
-            <Listbox.ItemText className={styles.ItemText}>{item.label}</Listbox.ItemText>
-            <Listbox.ItemIndicator className={styles.ItemIndicator}>
-              <CheckIcon />
-            </Listbox.ItemIndicator>
-          </Listbox.Item>
-        ))}
+        <Listbox.List className={styles.List}>
+          {collection.items.map((item) => (
+            <Listbox.Item className={styles.Item} key={item.value} item={item}>
+              <Listbox.ItemText className={styles.ItemText}>{item.label}</Listbox.ItemText>
+              <Listbox.ItemIndicator className={styles.ItemIndicator}>
+                <CheckIcon />
+              </Listbox.ItemIndicator>
+            </Listbox.Item>
+          ))}
+        </Listbox.List>
       </Listbox.Content>
     </Listbox.Root>
   )

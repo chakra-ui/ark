@@ -5,7 +5,7 @@ import styles from 'styles/carousel.module.css'
 
 export const ScrollTo = () => {
   return (
-    <Carousel.Root className={styles.Root} slideCount={5}>
+    <Carousel.Root className={styles.Root} count={5}>
       <Carousel.Context>
         {(api) => (
           <button className={button.Root} onClick={() => api.scrollToIndex(3)}>

@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { act, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { ColorPicker, parseColor } from '../index.ts'
@@ -7,7 +7,7 @@ import { ComponentUnderTest } from './basic.tsx'
 
 describe('ColorPicker', () => {
   it('should have no a11y violations', async () => {
-    const { container } = render(<ComponentUnderTest />)
+    const { container } = await act(async () => render(<ComponentUnderTest />))
     const results = await axe(container)
 
     expect(results).toHaveNoViolations()
@@ -37,11 +37,11 @@ describe('ColorPicker', () => {
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 
-  it.skip('should render with default value', async () => {
-    render(<ComponentUnderTest defaultValue={parseColor('#ff00ff')} />)
+  it('should render with default value', async () => {
+    render(<ComponentUnderTest defaultValue={parseColor('#ff00ff').toFormat('hsba')} />)
 
     expect(screen.getByTestId('swatch-trigger')).toHaveStyle({
-      backgroundColor: 'rgb(255, 0, 255)',
+      background: 'hsla(300, 100%, 50%, 1)',
     })
   })
 })
