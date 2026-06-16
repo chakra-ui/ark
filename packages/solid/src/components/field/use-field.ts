@@ -107,15 +107,11 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
     htmlFor: targetControlId ?? id,
   })
 
-  const labelIds = createMemo(() => {
-    const ids: string[] = []
-    if (hasErrorText() && fieldProps.invalid) ids.push(errorTextId)
-    if (hasHelperText()) ids.push(helperTextId)
-    return ids
-  })
+  const errorMessageId = createMemo(() => (hasErrorText() && fieldProps.invalid ? errorTextId : undefined))
 
   const getControlProps = () => ({
-    'aria-describedby': labelIds().join(' ') || undefined,
+    'aria-describedby': hasHelperText() ? helperTextId : undefined,
+    'aria-errormessage': errorMessageId(),
     'aria-invalid': ariaAttr(fieldProps.invalid),
     'data-invalid': dataAttr(fieldProps.invalid),
     'data-required': dataAttr(fieldProps.required),
@@ -159,7 +155,7 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
   })
 
   return createMemo(() => ({
-    ariaDescribedby: labelIds().join(' '),
+    ariaDescribedby: hasHelperText() ? helperTextId : undefined,
     ids: {
       control: id,
       label: labelId,

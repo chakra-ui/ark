@@ -1,6 +1,7 @@
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
 import ComponentUnderTest from './field.test.vue'
+import { nextTick } from 'vue'
 
 describe('Field', () => {
   it('should set textbox as required', async () => {
@@ -29,7 +30,9 @@ describe('Field', () => {
 
   it('should display error text when error is present', async () => {
     render(ComponentUnderTest, { props: { invalid: true } })
+    await nextTick()
     expect(screen.getByText('Error Info')).toBeInTheDocument()
+    expect(screen.getByRole('textbox')).toHaveAccessibleErrorMessage('Error Info')
   })
 
   it('should focus on input when label is clicked', async () => {

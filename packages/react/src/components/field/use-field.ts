@@ -93,13 +93,6 @@ export const useField = (props: UseFieldProps = {}) => {
     return () => observer.disconnect()
   }, [env, errorTextId, helperTextId])
 
-  const labelIds = useMemo(() => {
-    const ids: string[] = []
-    if (hasErrorText && invalid) ids.push(errorTextId)
-    if (hasHelperText) ids.push(helperTextId)
-    return ids.join(' ') || undefined
-  }, [invalid, errorTextId, helperTextId, hasErrorText, hasHelperText])
-
   const getRootProps = useMemo(
     () => () =>
       ({
@@ -130,10 +123,13 @@ export const useField = (props: UseFieldProps = {}) => {
     [disabled, invalid, readOnly, required, id, labelId, targetControlId],
   )
 
+  const errorMessageId = hasErrorText && invalid ? errorTextId : undefined
+
   const getControlProps = useMemo(
     () => () =>
       ({
-        'aria-describedby': labelIds,
+        'aria-describedby': hasHelperText ? helperTextId : undefined,
+        'aria-errormessage': errorMessageId,
         'aria-invalid': ariaAttr(invalid),
         'data-invalid': dataAttr(invalid),
         'data-required': dataAttr(required),
@@ -143,7 +139,7 @@ export const useField = (props: UseFieldProps = {}) => {
         disabled,
         readOnly,
       }) as HTMLProps<'input'>,
-    [labelIds, invalid, required, readOnly, id, disabled],
+    [hasHelperText, helperTextId, invalid, required, readOnly, id, errorMessageId, disabled],
   )
 
   const getInputProps = useMemo(
@@ -203,7 +199,7 @@ export const useField = (props: UseFieldProps = {}) => {
   )
 
   return {
-    ariaDescribedby: labelIds,
+    ariaDescribedby: hasHelperText ? helperTextId : undefined,
     ids: {
       root: rootId,
       control: id,
