@@ -51,6 +51,7 @@ describe('Field / Input', () => {
   it('should display error text when error is present', async () => {
     render(<ComponentUnderTest invalid />)
     expect(screen.getByText('Error Info')).toBeInTheDocument()
+    expect(screen.getByRole('textbox')).toHaveAccessibleErrorMessage('Error Info')
   })
 
   it('should focus on input when label is clicked', async () => {
