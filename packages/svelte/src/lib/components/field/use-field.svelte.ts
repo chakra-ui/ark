@@ -98,12 +98,6 @@ export const useField = (inProps: MaybeFunction<UseFieldProps> = {}) => {
     }
   })
 
-  const labelIds = $derived(() => {
-    const ids: string[] = []
-    if (hasHelperText) ids.push(helperTextId)
-    return ids.join(' ') || undefined
-  })
-
   const errorMessageId = $derived(hasErrorText && invalid ? errorTextId : undefined)
 
   const getRootProps = () =>
@@ -131,7 +125,7 @@ export const useField = (inProps: MaybeFunction<UseFieldProps> = {}) => {
 
   const getControlProps = () =>
     ({
-      'aria-describedby': labelIds(),
+      'aria-describedby': hasHelperText ? helperTextId : undefined,
       'aria-errormessage': errorMessageId,
       'aria-invalid': ariaAttr(invalid),
       'data-invalid': dataAttr(invalid),
@@ -183,7 +177,7 @@ export const useField = (inProps: MaybeFunction<UseFieldProps> = {}) => {
 
   const api = $derived({
     setRootRef,
-    ariaDescribedby: labelIds(),
+    ariaDescribedby: hasHelperText ? helperTextId : undefined,
     ids: {
       root: rootId,
       control: controlId,
