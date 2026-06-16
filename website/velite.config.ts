@@ -14,6 +14,8 @@ import remarkRemoveFirstHeading from './src/lib/remark-remove-first-heading'
 import { defineCollection, defineConfig, s } from 'velite'
 import { replaceComponentTypes, replaceContextType, replaceExample } from './src/lib/mdx-transform'
 
+const normalizePath = (path: string) => path.replace(/\\/g, '/')
+
 const pages = defineCollection({
   name: 'Pages',
   pattern: ['pages/**/*.mdx', '../../../packages/*/CHANGELOG.md'],
@@ -32,7 +34,7 @@ const pages = defineCollection({
       code: s.mdx(),
       llm: s.custom<string>().transform((_data, { meta }) => {
         const content = meta.content as string
-        const path = meta.path as string
+        const path = normalizePath(meta.path as string)
         const isChangelog = path.includes('CHANGELOG.md')
         const component = isChangelog
           ? ''
@@ -47,7 +49,7 @@ const pages = defineCollection({
       }),
     })
     .transform((data, { meta }) => {
-      const path = (meta.path as string).replace(/\\/g, '/')
+      const path = normalizePath(meta.path as string)
       if (data.id === 'changelog') {
         return {
           ...data,
@@ -84,7 +86,7 @@ const blogs = defineCollection({
       code: s.mdx(),
     })
     .transform((data, { meta }) => {
-      const path = (meta.path as string).replace(/\\/g, '/')
+      const path = normalizePath(meta.path as string)
       return {
         ...data,
         slug: path.replace(/.*\/blog\//, '').replace(/\.mdx$/, ''),
@@ -125,7 +127,7 @@ const types = defineCollection({
       }),
     )
     .transform((data, { meta }) => {
-      const path = (meta.path as string).replace(/\\/g, '/')
+      const path = normalizePath(meta.path as string)
       return {
         parts: data,
         component: (meta.basename as string)?.split('.')[0] ?? '',
