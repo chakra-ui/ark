@@ -14,7 +14,7 @@ describe('Rating Group', () => {
   it('should apply default value', async () => {
     render(<ComponentUnderTest defaultValue={2} count={5} />)
 
-    const input = screen.getByRole('textbox', { hidden: true })
+    const input = await screen.findByRole('textbox', { hidden: true })
 
     expect(input).toHaveValue('2')
   })
@@ -22,7 +22,7 @@ describe('Rating Group', () => {
   it('should apply value', async () => {
     render(<ComponentUnderTest value={1} defaultValue={2} count={5} />)
 
-    const input = screen.getByRole('textbox', { hidden: true })
+    const input = await screen.findByRole('textbox', { hidden: true })
 
     expect(input).toHaveValue('1')
   })
@@ -51,27 +51,27 @@ describe('Rating Group', () => {
 describe('Rating Group / Field', () => {
   it('should set rating group as required', async () => {
     render(<RatingGroupWithField required />)
-    expect(screen.getByRole('textbox', { hidden: true })).toBeRequired()
+    expect(await screen.findByRole('textbox', { hidden: true })).toBeRequired()
   })
 
   it('should set rating group as disabled', async () => {
     render(<RatingGroupWithField disabled />)
-    expect(screen.getByRole('textbox', { hidden: true })).toBeDisabled()
+    expect(await screen.findByRole('textbox', { hidden: true })).toBeDisabled()
   })
 
   it('should set rating group as readonly', async () => {
     render(<RatingGroupWithField readOnly />)
-    expect(screen.getByRole('textbox', { hidden: true })).toHaveAttribute('readonly')
+    expect(await screen.findByRole('textbox', { hidden: true })).toHaveAttribute('readonly')
   })
 
   it('should display helper text', async () => {
     render(<RatingGroupWithField />)
-    expect(screen.getByText('Additional Info')).toBeInTheDocument()
+    expect(await screen.findByText('Additional Info')).toBeInTheDocument()
   })
 
   it('should display error text when error is present', async () => {
     render(<RatingGroupWithField invalid />)
-    expect(screen.getByText('Error Info')).toBeInTheDocument()
+    expect(await screen.findByText('Error Info')).toBeInTheDocument()
   })
 
   it('should focus on rating group when label is clicked', async () => {
@@ -82,6 +82,7 @@ describe('Rating Group / Field', () => {
 
   it('should not display error text when no error is present', async () => {
     render(<RatingGroupWithField />)
+    await screen.findByRole('textbox', { hidden: true })
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })

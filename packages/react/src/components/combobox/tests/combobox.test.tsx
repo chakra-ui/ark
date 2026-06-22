@@ -82,27 +82,27 @@ describe('Combobox', () => {
 describe('Combobox / Field', () => {
   it('should set combobox as required', async () => {
     render(<ComboboxWithField required />)
-    expect(screen.getByRole('combobox', { name: /label/i })).toBeRequired()
+    expect(await screen.findByRole('combobox', { name: /label/i })).toBeRequired()
   })
 
   it('should set combobox as disabled', async () => {
     render(<ComboboxWithField disabled />)
-    expect(screen.getByRole('combobox', { name: /label/i })).toBeDisabled()
+    expect(await screen.findByRole('combobox', { name: /label/i })).toBeDisabled()
   })
 
   it('should set combobox as readonly', async () => {
     render(<ComboboxWithField readOnly />)
-    expect(screen.getByRole('combobox', { name: /label/i })).toHaveAttribute('readonly')
+    expect(await screen.findByRole('combobox', { name: /label/i })).toHaveAttribute('readonly')
   })
 
   it('should display helper text', async () => {
     render(<ComboboxWithField />)
-    expect(screen.getByText('Additional Info')).toBeInTheDocument()
+    expect(await screen.findByText('Additional Info')).toBeInTheDocument()
   })
 
   it('should display error text when error is present', async () => {
     render(<ComboboxWithField invalid />)
-    expect(screen.getByText('Error Info')).toBeInTheDocument()
+    expect(await screen.findByText('Error Info')).toBeInTheDocument()
   })
 
   it('should focus on combobox when label is clicked', async () => {
@@ -113,6 +113,7 @@ describe('Combobox / Field', () => {
 
   it('should not display error text when no error is present', async () => {
     render(<ComboboxWithField />)
+    await screen.findByRole('combobox', { name: /label/i })
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })
