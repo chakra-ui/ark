@@ -13,9 +13,9 @@ export const Basic = () => {
             alt="Sample"
           />
           <ImageCropper.Selection class={styles.Selection}>
-            <For each={ImageCropper.handles}>
-              {(position) => (
-                <ImageCropper.Handle class={styles.Handle} position={position}>
+            <For each={ImageCropper.placements}>
+              {(placement) => (
+                <ImageCropper.Handle class={styles.Handle} placement={placement}>
                   <div />
                 </ImageCropper.Handle>
               )}

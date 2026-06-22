@@ -16,33 +16,39 @@ interface Props {
 export const TreeNode: Component<Props> = (props) => (
   <TreeView.NodeProvider node={props.node} indexPath={props.indexPath}>
     {props.node.children ? (
-      <TreeView.Branch>
-        <TreeView.BranchControl>
-          <TreeView.BranchText>
-            <Folder />
-            {props.node.name}
-          </TreeView.BranchText>
-          <TreeView.BranchIndicator>
-            <ChevronRight />
-          </TreeView.BranchIndicator>
-        </TreeView.BranchControl>
-        <TreeView.BranchContent>
-          <TreeView.BranchIndentGuide />
+      <TreeView.NodeGroup>
+        <TreeView.Node>
+          <TreeView.Cell>
+            <TreeView.NodeText>
+              <Folder />
+              {props.node.name}
+            </TreeView.NodeText>
+            <TreeView.NodeExpandTrigger>
+              <TreeView.NodeIndicator type="expanded">
+                <ChevronRight />
+              </TreeView.NodeIndicator>
+            </TreeView.NodeExpandTrigger>
+          </TreeView.Cell>
+        </TreeView.Node>
+        <TreeView.NodeGroupContent>
+          <TreeView.IndentGuide />
           <For each={props.node.children}>
             {(child, index) => <TreeNode node={child} indexPath={[...props.indexPath, index()]} />}
           </For>
-        </TreeView.BranchContent>
-      </TreeView.Branch>
+        </TreeView.NodeGroupContent>
+      </TreeView.NodeGroup>
     ) : (
-      <TreeView.Item>
-        <TreeView.ItemIndicator>
-          <SquareCheckBigIcon />
-        </TreeView.ItemIndicator>
-        <TreeView.ItemText>
-          <File />
-          {props.node.name}
-        </TreeView.ItemText>
-      </TreeView.Item>
+      <TreeView.Node>
+        <TreeView.Cell>
+          <TreeView.NodeIndicator type="selected">
+            <SquareCheckBigIcon />
+          </TreeView.NodeIndicator>
+          <TreeView.NodeText>
+            <File />
+            {props.node.name}
+          </TreeView.NodeText>
+        </TreeView.Cell>
+      </TreeView.Node>
     )}
   </TreeView.NodeProvider>
 )

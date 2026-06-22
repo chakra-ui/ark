@@ -60,15 +60,15 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
 }
 
 describe('Menu', () => {
-  it('should set correct aria attributes on disabled MenuItems', () => {
+  it('should set correct aria attributes on disabled MenuItems', async () => {
     render(() => <ComponentUnderTest />)
-    expect(screen.getByText('Dialog')).toHaveAttribute('aria-disabled', 'true')
+    expect(await screen.findByText('Dialog')).toHaveAttribute('aria-disabled', 'true')
   })
 
   it('should not fire onValueChange on disabled MenuItems', async () => {
     const onValueChange = vi.fn()
     render(() => <ComponentUnderTest onValueChange={onValueChange} />)
-    fireEvent.click(screen.getByText(/svelte/i))
+    fireEvent.click(await screen.findByText(/svelte/i))
     expect(onValueChange).not.toHaveBeenCalled()
   })
 
@@ -100,7 +100,7 @@ describe('Menu', () => {
     fireEvent.click(trigger)
     await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
     fireEvent.click(trigger)
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
   })
 
   it('should not have aria-controls if lazy mounted', async () => {

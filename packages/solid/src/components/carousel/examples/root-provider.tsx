@@ -12,7 +12,7 @@ const images = [
 ]
 
 export const RootProvider = () => {
-  const carousel = useCarousel({ slideCount: images.length })
+  const carousel = useCarousel({ count: images.length })
 
   return (
     <div class="vstack">

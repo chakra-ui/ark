@@ -17,16 +17,18 @@ export const DisabledItem = () => {
     <Listbox.Root class={styles.Root} collection={collection}>
       <Listbox.Label class={styles.Label}>Select Plan</Listbox.Label>
       <Listbox.Content class={styles.Content}>
-        <Index each={collection.items}>
-          {(item) => (
-            <Listbox.Item class={styles.Item} item={item()}>
-              <Listbox.ItemText class={styles.ItemText}>{item().label}</Listbox.ItemText>
-              <Listbox.ItemIndicator class={styles.ItemIndicator}>
-                <CheckIcon />
-              </Listbox.ItemIndicator>
-            </Listbox.Item>
-          )}
-        </Index>
+        <Listbox.List class={styles.List}>
+          <Index each={collection.items}>
+            {(item) => (
+              <Listbox.Item class={styles.Item} item={item()}>
+                <Listbox.ItemText class={styles.ItemText}>{item().label}</Listbox.ItemText>
+                <Listbox.ItemIndicator class={styles.ItemIndicator}>
+                  <CheckIcon />
+                </Listbox.ItemIndicator>
+              </Listbox.Item>
+            )}
+          </Index>
+        </Listbox.List>
       </Listbox.Content>
     </Listbox.Root>
   )

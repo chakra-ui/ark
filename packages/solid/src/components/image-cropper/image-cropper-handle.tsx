@@ -8,7 +8,7 @@ export interface ImageCropperHandleProps extends HTMLProps<'div'>, ImageCropperH
 
 export const ImageCropperHandle = (props: ImageCropperHandleProps) => {
   const api = useImageCropperContext()
-  const mergedProps = mergeProps(() => api().getHandleProps({ position: props.position }), props)
+  const mergedProps = mergeProps(() => api().getHandleProps({ placement: props.placement }), props)
 
   return <ark.div {...mergedProps} />
 }

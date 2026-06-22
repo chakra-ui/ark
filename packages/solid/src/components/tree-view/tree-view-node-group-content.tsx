@@ -6,8 +6,8 @@ import type { HTMLProps, PolymorphicProps } from '../factory.tsx'
 import { useTreeViewContext } from './use-tree-view-context.ts'
 import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
 
-export interface TreeViewBranchContentBaseProps extends PolymorphicProps<'div'> {}
-export interface TreeViewBranchContentProps extends HTMLProps<'div'>, TreeViewBranchContentBaseProps {}
+export interface TreeViewNodeGroupContentBaseProps extends PolymorphicProps<'div'> {}
+export interface TreeViewNodeGroupContentProps extends HTMLProps<'div'>, TreeViewNodeGroupContentBaseProps {}
 
 interface VisibilityProps {
   hidden?: boolean
@@ -16,16 +16,16 @@ interface VisibilityProps {
 
 const splitVisibilityProps = createSplitProps<VisibilityProps>()
 
-export const TreeViewBranchContent = (props: TreeViewBranchContentProps) => {
+export const TreeViewNodeGroupContent = (props: TreeViewNodeGroupContentProps) => {
   const treeView = useTreeViewContext()
   const nodeProps = useTreeViewNodePropsContext()
 
-  const branchContentProps = createMemo(() => {
-    const contentProps = treeView().getBranchContentProps(nodeProps)
+  const nodeGroupContentProps = createMemo(() => {
+    const contentProps = treeView().getNodeGroupContentProps(nodeProps)
     const [, ownProps] = splitVisibilityProps(contentProps as VisibilityProps, ['hidden', 'data-state'])
     return ownProps
   })
-  const mergedProps = mergeProps(() => branchContentProps(), props)
+  const mergedProps = mergeProps(() => nodeGroupContentProps(), props)
 
   return <Collapsible.Content {...mergedProps} />
 }

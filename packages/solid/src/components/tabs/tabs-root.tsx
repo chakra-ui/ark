@@ -16,7 +16,6 @@ export const TabsRoot = (props: TabsRootProps) => {
   const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)
   const [useTabsProps, restProps] = createSplitProps<UseTabsProps>()(tabsProps, [
     'activationMode',
-    'composite',
     'defaultValue',
     'deselectable',
     'id',
@@ -28,6 +27,7 @@ export const TabsRoot = (props: TabsRootProps) => {
     'orientation',
     'translations',
     'value',
+    'virtualFocus',
   ])
 
   const api = useTabs(useTabsProps)

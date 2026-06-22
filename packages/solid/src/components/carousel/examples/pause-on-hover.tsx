@@ -12,7 +12,7 @@ const images = [
 
 export const PauseOnHover = () => {
   return (
-    <Carousel.Root class={styles.Root} slideCount={images.length} autoplay loop>
+    <Carousel.Root class={styles.Root} count={images.length} autoPlay loop>
       <Carousel.Control class={styles.Control}>
         <Carousel.Context>
           {(carousel) => (

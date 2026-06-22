@@ -7,7 +7,7 @@ const slides = Array.from({ length: 6 })
 
 export const SlidesPerPage = () => {
   return (
-    <Carousel.Root class={styles.Root} slideCount={slides.length} slidesPerPage={2} spacing="20px">
+    <Carousel.Root class={styles.Root} count={slides.length} slidesPerPage={2} spacing="20px">
       <Carousel.Control class={styles.Control}>
         <Carousel.PrevTrigger class={styles.Trigger}>
           <ArrowLeftIcon />

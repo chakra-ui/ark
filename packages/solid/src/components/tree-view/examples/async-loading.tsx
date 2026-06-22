@@ -1,7 +1,7 @@
-import { TreeView, createTreeCollection } from '@ark-ui/solid/tree-view'
-import { SquareCheckBigIcon, ChevronRightIcon, FileIcon, FolderIcon, LoaderCircleIcon } from 'lucide-solid'
+import { TreeView, createTreeCollection, useTreeViewNodeContext } from '@ark-ui/solid/tree-view'
+import { ChevronRightIcon, FileIcon, FolderIcon, FolderOpenIcon, LoaderIcon } from 'lucide-solid'
 import { For, createSignal } from 'solid-js'
-import { useTreeViewNodeContext } from '../use-tree-view-node-context.ts'
+import styles from 'styles/tree-view.module.css'
 
 // mock api result
 const response: Record<string, Node[]> = {
@@ -26,7 +26,7 @@ function loadChildren(details: TreeView.LoadChildrenDetails<Node>): Promise<Node
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(response[value] ?? [])
-    }, 1200)
+    }, 500)
   })
 }
 
@@ -34,12 +34,13 @@ export const AsyncLoading = () => {
   const [collection, setCollection] = createSignal(initialCollection)
   return (
     <TreeView.Root
+      class={styles.Root}
       collection={collection()}
       loadChildren={loadChildren}
       onLoadChildrenComplete={(e) => setCollection(e.collection)}
     >
-      <TreeView.Label>Tree</TreeView.Label>
-      <TreeView.Tree>
+      <TreeView.Label class={styles.Label}>Tree</TreeView.Label>
+      <TreeView.Tree class={styles.Tree}>
         <For each={collection().rootNode.children}>
           {(node, index) => <TreeNode node={node} indexPath={[index()]} />}
         </For>
@@ -48,42 +49,50 @@ export const AsyncLoading = () => {
   )
 }
 
-function TreeNodeIndicator() {
+function TreeBranchIcon() {
   const nodeState = useTreeViewNodeContext()
-  return nodeState().loading ? <LoaderCircleIcon style={{ animation: 'spin 1s infinite' }} /> : <FolderIcon />
+  return nodeState().loading ? (
+    <LoaderIcon class={styles.Loader} />
+  ) : nodeState().expanded ? (
+    <FolderOpenIcon />
+  ) : (
+    <FolderIcon />
+  )
 }
 
 const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
-  const { node, indexPath } = props
   return (
-    <TreeView.NodeProvider node={node} indexPath={indexPath}>
-      {node.children || node.childrenCount ? (
-        <TreeView.Branch>
-          <TreeView.BranchControl>
-            <TreeView.BranchText>
-              <TreeNodeIndicator /> {node.name}
-            </TreeView.BranchText>
-            <TreeView.BranchIndicator>
-              <ChevronRightIcon />
-            </TreeView.BranchIndicator>
-          </TreeView.BranchControl>
-          <TreeView.BranchContent>
-            <TreeView.BranchIndentGuide />
-            <For each={node.children}>
-              {(child, index) => <TreeNode node={child} indexPath={[...indexPath, index()]} />}
+    <TreeView.NodeProvider node={props.node} indexPath={props.indexPath}>
+      {props.node.children || props.node.childrenCount ? (
+        <TreeView.NodeGroup class={styles.NodeGroup}>
+          <TreeView.Node class={styles.Node}>
+            <TreeView.Cell class={styles.Cell}>
+              <TreeView.NodeExpandTrigger class={styles.NodeExpandTrigger}>
+                <TreeView.NodeIndicator type="expanded" class={styles.NodeIndicator}>
+                  <ChevronRightIcon />
+                </TreeView.NodeIndicator>
+              </TreeView.NodeExpandTrigger>
+              <TreeView.NodeText class={styles.NodeText}>
+                <TreeBranchIcon /> {props.node.name}
+              </TreeView.NodeText>
+            </TreeView.Cell>
+          </TreeView.Node>
+          <TreeView.NodeGroupContent class={styles.NodeGroupContent}>
+            <TreeView.IndentGuide class={styles.IndentGuide} />
+            <For each={props.node.children}>
+              {(child, index) => <TreeNode node={child} indexPath={[...props.indexPath, index()]} />}
             </For>
-          </TreeView.BranchContent>
-        </TreeView.Branch>
+          </TreeView.NodeGroupContent>
+        </TreeView.NodeGroup>
       ) : (
-        <TreeView.Item>
-          <TreeView.ItemIndicator>
-            <SquareCheckBigIcon />
-          </TreeView.ItemIndicator>
-          <TreeView.ItemText>
-            <FileIcon />
-            {node.name}
-          </TreeView.ItemText>
-        </TreeView.Item>
+        <TreeView.Node class={styles.Node}>
+          <TreeView.Cell class={styles.Cell}>
+            <TreeView.NodeText class={styles.NodeText}>
+              <FileIcon />
+              {props.node.name}
+            </TreeView.NodeText>
+          </TreeView.Cell>
+        </TreeView.Node>
       )}
     </TreeView.NodeProvider>
   )

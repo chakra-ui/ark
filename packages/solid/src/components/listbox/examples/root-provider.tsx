@@ -23,16 +23,18 @@ export const RootProvider = () => {
       <Listbox.RootProvider class={styles.Root} value={listbox}>
         <Listbox.Label class={styles.Label}>Select Priority</Listbox.Label>
         <Listbox.Content class={styles.Content}>
-          <Index each={collection.items}>
-            {(item) => (
-              <Listbox.Item class={styles.Item} item={item()}>
-                <Listbox.ItemText class={styles.ItemText}>{item().label}</Listbox.ItemText>
-                <Listbox.ItemIndicator class={styles.ItemIndicator}>
-                  <CheckIcon />
-                </Listbox.ItemIndicator>
-              </Listbox.Item>
-            )}
-          </Index>
+          <Listbox.List class={styles.List}>
+            <Index each={collection.items}>
+              {(item) => (
+                <Listbox.Item class={styles.Item} item={item()}>
+                  <Listbox.ItemText class={styles.ItemText}>{item().label}</Listbox.ItemText>
+                  <Listbox.ItemIndicator class={styles.ItemIndicator}>
+                    <CheckIcon />
+                  </Listbox.ItemIndicator>
+                </Listbox.Item>
+              )}
+            </Index>
+          </Listbox.List>
         </Listbox.Content>
       </Listbox.RootProvider>
     </div>

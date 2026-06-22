@@ -17,17 +17,17 @@ interface User {
 export const Filter = () => {
   const list = useAsyncList<User>({
     initialItems: mockUsers.slice(0, LIMIT),
-    async load({ filterText }: { filterText?: string }) {
+    async load({ filter }) {
       await delay(500)
 
-      if (!filterText) {
+      if (!filter) {
         return { items: mockUsers.slice(0, LIMIT) }
       }
 
       const filtered = mockUsers.filter(
         (user) =>
-          user.name.toLowerCase().includes(filterText.toLowerCase()) ||
-          user.email.toLowerCase().includes(filterText.toLowerCase()),
+          user.name.toLowerCase().includes(filter.toLowerCase()) ||
+          user.email.toLowerCase().includes(filter.toLowerCase()),
       )
 
       return { items: filtered.slice(0, LIMIT) }
@@ -41,17 +41,17 @@ export const Filter = () => {
           class={field.Input}
           type="text"
           placeholder="Search users..."
-          value={list().filterText}
-          onInput={(e) => list().setFilterText(e.target.value)}
+          value={list().filter}
+          onInput={(e) => list().setFilter(e.target.value)}
         />
-        {list().loading && (
+        {list().isLoading && (
           <span class={styles.Loading}>
             <LoaderIcon class={styles.Spinner} /> Searching
           </span>
         )}
       </div>
 
-      {list().error && <div class={styles.Error}>Error: {list().error.message}</div>}
+      {list().error && <div class={styles.Error}>Error: {list().error?.message}</div>}
 
       <div class={styles.ItemGroup}>
         <For each={list().items}>
@@ -69,7 +69,7 @@ export const Filter = () => {
         </For>
       </div>
 
-      {list().items.length === 0 && !list().loading && <div class={styles.Empty}>No results found</div>}
+      {list().items.length === 0 && !list().isLoading && <div class={styles.Empty}>No results found</div>}
     </div>
   )
 }

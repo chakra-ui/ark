@@ -13,7 +13,7 @@ const images = [
 
 export const Autoplay = () => {
   return (
-    <Carousel.Root class={styles.Root} slideCount={images.length} autoplay loop>
+    <Carousel.Root class={styles.Root} count={images.length} autoPlay loop>
       <Carousel.ItemGroup class={styles.ItemGroup}>
         <Index each={images}>
           {(image, index) => (

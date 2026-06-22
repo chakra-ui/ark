@@ -13,7 +13,7 @@ const items = [
 
 export const VariableSize = () => {
   return (
-    <Carousel.Root class={styles.Root} slideCount={items.length} autoSize spacing="8px">
+    <Carousel.Root class={styles.Root} count={items.length} autoSize spacing="8px">
       <Carousel.Control class={styles.Control}>
         <Carousel.PrevTrigger class={styles.Trigger}>
           <ArrowLeftIcon />

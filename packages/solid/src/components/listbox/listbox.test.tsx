@@ -9,7 +9,7 @@ const ComponentUnderTest = (props: Omit<Listbox.RootProps<CollectionItem>, 'coll
     items: [
       { label: 'React', value: 'react' },
       { label: 'Solid', value: 'solid' },
-      { label: 'Svelte', value: 'solid', disabled: true },
+      { label: 'Svelte', value: 'svelte', disabled: true },
       { label: 'Vue', value: 'vue' },
     ],
   })
@@ -20,17 +20,19 @@ const ComponentUnderTest = (props: Omit<Listbox.RootProps<CollectionItem>, 'coll
         Select your Framework: <Listbox.ValueText />
       </Listbox.Label>
       <Listbox.Content>
-        <Listbox.ItemGroup>
-          <Listbox.ItemGroupLabel>JS Frameworks</Listbox.ItemGroupLabel>
-          <Index each={collection.items}>
-            {(item) => (
-              <Listbox.Item item={item()}>
-                <Listbox.ItemText>{item().label}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
-              </Listbox.Item>
-            )}
-          </Index>
-        </Listbox.ItemGroup>
+        <Listbox.List>
+          <Listbox.ItemGroup>
+            <Listbox.ItemGroupLabel>JS Frameworks</Listbox.ItemGroupLabel>
+            <Index each={collection.items}>
+              {(item) => (
+                <Listbox.Item item={item()}>
+                  <Listbox.ItemText>{item().label}</Listbox.ItemText>
+                  <Listbox.ItemIndicator />
+                </Listbox.Item>
+              )}
+            </Index>
+          </Listbox.ItemGroup>
+        </Listbox.List>
       </Listbox.Content>
     </Listbox.Root>
   )

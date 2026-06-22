@@ -23,23 +23,25 @@ export const Group = () => {
     <Listbox.Root class={styles.Root} collection={collection}>
       <Listbox.Label class={styles.Label}>Select Region</Listbox.Label>
       <Listbox.Content class={styles.Content}>
-        <For each={collection.group()}>
-          {([region, items]) => (
-            <Listbox.ItemGroup class={styles.ItemGroup}>
-              <Listbox.ItemGroupLabel class={styles.ItemGroupLabel}>{region}</Listbox.ItemGroupLabel>
-              <For each={items}>
-                {(item) => (
-                  <Listbox.Item class={styles.Item} item={item}>
-                    <Listbox.ItemText class={styles.ItemText}>{item.label}</Listbox.ItemText>
-                    <Listbox.ItemIndicator class={styles.ItemIndicator}>
-                      <CheckIcon />
-                    </Listbox.ItemIndicator>
-                  </Listbox.Item>
-                )}
-              </For>
-            </Listbox.ItemGroup>
-          )}
-        </For>
+        <Listbox.List class={styles.List}>
+          <For each={collection.group()}>
+            {([region, items]) => (
+              <Listbox.ItemGroup class={styles.ItemGroup}>
+                <Listbox.ItemGroupLabel class={styles.ItemGroupLabel}>{region}</Listbox.ItemGroupLabel>
+                <For each={items}>
+                  {(item) => (
+                    <Listbox.Item class={styles.Item} item={item}>
+                      <Listbox.ItemText class={styles.ItemText}>{item.label}</Listbox.ItemText>
+                      <Listbox.ItemIndicator class={styles.ItemIndicator}>
+                        <CheckIcon />
+                      </Listbox.ItemIndicator>
+                    </Listbox.Item>
+                  )}
+                </For>
+              </Listbox.ItemGroup>
+            )}
+          </For>
+        </Listbox.List>
       </Listbox.Content>
     </Listbox.Root>
   )

@@ -1,7 +1,9 @@
 import { useFilter } from '@ark-ui/solid/locale'
 import { TreeView, createTreeCollection } from '@ark-ui/solid/tree-view'
-import { SquareCheckBigIcon, ChevronRightIcon, FileIcon, FolderIcon } from 'lucide-solid'
+import { ChevronRightIcon, FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-solid'
 import { For, Show, createSignal } from 'solid-js'
+import styles from 'styles/tree-view.module.css'
+import fieldStyles from 'styles/field.module.css'
 
 export const Filtering = () => {
   const filterFn = useFilter({ sensitivity: 'base' })
@@ -14,10 +16,10 @@ export const Filtering = () => {
   }
 
   return (
-    <div>
-      <input placeholder="Search" onInput={(e) => filter(e.currentTarget.value)} />
-      <TreeView.Root collection={collection()}>
-        <TreeView.Tree>
+    <div class="stack" style={{ 'max-width': '20rem' }}>
+      <input class={fieldStyles.Input} placeholder="Search" onInput={(e) => filter(e.currentTarget.value)} />
+      <TreeView.Root class={styles.Root} collection={collection()}>
+        <TreeView.Tree class={styles.Tree}>
           <For each={collection().rootNode.children}>
             {(node, index) => <TreeNode node={node} indexPath={[index()]} />}
           </For>
@@ -28,40 +30,49 @@ export const Filtering = () => {
 }
 
 const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
-  const { node, indexPath } = props
   return (
-    <TreeView.NodeProvider node={node} indexPath={indexPath}>
-      <Show
-        when={node.children}
-        fallback={
-          <TreeView.Item>
-            <TreeView.ItemIndicator>
-              <SquareCheckBigIcon />
-            </TreeView.ItemIndicator>
-            <TreeView.ItemText>
-              <FileIcon />
-              {node.name}
-            </TreeView.ItemText>
-          </TreeView.Item>
-        }
-      >
-        <TreeView.Branch>
-          <TreeView.BranchControl>
-            <TreeView.BranchText>
-              <FolderIcon /> {node.name}
-            </TreeView.BranchText>
-            <TreeView.BranchIndicator>
-              <ChevronRightIcon />
-            </TreeView.BranchIndicator>
-          </TreeView.BranchControl>
-          <TreeView.BranchContent>
-            <TreeView.BranchIndentGuide />
-            <For each={node.children}>
-              {(child, index) => <TreeNode node={child} indexPath={[...indexPath, index()]} />}
-            </For>
-          </TreeView.BranchContent>
-        </TreeView.Branch>
-      </Show>
+    <TreeView.NodeProvider node={props.node} indexPath={props.indexPath}>
+      <TreeView.NodeContext>
+        {(nodeState) => (
+          <Show
+            when={nodeState().isBranch}
+            fallback={
+              <TreeView.Node class={styles.Node}>
+                <TreeView.Cell class={styles.Cell}>
+                  <TreeView.NodeText class={styles.NodeText}>
+                    <FileIcon />
+                    {props.node.name}
+                  </TreeView.NodeText>
+                </TreeView.Cell>
+              </TreeView.Node>
+            }
+          >
+            <TreeView.NodeGroup class={styles.NodeGroup}>
+              <TreeView.Node class={styles.Node}>
+                <TreeView.Cell class={styles.Cell}>
+                  <TreeView.NodeExpandTrigger class={styles.NodeExpandTrigger}>
+                    <TreeView.NodeIndicator type="expanded" class={styles.NodeIndicator}>
+                      <ChevronRightIcon />
+                    </TreeView.NodeIndicator>
+                  </TreeView.NodeExpandTrigger>
+                  <TreeView.NodeText class={styles.NodeText}>
+                    <Show when={nodeState().expanded} fallback={<FolderIcon />}>
+                      <FolderOpenIcon />
+                    </Show>{' '}
+                    {props.node.name}
+                  </TreeView.NodeText>
+                </TreeView.Cell>
+              </TreeView.Node>
+              <TreeView.NodeGroupContent class={styles.NodeGroupContent}>
+                <TreeView.IndentGuide class={styles.IndentGuide} />
+                <For each={props.node.children}>
+                  {(child, index) => <TreeNode node={child} indexPath={[...props.indexPath, index()]} />}
+                </For>
+              </TreeView.NodeGroupContent>
+            </TreeView.NodeGroup>
+          </Show>
+        )}
+      </TreeView.NodeContext>
     </TreeView.NodeProvider>
   )
 }

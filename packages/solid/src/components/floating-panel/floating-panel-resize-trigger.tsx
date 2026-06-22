@@ -8,7 +8,7 @@ export interface FloatingPanelResizeTriggerBaseProps extends ResizeTriggerProps,
 export interface FloatingPanelResizeTriggerProps extends HTMLProps<'div'>, FloatingPanelResizeTriggerBaseProps {}
 
 export const FloatingPanelResizeTrigger = (props: FloatingPanelResizeTriggerProps) => {
-  const [resizeProps, localProps] = createSplitProps<ResizeTriggerProps>()(props, ['axis'])
+  const [resizeProps, localProps] = createSplitProps<ResizeTriggerProps>()(props, ['placement'])
   const floatingPanel = useFloatingPanelContext()
   const mergedProps = mergeProps(() => floatingPanel().getResizeTriggerProps(resizeProps), localProps)
 

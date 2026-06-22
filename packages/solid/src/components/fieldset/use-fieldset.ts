@@ -64,7 +64,7 @@ export const useFieldset = (props?: MaybeAccessor<UseFieldsetProps>) => {
   })
 
   const getRootProps = () => ({
-    ...parts.root.attrs,
+    ...parts.root.attrs(id),
     disabled: mergedProps.disabled,
     'data-disabled': dataAttr(mergedProps.disabled),
     'data-invalid': dataAttr(mergedProps.invalid),
@@ -74,19 +74,19 @@ export const useFieldset = (props?: MaybeAccessor<UseFieldsetProps>) => {
 
   const getLegendProps = () => ({
     id: legendId,
-    ...parts.legend.attrs,
+    ...parts.legend.attrs(id),
     'data-disabled': dataAttr(mergedProps.disabled),
     'data-invalid': dataAttr(mergedProps.invalid),
   })
 
   const getHelperTextProps = () => ({
     id: helperTextId,
-    ...parts.helperText.attrs,
+    ...parts.helperText.attrs(id),
   })
 
   const getErrorTextProps = () => ({
     id: errorTextId,
-    ...parts.errorText.attrs,
+    ...parts.errorText.attrs(id),
     'aria-live': 'polite',
   })
 

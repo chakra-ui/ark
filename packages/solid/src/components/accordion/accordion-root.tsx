@@ -20,6 +20,7 @@ export const AccordionRoot = (props: AccordionRootProps) => {
     'disabled',
     'id',
     'ids',
+    'loopFocus',
     'multiple',
     'onFocusChange',
     'onValueChange',

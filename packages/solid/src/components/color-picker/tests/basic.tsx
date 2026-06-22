@@ -1,7 +1,7 @@
 import { ColorPicker, parseColor } from '../index.tsx'
 
 export const ComponentUnderTest = (props: ColorPicker.RootProps) => (
-  <ColorPicker.Root defaultValue={parseColor('#eb5e41')} {...props}>
+  <ColorPicker.Root defaultValue={parseColor('#eb5e41').toFormat('hsba')} {...props}>
     <ColorPicker.Context>
       {(api) => (
         <>
@@ -12,7 +12,7 @@ export const ComponentUnderTest = (props: ColorPicker.RootProps) => (
             <ColorPicker.ValueText />
             <ColorPicker.Trigger data-testid="trigger">
               <ColorPicker.TransparencyGrid />
-              <ColorPicker.Swatch value={api().value} />
+              <ColorPicker.Swatch value={api().value} data-testid="swatch-trigger" />
             </ColorPicker.Trigger>
           </ColorPicker.Control>
           <ColorPicker.Positioner data-testid="positioner">

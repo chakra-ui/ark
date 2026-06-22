@@ -34,45 +34,51 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
       <TreeView.NodeContext>
         {(nodeState) => (
           <Show
-            when={props.node.children}
+            when={nodeState().isBranch}
             fallback={
-              <TreeView.Item class={styles.Item}>
-                <FileIcon />
-                <Show
-                  when={nodeState().renaming}
-                  fallback={<TreeView.ItemText class={styles.ItemText}>{props.node.name}</TreeView.ItemText>}
-                >
-                  <TreeView.NodeRenameInput class={styles.NodeRenameInput} />
-                </Show>
-              </TreeView.Item>
+              <TreeView.Node class={styles.Node}>
+                <TreeView.Cell class={styles.Cell}>
+                  <FileIcon />
+                  <Show
+                    when={nodeState().renaming}
+                    fallback={<TreeView.NodeText class={styles.NodeText}>{props.node.name}</TreeView.NodeText>}
+                  >
+                    <TreeView.NodeRenameInput class={styles.NodeRenameInput} />
+                  </Show>
+                </TreeView.Cell>
+              </TreeView.Node>
             }
           >
-            <TreeView.Branch class={styles.Branch}>
-              <TreeView.BranchControl class={styles.BranchControl}>
-                <TreeView.BranchIndicator class={styles.BranchIndicator}>
-                  <ChevronRightIcon />
-                </TreeView.BranchIndicator>
-                <Show
-                  when={nodeState().renaming}
-                  fallback={
-                    <TreeView.BranchText class={styles.BranchText}>
-                      <Show when={nodeState().expanded} fallback={<FolderIcon />}>
-                        <FolderOpenIcon />
-                      </Show>
-                      {props.node.name}
-                    </TreeView.BranchText>
-                  }
-                >
-                  <TreeView.NodeRenameInput class={styles.NodeRenameInput} />
-                </Show>
-              </TreeView.BranchControl>
-              <TreeView.BranchContent class={styles.BranchContent}>
-                <TreeView.BranchIndentGuide class={styles.BranchIndentGuide} />
+            <TreeView.NodeGroup class={styles.NodeGroup}>
+              <TreeView.Node class={styles.Node}>
+                <TreeView.Cell class={styles.Cell}>
+                  <TreeView.NodeExpandTrigger class={styles.NodeExpandTrigger}>
+                    <TreeView.NodeIndicator type="expanded" class={styles.NodeIndicator}>
+                      <ChevronRightIcon />
+                    </TreeView.NodeIndicator>
+                  </TreeView.NodeExpandTrigger>
+                  <Show
+                    when={nodeState().renaming}
+                    fallback={
+                      <TreeView.NodeText class={styles.NodeText}>
+                        <Show when={nodeState().expanded} fallback={<FolderIcon />}>
+                          <FolderOpenIcon />
+                        </Show>
+                        {props.node.name}
+                      </TreeView.NodeText>
+                    }
+                  >
+                    <TreeView.NodeRenameInput class={styles.NodeRenameInput} />
+                  </Show>
+                </TreeView.Cell>
+              </TreeView.Node>
+              <TreeView.NodeGroupContent class={styles.NodeGroupContent}>
+                <TreeView.IndentGuide class={styles.IndentGuide} />
                 <For each={props.node.children}>
                   {(child, index) => <TreeNode node={child} indexPath={[...props.indexPath, index()]} />}
                 </For>
-              </TreeView.BranchContent>
-            </TreeView.Branch>
+              </TreeView.NodeGroupContent>
+            </TreeView.NodeGroup>
           </Show>
         )}
       </TreeView.NodeContext>

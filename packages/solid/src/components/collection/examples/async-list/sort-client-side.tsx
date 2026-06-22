@@ -23,10 +23,10 @@ export const SortClientSide = () => {
       const data = await response.json()
       return { items: data }
     },
-    sort({ items, descriptor }) {
+    sort({ items, sorting }) {
       return {
         items: items.sort((a, b) => {
-          const { column, direction } = descriptor
+          const { column, direction } = sorting
           let cmp = collator().compare(String(a[column]), String(b[column]))
           if (direction === 'descending') {
             cmp *= -1
@@ -38,32 +38,32 @@ export const SortClientSide = () => {
   })
 
   const handleSort = (column: keyof User) => {
-    const currentSort = list().sortDescriptor
+    const currentSort = list().sorting
     let direction: 'ascending' | 'descending' = 'ascending'
 
     if (currentSort?.column === column && currentSort.direction === 'ascending') {
       direction = 'descending'
     }
 
-    list().sort({ column, direction })
+    list().setSorting({ column, direction })
   }
 
   const getSortIcon = (column: keyof User) => {
-    const current = list().sortDescriptor
+    const current = list().sorting
     if (current?.column !== column) return <ArrowUpDownIcon />
     return current.direction === 'ascending' ? <ArrowUpIcon /> : <ArrowDownIcon />
   }
 
-  const descriptor = () => list().sortDescriptor
+  const descriptor = () => list().sorting
 
   return (
     <div class={styles.Root}>
-      {list().loading && (
+      {list().isLoading && (
         <div class={styles.Loading}>
           <LoaderIcon class={styles.Spinner} /> Loading
         </div>
       )}
-      {list().error && <div class={styles.Error}>Error: {list().error.message}</div>}
+      {list().error && <div class={styles.Error}>Error: {list().error?.message}</div>}
       <div class={styles.Status}>
         Sorted by: {descriptor() ? `${descriptor()?.column} (${descriptor()?.direction})` : 'none'}
       </div>

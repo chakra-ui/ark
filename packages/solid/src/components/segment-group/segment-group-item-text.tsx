@@ -1,6 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
-import { parts } from './segment-group.anatomy.ts'
 import { useSegmentGroupContext } from './use-segment-group-context.ts'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context.ts'
 
@@ -10,7 +9,7 @@ export interface SegmentGroupItemTextProps extends HTMLProps<'span'>, SegmentGro
 export const SegmentGroupItemText = (props: SegmentGroupItemTextProps) => {
   const segmentGroup = useSegmentGroupContext()
   const itemProps = useSegmentGroupItemPropsContext()
-  const mergedProps = mergeProps(() => segmentGroup().getItemTextProps(itemProps), parts.itemText.attrs, props)
+  const mergedProps = mergeProps(() => segmentGroup().getItemTextProps(itemProps), props)
 
   return <ark.span {...mergedProps} />
 }

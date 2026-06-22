@@ -102,23 +102,26 @@ export const Virtualized = () => {
                 >
                   <TreeView.NodeProvider node={visibleNode().node} indexPath={visibleNode().indexPath}>
                     {nodeState().isBranch ? (
-                      <TreeView.BranchControl
-                        class={styles.BranchControl}
-                        style={{ 'padding-left': `${nodeState().depth * 22}px` }}
-                      >
-                        <TreeView.BranchIndicator class={styles.BranchIndicator}>
-                          <ChevronRightIcon />
-                        </TreeView.BranchIndicator>
-                        <TreeView.BranchText class={styles.BranchText}>
-                          <FolderIcon /> {visibleNode().node.name}
-                        </TreeView.BranchText>
-                      </TreeView.BranchControl>
+                      <TreeView.Node class={styles.Node}>
+                        <TreeView.Cell class={styles.Cell} style={{ 'padding-left': `${nodeState().depth * 22}px` }}>
+                          <TreeView.NodeExpandTrigger class={styles.NodeExpandTrigger}>
+                            <TreeView.NodeIndicator type="expanded" class={styles.NodeIndicator}>
+                              <ChevronRightIcon />
+                            </TreeView.NodeIndicator>
+                          </TreeView.NodeExpandTrigger>
+                          <TreeView.NodeText class={styles.NodeText}>
+                            <FolderIcon /> {visibleNode().node.name}
+                          </TreeView.NodeText>
+                        </TreeView.Cell>
+                      </TreeView.Node>
                     ) : (
-                      <TreeView.Item class={styles.Item} style={{ 'padding-left': `${nodeState().depth * 22}px` }}>
-                        <TreeView.ItemText class={styles.ItemText}>
-                          <FileIcon /> {visibleNode().node.name}
-                        </TreeView.ItemText>
-                      </TreeView.Item>
+                      <TreeView.Node class={styles.Node}>
+                        <TreeView.Cell class={styles.Cell} style={{ 'padding-left': `${nodeState().depth * 22}px` }}>
+                          <TreeView.NodeText class={styles.NodeText}>
+                            <FileIcon /> {visibleNode().node.name}
+                          </TreeView.NodeText>
+                        </TreeView.Cell>
+                      </TreeView.Node>
                     )}
                   </TreeView.NodeProvider>
                 </div>

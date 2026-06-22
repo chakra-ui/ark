@@ -28,8 +28,8 @@ export const Reload = () => {
   return (
     <div class={styles.Root}>
       <div class={styles.Header}>
-        <button class={button.Root} onClick={() => list().reload()} disabled={list().loading}>
-          {list().loading ? (
+        <button class={button.Root} onClick={() => list().reload()} disabled={list().isLoading}>
+          {list().isLoading ? (
             <>
               <LoaderIcon class={styles.Spinner} /> Loading
             </>
@@ -39,7 +39,7 @@ export const Reload = () => {
         </button>
       </div>
 
-      {list().error && <div class={styles.Error}>Error: {list().error.message}</div>}
+      {list().error && <div class={styles.Error}>Error: {list().error?.message}</div>}
 
       <div class={styles.ItemGroup}>
         <For each={list().items}>

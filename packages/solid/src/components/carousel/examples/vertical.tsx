@@ -13,7 +13,7 @@ const images = [
 
 export const Vertical = () => {
   return (
-    <Carousel.Root class={styles.Root} orientation="vertical" slideCount={images.length}>
+    <Carousel.Root class={styles.Root} orientation="vertical" count={images.length}>
       <Carousel.ItemGroup class={styles.ItemGroup}>
         <Index each={images}>
           {(image, index) => (

@@ -1,53 +1,62 @@
 import { TreeView, createTreeCollection } from '@ark-ui/solid/tree-view'
-import { SquareCheckBigIcon, ChevronRightIcon, SquareMinusIcon, SquareIcon } from 'lucide-solid'
+import { CheckIcon, ChevronRightIcon, MinusIcon } from 'lucide-solid'
 import { For } from 'solid-js'
+import styles from 'styles/tree-view.module.css'
 
 export const CheckboxTree = () => {
   return (
-    <TreeView.Root collection={collection} defaultCheckedValue={[]}>
-      <TreeView.Label>Tree</TreeView.Label>
-      <TreeView.Tree>
+    <TreeView.Root class={styles.Root} collection={collection} defaultCheckedValue={[]}>
+      <TreeView.Label class={styles.Label}>Tree</TreeView.Label>
+      <TreeView.Tree class={styles.Tree}>
         <For each={collection.rootNode.children}>{(node, index) => <TreeNode node={node} indexPath={[index()]} />}</For>
       </TreeView.Tree>
     </TreeView.Root>
   )
 }
 
-const TreeNodeCheckbox = () => {
+const TreeNodeCheckbox = (props: TreeView.NodeCheckboxProps) => {
   return (
-    <TreeView.NodeCheckbox>
-      <TreeView.NodeCheckboxIndicator indeterminate={<SquareMinusIcon />} fallback={<SquareIcon />}>
-        <SquareCheckBigIcon />
-      </TreeView.NodeCheckboxIndicator>
+    <TreeView.NodeCheckbox class={styles.NodeCheckbox} {...props}>
+      <TreeView.NodeIndicator type="checked" class={styles.NodeIndicator}>
+        <CheckIcon />
+      </TreeView.NodeIndicator>
+      <TreeView.NodeIndicator type="indeterminate" class={styles.NodeIndicator}>
+        <MinusIcon />
+      </TreeView.NodeIndicator>
     </TreeView.NodeCheckbox>
   )
 }
 
 const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
-  const { node, indexPath } = props
   return (
-    <TreeView.NodeProvider node={node} indexPath={indexPath}>
-      {node.children ? (
-        <TreeView.Branch>
-          <TreeView.BranchControl>
-            <TreeNodeCheckbox />
-            <TreeView.BranchText>{node.name}</TreeView.BranchText>
-            <TreeView.BranchIndicator>
-              <ChevronRightIcon />
-            </TreeView.BranchIndicator>
-          </TreeView.BranchControl>
-          <TreeView.BranchContent>
-            <TreeView.BranchIndentGuide />
-            <For each={node.children}>
-              {(child, index) => <TreeNode node={child} indexPath={[...indexPath, index()]} />}
+    <TreeView.NodeProvider node={props.node} indexPath={props.indexPath}>
+      {props.node.children ? (
+        <TreeView.NodeGroup class={styles.NodeGroup}>
+          <TreeView.Node class={styles.Node}>
+            <TreeView.Cell class={styles.Cell}>
+              <TreeView.NodeExpandTrigger class={styles.NodeExpandTrigger}>
+                <TreeView.NodeIndicator type="expanded" class={styles.NodeIndicator}>
+                  <ChevronRightIcon />
+                </TreeView.NodeIndicator>
+              </TreeView.NodeExpandTrigger>
+              <TreeNodeCheckbox />
+              <TreeView.NodeText class={styles.NodeText}>{props.node.name}</TreeView.NodeText>
+            </TreeView.Cell>
+          </TreeView.Node>
+          <TreeView.NodeGroupContent class={styles.NodeGroupContent}>
+            <TreeView.IndentGuide class={styles.IndentGuide} />
+            <For each={props.node.children}>
+              {(child, index) => <TreeNode node={child} indexPath={[...props.indexPath, index()]} />}
             </For>
-          </TreeView.BranchContent>
-        </TreeView.Branch>
+          </TreeView.NodeGroupContent>
+        </TreeView.NodeGroup>
       ) : (
-        <TreeView.Item>
-          <TreeNodeCheckbox />
-          <TreeView.ItemText>{node.name}</TreeView.ItemText>
-        </TreeView.Item>
+        <TreeView.Node class={styles.Node}>
+          <TreeView.Cell class={styles.Cell}>
+            <TreeNodeCheckbox />
+            <TreeView.NodeText class={styles.NodeText}>{props.node.name}</TreeView.NodeText>
+          </TreeView.Cell>
+        </TreeView.Node>
       )}
     </TreeView.NodeProvider>
   )

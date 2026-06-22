@@ -40,18 +40,20 @@ export const Horizontal = () => {
     <Listbox.Root class={styles.Root} collection={collection} orientation="horizontal">
       <Listbox.Label class={styles.Label}>Select Album</Listbox.Label>
       <Listbox.Content class={styles.Content}>
-        <Index each={collection.items}>
-          {(item) => (
-            <Listbox.Item class={styles.ItemCard} item={item()}>
-              <Listbox.ItemIndicator class={styles.ItemCardIndicator}>
-                <CheckIcon />
-              </Listbox.ItemIndicator>
-              <img class={styles.ItemCardImage} src={item().image} alt={item().title} />
-              <span class={styles.ItemCardTitle}>{item().title}</span>
-              <span class={styles.ItemCardArtist}>{item().artist}</span>
-            </Listbox.Item>
-          )}
-        </Index>
+        <Listbox.List class={styles.List}>
+          <Index each={collection.items}>
+            {(item) => (
+              <Listbox.Item class={styles.ItemCard} item={item()}>
+                <Listbox.ItemIndicator class={styles.ItemCardIndicator}>
+                  <CheckIcon />
+                </Listbox.ItemIndicator>
+                <img class={styles.ItemCardImage} src={item().image} alt={item().title} />
+                <span class={styles.ItemCardTitle}>{item().title}</span>
+                <span class={styles.ItemCardArtist}>{item().artist}</span>
+              </Listbox.Item>
+            )}
+          </Index>
+        </Listbox.List>
       </Listbox.Content>
     </Listbox.Root>
   )

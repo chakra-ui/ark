@@ -54,47 +54,53 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node> & { triggerId: string 
           <Show
             when={props.node.children}
             fallback={
-              <TreeNodeContextMenu triggerId={props.triggerId}>
-                <TreeView.Item
-                  class={styles.Item}
-                  asChild={(itemProps) => (
-                    <Menu.ContextTrigger {...itemProps()}>
-                      <FileIcon />
-                      <TreeView.ItemText class={styles.ItemText}>{props.node.name}</TreeView.ItemText>
-                    </Menu.ContextTrigger>
-                  )}
-                />
-              </TreeNodeContextMenu>
+              <TreeView.Node class={styles.Node}>
+                <TreeNodeContextMenu triggerId={props.triggerId}>
+                  <TreeView.Cell
+                    class={styles.Cell}
+                    asChild={(cellProps) => (
+                      <Menu.ContextTrigger {...cellProps()}>
+                        <FileIcon />
+                        <TreeView.NodeText class={styles.NodeText}>{props.node.name}</TreeView.NodeText>
+                      </Menu.ContextTrigger>
+                    )}
+                  />
+                </TreeNodeContextMenu>
+              </TreeView.Node>
             }
           >
-            <TreeView.Branch class={styles.Branch}>
-              <TreeNodeContextMenu triggerId={props.triggerId}>
-                <TreeView.BranchControl
-                  class={styles.BranchControl}
-                  asChild={(controlProps) => (
-                    <Menu.ContextTrigger {...controlProps()}>
-                      <TreeView.BranchIndicator class={styles.BranchIndicator}>
-                        <ChevronRightIcon />
-                      </TreeView.BranchIndicator>
-                      <TreeView.BranchText class={styles.BranchText}>
-                        <Show when={nodeState().expanded} fallback={<FolderIcon />}>
-                          <FolderOpenIcon />
-                        </Show>
-                        {props.node.name}
-                      </TreeView.BranchText>
-                    </Menu.ContextTrigger>
-                  )}
-                />
-              </TreeNodeContextMenu>
-              <TreeView.BranchContent class={styles.BranchContent}>
-                <TreeView.BranchIndentGuide class={styles.BranchIndentGuide} />
+            <TreeView.NodeGroup class={styles.NodeGroup}>
+              <TreeView.Node class={styles.Node}>
+                <TreeNodeContextMenu triggerId={props.triggerId}>
+                  <TreeView.Cell
+                    class={styles.Cell}
+                    asChild={(cellProps) => (
+                      <Menu.ContextTrigger {...cellProps()}>
+                        <TreeView.NodeExpandTrigger class={styles.NodeExpandTrigger}>
+                          <TreeView.NodeIndicator type="expanded" class={styles.NodeIndicator}>
+                            <ChevronRightIcon />
+                          </TreeView.NodeIndicator>
+                        </TreeView.NodeExpandTrigger>
+                        <TreeView.NodeText class={styles.NodeText}>
+                          <Show when={nodeState().expanded} fallback={<FolderIcon />}>
+                            <FolderOpenIcon />
+                          </Show>
+                          {props.node.name}
+                        </TreeView.NodeText>
+                      </Menu.ContextTrigger>
+                    )}
+                  />
+                </TreeNodeContextMenu>
+              </TreeView.Node>
+              <TreeView.NodeGroupContent class={styles.NodeGroupContent}>
+                <TreeView.IndentGuide class={styles.IndentGuide} />
                 <For each={props.node.children}>
                   {(child, index) => (
                     <TreeNode node={child} indexPath={[...props.indexPath, index()]} triggerId={props.triggerId} />
                   )}
                 </For>
-              </TreeView.BranchContent>
-            </TreeView.Branch>
+              </TreeView.NodeGroupContent>
+            </TreeView.NodeGroup>
           </Show>
         )}
       </TreeView.NodeContext>

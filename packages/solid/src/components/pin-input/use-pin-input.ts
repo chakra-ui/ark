@@ -9,7 +9,7 @@ import { useFieldContext } from '../field/index.tsx'
 export interface UsePinInputProps extends Optional<Omit<pinInput.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UsePinInputReturn extends Accessor<pinInput.Api<PropTypes>> {}
 
-export const usePinInput = (props?: MaybeAccessor<UsePinInputProps>): UsePinInputReturn => {
+export const usePinInput = (props: MaybeAccessor<UsePinInputProps>): UsePinInputReturn => {
   const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()

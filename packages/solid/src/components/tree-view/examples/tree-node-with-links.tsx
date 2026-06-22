@@ -19,31 +19,37 @@ export const TreeNodeWithLinks: Component<Props> = (props) => (
     <Show
       when={props.node.children}
       fallback={
-        <TreeView.Item asChild={(itemProps) => <a href={props.node.href} {...itemProps()} />}>
-          <TreeView.ItemText>
-            <File />
-            {props.node.name}
-          </TreeView.ItemText>
-          <Show when={props.node.href?.startsWith('http')}>
-            <ExternalLink size={12} />
-          </Show>
-        </TreeView.Item>
+        <TreeView.Node>
+          <TreeView.Cell asChild={(cellProps) => <a href={props.node.href} {...cellProps()} />}>
+            <TreeView.NodeText>
+              <File />
+              {props.node.name}
+            </TreeView.NodeText>
+            <Show when={props.node.href?.startsWith('http')}>
+              <ExternalLink size={12} />
+            </Show>
+          </TreeView.Cell>
+        </TreeView.Node>
       }
     >
-      <TreeView.Branch>
-        <TreeView.BranchControl>
-          <TreeView.BranchText>{props.node.name}</TreeView.BranchText>
-          <TreeView.BranchIndicator>
-            <ChevronRight />
-          </TreeView.BranchIndicator>
-        </TreeView.BranchControl>
-        <TreeView.BranchContent>
-          <TreeView.BranchIndentGuide />
+      <TreeView.NodeGroup>
+        <TreeView.Node>
+          <TreeView.Cell>
+            <TreeView.NodeText>{props.node.name}</TreeView.NodeText>
+            <TreeView.NodeExpandTrigger>
+              <TreeView.NodeIndicator type="expanded">
+                <ChevronRight />
+              </TreeView.NodeIndicator>
+            </TreeView.NodeExpandTrigger>
+          </TreeView.Cell>
+        </TreeView.Node>
+        <TreeView.NodeGroupContent>
+          <TreeView.IndentGuide />
           <For each={props.node.children}>
             {(child, index) => <TreeNodeWithLinks node={child} indexPath={[...props.indexPath, index()]} />}
           </For>
-        </TreeView.BranchContent>
-      </TreeView.Branch>
+        </TreeView.NodeGroupContent>
+      </TreeView.NodeGroup>
     </Show>
   </TreeView.NodeProvider>
 )

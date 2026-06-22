@@ -17,7 +17,7 @@ describe('TagsInput', () => {
     const input = screen.getByPlaceholderText('Add tag')
     await user.type(input, 'angular[enter]')
 
-    expect(screen.queryByText('angular')).toHaveAttribute('data-part', 'item-text')
+    expect(screen.queryByText('angular')).toHaveAttribute('data-tags-input-item-text')
 
     await user.type(input, '[ArrowLeft]', { delay: 10 })
     await waitFor(() => expect(screen.getByText('angular')).toHaveAttribute('data-highlighted', ''))
@@ -34,7 +34,7 @@ describe('TagsInput', () => {
 
     expect(screen.getByText('angular')).toBeInTheDocument()
 
-    expect(await screen.findByText('angular')).toHaveAttribute('data-scope', 'tags-input')
+    expect(await screen.findByText('angular')).toHaveAttribute('data-tags-input-item-text')
 
     await user.type(input, '[ArrowLeft]')
     await user.type(input, '[ArrowLeft]')

@@ -11,12 +11,10 @@ describe('ColorPicker', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByTestId('trigger'))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
 
     await user.click(screen.getByTestId('trigger'))
-    await waitFor(() => {
-      expect(screen.queryByTestId('positioner')).toBeInTheDocument()
-    })
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
   })
 
   it('should lazy mount and unmount on exit', async () => {
@@ -25,11 +23,19 @@ describe('ColorPicker', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByTestId('trigger'))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeVisible())
 
     await user.click(screen.getByTestId('trigger'))
     await waitFor(() => {
       expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+    })
+  })
+
+  it('should render with default value', async () => {
+    render(() => <ComponentUnderTest defaultValue={parseColor('#ff00ff').toFormat('hsba')} />)
+
+    expect(screen.getByTestId('swatch-trigger')).toHaveStyle({
+      background: 'hsla(300, 100%, 50%, 1)',
     })
   })
 })

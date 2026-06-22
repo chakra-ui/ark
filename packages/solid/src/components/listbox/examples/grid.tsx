@@ -34,13 +34,15 @@ export const Grid = () => {
     <Listbox.Root class={styles.Root} collection={collection}>
       <Listbox.Label class={styles.Label}>Pick a reaction</Listbox.Label>
       <Listbox.Content class={styles.GridContent}>
-        <Index each={collection.items}>
-          {(item) => (
-            <Listbox.Item class={styles.GridItem} item={item()}>
-              <Listbox.ItemText>{item().label}</Listbox.ItemText>
-            </Listbox.Item>
-          )}
-        </Index>
+        <Listbox.List class={styles.List}>
+          <Index each={collection.items}>
+            {(item) => (
+              <Listbox.Item class={styles.GridItem} item={item()}>
+                <Listbox.ItemText>{item().label}</Listbox.ItemText>
+              </Listbox.Item>
+            )}
+          </Index>
+        </Listbox.List>
       </Listbox.Content>
     </Listbox.Root>
   )

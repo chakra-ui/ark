@@ -22,8 +22,8 @@ export const FieldItem = (props: FieldItemProps) => {
     const controlId = `field::${parent.ids.control}::item::${props.value}`
     const labelId = `${controlId}::label`
 
-    const getControlProps = () => ({
-      ...parent.getInputProps(),
+    const getControlProps = (getParentProps: () => Record<string, unknown>) => ({
+      ...getParentProps(),
       id: controlId,
     })
 
@@ -40,16 +40,16 @@ export const FieldItem = (props: FieldItemProps) => {
         htmlFor: controlId,
       }),
       getInputProps: () => ({
-        ...getControlProps(),
-        ...parts.input.attrs,
+        ...getControlProps(parent.getInputProps),
+        ...parts.input.attrs(controlId),
       }),
       getSelectProps: () => ({
-        ...getControlProps(),
-        ...parts.select.attrs,
+        ...getControlProps(parent.getSelectProps),
+        ...parts.select.attrs(controlId),
       }),
       getTextareaProps: () => ({
-        ...getControlProps(),
-        ...parts.textarea.attrs,
+        ...getControlProps(parent.getTextareaProps),
+        ...parts.textarea.attrs(controlId),
       }),
     })) as UseFieldContext
   })

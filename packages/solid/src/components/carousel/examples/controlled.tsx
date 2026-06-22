@@ -17,7 +17,7 @@ export const Controlled = () => {
   return (
     <Carousel.Root
       class={styles.Root}
-      slideCount={images.length}
+      count={images.length}
       page={page()}
       onPageChange={(details) => setPage(details.page)}
     >

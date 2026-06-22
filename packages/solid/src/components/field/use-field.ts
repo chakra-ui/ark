@@ -87,7 +87,7 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
   })
 
   const getRootProps = () => ({
-    ...parts.root.attrs,
+    ...parts.root.attrs(id),
     id: rootId,
     role: 'group',
     'data-disabled': dataAttr(fieldProps.disabled),
@@ -98,7 +98,7 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
   const targetControlId = fieldProps.target ? `field::${id}::item::${fieldProps.target}` : undefined
 
   const getLabelProps = () => ({
-    ...parts.label.attrs,
+    ...parts.label.attrs(id),
     id: labelId,
     'data-disabled': dataAttr(fieldProps.disabled),
     'data-invalid': dataAttr(fieldProps.invalid),
@@ -107,15 +107,11 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
     htmlFor: targetControlId ?? id,
   })
 
-  const labelIds = createMemo(() => {
-    const ids: string[] = []
-    if (hasErrorText() && fieldProps.invalid) ids.push(errorTextId)
-    if (hasHelperText()) ids.push(helperTextId)
-    return ids
-  })
+  const errorMessageId = () => (hasErrorText() && fieldProps.invalid ? errorTextId : undefined)
 
   const getControlProps = () => ({
-    'aria-describedby': labelIds().join(' ') || undefined,
+    'aria-describedby': hasHelperText() ? helperTextId : undefined,
+    'aria-errormessage': errorMessageId(),
     'aria-invalid': ariaAttr(fieldProps.invalid),
     'data-invalid': dataAttr(fieldProps.invalid),
     'data-required': dataAttr(fieldProps.required),
@@ -128,38 +124,38 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
 
   const getInputProps = () => ({
     ...getControlProps(),
-    ...parts.input.attrs,
+    ...parts.input.attrs(id),
   })
 
   const getTextareaProps = () => ({
     ...getControlProps(),
-    ...parts.textarea.attrs,
+    ...parts.textarea.attrs(id),
   })
 
   const getSelectProps = () => ({
     ...getControlProps(),
-    ...parts.select.attrs,
+    ...parts.select.attrs(id),
   })
 
   const getHelperTextProps = () => ({
     id: helperTextId,
-    ...parts.helperText.attrs,
+    ...parts.helperText.attrs(id),
     'data-disabled': dataAttr(fieldProps.disabled),
   })
 
   const getErrorTextProps = () => ({
     id: errorTextId,
-    ...parts.errorText.attrs,
+    ...parts.errorText.attrs(id),
     'aria-live': 'polite',
   })
 
   const getRequiredIndicatorProps = () => ({
     'aria-hidden': true,
-    ...parts.requiredIndicator.attrs,
+    ...parts.requiredIndicator.attrs(id),
   })
 
   return createMemo(() => ({
-    ariaDescribedby: labelIds().join(' '),
+    ariaDescribedby: hasHelperText() ? helperTextId : undefined,
     ids: {
       control: id,
       label: labelId,

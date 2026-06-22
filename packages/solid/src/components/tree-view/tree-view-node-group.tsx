@@ -8,23 +8,23 @@ import { useTreeViewContext } from './use-tree-view-context.ts'
 import { useTreeViewNodeContext } from './use-tree-view-node-context.ts'
 import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
 
-export interface TreeViewBranchBaseProps extends PolymorphicProps<'div'> {}
-export interface TreeViewBranchProps extends Assign<HTMLProps<'div'>, TreeViewBranchBaseProps> {}
+export interface TreeViewNodeGroupBaseProps extends PolymorphicProps<'div'> {}
+export interface TreeViewNodeGroupProps extends Assign<HTMLProps<'div'>, TreeViewNodeGroupBaseProps> {}
 
-export const TreeViewBranch = (props: TreeViewBranchProps) => {
+export const TreeViewNodeGroup = (props: TreeViewNodeGroupProps) => {
   const treeView = useTreeViewContext()
 
   const nodeProps = useTreeViewNodePropsContext()
   const nodeState = useTreeViewNodeContext()
 
   const renderStrategyProps = useRenderStrategyContext()
-  const branchContentProps = createMemo(() => treeView().getBranchContentProps(nodeProps))
-  const mergedProps = mergeProps(() => treeView().getBranchProps(nodeProps), props)
+  const nodeGroupContentProps = createMemo(() => treeView().getNodeGroupContentProps(nodeProps))
+  const mergedProps = mergeProps(() => treeView().getNodeGroupProps(nodeProps), props)
 
   return (
     <Collapsible.Root
       open={nodeState().expanded}
-      ids={{ content: branchContentProps().id }}
+      ids={{ content: nodeGroupContentProps().id }}
       {...renderStrategyProps}
       {...mergedProps}
     />

@@ -7,7 +7,7 @@ const slides = Array.from({ length: 6 })
 
 export const Spacing = () => {
   return (
-    <Carousel.Root class={styles.Root} slideCount={slides.length} slidesPerPage={1.5} spacing="48px">
+    <Carousel.Root class={styles.Root} count={slides.length} slidesPerPage={1.5} spacing="48px">
       <span class={styles.StatusText}>spacing='48px'</span>
       <Carousel.ItemGroup class={styles.ItemGroup}>
         <Index each={slides}>

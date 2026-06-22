@@ -15,8 +15,8 @@ interface Movie {
 
 export const AsyncSearch = () => {
   const list = useAsyncList<Movie>({
-    async load({ filterText, signal }) {
-      if (!filterText) return { items: [] }
+    async load({ filter, signal }) {
+      if (!filter) return { items: [] }
 
       await new Promise((resolve) => setTimeout(resolve, 300))
 
@@ -24,9 +24,9 @@ export const AsyncSearch = () => {
 
       const items = allMovies.filter(
         (movie) =>
-          movie.title.toLowerCase().includes(filterText.toLowerCase()) ||
-          movie.director.toLowerCase().includes(filterText.toLowerCase()) ||
-          movie.genre.toLowerCase().includes(filterText.toLowerCase()),
+          movie.title.toLowerCase().includes(filter.toLowerCase()) ||
+          movie.director.toLowerCase().includes(filter.toLowerCase()) ||
+          movie.genre.toLowerCase().includes(filter.toLowerCase()),
       )
 
       return { items }
@@ -43,7 +43,7 @@ export const AsyncSearch = () => {
 
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
     if (details.reason === 'input-change') {
-      list().setFilterText(details.inputValue)
+      list().setFilter(details.inputValue)
     }
   }
 
@@ -64,17 +64,15 @@ export const AsyncSearch = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content class={styles.Content}>
-            {list().loading ? (
+            {list().isLoading ? (
               <div class={styles.Status}>
                 <LoaderIcon class={styles.Spinner} />
                 <span>Searching...</span>
               </div>
             ) : list().error ? (
-              <div class={styles.Status}>{list().error.message}</div>
+              <div class={styles.Status}>{list().error?.message}</div>
             ) : list().items.length === 0 ? (
-              <div class={styles.Status}>
-                {list().filterText ? 'No results found' : 'Start typing to search movies...'}
-              </div>
+              <div class={styles.Status}>{list().filter ? 'No results found' : 'Start typing to search movies...'}</div>
             ) : (
               <For each={list().items}>
                 {(movie) => (

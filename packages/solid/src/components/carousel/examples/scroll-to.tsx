@@ -8,7 +8,7 @@ const slides = Array.from({ length: 6 })
 
 export const ScrollTo = () => {
   return (
-    <Carousel.Root class={styles.Root} slideCount={slides.length}>
+    <Carousel.Root class={styles.Root} count={slides.length}>
       <Carousel.Context>
         {(api) => (
           <button class={button.Root} onClick={() => api().scrollToIndex(3)}>

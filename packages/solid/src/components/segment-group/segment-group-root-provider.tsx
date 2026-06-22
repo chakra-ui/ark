@@ -1,7 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
-import { parts } from './segment-group.anatomy.ts'
 import type { UseSegmentGroupReturn } from './use-segment-group.ts'
 import { SegmentGroupProvider } from './use-segment-group-context.ts'
 
@@ -15,7 +14,7 @@ export interface SegmentGroupRootProviderProps
 
 export const SegmentGroupRootProvider = (props: SegmentGroupRootProviderProps) => {
   const [{ value: segmentGroup }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
-  const mergedProps = mergeProps(() => segmentGroup().getRootProps(), parts.root.attrs, localProps)
+  const mergedProps = mergeProps(() => segmentGroup().getRootProps(), localProps)
 
   return (
     <SegmentGroupProvider value={segmentGroup}>

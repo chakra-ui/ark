@@ -64,37 +64,43 @@ export function JsonTreeViewNode(props: JsonTreeViewNodeProps): JSX.Element {
       <Show
         when={nodeState().isBranch}
         fallback={
-          <TreeView.Item {...nodeProps()}>
-            <TreeView.ItemText {...scopeProps}>
-              <Show when={key()}>
-                <JsonTreeViewKeyNode node={props.node} showQuotes={options.quotesOnKeys} />
-              </Show>
-              <JsonTreeViewValueNode node={valueNode()} renderValue={props.renderValue} />
-            </TreeView.ItemText>
-          </TreeView.Item>
+          <TreeView.Node {...nodeProps()}>
+            <TreeView.Cell {...scopeProps}>
+              <TreeView.NodeText {...scopeProps}>
+                <Show when={key()}>
+                  <JsonTreeViewKeyNode node={props.node} showQuotes={options.quotesOnKeys} />
+                </Show>
+                <JsonTreeViewValueNode node={valueNode()} renderValue={props.renderValue} />
+              </TreeView.NodeText>
+            </TreeView.Cell>
+          </TreeView.Node>
         }
       >
-        <TreeView.Branch {...scopeProps}>
-          <TreeView.BranchControl {...nodeProps()}>
-            <Show when={props.arrow}>
-              <TreeView.BranchIndicator {...scopeProps}>{props.arrow}</TreeView.BranchIndicator>
-            </Show>
-            <TreeView.BranchText {...scopeProps}>
-              <Show when={key()}>
-                <JsonTreeViewKeyNode node={props.node} showQuotes={options.quotesOnKeys} />
+        <TreeView.NodeGroup {...scopeProps}>
+          <TreeView.Node {...nodeProps()}>
+            <TreeView.Cell {...scopeProps}>
+              <Show when={props.arrow}>
+                <TreeView.NodeIndicator type="expanded" {...scopeProps}>
+                  {props.arrow}
+                </TreeView.NodeIndicator>
               </Show>
-              <JsonTreeViewValueNode node={valueNode()} renderValue={props.renderValue} />
-            </TreeView.BranchText>
-          </TreeView.BranchControl>
-          <TreeView.BranchContent {...scopeProps}>
+              <TreeView.NodeText {...scopeProps}>
+                <Show when={key()}>
+                  <JsonTreeViewKeyNode node={props.node} showQuotes={options.quotesOnKeys} />
+                </Show>
+                <JsonTreeViewValueNode node={valueNode()} renderValue={props.renderValue} />
+              </TreeView.NodeText>
+            </TreeView.Cell>
+          </TreeView.Node>
+          <TreeView.NodeGroupContent {...scopeProps}>
             <Show when={typeof props.indentGuide === 'boolean'} fallback={props.indentGuide}>
-              <TreeView.BranchIndentGuide />
+              <TreeView.IndentGuide />
             </Show>
             <Index each={props.node.children}>
               {(child, index) => <JsonTreeViewNode {...props} node={child()} indexPath={[...props.indexPath, index]} />}
             </Index>
-          </TreeView.BranchContent>
-        </TreeView.Branch>
+          </TreeView.NodeGroupContent>
+        </TreeView.NodeGroup>
       </Show>
     </TreeView.NodeProvider>
   )

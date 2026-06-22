@@ -1,5 +1,5 @@
 import { TreeView } from '@ark-ui/solid/tree-view'
-import { SquareCheckBigIcon, ChevronRight, File, Folder, LoaderCircleIcon } from 'lucide-solid'
+import { ChevronRight, File, Folder, LoaderCircleIcon, SquareCheckBigIcon } from 'lucide-solid'
 import { type Component, For, Show } from 'solid-js'
 
 interface Node {
@@ -19,35 +19,41 @@ export const AsyncTreeNode: Component<Props> = (props) => (
     <Show
       when={props.node.children || props.node.childrenCount}
       fallback={
-        <TreeView.Item>
-          <TreeView.ItemIndicator>
-            <SquareCheckBigIcon />
-          </TreeView.ItemIndicator>
-          <TreeView.ItemText>
-            <File />
-            {props.node.name}
-          </TreeView.ItemText>
-        </TreeView.Item>
+        <TreeView.Node>
+          <TreeView.Cell>
+            <TreeView.NodeIndicator type="selected">
+              <SquareCheckBigIcon />
+            </TreeView.NodeIndicator>
+            <TreeView.NodeText>
+              <File />
+              {props.node.name}
+            </TreeView.NodeText>
+          </TreeView.Cell>
+        </TreeView.Node>
       }
     >
-      <TreeView.Branch>
-        <TreeView.BranchControl>
-          <TreeView.BranchText>
-            <TreeView.NodeContext>
-              {(context) => (
-                <Show when={context().loading} fallback={<Folder />}>
-                  <LoaderCircleIcon style={{ animation: 'spin 1s infinite' }} />
-                </Show>
-              )}
-            </TreeView.NodeContext>
-            {props.node.name}
-          </TreeView.BranchText>
-          <TreeView.BranchIndicator>
-            <ChevronRight />
-          </TreeView.BranchIndicator>
-        </TreeView.BranchControl>
-        <TreeView.BranchContent>
-          <TreeView.BranchIndentGuide />
+      <TreeView.NodeGroup>
+        <TreeView.Node>
+          <TreeView.Cell>
+            <TreeView.NodeText>
+              <TreeView.NodeContext>
+                {(context) => (
+                  <Show when={context().loading} fallback={<Folder />}>
+                    <LoaderCircleIcon style={{ animation: 'spin 1s infinite' }} />
+                  </Show>
+                )}
+              </TreeView.NodeContext>
+              {props.node.name}
+            </TreeView.NodeText>
+            <TreeView.NodeExpandTrigger>
+              <TreeView.NodeIndicator type="expanded">
+                <ChevronRight />
+              </TreeView.NodeIndicator>
+            </TreeView.NodeExpandTrigger>
+          </TreeView.Cell>
+        </TreeView.Node>
+        <TreeView.NodeGroupContent>
+          <TreeView.IndentGuide />
           <Show when={props.node.children}>
             {(children) => (
               <For each={children()}>
@@ -55,8 +61,8 @@ export const AsyncTreeNode: Component<Props> = (props) => (
               </For>
             )}
           </Show>
-        </TreeView.BranchContent>
-      </TreeView.Branch>
+        </TreeView.NodeGroupContent>
+      </TreeView.NodeGroup>
     </Show>
   </TreeView.NodeProvider>
 )

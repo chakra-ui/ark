@@ -15,10 +15,10 @@ export interface SelectRootProps<T extends CollectionItem> extends Assign<HTMLPr
 export const SelectRoot = <T extends CollectionItem>(props: SelectRootProps<T>) => {
   const [presenceProps, selectProps] = splitPresenceProps(props)
   const [useSelectProps, localProps] = createSplitProps<UseSelectProps<T>>()(selectProps, [
+    'alignItemWithTrigger',
     'autoComplete',
     'closeOnSelect',
     'collection',
-    'composite',
     'defaultHighlightedValue',
     'defaultOpen',
     'defaultValue',
@@ -28,6 +28,7 @@ export const SelectRoot = <T extends CollectionItem>(props: SelectRootProps<T>) 
     'highlightedValue',
     'id',
     'ids',
+    'initialFocusEl',
     'invalid',
     'loopFocus',
     'multiple',
@@ -40,6 +41,7 @@ export const SelectRoot = <T extends CollectionItem>(props: SelectRootProps<T>) 
     'onSelect',
     'onValueChange',
     'open',
+    'popupType',
     'positioning',
     'readOnly',
     'required',

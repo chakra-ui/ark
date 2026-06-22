@@ -72,22 +72,28 @@ const TreeNode = (props: TreeNodeProps) => {
       <Show
         when={nodeState().isBranch}
         fallback={
-          <TreeView.Item class={styles.Item}>
-            <TreeView.ItemText class={styles.ItemText}>{props.node.name}</TreeView.ItemText>
-            <TreeNodeActions {...props} />
-          </TreeView.Item>
+          <TreeView.Node class={styles.Node}>
+            <TreeView.Cell class={styles.Cell}>
+              <TreeView.NodeText class={styles.NodeText}>{props.node.name}</TreeView.NodeText>
+              <TreeNodeActions {...props} />
+            </TreeView.Cell>
+          </TreeView.Node>
         }
       >
-        <TreeView.Branch class={styles.Branch}>
-          <TreeView.BranchControl class={styles.BranchControl}>
-            <TreeView.BranchIndicator class={styles.BranchIndicator}>
-              <ChevronRightIcon />
-            </TreeView.BranchIndicator>
-            <TreeView.BranchText class={styles.BranchText}>{props.node.name}</TreeView.BranchText>
-            <TreeNodeActions {...props} />
-          </TreeView.BranchControl>
-          <TreeView.BranchContent class={styles.BranchContent}>
-            <TreeView.BranchIndentGuide class={styles.BranchIndentGuide} />
+        <TreeView.NodeGroup class={styles.NodeGroup}>
+          <TreeView.Node class={styles.Node}>
+            <TreeView.Cell class={styles.Cell}>
+              <TreeView.NodeExpandTrigger class={styles.NodeExpandTrigger}>
+                <TreeView.NodeIndicator type="expanded" class={styles.NodeIndicator}>
+                  <ChevronRightIcon />
+                </TreeView.NodeIndicator>
+              </TreeView.NodeExpandTrigger>
+              <TreeView.NodeText class={styles.NodeText}>{props.node.name}</TreeView.NodeText>
+              <TreeNodeActions {...props} />
+            </TreeView.Cell>
+          </TreeView.Node>
+          <TreeView.NodeGroupContent class={styles.NodeGroupContent}>
+            <TreeView.IndentGuide class={styles.IndentGuide} />
             <For each={props.node.children}>
               {(child, index) => (
                 <TreeNode
@@ -98,8 +104,8 @@ const TreeNode = (props: TreeNodeProps) => {
                 />
               )}
             </For>
-          </TreeView.BranchContent>
-        </TreeView.Branch>
+          </TreeView.NodeGroupContent>
+        </TreeView.NodeGroup>
       </Show>
     </TreeView.NodeProvider>
   )

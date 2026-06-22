@@ -23,7 +23,7 @@ export const Dependencies = () => {
     get dependencies() {
       return [selectedDepartment(), selectedRole()]
     },
-    async load({ filterText }: { filterText?: string }) {
+    async load({ filter }) {
       await delay(400)
 
       let items = mockUsers
@@ -36,11 +36,11 @@ export const Dependencies = () => {
         items = items.filter((user) => user.role === selectedRole())
       }
 
-      if (filterText) {
+      if (filter) {
         items = items.filter(
           (user) =>
-            user.name.toLowerCase().includes(filterText.toLowerCase()) ||
-            user.email.toLowerCase().includes(filterText.toLowerCase()),
+            user.name.toLowerCase().includes(filter.toLowerCase()) ||
+            user.email.toLowerCase().includes(filter.toLowerCase()),
         )
       }
 
@@ -69,18 +69,18 @@ export const Dependencies = () => {
           class={field.Input}
           type="text"
           placeholder="Search..."
-          value={list().filterText}
-          onInput={(e) => list().setFilterText(e.target.value)}
+          value={list().filter}
+          onInput={(e) => list().setFilter(e.target.value)}
         />
 
-        {list().loading && (
+        {list().isLoading && (
           <span class={styles.Loading}>
             <LoaderIcon class={styles.Spinner} /> Loading
           </span>
         )}
       </div>
 
-      {list().error && <div class={styles.Error}>Error: {list().error.message}</div>}
+      {list().error && <div class={styles.Error}>Error: {list().error?.message}</div>}
 
       <div class={styles.Status}>Found {list().items.length} users</div>
 
@@ -100,7 +100,7 @@ export const Dependencies = () => {
         </For>
       </div>
 
-      {list().items.length === 0 && !list().loading && (
+      {list().items.length === 0 && !list().isLoading && (
         <div class={styles.Empty}>No users found with current filters</div>
       )}
     </div>

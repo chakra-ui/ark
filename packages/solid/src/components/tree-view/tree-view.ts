@@ -5,92 +5,77 @@ export type {
   LoadChildrenCompleteDetails,
   LoadChildrenDetails,
   LoadChildrenErrorDetails,
-  NodeProps,
+  NodeIndicatorType,
   NodeState,
   RenameCompleteDetails,
   RenameStartDetails,
   SelectionChangeDetails,
 } from '@zag-js/tree-view'
 export {
-  TreeViewBranch as Branch,
-  type TreeViewBranchBaseProps as BranchBaseProps,
-  type TreeViewBranchProps as BranchProps,
-} from './tree-view-branch.tsx'
-export {
-  TreeViewBranchContent as BranchContent,
-  type TreeViewBranchContentBaseProps as BranchContentBaseProps,
-  type TreeViewBranchContentProps as BranchContentProps,
-} from './tree-view-branch-content.tsx'
-export {
-  TreeViewBranchControl as BranchControl,
-  type TreeViewBranchControlBaseProps as BranchControlBaseProps,
-  type TreeViewBranchControlProps as BranchControlProps,
-} from './tree-view-branch-control.tsx'
-export {
-  TreeViewBranchIndentGuide as BranchIndentGuide,
-  type TreeViewBranchIndentGuideBaseProps as BranchIndentGuideBaseProps,
-  type TreeViewBranchIndentGuideProps as BranchIndentGuideProps,
-} from './tree-view-branch-indent-guide.tsx'
-export {
-  TreeViewBranchIndicator as BranchIndicator,
-  type TreeViewBranchIndicatorBaseProps as BranchIndicatorBaseProps,
-  type TreeViewBranchIndicatorProps as BranchIndicatorProps,
-} from './tree-view-branch-indicator.tsx'
-export {
-  TreeViewBranchText as BranchText,
-  type TreeViewBranchTextBaseProps as BranchTextBaseProps,
-  type TreeViewBranchTextProps as BranchTextProps,
-} from './tree-view-branch-text.tsx'
-export {
-  TreeViewBranchTrigger as BranchTrigger,
-  type TreeViewBranchTriggerBaseProps as BranchTriggerBaseProps,
-  type TreeViewBranchTriggerProps as BranchTriggerProps,
-} from './tree-view-branch-trigger.tsx'
+  TreeViewCell as Cell,
+  type TreeViewCellBaseProps as CellBaseProps,
+  type TreeViewCellProps as CellProps,
+} from './tree-view-cell.tsx'
 export { TreeViewContext as Context, type TreeViewContextProps as ContextProps } from './tree-view-context.tsx'
 export {
-  TreeViewItem as Item,
-  type TreeViewItemBaseProps as ItemBaseProps,
-  type TreeViewItemProps as ItemProps,
-} from './tree-view-item.tsx'
-export {
-  TreeViewItemIndicator as ItemIndicator,
-  type TreeViewItemIndicatorBaseProps as ItemIndicatorBaseProps,
-  type TreeViewItemIndicatorProps as ItemIndicatorProps,
-} from './tree-view-item-indicator.tsx'
-export {
-  TreeViewItemText as ItemText,
-  type TreeViewItemTextBaseProps as ItemTextBaseProps,
-  type TreeViewItemTextProps as ItemTextProps,
-} from './tree-view-item-text.tsx'
+  TreeViewIndentGuide as IndentGuide,
+  type TreeViewIndentGuideBaseProps as IndentGuideBaseProps,
+  type TreeViewIndentGuideProps as IndentGuideProps,
+} from './tree-view-indent-guide.tsx'
 export {
   TreeViewLabel as Label,
   type TreeViewLabelBaseProps as LabelBaseProps,
   type TreeViewLabelProps as LabelProps,
 } from './tree-view-label.tsx'
 export {
+  TreeViewNode as Node,
+  type TreeViewNodeBaseProps as NodeBaseProps,
+  type TreeViewNodeProps as NodeProps,
+} from './tree-view-node.tsx'
+export {
   TreeViewNodeCheckbox as NodeCheckbox,
   type TreeViewNodeCheckboxBaseProps as NodeCheckboxBaseProps,
   type TreeViewNodeCheckboxProps as NodeCheckboxProps,
 } from './tree-view-node-checkbox.tsx'
 export {
-  TreeViewNodeCheckboxIndicator as NodeCheckboxIndicator,
-  type TreeViewNodeCheckboxIndicatorBaseProps as NodeCheckboxIndicatorBaseProps,
-  type TreeViewNodeCheckboxIndicatorProps as NodeCheckboxIndicatorProps,
-} from './tree-view-node-checkbox-indicator.tsx'
+  TreeViewNodeContext as NodeContext,
+  type TreeViewNodeContextProps as NodeContextProps,
+} from './tree-view-node-context.ts'
+export {
+  TreeViewNodeExpandTrigger as NodeExpandTrigger,
+  type TreeViewNodeExpandTriggerBaseProps as NodeExpandTriggerBaseProps,
+  type TreeViewNodeExpandTriggerProps as NodeExpandTriggerProps,
+} from './tree-view-node-expand-trigger.tsx'
+export {
+  TreeViewNodeGroup as NodeGroup,
+  type TreeViewNodeGroupBaseProps as NodeGroupBaseProps,
+  type TreeViewNodeGroupProps as NodeGroupProps,
+} from './tree-view-node-group.tsx'
+export {
+  TreeViewNodeGroupContent as NodeGroupContent,
+  type TreeViewNodeGroupContentBaseProps as NodeGroupContentBaseProps,
+  type TreeViewNodeGroupContentProps as NodeGroupContentProps,
+} from './tree-view-node-group-content.tsx'
+export {
+  TreeViewNodeIndicator as NodeIndicator,
+  type TreeViewNodeIndicatorBaseProps as NodeIndicatorBaseProps,
+  type TreeViewNodeIndicatorProps as NodeIndicatorProps,
+} from './tree-view-node-indicator.tsx'
+export {
+  TreeViewNodeProvider as NodeProvider,
+  type TreeViewNodeProviderBaseProps as NodeProviderBaseProps,
+  type TreeViewNodeProviderProps as NodeProviderProps,
+} from './tree-view-node-provider.tsx'
 export {
   TreeViewNodeRenameInput as NodeRenameInput,
   type TreeViewNodeRenameInputBaseProps as NodeRenameInputBaseProps,
   type TreeViewNodeRenameInputProps as NodeRenameInputProps,
 } from './tree-view-node-rename-input.tsx'
 export {
-  TreeViewNodeContext as NodeContext,
-  type TreeViewNodeContextProps as NodeContextProps,
-} from './tree-view-node-context.ts'
-export {
-  TreeViewNodeProvider as NodeProvider,
-  type TreeViewNodeProviderBaseProps as NodeProviderBaseProps,
-  type TreeViewNodeProviderProps as NodeProviderProps,
-} from './tree-view-node-provider.tsx'
+  TreeViewNodeText as NodeText,
+  type TreeViewNodeTextBaseProps as NodeTextBaseProps,
+  type TreeViewNodeTextProps as NodeTextProps,
+} from './tree-view-node-text.tsx'
 export {
   TreeViewRoot as Root,
   type TreeViewRootBaseProps as RootBaseProps,

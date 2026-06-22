@@ -56,6 +56,11 @@ export {
   type ListboxLabelProps as LabelProps,
 } from './listbox-label.tsx'
 export {
+  ListboxList as List,
+  type ListboxListBaseProps as ListBaseProps,
+  type ListboxListProps as ListProps,
+} from './listbox-list.tsx'
+export {
   ListboxRoot as Root,
   type ListboxRootBaseProps as RootBaseProps,
   type ListboxRootProps as RootProps,

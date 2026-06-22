@@ -21,31 +21,37 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
     <TreeView.NodeProvider node={props.node} indexPath={props.indexPath}>
       <TreeView.NodeContext>
         {(nodeState) =>
-          props.node.children ? (
-            <TreeView.Branch class={styles.Branch}>
-              <TreeView.BranchControl class={styles.BranchControl}>
-                <TreeView.BranchIndicator class={styles.BranchIndicator}>
-                  <ChevronRightIcon />
-                </TreeView.BranchIndicator>
-                <TreeView.BranchText class={styles.BranchText}>
-                  {nodeState().expanded ? <FolderOpenIcon /> : <FolderIcon />}
-                  {props.node.name}
-                </TreeView.BranchText>
-              </TreeView.BranchControl>
-              <TreeView.BranchContent class={styles.BranchContent}>
-                <TreeView.BranchIndentGuide class={styles.BranchIndentGuide} />
+          nodeState().isBranch ? (
+            <TreeView.NodeGroup class={styles.NodeGroup}>
+              <TreeView.Node class={styles.Node}>
+                <TreeView.Cell class={styles.Cell}>
+                  <TreeView.NodeExpandTrigger class={styles.NodeExpandTrigger}>
+                    <TreeView.NodeIndicator type="expanded" class={styles.NodeIndicator}>
+                      <ChevronRightIcon />
+                    </TreeView.NodeIndicator>
+                  </TreeView.NodeExpandTrigger>
+                  <TreeView.NodeText class={styles.NodeText}>
+                    {nodeState().expanded ? <FolderOpenIcon /> : <FolderIcon />}
+                    {props.node.name}
+                  </TreeView.NodeText>
+                </TreeView.Cell>
+              </TreeView.Node>
+              <TreeView.NodeGroupContent class={styles.NodeGroupContent}>
+                <TreeView.IndentGuide class={styles.IndentGuide} />
                 <For each={props.node.children}>
                   {(child, index) => <TreeNode node={child} indexPath={[...props.indexPath, index()]} />}
                 </For>
-              </TreeView.BranchContent>
-            </TreeView.Branch>
+              </TreeView.NodeGroupContent>
+            </TreeView.NodeGroup>
           ) : (
-            <TreeView.Item class={styles.Item}>
-              <TreeView.ItemText class={styles.ItemText}>
-                <FileIcon />
-                {props.node.name}
-              </TreeView.ItemText>
-            </TreeView.Item>
+            <TreeView.Node class={styles.Node}>
+              <TreeView.Cell class={styles.Cell}>
+                <TreeView.NodeText class={styles.NodeText}>
+                  <FileIcon />
+                  {props.node.name}
+                </TreeView.NodeText>
+              </TreeView.Cell>
+            </TreeView.Node>
           )
         }
       </TreeView.NodeContext>

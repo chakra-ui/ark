@@ -1,12 +1,13 @@
 import { TreeView, createTreeCollection } from '@ark-ui/solid/tree-view'
 import { ChevronRightIcon, ExternalLinkIcon, FileIcon } from 'lucide-solid'
 import { For, Show } from 'solid-js'
+import styles from 'styles/tree-view.module.css'
 
 export const Links = () => {
   return (
-    <TreeView.Root collection={collection}>
-      <TreeView.Label>Docs</TreeView.Label>
-      <TreeView.Tree>
+    <TreeView.Root class={styles.Root} collection={collection}>
+      <TreeView.Label class={styles.Label}>Docs</TreeView.Label>
+      <TreeView.Tree class={styles.Tree}>
         <For each={collection.rootNode.children}>{(node, index) => <TreeNode node={node} indexPath={[index()]} />}</For>
       </TreeView.Tree>
     </TreeView.Root>
@@ -14,37 +15,47 @@ export const Links = () => {
 }
 
 const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
-  const { node, indexPath } = props
   return (
-    <TreeView.NodeProvider node={node} indexPath={indexPath}>
+    <TreeView.NodeProvider node={props.node} indexPath={props.indexPath}>
       <Show
-        when={node.children}
+        when={props.node.children}
         fallback={
-          <TreeView.Item asChild={(props) => <a href={node.href} {...props()} />}>
-            <TreeView.ItemText>
-              <FileIcon />
-              {node.name}
-            </TreeView.ItemText>
-            <Show when={node.href?.startsWith('http')}>
-              <ExternalLinkIcon size={12} />
-            </Show>
-          </TreeView.Item>
+          <TreeView.Node class={styles.Node}>
+            <TreeView.Cell
+              class={styles.Cell}
+              asChild={(cellProps) => (
+                <a href={props.node.href} {...cellProps()}>
+                  <TreeView.NodeText class={styles.NodeText}>
+                    <FileIcon />
+                    {props.node.name}
+                  </TreeView.NodeText>
+                  <Show when={props.node.href?.startsWith('http')}>
+                    <ExternalLinkIcon size={12} />
+                  </Show>
+                </a>
+              )}
+            />
+          </TreeView.Node>
         }
       >
-        <TreeView.Branch>
-          <TreeView.BranchControl>
-            <TreeView.BranchText>{node.name}</TreeView.BranchText>
-            <TreeView.BranchIndicator>
-              <ChevronRightIcon />
-            </TreeView.BranchIndicator>
-          </TreeView.BranchControl>
-          <TreeView.BranchContent>
-            <TreeView.BranchIndentGuide />
-            <For each={node.children}>
-              {(child, index) => <TreeNode node={child} indexPath={[...indexPath, index()]} />}
+        <TreeView.NodeGroup class={styles.NodeGroup}>
+          <TreeView.Node class={styles.Node}>
+            <TreeView.Cell class={styles.Cell}>
+              <TreeView.NodeExpandTrigger class={styles.NodeExpandTrigger}>
+                <TreeView.NodeIndicator type="expanded" class={styles.NodeIndicator}>
+                  <ChevronRightIcon />
+                </TreeView.NodeIndicator>
+              </TreeView.NodeExpandTrigger>
+              <TreeView.NodeText class={styles.NodeText}>{props.node.name}</TreeView.NodeText>
+            </TreeView.Cell>
+          </TreeView.Node>
+          <TreeView.NodeGroupContent class={styles.NodeGroupContent}>
+            <TreeView.IndentGuide class={styles.IndentGuide} />
+            <For each={props.node.children}>
+              {(child, index) => <TreeNode node={child} indexPath={[...props.indexPath, index()]} />}
             </For>
-          </TreeView.BranchContent>
-        </TreeView.Branch>
+          </TreeView.NodeGroupContent>
+        </TreeView.NodeGroup>
       </Show>
     </TreeView.NodeProvider>
   )

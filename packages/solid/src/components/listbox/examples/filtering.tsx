@@ -27,17 +27,19 @@ export const Filtering = () => {
       <Listbox.Label class={styles.Label}>Select Framework</Listbox.Label>
       <Listbox.Input class={field.Input} placeholder="Search frameworks..." onInput={(e) => filter(e.target.value)} />
       <Listbox.Content class={styles.Content}>
-        <Index each={collection().items}>
-          {(item) => (
-            <Listbox.Item class={styles.Item} item={item()}>
-              <Listbox.ItemText class={styles.ItemText}>{item().label}</Listbox.ItemText>
-              <Listbox.ItemIndicator class={styles.ItemIndicator}>
-                <CheckIcon />
-              </Listbox.ItemIndicator>
-            </Listbox.Item>
-          )}
-        </Index>
-        <Listbox.Empty class={styles.Empty}>No frameworks found</Listbox.Empty>
+        <Listbox.List class={styles.List}>
+          <Index each={collection().items}>
+            {(item) => (
+              <Listbox.Item class={styles.Item} item={item()}>
+                <Listbox.ItemText class={styles.ItemText}>{item().label}</Listbox.ItemText>
+                <Listbox.ItemIndicator class={styles.ItemIndicator}>
+                  <CheckIcon />
+                </Listbox.ItemIndicator>
+              </Listbox.Item>
+            )}
+          </Index>
+          <Listbox.Empty class={styles.Empty}>No frameworks found</Listbox.Empty>
+        </Listbox.List>
       </Listbox.Content>
     </Listbox.Root>
   )
