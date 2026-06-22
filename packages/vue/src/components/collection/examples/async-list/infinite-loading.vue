@@ -16,7 +16,7 @@ interface Post {
 const list = useAsyncList<Post, number>({
   autoReload: true,
   async load({ cursor }) {
-    const page = cursor || 1
+    const page = Number(cursor) || 1
     const start = (page - 1) * LIMIT
 
     const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=${LIMIT}`)
@@ -30,7 +30,7 @@ const list = useAsyncList<Post, number>({
 
     return {
       items: posts,
-      cursor: hasNextPage ? page + 1 : undefined,
+      cursor: hasNextPage ? String(page + 1) : undefined,
     }
   },
 })
@@ -39,8 +39,8 @@ const list = useAsyncList<Post, number>({
 <template>
   <div :class="styles.Root">
     <div :class="styles.Header">
-      <button v-if="list.cursor" :class="button.Root" @click="list.loadMore()" :disabled="list.loading">
-        <template v-if="list.loading">
+      <button v-if="list.cursor" :class="button.Root" @click="list.loadMore()" :disabled="list.isLoading">
+        <template v-if="list.isLoading">
           <LoaderIcon :class="styles.Spinner" />
           Loading
         </template>
@@ -53,7 +53,7 @@ const list = useAsyncList<Post, number>({
       <span v-if="list.cursor">(more available)</span>
     </div>
 
-    <div v-if="list.error" :class="styles.Error">Error: {{ list.error.message }}</div>
+    <div v-if="list.error" :class="styles.Error">Error: {{ list.error?.message }}</div>
 
     <div :class="styles.ItemGroup">
       <div v-for="(post, index) in list.items" :key="post.id" :class="styles.Item">

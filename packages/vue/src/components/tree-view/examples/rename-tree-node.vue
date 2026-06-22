@@ -18,47 +18,41 @@ defineProps<Props>()
 </script>
 
 <template>
-  <TreeView.NodeProvider :node="node" :indexPath="indexPath">
+  <TreeView.NodeProvider :node="node" :index-path="indexPath">
     <TreeView.NodeContext v-slot="nodeState">
-      <template v-if="node.children">
-        <TreeView.Branch :class="styles.Branch">
-          <TreeView.BranchControl :class="styles.BranchControl">
-            <TreeView.BranchIndicator :class="styles.BranchIndicator">
-              <ChevronRight />
-            </TreeView.BranchIndicator>
-            <template v-if="nodeState.renaming">
-              <TreeView.NodeRenameInput :class="styles.NodeRenameInput" />
-            </template>
-            <template v-else>
-              <TreeView.BranchText :class="styles.BranchText">
-                <FolderOpen v-if="nodeState.expanded" />
-                <Folder v-else />
-                {{ node.name }}
-              </TreeView.BranchText>
-            </template>
-          </TreeView.BranchControl>
-          <TreeView.BranchContent :class="styles.BranchContent">
-            <TreeView.BranchIndentGuide :class="styles.BranchIndentGuide" />
-            <RenameTreeNode
-              v-for="(child, index) in node.children"
-              :key="child.id"
-              :node="child"
-              :indexPath="[...indexPath, index]"
-            />
-          </TreeView.BranchContent>
-        </TreeView.Branch>
-      </template>
-      <template v-else>
-        <TreeView.Item :class="styles.Item">
+      <TreeView.NodeGroup v-if="nodeState.isBranch" :class="styles.NodeGroup">
+        <TreeView.Node :class="styles.Node">
+          <TreeView.Cell :class="styles.Cell">
+            <TreeView.NodeExpandTrigger :class="styles.NodeExpandTrigger">
+              <TreeView.NodeIndicator type="expanded" :class="styles.NodeIndicator">
+                <ChevronRight />
+              </TreeView.NodeIndicator>
+            </TreeView.NodeExpandTrigger>
+            <TreeView.NodeRenameInput v-if="nodeState.renaming" :class="styles.NodeRenameInput" />
+            <TreeView.NodeText v-else :class="styles.NodeText">
+              <FolderOpen v-if="nodeState.expanded" />
+              <Folder v-else />
+              {{ node.name }}
+            </TreeView.NodeText>
+          </TreeView.Cell>
+        </TreeView.Node>
+        <TreeView.NodeGroupContent :class="styles.NodeGroupContent">
+          <TreeView.IndentGuide :class="styles.IndentGuide" />
+          <RenameTreeNode
+            v-for="(child, index) in node.children"
+            :key="child.id"
+            :node="child"
+            :index-path="[...indexPath, index]"
+          />
+        </TreeView.NodeGroupContent>
+      </TreeView.NodeGroup>
+      <TreeView.Node v-else :class="styles.Node">
+        <TreeView.Cell :class="styles.Cell">
           <File />
-          <template v-if="nodeState.renaming">
-            <TreeView.NodeRenameInput :class="styles.NodeRenameInput" />
-          </template>
-          <template v-else>
-            <TreeView.ItemText :class="styles.ItemText">{{ node.name }}</TreeView.ItemText>
-          </template>
-        </TreeView.Item>
-      </template>
+          <TreeView.NodeRenameInput v-if="nodeState.renaming" :class="styles.NodeRenameInput" />
+          <TreeView.NodeText v-else :class="styles.NodeText">{{ node.name }}</TreeView.NodeText>
+        </TreeView.Cell>
+      </TreeView.Node>
     </TreeView.NodeContext>
   </TreeView.NodeProvider>
 </template>

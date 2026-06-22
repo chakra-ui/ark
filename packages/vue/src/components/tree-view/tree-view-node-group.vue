@@ -2,12 +2,12 @@
 import { type HTMLAttributes, computed } from 'vue'
 import type { PolymorphicProps } from '../factory.ts'
 
-export interface TreeViewBranchBaseProps extends PolymorphicProps {}
-export interface TreeViewBranchProps
+export interface TreeViewNodeGroupBaseProps extends PolymorphicProps {}
+export interface TreeViewNodeGroupProps
   extends
-    TreeViewBranchBaseProps,
+    TreeViewNodeGroupBaseProps,
     /**
-     * @vue-ignore̊
+     * @vue-ignore
      */
     HTMLAttributes {}
 </script>
@@ -20,7 +20,7 @@ import { useTreeViewContext } from './use-tree-view-context.ts'
 import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
 import { useTreeViewNodeContext } from './use-tree-view-node-context.ts'
 
-defineProps<TreeViewBranchProps>()
+defineProps<TreeViewNodeGroupProps>()
 
 const treeView = useTreeViewContext()
 
@@ -28,7 +28,7 @@ const nodeProps = useTreeViewNodePropsContext()
 const nodeState = useTreeViewNodeContext()
 
 const renderStrategyProps = useRenderStrategyProps()
-const branchContentProps = computed(() => treeView.value.getBranchContentProps(nodeProps))
+const nodeGroupContentProps = computed(() => treeView.value.getNodeGroupContentProps(nodeProps))
 
 useForwardExpose()
 </script>
@@ -36,8 +36,8 @@ useForwardExpose()
 <template>
   <Collapsible.Root
     :open="nodeState.expanded"
-    :ids="{ content: branchContentProps.id }"
-    v-bind="treeView.getBranchProps(nodeProps)"
+    :ids="{ content: nodeGroupContentProps.id }"
+    v-bind="treeView.getNodeGroupProps(nodeProps)"
     :lazy-mount="renderStrategyProps.lazyMount"
     :unmount-on-exit="renderStrategyProps.unmountOnExit"
     :as-child="asChild"

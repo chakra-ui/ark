@@ -19,11 +19,11 @@ interface Product {
 
 const list = useAsyncList<Product>({
   autoReload: true,
-  async load({ sortDescriptor }) {
+  async load({ sorting }) {
     const url = new URL('https://fakestoreapi.com/products')
     url.searchParams.set('limit', '5')
-    if (sortDescriptor) {
-      const { direction } = sortDescriptor
+    if (sorting) {
+      const { direction } = sorting
       url.searchParams.set('sort', direction === 'ascending' ? 'asc' : 'desc')
     }
     const response = await fetch(url)
@@ -33,12 +33,12 @@ const list = useAsyncList<Product>({
 })
 
 const handleSort = (column: keyof Product) => {
-  const currentSort = list.value.sortDescriptor
+  const currentSort = list.value.sorting
   let direction: 'ascending' | 'descending' = 'ascending'
   if (currentSort?.column === column && currentSort.direction === 'ascending') {
     direction = 'descending'
   }
-  list.value.sort({ column, direction })
+  list.value.setSorting({ column, direction })
 }
 </script>
 
@@ -47,19 +47,19 @@ const handleSort = (column: keyof Product) => {
     <div :class="styles.Header">
       <button :class="button.Root" @click="handleSort('title')">
         Sort by title
-        <template v-if="list.sortDescriptor?.column === 'title'">
-          <ArrowUpIcon v-if="list.sortDescriptor?.direction === 'ascending'" />
+        <template v-if="list.sorting?.column === 'title'">
+          <ArrowUpIcon v-if="list.sorting?.direction === 'ascending'" />
           <ArrowDownIcon v-else />
         </template>
         <ArrowUpDownIcon v-else />
       </button>
-      <span v-if="list.loading" :class="styles.Loading">
+      <span v-if="list.isLoading" :class="styles.Loading">
         <LoaderIcon :class="styles.Spinner" />
         Loading
       </span>
     </div>
 
-    <div v-if="list.error" :class="styles.Error">Error: {{ list.error.message }}</div>
+    <div v-if="list.error" :class="styles.Error">Error: {{ list.error?.message }}</div>
 
     <div :class="styles.ItemGroup">
       <div v-for="product in list.items" :key="product.id" :class="styles.Item" data-variant="outline">

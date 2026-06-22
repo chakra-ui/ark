@@ -33,8 +33,8 @@ import { useSelect } from './use-select.ts'
 import { SelectProvider } from './use-select-context.ts'
 
 const props = withDefaults(defineProps<SelectRootProps<T>>(), {
+  alignItemWithTrigger: undefined,
   closeOnSelect: undefined,
-  composite: undefined,
   defaultOpen: undefined,
   deselectable: undefined,
   disabled: undefined,

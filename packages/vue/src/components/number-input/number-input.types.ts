@@ -63,6 +63,11 @@ export interface RootProps {
    */
   invalid?: boolean
   /**
+   * Step value when Shift key is held (large increments).
+   * @default step * 10
+   */
+  largeStep?: number
+  /**
    * The current locale. Based on the BCP 47 definition.
    * @default "en-US"
    */
@@ -99,6 +104,32 @@ export interface RootProps {
    * Whether the number input is required
    */
   required?: boolean
+  /**
+   * The direction of scrubbing.
+   * @default "horizontal"
+   */
+  scrubberDirection?: 'horizontal' | 'vertical'
+  /**
+   * How many pixels the pointer must move to change the value by one step.
+   * Higher values mean more precise control. Lower values mean more sensitivity.
+   * @default 2
+   */
+  scrubberPixelSensitivity?: number
+  /**
+   * Distance in pixels before the virtual cursor wraps around.
+   * When not set, the viewport bounds are used (default behavior).
+   */
+  scrubberTeleportDistance?: number
+  /**
+   * Step value when Alt/Option key is held (fine control).
+   * @default step * 0.1
+   */
+  smallStep?: number
+  /**
+   * Whether values snap to step multiples when scrubbing.
+   * @default false
+   */
+  snapOnStep?: boolean
   /**
    * Whether to spin the value when the increment/decrement button is pressed
    * @default true

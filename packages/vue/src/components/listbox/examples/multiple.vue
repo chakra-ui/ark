@@ -20,12 +20,14 @@ const collection = createListCollection({
   <Listbox.Root :class="styles.Root" :collection="collection" selectionMode="multiple">
     <Listbox.Label :class="styles.Label">Select Days</Listbox.Label>
     <Listbox.Content :class="styles.Content">
-      <Listbox.Item v-for="item in collection.items" :key="item.value" :class="styles.Item" :item="item">
-        <Listbox.ItemText :class="styles.ItemText">{{ item.label }}</Listbox.ItemText>
-        <Listbox.ItemIndicator :class="styles.ItemIndicator">
-          <CheckIcon />
-        </Listbox.ItemIndicator>
-      </Listbox.Item>
+      <Listbox.List :class="styles.List">
+        <Listbox.Item v-for="item in collection.items" :key="item.value" :class="styles.Item" :item="item">
+          <Listbox.ItemText :class="styles.ItemText">{{ item.label }}</Listbox.ItemText>
+          <Listbox.ItemIndicator :class="styles.ItemIndicator">
+            <CheckIcon />
+          </Listbox.ItemIndicator>
+        </Listbox.Item>
+      </Listbox.List>
     </Listbox.Content>
   </Listbox.Root>
 </template>

@@ -39,10 +39,10 @@ describe('ColorPicker', () => {
   }, 7000)
 
   it('should render with default value', async () => {
-    render(ComponentUnderTest, { props: { defaultValue: parseColor('#ff00ff') } })
+    render(ComponentUnderTest, { props: { defaultValue: parseColor('#ff00ff').toFormat('hsba') } })
 
     expect(screen.getByTestId('swatch-trigger')).toHaveStyle({
-      backgroundColor: 'rgb(255, 0, 255)',
+      background: 'hsla(300, 100%, 50%, 1)',
     })
   })
 })

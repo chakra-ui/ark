@@ -29,6 +29,12 @@ export interface RootProps {
     itemTrigger(value: string): string
   }>
   /**
+   * Whether to loop focus back to the first/last trigger when navigating
+   * past the end/start with the arrow keys.
+   * @default true
+   */
+  loopFocus?: boolean
+  /**
    * The v-model value of the accordion
    */
   modelValue?: string[]

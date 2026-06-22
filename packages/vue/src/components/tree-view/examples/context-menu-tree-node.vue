@@ -21,23 +21,25 @@ defineProps<Props>()
 </script>
 
 <template>
-  <TreeView.NodeProvider :node="node" :indexPath="indexPath">
+  <TreeView.NodeProvider :node="node" :index-path="indexPath">
     <TreeView.NodeContext v-slot="nodeState">
-      <template v-if="node.children">
-        <TreeView.Branch :class="styles.Branch">
+      <TreeView.NodeGroup v-if="node.children" :class="styles.NodeGroup">
+        <TreeView.Node :class="styles.Node">
           <Menu.Root :ids="{ contextTrigger: triggerId }">
-            <TreeView.BranchControl :class="styles.BranchControl" asChild>
+            <TreeView.Cell :class="styles.Cell" asChild>
               <Menu.ContextTrigger>
-                <TreeView.BranchIndicator :class="styles.BranchIndicator">
-                  <ChevronRight />
-                </TreeView.BranchIndicator>
-                <TreeView.BranchText :class="styles.BranchText">
+                <TreeView.NodeExpandTrigger :class="styles.NodeExpandTrigger">
+                  <TreeView.NodeIndicator type="expanded" :class="styles.NodeIndicator">
+                    <ChevronRight />
+                  </TreeView.NodeIndicator>
+                </TreeView.NodeExpandTrigger>
+                <TreeView.NodeText :class="styles.NodeText">
                   <FolderOpen v-if="nodeState.expanded" />
                   <Folder v-else />
                   {{ node.name }}
-                </TreeView.BranchText>
+                </TreeView.NodeText>
               </Menu.ContextTrigger>
-            </TreeView.BranchControl>
+            </TreeView.Cell>
             <Teleport to="body">
               <Menu.Positioner>
                 <Menu.Content :class="menuStyles.Content">
@@ -47,26 +49,26 @@ defineProps<Props>()
               </Menu.Positioner>
             </Teleport>
           </Menu.Root>
-          <TreeView.BranchContent :class="styles.BranchContent">
-            <TreeView.BranchIndentGuide :class="styles.BranchIndentGuide" />
-            <ContextMenuTreeNode
-              v-for="(child, index) in node.children"
-              :key="child.id"
-              :node="child"
-              :indexPath="[...indexPath, index]"
-              :triggerId="triggerId"
-            />
-          </TreeView.BranchContent>
-        </TreeView.Branch>
-      </template>
-      <template v-else>
+        </TreeView.Node>
+        <TreeView.NodeGroupContent :class="styles.NodeGroupContent">
+          <TreeView.IndentGuide :class="styles.IndentGuide" />
+          <ContextMenuTreeNode
+            v-for="(child, index) in node.children"
+            :key="child.id"
+            :node="child"
+            :index-path="[...indexPath, index]"
+            :triggerId="triggerId"
+          />
+        </TreeView.NodeGroupContent>
+      </TreeView.NodeGroup>
+      <TreeView.Node v-else :class="styles.Node">
         <Menu.Root :ids="{ contextTrigger: triggerId }">
-          <TreeView.Item :class="styles.Item" asChild>
+          <TreeView.Cell :class="styles.Cell" asChild>
             <Menu.ContextTrigger>
               <File />
-              <TreeView.ItemText :class="styles.ItemText">{{ node.name }}</TreeView.ItemText>
+              <TreeView.NodeText :class="styles.NodeText">{{ node.name }}</TreeView.NodeText>
             </Menu.ContextTrigger>
-          </TreeView.Item>
+          </TreeView.Cell>
           <Teleport to="body">
             <Menu.Positioner>
               <Menu.Content :class="menuStyles.Content">
@@ -76,7 +78,7 @@ defineProps<Props>()
             </Menu.Positioner>
           </Teleport>
         </Menu.Root>
-      </template>
+      </TreeView.Node>
     </TreeView.NodeContext>
   </TreeView.NodeProvider>
 </template>

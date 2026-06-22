@@ -53,6 +53,11 @@ export {
   type ListboxLabelProps as LabelProps,
 } from './listbox-label.vue'
 export {
+  default as List,
+  type ListboxListBaseProps as ListBaseProps,
+  type ListboxListProps as ListProps,
+} from './listbox-list.vue'
+export {
   default as RootProvider,
   type ListboxRootProviderBaseProps as RootProviderBaseProps,
   type ListboxRootProviderProps as RootProviderProps,

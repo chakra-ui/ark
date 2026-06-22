@@ -41,17 +41,17 @@ const mockUsers: User[] = [
 
 const list = useAsyncList<User>({
   initialItems: mockUsers.slice(0, LIMIT),
-  async load({ filterText }: { filterText?: string } = {}) {
+  async load({ filter }) {
     await delay(500)
 
-    if (!filterText) {
+    if (!filter) {
       return { items: mockUsers.slice(0, LIMIT) }
     }
 
     const filtered = mockUsers.filter(
       (user) =>
-        user.name.toLowerCase().includes(filterText.toLowerCase()) ||
-        user.email.toLowerCase().includes(filterText.toLowerCase()),
+        user.name.toLowerCase().includes(filter.toLowerCase()) ||
+        user.email.toLowerCase().includes(filter.toLowerCase()),
     )
 
     return { items: filtered.slice(0, LIMIT) }
@@ -66,16 +66,16 @@ const list = useAsyncList<User>({
         :class="field.Input"
         type="text"
         placeholder="Search users..."
-        :value="list.filterText"
-        @input="list.setFilterText(($event.currentTarget as HTMLInputElement).value ?? '')"
+        :value="list.filter"
+        @input="list.setFilter(($event.currentTarget as HTMLInputElement).value ?? '')"
       />
-      <span v-if="list.loading" :class="styles.Loading">
+      <span v-if="list.isLoading" :class="styles.Loading">
         <LoaderIcon :class="styles.Spinner" />
         Searching
       </span>
     </div>
 
-    <div v-if="list.error" :class="styles.Error">Error: {{ list.error.message }}</div>
+    <div v-if="list.error" :class="styles.Error">Error: {{ list.error?.message }}</div>
 
     <div :class="styles.ItemGroup">
       <div v-for="user in list.items" :key="user.id" :class="styles.Item">
@@ -87,6 +87,6 @@ const list = useAsyncList<User>({
       </div>
     </div>
 
-    <div v-if="list.items.length === 0 && !list.loading" :class="styles.Empty">No results found</div>
+    <div v-if="list.items.length === 0 && !list.isLoading" :class="styles.Empty">No results found</div>
   </div>
 </template>

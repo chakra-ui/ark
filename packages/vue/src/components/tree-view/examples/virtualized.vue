@@ -99,26 +99,29 @@ const virtualizer = useVirtualizer(
           >
             <TreeView.NodeContext v-slot="nodeState">
               <template v-if="nodeState.isBranch">
-                <TreeView.BranchControl
-                  :class="styles.BranchControl"
-                  :style="{ paddingLeft: `${nodeState.depth * 22}px` }"
-                >
-                  <TreeView.BranchIndicator :class="styles.BranchIndicator">
-                    <ChevronRight />
-                  </TreeView.BranchIndicator>
-                  <TreeView.BranchText :class="styles.BranchText">
-                    <Folder />
-                    {{ visibleNodes[virtualItem.index].node.name }}
-                  </TreeView.BranchText>
-                </TreeView.BranchControl>
+                <TreeView.Node :class="styles.Node">
+                  <TreeView.Cell :class="styles.Cell" :style="{ paddingLeft: `${nodeState.depth * 22}px` }">
+                    <TreeView.NodeExpandTrigger :class="styles.NodeExpandTrigger">
+                      <TreeView.NodeIndicator type="expanded" :class="styles.NodeIndicator">
+                        <ChevronRight />
+                      </TreeView.NodeIndicator>
+                    </TreeView.NodeExpandTrigger>
+                    <TreeView.NodeText :class="styles.NodeText">
+                      <Folder />
+                      {{ visibleNodes[virtualItem.index].node.name }}
+                    </TreeView.NodeText>
+                  </TreeView.Cell>
+                </TreeView.Node>
               </template>
               <template v-else>
-                <TreeView.Item :class="styles.Item" :style="{ paddingLeft: `${nodeState.depth * 22}px` }">
-                  <TreeView.ItemText :class="styles.ItemText">
-                    <File />
-                    {{ visibleNodes[virtualItem.index].node.name }}
-                  </TreeView.ItemText>
-                </TreeView.Item>
+                <TreeView.Node :class="styles.Node">
+                  <TreeView.Cell :class="styles.Cell" :style="{ paddingLeft: `${nodeState.depth * 22}px` }">
+                    <TreeView.NodeText :class="styles.NodeText">
+                      <File />
+                      {{ visibleNodes[virtualItem.index].node.name }}
+                    </TreeView.NodeText>
+                  </TreeView.Cell>
+                </TreeView.Node>
               </template>
             </TreeView.NodeContext>
           </TreeView.NodeProvider>

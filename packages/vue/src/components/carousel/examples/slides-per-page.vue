@@ -7,7 +7,7 @@ const slides = Array.from({ length: 6 })
 </script>
 
 <template>
-  <Carousel.Root :class="styles.Root" :slide-count="slides.length" :slides-per-page="2" spacing="20px">
+  <Carousel.Root :class="styles.Root" :count="slides.length" :slides-per-page="2" spacing="20px">
     <Carousel.Control :class="styles.Control">
       <Carousel.PrevTrigger :class="styles.Trigger">
         <ArrowLeftIcon />

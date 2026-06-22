@@ -38,10 +38,10 @@ const aspectRatio = ref(16 / 9)
         />
         <ImageCropper.Selection :class="styles.Selection">
           <ImageCropper.Handle
-            v-for="position in ImageCropper.handles"
-            :key="position"
+            v-for="placement in ImageCropper.placements"
+            :key="placement"
             :class="styles.Handle"
-            :position="position"
+            :placement="placement"
           >
             <div />
           </ImageCropper.Handle>

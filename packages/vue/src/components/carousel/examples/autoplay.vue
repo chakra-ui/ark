@@ -13,7 +13,7 @@ const images = [
 </script>
 
 <template>
-  <Carousel.Root :class="styles.Root" :slide-count="images.length" autoplay loop>
+  <Carousel.Root :class="styles.Root" :count="images.length" auto-play loop>
     <Carousel.ItemGroup :class="styles.ItemGroup">
       <Carousel.Item v-for="(image, index) in images" :key="index" :class="styles.Item" :index="index">
         <img :src="image.src" :alt="image.alt" width="500" height="300" />

@@ -39,10 +39,9 @@ describe('Menu', () => {
   })
 
   it('should control the open state', async () => {
-    render(ComponentUnderTest, { props: { defaultOpen: true } })
+    render(ComponentUnderTest, { props: { open: true } })
 
-    const text = await screen.findByText('JS Frameworks')
-    expect(text).toBeVisible()
+    await waitFor(() => expect(screen.getByText('JS Frameworks')).toBeVisible())
   })
 
   it('should be able to lazy mount', async () => {

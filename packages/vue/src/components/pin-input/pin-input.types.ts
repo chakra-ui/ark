@@ -15,9 +15,8 @@ export interface RootProps {
   blurOnComplete?: boolean
   /**
    * The number of inputs to render to improve SSR aria attributes.
-   * This will be required in next major version.
    */
-  count?: number
+  count: number
   /**
    * The initial value of the the pin input when rendered.
    * Use when you don't need to control the value of the pin input.

@@ -28,8 +28,8 @@ const list = useAsyncList<Quote>({
 <template>
   <div :class="styles.Root">
     <div :class="styles.Header">
-      <button :class="button.Root" @click="list.reload()" :disabled="list.loading">
-        <template v-if="list.loading">
+      <button :class="button.Root" @click="list.reload()" :disabled="list.isLoading">
+        <template v-if="list.isLoading">
           <LoaderIcon :class="styles.Spinner" />
           Loading
         </template>
@@ -37,7 +37,7 @@ const list = useAsyncList<Quote>({
       </button>
     </div>
 
-    <div v-if="list.error" :class="styles.Error">Error: {{ list.error.message }}</div>
+    <div v-if="list.error" :class="styles.Error">Error: {{ list.error?.message }}</div>
 
     <div :class="styles.ItemGroup">
       <div v-for="quote in list.items" :key="quote.id" :class="styles.Item">

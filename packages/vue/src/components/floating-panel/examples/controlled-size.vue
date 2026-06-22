@@ -39,14 +39,14 @@ const size = ref({ width: 400, height: 300 })
             <p>Some content</p>
           </FloatingPanel.Body>
 
-          <FloatingPanel.ResizeTrigger axis="n" :class="styles.ResizeTrigger" />
-          <FloatingPanel.ResizeTrigger axis="e" :class="styles.ResizeTrigger" />
-          <FloatingPanel.ResizeTrigger axis="w" :class="styles.ResizeTrigger" />
-          <FloatingPanel.ResizeTrigger axis="s" :class="styles.ResizeTrigger" />
-          <FloatingPanel.ResizeTrigger axis="ne" :class="styles.ResizeTrigger" />
-          <FloatingPanel.ResizeTrigger axis="se" :class="styles.ResizeTrigger" />
-          <FloatingPanel.ResizeTrigger axis="sw" :class="styles.ResizeTrigger" />
-          <FloatingPanel.ResizeTrigger axis="nw" :class="styles.ResizeTrigger" />
+          <FloatingPanel.ResizeTrigger placement="n" :class="styles.ResizeTrigger" />
+          <FloatingPanel.ResizeTrigger placement="e" :class="styles.ResizeTrigger" />
+          <FloatingPanel.ResizeTrigger placement="w" :class="styles.ResizeTrigger" />
+          <FloatingPanel.ResizeTrigger placement="s" :class="styles.ResizeTrigger" />
+          <FloatingPanel.ResizeTrigger placement="ne" :class="styles.ResizeTrigger" />
+          <FloatingPanel.ResizeTrigger placement="se" :class="styles.ResizeTrigger" />
+          <FloatingPanel.ResizeTrigger placement="sw" :class="styles.ResizeTrigger" />
+          <FloatingPanel.ResizeTrigger placement="nw" :class="styles.ResizeTrigger" />
         </FloatingPanel.Content>
       </FloatingPanel.Positioner>
     </Teleport>

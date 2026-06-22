@@ -17,7 +17,7 @@ const page = ref(0)
 <template>
   <div>
     <div>Current page: {{ page }}</div>
-    <Carousel.Root :class="styles.Root" v-model:page="page" :slide-count="images.length">
+    <Carousel.Root :class="styles.Root" v-model:page="page" :count="images.length">
       <Carousel.Control :class="styles.Control">
         <Carousel.PrevTrigger :class="styles.Trigger">
           <ArrowLeftIcon />

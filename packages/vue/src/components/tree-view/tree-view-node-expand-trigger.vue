@@ -2,10 +2,10 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory.ts'
 
-export interface TreeViewBranchControlBaseProps extends PolymorphicProps {}
-export interface TreeViewBranchControlProps
+export interface TreeViewNodeExpandTriggerBaseProps extends PolymorphicProps {}
+export interface TreeViewNodeExpandTriggerProps
   extends
-    TreeViewBranchControlBaseProps,
+    TreeViewNodeExpandTriggerBaseProps,
     /**
      * @vue-ignore
      */
@@ -18,15 +18,16 @@ import { ark } from '../factory.ts'
 import { useTreeViewContext } from './use-tree-view-context.ts'
 import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
 
-defineProps<TreeViewBranchControlProps>()
+defineProps<TreeViewNodeExpandTriggerProps>()
+
 const treeView = useTreeViewContext()
-const ndoeProps = useTreeViewNodePropsContext()
+const nodeProps = useTreeViewNodePropsContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="treeView.getBranchControlProps(ndoeProps)" :as-child="asChild">
+  <ark.div v-bind="treeView.getNodeExpandTriggerProps(nodeProps)" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

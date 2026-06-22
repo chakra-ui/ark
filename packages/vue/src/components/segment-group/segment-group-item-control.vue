@@ -16,7 +16,6 @@ export interface SegmentGroupItemControlProps
 import { ark } from '../factory.ts'
 import { useSegmentGroupContext } from './use-segment-group-context.ts'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context.ts'
-import { parts } from './segment-group.anatomy.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<SegmentGroupItemControlProps>()
@@ -28,12 +27,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div
-    v-bind="segmentGroup.getItemControlProps(itemProps)"
-    :as-child="asChild"
-    :data-scope="parts.itemControl.attrs['data-scope']"
-    :data-part="parts.itemControl.attrs['data-part']"
-  >
+  <ark.div v-bind="segmentGroup.getItemControlProps(itemProps)" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

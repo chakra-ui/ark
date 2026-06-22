@@ -40,14 +40,16 @@ const collection = createListCollection({
   <Listbox.Root :class="styles.Root" :collection="collection" orientation="horizontal">
     <Listbox.Label :class="styles.Label">Select Album</Listbox.Label>
     <Listbox.Content :class="styles.Content">
-      <Listbox.Item v-for="item in collection.items" :key="item.title" :class="styles.ItemCard" :item="item">
-        <Listbox.ItemIndicator :class="styles.ItemCardIndicator">
-          <CheckIcon />
-        </Listbox.ItemIndicator>
-        <img :class="styles.ItemCardImage" :src="item.image" :alt="item.title" />
-        <span :class="styles.ItemCardTitle">{{ item.title }}</span>
-        <span :class="styles.ItemCardArtist">{{ item.artist }}</span>
-      </Listbox.Item>
+      <Listbox.List :class="styles.List">
+        <Listbox.Item v-for="item in collection.items" :key="item.title" :class="styles.ItemCard" :item="item">
+          <Listbox.ItemIndicator :class="styles.ItemCardIndicator">
+            <CheckIcon />
+          </Listbox.ItemIndicator>
+          <img :class="styles.ItemCardImage" :src="item.image" :alt="item.title" />
+          <span :class="styles.ItemCardTitle">{{ item.title }}</span>
+          <span :class="styles.ItemCardArtist">{{ item.artist }}</span>
+        </Listbox.Item>
+      </Listbox.List>
     </Listbox.Content>
   </Listbox.Root>
 </template>

@@ -26,9 +26,9 @@ describe('Field / Item', () => {
     await waitFor(() => {
       const root = container.firstElementChild!
       const structure = formatFieldParts([
-        { name: 'label', element: root.querySelector('[data-part=label]'), attrs: ['id', 'for'] },
-        { name: 'Field.Select', element: root.querySelector('[data-part=select]') },
-        { name: 'Field.Input', element: root.querySelector('[data-part=input]') },
+        { name: 'label', element: root.querySelector('[data-field-label]'), attrs: ['id', 'for'] },
+        { name: 'Field.Select', element: root.querySelector('[data-field-select]') },
+        { name: 'Field.Input', element: root.querySelector('[data-field-input]') },
       ])
       expect(structure).toMatchInlineSnapshot(`
         "label (id=field::v-0::label, for=field::v-0::item::amount)
@@ -49,9 +49,9 @@ describe('Field / Item', () => {
     await waitFor(() => {
       const root = container.firstElementChild!
       const structure = formatFieldParts([
-        { name: 'label', element: root.querySelector('[data-part=label]'), attrs: ['id', 'for'] },
-        { name: 'Field.Select', element: root.querySelector('[data-part=select]') },
-        { name: 'Field.Input', element: root.querySelector('[data-part=input]') },
+        { name: 'label', element: root.querySelector('[data-field-label]'), attrs: ['id', 'for'] },
+        { name: 'Field.Select', element: root.querySelector('[data-field-select]') },
+        { name: 'Field.Input', element: root.querySelector('[data-field-input]') },
       ])
       expect(structure).toMatchInlineSnapshot(`
         "label (id=field::v-0::label, for=v-0)
@@ -69,9 +69,9 @@ describe('Field / Item', () => {
     await waitFor(() => {
       const root = container.firstElementChild!
       const structure = formatFieldParts([
-        { name: 'label', element: root.querySelector('[data-part=label]'), attrs: ['id', 'for'] },
-        { name: 'Field.Select', element: root.querySelector('[data-part=select]') },
-        { name: 'Field.Input', element: root.querySelector('[data-part=input]') },
+        { name: 'label', element: root.querySelector('[data-field-label]'), attrs: ['id', 'for'] },
+        { name: 'Field.Select', element: root.querySelector('[data-field-select]') },
+        { name: 'Field.Input', element: root.querySelector('[data-field-input]') },
       ])
       expect(structure).toMatchInlineSnapshot(`
         "label (id=field::v-0::label, for=field::v-0::item::currency)

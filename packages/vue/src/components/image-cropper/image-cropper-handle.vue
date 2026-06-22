@@ -25,7 +25,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="imageCropper.getHandleProps({ position: props.position })" :as-child="asChild">
+  <ark.div v-bind="imageCropper.getHandleProps({ placement: props.placement })" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

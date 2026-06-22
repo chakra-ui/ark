@@ -10,10 +10,6 @@ export interface RootProps {
    */
   activationMode?: 'manual' | 'automatic'
   /**
-   * Whether the tab is composite
-   */
-  composite?: boolean
-  /**
    * The initial selected tab value when rendered.
    * Use when you don't need to control the selected tab value.
    */
@@ -62,6 +58,16 @@ export interface RootProps {
    * Specifies the localized strings that identifies the accessibility elements and their states
    */
   translations?: tabs.IntlTranslations
+  /**
+   * Whether the tab trigger should receive virtual focus instead of DOM focus.
+   *
+   * When `true`, triggers receive no DOM focus — arrow keys update `focusedValue`
+   * and all triggers remain `tabIndex: -1`. Useful when tabs live inside another
+   * widget that manages focus (e.g. a combobox).
+   *
+   * @default false
+   */
+  virtualFocus?: boolean
 }
 
 export type RootEmits = {

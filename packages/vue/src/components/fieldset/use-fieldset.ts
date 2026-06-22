@@ -47,6 +47,7 @@ export const useFieldset = (props: MaybeRef<UseFieldsetProps> = {}) => {
     const fieldsetProps = toValue<UseFieldsetProps>(props)
     const id = fieldsetProps.id ?? uuid
     return {
+      id,
       legendId: `fieldset::${id}::legend`,
       errorTextId: `fieldset::${id}::error-text`,
       helperTextId: `fieldset::${id}::helper-text`,
@@ -77,7 +78,7 @@ export const useFieldset = (props: MaybeRef<UseFieldsetProps> = {}) => {
 
   return computed(() => {
     const { disabled, invalid } = toValue<UseFieldsetProps>(props)
-    const { legendId, errorTextId, helperTextId } = ids.value
+    const { id, legendId, errorTextId, helperTextId } = ids.value
 
     const describedByIds: string[] = []
     if (state.hasErrorText && invalid) describedByIds.push(errorTextId)
@@ -86,7 +87,7 @@ export const useFieldset = (props: MaybeRef<UseFieldsetProps> = {}) => {
 
     const getRootProps = () =>
       ({
-        ...parts.root.attrs,
+        ...parts.root.attrs(id),
         disabled,
         'data-disabled': dataAttr(!!disabled),
         'data-invalid': dataAttr(invalid),
@@ -96,19 +97,19 @@ export const useFieldset = (props: MaybeRef<UseFieldsetProps> = {}) => {
 
     const getLegendProps = () => ({
       id: legendId,
-      ...parts.legend.attrs,
+      ...parts.legend.attrs(id),
       'data-disabled': dataAttr(!!disabled),
       'data-invalid': dataAttr(invalid),
     })
 
     const getHelperTextProps = () => ({
       id: helperTextId,
-      ...parts.helperText.attrs,
+      ...parts.helperText.attrs(id),
     })
 
     const getErrorTextProps = (): HTMLAttributes => ({
       id: errorTextId,
-      ...parts.errorText.attrs,
+      ...parts.errorText.attrs(id),
       'aria-live': 'polite',
     })
 

@@ -14,15 +14,14 @@ export interface JsonTreeViewNodeProps extends JsonTreeViewNodeBaseProps {
 <script setup lang="ts">
 import { getAccessibleDescription, jsonNodeToElement, keyPathToKey } from '@zag-js/json-tree-utils'
 import { computed, toValue } from 'vue'
-import TreeViewItemText from '../tree-view/tree-view-item-text.vue'
-import TreeViewItem from '../tree-view/tree-view-item.vue'
+import TreeViewNodeText from '../tree-view/tree-view-node-text.vue'
+import TreeViewNode from '../tree-view/tree-view-node.vue'
 import TreeViewNodeProvider from '../tree-view/tree-view-node-provider.vue'
-import TreeViewBranchContent from '../tree-view/tree-view-branch-content.vue'
-import TreeViewBranchControl from '../tree-view/tree-view-branch-control.vue'
-import TreeViewBranchIndentGuide from '../tree-view/tree-view-branch-indent-guide.vue'
-import TreeViewBranchIndicator from '../tree-view/tree-view-branch-indicator.vue'
-import TreeViewBranchText from '../tree-view/tree-view-branch-text.vue'
-import TreeViewBranch from '../tree-view/tree-view-branch.vue'
+import TreeViewNodeGroupContent from '../tree-view/tree-view-node-group-content.vue'
+import TreeViewCell from '../tree-view/tree-view-cell.vue'
+import TreeViewIndentGuide from '../tree-view/tree-view-indent-guide.vue'
+import TreeViewNodeIndicator from '../tree-view/tree-view-node-indicator.vue'
+import TreeViewNodeGroup from '../tree-view/tree-view-node-group.vue'
 import { useTreeViewContext } from '../tree-view/use-tree-view-context.ts'
 import JsonTreeViewKeyNode from './json-tree-view-key-node.vue'
 import { useJsonTreeViewPropsContext } from './json-tree-view-props-context.ts'
@@ -60,23 +59,25 @@ defineSlots<{
 
 <template>
   <TreeViewNodeProvider :node="node" :index-path="indexPath">
-    <TreeViewBranch v-if="nodeState.isBranch" data-scope="json-tree-view">
-      <TreeViewBranchControl v-bind="nodeProps" data-scope="json-tree-view">
-        <TreeViewBranchIndicator v-if="$slots.arrow" data-scope="json-tree-view">
-          <slot name="arrow" />
-        </TreeViewBranchIndicator>
-        <TreeViewBranchText data-scope="json-tree-view">
-          <JsonTreeViewKeyNode v-if="key" :node="node" :show-quotes="options.quotesOnKeys" />
-          <JsonTreeViewValueNode :node="valueNode">
-            <template #renderValue="{ node: childNode }">
-              <slot name="renderValue" :node="childNode" />
-            </template>
-          </JsonTreeViewValueNode>
-        </TreeViewBranchText>
-      </TreeViewBranchControl>
-      <TreeViewBranchContent data-scope="json-tree-view">
+    <TreeViewNodeGroup v-if="nodeState.isBranch" data-scope="json-tree-view">
+      <TreeViewNode v-bind="nodeProps" data-scope="json-tree-view">
+        <TreeViewCell data-scope="json-tree-view">
+          <TreeViewNodeIndicator v-if="$slots.arrow" type="expanded" data-scope="json-tree-view">
+            <slot name="arrow" />
+          </TreeViewNodeIndicator>
+          <TreeViewNodeText data-scope="json-tree-view">
+            <JsonTreeViewKeyNode v-if="key" :node="node" :show-quotes="options.quotesOnKeys" />
+            <JsonTreeViewValueNode :node="valueNode">
+              <template #renderValue="{ node: childNode }">
+                <slot name="renderValue" :node="childNode" />
+              </template>
+            </JsonTreeViewValueNode>
+          </TreeViewNodeText>
+        </TreeViewCell>
+      </TreeViewNode>
+      <TreeViewNodeGroupContent data-scope="json-tree-view">
         <slot v-if="$slots.indentGuide" name="indentGuide" />
-        <TreeViewBranchIndentGuide v-else-if="indentGuide" />
+        <TreeViewIndentGuide v-else-if="indentGuide" />
         <JsonTreeViewNode
           v-for="(child, index) in node.children"
           :key="index"
@@ -94,17 +95,19 @@ defineSlots<{
             <slot name="renderValue" :node="childNode" />
           </template>
         </JsonTreeViewNode>
-      </TreeViewBranchContent>
-    </TreeViewBranch>
-    <TreeViewItem v-else v-bind="nodeProps" data-scope="json-tree-view">
-      <TreeViewItemText data-scope="json-tree-view">
-        <JsonTreeViewKeyNode v-if="key" :node="node" :show-quotes="options.quotesOnKeys" />
-        <JsonTreeViewValueNode :node="valueNode">
-          <template #renderValue="{ node: childNode }">
-            <slot name="renderValue" :node="childNode" />
-          </template>
-        </JsonTreeViewValueNode>
-      </TreeViewItemText>
-    </TreeViewItem>
+      </TreeViewNodeGroupContent>
+    </TreeViewNodeGroup>
+    <TreeViewNode v-else v-bind="nodeProps" data-scope="json-tree-view">
+      <TreeViewCell data-scope="json-tree-view">
+        <TreeViewNodeText data-scope="json-tree-view">
+          <JsonTreeViewKeyNode v-if="key" :node="node" :show-quotes="options.quotesOnKeys" />
+          <JsonTreeViewValueNode :node="valueNode">
+            <template #renderValue="{ node: childNode }">
+              <slot name="renderValue" :node="childNode" />
+            </template>
+          </JsonTreeViewValueNode>
+        </TreeViewNodeText>
+      </TreeViewCell>
+    </TreeViewNode>
   </TreeViewNodeProvider>
 </template>

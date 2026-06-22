@@ -25,11 +25,6 @@ export interface RootProps<T extends CollectionItem> {
    */
   collection?: ListCollection<T>
   /**
-   * Whether the combobox is a composed with other composite widgets like tabs
-   * @default true
-   */
-  composite?: boolean
-  /**
    * The initial highlighted value of the combobox when rendered.
    * Use when you don't need to control the highlighted value of the combobox.
    */
@@ -151,6 +146,17 @@ export interface RootProps<T extends CollectionItem> {
    * The placeholder text of the combobox's input
    */
   placeholder?: string
+  /**
+   * The ARIA pattern of the popup. Drives `aria-haspopup` on the trigger, the
+   * `role` of the content element, the trigger's keyboard handling, and the
+   * label's click target.
+   * - `"listbox"` (default) — input-driven combobox; popup is a passive listbox.
+   * - `"dialog"` — popover-style combobox; popup is announced as a dialog,
+   *   trigger is keyboard-active, label-click focuses the trigger.
+   *
+   * @default "listbox"
+   */
+  popupType?: 'listbox' | 'dialog'
   /**
    * The positioning options to dynamically position the menu
    * @default { placement: "bottom-start" }

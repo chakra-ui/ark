@@ -24,7 +24,7 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 const props = withDefaults(defineProps<CarouselRootProps>(), {
   allowMouseDrag: undefined,
   loop: undefined,
-  autoplay: undefined,
+  autoPlay: undefined,
   autoSize: undefined,
 } satisfies BooleanDefaults<RootProps>)
 

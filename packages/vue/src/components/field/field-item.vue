@@ -23,8 +23,8 @@ const itemField = computed(() => {
   const controlId = `field::${parent.ids.control}::item::${props.value}`
   const labelId = `${controlId}::label`
 
-  const getControlProps = () => ({
-    ...parent.getInputProps(),
+  const getControlProps = <T extends Record<string, unknown>>(getParentProps: () => T) => ({
+    ...getParentProps(),
     id: controlId,
   })
 
@@ -41,16 +41,16 @@ const itemField = computed(() => {
       htmlFor: controlId,
     }),
     getInputProps: () => ({
-      ...getControlProps(),
-      ...parts.input.attrs,
+      ...getControlProps(parent.getInputProps),
+      ...parts.input.attrs(controlId),
     }),
     getSelectProps: () => ({
-      ...getControlProps(),
-      ...parts.select.attrs,
+      ...getControlProps(parent.getSelectProps),
+      ...parts.select.attrs(controlId),
     }),
     getTextareaProps: () => ({
-      ...getControlProps(),
-      ...parts.textarea.attrs,
+      ...getControlProps(parent.getTextareaProps),
+      ...parts.textarea.attrs(controlId),
     }),
   }
 })

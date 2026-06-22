@@ -3,6 +3,13 @@ import type { CollectionItem, ListCollection } from '../collection/index.ts'
 
 export interface RootProps<T extends CollectionItem> {
   /**
+   * Whether the positioner overlaps the trigger so the selected item's text is
+   * aligned with the trigger's value text. Only applies to mouse/keyboard input
+   * and is automatically disabled for touch or when there is not enough space.
+   * @default false
+   */
+  alignItemWithTrigger?: boolean
+  /**
    * The autocomplete attribute for the hidden select. Enables browser autofill (e.g. "address-level1" for state).
    */
   autoComplete?: string
@@ -15,11 +22,6 @@ export interface RootProps<T extends CollectionItem> {
    * The collection of items
    */
   collection: ListCollection<T>
-  /**
-   * Whether the select is a composed with other composite widgets like tabs or combobox
-   * @default true
-   */
-  composite?: boolean
   /**
    * The initial value of the highlighted item when opened.
    * Use when you don't need to control the highlighted value of the select.
@@ -73,6 +75,11 @@ export interface RootProps<T extends CollectionItem> {
     itemGroupLabel(id: string | number): string
   }>
   /**
+   * Element to receive focus when the select is opened. Defaults to the first
+   * tabbable element inside the content (typically the list).
+   */
+  initialFocusEl?: () => HTMLElement | null
+  /**
    * Whether the select is invalid
    */
   invalid?: boolean
@@ -97,6 +104,15 @@ export interface RootProps<T extends CollectionItem> {
    * Whether the select menu is open
    */
   open?: boolean
+  /**
+   * The ARIA pattern of the popup. Drives `aria-haspopup` on the trigger and
+   * the `role` of the content element.
+   * - `"listbox"` (default) — content is a passthrough wrapper; the list bears `role="listbox"`.
+   * - `"dialog"` — content is announced as a dialog; useful when composing search inputs, tabs, or other widgets inside the popup.
+   *
+   * @default "listbox"
+   */
+  popupType?: 'listbox' | 'dialog'
   /**
    * The positioning options of the menu.
    */

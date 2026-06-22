@@ -15,7 +15,6 @@ export interface SegmentGroupLabelProps
 <script setup lang="ts">
 import { ark } from '../factory.ts'
 import { useSegmentGroupContext } from './use-segment-group-context.ts'
-import { parts } from './segment-group.anatomy.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<SegmentGroupLabelProps>()
@@ -25,12 +24,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.span
-    v-bind="segmentGroup.getLabelProps()"
-    :as-child="asChild"
-    :data-scope="parts.label.attrs['data-scope']"
-    :data-part="parts.label.attrs['data-part']"
-  >
+  <ark.span v-bind="segmentGroup.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.span>
 </template>

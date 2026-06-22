@@ -14,7 +14,6 @@ export interface SegmentGroupIndicatorProps
 
 <script setup lang="ts">
 import { ark } from '../factory.ts'
-import { parts } from './segment-group.anatomy.ts'
 import { useSegmentGroupContext } from './use-segment-group-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
@@ -25,12 +24,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div
-    v-bind="segmentGroup.getIndicatorProps()"
-    :as-child="asChild"
-    :data-scope="parts.indicator.attrs['data-scope']"
-    :data-part="parts.indicator.attrs['data-part']"
-  >
+  <ark.div v-bind="segmentGroup.getIndicatorProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

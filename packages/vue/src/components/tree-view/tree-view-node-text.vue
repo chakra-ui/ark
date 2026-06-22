@@ -2,10 +2,10 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory.ts'
 
-export interface TreeViewItemBaseProps extends PolymorphicProps {}
-export interface TreeViewItemProps
+export interface TreeViewNodeTextBaseProps extends PolymorphicProps {}
+export interface TreeViewNodeTextProps
   extends
-    TreeViewItemBaseProps,
+    TreeViewNodeTextBaseProps,
     /**
      * @vue-ignore
      */
@@ -18,7 +18,8 @@ import { ark } from '../factory.ts'
 import { useTreeViewContext } from './use-tree-view-context.ts'
 import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
 
-defineProps<TreeViewItemProps>()
+defineProps<TreeViewNodeTextProps>()
+
 const treeView = useTreeViewContext()
 const nodeProps = useTreeViewNodePropsContext()
 
@@ -26,7 +27,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="treeView.getItemProps(nodeProps)" :as-child="asChild">
+  <ark.span v-bind="treeView.getNodeTextProps(nodeProps)" :as-child="asChild">
     <slot />
-  </ark.div>
+  </ark.span>
 </template>

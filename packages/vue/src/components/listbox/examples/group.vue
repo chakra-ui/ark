@@ -23,15 +23,17 @@ const collection = createListCollection({
   <Listbox.Root :class="styles.Root" :collection="collection">
     <Listbox.Label :class="styles.Label">Select Region</Listbox.Label>
     <Listbox.Content :class="styles.Content">
-      <Listbox.ItemGroup v-for="[region, items] in collection.group()" :key="region" :class="styles.ItemGroup">
-        <Listbox.ItemGroupLabel :class="styles.ItemGroupLabel">{{ region }}</Listbox.ItemGroupLabel>
-        <Listbox.Item v-for="item in items" :key="item.value" :class="styles.Item" :item="item">
-          <Listbox.ItemText :class="styles.ItemText">{{ item.label }}</Listbox.ItemText>
-          <Listbox.ItemIndicator :class="styles.ItemIndicator">
-            <CheckIcon />
-          </Listbox.ItemIndicator>
-        </Listbox.Item>
-      </Listbox.ItemGroup>
+      <Listbox.List :class="styles.List">
+        <Listbox.ItemGroup v-for="[region, items] in collection.group()" :key="region" :class="styles.ItemGroup">
+          <Listbox.ItemGroupLabel :class="styles.ItemGroupLabel">{{ region }}</Listbox.ItemGroupLabel>
+          <Listbox.Item v-for="item in items" :key="item.value" :class="styles.Item" :item="item">
+            <Listbox.ItemText :class="styles.ItemText">{{ item.label }}</Listbox.ItemText>
+            <Listbox.ItemIndicator :class="styles.ItemIndicator">
+              <CheckIcon />
+            </Listbox.ItemIndicator>
+          </Listbox.Item>
+        </Listbox.ItemGroup>
+      </Listbox.List>
     </Listbox.Content>
   </Listbox.Root>
 </template>

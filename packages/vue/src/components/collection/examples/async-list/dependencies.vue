@@ -73,7 +73,7 @@ const list = useAsyncList<User>({
   get dependencies() {
     return [selectedDepartment.value, selectedRole.value]
   },
-  async load({ filterText }: { filterText?: string } = {}) {
+  async load({ filter }) {
     await delay(400)
 
     let items = mockUsers
@@ -86,11 +86,11 @@ const list = useAsyncList<User>({
       items = items.filter((user) => user.role === selectedRole.value)
     }
 
-    if (filterText) {
+    if (filter) {
       items = items.filter(
         (user) =>
-          user.name.toLowerCase().includes(filterText.toLowerCase()) ||
-          user.email.toLowerCase().includes(filterText.toLowerCase()),
+          user.name.toLowerCase().includes(filter.toLowerCase()) ||
+          user.email.toLowerCase().includes(filter.toLowerCase()),
       )
     }
 
@@ -120,17 +120,17 @@ const list = useAsyncList<User>({
         :class="field.Input"
         type="text"
         placeholder="Search..."
-        :value="list.filterText"
-        @input="list.setFilterText(($event.currentTarget as HTMLInputElement).value ?? '')"
+        :value="list.filter"
+        @input="list.setFilter(($event.currentTarget as HTMLInputElement).value ?? '')"
       />
 
-      <span v-if="list.loading" :class="styles.Loading">
+      <span v-if="list.isLoading" :class="styles.Loading">
         <LoaderIcon :class="styles.Spinner" />
         Loading
       </span>
     </div>
 
-    <div v-if="list.error" :class="styles.Error">Error: {{ list.error.message }}</div>
+    <div v-if="list.error" :class="styles.Error">Error: {{ list.error?.message }}</div>
 
     <div :class="styles.Status">Found {{ list.items.length }} users</div>
 
@@ -144,6 +144,8 @@ const list = useAsyncList<User>({
       </div>
     </div>
 
-    <div v-if="list.items.length === 0 && !list.loading" :class="styles.Empty">No users found with current filters</div>
+    <div v-if="list.items.length === 0 && !list.isLoading" :class="styles.Empty">
+      No users found with current filters
+    </div>
   </div>
 </template>

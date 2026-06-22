@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { TreeView } from '@ark-ui/vue/tree-view'
-import { SquareCheckBigIcon, ChevronRightIcon, SquareMinusIcon, SquareIcon } from 'lucide-vue-next'
+import { ChevronRight, SquareCheckBig, SquareMinus } from 'lucide-vue-next'
 
 interface Node {
   id: string
@@ -18,47 +18,47 @@ defineProps<Props>()
 
 <template>
   <TreeView.NodeProvider :node="node" :index-path="indexPath">
-    <TreeView.Branch v-if="node.children">
-      <TreeView.BranchControl>
-        <TreeView.NodeCheckbox>
-          <TreeView.NodeCheckboxIndicator>
-            <SquareCheckBigIcon />
-            <template #indeterminate>
-              <SquareMinusIcon />
-            </template>
-            <template #fallback>
-              <SquareIcon />
-            </template>
-          </TreeView.NodeCheckboxIndicator>
-        </TreeView.NodeCheckbox>
-        <TreeView.BranchText>{{ node.name }}</TreeView.BranchText>
-        <TreeView.BranchIndicator>
-          <ChevronRightIcon />
-        </TreeView.BranchIndicator>
-      </TreeView.BranchControl>
-      <TreeView.BranchContent>
-        <TreeView.BranchIndentGuide />
-        <TreeNodeCheckbox
+    <TreeView.NodeGroup v-if="node.children">
+      <TreeView.Node>
+        <TreeView.Cell>
+          <TreeView.NodeCheckbox>
+            <TreeView.NodeIndicator type="checked">
+              <SquareCheckBig />
+            </TreeView.NodeIndicator>
+            <TreeView.NodeIndicator type="indeterminate">
+              <SquareMinus />
+            </TreeView.NodeIndicator>
+          </TreeView.NodeCheckbox>
+          <TreeView.NodeText>{{ node.name }}</TreeView.NodeText>
+          <TreeView.NodeExpandTrigger>
+            <TreeView.NodeIndicator type="expanded">
+              <ChevronRight />
+            </TreeView.NodeIndicator>
+          </TreeView.NodeExpandTrigger>
+        </TreeView.Cell>
+      </TreeView.Node>
+      <TreeView.NodeGroupContent>
+        <TreeView.IndentGuide />
+        <TreeNodeWithCheckbox
           v-for="(child, childIndex) in node.children"
           :key="child.id"
           :node="child"
           :index-path="[...indexPath, childIndex]"
         />
-      </TreeView.BranchContent>
-    </TreeView.Branch>
-    <TreeView.Item v-else>
-      <TreeView.NodeCheckbox>
-        <TreeView.NodeCheckboxIndicator>
-          <SquareCheckBigIcon />
-          <template #indeterminate>
-            <SquareMinusIcon />
-          </template>
-          <template #fallback>
-            <SquareIcon />
-          </template>
-        </TreeView.NodeCheckboxIndicator>
-      </TreeView.NodeCheckbox>
-      <TreeView.ItemText>{{ node.name }}</TreeView.ItemText>
-    </TreeView.Item>
+      </TreeView.NodeGroupContent>
+    </TreeView.NodeGroup>
+    <TreeView.Node v-else>
+      <TreeView.Cell>
+        <TreeView.NodeCheckbox>
+          <TreeView.NodeIndicator type="checked">
+            <SquareCheckBig />
+          </TreeView.NodeIndicator>
+          <TreeView.NodeIndicator type="indeterminate">
+            <SquareMinus />
+          </TreeView.NodeIndicator>
+        </TreeView.NodeCheckbox>
+        <TreeView.NodeText>{{ node.name }}</TreeView.NodeText>
+      </TreeView.Cell>
+    </TreeView.Node>
   </TreeView.NodeProvider>
 </template>

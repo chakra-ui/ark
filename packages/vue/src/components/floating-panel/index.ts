@@ -5,7 +5,7 @@ export type {
   OpenChangeDetails as FloatingPanelOpenChangeDetails,
   Point as FloatingPanelPoint,
   PositionChangeDetails as FloatingPanelPositionChangeDetails,
-  ResizeTriggerAxis as FloatingPanelResizeTriggerAxis,
+  HandlePosition as FloatingPanelHandlePosition,
   Size as FloatingPanelSize,
   SizeChangeDetails as FloatingPanelSizeChangeDetails,
   Stage as FloatingPanelStage,

@@ -50,7 +50,7 @@ describe('Date Input', () => {
 
   it('should mark segments invalid when invalid prop is passed', () => {
     render(ComponentUnderTest, { props: { invalid: true } })
-    const root = document.querySelector('[data-part="root"]')
+    const root = document.querySelector('[data-date-input-root]')
     expect(root).toHaveAttribute('data-invalid')
   })
 

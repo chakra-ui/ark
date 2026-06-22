@@ -16,7 +16,7 @@ const addSlide = () => {
 <template>
   <div>
     <button :class="button.Root" @click="addSlide">Add Slide</button>
-    <Carousel.Root :class="styles.Root" :slide-count="slides.length">
+    <Carousel.Root :class="styles.Root" :count="slides.length">
       <Carousel.ItemGroup :class="styles.ItemGroup">
         <Carousel.Item v-for="(slide, index) in slides" :key="index" :class="styles.Item" :index="index">
           <div :class="styles.Slide">Slide {{ slide + 1 }}</div>

@@ -25,9 +25,9 @@ import { useTabs } from './use-tabs.ts'
 import { TabsProvider } from './use-tabs-context.ts'
 
 const props = withDefaults(defineProps<TabsRootProps>(), {
-  composite: undefined,
   deselectable: undefined,
   loopFocus: undefined,
+  virtualFocus: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<TabsRootEmits>()

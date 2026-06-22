@@ -34,9 +34,11 @@ const collection = createGridCollection({
   <Listbox.Root :class="styles.Root" :collection="collection">
     <Listbox.Label :class="styles.Label">Pick a reaction</Listbox.Label>
     <Listbox.Content :class="styles.GridContent">
-      <Listbox.Item v-for="item in collection.items" :key="item.value" :class="styles.GridItem" :item="item">
-        <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
-      </Listbox.Item>
+      <Listbox.List :class="styles.List">
+        <Listbox.Item v-for="item in collection.items" :key="item.value" :class="styles.GridItem" :item="item">
+          <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
+        </Listbox.Item>
+      </Listbox.List>
     </Listbox.Content>
   </Listbox.Root>
 </template>

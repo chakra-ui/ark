@@ -30,6 +30,7 @@ const props = withDefaults(defineProps<NumberInputRootProps>(), {
   invalid: undefined,
   readOnly: undefined,
   required: undefined,
+  snapOnStep: undefined,
   spinOnPress: undefined,
 } satisfies BooleanDefaults<RootProps>)
 

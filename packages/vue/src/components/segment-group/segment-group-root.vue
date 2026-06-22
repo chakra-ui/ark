@@ -19,7 +19,6 @@ export interface SegmentGroupRootEmits extends RootEmits {}
 import { ark } from '../factory.ts'
 import { useSegmentGroup } from './use-segment-group.ts'
 import { SegmentGroupProvider } from './use-segment-group-context.ts'
-import { parts } from './segment-group.anatomy.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<SegmentGroupRootProps>(), {
@@ -36,12 +35,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div
-    v-bind="segmentGroup.getRootProps()"
-    :data-scope="parts.root.attrs['data-scope']"
-    :data-part="parts.root.attrs['data-part']"
-    :as-child="asChild"
-  >
+  <ark.div v-bind="segmentGroup.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

@@ -41,7 +41,6 @@ const props = withDefaults(defineProps<ComboboxRootProps<T>>(), {
   alwaysSubmitOnEnter: undefined,
   autoFocus: undefined,
   closeOnSelect: undefined,
-  composite: undefined,
   defaultOpen: undefined,
   disabled: undefined,
   disableLayer: undefined,

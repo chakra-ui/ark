@@ -4,7 +4,7 @@ import styles from 'styles/pin-input.module.css'
 </script>
 
 <template>
-  <PinInput.Root :class="styles.Root" placeholder="*">
+  <PinInput.Root :class="styles.Root" :count="3" placeholder="*">
     <PinInput.Label :class="styles.Label">Label</PinInput.Label>
     <PinInput.Control :class="styles.Control">
       <PinInput.Input v-for="id in [0, 1, 2]" :key="id" :index="id" :class="styles.Input" />

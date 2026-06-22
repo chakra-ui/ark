@@ -91,7 +91,7 @@ export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
   const getRootProps = () => {
     const values = toValue(props)
     return {
-      ...parts.root.attrs,
+      ...parts.root.attrs(id.value),
       id: rootId.value,
       role: 'group',
       'data-disabled': dataAttr(values.disabled),
@@ -108,7 +108,7 @@ export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
   const getLabelProps = () => {
     const values = toValue(props)
     return {
-      ...parts.label.attrs,
+      ...parts.label.attrs(id.value),
       id: labelId.value,
       'data-disabled': dataAttr(values.disabled),
       'data-invalid': dataAttr(values.invalid),
@@ -143,37 +143,37 @@ export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
 
   const getInputProps = () => ({
     ...getControlProps(),
-    ...parts.input.attrs,
+    ...parts.input.attrs(id.value),
   })
 
   const getTextareaProps = () => ({
     ...getControlProps(),
-    ...parts.textarea.attrs,
+    ...parts.textarea.attrs(id.value),
   })
 
   const getSelectProps = () => ({
     ...getControlProps(),
-    ...parts.select.attrs,
+    ...parts.select.attrs(id.value),
   })
 
   const getHelperTextProps = () => {
     const values = toValue(props)
     return {
       id: helperTextId.value,
-      ...parts.helperText.attrs,
+      ...parts.helperText.attrs(id.value),
       'data-disabled': dataAttr(values.disabled),
     }
   }
 
   const getErrorTextProps = (): HTMLAttributes => ({
     id: errorTextId.value,
-    ...parts.errorText.attrs,
+    ...parts.errorText.attrs(id.value),
     'aria-live': 'polite',
   })
 
   const getRequiredIndicatorProps = (): HTMLAttributes => ({
     'aria-hidden': true,
-    ...parts.requiredIndicator.attrs,
+    ...parts.requiredIndicator.attrs(id.value),
   })
 
   return computed(() => {

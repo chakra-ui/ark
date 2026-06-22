@@ -11,7 +11,7 @@ const images = [
   { src: 'https://picsum.photos/seed/5/500/300', alt: 'Forest path' },
 ]
 
-const carousel = useCarousel({ slideCount: images.length })
+const carousel = useCarousel({ count: images.length })
 </script>
 
 <template>

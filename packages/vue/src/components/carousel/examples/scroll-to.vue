@@ -8,7 +8,7 @@ const slides = Array.from({ length: 6 })
 </script>
 
 <template>
-  <Carousel.Root :class="styles.Root" :slide-count="slides.length">
+  <Carousel.Root :class="styles.Root" :count="slides.length">
     <Carousel.Context v-slot="api">
       <button :class="button.Root" @click="api.scrollToIndex(3)">Go to slide 4</button>
     </Carousel.Context>

@@ -12,7 +12,7 @@ describe('Field', () => {
   it('should set textbox as disabled', async () => {
     render(ComponentUnderTest, { props: { disabled: true } })
     expect(screen.getByRole('textbox', { name: /label/i })).toBeDisabled()
-    expect(document.querySelector('[data-part="root"]')).toHaveAttribute('data-disabled')
+    expect(document.querySelector('[data-field-root]')).toHaveAttribute('data-disabled')
     expect(screen.getByText('Label')).toHaveAttribute('data-disabled')
     expect(screen.getByText('Some additional Info')).toHaveAttribute('data-disabled')
   })

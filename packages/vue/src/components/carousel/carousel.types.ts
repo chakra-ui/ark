@@ -10,7 +10,7 @@ export interface RootProps {
    * Whether to scroll automatically. The default delay is 4000ms.
    * @default false
    */
-  autoplay?: boolean | { delay: number }
+  autoPlay?: boolean | { delay: number }
   /**
    * Whether to enable variable width slides.
    * @default false
@@ -54,19 +54,14 @@ export interface RootProps {
    */
   orientation?: 'horizontal' | 'vertical'
   /**
-   * Defines the extra space added around the scrollable area,
-   * enabling nearby items to remain partially in view.
-   */
-  padding?: string
-  /**
    * The controlled page of the carousel.
    */
   page?: number
   /**
    * The total number of slides.
-   * Useful for SSR to render the initial ating the snap points.
+   * Useful for SSR to render the initial snap points.
    */
-  slideCount: number
+  count: number
   /**
    * The number of slides to scroll at a time.
    *
@@ -91,6 +86,11 @@ export interface RootProps {
    * @default "0px"
    */
   spacing?: string
+  /**
+   * Defines the extra space added around the scrollable area,
+   * enabling nearby items to remain partially in view.
+   */
+  itemSpacing?: string
   /**
    * The localized messages to use.
    */

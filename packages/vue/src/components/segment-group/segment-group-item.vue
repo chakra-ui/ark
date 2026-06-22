@@ -19,7 +19,6 @@ import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-co
 import { SegmentGroupItemProvider } from './use-segment-group-item-context.ts'
 import { ark } from '../factory.ts'
 import { useSegmentGroupContext } from './use-segment-group-context.ts'
-import { parts } from './segment-group.anatomy.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<SegmentGroupItemProps>()
@@ -32,12 +31,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.label
-    v-bind="segmentGroup.getItemProps(props)"
-    :data-scope="parts.item.attrs['data-scope']"
-    :data-part="parts.item.attrs['data-part']"
-    :as-child="asChild"
-  >
+  <ark.label v-bind="segmentGroup.getItemProps(props)" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

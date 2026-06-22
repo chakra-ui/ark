@@ -2,7 +2,7 @@
 import { PinInput, usePinInput } from '@ark-ui/vue/pin-input'
 import styles from 'styles/pin-input.module.css'
 
-const pinInput = usePinInput()
+const pinInput = usePinInput({ count: 3 })
 </script>
 
 <template>

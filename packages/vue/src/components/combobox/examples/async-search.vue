@@ -42,8 +42,8 @@ const allMovies: Movie[] = [
 ]
 
 const list = useAsyncList<Movie>({
-  async load({ filterText, signal }) {
-    if (!filterText) return { items: [] }
+  async load({ filter, signal }) {
+    if (!filter) return { items: [] }
 
     await new Promise((resolve) => setTimeout(resolve, 300))
 
@@ -51,9 +51,9 @@ const list = useAsyncList<Movie>({
 
     const items = allMovies.filter(
       (movie) =>
-        movie.title.toLowerCase().includes(filterText.toLowerCase()) ||
-        movie.director.toLowerCase().includes(filterText.toLowerCase()) ||
-        movie.genre.toLowerCase().includes(filterText.toLowerCase()),
+        movie.title.toLowerCase().includes(filter.toLowerCase()) ||
+        movie.director.toLowerCase().includes(filter.toLowerCase()) ||
+        movie.genre.toLowerCase().includes(filter.toLowerCase()),
     )
 
     return { items }
@@ -70,7 +70,7 @@ const collection = computed(() =>
 
 const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
   if (details.reason === 'input-change') {
-    list.value.setFilterText(details.inputValue)
+    list.value.setFilter(details.inputValue)
   }
 }
 </script>
@@ -92,13 +92,13 @@ const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
     <Teleport to="body">
       <Combobox.Positioner>
         <Combobox.Content :class="styles.Content">
-          <div v-if="list.loading" :class="styles.Status">
+          <div v-if="list.isLoading" :class="styles.Status">
             <LoaderIcon :class="styles.Spinner" />
             <span>Searching...</span>
           </div>
           <div v-else-if="list.error" :class="styles.Status">{{ list.error.message }}</div>
           <div v-else-if="list.items.length === 0" :class="styles.Status">
-            {{ list.filterText ? 'No results found' : 'Start typing to search movies...' }}
+            {{ list.filter ? 'No results found' : 'Start typing to search movies...' }}
           </div>
           <Combobox.Item v-else v-for="movie in list.items" :key="movie.id" :item="movie" :class="styles.Item">
             <Combobox.ItemText :class="styles.ItemText">

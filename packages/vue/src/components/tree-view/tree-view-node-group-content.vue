@@ -2,10 +2,10 @@
 import { type HTMLAttributes, computed } from 'vue'
 import type { PolymorphicProps } from '../factory.ts'
 
-export interface TreeViewBranchContentBaseProps extends PolymorphicProps {}
-export interface TreeViewBranchContentProps
+export interface TreeViewNodeGroupContentBaseProps extends PolymorphicProps {}
+export interface TreeViewNodeGroupContentProps
   extends
-    TreeViewBranchContentBaseProps,
+    TreeViewNodeGroupContentBaseProps,
     /**
      * @vue-ignore
      */
@@ -26,12 +26,12 @@ import { createSplitProps } from '../create-split-props.ts'
 
 const splitVisibilityProps = createSplitProps<VisibilityProps>()
 
-defineProps<TreeViewBranchContentProps>()
+defineProps<TreeViewNodeGroupContentProps>()
 const treeView = useTreeViewContext()
-const ndoeProps = useTreeViewNodePropsContext()
+const nodeProps = useTreeViewNodePropsContext()
 
-const branchContentProps = computed(() => {
-  const contentProps = treeView.value.getBranchContentProps(ndoeProps)
+const nodeGroupContentProps = computed(() => {
+  const contentProps = treeView.value.getNodeGroupContentProps(nodeProps)
   const [, ownProps] = splitVisibilityProps(contentProps as VisibilityProps, ['hidden', 'data-state'])
   return ownProps
 })
@@ -40,7 +40,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <Collapsible.Content v-bind="branchContentProps" :as-child="asChild">
+  <Collapsible.Content v-bind="nodeGroupContentProps" :as-child="asChild">
     <slot />
   </Collapsible.Content>
 </template>

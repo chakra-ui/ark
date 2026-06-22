@@ -18,36 +18,38 @@ defineProps<Props>()
 </script>
 
 <template>
-  <TreeView.NodeProvider :node="node" :indexPath="indexPath">
-    <template v-if="node.children">
-      <TreeView.Branch>
-        <TreeView.BranchControl>
-          <TreeView.BranchText>{{ node.name }}</TreeView.BranchText>
-          <TreeView.BranchIndicator>
-            <ChevronRight />
-          </TreeView.BranchIndicator>
-        </TreeView.BranchControl>
-        <TreeView.BranchContent>
-          <TreeView.BranchIndentGuide />
-          <TreeNodeWithLinks
-            v-for="(child, index) in node.children"
-            :key="child.id"
-            :node="child"
-            :indexPath="[...indexPath, index]"
-          />
-        </TreeView.BranchContent>
-      </TreeView.Branch>
-    </template>
-    <template v-else>
-      <TreeView.Item :as-child="true">
+  <TreeView.NodeProvider :node="node" :index-path="indexPath">
+    <TreeView.NodeGroup v-if="node.children">
+      <TreeView.Node>
+        <TreeView.Cell>
+          <TreeView.NodeText>{{ node.name }}</TreeView.NodeText>
+          <TreeView.NodeExpandTrigger>
+            <TreeView.NodeIndicator type="expanded">
+              <ChevronRight />
+            </TreeView.NodeIndicator>
+          </TreeView.NodeExpandTrigger>
+        </TreeView.Cell>
+      </TreeView.Node>
+      <TreeView.NodeGroupContent>
+        <TreeView.IndentGuide />
+        <TreeNodeWithLinks
+          v-for="(child, index) in node.children"
+          :key="child.id"
+          :node="child"
+          :index-path="[...indexPath, index]"
+        />
+      </TreeView.NodeGroupContent>
+    </TreeView.NodeGroup>
+    <TreeView.Node v-else>
+      <TreeView.Cell as-child>
         <a :href="node.href">
-          <TreeView.ItemText>
+          <TreeView.NodeText>
             <File />
             {{ node.name }}
-          </TreeView.ItemText>
+          </TreeView.NodeText>
           <ExternalLink v-if="node.href?.startsWith('http')" :size="12" />
         </a>
-      </TreeView.Item>
-    </template>
+      </TreeView.Cell>
+    </TreeView.Node>
   </TreeView.NodeProvider>
 </template>

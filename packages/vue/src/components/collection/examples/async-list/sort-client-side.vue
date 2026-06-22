@@ -23,10 +23,10 @@ const list = useAsyncList<User>({
     const data = await response.json()
     return { items: data }
   },
-  sort({ items, descriptor }) {
+  sort({ items, sorting }) {
     return {
       items: items.sort((a, b) => {
-        const { column, direction } = descriptor
+        const { column, direction } = sorting
         let cmp = collator.value.compare(String(a[column]), String(b[column]))
         if (direction === 'descending') {
           cmp *= -1
@@ -44,26 +44,26 @@ const columns = [
 ]
 
 const handleSort = (column: keyof User) => {
-  const currentSort = list.value.sortDescriptor
+  const currentSort = list.value.sorting
   let direction: 'ascending' | 'descending' = 'ascending'
 
   if (currentSort?.column === column && currentSort.direction === 'ascending') {
     direction = 'descending'
   }
 
-  list.value.sort({ column, direction })
+  list.value.setSorting({ column, direction })
 }
 
-const descriptor = computed(() => list.value.sortDescriptor)
+const descriptor = computed(() => list.value.sorting)
 </script>
 
 <template>
   <div :class="styles.Root">
-    <div v-if="list.loading" :class="styles.Loading">
+    <div v-if="list.isLoading" :class="styles.Loading">
       <LoaderIcon :class="styles.Spinner" />
       Loading
     </div>
-    <div v-if="list.error" :class="styles.Error">Error: {{ list.error.message }}</div>
+    <div v-if="list.error" :class="styles.Error">Error: {{ list.error?.message }}</div>
     <div :class="styles.Status">
       Sorted by: {{ descriptor ? `${descriptor.column} (${descriptor.direction})` : 'none' }}
     </div>
@@ -73,8 +73,8 @@ const descriptor = computed(() => list.value.sortDescriptor)
         <tr>
           <th v-for="{ key, label } in columns" :key="key" @click="handleSort(key as keyof User)">
             {{ label }}
-            <template v-if="list.sortDescriptor?.column === key">
-              <ArrowUpIcon v-if="list.sortDescriptor?.direction === 'ascending'" />
+            <template v-if="list.sorting?.column === key">
+              <ArrowUpIcon v-if="list.sorting?.direction === 'ascending'" />
               <ArrowDownIcon v-else />
             </template>
             <ArrowUpDownIcon v-else />

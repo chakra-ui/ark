@@ -12,7 +12,7 @@ const images = [
 </script>
 
 <template>
-  <Carousel.Root :class="styles.Root" :slide-count="images.length" autoplay loop>
+  <Carousel.Root :class="styles.Root" :count="images.length" auto-play loop>
     <Carousel.Control :class="styles.Control">
       <Carousel.Context v-slot="api">
         <span :class="styles.StatusText">Autoplay is: {{ api.isPlaying ? 'playing' : 'paused' }}</span>

@@ -6,7 +6,7 @@ export type {
   RotationChangeDetails,
   ZoomChangeDetails,
 } from '@zag-js/image-cropper'
-export { handles } from '@zag-js/image-cropper'
+export { placements } from '@zag-js/image-cropper'
 export { default as Context, type ImageCropperContextProps as ContextProps } from './image-cropper-context.vue'
 export {
   default as Grid,

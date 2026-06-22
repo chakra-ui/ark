@@ -7,7 +7,7 @@ const slides = Array.from({ length: 6 })
 </script>
 
 <template>
-  <Carousel.Root :class="styles.Root" :slide-count="slides.length" :slides-per-page="1.5" spacing="48px">
+  <Carousel.Root :class="styles.Root" :count="slides.length" :slides-per-page="1.5" spacing="48px">
     <span :class="styles.StatusText">spacing='48px'</span>
     <Carousel.ItemGroup :class="styles.ItemGroup">
       <Carousel.Item v-for="(_, index) in slides" :key="index" :class="styles.Item" :index="index">

@@ -21,7 +21,6 @@ export interface SegmentGroupRootProviderProps
 import { computed } from 'vue'
 import { ark } from '../factory.ts'
 import { SegmentGroupProvider } from './use-segment-group-context.ts'
-import { parts } from './segment-group.anatomy.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<SegmentGroupRootProviderProps>()
@@ -33,12 +32,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div
-    v-bind="segmentGroup.getRootProps()"
-    :data-scope="parts.root.attrs['data-scope']"
-    :data-part="parts.root.attrs['data-part']"
-    :as-child="asChild"
-  >
+  <ark.div v-bind="segmentGroup.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

@@ -26,14 +26,16 @@ const nodeState = tree.value.getNodeState(props)
 </script>
 
 <template>
-  <TreeView.NodeProvider :node="node" :indexPath="indexPath">
-    <template v-if="nodeState.isBranch">
-      <TreeView.Branch :class="styles.Branch">
-        <TreeView.BranchControl :class="styles.BranchControl">
-          <TreeView.BranchIndicator :class="styles.BranchIndicator">
-            <ChevronRight />
-          </TreeView.BranchIndicator>
-          <TreeView.BranchText :class="styles.BranchText">{{ node.name }}</TreeView.BranchText>
+  <TreeView.NodeProvider :node="node" :index-path="indexPath">
+    <TreeView.NodeGroup v-if="nodeState.isBranch" :class="styles.NodeGroup">
+      <TreeView.Node :class="styles.Node">
+        <TreeView.Cell :class="styles.Cell">
+          <TreeView.NodeExpandTrigger :class="styles.NodeExpandTrigger">
+            <TreeView.NodeIndicator type="expanded" :class="styles.NodeIndicator">
+              <ChevronRight />
+            </TreeView.NodeIndicator>
+          </TreeView.NodeExpandTrigger>
+          <TreeView.NodeText :class="styles.NodeText">{{ node.name }}</TreeView.NodeText>
           <div :class="styles.ActionGroup">
             <button :class="styles.Action" @click.stop="emit('remove', { node, indexPath })">
               <Trash />
@@ -48,30 +50,30 @@ const nodeState = tree.value.getNodeState(props)
               <Plus />
             </button>
           </div>
-        </TreeView.BranchControl>
-        <TreeView.BranchContent :class="styles.BranchContent">
-          <TreeView.BranchIndentGuide :class="styles.BranchIndentGuide" />
-          <MutationTreeNode
-            v-for="(child, index) in node.children"
-            :key="child.id"
-            :node="child"
-            :indexPath="[...indexPath, index]"
-            @remove="emit('remove', $event)"
-            @add="emit('add', $event)"
-          />
-        </TreeView.BranchContent>
-      </TreeView.Branch>
-    </template>
-    <template v-else>
-      <TreeView.Item :class="styles.Item">
-        <TreeView.ItemText :class="styles.ItemText">{{ node.name }}</TreeView.ItemText>
+        </TreeView.Cell>
+      </TreeView.Node>
+      <TreeView.NodeGroupContent :class="styles.NodeGroupContent">
+        <TreeView.IndentGuide :class="styles.IndentGuide" />
+        <MutationTreeNode
+          v-for="(child, index) in node.children"
+          :key="child.id"
+          :node="child"
+          :index-path="[...indexPath, index]"
+          @remove="emit('remove', $event)"
+          @add="emit('add', $event)"
+        />
+      </TreeView.NodeGroupContent>
+    </TreeView.NodeGroup>
+    <TreeView.Node v-else :class="styles.Node">
+      <TreeView.Cell :class="styles.Cell">
+        <TreeView.NodeText :class="styles.NodeText">{{ node.name }}</TreeView.NodeText>
         <div :class="styles.ActionGroup">
           <button :class="styles.Action" @click.stop="emit('remove', { node, indexPath })">
             <Trash />
           </button>
         </div>
-      </TreeView.Item>
-    </template>
+      </TreeView.Cell>
+    </TreeView.Node>
   </TreeView.NodeProvider>
 </template>
 

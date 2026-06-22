@@ -13,7 +13,7 @@ const items = [
 </script>
 
 <template>
-  <Carousel.Root :class="styles.Root" :slide-count="items.length" :auto-size="true" spacing="8px">
+  <Carousel.Root :class="styles.Root" :count="items.length" :auto-size="true" spacing="8px">
     <Carousel.Control :class="styles.Control">
       <Carousel.PrevTrigger :class="styles.Trigger">
         <ArrowLeftIcon />

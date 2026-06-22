@@ -6,7 +6,7 @@ const props = defineProps<ColorPickerRootBaseProps>()
 const emits = defineEmits<ColorPickerRootEmits>()
 const localProps = useForwardPropsEmits(props, emits)
 
-const defaultValue = props.defaultValue ?? parseColor('#eb5e41')
+const defaultValue = props.defaultValue ?? parseColor('#eb5e41').toFormat('hsba')
 </script>
 
 <template>

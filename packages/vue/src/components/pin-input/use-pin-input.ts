@@ -16,7 +16,7 @@ export interface UsePinInputProps extends Optional<Omit<pinInput.Props, 'dir' | 
 
 export interface UsePinInputReturn extends ComputedRef<pinInput.Api<PropTypes>> {}
 
-export const usePinInput = (props: MaybeRef<UsePinInputProps> = {}, emit?: EmitFn<RootEmits>) => {
+export const usePinInput = (props: MaybeRef<UsePinInputProps>, emit?: EmitFn<RootEmits>) => {
   const id = useId()
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const locale = useLocaleContext(DEFAULT_LOCALE)

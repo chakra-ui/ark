@@ -37,6 +37,7 @@ export {
   type ListboxItemTextProps,
 } from './listbox-item-text.vue'
 export { default as ListboxLabel, type ListboxLabelBaseProps, type ListboxLabelProps } from './listbox-label.vue'
+export { default as ListboxList, type ListboxListBaseProps, type ListboxListProps } from './listbox-list.vue'
 export {
   default as ListboxRoot,
   type ListboxRootBaseProps,

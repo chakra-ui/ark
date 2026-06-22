@@ -13,7 +13,7 @@ const images = [
 </script>
 
 <template>
-  <Carousel.Root :class="styles.Root" orientation="vertical" :slide-count="images.length">
+  <Carousel.Root :class="styles.Root" orientation="vertical" :count="images.length">
     <Carousel.Control :class="styles.Control">
       <Carousel.PrevTrigger :class="styles.Trigger">
         <ArrowUpIcon />

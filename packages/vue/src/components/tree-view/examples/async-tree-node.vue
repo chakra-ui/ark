@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { TreeView } from '@ark-ui/vue/tree-view'
-import { CheckSquare, ChevronRight, File, Folder, Loader2 } from 'lucide-vue-next'
+import { ChevronRight, File, Folder, LoaderCircle, SquareCheckBig } from 'lucide-vue-next'
 
 interface Node {
   id: string
@@ -18,42 +18,44 @@ defineProps<Props>()
 </script>
 
 <template>
-  <TreeView.NodeProvider :node="node" :indexPath="indexPath">
-    <template v-if="node.children || node.childrenCount">
-      <TreeView.Branch>
-        <TreeView.BranchControl>
-          <TreeView.BranchText>
+  <TreeView.NodeProvider :node="node" :index-path="indexPath">
+    <TreeView.NodeGroup v-if="node.children || node.childrenCount">
+      <TreeView.Node>
+        <TreeView.Cell>
+          <TreeView.NodeText>
             <TreeView.NodeContext v-slot="{ loading }">
-              <Loader2 v-if="loading" style="animation: spin 1s infinite" />
+              <LoaderCircle v-if="loading" style="animation: spin 1s infinite" />
               <Folder v-else />
             </TreeView.NodeContext>
             {{ node.name }}
-          </TreeView.BranchText>
-          <TreeView.BranchIndicator>
-            <ChevronRight />
-          </TreeView.BranchIndicator>
-        </TreeView.BranchControl>
-        <TreeView.BranchContent>
-          <TreeView.BranchIndentGuide />
-          <AsyncTreeNode
-            v-for="(child, index) in node.children"
-            :key="child.id"
-            :node="child"
-            :indexPath="[...indexPath, index]"
-          />
-        </TreeView.BranchContent>
-      </TreeView.Branch>
-    </template>
-    <template v-else>
-      <TreeView.Item>
-        <TreeView.ItemIndicator>
-          <CheckSquare />
-        </TreeView.ItemIndicator>
-        <TreeView.ItemText>
+          </TreeView.NodeText>
+          <TreeView.NodeExpandTrigger>
+            <TreeView.NodeIndicator type="expanded">
+              <ChevronRight />
+            </TreeView.NodeIndicator>
+          </TreeView.NodeExpandTrigger>
+        </TreeView.Cell>
+      </TreeView.Node>
+      <TreeView.NodeGroupContent>
+        <TreeView.IndentGuide />
+        <AsyncTreeNode
+          v-for="(child, index) in node.children"
+          :key="child.id"
+          :node="child"
+          :index-path="[...indexPath, index]"
+        />
+      </TreeView.NodeGroupContent>
+    </TreeView.NodeGroup>
+    <TreeView.Node v-else>
+      <TreeView.Cell>
+        <TreeView.NodeIndicator type="selected">
+          <SquareCheckBig />
+        </TreeView.NodeIndicator>
+        <TreeView.NodeText>
           <File />
           {{ node.name }}
-        </TreeView.ItemText>
-      </TreeView.Item>
-    </template>
+        </TreeView.NodeText>
+      </TreeView.Cell>
+    </TreeView.Node>
   </TreeView.NodeProvider>
 </template>

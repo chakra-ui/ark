@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { TreeView } from '@ark-ui/vue/tree-view'
-import { ChevronRight, File, Folder, FolderOpen } from 'lucide-vue-next'
+import { ChevronRight, File, Folder, SquareCheckBig } from 'lucide-vue-next'
 import styles from 'styles/tree-view.module.css'
 
 interface Node {
@@ -18,39 +18,41 @@ defineProps<Props>()
 </script>
 
 <template>
-  <TreeView.NodeProvider :node="node" :indexPath="indexPath">
-    <TreeView.NodeContext v-slot="nodeState">
-      <template v-if="node.children">
-        <TreeView.Branch :class="styles.Branch">
-          <TreeView.BranchControl :class="styles.BranchControl">
-            <TreeView.BranchIndicator :class="styles.BranchIndicator">
-              <ChevronRight />
-            </TreeView.BranchIndicator>
-            <TreeView.BranchText :class="styles.BranchText">
-              <FolderOpen v-if="nodeState.expanded" />
-              <Folder v-else />
-              {{ node.name }}
-            </TreeView.BranchText>
-          </TreeView.BranchControl>
-          <TreeView.BranchContent :class="styles.BranchContent">
-            <TreeView.BranchIndentGuide :class="styles.BranchIndentGuide" />
-            <TreeNode
-              v-for="(child, index) in node.children"
-              :key="child.id"
-              :node="child"
-              :indexPath="[...indexPath, index]"
-            />
-          </TreeView.BranchContent>
-        </TreeView.Branch>
-      </template>
-      <template v-else>
-        <TreeView.Item :class="styles.Item">
-          <TreeView.ItemText :class="styles.ItemText">
-            <File />
+  <TreeView.NodeProvider :node="node" :index-path="indexPath">
+    <TreeView.NodeGroup v-if="node.children" :class="styles.NodeGroup">
+      <TreeView.Node :class="styles.Node">
+        <TreeView.Cell :class="styles.Cell">
+          <TreeView.NodeText :class="styles.NodeText">
+            <Folder />
             {{ node.name }}
-          </TreeView.ItemText>
-        </TreeView.Item>
-      </template>
-    </TreeView.NodeContext>
+          </TreeView.NodeText>
+          <TreeView.NodeExpandTrigger :class="styles.NodeExpandTrigger">
+            <TreeView.NodeIndicator type="expanded" :class="styles.NodeIndicator">
+              <ChevronRight />
+            </TreeView.NodeIndicator>
+          </TreeView.NodeExpandTrigger>
+        </TreeView.Cell>
+      </TreeView.Node>
+      <TreeView.NodeGroupContent :class="styles.NodeGroupContent">
+        <TreeView.IndentGuide :class="styles.IndentGuide" />
+        <TreeNode
+          v-for="(child, index) in node.children"
+          :key="child.id"
+          :node="child"
+          :index-path="[...indexPath, index]"
+        />
+      </TreeView.NodeGroupContent>
+    </TreeView.NodeGroup>
+    <TreeView.Node v-else :class="styles.Node">
+      <TreeView.Cell :class="styles.Cell">
+        <TreeView.NodeIndicator type="selected" :class="styles.NodeIndicator">
+          <SquareCheckBig />
+        </TreeView.NodeIndicator>
+        <TreeView.NodeText :class="styles.NodeText">
+          <File />
+          {{ node.name }}
+        </TreeView.NodeText>
+      </TreeView.Cell>
+    </TreeView.Node>
   </TreeView.NodeProvider>
 </template>
