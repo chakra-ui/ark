@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ToggleGroup, type ToggleGroupRootEmits, type ToggleGroupRootProps } from '../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import { ToggleGroup, type ToggleGroupRootEmits, type ToggleGroupRootProps } from '@ark-ui/vue/toggle-group'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<ToggleGroupRootProps>()
 const emits = defineEmits<ToggleGroupRootEmits>()

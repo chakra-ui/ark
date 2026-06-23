@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Splitter, type SplitterRootEmits, type SplitterRootProps } from '../../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import { Splitter, type SplitterRootEmits, type SplitterRootProps } from '@ark-ui/vue/splitter'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const panels = ref([{ id: 'a' }, { id: 'b' }])
 

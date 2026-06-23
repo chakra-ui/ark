@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Progress, type ProgressRootEmits, type ProgressRootProps } from '../../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import { Progress, type ProgressRootEmits, type ProgressRootProps } from '@ark-ui/vue/progress'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<ProgressRootProps>()
 const emits = defineEmits<ProgressRootEmits>()

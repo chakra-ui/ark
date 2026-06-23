@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Switch, type SwitchRootEmits, type SwitchRootProps } from '../../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import { Switch, type SwitchRootEmits, type SwitchRootProps } from '@ark-ui/vue/switch'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<SwitchRootProps>()
 const emits = defineEmits<SwitchRootEmits>()

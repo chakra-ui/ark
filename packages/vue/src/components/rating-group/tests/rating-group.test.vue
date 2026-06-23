@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { RatingGroup, type RatingGroupRootEmits, type RatingGroupRootProps } from '../../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import { RatingGroup, type RatingGroupRootEmits, type RatingGroupRootProps } from '@ark-ui/vue/rating-group'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<RatingGroupRootProps>()
 const emits = defineEmits<RatingGroupRootEmits>()

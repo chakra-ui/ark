@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { HoverCard, type HoverCardRootEmits, type HoverCardRootProps } from '../../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import { HoverCard, type HoverCardRootEmits, type HoverCardRootProps } from '@ark-ui/vue/hover-card'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<HoverCardRootProps>()
 const emits = defineEmits<HoverCardRootEmits>()

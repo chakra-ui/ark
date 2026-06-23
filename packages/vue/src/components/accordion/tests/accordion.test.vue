@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Accordion, type AccordionRootEmits, type AccordionRootProps } from '../index.ts'
-import { useForwardPropsEmits } from '../../../utils/use-forward-props-emits.ts'
+import { Accordion, type AccordionRootEmits, type AccordionRootProps } from '@ark-ui/vue/accordion'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<AccordionRootProps>()
 const emits = defineEmits<AccordionRootEmits>()

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { QrCode, type QrCodeRootEmits, type QrCodeRootProps } from '../../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import { QrCode, type QrCodeRootEmits, type QrCodeRootProps } from '@ark-ui/vue/qr-code'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<QrCodeRootProps>()
 const emits = defineEmits<QrCodeRootEmits>()

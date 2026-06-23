@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Combobox, createListCollection } from '../../index.ts'
-import { Field } from '../../field/index.ts'
+import { Combobox, createListCollection } from '@ark-ui/vue/combobox'
+import { Field } from '@ark-ui/vue/field'
 
 interface Item {
   label: string

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Editable } from '../../index.ts'
-import { Field } from '../../field/index.ts'
+import { Editable } from '@ark-ui/vue/editable'
+import { Field } from '@ark-ui/vue/field'
 import type { RootProps } from '../../field/field.types.ts'
 
 defineProps<RootProps>()

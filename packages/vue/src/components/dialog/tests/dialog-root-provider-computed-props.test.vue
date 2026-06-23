@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Dialog, useDialog } from '../../index.ts'
+import { Dialog, useDialog } from '@ark-ui/vue/dialog'
 
 const dialog = useDialog(
   computed(() => ({

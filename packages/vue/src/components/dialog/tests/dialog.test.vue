@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Dialog, type DialogRootEmits, type DialogRootProps } from '../../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import { Dialog, type DialogRootEmits, type DialogRootProps } from '@ark-ui/vue/dialog'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<DialogRootProps>()
 const emits = defineEmits<DialogRootEmits>()

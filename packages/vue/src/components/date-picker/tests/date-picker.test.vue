@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { DatePicker, type DatePickerRootEmits, type DatePickerRootProps } from '../../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import { DatePicker, type DatePickerRootEmits, type DatePickerRootProps } from '@ark-ui/vue/date-picker'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<DatePickerRootProps>()
 const emits = defineEmits<DatePickerRootEmits>()

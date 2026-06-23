@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Pagination, type PaginationRootEmits, type PaginationRootProps } from '../../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import { Pagination, type PaginationRootEmits, type PaginationRootProps } from '@ark-ui/vue/pagination'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<PaginationRootProps>()
 const emits = defineEmits<PaginationRootEmits>()

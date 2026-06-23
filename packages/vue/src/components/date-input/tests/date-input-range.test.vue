@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DateInput, type DateInputRootProps } from '../index.ts'
+import { DateInput, type DateInputRootProps } from '@ark-ui/vue/date-input'
 
 const props = defineProps<DateInputRootProps>()
 </script>

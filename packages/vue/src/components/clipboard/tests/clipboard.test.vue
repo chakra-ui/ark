@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Clipboard, type ClipboardRootEmits, type ClipboardRootProps } from '../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import { Clipboard, type ClipboardRootEmits, type ClipboardRootProps } from '@ark-ui/vue/clipboard'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<ClipboardRootProps>()
 const emits = defineEmits<ClipboardRootEmits>()

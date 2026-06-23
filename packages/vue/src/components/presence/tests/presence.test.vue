@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Presence, type PresenceEmits, type PresenceProps } from '../../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import { Presence, type PresenceEmits, type PresenceProps } from '@ark-ui/vue/presence'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<PresenceProps>()
 const emits = defineEmits<PresenceEmits>()
