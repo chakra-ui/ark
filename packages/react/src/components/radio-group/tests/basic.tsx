@@ -1,4 +1,4 @@
-import { RadioGroup } from '../index.ts'
+import { RadioGroup } from '@ark-ui/react/radio-group'
 
 export const ComponentUnderTest = (props: RadioGroup.RootProps) => {
   const items = [

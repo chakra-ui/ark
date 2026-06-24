@@ -1,6 +1,6 @@
-import { Select, createListCollection } from '../index.ts'
-import type { Optional } from '../../../types.ts'
-import { Portal } from '../../portal/index.ts'
+import { Select, createListCollection } from '@ark-ui/react/select'
+import type { Optional } from '@ark-ui/react'
+import { Portal } from '@ark-ui/react/portal'
 
 interface Item {
   label: string

@@ -1,4 +1,4 @@
-import { Popover } from '../index.ts'
+import { Popover } from '@ark-ui/react/popover'
 
 export const ComponentUnderTest = (props: Popover.RootProps) => (
   <Popover.Root {...props}>

@@ -1,4 +1,4 @@
-import { ColorPicker, parseColor } from '../index.ts'
+import { ColorPicker, parseColor } from '@ark-ui/react/color-picker'
 
 export const ComponentUnderTest = (props: ColorPicker.RootProps) => (
   <ColorPicker.Root defaultValue={parseColor('#eb5e41')} {...props}>

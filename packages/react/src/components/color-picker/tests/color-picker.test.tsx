@@ -1,8 +1,8 @@
+import { ColorPicker, parseColor } from '@ark-ui/react/color-picker'
+import { Field } from '@ark-ui/react/field'
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { ColorPicker, parseColor } from '../index.ts'
-import { Field } from '../../field/index.ts'
 import { ComponentUnderTest } from './basic.tsx'
 
 describe('ColorPicker', () => {

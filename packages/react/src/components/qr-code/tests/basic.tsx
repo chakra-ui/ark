@@ -1,4 +1,4 @@
-import { QrCode } from '../../index.ts'
+import { QrCode } from '@ark-ui/react/qr-code'
 
 export const ComponentUnderTest = () => {
   return (

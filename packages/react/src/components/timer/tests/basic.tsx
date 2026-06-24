@@ -1,4 +1,4 @@
-import { Timer } from '../index.ts'
+import { Timer } from '@ark-ui/react/timer'
 
 export const ComponentUnderTest = () => (
   <Timer.Root>

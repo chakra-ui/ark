@@ -1,4 +1,4 @@
-import { Pagination } from '../index.ts'
+import { Pagination } from '@ark-ui/react/pagination'
 
 export const ComponentUnderTest = (props: Pagination.RootProps) => (
   <Pagination.Root {...props}>

@@ -1,4 +1,4 @@
-import { AngleSlider } from '../index.ts'
+import { AngleSlider } from '@ark-ui/react/angle-slider'
 
 export const ComponentUnderTest = (props: AngleSlider.RootProps) => {
   return (

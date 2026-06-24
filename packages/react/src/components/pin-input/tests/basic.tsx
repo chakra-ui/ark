@@ -1,5 +1,5 @@
 import { Field } from '@ark-ui/react/field'
-import { PinInput } from '../index.ts'
+import { PinInput } from '@ark-ui/react/pin-input'
 
 export const ComponentUnderTest = (props: PinInput.RootProps) => (
   <PinInput.Root {...props}>

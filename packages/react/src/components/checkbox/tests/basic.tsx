@@ -1,5 +1,5 @@
+import { Checkbox } from '@ark-ui/react/checkbox'
 import { CheckIcon, MinusIcon } from 'lucide-react'
-import { Checkbox } from '../index.ts'
 
 export const ComponentUnderTest = (props: Checkbox.RootProps) => (
   <Checkbox.Group>

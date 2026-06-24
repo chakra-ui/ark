@@ -1,6 +1,6 @@
+import { Field } from '@ark-ui/react/field'
+import { SignaturePad } from '@ark-ui/react/signature-pad'
 import { RotateCcwIcon } from 'lucide-react'
-import { Field } from '../../field/index.ts'
-import { SignaturePad } from '../index.ts'
 
 export const ComponentUnderTest = (props: SignaturePad.RootProps) => (
   <SignaturePad.Root {...props}>

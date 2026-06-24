@@ -1,9 +1,9 @@
+import { DateInput } from '@ark-ui/react/date-input'
+import { parseDate, parseZonedDateTime } from '@internationalized/date'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { parseDate, parseZonedDateTime } from '@internationalized/date'
 import { ComponentUnderTest } from './basic.tsx'
-import { DateInput } from '..'
 
 describe('Date Input', () => {
   it('should have no a11y violations', async () => {

@@ -1,5 +1,5 @@
-import { Field } from '../../field/index.ts'
-import { Select, createListCollection } from '../index.ts'
+import { Field } from '@ark-ui/react/field'
+import { Select, createListCollection } from '@ark-ui/react/select'
 
 export const SelectWithField = (props: Field.RootProps) => {
   const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })

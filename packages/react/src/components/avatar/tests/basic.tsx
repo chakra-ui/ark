@@ -1,4 +1,4 @@
-import { Avatar } from '../index.ts'
+import { Avatar } from '@ark-ui/react/avatar'
 
 interface Props extends Avatar.RootProps {
   src?: string | undefined
