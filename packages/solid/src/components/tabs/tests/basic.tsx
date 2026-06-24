@@ -1,5 +1,5 @@
+import { Tabs } from '@ark-ui/solid/tabs'
 import { For } from 'solid-js'
-import { Tabs } from '../index.tsx'
 
 export const ComponentUnderTest = (props: Tabs.RootProps) => {
   const items = [{ value: 'React' }, { value: 'Solid' }, { value: 'Svelte', disabled: true }, { value: 'Vue' }]

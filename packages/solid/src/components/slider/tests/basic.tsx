@@ -1,5 +1,5 @@
+import { Slider } from '@ark-ui/solid/slider'
 import { Index, createSignal } from 'solid-js'
-import { Slider } from '../index.tsx'
 
 export const ComponentUnderTest = (props: Slider.RootProps) => {
   const [value, setValue] = createSignal([-20, 20])

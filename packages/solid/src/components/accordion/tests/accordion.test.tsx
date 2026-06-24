@@ -1,6 +1,6 @@
+import { LocaleProvider } from '@ark-ui/solid/locale'
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { LocaleProvider } from '../../../providers/index.tsx'
 import { ComponentUnderTest } from './basic.tsx'
 
 describe('Accordion', () => {

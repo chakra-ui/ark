@@ -1,7 +1,7 @@
+import { ColorPicker, parseColor } from '@ark-ui/solid/color-picker'
+import { Field } from '@ark-ui/solid/field'
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { ColorPicker, parseColor } from '../index.tsx'
-import { Field } from '../../field/index.tsx'
 import { ComponentUnderTest } from './basic.tsx'
 
 describe('ColorPicker', () => {

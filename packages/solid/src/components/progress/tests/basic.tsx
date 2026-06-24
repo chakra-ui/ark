@@ -1,4 +1,4 @@
-import { Progress } from '../index.tsx'
+import { Progress } from '@ark-ui/solid/progress'
 
 export const ComponentUnderTest = (props: Progress.RootProps) => (
   <Progress.Root {...props}>

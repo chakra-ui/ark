@@ -1,5 +1,5 @@
-import { Field } from '../../field/index.tsx'
-import { SignaturePad } from '../index.tsx'
+import { Field } from '@ark-ui/solid/field'
+import { SignaturePad } from '@ark-ui/solid/signature-pad'
 
 export const ComponentUnderTest = (props: SignaturePad.RootProps) => (
   <SignaturePad.Root {...props}>

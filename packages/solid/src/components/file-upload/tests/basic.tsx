@@ -1,5 +1,5 @@
+import { FileUpload } from '@ark-ui/solid/file-upload'
 import { For } from 'solid-js'
-import { FileUpload } from '../index.tsx'
 
 export const ComponentUnderTest = (props: FileUpload.RootProps) => (
   <FileUpload.Root {...props}>

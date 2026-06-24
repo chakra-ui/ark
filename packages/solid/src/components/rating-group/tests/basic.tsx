@@ -1,6 +1,6 @@
 import { Field } from '@ark-ui/solid/field'
+import { RatingGroup } from '@ark-ui/solid/rating-group'
 import { Index } from 'solid-js'
-import { RatingGroup } from '../index.tsx'
 
 export const ComponentUnderTest = (props: RatingGroup.RootProps) => (
   <RatingGroup.Root {...props}>

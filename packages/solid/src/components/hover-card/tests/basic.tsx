@@ -1,5 +1,5 @@
+import { HoverCard } from '@ark-ui/solid/hover-card'
 import { Portal } from 'solid-js/web'
-import { HoverCard } from '../index.tsx'
 
 export const ComponentUnderTest = (props: HoverCard.RootProps) => (
   <HoverCard.Root openDelay={0} closeDelay={0} {...props}>

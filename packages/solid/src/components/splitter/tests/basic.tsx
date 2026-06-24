@@ -1,4 +1,4 @@
-import { Splitter } from '../index.tsx'
+import { Splitter } from '@ark-ui/solid/splitter'
 
 export const ComponentUnderTest = () => (
   <Splitter.Root panels={[{ id: 'a' }, { id: 'b' }]}>

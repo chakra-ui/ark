@@ -1,7 +1,7 @@
+import type { Optional } from '@ark-ui/solid'
+import { Select, createListCollection } from '@ark-ui/solid/select'
 import { For } from 'solid-js'
 import { Portal } from 'solid-js/web'
-import { Select, createListCollection } from '../index.tsx'
-import type { Optional } from '../../../types.ts'
 
 interface Item {
   label: string

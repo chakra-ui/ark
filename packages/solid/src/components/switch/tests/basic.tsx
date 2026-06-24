@@ -1,5 +1,5 @@
 import { Field } from '@ark-ui/solid/field'
-import { Switch } from '../index.tsx'
+import { Switch } from '@ark-ui/solid/switch'
 
 export const ComponentUnderTest = (props: Switch.RootProps) => {
   return (
