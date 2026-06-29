@@ -53,6 +53,9 @@ export const usePresence = (props: MaybeRef<UsePresenceProps>, emit?: EmitFn<Roo
       if (node) {
         api.value.setNode(node)
       }
+    } else {
+      service.refs.set('node', null)
+      service.refs.set('styles', null)
     }
   })
 
