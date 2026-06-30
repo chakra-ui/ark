@@ -63,6 +63,11 @@ export interface RootProps {
    */
   invalid?: boolean
   /**
+   * The amount to increment or decrement the value by when the shift key is held
+   * @default 10 * step
+   */
+  largeStep?: number
+  /**
    * The current locale. Based on the BCP 47 definition.
    * @default "en-US"
    */
@@ -99,6 +104,11 @@ export interface RootProps {
    * Whether the number input is required
    */
   required?: boolean
+  /**
+   * The amount to increment or decrement the value by when the alt key is held
+   * @default step / 10
+   */
+  smallStep?: number
   /**
    * Whether to spin the value when the increment/decrement button is pressed
    * @default true

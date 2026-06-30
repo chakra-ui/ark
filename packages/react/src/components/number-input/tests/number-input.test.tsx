@@ -132,4 +132,48 @@ describe('NumberInput / Field', () => {
     render(<NumberInputWithField />)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
+
+  describe('prop: largeStep', () => {
+    it('should increment by the default largeStep (10 * step) when Shift is held', async () => {
+      render(<ComponentUnderTest defaultValue="5" />)
+      const input = screen.getByRole('spinbutton')
+      input.focus()
+      await user.keyboard('{Shift>}[ArrowUp]{/Shift}')
+      expect(input).toHaveValue('15')
+    })
+
+    it('should use an explicit largeStep when Shift is held', async () => {
+      render(<ComponentUnderTest defaultValue="5" largeStep={5} />)
+      const input = screen.getByRole('spinbutton')
+      input.focus()
+      await user.keyboard('{Shift>}[ArrowUp]{/Shift}')
+      expect(input).toHaveValue('10')
+    })
+
+    it('should not use largeStep when Shift is not held', async () => {
+      render(<ComponentUnderTest defaultValue="5" largeStep={5} />)
+      const input = screen.getByRole('spinbutton')
+      input.focus()
+      await user.keyboard('[ArrowUp]')
+      expect(input).toHaveValue('6')
+    })
+  })
+
+  describe('prop: smallStep', () => {
+    it('should increment by the default smallStep (step / 10) when Alt is held', async () => {
+      render(<ComponentUnderTest defaultValue="5" />)
+      const input = screen.getByRole('spinbutton')
+      input.focus()
+      await user.keyboard('{Alt>}[ArrowUp]{/Alt}')
+      expect(input).toHaveValue('5.1')
+    })
+
+    it('should use an explicit smallStep when Alt is held', async () => {
+      render(<ComponentUnderTest defaultValue="5" smallStep={0.5} />)
+      const input = screen.getByRole('spinbutton')
+      input.focus()
+      await user.keyboard('{Alt>}[ArrowUp]{/Alt}')
+      expect(input).toHaveValue('5.5')
+    })
+  })
 })

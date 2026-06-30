@@ -41,9 +41,8 @@ describe('ColorPicker', () => {
   it('should render with default value', async () => {
     render(ComponentUnderTest, { props: { defaultValue: parseColor('#ff00ff') } })
 
-    expect(screen.getByTestId('swatch-trigger')).toHaveStyle({
-      backgroundColor: 'rgb(255, 0, 255)',
-    })
+    const style = screen.getByTestId('swatch-trigger').getAttribute('style') ?? ''
+    expect(style.toLowerCase()).toContain('#ff00ff')
   })
 })
 

@@ -108,4 +108,36 @@ describe('Slider', () => {
 
     await waitFor(() => expect(onValueChange).toHaveBeenCalledTimes(1))
   })
+
+  describe('prop: largeStep', () => {
+    it('should step by the default largeStep (10 * step) when Shift is held', async () => {
+      render(<ComponentUnderTest />)
+      const [leftThumb] = screen.getAllByRole('slider', { hidden: true })
+
+      leftThumb.focus()
+      await user.keyboard('{Shift>}[ArrowRight]{/Shift}')
+      expect(leftThumb).toHaveAttribute('aria-valuenow', '-10')
+    })
+
+    it('should step by the default largeStep when PageUp/PageDown is pressed', async () => {
+      render(<ComponentUnderTest />)
+      const [leftThumb] = screen.getAllByRole('slider', { hidden: true })
+
+      leftThumb.focus()
+      await user.keyboard('[PageUp]')
+      expect(leftThumb).toHaveAttribute('aria-valuenow', '-10')
+
+      await user.keyboard('[PageDown]')
+      expect(leftThumb).toHaveAttribute('aria-valuenow', '-20')
+    })
+
+    it('should use an explicit largeStep when Shift is held', async () => {
+      render(<ComponentUnderTest largeStep={5} />)
+      const [leftThumb] = screen.getAllByRole('slider', { hidden: true })
+
+      leftThumb.focus()
+      await user.keyboard('{Shift>}[ArrowRight]{/Shift}')
+      expect(leftThumb).toHaveAttribute('aria-valuenow', '-15')
+    })
+  })
 })

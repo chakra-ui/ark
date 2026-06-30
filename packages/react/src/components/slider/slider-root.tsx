@@ -24,6 +24,7 @@ export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>((props, re
     'id',
     'ids',
     'invalid',
+    'largeStep',
     'max',
     'min',
     'minStepsBetweenThumbs',
