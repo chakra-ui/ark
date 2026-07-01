@@ -26,7 +26,7 @@
     "@shikijs/themes": "4.2.0",
     "@shikijs/transformers": "4.2.0",
     "@stackblitz/sdk": "1.11.0",
-    "@types/node": "25.9.1",
+    "@types/node": "26.1.0",
     "@types/pg": "8.20.0",
     "@types/react": "19.2.16",
     "@types/react-dom": "19.2.3",
