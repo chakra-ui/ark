@@ -9,14 +9,14 @@
   },
   "dependencies": {
     "@ark-ui/react": "workspace:*",
-    "lucide-react": "1.17.0",
-    "next": "15.5.12",
+    "lucide-react": "1.23.0",
+    "next": "15.5.20",
     "react": "19.2.7",
     "react-dom": "19.2.7"
   },
   "devDependencies": {
-    "@types/node": "25.9.1",
-    "@types/react": "19.2.16",
+    "@types/node": "25.9.4",
+    "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "typescript": "6.0.3"
   }
