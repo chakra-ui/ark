@@ -155,7 +155,7 @@ describe('NumberInput / Field', () => {
       const input = screen.getByRole('spinbutton')
       input.focus()
       await user.keyboard('[ArrowUp]')
-      expect(input).toHaveValue('6')
+      await waitFor(() => expect(input).toHaveValue('6'))
     })
   })
 
