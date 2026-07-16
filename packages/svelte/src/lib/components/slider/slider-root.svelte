@@ -23,6 +23,7 @@
       'value',
       'min',
       'max',
+      'largeStep',
       'step',
       'orientation',
       'disabled',
