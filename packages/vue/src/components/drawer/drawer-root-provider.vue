@@ -2,6 +2,7 @@
 import type { UnwrapRef } from 'vue'
 import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
 import type { UseDrawerReturn } from './use-drawer.ts'
+import type { RootEmits as PresenceEmits } from '../presence/presence.types.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseDrawerReturn>
@@ -9,6 +10,7 @@ interface RootProviderProps {
 
 export interface DrawerRootProviderBaseProps extends RootProviderProps, RenderStrategyProps {}
 export interface DrawerRootProviderProps extends DrawerRootProviderBaseProps {}
+export interface DrawerRootProviderEmits extends PresenceEmits {}
 </script>
 
 <script setup lang="ts">
@@ -19,13 +21,22 @@ import { useForwardExpose } from '../../utils/index.ts'
 import { PresenceProvider, usePresence } from '../presence/index.ts'
 
 const props = defineProps<DrawerRootProviderProps>()
+const emits = defineEmits<DrawerRootProviderEmits>()
 const drawer = computed(() => props.value)
 
-DrawerProvider(drawer)
-RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
+const presence = usePresence(
+  computed(() => ({
+    present: drawer.value.open,
+    lazyMount: props.lazyMount,
+    unmountOnExit: props.unmountOnExit,
+  })),
+  // @ts-expect-error TODO tweak EmitFn
+  emits,
+)
 
-const presence = usePresence(computed(() => ({ present: drawer.value.open })))
+DrawerProvider(drawer)
 PresenceProvider(presence)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>
