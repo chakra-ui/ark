@@ -173,7 +173,7 @@
     "image-conversion": "2.1.1",
     "lucide-vue-next": "1.0.0",
     "storybook": "10.5.3",
-    "typescript": "6.0.3",
+    "typescript": "7.0.2",
     "vee-validate": "4.15.1",
     "axe-core": "4.12.1",
     "vitest-axe": "1.0.0-pre.5",
