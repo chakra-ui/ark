@@ -10,7 +10,7 @@ import { ToastProvider } from './use-toast-context.ts'
 export type ToastOptions = toast.Options<JSX.Element>
 
 export interface ToasterBaseProps extends PolymorphicProps<'div'>, Omit<toast.GroupProps, 'id' | 'store'> {
-  toaster: CreateToasterReturn
+  toaster: CreateToasterReturn<any>
   children: (toast: Accessor<ToastOptions>) => JSX.Element
 }
 export interface ToasterProps extends Assign<HTMLProps<'div'>, ToasterBaseProps> {}

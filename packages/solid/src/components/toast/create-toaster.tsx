@@ -5,8 +5,8 @@ export interface CreateToasterProps extends Partial<toast.StoreProps> {
   placement: toast.Placement
 }
 
-export interface CreateToasterReturn extends toast.Store<JSX.Element> {}
+export type CreateToasterReturn<T = JSX.Element> = toast.Store<T>
 
-export const createToaster = (props: CreateToasterProps): CreateToasterReturn => {
+export const createToaster = <T = JSX.Element,>(props: CreateToasterProps): CreateToasterReturn<T> => {
   return toast.createStore(props)
 }

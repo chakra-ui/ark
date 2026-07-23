@@ -12,7 +12,7 @@ import { ToastProvider } from './use-toast-context.ts'
 export type ToastOptions = toast.Options<ReactNode>
 
 export interface ToasterBaseProps extends PolymorphicProps, Omit<toast.GroupProps, 'store' | 'id'> {
-  toaster: CreateToasterReturn
+  toaster: CreateToasterReturn<any>
   children: (toast: ToastOptions) => ReactNode
 }
 

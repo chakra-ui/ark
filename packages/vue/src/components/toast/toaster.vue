@@ -11,7 +11,7 @@ import ToasterItem from './toaster-item.vue'
 export type ToastOptions = toast.Options<VNodeChild>
 
 export interface ToasterBaseProps extends PolymorphicProps {
-  toaster: CreateToasterReturn
+  toaster: CreateToasterReturn<any>
 }
 
 export interface ToasterProps
