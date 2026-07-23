@@ -17,7 +17,7 @@ export const StepsRootProvider = (props: StepsRootProviderProps) => {
 
   return (
     <StepsProvider value={steps}>
-      <ark.div {...mergedProps}>{props.children}</ark.div>
+      <ark.div {...mergedProps} />
     </StepsProvider>
   )
 }

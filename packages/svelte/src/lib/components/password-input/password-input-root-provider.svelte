@@ -1,16 +1,11 @@
 <script module lang="ts">
-  import type { Snippet } from 'svelte'
-  import type { Assign, HTMLProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UsePasswordInputReturn } from './use-password-input.svelte.ts'
 
-  interface RootProviderProps {
+  export interface PasswordInputRootProviderBaseProps extends PolymorphicProps<'div'>, RefAttribute {
     value: UsePasswordInputReturn
   }
-
-  export interface PasswordInputRootProviderBaseProps extends RootProviderProps, RefAttribute {}
-  export interface PasswordInputRootProviderProps extends Assign<HTMLProps<'div'>, PasswordInputRootProviderBaseProps> {
-    children?: Snippet
-  }
+  export interface PasswordInputRootProviderProps extends Assign<HTMLProps<'div'>, PasswordInputRootProviderBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -18,13 +13,11 @@
   import { Ark } from '../factory/index.ts'
   import { PasswordInputProvider } from './use-password-input-context.ts'
 
-  let { ref = $bindable(null), ...props }: PasswordInputRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: PasswordInputRootProviderProps = $props()
 
-  const mergedProps = $derived(mergeProps(props.value().getRootProps(), props))
+  const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  PasswordInputProvider(() => props.value())
+  PasswordInputProvider(() => value())
 </script>
 
-<Ark as="div" bind:ref {...mergedProps}>
-  {@render props.children?.()}
-</Ark>
+<Ark as="div" bind:ref {...mergedProps} />
