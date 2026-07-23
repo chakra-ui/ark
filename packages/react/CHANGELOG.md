@@ -1,5 +1,69 @@
 # @ark-ui/react
 
+## [5.38.0] - 2026-07-23
+
+### Added
+
+- Added `hideMode` (`'display-none' | 'activity'`) for how kept-mounted content is hidden when closed. Covers
+  presence-based overlays and Collapsible (including Accordion and TreeView).
+  - `'display-none'` (default): HTML `hidden`. Effects stay alive.
+  - `'activity'`: React 19 [`Activity`](https://react.dev/reference/react/Activity). Effects pause. Applies while
+    content stays mounted:
+
+  ```jsx
+  // applies from the start
+  <Dialog.Root hideMode="activity" />
+  // applies after the first open (lazyMount only delays the first mount)
+  <Dialog.Root lazyMount hideMode="activity" />
+  <Collapsible.Root hideMode="activity" />
+  <Accordion.Root hideMode="activity" />
+  ```
+
+  Does not apply when content is unmounted:
+
+  ```jsx
+  // unmountOnExit removes the tree on close, so hideMode never runs
+  <Dialog.Root lazyMount unmountOnExit hideMode="activity" />
+  ```
+
+- - **Number Input**: Add `largeStep` and `smallStep` props for configurable keyboard stepping. Hold `Shift` for
+    `largeStep` (defaults to `10 * step`), `Alt` for `smallStep` (defaults to `step / 10`). The defaults match the
+    previous behavior.
+    ```jsx
+    <NumberInput.Root largeStep={20} smallStep={0.5} />
+    ```
+  - **Slider**: Add `largeStep` prop, applied on `Shift` or `PageUp`/`PageDown` (defaults to `10 * step`). The default
+    matches the previous behavior.
+
+### Fixed
+
+- Fixed composed refs to keep stable callback refs attached across re-renders.
+
+- Exposed the toast content generic on `createToaster` so `CreateToasterReturn<T>` can type custom toast data.
+
+- Fixed Steps `RootProvider` rendering children twice via both `mergedProps` and explicit `{props.children}`.
+
+- - **Date Input**
+    - Type dates using your locale's native numerals (Arabic-Indic `٠-٩`, Devanagari `०-९`), not just ASCII digits.
+    - Fix timezone-naive values (`CalendarDate`/`CalendarDateTime`) shifting by your local UTC offset when you pass a
+      custom `formatter` without a `timeZone`. A wall-clock value now round-trips unchanged.
+  - **Date Picker**
+    - Type dates using your locale's native numerals, not just ASCII digits.
+    - Reorder dates on blur in range selection, matching the other selection paths.
+    - Fix the day view briefly flashing when you close the picker from the month or year view.
+    - Fix `visibleRangeText` returning a stale value when multiple pickers share a visible range. This was also causing
+      SSR hydration mismatches.
+  - **Menu**: Fix the context menu flashing at the top-left before positioning. Long-press (touch) context menus no
+    longer open stuck at `(0,0)`.
+  - **Number Input**
+    - Fix `api.setValue` throwing when you pass a number and `formatOptions` is set.
+    - Fix `Cmd`/`Ctrl` + arrow keys producing values off the `step` grid.
+  - **Slider**: Fix `Cmd`/`Ctrl` + arrow keys producing values off the `step` grid.
+  - **Tags Input**: Fix native form submit so `FormData` reflects the current tags. The hidden input used to keep its
+    initial value after you added, removed, or cleared tags.
+  - **Toast**: Fix a height flicker when expanding the stack in overlap mode. Heights are now measured without the
+    `scale` transform.
+
 ## [5.37.2] - 2026-06-08
 
 ### Fixed
