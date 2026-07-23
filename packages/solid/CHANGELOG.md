@@ -1,5 +1,53 @@
 # @ark-ui/solid
 
+## [5.38.0] - 2026-07-23
+
+### Added
+
+- - **Number Input**: Add `largeStep` and `smallStep` props for configurable keyboard stepping. Hold `Shift` for
+    `largeStep` (defaults to `10 * step`), `Alt` for `smallStep` (defaults to `step / 10`). The defaults match the
+    previous behavior.
+    ```jsx
+    <NumberInput.Root largeStep={20} smallStep={0.5} />
+    ```
+  - **Slider**: Add `largeStep` prop, applied on `Shift` or `PageUp`/`PageDown` (defaults to `10 * step`). The default
+    matches the previous behavior.
+
+### Fixed
+
+- Exposed the toast content generic on `createToaster` so `CreateToasterReturn<T>` can type custom toast data.
+
+- Fixed FloatingPanel `Content` and `Positioner` not reacting to presence changes. The panel never appeared when
+  `lazyMount` was used, and was never removed from the DOM when `unmountOnExit` was used. `Content` now also forwards
+  the presence ref so exit animations are tracked before unmounting.
+
+- - **Scroll Area**: Fixed `RootProvider` throwing `useScrollAreaContext returned undefined` by evaluating children
+    outside the provider, and merge `getRootProps()` onto the root element.
+  - **Password Input**: Fixed `RootProvider` spreading the machine `value` onto the root DOM element.
+  - **Steps**: Fixed `RootProvider` rendering children twice via both `mergedProps` and explicit `{props.children}`.
+  - **Marquee**: Fixed `Content` merging `children` into every cloned content element's props.
+
+- - **Date Input**
+    - Type dates using your locale's native numerals (Arabic-Indic `٠-٩`, Devanagari `०-९`), not just ASCII digits.
+    - Fix timezone-naive values (`CalendarDate`/`CalendarDateTime`) shifting by your local UTC offset when you pass a
+      custom `formatter` without a `timeZone`. A wall-clock value now round-trips unchanged.
+  - **Date Picker**
+    - Type dates using your locale's native numerals, not just ASCII digits.
+    - Reorder dates on blur in range selection, matching the other selection paths.
+    - Fix the day view briefly flashing when you close the picker from the month or year view.
+    - Fix `visibleRangeText` returning a stale value when multiple pickers share a visible range. This was also causing
+      SSR hydration mismatches.
+  - **Menu**: Fix the context menu flashing at the top-left before positioning. Long-press (touch) context menus no
+    longer open stuck at `(0,0)`.
+  - **Number Input**
+    - Fix `api.setValue` throwing when you pass a number and `formatOptions` is set.
+    - Fix `Cmd`/`Ctrl` + arrow keys producing values off the `step` grid.
+  - **Slider**: Fix `Cmd`/`Ctrl` + arrow keys producing values off the `step` grid.
+  - **Tags Input**: Fix native form submit so `FormData` reflects the current tags. The hidden input used to keep its
+    initial value after you added, removed, or cleared tags.
+  - **Toast**: Fix a height flicker when expanding the stack in overlap mode. Heights are now measured without the
+    `scale` transform.
+
 ## [5.37.1] - 2026-06-06
 
 ### Fixed

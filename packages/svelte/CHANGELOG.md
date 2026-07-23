@@ -1,5 +1,52 @@
 # @ark-ui/svelte
 
+## [5.23.0] - 2026-07-23
+
+### Added
+
+- - **Number Input**: Add `largeStep` and `smallStep` props for configurable keyboard stepping. Hold `Shift` for
+    `largeStep` (defaults to `10 * step`), `Alt` for `smallStep` (defaults to `step / 10`). The defaults match the
+    previous behavior.
+    ```jsx
+    <NumberInput.Root largeStep={20} smallStep={0.5} />
+    ```
+  - **Slider**: Add `largeStep` prop, applied on `Shift` or `PageUp`/`PageDown` (defaults to `10 * step`). The default
+    matches the previous behavior.
+
+### Fixed
+
+- Exposed the toast content generic on `createToaster` so `CreateToasterReturn<T>` can type custom toast data.
+
+- Fixed PasswordInput, PinInput, and FileUpload to consume Field context, propagating `invalid`, `disabled`, `readOnly`,
+  `required`, and `ids` when wrapped in `Field.Root`.
+
+- - **Scroll Area**: Fixed `RootProvider` not merging `getRootProps()` onto the root element.
+  - **Password Input**: Fixed `RootProvider` spreading the machine `value` onto the root DOM element and rendering
+    children twice.
+  - **Json Tree View**: Fixed `RootProvider` not stripping `options` from `value` before forwarding to
+    `TreeView.RootProvider`, and rendering children twice.
+
+- - **Date Input**
+    - Type dates using your locale's native numerals (Arabic-Indic `٠-٩`, Devanagari `०-९`), not just ASCII digits.
+    - Fix timezone-naive values (`CalendarDate`/`CalendarDateTime`) shifting by your local UTC offset when you pass a
+      custom `formatter` without a `timeZone`. A wall-clock value now round-trips unchanged.
+  - **Date Picker**
+    - Type dates using your locale's native numerals, not just ASCII digits.
+    - Reorder dates on blur in range selection, matching the other selection paths.
+    - Fix the day view briefly flashing when you close the picker from the month or year view.
+    - Fix `visibleRangeText` returning a stale value when multiple pickers share a visible range. This was also causing
+      SSR hydration mismatches.
+  - **Menu**: Fix the context menu flashing at the top-left before positioning. Long-press (touch) context menus no
+    longer open stuck at `(0,0)`.
+  - **Number Input**
+    - Fix `api.setValue` throwing when you pass a number and `formatOptions` is set.
+    - Fix `Cmd`/`Ctrl` + arrow keys producing values off the `step` grid.
+  - **Slider**: Fix `Cmd`/`Ctrl` + arrow keys producing values off the `step` grid.
+  - **Tags Input**: Fix native form submit so `FormData` reflects the current tags. The hidden input used to keep its
+    initial value after you added, removed, or cleared tags.
+  - **Toast**: Fix a height flicker when expanding the stack in overlap mode. Heights are now measured without the
+    `scale` transform.
+
 ## [5.22.1] - 2026-06-06
 
 ### Fixed
