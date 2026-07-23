@@ -5,6 +5,7 @@ import type { UsePresenceProps } from './use-presence.ts'
 
 export const splitPresenceProps = <T extends UsePresenceProps>(props: T) =>
   createSplitProps<UsePresenceProps>()(props, [
+    'hideMode',
     'immediate',
     'lazyMount',
     'onExitComplete',

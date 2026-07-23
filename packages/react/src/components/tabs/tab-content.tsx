@@ -7,6 +7,7 @@ import { useComposedRefs } from '../../utils/compose-refs.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { PresenceGate } from '../presence/presence-gate.tsx'
 import { PresenceProvider, usePresence } from '../presence/index.ts'
 import { useTabsContext } from './use-tabs-context.ts'
 
@@ -31,7 +32,9 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>((props, re
 
   return (
     <PresenceProvider value={presence}>
-      {presence.unmounted ? null : <ark.div {...mergedProps} ref={composedRefs} />}
+      <PresenceGate presence={presence}>
+        <ark.div {...mergedProps} ref={composedRefs} />
+      </PresenceGate>
     </PresenceProvider>
   )
 })

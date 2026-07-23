@@ -5,6 +5,7 @@ import { forwardRef } from 'react'
 import { useComposedRefs } from '../../utils/compose-refs.ts'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { PresenceGate } from '../presence/presence-gate.tsx'
 import { usePresence } from '../presence/index.ts'
 import { useDrawerContext } from './use-drawer-context.ts'
 
@@ -18,11 +19,11 @@ export const DrawerBackdrop = forwardRef<HTMLDivElement, DrawerBackdropProps>((p
   const mergedProps = mergeProps(drawer.getBackdropProps(), presence.getPresenceProps(), props)
   const composedRefs = useComposedRefs(presence.ref, ref)
 
-  if (presence.unmounted) {
-    return null
-  }
-
-  return <ark.div {...mergedProps} ref={composedRefs} />
+  return (
+    <PresenceGate presence={presence}>
+      <ark.div {...mergedProps} ref={composedRefs} />
+    </PresenceGate>
+  )
 })
 
 DrawerBackdrop.displayName = 'DrawerBackdrop'

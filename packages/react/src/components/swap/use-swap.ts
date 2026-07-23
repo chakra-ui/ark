@@ -41,9 +41,9 @@ export interface UseSwapReturn {
 }
 
 export const useSwap = (props: UseSwapProps = {}): UseSwapReturn => {
-  const { swap = false, lazyMount, unmountOnExit } = props
+  const { swap = false, lazyMount, unmountOnExit, hideMode } = props
 
-  const presenceProps = { lazyMount, unmountOnExit }
+  const presenceProps = { lazyMount, unmountOnExit, hideMode }
 
   const onPresence = usePresence({ present: swap, ...presenceProps, skipAnimationOnMount: true })
   const offPresence = usePresence({ present: !swap, ...presenceProps, skipAnimationOnMount: true })

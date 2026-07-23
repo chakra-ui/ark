@@ -7,6 +7,7 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic.tsx'
+export { HideMode } from './examples/hide-mode.tsx'
 export { LazyMount } from './examples/lazy-mount.tsx'
 export { LazyMountAndUnmountOnExit } from './examples/lazy-mount-and-unmount-on-exit.tsx'
 export { SkipAnimationOnMount } from './examples/skip-animation-on-mount.tsx'

@@ -75,4 +75,26 @@ describe('Dialog', () => {
     await user.click(screen.getByRole('button', { name: 'Open Dialog' }))
     expect(screen.queryByRole('button', { name: 'Close' })).not.toBeInTheDocument()
   })
+
+  it('applies hidden attribute when hideMode is display-none', async () => {
+    render(<ComponentUnderTest hideMode="display-none" />)
+
+    await user.click(screen.getByRole('button', { name: 'Open Dialog' }))
+    expect(await screen.findByRole('dialog')).toBeVisible()
+
+    await user.click(screen.getByRole('button', { name: 'Close' }))
+    await waitFor(() => expect(screen.getByRole('dialog', { hidden: true })).toHaveAttribute('hidden'))
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+  })
+
+  it('keeps content mounted without hidden attribute when hideMode is activity', async () => {
+    render(<ComponentUnderTest hideMode="activity" />)
+
+    await user.click(screen.getByRole('button', { name: 'Open Dialog' }))
+    expect(await screen.findByRole('dialog')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Close' }))
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
+    await waitFor(() => expect(screen.getByRole('dialog', { hidden: true })).not.toHaveAttribute('hidden'))
+  })
 })

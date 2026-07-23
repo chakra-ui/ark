@@ -2,10 +2,12 @@
 
 import * as presence from '@zag-js/presence'
 import { normalizeProps, useMachine } from '@zag-js/react'
-import { useRef } from 'react'
+import { Activity, useRef } from 'react'
 import type { Optional } from '../../types.ts'
-import type { RenderStrategyProps } from '../../utils/render-strategy.ts'
+import type { HideMode, RenderStrategyProps } from '../../utils/render-strategy.ts'
 import { useEvent } from '../../utils/use-event.ts'
+
+const supportsActivity = typeof Activity !== 'undefined'
 
 export interface UsePresenceProps extends Optional<presence.Props, 'present'>, RenderStrategyProps {
   /**
@@ -17,7 +19,7 @@ export interface UsePresenceProps extends Optional<presence.Props, 'present'>, R
 export type UsePresenceReturn = ReturnType<typeof usePresence>
 
 export const usePresence = (props: UsePresenceProps = {}) => {
-  const { lazyMount, unmountOnExit, present, skipAnimationOnMount = false, ...rest } = props
+  const { lazyMount, unmountOnExit, hideMode = 'display-none', present, skipAnimationOnMount = false, ...rest } = props
   const wasEverPresent = useRef(false)
   const machineProps: Partial<presence.Props> = {
     ...rest,
@@ -35,9 +37,11 @@ export const usePresence = (props: UsePresenceProps = {}) => {
   const unmounted =
     (!api.present && !wasEverPresent.current && lazyMount) || (unmountOnExit && !api.present && wasEverPresent.current)
 
+  const resolvedHideMode: HideMode = hideMode === 'activity' && supportsActivity ? 'activity' : 'display-none'
+
   const getPresenceProps = () => ({
     'data-state': api.skip && skipAnimationOnMount ? undefined : present ? 'open' : 'closed',
-    hidden: !api.present,
+    hidden: resolvedHideMode === 'activity' ? false : !api.present,
   })
 
   return {
@@ -45,5 +49,6 @@ export const usePresence = (props: UsePresenceProps = {}) => {
     getPresenceProps,
     present: api.present,
     unmounted,
+    hideMode: resolvedHideMode,
   }
 }

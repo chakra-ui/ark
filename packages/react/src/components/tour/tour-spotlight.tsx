@@ -5,6 +5,7 @@ import { forwardRef } from 'react'
 import { useComposedRefs } from '../../utils/compose-refs.ts'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { PresenceGate } from '../presence/presence-gate.tsx'
 import { usePresence } from '../presence/index.ts'
 import { useTourContext } from './use-tour-context.ts'
 
@@ -22,11 +23,11 @@ export const TourSpotlight = forwardRef<HTMLDivElement, TourSpotlightProps>((pro
   const hidden = !tour.open || !tour.step?.target?.()
   const composedRefs = useComposedRefs(presence.ref, ref)
 
-  if (presence.unmounted) {
-    return null
-  }
-
-  return <ark.div {...mergedProps} ref={composedRefs} hidden={hidden} />
+  return (
+    <PresenceGate presence={presence}>
+      <ark.div {...mergedProps} ref={composedRefs} hidden={hidden} />
+    </PresenceGate>
+  )
 })
 
 TourSpotlight.displayName = 'TourSpotlight'

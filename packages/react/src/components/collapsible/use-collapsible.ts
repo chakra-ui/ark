@@ -2,10 +2,12 @@
 
 import * as collapsible from '@zag-js/collapsible'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
-import { useId, useRef } from 'react'
+import { Activity, useId, useRef } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { Optional } from '../../types.ts'
-import type { RenderStrategyProps } from '../../utils/render-strategy.ts'
+import type { HideMode, RenderStrategyProps } from '../../utils/render-strategy.ts'
+
+const supportsActivity = typeof Activity !== 'undefined'
 
 export interface UseCollapsibleProps
   extends Optional<Omit<collapsible.Props, 'dir' | 'getRootNode'>, 'id'>, RenderStrategyProps {}
@@ -15,10 +17,14 @@ export interface UseCollapsibleReturn extends collapsible.Api<PropTypes> {
    * Whether the content is unmounted
    */
   isUnmounted?: boolean | undefined
+  /**
+   * Resolved hide strategy for mounted content.
+   */
+  hideMode: HideMode
 }
 
 export const useCollapsible = (props: UseCollapsibleProps = {}): UseCollapsibleReturn => {
-  const { lazyMount, unmountOnExit, ...collapsibleProps } = props
+  const { lazyMount, unmountOnExit, hideMode = 'display-none', ...collapsibleProps } = props
   const id = useId()
   const wasVisible = useRef(false)
   const { dir } = useLocaleContext()
@@ -41,5 +47,7 @@ export const useCollapsible = (props: UseCollapsibleProps = {}): UseCollapsibleR
   const isUnmounted =
     (!api.visible && !wasVisible.current && lazyMount) || (unmountOnExit && !api.visible && wasVisible.current)
 
-  return { ...api, isUnmounted }
+  const resolvedHideMode: HideMode = hideMode === 'activity' && supportsActivity ? 'activity' : 'display-none'
+
+  return { ...api, isUnmounted, hideMode: resolvedHideMode }
 }

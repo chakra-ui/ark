@@ -9,6 +9,7 @@ import { createSplitProps } from '../../utils/create-split-props.ts'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { Portal } from '../portal/index.ts'
+import { PresenceGate } from '../presence/presence-gate.tsx'
 import { PresenceProvider, usePresence } from '../presence/index.ts'
 import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
 import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context.ts'
@@ -32,7 +33,9 @@ export const NavigationMenuContent = forwardRef<HTMLDivElement, NavigationMenuCo
 
   const content = (
     <PresenceProvider value={presence}>
-      {presence.unmounted ? null : <ark.div {...mergedProps} ref={composedRefs} />}
+      <PresenceGate presence={presence}>
+        <ark.div {...mergedProps} ref={composedRefs} />
+      </PresenceGate>
     </PresenceProvider>
   )
 
