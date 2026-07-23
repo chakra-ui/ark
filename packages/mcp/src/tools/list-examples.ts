@@ -10,14 +10,16 @@ export const listExamplesTool: Tool<{ componentList: string[] }> = {
     return { componentList }
   },
   async exec(server, { ctx, name, description }) {
-    server.tool(
+    server.registerTool(
       name,
-      description,
       {
-        framework: z.enum(FRAMEWORKS).describe('The framework type to list components for.'),
-        component: z
-          .enum(ctx.componentList as [string, ...string[]])
-          .describe('The name of the component to retrieve the example for.'),
+        description,
+        inputSchema: {
+          framework: z.enum(FRAMEWORKS).describe('The framework type to list components for.'),
+          component: z
+            .enum(ctx.componentList as [string, ...string[]])
+            .describe('The name of the component to retrieve the example for.'),
+        },
       },
       async ({ framework, component }) => {
         const examples = await listComponentExamples({ framework, component })

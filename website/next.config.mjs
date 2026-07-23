@@ -61,7 +61,8 @@ const nextConfig = {
         permanent: false,
       },
       {
-        source: '/:framework/docs/:slug*',
+        // Exclude `api` so /api/docs* is not treated as a framework docs path.
+        source: '/:framework((?!api)[^/]+)/docs/:slug*',
         destination: '/docs/:slug*',
         permanent: false,
       },
