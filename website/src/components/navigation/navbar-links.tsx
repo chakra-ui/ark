@@ -34,11 +34,17 @@ const link = cva({
 
 const NavbarLink = styled(NextLink, link)
 
-export const NavbarLinks = () => {
+interface Props {
+  gap?: '6' | '8'
+  me?: '2'
+}
+
+export const NavbarLinks = (props: Props) => {
+  const { gap = '6', me } = props
   const pathname = usePathname()
 
   return (
-    <HStack gap="6" me="2">
+    <HStack gap={gap} me={me}>
       {navLinks.map((link) => (
         <NavbarLink
           key={link.href}

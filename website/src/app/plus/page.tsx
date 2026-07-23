@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import { Box, Stack } from 'styled-system/jsx'
 import { Footer } from '~/components/marketing/footer'
+import { Navbar } from '~/components/marketing/navbar'
 import { ClaimPurchaseDialog } from '~/components/plus/claim-purchase-dialog'
 import { ExamplesShowcase } from '~/components/plus/examples-showcase'
 import { Faqs } from '~/components/plus/faqs'
@@ -19,7 +20,9 @@ export default function Page() {
         height="830px"
         background="radial-gradient(42.48% 42.48% at calc(50% + 100vw / 2) center, #EB5E41 0%, rgba(235, 94, 65, 0) 100%)"
         filter="blur(282px)"
+        pointerEvents="none"
       />
+      <Navbar />
       <Stack gap={{ base: '16', md: '24' }} position="relative">
         <PlusHero />
         <ExamplesShowcase />
