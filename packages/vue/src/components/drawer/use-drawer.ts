@@ -8,7 +8,7 @@ import type { RootEmits } from './drawer.types.ts'
 import { useDrawerStackStore } from './use-drawer-stack-store.ts'
 
 export interface UseDrawerProps extends Optional<Omit<drawer.Props, 'dir' | 'getRootNode' | 'defaultSnapPoint'>, 'id'> {
-  defaultSnapPoint?: drawer.SnapPoint | undefined
+  defaultSnapPoint?: drawer.SnapPoint | null | undefined
 }
 export interface UseDrawerReturn extends ComputedRef<drawer.Api<PropTypes>> {}
 

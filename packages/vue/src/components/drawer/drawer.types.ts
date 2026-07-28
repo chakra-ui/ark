@@ -101,12 +101,12 @@ export interface RootProps {
   /**
    * The currently active snap point.
    */
-  snapPoint?: number | string
+  snapPoint?: drawer.SnapPoint | null
   /**
    * The default snap point of the drawer.
    * @default 1
    */
-  defaultSnapPoint?: number | string
+  defaultSnapPoint?: drawer.SnapPoint | null
   /**
    * The value of the trigger that currently open the drawer
    */
@@ -138,7 +138,7 @@ export type RootEmits = {
   /**
    * The callback fired when the snap point changes.
    */
-  'update:snapPoint': [snapPoint: number | string | null]
+  'update:snapPoint': [snapPoint: drawer.SnapPoint | null]
   /**
    * Function called when the trigger value changes
    */
