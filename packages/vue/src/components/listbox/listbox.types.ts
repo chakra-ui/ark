@@ -93,6 +93,10 @@ export type RootEmits<T extends CollectionItem> = {
    */
   highlightChange: [details: listbox.HighlightChangeDetails<T>]
   /**
+   * The callback fired when the highlighted value changes.
+   */
+  'update:highlightedValue': [value: string | null]
+  /**
    * Function called when an item is selected
    */
   select: [details: listbox.SelectionDetails]

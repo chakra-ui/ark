@@ -121,6 +121,10 @@ export type RootEmits = {
    */
   focusChange: [details: dateInput.FocusChangeDetails]
   /**
+   * Function invoked when the placeholder value changes.
+   */
+  placeholderChange: [details: dateInput.PlaceholderChangeDetails]
+  /**
    * Function invoked when the selected value changes.
    */
   valueChange: [details: dateInput.ValueChangeDetails]
@@ -128,4 +132,8 @@ export type RootEmits = {
    * The callback fired when the model value changes.
    */
   'update:modelValue': [value: dateInput.DateValue[]]
+  /**
+   * The callback fired when the placeholder value changes.
+   */
+  'update:placeholderValue': [placeholderValue: dateInput.DateValue]
 }

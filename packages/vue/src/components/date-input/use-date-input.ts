@@ -34,6 +34,11 @@ export const useDateInput = (props: MaybeRef<UseDateInputProps> = {}, emit?: Emi
         emit?.('focusChange', details)
         localeProps.onFocusChange?.(details)
       },
+      onPlaceholderChange: (details) => {
+        emit?.('placeholderChange', details)
+        emit?.('update:placeholderValue', details.placeholderValue)
+        localeProps.onPlaceholderChange?.(details)
+      },
       onValueChange: (details) => {
         emit?.('valueChange', details)
         emit?.('update:modelValue', details.value)

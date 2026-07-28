@@ -128,11 +128,23 @@ export type RootEmits = {
    */
   openChange: [details: drawer.OpenChangeDetails]
   /**
+   * The callback fired when the open state changes.
+   */
+  'update:open': [open: boolean]
+  /**
    * Callback fired when the active snap point changes.
    */
   snapPointChange: [details: drawer.SnapPointChangeDetails]
   /**
+   * The callback fired when the snap point changes.
+   */
+  'update:snapPoint': [snapPoint: number | string | null]
+  /**
    * Function called when the trigger value changes
    */
   triggerValueChange: [details: drawer.TriggerValueChangeDetails]
+  /**
+   * The callback fired when the trigger value changes.
+   */
+  'update:triggerValue': [triggerValue: string | null]
 }

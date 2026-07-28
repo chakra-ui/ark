@@ -138,4 +138,8 @@ export type RootEmits = {
    * Function called when the highlighted menu item changes.
    */
   'update:highlightedValue': [highlightedValue: string | null]
+  /**
+   * The callback fired when the trigger value changes.
+   */
+  'update:triggerValue': [triggerValue: string | null]
 }

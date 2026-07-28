@@ -47,6 +47,7 @@ export const useListbox = <T extends CollectionItem>(
       },
       onHighlightChange: (details) => {
         emit?.('highlightChange', details)
+        emit?.('update:highlightedValue', details.highlightedValue)
         localProps.onHighlightChange?.(details)
       },
       onSelect: (details) => {

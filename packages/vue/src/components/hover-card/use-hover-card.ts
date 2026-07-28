@@ -29,6 +29,7 @@ export const useHoverCard = (props: MaybeRef<UseHoverCardProps> = {}, emit?: Emi
       },
       onTriggerValueChange: (details) => {
         emit?.('triggerValueChange', details)
+        emit?.('update:triggerValue', details.value)
         localeProps.onTriggerValueChange?.(details)
       },
       onFocusOutside: (details) => {

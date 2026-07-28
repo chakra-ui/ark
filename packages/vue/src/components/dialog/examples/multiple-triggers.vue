@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Dialog } from '@ark-ui/vue/dialog'
 import { XIcon } from 'lucide-vue-next'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import button from 'styles/button.module.css'
 import styles from 'styles/dialog.module.css'
 import field from 'styles/field.module.css'
@@ -18,11 +18,12 @@ const users: User[] = [
   { id: '3', name: 'Carol Davis', email: 'carol@example.com' },
 ]
 
-const activeUser = ref<User | null>(null)
+const triggerValue = ref<string | null>(null)
+const activeUser = computed(() => users.find((u) => u.id === triggerValue.value) ?? null)
 </script>
 
 <template>
-  <Dialog.Root @trigger-value-change="(e) => (activeUser = users.find((u) => u.id === e.value) ?? null)">
+  <Dialog.Root v-model:trigger-value="triggerValue">
     <div :class="button.Group">
       <Dialog.Trigger v-for="user in users" :key="user.id" :value="user.id" :class="button.Root">
         Edit {{ user.name }}

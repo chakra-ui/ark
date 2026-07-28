@@ -10,6 +10,10 @@ export interface RootProps {
    */
   defaultAcceptedFiles?: File[]
   /**
+   * The controlled accepted files
+   */
+  acceptedFiles?: File[]
+  /**
    * Whether to allow drag and drop in the dropzone element
    * @default true
    */

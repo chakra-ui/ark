@@ -33,6 +33,7 @@ export const useMenu = (props: MaybeRef<UseMenuProps> = {}, emit?: EmitFn<RootEm
       },
       onTriggerValueChange: (details) => {
         emit?.('triggerValueChange', details)
+        emit?.('update:triggerValue', details.value)
         localeProps.onTriggerValueChange?.(details)
       },
       onEscapeKeyDown: (details) => {

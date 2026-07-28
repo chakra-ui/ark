@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Drawer } from '@ark-ui/vue/drawer'
 import { XIcon } from 'lucide-vue-next'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import button from 'styles/button.module.css'
 import styles from 'styles/drawer.module.css'
 import field from 'styles/field.module.css'
@@ -18,14 +18,12 @@ const users: User[] = [
   { id: '3', name: 'Carol Davis', email: 'carol@example.com' },
 ]
 
-const activeUser = ref<User | null>(null)
+const triggerValue = ref<string | null>(null)
+const activeUser = computed(() => users.find((u) => u.id === triggerValue.value) ?? null)
 </script>
 
 <template>
-  <Drawer.Root
-    swipe-direction="end"
-    @trigger-value-change="(e) => (activeUser = users.find((u) => u.id === e.value) ?? null)"
-  >
+  <Drawer.Root swipe-direction="end" v-model:trigger-value="triggerValue">
     <div :class="button.Group">
       <Drawer.Trigger v-for="user in users" :key="user.id" :value="user.id" :class="button.Root">
         Edit {{ user.name }}

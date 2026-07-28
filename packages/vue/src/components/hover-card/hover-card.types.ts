@@ -76,4 +76,8 @@ export type RootEmits = {
    * The callback fired when the open state changes.
    */
   'update:open': [open: boolean]
+  /**
+   * The callback fired when the trigger value changes.
+   */
+  'update:triggerValue': [triggerValue: string | null]
 }
