@@ -1,5 +1,127 @@
 # @ark-ui/solid
 
+## [5.38.0] - 2026-08-01
+
+### Added
+
+- - **Number Input**: Add `largeStep` and `smallStep` props for configurable keyboard stepping. Hold `Shift` for
+    `largeStep` (defaults to `10 * step`), `Alt` for `smallStep` (defaults to `step / 10`). The defaults match the
+    previous behavior.
+    ```jsx
+    <NumberInput.Root largeStep={20} smallStep={0.5} />
+    ```
+  - **Slider**: Add `largeStep` prop, applied on `Shift` or `PageUp`/`PageDown` (defaults to `10 * step`). The default
+    matches the previous behavior.
+
+- - **Autofocus Control**: Add `data-autofocus` and `data-no-autofocus` to decide what gets focus when an overlay opens.
+    Mark chrome like the close button with `data-no-autofocus` to skip it, or mark the real target with
+    `data-autofocus`.
+    ```jsx
+    <Dialog.Content>
+      <Dialog.CloseTrigger data-no-autofocus>Close</Dialog.CloseTrigger>
+      <input data-autofocus />
+      <button>Save</button>
+    </Dialog.Content>
+    ```
+    Focus goes to `initialFocusEl`, then `[data-autofocus]`, then the first tabbable element without
+    `[data-no-autofocus]`, then the content root.
+    > Supported in Dialog and Drawer.
+  - **Focus Trap**: Add `persistentElements` to treat portalled content as part of the trap when it isn't reachable via
+    `aria-controls`/`aria-expanded`. Pass getters so the elements can be resolved lazily.
+    ```jsx
+    <FocusTrap persistentElements={[() => document.getElementById('toast-region')]} />
+    ```
+  - **Image Cropper**: `getCropData()` now returns the exact `corners` and `outputSize` of the crop in natural-image
+    pixels, so you can hand the region straight to a server-side cropper.
+  - **Image Cropper**: Add `maxSize` to `getCroppedImage()` to cap the output dimensions. The crop keeps its aspect
+    ratio and scales down to fit.
+    ```jsx
+    const blob = await imageCropper.getCroppedImage({ maxSize: { width: 512, height: 512 } })
+    ```
+
+### Fixed
+
+- Exposed the toast content generic on `createToaster` so `CreateToasterReturn<T>` can type custom toast data.
+
+- Fixed FloatingPanel `Content` and `Positioner` not reacting to presence changes. The panel never appeared when
+  `lazyMount` was used, and was never removed from the DOM when `unmountOnExit` was used. `Content` now also forwards
+  the presence ref so exit animations are tracked before unmounting.
+
+- - **Scroll Area**: Fixed `RootProvider` throwing `useScrollAreaContext returned undefined` by evaluating children
+    outside the provider, and merge `getRootProps()` onto the root element.
+  - **Password Input**: Fixed `RootProvider` spreading the machine `value` onto the root DOM element.
+  - **Steps**: Fixed `RootProvider` rendering children twice via both `mergedProps` and explicit `{props.children}`.
+  - **Marquee**: Fixed `Content` merging `children` into every cloned content element's props.
+
+- - **Date Input**
+    - Type dates using your locale's native numerals (Arabic-Indic `٠-٩`, Devanagari `०-९`), not just ASCII digits.
+    - Fix timezone-naive values (`CalendarDate`/`CalendarDateTime`) shifting by your local UTC offset when you pass a
+      custom `formatter` without a `timeZone`. A wall-clock value now round-trips unchanged.
+  - **Date Picker**
+    - Type dates using your locale's native numerals, not just ASCII digits.
+    - Reorder dates on blur in range selection, matching the other selection paths.
+    - Fix the day view briefly flashing when you close the picker from the month or year view.
+    - Fix `visibleRangeText` returning a stale value when multiple pickers share a visible range. This was also causing
+      SSR hydration mismatches.
+  - **Menu**: Fix the context menu flashing at the top-left before positioning. Long-press (touch) context menus no
+    longer open stuck at `(0,0)`.
+  - **Number Input**
+    - Fix `api.setValue` throwing when you pass a number and `formatOptions` is set.
+    - Fix `Cmd`/`Ctrl` + arrow keys producing values off the `step` grid.
+  - **Slider**: Fix `Cmd`/`Ctrl` + arrow keys producing values off the `step` grid.
+  - **Tags Input**: Fix native form submit so `FormData` reflects the current tags. The hidden input used to keep its
+    initial value after you added, removed, or cleared tags.
+  - **Toast**: Fix a height flicker when expanding the stack in overlap mode. Heights are now measured without the
+    `scale` transform.
+
+- - **Color Picker**: Fix the channel input committing a partial value when you press `Enter` to confirm an IME
+    composition.
+  - **Date Input**
+    - Fix segment text lagging behind while you type over an already committed date.
+    - Fix in-progress edits being dropped while focus catches up after auto-advance. Fast typing and
+      `ArrowUp`/`ArrowDown`/`Home`/`End` now land on the segment you're actually editing.
+  - **Date Picker**
+    - Fix disabled and read-only pickers still reacting to cell clicks, the clear trigger, and presets. Read-only
+      pickers keep roving-focus navigation; disabled pickers drop out of the tab order.
+    - Fix `minView`, `maxView`, and `defaultView` being ignored when resolving the initial view, which was hardcoded to
+      day through year.
+    - Fix `defaultOpen` winning over `open`, so a controlled picker could open against its own prop.
+    - Fix `maxSelectedDates` not being enforced on month and year cells in `multiple` selection mode.
+    - Fix keyboard range selection drifting from pointer behavior. Picking a third date restarts the range, and the
+      hover preview updates for `Enter`, `Home`, `End`, and `PageUp`/`PageDown`.
+    - Fix reopening the calendar with only a start date restarting the range instead of resuming it.
+  - **Drawer**: Fix the backdrop flickering on a controlled close when the `open` setter is async.
+  - **Field**: Fix `Field.Textarea` with `autoresize` dispatching a synthetic `input` event when you set `value`
+    programmatically, which fed the value back into your framework and broke controlled state.
+  - **Focus Return**: Fix three focus-trap issues you'd hit with overlays.
+    - Closing an overlay no longer steals focus back from an element your app focused in the meantime, like a second
+      dialog opened right after closing the first.
+    - Closing a nested overlay, such as a popover inside a dialog, no longer throws when the outer container has no
+      connected focusable element at that moment.
+    - The focus ring now shows on the returned-to element after you close with `Escape`.
+    > Affects Dialog, Drawer, Popover, and anything else that traps focus.
+  - **Image Cropper**: Fix `getCroppedImage()` and `getCropData()` returning a different region from the one you see
+    after rotating or flipping the image.
+  - **Marquee**: Fix scroll speed depending on content width. The duration now comes from the content size and the
+    actual translation distance, so `speed` matches real pixel speed even when the content is narrower than the
+    viewport.
+  - **Popover**: Fix tabbing out of portalled content looping back into the content when the trigger was the last
+    tabbable element on the page. Focus now moves to the next tabbable element after the trigger.
+  - **Scroll Lock**: Fix the scroll lock targeting `<body>` on layouts where `<html>` is the real scroll container,
+    which meant nothing was locked while an overlay was open.
+  - **Signature Pad**: Fix controlled `paths` drifting out of sync because the in-progress stroke was appended to
+    `paths`. It now stays in `onDraw.currentPath` until the stroke ends.
+  - **Splitter**
+    - Fix collapsed panels sizing to `minSize` instead of `collapsedSize`.
+    - Fix keyboard resizing breaking when a resize trigger got focus while hovered.
+  - **Tour**
+    - Fix dismissing a tour from a step's `effect` skipping cleanup, which could miss firing the `completed` status.
+    - Fix a tooltip step's position resetting unexpectedly when the tour closed.
+    - Fix a step action with `action: "skip"` doing nothing when clicked.
+  - **Solid**: Fix a `value` of `null` being read as uncontrolled, so controlled components fell back to internal state.
+  - **Solid, Svelte**: Fix machine exit actions running when a component was disposed before the machine started.
+  - **Vue, Svelte**: Fix `defaultValue` being resolved before `value`, unlike React and Solid.
+
 ## [5.37.1] - 2026-06-06
 
 ### Fixed
