@@ -7,7 +7,13 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 
 export interface TrapOptions extends Pick<
   FocusTrapOptions,
-  'onActivate' | 'onDeactivate' | 'initialFocus' | 'fallbackFocus' | 'returnFocusOnDeactivate' | 'setReturnFocus'
+  | 'onActivate'
+  | 'onDeactivate'
+  | 'initialFocus'
+  | 'fallbackFocus'
+  | 'returnFocusOnDeactivate'
+  | 'setReturnFocus'
+  | 'persistentElements'
 > {
   /**
    * Whether the focus trap is disabled.
@@ -30,6 +36,7 @@ export const FocusTrap = (props: FocusTrapProps) => {
     'fallbackFocus',
     'returnFocusOnDeactivate',
     'setReturnFocus',
+    'persistentElements',
   ])
 
   createEffect(() => {

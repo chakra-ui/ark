@@ -10,7 +10,13 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 
 export interface TrapOptions extends Pick<
   FocusTrapOptions,
-  'onActivate' | 'onDeactivate' | 'initialFocus' | 'fallbackFocus' | 'returnFocusOnDeactivate' | 'setReturnFocus'
+  | 'onActivate'
+  | 'onDeactivate'
+  | 'initialFocus'
+  | 'fallbackFocus'
+  | 'returnFocusOnDeactivate'
+  | 'setReturnFocus'
+  | 'persistentElements'
 > {
   /**
    * Whether the focus trap is disabled.
@@ -34,6 +40,7 @@ export const FocusTrap = forwardRef<HTMLDivElement, FocusTrapProps>((props, ref)
     'fallbackFocus',
     'returnFocusOnDeactivate',
     'setReturnFocus',
+    'persistentElements',
   ])
   const composedRefs = useComposedRefs(localRef, ref)
 

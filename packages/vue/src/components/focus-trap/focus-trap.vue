@@ -28,6 +28,7 @@ const props = withDefaults(defineProps<FocusTrapProps>(), {
   initialFocus: undefined,
   fallbackFocus: undefined,
   setReturnFocus: undefined,
+  persistentElements: undefined,
 })
 
 const emits = defineEmits<BaseEmits>()
