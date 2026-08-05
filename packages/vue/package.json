@@ -165,6 +165,7 @@
     "@vitejs/plugin-vue-jsx": "5.1.6",
     "@vitest/coverage-v8": "4.1.10",
     "@vue/compiler-sfc": "3.5.40",
+    "@vue/language-core": "3.3.9",
     "ajv": "8.20.0",
     "check-password-strength": "3.0.0",
     "clean-package": "2.2.0",
