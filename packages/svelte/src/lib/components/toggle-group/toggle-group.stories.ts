@@ -3,6 +3,7 @@ import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import MultipleExample from './examples/multiple.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import WithTooltipExample from './examples/with-tooltip.svelte'
 
 const meta: Meta = {
   title: 'Components / Toggle Group',
@@ -31,5 +32,11 @@ export const Multiple = {
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
+  }),
+}
+
+export const WithTooltip = {
+  render: () => ({
+    Component: WithTooltipExample,
   }),
 }

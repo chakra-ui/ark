@@ -548,6 +548,7 @@ import * as ToggleGroup_Basic from '@examples/toggle-group/examples/basic'
 import * as ToggleGroup_Controlled from '@examples/toggle-group/examples/controlled'
 import * as ToggleGroup_Multiple from '@examples/toggle-group/examples/multiple'
 import * as ToggleGroup_RootProvider from '@examples/toggle-group/examples/root-provider'
+import * as ToggleGroup_WithTooltip from '@examples/toggle-group/examples/with-tooltip'
 import * as Toggle_Basic from '@examples/toggle/examples/basic'
 import * as Toggle_Context from '@examples/toggle/examples/context'
 import * as Toggle_Controlled from '@examples/toggle/examples/controlled'
@@ -1147,6 +1148,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'toggle-group/controlled': ToggleGroup_Controlled,
   'toggle-group/multiple': ToggleGroup_Multiple,
   'toggle-group/root-provider': ToggleGroup_RootProvider,
+  'toggle-group/with-tooltip': ToggleGroup_WithTooltip,
   'toggle/basic': Toggle_Basic,
   'toggle/context': Toggle_Context,
   'toggle/controlled': Toggle_Controlled,
