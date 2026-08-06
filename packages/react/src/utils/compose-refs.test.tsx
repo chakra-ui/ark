@@ -15,15 +15,37 @@ describe('Util: composeRefs', () => {
     expect(objectRef.current).toBe(node)
   })
 
-  it('should run callback ref cleanups', () => {
+  it('should clean up mixed refs: cleanup callback, plain callback, and object ref', () => {
     const node = document.createElement('div')
     const cleanup = vi.fn()
-    const callbackRef = vi.fn(() => cleanup)
+    const refWithCleanup = vi.fn(() => cleanup)
+    const refWithoutCleanup = vi.fn()
+    const objectRef = { current: null as HTMLDivElement | null }
 
-    const dispose = composeRefs(callbackRef)(node) as VoidFunction | undefined
+    const dispose = composeRefs(refWithCleanup, refWithoutCleanup, objectRef)(node) as VoidFunction | undefined
+    expect(dispose).toBeTypeOf('function')
+
     dispose?.()
 
     expect(cleanup).toHaveBeenCalledTimes(1)
+    expect(refWithoutCleanup).toHaveBeenCalledWith(null)
+    expect(objectRef.current).toBeNull()
+  })
+
+  it('should not return a cleanup function when no ref provides one', () => {
+    const node = document.createElement('div')
+    const refWithoutCleanup = vi.fn()
+    const objectRef = { current: null as HTMLDivElement | null }
+
+    const composed = composeRefs(refWithoutCleanup, objectRef)
+
+    const dispose = composed(node)
+    expect(dispose).toBeUndefined()
+
+    composed(null)
+
+    expect(refWithoutCleanup).toHaveBeenCalledWith(null)
+    expect(objectRef.current).toBeNull()
   })
 })
 
