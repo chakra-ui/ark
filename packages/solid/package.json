@@ -177,7 +177,7 @@
     "storybook": "10.5.3",
     "storybook-solidjs-vite": "10.1.1",
     "tsup": "8.5.1",
-    "typescript": "6.0.3",
+    "typescript": "7.0.2",
     "vite": "8.1.5",
     "vite-plugin-solid": "2.11.13",
     "vitest": "4.1.10",
