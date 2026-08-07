@@ -1,5 +1,12 @@
 # @ark-ui/react
 
+## [5.38.1] - 2026-08-07
+
+### Fixed
+
+- Fix `composeRefs`/`useComposedRefs` not resetting plain callback refs and object refs to `null` on detach when
+  composed alongside a React 19 ref that returns a cleanup function.
+
 ## [5.38.0] - 2026-08-01
 
 ### Added
