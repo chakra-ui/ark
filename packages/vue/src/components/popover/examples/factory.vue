@@ -3,7 +3,7 @@ import { ark } from '@ark-ui/vue/factory'
 </script>
 
 <template>
-  <ark.span asChild>
+  <ark.span as-child>
     <a href="#">Ark UI</a>
   </ark.span>
 </template>
