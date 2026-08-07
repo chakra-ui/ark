@@ -15,6 +15,7 @@ const segmentGroupProps = useDateInputSegmentGroupPropsContext()
 const keyedSegments = computed(() =>
   dateInput.value.getSegments(segmentGroupProps!.value).map((segment, index) => ({
     ...segment,
+    index,
     key: `${segment.type}-${index}`,
   })),
 )

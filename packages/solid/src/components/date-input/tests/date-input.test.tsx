@@ -70,6 +70,20 @@ describe('Date Input', () => {
     expect(document.querySelector('[data-type="timeZoneName"]')).toBeInTheDocument()
   })
 
+  it('should render each literal segment with its own text, not the first literal', () => {
+    render(() => (
+      <ComponentUnderTest
+        defaultValue={[parseZonedDateTime('2025-02-03T08:45:00[America/Los_Angeles]')]}
+        granularity="minute"
+      />
+    ))
+    const literalSegments = document.querySelectorAll('[data-type="literal"]')
+    const literalTexts = Array.from(literalSegments).map((segment) => segment.textContent)
+    expect(literalTexts.length).toBeGreaterThan(1)
+    expect(literalTexts).toContain('/')
+    expect(literalTexts).toContain(':')
+  })
+
   it('should hide timeZoneName segment when hideTimeZone is true', () => {
     render(() => (
       <ComponentUnderTest

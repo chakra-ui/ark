@@ -26,9 +26,13 @@ const dateInput = useDateInputContext()
 
 useForwardExpose()
 
+type IndexedSegment = SegmentProps['segment'] & { index?: number }
+
 const currentSegment = computed(() => {
   const segments = dateInput.value.getSegments(segmentGroupProps!.value)
-  return segments.find((s) => s.type === props.segment.type) ?? props.segment
+  // `type` alone doesn't identify a segment, since multiple segments can share it (e.g. `literal`)
+  const index = (props.segment as IndexedSegment).index
+  return (typeof index === 'number' ? segments[index] : undefined) ?? props.segment
 })
 
 const mergedProps = computed(() =>

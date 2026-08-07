@@ -11,14 +11,18 @@ export interface DateInputSegmentProps extends HTMLProps<'span'>, DateInputSegme
 
 const splitSegmentProps = createSplitProps<Pick<SegmentProps, 'segment'>>()
 
+type IndexedSegment = SegmentProps['segment'] & { index?: number }
+
 export const DateInputSegment = (props: DateInputSegmentProps) => {
   const [segmentProps, localProps] = splitSegmentProps(props, ['segment'])
   const segmentGroupProps = useDateInputSegmentGroupPropsContext()
   const api = useDateInputContext()
 
+  // `type` alone doesn't identify a segment, since multiple segments can share it (e.g. `literal`)
   const currentSegment = createMemo(() => {
+    const index = (segmentProps.segment as IndexedSegment).index
     const segments = api().getSegments(segmentGroupProps)
-    return segments.find((s) => s.type === segmentProps.segment.type) ?? segmentProps.segment
+    return (typeof index === 'number' ? segments[index] : undefined) ?? segmentProps.segment
   })
 
   const mergedProps = mergeProps(
