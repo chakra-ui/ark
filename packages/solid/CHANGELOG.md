@@ -1,5 +1,12 @@
 # @ark-ui/solid
 
+## [5.38.1] - 2026-08-07
+
+### Fixed
+
+- Fixed `DateInput.Segment` resolving segments by `type`, so segments sharing a type all rendered the first match's
+  text. Literal separators like `:` and `,` rendered as `/`.
+
 ## [5.38.0] - 2026-08-01
 
 ### Added
