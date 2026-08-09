@@ -2,12 +2,11 @@
 
 import * as collapsible from '@zag-js/collapsible'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
-import { Activity, useId, useRef } from 'react'
+import { useId, useRef } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { Optional } from '../../types.ts'
+import { supportsActivity } from '../../utils/react-activity.ts'
 import type { HideMode, RenderStrategyProps } from '../../utils/render-strategy.ts'
-
-const supportsActivity = typeof Activity !== 'undefined'
 
 export interface UseCollapsibleProps
   extends Optional<Omit<collapsible.Props, 'dir' | 'getRootNode'>, 'id'>, RenderStrategyProps {}

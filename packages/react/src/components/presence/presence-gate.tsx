@@ -1,6 +1,7 @@
 'use client'
 
-import { Activity, type ReactNode } from 'react'
+import type { ReactNode } from 'react'
+import { Activity } from '../../utils/react-activity.ts'
 import type { UsePresenceReturn } from './use-presence.ts'
 
 export interface PresenceGateProps {
@@ -15,7 +16,7 @@ export const PresenceGate = (props: PresenceGateProps) => {
     return null
   }
 
-  if (presence.hideMode === 'activity') {
+  if (presence.hideMode === 'activity' && Activity) {
     return <Activity mode={presence.present ? 'visible' : 'hidden'}>{children}</Activity>
   }
 

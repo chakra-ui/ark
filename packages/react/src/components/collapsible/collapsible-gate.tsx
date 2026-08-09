@@ -1,6 +1,7 @@
 'use client'
 
-import { Activity, type ReactNode } from 'react'
+import type { ReactNode } from 'react'
+import { Activity } from '../../utils/react-activity.ts'
 import type { UseCollapsibleReturn } from './use-collapsible.ts'
 
 export interface CollapsibleGateProps {
@@ -15,7 +16,7 @@ export const CollapsibleGate = (props: CollapsibleGateProps) => {
     return null
   }
 
-  if (collapsible.hideMode === 'activity') {
+  if (collapsible.hideMode === 'activity' && Activity) {
     return <Activity mode={collapsible.visible ? 'visible' : 'hidden'}>{children}</Activity>
   }
 
