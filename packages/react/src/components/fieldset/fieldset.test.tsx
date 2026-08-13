@@ -75,4 +75,30 @@ describe('Fieldset', () => {
       expect(describedBy).toContain('helper-text')
     })
   })
+
+  it('should not re-render in a loop when a textarea with defaultValue is nested', () => {
+    let renders = 0
+
+    render(
+      <Fieldset.Root>
+        <Fieldset.Legend>Legend</Fieldset.Legend>
+        <Field.Root>
+          <Field.Label>Summary</Field.Label>
+          <Field.Textarea defaultValue="hello" />
+        </Field.Root>
+        <Fieldset.Context>
+          {() => {
+            renders += 1
+            if (renders > 50) {
+              throw new Error('Fieldset entered an update loop')
+            }
+            return null
+          }}
+        </Fieldset.Context>
+      </Fieldset.Root>,
+    )
+
+    expect(screen.getByRole('textbox')).toHaveValue('hello')
+    expect(renders).toBeLessThan(10)
+  })
 })
