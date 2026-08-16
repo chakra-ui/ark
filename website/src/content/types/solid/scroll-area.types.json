@@ -34,7 +34,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseScrollAreaContext", "isRequired": true },
+      "value": { "type": "UseScrollAreaReturn", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,

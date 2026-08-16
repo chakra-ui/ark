@@ -121,6 +121,11 @@
         "description": "Whether the tree supports multiple selection\n- \"single\": only one node can be selected\n- \"multiple\": multiple nodes can be selected"
       },
       "showNonenumerable": { "type": "boolean", "isRequired": false },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+      },
       "typeahead": {
         "type": "boolean",
         "defaultValue": "true",
@@ -160,7 +165,7 @@
   "JsonTreeViewTree": {
     "props": {
       "arrow": {
-        "type": "number | boolean | Node | (string & {}) | ArrayElement",
+        "type": "number | boolean | (string & {}) | Node | ArrayElement",
         "isRequired": false,
         "description": "The icon to use for the arrow."
       },
@@ -170,7 +175,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "indentGuide": {
-        "type": "number | boolean | Node | (string & {}) | ArrayElement",
+        "type": "number | boolean | (string & {}) | Node | ArrayElement",
         "isRequired": false,
         "description": "The indent guide to use for the tree."
       },

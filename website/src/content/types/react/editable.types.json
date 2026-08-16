@@ -7,7 +7,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "CancelTrigger": {
     "props": {
@@ -17,7 +18,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "Control": {
     "props": {
@@ -27,7 +29,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "EditTrigger": {
     "props": {
@@ -37,7 +40,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "Input": {
     "props": {
@@ -47,7 +51,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLInputElement"
+    "element": "HTMLInputElement",
+    "tag": "input"
   },
   "Label": {
     "props": {
@@ -57,7 +62,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLLabelElement"
+    "element": "HTMLLabelElement",
+    "tag": "label"
   },
   "Preview": {
     "props": {
@@ -67,7 +73,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLSpanElement"
+    "element": "HTMLSpanElement",
+    "tag": "span"
   },
   "Root": {
     "props": {
@@ -97,21 +104,41 @@
         "isRequired": false,
         "description": "The initial value of the editable when rendered.\nUse when you don't need to control the value of the editable."
       },
-      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the editable is disabled." },
-      "edit": { "type": "boolean", "isRequired": false, "description": "Whether the editable is in edit mode." },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the editable is disabled."
+      },
+      "edit": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the editable is in edit mode."
+      },
       "finalFocusEl": {
         "type": "() => HTMLElement | null",
         "isRequired": false,
         "description": "The element to receive focus when the editable is closed."
       },
-      "form": { "type": "string", "isRequired": false, "description": "The associate form of the underlying input." },
-      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "form": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The associate form of the underlying input."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
       "ids": {
         "type": "Partial<{\n  root: string\n  area: string\n  label: string\n  preview: string\n  input: string\n  control: string\n  submitTrigger: string\n  cancelTrigger: string\n  editTrigger: string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the editable. Useful for composition."
       },
-      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the input's value is invalid." },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the input's value is invalid."
+      },
       "maxLength": {
         "type": "number",
         "isRequired": false,
@@ -162,8 +189,16 @@
         "isRequired": false,
         "description": "The placeholder text for the editable."
       },
-      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the editable is read-only." },
-      "required": { "type": "boolean", "isRequired": false, "description": "Whether the editable is required." },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the editable is read-only."
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the editable is required."
+      },
       "selectOnFocus": {
         "type": "boolean",
         "defaultValue": "true",
@@ -181,20 +216,29 @@
         "isRequired": false,
         "description": "The translations for the editable."
       },
-      "value": { "type": "string", "isRequired": false, "description": "The controlled value of the editable." }
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The controlled value of the editable."
+      }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseEditableReturn", "isRequired": true },
+      "value": {
+        "type": "UseEditableReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "SubmitTrigger": {
     "props": {
@@ -204,6 +248,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   }
 }

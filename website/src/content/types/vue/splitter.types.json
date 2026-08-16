@@ -9,6 +9,20 @@
       }
     }
   },
+  "Registry": {
+    "props": {
+      "hitAreaMargins": {
+        "type": "HitAreaMargins",
+        "isRequired": false,
+        "description": "The hit area margins for resize handles.\nLarger margins make it easier to grab handles, especially on touch devices."
+      },
+      "nonce": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The nonce for the injected cursor stylesheet (for CSP compliance)."
+      }
+    }
+  },
   "ResizeTriggerIndicator": {
     "props": {
       "asChild": {
@@ -20,7 +34,7 @@
   },
   "ResizeTrigger": {
     "props": {
-      "id": { "type": "`${string}:${string}`", "isRequired": true },
+      "id": { "type": "ResizeTriggerId", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -95,6 +109,11 @@
         "defaultValue": "\"horizontal\"",
         "isRequired": false,
         "description": "The orientation of the splitter. Can be `horizontal` or `vertical`"
+      },
+      "registry": {
+        "type": "SplitterRegistry",
+        "isRequired": false,
+        "description": "The splitter registry to use for multi-drag support."
       },
       "size": { "type": "number[]", "isRequired": false, "description": "The controlled size data of the panels" }
     }

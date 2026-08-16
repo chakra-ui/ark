@@ -32,6 +32,15 @@
       }
     }
   },
+  "Description": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "GrabberIndicator": {
     "props": {
       "asChild": {
@@ -99,10 +108,15 @@
       },
       "defaultOpen": { "type": "boolean", "isRequired": false, "description": "The initial open state of the drawer." },
       "defaultSnapPoint": {
-        "type": "string | number",
+        "type": "SnapPoint",
         "defaultValue": "1",
         "isRequired": false,
         "description": "The default snap point of the drawer."
+      },
+      "defaultTriggerValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The initial trigger value when rendered.\nUse when you don't need to control the trigger value."
       },
       "finalFocusEl": {
         "type": "() => HTMLElement | null",
@@ -156,11 +170,7 @@
         "isRequired": false,
         "description": "The sheet's role"
       },
-      "snapPoint": {
-        "type": "string | number",
-        "isRequired": false,
-        "description": "The currently active snap point."
-      },
+      "snapPoint": { "type": "SnapPoint", "isRequired": false, "description": "The currently active snap point." },
       "snapPoints": {
         "type": "(string | number)[]",
         "defaultValue": "[1]",
@@ -174,7 +184,7 @@
         "description": "Whether the drawer should snap to sequential points when swiping."
       },
       "swipeDirection": {
-        "type": "'up' | 'down' | 'left' | 'right'",
+        "type": "SwipeDirection",
         "defaultValue": "\"down\"",
         "isRequired": false,
         "description": "The direction in which the drawer can be swiped."
@@ -190,6 +200,11 @@
         "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to trap focus inside the sheet when it's opened."
+      },
+      "triggerValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value of the trigger that currently open the drawer"
       },
       "unmountOnExit": {
         "type": "boolean",
@@ -216,6 +231,15 @@
       }
     }
   },
+  "SwipeArea": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Title": {
     "props": {
       "asChild": {
@@ -231,6 +255,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value that identifies this specific trigger"
       }
     }
   }

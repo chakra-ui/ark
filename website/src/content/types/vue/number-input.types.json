@@ -125,6 +125,12 @@
         "isRequired": false,
         "description": "Whether the number input value is invalid."
       },
+      "largeStep": {
+        "type": "number",
+        "defaultValue": "10 * step",
+        "isRequired": false,
+        "description": "The amount to increment or decrement the value by when the shift key is held"
+      },
       "locale": {
         "type": "string",
         "defaultValue": "\"en-US\"",
@@ -157,6 +163,12 @@
       },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the number input is readonly" },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the number input is required" },
+      "smallStep": {
+        "type": "number",
+        "defaultValue": "step / 10",
+        "isRequired": false,
+        "description": "The amount to increment or decrement the value by when the alt key is held"
+      },
       "spinOnPress": {
         "type": "boolean",
         "defaultValue": "true",

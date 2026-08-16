@@ -7,7 +7,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "CloseTrigger": {
     "props": {
@@ -17,7 +18,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "Content": {
     "props": {
@@ -27,7 +29,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Control": {
     "props": {
@@ -37,7 +40,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "DragTrigger": {
     "props": {
@@ -47,7 +51,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Header": {
     "props": {
@@ -57,7 +62,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Positioner": {
     "props": {
@@ -67,18 +73,24 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "ResizeTrigger": {
     "props": {
-      "axis": { "type": "ResizeTriggerAxis", "isRequired": true, "description": "The axis of the resize handle" },
+      "axis": {
+        "type": "ResizeTriggerAxis",
+        "isRequired": true,
+        "description": "The axis of the resize handle"
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Root": {
     "props": {
@@ -104,19 +116,32 @@
         "isRequired": false,
         "description": "The initial position of the panel when rendered.\nUse when you don't need to control the position of the panel."
       },
-      "defaultSize": { "type": "Size", "isRequired": false, "description": "The default size of the panel" },
+      "defaultSize": {
+        "type": "Size",
+        "isRequired": false,
+        "description": "The default size of the panel"
+      },
       "dir": {
         "type": "'ltr' | 'rtl'",
         "defaultValue": "\"ltr\"",
         "isRequired": false,
         "description": "The document's text/writing direction."
       },
-      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the panel is disabled" },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the panel is disabled"
+      },
       "draggable": {
         "type": "boolean",
         "defaultValue": "true",
         "isRequired": false,
         "description": "Whether the panel is draggable"
+      },
+      "finalFocusEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "description": "Element to receive focus when the panel is closed.\nBy default, the trigger element is focused."
       },
       "getAnchorPosition": {
         "type": "(details: AnchorPositionDetails) => Point",
@@ -134,7 +159,17 @@
         "isRequired": false,
         "description": "The snap grid for the panel"
       },
-      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "hideMode": {
+        "type": "HideMode",
+        "defaultValue": "'display-none'",
+        "isRequired": false,
+        "description": "How to hide content when mounted but not present.\n- `'display-none'`: HTML `hidden` attribute. Effects stay alive.\n- `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
       "ids": {
         "type": "Partial<{ trigger: string; positioner: string; content: string; title: string; header: string }>",
         "isRequired": false,
@@ -144,6 +179,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
+      "initialFocusEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "description": "Element to receive focus when the panel is opened.\nBy default, the first focusable element in the content is focused."
       },
       "lazyMount": {
         "type": "boolean",
@@ -156,8 +196,16 @@
         "isRequired": false,
         "description": "Whether the panel is locked to its aspect ratio"
       },
-      "maxSize": { "type": "Size", "isRequired": false, "description": "The maximum size of the panel" },
-      "minSize": { "type": "Size", "isRequired": false, "description": "The minimum size of the panel" },
+      "maxSize": {
+        "type": "Size",
+        "isRequired": false,
+        "description": "The maximum size of the panel"
+      },
+      "minSize": {
+        "type": "Size",
+        "isRequired": false,
+        "description": "The minimum size of the panel"
+      },
       "onExitComplete": {
         "type": "VoidFunction",
         "isRequired": false,
@@ -193,13 +241,21 @@
         "isRequired": false,
         "description": "Function called when the stage of the panel changes"
       },
-      "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the panel" },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The controlled open state of the panel"
+      },
       "persistRect": {
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the panel size and position should be preserved when it is closed"
       },
-      "position": { "type": "Point", "isRequired": false, "description": "The controlled position of the panel" },
+      "position": {
+        "type": "Point",
+        "isRequired": false,
+        "description": "The controlled position of the panel"
+      },
       "present": {
         "type": "boolean",
         "isRequired": false,
@@ -211,7 +267,17 @@
         "isRequired": false,
         "description": "Whether the panel is resizable"
       },
-      "size": { "type": "Size", "isRequired": false, "description": "The size of the panel" },
+      "restoreFocus": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to restore focus to the trigger when the panel is closed."
+      },
+      "size": {
+        "type": "Size",
+        "isRequired": false,
+        "description": "The size of the panel"
+      },
       "skipAnimationOnMount": {
         "type": "boolean",
         "defaultValue": "false",
@@ -239,7 +305,16 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseFloatingPanelReturn", "isRequired": true },
+      "value": {
+        "type": "UseFloatingPanelReturn",
+        "isRequired": true
+      },
+      "hideMode": {
+        "type": "HideMode",
+        "defaultValue": "'display-none'",
+        "isRequired": false,
+        "description": "How to hide content when mounted but not present.\n- `'display-none'`: HTML `hidden` attribute. Effects stay alive.\n- `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+      },
       "immediate": {
         "type": "boolean",
         "isRequired": false,
@@ -272,14 +347,19 @@
   },
   "StageTrigger": {
     "props": {
-      "stage": { "type": "Stage", "isRequired": true, "description": "The stage of the panel" },
+      "stage": {
+        "type": "Stage",
+        "isRequired": true,
+        "description": "The stage of the panel"
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "Title": {
     "props": {
@@ -289,7 +369,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "h2"
   },
   "Trigger": {
     "props": {
@@ -299,6 +380,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   }
 }

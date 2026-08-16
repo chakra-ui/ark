@@ -104,7 +104,7 @@
   },
   "Toaster": {
     "props": {
-      "toaster": { "type": "CreateToasterReturn", "isRequired": true, "description": "The toaster instance." },
+      "toaster": { "type": "CreateToasterReturn<any>", "isRequired": true, "description": "The toaster instance." },
       "dir": {
         "type": "'ltr' | 'rtl'",
         "defaultValue": "\"ltr\"",

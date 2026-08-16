@@ -1,0 +1,199 @@
+{
+  "Control": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "HiddenInput": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "index": { "type": "number", "isRequired": false },
+      "name": { "type": "string", "isRequired": false }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Root": {
+    "emits": {
+      "focusChange": {
+        "type": "[details: FocusChangeDetails]",
+        "isRequired": true,
+        "description": "Function invoked when the focused segment changes."
+      },
+      "placeholderChange": {
+        "type": "[details: PlaceholderChangeDetails]",
+        "isRequired": true,
+        "description": "Function invoked when the placeholder value changes."
+      },
+      "update:modelValue": {
+        "type": "[value: DateValue[]]",
+        "isRequired": true,
+        "description": "The callback fired when the model value changes."
+      },
+      "update:placeholderValue": {
+        "type": "[placeholderValue: DateValue]",
+        "isRequired": true,
+        "description": "The callback fired when the placeholder value changes."
+      },
+      "valueChange": {
+        "type": "[details: ValueChangeDetails]",
+        "isRequired": true,
+        "description": "Function invoked when the selected value changes."
+      }
+    },
+    "props": {
+      "allSegments": {
+        "type": "Partial<{\n  year: boolean\n  month: boolean\n  day: boolean\n  hour: boolean\n  minute: boolean\n  second: boolean\n  dayPeriod: boolean\n  era: boolean\n  literal: boolean\n  timeZoneName: boolean\n  weekday: boolean\n  unknown: boolean\n  fractionalSecond: boolean\n}>",
+        "isRequired": false,
+        "description": "Whether to include all date/time segments based on the granularity."
+      },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "defaultPlaceholderValue": {
+        "type": "DateValue",
+        "isRequired": false,
+        "description": "The initial placeholder date value when rendered."
+      },
+      "defaultValue": {
+        "type": "DateValue[]",
+        "isRequired": false,
+        "description": "The initial selected date(s) when rendered.\nUse when you don't need to control the selected date(s)."
+      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the date input is disabled." },
+      "form": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The associate form of the hidden input element."
+      },
+      "format": {
+        "type": "(date: DateValue, details: FormatDateDetails) => string",
+        "isRequired": false,
+        "description": "The format of the date to display in the input."
+      },
+      "formatter": {
+        "type": "DateFormatter",
+        "isRequired": false,
+        "description": "The formatter used to format the date segments."
+      },
+      "granularity": {
+        "type": "DateGranularity",
+        "isRequired": false,
+        "description": "The granularity of the date input."
+      },
+      "hideTimeZone": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to hide the time zone segment when the value is a `ZonedDateTime`."
+      },
+      "hourCycle": {
+        "type": "HourCycle",
+        "isRequired": false,
+        "description": "The hour cycle used for formatting time segments."
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  label: (index: number) => string\n  control: string\n  segmentGroup: (index: number) => string\n  hiddenInput: (index: number) => string\n}>",
+        "isRequired": false,
+        "description": "The ids of the elements in the date input. Useful for composition."
+      },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the date input is invalid." },
+      "locale": {
+        "type": "string",
+        "defaultValue": "\"en-US\"",
+        "isRequired": false,
+        "description": "The locale (BCP 47 language tag) to use when formatting the date."
+      },
+      "max": { "type": "DateValue", "isRequired": false, "description": "The maximum date that can be selected." },
+      "min": { "type": "DateValue", "isRequired": false, "description": "The minimum date that can be selected." },
+      "modelValue": {
+        "type": "DateValue[]",
+        "isRequired": false,
+        "description": "The v-model value of the date input."
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The `name` attribute of the hidden input element."
+      },
+      "placeholderValue": {
+        "type": "DateValue",
+        "isRequired": false,
+        "description": "The placeholder date value used to generate placeholder segments."
+      },
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the date input is read-only." },
+      "required": { "type": "boolean", "isRequired": false, "description": "Whether the date input is required." },
+      "selectionMode": {
+        "type": "SelectionMode",
+        "defaultValue": "\"single\"",
+        "isRequired": false,
+        "description": "The selection mode of the date input.\n- `single` - only one date can be selected\n- `range` - a range of dates can be selected"
+      },
+      "shouldForceLeadingZeros": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to force leading zeros for numeric segments."
+      },
+      "timeZone": {
+        "type": "string",
+        "defaultValue": "\"UTC\"",
+        "isRequired": false,
+        "description": "The time zone to use."
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "The localized messages to use."
+      },
+      "value": { "type": "DateValue[]", "isRequired": false, "description": "The controlled selected date(s)." }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "DateInputApi<PropTypes>", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "SegmentGroup": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "index": { "type": "number", "isRequired": false }
+    }
+  },
+  "Segment": {
+    "props": {
+      "segment": { "type": "DateSegment", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
+}

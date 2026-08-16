@@ -47,10 +47,20 @@
         "isRequired": true,
         "description": "Function called when the tooltip is opened."
       },
+      "triggerValueChange": {
+        "type": "[details: TriggerValueChangeDetails]",
+        "isRequired": true,
+        "description": "Function called when the trigger value changes"
+      },
       "update:open": {
         "type": "[open: boolean]",
         "isRequired": true,
         "description": "The callback fired when the open state changes."
+      },
+      "update:triggerValue": {
+        "type": "[triggerValue: string | null]",
+        "isRequired": true,
+        "description": "The callback fired when the trigger value changes."
       }
     },
     "props": {
@@ -90,6 +100,11 @@
         "isRequired": false,
         "description": "The initial open state of the tooltip when rendered.\nUse when you don't need to control the open state of the tooltip."
       },
+      "defaultTriggerValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The initial trigger value when rendered.\nUse when you don't need to control the trigger value."
+      },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the tooltip is disabled" },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
@@ -120,6 +135,11 @@
         "type": "PositioningOptions",
         "isRequired": false,
         "description": "The user provided options used to position the popover content"
+      },
+      "triggerValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value of the trigger that currently open the tooltip"
       },
       "unmountOnExit": {
         "type": "boolean",
@@ -159,6 +179,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value that identifies this specific trigger"
       }
     }
   }

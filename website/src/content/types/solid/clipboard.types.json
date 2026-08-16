@@ -69,6 +69,11 @@
         "isRequired": false,
         "description": "The timeout for the copy operation"
       },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+      },
       "value": { "type": "string", "isRequired": false, "description": "The controlled value of the clipboard" }
     }
   },

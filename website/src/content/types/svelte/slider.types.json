@@ -111,6 +111,12 @@
         "description": "The ids of the elements in the slider. Useful for composition."
       },
       "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the slider is invalid" },
+      "largeStep": {
+        "type": "number",
+        "defaultValue": "10 * step",
+        "isRequired": false,
+        "description": "The step value of the slider when the `Shift` key is held, or the\n`PageUp`/`PageDown` keys are used."
+      },
       "max": {
         "type": "number",
         "defaultValue": "100",

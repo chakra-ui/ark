@@ -84,7 +84,7 @@
       "onDraw": {
         "type": "(details: DrawDetails) => void",
         "isRequired": false,
-        "description": "Callback when the signature pad is drawing."
+        "description": "Callback when the signature pad is drawing or the committed paths change.\n`paths` contains only committed strokes; use `currentPath` for the in-progress stroke."
       },
       "onDrawEnd": {
         "type": "(details: DrawEndDetails) => void",

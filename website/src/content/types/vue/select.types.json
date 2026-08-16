@@ -214,6 +214,11 @@
         "isRequired": false,
         "description": "Function to scroll to a specific index"
       },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+      },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",

@@ -142,6 +142,11 @@
         "isRequired": false,
         "description": "The orientation of the navigation menu"
       },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+      },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",

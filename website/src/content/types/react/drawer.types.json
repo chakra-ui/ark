@@ -7,7 +7,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "CloseTrigger": {
     "props": {
@@ -17,7 +18,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "Content": {
     "props": {
@@ -33,7 +35,19 @@
         "description": "Whether the drawer content is draggable.\nIf false, the drawer can only be dragged by the grabber."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
+  },
+  "Description": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "GrabberIndicator": {
     "props": {
@@ -43,7 +57,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Grabber": {
     "props": {
@@ -53,7 +68,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "IndentBackground": {
     "props": {
@@ -63,7 +79,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Indent": {
     "props": {
@@ -73,7 +90,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Positioner": {
     "props": {
@@ -83,7 +101,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Root": {
     "props": {
@@ -105,16 +124,38 @@
         "isRequired": false,
         "description": "The threshold distance for dismissing the drawer."
       },
-      "defaultOpen": { "type": "boolean", "isRequired": false, "description": "The initial open state of the drawer." },
-      "defaultSnapPoint": { "type": "SnapPoint", "isRequired": false },
+      "defaultOpen": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The initial open state of the drawer."
+      },
+      "defaultSnapPoint": {
+        "type": "SnapPoint",
+        "isRequired": false
+      },
+      "defaultTriggerValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The default trigger value (uncontrolled)."
+      },
       "finalFocusEl": {
         "type": "() => MaybeElement",
         "isRequired": false,
         "description": "Element to receive focus when the sheet is closed."
       },
-      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "hideMode": {
+        "type": "HideMode",
+        "defaultValue": "'display-none'",
+        "isRequired": false,
+        "description": "How to hide content when mounted but not present.\n- `'display-none'`: HTML `hidden` attribute. Effects stay alive.\n- `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
       "ids": {
-        "type": "Partial<{\n  backdrop: string\n  positioner: string\n  content: string\n  title: string\n  header: string\n  trigger: string\n  grabber: string\n  grabberIndicator: string\n  closeTrigger: string\n}>",
+        "type": "Partial<{\n  backdrop: string\n  positioner: string\n  content: string\n  title: string\n  description: string\n  header: string\n  trigger: string | ((value?: string | undefined) => string)\n  grabber: string\n  grabberIndicator: string\n  closeTrigger: string\n  swipeArea: string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the drawer. Useful for composition."
       },
@@ -180,7 +221,16 @@
         "isRequired": false,
         "description": "Callback fired when the snap point changes."
       },
-      "open": { "type": "boolean", "isRequired": false, "description": "Whether the drawer is open." },
+      "onTriggerValueChange": {
+        "type": "(details: TriggerValueChangeDetails) => void",
+        "isRequired": false,
+        "description": "Callback when the active trigger value changes."
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the drawer is open."
+      },
       "present": {
         "type": "boolean",
         "isRequired": false,
@@ -216,7 +266,11 @@
         "isRequired": false,
         "description": "Whether to allow the initial presence animation."
       },
-      "snapPoint": { "type": "SnapPoint", "isRequired": false, "description": "The currently active snap point." },
+      "snapPoint": {
+        "type": "SnapPoint",
+        "isRequired": false,
+        "description": "The currently active snap point."
+      },
       "snapPoints": {
         "type": "SnapPoint[]",
         "defaultValue": "[1]",
@@ -252,6 +306,11 @@
         "isRequired": false,
         "description": "Whether to trap focus inside the sheet when it's opened."
       },
+      "triggerValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value of the trigger that currently controls the drawer."
+      },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",
@@ -262,11 +321,20 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseDrawerReturn", "isRequired": true },
+      "value": {
+        "type": "UseDrawerReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "hideMode": {
+        "type": "HideMode",
+        "defaultValue": "'display-none'",
+        "isRequired": false,
+        "description": "How to hide content when mounted but not present.\n- `'display-none'`: HTML `hidden` attribute. Effects stay alive.\n- `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
       },
       "immediate": {
         "type": "boolean",
@@ -303,6 +371,17 @@
       }
     }
   },
+  "SwipeArea": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement",
+    "tag": "div"
+  },
   "Title": {
     "props": {
       "asChild": {
@@ -311,7 +390,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLHeadingElement"
+    "element": "HTMLHeadingElement",
+    "tag": "h2"
   },
   "Trigger": {
     "props": {
@@ -319,8 +399,14 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value that identifies this specific trigger"
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   }
 }

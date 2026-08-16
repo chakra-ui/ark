@@ -162,6 +162,11 @@
         "isRequired": false,
         "description": "Whether the panel is draggable"
       },
+      "finalFocusEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "description": "The element to receive focus when the panel closes"
+      },
       "getAnchorPosition": {
         "type": "(details: AnchorPositionDetails) => Point",
         "isRequired": false,
@@ -183,6 +188,11 @@
         "type": "Partial<{ trigger: string; positioner: string; content: string; title: string; header: string }>",
         "isRequired": false,
         "description": "The ids of the elements in the floating panel. Useful for composition."
+      },
+      "initialFocusEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "description": "The element to receive focus when the panel opens"
       },
       "lazyMount": {
         "type": "boolean",
@@ -209,6 +219,12 @@
         "defaultValue": "true",
         "isRequired": false,
         "description": "Whether the panel is resizable"
+      },
+      "restoreFocus": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to restore focus to the trigger element when the panel closes"
       },
       "size": { "type": "Size", "isRequired": false, "description": "The size of the panel" },
       "strategy": {

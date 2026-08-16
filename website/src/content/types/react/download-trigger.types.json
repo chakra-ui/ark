@@ -6,7 +6,11 @@
         "isRequired": true,
         "description": "The data to download"
       },
-      "fileName": { "type": "string", "isRequired": true, "description": "The name of the file to download" },
+      "fileName": {
+        "type": "string",
+        "isRequired": true,
+        "description": "The name of the file to download"
+      },
       "mimeType": {
         "type": "FileMimeType",
         "isRequired": true,
@@ -17,6 +21,7 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "tag": "button"
   }
 }

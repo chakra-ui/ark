@@ -33,6 +33,12 @@
         "isRequired": false,
         "description": "Whether to automatically highlight the item when typing"
       },
+      "keyboardPriority": {
+        "type": "'caret' | 'navigate'",
+        "defaultValue": "\"caret\"",
+        "isRequired": false,
+        "description": "Determines how keyboard conflicts in the input are resolved.\n- \"caret\": keep native text-editing behavior\n- \"navigate\": forward supported keys to listbox navigation"
+      },
       "ref": { "type": "Element", "isRequired": false }
     }
   },
@@ -96,7 +102,7 @@
   "Label": {
     "props": {
       "asChild": {
-        "type": "Snippet<[PropsFn<'label'>]>",
+        "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },

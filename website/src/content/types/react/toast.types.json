@@ -7,7 +7,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "CloseTrigger": {
     "props": {
@@ -17,7 +18,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "Description": {
     "props": {
@@ -27,7 +29,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Root": {
     "props": {
@@ -70,7 +73,11 @@
         "isRequired": false,
         "description": "The offset from the safe environment edge of the viewport"
       },
-      "overlap": { "type": "boolean", "isRequired": false, "description": "Whether to overlap the toasts" },
+      "overlap": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to overlap the toasts"
+      },
       "pauseOnPageIdle": {
         "type": "boolean",
         "defaultValue": "false",
@@ -99,11 +106,15 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Toaster": {
     "props": {
-      "toaster": { "type": "CreateToasterReturn", "isRequired": true },
+      "toaster": {
+        "type": "CreateToasterReturn<any>",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -116,10 +127,11 @@
         "description": "The document's text/writing direction."
       },
       "getRootNode": {
-        "type": "() => Node | ShadowRoot | Document",
+        "type": "() => ShadowRoot | Node | Document",
         "isRequired": false,
         "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
       }
-    }
+    },
+    "tag": "div"
   }
 }
