@@ -17,7 +17,7 @@
     "@biomejs/biome": "2.5.8",
     "@chakra-ui/better-auth": "0.3.0",
     "@effect/schema": "0.75.5",
-    "@icons-pack/react-simple-icons": "13.13.0",
+    "@icons-pack/react-simple-icons": "13.15.1",
     "@pandacss/dev": "1.12.0",
     "@pandacss/preset-base": "1.12.0",
     "@pandacss/preset-panda": "1.12.0",

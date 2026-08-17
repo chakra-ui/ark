@@ -154,8 +154,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.8",
-    "@storybook/addon-a11y": "10.5.7",
-    "@storybook/vue3-vite": "10.5.7",
+    "@storybook/addon-a11y": "10.5.8",
+    "@storybook/vue3-vite": "10.5.8",
     "@tanstack/vue-virtual": "3.13.35",
     "@testing-library/dom": "10.4.1",
     "@testing-library/jest-dom": "7.0.1",
@@ -165,7 +165,7 @@
     "@vitejs/plugin-vue-jsx": "5.1.6",
     "@vitest/coverage-v8": "4.1.10",
     "@vue/compiler-sfc": "3.5.41",
-    "@vue/language-core": "3.3.9",
+    "@vue/language-core": "3.3.10",
     "ajv": "8.20.0",
     "check-password-strength": "3.0.0",
     "clean-package": "2.2.0",
@@ -173,7 +173,7 @@
     "happy-dom": "20.11.2",
     "image-conversion": "2.1.1",
     "lucide-vue-next": "1.0.0",
-    "storybook": "10.5.7",
+    "storybook": "10.5.8",
     "typescript": "6.0.3",
     "vee-validate": "4.15.1",
     "axe-core": "4.13.0",
@@ -182,7 +182,7 @@
     "vite-plugin-dts": "5.0.3",
     "vitest": "4.1.10",
     "vue": "3.5.41",
-    "vue-tsc": "3.3.9"
+    "vue-tsc": "3.3.10"
   },
   "peerDependencies": {
     "vue": ">=3.5.0"
