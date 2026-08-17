@@ -34,7 +34,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@tsconfig/node24": "24.0.4",
+    "@tsconfig/node24": "24.0.5",
     "@types/express": "5.0.6",
     "tsup": "8.5.1",
     "tsx": "4.23.12",
