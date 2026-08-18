@@ -319,6 +319,160 @@
   transform-box: fill-box;
 }
 
+/* Storybook showcase examples */
+.ShowcaseRoot {
+  display: grid;
+  grid-template-columns: 17rem minmax(0, 1fr);
+  width: min(100%, 980px);
+  height: min(680px, 78vh);
+  min-height: 520px;
+  overflow: hidden;
+  color: var(--demo-neutral-fg);
+  background: var(--demo-bg, #fff);
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 1rem;
+  box-shadow: 0 20px 60px rgb(15 23 42 / 8%);
+}
+
+.ShowcasePanel {
+  min-width: 0;
+  padding: 1.25rem;
+  overflow: auto;
+  background: color-mix(in srgb, var(--demo-neutral-subtle) 45%, transparent);
+  border-right: 1px solid var(--demo-border-emphasized);
+}
+
+.ShowcaseArticle {
+  min-width: 0;
+  padding: 3rem clamp(1.5rem, 6vw, 5rem) 5rem;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+}
+
+.ArticleHero { padding-bottom: 3rem; border-bottom: 1px solid var(--demo-border-emphasized); }
+.ArticleHero h1 { max-width: 12ch; margin: 0.5rem 0 1rem; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1; letter-spacing: -0.045em; }
+.ArticleHero p { max-width: 33rem; margin: 0; color: var(--demo-neutral-fg-muted); line-height: 1.7; }
+.ArticleKicker, .SectionEyebrow { color: var(--demo-coral-fg); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; }
+.ShowcaseSection { padding-top: 3.5rem; scroll-margin-top: 1.5rem; }
+.ShowcaseSection h2, .ShowcaseSection h3 { margin: 0.4rem 0 1.5rem; letter-spacing: -0.025em; }
+.ShowcaseSection h2 { font-size: 1.75rem; }
+.ShowcaseSection h3 { font-size: 1.25rem; }
+.ShowcaseCopy { display: flex; flex-direction: column; gap: 0.65rem; }
+.ShowcaseCopy span { display: block; height: 0.55rem; border-radius: 999px; background: var(--demo-neutral-subtle); }
+
+.PanelHeading, .ProgressHeader, .DocsBrand, .DrawerHeading { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+.PanelHeading { margin-bottom: 1rem; }
+.PanelHeading div, .ProgressHeader div:not(.ProgressDial), .DocsBrand div, .DrawerHeading div { display: flex; flex-direction: column; gap: 0.15rem; }
+.PanelHeading span, .PanelHeading strong, .ProgressHeader span, .DocsBrand small, .DrawerHeading small { font-size: 0.75rem; }
+.PanelHeading div > span, .ProgressHeader span, .DocsBrand small, .DrawerHeading small { color: var(--demo-neutral-fg-muted); }
+.PanelHeading strong, .ProgressHeader strong { font-size: 0.95rem; }
+.CountBadge { display: grid; place-items: center; width: 1.75rem; height: 1.75rem; border-radius: 999px; background: var(--demo-neutral-subtle); font-variant-numeric: tabular-nums; }
+
+.SearchField { display: flex; align-items: center; gap: 0.5rem; padding: 0.65rem 0.7rem; border: 1px solid var(--demo-border-emphasized); border-radius: 0.65rem; background: var(--demo-bg, #fff); }
+.SearchField:focus-within { border-color: var(--demo-coral-solid); box-shadow: 0 0 0 3px color-mix(in srgb, var(--demo-coral-solid) 15%, transparent); }
+.SearchField > svg { width: 1rem; color: var(--demo-neutral-fg-muted); }
+.SearchField input, .CommandSearch input { width: 100%; min-width: 0; border: 0; outline: 0; color: inherit; background: transparent; font: inherit; }
+.SearchField button, .IconButton { display: grid; place-items: center; padding: 0; border: 0; color: var(--demo-neutral-fg-muted); background: transparent; cursor: pointer; }
+.SearchField button svg, .IconButton svg { width: 1rem; }
+.ShowcaseList { display: flex; flex-direction: column; gap: 0.25rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+.SearchResult { display: flex; flex-direction: column; gap: 0.1rem; padding: 0.65rem 0.75rem; color: var(--demo-neutral-fg-muted); text-decoration: none; border-radius: 0.55rem; }
+.SearchResult:hover { background: var(--demo-neutral-subtle); }
+.SearchResult[data-active] { color: var(--demo-coral-fg); background: color-mix(in srgb, var(--demo-coral-solid) 10%, transparent); }
+.SearchResult span { font-size: 0.875rem; font-weight: 600; }
+.SearchResult small { font-size: 0.68rem; opacity: 0.72; }
+.EmptyState { display: flex; flex-direction: column; align-items: center; padding: 2rem 0.5rem; color: var(--demo-neutral-fg-muted); text-align: center; }
+.EmptyState svg { width: 1.5rem; margin-bottom: 0.75rem; opacity: 0.5; }
+.EmptyState strong { color: var(--demo-neutral-fg); font-size: 0.875rem; }
+.EmptyState span { margin-top: 0.25rem; font-size: 0.75rem; }
+
+.ProgressHeader { padding-bottom: 1.25rem; border-bottom: 1px solid var(--demo-border-emphasized); }
+.ProgressDial { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 50%; background: conic-gradient(var(--demo-coral-solid) var(--progress), var(--demo-neutral-subtle) 0); position: relative; }
+.ProgressDial::after { content: ''; position: absolute; inset: 4px; border-radius: inherit; background: var(--demo-bg, #fff); }
+.ProgressDial span { position: relative; z-index: 1; color: var(--demo-neutral-fg); font-size: 0.65rem; font-weight: 700; }
+.TimelineList { position: relative; margin: 1.25rem 0 0; padding: 0; list-style: none; }
+.TimelineList::before { content: ''; position: absolute; top: 1rem; bottom: 1rem; left: 0.85rem; width: 1px; background: var(--demo-border-emphasized); }
+.TimelineItem { position: relative; display: grid; grid-template-columns: 1.75rem 1fr; gap: 0.65rem; align-items: start; padding-bottom: 0.55rem; }
+.TimelineDot { position: relative; z-index: 1; display: grid; place-items: center; width: 1.75rem; height: 1.75rem; color: var(--demo-neutral-fg-muted); background: var(--demo-bg, #fff); border: 1px solid var(--demo-border-emphasized); border-radius: 50%; font-size: 0.65rem; font-weight: 700; }
+.TimelineDot svg { width: 0.8rem; }
+.TimelineItem[data-complete] .TimelineDot { color: white; background: var(--demo-coral-solid); border-color: var(--demo-coral-solid); }
+.TimelineLink { display: flex; flex-direction: column; padding: 0.25rem 0.4rem 0.55rem; color: var(--demo-neutral-fg-muted); text-decoration: none; border-radius: 0.4rem; }
+.TimelineLink[data-active] { color: var(--demo-coral-fg); background: color-mix(in srgb, var(--demo-coral-solid) 8%, transparent); }
+.TimelineLink span { font-size: 0.82rem; font-weight: 600; }
+.TimelineLink small { display: flex; align-items: center; gap: 0.25rem; margin-top: 0.2rem; font-size: 0.65rem; opacity: 0.7; }
+.TimelineLink small svg { width: 0.7rem; }
+
+.DocsPanel { display: flex; flex-direction: column; }
+.DocsBrand { justify-content: flex-start; padding-bottom: 1.25rem; border-bottom: 1px solid var(--demo-border-emphasized); }
+.DocsBrand > span { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; color: white; background: var(--demo-coral-solid); border-radius: 0.65rem; }
+.DocsBrand svg { width: 1.1rem; }
+.DocsBrand strong { font-size: 0.9rem; }
+.DocsBreadcrumb { display: flex; align-items: center; gap: 0.25rem; margin: 1rem 0; color: var(--demo-neutral-fg-muted); font-size: 0.67rem; white-space: nowrap; overflow: hidden; }
+.DocsBreadcrumb svg { width: 0.75rem; flex: none; }
+.DocsBreadcrumb strong { color: var(--demo-neutral-fg); overflow: hidden; text-overflow: ellipsis; }
+.DocsList { margin: 0; padding: 0; list-style: none; }
+.DocsLink { display: block; padding: 0.48rem 0.65rem 0.48rem calc(0.65rem + (var(--depth) - 2) * 0.75rem); color: var(--demo-neutral-fg-muted); border-left: 2px solid transparent; text-decoration: none; font-size: 0.8rem; }
+.DocsLink:hover { color: var(--demo-neutral-fg); }
+.DocsLink[data-active] { color: var(--demo-coral-fg); background: color-mix(in srgb, var(--demo-coral-solid) 8%, transparent); border-left-color: var(--demo-coral-solid); font-weight: 600; }
+.DocsHelp { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-top: auto; padding: 0.8rem; color: inherit; background: var(--demo-neutral-subtle); border-radius: 0.65rem; text-decoration: none; }
+.DocsHelp span { display: flex; flex-direction: column; }
+.DocsHelp strong { font-size: 0.75rem; }
+.DocsHelp small { color: var(--demo-neutral-fg-muted); font-size: 0.65rem; }
+.DocsHelp svg { width: 0.9rem; color: var(--demo-neutral-fg-muted); }
+
+.MobileShowcase, .CommandRoot { position: relative; display: block; }
+.MobileShowcase .ShowcaseArticle, .CommandRoot .ShowcaseArticle { height: 100%; box-sizing: border-box; }
+.MobileTrigger, .CommandTrigger { position: absolute; z-index: 5; display: flex; align-items: center; gap: 0.75rem; border: 1px solid var(--demo-border-emphasized); color: var(--demo-neutral-fg); background: color-mix(in srgb, var(--demo-bg, #fff) 92%, transparent); box-shadow: 0 10px 30px rgb(15 23 42 / 12%); backdrop-filter: blur(12px); cursor: pointer; }
+.MobileTrigger { top: 1rem; left: 50%; width: min(24rem, calc(100% - 2rem)); padding: 0.65rem 0.8rem; border-radius: 0.8rem; transform: translateX(-50%); }
+.MobileTrigger > svg { width: 1.1rem; }
+.MobileTrigger > span:not(.MobileProgress) { display: flex; flex: 1; flex-direction: column; align-items: flex-start; }
+.MobileTrigger small { color: var(--demo-neutral-fg-muted); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.MobileTrigger strong { font-size: 0.78rem; }
+.MobileProgress { font-size: 0.68rem; color: var(--demo-neutral-fg-muted); }
+.DrawerBackdrop, .CommandBackdrop { position: fixed; z-index: 1000; inset: 0; background: rgb(15 23 42 / 45%); backdrop-filter: blur(3px); }
+.DrawerPositioner { position: fixed; z-index: 1001; inset: 0; display: flex; align-items: flex-end; justify-content: center; padding: 1rem; pointer-events: none; }
+.DrawerContent { width: min(32rem, 100%); max-height: min(80vh, 38rem); padding: 0.65rem 1.25rem 1.25rem; overflow: auto; color: var(--demo-neutral-fg); background: var(--demo-bg, #fff); border-radius: 1.25rem; box-shadow: 0 30px 80px rgb(15 23 42 / 30%); pointer-events: auto; }
+.DrawerHandle { width: 2.5rem; height: 0.25rem; margin: 0 auto 1rem; background: var(--demo-border-emphasized); border-radius: 999px; }
+.DrawerHeading { padding-bottom: 1rem; border-bottom: 1px solid var(--demo-border-emphasized); }
+.DrawerHeading [data-scope='dialog'][data-part='title'] { font-size: 1.15rem; font-weight: 700; }
+.IconButton { width: 2rem; height: 2rem; border: 1px solid var(--demo-border-emphasized); border-radius: 50%; }
+.DrawerList { margin: 0; padding: 0.75rem 0 0; list-style: none; }
+.DrawerLink { display: grid; grid-template-columns: 2rem 1fr auto; gap: 0.5rem; align-items: center; padding: 0.7rem 0.5rem; color: var(--demo-neutral-fg-muted); border-bottom: 1px solid var(--demo-border-emphasized); text-decoration: none; }
+.DrawerLink > span { font-size: 0.65rem; font-variant-numeric: tabular-nums; opacity: 0.6; }
+.DrawerLink strong { color: var(--demo-neutral-fg); font-size: 0.84rem; }
+.DrawerLink small { font-size: 0.67rem; }
+.DrawerLink[data-active] strong { color: var(--demo-coral-fg); }
+
+.CommandTrigger { top: 1.25rem; right: 1.25rem; padding: 0.6rem 0.7rem; border-radius: 0.65rem; }
+.CommandTrigger svg { width: 0.95rem; }
+.CommandTrigger span { color: var(--demo-neutral-fg-muted); font-size: 0.75rem; }
+.CommandTrigger kbd, .CommandMenu kbd { padding: 0.12rem 0.35rem; color: var(--demo-neutral-fg-muted); background: var(--demo-neutral-subtle); border: 1px solid var(--demo-border-emphasized); border-radius: 0.3rem; box-shadow: 0 1px 0 var(--demo-border-emphasized); font: 600 0.62rem/1.2 inherit; }
+.CommandBackdrop { display: grid; place-items: start center; padding: min(16vh, 8rem) 1rem 1rem; }
+.CommandDismiss { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: transparent; cursor: default; }
+.CommandMenu { position: relative; z-index: 1; width: min(34rem, 100%); overflow: hidden; color: var(--demo-neutral-fg); background: var(--demo-bg, #fff); border: 1px solid var(--demo-border-emphasized); border-radius: 0.9rem; box-shadow: 0 30px 90px rgb(15 23 42 / 30%); }
+.CommandSearch { display: flex; align-items: center; gap: 0.75rem; padding: 1rem; border-bottom: 1px solid var(--demo-border-emphasized); }
+.CommandSearch svg { width: 1.1rem; color: var(--demo-neutral-fg-muted); }
+.CommandSearch input { font-size: 0.95rem; }
+.CommandGroup { max-height: 23rem; padding: 0.6rem; overflow: auto; }
+.CommandGroup > span { display: block; padding: 0.45rem 0.6rem; color: var(--demo-neutral-fg-muted); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; }
+.CommandGroup button { display: grid; grid-template-columns: 2.25rem 1fr auto; gap: 0.75rem; align-items: center; width: 100%; padding: 0.65rem; border: 0; color: inherit; background: transparent; border-radius: 0.55rem; text-align: left; cursor: pointer; }
+.CommandGroup button[data-highlighted] { background: var(--demo-neutral-subtle); }
+.CommandGroup button > span:not(.CommandIcon) { display: flex; flex-direction: column; gap: 0.12rem; }
+.CommandGroup button strong { font-size: 0.8rem; }
+.CommandGroup button small { color: var(--demo-neutral-fg-muted); font-size: 0.67rem; }
+.CommandGroup button > svg { width: 0.85rem; color: var(--demo-neutral-fg-muted); }
+.CommandIcon { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; color: var(--demo-coral-fg); background: color-mix(in srgb, var(--demo-coral-solid) 10%, transparent); border-radius: 0.5rem; font-size: 0.72rem; font-weight: 800; }
+.CommandMenu footer { display: flex; gap: 1rem; padding: 0.7rem 1rem; color: var(--demo-neutral-fg-muted); background: color-mix(in srgb, var(--demo-neutral-subtle) 50%, transparent); border-top: 1px solid var(--demo-border-emphasized); font-size: 0.65rem; }
+.CommandMenu footer span { display: flex; align-items: center; gap: 0.3rem; }
+
+@media (max-width: 720px) {
+  .ShowcaseRoot { grid-template-columns: 1fr; min-height: 32rem; }
+  .ShowcaseRoot:not(.MobileShowcase):not(.CommandRoot) .ShowcasePanel { display: none; }
+  .ShowcaseArticle { padding-inline: 1.5rem; }
+  .CommandTrigger { right: 0.75rem; }
+  .CommandTrigger span { display: none; }
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
