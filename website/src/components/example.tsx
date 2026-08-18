@@ -5,7 +5,7 @@ import { Match } from 'effect'
 import { css, cx } from 'styled-system/css'
 import { Stack } from 'styled-system/jsx'
 import type { SupportedLang } from '~/lib/shiki-client'
-import { type Framework, getFramework } from '~/lib/frameworks'
+import { getFramework } from '~/lib/frameworks'
 import { getServerContext } from '~/lib/server-context'
 import { CollapsibleCode } from './collapsible-code'
 import { ExampleCodeTabs } from './example-code'
@@ -14,14 +14,13 @@ import { ExamplePreview } from './example-preview'
 interface Props {
   id: string
   component?: string
-  framework?: Framework
 }
 
 export const Example = async (props: Props) => {
   const serverContext = getServerContext()
   const component = props.component ?? serverContext.component
 
-  const framework = props.framework ?? (await getFramework())
+  const framework = await getFramework()
   const { code, lang } = await fetchFrameworkCode(framework, component, props.id)
   const cssModules = await fetchCssModulesFromCode(code)
   const hasPreview = component ? exampleExists(component, props.id) : false
@@ -49,7 +48,7 @@ export const ExampleCode = async (props: Props) => {
   const serverContext = getServerContext()
   const component = props.component ?? serverContext.component
 
-  const framework = props.framework ?? (await getFramework())
+  const framework = await getFramework()
   const { code, lang } = await fetchFrameworkCode(framework, component, props.id)
   const cssModules = await fetchCssModulesFromCode(code)
 

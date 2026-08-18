@@ -551,14 +551,8 @@ import * as Toast_Types from '@examples/toast/examples/types'
 import * as Toast_Update from '@examples/toast/examples/update'
 import * as Toast_VaryingHeight from '@examples/toast/examples/varying-height'
 import * as Toc_Basic from '@examples/toc/examples/basic'
-import * as Toc_CommandMenu from '@examples/toc/examples/command-menu'
-import * as Toc_DocumentationSidebar from '@examples/toc/examples/documentation-sidebar'
-import * as Toc_MobileDrawer from '@examples/toc/examples/mobile-drawer'
 import * as Toc_Nested from '@examples/toc/examples/nested'
-import * as Toc_ReadingTimeline from '@examples/toc/examples/reading-timeline'
 import * as Toc_RootProvider from '@examples/toc/examples/root-provider'
-import * as Toc_Searchable from '@examples/toc/examples/searchable'
-import * as Toc_ShowcaseData from '@examples/toc/examples/showcase-data'
 import * as Toc_WithCollapsible from '@examples/toc/examples/with-collapsible'
 import * as Toc_WithHover from '@examples/toc/examples/with-hover'
 import * as Toc_WithIndicator from '@examples/toc/examples/with-indicator'
@@ -1171,14 +1165,8 @@ const exampleModules: Record<string, ExampleModule> = {
   'toast/update': Toast_Update,
   'toast/varying-height': Toast_VaryingHeight,
   'toc/basic': Toc_Basic,
-  'toc/command-menu': Toc_CommandMenu,
-  'toc/documentation-sidebar': Toc_DocumentationSidebar,
-  'toc/mobile-drawer': Toc_MobileDrawer,
   'toc/nested': Toc_Nested,
-  'toc/reading-timeline': Toc_ReadingTimeline,
   'toc/root-provider': Toc_RootProvider,
-  'toc/searchable': Toc_Searchable,
-  'toc/showcase-data': Toc_ShowcaseData,
   'toc/with-collapsible': Toc_WithCollapsible,
   'toc/with-hover': Toc_WithHover,
   'toc/with-indicator': Toc_WithIndicator,
