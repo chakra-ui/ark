@@ -11,7 +11,7 @@ description: A navigation component that tracks and highlights the active sectio
 <Anatomy id="toc" />
 
 ```tsx
-<Toc.Root items={items} getScrollEl={() => scrollContainer}>
+<Toc.Root items={items} scrollEl={() => scrollContainer}>
   <Toc.Content />
   <Toc.Nav>
     <Toc.Title />
@@ -30,7 +30,7 @@ description: A navigation component that tracks and highlights the active sectio
 ### Basic
 
 Display a table of contents alongside scrollable content. Use the `items` prop to define the list of headings and
-`getScrollEl` to point to the scrollable container so the TOC can track which section is in view.
+`scrollEl` to point to the scrollable container so the TOC can track which section is in view.
 
 <Example id="basic" />
 
@@ -77,6 +77,49 @@ Combine `Toc.Root` with the `TreeView` component for hierarchical section naviga
 automatically expand the branch containing the active heading, keeping the tree in sync with the reading position.
 
 <Example id="with-tree-view" />
+
+## Showcase Patterns
+
+The following React examples explore complete product patterns built on top of the table of contents state. They combine
+active-section tracking with search, responsive navigation, reading progress, and alternate navigation surfaces.
+
+> **Framework availability:** These showcase patterns are currently available in React. The core examples above remain
+> available in React, Solid, Vue, and Svelte.
+
+### Searchable Table of Contents
+
+Filter a long document outline while keeping active-section tracking connected to the complete set of headings. This
+pattern is useful for API references, knowledge bases, and other information-dense pages.
+
+<Example id="searchable" framework="react" />
+
+### Reading Timeline
+
+Present document navigation as a reading timeline with completed sections, estimated reading time, and overall progress.
+The active item and progress indicator update as the article scrolls.
+
+<Example id="reading-timeline" framework="react" />
+
+### Documentation Sidebar
+
+Build a documentation-style sidebar with breadcrumbs, nested section indentation, active-state highlighting, and a
+secondary help action.
+
+<Example id="documentation-sidebar" framework="react" />
+
+### Mobile Drawer
+
+Move the table of contents into a bottom drawer for compact screens. The trigger displays the current section and the
+drawer closes automatically after a destination is selected.
+
+<Example id="mobile-drawer" framework="react" />
+
+### Command Menu
+
+Use the same document outline as a keyboard-first command menu. Press <kbd>⌘ K</kbd> or <kbd>Ctrl K</kbd>, filter the
+headings, navigate with the arrow keys, and press Enter to jump to a section.
+
+<Example id="command-menu" framework="react" />
 
 ## API Reference
 
