@@ -23,7 +23,7 @@ export const WithCollapsible = () => {
       class={`${styles.Root} ${styles.RootStacked}`}
       items={items}
       rootMargin="0px 0px -80% 0px"
-      getScrollEl={() => contentRef}
+      scrollEl={() => contentRef}
     >
       <Toc.Content class={styles.Content} ref={(el) => (contentRef = el)}>
         {items.map((item) => (

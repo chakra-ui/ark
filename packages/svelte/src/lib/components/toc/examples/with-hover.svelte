@@ -21,7 +21,7 @@
   class="{styles.Root} {styles.HoverRoot}"
   {items}
   rootMargin="0px 0px -80% 0px"
-  getScrollEl={() => contentEl}
+  scrollEl={() => contentEl}
 >
   <Toc.Content bind:ref={contentEl} class={styles.Content}>
       {#each items as item (item.value)}

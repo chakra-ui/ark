@@ -13,7 +13,7 @@ export const Basic = () => {
   let contentRef: HTMLElement | null = null
 
   return (
-    <Toc.Root class={styles.Root} items={items} getScrollEl={() => contentRef}>
+    <Toc.Root class={styles.Root} items={items} scrollEl={() => contentRef}>
       <Toc.Content class={styles.Content} ref={(el) => (contentRef = el)}>
         {items.map((item) => (
           <section>

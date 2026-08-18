@@ -65,7 +65,7 @@
 <Toc.Root
   class={tocStyles.Root}
   items={allItems}
-  getScrollEl={() => contentEl}
+  scrollEl={() => contentEl}
   onActiveChange={({ activeItems }) => {
     const activeIds = new Set(activeItems.map((i) => i.value))
     expandedValue = sections

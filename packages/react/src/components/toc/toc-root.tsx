@@ -16,7 +16,7 @@ export const TocRoot = forwardRef<HTMLDivElement, TocRootProps>((props, ref) => 
     'activeIds',
     'autoScroll',
     'defaultActiveIds',
-    'getScrollEl',
+    'scrollEl',
     'id',
     'ids',
     'items',

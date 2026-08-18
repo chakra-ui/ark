@@ -61,7 +61,7 @@ const tocItems = [
 
 const expandedValue = ref<string[]>([])
 const contentEl = ref()
-const getScrollEl = () => contentEl.value?.$el
+const scrollEl = () => contentEl.value?.$el
 
 const onActiveChange = ({ activeItems }: { activeItems: { value: string }[] }) => {
   const activeIds = new Set(activeItems.map((i) => i.value))
@@ -72,7 +72,7 @@ const onActiveChange = ({ activeItems }: { activeItems: { value: string }[] }) =
 </script>
 
 <template>
-  <Toc.Root :class="styles.Root" :items="tocItems" :getScrollEl="getScrollEl" @active-change="onActiveChange">
+  <Toc.Root :class="styles.Root" :items="tocItems" :scrollEl="scrollEl" @active-change="onActiveChange">
     <Toc.Content :class="styles.Content" ref="contentEl">
       <section v-for="section in sections" :key="section.id">
         <h2 :id="section.id">{{ section.name }}</h2>

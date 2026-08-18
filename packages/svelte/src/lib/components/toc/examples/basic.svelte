@@ -13,7 +13,7 @@
   let contentEl: HTMLElement | null = $state(null)
 </script>
 
-<Toc.Root class={styles.Root} {items} getScrollEl={() => contentEl}>
+<Toc.Root class={styles.Root} {items} scrollEl={() => contentEl}>
   <Toc.Content bind:ref={contentEl} class={styles.Content}>
     {#each items as item (item.value)}
       <section>

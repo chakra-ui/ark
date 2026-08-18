@@ -102,7 +102,7 @@ export const WithTreeView = () => {
     <Toc.Root
       className={tocStyles.Root}
       items={allItems}
-      getScrollEl={() => contentRef.current}
+      scrollEl={() => contentRef.current}
       onActiveChange={({ activeItems }) => {
         const activeIds = new Set(activeItems.map((i) => i.value))
         const next = sections

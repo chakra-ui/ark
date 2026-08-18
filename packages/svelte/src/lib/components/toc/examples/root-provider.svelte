@@ -11,7 +11,7 @@
   ]
 
   let contentEl: HTMLElement | null = $state(null)
-  const toc = useToc({ items, rootMargin: '0px 0px -80% 0px', getScrollEl: () => contentEl })
+  const toc = useToc({ items, rootMargin: '0px 0px -80% 0px', scrollEl: () => contentEl })
 </script>
 
 <Toc.RootProvider class={styles.Root} value={toc}>

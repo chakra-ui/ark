@@ -19,7 +19,7 @@ import { ark } from '../factory'
 import { useForwardExpose } from '../../utils/use-forward-expose'
 import { useTocContext } from './use-toc-context'
 
-const props = defineProps<TocNavProps>()
+defineProps<TocNavProps>()
 const toc = useTocContext()
 
 useForwardExpose()

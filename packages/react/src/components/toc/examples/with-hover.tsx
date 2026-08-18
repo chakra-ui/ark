@@ -16,7 +16,7 @@ export const WithHover = () => {
   const contentRef = useRef<HTMLDivElement | null>(null)
 
   return (
-    <Toc.Root className={`${styles.Root} ${styles.HoverRoot}`} items={items} getScrollEl={() => contentRef.current}>
+    <Toc.Root className={`${styles.Root} ${styles.HoverRoot}`} items={items} scrollEl={() => contentRef.current}>
       <Toc.Content className={styles.Content} ref={contentRef}>
         {items.map((item) => (
           <section key={item.value}>

@@ -12,8 +12,8 @@ const items = [
 ]
 
 const contentEl = ref()
-const getScrollEl = () => contentEl.value?.$el
-const toc = useToc({ items, rootMargin: '0px 0px -80% 0px', getScrollEl })
+const scrollEl = () => contentEl.value?.$el
+const toc = useToc({ items, rootMargin: '0px 0px -80% 0px', scrollEl })
 </script>
 
 <template>

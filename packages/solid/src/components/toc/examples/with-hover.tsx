@@ -22,7 +22,7 @@ export const WithHover = () => {
       class={`${styles.Root} ${styles.HoverRoot}`}
       items={items}
       rootMargin="0px 0px -80% 0px"
-      getScrollEl={() => contentRef}
+      scrollEl={() => contentRef}
     >
       <Toc.Content class={styles.Content} ref={(el) => (contentRef = el)}>
         {items.map((item) => (

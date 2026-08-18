@@ -17,7 +17,7 @@ export const WithSelect = () => {
     <Toc.Root
       className={`${styles.Root} ${styles.RootWithMobileNav}`}
       items={items}
-      getScrollEl={() => contentRef.current}
+      scrollEl={() => contentRef.current}
     >
       <Toc.Context>
         {({ activeItems }) => (

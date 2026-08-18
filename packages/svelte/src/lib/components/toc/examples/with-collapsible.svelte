@@ -19,7 +19,7 @@
   let contentEl: HTMLElement | null = $state(null)
 </script>
 
-<Toc.Root class={`${styles.Root} ${styles.RootStacked}`} {items} rootMargin="0px 0px -80% 0px" getScrollEl={() => contentEl}>
+<Toc.Root class={`${styles.Root} ${styles.RootStacked}`} {items} rootMargin="0px 0px -80% 0px" scrollEl={() => contentEl}>
   <Toc.Content bind:ref={contentEl} class={styles.Content}>
       {#each items as item (item.value)}
         <section>

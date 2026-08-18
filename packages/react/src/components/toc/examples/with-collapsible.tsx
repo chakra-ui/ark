@@ -17,7 +17,7 @@ export const WithCollapsible = () => {
   const contentRef = useRef<HTMLDivElement | null>(null)
 
   return (
-    <Toc.Root className={styles.Root} data-stacked items={items} getScrollEl={() => contentRef.current}>
+    <Toc.Root className={styles.Root} data-stacked items={items} scrollEl={() => contentRef.current}>
       <Collapsible.Root className={CollapsibleStyles.Root} style={{ width: '100%' }}>
         <Toc.Context>
           {({ activeItems }) => {

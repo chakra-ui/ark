@@ -12,11 +12,11 @@ const items = [
 ]
 
 const contentEl = ref()
-const getScrollEl = () => contentEl.value?.$el
+const scrollEl = () => contentEl.value?.$el
 </script>
 
 <template>
-  <Toc.Root :class="styles.Root" :items="items" :getScrollEl="getScrollEl">
+  <Toc.Root :class="styles.Root" :items="items" :scrollEl="scrollEl">
     <Toc.Content :class="styles.Content" ref="contentEl">
       <section v-for="item in items" :key="item.value">
         <h2 :id="item.value">{{ item.label }}</h2>

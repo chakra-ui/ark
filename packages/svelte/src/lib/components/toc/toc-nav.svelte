@@ -26,7 +26,7 @@
       'activeIds',
       'autoScroll',
       'defaultActiveIds',
-      'getScrollEl',
+      'scrollEl',
       'id',
       'ids',
       'items',

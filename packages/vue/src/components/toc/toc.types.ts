@@ -20,7 +20,7 @@ export interface RootProps {
    * Function that returns the scroll container element to observe within.
    * Defaults to the document/viewport.
    */
-  getScrollEl?: () => HTMLElement | null
+  scrollEl?: () => HTMLElement | null
   /**
    * The unique identifier of the machine.
    */

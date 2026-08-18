@@ -15,7 +15,7 @@ export const RootProvider = () => {
 
   const toc = useToc({
     items,
-    getScrollEl: () => contentRef.current,
+    scrollEl: () => contentRef.current,
   })
 
   return (

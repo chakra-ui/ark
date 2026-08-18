@@ -18,7 +18,7 @@ const RADIUS = 14
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS
 
 const contentEl = ref()
-const getScrollEl = () => contentEl.value?.$el
+const scrollEl = () => contentEl.value?.$el
 
 const getActiveIndex = (activeItems: any[]) => {
   if (!activeItems || activeItems.length === 0) return -1
@@ -42,7 +42,7 @@ const getDashArray = (activeItems: any[]) => {
     :class="`${styles.Root} ${styles.RootStacked}`"
     :items="items"
     rootMargin="0px 0px -80% 0px"
-    :getScrollEl="getScrollEl"
+    :scrollEl="scrollEl"
   >
     <Toc.Content :class="styles.Content" ref="contentEl">
       <section v-for="item in items" :key="item.value">

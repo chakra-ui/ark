@@ -17,7 +17,7 @@ export const Nested = () => {
   const contentRef = useRef<HTMLDivElement>(null)
 
   return (
-    <Toc.Root className={`${styles.Root}`} items={items} getScrollEl={() => contentRef.current}>
+    <Toc.Root className={`${styles.Root}`} items={items} scrollEl={() => contentRef.current}>
       <Toc.Content className={styles.Content} ref={contentRef}>
         {items.map((item) => (
           <section key={item.value}>

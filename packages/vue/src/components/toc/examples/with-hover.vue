@@ -17,7 +17,7 @@ const pinned = ref(false)
 const hovered = ref(false)
 
 const contentEl = ref()
-const getScrollEl = () => contentEl.value?.$el
+const scrollEl = () => contentEl.value?.$el
 
 const getSkeletonWidth = (label: string) => `${Math.min(Math.max(label.length * 3, 16), 48)}px`
 </script>
@@ -27,7 +27,7 @@ const getSkeletonWidth = (label: string) => `${Math.min(Math.max(label.length * 
     :class="`${styles.Root} ${styles.HoverRoot}`"
     :items="items"
     rootMargin="0px 0px -80% 0px"
-    :getScrollEl="getScrollEl"
+    :scrollEl="scrollEl"
   >
     <Toc.Content :class="styles.Content" ref="contentEl">
       <section v-for="item in items" :key="item.value">

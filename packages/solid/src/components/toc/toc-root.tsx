@@ -15,7 +15,7 @@ export const TocRoot = (props: TocRootProps) => {
     'activeIds',
     'autoScroll',
     'defaultActiveIds',
-    'getScrollEl',
+    'scrollEl',
     'id',
     'ids',
     'items',
