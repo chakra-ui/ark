@@ -118,7 +118,7 @@
         "@testing-library/jest-dom": "7.0.1",
         "@testing-library/react": "16.3.2",
         "@testing-library/user-event": "14.6.4",
-        "@types/jsdom": "28.0.3",
+        "@types/jsdom": "30.0.0",
         "@types/react": "19.2.18",
         "@types/react-dom": "19.2.4",
         "@vitejs/plugin-react": "6.0.5",
@@ -231,7 +231,7 @@
         "@testing-library/dom": "10.4.1",
         "@testing-library/jest-dom": "7.0.1",
         "@testing-library/user-event": "14.6.4",
-        "@types/jsdom": "28.0.3",
+        "@types/jsdom": "30.0.0",
         "@vitest/coverage-v8": "4.1.10",
         "check-password-strength": "3.0.0",
         "clean-package": "2.2.0",
@@ -1569,7 +1569,7 @@
 
     "@types/js-cookie": ["@types/js-cookie@3.0.6", "", {}, "sha512-wkw9yd1kEXOPnvEeEV1Go1MmxtBJL0RR79aOTAApecWFVu7w0NNXNqhcWgvw2YgZDYadliXkl14pa3WXw5jlCQ=="],
 
-    "@types/jsdom": ["@types/jsdom@28.0.3", "", { "dependencies": { "@types/node": "*", "@types/tough-cookie": "*", "parse5": "^8.0.0", "undici-types": "^7.21.0" } }, "sha512-/HQ2uFoetFTXuye8vzIcHw2z6Fwi7Hi/qcgC+RoS9NCyewiqxhVGqlG+ViGB6lkax481R6dmhf1I7lIGlzJStQ=="],
+    "@types/jsdom": ["@types/jsdom@30.0.0", "", { "dependencies": { "@types/node": "*", "@types/tough-cookie": "*", "parse5": "^8.0.0", "undici-types": "^8.9.0" } }, "sha512-uAHGxujGE0cDaKGdK28zgDotFtNA7MKq5DXl8LrfdxdCI8VHcg15oJz+amHTChPNI5JpgEPQWc2xFdrw3em/nQ=="],
 
     "@types/jsesc": ["@types/jsesc@2.5.1", "", {}, "sha512-9VN+6yxLOPLOav+7PwjZbxiID2bVaeq0ED4qSQmdQTdjnXJSaCVKTR58t15oqH1H5t8Ng2ZX1SabJVoN9Q34bw=="],
 
@@ -4247,7 +4247,7 @@
 
     "@types/babel__traverse/@babel/types": ["@babel/types@7.29.8", "", { "dependencies": { "@babel/helper-string-parser": "^7.29.7", "@babel/helper-validator-identifier": "^7.29.7" } }, "sha512-Vj1jF3cPfxg7OAfoI7QnVKLoILlm2JF9pnVHrX8qx7AHMiYWT+NDAA7jChlNgRS4WTLc/fD1lXLmPixluj+3Gg=="],
 
-    "@types/jsdom/undici-types": ["undici-types@7.29.0", "", {}, "sha512-vamA8dGlzMwhpyYpQp9d8vka3o4D/yn5I7ez7Or+msDA4bZ8Uh+Zy91WvWf3I73gDAkFha9JcYRqm2li0Npfgg=="],
+    "@types/jsdom/undici-types": ["undici-types@8.10.0", "", {}, "sha512-ibvdovq3nCFs8Msrd95BW+zUOq+aOVbT+wpHUoPWhztbHEoPc6oof51iFDB6Es8lTKvNvVW9jNSAB8dwrKTMGg=="],
 
     "@vercel/backends/fs-extra": ["fs-extra@11.1.0", "", { "dependencies": { "graceful-fs": "^4.2.0", "jsonfile": "^6.0.1", "universalify": "^2.0.0" } }, "sha512-0rcTq621PD5jM/e0a3EJoGC/1TC5ZBCERW82LQuwfGnCa1V8w7dpYH1yNu+SLb6E5dkeCBzKEyLGlFrnr+dUyw=="],
 
