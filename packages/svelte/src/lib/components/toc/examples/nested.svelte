@@ -27,7 +27,7 @@
         </svelte:element>
         <div class={styles.DummyText}>
           {#each { length: item.lines } as _}
-            <div class={styles.DummyLine} />
+            <div class={styles.DummyLine}></div>
           {/each}
         </div>
       </section>

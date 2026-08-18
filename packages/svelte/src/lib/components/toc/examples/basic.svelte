@@ -20,7 +20,7 @@
         <h2 id={item.value}>{item.label}</h2>
         <div class={styles.DummyText}>
           {#each { length: item.lines } as _, i}
-            <div class={styles.DummyLine} />
+            <div class={styles.DummyLine}></div>
           {/each}
         </div>
       </section>
