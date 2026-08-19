@@ -11,7 +11,7 @@ const items = [
 ]
 
 export const WithSelect = () => {
-  const contentRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLElement | null>(null)
 
   return (
     <Toc.Root
@@ -20,16 +20,13 @@ export const WithSelect = () => {
       scrollEl={() => contentRef.current}
     >
       <Toc.Context>
-        {({ activeItems }) => (
+        {({ activeItems, scrollTo }) => (
           <div className={styles.MobileNav}>
             <select
               className={styles.NativeSelect}
               data-active={activeItems.length > 0 || undefined}
               value={activeItems[0]?.value ?? items[0].value}
-              onChange={(e) => {
-                const el = contentRef.current?.querySelector(`#${e.target.value}`)
-                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-              }}
+              onChange={(e) => scrollTo(e.target.value)}
             >
               {items.map((item) => (
                 <option key={item.value} value={item.value}>
