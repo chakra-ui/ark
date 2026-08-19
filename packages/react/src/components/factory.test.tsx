@@ -189,6 +189,22 @@ describe('Ark Factory', () => {
     expect(child).toHaveTextContent('Ark UI')
   })
 
+  it('should compose refs through a react.lazy child', () => {
+    const parentRef = vi.fn()
+    const childRef = vi.fn()
+
+    render(
+      <ark.div ref={parentRef} data-part="parent" asChild>
+        {createLazyChild(<span ref={childRef} data-testid="child" />)}
+      </ark.div>,
+    )
+
+    const child = screen.getByTestId('child')
+    expect(child).toHaveAttribute('data-part', 'parent')
+    expect(parentRef).toHaveBeenCalledWith(child)
+    expect(childRef).toHaveBeenCalledWith(child)
+  })
+
   it('should leave non-lazy invalid children untouched', () => {
     const { container } = render(
       <ark.div data-testid="parent" asChild>
