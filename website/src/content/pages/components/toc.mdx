@@ -1,7 +1,8 @@
 ---
 id: toc
 title: Table of Contents
-description: A navigation component that tracks and highlights the active section as users scroll through document content.
+description:
+  A navigation component that tracks and highlights the active section as users scroll through document content.
 ---
 
 <ComponentPreview id="Toc" />
@@ -43,15 +44,15 @@ Use the `depth` property on each item to represent heading levels (`h2`, `h3`, e
 
 ### Root Provider
 
-Use the `useToc` hook with `Toc.RootProvider` to access the TOC state — such as `activeIds` — from outside the
-component tree. This is useful when you need to sync the navigation state with other parts of your UI.
+Use the `useToc` hook with `Toc.RootProvider` to access the TOC state — such as `activeIds` — from outside the component
+tree. This is useful when you need to sync the navigation state with other parts of your UI.
 
 <Example id="root-provider" />
 
 ### With Collapsible
 
-Wrap `Toc.Nav` in a `Collapsible` to let users show or hide the navigation. Use `Toc.Context` to read `activeItems`
-and drive a progress ring that reflects how far through the page the user has scrolled.
+Wrap `Toc.Nav` in a `Collapsible` to let users show or hide the navigation. Use `Toc.Context` to read `activeItems` and
+drive a progress ring that reflects how far through the page the user has scrolled.
 
 <Example id="with-collapsible" />
 
@@ -77,6 +78,39 @@ Combine `Toc.Root` with the `TreeView` component for hierarchical section naviga
 automatically expand the branch containing the active heading, keeping the tree in sync with the reading position.
 
 <Example id="with-tree-view" />
+
+## Guides
+
+### Items
+
+Each entry needs two properties. `value` is the `id` of the heading element in your document, and `depth` is the heading
+level.
+
+```tsx
+const items = [
+  { value: 'introduction', depth: 2 },
+  { value: 'installation', depth: 2 },
+  { value: 'peer-dependencies', depth: 3 },
+]
+```
+
+`value` must match the heading's `id` exactly. The component looks the element up with `getElementById` to track when it
+scrolls into view, and `Toc.Link` targets it with `href="#introduction"`. An item whose id is missing from the document
+renders, but never becomes active.
+
+`depth` mirrors the heading tag, so `2` for `h2` and `3` for `h3`. Nothing is indented for you. Read `depth` in your own
+markup, as the [Nested Headings](#nested-headings) example does.
+
+Keep any extra properties you need on the same objects, such as a `label` for the link text. Note that annotating the
+array as `TocItemData[]` rejects them, since that type covers only `value` and `depth`. Extend it instead:
+
+```tsx
+import type { TocItemData } from '@ark-ui/react/toc'
+
+interface Item extends TocItemData {
+  label: string
+}
+```
 
 ## API Reference
 
