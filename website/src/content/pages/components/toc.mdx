@@ -72,6 +72,14 @@ Add `Toc.Indicator` inside `Toc.List` to render a sliding element that animates 
 
 <Example id="with-indicator" />
 
+### With Rail
+
+Draw a rail beside the navigation by rendering a small SVG per item, indented from `depth`. Where two neighbouring items
+sit at different depths, a bezier joins the two positions so the rail steps in and out instead of breaking. The active
+item colours its own segment, so a run of active items reads as one continuous highlight.
+
+<Example id="with-rail" />
+
 ### With Tree View
 
 Combine `Toc.Root` with the `TreeView` component for hierarchical section navigation. Use `onActiveChange` to

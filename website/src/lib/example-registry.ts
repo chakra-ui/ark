@@ -556,6 +556,7 @@ import * as Toc_RootProvider from '@examples/toc/examples/root-provider'
 import * as Toc_WithCollapsible from '@examples/toc/examples/with-collapsible'
 import * as Toc_WithHover from '@examples/toc/examples/with-hover'
 import * as Toc_WithIndicator from '@examples/toc/examples/with-indicator'
+import * as Toc_WithRail from '@examples/toc/examples/with-rail'
 import * as Toc_WithSelect from '@examples/toc/examples/with-select'
 import * as Toc_WithTreeView from '@examples/toc/examples/with-tree-view'
 import * as ToggleGroup_Basic from '@examples/toggle-group/examples/basic'
@@ -1170,6 +1171,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'toc/with-collapsible': Toc_WithCollapsible,
   'toc/with-hover': Toc_WithHover,
   'toc/with-indicator': Toc_WithIndicator,
+  'toc/with-rail': Toc_WithRail,
   'toc/with-select': Toc_WithSelect,
   'toc/with-tree-view': Toc_WithTreeView,
   'toggle-group/basic': ToggleGroup_Basic,

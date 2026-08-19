@@ -6,6 +6,7 @@ import RootProviderExample from './examples/root-provider.vue'
 import WithCollapsibleExample from './examples/with-collapsible.vue'
 import WithHoverExample from './examples/with-hover.vue'
 import WithIndicatorExample from './examples/with-indicator.vue'
+import WithRailExample from './examples/with-rail.vue'
 import WithTreeViewExample from './examples/with-tree-view.vue'
 
 const meta: Meta = {
@@ -59,6 +60,13 @@ export const WithIndicator = {
 export const WithTreeView = {
   render: () => ({
     components: { Component: WithTreeViewExample },
+    template: '<Component />',
+  }),
+}
+
+export const WithRail = {
+  render: () => ({
+    components: { Component: WithRailExample },
     template: '<Component />',
   }),
 }

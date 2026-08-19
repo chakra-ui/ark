@@ -6,6 +6,7 @@ import NestedExample from './examples/nested.svelte'
 import WithHoverExample from './examples/with-hover.svelte'
 import WithTreeViewExample from './examples/with-tree-view.svelte'
 import WithCollapsibleExample from './examples/with-collapsible.svelte'
+import WithRailExample from './examples/with-rail.svelte'
 
 const meta: Meta = {
   title: 'Components / Toc',
@@ -52,5 +53,11 @@ export const WithIndicator = {
 export const WithTreeView = {
   render: () => ({
     Component: WithTreeViewExample,
+  }),
+}
+
+export const WithRail = {
+  render: () => ({
+    Component: WithRailExample,
   }),
 }

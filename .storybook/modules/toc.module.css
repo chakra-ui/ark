@@ -413,3 +413,46 @@
     }
   }
 }
+
+.RailList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.RailItem {
+  padding-inline-start: 0;
+}
+
+.RailLink {
+  position: relative;
+  display: block;
+  padding-block: 0.35rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--demo-neutral-fg-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+
+  &:hover {
+    color: var(--demo-neutral-fg);
+  }
+
+  &[data-active] {
+    color: var(--demo-coral-fg);
+  }
+}
+
+.RailSvg {
+  position: absolute;
+  inset-inline-start: 0;
+  z-index: -1;
+  stroke: var(--demo-border-emphasized);
+  stroke-width: 1;
+  transition: stroke 0.15s;
+}
+
+.RailLink[data-active] .RailSvg {
+  stroke: var(--demo-coral-solid);
+}
