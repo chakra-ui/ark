@@ -11,7 +11,7 @@ const items = [
 ]
 
 export const Basic = () => {
-  const contentRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLElement | null>(null)
 
   return (
     <Toc.Root className={styles.Root} items={items} scrollEl={() => contentRef.current}>

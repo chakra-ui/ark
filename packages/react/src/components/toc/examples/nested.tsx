@@ -14,7 +14,7 @@ const items = [
 ]
 
 export const Nested = () => {
-  const contentRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLElement | null>(null)
 
   return (
     <Toc.Root className={`${styles.Root}`} items={items} scrollEl={() => contentRef.current}>

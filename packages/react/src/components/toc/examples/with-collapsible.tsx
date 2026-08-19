@@ -14,7 +14,7 @@ const items = [
 ]
 
 export const WithCollapsible = () => {
-  const contentRef = useRef<HTMLDivElement | null>(null)
+  const contentRef = useRef<HTMLElement | null>(null)
 
   return (
     <Toc.Root className={styles.Root} data-stacked items={items} scrollEl={() => contentRef.current}>

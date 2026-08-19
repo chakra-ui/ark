@@ -13,7 +13,7 @@ const items = [
 
 export const WithHover = () => {
   const [hovered, setHovered] = useState(false)
-  const contentRef = useRef<HTMLDivElement | null>(null)
+  const contentRef = useRef<HTMLElement | null>(null)
 
   return (
     <Toc.Root className={`${styles.Root} ${styles.HoverRoot}`} items={items} scrollEl={() => contentRef.current}>

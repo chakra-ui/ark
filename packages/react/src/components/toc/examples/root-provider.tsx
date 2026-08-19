@@ -11,7 +11,7 @@ const items = [
 ]
 
 export const RootProvider = () => {
-  const contentRef = useRef<HTMLDivElement | null>(null)
+  const contentRef = useRef<HTMLElement | null>(null)
 
   const toc = useToc({
     items,

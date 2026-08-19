@@ -96,7 +96,7 @@ const TocTreeNode = ({ node, indexPath }: TreeView.NodeProviderProps<TocNode>) =
 
 export const WithTreeView = () => {
   const [expandedValue, setExpandedValue] = useState<string[]>([])
-  const contentRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLElement | null>(null)
 
   return (
     <Toc.Root
