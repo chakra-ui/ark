@@ -60,7 +60,7 @@
 
   const openPalette = () => (open = true)
 
-  useHotkey('mod+K', openPalette, { label: 'Open command palette', category: 'General' })
+  useHotkey('mod+shift+P', openPalette, { label: 'Open command palette', category: 'General' })
 
   const handleValueChange = (details: Combobox.ValueChangeDetails) => {
     const selected = details.items.at(0)
@@ -72,7 +72,7 @@
 
 <div>
   <button type="button" class={button.Root} onclick={openPalette}>
-    Open palette ({formatHotkey('mod+K')})
+    Open palette ({formatHotkey('mod+shift+P')})
   </button>
   <p>Last run: {lastRun ?? 'nothing yet'}</p>
 

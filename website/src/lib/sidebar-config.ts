@@ -101,6 +101,7 @@ export const sidebarConfig: SidebarGroupConfig[] = [
       { id: 'format-relative-time' },
       { id: 'frame' },
       { id: 'highlight' },
+      { id: 'hotkeys' },
       { id: 'json-tree-view', title: 'JSON Tree View' },
       { id: 'locale' },
       { id: 'presence' },

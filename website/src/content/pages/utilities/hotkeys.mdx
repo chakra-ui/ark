@@ -1,0 +1,129 @@
+---
+id: hotkeys
+title: Hotkeys
+description: Register keyboard shortcuts, sequences and scopes, and read them back to build a command palette.
+status: preview
+---
+
+## Setup
+
+Register a shortcut with `useHotkey`. It listens on the document and cleans up on unmount.
+
+<Example id="basic" component="hotkeys" />
+
+`mod` resolves to Command on macOS and Control elsewhere, so you write the binding once.
+
+## Examples
+
+### Multiple shortcuts
+
+`useHotkeys` takes an array, which is what you want when the list comes from data. Each command needs an `id`,
+a `hotkey` and an `action`.
+
+<Example id="multiple" component="hotkeys" />
+
+### Sequences
+
+Press one key, then another. `G > H` fires only if both land inside the sequence window.
+
+<Example id="sequence" component="hotkeys" />
+
+### Sequence timeout
+
+`sequenceTimeoutMs` sets that window, which defaults to one second. Wait longer and the sequence resets without
+firing.
+
+<Example id="sequence-timeout" component="hotkeys" />
+
+### Scopes
+
+A command with `scopes: ['editor']` only fires while that scope is active. `store.setScope` swaps an entire set of
+shortcuts at once.
+
+<Example id="scopes" component="hotkeys" />
+
+### Form fields
+
+Single keys are ignored while you type in an input, textarea or select. Shortcuts with a modifier still fire, because
+`Cmd+S` in a text field still means save. Opt a single key back in with `options: { enableOnFormTags: true }`.
+
+<Example id="form-fields" component="hotkeys" />
+
+### Conflicts
+
+When two commands claim the same shortcut, `conflictBehavior` decides. `warn` is the default and keeps both, `replace`
+drops the earlier one, `allow` keeps both silently, `error` refuses the second.
+
+<Example id="conflicts" component="hotkeys" />
+
+### Key state
+
+`usePressedKeys` returns the keys currently held, `useIsKeyPressed` answers for one. Use these when a held key changes
+what an interaction means, like Shift to extend a selection.
+
+<Example id="key-state" component="hotkeys" />
+
+### Recording a shortcut
+
+`useHotkeyRecorder` captures whatever the user presses, for a "click to rebind" setting. Escape cancels, Backspace
+clears, and chords and sequences both work.
+
+<Example id="recorder" component="hotkeys" />
+
+### Command palette
+
+`useHotkeyRegistrations` returns every registered command with its metadata, so the palette is a view over the
+registry instead of a second list you keep in sync.
+
+<Example id="command-palette" component="hotkeys" />
+
+Register once with `label`, `category` and `keywords`, then group by `category`, search `keywords`, and call
+`item.action` on select. Here, typing "dark" finds "Toggle theme" even though its label has no "dark" in it.
+
+## Guides
+
+### Displaying a shortcut
+
+`useFormatHotkey` returns a formatter bound to the current platform, so `mod+K` renders as `⌘ K` on macOS and
+`Ctrl K` elsewhere.
+
+```tsx
+const formatHotkey = useFormatHotkey()
+
+return <kbd>{formatHotkey('mod+K')}</kbd>
+```
+
+Use `formatHotkey` from `@zag-js/hotkeys` only outside a component. Inside one it reads the platform during render,
+which mismatches on hydration when the server says `Ctrl K` and the browser says `⌘ K`. For the platform itself,
+`usePlatform` returns `mac`, `windows` or `linux`.
+
+### Sharing one store
+
+Without a provider, every hook shares a default store. Wrap your tree in `HotkeysProvider` to set defaults for every
+command, control active scopes, or isolate a subtree.
+
+```tsx
+<HotkeysProvider activeScopes={['editor']} conflictBehavior="replace" sequenceTimeoutMs={800}>
+  <App />
+</HotkeysProvider>
+```
+
+`defaultOptions` applies to every command registered under it, and per-command `options` override it.
+
+### Enabling and disabling
+
+Pass `enabled` as a boolean or a function. A function is re-evaluated each time the key fires, so it reads current
+state without re-registering.
+
+```tsx
+useHotkey('mod+S', save, { enabled: () => !isReadOnly })
+```
+
+### Reacting to a key release
+
+`options: { eventType: 'keyup' }` fires on release instead of press. Pair it with a `keydown` command on the same key
+for push-to-talk.
+
+## API Reference
+
+<ComponentTypes id="hotkeys" />

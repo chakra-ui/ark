@@ -58,7 +58,7 @@ export const CommandPalette = () => {
 
   const openPalette = () => setOpen(true)
 
-  useHotkey('mod+K', openPalette, { label: 'Open command palette', category: 'General' })
+  useHotkey('mod+shift+P', openPalette, { label: 'Open command palette', category: 'General' })
 
   const handleValueChange = (details: Combobox.ValueChangeDetails) => {
     const selected = details.items.at(0)
@@ -70,7 +70,7 @@ export const CommandPalette = () => {
   return (
     <div>
       <button type="button" className={button.Root} onClick={openPalette}>
-        Open palette ({formatHotkey('mod+K')})
+        Open palette ({formatHotkey('mod+shift+P')})
       </button>
       <p>Last run: {lastRun ?? 'nothing yet'}</p>
 
