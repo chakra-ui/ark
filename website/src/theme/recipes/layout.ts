@@ -20,6 +20,8 @@ export const layout = defineSlotRecipe({
       minWidth: '272px',
       overflow: 'auto',
       overscrollBehavior: 'contain',
+      // keeps the current page off the edge when it is scrolled into view on load
+      scrollPaddingBlock: '6rem',
       width: {
         base: '272px',
         lg: 'calc((100vw - (1440px - 64px)) / 2 + 272px - 32px)',
