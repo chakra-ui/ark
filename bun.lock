@@ -71,6 +71,7 @@
         "@zag-js/focus-trap": "1.43.1",
         "@zag-js/focus-visible": "1.43.1",
         "@zag-js/highlight-word": "1.43.1",
+        "@zag-js/hotkeys": "1.43.1",
         "@zag-js/hover-card": "1.43.1",
         "@zag-js/i18n-utils": "1.43.1",
         "@zag-js/image-cropper": "1.43.1",
@@ -183,6 +184,7 @@
         "@zag-js/focus-trap": "1.43.1",
         "@zag-js/focus-visible": "1.43.1",
         "@zag-js/highlight-word": "1.43.1",
+        "@zag-js/hotkeys": "1.43.1",
         "@zag-js/hover-card": "1.43.1",
         "@zag-js/i18n-utils": "1.43.1",
         "@zag-js/image-cropper": "1.43.1",
@@ -291,6 +293,7 @@
         "@zag-js/focus-trap": "1.43.1",
         "@zag-js/focus-visible": "1.43.1",
         "@zag-js/highlight-word": "1.43.1",
+        "@zag-js/hotkeys": "1.43.1",
         "@zag-js/hover-card": "1.43.1",
         "@zag-js/i18n-utils": "1.43.1",
         "@zag-js/image-cropper": "1.43.1",
@@ -397,6 +400,7 @@
         "@zag-js/focus-trap": "1.43.1",
         "@zag-js/focus-visible": "1.43.1",
         "@zag-js/highlight-word": "1.43.1",
+        "@zag-js/hotkeys": "1.43.1",
         "@zag-js/hover-card": "1.43.1",
         "@zag-js/i18n-utils": "1.43.1",
         "@zag-js/image-cropper": "1.43.1",
@@ -1835,6 +1839,8 @@
     "@zag-js/focus-visible": ["@zag-js/focus-visible@1.43.1", "", { "dependencies": { "@zag-js/dom-query": "1.43.1" } }, "sha512-hHiyd7naxFDY1cHIOrhC7gjljJ8buxH3nGfFHaMKBdsJllWvcOUiqDcuc6Vce+RgrWgvJChj5y4o9j92cy1U9g=="],
 
     "@zag-js/highlight-word": ["@zag-js/highlight-word@1.43.1", "", {}, "sha512-vIdkGgJ+5rn11Le6gf3Y89jJY0WCCbxMMtjTQ07ViJ6lrzl1iZOSlZLFnUVzgFwZ1l9bVErBLAEaddkGJ63s2Q=="],
+
+    "@zag-js/hotkeys": ["@zag-js/hotkeys@1.43.1", "", {}, "sha512-8VRwUYmThFlsavQ9mUzLmfLiYKNj6z51V+tr/ca1yohwMIK/4QvC77V77aN6QZ28Ptw9MUNIyHL9POe92jl1Zw=="],
 
     "@zag-js/hover-card": ["@zag-js/hover-card@1.43.1", "", { "dependencies": { "@zag-js/anatomy": "1.43.1", "@zag-js/core": "1.43.1", "@zag-js/dismissable": "1.43.1", "@zag-js/dom-query": "1.43.1", "@zag-js/popper": "1.43.1", "@zag-js/types": "1.43.1", "@zag-js/utils": "1.43.1" } }, "sha512-iE69bxvIesKTI8f8jYeAilUTZ30czqZbWz50JsXbfXz17y/+BgBlFXtN0SIg4CW8DHP0UY3U3TlBl5q127sLKA=="],
 
