@@ -84,6 +84,7 @@
 .Link,
 .LinkNumbered {
   padding: 0.3rem 0.5rem;
+  padding-inline-start: 0.875rem;
   font-size: 0.875rem;
   color: var(--demo-neutral-fg-muted);
   text-decoration: none;
