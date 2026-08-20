@@ -603,16 +603,26 @@ import * as TreeView_Mutation from '@examples/tree-view/examples/mutation'
 import * as TreeView_RenameNode from '@examples/tree-view/examples/rename-node'
 import * as TreeView_RootProvider from '@examples/tree-view/examples/root-provider'
 import * as TreeView_Virtualized from '@examples/tree-view/examples/virtualized'
-import * as Environment_Basic from '../../../packages/react/src/providers/environment/examples/basic'
-import * as Environment_Setup from '../../../packages/react/src/providers/environment/examples/setup'
-import * as Environment_ShadowRoot from '../../../packages/react/src/providers/environment/examples/shadow-root'
-import * as Environment_Usage from '../../../packages/react/src/providers/environment/examples/usage'
-import * as Interaction_FocusVisibleTextInput from '../../../packages/react/src/providers/interaction/examples/focus-visible-text-input'
-import * as Interaction_FocusVisible from '../../../packages/react/src/providers/interaction/examples/focus-visible'
-import * as Interaction_Interaction from '../../../packages/react/src/providers/interaction/examples/interaction'
-import * as Locale_Basic from '../../../packages/react/src/providers/locale/examples/basic'
-import * as Locale_Setup from '../../../packages/react/src/providers/locale/examples/setup'
-import * as Locale_Usage from '../../../packages/react/src/providers/locale/examples/usage'
+import * as Environment_Basic from '@examples/environment/examples/basic'
+import * as Environment_Setup from '@examples/environment/examples/setup'
+import * as Environment_ShadowRoot from '@examples/environment/examples/shadow-root'
+import * as Environment_Usage from '@examples/environment/examples/usage'
+import * as Hotkeys_Basic from '@examples/hotkeys/examples/basic'
+import * as Hotkeys_CommandPalette from '@examples/hotkeys/examples/command-palette'
+import * as Hotkeys_Conflicts from '@examples/hotkeys/examples/conflicts'
+import * as Hotkeys_FormFields from '@examples/hotkeys/examples/form-fields'
+import * as Hotkeys_KeyState from '@examples/hotkeys/examples/key-state'
+import * as Hotkeys_Multiple from '@examples/hotkeys/examples/multiple'
+import * as Hotkeys_Recorder from '@examples/hotkeys/examples/recorder'
+import * as Hotkeys_Scopes from '@examples/hotkeys/examples/scopes'
+import * as Hotkeys_SequenceTimeout from '@examples/hotkeys/examples/sequence-timeout'
+import * as Hotkeys_Sequence from '@examples/hotkeys/examples/sequence'
+import * as Interaction_FocusVisibleTextInput from '@examples/interaction/examples/focus-visible-text-input'
+import * as Interaction_FocusVisible from '@examples/interaction/examples/focus-visible'
+import * as Interaction_Interaction from '@examples/interaction/examples/interaction'
+import * as Locale_Basic from '@examples/locale/examples/basic'
+import * as Locale_Setup from '@examples/locale/examples/setup'
+import * as Locale_Usage from '@examples/locale/examples/usage'
 
 // Registry maps example keys to their module namespace
 // Each module is imported as a namespace (import * as X) to handle varying export names
@@ -1222,6 +1232,16 @@ const exampleModules: Record<string, ExampleModule> = {
   'environment/setup': Environment_Setup,
   'environment/shadow-root': Environment_ShadowRoot,
   'environment/usage': Environment_Usage,
+  'hotkeys/basic': Hotkeys_Basic,
+  'hotkeys/command-palette': Hotkeys_CommandPalette,
+  'hotkeys/conflicts': Hotkeys_Conflicts,
+  'hotkeys/form-fields': Hotkeys_FormFields,
+  'hotkeys/key-state': Hotkeys_KeyState,
+  'hotkeys/multiple': Hotkeys_Multiple,
+  'hotkeys/recorder': Hotkeys_Recorder,
+  'hotkeys/scopes': Hotkeys_Scopes,
+  'hotkeys/sequence-timeout': Hotkeys_SequenceTimeout,
+  'hotkeys/sequence': Hotkeys_Sequence,
   'interaction/focus-visible-text-input': Interaction_FocusVisibleTextInput,
   'interaction/focus-visible': Interaction_FocusVisible,
   'interaction/interaction': Interaction_Interaction,
