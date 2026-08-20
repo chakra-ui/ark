@@ -13,7 +13,7 @@ export {
   type TocRootProviderProps,
 } from './toc-root-provider.svelte'
 export { default as TocTitle, type TocTitleBaseProps, type TocTitleProps } from './toc-title.svelte'
-export { tocAnatomy } from './toc.anatomy'
-export { useToc, type UseTocProps, type UseTocReturn } from './use-toc.svelte'
-export { useTocContext, type UseTocContext } from './use-toc-context'
-export * as Toc from './toc'
+export { tocAnatomy } from './toc.anatomy.ts'
+export { useToc, type UseTocProps, type UseTocReturn } from './use-toc.svelte.ts'
+export { useTocContext, type UseTocContext } from './use-toc-context.ts'
+export * as Toc from './toc.ts'

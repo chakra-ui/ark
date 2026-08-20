@@ -13,8 +13,8 @@ export {
   type TocRootProviderProps,
 } from './toc-root-provider.vue'
 export { default as TocTitle, type TocTitleBaseProps, type TocTitleProps } from './toc-title.vue'
-export { tocAnatomy } from './toc.anatomy'
-export { useToc, type UseTocProps, type UseTocReturn } from './use-toc'
-export { useTocContext, type UseTocContext } from './use-toc-context'
+export { tocAnatomy } from './toc.anatomy.ts'
+export { useToc, type UseTocProps, type UseTocReturn } from './use-toc.ts'
+export { useTocContext, type UseTocContext } from './use-toc-context.ts'
 
-export * as Toc from './toc'
+export * as Toc from './toc.ts'
