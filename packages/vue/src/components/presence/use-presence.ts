@@ -32,6 +32,7 @@ export const usePresence = (props: MaybeRef<UsePresenceProps>, emit?: EmitFn<Roo
     const presenceProps = toValue(props)
     return {
       present: presenceProps.present,
+      onEnterComplete: () => emit?.('enterComplete'),
       onExitComplete: () => emit?.('exitComplete'),
     }
   })

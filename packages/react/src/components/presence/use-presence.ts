@@ -23,6 +23,7 @@ export const usePresence = (props: UsePresenceProps = {}) => {
   const machineProps: Partial<presence.Props> = {
     ...rest,
     present,
+    onEnterComplete: useEvent(props.onEnterComplete),
     onExitComplete: useEvent(props.onExitComplete),
   }
 
