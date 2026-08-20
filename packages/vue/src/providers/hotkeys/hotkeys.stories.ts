@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/vue3-vite'
 
 import BasicExample from './examples/basic.vue'
+import CommandPaletteExample from './examples/command-palette.vue'
 import ConflictsExample from './examples/conflicts.vue'
 import FormFieldsExample from './examples/form-fields.vue'
 import KeyStateExample from './examples/key-state.vue'
@@ -29,3 +30,4 @@ export const Recorder = story(RecorderExample)
 export const FormFields = story(FormFieldsExample)
 export const SequenceTimeout = story(SequenceTimeoutExample)
 export const Conflicts = story(ConflictsExample)
+export const CommandPalette = story(CommandPaletteExample)

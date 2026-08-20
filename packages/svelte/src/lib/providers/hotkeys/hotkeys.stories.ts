@@ -1,5 +1,6 @@
 import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
+import CommandPaletteExample from './examples/command-palette.svelte'
 import ConflictsExample from './examples/conflicts.svelte'
 import FormFieldsExample from './examples/form-fields.svelte'
 import KeyStateExample from './examples/key-state.svelte'
@@ -24,3 +25,4 @@ export const Recorder = { render: () => ({ Component: RecorderExample }) }
 export const FormFields = { render: () => ({ Component: FormFieldsExample }) }
 export const SequenceTimeout = { render: () => ({ Component: SequenceTimeoutExample }) }
 export const Conflicts = { render: () => ({ Component: ConflictsExample }) }
+export const CommandPalette = { render: () => ({ Component: CommandPaletteExample }) }
