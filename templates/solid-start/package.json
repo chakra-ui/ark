@@ -2,11 +2,13 @@
   "name": "@ark-ui/solid-start",
   "type": "module",
   "private": true,
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
-    "dev": "vinxi dev",
-    "build": "vinxi build",
-    "start": "vinxi start",
-    "version": "vinxi version"
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@ark-ui/solid": "workspace*",
@@ -14,7 +16,10 @@
     "@solidjs/router": "1.0.0",
     "@solidjs/start": "2.0.2",
     "lucide-solid": "1.31.0",
-    "solid-js": "1.9.14",
-    "vinxi": "0.5.11"
+    "nitro": "3.0.260610-beta",
+    "solid-js": "1.9.14"
+  },
+  "devDependencies": {
+    "vite": "8.2.1"
   }
 }
