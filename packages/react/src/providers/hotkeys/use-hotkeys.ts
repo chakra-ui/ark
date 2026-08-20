@@ -1,9 +1,8 @@
 'use client'
 
-import type { CommandDefinition } from '@zag-js/hotkeys'
+import { type CommandDefinition, type Platform, normalizeHotkey } from '@zag-js/hotkeys'
 import { isEqual } from '@zag-js/utils'
 import { useEffect, useRef } from 'react'
-import { normalizeHotkey } from './normalize-hotkey.ts'
 import { useHotkeyStore } from './use-hotkey-store.ts'
 import { usePlatform } from './use-platform.ts'
 
@@ -17,10 +16,6 @@ interface Registration {
   category: string | undefined
   keywords: string[] | undefined
   options: CommandDefinition['options']
-  // TODO(zag-bump): drop `enabled` once @zag-js/hotkeys > 1.43.1 is released. 1.43.1 gates
-  // listener attachment on `enabled`, so a command registered while disabled never attaches
-  // listeners and `enable()` cannot recover. Re-registering that command works around it.
-  enabled: boolean | 'fn' | undefined
 }
 
 const toRegistration = (command: UseHotkeysCommand, platform: Platform): Registration => ({
@@ -31,10 +26,7 @@ const toRegistration = (command: UseHotkeysCommand, platform: Platform): Registr
   category: command.category,
   keywords: command.keywords,
   options: command.options,
-  enabled: typeof command.enabled === 'function' ? 'fn' : command.enabled,
 })
-
-type Platform = ReturnType<typeof usePlatform>
 
 export const useHotkeys = (commands: UseHotkeysCommand[]) => {
   const store = useHotkeyStore()

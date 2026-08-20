@@ -1,8 +1,8 @@
 ---
-"@ark-ui/react": minor
-"@ark-ui/solid": minor
-"@ark-ui/svelte": minor
-"@ark-ui/vue": minor
+'@ark-ui/react': minor
+'@ark-ui/solid': minor
+'@ark-ui/svelte': minor
+'@ark-ui/vue': minor
 ---
 
 Add a `hotkeys` entrypoint with hooks for registering and inspecting keyboard shortcuts, built on `@zag-js/hotkeys`.
