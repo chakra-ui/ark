@@ -6,7 +6,8 @@ import { types } from '.velite'
 
 // Constants for regex patterns
 const PATTERNS = {
-  EXAMPLE: /<Example\s+(?:(?:id="[^"]*"|component="[^"]*")\s*)+\s*\/>/g,
+  // `<ExampleCode />` is the code-only variant; both inline the same source
+  EXAMPLE: /<Example(?:Code)?\s+(?:(?:id="[^"]*"|component="[^"]*")\s*)+\s*\/>/g,
   EXAMPLE_ID: /id="([^"]*)"/,
   EXAMPLE_COMPONENT: /component="([^"]*)"/,
   ANATOMY: /<Anatomy\s+id="[^"]*"\s*\/>/g,
@@ -109,6 +110,23 @@ const replaceComponentTypes = (id: string, framework: string) => {
     .join('\n\n')
 }
 
+// renders a light/dark image pair; markdown keeps the alt text and one src
+const THEME_IMAGE_RE = /<ThemeImage\s([\s\S]*?)\/>/g
+
+// `<ComponentTypes id="radio-group" replace={{ 'radio-group': 'segment-group' }} />`
+const COMPONENT_TYPES_RE = /<ComponentTypes\s+id="([^"]*)"([^>]*?)\/>/g
+
+const applyReplacements = (content: string, rest: string) => {
+  const map = rest.match(/replace=\{\{([\s\S]*?)\}\}/)
+  if (!map) return content
+
+  let res = content
+  for (const [, from, to] of map[1].matchAll(/'([^']*)'\s*:\s*'([^']*)'/g)) {
+    res = res.replaceAll(from, to)
+  }
+  return res
+}
+
 const replaceExamples = async (content: string, page: Pages, framework: string) => {
   const examples = content.match(PATTERNS.EXAMPLE) || []
   let res = content
@@ -139,10 +157,17 @@ export const cleanupPageContent = async (page: Pages, framework: 'react' | 'soli
   res = res.replace(PATTERNS.IMAGES, 'https://ark-ui.com/images')
 
   // Replace components with their content
+  res = res.replace(THEME_IMAGE_RE, (_, attrs: string) => {
+    const alt = attrs.match(/alt="([^"]*)"/)?.[1] ?? ''
+    const src = attrs.match(/srcLight="([^"]*)"/)?.[1] ?? ''
+    return src ? `![${alt}](${src})` : ''
+  })
   res = res.replace(/<Quickstart\s*\/>/g, replaceQuickstart())
   res = res.replace(/<InstallCmd\s*\/>/g, replaceInstallCmd(framework))
   res = res.replace(/<KeyBindingsTable\s+id="([^"]*)"\s*\/>/g, (_, id) => replaceKeyboardTable(id))
-  res = res.replace(/<ComponentTypes\s+id="([^"]*)"\s*\/>/g, (_, id) => replaceComponentTypes(id, framework))
+  res = res.replace(COMPONENT_TYPES_RE, (_, id: string, rest: string) =>
+    applyReplacements(replaceComponentTypes(id, framework), rest),
+  )
 
   res = await replaceExamples(res, page, framework)
 

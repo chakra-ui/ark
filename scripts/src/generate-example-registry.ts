@@ -1,6 +1,7 @@
 import { writeFileSync } from 'node:fs'
 import { basename, join } from 'node:path'
 import { globby } from 'globby'
+import prettier from 'prettier'
 
 const rootDir = join(import.meta.dirname, '../..')
 
@@ -165,7 +166,10 @@ export function hasExample(component: string, example: string): boolean {
 
   // Write to website/src/lib/example-registry.ts
   const outputPath = join(rootDir, 'website/src/lib/example-registry.ts')
-  writeFileSync(outputPath, output)
+
+  // format before writing, so a build never leaves the tree failing `prettier --check`
+  const config = await prettier.resolveConfig(outputPath)
+  writeFileSync(outputPath, await prettier.format(output, { ...config, parser: 'typescript' }))
 
   console.log(`Generated example registry with ${allFiles.length} examples`)
   console.log(`Output: ${outputPath}`)

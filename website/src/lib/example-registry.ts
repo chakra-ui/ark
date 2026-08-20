@@ -66,6 +66,7 @@ import * as Clipboard_Timeout from '@examples/clipboard/examples/timeout'
 import * as Clipboard_ValueText from '@examples/clipboard/examples/value-text'
 import * as Collapsible_Basic from '@examples/collapsible/examples/basic'
 import * as Collapsible_Disabled from '@examples/collapsible/examples/disabled'
+import * as Collapsible_HideMode from '@examples/collapsible/examples/hide-mode'
 import * as Collapsible_InitialOpen from '@examples/collapsible/examples/initial-open'
 import * as Collapsible_LazyMount from '@examples/collapsible/examples/lazy-mount'
 import * as Collapsible_Nested from '@examples/collapsible/examples/nested'
@@ -162,8 +163,10 @@ import * as Dialog_Confirmation from '@examples/dialog/examples/confirmation'
 import * as Dialog_Context from '@examples/dialog/examples/context'
 import * as Dialog_Controlled from '@examples/dialog/examples/controlled'
 import * as Dialog_FinalFocus from '@examples/dialog/examples/final-focus'
+import * as Dialog_HideMode from '@examples/dialog/examples/hide-mode'
 import * as Dialog_InitialFocus from '@examples/dialog/examples/initial-focus'
 import * as Dialog_InsideScroll from '@examples/dialog/examples/inside-scroll'
+import * as Dialog_LazyMountHideMode from '@examples/dialog/examples/lazy-mount-hide-mode'
 import * as Dialog_LazyMount from '@examples/dialog/examples/lazy-mount'
 import * as Dialog_MultipleTriggers from '@examples/dialog/examples/multiple-triggers'
 import * as Dialog_Nested from '@examples/dialog/examples/nested'
@@ -177,6 +180,7 @@ import * as DownloadTrigger_Svg from '@examples/download-trigger/examples/svg'
 import * as DownloadTrigger_WithPromise from '@examples/download-trigger/examples/with-promise'
 import * as Drawer_Basic from '@examples/drawer/examples/basic'
 import * as Drawer_Controlled from '@examples/drawer/examples/controlled'
+import * as Drawer_HideMode from '@examples/drawer/examples/hide-mode'
 import * as Drawer_IndentBackground from '@examples/drawer/examples/indent-background'
 import * as Drawer_Modal from '@examples/drawer/examples/modal'
 import * as Drawer_MultipleTriggers from '@examples/drawer/examples/multiple-triggers'
@@ -393,6 +397,7 @@ import * as Popover_RootProvider from '@examples/popover/examples/root-provider'
 import * as Popover_SameWidth from '@examples/popover/examples/same-width'
 import * as Popover_WithDialog from '@examples/popover/examples/with-dialog'
 import * as Presence_Basic from '@examples/presence/examples/basic'
+import * as Presence_HideMode from '@examples/presence/examples/hide-mode'
 import * as Presence_LazyMountAndUnmountOnExit from '@examples/presence/examples/lazy-mount-and-unmount-on-exit'
 import * as Presence_LazyMount from '@examples/presence/examples/lazy-mount'
 import * as Presence_SkipAnimationOnMount from '@examples/presence/examples/skip-animation-on-mount'
@@ -460,6 +465,7 @@ import * as Select_SelectAll from '@examples/select/examples/select-all'
 import * as Select_SelectOnHighlight from '@examples/select/examples/select-on-highlight'
 import * as Select_WithField from '@examples/select/examples/with-field'
 import * as SignaturePad_Basic from '@examples/signature-pad/examples/basic'
+import * as SignaturePad_Controlled from '@examples/signature-pad/examples/controlled'
 import * as SignaturePad_ImagePreview from '@examples/signature-pad/examples/image-preview'
 import * as SignaturePad_RootProvider from '@examples/signature-pad/examples/root-provider'
 import * as SignaturePad_WithField from '@examples/signature-pad/examples/with-field'
@@ -666,6 +672,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'clipboard/value-text': Clipboard_ValueText,
   'collapsible/basic': Collapsible_Basic,
   'collapsible/disabled': Collapsible_Disabled,
+  'collapsible/hide-mode': Collapsible_HideMode,
   'collapsible/initial-open': Collapsible_InitialOpen,
   'collapsible/lazy-mount': Collapsible_LazyMount,
   'collapsible/nested': Collapsible_Nested,
@@ -762,8 +769,10 @@ const exampleModules: Record<string, ExampleModule> = {
   'dialog/context': Dialog_Context,
   'dialog/controlled': Dialog_Controlled,
   'dialog/final-focus': Dialog_FinalFocus,
+  'dialog/hide-mode': Dialog_HideMode,
   'dialog/initial-focus': Dialog_InitialFocus,
   'dialog/inside-scroll': Dialog_InsideScroll,
+  'dialog/lazy-mount-hide-mode': Dialog_LazyMountHideMode,
   'dialog/lazy-mount': Dialog_LazyMount,
   'dialog/multiple-triggers': Dialog_MultipleTriggers,
   'dialog/nested': Dialog_Nested,
@@ -777,6 +786,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'download-trigger/with-promise': DownloadTrigger_WithPromise,
   'drawer/basic': Drawer_Basic,
   'drawer/controlled': Drawer_Controlled,
+  'drawer/hide-mode': Drawer_HideMode,
   'drawer/indent-background': Drawer_IndentBackground,
   'drawer/modal': Drawer_Modal,
   'drawer/multiple-triggers': Drawer_MultipleTriggers,
@@ -993,6 +1003,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'popover/same-width': Popover_SameWidth,
   'popover/with-dialog': Popover_WithDialog,
   'presence/basic': Presence_Basic,
+  'presence/hide-mode': Presence_HideMode,
   'presence/lazy-mount-and-unmount-on-exit': Presence_LazyMountAndUnmountOnExit,
   'presence/lazy-mount': Presence_LazyMount,
   'presence/skip-animation-on-mount': Presence_SkipAnimationOnMount,
@@ -1060,6 +1071,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'select/select-on-highlight': Select_SelectOnHighlight,
   'select/with-field': Select_WithField,
   'signature-pad/basic': SignaturePad_Basic,
+  'signature-pad/controlled': SignaturePad_Controlled,
   'signature-pad/image-preview': SignaturePad_ImagePreview,
   'signature-pad/root-provider': SignaturePad_RootProvider,
   'signature-pad/with-field': SignaturePad_WithField,
