@@ -37,9 +37,9 @@ jobs:
         id: changesets
         uses: changesets/action@v2.1.1
         with:
-          version: bun run version
-          publish: bun run release
-          title: 'chore: release packages'
-          commit: 'chore: release packages'
+          version-script: bun run version
+          publish-script: bun run release
+          pr-title: 'chore: release packages'
+          commit-message: 'chore: release packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
