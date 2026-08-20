@@ -74,6 +74,11 @@ jobs:
       - name: Check component exports
         run: bun scripts check:exports
 
+      - name: Check llms.txt response sizes
+        run: |
+          bun --cwd website velite build
+          bun scripts check:llms
+
       - name: Check for same HTML tags
         run: bun scripts check:nodes
 
