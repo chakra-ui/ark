@@ -3,9 +3,9 @@ import { useState } from 'react'
 import styles from 'styles/hotkeys.module.css'
 
 const commands = [
-  { id: 'save', hotkey: 'mod+S', label: 'Save', category: 'File' },
-  { id: 'undo', hotkey: 'mod+Z', label: 'Undo', category: 'Edit' },
-  { id: 'redo', hotkey: 'mod+shift+Z', label: 'Redo', category: 'Edit' },
+  { id: '02-save', hotkey: 'mod+S', label: 'Save', category: 'File' },
+  { id: '02-undo', hotkey: 'mod+Z', label: 'Undo', category: 'Edit' },
+  { id: '02-redo', hotkey: 'mod+shift+Z', label: 'Redo', category: 'Edit' },
 ]
 
 export const Multiple = () => {

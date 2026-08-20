@@ -4,8 +4,8 @@ import { ref } from 'vue'
 import styles from 'styles/hotkeys.module.css'
 
 const routes = [
-  { id: 'home', hotkey: 'G > H', keys: ['G', 'H'], label: 'Home' },
-  { id: 'settings', hotkey: 'G > S', keys: ['G', 'S'], label: 'Settings' },
+  { id: '03-home', hotkey: 'G > H', keys: ['G', 'H'], label: 'Home' },
+  { id: '03-settings', hotkey: 'G > S', keys: ['G', 'S'], label: 'Settings' },
 ]
 
 const page = ref('home')

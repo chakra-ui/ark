@@ -7,10 +7,10 @@ export const FormFields = () => {
   const formatHotkey = useFormatHotkey()
 
   useHotkeys([
-    { id: 'search', hotkey: 'S', action: () => setLog('Search (single key)') },
-    { id: 'save', hotkey: 'mod+S', action: () => setLog('Save (modifier)') },
+    { id: '06-search', hotkey: 'S', action: () => setLog('Search (single key)') },
+    { id: '06-save', hotkey: 'mod+S', action: () => setLog('Save (modifier)') },
     {
-      id: 'preview',
+      id: '06-preview',
       hotkey: 'P',
       action: () => setLog('Preview (opted in)'),
       options: { enableOnFormTags: true },

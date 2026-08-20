@@ -6,10 +6,10 @@
   const formatHotkey = useFormatHotkey()
 
   useHotkeys([
-    { id: 'search', hotkey: 'S', action: () => (log = 'Search (single key)') },
-    { id: 'save', hotkey: 'mod+S', action: () => (log = 'Save (modifier)') },
+    { id: '06-search', hotkey: 'S', action: () => (log = 'Search (single key)') },
+    { id: '06-save', hotkey: 'mod+S', action: () => (log = 'Save (modifier)') },
     {
-      id: 'preview',
+      id: '06-preview',
       hotkey: 'P',
       action: () => (log = 'Preview (opted in)'),
       options: { enableOnFormTags: true },

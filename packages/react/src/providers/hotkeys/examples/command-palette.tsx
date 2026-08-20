@@ -14,7 +14,7 @@ export const CommandPalette = () => {
 
   useHotkeys([
     {
-      id: 'save',
+      id: '10-save',
       hotkey: 'mod+S',
       action: () => setLastRun('Save file'),
       label: 'Save file',
@@ -22,7 +22,7 @@ export const CommandPalette = () => {
       keywords: ['write', 'persist'],
     },
     {
-      id: 'theme',
+      id: '10-theme',
       hotkey: 'mod+shift+D',
       action: () => setLastRun('Toggle theme'),
       label: 'Toggle theme',
@@ -30,7 +30,7 @@ export const CommandPalette = () => {
       keywords: ['dark', 'light', 'appearance'],
     },
     {
-      id: 'undo',
+      id: '10-undo',
       hotkey: 'mod+Z',
       action: () => setLastRun('Undo'),
       label: 'Undo',

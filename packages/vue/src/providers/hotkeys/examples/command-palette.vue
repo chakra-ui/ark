@@ -14,7 +14,7 @@ const lastRun = ref<string | null>(null)
 
 useHotkeys([
   {
-    id: 'save',
+    id: '10-save',
     hotkey: 'mod+S',
     action: () => (lastRun.value = 'Save file'),
     label: 'Save file',
@@ -22,7 +22,7 @@ useHotkeys([
     keywords: ['write', 'persist'],
   },
   {
-    id: 'theme',
+    id: '10-theme',
     hotkey: 'mod+shift+D',
     action: () => (lastRun.value = 'Toggle theme'),
     label: 'Toggle theme',
@@ -30,7 +30,7 @@ useHotkeys([
     keywords: ['dark', 'light', 'appearance'],
   },
   {
-    id: 'undo',
+    id: '10-undo',
     hotkey: 'mod+Z',
     action: () => (lastRun.value = 'Undo'),
     label: 'Undo',

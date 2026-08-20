@@ -6,8 +6,8 @@ import styles from 'styles/hotkeys.module.css'
 const fired = ref<string[]>([])
 
 useHotkeys([
-  { id: 'first', hotkey: 'mod+K', action: () => fired.value.push('First'), label: 'First' },
-  { id: 'second', hotkey: 'mod+K', action: () => fired.value.push('Second'), label: 'Second' },
+  { id: '07-first', hotkey: 'mod+K', action: () => fired.value.push('First'), label: 'First' },
+  { id: '07-second', hotkey: 'mod+K', action: () => fired.value.push('Second'), label: 'Second' },
 ])
 
 const commands = useHotkeyRegistrations()

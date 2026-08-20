@@ -4,8 +4,8 @@ import button from 'styles/button.module.css'
 import styles from 'styles/hotkeys.module.css'
 
 const commands = [
-  { id: 'bold', hotkey: 'mod+B', label: 'Bold', scope: 'editor' },
-  { id: 'print', hotkey: 'mod+P', label: 'Print', scope: 'reader' },
+  { id: '05-bold', hotkey: 'mod+B', label: 'Bold', scope: 'editor' },
+  { id: '05-print', hotkey: 'mod+P', label: 'Print', scope: 'reader' },
 ]
 
 const ScopeDemo = () => {

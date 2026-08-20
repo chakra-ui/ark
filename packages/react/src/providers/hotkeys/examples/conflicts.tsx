@@ -9,8 +9,8 @@ const Demo = () => {
   const [fired, setFired] = useState<string[]>([])
 
   useHotkeys([
-    { id: 'first', hotkey: 'mod+K', action: () => setFired((log) => [...log, 'First']), label: 'First' },
-    { id: 'second', hotkey: 'mod+K', action: () => setFired((log) => [...log, 'Second']), label: 'Second' },
+    { id: '07-first', hotkey: 'mod+K', action: () => setFired((log) => [...log, 'First']), label: 'First' },
+    { id: '07-second', hotkey: 'mod+K', action: () => setFired((log) => [...log, 'Second']), label: 'Second' },
   ])
 
   const commands = useHotkeyRegistrations()

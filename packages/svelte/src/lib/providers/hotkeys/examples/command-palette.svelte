@@ -15,7 +15,7 @@
 
   useHotkeys([
     {
-      id: 'save',
+      id: '10-save',
       hotkey: 'mod+S',
       action: () => (lastRun = 'Save file'),
       label: 'Save file',
@@ -23,7 +23,7 @@
       keywords: ['write', 'persist'],
     },
     {
-      id: 'theme',
+      id: '10-theme',
       hotkey: 'mod+shift+D',
       action: () => (lastRun = 'Toggle theme'),
       label: 'Toggle theme',
@@ -31,7 +31,7 @@
       keywords: ['dark', 'light', 'appearance'],
     },
     {
-      id: 'undo',
+      id: '10-undo',
       hotkey: 'mod+Z',
       action: () => (lastRun = 'Undo'),
       label: 'Undo',

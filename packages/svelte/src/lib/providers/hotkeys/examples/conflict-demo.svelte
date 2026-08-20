@@ -5,8 +5,8 @@
   let fired = $state<string[]>([])
 
   useHotkeys([
-    { id: 'first', hotkey: 'mod+K', action: () => (fired = [...fired, 'First']), label: 'First' },
-    { id: 'second', hotkey: 'mod+K', action: () => (fired = [...fired, 'Second']), label: 'Second' },
+    { id: '07-first', hotkey: 'mod+K', action: () => (fired = [...fired, 'First']), label: 'First' },
+    { id: '07-second', hotkey: 'mod+K', action: () => (fired = [...fired, 'Second']), label: 'Second' },
   ])
 
   const commands = useHotkeyRegistrations()
