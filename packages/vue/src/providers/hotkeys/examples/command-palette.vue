@@ -55,10 +55,7 @@ const { collection, filter, set } = useListCollection({
 
 watch(commands, (next) => set([...next]), { immediate: true })
 
-const openPalette = () => {
-  filter('')
-  open.value = true
-}
+const openPalette = () => (open.value = true)
 
 useHotkey('mod+K', openPalette, { label: 'Open command palette', category: 'General' })
 
@@ -75,7 +72,13 @@ const handleValueChange = (details: Combobox.ValueChangeDetails) => {
     <button type="button" :class="button.Root" @click="openPalette">Open palette ({{ formatHotkey('mod+K') }})</button>
     <p>Last run: {{ lastRun ?? 'nothing yet' }}</p>
 
-    <Dialog.Root lazy-mount unmount-on-exit :open="open" @open-change="(details) => (open = details.open)">
+    <Dialog.Root
+      lazy-mount
+      unmount-on-exit
+      :open="open"
+      @open-change="(details) => (open = details.open)"
+      @exit-complete="() => filter('')"
+    >
       <Teleport to="body">
         <Dialog.Backdrop :class="styles.Backdrop" />
         <Dialog.Positioner :class="styles.Positioner">

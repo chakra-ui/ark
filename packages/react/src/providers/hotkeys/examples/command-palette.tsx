@@ -56,10 +56,7 @@ export const CommandPalette = () => {
     set([...commands])
   }, [commands, set])
 
-  const openPalette = () => {
-    filter('')
-    setOpen(true)
-  }
+  const openPalette = () => setOpen(true)
 
   useHotkey('mod+K', openPalette, { label: 'Open command palette', category: 'General' })
 
@@ -81,10 +78,8 @@ export const CommandPalette = () => {
         lazyMount
         unmountOnExit
         open={open}
-        onOpenChange={(details) => {
-          if (details.open) filter('')
-          setOpen(details.open)
-        }}
+        onOpenChange={(details) => setOpen(details.open)}
+        onExitComplete={() => filter('')}
       >
         <Portal>
           <Dialog.Backdrop className={styles.Backdrop} />

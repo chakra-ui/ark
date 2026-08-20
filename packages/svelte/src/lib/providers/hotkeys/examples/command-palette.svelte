@@ -58,10 +58,7 @@
     set([...commands()])
   })
 
-  const openPalette = () => {
-    filter('')
-    open = true
-  }
+  const openPalette = () => (open = true)
 
   useHotkey('mod+K', openPalette, { label: 'Open command palette', category: 'General' })
 
@@ -79,7 +76,13 @@
   </button>
   <p>Last run: {lastRun ?? 'nothing yet'}</p>
 
-  <Dialog.Root lazyMount unmountOnExit {open} onOpenChange={(details) => (open = details.open)}>
+  <Dialog.Root
+    lazyMount
+    unmountOnExit
+    {open}
+    onOpenChange={(details) => (open = details.open)}
+    onExitComplete={() => filter('')}
+  >
     <Portal>
       <Dialog.Backdrop class={styles.Backdrop} />
       <Dialog.Positioner class={styles.Positioner}>
