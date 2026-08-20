@@ -13,8 +13,12 @@ const nextConfig = {
     // Resolve 'styles' alias for CSS modules (used by package examples)
     config.resolve.alias.styles = path.resolve(__dirname, '../.storybook/modules')
 
-    // Resolve '@examples' alias for loading example components
-    config.resolve.alias['@examples'] = path.resolve(__dirname, '../packages/react/src/components')
+    // Resolve '@examples' alias for loading example components. Examples live under
+    // components/ or providers/, so both are listed and tried in order.
+    config.resolve.alias['@examples'] = [
+      path.resolve(__dirname, '../packages/react/src/components'),
+      path.resolve(__dirname, '../packages/react/src/providers'),
+    ]
 
     // Add packages/react/src to the module resolution
     config.resolve.modules = [...(config.resolve.modules || []), path.resolve(__dirname, '../packages/react/src')]
