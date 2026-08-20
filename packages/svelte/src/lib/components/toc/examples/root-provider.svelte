@@ -3,11 +3,11 @@
   import styles from 'styles/toc.module.css'
 
   const items = [
-    { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
-    { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
-    { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
-    { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
-    { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
+    { value: '03-introduction', depth: 2, label: 'Introduction', lines: 12 },
+    { value: '03-getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+    { value: '03-installation', depth: 2, label: 'Installation', lines: 8 },
+    { value: '03-usage', depth: 2, label: 'Usage', lines: 14 },
+    { value: '03-conclusion', depth: 2, label: 'Conclusion', lines: 10 },
   ]
 
   let contentEl: HTMLElement | null = $state(null)
@@ -16,16 +16,16 @@
 
 <Toc.RootProvider class={styles.Root} value={toc}>
   <Toc.Content bind:ref={contentEl} class={styles.Content}>
-      {#each items as item (item.value)}
-        <section>
-          <h2 id={item.value}>{item.label}</h2>
-          <div class={styles.DummyText}>
-            {#each { length: item.lines } as _}
-              <div class={styles.DummyLine}></div>
-            {/each}
-          </div>
-        </section>
-      {/each}
+    {#each items as item (item.value)}
+      <section>
+        <h2 id={item.value}>{item.label}</h2>
+        <div class={styles.DummyText}>
+          {#each { length: item.lines } as _}
+            <div class={styles.DummyLine}></div>
+          {/each}
+        </div>
+      </section>
+    {/each}
   </Toc.Content>
   <Toc.Nav class={styles.Nav}>
     <Toc.Title class={styles.Title}>On this page</Toc.Title>

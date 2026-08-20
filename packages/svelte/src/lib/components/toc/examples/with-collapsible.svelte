@@ -6,11 +6,11 @@
   import styles from 'styles/toc.module.css'
 
   const items = [
-    { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
-    { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
-    { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
-    { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
-    { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
+    { value: '04-introduction', depth: 2, label: 'Introduction', lines: 12 },
+    { value: '04-getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+    { value: '04-installation', depth: 2, label: 'Installation', lines: 8 },
+    { value: '04-usage', depth: 2, label: 'Usage', lines: 14 },
+    { value: '04-conclusion', depth: 2, label: 'Conclusion', lines: 10 },
   ]
 
   const RADIUS = 14
@@ -19,18 +19,23 @@
   let contentEl: HTMLElement | null = $state(null)
 </script>
 
-<Toc.Root class={`${styles.Root} ${styles.RootStacked}`} {items} rootMargin="0px 0px -80% 0px" scrollEl={() => contentEl}>
+<Toc.Root
+  class={`${styles.Root} ${styles.RootStacked}`}
+  {items}
+  rootMargin="0px 0px -80% 0px"
+  scrollEl={() => contentEl}
+>
   <Toc.Content bind:ref={contentEl} class={styles.Content}>
-      {#each items as item (item.value)}
-        <section>
-          <h2 id={item.value}>{item.label}</h2>
-          <div class={styles.DummyText}>
-            {#each { length: item.lines } as _}
-              <div class={styles.DummyLine}></div>
-            {/each}
-          </div>
-        </section>
-      {/each}
+    {#each items as item (item.value)}
+      <section>
+        <h2 id={item.value}>{item.label}</h2>
+        <div class={styles.DummyText}>
+          {#each { length: item.lines } as _}
+            <div class={styles.DummyLine}></div>
+          {/each}
+        </div>
+      </section>
+    {/each}
   </Toc.Content>
   <Toc.Nav class={styles.Nav}>
     <Collapsible.Root style="width: 100%">
@@ -45,7 +50,15 @@
             <span class={styles.TriggerContent}>
               <span class={styles.ProgressRing}>
                 <svg width="28" height="28" viewBox="0 0 36 36" aria-hidden="true">
-                  <circle cx="18" cy="18" r={RADIUS} fill="none" stroke="currentColor" stroke-opacity="0.2" stroke-width="2.5" />
+                  <circle
+                    cx="18"
+                    cy="18"
+                    r={RADIUS}
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-opacity="0.2"
+                    stroke-width="2.5"
+                  />
                   <circle
                     cx="18"
                     cy="18"

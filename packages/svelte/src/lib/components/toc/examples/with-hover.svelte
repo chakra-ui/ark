@@ -5,11 +5,11 @@
   import styles from 'styles/toc.module.css'
 
   const items = [
-    { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
-    { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
-    { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
-    { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
-    { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
+    { value: '05-introduction', depth: 2, label: 'Introduction', lines: 12 },
+    { value: '05-getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+    { value: '05-installation', depth: 2, label: 'Installation', lines: 8 },
+    { value: '05-usage', depth: 2, label: 'Usage', lines: 14 },
+    { value: '05-conclusion', depth: 2, label: 'Conclusion', lines: 10 },
   ]
 
   let pinned = $state(false)
@@ -17,30 +17,27 @@
   let contentEl: HTMLElement | null = $state(null)
 </script>
 
-<Toc.Root
-  class="{styles.Root} {styles.HoverRoot}"
-  {items}
-  rootMargin="0px 0px -80% 0px"
-  scrollEl={() => contentEl}
->
+<Toc.Root class="{styles.Root} {styles.HoverRoot}" {items} rootMargin="0px 0px -80% 0px" scrollEl={() => contentEl}>
   <Toc.Content bind:ref={contentEl} class={styles.Content}>
-      {#each items as item (item.value)}
-        <section>
-          <h2 id={item.value}>{item.label}</h2>
-          <div class={styles.DummyText}>
-            {#each { length: item.lines } as _}
-              <div class={styles.DummyLine}></div>
-            {/each}
-          </div>
-        </section>
-      {/each}
+    {#each items as item (item.value)}
+      <section>
+        <h2 id={item.value}>{item.label}</h2>
+        <div class={styles.DummyText}>
+          {#each { length: item.lines } as _}
+            <div class={styles.DummyLine}></div>
+          {/each}
+        </div>
+      </section>
+    {/each}
   </Toc.Content>
   <Toc.Nav
     class={styles.NavHover}
-    data-expanded={(hovered || pinned) || undefined}
+    data-expanded={hovered || pinned || undefined}
     onmouseenter={() => (hovered = true)}
     onmouseleave={() => (hovered = false)}
-    onclick={() => { if (!hovered && !pinned) pinned = true }}
+    onclick={() => {
+      if (!hovered && !pinned) pinned = true
+    }}
   >
     <button
       type="button"

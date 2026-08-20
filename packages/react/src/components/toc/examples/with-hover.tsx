@@ -4,11 +4,11 @@ import { useRef, useState } from 'react'
 import styles from 'styles/toc.module.css'
 
 const items = [
-  { value: 'analytics-dashboard', depth: 2, label: 'Real-time Analytics', lines: 55 },
-  { value: 'cloud-storage', depth: 2, label: 'S3 Cloud Storage', lines: 14 },
-  { value: 'automation-tools', depth: 2, label: 'Workflow Automation', lines: 32 },
-  { value: 'crm-integration', depth: 2, label: 'Salesforce Sync', lines: 45 },
-  { value: 'report-generator', depth: 2, label: 'Custom PDF Reports', lines: 20 },
+  { value: '05-analytics-dashboard', depth: 2, label: 'Real-time Analytics', lines: 55 },
+  { value: '05-cloud-storage', depth: 2, label: 'S3 Cloud Storage', lines: 14 },
+  { value: '05-automation-tools', depth: 2, label: 'Workflow Automation', lines: 32 },
+  { value: '05-crm-integration', depth: 2, label: 'Salesforce Sync', lines: 45 },
+  { value: '05-report-generator', depth: 2, label: 'Custom PDF Reports', lines: 20 },
 ]
 
 export const WithHover = () => {

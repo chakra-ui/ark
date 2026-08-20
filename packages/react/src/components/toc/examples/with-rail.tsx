@@ -3,15 +3,15 @@ import { useRef } from 'react'
 import styles from 'styles/toc.module.css'
 
 const items = [
-  { value: 'overview', depth: 2, label: 'Overview', lines: 10 },
-  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
-  { value: 'package-manager', depth: 3, label: 'Package Manager', lines: 12 },
-  { value: 'peer-dependencies', depth: 3, label: 'Peer Dependencies', lines: 6 },
-  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
-  { value: 'server-components', depth: 3, label: 'Server Components', lines: 9 },
-  { value: 'styling', depth: 3, label: 'Styling', lines: 11 },
-  { value: 'theming', depth: 4, label: 'Theming', lines: 7 },
-  { value: 'api-reference', depth: 2, label: 'API Reference', lines: 12 },
+  { value: '07-overview', depth: 2, label: 'Overview', lines: 10 },
+  { value: '07-installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: '07-package-manager', depth: 3, label: 'Package Manager', lines: 12 },
+  { value: '07-peer-dependencies', depth: 3, label: 'Peer Dependencies', lines: 6 },
+  { value: '07-usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: '07-server-components', depth: 3, label: 'Server Components', lines: 9 },
+  { value: '07-styling', depth: 3, label: 'Styling', lines: 11 },
+  { value: '07-theming', depth: 4, label: 'Theming', lines: 7 },
+  { value: '07-api-reference', depth: 2, label: 'API Reference', lines: 12 },
 ]
 
 // h2 sits at level 0; deeper headings step in, clamped so h5+ share h4's indent

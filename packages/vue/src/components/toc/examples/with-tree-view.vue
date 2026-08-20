@@ -16,34 +16,34 @@ type TocNode = {
 
 const sections: TocNode[] = [
   {
-    id: 'guides',
+    id: '09-guides',
     name: 'Guides',
     depth: 2,
     lines: 10,
     children: [
-      { id: 'quick-start', name: 'Quick Start', depth: 3, lines: 6 },
-      { id: 'manual-setup', name: 'Manual Setup', depth: 3, lines: 7 },
+      { id: '09-quick-start', name: 'Quick Start', depth: 3, lines: 6 },
+      { id: '09-manual-setup', name: 'Manual Setup', depth: 3, lines: 7 },
     ],
   },
   {
-    id: 'core-concepts',
+    id: '09-core-concepts',
     name: 'Core Concepts',
     depth: 2,
     lines: 12,
     children: [
-      { id: 'props', name: 'Props', depth: 3, lines: 8 },
-      { id: 'events', name: 'Events', depth: 3, lines: 7 },
-      { id: 'context', name: 'Context', depth: 3, lines: 6 },
+      { id: '09-props', name: 'Props', depth: 3, lines: 8 },
+      { id: '09-events', name: 'Events', depth: 3, lines: 7 },
+      { id: '09-context', name: 'Context', depth: 3, lines: 6 },
     ],
   },
   {
-    id: 'advanced',
+    id: '09-advanced',
     name: 'Advanced',
     depth: 2,
     lines: 14,
     children: [
-      { id: 'root-provider', name: 'Root Provider', depth: 3, lines: 8 },
-      { id: 'custom-rendering', name: 'Custom Rendering', depth: 3, lines: 7 },
+      { id: '09-root-provider', name: 'Root Provider', depth: 3, lines: 8 },
+      { id: '09-custom-rendering', name: 'Custom Rendering', depth: 3, lines: 7 },
     ],
   },
 ]

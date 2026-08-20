@@ -5,11 +5,11 @@ import CollapsibleStyles from 'styles/Collapsible.module.css'
 import styles from 'styles/toc.module.css'
 
 const items = [
-  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
-  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
-  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
-  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
-  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
+  { value: '04-introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: '04-getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: '04-installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: '04-usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: '04-conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
 
 const RADIUS = 14

@@ -3,11 +3,11 @@ import { Index } from 'solid-js'
 import styles from 'styles/toc.module.css'
 
 const items = [
-  { value: 'introduction', depth: 2, label: 'Introduction', lines: 12 },
-  { value: 'getting-started', depth: 2, label: 'Getting Started', lines: 10 },
-  { value: 'installation', depth: 2, label: 'Installation', lines: 8 },
-  { value: 'usage', depth: 2, label: 'Usage', lines: 14 },
-  { value: 'conclusion', depth: 2, label: 'Conclusion', lines: 10 },
+  { value: '03-introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: '03-getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: '03-installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: '03-usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: '03-conclusion', depth: 2, label: 'Conclusion', lines: 10 },
 ]
 
 export const RootProvider = () => {

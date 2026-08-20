@@ -6,11 +6,11 @@ import styles from 'styles/toc.module.css'
 import { useRef } from 'react'
 
 const items = [
-  { value: 'overview', depth: 2, label: 'Overview', lines: 8 },
-  { value: 'prerequisites', depth: 2, label: 'Prerequisites', lines: 5 },
-  { value: 'quick-start', depth: 2, label: 'Quick Start', lines: 20 },
-  { value: 'commands', depth: 2, label: 'Core Commands', lines: 15 },
-  { value: 'troubleshooting', depth: 2, label: 'Troubleshooting', lines: 12 },
+  { value: '04-overview', depth: 2, label: 'Overview', lines: 8 },
+  { value: '04-prerequisites', depth: 2, label: 'Prerequisites', lines: 5 },
+  { value: '04-quick-start', depth: 2, label: 'Quick Start', lines: 20 },
+  { value: '04-commands', depth: 2, label: 'Core Commands', lines: 15 },
+  { value: '04-troubleshooting', depth: 2, label: 'Troubleshooting', lines: 12 },
 ]
 
 export const WithCollapsible = () => {
