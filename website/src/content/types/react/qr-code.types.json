@@ -81,7 +81,7 @@
         "description": "The unique identifier of the machine."
       },
       "ids": {
-        "type": "Partial<{ root: string; frame: string }>",
+        "type": "Partial<{ root: string; frame: string; overlay: string }>",
         "isRequired": false,
         "description": "The element ids."
       },

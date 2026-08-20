@@ -1,0 +1,139 @@
+{
+  "Content": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Indicator": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Item": {
+    "props": {
+      "item": { "type": "TocItem", "isRequired": true, "description": "The TOC item" },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Link": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "List": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Nav": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "placement": { "type": "'left' | 'right'", "isRequired": false }
+    }
+  },
+  "Root": {
+    "emits": {
+      "activeChange": {
+        "type": "[details: ActiveChangeDetails]",
+        "isRequired": true,
+        "description": "Callback when the active (visible) headings change."
+      }
+    },
+    "props": {
+      "items": {
+        "type": "TocItem[]",
+        "isRequired": true,
+        "description": "The TOC items with `value` (slug/id) and `depth` (heading level)."
+      },
+      "activeIds": { "type": "string[]", "isRequired": false, "description": "The controlled active heading ids." },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "autoScroll": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to auto-scroll the TOC container so the first active item\nis visible when active headings change."
+      },
+      "defaultActiveIds": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The default active heading ids when rendered.\nUse when you don't need to control the active headings."
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  title: string\n  list: string\n  item: (value: string) => string\n  link: (value: string) => string\n  indicator: string\n}>",
+        "isRequired": false,
+        "description": "The ids of the elements in the TOC. Useful for composition."
+      },
+      "rootMargin": {
+        "type": "string",
+        "defaultValue": "\"-20px 0px -40% 0px\"",
+        "isRequired": false,
+        "description": "The root margin for the IntersectionObserver."
+      },
+      "scrollBehavior": {
+        "type": "ScrollBehavior",
+        "defaultValue": "\"smooth\"",
+        "isRequired": false,
+        "description": "The scroll behavior for auto-scrolling the TOC container."
+      },
+      "scrollEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "description": "Function that returns the scroll container element to observe within.\nDefaults to the document/viewport."
+      },
+      "threshold": {
+        "type": "number | number[]",
+        "defaultValue": "0",
+        "isRequired": false,
+        "description": "The IntersectionObserver threshold."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "TocApi<PropTypes>", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Title": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
+}
