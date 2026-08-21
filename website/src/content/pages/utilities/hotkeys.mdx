@@ -17,8 +17,8 @@ Register a shortcut with `useHotkey`. It listens on the document and cleans up o
 
 ### Multiple shortcuts
 
-`useHotkeys` takes an array, which is what you want when the list comes from data. Each command needs an `id`,
-a `hotkey` and an `action`.
+`useHotkeys` takes an array, which is what you want when the list comes from data. Each command needs a `hotkey` and an
+`action`.
 
 <Example id="multiple" component="hotkeys" />
 
@@ -30,8 +30,7 @@ Press one key, then another. `G > H` fires only if both land inside the sequence
 
 ### Sequence timeout
 
-`sequenceTimeoutMs` sets that window, which defaults to one second. Wait longer and the sequence resets without
-firing.
+`sequenceTimeoutMs` sets that window, which defaults to one second. Wait longer and the sequence resets without firing.
 
 <Example id="sequence-timeout" component="hotkeys" />
 
@@ -72,8 +71,8 @@ clears, and chords and sequences both work.
 
 ### Command palette
 
-`useHotkeyRegistrations` returns every registered command with its metadata, so the palette is a view over the
-registry instead of a second list you keep in sync.
+`useHotkeyRegistrations` returns every registered command with its metadata, so the palette is a view over the registry
+instead of a second list you keep in sync.
 
 <Example id="command-palette" component="hotkeys" />
 
@@ -84,8 +83,8 @@ Register once with `label`, `category` and `keywords`, then group by `category`,
 
 ### Displaying a shortcut
 
-`useFormatHotkey` returns a formatter bound to the current platform, so `mod+K` renders as `⌘ K` on macOS and
-`Ctrl K` elsewhere.
+`useFormatHotkey` returns a formatter bound to the current platform, so `mod+K` renders as `⌘ K` on macOS and `Ctrl K`
+elsewhere.
 
 ```tsx
 const formatHotkey = useFormatHotkey()
@@ -97,26 +96,35 @@ Use `formatHotkey` from `@zag-js/hotkeys` only outside a component. Inside one i
 which mismatches on hydration when the server says `Ctrl K` and the browser says `⌘ K`. For the platform itself,
 `usePlatform` returns `mac`, `windows` or `linux`.
 
-### Sharing one store
+### Using your own store
 
-Without a provider, every hook shares a default store. Wrap your tree in `HotkeysProvider` to set defaults for every
-command, control active scopes, or isolate a subtree.
+Without one, every hook registers on a shared default store. Create your own with `createHotkeyStore` and pass it to any
+hook to isolate a set of commands, set defaults for all of them, or control active scopes.
 
 ```tsx
-<HotkeysProvider activeScopes={['editor']} conflictBehavior="replace" sequenceTimeoutMs={800}>
-  <App />
-</HotkeysProvider>
+const store = createHotkeyStore({
+  activeScopes: ['editor'],
+  conflictBehavior: 'replace',
+  sequenceTimeoutMs: 800,
+})
+
+useHotkeys({ commands, store })
+useHotkey({ hotkey: 'mod+S', action: save, store })
 ```
 
-`defaultOptions` applies to every command registered under it, and per-command `options` override it.
+Build the store outside the component, or memoize it. One created during render is rebuilt on every render and loses its
+registrations.
+
+A command palette is the usual reason to reach for this: give it its own store and `useHotkeyRegistrations({ store })`
+returns only the commands registered on it, instead of everything on the page.
 
 ### Enabling and disabling
 
-Pass `enabled` as a boolean or a function. A function is re-evaluated each time the key fires, so it reads current
-state without re-registering.
+Pass `enabled` as a boolean or a function. A function is re-evaluated each time the key fires, so it reads current state
+without re-registering.
 
 ```tsx
-useHotkey('mod+S', save, { enabled: () => !isReadOnly })
+useHotkey({ hotkey: 'mod+S', action: save, enabled: () => !isReadOnly })
 ```
 
 ### Reacting to a key release

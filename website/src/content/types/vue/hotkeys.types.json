@@ -1,11 +1,11 @@
 {
-  "HotkeysProvider": {
+  "createHotkeyStore": {
     "props": {
       "activeScopes": {
         "type": "string | string[]",
         "isRequired": false,
         "defaultValue": "['*']",
-        "description": "The scopes that are active. Only commands in an active scope fire."
+        "description": "The scopes that start active. Only commands in an active scope fire."
       },
       "conflictBehavior": {
         "type": "'warn' | 'error' | 'replace' | 'allow'",
@@ -16,41 +16,46 @@
       "defaultOptions": {
         "type": "HotkeyOptions",
         "isRequired": false,
-        "description": "Options applied to every command registered under this provider. Per-command options override it."
+        "description": "Options applied to every command registered on this store. Per-command options override it."
       },
       "sequenceTimeoutMs": {
         "type": "number",
         "isRequired": false,
         "defaultValue": "1000",
         "description": "How long a sequence like G > H waits for the next key before resetting."
+      },
+      "returns": {
+        "type": "HotkeyStore",
+        "isRequired": false,
+        "description": "The store. Pass it to any hook as store, and keep it stable: build it outside the component or memoize it, since one created during render is rebuilt on every render and loses its registrations."
       }
     }
   },
   "useHotkey": {
     "props": {
-      "hotkey": {
-        "type": "MaybeRef<string>",
+      "props": {
+        "type": "MaybeRef<UseHotkeyProps>",
         "isRequired": true,
-        "description": "The key combination, such as mod+K, shift+alt+D or the sequence G > H. mod resolves to Command on macOS and Control elsewhere."
-      },
-      "action": {
-        "type": "(event: KeyboardEvent) => void",
-        "isRequired": true,
-        "description": "Called when the hotkey fires."
-      },
-      "options": {
-        "type": "MaybeRef<UseHotkeyOptions>",
-        "isRequired": false,
-        "description": "Everything on UseHotkeysCommand except id, hotkey and action. The id is generated for you."
+        "description": "One command, plus an optional store. Takes every field of UseHotkeysCommand."
       }
     }
   },
   "useHotkeys": {
     "props": {
       "commands": {
-        "type": "MaybeRef<UseHotkeysCommand[]>",
+        "type": "UseHotkeysCommand[]",
         "isRequired": true,
-        "description": "The commands to register. Each is keyed by id, so changing one re-registers only that command."
+        "description": "The commands to register. Passed inside a single object, so the whole argument is MaybeRef<{ commands, store, id }>."
+      },
+      "store": {
+        "type": "HotkeyStore",
+        "isRequired": false,
+        "description": "The store to register on. Defaults to a store shared by every hook that does not name one."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Prefix for the ids generated for commands that do not set their own. One is generated when omitted."
       }
     }
   },
@@ -58,8 +63,8 @@
     "props": {
       "id": {
         "type": "string",
-        "isRequired": true,
-        "description": "Unique identifier. Used to reconcile registrations across renders and to unregister on unmount."
+        "isRequired": false,
+        "description": "Identifies the command across renders. One is generated when omitted, keyed by position within the hook instance, which is enough unless something else needs to address the command by name."
       },
       "hotkey": {
         "type": "string",
@@ -161,6 +166,11 @@
   },
   "useHotkeyRegistrations": {
     "props": {
+      "store": {
+        "type": "HotkeyStore",
+        "isRequired": false,
+        "description": "The store to read from. Defaults to a store shared by every hook that does not name one."
+      },
       "returns": {
         "type": "Readonly<Ref<HotkeyCommand[]>>",
         "isRequired": false,
@@ -173,12 +183,17 @@
       "returns": {
         "type": "HotkeyStore",
         "isRequired": false,
-        "description": "The store from the nearest HotkeysProvider, or a shared default store if there is none. Use setScope, addScope, removeScope and toggleScope to change which commands are live, and isPressed to test a combination directly."
+        "description": "The store you passed, or the shared default store. Use setScope, addScope, removeScope and toggleScope to change which commands are live, and isPressed to test a combination directly."
       }
     }
   },
   "usePressedKeys": {
     "props": {
+      "store": {
+        "type": "HotkeyStore",
+        "isRequired": false,
+        "description": "The store to read from. Defaults to a store shared by every hook that does not name one."
+      },
       "returns": {
         "type": "Readonly<Ref<string[]>>",
         "isRequired": false,
@@ -189,9 +204,14 @@
   "useIsKeyPressed": {
     "props": {
       "hotkey": {
-        "type": "MaybeRef<string>",
+        "type": "string",
         "isRequired": true,
-        "description": "The key or combination to watch."
+        "description": "The key or combination to watch. Passed inside a single object, so the whole argument is MaybeRef<{ hotkey, store }>."
+      },
+      "store": {
+        "type": "HotkeyStore",
+        "isRequired": false,
+        "description": "The store to read from. Defaults to a store shared by every hook that does not name one."
       },
       "returns": {
         "type": "Readonly<Ref<boolean>>",
