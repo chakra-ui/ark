@@ -1,6 +1,6 @@
 import { existsSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
-import { join } from 'node:path'
+import { extname, join } from 'node:path'
 import { Match } from 'effect'
 import { css, cx } from 'styled-system/css'
 import { Stack } from 'styled-system/jsx'
@@ -21,7 +21,7 @@ export const Example = async (props: Props) => {
   const component = props.component ?? serverContext.component
 
   const framework = await getFramework()
-  const { code, lang } = await fetchFrameworkCode(framework, component, props.id)
+  const { code, lang, localFiles } = await fetchFrameworkCode(framework, component, props.id)
   const cssModules = await fetchCssModulesFromCode(code)
   const hasPreview = component ? exampleExists(component, props.id) : false
 
@@ -33,6 +33,7 @@ export const Example = async (props: Props) => {
           code={code}
           lang={lang}
           cssModules={cssModules}
+          localFiles={localFiles}
           meta={{
             id: props.id,
             component,
@@ -49,7 +50,7 @@ export const ExampleCode = async (props: Props) => {
   const component = props.component ?? serverContext.component
 
   const framework = await getFramework()
-  const { code, lang } = await fetchFrameworkCode(framework, component, props.id)
+  const { code, lang, localFiles } = await fetchFrameworkCode(framework, component, props.id)
   const cssModules = await fetchCssModulesFromCode(code)
 
   return (
@@ -57,6 +58,7 @@ export const ExampleCode = async (props: Props) => {
       code={code}
       lang={lang}
       cssModules={cssModules}
+      localFiles={localFiles}
       meta={{
         id: props.id,
         component,
@@ -79,6 +81,9 @@ const getExamplePath = (component: string) =>
     Match.orElse(() => `components/${component}/examples`),
   )
 
+const cleanExampleCode = (content: string) =>
+  content.replaceAll(/from '\.\/icons'/g, `from 'lucide-vue-next'`).replace(/.*@ts-expect-error.*\n/g, '')
+
 const getExtension = (framework: string) =>
   Match.value(framework).pipe(
     Match.when('vue', () => 'vue'),
@@ -91,6 +96,38 @@ const getSrcPath = (framework: string) =>
     Match.when('svelte', () => 'src/lib'),
     Match.orElse(() => 'src'),
   )
+
+const LOCAL_IMPORT_RE = /from\s+['"](\.\/[\w./-]+)['"]/g
+
+/**
+ * Examples that need a wrapper (a provider around the demo, say) import a sibling file.
+ * Showing only the entry file would hide the part that matters, so follow those imports
+ * and return each one to render as its own tab.
+ */
+const readLocalFiles = async (framework: string, component: string, entryCode: string) => {
+  const dir = join(process.cwd(), '..', 'packages', framework, getSrcPath(framework), getExamplePath(component))
+  const files: Record<string, string> = {}
+
+  const visit = async (code: string, depth: number) => {
+    if (depth > 3) return
+
+    for (const [, specifier] of code.matchAll(LOCAL_IMPORT_RE)) {
+      const request = specifier.slice(2)
+      if (request.endsWith('.css') || request.endsWith('.json')) continue
+
+      const candidates = extname(request) ? [request] : [`${request}.tsx`, `${request}.ts`]
+      const name = candidates.find((candidate) => existsSync(join(dir, candidate)))
+      if (!name || files[name]) continue
+
+      const content = await readFile(join(dir, name), 'utf-8')
+      files[name] = cleanExampleCode(content)
+      await visit(content, depth + 1)
+    }
+  }
+
+  await visit(entryCode, 0)
+  return files
+}
 
 export const frameworkExample = async (
   framework: string,
@@ -108,19 +145,19 @@ export const frameworkExample = async (
     () => 'Example not found',
   )
 
-  const code = content.replaceAll(/from '\.\/icons'/g, `from 'lucide-vue-next'`).replace(/.*@ts-expect-error.*\n/g, '')
-  return { code, extension }
+  return { code: cleanExampleCode(content), extension }
 }
 
 const fetchFrameworkCode = async (
   framework: string,
   component: string | undefined,
   id: string,
-): Promise<{ code: string; lang: SupportedLang }> => {
-  if (!component) return { code: 'Example not found', lang: 'tsx' }
+): Promise<{ code: string; lang: SupportedLang; localFiles: Record<string, string> }> => {
+  if (!component) return { code: 'Example not found', lang: 'tsx', localFiles: {} }
 
   const { code, extension } = await frameworkExample(framework, component, id)
-  return { code, lang: extension as SupportedLang }
+  const localFiles = await readLocalFiles(framework, component, code)
+  return { code, lang: extension as SupportedLang, localFiles }
 }
 
 /**

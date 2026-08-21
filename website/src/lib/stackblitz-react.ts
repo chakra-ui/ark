@@ -91,10 +91,12 @@ function generateGlobalCss(cssModules: Record<string, string>): string {
 export async function openInStackblitzReact(opts: {
   code: string
   cssModules: Record<string, string>
+  localFiles?: Record<string, string>
   id: string
   component: string
 }) {
   let { code, cssModules, id, component } = opts
+  const { localFiles = {} } = opts
 
   code = code.replace(/export const \w+ =/, 'export const App =')
   code = rewriteCssImports(code)
@@ -105,6 +107,9 @@ export async function openInStackblitzReact(opts: {
     'vite.config.ts': viteConfig,
     'index.html': indexHtml,
     'src/App.tsx': code,
+    ...Object.fromEntries(
+      Object.entries(localFiles).map(([name, content]) => [`src/${name}`, rewriteCssImports(content)]),
+    ),
     'src/global.css': generateGlobalCss(cssModules),
     'src/main.tsx': main,
     ...getCssFiles(cssModules),

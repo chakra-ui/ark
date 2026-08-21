@@ -21,11 +21,13 @@ interface Props extends Omit<Tabs.RootProps, 'defaultValue'> {
   code: string
   lang?: SupportedLang
   cssModules?: Record<string, string>
+  /** Sibling files the example imports, rendered as their own tabs. */
+  localFiles?: Record<string, string>
   meta?: ExampleMeta
 }
 
 export const ExampleCodeTabs = (props: Props) => {
-  const { code, lang = 'tsx', meta, cssModules, ...rootProps } = props
+  const { code, lang = 'tsx', meta, cssModules, localFiles = {}, ...rootProps } = props
   const [showCss, setShowCss] = useState(true)
   const [activeTab, setActiveTab] = useState('code')
 
@@ -43,8 +45,11 @@ export const ExampleCodeTabs = (props: Props) => {
   const cssTabs =
     hasComponentCss && showCss ? componentCss.map(([filename]) => ({ value: `css:${filename}`, label: filename })) : []
 
+  const localTabs = Object.keys(localFiles).map((name) => ({ value: `local:${name}`, label: name }))
+
   const tabs = [
     { value: 'code', label: `index.${codeExtension}` },
+    ...localTabs,
     ...cssTabs,
     ...(hasComponentCss && hasGlobalCss && showCss ? [{ value: 'global', label: 'global.css' }] : []),
   ]
@@ -98,13 +103,22 @@ export const ExampleCodeTabs = (props: Props) => {
               <span className={css({ fontSize: 'sm', color: 'gray.dark.11' })}>CSS</span>
             </Switch>
           )}
-          {meta && <StackblitzButton code={code} cssModules={cssModules} meta={meta} />}
+          {meta && <StackblitzButton code={code} cssModules={cssModules} localFiles={localFiles} meta={meta} />}
         </HStack>
       </Tabs.List>
 
       <Tabs.Content key={`code-${showCss}`} value="code" pt="0">
         <CodePreview code={displayCode} lang={lang} />
       </Tabs.Content>
+
+      {Object.entries(localFiles).map(([name, content]) => (
+        <Tabs.Content key={name} value={`local:${name}`} pt="0">
+          <CodePreview
+            code={stripCss(content)}
+            lang={name.endsWith('.vue') ? 'vue' : name.endsWith('.svelte') ? 'svelte' : 'tsx'}
+          />
+        </Tabs.Content>
+      ))}
 
       {hasComponentCss &&
         showCss &&
@@ -123,10 +137,16 @@ export const ExampleCodeTabs = (props: Props) => {
   )
 }
 
-function StackblitzButton(props: { code: string; cssModules: Record<string, string> | undefined; meta: ExampleMeta }) {
+function StackblitzButton(props: {
+  code: string
+  cssModules: Record<string, string> | undefined
+  localFiles: Record<string, string>
+  meta: ExampleMeta
+}) {
   const {
     code,
     cssModules = {},
+    localFiles,
     meta: { id, component, framework },
   } = props
 
@@ -149,6 +169,7 @@ function StackblitzButton(props: { code: string; cssModules: Record<string, stri
         openInStackblitz(framework as Framework, {
           code,
           cssModules,
+          localFiles,
           id,
           component: component ?? 'Example',
         })

@@ -8,6 +8,8 @@ export type Framework = 'react' | 'solid' | 'vue' | 'svelte'
 export interface StackblitzOptions {
   code: string
   cssModules: Record<string, string>
+  /** Sibling files the example imports, written next to `App` in the generated project. */
+  localFiles?: Record<string, string>
   id: string
   component: string
 }
