@@ -6,8 +6,11 @@ import styles from 'styles/hotkeys.module.css'
 const count = ref(0)
 const formatHotkey = useFormatHotkey()
 
-useHotkey('mod+K', () => {
-  count.value += 1
+useHotkey({
+  hotkey: 'mod+K',
+  action: () => {
+    count.value += 1
+  },
 })
 </script>
 

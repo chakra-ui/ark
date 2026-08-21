@@ -1,27 +1,29 @@
-import { HotkeysProvider, useFormatHotkey, useHotkeyStore, useHotkeys } from '@ark-ui/solid/hotkeys'
+import { createHotkeyStore, useFormatHotkey, useHotkeys } from '@ark-ui/solid/hotkeys'
 import { For, createSignal } from 'solid-js'
 import button from 'styles/button.module.css'
 import styles from 'styles/hotkeys.module.css'
 
 const commands = [
-  { id: '05-bold', hotkey: 'mod+B', label: 'Bold', scope: 'editor' },
-  { id: '05-print', hotkey: 'mod+P', label: 'Print', scope: 'reader' },
+  { id: 'bold', hotkey: 'mod+B', label: 'Bold', scope: 'editor' },
+  { id: 'print', hotkey: 'mod+P', label: 'Print', scope: 'reader' },
 ]
 
-const ScopeDemo = () => {
-  const store = useHotkeyStore()
+const store = createHotkeyStore({ activeScopes: ['editor'] })
+
+export const Scopes = () => {
   const formatHotkey = useFormatHotkey()
   const [scope, setScope] = createSignal('editor')
   const [fired, setFired] = createSignal<string | null>(null)
 
-  useHotkeys(
-    commands.map((command) => ({
+  useHotkeys({
+    commands: commands.map((command) => ({
       id: command.id,
       hotkey: command.hotkey,
       scopes: [command.scope],
       action: () => setFired(command.id),
     })),
-  )
+    store,
+  })
 
   const toggle = () => {
     const next = scope() === 'editor' ? 'reader' : 'editor'
@@ -60,9 +62,3 @@ const ScopeDemo = () => {
     </div>
   )
 }
-
-export const Scopes = () => (
-  <HotkeysProvider activeScopes={['editor']}>
-    <ScopeDemo />
-  </HotkeysProvider>
-)

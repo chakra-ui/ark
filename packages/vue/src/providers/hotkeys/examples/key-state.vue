@@ -2,10 +2,10 @@
 import { useHotkey, useIsKeyPressed, usePressedKeys } from '@ark-ui/vue/hotkeys'
 import styles from 'styles/hotkeys.module.css'
 
-useHotkey('mod+K', () => {})
+useHotkey({ hotkey: 'mod+K', action: () => {} })
 
 const pressedKeys = usePressedKeys()
-const isShiftPressed = useIsKeyPressed('shift')
+const isShiftPressed = useIsKeyPressed({ hotkey: 'shift' })
 </script>
 
 <template>

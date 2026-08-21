@@ -1,6 +1,6 @@
+import { type HotkeyStore, createHotkeyStore } from '@zag-js/hotkeys'
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { HotkeysProvider } from './hotkeys-provider.tsx'
 import { useHotkey } from './use-hotkey.ts'
 import { useHotkeyRecorder } from './use-hotkey-recorder.ts'
 import { useHotkeyRegistrations } from './use-hotkey-registrations.ts'
@@ -8,22 +8,20 @@ import { useHotkeys } from './use-hotkeys.ts'
 
 describe('enableOnFormTags', () => {
   const Form = ({ onPlain, onModifier, onOptIn }: Record<string, () => void>) => {
-    useHotkeys([
-      { id: 'plain', hotkey: 's', action: onPlain },
-      { id: 'modifier', hotkey: 'ctrl+s', action: onModifier },
-      { id: 'optin', hotkey: 'p', action: onOptIn, options: { enableOnFormTags: true } },
-    ])
+    useHotkeys({
+      commands: [
+        { id: 'plain', hotkey: 's', action: onPlain },
+        { id: 'modifier', hotkey: 'ctrl+s', action: onModifier },
+        { id: 'optin', hotkey: 'p', action: onOptIn, options: { enableOnFormTags: true } },
+      ],
+    })
     return <input aria-label="note" />
   }
 
   it('should ignore a single-key hotkey while typing in an input', async () => {
     const onPlain = vi.fn()
 
-    render(() => (
-      <HotkeysProvider>
-        <Form onPlain={onPlain} onModifier={vi.fn()} onOptIn={vi.fn()} />
-      </HotkeysProvider>
-    ))
+    render(() => <Form onPlain={onPlain} onModifier={vi.fn()} onOptIn={vi.fn()} />)
 
     await user.click(screen.getByLabelText('note'))
     await user.keyboard('s')
@@ -35,11 +33,7 @@ describe('enableOnFormTags', () => {
   it('should still fire a modifier hotkey while typing in an input', async () => {
     const onModifier = vi.fn()
 
-    render(() => (
-      <HotkeysProvider>
-        <Form onPlain={vi.fn()} onModifier={onModifier} onOptIn={vi.fn()} />
-      </HotkeysProvider>
-    ))
+    render(() => <Form onPlain={vi.fn()} onModifier={onModifier} onOptIn={vi.fn()} />)
 
     await user.click(screen.getByLabelText('note'))
     await user.keyboard('{Control>}s{/Control}')
@@ -50,11 +44,7 @@ describe('enableOnFormTags', () => {
   it('should fire a single-key hotkey in an input when opted in', async () => {
     const onOptIn = vi.fn()
 
-    render(() => (
-      <HotkeysProvider>
-        <Form onPlain={vi.fn()} onModifier={vi.fn()} onOptIn={onOptIn} />
-      </HotkeysProvider>
-    ))
+    render(() => <Form onPlain={vi.fn()} onModifier={vi.fn()} onOptIn={onOptIn} />)
 
     await user.click(screen.getByLabelText('note'))
     await user.keyboard('p')
@@ -65,11 +55,7 @@ describe('enableOnFormTags', () => {
   it('should fire a single-key hotkey outside a form field', async () => {
     const onPlain = vi.fn()
 
-    render(() => (
-      <HotkeysProvider>
-        <Form onPlain={onPlain} onModifier={vi.fn()} onOptIn={vi.fn()} />
-      </HotkeysProvider>
-    ))
+    render(() => <Form onPlain={onPlain} onModifier={vi.fn()} onOptIn={vi.fn()} />)
 
     await user.keyboard('s')
 
@@ -78,19 +64,16 @@ describe('enableOnFormTags', () => {
 })
 
 describe('sequenceTimeoutMs', () => {
-  const Comp = ({ onFire }: { onFire: () => void }) => {
-    useHotkey('G > H', onFire)
+  const Comp = (props: { onFire: () => void; store: HotkeyStore }) => {
+    useHotkey(() => ({ hotkey: 'G > H', action: props.onFire, store: props.store }))
     return <div>ready</div>
   }
 
   it('should fire when the steps land inside the window', async () => {
     const onFire = vi.fn()
 
-    render(() => (
-      <HotkeysProvider sequenceTimeoutMs={300}>
-        <Comp onFire={onFire} />
-      </HotkeysProvider>
-    ))
+    const store = createHotkeyStore({ sequenceTimeoutMs: 300 })
+    render(() => <Comp onFire={onFire} store={store} />)
 
     await user.keyboard('g')
     await user.keyboard('h')
@@ -101,11 +84,8 @@ describe('sequenceTimeoutMs', () => {
   it('should not fire when the second step arrives after the window', async () => {
     const onFire = vi.fn()
 
-    render(() => (
-      <HotkeysProvider sequenceTimeoutMs={120}>
-        <Comp onFire={onFire} />
-      </HotkeysProvider>
-    ))
+    const store = createHotkeyStore({ sequenceTimeoutMs: 120 })
+    render(() => <Comp onFire={onFire} store={store} />)
 
     await user.keyboard('g')
     await new Promise((resolve) => setTimeout(resolve, 300))
@@ -116,12 +96,15 @@ describe('sequenceTimeoutMs', () => {
 })
 
 describe('conflictBehavior', () => {
-  const Two = () => {
-    useHotkeys([
-      { id: 'first', hotkey: 'ctrl+k', action: vi.fn(), label: 'First' },
-      { id: 'second', hotkey: 'ctrl+k', action: vi.fn(), label: 'Second' },
-    ])
-    const commands = useHotkeyRegistrations()
+  const Two = (props: { store?: HotkeyStore }) => {
+    useHotkeys({
+      commands: [
+        { id: 'first', hotkey: 'ctrl+k', action: vi.fn(), label: 'First' },
+        { id: 'second', hotkey: 'ctrl+k', action: vi.fn(), label: 'Second' },
+      ],
+      store: props.store,
+    })
+    const commands = useHotkeyRegistrations({ store: props.store })
     return (
       <span data-testid="ids">
         {commands()
@@ -132,21 +115,15 @@ describe('conflictBehavior', () => {
   }
 
   it('should keep both registrations when allowed', async () => {
-    render(() => (
-      <HotkeysProvider conflictBehavior="allow">
-        <Two />
-      </HotkeysProvider>
-    ))
+    const store = createHotkeyStore({ conflictBehavior: 'allow' })
+    render(() => <Two store={store} />)
 
     await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('first,second'))
   })
 
   it('should drop the earlier registration when replacing', async () => {
-    render(() => (
-      <HotkeysProvider conflictBehavior="replace">
-        <Two />
-      </HotkeysProvider>
-    ))
+    const store = createHotkeyStore({ conflictBehavior: 'replace' })
+    render(() => <Two store={store} />)
 
     await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('second'))
     expect(screen.getByTestId('ids')).not.toHaveTextContent('first')
@@ -155,11 +132,8 @@ describe('conflictBehavior', () => {
   it('should warn but keep both by default', async () => {
     const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
 
-    render(() => (
-      <HotkeysProvider>
-        <Two />
-      </HotkeysProvider>
-    ))
+    const store = createHotkeyStore()
+    render(() => <Two store={store} />)
 
     await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('first,second'))
     expect(warn).toHaveBeenCalled()
@@ -186,11 +160,7 @@ describe('recorder cancel and clear', () => {
     const onCancel = vi.fn()
     const session = user.setup()
 
-    render(() => (
-      <HotkeysProvider>
-        <Comp onCancel={onCancel} />
-      </HotkeysProvider>
-    ))
+    render(() => <Comp onCancel={onCancel} />)
 
     await session.click(screen.getByRole('button'))
     await waitFor(() => expect(screen.getByTestId('state')).toHaveTextContent('recording'))
@@ -205,11 +175,7 @@ describe('recorder cancel and clear', () => {
     const onClear = vi.fn()
     const session = user.setup()
 
-    render(() => (
-      <HotkeysProvider>
-        <Comp onClear={onClear} />
-      </HotkeysProvider>
-    ))
+    render(() => <Comp onClear={onClear} />)
 
     await session.click(screen.getByRole('button'))
     await session.keyboard('{Control>}k{/Control}')

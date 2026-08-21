@@ -6,42 +6,54 @@
   import { Portal } from '@ark-ui/svelte/portal'
   import { Dialog } from '@ark-ui/svelte/dialog'
   import { CornerDownLeftIcon, SearchIcon } from 'lucide-svelte'
-  import { useFormatHotkey, useHotkey, useHotkeyRegistrations, useHotkeys } from '$lib/providers/hotkeys/index.ts'
+  import {
+    createHotkeyStore,
+    useFormatHotkey,
+    useHotkey,
+    useHotkeyRegistrations,
+    useHotkeys,
+  } from '$lib/providers/hotkeys/index.ts'
   import button from 'styles/button.module.css'
   import styles from 'styles/command-palette.module.css'
+
+  // Its own store, so the palette lists only the commands registered here.
+  const store = createHotkeyStore()
 
   let open = $state(false)
   let lastRun = $state<string | null>(null)
 
-  useHotkeys([
-    {
-      id: '10-save',
-      hotkey: 'mod+S',
-      action: () => (lastRun = 'Save file'),
-      label: 'Save file',
-      category: 'File',
-      keywords: ['write', 'persist'],
-    },
-    {
-      id: '10-theme',
-      hotkey: 'mod+shift+D',
-      action: () => (lastRun = 'Toggle theme'),
-      label: 'Toggle theme',
-      category: 'View',
-      keywords: ['dark', 'light', 'appearance'],
-    },
-    {
-      id: '10-undo',
-      hotkey: 'mod+Z',
-      action: () => (lastRun = 'Undo'),
-      label: 'Undo',
-      category: 'Edit',
-      keywords: ['revert', 'back'],
-    },
-  ])
+  useHotkeys({
+    commands: [
+      {
+        id: 'save',
+        hotkey: 'mod+S',
+        action: () => (lastRun = 'Save file'),
+        label: 'Save file',
+        category: 'File',
+        keywords: ['write', 'persist'],
+      },
+      {
+        id: 'theme',
+        hotkey: 'mod+shift+D',
+        action: () => (lastRun = 'Toggle theme'),
+        label: 'Toggle theme',
+        category: 'View',
+        keywords: ['dark', 'light', 'appearance'],
+      },
+      {
+        id: 'undo',
+        hotkey: 'mod+Z',
+        action: () => (lastRun = 'Undo'),
+        label: 'Undo',
+        category: 'Edit',
+        keywords: ['revert', 'back'],
+      },
+    ],
+    store,
+  })
 
   const formatHotkey = useFormatHotkey()
-  const commands = useHotkeyRegistrations()
+  const commands = useHotkeyRegistrations({ store })
   const filters = useFilter({ sensitivity: 'base' })
 
   const { collection, filter, set } = useListCollection({
@@ -60,7 +72,13 @@
 
   const openPalette = () => (open = true)
 
-  useHotkey('mod+shift+P', openPalette, { label: 'Open command palette', category: 'General' })
+  useHotkey({
+    hotkey: 'mod+shift+P',
+    action: openPalette,
+    label: 'Open command palette',
+    category: 'General',
+    store,
+  })
 
   const handleValueChange = (details: Combobox.ValueChangeDetails) => {
     const selected = details.items.at(0)

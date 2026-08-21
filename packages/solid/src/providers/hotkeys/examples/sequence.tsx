@@ -3,14 +3,16 @@ import { For, createSignal } from 'solid-js'
 import styles from 'styles/hotkeys.module.css'
 
 const routes = [
-  { id: '03-home', hotkey: 'G > H', keys: ['G', 'H'], label: 'Home' },
-  { id: '03-settings', hotkey: 'G > S', keys: ['G', 'S'], label: 'Settings' },
+  { id: 'home', hotkey: 'G > H', keys: ['G', 'H'], label: 'Home' },
+  { id: 'settings', hotkey: 'G > S', keys: ['G', 'S'], label: 'Settings' },
 ]
 
 export const Sequence = () => {
   const [page, setPage] = createSignal('home')
 
-  useHotkeys(routes.map((route) => ({ id: route.id, hotkey: route.hotkey, action: () => setPage(route.id) })))
+  useHotkeys({
+    commands: routes.map((route) => ({ id: route.id, hotkey: route.hotkey, action: () => setPage(route.id) })),
+  })
 
   return (
     <div class={styles.Panel}>

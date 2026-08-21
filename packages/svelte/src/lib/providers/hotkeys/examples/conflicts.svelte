@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { type ConflictBehavior, HotkeysProvider } from '$lib/providers/hotkeys/index.ts'
+  import { type ConflictBehavior, createHotkeyStore } from '$lib/providers/hotkeys/index.ts'
   import button from 'styles/button.module.css'
   import styles from 'styles/hotkeys.module.css'
   import ConflictDemo from './conflict-demo.svelte'
@@ -17,9 +17,8 @@
     {/each}
   </div>
 
+  <!-- Conflict behavior is fixed when the store is created, so switching it makes a new store. -->
   {#key behavior}
-    <HotkeysProvider conflictBehavior={behavior}>
-      <ConflictDemo />
-    </HotkeysProvider>
+    <ConflictDemo store={createHotkeyStore({ conflictBehavior: behavior })} />
   {/key}
 </div>

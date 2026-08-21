@@ -6,7 +6,7 @@ export const Basic = () => {
   const [count, setCount] = createSignal(0)
   const formatHotkey = useFormatHotkey()
 
-  useHotkey('mod+K', () => setCount((value) => value + 1))
+  useHotkey({ hotkey: 'mod+K', action: () => setCount((value) => value + 1) })
 
   return (
     <div class={styles.Panel}>

@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { type ConflictBehavior, HotkeysProvider } from '@ark-ui/vue/hotkeys'
-import { ref } from 'vue'
+import { type ConflictBehavior, createHotkeyStore } from '@ark-ui/vue/hotkeys'
+import { computed, ref } from 'vue'
 import button from 'styles/button.module.css'
 import styles from 'styles/hotkeys.module.css'
 import ConflictDemo from './conflict-demo.vue'
 
 const BEHAVIORS: ConflictBehavior[] = ['warn', 'replace', 'allow']
 const behavior = ref<ConflictBehavior>('warn')
+
+// Conflict behavior is fixed when the store is created, so switching it makes a new store.
+const store = computed(() => createHotkeyStore({ conflictBehavior: behavior.value }))
 </script>
 
 <template>
@@ -19,8 +22,6 @@ const behavior = ref<ConflictBehavior>('warn')
       </button>
     </div>
 
-    <HotkeysProvider :key="behavior" :conflict-behavior="behavior">
-      <ConflictDemo />
-    </HotkeysProvider>
+    <ConflictDemo :key="behavior" :store="store" />
   </div>
 </template>

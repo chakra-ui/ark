@@ -1,12 +1,30 @@
-import { type CommandDefinition, type Platform, normalizeHotkey } from '@zag-js/hotkeys'
-import { isEqual } from '@zag-js/utils'
-import { createEffect, createMemo, onCleanup, untrack } from 'solid-js'
+import { type CommandDefinition, type HotkeyStore, type Platform, normalizeHotkey } from '@zag-js/hotkeys'
+import { isEqual, warn } from '@zag-js/utils'
+import { createEffect, createMemo, createUniqueId, onCleanup, untrack } from 'solid-js'
 import type { MaybeAccessor } from '../../types.ts'
 import { runIfFn } from '../../utils/run-if-fn.ts'
-import { useHotkeyStore } from './use-hotkey-store.ts'
+import { type UseHotkeyStoreProps, useHotkeyStore } from './use-hotkey-store.ts'
 import { usePlatform } from './use-platform.ts'
 
-export interface UseHotkeysCommand extends CommandDefinition {}
+export interface UseHotkeysCommand extends Omit<CommandDefinition, 'id'> {
+  /**
+   * Identifies the command across renders. One is generated when omitted, which is enough
+   * unless something else needs to address this command by name.
+   */
+  id?: string | undefined
+}
+
+export interface UseHotkeysProps extends UseHotkeyStoreProps {
+  /**
+   * The commands to register.
+   */
+  commands: UseHotkeysCommand[]
+  /**
+   * Prefix for the ids generated for commands that do not set their own. One is generated
+   * when omitted.
+   */
+  id?: string | undefined
+}
 
 interface Registration {
   hotkey: string
@@ -16,6 +34,15 @@ interface Registration {
   category: string | undefined
   keywords: string[] | undefined
   options: CommandDefinition['options']
+}
+
+// A command id already on the store that this hook did not put there belongs to another
+// component. Registering over it silently stops the first one from firing.
+const warnOnForeignId = (store: HotkeyStore, id: string) => {
+  warn(
+    store.getState().commands.has(id),
+    `[ark-ui/hotkeys] Command id "${id}" is already registered on this store by another component, so the earlier command will stop firing. Use a unique id, omit it to have one generated, or register on a separate store.`,
+  )
 }
 
 const toRegistration = (command: UseHotkeysCommand, platform: Platform): Registration => ({
@@ -28,18 +55,26 @@ const toRegistration = (command: UseHotkeysCommand, platform: Platform): Registr
   options: command.options,
 })
 
-export const useHotkeys = (commands: MaybeAccessor<UseHotkeysCommand[]>) => {
-  const store = useHotkeyStore()
+export const useHotkeys = (props: MaybeAccessor<UseHotkeysProps>) => {
+  const store = useHotkeyStore({ store: runIfFn(props).store })
   const platform = usePlatform()
+  const instanceId = runIfFn(props).id ?? createUniqueId()
 
-  const latest = createMemo(() => runIfFn(commands))
+  const latest = createMemo(() => runIfFn(props).commands)
   const registered = new Map<string, Registration>()
+
+  // A command without an id is keyed by its position in this hook instance, so two
+  // components registering the same shortcut never collide.
+  const resolveId = (command: UseHotkeysCommand, index: number) => command.id ?? `${instanceId}:${index}`
+
+  // Resolved on every event so the action and enabled state are never a render behind.
+  const findCommand = (id: string) => untrack(latest).find((item, index) => resolveId(item, index) === id)
 
   createEffect(() => {
     const current = latest()
     const resolvedPlatform = platform()
 
-    const nextIds = new Set(current.map((command) => command.id))
+    const nextIds = new Set(current.map(resolveId))
 
     for (const id of [...registered.keys()]) {
       if (nextIds.has(id)) continue
@@ -47,29 +82,30 @@ export const useHotkeys = (commands: MaybeAccessor<UseHotkeysCommand[]>) => {
       registered.delete(id)
     }
 
-    for (const command of current) {
+    current.forEach((command, index) => {
+      const id = resolveId(command, index)
       const next = toRegistration(command, resolvedPlatform)
-      const previous = registered.get(command.id)
+      const previous = registered.get(id)
 
-      if (previous && isEqual(previous, next)) continue
-      if (previous) store.unregister(command.id)
+      if (previous && isEqual(previous, next)) return
+      if (previous) store.unregister(id)
+      else warnOnForeignId(store, id)
 
       store.register({
         ...command,
+        id,
         action: (event) => {
-          untrack(latest)
-            .find((item) => item.id === command.id)
-            ?.action(event)
+          findCommand(id)?.action(event)
         },
         enabled: () => {
-          const enabled = untrack(latest).find((item) => item.id === command.id)?.enabled
+          const enabled = findCommand(id)?.enabled
           if (enabled === undefined) return true
           return typeof enabled === 'function' ? enabled() : enabled
         },
       })
 
-      registered.set(command.id, next)
-    }
+      registered.set(id, next)
+    })
   })
 
   onCleanup(() => {

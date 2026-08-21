@@ -2,45 +2,51 @@
 // biome-ignore lint/style/useImportType: intentional
 import { Combobox, useListCollection } from '@ark-ui/vue/combobox'
 import { Dialog } from '@ark-ui/vue/dialog'
-import { useFormatHotkey, useHotkey, useHotkeyRegistrations, useHotkeys } from '@ark-ui/vue/hotkeys'
+import { createHotkeyStore, useFormatHotkey, useHotkey, useHotkeyRegistrations, useHotkeys } from '@ark-ui/vue/hotkeys'
 import { useFilter } from '@ark-ui/vue/locale'
 import { CornerDownLeftIcon, SearchIcon } from 'lucide-vue-next'
 import { ref, watch } from 'vue'
 import button from 'styles/button.module.css'
 import styles from 'styles/command-palette.module.css'
 
+// Its own store, so the palette lists only the commands registered here.
+const store = createHotkeyStore()
+
 const open = ref(false)
 const lastRun = ref<string | null>(null)
 
-useHotkeys([
-  {
-    id: '10-save',
-    hotkey: 'mod+S',
-    action: () => (lastRun.value = 'Save file'),
-    label: 'Save file',
-    category: 'File',
-    keywords: ['write', 'persist'],
-  },
-  {
-    id: '10-theme',
-    hotkey: 'mod+shift+D',
-    action: () => (lastRun.value = 'Toggle theme'),
-    label: 'Toggle theme',
-    category: 'View',
-    keywords: ['dark', 'light', 'appearance'],
-  },
-  {
-    id: '10-undo',
-    hotkey: 'mod+Z',
-    action: () => (lastRun.value = 'Undo'),
-    label: 'Undo',
-    category: 'Edit',
-    keywords: ['revert', 'back'],
-  },
-])
+useHotkeys({
+  commands: [
+    {
+      id: 'save',
+      hotkey: 'mod+S',
+      action: () => (lastRun.value = 'Save file'),
+      label: 'Save file',
+      category: 'File',
+      keywords: ['write', 'persist'],
+    },
+    {
+      id: 'theme',
+      hotkey: 'mod+shift+D',
+      action: () => (lastRun.value = 'Toggle theme'),
+      label: 'Toggle theme',
+      category: 'View',
+      keywords: ['dark', 'light', 'appearance'],
+    },
+    {
+      id: 'undo',
+      hotkey: 'mod+Z',
+      action: () => (lastRun.value = 'Undo'),
+      label: 'Undo',
+      category: 'Edit',
+      keywords: ['revert', 'back'],
+    },
+  ],
+  store,
+})
 
 const formatHotkey = useFormatHotkey()
-const commands = useHotkeyRegistrations()
+const commands = useHotkeyRegistrations({ store })
 const filters = useFilter({ sensitivity: 'base' })
 
 const { collection, filter, set } = useListCollection({
@@ -57,7 +63,13 @@ watch(commands, (next) => set([...next]), { immediate: true })
 
 const openPalette = () => (open.value = true)
 
-useHotkey('mod+shift+P', openPalette, { label: 'Open command palette', category: 'General' })
+useHotkey({
+  hotkey: 'mod+shift+P',
+  action: openPalette,
+  label: 'Open command palette',
+  category: 'General',
+  store,
+})
 
 const handleValueChange = (details: Combobox.ValueChangeDetails) => {
   const selected = details.items.at(0)

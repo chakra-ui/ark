@@ -1,13 +1,13 @@
-import type { CommandDefinition, HotkeyAction } from '@zag-js/hotkeys'
-import { type MaybeRef, computed, toValue, useId } from 'vue'
-import { useHotkeys } from './use-hotkeys.ts'
+import { type MaybeRef, computed, toValue } from 'vue'
+import { type UseHotkeysCommand, type UseHotkeysProps, useHotkeys } from './use-hotkeys.ts'
 
-export interface UseHotkeyOptions extends Omit<CommandDefinition, 'id' | 'hotkey' | 'action'> {}
+export interface UseHotkeyProps extends UseHotkeysCommand, Pick<UseHotkeysProps, 'store'> {}
 
-export const useHotkey = (hotkey: MaybeRef<string>, action: HotkeyAction, options: MaybeRef<UseHotkeyOptions> = {}) => {
-  const id = useId()
+export const useHotkey = (props: MaybeRef<UseHotkeyProps>) => {
+  const resolved = computed(() => {
+    const { store, ...command } = toValue(props)
+    return { commands: [command], store }
+  })
 
-  const commands = computed(() => [{ id, hotkey: toValue(hotkey), action, ...toValue(options) }])
-
-  useHotkeys(commands)
+  useHotkeys(resolved)
 }

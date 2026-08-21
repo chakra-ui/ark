@@ -1,15 +1,25 @@
 <script lang="ts">
+  import { untrack } from 'svelte'
+  import type { HotkeyStore } from '$lib/providers/hotkeys/index.ts'
   import { useHotkeyRegistrations, useHotkeys } from '$lib/providers/hotkeys/index.ts'
   import styles from 'styles/hotkeys.module.css'
 
+  const props: { store: HotkeyStore } = $props()
+
+  // The parent remounts this component for each behavior, so the store is read once.
+  const store = untrack(() => props.store)
+
   let fired = $state<string[]>([])
 
-  useHotkeys([
-    { id: '07-first', hotkey: 'mod+K', action: () => (fired = [...fired, 'First']), label: 'First' },
-    { id: '07-second', hotkey: 'mod+K', action: () => (fired = [...fired, 'Second']), label: 'Second' },
-  ])
+  useHotkeys({
+    commands: [
+      { id: 'first', hotkey: 'mod+K', action: () => (fired = [...fired, 'First']), label: 'First' },
+      { id: 'second', hotkey: 'mod+K', action: () => (fired = [...fired, 'Second']), label: 'Second' },
+    ],
+    store,
+  })
 
-  const commands = useHotkeyRegistrations()
+  const commands = useHotkeyRegistrations({ store })
 </script>
 
 <div class={styles.Section}>

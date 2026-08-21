@@ -1,16 +1,22 @@
 <script setup lang="ts">
+import type { HotkeyStore } from '@ark-ui/vue/hotkeys'
 import { useHotkeyRegistrations, useHotkeys } from '@ark-ui/vue/hotkeys'
 import { ref } from 'vue'
 import styles from 'styles/hotkeys.module.css'
 
+const props = defineProps<{ store: HotkeyStore }>()
+
 const fired = ref<string[]>([])
 
-useHotkeys([
-  { id: '07-first', hotkey: 'mod+K', action: () => fired.value.push('First'), label: 'First' },
-  { id: '07-second', hotkey: 'mod+K', action: () => fired.value.push('Second'), label: 'Second' },
-])
+useHotkeys({
+  commands: [
+    { id: 'first', hotkey: 'mod+K', action: () => fired.value.push('First'), label: 'First' },
+    { id: 'second', hotkey: 'mod+K', action: () => fired.value.push('Second'), label: 'Second' },
+  ],
+  store: props.store,
+})
 
-const commands = useHotkeyRegistrations()
+const commands = useHotkeyRegistrations({ store: props.store })
 </script>
 
 <template>

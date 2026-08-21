@@ -1,11 +1,11 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { HotkeysProvider } from './hotkeys-provider.tsx'
-import { useHotkey } from './use-hotkey.ts'
+import { createHotkeyStore } from '@zag-js/hotkeys'
 import { useFormatHotkey } from './use-format-hotkey.ts'
 import { useHotkeyRecorder } from './use-hotkey-recorder.ts'
 import { useHotkeyRegistrations } from './use-hotkey-registrations.ts'
 import { useHotkeyStore } from './use-hotkey-store.ts'
+import { useHotkey } from './use-hotkey.ts'
 import { useHotkeys } from './use-hotkeys.ts'
 import { useIsKeyPressed } from './use-is-key-pressed.ts'
 import { usePlatform } from './use-platform.ts'
@@ -16,11 +16,11 @@ describe('useHotkey', () => {
     const onAction = vi.fn()
 
     const Comp = () => {
-      useHotkey('ctrl+k', onAction)
+      useHotkey({ hotkey: 'ctrl+k', action: onAction })
       return <div>ready</div>
     }
 
-    render(<Comp />, { wrapper: HotkeysProvider })
+    render(<Comp />)
 
     await user.keyboard('{Control>}k{/Control}')
 
@@ -31,11 +31,11 @@ describe('useHotkey', () => {
     const onAction = vi.fn()
 
     const Comp = () => {
-      useHotkey('ctrl+k', onAction)
+      useHotkey({ hotkey: 'ctrl+k', action: onAction })
       return <div>ready</div>
     }
 
-    const { unmount } = render(<Comp />, { wrapper: HotkeysProvider })
+    const { unmount } = render(<Comp />)
     unmount()
 
     await user.keyboard('{Control>}k{/Control}')
@@ -47,11 +47,11 @@ describe('useHotkey', () => {
     const calls: number[] = []
 
     const Comp = ({ value }: { value: number }) => {
-      useHotkey('ctrl+k', () => calls.push(value))
+      useHotkey({ hotkey: 'ctrl+k', action: () => calls.push(value) })
       return <div>{value}</div>
     }
 
-    const { rerender } = render(<Comp value={1} />, { wrapper: HotkeysProvider })
+    const { rerender } = render(<Comp value={1} />)
     rerender(<Comp value={2} />)
 
     await user.keyboard('{Control>}k{/Control}')
@@ -63,11 +63,11 @@ describe('useHotkey', () => {
     const onAction = vi.fn()
 
     const Comp = ({ enabled }: { enabled: boolean }) => {
-      useHotkey('ctrl+k', onAction, { enabled })
+      useHotkey({ hotkey: 'ctrl+k', action: onAction, enabled })
       return <div>ready</div>
     }
 
-    const { rerender } = render(<Comp enabled={false} />, { wrapper: HotkeysProvider })
+    const { rerender } = render(<Comp enabled={false} />)
 
     await user.keyboard('{Control>}k{/Control}')
     expect(onAction).not.toHaveBeenCalled()
@@ -85,14 +85,16 @@ describe('useHotkeys', () => {
     const onUndo = vi.fn()
 
     const Comp = () => {
-      useHotkeys([
-        { id: 'save', hotkey: 'ctrl+s', action: onSave },
-        { id: 'undo', hotkey: 'ctrl+z', action: onUndo },
-      ])
+      useHotkeys({
+        commands: [
+          { id: 'save', hotkey: 'ctrl+s', action: onSave },
+          { id: 'undo', hotkey: 'ctrl+z', action: onUndo },
+        ],
+      })
       return <div>ready</div>
     }
 
-    render(<Comp />, { wrapper: HotkeysProvider })
+    render(<Comp />)
 
     await user.keyboard('{Control>}s{/Control}')
     await waitFor(() => expect(onSave).toHaveBeenCalledTimes(1))
@@ -105,10 +107,12 @@ describe('useHotkeys', () => {
 describe('useHotkeyRegistrations', () => {
   it('should expose registered commands with their metadata', async () => {
     const Comp = () => {
-      useHotkeys([
-        { id: 'save', hotkey: 'ctrl+s', action: vi.fn(), label: 'Save file', category: 'File' },
-        { id: 'undo', hotkey: 'ctrl+z', action: vi.fn(), label: 'Undo', category: 'Edit' },
-      ])
+      useHotkeys({
+        commands: [
+          { id: 'save', hotkey: 'ctrl+s', action: vi.fn(), label: 'Save file', category: 'File' },
+          { id: 'undo', hotkey: 'ctrl+z', action: vi.fn(), label: 'Undo', category: 'Edit' },
+        ],
+      })
 
       const commands = useHotkeyRegistrations()
 
@@ -121,7 +125,7 @@ describe('useHotkeyRegistrations', () => {
       )
     }
 
-    render(<Comp />, { wrapper: HotkeysProvider })
+    render(<Comp />)
 
     expect(await screen.findByText('Save file — ctrl+s (File)')).toBeInTheDocument()
     expect(await screen.findByText('Undo — ctrl+z (Edit)')).toBeInTheDocument()
@@ -129,7 +133,7 @@ describe('useHotkeyRegistrations', () => {
 
   it('should update when a command unregisters', async () => {
     const Child = () => {
-      useHotkey('ctrl+s', vi.fn(), { label: 'Save file' })
+      useHotkey({ hotkey: 'ctrl+s', action: vi.fn(), label: 'Save file' })
       return null
     }
 
@@ -143,7 +147,7 @@ describe('useHotkeyRegistrations', () => {
       )
     }
 
-    const { rerender } = render(<Comp show />, { wrapper: HotkeysProvider })
+    const { rerender } = render(<Comp show />)
     await waitFor(() => expect(screen.getByTestId('count')).toHaveTextContent('1'))
 
     rerender(<Comp show={false} />)
@@ -154,13 +158,13 @@ describe('useHotkeyRegistrations', () => {
     const seen: unknown[] = []
 
     const Comp = ({ tick }: { tick: number }) => {
-      useHotkey('ctrl+s', vi.fn())
+      useHotkey({ hotkey: 'ctrl+s', action: vi.fn() })
       const commands = useHotkeyRegistrations()
       seen.push(commands)
       return <span data-testid="count">{`${commands.length}:${tick}`}</span>
     }
 
-    const { rerender } = render(<Comp tick={0} />, { wrapper: HotkeysProvider })
+    const { rerender } = render(<Comp tick={0} />)
     await waitFor(() => expect(screen.getByTestId('count')).toHaveTextContent('1:0'))
 
     const registered = seen.at(-1)
@@ -178,12 +182,12 @@ describe('useHotkeyRegistrations', () => {
 describe('key state', () => {
   it('should track whether a key is pressed', async () => {
     const Comp = () => {
-      useHotkey('ctrl+k', vi.fn())
-      const shift = useIsKeyPressed('shift')
+      useHotkey({ hotkey: 'ctrl+k', action: vi.fn() })
+      const shift = useIsKeyPressed({ hotkey: 'shift' })
       return <span data-testid="shift">{String(shift)}</span>
     }
 
-    render(<Comp />, { wrapper: HotkeysProvider })
+    render(<Comp />)
     expect(screen.getByTestId('shift')).toHaveTextContent('false')
 
     const session = user.setup()
@@ -197,12 +201,12 @@ describe('key state', () => {
 
   it('should expose currently pressed keys', async () => {
     const Comp = () => {
-      useHotkey('ctrl+k', vi.fn())
+      useHotkey({ hotkey: 'ctrl+k', action: vi.fn() })
       const keys = usePressedKeys()
       return <span data-testid="keys">{keys.join('+') || 'none'}</span>
     }
 
-    render(<Comp />, { wrapper: HotkeysProvider })
+    render(<Comp />)
     expect(screen.getByTestId('keys')).toHaveTextContent('none')
 
     const session = user.setup()
@@ -220,11 +224,11 @@ describe('hotkey matching', () => {
     const onAction = vi.fn()
 
     const Comp = () => {
-      useHotkey('ctrl+k', onAction)
+      useHotkey({ hotkey: 'ctrl+k', action: onAction })
       return <div>ready</div>
     }
 
-    render(<Comp />, { wrapper: HotkeysProvider })
+    render(<Comp />)
 
     await user.keyboard('{Control>}j{/Control}')
     await user.keyboard('k')
@@ -236,11 +240,11 @@ describe('hotkey matching', () => {
     const onAction = vi.fn()
 
     const Comp = () => {
-      useHotkey('ctrl+k', onAction, { options: { eventType: 'keyup' } })
+      useHotkey({ hotkey: 'ctrl+k', action: onAction, options: { eventType: 'keyup' } })
       return <div>ready</div>
     }
 
-    render(<Comp />, { wrapper: HotkeysProvider })
+    render(<Comp />)
 
     const session = user.setup()
 
@@ -255,11 +259,11 @@ describe('hotkey matching', () => {
     const onAction = vi.fn()
 
     const Comp = () => {
-      useHotkey('G > H', onAction)
+      useHotkey({ hotkey: 'G > H', action: onAction })
       return <div>ready</div>
     }
 
-    render(<Comp />, { wrapper: HotkeysProvider })
+    render(<Comp />)
 
     await user.keyboard('g')
     await user.keyboard('h')
@@ -271,25 +275,27 @@ describe('hotkey matching', () => {
 describe('registration lifecycle', () => {
   it('should treat an empty command list as a no-op', () => {
     const Comp = () => {
-      useHotkeys([])
+      useHotkeys({ commands: [] })
       return <span data-testid="count">{useHotkeyRegistrations().length}</span>
     }
 
-    render(<Comp />, { wrapper: HotkeysProvider })
+    render(<Comp />)
 
     expect(screen.getByTestId('count')).toHaveTextContent('0')
   })
 
   it('should handle commands being added and removed', async () => {
     const Comp = ({ extra }: { extra: boolean }) => {
-      useHotkeys([
-        { id: 'save', hotkey: 'ctrl+s', action: vi.fn() },
-        ...(extra ? [{ id: 'undo', hotkey: 'ctrl+z', action: vi.fn() }] : []),
-      ])
+      useHotkeys({
+        commands: [
+          { id: 'save', hotkey: 'ctrl+s', action: vi.fn() },
+          ...(extra ? [{ id: 'undo', hotkey: 'ctrl+z', action: vi.fn() }] : []),
+        ],
+      })
       return <span data-testid="count">{useHotkeyRegistrations().length}</span>
     }
 
-    const { rerender } = render(<Comp extra={false} />, { wrapper: HotkeysProvider })
+    const { rerender } = render(<Comp extra={false} />)
     await waitFor(() => expect(screen.getByTestId('count')).toHaveTextContent('1'))
 
     rerender(<Comp extra />)
@@ -301,12 +307,12 @@ describe('registration lifecycle', () => {
 
   it('should keep a single registration when toggling enabled', async () => {
     const Comp = ({ enabled }: { enabled: boolean }) => {
-      useHotkeys([{ id: 'save', hotkey: 'ctrl+s', action: vi.fn(), enabled }])
+      useHotkeys({ commands: [{ id: 'save', hotkey: 'ctrl+s', action: vi.fn(), enabled }] })
       const commands = useHotkeyRegistrations()
       return <span data-testid="ids">{commands.map((command) => command.id).join(',') || 'none'}</span>
     }
 
-    const { rerender } = render(<Comp enabled={false} />, { wrapper: HotkeysProvider })
+    const { rerender } = render(<Comp enabled={false} />)
     await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('save'))
 
     rerender(<Comp enabled />)
@@ -319,17 +325,20 @@ describe('scopes', () => {
     const onEditor = vi.fn()
     const onGlobal = vi.fn()
 
+    const store = createHotkeyStore({ activeScopes: ['reader'] })
+
     const Comp = () => {
-      useHotkeys([
-        { id: 'editor', hotkey: 'ctrl+b', action: onEditor, scopes: ['editor'] },
-        { id: 'global', hotkey: 'ctrl+g', action: onGlobal },
-      ])
+      useHotkeys({
+        commands: [
+          { id: 'editor', hotkey: 'ctrl+b', action: onEditor, scopes: ['editor'] },
+          { id: 'global', hotkey: 'ctrl+g', action: onGlobal },
+        ],
+        store,
+      })
       return <div>ready</div>
     }
 
-    render(<Comp />, {
-      wrapper: ({ children }) => <HotkeysProvider activeScopes={['reader']}>{children}</HotkeysProvider>,
-    })
+    render(<Comp />)
 
     await user.keyboard('{Control>}b{/Control}')
     expect(onEditor).not.toHaveBeenCalled()
@@ -339,12 +348,12 @@ describe('scopes', () => {
   })
 })
 
-describe('without a provider', () => {
+describe('default store', () => {
   it('should fall back to a shared store', async () => {
     const onAction = vi.fn()
 
     const Comp = () => {
-      useHotkey('ctrl+q', onAction)
+      useHotkey({ hotkey: 'ctrl+q', action: onAction })
       return <div>ready</div>
     }
 
@@ -373,7 +382,7 @@ describe('useHotkeyRecorder', () => {
       )
     }
 
-    render(<Comp />, { wrapper: HotkeysProvider })
+    render(<Comp />)
 
     const session = user.setup()
 
@@ -407,7 +416,7 @@ describe('useHotkeyRecorder', () => {
       )
     }
 
-    render(<Comp />, { wrapper: HotkeysProvider })
+    render(<Comp />)
 
     const session = user.setup()
 
@@ -425,7 +434,7 @@ describe('usePlatform', () => {
   it('should detect the current platform', () => {
     const Comp = () => <span data-testid="platform">{usePlatform()}</span>
 
-    render(<Comp />, { wrapper: HotkeysProvider })
+    render(<Comp />)
 
     expect(screen.getByTestId('platform')).toHaveTextContent(/^(mac|windows|linux)$/)
   })
@@ -437,7 +446,7 @@ describe('usePlatform', () => {
       return <span data-testid="formatted">{`${platform}:${formatHotkey('mod+K')}`}</span>
     }
 
-    render(<Comp />, { wrapper: HotkeysProvider })
+    render(<Comp />)
 
     const text = screen.getByTestId('formatted').textContent ?? ''
     const [platform, formatted] = text.split(':')
@@ -451,7 +460,7 @@ describe('usePlatform', () => {
       return <span data-testid="mac">{formatHotkey('mod+K', { platform: 'mac' })}</span>
     }
 
-    render(<Comp />, { wrapper: HotkeysProvider })
+    render(<Comp />)
 
     expect(screen.getByTestId('mac')).toHaveTextContent('⌘')
   })
@@ -470,7 +479,7 @@ describe('usePlatform / linux', () => {
       return <span data-testid="out">{`${usePlatform()}|${formatHotkey('meta+K')}`}</span>
     }
 
-    render(<Comp />, { wrapper: HotkeysProvider })
+    render(<Comp />)
 
     expect(screen.getByTestId('out')).toHaveTextContent('linux|Super')
   })
@@ -484,7 +493,7 @@ describe('usePlatform / linux', () => {
 
     const Comp = () => <span data-testid="out">{usePlatform()}</span>
 
-    render(<Comp />, { wrapper: HotkeysProvider })
+    render(<Comp />)
 
     expect(screen.getByTestId('out')).toHaveTextContent('windows')
   })
@@ -504,14 +513,16 @@ describe('registration reconciliation', () => {
     const Comp = ({ label }: { label: string }) => {
       const store = useHotkeyStore()
       getStore = () => store
-      useHotkeys([
-        { id: 'save', hotkey: 'ctrl+s', action: vi.fn(), label: 'Save' },
-        { id: 'undo', hotkey: 'ctrl+z', action: vi.fn(), label },
-      ])
+      useHotkeys({
+        commands: [
+          { id: 'save', hotkey: 'ctrl+s', action: vi.fn(), label: 'Save' },
+          { id: 'undo', hotkey: 'ctrl+z', action: vi.fn(), label },
+        ],
+      })
       return <span data-testid="count">{useHotkeyRegistrations().length}</span>
     }
 
-    const { rerender } = render(<Comp label="Undo" />, { wrapper: HotkeysProvider })
+    const { rerender } = render(<Comp label="Undo" />)
     await waitFor(() => expect(screen.getByTestId('count')).toHaveTextContent('2'))
 
     const before = orders()
@@ -531,11 +542,11 @@ describe('registration reconciliation', () => {
     const Comp = ({ tick }: { tick: number }) => {
       const store = useHotkeyStore()
       getStore = () => store
-      useHotkeys([{ id: 'save', hotkey: 'ctrl+s', action: vi.fn() }])
+      useHotkeys({ commands: [{ id: 'save', hotkey: 'ctrl+s', action: vi.fn() }] })
       return <span data-testid="tick">{tick}</span>
     }
 
-    const { rerender } = render(<Comp tick={0} />, { wrapper: HotkeysProvider })
+    const { rerender } = render(<Comp tick={0} />)
     await waitFor(() => expect(screen.getByTestId('tick')).toHaveTextContent('0'))
 
     const before = getStore().getState().commands.get('save')?._registrationOrder
@@ -552,11 +563,11 @@ describe('registration reconciliation', () => {
     const Comp = ({ hotkey }: { hotkey: string }) => {
       const store = useHotkeyStore()
       getStore = () => store
-      useHotkeys([{ id: 'save', hotkey, action: vi.fn() }])
+      useHotkeys({ commands: [{ id: 'save', hotkey, action: vi.fn() }] })
       return <span data-testid="hotkey">{hotkey}</span>
     }
 
-    const { rerender } = render(<Comp hotkey="ctrl+k" />, { wrapper: HotkeysProvider })
+    const { rerender } = render(<Comp hotkey="ctrl+k" />)
     await waitFor(() => expect(screen.getByTestId('hotkey')).toHaveTextContent('ctrl+k'))
 
     const before = getStore().getState().commands.get('save')?._registrationOrder

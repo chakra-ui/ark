@@ -5,8 +5,11 @@
   let count = $state(0)
   const formatHotkey = useFormatHotkey()
 
-  useHotkey('mod+K', () => {
-    count += 1
+  useHotkey({
+    hotkey: 'mod+K',
+    action: () => {
+      count += 1
+    },
   })
 </script>
 

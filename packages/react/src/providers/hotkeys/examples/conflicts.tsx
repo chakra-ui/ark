@@ -1,19 +1,28 @@
-import { type ConflictBehavior, HotkeysProvider, useHotkeyRegistrations, useHotkeys } from '@ark-ui/react/hotkeys'
-import { useState } from 'react'
+import {
+  type ConflictBehavior,
+  type HotkeyStore,
+  createHotkeyStore,
+  useHotkeyRegistrations,
+  useHotkeys,
+} from '@ark-ui/react/hotkeys'
+import { useMemo, useState } from 'react'
 import button from 'styles/button.module.css'
 import styles from 'styles/hotkeys.module.css'
 
 const BEHAVIORS: ConflictBehavior[] = ['warn', 'replace', 'allow']
 
-const Demo = () => {
+const Demo = ({ store }: { store: HotkeyStore }) => {
   const [fired, setFired] = useState<string[]>([])
 
-  useHotkeys([
-    { id: '07-first', hotkey: 'mod+K', action: () => setFired((log) => [...log, 'First']), label: 'First' },
-    { id: '07-second', hotkey: 'mod+K', action: () => setFired((log) => [...log, 'Second']), label: 'Second' },
-  ])
+  useHotkeys({
+    commands: [
+      { id: 'first', hotkey: 'mod+K', action: () => setFired((log) => [...log, 'First']), label: 'First' },
+      { id: 'second', hotkey: 'mod+K', action: () => setFired((log) => [...log, 'Second']), label: 'Second' },
+    ],
+    store,
+  })
 
-  const commands = useHotkeyRegistrations()
+  const commands = useHotkeyRegistrations({ store })
 
   return (
     <>
@@ -45,6 +54,9 @@ const Demo = () => {
 export const Conflicts = () => {
   const [behavior, setBehavior] = useState<ConflictBehavior>('warn')
 
+  // Conflict behavior is fixed when the store is created, so switching it makes a new store.
+  const store = useMemo(() => createHotkeyStore({ conflictBehavior: behavior }), [behavior])
+
   return (
     <div className={styles.Panel}>
       <p className={styles.Hint}>
@@ -65,9 +77,7 @@ export const Conflicts = () => {
         ))}
       </div>
 
-      <HotkeysProvider key={behavior} conflictBehavior={behavior}>
-        <Demo />
-      </HotkeysProvider>
+      <Demo key={behavior} store={store} />
     </div>
   )
 }

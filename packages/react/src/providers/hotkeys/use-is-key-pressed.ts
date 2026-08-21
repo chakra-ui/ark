@@ -1,10 +1,18 @@
 'use client'
 
 import { useCallback, useSyncExternalStore } from 'react'
-import { useHotkeyStore } from './use-hotkey-store.ts'
+import { type UseHotkeyStoreProps, useHotkeyStore } from './use-hotkey-store.ts'
 
-export const useIsKeyPressed = (hotkey: string): boolean => {
-  const store = useHotkeyStore()
+export interface UseIsKeyPressedProps extends UseHotkeyStoreProps {
+  /**
+   * The key or combination to watch.
+   */
+  hotkey: string
+}
+
+export const useIsKeyPressed = (props: UseIsKeyPressedProps): boolean => {
+  const { hotkey } = props
+  const store = useHotkeyStore(props)
 
   const subscribe = useCallback(
     (onChange: () => void) => store.subscribe(() => store.isPressed(hotkey), onChange),

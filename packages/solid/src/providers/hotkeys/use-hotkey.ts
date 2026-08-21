@@ -1,19 +1,15 @@
-import type { CommandDefinition, HotkeyAction } from '@zag-js/hotkeys'
-import { createMemo, createUniqueId } from 'solid-js'
+import { createMemo } from 'solid-js'
 import type { MaybeAccessor } from '../../types.ts'
 import { runIfFn } from '../../utils/run-if-fn.ts'
-import { useHotkeys } from './use-hotkeys.ts'
+import { type UseHotkeysCommand, type UseHotkeysProps, useHotkeys } from './use-hotkeys.ts'
 
-export interface UseHotkeyOptions extends Omit<CommandDefinition, 'id' | 'hotkey' | 'action'> {}
+export interface UseHotkeyProps extends UseHotkeysCommand, Pick<UseHotkeysProps, 'store'> {}
 
-export const useHotkey = (
-  hotkey: MaybeAccessor<string>,
-  action: HotkeyAction,
-  options: MaybeAccessor<UseHotkeyOptions> = {},
-) => {
-  const id = createUniqueId()
+export const useHotkey = (props: MaybeAccessor<UseHotkeyProps>) => {
+  const resolved = createMemo(() => {
+    const { store, ...command } = runIfFn(props)
+    return { commands: [command], store }
+  })
 
-  const commands = createMemo(() => [{ id, hotkey: runIfFn(hotkey), action, ...runIfFn(options) }])
-
-  useHotkeys(commands)
+  useHotkeys(resolved)
 }

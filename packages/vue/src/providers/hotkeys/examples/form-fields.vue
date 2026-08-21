@@ -6,16 +6,17 @@ import styles from 'styles/hotkeys.module.css'
 const log = ref<string | null>(null)
 const formatHotkey = useFormatHotkey()
 
-useHotkeys([
-  { id: '06-search', hotkey: 'S', action: () => (log.value = 'Search (single key)') },
-  { id: '06-save', hotkey: 'mod+S', action: () => (log.value = 'Save (modifier)') },
-  {
-    id: '06-preview',
-    hotkey: 'P',
-    action: () => (log.value = 'Preview (opted in)'),
-    options: { enableOnFormTags: true },
-  },
-])
+useHotkeys({
+  commands: [
+    { hotkey: 'S', action: () => (log.value = 'Search (single key)') },
+    { hotkey: 'mod+S', action: () => (log.value = 'Save (modifier)') },
+    {
+      hotkey: 'P',
+      action: () => (log.value = 'Preview (opted in)'),
+      options: { enableOnFormTags: true },
+    },
+  ],
+})
 </script>
 
 <template>

@@ -1,13 +1,15 @@
-import { HotkeysProvider, useHotkey } from '@ark-ui/react/hotkeys'
+import { createHotkeyStore, useHotkey } from '@ark-ui/react/hotkeys'
 import { useState } from 'react'
 import styles from 'styles/hotkeys.module.css'
 
 const TIMEOUT_MS = 600
 
-const Demo = () => {
+const store = createHotkeyStore({ sequenceTimeoutMs: TIMEOUT_MS })
+
+export const SequenceTimeout = () => {
   const [completed, setCompleted] = useState(0)
 
-  useHotkey('G > H', () => setCompleted((value) => value + 1))
+  useHotkey({ hotkey: 'G > H', action: () => setCompleted((value) => value + 1), store })
 
   return (
     <div className={styles.Panel}>
@@ -28,9 +30,3 @@ const Demo = () => {
     </div>
   )
 }
-
-export const SequenceTimeout = () => (
-  <HotkeysProvider sequenceTimeoutMs={TIMEOUT_MS}>
-    <Demo />
-  </HotkeysProvider>
-)

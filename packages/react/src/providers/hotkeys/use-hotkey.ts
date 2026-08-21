@@ -1,20 +1,13 @@
 'use client'
 
-import type { CommandDefinition, HotkeyAction } from '@zag-js/hotkeys'
-import { useId, useMemo } from 'react'
-import { useHotkeys } from './use-hotkeys.ts'
+import { type UseHotkeysCommand, type UseHotkeysProps, useHotkeys } from './use-hotkeys.ts'
 
-export interface UseHotkeyOptions extends Omit<CommandDefinition, 'id' | 'hotkey' | 'action'> {}
+export interface UseHotkeyProps extends UseHotkeysCommand, Pick<UseHotkeysProps, 'store'> {}
 
-export const useHotkey = (hotkey: string, action: HotkeyAction, options: UseHotkeyOptions = {}) => {
-  const id = useId()
+export const useHotkey = (props: UseHotkeyProps) => {
+  const { store, ...command } = props
 
-  const { scopes, enabled, label, description, category, keywords, options: hotkeyOptions } = options
-
-  const commands = useMemo(
-    () => [{ id, hotkey, action, scopes, enabled, label, description, category, keywords, options: hotkeyOptions }],
-    [id, hotkey, action, scopes, enabled, label, description, category, keywords, hotkeyOptions],
-  )
-
-  useHotkeys(commands)
+  // A fresh array each render is fine: `useHotkeys` reconciles field by field, so an
+  // unchanged command is never re-registered.
+  useHotkeys({ commands: [command], store })
 }

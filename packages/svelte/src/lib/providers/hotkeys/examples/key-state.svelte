@@ -2,10 +2,10 @@
   import { useHotkey, useIsKeyPressed, usePressedKeys } from '$lib/providers/hotkeys/index.ts'
   import styles from 'styles/hotkeys.module.css'
 
-  useHotkey('mod+K', () => {})
+  useHotkey({ hotkey: 'mod+K', action: () => {} })
 
   const pressedKeys = usePressedKeys()
-  const isShiftPressed = useIsKeyPressed('shift')
+  const isShiftPressed = useIsKeyPressed({ hotkey: 'shift' })
 </script>
 
 <div class={styles.Panel}>

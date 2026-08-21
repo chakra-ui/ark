@@ -1,19 +1,28 @@
-import { type ConflictBehavior, HotkeysProvider, useHotkeyRegistrations, useHotkeys } from '@ark-ui/solid/hotkeys'
+import {
+  type ConflictBehavior,
+  type HotkeyStore,
+  createHotkeyStore,
+  useHotkeyRegistrations,
+  useHotkeys,
+} from '@ark-ui/solid/hotkeys'
 import { For, Show, createSignal } from 'solid-js'
 import button from 'styles/button.module.css'
 import styles from 'styles/hotkeys.module.css'
 
 const BEHAVIORS: ConflictBehavior[] = ['warn', 'replace', 'allow']
 
-const Demo = () => {
+const Demo = (props: { store: HotkeyStore }) => {
   const [fired, setFired] = createSignal<string[]>([])
 
-  useHotkeys([
-    { id: '07-first', hotkey: 'mod+K', action: () => setFired((log) => [...log, 'First']), label: 'First' },
-    { id: '07-second', hotkey: 'mod+K', action: () => setFired((log) => [...log, 'Second']), label: 'Second' },
-  ])
+  useHotkeys({
+    commands: [
+      { id: 'first', hotkey: 'mod+K', action: () => setFired((log) => [...log, 'First']), label: 'First' },
+      { id: 'second', hotkey: 'mod+K', action: () => setFired((log) => [...log, 'Second']), label: 'Second' },
+    ],
+    store: props.store,
+  })
 
-  const commands = useHotkeyRegistrations()
+  const commands = useHotkeyRegistrations({ store: props.store })
 
   return (
     <>
@@ -54,11 +63,12 @@ export const Conflicts = () => {
       </div>
 
       <Show when={behavior()} keyed>
-        {(current) => (
-          <HotkeysProvider conflictBehavior={current}>
-            <Demo />
-          </HotkeysProvider>
-        )}
+        {(current) => {
+          // Built once per behavior: Solid props are getters, so an inline call would
+          // rebuild the store on every read.
+          const store = createHotkeyStore({ conflictBehavior: current })
+          return <Demo store={store} />
+        }}
       </Show>
     </div>
   )

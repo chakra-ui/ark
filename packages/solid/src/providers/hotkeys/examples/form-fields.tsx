@@ -6,16 +6,17 @@ export const FormFields = () => {
   const [log, setLog] = createSignal<string | null>(null)
   const formatHotkey = useFormatHotkey()
 
-  useHotkeys([
-    { id: '06-search', hotkey: 'S', action: () => setLog('Search (single key)') },
-    { id: '06-save', hotkey: 'mod+S', action: () => setLog('Save (modifier)') },
-    {
-      id: '06-preview',
-      hotkey: 'P',
-      action: () => setLog('Preview (opted in)'),
-      options: { enableOnFormTags: true },
-    },
-  ])
+  useHotkeys({
+    commands: [
+      { hotkey: 'S', action: () => setLog('Search (single key)') },
+      { hotkey: 'mod+S', action: () => setLog('Save (modifier)') },
+      {
+        hotkey: 'P',
+        action: () => setLog('Preview (opted in)'),
+        options: { enableOnFormTags: true },
+      },
+    ],
+  })
 
   return (
     <div class={styles.Panel}>
