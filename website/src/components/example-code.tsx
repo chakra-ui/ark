@@ -69,28 +69,47 @@ export const ExampleCodeTabs = (props: Props) => {
       {...rootProps}
       lazyMount
     >
-      <Tabs.List
+      <HStack
+        gap="4"
         bg="gray.dark.a2"
-        boxShadow="none"
         borderBottomWidth="1px"
         borderBottomColor="gray.dark.5"
         px="4"
         alignItems="center"
       >
-        {tabs.map((tab) => (
-          <Tabs.Trigger
-            key={tab.value}
-            value={tab.value}
-            color="gray.dark.11"
-            _selected={{ color: 'white' }}
-            pb="0"
-            h="39px"
-          >
-            {tab.label}
-          </Tabs.Trigger>
-        ))}
-        <Tabs.Indicator />
-        <HStack pos="absolute" right="4" top="1.5" gap="4" className="dark">
+        {/* The tab row scrolls on its own so a long file list never runs under the controls. */}
+        <Tabs.List
+          bg="transparent"
+          boxShadow="none"
+          borderBottomWidth="0"
+          px="0"
+          alignItems="center"
+          flex="1"
+          minWidth="0"
+          overflowX="auto"
+          className={css({
+            scrollbarWidth: 'none',
+            '&::-webkit-scrollbar': { display: 'none' },
+            // Fade the clipped edge so a cut-off name reads as more content, not a glitch.
+            maskImage: 'linear-gradient(to right, black calc(100% - 24px), transparent)',
+          })}
+        >
+          {tabs.map((tab) => (
+            <Tabs.Trigger
+              key={tab.value}
+              value={tab.value}
+              color="gray.dark.11"
+              _selected={{ color: 'white' }}
+              pb="0"
+              h="39px"
+              flexShrink="0"
+            >
+              {tab.label}
+            </Tabs.Trigger>
+          ))}
+          <Tabs.Indicator />
+        </Tabs.List>
+        <HStack gap="4" flexShrink="0" className="dark">
           {hasComponentCss && (
             <Switch
               size="sm"
@@ -105,7 +124,7 @@ export const ExampleCodeTabs = (props: Props) => {
           )}
           {meta && <StackblitzButton code={code} cssModules={cssModules} localFiles={localFiles} meta={meta} />}
         </HStack>
-      </Tabs.List>
+      </HStack>
 
       <Tabs.Content key={`code-${showCss}`} value="code" pt="0">
         <CodePreview code={displayCode} lang={lang} />
