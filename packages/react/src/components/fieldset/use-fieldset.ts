@@ -1,8 +1,8 @@
 'use client'
 
-import { dataAttr } from '@zag-js/dom-query'
 import { useId, useRef, useState } from 'react'
 import { useEnvironmentContext } from '../../providers/index.ts'
+import { dataAttr } from '../../utils/attr.ts'
 import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect.ts'
 import type { HTMLProps } from '../factory.ts'
 import { parts } from './fieldset.anatomy.ts'
