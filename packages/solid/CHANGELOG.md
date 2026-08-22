@@ -1,5 +1,62 @@
 # @ark-ui/solid
 
+## [5.39.0] - 2026-08-21
+
+### Added
+
+- **Toc** [New]: Add a table of contents component that tracks which headings are in view as the reader scrolls. Pass
+  the headings to `Toc.Root` as `items`, where each entry needs the heading element's `id` as `value` and its level as
+  `depth`. Set `scrollEl` when the content scrolls inside a container rather than the page, so tracking observes that
+  element instead of the viewport.
+  ```tsx
+  <Toc.Root items={items} scrollEl={() => contentRef.current}>
+    <Toc.Content />
+    <Toc.Nav>
+      <Toc.Title />
+      <Toc.List>
+        <Toc.Indicator />
+        <Toc.Item item={item}>
+          <Toc.Link />
+        </Toc.Item>
+      </Toc.List>
+    </Toc.Nav>
+  </Toc.Root>
+  ```
+  More than one heading can be active at once, so `Toc.Item` carries `data-first` and `data-last` to mark the ends of
+  the range, and `Toc.Indicator` spans it. Use `useToc` with `Toc.RootProvider` to reach `activeItems` and `scrollTo`
+  from outside the tree. The API may still change while the component is in preview.
+- **Hotkeys** [New]: Add a `hotkeys` entrypoint with hooks for registering and inspecting keyboard shortcuts, built on
+  `@zag-js/hotkeys`. `useHotkey` registers one command. `useHotkeys` registers several. `mod+K` resolves per platform,
+  and sequences like `G > H` go through the same hook. Command ids are optional and generated when omitted.
+  ```tsx
+  useHotkey({ hotkey: 'mod+K', action: openSearch })
+  useHotkeys({
+    commands: [
+      { hotkey: 'mod+S', action: save, label: 'Save', category: 'File' },
+      { hotkey: 'G > H', action: goHome, label: 'Home' },
+    ],
+  })
+  ```
+  `useHotkeyRegistrations` returns those commands with their metadata (`label`, `description`, `category`, `keywords`),
+  so a command palette or shortcut dialog can render from the same registration that binds the key. Pass a store from
+  `createHotkeyStore` to scope a set of commands. Without one, hooks share a default store.
+  ```tsx
+  const store = createHotkeyStore()
+  useHotkeys({ commands, store })
+  const registered = useHotkeyRegistrations({ store })
+  ```
+  Active scopes, conflict behavior, sequence timeout, and default options are configured on the store. `usePressedKeys`
+  and `useIsKeyPressed` track live key state. `useHotkeyRecorder` records a chord or sequence for rebinding UIs.
+  `usePlatform` and `useFormatHotkey` render shortcuts for the current platform without a hydration mismatch.
+- **Presence**: Add `onEnterComplete`, called once the enter animation finishes, mirroring the existing
+  `onExitComplete`. Vue exposes it as the `enter-complete` emit.
+  > Affects Color Picker, Combobox, Date Picker, Dialog, Drawer, Floating Panel, Hover Card, Menu, Popover, Select,
+  > Tooltip, and Tour.
+
+### Fixed
+
+- Expose `ariaAttr` and `dataAttr` from the package root.
+
 ## [5.38.2] - 2026-08-17
 
 ### Fixed
