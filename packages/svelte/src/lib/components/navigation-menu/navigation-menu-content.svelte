@@ -41,7 +41,7 @@
     mergeProps(navigationMenu().getContentProps(contentProps), presence().getPresenceProps(), localProps),
   )
 
-  const viewportNode = $derived(navigationMenu().getViewportNode())
+  const viewportNode = $derived(navigationMenu().isViewportRendered ? navigationMenu().getViewportNode() : null)
 
   function setNode(node: Element | null) {
     presence().setNode(node)
