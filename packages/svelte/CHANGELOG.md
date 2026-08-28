@@ -1,5 +1,11 @@
 # @ark-ui/svelte
 
+## [5.24.1] - 2026-08-28
+
+### Fixed
+
+- Fix `NavigationMenu.Content` throwing `document is not defined` during SSR.
+
 ## [5.24.0] - 2026-08-21
 
 ### Added
