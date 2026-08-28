@@ -27,12 +27,12 @@ export const ComponentPreview = (props: Props) => {
   return (
     <>
       <Flex
-        minH="40"
+        minH={id === 'NavigationMenu' ? '80' : '40'}
         bg="bg.default"
         borderRadius="lg"
         borderWidth="1px"
         width="full"
-        overflow="hidden"
+        overflow={id === 'NavigationMenu' ? 'visible' : 'hidden'}
         className="not-prose"
         my="12"
       >

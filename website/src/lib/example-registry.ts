@@ -342,7 +342,9 @@ import * as Menu_SelectEvent from '@examples/menu/examples/select-event'
 import * as NavigationMenu_Basic from '@examples/navigation-menu/examples/basic'
 import * as NavigationMenu_Context from '@examples/navigation-menu/examples/context'
 import * as NavigationMenu_Controlled from '@examples/navigation-menu/examples/controlled'
+import * as NavigationMenu_CurrentLink from '@examples/navigation-menu/examples/current-link'
 import * as NavigationMenu_RootProvider from '@examples/navigation-menu/examples/root-provider'
+import * as NavigationMenu_Vertical from '@examples/navigation-menu/examples/vertical'
 import * as NavigationMenu_Viewport from '@examples/navigation-menu/examples/viewport'
 import * as NumberInput_Basic from '@examples/number-input/examples/basic'
 import * as NumberInput_Context from '@examples/number-input/examples/context'
@@ -967,7 +969,9 @@ const exampleModules: Record<string, ExampleModule> = {
   'navigation-menu/basic': NavigationMenu_Basic,
   'navigation-menu/context': NavigationMenu_Context,
   'navigation-menu/controlled': NavigationMenu_Controlled,
+  'navigation-menu/current-link': NavigationMenu_CurrentLink,
   'navigation-menu/root-provider': NavigationMenu_RootProvider,
+  'navigation-menu/vertical': NavigationMenu_Vertical,
   'navigation-menu/viewport': NavigationMenu_Viewport,
   'number-input/basic': NumberInput_Basic,
   'number-input/context': NumberInput_Context,

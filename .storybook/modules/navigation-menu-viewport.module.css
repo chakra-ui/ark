@@ -1,13 +1,19 @@
+.Frame {
+  --arrow-size: 12px;
+  --indicator-size: 10px;
+  --duration: 0.3s;
+  --easing: cubic-bezier(0.22, 1, 0.36, 1);
+  width: 100%;
+  min-height: 22rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 2.5rem;
+}
+
 .Root {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
   width: max-content;
-  margin-inline: auto;
-  min-height: 20rem;
-  padding-top: 2.5rem;
 }
 
 .List {
@@ -16,14 +22,10 @@
   display: flex;
   gap: 0.25rem;
   position: relative;
-
-  &[data-orientation='vertical'] {
-    flex-direction: column;
-  }
 }
 
 .Item {
-  position: relative;
+  position: static;
 }
 
 .Trigger {
@@ -43,7 +45,6 @@
   white-space: nowrap;
   transition:
     background 150ms,
-    border-color 150ms,
     color 150ms;
 
   background: transparent;
@@ -59,12 +60,6 @@
     outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: -1px;
   }
-
-  &:is(:disabled, [data-disabled]) {
-    opacity: 0.5;
-    filter: grayscale(100%);
-    cursor: not-allowed;
-  }
 }
 
 .TriggerIcon {
@@ -75,7 +70,7 @@
   & svg {
     width: 1rem;
     height: 1rem;
-    transition: rotate 200ms ease;
+    transition: rotate var(--duration) var(--easing);
   }
 
   [data-state='open'] > & svg {
@@ -86,7 +81,6 @@
 .Link {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
   padding-inline: 1rem;
   padding-block: 0.5rem;
   font-size: 0.875rem;
@@ -97,10 +91,6 @@
 
   user-select: none;
   white-space: nowrap;
-  transition:
-    background 150ms,
-    color 150ms;
-
   background: transparent;
   color: var(--demo-neutral-fg);
   text-decoration: none;
@@ -113,101 +103,104 @@
     outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: -1px;
   }
+}
 
-  &[data-current] {
-    color: var(--demo-coral-fg);
+.Indicator {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+  height: var(--indicator-size);
+  bottom: calc(var(--indicator-size) * -1);
+  left: 0;
+  width: var(--trigger-width);
+  translate: var(--trigger-x) 0;
+  transition:
+    translate var(--duration) var(--easing),
+    width var(--duration) var(--easing);
+
+  &[data-state='open'] {
+    animation: fade-in 200ms ease;
   }
 
-  &[data-disabled] {
-    opacity: 0.5;
-    filter: grayscale(100%);
-    cursor: not-allowed;
+  &[data-state='closed'] {
+    animation: fade-out 150ms ease;
+  }
+}
+
+.Arrow {
+  position: relative;
+  top: 3px;
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  background-color: var(--demo-bg-popover);
+  rotate: 45deg;
+  border-radius: 3px 0 0 0;
+  border-top: 1px solid var(--demo-border-emphasized);
+  border-left: 1px solid var(--demo-border-emphasized);
+}
+
+.ViewportPositioner {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.Viewport {
+  position: relative;
+  flex: none;
+  pointer-events: auto;
+  box-sizing: border-box;
+  margin-top: var(--indicator-size);
+  overflow: hidden;
+  background: var(--demo-bg-popover);
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.5rem;
+  box-shadow: var(--demo-shadow-2xl);
+  width: var(--viewport-width);
+  height: var(--viewport-height);
+  transform-origin: top center;
+  transition:
+    width var(--duration) var(--easing),
+    height var(--duration) var(--easing);
+
+  &[data-state='open'] {
+    animation: scale-in 200ms var(--easing);
+  }
+
+  &[data-state='closed'] {
+    animation: scale-out 150ms ease;
   }
 }
 
 .Content {
   position: absolute;
-  top: 100%;
+  top: 0;
   left: 0;
-  width: max-content;
-  max-width: min(40rem, calc(100vw - 3rem));
-  margin-top: 0.5rem;
   padding: 1.25rem 1.125rem 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.125rem;
+  will-change: transform, opacity;
+  transition:
+    opacity calc(var(--duration) * 0.5) ease,
+    transform var(--duration) var(--easing);
 
-  background: var(--demo-bg-popover);
-  border: 1px solid var(--demo-border-emphasized);
-  border-radius: 0.5rem;
-  box-shadow: var(--demo-shadow-2xl);
-  z-index: var(--demo-popover-z-index);
-  transform-origin: top left;
-  outline: none;
-
-  &[dir='rtl'] {
-    left: unset;
-    right: 0;
-    transform-origin: top right;
+  &[data-motion='from-start'] {
+    animation: from-left 250ms var(--easing);
   }
 
-  &[data-state='open'] {
-    animation: scale-in 0.2s ease-out;
+  &[data-motion='from-end'] {
+    animation: from-right 250ms var(--easing);
   }
 
-  &[data-state='closed'] {
-    animation: scale-out 0.15s ease-in;
-  }
-}
-
-.ContentLink {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  min-height: 2rem;
-  padding-inline: 0.725rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  border-radius: 0.25rem;
-
-  user-select: none;
-  outline: none;
-  color: inherit;
-  text-decoration: none;
-
-  &[data-highlighted] {
-    background: var(--demo-neutral-subtle);
+  &[data-motion='to-start'] {
+    animation: to-left 250ms var(--easing);
   }
 
-  &:focus-visible {
-    background: var(--demo-neutral-subtle);
-  }
-
-  &[data-disabled] {
-    color: var(--demo-neutral-emphasized);
-    opacity: 0.5;
-  }
-}
-
-@keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: rotateX(-30deg) scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: rotateX(0deg) scale(1);
-  }
-}
-
-@keyframes scale-out {
-  from {
-    opacity: 1;
-    transform: rotateX(0deg) scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: rotateX(-10deg) scale(0.95);
+  &[data-motion='to-end'] {
+    animation: to-right 250ms var(--easing);
   }
 }
 
@@ -215,10 +208,6 @@
   display: grid;
   grid-template-columns: repeat(2, max-content);
   gap: 0.25rem 2.5rem;
-
-  @media (max-width: 500px) {
-    grid-template-columns: max-content;
-  }
 }
 
 .MenuSection {
@@ -262,11 +251,6 @@
     outline: 2px solid var(--demo-coral-focus-ring);
     outline-offset: -1px;
   }
-
-  &[data-disabled] {
-    color: var(--demo-neutral-emphasized);
-    opacity: 0.5;
-  }
 }
 
 .LinkIcon {
@@ -302,4 +286,88 @@
   line-height: 1.25rem;
   color: var(--demo-neutral-fg-muted);
   white-space: nowrap;
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: rotateX(-20deg) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: rotateX(0deg) scale(1);
+  }
+}
+
+@keyframes scale-out {
+  from {
+    opacity: 1;
+    transform: rotateX(0deg) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: rotateX(-8deg) scale(0.98);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes from-right {
+  from {
+    transform: translate3d(1.5rem, 0, 0);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes from-left {
+  from {
+    transform: translate3d(-1.5rem, 0, 0);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes to-right {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(1.5rem, 0, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes to-left {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(-1.5rem, 0, 0);
+    opacity: 0;
+  }
 }

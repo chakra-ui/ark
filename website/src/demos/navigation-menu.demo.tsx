@@ -1,3 +1,5 @@
+'use client'
+
 import { NavigationMenu } from '@ark-ui/react/navigation-menu'
 import {
   AccessibilityIcon,
@@ -39,8 +41,8 @@ const guideLinks = [
   { href: '#forms', title: 'Forms', description: 'Native and library forms', icon: ListChecksIcon },
 ]
 
-export const Basic = () => (
-  <NavigationMenu.Root className={styles.Root}>
+export const Demo = () => (
+  <NavigationMenu.Root className={styles.Root} defaultValue="overview">
     <NavigationMenu.List className={styles.List}>
       <NavigationMenu.Item className={styles.Item} value="overview">
         <NavigationMenu.Trigger className={styles.Trigger}>
