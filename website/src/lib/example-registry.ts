@@ -343,6 +343,7 @@ import * as NavigationMenu_Basic from '@examples/navigation-menu/examples/basic'
 import * as NavigationMenu_Context from '@examples/navigation-menu/examples/context'
 import * as NavigationMenu_Controlled from '@examples/navigation-menu/examples/controlled'
 import * as NavigationMenu_CurrentLink from '@examples/navigation-menu/examples/current-link'
+import * as NavigationMenu_Indicator from '@examples/navigation-menu/examples/indicator'
 import * as NavigationMenu_RootProvider from '@examples/navigation-menu/examples/root-provider'
 import * as NavigationMenu_Vertical from '@examples/navigation-menu/examples/vertical'
 import * as NavigationMenu_Viewport from '@examples/navigation-menu/examples/viewport'
@@ -970,6 +971,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'navigation-menu/context': NavigationMenu_Context,
   'navigation-menu/controlled': NavigationMenu_Controlled,
   'navigation-menu/current-link': NavigationMenu_CurrentLink,
+  'navigation-menu/indicator': NavigationMenu_Indicator,
   'navigation-menu/root-provider': NavigationMenu_RootProvider,
   'navigation-menu/vertical': NavigationMenu_Vertical,
   'navigation-menu/viewport': NavigationMenu_Viewport,

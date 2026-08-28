@@ -15,6 +15,7 @@ description: A collection of links and menus for website navigation.
   <NavigationMenu.List>
     <NavigationMenu.Item>
       <NavigationMenu.Trigger />
+      <NavigationMenu.ItemIndicator />
       <NavigationMenu.Content>
         <NavigationMenu.Link />
       </NavigationMenu.Content>
@@ -53,6 +54,14 @@ Set `orientation="vertical"` on the root to build sidebar-style navigation. Pane
 model adapts: ArrowUp and ArrowDown move between triggers, ArrowRight enters the open panel.
 
 <Example id="vertical" />
+
+### Indicator
+
+Render `NavigationMenu.Indicator` inside the list to highlight the active trigger, tab-style. The machine exposes
+`--trigger-x` and `--trigger-width` CSS variables, so the indicator slides between triggers with a plain CSS transition.
+For a static per-item marker, use `NavigationMenu.ItemIndicator` instead.
+
+<Example id="indicator" />
 
 ### Controlled
 

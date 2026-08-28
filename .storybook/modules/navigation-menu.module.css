@@ -26,6 +26,18 @@
   position: relative;
 }
 
+/* --trigger-x is measured from the trigger's offset parent, so items must
+   stay static (offsets resolve against the list) when an indicator is used.
+   Content anchors to the list and stays put; only the indicator slides.
+   Skip the exit animation so the old panel doesn't fade over the new one. */
+.List:has(> .Indicator) .Item {
+  position: static;
+}
+
+.List:has(> .Indicator) .Content[data-state='closed'] {
+  animation: none;
+}
+
 .Trigger {
   display: inline-flex;
   align-items: center;
@@ -122,6 +134,32 @@
     opacity: 0.5;
     filter: grayscale(100%);
     cursor: not-allowed;
+  }
+}
+
+.Indicator {
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--demo-coral-solid);
+  width: calc(var(--trigger-width) - 1.5rem);
+  translate: calc(var(--trigger-x) + 0.75rem) 0;
+  transition:
+    translate 200ms ease,
+    width 200ms ease;
+
+  &[data-state='open'] {
+    animation: fade-in 0.2s ease-out;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
