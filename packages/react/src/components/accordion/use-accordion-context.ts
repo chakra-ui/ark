@@ -1,5 +1,7 @@
-import { createContext } from '../../utils/create-context'
-import type { UseAccordionReturn } from './use-accordion'
+'use client'
+
+import { createContext } from '../../utils/create-context.ts'
+import type { UseAccordionReturn } from './use-accordion.ts'
 
 export interface UseAccordionContext extends UseAccordionReturn {}
 

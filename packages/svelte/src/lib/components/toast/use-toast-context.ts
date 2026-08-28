@@ -2,7 +2,7 @@ import type { Accessor } from '$lib/types'
 import type { PropTypes } from '@zag-js/svelte'
 import type * as toast from '@zag-js/toast'
 import type { Snippet } from 'svelte'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface UseToastContext extends Accessor<toast.Api<PropTypes, Snippet>> {}
 

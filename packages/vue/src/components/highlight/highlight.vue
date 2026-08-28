@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { UseHighlightProps } from './use-highlight'
+import type { UseHighlightProps } from './use-highlight.ts'
 
 export interface HighlightBaseProps extends UseHighlightProps {}
 
@@ -14,7 +14,7 @@ export interface HighlightProps
 </script>
 
 <script lang="ts" setup>
-import { useHighlight } from './use-highlight'
+import { useHighlight } from './use-highlight.ts'
 
 const props = withDefaults(defineProps<HighlightProps>(), {
   ignoreCase: undefined,

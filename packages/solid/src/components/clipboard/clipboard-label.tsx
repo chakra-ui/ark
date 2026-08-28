@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useClipboardContext } from './use-clipboard-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useClipboardContext } from './use-clipboard-context.ts'
 
 export interface ClipboardLabelBaseProps extends PolymorphicProps<'label'> {}
 export interface ClipboardLabelProps extends HTMLProps<'label'>, ClipboardLabelBaseProps {}

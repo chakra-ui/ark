@@ -1,5 +1,5 @@
+import { RadioGroup } from '@ark-ui/solid/radio-group'
 import { For } from 'solid-js'
-import { RadioGroup } from '../'
 
 export const ComponentUnderTest = (props: RadioGroup.RootProps) => {
   const items = [

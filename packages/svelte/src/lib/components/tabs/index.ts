@@ -29,8 +29,8 @@ export {
   type TabsTriggerBaseProps as TabTriggerBaseProps,
   type TabsTriggerProps as TabTriggerProps,
 } from './tabs-trigger.svelte'
-export { tabsAnatomy } from './tabs.anatomy'
-export { useTabsContext, type UseTabsContext } from './use-tabs-context'
-export { useTabs, type UseTabsProps, type UseTabsReturn } from './use-tabs.svelte'
+export { tabsAnatomy } from './tabs.anatomy.ts'
+export { useTabsContext, type UseTabsContext } from './use-tabs-context.ts'
+export { useTabs, type UseTabsProps, type UseTabsReturn } from './use-tabs.svelte.ts'
 
-export * as Tabs from './tabs'
+export * as Tabs from './tabs.ts'

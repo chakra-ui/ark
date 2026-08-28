@@ -150,20 +150,20 @@ export {
   type ColorPickerViewBaseProps,
   type ColorPickerViewProps,
 } from './color-picker-view.svelte'
-export { colorPickerAnatomy } from './color-picker.anatomy'
-export { ColorPickerProvider, useColorPickerContext } from './use-color-picker-context'
-export type { UseColorPickerContext } from './use-color-picker-context'
+export { colorPickerAnatomy } from './color-picker.anatomy.ts'
+export { ColorPickerProvider, useColorPickerContext } from './use-color-picker-context.ts'
+export type { UseColorPickerContext } from './use-color-picker-context.ts'
 export {
   ColorPickerChannelPropsProvider,
   useColorPickerChannelPropsContext,
-} from './use-color-picker-channel-props-context'
-export type { UseColorPickerChannelPropsContext } from './use-color-picker-channel-props-context'
+} from './use-color-picker-channel-props-context.ts'
+export type { UseColorPickerChannelPropsContext } from './use-color-picker-channel-props-context.ts'
 export {
   ColorPickerSwatchPropsProvider,
   useColorPickerSwatchPropsContext,
-} from './use-color-picker-swatch-props-context'
-export type { UseColorPickerSwatchPropsContext } from './use-color-picker-swatch-props-context'
-export { useColorPicker } from './use-color-picker.svelte'
-export type { UseColorPickerProps, UseColorPickerReturn } from './use-color-picker.svelte'
+} from './use-color-picker-swatch-props-context.ts'
+export type { UseColorPickerSwatchPropsContext } from './use-color-picker-swatch-props-context.ts'
+export { useColorPicker } from './use-color-picker.svelte.ts'
+export type { UseColorPickerProps, UseColorPickerReturn } from './use-color-picker.svelte.ts'
 
-export * as ColorPicker from './color-picker'
+export * as ColorPicker from './color-picker.ts'

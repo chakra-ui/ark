@@ -7,8 +7,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useFileUploadContext } from './use-file-upload-context'
+  import { Ark } from '../factory/index.ts'
+  import { useFileUploadContext } from './use-file-upload-context.ts'
 
   let { ref = $bindable(null), ...props }: FileUploadLabelProps = $props()
   const fileUpload = useFileUploadContext()

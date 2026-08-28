@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { ComponentUnderTest, EditableWithField } from './basic'
-import { ControlledComponentUnderTest } from './controlled'
+import { ComponentUnderTest, EditableWithField } from './basic.tsx'
+import { ControlledComponentUnderTest } from './controlled.tsx'
 
 describe('Editable', () => {
   it('should have no a11y violations', async () => {

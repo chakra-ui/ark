@@ -49,10 +49,10 @@ export {
   type NumberInputValueTextBaseProps,
   type NumberInputValueTextProps,
 } from './number-input-value-text.svelte'
-export { numberInputAnatomy } from './number-input.anatomy'
-export { NumberInputProvider, useNumberInputContext } from './use-number-input-context'
-export type { UseNumberInputContext } from './use-number-input-context'
-export { useNumberInput } from './use-number-input.svelte'
-export type { UseNumberInputProps, UseNumberInputReturn } from './use-number-input.svelte'
+export { numberInputAnatomy } from './number-input.anatomy.ts'
+export { NumberInputProvider, useNumberInputContext } from './use-number-input-context.ts'
+export type { UseNumberInputContext } from './use-number-input-context.ts'
+export { useNumberInput } from './use-number-input.svelte.ts'
+export type { UseNumberInputProps, UseNumberInputReturn } from './use-number-input.svelte.ts'
 
-export * as NumberInput from './number-input'
+export * as NumberInput from './number-input.ts'

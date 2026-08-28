@@ -61,8 +61,8 @@ export {
   type CarouselRootEmits,
   type CarouselRootProps,
 } from './carousel-root.vue'
-export { carouselAnatomy } from './carousel.anatomy'
-export { useCarousel, type UseCarouselProps, type UseCarouselReturn } from './use-carousel'
-export { useCarouselContext, type UseCarouselContext } from './use-carousel-context'
+export { carouselAnatomy } from './carousel.anatomy.ts'
+export { useCarousel, type UseCarouselProps, type UseCarouselReturn } from './use-carousel.ts'
+export { useCarouselContext, type UseCarouselContext } from './use-carousel-context.ts'
 
-export * as Carousel from './carousel'
+export * as Carousel from './carousel.ts'

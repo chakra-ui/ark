@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseFileUploadReturn } from './use-file-upload'
-import { FileUploadProvider } from './use-file-upload-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import type { UseFileUploadReturn } from './use-file-upload.ts'
+import { FileUploadProvider } from './use-file-upload-context.ts'
 
 interface RootProviderProps {
   value: UseFileUploadReturn

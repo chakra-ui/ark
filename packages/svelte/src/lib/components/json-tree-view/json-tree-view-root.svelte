@@ -1,9 +1,9 @@
 <script lang="ts">
   import { type JsonNode, getRootNode, nodeToString, nodeToValue } from '@zag-js/json-tree-utils'
-  import { createSplitProps } from '../../utils/create-split-props'
-  import { TreeView, createTreeCollection, type TreeViewRootProps } from '../tree-view'
-  import { getBranchValues } from './get-branch-value'
-  import { type JsonTreeViewOptions, JsonTreeViewPropsProvider } from './json-tree-view-props-context'
+  import { createSplitProps } from '../../utils/create-split-props.ts'
+  import { TreeView, createTreeCollection, type TreeViewRootProps } from '../tree-view/index.ts'
+  import { getBranchValues } from './get-branch-value.ts'
+  import { type JsonTreeViewOptions, JsonTreeViewPropsProvider } from './json-tree-view-props-context.ts'
 
   export interface JsonTreeViewRootBaseProps extends JsonTreeViewOptions {
     /**

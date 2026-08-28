@@ -10,13 +10,23 @@ import pkg from './package.json'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
+const normalizeDeclarationPath = (filePath: string) => filePath.replace(/([/\\]dist)[/\\]src[/\\]/, '$1/')
+
 export default defineConfig({
   logLevel: 'warn',
   plugins: [
     dts({
       entryRoot: 'src',
+      processor: 'vue',
       staticImport: true,
       exclude: ['**/*.stories.*', '**/*.test.*', '**/tests/*', '**/examples/*', '**/setup-test.ts'],
+      beforeWriteFile: (filePath, content) => ({
+        filePath: normalizeDeclarationPath(filePath),
+        content: content.replace(
+          /(\bfrom\s*['"])(\.\.?\/[^'"]*?)\.tsx?(['"])/g,
+          (_m, pre, spec, post) => `${pre}${spec}.js${post}`,
+        ),
+      }),
       afterBuild: () => {
         globbySync(['dist/**/*.d.ts', 'dist/**.d.ts']).forEach((file) => {
           copyFileSync(file, file.replace(/\.d\.ts$/, '.d.cts'))
@@ -29,12 +39,9 @@ export default defineConfig({
   test: {
     setupFiles: 'src/setup-test.ts',
     globals: true,
-    environment: 'jsdom',
+    environment: 'happy-dom',
     coverage: {
       provider: 'v8',
-    },
-    testTransformMode: {
-      web: ['/.[tj]sx$/'],
     },
   },
   build: {

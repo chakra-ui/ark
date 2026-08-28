@@ -142,6 +142,11 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
+      "autoComplete": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The autocomplete attribute for the hidden select. Enables browser autofill (e.g. \"address-level1\" for state)."
+      },
       "closeOnSelect": {
         "type": "boolean",
         "defaultValue": "true",
@@ -275,6 +280,11 @@
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to allow the initial presence animation."
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
       },
       "unmountOnExit": {
         "type": "boolean",

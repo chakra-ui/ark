@@ -24,7 +24,15 @@
   }
 </script>
 
-<DatePicker.Root {format} {parse} selectionMode="range" defaultView="month" minView="month" placeholder="mm/yyyy" class={styles.Root}>
+<DatePicker.Root
+  {format}
+  {parse}
+  selectionMode="range"
+  defaultView="month"
+  minView="month"
+  placeholder="mm/yyyy"
+  class={styles.Root}
+>
   <DatePicker.Label class={styles.Label}>Label</DatePicker.Label>
   <DatePicker.Control class={styles.Control}>
     <DatePicker.Input class={styles.Input} index={0} />
@@ -57,7 +65,9 @@
                     <DatePicker.TableRow class={styles.TableRow}>
                       {#each months as month}
                         <DatePicker.TableCell class={styles.TableCell} value={month.value}>
-                          <DatePicker.TableCellTrigger class={styles.MonthTableCellTrigger}>{month.label}</DatePicker.TableCellTrigger>
+                          <DatePicker.TableCellTrigger class={styles.MonthTableCellTrigger}>
+                            {month.label}
+                          </DatePicker.TableCellTrigger>
                         </DatePicker.TableCell>
                       {/each}
                     </DatePicker.TableRow>
@@ -87,7 +97,9 @@
                     <DatePicker.TableRow class={styles.TableRow}>
                       {#each years as year}
                         <DatePicker.TableCell class={styles.TableCell} value={year.value}>
-                          <DatePicker.TableCellTrigger class={styles.YearTableCellTrigger}>{year.label}</DatePicker.TableCellTrigger>
+                          <DatePicker.TableCellTrigger class={styles.YearTableCellTrigger}>
+                            {year.label}
+                          </DatePicker.TableCellTrigger>
                         </DatePicker.TableCell>
                       {/each}
                     </DatePicker.TableRow>

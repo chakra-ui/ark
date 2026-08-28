@@ -46,7 +46,9 @@
                   <DatePicker.TableRow class={styles.TableRow}>
                     {#each week as day, id (id)}
                       <DatePicker.TableCell class={styles.TableCell} value={day}>
-                        <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>{day.day}</DatePicker.TableCellTrigger>
+                        <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>
+                          {day.day}
+                        </DatePicker.TableCellTrigger>
                       </DatePicker.TableCell>
                     {/each}
                   </DatePicker.TableRow>
@@ -72,7 +74,9 @@
                   <DatePicker.TableRow class={styles.TableRow}>
                     {#each week as day, id (id)}
                       <DatePicker.TableCell class={styles.TableCell} value={day} visibleRange={offset.visibleRange}>
-                        <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>{day.day}</DatePicker.TableCellTrigger>
+                        <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>
+                          {day.day}
+                        </DatePicker.TableCellTrigger>
                       </DatePicker.TableCell>
                     {/each}
                   </DatePicker.TableRow>

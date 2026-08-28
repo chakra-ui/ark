@@ -1,5 +1,5 @@
 import { createSplitProps } from '$lib/utils/create-split-props'
-import type { UseNumberInputProps } from './use-number-input.svelte'
+import type { UseNumberInputProps } from './use-number-input.svelte.ts'
 
 const splitFn = createSplitProps<UseNumberInputProps>()
 
@@ -17,6 +17,7 @@ export const splitNumberInputProps = <T extends UseNumberInputProps>(props: T) =
     'ids',
     'inputMode',
     'invalid',
+    'largeStep',
     'locale',
     'max',
     'min',
@@ -28,6 +29,7 @@ export const splitNumberInputProps = <T extends UseNumberInputProps>(props: T) =
     'pattern',
     'readOnly',
     'required',
+    'smallStep',
     'spinOnPress',
     'step',
     'translations',

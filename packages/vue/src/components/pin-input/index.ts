@@ -26,8 +26,8 @@ export {
   type PinInputRootEmits,
   type PinInputRootProps,
 } from './pin-input-root.vue'
-export { pinInputAnatomy } from './pin-input.anatomy'
-export { usePinInput, type UsePinInputProps, type UsePinInputReturn } from './use-pin-input'
-export { usePinInputContext, type UsePinInputContext } from './use-pin-input-context'
+export { pinInputAnatomy } from './pin-input.anatomy.ts'
+export { usePinInput, type UsePinInputProps, type UsePinInputReturn } from './use-pin-input.ts'
+export { usePinInputContext, type UsePinInputContext } from './use-pin-input-context.ts'
 
-export * as PinInput from './pin-input'
+export * as PinInput from './pin-input.ts'

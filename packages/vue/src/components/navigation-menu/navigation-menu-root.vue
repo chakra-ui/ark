@@ -1,6 +1,6 @@
 <script lang="ts">
-import type { RenderStrategyProps } from '../../utils/use-render-strategy'
-import type { RootEmits, RootProps } from './navigation-menu.types'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import type { RootEmits, RootProps } from './navigation-menu.types.ts'
 
 export interface NavigationMenuRootBaseProps extends RootProps, RenderStrategyProps {}
 export interface NavigationMenuRootProps extends NavigationMenuRootBaseProps {}
@@ -9,12 +9,12 @@ export interface NavigationMenuRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { useNavigationMenu } from './use-navigation-menu'
-import { NavigationMenuProvider } from './use-navigation-menu-context'
-import type { BooleanDefaults } from '../../types'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { useNavigationMenu } from './use-navigation-menu.ts'
+import { NavigationMenuProvider } from './use-navigation-menu-context.ts'
+import type { BooleanDefaults } from '../../types.ts'
 
 const props = withDefaults(defineProps<NavigationMenuRootProps>(), {
   disableClickTrigger: undefined,

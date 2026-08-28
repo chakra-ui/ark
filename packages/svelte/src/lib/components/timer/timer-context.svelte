@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte'
-  import { type UseTimerContext, useTimerContext } from './use-timer-context'
+  import { type UseTimerContext, useTimerContext } from './use-timer-context.ts'
 
   export interface TimerContextProps {
     api?: Snippet<[UseTimerContext]>

@@ -66,9 +66,9 @@ export {
   type TagsInputRootEmits,
   type TagsInputRootProps,
 } from './tags-input-root.vue'
-export { tagsInputAnatomy } from './tags-input.anatomy'
-export { useTagsInput, type UseTagsInputProps, type UseTagsInputReturn } from './use-tags-input'
-export { useTagsInputContext, type UseTagsInputContext } from './use-tags-input-context'
-export { useTagsInputItemContext, type UseTagsInputItemContext } from './use-tags-input-item-context'
+export { tagsInputAnatomy } from './tags-input.anatomy.ts'
+export { useTagsInput, type UseTagsInputProps, type UseTagsInputReturn } from './use-tags-input.ts'
+export { useTagsInputContext, type UseTagsInputContext } from './use-tags-input-context.ts'
+export { useTagsInputItemContext, type UseTagsInputItemContext } from './use-tags-input-item-context.ts'
 
-export * as TagsInput from './tags-input'
+export * as TagsInput from './tags-input.ts'

@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useCheckboxContext } from './use-checkbox-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useCheckboxContext } from './use-checkbox-context.ts'
 
 export interface CheckboxControlBaseProps extends PolymorphicProps<'div'> {}
 export interface CheckboxControlProps extends HTMLProps<'div'>, CheckboxControlBaseProps {}

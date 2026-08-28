@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js'
-import { type UseAngleSliderContext, useAngleSliderContext } from './use-angle-slider-context'
+import { type UseAngleSliderContext, useAngleSliderContext } from './use-angle-slider-context.ts'
 
 export interface AngleSliderContextProps {
   children: (context: UseAngleSliderContext) => JSX.Element

@@ -7,8 +7,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useDrawerStackContext } from './use-drawer-stack-context'
+  import { Ark } from '../factory/index.ts'
+  import { useDrawerStackContext } from './use-drawer-stack-context.ts'
 
   let { ref = $bindable(null), ...props }: DrawerIndentProps = $props()
 

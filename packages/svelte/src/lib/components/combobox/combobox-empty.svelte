@@ -6,9 +6,9 @@
 </script>
 
 <script lang="ts">
-  import { Ark } from '../factory'
-  import { comboboxAnatomy } from './combobox.anatomy'
-  import { useComboboxContext } from './use-combobox-context'
+  import { Ark } from '../factory/index.ts'
+  import { comboboxAnatomy } from './combobox.anatomy.ts'
+  import { useComboboxContext } from './use-combobox-context.ts'
 
   const parts = comboboxAnatomy.build()
 

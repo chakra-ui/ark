@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UseHoverCardReturn } from './use-hover-card.svelte'
+import type { UseHoverCardReturn } from './use-hover-card.svelte.ts'
 
 export interface UseHoverCardContext extends UseHoverCardReturn {}
 

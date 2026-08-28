@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface StepsProgressBaseProps extends PolymorphicProps {}
 export interface StepsProgressProps
@@ -13,9 +13,9 @@ export interface StepsProgressProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useStepsContext } from './use-steps-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useStepsContext } from './use-steps-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<StepsProgressProps>()
 const steps = useStepsContext()

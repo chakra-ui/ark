@@ -13,3 +13,8 @@ export {
   type FormatRelativeTimeProps as RelativeTimeBaseProps,
   type FormatRelativeTimeProps as RelativeTimeProps,
 } from './format-relative-time.svelte'
+export {
+  default as Time,
+  type FormatTimeProps as TimeBaseProps,
+  type FormatTimeProps as TimeProps,
+} from './format-time.svelte'

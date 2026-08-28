@@ -8,9 +8,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { createSplitProps } from '../../utils/create-split-props'
-  import { Ark } from '../factory'
-  import { useSliderContext } from './use-slider-context'
+  import { createSplitProps } from '../../utils/create-split-props.ts'
+  import { Ark } from '../factory/index.ts'
+  import { useSliderContext } from './use-slider-context.ts'
 
   let { ref = $bindable(null), ...props }: SliderMarkerProps = $props()
   const [markerProps, localProps] = $derived(createSplitProps<MarkerProps>()(props, ['value']))

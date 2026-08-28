@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseEditableContext } from './use-editable-context'
+import type { UseEditableContext } from './use-editable-context.ts'
 
 export interface EditableContextProps extends SlotsType<{
   default: UnwrapRef<UseEditableContext>
@@ -8,7 +8,7 @@ export interface EditableContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useEditableContext } from './use-editable-context'
+import { useEditableContext } from './use-editable-context.ts'
 
 const editable = useEditableContext()
 

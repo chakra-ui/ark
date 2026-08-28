@@ -11,7 +11,7 @@ import {
   isValidElement,
   memo,
 } from 'react'
-import { composeRefs } from '../utils/compose-refs'
+import { useComposedRefs } from '../utils/compose-refs.ts'
 
 export interface PolymorphicProps {
   /**
@@ -43,26 +43,44 @@ function getRef(element: React.ReactElement) {
   return (element.props as { ref?: React.Ref<unknown> | undefined }).ref || (element as any).ref
 }
 
+const REACT_LAZY_TYPE = Symbol.for('react.lazy')
+
+function isLazyElement(children: React.ReactNode) {
+  return (
+    typeof children === 'object' && children !== null && '$$typeof' in children && children.$$typeof === REACT_LAZY_TYPE
+  )
+}
+
+// Flight hands children across the RSC boundary wrapped in react.lazy: facebook/react#32392
+function getAsChild(children: React.ReactNode) {
+  if (isValidElement<Record<string, unknown>>(children)) {
+    return children
+  }
+  if (isLazyElement(children)) {
+    return Children.toArray(children).find(isValidElement<Record<string, unknown>>)
+  }
+  return undefined
+}
+
 const withAsChild = (Component: React.ElementType) => {
   const Comp = memo(
     forwardRef<unknown, ArkPropsWithRef<typeof Component>>((props, ref) => {
       const { asChild, children, ...restProps } = props
+      const onlyChild = asChild ? getAsChild(children) : undefined
+      const childRef = onlyChild ? getRef(onlyChild) : undefined
+      const composedRef = useComposedRefs(ref, childRef)
 
       if (!asChild) {
         return createElement(Component, { ...restProps, ref }, children)
       }
 
-      if (!isValidElement<Record<string, unknown>>(children)) {
+      if (!onlyChild) {
         return null
       }
 
-      const onlyChild: React.ReactElement<Record<string, unknown>> = Children.only(children)
-
-      const childRef = getRef(onlyChild)
-
       return cloneElement(onlyChild, {
         ...mergeProps(restProps, onlyChild.props),
-        ref: ref ? composeRefs(ref, childRef) : childRef,
+        ref: ref ? composedRef : childRef,
       })
     }),
   )

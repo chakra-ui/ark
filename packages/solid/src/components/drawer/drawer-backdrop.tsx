@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
-import { composeRefs } from '../../utils/compose-refs'
-import { useRenderStrategyContext } from '../../utils/render-strategy'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresence } from '../presence'
-import { useDrawerContext } from './use-drawer-context'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import { useRenderStrategyContext } from '../../utils/render-strategy.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { usePresence } from '../presence/index.tsx'
+import { useDrawerContext } from './use-drawer-context.ts'
 
 export interface DrawerBackdropBaseProps extends PolymorphicProps<'div'> {}
 export interface DrawerBackdropProps extends HTMLProps<'div'>, DrawerBackdropBaseProps {}

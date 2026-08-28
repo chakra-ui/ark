@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { DropzoneProps } from '@zag-js/file-upload'
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface FileUploadDropzoneBaseProps extends PolymorphicProps, DropzoneProps {}
 export interface FileUploadDropzoneProps
@@ -15,9 +15,9 @@ export interface FileUploadDropzoneProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useFileUploadContext } from './use-file-upload-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useFileUploadContext } from './use-file-upload-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<FileUploadDropzoneProps>(), {
   disableClick: undefined,

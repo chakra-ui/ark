@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseAvatarReturn } from './use-avatar'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseAvatarReturn } from './use-avatar.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseAvatarReturn>
@@ -19,9 +19,9 @@ export interface AvatarRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { AvatarProvider } from './use-avatar-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { AvatarProvider } from './use-avatar-context.ts'
 
 const props = defineProps<AvatarRootProviderProps>()
 const avatar = computed(() => props.value)

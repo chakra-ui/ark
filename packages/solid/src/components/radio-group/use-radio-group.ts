@@ -1,10 +1,10 @@
 import * as radio from '@zag-js/radio-group'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { MaybeAccessor, Optional } from '../../types'
-import { runIfFn } from '../../utils/run-if-fn'
-import { useFieldsetContext } from '../fieldset'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.tsx'
+import type { MaybeAccessor, Optional } from '../../types.ts'
+import { runIfFn } from '../../utils/run-if-fn.ts'
+import { useFieldsetContext } from '../fieldset/index.tsx'
 
 export interface UseRadioGroupProps extends Optional<Omit<radio.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseRadioGroupReturn extends Accessor<radio.Api<PropTypes>> {}

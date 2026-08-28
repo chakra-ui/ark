@@ -7,7 +7,7 @@
 </script>
 
 <script lang="ts">
-  import { useSelectItemContext, type UseSelectItemContext } from './use-select-item-context'
+  import { useSelectItemContext, type UseSelectItemContext } from './use-select-item-context.ts'
 
   const props: SelectItemContextProps = $props()
   const item = useSelectItemContext()

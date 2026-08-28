@@ -3,8 +3,8 @@ import type { Accessor, Optional } from '$lib/types'
 import * as select from '@zag-js/select'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
-import type { CollectionItem, ListCollection } from '../collection'
-import { useFieldContext } from '../field'
+import type { CollectionItem, ListCollection } from '../collection/index.ts'
+import { useFieldContext } from '../field/index.ts'
 
 export interface UseSelectProps<T extends CollectionItem> extends Optional<
   Omit<select.Props<T>, 'dir' | 'getRootNode' | 'collection'>,
@@ -27,13 +27,13 @@ export const useSelect = <T extends CollectionItem>(props: MaybeFunction<UseSele
     const resolvedProps = runIfFn(props)
     return {
       ids: {
-        label: field?.().ids?.label,
-        hiddenSelect: field?.().ids?.control,
+        label: field?.()?.ids?.label,
+        hiddenSelect: field?.()?.ids?.control,
       },
-      disabled: field?.().disabled,
-      readOnly: field?.().readOnly,
-      invalid: field?.().invalid,
-      required: field?.().required,
+      disabled: field?.()?.disabled,
+      readOnly: field?.()?.readOnly,
+      invalid: field?.()?.invalid,
+      required: field?.()?.required,
       dir: locale().dir,
       getRootNode: env().getRootNode,
       ...resolvedProps,

@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { ComboboxWithField, ComponentUnderTest } from './basic'
+import { ComboboxWithField, ComponentUnderTest } from './basic.tsx'
 
 describe('Combobox', () => {
   it('should show options on click', async () => {

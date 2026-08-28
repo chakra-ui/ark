@@ -9,9 +9,9 @@
 <script lang="ts">
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useColorPickerContext } from './use-color-picker-context'
-  import { ColorPickerAreaPropsProvider } from './use-color-picker-area-props-context'
+  import { Ark } from '../factory/index.ts'
+  import { useColorPickerContext } from './use-color-picker-context.ts'
+  import { ColorPickerAreaPropsProvider } from './use-color-picker-area-props-context.ts'
 
   let { ref = $bindable(null), ...props }: ColorPickerAreaProps = $props()
 

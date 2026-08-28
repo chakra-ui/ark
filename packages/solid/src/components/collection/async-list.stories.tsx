@@ -6,9 +6,9 @@ const meta: Meta = {
 
 export default meta
 
-export { Dependencies } from './examples/async-list/dependencies'
-export { InfiniteLoading } from './examples/async-list/infinite-loading'
-export { Reload } from './examples/async-list/reload'
-export { Filter } from './examples/async-list/filter'
-export { SortClientSide } from './examples/async-list/sort-client-side'
-export { SortServerSide } from './examples/async-list/sort-server-side'
+export { Dependencies } from './examples/async-list/dependencies.tsx'
+export { InfiniteLoading } from './examples/async-list/infinite-loading.tsx'
+export { Reload } from './examples/async-list/reload.tsx'
+export { Filter } from './examples/async-list/filter.tsx'
+export { SortClientSide } from './examples/async-list/sort-client-side.tsx'
+export { SortServerSide } from './examples/async-list/sort-server-side.tsx'

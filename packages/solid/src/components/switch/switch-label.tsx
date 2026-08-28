@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useSwitchContext } from './use-switch-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useSwitchContext } from './use-switch-context.ts'
 
 export interface SwitchLabelBaseProps extends PolymorphicProps<'span'> {}
 export interface SwitchLabelProps extends HTMLProps<'span'>, SwitchLabelBaseProps {}

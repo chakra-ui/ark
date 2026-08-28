@@ -1,4 +1,4 @@
-import { SegmentGroup } from '../'
+import { SegmentGroup } from '@ark-ui/react/segment-group'
 
 export const ComponentUnderTest = (props: SegmentGroup.RootProps) => {
   const items = [

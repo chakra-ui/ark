@@ -71,6 +71,15 @@ export interface RootProps {
    * @default true
    */
   typeahead?: boolean
+  /**
+   * The value of the trigger that currently open the menu
+   */
+  triggerValue?: string | null
+  /**
+   * The initial trigger value when rendered.
+   * Use when you don't need to control the trigger value.
+   */
+  defaultTriggerValue?: string | null
 }
 
 export type RootEmits = {
@@ -118,6 +127,10 @@ export type RootEmits = {
    */
   select: [details: menu.SelectionDetails]
   /**
+   * Function called when the trigger value changes
+   */
+  triggerValueChange: [details: menu.TriggerValueChangeDetails]
+  /**
    * Function called when the menu is opened or closed.
    */
   'update:open': [open: boolean]
@@ -125,4 +138,8 @@ export type RootEmits = {
    * Function called when the highlighted menu item changes.
    */
   'update:highlightedValue': [highlightedValue: string | null]
+  /**
+   * The callback fired when the trigger value changes.
+   */
+  'update:triggerValue': [triggerValue: string | null]
 }

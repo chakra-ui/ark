@@ -7,8 +7,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { usePopoverContext } from './use-popover-context'
+  import { Ark } from '../factory/index.ts'
+  import { usePopoverContext } from './use-popover-context.ts'
 
   let { ref = $bindable(null), ...props }: PopoverTitleProps = $props()
 

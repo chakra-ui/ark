@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Field, type FieldRootProps } from '../../field'
-import { Switch } from '../'
+import { Field, type FieldRootProps } from '@ark-ui/vue/field'
+import { Switch } from '@ark-ui/vue/switch'
 
 defineProps<FieldRootProps>()
 </script>

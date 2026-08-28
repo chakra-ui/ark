@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UsePaginationReturn } from './use-pagination'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UsePaginationReturn } from './use-pagination.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UsePaginationReturn>
@@ -19,9 +19,9 @@ export interface PaginationRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { PaginationProvider } from './use-pagination-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { PaginationProvider } from './use-pagination-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<PaginationRootProviderProps>()
 const pagination = computed(() => props.value)

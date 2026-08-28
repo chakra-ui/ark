@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ItemGroupProps } from '@zag-js/file-upload'
 import { computed, type HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 import { pick } from '@zag-js/utils'
 
 export interface FileUploadItemGroupBaseProps extends PolymorphicProps, ItemGroupProps {}
@@ -15,10 +15,10 @@ export interface FileUploadItemGroupProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { useFileUploadContext } from './use-file-upload-context'
-import { FileUploadItemGroupPropsProvider } from './use-file-upload-item-group-props-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { useFileUploadContext } from './use-file-upload-context.ts'
+import { FileUploadItemGroupPropsProvider } from './use-file-upload-item-group-props-context.ts'
 
 const props = defineProps<FileUploadItemGroupProps>()
 const groupProps = computed(() => pick(props, ['type']))

@@ -34,9 +34,9 @@ export {
   type RatingGroupRootBaseProps,
   type RatingGroupRootProps,
 } from './rating-group-root.svelte'
-export { ratingGroupAnatomy } from './rating-group.anatomy'
-export { useRatingGroup, type UseRatingGroupProps, type UseRatingGroupReturn } from './use-rating-group.svelte'
-export { useRatingGroupContext, type UseRatingGroupContext } from './use-rating-group-context'
-export { useRatingGroupItemContext, type UseRatingGroupItemContext } from './use-rating-group-item-context'
+export { ratingGroupAnatomy } from './rating-group.anatomy.ts'
+export { useRatingGroup, type UseRatingGroupProps, type UseRatingGroupReturn } from './use-rating-group.svelte.ts'
+export { useRatingGroupContext, type UseRatingGroupContext } from './use-rating-group-context.ts'
+export { useRatingGroupItemContext, type UseRatingGroupItemContext } from './use-rating-group-item-context.ts'
 
-export * as RatingGroup from './rating-group'
+export * as RatingGroup from './rating-group.ts'

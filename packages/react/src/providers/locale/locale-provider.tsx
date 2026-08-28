@@ -1,6 +1,8 @@
+'use client'
+
 import { type Locale, isRTL } from '@zag-js/i18n-utils'
 import type { PropsWithChildren } from 'react'
-import { LocaleContextProvider } from './use-locale-context'
+import { LocaleContextProvider } from './use-locale-context.ts'
 
 export interface LocaleProviderProps extends PropsWithChildren {
   /**

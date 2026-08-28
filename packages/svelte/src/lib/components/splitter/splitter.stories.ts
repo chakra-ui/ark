@@ -4,6 +4,7 @@ import BasicExample from './examples/basic.svelte'
 import CollapsibleExample from './examples/collapsible.svelte'
 import ContextExample from './examples/context.svelte'
 import MultiplePanelsExample from './examples/multiple-panels.svelte'
+import NestedExample from './examples/nested.svelte'
 import ResizeIndicatorExample from './examples/resize-indicator.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import VerticalExample from './examples/vertical.svelte'
@@ -29,6 +30,12 @@ export const Vertical = {
 export const MultiplePanels = {
   render: () => ({
     Component: MultiplePanelsExample,
+  }),
+}
+
+export const Nested = {
+  render: () => ({
+    Component: NestedExample,
   }),
 }
 

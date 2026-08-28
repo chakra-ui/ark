@@ -1,7 +1,9 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useCollapsibleContext } from './use-collapsible-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useCollapsibleContext } from './use-collapsible-context.ts'
 
 export interface CollapsibleTriggerBaseProps extends PolymorphicProps {}
 export interface CollapsibleTriggerProps extends HTMLProps<'button'>, CollapsibleTriggerBaseProps {}

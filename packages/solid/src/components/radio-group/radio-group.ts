@@ -1,46 +1,46 @@
 export type { ValueChangeDetails } from '@zag-js/radio-group'
-export { RadioGroupContext as Context, type RadioGroupContext as ContextProps } from './radio-group-context'
+export { RadioGroupContext as Context, type RadioGroupContext as ContextProps } from './radio-group-context.tsx'
 export {
   RadioGroupIndicator as Indicator,
   type RadioGroupIndicatorBaseProps as IndicatorBaseProps,
   type RadioGroupIndicatorProps as IndicatorProps,
-} from './radio-group-indicator'
+} from './radio-group-indicator.tsx'
 export {
   RadioGroupItem as Item,
   type RadioGroupItemBaseProps as ItemBaseProps,
   type RadioGroupItemProps as ItemProps,
-} from './radio-group-item'
+} from './radio-group-item.tsx'
 export {
   RadioGroupItemContext as ItemContext,
   type RadioGroupItemContext as ItemContextProps,
-} from './radio-group-item-context'
+} from './radio-group-item-context.tsx'
 export {
   RadioGroupItemControl as ItemControl,
   type RadioGroupItemControlBaseProps as ItemControlBaseProps,
   type RadioGroupItemControlProps as ItemControlProps,
-} from './radio-group-item-control'
+} from './radio-group-item-control.tsx'
 export {
   RadioGroupItemHiddenInput as ItemHiddenInput,
   type RadioGroupItemHiddenInputBaseProps as ItemHiddenInputBaseProps,
   type RadioGroupItemHiddenInputProps as ItemHiddenInputProps,
-} from './radio-group-item-hidden-input'
+} from './radio-group-item-hidden-input.tsx'
 export {
   RadioGroupItemText as ItemText,
   type RadioGroupItemTextBaseProps as ItemTextBaseProps,
   type RadioGroupItemTextProps as ItemTextProps,
-} from './radio-group-item-text'
+} from './radio-group-item-text.tsx'
 export {
   RadioGroupLabel as Label,
   type RadioGroupLabelBaseProps as LabelBaseProps,
   type RadioGroupLabelProps as LabelProps,
-} from './radio-group-label'
+} from './radio-group-label.tsx'
 export {
   RadioGroupRoot as Root,
   type RadioGroupRootBaseProps as RootBaseProps,
   type RadioGroupRootProps as RootProps,
-} from './radio-group-root'
+} from './radio-group-root.tsx'
 export {
   RadioGroupRootProvider as RootProvider,
   type RadioGroupRootProviderBaseProps as RootProviderBaseProps,
   type RadioGroupRootProviderProps as RootProviderProps,
-} from './radio-group-root-provider'
+} from './radio-group-root-provider.tsx'

@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseSplitterReturn } from './use-splitter'
-import { SplitterProvider } from './use-splitter-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import type { UseSplitterReturn } from './use-splitter.ts'
+import { SplitterProvider } from './use-splitter-context.ts'
 
 interface RootProviderProps {
   value: UseSplitterReturn

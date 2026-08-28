@@ -1,5 +1,5 @@
 import { createSignal } from 'solid-js'
-import { ComponentUnderTest } from './basic'
+import { ComponentUnderTest } from './basic.tsx'
 
 export const ControlledComponentUnderTest = () => {
   const [checked, setChecked] = createSignal(false)

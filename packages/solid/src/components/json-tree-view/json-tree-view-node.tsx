@@ -7,10 +7,10 @@ import {
 } from '@zag-js/json-tree-utils'
 import { type JSX, createMemo } from 'solid-js'
 import { Index, Show } from 'solid-js/web'
-import { TreeView, useTreeViewContext } from '../tree-view'
-import { JsonTreeViewKeyNode } from './json-tree-view-key-node'
-import { useJsonTreeViewPropsContext } from './json-tree-view-props-context'
-import { JsonTreeViewValueNode } from './json-tree-view-value-node'
+import { TreeView, useTreeViewContext } from '../tree-view/index.tsx'
+import { JsonTreeViewKeyNode } from './json-tree-view-key-node.tsx'
+import { useJsonTreeViewPropsContext } from './json-tree-view-props-context.ts'
+import { JsonTreeViewValueNode } from './json-tree-view-value-node.tsx'
 
 export interface JsonTreeViewNodeBaseProps {
   /**

@@ -1,12 +1,12 @@
 import type { ItemProps } from '@zag-js/radio-group'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { parts } from './segment-group.anatomy'
-import { useSegmentGroupContext } from './use-segment-group-context'
-import { SegmentGroupItemProvider } from './use-segment-group-item-context'
-import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { parts } from './segment-group.anatomy.ts'
+import { useSegmentGroupContext } from './use-segment-group-context.ts'
+import { SegmentGroupItemProvider } from './use-segment-group-item-context.ts'
+import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-context.ts'
 
 export interface SegmentGroupItemBaseProps extends ItemProps, PolymorphicProps<'label'> {}
 export interface SegmentGroupItemProps extends HTMLProps<'label'>, SegmentGroupItemBaseProps {}

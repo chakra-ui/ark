@@ -1,6 +1,6 @@
 import type { ItemState } from '@zag-js/listbox'
 import type { ComputedRef } from 'vue'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface UseListboxItemContext extends ComputedRef<ItemState> {}
 

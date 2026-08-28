@@ -7,9 +7,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useTreeViewContext } from './use-tree-view-context'
-  import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
+  import { Ark } from '../factory/index.ts'
+  import { useTreeViewContext } from './use-tree-view-context.ts'
+  import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
 
   let { ref = $bindable(null), ...props }: TreeViewItemTextProps = $props()
 

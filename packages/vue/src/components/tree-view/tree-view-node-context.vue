@@ -7,7 +7,7 @@ export interface TreeViewNodeContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useTreeViewNodeContext, type UseTreeViewNodeContext } from './use-tree-view-node-context'
+import { useTreeViewNodeContext, type UseTreeViewNodeContext } from './use-tree-view-node-context.ts'
 
 const item = useTreeViewNodeContext()
 defineSlots<{

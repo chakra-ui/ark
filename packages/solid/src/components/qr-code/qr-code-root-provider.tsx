@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseQrCodeReturn } from './use-qr-code'
-import { QrCodeProvider } from './use-qr-code-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import type { UseQrCodeReturn } from './use-qr-code.ts'
+import { QrCodeProvider } from './use-qr-code-context.ts'
 
 interface RootProviderProps {
   value: UseQrCodeReturn

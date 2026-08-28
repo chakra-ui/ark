@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseTabsReturn } from './use-tabs.svelte'
+  import type { UseTabsReturn } from './use-tabs.svelte.ts'
 
   interface RootProviderProps {
     value: UseTabsReturn
@@ -14,8 +14,8 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { createSplitProps } from '$lib/utils/create-split-props'
-  import { Ark } from '../factory'
-  import { TabsProvider } from './use-tabs-context'
+  import { Ark } from '../factory/index.ts'
+  import { TabsProvider } from './use-tabs-context.ts'
   import {
     RenderStrategyPropsProvider,
     splitRenderStrategyProps,

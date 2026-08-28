@@ -2,8 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
   export interface DatePickerWeekNumberHeaderCellBaseProps extends PolymorphicProps<'th'>, RefAttribute {}
-  export interface DatePickerWeekNumberHeaderCellProps
-    extends Assign<HTMLProps<'th'>, DatePickerWeekNumberHeaderCellBaseProps> {}
+  export interface DatePickerWeekNumberHeaderCellProps extends Assign<
+    HTMLProps<'th'>,
+    DatePickerWeekNumberHeaderCellBaseProps
+  > {}
 </script>
 
 <script lang="ts">

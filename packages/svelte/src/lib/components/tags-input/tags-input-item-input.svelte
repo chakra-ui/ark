@@ -7,9 +7,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useTagsInputContext } from './use-tags-input-context'
-  import { useTagsInputItemPropsContext } from './use-tags-input-item-props-context'
+  import { Ark } from '../factory/index.ts'
+  import { useTagsInputContext } from './use-tags-input-context.ts'
+  import { useTagsInputItemPropsContext } from './use-tags-input-item-props-context.ts'
 
   let { ref = $bindable(null), ...props }: TagsInputItemInputProps = $props()
   const tagsInput = useTagsInputContext()

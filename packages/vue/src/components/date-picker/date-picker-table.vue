@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { TableProps } from '@zag-js/date-picker'
 import type { TableHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface DatePickerTableBaseProps extends TableProps, PolymorphicProps {}
 export interface DatePickerTableProps
@@ -14,27 +14,27 @@ export interface DatePickerTableProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useId } from 'vue'
-import { useDatePickerContext } from './use-date-picker-context'
-import { DatePickerTablePropsProvider } from './use-date-picker-table-props-context'
-import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { computed, useId } from 'vue'
+import { useDatePickerContext } from './use-date-picker-context.ts'
+import { DatePickerTablePropsProvider } from './use-date-picker-table-props-context.ts'
+import { DEFAULT_VIEW_PROPS_CONTEXT, useDatePickerViewPropsContext } from './use-date-picker-view-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<DatePickerTableProps>()
 const datePicker = useDatePickerContext()
-const viewProps = useDatePickerViewPropsContext()
+const viewProps = useDatePickerViewPropsContext(DEFAULT_VIEW_PROPS_CONTEXT)
 
 const uid = useId()
-const id = props.id ?? uid
+const tableProps = computed(() => ({ ...props, id: props.id ?? uid, ...viewProps }))
 
-DatePickerTablePropsProvider({ ...props, id, ...viewProps })
+DatePickerTablePropsProvider(tableProps)
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.table v-bind="datePicker.getTableProps(props)" :as-child="asChild">
+  <ark.table v-bind="datePicker.getTableProps(tableProps)" :as-child="asChild">
     <slot />
   </ark.table>
 </template>

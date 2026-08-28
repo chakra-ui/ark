@@ -14,6 +14,11 @@ import NumberWithPercentageExample from './examples/number-with-percentage.vue'
 import NumberWithUnitExample from './examples/number-with-unit.vue'
 import RelativeTimeBasicExample from './examples/relative-time-basic.vue'
 import RelativeTimeShortExample from './examples/relative-time-short.vue'
+import TimeWithAmPmLabelsExample from './examples/time-with-am-pm-labels.vue'
+import TimeBasicExample from './examples/time-basic.vue'
+import TimeWithDateExample from './examples/time-with-date.vue'
+import TimeWithLocaleExample from './examples/time-with-locale.vue'
+import TimeWithSecondsExample from './examples/time-with-seconds.vue'
 
 const meta: Meta = {
   title: 'Utilities / Format',
@@ -115,6 +120,41 @@ export const RelativeTimeBasic = {
 export const RelativeTimeShort = {
   render: () => ({
     components: { Component: RelativeTimeShortExample },
+    template: '<Component />',
+  }),
+}
+
+export const TimeBasic = {
+  render: () => ({
+    components: { Component: TimeBasicExample },
+    template: '<Component />',
+  }),
+}
+
+export const TimeWithDate = {
+  render: () => ({
+    components: { Component: TimeWithDateExample },
+    template: '<Component />',
+  }),
+}
+
+export const TimeWithSeconds = {
+  render: () => ({
+    components: { Component: TimeWithSecondsExample },
+    template: '<Component />',
+  }),
+}
+
+export const TimeWithAmPmLabels = {
+  render: () => ({
+    components: { Component: TimeWithAmPmLabelsExample },
+    template: '<Component />',
+  }),
+}
+
+export const TimeWithLocale = {
+  render: () => ({
+    components: { Component: TimeWithLocaleExample },
     template: '<Component />',
   }),
 }

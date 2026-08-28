@@ -11,6 +11,7 @@ export const NavbarContainer = (props: BoxProps) => {
       zIndex="2"
       borderBottomWidth="1px"
       borderColor={{ _light: 'border.subtle', _dark: 'black' }}
+      pe="var(--scrollbar-width, 0)"
     >
       <Container py="2.5" {...props} />
     </Flex>

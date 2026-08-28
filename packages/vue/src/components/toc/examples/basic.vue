@@ -1,0 +1,37 @@
+<script setup lang="ts">
+import { Toc } from '@ark-ui/vue/toc'
+import { ref } from 'vue'
+import styles from 'styles/toc.module.css'
+
+const items = [
+  { value: '01-introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: '01-getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: '01-installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: '01-usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: '01-conclusion', depth: 2, label: 'Conclusion', lines: 10 },
+]
+
+const contentEl = ref()
+const scrollEl = () => contentEl.value?.$el
+</script>
+
+<template>
+  <Toc.Root :class="styles.Root" :items="items" :scrollEl="scrollEl">
+    <Toc.Content :class="styles.Content" ref="contentEl">
+      <section v-for="item in items" :key="item.value">
+        <h2 :id="item.value">{{ item.label }}</h2>
+        <div :class="styles.DummyText">
+          <div v-for="i in item.lines" :key="i" :class="styles.DummyLine" />
+        </div>
+      </section>
+    </Toc.Content>
+    <Toc.Nav :class="styles.Nav">
+      <Toc.Title :class="styles.Title">On this page</Toc.Title>
+      <Toc.List :class="styles.List">
+        <Toc.Item v-for="item in items" :key="item.value" :item="item" :class="styles.Item">
+          <Toc.Link :class="styles.Link" :href="`#${item.value}`">{{ item.label }}</Toc.Link>
+        </Toc.Item>
+      </Toc.List>
+    </Toc.Nav>
+  </Toc.Root>
+</template>

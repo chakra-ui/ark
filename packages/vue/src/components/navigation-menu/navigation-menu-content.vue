@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ContentProps } from '@zag-js/navigation-menu'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface NavigationMenuContentBaseProps extends Partial<ContentProps>, PolymorphicProps {}
 export interface NavigationMenuContentProps
@@ -16,12 +16,12 @@ export interface NavigationMenuContentProps
 <script setup lang="ts">
 import { mergeProps } from '@zag-js/vue'
 import { computed, useAttrs } from 'vue'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { useNavigationMenuContext } from './use-navigation-menu-context'
-import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context'
-import { useRenderStrategyProps } from '../../utils/use-render-strategy'
-import { usePresence } from '../presence'
-import { ark } from '../factory'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
+import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context.ts'
+import { useRenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import { usePresence } from '../presence/index.ts'
+import { ark } from '../factory.ts'
 
 const props = defineProps<NavigationMenuContentProps>()
 const attrs = useAttrs()
@@ -40,7 +40,7 @@ const mergedProps = computed(() =>
   mergeProps({ ...attrs }, api.value.getContentProps(contentProps.value), presence.value.presenceProps),
 )
 
-const viewportNode = computed(() => api.value.getViewportNode())
+const viewportNode = computed(() => (api.value.isViewportRendered ? api.value.getViewportNode() : null))
 const isViewportRendered = computed(() => api.value.isViewportRendered)
 
 useForwardExpose()

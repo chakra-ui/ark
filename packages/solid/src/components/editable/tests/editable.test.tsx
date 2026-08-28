@@ -1,6 +1,6 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { ControlledComponentUnderTest, EditableWithField } from './controlled'
+import { ControlledComponentUnderTest, EditableWithField } from './controlled.tsx'
 
 describe('Editable', () => {
   it('should render controlled component', async () => {

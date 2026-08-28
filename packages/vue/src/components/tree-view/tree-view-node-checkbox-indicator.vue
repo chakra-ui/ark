@@ -7,7 +7,7 @@ export interface TreeViewNodeCheckboxIndicatorProps extends TreeViewNodeCheckbox
 </script>
 
 <script setup lang="ts">
-import { useTreeViewNodeContext } from './use-tree-view-node-context'
+import { useTreeViewNodeContext } from './use-tree-view-node-context.ts'
 
 defineProps<TreeViewNodeCheckboxIndicatorProps>()
 defineSlots<{

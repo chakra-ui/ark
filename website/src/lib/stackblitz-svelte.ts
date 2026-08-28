@@ -1,4 +1,5 @@
 import sdk from '@stackblitz/sdk'
+import { getCssFiles, rewriteCssImports } from './css-module-transform'
 
 const tsconfig = {
   files: [],
@@ -111,10 +112,6 @@ const appDts = `/// <reference types="svelte" />
 
 export {};`
 
-function transformCssModuleImports(code: string): string {
-  return code.replace(/from\s+['"]styles\/[^'"]+\.module\.css['"]/g, "from './index.module.css'")
-}
-
 function generateGlobalCss(cssModules: Record<string, string>): string {
   const theme = cssModules['theme.css'] ?? ''
   const utilities = cssModules['utilities.css'] ?? ''
@@ -125,12 +122,14 @@ function generateGlobalCss(cssModules: Record<string, string>): string {
 export async function openInStackblitzSvelte(opts: {
   code: string
   cssModules: Record<string, string>
+  localFiles?: Record<string, string>
   id: string
   component: string
 }) {
   let { code, cssModules, id, component } = opts
+  const { localFiles = {} } = opts
 
-  code = transformCssModuleImports(code)
+  code = rewriteCssImports(code)
 
   const files: Record<string, string> = {
     'tsconfig.json': JSON.stringify(tsconfig, null, 2),
@@ -141,18 +140,13 @@ export async function openInStackblitzSvelte(opts: {
     'svelte.config.js': svelteConfig,
     'index.html': indexHtml,
     'src/App.svelte': code,
+    ...Object.fromEntries(
+      Object.entries(localFiles).map(([name, content]) => [`src/${name}`, rewriteCssImports(content)]),
+    ),
     'src/global.css': generateGlobalCss(cssModules),
     'src/main.ts': main,
     'src/app.d.ts': appDts,
-  }
-
-  const componentCss = Object.entries(cssModules)
-    .filter(([filename]) => filename.endsWith('.module.css'))
-    .map(([, content]) => content)
-    .join('\n\n')
-
-  if (componentCss) {
-    files['src/index.module.css'] = componentCss
+    ...getCssFiles(cssModules),
   }
 
   sdk.openProject(

@@ -1,7 +1,15 @@
 import { render, screen } from '@testing-library/vue'
+import { axe } from 'vitest-axe'
 import ComponentUnderTest from './progress.test.vue'
 
 describe('Progress', () => {
+  it('should have no a11y violations', async () => {
+    const { container } = render(ComponentUnderTest)
+    const results = await axe(container)
+
+    expect(results).toHaveNoViolations()
+  })
+
   it('should handle value', async () => {
     render(ComponentUnderTest, {
       props: {

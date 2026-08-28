@@ -7,8 +7,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useFieldsetContext } from './use-fieldset-context'
+  import { Ark } from '../factory/index.ts'
+  import { useFieldsetContext } from './use-fieldset-context.ts'
 
   let { ref = $bindable(null), ...props }: FieldsetErrorTextProps = $props()
   const fieldset = useFieldsetContext()

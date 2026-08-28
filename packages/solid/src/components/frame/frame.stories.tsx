@@ -6,6 +6,6 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
-export { Script } from './examples/script'
-export { SrcDoc } from './examples/src-doc'
+export { Basic } from './examples/basic.tsx'
+export { Script } from './examples/script.tsx'
+export { SrcDoc } from './examples/src-doc.tsx'

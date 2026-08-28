@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useFieldContext } from '../field'
-import { useComboboxContext } from './use-combobox-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useFieldContext } from '../field/index.tsx'
+import { useComboboxContext } from './use-combobox-context.ts'
 
 export interface ComboboxInputBaseProps extends PolymorphicProps<'input'> {}
 export interface ComboboxInputProps extends HTMLProps<'input'>, ComboboxInputBaseProps {}

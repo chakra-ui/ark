@@ -1,6 +1,6 @@
 import { computed } from 'vue'
-import { useEmitAsProps } from './use-emits-as-props'
-import { useForwardProps } from './use-forward-props'
+import { useEmitAsProps } from './use-emits-as-props.ts'
+import { useForwardProps } from './use-forward-props.ts'
 
 /**
  * Attribution: Radix Vue Team

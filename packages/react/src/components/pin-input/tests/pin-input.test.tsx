@@ -1,7 +1,7 @@
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { ComponentUnderTest, PinInputWithField } from './basic'
+import { ComponentUnderTest, PinInputWithField } from './basic.tsx'
 
 describe('PinInput', () => {
   it('should have no a11y violations', async () => {

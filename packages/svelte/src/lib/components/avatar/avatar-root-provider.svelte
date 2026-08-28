@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, RefAttribute } from '$lib/types'
-  import type { UseAvatarReturn } from './use-avatar.svelte'
+  import type { UseAvatarReturn } from './use-avatar.svelte.ts'
 
   interface RootProviderProps {
     value: UseAvatarReturn
@@ -12,14 +12,13 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { AvatarProvider } from './use-avatar-context'
+  import { Ark } from '../factory/index.ts'
+  import { AvatarProvider } from './use-avatar-context.ts'
 
-  let { ref = $bindable(null), ...props }: AvatarRootProviderProps = $props()
-  const { value: avatar, ...localProps } = props
-  const mergedProps = $derived(mergeProps(avatar().getRootProps(), localProps))
+  let { ref = $bindable(null), value, ...props }: AvatarRootProviderProps = $props()
+  const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  AvatarProvider(avatar)
+  AvatarProvider(() => value())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

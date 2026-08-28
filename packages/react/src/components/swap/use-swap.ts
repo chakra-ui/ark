@@ -1,7 +1,9 @@
-import type { RenderStrategyProps } from '../../utils/render-strategy'
-import type { HTMLProps } from '../factory'
-import { type UsePresenceReturn, usePresence } from '../presence/use-presence'
-import { parts } from './swap.anatomy'
+'use client'
+
+import type { RenderStrategyProps } from '../../utils/render-strategy.ts'
+import type { HTMLProps } from '../factory.ts'
+import { type UsePresenceReturn, usePresence } from '../presence/use-presence.ts'
+import { parts } from './swap.anatomy.ts'
 
 export interface UseSwapProps extends RenderStrategyProps {
   /**
@@ -39,9 +41,9 @@ export interface UseSwapReturn {
 }
 
 export const useSwap = (props: UseSwapProps = {}): UseSwapReturn => {
-  const { swap = false, lazyMount, unmountOnExit } = props
+  const { swap = false, lazyMount, unmountOnExit, hideMode } = props
 
-  const presenceProps = { lazyMount, unmountOnExit }
+  const presenceProps = { lazyMount, unmountOnExit, hideMode }
 
   const onPresence = usePresence({ present: swap, ...presenceProps, skipAnimationOnMount: true })
   const offPresence = usePresence({ present: !swap, ...presenceProps, skipAnimationOnMount: true })

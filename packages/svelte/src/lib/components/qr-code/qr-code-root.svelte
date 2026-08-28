@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseQrCodeProps } from './use-qr-code.svelte'
+  import type { UseQrCodeProps } from './use-qr-code.svelte.ts'
 
   export interface QrCodeRootBaseProps extends Optional<UseQrCodeProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface QrCodeRootProps extends Assign<HTMLProps<'div'>, QrCodeRootBaseProps> {}
@@ -8,10 +8,10 @@
 
 <script lang="ts">
   import { mergeProps, reflect } from '@zag-js/svelte'
-  import { createSplitProps } from '../../utils/create-split-props'
-  import { Ark } from '../factory'
-  import { QrCodeProvider } from './use-qr-code-context'
-  import { useQrCode } from './use-qr-code.svelte'
+  import { createSplitProps } from '../../utils/create-split-props.ts'
+  import { Ark } from '../factory/index.ts'
+  import { QrCodeProvider } from './use-qr-code-context.ts'
+  import { useQrCode } from './use-qr-code.svelte.ts'
 
   let { ref = $bindable(null), value = $bindable(), ...props }: QrCodeRootProps = $props()
   const providedId = $props.id()

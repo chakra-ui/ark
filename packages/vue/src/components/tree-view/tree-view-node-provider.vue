@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { NodeProps } from '@zag-js/tree-view'
-import type { TreeNode } from '../collection'
-import { TreeViewNodeStateProvider } from './use-tree-view-node-context'
+import type { TreeNode } from '../collection/index.ts'
+import { TreeViewNodeStateProvider } from './use-tree-view-node-context.ts'
 
 export interface TreeViewNodeProviderBaseProps<T> extends NodeProps {
   node: T
@@ -10,9 +10,9 @@ export interface TreeViewNodeProviderProps<T extends TreeNode> extends TreeViewN
 </script>
 
 <script setup lang="ts" generic="T extends TreeNode">
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { TreeViewNodePropsProvider } from './use-tree-view-node-props-context'
-import { useTreeViewContext } from './use-tree-view-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { TreeViewNodePropsProvider } from './use-tree-view-node-props-context.ts'
+import { useTreeViewContext } from './use-tree-view-context.ts'
 import { computed } from 'vue'
 
 const props = defineProps<TreeViewNodeProviderBaseProps<T>>()

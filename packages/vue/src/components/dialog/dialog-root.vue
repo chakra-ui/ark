@@ -1,7 +1,7 @@
 <script lang="ts">
-import type { BooleanDefaults } from '../../types'
-import type { RenderStrategyProps } from '../../utils/use-render-strategy'
-import type { RootEmits, RootProps } from './dialog.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import type { RootEmits, RootProps } from './dialog.types.ts'
 
 export interface DialogRootBaseProps extends RootProps, RenderStrategyProps {}
 export interface DialogRootProps extends DialogRootBaseProps {}
@@ -10,11 +10,11 @@ export interface DialogRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { PresenceProvider, usePresence } from '../presence'
-import { useDialog } from './use-dialog'
-import { DialogProvider } from './use-dialog-context'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { useDialog } from './use-dialog.ts'
+import { DialogProvider } from './use-dialog-context.ts'
 
 const props = withDefaults(defineProps<DialogRootProps>(), {
   closeOnEscape: undefined,

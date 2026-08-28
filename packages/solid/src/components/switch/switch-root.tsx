@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseSwitchProps, useSwitch } from './use-switch'
-import { SwitchProvider } from './use-switch-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { type UseSwitchProps, useSwitch } from './use-switch.ts'
+import { SwitchProvider } from './use-switch-context.ts'
 
 export interface SwitchRootBaseProps extends UseSwitchProps, PolymorphicProps<'label'> {}
 export interface SwitchRootProps extends HTMLProps<'label'>, SwitchRootBaseProps {}

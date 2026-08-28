@@ -8,7 +8,7 @@ export interface TourActionsProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useTourContext } from './use-tour-context'
+import { useTourContext } from './use-tour-context.ts'
 
 const tour = useTourContext()
 

@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
-import type { RootProps } from './field.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootProps } from './field.types.ts'
 
 export interface FieldRootBaseProps extends RootProps, PolymorphicProps {}
 export interface FieldRootProps
@@ -15,10 +15,10 @@ export interface FieldRootProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useField } from './use-field'
-import { FieldProvider } from './use-field-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useField } from './use-field.ts'
+import { FieldProvider } from './use-field-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<FieldRootProps>(), {
   disabled: undefined,

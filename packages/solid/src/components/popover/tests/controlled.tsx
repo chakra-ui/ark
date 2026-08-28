@@ -1,6 +1,6 @@
+import type { Popover } from '@ark-ui/solid/popover'
 import { createSignal } from 'solid-js'
-import type { Popover } from '..'
-import { ComponentUnderTest } from './basic'
+import { ComponentUnderTest } from './basic.tsx'
 
 export const ControlledComponentUnderTest = (props: Popover.RootProps) => {
   const [open, setOpen] = createSignal(false)

@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './number-input.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './number-input.types.ts'
 
 export interface NumberInputRootBaseProps extends RootProps, PolymorphicProps {}
 export interface NumberInputRootProps
@@ -16,10 +16,10 @@ export interface NumberInputRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useNumberInput } from './use-number-input'
-import { NumberInputProvider } from './use-number-input-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useNumberInput } from './use-number-input.ts'
+import { NumberInputProvider } from './use-number-input-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<NumberInputRootProps>(), {
   allowMouseWheel: undefined,

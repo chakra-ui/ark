@@ -1,9 +1,9 @@
 import * as toggle from '@zag-js/toggle'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, toValue } from 'vue'
-import type { EmitFn } from '../../types'
-import { cleanProps } from '../../utils/clean-props'
-import type { RootEmits } from './toggle.types'
+import type { EmitFn } from '../../types.ts'
+import { cleanProps } from '../../utils/clean-props.ts'
+import type { RootEmits } from './toggle.types.ts'
 
 export interface UseToggleProps extends toggle.Props {}
 

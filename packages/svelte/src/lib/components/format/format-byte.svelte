@@ -21,7 +21,7 @@
 
 <script lang="ts">
   import { formatBytes } from '@zag-js/i18n-utils'
-  import { useLocaleContext } from '../../providers'
+  import { useLocaleContext } from '../../providers/index.ts'
 
   const props: FormatByteProps = $props()
 

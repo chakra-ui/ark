@@ -7,8 +7,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useQrCodeContext } from './use-qr-code-context'
+  import { Ark } from '../factory/index.ts'
+  import { useQrCodeContext } from './use-qr-code-context.ts'
 
   let { ref = $bindable(null), ...props }: QrCodeOverlayProps = $props()
   const qrCode = useQrCodeContext()

@@ -1,7 +1,7 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseImageCropperProps } from './use-image-cropper.svelte'
+  import type { UseImageCropperProps } from './use-image-cropper.svelte.ts'
 
   export interface ImageCropperRootBaseProps extends UseImageCropperProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface ImageCropperRootProps extends Assign<HTMLProps<'div'>, ImageCropperRootBaseProps> {
@@ -11,10 +11,10 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { createSplitProps } from '../../utils/create-split-props'
-  import { Ark } from '../factory'
-  import { ImageCropperProvider } from './use-image-cropper-context'
-  import { useImageCropper } from './use-image-cropper.svelte'
+  import { createSplitProps } from '../../utils/create-split-props.ts'
+  import { Ark } from '../factory/index.ts'
+  import { ImageCropperProvider } from './use-image-cropper-context.ts'
+  import { useImageCropper } from './use-image-cropper.svelte.ts'
 
   let {
     ref = $bindable(null),

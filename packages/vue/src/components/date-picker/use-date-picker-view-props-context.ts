@@ -1,7 +1,9 @@
 import type { ViewProps } from '@zag-js/date-picker'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface DatePickerViewPropsContext extends Required<ViewProps> {}
+
+export const DEFAULT_VIEW_PROPS_CONTEXT: DatePickerViewPropsContext = { view: 'day' }
 
 export const [DatePickerViewPropsProvider, useDatePickerViewPropsContext] =
   createContext<DatePickerViewPropsContext>('DatePickerViewPropsContext')

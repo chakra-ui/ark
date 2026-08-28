@@ -1,6 +1,6 @@
 import { formatNumber } from '@zag-js/i18n-utils'
 import { createMemo } from 'solid-js'
-import { useLocaleContext } from '../../providers'
+import { useLocaleContext } from '../../providers/index.tsx'
 
 export interface FormatNumberProps extends Intl.NumberFormatOptions {
   /**

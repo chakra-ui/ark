@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useFieldContext } from '../field'
-import { useEditableContext } from './use-editable-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useFieldContext } from '../field/index.tsx'
+import { useEditableContext } from './use-editable-context.ts'
 
 export interface EditableInputBaseProps extends PolymorphicProps<'input'> {}
 export interface EditableInputProps extends HTMLProps<'input'>, EditableInputBaseProps {}

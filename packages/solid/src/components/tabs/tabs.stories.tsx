@@ -6,11 +6,11 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
-export { Controlled } from './examples/controlled'
-export { DisabledTab } from './examples/disabled-tab'
-export { Indicator } from './examples/indicator'
-export { LazyMount } from './examples/lazy-mount'
-export { ManualActivation } from './examples/manual-activation'
-export { RootProvider } from './examples/root-provider'
-export { Vertical } from './examples/vertical'
+export { Basic } from './examples/basic.tsx'
+export { Controlled } from './examples/controlled.tsx'
+export { DisabledTab } from './examples/disabled-tab.tsx'
+export { Indicator } from './examples/indicator.tsx'
+export { LazyMount } from './examples/lazy-mount.tsx'
+export { ManualActivation } from './examples/manual-activation.tsx'
+export { RootProvider } from './examples/root-provider.tsx'
+export { Vertical } from './examples/vertical.tsx'

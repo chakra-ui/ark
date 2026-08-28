@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ButtonHTMLAttributes } from 'vue'
-import { useCollapsibleContext } from '../collapsible'
-import type { PolymorphicProps } from '../factory'
+import { useCollapsibleContext } from '../collapsible/index.ts'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface AccordionItemTriggerBaseProps extends PolymorphicProps {}
 export interface AccordionItemTriggerProps
@@ -14,11 +14,11 @@ export interface AccordionItemTriggerProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
 import { computed } from 'vue'
-import { useAccordionContext } from './use-accordion-context'
-import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
+import { useAccordionContext } from './use-accordion-context.ts'
+import { useAccordionItemPropsContext } from './use-accordion-item-props-context.ts'
 
 defineProps<AccordionItemTriggerProps>()
 const accordion = useAccordionContext()

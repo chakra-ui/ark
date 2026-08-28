@@ -19,8 +19,8 @@ export {
   type QrCodeRootEmits,
   type QrCodeRootProps,
 } from './qr-code-root.vue'
-export { qrCodeAnatomy } from './qr-code.anatomy'
-export { useQrCode, type UseQrCodeProps, type UseQrCodeReturn } from './use-qr-code'
-export { useQrCodeContext, type UseQrCodeContext } from './use-qr-code-context'
+export { qrCodeAnatomy } from './qr-code.anatomy.ts'
+export { useQrCode, type UseQrCodeProps, type UseQrCodeReturn } from './use-qr-code.ts'
+export { useQrCodeContext, type UseQrCodeContext } from './use-qr-code-context.ts'
 
-export * as QrCode from './qr-code'
+export * as QrCode from './qr-code.ts'

@@ -1,6 +1,7 @@
 export type {
   OpenChangeDetails as DrawerOpenChangeDetails,
   SnapPointChangeDetails as DrawerSnapPointChangeDetails,
+  TriggerValueChangeDetails as DrawerTriggerValueChangeDetails,
 } from '@zag-js/drawer'
 export {
   default as DrawerBackdrop,
@@ -13,6 +14,11 @@ export {
   type DrawerCloseTriggerProps,
 } from './drawer-close-trigger.vue'
 export { default as DrawerContent, type DrawerContentBaseProps, type DrawerContentProps } from './drawer-content.vue'
+export {
+  default as DrawerDescription,
+  type DrawerDescriptionBaseProps,
+  type DrawerDescriptionProps,
+} from './drawer-description.vue'
 export { default as DrawerContext, type DrawerContextProps } from './drawer-context.vue'
 export {
   default as DrawerPositioner,
@@ -38,11 +44,16 @@ export {
   type DrawerRootProviderProps,
 } from './drawer-root-provider.vue'
 export { default as DrawerStack, type DrawerStackProps } from './drawer-stack.vue'
+export {
+  default as DrawerSwipeArea,
+  type DrawerSwipeAreaBaseProps,
+  type DrawerSwipeAreaProps,
+} from './drawer-swipe-area.vue'
 export { default as DrawerTitle, type DrawerTitleBaseProps, type DrawerTitleProps } from './drawer-title.vue'
 export { default as DrawerTrigger, type DrawerTriggerBaseProps, type DrawerTriggerProps } from './drawer-trigger.vue'
-export { drawerAnatomy } from './drawer.anatomy'
-export { useDrawer, type UseDrawerProps, type UseDrawerReturn } from './use-drawer'
-export { useDrawerContext, type UseDrawerContext } from './use-drawer-context'
-export { useDrawerStackContext, type UseDrawerStackContext } from './use-drawer-stack-context'
+export { drawerAnatomy } from './drawer.anatomy.ts'
+export { useDrawer, type UseDrawerProps, type UseDrawerReturn } from './use-drawer.ts'
+export { useDrawerContext, type UseDrawerContext } from './use-drawer-context.ts'
+export { useDrawerStackContext, type UseDrawerStackContext } from './use-drawer-stack-context.ts'
 
-export * as Drawer from './drawer'
+export * as Drawer from './drawer.ts'

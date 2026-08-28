@@ -1,10 +1,12 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseNumberInputProps, useNumberInput } from './use-number-input'
-import { NumberInputProvider } from './use-number-input-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { type UseNumberInputProps, useNumberInput } from './use-number-input.ts'
+import { NumberInputProvider } from './use-number-input-context.ts'
 
 export interface NumberInputRootBaseProps extends UseNumberInputProps, PolymorphicProps {}
 export interface NumberInputRootProps extends Assign<HTMLProps<'div'>, NumberInputRootBaseProps> {}
@@ -25,6 +27,7 @@ export const NumberInputRoot = forwardRef<HTMLDivElement, NumberInputRootProps>(
     'ids',
     'inputMode',
     'invalid',
+    'largeStep',
     'locale',
     'max',
     'min',
@@ -36,6 +39,7 @@ export const NumberInputRoot = forwardRef<HTMLDivElement, NumberInputRootProps>(
     'pattern',
     'readOnly',
     'required',
+    'smallStep',
     'spinOnPress',
     'step',
     'translations',

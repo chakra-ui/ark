@@ -1,5 +1,5 @@
 import { Field } from '@ark-ui/react/field'
-import { TagsInput } from '../'
+import { TagsInput } from '@ark-ui/react/tags-input'
 
 export const ComponentUnderTest = (props: TagsInput.RootProps) => {
   return (

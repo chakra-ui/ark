@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './slider.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './slider.types.ts'
 
 export interface SliderRootBaseProps extends RootProps, PolymorphicProps {}
 export interface SliderRootProps
@@ -16,10 +16,10 @@ export interface SliderRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useSlider } from './use-slider'
-import { SliderProvider } from './use-slider-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useSlider } from './use-slider.ts'
+import { SliderProvider } from './use-slider-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<SliderRootProps>(), {
   disabled: undefined,

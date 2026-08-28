@@ -13,6 +13,11 @@ import NumberWithPercentageExample from './examples/number-with-percentage.svelt
 import NumberWithUnitExample from './examples/number-with-unit.svelte'
 import RelativeTimeBasicExample from './examples/relative-time-basic.svelte'
 import RelativeTimeShortExample from './examples/relative-time-short.svelte'
+import TimeWithAmPmLabelsExample from './examples/time-with-am-pm-labels.svelte'
+import TimeBasicExample from './examples/time-basic.svelte'
+import TimeWithDateExample from './examples/time-with-date.svelte'
+import TimeWithLocaleExample from './examples/time-with-locale.svelte'
+import TimeWithSecondsExample from './examples/time-with-seconds.svelte'
 
 const meta = {
   title: 'Utilities / Format',
@@ -101,5 +106,35 @@ export const RelativeTimeBasic = {
 export const RelativeTimeShort = {
   render: () => ({
     Component: RelativeTimeShortExample,
+  }),
+}
+
+export const TimeBasic = {
+  render: () => ({
+    Component: TimeBasicExample,
+  }),
+}
+
+export const TimeWithDate = {
+  render: () => ({
+    Component: TimeWithDateExample,
+  }),
+}
+
+export const TimeWithSeconds = {
+  render: () => ({
+    Component: TimeWithSecondsExample,
+  }),
+}
+
+export const TimeWithAmPmLabels = {
+  render: () => ({
+    Component: TimeWithAmPmLabelsExample,
+  }),
+}
+
+export const TimeWithLocale = {
+  render: () => ({
+    Component: TimeWithLocaleExample,
   }),
 }

@@ -1,3 +1,5 @@
+'use client'
+
 import { type JsonNode, keyPathToKey } from '@zag-js/json-tree-utils'
 
 interface JsonTreeViewKeyNodeProps {

@@ -22,6 +22,11 @@
         "isRequired": false,
         "description": "Element to focus when trap is activated. By default, focuses on first tabbable element"
       },
+      "persistentElements": {
+        "type": "(() => Element | null)[]",
+        "isRequired": false,
+        "description": "Additional elements to treat as part of the trap, for portalled content that isn't\nreachable via `aria-controls`/`aria-expanded`"
+      },
       "returnFocusOnDeactivate": {
         "type": "boolean",
         "defaultValue": "true",

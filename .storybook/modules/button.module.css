@@ -4,7 +4,8 @@
   justify-content: center;
   gap: 0.5rem;
   padding-inline: 1rem;
-  padding-block: 0.5rem;
+  min-height: 2.5rem;
+  min-width: 2.5rem;
   font-size: 0.875rem;
   font-weight: 500;
   font-family: inherit;
@@ -19,6 +20,7 @@
     color 150ms;
 
   & svg {
+    flex-shrink: 0;
     width: 1em;
     height: 1em;
   }

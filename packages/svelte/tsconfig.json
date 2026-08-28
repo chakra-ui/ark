@@ -11,6 +11,7 @@
     "strict": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "types": ["vitest/globals"],
     "isolatedModules": true,
     "noPropertyAccessFromIndexSignature": false

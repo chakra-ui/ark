@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/navigation-menu'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface NavigationMenuItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface NavigationMenuItemProps
@@ -15,10 +15,10 @@ export interface NavigationMenuItemProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { useNavigationMenuContext } from './use-navigation-menu-context'
-import { NavigationMenuItemPropsProvider } from './use-navigation-menu-item-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
+import { NavigationMenuItemPropsProvider } from './use-navigation-menu-item-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<NavigationMenuItemProps>()
 const navigationMenu = useNavigationMenuContext()

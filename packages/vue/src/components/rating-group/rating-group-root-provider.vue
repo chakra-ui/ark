@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseRatingGroupReturn } from './use-rating-group'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseRatingGroupReturn } from './use-rating-group.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseRatingGroupReturn>
@@ -19,9 +19,9 @@ export interface RatingGroupRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { RatingGroupProvider } from './use-rating-group-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { RatingGroupProvider } from './use-rating-group-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<RatingGroupRootProviderProps>()
 const ratingGroup = computed(() => props.value)

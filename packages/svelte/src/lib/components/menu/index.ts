@@ -5,6 +5,7 @@ export type {
   OpenChangeDetails as MenuOpenChangeDetails,
   PointerDownOutsideEvent as MenuPointerDownOutsideEvent,
   SelectionDetails as MenuSelectionDetails,
+  TriggerValueChangeDetails as MenuTriggerValueChangeDetails,
 } from '@zag-js/menu'
 export { default as MenuArrowTip, type MenuArrowTipBaseProps, type MenuArrowTipProps } from './menu-arrow-tip.svelte'
 export { default as MenuArrow, type MenuArrowBaseProps, type MenuArrowProps } from './menu-arrow.svelte'
@@ -67,10 +68,10 @@ export {
   type MenuTriggerItemProps,
 } from './menu-trigger-item.svelte'
 export { default as MenuTrigger, type MenuTriggerBaseProps, type MenuTriggerProps } from './menu-trigger.svelte'
-export { menuAnatomy } from './menu.anatomy'
-export { useMenuContext, type UseMenuContext } from './use-menu-context'
-export { useMenuItemContext, type UseMenuItemContext } from './use-menu-item-context'
-export type { ValueChangeDetails as MenuValueChangeDetails } from './use-menu-item-group-context'
-export { useMenu, type UseMenuProps, type UseMenuReturn } from './use-menu.svelte'
+export { menuAnatomy } from './menu.anatomy.ts'
+export { useMenuContext, type UseMenuContext } from './use-menu-context.ts'
+export { useMenuItemContext, type UseMenuItemContext } from './use-menu-item-context.ts'
+export type { ValueChangeDetails as MenuValueChangeDetails } from './use-menu-item-group-context.ts'
+export { useMenu, type UseMenuProps, type UseMenuReturn } from './use-menu.svelte.ts'
 
-export * as Menu from './menu'
+export * as Menu from './menu.ts'

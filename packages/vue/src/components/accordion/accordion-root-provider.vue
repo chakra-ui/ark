@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { RenderStrategyProps } from '../../utils/use-render-strategy'
-import type { PolymorphicProps } from '../factory'
-import type { UseAccordionReturn } from './use-accordion'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseAccordionReturn } from './use-accordion.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseAccordionReturn>
@@ -20,10 +20,10 @@ export interface AccordionRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { AccordionProvider } from './use-accordion-context'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { AccordionProvider } from './use-accordion-context.ts'
 
 const props = defineProps<AccordionRootProviderProps>()
 const accordion = computed(() => props.value)

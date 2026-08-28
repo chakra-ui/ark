@@ -1,6 +1,6 @@
 import type { JSX } from 'solid-js'
-import { type UseSelectContext, useSelectContext } from './use-select-context'
-import type { CollectionItem } from '../collection'
+import { type UseSelectContext, useSelectContext } from './use-select-context.ts'
+import type { CollectionItem } from '../collection/index.tsx'
 
 export interface SelectContextProps<T extends CollectionItem> {
   children: (context: UseSelectContext<T>) => JSX.Element

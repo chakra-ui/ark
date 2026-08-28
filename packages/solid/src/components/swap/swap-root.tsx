@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
 import { splitProps } from 'solid-js'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseSwapProps, useSwap } from './use-swap'
-import { SwapProvider } from './use-swap-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { type UseSwapProps, useSwap } from './use-swap.ts'
+import { SwapProvider } from './use-swap-context.ts'
 
 export interface SwapRootBaseProps extends UseSwapProps, PolymorphicProps<'span'> {}
 

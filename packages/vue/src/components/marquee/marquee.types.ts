@@ -78,4 +78,8 @@ export type RootEmits = {
    * Function called when the pause status changes.
    */
   pauseChange: [details: marquee.PauseStatusDetails]
+  /**
+   * The callback fired when the paused state changes.
+   */
+  'update:paused': [paused: boolean]
 }

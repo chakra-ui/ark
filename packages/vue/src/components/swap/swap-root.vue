@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
-import type { RootProps } from './swap.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootProps } from './swap.types.ts'
 
 export interface SwapRootBaseProps extends RootProps, PolymorphicProps {}
 export interface SwapRootProps
@@ -17,10 +17,10 @@ export interface SwapRootProps
 <script setup lang="ts">
 import { computed } from 'vue'
 import { mergeProps } from '@zag-js/vue'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { useSwap } from './use-swap'
-import { SwapProvider } from './use-swap-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { useSwap } from './use-swap.ts'
+import { SwapProvider } from './use-swap-context.ts'
 
 const props = withDefaults(defineProps<SwapRootProps>(), {
   swap: undefined,

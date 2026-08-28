@@ -6,7 +6,7 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
-export { Controlled } from './examples/controlled'
-export { RootProvider } from './examples/root-provider'
-export { Vertical } from './examples/vertical'
+export { Basic } from './examples/basic.tsx'
+export { Controlled } from './examples/controlled.tsx'
+export { RootProvider } from './examples/root-provider.tsx'
+export { Vertical } from './examples/vertical.tsx'

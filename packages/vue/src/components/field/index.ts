@@ -10,6 +10,7 @@ export {
   type FieldHelperTextProps,
 } from './field-helper-text.vue'
 export { default as FieldInput, type FieldInputBaseProps, type FieldInputProps } from './field-input.vue'
+export { default as FieldItem, type FieldItemBaseProps, type FieldItemProps } from './field-item.vue'
 export { default as FieldLabel, type FieldLabelBaseProps, type FieldLabelProps } from './field-label.vue'
 export {
   default as FieldRequiredIndicator,
@@ -24,8 +25,8 @@ export {
 export { default as FieldRoot, type FieldRootBaseProps, type FieldRootProps } from './field-root.vue'
 export { default as FieldSelect, type FieldSelectBaseProps, type FieldSelectProps } from './field-select.vue'
 export { default as FieldTextarea, type FieldTextareaBaseProps, type FieldTextareaProps } from './field-textarea.vue'
-export { fieldAnatomy } from './field.anatomy'
-export { useField, type UseFieldProps, type UseFieldReturn } from './use-field'
-export { useFieldContext, type UseFieldContext } from './use-field-context'
+export { fieldAnatomy } from './field.anatomy.ts'
+export { useField, type UseFieldProps, type UseFieldReturn } from './use-field.ts'
+export { useFieldContext, type UseFieldContext } from './use-field-context.ts'
 
-export * as Field from './field'
+export * as Field from './field.ts'

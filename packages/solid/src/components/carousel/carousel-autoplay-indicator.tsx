@@ -1,7 +1,7 @@
 import { Show, type JSX } from 'solid-js'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { carouselAnatomy } from './carousel.anatomy'
-import { useCarouselContext } from './use-carousel-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { carouselAnatomy } from './carousel.anatomy.ts'
+import { useCarouselContext } from './use-carousel-context.ts'
 
 const parts = carouselAnatomy.build()
 

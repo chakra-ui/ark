@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/combobox'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ComboboxItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface ComboboxItemProps
@@ -14,12 +14,12 @@ export interface ComboboxItemProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
+import { ark } from '../factory.ts'
 import { computed } from 'vue'
-import { useComboboxContext } from './use-combobox-context'
-import { ComboboxItemProvider } from './use-combobox-item-context'
-import { ComboboxItemPropsProvider } from './use-combobox-item-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { useComboboxContext } from './use-combobox-context.ts'
+import { ComboboxItemProvider } from './use-combobox-item-context.ts'
+import { ComboboxItemPropsProvider } from './use-combobox-item-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<ComboboxItemProps>()
 const combobox = useComboboxContext()

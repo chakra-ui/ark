@@ -92,6 +92,7 @@
         "isRequired": false,
         "description": "The name of the signature pad. Useful for form submission."
       },
+      "paths": { "type": "string[]", "isRequired": false, "description": "The controlled paths of the signature pad." },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the signature pad is read-only." },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the signature pad is required." },
       "translations": {

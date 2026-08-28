@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
-import { composeRefs } from '../../utils/compose-refs'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { splitPresenceProps } from './split-presence-props'
-import { type UsePresenceProps, usePresence } from './use-presence'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { splitPresenceProps } from './split-presence-props.ts'
+import { type UsePresenceProps, usePresence } from './use-presence.ts'
 
 export interface PresenceBaseProps extends UsePresenceProps, PolymorphicProps<'div'> {}
 export interface PresenceProps extends HTMLProps<'div'>, PresenceBaseProps {}

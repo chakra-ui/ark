@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseRadioGroupContext } from './use-radio-group-context'
+import type { UseRadioGroupContext } from './use-radio-group-context.ts'
 
 export interface RadioGroupContextProps extends SlotsType<{
   default: UnwrapRef<UseRadioGroupContext>
@@ -8,7 +8,7 @@ export interface RadioGroupContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useRadioGroupContext } from './use-radio-group-context'
+import { useRadioGroupContext } from './use-radio-group-context.ts'
 
 const radioGroup = useRadioGroupContext()
 

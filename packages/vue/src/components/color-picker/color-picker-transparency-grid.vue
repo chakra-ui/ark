@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { TransparencyGridProps } from '@zag-js/color-picker'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ColorPickerTransparencyGridBaseProps extends TransparencyGridProps, PolymorphicProps {}
 export interface ColorPickerTransparencyGridProps
@@ -14,9 +14,9 @@ export interface ColorPickerTransparencyGridProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useColorPickerContext } from './use-color-picker-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useColorPickerContext } from './use-color-picker-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<ColorPickerTransparencyGridProps>()
 const colorPicker = useColorPickerContext()

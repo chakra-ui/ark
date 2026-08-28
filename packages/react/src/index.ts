@@ -1,4 +1,4 @@
-export * from './components'
-export * from './providers'
-export * from './utils'
-export type { Assign, Optional } from './types'
+export * from './components/index.ts'
+export * from './providers/index.ts'
+export * from './utils/index.ts'
+export type { Assign, Optional } from './types.ts'

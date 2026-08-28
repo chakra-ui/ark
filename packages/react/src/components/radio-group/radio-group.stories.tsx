@@ -6,10 +6,10 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
-export { Controlled } from './examples/controlled'
-export { Disabled } from './examples/disabled'
-export { InitialValue } from './examples/initial-value'
-export { Orientation } from './examples/orientation'
-export { RootProvider } from './examples/root-provider'
-export { WithFieldset } from './examples/with-fieldset'
+export { Basic } from './examples/basic.tsx'
+export { Controlled } from './examples/controlled.tsx'
+export { Disabled } from './examples/disabled.tsx'
+export { InitialValue } from './examples/initial-value.tsx'
+export { Orientation } from './examples/orientation.tsx'
+export { RootProvider } from './examples/root-provider.tsx'
+export { WithFieldset } from './examples/with-fieldset.tsx'

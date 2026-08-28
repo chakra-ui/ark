@@ -79,6 +79,11 @@
         "description": "Whether the tree supports multiple selection\n- \"single\": only one node can be selected\n- \"multiple\": multiple nodes can be selected"
       },
       "showNonenumerable": { "type": "boolean", "isRequired": false },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+      },
       "typeahead": {
         "type": "boolean",
         "defaultValue": "true",
@@ -95,7 +100,10 @@
   },
   "JsonTreeViewRootProvider": {
     "props": {
-      "value": { "type": "TreeViewApi<PropTypes, JsonNode<any>>", "isRequired": true },
+      "value": {
+        "type": "TreeViewApi<PropTypes, JsonNode<any>> & { options: JsonTreeViewOptions }",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

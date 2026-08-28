@@ -1,5 +1,7 @@
-import { createContext } from '../../utils/create-context'
-import type { UseCarouselReturn } from './use-carousel'
+'use client'
+
+import { createContext } from '../../utils/create-context.ts'
+import type { UseCarouselReturn } from './use-carousel.ts'
 
 export interface UseCarouselContext extends UseCarouselReturn {}
 

@@ -4,7 +4,7 @@ import { runIfFn } from '$lib/utils/run-if-fn'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import * as tagsInput from '@zag-js/tags-input'
 import { type MaybeFunction, ensureProps } from '@zag-js/utils'
-import { useFieldContext } from '../field'
+import { useFieldContext } from '../field/index.ts'
 
 export interface UseTagsInputProps extends Optional<Omit<tagsInput.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseTagsInputReturn extends Accessor<tagsInput.Api<PropTypes>> {}
@@ -22,15 +22,15 @@ export const useTagsInput = (inProps: MaybeFunction<UseTagsInputProps> = {}): Us
 
   const machineProps = $derived<UseTagsInputProps>({
     ids: {
-      label: field?.().ids.label,
-      hiddenInput: field?.().ids.control,
+      label: field?.()?.ids.label,
+      hiddenInput: field?.()?.ids.control,
     },
     // @ts-expect-error - TODO: dir is not a valid prop
     dir: locale().dir,
-    disabled: field?.().disabled,
-    invalid: field?.().invalid,
-    readOnly: field?.().readOnly,
-    required: field?.().required,
+    disabled: field?.()?.disabled,
+    invalid: field?.()?.invalid,
+    readOnly: field?.()?.readOnly,
+    required: field?.()?.required,
     getRootNode: env().getRootNode,
     ...props,
   })

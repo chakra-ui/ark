@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseComboboxContext } from './use-combobox-context'
+import type { UseComboboxContext } from './use-combobox-context.ts'
 
 export interface ComboboxContextProps extends SlotsType<{
   default: UnwrapRef<UseComboboxContext>
@@ -8,7 +8,7 @@ export interface ComboboxContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useComboboxContext } from './use-combobox-context'
+import { useComboboxContext } from './use-combobox-context.ts'
 
 const combobox = useComboboxContext()
 

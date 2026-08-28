@@ -1,0 +1,47 @@
+---
+id: format-time
+title: Format Time
+description: Used to format time values to a specific locale and options
+---
+
+<ComponentPreview id="FormatTime" />
+
+## Usage
+
+The time formatting logic supports both string (`HH:mm[:ss]`) and `Date` inputs.
+
+```jsx
+import { Format } from '@ark-ui/react'
+```
+
+## Examples
+
+### Basic
+
+Use the `Format.Time` component to format a time value with default options.
+
+<Example component="format" id="time-basic" />
+
+### Date
+
+Use a `Date` object as the `value`.
+
+<Example component="format" id="time-with-date" />
+
+### Seconds
+
+Use the `withSeconds` prop to include seconds in the output.
+
+<Example component="format" id="time-with-seconds" />
+
+### AM/PM Labels
+
+Use `amLabel` and `pmLabel` to customize day-period labels when using 12-hour format.
+
+<Example component="format" id="time-with-am-pm-labels" />
+
+### Locale
+
+Use the locale provider to format the time according to a specific locale.
+
+<Example component="format" id="time-with-locale" />

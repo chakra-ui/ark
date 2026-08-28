@@ -117,7 +117,8 @@ import { Show } from 'solid-js'
 
 #### Native Elements: Use `ark` Factory
 
-In Solid components, **always use `ark.<element>` instead of native HTML elements** (e.g., `<div>`, `<span>`, `<button>`):
+In Solid components, **always use `ark.<element>` instead of native HTML elements** (e.g., `<div>`, `<span>`,
+`<button>`):
 
 ```tsx
 import { ark } from '../factory'

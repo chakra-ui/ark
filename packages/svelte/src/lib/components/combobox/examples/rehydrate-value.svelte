@@ -2,7 +2,7 @@
   import { Combobox, useCombobox, useListCollection } from '@ark-ui/svelte/combobox'
   import { Portal } from '@ark-ui/svelte/portal'
   import styles from 'styles/combobox.module.css'
-  import { useAsync } from './use-async.svelte'
+  import { useAsync } from './use-async.svelte.ts'
 
   interface Character {
     name: string

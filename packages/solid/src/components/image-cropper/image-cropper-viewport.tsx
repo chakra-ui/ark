@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useImageCropperContext } from './use-image-cropper-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useImageCropperContext } from './use-image-cropper-context.ts'
 
 export interface ImageCropperViewportBaseProps extends PolymorphicProps<'div'> {}
 export interface ImageCropperViewportProps extends HTMLProps<'div'>, ImageCropperViewportBaseProps {}

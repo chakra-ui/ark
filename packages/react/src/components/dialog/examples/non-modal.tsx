@@ -8,7 +8,6 @@ export const NonModal = () => (
   <Dialog.Root modal={false}>
     <Dialog.Trigger className={button.Root}>Open Non-Modal Dialog</Dialog.Trigger>
     <Portal>
-      <Dialog.Backdrop className={styles.Backdrop} />
       <Dialog.Positioner className={styles.Positioner}>
         <Dialog.Content className={styles.Content}>
           <Dialog.CloseTrigger className={styles.CloseTrigger}>

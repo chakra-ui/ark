@@ -3,6 +3,7 @@ import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import ContextExample from './examples/context.svelte'
 import DelayExample from './examples/delay.svelte'
+import MultipleTriggersExample from './examples/multiple-triggers.svelte'
 import PositioningExample from './examples/positioning.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 
@@ -27,6 +28,12 @@ export const Controlled = {
 export const Delay = {
   render: () => ({
     Component: DelayExample,
+  }),
+}
+
+export const MultipleTriggers = {
+  render: () => ({
+    Component: MultipleTriggersExample,
   }),
 }
 

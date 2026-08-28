@@ -1,5 +1,5 @@
-import { createContext } from '../../utils/create-context'
-import type { UsePopoverReturn } from './use-popover'
+import { createContext } from '../../utils/create-context.ts'
+import type { UsePopoverReturn } from './use-popover.ts'
 
 export interface UsePopoverContext extends UsePopoverReturn {}
 

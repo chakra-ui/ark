@@ -294,6 +294,13 @@
     }
   },
   "RootProvider": {
+    "emits": {
+      "exitComplete": {
+        "type": "[]",
+        "isRequired": true,
+        "description": "Function called when the animation ends in the closed state"
+      }
+    },
     "props": {
       "value": { "type": "ComboboxApi<PropTypes, T>", "isRequired": true },
       "asChild": {

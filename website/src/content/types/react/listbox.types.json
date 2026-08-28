@@ -7,7 +7,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Empty": {
     "props": {
@@ -17,7 +18,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Input": {
     "props": {
@@ -31,9 +33,16 @@
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to automatically highlight the item when typing"
+      },
+      "keyboardPriority": {
+        "type": "'caret' | 'navigate'",
+        "defaultValue": "\"caret\"",
+        "isRequired": false,
+        "description": "Determines how keyboard conflicts in the input are resolved.\n- \"caret\": keep native text-editing behavior\n- \"navigate\": forward supported keys to listbox navigation"
       }
     },
-    "element": "HTMLInputElement"
+    "element": "HTMLInputElement",
+    "tag": "input"
   },
   "ItemGroupLabel": {
     "props": {
@@ -43,7 +52,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "ItemGroup": {
     "props": {
@@ -53,7 +63,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "ItemIndicator": {
     "props": {
@@ -63,7 +74,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Item": {
     "props": {
@@ -77,9 +89,14 @@
         "isRequired": false,
         "description": "Whether to highlight the item on hover"
       },
-      "item": { "type": "any", "isRequired": false, "description": "The item to render" }
+      "item": {
+        "type": "any",
+        "isRequired": false,
+        "description": "The item to render"
+      }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "ItemText": {
     "props": {
@@ -89,7 +106,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Label": {
     "props": {
@@ -99,11 +117,16 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLLabelElement"
+    "element": "HTMLSpanElement",
+    "tag": "span"
   },
   "Root": {
     "props": {
-      "collection": { "type": "ListCollection<T>", "isRequired": true, "description": "The collection of items" },
+      "collection": {
+        "type": "ListCollection<T>",
+        "isRequired": true,
+        "description": "The collection of items"
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -120,8 +143,16 @@
         "isRequired": false,
         "description": "The initial default value of the listbox when rendered.\nUse when you don't need to control the value of the listbox."
       },
-      "deselectable": { "type": "boolean", "isRequired": false, "description": "Whether to disallow empty selection" },
-      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the listbox is disabled" },
+      "deselectable": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to disallow empty selection"
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the listbox is disabled"
+      },
       "disallowSelectAll": {
         "type": "boolean",
         "isRequired": false,
@@ -132,7 +163,11 @@
         "isRequired": false,
         "description": "The controlled key of the highlighted item"
       },
-      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
       "ids": {
         "type": "Partial<{\n  root: string\n  content: string\n  label: string\n  item: (id: string | number) => string\n  itemGroup: (id: string | number) => string\n  itemGroupLabel: (id: string | number) => string\n}>",
         "isRequired": false,
@@ -186,18 +221,27 @@
         "isRequired": false,
         "description": "Whether to enable typeahead on the listbox"
       },
-      "value": { "type": "string[]", "isRequired": false, "description": "The controlled keys of the selected items" }
-    }
+      "value": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The controlled keys of the selected items"
+      }
+    },
+    "tag": "div"
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseListboxReturn<T>", "isRequired": true },
+      "value": {
+        "type": "UseListboxReturn<T>",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "tag": "div"
   },
   "ValueText": {
     "props": {
@@ -212,6 +256,7 @@
         "description": "Text to display when no value is listboxed."
       }
     },
-    "element": "HTMLSpanElement"
+    "element": "HTMLSpanElement",
+    "tag": "span"
   }
 }

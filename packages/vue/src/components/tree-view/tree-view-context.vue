@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { TreeNode } from '../collection'
-import type { UseTreeViewContext } from './use-tree-view-context'
+import type { TreeNode } from '../collection/index.ts'
+import type { UseTreeViewContext } from './use-tree-view-context.ts'
 
 export interface TreeViewContextProps<T extends TreeNode> extends SlotsType<{
   default: UnwrapRef<UseTreeViewContext<T>>
@@ -9,7 +9,7 @@ export interface TreeViewContextProps<T extends TreeNode> extends SlotsType<{
 </script>
 
 <script setup lang="ts" generic="T extends TreeNode">
-import { useTreeViewContext } from './use-tree-view-context'
+import { useTreeViewContext } from './use-tree-view-context.ts'
 
 const treeView = useTreeViewContext()
 

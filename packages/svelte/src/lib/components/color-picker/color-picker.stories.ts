@@ -3,6 +3,7 @@ import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import DisabledExample from './examples/disabled.svelte'
 import InlineExample from './examples/inline.svelte'
+import InsideDialogExample from './examples/inside-dialog.svelte'
 import InputOnlyExample from './examples/input-only.svelte'
 import OpenControlledExample from './examples/open-controlled.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
@@ -39,6 +40,12 @@ export const Disabled = {
 export const Inline = {
   render: () => ({
     Component: InlineExample,
+  }),
+}
+
+export const InsideDialog = {
+  render: () => ({
+    Component: InsideDialogExample,
   }),
 }
 

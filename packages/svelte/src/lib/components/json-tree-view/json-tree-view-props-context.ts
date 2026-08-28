@@ -1,5 +1,5 @@
 import type { JsonNodePreviewOptions } from '@zag-js/json-tree-utils'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface JsonTreeViewOptions extends Partial<JsonNodePreviewOptions> {
   /**

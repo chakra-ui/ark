@@ -10,10 +10,10 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context'
-  import { useColorPickerContext } from './use-color-picker-context'
-  import { useColorPickerFormatPropsContext } from './use-color-picker-format-context'
+  import { Ark } from '../factory/index.ts'
+  import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context.ts'
+  import { useColorPickerContext } from './use-color-picker-context.ts'
+  import { useColorPickerFormatPropsContext } from './use-color-picker-format-context.ts'
 
   let { ref = $bindable(null), ...props }: ColorPickerChannelSliderThumbProps = $props()
 

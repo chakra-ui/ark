@@ -26,6 +26,11 @@
         "description": "If `true`, the checkbox group is disabled"
       },
       "invalid": { "type": "boolean", "isRequired": false, "description": "If `true`, the checkbox group is invalid" },
+      "maxSelectedValues": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The maximum number of selected values"
+      },
       "modelValue": {
         "type": "string[]",
         "isRequired": false,
@@ -46,7 +51,7 @@
   "GroupProvider": {
     "props": {
       "value": {
-        "type": "{ isChecked: (val: string | undefined) => boolean; value: string[]; name: string | undefined; disabled: boolean | undefined; readOnly: boolean | undefined; invalid: boolean | undefined; addValue: (val: string) => void; setValue: (value: string[]) => void; toggleValue: (val: string) => void; getItemProps: (itemProps:...",
+        "type": "{ isChecked: (val: string | undefined) => boolean; value: string[]; name: string | undefined; disabled: boolean; readOnly: boolean | undefined; invalid: boolean | undefined; addValue: (val: string) => void; setValue: (value: string[]) => void; toggleValue: (val: string) => void; getItemProps: (itemProps: CheckboxGro...",
         "isRequired": true
       },
       "asChild": {

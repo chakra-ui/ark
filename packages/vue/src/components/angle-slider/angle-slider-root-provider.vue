@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseAngleSliderReturn } from './use-angle-slider'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseAngleSliderReturn } from './use-angle-slider.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseAngleSliderReturn>
@@ -19,9 +19,9 @@ export interface AngleSliderRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { AngleSliderProvider } from './use-angle-slider-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { AngleSliderProvider } from './use-angle-slider-context.ts'
 
 const props = defineProps<AngleSliderRootProviderProps>()
 const angleSlider = computed(() => props.value)

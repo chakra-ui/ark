@@ -10,9 +10,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useSegmentGroupContext } from './use-segment-group-context'
-  import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
+  import { Ark } from '../factory/index.ts'
+  import { useSegmentGroupContext } from './use-segment-group-context.ts'
+  import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context.ts'
 
   let { ref = $bindable(null), ...props }: SegmentGroupItemHiddenInputProps = $props()
   const segmentGroup = useSegmentGroupContext()

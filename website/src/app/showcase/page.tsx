@@ -2,17 +2,16 @@ import { showcases } from '.velite'
 import type { Metadata } from 'next'
 import { Box, Container, Grid, Stack } from 'styled-system/jsx'
 import { Footer } from '~/components/marketing/footer'
-import { Navbar } from '~/components/navigation/navbar'
+import { Navbar } from '~/components/marketing/navbar'
 import { ShowcaseCard } from '~/components/showcase-card'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 
 export const metadata: Metadata = {
-  title: 'Showcase - Ark UI',
+  title: 'Showcase',
   description:
     'See how our headless components power modern teams building exceptional digital experiences with Ark UI.',
   openGraph: {
-    title: 'Showcase - Ark UI',
     description:
       'See how our headless components power modern teams building exceptional digital experiences with Ark UI.',
     url: 'https://ark-ui.com/showcase',
@@ -23,7 +22,7 @@ export default function Page() {
   return (
     <Box minH="100vh">
       <Navbar />
-      <Container pt={{ base: '32', md: '40' }} pb="20">
+      <Container pt={{ base: '16', md: '24' }} pb="20">
         <Stack gap={{ base: '12', md: '16' }}>
           <Stack>
             <Text textStyle={{ base: 'sm', md: 'md' }} fontWeight="medium" color="colorPalette.default">

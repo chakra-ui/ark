@@ -1,11 +1,11 @@
 import * as fileUpload from '@zag-js/file-upload'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
-import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { EmitFn, Optional } from '../../types'
-import { cleanProps } from '../../utils/clean-props'
-import { useFieldContext } from '../field'
-import type { RootEmits } from './file-upload'
+import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { EmitFn, Optional } from '../../types.ts'
+import { cleanProps } from '../../utils/clean-props.ts'
+import { useFieldContext } from '../field/index.ts'
+import type { RootEmits } from './file-upload.ts'
 
 export interface UseFileUploadProps extends Optional<Omit<fileUpload.Props, 'dir' | 'getRootNode'>, 'id'> {}
 

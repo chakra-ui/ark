@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show, splitProps } from 'solid-js'
-import { composeRefs } from '../../utils/compose-refs'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useSwapContext } from './use-swap-context'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useSwapContext } from './use-swap-context.ts'
 
 export interface SwapIndicatorBaseProps extends PolymorphicProps<'span'> {
   type: 'on' | 'off'

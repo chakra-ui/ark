@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface FloatingPanelCloseTriggerBaseProps extends PolymorphicProps {}
 export interface FloatingPanelCloseTriggerProps
@@ -13,9 +13,9 @@ export interface FloatingPanelCloseTriggerProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useFloatingPanelContext } from './use-floating-panel-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useFloatingPanelContext } from './use-floating-panel-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<FloatingPanelCloseTriggerProps>()
 const floatingPanel = useFloatingPanelContext()

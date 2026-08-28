@@ -1,12 +1,14 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import { type JSX, forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import type { CollectionItem } from '../collection'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
-import { type UseSelectProps, useSelect } from './use-select'
-import { SelectProvider } from './use-select-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import type { CollectionItem } from '../collection/index.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.ts'
+import { type UseSelectProps, useSelect } from './use-select.ts'
+import { SelectProvider } from './use-select-context.ts'
 
 export interface SelectRootBaseProps<T extends CollectionItem>
   extends UseSelectProps<T>, UsePresenceProps, PolymorphicProps {}
@@ -43,6 +45,7 @@ const SelectImpl = <T extends CollectionItem>(props: SelectRootProps<T>, ref: Re
     'readOnly',
     'required',
     'scrollToIndexFn',
+    'translations',
     'autoComplete',
     'value',
   ])

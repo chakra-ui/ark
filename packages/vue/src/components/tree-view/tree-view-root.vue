@@ -1,10 +1,10 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { Assign, BooleanDefaults } from '../../types'
-import type { TreeNode } from '../collection'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './tree-view.types'
-import type { RenderStrategyProps } from '../../utils/use-render-strategy'
+import type { Assign, BooleanDefaults } from '../../types.ts'
+import type { TreeNode } from '../collection/index.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './tree-view.types.ts'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
 
 export interface TreeViewRootBaseProps<T extends TreeNode>
   extends RootProps<T>, RenderStrategyProps, PolymorphicProps {}
@@ -19,16 +19,16 @@ export interface TreeViewRootProps<T extends TreeNode>
 export type TreeViewRootComponentProps<T extends TreeNode = TreeNode, P = {}> = Assign<TreeViewRootProps<T>, P>
 
 export type TreeViewRootComponent<P = {}> = <T extends TreeNode>(props: TreeViewRootComponentProps<T, P>) => any
-export type { RootEmits as TreeViewRootEmits } from './tree-view.types'
+export type { RootEmits as TreeViewRootEmits } from './tree-view.types.ts'
 </script>
 
 <script setup lang="ts" generic="T extends TreeNode">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { useTreeView } from './use-tree-view'
-import { TreeViewProvider } from './use-tree-view-context'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { useTreeView } from './use-tree-view.ts'
+import { TreeViewProvider } from './use-tree-view-context.ts'
 
 const props = withDefaults(defineProps<TreeViewRootProps<T>>(), {
   expandOnClick: undefined,

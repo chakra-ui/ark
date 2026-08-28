@@ -1,3 +1,5 @@
+'use client'
+
 type WaitForEventReturn<K extends keyof HTMLElementEventMap> = [Promise<HTMLElementEventMap[K]>, VoidFunction]
 
 export interface WaitForEventOptions<T extends HTMLElement = HTMLElement> extends AddEventListenerOptions {

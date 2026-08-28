@@ -119,6 +119,11 @@
         "isRequired": false,
         "description": "Whether the calendar should close after the date selection is complete.\nThis is ignored when the selection mode is `multiple`."
       },
+      "createCalendar": {
+        "type": "(identifier: CalendarIdentifier) => Calendar",
+        "isRequired": false,
+        "description": "A function that creates a Calendar object for a given calendar identifier.\nEnables non-Gregorian calendar support (Persian, Buddhist, Islamic, etc.)\nwithout bundling all calendars by default."
+      },
       "defaultFocusedValue": {
         "type": "DateValue",
         "isRequired": false,
@@ -163,6 +168,7 @@
         "description": "Whether to synchronize the present change immediately or defer it to the next frame"
       },
       "inline": { "type": "boolean", "isRequired": false, "description": "Whether to render the date picker inline" },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the date picker is invalid" },
       "isDateUnavailable": {
         "type": "(date: DateValue, locale: string) => boolean",
         "isRequired": false,
@@ -181,6 +187,11 @@
         "description": "The locale (BCP 47 language tag) to use when formatting the date."
       },
       "max": { "type": "DateValue", "isRequired": false, "description": "The maximum date that can be selected." },
+      "maxSelectedDates": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The maximum number of dates that can be selected.\nThis is only applicable when `selectionMode` is `multiple`."
+      },
       "maxView": {
         "type": "DateView",
         "defaultValue": "\"year\"",
@@ -221,7 +232,18 @@
         "isRequired": false,
         "description": "Function called when the view changes."
       },
+      "onVisibleRangeChange": {
+        "type": "(details: VisibleRangeChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the visible range changes."
+      },
       "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the date picker" },
+      "openOnClick": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to open the calendar when the input is clicked."
+      },
       "outsideDaySelectable": {
         "type": "boolean",
         "defaultValue": "false",
@@ -249,11 +271,17 @@
         "description": "Whether the node is present (controlled by the user)"
       },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the calendar is read-only." },
+      "required": { "type": "boolean", "isRequired": false, "description": "Whether the date picker is required" },
       "selectionMode": {
         "type": "SelectionMode",
         "defaultValue": "\"single\"",
         "isRequired": false,
         "description": "The selection mode of the calendar.\n- `single` - only one date can be selected\n- `multiple` - multiple dates can be selected\n- `range` - a range of dates can be selected"
+      },
+      "showWeekNumbers": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to show the week number column in the day view."
       },
       "skipAnimationOnMount": {
         "type": "boolean",
@@ -273,7 +301,7 @@
         "description": "The time zone to use"
       },
       "translations": {
-        "type": "IntlTranslations",
+        "type": "Partial<IntlTranslations>",
         "isRequired": false,
         "description": "The localized messages to use."
       },
@@ -407,6 +435,34 @@
       }
     }
   },
+  "ValueText": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'span'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "placeholder": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Text to display when no date is selected."
+      },
+      "separator": {
+        "type": "string",
+        "defaultValue": "\", \"",
+        "isRequired": false,
+        "description": "The separator to use between multiple date values when using default rendering."
+      }
+    }
+  },
+  "ValueTextRender": {
+    "props": {
+      "index": { "type": "number", "isRequired": true },
+      "remove": { "type": "() => void", "isRequired": true },
+      "value": { "type": "DateValue", "isRequired": true },
+      "valueAsString": { "type": "string", "isRequired": true }
+    }
+  },
   "ViewControl": {
     "props": {
       "asChild": {
@@ -430,6 +486,26 @@
     "props": {
       "asChild": {
         "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "WeekNumberCell": {
+    "props": {
+      "week": { "type": "DateValue[]", "isRequired": true },
+      "weekIndex": { "type": "number", "isRequired": true },
+      "asChild": {
+        "type": "(props: ParentProps<'td'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "WeekNumberHeaderCell": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'th'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }

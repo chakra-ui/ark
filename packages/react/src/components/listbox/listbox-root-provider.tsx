@@ -1,11 +1,13 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import { type JSX, forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import type { CollectionItem } from '../collection'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseListboxReturn } from './use-listbox'
-import { ListboxProvider } from './use-listbox-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import type { CollectionItem } from '../collection/index.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import type { UseListboxReturn } from './use-listbox.ts'
+import { ListboxProvider } from './use-listbox-context.ts'
 
 interface RootProviderProps<T extends CollectionItem> {
   value: UseListboxReturn<T>

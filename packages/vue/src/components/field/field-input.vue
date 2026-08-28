@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { InputHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface FieldInputBaseProps extends PolymorphicProps {}
 export interface FieldInputProps
@@ -15,9 +15,9 @@ export interface FieldInputProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useFieldContext } from './use-field-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useFieldContext } from './use-field-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<FieldInputProps>()
 const field = useFieldContext()
@@ -29,7 +29,7 @@ useForwardExpose()
 
 <template>
   <ark.input
-    v-bind="field.getInputProps()"
+    v-bind="field?.getInputProps()"
     :as-child="asChild"
     :value="modelValue"
     @input="(event) => emit('update:modelValue', (event.target as HTMLInputElement).value)"

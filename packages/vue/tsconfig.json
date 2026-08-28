@@ -3,7 +3,6 @@
   "compilerOptions": {
     "jsx": "preserve",
     "jsxImportSource": "vue",
-    "baseUrl": ".",
     "paths": {
       "styles/*": ["../../.storybook/modules/*"]
     },

@@ -33,7 +33,6 @@ ark/
 ## Architecture
 
 - **Zag.js**: State machine foundation for component logic
-- **Turbo**: Monorepo build orchestration
 - **Bun**: Package manager and runtime
 - **Biome**: Code linting and formatting
 - **Vitest**: Testing framework

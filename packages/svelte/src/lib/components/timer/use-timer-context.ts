@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UseTimerReturn } from './use-timer.svelte'
+import type { UseTimerReturn } from './use-timer.svelte.ts'
 
 export interface UseTimerContext extends UseTimerReturn {}
 

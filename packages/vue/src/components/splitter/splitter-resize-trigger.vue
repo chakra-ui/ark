@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ResizeTriggerProps } from '@zag-js/splitter'
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface SplitterResizeTriggerBaseProps extends ResizeTriggerProps, PolymorphicProps {}
 export interface SplitterResizeTriggerProps
@@ -14,11 +14,11 @@ export interface SplitterResizeTriggerProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
+import { ark } from '../factory.ts'
 import { computed } from 'vue'
-import { useSplitterContext } from './use-splitter-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { SplitterResizeTriggerPropsProvider } from './use-splitter-resize-trigger-props-context'
+import { useSplitterContext } from './use-splitter-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { SplitterResizeTriggerPropsProvider } from './use-splitter-resize-trigger-props-context.ts'
 
 const props = defineProps<SplitterResizeTriggerProps>()
 const splitter = useSplitterContext()

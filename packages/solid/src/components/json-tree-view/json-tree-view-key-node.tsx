@@ -1,6 +1,6 @@
 import { type JsonNode, keyPathToKey } from '@zag-js/json-tree-utils'
 import { type JSX, createMemo } from 'solid-js'
-import { ark } from '../factory'
+import { ark } from '../factory.tsx'
 
 interface JsonTreeViewKeyNodeProps {
   /**

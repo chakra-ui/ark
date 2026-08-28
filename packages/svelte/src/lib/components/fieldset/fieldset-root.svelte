@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseFieldsetProps } from './use-fieldset.svelte'
+  import type { UseFieldsetProps } from './use-fieldset.svelte.ts'
 
   export interface FieldsetRootBaseProps extends UseFieldsetProps, PolymorphicProps<'fieldset'>, RefAttribute {}
   export interface FieldsetRootProps extends Assign<HTMLProps<'fieldset'>, FieldsetRootBaseProps> {}
@@ -9,9 +9,9 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { createSplitProps } from '$lib/utils/create-split-props'
-  import { Ark } from '../factory'
-  import { FieldsetProvider } from './use-fieldset-context'
-  import { useFieldset } from './use-fieldset.svelte'
+  import { Ark } from '../factory/index.ts'
+  import { FieldsetProvider } from './use-fieldset-context.ts'
+  import { useFieldset } from './use-fieldset.svelte.ts'
 
   let { ref = $bindable(null), ...props }: FieldsetRootProps = $props()
 

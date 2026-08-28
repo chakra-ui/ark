@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseStepsReturn } from './use-steps'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseStepsReturn } from './use-steps.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseStepsReturn>
@@ -19,9 +19,9 @@ export interface StepsRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { StepsProvider } from './use-steps-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { StepsProvider } from './use-steps-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<StepsRootProviderProps>()
 const steps = computed(() => props.value)

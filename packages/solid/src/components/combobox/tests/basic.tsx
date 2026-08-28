@@ -1,8 +1,8 @@
+import type { Optional } from '@ark-ui/solid'
+import { Combobox, createListCollection } from '@ark-ui/solid/combobox'
+import { Field } from '@ark-ui/solid/field'
 import { For } from 'solid-js'
 import { Portal } from 'solid-js/web'
-import { Field } from '../../field'
-import { Combobox, createListCollection } from '../'
-import type { Optional } from '../../../types'
 
 interface Item {
   label: string

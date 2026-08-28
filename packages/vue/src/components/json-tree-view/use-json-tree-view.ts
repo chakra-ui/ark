@@ -2,10 +2,10 @@ import type { PropTypes } from '@zag-js/vue'
 import type * as treeView from '@zag-js/tree-view'
 import { type JsonNode, getRootNode, nodeToString, nodeToValue } from '@zag-js/json-tree-utils'
 import { type ComputedRef, type MaybeRef, computed, toValue } from 'vue'
-import { createSplitProps } from '../create-split-props'
-import { type UseTreeViewProps, createTreeCollection, useTreeView } from '../tree-view'
-import { getBranchValues } from './get-branch-value'
-import type { JsonTreeViewOptions } from './json-tree-view-props-context'
+import { createSplitProps } from '../create-split-props.ts'
+import { type UseTreeViewProps, createTreeCollection, useTreeView } from '../tree-view/index.ts'
+import { getBranchValues } from './get-branch-value.ts'
+import type { JsonTreeViewOptions } from './json-tree-view-props-context.ts'
 
 export interface UseJsonTreeViewProps extends Omit<UseTreeViewProps<JsonNode>, 'collection'>, JsonTreeViewOptions {
   data: unknown

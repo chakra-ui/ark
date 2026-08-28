@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useClipboardContext } from './use-clipboard-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useClipboardContext } from './use-clipboard-context.ts'
 
 export interface ClipboardValueTextBaseProps extends PolymorphicProps<'span'> {}
 export interface ClipboardValueTextProps extends HTMLProps<'span'>, ClipboardValueTextBaseProps {}

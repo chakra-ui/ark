@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { LabelHTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './checkbox.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './checkbox.types.ts'
 
 export interface CheckboxRootBaseProps extends RootProps, PolymorphicProps {}
 export interface CheckboxRootProps
@@ -16,10 +16,10 @@ export interface CheckboxRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useCheckbox } from './use-checkbox'
-import { CheckboxProvider } from './use-checkbox-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useCheckbox } from './use-checkbox.ts'
+import { CheckboxProvider } from './use-checkbox-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<CheckboxRootProps>(), {
   checked: undefined,

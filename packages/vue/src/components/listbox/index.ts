@@ -5,7 +5,7 @@ export type {
   SelectionMode as ListboxSelectionMode,
   ValueChangeDetails as ListboxValueChangeDetails,
 } from '@zag-js/listbox'
-export { createListCollection, type CollectionItem, type ListCollection } from '../collection'
+export { createListCollection, type CollectionItem, type ListCollection } from '../collection/index.ts'
 export { default as ListboxContext, type ListboxContextProps } from './listbox-context.vue'
 export {
   default as ListboxContent,
@@ -56,9 +56,9 @@ export {
   type ListboxValueTextBaseProps,
   type ListboxValueTextProps,
 } from './listbox-value-text.vue'
-export { listboxAnatomy } from './listbox.anatomy'
-export { useListbox, type UseListboxProps, type UseListboxReturn } from './use-listbox'
-export { useListboxContext, type UseListboxContext } from './use-listbox-context'
-export { useListboxItemContext, type UseListboxItemContext } from './use-listbox-item-context'
+export { listboxAnatomy } from './listbox.anatomy.ts'
+export { useListbox, type UseListboxProps, type UseListboxReturn } from './use-listbox.ts'
+export { useListboxContext, type UseListboxContext } from './use-listbox-context.ts'
+export { useListboxItemContext, type UseListboxItemContext } from './use-listbox-item-context.ts'
 
-export * as Listbox from './listbox'
+export * as Listbox from './listbox.ts'

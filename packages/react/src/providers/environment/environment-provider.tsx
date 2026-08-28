@@ -1,7 +1,9 @@
+'use client'
+
 import { getDocument, getWindow } from '@zag-js/dom-query'
 import { type ReactNode, useMemo, useState } from 'react'
-import { runIfFn } from '../../utils/run-if-fn'
-import { EnvironmentContextProvider, type RootNode } from './use-environment-context'
+import { runIfFn } from '../../utils/run-if-fn.ts'
+import { EnvironmentContextProvider, type RootNode } from './use-environment-context.ts'
 
 export interface EnvironmentProviderProps {
   children?: ReactNode | undefined

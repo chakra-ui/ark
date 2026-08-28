@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useTourContext } from './use-tour-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useTourContext } from './use-tour-context.ts'
 
 export interface TourArrowBaseProps extends PolymorphicProps<'div'> {}
 export interface TourArrowProps extends HTMLProps<'div'>, TourArrowBaseProps {}

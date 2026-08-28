@@ -1,6 +1,6 @@
 import { type FilterOptions, type FilterReturn, createFilter } from '@zag-js/i18n-utils'
 import { type ComputedRef, computed } from 'vue'
-import { DEFAULT_LOCALE, useLocaleContext } from './use-locale-context'
+import { DEFAULT_LOCALE, useLocaleContext } from './use-locale-context.ts'
 
 export interface UseFilterProps extends FilterOptions {}
 

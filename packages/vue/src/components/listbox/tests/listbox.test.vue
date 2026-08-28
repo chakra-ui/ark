@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Listbox, type ListboxRootEmits, type ListboxRootProps, createListCollection } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { Listbox, type ListboxRootEmits, type ListboxRootProps, createListCollection } from '@ark-ui/vue/listbox'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 interface Item {
   label: string

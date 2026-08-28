@@ -1,14 +1,16 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
+import { createSplitProps } from '../../utils/create-split-props.ts'
 import {
   type RenderStrategyProps,
   RenderStrategyPropsProvider,
   splitRenderStrategyProps,
-} from '../../utils/render-strategy'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseNavigationMenuReturn } from './use-navigation-menu'
-import { NavigationMenuProvider } from './use-navigation-menu-context'
+} from '../../utils/render-strategy.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import type { UseNavigationMenuReturn } from './use-navigation-menu.ts'
+import { NavigationMenuProvider } from './use-navigation-menu-context.ts'
 
 interface RootProviderProps {
   value: UseNavigationMenuReturn

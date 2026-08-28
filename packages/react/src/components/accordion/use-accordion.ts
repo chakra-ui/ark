@@ -1,8 +1,10 @@
+'use client'
+
 import * as accordion from '@zag-js/accordion'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { Optional } from '../../types.ts'
 
 export interface UseAccordionProps extends Optional<Omit<accordion.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseAccordionReturn extends accordion.Api<PropTypes> {}

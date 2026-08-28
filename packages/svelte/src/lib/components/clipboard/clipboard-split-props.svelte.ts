@@ -1,7 +1,7 @@
 import { createSplitProps } from '$lib/utils/create-split-props'
-import type { UseClipboardProps } from './use-clipboard.svelte'
+import type { UseClipboardProps } from './use-clipboard.svelte.ts'
 
 const splitFn = createSplitProps<UseClipboardProps>()
 
 export const splitClipboardProps = <T extends UseClipboardProps>(props: T) =>
-  splitFn(props, ['defaultValue', 'id', 'ids', 'onStatusChange', 'onValueChange', 'timeout', 'value'])
+  splitFn(props, ['defaultValue', 'id', 'ids', 'onStatusChange', 'onValueChange', 'timeout', 'translations', 'value'])

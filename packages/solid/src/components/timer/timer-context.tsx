@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js'
-import { type UseTimerContext, useTimerContext } from './use-timer-context'
+import { type UseTimerContext, useTimerContext } from './use-timer-context.ts'
 
 export interface TimerContextProps {
   children: (context: UseTimerContext) => JSX.Element

@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { ComponentUnderTest, RatingGroupWithField } from './basic'
+import { ComponentUnderTest, RatingGroupWithField } from './basic.tsx'
 
 describe('Rating Group', () => {
   it('should apply default value', async () => {

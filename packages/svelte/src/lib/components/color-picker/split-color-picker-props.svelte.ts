@@ -1,5 +1,5 @@
 import { createSplitProps } from '$lib/utils/create-split-props'
-import type { UseColorPickerProps } from './use-color-picker.svelte'
+import type { UseColorPickerProps } from './use-color-picker.svelte.ts'
 
 const splitFn = createSplitProps<UseColorPickerProps>()
 

@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { UseSegmentGroupContext } from './use-segment-group-context'
+  import type { UseSegmentGroupContext } from './use-segment-group-context.ts'
 
   export interface SegmentGroupContextProps {
     render: Snippet<[UseSegmentGroupContext]>
@@ -8,7 +8,7 @@
 </script>
 
 <script lang="ts">
-  import { useSegmentGroupContext } from './use-segment-group-context'
+  import { useSegmentGroupContext } from './use-segment-group-context.ts'
 
   let { render }: SegmentGroupContextProps = $props()
 

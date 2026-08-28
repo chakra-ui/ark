@@ -5,5 +5,5 @@ const environment = useEnvironmentContext(DEFAULT_ENVIRONMENT)
 </script>
 
 <template>
-  <pre>{{ JSON.stringify(environment.getRootNode(), null, 2) }}</pre>
+  <pre>Root node: {{ environment.getRootNode()?.nodeName }}</pre>
 </template>

@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseCheckboxGroupReturn } from './use-checkbox-group'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseCheckboxGroupReturn } from './use-checkbox-group.ts'
 
 interface GroupProviderProps {
   value: UnwrapRef<UseCheckboxGroupReturn>
@@ -19,10 +19,10 @@ export interface CheckboxGroupProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { CheckboxGroupContextProvider } from './use-checkbox-group-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { checkboxAnatomy } from './checkbox.anatomy'
+import { ark } from '../factory.ts'
+import { CheckboxGroupContextProvider } from './use-checkbox-group-context.tsx'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { checkboxAnatomy } from './checkbox.anatomy.ts'
 
 const props = defineProps<CheckboxGroupProviderProps>()
 const checkboxGroup = computed(() => props.value)

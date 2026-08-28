@@ -1,5 +1,5 @@
-import { createContext } from '../../utils/create-context'
-import type { UsePaginationReturn } from './use-pagination'
+import { createContext } from '../../utils/create-context.ts'
+import type { UsePaginationReturn } from './use-pagination.ts'
 
 export interface UsePaginationContext extends UsePaginationReturn {}
 

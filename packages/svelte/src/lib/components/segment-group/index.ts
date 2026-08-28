@@ -44,9 +44,9 @@ export {
   type SegmentGroupRootBaseProps,
   type SegmentGroupRootProps,
 } from './segment-group-root.svelte'
-export { segmentGroupAnatomy } from './segment-group.anatomy'
-export { useSegmentGroup, type UseSegmentGroupProps, type UseSegmentGroupReturn } from './use-segment-group.svelte'
-export { useSegmentGroupContext, type UseSegmentGroupContext } from './use-segment-group-context'
-export { useSegmentGroupItemContext, type UseSegmentGroupItemContext } from './use-segment-group-item-context'
+export { segmentGroupAnatomy } from './segment-group.anatomy.ts'
+export { useSegmentGroup, type UseSegmentGroupProps, type UseSegmentGroupReturn } from './use-segment-group.svelte.ts'
+export { useSegmentGroupContext, type UseSegmentGroupContext } from './use-segment-group-context.ts'
+export { useSegmentGroupItemContext, type UseSegmentGroupItemContext } from './use-segment-group-item-context.ts'
 
-export * as SegmentGroup from './segment-group'
+export * as SegmentGroup from './segment-group.ts'

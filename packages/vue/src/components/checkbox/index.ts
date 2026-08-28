@@ -36,10 +36,10 @@ export {
   type CheckboxRootBaseProps,
   type CheckboxRootProps,
 } from './checkbox-root.vue'
-export { useCheckbox, type UseCheckboxProps, type UseCheckboxReturn } from './use-checkbox'
-export { useCheckboxContext, type UseCheckboxContext } from './use-checkbox-context'
-export { useCheckboxGroup, type UseCheckboxGroupProps, type UseCheckboxGroupReturn } from './use-checkbox-group'
-export { useCheckboxGroupContext, type UseCheckboxGroupContext } from './use-checkbox-group-context'
-export { checkboxAnatomy } from './checkbox.anatomy'
+export { useCheckbox, type UseCheckboxProps, type UseCheckboxReturn } from './use-checkbox.ts'
+export { useCheckboxContext, type UseCheckboxContext } from './use-checkbox-context.ts'
+export { useCheckboxGroup, type UseCheckboxGroupProps, type UseCheckboxGroupReturn } from './use-checkbox-group.ts'
+export { useCheckboxGroupContext, type UseCheckboxGroupContext } from './use-checkbox-group-context.tsx'
+export { checkboxAnatomy } from './checkbox.anatomy.ts'
 
-export * as Checkbox from './checkbox'
+export * as Checkbox from './checkbox.ts'

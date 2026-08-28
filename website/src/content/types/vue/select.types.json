@@ -131,6 +131,11 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
+      "autoComplete": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The autocomplete attribute for the hidden select. Enables browser autofill (e.g. \"address-level1\" for state)."
+      },
       "closeOnSelect": {
         "type": "boolean",
         "defaultValue": "true",
@@ -209,6 +214,11 @@
         "isRequired": false,
         "description": "Function to scroll to a specific index"
       },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+      },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",
@@ -218,6 +228,13 @@
     }
   },
   "RootProvider": {
+    "emits": {
+      "exitComplete": {
+        "type": "[]",
+        "isRequired": true,
+        "description": "Function called when the animation ends in the closed state"
+      }
+    },
     "props": {
       "value": { "type": "SelectApi<PropTypes, T>", "isRequired": true },
       "asChild": {

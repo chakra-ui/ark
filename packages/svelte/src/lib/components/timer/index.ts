@@ -19,8 +19,8 @@ export {
   type TimerSeparatorBaseProps,
   type TimerSeparatorProps,
 } from './timer-separator.svelte'
-export { timerAnatomy } from './timer.anatomy'
-export { useTimerContext, type UseTimerContext } from './use-timer-context'
-export { useTimer, type UseTimerProps, type UseTimerReturn } from './use-timer.svelte'
+export { timerAnatomy } from './timer.anatomy.ts'
+export { useTimerContext, type UseTimerContext } from './use-timer-context.ts'
+export { useTimer, type UseTimerProps, type UseTimerReturn } from './use-timer.svelte.ts'
 
-export * as Timer from './timer'
+export * as Timer from './timer.ts'

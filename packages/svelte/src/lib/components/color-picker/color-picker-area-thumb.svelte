@@ -7,9 +7,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useColorPickerContext } from './use-color-picker-context'
-  import { useColorPickerAreaPropsContext } from './use-color-picker-area-props-context'
+  import { Ark } from '../factory/index.ts'
+  import { useColorPickerContext } from './use-color-picker-context.ts'
+  import { useColorPickerAreaPropsContext } from './use-color-picker-area-props-context.ts'
 
   let { ref = $bindable(null), ...props }: ColorPickerAreaThumbProps = $props()
 

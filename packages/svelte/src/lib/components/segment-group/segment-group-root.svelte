@@ -1,7 +1,7 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { ValueChangeDetails } from '@zag-js/radio-group'
-  import type { UseSegmentGroupProps } from './use-segment-group.svelte'
+  import type { UseSegmentGroupProps } from './use-segment-group.svelte.ts'
 
   export interface SegmentGroupRootEmits {
     valueChange: ValueChangeDetails
@@ -13,11 +13,11 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { parts } from './segment-group.anatomy'
-  import { splitSegmentGroupProps } from './split-segment-group-props.svelte'
-  import { useSegmentGroup } from './use-segment-group.svelte'
-  import { SegmentGroupProvider } from './use-segment-group-context'
+  import { Ark } from '../factory/index.ts'
+  import { parts } from './segment-group.anatomy.ts'
+  import { splitSegmentGroupProps } from './split-segment-group-props.svelte.ts'
+  import { useSegmentGroup } from './use-segment-group.svelte.ts'
+  import { SegmentGroupProvider } from './use-segment-group-context.ts'
 
   let { ref = $bindable(null), value = $bindable(), ...props }: SegmentGroupRootProps = $props()
   const providedId = $props.id()

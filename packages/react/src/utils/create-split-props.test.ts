@@ -1,4 +1,4 @@
-import { createSplitProps } from './create-split-props'
+import { createSplitProps } from './create-split-props.ts'
 
 describe('createSplitProps', () => {
   type Target = {

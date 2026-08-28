@@ -190,6 +190,11 @@
   },
   "Root": {
     "emits": {
+      "exitComplete": {
+        "type": "[]",
+        "isRequired": true,
+        "description": "Function called when the animation ends in the closed state"
+      },
       "focusOutside": {
         "type": "[event: FocusOutsideEvent]",
         "isRequired": true,
@@ -320,6 +325,13 @@
     }
   },
   "RootProvider": {
+    "emits": {
+      "exitComplete": {
+        "type": "[]",
+        "isRequired": true,
+        "description": "Function called when the animation ends in the closed state"
+      }
+    },
     "props": {
       "value": { "type": "ColorPickerApi<PropTypes>", "isRequired": true },
       "asChild": {

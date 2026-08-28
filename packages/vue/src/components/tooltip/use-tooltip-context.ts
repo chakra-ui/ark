@@ -1,5 +1,5 @@
-import { createContext } from '../../utils/create-context'
-import type { UseTooltipReturn } from './use-tooltip'
+import { createContext } from '../../utils/create-context.ts'
+import type { UseTooltipReturn } from './use-tooltip.ts'
 
 export interface UseTooltipContext extends UseTooltipReturn {}
 

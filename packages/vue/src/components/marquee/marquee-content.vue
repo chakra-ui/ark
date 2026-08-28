@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface MarqueeContentBaseProps extends PolymorphicProps {}
 export interface MarqueeContentProps
@@ -14,10 +14,10 @@ export interface MarqueeContentProps
 
 <script setup lang="ts">
 import { useAttrs } from 'vue'
-import { ark } from '../factory'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { useScopeId } from '../../utils/use-scope-id'
-import { useMarqueeContext } from './use-marquee-context'
+import { ark } from '../factory.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { useScopeId } from '../../utils/use-scope-id.ts'
+import { useMarqueeContext } from './use-marquee-context.ts'
 
 defineOptions({ inheritAttrs: false })
 defineProps<MarqueeContentProps>()

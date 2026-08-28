@@ -6,7 +6,7 @@ const meta: Meta = {
 
 export default meta
 
-export { Fade } from './examples/fade'
-export { Flip } from './examples/flip'
-export { Rotate } from './examples/rotate'
-export { Scale } from './examples/scale'
+export { Fade } from './examples/fade.tsx'
+export { Flip } from './examples/flip.tsx'
+export { Rotate } from './examples/rotate.tsx'
+export { Scale } from './examples/scale.tsx'

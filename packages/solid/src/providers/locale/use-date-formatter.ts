@@ -1,8 +1,8 @@
 import { DateFormatter } from '@internationalized/date'
 import { createMemo, type Accessor } from 'solid-js'
-import type { MaybeAccessor } from '../../types'
-import { runIfFn } from '../../utils/run-if-fn'
-import { useLocaleContext } from './use-locale-context'
+import type { MaybeAccessor } from '../../types.ts'
+import { runIfFn } from '../../utils/run-if-fn.ts'
+import { useLocaleContext } from './use-locale-context.ts'
 
 export interface UseDateFormatterProps extends Intl.DateTimeFormatOptions {
   locale?: string

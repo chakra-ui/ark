@@ -1,0 +1,48 @@
+{
+  "name": "@ark-ui/mcp",
+  "description": "The official MCP server for Ark UI",
+  "version": "1.3.0",
+  "main": "dist/stdio.js",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chakra-ui/ark",
+    "directory": "packages/mcp"
+  },
+  "scripts": {
+    "build": "tsup && chmod 755 dist/stdio.js",
+    "dev": "tsup --watch",
+    "serve": "tsx --watch src/http.ts",
+    "inspect": "bun scripts/inspect.js"
+  },
+  "bin": {
+    "ark-ui-mcp": "./dist/stdio.js"
+  },
+  "keywords": [
+    "ark-ui",
+    "mcp-server",
+    "chat",
+    "chatgpt",
+    "mcp"
+  ],
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@tsconfig/node24": "24.0.5",
+    "@types/express": "5.0.6",
+    "tsup": "8.5.1",
+    "tsx": "4.23.12",
+    "typescript": "6.0.3"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "express": "5.2.1",
+    "zod": "4.4.3"
+  }
+}

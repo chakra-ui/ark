@@ -1,10 +1,10 @@
-import { ariaAttr, dataAttr } from '@zag-js/dom-query'
 import { createMemo, createSignal, createUniqueId, mergeProps, onCleanup, onMount } from 'solid-js'
-import { useEnvironmentContext } from '../../providers'
-import type { MaybeAccessor } from '../../types'
-import { useFieldsetContext } from '../fieldset'
-import type { UseFieldsetReturn } from '../fieldset/use-fieldset'
-import { parts } from './field.anatomy'
+import { useEnvironmentContext } from '../../providers/index.tsx'
+import { ariaAttr, dataAttr } from '../../utils/attr.ts'
+import type { MaybeAccessor } from '../../types.ts'
+import { useFieldsetContext } from '../fieldset/index.tsx'
+import type { UseFieldsetReturn } from '../fieldset/use-fieldset.ts'
+import { parts } from './field.anatomy.ts'
 
 export interface ElementIds {
   root?: string
@@ -39,6 +39,10 @@ export interface UseFieldProps {
    * Indicates whether the field is read-only.
    */
   readOnly?: boolean
+  /**
+   * The target field item value the label should point to.
+   */
+  target?: string
 }
 
 export type UseFieldReturn = ReturnType<typeof useField>
@@ -91,6 +95,8 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
     'data-readonly': dataAttr(fieldProps.readOnly),
   })
 
+  const targetControlId = fieldProps.target ? `field::${id}::item::${fieldProps.target}` : undefined
+
   const getLabelProps = () => ({
     ...parts.label.attrs,
     id: labelId,
@@ -98,18 +104,14 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
     'data-invalid': dataAttr(fieldProps.invalid),
     'data-readonly': dataAttr(fieldProps.readOnly),
     'data-required': dataAttr(fieldProps.required),
-    htmlFor: id,
+    htmlFor: targetControlId ?? id,
   })
 
-  const labelIds = createMemo(() => {
-    const ids: string[] = []
-    if (hasErrorText() && fieldProps.invalid) ids.push(errorTextId)
-    if (hasHelperText()) ids.push(helperTextId)
-    return ids
-  })
+  const errorMessageId = createMemo(() => (hasErrorText() && fieldProps.invalid ? errorTextId : undefined))
 
   const getControlProps = () => ({
-    'aria-describedby': labelIds().join(' ') || undefined,
+    'aria-describedby': hasHelperText() ? helperTextId : undefined,
+    'aria-errormessage': errorMessageId(),
     'aria-invalid': ariaAttr(fieldProps.invalid),
     'data-invalid': dataAttr(fieldProps.invalid),
     'data-required': dataAttr(fieldProps.required),
@@ -153,7 +155,7 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
   })
 
   return createMemo(() => ({
-    ariaDescribedby: labelIds().join(' '),
+    ariaDescribedby: hasHelperText() ? helperTextId : undefined,
     ids: {
       control: id,
       label: labelId,

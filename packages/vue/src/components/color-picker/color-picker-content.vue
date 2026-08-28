@@ -1,8 +1,8 @@
 <script lang="ts">
 import { mergeProps } from '@zag-js/vue'
 import { type HTMLAttributes, computed } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import { type PresenceProps, usePresenceContext } from '../presence'
+import type { PolymorphicProps } from '../factory.ts'
+import { type PresenceProps, usePresenceContext } from '../presence/index.ts'
 
 export interface ColorPickerContentBaseProps extends PresenceProps, PolymorphicProps {}
 export interface ColorPickerContentProps
@@ -15,9 +15,9 @@ export interface ColorPickerContentProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useColorPickerContext } from './use-color-picker-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useColorPickerContext } from './use-color-picker-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ColorPickerContentProps>()
 const colorPicker = useColorPickerContext()

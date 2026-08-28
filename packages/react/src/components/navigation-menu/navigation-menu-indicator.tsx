@@ -1,10 +1,13 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { composeRefs } from '../../utils/compose-refs'
-import { useRenderStrategyPropsContext } from '../../utils/render-strategy'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { PresenceProvider, usePresence } from '../presence'
-import { useNavigationMenuContext } from './use-navigation-menu-context'
+import { useComposedRefs } from '../../utils/compose-refs.ts'
+import { useRenderStrategyPropsContext } from '../../utils/render-strategy.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { PresenceGate } from '../presence/presence-gate.tsx'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
 
 export interface NavigationMenuIndicatorBaseProps extends PolymorphicProps {}
 export interface NavigationMenuIndicatorProps extends HTMLProps<'div'>, NavigationMenuIndicatorBaseProps {}
@@ -14,10 +17,13 @@ export const NavigationMenuIndicator = forwardRef<HTMLDivElement, NavigationMenu
   const renderStrategyProps = useRenderStrategyPropsContext()
   const presence = usePresence({ ...renderStrategyProps, present: navigationMenu.open })
   const mergedProps = mergeProps(navigationMenu.getIndicatorProps(), presence.getPresenceProps(), props)
+  const composedRefs = useComposedRefs(presence.ref, ref)
 
   return (
     <PresenceProvider value={presence}>
-      {presence.unmounted ? null : <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} />}
+      <PresenceGate presence={presence}>
+        <ark.div {...mergedProps} ref={composedRefs} />
+      </PresenceGate>
     </PresenceProvider>
   )
 })

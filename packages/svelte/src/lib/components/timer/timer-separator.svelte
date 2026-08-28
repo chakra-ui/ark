@@ -1,8 +1,8 @@
 <script lang="ts">
   import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useTimerContext } from './use-timer-context'
+  import { Ark } from '../factory/index.ts'
+  import { useTimerContext } from './use-timer-context.ts'
 
   export interface TimerSeparatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface TimerSeparatorProps extends HTMLProps<'div'>, TimerSeparatorBaseProps {}

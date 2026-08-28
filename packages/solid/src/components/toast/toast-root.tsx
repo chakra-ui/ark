@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useToastContext } from './use-toast-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useToastContext } from './use-toast-context.ts'
 
 export interface ToastRootBaseProps extends PolymorphicProps<'div'> {}
 export interface ToastRootProps extends HTMLProps<'div'>, ToastRootBaseProps {}

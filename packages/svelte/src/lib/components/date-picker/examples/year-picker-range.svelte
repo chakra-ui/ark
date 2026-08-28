@@ -21,7 +21,15 @@
   }
 </script>
 
-<DatePicker.Root {format} {parse} selectionMode="range" defaultView="year" minView="year" placeholder="yyyy" class={styles.Root}>
+<DatePicker.Root
+  {format}
+  {parse}
+  selectionMode="range"
+  defaultView="year"
+  minView="year"
+  placeholder="yyyy"
+  class={styles.Root}
+>
   <DatePicker.Label class={styles.Label}>Label</DatePicker.Label>
   <DatePicker.Control class={styles.Control}>
     <DatePicker.Input class={styles.Input} index={0} />
@@ -54,7 +62,9 @@
                     <DatePicker.TableRow class={styles.TableRow}>
                       {#each years as year}
                         <DatePicker.TableCell class={styles.TableCell} value={year.value}>
-                          <DatePicker.TableCellTrigger class={styles.YearTableCellTrigger}>{year.label}</DatePicker.TableCellTrigger>
+                          <DatePicker.TableCellTrigger class={styles.YearTableCellTrigger}>
+                            {year.label}
+                          </DatePicker.TableCellTrigger>
                         </DatePicker.TableCell>
                       {/each}
                     </DatePicker.TableRow>

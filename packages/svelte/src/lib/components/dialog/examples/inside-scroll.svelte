@@ -47,9 +47,7 @@
           <XIcon />
         </Dialog.CloseTrigger>
         <Dialog.Title class={styles.Title}>Terms of Service</Dialog.Title>
-        <Dialog.Description class={styles.Description}>
-          Please review our terms before continuing.
-        </Dialog.Description>
+        <Dialog.Description class={styles.Description}>Please review our terms before continuing.</Dialog.Description>
         <div class={styles.ScrollContainer}>
           {#each CONTENT_SECTIONS as item}
             <section class={styles.ScrollSection}>

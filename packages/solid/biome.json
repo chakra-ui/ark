@@ -1,6 +1,7 @@
 {
+  "root": false,
   "$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
-  "extends": "//",
+  "extends": ["../../biome.json"],
   "linter": {
     "rules": {
       "style": {
@@ -10,7 +11,8 @@
         "noAssignInExpressions": "off"
       },
       "correctness": {
-        "useJsxKeyInIterable": "off"
+        "useJsxKeyInIterable": "off",
+        "useImportExtensions": "error"
       }
     }
   }

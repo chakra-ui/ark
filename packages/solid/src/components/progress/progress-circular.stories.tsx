@@ -6,10 +6,10 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/circular/basic'
-export { Controlled } from './examples/circular/controlled'
-export { Indeterminate } from './examples/circular/indeterminate'
-export { InitialValue } from './examples/circular/initial-value'
-export { MinMax } from './examples/circular/min-max'
-export { RootProvider } from './examples/circular/root-provider'
-export { WithLabel } from './examples/circular/with-label'
+export { Basic } from './examples/circular/basic.tsx'
+export { Controlled } from './examples/circular/controlled.tsx'
+export { Indeterminate } from './examples/circular/indeterminate.tsx'
+export { InitialValue } from './examples/circular/initial-value.tsx'
+export { MinMax } from './examples/circular/min-max.tsx'
+export { RootProvider } from './examples/circular/root-provider.tsx'
+export { WithLabel } from './examples/circular/with-label.tsx'

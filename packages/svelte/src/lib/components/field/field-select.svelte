@@ -7,8 +7,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useFieldContext } from './use-field-context'
+  import { Ark } from '../factory/index.ts'
+  import { useFieldContext } from './use-field-context.ts'
 
   let { ref = $bindable(null), value = $bindable(), multiple, ...props }: FieldSelectProps = $props()
 
@@ -24,7 +24,7 @@
     },
   })
 
-  const mergedProps = $derived(mergeProps(field?.().getSelectProps() ?? {}, nativeSelectProps, props))
+  const mergedProps = $derived(mergeProps(field?.()?.getSelectProps() ?? {}, nativeSelectProps, props))
 </script>
 
 <Ark as="select" bind:ref {...mergedProps} />

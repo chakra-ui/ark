@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UseFileUploadReturn } from './use-file-upload.svelte'
+import type { UseFileUploadReturn } from './use-file-upload.svelte.ts'
 
 export interface UseFileUploadContext extends UseFileUploadReturn {}
 export const [FileUploadProvider, useFileUploadContext] = createContext<UseFileUploadContext>({

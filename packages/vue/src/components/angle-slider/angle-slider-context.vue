@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseAngleSliderContext } from './use-angle-slider-context'
+import type { UseAngleSliderContext } from './use-angle-slider-context.ts'
 
 export interface AngleSliderContextProps extends SlotsType<{
   default: UnwrapRef<UseAngleSliderContext>
@@ -8,7 +8,7 @@ export interface AngleSliderContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useAngleSliderContext } from './use-angle-slider-context'
+import { useAngleSliderContext } from './use-angle-slider-context.ts'
 
 const angleSlider = useAngleSliderContext()
 

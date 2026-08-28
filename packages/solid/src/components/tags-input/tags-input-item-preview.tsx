@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useTagsInputContext } from './use-tags-input-context'
-import { useTagsInputItemPropsContext } from './use-tags-input-item-props-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useTagsInputContext } from './use-tags-input-context.ts'
+import { useTagsInputItemPropsContext } from './use-tags-input-item-props-context.ts'
 
 export interface TagsInputItemPreviewBaseProps extends PolymorphicProps<'div'> {}
 export interface TagsInputItemPreviewProps extends HTMLProps<'div'>, TagsInputItemPreviewBaseProps {}

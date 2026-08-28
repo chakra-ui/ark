@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './avatar.types'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './avatar.types.ts'
 
 export interface AvatarRootBaseProps extends RootProps, PolymorphicProps {}
 export interface AvatarRootProps
@@ -15,10 +15,10 @@ export interface AvatarRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useAvatar } from './use-avatar'
-import { AvatarProvider } from './use-avatar-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useAvatar } from './use-avatar.ts'
+import { AvatarProvider } from './use-avatar-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<AvatarRootProps>()
 const emits = defineEmits<AvatarRootEmits>()

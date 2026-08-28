@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseSwapReturn } from './use-swap'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseSwapReturn } from './use-swap.ts'
 
 export interface SwapRootProviderBaseProps extends PolymorphicProps {
   value: UseSwapReturn
@@ -18,9 +18,9 @@ export interface SwapRootProviderProps
 <script setup lang="ts">
 import { computed } from 'vue'
 import { mergeProps } from '@zag-js/vue'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { SwapProvider } from './use-swap-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { SwapProvider } from './use-swap-context.ts'
 
 const props = defineProps<SwapRootProviderProps>()
 

@@ -1,10 +1,10 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { Assign, BooleanDefaults } from '../../types'
-import type { RenderStrategyProps } from '../../utils/use-render-strategy'
-import type { CollectionItem } from '../collection'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './select.types'
+import type { Assign, BooleanDefaults } from '../../types.ts'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import type { CollectionItem } from '../collection/index.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './select.types.ts'
 
 export interface SelectRootBaseProps<T extends CollectionItem>
   extends RootProps<T>, RenderStrategyProps, PolymorphicProps {}
@@ -20,17 +20,17 @@ export type SelectRootComponentProps<T extends CollectionItem = CollectionItem, 
 
 export type SelectRootComponent<P = {}> = <T extends CollectionItem>(props: SelectRootComponentProps<T, P>) => any
 
-export type { RootEmits as SelectRootEmits } from './select.types'
+export type { RootEmits as SelectRootEmits } from './select.types.ts'
 </script>
 
 <script setup lang="ts" generic="T extends CollectionItem">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { PresenceProvider, usePresence } from '../presence'
-import { useSelect } from './use-select'
-import { SelectProvider } from './use-select-context'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { useSelect } from './use-select.ts'
+import { SelectProvider } from './use-select-context.ts'
 
 const props = withDefaults(defineProps<SelectRootProps<T>>(), {
   closeOnSelect: undefined,

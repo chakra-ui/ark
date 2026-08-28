@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface CarouselPrevTriggerBaseProps extends PolymorphicProps {}
 export interface CarouselPrevTriggerProps
@@ -13,9 +13,9 @@ export interface CarouselPrevTriggerProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useCarouselContext } from './use-carousel-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useCarouselContext } from './use-carousel-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<CarouselPrevTriggerProps>()
 const carousel = useCarouselContext()

@@ -11,9 +11,33 @@
       "ref": { "type": "Element", "isRequired": false }
     }
   },
+  "Registry": {
+    "props": {
+      "hitAreaMargins": {
+        "type": "HitAreaMargins",
+        "isRequired": false,
+        "description": "The hit area margins for resize handles.\nLarger margins make it easier to grab handles, especially on touch devices."
+      },
+      "nonce": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The nonce for the injected cursor stylesheet (for CSP compliance)."
+      }
+    }
+  },
+  "ResizeTriggerIndicator": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  },
   "ResizeTrigger": {
     "props": {
-      "id": { "type": "`${string}:${string}`", "isRequired": true },
+      "id": { "type": "ResizeTriggerId", "isRequired": true },
       "asChild": {
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
@@ -32,7 +56,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "defaultSize": {
-        "type": "number[]",
+        "type": "PanelSize[]",
         "isRequired": false,
         "description": "The initial size of the panels when rendered.\nUse when you don't need to control the size of the panels."
       },
@@ -84,7 +108,12 @@
         "description": "The orientation of the splitter. Can be `horizontal` or `vertical`"
       },
       "ref": { "type": "Element", "isRequired": false },
-      "size": { "type": "number[]", "isRequired": false, "description": "The controlled size data of the panels" }
+      "registry": {
+        "type": "SplitterRegistry",
+        "isRequired": false,
+        "description": "The splitter registry to use for multi-drag support.\nWhen provided, enables dragging at the intersection of multiple splitters."
+      },
+      "size": { "type": "PanelSize[]", "isRequired": false, "description": "The controlled size data of the panels" }
     }
   },
   "RootProvider": {

@@ -1,10 +1,12 @@
-import { ariaAttr, dataAttr } from '@zag-js/dom-query'
+'use client'
+
 import { useId, useMemo, useRef, useState } from 'react'
-import { useEnvironmentContext } from '../../providers'
-import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
-import type { HTMLProps } from '../factory'
-import { useFieldsetContext } from '../fieldset/use-fieldset-context'
-import { parts } from './field.anatomy'
+import { useEnvironmentContext } from '../../providers/index.ts'
+import { ariaAttr, dataAttr } from '../../utils/attr.ts'
+import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect.ts'
+import type { HTMLProps } from '../factory.ts'
+import { useFieldsetContext } from '../fieldset/use-fieldset-context.ts'
+import { parts } from './field.anatomy.ts'
 
 export interface ElementIds {
   root?: string | undefined
@@ -39,6 +41,10 @@ export interface UseFieldProps {
    * Indicates whether the field is read-only.
    */
   readOnly?: boolean | undefined
+  /**
+   * The target field item value the label should point to.
+   */
+  target?: string | undefined
 }
 
 export type UseFieldReturn = ReturnType<typeof useField>
@@ -47,7 +53,14 @@ export const useField = (props: UseFieldProps = {}) => {
   const fieldset = useFieldsetContext()
   const env = useEnvironmentContext()
 
-  const { ids, disabled = Boolean(fieldset?.disabled), invalid = false, readOnly = false, required = false } = props
+  const {
+    ids,
+    target,
+    disabled = Boolean(fieldset?.disabled),
+    invalid = false,
+    readOnly = false,
+    required = false,
+  } = props
 
   const [hasErrorText, setHasErrorText] = useState(false)
   const [hasHelperText, setHasHelperText] = useState(false)
@@ -80,13 +93,6 @@ export const useField = (props: UseFieldProps = {}) => {
     return () => observer.disconnect()
   }, [env, errorTextId, helperTextId])
 
-  const labelIds = useMemo(() => {
-    const ids: string[] = []
-    if (hasErrorText && invalid) ids.push(errorTextId)
-    if (hasHelperText) ids.push(helperTextId)
-    return ids.join(' ') || undefined
-  }, [invalid, errorTextId, helperTextId, hasErrorText, hasHelperText])
-
   const getRootProps = useMemo(
     () => () =>
       ({
@@ -101,6 +107,8 @@ export const useField = (props: UseFieldProps = {}) => {
     [disabled, invalid, readOnly, rootId],
   )
 
+  const targetControlId = target ? `field::${id}::item::${target}` : undefined
+
   const getLabelProps = useMemo(
     () => () =>
       ({
@@ -110,15 +118,18 @@ export const useField = (props: UseFieldProps = {}) => {
         'data-invalid': dataAttr(invalid),
         'data-readonly': dataAttr(readOnly),
         'data-required': dataAttr(required),
-        htmlFor: id,
+        htmlFor: targetControlId ?? id,
       }) as HTMLProps<'label'>,
-    [disabled, invalid, readOnly, required, id, labelId],
+    [disabled, invalid, readOnly, required, id, labelId, targetControlId],
   )
+
+  const errorMessageId = hasErrorText && invalid ? errorTextId : undefined
 
   const getControlProps = useMemo(
     () => () =>
       ({
-        'aria-describedby': labelIds,
+        'aria-describedby': hasHelperText ? helperTextId : undefined,
+        'aria-errormessage': errorMessageId,
         'aria-invalid': ariaAttr(invalid),
         'data-invalid': dataAttr(invalid),
         'data-required': dataAttr(required),
@@ -128,7 +139,7 @@ export const useField = (props: UseFieldProps = {}) => {
         disabled,
         readOnly,
       }) as HTMLProps<'input'>,
-    [labelIds, invalid, required, readOnly, id, disabled],
+    [hasHelperText, helperTextId, invalid, required, readOnly, id, errorMessageId, disabled],
   )
 
   const getInputProps = useMemo(
@@ -188,7 +199,7 @@ export const useField = (props: UseFieldProps = {}) => {
   )
 
   return {
-    ariaDescribedby: labelIds,
+    ariaDescribedby: hasHelperText ? helperTextId : undefined,
     ids: {
       root: rootId,
       control: id,

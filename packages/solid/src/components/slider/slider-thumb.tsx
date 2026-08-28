@@ -1,9 +1,9 @@
 import type { ThumbProps } from '@zag-js/slider'
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useSliderContext } from './use-slider-context'
-import { SliderThumbPropsProvider } from './use-slider-thumb-props-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useSliderContext } from './use-slider-context.ts'
+import { SliderThumbPropsProvider } from './use-slider-thumb-props-context.ts'
 
 export interface SliderThumbBaseProps extends ThumbProps, PolymorphicProps<'div'> {}
 export interface SliderThumbProps extends HTMLProps<'div'>, SliderThumbBaseProps {}

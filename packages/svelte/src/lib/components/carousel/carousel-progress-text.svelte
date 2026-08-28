@@ -6,9 +6,9 @@
 </script>
 
 <script lang="ts">
-  import { Ark } from '../factory'
-  import { carouselAnatomy } from './carousel.anatomy'
-  import { useCarouselContext } from './use-carousel-context'
+  import { Ark } from '../factory/index.ts'
+  import { carouselAnatomy } from './carousel.anatomy.ts'
+  import { useCarouselContext } from './use-carousel-context.ts'
 
   const parts = carouselAnatomy.build()
 

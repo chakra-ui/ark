@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { LabelHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface PinInputLabelBaseProps extends PolymorphicProps {}
 export interface PinInputLabelProps
@@ -13,9 +13,9 @@ export interface PinInputLabelProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { usePinInputContext } from './use-pin-input-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { usePinInputContext } from './use-pin-input-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<PinInputLabelProps>()
 const pinInput = usePinInputContext()

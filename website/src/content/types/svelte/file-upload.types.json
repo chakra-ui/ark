@@ -159,7 +159,7 @@
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the file input is disabled" },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  dropzone: string\n  hiddenInput: string\n  trigger: string\n  label: string\n  item: (id: string) => string\n  itemName: (id: string) => string\n  itemSizeText: (id: string) => string\n  itemPreview: (id: string) => string\n}>",
+        "type": "Partial<{\n  root: string\n  dropzone: string\n  hiddenInput: string\n  trigger: string\n  label: string\n  item: (id: string) => string\n  itemName: (id: string) => string\n  itemSizeText: (id: string) => string\n  itemPreview: (id: string) => string\n  itemDeleteTrigger: (id: string) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements. Useful for composition."
       },
@@ -210,6 +210,7 @@
         "isRequired": false,
         "description": "Whether to prevent the drop event on the document"
       },
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the file input is read-only" },
       "ref": { "type": "Element", "isRequired": false },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the file input is required" },
       "transformFiles": {

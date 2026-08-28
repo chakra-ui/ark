@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { UseMarqueeContext } from './use-marquee-context'
+import type { UseMarqueeContext } from './use-marquee-context.ts'
 
 export interface MarqueeContextProps {
   children: (context: UseMarqueeContext) => any
@@ -7,7 +7,7 @@ export interface MarqueeContextProps {
 </script>
 
 <script setup lang="ts">
-import { useMarqueeContext } from './use-marquee-context'
+import { useMarqueeContext } from './use-marquee-context.ts'
 
 const api = useMarqueeContext()
 </script>

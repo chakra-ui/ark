@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/carousel'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface CarouselItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface CarouselItemProps
@@ -14,9 +14,9 @@ export interface CarouselItemProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useCarouselContext } from './use-carousel-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useCarouselContext } from './use-carousel-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<CarouselItemProps>()
 const carousel = useCarouselContext()

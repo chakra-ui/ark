@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface PasswordInputInputBaseProps extends PolymorphicProps {}
 export interface PasswordInputInputProps
@@ -13,10 +13,10 @@ export interface PasswordInputInputProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { usePasswordInputContext } from './use-password-input-context'
-import { useFieldContext } from '../field'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { usePasswordInputContext } from './use-password-input-context.ts'
+import { useFieldContext } from '../field/index.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<PasswordInputInputProps>()
 

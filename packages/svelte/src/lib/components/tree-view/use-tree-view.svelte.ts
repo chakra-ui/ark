@@ -4,7 +4,7 @@ import type { Accessor, Optional } from '$lib/types'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import * as treeView from '@zag-js/tree-view'
 import { type MaybeFunction, ensureProps, runIfFn } from '@zag-js/utils'
-import type { TreeNode } from '../collection'
+import type { TreeNode } from '../collection/index.ts'
 
 export interface UseTreeViewProps<T extends TreeNode> extends Optional<
   Omit<treeView.Props<T>, 'dir' | 'getRootNode'>,

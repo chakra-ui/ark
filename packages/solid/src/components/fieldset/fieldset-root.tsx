@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
-import { composeRefs } from '../../utils/compose-refs'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseFieldsetProps, useFieldset } from './use-fieldset'
-import { FieldsetProvider } from './use-fieldset-context'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { type UseFieldsetProps, useFieldset } from './use-fieldset.ts'
+import { FieldsetProvider } from './use-fieldset-context.ts'
 
 export interface FieldsetRootBaseProps extends UseFieldsetProps, PolymorphicProps<'fieldset'> {}
 export interface FieldsetRootProps extends HTMLProps<'fieldset'>, FieldsetRootBaseProps {}

@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/radio-group'
 import type { LabelHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface SegmentGroupItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface SegmentGroupItemProps
@@ -15,12 +15,12 @@ export interface SegmentGroupItemProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-context'
-import { SegmentGroupItemProvider } from './use-segment-group-item-context'
-import { ark } from '../factory'
-import { useSegmentGroupContext } from './use-segment-group-context'
-import { parts } from './segment-group.anatomy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-context.ts'
+import { SegmentGroupItemProvider } from './use-segment-group-item-context.ts'
+import { ark } from '../factory.ts'
+import { useSegmentGroupContext } from './use-segment-group-context.ts'
+import { parts } from './segment-group.anatomy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<SegmentGroupItemProps>()
 const segmentGroup = useSegmentGroupContext()

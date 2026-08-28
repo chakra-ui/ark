@@ -1,0 +1,157 @@
+---
+id: swap
+title: Swap
+description: Animate between two visual states with smooth transitions.
+---
+
+<ComponentPreview id="Swap" />
+
+## Anatomy
+
+<Anatomy id="swap" />
+
+```tsx
+<Swap.Root>
+  <Swap.Indicator />
+</Swap.Root>
+```
+
+## Examples
+
+### Fade
+
+Swap between two icons with a fade animation. Set the `swap` prop to toggle between the `on` and `off` indicators.
+
+<Example id="fade" />
+
+### Flip
+
+Add a 3D flip effect by setting `perspective` on the root and using `rotateY` keyframes on the indicators.
+
+<Example id="flip" />
+
+### Rotate
+
+Rotate the indicators in and out with a spin transition.
+
+<Example id="rotate" />
+
+### Scale
+
+Scale the indicators up and down for a pop-in effect.
+
+<Example id="scale" />
+
+## Guides
+
+### How It Works
+
+Swap renders two indicators stacked on top of each other in a 1x1 CSS grid. The `swap` prop controls which indicator is
+visible. Each indicator uses the presence system, so you get `data-state="open"` and `data-state="closed"` attributes to
+drive your CSS animations.
+
+### Animating Indicators
+
+Target `data-state` on each indicator to define enter and exit animations:
+
+```css
+.indicator[data-state='open'] {
+  animation: fade-in 200ms ease-out;
+}
+
+.indicator[data-state='closed'] {
+  animation: fade-out 100ms ease-in;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+```
+
+You can combine animations for richer effects. For example, scale with fade:
+
+```css
+.indicator[data-state='open'] {
+  animation:
+    scale-in 200ms ease-out,
+    fade-in 200ms ease-out;
+}
+
+.indicator[data-state='closed'] {
+  animation:
+    scale-out 100ms ease-in,
+    fade-out 100ms ease-in;
+}
+```
+
+### 3D Flip Animation
+
+For a flip effect, set `perspective` on the root and use `backface-visibility: hidden` on indicators:
+
+```css
+.flip-indicator {
+  backface-visibility: hidden;
+}
+
+.flip-indicator[data-state='open'] {
+  animation: flip-in 400ms ease;
+}
+
+.flip-indicator[data-state='closed'] {
+  animation: flip-out 200ms ease;
+}
+
+@keyframes flip-in {
+  from {
+    transform: rotateY(180deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes flip-out {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+```
+
+### Lazy Mount
+
+Use `lazyMount` and `unmountOnExit` to control when indicators mount and unmount. This keeps the DOM clean when
+indicators aren't visible.
+
+```tsx
+<Swap.Root swap={swapped} lazyMount unmountOnExit>
+  <Swap.Indicator type="on">...</Swap.Indicator>
+  <Swap.Indicator type="off">...</Swap.Indicator>
+</Swap.Root>
+```
+
+## API Reference
+
+### Props
+
+<ComponentTypes id="swap" />
+
+### Context
+
+<ContextType id="swap" />

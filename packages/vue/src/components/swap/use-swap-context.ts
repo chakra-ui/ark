@@ -1,5 +1,5 @@
-import { createContext } from '../../utils/create-context'
-import type { UseSwapReturn } from './use-swap'
+import { createContext } from '../../utils/create-context.ts'
+import type { UseSwapReturn } from './use-swap.ts'
 
 export interface UseSwapContext extends UseSwapReturn {}
 

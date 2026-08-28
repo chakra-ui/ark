@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './rating-group.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './rating-group.types.ts'
 
 export interface RatingGroupRootBaseProps extends RootProps, PolymorphicProps {}
 export interface RatingGroupRootProps
@@ -16,10 +16,10 @@ export interface RatingGroupRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useRatingGroup } from './use-rating-group'
-import { RatingGroupProvider } from './use-rating-group-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useRatingGroup } from './use-rating-group.ts'
+import { RatingGroupProvider } from './use-rating-group-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<RatingGroupRootProps>(), {
   allowHalf: undefined,

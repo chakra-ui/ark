@@ -8,6 +8,16 @@ export interface RootProps {
    */
   closeOnSelect?: boolean
   /**
+   * A function that creates a Calendar object for a given calendar identifier.
+   * Enables non-Gregorian calendar support (Persian, Buddhist, Islamic, etc.)
+   * without bundling all calendars by default.
+   *
+   * @example
+   * import { createCalendar } from "@internationalized/date"
+   * { locale: "fa-IR", createCalendar }
+   */
+  createCalendar?: (identifier: datePicker.CalendarIdentifier) => datePicker.Calendar
+  /**
    * The initial focused date when rendered.
    * Use when you don't need to control the focused date of the date picker.
    */

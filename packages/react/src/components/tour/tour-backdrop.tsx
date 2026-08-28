@@ -1,10 +1,13 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { composeRefs } from '../../utils/compose-refs'
-import { useRenderStrategyPropsContext } from '../../utils/render-strategy'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresence } from '../presence'
-import { useTourContext } from './use-tour-context'
+import { useComposedRefs } from '../../utils/compose-refs.ts'
+import { useRenderStrategyPropsContext } from '../../utils/render-strategy.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { PresenceGate } from '../presence/presence-gate.tsx'
+import { usePresence } from '../presence/index.ts'
+import { useTourContext } from './use-tour-context.ts'
 
 export interface TourBackdropBaseProps extends PolymorphicProps {}
 export interface TourBackdropProps extends HTMLProps<'div'>, TourBackdropBaseProps {}
@@ -17,12 +20,13 @@ export const TourBackdrop = forwardRef<HTMLDivElement, TourBackdropProps>((props
     present: tour.open,
   })
   const mergedProps = mergeProps(tour.getBackdropProps(), presence.getPresenceProps(), props)
+  const composedRefs = useComposedRefs(presence.ref, ref)
 
-  if (presence.unmounted) {
-    return null
-  }
-
-  return <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} hidden={!tour.step?.backdrop} />
+  return (
+    <PresenceGate presence={presence}>
+      <ark.div {...mergedProps} ref={composedRefs} hidden={!tour.step?.backdrop} />
+    </PresenceGate>
+  )
 })
 
 TourBackdrop.displayName = 'TourBackdrop'

@@ -1,5 +1,7 @@
-import { createContext } from '../../utils/create-context'
-import type { UseQrCodeReturn } from './use-qr-code'
+'use client'
+
+import { createContext } from '../../utils/create-context.ts'
+import type { UseQrCodeReturn } from './use-qr-code.ts'
 
 export interface UseQrCodeContext extends UseQrCodeReturn {}
 

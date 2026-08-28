@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { ComponentUnderTest } from './basic'
+import { ComponentUnderTest } from './basic.tsx'
 
 describe('Tooltip', () => {
   it('should show the tooltip on pointerover and close on pointer leave', async () => {

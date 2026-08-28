@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseToggleGroupProps } from './use-toggle-group.svelte'
+  import type { UseToggleGroupProps } from './use-toggle-group.svelte.ts'
 
   export interface ToggleGroupRootBaseProps extends UseToggleGroupProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface ToggleGroupRootProps extends Assign<HTMLProps<'div'>, ToggleGroupRootBaseProps> {}
@@ -9,9 +9,9 @@
 <script lang="ts">
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { ToggleGroupProvider } from './use-toggle-group-context'
-  import { useToggleGroup } from './use-toggle-group.svelte'
+  import { Ark } from '../factory/index.ts'
+  import { ToggleGroupProvider } from './use-toggle-group-context.ts'
+  import { useToggleGroup } from './use-toggle-group.svelte.ts'
 
   let { ref = $bindable(null), value = $bindable<string[]>(), ...props }: ToggleGroupRootProps = $props()
 

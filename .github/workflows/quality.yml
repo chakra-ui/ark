@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install
         uses: ./.github/composite-actions/install
@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install
         uses: ./.github/composite-actions/install
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install
         uses: ./.github/composite-actions/install
@@ -53,7 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install
         uses: ./.github/composite-actions/install
@@ -66,13 +66,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install
         uses: ./.github/composite-actions/install
 
       - name: Check component exports
         run: bun scripts check:exports
+
+      - name: Check llms.txt response sizes
+        run: |
+          bun --cwd website velite build
+          bun scripts check:llms
 
       - name: Check for same HTML tags
         run: bun scripts check:nodes

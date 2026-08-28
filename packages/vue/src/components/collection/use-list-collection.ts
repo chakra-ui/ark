@@ -1,5 +1,5 @@
 import { type MaybeRef, type Ref, computed, ref, toValue } from 'vue'
-import { type CollectionOptions, type ListCollection, createListCollection } from './list-collection'
+import { type CollectionOptions, type ListCollection, createListCollection } from './list-collection.ts'
 
 export interface UseListCollectionProps<T> extends Omit<CollectionOptions<T>, 'items'> {
   /**

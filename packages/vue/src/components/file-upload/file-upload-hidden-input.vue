@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { InputHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface FileUploadHiddenInputBaseProps extends PolymorphicProps {}
 export interface FileUploadHiddenInputProps
@@ -13,10 +13,10 @@ export interface FileUploadHiddenInputProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useFileUploadContext } from './use-file-upload-context'
-import { useFieldContext } from '../field'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useFileUploadContext } from './use-file-upload-context.ts'
+import { useFieldContext } from '../field/index.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<FileUploadHiddenInputProps>()
 const fileUpload = useFileUploadContext()

@@ -7,9 +7,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { usePresenceContext } from '../presence'
-  import { useTourContext } from './use-tour-context'
+  import { Ark } from '../factory/index.ts'
+  import { usePresenceContext } from '../presence/index.ts'
+  import { useTourContext } from './use-tour-context.ts'
 
   let { ref = $bindable(null), ...props }: TourContentProps = $props()
 

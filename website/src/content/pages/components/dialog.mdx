@@ -54,7 +54,7 @@ in important ways:
 ### Lazy Mount
 
 Use `lazyMount` to render dialog content only when first opened. Combine with `unmountOnExit` to unmount when closed,
-freeing up resources.
+freeing up resources. Prefer this over conditionally rendering `Dialog.Root`—see **Conditional Rendering**.
 
 <Example id="lazy-mount" />
 
@@ -114,6 +114,13 @@ styling effects like zoom-out:
 
 <Example id="nested" />
 
+### Multiple Triggers
+
+Share a single dialog across multiple trigger elements. Pass a `value` to each `Dialog.Trigger` and use
+`onTriggerValueChange` to update the dialog content based on which trigger was clicked.
+
+<Example id="multiple-triggers" />
+
 ### Confirmation
 
 Intercept close attempts to show confirmation prompts, preventing data loss from unsaved changes.
@@ -129,15 +136,58 @@ Intercept close attempts to show confirmation prompts, preventing data loss from
 
 For conditional control, use `onEscapeKeyDown` or `onInteractOutside` with `e.preventDefault()`.
 
-### Z-Index Stacking
+### Conditional Rendering
 
-Use the `--layer-index` CSS variable for z-index management of stacked dialogs:
+Unmounting `Dialog.Root` when toggling open state can break focus, scroll lock, and cleanup. Keep the root mounted and
+control it with `open` / `onOpenChange`.
 
-```css
-[data-part='content'] {
-  z-index: calc(var(--layer-index));
+When you want portal content out of the DOM while closed, add `lazyMount` and `unmountOnExit` to the root.
+
+```tsx
+import { Dialog } from '@ark-ui/react/dialog'
+import { Portal } from '@ark-ui/react/portal'
+
+// ❌ Avoid
+const Dont = () => {
+  if (isOpen) {
+    return (
+      <Dialog.Root open={isOpen} onOpenChange={(e) => setOpen(e.open)}>
+        <Portal>...</Portal>
+      </Dialog.Root>
+    )
+  }
+  return null
+}
+
+// ✅ Prefer
+const Do = () => {
+  return (
+    <Dialog.Root open={isOpen} onOpenChange={(e) => setOpen(e.open)} lazyMount unmountOnExit>
+      <Portal>...</Portal>
+    </Dialog.Root>
+  )
 }
 ```
+
+### Z-Index Stacking
+
+Use a shared overlay z-index with `--layer-index` to keep stacked dialogs and nested overlays in order:
+
+```css
+[data-scope='dialog'][data-part='content'] {
+  z-index: calc(var(--z-index-overlay) + var(--layer-index, 0));
+}
+
+[data-scope='dialog'][data-part='positioner'] {
+  z-index: var(--z-index, var(--z-index-overlay));
+}
+
+[data-scope='dialog'][data-part='backdrop'] {
+  z-index: calc(var(--z-index, var(--z-index-overlay)) - 1);
+}
+```
+
+Read the [Styling guide](/docs/guides/styling#z-index) for more details.
 
 ### Dynamic Imports
 

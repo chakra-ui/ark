@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseRadioGroupReturn } from './use-radio-group.svelte'
+  import type { UseRadioGroupReturn } from './use-radio-group.svelte.ts'
 
   interface RootProviderProps {
     value: UseRadioGroupReturn
@@ -12,14 +12,14 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { RadioGroupProvider } from './use-radio-group-context'
+  import { Ark } from '../factory/index.ts'
+  import { RadioGroupProvider } from './use-radio-group-context.ts'
 
   let { ref = $bindable(null), value, ...props }: RadioGroupRootProviderProps = $props()
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  RadioGroupProvider(value)
+  RadioGroupProvider(() => value())
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

@@ -1,3 +1,5 @@
+'use client'
+
 import { useCallback, useRef } from 'react'
 
 type AnyFunction = (...args: any[]) => any

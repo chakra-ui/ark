@@ -1,6 +1,6 @@
 import { createCollator } from '@zag-js/i18n-utils'
 import { createMemo, type Accessor } from 'solid-js'
-import { useLocaleContext } from './use-locale-context'
+import { useLocaleContext } from './use-locale-context.ts'
 
 export interface UseCollatorProps extends Intl.CollatorOptions {
   locale?: string

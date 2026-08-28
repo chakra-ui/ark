@@ -10,6 +10,7 @@ export {
   type FieldHelperTextProps,
 } from './field-helper-text.svelte'
 export { default as FieldInput, type FieldInputBaseProps, type FieldInputProps } from './field-input.svelte'
+export { default as FieldItem, type FieldItemBaseProps, type FieldItemProps } from './field-item.svelte'
 export { default as FieldLabel, type FieldLabelBaseProps, type FieldLabelProps } from './field-label.svelte'
 export {
   default as FieldRequiredIndicator,
@@ -24,8 +25,8 @@ export {
 export { default as FieldRoot, type FieldRootBaseProps, type FieldRootProps } from './field-root.svelte'
 export { default as FieldSelect, type FieldSelectBaseProps, type FieldSelectProps } from './field-select.svelte'
 export { default as FieldTextarea, type FieldTextareaBaseProps, type FieldTextareaProps } from './field-textarea.svelte'
-export { fieldAnatomy } from './field.anatomy'
-export { useFieldContext, type UseFieldContext } from './use-field-context'
-export { useField, type UseFieldProps, type UseFieldReturn } from './use-field.svelte'
+export { fieldAnatomy } from './field.anatomy.ts'
+export { useFieldContext, type UseFieldContext } from './use-field-context.ts'
+export { useField, type UseFieldProps, type UseFieldReturn } from './use-field.svelte.ts'
 
-export * as Field from './field'
+export * as Field from './field.ts'

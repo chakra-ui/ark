@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseStepsContext } from './use-steps-context'
+import type { UseStepsContext } from './use-steps-context.ts'
 
 export interface StepsContextProps extends SlotsType<{
   default: UnwrapRef<UseStepsContext>
@@ -8,7 +8,7 @@ export interface StepsContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useStepsContext } from './use-steps-context'
+import { useStepsContext } from './use-steps-context.ts'
 
 const steps = useStepsContext()
 

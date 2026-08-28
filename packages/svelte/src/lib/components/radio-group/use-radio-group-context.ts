@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UseRadioGroupReturn } from './use-radio-group.svelte'
+import type { UseRadioGroupReturn } from './use-radio-group.svelte.ts'
 
 export interface UseRadioGroupContext extends UseRadioGroupReturn {}
 

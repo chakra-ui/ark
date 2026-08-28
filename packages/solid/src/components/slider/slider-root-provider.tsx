@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseSliderReturn } from './use-slider'
-import { SliderProvider } from './use-slider-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import type { UseSliderReturn } from './use-slider.ts'
+import { SliderProvider } from './use-slider-context.ts'
 
 interface RootProviderProps {
   value: UseSliderReturn

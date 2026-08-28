@@ -4,7 +4,7 @@ import type { Accessor, Optional } from '$lib/types'
 import * as signaturePad from '@zag-js/signature-pad'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
-import { useFieldContext } from '../field'
+import { useFieldContext } from '../field/index.ts'
 
 export interface UseSignaturePadProps extends Optional<Omit<signaturePad.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseSignaturePadReturn extends Accessor<signaturePad.Api<PropTypes>> {}
@@ -20,12 +20,12 @@ export const useSignaturePad = (props?: MaybeFunction<UseSignaturePadProps>) => 
       dir: locale().dir,
       getRootNode: env().getRootNode,
       ids: {
-        label: field?.().ids.label,
-        hiddenInput: field?.().ids.control,
+        label: field?.()?.ids.label,
+        hiddenInput: field?.()?.ids.control,
       },
-      disabled: field?.().disabled,
-      readOnly: field?.().readOnly,
-      required: field?.().required,
+      disabled: field?.()?.disabled,
+      readOnly: field?.()?.readOnly,
+      required: field?.()?.required,
       ...resolvedProps,
     }
   })

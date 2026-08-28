@@ -1,10 +1,12 @@
+'use client'
+
 import { forwardRef, useEffect, useId, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { EnvironmentProvider } from '../../providers'
-import type { Assign } from '../../types'
-import { composeRefs } from '../../utils/compose-refs'
-import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
-import { FrameContent } from './frame-content'
+import { EnvironmentProvider } from '../../providers/index.ts'
+import type { Assign } from '../../types.ts'
+import { useComposedRefs } from '../../utils/compose-refs.ts'
+import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect.ts'
+import { FrameContent } from './frame-content.tsx'
 
 export interface FrameBaseProps {
   /** Additional content to be inserted into the frame's <head> */
@@ -33,6 +35,7 @@ export const Frame = forwardRef<HTMLIFrameElement, FrameProps>((props, ref) => {
 
   const [frameRef, setFrameRef] = useState<HTMLIFrameElement | null>(null)
   const [mountNode, setMountNode] = useState<HTMLElement | null>(null)
+  const composedRefs = useComposedRefs<HTMLIFrameElement>(ref, setFrameRef)
 
   useSafeLayoutEffect(() => {
     if (!frameRef) return
@@ -48,7 +51,7 @@ export const Frame = forwardRef<HTMLIFrameElement, FrameProps>((props, ref) => {
   }, [frameRef, srcDoc])
 
   useEffect(() => {
-    if (!frameRef || !frameRef.contentDocument) return
+    if (!frameRef?.contentDocument) return
 
     const win = frameRef.contentWindow as Window & typeof globalThis
     if (!win) return
@@ -79,7 +82,7 @@ export const Frame = forwardRef<HTMLIFrameElement, FrameProps>((props, ref) => {
 
   return (
     <EnvironmentProvider value={() => frameRef?.contentDocument ?? document}>
-      <iframe title={`frame:${useId()}`} ref={composeRefs<HTMLIFrameElement>(ref, setFrameRef)} {...rest}>
+      <iframe title={`frame:${useId()}`} ref={composedRefs} {...rest}>
         {mountNode
           ? createPortal(
               <FrameContent onMount={onMount} onUnmount={onUnmount}>

@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseClipboardReturn } from './use-clipboard'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseClipboardReturn } from './use-clipboard.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseClipboardReturn>
@@ -19,9 +19,9 @@ export interface ClipboardRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { ClipboardProvider } from './use-clipboard-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { ClipboardProvider } from './use-clipboard-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<ClipboardRootProviderProps>()
 const clipboard = computed(() => props.value)

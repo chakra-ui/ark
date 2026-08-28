@@ -13,14 +13,15 @@ import { getPublicUrl } from '~/lib/get-public-url'
 interface CopyPageWidgetProps {
   slug: string
   content: string
+  framework: string
 }
 
 export const CopyPageWidget = (props: CopyPageWidgetProps) => {
-  const { slug, content } = props
+  const { slug, content, framework } = props
   return (
     <HStack gap="0" spaceX="-1px">
       <CopyPageButton content={content} />
-      <ActionMenu slug={slug} />
+      <ActionMenu slug={slug} framework={framework} />
     </HStack>
   )
 }
@@ -40,8 +41,8 @@ const CopyPageButton = (props: { content: string }) => {
   )
 }
 
-const ActionMenu = (props: { slug: string }) => {
-  const { slug } = props
+const ActionMenu = (props: { slug: string; framework: string }) => {
+  const { slug, framework } = props
 
   const pageUrl = getPublicUrl(`/docs/${slug}`)
   const readUrl = encodeURIComponent(
@@ -51,7 +52,7 @@ const ActionMenu = (props: { slug: string }) => {
   const items = [
     {
       label: 'View as markdown',
-      href: `${pageUrl}.mdx`,
+      href: `${pageUrl}.mdx?framework=${framework}`,
       icon: () => <SiMarkdown size={18} />,
     },
     {
@@ -79,7 +80,13 @@ const ActionMenu = (props: { slug: string }) => {
   return (
     <Menu.Root size="sm" positioning={{ placement: 'bottom-end' }}>
       <Menu.Trigger asChild>
-        <IconButton size="xs" variant="outline" borderStartRadius="0" borderStartWidth="0px">
+        <IconButton
+          size="xs"
+          variant="outline"
+          borderStartRadius="0"
+          borderStartWidth="0px"
+          aria-label="More Markdown options"
+        >
           <ChevronDownIcon size={16} />
         </IconButton>
       </Menu.Trigger>

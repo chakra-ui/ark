@@ -153,6 +153,13 @@
   }
 }
 
+.Paragraph {
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: var(--demo-neutral-fg);
+  max-width: 32rem;
+}
+
 @keyframes scale-fade-in {
   from {
     opacity: 0;

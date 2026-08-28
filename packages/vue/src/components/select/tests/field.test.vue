@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Field, type FieldRootProps } from '../../field'
-import { Select, createListCollection } from '../'
+import { Field, type FieldRootProps } from '@ark-ui/vue/field'
+import { Select, createListCollection } from '@ark-ui/vue/select'
 
 const collection = createListCollection({
   items: ['React', 'Solid', 'Vue', 'Svelte'],

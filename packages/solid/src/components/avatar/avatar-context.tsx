@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js'
-import { type UseAvatarContext, useAvatarContext } from './use-avatar-context'
+import { type UseAvatarContext, useAvatarContext } from './use-avatar-context.ts'
 
 export interface AvatarContextProps {
   children: (context: UseAvatarContext) => JSX.Element

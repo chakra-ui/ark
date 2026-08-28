@@ -13,4 +13,4 @@ export {
   type SwapRootProviderBaseProps as RootProviderBaseProps,
   type SwapRootProviderProps as RootProviderProps,
 } from './swap-root-provider.svelte'
-export { swapAnatomy } from './swap.anatomy'
+export { swapAnatomy } from './swap.anatomy.ts'

@@ -1,8 +1,16 @@
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
+import { axe } from 'vitest-axe'
 import ComponentUnderTest from './segment-group.test.vue'
 
 describe('Segment Group', () => {
+  it('should have no a11y violations', async () => {
+    const { container } = render(ComponentUnderTest)
+    const results = await axe(container)
+
+    expect(results).toHaveNoViolations()
+  })
+
   it('should invoke onValueChange if another value has selected', async () => {
     const onValueChange = vi.fn()
 

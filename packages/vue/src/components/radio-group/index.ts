@@ -42,9 +42,9 @@ export {
   type RadioGroupRootEmits,
   type RadioGroupRootProps,
 } from './radio-group-root.vue'
-export { radioGroupAnatomy } from './radio-group.anatomy'
-export { useRadioGroup, type UseRadioGroupProps, type UseRadioGroupReturn } from './use-radio-group'
-export { useRadioGroupContext, type UseRadioGroupContext } from './use-radio-group-context'
-export { useRadioGroupItemContext, type UseRadioGroupItemContext } from './use-radio-group-item-context'
+export { radioGroupAnatomy } from './radio-group.anatomy.ts'
+export { useRadioGroup, type UseRadioGroupProps, type UseRadioGroupReturn } from './use-radio-group.ts'
+export { useRadioGroupContext, type UseRadioGroupContext } from './use-radio-group-context.ts'
+export { useRadioGroupItemContext, type UseRadioGroupItemContext } from './use-radio-group-item-context.ts'
 
-export * as RadioGroup from './radio-group'
+export * as RadioGroup from './radio-group.ts'

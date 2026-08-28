@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UseSignaturePadReturn } from './use-signature-pad.svelte'
+import type { UseSignaturePadReturn } from './use-signature-pad.svelte.ts'
 
 export interface UseSignaturePadContext extends UseSignaturePadReturn {}
 

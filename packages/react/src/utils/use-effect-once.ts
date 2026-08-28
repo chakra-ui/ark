@@ -1,3 +1,5 @@
+'use client'
+
 import { type EffectCallback, useEffect, useRef } from 'react'
 
 export const useEffectOnce = (cb: EffectCallback) => {

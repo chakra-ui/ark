@@ -37,7 +37,9 @@
               <DatePicker.Table class={styles.Table}>
                 <DatePicker.TableHead class={styles.TableHead}>
                   <DatePicker.TableRow class={styles.TableRow}>
-                    <DatePicker.WeekNumberHeaderCell class={styles.WeekNumberHeaderCell}>Wk</DatePicker.WeekNumberHeaderCell>
+                    <DatePicker.WeekNumberHeaderCell class={styles.WeekNumberHeaderCell}>
+                      Wk
+                    </DatePicker.WeekNumberHeaderCell>
                     {#each datePicker().weekDays as weekDay}
                       <DatePicker.TableHeader class={styles.TableHeader}>{weekDay.short}</DatePicker.TableHeader>
                     {/each}
@@ -46,10 +48,14 @@
                 <DatePicker.TableBody class={styles.TableBody}>
                   {#each datePicker().weeks as week, weekIndex}
                     <DatePicker.TableRow class={styles.TableRow}>
-                      <DatePicker.WeekNumberCell class={styles.WeekNumberCell} weekIndex={weekIndex} week={week}>{datePicker().getWeekNumber(week)}</DatePicker.WeekNumberCell>
+                      <DatePicker.WeekNumberCell class={styles.WeekNumberCell} {weekIndex} {week}>
+                        {datePicker().getWeekNumber(week)}
+                      </DatePicker.WeekNumberCell>
                       {#each week as day}
                         <DatePicker.TableCell class={styles.TableCell} value={day}>
-                          <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>{day.day}</DatePicker.TableCellTrigger>
+                          <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>
+                            {day.day}
+                          </DatePicker.TableCellTrigger>
                         </DatePicker.TableCell>
                       {/each}
                     </DatePicker.TableRow>
@@ -79,7 +85,9 @@
                     <DatePicker.TableRow class={styles.TableRow}>
                       {#each months as month}
                         <DatePicker.TableCell class={styles.TableCell} value={month.value}>
-                          <DatePicker.TableCellTrigger class={styles.MonthTableCellTrigger}>{month.label}</DatePicker.TableCellTrigger>
+                          <DatePicker.TableCellTrigger class={styles.MonthTableCellTrigger}>
+                            {month.label}
+                          </DatePicker.TableCellTrigger>
                         </DatePicker.TableCell>
                       {/each}
                     </DatePicker.TableRow>
@@ -109,7 +117,9 @@
                     <DatePicker.TableRow class={styles.TableRow}>
                       {#each years as year}
                         <DatePicker.TableCell class={styles.TableCell} value={year.value}>
-                          <DatePicker.TableCellTrigger class={styles.YearTableCellTrigger}>{year.label}</DatePicker.TableCellTrigger>
+                          <DatePicker.TableCellTrigger class={styles.YearTableCellTrigger}>
+                            {year.label}
+                          </DatePicker.TableCellTrigger>
                         </DatePicker.TableCell>
                       {/each}
                     </DatePicker.TableRow>

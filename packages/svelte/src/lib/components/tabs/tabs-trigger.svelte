@@ -9,8 +9,8 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { createSplitProps } from '$lib/utils/create-split-props'
-  import { Ark } from '../factory'
-  import { useTabsContext } from './use-tabs-context'
+  import { Ark } from '../factory/index.ts'
+  import { useTabsContext } from './use-tabs-context.ts'
 
   let { ref = $bindable(null), ...props }: TabsTriggerProps = $props()
   const [triggerProps, localProps] = $derived(createSplitProps<TriggerProps>()(props, ['value', 'disabled']))

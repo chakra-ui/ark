@@ -11,10 +11,30 @@
       "ref": { "type": "Element", "isRequired": false }
     }
   },
+  "FirstTrigger": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  },
   "Item": {
     "props": {
       "type": { "type": "'page'", "isRequired": true },
       "value": { "type": "number", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  },
+  "LastTrigger": {
+    "props": {
       "asChild": {
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
@@ -50,6 +70,12 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
+      "boundaryCount": {
+        "type": "number",
+        "defaultValue": "1",
+        "isRequired": false,
+        "description": "Number of pages to show at the beginning and end"
+      },
       "count": { "type": "number", "isRequired": false, "description": "Total number of data items" },
       "defaultPage": {
         "type": "number",
@@ -70,7 +96,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  ellipsis: (index: number) => string\n  prevTrigger: string\n  nextTrigger: string\n  item: (page: number) => string\n}>",
+        "type": "Partial<{\n  root: string\n  ellipsis: (index: number) => string\n  firstTrigger: string\n  prevTrigger: string\n  nextTrigger: string\n  lastTrigger: string\n  item: (page: number) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the accordion. Useful for composition."
       },

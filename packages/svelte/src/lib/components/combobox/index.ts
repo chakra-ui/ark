@@ -14,7 +14,7 @@ export {
   type CollectionItem,
   type ListCollection,
   type UseListCollectionProps,
-} from '../collection'
+} from '../collection/index.ts'
 export {
   default as ComboboxClearTrigger,
   type ComboboxClearTriggerProps,
@@ -80,9 +80,9 @@ export {
   type ComboboxTriggerProps,
   type ComboboxTriggerBaseProps,
 } from './combobox-trigger.svelte'
-export { comboboxAnatomy } from './combobox.anatomy'
-export { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox.svelte'
-export { useComboboxContext, type UseComboboxContext } from './use-combobox-context'
-export { useComboboxItemContext, type UseComboboxItemContext } from './use-combobox-item-context'
+export { comboboxAnatomy } from './combobox.anatomy.ts'
+export { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox.svelte.ts'
+export { useComboboxContext, type UseComboboxContext } from './use-combobox-context.ts'
+export { useComboboxItemContext, type UseComboboxItemContext } from './use-combobox-item-context.ts'
 
-export * as Combobox from './combobox'
+export * as Combobox from './combobox.ts'

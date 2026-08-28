@@ -35,6 +35,18 @@ export const Nested = () => (
                   <Menu.Item className={styles.Item} value="airdrop">
                     AirDrop
                   </Menu.Item>
+                  <Menu.Item className={styles.Item} value="test1">
+                    Test1
+                  </Menu.Item>
+                  <Menu.Item className={styles.Item} value="test2">
+                    Test2
+                  </Menu.Item>
+                  <Menu.Item className={styles.Item} value="test3">
+                    Test3
+                  </Menu.Item>
+                  <Menu.Item className={styles.Item} value="test4">
+                    Test4
+                  </Menu.Item>
                 </Menu.Content>
               </Menu.Positioner>
             </Portal>
@@ -52,6 +64,66 @@ export const Nested = () => (
                   </Menu.Item>
                   <Menu.Item className={styles.Item} value="svg">
                     SVG
+                  </Menu.Item>
+                </Menu.Content>
+              </Menu.Positioner>
+            </Portal>
+          </Menu.Root>
+          <Menu.Root>
+            <Menu.TriggerItem className={styles.TriggerItem}>Share</Menu.TriggerItem>
+            <Portal>
+              <Menu.Positioner>
+                <Menu.Content className={styles.Content}>
+                  <Menu.Item className={styles.Item} value="email">
+                    Email
+                  </Menu.Item>
+                  <Menu.Item className={styles.Item} value="message">
+                    Message
+                  </Menu.Item>
+                  <Menu.Item className={styles.Item} value="airdrop">
+                    AirDrop
+                  </Menu.Item>
+                  <Menu.Item className={styles.Item} value="test1">
+                    Test1
+                  </Menu.Item>
+                  <Menu.Item className={styles.Item} value="test2">
+                    Test2
+                  </Menu.Item>
+                  <Menu.Item className={styles.Item} value="test3">
+                    Test3
+                  </Menu.Item>
+                  <Menu.Item className={styles.Item} value="test4">
+                    Test4
+                  </Menu.Item>
+                </Menu.Content>
+              </Menu.Positioner>
+            </Portal>
+          </Menu.Root>
+          <Menu.Root>
+            <Menu.TriggerItem className={styles.TriggerItem}>Share</Menu.TriggerItem>
+            <Portal>
+              <Menu.Positioner>
+                <Menu.Content className={styles.Content}>
+                  <Menu.Item className={styles.Item} value="email">
+                    Email
+                  </Menu.Item>
+                  <Menu.Item className={styles.Item} value="message">
+                    Message
+                  </Menu.Item>
+                  <Menu.Item className={styles.Item} value="airdrop">
+                    AirDrop
+                  </Menu.Item>
+                  <Menu.Item className={styles.Item} value="test1">
+                    Test1
+                  </Menu.Item>
+                  <Menu.Item className={styles.Item} value="test2">
+                    Test2
+                  </Menu.Item>
+                  <Menu.Item className={styles.Item} value="test3">
+                    Test3
+                  </Menu.Item>
+                  <Menu.Item className={styles.Item} value="test4">
+                    Test4
                   </Menu.Item>
                 </Menu.Content>
               </Menu.Positioner>

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseSelectItemContext } from './use-select-item-context'
+import type { UseSelectItemContext } from './use-select-item-context.ts'
 
 export interface SelectItemContextProps extends SlotsType<{
   default: UnwrapRef<UseSelectItemContext>
@@ -8,7 +8,7 @@ export interface SelectItemContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useSelectItemContext } from './use-select-item-context'
+import { useSelectItemContext } from './use-select-item-context.ts'
 
 const item = useSelectItemContext()
 

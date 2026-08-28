@@ -6,8 +6,7 @@
     weekIndex: number
     week: DateValue[]
   }
-  export interface DatePickerWeekNumberCellProps
-    extends Assign<HTMLProps<'td'>, DatePickerWeekNumberCellBaseProps> {}
+  export interface DatePickerWeekNumberCellProps extends Assign<HTMLProps<'td'>, DatePickerWeekNumberCellBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -19,9 +18,7 @@
 
   let { ref = $bindable(null), ...props }: DatePickerWeekNumberCellProps = $props()
 
-  const [cellProps, localProps] = $derived(
-    createSplitProps<WeekNumberCellProps>()(props, ['weekIndex', 'week']),
-  )
+  const [cellProps, localProps] = $derived(createSplitProps<WeekNumberCellProps>()(props, ['weekIndex', 'week']))
 
   const datePicker = useDatePickerContext()
 

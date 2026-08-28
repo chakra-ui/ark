@@ -4,7 +4,7 @@ export {
   type AngleSliderRootBaseProps,
   type AngleSliderRootProps,
 } from './angle-slider-root.vue'
-export { angleSliderAnatomy } from './angle-slider.anatomy'
+export { angleSliderAnatomy } from './angle-slider.anatomy.ts'
 
 export {
   default as AngleSliderControl,
@@ -46,7 +46,7 @@ export {
   type AngleSliderValueTextBaseProps,
   type AngleSliderValueTextProps,
 } from './angle-slider-value-text.vue'
-export { useAngleSlider, type UseAngleSliderProps, type UseAngleSliderReturn } from './use-angle-slider'
-export { useAngleSliderContext, type UseAngleSliderContext } from './use-angle-slider-context'
+export { useAngleSlider, type UseAngleSliderProps, type UseAngleSliderReturn } from './use-angle-slider.ts'
+export { useAngleSliderContext, type UseAngleSliderContext } from './use-angle-slider-context.ts'
 
-export * as AngleSlider from './angle-slider'
+export * as AngleSlider from './angle-slider.ts'

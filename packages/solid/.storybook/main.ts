@@ -9,6 +9,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 export default {
   framework: 'storybook-solidjs-vite',
   stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  core: {
+    disableTelemetry: true,
+  },
   async viteFinal(config) {
     return mergeConfig(config, {
       define: {

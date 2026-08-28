@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseClipboardContext } from './use-clipboard-context'
+import type { UseClipboardContext } from './use-clipboard-context.ts'
 
 export interface ClipboardContextProps extends SlotsType<{
   default: UnwrapRef<UseClipboardContext>
@@ -8,7 +8,7 @@ export interface ClipboardContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useClipboardContext } from './use-clipboard-context'
+import { useClipboardContext } from './use-clipboard-context.ts'
 
 const clipboard = useClipboardContext()
 

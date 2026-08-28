@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UseCarouselReturn } from './use-carousel.svelte'
+import type { UseCarouselReturn } from './use-carousel.svelte.ts'
 
 export interface UseCarouselContext extends UseCarouselReturn {}
 

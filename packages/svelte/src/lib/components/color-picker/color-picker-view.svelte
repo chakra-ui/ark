@@ -11,11 +11,11 @@
 </script>
 
 <script lang="ts">
-  import { Ark } from '../factory'
-  import { useColorPickerContext } from './use-color-picker-context'
-  import { colorPickerAnatomy } from './color-picker.anatomy'
+  import { Ark } from '../factory/index.ts'
+  import { useColorPickerContext } from './use-color-picker-context.ts'
+  import { colorPickerAnatomy } from './color-picker.anatomy.ts'
   import { createSplitProps } from '$lib/utils/create-split-props'
-  import { ColorPickerFormatPropsProvider } from './use-color-picker-format-context'
+  import { ColorPickerFormatPropsProvider } from './use-color-picker-format-context.ts'
 
   let { ref = $bindable(null), ...props }: ColorPickerViewProps = $props()
   const [formatProps, localProps] = $derived(createSplitProps<FormatOptions>()(props, ['format']))

@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { PanelProps } from '@zag-js/splitter'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface SplitterPanelBaseProps extends PanelProps, PolymorphicProps {}
 export interface SplitterPanelProps
@@ -14,9 +14,9 @@ export interface SplitterPanelProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useSplitterContext } from './use-splitter-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useSplitterContext } from './use-splitter-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<SplitterPanelProps>()
 const splitter = useSplitterContext()

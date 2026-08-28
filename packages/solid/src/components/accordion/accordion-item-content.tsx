@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
-import { createSplitProps } from '../../utils/create-split-props'
-import { Collapsible } from '../collapsible'
-import type { HTMLProps, PolymorphicProps } from '../factory'
-import { useAccordionContext } from './use-accordion-context'
-import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { Collapsible } from '../collapsible/index.tsx'
+import type { HTMLProps, PolymorphicProps } from '../factory.tsx'
+import { useAccordionContext } from './use-accordion-context.ts'
+import { useAccordionItemPropsContext } from './use-accordion-item-props-context.ts'
 
 export interface AccordionItemContentBaseProps extends PolymorphicProps<'div'> {}
 export interface AccordionItemContentProps extends HTMLProps<'div'>, AccordionItemContentBaseProps {}

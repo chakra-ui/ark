@@ -3,6 +3,7 @@ export type {
   InteractOutsideEvent as PopoverInteractOutsideEvent,
   OpenChangeDetails as PopoverOpenChangeDetails,
   PointerDownOutsideEvent as PopoverPointerDownOutsideEvent,
+  TriggerValueChangeDetails as PopoverTriggerValueChangeDetails,
 } from '@zag-js/popover'
 export { default as PopoverAnchor, type PopoverAnchorBaseProps, type PopoverAnchorProps } from './popover-anchor.svelte'
 export {
@@ -49,10 +50,10 @@ export {
   type PopoverTriggerBaseProps,
   type PopoverTriggerProps,
 } from './popover-trigger.svelte'
-export { popoverAnatomy } from './popover.anatomy'
-export { usePopoverContext } from './use-popover-context'
-export type { UsePopoverContext } from './use-popover-context'
-export { usePopover } from './use-popover.svelte'
-export type { UsePopoverProps, UsePopoverReturn } from './use-popover.svelte'
+export { popoverAnatomy } from './popover.anatomy.ts'
+export { usePopoverContext } from './use-popover-context.ts'
+export type { UsePopoverContext } from './use-popover-context.ts'
+export { usePopover } from './use-popover.svelte.ts'
+export type { UsePopoverProps, UsePopoverReturn } from './use-popover.svelte.ts'
 
-export * as Popover from './popover'
+export * as Popover from './popover.ts'

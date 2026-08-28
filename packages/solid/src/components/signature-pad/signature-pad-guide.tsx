@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useSignaturePadContext } from './use-signature-pad-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useSignaturePadContext } from './use-signature-pad-context.ts'
 
 export interface SignaturePadGuideBaseProps extends PolymorphicProps<'div'> {}
 export interface SignaturePadGuideProps extends HTMLProps<'div'>, SignaturePadGuideBaseProps {}

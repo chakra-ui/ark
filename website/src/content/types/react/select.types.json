@@ -7,7 +7,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "Content": {
     "props": {
@@ -17,7 +18,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Control": {
     "props": {
@@ -27,7 +29,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "HiddenSelect": {
     "props": {
@@ -37,7 +40,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLSelectElement"
+    "element": "HTMLSelectElement",
+    "tag": "select"
   },
   "Indicator": {
     "props": {
@@ -47,7 +51,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "ItemGroupLabel": {
     "props": {
@@ -57,7 +62,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "ItemGroup": {
     "props": {
@@ -67,7 +73,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "ItemIndicator": {
     "props": {
@@ -77,7 +84,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Item": {
     "props": {
@@ -86,14 +94,19 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "item": { "type": "any", "isRequired": false, "description": "The item to render" },
+      "item": {
+        "type": "any",
+        "isRequired": false,
+        "description": "The item to render"
+      },
       "persistFocus": {
         "type": "boolean",
         "isRequired": false,
         "description": "Whether hovering outside should clear the highlighted state"
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "ItemText": {
     "props": {
@@ -103,7 +116,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "span"
   },
   "Label": {
     "props": {
@@ -113,7 +127,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLLabelElement"
+    "element": "HTMLLabelElement",
+    "tag": "label"
   },
   "List": {
     "props": {
@@ -123,7 +138,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Positioner": {
     "props": {
@@ -133,15 +149,25 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Root": {
     "props": {
-      "collection": { "type": "ListCollection<T>", "isRequired": true, "description": "The collection of items" },
+      "collection": {
+        "type": "ListCollection<T>",
+        "isRequired": true,
+        "description": "The collection of items"
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "autoComplete": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The autocomplete attribute for the hidden select. Enables browser autofill (e.g. \"address-level1\" for state)."
       },
       "closeOnSelect": {
         "type": "boolean",
@@ -175,14 +201,32 @@
         "isRequired": false,
         "description": "Whether the value can be cleared by clicking the selected item.\n\n**Note:** this is only applicable for single selection"
       },
-      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the select is disabled" },
-      "form": { "type": "string", "isRequired": false, "description": "The associate form of the underlying select." },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the select is disabled"
+      },
+      "form": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The associate form of the underlying select."
+      },
+      "hideMode": {
+        "type": "HideMode",
+        "defaultValue": "'display-none'",
+        "isRequired": false,
+        "description": "How to hide content when mounted but not present.\n- `'display-none'`: HTML `hidden` attribute. Effects stay alive.\n- `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+      },
       "highlightedValue": {
         "type": "string",
         "isRequired": false,
         "description": "The controlled key of the highlighted item"
       },
-      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
       "ids": {
         "type": "Partial<{\n  root: string\n  content: string\n  control: string\n  trigger: string\n  clearTrigger: string\n  label: string\n  hiddenSelect: string\n  positioner: string\n  item: (id: string | number) => string\n  itemGroup: (id: string | number) => string\n  itemGroupLabel: (id: string | number) => string\n}>",
         "isRequired": false,
@@ -193,7 +237,11 @@
         "isRequired": false,
         "description": "Whether to synchronize the present change immediately or defer it to the next frame"
       },
-      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the select is invalid" },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the select is invalid"
+      },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",
@@ -206,7 +254,11 @@
         "isRequired": false,
         "description": "Whether to loop the keyboard navigation through the options"
       },
-      "multiple": { "type": "boolean", "isRequired": false, "description": "Whether to allow multiple selection" },
+      "multiple": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to allow multiple selection"
+      },
       "name": {
         "type": "string",
         "isRequired": false,
@@ -252,7 +304,11 @@
         "isRequired": false,
         "description": "The callback fired when the selected item changes."
       },
-      "open": { "type": "boolean", "isRequired": false, "description": "Whether the select menu is open" },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the select menu is open"
+      },
       "positioning": {
         "type": "PositioningOptions",
         "isRequired": false,
@@ -263,8 +319,16 @@
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
       },
-      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the select is read-only" },
-      "required": { "type": "boolean", "isRequired": false, "description": "Whether the select is required" },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the select is read-only"
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the select is required"
+      },
       "scrollToIndexFn": {
         "type": "(details: ScrollToIndexDetails) => void",
         "isRequired": false,
@@ -276,22 +340,41 @@
         "isRequired": false,
         "description": "Whether to allow the initial presence animation."
       },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+      },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to unmount on exit."
       },
-      "value": { "type": "string[]", "isRequired": false, "description": "The controlled keys of the selected items" }
-    }
+      "value": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The controlled keys of the selected items"
+      }
+    },
+    "tag": "div"
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseSelectReturn<T>", "isRequired": true },
+      "value": {
+        "type": "UseSelectReturn<T>",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "hideMode": {
+        "type": "HideMode",
+        "defaultValue": "'display-none'",
+        "isRequired": false,
+        "description": "How to hide content when mounted but not present.\n- `'display-none'`: HTML `hidden` attribute. Effects stay alive.\n- `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
       },
       "immediate": {
         "type": "boolean",
@@ -326,7 +409,8 @@
         "isRequired": false,
         "description": "Whether to unmount on exit."
       }
-    }
+    },
+    "tag": "div"
   },
   "Trigger": {
     "props": {
@@ -336,7 +420,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "ValueText": {
     "props": {
@@ -351,6 +436,7 @@
         "description": "Text to display when no value is selected."
       }
     },
-    "element": "HTMLSpanElement"
+    "element": "HTMLSpanElement",
+    "tag": "span"
   }
 }

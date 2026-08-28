@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { TextareaHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface FieldTextareaBaseProps extends PolymorphicProps {
   /**
@@ -23,10 +23,10 @@ export interface FieldTextareaProps
 <script setup lang="ts">
 import { autoresizeTextarea } from '@zag-js/auto-resize'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { useFieldContext } from './use-field-context'
-import { unrefElement } from '../../utils/unref-element'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { useFieldContext } from './use-field-context.ts'
+import { unrefElement } from '../../utils/unref-element.ts'
 
 const props = defineProps<FieldTextareaProps>()
 const field = useFieldContext()
@@ -47,7 +47,7 @@ useForwardExpose()
 <template>
   <ark.textarea
     ref="textareaRef"
-    v-bind="field.getTextareaProps()"
+    v-bind="field?.getTextareaProps()"
     :value="modelValue"
     @input="(event) => emit('update:modelValue', (event.target as HTMLTextAreaElement).value)"
     :style="props.autoresize ? { resize: 'none', overflow: 'hidden' } : undefined"

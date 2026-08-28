@@ -31,9 +31,9 @@ export {
   type AccordionRootBaseProps,
   type AccordionRootProps,
 } from './accordion-root.vue'
-export { useAccordion, type UseAccordionProps, type UseAccordionReturn } from './use-accordion'
-export { useAccordionContext, type UseAccordionContext } from './use-accordion-context'
-export { useAccordionItemContext, type UseAccordionItemContext } from './use-accordion-item-context'
-export { accordionAnatomy } from './accordion.anatomy'
+export { useAccordion, type UseAccordionProps, type UseAccordionReturn } from './use-accordion.ts'
+export { useAccordionContext, type UseAccordionContext } from './use-accordion-context.ts'
+export { useAccordionItemContext, type UseAccordionItemContext } from './use-accordion-item-context.ts'
+export { accordionAnatomy } from './accordion.anatomy.ts'
 
-export * as Accordion from './accordion'
+export * as Accordion from './accordion.ts'

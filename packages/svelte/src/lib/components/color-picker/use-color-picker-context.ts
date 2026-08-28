@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UseColorPickerReturn } from './use-color-picker.svelte'
+import type { UseColorPickerReturn } from './use-color-picker.svelte.ts'
 
 export interface UseColorPickerContext extends UseColorPickerReturn {}
 

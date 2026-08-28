@@ -34,7 +34,7 @@ export const CircleTrack = withContext<
   Assign<HTMLStyledProps<'circle'>, Progress.CircleTrackBaseProps>
 >(Progress.CircleTrack, 'circleTrack')
 
-export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, Progress.LabelBaseProps>>(
+export const Label = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, Progress.LabelBaseProps>>(
   Progress.Label,
   'label',
 )

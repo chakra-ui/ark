@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseSwitchContext } from './use-switch-context'
+import type { UseSwitchContext } from './use-switch-context.ts'
 
 export interface SwitchContextProps extends SlotsType<{
   default: UnwrapRef<UseSwitchContext>
@@ -8,7 +8,7 @@ export interface SwitchContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useSwitchContext } from './use-switch-context'
+import { useSwitchContext } from './use-switch-context.ts'
 
 const context = useSwitchContext()
 

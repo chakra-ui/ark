@@ -1,5 +1,5 @@
-import { Dialog } from '../'
-import { Portal } from '../../portal'
+import { Dialog } from '@ark-ui/react/dialog'
+import { Portal } from '@ark-ui/react/portal'
 
 export const ComponentUnderTest = (props: Dialog.RootProps) => (
   <Dialog.Root {...props}>

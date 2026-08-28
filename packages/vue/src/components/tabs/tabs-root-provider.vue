@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { RenderStrategyProps } from '../../utils/use-render-strategy'
-import type { PolymorphicProps } from '../factory'
-import type { UseTabsReturn } from './use-tabs'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseTabsReturn } from './use-tabs.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseTabsReturn>
@@ -20,10 +20,10 @@ export interface TabsRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { TabsProvider } from './use-tabs-context'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { TabsProvider } from './use-tabs-context.ts'
 
 const props = defineProps<TabsRootProviderProps>()
 const tabs = computed(() => props.value)

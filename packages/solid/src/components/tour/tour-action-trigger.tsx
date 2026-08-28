@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
 import type { StepActionTriggerProps } from '@zag-js/tour'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useTourContext } from './use-tour-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useTourContext } from './use-tour-context.ts'
 
 export interface TourActionTriggerBaseProps extends PolymorphicProps<'button'>, StepActionTriggerProps {}
 export interface TourActionTriggerProps extends HTMLProps<'button'>, TourActionTriggerBaseProps {}

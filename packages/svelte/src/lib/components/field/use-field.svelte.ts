@@ -1,10 +1,10 @@
 import { useEnvironmentContext } from '$lib/providers'
 import type { HTMLProps } from '$lib/types'
-import { ariaAttr, dataAttr } from '@zag-js/dom-query'
 import { type MaybeFunction, ensureProps, runIfFn } from '@zag-js/utils'
 import { onMount } from 'svelte'
-import { useFieldsetContext } from '../fieldset/use-fieldset-context'
-import { parts } from './field.anatomy'
+import { ariaAttr, dataAttr } from '../../utils/attr.ts'
+import { useFieldsetContext } from '../fieldset/use-fieldset-context.ts'
+import { parts } from './field.anatomy.ts'
 
 export interface ElementIds {
   root?: string
@@ -39,6 +39,10 @@ export interface UseFieldProps {
    * Indicates whether the field is read-only.
    */
   readOnly?: boolean
+  /**
+   * The target field item value the label should point to.
+   */
+  target?: string
 }
 
 export type UseFieldReturn = ReturnType<typeof useField>
@@ -94,12 +98,7 @@ export const useField = (inProps: MaybeFunction<UseFieldProps> = {}) => {
     }
   })
 
-  const labelIds = $derived(() => {
-    const ids: string[] = []
-    if (hasErrorText && invalid) ids.push(errorTextId)
-    if (hasHelperText) ids.push(helperTextId)
-    return ids.join(' ') || undefined
-  })
+  const errorMessageId = $derived(hasErrorText && invalid ? errorTextId : undefined)
 
   const getRootProps = () =>
     ({
@@ -111,6 +110,8 @@ export const useField = (inProps: MaybeFunction<UseFieldProps> = {}) => {
       'data-readonly': dataAttr(readOnly),
     }) as HTMLProps<'div'>
 
+  const targetControlId = $derived(props.target ? `field::${id}::item::${props.target}` : undefined)
+
   const getLabelProps = () =>
     ({
       ...parts.label.attrs,
@@ -119,12 +120,13 @@ export const useField = (inProps: MaybeFunction<UseFieldProps> = {}) => {
       'data-invalid': dataAttr(invalid),
       'data-readonly': dataAttr(readOnly),
       'data-required': dataAttr(required),
-      for: controlId,
+      for: targetControlId ?? controlId,
     }) as HTMLProps<'label'>
 
   const getControlProps = () =>
     ({
-      'aria-describedby': labelIds(),
+      'aria-describedby': hasHelperText ? helperTextId : undefined,
+      'aria-errormessage': errorMessageId,
       'aria-invalid': ariaAttr(invalid),
       'data-invalid': dataAttr(invalid),
       'data-required': dataAttr(required),
@@ -175,7 +177,7 @@ export const useField = (inProps: MaybeFunction<UseFieldProps> = {}) => {
 
   const api = $derived({
     setRootRef,
-    ariaDescribedby: labelIds(),
+    ariaDescribedby: hasHelperText ? helperTextId : undefined,
     ids: {
       root: rootId,
       control: controlId,

@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UseSegmentGroupReturn } from './use-segment-group.svelte'
+import type { UseSegmentGroupReturn } from './use-segment-group.svelte.ts'
 
 export interface UseSegmentGroupContext extends UseSegmentGroupReturn {}
 

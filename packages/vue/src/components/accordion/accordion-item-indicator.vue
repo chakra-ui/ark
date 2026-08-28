@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface AccordionItemIndicatorBaseProps extends PolymorphicProps {}
 export interface AccordionItemIndicatorProps
@@ -13,10 +13,10 @@ export interface AccordionItemIndicatorProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { useAccordionContext } from './use-accordion-context'
-import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { useAccordionContext } from './use-accordion-context.ts'
+import { useAccordionItemPropsContext } from './use-accordion-item-props-context.ts'
 
 defineProps<AccordionItemIndicatorProps>()
 const accordion = useAccordionContext()

@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './radio-group.types'
+import type { BooleanDefaults } from '../../types.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './radio-group.types.ts'
 
 export interface RadioGroupRootBaseProps extends RootProps, PolymorphicProps {}
 export interface RadioGroupRootProps
@@ -16,10 +16,10 @@ export interface RadioGroupRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useRadioGroup } from './use-radio-group'
-import { RadioGroupProvider } from './use-radio-group-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useRadioGroup } from './use-radio-group.ts'
+import { RadioGroupProvider } from './use-radio-group-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<RadioGroupRootProps>(), {
   disabled: undefined,

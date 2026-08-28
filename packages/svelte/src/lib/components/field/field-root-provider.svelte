@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
-  import type { UseFieldReturn } from './use-field.svelte'
+  import type { UseFieldReturn } from './use-field.svelte.ts'
 
   export interface FieldRootProviderBaseProps extends PolymorphicProps<'div'> {
     value: UseFieldReturn
@@ -10,14 +10,14 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { FieldProvider } from './use-field-context'
+  import { Ark } from '../factory/index.ts'
+  import { FieldProvider } from './use-field-context.ts'
 
-  const props: FieldRootProviderProps = $props()
+  const { value, ...props }: FieldRootProviderProps = $props()
 
-  const mergedProps = $derived(mergeProps(props.value().getRootProps(), props))
+  const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  FieldProvider(props.value)
+  FieldProvider(() => value())
 </script>
 
 <Ark as="div" {...mergedProps} />

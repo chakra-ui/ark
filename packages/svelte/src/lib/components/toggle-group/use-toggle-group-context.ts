@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UseToggleGroupReturn } from './use-toggle-group.svelte'
+import type { UseToggleGroupReturn } from './use-toggle-group.svelte.ts'
 
 export interface UseToggleGroupContext extends UseToggleGroupReturn {}
 

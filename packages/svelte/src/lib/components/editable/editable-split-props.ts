@@ -1,5 +1,5 @@
 import { createSplitProps } from '$lib/utils/create-split-props'
-import type { UseEditableProps } from './use-editable.svelte'
+import type { UseEditableProps } from './use-editable.svelte.ts'
 
 const splitFn = createSplitProps<UseEditableProps>()
 export function splitEditableProps<T extends UseEditableProps>(props: T) {

@@ -49,6 +49,10 @@ export interface RootProps {
    */
   orientation?: 'horizontal' | 'vertical'
   /**
+   * Specifies the localized strings that identifies the accessibility elements and their states
+   */
+  translations?: navigationMenu.IntlTranslations
+  /**
    * The controlled value of the navigation menu
    */
   value?: string

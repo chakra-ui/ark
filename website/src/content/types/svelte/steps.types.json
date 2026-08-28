@@ -98,6 +98,18 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": { "type": "ElementIds", "isRequired": false, "description": "The custom ids for the stepper elements" },
+      "isStepSkippable": {
+        "type": "(index: number) => boolean",
+        "defaultValue": "() => false",
+        "isRequired": false,
+        "description": "Whether a step can be skipped during navigation.\nSkippable steps are bypassed when using next/prev."
+      },
+      "isStepValid": {
+        "type": "(index: number) => boolean",
+        "defaultValue": "() => true",
+        "isRequired": false,
+        "description": "Whether a step is valid. Invalid steps block forward navigation in linear mode."
+      },
       "linear": {
         "type": "boolean",
         "isRequired": false,
@@ -112,6 +124,11 @@
         "type": "VoidFunction",
         "isRequired": false,
         "description": "Callback to be called when a step is completed"
+      },
+      "onStepInvalid": {
+        "type": "(details: StepInvalidDetails) => void",
+        "isRequired": false,
+        "description": "Called when navigation is blocked due to an invalid step."
       },
       "orientation": {
         "type": "'horizontal' | 'vertical'",

@@ -1,6 +1,6 @@
+import { Field } from '@ark-ui/solid/field'
+import { TagsInput } from '@ark-ui/solid/tags-input'
 import { Index } from 'solid-js'
-import { Field } from '../../field'
-import { TagsInput } from '../'
 
 export const ComponentUnderTest = (props: TagsInput.RootProps) => {
   return (

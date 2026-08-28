@@ -9,21 +9,13 @@
 
 <div class={styles.Layout}>
   <div class={button.Group}>
-    <button
-      type="button"
-      class={button.Root}
-      onclick={() => imageCropper().setZoom(imageCropper().zoom - 0.1)}
-    >
+    <button type="button" class={button.Root} onclick={() => imageCropper().setZoom(imageCropper().zoom - 0.1)}>
       <ZoomOutIcon />
     </button>
     <span style="font-size: 0.875rem; min-width: 3rem; text-align: center;">
       {imageCropper().zoom.toFixed(1)}x
     </span>
-    <button
-      type="button"
-      class={button.Root}
-      onclick={() => imageCropper().setZoom(imageCropper().zoom + 0.1)}
-    >
+    <button type="button" class={button.Root} onclick={() => imageCropper().setZoom(imageCropper().zoom + 0.1)}>
       <ZoomInIcon />
     </button>
   </div>

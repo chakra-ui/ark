@@ -20,6 +20,10 @@
     {
       "matchPackageNames": ["@testing-library/vue", "storybook-solidjs-vite"],
       "enabled": false
+    },
+    {
+      "matchPackageNames": ["better-auth"],
+      "allowedVersions": "<1.5.0"
     }
   ]
 }

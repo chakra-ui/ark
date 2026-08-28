@@ -1,16 +1,18 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useListboxContext } from './use-listbox-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useListboxContext } from './use-listbox-context.ts'
 
 export interface ListboxLabelBaseProps extends PolymorphicProps {}
-export interface ListboxLabelProps extends HTMLProps<'label'>, ListboxLabelBaseProps {}
+export interface ListboxLabelProps extends HTMLProps<'span'>, ListboxLabelBaseProps {}
 
-export const ListboxLabel = forwardRef<HTMLLabelElement, ListboxLabelProps>((props, ref) => {
+export const ListboxLabel = forwardRef<HTMLSpanElement, ListboxLabelProps>((props, ref) => {
   const listbox = useListboxContext()
   const mergedProps = mergeProps(listbox.getLabelProps(), props)
 
-  return <ark.label {...mergedProps} ref={ref} />
+  return <ark.span {...mergedProps} ref={ref} />
 })
 
 ListboxLabel.displayName = 'ListboxLabel'

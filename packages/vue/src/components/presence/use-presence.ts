@@ -1,8 +1,8 @@
 import * as presence from '@zag-js/presence'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { type MaybeRef, type VNodeRef, computed, ref, toValue, watch } from 'vue'
-import type { EmitFn, Optional } from '../../types'
-import type { RootEmits } from './presence.types'
+import type { EmitFn, Optional } from '../../types.ts'
+import type { RootEmits } from './presence.types.ts'
 
 export interface UsePresenceProps extends Optional<presence.Props, 'present'> {
   /**
@@ -32,6 +32,7 @@ export const usePresence = (props: MaybeRef<UsePresenceProps>, emit?: EmitFn<Roo
     const presenceProps = toValue(props)
     return {
       present: presenceProps.present,
+      onEnterComplete: () => emit?.('enterComplete'),
       onExitComplete: () => emit?.('exitComplete'),
     }
   })
@@ -53,6 +54,9 @@ export const usePresence = (props: MaybeRef<UsePresenceProps>, emit?: EmitFn<Roo
       if (node) {
         api.value.setNode(node)
       }
+    } else {
+      service.refs.set('node', null)
+      service.refs.set('styles', null)
     }
   })
 

@@ -3,10 +3,10 @@
   "compilerOptions": {
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
-    "baseUrl": ".",
     "paths": {
       "styles/*": ["../../.storybook/modules/*"]
     },
+    "ignoreDeprecations": "6.0",
     "noPropertyAccessFromIndexSignature": false
   },
   "include": ["src", "../../.storybook/modules/css-modules.d.ts"]

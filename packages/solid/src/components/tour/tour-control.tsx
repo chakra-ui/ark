@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { tourAnatomy } from './tour.anatomy'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { tourAnatomy } from './tour.anatomy.ts'
 
 export interface TourControlBaseProps extends PolymorphicProps<'div'> {}
 export interface TourControlProps extends HTMLProps<'div'>, TourControlBaseProps {}

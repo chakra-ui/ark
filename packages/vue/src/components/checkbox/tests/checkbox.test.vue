@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { CheckIcon, MinusIcon } from 'lucide-vue-next'
-import { Checkbox, type CheckboxRootEmits, type CheckboxRootProps } from '../'
-import { useForwardPropsEmits } from '../../..'
+import { Checkbox, type CheckboxRootEmits, type CheckboxRootProps } from '@ark-ui/vue/checkbox'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<CheckboxRootProps>()
 const emits = defineEmits<CheckboxRootEmits>()

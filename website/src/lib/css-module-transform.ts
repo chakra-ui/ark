@@ -1,43 +1,42 @@
-type Transform = (code: string) => string
+const cssModuleImportPattern = /from\s+['"]styles\/([^'"]+\.module\.css)['"]/g
+export const stripCss = (code: string): string =>
+  code
+    .replace(/import\s+\w+\s+from\s+['"]styles\/[^'"]+\.module\.css['"][ \t]*;?[ \t]*\n/g, '')
+    .replace(/\s*className=\{\w+\.[^}]+\}/g, '')
+    .replace(/\s*className=\{`\$\{\w+\.[^}]+\}`\}/g, '')
+    .replace(/\s*:class="\w+\.[^"]+"/g, '')
+    .replace(/\s*class=\{\w+\.[^}]+\}/g, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim()
 
-const compose =
-  (...fns: Transform[]): Transform =>
-  (code) =>
-    fns.reduce((acc, fn) => fn(acc), code)
+export const rewriteCssImports = (code: string): string =>
+  code.replace(cssModuleImportPattern, (_match, filename: string) => `from './${filename}'`)
 
-const createReplacer =
-  (pattern: RegExp, replacement: string): Transform =>
-  (code) =>
-    code.replace(pattern, replacement)
+export const getCssFiles = (cssModules: Record<string, string>): Record<string, string> =>
+  Object.fromEntries(
+    Object.entries(cssModules)
+      .filter(([filename]) => filename.endsWith('.module.css'))
+      .map(([filename, content]) => [`src/${filename}`, content]),
+  )
 
-const stripCssModuleImports = createReplacer(
-  /import\s+\w+\s+from\s+['"]styles\/[^'"]+\.module\.css['"][ \t]*;?[ \t]*\n/g,
-  '',
-)
+export const getCssModules = (cssModules: Record<string, string>): Array<[string, string]> =>
+  Object.entries(cssModules)
+    .filter(([filename]) => filename.endsWith('.module.css'))
+    .sort(([a], [b]) => a.localeCompare(b))
 
-const stripReactClassName = createReplacer(/\s*className=\{\w+\.[^}]+\}/g, '')
+export const getPrimaryCssModules = (
+  cssModules: Record<string, string>,
+  component?: string,
+): Array<[string, string]> => {
+  const modules = getCssModules(cssModules)
+  if (!component) return modules
 
-const stripReactClassNameTemplateLiteral = createReplacer(/\s*className=\{`\$\{\w+\.[^}]+\}`\}/g, '')
+  const candidates = new Set([`${component}.module.css`])
 
-const stripVueClass = createReplacer(/\s*:class="\w+\.[^"]+"/g, '')
+  if (component === 'progress-circular' || component === 'progress-linear') {
+    candidates.add('progress.module.css')
+  }
 
-const stripSvelteClass = createReplacer(/\s*class=\{\w+\.[^}]+\}/g, '')
-
-const collapseEmptyLines = createReplacer(/\n{3,}/g, '\n\n')
-
-const trim: Transform = (code) => code.trim()
-
-export const stripCssModuleCode = compose(
-  stripCssModuleImports,
-  stripReactClassName,
-  stripReactClassNameTemplateLiteral,
-  stripVueClass,
-  stripSvelteClass,
-  collapseEmptyLines,
-  trim,
-)
-
-export const transformCssModuleImports = createReplacer(
-  /from\s+['"]styles\/[^'"]+\.module\.css['"]/g,
-  "from './index.module.css'",
-)
+  const primaryModules = modules.filter(([filename]) => candidates.has(filename))
+  return primaryModules.length > 0 ? primaryModules : modules
+}

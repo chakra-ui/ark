@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { LabelHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ColorPickerLabelBaseProps extends PolymorphicProps {}
 export interface ColorPickerLabelProps
@@ -13,9 +13,9 @@ export interface ColorPickerLabelProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useColorPickerContext } from './use-color-picker-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useColorPickerContext } from './use-color-picker-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ColorPickerLabelProps>()
 const colorPicker = useColorPickerContext()

@@ -48,7 +48,9 @@
                     <DatePicker.TableRow class={styles.TableRow}>
                       {#each week as day}
                         <DatePicker.TableCell class={styles.TableCell} value={day}>
-                          <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>{day.day}</DatePicker.TableCellTrigger>
+                          <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>
+                            {day.day}
+                          </DatePicker.TableCellTrigger>
                         </DatePicker.TableCell>
                       {/each}
                     </DatePicker.TableRow>

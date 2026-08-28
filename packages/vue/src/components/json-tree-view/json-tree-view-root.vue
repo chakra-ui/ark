@@ -1,9 +1,9 @@
 <script lang="ts">
 import type { JsonNode } from '@zag-js/json-tree-utils'
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
-import type { TreeViewRootBaseProps } from '../tree-view'
-import type { JsonTreeViewOptions } from './json-tree-view-props-context'
+import type { BooleanDefaults } from '../../types.ts'
+import type { TreeViewRootBaseProps } from '../tree-view/index.ts'
+import type { JsonTreeViewOptions } from './json-tree-view-props-context.ts'
 
 export interface JsonTreeViewRootBaseProps
   extends JsonTreeViewOptions, Omit<TreeViewRootBaseProps<JsonNode>, 'collection'> {
@@ -29,10 +29,10 @@ export interface JsonTreeViewRootProps
 <script setup lang="ts">
 import { getRootNode, nodeToString, nodeToValue } from '@zag-js/json-tree-utils'
 import { computed } from 'vue'
-import { createSplitProps } from '../create-split-props'
-import { TreeView, createTreeCollection } from '../tree-view'
-import { getBranchValues } from './get-branch-value'
-import { JsonTreeViewPropsProvider } from './json-tree-view-props-context'
+import { createSplitProps } from '../create-split-props.ts'
+import { TreeView, createTreeCollection } from '../tree-view/index.ts'
+import { getBranchValues } from './get-branch-value.ts'
+import { JsonTreeViewPropsProvider } from './json-tree-view-props-context.ts'
 
 const props = withDefaults(defineProps<JsonTreeViewRootProps>(), {
   expandOnClick: undefined,

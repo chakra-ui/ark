@@ -1,6 +1,8 @@
-import { useControllableState } from '../../utils/use-controllable-state'
-import { useEvent } from '../../utils/use-event'
-import { useFieldsetContext } from '../fieldset'
+'use client'
+
+import { useControllableState } from '../../utils/use-controllable-state.ts'
+import { useEvent } from '../../utils/use-event.ts'
+import { useFieldsetContext } from '../fieldset/index.ts'
 
 export interface UseCheckboxGroupProps {
   /**

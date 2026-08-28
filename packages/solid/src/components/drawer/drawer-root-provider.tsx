@@ -1,8 +1,8 @@
 import type { JSX } from 'solid-js'
-import { PresenceProvider, splitPresenceProps, usePresence, type UsePresenceProps } from '../presence'
-import type { UseDrawerReturn } from './use-drawer'
-import { DrawerProvider } from './use-drawer-context'
-import { RenderStrategyProvider, splitRenderStrategyProps } from '../../utils/render-strategy'
+import { PresenceProvider, splitPresenceProps, usePresence, type UsePresenceProps } from '../presence/index.tsx'
+import type { UseDrawerReturn } from './use-drawer.ts'
+import { DrawerProvider } from './use-drawer-context.ts'
+import { RenderStrategyProvider, splitRenderStrategyProps } from '../../utils/render-strategy.ts'
 import { mergeProps } from '@zag-js/solid'
 
 interface RootProviderProps {

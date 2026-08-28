@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ColorPicker, parseColor } from '../..'
-import { Field, type FieldRootProps } from '../../field'
+import { ColorPicker, parseColor } from '@ark-ui/vue/color-picker'
+import { Field, type FieldRootProps } from '@ark-ui/vue/field'
 
 const props = defineProps<FieldRootProps>()
 </script>

@@ -1,6 +1,6 @@
 import { createContext } from '$lib/utils/create-context'
-import type { CollectionItem } from '../collection'
-import type { UseComboboxReturn } from './use-combobox.svelte'
+import type { CollectionItem } from '../collection/index.ts'
+import type { UseComboboxReturn } from './use-combobox.svelte.ts'
 
 export interface UseComboboxContext<T extends CollectionItem> extends UseComboboxReturn<T> {}
 

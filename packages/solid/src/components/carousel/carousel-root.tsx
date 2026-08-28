@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseCarouselProps, useCarousel } from './use-carousel'
-import { CarouselProvider } from './use-carousel-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { type UseCarouselProps, useCarousel } from './use-carousel.ts'
+import { CarouselProvider } from './use-carousel-context.ts'
 
 export interface CarouselRootBaseProps extends UseCarouselProps, PolymorphicProps<'div'> {}
 export interface CarouselRootProps extends HTMLProps<'div'>, CarouselRootBaseProps {}

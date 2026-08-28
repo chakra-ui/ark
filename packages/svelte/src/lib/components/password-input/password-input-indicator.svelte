@@ -15,8 +15,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { usePasswordInputContext } from './use-password-input-context'
+  import { Ark } from '../factory/index.ts'
+  import { usePasswordInputContext } from './use-password-input-context.ts'
 
   let { ref = $bindable(null), fallback, children, ...props }: PasswordInputIndicatorProps = $props()
   const passwordInput = usePasswordInputContext()

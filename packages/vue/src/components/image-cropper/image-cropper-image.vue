@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ImgHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ImageCropperImageBaseProps extends PolymorphicProps {}
 export interface ImageCropperImageProps
@@ -13,9 +13,9 @@ export interface ImageCropperImageProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useImageCropperContext } from './use-image-cropper-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useImageCropperContext } from './use-image-cropper-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ImageCropperImageProps>()
 const imageCropper = useImageCropperContext()

@@ -3,60 +3,60 @@ export {
   CarouselAutoplayIndicator as AutoplayIndicator,
   type CarouselAutoplayIndicatorBaseProps as AutoplayIndicatorBaseProps,
   type CarouselAutoplayIndicatorProps as AutoplayIndicatorProps,
-} from './carousel-autoplay-indicator'
+} from './carousel-autoplay-indicator.tsx'
 export {
   CarouselProgressText as ProgressText,
   type CarouselProgressTextBaseProps as ProgressTextBaseProps,
   type CarouselProgressTextProps as ProgressTextProps,
-} from './carousel-progress-text'
+} from './carousel-progress-text.tsx'
 export {
   CarouselAutoplayTrigger as AutoplayTrigger,
   type CarouselAutoplayTriggerBaseProps as AutoplayTriggerBaseProps,
   type CarouselAutoplayTriggerProps as AutoplayTriggerProps,
-} from './carousel-autoplay-trigger'
-export { CarouselContext as Context, type CarouselContextProps as ContextProps } from './carousel-context'
+} from './carousel-autoplay-trigger.tsx'
+export { CarouselContext as Context, type CarouselContextProps as ContextProps } from './carousel-context.tsx'
 export {
   CarouselControl as Control,
   type CarouselControlBaseProps as ControlBaseProps,
   type CarouselControlProps as ControlProps,
-} from './carousel-control'
+} from './carousel-control.tsx'
 export {
   CarouselIndicator as Indicator,
   type CarouselIndicatorBaseProps as IndicatorBaseProps,
   type CarouselIndicatorProps as IndicatorProps,
-} from './carousel-indicator'
+} from './carousel-indicator.tsx'
 export {
   CarouselIndicatorGroup as IndicatorGroup,
   type CarouselIndicatorGroupBaseProps as IndicatorGroupBaseProps,
   type CarouselIndicatorGroupProps as IndicatorGroupProps,
-} from './carousel-indicator-group'
+} from './carousel-indicator-group.tsx'
 export {
   CarouselItem as Item,
   type CarouselItemBaseProps as ItemBaseProps,
   type CarouselItemProps as ItemProps,
-} from './carousel-item'
+} from './carousel-item.tsx'
 export {
   CarouselItemGroup as ItemGroup,
   type CarouselItemGroupBaseProps as ItemGroupBaseProps,
   type CarouselItemGroupProps as ItemGroupProps,
-} from './carousel-item-group'
+} from './carousel-item-group.tsx'
 export {
   CarouselNextTrigger as NextTrigger,
   type CarouselNextTriggerBaseProps as NextTriggerBaseProps,
   type CarouselNextTriggerProps as NextTriggerProps,
-} from './carousel-next-trigger'
+} from './carousel-next-trigger.tsx'
 export {
   CarouselPrevTrigger as PrevTrigger,
   type CarouselPrevTriggerBaseProps as PrevTriggerBaseProps,
   type CarouselPrevTriggerProps as PrevTriggerProps,
-} from './carousel-prev-trigger'
+} from './carousel-prev-trigger.tsx'
 export {
   CarouselRoot as Root,
   type CarouselRootBaseProps as RootBaseProps,
   type CarouselRootProps as RootProps,
-} from './carousel-root'
+} from './carousel-root.tsx'
 export {
   CarouselRootProvider as RootProvider,
   type CarouselRootProviderBaseProps as RootProviderBaseProps,
   type CarouselRootProviderProps as RootProviderProps,
-} from './carousel-root-provider'
+} from './carousel-root-provider.tsx'

@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { RootProps } from './scroll-area.types'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootProps } from './scroll-area.types.ts'
 
 export interface ScrollAreaRootBaseProps extends RootProps, PolymorphicProps {}
 export interface ScrollAreaRootProps
@@ -14,10 +14,10 @@ export interface ScrollAreaRootProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { useScrollArea } from './use-scroll-area'
-import { ScrollAreaProvider } from './use-scroll-area-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { useScrollArea } from './use-scroll-area.ts'
+import { ScrollAreaProvider } from './use-scroll-area-context.ts'
 
 const props = defineProps<ScrollAreaRootBaseProps>()
 

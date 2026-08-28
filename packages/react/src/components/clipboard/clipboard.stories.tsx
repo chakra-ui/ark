@@ -6,10 +6,10 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
-export { Context } from './examples/context'
-export { Controlled } from './examples/controlled'
-export { CopyStatus } from './examples/copy-status'
-export { Timeout } from './examples/timeout'
-export { RootProvider } from './examples/root-provider'
-export { ValueText } from './examples/value-text'
+export { Basic } from './examples/basic.tsx'
+export { Context } from './examples/context.tsx'
+export { Controlled } from './examples/controlled.tsx'
+export { CopyStatus } from './examples/copy-status.tsx'
+export { Timeout } from './examples/timeout.tsx'
+export { RootProvider } from './examples/root-provider.tsx'
+export { ValueText } from './examples/value-text.tsx'

@@ -14,7 +14,7 @@ export const Nested = () => {
             <Popover.Description className={styles.Description}>
               Manage your preferences and account settings.
             </Popover.Description>
-            <Popover.Root positioning={{ placement: 'right' }}>
+            <Popover.Root lazyMount unmountOnExit positioning={{ placement: 'right' }}>
               <Popover.Trigger className={button.Root}>Advanced</Popover.Trigger>
               <Portal>
                 <Popover.Positioner className={styles.Positioner}>

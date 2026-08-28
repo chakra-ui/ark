@@ -14,7 +14,7 @@
     /**
      * The toaster instance.
      */
-    toaster: CreateToasterReturn
+    toaster: CreateToasterReturn<any>
     /**
      * The children of the toaster.
      */

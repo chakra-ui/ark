@@ -18,8 +18,8 @@ export {
   type MarqueeViewportBaseProps,
   type MarqueeViewportProps,
 } from './marquee-viewport.svelte'
-export { marqueeAnatomy } from './marquee.anatomy'
-export { useMarquee, type UseMarqueeProps, type UseMarqueeReturn } from './use-marquee.svelte'
-export { useMarqueeContext, type UseMarqueeContext } from './use-marquee-context'
+export { marqueeAnatomy } from './marquee.anatomy.ts'
+export { useMarquee, type UseMarqueeProps, type UseMarqueeReturn } from './use-marquee.svelte.ts'
+export { useMarqueeContext, type UseMarqueeContext } from './use-marquee-context.ts'
 
-export * as Marquee from './marquee'
+export * as Marquee from './marquee.ts'

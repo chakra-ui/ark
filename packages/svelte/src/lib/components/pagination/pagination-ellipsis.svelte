@@ -8,12 +8,14 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { usePaginationContext } from './use-pagination-context'
+  import { Ark } from '../factory/index.ts'
+  import { createSplitProps } from '$lib/utils/create-split-props'
+  import { usePaginationContext } from './use-pagination-context.ts'
 
   let { ref = $bindable(null), ...props }: PaginationEllipsisProps = $props()
   const pagination = usePaginationContext()
-  const mergedProps = $derived(mergeProps(pagination().getEllipsisProps(props), props))
+  const [ellipsisProps, localProps] = $derived(createSplitProps<EllipsisProps>()(props, ['index']))
+  const mergedProps = $derived(mergeProps(pagination().getEllipsisProps(ellipsisProps), localProps))
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { UseHoverCardContext } from './use-hover-card-context'
+  import type { UseHoverCardContext } from './use-hover-card-context.ts'
 
   export interface HoverCardContextProps {
     render: Snippet<[UseHoverCardContext]>
@@ -8,7 +8,7 @@
 </script>
 
 <script lang="ts">
-  import { useHoverCardContext } from './use-hover-card-context'
+  import { useHoverCardContext } from './use-hover-card-context.ts'
 
   const { render }: HoverCardContextProps = $props()
   const context = useHoverCardContext()

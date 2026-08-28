@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
+    "allowImportingTsExtensions": true,
     "allowJs": true,
-    "baseUrl": ".",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
@@ -23,7 +23,9 @@
     ],
     "paths": {
       "~/*": ["./src/*"],
-      "@examples/*": ["../packages/react/src/components/*"]
+      "@examples/*": ["../packages/react/src/components/*", "../packages/react/src/providers/*"],
+      ".velite": ["./.velite"],
+      "styled-system/*": ["./styled-system/*"]
     }
   },
   "include": ["next-env.d.ts", "global-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

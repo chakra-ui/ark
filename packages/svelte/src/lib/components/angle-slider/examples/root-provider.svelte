@@ -22,7 +22,5 @@
     <AngleSlider.HiddenInput />
   </AngleSlider.RootProvider>
 
-  <button class={button.Root} onclick={() => angleSlider().setValue(90)}>
-    Set to 90
-  </button>
+  <button class={button.Root} onclick={() => angleSlider().setValue(90)}>Set to 90</button>
 </div>

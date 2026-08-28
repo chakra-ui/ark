@@ -8,10 +8,10 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useFileUploadContext } from './use-file-upload-context'
-  import { FileUploadItemGroupPropsProvider } from './use-file-upload-item-group-props-context'
-  import { createSplitProps } from '../../utils/create-split-props'
+  import { Ark } from '../factory/index.ts'
+  import { useFileUploadContext } from './use-file-upload-context.ts'
+  import { FileUploadItemGroupPropsProvider } from './use-file-upload-item-group-props-context.ts'
+  import { createSplitProps } from '../../utils/create-split-props.ts'
 
   let { ref = $bindable(null), ...props }: FileUploadItemGroupProps = $props()
   const fileUpload = useFileUploadContext()

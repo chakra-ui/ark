@@ -1,6 +1,6 @@
 import type { Accessor } from '$lib/types'
 import { createContext } from '$lib/utils/create-context'
-import type { UseMenuReturn } from './use-menu.svelte'
+import type { UseMenuReturn } from './use-menu.svelte.ts'
 
 export type UseMenuContext = Accessor<ReturnType<UseMenuReturn>['api']>
 

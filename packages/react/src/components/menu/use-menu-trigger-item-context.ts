@@ -1,5 +1,7 @@
-import { createContext } from '../../utils/create-context'
-import type { UseMenuReturn } from './use-menu'
+'use client'
+
+import { createContext } from '../../utils/create-context.ts'
+import type { UseMenuReturn } from './use-menu.ts'
 
 export type UseMenuTriggerItemContext = () => ReturnType<UseMenuReturn['api']['getTriggerItemProps']> | undefined
 

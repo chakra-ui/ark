@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ViewportProps } from '@zag-js/navigation-menu'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface NavigationMenuViewportPositionerBaseProps extends ViewportProps, PolymorphicProps {}
 export interface NavigationMenuViewportPositionerProps
@@ -15,10 +15,10 @@ export interface NavigationMenuViewportPositionerProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { useNavigationMenuContext } from './use-navigation-menu-context'
-import { setNavigationMenuViewportPropsContext } from './use-navigation-menu-viewport-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
+import { setNavigationMenuViewportPropsContext } from './use-navigation-menu-viewport-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<NavigationMenuViewportPositionerProps>()
 const navigationMenu = useNavigationMenuContext()

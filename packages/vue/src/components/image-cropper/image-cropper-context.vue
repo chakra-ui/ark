@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseImageCropperContext } from './use-image-cropper-context'
+import type { UseImageCropperContext } from './use-image-cropper-context.ts'
 
 export interface ImageCropperContextProps extends SlotsType<{
   default: UnwrapRef<UseImageCropperContext>
@@ -8,7 +8,7 @@ export interface ImageCropperContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useImageCropperContext } from './use-image-cropper-context'
+import { useImageCropperContext } from './use-image-cropper-context.ts'
 
 const imageCropper = useImageCropperContext()
 

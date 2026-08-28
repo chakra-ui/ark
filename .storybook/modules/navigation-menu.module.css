@@ -20,7 +20,7 @@
 .Item {
   position: relative;
 
-  [data-variant="viewport"] & {
+  [data-variant='viewport'] & {
     position: static;
   }
 }
@@ -198,7 +198,7 @@
     width 250ms ease;
   top: calc(var(--indicator-size) * -1);
 
-  [data-variant="viewport"] & {
+  [data-variant='viewport'] & {
     top: unset;
     bottom: calc(var(--indicator-size) * -1);
   }

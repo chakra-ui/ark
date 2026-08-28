@@ -1,9 +1,9 @@
+import { ColorPicker, parseColor } from '@ark-ui/react/color-picker'
+import { Field } from '@ark-ui/react/field'
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { ColorPicker, parseColor } from '../'
-import { Field } from '../../field'
-import { ComponentUnderTest } from './basic'
+import { ComponentUnderTest } from './basic.tsx'
 
 describe('ColorPicker', () => {
   it('should have no a11y violations', async () => {

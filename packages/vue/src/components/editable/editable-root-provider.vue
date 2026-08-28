@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseEditableReturn } from './use-editable'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseEditableReturn } from './use-editable.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseEditableReturn>
@@ -19,9 +19,9 @@ export interface EditableRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { EditableProvider } from './use-editable-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { EditableProvider } from './use-editable-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<EditableRootProviderProps>()
 const editable = computed(() => props.value)

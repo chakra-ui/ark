@@ -1,7 +1,7 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { CollectionItem } from '../collection'
-  import type { UseComboboxContext } from './use-combobox-context'
+  import type { CollectionItem } from '../collection/index.ts'
+  import type { UseComboboxContext } from './use-combobox-context.ts'
 
   export interface ComboboxContextProps<T extends CollectionItem> {
     render: Snippet<[UseComboboxContext<T>]>
@@ -9,7 +9,7 @@
 </script>
 
 <script lang="ts" generics="T extends CollectionItem">
-  import { useComboboxContext } from './use-combobox-context'
+  import { useComboboxContext } from './use-combobox-context.ts'
 
   const { render }: ComboboxContextProps<T> = $props()
 

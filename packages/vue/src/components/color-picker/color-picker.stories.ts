@@ -4,6 +4,7 @@ import BasicExample from './examples/basic.vue'
 import ControlledExample from './examples/controlled.vue'
 import DisabledExample from './examples/disabled.vue'
 import InlineExample from './examples/inline.vue'
+import InsideDialogExample from './examples/inside-dialog.vue'
 import InputOnlyExample from './examples/input-only.vue'
 import OpenControlledExample from './examples/open-controlled.vue'
 import RootProviderExample from './examples/root-provider.vue'
@@ -43,6 +44,13 @@ export const Disabled = {
 export const Inline = {
   render: () => ({
     components: { Component: InlineExample },
+    template: '<Component />',
+  }),
+}
+
+export const InsideDialog = {
+  render: () => ({
+    components: { Component: InsideDialogExample },
     template: '<Component />',
   }),
 }

@@ -7,6 +7,11 @@ export interface RootProps {
    */
   addOnPaste?: boolean
   /**
+   * Whether to allow duplicate tags
+   * @default false
+   */
+  allowDuplicates?: boolean
+  /**
    * Whether to allow tags to exceed max. In this case,
    * we'll attach `data-invalid` to the root
    */
@@ -107,6 +112,10 @@ export interface RootProps {
    * Whether the tags input is required
    */
   required?: boolean
+  /**
+   * Function to sanitize the tag value before adding it
+   */
+  sanitizeValue?: (value: string) => string
   /**
    * Specifies the localized strings that identifies the accessibility elements and their states
    */

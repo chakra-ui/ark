@@ -16,6 +16,7 @@ export const useProgress = (props: MaybeFunction<UseProgressProps>) => {
     const resolvedProps = runIfFn(props)
     return {
       dir: locale().dir,
+      locale: locale().locale,
       getRootNode: env().getRootNode,
       ...resolvedProps,
     }

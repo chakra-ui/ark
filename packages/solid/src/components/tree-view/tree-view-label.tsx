@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useTreeViewContext } from './use-tree-view-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useTreeViewContext } from './use-tree-view-context.ts'
 
 export interface TreeViewLabelBaseProps extends PolymorphicProps<'h3'> {}
 export interface TreeViewLabelProps extends HTMLProps<'h3'>, TreeViewLabelBaseProps {}

@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseFieldsetReturn } from './use-fieldset.svelte'
+  import type { UseFieldsetReturn } from './use-fieldset.svelte.ts'
 
   export interface FieldsetRootProviderBaseProps extends PolymorphicProps<'fieldset'>, RefAttribute {
     value: UseFieldsetReturn
@@ -10,14 +10,14 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { FieldsetProvider } from './use-fieldset-context'
+  import { Ark } from '../factory/index.ts'
+  import { FieldsetProvider } from './use-fieldset-context.ts'
 
-  let { ref = $bindable(null), ...props }: FieldsetRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: FieldsetRootProviderProps = $props()
 
-  const mergedProps = $derived(mergeProps(props.value().getRootProps(), props))
+  const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  FieldsetProvider(props.value)
+  FieldsetProvider(() => value())
 </script>
 
 <Ark as="fieldset" bind:ref {...mergedProps} />

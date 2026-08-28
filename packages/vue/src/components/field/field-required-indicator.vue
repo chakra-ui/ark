@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface FieldRequiredIndicatorBaseProps extends PolymorphicProps {}
 
@@ -14,9 +14,9 @@ export interface FieldRequiredIndicatorProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useFieldContext } from './use-field-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useFieldContext } from './use-field-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<FieldRequiredIndicatorProps>()
 

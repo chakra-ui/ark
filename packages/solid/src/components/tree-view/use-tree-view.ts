@@ -1,10 +1,10 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import * as treeView from '@zag-js/tree-view'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { MaybeAccessor, Optional } from '../../types'
-import { runIfFn } from '../../utils/run-if-fn'
-import type { TreeCollection, TreeNode } from '../collection'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.tsx'
+import type { MaybeAccessor, Optional } from '../../types.ts'
+import { runIfFn } from '../../utils/run-if-fn.ts'
+import type { TreeCollection, TreeNode } from '../collection/index.tsx'
 
 export interface UseTreeViewProps<T extends TreeNode> extends Optional<
   Omit<treeView.Props, 'dir' | 'getRootNode' | 'colllection'>,

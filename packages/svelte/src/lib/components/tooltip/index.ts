@@ -1,4 +1,7 @@
-export type { OpenChangeDetails as TooltipOpenChangeDetails } from '@zag-js/tooltip'
+export type {
+  OpenChangeDetails as TooltipOpenChangeDetails,
+  TriggerValueChangeDetails as TooltipTriggerValueChangeDetails,
+} from '@zag-js/tooltip'
 export { default as TooltipArrow, type TooltipArrowBaseProps, type TooltipArrowProps } from './tooltip-arrow.svelte'
 export {
   default as TooltipArrowTip,
@@ -27,8 +30,8 @@ export {
   type TooltipTriggerBaseProps,
   type TooltipTriggerProps,
 } from './tooltip-trigger.svelte'
-export { tooltipAnatomy } from './tooltip.anatomy'
-export { useTooltipContext, type UseTooltipContext } from './use-tooltip-context'
-export { useTooltip, type UseTooltipProps, type UseTooltipReturn } from './use-tooltip.svelte'
+export { tooltipAnatomy } from './tooltip.anatomy.ts'
+export { useTooltipContext, type UseTooltipContext } from './use-tooltip-context.ts'
+export { useTooltip, type UseTooltipProps, type UseTooltipReturn } from './use-tooltip.svelte.ts'
 
-export * as Tooltip from './tooltip'
+export * as Tooltip from './tooltip.ts'

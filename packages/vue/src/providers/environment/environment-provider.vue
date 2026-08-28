@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { getDocument, getWindow } from '@zag-js/dom-query'
 import { computed, ref } from 'vue'
-import { runIfFn } from '../../utils/run-if-fn'
-import { EnvironmentContextProvider, type RootNode } from './use-environment-context'
+import { runIfFn } from '../../utils/run-if-fn.ts'
+import { EnvironmentContextProvider, type RootNode } from './use-environment-context.ts'
 
 export interface EnvironmentProviderProps {
   value?: RootNode | (() => RootNode)

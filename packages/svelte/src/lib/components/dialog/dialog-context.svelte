@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { UseDialogContext } from './use-dialog-context'
+  import type { UseDialogContext } from './use-dialog-context.ts'
 
   export interface DialogContextProps {
     children: Snippet<[UseDialogContext]>
@@ -8,7 +8,7 @@
 </script>
 
 <script lang="ts">
-  import { useDialogContext } from './use-dialog-context'
+  import { useDialogContext } from './use-dialog-context.ts'
 
   const { children }: DialogContextProps = $props()
 

@@ -1,5 +1,5 @@
-import { createContext } from '../../utils/create-context'
-import type { UseDatePickerReturn } from './use-date-picker'
+import { createContext } from '../../utils/create-context.ts'
+import type { UseDatePickerReturn } from './use-date-picker.ts'
 
 export interface UseDatePickerContext extends UseDatePickerReturn {}
 

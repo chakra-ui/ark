@@ -1,12 +1,12 @@
 import * as radioGroup from '@zag-js/radio-group'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
-import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { EmitFn, Optional } from '../../types'
-import { toBooleanValue } from '../../utils/boolean'
-import { cleanProps } from '../../utils/clean-props'
-import { useFieldsetContext } from '../fieldset'
-import type { RootEmits } from './radio-group.types'
+import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { EmitFn, Optional } from '../../types.ts'
+import { toBooleanValue } from '../../utils/boolean.ts'
+import { cleanProps } from '../../utils/clean-props.ts'
+import { useFieldsetContext } from '../fieldset/index.ts'
+import type { RootEmits } from './radio-group.types.ts'
 
 export interface UseRadioGroupProps extends Optional<Omit<radioGroup.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**

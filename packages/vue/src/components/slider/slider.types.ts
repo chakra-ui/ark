@@ -58,6 +58,12 @@ export interface RootProps {
    */
   invalid?: boolean
   /**
+   * The amount to increment or decrement the value by when the shift key is held,
+   * or the page up/down keys are pressed
+   * @default 10 * step
+   */
+  largeStep?: number
+  /**
    * The maximum value of the slider
    * @default 100
    */

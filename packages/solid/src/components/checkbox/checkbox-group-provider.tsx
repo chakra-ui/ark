@@ -1,8 +1,8 @@
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { checkboxAnatomy } from './checkbox.anatomy'
-import { CheckboxGroupContextProvider, type UseCheckboxGroupContext } from './use-checkbox-group-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { checkboxAnatomy } from './checkbox.anatomy.ts'
+import { CheckboxGroupContextProvider, type UseCheckboxGroupContext } from './use-checkbox-group-context.tsx'
 
 interface ProviderProps {
   value: UseCheckboxGroupContext

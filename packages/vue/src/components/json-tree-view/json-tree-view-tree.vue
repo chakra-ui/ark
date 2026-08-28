@@ -10,9 +10,9 @@ export interface JsonTreeViewTreeProps extends TreeViewTreeProps, JsonTreeViewTr
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { createSplitProps } from '../create-split-props'
+import { createSplitProps } from '../create-split-props.ts'
 import TreeViewTree from '../tree-view/tree-view-tree.vue'
-import { useTreeViewContext } from '../tree-view/use-tree-view-context'
+import { useTreeViewContext } from '../tree-view/use-tree-view-context.ts'
 import JsonTreeViewNode from './json-tree-view-node.vue'
 
 const props = defineProps<JsonTreeViewTreeProps>()

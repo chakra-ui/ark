@@ -1,0 +1,52 @@
+{
+  "Indicator": {
+    "props": {
+      "type": { "type": "'off' | 'on'", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "swap": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the swap is in the \"on\" state."
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "Accessor<UseSwapReturn>", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  }
+}

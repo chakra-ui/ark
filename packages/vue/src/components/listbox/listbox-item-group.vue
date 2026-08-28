@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ItemGroupProps } from '@zag-js/listbox'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ListboxItemGroupBaseProps extends Partial<ItemGroupProps>, PolymorphicProps {}
 export interface ListboxItemGroupProps
@@ -15,10 +15,10 @@ export interface ListboxItemGroupProps
 
 <script setup lang="ts">
 import { useId } from 'vue'
-import { ark } from '../factory'
-import { useListboxContext } from './use-listbox-context'
-import { ListboxItemGroupPropsProvider } from './use-listbox-item-group-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useListboxContext } from './use-listbox-context.ts'
+import { ListboxItemGroupPropsProvider } from './use-listbox-item-group-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<ListboxItemGroupProps>()
 

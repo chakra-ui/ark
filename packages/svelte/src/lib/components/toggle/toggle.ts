@@ -5,4 +5,4 @@ export {
   type ToggleRootBaseProps as RootBaseProps,
   type ToggleRootProps as RootProps,
 } from './toggle-root.svelte'
-export { toggleAnatomy } from './toggle.anatomy'
+export { toggleAnatomy } from './toggle.anatomy.ts'

@@ -1,5 +1,7 @@
-import { createContext } from '../../utils/create-context'
-import type { UseNavigationMenuReturn } from './use-navigation-menu'
+'use client'
+
+import { createContext } from '../../utils/create-context.ts'
+import type { UseNavigationMenuReturn } from './use-navigation-menu.ts'
 
 export interface UseNavigationMenuContext extends UseNavigationMenuReturn {}
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ColorPickerPositionerBaseProps extends PolymorphicProps {}
 export interface ColorPickerPositionerProps
@@ -13,10 +13,10 @@ export interface ColorPickerPositionerProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { usePresenceContext } from '../presence'
-import { useColorPickerContext } from './use-color-picker-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { usePresenceContext } from '../presence/index.ts'
+import { useColorPickerContext } from './use-color-picker-context.ts'
 
 defineProps<ColorPickerPositionerProps>()
 

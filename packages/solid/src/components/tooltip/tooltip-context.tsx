@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js'
-import { type UseTooltipContext, useTooltipContext } from './use-tooltip-context'
+import { type UseTooltipContext, useTooltipContext } from './use-tooltip-context.ts'
 
 export interface TooltipContextProps {
   children: (context: UseTooltipContext) => JSX.Element

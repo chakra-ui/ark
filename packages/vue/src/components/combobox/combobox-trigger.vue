@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { TriggerProps } from '@zag-js/combobox'
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ComboboxTriggerBaseProps extends TriggerProps, PolymorphicProps {}
 export interface ComboboxTriggerProps
@@ -14,8 +14,8 @@ export interface ComboboxTriggerProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useComboboxContext } from './use-combobox-context'
+import { ark } from '../factory.ts'
+import { useComboboxContext } from './use-combobox-context.ts'
 
 const props = defineProps<ComboboxTriggerProps>()
 const combobox = useComboboxContext()

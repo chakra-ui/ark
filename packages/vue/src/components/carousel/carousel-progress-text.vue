@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface CarouselProgressTextBaseProps extends PolymorphicProps {}
 export interface CarouselProgressTextProps
@@ -14,10 +14,10 @@ export interface CarouselProgressTextProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { carouselAnatomy } from './carousel.anatomy'
-import { useCarouselContext } from './use-carousel-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { carouselAnatomy } from './carousel.anatomy.ts'
+import { useCarouselContext } from './use-carousel-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const parts = carouselAnatomy.build()
 

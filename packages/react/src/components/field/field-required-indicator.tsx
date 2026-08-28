@@ -1,7 +1,9 @@
+'use client'
+
 import { mergeProps } from '@zag-js/core'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useFieldContext } from './use-field-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useFieldContext } from './use-field-context.ts'
 
 export interface FieldRequiredIndicatorBaseProps extends PolymorphicProps {
   fallback?: React.ReactNode | undefined

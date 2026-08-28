@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseSplitterProps } from './use-splitter.svelte'
+  import type { UseSplitterProps } from './use-splitter.svelte.ts'
 
   export interface SplitterRootBaseProps extends UseSplitterProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface SplitterRootProps extends Assign<HTMLProps<'div'>, SplitterRootBaseProps> {}
@@ -8,10 +8,10 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { splitSplitterProps } from './splitter-split-props.svelte'
-  import { SplitterProvider } from './use-splitter-context'
-  import { useSplitter } from './use-splitter.svelte'
+  import { Ark } from '../factory/index.ts'
+  import { splitSplitterProps } from './splitter-split-props.svelte.ts'
+  import { SplitterProvider } from './use-splitter-context.ts'
+  import { useSplitter } from './use-splitter.svelte.ts'
 
   let { ref = $bindable(null), size = $bindable<number[]>(), ...props }: SplitterRootProps = $props()
 

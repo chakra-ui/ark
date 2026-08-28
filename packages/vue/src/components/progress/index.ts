@@ -38,8 +38,8 @@ export {
   type ProgressValueTextProps,
 } from './progress-value-text.vue'
 export { default as ProgressView, type ProgressViewBaseProps, type ProgressViewProps } from './progress-view.vue'
-export { progressAnatomy } from './progress.anatomy'
-export { useProgress, type UseProgressProps, type UseProgressReturn } from './use-progress'
-export { useProgressContext, type UseProgressContext } from './use-progress-context'
+export { progressAnatomy } from './progress.anatomy.ts'
+export { useProgress, type UseProgressProps, type UseProgressReturn } from './use-progress.ts'
+export { useProgressContext, type UseProgressContext } from './use-progress-context.ts'
 
-export * as Progress from './progress'
+export * as Progress from './progress.ts'

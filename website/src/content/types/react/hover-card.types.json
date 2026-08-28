@@ -7,7 +7,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "ArrowTip": {
     "props": {
@@ -17,7 +18,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Content": {
     "props": {
@@ -27,7 +29,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Positioner": {
     "props": {
@@ -37,7 +40,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Root": {
     "props": {
@@ -52,10 +56,29 @@
         "isRequired": false,
         "description": "The initial open state of the hover card when rendered.\nUse when you don't need to control the open state of the hover card."
       },
-      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the hover card is disabled" },
-      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "defaultTriggerValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The initial trigger value when rendered.\nUse when you don't need to control the trigger value."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the hover card is disabled"
+      },
+      "hideMode": {
+        "type": "HideMode",
+        "defaultValue": "'display-none'",
+        "isRequired": false,
+        "description": "How to hide content when mounted but not present.\n- `'display-none'`: HTML `hidden` attribute. Effects stay alive.\n- `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
       "ids": {
-        "type": "Partial<{ trigger: string; content: string; positioner: string; arrow: string }>",
+        "type": "Partial<{\n  trigger: string | ((value?: string | undefined) => string)\n  content: string\n  positioner: string\n  arrow: string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the popover. Useful for composition."
       },
@@ -95,7 +118,16 @@
         "isRequired": false,
         "description": "Function called when the pointer is pressed down outside the component"
       },
-      "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the hover card" },
+      "onTriggerValueChange": {
+        "type": "(details: TriggerValueChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the trigger value changes."
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The controlled open state of the hover card"
+      },
       "openDelay": {
         "type": "number",
         "defaultValue": "600",
@@ -118,6 +150,11 @@
         "isRequired": false,
         "description": "Whether to allow the initial presence animation."
       },
+      "triggerValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The controlled trigger value"
+      },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",
@@ -128,7 +165,16 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseHoverCardReturn", "isRequired": true },
+      "value": {
+        "type": "UseHoverCardReturn",
+        "isRequired": true
+      },
+      "hideMode": {
+        "type": "HideMode",
+        "defaultValue": "'display-none'",
+        "isRequired": false,
+        "description": "How to hide content when mounted but not present.\n- `'display-none'`: HTML `hidden` attribute. Effects stay alive.\n- `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+      },
       "immediate": {
         "type": "boolean",
         "isRequired": false,
@@ -170,8 +216,14 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value that identifies this specific trigger"
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   }
 }

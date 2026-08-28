@@ -7,14 +7,14 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useFieldContext } from './use-field-context'
+  import { Ark } from '../factory/index.ts'
+  import { useFieldContext } from './use-field-context.ts'
 
   let { ref = $bindable(null), ...props }: FieldErrorTextProps = $props()
   const field = useFieldContext()
-  const mergedProps = $derived(mergeProps(field?.().getErrorTextProps() ?? {}, props))
+  const mergedProps = $derived(mergeProps(field?.()?.getErrorTextProps() ?? {}, props))
 </script>
 
-{#if field?.().invalid}
+{#if field?.()?.invalid}
   <Ark as="span" bind:ref {...mergedProps} />
 {/if}

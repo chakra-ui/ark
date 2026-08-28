@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseTimerContext } from './use-timer-context'
+import type { UseTimerContext } from './use-timer-context.ts'
 
 export interface TimerContextProps extends SlotsType<{
   default: UnwrapRef<UseTimerContext>
@@ -8,7 +8,7 @@ export interface TimerContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useTimerContext } from './use-timer-context'
+import { useTimerContext } from './use-timer-context.ts'
 
 const timer = useTimerContext()
 

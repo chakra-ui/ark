@@ -6,11 +6,11 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
-export { Context } from './examples/context'
-export { Controlled } from './examples/controlled'
-export { Controls } from './examples/controls'
-export { DoubleClick } from './examples/double-click'
-export { RootProvider } from './examples/root-provider'
-export { Textarea } from './examples/textarea'
-export { WithField } from './examples/with-field'
+export { Basic } from './examples/basic.tsx'
+export { Context } from './examples/context.tsx'
+export { Controlled } from './examples/controlled.tsx'
+export { Controls } from './examples/controls.tsx'
+export { DoubleClick } from './examples/double-click.tsx'
+export { RootProvider } from './examples/root-provider.tsx'
+export { Textarea } from './examples/textarea.tsx'
+export { WithField } from './examples/with-field.tsx'

@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import type { Popover } from '..'
-import { ComponentUnderTest } from './basic'
+import type { Popover } from '@ark-ui/react/popover'
+import { ComponentUnderTest } from './basic.tsx'
 
 export const ControlledComponentUnderTest = (props: Popover.RootProps) => {
   const [open, setOpen] = useState(false)

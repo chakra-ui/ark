@@ -24,6 +24,7 @@ import SelectTodayExample from './examples/select-today.vue'
 import FixedWeeksExample from './examples/fixed-weeks.vue'
 import FormExample from './examples/form.vue'
 import MaxSelectedDatesExample from './examples/max-selected-dates.vue'
+import CustomCalendarExample from './examples/custom-calendar.vue'
 
 const meta: Meta = {
   title: 'Components / DatePicker',
@@ -195,6 +196,13 @@ export const Form = {
 export const MaxSelectedDates = {
   render: () => ({
     components: { Component: MaxSelectedDatesExample },
+    template: '<Component />',
+  }),
+}
+
+export const CustomCalendar = {
+  render: () => ({
+    components: { Component: CustomCalendarExample },
     template: '<Component />',
   }),
 }

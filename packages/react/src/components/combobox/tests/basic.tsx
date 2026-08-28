@@ -1,7 +1,7 @@
-import { Combobox, createListCollection } from '../'
-import type { Optional } from '../../../types'
-import { Field } from '../../field'
-import { Portal } from '../../portal'
+import type { Optional } from '@ark-ui/react'
+import { Combobox, createListCollection } from '@ark-ui/react/combobox'
+import { Field } from '@ark-ui/react/field'
+import { Portal } from '@ark-ui/react/portal'
 
 interface Item {
   label: string

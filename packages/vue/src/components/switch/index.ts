@@ -19,8 +19,8 @@ export {
   type SwitchRootProps,
 } from './switch-root.vue'
 export { default as SwitchThumb, type SwitchThumbBaseProps, type SwitchThumbProps } from './switch-thumb.vue'
-export { switchAnatomy } from './switch.anatomy'
-export { useSwitch, type UseSwitchProps, type UseSwitchReturn } from './use-switch'
-export { useSwitchContext, type UseSwitchContext } from './use-switch-context'
+export { switchAnatomy } from './switch.anatomy.ts'
+export { useSwitch, type UseSwitchProps, type UseSwitchReturn } from './use-switch.ts'
+export { useSwitchContext, type UseSwitchContext } from './use-switch-context.ts'
 
-export * as Switch from './switch'
+export * as Switch from './switch.ts'

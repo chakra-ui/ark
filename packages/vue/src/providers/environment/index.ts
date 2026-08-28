@@ -7,4 +7,4 @@ export {
   type UseEnvironmentContext as EnvironmentContext,
   type RootNode,
   DEFAULT_ENVIRONMENT,
-} from './use-environment-context'
+} from './use-environment-context.ts'

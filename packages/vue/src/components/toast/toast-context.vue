@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseToastContext } from './use-toast-context'
+import type { UseToastContext } from './use-toast-context.ts'
 
 export interface ToastContextProps extends SlotsType<{
   default: UnwrapRef<UseToastContext>
@@ -8,7 +8,7 @@ export interface ToastContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useToastContext } from './use-toast-context'
+import { useToastContext } from './use-toast-context.ts'
 
 const toast = useToastContext()
 

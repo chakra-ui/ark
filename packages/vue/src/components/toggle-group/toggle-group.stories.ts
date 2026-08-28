@@ -4,6 +4,7 @@ import BasicExample from './examples/basic.vue'
 import ControlledExample from './examples/controlled.vue'
 import MultipleExample from './examples/multiple.vue'
 import RootProviderExample from './examples/root-provider.vue'
+import WithTooltipExample from './examples/with-tooltip.vue'
 
 const meta: Meta = {
   title: 'Components / Toggle Group',
@@ -35,6 +36,13 @@ export const Multiple = {
 export const RootProvider = {
   render: () => ({
     components: { Component: RootProviderExample },
+    template: '<Component />',
+  }),
+}
+
+export const WithTooltip = {
+  render: () => ({
+    components: { Component: WithTooltipExample },
     template: '<Component />',
   }),
 }

@@ -1,5 +1,5 @@
 import { DateFormatter } from '@internationalized/date'
-import { useLocaleContext } from './use-locale-context'
+import { useLocaleContext } from './use-locale-context.ts'
 import type { Accessor } from '$lib/types'
 
 export interface UseDateFormatterProps extends Intl.DateTimeFormatOptions {

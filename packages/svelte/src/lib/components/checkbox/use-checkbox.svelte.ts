@@ -4,8 +4,8 @@ import type { Accessor, Optional } from '$lib/types'
 import * as checkbox from '@zag-js/checkbox'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
-import { useFieldContext } from '../field'
-import { useCheckboxGroupContext } from './use-checkbox-group-context'
+import { useFieldContext } from '../field/index.ts'
+import { useCheckboxGroupContext } from './use-checkbox-group-context.ts'
 
 export interface UseCheckboxProps extends Optional<Omit<checkbox.Props, 'dir' | 'getRootNode'>, 'id'> {}
 

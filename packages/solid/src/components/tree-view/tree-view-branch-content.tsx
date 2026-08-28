@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
-import { createSplitProps } from '../../utils/create-split-props'
-import { Collapsible } from '../collapsible'
-import type { HTMLProps, PolymorphicProps } from '../factory'
-import { useTreeViewContext } from './use-tree-view-context'
-import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { Collapsible } from '../collapsible/index.tsx'
+import type { HTMLProps, PolymorphicProps } from '../factory.tsx'
+import { useTreeViewContext } from './use-tree-view-context.ts'
+import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
 
 export interface TreeViewBranchContentBaseProps extends PolymorphicProps<'div'> {}
 export interface TreeViewBranchContentProps extends HTMLProps<'div'>, TreeViewBranchContentBaseProps {}

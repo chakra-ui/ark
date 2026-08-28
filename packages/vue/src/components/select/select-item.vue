@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/select'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface SelectItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface SelectItemProps
@@ -15,11 +15,11 @@ export interface SelectItemProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { useSelectContext } from './use-select-context'
-import { SelectItemProvider } from './use-select-item-context'
-import { SelectItemPropsProvider } from './use-select-item-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useSelectContext } from './use-select-context.ts'
+import { SelectItemProvider } from './use-select-item-context.ts'
+import { SelectItemPropsProvider } from './use-select-item-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<SelectItemProps>()
 const select = useSelectContext()

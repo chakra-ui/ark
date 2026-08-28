@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface MenuArrowBaseProps extends PolymorphicProps {}
 export interface MenuArrowProps
@@ -13,9 +13,9 @@ export interface MenuArrowProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useMenuContext } from './use-menu-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useMenuContext } from './use-menu-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<MenuArrowProps>()
 const menu = useMenuContext()

@@ -1,5 +1,5 @@
 import { createSplitProps } from '$lib/utils/create-split-props'
-import type { UseSegmentGroupProps } from './use-segment-group.svelte'
+import type { UseSegmentGroupProps } from './use-segment-group.svelte.ts'
 
 const splitFn = createSplitProps<UseSegmentGroupProps>()
 

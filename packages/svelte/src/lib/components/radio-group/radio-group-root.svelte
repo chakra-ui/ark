@@ -1,7 +1,7 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { ValueChangeDetails } from '@zag-js/radio-group'
-  import type { UseRadioGroupProps } from './use-radio-group.svelte'
+  import type { UseRadioGroupProps } from './use-radio-group.svelte.ts'
 
   export interface RadioGroupRootEmits {
     valueChange: ValueChangeDetails
@@ -14,9 +14,9 @@
 <script lang="ts">
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { RadioGroupProvider } from './use-radio-group-context'
-  import { useRadioGroup } from './use-radio-group.svelte'
+  import { Ark } from '../factory/index.ts'
+  import { RadioGroupProvider } from './use-radio-group-context.ts'
+  import { useRadioGroup } from './use-radio-group.svelte.ts'
 
   let { ref = $bindable(null), value = $bindable(), ...props }: RadioGroupRootProps = $props()
   const providedId = $props.id()

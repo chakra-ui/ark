@@ -1,10 +1,10 @@
 import type { ChannelProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { ColorPickerChannelPropsProvider } from './use-color-picker-channel-props-context'
-import { useColorPickerContext } from './use-color-picker-context'
-import { useColorPickerFormatPropsContext } from './use-color-picker-format-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { ColorPickerChannelPropsProvider } from './use-color-picker-channel-props-context.ts'
+import { useColorPickerContext } from './use-color-picker-context.ts'
+import { useColorPickerFormatPropsContext } from './use-color-picker-format-context.ts'
 
 export interface ColorPickerChannelSliderBaseProps extends ChannelProps, PolymorphicProps<'div'> {}
 export interface ColorPickerChannelSliderProps extends HTMLProps<'div'>, ColorPickerChannelSliderBaseProps {}

@@ -1,5 +1,5 @@
 import type { Accessor } from 'solid-js'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export type RootNode = ShadowRoot | Document | Node
 

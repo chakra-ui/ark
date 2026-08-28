@@ -12,7 +12,7 @@ export {
   type ListCollection,
   useListCollection,
   type UseListCollectionProps,
-} from '../collection'
+} from '../collection/index.ts'
 export {
   default as SelectClearTrigger,
   type SelectClearTriggerBaseProps,
@@ -79,9 +79,9 @@ export {
   type SelectValueTextBaseProps,
   type SelectValueTextProps,
 } from './select-value-text.svelte'
-export { selectAnatomy } from './select.anatomy'
-export { useSelect, type UseSelectProps, type UseSelectReturn } from './use-select.svelte'
-export { useSelectContext, type UseSelectContext } from './use-select-context'
-export { useSelectItemContext, type UseSelectItemContext } from './use-select-item-context'
+export { selectAnatomy } from './select.anatomy.ts'
+export { useSelect, type UseSelectProps, type UseSelectReturn } from './use-select.svelte.ts'
+export { useSelectContext, type UseSelectContext } from './use-select-context.ts'
+export { useSelectItemContext, type UseSelectItemContext } from './use-select-item-context.ts'
 
-export * as Select from './select'
+export * as Select from './select.ts'

@@ -1,0 +1,34 @@
+{
+  "Indicator": {
+    "props": {
+      "type": { "type": "'on' | 'off'", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "lazyMount": { "type": "boolean", "isRequired": false, "description": "Whether to enable lazy mounting." },
+      "swap": { "type": "boolean", "isRequired": false, "description": "Whether the swap is in the \"on\" state." },
+      "unmountOnExit": { "type": "boolean", "isRequired": false, "description": "Whether to unmount on exit." }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseSwapReturn", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
+}

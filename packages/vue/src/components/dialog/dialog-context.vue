@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseDialogContext } from './use-dialog-context'
+import type { UseDialogContext } from './use-dialog-context.ts'
 
 export interface DialogContextProps extends SlotsType<{
   default: UnwrapRef<UseDialogContext>
@@ -8,7 +8,7 @@ export interface DialogContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useDialogContext } from './use-dialog-context'
+import { useDialogContext } from './use-dialog-context.ts'
 
 const dialog = useDialogContext()
 

@@ -41,8 +41,8 @@ export {
   type ClipboardValueTextProps,
   type ClipboardValueTextBaseProps,
 } from './clipboard-value-text.vue'
-export { useClipboard, type UseClipboardProps, type UseClipboardReturn } from './use-clipboard'
-export { useClipboardContext, type UseClipboardContext } from './use-clipboard-context'
-export { clipboardAnatomy } from './clipboard.anatomy'
+export { useClipboard, type UseClipboardProps, type UseClipboardReturn } from './use-clipboard.ts'
+export { useClipboardContext, type UseClipboardContext } from './use-clipboard-context.ts'
+export { clipboardAnatomy } from './clipboard.anatomy.ts'
 
-export * as Clipboard from './clipboard'
+export * as Clipboard from './clipboard.ts'

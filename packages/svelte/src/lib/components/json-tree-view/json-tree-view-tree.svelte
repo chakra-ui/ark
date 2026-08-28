@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { createSplitProps } from '../../utils/create-split-props'
-  import { TreeView, useTreeViewContext, type TreeViewTreeProps } from '../tree-view'
+  import { createSplitProps } from '../../utils/create-split-props.ts'
+  import { TreeView, useTreeViewContext, type TreeViewTreeProps } from '../tree-view/index.ts'
   import JsonTreeViewNode, { type JsonTreeViewNodeBaseProps } from './json-tree-view-node.svelte'
 
   export interface JsonTreeViewTreeBaseProps extends JsonTreeViewNodeBaseProps {}
@@ -10,7 +10,7 @@
   const props: JsonTreeViewTreeProps = $props()
 
   const splitTreeNodeProps = createSplitProps<JsonTreeViewNodeBaseProps>()
-  const [nodeProps, treeProps] = splitTreeNodeProps(props, ['arrow', 'indentGuide', 'renderValue'])
+  const [nodeProps, treeProps] = $derived(splitTreeNodeProps(props, ['arrow', 'indentGuide', 'renderValue']))
 
   const tree = useTreeViewContext()
   const children = $derived(tree().collection.getNodeChildren(tree().collection.rootNode))

@@ -9,8 +9,8 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { createSplitProps } from '$lib/utils/create-split-props'
-  import { Ark } from '../factory'
-  import { useToggleGroupContext } from './use-toggle-group-context'
+  import { Ark } from '../factory/index.ts'
+  import { useToggleGroupContext } from './use-toggle-group-context.ts'
 
   let { ref = $bindable(null), ...props }: ToggleGroupItemProps = $props()
 

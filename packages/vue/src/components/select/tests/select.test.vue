@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Select, type SelectRootEmits, type SelectRootProps, createListCollection } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { Select, type SelectRootEmits, type SelectRootProps, createListCollection } from '@ark-ui/vue/select'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 interface Item {
   label: string

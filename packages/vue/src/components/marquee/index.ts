@@ -23,8 +23,8 @@ export {
   type MarqueeViewportBaseProps,
   type MarqueeViewportProps,
 } from './marquee-viewport.vue'
-export { marqueeAnatomy } from './marquee.anatomy'
-export { useMarquee, type UseMarqueeProps, type UseMarqueeReturn } from './use-marquee'
-export { useMarqueeContext, type UseMarqueeContext } from './use-marquee-context'
+export { marqueeAnatomy } from './marquee.anatomy.ts'
+export { useMarquee, type UseMarqueeProps, type UseMarqueeReturn } from './use-marquee.ts'
+export { useMarqueeContext, type UseMarqueeContext } from './use-marquee-context.ts'
 
-export * as Marquee from './marquee'
+export * as Marquee from './marquee.ts'

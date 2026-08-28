@@ -7,8 +7,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useImageCropperContext } from './use-image-cropper-context'
+  import { Ark } from '../factory/index.ts'
+  import { useImageCropperContext } from './use-image-cropper-context.ts'
 
   let { ref = $bindable(null), ...props }: ImageCropperViewportProps = $props()
   const imageCropper = useImageCropperContext()

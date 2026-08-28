@@ -28,7 +28,16 @@
         "type": "boolean",
         "defaultValue": "true",
         "isRequired": false,
-        "description": "Whether the bottom sheet content is draggable.\nIf false, the bottom sheet can only be dragged by the grabber."
+        "description": "Whether the drawer content is draggable.\nIf false, the drawer can only be dragged by the grabber."
+      }
+    }
+  },
+  "Description": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     }
   },
@@ -50,41 +59,64 @@
       }
     }
   },
+  "IndentBackground": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Indent": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Positioner": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Root": {
     "props": {
-      "activeSnapPoint": {
-        "type": "string | number",
-        "isRequired": false,
-        "description": "The currently active snap point."
-      },
       "closeOnEscape": {
         "type": "boolean",
         "defaultValue": "true",
         "isRequired": false,
-        "description": "Whether to close the bottom sheet when the escape key is pressed."
+        "description": "Whether to close the drawer when the escape key is pressed."
       },
       "closeOnInteractOutside": {
         "type": "boolean",
         "defaultValue": "true",
         "isRequired": false,
-        "description": "Whether to close the bottom sheet when the outside is clicked."
+        "description": "Whether to close the drawer when the outside is clicked."
       },
       "closeThreshold": {
         "type": "number",
         "defaultValue": "0.25",
         "isRequired": false,
-        "description": "The threshold distance for dismissing the bottom sheet."
+        "description": "The threshold distance for dismissing the drawer."
       },
-      "defaultActiveSnapPoint": {
-        "type": "string | number",
+      "defaultOpen": { "type": "boolean", "isRequired": false, "description": "The initial open state of the drawer." },
+      "defaultSnapPoint": {
+        "type": "SnapPoint",
         "defaultValue": "1",
         "isRequired": false,
-        "description": "The default active snap point of the bottom sheet."
+        "description": "The default snap point of the drawer."
       },
-      "defaultOpen": {
-        "type": "boolean",
+      "defaultTriggerValue": {
+        "type": "string",
         "isRequired": false,
-        "description": "The initial open state of the bottom sheet."
+        "description": "The initial trigger value when rendered.\nUse when you don't need to control the trigger value."
       },
       "finalFocusEl": {
         "type": "() => HTMLElement | null",
@@ -93,9 +125,9 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  backdrop: string\n  content: string\n  trigger: string\n  grabber: string\n  grabberIndicator: string\n  closeTrigger: string\n}>",
+        "type": "Partial<{\n  backdrop: string\n  positioner: string\n  content: string\n  title: string\n  trigger: string\n  grabber: string\n  grabberIndicator: string\n  closeTrigger: string\n}>",
         "isRequired": false,
-        "description": "The ids of the elements in the bottom sheet. Useful for composition."
+        "description": "The ids of the elements in the drawer. Useful for composition."
       },
       "initialFocusEl": {
         "type": "() => HTMLElement | null",
@@ -114,7 +146,7 @@
         "isRequired": false,
         "description": "Whether to prevent pointer interaction outside the element and hide all content below it."
       },
-      "open": { "type": "boolean", "isRequired": false, "description": "Whether the bottom sheet is open." },
+      "open": { "type": "boolean", "isRequired": false, "description": "Whether the drawer is open." },
       "preventDragOnScroll": {
         "type": "boolean",
         "defaultValue": "true",
@@ -138,23 +170,41 @@
         "isRequired": false,
         "description": "The sheet's role"
       },
+      "snapPoint": { "type": "SnapPoint", "isRequired": false, "description": "The currently active snap point." },
       "snapPoints": {
         "type": "(string | number)[]",
         "defaultValue": "[1]",
         "isRequired": false,
-        "description": "The snap points of the bottom sheet.\nArray of numbers or strings representing the snap points."
+        "description": "The snap points of the drawer."
+      },
+      "snapToSequentialPoints": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the drawer should snap to sequential points when swiping."
+      },
+      "swipeDirection": {
+        "type": "SwipeDirection",
+        "defaultValue": "\"down\"",
+        "isRequired": false,
+        "description": "The direction in which the drawer can be swiped."
       },
       "swipeVelocityThreshold": {
         "type": "number",
-        "defaultValue": "5",
+        "defaultValue": "700",
         "isRequired": false,
-        "description": "The threshold velocity (in pixels/s) for closing the bottom sheet."
+        "description": "The threshold velocity (in pixels/s) for closing the drawer."
       },
       "trapFocus": {
         "type": "boolean",
         "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to trap focus inside the sheet when it's opened."
+      },
+      "triggerValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value of the trigger that currently open the drawer"
       },
       "unmountOnExit": {
         "type": "boolean",
@@ -181,6 +231,15 @@
       }
     }
   },
+  "SwipeArea": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Title": {
     "props": {
       "asChild": {
@@ -196,6 +255,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value that identifies this specific trigger"
       }
     }
   }

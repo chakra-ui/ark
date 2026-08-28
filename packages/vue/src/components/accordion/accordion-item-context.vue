@@ -7,7 +7,7 @@ export interface AccordionItemContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useAccordionItemContext, type UseAccordionItemContext } from './use-accordion-item-context'
+import { useAccordionItemContext, type UseAccordionItemContext } from './use-accordion-item-context.ts'
 
 const item = useAccordionItemContext()
 defineSlots<{

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface NavigationMenuIndicatorBaseProps extends PolymorphicProps {}
 export interface NavigationMenuIndicatorProps
@@ -15,11 +15,11 @@ export interface NavigationMenuIndicatorProps
 <script setup lang="ts">
 import { mergeProps } from '@zag-js/vue'
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { usePresence } from '../presence'
-import { useNavigationMenuContext } from './use-navigation-menu-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { useRenderStrategyProps } from '../../utils/use-render-strategy'
+import { ark } from '../factory.ts'
+import { usePresence } from '../presence/index.ts'
+import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { useRenderStrategyProps } from '../../utils/use-render-strategy.ts'
 
 defineProps<NavigationMenuIndicatorProps>()
 

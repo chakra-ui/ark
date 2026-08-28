@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseImageCropperReturn } from './use-image-cropper'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseImageCropperReturn } from './use-image-cropper.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseImageCropperReturn>
@@ -19,9 +19,9 @@ export interface ImageCropperRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { ImageCropperProvider } from './use-image-cropper-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { ImageCropperProvider } from './use-image-cropper-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<ImageCropperRootProviderProps>()
 const imageCropper = computed(() => props.value)

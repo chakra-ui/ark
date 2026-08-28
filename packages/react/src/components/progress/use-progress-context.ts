@@ -1,5 +1,7 @@
-import { createContext } from '../../utils/create-context'
-import type { UseProgressReturn } from './use-progress'
+'use client'
+
+import { createContext } from '../../utils/create-context.ts'
+import type { UseProgressReturn } from './use-progress.ts'
 
 export interface UseProgressContext extends UseProgressReturn {}
 

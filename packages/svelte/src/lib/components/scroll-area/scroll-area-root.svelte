@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
-  import type { UseScrollAreaProps } from './use-scroll-area.svelte'
+  import type { UseScrollAreaProps } from './use-scroll-area.svelte.ts'
 
   export interface ScrollAreaRootBaseProps extends UseScrollAreaProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface ScrollAreaRootProps extends Assign<HTMLProps<'div'>, ScrollAreaRootBaseProps> {}

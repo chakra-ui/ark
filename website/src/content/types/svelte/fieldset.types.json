@@ -2,7 +2,7 @@
   "Context": {
     "props": {
       "render": {
-        "type": "Snippet<[() => { setRootRef: (el: Element | null) => void; disabled: boolean; invalid: boolean; getRootProps: () => HTMLFieldsetAttributes; getLegendProps: () => HTMLAttributes<...>; getHelperTextProps: () => HTMLAttributes<...>; getErrorTextProps: () => HTMLAttributes<...>; }]>",
+        "type": "Snippet<[() => { setRootRef: (el: Element | null) => void; ids: { legend: string; errorText: string; helperText: string; }; disabled: boolean; invalid: boolean; getRootProps: () => HTMLFieldsetAttributes; getLegendProps: () => HTMLAttributes<...>; getHelperTextProps: () => HTMLAttributes<...>; getErrorTextProps: () ...",
         "isRequired": true
       }
     }
@@ -61,7 +61,7 @@
   "RootProvider": {
     "props": {
       "value": {
-        "type": "() => { setRootRef: (el: Element | null) => void; disabled: boolean; invalid: boolean; getRootProps: () => HTMLFieldsetAttributes; getLegendProps: () => HTMLAttributes<...>; getHelperTextProps: () => HTMLAttributes<...>; getErrorTextProps: () => HTMLAttributes<...>; }",
+        "type": "() => { setRootRef: (el: Element | null) => void; ids: { legend: string; errorText: string; helperText: string; }; disabled: boolean; invalid: boolean; getRootProps: () => HTMLFieldsetAttributes; getLegendProps: () => HTMLAttributes<...>; getHelperTextProps: () => HTMLAttributes<...>; getErrorTextProps: () => HTMLAt...",
         "isRequired": true
       },
       "asChild": {

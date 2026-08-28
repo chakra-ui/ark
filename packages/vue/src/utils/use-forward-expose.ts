@@ -1,7 +1,7 @@
 // Credit to the Radix Vue team: https://github.com/radix-vue/radix-vue/blob/main/packages/radix-vue/src/shared/useForwardExpose.ts
 
 import { type ComponentPublicInstance, computed, getCurrentInstance, ref } from 'vue'
-import { unrefElement } from './unref-element'
+import { unrefElement } from './unref-element.ts'
 
 const isElement = (el: any): el is Element =>
   // biome-ignore lint/suspicious/noPrototypeBuiltins: <explanation>

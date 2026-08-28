@@ -4,7 +4,7 @@ import type { Accessor, Optional } from '$lib/types'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import * as zagSwitch from '@zag-js/switch'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
-import { useFieldContext } from '../field'
+import { useFieldContext } from '../field/index.ts'
 
 export interface UseSwitchProps extends Optional<Omit<zagSwitch.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseSwitchReturn extends Accessor<zagSwitch.Api<PropTypes>> {}
@@ -20,13 +20,13 @@ export const useSwitch = (props?: MaybeFunction<UseSwitchProps>) => {
       dir: locale().dir,
       getRootNode: env().getRootNode,
       ids: {
-        label: field?.().ids.label,
-        hiddenInput: field?.().ids.control,
+        label: field?.()?.ids.label,
+        hiddenInput: field?.()?.ids.control,
       },
-      disabled: field?.().disabled,
-      readOnly: field?.().readOnly,
-      invalid: field?.().invalid,
-      required: field?.().required,
+      disabled: field?.()?.disabled,
+      readOnly: field?.()?.readOnly,
+      invalid: field?.()?.invalid,
+      required: field?.()?.required,
       ...resolvedProps,
     }
   })

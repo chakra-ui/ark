@@ -1,0 +1,178 @@
+---
+title: Using Ark UI with Storybook
+description:
+  How to set up Storybook with Ark UI — writing stories for compound components, styling, and prop documentation
+date: '2026-04-05'
+author: 'Sage'
+tags: ['storybook', 'react', 'developer-experience']
+---
+
+Storybook is a great way to develop and document your design system in isolation. Ark UI works well with it — you just
+need to know how the pieces fit together. Here's a walkthrough of setting up Storybook with Ark UI React.
+
+## Installation
+
+Install Storybook alongside your Ark UI project:
+
+```bash
+npx storybook@latest init
+```
+
+This sets up Storybook with `@storybook/react-vite` and creates a `.storybook` directory with `main.ts` and
+`preview.ts`.
+
+## Writing Stories
+
+Ark UI uses compound components — `Checkbox.Root`, `Checkbox.Control`, `Checkbox.Label`, etc. Each story composes these
+parts together, just like you would in your app:
+
+```tsx
+import type { Meta, StoryObj } from '@storybook/react-vite'
+import { Checkbox, CheckboxRoot } from '@ark-ui/react/checkbox'
+import { CheckIcon } from 'lucide-react'
+
+const meta: Meta<typeof CheckboxRoot> = {
+  title: 'Checkbox',
+  component: CheckboxRoot,
+}
+
+export default meta
+
+type Story = StoryObj<typeof CheckboxRoot>
+
+export const Basic: Story = {
+  render: (args) => (
+    <Checkbox.Root {...args}>
+      <Checkbox.Control>
+        <Checkbox.Indicator>
+          <CheckIcon />
+        </Checkbox.Indicator>
+      </Checkbox.Control>
+      <Checkbox.Label>Accept terms</Checkbox.Label>
+      <Checkbox.HiddenInput />
+    </Checkbox.Root>
+  ),
+}
+```
+
+This renders a fully functional, accessible checkbox. No state management needed — the `@zag-js` state machine handles
+that internally.
+
+## Styling
+
+Ark UI is headless, so you bring your own styles. CSS modules work well with Storybook:
+
+```tsx
+import type { Meta, StoryObj } from '@storybook/react-vite'
+import { Switch, SwitchRoot } from '@ark-ui/react/switch'
+import styles from './switch.module.css'
+
+const meta: Meta<typeof SwitchRoot> = {
+  title: 'Switch',
+  component: SwitchRoot,
+}
+
+export default meta
+
+type Story = StoryObj<typeof SwitchRoot>
+
+export const Basic: Story = {
+  render: (args) => (
+    <Switch.Root {...args} className={styles.Root}>
+      <Switch.Control className={styles.Control}>
+        <Switch.Thumb className={styles.Thumb} />
+      </Switch.Control>
+      <Switch.Label className={styles.Label}>Dark mode</Switch.Label>
+      <Switch.HiddenInput />
+    </Switch.Root>
+  ),
+}
+```
+
+Ark UI exposes `data-state` and `data-disabled` attributes on every part, so you can style states purely in CSS:
+
+```css
+.Control {
+  background: var(--color-neutral);
+  border-radius: 999px;
+  transition: background 150ms ease;
+
+  &[data-state='checked'] {
+    background: var(--color-primary);
+  }
+
+  &[data-disabled] {
+    opacity: 0.5;
+  }
+}
+```
+
+No need to wire up JavaScript for visual states.
+
+## Prop Documentation with Controls
+
+By default, Storybook won't pick up Ark UI's component props. This is because the props flow through `@zag-js` types in
+`node_modules`, and Storybook's docgen filters those out. To fix this, you need three things.
+
+### 1. Enable react-docgen-typescript
+
+In `.storybook/main.ts`, enable docgen with a `propFilter` that allows `@zag-js` types through:
+
+```ts
+const config: StorybookConfig = {
+  // ...
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      shouldRemoveUndefinedFromOptional: true,
+      propFilter: (prop) => {
+        if (prop.declarations && prop.declarations.length > 0) {
+          return prop.declarations.some(
+            (declaration) => !declaration.fileName.includes('node_modules') || declaration.fileName.includes('@zag-js'),
+          )
+        }
+        return true
+      },
+    },
+  },
+}
+```
+
+### 2. Set `component` and use the `args` pattern
+
+Point Storybook at the Root component so it knows what to analyze, and spread `args` onto it so the Controls panel
+renders. This is the same story format from the earlier examples:
+
+```tsx
+import type { Meta, StoryObj } from '@storybook/react-vite'
+import { Checkbox, CheckboxRoot } from '@ark-ui/react/checkbox'
+
+const meta: Meta<typeof CheckboxRoot> = {
+  title: 'Checkbox',
+  component: CheckboxRoot, // tells docgen what to analyze
+}
+
+export default meta
+
+type Story = StoryObj<typeof CheckboxRoot>
+
+export const Basic: Story = {
+  render: (args) => (
+    <Checkbox.Root {...args}>
+      {' '}
+      {/* spread args to connect controls */}
+      {/* ... */}
+    </Checkbox.Root>
+  ),
+}
+```
+
+With both in place, Storybook will display the full props table — `checked`, `disabled`, `readOnly`, `onCheckedChange`,
+and everything else — with descriptions and types.
+
+## Wrapping Up
+
+Ark UI's compound component pattern maps naturally to Storybook stories. Write your stories the same way you'd use the
+components in your app, add CSS modules for styling, and enable docgen if you want prop documentation. That's all there
+is to it.

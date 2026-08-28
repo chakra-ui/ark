@@ -1,6 +1,6 @@
 import { createSplitProps } from '$lib/utils/create-split-props'
-import type { TreeNode } from '../collection'
-import type { UseTreeViewProps } from './use-tree-view.svelte'
+import type { TreeNode } from '../collection/index.ts'
+import type { UseTreeViewProps } from './use-tree-view.svelte.ts'
 
 const splitFn = createSplitProps<UseTreeViewProps<TreeNode>>()
 
@@ -30,6 +30,7 @@ export function splitTreeViewProps<T extends UseTreeViewProps<TreeNode>>(props: 
     'onSelectionChange',
     'selectedValue',
     'selectionMode',
+    'translations',
     'typeahead',
     'scrollToIndexFn',
   ])

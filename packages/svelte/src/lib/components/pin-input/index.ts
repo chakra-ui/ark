@@ -29,8 +29,8 @@ export {
   type PinInputRootProviderBaseProps,
   type PinInputRootProviderProps,
 } from './pin-input-root-provider.svelte'
-export { pinInputAnatomy } from './pin-input.anatomy'
-export { usePinInputContext, type UsePinInputContext } from './use-pin-input-context'
-export { usePinInput, type UsePinInputProps, type UsePinInputReturn } from './use-pin-input.svelte'
+export { pinInputAnatomy } from './pin-input.anatomy.ts'
+export { usePinInputContext, type UsePinInputContext } from './use-pin-input-context.ts'
+export { usePinInput, type UsePinInputProps, type UsePinInputReturn } from './use-pin-input.svelte.ts'
 
-export * as PinInput from './pin-input'
+export * as PinInput from './pin-input.ts'

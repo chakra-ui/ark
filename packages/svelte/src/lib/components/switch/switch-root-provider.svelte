@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseSwitchReturn } from './use-switch.svelte'
+  import type { UseSwitchReturn } from './use-switch.svelte.ts'
 
   export interface SwitchRootProviderBaseProps extends PolymorphicProps<'label'>, RefAttribute {
     value: UseSwitchReturn
@@ -10,14 +10,14 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { SwitchProvider } from './use-switch-context'
+  import { Ark } from '../factory/index.ts'
+  import { SwitchProvider } from './use-switch-context.ts'
 
   let { ref = $bindable(null), value, ...props }: SwitchRootProviderProps = $props()
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
-  SwitchProvider(value)
+  SwitchProvider(() => value())
 </script>
 
 <Ark as="label" bind:ref {...mergedProps} />

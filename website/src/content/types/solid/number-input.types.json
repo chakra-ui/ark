@@ -103,6 +103,12 @@
         "isRequired": false,
         "description": "Whether the number input value is invalid."
       },
+      "largeStep": {
+        "type": "number",
+        "defaultValue": "10 * step",
+        "isRequired": false,
+        "description": "The amount to increment or decrement the value by when the `Shift` key is held."
+      },
       "locale": {
         "type": "string",
         "defaultValue": "\"en-US\"",
@@ -136,6 +142,11 @@
         "isRequired": false,
         "description": "Function invoked when the value changes"
       },
+      "onValueCommit": {
+        "type": "(details: ValueChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function invoked when the value is committed (when the input is blurred or the Enter key is pressed)"
+      },
       "onValueInvalid": {
         "type": "(details: ValueInvalidDetails) => void",
         "isRequired": false,
@@ -149,6 +160,12 @@
       },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the number input is readonly" },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the number input is required" },
+      "smallStep": {
+        "type": "number",
+        "defaultValue": "step / 10",
+        "isRequired": false,
+        "description": "The amount to increment or decrement the value by when the `Alt` key is held."
+      },
       "spinOnPress": {
         "type": "boolean",
         "defaultValue": "true",

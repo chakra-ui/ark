@@ -1,9 +1,9 @@
+import { Checkbox } from '@ark-ui/solid/checkbox'
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Checkbox } from '../'
-import { CheckboxWithField } from './field'
-import { ComponentUnderTest } from './basic'
-import { ControlledComponentUnderTest } from './controlled'
+import { ComponentUnderTest } from './basic.tsx'
+import { ControlledComponentUnderTest } from './controlled.tsx'
+import { CheckboxWithField } from './field.tsx'
 
 describe('Checkbox', () => {
   it('should handle check and unchecked', async () => {

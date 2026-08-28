@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ColorStringFormat } from '@zag-js/color-utils'
 import { type HTMLAttributes, computed } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ColorPickerValueTextBaseProps extends PolymorphicProps {
   format?: ColorStringFormat
@@ -16,9 +16,9 @@ export interface ColorPickerValueTextProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { useColorPickerContext } from './use-color-picker-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { useColorPickerContext } from './use-color-picker-context.ts'
 
 const props = defineProps<ColorPickerValueTextProps>()
 const colorPicker = useColorPickerContext()

@@ -1,6 +1,7 @@
+import type { Accessor } from '$lib/types'
 import { createContext } from '$lib/utils/create-context'
 import type { ThumbProps } from '@zag-js/slider'
 
-export const [SliderThumbPropsProvider, useSliderThumbPropsContext] = createContext<ThumbProps>({
+export const [SliderThumbPropsProvider, useSliderThumbPropsContext] = createContext<Accessor<ThumbProps>>({
   name: 'SliderThumbPropsContext',
 })

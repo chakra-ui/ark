@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context'
-import { useColorPickerContext } from './use-color-picker-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context.ts'
+import { useColorPickerContext } from './use-color-picker-context.ts'
 
 export interface ColorPickerChannelSliderLabelBaseProps extends PolymorphicProps<'label'> {}
 export interface ColorPickerChannelSliderLabelProps

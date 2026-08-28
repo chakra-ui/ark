@@ -7,7 +7,7 @@
 </script>
 
 <script lang="ts">
-  import { useCarouselContext, type UseCarouselContext } from './use-carousel-context'
+  import { useCarouselContext, type UseCarouselContext } from './use-carousel-context.ts'
 
   let { render }: CarouselContextProps = $props()
 

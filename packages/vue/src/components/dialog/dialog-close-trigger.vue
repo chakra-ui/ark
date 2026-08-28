@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface DialogCloseTriggerBaseProps extends PolymorphicProps {}
 export interface DialogCloseTriggerProps
@@ -13,9 +13,9 @@ export interface DialogCloseTriggerProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useDialogContext } from './use-dialog-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useDialogContext } from './use-dialog-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<DialogCloseTriggerProps>()
 const dialog = useDialogContext()

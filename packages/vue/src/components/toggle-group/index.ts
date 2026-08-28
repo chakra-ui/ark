@@ -16,8 +16,8 @@ export {
   type ToggleGroupRootEmits,
   type ToggleGroupRootProps,
 } from './toggle-group-root.vue'
-export { toggleGroupAnatomy } from './toggle-group.anatomy'
-export { useToggleGroup, type UseToggleGroupProps, type UseToggleGroupReturn } from './use-toggle-group'
-export { useToggleGroupContext, type UseToggleGroupContext } from './use-toggle-group-context'
+export { toggleGroupAnatomy } from './toggle-group.anatomy.ts'
+export { useToggleGroup, type UseToggleGroupProps, type UseToggleGroupReturn } from './use-toggle-group.ts'
+export { useToggleGroupContext, type UseToggleGroupContext } from './use-toggle-group-context.ts'
 
-export * as ToggleGroup from './toggle-group'
+export * as ToggleGroup from './toggle-group.ts'

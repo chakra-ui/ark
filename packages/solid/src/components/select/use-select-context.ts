@@ -1,6 +1,6 @@
-import { createContext } from '../../utils/create-context'
-import type { CollectionItem } from '../collection'
-import type { UseSelectReturn } from './use-select'
+import { createContext } from '../../utils/create-context.ts'
+import type { CollectionItem } from '../collection/index.tsx'
+import type { UseSelectReturn } from './use-select.ts'
 
 export interface UseSelectContext<T extends CollectionItem> extends UseSelectReturn<T> {}
 

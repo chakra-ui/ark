@@ -3,63 +3,63 @@ export {
   NavigationMenuArrow as Arrow,
   type NavigationMenuArrowBaseProps as ArrowBaseProps,
   type NavigationMenuArrowProps as ArrowProps,
-} from './navigation-menu-arrow'
+} from './navigation-menu-arrow.tsx'
 export {
   NavigationMenuContent as Content,
   type NavigationMenuContentBaseProps as ContentBaseProps,
   type NavigationMenuContentProps as ContentProps,
-} from './navigation-menu-content'
+} from './navigation-menu-content.tsx'
 export {
   NavigationMenuContext as Context,
   type NavigationMenuContextProps as ContextProps,
-} from './navigation-menu-context'
+} from './navigation-menu-context.tsx'
 export {
   NavigationMenuIndicator as Indicator,
   type NavigationMenuIndicatorBaseProps as IndicatorBaseProps,
   type NavigationMenuIndicatorProps as IndicatorProps,
-} from './navigation-menu-indicator'
+} from './navigation-menu-indicator.tsx'
 export {
   NavigationMenuItem as Item,
   type NavigationMenuItemBaseProps as ItemBaseProps,
   type NavigationMenuItemProps as ItemProps,
-} from './navigation-menu-item'
+} from './navigation-menu-item.tsx'
 export {
   NavigationMenuItemIndicator as ItemIndicator,
   type NavigationMenuItemIndicatorBaseProps as ItemIndicatorBaseProps,
   type NavigationMenuItemIndicatorProps as ItemIndicatorProps,
-} from './navigation-menu-item-indicator'
+} from './navigation-menu-item-indicator.tsx'
 export {
   NavigationMenuLink as Link,
   type NavigationMenuLinkBaseProps as LinkBaseProps,
   type NavigationMenuLinkProps as LinkProps,
-} from './navigation-menu-link'
+} from './navigation-menu-link.tsx'
 export {
   NavigationMenuList as List,
   type NavigationMenuListBaseProps as ListBaseProps,
   type NavigationMenuListProps as ListProps,
-} from './navigation-menu-list'
+} from './navigation-menu-list.tsx'
 export {
   NavigationMenuRoot as Root,
   type NavigationMenuRootBaseProps as RootBaseProps,
   type NavigationMenuRootProps as RootProps,
-} from './navigation-menu-root'
+} from './navigation-menu-root.tsx'
 export {
   NavigationMenuRootProvider as RootProvider,
   type NavigationMenuRootProviderBaseProps as RootProviderBaseProps,
   type NavigationMenuRootProviderProps as RootProviderProps,
-} from './navigation-menu-root-provider'
+} from './navigation-menu-root-provider.tsx'
 export {
   NavigationMenuTrigger as Trigger,
   type NavigationMenuTriggerBaseProps as TriggerBaseProps,
   type NavigationMenuTriggerProps as TriggerProps,
-} from './navigation-menu-trigger'
+} from './navigation-menu-trigger.tsx'
 export {
   NavigationMenuViewport as Viewport,
   type NavigationMenuViewportBaseProps as ViewportBaseProps,
   type NavigationMenuViewportProps as ViewportProps,
-} from './navigation-menu-viewport'
+} from './navigation-menu-viewport.tsx'
 export {
   NavigationMenuViewportPositioner as ViewportPositioner,
   type NavigationMenuViewportPositionerBaseProps as ViewportPositionerBaseProps,
   type NavigationMenuViewportPositionerProps as ViewportPositionerProps,
-} from './navigation-menu-viewport-positioner'
+} from './navigation-menu-viewport-positioner.tsx'

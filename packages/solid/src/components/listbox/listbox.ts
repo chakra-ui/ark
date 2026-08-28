@@ -5,71 +5,71 @@ export type {
   SelectionMode,
   ValueChangeDetails,
 } from '@zag-js/listbox'
-export { ListboxContext as Context, type ListboxContextProps as ContextProps } from './listbox-context'
+export { ListboxContext as Context, type ListboxContextProps as ContextProps } from './listbox-context.tsx'
 export {
   ListboxContent as Content,
   type ListboxContentBaseProps as ContentBaseProps,
   type ListboxContentProps as ContentProps,
-} from './listbox-content'
+} from './listbox-content.tsx'
 export {
   ListboxEmpty as Empty,
   type ListboxEmptyBaseProps as EmptyBaseProps,
   type ListboxEmptyProps as EmptyProps,
-} from './listbox-empty'
+} from './listbox-empty.tsx'
 export {
   ListboxInput as Input,
   type ListboxInputBaseProps as InputBaseProps,
   type ListboxInputProps as InputProps,
-} from './listbox-input'
+} from './listbox-input.tsx'
 export {
   ListboxItem as Item,
   type ListboxItemBaseProps as ItemBaseProps,
   type ListboxItemProps as ItemProps,
-} from './listbox-item'
+} from './listbox-item.tsx'
 export {
   ListboxItemContext as ItemContext,
   type ListboxItemContextProps as ItemContextProps,
-} from './listbox-item-context'
+} from './listbox-item-context.tsx'
 export {
   ListboxItemGroup as ItemGroup,
   type ListboxItemGroupBaseProps as ItemGroupBaseProps,
   type ListboxItemGroupProps as ItemGroupProps,
-} from './listbox-item-group'
+} from './listbox-item-group.tsx'
 export {
   ListboxItemGroupLabel as ItemGroupLabel,
   type ListboxItemGroupLabelBaseProps as ItemGroupLabelBaseProps,
   type ListboxItemGroupLabelProps as ItemGroupLabelProps,
-} from './listbox-item-group-label'
+} from './listbox-item-group-label.tsx'
 export {
   ListboxItemIndicator as ItemIndicator,
   type ListboxItemIndicatorBaseProps as ItemIndicatorBaseProps,
   type ListboxItemIndicatorProps as ItemIndicatorProps,
-} from './listbox-item-indicator'
+} from './listbox-item-indicator.tsx'
 export {
   ListboxItemText as ItemText,
   type ListboxItemTextBaseProps as ItemTextBaseProps,
   type ListboxItemTextProps as ItemTextProps,
-} from './listbox-item-text'
+} from './listbox-item-text.tsx'
 export {
   ListboxLabel as Label,
   type ListboxLabelBaseProps as LabelBaseProps,
   type ListboxLabelProps as LabelProps,
-} from './listbox-label'
+} from './listbox-label.tsx'
 export {
   ListboxRoot as Root,
   type ListboxRootBaseProps as RootBaseProps,
   type ListboxRootProps as RootProps,
   type ListboxRootComponent as RootComponent,
   type ListboxRootComponentProps as RootComponentProps,
-} from './listbox-root'
+} from './listbox-root.tsx'
 export {
   ListboxRootProvider as RootProvider,
   type ListboxRootProviderBaseProps as RootProviderBaseProps,
   type ListboxRootProviderProps as RootProviderProps,
   type ListboxRootProviderComponent as RootProviderComponent,
-} from './listbox-root-provider'
+} from './listbox-root-provider.tsx'
 export {
   ListboxValueText as ValueText,
   type ListboxValueTextBaseProps as ValueTextBaseProps,
   type ListboxValueTextProps as ValueTextProps,
-} from './listbox-value-text'
+} from './listbox-value-text.tsx'

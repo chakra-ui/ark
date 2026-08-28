@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useAvatarContext } from './use-avatar-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useAvatarContext } from './use-avatar-context.ts'
 
 export interface AvatarImageBaseProps extends PolymorphicProps<'img'> {}
 export interface AvatarImageProps extends HTMLProps<'img'>, AvatarImageBaseProps {}

@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/tags-input'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface TagsInputItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface TagsInputItemProps
@@ -15,11 +15,11 @@ export interface TagsInputItemProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { useTagsInputContext } from './use-tags-input-context'
-import { TagsInputItemProvider } from './use-tags-input-item-context'
-import { TagsInputItemPropsProvider } from './use-tags-input-item-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useTagsInputContext } from './use-tags-input-context.ts'
+import { TagsInputItemProvider } from './use-tags-input-item-context.ts'
+import { TagsInputItemPropsProvider } from './use-tags-input-item-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<TagsInputItemProps>()
 const tagsInput = useTagsInputContext()

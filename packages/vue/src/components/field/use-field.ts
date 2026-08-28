@@ -1,4 +1,3 @@
-import { ariaAttr, dataAttr } from '@zag-js/dom-query'
 import {
   type HTMLAttributes,
   type MaybeRef,
@@ -10,11 +9,12 @@ import {
   toValue,
   useId,
 } from 'vue'
-import { useEnvironmentContext } from '../../providers'
-import { DEFAULT_ENVIRONMENT } from '../../providers/environment/use-environment-context'
-import { unrefElement } from '../../utils/unref-element'
-import { parts } from './field.anatomy'
-import type { ElementIds } from './field.types'
+import { useEnvironmentContext } from '../../providers/index.ts'
+import { DEFAULT_ENVIRONMENT } from '../../providers/environment/use-environment-context.ts'
+import { ariaAttr, dataAttr } from '../../utils/attr.ts'
+import { unrefElement } from '../../utils/unref-element.ts'
+import { parts } from './field.anatomy.ts'
+import type { ElementIds } from './field.types.ts'
 
 export interface UseFieldProps {
   /**
@@ -41,6 +41,10 @@ export interface UseFieldProps {
    * Indicates whether the field is read-only.
    */
   readOnly?: boolean
+  /**
+   * The target field item value the label should point to.
+   */
+  target?: string
 }
 
 export type UseFieldReturn = ReturnType<typeof useField>
@@ -96,6 +100,11 @@ export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
     }
   }
 
+  const targetControlId = computed(() => {
+    const target = toValue(props).target
+    return target ? `field::${id.value}::item::${target}` : undefined
+  })
+
   const getLabelProps = () => {
     const values = toValue(props)
     return {
@@ -105,22 +114,17 @@ export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
       'data-invalid': dataAttr(values.invalid),
       'data-readonly': dataAttr(values.readOnly),
       'data-required': dataAttr(values.required),
-      htmlFor: id.value,
+      htmlFor: targetControlId.value ?? id.value,
     }
   }
 
-  const labelIds = computed(() => {
-    const values = toValue(props)
-    const ids: string[] = []
-    if (state.hasErrorText && values.invalid) ids.push(errorTextId.value)
-    if (state.hasHelperText) ids.push(helperTextId.value)
-    return ids
-  })
+  const errorMessageId = computed(() => (state.hasErrorText && toValue(props).invalid ? errorTextId.value : undefined))
 
   const getControlProps = () => {
     const values = toValue(props)
     return {
-      'aria-describedby': labelIds.value.join(' ') || undefined,
+      'aria-describedby': state.hasHelperText ? helperTextId.value : undefined,
+      'aria-errormessage': errorMessageId.value,
       'aria-invalid': ariaAttr(values.invalid),
       'data-invalid': dataAttr(values.invalid),
       'data-required': dataAttr(values.required),
@@ -170,7 +174,7 @@ export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
   return computed(() => {
     const values = toValue(props)
     return {
-      ariaDescribedby: labelIds.value.join(' ') || undefined,
+      ariaDescribedby: state.hasHelperText ? helperTextId.value : undefined,
       ids: {
         control: id.value,
         label: labelId.value,

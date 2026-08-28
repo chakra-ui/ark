@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface PaginationNextTriggerBaseProps extends PolymorphicProps {}
 export interface PaginationNextTriggerProps
@@ -13,9 +13,9 @@ export interface PaginationNextTriggerProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { usePaginationContext } from './use-pagination-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { usePaginationContext } from './use-pagination-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<PaginationNextTriggerProps>()
 const pagination = usePaginationContext()

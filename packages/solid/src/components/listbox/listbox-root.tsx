@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import type { CollectionItem } from '../collection'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseListboxProps, useListbox } from './use-listbox'
-import { ListboxProvider } from './use-listbox-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import type { CollectionItem } from '../collection/index.tsx'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { type UseListboxProps, useListbox } from './use-listbox.ts'
+import { ListboxProvider } from './use-listbox-context.ts'
 
 export interface ListboxRootBaseProps<T extends CollectionItem> extends UseListboxProps<T>, PolymorphicProps<'div'> {}
 export interface ListboxRootProps<T extends CollectionItem> extends Assign<HTMLProps<'div'>, ListboxRootBaseProps<T>> {}

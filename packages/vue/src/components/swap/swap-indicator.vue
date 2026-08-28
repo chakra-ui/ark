@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface SwapIndicatorBaseProps extends PolymorphicProps {
   type: 'on' | 'off'
@@ -17,9 +17,9 @@ export interface SwapIndicatorProps
 <script setup lang="ts">
 import { computed } from 'vue'
 import { mergeProps } from '@zag-js/vue'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { useSwapContext } from './use-swap-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { useSwapContext } from './use-swap-context.ts'
 
 const props = defineProps<SwapIndicatorProps>()
 

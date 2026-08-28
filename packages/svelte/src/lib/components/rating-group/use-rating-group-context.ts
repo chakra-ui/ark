@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UseRatingGroupReturn } from './use-rating-group.svelte'
+import type { UseRatingGroupReturn } from './use-rating-group.svelte.ts'
 
 export interface UseRatingGroupContext extends UseRatingGroupReturn {}
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface TourBackdropBaseProps extends PolymorphicProps {}
 export interface TourBackdropProps
@@ -15,11 +15,11 @@ export interface TourBackdropProps
 <script setup lang="ts">
 import { mergeProps } from '@zag-js/vue'
 import { computed } from 'vue'
-import { useRenderStrategyProps } from '../../utils/use-render-strategy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { usePresence } from '../presence'
-import { ark } from '../factory'
-import { useTourContext } from './use-tour-context'
+import { useRenderStrategyProps } from '../../utils/use-render-strategy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { usePresence } from '../presence/index.ts'
+import { ark } from '../factory.ts'
+import { useTourContext } from './use-tour-context.ts'
 
 defineProps<TourBackdropProps>()
 

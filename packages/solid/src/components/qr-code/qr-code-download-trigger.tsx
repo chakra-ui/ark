@@ -1,8 +1,8 @@
 import type { DownloadTriggerProps } from '@zag-js/qr-code'
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useQrCodeContext } from './use-qr-code-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useQrCodeContext } from './use-qr-code-context.ts'
 
 export interface QrCodeDownloadTriggerBaseProps extends DownloadTriggerProps, PolymorphicProps<'button'> {}
 export interface QrCodeDownloadTriggerProps extends HTMLProps<'button'>, QrCodeDownloadTriggerBaseProps {}

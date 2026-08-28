@@ -35,8 +35,12 @@ export {
   type PasswordInputVisibilityTriggerBaseProps,
   type PasswordInputVisibilityTriggerProps,
 } from './password-input-visibility-trigger.svelte'
-export { passwordInputAnatomy } from './password-input.anatomy'
-export { usePasswordInputContext, type UsePasswordInputContext } from './use-password-input-context'
-export { usePasswordInput, type UsePasswordInputProps, type UsePasswordInputReturn } from './use-password-input.svelte'
+export { passwordInputAnatomy } from './password-input.anatomy.ts'
+export { usePasswordInputContext, type UsePasswordInputContext } from './use-password-input-context.ts'
+export {
+  usePasswordInput,
+  type UsePasswordInputProps,
+  type UsePasswordInputReturn,
+} from './use-password-input.svelte.ts'
 
-export * as PasswordInput from './password-input'
+export * as PasswordInput from './password-input.ts'

@@ -4,7 +4,7 @@ import type { Accessor, Optional } from '$lib/types'
 import * as drawer from '@zag-js/drawer'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
-import { useDrawerStackStore } from './use-drawer-stack-store'
+import { useDrawerStackStore } from './use-drawer-stack-store.ts'
 
 export interface UseDrawerProps extends Optional<Omit<drawer.Props, 'dir' | 'getRootNode' | 'defaultSnapPoint'>, 'id'> {
   defaultSnapPoint?: drawer.SnapPoint | undefined

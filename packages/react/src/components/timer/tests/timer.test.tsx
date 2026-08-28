@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import { axe } from 'vitest-axe'
-import { ComponentUnderTest } from './basic'
+import { ComponentUnderTest } from './basic.tsx'
 
 describe('Timer / Parts & Exports', () => {
   it('should have no a11y violations', async () => {

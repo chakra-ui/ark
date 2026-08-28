@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { InputHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface RatingGroupHiddenInputBaseProps extends PolymorphicProps {}
 export interface RatingGroupHiddenInputProps
@@ -13,10 +13,10 @@ export interface RatingGroupHiddenInputProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useRatingGroupContext } from './use-rating-group-context'
-import { useFieldContext } from '../field'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useRatingGroupContext } from './use-rating-group-context.ts'
+import { useFieldContext } from '../field/index.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<RatingGroupHiddenInputProps>()
 

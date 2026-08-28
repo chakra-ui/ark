@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseListboxItemContext } from './use-listbox-item-context'
+import type { UseListboxItemContext } from './use-listbox-item-context.ts'
 
 export interface ListboxItemContextProps extends SlotsType<{
   default: UnwrapRef<UseListboxItemContext>
@@ -8,7 +8,7 @@ export interface ListboxItemContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useListboxItemContext } from './use-listbox-item-context'
+import { useListboxItemContext } from './use-listbox-item-context.ts'
 
 const context = useListboxItemContext()
 

@@ -1,26 +1,59 @@
 {
   "Ellipsis": {
     "props": {
-      "index": { "type": "number", "isRequired": true },
+      "index": {
+        "type": "number",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
+  },
+  "FirstTrigger": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "Item": {
     "props": {
-      "type": { "type": "'page'", "isRequired": true },
-      "value": { "type": "number", "isRequired": true },
+      "type": {
+        "type": "'page'",
+        "isRequired": true
+      },
+      "value": {
+        "type": "number",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
+  },
+  "LastTrigger": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "NextTrigger": {
     "props": {
@@ -30,7 +63,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "PrevTrigger": {
     "props": {
@@ -40,7 +74,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "Root": {
     "props": {
@@ -49,7 +84,17 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "count": { "type": "number", "isRequired": false, "description": "Total number of data items" },
+      "boundaryCount": {
+        "type": "number",
+        "defaultValue": "1",
+        "isRequired": false,
+        "description": "Number of pages to show at the beginning and end"
+      },
+      "count": {
+        "type": "number",
+        "isRequired": false,
+        "description": "Total number of data items"
+      },
       "defaultPage": {
         "type": "number",
         "defaultValue": "1",
@@ -68,7 +113,7 @@
         "description": "Function to generate href attributes for pagination links.\nOnly used when `type` is set to \"link\"."
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  ellipsis: (index: number) => string\n  prevTrigger: string\n  nextTrigger: string\n  item: (page: number) => string\n}>",
+        "type": "Partial<{\n  root: string\n  ellipsis: (index: number) => string\n  firstTrigger: string\n  prevTrigger: string\n  nextTrigger: string\n  lastTrigger: string\n  item: (page: number) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the accordion. Useful for composition."
       },
@@ -82,7 +127,11 @@
         "isRequired": false,
         "description": "Called when the page size is changed"
       },
-      "page": { "type": "number", "isRequired": false, "description": "The controlled active page" },
+      "page": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The controlled active page"
+      },
       "pageSize": {
         "type": "number",
         "isRequired": false,
@@ -106,17 +155,22 @@
         "description": "The type of the trigger element"
       }
     },
-    "element": "HTMLElement"
+    "element": "HTMLElement",
+    "tag": "nav"
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UsePaginationReturn", "isRequired": true },
+      "value": {
+        "type": "UsePaginationReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLElement"
+    "element": "HTMLElement",
+    "tag": "nav"
   }
 }

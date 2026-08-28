@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseNumberInputReturn } from './use-number-input'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseNumberInputReturn } from './use-number-input.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseNumberInputReturn>
@@ -19,9 +19,9 @@ export interface NumberInputRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { NumberInputProvider } from './use-number-input-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { NumberInputProvider } from './use-number-input-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 const props = defineProps<NumberInputRootProviderProps>()
 const numberInput = computed(() => props.value)
 

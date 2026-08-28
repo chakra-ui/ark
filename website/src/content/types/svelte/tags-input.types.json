@@ -73,7 +73,7 @@
   },
   "Item": {
     "props": {
-      "index": { "type": "number", "isRequired": true },
+      "index": { "type": "string | number", "isRequired": true },
       "value": { "type": "string", "isRequired": true },
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
@@ -111,6 +111,12 @@
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to add a tag when you paste values into the tag input"
+      },
+      "allowDuplicates": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow duplicate tags."
       },
       "allowOverflow": {
         "type": "boolean",
@@ -219,6 +225,7 @@
         "isRequired": false,
         "description": "Callback fired when the max tag count is reached or the `validateTag` function returns `false`"
       },
+      "placeholder": { "type": "string", "isRequired": false, "description": "The placeholder text for the input" },
       "readOnly": {
         "type": "boolean",
         "isRequired": false,
@@ -226,6 +233,12 @@
       },
       "ref": { "type": "Element", "isRequired": false },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the tags input is required" },
+      "sanitizeValue": {
+        "type": "(value: string) => string",
+        "defaultValue": "(value) => value.trim()",
+        "isRequired": false,
+        "description": "Function to sanitize the tag value before adding.\nUseful for trimming whitespace, normalizing case, or stripping special characters."
+      },
       "translations": {
         "type": "IntlTranslations",
         "isRequired": false,

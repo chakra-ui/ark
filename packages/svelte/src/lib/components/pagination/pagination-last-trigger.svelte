@@ -7,8 +7,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { usePaginationContext } from './use-pagination-context'
+  import { Ark } from '../factory/index.ts'
+  import { usePaginationContext } from './use-pagination-context.ts'
 
   let { ref = $bindable(null), ...props }: PaginationLastTriggerProps = $props()
   const pagination = usePaginationContext()

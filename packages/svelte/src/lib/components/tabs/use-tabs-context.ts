@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UseTabsReturn } from './use-tabs.svelte'
+import type { UseTabsReturn } from './use-tabs.svelte.ts'
 
 export interface UseTabsContext extends UseTabsReturn {}
 

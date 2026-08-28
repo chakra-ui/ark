@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
+import type { PolymorphicProps } from '../factory.ts'
+import { DEFAULT_VIEW_PROPS_CONTEXT, useDatePickerViewPropsContext } from './use-date-picker-view-props-context.ts'
 
 export interface DatePickerViewControlBaseProps extends PolymorphicProps {}
 export interface DatePickerViewControlProps
@@ -14,13 +14,13 @@ export interface DatePickerViewControlProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useDatePickerContext } from './use-date-picker-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useDatePickerContext } from './use-date-picker-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<DatePickerViewControlProps>()
 const datePicker = useDatePickerContext()
-const viewProps = useDatePickerViewPropsContext()
+const viewProps = useDatePickerViewPropsContext(DEFAULT_VIEW_PROPS_CONTEXT)
 
 useForwardExpose()
 </script>

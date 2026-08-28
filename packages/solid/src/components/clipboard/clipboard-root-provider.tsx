@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseClipboardReturn } from './use-clipboard'
-import { ClipboardProvider } from './use-clipboard-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import type { UseClipboardReturn } from './use-clipboard.ts'
+import { ClipboardProvider } from './use-clipboard-context.ts'
 
 interface RootProviderProps {
   value: UseClipboardReturn

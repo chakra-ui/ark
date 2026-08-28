@@ -76,21 +76,33 @@ Access the checkbox's state and methods with `Checkbox.Context` or the `useCheck
 
 <Example id="context" />
 
-### Group
+## Checkbox Group
 
 Use the `Checkbox.Group` component to manage a group of checkboxes. The `Checkbox.Group` component manages the state of
 the checkboxes and provides a way to access the checked values.
 
+```tsx
+<Checkbox.Group>
+  <Checkbox.Root>
+    <Checkbox.Control>
+      <Checkbox.Indicator />
+    </Checkbox.Control>
+    <Checkbox.Label />
+    <Checkbox.HiddenInput />
+  </Checkbox.Root>
+</Checkbox.Group>
+```
+
 <Example id="group" />
 
-### Controlled Group
+### Controlled
 
 Use the `value` and `onValueChange` props to programmatically control the checkbox group's state. This example
 demonstrates how to manage selected checkboxes in an array and display the current selection.
 
 <Example id="group-controlled" />
 
-### Group Provider
+### Root Provider
 
 Use the `useCheckboxGroup` hook to create the checkbox group store and pass it to the `Checkbox.GroupProvider`
 component. This provides maximum control over the group programmatically, similar to how `RootProvider` works for
@@ -105,6 +117,13 @@ invalid state to all checkboxes within the group.
 
 <Example id="group-with-invalid" />
 
+### Max Selected
+
+Use the `maxSelectedValues` prop to limit the number of checkboxes that can be selected at once. Once the maximum is
+reached, remaining checkboxes become disabled.
+
+<Example id="group-with-max-selected" />
+
 ### Select All
 
 Implement a "select all" checkbox that controls all checkboxes within a group. The parent checkbox automatically shows
@@ -113,7 +132,7 @@ selected.
 
 <Example id="group-with-select-all" />
 
-### Group Form
+### Form
 
 Use the `Checkbox.Group` component within a form to handle multiple checkbox values with form submission. The `name`
 prop ensures all selected values are collected as an array when the form is submitted using `FormData.getAll()`.

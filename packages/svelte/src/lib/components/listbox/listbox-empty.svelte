@@ -6,9 +6,9 @@
 </script>
 
 <script lang="ts">
-  import { Ark } from '../factory'
-  import { listboxAnatomy } from './listbox.anatomy'
-  import { useListboxContext } from './use-listbox-context'
+  import { Ark } from '../factory/index.ts'
+  import { listboxAnatomy } from './listbox.anatomy.ts'
+  import { useListboxContext } from './use-listbox-context.ts'
 
   const parts = listboxAnatomy.build()
 

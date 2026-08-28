@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseRatingGroupContext } from './use-rating-group-context'
+import type { UseRatingGroupContext } from './use-rating-group-context.ts'
 
 export interface RatingGroupContextProps extends SlotsType<{
   default: UnwrapRef<UseRatingGroupContext>
@@ -8,7 +8,7 @@ export interface RatingGroupContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useRatingGroupContext } from './use-rating-group-context'
+import { useRatingGroupContext } from './use-rating-group-context.ts'
 
 const ratingGroup = useRatingGroupContext()
 

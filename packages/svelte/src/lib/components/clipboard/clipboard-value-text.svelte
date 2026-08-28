@@ -6,8 +6,8 @@
 </script>
 
 <script lang="ts">
-  import { Ark } from '../factory'
-  import { useClipboardContext } from './use-clipboard-context'
+  import { Ark } from '../factory/index.ts'
+  import { useClipboardContext } from './use-clipboard-context.ts'
 
   let { ref = $bindable(null), children, ...props }: ClipboardValueTextProps = $props()
 

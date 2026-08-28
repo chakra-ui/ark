@@ -3,7 +3,9 @@
   import { ChevronRightIcon } from 'lucide-svelte'
   import styles from 'styles/json-tree-view.module.css'
 
+  const id = $props.id()
   const jsonTreeView = useJsonTreeView({
+    id,
     defaultExpandedDepth: 1,
     data: {
       name: 'John Doe',

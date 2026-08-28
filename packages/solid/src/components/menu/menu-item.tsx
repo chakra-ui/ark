@@ -1,12 +1,12 @@
 import type { ItemProps } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/solid'
 import { createEffect, createMemo, onCleanup } from 'solid-js'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useMenuContext } from './use-menu-context'
-import { MenuItemProvider } from './use-menu-item-context'
-import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useMenuContext } from './use-menu-context.ts'
+import { MenuItemProvider } from './use-menu-item-context.ts'
+import { MenuItemPropsProvider } from './use-menu-option-item-props-context.ts'
 
 interface ItemBaseProps extends ItemProps {
   /**

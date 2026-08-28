@@ -1,10 +1,10 @@
 import * as editable from '@zag-js/editable'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { MaybeAccessor, Optional } from '../../types'
-import { runIfFn } from '../../utils/run-if-fn'
-import { useFieldContext } from '../field'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.tsx'
+import type { MaybeAccessor, Optional } from '../../types.ts'
+import { runIfFn } from '../../utils/run-if-fn.ts'
+import { useFieldContext } from '../field/index.tsx'
 
 export interface UseEditableProps extends Optional<Omit<editable.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseEditableReturn extends Accessor<editable.Api<PropTypes>> {}

@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
-import { composeRefs } from '../../utils/compose-refs'
-import { useRenderStrategyContext } from '../../utils/render-strategy'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresence } from '../presence'
-import { useNavigationMenuContext } from './use-navigation-menu-context'
-import { useNavigationMenuViewportPropsContext } from './use-navigation-menu-viewport-props-context'
+import { composeRefs } from '../../utils/compose-refs.ts'
+import { useRenderStrategyContext } from '../../utils/render-strategy.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { usePresence } from '../presence/index.tsx'
+import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
+import { useNavigationMenuViewportPropsContext } from './use-navigation-menu-viewport-props-context.ts'
 
 export interface NavigationMenuViewportBaseProps extends PolymorphicProps<'div'> {}
 export interface NavigationMenuViewportProps extends HTMLProps<'div'>, NavigationMenuViewportBaseProps {}

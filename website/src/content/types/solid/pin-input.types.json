@@ -44,6 +44,11 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "autoFocus": { "type": "boolean", "isRequired": false, "description": "Whether to auto-focus the first input." },
+      "autoSubmit": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to auto-submit the owning form when all inputs are filled."
+      },
       "blurOnComplete": {
         "type": "boolean",
         "isRequired": false,
@@ -122,6 +127,11 @@
         "description": "Whether the pin input is in the valid state"
       },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the pin input is required" },
+      "sanitizeValue": {
+        "type": "(value: string) => string",
+        "isRequired": false,
+        "description": "Function to sanitize pasted values before validation.\nUseful for stripping dashes, spaces, or other formatting."
+      },
       "selectOnFocus": {
         "type": "boolean",
         "isRequired": false,

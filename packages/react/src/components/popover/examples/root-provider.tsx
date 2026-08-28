@@ -12,10 +12,9 @@ export const RootProvider = () => {
 
   return (
     <div className="stack">
-      <button className={button.Root} onClick={() => popover.setOpen(true)}>
-        Popover is {popover.open ? 'open' : 'closed'}
-      </button>
+      <div>Popover is {popover.open ? 'open' : 'closed'}</div>
       <Popover.RootProvider value={popover}>
+        <Popover.Trigger className={button.Root}>Toggle Popover</Popover.Trigger>
         <Portal>
           <Popover.Positioner className={styles.Positioner}>
             <Popover.Content className={styles.Content}>

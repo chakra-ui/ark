@@ -13,3 +13,8 @@ export {
   type FormatRelativeTimeProps as RelativeTimeProps,
   type FormatRelativeTimeProps as RelativeTimeBaseProps,
 } from './format-relative-time.vue'
+export {
+  default as Time,
+  type FormatTimeProps as TimeProps,
+  type FormatTimeProps as TimeBaseProps,
+} from './format-time.vue'

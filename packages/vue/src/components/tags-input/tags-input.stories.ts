@@ -1,5 +1,6 @@
 import type { Meta } from '@storybook/vue3-vite'
 
+import AllowDuplicatesExample from './examples/allow-duplicates.vue'
 import BasicExample from './examples/basic.vue'
 import BlurBehaviorExample from './examples/blur-behavior.vue'
 import ControlledExample from './examples/controlled.vue'
@@ -14,6 +15,7 @@ import PasteBehaviorExample from './examples/paste-behavior.vue'
 import ProgrammaticControlExample from './examples/programmatic-control.vue'
 import ReadonlyExample from './examples/readonly.vue'
 import RootProviderExample from './examples/root-provider.vue'
+import SanitizeValueExample from './examples/sanitize-value.vue'
 import ValidationExample from './examples/validation.vue'
 import WithComboboxExample from './examples/with-combobox.vue'
 import WithFieldExample from './examples/with-field.vue'
@@ -23,6 +25,13 @@ const meta: Meta = {
 }
 
 export default meta
+
+export const AllowDuplicates = {
+  render: () => ({
+    components: { Component: AllowDuplicatesExample },
+    template: '<Component />',
+  }),
+}
 
 export const Basic = {
   render: () => ({
@@ -118,6 +127,13 @@ export const Readonly = {
 export const RootProvider = {
   render: () => ({
     components: { Component: RootProviderExample },
+    template: '<Component />',
+  }),
+}
+
+export const SanitizeValue = {
+  render: () => ({
+    components: { Component: SanitizeValueExample },
     template: '<Component />',
   }),
 }

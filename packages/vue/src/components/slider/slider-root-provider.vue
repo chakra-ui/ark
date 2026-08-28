@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseSliderReturn } from './use-slider'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseSliderReturn } from './use-slider.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseSliderReturn>
@@ -19,9 +19,9 @@ export interface SliderRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { SliderProvider } from './use-slider-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { SliderProvider } from './use-slider-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<SliderRootProviderProps>()
 const slider = computed(() => props.value)

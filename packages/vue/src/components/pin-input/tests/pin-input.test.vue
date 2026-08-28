@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { PinInput, type PinInputRootEmits, type PinInputRootProps } from '../..'
-import { useForwardPropsEmits } from '../../..'
+import { PinInput, type PinInputRootEmits, type PinInputRootProps } from '@ark-ui/vue/pin-input'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<PinInputRootProps>()
 const emits = defineEmits<PinInputRootEmits>()

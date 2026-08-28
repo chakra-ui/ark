@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useCollapsibleContext } from './use-collapsible-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useCollapsibleContext } from './use-collapsible-context.ts'
 
 export interface CollapsibleTriggerBaseProps extends PolymorphicProps<'button'> {}
 export interface CollapsibleTriggerProps extends HTMLProps<'button'>, CollapsibleTriggerBaseProps {}

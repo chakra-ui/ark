@@ -8,8 +8,8 @@
 <script lang="ts">
   import { Ark } from '$lib/components/factory'
   import { mergeProps } from '@zag-js/svelte'
-  import { usePresenceContext } from '../presence'
-  import { useSelectContext } from './use-select-context'
+  import { usePresenceContext } from '../presence/index.ts'
+  import { useSelectContext } from './use-select-context.ts'
 
   let { ref = $bindable(null), ...props }: SelectContentProps = $props()
   const select = useSelectContext()

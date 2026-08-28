@@ -45,8 +45,8 @@ export {
   type EditableSubmitTriggerBaseProps,
   type EditableSubmitTriggerProps,
 } from './editable-submit-trigger.vue'
-export { editableAnatomy } from './editable.anatomy'
-export { useEditable, type UseEditableProps, type UseEditableReturn } from './use-editable'
-export { useEditableContext, type UseEditableContext } from './use-editable-context'
+export { editableAnatomy } from './editable.anatomy.ts'
+export { useEditable, type UseEditableProps, type UseEditableReturn } from './use-editable.ts'
+export { useEditableContext, type UseEditableContext } from './use-editable-context.ts'
 
-export * as Editable from './editable'
+export * as Editable from './editable.ts'

@@ -10,16 +10,16 @@
 <script lang="ts">
   import { useRenderStrategyPropsContext } from '$lib/utils/render-strategy'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { usePresence } from '../presence'
-  import { useDrawerContext } from './use-drawer-context'
+  import { Ark } from '../factory/index.ts'
+  import { usePresence } from '../presence/index.ts'
+  import { useDrawerContext } from './use-drawer-context.ts'
 
   let { ref = $bindable(null), ...props }: DrawerBackdropProps = $props()
 
   const drawer = useDrawerContext()
   const renderStrategyProps = useRenderStrategyPropsContext()
 
-  const presence = usePresence(() => ({ ...renderStrategyProps, present: drawer().open }))
+  const presence = usePresence(() => ({ ...renderStrategyProps(), present: drawer().open }))
   const mergedProps = $derived(mergeProps(drawer().getBackdropProps(), presence().getPresenceProps(), props))
 
   function setNode(node: Element | null) {

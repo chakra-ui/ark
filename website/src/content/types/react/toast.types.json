@@ -7,7 +7,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "CloseTrigger": {
     "props": {
@@ -17,7 +18,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "Description": {
     "props": {
@@ -27,7 +29,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Root": {
     "props": {
@@ -39,6 +42,62 @@
     },
     "element": "HTMLDivElement"
   },
+  "Store": {
+    "props": {
+      "duration": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The duration of the toast.\nBy default, it is determined by the type of the toast."
+      },
+      "gap": {
+        "type": "number",
+        "defaultValue": "16",
+        "isRequired": false,
+        "description": "The gap between the toasts"
+      },
+      "hotkey": {
+        "type": "string[]",
+        "defaultValue": "'[\"altKey\", \"KeyT\"]'",
+        "isRequired": false,
+        "description": "The hotkey that will move focus to the toast group"
+      },
+      "max": {
+        "type": "number",
+        "defaultValue": "24",
+        "isRequired": false,
+        "description": "The maximum number of toasts. When the number of toasts exceeds this limit, the new toasts are queued."
+      },
+      "offsets": {
+        "type": "string | Record<'top' | 'bottom' | 'left' | 'right', string>",
+        "defaultValue": "\"1rem\"",
+        "isRequired": false,
+        "description": "The offset from the safe environment edge of the viewport"
+      },
+      "overlap": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to overlap the toasts"
+      },
+      "pauseOnPageIdle": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to pause toast when the user leaves the browser tab"
+      },
+      "placement": {
+        "type": "Placement",
+        "defaultValue": "\"bottom\"",
+        "isRequired": false,
+        "description": "The placement of the toast"
+      },
+      "removeDelay": {
+        "type": "number",
+        "defaultValue": "200",
+        "isRequired": false,
+        "description": "The duration for the toast to kept alive before it is removed.\nUseful for exit transitions."
+      }
+    }
+  },
   "Title": {
     "props": {
       "asChild": {
@@ -47,11 +106,15 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Toaster": {
     "props": {
-      "toaster": { "type": "CreateToasterReturn", "isRequired": true },
+      "toaster": {
+        "type": "CreateToasterReturn<any>",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -64,10 +127,11 @@
         "description": "The document's text/writing direction."
       },
       "getRootNode": {
-        "type": "() => Node | ShadowRoot | Document",
+        "type": "() => ShadowRoot | Node | Document",
         "isRequired": false,
         "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
       }
-    }
+    },
+    "tag": "div"
   }
 }

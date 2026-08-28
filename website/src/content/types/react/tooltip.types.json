@@ -7,7 +7,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "ArrowTip": {
     "props": {
@@ -17,7 +18,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Content": {
     "props": {
@@ -27,7 +29,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Positioner": {
     "props": {
@@ -37,11 +40,16 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Root": {
     "props": {
-      "aria-label": { "type": "string", "isRequired": false, "description": "Custom label for the tooltip." },
+      "aria-label": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Custom label for the tooltip."
+      },
       "closeDelay": {
         "type": "number",
         "defaultValue": "150",
@@ -77,10 +85,29 @@
         "isRequired": false,
         "description": "The initial open state of the tooltip when rendered.\nUse when you don't need to control the open state of the tooltip."
       },
-      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the tooltip is disabled" },
-      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "defaultTriggerValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The initial trigger value when rendered.\nUse when you don't need to control the trigger value."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the tooltip is disabled"
+      },
+      "hideMode": {
+        "type": "HideMode",
+        "defaultValue": "'display-none'",
+        "isRequired": false,
+        "description": "How to hide content when mounted but not present.\n- `'display-none'`: HTML `hidden` attribute. Effects stay alive.\n- `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
       "ids": {
-        "type": "Partial<{ trigger: string; content: string; arrow: string; positioner: string }>",
+        "type": "Partial<{\n  trigger: string | ((value?: string | undefined) => string)\n  content: string\n  arrow: string\n  positioner: string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the tooltip. Useful for composition."
       },
@@ -111,7 +138,16 @@
         "isRequired": false,
         "description": "Function called when the tooltip is opened."
       },
-      "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the tooltip" },
+      "onTriggerValueChange": {
+        "type": "(details: TriggerValueChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the trigger value changes."
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The controlled open state of the tooltip"
+      },
       "openDelay": {
         "type": "number",
         "defaultValue": "400",
@@ -134,6 +170,11 @@
         "isRequired": false,
         "description": "Whether to allow the initial presence animation."
       },
+      "triggerValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The controlled trigger value"
+      },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",
@@ -144,7 +185,16 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseTooltipReturn", "isRequired": true },
+      "value": {
+        "type": "UseTooltipReturn",
+        "isRequired": true
+      },
+      "hideMode": {
+        "type": "HideMode",
+        "defaultValue": "'display-none'",
+        "isRequired": false,
+        "description": "How to hide content when mounted but not present.\n- `'display-none'`: HTML `hidden` attribute. Effects stay alive.\n- `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+      },
       "immediate": {
         "type": "boolean",
         "isRequired": false,
@@ -186,8 +236,14 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value that identifies this specific trigger"
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   }
 }

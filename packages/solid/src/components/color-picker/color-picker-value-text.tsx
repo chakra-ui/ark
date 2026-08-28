@@ -1,9 +1,9 @@
 import type { ColorStringFormat } from '@zag-js/color-utils'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useColorPickerContext } from './use-color-picker-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useColorPickerContext } from './use-color-picker-context.ts'
 
 interface FormatProps {
   format?: ColorStringFormat

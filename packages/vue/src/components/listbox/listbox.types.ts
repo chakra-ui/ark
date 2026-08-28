@@ -1,5 +1,5 @@
 import type * as listbox from '@zag-js/listbox'
-import type { CollectionItem, ListCollection } from '../collection'
+import type { CollectionItem, ListCollection } from '../collection/index.ts'
 
 export interface RootProps<T extends CollectionItem> {
   /**
@@ -92,6 +92,10 @@ export type RootEmits<T extends CollectionItem> = {
    * The callback fired when the highlighted item changes.
    */
   highlightChange: [details: listbox.HighlightChangeDetails<T>]
+  /**
+   * The callback fired when the highlighted value changes.
+   */
+  'update:highlightedValue': [value: string | null]
   /**
    * Function called when an item is selected
    */

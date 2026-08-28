@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js'
-import { type UseCheckboxContext, useCheckboxContext } from './use-checkbox-context'
+import { type UseCheckboxContext, useCheckboxContext } from './use-checkbox-context.ts'
 
 export interface CheckboxContextProps {
   children: (context: UseCheckboxContext) => JSX.Element

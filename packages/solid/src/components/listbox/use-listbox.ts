@@ -1,10 +1,10 @@
 import * as listbox from '@zag-js/listbox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { MaybeAccessor, Optional } from '../../types'
-import { runIfFn } from '../../utils/run-if-fn'
-import type { CollectionItem, ListCollection } from '../collection'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.tsx'
+import type { MaybeAccessor, Optional } from '../../types.ts'
+import { runIfFn } from '../../utils/run-if-fn.ts'
+import type { CollectionItem, ListCollection } from '../collection/index.tsx'
 
 export interface UseListboxProps<T extends CollectionItem> extends Optional<
   Omit<listbox.Props<T>, 'dir' | 'getRootNode' | 'collection'>,

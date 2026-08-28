@@ -1,10 +1,10 @@
 import type { ScrollbarProps } from '@zag-js/scroll-area'
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useScrollAreaContext } from './use-scroll-area-context'
-import { ScrollAreaScrollbarProvider } from './use-scroll-area-scrollbar-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useScrollAreaContext } from './use-scroll-area-context.ts'
+import { ScrollAreaScrollbarProvider } from './use-scroll-area-scrollbar-context.ts'
 
 export interface ScrollAreaScrollbarBaseProps extends ScrollbarProps, PolymorphicProps<'div'> {}
 export interface ScrollAreaScrollbarProps extends Assign<HTMLProps<'div'>, ScrollAreaScrollbarBaseProps> {}

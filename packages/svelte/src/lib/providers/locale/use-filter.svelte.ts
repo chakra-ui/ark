@@ -1,7 +1,7 @@
 import type { Accessor } from '$lib/types'
 import { type FilterOptions, type FilterReturn, createFilter } from '@zag-js/i18n-utils'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
-import { useLocaleContext } from './use-locale-context'
+import { useLocaleContext } from './use-locale-context.ts'
 
 export interface UseFilterProps extends FilterOptions {}
 

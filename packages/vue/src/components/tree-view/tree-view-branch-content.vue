@@ -1,6 +1,6 @@
 <script lang="ts">
 import { type HTMLAttributes, computed } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface TreeViewBranchContentBaseProps extends PolymorphicProps {}
 export interface TreeViewBranchContentProps
@@ -18,11 +18,11 @@ interface VisibilityProps {
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { Collapsible } from '../collapsible'
-import { useTreeViewContext } from './use-tree-view-context'
-import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
-import { createSplitProps } from '../create-split-props'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { Collapsible } from '../collapsible/index.ts'
+import { useTreeViewContext } from './use-tree-view-context.ts'
+import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
+import { createSplitProps } from '../create-split-props.ts'
 
 const splitVisibilityProps = createSplitProps<VisibilityProps>()
 

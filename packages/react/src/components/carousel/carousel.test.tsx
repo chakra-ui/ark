@@ -1,6 +1,6 @@
 import { act, render, screen } from '@testing-library/react'
 import { axe } from 'vitest-axe'
-import { Basic as ComponentUnderTest } from './examples/basic'
+import { Basic as ComponentUnderTest } from './examples/basic.tsx'
 
 describe('Carousel', () => {
   it('should have no a11y violations', async () => {

@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { ComponentUnderTest, TagsInputWithField } from './basic'
+import { ComponentUnderTest, TagsInputWithField } from './basic.tsx'
 
 describe('TagsInput', () => {
   it.skip('should have no a11y violations', async () => {

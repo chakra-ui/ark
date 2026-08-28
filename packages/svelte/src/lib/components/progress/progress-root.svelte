@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseProgressProps } from './use-progress.svelte'
+  import type { UseProgressProps } from './use-progress.svelte.ts'
 
   export interface ProgressRootBaseProps
     extends Optional<UseProgressProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
@@ -9,10 +9,10 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { createSplitProps } from '../../utils/create-split-props'
-  import { Ark } from '../factory'
-  import { ProgressProvider } from './use-progress-context'
-  import { useProgress } from './use-progress.svelte'
+  import { createSplitProps } from '../../utils/create-split-props.ts'
+  import { Ark } from '../factory/index.ts'
+  import { ProgressProvider } from './use-progress-context.ts'
+  import { useProgress } from './use-progress.svelte.ts'
 
   let { ref = $bindable(null), value = $bindable(), ...props }: ProgressRootProps = $props()
   const providedId = $props.id()

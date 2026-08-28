@@ -1,5 +1,7 @@
-import { createContext } from '../../utils/create-context'
-import type { UseImageCropperReturn } from './use-image-cropper'
+'use client'
+
+import { createContext } from '../../utils/create-context.ts'
+import type { UseImageCropperReturn } from './use-image-cropper.ts'
 
 export interface UseImageCropperContext extends UseImageCropperReturn {}
 

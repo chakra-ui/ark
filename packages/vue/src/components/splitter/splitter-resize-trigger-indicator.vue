@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface SplitterResizeTriggerIndicatorBaseProps extends PolymorphicProps {}
 export interface SplitterResizeTriggerIndicatorProps
@@ -13,10 +13,10 @@ export interface SplitterResizeTriggerIndicatorProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useSplitterContext } from './use-splitter-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { useSplitterResizeTriggerPropsContext } from './use-splitter-resize-trigger-props-context'
+import { ark } from '../factory.ts'
+import { useSplitterContext } from './use-splitter-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { useSplitterResizeTriggerPropsContext } from './use-splitter-resize-trigger-props-context.ts'
 
 defineProps<SplitterResizeTriggerIndicatorProps>()
 const splitter = useSplitterContext()

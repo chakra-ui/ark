@@ -248,12 +248,22 @@
         "description": "Called when the selection changes"
       },
       "ref": { "type": "Element", "isRequired": false },
+      "scrollToIndexFn": {
+        "type": "(details: ScrollToIndexDetails<T>) => void",
+        "isRequired": false,
+        "description": "Function to scroll to a specific index.\nUseful for virtualized tree views."
+      },
       "selectedValue": { "type": "string[]", "isRequired": false, "description": "The controlled selected node value" },
       "selectionMode": {
         "type": "'multiple' | 'single'",
         "defaultValue": "\"single\"",
         "isRequired": false,
         "description": "Whether the tree supports multiple selection\n- \"single\": only one node can be selected\n- \"multiple\": multiple nodes can be selected"
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
       },
       "typeahead": {
         "type": "boolean",

@@ -1,9 +1,9 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { Assign } from '../../types'
-import type { CollectionItem } from '../collection'
-import type { PolymorphicProps } from '../factory'
-import type { UseListboxReturn } from './use-listbox'
+import type { Assign } from '../../types.ts'
+import type { CollectionItem } from '../collection/index.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseListboxReturn } from './use-listbox.ts'
 
 interface RootProviderProps<T extends CollectionItem> {
   value: UnwrapRef<UseListboxReturn<T>>
@@ -26,9 +26,9 @@ export type ListboxRootProviderComponent<P = {}> = <T extends CollectionItem>(
 
 <script setup lang="ts" generic="T extends CollectionItem">
 import { computed } from 'vue'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { ListboxProvider } from './use-listbox-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { ListboxProvider } from './use-listbox-context.ts'
 
 const props = defineProps<ListboxRootProviderProps<T>>()
 const listbox = computed(() => props.value)

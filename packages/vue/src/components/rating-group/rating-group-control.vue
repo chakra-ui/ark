@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface RatingGroupControlBaseProps extends PolymorphicProps {}
 export interface RatingGroupControlProps
@@ -13,9 +13,9 @@ export interface RatingGroupControlProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useRatingGroupContext } from './use-rating-group-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useRatingGroupContext } from './use-rating-group-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<RatingGroupControlProps>()
 

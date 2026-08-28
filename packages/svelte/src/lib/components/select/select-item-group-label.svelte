@@ -8,8 +8,8 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '$lib/components/factory'
-  import { useSelectContext } from './use-select-context'
-  import { useSelectItemGroupPropsContext } from './use-select-item-group-props-context'
+  import { useSelectContext } from './use-select-context.ts'
+  import { useSelectItemGroupPropsContext } from './use-select-item-group-props-context.ts'
 
   let { ref = $bindable(null), ...props }: SelectItemGroupLabelProps = $props()
 

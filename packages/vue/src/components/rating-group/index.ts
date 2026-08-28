@@ -35,9 +35,9 @@ export {
   type RatingGroupRootEmits,
   type RatingGroupRootProps,
 } from './rating-group-root.vue'
-export { ratingGroupAnatomy } from './rating-group.anatomy'
-export { useRatingGroup, type UseRatingGroupProps, type UseRatingGroupReturn } from './use-rating-group'
-export { useRatingGroupContext, type UseRatingGroupContext } from './use-rating-group-context'
-export { useRatingGroupItemContext, type UseRatingGroupItemContext } from './use-rating-group-item-context'
+export { ratingGroupAnatomy } from './rating-group.anatomy.ts'
+export { useRatingGroup, type UseRatingGroupProps, type UseRatingGroupReturn } from './use-rating-group.ts'
+export { useRatingGroupContext, type UseRatingGroupContext } from './use-rating-group-context.ts'
+export { useRatingGroupItemContext, type UseRatingGroupItemContext } from './use-rating-group-item-context.ts'
 
-export * as RatingGroup from './rating-group'
+export * as RatingGroup from './rating-group.ts'

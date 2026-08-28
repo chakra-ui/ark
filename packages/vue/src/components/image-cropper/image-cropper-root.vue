@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './image-cropper.types'
+import type { PolymorphicProps } from '../factory.ts'
+import type { RootEmits, RootProps } from './image-cropper.types.ts'
 
 export interface ImageCropperRootBaseProps extends RootProps, PolymorphicProps {}
 export interface ImageCropperRootProps
@@ -15,10 +15,10 @@ export interface ImageCropperRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useImageCropper } from './use-image-cropper'
-import { ImageCropperProvider } from './use-image-cropper-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useImageCropper } from './use-image-cropper.ts'
+import { ImageCropperProvider } from './use-image-cropper-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ImageCropperRootProps>()
 

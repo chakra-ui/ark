@@ -1,10 +1,12 @@
+'use client'
+
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as select from '@zag-js/select'
 import { useId } from 'react'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
-import type { CollectionItem, ListCollection } from '../collection'
-import { useFieldContext } from '../field'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { Optional } from '../../types.ts'
+import type { CollectionItem, ListCollection } from '../collection/index.ts'
+import { useFieldContext } from '../field/index.ts'
 
 export interface UseSelectProps<T extends CollectionItem> extends Optional<
   Omit<select.Props<T>, 'dir' | 'getRootNode' | 'collection'>,

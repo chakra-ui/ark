@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UsePaginationContext } from './use-pagination-context'
+import type { UsePaginationContext } from './use-pagination-context.ts'
 
 export interface PaginationContextProps extends SlotsType<{
   default: UnwrapRef<UsePaginationContext>
@@ -8,7 +8,7 @@ export interface PaginationContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { usePaginationContext } from './use-pagination-context'
+import { usePaginationContext } from './use-pagination-context.ts'
 
 const pagination = usePaginationContext()
 

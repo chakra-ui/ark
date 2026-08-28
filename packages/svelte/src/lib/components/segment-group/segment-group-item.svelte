@@ -8,11 +8,11 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { parts } from './segment-group.anatomy'
-  import { useSegmentGroupContext } from './use-segment-group-context'
-  import { SegmentGroupItemProvider } from './use-segment-group-item-context'
-  import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-context'
+  import { Ark } from '../factory/index.ts'
+  import { parts } from './segment-group.anatomy.ts'
+  import { useSegmentGroupContext } from './use-segment-group-context.ts'
+  import { SegmentGroupItemProvider } from './use-segment-group-item-context.ts'
+  import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-context.ts'
   import { createSplitProps } from '$lib/utils/create-split-props'
 
   let { ref = $bindable(null), ...props }: SegmentGroupItemProps = $props()

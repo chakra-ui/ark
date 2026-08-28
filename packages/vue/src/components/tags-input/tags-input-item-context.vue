@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseTagsInputItemContext } from './use-tags-input-item-context'
+import type { UseTagsInputItemContext } from './use-tags-input-item-context.ts'
 
 export interface TagsInputItemContextProps extends SlotsType<{
   default: UnwrapRef<UseTagsInputItemContext>
@@ -8,7 +8,7 @@ export interface TagsInputItemContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useTagsInputItemContext } from './use-tags-input-item-context'
+import { useTagsInputItemContext } from './use-tags-input-item-context.ts'
 
 const tagsInput = useTagsInputItemContext()
 

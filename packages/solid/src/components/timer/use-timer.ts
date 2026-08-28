@@ -1,9 +1,9 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import * as timer from '@zag-js/timer'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext } from '../../providers'
-import type { MaybeAccessor, Optional } from '../../types'
-import { runIfFn } from '../../utils/run-if-fn'
+import { useEnvironmentContext } from '../../providers/index.tsx'
+import type { MaybeAccessor, Optional } from '../../types.ts'
+import { runIfFn } from '../../utils/run-if-fn.ts'
 
 export interface UseTimerProps extends Optional<Omit<timer.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseTimerReturn extends Accessor<timer.Api<PropTypes>> {}

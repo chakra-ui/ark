@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js'
-import { type UseSignaturePadContext, useSignaturePadContext } from './use-signature-pad-context'
+import { type UseSignaturePadContext, useSignaturePadContext } from './use-signature-pad-context.ts'
 
 export interface SignaturePadContextProps {
   children: (context: UseSignaturePadContext) => JSX.Element

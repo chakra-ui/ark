@@ -77,7 +77,7 @@ export interface RootProps {
    * The direction in which the drawer can be swiped.
    * @default "down"
    */
-  swipeDirection?: 'up' | 'down' | 'left' | 'right'
+  swipeDirection?: drawer.SwipeDirection
   /**
    * Whether the drawer should snap to sequential points when swiping.
    * @default false
@@ -101,21 +101,50 @@ export interface RootProps {
   /**
    * The currently active snap point.
    */
-  snapPoint?: number | string
+  snapPoint?: drawer.SnapPoint | null
   /**
    * The default snap point of the drawer.
    * @default 1
    */
-  defaultSnapPoint?: number | string
+  defaultSnapPoint?: drawer.SnapPoint | null
+  /**
+   * The value of the trigger that currently open the drawer
+   */
+  triggerValue?: string | null
+  /**
+   * The initial trigger value when rendered.
+   * Use when you don't need to control the trigger value.
+   */
+  defaultTriggerValue?: string | null
 }
 
 export type RootEmits = {
+  /**
+   * Function called when the animation ends in the closed state
+   */
+  exitComplete: []
   /**
    * Function called when the open state changes.
    */
   openChange: [details: drawer.OpenChangeDetails]
   /**
+   * The callback fired when the open state changes.
+   */
+  'update:open': [open: boolean]
+  /**
    * Callback fired when the active snap point changes.
    */
   snapPointChange: [details: drawer.SnapPointChangeDetails]
+  /**
+   * The callback fired when the snap point changes.
+   */
+  'update:snapPoint': [snapPoint: drawer.SnapPoint | null]
+  /**
+   * Function called when the trigger value changes
+   */
+  triggerValueChange: [details: drawer.TriggerValueChangeDetails]
+  /**
+   * The callback fired when the trigger value changes.
+   */
+  'update:triggerValue': [triggerValue: string | null]
 }

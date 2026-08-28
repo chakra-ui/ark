@@ -44,8 +44,8 @@ export {
   type SignaturePadSegmentBaseProps,
   type SignaturePadSegmentProps,
 } from './signature-pad-segment.svelte'
-export { signaturePadAnatomy } from './signature-pad.anatomy'
-export { useSignaturePad, type UseSignaturePadProps, type UseSignaturePadReturn } from './use-signature-pad.svelte'
-export { useSignaturePadContext, type UseSignaturePadContext } from './use-signature-pad-context'
+export { signaturePadAnatomy } from './signature-pad.anatomy.ts'
+export { useSignaturePad, type UseSignaturePadProps, type UseSignaturePadReturn } from './use-signature-pad.svelte.ts'
+export { useSignaturePadContext, type UseSignaturePadContext } from './use-signature-pad-context.ts'
 
-export * as SignaturePad from './signature-pad'
+export * as SignaturePad from './signature-pad.ts'

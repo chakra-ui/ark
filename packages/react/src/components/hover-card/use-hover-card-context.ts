@@ -1,5 +1,7 @@
-import { createContext } from '../../utils/create-context'
-import type { UseHoverCardReturn } from './use-hover-card'
+'use client'
+
+import { createContext } from '../../utils/create-context.ts'
+import type { UseHoverCardReturn } from './use-hover-card.ts'
 
 export interface UseHoverCardContext extends UseHoverCardReturn {}
 

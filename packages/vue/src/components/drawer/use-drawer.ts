@@ -1,14 +1,14 @@
 import * as drawer from '@zag-js/drawer'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
-import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { EmitFn, Optional } from '../../types'
-import { cleanProps } from '../../utils/clean-props'
-import type { RootEmits } from './drawer.types'
-import { useDrawerStackStore } from './use-drawer-stack-store'
+import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { EmitFn, Optional } from '../../types.ts'
+import { cleanProps } from '../../utils/clean-props.ts'
+import type { RootEmits } from './drawer.types.ts'
+import { useDrawerStackStore } from './use-drawer-stack-store.ts'
 
 export interface UseDrawerProps extends Optional<Omit<drawer.Props, 'dir' | 'getRootNode' | 'defaultSnapPoint'>, 'id'> {
-  defaultSnapPoint?: drawer.SnapPoint | undefined
+  defaultSnapPoint?: drawer.SnapPoint | null | undefined
 }
 export interface UseDrawerReturn extends ComputedRef<drawer.Api<PropTypes>> {}
 
@@ -28,10 +28,17 @@ export const useDrawer = (props: MaybeRef<UseDrawerProps> = {}, emit?: EmitFn<Ro
       ...cleanProps(localeProps),
       onOpenChange: (details) => {
         emit?.('openChange', details)
+        emit?.('update:open', details.open)
         localeProps.onOpenChange?.(details)
+      },
+      onTriggerValueChange: (details) => {
+        emit?.('triggerValueChange', details)
+        emit?.('update:triggerValue', details.value)
+        localeProps.onTriggerValueChange?.(details)
       },
       onSnapPointChange: (details) => {
         emit?.('snapPointChange', details)
+        emit?.('update:snapPoint', details.snapPoint)
         localeProps.onSnapPointChange?.(details)
       },
     }

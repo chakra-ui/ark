@@ -39,7 +39,7 @@ export const ItemText = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'spa
   'itemText',
 )
 
-export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, SegmentGroup.LabelBaseProps>>(
+export const Label = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, SegmentGroup.LabelBaseProps>>(
   SegmentGroup.Label,
   'label',
 )

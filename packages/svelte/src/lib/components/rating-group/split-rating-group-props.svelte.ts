@@ -1,5 +1,5 @@
 import { createSplitProps } from '$lib/utils/create-split-props'
-import type { UseRatingGroupProps } from './use-rating-group.svelte'
+import type { UseRatingGroupProps } from './use-rating-group.svelte.ts'
 
 const splitFn = createSplitProps<UseRatingGroupProps>()
 

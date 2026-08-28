@@ -9,8 +9,8 @@
 <script lang="ts">
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useSplitterContext } from './use-splitter-context'
+  import { Ark } from '../factory/index.ts'
+  import { useSplitterContext } from './use-splitter-context.ts'
 
   let { ref = $bindable(null), ...props }: SplitterPanelProps = $props()
 

@@ -103,6 +103,12 @@
         "description": "The ids of the elements in the slider. Useful for composition."
       },
       "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the slider is invalid" },
+      "largeStep": {
+        "type": "number",
+        "defaultValue": "10 * step",
+        "isRequired": false,
+        "description": "The step value of the slider when the `Shift` key is held, or the\n`PageUp`/`PageDown` keys are used."
+      },
       "max": {
         "type": "number",
         "defaultValue": "100",
@@ -165,6 +171,12 @@
         "defaultValue": "\"contain\"",
         "isRequired": false,
         "description": "The alignment of the slider thumb relative to the track\n- `center`: the thumb will extend beyond the bounds of the slider track.\n- `contain`: the thumb will be contained within the bounds of the track."
+      },
+      "thumbCollisionBehavior": {
+        "type": "'none' | 'push' | 'swap'",
+        "defaultValue": "\"none\"",
+        "isRequired": false,
+        "description": "Controls how thumbs behave when they collide during pointer interactions.\n- `none` (default): Thumbs cannot move past each other; excess movement is ignored.\n- `push`: Thumbs push each other without restoring their previous positions when dragged back.\n- `swap`: Thumbs swap places when dragged past each other."
       },
       "thumbSize": {
         "type": "{ width: number; height: number }",

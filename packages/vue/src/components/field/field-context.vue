@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseFieldContext } from './use-field-context'
+import type { UseFieldContext } from './use-field-context.ts'
 
 export interface FieldContextProps extends SlotsType<{
   default: UnwrapRef<UseFieldContext>
@@ -8,7 +8,7 @@ export interface FieldContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useFieldContext } from './use-field-context'
+import { useFieldContext } from './use-field-context.ts'
 
 const field = useFieldContext()
 

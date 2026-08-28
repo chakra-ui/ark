@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface TagsInputItemDeleteTriggerBaseProps extends PolymorphicProps {}
 export interface TagsInputItemDeleteTriggerProps
@@ -13,10 +13,10 @@ export interface TagsInputItemDeleteTriggerProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useTagsInputContext } from './use-tags-input-context'
-import { useTagsInputItemPropsContext } from './use-tags-input-item-props-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useTagsInputContext } from './use-tags-input-context.ts'
+import { useTagsInputItemPropsContext } from './use-tags-input-item-props-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<TagsInputItemDeleteTriggerProps>()
 const tagsInput = useTagsInputContext()

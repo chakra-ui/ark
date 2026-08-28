@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { UseTooltipContext } from './use-tooltip-context'
+  import type { UseTooltipContext } from './use-tooltip-context.ts'
 
   export interface TooltipContextProps {
     render?: Snippet<[UseTooltipContext]>
@@ -8,7 +8,7 @@
 </script>
 
 <script lang="ts">
-  import { useTooltipContext } from './use-tooltip-context'
+  import { useTooltipContext } from './use-tooltip-context.ts'
 
   const { render }: TooltipContextProps = $props()
 

@@ -30,7 +30,7 @@ export const ItemText = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'spa
   'itemText',
 )
 
-export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, RadioGroup.LabelProps>>(
+export const Label = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, RadioGroup.LabelProps>>(
   RadioGroup.Label,
   'label',
 )

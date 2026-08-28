@@ -6,10 +6,10 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
-export { BlurOnComplete } from './examples/blur-on-complete'
-export { CustomPlaceholder } from './examples/custom-placeholder'
-export { Mask } from './examples/mask'
-export { OTPMode } from './examples/otp-mode'
-export { RootProvider } from './examples/root-provider'
-export { WithField } from './examples/with-field'
+export { Basic } from './examples/basic.tsx'
+export { BlurOnComplete } from './examples/blur-on-complete.tsx'
+export { CustomPlaceholder } from './examples/custom-placeholder.tsx'
+export { Mask } from './examples/mask.tsx'
+export { OTPMode } from './examples/otp-mode.tsx'
+export { RootProvider } from './examples/root-provider.tsx'
+export { WithField } from './examples/with-field.tsx'

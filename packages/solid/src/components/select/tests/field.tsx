@@ -1,6 +1,6 @@
+import { Field } from '@ark-ui/solid/field'
+import { Select, createListCollection } from '@ark-ui/solid/select'
 import { Index } from 'solid-js/web'
-import { Field } from '../../field'
-import { Select, createListCollection } from '../'
 
 export const SelectWithField = (props: Field.RootProps) => {
   const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })

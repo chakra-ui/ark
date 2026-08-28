@@ -1,9 +1,12 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { composeRefs } from '../../utils/compose-refs'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { usePresenceContext } from '../presence'
-import { useColorPickerContext } from './use-color-picker-context'
+import { useComposedRefs } from '../../utils/compose-refs.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { PresenceGate } from '../presence/presence-gate.tsx'
+import { usePresenceContext } from '../presence/index.ts'
+import { useColorPickerContext } from './use-color-picker-context.ts'
 
 export interface ColorPickerContentBaseProps extends PolymorphicProps {}
 export interface ColorPickerContentProps extends HTMLProps<'div'>, ColorPickerContentBaseProps {}
@@ -12,12 +15,13 @@ export const ColorPickerContent = forwardRef<HTMLDivElement, ColorPickerContentP
   const colorPicker = useColorPickerContext()
   const presence = usePresenceContext()
   const mergedProps = mergeProps(colorPicker.getContentProps(), presence.getPresenceProps(), props)
+  const composedRefs = useComposedRefs(presence.ref, ref)
 
-  if (presence.unmounted) {
-    return null
-  }
-
-  return <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} />
+  return (
+    <PresenceGate presence={presence}>
+      <ark.div {...mergedProps} ref={composedRefs} />
+    </PresenceGate>
+  )
 })
 
 ColorPickerContent.displayName = 'ColorPickerContent'

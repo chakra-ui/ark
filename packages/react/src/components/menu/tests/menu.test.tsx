@@ -1,7 +1,7 @@
+import { Menu } from '@ark-ui/react/menu'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { Menu } from '..'
 
 interface ComponentUnderTestProps extends Menu.RootProps {
   onValueChange?: ((e: { value: string }) => void) | undefined

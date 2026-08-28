@@ -1,3 +1,5 @@
+'use client'
+
 import type { TreeCollection } from '@zag-js/collection'
 import type { JsonNode } from '@zag-js/json-tree-utils'
 

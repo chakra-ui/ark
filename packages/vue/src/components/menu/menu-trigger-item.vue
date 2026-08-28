@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import { useMenuTriggerItemContext } from './use-menu-trigger-item-context'
+import type { PolymorphicProps } from '../factory.ts'
+import { useMenuTriggerItemContext } from './use-menu-trigger-item-context.ts'
 
 export interface MenuTriggerItemBaseProps extends PolymorphicProps {}
 export interface MenuTriggerItemProps
@@ -15,9 +15,9 @@ export interface MenuTriggerItemProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
+import { ark } from '../factory.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { MenuItemPropsProvider } from './use-menu-option-item-props-context.ts'
 
 defineProps<MenuTriggerItemProps>()
 const triggerItemProps = useMenuTriggerItemContext()

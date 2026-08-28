@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useMenuTriggerItemContext } from './use-menu-trigger-item-context'
-import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useMenuTriggerItemContext } from './use-menu-trigger-item-context.ts'
+import { MenuItemPropsProvider } from './use-menu-option-item-props-context.ts'
 
 export interface MenuTriggerItemBaseProps extends PolymorphicProps<'div'> {}
 export interface MenuTriggerItemProps extends HTMLProps<'div'>, MenuTriggerItemBaseProps {}

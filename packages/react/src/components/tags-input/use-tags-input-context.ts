@@ -1,5 +1,7 @@
-import { createContext } from '../../utils/create-context'
-import type { UseTagsInputReturn } from './use-tags-input'
+'use client'
+
+import { createContext } from '../../utils/create-context.ts'
+import type { UseTagsInputReturn } from './use-tags-input.ts'
 
 export interface UseTagsInputContext extends UseTagsInputReturn {}
 

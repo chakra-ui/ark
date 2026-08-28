@@ -108,6 +108,11 @@
         "description": "Called when the selection changes"
       },
       "quotesOnKeys": { "type": "boolean", "isRequired": false, "description": "Whether to show quotes on the keys." },
+      "scrollToIndexFn": {
+        "type": "(details: ScrollToIndexDetails<any>) => void",
+        "isRequired": false,
+        "description": "Function to scroll to a specific index.\nUseful for virtualized tree views."
+      },
       "selectedValue": { "type": "string[]", "isRequired": false, "description": "The controlled selected node value" },
       "selectionMode": {
         "type": "'single' | 'multiple'",
@@ -116,6 +121,11 @@
         "description": "Whether the tree supports multiple selection\n- \"single\": only one node can be selected\n- \"multiple\": multiple nodes can be selected"
       },
       "showNonenumerable": { "type": "boolean", "isRequired": false },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+      },
       "typeahead": {
         "type": "boolean",
         "defaultValue": "true",
@@ -132,7 +142,7 @@
   },
   "JsonTreeViewRootProvider": {
     "props": {
-      "value": { "type": "UseTreeViewReturn<JsonNode<any>>", "isRequired": true },
+      "value": { "type": "UseJsonTreeViewReturn", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
@@ -155,7 +165,7 @@
   "JsonTreeViewTree": {
     "props": {
       "arrow": {
-        "type": "number | boolean | Node | (string & {}) | ArrayElement",
+        "type": "number | boolean | (string & {}) | Node | ArrayElement",
         "isRequired": false,
         "description": "The icon to use for the arrow."
       },
@@ -165,7 +175,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "indentGuide": {
-        "type": "number | boolean | Node | (string & {}) | ArrayElement",
+        "type": "number | boolean | (string & {}) | Node | ArrayElement",
         "isRequired": false,
         "description": "The indent guide to use for the tree."
       },

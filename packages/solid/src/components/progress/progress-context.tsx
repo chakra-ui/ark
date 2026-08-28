@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js'
-import { type UseProgressContext, useProgressContext } from './use-progress-context'
+import { type UseProgressContext, useProgressContext } from './use-progress-context.ts'
 
 export interface ProgressContextProps {
   children: (context: UseProgressContext) => JSX.Element

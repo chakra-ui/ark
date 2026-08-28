@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { IndicatorProps } from '@zag-js/carousel'
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface CarouselIndicatorBaseProps extends IndicatorProps, PolymorphicProps {}
 export interface CarouselIndicatorProps
@@ -14,9 +14,9 @@ export interface CarouselIndicatorProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useCarouselContext } from './use-carousel-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useCarouselContext } from './use-carousel-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<CarouselIndicatorProps>()
 const carousel = useCarouselContext()

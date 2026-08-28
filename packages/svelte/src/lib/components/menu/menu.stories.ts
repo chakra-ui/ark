@@ -11,6 +11,7 @@ import LinksExample from './examples/links.svelte'
 import MenuInDialogExample from './examples/menu-in-dialog.svelte'
 import MenuItemDialogExample from './examples/menu-item-dialog.svelte'
 import MultipleMenuExample from './examples/multiple-menu.svelte'
+import MultipleTriggersExample from './examples/multiple-triggers.svelte'
 import NestedExample from './examples/nested.svelte'
 import RadioItemsExample from './examples/radio-items.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
@@ -85,6 +86,12 @@ export const MenuItemDialog = {
 export const MultipleMenu = {
   render: () => ({
     Component: MultipleMenuExample,
+  }),
+}
+
+export const MultipleTriggers = {
+  render: () => ({
+    Component: MultipleTriggersExample,
   }),
 }
 

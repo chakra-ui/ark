@@ -40,6 +40,7 @@ global.IntersectionObserver = vi.fn(function IntersectionObserver() {
     takeRecords: vi.fn(),
     root: null,
     rootMargin: '',
+    scrollMargin: '',
     thresholds: [],
   }
 })

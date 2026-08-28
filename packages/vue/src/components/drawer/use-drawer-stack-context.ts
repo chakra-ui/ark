@@ -1,7 +1,7 @@
 import type { DrawerStackApi } from '@zag-js/drawer'
 import type { PropTypes } from '@zag-js/vue'
 import type { ComputedRef } from 'vue'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface UseDrawerStackContext extends ComputedRef<DrawerStackApi<PropTypes>> {}
 

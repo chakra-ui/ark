@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js'
-import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
-import type { UseTooltipReturn } from './use-tooltip'
-import { TooltipProvider } from './use-tooltip-context'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.tsx'
+import type { UseTooltipReturn } from './use-tooltip.ts'
+import { TooltipProvider } from './use-tooltip-context.ts'
 
 interface RootProviderProps {
   value: UseTooltipReturn

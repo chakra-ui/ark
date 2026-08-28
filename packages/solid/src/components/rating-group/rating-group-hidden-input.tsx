@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useFieldContext } from '../field'
-import { useRatingGroupContext } from './use-rating-group-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useFieldContext } from '../field/index.tsx'
+import { useRatingGroupContext } from './use-rating-group-context.ts'
 
 export interface RatingGroupHiddenInputBaseProps extends PolymorphicProps<'input'> {}
 export interface RatingGroupHiddenInputProps extends HTMLProps<'input'>, RatingGroupHiddenInputBaseProps {}

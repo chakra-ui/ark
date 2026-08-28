@@ -1,8 +1,16 @@
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
+import { axe } from 'vitest-axe'
 import ComponentUnderTest from './listbox.test.vue'
 
 describe('Listbox', () => {
+  it('should have no a11y violations', async () => {
+    const { container } = render(ComponentUnderTest)
+    const results = await axe(container)
+
+    expect(results).toHaveNoViolations()
+  })
+
   it('should render all available options', async () => {
     render(ComponentUnderTest)
     await screen.findByRole('option', { name: 'React' })

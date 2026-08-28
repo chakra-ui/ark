@@ -1,7 +1,9 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useTimerContext } from './use-timer-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useTimerContext } from './use-timer-context.ts'
 
 export interface TimerSeparatorBaseProps extends PolymorphicProps {}
 export interface TimerSeparatorProps extends HTMLProps<'div'>, TimerSeparatorBaseProps {}

@@ -1,7 +1,7 @@
 import type { Accessor } from '$lib/types'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 import { untrack } from 'svelte'
-import { useFieldsetContext } from '../fieldset'
+import { useFieldsetContext } from '../fieldset/index.ts'
 
 export interface UseCheckboxGroupProps {
   /**

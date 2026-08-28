@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseTourContext } from './use-tour-context'
+import type { UseTourContext } from './use-tour-context.ts'
 
 export interface TourContextProps extends SlotsType<{
   default: UnwrapRef<UseTourContext>
@@ -8,7 +8,7 @@ export interface TourContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useTourContext } from './use-tour-context'
+import { useTourContext } from './use-tour-context.ts'
 
 const tour = useTourContext()
 

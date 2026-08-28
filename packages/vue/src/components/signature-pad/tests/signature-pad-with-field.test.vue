@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Field, type FieldRootProps } from '../../field'
-import { SignaturePad } from '../'
+import { Field, type FieldRootProps } from '@ark-ui/vue/field'
+import { SignaturePad } from '@ark-ui/vue/signature-pad'
 
 defineProps<FieldRootProps>()
 </script>

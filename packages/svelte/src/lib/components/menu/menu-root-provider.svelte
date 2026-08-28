@@ -1,7 +1,7 @@
 <script module lang="ts">
   import { onMount, type Snippet } from 'svelte'
-  import type { UsePresenceProps } from '../presence'
-  import type { UseMenuReturn } from './use-menu.svelte'
+  import type { UsePresenceProps } from '../presence/index.ts'
+  import type { UseMenuReturn } from './use-menu.svelte.ts'
 
   interface RootProviderProps {
     value: UseMenuReturn
@@ -14,10 +14,10 @@
 </script>
 
 <script lang="ts">
-  import { PresenceProvider, splitPresenceProps, usePresence } from '../presence'
-  import { MenuProvider, useMenuContext } from './use-menu-context'
-  import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context'
-  import { MenuTriggerItemProvider } from './use-menu-trigger-item-context'
+  import { PresenceProvider, splitPresenceProps, usePresence } from '../presence/index.ts'
+  import { MenuProvider, useMenuContext } from './use-menu-context.ts'
+  import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context.ts'
+  import { MenuTriggerItemProvider } from './use-menu-trigger-item-context.ts'
 
   const { value, ...props }: MenuRootProviderProps = $props()
 

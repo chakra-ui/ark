@@ -2,16 +2,13 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface DrawerGrabberIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface DrawerGrabberIndicatorProps extends Assign<
-    HTMLProps<'div'>,
-    DrawerGrabberIndicatorBaseProps
-  > {}
+  export interface DrawerGrabberIndicatorProps extends Assign<HTMLProps<'div'>, DrawerGrabberIndicatorBaseProps> {}
 </script>
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useDrawerContext } from './use-drawer-context'
+  import { Ark } from '../factory/index.ts'
+  import { useDrawerContext } from './use-drawer-context.ts'
 
   let { ref = $bindable(null), ...props }: DrawerGrabberIndicatorProps = $props()
 

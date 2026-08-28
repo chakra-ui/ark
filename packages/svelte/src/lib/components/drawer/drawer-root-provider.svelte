@@ -1,10 +1,13 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { UseDrawerReturn } from './use-drawer.svelte'
+  import type { UsePresenceProps } from '../presence/index.ts'
+  import type { UseDrawerReturn } from './use-drawer.svelte.ts'
 
-  export interface DrawerRootProviderBaseProps {
+  interface RootProviderProps {
     value: UseDrawerReturn
   }
+
+  export interface DrawerRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
   export interface DrawerRootProviderProps extends DrawerRootProviderBaseProps {
     children?: Snippet
   }
@@ -12,9 +15,9 @@
 
 <script lang="ts">
   import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '$lib/utils/render-strategy'
-  import { PresenceProvider, usePresence } from '../presence'
-  import { splitPresenceProps } from '../presence/split-presence-props.svelte'
-  import { DrawerProvider } from './use-drawer-context'
+  import { PresenceProvider, usePresence } from '../presence/index.ts'
+  import { splitPresenceProps } from '../presence/split-presence-props.svelte.ts'
+  import { DrawerProvider } from './use-drawer-context.ts'
 
   let { value, children, ...props }: DrawerRootProviderProps = $props()
 
@@ -28,7 +31,7 @@
 
   const presence = usePresence(() => presenceMachineProps)
 
-  DrawerProvider(value)
+  DrawerProvider(() => value())
   RenderStrategyPropsProvider(() => renderStrategyProps)
   PresenceProvider(presence)
 </script>

@@ -9,6 +9,8 @@ import pkg from './package.json'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
+const normalizeDeclarationPath = (filePath: string) => filePath.replace(/([/\\]dist)[/\\]src[/\\]/, '$1/')
+
 export default defineConfig({
   logLevel: 'warn',
   plugins: [
@@ -16,6 +18,13 @@ export default defineConfig({
       entryRoot: 'src',
       staticImport: true,
       exclude: ['**/*.stories.tsx', '**/*.test.tsx', '**/tests/*', '**/examples/*', '**/setup-test.ts'],
+      beforeWriteFile: (filePath, content) => ({
+        filePath: normalizeDeclarationPath(filePath),
+        content: content.replace(
+          /(\bfrom\s*['"])(\.\.?\/[^'"]*?)\.tsx?(['"])/g,
+          (_m, pre, spec, post) => `${pre}${spec}.js${post}`,
+        ),
+      }),
       afterBuild: () => {
         globbySync(['dist/**/*.d.ts', 'dist/**.d.ts']).forEach((file) => {
           copyFileSync(file, file.replace(/\.d\.ts$/, '.d.cts'))
@@ -45,7 +54,6 @@ export default defineConfig({
           preserveModulesRoot: 'src',
           exports: 'named',
           entryFileNames: '[name].cjs',
-          banner: (x) => renderBanner(x.fileName),
         },
         {
           format: 'es',
@@ -53,7 +61,6 @@ export default defineConfig({
           preserveModulesRoot: 'src',
           exports: 'named',
           entryFileNames: '[name].js',
-          banner: (x) => renderBanner(x.fileName),
         },
       ],
     },
@@ -73,21 +80,3 @@ export default defineConfig({
     },
   },
 })
-
-const renderBanner = (fileName: string) => {
-  const file = path.parse(fileName)
-  if (['portal', 'frame', 'client-only', 'focus-trap', 'download-trigger'].includes(file.name)) {
-    return `'use client';`
-  }
-  if (isBarrelComponent(file) || isSpecialFile(file)) {
-    return ''
-  }
-  return `'use client';`
-}
-
-// e.g Avatar.tsx, Accordion.tsx
-const isBarrelComponent = (file: path.ParsedPath) =>
-  file.dir.endsWith(file.name) && !['presence', 'environment', 'locale'].includes(file.dir)
-
-const isSpecialFile = (file: path.ParsedPath) =>
-  ['index', 'factory', 'anatomy', 'compose-refs', 'collection'].includes(file.name)

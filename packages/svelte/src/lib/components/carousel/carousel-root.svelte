@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseCarouselProps } from './use-carousel.svelte'
+  import type { UseCarouselProps } from './use-carousel.svelte.ts'
 
   export interface CarouselRootBaseProps extends UseCarouselProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface CarouselRootProps extends Assign<HTMLProps<'div'>, CarouselRootBaseProps> {}
@@ -8,9 +8,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useCarousel } from './use-carousel.svelte'
-  import { CarouselProvider } from './use-carousel-context'
+  import { Ark } from '../factory/index.ts'
+  import { useCarousel } from './use-carousel.svelte.ts'
+  import { CarouselProvider } from './use-carousel-context.ts'
   import { createSplitProps } from '$lib/utils/create-split-props'
 
   let { ref = $bindable(null), page = $bindable(), ...props }: CarouselRootProps = $props()

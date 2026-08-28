@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import { axe } from 'vitest-axe'
-import { Field, Fieldset } from '../'
+import { Field } from '@ark-ui/react/field'
+import { Fieldset } from '@ark-ui/react/fieldset'
 
 const ComponentUnderTest = (props: Fieldset.RootProps) => (
   <Fieldset.Root {...props}>
@@ -73,5 +74,31 @@ describe('Fieldset', () => {
       expect(describedBy).toContain('error-text')
       expect(describedBy).toContain('helper-text')
     })
+  })
+
+  it('should not re-render in a loop when a textarea with defaultValue is nested', () => {
+    let renders = 0
+
+    render(
+      <Fieldset.Root>
+        <Fieldset.Legend>Legend</Fieldset.Legend>
+        <Field.Root>
+          <Field.Label>Summary</Field.Label>
+          <Field.Textarea defaultValue="hello" />
+        </Field.Root>
+        <Fieldset.Context>
+          {() => {
+            renders += 1
+            if (renders > 50) {
+              throw new Error('Fieldset entered an update loop')
+            }
+            return null
+          }}
+        </Fieldset.Context>
+      </Fieldset.Root>,
+    )
+
+    expect(screen.getByRole('textbox')).toHaveValue('hello')
+    expect(renders).toBeLessThan(10)
   })
 })

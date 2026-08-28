@@ -1,5 +1,5 @@
 import type * as treeView from '@zag-js/tree-view'
-import type { TreeCollection, TreeNode } from '../collection'
+import type { TreeCollection, TreeNode } from '../collection/index.ts'
 
 export interface RootProps<T extends TreeNode> {
   /**
@@ -63,6 +63,10 @@ export interface RootProps<T extends TreeNode> {
    * @default "single"
    */
   selectionMode?: 'single' | 'multiple'
+  /**
+   * Specifies the localized strings that identifies the accessibility elements and their states
+   */
+  translations?: treeView.IntlTranslations
   /**
    * Whether the tree supports typeahead search
    * @default true

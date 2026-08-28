@@ -1,7 +1,7 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UsePresenceProps } from '../presence'
-  import type { UseNavigationMenuReturn } from './use-navigation-menu.svelte'
+  import type { UsePresenceProps } from '../presence/index.ts'
+  import type { UseNavigationMenuReturn } from './use-navigation-menu.svelte.ts'
 
   interface RootProviderProps {
     value: UseNavigationMenuReturn
@@ -18,8 +18,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { NavigationMenuProvider } from './use-navigation-menu-context'
+  import { Ark } from '../factory/index.ts'
+  import { NavigationMenuProvider } from './use-navigation-menu-context.ts'
   import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '$lib/utils/render-strategy'
 
   let { ref = $bindable(null), ...props }: NavigationMenuRootProviderProps = $props()

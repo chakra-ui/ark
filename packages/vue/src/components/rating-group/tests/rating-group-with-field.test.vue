@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Field, type FieldRootProps } from '@ark-ui/vue/field'
-import { RatingGroup } from '../'
+import { RatingGroup } from '@ark-ui/vue/rating-group'
 
 defineProps<FieldRootProps>()
 </script>

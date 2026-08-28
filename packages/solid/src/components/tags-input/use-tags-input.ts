@@ -1,10 +1,10 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import * as tagsInput from '@zag-js/tags-input'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { MaybeAccessor, Optional } from '../../types'
-import { runIfFn } from '../../utils/run-if-fn'
-import { useFieldContext } from '../field'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.tsx'
+import type { MaybeAccessor, Optional } from '../../types.ts'
+import { runIfFn } from '../../utils/run-if-fn.ts'
+import { useFieldContext } from '../field/index.tsx'
 
 export interface UseTagsInputProps extends Optional<Omit<tagsInput.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseTagsInputReturn extends Accessor<tagsInput.Api<PropTypes>> {}

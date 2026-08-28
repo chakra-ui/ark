@@ -10,12 +10,17 @@ import {
 import { join } from 'node:path'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
+import remarkRemoveFirstHeading from './src/lib/remark-remove-first-heading'
 import { defineCollection, defineConfig, s } from 'velite'
-import { replaceComponentTypes, replaceContextType, replaceExample } from './src/lib/mdx-transform'
+import { replaceContextType } from './src/lib/mdx-transform'
+
+const normalizePath = (path: string) => path.replace(/\\/g, '/')
 
 const pages = defineCollection({
   name: 'Pages',
-  pattern: ['pages/**/*.mdx', '../../../packages/*/CHANGELOG.md'],
+  // only the framework packages: `framework` is set from this directory name,
+  // and packages like mcp are not frameworks
+  pattern: ['pages/**/*.mdx', '../../../packages/{react,solid,svelte,vue}/CHANGELOG.md'],
   schema: s
     .object({
       // TODO create a changelog collection instead
@@ -31,34 +36,28 @@ const pages = defineCollection({
       code: s.mdx(),
       llm: s.custom<string>().transform((_data, { meta }) => {
         const content = meta.content as string
-        const path = meta.path as string
-        const isChangelog = path.includes('CHANGELOG.md')
-        const component = isChangelog
-          ? ''
-          : path
-              .split('/')
-              .pop()
-              ?.replace(/\.mdx$/, '') || ''
-        let processed = replaceExample(content, component)
-        processed = replaceComponentTypes(processed)
-        processed = replaceContextType(processed)
-        return processed
+        // `<Example />` and `<ComponentTypes />` stay as tags: they resolve per
+        // framework, and there is no framework at build time. See ~/lib/llm-content.
+        return replaceContextType(content)
       }),
     })
     .transform((data, { meta }) => {
+      const path = normalizePath(meta.path as string)
       if (data.id === 'changelog') {
         return {
           ...data,
           slug: 'overview/changelog',
           category: 'overview',
-          framework: (meta.path as string).replace(/.*\/packages\//, '').replace(/\/[^/]*$/, ''),
-          toc: data.toc.map((entry) => ({ ...entry, items: [] })),
+          framework: path.replace(/.*\/packages\//, '').replace(/\/[^/]*$/, ''),
+          toc: data.toc
+            .flatMap((entry) => (entry.url.includes('ark-ui') ? entry.items : [entry]))
+            .map((entry) => ({ ...entry, items: [] })),
         }
       }
       return {
         ...data,
-        slug: (meta.path as string).replace(/.*\/pages\//, '').replace(/\.mdx$/, ''),
-        category: (meta.path as string).replace(/.*\/pages\//, '').replace(/\/[^/]*$/, ''),
+        slug: path.replace(/.*\/pages\//, '').replace(/\.mdx$/, ''),
+        category: path.replace(/.*\/pages\//, '').replace(/\/[^/]*$/, ''),
       }
     }),
 })
@@ -79,11 +78,14 @@ const blogs = defineCollection({
       toc: s.toc(),
       code: s.mdx(),
     })
-    .transform((data, { meta }) => ({
-      ...data,
-      slug: (meta.path as string).replace(/.*\/blog\//, '').replace(/\.mdx$/, ''),
-      category: 'blog',
-    })),
+    .transform((data, { meta }) => {
+      const path = normalizePath(meta.path as string)
+      return {
+        ...data,
+        slug: path.replace(/.*\/blog\//, '').replace(/\.mdx$/, ''),
+        category: 'blog',
+      }
+    }),
 })
 
 const showcases = defineCollection({
@@ -117,17 +119,21 @@ const types = defineCollection({
         emits: s.record(s.string(), PropDefintion).optional(),
       }),
     )
-    .transform((data, { meta }) => ({
-      parts: data,
-      component: (meta.basename as string)?.split('.')[0] ?? '',
-      framework: (meta.path as string).replace(/.*\/types\//, '').replace(/\/[^/]*$/, ''),
-    })),
+    .transform((data, { meta }) => {
+      const path = normalizePath(meta.path as string)
+      return {
+        parts: data,
+        component: (meta.basename as string)?.split('.')[0] ?? '',
+        framework: path.replace(/.*\/types\//, '').replace(/\/[^/]*$/, ''),
+      }
+    }),
 })
 
 export default defineConfig({
   root: join(process.cwd(), './src/content'),
   collections: { pages, blogs, types, showcases },
   mdx: {
+    remarkPlugins: [remarkRemoveFirstHeading],
     rehypePlugins: [
       rehypeSlug,
       [

@@ -12,8 +12,8 @@ export {
   type AvatarRootProviderProps,
 } from './avatar-root-provider.svelte'
 export { default as AvatarRoot, type AvatarRootBaseProps, type AvatarRootProps } from './avatar-root.svelte'
-export { avatarAnatomy } from './avatar.anatomy'
-export { useAvatarContext, type UseAvatarContext } from './use-avatar-context'
-export { useAvatar, type UseAvatarProps, type UseAvatarReturn } from './use-avatar.svelte'
+export { avatarAnatomy } from './avatar.anatomy.ts'
+export { useAvatarContext, type UseAvatarContext } from './use-avatar-context.ts'
+export { useAvatar, type UseAvatarProps, type UseAvatarReturn } from './use-avatar.svelte.ts'
 
-export * as Avatar from './avatar'
+export * as Avatar from './avatar.ts'

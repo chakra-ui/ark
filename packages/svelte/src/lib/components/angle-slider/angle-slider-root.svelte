@@ -1,6 +1,6 @@
 <script lang="ts" module>
   import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseAngleSliderProps } from './use-angle-slider.svelte'
+  import type { UseAngleSliderProps } from './use-angle-slider.svelte.ts'
 
   export interface AngleSliderRootBaseProps
     extends Optional<UseAngleSliderProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
@@ -10,9 +10,9 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { createSplitProps } from '$lib/utils/create-split-props'
-  import { Ark } from '../factory'
-  import { AngleSliderProvider } from './use-angle-slider-context'
-  import { useAngleSlider } from './use-angle-slider.svelte'
+  import { Ark } from '../factory/index.ts'
+  import { AngleSliderProvider } from './use-angle-slider-context.ts'
+  import { useAngleSlider } from './use-angle-slider.svelte.ts'
 
   let { ref = $bindable(null), value = $bindable(), ...props }: AngleSliderRootProps = $props()
   const providedId = $props.id()

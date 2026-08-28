@@ -1,10 +1,12 @@
+'use client'
+
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { composeRefs } from '../../utils/compose-refs'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseFieldsetProps, useFieldset } from './use-fieldset'
-import { FieldsetProvider } from './use-fieldset-context'
+import { useComposedRefs } from '../../utils/compose-refs.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { type UseFieldsetProps, useFieldset } from './use-fieldset.ts'
+import { FieldsetProvider } from './use-fieldset-context.ts'
 
 export interface FieldsetRootBaseProps extends UseFieldsetProps, PolymorphicProps {}
 export interface FieldsetRootProps extends HTMLProps<'fieldset'>, FieldsetRootBaseProps {}
@@ -15,10 +17,11 @@ export const FieldsetRoot = forwardRef<HTMLFieldSetElement, FieldsetRootProps>((
   const [useFieldsetProps, localProps] = splitRootProps(props, ['id', 'disabled', 'invalid'])
   const fieldset = useFieldset(useFieldsetProps)
   const mergedProps = mergeProps<HTMLProps<'fieldset'>>(fieldset.getRootProps(), localProps)
+  const composedRefs = useComposedRefs(ref, fieldset.refs.rootRef)
 
   return (
     <FieldsetProvider value={fieldset}>
-      <ark.fieldset {...mergedProps} ref={composeRefs(ref, fieldset.refs.rootRef)} />
+      <ark.fieldset {...mergedProps} ref={composedRefs} />
     </FieldsetProvider>
   )
 })

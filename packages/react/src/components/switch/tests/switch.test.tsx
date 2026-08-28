@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { ComponentUnderTest, SwitchWithField } from './basic'
+import { ComponentUnderTest, SwitchWithField } from './basic.tsx'
 
 describe('Switch', () => {
   it('should have no a11y violations', async () => {

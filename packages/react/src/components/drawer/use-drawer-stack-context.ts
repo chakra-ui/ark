@@ -1,6 +1,8 @@
+'use client'
+
 import type { DrawerStackApi } from '@zag-js/drawer'
 import type { PropTypes } from '@zag-js/react'
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 
 export interface UseDrawerStackContext extends DrawerStackApi<PropTypes> {}
 

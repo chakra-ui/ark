@@ -1,9 +1,9 @@
 import type { ComponentProps } from 'solid-js'
 import { For, Show } from 'solid-js'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { ark } from '../factory'
-import { type UseHighlightProps, useHighlight } from './use-highlight'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { ark } from '../factory.tsx'
+import { type UseHighlightProps, useHighlight } from './use-highlight.ts'
 
 export interface HighlightBaseProps extends UseHighlightProps {}
 

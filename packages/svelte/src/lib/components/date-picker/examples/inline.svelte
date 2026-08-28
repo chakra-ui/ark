@@ -64,7 +64,9 @@
               <DatePicker.TableRow class={styles.TableRow}>
                 {#each months as month}
                   <DatePicker.TableCell class={styles.TableCell} value={month.value}>
-                    <DatePicker.TableCellTrigger class={styles.MonthTableCellTrigger}>{month.label}</DatePicker.TableCellTrigger>
+                    <DatePicker.TableCellTrigger class={styles.MonthTableCellTrigger}>
+                      {month.label}
+                    </DatePicker.TableCellTrigger>
                   </DatePicker.TableCell>
                 {/each}
               </DatePicker.TableRow>
@@ -94,7 +96,9 @@
               <DatePicker.TableRow class={styles.TableRow}>
                 {#each years as year}
                   <DatePicker.TableCell class={styles.TableCell} value={year.value}>
-                    <DatePicker.TableCellTrigger class={styles.YearTableCellTrigger}>{year.label}</DatePicker.TableCellTrigger>
+                    <DatePicker.TableCellTrigger class={styles.YearTableCellTrigger}>
+                      {year.label}
+                    </DatePicker.TableCellTrigger>
                   </DatePicker.TableCell>
                 {/each}
               </DatePicker.TableRow>

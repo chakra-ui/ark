@@ -1,8 +1,8 @@
 import { act, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { ComponentUnderTest } from './basic'
-import { ControlledComponentUnderTest } from './controlled'
+import { ComponentUnderTest } from './basic.tsx'
+import { ControlledComponentUnderTest } from './controlled.tsx'
 
 describe('Popover', () => {
   it('should have no a11y violations', async () => {

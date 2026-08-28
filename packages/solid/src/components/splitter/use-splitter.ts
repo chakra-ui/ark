@@ -1,9 +1,9 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import * as splitter from '@zag-js/splitter'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { MaybeAccessor, Optional } from '../../types'
-import { runIfFn } from '../../utils/run-if-fn'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.tsx'
+import type { MaybeAccessor, Optional } from '../../types.ts'
+import { runIfFn } from '../../utils/run-if-fn.ts'
 
 export interface UseSplitterProps extends Optional<Omit<splitter.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseSplitterReturn extends Accessor<splitter.Api<PropTypes>> {}

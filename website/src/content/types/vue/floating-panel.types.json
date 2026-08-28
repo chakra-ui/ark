@@ -73,6 +73,58 @@
     }
   },
   "Root": {
+    "emits": {
+      "exitComplete": {
+        "type": "[]",
+        "isRequired": true,
+        "description": "Function called when the animation ends in the closed state"
+      },
+      "openChange": {
+        "type": "[details: OpenChangeDetails]",
+        "isRequired": true,
+        "description": "Function called when the panel is opened or closed"
+      },
+      "positionChange": {
+        "type": "[details: PositionChangeDetails]",
+        "isRequired": true,
+        "description": "Function called when the position of the panel changes via dragging"
+      },
+      "positionChangeEnd": {
+        "type": "[details: PositionChangeDetails]",
+        "isRequired": true,
+        "description": "Function called when the position of the panel changes via dragging ends"
+      },
+      "sizeChange": {
+        "type": "[details: SizeChangeDetails]",
+        "isRequired": true,
+        "description": "Function called when the size of the panel changes via resizing"
+      },
+      "sizeChangeEnd": {
+        "type": "[details: SizeChangeDetails]",
+        "isRequired": true,
+        "description": "Function called when the size of the panel changes via resizing ends"
+      },
+      "stageChange": {
+        "type": "[details: StageChangeDetails]",
+        "isRequired": true,
+        "description": "Function called when the stage of the panel changes"
+      },
+      "update:open": {
+        "type": "[open: boolean]",
+        "isRequired": true,
+        "description": "Function called when the panel is opened or closed"
+      },
+      "update:position": {
+        "type": "[details: Point]",
+        "isRequired": true,
+        "description": "Function called when the position of the panel changes via dragging"
+      },
+      "update:size": {
+        "type": "[details: Size]",
+        "isRequired": true,
+        "description": "Function called when the size of the panel changes via resizing"
+      }
+    },
     "props": {
       "allowOverflow": {
         "type": "boolean",
@@ -110,6 +162,11 @@
         "isRequired": false,
         "description": "Whether the panel is draggable"
       },
+      "finalFocusEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "description": "The element to receive focus when the panel closes"
+      },
       "getAnchorPosition": {
         "type": "(details: AnchorPositionDetails) => Point",
         "isRequired": false,
@@ -131,6 +188,11 @@
         "type": "Partial<{ trigger: string; positioner: string; content: string; title: string; header: string }>",
         "isRequired": false,
         "description": "The ids of the elements in the floating panel. Useful for composition."
+      },
+      "initialFocusEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "description": "The element to receive focus when the panel opens"
       },
       "lazyMount": {
         "type": "boolean",
@@ -158,6 +220,12 @@
         "isRequired": false,
         "description": "Whether the panel is resizable"
       },
+      "restoreFocus": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to restore focus to the trigger element when the panel closes"
+      },
       "size": { "type": "Size", "isRequired": false, "description": "The size of the panel" },
       "strategy": {
         "type": "'absolute' | 'fixed'",
@@ -179,6 +247,13 @@
     }
   },
   "RootProvider": {
+    "emits": {
+      "exitComplete": {
+        "type": "[]",
+        "isRequired": true,
+        "description": "Function called when the animation ends in the closed state"
+      }
+    },
     "props": {
       "value": { "type": "FloatingPanelApi<PropTypes>", "isRequired": true },
       "lazyMount": {

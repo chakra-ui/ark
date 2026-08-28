@@ -50,8 +50,8 @@ export {
   type NumberInputValueTextBaseProps,
   type NumberInputValueTextProps,
 } from './number-input-value-text.vue'
-export { numberInputAnatomy } from './number-input.anatomy'
-export { useNumberInput, type UseNumberInputProps, type UseNumberInputReturn } from './use-number-input'
-export { useNumberInputContext, type UseNumberInputContext } from './use-number-input-context'
+export { numberInputAnatomy } from './number-input.anatomy.ts'
+export { useNumberInput, type UseNumberInputProps, type UseNumberInputReturn } from './use-number-input.ts'
+export { useNumberInputContext, type UseNumberInputContext } from './use-number-input-context.ts'
 
-export * as NumberInput from './number-input'
+export * as NumberInput from './number-input.ts'

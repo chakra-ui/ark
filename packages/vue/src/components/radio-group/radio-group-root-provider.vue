@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseRadioGroupReturn } from './use-radio-group'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseRadioGroupReturn } from './use-radio-group.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseRadioGroupReturn>
@@ -19,9 +19,9 @@ export interface RadioGroupRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { RadioGroupProvider } from './use-radio-group-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { RadioGroupProvider } from './use-radio-group-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<RadioGroupRootProviderProps>()
 const radioGroup = computed(() => props.value)

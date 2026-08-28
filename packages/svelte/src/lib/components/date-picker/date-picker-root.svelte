@@ -30,6 +30,7 @@
   const [useDatePickerProps, localProps] = $derived(
     createSplitProps<UseDatePickerProps>()(datePickerProps, [
       'closeOnSelect',
+      'createCalendar',
       'defaultFocusedValue',
       'defaultOpen',
       'defaultValue',

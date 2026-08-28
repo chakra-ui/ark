@@ -1,7 +1,7 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { UsePresenceProps } from '../presence'
-  import type { UseDialogProps } from './use-dialog.svelte'
+  import type { UsePresenceProps } from '../presence/index.ts'
+  import type { UseDialogProps } from './use-dialog.svelte.ts'
 
   export interface DialogRootBaseProps extends UseDialogProps, UsePresenceProps {}
   export interface DialogRootProps extends DialogRootBaseProps {
@@ -10,11 +10,11 @@
 </script>
 
 <script lang="ts">
-  import { PresenceProvider, usePresence } from '../presence'
-  import { splitPresenceProps } from '../presence/split-presence-props.svelte'
+  import { PresenceProvider, usePresence } from '../presence/index.ts'
+  import { splitPresenceProps } from '../presence/split-presence-props.svelte.ts'
   import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '$lib/utils/render-strategy'
-  import { DialogProvider } from './use-dialog-context'
-  import { useDialog } from './use-dialog.svelte'
+  import { DialogProvider } from './use-dialog-context.ts'
+  import { useDialog } from './use-dialog.svelte.ts'
 
   let { open = $bindable(), children, ...props }: DialogRootProps = $props()
 

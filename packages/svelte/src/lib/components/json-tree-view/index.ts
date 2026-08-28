@@ -12,6 +12,6 @@ export {
   type JsonTreeViewTreeBaseProps,
   type JsonTreeViewTreeProps,
 } from './json-tree-view-tree.svelte'
-export { useJsonTreeView, type UseJsonTreeViewProps, type UseJsonTreeViewReturn } from './use-json-tree-view.svelte'
+export { useJsonTreeView, type UseJsonTreeViewProps, type UseJsonTreeViewReturn } from './use-json-tree-view.svelte.ts'
 
-export * as JsonTreeView from './json-tree-view'
+export * as JsonTreeView from './json-tree-view.ts'

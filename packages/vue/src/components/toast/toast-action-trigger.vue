@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface ToastActionTriggerBaseProps extends PolymorphicProps {}
 export interface ToastActionTriggerProps
@@ -13,9 +13,9 @@ export interface ToastActionTriggerProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useToastContext } from './use-toast-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useToastContext } from './use-toast-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ToastActionTriggerProps>()
 const toast = useToastContext()

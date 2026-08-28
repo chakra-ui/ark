@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js'
-import { type UsePasswordInputContext, usePasswordInputContext } from './use-password-input-context'
+import { type UsePasswordInputContext, usePasswordInputContext } from './use-password-input-context.ts'
 
 export interface PasswordInputContextProps {
   children: (context: UsePasswordInputContext) => JSX.Element

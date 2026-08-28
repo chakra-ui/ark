@@ -3,8 +3,8 @@
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
   import type { ItemProps } from '@zag-js/timer'
-  import { Ark } from '../factory'
-  import { useTimerContext } from './use-timer-context'
+  import { Ark } from '../factory/index.ts'
+  import { useTimerContext } from './use-timer-context.ts'
 
   export interface TimerItemBaseProps extends ItemProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface TimerItemProps extends HTMLProps<'div'>, TimerItemBaseProps {}

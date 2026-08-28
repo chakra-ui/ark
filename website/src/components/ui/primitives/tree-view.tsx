@@ -180,7 +180,7 @@ export const ItemText = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'spa
   'itemText',
 )
 
-export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, TreeView.LabelBaseProps>>(
+export const Label = withContext<HTMLHeadingElement, Assign<HTMLStyledProps<'h3'>, TreeView.LabelBaseProps>>(
   TreeView.Label,
   'label',
 )

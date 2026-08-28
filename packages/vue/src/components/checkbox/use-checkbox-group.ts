@@ -1,9 +1,9 @@
 import { computed, toRefs } from 'vue'
-import type { EmitFn } from '../../types'
-import { toBooleanValue } from '../../utils/boolean'
-import { useFieldsetContext } from '../fieldset'
-import { useVModel } from '../use-v-model'
-import type { GroupEmits, GroupProps } from './checkbox-group.types'
+import type { EmitFn } from '../../types.ts'
+import { toBooleanValue } from '../../utils/boolean.ts'
+import { useFieldsetContext } from '../fieldset/index.ts'
+import { useVModel } from '../use-v-model.ts'
+import type { GroupEmits, GroupProps } from './checkbox-group.types.ts'
 
 export interface UseCheckboxGroupProps extends GroupProps {}
 export type UseCheckboxGroupReturn = ReturnType<typeof useCheckboxGroup>

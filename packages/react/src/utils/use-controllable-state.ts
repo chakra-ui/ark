@@ -1,3 +1,5 @@
+'use client'
+
 import { useCallback, useState } from 'react'
 
 export interface UseControllableStateProps<T> {

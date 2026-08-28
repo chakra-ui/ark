@@ -10,8 +10,8 @@
 <script lang="ts">
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useTourContext } from './use-tour-context'
+  import { Ark } from '../factory/index.ts'
+  import { useTourContext } from './use-tour-context.ts'
 
   let { ref = $bindable(null), ...props }: TourActionTriggerProps = $props()
   const [actionTriggerProps, localProps] = $derived(createSplitProps<StepActionTriggerProps>()(props, ['action']))

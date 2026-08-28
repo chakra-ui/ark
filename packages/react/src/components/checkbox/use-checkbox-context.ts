@@ -1,5 +1,7 @@
-import { createContext } from '../../utils/create-context'
-import type { UseCheckboxReturn } from './use-checkbox'
+'use client'
+
+import { createContext } from '../../utils/create-context.ts'
+import type { UseCheckboxReturn } from './use-checkbox.ts'
 
 export interface UseCheckboxContext extends UseCheckboxReturn {}
 

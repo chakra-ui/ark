@@ -88,6 +88,16 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": { "type": "ElementIds", "isRequired": false, "description": "The custom ids for the stepper elements" },
+      "isStepSkippable": {
+        "type": "(index: number) => boolean",
+        "isRequired": false,
+        "description": "Function that returns whether a step can be skipped"
+      },
+      "isStepValid": {
+        "type": "(index: number) => boolean",
+        "isRequired": false,
+        "description": "Function that returns whether a step is valid"
+      },
       "linear": {
         "type": "boolean",
         "isRequired": false,

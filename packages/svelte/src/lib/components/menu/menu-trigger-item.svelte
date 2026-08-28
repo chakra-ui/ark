@@ -7,9 +7,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { useMenuTriggerItemContext } from './use-menu-trigger-item-context'
-  import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
+  import { Ark } from '../factory/index.ts'
+  import { useMenuTriggerItemContext } from './use-menu-trigger-item-context.ts'
+  import { MenuItemPropsProvider } from './use-menu-option-item-props-context.ts'
 
   let { ref = $bindable(null), ...props }: MenuTriggerItemProps = $props()
 

@@ -1,0 +1,67 @@
+{
+  "Indicator": {
+    "props": {
+      "type": {
+        "type": "'on' | 'off'",
+        "isRequired": true
+      },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLSpanElement",
+    "tag": "span"
+  },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "hideMode": {
+        "type": "HideMode",
+        "defaultValue": "'display-none'",
+        "isRequired": false,
+        "description": "How to hide content when mounted but not present.\n- `'display-none'`: HTML `hidden` attribute. Effects stay alive.\n- `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "swap": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the swap is in the \"on\" state."
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
+    },
+    "element": "HTMLSpanElement",
+    "tag": "span"
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "UseSwapReturn",
+        "isRequired": true
+      },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLSpanElement",
+    "tag": "span"
+  }
+}

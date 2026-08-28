@@ -2,7 +2,7 @@
   import type { Accessor } from '$lib/types'
   import type { StepAction } from '@zag-js/tour'
   import type { Snippet } from 'svelte'
-  import { useTourContext } from './use-tour-context'
+  import { useTourContext } from './use-tour-context.ts'
 
   export interface TourActionsProps {
     children: Snippet<[Accessor<StepAction[]>]>

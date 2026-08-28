@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseColorPickerContext } from './use-color-picker-context'
+import type { UseColorPickerContext } from './use-color-picker-context.ts'
 
 export interface ColorPickerContextProps extends SlotsType<{
   default: UnwrapRef<UseColorPickerContext>
@@ -8,7 +8,7 @@ export interface ColorPickerContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useColorPickerContext } from './use-color-picker-context'
+import { useColorPickerContext } from './use-color-picker-context.ts'
 
 const colorPicker = useColorPickerContext()
 

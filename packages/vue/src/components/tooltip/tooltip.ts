@@ -1,4 +1,4 @@
-export type { OpenChangeDetails } from '@zag-js/tooltip'
+export type { OpenChangeDetails, TriggerValueChangeDetails } from '@zag-js/tooltip'
 export {
   default as ArrowTip,
   type TooltipArrowTipProps as ArrowTipProps,

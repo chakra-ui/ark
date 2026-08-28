@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UseTagsInputReturn } from './use-tags-input.svelte'
+import type { UseTagsInputReturn } from './use-tags-input.svelte.ts'
 
 export interface UseTagsInputContext extends UseTagsInputReturn {}
 

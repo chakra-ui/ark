@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { UseAccordionReturn } from './use-accordion.svelte'
+  import type { UseAccordionReturn } from './use-accordion.svelte.ts'
 
   export interface AccordionRootProviderBaseProps extends PolymorphicProps<'div'>, RenderStrategyProps, RefAttribute {
     value: UseAccordionReturn
@@ -15,15 +15,15 @@
     splitRenderStrategyProps,
   } from '$lib/utils/render-strategy'
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { AccordionProvider } from './use-accordion-context'
+  import { Ark } from '../factory/index.ts'
+  import { AccordionProvider } from './use-accordion-context.ts'
 
   let { ref = $bindable(null), value, ...props }: AccordionRootProviderProps = $props()
 
   const [renderStrategyProps, localProps] = $derived(splitRenderStrategyProps(props))
   const mergedProps = $derived(mergeProps(value().getRootProps(), localProps))
 
-  AccordionProvider(value)
+  AccordionProvider(() => value())
   RenderStrategyPropsProvider(() => renderStrategyProps)
 </script>
 

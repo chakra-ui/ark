@@ -1,0 +1,267 @@
+{
+  "Arrow": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  },
+  "Content": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "value": { "type": "string", "isRequired": false, "description": "The value of the item this content belongs to" }
+    }
+  },
+  "Context": { "props": { "render": { "type": "Snippet<[UseNavigationMenuContext]>", "isRequired": false } } },
+  "Indicator": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  },
+  "ItemIndicator": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  },
+  "Item": {
+    "props": {
+      "value": { "type": "string", "isRequired": true, "description": "The value of the item" },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the item is disabled" },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  },
+  "Link": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'a'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "closeOnClick": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to close the navigation menu when the link is clicked."
+      },
+      "current": { "type": "boolean", "isRequired": false, "description": "Whether the link is the current link" },
+      "onSelect": {
+        "type": "(event: CustomEvent<any>) => void",
+        "isRequired": false,
+        "description": "Function called when the link is selected"
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "value": { "type": "string", "isRequired": false, "description": "The value of the item this link belongs to" }
+    }
+  },
+  "List": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'nav'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "closeDelay": {
+        "type": "number",
+        "defaultValue": "300",
+        "isRequired": false,
+        "description": "The delay before the menu closes"
+      },
+      "defaultValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The default value of the navigation menu.\nUse when you don't want to control the value of the menu."
+      },
+      "disableClickTrigger": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to disable the click trigger"
+      },
+      "disableHoverTrigger": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to disable the hover trigger"
+      },
+      "disablePointerLeaveClose": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to disable the pointer leave close"
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  list: string\n  item: string\n  trigger: (value: string) => string\n  content: (value: string) => string\n  viewport: string\n}>",
+        "isRequired": false,
+        "description": "The ids of the elements in the machine."
+      },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "onExitComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the closed state"
+      },
+      "onValueChange": {
+        "type": "(details: ValueChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the value of the menu changes"
+      },
+      "openDelay": {
+        "type": "number",
+        "defaultValue": "200",
+        "isRequired": false,
+        "description": "The delay before the menu opens"
+      },
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "defaultValue": "\"horizontal\"",
+        "isRequired": false,
+        "description": "The orientation of the element."
+      },
+      "present": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the node is present (controlled by the user)"
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      },
+      "value": { "type": "string", "isRequired": false, "description": "The controlled value of the navigation menu" }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseNavigationMenuReturn", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'nav'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "onExitComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the closed state"
+      },
+      "present": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the node is present (controlled by the user)"
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
+    }
+  },
+  "Trigger": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the item is disabled" },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  },
+  "ViewportPositioner": {
+    "props": {
+      "align": {
+        "type": "'start' | 'center' | 'end'",
+        "isRequired": false,
+        "description": "Placement of the viewport for css variables `(--viewport-x, --viewport-y)`."
+      },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  },
+  "Viewport": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  }
+}

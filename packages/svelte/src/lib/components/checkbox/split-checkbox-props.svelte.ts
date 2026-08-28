@@ -1,5 +1,5 @@
 import { createSplitProps } from '$lib/utils/create-split-props'
-import type { UseCheckboxProps } from './use-checkbox.svelte'
+import type { UseCheckboxProps } from './use-checkbox.svelte.ts'
 
 const splitFn = createSplitProps<UseCheckboxProps>()
 

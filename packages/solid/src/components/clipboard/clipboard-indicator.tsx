@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
 import { type JSX, Show, children } from 'solid-js'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useClipboardContext } from './use-clipboard-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useClipboardContext } from './use-clipboard-context.ts'
 
 interface IndicatorProps {
   copied?: JSX.Element

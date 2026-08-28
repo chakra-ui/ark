@@ -1,8 +1,8 @@
 import { Fragment } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import type { UseHighlightProps } from './use-highlight'
-import { useHighlight } from './use-highlight'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import type { UseHighlightProps } from './use-highlight.ts'
+import { useHighlight } from './use-highlight.ts'
 
 export interface HighlightBaseProps extends UseHighlightProps {}
 

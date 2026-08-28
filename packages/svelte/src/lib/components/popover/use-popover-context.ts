@@ -1,5 +1,5 @@
 import { createContext } from '$lib/utils/create-context'
-import type { UsePopoverReturn } from './use-popover.svelte'
+import type { UsePopoverReturn } from './use-popover.svelte.ts'
 
 export interface UsePopoverContext extends UsePopoverReturn {}
 

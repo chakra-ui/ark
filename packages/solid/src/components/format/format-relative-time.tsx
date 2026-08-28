@@ -1,6 +1,6 @@
 import { formatRelativeTime } from '@zag-js/i18n-utils'
 import { createMemo } from 'solid-js'
-import { useLocaleContext } from '../../providers/locale'
+import { useLocaleContext } from '../../providers/locale/index.tsx'
 
 export interface FormatRelativeTimeProps extends Intl.RelativeTimeFormatOptions {
   /**

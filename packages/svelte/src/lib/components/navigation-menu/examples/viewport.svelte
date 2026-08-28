@@ -3,11 +3,25 @@
   import ChevronDownIcon from 'lucide-svelte/icons/chevron-down'
   import styles from 'styles/navigation-menu.module.css'
 
-  const products1 = ['Analytics Platform', 'Customer Engagement', 'Marketing Automation', 'Data Integration', 'Enterprise Solutions', 'API Documentation']
+  const products1 = [
+    'Analytics Platform',
+    'Customer Engagement',
+    'Marketing Automation',
+    'Data Integration',
+    'Enterprise Solutions',
+    'API Documentation',
+  ]
   const products2 = ['Case Studies', 'Success Stories', 'Integration Partners', 'Security & Compliance']
   const company1 = ['About Us', 'Leadership Team', 'Careers', 'Press Releases']
   const company2 = ['Investors', 'Partners', 'Corporate Responsibility']
-  const developers1 = ['API Documentation', 'SDKs & Libraries', 'Developer Guides', 'Code Samples', 'Webhooks', 'GraphQL Explorer']
+  const developers1 = [
+    'API Documentation',
+    'SDKs & Libraries',
+    'Developer Guides',
+    'Code Samples',
+    'Webhooks',
+    'GraphQL Explorer',
+  ]
   const developers2 = ['Developer Community', 'Changelog', 'Status Page', 'Rate Limits']
 </script>
 

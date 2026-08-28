@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { computed } from 'vue'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import type { PolymorphicProps } from '../factory'
-import { useToggleContext } from './use-toggle-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import type { PolymorphicProps } from '../factory.ts'
+import { useToggleContext } from './use-toggle-context.ts'
 
 export interface ToggleIndicatorBaseProps extends PolymorphicProps {}
 export interface ToggleIndicatorProps

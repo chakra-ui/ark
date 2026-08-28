@@ -328,7 +328,7 @@
         "description": "Function to scroll to a specific index"
       },
       "selectionBehavior": {
-        "type": "'replace' | 'clear' | 'preserve'",
+        "type": "'clear' | 'replace' | 'preserve'",
         "defaultValue": "\"replace\"",
         "isRequired": false,
         "description": "The behavior of the combobox input when an item is selected\n\n- `replace`: The selected item string is set as the input value\n- `clear`: The input value is cleared\n- `preserve`: The input value is preserved"

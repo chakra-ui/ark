@@ -1,6 +1,6 @@
 import { type Accessor, createMemo } from 'solid-js'
-import { useControllableState } from '../../utils/use-controllable-state'
-import { useFieldsetContext } from '../fieldset'
+import { useControllableState } from '../../utils/use-controllable-state.ts'
+import { useFieldsetContext } from '../fieldset/index.tsx'
 
 export interface UseCheckboxGroupProps {
   /**

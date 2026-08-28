@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UseCollapsibleContext } from './use-collapsible-context'
+import type { UseCollapsibleContext } from './use-collapsible-context.ts'
 
 export interface CollapsibleContextProps extends SlotsType<{
   default: UnwrapRef<UseCollapsibleContext>
@@ -8,7 +8,7 @@ export interface CollapsibleContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { useCollapsibleContext } from './use-collapsible-context'
+import { useCollapsibleContext } from './use-collapsible-context.ts'
 
 const collapsible = useCollapsibleContext()
 

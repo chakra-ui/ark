@@ -3,7 +3,7 @@
 import { Combobox, type UseComboboxProps, useCombobox, useListCollection } from '@ark-ui/vue/combobox'
 import { computed, ref, watch, watchEffect } from 'vue'
 import styles from 'styles/combobox.module.css'
-import { useAsync } from './use-async'
+import { useAsync } from './use-async.ts'
 
 interface Character {
   name: string

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface TreeViewItemBaseProps extends PolymorphicProps {}
 export interface TreeViewItemProps
@@ -13,10 +13,10 @@ export interface TreeViewItemProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { ark } from '../factory'
-import { useTreeViewContext } from './use-tree-view-context'
-import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { ark } from '../factory.ts'
+import { useTreeViewContext } from './use-tree-view-context.ts'
+import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
 
 defineProps<TreeViewItemProps>()
 const treeView = useTreeViewContext()

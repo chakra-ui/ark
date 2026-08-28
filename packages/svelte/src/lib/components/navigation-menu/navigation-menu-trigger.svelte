@@ -11,9 +11,9 @@
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
   import { ensure } from '@zag-js/utils'
-  import { Ark } from '../factory'
-  import { useNavigationMenuContext } from './use-navigation-menu-context'
-  import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context'
+  import { Ark } from '../factory/index.ts'
+  import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
+  import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context.ts'
 
   let { ref = $bindable(null), ...props }: NavigationMenuTriggerProps = $props()
   const splitItemProps = createSplitProps<ItemProps>()

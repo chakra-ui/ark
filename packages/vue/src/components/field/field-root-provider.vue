@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseFieldReturn } from './use-field'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseFieldReturn } from './use-field.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseFieldReturn>
@@ -19,9 +19,9 @@ export interface FieldRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { FieldProvider } from './use-field-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { FieldProvider } from './use-field-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<FieldRootProviderProps>()
 const field = computed(() => props.value)

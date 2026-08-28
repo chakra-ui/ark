@@ -23,6 +23,7 @@ import SelectTodayExample from './examples/select-today.svelte'
 import FixedWeeksExample from './examples/fixed-weeks.svelte'
 import FormExample from './examples/form.svelte'
 import MaxSelectedDatesExample from './examples/max-selected-dates.svelte'
+import CustomCalendarExample from './examples/custom-calendar.svelte'
 
 const meta: Meta = {
   title: 'Components / DatePicker',
@@ -171,5 +172,11 @@ export const Form = {
 export const MaxSelectedDates = {
   render: () => ({
     Component: MaxSelectedDatesExample,
+  }),
+}
+
+export const CustomCalendar = {
+  render: () => ({
+    Component: CustomCalendarExample,
   }),
 }

@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import { useMenuItemPropsContext } from './use-menu-option-item-props-context'
+import type { PolymorphicProps } from '../factory.ts'
+import { useMenuItemPropsContext } from './use-menu-option-item-props-context.ts'
 
 export interface MenuItemTextBaseProps extends PolymorphicProps {}
 export interface MenuItemTextProps
@@ -14,9 +14,9 @@ export interface MenuItemTextProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useMenuContext } from './use-menu-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useMenuContext } from './use-menu-context.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<MenuItemTextProps>()
 

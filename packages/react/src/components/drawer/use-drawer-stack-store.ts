@@ -1,3 +1,5 @@
+'use client'
+
 import type { DrawerStack } from '@zag-js/drawer'
 import { createContext, useContext } from 'react'
 

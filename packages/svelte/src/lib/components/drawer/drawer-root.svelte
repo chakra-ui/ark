@@ -1,7 +1,7 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { UsePresenceProps } from '../presence'
-  import type { UseDrawerProps } from './use-drawer.svelte'
+  import type { UsePresenceProps } from '../presence/index.ts'
+  import type { UseDrawerProps } from './use-drawer.svelte.ts'
 
   export interface DrawerRootBaseProps extends UseDrawerProps, UsePresenceProps {}
   export interface DrawerRootProps extends DrawerRootBaseProps {
@@ -10,11 +10,11 @@
 </script>
 
 <script lang="ts">
-  import { PresenceProvider, usePresence } from '../presence'
-  import { splitPresenceProps } from '../presence/split-presence-props.svelte'
+  import { PresenceProvider, usePresence } from '../presence/index.ts'
+  import { splitPresenceProps } from '../presence/split-presence-props.svelte.ts'
   import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '$lib/utils/render-strategy'
-  import { DrawerProvider } from './use-drawer-context'
-  import { useDrawer } from './use-drawer.svelte'
+  import { DrawerProvider } from './use-drawer-context.ts'
+  import { useDrawer } from './use-drawer.svelte.ts'
 
   let { open = $bindable(), children, ...props }: DrawerRootProps = $props()
 

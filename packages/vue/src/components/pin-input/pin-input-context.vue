@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
-import type { UsePinInputContext } from './use-pin-input-context'
+import type { UsePinInputContext } from './use-pin-input-context.ts'
 
 export interface PinInputContextProps extends SlotsType<{
   default: UnwrapRef<UsePinInputContext>
@@ -8,7 +8,7 @@ export interface PinInputContextProps extends SlotsType<{
 </script>
 
 <script setup lang="ts">
-import { usePinInputContext } from './use-pin-input-context'
+import { usePinInputContext } from './use-pin-input-context.ts'
 
 const pinInput = usePinInputContext()
 

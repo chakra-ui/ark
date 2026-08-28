@@ -9,6 +9,7 @@ import FinalFocusExample from './examples/final-focus.vue'
 import InitialFocusExample from './examples/initial-focus.vue'
 import InsideScrollExample from './examples/inside-scroll.vue'
 import LazyMountExample from './examples/lazy-mount.vue'
+import MultipleTriggersExample from './examples/multiple-triggers.vue'
 import NestedExample from './examples/nested.vue'
 import NonModalExample from './examples/non-modal.vue'
 import OpenFromMenuExample from './examples/open-from-menu.vue'
@@ -80,6 +81,13 @@ export const InsideScroll = {
 export const LazyMount = {
   render: () => ({
     components: { Component: LazyMountExample },
+    template: '<Component />',
+  }),
+}
+
+export const MultipleTriggers = {
+  render: () => ({
+    components: { Component: MultipleTriggersExample },
     template: '<Component />',
   }),
 }

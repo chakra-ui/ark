@@ -8,6 +8,7 @@ import { TableOfContent } from '~/components/table-of-content'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import { getFramework } from '~/lib/frameworks'
+import { cleanupPageContent } from '~/lib/llm-content'
 import { getAllPageSlugs, getPageBySlug, getPageNavigation } from '~/lib/pages'
 import { getServerContext } from '~/lib/server-context'
 import { MDXContent } from '~/mdx-content'
@@ -46,17 +47,30 @@ export default async function Page(props: Props) {
               {currentPage.description}
             </Text>
             <Box position={{ md: 'absolute' }} top="2" right="2">
-              <CopyPageWidget slug={currentPage.slug} content={currentPage.llm} />
+              <CopyPageWidget
+                slug={currentPage.slug}
+                framework={framework}
+                content={await cleanupPageContent(currentPage, framework)}
+              />
             </Box>
             <MDXContent code={currentPage.code} />
           </article>
 
           <DocsFooter nextPage={next} prevPage={prev} />
         </Stack>
-        <Box flexShrink="0" width="14rem" hideBelow="xl">
-          <Box position="fixed" width="14rem">
-            <TableOfContent entries={currentPage.toc} />
-          </Box>
+        <Box
+          className="scroller"
+          flexShrink="0"
+          width="14rem"
+          hideBelow="xl"
+          position="sticky"
+          top="20"
+          alignSelf="flex-start"
+          maxH="calc(100dvh - 100px)"
+          overflowY="auto"
+          overscrollBehavior="contain"
+        >
+          <TableOfContent entries={currentPage.toc} />
         </Box>
       </Container>
     )

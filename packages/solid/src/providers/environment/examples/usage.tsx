@@ -1,4 +1,4 @@
-import { useEnvironmentContext } from '../use-environment-context'
+import { useEnvironmentContext } from '../use-environment-context.ts'
 
 export const Usage = () => {
   const environment = useEnvironmentContext()

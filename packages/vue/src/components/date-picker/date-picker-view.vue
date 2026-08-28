@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { DateView } from '@zag-js/date-picker'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface DatePickerViewBaseProps extends PolymorphicProps {}
 export interface DatePickerViewProps
@@ -16,11 +16,11 @@ export interface DatePickerViewProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useDatePickerContext } from './use-date-picker-context'
-import { DatePickerViewPropsProvider } from './use-date-picker-view-props-context'
-import { datePickerAnatomy } from './date-picker.anatomy'
-import { useForwardExpose } from '../../utils/use-forward-expose'
+import { ark } from '../factory.ts'
+import { useDatePickerContext } from './use-date-picker-context.ts'
+import { DatePickerViewPropsProvider } from './use-date-picker-view-props-context.ts'
+import { datePickerAnatomy } from './date-picker.anatomy.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<DatePickerViewProps>()
 const datePicker = useDatePickerContext()

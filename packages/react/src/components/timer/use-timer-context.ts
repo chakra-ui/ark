@@ -1,5 +1,7 @@
-import { createContext } from '../../utils/create-context'
-import type { UseTimerReturn } from './use-timer'
+'use client'
+
+import { createContext } from '../../utils/create-context.ts'
+import type { UseTimerReturn } from './use-timer.ts'
 
 export interface UseTimerContext extends UseTimerReturn {}
 
