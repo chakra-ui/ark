@@ -1,5 +1,6 @@
+import { Field } from '@ark-ui/solid/field'
+import { Fieldset } from '@ark-ui/solid/fieldset'
 import { render, screen, waitFor } from '@solidjs/testing-library'
-import { Field, Fieldset } from '../index.tsx'
 
 const ComponentUnderTest = (props: Fieldset.RootProps) => (
   <Fieldset.Root {...props}>

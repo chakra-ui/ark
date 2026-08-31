@@ -100,8 +100,8 @@
   },
   "NodeCheckboxIndicator": {
     "props": {
-      "fallback": { "type": "number | boolean | Node | (string & {}) | ArrayElement", "isRequired": false },
-      "indeterminate": { "type": "number | boolean | Node | (string & {}) | ArrayElement", "isRequired": false }
+      "fallback": { "type": "number | boolean | (string & {}) | Node | ArrayElement", "isRequired": false },
+      "indeterminate": { "type": "number | boolean | (string & {}) | Node | ArrayElement", "isRequired": false }
     }
   },
   "NodeCheckbox": {
@@ -243,6 +243,11 @@
         "defaultValue": "\"single\"",
         "isRequired": false,
         "description": "Whether the tree supports multiple selection\n- \"single\": only one node can be selected\n- \"multiple\": multiple nodes can be selected"
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
       },
       "typeahead": {
         "type": "boolean",

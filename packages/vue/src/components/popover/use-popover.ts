@@ -29,6 +29,7 @@ export const usePopover = (props: MaybeRef<UsePopoverProps> = {}, emit?: EmitFn<
       },
       onTriggerValueChange: (details) => {
         emit?.('triggerValueChange', details)
+        emit?.('update:triggerValue', details.value)
         localeProps.onTriggerValueChange?.(details)
       },
       onEscapeKeyDown: (details) => {

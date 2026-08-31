@@ -66,6 +66,7 @@ import * as Clipboard_Timeout from '@examples/clipboard/examples/timeout'
 import * as Clipboard_ValueText from '@examples/clipboard/examples/value-text'
 import * as Collapsible_Basic from '@examples/collapsible/examples/basic'
 import * as Collapsible_Disabled from '@examples/collapsible/examples/disabled'
+import * as Collapsible_HideMode from '@examples/collapsible/examples/hide-mode'
 import * as Collapsible_InitialOpen from '@examples/collapsible/examples/initial-open'
 import * as Collapsible_LazyMount from '@examples/collapsible/examples/lazy-mount'
 import * as Collapsible_Nested from '@examples/collapsible/examples/nested'
@@ -162,8 +163,10 @@ import * as Dialog_Confirmation from '@examples/dialog/examples/confirmation'
 import * as Dialog_Context from '@examples/dialog/examples/context'
 import * as Dialog_Controlled from '@examples/dialog/examples/controlled'
 import * as Dialog_FinalFocus from '@examples/dialog/examples/final-focus'
+import * as Dialog_HideMode from '@examples/dialog/examples/hide-mode'
 import * as Dialog_InitialFocus from '@examples/dialog/examples/initial-focus'
 import * as Dialog_InsideScroll from '@examples/dialog/examples/inside-scroll'
+import * as Dialog_LazyMountHideMode from '@examples/dialog/examples/lazy-mount-hide-mode'
 import * as Dialog_LazyMount from '@examples/dialog/examples/lazy-mount'
 import * as Dialog_MultipleTriggers from '@examples/dialog/examples/multiple-triggers'
 import * as Dialog_Nested from '@examples/dialog/examples/nested'
@@ -177,6 +180,7 @@ import * as DownloadTrigger_Svg from '@examples/download-trigger/examples/svg'
 import * as DownloadTrigger_WithPromise from '@examples/download-trigger/examples/with-promise'
 import * as Drawer_Basic from '@examples/drawer/examples/basic'
 import * as Drawer_Controlled from '@examples/drawer/examples/controlled'
+import * as Drawer_HideMode from '@examples/drawer/examples/hide-mode'
 import * as Drawer_IndentBackground from '@examples/drawer/examples/indent-background'
 import * as Drawer_Modal from '@examples/drawer/examples/modal'
 import * as Drawer_MultipleTriggers from '@examples/drawer/examples/multiple-triggers'
@@ -338,7 +342,10 @@ import * as Menu_SelectEvent from '@examples/menu/examples/select-event'
 import * as NavigationMenu_Basic from '@examples/navigation-menu/examples/basic'
 import * as NavigationMenu_Context from '@examples/navigation-menu/examples/context'
 import * as NavigationMenu_Controlled from '@examples/navigation-menu/examples/controlled'
+import * as NavigationMenu_CurrentLink from '@examples/navigation-menu/examples/current-link'
+import * as NavigationMenu_Indicator from '@examples/navigation-menu/examples/indicator'
 import * as NavigationMenu_RootProvider from '@examples/navigation-menu/examples/root-provider'
+import * as NavigationMenu_Vertical from '@examples/navigation-menu/examples/vertical'
 import * as NavigationMenu_Viewport from '@examples/navigation-menu/examples/viewport'
 import * as NumberInput_Basic from '@examples/number-input/examples/basic'
 import * as NumberInput_Context from '@examples/number-input/examples/context'
@@ -393,6 +400,7 @@ import * as Popover_RootProvider from '@examples/popover/examples/root-provider'
 import * as Popover_SameWidth from '@examples/popover/examples/same-width'
 import * as Popover_WithDialog from '@examples/popover/examples/with-dialog'
 import * as Presence_Basic from '@examples/presence/examples/basic'
+import * as Presence_HideMode from '@examples/presence/examples/hide-mode'
 import * as Presence_LazyMountAndUnmountOnExit from '@examples/presence/examples/lazy-mount-and-unmount-on-exit'
 import * as Presence_LazyMount from '@examples/presence/examples/lazy-mount'
 import * as Presence_SkipAnimationOnMount from '@examples/presence/examples/skip-animation-on-mount'
@@ -460,6 +468,7 @@ import * as Select_SelectAll from '@examples/select/examples/select-all'
 import * as Select_SelectOnHighlight from '@examples/select/examples/select-on-highlight'
 import * as Select_WithField from '@examples/select/examples/with-field'
 import * as SignaturePad_Basic from '@examples/signature-pad/examples/basic'
+import * as SignaturePad_Controlled from '@examples/signature-pad/examples/controlled'
 import * as SignaturePad_ImagePreview from '@examples/signature-pad/examples/image-preview'
 import * as SignaturePad_RootProvider from '@examples/signature-pad/examples/root-provider'
 import * as SignaturePad_WithField from '@examples/signature-pad/examples/with-field'
@@ -544,10 +553,20 @@ import * as Toast_PromiseToast from '@examples/toast/examples/promise-toast'
 import * as Toast_Types from '@examples/toast/examples/types'
 import * as Toast_Update from '@examples/toast/examples/update'
 import * as Toast_VaryingHeight from '@examples/toast/examples/varying-height'
+import * as Toc_Basic from '@examples/toc/examples/basic'
+import * as Toc_Nested from '@examples/toc/examples/nested'
+import * as Toc_RootProvider from '@examples/toc/examples/root-provider'
+import * as Toc_WithCollapsible from '@examples/toc/examples/with-collapsible'
+import * as Toc_WithHover from '@examples/toc/examples/with-hover'
+import * as Toc_WithIndicator from '@examples/toc/examples/with-indicator'
+import * as Toc_WithRail from '@examples/toc/examples/with-rail'
+import * as Toc_WithSelect from '@examples/toc/examples/with-select'
+import * as Toc_WithTreeView from '@examples/toc/examples/with-tree-view'
 import * as ToggleGroup_Basic from '@examples/toggle-group/examples/basic'
 import * as ToggleGroup_Controlled from '@examples/toggle-group/examples/controlled'
 import * as ToggleGroup_Multiple from '@examples/toggle-group/examples/multiple'
 import * as ToggleGroup_RootProvider from '@examples/toggle-group/examples/root-provider'
+import * as ToggleGroup_WithTooltip from '@examples/toggle-group/examples/with-tooltip'
 import * as Toggle_Basic from '@examples/toggle/examples/basic'
 import * as Toggle_Context from '@examples/toggle/examples/context'
 import * as Toggle_Controlled from '@examples/toggle/examples/controlled'
@@ -587,16 +606,26 @@ import * as TreeView_Mutation from '@examples/tree-view/examples/mutation'
 import * as TreeView_RenameNode from '@examples/tree-view/examples/rename-node'
 import * as TreeView_RootProvider from '@examples/tree-view/examples/root-provider'
 import * as TreeView_Virtualized from '@examples/tree-view/examples/virtualized'
-import * as Environment_Basic from '../../../packages/react/src/providers/environment/examples/basic'
-import * as Environment_Setup from '../../../packages/react/src/providers/environment/examples/setup'
-import * as Environment_ShadowRoot from '../../../packages/react/src/providers/environment/examples/shadow-root'
-import * as Environment_Usage from '../../../packages/react/src/providers/environment/examples/usage'
-import * as Interaction_FocusVisibleTextInput from '../../../packages/react/src/providers/interaction/examples/focus-visible-text-input'
-import * as Interaction_FocusVisible from '../../../packages/react/src/providers/interaction/examples/focus-visible'
-import * as Interaction_Interaction from '../../../packages/react/src/providers/interaction/examples/interaction'
-import * as Locale_Basic from '../../../packages/react/src/providers/locale/examples/basic'
-import * as Locale_Setup from '../../../packages/react/src/providers/locale/examples/setup'
-import * as Locale_Usage from '../../../packages/react/src/providers/locale/examples/usage'
+import * as Environment_Basic from '@examples/environment/examples/basic'
+import * as Environment_Setup from '@examples/environment/examples/setup'
+import * as Environment_ShadowRoot from '@examples/environment/examples/shadow-root'
+import * as Environment_Usage from '@examples/environment/examples/usage'
+import * as Hotkeys_Basic from '@examples/hotkeys/examples/basic'
+import * as Hotkeys_CommandPalette from '@examples/hotkeys/examples/command-palette'
+import * as Hotkeys_Conflicts from '@examples/hotkeys/examples/conflicts'
+import * as Hotkeys_FormFields from '@examples/hotkeys/examples/form-fields'
+import * as Hotkeys_KeyState from '@examples/hotkeys/examples/key-state'
+import * as Hotkeys_Multiple from '@examples/hotkeys/examples/multiple'
+import * as Hotkeys_Recorder from '@examples/hotkeys/examples/recorder'
+import * as Hotkeys_Scopes from '@examples/hotkeys/examples/scopes'
+import * as Hotkeys_SequenceTimeout from '@examples/hotkeys/examples/sequence-timeout'
+import * as Hotkeys_Sequence from '@examples/hotkeys/examples/sequence'
+import * as Interaction_FocusVisibleTextInput from '@examples/interaction/examples/focus-visible-text-input'
+import * as Interaction_FocusVisible from '@examples/interaction/examples/focus-visible'
+import * as Interaction_Interaction from '@examples/interaction/examples/interaction'
+import * as Locale_Basic from '@examples/locale/examples/basic'
+import * as Locale_Setup from '@examples/locale/examples/setup'
+import * as Locale_Usage from '@examples/locale/examples/usage'
 
 // Registry maps example keys to their module namespace
 // Each module is imported as a namespace (import * as X) to handle varying export names
@@ -665,6 +694,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'clipboard/value-text': Clipboard_ValueText,
   'collapsible/basic': Collapsible_Basic,
   'collapsible/disabled': Collapsible_Disabled,
+  'collapsible/hide-mode': Collapsible_HideMode,
   'collapsible/initial-open': Collapsible_InitialOpen,
   'collapsible/lazy-mount': Collapsible_LazyMount,
   'collapsible/nested': Collapsible_Nested,
@@ -761,8 +791,10 @@ const exampleModules: Record<string, ExampleModule> = {
   'dialog/context': Dialog_Context,
   'dialog/controlled': Dialog_Controlled,
   'dialog/final-focus': Dialog_FinalFocus,
+  'dialog/hide-mode': Dialog_HideMode,
   'dialog/initial-focus': Dialog_InitialFocus,
   'dialog/inside-scroll': Dialog_InsideScroll,
+  'dialog/lazy-mount-hide-mode': Dialog_LazyMountHideMode,
   'dialog/lazy-mount': Dialog_LazyMount,
   'dialog/multiple-triggers': Dialog_MultipleTriggers,
   'dialog/nested': Dialog_Nested,
@@ -776,6 +808,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'download-trigger/with-promise': DownloadTrigger_WithPromise,
   'drawer/basic': Drawer_Basic,
   'drawer/controlled': Drawer_Controlled,
+  'drawer/hide-mode': Drawer_HideMode,
   'drawer/indent-background': Drawer_IndentBackground,
   'drawer/modal': Drawer_Modal,
   'drawer/multiple-triggers': Drawer_MultipleTriggers,
@@ -937,7 +970,10 @@ const exampleModules: Record<string, ExampleModule> = {
   'navigation-menu/basic': NavigationMenu_Basic,
   'navigation-menu/context': NavigationMenu_Context,
   'navigation-menu/controlled': NavigationMenu_Controlled,
+  'navigation-menu/current-link': NavigationMenu_CurrentLink,
+  'navigation-menu/indicator': NavigationMenu_Indicator,
   'navigation-menu/root-provider': NavigationMenu_RootProvider,
+  'navigation-menu/vertical': NavigationMenu_Vertical,
   'navigation-menu/viewport': NavigationMenu_Viewport,
   'number-input/basic': NumberInput_Basic,
   'number-input/context': NumberInput_Context,
@@ -992,6 +1028,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'popover/same-width': Popover_SameWidth,
   'popover/with-dialog': Popover_WithDialog,
   'presence/basic': Presence_Basic,
+  'presence/hide-mode': Presence_HideMode,
   'presence/lazy-mount-and-unmount-on-exit': Presence_LazyMountAndUnmountOnExit,
   'presence/lazy-mount': Presence_LazyMount,
   'presence/skip-animation-on-mount': Presence_SkipAnimationOnMount,
@@ -1059,6 +1096,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'select/select-on-highlight': Select_SelectOnHighlight,
   'select/with-field': Select_WithField,
   'signature-pad/basic': SignaturePad_Basic,
+  'signature-pad/controlled': SignaturePad_Controlled,
   'signature-pad/image-preview': SignaturePad_ImagePreview,
   'signature-pad/root-provider': SignaturePad_RootProvider,
   'signature-pad/with-field': SignaturePad_WithField,
@@ -1143,10 +1181,20 @@ const exampleModules: Record<string, ExampleModule> = {
   'toast/types': Toast_Types,
   'toast/update': Toast_Update,
   'toast/varying-height': Toast_VaryingHeight,
+  'toc/basic': Toc_Basic,
+  'toc/nested': Toc_Nested,
+  'toc/root-provider': Toc_RootProvider,
+  'toc/with-collapsible': Toc_WithCollapsible,
+  'toc/with-hover': Toc_WithHover,
+  'toc/with-indicator': Toc_WithIndicator,
+  'toc/with-rail': Toc_WithRail,
+  'toc/with-select': Toc_WithSelect,
+  'toc/with-tree-view': Toc_WithTreeView,
   'toggle-group/basic': ToggleGroup_Basic,
   'toggle-group/controlled': ToggleGroup_Controlled,
   'toggle-group/multiple': ToggleGroup_Multiple,
   'toggle-group/root-provider': ToggleGroup_RootProvider,
+  'toggle-group/with-tooltip': ToggleGroup_WithTooltip,
   'toggle/basic': Toggle_Basic,
   'toggle/context': Toggle_Context,
   'toggle/controlled': Toggle_Controlled,
@@ -1190,6 +1238,16 @@ const exampleModules: Record<string, ExampleModule> = {
   'environment/setup': Environment_Setup,
   'environment/shadow-root': Environment_ShadowRoot,
   'environment/usage': Environment_Usage,
+  'hotkeys/basic': Hotkeys_Basic,
+  'hotkeys/command-palette': Hotkeys_CommandPalette,
+  'hotkeys/conflicts': Hotkeys_Conflicts,
+  'hotkeys/form-fields': Hotkeys_FormFields,
+  'hotkeys/key-state': Hotkeys_KeyState,
+  'hotkeys/multiple': Hotkeys_Multiple,
+  'hotkeys/recorder': Hotkeys_Recorder,
+  'hotkeys/scopes': Hotkeys_Scopes,
+  'hotkeys/sequence-timeout': Hotkeys_SequenceTimeout,
+  'hotkeys/sequence': Hotkeys_Sequence,
   'interaction/focus-visible-text-input': Interaction_FocusVisibleTextInput,
   'interaction/focus-visible': Interaction_FocusVisible,
   'interaction/interaction': Interaction_Interaction,

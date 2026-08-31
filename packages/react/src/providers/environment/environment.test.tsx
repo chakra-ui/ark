@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { EnvironmentProvider } from './index.ts'
+import { EnvironmentProvider } from '@ark-ui/react/environment'
 import { useEnvironmentContext } from './use-environment-context.ts'
 
 const PrintEnvironment = () => {

@@ -1,4 +1,4 @@
-import { Editable } from '../index.tsx'
+import { Editable } from '@ark-ui/solid/editable'
 
 export const ComponentUnderTest = (props: Editable.RootProps) => (
   <Editable.Root placeholder="Placeholder" {...props}>

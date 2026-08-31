@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Field, type FieldRootProps } from '../../field/index.ts'
-import { NumberInput } from '../index.ts'
+import { Field, type FieldRootProps } from '@ark-ui/vue/field'
+import { NumberInput } from '@ark-ui/vue/number-input'
 
 defineProps<FieldRootProps>()
 </script>

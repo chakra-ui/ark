@@ -22,9 +22,7 @@ export const StepsRootProvider = forwardRef<HTMLDivElement, StepsRootProviderPro
 
   return (
     <StepsProvider value={steps}>
-      <ark.div {...mergedProps} ref={ref}>
-        {props.children}
-      </ark.div>
+      <ark.div {...mergedProps} ref={ref} />
     </StepsProvider>
   )
 })

@@ -30,7 +30,6 @@ export const PopoverRoot = (props: PopoverRootProps) => {
     'onRequestDismiss',
     'open',
     'persistentElements',
-    'portalled',
     'positioning',
     'restoreFocus',
     'translations',

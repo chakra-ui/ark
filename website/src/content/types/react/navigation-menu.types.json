@@ -7,7 +7,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Content": {
     "props": {
@@ -16,9 +17,14 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "value": { "type": "string", "isRequired": false, "description": "The value of the item this content belongs to" }
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value of the item this content belongs to"
+      }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Indicator": {
     "props": {
@@ -28,7 +34,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "ItemIndicator": {
     "props": {
@@ -38,19 +45,29 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Item": {
     "props": {
-      "value": { "type": "string", "isRequired": true, "description": "The value of the item" },
+      "value": {
+        "type": "string",
+        "isRequired": true,
+        "description": "The value of the item"
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the item is disabled" }
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the item is disabled"
+      }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Link": {
     "props": {
@@ -65,15 +82,24 @@
         "isRequired": false,
         "description": "Whether to close the navigation menu when the link is clicked."
       },
-      "current": { "type": "boolean", "isRequired": false, "description": "Whether the link is the current link" },
+      "current": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the link is the current link"
+      },
       "onSelect": {
         "type": "(event: CustomEvent<any>) => void",
         "isRequired": false,
         "description": "Function called when the link is selected"
       },
-      "value": { "type": "string", "isRequired": false, "description": "The value of the item this link belongs to" }
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value of the item this link belongs to"
+      }
     },
-    "element": "HTMLAnchorElement"
+    "element": "HTMLAnchorElement",
+    "tag": "a"
   },
   "List": {
     "props": {
@@ -83,7 +109,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Root": {
     "props": {
@@ -118,7 +145,17 @@
         "isRequired": false,
         "description": "Whether to disable the pointer leave close"
       },
-      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "hideMode": {
+        "type": "HideMode",
+        "defaultValue": "'display-none'",
+        "isRequired": false,
+        "description": "How to hide content when mounted but not present.\n- `'display-none'`: HTML `hidden` attribute. Effects stay alive.\n- `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
       "ids": {
         "type": "Partial<{\n  root: string\n  list: string\n  item: string\n  trigger: (value: string) => string\n  content: (value: string) => string\n  viewport: string\n}>",
         "isRequired": false,
@@ -147,23 +184,42 @@
         "isRequired": false,
         "description": "The orientation of the element."
       },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+      },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to unmount on exit."
       },
-      "value": { "type": "string", "isRequired": false, "description": "The controlled value of the navigation menu" }
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The controlled value of the navigation menu"
+      }
     },
-    "element": "HTMLElement"
+    "element": "HTMLElement",
+    "tag": "nav"
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseNavigationMenuReturn", "isRequired": true },
+      "value": {
+        "type": "UseNavigationMenuReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "hideMode": {
+        "type": "HideMode",
+        "defaultValue": "'display-none'",
+        "isRequired": false,
+        "description": "How to hide content when mounted but not present.\n- `'display-none'`: HTML `hidden` attribute. Effects stay alive.\n- `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
       },
       "lazyMount": {
         "type": "boolean",
@@ -178,7 +234,8 @@
         "description": "Whether to unmount on exit."
       }
     },
-    "element": "HTMLElement"
+    "element": "HTMLElement",
+    "tag": "nav"
   },
   "Trigger": {
     "props": {
@@ -187,9 +244,14 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the item is disabled" }
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the item is disabled"
+      }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "ViewportPositioner": {
     "props": {
@@ -204,7 +266,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Viewport": {
     "props": {
@@ -214,6 +277,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   }
 }

@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/vue3-vite'
 
 import BasicExample from './examples/basic.vue'
+import ControlledExample from './examples/controlled.vue'
 import ImagePreviewExample from './examples/image-preview.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import WithFieldExample from './examples/with-field.vue'
@@ -14,6 +15,13 @@ export default meta
 export const Basic = {
   render: () => ({
     components: { Component: BasicExample },
+    template: '<Component />',
+  }),
+}
+
+export const Controlled = {
+  render: () => ({
+    components: { Component: ControlledExample },
     template: '<Component />',
   }),
 }

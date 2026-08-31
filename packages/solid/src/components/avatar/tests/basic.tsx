@@ -1,4 +1,4 @@
-import { Avatar } from '../index.tsx'
+import { Avatar } from '@ark-ui/solid/avatar'
 
 export const ComponentUnderTest = (props: Avatar.RootProps) => {
   return (

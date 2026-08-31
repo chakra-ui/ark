@@ -53,9 +53,6 @@ export const combobox = defineSlotRecipe({
       cursor: 'pointer',
       display: 'flex',
       justifyContent: 'space-between',
-      transitionDuration: 'fast',
-      transitionProperty: 'background, color',
-      transitionTimingFunction: 'default',
       _hover: {
         background: 'bg.muted',
       },

@@ -15,6 +15,10 @@ export interface RootProps {
    */
   defaultPaths?: string[]
   /**
+   * The controlled paths of the signature pad.
+   */
+  paths?: string[]
+  /**
    * The unique identifier of the machine.
    */
   id?: string

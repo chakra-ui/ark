@@ -43,6 +43,11 @@
         "type": "[details: PauseStatusDetails]",
         "isRequired": true,
         "description": "Function called when the pause status changes."
+      },
+      "update:paused": {
+        "type": "[paused: boolean]",
+        "isRequired": true,
+        "description": "The callback fired when the paused state changes."
       }
     },
     "props": {

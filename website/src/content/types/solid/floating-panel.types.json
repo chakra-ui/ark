@@ -110,6 +110,11 @@
         "isRequired": false,
         "description": "Whether the panel is draggable"
       },
+      "finalFocusEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "description": "Element to receive focus when the panel is closed.\nBy default, the trigger element is focused."
+      },
       "getAnchorPosition": {
         "type": "(details: AnchorPositionDetails) => Point",
         "isRequired": false,
@@ -136,6 +141,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
+      "initialFocusEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "description": "Element to receive focus when the panel is opened.\nBy default, the first focusable element in the content is focused."
       },
       "lazyMount": {
         "type": "boolean",
@@ -202,6 +212,12 @@
         "defaultValue": "true",
         "isRequired": false,
         "description": "Whether the panel is resizable"
+      },
+      "restoreFocus": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to restore focus to the trigger when the panel is closed."
       },
       "size": { "type": "Size", "isRequired": false, "description": "The size of the panel" },
       "skipAnimationOnMount": {

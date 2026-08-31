@@ -8,7 +8,7 @@ import type { RootEmits } from './drawer.types.ts'
 import { useDrawerStackStore } from './use-drawer-stack-store.ts'
 
 export interface UseDrawerProps extends Optional<Omit<drawer.Props, 'dir' | 'getRootNode' | 'defaultSnapPoint'>, 'id'> {
-  defaultSnapPoint?: drawer.SnapPoint | undefined
+  defaultSnapPoint?: drawer.SnapPoint | null | undefined
 }
 export interface UseDrawerReturn extends ComputedRef<drawer.Api<PropTypes>> {}
 
@@ -28,14 +28,17 @@ export const useDrawer = (props: MaybeRef<UseDrawerProps> = {}, emit?: EmitFn<Ro
       ...cleanProps(localeProps),
       onOpenChange: (details) => {
         emit?.('openChange', details)
+        emit?.('update:open', details.open)
         localeProps.onOpenChange?.(details)
       },
       onTriggerValueChange: (details) => {
         emit?.('triggerValueChange', details)
+        emit?.('update:triggerValue', details.value)
         localeProps.onTriggerValueChange?.(details)
       },
       onSnapPointChange: (details) => {
         emit?.('snapPointChange', details)
+        emit?.('update:snapPoint', details.snapPoint)
         localeProps.onSnapPointChange?.(details)
       },
     }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Slider, type SliderRootBaseProps, type SliderRootEmits } from '../index.ts'
-import { useForwardPropsEmits } from '../../../utils/use-forward-props-emits.ts'
+import { Slider, type SliderRootBaseProps, type SliderRootEmits } from '@ark-ui/vue/slider'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<SliderRootBaseProps>()
 const emits = defineEmits<SliderRootEmits>()

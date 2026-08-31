@@ -1,8 +1,8 @@
+import { DateInput } from '@ark-ui/solid/date-input'
 import { parseDate, parseZonedDateTime } from '@internationalized/date'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { DateInput } from '../index.tsx'
 import { ComponentUnderTest } from './basic.tsx'
 
 describe('Date Input', () => {
@@ -68,6 +68,20 @@ describe('Date Input', () => {
       />
     ))
     expect(document.querySelector('[data-type="timeZoneName"]')).toBeInTheDocument()
+  })
+
+  it('should render each literal segment with its own text, not the first literal', () => {
+    render(() => (
+      <ComponentUnderTest
+        defaultValue={[parseZonedDateTime('2025-02-03T08:45:00[America/Los_Angeles]')]}
+        granularity="minute"
+      />
+    ))
+    const literalSegments = document.querySelectorAll('[data-type="literal"]')
+    const literalTexts = Array.from(literalSegments).map((segment) => segment.textContent)
+    expect(literalTexts.length).toBeGreaterThan(1)
+    expect(literalTexts).toContain('/')
+    expect(literalTexts).toContain(':')
   })
 
   it('should hide timeZoneName segment when hideTimeZone is true', () => {

@@ -171,6 +171,11 @@
         "isRequired": false,
         "description": "Whether the calendar should close after the date selection is complete.\nThis is ignored when the selection mode is `multiple`."
       },
+      "createCalendar": {
+        "type": "(identifier: CalendarIdentifier) => Calendar",
+        "isRequired": false,
+        "description": "A function that creates a Calendar object for a given calendar identifier.\nEnables non-Gregorian calendar support (Persian, Buddhist, Islamic, etc.)\nwithout bundling all calendars by default."
+      },
       "defaultFocusedValue": {
         "type": "DateValue",
         "isRequired": false,

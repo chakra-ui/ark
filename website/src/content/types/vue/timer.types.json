@@ -83,6 +83,11 @@
         "type": "number",
         "isRequired": false,
         "description": "The minimum count of the timer in milliseconds."
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
       }
     }
   },

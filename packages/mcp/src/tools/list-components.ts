@@ -7,11 +7,13 @@ export const listComponentsTool: Tool<{ componentList: string[] }> = {
   description:
     'List all available components in Ark UI based on the framework type. This tool retrieves the names of all available Ark UI components.',
   async exec(server, { name, description }) {
-    server.tool(
+    server.registerTool(
       name,
-      description,
       {
-        framework: z.enum(FRAMEWORKS).describe('The framework type to list components for.'),
+        description,
+        inputSchema: {
+          framework: z.enum(FRAMEWORKS).describe('The framework type to list components for.'),
+        },
       },
       async ({ framework }) => {
         const componentList = await fetchComponentList(framework)

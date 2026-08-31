@@ -1,4 +1,4 @@
-import { Tabs } from '../index.ts'
+import { Tabs } from '@ark-ui/react/tabs'
 
 export const ComponentUnderTest = (props: Tabs.RootProps) => {
   const items = [{ value: 'React' }, { value: 'Solid' }, { value: 'Svelte', disabled: true }, { value: 'Vue' }]

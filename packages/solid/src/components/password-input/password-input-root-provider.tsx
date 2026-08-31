@@ -1,18 +1,23 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
+import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
-import { PasswordInputProvider, type UsePasswordInputContext } from './use-password-input-context.ts'
+import type { UsePasswordInputReturn } from './use-password-input.ts'
+import { PasswordInputProvider } from './use-password-input-context.ts'
 
-export interface PasswordInputRootProviderBaseProps extends PolymorphicProps<'div'> {
-  value: UsePasswordInputContext
-  children?: JSX.Element
+interface RootProviderProps {
+  value: UsePasswordInputReturn
 }
-export interface PasswordInputRootProviderProps extends HTMLProps<'div'>, PasswordInputRootProviderBaseProps {}
+
+export interface PasswordInputRootProviderBaseProps extends PolymorphicProps<'div'> {}
+export interface PasswordInputRootProviderProps
+  extends HTMLProps<'div'>, RootProviderProps, PasswordInputRootProviderBaseProps {}
 
 export const PasswordInputRootProvider = (props: PasswordInputRootProviderProps) => {
-  const mergedProps = mergeProps(() => props.value().getRootProps(), props)
+  const [{ value: passwordInput }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const mergedProps = mergeProps(() => passwordInput().getRootProps(), localProps)
+
   return (
-    <PasswordInputProvider value={props.value}>
+    <PasswordInputProvider value={passwordInput}>
       <ark.div {...mergedProps} />
     </PasswordInputProvider>
   )

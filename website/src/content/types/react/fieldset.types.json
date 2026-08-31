@@ -7,7 +7,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLSpanElement"
+    "element": "HTMLSpanElement",
+    "tag": "span"
   },
   "HelperText": {
     "props": {
@@ -17,7 +18,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLSpanElement"
+    "element": "HTMLSpanElement",
+    "tag": "span"
   },
   "Legend": {
     "props": {
@@ -27,7 +29,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLLegendElement"
+    "element": "HTMLLegendElement",
+    "tag": "legend"
   },
   "Root": {
     "props": {
@@ -36,9 +39,14 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "invalid": { "type": "boolean", "isRequired": false, "description": "Indicates whether the fieldset is invalid." }
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Indicates whether the fieldset is invalid."
+      }
     },
-    "element": "HTMLFieldSetElement"
+    "element": "HTMLFieldSetElement",
+    "tag": "fieldset"
   },
   "RootProvider": {
     "props": {
@@ -52,6 +60,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLFieldSetElement"
+    "element": "HTMLFieldSetElement",
+    "tag": "fieldset"
   }
 }

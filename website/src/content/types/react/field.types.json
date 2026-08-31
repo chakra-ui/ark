@@ -7,7 +7,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLSpanElement"
+    "element": "HTMLSpanElement",
+    "tag": "span"
   },
   "HelperText": {
     "props": {
@@ -17,7 +18,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLSpanElement"
+    "element": "HTMLSpanElement",
+    "tag": "span"
   },
   "Input": {
     "props": {
@@ -27,7 +29,16 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLInputElement"
+    "element": "HTMLInputElement",
+    "tag": "input"
+  },
+  "Item": {
+    "props": {
+      "value": {
+        "type": "string",
+        "isRequired": true
+      }
+    }
   },
   "Label": {
     "props": {
@@ -37,7 +48,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLLabelElement"
+    "element": "HTMLLabelElement",
+    "tag": "label"
   },
   "RequiredIndicator": {
     "props": {
@@ -51,7 +63,8 @@
         "isRequired": false
       }
     },
-    "element": "HTMLSpanElement"
+    "element": "HTMLSpanElement",
+    "tag": "span"
   },
   "Root": {
     "props": {
@@ -60,17 +73,39 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is disabled." },
-      "ids": { "type": "ElementIds", "isRequired": false, "description": "The ids of the field parts." },
-      "invalid": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is invalid." },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Indicates whether the field is disabled."
+      },
+      "ids": {
+        "type": "ElementIds",
+        "isRequired": false,
+        "description": "The ids of the field parts."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Indicates whether the field is invalid."
+      },
       "readOnly": {
         "type": "boolean",
         "isRequired": false,
         "description": "Indicates whether the field is read-only."
       },
-      "required": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is required." }
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Indicates whether the field is required."
+      },
+      "target": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The target field item value the label should point to."
+      }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "RootProvider": {
     "props": {
@@ -84,7 +119,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Select": {
     "props": {
@@ -94,7 +130,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLSelectElement"
+    "element": "HTMLSelectElement",
+    "tag": "select"
   },
   "Textarea": {
     "props": {
@@ -110,6 +147,7 @@
         "description": "Whether the textarea should autoresize"
       }
     },
-    "element": "HTMLTextAreaElement"
+    "element": "HTMLTextAreaElement",
+    "tag": "textarea"
   }
 }

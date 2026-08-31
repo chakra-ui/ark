@@ -8,6 +8,7 @@ export default meta
 
 export { Basic } from './examples/basic.tsx'
 export { Disabled } from './examples/disabled.tsx'
+export { HideMode } from './examples/hide-mode.tsx'
 export { InitialOpen } from './examples/initial-open.tsx'
 export { LazyMount } from './examples/lazy-mount.tsx'
 export { Nested } from './examples/nested.tsx'

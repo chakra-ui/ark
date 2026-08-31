@@ -1,8 +1,8 @@
 'use client'
 
-import { dataAttr } from '@zag-js/dom-query'
 import { useId, useRef, useState } from 'react'
 import { useEnvironmentContext } from '../../providers/index.ts'
+import { dataAttr } from '../../utils/attr.ts'
 import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect.ts'
 import type { HTMLProps } from '../factory.ts'
 import { parts } from './fieldset.anatomy.ts'
@@ -29,7 +29,8 @@ export const useFieldset = (props: UseFieldsetProps = {}) => {
 
   const env = useEnvironmentContext()
 
-  const [textElements, setTextElements] = useState({ hasErrorText: false, hasHelperText: false })
+  const [hasErrorText, setHasErrorText] = useState(false)
+  const [hasHelperText, setHasHelperText] = useState(false)
 
   const uid = useId()
   const id = props.id ?? uid
@@ -45,9 +46,8 @@ export const useFieldset = (props: UseFieldsetProps = {}) => {
 
     const checkTextElements = () => {
       const docOrShadowRoot = env.getRootNode() as ShadowRoot | Document
-      const hasErrorText = !!docOrShadowRoot.getElementById(errorTextId)
-      const hasHelperText = !!docOrShadowRoot.getElementById(helperTextId)
-      setTextElements({ hasErrorText, hasHelperText })
+      setHasErrorText(!!docOrShadowRoot.getElementById(errorTextId))
+      setHasHelperText(!!docOrShadowRoot.getElementById(helperTextId))
     }
 
     checkTextElements()
@@ -60,8 +60,8 @@ export const useFieldset = (props: UseFieldsetProps = {}) => {
   }, [env, errorTextId, helperTextId])
 
   const ids: string[] = []
-  if (textElements.hasErrorText && invalid) ids.push(errorTextId)
-  if (textElements.hasHelperText) ids.push(helperTextId)
+  if (hasErrorText && invalid) ids.push(errorTextId)
+  if (hasHelperText) ids.push(helperTextId)
   const labelIds = ids.length > 0 ? ids.join(' ') : undefined
 
   const getRootProps = () =>

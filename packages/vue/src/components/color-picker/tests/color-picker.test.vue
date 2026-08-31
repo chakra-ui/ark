@@ -1,6 +1,11 @@
 <script setup lang="ts">
-import { ColorPicker, type ColorPickerRootBaseProps, type ColorPickerRootEmits, parseColor } from '../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import {
+  ColorPicker,
+  type ColorPickerRootBaseProps,
+  type ColorPickerRootEmits,
+  parseColor,
+} from '@ark-ui/vue/color-picker'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<ColorPickerRootBaseProps>()
 const emits = defineEmits<ColorPickerRootEmits>()

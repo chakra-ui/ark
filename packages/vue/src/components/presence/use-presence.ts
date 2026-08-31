@@ -32,6 +32,7 @@ export const usePresence = (props: MaybeRef<UsePresenceProps>, emit?: EmitFn<Roo
     const presenceProps = toValue(props)
     return {
       present: presenceProps.present,
+      onEnterComplete: () => emit?.('enterComplete'),
       onExitComplete: () => emit?.('exitComplete'),
     }
   })
@@ -53,6 +54,9 @@ export const usePresence = (props: MaybeRef<UsePresenceProps>, emit?: EmitFn<Roo
       if (node) {
         api.value.setNode(node)
       }
+    } else {
+      service.refs.set('node', null)
+      service.refs.set('styles', null)
     }
   })
 

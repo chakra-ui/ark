@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { NumberInput, type NumberInputRootEmits, type NumberInputRootProps } from '../../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import { NumberInput, type NumberInputRootEmits, type NumberInputRootProps } from '@ark-ui/vue/number-input'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<NumberInputRootProps>()
 const emits = defineEmits<NumberInputRootEmits>()

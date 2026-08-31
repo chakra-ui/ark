@@ -1,6 +1,6 @@
+import { Menu } from '@ark-ui/solid/menu'
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import { Index, splitProps } from 'solid-js'
-import { Menu } from '../index.tsx'
 
 interface ComponentUnderTestProps extends Menu.RootProps {
   onValueChange?: (e: { value: string }) => void

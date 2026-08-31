@@ -5,6 +5,7 @@ import { forwardRef } from 'react'
 import { useComposedRefs } from '../../utils/compose-refs.ts'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { PresenceGate } from '../presence/presence-gate.tsx'
 import { PresenceProvider, usePresence } from '../presence/index.ts'
 import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
 
@@ -20,7 +21,9 @@ export const NavigationMenuIndicator = forwardRef<HTMLDivElement, NavigationMenu
 
   return (
     <PresenceProvider value={presence}>
-      {presence.unmounted ? null : <ark.div {...mergedProps} ref={composedRefs} />}
+      <PresenceGate presence={presence}>
+        <ark.div {...mergedProps} ref={composedRefs} />
+      </PresenceGate>
     </PresenceProvider>
   )
 })

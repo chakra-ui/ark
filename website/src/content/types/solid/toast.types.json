@@ -98,7 +98,7 @@
   },
   "Toaster": {
     "props": {
-      "toaster": { "type": "CreateToasterReturn", "isRequired": true },
+      "toaster": { "type": "CreateToasterReturn<any>", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,

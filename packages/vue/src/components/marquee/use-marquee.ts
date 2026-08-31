@@ -23,6 +23,7 @@ export const useMarquee = (props: MaybeRef<UseMarqueeProps> = {}, emit?: EmitFn<
       ...cleanProps(localeProps),
       onPauseChange: (details) => {
         emit?.('pauseChange', details)
+        emit?.('update:paused', details.paused)
         localeProps.onPauseChange?.(details)
       },
       onLoopComplete: () => {

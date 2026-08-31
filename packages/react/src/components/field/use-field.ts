@@ -1,8 +1,8 @@
 'use client'
 
-import { ariaAttr, dataAttr } from '@zag-js/dom-query'
 import { useId, useMemo, useRef, useState } from 'react'
 import { useEnvironmentContext } from '../../providers/index.ts'
+import { ariaAttr, dataAttr } from '../../utils/attr.ts'
 import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect.ts'
 import type { HTMLProps } from '../factory.ts'
 import { useFieldsetContext } from '../fieldset/use-fieldset-context.ts'
@@ -139,7 +139,7 @@ export const useField = (props: UseFieldProps = {}) => {
         disabled,
         readOnly,
       }) as HTMLProps<'input'>,
-    [invalid, hasHelperText, helperTextId, required, readOnly, id, errorMessageId, disabled],
+    [hasHelperText, helperTextId, invalid, required, readOnly, id, errorMessageId, disabled],
   )
 
   const getInputProps = useMemo(

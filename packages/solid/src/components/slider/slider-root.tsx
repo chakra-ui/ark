@@ -19,6 +19,7 @@ export const SliderRoot = (props: SliderRootProps) => {
     'id',
     'ids',
     'invalid',
+    'largeStep',
     'max',
     'min',
     'minStepsBetweenThumbs',

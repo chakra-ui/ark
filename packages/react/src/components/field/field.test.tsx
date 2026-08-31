@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useCallback, useReducer } from 'react'
 import { axe } from 'vitest-axe'
-import { Field } from '../index.ts'
+import { Field } from '@ark-ui/react/field'
 
 const ComponentUnderTest = (props: Field.RootProps) => (
   <Field.Root {...props}>

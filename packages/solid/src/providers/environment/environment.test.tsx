@@ -1,5 +1,5 @@
 import { render, screen } from '@solidjs/testing-library'
-import { EnvironmentProvider, useEnvironmentContext } from './index.tsx'
+import { EnvironmentProvider, useEnvironmentContext } from '@ark-ui/solid/environment'
 
 const PrintEnvironment = () => {
   const environment = useEnvironmentContext()

@@ -1,9 +1,17 @@
 {
   "DownloadTrigger": {
     "props": {
-      "data": { "type": "DownloadableData | (() => MaybePromise<DownloadableData>)", "isRequired": true },
-      "fileName": { "type": "string", "isRequired": true },
-      "mimeType": { "type": "FileMimeType", "isRequired": true },
+      "data": {
+        "type": "DownloadableData | (() => MaybePromise<DownloadableData>)",
+        "isRequired": true,
+        "description": "The data to download"
+      },
+      "fileName": { "type": "string", "isRequired": true, "description": "The name of the file to download" },
+      "mimeType": {
+        "type": "FileMimeType",
+        "isRequired": true,
+        "description": "The MIME type of the data to download"
+      },
       "asChild": {
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,

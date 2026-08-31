@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { HoverCard } from '@ark-ui/vue/hover-card'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import styles from 'styles/hover-card.module.css'
 
 interface Profile {
@@ -35,11 +35,12 @@ const profiles: Profile[] = [
   },
 ]
 
-const activeProfile = ref<Profile | null>(null)
+const triggerValue = ref<string | null>(null)
+const activeProfile = computed(() => profiles.find((p) => p.id === triggerValue.value) ?? null)
 </script>
 
 <template>
-  <HoverCard.Root @trigger-value-change="(e) => (activeProfile = profiles.find((p) => p.id === e.value) ?? null)">
+  <HoverCard.Root v-model:trigger-value="triggerValue">
     <p :class="styles.Paragraph">
       Reviewed by
       <HoverCard.Trigger value="sarah" as-child>

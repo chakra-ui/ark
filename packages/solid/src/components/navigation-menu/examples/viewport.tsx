@@ -1,96 +1,113 @@
 import { NavigationMenu } from '@ark-ui/solid/navigation-menu'
-import { ChevronDownIcon } from 'lucide-solid'
+import {
+  AccessibilityIcon,
+  ChevronDownIcon,
+  ClapperboardIcon,
+  LayersIcon,
+  ListChecksIcon,
+  PaletteIcon,
+  RocketIcon,
+  SparklesIcon,
+} from 'lucide-solid'
 import { For } from 'solid-js'
-import styles from 'styles/navigation-menu.module.css'
+import { Dynamic } from 'solid-js/web'
+import styles from 'styles/navigation-menu-viewport.module.css'
 
-export const Viewport = () => {
-  const renderLinks = (items: string[]) => (
-    <For each={items}>
-      {(item) => (
-        <NavigationMenu.Link class={styles.ViewportLink} href="#">
-          {item}
-        </NavigationMenu.Link>
-      )}
-    </For>
-  )
+const overviewSections = [
+  {
+    label: 'Get started',
+    links: [
+      { href: '#quick-start', title: 'Quick Start', description: 'Install and assemble', icon: RocketIcon },
+      { href: '#styling', title: 'Styling', description: 'CSS, CSS-in-JS, or utilities', icon: PaletteIcon },
+    ],
+  },
+  {
+    label: 'Learn',
+    links: [
+      {
+        href: '#accessibility',
+        title: 'Accessibility',
+        description: 'Keyboard and ARIA support',
+        icon: AccessibilityIcon,
+      },
+      { href: '#releases', title: 'Releases', description: "What's new in Ark UI", icon: SparklesIcon },
+    ],
+  },
+]
 
-  return (
-    <NavigationMenu.Root class={styles.Root} data-variant="viewport">
+const guideLinks = [
+  { href: '#animation', title: 'Animation', description: 'CSS or JavaScript', icon: ClapperboardIcon },
+  { href: '#composition', title: 'Composition', description: 'Replace and compose parts', icon: LayersIcon },
+  { href: '#forms', title: 'Forms', description: 'Native and library forms', icon: ListChecksIcon },
+]
+
+export const Viewport = () => (
+  <div class={styles.Frame}>
+    <NavigationMenu.Root class={styles.Root}>
       <NavigationMenu.List class={styles.List}>
-        <NavigationMenu.Item class={styles.Item} value="products">
+        <NavigationMenu.Item class={styles.Item} value="overview">
           <NavigationMenu.Trigger class={styles.Trigger}>
-            Products
+            Overview
             <span class={styles.TriggerIcon}>
               <ChevronDownIcon />
             </span>
           </NavigationMenu.Trigger>
-          <NavigationMenu.Content
-            class={styles.ViewportContent}
-            style={{
-              'grid-template-columns': '1fr 2fr',
-              width: '600px',
-            }}
-          >
-            {renderLinks([
-              'Analytics Platform',
-              'Customer Engagement',
-              'Marketing Automation',
-              'Data Integration',
-              'Enterprise Solutions',
-              'API Documentation',
-            ])}
-            {renderLinks(['Case Studies', 'Success Stories', 'Integration Partners', 'Security & Compliance'])}
+          <NavigationMenu.Content class={styles.Content}>
+            <div class={styles.MenuColumns}>
+              <For each={overviewSections}>
+                {(section) => (
+                  <div class={styles.MenuSection}>
+                    <span class={styles.MenuLabel}>{section.label}</span>
+                    <For each={section.links}>
+                      {(item) => (
+                        <NavigationMenu.Link class={styles.LinkCard} href={item.href}>
+                          <span class={styles.LinkIcon}>
+                            <Dynamic component={item.icon} />
+                          </span>
+                          <span class={styles.LinkCopy}>
+                            <span class={styles.LinkTitle}>{item.title}</span>
+                            <span class={styles.LinkDescription}>{item.description}</span>
+                          </span>
+                        </NavigationMenu.Link>
+                      )}
+                    </For>
+                  </div>
+                )}
+              </For>
+            </div>
           </NavigationMenu.Content>
         </NavigationMenu.Item>
 
-        <NavigationMenu.Item class={styles.Item} value="company">
+        <NavigationMenu.Item class={styles.Item} value="guides">
           <NavigationMenu.Trigger class={styles.Trigger}>
-            Company
+            Guides
             <span class={styles.TriggerIcon}>
               <ChevronDownIcon />
             </span>
           </NavigationMenu.Trigger>
-          <NavigationMenu.Content
-            class={styles.ViewportContent}
-            style={{
-              'grid-template-columns': '1fr 1fr',
-              width: '450px',
-            }}
-          >
-            {renderLinks(['About Us', 'Leadership Team', 'Careers', 'Press Releases'])}
-            {renderLinks(['Investors', 'Partners', 'Corporate Responsibility'])}
+          <NavigationMenu.Content class={styles.Content}>
+            <div class={styles.MenuSection} data-single="">
+              <span class={styles.MenuLabel}>Guides</span>
+              <For each={guideLinks}>
+                {(item) => (
+                  <NavigationMenu.Link class={styles.LinkCard} href={item.href}>
+                    <span class={styles.LinkIcon}>
+                      <Dynamic component={item.icon} />
+                    </span>
+                    <span class={styles.LinkCopy}>
+                      <span class={styles.LinkTitle}>{item.title}</span>
+                      <span class={styles.LinkDescription}>{item.description}</span>
+                    </span>
+                  </NavigationMenu.Link>
+                )}
+              </For>
+            </div>
           </NavigationMenu.Content>
         </NavigationMenu.Item>
 
-        <NavigationMenu.Item class={styles.Item} value="developers">
-          <NavigationMenu.Trigger class={styles.Trigger}>
-            Developers
-            <span class={styles.TriggerIcon}>
-              <ChevronDownIcon />
-            </span>
-          </NavigationMenu.Trigger>
-          <NavigationMenu.Content
-            class={styles.ViewportContent}
-            style={{
-              'grid-template-columns': '1.6fr 1fr',
-              width: '650px',
-            }}
-          >
-            {renderLinks([
-              'API Documentation',
-              'SDKs & Libraries',
-              'Developer Guides',
-              'Code Samples',
-              'Webhooks',
-              'GraphQL Explorer',
-            ])}
-            {renderLinks(['Developer Community', 'Changelog', 'Status Page', 'Rate Limits'])}
-          </NavigationMenu.Content>
-        </NavigationMenu.Item>
-
-        <NavigationMenu.Item class={styles.Item} value="pricing">
-          <NavigationMenu.Link class={styles.Link} href="#pricing">
-            Pricing
+        <NavigationMenu.Item class={styles.Item} value="docs">
+          <NavigationMenu.Link class={styles.Link} href="https://ark-ui.com">
+            Documentation
           </NavigationMenu.Link>
         </NavigationMenu.Item>
 
@@ -103,5 +120,5 @@ export const Viewport = () => {
         <NavigationMenu.Viewport class={styles.Viewport} />
       </NavigationMenu.ViewportPositioner>
     </NavigationMenu.Root>
-  )
-}
+  </div>
+)

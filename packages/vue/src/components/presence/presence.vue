@@ -31,7 +31,6 @@ const props = withDefaults(defineProps<PresenceProps>(), {
 
 const emits = defineEmits<PresenceEmits>()
 
-// @ts-expect-error TODO tweak EmitFn
 const presence = usePresence(props, emits)
 PresenceProvider(presence)
 

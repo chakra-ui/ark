@@ -1,14 +1,19 @@
 {
   "TabContent": {
     "props": {
-      "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
+      "value": {
+        "type": "string",
+        "isRequired": true,
+        "description": "The value of the tab"
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "TabIndicator": {
     "props": {
@@ -18,7 +23,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "TabList": {
     "props": {
@@ -28,19 +34,29 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "TabTrigger": {
     "props": {
-      "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
+      "value": {
+        "type": "string",
+        "isRequired": true,
+        "description": "The value of the tab"
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the tab is disabled" }
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the tab is disabled"
+      }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "Root": {
     "props": {
@@ -55,7 +71,11 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "composite": { "type": "boolean", "isRequired": false, "description": "Whether the tab is composite" },
+      "composite": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the tab is composite"
+      },
       "defaultValue": {
         "type": "string",
         "isRequired": false,
@@ -66,7 +86,17 @@
         "isRequired": false,
         "description": "Whether the active tab can be deselected when clicking on it."
       },
-      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "hideMode": {
+        "type": "HideMode",
+        "defaultValue": "'display-none'",
+        "isRequired": false,
+        "description": "How to hide content when mounted but not present.\n- `'display-none'`: HTML `hidden` attribute. Effects stay alive.\n- `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
       "ids": {
         "type": "Partial<{\n  root: string\n  trigger: (value: string) => string\n  list: string\n  content: (value: string) => string\n  indicator: string\n}>",
         "isRequired": false,
@@ -116,17 +146,31 @@
         "isRequired": false,
         "description": "Whether to unmount on exit."
       },
-      "value": { "type": "string", "isRequired": false, "description": "The controlled selected tab value" }
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The controlled selected tab value"
+      }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseTabsReturn", "isRequired": true },
+      "value": {
+        "type": "UseTabsReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "hideMode": {
+        "type": "HideMode",
+        "defaultValue": "'display-none'",
+        "isRequired": false,
+        "description": "How to hide content when mounted but not present.\n- `'display-none'`: HTML `hidden` attribute. Effects stay alive.\n- `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
       },
       "lazyMount": {
         "type": "boolean",
@@ -141,6 +185,7 @@
         "description": "Whether to unmount on exit."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   }
 }

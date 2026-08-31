@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { FileUpload, type FileUploadRootEmits, type FileUploadRootProps } from '../../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import { FileUpload, type FileUploadRootEmits, type FileUploadRootProps } from '@ark-ui/vue/file-upload'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const testProps = ref<string[]>([])
 

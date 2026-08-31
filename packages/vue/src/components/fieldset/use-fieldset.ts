@@ -1,4 +1,3 @@
-import { dataAttr } from '@zag-js/dom-query'
 import {
   type FieldsetHTMLAttributes,
   type HTMLAttributes,
@@ -12,6 +11,7 @@ import {
   useId,
 } from 'vue'
 import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../../providers/index.ts'
+import { dataAttr } from '../../utils/attr.ts'
 import { unrefElement } from '../../utils/unref-element.ts'
 import { parts } from './fieldset.anatomy.ts'
 

@@ -78,6 +78,99 @@ Then use in styles:
 }
 ```
 
+## Z-Index
+
+Ark UI does not prescribe a global z-index scale. You decide the base z-index value for overlays, and Ark exposes Zag's
+`--layer-index` variable to keep stacked overlays in the right order.
+
+`--layer-index` is a zero-based index for open dismissible layers. Use it as an offset from your base z-index, not as
+the full z-index value.
+
+Use one shared base z-index for all dismissible overlays. This lets Zag order any combination of nested layers
+correctly, regardless of component type.
+
+For example, this should stack correctly:
+
+- A dialog opened from a popover
+- A menu opened inside a dialog
+- A select opened inside a drawer
+- A nested dialog opened from another dialog
+
+If each component type uses a different base z-index, those base values can fight the layer order. Keep the base the
+same, then let `--layer-index` do the stacking.
+
+For dialogs and drawers, apply it to the content. Zag syncs the content's computed z-index to the backdrop and
+positioner as `--z-index`, so set the z-index property for those parts:
+
+```css
+[data-scope='dialog'][data-part='content'] {
+  z-index: calc(1000 + var(--layer-index, 0));
+}
+
+[data-scope='dialog'][data-part='positioner'] {
+  z-index: var(--z-index, 1000);
+}
+
+[data-scope='dialog'][data-part='backdrop'] {
+  z-index: calc(var(--z-index, 1000) - 1);
+}
+```
+
+For popper-style components, apply it to the floating content. Zag syncs the content's computed z-index to the
+positioner as `--z-index`, and the positioner already uses `z-index: var(--z-index)`:
+
+```css
+[data-scope='popover'][data-part='content'],
+[data-scope='menu'][data-part='content'],
+[data-scope='select'][data-part='content'],
+[data-scope='combobox'][data-part='content'],
+[data-scope='date-picker'][data-part='content'] {
+  z-index: calc(1000 + var(--layer-index, 0));
+}
+```
+
+If your design system exposes z-index tokens, prefer one shared overlay token for dismissible layers:
+
+```css
+[data-scope='dialog'][data-part='content'] {
+  z-index: calc(var(--z-index-overlay) + var(--layer-index, 0));
+}
+
+[data-scope='dialog'][data-part='positioner'] {
+  z-index: var(--z-index, var(--z-index-overlay));
+}
+
+[data-scope='dialog'][data-part='backdrop'] {
+  z-index: calc(var(--z-index, var(--z-index-overlay)) - 1);
+}
+
+[data-scope='popover'][data-part='content'] {
+  z-index: calc(var(--z-index-overlay) + var(--layer-index, 0));
+}
+```
+
+**Caution:** Avoid using `--layer-index` as the entire z-index:
+
+```css
+[data-scope='dialog'][data-part='positioner'] {
+  z-index: var(--layer-index);
+}
+```
+
+This produces values like `0`, `1`, and `2`, which can appear below headers, sidebars, or other app chrome.
+
+Zag also exposes `data-nested`, `data-has-nested`, and `--nested-layer-count` for styling layers that contain nested
+layers.
+
+```css
+[data-scope='dialog'][data-part='content'][data-has-nested='dialog'] {
+  scale: 0.98;
+}
+```
+
+Use portals for overlays that need to escape parent stacking contexts. CSS properties like `transform`, `filter`,
+`opacity`, `contain`, `isolation`, and `perspective` can create stacking contexts that trap inline overlays.
+
 ## Styling with Panda CSS
 
 [Panda CSS](https://panda-css.com) is a best-in-class CSS-in-JS framework that integrates seamlessly with Ark UI,

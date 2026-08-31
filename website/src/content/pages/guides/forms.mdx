@@ -5,8 +5,8 @@ description: A guide to building forms with Ark UI components.
 ---
 
 Ark UI provides the `Field` and `Fieldset` components for integrating with native `form` element or popular form
-libraries like [React Hook Form](https://react-hook-form.com/), [TanStack Form](https://tanstack.com/form/latest), and
-[Vee Validate](https://vee-validate.logaretm.com).
+libraries like [React Hook Form](https://react-hook-form.com/), [TanStack Form](https://tanstack.com/form/latest),
+[Formisch](https://formisch.dev/), and [Vee Validate](https://vee-validate.logaretm.com).
 
 ## Field Context
 
@@ -445,6 +445,114 @@ const Demo = () => {
       />
       <button type="submit">Submit</button>
     </form>
+  )
+}
+```
+
+## Formisch
+
+Formisch is a schema-based, headless form library that, like Ark UI, supports React, Solid, Vue, and Svelte. It
+validates with [Valibot](https://valibot.dev/) and infers all input and output types from the schema.
+
+### Native Controls
+
+Since Formisch also exports a `Field` component, import it under an alias to avoid a name clash with Ark UI's `Field`.
+
+```tsx
+import { Field } from '@ark-ui/react/field'
+import { Field as FormischField, Form, useForm } from '@formisch/react'
+import * as v from 'valibot'
+
+const FormSchema = v.object({
+  firstName: v.pipe(v.string(), v.nonEmpty('First name is required')),
+  email: v.pipe(v.string(), v.email('Invalid email address')),
+})
+
+const Demo = () => {
+  const form = useForm({ schema: FormSchema })
+
+  return (
+    <Form of={form} onSubmit={(output) => console.log(output)}>
+      <FormischField of={form} path={['firstName']}>
+        {(field) => (
+          <Field.Root invalid={field.errors !== null}>
+            <Field.Label>First Name</Field.Label>
+            <Field.Input {...field.props} value={field.input} />
+            <Field.ErrorText>{field.errors?.[0]}</Field.ErrorText>
+          </Field.Root>
+        )}
+      </FormischField>
+
+      <FormischField of={form} path={['email']}>
+        {(field) => (
+          <Field.Root invalid={field.errors !== null}>
+            <Field.Label>Email</Field.Label>
+            <Field.Input {...field.props} value={field.input} />
+            <Field.ErrorText>{field.errors?.[0]}</Field.ErrorText>
+          </Field.Root>
+        )}
+      </FormischField>
+
+      <button type="submit">Submit</button>
+    </Form>
+  )
+}
+```
+
+### Custom Components
+
+Use the `onChange` function of the field store to integrate custom form components like select or combobox.
+
+```tsx
+import { Field } from '@ark-ui/react/field'
+import { Select, createListCollection } from '@ark-ui/react/select'
+import { Field as FormischField, Form, useForm } from '@formisch/react'
+import * as v from 'valibot'
+
+const FormSchema = v.object({
+  framework: v.pipe(v.string(), v.nonEmpty('Please select a framework')),
+})
+
+const Demo = () => {
+  const form = useForm({ schema: FormSchema })
+
+  const collection = createListCollection({
+    items: ['React', 'Solid', 'Vue', 'Svelte'],
+  })
+
+  return (
+    <Form of={form} onSubmit={(output) => console.log(output)}>
+      <FormischField of={form} path={['framework']}>
+        {(field) => (
+          <Field.Root invalid={field.errors !== null}>
+            <Select.Root
+              collection={collection}
+              value={field.input ? [field.input] : []}
+              onValueChange={(e) => field.onChange(e.value[0])}
+            >
+              <Select.Label>Framework</Select.Label>
+              <Select.Control>
+                <Select.Trigger>
+                  <Select.ValueText placeholder="Select a Framework" />
+                </Select.Trigger>
+              </Select.Control>
+              <Select.Positioner>
+                <Select.Content>
+                  {collection.items.map((item) => (
+                    <Select.Item key={item} item={item}>
+                      <Select.ItemText>{item}</Select.ItemText>
+                    </Select.Item>
+                  ))}
+                </Select.Content>
+              </Select.Positioner>
+              <Select.HiddenSelect />
+            </Select.Root>
+            <Field.ErrorText>{field.errors?.[0]}</Field.ErrorText>
+          </Field.Root>
+        )}
+      </FormischField>
+      <button type="submit">Submit</button>
+    </Form>
   )
 }
 ```

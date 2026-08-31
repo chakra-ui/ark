@@ -69,6 +69,11 @@
         "isRequired": false,
         "description": "The initial open state of the dialog when rendered.\nUse when you don't need to control the open state of the dialog."
       },
+      "defaultTriggerValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The initial active trigger value when rendered.\nUse when you don't need to control the active trigger value."
+      },
       "finalFocusEl": {
         "type": "() => MaybeElement",
         "isRequired": false,
@@ -76,7 +81,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  trigger: string\n  positioner: string\n  backdrop: string\n  content: string\n  closeTrigger: string\n  title: string\n  description: string\n}>",
+        "type": "Partial<{\n  trigger: string | ((value?: string | undefined) => string)\n  positioner: string\n  backdrop: string\n  content: string\n  closeTrigger: string\n  title: string\n  description: string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the dialog. Useful for composition."
       },
@@ -137,6 +142,11 @@
         "isRequired": false,
         "description": "Function called when this layer is closed due to a parent layer being closed"
       },
+      "onTriggerValueChange": {
+        "type": "(details: TriggerValueChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function to call when the active trigger changes"
+      },
       "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the dialog" },
       "persistentElements": {
         "type": "(() => Element | null)[]",
@@ -177,6 +187,7 @@
         "isRequired": false,
         "description": "Whether to trap focus inside the dialog when it's opened"
       },
+      "triggerValue": { "type": "string", "isRequired": false, "description": "The controlled active trigger value" },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",
@@ -238,6 +249,11 @@
         "type": "(props: ParentProps<'button'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value that identifies this specific trigger"
       }
     }
   }

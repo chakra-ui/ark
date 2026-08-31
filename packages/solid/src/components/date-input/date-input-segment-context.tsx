@@ -10,5 +10,9 @@ export interface DateInputSegmentContextProps {
 export const DateInputSegmentContext = (props: DateInputSegmentContextProps) => {
   const api = useDateInputContext()
   const segmentGroupProps = useDateInputSegmentGroupPropsContext()
-  return <Index each={api().getSegments(segmentGroupProps)}>{(segment) => props.children(segment())}</Index>
+  return (
+    <Index each={api().getSegments(segmentGroupProps)}>
+      {(segment, index) => props.children({ ...segment(), index } as DateSegment)}
+    </Index>
+  )
 }

@@ -1,6 +1,6 @@
-import { ariaAttr, dataAttr } from '@zag-js/dom-query'
 import { createMemo, createSignal, createUniqueId, mergeProps, onCleanup, onMount } from 'solid-js'
 import { useEnvironmentContext } from '../../providers/index.tsx'
+import { ariaAttr, dataAttr } from '../../utils/attr.ts'
 import type { MaybeAccessor } from '../../types.ts'
 import { useFieldsetContext } from '../fieldset/index.tsx'
 import type { UseFieldsetReturn } from '../fieldset/use-fieldset.ts'
@@ -107,7 +107,7 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
     htmlFor: targetControlId ?? id,
   })
 
-  const errorMessageId = () => (hasErrorText() && fieldProps.invalid ? errorTextId : undefined)
+  const errorMessageId = createMemo(() => (hasErrorText() && fieldProps.invalid ? errorTextId : undefined))
 
   const getControlProps = () => ({
     'aria-describedby': hasHelperText() ? helperTextId : undefined,

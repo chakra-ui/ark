@@ -1,55 +1,36 @@
 import type {
   GetComponentPropsResponse,
+  GetDocsResponse,
   GetExampleResponse,
   GetStyleGuideResponse,
   ListComponentExamplesResponse,
+  ListDocsResponse,
   ListExamplesResponse,
+  SearchDocsResponse,
 } from './types.js'
 
-/**
- * Fetches the list of all available Ark UI components for a specific framework.
- */
-export async function fetchComponentList(framework: string): Promise<string[]> {
-  const response = await fetch(`https://ark-ui.com/api/types/${framework}`)
+const API_BASE = 'https://ark-ui.com/api'
+
+const fetchJson = async <T>(path: string, label: string): Promise<T> => {
+  const response = await fetch(`${API_BASE}${path}`)
 
   if (!response.ok) {
-    throw new Error(`Failed to fetch component list: ${response.status} ${response.statusText}`)
+    throw new Error(`Failed to fetch ${label}: ${response.status} ${response.statusText}`)
   }
 
-  return response.json() as Promise<string[]>
+  return response.json() as Promise<T>
 }
 
-export async function listExamples(framework: string): Promise<ListExamplesResponse> {
-  const response = await fetch(`https://ark-ui.com/api/examples/${framework}`)
+export const fetchComponentList = (framework: string) => fetchJson<string[]>(`/types/${framework}`, 'component list')
 
-  if (!response.ok) {
-    throw new Error(`Failed to fetch examples: ${response.status} ${response.statusText}`)
-  }
+export const listExamples = (framework: string) => fetchJson<ListExamplesResponse>(`/examples/${framework}`, 'examples')
 
-  return response.json() as Promise<ListExamplesResponse>
+export const listComponentExamples = async ({ framework, component }: { framework: string; component: string }) => {
+  const data = await fetchJson<ListComponentExamplesResponse>(`/examples/${framework}/${component}`, 'examples')
+  return data.examples.map((example) => example.id)
 }
 
-export async function listComponentExamples({
-  framework,
-  component,
-}: {
-  framework: string
-  component: string
-}): Promise<string[]> {
-  const response = await fetch(`https://ark-ui.com/api/examples/${framework}/${component}`)
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch examples: ${response.status} ${response.statusText}`)
-  }
-
-  const data = (await response.json()) as ListComponentExamplesResponse
-
-  const examples = data.examples.map((example) => example.id)
-
-  return examples
-}
-
-export async function getExample({
+export const getExample = ({
   framework,
   component,
   exampleId,
@@ -57,40 +38,19 @@ export async function getExample({
   framework: string
   component: string
   exampleId: string
-}): Promise<GetExampleResponse> {
-  const response = await fetch(`https://ark-ui.com/api/examples/${framework}/${component}/${exampleId}`)
+}) => fetchJson<GetExampleResponse>(`/examples/${framework}/${component}/${exampleId}`, 'example')
 
-  if (!response.ok) {
-    throw new Error(`Failed to fetch examples: ${response.status} ${response.statusText}`)
-  }
+export const getStyleGuide = (component: string) =>
+  fetchJson<GetStyleGuideResponse>(`/style-guide/${component}`, 'style guide')
 
-  return response.json() as Promise<GetExampleResponse>
-}
-
-export async function getStyleGuide(component: string): Promise<GetStyleGuideResponse> {
-  const response = await fetch(`https://ark-ui.com/api/style-guide/${component}`)
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch examples: ${response.status} ${response.statusText}`)
-  }
-
-  return response.json() as Promise<GetStyleGuideResponse>
-}
-
-export async function getComponentProps({
+export const getComponentProps = async ({
   framework,
   component,
 }: {
   framework: string
   component: string
-}): Promise<GetComponentPropsResponse> {
-  const response = await fetch(`https://ark-ui.com/api/types/${framework}/${component}`)
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch component props: ${response.status} ${response.statusText}`)
-  }
-
-  const props = await response.json()
+}): Promise<GetComponentPropsResponse> => {
+  const props = await fetchJson<Record<string, unknown>>(`/types/${framework}/${component}`, 'component props')
 
   return {
     framework,
@@ -98,3 +58,10 @@ export async function getComponentProps({
     props,
   }
 }
+
+export const listDocs = () => fetchJson<ListDocsResponse>('/docs', 'docs list')
+
+export const searchDocs = (query: string) =>
+  fetchJson<SearchDocsResponse>(`/docs?q=${encodeURIComponent(query)}`, 'docs search')
+
+export const getDocs = (slug: string) => fetchJson<GetDocsResponse>(`/docs/${slug}`, 'docs page')

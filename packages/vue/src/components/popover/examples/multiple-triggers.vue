@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Popover } from '@ark-ui/vue/popover'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import button from 'styles/button.module.css'
 import styles from 'styles/popover.module.css'
 
@@ -16,11 +16,12 @@ const items: Item[] = [
   { id: 'archive', label: 'Archive', detail: 'Move this item to the archive for later reference.' },
 ]
 
-const activeItem = ref<Item | null>(null)
+const triggerValue = ref<string | null>(null)
+const activeItem = computed(() => items.find((i) => i.id === triggerValue.value) ?? null)
 </script>
 
 <template>
-  <Popover.Root @trigger-value-change="(e) => (activeItem = items.find((i) => i.id === e.value) ?? null)">
+  <Popover.Root v-model:trigger-value="triggerValue">
     <div :class="button.Group">
       <Popover.Trigger v-for="item in items" :key="item.id" :value="item.id" :class="button.Root">
         {{ item.label }}

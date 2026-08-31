@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SignaturePad, type SignaturePadRootEmits, type SignaturePadRootProps } from '../../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import { SignaturePad, type SignaturePadRootEmits, type SignaturePadRootProps } from '@ark-ui/vue/signature-pad'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<SignaturePadRootProps>()
 const emits = defineEmits<SignaturePadRootEmits>()

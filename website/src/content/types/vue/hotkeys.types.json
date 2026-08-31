@@ -1,0 +1,284 @@
+{
+  "createHotkeyStore": {
+    "props": {
+      "activeScopes": {
+        "type": "string | string[]",
+        "isRequired": false,
+        "defaultValue": "['*']",
+        "description": "The scopes that start active. Only commands in an active scope fire."
+      },
+      "conflictBehavior": {
+        "type": "'warn' | 'error' | 'replace' | 'allow'",
+        "isRequired": false,
+        "defaultValue": "'warn'",
+        "description": "What to do when two commands register the same hotkey. warn keeps both and logs, replace drops the earlier one, allow keeps both silently, error refuses the second."
+      },
+      "defaultOptions": {
+        "type": "HotkeyOptions",
+        "isRequired": false,
+        "description": "Options applied to every command registered on this store. Per-command options override it."
+      },
+      "sequenceTimeoutMs": {
+        "type": "number",
+        "isRequired": false,
+        "defaultValue": "1000",
+        "description": "How long a sequence like G > H waits for the next key before resetting."
+      },
+      "returns": {
+        "type": "HotkeyStore",
+        "isRequired": false,
+        "description": "The store. Pass it to any hook as store, and keep it stable: build it outside the component or memoize it, since one created during render is rebuilt on every render and loses its registrations."
+      }
+    }
+  },
+  "useHotkey": {
+    "props": {
+      "props": {
+        "type": "MaybeRef<UseHotkeyProps>",
+        "isRequired": true,
+        "description": "One command, plus an optional store. Takes every field of UseHotkeysCommand."
+      }
+    }
+  },
+  "useHotkeys": {
+    "props": {
+      "commands": {
+        "type": "UseHotkeysCommand[]",
+        "isRequired": true,
+        "description": "The commands to register. Passed inside a single object, so the whole argument is MaybeRef<{ commands, store, id }>."
+      },
+      "store": {
+        "type": "HotkeyStore",
+        "isRequired": false,
+        "description": "The store to register on. Defaults to a store shared by every hook that does not name one."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Prefix for the ids generated for commands that do not set their own. One is generated when omitted."
+      }
+    }
+  },
+  "UseHotkeysCommand": {
+    "props": {
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Identifies the command across renders. One is generated when omitted, keyed by position within the hook instance, which is enough unless something else needs to address the command by name."
+      },
+      "hotkey": {
+        "type": "string",
+        "isRequired": true,
+        "description": "The key combination or sequence that triggers the command."
+      },
+      "action": {
+        "type": "(event: KeyboardEvent) => void",
+        "isRequired": true,
+        "description": "Called when the hotkey fires."
+      },
+      "label": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Human-readable name. Read back by useHotkeyRegistrations, so a command palette can render it."
+      },
+      "description": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Longer explanation of what the command does."
+      },
+      "category": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Group name, for sectioning a command palette."
+      },
+      "keywords": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "Alternative search terms. Lets a palette match \"dark\" against a command labelled \"Toggle theme\"."
+      },
+      "scopes": {
+        "type": "string | string[]",
+        "isRequired": false,
+        "defaultValue": "'*'",
+        "description": "The scopes this command belongs to. It only fires while one of them is active."
+      },
+      "enabled": {
+        "type": "boolean | (() => boolean)",
+        "isRequired": false,
+        "defaultValue": "true",
+        "description": "Whether the command can fire. A function is re-evaluated on every key press, so it reads current state without re-registering."
+      },
+      "options": {
+        "type": "HotkeyOptions",
+        "isRequired": false,
+        "description": "Per-command behavior. Overrides the provider defaultOptions."
+      }
+    }
+  },
+  "HotkeyOptions": {
+    "props": {
+      "preventDefault": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Call preventDefault() on the event before running the action."
+      },
+      "stopPropagation": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Call stopPropagation() on the event before running the action."
+      },
+      "enableOnFormTags": {
+        "type": "boolean | ('input' | 'textarea' | 'select')[]",
+        "isRequired": false,
+        "defaultValue": "false",
+        "description": "Whether a single-key shortcut fires while an input, textarea or select has focus. Shortcuts with a modifier always fire. Pass an array to opt in to specific tags."
+      },
+      "enableOnContentEditable": {
+        "type": "boolean",
+        "isRequired": false,
+        "defaultValue": "false",
+        "description": "Whether the shortcut fires inside a contenteditable element."
+      },
+      "capture": {
+        "type": "boolean",
+        "isRequired": false,
+        "defaultValue": "true",
+        "description": "Listen in the capture phase."
+      },
+      "requireReset": {
+        "type": "boolean",
+        "isRequired": false,
+        "defaultValue": "false",
+        "description": "Fire once per press. The key must be released before it fires again, which suppresses key repeat."
+      },
+      "eventType": {
+        "type": "'keydown' | 'keyup'",
+        "isRequired": false,
+        "defaultValue": "'keydown'",
+        "description": "Whether to fire on press or on release. Pair a keyup command with a keydown one on the same key for push-to-talk."
+      },
+      "target": {
+        "type": "Element | (() => Element | null)",
+        "isRequired": false,
+        "description": "Scope the command to a DOM subtree. It only fires when the event originates inside this element, which must contain focus. Resolved on every event, and skipped while it resolves to null."
+      }
+    }
+  },
+  "useHotkeyRegistrations": {
+    "props": {
+      "store": {
+        "type": "HotkeyStore",
+        "isRequired": false,
+        "description": "The store to read from. Defaults to a store shared by every hook that does not name one."
+      },
+      "returns": {
+        "type": "Readonly<Ref<HotkeyCommand[]>>",
+        "isRequired": false,
+        "description": "Every command currently registered on the store, with its label, category, keywords and resolved hotkey. Re-reads when commands are added or removed, which is what lets a command palette be a view over the registry instead of a second list to keep in sync."
+      }
+    }
+  },
+  "useHotkeyStore": {
+    "props": {
+      "returns": {
+        "type": "HotkeyStore",
+        "isRequired": false,
+        "description": "The store you passed, or the shared default store. Use setScope, addScope, removeScope and toggleScope to change which commands are live, and isPressed to test a combination directly."
+      }
+    }
+  },
+  "usePressedKeys": {
+    "props": {
+      "store": {
+        "type": "HotkeyStore",
+        "isRequired": false,
+        "description": "The store to read from. Defaults to a store shared by every hook that does not name one."
+      },
+      "returns": {
+        "type": "Readonly<Ref<string[]>>",
+        "isRequired": false,
+        "description": "The keys currently held down. Use it when a held key changes what an interaction means, such as Shift to extend a selection."
+      }
+    }
+  },
+  "useIsKeyPressed": {
+    "props": {
+      "hotkey": {
+        "type": "string",
+        "isRequired": true,
+        "description": "The key or combination to watch. Passed inside a single object, so the whole argument is MaybeRef<{ hotkey, store }>."
+      },
+      "store": {
+        "type": "HotkeyStore",
+        "isRequired": false,
+        "description": "The store to read from. Defaults to a store shared by every hook that does not name one."
+      },
+      "returns": {
+        "type": "Readonly<Ref<boolean>>",
+        "isRequired": false,
+        "description": "Whether that key or combination is currently held."
+      }
+    }
+  },
+  "usePlatform": {
+    "props": {
+      "returns": {
+        "type": "Ref<Platform>",
+        "isRequired": false,
+        "description": "The current platform, one of 'mac', 'windows' or 'linux'. Resolves after mount, so server and client render the same markup."
+      }
+    }
+  },
+  "useFormatHotkey": {
+    "props": {
+      "returns": {
+        "type": "ComputedRef<(hotkey: string, options?: HotkeyFormatOptions) => string>",
+        "isRequired": false,
+        "description": "A formatter bound to the current platform, so mod+K renders as ⌘ K on macOS and Ctrl K elsewhere. Prefer this over importing formatHotkey directly inside a component, which reads the platform during render and mismatches on hydration."
+      }
+    }
+  },
+  "useHotkeyRecorder": {
+    "props": {
+      "props": {
+        "type": "MaybeRef<UseHotkeyRecorderProps>",
+        "isRequired": false,
+        "description": "Accepts onRecord, onCancel, onClear, formatOptions and sequenceTimeoutMs."
+      },
+      "returns": {
+        "type": "UseHotkeyRecorderReturn",
+        "isRequired": false,
+        "description": "The recorder handle, described below."
+      }
+    }
+  },
+  "UseHotkeyRecorderReturn": {
+    "props": {
+      "state": {
+        "type": "Readonly<Ref<HotkeyRecorderState>>",
+        "isRequired": false,
+        "description": "The recorder state. recording is whether it is listening, value is the hotkey recorded so far."
+      },
+      "start": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Start listening for key events."
+      },
+      "stop": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Stop listening and keep the recorded hotkey."
+      },
+      "cancel": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Stop listening and discard the recorded hotkey. Also triggered by Escape."
+      },
+      "clear": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Clear the recorded hotkey. Also triggered by Backspace or Delete."
+      }
+    }
+  }
+}

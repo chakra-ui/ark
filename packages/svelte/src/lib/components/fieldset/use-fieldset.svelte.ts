@@ -1,9 +1,9 @@
 import { useEnvironmentContext } from '$lib/providers'
 import type { HTMLProps } from '$lib/types'
 import { runIfFn } from '$lib/utils/run-if-fn'
-import { dataAttr } from '@zag-js/dom-query'
 import { type MaybeFunction, ensureProps } from '@zag-js/utils'
 import { onMount } from 'svelte'
+import { dataAttr } from '../../utils/attr.ts'
 import { parts } from './fieldset.anatomy.ts'
 
 export interface UseFieldsetProps {

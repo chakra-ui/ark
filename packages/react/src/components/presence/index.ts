@@ -2,3 +2,4 @@ export { Presence, type PresenceBaseProps, type PresenceProps } from './presence
 export { splitPresenceProps } from './split-presence-props.ts'
 export { usePresence, type UsePresenceProps, type UsePresenceReturn } from './use-presence.ts'
 export { PresenceProvider, usePresenceContext, type UsePresenceContext } from './use-presence-context.ts'
+export type { HideMode } from '../../utils/render-strategy.ts'

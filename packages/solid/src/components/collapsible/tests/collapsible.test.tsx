@@ -1,7 +1,7 @@
+import { Collapsible } from '@ark-ui/solid/collapsible'
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { ChevronDownIcon } from 'lucide-solid'
-import { Collapsible } from '../index.tsx'
 
 const ComponentUnderTest = (props: Collapsible.RootProps) => (
   <Collapsible.Root {...props}>

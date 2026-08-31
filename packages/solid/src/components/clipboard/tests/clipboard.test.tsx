@@ -1,7 +1,7 @@
+import { Clipboard } from '@ark-ui/solid/clipboard'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { CheckIcon, ClipboardCopyIcon } from 'lucide-solid'
-import { Clipboard } from '../index.tsx'
 
 const ComponentUnderTest = () => (
   <Clipboard.Root value="https://ark-ui.com">

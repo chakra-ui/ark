@@ -1,4 +1,3 @@
-import { ariaAttr, dataAttr } from '@zag-js/dom-query'
 import {
   type HTMLAttributes,
   type MaybeRef,
@@ -12,6 +11,7 @@ import {
 } from 'vue'
 import { useEnvironmentContext } from '../../providers/index.ts'
 import { DEFAULT_ENVIRONMENT } from '../../providers/environment/use-environment-context.ts'
+import { ariaAttr, dataAttr } from '../../utils/attr.ts'
 import { unrefElement } from '../../utils/unref-element.ts'
 import { parts } from './field.anatomy.ts'
 import type { ElementIds } from './field.types.ts'
@@ -118,18 +118,13 @@ export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
     }
   }
 
-  const labelIds = computed(() => {
-    const values = toValue(props)
-    const ids: string[] = []
-    if (state.hasErrorText && values.invalid) ids.push(errorTextId.value)
-    if (state.hasHelperText) ids.push(helperTextId.value)
-    return ids
-  })
+  const errorMessageId = computed(() => (state.hasErrorText && toValue(props).invalid ? errorTextId.value : undefined))
 
   const getControlProps = () => {
     const values = toValue(props)
     return {
-      'aria-describedby': labelIds.value.join(' ') || undefined,
+      'aria-describedby': state.hasHelperText ? helperTextId.value : undefined,
+      'aria-errormessage': errorMessageId.value,
       'aria-invalid': ariaAttr(values.invalid),
       'data-invalid': dataAttr(values.invalid),
       'data-required': dataAttr(values.required),
@@ -179,7 +174,7 @@ export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
   return computed(() => {
     const values = toValue(props)
     return {
-      ariaDescribedby: labelIds.value.join(' ') || undefined,
+      ariaDescribedby: state.hasHelperText ? helperTextId.value : undefined,
       ids: {
         control: id.value,
         label: labelId.value,

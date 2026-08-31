@@ -1,4 +1,4 @@
-import { ToggleGroup } from '../index.tsx'
+import { ToggleGroup } from '@ark-ui/solid/toggle-group'
 
 export const ComponentUnderTest = (props: ToggleGroup.RootProps) => (
   <ToggleGroup.Root {...props}>

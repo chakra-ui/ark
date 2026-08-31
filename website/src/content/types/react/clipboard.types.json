@@ -7,7 +7,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Indicator": {
     "props": {
@@ -21,7 +22,8 @@
         "isRequired": false
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Input": {
     "props": {
@@ -31,7 +33,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLInputElement"
+    "element": "HTMLInputElement",
+    "tag": "input"
   },
   "Label": {
     "props": {
@@ -41,7 +44,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLLabelElement"
+    "element": "HTMLLabelElement",
+    "tag": "label"
   },
   "Root": {
     "props": {
@@ -55,7 +59,11 @@
         "isRequired": false,
         "description": "The initial value to be copied to the clipboard when rendered.\nUse when you don't need to control the value of the clipboard."
       },
-      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
       "ids": {
         "type": "Partial<{ root: string; input: string; label: string }>",
         "isRequired": false,
@@ -77,20 +85,34 @@
         "isRequired": false,
         "description": "The timeout for the copy operation"
       },
-      "value": { "type": "string", "isRequired": false, "description": "The controlled value of the clipboard" }
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The controlled value of the clipboard"
+      }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseClipboardReturn", "isRequired": true },
+      "value": {
+        "type": "UseClipboardReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Trigger": {
     "props": {
@@ -100,7 +122,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "ValueText": {
     "props": {
@@ -110,6 +133,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "span"
   }
 }

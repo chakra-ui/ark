@@ -1,4 +1,4 @@
-import { Toast, Toaster, createToaster } from '../index.ts'
+import { Toast, Toaster, createToaster } from '@ark-ui/react/toast'
 
 const toaster = createToaster({
   placement: 'bottom-end',

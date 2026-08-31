@@ -1,5 +1,5 @@
-import { Editable } from '../index.ts'
-import { Field } from '../../field/index.ts'
+import { Editable } from '@ark-ui/react/editable'
+import { Field } from '@ark-ui/react/field'
 
 export const ComponentUnderTest = (props: Editable.RootProps) => (
   <Editable.Root placeholder="Placeholder" {...props}>

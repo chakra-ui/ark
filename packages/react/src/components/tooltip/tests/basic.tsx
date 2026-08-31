@@ -1,4 +1,4 @@
-import { Tooltip } from '../index.ts'
+import { Tooltip } from '@ark-ui/react/tooltip'
 
 export const ComponentUnderTest = (props: Tooltip.RootProps) => (
   <Tooltip.Root openDelay={0} closeDelay={0} {...props}>

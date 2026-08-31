@@ -147,6 +147,12 @@
         "isRequired": false,
         "description": "Whether to add a tag when you paste values into the tag input"
       },
+      "allowDuplicates": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow duplicate tags"
+      },
       "allowOverflow": {
         "type": "boolean",
         "isRequired": false,
@@ -231,6 +237,11 @@
         "description": "Whether the tags input should be read-only"
       },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the tags input is required" },
+      "sanitizeValue": {
+        "type": "(value: string) => string",
+        "isRequired": false,
+        "description": "Function to sanitize the tag value before adding it"
+      },
       "translations": {
         "type": "IntlTranslations",
         "isRequired": false,

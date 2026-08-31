@@ -1,5 +1,5 @@
 import { DateInput } from '@ark-ui/react/date-input'
-import { DateFormatter } from '@internationalized/date'
+import { DateFormatter, getLocalTimeZone } from '@internationalized/date'
 import styles from 'styles/date-input.module.css'
 
 const timeFormatter = new DateFormatter('en-US', {
@@ -9,7 +9,13 @@ const timeFormatter = new DateFormatter('en-US', {
 })
 
 export const TimeOnly = () => (
-  <DateInput.Root className={styles.Root} granularity="minute" hourCycle={24} formatter={timeFormatter}>
+  <DateInput.Root
+    className={styles.Root}
+    granularity="minute"
+    hourCycle={24}
+    formatter={timeFormatter}
+    timeZone={getLocalTimeZone()}
+  >
     <DateInput.Label className={styles.Label}>Time</DateInput.Label>
     <DateInput.Control className={styles.Control}>
       <DateInput.SegmentGroup className={styles.SegmentGroup}>

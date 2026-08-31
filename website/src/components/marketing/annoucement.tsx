@@ -15,12 +15,12 @@ export const Announcement = () => {
   }
 
   return (
-    <NextLink href="/docs/components/date-input">
+    <NextLink href="/docs/components/navigation-menu">
       <Badge size="lg" variant="outline">
         <Icon color="colorPalette.default">
           <SparklesIcon />
         </Icon>
-        [New] Date Input component
+        [New] Navigation Menu component
         <ArrowRightIcon />
       </Badge>
     </NextLink>
@@ -29,12 +29,12 @@ export const Announcement = () => {
 
 export const Announcement_ = () => {
   return (
-    <NextLink href="/docs/components/marquee">
+    <NextLink href="/docs/components/date-input">
       <Badge size="lg" variant="outline">
         <Icon color="colorPalette.default">
           <SparklesIcon />
         </Icon>
-        [New] Marquee component
+        [New] Date Input component
         <ArrowRightIcon />
       </Badge>
     </NextLink>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { RadioGroup, type RadioGroupRootEmits, type RadioGroupRootProps } from '../../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import { RadioGroup, type RadioGroupRootEmits, type RadioGroupRootProps } from '@ark-ui/vue/radio-group'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const items = ref([
   { label: 'React', value: 'react' },

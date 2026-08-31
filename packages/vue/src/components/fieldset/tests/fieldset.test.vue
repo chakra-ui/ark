@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Field, Fieldset, type FieldsetRootProps } from '../../index.ts'
+import { Field } from '@ark-ui/vue/field'
+import { Fieldset, type FieldsetRootProps } from '@ark-ui/vue/fieldset'
 
 const props = defineProps<FieldsetRootProps>()
 </script>

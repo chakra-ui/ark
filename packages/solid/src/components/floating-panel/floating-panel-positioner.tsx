@@ -1,4 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
+import { Show } from 'solid-js'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresenceContext } from '../presence/index.tsx'
 import { useFloatingPanelContext } from './use-floating-panel-context.ts'
@@ -11,9 +12,9 @@ export const FloatingPanelPositioner = (props: FloatingPanelPositionerProps) => 
   const mergedProps = mergeProps(() => floatingPanel().getPositionerProps(), props)
   const presence = usePresenceContext()
 
-  if (presence().unmounted) {
-    return null
-  }
-
-  return <ark.div {...mergedProps} />
+  return (
+    <Show when={!presence().unmounted}>
+      <ark.div {...mergedProps} />
+    </Show>
+  )
 }

@@ -1,0 +1,137 @@
+{
+  "Content": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'article'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Indicator": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Item": {
+    "props": {
+      "item": { "type": "TocItem", "isRequired": true, "description": "The TOC item" },
+      "asChild": {
+        "type": "(props: ParentProps<'li'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Link": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'a'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "List": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'ul'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Nav": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'nav'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "placement": { "type": "'left' | 'right'", "isRequired": false }
+    }
+  },
+  "Root": {
+    "props": {
+      "items": {
+        "type": "TocItem[]",
+        "isRequired": true,
+        "description": "The TOC items with `value` (slug/id) and `depth` (heading level)."
+      },
+      "activeIds": { "type": "string[]", "isRequired": false, "description": "The controlled active heading ids." },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "autoScroll": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to auto-scroll the TOC container so the first active item\nis visible when active headings change."
+      },
+      "defaultActiveIds": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The default active heading ids when rendered.\nUse when you don't need to control the active headings."
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  title: string\n  list: string\n  item: (value: string) => string\n  link: (value: string) => string\n  indicator: string\n}>",
+        "isRequired": false,
+        "description": "The ids of the elements in the TOC. Useful for composition."
+      },
+      "onActiveChange": {
+        "type": "(details: ActiveChangeDetails) => void",
+        "isRequired": false,
+        "description": "Callback when the active (visible) headings change."
+      },
+      "rootMargin": {
+        "type": "string",
+        "defaultValue": "\"-20px 0px -40% 0px\"",
+        "isRequired": false,
+        "description": "The root margin for the IntersectionObserver.\nControls the effective viewport area for determining active headings."
+      },
+      "scrollBehavior": {
+        "type": "ScrollBehavior",
+        "defaultValue": "\"smooth\"",
+        "isRequired": false,
+        "description": "The default scroll behavior used when auto-scrolling the TOC container\nand when scrolling to a heading (via link click or `api.scrollTo`).\nCan be overridden per-call by passing `behavior` to `api.scrollTo`."
+      },
+      "scrollEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "description": "Function that returns the scroll container element to observe within.\nDefaults to the document/viewport."
+      },
+      "threshold": {
+        "type": "number | number[]",
+        "defaultValue": "0",
+        "isRequired": false,
+        "description": "The IntersectionObserver threshold. A value of `0` means the heading is\nactive as soon as even one pixel is visible within the root margin area."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseTocReturn", "isRequired": true },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Title": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'h2'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
+}

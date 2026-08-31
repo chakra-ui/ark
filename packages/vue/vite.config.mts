@@ -17,6 +17,7 @@ export default defineConfig({
   plugins: [
     dts({
       entryRoot: 'src',
+      processor: 'vue',
       staticImport: true,
       exclude: ['**/*.stories.*', '**/*.test.*', '**/tests/*', '**/examples/*', '**/setup-test.ts'],
       beforeWriteFile: (filePath, content) => ({
@@ -38,7 +39,7 @@ export default defineConfig({
   test: {
     setupFiles: 'src/setup-test.ts',
     globals: true,
-    environment: 'jsdom',
+    environment: 'happy-dom',
     coverage: {
       provider: 'v8',
     },

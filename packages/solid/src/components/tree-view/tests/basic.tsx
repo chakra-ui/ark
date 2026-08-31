@@ -1,6 +1,6 @@
+import { TreeView, createTreeCollection } from '@ark-ui/solid/tree-view'
 import { ChevronRightIcon, FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-solid'
 import { For } from 'solid-js'
-import { TreeView, createTreeCollection } from '../index.tsx'
 
 interface Node {
   id: string

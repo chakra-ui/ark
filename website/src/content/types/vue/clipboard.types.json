@@ -76,6 +76,11 @@
         "defaultValue": "3000",
         "isRequired": false,
         "description": "The timeout for the copy operation"
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
       }
     }
   },

@@ -1,4 +1,4 @@
-import { DateInput } from '../index.tsx'
+import { DateInput } from '@ark-ui/solid/date-input'
 
 export const ComponentUnderTest = (props: DateInput.RootProps) => (
   <DateInput.Root {...props}>

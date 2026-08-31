@@ -1,4 +1,4 @@
-import { Editable } from '../index.ts'
+import { Editable } from '@ark-ui/react/editable'
 
 export const ControlledComponentUnderTest = (props: Editable.RootProps) => (
   <Editable.Root placeholder="Placeholder" {...props}>

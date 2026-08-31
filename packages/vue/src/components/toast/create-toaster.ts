@@ -6,8 +6,8 @@ export interface CreateToasterProps extends Optional<Partial<toast.StoreProps>, 
   placement: toast.Placement
 }
 
-export interface CreateToasterReturn extends toast.Store<VNodeChild> {}
+export type CreateToasterReturn<T = VNodeChild> = toast.Store<T>
 
-export const createToaster = (props: CreateToasterProps): CreateToasterReturn => {
+export const createToaster = <T = VNodeChild>(props: CreateToasterProps): CreateToasterReturn<T> => {
   return toast.createStore(props)
 }

@@ -32,17 +32,18 @@ const props = withDefaults(defineProps<DrawerRootProps>(), {
 const emits = defineEmits<DrawerRootEmits>()
 const drawer = useDrawer(props, emits)
 
-DrawerProvider(drawer)
-RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
-
 const presence = usePresence(
   computed(() => ({
     present: drawer.value.open,
     lazyMount: props.lazyMount,
     unmountOnExit: props.unmountOnExit,
   })),
+  emits,
 )
+
+DrawerProvider(drawer)
 PresenceProvider(presence)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

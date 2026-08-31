@@ -22,11 +22,14 @@ You can use the `ark` factory to create your own elements that work just like Ar
 
 <ExampleCode id="factory" component="popover" />
 
-This will produce the following HTML:
+The factory renders the child element in place of the `span`, so this produces:
 
 ```html
-<span id="child" class="parent child" style="background: red; color: blue;">Ark UI</span>
+<a href="#">Ark UI</a>
 ```
+
+Any props you pass to `ark.span` are merged onto the child element, which is how the factory forwards styling and behavior to
+whatever you render.
 
 ## ID Composition
 

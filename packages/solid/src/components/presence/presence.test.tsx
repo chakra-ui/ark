@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { createSignal } from 'solid-js'
-import { Presence, type PresenceProps } from './index.tsx'
+import { Presence, type PresenceProps } from '@ark-ui/solid/presence'
 
 const ComponentUnderTest = (props: PresenceProps) => {
   const [present, setPresent] = createSignal(false)

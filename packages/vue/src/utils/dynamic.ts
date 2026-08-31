@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/vue'
-import { Fragment, type VNode, cloneVNode, defineComponent } from 'vue'
+import { Comment, Fragment, type VNode, cloneVNode, defineComponent } from 'vue'
 
 export const Dynamic = defineComponent({
   name: 'Dynamic',
@@ -8,20 +8,20 @@ export const Dynamic = defineComponent({
     return () => {
       if (!slots.default) return null
       const children = renderSlotFragments(slots.default())
-      const [firstChildren, ...otherChildren] = children
+      const index = children.findIndex((child) => child.type !== Comment)
+      if (index === -1) return children
 
-      if (firstChildren && Object.keys(attrs).length > 0) {
+      const firstChildren = children[index]
+
+      if (Object.keys(attrs).length > 0) {
         delete firstChildren.props?.ref
+        // props are cleared below so `cloneVNode` doesn't merge the child's own props a second time
         const mergedProps = mergeProps(attrs, firstChildren.props ?? {})
-        const cloned = cloneVNode(firstChildren, mergedProps)
-        for (const prop in mergedProps) {
-          if (prop.startsWith('on')) {
-            cloned.props ||= {}
-            cloned.props[prop] = mergedProps[prop]
-          }
-        }
+        const cloned = cloneVNode({ ...firstChildren, props: {} }, mergedProps)
 
-        return children.length === 1 ? cloned : [cloned, ...otherChildren]
+        if (children.length === 1) return cloned
+        children[index] = cloned
+        return children
       }
 
       return children

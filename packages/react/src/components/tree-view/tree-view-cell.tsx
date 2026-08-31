@@ -12,7 +12,7 @@ export interface TreeViewCellProps extends HTMLProps<'div'>, TreeViewCellBasePro
 export const TreeViewCell = forwardRef<HTMLDivElement, TreeViewCellProps>((props, ref) => {
   const treeView = useTreeViewContext()
   const nodeProps = useTreeViewNodePropsContext()
-  const mergedProps = mergeProps(treeView.getCellProps(nodeProps), props)
+  const mergedProps = mergeProps(treeView.getNodeCellProps(nodeProps), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

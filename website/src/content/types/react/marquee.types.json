@@ -7,18 +7,24 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Edge": {
     "props": {
-      "side": { "type": "Side", "isRequired": true, "description": "The side where the edge gradient should appear." },
+      "side": {
+        "type": "Side",
+        "isRequired": true,
+        "description": "The side where the edge gradient should appear."
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Item": {
     "props": {
@@ -28,7 +34,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Root": {
     "props": {
@@ -81,7 +88,11 @@
         "isRequired": false,
         "description": "Function called when the pause status changes."
       },
-      "paused": { "type": "boolean", "isRequired": false, "description": "Whether the marquee is paused." },
+      "paused": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the marquee is paused."
+      },
       "pauseOnInteraction": {
         "type": "boolean",
         "defaultValue": "false",
@@ -118,18 +129,23 @@
         "description": "The localized messages to use."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseMarqueeReturn", "isRequired": true },
+      "value": {
+        "type": "UseMarqueeReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Viewport": {
     "props": {
@@ -139,6 +155,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   }
 }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { DateInput, type DateInputRootEmits, type DateInputRootProps } from '../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import { DateInput, type DateInputRootEmits, type DateInputRootProps } from '@ark-ui/vue/date-input'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<DateInputRootProps>()
 const emits = defineEmits<DateInputRootEmits>()

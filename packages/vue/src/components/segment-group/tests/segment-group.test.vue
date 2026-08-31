@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { SegmentGroup, type SegmentGroupRootEmits, type SegmentGroupRootProps } from '../../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import { SegmentGroup, type SegmentGroupRootEmits, type SegmentGroupRootProps } from '@ark-ui/vue/segment-group'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<SegmentGroupRootProps>()
 const emits = defineEmits<SegmentGroupRootEmits>()

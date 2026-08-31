@@ -6,7 +6,13 @@
 
   export interface TrapOptions extends Pick<
     FocusTrapOptions,
-    'onActivate' | 'onDeactivate' | 'initialFocus' | 'fallbackFocus' | 'returnFocusOnDeactivate' | 'setReturnFocus'
+    | 'onActivate'
+    | 'onDeactivate'
+    | 'initialFocus'
+    | 'fallbackFocus'
+    | 'returnFocusOnDeactivate'
+    | 'setReturnFocus'
+    | 'persistentElements'
   > {
     /**
      * Whether the focus trap is disabled.
@@ -28,6 +34,7 @@
       'fallbackFocus',
       'returnFocusOnDeactivate',
       'setReturnFocus',
+      'persistentElements',
     ]),
   )
 

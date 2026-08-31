@@ -1,17 +1,24 @@
-import type { Assign } from '../../types.ts'
+import { mergeProps } from '@zag-js/solid'
+import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
-import { type UseScrollAreaContext, ScrollAreaProvider } from './use-scroll-area-context.ts'
+import type { UseScrollAreaReturn } from './use-scroll-area.ts'
+import { ScrollAreaProvider } from './use-scroll-area-context.ts'
 
-export interface ScrollAreaRootProviderBaseProps extends PolymorphicProps<'div'> {
-  value: UseScrollAreaContext
+interface RootProviderProps {
+  value: UseScrollAreaReturn
 }
-export interface ScrollAreaRootProviderProps extends Assign<HTMLProps<'div'>, ScrollAreaRootProviderBaseProps> {}
+
+export interface ScrollAreaRootProviderBaseProps extends PolymorphicProps<'div'> {}
+export interface ScrollAreaRootProviderProps
+  extends HTMLProps<'div'>, RootProviderProps, ScrollAreaRootProviderBaseProps {}
 
 export const ScrollAreaRootProvider = (props: ScrollAreaRootProviderProps) => {
-  const { value, children, ...localProps } = props
+  const [{ value: scrollArea }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const mergedProps = mergeProps(() => scrollArea().getRootProps(), localProps)
+
   return (
-    <ScrollAreaProvider value={value}>
-      <ark.div {...localProps}>{children}</ark.div>
+    <ScrollAreaProvider value={scrollArea}>
+      <ark.div {...mergedProps} />
     </ScrollAreaProvider>
   )
 }

@@ -25,6 +25,7 @@ export const MenuRoot = (props: MenuRootProps) => {
     'id',
     'ids',
     'loopFocus',
+    'menubar',
     'navigate',
     'onEscapeKeyDown',
     'onFocusOutside',

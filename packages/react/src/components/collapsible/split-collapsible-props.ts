@@ -9,6 +9,7 @@ export const splitCollapsibleProps = <T extends UseCollapsibleProps>(props: T) =
     'collapsedWidth',
     'defaultOpen',
     'disabled',
+    'hideMode',
     'id',
     'ids',
     'lazyMount',

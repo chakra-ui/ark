@@ -1,12 +1,5 @@
 {
-  "Context": {
-    "props": {
-      "render": {
-        "type": "Snippet<[() => { setRootRef: (el: Element | null) => void; ariaDescribedby: string | undefined; ids: { root: string; control: string; label: string; errorText: string; helperText: string; }; ... 11 more ...; getRequiredIndicatorProps: () => HTMLAttributes<...>; }]>",
-        "isRequired": true
-      }
-    }
-  },
+  "Context": { "props": { "render": { "type": "Snippet<[UseFieldContext]>", "isRequired": true } } },
   "ErrorText": {
     "props": {
       "asChild": {
@@ -37,6 +30,7 @@
       "ref": { "type": "Element", "isRequired": false }
     }
   },
+  "Item": { "props": { "value": { "type": "string", "isRequired": true } } },
   "Label": {
     "props": {
       "asChild": {
@@ -75,7 +69,12 @@
         "description": "Indicates whether the field is read-only."
       },
       "ref": { "type": "Element", "isRequired": false },
-      "required": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is required." }
+      "required": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is required." },
+      "target": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The target field item value the label should point to."
+      }
     }
   },
   "RootProvider": {

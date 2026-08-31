@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Editable, type EditableRootEmits, type EditableRootProps } from '../../index.ts'
-import { useForwardPropsEmits } from '../../../index.ts'
+import { Editable, type EditableRootEmits, type EditableRootProps } from '@ark-ui/vue/editable'
+import { useForwardPropsEmits } from '@ark-ui/vue'
 
 const props = defineProps<EditableRootProps>()
 const emits = defineEmits<EditableRootEmits>()

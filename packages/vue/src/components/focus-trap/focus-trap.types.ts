@@ -29,6 +29,11 @@ export interface BaseProps {
    * Custom element to return focus to when trap is deactivated
    */
   setReturnFocus?: FocusTargetValueOrFalse | ((node: FocusableElement) => FocusTargetValueOrFalse)
+  /**
+   * Additional elements to treat as part of the trap, for portalled content that isn't
+   * reachable via `aria-controls`/`aria-expanded`
+   */
+  persistentElements?: Array<() => Element | null>
 }
 
 export interface BaseEmits {

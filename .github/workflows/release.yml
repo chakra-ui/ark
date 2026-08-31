@@ -20,12 +20,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install
         uses: ./.github/composite-actions/install
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           registry-url: 'https://registry.npmjs.org'
@@ -35,11 +35,11 @@ jobs:
 
       - name: Create Release Pull Request or Publish
         id: changesets
-        uses: changesets/action@v1
+        uses: changesets/action@v2.1.1
         with:
-          version: bun run version
-          publish: bun run release
-          title: 'chore: release packages'
-          commit: 'chore: release packages'
+          version-script: bun run version
+          publish-script: bun run release
+          pr-title: 'chore: release packages'
+          commit-message: 'chore: release packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

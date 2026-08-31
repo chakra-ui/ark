@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Field } from '../index.tsx'
+import { Field } from '@ark-ui/solid/field'
 
 const ComponentUnderTest = (props: Field.RootProps) => (
   <Field.Root {...props}>

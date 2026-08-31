@@ -1,5 +1,5 @@
+import { SegmentGroup } from '@ark-ui/solid/segment-group'
 import { For } from 'solid-js'
-import { SegmentGroup } from '../index.tsx'
 
 export const ComponentUnderTest = (props: SegmentGroup.RootProps) => {
   const items = [

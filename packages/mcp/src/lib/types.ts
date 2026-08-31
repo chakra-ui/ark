@@ -51,6 +51,27 @@ export interface GetComponentPropsResponse {
   props: Record<string, any>
 }
 
+export interface DocsEntry {
+  slug: string
+  title: string
+  description: string
+  category: string
+  url: string
+}
+
+export interface GetDocsResponse extends DocsEntry {
+  content: string
+}
+
+export interface SearchDocsResponse {
+  query: string
+  results: DocsEntry[]
+}
+
+export interface ListDocsResponse {
+  docs: DocsEntry[]
+}
+
 export interface Example {
   id: string
   filename: string

@@ -31,7 +31,6 @@ const presence = usePresence(
     lazyMount: props.lazyMount,
     unmountOnExit: props.unmountOnExit,
   })),
-  // @ts-expect-error TODO tweak EmitFn
   emits,
 )
 

@@ -141,6 +141,7 @@
         "isRequired": false,
         "description": "The accept file types"
       },
+      "acceptedFiles": { "type": "File[]", "isRequired": false, "description": "The controlled accepted files" },
       "allowDrop": {
         "type": "boolean",
         "defaultValue": "true",

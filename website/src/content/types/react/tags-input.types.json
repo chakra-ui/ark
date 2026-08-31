@@ -7,7 +7,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "Control": {
     "props": {
@@ -17,7 +18,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "HiddenInput": {
     "props": {
@@ -27,7 +29,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLInputElement"
+    "element": "HTMLInputElement",
+    "tag": "input"
   },
   "Input": {
     "props": {
@@ -37,7 +40,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLInputElement"
+    "element": "HTMLInputElement",
+    "tag": "input"
   },
   "ItemDeleteTrigger": {
     "props": {
@@ -47,7 +51,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "ItemInput": {
     "props": {
@@ -57,7 +62,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLInputElement"
+    "element": "HTMLInputElement",
+    "tag": "input"
   },
   "ItemPreview": {
     "props": {
@@ -67,20 +73,31 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Item": {
     "props": {
-      "index": { "type": "string | number", "isRequired": true },
-      "value": { "type": "string", "isRequired": true },
+      "index": {
+        "type": "string | number",
+        "isRequired": true
+      },
+      "value": {
+        "type": "string",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": { "type": "boolean", "isRequired": false }
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false
+      }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "ItemText": {
     "props": {
@@ -90,7 +107,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLSpanElement"
+    "element": "HTMLSpanElement",
+    "tag": "span"
   },
   "Label": {
     "props": {
@@ -100,7 +118,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLLabelElement"
+    "element": "HTMLLabelElement",
+    "tag": "label"
   },
   "Root": {
     "props": {
@@ -109,6 +128,12 @@
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to add a tag when you paste values into the tag input"
+      },
+      "allowDuplicates": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow duplicate tags."
       },
       "allowOverflow": {
         "type": "boolean",
@@ -162,21 +187,37 @@
         "isRequired": false,
         "description": "The associate form of the underlying input element."
       },
-      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
       "ids": {
         "type": "Partial<{\n  root: string\n  input: string\n  hiddenInput: string\n  clearBtn: string\n  label: string\n  control: string\n  item: (opts: ItemProps) => string\n  itemDeleteTrigger: (opts: ItemProps) => string\n  itemInput: (opts: ItemProps) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the tags input. Useful for composition."
       },
-      "inputValue": { "type": "string", "isRequired": false, "description": "The controlled tag input's value" },
-      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the tags input is invalid" },
+      "inputValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The controlled tag input's value"
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the tags input is invalid"
+      },
       "max": {
         "type": "number",
         "defaultValue": "Infinity",
         "isRequired": false,
         "description": "The max number of tags"
       },
-      "maxLength": { "type": "number", "isRequired": false, "description": "The max length of the input." },
+      "maxLength": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The max length of the input."
+      },
       "name": {
         "type": "string",
         "isRequired": false,
@@ -217,13 +258,27 @@
         "isRequired": false,
         "description": "Callback fired when the max tag count is reached or the `validateTag` function returns `false`"
       },
-      "placeholder": { "type": "string", "isRequired": false, "description": "The placeholder text for the input" },
+      "placeholder": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The placeholder text for the input"
+      },
       "readOnly": {
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the tags input should be read-only"
       },
-      "required": { "type": "boolean", "isRequired": false, "description": "Whether the tags input is required" },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the tags input is required"
+      },
+      "sanitizeValue": {
+        "type": "(value: string) => string",
+        "defaultValue": "(value) => value.trim()",
+        "isRequired": false,
+        "description": "Function to sanitize the tag value before adding.\nUseful for trimming whitespace, normalizing case, or stripping special characters."
+      },
       "translations": {
         "type": "IntlTranslations",
         "isRequired": false,
@@ -234,19 +289,28 @@
         "isRequired": false,
         "description": "Returns a boolean that determines whether a tag can be added.\nUseful for preventing duplicates or invalid tag values."
       },
-      "value": { "type": "string[]", "isRequired": false, "description": "The controlled tag value" }
+      "value": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The controlled tag value"
+      }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseTagsInputReturn", "isRequired": true },
+      "value": {
+        "type": "UseTagsInputReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   }
 }

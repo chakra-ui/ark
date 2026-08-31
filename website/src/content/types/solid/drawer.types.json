@@ -32,6 +32,15 @@
       }
     }
   },
+  "Description": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "GrabberIndicator": {
     "props": {
       "asChild": {
@@ -99,6 +108,11 @@
       },
       "defaultOpen": { "type": "boolean", "isRequired": false, "description": "The initial open state of the drawer." },
       "defaultSnapPoint": { "type": "SnapPoint", "isRequired": false },
+      "defaultTriggerValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The default trigger value (uncontrolled)."
+      },
       "finalFocusEl": {
         "type": "() => MaybeElement",
         "isRequired": false,
@@ -106,7 +120,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  backdrop: string\n  positioner: string\n  content: string\n  title: string\n  header: string\n  trigger: string\n  grabber: string\n  grabberIndicator: string\n  closeTrigger: string\n}>",
+        "type": "Partial<{\n  backdrop: string\n  positioner: string\n  content: string\n  title: string\n  description: string\n  header: string\n  trigger: string | ((value?: string | undefined) => string)\n  grabber: string\n  grabberIndicator: string\n  closeTrigger: string\n  swipeArea: string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the drawer. Useful for composition."
       },
@@ -171,6 +185,11 @@
         "type": "(details: SnapPointChangeDetails) => void",
         "isRequired": false,
         "description": "Callback fired when the snap point changes."
+      },
+      "onTriggerValueChange": {
+        "type": "(details: TriggerValueChangeDetails) => void",
+        "isRequired": false,
+        "description": "Callback when the active trigger value changes."
       },
       "open": { "type": "boolean", "isRequired": false, "description": "Whether the drawer is open." },
       "present": {
@@ -244,6 +263,11 @@
         "isRequired": false,
         "description": "Whether to trap focus inside the sheet when it's opened."
       },
+      "triggerValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value of the trigger that currently controls the drawer."
+      },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",
@@ -290,6 +314,15 @@
       }
     }
   },
+  "SwipeArea": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Title": {
     "props": {
       "asChild": {
@@ -305,6 +338,11 @@
         "type": "(props: ParentProps<'button'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value that identifies this specific trigger"
       }
     }
   }

@@ -29,6 +29,7 @@ export const useDialog = (props: MaybeRef<UseDialogProps> = {}, emit?: EmitFn<Ro
       },
       onTriggerValueChange: (details) => {
         emit?.('triggerValueChange', details)
+        emit?.('update:triggerValue', details.value)
         localeProps.onTriggerValueChange?.(details)
       },
       onEscapeKeyDown: (details) => {

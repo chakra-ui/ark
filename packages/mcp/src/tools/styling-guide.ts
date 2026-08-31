@@ -11,13 +11,15 @@ export const stylingGuideTool: Tool<{ componentList: string[] }> = {
     return { componentList }
   },
   async exec(server, { ctx, name, description }) {
-    server.tool(
+    server.registerTool(
       name,
-      description,
       {
-        component: z
-          .enum(ctx.componentList as [string, ...string[]])
-          .describe('The name of the component to retrieve data attributes for.'),
+        description,
+        inputSchema: {
+          component: z
+            .enum(ctx.componentList as [string, ...string[]])
+            .describe('The name of the component to retrieve data attributes for.'),
+        },
       },
       async ({ component }) => {
         const json = await getStyleGuide(component)

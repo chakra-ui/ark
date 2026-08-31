@@ -1,5 +1,5 @@
-import { DatePicker } from '../index.ts'
-import { Portal } from '../../portal/index.ts'
+import { DatePicker } from '@ark-ui/react/date-picker'
+import { Portal } from '@ark-ui/react/portal'
 
 export const ComponentUnderTest = (props: DatePicker.RootProps) => (
   <DatePicker.Root {...props}>

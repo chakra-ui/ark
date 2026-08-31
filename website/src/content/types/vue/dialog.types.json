@@ -81,10 +81,20 @@
         "isRequired": true,
         "description": "Function called when this layer is closed due to a parent layer being closed"
       },
+      "triggerValueChange": {
+        "type": "[details: TriggerValueChangeDetails]",
+        "isRequired": true,
+        "description": "Function called when the trigger value changes"
+      },
       "update:open": {
         "type": "[open: boolean]",
         "isRequired": true,
         "description": "The callback fired when the open state changes."
+      },
+      "update:triggerValue": {
+        "type": "[triggerValue: string | null]",
+        "isRequired": true,
+        "description": "The callback fired when the trigger value changes."
       }
     },
     "props": {
@@ -110,6 +120,11 @@
         "defaultValue": "false",
         "isRequired": false,
         "description": "The initial open state of the dialog when rendered.\nUse when you don't need to control the open state of the dialog."
+      },
+      "defaultTriggerValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The initial trigger value when rendered.\nUse when you don't need to control the trigger value."
       },
       "finalFocusEl": {
         "type": "() => HTMLElement | null",
@@ -168,6 +183,11 @@
         "isRequired": false,
         "description": "Whether to trap focus inside the dialog when it's opened"
       },
+      "triggerValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value of the trigger that currently open the dialog"
+      },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",
@@ -215,6 +235,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value that identifies this specific trigger"
       }
     }
   }

@@ -1,6 +1,8 @@
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
 import ComponentUnderTest from './field.test.vue'
+import StandaloneControls from './field-standalone.test.vue'
+import { nextTick } from 'vue'
 
 describe('Field', () => {
   it('should set textbox as required', async () => {
@@ -29,7 +31,9 @@ describe('Field', () => {
 
   it('should display error text when error is present', async () => {
     render(ComponentUnderTest, { props: { invalid: true } })
+    await nextTick()
     expect(screen.getByText('Error Info')).toBeInTheDocument()
+    expect(screen.getByRole('textbox')).toHaveAccessibleErrorMessage('Error Info')
   })
 
   it('should focus on input when label is clicked', async () => {
@@ -53,5 +57,13 @@ describe('Field', () => {
     render(ComponentUnderTest)
     const textbox = screen.getByRole('textbox', { name: /label/i })
     await waitFor(() => expect(textbox).toHaveAttribute('aria-describedby'))
+  })
+
+  it('should render input, textarea, and select outside Field.Root', () => {
+    render(StandaloneControls)
+
+    expect(screen.getByPlaceholderText('Email')).toBeInTheDocument()
+    expect(screen.getByPlaceholderText('Description')).toBeInTheDocument()
+    expect(screen.getByRole('combobox')).toBeInTheDocument()
   })
 })

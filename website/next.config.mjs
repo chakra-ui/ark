@@ -13,8 +13,12 @@ const nextConfig = {
     // Resolve 'styles' alias for CSS modules (used by package examples)
     config.resolve.alias.styles = path.resolve(__dirname, '../.storybook/modules')
 
-    // Resolve '@examples' alias for loading example components
-    config.resolve.alias['@examples'] = path.resolve(__dirname, '../packages/react/src/components')
+    // Resolve '@examples' alias for loading example components. Examples live under
+    // components/ or providers/, so both are listed and tried in order.
+    config.resolve.alias['@examples'] = [
+      path.resolve(__dirname, '../packages/react/src/components'),
+      path.resolve(__dirname, '../packages/react/src/providers'),
+    ]
 
     // Add packages/react/src to the module resolution
     config.resolve.modules = [...(config.resolve.modules || []), path.resolve(__dirname, '../packages/react/src')]
@@ -61,7 +65,16 @@ const nextConfig = {
         permanent: false,
       },
       {
-        source: '/:framework/docs/:slug*',
+        // llms-full.txt duplicated every page across all four frameworks and
+        // outgrew Vercel's 20MB prerender cap. The per-framework files carry
+        // the same content, scoped.
+        source: '/llms-full.txt',
+        destination: '/llms.txt',
+        permanent: false,
+      },
+      {
+        // Exclude `api` so /api/docs* is not treated as a framework docs path.
+        source: '/:framework((?!api)[^/]+)/docs/:slug*',
         destination: '/docs/:slug*',
         permanent: false,
       },

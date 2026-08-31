@@ -40,7 +40,7 @@ const mergedProps = computed(() =>
   mergeProps({ ...attrs }, api.value.getContentProps(contentProps.value), presence.value.presenceProps),
 )
 
-const viewportNode = computed(() => api.value.getViewportNode())
+const viewportNode = computed(() => (api.value.isViewportRendered ? api.value.getViewportNode() : null))
 const isViewportRendered = computed(() => api.value.isViewportRendered)
 
 useForwardExpose()

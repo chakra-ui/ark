@@ -3,7 +3,6 @@ import { Box, Divider, HStack, Stack } from 'styled-system/jsx'
 import { ColorModeButton } from '~/components/color-mode-button'
 import { Logo } from '~/components/logo'
 import { getFramework } from '~/lib/frameworks'
-import { data } from '~/lib/search'
 import { UserButton } from '../auth/user-button'
 import { CommandMenu } from '../command-menu'
 import { Announcement } from '../marketing/annoucement'
@@ -28,7 +27,7 @@ export const Navbar = async () => {
             <Box position="absolute" left="300px" hideBelow="xl">
               <Announcement />
             </Box>
-            <NavbarLinks />
+            <NavbarLinks me="2" />
             <Divider orientation="vertical" h="6" />
             <div id="framework-select">
               <FrameworkSelect framework={framework} />
@@ -36,7 +35,7 @@ export const Navbar = async () => {
             <Divider orientation="vertical" h="6" />
             <HStack gap="2">
               <HStack gap="0">
-                <CommandMenu data={data} />
+                <CommandMenu />
                 <ColorModeButton />
                 <GitHubLink />
               </HStack>

@@ -8,7 +8,7 @@ const value = ref(['left'])
 </script>
 
 <template>
-  <ToggleGroup.Root v-model:value="value" :class="styles.Root">
+  <ToggleGroup.Root v-model="value" :class="styles.Root">
     <ToggleGroup.Item value="left" :class="styles.Item">
       <AlignLeftIcon />
     </ToggleGroup.Item>

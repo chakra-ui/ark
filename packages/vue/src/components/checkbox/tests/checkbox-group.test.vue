@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Checkbox } from '../index.ts'
+import { Checkbox } from '@ark-ui/vue/checkbox'
 </script>
 
 <template>

@@ -21,7 +21,7 @@ const description =
 export const metadata: Metadata = {
   metadataBase: new URL(getPublicUrl()),
   title: {
-    default: 'Home | Ark UI',
+    default: 'Ark UI',
     template: '%s | Ark UI',
   },
   description,

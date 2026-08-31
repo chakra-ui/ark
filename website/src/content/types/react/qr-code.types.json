@@ -1,16 +1,29 @@
 {
   "DownloadTrigger": {
     "props": {
-      "fileName": { "type": "string", "isRequired": true, "description": "The name of the file." },
-      "mimeType": { "type": "DataUrlType", "isRequired": true, "description": "The mime type of the image." },
+      "fileName": {
+        "type": "string",
+        "isRequired": true,
+        "description": "The name of the file."
+      },
+      "mimeType": {
+        "type": "DataUrlType",
+        "isRequired": true,
+        "description": "The mime type of the image."
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "quality": { "type": "number", "isRequired": false, "description": "The quality of the image." }
+      "quality": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The quality of the image."
+      }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "Frame": {
     "props": {
@@ -20,7 +33,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "SVGSVGElement"
+    "element": "SVGSVGElement",
+    "tag": "svg"
   },
   "Overlay": {
     "props": {
@@ -30,7 +44,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Pattern": {
     "props": {
@@ -40,7 +55,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "SVGPathElement"
+    "element": "SVGPathElement",
+    "tag": "path"
   },
   "Root": {
     "props": {
@@ -59,9 +75,13 @@
         "isRequired": false,
         "description": "The qr code encoding options."
       },
-      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
       "ids": {
-        "type": "Partial<{ root: string; frame: string }>",
+        "type": "Partial<{ root: string; frame: string; overlay: string }>",
         "isRequired": false,
         "description": "The element ids."
       },
@@ -70,20 +90,33 @@
         "isRequired": false,
         "description": "Callback fired when the value changes."
       },
-      "pixelSize": { "type": "number", "isRequired": false, "description": "The pixel size of the qr code." },
-      "value": { "type": "string", "isRequired": false, "description": "The controlled value to encode." }
+      "pixelSize": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The pixel size of the qr code."
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The controlled value to encode."
+      }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseQrCodeReturn", "isRequired": true },
+      "value": {
+        "type": "UseQrCodeReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   }
 }

@@ -27,6 +27,7 @@
       "modelValue": { "type": "any", "isRequired": false }
     }
   },
+  "Item": { "props": { "value": { "type": "string", "isRequired": true } } },
   "Label": {
     "props": {
       "asChild": {
@@ -61,7 +62,12 @@
         "isRequired": false,
         "description": "Indicates whether the field is read-only."
       },
-      "required": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is required." }
+      "required": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is required." },
+      "target": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The target field item value the label should point to."
+      }
     }
   },
   "RootProvider": {
