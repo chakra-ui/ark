@@ -157,7 +157,7 @@
     "@zag-js/vue": "1.43.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.10",
+    "@biomejs/biome": "2.5.11",
     "@storybook/addon-a11y": "10.5.10",
     "@storybook/vue3-vite": "10.5.10",
     "@tanstack/vue-virtual": "3.13.36",
@@ -168,13 +168,13 @@
     "@vitejs/plugin-vue": "6.0.8",
     "@vitejs/plugin-vue-jsx": "5.1.6",
     "@vitest/coverage-v8": "4.1.11",
-    "@vue/compiler-sfc": "3.5.41",
+    "@vue/compiler-sfc": "3.5.42",
     "@vue/language-core": "3.3.11",
     "ajv": "8.20.0",
     "check-password-strength": "3.0.0",
     "clean-package": "2.2.0",
     "globby": "16.2.4",
-    "happy-dom": "20.11.6",
+    "happy-dom": "20.12.0",
     "image-conversion": "2.1.1",
     "lucide-vue-next": "1.0.0",
     "storybook": "10.5.10",
@@ -185,7 +185,7 @@
     "vite": "8.2.2",
     "vite-plugin-dts": "5.0.3",
     "vitest": "4.1.11",
-    "vue": "3.5.41",
+    "vue": "3.5.42",
     "vue-tsc": "3.3.11"
   },
   "peerDependencies": {

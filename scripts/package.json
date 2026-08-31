@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@types/fs-extra": "11.0.4",
-    "@types/node": "26.2.0",
+    "@types/node": "26.4.0",
     "@types/voca": "1.4.6",
     "find-packages": "10.0.4",
     "find-up": "8.0.0",

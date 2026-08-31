@@ -157,7 +157,7 @@
     "@zag-js/utils": "1.43.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.10",
+    "@biomejs/biome": "2.5.11",
     "@modular-forms/solid": "0.25.1",
     "@solidjs/testing-library": "0.8.10",
     "@storybook/addon-a11y": "10.5.10",
@@ -175,7 +175,7 @@
     "globby": "16.2.4",
     "image-conversion": "2.1.1",
     "jsdom": "30.0.1",
-    "lucide-solid": "1.33.0",
+    "lucide-solid": "1.37.0",
     "resize-observer-polyfill": "1.5.1",
     "solid-js": "1.9.15",
     "storybook": "10.5.10",
