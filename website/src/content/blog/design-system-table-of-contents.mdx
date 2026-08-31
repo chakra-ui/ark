@@ -1,0 +1,373 @@
+---
+title: 'Design System #4: Table of Contents component'
+description: How to build a scroll-aware table of contents with Ark UI and Panda CSS
+date: '2026-08-31'
+author: 'Kevin'
+tags: ['table-of-contents', 'ark-ui', 'design-system', 'navigation']
+---
+
+A table of contents helps readers understand the structure of a long page, jump to a section, and keep track of their
+position while scrolling. You will find one in documentation sites, product guides, policies, and long-form articles.
+
+The tricky part is not rendering a list of links. It is keeping those links synchronized with the content. Ark UI's
+[Table of Contents](/docs/components/toc) handles the scroll tracking and active state while leaving every visual
+decision to your design system.
+
+In this post, you'll learn how to:
+
+- Compose the Table of Contents parts around an article.
+- Connect links to headings and a custom scroll container.
+- Style active links and a moving indicator with Vanilla CSS.
+- Support nested headings and compact layouts.
+- Create a reusable Panda CSS slot recipe.
+
+By the end, you'll have a flexible "On this page" pattern that can grow with your documentation.
+
+## Anatomy
+
+Before styling the component, let's look at the parts Ark UI exposes:
+
+- `root` coordinates the items, active state, and scroll tracking.
+- `title` labels the navigation.
+- `list` contains the section links.
+- `item` connects one item from your data to its link.
+- `link` navigates to the matching heading and exposes active state.
+- `indicator` marks the currently active item.
+
+`Toc.Nav` and `Toc.Content` provide the semantic navigation and article containers around those parts.
+
+### Basic usage
+
+Every item needs a `value` and `depth`. The `value` must match the target heading's `id`, while `depth` represents the
+heading level:
+
+```tsx
+import { Toc } from '@ark-ui/react/toc'
+import { useRef } from 'react'
+
+const items = [
+  { value: 'introduction', depth: 2, label: 'Introduction' },
+  { value: 'installation', depth: 2, label: 'Installation' },
+  { value: 'configuration', depth: 3, label: 'Configuration' },
+  { value: 'usage', depth: 2, label: 'Usage' },
+]
+
+export const Basic = () => {
+  const contentRef = useRef<HTMLElement | null>(null)
+
+  return (
+    <Toc.Root items={items} scrollEl={() => contentRef.current}>
+      <Toc.Content ref={contentRef}>
+        <h2 id="introduction">Introduction</h2>
+        <p>...</p>
+        <h2 id="installation">Installation</h2>
+        <p>...</p>
+        <h3 id="configuration">Configuration</h3>
+        <p>...</p>
+        <h2 id="usage">Usage</h2>
+        <p>...</p>
+      </Toc.Content>
+
+      <Toc.Nav>
+        <Toc.Title>On this page</Toc.Title>
+        <Toc.List>
+          <Toc.Indicator />
+          {items.map((item) => (
+            <Toc.Item key={item.value} item={item}>
+              <Toc.Link href={`#${item.value}`}>{item.label}</Toc.Link>
+            </Toc.Item>
+          ))}
+        </Toc.List>
+      </Toc.Nav>
+    </Toc.Root>
+  )
+}
+```
+
+There are two important details in this example:
+
+- `scrollEl` points to the element whose scroll position should be observed. Leave it out when the page itself scrolls.
+- Each link's `href`, item `value`, and heading `id` refer to the same identifier.
+
+If one of those IDs is missing or mismatched, the link can still render, but the section will not become active.
+
+## Styling with Vanilla CSS
+
+Ark UI adds `data-scope="toc"` and `data-part` attributes to the component parts. The active link also receives
+`data-active`, giving you stable selectors without adding presentation logic to the component.
+
+### Set up the layout
+
+Start with a two-column layout that keeps the navigation visible beside the article:
+
+```css
+[data-scope='toc'][data-part='root'] {
+  --toc-accent: #6366f1;
+  --toc-border: #e4e4e7;
+  --toc-fg: #18181b;
+  --toc-fg-muted: #71717a;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 16rem;
+  gap: 3rem;
+  align-items: start;
+}
+
+[data-scope='toc'][data-part='title'] {
+  margin-bottom: 0.75rem;
+  color: var(--toc-fg);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+[data-scope='toc'][data-part='list'] {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding-inline-start: 1rem;
+  border-inline-start: 1px solid var(--toc-border);
+}
+```
+
+Make the `Toc.Nav` element sticky in your component stylesheet or with a class:
+
+```css
+.toc-nav {
+  position: sticky;
+  top: 1.5rem;
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+}
+```
+
+`position: sticky` needs an appropriate scrolling ancestor. If an ancestor has unexpected `overflow`, the navigation may
+stop sticking, so check the surrounding page layout as well as the component itself.
+
+### Style the links
+
+Give every link a quiet default style, then use `data-active` to bring the current section forward:
+
+```css
+[data-scope='toc'][data-part='link'] {
+  display: block;
+  padding-block: 0.375rem;
+  color: var(--toc-fg-muted);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+[data-scope='toc'][data-part='link']:hover {
+  color: var(--toc-fg);
+}
+
+[data-scope='toc'][data-part='link']:focus-visible {
+  border-radius: 0.25rem;
+  outline: 2px solid var(--toc-accent);
+  outline-offset: 2px;
+}
+
+[data-scope='toc'][data-part='link'][data-active] {
+  color: var(--toc-accent);
+  font-weight: 600;
+}
+```
+
+The active color helps with orientation, but it should not be the only signal. The font-weight change and indicator give
+readers another way to identify the current section.
+
+### Style the indicator
+
+Place `Toc.Indicator` inside `Toc.List`. Ark UI calculates its position from the active item, and you decide how it
+looks:
+
+```css
+[data-scope='toc'][data-part='indicator'] {
+  position: absolute;
+  inset-inline-start: -1px;
+  width: 2px;
+  border-radius: 999px;
+  background: var(--toc-accent);
+  transition-property: translate, height;
+  transition-duration: 180ms;
+  transition-timing-function: ease;
+}
+```
+
+This creates a small rail marker that moves as the active section changes. Keep the transition short so the indicator
+feels connected to the reader's scroll position.
+
+## Support nested headings
+
+Ark UI gives each item a `depth`, but it does not impose a visual hierarchy. Add indentation when rendering the item:
+
+```tsx
+<Toc.Item item={item} style={{ '--toc-depth': Math.max(0, item.depth - 2) } as React.CSSProperties}>
+  <Toc.Link href={`#${item.value}`}>{item.label}</Toc.Link>
+</Toc.Item>
+```
+
+Then consume the custom property in CSS:
+
+```css
+[data-scope='toc'][data-part='item'] {
+  padding-inline-start: calc(var(--toc-depth, 0) * 0.875rem);
+}
+```
+
+For deeply nested documents, combine the Table of Contents with Ark UI's Tree View. The TOC can continue tracking the
+visible headings while the tree manages disclosure and hierarchical keyboard navigation.
+
+## Add a compact variant
+
+A persistent sidebar works well on wide screens, but smaller layouts need another option. A compact variant can keep
+only the active section visible until the reader opens the full navigation:
+
+```css
+.toc--compact [data-scope='toc'][data-part='list'] {
+  max-height: 12rem;
+  overflow-y: auto;
+}
+
+@media (max-width: 48rem) {
+  [data-scope='toc'][data-part='root'] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .toc-nav {
+    position: static;
+    order: -1;
+    max-height: none;
+  }
+}
+```
+
+You can also wrap `Toc.Nav` in Ark UI's Collapsible component. Do not rely on hover alone to reveal it—touch and
+keyboard users need a button that can open and close the navigation.
+
+## Styling with Panda CSS
+
+Panda CSS slot recipes are useful when the same Table of Contents appears in documentation, guides, and embedded panels.
+Start with `tocAnatomy` so the recipe stays aligned with Ark UI's parts:
+
+```ts
+// src/recipes/toc.ts
+import { tocAnatomy } from '@ark-ui/react/toc'
+import { sva } from '../../styled-system/css'
+
+export const tocRecipe = sva({
+  slots: tocAnatomy.keys(),
+  className: 'toc',
+  base: {
+    root: {
+      display: 'grid',
+      gridTemplateColumns: 'minmax(0, 1fr) 16rem',
+      gap: '12',
+      alignItems: 'start',
+    },
+    title: {
+      marginBottom: '3',
+      color: 'fg.default',
+      fontSize: 'sm',
+      fontWeight: 'semibold',
+    },
+    list: {
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '0.5',
+      paddingInlineStart: '4',
+      borderInlineStartWidth: '1px',
+      borderColor: 'border.default',
+    },
+    item: {
+      paddingInlineStart: 'calc(var(--toc-depth, 0) * 0.875rem)',
+    },
+    link: {
+      display: 'block',
+      paddingBlock: '1.5',
+      color: 'fg.muted',
+      fontSize: 'sm',
+      lineHeight: '1.4',
+      textDecoration: 'none',
+      transition: 'colors',
+      _hover: { color: 'fg.default' },
+      _focusVisible: {
+        borderRadius: 'sm',
+        outline: '2px solid token(colors.colorPalette.focusRing)',
+        outlineOffset: '2px',
+      },
+      _active: {
+        color: 'colorPalette.fg',
+        fontWeight: 'semibold',
+      },
+    },
+    indicator: {
+      position: 'absolute',
+      insetInlineStart: '-1px',
+      width: '2px',
+      borderRadius: 'full',
+      background: 'colorPalette.solid',
+      transitionProperty: 'translate, height',
+      transitionDuration: 'fast',
+    },
+  },
+  variants: {
+    size: {
+      sm: { link: { fontSize: 'xs', paddingBlock: '1' } },
+      md: { link: { fontSize: 'sm', paddingBlock: '1.5' } },
+      lg: { link: { fontSize: 'md', paddingBlock: '2' } },
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+  },
+})
+```
+
+Generate the classes once and pass each slot to the matching Ark UI part:
+
+```tsx
+const classes = tocRecipe({ size: 'md' })
+
+<Toc.Root className={classes.root} items={items}>
+  <Toc.Content>{/* article */}</Toc.Content>
+  <Toc.Nav className="toc-nav">
+    <Toc.Title className={classes.title}>On this page</Toc.Title>
+    <Toc.List className={classes.list}>
+      <Toc.Indicator className={classes.indicator} />
+      {items.map((item) => (
+        <Toc.Item className={classes.item} key={item.value} item={item}>
+          <Toc.Link className={classes.link} href={`#${item.value}`}>
+            {item.label}
+          </Toc.Link>
+        </Toc.Item>
+      ))}
+    </Toc.List>
+  </Toc.Nav>
+</Toc.Root>
+```
+
+## Tune the scroll behavior
+
+Sticky headers and short sections can change when a heading should count as active. Use `rootMargin` and `threshold` to
+tune the observation area, and `scrollBehavior` to control how link navigation moves through the document.
+
+As you adapt the component, keep these details in mind:
+
+- Give every heading a stable, unique ID.
+- Keep the visible label aligned with the heading it targets.
+- Preserve keyboard focus styles on every link.
+- Account for sticky headers when scrolling to anchors.
+- Test both the page viewport and any custom scroll container.
+
+## Putting it all together
+
+The Table of Contents component separates behavior from presentation: Ark UI observes the document and exposes active
+state, while your design system controls layout, hierarchy, color, motion, and responsive behavior.
+
+Start with the basic sidebar, then add an indicator, nested spacing, responsive disclosure, or Tree View only when your
+content needs it. Explore the live examples and complete API in the
+[Table of Contents documentation](/docs/components/toc).
