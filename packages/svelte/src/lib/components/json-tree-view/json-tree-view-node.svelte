@@ -64,39 +64,43 @@
 
 <TreeView.NodeProvider {node} {indexPath}>
   {#if nodeState.isBranch}
-    <TreeView.Branch {...scopeProps}>
-      <TreeView.BranchControl {...nodeProps} {...scopeProps}>
-        {#if arrow}
-          <TreeView.BranchIndicator {...scopeProps}>
-            {@render arrow()}
-          </TreeView.BranchIndicator>
-        {/if}
-        <TreeView.BranchText {...scopeProps}>
-          {#if key}
-            <JsonTreeViewKeyNode {node} showQuotes={options().quotesOnKeys} />
+    <TreeView.NodeGroup {...scopeProps}>
+      <TreeView.Node {...nodeProps}>
+        <TreeView.Cell {...scopeProps}>
+          {#if arrow}
+            <TreeView.NodeIndicator type="expanded" {...scopeProps}>
+              {@render arrow()}
+            </TreeView.NodeIndicator>
           {/if}
-          <JsonTreeViewValueNode node={valueNode} {renderValue} />
-        </TreeView.BranchText>
-      </TreeView.BranchControl>
-      <TreeView.BranchContent {...scopeProps}>
+          <TreeView.NodeText {...scopeProps}>
+            {#if key}
+              <JsonTreeViewKeyNode {node} showQuotes={options().quotesOnKeys} />
+            {/if}
+            <JsonTreeViewValueNode node={valueNode} {renderValue} />
+          </TreeView.NodeText>
+        </TreeView.Cell>
+      </TreeView.Node>
+      <TreeView.NodeGroupContent {...scopeProps}>
         {#if typeof indentGuide === 'boolean'}
-          <TreeView.BranchIndentGuide />
+          <TreeView.IndentGuide />
         {:else if indentGuide}
           {@render indentGuide()}
         {/if}
         {#each node.children ?? [] as child, index (index)}
           <JsonTreeViewNode {...props} node={child} indexPath={[...indexPath, index]} />
         {/each}
-      </TreeView.BranchContent>
-    </TreeView.Branch>
+      </TreeView.NodeGroupContent>
+    </TreeView.NodeGroup>
   {:else}
-    <TreeView.Item {...nodeProps} {...scopeProps}>
-      <TreeView.ItemText {...scopeProps}>
-        {#if key}
-          <JsonTreeViewKeyNode {node} showQuotes={options().quotesOnKeys} />
-        {/if}
-        <JsonTreeViewValueNode node={valueNode} {renderValue} />
-      </TreeView.ItemText>
-    </TreeView.Item>
+    <TreeView.Node {...nodeProps}>
+      <TreeView.Cell {...scopeProps}>
+        <TreeView.NodeText {...scopeProps}>
+          {#if key}
+            <JsonTreeViewKeyNode {node} showQuotes={options().quotesOnKeys} />
+          {/if}
+          <JsonTreeViewValueNode node={valueNode} {renderValue} />
+        </TreeView.NodeText>
+      </TreeView.Cell>
+    </TreeView.Node>
   {/if}
 </TreeView.NodeProvider>
