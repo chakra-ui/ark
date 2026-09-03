@@ -15,7 +15,7 @@
 
 <div>
   <button class={button.Root} onclick={addSlide}>Add Slide</button>
-  <Carousel.Root class={styles.Root} slideCount={slides.length}>
+  <Carousel.Root class={styles.Root} count={slides.length}>
     <Carousel.ItemGroup class={styles.ItemGroup}>
       {#each slides as slide, index}
         <Carousel.Item class={styles.Item} {index}>

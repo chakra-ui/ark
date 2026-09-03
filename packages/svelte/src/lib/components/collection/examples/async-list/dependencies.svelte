@@ -72,7 +72,7 @@
     get dependencies() {
       return [selectedDepartment, selectedRole]
     },
-    async load({ filterText }: { filterText?: string } = {}) {
+    async load({ filter }: { filter?: string } = {}) {
       await delay(400)
 
       let items = mockUsers
@@ -85,11 +85,11 @@
         items = items.filter((user) => user.role === selectedRole)
       }
 
-      if (filterText) {
+      if (filter) {
         items = items.filter(
           (user) =>
-            user.name.toLowerCase().includes(filterText.toLowerCase()) ||
-            user.email.toLowerCase().includes(filterText.toLowerCase()),
+            user.name.toLowerCase().includes(filter.toLowerCase()) ||
+            user.email.toLowerCase().includes(filter.toLowerCase()),
         )
       }
 
@@ -118,11 +118,11 @@
       class={field.Input}
       type="text"
       placeholder="Search..."
-      value={list().filterText}
-      oninput={(e) => list().setFilterText(e.currentTarget.value)}
+      value={list().filter}
+      oninput={(e) => list().setFilter(e.currentTarget.value)}
     />
 
-    {#if list().loading}
+    {#if list().isLoading}
       <span class={styles.Loading}>
         <LoaderIcon class={styles.Spinner} /> Loading
       </span>
@@ -130,7 +130,7 @@
   </div>
 
   {#if list().error}
-    <div class={styles.Error}>Error: {list().error.message}</div>
+    <div class={styles.Error}>Error: {list().error?.message}</div>
   {/if}
 
   <div class={styles.Status}>Found {list().items.length} users</div>
@@ -149,7 +149,7 @@
     {/each}
   </div>
 
-  {#if list().items.length === 0 && !list().loading}
+  {#if list().items.length === 0 && !list().isLoading}
     <div class={styles.Empty}>No users found with current filters</div>
   {/if}
 </div>

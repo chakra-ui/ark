@@ -13,7 +13,7 @@
   ]
 </script>
 
-<Carousel.Root class={styles.Root} slideCount={images.length}>
+<Carousel.Root class={styles.Root} count={images.length}>
   <Carousel.Control class={styles.Control}>
     <Carousel.PrevTrigger class={styles.Trigger}>
       <ArrowLeftIcon />

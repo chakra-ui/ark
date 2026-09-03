@@ -3,7 +3,7 @@
   import styles from 'styles/pin-input.module.css'
 </script>
 
-<PinInput.Root class={styles.Root} placeholder="*">
+<PinInput.Root class={styles.Root} count={3} placeholder="*">
   <PinInput.Label class={styles.Label}>Label</PinInput.Label>
   <PinInput.Control class={styles.Control}>
     {#each [0, 1, 2] as id, index (id)}

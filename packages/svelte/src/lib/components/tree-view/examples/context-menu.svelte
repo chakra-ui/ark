@@ -68,46 +68,52 @@
     <TreeView.NodeContext>
       {#snippet render(nodeState)}
         {#if node.children}
-          <TreeView.Branch class={styles.Branch}>
-            <Menu.Root ids={{ contextTrigger: triggerId }}>
-              <TreeView.BranchControl class={styles.BranchControl}>
-                {#snippet asChild(controlProps)}
-                  <Menu.ContextTrigger {...controlProps()}>
-                    <TreeView.BranchIndicator class={styles.BranchIndicator}>
-                      <ChevronRightIcon />
-                    </TreeView.BranchIndicator>
-                    <TreeView.BranchText class={styles.BranchText}>
-                      {#if nodeState().expanded}
-                        <FolderOpenIcon />
-                      {:else}
-                        <FolderIcon />
-                      {/if}
-                      {node.name}
-                    </TreeView.BranchText>
-                  </Menu.ContextTrigger>
-                {/snippet}
-              </TreeView.BranchControl>
-              {@render contextMenuContent()}
-            </Menu.Root>
-            <TreeView.BranchContent class={styles.BranchContent}>
-              <TreeView.BranchIndentGuide class={styles.BranchIndentGuide} />
+          <TreeView.NodeGroup class={styles.NodeGroup}>
+            <TreeView.Node class={styles.Node}>
+              <Menu.Root ids={{ contextTrigger: triggerId }}>
+                <TreeView.Cell class={styles.Cell}>
+                  {#snippet asChild(cellProps)}
+                    <Menu.ContextTrigger {...cellProps()}>
+                      <TreeView.NodeExpandTrigger class={styles.NodeExpandTrigger}>
+                        <TreeView.NodeIndicator type="expanded" class={styles.NodeIndicator}>
+                          <ChevronRightIcon />
+                        </TreeView.NodeIndicator>
+                      </TreeView.NodeExpandTrigger>
+                      <TreeView.NodeText class={styles.NodeText}>
+                        {#if nodeState().expanded}
+                          <FolderOpenIcon />
+                        {:else}
+                          <FolderIcon />
+                        {/if}
+                        {node.name}
+                      </TreeView.NodeText>
+                    </Menu.ContextTrigger>
+                  {/snippet}
+                </TreeView.Cell>
+                {@render contextMenuContent()}
+              </Menu.Root>
+            </TreeView.Node>
+            <TreeView.NodeGroupContent class={styles.NodeGroupContent}>
+              <TreeView.IndentGuide class={styles.IndentGuide} />
               {#each node.children as child, index (child.id)}
                 {@render renderNode(child, [...indexPath, index], triggerId)}
               {/each}
-            </TreeView.BranchContent>
-          </TreeView.Branch>
+            </TreeView.NodeGroupContent>
+          </TreeView.NodeGroup>
         {:else}
-          <Menu.Root ids={{ contextTrigger: triggerId }}>
-            <TreeView.Item class={styles.Item}>
-              {#snippet asChild(itemProps)}
-                <Menu.ContextTrigger {...itemProps()}>
-                  <FileIcon />
-                  <TreeView.ItemText class={styles.ItemText}>{node.name}</TreeView.ItemText>
-                </Menu.ContextTrigger>
-              {/snippet}
-            </TreeView.Item>
-            {@render contextMenuContent()}
-          </Menu.Root>
+          <TreeView.Node class={styles.Node}>
+            <Menu.Root ids={{ contextTrigger: triggerId }}>
+              <TreeView.Cell class={styles.Cell}>
+                {#snippet asChild(cellProps)}
+                  <Menu.ContextTrigger {...cellProps()}>
+                    <FileIcon />
+                    <TreeView.NodeText class={styles.NodeText}>{node.name}</TreeView.NodeText>
+                  </Menu.ContextTrigger>
+                {/snippet}
+              </TreeView.Cell>
+              {@render contextMenuContent()}
+            </Menu.Root>
+          </TreeView.Node>
         {/if}
       {/snippet}
     </TreeView.NodeContext>

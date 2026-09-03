@@ -15,7 +15,7 @@
   ]
 </script>
 
-<Carousel.Root class={styles.Root} slideCount={images.length} autoplay loop>
+<Carousel.Root class={styles.Root} count={images.length} autoPlay loop>
   <Carousel.ItemGroup class={styles.ItemGroup}>
     {#each images as image, index}
       <Carousel.Item class={styles.Item} {index}>

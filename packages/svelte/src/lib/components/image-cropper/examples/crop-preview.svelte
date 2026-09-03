@@ -32,8 +32,8 @@
         crossorigin="anonymous"
       />
       <ImageCropper.Selection class={styles.Selection}>
-        {#each ImageCropper.handles as position}
-          <ImageCropper.Handle class={styles.Handle} {position}>
+        {#each ImageCropper.placements as placement}
+          <ImageCropper.Handle class={styles.Handle} {placement}>
             <div></div>
           </ImageCropper.Handle>
         {/each}

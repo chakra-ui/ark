@@ -77,12 +77,48 @@
 {#snippet renderNode(node: TreeNode, indexPath: number[], tree: any)}
   <TreeView.NodeProvider {node} {indexPath}>
     {#if node.children}
-      <TreeView.Branch class={styles.Branch}>
-        <TreeView.BranchControl class={styles.BranchControl}>
-          <TreeView.BranchIndicator class={styles.BranchIndicator}>
-            <ChevronRightIcon />
-          </TreeView.BranchIndicator>
-          <TreeView.BranchText class={styles.BranchText}>{node.name}</TreeView.BranchText>
+      <TreeView.NodeGroup class={styles.NodeGroup}>
+        <TreeView.Node class={styles.Node}>
+          <TreeView.Cell class={styles.Cell}>
+            <TreeView.NodeExpandTrigger class={styles.NodeExpandTrigger}>
+              <TreeView.NodeIndicator type="expanded" class={styles.NodeIndicator}>
+                <ChevronRightIcon />
+              </TreeView.NodeIndicator>
+            </TreeView.NodeExpandTrigger>
+            <TreeView.NodeText class={styles.NodeText}>{node.name}</TreeView.NodeText>
+            <div class={styles.ActionGroup}>
+              <button
+                class={styles.Action}
+                onclick={(e) => {
+                  e.stopPropagation()
+                  handleRemove(node, indexPath)
+                }}
+              >
+                <TrashIcon />
+              </button>
+              <button
+                class={styles.Action}
+                onclick={(e) => {
+                  e.stopPropagation()
+                  handleAdd(node, indexPath, tree)
+                }}
+              >
+                <PlusIcon />
+              </button>
+            </div>
+          </TreeView.Cell>
+        </TreeView.Node>
+        <TreeView.NodeGroupContent class={styles.NodeGroupContent}>
+          <TreeView.IndentGuide class={styles.IndentGuide} />
+          {#each node.children as child, index (child.id)}
+            {@render renderNode(child, [...indexPath, index], tree)}
+          {/each}
+        </TreeView.NodeGroupContent>
+      </TreeView.NodeGroup>
+    {:else}
+      <TreeView.Node class={styles.Node}>
+        <TreeView.Cell class={styles.Cell}>
+          <TreeView.NodeText class={styles.NodeText}>{node.name}</TreeView.NodeText>
           <div class={styles.ActionGroup}>
             <button
               class={styles.Action}
@@ -93,39 +129,9 @@
             >
               <TrashIcon />
             </button>
-            <button
-              class={styles.Action}
-              onclick={(e) => {
-                e.stopPropagation()
-                handleAdd(node, indexPath, tree)
-              }}
-            >
-              <PlusIcon />
-            </button>
           </div>
-        </TreeView.BranchControl>
-        <TreeView.BranchContent class={styles.BranchContent}>
-          <TreeView.BranchIndentGuide class={styles.BranchIndentGuide} />
-          {#each node.children as child, index (child.id)}
-            {@render renderNode(child, [...indexPath, index], tree)}
-          {/each}
-        </TreeView.BranchContent>
-      </TreeView.Branch>
-    {:else}
-      <TreeView.Item class={styles.Item}>
-        <TreeView.ItemText class={styles.ItemText}>{node.name}</TreeView.ItemText>
-        <div class={styles.ActionGroup}>
-          <button
-            class={styles.Action}
-            onclick={(e) => {
-              e.stopPropagation()
-              handleRemove(node, indexPath)
-            }}
-          >
-            <TrashIcon />
-          </button>
-        </div>
-      </TreeView.Item>
+        </TreeView.Cell>
+      </TreeView.Node>
     {/if}
   </TreeView.NodeProvider>
 {/snippet}

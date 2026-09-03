@@ -22,10 +22,10 @@
       const data = await response.json()
       return { items: data }
     },
-    sort({ items, descriptor }) {
+    sort({ items, sorting }) {
       return {
         items: items.sort((a, b) => {
-          const { column, direction } = descriptor
+          const { column, direction } = sorting
           let cmp = collator().compare(String(a[column]), String(b[column]))
           if (direction === 'descending') {
             cmp *= -1
@@ -37,14 +37,14 @@
   })
 
   const handleSort = (column: keyof User) => {
-    const currentSort = list().sortDescriptor
+    const currentSort = list().sorting
     let direction: 'ascending' | 'descending' = 'ascending'
 
     if (currentSort?.column === column && currentSort.direction === 'ascending') {
       direction = 'descending'
     }
 
-    list().sort({ column, direction })
+    list().setSorting({ column, direction })
   }
 
   const columns = [
@@ -53,17 +53,17 @@
     { key: 'email', label: 'Email' },
   ]
 
-  const descriptor = $derived(list().sortDescriptor)
+  const descriptor = $derived(list().sorting)
 </script>
 
 <div class={styles.Root}>
-  {#if list().loading}
+  {#if list().isLoading}
     <div class={styles.Loading}>
       <LoaderIcon class={styles.Spinner} /> Loading
     </div>
   {/if}
   {#if list().error}
-    <div class={styles.Error}>Error: {list().error.message}</div>
+    <div class={styles.Error}>Error: {list().error?.message}</div>
   {/if}
   <div class={styles.Status}>Sorted by: {descriptor ? `${descriptor.column} (${descriptor.direction})` : 'none'}</div>
 
@@ -73,8 +73,8 @@
         {#each columns as { key, label }}
           <th onclick={() => handleSort(key as keyof User)}>
             {label}
-            {#if list().sortDescriptor?.column === key}
-              {#if list().sortDescriptor?.direction === 'ascending'}
+            {#if list().sorting?.column === key}
+              {#if list().sorting?.direction === 'ascending'}
                 <ArrowUpIcon />
               {:else}
                 <ArrowDownIcon />

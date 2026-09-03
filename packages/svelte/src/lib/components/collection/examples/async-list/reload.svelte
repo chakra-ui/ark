@@ -27,8 +27,8 @@
 
 <div class={styles.Root}>
   <div class={styles.Header}>
-    <button class={button.Root} onclick={() => list().reload()} disabled={list().loading}>
-      {#if list().loading}
+    <button class={button.Root} onclick={() => list().reload()} disabled={list().isLoading}>
+      {#if list().isLoading}
         <LoaderIcon class={styles.Spinner} /> Loading
       {:else}
         Reload Quotes
@@ -37,7 +37,7 @@
   </div>
 
   {#if list().error}
-    <div class={styles.Error}>Error: {list().error.message}</div>
+    <div class={styles.Error}>Error: {list().error?.message}</div>
   {/if}
 
   <div class={styles.ItemGroup}>

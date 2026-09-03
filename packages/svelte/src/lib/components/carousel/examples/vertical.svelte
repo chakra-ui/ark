@@ -13,7 +13,7 @@
   ]
 </script>
 
-<Carousel.Root class={styles.Root} orientation="vertical" slideCount={images.length}>
+<Carousel.Root class={styles.Root} orientation="vertical" count={images.length}>
   <Carousel.Control class={styles.Control}>
     <Carousel.PrevTrigger class={styles.Trigger}>
       <ArrowUpIcon />
