@@ -30,6 +30,7 @@
       'disabled',
       'id',
       'ids',
+      'loopFocus',
       'multiple',
       'onFocusChange',
       'onValueChange',

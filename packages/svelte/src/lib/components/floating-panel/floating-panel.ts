@@ -1,4 +1,4 @@
-export { resizeTriggerAxes } from '@zag-js/floating-panel'
+export { resizeTriggerPlacements } from '@zag-js/floating-panel'
 export type {
   AnchorPositionDetails,
   ElementIds,
@@ -6,7 +6,7 @@ export type {
   OpenChangeDetails,
   Point,
   PositionChangeDetails,
-  ResizeTriggerAxis,
+  HandlePosition,
   Size,
   SizeChangeDetails,
   Stage,
