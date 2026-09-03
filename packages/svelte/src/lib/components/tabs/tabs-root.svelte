@@ -37,9 +37,9 @@
       'loopFocus',
       'translations',
       'defaultValue',
-      'composite',
       'deselectable',
       'navigate',
+      'virtualFocus',
     ])
   })
 

@@ -15,7 +15,7 @@
   let { ref = $bindable(null), ...props }: ImageCropperHandleProps = $props()
   const imageCropper = useImageCropperContext()
 
-  const [handleProps, localProps] = $derived(createSplitProps<HandleProps>()(props, ['position']))
+  const [handleProps, localProps] = $derived(createSplitProps<HandleProps>()(props, ['placement']))
 
   const mergedProps = $derived(mergeProps(imageCropper().getHandleProps(handleProps), localProps))
 </script>

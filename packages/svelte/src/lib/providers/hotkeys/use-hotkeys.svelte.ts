@@ -1,8 +1,8 @@
-import { type CommandDefinition, type HotkeyStore, type Platform, normalizeHotkey } from '@zag-js/hotkeys'
+import { type CommandDefinition, type HotkeyStore, type ParsedHotkey, parseHotkey } from '@zag-js/hotkeys'
 import { onDestroy } from 'svelte'
 import { type MaybeFunction, isEqual, runIfFn, warn } from '@zag-js/utils'
 import { type UseHotkeyStoreProps, useHotkeyStore } from './use-hotkey-store.svelte.ts'
-import { usePlatform } from './use-platform.svelte.ts'
+import { type Platform, usePlatform } from './use-platform.svelte.ts'
 
 export interface UseHotkeysCommand extends Omit<CommandDefinition, 'id'> {
   /**
@@ -31,7 +31,7 @@ export interface UseHotkeysProps extends UseHotkeyStoreProps {
 const createInstanceId = () => `hotkeys:${Math.random().toString(36).slice(2, 10)}`
 
 interface Registration {
-  hotkey: string
+  hotkey: ParsedHotkey
   scopes: CommandDefinition['scopes']
   label: string | undefined
   description: string | undefined
@@ -50,7 +50,7 @@ const warnOnForeignId = (store: HotkeyStore, id: string) => {
 }
 
 const toRegistration = (command: UseHotkeysCommand, platform: Platform): Registration => ({
-  hotkey: normalizeHotkey(command.hotkey, platform),
+  hotkey: parseHotkey(command.hotkey, platform),
   scopes: command.scopes,
   label: command.label,
   description: command.description,

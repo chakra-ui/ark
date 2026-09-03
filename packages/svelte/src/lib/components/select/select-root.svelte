@@ -33,10 +33,10 @@
   const [presenceProps, selectProps] = $derived(splitPresenceProps(props))
   const [useSelectProps, localProps] = $derived(
     createSplitProps<UseSelectProps<T>>()(selectProps, [
+      'alignItemWithTrigger',
       'autoComplete',
       'closeOnSelect',
       'collection',
-      'composite',
       'defaultHighlightedValue',
       'defaultOpen',
       'defaultValue',
@@ -46,6 +46,7 @@
       'highlightedValue',
       'id',
       'ids',
+      'initialFocusEl',
       'invalid',
       'loopFocus',
       'multiple',
@@ -58,6 +59,7 @@
       'onSelect',
       'onValueChange',
       'open',
+      'popupType',
       'positioning',
       'readOnly',
       'required',
