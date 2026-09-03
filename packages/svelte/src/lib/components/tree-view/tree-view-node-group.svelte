@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TreeViewBranchBaseProps extends PolymorphicProps<'li'>, RefAttribute {}
-  export interface TreeViewBranchProps extends Assign<HTMLProps<'li'>, TreeViewBranchBaseProps> {}
+  export interface TreeViewNodeGroupBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface TreeViewNodeGroupProps extends Assign<HTMLProps<'div'>, TreeViewNodeGroupBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -13,21 +13,21 @@
   import { useTreeViewNodeContext } from './use-tree-view-node-context.ts'
   import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
 
-  let { ref = $bindable(null), ...props }: TreeViewBranchProps = $props()
+  let { ref = $bindable(null), ...props }: TreeViewNodeGroupProps = $props()
 
   const treeView = useTreeViewContext()
   const nodeProps = useTreeViewNodePropsContext()
   const nodeState = useTreeViewNodeContext()
 
   const renderStrategyProps = useRenderStrategyPropsContext()
-  const mergedProps = $derived(mergeProps(treeView().getBranchProps(nodeProps()), props))
-  const branchContentProps = $derived(treeView().getBranchContentProps(nodeProps()))
+  const mergedProps = $derived(mergeProps(treeView().getNodeGroupProps(nodeProps()), props))
+  const nodeGroupContentProps = $derived(treeView().getNodeGroupContentProps(nodeProps()))
 </script>
 
 <Collapsible.Root
   bind:ref
   open={nodeState().expanded}
-  ids={{ content: branchContentProps.id! }}
+  ids={{ content: nodeGroupContentProps.id! }}
   {...renderStrategyProps()}
   {...mergedProps}
 />

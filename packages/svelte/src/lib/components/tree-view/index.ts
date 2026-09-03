@@ -5,7 +5,7 @@ export type {
   LoadChildrenCompleteDetails as TreeViewLoadChildrenCompleteDetails,
   LoadChildrenDetails as TreeViewLoadChildrenDetails,
   LoadChildrenErrorDetails as TreeViewLoadChildrenErrorDetails,
-  NodeProps as TreeViewNodeProps,
+  NodeIndicatorType as TreeViewNodeIndicatorType,
   NodeState as TreeViewNodeState,
   RenameCompleteDetails as TreeViewRenameCompleteDetails,
   RenameStartDetails as TreeViewRenameStartDetails,
@@ -17,53 +17,39 @@ export {
   type TreeCollection,
   type TreeNode,
 } from '../collection/index.ts'
-export {
-  default as TreeViewBranch,
-  type TreeViewBranchBaseProps,
-  type TreeViewBranchProps,
-} from './tree-view-branch.svelte'
-export {
-  default as TreeViewBranchContent,
-  type TreeViewBranchContentBaseProps,
-  type TreeViewBranchContentProps,
-} from './tree-view-branch-content.svelte'
-export {
-  default as TreeViewBranchControl,
-  type TreeViewBranchControlBaseProps,
-  type TreeViewBranchControlProps,
-} from './tree-view-branch-control.svelte'
-export {
-  default as TreeViewBranchIndentGuide,
-  type TreeViewBranchIndentGuideBaseProps,
-  type TreeViewBranchIndentGuideProps,
-} from './tree-view-branch-indent-guide.svelte'
-export {
-  default as TreeViewBranchIndicator,
-  type TreeViewBranchIndicatorBaseProps,
-  type TreeViewBranchIndicatorProps,
-} from './tree-view-branch-indicator.svelte'
-export {
-  default as TreeViewBranchText,
-  type TreeViewBranchTextBaseProps,
-  type TreeViewBranchTextProps,
-} from './tree-view-branch-text.svelte'
-export {
-  default as TreeViewBranchTrigger,
-  type TreeViewBranchTriggerBaseProps,
-  type TreeViewBranchTriggerProps,
-} from './tree-view-branch-trigger.svelte'
 export { default as TreeViewContext, type TreeViewContextProps } from './tree-view-context.svelte'
-export { default as TreeViewItem, type TreeViewItemBaseProps, type TreeViewItemProps } from './tree-view-item.svelte'
+export { default as TreeViewCell, type TreeViewCellBaseProps, type TreeViewCellProps } from './tree-view-cell.svelte'
 export {
-  default as TreeViewItemIndicator,
-  type TreeViewItemIndicatorBaseProps,
-  type TreeViewItemIndicatorProps,
-} from './tree-view-item-indicator.svelte'
+  default as TreeViewIndentGuide,
+  type TreeViewIndentGuideBaseProps,
+  type TreeViewIndentGuideProps,
+} from './tree-view-indent-guide.svelte'
+export { default as TreeViewNode, type TreeViewNodeBaseProps, type TreeViewNodeProps } from './tree-view-node.svelte'
 export {
-  default as TreeViewItemText,
-  type TreeViewItemTextBaseProps,
-  type TreeViewItemTextProps,
-} from './tree-view-item-text.svelte'
+  default as TreeViewNodeExpandTrigger,
+  type TreeViewNodeExpandTriggerBaseProps,
+  type TreeViewNodeExpandTriggerProps,
+} from './tree-view-node-expand-trigger.svelte'
+export {
+  default as TreeViewNodeGroup,
+  type TreeViewNodeGroupBaseProps,
+  type TreeViewNodeGroupProps,
+} from './tree-view-node-group.svelte'
+export {
+  default as TreeViewNodeGroupContent,
+  type TreeViewNodeGroupContentBaseProps,
+  type TreeViewNodeGroupContentProps,
+} from './tree-view-node-group-content.svelte'
+export {
+  default as TreeViewNodeIndicator,
+  type TreeViewNodeIndicatorBaseProps,
+  type TreeViewNodeIndicatorProps,
+} from './tree-view-node-indicator.svelte'
+export {
+  default as TreeViewNodeText,
+  type TreeViewNodeTextBaseProps,
+  type TreeViewNodeTextProps,
+} from './tree-view-node-text.svelte'
 export {
   default as TreeViewLabel,
   type TreeViewLabelBaseProps,
@@ -75,11 +61,6 @@ export {
   type TreeViewNodeCheckboxBaseProps,
   type TreeViewNodeCheckboxProps,
 } from './tree-view-node-checkbox.svelte'
-export {
-  default as TreeViewNodeCheckboxIndicator,
-  type TreeViewNodeCheckboxIndicatorBaseProps,
-  type TreeViewNodeCheckboxIndicatorProps,
-} from './tree-view-node-checkbox-indicator.svelte'
 export {
   default as TreeViewNodeRenameInput,
   type TreeViewNodeRenameInputBaseProps,

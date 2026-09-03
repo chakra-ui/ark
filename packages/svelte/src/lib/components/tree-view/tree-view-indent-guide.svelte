@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TreeViewBranchControlBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface TreeViewBranchControlProps extends Assign<HTMLProps<'div'>, TreeViewBranchControlBaseProps> {}
+  export interface TreeViewIndentGuideBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface TreeViewIndentGuideProps extends Assign<HTMLProps<'div'>, TreeViewIndentGuideBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -11,11 +11,11 @@
   import { useTreeViewContext } from './use-tree-view-context.ts'
   import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
 
-  let { ref = $bindable(null), ...props }: TreeViewBranchControlProps = $props()
+  let { ref = $bindable(null), ...props }: TreeViewIndentGuideProps = $props()
 
   const treeView = useTreeViewContext()
   const nodeProps = useTreeViewNodePropsContext()
-  const mergedProps = $derived(mergeProps(treeView().getBranchControlProps(nodeProps()), props))
+  const mergedProps = $derived(mergeProps(treeView().getIndentGuideProps(nodeProps()), props))
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />
