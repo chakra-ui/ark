@@ -4,12 +4,18 @@ import { ChevronRightIcon, FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-r
 import { forwardRef } from 'react'
 import * as ArkTreeView from './primitives/tree-view'
 
+interface NodeData {
+  id: string
+  name: string
+  children?: NodeData[]
+}
+
 export const TreeView = forwardRef<HTMLDivElement, ArkTreeView.RootProps>((props, ref) => {
+  const rootNodes: NodeData[] = props.collection.rootNode.children ?? []
   return (
     <ArkTreeView.Root ref={ref} {...props}>
       <ArkTreeView.Tree>
-        {/* @ts-expect-error */}
-        {props.collection.rootNode.children.map((node, index) => (
+        {rootNodes.map((node, index) => (
           <TreeNode key={node.id} node={node} indexPath={[index]} />
         ))}
       </ArkTreeView.Tree>
@@ -25,34 +31,41 @@ function BranchIcon() {
 }
 
 const TreeNode = (props: ArkTreeView.NodeProviderProps) => {
-  const { node, indexPath } = props
+  const { indexPath } = props
+  const node: NodeData = props.node
+  const children = node.children
   return (
     <ArkTreeView.NodeProvider key={node.id} node={node} indexPath={indexPath}>
-      {node.children ? (
-        <ArkTreeView.Branch>
-          <ArkTreeView.BranchControl>
-            <ArkTreeView.BranchIndicator>
-              <ChevronRightIcon />
-            </ArkTreeView.BranchIndicator>
-            <ArkTreeView.BranchText>
-              <BranchIcon /> {node.name}
-            </ArkTreeView.BranchText>
-          </ArkTreeView.BranchControl>
-          <ArkTreeView.BranchContent>
-            <ArkTreeView.BranchIndentGuide />
-            {/* @ts-expect-error */}
-            {node.children.map((child, index) => (
+      {children ? (
+        <ArkTreeView.NodeGroup>
+          <ArkTreeView.Node>
+            <ArkTreeView.Cell>
+              <ArkTreeView.NodeExpandTrigger>
+                <ArkTreeView.NodeIndicator type="expanded">
+                  <ChevronRightIcon />
+                </ArkTreeView.NodeIndicator>
+              </ArkTreeView.NodeExpandTrigger>
+              <ArkTreeView.NodeText>
+                <BranchIcon /> {node.name}
+              </ArkTreeView.NodeText>
+            </ArkTreeView.Cell>
+          </ArkTreeView.Node>
+          <ArkTreeView.NodeGroupContent>
+            <ArkTreeView.IndentGuide />
+            {children.map((child, index) => (
               <TreeNode key={child.id} node={child} indexPath={[...indexPath, index]} />
             ))}
-          </ArkTreeView.BranchContent>
-        </ArkTreeView.Branch>
+          </ArkTreeView.NodeGroupContent>
+        </ArkTreeView.NodeGroup>
       ) : (
-        <ArkTreeView.Item>
-          <ArkTreeView.ItemText>
-            <FileIcon />
-            {node.name}
-          </ArkTreeView.ItemText>
-        </ArkTreeView.Item>
+        <ArkTreeView.Node>
+          <ArkTreeView.Cell>
+            <ArkTreeView.NodeText>
+              <FileIcon />
+              {node.name}
+            </ArkTreeView.NodeText>
+          </ArkTreeView.Cell>
+        </ArkTreeView.Node>
       )}
     </ArkTreeView.NodeProvider>
   )

@@ -63,7 +63,7 @@ const recipe = sva({
   },
 })
 
-const axes = ['n', 's', 'e', 'w', 'ne', 'nw', 'se', 'sw'] as const
+const placements = ['n', 's', 'e', 'w', 'ne', 'nw', 'se', 'sw'] as const
 
 export const Demo = (props: FloatingPanel.RootProps) => {
   const classNames = recipe()
@@ -109,8 +109,8 @@ export const Demo = (props: FloatingPanel.RootProps) => {
               <p>Drag me around</p>
             </FloatingPanel.Body>
 
-            {axes.map((axis) => (
-              <FloatingPanel.ResizeTrigger key={axis} axis={axis} className={classNames.resizeTrigger} />
+            {placements.map((placement) => (
+              <FloatingPanel.ResizeTrigger key={placement} placement={placement} className={classNames.resizeTrigger} />
             ))}
           </FloatingPanel.Content>
         </FloatingPanel.Positioner>

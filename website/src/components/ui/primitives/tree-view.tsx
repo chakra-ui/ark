@@ -13,7 +13,7 @@ export const treeView = sva({
       width: 'full',
       color: 'fg.default',
     },
-    branchContent: {
+    nodeGroupContent: {
       position: 'relative',
       overflow: 'hidden',
       transitionProperty: 'padding-bottom',
@@ -26,7 +26,7 @@ export const treeView = sva({
         animation: 'collapse-out',
       },
     },
-    branchIndentGuide: {
+    indentGuide: {
       height: '100%',
       width: '1px',
       bg: 'border.default',
@@ -36,18 +36,14 @@ export const treeView = sva({
         left: '3',
       },
     },
-    branchControl: {
+    node: {
       alignItems: 'center',
       borderRadius: 'l2',
+      cursor: 'pointer',
       display: 'flex',
       gap: '1.5',
-      ps: 'calc((var(--depth) - 1) * 22px)',
       py: '1.5',
-      cursor: 'pointer',
       userSelect: 'none',
-      "&[data-depth='1']": {
-        ps: '1',
-      },
       _hover: {
         background: 'gray.a2',
         color: 'fg.default',
@@ -55,54 +51,51 @@ export const treeView = sva({
       _selected: {
         color: 'colorPalette.default!',
       },
-    },
-    branchIndicator: {
-      color: 'colorPalette.default',
-      transformOrigin: 'center',
-      transitionDuration: 'normal',
-      transitionProperty: 'transform',
-      transitionTimingFunction: 'default',
-
-      _open: {
-        transform: 'rotate(90deg)',
+      '&[data-branch]': {
+        ps: 'calc((var(--depth) - 1) * 22px)',
+        "&[data-depth='1']": {
+          ps: '1',
+        },
+      },
+      '&:not([data-branch])': {
+        gap: '2',
+        position: 'relative',
+        ps: 'calc(((var(--depth) - 1) * 22px) + 22px)',
+        "&[data-depth='1']": {
+          ps: '6',
+          color: 'fg.default',
+        },
       },
     },
-    item: {
+    cell: {
       display: 'flex',
       alignItems: 'center',
       gap: '2',
-      borderRadius: 'l2',
-      cursor: 'pointer',
-      position: 'relative',
-      ps: 'calc(((var(--depth) - 1) * 22px) + 22px)',
-      py: '1.5',
-      "&[data-depth='1']": {
-        ps: '6',
-        color: 'fg.default',
+      flex: '1',
+      minWidth: '0',
+    },
+    nodeIndicator: {
+      "&[data-type='expanded']": {
+        color: 'colorPalette.default',
+        transformOrigin: 'center',
+        transitionDuration: 'normal',
+        transitionProperty: 'transform',
+        transitionTimingFunction: 'default',
+        _open: {
+          transform: 'rotate(90deg)',
+        },
       },
-      _hover: {
-        background: 'gray.a2',
-        color: 'fg.default',
-      },
-      _selected: {
-        color: 'colorPalette.default!',
+      "&[data-type='selected']": {
+        _icon: {
+          width: '3',
+          height: '3',
+        },
       },
     },
-    itemText: {
+    nodeText: {
       display: 'flex',
       alignItems: 'center',
       gap: '2',
-    },
-    branchText: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: '2',
-    },
-    itemIndicator: {
-      _icon: {
-        width: '3',
-        height: '3',
-      },
     },
     tree: {
       display: 'flex',
@@ -130,55 +123,45 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, TreeView.RootBaseProps<TreeNode>>, TreeViewVariantProps>
 >(TreeView.Root, 'root')
 
-export const BranchContent = withContext<
+export const NodeGroupContent = withContext<
   HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, TreeView.BranchContentBaseProps>
->(TreeView.BranchContent, 'branchContent')
+  Assign<HTMLStyledProps<'div'>, TreeView.NodeGroupContentBaseProps>
+>(TreeView.NodeGroupContent, 'nodeGroupContent')
 
-export const BranchIndentGuide = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, TreeView.BranchIndentGuideBaseProps>
->(TreeView.BranchIndentGuide, 'branchIndentGuide')
-
-export const BranchControl = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, TreeView.BranchControlBaseProps>
->(TreeView.BranchControl, 'branchControl')
-
-export const BranchIndicator = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, TreeView.BranchIndicatorBaseProps>
->(TreeView.BranchIndicator, 'branchIndicator')
-
-export const Branch = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, TreeView.BranchBaseProps>>(
-  TreeView.Branch,
-  'branch',
+export const IndentGuide = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, TreeView.IndentGuideBaseProps>>(
+  TreeView.IndentGuide,
+  'indentGuide',
 )
 
-export const BranchText = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, TreeView.BranchTextBaseProps>>(
-  TreeView.BranchText,
-  'branchText',
+export const Node = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, TreeView.NodeBaseProps>>(
+  TreeView.Node,
+  'node',
 )
 
-export const BranchTrigger = withContext<
+export const Cell = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, TreeView.CellBaseProps>>(
+  TreeView.Cell,
+  'cell',
+)
+
+export const NodeIndicator = withContext<
   HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, TreeView.BranchTriggerBaseProps>
->(TreeView.BranchTrigger, 'branchTrigger')
+  Assign<HTMLStyledProps<'div'>, TreeView.NodeIndicatorBaseProps>
+>(TreeView.NodeIndicator, 'nodeIndicator')
 
-export const ItemIndicator = withContext<
+export const NodeGroup = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, TreeView.NodeGroupBaseProps>>(
+  TreeView.NodeGroup,
+  'nodeGroup',
+)
+
+export const NodeText = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, TreeView.NodeTextBaseProps>>(
+  TreeView.NodeText,
+  'nodeText',
+)
+
+export const NodeExpandTrigger = withContext<
   HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, TreeView.ItemIndicatorBaseProps>
->(TreeView.ItemIndicator, 'itemIndicator')
-
-export const Item = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, TreeView.ItemBaseProps>>(
-  TreeView.Item,
-  'item',
-)
-
-export const ItemText = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, TreeView.ItemTextBaseProps>>(
-  TreeView.ItemText,
-  'itemText',
-)
+  Assign<HTMLStyledProps<'div'>, TreeView.NodeExpandTriggerBaseProps>
+>(TreeView.NodeExpandTrigger, 'nodeExpandTrigger')
 
 export const Label = withContext<HTMLHeadingElement, Assign<HTMLStyledProps<'h3'>, TreeView.LabelBaseProps>>(
   TreeView.Label,

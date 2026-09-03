@@ -25,7 +25,6 @@ export const MobileNavbar = (props: PropsWithChildren) => {
         overflowPadding: 0,
         offset: { mainAxis: 12 },
       }}
-      portalled
     >
       <Popover.Trigger asChild>
         <IconButton aria-label="Open Menu" variant="ghost">
