@@ -69,7 +69,7 @@ export const VerfiyOtpDialog = (props: Props) => {
             <Card.Body>
               <form onSubmit={handleSubmit}>
                 <Stack gap="3">
-                  <PinInput otp value={otp} length={6} onValueChange={(e) => setOtp(e.value)} />
+                  <PinInput otp value={otp} count={6} onValueChange={(e) => setOtp(e.value)} />
                   <Button type="submit" loading={loading}>
                     Submit
                   </Button>

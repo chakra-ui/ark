@@ -167,8 +167,8 @@ export const Demo = (props: ImageCropper.RootProps) => {
           alt="Sample"
         />
         <ImageCropper.Selection className={classNames.selection}>
-          {ImageCropper.handles.map((position) => (
-            <ImageCropper.Handle className={classNames.handle} key={position} position={position}>
+          {ImageCropper.placements.map((placement) => (
+            <ImageCropper.Handle className={classNames.handle} key={placement} placement={placement}>
               <div />
             </ImageCropper.Handle>
           ))}
