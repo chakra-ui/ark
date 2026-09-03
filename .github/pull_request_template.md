@@ -11,19 +11,19 @@ Before you submit:
 
 Closes # <!-- GitHub issue # here -->
 
-## Description
+## 📝 Description
 
 > What this changes, in a sentence or two. Lead with the point.
 
-## Current behavior
+## ⛳️ Current behavior
 
 > What happens today. Skip this if you're adding something new.
 
-## New behavior
+## 🚀 New behavior
 
 > What happens after this PR.
 
-## Frameworks
+## 🧩 Frameworks
 
 > Ark keeps the same API across frameworks. Tick what this PR covers. If one is missing, say why here.
 
@@ -33,18 +33,18 @@ Closes # <!-- GitHub issue # here -->
 - [ ] Vue
 - [ ] Not framework-specific
 
-## Is this a breaking change (Yes/No):
+## 💣 Is this a breaking change (Yes/No):
 
 <!-- If Yes, describe the impact and the migration path for existing Ark users. -->
 
-## Checklist
+## ✅ Checklist
 
 - [ ] Added a changeset for user-facing changes
 - [ ] Added or updated tests
 - [ ] Added an example for any new prop or part
 - [ ] Updated the docs
 
-## Additional information
+## 📝 Additional information
 
 <!-- Tradeoffs, follow-ups, anything a reviewer should know. -->
 
