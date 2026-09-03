@@ -149,9 +149,7 @@
     }
   }
 
-  &[data-type='selected'],
-  &[data-type='checked'],
-  &[data-type='indeterminate'] {
+  &[data-type='selected'] {
     color: var(--demo-coral-solid);
   }
 
