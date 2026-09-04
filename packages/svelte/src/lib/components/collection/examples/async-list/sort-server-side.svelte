@@ -19,11 +19,11 @@
 
   const list = useAsyncList<Product>({
     autoReload: true,
-    async load({ sortDescriptor }) {
+    async load({ sorting }) {
       const url = new URL('https://fakestoreapi.com/products')
       url.searchParams.set('limit', '5')
-      if (sortDescriptor) {
-        const { direction } = sortDescriptor
+      if (sorting) {
+        const { direction } = sorting
         url.searchParams.set('sort', direction === 'ascending' ? 'asc' : 'desc')
       }
       const response = await fetch(url)
@@ -33,12 +33,12 @@
   })
 
   const handleSort = (column: keyof Product) => {
-    const currentSort = list().sortDescriptor
+    const currentSort = list().sorting
     let direction: 'ascending' | 'descending' = 'ascending'
     if (currentSort?.column === column && currentSort.direction === 'ascending') {
       direction = 'descending'
     }
-    list().sort({ column, direction })
+    list().setSorting({ column, direction })
   }
 </script>
 
@@ -46,8 +46,8 @@
   <div class={styles.Header}>
     <button class={button.Root} onclick={() => handleSort('title')}>
       Sort by title
-      {#if list().sortDescriptor?.column === 'title'}
-        {#if list().sortDescriptor?.direction === 'ascending'}
+      {#if list().sorting?.column === 'title'}
+        {#if list().sorting?.direction === 'ascending'}
           <ArrowUpIcon />
         {:else}
           <ArrowDownIcon />
@@ -56,7 +56,7 @@
         <ArrowUpDownIcon />
       {/if}
     </button>
-    {#if list().loading}
+    {#if list().isLoading}
       <span class={styles.Loading}>
         <LoaderIcon class={styles.Spinner} /> Loading
       </span>
@@ -64,7 +64,7 @@
   </div>
 
   {#if list().error}
-    <div class={styles.Error}>Error: {list().error.message}</div>
+    <div class={styles.Error}>Error: {list().error?.message}</div>
   {/if}
 
   <div class={styles.ItemGroup}>

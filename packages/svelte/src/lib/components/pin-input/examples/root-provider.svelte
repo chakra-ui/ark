@@ -4,7 +4,7 @@
 
   const id = $props.id()
 
-  const pinInput = usePinInput({ id, onValueComplete: (e) => alert(e.valueAsString) })
+  const pinInput = usePinInput({ id, count: 3, onValueComplete: (e) => alert(e.valueAsString) })
 </script>
 
 <div class="stack">

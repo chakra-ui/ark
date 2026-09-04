@@ -118,12 +118,39 @@
 {#snippet renderNode(node: TocNode, indexPath: number[])}
   <TreeView.NodeProvider {node} {indexPath}>
     {#if node.children}
-      <TreeView.Branch class={treeStyles.Branch}>
-        <TreeView.BranchControl class={treeStyles.BranchControl}>
-          <TreeView.BranchIndicator class={treeStyles.BranchIndicator}>
-            <ChevronRightIcon />
-          </TreeView.BranchIndicator>
-          <TreeView.BranchText class={treeStyles.BranchText}>
+      <TreeView.NodeGroup class={treeStyles.NodeGroup}>
+        <TreeView.Node class={treeStyles.Node}>
+          <TreeView.Cell class={treeStyles.Cell}>
+            <TreeView.NodeExpandTrigger class={treeStyles.NodeExpandTrigger}>
+              <TreeView.NodeIndicator type="expanded" class={treeStyles.NodeIndicator}>
+                <ChevronRightIcon />
+              </TreeView.NodeIndicator>
+            </TreeView.NodeExpandTrigger>
+            <TreeView.NodeText class={treeStyles.NodeText}>
+              <Toc.Context>
+                {#snippet render(toc)}
+                  <a
+                    class={tocStyles.TreeLink}
+                    {...toc().getLinkProps({ item: { value: node.id, depth: node.depth } })}
+                  >
+                    {node.name}
+                  </a>
+                {/snippet}
+              </Toc.Context>
+            </TreeView.NodeText>
+          </TreeView.Cell>
+        </TreeView.Node>
+        <TreeView.NodeGroupContent class={treeStyles.NodeGroupContent}>
+          <TreeView.IndentGuide class={treeStyles.IndentGuide} />
+          {#each node.children as child, i (child.id)}
+            {@render renderNode(child, [...indexPath, i])}
+          {/each}
+        </TreeView.NodeGroupContent>
+      </TreeView.NodeGroup>
+    {:else}
+      <TreeView.Node class={treeStyles.Node}>
+        <TreeView.Cell class={treeStyles.Cell}>
+          <TreeView.NodeText class={treeStyles.NodeText}>
             <Toc.Context>
               {#snippet render(toc)}
                 <a class={tocStyles.TreeLink} {...toc().getLinkProps({ item: { value: node.id, depth: node.depth } })}>
@@ -131,27 +158,9 @@
                 </a>
               {/snippet}
             </Toc.Context>
-          </TreeView.BranchText>
-        </TreeView.BranchControl>
-        <TreeView.BranchContent class={treeStyles.BranchContent}>
-          <TreeView.BranchIndentGuide class={treeStyles.BranchIndentGuide} />
-          {#each node.children as child, i (child.id)}
-            {@render renderNode(child, [...indexPath, i])}
-          {/each}
-        </TreeView.BranchContent>
-      </TreeView.Branch>
-    {:else}
-      <TreeView.Item class={treeStyles.Item}>
-        <TreeView.ItemText class={treeStyles.ItemText}>
-          <Toc.Context>
-            {#snippet render(toc)}
-              <a class={tocStyles.TreeLink} {...toc().getLinkProps({ item: { value: node.id, depth: node.depth } })}>
-                {node.name}
-              </a>
-            {/snippet}
-          </Toc.Context>
-        </TreeView.ItemText>
-      </TreeView.Item>
+          </TreeView.NodeText>
+        </TreeView.Cell>
+      </TreeView.Node>
     {/if}
   </TreeView.NodeProvider>
 {/snippet}

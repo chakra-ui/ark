@@ -16,7 +16,7 @@
   const carousel = useCarousel({
     id,
     defaultPage: 0,
-    slideCount: images.length,
+    count: images.length,
   })
 </script>
 

@@ -16,7 +16,7 @@
 
 <div>
   <div>Current page: {page}</div>
-  <Carousel.Root class={styles.Root} bind:page slideCount={images.length}>
+  <Carousel.Root class={styles.Root} bind:page count={images.length}>
     <Carousel.Control class={styles.Control}>
       <Carousel.PrevTrigger class={styles.Trigger}>
         <ArrowLeftIcon />

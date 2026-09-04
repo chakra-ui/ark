@@ -8,7 +8,7 @@
   const slides = Array.from({ length: 6 })
 </script>
 
-<Carousel.Root class={styles.Root} slideCount={slides.length}>
+<Carousel.Root class={styles.Root} count={slides.length}>
   <Carousel.Context>
     {#snippet render(api)}
       <button class={button.Root} onclick={() => api().scrollToIndex(3)}>Go to slide 4</button>

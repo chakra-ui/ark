@@ -41,17 +41,17 @@
 
   const list = useAsyncList<User>({
     initialItems: mockUsers.slice(0, LIMIT),
-    async load({ filterText }: { filterText?: string } = {}) {
+    async load({ filter }: { filter?: string } = {}) {
       await delay(500)
 
-      if (!filterText) {
+      if (!filter) {
         return { items: mockUsers.slice(0, LIMIT) }
       }
 
       const filtered = mockUsers.filter(
         (user) =>
-          user.name.toLowerCase().includes(filterText.toLowerCase()) ||
-          user.email.toLowerCase().includes(filterText.toLowerCase()),
+          user.name.toLowerCase().includes(filter.toLowerCase()) ||
+          user.email.toLowerCase().includes(filter.toLowerCase()),
       )
 
       return { items: filtered.slice(0, LIMIT) }
@@ -65,10 +65,10 @@
       class={field.Input}
       type="text"
       placeholder="Search users..."
-      value={list().filterText}
-      oninput={(e) => list().setFilterText(e.currentTarget.value)}
+      value={list().filter}
+      oninput={(e) => list().setFilter(e.currentTarget.value)}
     />
-    {#if list().loading}
+    {#if list().isLoading}
       <span class={styles.Loading}>
         <LoaderIcon class={styles.Spinner} /> Searching
       </span>
@@ -76,7 +76,7 @@
   </div>
 
   {#if list().error}
-    <div class={styles.Error}>Error: {list().error.message}</div>
+    <div class={styles.Error}>Error: {list().error?.message}</div>
   {/if}
 
   <div class={styles.ItemGroup}>
@@ -93,7 +93,7 @@
     {/each}
   </div>
 
-  {#if list().items.length === 0 && !list().loading}
+  {#if list().items.length === 0 && !list().isLoading}
     <div class={styles.Empty}>No results found</div>
   {/if}
 </div>

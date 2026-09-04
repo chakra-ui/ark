@@ -16,7 +16,7 @@
   const list = useAsyncList<Post, number>({
     autoReload: true,
     async load({ cursor }) {
-      const page = cursor || 1
+      const page = Number(cursor) || 1
       const start = (page - 1) * LIMIT
 
       const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=${LIMIT}`)
@@ -30,7 +30,7 @@
 
       return {
         items: posts,
-        cursor: hasNextPage ? page + 1 : undefined,
+        cursor: hasNextPage ? String(page + 1) : undefined,
       }
     },
   })
@@ -43,8 +43,8 @@
       {#if list().cursor}(more available){/if}
     </span>
     {#if list().cursor}
-      <button class={button.Root} onclick={() => list().loadMore()} disabled={list().loading}>
-        {#if list().loading}
+      <button class={button.Root} onclick={() => list().loadMore()} disabled={list().isLoading}>
+        {#if list().isLoading}
           <LoaderIcon class={styles.Spinner} /> Loading
         {:else}
           Load More
@@ -54,7 +54,7 @@
   </div>
 
   {#if list().error}
-    <div class={styles.Error}>Error: {list().error.message}</div>
+    <div class={styles.Error}>Error: {list().error?.message}</div>
   {/if}
 
   <div class={styles.ItemGroup}>
