@@ -14,7 +14,7 @@ describe('ToggleGroup', () => {
   it('should handle default value', () => {
     render(<ComponentUnderTest defaultValue={['a']} />)
 
-    expect(screen.getByText('A')).toBeChecked()
+    expect(screen.getByText('A')).toHaveAttribute('aria-pressed', 'true')
   })
 
   it('should handle onValueChange', async () => {

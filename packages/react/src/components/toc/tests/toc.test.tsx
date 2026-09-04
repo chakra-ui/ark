@@ -35,44 +35,44 @@ describe('Toc', () => {
 
   it('should render the indicator', () => {
     render(<ComponentUnderTest />)
-    expect(screen.getByTestId('indicator')).toHaveAttribute('data-part', 'indicator')
+    expect(screen.getByTestId('indicator')).toHaveAttribute('data-toc-indicator')
   })
 
-  it('should apply data-part attributes to all parts', () => {
+  it('should apply part attributes to all parts', () => {
     const { container } = render(<ComponentUnderTest />)
-    expect(container.querySelector('[data-part="title"]')).toBeInTheDocument()
-    expect(container.querySelector('[data-part="list"]')).toBeInTheDocument()
-    expect(container.querySelector('[data-part="item"]')).toBeInTheDocument()
-    expect(container.querySelector('[data-part="link"]')).toBeInTheDocument()
-    expect(container.querySelector('[data-part="indicator"]')).toBeInTheDocument()
+    expect(container.querySelector('[data-toc-title]')).toBeInTheDocument()
+    expect(container.querySelector('[data-toc-list]')).toBeInTheDocument()
+    expect(container.querySelector('[data-toc-item]')).toBeInTheDocument()
+    expect(container.querySelector('[data-toc-link]')).toBeInTheDocument()
+    expect(container.querySelector('[data-toc-indicator]')).toBeInTheDocument()
   })
 
   it('should set data-active on the link matching defaultActiveIds', () => {
     const { container } = render(<ComponentUnderTest defaultActiveIds={['usage']} />)
-    expect(container.querySelector('[data-part="link"][data-value="usage"]')).toHaveAttribute('data-active', '')
-    expect(container.querySelector('[data-part="link"][data-value="introduction"]')).not.toHaveAttribute('data-active')
+    expect(container.querySelector('[data-toc-link][data-value="usage"]')).toHaveAttribute('data-active', '')
+    expect(container.querySelector('[data-toc-link][data-value="introduction"]')).not.toHaveAttribute('data-active')
   })
 
   it('should support multiple defaultActiveIds', () => {
     const { container } = render(<ComponentUnderTest defaultActiveIds={['introduction', 'usage']} />)
-    expect(container.querySelector('[data-part="link"][data-value="introduction"]')).toHaveAttribute('data-active', '')
-    expect(container.querySelector('[data-part="link"][data-value="usage"]')).toHaveAttribute('data-active', '')
-    expect(container.querySelector('[data-part="link"][data-value="installation"]')).not.toHaveAttribute('data-active')
+    expect(container.querySelector('[data-toc-link][data-value="introduction"]')).toHaveAttribute('data-active', '')
+    expect(container.querySelector('[data-toc-link][data-value="usage"]')).toHaveAttribute('data-active', '')
+    expect(container.querySelector('[data-toc-link][data-value="installation"]')).not.toHaveAttribute('data-active')
   })
 
   it('should reflect controlled activeIds', () => {
     const { container } = render(<ComponentUnderTest activeIds={['installation']} onActiveChange={vi.fn()} />)
-    expect(container.querySelector('[data-part="link"][data-value="installation"]')).toHaveAttribute('data-active', '')
-    expect(container.querySelector('[data-part="link"][data-value="introduction"]')).not.toHaveAttribute('data-active')
+    expect(container.querySelector('[data-toc-link][data-value="installation"]')).toHaveAttribute('data-active', '')
+    expect(container.querySelector('[data-toc-link][data-value="introduction"]')).not.toHaveAttribute('data-active')
   })
 
   it('should update active link when controlled activeIds change', () => {
     const { container, rerender } = render(<ComponentUnderTest activeIds={['introduction']} onActiveChange={vi.fn()} />)
-    expect(container.querySelector('[data-part="link"][data-value="introduction"]')).toHaveAttribute('data-active', '')
+    expect(container.querySelector('[data-toc-link][data-value="introduction"]')).toHaveAttribute('data-active', '')
 
     rerender(<ComponentUnderTest activeIds={['usage']} onActiveChange={vi.fn()} />)
-    expect(container.querySelector('[data-part="link"][data-value="usage"]')).toHaveAttribute('data-active', '')
-    expect(container.querySelector('[data-part="link"][data-value="introduction"]')).not.toHaveAttribute('data-active')
+    expect(container.querySelector('[data-toc-link][data-value="usage"]')).toHaveAttribute('data-active', '')
+    expect(container.querySelector('[data-toc-link][data-value="introduction"]')).not.toHaveAttribute('data-active')
   })
 
   it('should expose activeIds via Context render prop', () => {
