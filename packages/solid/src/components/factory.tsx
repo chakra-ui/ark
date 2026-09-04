@@ -1,4 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
+import { warn } from '@zag-js/utils'
 import { type ComponentProps, type JSX, splitProps } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
 import type { Assign } from '../types.ts'
@@ -37,27 +38,37 @@ export type PolymorphicProps<T extends ElementType, State = EmptyState> = {
 export type HTMLProps<E extends ElementType> = JSX.IntrinsicElements[E]
 export type HTMLArkProps<E extends ElementType> = Assign<ComponentProps<E>, PolymorphicProps<E>>
 
-interface ArkProps<T extends ElementType> extends PolymorphicProps<T, any> {
-  /**
-   * The state of the part, forwarded to the `render` function. Set by the component, not the consumer.
-   */
+/**
+ * The state of the part, forwarded to the `render` function. Set by the component, not the consumer.
+ */
+interface StateProp {
   state?: unknown
 }
 
-type ArkComponent<E extends ElementType> = (props: HTMLArkProps<E> & ArkProps<E>) => JSX.Element
+interface FactoryProps extends Record<string, any> {
+  asChild?: (props: ParentProps<any>) => JSX.Element
+  render?: RenderFn<any>
+  state?: unknown
+}
+
+// `any` for the state so a render fn can declare the shape its part provides
+type ArkComponent<E extends ElementType> = (
+  props: Assign<ComponentProps<E>, PolymorphicProps<E, any>> & StateProp,
+) => JSX.Element
 
 const EMPTY_STATE: EmptyState = Object.freeze({})
 
 const withRender = <T extends ElementType>(Component: T) => {
   const ArkComponent: ArkComponent<T> = (props) => {
-    const [localProps, parentProps] = splitProps(props as ArkProps<T>, ['asChild', 'render', 'state'])
+    const [localProps, parentProps] = splitProps(props as FactoryProps, ['asChild', 'render', 'state'])
 
-    if (process.env.NODE_ENV !== 'production' && localProps.asChild && localProps.render) {
-      throw new Error('[ark-ui] `asChild` and `render` cannot be used together. Prefer `render`.')
-    }
+    warn(
+      Boolean(localProps.asChild) && Boolean(localProps.render),
+      '[ark-ui] `asChild` and `render` cannot be used together. Prefer `render`.',
+    )
 
     // the render fn applies the props itself, so only the ref is left to the caller
-    const [, restProps] = splitProps(parentProps as JSX.IntrinsicElements[T], ['ref'])
+    const [, restProps] = splitProps(parentProps, ['ref'])
 
     if (localProps.render) {
       return localProps.render(restProps as RenderProps, localProps.state ?? EMPTY_STATE)
@@ -65,10 +76,11 @@ const withRender = <T extends ElementType>(Component: T) => {
 
     if (localProps.asChild) {
       const propsFn = (userProps?: JSX.IntrinsicElements[T]) => mergeProps(restProps, userProps ?? {})
-      return localProps.asChild(propsFn as ParentProps<T>)
+      return localProps.asChild(propsFn)
     }
 
-    return <Dynamic component={Component} {...(parentProps as JSX.IntrinsicElements[T])} />
+    // @ts-expect-error generic element props can't be expressed against Dynamic
+    return <Dynamic component={Component} {...parentProps} />
   }
 
   return ArkComponent
