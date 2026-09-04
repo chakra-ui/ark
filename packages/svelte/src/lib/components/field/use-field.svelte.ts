@@ -102,7 +102,7 @@ export const useField = (inProps: MaybeFunction<UseFieldProps> = {}) => {
 
   const getRootProps = () =>
     ({
-      ...parts.root.attrs,
+      ...parts.root.attrs(id),
       id: rootId,
       role: 'group',
       'data-disabled': dataAttr(disabled),
@@ -114,7 +114,7 @@ export const useField = (inProps: MaybeFunction<UseFieldProps> = {}) => {
 
   const getLabelProps = () =>
     ({
-      ...parts.label.attrs,
+      ...parts.label.attrs(id),
       id: labelId,
       'data-disabled': dataAttr(disabled),
       'data-invalid': dataAttr(invalid),
@@ -140,39 +140,39 @@ export const useField = (inProps: MaybeFunction<UseFieldProps> = {}) => {
   const getInputProps = () =>
     ({
       ...getControlProps(),
-      ...parts.input.attrs,
+      ...parts.input.attrs(id),
     }) as HTMLProps<'input'>
 
   const getTextareaProps = () =>
     ({
       ...getControlProps(),
-      ...parts.textarea.attrs,
+      ...parts.textarea.attrs(id),
     }) as HTMLProps<'textarea'>
 
   const getSelectProps = () =>
     ({
       ...getControlProps(),
-      ...parts.select.attrs,
+      ...parts.select.attrs(id),
     }) as HTMLProps<'select'>
 
   const getHelperTextProps = () =>
     ({
       id: helperTextId,
-      ...parts.helperText.attrs,
+      ...parts.helperText.attrs(id),
       'data-disabled': dataAttr(disabled),
     }) as HTMLProps<'span'>
 
   const getErrorTextProps = () =>
     ({
       id: errorTextId,
-      ...parts.errorText.attrs,
+      ...parts.errorText.attrs(id),
       'aria-live': 'polite',
     }) as HTMLProps<'span'>
 
   const getRequiredIndicatorProps = () =>
     ({
       'aria-hidden': true,
-      ...parts.requiredIndicator.attrs,
+      ...parts.requiredIndicator.attrs(id),
     }) as HTMLProps<'span'>
 
   const api = $derived({

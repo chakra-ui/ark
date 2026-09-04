@@ -27,11 +27,10 @@
     const controlId = `${parent.ids.root}::item::${value}`
     const labelId = `${controlId}::label`
 
-    const getControlProps = () =>
-      ({
-        ...parent.getInputProps(),
-        id: controlId,
-      }) as HTMLProps<'input'>
+    const getControlProps = <T extends object>(getParentProps: () => T) => ({
+      ...getParentProps(),
+      id: controlId,
+    })
 
     return {
       ...parent,
@@ -48,18 +47,18 @@
         }) as HTMLProps<'label'>,
       getInputProps: () =>
         ({
-          ...getControlProps(),
-          ...parts.input.attrs,
+          ...getControlProps(parent.getInputProps),
+          ...parts.input.attrs(controlId),
         }) as HTMLProps<'input'>,
       getSelectProps: () =>
         ({
-          ...getControlProps(),
-          ...parts.select.attrs,
+          ...getControlProps(parent.getSelectProps),
+          ...parts.select.attrs(controlId),
         }) as HTMLProps<'select'>,
       getTextareaProps: () =>
         ({
-          ...getControlProps(),
-          ...parts.textarea.attrs,
+          ...getControlProps(parent.getTextareaProps),
+          ...parts.textarea.attrs(controlId),
         }) as HTMLProps<'textarea'>,
     }
   })
