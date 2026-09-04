@@ -28,7 +28,7 @@
   const carousel = useCarouselContext()
 </script>
 
-<Ark as="span" bind:ref {...parts.autoplayIndicator.attrs} {...props}>
+<Ark as="span" bind:ref {...parts.autoplayIndicator.attrs('')} {...props}>
   {#if carousel().isPlaying}
     {@render children?.()}
   {:else}

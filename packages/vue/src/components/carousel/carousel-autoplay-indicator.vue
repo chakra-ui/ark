@@ -32,7 +32,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.span v-bind="parts.autoplayIndicator.attrs" :as-child="asChild">
+  <ark.span v-bind="parts.autoplayIndicator.attrs('')" :as-child="asChild">
     <template v-if="carousel.isPlaying">
       <slot />
     </template>

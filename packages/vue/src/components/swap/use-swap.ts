@@ -73,7 +73,7 @@ export const useSwap = (props: MaybeRef<UseSwapProps>): UseSwapReturn => {
     offPresence,
     getRootProps() {
       return {
-        ...parts.root.attrs,
+        ...parts.root.attrs(''),
         'data-swap': swap.value ? 'on' : 'off',
         style: { display: 'inline-grid' },
       }
@@ -81,7 +81,7 @@ export const useSwap = (props: MaybeRef<UseSwapProps>): UseSwapReturn => {
     getIndicatorProps({ type }) {
       const presence = type === 'on' ? onPresence : offPresence
       return {
-        ...parts.indicator.attrs,
+        ...parts.indicator.attrs(''),
         ...presence.value.presenceProps,
         'data-type': type,
         style: { 'grid-area': '1 / 1', display: 'inline-flex' },

@@ -71,7 +71,7 @@ export const useSwap = (props: MaybeAccessor<UseSwapProps> = {}): Accessor<UseSw
       offPresence,
       getRootProps() {
         return {
-          ...parts.root.attrs,
+          ...parts.root.attrs(''),
           'data-swap': swap ? 'on' : 'off',
           style: { display: 'inline-grid' },
         }
@@ -79,7 +79,7 @@ export const useSwap = (props: MaybeAccessor<UseSwapProps> = {}): Accessor<UseSw
       getIndicatorProps({ type }) {
         const presence = type === 'on' ? onPresence() : offPresence()
         return {
-          ...parts.indicator.attrs,
+          ...parts.indicator.attrs(''),
           ...presence.presenceProps,
           'data-type': type,
           style: { 'grid-area': '1 / 1', display: 'inline-flex' },

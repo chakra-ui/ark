@@ -18,7 +18,7 @@ export const CarouselProgressText = (props: CarouselProgressTextProps) => {
   })
 
   return (
-    <ark.span {...parts.progressText.attrs} {...props}>
+    <ark.span {...parts.progressText.attrs('')} {...props}>
       {props.children || progressText()}
     </ark.span>
   )

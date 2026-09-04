@@ -69,6 +69,32 @@ async function checkPackage(packageName: string): Promise<AnatomyCheck> {
   }
 }
 
+interface UncalledAttrs {
+  file: string
+  line: number
+  text: string
+}
+
+async function findUncalledAttrs(): Promise<UncalledAttrs[]> {
+  const files = await glob(`packages/{${packages.join(',')}}/src/**/*.{ts,tsx,svelte,vue}`, {
+    cwd: join(import.meta.dir, '../..'),
+    absolute: true,
+  })
+
+  const hits: UncalledAttrs[] = []
+
+  for (const file of files) {
+    const source = await Bun.file(file).text()
+    source.split('\n').forEach((text, index) => {
+      if (/parts\.[a-zA-Z]+\.attrs(?!\s*\()/.test(text)) {
+        hits.push({ file, line: index + 1, text: text.trim() })
+      }
+    })
+  }
+
+  return hits
+}
+
 async function main() {
   console.log('🔍 Checking anatomy exports across all packages...\n')
 
@@ -102,6 +128,24 @@ async function main() {
     }
 
     console.log()
+  }
+
+  const uncalled = await findUncalledAttrs()
+
+  console.log('🔍 Checking anatomy attrs are called...\n')
+
+  if (uncalled.length > 0) {
+    hasIssues = true
+    console.log(`   ❌ ${uncalled.length} anatomy attrs spread without being called:`)
+    uncalled.forEach(({ file, line, text }) => {
+      console.log(`      - ${file.split('/packages/')[1]}:${line}`)
+      console.log(`        ${text}`)
+    })
+    console.log('\n   Zag v2 takes the scope id: parts.root.attrs(id). Spreading the')
+    console.log('   function contributes nothing and the part renders without its attribute.')
+    console.log()
+  } else {
+    console.log('   ✅ All anatomy attrs are called\n')
   }
 
   if (hasIssues) {

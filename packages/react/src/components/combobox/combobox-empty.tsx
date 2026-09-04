@@ -17,7 +17,7 @@ export const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>((pro
     return null
   }
 
-  return <ark.div {...parts.empty.attrs} {...props} role="presentation" ref={ref} />
+  return <ark.div {...parts.empty.attrs('')} {...props} role="presentation" ref={ref} />
 })
 
 ComboboxEmpty.displayName = 'ComboboxEmpty'

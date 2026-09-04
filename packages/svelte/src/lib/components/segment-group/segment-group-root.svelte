@@ -35,7 +35,7 @@
   })
 
   const segmentGroup = useSegmentGroup(() => resolvedProps)
-  const mergedProps = $derived(mergeProps(segmentGroup().getRootProps(), parts.root.attrs, localProps))
+  const mergedProps = $derived(mergeProps(segmentGroup().getRootProps(), localProps))
 
   SegmentGroupProvider(segmentGroup)
 </script>

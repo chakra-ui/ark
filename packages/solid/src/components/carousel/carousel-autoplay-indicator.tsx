@@ -16,7 +16,7 @@ export interface CarouselAutoplayIndicatorProps extends HTMLProps<'span'>, Carou
 export const CarouselAutoplayIndicator = (props: CarouselAutoplayIndicatorProps) => {
   const api = useCarouselContext()
   return (
-    <ark.span {...parts.autoplayIndicator.attrs} {...props}>
+    <ark.span {...parts.autoplayIndicator.attrs('')} {...props}>
       <Show when={api().isPlaying} fallback={props.fallback}>
         {props.children}
       </Show>

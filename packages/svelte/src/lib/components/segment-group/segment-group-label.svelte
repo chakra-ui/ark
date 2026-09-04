@@ -14,7 +14,7 @@
   let { ref = $bindable(null), ...props }: SegmentGroupLabelProps = $props()
 
   const segmentGroup = useSegmentGroupContext()
-  const mergedProps = $derived(mergeProps(segmentGroup().getLabelProps(), parts.label.attrs, props))
+  const mergedProps = $derived(mergeProps(segmentGroup().getLabelProps(), props))
 </script>
 
 <Ark as="span" bind:ref {...mergedProps} />

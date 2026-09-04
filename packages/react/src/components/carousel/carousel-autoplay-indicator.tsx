@@ -19,7 +19,7 @@ export const CarouselAutoplayIndicator = forwardRef<HTMLSpanElement, CarouselAut
   const { children, fallback, ...restProps } = props
   const carousel = useCarouselContext()
   return (
-    <ark.span ref={ref} {...parts.autoplayIndicator.attrs} {...restProps}>
+    <ark.span ref={ref} {...parts.autoplayIndicator.attrs('')} {...restProps}>
       {carousel.isPlaying ? children : fallback}
     </ark.span>
   )

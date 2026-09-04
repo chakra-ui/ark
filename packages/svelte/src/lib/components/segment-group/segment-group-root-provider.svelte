@@ -18,7 +18,7 @@
 
   let { ref = $bindable(null), value, ...props }: SegmentGroupRootProviderProps = $props()
 
-  const mergedProps = $derived(mergeProps(value().getRootProps(), parts.root.attrs, props))
+  const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
   SegmentGroupProvider(() => value())
 </script>

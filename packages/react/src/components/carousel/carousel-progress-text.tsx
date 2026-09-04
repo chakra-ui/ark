@@ -20,7 +20,7 @@ export const CarouselProgressText = forwardRef<HTMLSpanElement, CarouselProgress
   }, [carousel.page, carousel.pageSnapPoints.length])
 
   return (
-    <ark.span ref={ref} {...parts.progressText.attrs} {...props}>
+    <ark.span ref={ref} {...parts.progressText.attrs('')} {...props}>
       {props.children || progressText}
     </ark.span>
   )
