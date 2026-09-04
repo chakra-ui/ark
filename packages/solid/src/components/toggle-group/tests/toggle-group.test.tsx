@@ -5,7 +5,7 @@ import { ComponentUnderTest } from './basic.tsx'
 describe('ToggleGroup', () => {
   it('should handle default value', () => {
     render(() => <ComponentUnderTest value={['a']} />)
-    expect(screen.getByText('A')).toBeChecked()
+    expect(screen.getByText('A')).toHaveAttribute('aria-pressed', 'true')
   })
 
   it('should handle onValueChange', async () => {

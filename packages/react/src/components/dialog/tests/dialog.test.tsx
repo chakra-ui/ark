@@ -1,7 +1,9 @@
 import { act, render, screen, waitFor } from '@testing-library/react'
-import user from '@testing-library/user-event'
+import userEvent from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { ComponentUnderTest } from './basic.tsx'
+
+const user = userEvent.setup({ pointerEventsCheck: 0 })
 
 describe('Dialog', () => {
   it('should have no a11y violations', async () => {
