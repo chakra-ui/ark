@@ -23,7 +23,7 @@
   })
 </script>
 
-<Ark as="span" bind:ref {...parts.progressText.attrs} {...props}>
+<Ark as="span" bind:ref {...parts.progressText.attrs('')} {...props}>
   {#if children}
     {@render children()}
   {:else}

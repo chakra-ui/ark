@@ -19,5 +19,5 @@
 </script>
 
 {#if isEmpty}
-  <Ark as="div" bind:ref {...parts.empty.attrs} {...props} role="presentation" />
+  <Ark as="div" bind:ref {...parts.empty.attrs('')} {...props} role="presentation" />
 {/if}

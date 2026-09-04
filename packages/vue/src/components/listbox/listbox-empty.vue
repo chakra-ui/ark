@@ -29,7 +29,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-if="isEmpty" v-bind="parts.empty.attrs" role="presentation" :as-child="asChild">
+  <ark.div v-if="isEmpty" v-bind="parts.empty.attrs('')" role="presentation" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

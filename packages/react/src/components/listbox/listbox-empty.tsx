@@ -17,7 +17,7 @@ export const ListboxEmpty = forwardRef<HTMLDivElement, ListboxEmptyProps>((props
     return null
   }
 
-  return <ark.div {...parts.empty.attrs} {...props} role="presentation" ref={ref} />
+  return <ark.div {...parts.empty.attrs('')} {...props} role="presentation" ref={ref} />
 })
 
 ListboxEmpty.displayName = 'ListboxEmpty'

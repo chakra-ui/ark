@@ -22,7 +22,7 @@
   const segmentGroup = useSegmentGroupContext()
 
   const itemState = $derived(segmentGroup().getItemState(itemProps))
-  const mergedProps = $derived(mergeProps(segmentGroup().getItemProps(itemProps), parts.item.attrs, localProps))
+  const mergedProps = $derived(mergeProps(segmentGroup().getItemProps(itemProps), localProps))
 
   SegmentGroupItemProvider(() => itemState)
   SegmentGroupItemPropsProvider(() => itemProps)

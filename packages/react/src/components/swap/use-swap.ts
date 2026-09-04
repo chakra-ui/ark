@@ -54,7 +54,7 @@ export const useSwap = (props: UseSwapProps = {}): UseSwapReturn => {
     offPresence,
     getRootProps() {
       return {
-        ...parts.root.attrs,
+        ...parts.root.attrs(''),
         'data-swap': swap ? 'on' : 'off',
         style: { display: 'inline-grid' },
       }
@@ -62,7 +62,7 @@ export const useSwap = (props: UseSwapProps = {}): UseSwapReturn => {
     getIndicatorProps({ type }) {
       const presence = type === 'on' ? onPresence : offPresence
       return {
-        ...parts.indicator.attrs,
+        ...parts.indicator.attrs(''),
         ...presence.getPresenceProps(),
         'data-type': type,
         style: { gridArea: '1 / 1', display: 'inline-flex' },

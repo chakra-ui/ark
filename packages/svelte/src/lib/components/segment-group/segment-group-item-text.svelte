@@ -16,7 +16,7 @@
   const segmentGroup = useSegmentGroupContext()
   const itemProps = useSegmentGroupItemPropsContext()
 
-  const mergedProps = $derived(mergeProps(segmentGroup().getItemTextProps(itemProps()), parts.itemText.attrs, props))
+  const mergedProps = $derived(mergeProps(segmentGroup().getItemTextProps(itemProps()), props))
 </script>
 
 <Ark as="span" bind:ref {...mergedProps} />

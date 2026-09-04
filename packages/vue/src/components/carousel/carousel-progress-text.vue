@@ -34,7 +34,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.span v-bind="parts.progressText.attrs" :as-child="asChild">
+  <ark.span v-bind="parts.progressText.attrs('')" :as-child="asChild">
     <slot>{{ progressText }}</slot>
   </ark.span>
 </template>

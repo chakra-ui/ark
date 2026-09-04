@@ -14,7 +14,7 @@ export const ListboxEmpty = (props: ListboxEmptyProps) => {
 
   return (
     <Show when={size() === 0}>
-      <ark.div {...parts.empty.attrs} {...props} role="presentation" />
+      <ark.div {...parts.empty.attrs('')} {...props} role="presentation" />
     </Show>
   )
 }
