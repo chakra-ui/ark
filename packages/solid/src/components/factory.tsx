@@ -29,8 +29,8 @@ export type PolymorphicProps<T extends ElementType, State = EmptyState> = {
   /**
    * Render the part as a custom element, combining their props and behavior.
    *
-   * Solid compiles JSX to a thunk that closes over its props, so there is nothing to merge into
-   * after the fact. Unlike react, `render` takes a function rather than an element.
+   * Takes a function, or a component, since a solid component is a function of its props:
+   * `render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work.
    */
   render?: RenderFn<State>
 }

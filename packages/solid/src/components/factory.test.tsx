@@ -81,6 +81,22 @@ describe('Ark Factory', () => {
       expect(container).toBeEmptyDOMElement()
     })
 
+    it('should accept a component reference', async () => {
+      const onClick = vi.fn()
+      render(() => (
+        <ark.button class="merged" onClick={onClick} render={MyButton}>
+          Open
+        </ark.button>
+      ))
+
+      const child = screen.getByTestId('child')
+      expect(child).toHaveTextContent('Open')
+      expect(child).toHaveClass('merged')
+
+      await user.click(child)
+      expect(onClick).toHaveBeenCalled()
+    })
+
     it('should not pass ref to the render fn', () => {
       const spy = vi.fn()
       let el: HTMLButtonElement | undefined
