@@ -3,6 +3,7 @@ import {
   type ComponentCustomProps,
   type ExtractPropTypes,
   type IntrinsicElementAttributes,
+  type VNode,
   type VNodeProps,
   defineComponent,
   h,
@@ -12,11 +13,40 @@ import { Dynamic } from '../utils/dynamic.ts'
 type DOMElements = keyof IntrinsicElementAttributes
 type ElementType = Parameters<typeof h>[0]
 
+export type EmptyState = Record<never, never>
+
+// intentionally `any`: the props are bound onto arbitrary user components, `unknown` would break that
+export type RenderProps = Record<string, any>
+
+export interface RenderSlotScope<State = EmptyState> {
+  /**
+   * The part's props, to bind onto your own element.
+   */
+  props: RenderProps
+  /**
+   * The part's state.
+   */
+  state: State
+}
+
 export interface PolymorphicProps {
   /**
    * Use the provided child element as the default rendered element, combining their props and behavior.
+   *
+   * @deprecated Use the `render` slot instead. `asChild` will be removed in the next major.
    */
   asChild?: boolean
+}
+
+export interface PolymorphicSlots<State = EmptyState> {
+  default?: () => VNode[]
+  /**
+   * Render the part as a custom element, combining their props and behavior.
+   *
+   * Vue templates cannot take an element as a prop value, so this is a scoped slot rather than
+   * react's `render` prop.
+   */
+  render?: (scope: RenderSlotScope<State>) => VNode[]
 }
 
 export type AsChildComponent<
@@ -33,6 +63,7 @@ export type AsChildComponent<
         : Record<never, never>) &
       P &
       PolymorphicProps
+    $slots: PolymorphicSlots
   }
 }
 
@@ -47,6 +78,7 @@ export type HTMLPolymorphicProps<T extends ElementType> = Omit<
   'ref'
 > & {
   asChild?: boolean
+  state?: unknown
 }
 
 export type HTMLArkProps<T extends DOMElements> = HTMLPolymorphicProps<T>
@@ -55,7 +87,9 @@ export type HTMLArkProps<T extends DOMElements> = HTMLPolymorphicProps<T>
 const SELF_CLOSING_TAGS = 'br, hr, img, input, area, textarea'.split(', ')
 const isSelfClosingTag = (tag: unknown) => typeof tag === 'string' && SELF_CLOSING_TAGS.includes(tag)
 
-const withAsChild = (component: ElementType) => {
+const EMPTY_STATE: EmptyState = Object.freeze({})
+
+const withRender = (component: ElementType) => {
   return defineComponent({
     name: 'Polymorphic',
     inheritAttrs: false,
@@ -64,10 +98,18 @@ const withAsChild = (component: ElementType) => {
         type: Boolean,
         default: false,
       },
+      state: {
+        type: null,
+        default: undefined,
+      },
     },
     setup(props, { attrs, slots }) {
-      if (!props.asChild) return () => h(component, attrs, isSelfClosingTag(component) ? undefined : slots.default?.())
-      return () => h(Dynamic, attrs, slots)
+      return () => {
+        // the slot binds the props itself, so it owns the merge
+        if (slots.render) return slots.render({ props: attrs, state: props.state ?? EMPTY_STATE })
+        if (props.asChild) return h(Dynamic, attrs, slots)
+        return h(component, attrs, isSelfClosingTag(component) ? undefined : slots.default?.())
+      }
     },
   })
 }
@@ -75,13 +117,13 @@ const withAsChild = (component: ElementType) => {
 export function jsxFactory() {
   const cache = new Map()
 
-  const factory = new Proxy(withAsChild, {
+  const factory = new Proxy(withRender, {
     apply(_target, _thisArg, argArray) {
-      return withAsChild(argArray[0])
+      return withRender(argArray[0])
     },
     get(_, element) {
       if (!cache.has(element)) {
-        cache.set(element, withAsChild(element as ElementType))
+        cache.set(element, withRender(element as ElementType))
       }
       return cache.get(element)
     },
