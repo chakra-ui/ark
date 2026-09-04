@@ -11,6 +11,90 @@ const ComponentUnderTest = (
   </ark.div>
 )
 
+describe('Factory / render slot', () => {
+  it('should render the slot with the forwarded props', async () => {
+    const onClick = vi.fn()
+    render(
+      defineComponent(
+        () => () =>
+          h(
+            ark.button,
+            { 'data-part': 'trigger', onClick },
+            {
+              render: ({ props }: { props: Record<string, unknown> }) =>
+                h('button', { ...props, 'data-testid': 'child' }, 'Ark UI'),
+            },
+          ),
+      ),
+    )
+
+    const child = screen.getByTestId('child')
+    expect(child.dataset['part']).toBe('trigger')
+
+    await user.click(child)
+    expect(onClick).toHaveBeenCalled()
+  })
+
+  it('should forward the state', () => {
+    render(
+      defineComponent(
+        () => () =>
+          h(
+            ark.button,
+            { state: { open: true } },
+            {
+              render: ({ props, state }: { props: Record<string, unknown>; state: { open: boolean } }) =>
+                h('button', { ...props, 'data-testid': 'child' }, state.open ? 'Open' : 'Closed'),
+            },
+          ),
+      ),
+    )
+
+    expect(screen.getByTestId('child')).toHaveTextContent('Open')
+  })
+
+  it('should default the state to an empty object', () => {
+    const spy = vi.fn()
+    render(
+      defineComponent(
+        () => () =>
+          h(
+            ark.button,
+            {},
+            {
+              render: ({ props, state }: { props: Record<string, unknown>; state: unknown }) => {
+                spy(state)
+                return h('button', { ...props, 'data-testid': 'child' })
+              },
+            },
+          ),
+      ),
+    )
+
+    expect(spy).toHaveBeenCalledWith({})
+  })
+
+  it('should take precedence over asChild', () => {
+    render(
+      defineComponent(
+        () => () =>
+          h(
+            ark.button,
+            { asChild: true },
+            {
+              default: () => h('span', { 'data-testid': 'as-child' }, 'as child'),
+              render: ({ props }: { props: Record<string, unknown> }) =>
+                h('button', { ...props, 'data-testid': 'child' }, 'render'),
+            },
+          ),
+      ),
+    )
+
+    expect(screen.getByTestId('child')).toBeVisible()
+    expect(screen.queryByTestId('as-child')).toBeNull()
+  })
+})
+
 describe('Factory', () => {
   it('should render only the child', () => {
     render(ComponentUnderTest)
