@@ -2,6 +2,46 @@ import { render, screen } from '@testing-library/svelte'
 import user from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 import ComponentUnderTest from './examples/basic.svelte'
+import RenderTest from './examples/render.svelte'
+
+describe('Ark Factory / render', () => {
+  it('should render the snippet with the forwarded props', async () => {
+    const onClickParent = vi.fn()
+    const onClickChild = vi.fn()
+    render(RenderTest, { onClickParent, onClickChild })
+
+    const child = screen.getByTestId('child')
+    // biome-ignore lint/complexity/useLiteralKeys: intentional
+    expect(child.dataset['part']).toBe('trigger')
+
+    await user.click(child)
+    expect(onClickParent).toHaveBeenCalled()
+    expect(onClickChild).toHaveBeenCalled()
+  })
+
+  it('should merge styles and classes', () => {
+    render(RenderTest)
+    const child = screen.getByTestId('child')
+    expect(child).toHaveStyle({ background: 'red' })
+    expect(child).toHaveStyle({ color: 'rgb(0, 0, 255)' })
+    expect(child).toHaveClass('child parent')
+  })
+
+  it('should not render the default element', () => {
+    render(RenderTest)
+    expect(() => screen.getByTestId('parent')).toThrow()
+  })
+
+  it('should forward the state', () => {
+    render(RenderTest, { state: { open: true } })
+    expect(screen.getByTestId('child')).toHaveTextContent('Open')
+  })
+
+  it('should default the state to an empty object', () => {
+    render(RenderTest)
+    expect(screen.getByTestId('child')).toHaveTextContent('Ark UI')
+  })
+})
 
 describe('Ark Factory', () => {
   it('should render only the child', () => {
