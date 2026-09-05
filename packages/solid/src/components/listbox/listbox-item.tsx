@@ -1,5 +1,6 @@
 import type { ItemProps, ItemState } from '@zag-js/listbox'
 import { mergeProps } from '@zag-js/solid'
+import { createMemo } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useListboxContext } from './use-listbox-context.ts'
@@ -15,11 +16,11 @@ export const ListboxItem = (props: ListboxItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['item', 'highlightOnHover'])
   const listbox = useListboxContext()
   const mergedProps = mergeProps(() => listbox().getItemProps(itemProps), localProps)
-  const itemState = () => listbox().getItemState(itemProps)
+  const itemState = createMemo(() => listbox().getItemState(itemProps))
 
   return (
     <ListboxItemPropsProvider value={itemProps}>
-      <ListboxItemProvider value={itemState()}>
+      <ListboxItemProvider value={itemState}>
         <ark.div {...mergedProps} state={listbox().getItemState(itemProps)} />
       </ListboxItemProvider>
     </ListboxItemPropsProvider>
