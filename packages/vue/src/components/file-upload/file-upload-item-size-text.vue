@@ -29,8 +29,13 @@ useForwardExpose()
 
 <template>
   <ark.div v-bind="fileUpload.getItemSizeTextProps(itemProps)" :as-child="asChild">
-    <slot>
-      {{ slots.default?.() || fileUpload.getFileSize(itemProps.file) }}
-    </slot>
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot>
+        {{ slots.default?.() || fileUpload.getFileSize(itemProps.file) }}
+      </slot>
+    </template>
   </ark.div>
 </template>

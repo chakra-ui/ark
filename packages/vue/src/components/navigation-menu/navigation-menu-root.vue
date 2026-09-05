@@ -34,6 +34,11 @@ useForwardExpose()
 
 <template>
   <ark.nav v-bind="navigationMenu.getRootProps()">
-    <slot />
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.nav>
 </template>

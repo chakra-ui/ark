@@ -63,7 +63,8 @@ export type AsChildComponent<
         : Record<never, never>) &
       P &
       PolymorphicProps
-    $slots: PolymorphicSlots
+    // `any` state: the part declares the precise shape via `defineSlots`, and forwards through here
+    $slots: PolymorphicSlots<any>
   }
 }
 

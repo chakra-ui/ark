@@ -32,6 +32,11 @@ useForwardExpose()
 
 <template>
   <ark.div v-bind="datePicker.getRangeTextProps()" :as-child="asChild">
-    {{ visibleRangeText }}
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      {{ visibleRangeText }}
+    </template>
   </ark.div>
 </template>

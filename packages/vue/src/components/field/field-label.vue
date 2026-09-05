@@ -24,5 +24,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.label v-bind="field.getLabelProps()" :as-child="asChild"><slot /></ark.label>
+  <ark.label v-bind="field.getLabelProps()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
+  </ark.label>
 </template>

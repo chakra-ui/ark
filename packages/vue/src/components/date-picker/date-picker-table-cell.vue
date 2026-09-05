@@ -40,6 +40,11 @@ useForwardExpose()
 
 <template>
   <ark.td v-bind="tableCellProps" :as-child="asChild">
-    <slot />
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.td>
 </template>

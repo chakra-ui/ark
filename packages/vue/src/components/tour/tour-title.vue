@@ -26,6 +26,11 @@ useForwardExpose()
 
 <template>
   <ark.h2 v-bind="tour.getTitleProps()" :as-child="asChild">
-    <slot>{{ slots.default?.() || tour.step?.title }}</slot>
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot>{{ slots.default?.() || tour.step?.title }}</slot>
+    </template>
   </ark.h2>
 </template>
