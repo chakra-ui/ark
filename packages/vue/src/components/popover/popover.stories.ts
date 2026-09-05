@@ -10,6 +10,7 @@ import ModalExample from './examples/modal.vue'
 import MultipleTriggersExample from './examples/multiple-triggers.vue'
 import NestedExample from './examples/nested.vue'
 import PositioningExample from './examples/positioning.vue'
+import RenderExample from './examples/render.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import SameWidthExample from './examples/same-width.vue'
 import WithDialogExample from './examples/with-dialog.vue'
@@ -86,6 +87,13 @@ export const Nested = {
 export const Positioning = {
   render: () => ({
     components: { Component: PositioningExample },
+    template: '<Component />',
+  }),
+}
+
+export const Render = {
+  render: () => ({
+    components: { Component: RenderExample },
     template: '<Component />',
   }),
 }
