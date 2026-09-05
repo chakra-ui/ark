@@ -1,7 +1,3 @@
 'use client'
 
-import { anatomy } from '@zag-js/radio-group'
-
-export const segmentGroupAnatomy = anatomy.rename('segment-group')
-
-export const parts = segmentGroupAnatomy.build()
+export { anatomy as segmentGroupAnatomy } from '@zag-js/radio-group'

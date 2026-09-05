@@ -9,7 +9,6 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory/index.ts'
-  import { parts } from './segment-group.anatomy.ts'
   import { useSegmentGroupContext } from './use-segment-group-context.ts'
   import { SegmentGroupItemProvider } from './use-segment-group-item-context.ts'
   import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-context.ts'
