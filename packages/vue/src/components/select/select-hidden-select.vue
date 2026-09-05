@@ -36,7 +36,6 @@ useForwardExpose()
       :disabled="select.collection.getItemDisabled(item)"
     >
       {{ select.collection.stringifyItem(item) }}
-      >
     </option>
   </ark.select>
 </template>
