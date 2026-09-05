@@ -16,15 +16,14 @@ handlers and ARIA attributes applied to it.
 
 Each framework spells this the way that framework composes:
 
-| Framework | Shape                                             |
-| --------- | ------------------------------------------------- |
-| React     | a `render` prop, taking an element or a function  |
-| Solid     | a `render` prop, taking a component or a function |
-| Vue       | a `render` slot                                   |
-| Svelte    | a `render` snippet                                |
+| Framework | Shape                                                   |
+| --------- | ------------------------------------------------------- |
+| React     | a `render` prop, taking an element or a function        |
+| Solid     | a `render` prop, taking a component or a function       |
+| Vue       | a `render` slot, written `#render` directly on the part |
+| Svelte    | a `render` snippet                                      |
 
-The capability is the same in all four. Only the spelling differs, because a template can't take an element as a prop
-value the way JSX can.
+The capability is the same in all four: each one hands you the part's props to apply, and the part's state.
 
 ## The asChild Prop
 

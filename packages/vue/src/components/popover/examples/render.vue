@@ -4,10 +4,8 @@ import { Popover } from '@ark-ui/vue/popover'
 
 <template>
   <Popover.Root>
-    <Popover.Trigger>
-      <template #render="{ props }">
-        <button type="button" v-bind="props">Open Popover</button>
-      </template>
+    <Popover.Trigger #render="{ props, state }">
+      <button type="button" v-bind="props">{{ state.open ? 'Close' : 'Open' }} Popover</button>
     </Popover.Trigger>
     <Popover.Positioner>
       <Popover.Content>Content</Popover.Content>
