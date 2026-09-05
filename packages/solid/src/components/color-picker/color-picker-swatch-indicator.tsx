@@ -9,7 +9,7 @@ export interface ColorPickerSwatchIndicatorProps extends HTMLProps<'div'>, Color
 export const ColorPickerSwatchIndicator = (props: ColorPickerSwatchIndicatorProps) => {
   const api = useColorPickerContext()
   const swatchProps = useColorPickerSwatchPropsContext()
-  const mergedProps = mergeProps(() => api().getSwatchIndicatorProps(swatchProps), props)
+  const mergedProps = mergeProps(() => api().getSwatchIndicatorProps(swatchProps()), props)
 
   return <ark.div {...mergedProps} />
 }
