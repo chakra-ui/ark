@@ -141,10 +141,6 @@ const onActiveChange = ({ activeItems }: { activeItems: { value: string }[] }) =
                   </TreeView.NodeGroupContent>
                 </TreeView.NodeGroup>
               </TreeView.NodeProvider>
-                    </template>
-                  </TreeView.BranchContent>
-                </TreeView.Branch>
-              </TreeView.NodeProvider>
             </template>
           </TreeView.Tree>
         </TreeView.Root>
