@@ -27,6 +27,11 @@ useForwardExpose()
 
 <template>
   <ark.button v-bind="tour.getActionTriggerProps(props)" :as-child="asChild">
-    <slot>{{ slots.default?.() || props.action.label }}</slot>
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot>{{ slots.default?.() || props.action.label }}</slot>
+    </template>
   </ark.button>
 </template>

@@ -25,8 +25,13 @@ useForwardExpose()
 
 <template>
   <ark.select v-bind="datePicker.getYearSelectProps()" :as-child="asChild">
-    <option v-for="year in datePicker.getYears()" :key="year.value" :value="year.value">
-      {{ year.label }}
-    </option>
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <option v-for="year in datePicker.getYears()" :key="year.value" :value="year.value">
+        {{ year.label }}
+      </option>
+    </template>
   </ark.select>
 </template>

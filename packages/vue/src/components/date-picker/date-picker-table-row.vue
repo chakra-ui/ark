@@ -27,6 +27,11 @@ useForwardExpose()
 
 <template>
   <ark.tr v-bind="datePicker.getTableRowProps(tableProps)" :as-child="asChild">
-    <slot />
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.tr>
 </template>

@@ -34,6 +34,11 @@ useForwardExpose()
     :value="modelValue"
     @input="(event) => emit('update:modelValue', (event.target as HTMLInputElement).value)"
   >
-    <slot />
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.input>
 </template>

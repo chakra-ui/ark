@@ -24,5 +24,9 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.img v-bind="imageCropper.getImageProps()" :as-child="asChild" />
+  <ark.img v-bind="imageCropper.getImageProps()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+  </ark.img>
 </template>

@@ -24,5 +24,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.legend v-bind="fieldset.getLegendProps()" :as-child="asChild"><slot /></ark.legend>
+  <ark.legend v-bind="fieldset.getLegendProps()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
+  </ark.legend>
 </template>

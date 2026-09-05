@@ -36,6 +36,11 @@ ToggleGroupProvider(toggleGroup)
 
 <template>
   <ark.div v-bind="toggleGroup.getRootProps()" :as-child="asChild">
-    <slot />
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

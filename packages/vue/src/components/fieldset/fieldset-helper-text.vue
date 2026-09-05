@@ -25,6 +25,11 @@ useForwardExpose()
 
 <template>
   <ark.span v-bind="fieldset.getHelperTextProps()" :as-child="asChild">
-    <slot />
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.span>
 </template>

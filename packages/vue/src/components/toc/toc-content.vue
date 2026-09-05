@@ -23,6 +23,11 @@ useForwardExpose()
 
 <template>
   <ark.article :as-child="asChild">
-    <slot />
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.article>
 </template>
