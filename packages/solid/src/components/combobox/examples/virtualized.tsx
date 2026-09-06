@@ -1,13 +1,12 @@
 import { Combobox, useListCollection } from '@ark-ui/solid/combobox'
 import { useFilter } from '@ark-ui/solid/locale'
-import { createVirtualizer } from '@tanstack/solid-virtual'
+import { ListVirtualizer, useListVirtualizer } from '@ark-ui/solid/virtualizer'
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-solid'
+import { For } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import styles from 'styles/combobox.module.css'
 
 export const Virtualized = () => {
-  let contentRef: HTMLDivElement | undefined
-
   const filterFn = useFilter({ sensitivity: 'base' })
 
   const { collection, filter, reset } = useListCollection({
@@ -15,20 +14,15 @@ export const Virtualized = () => {
     filter: filterFn().startsWith,
   })
 
-  const virtualizer = createVirtualizer({
-    get count() {
-      return collection().size
-    },
-    getScrollElement: () => contentRef ?? null,
-    estimateSize: () => 32,
+  const virtualizer = useListVirtualizer(() => ({
+    count: collection().size,
+    estimatedSize: () => 36,
     overscan: 10,
-  })
+    observeScrollElementSize: true,
+  }))
 
   const handleScrollToIndex: Combobox.RootProps<Country>['scrollToIndexFn'] = (details) => {
-    virtualizer.scrollToIndex(details.index, {
-      align: 'center',
-      behavior: 'auto',
-    })
+    virtualizer.scrollToIndex(details.index, { align: 'auto' })
   }
 
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
@@ -54,39 +48,36 @@ export const Virtualized = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content class={styles.Content}>
-            <div ref={contentRef} class={styles.Scroller}>
-              <div style={{ height: `${virtualizer.getTotalSize()}px`, width: '100%', position: 'relative' }}>
-                {virtualizer.getVirtualItems().map((virtualItem) => {
-                  const item = collection().items[virtualItem.index]
-                  return (
-                    <Combobox.Item
-                      class={styles.Item}
-                      item={item}
-                      aria-setsize={collection().size}
-                      aria-posinset={virtualItem.index + 1}
-                      style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: `${virtualItem.size}px`,
-                        transform: `translateY(${virtualItem.start}px)`,
-                      }}
-                    >
-                      <Combobox.ItemText class={styles.ItemText}>
-                        <span aria-hidden style={{ 'margin-right': '8px' }}>
-                          {item.emoji}
-                        </span>
-                        {item.label}
-                      </Combobox.ItemText>
-                      <Combobox.ItemIndicator class={styles.ItemIndicator}>
-                        <CheckIcon />
-                      </Combobox.ItemIndicator>
-                    </Combobox.Item>
-                  )
-                })}
-              </div>
-            </div>
+            <Combobox.List
+              class={styles.Scroller}
+              style={{ '--total-size': `${virtualizer.getTotalSize()}px` }}
+              render={(props) => <ListVirtualizer.Root {...props} value={virtualizer} />}
+            >
+              <ListVirtualizer.Content>
+                <For each={virtualizer.getVirtualItems()}>
+                  {(virtualItem) => {
+                    const item = () => collection().items[virtualItem.index]
+                    return (
+                      <Combobox.Item
+                        item={item()}
+                        class={styles.Item}
+                        render={(props) => <ListVirtualizer.Item {...props} item={virtualItem} />}
+                      >
+                        <Combobox.ItemText class={styles.ItemText}>
+                          <span aria-hidden style={{ 'margin-right': '8px' }}>
+                            {item().emoji}
+                          </span>
+                          {item().label}
+                        </Combobox.ItemText>
+                        <Combobox.ItemIndicator class={styles.ItemIndicator}>
+                          <CheckIcon />
+                        </Combobox.ItemIndicator>
+                      </Combobox.Item>
+                    )
+                  }}
+                </For>
+              </ListVirtualizer.Content>
+            </Combobox.List>
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

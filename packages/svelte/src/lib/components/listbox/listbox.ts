@@ -46,6 +46,11 @@ export {
   type ListboxLabelProps as LabelProps,
 } from './listbox-label.svelte'
 export {
+  default as List,
+  type ListboxListBaseProps as ListBaseProps,
+  type ListboxListProps as ListProps,
+} from './listbox-list.svelte'
+export {
   default as Root,
   type ListboxRootBaseProps as RootBaseProps,
   type ListboxRootProps as RootProps,

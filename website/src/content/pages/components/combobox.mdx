@@ -125,8 +125,10 @@ datasets or fetching data from an API.
 
 ### Virtualized
 
-For very large lists, use virtualization with `@tanstack/virtual` to render only the visible items. Pass the
-`scrollToIndexFn` prop to enable keyboard navigation within the virtualized list.
+For very large lists, render only the visible options with the [Virtualizer](/docs/utilities/virtualizer). Render
+`Combobox.List` as `ListVirtualizer.Root` and each `Combobox.Item` as `ListVirtualizer.Item`, keep the virtualizer's
+`count` in sync with the filtered collection, and pass `scrollToIndexFn` so keyboard navigation can scroll to options
+that are not mounted yet.
 
 <Example id="virtualized" />
 

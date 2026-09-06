@@ -1,5 +1,8 @@
+diff --git a/node_modules/@zag-js/virtualizer/.bun-tag-67443367819a5c3e b/.bun-tag-67443367819a5c3e
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 diff --git a/dist/grid-virtualizer.js b/dist/grid-virtualizer.js
-index 10fee580193925a701752a00385a5848fed96a17..d74b14b7a9e0fa60c7655a4b7edd3deb8e6abf3b 100644
+index 10fee580193925a701752a00385a5848fed96a17..9ae4f808ad85722793f968791d8f8ffa522452c8 100644
 --- a/dist/grid-virtualizer.js
 +++ b/dist/grid-virtualizer.js
 @@ -474,7 +474,7 @@ var GridVirtualizer = class {
@@ -20,19 +23,20 @@ index 10fee580193925a701752a00385a5848fed96a17..d74b14b7a9e0fa60c7655a4b7edd3deb
        height: "100%",
        transform: `translate3d(${x}px, 0, 0)`
      };
-@@ -601,8 +601,8 @@ var GridVirtualizer = class {
+@@ -601,8 +601,9 @@ var GridVirtualizer = class {
    getContentStyle() {
      return {
        position: "relative",
 -      width: this.getTotalWidth(),
 -      height: this.getTotalHeight(),
++      flexShrink: 0,
 +      width: `${this.getTotalWidth()}px`,
 +      height: `${this.getTotalHeight()}px`,
        pointerEvents: this.isScrolling ? "none" : "auto"
      };
    }
 diff --git a/dist/grid-virtualizer.mjs b/dist/grid-virtualizer.mjs
-index 6c6fc13217b63d80e9617d8bce2d284fe3468d26..39cab71d247b6eac51d0a949d9db75d6accbb6de 100644
+index 6c6fc13217b63d80e9617d8bce2d284fe3468d26..41689bf84f198ecafc630055273a0db38331119b 100644
 --- a/dist/grid-virtualizer.mjs
 +++ b/dist/grid-virtualizer.mjs
 @@ -452,7 +452,7 @@ var GridVirtualizer = class {
@@ -53,33 +57,35 @@ index 6c6fc13217b63d80e9617d8bce2d284fe3468d26..39cab71d247b6eac51d0a949d9db75d6
        height: "100%",
        transform: `translate3d(${x}px, 0, 0)`
      };
-@@ -579,8 +579,8 @@ var GridVirtualizer = class {
+@@ -579,8 +579,9 @@ var GridVirtualizer = class {
    getContentStyle() {
      return {
        position: "relative",
 -      width: this.getTotalWidth(),
 -      height: this.getTotalHeight(),
++      flexShrink: 0,
 +      width: `${this.getTotalWidth()}px`,
 +      height: `${this.getTotalHeight()}px`,
        pointerEvents: this.isScrolling ? "none" : "auto"
      };
    }
 diff --git a/dist/virtualizer.js b/dist/virtualizer.js
-index 3da3b2f915cf37861a7733f189d0ea0e8573b93c..ca1251c598050aab2c7f70ed6a8012c23df1ad5a 100644
+index 3da3b2f915cf37861a7733f189d0ea0e8573b93c..86602904e99fa95e641a5ef4b3e0c570152a7d3c 100644
 --- a/dist/virtualizer.js
 +++ b/dist/virtualizer.js
-@@ -266,8 +266,8 @@ var _Virtualizer = class _Virtualizer {
+@@ -266,8 +266,9 @@ var _Virtualizer = class _Virtualizer {
      const horizontal = this.isHorizontal;
      return {
        position: "relative",
 -      width: horizontal ? totalSize : "100%",
 -      height: horizontal ? "100%" : totalSize,
++      flexShrink: 0,
 +      width: horizontal ? `${totalSize}px` : "100%",
 +      height: horizontal ? "100%" : `${totalSize}px`,
        pointerEvents: this.isScrolling ? "none" : "auto"
      };
    }
-@@ -850,7 +850,6 @@ var _Virtualizer = class _Virtualizer {
+@@ -850,7 +851,6 @@ var _Virtualizer = class _Virtualizer {
          if (!rangeNotified) {
            this.options.onRangeChange?.({ range: this.range, reason: "measurement" });
          }
@@ -87,7 +93,7 @@ index 3da3b2f915cf37861a7733f189d0ea0e8573b93c..ca1251c598050aab2c7f70ed6a8012c2
          this.notifyStore();
        });
      }
-@@ -914,7 +913,6 @@ var _Virtualizer = class _Virtualizer {
+@@ -914,7 +914,6 @@ var _Virtualizer = class _Virtualizer {
      if (!rangeNotified) {
        this.options.onRangeChange?.({ range: this.range, reason: "measurement" });
      }
@@ -96,21 +102,22 @@ index 3da3b2f915cf37861a7733f189d0ea0e8573b93c..ca1251c598050aab2c7f70ed6a8012c2
    }
    /**
 diff --git a/dist/virtualizer.mjs b/dist/virtualizer.mjs
-index fee2198f0204d9ddbddea77ea630de42677b525a..e0960c780ec3d93b7f96c3a84f2aba9b5725e45c 100644
+index fee2198f0204d9ddbddea77ea630de42677b525a..b7bee2e5237122fb12fa8295115a9fc3152f039b 100644
 --- a/dist/virtualizer.mjs
 +++ b/dist/virtualizer.mjs
-@@ -244,8 +244,8 @@ var _Virtualizer = class _Virtualizer {
+@@ -244,8 +244,9 @@ var _Virtualizer = class _Virtualizer {
      const horizontal = this.isHorizontal;
      return {
        position: "relative",
 -      width: horizontal ? totalSize : "100%",
 -      height: horizontal ? "100%" : totalSize,
++      flexShrink: 0,
 +      width: horizontal ? `${totalSize}px` : "100%",
 +      height: horizontal ? "100%" : `${totalSize}px`,
        pointerEvents: this.isScrolling ? "none" : "auto"
      };
    }
-@@ -828,7 +828,6 @@ var _Virtualizer = class _Virtualizer {
+@@ -828,7 +829,6 @@ var _Virtualizer = class _Virtualizer {
          if (!rangeNotified) {
            this.options.onRangeChange?.({ range: this.range, reason: "measurement" });
          }
@@ -118,7 +125,7 @@ index fee2198f0204d9ddbddea77ea630de42677b525a..e0960c780ec3d93b7f96c3a84f2aba9b
          this.notifyStore();
        });
      }
-@@ -892,7 +891,6 @@ var _Virtualizer = class _Virtualizer {
+@@ -892,7 +892,6 @@ var _Virtualizer = class _Virtualizer {
      if (!rangeNotified) {
        this.options.onRangeChange?.({ range: this.range, reason: "measurement" });
      }

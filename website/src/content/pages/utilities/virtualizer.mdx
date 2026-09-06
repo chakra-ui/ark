@@ -95,6 +95,33 @@ range.
 </ListVirtualizer.Root>
 ```
 
+### Composing with other components
+
+The virtualizer parts compose with any Ark component through the `render` prop. Render the component's scroll container
+as `ListVirtualizer.Root` and each of its items as `ListVirtualizer.Item`; the component's own props (roles, ids,
+handlers) win over the virtualizer's, and the virtualizer adds the positioning and the `aria-posinset` / `aria-setsize`
+attributes.
+
+```tsx
+<Combobox.List render={<ListVirtualizer.Root value={virtualizer} />}>
+  <ListVirtualizer.Content>
+    {virtualizer.getVirtualItems().map((virtualItem) => {
+      const item = collection.items[virtualItem.index]
+      return (
+        <Combobox.Item key={item.value} item={item} render={<ListVirtualizer.Item item={virtualItem} />}>
+          <Combobox.ItemText>{item.label}</Combobox.ItemText>
+        </Combobox.Item>
+      )
+    })}
+  </ListVirtualizer.Content>
+</Combobox.List>
+```
+
+Pass the component's `scrollToIndexFn` through to `virtualizer.scrollToIndex` so keyboard navigation reaches items that
+are not mounted. See the virtualized examples for [Select](/docs/components/select#virtualized),
+[Combobox](/docs/components/combobox#virtualized), [Listbox](/docs/components/listbox#virtualized), and
+[Tree View](/docs/components/tree-view#virtualized).
+
 ## API Reference
 
 <ComponentTypes id="virtualizer" />

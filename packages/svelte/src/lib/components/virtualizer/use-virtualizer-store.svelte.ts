@@ -1,18 +1,28 @@
 import { useSyncExternalStore } from '@zag-js/svelte'
+import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 import { onDestroy } from 'svelte'
 
-interface VirtualizerLike {
+interface VirtualizerLike<Options> {
   subscribe: (listener: VoidFunction) => VoidFunction
   getSnapshot: () => number
   destroy: () => void
   init: (element: HTMLElement) => void
+  updateOptions: (options: Partial<Options>) => void
 }
 
 export type VirtualizerRef = (element: HTMLElement | null) => void
 
-export function useVirtualizerStore<T extends VirtualizerLike>(create: () => T): T & { ref: VirtualizerRef } {
-  const virtualizer = create()
+export function useVirtualizerStore<Options extends object, T extends VirtualizerLike<Options>>(
+  props: MaybeFunction<Options>,
+  create: (options: Options) => T,
+): T & { ref: VirtualizerRef } {
+  const resolveOptions = () => runIfFn(props) as Options
+  const virtualizer = create(resolveOptions())
   const snapshot = useSyncExternalStore(virtualizer.subscribe, virtualizer.getSnapshot)
+
+  $effect.pre(() => {
+    virtualizer.updateOptions(resolveOptions())
+  })
 
   onDestroy(() => virtualizer.destroy())
 

@@ -37,6 +37,7 @@ export {
   type ListboxItemTextProps,
 } from './listbox-item-text.svelte'
 export { default as ListboxLabel, type ListboxLabelBaseProps, type ListboxLabelProps } from './listbox-label.svelte'
+export { default as ListboxList, type ListboxListBaseProps, type ListboxListProps } from './listbox-list.svelte'
 export {
   default as ListboxRoot,
   type ListboxRootBaseProps,

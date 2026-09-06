@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { GridVirtualizer, useGridVirtualizer } from '@ark-ui/vue/virtualizer'
 import styles from 'styles/virtualizer.module.css'
+import { computed } from 'vue'
 
-const virtualizer = useGridVirtualizer({
-  rowCount: 1000,
-  columnCount: 50,
-  estimatedRowSize: () => 40,
-  estimatedColumnSize: () => 120,
-})
+const virtualizer = useGridVirtualizer(
+  computed(() => ({
+    rowCount: 1000,
+    columnCount: 50,
+    estimatedRowSize: () => 40,
+    estimatedColumnSize: () => 120,
+  })),
+)
 </script>
 
 <template>

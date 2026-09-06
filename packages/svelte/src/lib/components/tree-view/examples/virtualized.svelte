@@ -1,10 +1,9 @@
 <script lang="ts">
-  import { TreeView, createTreeCollection, useTreeView } from '$lib'
-  import { createVirtualizer } from '@tanstack/svelte-virtual'
+  import { TreeView, createTreeCollection, useTreeView } from '@ark-ui/svelte/tree-view'
+  import { ListVirtualizer, useListVirtualizer } from '@ark-ui/svelte/virtualizer'
   import { ChevronRightIcon, FileIcon, FolderIcon } from 'lucide-svelte'
   import button from 'styles/button.module.css'
   import styles from 'styles/tree-view.module.css'
-  import { get } from 'svelte/store'
 
   interface Node {
     id: string
@@ -36,27 +35,22 @@
 
   const ROW_HEIGHT = 32
 
-  let treeRef = $state<HTMLDivElement | null>(null)
-
   const id = $props.id()
   const tree = useTreeView({
     collection,
     id,
     scrollToIndexFn(details) {
-      get(virtualizer)?.scrollToIndex(details.index, { align: 'auto' })
+      virtualizer.scrollToIndex(details.index, { align: 'auto' })
     },
   })
 
   const visibleNodes = $derived(tree().getVisibleNodes())
 
-  const virtualizer = createVirtualizer<HTMLDivElement, Element>({
-    get count() {
-      return visibleNodes.length
-    },
-    getScrollElement: () => treeRef,
-    estimateSize: () => ROW_HEIGHT,
+  const virtualizer = useListVirtualizer(() => ({
+    count: visibleNodes.length,
+    estimatedSize: () => ROW_HEIGHT,
     overscan: 10,
-  })
+  }))
 </script>
 
 <TreeView.RootProvider class={styles.Root} value={tree}>
@@ -65,47 +59,41 @@
     <button class={button.Root} onclick={() => tree().collapse()}>Collapse all</button>
     <button class={button.Root} onclick={() => tree().expand()}>Expand all</button>
   </div>
-  <TreeView.Tree bind:ref={treeRef} class={styles.Tree} style="height: 400px; overflow: auto;">
-    <div style="min-height: {$virtualizer.getTotalSize()}px; width: 100%; position: relative;">
-      {#each $virtualizer.getVirtualItems() as virtualItem (visibleNodes[virtualItem.index].node.id)}
-        {@const visibleNode = visibleNodes[virtualItem.index]}
-        {@const nodeState = tree().getNodeState({ node: visibleNode.node, indexPath: visibleNode.indexPath })}
-        <div
-          data-index={virtualItem.index}
-          onpointerdown={(e) => {
-            if (e.button !== 0) return
-            tree().focus(visibleNode.node.id)
-          }}
-          style="position: absolute; top: 0; left: 0; width: 100%; height: {virtualItem.size}px; transform: translateY({virtualItem.start}px);"
-        >
-          <TreeView.NodeProvider node={visibleNode.node} indexPath={visibleNode.indexPath}>
-            {#if nodeState.isBranch}
-              <TreeView.Node class={styles.Node} style="padding-left: {nodeState.depth * 22}px">
-                <TreeView.Cell class={styles.Cell}>
-                  <TreeView.NodeExpandTrigger class={styles.NodeExpandTrigger}>
-                    <TreeView.NodeIndicator type="expanded" class={styles.NodeIndicator}>
-                      <ChevronRightIcon />
-                    </TreeView.NodeIndicator>
-                  </TreeView.NodeExpandTrigger>
-                  <TreeView.NodeText class={styles.NodeText}>
-                    <FolderIcon />
-                    {visibleNode.node.name}
-                  </TreeView.NodeText>
-                </TreeView.Cell>
+  <TreeView.Tree class={styles.Tree} style="height: 400px">
+    {#snippet render(props)}
+      <ListVirtualizer.Root {...props()} value={virtualizer}>
+        <ListVirtualizer.Content>
+          {#each virtualizer.getVirtualItems() as virtualItem (visibleNodes[virtualItem.index].node.id)}
+            {@const visibleNode = visibleNodes[virtualItem.index]}
+            {@const nodeState = tree().getNodeState({ node: visibleNode.node, indexPath: visibleNode.indexPath })}
+            <TreeView.NodeProvider node={visibleNode.node} indexPath={visibleNode.indexPath}>
+              <TreeView.Node class={styles.Node}>
+                {#snippet render(props)}
+                  <ListVirtualizer.Item {...props()} item={virtualItem}>
+                    <TreeView.Cell class={styles.Cell} style="padding-left: {nodeState.depth * 22}px">
+                      {#if nodeState.isBranch}
+                        <TreeView.NodeExpandTrigger class={styles.NodeExpandTrigger}>
+                          <TreeView.NodeIndicator type="expanded" class={styles.NodeIndicator}>
+                            <ChevronRightIcon />
+                          </TreeView.NodeIndicator>
+                        </TreeView.NodeExpandTrigger>
+                      {/if}
+                      <TreeView.NodeText class={styles.NodeText}>
+                        {#if nodeState.isBranch}
+                          <FolderIcon />
+                        {:else}
+                          <FileIcon />
+                        {/if}
+                        {visibleNode.node.name}
+                      </TreeView.NodeText>
+                    </TreeView.Cell>
+                  </ListVirtualizer.Item>
+                {/snippet}
               </TreeView.Node>
-            {:else}
-              <TreeView.Node class={styles.Node} style="padding-left: {nodeState.depth * 22}px">
-                <TreeView.Cell class={styles.Cell}>
-                  <TreeView.NodeText class={styles.NodeText}>
-                    <FileIcon />
-                    {visibleNode.node.name}
-                  </TreeView.NodeText>
-                </TreeView.Cell>
-              </TreeView.Node>
-            {/if}
-          </TreeView.NodeProvider>
-        </div>
-      {/each}
-    </div>
+            </TreeView.NodeProvider>
+          {/each}
+        </ListVirtualizer.Content>
+      </ListVirtualizer.Root>
+    {/snippet}
   </TreeView.Tree>
 </TreeView.RootProvider>

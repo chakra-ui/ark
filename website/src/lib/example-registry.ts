@@ -314,6 +314,7 @@ import * as Listbox_Multiple from '@examples/listbox/examples/multiple'
 import * as Listbox_RootProvider from '@examples/listbox/examples/root-provider'
 import * as Listbox_SelectAll from '@examples/listbox/examples/select-all'
 import * as Listbox_ValueText from '@examples/listbox/examples/value-text'
+import * as Listbox_Virtualized from '@examples/listbox/examples/virtualized'
 import * as Marquee_AutoFill from '@examples/marquee/examples/auto-fill'
 import * as Marquee_Basic from '@examples/marquee/examples/basic'
 import * as Marquee_FiniteLoops from '@examples/marquee/examples/finite-loops'
@@ -467,6 +468,7 @@ import * as Select_ReactiveCollection from '@examples/select/examples/reactive-c
 import * as Select_RootProvider from '@examples/select/examples/root-provider'
 import * as Select_SelectAll from '@examples/select/examples/select-all'
 import * as Select_SelectOnHighlight from '@examples/select/examples/select-on-highlight'
+import * as Select_Virtualized from '@examples/select/examples/virtualized'
 import * as Select_WithField from '@examples/select/examples/with-field'
 import * as SignaturePad_Basic from '@examples/signature-pad/examples/basic'
 import * as SignaturePad_Controlled from '@examples/signature-pad/examples/controlled'
@@ -949,6 +951,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'listbox/root-provider': Listbox_RootProvider,
   'listbox/select-all': Listbox_SelectAll,
   'listbox/value-text': Listbox_ValueText,
+  'listbox/virtualized': Listbox_Virtualized,
   'marquee/auto-fill': Marquee_AutoFill,
   'marquee/basic': Marquee_Basic,
   'marquee/finite-loops': Marquee_FiniteLoops,
@@ -1102,6 +1105,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'select/root-provider': Select_RootProvider,
   'select/select-all': Select_SelectAll,
   'select/select-on-highlight': Select_SelectOnHighlight,
+  'select/virtualized': Select_Virtualized,
   'select/with-field': Select_WithField,
   'signature-pad/basic': SignaturePad_Basic,
   'signature-pad/controlled': SignaturePad_Controlled,

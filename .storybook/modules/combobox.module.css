@@ -275,8 +275,8 @@
 
 .Scroller {
   box-sizing: border-box;
-  height: min(300px, var(--total-size));
-  max-height: var(--available-height, 300px);
+  height: var(--total-size);
+  max-height: calc(min(var(--available-height, 300px), 300px) - 0.5rem);
   overflow: auto;
   overscroll-behavior: contain;
   scroll-padding-block: 0.25rem;

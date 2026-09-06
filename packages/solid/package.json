@@ -164,7 +164,6 @@
     "@storybook/addon-a11y": "10.5.10",
     "@storybook/addon-links": "10.5.10",
     "@storybook/addon-vitest": "10.5.10",
-    "@tanstack/solid-virtual": "3.13.37",
     "@testing-library/dom": "10.4.1",
     "@testing-library/jest-dom": "7.0.1",
     "@testing-library/user-event": "14.6.6",

@@ -1,18 +1,26 @@
 import { useSyncExternalStore } from '@zag-js/vue'
-import { type ComponentPublicInstance, nextTick, onUnmounted } from 'vue'
+import { type ComponentPublicInstance, type MaybeRef, nextTick, onUnmounted, toValue, watchSyncEffect } from 'vue'
 
-interface VirtualizerLike {
+interface VirtualizerLike<Options> {
   subscribe: (listener: VoidFunction) => VoidFunction
   getSnapshot: () => number
   destroy: () => void
   init: (element: HTMLElement) => void
+  updateOptions: (options: Partial<Options>) => void
 }
 
 export type VirtualizerRef = (element: Element | ComponentPublicInstance | null) => void
 
-export function useVirtualizerStore<T extends VirtualizerLike>(create: () => T): T & { ref: VirtualizerRef } {
-  const virtualizer = create()
+export function useVirtualizerStore<Options extends object, T extends VirtualizerLike<Options>>(
+  props: MaybeRef<Options>,
+  create: (options: Options) => T,
+): T & { ref: VirtualizerRef } {
+  const virtualizer = create(toValue(props))
   const snapshot = useSyncExternalStore(virtualizer.subscribe, virtualizer.getSnapshot)
+
+  watchSyncEffect(() => {
+    virtualizer.updateOptions(toValue(props))
+  })
 
   onUnmounted(() => virtualizer.destroy())
 

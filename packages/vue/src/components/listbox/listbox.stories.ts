@@ -12,6 +12,7 @@ import MultipleExample from './examples/multiple.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import SelectAllExample from './examples/select-all.vue'
 import ValueTextExample from './examples/value-text.vue'
+import VirtualizedExample from './examples/virtualized.vue'
 
 const meta: Meta = {
   title: 'Components / Listbox',
@@ -99,6 +100,13 @@ export const SelectAll = {
 export const ValueText = {
   render: () => ({
     components: { Component: ValueTextExample },
+    template: '<Component />',
+  }),
+}
+
+export const Virtualized = {
+  render: () => ({
+    components: { Component: VirtualizedExample },
     template: '<Component />',
   }),
 }

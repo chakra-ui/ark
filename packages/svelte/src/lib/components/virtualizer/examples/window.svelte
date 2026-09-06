@@ -4,10 +4,10 @@
 
   const items = Array.from({ length: 10000 }, (_, index) => `Item ${index + 1}`)
 
-  const virtualizer = useWindowVirtualizer({
+  const virtualizer = useWindowVirtualizer(() => ({
     count: items.length,
     estimatedSize: () => 48,
-  })
+  }))
 </script>
 
 <WindowVirtualizer.Root value={virtualizer} class={styles.Window}>

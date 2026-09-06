@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { WindowVirtualizer, useWindowVirtualizer } from '@ark-ui/vue/virtualizer'
 import styles from 'styles/virtualizer.module.css'
+import { computed } from 'vue'
 
 const items = Array.from({ length: 10000 }, (_, index) => `Item ${index + 1}`)
 
-const virtualizer = useWindowVirtualizer({
-  count: items.length,
-  estimatedSize: () => 48,
-})
+const virtualizer = useWindowVirtualizer(
+  computed(() => ({
+    count: items.length,
+    estimatedSize: () => 48,
+  })),
+)
 </script>
 
 <template>

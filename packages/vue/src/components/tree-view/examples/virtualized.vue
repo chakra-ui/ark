@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { TreeView, createTreeCollection, useTreeView } from '@ark-ui/vue/tree-view'
-import { useVirtualizer } from '@tanstack/vue-virtual'
+import { useListVirtualizer } from '@ark-ui/vue/virtualizer'
 import { ChevronRight, File, Folder } from 'lucide-vue-next'
 import button from 'styles/button.module.css'
 import styles from 'styles/tree-view.module.css'
-import { computed, nextTick, ref } from 'vue'
+import { computed } from 'vue'
 
 interface Node {
   id: string
@@ -36,24 +36,19 @@ const collection = createTreeCollection<Node>({
 
 const ROW_HEIGHT = 32
 
-const treeRef = ref<HTMLDivElement | null>(null)
-
 const tree = useTreeView({
   collection,
   scrollToIndexFn(details) {
-    nextTick(() => {
-      virtualizer.value?.scrollToIndex(details.index, { align: 'auto' })
-    })
+    virtualizer.scrollToIndex(details.index, { align: 'auto' })
   },
 })
 
 const visibleNodes = computed(() => tree.value.getVisibleNodes())
 
-const virtualizer = useVirtualizer(
+const virtualizer = useListVirtualizer(
   computed(() => ({
     count: visibleNodes.value.length,
-    getScrollElement: () => treeRef.value,
-    estimateSize: () => ROW_HEIGHT,
+    estimatedSize: () => ROW_HEIGHT,
     overscan: 10,
   })),
 )
@@ -66,32 +61,18 @@ const virtualizer = useVirtualizer(
       <button :class="button.Root" @click="tree.collapse()">Collapse all</button>
       <button :class="button.Root" @click="tree.expand()">Expand all</button>
     </div>
-    <TreeView.Tree ref="treeRef" :class="styles.Tree" :style="{ height: '400px', overflow: 'auto' }">
-      <div
-        :style="{
-          minHeight: `${virtualizer.getTotalSize()}px`,
-          width: '100%',
-          position: 'relative',
-        }"
-      >
+    <TreeView.Tree
+      :ref="virtualizer.ref"
+      :class="styles.Tree"
+      :style="{ ...virtualizer.getContainerStyle(), height: '400px' }"
+      @scroll="virtualizer.handleScroll"
+    >
+      <div :style="virtualizer.getContentStyle()">
         <div
           v-for="virtualItem in virtualizer.getVirtualItems()"
           :key="visibleNodes[virtualItem.index].node.id"
           :data-index="virtualItem.index"
-          @pointerdown="
-            (e) => {
-              if (e.button !== 0) return
-              tree.focus(visibleNodes[virtualItem.index].node.id)
-            }
-          "
-          :style="{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: `${virtualItem.size}px`,
-            transform: `translateY(${virtualItem.start}px)`,
-          }"
+          :style="virtualizer.getItemStyle(virtualItem)"
         >
           <TreeView.NodeProvider
             :node="visibleNodes[virtualItem.index].node"
