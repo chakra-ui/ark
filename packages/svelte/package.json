@@ -106,8 +106,8 @@
   "scripts": {
     "build": "svelte-kit sync && svelte-package --tsconfig ./tsconfig.build.json && node scripts/fix-dist-extensions.mjs",
     "start": "svelte-kit sync && vite dev",
-    "dev": "storybook dev -p 6006",
-    "storybook": "storybook dev -p 6006",
+    "dev": "svelte-kit sync && storybook dev -p 6006",
+    "storybook": "svelte-kit sync && storybook dev -p 6006",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ci": "vitest --run",
