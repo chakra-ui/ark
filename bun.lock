@@ -110,6 +110,7 @@
         "@zag-js/tree-view": "2.0.0-next.1",
         "@zag-js/types": "2.0.0-next.1",
         "@zag-js/utils": "2.0.0-next.1",
+        "@zag-js/virtualizer": "2.0.0-next.2",
       },
       "devDependencies": {
         "@biomejs/biome": "2.5.11",
@@ -223,6 +224,7 @@
         "@zag-js/tree-view": "2.0.0-next.1",
         "@zag-js/types": "2.0.0-next.1",
         "@zag-js/utils": "2.0.0-next.1",
+        "@zag-js/virtualizer": "2.0.0-next.2",
       },
       "devDependencies": {
         "@biomejs/biome": "2.5.11",
@@ -332,6 +334,7 @@
         "@zag-js/tree-view": "2.0.0-next.1",
         "@zag-js/types": "2.0.0-next.1",
         "@zag-js/utils": "2.0.0-next.1",
+        "@zag-js/virtualizer": "2.0.0-next.2",
       },
       "devDependencies": {
         "@storybook/addon-a11y": "10.5.10",
@@ -438,6 +441,7 @@
         "@zag-js/tree-view": "2.0.0-next.1",
         "@zag-js/types": "2.0.0-next.1",
         "@zag-js/utils": "2.0.0-next.1",
+        "@zag-js/virtualizer": "2.0.0-next.2",
         "@zag-js/vue": "2.0.0-next.1",
       },
       "devDependencies": {
@@ -603,6 +607,9 @@
   "trustedDependencies": [
     "@ark-ui/website",
   ],
+  "patchedDependencies": {
+    "@zag-js/virtualizer@2.0.0-next.2": "patches/@zag-js%2Fvirtualizer@2.0.0-next.2.patch",
+  },
   "overrides": {
     "flexsearch": "0.8.212",
     "vite": "8.2.2",
@@ -1953,6 +1960,8 @@
     "@zag-js/types": ["@zag-js/types@2.0.0-next.1", "", { "dependencies": { "csstype": "3.2.3" } }, "sha512-7mcwgh7WUiJePz6IvLYHGM+Ep0Kz3liPP0lL7hqk2U4Bmm0uxhbsxDIUS1zdSZC49lIpR01qC6+gOv0UzDNmEg=="],
 
     "@zag-js/utils": ["@zag-js/utils@2.0.0-next.1", "", {}, "sha512-ivWikKQ3+XCLaKKZ5EIhUUvF5MDvpSDgxjB2gbef2Zh6Cm8FWormkd0dCn3m1Mihn6j4TTBPFVuMnxFwGzGaeg=="],
+
+    "@zag-js/virtualizer": ["@zag-js/virtualizer@2.0.0-next.2", "", { "dependencies": { "@zag-js/dom-query": "2.0.0-next.2" } }, "sha512-irWkVd4KrHFntSV4ciKaFvAGoE1VqEUpitQzkdgXe1nV8Wgr6hkoxlVjZrfOdzcOO+OHZFydtt6wDD3NAttHbw=="],
 
     "@zag-js/vue": ["@zag-js/vue@2.0.0-next.1", "", { "dependencies": { "@zag-js/core": "2.0.0-next.1", "@zag-js/store": "2.0.0-next.1", "@zag-js/types": "2.0.0-next.1", "@zag-js/utils": "2.0.0-next.1" }, "peerDependencies": { "vue": ">=3.0.0" } }, "sha512-DLGBqIKmYCy/LoFxIgIuF4HpJiJeDiAd9aBXH5ACJQm28OO68fXfEeDAfZaL0uREexuGcy01hGNY4n+SW2RhxQ=="],
 
@@ -4358,6 +4367,8 @@
 
     "@vue/test-utils/vue-component-type-helpers": ["vue-component-type-helpers@3.3.5", "", {}, "sha512-Fe1jyPJoUGpJOYKOri44jduR7My4yYINOMJISuMAbmrs+L5LbIDUc8NTWZYY3EJLK0yPLuCmcd5zoCsE4k2/KA=="],
 
+    "@zag-js/virtualizer/@zag-js/dom-query": ["@zag-js/dom-query@2.0.0-next.2", "", { "dependencies": { "@zag-js/types": "2.0.0-next.2" } }, "sha512-8X5ob4icV85lssFEq0yCIb6WKdTUR+kBbqXa73wuavHaHSLbdR1YycsZmJaJpoNXuz6oZTWmUyee4ZdtDRBaFg=="],
+
     "anymatch/picomatch": ["picomatch@2.3.2", "", {}, "sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA=="],
 
     "archiver/buffer-crc32": ["buffer-crc32@1.0.0", "", {}, "sha512-Db1SbgBS/fg/392AblrMJk97KggmvYhr4pB5ZIMTWtaivCPMWLkmb7m21cJvpvgK+J3nsU2CmmixNBZx4vFj/w=="],
@@ -5221,6 +5232,8 @@
     "@vue/babel-plugin-resolve-type/@vue/compiler-sfc/postcss": ["postcss@8.5.15", "", { "dependencies": { "nanoid": "^3.3.12", "picocolors": "^1.1.1", "source-map-js": "^1.2.1" } }, "sha512-FfR8sjd4em2T6fb3I2MwAJU7HWVMr9zba+enmQeeWFfCbm+UOC/0X4DS8XtpUTMwWMGbjKYP7xjfNekzyGmB3A=="],
 
     "@vue/compiler-sfc/postcss/nanoid": ["nanoid@3.3.18", "", { "bin": { "nanoid": "bin/nanoid.cjs" } }, "sha512-DTg4MJbGMWkfi6VZFdNt2/caMbQy4Ou+Op/hJQvGEWcnVfoA1QA+xzRKAzw9jD6+GVOOeYr/mIcuDSdug6F6+w=="],
+
+    "@zag-js/virtualizer/@zag-js/dom-query/@zag-js/types": ["@zag-js/types@2.0.0-next.2", "", { "dependencies": { "csstype": "3.2.3" } }, "sha512-pYJ4PlDrcxgmwJCZM4Kz90IvilJqwYlXqEjCayE1XYz5QFUlZxdltKbmJexak+fMGtw2f3uiIrMT7BA3NmCR7Q=="],
 
     "archiver-utils/glob/minimatch": ["minimatch@9.0.9", "", { "dependencies": { "brace-expansion": "^2.0.2" } }, "sha512-OBwBN9AL4dqmETlpS2zasx+vTeWclWzkblfZk7KTA5j3jeOONz/tRCnZomUyvNg83wL5Zv9Ss6HMJXAgL8R2Yg=="],
 

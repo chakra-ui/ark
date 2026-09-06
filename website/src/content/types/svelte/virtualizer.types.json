@@ -1,0 +1,196 @@
+{
+  "GridCell": {
+    "props": {
+      "column": {
+        "type": "VirtualColumn",
+        "isRequired": true,
+        "description": "The virtual column to render within the current row."
+      },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  },
+  "GridContent": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  },
+  "GridContext": { "props": { "render": { "type": "Snippet<[UseGridVirtualizerContext]>", "isRequired": true } } },
+  "GridRoot": {
+    "props": {
+      "value": {
+        "type": "UseGridVirtualizerReturn",
+        "isRequired": true,
+        "description": "The virtualizer instance returned by `useGridVirtualizer`."
+      },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  },
+  "GridRow": {
+    "props": {
+      "row": { "type": "VirtualRow", "isRequired": true, "description": "The virtual row to render." },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "measure": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to measure the rendered height of the row and use it instead of the estimate."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  },
+  "ListContent": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  },
+  "ListContext": { "props": { "render": { "type": "Snippet<[UseListVirtualizerContext]>", "isRequired": true } } },
+  "ListItem": {
+    "props": {
+      "item": { "type": "VirtualItem", "isRequired": true, "description": "The virtual item to render." },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "measure": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to measure the rendered size of the item and use it instead of the estimate."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  },
+  "ListRoot": {
+    "props": {
+      "value": {
+        "type": "UseListVirtualizerReturn",
+        "isRequired": true,
+        "description": "The virtualizer instance returned by `useListVirtualizer`."
+      },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  },
+  "WindowContent": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  },
+  "WindowContext": { "props": { "render": { "type": "Snippet<[UseWindowVirtualizerContext]>", "isRequired": true } } },
+  "WindowItem": {
+    "props": {
+      "item": { "type": "VirtualItem", "isRequired": true, "description": "The virtual item to render." },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "measure": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to measure the rendered size of the item and use it instead of the estimate."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  },
+  "WindowRoot": {
+    "props": {
+      "value": {
+        "type": "UseWindowVirtualizerReturn",
+        "isRequired": true,
+        "description": "The virtualizer instance returned by `useWindowVirtualizer`."
+      },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  }
+}

@@ -607,6 +607,12 @@ import * as TreeView_Mutation from '@examples/tree-view/examples/mutation'
 import * as TreeView_RenameNode from '@examples/tree-view/examples/rename-node'
 import * as TreeView_RootProvider from '@examples/tree-view/examples/root-provider'
 import * as TreeView_Virtualized from '@examples/tree-view/examples/virtualized'
+import * as Virtualizer_DynamicSize from '@examples/virtualizer/examples/dynamic-size'
+import * as Virtualizer_Grid from '@examples/virtualizer/examples/grid'
+import * as Virtualizer_Horizontal from '@examples/virtualizer/examples/horizontal'
+import * as Virtualizer_List from '@examples/virtualizer/examples/list'
+import * as Virtualizer_ScrollToIndex from '@examples/virtualizer/examples/scroll-to-index'
+import * as Virtualizer_Window from '@examples/virtualizer/examples/window'
 import * as Environment_Basic from '@examples/environment/examples/basic'
 import * as Environment_Setup from '@examples/environment/examples/setup'
 import * as Environment_ShadowRoot from '@examples/environment/examples/shadow-root'
@@ -1236,6 +1242,12 @@ const exampleModules: Record<string, ExampleModule> = {
   'tree-view/rename-node': TreeView_RenameNode,
   'tree-view/root-provider': TreeView_RootProvider,
   'tree-view/virtualized': TreeView_Virtualized,
+  'virtualizer/dynamic-size': Virtualizer_DynamicSize,
+  'virtualizer/grid': Virtualizer_Grid,
+  'virtualizer/horizontal': Virtualizer_Horizontal,
+  'virtualizer/list': Virtualizer_List,
+  'virtualizer/scroll-to-index': Virtualizer_ScrollToIndex,
+  'virtualizer/window': Virtualizer_Window,
   'environment/basic': Environment_Basic,
   'environment/setup': Environment_Setup,
   'environment/shadow-root': Environment_ShadowRoot,

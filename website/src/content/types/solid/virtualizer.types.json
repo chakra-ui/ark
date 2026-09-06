@@ -1,0 +1,183 @@
+{
+  "GridCell": {
+    "props": {
+      "column": {
+        "type": "VirtualColumn",
+        "isRequired": true,
+        "description": "The virtual column to render within the current row."
+      },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+      }
+    }
+  },
+  "GridContent": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+      }
+    }
+  },
+  "GridRoot": {
+    "props": {
+      "value": {
+        "type": "UseGridVirtualizerReturn",
+        "isRequired": true,
+        "description": "The virtualizer instance returned by `useGridVirtualizer`."
+      },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+      }
+    }
+  },
+  "GridRow": {
+    "props": {
+      "row": { "type": "VirtualRow", "isRequired": true, "description": "The virtual row to render." },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "measure": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to measure the rendered height of the row and use it instead of the estimate."
+      },
+      "render": {
+        "type": "RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+      }
+    }
+  },
+  "ListContent": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+      }
+    }
+  },
+  "ListItem": {
+    "props": {
+      "item": { "type": "VirtualItem", "isRequired": true, "description": "The virtual item to render." },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "measure": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to measure the rendered size of the item and use it instead of the estimate."
+      },
+      "render": {
+        "type": "RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+      }
+    }
+  },
+  "ListRoot": {
+    "props": {
+      "value": {
+        "type": "UseListVirtualizerReturn",
+        "isRequired": true,
+        "description": "The virtualizer instance returned by `useListVirtualizer`."
+      },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+      }
+    }
+  },
+  "WindowContent": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+      }
+    }
+  },
+  "WindowItem": {
+    "props": {
+      "item": { "type": "VirtualItem", "isRequired": true, "description": "The virtual item to render." },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "measure": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to measure the rendered size of the item and use it instead of the estimate."
+      },
+      "render": {
+        "type": "RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+      }
+    }
+  },
+  "WindowRoot": {
+    "props": {
+      "value": {
+        "type": "UseWindowVirtualizerReturn",
+        "isRequired": true,
+        "description": "The virtualizer instance returned by `useWindowVirtualizer`."
+      },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+      }
+    }
+  }
+}
