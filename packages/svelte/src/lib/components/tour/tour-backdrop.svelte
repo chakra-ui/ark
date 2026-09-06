@@ -36,7 +36,7 @@
     bind:ref
     {...mergedProps}
     {@attach setNode}
-    hidden={!tour().step?.backdrop}
+    hidden={mergedProps.hidden || !tour().step?.backdrop}
     state={tour().getBackdropState()}
   />
 {/if}
