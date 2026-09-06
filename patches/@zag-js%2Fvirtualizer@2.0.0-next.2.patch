@@ -1,0 +1,180 @@
+diff --git a/dist/grid-virtualizer.js b/dist/grid-virtualizer.js
+index 10fee580193925a701752a00385a5848fed96a17..d74b14b7a9e0fa60c7655a4b7edd3deb8e6abf3b 100644
+--- a/dist/grid-virtualizer.js
++++ b/dist/grid-virtualizer.js
+@@ -474,7 +474,7 @@ var GridVirtualizer = class {
+       top: 0,
+       left: 0,
+       width: "100%",
+-      height: virtualRow.height,
++      height: `${virtualRow.height}px`,
+       transform: `translate3d(0, ${virtualRow.y}px, 0)`
+     };
+   }
+@@ -488,7 +488,7 @@ var GridVirtualizer = class {
+       position: "absolute",
+       top: 0,
+       left: 0,
+-      width: column.width,
++      width: `${column.width}px`,
+       height: "100%",
+       transform: `translate3d(${x}px, 0, 0)`
+     };
+@@ -601,8 +601,8 @@ var GridVirtualizer = class {
+   getContentStyle() {
+     return {
+       position: "relative",
+-      width: this.getTotalWidth(),
+-      height: this.getTotalHeight(),
++      width: `${this.getTotalWidth()}px`,
++      height: `${this.getTotalHeight()}px`,
+       pointerEvents: this.isScrolling ? "none" : "auto"
+     };
+   }
+diff --git a/dist/grid-virtualizer.mjs b/dist/grid-virtualizer.mjs
+index 6c6fc13217b63d80e9617d8bce2d284fe3468d26..39cab71d247b6eac51d0a949d9db75d6accbb6de 100644
+--- a/dist/grid-virtualizer.mjs
++++ b/dist/grid-virtualizer.mjs
+@@ -452,7 +452,7 @@ var GridVirtualizer = class {
+       top: 0,
+       left: 0,
+       width: "100%",
+-      height: virtualRow.height,
++      height: `${virtualRow.height}px`,
+       transform: `translate3d(0, ${virtualRow.y}px, 0)`
+     };
+   }
+@@ -466,7 +466,7 @@ var GridVirtualizer = class {
+       position: "absolute",
+       top: 0,
+       left: 0,
+-      width: column.width,
++      width: `${column.width}px`,
+       height: "100%",
+       transform: `translate3d(${x}px, 0, 0)`
+     };
+@@ -579,8 +579,8 @@ var GridVirtualizer = class {
+   getContentStyle() {
+     return {
+       position: "relative",
+-      width: this.getTotalWidth(),
+-      height: this.getTotalHeight(),
++      width: `${this.getTotalWidth()}px`,
++      height: `${this.getTotalHeight()}px`,
+       pointerEvents: this.isScrolling ? "none" : "auto"
+     };
+   }
+diff --git a/dist/virtualizer.js b/dist/virtualizer.js
+index 3da3b2f915cf37861a7733f189d0ea0e8573b93c..ca1251c598050aab2c7f70ed6a8012c23df1ad5a 100644
+--- a/dist/virtualizer.js
++++ b/dist/virtualizer.js
+@@ -266,8 +266,8 @@ var _Virtualizer = class _Virtualizer {
+     const horizontal = this.isHorizontal;
+     return {
+       position: "relative",
+-      width: horizontal ? totalSize : "100%",
+-      height: horizontal ? "100%" : totalSize,
++      width: horizontal ? `${totalSize}px` : "100%",
++      height: horizontal ? "100%" : `${totalSize}px`,
+       pointerEvents: this.isScrolling ? "none" : "auto"
+     };
+   }
+@@ -850,7 +850,6 @@ var _Virtualizer = class _Virtualizer {
+         if (!rangeNotified) {
+           this.options.onRangeChange?.({ range: this.range, reason: "measurement" });
+         }
+-        this.measureCacheDirtyFrom = Infinity;
+         this.notifyStore();
+       });
+     }
+@@ -914,7 +913,6 @@ var _Virtualizer = class _Virtualizer {
+     if (!rangeNotified) {
+       this.options.onRangeChange?.({ range: this.range, reason: "measurement" });
+     }
+-    this.measureCacheDirtyFrom = Infinity;
+     this.notifyStore();
+   }
+   /**
+diff --git a/dist/virtualizer.mjs b/dist/virtualizer.mjs
+index fee2198f0204d9ddbddea77ea630de42677b525a..e0960c780ec3d93b7f96c3a84f2aba9b5725e45c 100644
+--- a/dist/virtualizer.mjs
++++ b/dist/virtualizer.mjs
+@@ -244,8 +244,8 @@ var _Virtualizer = class _Virtualizer {
+     const horizontal = this.isHorizontal;
+     return {
+       position: "relative",
+-      width: horizontal ? totalSize : "100%",
+-      height: horizontal ? "100%" : totalSize,
++      width: horizontal ? `${totalSize}px` : "100%",
++      height: horizontal ? "100%" : `${totalSize}px`,
+       pointerEvents: this.isScrolling ? "none" : "auto"
+     };
+   }
+@@ -828,7 +828,6 @@ var _Virtualizer = class _Virtualizer {
+         if (!rangeNotified) {
+           this.options.onRangeChange?.({ range: this.range, reason: "measurement" });
+         }
+-        this.measureCacheDirtyFrom = Infinity;
+         this.notifyStore();
+       });
+     }
+@@ -892,7 +891,6 @@ var _Virtualizer = class _Virtualizer {
+     if (!rangeNotified) {
+       this.options.onRangeChange?.({ range: this.range, reason: "measurement" });
+     }
+-    this.measureCacheDirtyFrom = Infinity;
+     this.notifyStore();
+   }
+   /**
+diff --git a/dist/waterfall-virtualizer.js b/dist/waterfall-virtualizer.js
+index 14ddfd16e8912e3e7de8963fc4b38b740bf8f774..77bce3c5b86c19edbce664edad03fd81acc9417b 100644
+--- a/dist/waterfall-virtualizer.js
++++ b/dist/waterfall-virtualizer.js
+@@ -181,7 +181,7 @@ var WaterfallVirtualizer = class extends import_virtualizer.Virtualizer {
+       position: "absolute",
+       top: 0,
+       left: 0,
+-      width: this.resolvedColumnWidth,
++      width: `${this.resolvedColumnWidth}px`,
+       transform: `translate3d(${laneOffset}px, ${y}px, 0)`
+     };
+   }
+diff --git a/dist/waterfall-virtualizer.mjs b/dist/waterfall-virtualizer.mjs
+index 63ca5be1f9470ec162d92af7316f4a3718076fb3..0cf6b98fd0ba4fbded7c3a1160884c2b1847b43d 100644
+--- a/dist/waterfall-virtualizer.mjs
++++ b/dist/waterfall-virtualizer.mjs
+@@ -159,7 +159,7 @@ var WaterfallVirtualizer = class extends Virtualizer {
+       position: "absolute",
+       top: 0,
+       left: 0,
+-      width: this.resolvedColumnWidth,
++      width: `${this.resolvedColumnWidth}px`,
+       transform: `translate3d(${laneOffset}px, ${y}px, 0)`
+     };
+   }
+diff --git a/dist/window-virtualizer.js b/dist/window-virtualizer.js
+index 47c73f4906fed7d141a7778f3c3d441ccb1c8da4..82e4337f7d57ba63d496313863ca5bd035fd9e58 100644
+--- a/dist/window-virtualizer.js
++++ b/dist/window-virtualizer.js
+@@ -182,7 +182,7 @@ var WindowVirtualizer = class extends import_list_virtualizer.ListVirtualizer {
+     return {
+       ...baseStyle,
+       position: "relative",
+-      marginTop: this.isHorizontal ? 0 : windowOffset,
++      marginTop: this.isHorizontal ? 0 : `${windowOffset}px`,
+       marginLeft: this.isHorizontal ? windowOffset : 0
+     };
+   }
+diff --git a/dist/window-virtualizer.mjs b/dist/window-virtualizer.mjs
+index 5bb3354e8ca3e423a894ceb9751465076c0566fc..e9fa7132a5a34f27a6d1d966e6de34bca8b56350 100644
+--- a/dist/window-virtualizer.mjs
++++ b/dist/window-virtualizer.mjs
+@@ -160,7 +160,7 @@ var WindowVirtualizer = class extends ListVirtualizer {
+     return {
+       ...baseStyle,
+       position: "relative",
+-      marginTop: this.isHorizontal ? 0 : windowOffset,
++      marginTop: this.isHorizontal ? 0 : `${windowOffset}px`,
+       marginLeft: this.isHorizontal ? windowOffset : 0
+     };
+   }

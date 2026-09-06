@@ -107,6 +107,7 @@ export const sidebarConfig: SidebarGroupConfig[] = [
       { id: 'locale' },
       { id: 'presence' },
       { id: 'swap' },
+      { id: 'virtualizer' },
     ],
   },
 ]

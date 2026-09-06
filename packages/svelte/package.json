@@ -106,8 +106,8 @@
   "scripts": {
     "build": "svelte-kit sync && svelte-package --tsconfig ./tsconfig.build.json && node scripts/fix-dist-extensions.mjs",
     "start": "svelte-kit sync && vite dev",
-    "dev": "storybook dev -p 6006",
-    "storybook": "storybook dev -p 6006",
+    "dev": "svelte-kit sync && storybook dev -p 6006",
+    "storybook": "svelte-kit sync && storybook dev -p 6006",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ci": "vitest --run",
@@ -211,7 +211,8 @@
     "@zag-js/tour": "2.0.0-next.1",
     "@zag-js/tree-view": "2.0.0-next.1",
     "@zag-js/types": "2.0.0-next.1",
-    "@zag-js/utils": "2.0.0-next.1"
+    "@zag-js/utils": "2.0.0-next.1",
+    "@zag-js/virtualizer": "2.0.0-next.2"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "10.5.10",

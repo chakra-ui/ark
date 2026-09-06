@@ -1,0 +1,122 @@
+.Root {
+  height: 400px;
+  width: 100%;
+  max-width: 36rem;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.5rem;
+}
+
+.RootHorizontal {
+  height: 12rem;
+  width: 100%;
+  max-width: 36rem;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.5rem;
+}
+
+.Item {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 1rem;
+  border-bottom: 1px solid var(--demo-border);
+  background: var(--demo-bg);
+  color: var(--demo-neutral-fg);
+  font-size: 0.875rem;
+}
+
+.ItemAlt {
+  background: var(--demo-neutral-subtle);
+}
+
+.ItemHorizontal {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  padding: 0 1rem;
+  border-right: 1px solid var(--demo-border);
+  background: var(--demo-bg);
+  color: var(--demo-neutral-fg);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.Controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.Trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  line-height: 1.25rem;
+  border-radius: 0.375rem;
+  border: 1px solid var(--demo-border-emphasized);
+  background: transparent;
+  color: var(--demo-neutral-fg);
+  cursor: pointer;
+}
+
+.Trigger:hover {
+  background: var(--demo-neutral-subtle);
+}
+
+.Meta {
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--demo-neutral-fg-muted);
+}
+
+.Grid {
+  height: 400px;
+  width: 100%;
+  max-width: 56rem;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.5rem;
+}
+
+.Cell {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 40px;
+  border: 1px solid var(--demo-border);
+  background: var(--demo-bg);
+  color: var(--demo-neutral-fg);
+  font-size: 0.75rem;
+}
+
+.Window {
+  width: 100%;
+  max-width: 36rem;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.5rem;
+}
+
+.ItemDynamic {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--demo-border);
+  background: var(--demo-bg);
+  color: var(--demo-neutral-fg);
+  font-size: 0.875rem;
+}
+
+.ItemDynamic p {
+  margin: 0;
+  color: var(--demo-neutral-fg-muted);
+}
