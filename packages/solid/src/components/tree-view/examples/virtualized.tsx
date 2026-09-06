@@ -1,7 +1,7 @@
 import { TreeView, createTreeCollection, useTreeView } from '@ark-ui/solid/tree-view'
 import { ListVirtualizer, useListVirtualizer } from '@ark-ui/solid/virtualizer'
 import { ChevronRightIcon, FileIcon, FolderIcon } from 'lucide-solid'
-import { For, Show } from 'solid-js'
+import { Index, Show, createMemo } from 'solid-js'
 import button from 'styles/button.module.css'
 import styles from 'styles/tree-view.module.css'
 
@@ -43,7 +43,7 @@ export const Virtualized = () => {
     },
   })
 
-  const visibleNodes = () => tree().getVisibleNodes()
+  const visibleNodes = createMemo(() => tree().getVisibleNodes())
 
   const virtualizer = useListVirtualizer(() => ({
     count: visibleNodes().length,
@@ -68,17 +68,18 @@ export const Virtualized = () => {
         render={(props) => <ListVirtualizer.Root {...props} value={virtualizer} />}
       >
         <ListVirtualizer.Content>
-          <For each={virtualizer.getVirtualItems()}>
+          <Index each={virtualizer.getVirtualItems()}>
             {(virtualItem) => {
-              const visibleNode = () => visibleNodes()[virtualItem.index]
-              const nodeState = () =>
-                tree().getNodeState({ node: visibleNode().node, indexPath: visibleNode().indexPath })
+              const visibleNode = () => visibleNodes()[virtualItem().index]
+              const nodeState = createMemo(() =>
+                tree().getNodeState({ node: visibleNode().node, indexPath: visibleNode().indexPath }),
+              )
 
               return (
                 <TreeView.NodeProvider node={visibleNode().node} indexPath={visibleNode().indexPath}>
                   <TreeView.Node
                     class={styles.Node}
-                    render={(props) => <ListVirtualizer.Item {...props} item={virtualItem} />}
+                    render={(props) => <ListVirtualizer.Item {...props} item={virtualItem()} />}
                   >
                     <TreeView.Cell class={styles.Cell} style={{ 'padding-left': `${nodeState().depth * 22}px` }}>
                       <Show when={nodeState().isBranch}>
@@ -99,7 +100,7 @@ export const Virtualized = () => {
                 </TreeView.NodeProvider>
               )
             }}
-          </For>
+          </Index>
         </ListVirtualizer.Content>
       </TreeView.Tree>
     </TreeView.RootProvider>

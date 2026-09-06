@@ -2,7 +2,7 @@ import { Combobox, useListCollection } from '@ark-ui/solid/combobox'
 import { useFilter } from '@ark-ui/solid/locale'
 import { ListVirtualizer, useListVirtualizer } from '@ark-ui/solid/virtualizer'
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-solid'
-import { For } from 'solid-js'
+import { Index } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import styles from 'styles/combobox.module.css'
 
@@ -54,14 +54,14 @@ export const Virtualized = () => {
               render={(props) => <ListVirtualizer.Root {...props} value={virtualizer} />}
             >
               <ListVirtualizer.Content>
-                <For each={virtualizer.getVirtualItems()}>
+                <Index each={virtualizer.getVirtualItems()}>
                   {(virtualItem) => {
-                    const item = () => collection().items[virtualItem.index]
+                    const item = () => collection().items[virtualItem().index]
                     return (
                       <Combobox.Item
                         item={item()}
                         class={styles.Item}
-                        render={(props) => <ListVirtualizer.Item {...props} item={virtualItem} />}
+                        render={(props) => <ListVirtualizer.Item {...props} item={virtualItem()} />}
                       >
                         <Combobox.ItemText class={styles.ItemText}>
                           <span aria-hidden style={{ 'margin-right': '8px' }}>
@@ -75,7 +75,7 @@ export const Virtualized = () => {
                       </Combobox.Item>
                     )
                   }}
-                </For>
+                </Index>
               </ListVirtualizer.Content>
             </Combobox.List>
           </Combobox.Content>

@@ -1,0 +1,24 @@
+diff --git a/dist/utils/checked-state.js b/dist/utils/checked-state.js
+index 4893b9f1ca68c0ad8bad042456f85c87382515cd..d8303d3ee319bad6c45d55fe910f80f70f57fe3d 100644
+--- a/dist/utils/checked-state.js
++++ b/dist/utils/checked-state.js
+@@ -27,6 +27,7 @@ __export(checked_state_exports, {
+ module.exports = __toCommonJS(checked_state_exports);
+ var import_utils = require("@zag-js/utils");
+ function getCheckedState(collection, node, checkedValue) {
++  if (checkedValue.length === 0) return false;
+   const value = collection.getNodeValue(node);
+   if (!collection.isBranchNode(node)) {
+     return checkedValue.includes(value);
+diff --git a/dist/utils/checked-state.mjs b/dist/utils/checked-state.mjs
+index 5cb04fd8e0cfc15a4d3d266069fd009bfd344865..e73f7ffc99eaeb7857ffd1fdc929dd1def6951cb 100644
+--- a/dist/utils/checked-state.mjs
++++ b/dist/utils/checked-state.mjs
+@@ -1,6 +1,7 @@
+ // src/utils/checked-state.ts
+ import { add, remove, uniq } from "@zag-js/utils";
+ function getCheckedState(collection, node, checkedValue) {
++  if (checkedValue.length === 0) return false;
+   const value = collection.getNodeValue(node);
+   if (!collection.isBranchNode(node)) {
+     return checkedValue.includes(value);

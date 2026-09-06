@@ -1,5 +1,5 @@
 import { GridVirtualizer, useGridVirtualizer } from '@ark-ui/solid/virtualizer'
-import { For } from 'solid-js'
+import { Index } from 'solid-js'
 import styles from 'styles/virtualizer.module.css'
 
 export const Grid = () => {
@@ -13,19 +13,19 @@ export const Grid = () => {
   return (
     <GridVirtualizer.Root value={virtualizer} class={styles.Grid}>
       <GridVirtualizer.Content>
-        <For each={virtualizer.getVirtualRows()}>
+        <Index each={virtualizer.getVirtualRows()}>
           {(row) => (
-            <GridVirtualizer.Row row={row}>
-              <For each={row.columns}>
+            <GridVirtualizer.Row row={row()}>
+              <Index each={row().columns}>
                 {(column) => (
-                  <GridVirtualizer.Cell column={column} class={styles.Cell}>
-                    R{row.row + 1}C{column.column + 1}
+                  <GridVirtualizer.Cell column={column()} class={styles.Cell}>
+                    R{row().row + 1}C{column().column + 1}
                   </GridVirtualizer.Cell>
                 )}
-              </For>
+              </Index>
             </GridVirtualizer.Row>
           )}
-        </For>
+        </Index>
       </GridVirtualizer.Content>
     </GridVirtualizer.Root>
   )
