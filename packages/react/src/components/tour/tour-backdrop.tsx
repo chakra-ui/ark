@@ -24,7 +24,7 @@ export const TourBackdrop = forwardRef<HTMLDivElement, TourBackdropProps>((props
 
   return (
     <PresenceGate presence={presence}>
-      <ark.div {...mergedProps} ref={composedRefs} hidden={!tour.step?.backdrop} />
+      <ark.div {...mergedProps} ref={composedRefs} hidden={mergedProps.hidden || !tour.step?.backdrop} />
     </PresenceGate>
   )
 })
