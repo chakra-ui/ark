@@ -8,11 +8,11 @@ import combobox from 'styles/combobox.module.css'
 import styles from 'styles/tags-input.module.css'
 
 export const WithCombobox = () => {
-  const filterFn = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter } = useListCollection({
     initialItems: ['React', 'Solid', 'Vue', 'Svelte', 'Angular', 'Preact', 'Next.js', 'Astro', 'Nuxt'],
-    filter: filterFn().contains,
+    filter: contains,
   })
 
   const uid = createUniqueId()

@@ -5,7 +5,7 @@
   import { Portal } from '@ark-ui/svelte/portal'
   import styles from 'styles/combobox.module.css'
 
-  const filters = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: 'base' })
 
   let selectedItems: { label: string; value: string }[] = $state([])
 
@@ -18,7 +18,7 @@
       { label: 'Rust', value: 'rust' },
       { label: 'Java', value: 'java' },
     ],
-    filter: filters().contains,
+    filter: contains,
   })
 
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {

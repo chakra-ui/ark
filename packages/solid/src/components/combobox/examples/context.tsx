@@ -6,7 +6,7 @@ import { Portal } from 'solid-js/web'
 import styles from 'styles/combobox.module.css'
 
 export const Context = () => {
-  const filterFn = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter } = useListCollection({
     initialItems: [
@@ -15,7 +15,7 @@ export const Context = () => {
       { label: 'Large', value: 'lg' },
       { label: 'Extra Large', value: 'xl' },
     ],
-    filter: filterFn().contains,
+    filter: contains,
   })
 
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {

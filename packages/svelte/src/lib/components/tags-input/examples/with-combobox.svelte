@@ -7,12 +7,12 @@
   import combobox from 'styles/combobox.module.css'
   import styles from 'styles/tags-input.module.css'
 
-  const filters = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter } = useListCollection({
     initialItems: ['React', 'Solid', 'Vue', 'Svelte', 'Angular', 'Preact', 'Next.js', 'Astro', 'Nuxt'],
     filter(itemString, filterText) {
-      return filters().contains(itemString, filterText)
+      return contains(itemString, filterText)
     },
   })
 

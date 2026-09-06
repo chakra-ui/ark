@@ -7,11 +7,11 @@ import { Portal } from 'solid-js/web'
 import styles from 'styles/combobox.module.css'
 
 export const Virtualized = () => {
-  const filterFn = useFilter({ sensitivity: 'base' })
+  const { startsWith } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter, reset } = useListCollection({
     initialItems: countries,
-    filter: filterFn().startsWith,
+    filter: startsWith,
   })
 
   const virtualizer = useListVirtualizer(() => ({

@@ -53,7 +53,7 @@ export const CommandPalette = () => {
 
   const formatHotkey = useFormatHotkey()
   const commands = useHotkeyRegistrations({ store })
-  const filterFn = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter, set } = useListCollection({
     initialItems: commands(),
@@ -61,8 +61,7 @@ export const CommandPalette = () => {
     itemToValue: (item) => item.id,
     groupBy: (item) => item.category ?? 'Other',
     filter: (itemText, filterText, item) =>
-      filterFn().contains(itemText, filterText) ||
-      item.keywords.some((keyword) => filterFn().contains(keyword, filterText)),
+      contains(itemText, filterText) || item.keywords.some((keyword) => contains(keyword, filterText)),
   })
 
   createEffect(() => {

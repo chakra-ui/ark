@@ -80,13 +80,13 @@
     { value: 'ZA', label: 'South Africa', emoji: '🇿🇦' },
   ]
 
-  const filters = useFilter({ sensitivity: 'base' })
+  const { startsWith } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter, reset } = useListCollection({
     get initialItems() {
       return countries
     },
-    filter: filters().startsWith,
+    filter: startsWith,
   })
 
   const virtualizer = useListVirtualizer(() => ({

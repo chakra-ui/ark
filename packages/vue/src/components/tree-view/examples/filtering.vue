@@ -49,14 +49,11 @@ const initialCollection = createTreeCollection<Node>({
   },
 })
 
-const filterFns = useFilter({ sensitivity: 'base' })
+const { contains } = useFilter({ sensitivity: 'base' })
 const collection = shallowRef(initialCollection)
 
 const filter = (value: string) => {
-  const filtered =
-    value.length > 0
-      ? initialCollection.filter((node) => filterFns.value.contains(node.name, value))
-      : initialCollection
+  const filtered = value.length > 0 ? initialCollection.filter((node) => contains(node.name, value)) : initialCollection
 
   collection.value = filtered
 }

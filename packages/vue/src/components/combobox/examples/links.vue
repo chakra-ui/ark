@@ -13,11 +13,11 @@ const initialItems = [
   { label: 'Reddit Programming', href: 'https://reddit.com/r/programming', value: 'reddit' },
 ]
 
-const filters = useFilter({ sensitivity: 'base' })
+const { contains } = useFilter({ sensitivity: 'base' })
 
 const { collection, filter } = useListCollection({
   initialItems,
-  filter: filters.value.contains,
+  filter: contains,
 })
 
 const handleInputChange = (details: Combobox.InputValueChangeDetails) => {

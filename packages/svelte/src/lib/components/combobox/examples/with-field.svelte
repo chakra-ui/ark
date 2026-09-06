@@ -6,7 +6,7 @@
   import styles from 'styles/combobox.module.css'
   import field from 'styles/field.module.css'
 
-  const filters = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: 'base' })
 
   const initialItems = [
     { label: 'Engineering', value: 'engineering' },
@@ -20,7 +20,7 @@
   const { collection, filter } = useListCollection({
     initialItems,
     filter(itemString, filterText) {
-      return filters().contains(itemString, filterText)
+      return contains(itemString, filterText)
     },
   })
 

@@ -5,7 +5,7 @@ import { Portal } from 'solid-js/web'
 import styles from 'styles/combobox.module.css'
 
 export const InlineAutocomplete = () => {
-  const filterFn = useFilter({ sensitivity: 'base' })
+  const { startsWith } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter } = useListCollection({
     initialItems: [
@@ -16,7 +16,7 @@ export const InlineAutocomplete = () => {
       { label: 'Jellyfish', value: 'jellyfish' },
       { label: 'Seahorse', value: 'seahorse' },
     ],
-    filter: filterFn().startsWith,
+    filter: startsWith,
   })
 
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
