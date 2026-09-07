@@ -16,11 +16,11 @@ const initialItems = [
 ]
 
 export const RootProvider = () => {
-  const filterFn = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter } = useListCollection({
     initialItems,
-    filter: filterFn().contains,
+    filter: contains,
   })
 
   const combobox = useCombobox({

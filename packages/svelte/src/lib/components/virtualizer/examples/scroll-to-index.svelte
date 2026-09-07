@@ -4,10 +4,10 @@
 
   const items = Array.from({ length: 10000 }, (_, index) => `Item ${index + 1}`)
 
-  const virtualizer = useListVirtualizer({
+  const virtualizer = useListVirtualizer(() => ({
     count: items.length,
     estimatedSize: () => 48,
-  })
+  }))
 </script>
 
 <div>

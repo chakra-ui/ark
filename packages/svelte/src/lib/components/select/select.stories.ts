@@ -13,6 +13,7 @@ import ReactiveCollectionExample from './examples/reactive-collection.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import SelectOnHighlightExample from './examples/select-on-highlight.svelte'
 import WithFieldExample from './examples/with-field.svelte'
+import VirtualizedExample from './examples/virtualized.svelte'
 
 const meta: Meta = {
   title: 'Components/Select',
@@ -98,5 +99,11 @@ export const MaxSelected = {
 export const LazyMount = {
   render: () => ({
     Component: LazyMountExample,
+  }),
+}
+
+export const Virtualized = {
+  render: () => ({
+    Component: VirtualizedExample,
   }),
 }

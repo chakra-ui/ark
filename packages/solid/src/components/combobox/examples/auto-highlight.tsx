@@ -5,7 +5,7 @@ import { Portal } from 'solid-js/web'
 import styles from 'styles/combobox.module.css'
 
 export const AutoHighlight = () => {
-  const filterFn = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter } = useListCollection({
     initialItems: [
@@ -21,7 +21,7 @@ export const AutoHighlight = () => {
       { label: 'Information Technology', value: 'information-technology' },
       { label: 'Design', value: 'design' },
     ],
-    filter: filterFn().contains,
+    filter: contains,
   })
 
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {

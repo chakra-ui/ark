@@ -6,7 +6,7 @@
   import { Portal } from '@ark-ui/svelte/portal'
   import styles from 'styles/combobox.module.css'
 
-  const filters = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter } = useListCollection({
     initialItems: [
@@ -16,7 +16,7 @@
       { label: 'Date', value: 'date' },
     ],
     filter(itemString, filterText) {
-      return filters().contains(itemString, filterText)
+      return contains(itemString, filterText)
     },
   })
 

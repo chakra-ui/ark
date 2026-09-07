@@ -16,12 +16,12 @@ const initialItems = [
   { label: 'India', value: 'in', continent: 'Asia' },
 ]
 
-const filters = useFilter({ sensitivity: 'base' })
+const { contains } = useFilter({ sensitivity: 'base' })
 
 const { collection, filter } = useListCollection({
   initialItems,
   groupBy: (item) => item.continent,
-  filter: filters.value.contains,
+  filter: contains,
 })
 
 const handleInputChange = (details: Combobox.InputValueChangeDetails) => {

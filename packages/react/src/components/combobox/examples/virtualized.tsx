@@ -1,15 +1,12 @@
 import { Combobox, useListCollection } from '@ark-ui/react/combobox'
 import { useFilter } from '@ark-ui/react/locale'
 import { Portal } from '@ark-ui/react/portal'
-import { useVirtualizer } from '@tanstack/react-virtual'
+import { ListVirtualizer, useListVirtualizer } from '@ark-ui/react/virtualizer'
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react'
-import { useRef } from 'react'
-import { flushSync } from 'react-dom'
+import type { CSSProperties } from 'react'
 import styles from 'styles/combobox.module.css'
 
 export const Virtualized = () => {
-  const contentRef = useRef<HTMLDivElement | null>(null)
-
   const { startsWith } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter, reset } = useListCollection({
@@ -17,20 +14,17 @@ export const Virtualized = () => {
     filter: startsWith,
   })
 
-  const virtualizer = useVirtualizer({
+  const virtualizer = useListVirtualizer({
     count: collection.size,
-    getScrollElement: () => contentRef.current,
-    estimateSize: () => 32,
+    estimatedSize: () => 36,
     overscan: 10,
+    observeScrollElementSize: true,
   })
 
+  virtualizer.updateOptions({ count: collection.size })
+
   const handleScrollToIndex: Combobox.RootProps<Country>['scrollToIndexFn'] = (details) => {
-    flushSync(() => {
-      virtualizer.scrollToIndex(details.index, {
-        align: 'center',
-        behavior: 'auto',
-      })
-    })
+    virtualizer.scrollToIndex(details.index, { align: 'auto' })
   }
 
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
@@ -56,29 +50,20 @@ export const Virtualized = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content className={styles.Content}>
-            <div
-              ref={contentRef}
+            <Combobox.List
               className={styles.Scroller}
-              style={{ ['--total-size' as string]: `${virtualizer.getTotalSize()}px` }}
+              style={{ '--total-size': `${virtualizer.getTotalSize()}px` } as CSSProperties}
+              render={<ListVirtualizer.Root value={virtualizer} />}
             >
-              <div style={{ height: virtualizer.getTotalSize(), width: '100%', position: 'relative' }}>
+              <ListVirtualizer.Content>
                 {virtualizer.getVirtualItems().map((virtualItem) => {
                   const item = collection.items[virtualItem.index]
                   return (
                     <Combobox.Item
-                      className={styles.Item}
                       key={item.value}
                       item={item}
-                      aria-setsize={collection.size}
-                      aria-posinset={virtualItem.index + 1}
-                      style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: `${virtualItem.size}px`,
-                        transform: `translateY(${virtualItem.start}px)`,
-                      }}
+                      className={styles.Item}
+                      render={<ListVirtualizer.Item item={virtualItem} />}
                     >
                       <Combobox.ItemText className={styles.ItemText}>
                         <span aria-hidden style={{ marginRight: 8 }}>
@@ -92,8 +77,8 @@ export const Virtualized = () => {
                     </Combobox.Item>
                   )
                 })}
-              </div>
-            </div>
+              </ListVirtualizer.Content>
+            </Combobox.List>
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

@@ -244,3 +244,26 @@
     transform: scale(0.95);
   }
 }
+
+.Scroller {
+  box-sizing: border-box;
+  height: var(--total-size);
+  max-height: calc(min(var(--available-height, 300px), 300px) - 0.5rem);
+  overflow: auto;
+  overscroll-behavior: contain;
+  scroll-padding-block: 0.25rem;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--demo-border-emphasized) var(--demo-bg-popover);
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    background: var(--demo-bg-popover);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0.375rem;
+    background: var(--demo-border-emphasized);
+  }
+}

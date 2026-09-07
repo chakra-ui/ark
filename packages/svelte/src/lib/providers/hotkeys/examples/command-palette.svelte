@@ -54,7 +54,7 @@
 
   const formatHotkey = useFormatHotkey()
   const commands = useHotkeyRegistrations({ store })
-  const filters = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter, set } = useListCollection({
     initialItems: commands(),
@@ -62,8 +62,7 @@
     itemToValue: (item) => item.id,
     groupBy: (item) => item.category ?? 'Other',
     filter: (itemText, filterText, item) =>
-      filters().contains(itemText, filterText) ||
-      item.keywords.some((keyword) => filters().contains(keyword, filterText)),
+      contains(itemText, filterText) || item.keywords.some((keyword) => contains(keyword, filterText)),
   })
 
   $effect(() => {

@@ -101,14 +101,16 @@ prop to render the tree items as links, passing the `href` prop to a `<a>` eleme
 
 ### Virtualized
 
-For large tree views with thousands of nodes, virtualization can significantly improve performance by only rendering
-visible nodes.
+For large tree views with thousands of nodes, render only the visible rows with the
+[Virtualizer](/docs/utilities/virtualizer).
 
 Key implementation details:
 
-- Use `useTreeView` hook with `TreeView.RootProvider` for programmatic control
+- Use the `useTreeView` hook with `TreeView.RootProvider` for programmatic control
+- Use `getVisibleNodes()` to get the flattened list of currently visible nodes, and keep the virtualizer's `count` in
+  sync with it
+- Render `TreeView.Tree` as `ListVirtualizer.Root` and each `TreeView.Node` as `ListVirtualizer.Item`
 - Pass `scrollToIndexFn` to enable keyboard navigation within the virtualized list
-- Use `getVisibleNodes()` to get the flattened list of currently visible nodes
 
 <Example id="virtualized" />
 

@@ -11,6 +11,7 @@ import MultipleExample from './examples/multiple.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import SelectAllExample from './examples/select-all.svelte'
 import ValueTextExample from './examples/value-text.svelte'
+import VirtualizedExample from './examples/virtualized.svelte'
 
 const meta: Meta = {
   title: 'Components / Listbox',
@@ -87,5 +88,11 @@ export const SelectAll = {
 export const ValueText = {
   render: () => ({
     Component: ValueTextExample,
+  }),
+}
+
+export const Virtualized = {
+  render: () => ({
+    Component: VirtualizedExample,
   }),
 }

@@ -2,12 +2,12 @@
   import { GridVirtualizer, useGridVirtualizer } from '@ark-ui/svelte/virtualizer'
   import styles from 'styles/virtualizer.module.css'
 
-  const virtualizer = useGridVirtualizer({
+  const virtualizer = useGridVirtualizer(() => ({
     rowCount: 1000,
     columnCount: 50,
     estimatedRowSize: () => 40,
     estimatedColumnSize: () => 120,
-  })
+  }))
 </script>
 
 <GridVirtualizer.Root value={virtualizer} class={styles.Grid}>

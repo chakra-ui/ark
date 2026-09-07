@@ -4,7 +4,7 @@ import { useFilter } from '@ark-ui/vue/locale'
 import button from 'styles/button.module.css'
 import styles from 'styles/combobox.module.css'
 
-const filters = useFilter({ sensitivity: 'base' })
+const { contains } = useFilter({ sensitivity: 'base' })
 
 const initialItems = [
   { label: 'Designer', value: 'designer' },
@@ -17,7 +17,7 @@ const initialItems = [
 
 const { collection, filter } = useListCollection({
   initialItems,
-  filter: filters.value.contains,
+  filter: contains,
 })
 
 const combobox = useCombobox({

@@ -6,12 +6,12 @@ import styles from 'styles/tree-view.module.css'
 import fieldStyles from 'styles/field.module.css'
 
 export const Filtering = () => {
-  const filterFn = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: 'base' })
   const [collection, setCollection] = createSignal(initialCollection)
 
   const filter = (value: string) => {
     const filtered =
-      value.length > 0 ? initialCollection.filter((node) => filterFn().contains(node.name, value)) : initialCollection
+      value.length > 0 ? initialCollection.filter((node) => contains(node.name, value)) : initialCollection
     setCollection(filtered)
   }
 

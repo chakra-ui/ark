@@ -5,7 +5,7 @@
   import { Portal } from '@ark-ui/svelte/portal'
   import styles from 'styles/combobox.module.css'
 
-  const filters = useFilter({ sensitivity: 'base' })
+  const { startsWith } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter } = useListCollection({
     initialItems: [
@@ -17,7 +17,7 @@
       { label: 'Seahorse', value: 'seahorse' },
     ],
     filter(itemString, filterText) {
-      return filters().startsWith(itemString, filterText)
+      return startsWith(itemString, filterText)
     },
   })
 

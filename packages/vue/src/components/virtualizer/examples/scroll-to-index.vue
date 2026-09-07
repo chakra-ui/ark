@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { ListVirtualizer, useListVirtualizer } from '@ark-ui/vue/virtualizer'
 import styles from 'styles/virtualizer.module.css'
+import { computed } from 'vue'
 
 const items = Array.from({ length: 10000 }, (_, index) => `Item ${index + 1}`)
 
-const virtualizer = useListVirtualizer({
-  count: items.length,
-  estimatedSize: () => 48,
-})
+const virtualizer = useListVirtualizer(
+  computed(() => ({
+    count: items.length,
+    estimatedSize: () => 48,
+  })),
+)
 </script>
 
 <template>

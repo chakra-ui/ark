@@ -49,12 +49,12 @@
     },
   })
 
-  const filterFns = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: 'base' })
   let collection = $state(initialCollection)
 
   const filter = (value: string) => {
     const filtered =
-      value.length > 0 ? initialCollection.filter((node) => filterFns().contains(node.name, value)) : initialCollection
+      value.length > 0 ? initialCollection.filter((node) => contains(node.name, value)) : initialCollection
     collection = filtered
   }
 </script>

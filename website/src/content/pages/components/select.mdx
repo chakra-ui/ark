@@ -117,6 +117,14 @@ a max-height on the content to enable scrolling.
 
 <Example id="overflow" />
 
+### Virtualized
+
+For very large collections, render only the visible options with the [Virtualizer](/docs/utilities/virtualizer). Render
+`Select.List` as `ListVirtualizer.Root` and each `Select.Item` as `ListVirtualizer.Item`, and pass `scrollToIndexFn` so
+keyboard navigation can scroll to options that are not mounted yet.
+
+<Example id="virtualized" />
+
 ## Guides
 
 ### Type Safety
@@ -175,8 +183,8 @@ The hidden select automatically syncs with the Select component's value, ensurin
 
 ### Virtualization
 
-For virtualized lists with many items, avoid using `Select.HiddenSelect` as it renders an `<option>` for every item in
-the collection. Instead, create a lightweight hidden input:
+When virtualizing a large collection, avoid `Select.HiddenSelect`: it renders an `<option>` for every item in the
+collection. Create a lightweight hidden input instead:
 
 ```tsx
 import { Select, useSelectContext } from '@ark-ui/react/select'

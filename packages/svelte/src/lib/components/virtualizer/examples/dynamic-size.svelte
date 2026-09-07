@@ -7,10 +7,10 @@
     lines: Array.from({ length: (index % 4) + 1 }, (_, line) => `Line ${line + 1} of item ${index + 1}`),
   }))
 
-  const virtualizer = useListVirtualizer({
+  const virtualizer = useListVirtualizer(() => ({
     count: items.length,
     estimatedSize: () => 64,
-  })
+  }))
 </script>
 
 <ListVirtualizer.Root value={virtualizer} class={styles.Root}>
