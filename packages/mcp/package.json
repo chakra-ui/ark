@@ -38,7 +38,7 @@
     "@types/express": "5.0.6",
     "tsup": "8.5.1",
     "tsx": "4.23.13",
-    "typescript": "6.0.3"
+    "typescript": "7.0.2"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.30.0",
