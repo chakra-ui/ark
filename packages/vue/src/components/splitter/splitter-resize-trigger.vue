@@ -1,8 +1,9 @@
 <script lang="ts">
-import type { ResizeTriggerProps } from '@zag-js/splitter'
+import type { ResizeTriggerProps, ResizeTriggerState } from '@zag-js/splitter'
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface SplitterResizeTriggerState extends ResizeTriggerState {}
 export interface SplitterResizeTriggerBaseProps extends ResizeTriggerProps, PolymorphicProps {}
 export interface SplitterResizeTriggerProps
   extends
@@ -21,6 +22,8 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 import { SplitterResizeTriggerPropsProvider } from './use-splitter-resize-trigger-props-context.ts'
 
 const props = defineProps<SplitterResizeTriggerProps>()
+
+defineSlots<PolymorphicSlots<SplitterResizeTriggerState>>()
 const splitter = useSplitterContext()
 
 SplitterResizeTriggerPropsProvider(computed(() => props))
@@ -29,7 +32,11 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="splitter.getResizeTriggerProps(props)" :as-child="asChild">
+  <ark.button
+    v-bind="splitter.getResizeTriggerProps(props)"
+    :state="splitter.getResizeTriggerState(props)"
+    :as-child="asChild"
+  >
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

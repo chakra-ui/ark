@@ -1,8 +1,9 @@
 <script lang="ts">
-import type { TriggerProps } from '@zag-js/tabs'
+import type { TriggerProps, TriggerState } from '@zag-js/tabs'
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface TabTriggerState extends TriggerState {}
 export interface TabTriggerBaseProps extends TriggerProps, PolymorphicProps {}
 export interface TabTriggerProps
   extends
@@ -19,13 +20,15 @@ import { useTabsContext } from './use-tabs-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<TabTriggerProps>()
+
+defineSlots<PolymorphicSlots<TabTriggerState>>()
 const tabs = useTabsContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="tabs.getTriggerProps(props)" :as-child="asChild">
+  <ark.button v-bind="tabs.getTriggerProps(props)" :state="tabs.getTriggerState(props)" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

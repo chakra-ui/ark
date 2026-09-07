@@ -26,8 +26,8 @@ defineProps<Props>()
       <TreeView.NodeGroup v-if="node.children" :class="styles.NodeGroup">
         <TreeView.Node :class="styles.Node">
           <Menu.Root :ids="{ contextTrigger: triggerId }">
-            <TreeView.Cell :class="styles.Cell" asChild>
-              <Menu.ContextTrigger>
+            <TreeView.Cell :class="styles.Cell" #render="ctx">
+              <Menu.ContextTrigger v-bind="ctx.props">
                 <TreeView.NodeExpandTrigger :class="styles.NodeExpandTrigger">
                   <TreeView.NodeIndicator type="expanded" :class="styles.NodeIndicator">
                     <ChevronRight />
@@ -63,8 +63,8 @@ defineProps<Props>()
       </TreeView.NodeGroup>
       <TreeView.Node v-else :class="styles.Node">
         <Menu.Root :ids="{ contextTrigger: triggerId }">
-          <TreeView.Cell :class="styles.Cell" asChild>
-            <Menu.ContextTrigger>
+          <TreeView.Cell :class="styles.Cell" #render="ctx">
+            <Menu.ContextTrigger v-bind="ctx.props">
               <File />
               <TreeView.NodeText :class="styles.NodeText">{{ node.name }}</TreeView.NodeText>
             </Menu.ContextTrigger>

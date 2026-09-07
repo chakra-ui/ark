@@ -9,8 +9,8 @@ import styles from 'styles/hover-card.module.css'
     <HoverCard.Context v-slot="context">
       <p>
         Liked by
-        <HoverCard.Trigger :class="styles.Trigger" as-child>
-          <a href="#profile">
+        <HoverCard.Trigger :class="styles.Trigger" #render="ctx">
+          <a href="#profile" v-bind="ctx.props">
             @sarah_chen
             <ChevronUpIcon v-if="context.open" />
             <ChevronDownIcon v-else />

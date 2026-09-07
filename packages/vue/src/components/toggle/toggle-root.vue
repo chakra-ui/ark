@@ -2,12 +2,13 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import { ark } from '../factory.ts'
 import type { RootEmits, RootProps } from './toggle.types.ts'
 import { useToggle } from './use-toggle.ts'
 import { ToggleProvider } from './use-toggle-context.ts'
 
+export interface ToggleRootState extends RootState {}
 export interface ToggleRootBaseProps extends RootProps, PolymorphicProps {}
 export interface ToggleRootProps
   extends
@@ -24,6 +25,8 @@ const props = withDefaults(defineProps<ToggleRootProps>(), {
   pressed: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
+defineSlots<PolymorphicSlots<ToggleRootState>>()
+
 const emit = defineEmits<ToggleRootEmits>()
 
 const toggle = useToggle(props, emit)
@@ -34,7 +37,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="toggle.getRootProps()" :as-child="asChild">
+  <ark.button v-bind="toggle.getRootProps()" :state="toggle.getRootState()" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

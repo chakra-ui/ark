@@ -1,18 +1,13 @@
 import { render, screen } from '@testing-library/vue'
-import { defineComponent } from 'vue'
-import { Avatar } from './avatar/index.ts'
-import { Popover } from './popover/index.ts'
-import { Progress } from './progress/index.ts'
-
-const mount = (components: Record<string, unknown>, template: string) =>
-  render(defineComponent({ components: components as never, template }))
+import RenderSlotTrigger from './popover/tests/render-slot-trigger.vue'
+import RenderSlotState from './popover/tests/render-slot-state.vue'
+import RenderSlotPlain from './popover/tests/render-slot-plain.vue'
+import RenderSlotValueText from './progress/tests/render-slot-value-text.vue'
+import RenderSlotImage from './avatar/tests/render-slot-image.vue'
 
 describe('render slot', () => {
   it('reaches a part that renders a bare slot', () => {
-    mount(
-      { Root: Popover.Root, Trigger: Popover.Trigger },
-      `<Root><Trigger #render="{ props }"><a href="#" v-bind="props" data-testid="t">Open</a></Trigger></Root>`,
-    )
+    render(RenderSlotTrigger)
     const el = screen.getByTestId('t')
     expect(el.tagName).toBe('A')
     expect(el).toHaveTextContent('Open')
@@ -20,31 +15,22 @@ describe('render slot', () => {
   })
 
   it('forwards the part state', () => {
-    mount(
-      { Root: Popover.Root, Trigger: Popover.Trigger },
-      `<Root><Trigger #render="{ props, state }"><button v-bind="props">{{ state.open ? 'on' : 'off' }}</button></Trigger></Root>`,
-    )
+    render(RenderSlotState)
     expect(screen.getByRole('button')).toHaveTextContent('off')
   })
 
   it('reaches a part whose slot has fallback content', () => {
-    mount(
-      { Root: Progress.Root, ValueText: Progress.ValueText },
-      `<Root :value="40"><ValueText #render="{ props }"><em v-bind="props" data-testid="v">40%</em></ValueText></Root>`,
-    )
+    render(RenderSlotValueText)
     expect(screen.getByTestId('v').tagName).toBe('EM')
   })
 
   it('reaches a part that renders no slot at all', () => {
-    mount(
-      { Root: Avatar.Root, Image: Avatar.Image },
-      `<Root><Image src="x.png" #render="{ props }"><img v-bind="props" data-testid="i" alt="" /></Image></Root>`,
-    )
+    render(RenderSlotImage)
     expect(screen.getByTestId('i')).toBeInTheDocument()
   })
 
   it('leaves plain children alone when no render slot is given', () => {
-    mount({ Root: Popover.Root, Trigger: Popover.Trigger }, `<Root><Trigger>Plain</Trigger></Root>`)
+    render(RenderSlotPlain)
     const btn = screen.getByRole('button')
     expect(btn).toHaveTextContent('Plain')
     expect(btn.tagName).toBe('BUTTON')

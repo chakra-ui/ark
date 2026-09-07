@@ -1,9 +1,11 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/number-input'
 import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types.ts'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { RootEmits, RootProps } from './number-input.types.ts'
 
+export interface NumberInputRootState extends RootState {}
 export interface NumberInputRootBaseProps extends RootProps, PolymorphicProps {}
 export interface NumberInputRootProps
   extends
@@ -34,6 +36,8 @@ const props = withDefaults(defineProps<NumberInputRootProps>(), {
   spinOnPress: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
+defineSlots<PolymorphicSlots<NumberInputRootState>>()
+
 const emits = defineEmits<NumberInputRootEmits>()
 
 const numberInput = useNumberInput(props, emits)
@@ -43,7 +47,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="numberInput.getRootProps()" :as-child="asChild">
+  <ark.div v-bind="numberInput.getRootProps()" :state="numberInput.getRootState()" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

@@ -60,8 +60,8 @@ const comboboxApi = useCombobox({
             </TagsInput.ItemPreview>
             <TagsInput.ItemInput :class="styles.ItemInput" />
           </TagsInput.Item>
-          <Combobox.Input as-child>
-            <TagsInput.Input placeholder="Add Framework" :class="styles.Input" />
+          <Combobox.Input #render="ctx">
+            <TagsInput.Input v-bind="ctx.props" placeholder="Add Framework" :class="styles.Input" />
           </Combobox.Input>
           <TagsInput.ClearTrigger :class="styles.ClearTrigger">
             <XIcon />

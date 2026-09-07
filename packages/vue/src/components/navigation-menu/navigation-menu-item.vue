@@ -1,8 +1,9 @@
 <script lang="ts">
-import type { ItemProps } from '@zag-js/navigation-menu'
+import type { ItemProps, ItemState } from '@zag-js/navigation-menu'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface NavigationMenuItemState extends ItemState {}
 export interface NavigationMenuItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface NavigationMenuItemProps
   extends
@@ -21,6 +22,8 @@ import { NavigationMenuItemPropsProvider } from './use-navigation-menu-item-prop
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<NavigationMenuItemProps>()
+
+defineSlots<PolymorphicSlots<NavigationMenuItemState>>()
 const navigationMenu = useNavigationMenuContext()
 
 const itemProps = computed(() => ({ value: props.value, disabled: props.disabled }))
@@ -30,7 +33,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="navigationMenu.getItemProps(props)" :as-child="asChild">
+  <ark.div v-bind="navigationMenu.getItemProps(props)" :state="navigationMenu.getItemState(props)" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

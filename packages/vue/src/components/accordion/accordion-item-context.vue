@@ -10,6 +10,7 @@ export interface AccordionItemContextProps extends SlotsType<{
 import { useAccordionItemContext, type UseAccordionItemContext } from './use-accordion-item-context.ts'
 
 const item = useAccordionItemContext()
+
 defineSlots<{
   default(item: UnwrapRef<UseAccordionItemContext>): unknown
 }>()

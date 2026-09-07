@@ -1,8 +1,9 @@
 <script lang="ts">
-import type { ItemProps } from '@zag-js/radio-group'
+import type { ItemProps, ItemState } from '@zag-js/radio-group'
 import type { LabelHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface SegmentGroupItemState extends ItemState {}
 export interface SegmentGroupItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface SegmentGroupItemProps
   extends
@@ -22,6 +23,8 @@ import { useSegmentGroupContext } from './use-segment-group-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<SegmentGroupItemProps>()
+
+defineSlots<PolymorphicSlots<SegmentGroupItemState>>()
 const segmentGroup = useSegmentGroupContext()
 
 SegmentGroupItemPropsProvider(props)
@@ -31,7 +34,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.label v-bind="segmentGroup.getItemProps(props)" :as-child="asChild">
+  <ark.label v-bind="segmentGroup.getItemProps(props)" :state="segmentGroup.getItemState(props)" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

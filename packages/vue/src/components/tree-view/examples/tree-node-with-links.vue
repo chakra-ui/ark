@@ -41,8 +41,8 @@ defineProps<Props>()
       </TreeView.NodeGroupContent>
     </TreeView.NodeGroup>
     <TreeView.Node v-else>
-      <TreeView.Cell as-child>
-        <a :href="node.href">
+      <TreeView.Cell #render="ctx">
+        <a :href="node.href" v-bind="ctx.props">
           <TreeView.NodeText>
             <File />
             {{ node.name }}

@@ -47,9 +47,9 @@ const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
             :key="item.value"
             :item="item"
             :class="styles.Item"
-            :as-child="true"
+            #render="ctx"
           >
-            <a :href="item.href">
+            <a :href="item.href" v-bind="ctx.props">
               <Combobox.ItemText :class="styles.ItemText">{{ item.label }}</Combobox.ItemText>
               <Combobox.ItemIndicator :class="styles.ItemIndicator">✓</Combobox.ItemIndicator>
             </a>

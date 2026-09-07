@@ -13,8 +13,8 @@ const open = ref(false)
     <HoverCard.Root v-model:open="open">
       <p>
         Liked by
-        <HoverCard.Trigger :class="styles.Trigger" as-child>
-          <a href="#profile">@sarah_chen</a>
+        <HoverCard.Trigger :class="styles.Trigger" #render="ctx">
+          <a href="#profile" v-bind="ctx.props">@sarah_chen</a>
         </HoverCard.Trigger>
         and 3 others
       </p>

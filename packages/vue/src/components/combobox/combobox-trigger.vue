@@ -1,8 +1,9 @@
 <script lang="ts">
-import type { TriggerProps } from '@zag-js/combobox'
+import type { TriggerProps, TriggerState } from '@zag-js/combobox'
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface ComboboxTriggerState extends TriggerState {}
 export interface ComboboxTriggerBaseProps extends TriggerProps, PolymorphicProps {}
 export interface ComboboxTriggerProps
   extends
@@ -18,11 +19,13 @@ import { ark } from '../factory.ts'
 import { useComboboxContext } from './use-combobox-context.ts'
 
 const props = defineProps<ComboboxTriggerProps>()
+
+defineSlots<PolymorphicSlots<ComboboxTriggerState>>()
 const combobox = useComboboxContext()
 </script>
 
 <template>
-  <ark.button v-bind="combobox.getTriggerProps(props)" :as-child="asChild">
+  <ark.button v-bind="combobox.getTriggerProps(props)" :state="combobox.getTriggerState(props)" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

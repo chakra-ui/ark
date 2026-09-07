@@ -1,9 +1,11 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/radio-group'
 import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types.ts'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { RootEmits, RootProps } from './segment-group.types.ts'
 
+export interface SegmentGroupRootState extends RootState {}
 export interface SegmentGroupRootBaseProps extends RootProps, PolymorphicProps {}
 export interface SegmentGroupRootProps
   extends
@@ -26,6 +28,8 @@ const props = withDefaults(defineProps<SegmentGroupRootProps>(), {
   readOnly: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
+defineSlots<PolymorphicSlots<SegmentGroupRootState>>()
+
 const emits = defineEmits<SegmentGroupRootEmits>()
 
 const segmentGroup = useSegmentGroup(props, emits)
@@ -35,7 +39,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="segmentGroup.getRootProps()" :as-child="asChild">
+  <ark.div v-bind="segmentGroup.getRootProps()" :state="segmentGroup.getRootState()" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

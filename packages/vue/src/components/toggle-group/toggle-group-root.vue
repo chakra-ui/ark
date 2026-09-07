@@ -1,9 +1,11 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/toggle-group'
 import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types.ts'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { RootEmits, RootProps } from './toggle-group.types.ts'
 
+export interface ToggleGroupRootState extends RootState {}
 export interface ToggleGroupRootBaseProps extends RootProps, PolymorphicProps {}
 export interface ToggleGroupRootProps
   extends
@@ -28,6 +30,8 @@ const props = withDefaults(defineProps<ToggleGroupRootProps>(), {
   rovingFocus: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
+defineSlots<PolymorphicSlots<ToggleGroupRootState>>()
+
 const emits = defineEmits<ToggleGroupRootEmits>()
 
 const toggleGroup = useToggleGroup(props, emits)
@@ -35,7 +39,7 @@ ToggleGroupProvider(toggleGroup)
 </script>
 
 <template>
-  <ark.div v-bind="toggleGroup.getRootProps()" :as-child="asChild">
+  <ark.div v-bind="toggleGroup.getRootProps()" :state="toggleGroup.getRootState()" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

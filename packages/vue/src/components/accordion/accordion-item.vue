@@ -1,8 +1,9 @@
 <script lang="ts">
-import type { ItemProps } from '@zag-js/accordion'
+import type { ItemProps, ItemState } from '@zag-js/accordion'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface AccordionItemState extends ItemState {}
 export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface AccordionItemProps
   extends
@@ -24,6 +25,8 @@ import { AccordionItemPropsProvider } from './use-accordion-item-props-context.t
 
 const accordion = useAccordionContext()
 const props = defineProps<AccordionItemProps>()
+
+defineSlots<PolymorphicSlots<AccordionItemState>>()
 const item = computed(() => accordion.value.getItemState(props))
 const renderStrategyProps = useRenderStrategyProps()
 const itemContentProps = computed(() => accordion.value.getItemContentProps(props))
@@ -37,11 +40,17 @@ useForwardExpose()
 <template>
   <Collapsible.Root
     v-bind="accordion.getItemProps(props)"
+    :state="item"
     :open="item.expanded"
     :lazy-mount="renderStrategyProps.lazyMount"
     :unmount-on-exit="renderStrategyProps.unmountOnExit"
     :ids="{ content: itemContentProps.id }"
   >
-    <slot />
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </Collapsible.Root>
 </template>
