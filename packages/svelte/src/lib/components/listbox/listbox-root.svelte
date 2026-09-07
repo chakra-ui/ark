@@ -1,11 +1,13 @@
 <script lang="ts" module>
+  import type { Optional } from '$lib/types'
   import type { Snippet } from 'svelte'
 
   import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
   import type { CollectionItem } from '../collection/index.js'
   import type { UseListboxProps } from './use-listbox.svelte.js'
 
-  export interface ListboxRootBaseProps<T extends CollectionItem> extends UseListboxProps<T>, PolymorphicProps<'div'> {}
+  export interface ListboxRootBaseProps<T extends CollectionItem>
+    extends Optional<UseListboxProps<T>, 'id'>, PolymorphicProps<'div'> {}
   export interface ListboxRootProps<T extends CollectionItem> extends Assign<
     HTMLProps<'div'>,
     ListboxRootBaseProps<T>
@@ -32,7 +34,7 @@
   const providedId = $props.id()
 
   const [listboxProps, localProps] = $derived(
-    createSplitProps<UseListboxProps<T>>()(props, [
+    createSplitProps<Optional<UseListboxProps<T>, 'id'>>()(props, [
       'collection',
       'defaultHighlightedValue',
       'defaultValue',

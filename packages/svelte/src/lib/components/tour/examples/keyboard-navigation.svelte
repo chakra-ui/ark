@@ -38,7 +38,8 @@
     },
   ]
 
-  const tour = useTour({ steps, keyboardNavigation: true })
+  const id = $props.id()
+  const tour = useTour({ id, steps, keyboardNavigation: true })
 </script>
 
 <div class={styles.Root}>

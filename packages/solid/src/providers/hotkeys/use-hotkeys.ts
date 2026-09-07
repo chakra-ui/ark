@@ -1,10 +1,10 @@
-import { type CommandDefinition, type HotkeyStore, type ParsedHotkey, parseHotkey } from '@zag-js/hotkeys'
+import { type CommandDefinition, type HotkeyStore, type Platform, normalizeHotkey } from '@zag-js/hotkeys'
 import { isEqual, warn } from '@zag-js/utils'
 import { createEffect, createMemo, createUniqueId, onCleanup, untrack } from 'solid-js'
 import type { MaybeAccessor } from '../../types.ts'
 import { runIfFn } from '../../utils/run-if-fn.ts'
 import { type UseHotkeyStoreProps, useHotkeyStore } from './use-hotkey-store.ts'
-import { type Platform, usePlatform } from './use-platform.ts'
+import { usePlatform } from './use-platform.ts'
 
 export interface UseHotkeysCommand extends Omit<CommandDefinition, 'id'> {
   /**
@@ -27,7 +27,7 @@ export interface UseHotkeysProps extends UseHotkeyStoreProps {
 }
 
 interface Registration {
-  hotkey: ParsedHotkey
+  hotkey: string
   scopes: CommandDefinition['scopes']
   label: string | undefined
   description: string | undefined
@@ -46,7 +46,7 @@ const warnOnForeignId = (store: HotkeyStore, id: string) => {
 }
 
 const toRegistration = (command: UseHotkeysCommand, platform: Platform): Registration => ({
-  hotkey: parseHotkey(command.hotkey, platform),
+  hotkey: normalizeHotkey(command.hotkey, platform),
   scopes: command.scopes,
   label: command.label,
   description: command.description,

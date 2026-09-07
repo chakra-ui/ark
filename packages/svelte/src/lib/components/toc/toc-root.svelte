@@ -1,8 +1,9 @@
 <script module lang="ts">
+  import type { Optional } from '$lib/types'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '../../types'
   import type { UseTocProps } from './use-toc.svelte'
 
-  export interface TocRootBaseProps extends UseTocProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface TocRootBaseProps extends Optional<UseTocProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface TocRootProps extends Assign<HTMLProps<'div'>, TocRootBaseProps> {}
 </script>
 
@@ -16,7 +17,7 @@
   const providedId = $props.id()
 
   const [useTocProps, localProps] = $derived(
-    createSplitProps<UseTocProps>()(props, [
+    createSplitProps<Optional<UseTocProps, 'id'>>()(props, [
       'activeIds',
       'autoScroll',
       'defaultActiveIds',

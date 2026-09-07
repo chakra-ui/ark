@@ -17,12 +17,16 @@
   })
 
   const uid = $props.id()
+  const tagsInputId = `tags_${uid}`
+  const comboboxId = `combobox_${uid}`
 
   const tagsInput = useTagsInput({
+    id: tagsInputId,
     ids: { input: `input_${uid}`, control: `control_${uid}` },
   })
 
   const comboboxApi = useCombobox({
+    id: comboboxId,
     ids: { input: `input_${uid}`, control: `control_${uid}` },
     get collection() {
       return collection()

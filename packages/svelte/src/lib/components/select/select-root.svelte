@@ -1,11 +1,11 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { Snippet } from 'svelte'
   import type { CollectionItem } from '../collection/index.ts'
   import type { UseSelectProps } from './use-select.svelte.ts'
 
   export interface SelectRootBaseProps<T extends CollectionItem = CollectionItem>
-    extends UseSelectProps<T>, UsePresenceProps, PolymorphicProps<'div'>, RefAttribute {}
+    extends Optional<UseSelectProps<T>, 'id'>, UsePresenceProps, PolymorphicProps<'div'>, RefAttribute {}
 
   export interface SelectRootProps<T extends CollectionItem = CollectionItem> extends Assign<
     HTMLProps<'div'>,
@@ -32,7 +32,7 @@
 
   const [presenceProps, selectProps] = $derived(splitPresenceProps(props))
   const [useSelectProps, localProps] = $derived(
-    createSplitProps<UseSelectProps<T>>()(selectProps, [
+    createSplitProps<Optional<UseSelectProps<T>, 'id'>>()(selectProps, [
       'alignItemWithTrigger',
       'autoComplete',
       'closeOnSelect',

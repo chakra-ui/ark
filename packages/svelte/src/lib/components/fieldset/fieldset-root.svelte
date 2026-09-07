@@ -1,5 +1,5 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseFieldsetProps } from './use-fieldset.svelte.ts'
 
   export interface FieldsetRootBaseProps extends UseFieldsetProps, PolymorphicProps<'fieldset'>, RefAttribute {}
@@ -16,7 +16,7 @@
   let { ref = $bindable(null), ...props }: FieldsetRootProps = $props()
 
   const [useFieldsetProps, localProps] = $derived(
-    createSplitProps<UseFieldsetProps>()(props, ['id', 'disabled', 'invalid']),
+    createSplitProps<Optional<UseFieldsetProps, 'id'>>()(props, ['id', 'disabled', 'invalid']),
   )
 
   const providedId = $props.id()

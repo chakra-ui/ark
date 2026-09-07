@@ -1,9 +1,10 @@
+import type { Optional } from '$lib/types'
 import { createSplitProps } from '$lib/utils/create-split-props'
 import type { UseNumberInputProps } from './use-number-input.svelte.ts'
 
-const splitFn = createSplitProps<UseNumberInputProps>()
+const splitFn = createSplitProps<Optional<UseNumberInputProps, 'id'>>()
 
-export const splitNumberInputProps = <T extends UseNumberInputProps>(props: T) =>
+export const splitNumberInputProps = <T extends Optional<UseNumberInputProps, 'id'>>(props: T) =>
   splitFn(props, [
     'allowMouseWheel',
     'allowOverflow',

@@ -44,7 +44,9 @@
     logs = [...logs, message]
   }
 
+  const id = $props.id()
   const tour = useTour({
+    id,
     steps,
     onStepChange(details) {
       addLog(`Step changed: ${details.stepId}`)

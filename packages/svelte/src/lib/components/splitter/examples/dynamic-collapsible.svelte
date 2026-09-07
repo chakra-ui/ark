@@ -8,7 +8,9 @@
 
   const isBelowMd = $derived(rootSize != null && rootSize < 600)
 
+  const id = $props.id()
   const splitter = useSplitter(() => ({
+    id,
     panels: [{ id: 'a', collapsible: isBelowMd, collapsedSize: 5, minSize: 20, maxSize: 40 }, { id: 'b' }],
     defaultSize: [15, 85],
   }))

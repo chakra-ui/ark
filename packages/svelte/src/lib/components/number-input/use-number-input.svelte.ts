@@ -1,16 +1,16 @@
 import { useEnvironmentContext } from '$lib/providers/environment'
 import { useLocaleContext } from '$lib/providers/locale'
-import type { Accessor, Optional } from '$lib/types'
+import type { Accessor } from '$lib/types'
 import * as numberInput from '@zag-js/number-input'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, ensureProps, runIfFn } from '@zag-js/utils'
 import { useFieldContext } from '../field/index.ts'
 
-export interface UseNumberInputProps extends Optional<Omit<numberInput.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseNumberInputProps extends Omit<numberInput.Props, 'dir' | 'getRootNode'> {}
 
 export interface UseNumberInputReturn extends Accessor<numberInput.Api<PropTypes>> {}
 
-export const useNumberInput = (props: MaybeFunction<UseNumberInputProps> = {}): UseNumberInputReturn => {
+export const useNumberInput = (props: MaybeFunction<UseNumberInputProps>): UseNumberInputReturn => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
   const field = useFieldContext()

@@ -1,5 +1,5 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { ValueChangeDetails } from '@zag-js/radio-group'
   import type { UseRadioGroupProps } from './use-radio-group.svelte.ts'
 
@@ -7,7 +7,8 @@
     valueChange: ValueChangeDetails
   }
 
-  export interface RadioGroupRootBaseProps extends UseRadioGroupProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface RadioGroupRootBaseProps
+    extends Optional<UseRadioGroupProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface RadioGroupRootProps extends Assign<HTMLProps<'div'>, RadioGroupRootBaseProps> {}
 </script>
 
@@ -22,7 +23,7 @@
   const providedId = $props.id()
 
   const [radioGroupProps, localProps] = $derived(
-    createSplitProps<UseRadioGroupProps>()(props, [
+    createSplitProps<Optional<UseRadioGroupProps, 'id'>>()(props, [
       'defaultValue',
       'disabled',
       'form',

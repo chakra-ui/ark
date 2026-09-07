@@ -3,7 +3,8 @@
   import { ChevronRightIcon } from 'lucide-svelte'
   import styles from 'styles/collapsible.module.css'
 
-  const collapsible = useCollapsible()
+  const id = $props.id()
+  const collapsible = useCollapsible({ id })
 </script>
 
 <div class="stack">

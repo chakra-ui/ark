@@ -1,14 +1,14 @@
 import { useEnvironmentContext } from '$lib/providers/environment'
 import { useLocaleContext } from '$lib/providers/locale'
-import type { Accessor, Optional } from '$lib/types'
+import type { Accessor } from '$lib/types'
 import * as carousel from '@zag-js/carousel'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 
-export interface UseCarouselProps extends Optional<Omit<carousel.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseCarouselProps extends Omit<carousel.Props, 'dir' | 'getRootNode'> {}
 export interface UseCarouselReturn extends Accessor<carousel.Api<PropTypes>> {}
 
-export const useCarousel = (props?: MaybeFunction<UseCarouselProps>) => {
+export const useCarousel = (props: MaybeFunction<UseCarouselProps>) => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
 

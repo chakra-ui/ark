@@ -1,14 +1,14 @@
 import { useEnvironmentContext, useLocaleContext } from '$lib/providers'
-import type { Accessor, Optional } from '$lib/types'
+import type { Accessor } from '$lib/types'
 import * as select from '@zag-js/select'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 import type { CollectionItem, ListCollection } from '../collection/index.ts'
 import { useFieldContext } from '../field/index.ts'
 
-export interface UseSelectProps<T extends CollectionItem> extends Optional<
-  Omit<select.Props<T>, 'dir' | 'getRootNode' | 'collection'>,
-  'id'
+export interface UseSelectProps<T extends CollectionItem> extends Omit<
+  select.Props<T>,
+  'dir' | 'getRootNode' | 'collection'
 > {
   /**
    * The collection of items

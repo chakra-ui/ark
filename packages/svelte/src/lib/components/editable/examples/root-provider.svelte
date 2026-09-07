@@ -3,7 +3,8 @@
   import PencilIcon from 'lucide-svelte/icons/pencil'
   import styles from 'styles/editable.module.css'
 
-  const editable = useEditable({ defaultValue: 'Hello World' })
+  const id = $props.id()
+  const editable = useEditable({ id, defaultValue: 'Hello World' })
 </script>
 
 <Editable.RootProvider class={styles.Root} value={editable}>

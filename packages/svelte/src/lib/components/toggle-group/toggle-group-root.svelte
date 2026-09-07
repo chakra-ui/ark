@@ -1,8 +1,9 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseToggleGroupProps } from './use-toggle-group.svelte.ts'
 
-  export interface ToggleGroupRootBaseProps extends UseToggleGroupProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface ToggleGroupRootBaseProps
+    extends Optional<UseToggleGroupProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface ToggleGroupRootProps extends Assign<HTMLProps<'div'>, ToggleGroupRootBaseProps> {}
 </script>
 
@@ -16,7 +17,7 @@
   let { ref = $bindable(null), value = $bindable<string[]>(), ...props }: ToggleGroupRootProps = $props()
 
   const [useToggleGroupProps, localProps] = $derived(
-    createSplitProps<UseToggleGroupProps>()(props, [
+    createSplitProps<Optional<UseToggleGroupProps, 'id'>>()(props, [
       'defaultValue',
       'deselectable',
       'disabled',

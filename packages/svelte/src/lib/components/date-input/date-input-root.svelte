@@ -1,8 +1,10 @@
 <script module lang="ts">
+  import type { Optional } from '$lib/types'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
   import type { UseDateInputProps } from './use-date-input.svelte.js'
 
-  export interface DateInputRootBaseProps extends UseDateInputProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface DateInputRootBaseProps
+    extends Optional<UseDateInputProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface DateInputRootProps extends Assign<HTMLProps<'div'>, DateInputRootBaseProps> {}
 </script>
 
@@ -17,7 +19,7 @@
   const providedId = $props.id()
 
   const [useDateInputProps, localProps] = $derived(
-    createSplitProps<UseDateInputProps>()(props, [
+    createSplitProps<Optional<UseDateInputProps, 'id'>>()(props, [
       'disabled',
       'id',
       'ids',

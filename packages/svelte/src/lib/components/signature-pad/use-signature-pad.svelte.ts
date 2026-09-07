@@ -1,15 +1,15 @@
 import { useEnvironmentContext } from '$lib/providers/environment'
 import { useLocaleContext } from '$lib/providers/locale'
-import type { Accessor, Optional } from '$lib/types'
+import type { Accessor } from '$lib/types'
 import * as signaturePad from '@zag-js/signature-pad'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 import { useFieldContext } from '../field/index.ts'
 
-export interface UseSignaturePadProps extends Optional<Omit<signaturePad.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseSignaturePadProps extends Omit<signaturePad.Props, 'dir' | 'getRootNode'> {}
 export interface UseSignaturePadReturn extends Accessor<signaturePad.Api<PropTypes>> {}
 
-export const useSignaturePad = (props?: MaybeFunction<UseSignaturePadProps>) => {
+export const useSignaturePad = (props: MaybeFunction<UseSignaturePadProps>) => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
   const field = useFieldContext()

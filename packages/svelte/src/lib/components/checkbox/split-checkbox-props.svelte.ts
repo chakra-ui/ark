@@ -1,9 +1,10 @@
+import type { Optional } from '$lib/types'
 import { createSplitProps } from '$lib/utils/create-split-props'
 import type { UseCheckboxProps } from './use-checkbox.svelte.ts'
 
-const splitFn = createSplitProps<UseCheckboxProps>()
+const splitFn = createSplitProps<Optional<UseCheckboxProps, 'id'>>()
 
-export const splitCheckboxProps = <T extends UseCheckboxProps>(props: T) =>
+export const splitCheckboxProps = <T extends Optional<UseCheckboxProps, 'id'>>(props: T) =>
   splitFn(props, [
     'checked',
     'defaultChecked',

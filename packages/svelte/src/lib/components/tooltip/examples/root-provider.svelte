@@ -3,7 +3,8 @@
   import { Tooltip, useTooltip } from '@ark-ui/svelte/tooltip'
   import styles from 'styles/tooltip.module.css'
 
-  const tooltip = useTooltip()
+  const id = $props.id()
+  const tooltip = useTooltip({ id })
 </script>
 
 <button onclick={() => tooltip().setOpen(true)}>Open</button>

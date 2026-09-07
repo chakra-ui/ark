@@ -1,15 +1,15 @@
 import { useEnvironmentContext } from '$lib/providers/environment'
 import { useLocaleContext } from '$lib/providers/locale'
-import type { Accessor, Optional } from '$lib/types'
+import type { Accessor } from '$lib/types'
 import * as popover from '@zag-js/popover'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 
-export interface UsePopoverProps extends Optional<Omit<popover.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UsePopoverProps extends Omit<popover.Props, 'dir' | 'getRootNode'> {}
 
 export interface UsePopoverReturn extends Accessor<popover.Api<PropTypes>> {}
 
-export const usePopover = (props?: MaybeFunction<UsePopoverProps>): UsePopoverReturn => {
+export const usePopover = (props: MaybeFunction<UsePopoverProps>): UsePopoverReturn => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
 

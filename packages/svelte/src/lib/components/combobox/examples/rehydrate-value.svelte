@@ -21,7 +21,9 @@
 
   let inputValue = $state('')
 
+  const id = $props.id()
   const combobox = useCombobox(() => ({
+    id,
     collection: collection(),
     defaultValue: ['C-3PO'],
     placeholder: 'Example: Dexter',

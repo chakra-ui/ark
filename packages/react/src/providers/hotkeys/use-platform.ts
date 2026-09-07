@@ -1,13 +1,11 @@
 'use client'
 
-import { getPlatform, isAndroid, isApple } from '@zag-js/dom-query'
+import { isApple, isLinux } from '@zag-js/dom-query'
 import { useCallback, useSyncExternalStore } from 'react'
 
-// TODO(zag-bump): once @zag-js/hotkeys > 1.43.1 is released, import `Platform` from it and
-// replace the inline linux check with `isLinux` from @zag-js/dom-query.
-export type Platform = 'mac' | 'windows' | 'linux'
+import type { Platform } from '@zag-js/hotkeys'
 
-const isLinux = () => /^Linux|^CrOS/i.test(getPlatform()) && !isAndroid()
+export type { Platform }
 
 const subscribe = () => () => {}
 

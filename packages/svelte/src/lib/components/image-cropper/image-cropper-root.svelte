@@ -1,9 +1,10 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseImageCropperProps } from './use-image-cropper.svelte.ts'
 
-  export interface ImageCropperRootBaseProps extends UseImageCropperProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface ImageCropperRootBaseProps
+    extends Optional<UseImageCropperProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface ImageCropperRootProps extends Assign<HTMLProps<'div'>, ImageCropperRootBaseProps> {
     children?: Snippet
   }
@@ -26,7 +27,7 @@
   const providedId = $props.id()
 
   const [useImageCropperProps, localProps] = $derived(
-    createSplitProps<UseImageCropperProps>()(props, [
+    createSplitProps<Optional<UseImageCropperProps, 'id'>>()(props, [
       'aspectRatio',
       'cropShape',
       'defaultFlip',

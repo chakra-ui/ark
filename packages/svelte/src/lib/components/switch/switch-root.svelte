@@ -1,8 +1,9 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseSwitchProps } from './use-switch.svelte.ts'
 
-  export interface SwitchRootBaseProps extends UseSwitchProps, PolymorphicProps<'label'>, RefAttribute {}
+  export interface SwitchRootBaseProps
+    extends Optional<UseSwitchProps, 'id'>, PolymorphicProps<'label'>, RefAttribute {}
   export interface SwitchRootProps extends Assign<HTMLProps<'label'>, SwitchRootBaseProps> {}
 </script>
 
@@ -17,7 +18,7 @@
   const providedId = $props.id()
 
   const [useSwitchProps, localProps] = $derived(
-    createSplitProps<UseSwitchProps>()(props, [
+    createSplitProps<Optional<UseSwitchProps, 'id'>>()(props, [
       'checked',
       'defaultChecked',
       'disabled',

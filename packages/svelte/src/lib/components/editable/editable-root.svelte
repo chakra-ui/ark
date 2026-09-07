@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, RefAttribute } from '$lib/types'
   import type { UseEditableProps } from './use-editable.svelte.ts'
 
-  export interface EditableRootBaseProps extends UseEditableProps, RefAttribute {}
+  export interface EditableRootBaseProps extends Optional<UseEditableProps, 'id'>, RefAttribute {}
   export interface EditableRootProps extends Assign<HTMLProps<'div'>, EditableRootBaseProps> {}
 </script>
 

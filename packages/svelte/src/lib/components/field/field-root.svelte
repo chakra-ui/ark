@@ -1,5 +1,5 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseFieldProps } from './use-field.svelte.ts'
 
   export interface FieldRootBaseProps extends UseFieldProps, PolymorphicProps<'div'>, RefAttribute {}
@@ -16,7 +16,15 @@
   let { ref = $bindable(null), ...props }: FieldRootProps = $props()
 
   const [useFieldProps, localProps] = $derived(
-    createSplitProps<UseFieldProps>()(props, ['id', 'ids', 'disabled', 'invalid', 'readOnly', 'required', 'target']),
+    createSplitProps<Optional<UseFieldProps, 'id'>>()(props, [
+      'id',
+      'ids',
+      'disabled',
+      'invalid',
+      'readOnly',
+      'required',
+      'target',
+    ]),
   )
 
   const providedId = $props.id()

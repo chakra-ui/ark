@@ -10,11 +10,6 @@ import { useEvent } from '../../utils/use-event.ts'
 
 export interface UsePresenceProps extends Optional<presence.Props, 'present'>, RenderStrategyProps {
   /**
-   * Function called when the animation ends in the open state.
-   */
-  // TODO(zag-bump): drop once @zag-js/presence v2 ports `onEnterComplete` back into its props.
-  onEnterComplete?: VoidFunction | undefined
-  /**
    * Whether to allow the initial presence animation.
    * @default false
    */
@@ -30,7 +25,7 @@ export const usePresence = (props: UsePresenceProps = {}) => {
     present,
     onEnterComplete: useEvent(props.onEnterComplete),
     onExitComplete: useEvent(props.onExitComplete),
-  } as Partial<presence.Props>
+  }
 
   const service = useMachine(presence.machine, machineProps)
   const api = presence.connect(service, normalizeProps)

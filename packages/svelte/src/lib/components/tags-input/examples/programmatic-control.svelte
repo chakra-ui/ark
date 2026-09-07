@@ -4,7 +4,8 @@
   import button from 'styles/button.module.css'
   import styles from 'styles/tags-input.module.css'
 
-  const tagsInput = useTagsInput()
+  const id = $props.id()
+  const tagsInput = useTagsInput({ id })
 </script>
 
 <div class="stack">

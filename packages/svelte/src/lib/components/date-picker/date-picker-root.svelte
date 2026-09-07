@@ -1,10 +1,11 @@
 <script module lang="ts">
+  import type { Optional } from '$lib/types'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
   import type { UseDatePickerProps } from './use-date-picker.svelte.js'
   import type { UsePresenceProps } from '../presence/index.js'
 
   export interface DatePickerRootBaseProps
-    extends UseDatePickerProps, UsePresenceProps, PolymorphicProps<'div'>, RefAttribute {}
+    extends Optional<UseDatePickerProps, 'id'>, UsePresenceProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface DatePickerRootProps extends Assign<HTMLProps<'div'>, DatePickerRootBaseProps> {}
 </script>
 
@@ -28,7 +29,7 @@
 
   const [presenceProps, datePickerProps] = $derived(splitPresenceProps(props))
   const [useDatePickerProps, localProps] = $derived(
-    createSplitProps<UseDatePickerProps>()(datePickerProps, [
+    createSplitProps<Optional<UseDatePickerProps, 'id'>>()(datePickerProps, [
       'closeOnSelect',
       'createCalendar',
       'defaultFocusedValue',

@@ -1,8 +1,9 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UsePaginationProps } from './use-pagination.svelte.ts'
 
-  export interface PaginationRootBaseProps extends UsePaginationProps, PolymorphicProps<'nav'>, RefAttribute {}
+  export interface PaginationRootBaseProps
+    extends Optional<UsePaginationProps, 'id'>, PolymorphicProps<'nav'>, RefAttribute {}
   export interface PaginationRootProps extends Assign<HTMLProps<'nav'>, PaginationRootBaseProps> {}
 </script>
 
@@ -17,7 +18,7 @@
   const providedId = $props.id()
 
   const [paginationProps, localProps] = $derived(
-    createSplitProps<UsePaginationProps>()(props, [
+    createSplitProps<Optional<UsePaginationProps, 'id'>>()(props, [
       'boundaryCount',
       'count',
       'defaultPage',

@@ -1,8 +1,9 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseCarouselProps } from './use-carousel.svelte.ts'
 
-  export interface CarouselRootBaseProps extends UseCarouselProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface CarouselRootBaseProps
+    extends Optional<UseCarouselProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface CarouselRootProps extends Assign<HTMLProps<'div'>, CarouselRootBaseProps> {}
 </script>
 
@@ -17,7 +18,7 @@
   const providedId = $props.id()
 
   const [useCarouselProps, localProps] = $derived(
-    createSplitProps<UseCarouselProps>()(props, [
+    createSplitProps<Optional<UseCarouselProps, 'id'>>()(props, [
       'allowMouseDrag',
       'autoPlay',
       'autoSize',

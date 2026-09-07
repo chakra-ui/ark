@@ -3,7 +3,8 @@
   import { CheckIcon, ClipboardCopyIcon } from 'lucide-svelte'
   import styles from 'styles/clipboard.module.css'
 
-  const clipboard = useClipboard(() => ({ value: 'https://ark-ui.com' }))
+  const id = $props.id()
+  const clipboard = useClipboard(() => ({ id, value: 'https://ark-ui.com' }))
 </script>
 
 <div class="stack">
