@@ -25,6 +25,11 @@ useForwardExpose()
 
 <template>
   <ark.span :as-child="asChild">
-    <slot>{{ clipboard.value }}</slot>
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot>{{ clipboard.value }}</slot>
+    </template>
   </ark.span>
 </template>

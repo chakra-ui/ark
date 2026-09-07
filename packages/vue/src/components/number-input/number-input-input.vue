@@ -27,6 +27,11 @@ useForwardExpose()
 
 <template>
   <ark.input :aria-describedby="field?.ariaDescribedby" v-bind="numberInput.getInputProps()" :as-child="asChild">
-    <slot />
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.input>
 </template>

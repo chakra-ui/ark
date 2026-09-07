@@ -24,5 +24,9 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.hr v-bind="menu.getSeparatorProps()" :as-child="asChild" />
+  <ark.hr v-bind="menu.getSeparatorProps()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+  </ark.hr>
 </template>

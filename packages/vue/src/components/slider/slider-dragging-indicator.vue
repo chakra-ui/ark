@@ -28,6 +28,11 @@ useForwardExpose()
 
 <template>
   <ark.span v-bind="slider.getDraggingIndicatorProps(thumbProps)" :as-child="asChild">
-    <slot>{{ slots.default?.() || slider.getThumbValue(thumbProps.index) }}</slot>
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot>{{ slots.default?.() || slider.getThumbValue(thumbProps.index) }}</slot>
+    </template>
   </ark.span>
 </template>

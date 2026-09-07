@@ -35,6 +35,11 @@ useForwardExpose()
 
 <template>
   <ark.span v-bind="parts.progressText.attrs('')" :as-child="asChild">
-    <slot>{{ progressText }}</slot>
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot>{{ progressText }}</slot>
+    </template>
   </ark.span>
 </template>

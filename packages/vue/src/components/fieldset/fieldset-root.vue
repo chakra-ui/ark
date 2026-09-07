@@ -33,6 +33,11 @@ useForwardExpose()
 
 <template>
   <ark.fieldset v-bind="fieldset.getRootProps()" :ref="fieldset.refs.rootRef" :as-child="asChild">
-    <slot />
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.fieldset>
 </template>

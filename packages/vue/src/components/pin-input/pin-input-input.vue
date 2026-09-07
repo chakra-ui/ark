@@ -25,5 +25,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.input v-bind="pinInput.getInputProps(props)" :as-child="asChild"><slot /></ark.input>
+  <ark.input v-bind="pinInput.getInputProps(props)" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
+  </ark.input>
 </template>

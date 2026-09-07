@@ -37,6 +37,11 @@ useForwardExpose()
 
 <template>
   <ark.button :as-child="asChild" type="button" @click="handleClick">
-    <slot />
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.button>
 </template>

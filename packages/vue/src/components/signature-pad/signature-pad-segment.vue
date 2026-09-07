@@ -25,11 +25,16 @@ useForwardExpose()
 
 <template>
   <ark.svg v-bind="signaturePad.getSegmentProps()" :as-child="asChild">
-    <title>Signature</title>
-    <path v-for="(path, i) in signaturePad.paths" :key="i" v-bind="signaturePad.getSegmentPathProps({ path })" />
-    <path
-      v-if="signaturePad.currentPath"
-      v-bind="signaturePad.getSegmentPathProps({ path: signaturePad.currentPath })"
-    />
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <title>Signature</title>
+      <path v-for="(path, i) in signaturePad.paths" :key="i" v-bind="signaturePad.getSegmentPathProps({ path })" />
+      <path
+        v-if="signaturePad.currentPath"
+        v-bind="signaturePad.getSegmentPathProps({ path: signaturePad.currentPath })"
+      />
+    </template>
   </ark.svg>
 </template>

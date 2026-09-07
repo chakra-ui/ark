@@ -33,8 +33,13 @@ const valueAsString = computed(() =>
 
 <template>
   <ark.span v-bind="colorPicker.getValueTextProps()" :as-child="asChild">
-    <slot>
-      {{ slots.default?.() || valueAsString }}
-    </slot>
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot>
+        {{ slots.default?.() || valueAsString }}
+      </slot>
+    </template>
   </ark.span>
 </template>

@@ -25,6 +25,11 @@ useForwardExpose()
 
 <template>
   <ark.ul v-bind="toc.getListProps()" :as-child="asChild">
-    <slot />
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.ul>
 </template>

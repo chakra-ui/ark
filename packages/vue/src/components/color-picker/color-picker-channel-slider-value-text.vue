@@ -30,8 +30,13 @@ useForwardExpose()
 
 <template>
   <ark.span v-bind="colorPicker.getChannelSliderValueTextProps(channelProps)" :as-child="asChild">
-    <slot>
-      {{ slots.default?.() || colorPicker.getChannelValueText(channelProps.channel, localeContext.locale) }}
-    </slot>
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot>
+        {{ slots.default?.() || colorPicker.getChannelValueText(channelProps.channel, localeContext.locale) }}
+      </slot>
+    </template>
   </ark.span>
 </template>

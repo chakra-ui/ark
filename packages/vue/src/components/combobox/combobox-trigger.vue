@@ -23,6 +23,11 @@ const combobox = useComboboxContext()
 
 <template>
   <ark.button v-bind="combobox.getTriggerProps(props)" :as-child="asChild">
-    <slot />
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.button>
 </template>

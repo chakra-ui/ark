@@ -40,6 +40,11 @@ useForwardExpose()
 
 <template>
   <ark.div v-if="tour.step?.backdrop && !presence.unmounted" v-bind="mergedProps" :as-child="asChild">
-    <slot />
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

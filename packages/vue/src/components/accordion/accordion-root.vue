@@ -41,6 +41,11 @@ useForwardExpose()
 
 <template>
   <ark.div v-bind="accordion.getRootProps()" :as-child="asChild">
-    <slot></slot>
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot></slot>
+    </template>
   </ark.div>
 </template>
