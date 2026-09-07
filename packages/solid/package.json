@@ -168,7 +168,7 @@
     "@testing-library/jest-dom": "7.0.1",
     "@testing-library/user-event": "14.6.7",
     "@types/jsdom": "30.0.0",
-    "@vitest/coverage-v8": "4.1.11",
+    "@vitest/coverage-v8": "5.0.0",
     "check-password-strength": "3.0.0",
     "clean-package": "2.2.0",
     "esbuild-plugin-solid": "0.6.0",
@@ -184,7 +184,7 @@
     "typescript": "6.0.3",
     "vite": "8.2.2",
     "vite-plugin-solid": "2.11.14",
-    "vitest": "4.1.11",
+    "vitest": "5.0.0",
     "vitest-axe": "1.0.0-pre.5"
   },
   "peerDependencies": {
