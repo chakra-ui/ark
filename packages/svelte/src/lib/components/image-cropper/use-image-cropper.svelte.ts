@@ -1,14 +1,14 @@
 import { useEnvironmentContext } from '$lib/providers/environment'
 import { useLocaleContext } from '$lib/providers/locale'
-import type { Accessor, Optional } from '$lib/types'
+import type { Accessor } from '$lib/types'
 import * as imageCropper from '@zag-js/image-cropper'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 
-export interface UseImageCropperProps extends Optional<Omit<imageCropper.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseImageCropperProps extends Omit<imageCropper.Props, 'dir' | 'getRootNode'> {}
 export interface UseImageCropperReturn extends Accessor<imageCropper.Api<PropTypes>> {}
 
-export const useImageCropper = (props?: MaybeFunction<UseImageCropperProps>): UseImageCropperReturn => {
+export const useImageCropper = (props: MaybeFunction<UseImageCropperProps>): UseImageCropperReturn => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
 

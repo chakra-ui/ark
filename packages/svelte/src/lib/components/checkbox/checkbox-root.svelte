@@ -1,8 +1,9 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseCheckboxProps } from './use-checkbox.svelte.ts'
 
-  export interface CheckboxRootBaseProps extends UseCheckboxProps, PolymorphicProps<'label'>, RefAttribute {}
+  export interface CheckboxRootBaseProps
+    extends Optional<UseCheckboxProps, 'id'>, PolymorphicProps<'label'>, RefAttribute {}
   export interface CheckboxRootProps extends Assign<HTMLProps<'label'>, CheckboxRootBaseProps> {}
 </script>
 

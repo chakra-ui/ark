@@ -4,10 +4,10 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 import { useEnvironmentContext, useLocaleContext } from '../../providers/index.js'
 
-export interface UseFloatingPanelProps extends Optional<Omit<floatingPanel.Props, 'getRootNode'>, 'id'> {}
+export interface UseFloatingPanelProps extends Omit<floatingPanel.Props, 'getRootNode'> {}
 export interface UseFloatingPanelReturn extends Accessor<floatingPanel.Api<PropTypes>> {}
 
-export const useFloatingPanel = (props: MaybeFunction<UseFloatingPanelProps> = {}): UseFloatingPanelReturn => {
+export const useFloatingPanel = (props: MaybeFunction<UseFloatingPanelProps>): UseFloatingPanelReturn => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
 

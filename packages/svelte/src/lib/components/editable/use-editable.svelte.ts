@@ -1,15 +1,15 @@
 import { useEnvironmentContext } from '$lib/providers/environment'
 import { useLocaleContext } from '$lib/providers/locale'
-import type { Accessor, Optional } from '$lib/types'
+import type { Accessor } from '$lib/types'
 import * as editable from '@zag-js/editable'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 import { useFieldContext } from '../field/index.ts'
 
-export interface UseEditableProps extends Optional<Omit<editable.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseEditableProps extends Omit<editable.Props, 'dir' | 'getRootNode'> {}
 export interface UseEditableReturn extends Accessor<editable.Api<PropTypes>> {}
 
-export const useEditable = (props?: MaybeFunction<UseEditableProps>): UseEditableReturn => {
+export const useEditable = (props: MaybeFunction<UseEditableProps>): UseEditableReturn => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
   const field = useFieldContext()

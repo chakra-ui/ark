@@ -1,8 +1,9 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseTagsInputProps } from './use-tags-input.svelte.ts'
 
-  export interface TagsInputRootBaseProps extends UseTagsInputProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface TagsInputRootBaseProps
+    extends Optional<UseTagsInputProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface TagsInputRootProps extends Assign<HTMLProps<'div'>, TagsInputRootBaseProps> {}
 </script>
 
@@ -21,7 +22,7 @@
   }: TagsInputRootProps = $props()
 
   const [useTagsInputProps, localProps] = $derived(
-    createSplitProps<UseTagsInputProps>()(props, [
+    createSplitProps<Optional<UseTagsInputProps, 'id'>>()(props, [
       'addOnPaste',
       'allowDuplicates',
       'allowOverflow',

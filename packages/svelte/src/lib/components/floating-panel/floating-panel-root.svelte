@@ -1,11 +1,12 @@
 <script lang="ts" module>
+  import type { Optional } from '$lib/types'
   import type { PolymorphicProps } from '$lib/types.js'
   import type { Snippet } from 'svelte'
   import type { UsePresenceProps } from '../presence/use-presence.svelte.js'
   import type { UseFloatingPanelProps } from './use-floating-panel.svelte.js'
 
   export interface FloatingPanelRootBaseProps
-    extends UseFloatingPanelProps, UsePresenceProps, PolymorphicProps<'div'> {}
+    extends Optional<UseFloatingPanelProps, 'id'>, UsePresenceProps, PolymorphicProps<'div'> {}
   export interface FloatingPanelRootProps extends FloatingPanelRootBaseProps {
     children?: Snippet
   }
@@ -23,7 +24,7 @@
 
   const [presenceProps, otherProps] = $derived(splitPresenceProps(props))
   const [floatingPanelProps, localProps] = $derived(
-    createSplitProps<UseFloatingPanelProps>()(otherProps, [
+    createSplitProps<Optional<UseFloatingPanelProps, 'id'>>()(otherProps, [
       'allowOverflow',
       'closeOnEscape',
       'defaultOpen',

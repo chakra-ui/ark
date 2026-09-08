@@ -61,6 +61,12 @@ The pin input component invokes several callback functions when the user enters:
 - `onValueInvalid` — Callback invoked when an invalid value is entered into the input. An invalid value is any value
   that doesn't match the specified "type".
 
+### Verify on Complete
+
+Call `onValueComplete` when every field is filled. If the code is wrong, set `invalid`. The control shakes.
+
+<Example id="verify-on-complete" />
+
 ### Field
 
 The `Field` component helps manage form-related state and accessibility attributes of a pin input. It includes handling

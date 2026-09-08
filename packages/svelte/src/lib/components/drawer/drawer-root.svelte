@@ -1,9 +1,10 @@
 <script module lang="ts">
+  import type { Optional } from '$lib/types'
   import type { Snippet } from 'svelte'
   import type { UsePresenceProps } from '../presence/index.ts'
   import type { UseDrawerProps } from './use-drawer.svelte.ts'
 
-  export interface DrawerRootBaseProps extends UseDrawerProps, UsePresenceProps {}
+  export interface DrawerRootBaseProps extends Optional<UseDrawerProps, 'id'>, UsePresenceProps {}
   export interface DrawerRootProps extends DrawerRootBaseProps {
     children?: Snippet
   }

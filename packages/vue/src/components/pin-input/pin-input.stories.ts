@@ -6,6 +6,7 @@ import CustomPlaceholderExample from './examples/custom-placeholder.vue'
 import MaskExample from './examples/mask.vue'
 import OTPModeExample from './examples/otp-mode.vue'
 import RootProviderExample from './examples/root-provider.vue'
+import VerifyOnCompleteExample from './examples/verify-on-complete.vue'
 import WithFieldExample from './examples/with-field.vue'
 
 const meta: Meta = {
@@ -52,6 +53,13 @@ export const OTPMode = {
 export const RootProvider = {
   render: () => ({
     components: { Component: RootProviderExample },
+    template: '<Component />',
+  }),
+}
+
+export const VerifyOnComplete = {
+  render: () => ({
+    components: { Component: VerifyOnCompleteExample },
     template: '<Component />',
   }),
 }

@@ -3,6 +3,7 @@ import BasicExample from './examples/basic.svelte'
 import ContextExample from './examples/context.svelte'
 import EventsExample from './examples/events.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import AvatarStackExample from './examples/avatar-stack.svelte'
 
 const meta = {
   title: 'Components / Avatar',
@@ -31,5 +32,11 @@ export const Events = {
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
+  }),
+}
+
+export const AvatarStack = {
+  render: () => ({
+    Component: AvatarStackExample,
   }),
 }

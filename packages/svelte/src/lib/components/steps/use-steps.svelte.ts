@@ -1,14 +1,14 @@
 import { useEnvironmentContext } from '$lib/providers/environment'
 import { useLocaleContext } from '$lib/providers/locale'
-import type { Accessor, Optional } from '$lib/types'
+import type { Accessor } from '$lib/types'
 import * as steps from '@zag-js/steps'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 
-export interface UseStepsProps extends Optional<Omit<steps.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseStepsProps extends Omit<steps.Props, 'dir' | 'getRootNode'> {}
 export interface UseStepsReturn extends Accessor<steps.Api<PropTypes>> {}
 
-export const useSteps = (props?: MaybeFunction<UseStepsProps>) => {
+export const useSteps = (props: MaybeFunction<UseStepsProps>) => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
 

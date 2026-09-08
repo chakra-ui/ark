@@ -7,6 +7,7 @@ import MaxToastsExample from './examples/max-toasts.vue'
 import PlacementExample from './examples/placement.vue'
 import PromiseToastExample from './examples/promise-toast.vue'
 import TypesExample from './examples/types.vue'
+import UndoExample from './examples/undo.vue'
 import UpdateExample from './examples/update.vue'
 import VaryingHeightExample from './examples/varying-height.vue'
 
@@ -54,6 +55,13 @@ export const PromiseToast = {
 export const Types = {
   render: () => ({
     components: { Component: TypesExample },
+    template: '<Component />',
+  }),
+}
+
+export const Undo = {
+  render: () => ({
+    components: { Component: UndoExample },
     template: '<Component />',
   }),
 }

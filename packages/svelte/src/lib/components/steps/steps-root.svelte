@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseStepsProps } from './use-steps.svelte.ts'
 
-  export interface StepsRootBaseProps extends UseStepsProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface StepsRootBaseProps extends Optional<UseStepsProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface StepsRootProps extends Assign<HTMLProps<'div'>, StepsRootBaseProps> {}
 </script>
 
@@ -17,7 +17,7 @@
   const providedId = $props.id()
 
   const [useStepsProps, localProps] = $derived(
-    createSplitProps<UseStepsProps>()(props, [
+    createSplitProps<Optional<UseStepsProps, 'id'>>()(props, [
       'count',
       'defaultStep',
       'id',

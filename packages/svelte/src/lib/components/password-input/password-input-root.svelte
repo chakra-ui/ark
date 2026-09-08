@@ -1,9 +1,10 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UsePasswordInputProps } from './use-password-input.svelte.ts'
 
-  export interface PasswordInputRootBaseProps extends UsePasswordInputProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface PasswordInputRootBaseProps
+    extends Optional<UsePasswordInputProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface PasswordInputRootProps extends Assign<HTMLProps<'div'>, PasswordInputRootBaseProps> {
     children?: Snippet
   }
@@ -20,7 +21,7 @@
   const providedId = $props.id()
 
   const [usePasswordInputProps, localProps] = $derived(
-    createSplitProps<UsePasswordInputProps>()(props, [
+    createSplitProps<Optional<UsePasswordInputProps, 'id'>>()(props, [
       'autoComplete',
       'defaultVisible',
       'disabled',

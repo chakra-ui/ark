@@ -59,6 +59,9 @@
   },
   "patchedDependencies": {
     "@zag-js/virtualizer@2.0.0-next.2": "patches/@zag-js%2Fvirtualizer@2.0.0-next.2.patch",
-    "@zag-js/tree-view@2.0.0-next.1": "patches/@zag-js%2Ftree-view@2.0.0-next.1.patch"
+    "@zag-js/tree-view@2.0.0-next.2": "patches/@zag-js%2Ftree-view@2.0.0-next.2.patch",
+    "@zag-js/popper@2.0.0-next.2": "patches/@zag-js%2Fpopper@2.0.0-next.2.patch",
+    "@zag-js/menu@2.0.0-next.2": "patches/@zag-js%2Fmenu@2.0.0-next.2.patch",
+    "@zag-js/tooltip@2.0.0-next.2": "patches/@zag-js%2Ftooltip@2.0.0-next.2.patch"
   }
 }

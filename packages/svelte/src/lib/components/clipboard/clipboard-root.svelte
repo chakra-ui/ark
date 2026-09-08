@@ -1,8 +1,9 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseClipboardProps } from './use-clipboard.svelte.ts'
 
-  export interface ClipboardRootBaseProps extends UseClipboardProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface ClipboardRootBaseProps
+    extends Optional<UseClipboardProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface ClipboardRootProps extends Assign<HTMLProps<'div'>, ClipboardRootBaseProps> {}
 </script>
 

@@ -13,7 +13,8 @@
     ],
   })
 
-  const listbox = useListbox({ collection })
+  const id = $props.id()
+  const listbox = useListbox({ id, collection })
 </script>
 
 <div class="stack">

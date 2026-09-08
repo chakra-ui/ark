@@ -1,8 +1,9 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseRatingGroupProps } from './use-rating-group.svelte.ts'
 
-  export interface RatingGroupRootBaseProps extends UseRatingGroupProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface RatingGroupRootBaseProps
+    extends Optional<UseRatingGroupProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface RatingGroupRootProps extends Assign<HTMLProps<'div'>, RatingGroupRootBaseProps> {}
 </script>
 

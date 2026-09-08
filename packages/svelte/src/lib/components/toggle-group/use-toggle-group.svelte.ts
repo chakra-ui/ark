@@ -1,15 +1,15 @@
 import { useEnvironmentContext } from '$lib/providers/environment'
 import { useLocaleContext } from '$lib/providers/locale'
-import type { Accessor, Optional } from '$lib/types'
+import type { Accessor } from '$lib/types'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import * as toggleGroup from '@zag-js/toggle-group'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 
-export interface UseToggleGroupProps extends Optional<Omit<toggleGroup.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseToggleGroupProps extends Omit<toggleGroup.Props, 'dir' | 'getRootNode'> {}
 
 export interface UseToggleGroupReturn extends Accessor<toggleGroup.Api<PropTypes>> {}
 
-export const useToggleGroup = (props: MaybeFunction<UseToggleGroupProps> = {}): UseToggleGroupReturn => {
+export const useToggleGroup = (props: MaybeFunction<UseToggleGroupProps>): UseToggleGroupReturn => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
 

@@ -35,3 +35,22 @@
   top: 48px;
   left: 0px;
 }
+
+.Stack {
+  display: flex;
+  align-items: center;
+}
+
+.Stack > * + * {
+  margin-inline-start: -0.75rem;
+}
+
+.Stack .Root {
+  box-shadow: 0 0 0 2px var(--demo-bg);
+}
+
+.MenuAvatar {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 0.625rem;
+}

@@ -7,6 +7,11 @@ import DelayExample from './examples/delay.svelte'
 import MultipleTriggersExample from './examples/multiple-triggers.svelte'
 import PositioningExample from './examples/positioning.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import WithCheckboxExample from './examples/with-checkbox.svelte'
+import WithDialogExample from './examples/with-dialog.svelte'
+import WithMenuItemExample from './examples/with-menu-item.svelte'
+import WithMenuTriggerExample from './examples/with-menu-trigger.svelte'
+import WithPopoverExample from './examples/with-popover.svelte'
 
 const meta: Meta = {
   title: 'Components/Tooltip',
@@ -59,5 +64,35 @@ export const Positioning = {
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
+  }),
+}
+
+export const WithCheckbox = {
+  render: () => ({
+    Component: WithCheckboxExample,
+  }),
+}
+
+export const WithDialog = {
+  render: () => ({
+    Component: WithDialogExample,
+  }),
+}
+
+export const WithMenuItem = {
+  render: () => ({
+    Component: WithMenuItemExample,
+  }),
+}
+
+export const WithMenuTrigger = {
+  render: () => ({
+    Component: WithMenuTriggerExample,
+  }),
+}
+
+export const WithPopover = {
+  render: () => ({
+    Component: WithPopoverExample,
   }),
 }

@@ -1,9 +1,10 @@
 <script module lang="ts">
+  import type { Optional } from '$lib/types'
   import type { Snippet } from 'svelte'
   import type { UsePresenceProps } from '../presence/index.ts'
   import type { UseDialogProps } from './use-dialog.svelte.ts'
 
-  export interface DialogRootBaseProps extends UseDialogProps, UsePresenceProps {}
+  export interface DialogRootBaseProps extends Optional<UseDialogProps, 'id'>, UsePresenceProps {}
   export interface DialogRootProps extends DialogRootBaseProps {
     children?: Snippet
   }

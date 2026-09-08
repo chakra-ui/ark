@@ -1,8 +1,9 @@
+import type { Optional } from '$lib/types'
 import { createSplitProps } from '$lib/utils/create-split-props'
 import type { UseEditableProps } from './use-editable.svelte.ts'
 
-const splitFn = createSplitProps<UseEditableProps>()
-export function splitEditableProps<T extends UseEditableProps>(props: T) {
+const splitFn = createSplitProps<Optional<UseEditableProps, 'id'>>()
+export function splitEditableProps<T extends Optional<UseEditableProps, 'id'>>(props: T) {
   return splitFn(props, [
     'activationMode',
     'autoResize',

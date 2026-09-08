@@ -5,9 +5,9 @@ import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 import { useEnvironmentContext, useLocaleContext } from '../../providers/index.js'
 import type { CollectionItem, ListCollection } from '../collection/index.js'
 
-export interface UseListboxProps<T extends CollectionItem> extends Optional<
-  Omit<listbox.Props<T>, 'dir' | 'getRootNode' | 'collection'>,
-  'id'
+export interface UseListboxProps<T extends CollectionItem> extends Omit<
+  listbox.Props<T>,
+  'dir' | 'getRootNode' | 'collection'
 > {
   /**
    * The collection of items

@@ -13,7 +13,9 @@
     ],
   })
 
+  const id = $props.id()
   const select = useSelect({
+    id,
     collection: frameworks,
     onHighlightChange({ highlightedValue }) {
       if (highlightedValue) {

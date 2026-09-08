@@ -21,6 +21,7 @@ import * as AngleSlider_Controlled from '@examples/angle-slider/examples/control
 import * as AngleSlider_Disabled from '@examples/angle-slider/examples/disabled'
 import * as AngleSlider_RootProvider from '@examples/angle-slider/examples/root-provider'
 import * as AngleSlider_Step from '@examples/angle-slider/examples/step'
+import * as Avatar_AvatarStack from '@examples/avatar/examples/avatar-stack'
 import * as Avatar_Basic from '@examples/avatar/examples/basic'
 import * as Avatar_Context from '@examples/avatar/examples/context'
 import * as Avatar_Events from '@examples/avatar/examples/events'
@@ -381,6 +382,7 @@ import * as PinInput_CustomPlaceholder from '@examples/pin-input/examples/custom
 import * as PinInput_Mask from '@examples/pin-input/examples/mask'
 import * as PinInput_OtpMode from '@examples/pin-input/examples/otp-mode'
 import * as PinInput_RootProvider from '@examples/pin-input/examples/root-provider'
+import * as PinInput_VerifyOnComplete from '@examples/pin-input/examples/verify-on-complete'
 import * as PinInput_WithField from '@examples/pin-input/examples/with-field'
 import * as Popover_Anchor from '@examples/popover/examples/anchor'
 import * as Popover_Arrow from '@examples/popover/examples/arrow'
@@ -554,6 +556,7 @@ import * as Toast_MaxToasts from '@examples/toast/examples/max-toasts'
 import * as Toast_Placement from '@examples/toast/examples/placement'
 import * as Toast_PromiseToast from '@examples/toast/examples/promise-toast'
 import * as Toast_Types from '@examples/toast/examples/types'
+import * as Toast_Undo from '@examples/toast/examples/undo'
 import * as Toast_Update from '@examples/toast/examples/update'
 import * as Toast_VaryingHeight from '@examples/toast/examples/varying-height'
 import * as Toc_Basic from '@examples/toc/examples/basic'
@@ -583,6 +586,11 @@ import * as Tooltip_Delay from '@examples/tooltip/examples/delay'
 import * as Tooltip_MultipleTriggers from '@examples/tooltip/examples/multiple-triggers'
 import * as Tooltip_Positioning from '@examples/tooltip/examples/positioning'
 import * as Tooltip_RootProvider from '@examples/tooltip/examples/root-provider'
+import * as Tooltip_WithCheckbox from '@examples/tooltip/examples/with-checkbox'
+import * as Tooltip_WithDialog from '@examples/tooltip/examples/with-dialog'
+import * as Tooltip_WithMenuItem from '@examples/tooltip/examples/with-menu-item'
+import * as Tooltip_WithMenuTrigger from '@examples/tooltip/examples/with-menu-trigger'
+import * as Tooltip_WithPopover from '@examples/tooltip/examples/with-popover'
 import * as Tooltip_WithinFixed from '@examples/tooltip/examples/within-fixed'
 import * as Tour_AsyncStep from '@examples/tour/examples/async-step'
 import * as Tour_Basic from '@examples/tour/examples/basic'
@@ -658,6 +666,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'angle-slider/disabled': AngleSlider_Disabled,
   'angle-slider/root-provider': AngleSlider_RootProvider,
   'angle-slider/step': AngleSlider_Step,
+  'avatar/avatar-stack': Avatar_AvatarStack,
   'avatar/basic': Avatar_Basic,
   'avatar/context': Avatar_Context,
   'avatar/events': Avatar_Events,
@@ -1018,6 +1027,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'pin-input/mask': PinInput_Mask,
   'pin-input/otp-mode': PinInput_OtpMode,
   'pin-input/root-provider': PinInput_RootProvider,
+  'pin-input/verify-on-complete': PinInput_VerifyOnComplete,
   'pin-input/with-field': PinInput_WithField,
   'popover/anchor': Popover_Anchor,
   'popover/arrow': Popover_Arrow,
@@ -1191,6 +1201,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'toast/placement': Toast_Placement,
   'toast/promise-toast': Toast_PromiseToast,
   'toast/types': Toast_Types,
+  'toast/undo': Toast_Undo,
   'toast/update': Toast_Update,
   'toast/varying-height': Toast_VaryingHeight,
   'toc/basic': Toc_Basic,
@@ -1220,6 +1231,11 @@ const exampleModules: Record<string, ExampleModule> = {
   'tooltip/multiple-triggers': Tooltip_MultipleTriggers,
   'tooltip/positioning': Tooltip_Positioning,
   'tooltip/root-provider': Tooltip_RootProvider,
+  'tooltip/with-checkbox': Tooltip_WithCheckbox,
+  'tooltip/with-dialog': Tooltip_WithDialog,
+  'tooltip/with-menu-item': Tooltip_WithMenuItem,
+  'tooltip/with-menu-trigger': Tooltip_WithMenuTrigger,
+  'tooltip/with-popover': Tooltip_WithPopover,
   'tooltip/within-fixed': Tooltip_WithinFixed,
   'tour/async-step': Tour_AsyncStep,
   'tour/basic': Tour_Basic,

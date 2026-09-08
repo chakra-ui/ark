@@ -1,10 +1,10 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UsePresenceProps } from '../presence/index.ts'
   import type { UseNavigationMenuProps } from './use-navigation-menu.svelte.ts'
 
   export interface NavigationMenuRootBaseProps
-    extends UseNavigationMenuProps, UsePresenceProps, PolymorphicProps<'nav'>, RefAttribute {}
+    extends Optional<UseNavigationMenuProps, 'id'>, UsePresenceProps, PolymorphicProps<'nav'>, RefAttribute {}
   export interface NavigationMenuRootProps extends Assign<HTMLProps<'nav'>, NavigationMenuRootBaseProps> {}
 </script>
 
@@ -19,7 +19,7 @@
   let { ref = $bindable(null), value = $bindable(), ...props }: NavigationMenuRootProps = $props()
 
   const providedId = $props.id()
-  const splitRootProps = createSplitProps<UseNavigationMenuProps>()
+  const splitRootProps = createSplitProps<Optional<UseNavigationMenuProps, 'id'>>()
 
   const [renderStrategyProps, navigationMenuProps] = $derived(splitRenderStrategyProps(props))
   const [useNavigationMenuProps, localProps] = $derived(

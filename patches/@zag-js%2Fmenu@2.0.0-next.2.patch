@@ -1,0 +1,40 @@
+diff --git a/dist/menu.machine.js b/dist/menu.machine.js
+index 04ebf442524c7d0c540c0bfc6bc24c7191c8c499..046e6e3068989931673c5c237af4cc469af4b951 100644
+--- a/dist/menu.machine.js
++++ b/dist/menu.machine.js
+@@ -625,6 +625,7 @@ var machine = (0, import_core.createMachine)({
+         const getPositionerEl2 = () => dom.getPositionerEl(scope);
+         const getTriggerEl2 = () => dom.getActiveTriggerEl(scope, context.get("triggerValue"));
+         return (0, import_popper.getPlacement)(getTriggerEl2, getPositionerEl2, {
++          getArrowElement: () => dom.getArrowEl(scope),
+           ...positioning,
+           defer: true,
+           onComplete(data) {
+@@ -747,6 +748,7 @@ var machine = (0, import_core.createMachine)({
+         const triggerValue = event.value ?? context.get("triggerValue");
+         const getTriggerEl2 = () => dom.getActiveTriggerEl(scope, triggerValue);
+         (0, import_popper.getPlacement)(getTriggerEl2, getPositionerEl2, {
++          getArrowElement: () => dom.getArrowEl(scope),
+           ...positioning,
+           defer: true,
+           getAnchorRect,
+diff --git a/dist/menu.machine.mjs b/dist/menu.machine.mjs
+index f911b65411b18cd53851009a2799a3baa9a5159c..8d68105e53e548384fbcb91ae524f9f9ee376393 100644
+--- a/dist/menu.machine.mjs
++++ b/dist/menu.machine.mjs
+@@ -610,6 +610,7 @@ var machine = createMachine({
+         const getPositionerEl2 = () => dom.getPositionerEl(scope);
+         const getTriggerEl2 = () => dom.getActiveTriggerEl(scope, context.get("triggerValue"));
+         return getPlacement(getTriggerEl2, getPositionerEl2, {
++          getArrowElement: () => dom.getArrowEl(scope),
+           ...positioning,
+           defer: true,
+           onComplete(data) {
+@@ -732,6 +733,7 @@ var machine = createMachine({
+         const triggerValue = event.value ?? context.get("triggerValue");
+         const getTriggerEl2 = () => dom.getActiveTriggerEl(scope, triggerValue);
+         getPlacement(getTriggerEl2, getPositionerEl2, {
++          getArrowElement: () => dom.getArrowEl(scope),
+           ...positioning,
+           defer: true,
+           getAnchorRect,

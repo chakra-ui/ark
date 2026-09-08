@@ -4,7 +4,9 @@
   import button from 'styles/button.module.css'
   import styles from 'styles/popover.module.css'
 
+  const id = $props.id()
   const popover = usePopover({
+    id,
     positioning: {
       placement: 'bottom-start',
     },

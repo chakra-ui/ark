@@ -1,17 +1,17 @@
 import { useEnvironmentContext } from '$lib/providers/environment'
 import { useLocaleContext } from '$lib/providers/locale'
-import type { Accessor, Optional } from '$lib/types'
+import type { Accessor } from '$lib/types'
 import * as menu from '@zag-js/menu'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 
-export interface UseMenuProps extends Optional<Omit<menu.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseMenuProps extends Omit<menu.Props, 'dir' | 'getRootNode'> {}
 export interface UseMenuReturn extends Accessor<{
   api: menu.Api<PropTypes>
   service: menu.Service
 }> {}
 
-export const useMenu = (props?: MaybeFunction<UseMenuProps>): UseMenuReturn => {
+export const useMenu = (props: MaybeFunction<UseMenuProps>): UseMenuReturn => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
 

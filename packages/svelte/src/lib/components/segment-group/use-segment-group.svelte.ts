@@ -4,7 +4,7 @@ import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { Accessor, Optional } from '../../types.ts'
 
-export interface UseSegmentGroupProps extends Optional<Omit<segmentGroup.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseSegmentGroupProps extends Omit<segmentGroup.Props, 'dir' | 'getRootNode'> {}
 export interface UseSegmentGroupReturn extends Accessor<segmentGroup.Api<PropTypes>> {}
 
 export const useSegmentGroup = (props: MaybeFunction<UseSegmentGroupProps>): UseSegmentGroupReturn => {

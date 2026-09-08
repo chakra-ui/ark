@@ -1,8 +1,9 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseFileUploadProps } from './use-file-upload.svelte.ts'
 
-  export interface FileUploadRootBaseProps extends UseFileUploadProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface FileUploadRootBaseProps
+    extends Optional<UseFileUploadProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface FileUploadRootProps extends Assign<HTMLProps<'div'>, FileUploadRootBaseProps> {}
 </script>
 
@@ -17,7 +18,7 @@
   const providedId = $props.id()
 
   const [useFileUploadProps, localProps] = $derived(
-    createSplitProps<UseFileUploadProps>()(props, [
+    createSplitProps<Optional<UseFileUploadProps, 'id'>>()(props, [
       'accept',
       'acceptedFiles',
       'allowDrop',

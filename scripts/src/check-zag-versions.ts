@@ -151,12 +151,26 @@ function main() {
 
     exit(1)
   } else {
+    const uniqueVersions = new Set(Object.values(controlZagPackages))
+    if (uniqueVersions.size > 1) {
+      console.error('❌ @zag-js/* packages are not pinned to a single version:\n')
+      const byVersion = new Map<string, string[]>()
+      for (const [name, version] of Object.entries(controlZagPackages).sort(([a], [b]) => a.localeCompare(b))) {
+        const packages = byVersion.get(version) ?? []
+        packages.push(name)
+        byVersion.set(version, packages)
+      }
+      for (const [version, packages] of [...byVersion.entries()].sort(([a], [b]) => a.localeCompare(b))) {
+        console.error(`  ${version}: ${packages.join(', ')}`)
+      }
+      exit(1)
+    }
+
     console.log('✅ All @zag-js/* packages are consistent across frameworks')
 
-    // Show the common version
     if (controlPackageNames.length > 0) {
-      const commonVersion = controlZagPackages[controlPackageNames[0]]
-      console.log(`📋 Common version: ${commonVersion}`)
+      const [commonVersion] = uniqueVersions
+      console.log(`📋 Pinned version: ${commonVersion}`)
       console.log(`📊 Total packages checked: ${controlPackageNames.length}`)
     }
   }

@@ -5,7 +5,7 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers/index.t
 import type { Accessor, Optional } from '../../types.ts'
 import { useFieldContext } from '../field/index.ts'
 
-export interface UseRatingGroupProps extends Optional<Omit<rating.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseRatingGroupProps extends Omit<rating.Props, 'dir' | 'getRootNode'> {}
 export interface UseRatingGroupReturn extends Accessor<rating.Api<PropTypes>> {}
 
 export const useRatingGroup = (props: MaybeFunction<UseRatingGroupProps>): UseRatingGroupReturn => {

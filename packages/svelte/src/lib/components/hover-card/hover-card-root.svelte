@@ -1,8 +1,9 @@
 <script module lang="ts">
+  import type { Optional } from '$lib/types'
   import type { UsePresenceProps } from '../presence/index.ts'
   import type { UseHoverCardProps } from './use-hover-card.svelte.ts'
 
-  export interface HoverCardRootBaseProps extends UseHoverCardProps, UsePresenceProps {
+  export interface HoverCardRootBaseProps extends Optional<UseHoverCardProps, 'id'>, UsePresenceProps {
     children?: Snippet
   }
   export interface HoverCardRootProps extends HoverCardRootBaseProps {}

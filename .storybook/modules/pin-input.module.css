@@ -16,6 +16,35 @@
   gap: 0.5rem;
 }
 
+.Root[data-invalid] .Control {
+  animation: pin-input-shake 320ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .Root[data-invalid] .Control {
+    animation: none;
+  }
+}
+
+@keyframes pin-input-shake {
+  0%,
+  100% {
+    translate: 0;
+  }
+  20% {
+    translate: -6px;
+  }
+  40% {
+    translate: 6px;
+  }
+  60% {
+    translate: -4px;
+  }
+  80% {
+    translate: 4px;
+  }
+}
+
 .Input {
   width: 2.5rem;
   height: 2.5rem;

@@ -1,9 +1,10 @@
 <script module lang="ts">
+  import type { Optional } from '$lib/types'
   import type { Snippet } from 'svelte'
   import type { UsePresenceProps } from '../presence/index.ts'
   import type { UsePopoverProps } from './use-popover.svelte.ts'
 
-  export interface PopoverRootBaseProps extends UsePopoverProps, UsePresenceProps {}
+  export interface PopoverRootBaseProps extends Optional<UsePopoverProps, 'id'>, UsePresenceProps {}
   export interface PopoverRootProps extends PopoverRootBaseProps {
     children?: Snippet
   }
