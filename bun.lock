@@ -79,6 +79,7 @@
         "@zag-js/listbox": "2.0.0-next.2",
         "@zag-js/marquee": "2.0.0-next.2",
         "@zag-js/menu": "2.0.0-next.2",
+        "@zag-js/menubar": "2.0.0-next.2",
         "@zag-js/navigation-menu": "2.0.0-next.2",
         "@zag-js/number-input": "2.0.0-next.2",
         "@zag-js/pagination": "2.0.0-next.2",
@@ -192,6 +193,7 @@
         "@zag-js/listbox": "2.0.0-next.2",
         "@zag-js/marquee": "2.0.0-next.2",
         "@zag-js/menu": "2.0.0-next.2",
+        "@zag-js/menubar": "2.0.0-next.2",
         "@zag-js/navigation-menu": "2.0.0-next.2",
         "@zag-js/number-input": "2.0.0-next.2",
         "@zag-js/pagination": "2.0.0-next.2",
@@ -301,6 +303,7 @@
         "@zag-js/listbox": "2.0.0-next.2",
         "@zag-js/marquee": "2.0.0-next.2",
         "@zag-js/menu": "2.0.0-next.2",
+        "@zag-js/menubar": "2.0.0-next.2",
         "@zag-js/navigation-menu": "2.0.0-next.2",
         "@zag-js/number-input": "2.0.0-next.2",
         "@zag-js/pagination": "2.0.0-next.2",
@@ -408,6 +411,7 @@
         "@zag-js/listbox": "2.0.0-next.2",
         "@zag-js/marquee": "2.0.0-next.2",
         "@zag-js/menu": "2.0.0-next.2",
+        "@zag-js/menubar": "2.0.0-next.2",
         "@zag-js/navigation-menu": "2.0.0-next.2",
         "@zag-js/number-input": "2.0.0-next.2",
         "@zag-js/pagination": "2.0.0-next.2",
@@ -604,10 +608,12 @@
     "@ark-ui/website",
   ],
   "patchedDependencies": {
-    "@zag-js/virtualizer@2.0.0-next.2": "patches/@zag-js%2Fvirtualizer@2.0.0-next.2.patch",
+    "@zag-js/dismissable@2.0.0-next.2": "patches/@zag-js%2Fdismissable@2.0.0-next.2.patch",
     "@zag-js/popper@2.0.0-next.2": "patches/@zag-js%2Fpopper@2.0.0-next.2.patch",
-    "@zag-js/menu@2.0.0-next.2": "patches/@zag-js%2Fmenu@2.0.0-next.2.patch",
     "@zag-js/tooltip@2.0.0-next.2": "patches/@zag-js%2Ftooltip@2.0.0-next.2.patch",
+    "@zag-js/virtualizer@2.0.0-next.2": "patches/@zag-js%2Fvirtualizer@2.0.0-next.2.patch",
+    "@zag-js/menubar@2.0.0-next.2": "patches/@zag-js%2Fmenubar@2.0.0-next.2.patch",
+    "@zag-js/menu@2.0.0-next.2": "patches/@zag-js%2Fmenu@2.0.0-next.2.patch",
     "@zag-js/tree-view@2.0.0-next.2": "patches/@zag-js%2Ftree-view@2.0.0-next.2.patch",
   },
   "overrides": {
@@ -1874,6 +1880,8 @@
     "@zag-js/marquee": ["@zag-js/marquee@2.0.0-next.2", "", { "dependencies": { "@zag-js/anatomy": "2.0.0-next.2", "@zag-js/core": "2.0.0-next.2", "@zag-js/dom-query": "2.0.0-next.2", "@zag-js/types": "2.0.0-next.2", "@zag-js/utils": "2.0.0-next.2" } }, "sha512-XmHdiPcwmt1MZgQydDeD6XtCFgWV4L02JvJSxF96GBE8eux+z+Ae1SWzQ3GpFBpMUIr0COOfU+QhbMVMreJQdg=="],
 
     "@zag-js/menu": ["@zag-js/menu@2.0.0-next.2", "", { "dependencies": { "@zag-js/anatomy": "2.0.0-next.2", "@zag-js/core": "2.0.0-next.2", "@zag-js/dismissable": "2.0.0-next.2", "@zag-js/dom-query": "2.0.0-next.2", "@zag-js/focus-visible": "2.0.0-next.2", "@zag-js/popper": "2.0.0-next.2", "@zag-js/rect-utils": "2.0.0-next.2", "@zag-js/types": "2.0.0-next.2", "@zag-js/utils": "2.0.0-next.2" } }, "sha512-+JTle/IGGVUVn0MMBRe0WjwWKYRSlNwP4bserIZpHhAD4LXk3ZzpGD1qY+UqS6DNd4OntmrFoXWcjA90iQ0iKw=="],
+
+    "@zag-js/menubar": ["@zag-js/menubar@2.0.0-next.2", "", { "dependencies": { "@zag-js/anatomy": "2.0.0-next.2", "@zag-js/core": "2.0.0-next.2", "@zag-js/dom-query": "2.0.0-next.2", "@zag-js/types": "2.0.0-next.2", "@zag-js/utils": "2.0.0-next.2" } }, "sha512-wQp/b68avTt/MSP8gdYoQxOpTm6uDjHzu5TMFpONs6x75vWM8ce+stz07eRWi32mvjZ+OYxxAtlOD4/J6cM0tQ=="],
 
     "@zag-js/navigation-menu": ["@zag-js/navigation-menu@2.0.0-next.2", "", { "dependencies": { "@zag-js/anatomy": "2.0.0-next.2", "@zag-js/core": "2.0.0-next.2", "@zag-js/dismissable": "2.0.0-next.2", "@zag-js/dom-query": "2.0.0-next.2", "@zag-js/types": "2.0.0-next.2", "@zag-js/utils": "2.0.0-next.2" } }, "sha512-LrJbGOi3YCJ94sRM+9/vkieBn7mwPu6cYrJ4Cpxiv0CmxiOsQiRmqiumU3dshQcGiqcGVewbhsp5KE1j8G8qaA=="],
 

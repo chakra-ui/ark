@@ -1,0 +1,54 @@
+{
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "disabled": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the menubar (and all its menu triggers) is disabled."
+      },
+      "ids": {
+        "type": "Partial<{ root: string }>",
+        "isRequired": false,
+        "description": "The ids of the elements in the menubar. Useful for composition."
+      },
+      "loopFocus": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to loop the keyboard navigation across the triggers."
+      },
+      "orientation": {
+        "type": "Orientation",
+        "defaultValue": "\"horizontal\"",
+        "isRequired": false,
+        "description": "The orientation of the menubar."
+      },
+      "render": {
+        "type": "RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseMenubarReturn", "isRequired": true },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+      }
+    }
+  }
+}

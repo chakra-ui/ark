@@ -1,0 +1,48 @@
+{
+  "Context": { "props": { "api": { "type": "Snippet<[UseMenubarContext]>", "isRequired": false } } },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "disabled": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the menubar (and all its menu triggers) is disabled."
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{ root: string }>",
+        "isRequired": false,
+        "description": "The ids of the elements in the menubar. Useful for composition."
+      },
+      "loopFocus": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to loop the keyboard navigation across the triggers."
+      },
+      "orientation": {
+        "type": "Orientation",
+        "defaultValue": "\"horizontal\"",
+        "isRequired": false,
+        "description": "The orientation of the menubar."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'div'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseMenubarReturn", "isRequired": true },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  }
+}

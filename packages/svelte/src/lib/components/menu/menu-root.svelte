@@ -35,7 +35,6 @@
       'id',
       'ids',
       'loopFocus',
-      'menubar',
       'navigate',
       'onEscapeKeyDown',
       'onFocusOutside',

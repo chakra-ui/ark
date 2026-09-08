@@ -1,0 +1,134 @@
+---
+id: menubar
+title: Menubar
+description: A horizontal bar of menus, like the menu bar of a desktop application.
+---
+
+<ComponentPreview id="Menubar" />
+
+## Anatomy
+
+The menubar is a thin coordinator. It owns only a root element; the items it navigates are the triggers of the `Menu`
+components rendered inside it.
+
+<Anatomy id="menubar" />
+
+```tsx
+<Menubar.Root>
+  <Menu.Root>
+    <Menu.Trigger />
+    <Portal>
+      <Menu.Positioner>
+        <Menu.Content>
+          <Menu.Item />
+        </Menu.Content>
+      </Menu.Positioner>
+    </Portal>
+  </Menu.Root>
+</Menubar.Root>
+```
+
+## Examples
+
+### Basic
+
+Each `Menu` inside a `Menubar.Root` becomes one of its items. The menubar takes over roving tabindex, arrow key
+navigation, `Home`/`End`, and typeahead across the triggers, and the menus coordinate opening and closing between
+themselves. No extra prop or wrapper is needed.
+
+Once one menu is open, moving to a sibling with the arrow keys or the pointer switches to it directly.
+
+<Example id="basic" />
+
+### Nested Menus
+
+Submenus work exactly as they do outside a menubar, with `Menu.TriggerItem`. `ArrowRight` on a submenu trigger opens the
+submenu instead of moving to the next menu.
+
+<Example id="nested" />
+
+### Vertical
+
+Set `orientation="vertical"` to stack the triggers. Up and down then move between them, and `ArrowRight` opens the
+focused menu as a fly-out.
+
+<Example id="vertical" />
+
+### Disabled
+
+Set `disabled` on `Menubar.Root` to disable every trigger at once.
+
+To disable a single menu instead, set `disabled` on its `Menu.Trigger`. It is skipped by keyboard navigation, never
+becomes the tabbable item, and does not open on hover.
+
+<Example id="disabled" />
+
+### Root Provider
+
+Use the `useMenubar` hook with `Menubar.RootProvider` to read the menubar's state from outside the component.
+
+<Example id="root-provider" />
+
+## Guides
+
+### Portal the menus
+
+Menu content must be rendered in a `Portal`. The menubar treats every element with `role="menuitem"` inside its root as
+one of its own items, so a `Menu.Positioner` left inline would have its menu items picked up as menubar triggers and
+keyboard navigation would land on them.
+
+```tsx
+<Menu.Root>
+  <Menu.Trigger>File</Menu.Trigger>
+  {/* ✅ portalled out of the menubar root */}
+  <Portal>
+    <Menu.Positioner>
+      <Menu.Content>{/* ... */}</Menu.Content>
+    </Menu.Positioner>
+  </Portal>
+</Menu.Root>
+```
+
+### Skipping the animation between menus
+
+Opening the first menu is a normal open and should animate. Moving from one menu to the next is a swap, and replaying
+the enter and exit animations on every step reads as flicker.
+
+Both the outgoing and the incoming content carry `data-instant` for that swap, so styles can opt out of the animation
+without giving it up for the first open:
+
+```css
+[data-scope='menu'][data-part='content'][data-state='open'] {
+  animation: fade-in 150ms ease-out;
+}
+
+[data-scope='menu'][data-part='content'][data-state='closed'] {
+  animation: fade-out 100ms ease-in;
+}
+
+/* switching between menus in a menubar */
+[data-scope='menu'][data-part='content'][data-instant] {
+  animation: none;
+}
+```
+
+`data-instant` is set when the swap comes from the arrow keys or from hovering a sibling trigger. Closing a menu on its
+own, by clicking its trigger again or pressing `Escape`, clears it, so the next open animates normally.
+
+## API Reference
+
+### Props
+
+<ComponentTypes id="menubar" />
+
+### Context
+
+<ContextType id="menubar" />
+
+## Accessibility
+
+Complies with the [Menubar WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/).
+
+### Keyboard Support
+
+<KeyBindingsTable id="menubar" />
