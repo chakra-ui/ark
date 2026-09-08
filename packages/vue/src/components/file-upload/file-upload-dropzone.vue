@@ -32,7 +32,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="fileUpload.getDropzoneProps(props)" :state="fileUpload.getDropzoneState(props)" :as-child="asChild">
+  <ark.div v-bind="fileUpload.getDropzoneProps(props)" :state="fileUpload.getDropzoneState()" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>
