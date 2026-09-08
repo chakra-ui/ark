@@ -25,7 +25,7 @@ export const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>((props, re
   return (
     <SelectItemPropsProvider value={itemProps}>
       <SelectItemProvider value={itemState}>
-        <ark.div {...mergedProps} ref={ref} state={select.getItemState(itemProps)} />
+        <ark.div {...mergedProps} ref={ref} state={itemState} />
       </SelectItemProvider>
     </SelectItemPropsProvider>
   )

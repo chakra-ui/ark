@@ -40,7 +40,7 @@ export const MenuRadioItem = forwardRef<HTMLDivElement, MenuRadioItemProps>((pro
   return (
     <MenuItemPropsProvider value={optionItemProps}>
       <MenuItemProvider value={optionItemState}>
-        <ark.div {...mergedProps} ref={ref} state={menu.getOptionItemState(optionItemProps)} />
+        <ark.div {...mergedProps} ref={ref} state={optionItemState} />
       </MenuItemProvider>
     </MenuItemPropsProvider>
   )

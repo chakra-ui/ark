@@ -23,7 +23,7 @@ export const RatingGroupItem = forwardRef<HTMLSpanElement, RatingGroupItemProps>
 
   return (
     <RatingGroupItemProvider value={itemState}>
-      <ark.span {...mergedProps} ref={ref} state={ratingGroup.getItemState(itemProps)} />
+      <ark.span {...mergedProps} ref={ref} state={itemState} />
     </RatingGroupItemProvider>
   )
 })

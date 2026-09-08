@@ -35,7 +35,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((pro
           ids={{ content: itemContentProps.id }}
           {...renderStrategy}
           {...mergedProps}
-          state={accordion.getItemState(itemProps)}
+          state={item}
         />
       </AccordionItemProvider>
     </AccordionItemPropsProvider>

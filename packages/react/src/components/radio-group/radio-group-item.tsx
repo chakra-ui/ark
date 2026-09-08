@@ -25,7 +25,7 @@ export const RadioGroupItem = forwardRef<HTMLLabelElement, RadioGroupItemProps>(
   return (
     <RadioGroupItemProvider value={itemState}>
       <RadioGroupItemPropsProvider value={itemProps}>
-        <ark.label {...mergedProps} ref={ref} state={radioGroup.getItemState(itemProps)} />
+        <ark.label {...mergedProps} ref={ref} state={itemState} />
       </RadioGroupItemPropsProvider>
     </RadioGroupItemProvider>
   )

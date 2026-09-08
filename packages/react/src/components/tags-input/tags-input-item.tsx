@@ -25,7 +25,7 @@ export const TagsInputItem = forwardRef<HTMLDivElement, TagsInputItemProps>((pro
   return (
     <TagsInputItemPropsProvider value={itemProps}>
       <TagsInputItemProvider value={tagsInputItem}>
-        <ark.div {...mergedProps} ref={ref} state={tagsInput.getItemState(itemProps)} />
+        <ark.div {...mergedProps} ref={ref} state={tagsInputItem} />
       </TagsInputItemProvider>
     </TagsInputItemPropsProvider>
   )

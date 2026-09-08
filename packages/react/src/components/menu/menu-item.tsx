@@ -46,7 +46,7 @@ export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>((props, ref) =
   return (
     <MenuItemPropsProvider value={itemProps}>
       <MenuItemProvider value={itemState}>
-        <ark.div {...mergedProps} ref={ref} state={menu.getItemState(itemProps)} />
+        <ark.div {...mergedProps} ref={ref} state={itemState} />
       </MenuItemProvider>
     </MenuItemPropsProvider>
   )

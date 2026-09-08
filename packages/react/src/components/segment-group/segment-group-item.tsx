@@ -25,7 +25,7 @@ export const SegmentGroupItem = forwardRef<HTMLLabelElement, SegmentGroupItemPro
   return (
     <SegmentGroupItemPropsProvider value={itemProps}>
       <SegmentGroupItemProvider value={itemState}>
-        <ark.label {...mergedProps} ref={ref} state={segmentGroup.getItemState(itemProps)} />
+        <ark.label {...mergedProps} ref={ref} state={itemState} />
       </SegmentGroupItemProvider>
     </SegmentGroupItemPropsProvider>
   )

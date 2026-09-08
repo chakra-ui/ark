@@ -25,7 +25,7 @@ export const StepsItem = forwardRef<HTMLDivElement, StepsItemProps>((props, ref)
   return (
     <StepsItemPropsProvider value={itemProps}>
       <StepsItemProvider value={itemState}>
-        <ark.div {...mergedProps} ref={ref} state={steps.getItemState(itemProps)} />
+        <ark.div {...mergedProps} ref={ref} state={itemState} />
       </StepsItemProvider>
     </StepsItemPropsProvider>
   )

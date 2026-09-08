@@ -25,7 +25,7 @@ export const ComboboxItem = forwardRef<HTMLDivElement, ComboboxItemProps>((props
   return (
     <ComboboxItemPropsProvider value={itemProps}>
       <ComboboxItemProvider value={itemState}>
-        <ark.div {...mergedProps} ref={ref} state={combobox.getItemState(itemProps)} />
+        <ark.div {...mergedProps} ref={ref} state={itemState} />
       </ComboboxItemProvider>
     </ComboboxItemPropsProvider>
   )

@@ -25,7 +25,7 @@ export const ListboxItem = forwardRef<HTMLDivElement, ListboxItemProps>((props, 
   return (
     <ListboxItemPropsProvider value={itemProps}>
       <ListboxItemProvider value={itemState}>
-        <ark.div {...mergedProps} ref={ref} state={listbox.getItemState(itemProps)} />
+        <ark.div {...mergedProps} ref={ref} state={itemState} />
       </ListboxItemProvider>
     </ListboxItemPropsProvider>
   )
