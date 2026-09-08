@@ -66,33 +66,3 @@ index 989b43436b22b1e215d631d2b18ce31bc47b766b..ef0501476ee7e715a0757cc5f18454af
        zIndexComputed = false;
      }
      const reference = resolveReference();
-diff --git a/dist/types.d.mts b/dist/types.d.mts
-index 16688ff05d03dcd60f8f33560adb27f13becd267..9504467b9f6dd9e184a5d8083ba7241b8315a749 100644
---- a/dist/types.d.mts
-+++ b/dist/types.d.mts
-@@ -114,6 +114,10 @@ interface PositioningOptions {
-      * Useful when you want to use a different element as the anchor.
-      */
-     getAnchorElement?: (() => HTMLElement | VirtualElement | null) | undefined;
-+    /**
-+     * Function that returns the arrow element.
-+     */
-+    getArrowElement?: (() => HTMLElement | null) | undefined;
-     /**
-      *  Function that returns the anchor rect
-      * @deprecated Use `getAnchorElement` instead
-diff --git a/dist/types.d.ts b/dist/types.d.ts
-index 16688ff05d03dcd60f8f33560adb27f13becd267..9504467b9f6dd9e184a5d8083ba7241b8315a749 100644
---- a/dist/types.d.ts
-+++ b/dist/types.d.ts
-@@ -114,6 +114,10 @@ interface PositioningOptions {
-      * Useful when you want to use a different element as the anchor.
-      */
-     getAnchorElement?: (() => HTMLElement | VirtualElement | null) | undefined;
-+    /**
-+     * Function that returns the arrow element.
-+     */
-+    getArrowElement?: (() => HTMLElement | null) | undefined;
-     /**
-      *  Function that returns the anchor rect
-      * @deprecated Use `getAnchorElement` instead
