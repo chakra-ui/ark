@@ -1,8 +1,9 @@
 <script lang="ts">
-import type { TriggerProps } from '@zag-js/menu'
+import type { TriggerProps, TriggerState } from '@zag-js/menu'
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface MenuTriggerState extends TriggerState {}
 export interface MenuTriggerBaseProps extends TriggerProps, PolymorphicProps {}
 export interface MenuTriggerProps
   extends
@@ -19,13 +20,20 @@ import { useMenuContext } from './use-menu-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<MenuTriggerProps>()
+
+defineSlots<PolymorphicSlots<MenuTriggerState>>()
 const menu = useMenuContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="menu.getTriggerProps(props)" :as-child="asChild">
-    <slot />
+  <ark.button v-bind="menu.getTriggerProps(props)" :state="menu.getTriggerState(props)" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.button>
 </template>

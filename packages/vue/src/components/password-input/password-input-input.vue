@@ -1,7 +1,9 @@
 <script lang="ts">
+import type { InputState } from '@zag-js/password-input'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface PasswordInputInputState extends InputState {}
 export interface PasswordInputInputBaseProps extends PolymorphicProps {}
 export interface PasswordInputInputProps
   extends
@@ -20,6 +22,8 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<PasswordInputInputProps>()
 
+defineSlots<PolymorphicSlots<PasswordInputInputState>>()
+
 const passwordInput = usePasswordInputContext()
 const field = useFieldContext()
 
@@ -27,5 +31,14 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.input v-bind="passwordInput.getInputProps()" :aria-describedby="field?.ariaDescribedby" :as-child="asChild" />
+  <ark.input
+    v-bind="passwordInput.getInputProps()"
+    :state="passwordInput.getInputState()"
+    :aria-describedby="field?.ariaDescribedby"
+    :as-child="asChild"
+  >
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+  </ark.input>
 </template>

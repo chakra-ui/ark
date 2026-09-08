@@ -1,8 +1,10 @@
 <script lang="ts">
+import type { DayTableCellState, TableCellState } from '@zag-js/date-picker'
 import type { TdHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { DatePickerTableCellPropsContext } from './use-date-picker-table-cell-props-context.ts'
 
+export type DatePickerTableCellState = DayTableCellState | TableCellState
 export interface DatePickerTableCellBaseProps extends DatePickerTableCellPropsContext, PolymorphicProps {}
 export interface DatePickerTableCellProps
   extends
@@ -22,6 +24,8 @@ import { DEFAULT_VIEW_PROPS_CONTEXT, useDatePickerViewPropsContext } from './use
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<DatePickerTableCellProps>()
+
+defineSlots<PolymorphicSlots<DatePickerTableCellState>>()
 const datePicker = useDatePickerContext()
 const viewProps = useDatePickerViewPropsContext(DEFAULT_VIEW_PROPS_CONTEXT)
 DatePickerTableCellPropsProvider(props)
@@ -35,11 +39,25 @@ const tableCellProps = computed(() => {
   }[viewProps.view ?? 'day'](props)
 })
 
+const tableCellState = computed(() => {
+  return {
+    day: datePicker.value.getDayTableCellState,
+    month: datePicker.value.getMonthTableCellState,
+    year: datePicker.value.getYearTableCellState,
+    // @ts-expect-error use filter guard
+  }[viewProps.view ?? 'day'](props)
+})
+
 useForwardExpose()
 </script>
 
 <template>
-  <ark.td v-bind="tableCellProps" :as-child="asChild">
-    <slot />
+  <ark.td v-bind="tableCellProps" :as-child="asChild" :state="tableCellState">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.td>
 </template>

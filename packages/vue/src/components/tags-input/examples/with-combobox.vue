@@ -7,11 +7,11 @@ import { useId } from 'vue'
 import combobox from 'styles/combobox.module.css'
 import styles from 'styles/tags-input.module.css'
 
-const filters = useFilter({ sensitivity: 'base' })
+const { contains } = useFilter({ sensitivity: 'base' })
 
 const { collection, filter } = useListCollection({
   initialItems: ['React', 'Solid', 'Vue', 'Svelte', 'Angular', 'Preact', 'Next.js', 'Astro', 'Nuxt'],
-  filter: filters.value.contains,
+  filter: contains,
 })
 
 const uid = useId()
@@ -60,8 +60,8 @@ const comboboxApi = useCombobox({
             </TagsInput.ItemPreview>
             <TagsInput.ItemInput :class="styles.ItemInput" />
           </TagsInput.Item>
-          <Combobox.Input as-child>
-            <TagsInput.Input placeholder="Add Framework" :class="styles.Input" />
+          <Combobox.Input #render="ctx">
+            <TagsInput.Input v-bind="ctx.props" placeholder="Add Framework" :class="styles.Input" />
           </Combobox.Input>
           <TagsInput.ClearTrigger :class="styles.ClearTrigger">
             <XIcon />

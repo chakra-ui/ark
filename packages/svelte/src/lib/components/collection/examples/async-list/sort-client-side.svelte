@@ -26,7 +26,7 @@
       return {
         items: items.sort((a, b) => {
           const { column, direction } = sorting
-          let cmp = collator().compare(String(a[column]), String(b[column]))
+          let cmp = collator.compare(String(a[column]), String(b[column]))
           if (direction === 'descending') {
             cmp *= -1
           }

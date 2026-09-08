@@ -1,9 +1,11 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/checkbox'
 import type { LabelHTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types.ts'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { RootEmits, RootProps } from './checkbox.types.ts'
 
+export interface CheckboxRootState extends RootState {}
 export interface CheckboxRootBaseProps extends RootProps, PolymorphicProps {}
 export interface CheckboxRootProps
   extends
@@ -30,6 +32,8 @@ const props = withDefaults(defineProps<CheckboxRootProps>(), {
   required: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
+defineSlots<PolymorphicSlots<CheckboxRootState>>()
+
 const emits = defineEmits<CheckboxRootEmits>()
 
 const checkbox = useCheckbox(props, emits)
@@ -39,7 +43,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.label v-bind="checkbox.getRootProps()" :as-child="asChild">
-    <slot />
+  <ark.label v-bind="checkbox.getRootProps()" :state="checkbox.getRootState()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.label>
 </template>

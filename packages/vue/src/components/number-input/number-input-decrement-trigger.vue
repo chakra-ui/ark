@@ -1,7 +1,9 @@
 <script lang="ts">
+import type { DecrementTriggerState } from '@zag-js/number-input'
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface NumberInputDecrementTriggerState extends DecrementTriggerState {}
 export interface NumberInputDecrementTriggerBaseProps extends PolymorphicProps {}
 export interface NumberInputDecrementTriggerProps
   extends
@@ -18,13 +20,24 @@ import { useNumberInputContext } from './use-number-input-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<NumberInputDecrementTriggerProps>()
+
+defineSlots<PolymorphicSlots<NumberInputDecrementTriggerState>>()
 const numberInput = useNumberInputContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="numberInput.getDecrementTriggerProps()" :as-child="asChild">
-    <slot />
+  <ark.button
+    v-bind="numberInput.getDecrementTriggerProps()"
+    :state="numberInput.getDecrementTriggerState()"
+    :as-child="asChild"
+  >
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.button>
 </template>

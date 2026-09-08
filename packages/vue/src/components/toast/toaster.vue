@@ -42,7 +42,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="api.getGroupProps()">
+  <ark.div v-bind="api.getGroupProps()" :state="api.getGroupState()">
     <ToasterItem
       v-for="(toastItem, index) in api.getToasts()"
       :key="toastItem.id"

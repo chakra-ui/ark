@@ -1,7 +1,9 @@
 <script lang="ts">
+import type { InputState } from '@zag-js/editable'
 import type { InputHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface EditableInputState extends InputState {}
 export interface EditableInputBaseProps extends PolymorphicProps {}
 export interface EditableInputProps
   extends
@@ -19,6 +21,8 @@ import { useFieldContext } from '../field/index.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<EditableInputProps>()
+
+defineSlots<PolymorphicSlots<EditableInputState>>()
 const editable = useEditableContext()
 const field = useFieldContext()
 
@@ -26,7 +30,17 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.input :aria-describedby="field?.ariaDescribedby" v-bind="editable.getInputProps()" :as-child="asChild">
-    <slot />
+  <ark.input
+    :aria-describedby="field?.ariaDescribedby"
+    v-bind="editable.getInputProps()"
+    :state="editable.getInputState()"
+    :as-child="asChild"
+  >
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.input>
 </template>

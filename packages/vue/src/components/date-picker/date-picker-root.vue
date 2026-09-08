@@ -1,10 +1,12 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/date-picker'
 import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types.ts'
 import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { RootEmits, RootProps } from './date-picker.types.ts'
 
+export interface DatePickerRootState extends RootState {}
 export interface DatePickerRootBaseProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface DatePickerRootProps
   extends
@@ -40,6 +42,8 @@ const props = withDefaults(defineProps<DatePickerRootProps>(), {
   showWeekNumbers: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
+defineSlots<PolymorphicSlots<DatePickerRootState>>()
+
 const emits = defineEmits<DatePickerRootEmits>()
 
 const datePicker = useDatePicker(props, emits)
@@ -61,7 +65,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="datePicker.getRootProps()" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="datePicker.getRootProps()" :state="datePicker.getRootState()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

@@ -18,11 +18,11 @@ const initialItems = [
 ]
 
 export const Grouping = () => {
-  const filterFn = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter } = useListCollection({
     initialItems,
-    filter: filterFn().contains,
+    filter: contains,
     groupBy: (item) => item.continent,
   })
 

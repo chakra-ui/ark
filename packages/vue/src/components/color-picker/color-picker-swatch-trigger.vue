@@ -1,8 +1,10 @@
 <script lang="ts">
-import type { SwatchTriggerProps } from '@zag-js/color-picker'
+import type { BooleanDefaults } from '../../types.ts'
+import type { SwatchTriggerProps, SwatchTriggerState } from '@zag-js/color-picker'
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface ColorPickerSwatchTriggerState extends SwatchTriggerState {}
 export interface ColorPickerSwatchTriggerBaseProps extends SwatchTriggerProps, PolymorphicProps {}
 export interface ColorPickerSwatchTriggerProps
   extends
@@ -18,13 +20,26 @@ import { ark } from '../factory.ts'
 import { useColorPickerContext } from './use-color-picker-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
-const props = defineProps<ColorPickerSwatchTriggerProps>()
+const props = withDefaults(defineProps<ColorPickerSwatchTriggerProps>(), {
+  disabled: undefined,
+} satisfies BooleanDefaults<SwatchTriggerProps>)
+
+defineSlots<PolymorphicSlots<ColorPickerSwatchTriggerState>>()
 const colorPicker = useColorPickerContext()
 useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="colorPicker.getSwatchTriggerProps(props)" :as-child="asChild">
-    <slot />
+  <ark.button
+    v-bind="colorPicker.getSwatchTriggerProps(props)"
+    :state="colorPicker.getSwatchTriggerState(props)"
+    :as-child="asChild"
+  >
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.button>
 </template>

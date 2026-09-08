@@ -1,7 +1,9 @@
 <script lang="ts">
+import type { ContentState } from '@zag-js/marquee'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface MarqueeContentState extends ContentState {}
 export interface MarqueeContentBaseProps extends PolymorphicProps {}
 export interface MarqueeContentProps
   extends
@@ -22,6 +24,8 @@ import { useMarqueeContext } from './use-marquee-context.ts'
 defineOptions({ inheritAttrs: false })
 defineProps<MarqueeContentProps>()
 
+defineSlots<PolymorphicSlots<MarqueeContentState>>()
+
 const marquee = useMarqueeContext()
 const attrs = useAttrs()
 const scopeId = useScopeId()
@@ -39,7 +43,13 @@ useForwardExpose()
       ...marquee.getContentProps({ index }),
     }"
     :as-child="asChild"
+    :state="marquee.getContentState({ index })"
   >
-    <slot />
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

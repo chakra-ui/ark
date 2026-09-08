@@ -1,9 +1,11 @@
 <script lang="ts">
+import type { ContentState } from '@zag-js/select'
 import { mergeProps } from '@zag-js/vue'
 import { type HTMLAttributes, computed } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import { usePresenceContext } from '../presence/index.ts'
 
+export interface SelectContentState extends ContentState {}
 export interface SelectContentBaseProps extends PolymorphicProps {}
 export interface SelectContentProps
   extends
@@ -20,6 +22,8 @@ import { useSelectContext } from './use-select-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<SelectContentProps>()
+
+defineSlots<PolymorphicSlots<SelectContentState>>()
 const select = useSelectContext()
 const presence = usePresenceContext()
 const mergedProps = computed(() => mergeProps(select.value.getContentProps(), presence.value.presenceProps))
@@ -28,7 +32,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild">
-    <slot />
+  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild" :state="select.getContentState()">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

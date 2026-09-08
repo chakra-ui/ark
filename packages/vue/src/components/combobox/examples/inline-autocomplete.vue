@@ -4,7 +4,7 @@ import { Combobox, useListCollection } from '@ark-ui/vue/combobox'
 import { useFilter } from '@ark-ui/vue/locale'
 import styles from 'styles/combobox.module.css'
 
-const filters = useFilter({ sensitivity: 'base' })
+const { startsWith } = useFilter({ sensitivity: 'base' })
 
 const { collection, filter } = useListCollection({
   initialItems: [
@@ -15,7 +15,7 @@ const { collection, filter } = useListCollection({
     { label: 'Jellyfish', value: 'jellyfish' },
     { label: 'Seahorse', value: 'seahorse' },
   ],
-  filter: filters.value.startsWith,
+  filter: startsWith,
 })
 
 const handleInputChange = (details: Combobox.InputValueChangeDetails) => {

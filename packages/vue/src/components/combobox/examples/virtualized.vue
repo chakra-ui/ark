@@ -2,40 +2,9 @@
 // biome-ignore lint/style/useImportType: intentional
 import { Combobox, useListCollection } from '@ark-ui/vue/combobox'
 import { useFilter } from '@ark-ui/vue/locale'
-import { useVirtualizer } from '@tanstack/vue-virtual'
-import { ref, computed } from 'vue'
+import { useListVirtualizer } from '@ark-ui/vue/virtualizer'
+import { computed } from 'vue'
 import styles from 'styles/combobox.module.css'
-
-const contentRef = ref<HTMLDivElement | null>(null)
-
-const filters = useFilter({ sensitivity: 'base' })
-
-const { collection, filter, reset } = useListCollection({
-  get initialItems() {
-    return countries
-  },
-  filter: filters.value.startsWith,
-})
-
-const virtualizer = useVirtualizer(
-  computed(() => ({
-    count: collection.value.size,
-    getScrollElement: () => contentRef.value,
-    estimateSize: () => 32,
-    overscan: 10,
-  })),
-)
-
-const handleScrollToIndex: Combobox.RootProps<Country>['scrollToIndexFn'] = (details) => {
-  virtualizer.value.scrollToIndex(details.index, {
-    align: 'center',
-    behavior: 'auto',
-  })
-}
-
-const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
-  filter(details.inputValue)
-}
 
 interface Country {
   value: string
@@ -110,6 +79,32 @@ const countries: Country[] = [
   { value: 'VN', label: 'Vietnam', emoji: '🇻🇳' },
   { value: 'ZA', label: 'South Africa', emoji: '🇿🇦' },
 ]
+
+const { startsWith } = useFilter({ sensitivity: 'base' })
+
+const { collection, filter, reset } = useListCollection({
+  get initialItems() {
+    return countries
+  },
+  filter: startsWith,
+})
+
+const virtualizer = useListVirtualizer(
+  computed(() => ({
+    count: collection.value.size,
+    estimatedSize: () => 36,
+    overscan: 10,
+    observeScrollElementSize: true,
+  })),
+)
+
+const handleScrollToIndex: Combobox.RootProps<Country>['scrollToIndexFn'] = (details) => {
+  virtualizer.scrollToIndex(details.index, { align: 'auto' })
+}
+
+const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
+  filter(details.inputValue)
+}
 </script>
 
 <template>
@@ -129,23 +124,21 @@ const countries: Country[] = [
     <Teleport to="body">
       <Combobox.Positioner>
         <Combobox.Content :class="styles.Content">
-          <div ref="contentRef" :class="styles.Scroller">
-            <div :style="{ height: `${virtualizer.getTotalSize()}px`, width: '100%', position: 'relative' }">
+          <Combobox.List
+            :ref="virtualizer.ref"
+            :class="styles.Scroller"
+            :style="{ ...virtualizer.getContainerStyle(), '--total-size': `${virtualizer.getTotalSize()}px` }"
+            @scroll="virtualizer.handleScroll"
+          >
+            <div :style="virtualizer.getContentStyle()">
               <Combobox.Item
                 v-for="virtualItem in virtualizer.getVirtualItems()"
                 :key="virtualItem.key as PropertyKey"
                 :class="styles.Item"
                 :item="collection.items[virtualItem.index]"
+                :style="virtualizer.getItemStyle(virtualItem)"
                 :aria-setsize="collection.size"
                 :aria-posinset="virtualItem.index + 1"
-                :style="{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: `${virtualItem.size}px`,
-                  transform: `translateY(${virtualItem.start}px)`,
-                }"
               >
                 <Combobox.ItemText :class="styles.ItemText">
                   <span aria-hidden="true" style="margin-right: 8px">
@@ -156,7 +149,7 @@ const countries: Country[] = [
                 <Combobox.ItemIndicator :class="styles.ItemIndicator">✓</Combobox.ItemIndicator>
               </Combobox.Item>
             </div>
-          </div>
+          </Combobox.List>
         </Combobox.Content>
       </Combobox.Positioner>
     </Teleport>

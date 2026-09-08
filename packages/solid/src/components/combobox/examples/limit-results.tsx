@@ -28,12 +28,12 @@ const cities = [
 ]
 
 export const LimitResults = () => {
-  const filterFn = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter } = useListCollection({
     initialItems: cities,
     limit: 5,
-    filter: filterFn().contains,
+    filter: contains,
   })
 
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {

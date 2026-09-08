@@ -1,11 +1,13 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/select'
 import type { HTMLAttributes } from 'vue'
 import type { Assign, BooleanDefaults } from '../../types.ts'
 import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
 import type { CollectionItem } from '../collection/index.ts'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { RootEmits, RootProps } from './select.types.ts'
 
+export interface SelectRootState extends RootState {}
 export interface SelectRootBaseProps<T extends CollectionItem>
   extends RootProps<T>, RenderStrategyProps, PolymorphicProps {}
 export interface SelectRootProps<T extends CollectionItem>
@@ -46,6 +48,8 @@ const props = withDefaults(defineProps<SelectRootProps<T>>(), {
   required: undefined,
 } satisfies BooleanDefaults<RootProps<T>>)
 
+defineSlots<PolymorphicSlots<SelectRootState>>()
+
 const emits = defineEmits<RootEmits<T>>()
 
 const select = useSelect(props, emits)
@@ -73,7 +77,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="select.getRootProps()" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="select.getRootProps()" :state="select.getRootState()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

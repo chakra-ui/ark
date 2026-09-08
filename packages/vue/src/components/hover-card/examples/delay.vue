@@ -7,8 +7,8 @@ import styles from 'styles/hover-card.module.css'
   <HoverCard.Root :open-delay="200" :close-delay="500">
     <p>
       Liked by
-      <HoverCard.Trigger :class="styles.Trigger" as-child>
-        <a href="#profile">@sarah_chen</a>
+      <HoverCard.Trigger :class="styles.Trigger" #render="ctx">
+        <a href="#profile" v-bind="ctx.props">@sarah_chen</a>
       </HoverCard.Trigger>
       and 3 others
     </p>

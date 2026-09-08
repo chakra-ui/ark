@@ -1,7 +1,9 @@
 <script lang="ts">
+import type { ListState } from '@zag-js/listbox'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface ListboxListState extends ListState {}
 export interface ListboxListBaseProps extends PolymorphicProps {}
 export interface ListboxListProps
   extends
@@ -18,13 +20,20 @@ import { ark } from '../factory.ts'
 import { useListboxContext } from './use-listbox-context.ts'
 
 defineProps<ListboxListProps>()
+
+defineSlots<PolymorphicSlots<ListboxListState>>()
 const listbox = useListboxContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="listbox.getListProps()" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="listbox.getListProps()" :state="listbox.getListState()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

@@ -3,7 +3,7 @@
   import { Combobox, useListCollection } from '@ark-ui/svelte/combobox'
   import { useFilter } from '@ark-ui/svelte/locale'
   import { Portal } from '@ark-ui/svelte/portal'
-  import { createVirtualizer } from '@tanstack/svelte-virtual'
+  import { ListVirtualizer, useListVirtualizer } from '@ark-ui/svelte/virtualizer'
   import styles from 'styles/combobox.module.css'
 
   interface Country {
@@ -80,31 +80,24 @@
     { value: 'ZA', label: 'South Africa', emoji: '🇿🇦' },
   ]
 
-  let contentRef = $state<HTMLDivElement | null>(null)
-
-  const filters = useFilter({ sensitivity: 'base' })
+  const { startsWith } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter, reset } = useListCollection({
     get initialItems() {
       return countries
     },
-    filter: filters().startsWith,
+    filter: startsWith,
   })
 
-  const virtualizer = createVirtualizer({
-    get count() {
-      return collection().size
-    },
-    getScrollElement: () => contentRef,
-    estimateSize: () => 32,
+  const virtualizer = useListVirtualizer(() => ({
+    count: collection().size,
+    estimatedSize: () => 36,
     overscan: 10,
-  })
+    observeScrollElementSize: true,
+  }))
 
   const handleScrollToIndex: Combobox.RootProps<Country>['scrollToIndexFn'] = (details) => {
-    $virtualizer.scrollToIndex(details.index, {
-      align: 'center',
-      behavior: 'auto',
-    })
+    virtualizer.scrollToIndex(details.index, { align: 'auto' })
   }
 
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
@@ -128,26 +121,28 @@
   <Portal>
     <Combobox.Positioner>
       <Combobox.Content class={styles.Content}>
-        <div bind:this={contentRef} class={styles.Scroller}>
-          <div style="height: {$virtualizer.getTotalSize()}px; width: 100%; position: relative;">
-            {#each $virtualizer.getVirtualItems() as virtualItem (virtualItem.key)}
-              {@const item = collection().items[virtualItem.index]}
-              <Combobox.Item
-                class={styles.Item}
-                {item}
-                aria-setsize={collection().size}
-                aria-posinset={virtualItem.index + 1}
-                style="position: absolute; top: 0; left: 0; width: 100%; height: {virtualItem.size}px; transform: translateY({virtualItem.start}px);"
-              >
-                <Combobox.ItemText class={styles.ItemText}>
-                  <span aria-hidden="true" style="margin-right: 8px;">{item.emoji}</span>
-                  {item.label}
-                </Combobox.ItemText>
-                <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
-              </Combobox.Item>
-            {/each}
-          </div>
-        </div>
+        <Combobox.List class={styles.Scroller} style={`--total-size: ${virtualizer.getTotalSize()}px`}>
+          {#snippet render(props)}
+            <ListVirtualizer.Root {...props()} value={virtualizer}>
+              <ListVirtualizer.Content>
+                {#each virtualizer.getVirtualItems() as virtualItem (virtualItem.key)}
+                  {@const item = collection().items[virtualItem.index]}
+                  <Combobox.Item {item} class={styles.Item}>
+                    {#snippet render(props)}
+                      <ListVirtualizer.Item {...props()} item={virtualItem}>
+                        <Combobox.ItemText class={styles.ItemText}>
+                          <span aria-hidden="true" style="margin-right: 8px;">{item.emoji}</span>
+                          {item.label}
+                        </Combobox.ItemText>
+                        <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
+                      </ListVirtualizer.Item>
+                    {/snippet}
+                  </Combobox.Item>
+                {/each}
+              </ListVirtualizer.Content>
+            </ListVirtualizer.Root>
+          {/snippet}
+        </Combobox.List>
       </Combobox.Content>
     </Combobox.Positioner>
   </Portal>

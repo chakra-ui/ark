@@ -4,7 +4,9 @@ import type { BooleanDefaults } from '../../types.ts'
 import type { PolymorphicProps } from '../factory.ts'
 import type { RootEmits, RootProps } from './collapsible.types.ts'
 
-export interface CollapsibleRootBaseProps extends RootProps, PolymorphicProps {}
+export interface CollapsibleRootBaseProps extends RootProps, PolymorphicProps {
+  state?: unknown
+}
 export interface CollapsibleRootProps
   extends
     CollapsibleRootBaseProps,
@@ -38,7 +40,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="collapsible.getRootProps()" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="collapsible.getRootProps()" :as-child="asChild" :state="state">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

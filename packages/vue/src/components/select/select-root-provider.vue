@@ -1,9 +1,10 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/select'
 import type { HTMLAttributes, UnwrapRef } from 'vue'
 import type { Assign } from '../../types.ts'
 import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
 import type { CollectionItem } from '../collection/index.ts'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { UseSelectReturn } from './use-select.ts'
 import type { RootEmits as PresenceEmits } from '../presence/presence.types.ts'
 
@@ -11,6 +12,7 @@ interface RootProviderProps<T extends CollectionItem> {
   value: UnwrapRef<UseSelectReturn<T>>
 }
 
+export interface SelectRootProviderState extends RootState {}
 export interface SelectRootProviderBaseProps<T extends CollectionItem>
   extends RootProviderProps<T>, RenderStrategyProps, PolymorphicProps {}
 export interface SelectRootProviderProps<T extends CollectionItem>
@@ -37,6 +39,8 @@ import { PresenceProvider, usePresence } from '../presence/index.ts'
 import { SelectProvider } from './use-select-context.ts'
 
 const props = defineProps<SelectRootProviderProps<T>>()
+
+defineSlots<PolymorphicSlots<SelectRootProviderState>>()
 const emits = defineEmits<SelectRootProviderEmits>()
 
 const select = computed(() => props.value)
@@ -58,7 +62,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="select.getRootProps()" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="select.getRootProps()" :state="select.getRootState()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

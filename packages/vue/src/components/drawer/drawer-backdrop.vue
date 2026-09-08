@@ -1,7 +1,9 @@
 <script lang="ts">
+import type { BackdropState } from '@zag-js/drawer'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface DrawerBackdropState extends BackdropState {}
 export interface DrawerBackdropBaseProps extends PolymorphicProps {}
 export interface DrawerBackdropProps
   extends
@@ -23,6 +25,8 @@ import { useDrawerContext } from './use-drawer-context.ts'
 
 defineProps<DrawerBackdropProps>()
 
+defineSlots<PolymorphicSlots<DrawerBackdropState>>()
+
 const drawer = useDrawerContext()
 const renderStrategy = useRenderStrategyProps()
 
@@ -39,7 +43,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild">
-    <slot />
+  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild" :state="drawer.getBackdropState()">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

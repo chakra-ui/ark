@@ -26,6 +26,11 @@ useForwardExpose()
 
 <template>
   <ark.span v-bind="slider.getValueTextProps()" :as-child="asChild">
-    <slot>{{ slots.default?.() || slider.value.join(', ') }}</slot>
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot>{{ slots.default?.() || slider.value.join(', ') }}</slot>
+    </template>
   </ark.span>
 </template>

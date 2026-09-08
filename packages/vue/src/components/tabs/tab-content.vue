@@ -1,8 +1,9 @@
 <script lang="ts">
-import type { ContentProps } from '@zag-js/tabs'
+import type { ContentProps, ContentState } from '@zag-js/tabs'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface TabContentState extends ContentState {}
 export interface TabContentBaseProps extends ContentProps, PolymorphicProps {}
 export interface TabContentProps
   extends
@@ -24,6 +25,8 @@ import { ark } from '../factory.ts'
 
 const props = defineProps<TabContentProps>()
 
+defineSlots<PolymorphicSlots<TabContentState>>()
+
 const tabs = useTabsContext()
 const renderStrategy = useRenderStrategyProps()
 
@@ -43,7 +46,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild">
-    <slot />
+  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild" :state="tabs.getContentState(props)">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

@@ -1,9 +1,11 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/tags-input'
 import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types.ts'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { RootEmits, RootProps } from './tags-input.types.ts'
 
+export interface TagsInputRootState extends RootState {}
 export interface TagsInputRootBaseProps extends RootProps, PolymorphicProps {}
 export interface TagsInputRootProps
   extends
@@ -33,6 +35,8 @@ const props = withDefaults(defineProps<TagsInputRootProps>(), {
   required: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
+defineSlots<PolymorphicSlots<TagsInputRootState>>()
+
 const emits = defineEmits<TagsInputRootEmits>()
 
 const tagsInput = useTagsInput(props, emits)
@@ -42,7 +46,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="tagsInput.getRootProps()" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="tagsInput.getRootProps()" :state="tagsInput.getRootState()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

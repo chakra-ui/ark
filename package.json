@@ -56,5 +56,9 @@
   "overrides": {
     "flexsearch": "0.8.212",
     "vite": "8.2.2"
+  },
+  "patchedDependencies": {
+    "@zag-js/virtualizer@2.0.0-next.2": "patches/@zag-js%2Fvirtualizer@2.0.0-next.2.patch",
+    "@zag-js/tree-view@2.0.0-next.1": "patches/@zag-js%2Ftree-view@2.0.0-next.1.patch"
   }
 }

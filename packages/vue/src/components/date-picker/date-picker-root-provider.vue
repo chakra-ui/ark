@@ -1,7 +1,8 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/date-picker'
 import type { HTMLAttributes, UnwrapRef } from 'vue'
 import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { UseDatePickerReturn } from './use-date-picker.ts'
 import type { RootEmits as PresenceEmits } from '../presence/presence.types.ts'
 
@@ -9,6 +10,7 @@ interface RootProviderProps {
   value: UnwrapRef<UseDatePickerReturn>
 }
 
+export interface DatePickerRootProviderState extends RootState {}
 export interface DatePickerRootProviderBaseProps extends RootProviderProps, RenderStrategyProps, PolymorphicProps {}
 export interface DatePickerRootProviderProps
   extends
@@ -29,6 +31,8 @@ import { PresenceProvider, usePresence } from '../presence/index.ts'
 import { DatePickerProvider } from './use-date-picker-context.ts'
 
 const props = defineProps<DatePickerRootProviderProps>()
+
+defineSlots<PolymorphicSlots<DatePickerRootProviderState>>()
 const emits = defineEmits<DatePickerRootProviderEmits>()
 
 const datePicker = computed(() => props.value)
@@ -50,7 +54,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="datePicker.getRootProps()" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="datePicker.getRootProps()" :state="datePicker.getRootState()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

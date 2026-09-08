@@ -1,8 +1,10 @@
 <script lang="ts">
-import type { ItemProps } from '@zag-js/tags-input'
+import type { BooleanDefaults } from '../../types.ts'
+import type { ItemProps, ItemState } from '@zag-js/tags-input'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface TagsInputItemState extends ItemState {}
 export interface TagsInputItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface TagsInputItemProps
   extends
@@ -21,7 +23,11 @@ import { TagsInputItemProvider } from './use-tags-input-item-context.ts'
 import { TagsInputItemPropsProvider } from './use-tags-input-item-props-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
-const props = defineProps<TagsInputItemProps>()
+const props = withDefaults(defineProps<TagsInputItemProps>(), {
+  disabled: undefined,
+} satisfies BooleanDefaults<ItemProps>)
+
+defineSlots<PolymorphicSlots<TagsInputItemState>>()
 const tagsInput = useTagsInputContext()
 
 TagsInputItemPropsProvider(props)
@@ -31,7 +37,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="tagsInput.getItemProps(props)" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="tagsInput.getItemProps(props)" :state="tagsInput.getItemState(props)" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

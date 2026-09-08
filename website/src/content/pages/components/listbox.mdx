@@ -107,6 +107,14 @@ Use `Listbox.ValueText` to display the selected values as a comma-separated stri
 
 <Example id="value-text" />
 
+### Virtualized
+
+For very large collections, render only the visible options with the [Virtualizer](/docs/utilities/virtualizer). Render
+`Listbox.List` as `ListVirtualizer.Root` and each `Listbox.Item` as `ListVirtualizer.Item`, and pass `scrollToIndexFn`
+so keyboard navigation can scroll to options that are not mounted yet.
+
+<Example id="virtualized" />
+
 ## Guides
 
 ### Type Safety

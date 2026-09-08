@@ -1,12 +1,14 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/slider'
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { UseSliderReturn } from './use-slider.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseSliderReturn>
 }
 
+export interface SliderRootProviderState extends RootState {}
 export interface SliderRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface SliderRootProviderProps
   extends
@@ -24,6 +26,8 @@ import { SliderProvider } from './use-slider-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<SliderRootProviderProps>()
+
+defineSlots<PolymorphicSlots<SliderRootProviderState>>()
 const slider = computed(() => props.value)
 
 SliderProvider(slider)
@@ -32,7 +36,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="slider.getRootProps()" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="slider.getRootProps()" :state="slider.getRootState()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

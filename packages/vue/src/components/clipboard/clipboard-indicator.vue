@@ -1,7 +1,9 @@
 <script lang="ts">
+import type { IndicatorState } from '@zag-js/clipboard'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory.ts'
 
+export interface ClipboardIndicatorState extends IndicatorState {}
 export interface ClipboardIndicatorBaseProps extends PolymorphicProps {}
 export interface ClipboardIndicatorProps
   extends
@@ -24,7 +26,11 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="clipboard.getIndicatorProps({ copied: clipboard.copied })" :as-child="asChild">
+  <ark.div
+    v-bind="clipboard.getIndicatorProps({ copied: clipboard.copied })"
+    :state="clipboard.getIndicatorState({ copied: clipboard.copied })"
+    :as-child="asChild"
+  >
     <slot name="copied" v-if="clipboard.copied" />
     <slot v-else />
   </ark.div>

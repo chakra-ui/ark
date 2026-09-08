@@ -1,8 +1,9 @@
 <script lang="ts">
-import type { TriggerProps } from '@zag-js/hover-card'
+import type { TriggerProps, TriggerState } from '@zag-js/hover-card'
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface HoverCardTriggerState extends TriggerState {}
 export interface HoverCardTriggerBaseProps extends TriggerProps, PolymorphicProps {}
 export interface HoverCardTriggerProps
   extends
@@ -19,13 +20,20 @@ import { useHoverCardContext } from './use-hover-card-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<HoverCardTriggerProps>()
+
+defineSlots<PolymorphicSlots<HoverCardTriggerState>>()
 const hoverCard = useHoverCardContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="hoverCard.getTriggerProps(props)" :as-child="asChild">
-    <slot />
+  <ark.button v-bind="hoverCard.getTriggerProps(props)" :state="hoverCard.getTriggerState(props)" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.button>
 </template>

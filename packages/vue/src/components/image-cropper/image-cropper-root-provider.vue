@@ -1,12 +1,14 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/image-cropper'
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { UseImageCropperReturn } from './use-image-cropper.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseImageCropperReturn>
 }
 
+export interface ImageCropperRootProviderState extends RootState {}
 export interface ImageCropperRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface ImageCropperRootProviderProps
   extends
@@ -24,6 +26,8 @@ import { ImageCropperProvider } from './use-image-cropper-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<ImageCropperRootProviderProps>()
+
+defineSlots<PolymorphicSlots<ImageCropperRootProviderState>>()
 const imageCropper = computed(() => props.value)
 
 ImageCropperProvider(imageCropper)
@@ -32,7 +36,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="imageCropper.getRootProps()" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="imageCropper.getRootProps()" :state="imageCropper.getRootState()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

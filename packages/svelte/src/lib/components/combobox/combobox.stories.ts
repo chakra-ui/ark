@@ -15,6 +15,7 @@ import HighlightMatchingTextExample from './examples/highlight-matching-text.sve
 import AutoHighlightExample from './examples/auto-highlight.svelte'
 import InlineAutocompleteExample from './examples/inline-autocomplete.svelte'
 import LimitResultsExample from './examples/limit-results.svelte'
+import VirtualizedExample from './examples/virtualized.svelte'
 
 const meta: Meta = {
   title: 'Components / Combobox',
@@ -115,5 +116,11 @@ export const InlineAutocomplete = {
 export const LimitResults = {
   render: () => ({
     Component: LimitResultsExample,
+  }),
+}
+
+export const Virtualized = {
+  render: () => ({
+    Component: VirtualizedExample,
   }),
 }

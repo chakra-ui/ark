@@ -1,7 +1,8 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/color-picker'
 import type { HTMLAttributes, UnwrapRef } from 'vue'
 import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { UseColorPickerReturn } from './use-color-picker.ts'
 import type { RootEmits as PresenceEmits } from '../presence/presence.types.ts'
 
@@ -9,6 +10,7 @@ interface RootProviderProps {
   value: UnwrapRef<UseColorPickerReturn>
 }
 
+export interface ColorPickerRootProviderState extends RootState {}
 export interface ColorPickerRootProviderBaseProps extends RootProviderProps, RenderStrategyProps, PolymorphicProps {}
 export interface ColorPickerRootProviderProps
   extends
@@ -29,6 +31,8 @@ import { PresenceProvider, usePresence } from '../presence/index.ts'
 import { ColorPickerProvider } from './use-color-picker-context.ts'
 
 const props = defineProps<ColorPickerRootProviderProps>()
+
+defineSlots<PolymorphicSlots<ColorPickerRootProviderState>>()
 const emits = defineEmits<ColorPickerRootProviderEmits>()
 
 const colorPicker = computed(() => props.value)
@@ -50,7 +54,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="colorPicker.getRootProps()" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="colorPicker.getRootProps()" :state="colorPicker.getRootState()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

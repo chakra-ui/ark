@@ -27,9 +27,9 @@ const activeLabel = computed(() => items.find((item) => item.value === tooltip.v
         :value="item.value"
         :aria-label="item.label"
         :class="styles.Item"
-        asChild
+        #render="ctx"
       >
-        <Tooltip.Trigger :value="item.value">
+        <Tooltip.Trigger v-bind="ctx.props" :value="item.value">
           <component :is="item.icon" />
         </Tooltip.Trigger>
       </ToggleGroup.Item>

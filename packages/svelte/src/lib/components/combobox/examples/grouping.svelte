@@ -6,7 +6,7 @@
   import { Portal } from '@ark-ui/svelte/portal'
   import styles from 'styles/combobox.module.css'
 
-  const filters = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: 'base' })
 
   const initialItems = [
     { label: 'Canada', value: 'ca', continent: 'North America' },
@@ -23,7 +23,7 @@
   const { collection, filter } = useListCollection({
     initialItems,
     filter(itemString, filterText) {
-      return filters().contains(itemString, filterText)
+      return contains(itemString, filterText)
     },
     groupBy: (item) => item.continent,
   })

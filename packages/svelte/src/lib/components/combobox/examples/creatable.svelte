@@ -18,7 +18,7 @@
     values.map((v) => (v === NEW_OPTION_VALUE ? value : v))
   const getNewOptionData = (inputValue: string): Item => ({ label: inputValue, value: inputValue, __new__: true })
 
-  const filterFn = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter, upsert, update, remove } = useListCollection<Item>({
     initialItems: [
@@ -27,7 +27,7 @@
       { label: 'Enhancement', value: 'enhancement' },
       { label: 'Documentation', value: 'docs' },
     ],
-    filter: filterFn().contains,
+    filter: contains,
   })
 
   const isValidNewOption = (inputValue: string) => {

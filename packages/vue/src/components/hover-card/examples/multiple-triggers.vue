@@ -43,16 +43,16 @@ const activeProfile = computed(() => profiles.find((p) => p.id === triggerValue.
   <HoverCard.Root v-model:trigger-value="triggerValue">
     <p :class="styles.Paragraph">
       Reviewed by
-      <HoverCard.Trigger value="sarah" as-child>
-        <a href="#" :class="styles.Trigger">@sarah_chen</a>
+      <HoverCard.Trigger value="sarah" :class="styles.Trigger" #render="ctx">
+        <a href="#" v-bind="ctx.props">@sarah_chen</a>
       </HoverCard.Trigger>
       ,
-      <HoverCard.Trigger value="alex" as-child>
-        <a href="#" :class="styles.Trigger">@alex_r</a>
+      <HoverCard.Trigger value="alex" :class="styles.Trigger" #render="ctx">
+        <a href="#" v-bind="ctx.props">@alex_r</a>
       </HoverCard.Trigger>
       , and
-      <HoverCard.Trigger value="jordan" as-child>
-        <a href="#" :class="styles.Trigger">@jordan_lee</a>
+      <HoverCard.Trigger value="jordan" :class="styles.Trigger" #render="ctx">
+        <a href="#" v-bind="ctx.props">@jordan_lee</a>
       </HoverCard.Trigger>
     </p>
     <Teleport to="body">

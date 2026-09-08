@@ -16,6 +16,7 @@ import SelectAllExample from './examples/select-all.vue'
 import SelectOnHighlightExample from './examples/select-on-highlight.vue'
 import ShadowRootExample from './examples/shadow-root.vue'
 import WithFieldExample from './examples/with-field.vue'
+import VirtualizedExample from './examples/virtualized.vue'
 
 const meta: Meta = {
   title: 'Components / Select',
@@ -131,6 +132,13 @@ export const ShadowRoot = {
 export const WithField = {
   render: () => ({
     components: { Component: WithFieldExample },
+    template: '<Component />',
+  }),
+}
+
+export const Virtualized = {
+  render: () => ({
+    components: { Component: VirtualizedExample },
     template: '<Component />',
   }),
 }

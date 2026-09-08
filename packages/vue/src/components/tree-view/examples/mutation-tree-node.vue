@@ -43,8 +43,10 @@ const nodeState = tree.value.getNodeState(props)
             <button
               :class="styles.Action"
               @click.stop="
-                emit('add', { node, indexPath })
-                tree.expand([node.id])
+                () => {
+                  emit('add', { node, indexPath })
+                  tree.expand([node.id])
+                }
               "
             >
               <Plus />

@@ -1,7 +1,9 @@
 <script lang="ts">
+import type { ControlState } from '@zag-js/rating-group'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface RatingGroupControlState extends ControlState {}
 export interface RatingGroupControlBaseProps extends PolymorphicProps {}
 export interface RatingGroupControlProps
   extends
@@ -19,13 +21,20 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<RatingGroupControlProps>()
 
+defineSlots<PolymorphicSlots<RatingGroupControlState>>()
+
 const ratingGroup = useRatingGroupContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="ratingGroup.getControlProps()" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="ratingGroup.getControlProps()" :state="ratingGroup.getControlState()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

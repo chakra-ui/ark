@@ -12,8 +12,8 @@ import styles from 'styles/editable.module.css'
   >
     <Editable.Label :class="styles.Label">Description</Editable.Label>
     <Editable.Area :class="styles.Area">
-      <Editable.Input :class="styles.Textarea" asChild>
-        <textarea />
+      <Editable.Input :class="styles.Textarea" #render="ctx">
+        <textarea v-bind="ctx.props" />
       </Editable.Input>
       <Editable.Preview :class="styles.Textarea" />
     </Editable.Area>

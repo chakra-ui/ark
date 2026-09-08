@@ -5,7 +5,7 @@
   import { Portal } from '@ark-ui/svelte/portal'
   import styles from 'styles/combobox.module.css'
 
-  const filters = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: 'base' })
 
   const cities = [
     { label: 'New York', value: 'new-york' },
@@ -34,7 +34,7 @@
     initialItems: cities,
     limit: 5,
     filter(itemString, filterText) {
-      return filters().contains(itemString, filterText)
+      return contains(itemString, filterText)
     },
   })
 

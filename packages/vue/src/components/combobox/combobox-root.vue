@@ -1,11 +1,13 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/combobox'
 import type { HTMLAttributes } from 'vue'
 import type { Assign, BooleanDefaults } from '../../types.ts'
 import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
 import type { CollectionItem } from '../collection/index.ts'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { RootEmits, RootProps } from './combobox.types.ts'
 
+export interface ComboboxRootState extends RootState {}
 export interface ComboboxRootBaseProps<T extends CollectionItem>
   extends RootProps<T>, RenderStrategyProps, PolymorphicProps {}
 
@@ -55,6 +57,8 @@ const props = withDefaults(defineProps<ComboboxRootProps<T>>(), {
   required: undefined,
 } satisfies BooleanDefaults<RootProps<T>>)
 
+defineSlots<PolymorphicSlots<ComboboxRootState>>()
+
 const emits = defineEmits<RootEmits<T>>()
 
 const combobox = useCombobox(props, emits)
@@ -76,7 +80,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="combobox.getRootProps()" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="combobox.getRootProps()" :state="combobox.getRootState()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

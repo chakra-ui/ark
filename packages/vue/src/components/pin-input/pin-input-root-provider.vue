@@ -1,12 +1,14 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/pin-input'
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { UsePinInputReturn } from './use-pin-input.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UsePinInputReturn>
 }
 
+export interface PinInputRootProviderState extends RootState {}
 export interface PinInputRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface PinInputRootProviderProps
   extends
@@ -24,6 +26,8 @@ import { PinInputProvider } from './use-pin-input-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<PinInputRootProviderProps>()
+
+defineSlots<PolymorphicSlots<PinInputRootProviderState>>()
 const pinInput = computed(() => props.value)
 
 PinInputProvider(pinInput)
@@ -32,7 +36,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="pinInput.getRootProps()" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="pinInput.getRootProps()" :state="pinInput.getRootState()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

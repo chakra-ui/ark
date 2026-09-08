@@ -1,7 +1,9 @@
 <script lang="ts">
+import type { BackdropState } from '@zag-js/tour'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface TourBackdropState extends BackdropState {}
 export interface TourBackdropBaseProps extends PolymorphicProps {}
 export interface TourBackdropProps
   extends
@@ -23,6 +25,8 @@ import { useTourContext } from './use-tour-context.ts'
 
 defineProps<TourBackdropProps>()
 
+defineSlots<PolymorphicSlots<TourBackdropState>>()
+
 const tour = useTourContext()
 const renderStrategy = useRenderStrategyProps()
 
@@ -39,7 +43,17 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-if="tour.step?.backdrop && !presence.unmounted" v-bind="mergedProps" :as-child="asChild">
-    <slot />
+  <ark.div
+    v-if="tour.step?.backdrop && !presence.unmounted"
+    v-bind="mergedProps"
+    :as-child="asChild"
+    :state="tour.getBackdropState()"
+  >
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

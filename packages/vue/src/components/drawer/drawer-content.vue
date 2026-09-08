@@ -1,8 +1,9 @@
 <script lang="ts">
+import type { ContentProps, ContentState } from '@zag-js/drawer'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
-import type { ContentProps } from '@zag-js/drawer'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface DrawerContentState extends ContentState {}
 export interface DrawerContentBaseProps extends PolymorphicProps, ContentProps {}
 export interface DrawerContentProps
   extends
@@ -26,6 +27,8 @@ const props = withDefaults(defineProps<DrawerContentProps>(), {
   draggable: true,
 })
 
+defineSlots<PolymorphicSlots<DrawerContentState>>()
+
 const [contentProps, localProps] = createSplitProps<ContentProps>()(props, ['draggable'])
 const drawer = useDrawerContext()
 const presence = usePresenceContext()
@@ -41,7 +44,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild">
-    <slot />
+  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild" :state="drawer.getContentState()">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

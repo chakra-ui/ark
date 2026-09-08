@@ -1,7 +1,9 @@
 <script lang="ts">
+import type { TriggerState } from '@zag-js/date-picker'
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface DatePickerTriggerState extends TriggerState {}
 export interface DatePickerTriggerBaseProps extends PolymorphicProps {}
 export interface DatePickerTriggerProps
   extends
@@ -18,13 +20,20 @@ import { useDatePickerContext } from './use-date-picker-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<DatePickerTriggerProps>()
+
+defineSlots<PolymorphicSlots<DatePickerTriggerState>>()
 const datePicker = useDatePickerContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="datePicker.getTriggerProps()" :as-child="asChild">
-    <slot />
+  <ark.button v-bind="datePicker.getTriggerProps()" :state="datePicker.getTriggerState()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.button>
 </template>

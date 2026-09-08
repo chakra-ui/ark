@@ -314,6 +314,7 @@ import * as Listbox_Multiple from '@examples/listbox/examples/multiple'
 import * as Listbox_RootProvider from '@examples/listbox/examples/root-provider'
 import * as Listbox_SelectAll from '@examples/listbox/examples/select-all'
 import * as Listbox_ValueText from '@examples/listbox/examples/value-text'
+import * as Listbox_Virtualized from '@examples/listbox/examples/virtualized'
 import * as Marquee_AutoFill from '@examples/marquee/examples/auto-fill'
 import * as Marquee_Basic from '@examples/marquee/examples/basic'
 import * as Marquee_FiniteLoops from '@examples/marquee/examples/finite-loops'
@@ -467,6 +468,7 @@ import * as Select_ReactiveCollection from '@examples/select/examples/reactive-c
 import * as Select_RootProvider from '@examples/select/examples/root-provider'
 import * as Select_SelectAll from '@examples/select/examples/select-all'
 import * as Select_SelectOnHighlight from '@examples/select/examples/select-on-highlight'
+import * as Select_Virtualized from '@examples/select/examples/virtualized'
 import * as Select_WithField from '@examples/select/examples/with-field'
 import * as SignaturePad_Basic from '@examples/signature-pad/examples/basic'
 import * as SignaturePad_Controlled from '@examples/signature-pad/examples/controlled'
@@ -607,6 +609,12 @@ import * as TreeView_Mutation from '@examples/tree-view/examples/mutation'
 import * as TreeView_RenameNode from '@examples/tree-view/examples/rename-node'
 import * as TreeView_RootProvider from '@examples/tree-view/examples/root-provider'
 import * as TreeView_Virtualized from '@examples/tree-view/examples/virtualized'
+import * as Virtualizer_DynamicSize from '@examples/virtualizer/examples/dynamic-size'
+import * as Virtualizer_Grid from '@examples/virtualizer/examples/grid'
+import * as Virtualizer_Horizontal from '@examples/virtualizer/examples/horizontal'
+import * as Virtualizer_List from '@examples/virtualizer/examples/list'
+import * as Virtualizer_ScrollToIndex from '@examples/virtualizer/examples/scroll-to-index'
+import * as Virtualizer_Window from '@examples/virtualizer/examples/window'
 import * as Environment_Basic from '@examples/environment/examples/basic'
 import * as Environment_Setup from '@examples/environment/examples/setup'
 import * as Environment_ShadowRoot from '@examples/environment/examples/shadow-root'
@@ -943,6 +951,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'listbox/root-provider': Listbox_RootProvider,
   'listbox/select-all': Listbox_SelectAll,
   'listbox/value-text': Listbox_ValueText,
+  'listbox/virtualized': Listbox_Virtualized,
   'marquee/auto-fill': Marquee_AutoFill,
   'marquee/basic': Marquee_Basic,
   'marquee/finite-loops': Marquee_FiniteLoops,
@@ -1096,6 +1105,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'select/root-provider': Select_RootProvider,
   'select/select-all': Select_SelectAll,
   'select/select-on-highlight': Select_SelectOnHighlight,
+  'select/virtualized': Select_Virtualized,
   'select/with-field': Select_WithField,
   'signature-pad/basic': SignaturePad_Basic,
   'signature-pad/controlled': SignaturePad_Controlled,
@@ -1236,6 +1246,12 @@ const exampleModules: Record<string, ExampleModule> = {
   'tree-view/rename-node': TreeView_RenameNode,
   'tree-view/root-provider': TreeView_RootProvider,
   'tree-view/virtualized': TreeView_Virtualized,
+  'virtualizer/dynamic-size': Virtualizer_DynamicSize,
+  'virtualizer/grid': Virtualizer_Grid,
+  'virtualizer/horizontal': Virtualizer_Horizontal,
+  'virtualizer/list': Virtualizer_List,
+  'virtualizer/scroll-to-index': Virtualizer_ScrollToIndex,
+  'virtualizer/window': Virtualizer_Window,
   'environment/basic': Environment_Basic,
   'environment/setup': Environment_Setup,
   'environment/shadow-root': Environment_ShadowRoot,

@@ -1,9 +1,11 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/signature-pad'
 import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types.ts'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { RootEmits, RootProps } from './signature-pad.types.ts'
 
+export interface SignaturePadRootState extends RootState {}
 export interface SignaturePadRootBaseProps extends RootProps, PolymorphicProps {}
 export interface SignaturePadRootProps
   extends
@@ -27,6 +29,8 @@ const props = withDefaults(defineProps<SignaturePadRootBaseProps>(), {
   required: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
+defineSlots<PolymorphicSlots<SignaturePadRootState>>()
+
 const emits = defineEmits<SignaturePadRootEmits>()
 
 const signaturepad = useSignaturePad(props, emits)
@@ -36,7 +40,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="signaturepad.getRootProps()" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="signaturepad.getRootProps()" :state="signaturepad.getRootState()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

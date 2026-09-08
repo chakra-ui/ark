@@ -1,8 +1,9 @@
 <script lang="ts">
-import type { ItemProps } from '@zag-js/combobox'
+import type { ItemProps, ItemState } from '@zag-js/combobox'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface ComboboxItemState extends ItemState {}
 export interface ComboboxItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface ComboboxItemProps
   extends
@@ -21,7 +22,11 @@ import { ComboboxItemProvider } from './use-combobox-item-context.ts'
 import { ComboboxItemPropsProvider } from './use-combobox-item-props-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
-const props = defineProps<ComboboxItemProps>()
+const props = withDefaults(defineProps<ComboboxItemProps>(), {
+  persistFocus: undefined,
+})
+
+defineSlots<PolymorphicSlots<ComboboxItemState>>()
 const combobox = useComboboxContext()
 ComboboxItemPropsProvider(props)
 ComboboxItemProvider(computed(() => combobox.value.getItemState(props)))
@@ -30,7 +35,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="combobox.getItemProps(props)" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="combobox.getItemProps(props)" :state="combobox.getItemState(props)" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

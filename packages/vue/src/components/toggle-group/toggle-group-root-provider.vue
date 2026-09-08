@@ -1,12 +1,14 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/toggle-group'
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { UseToggleGroupReturn } from './use-toggle-group.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseToggleGroupReturn>
 }
 
+export interface ToggleGroupRootProviderState extends RootState {}
 export interface ToggleGroupRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface ToggleGroupRootProviderProps
   extends
@@ -24,6 +26,8 @@ import { ToggleGroupProvider } from './use-toggle-group-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<ToggleGroupRootProviderProps>()
+
+defineSlots<PolymorphicSlots<ToggleGroupRootProviderState>>()
 const toggleGroup = computed(() => props.value)
 
 ToggleGroupProvider(toggleGroup)
@@ -32,7 +36,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="toggleGroup.getRootProps()" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="toggleGroup.getRootProps()" :state="toggleGroup.getRootState()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

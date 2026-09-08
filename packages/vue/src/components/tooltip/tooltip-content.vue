@@ -1,9 +1,11 @@
 <script lang="ts">
+import type { ContentState } from '@zag-js/tooltip'
 import { mergeProps } from '@zag-js/vue'
 import { type HTMLAttributes, computed } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import { usePresenceContext } from '../presence/index.ts'
 
+export interface TooltipContentState extends ContentState {}
 export interface TooltipContentBaseProps extends PolymorphicProps {}
 export interface TooltipContentProps
   extends
@@ -21,6 +23,8 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<TooltipContentProps>()
 
+defineSlots<PolymorphicSlots<TooltipContentState>>()
+
 const tooltip = useTooltipContext()
 const presence = usePresenceContext()
 
@@ -30,7 +34,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild">
-    <slot />
+  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild" :state="tooltip.getContentState()">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

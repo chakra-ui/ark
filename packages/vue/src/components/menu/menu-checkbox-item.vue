@@ -1,12 +1,13 @@
 <script lang="ts">
-import type { OptionItemProps } from '@zag-js/menu'
+import type { OptionItemProps, OptionItemState } from '@zag-js/menu'
 import type { HTMLAttributes } from 'vue'
 import type { ComputedRef } from 'vue'
 import type { BooleanDefaults } from '../../types.ts'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
 type CheckboxItemProps = Omit<OptionItemProps, 'type' | 'onCheckedChange'>
 
+export interface MenuCheckboxItemState extends OptionItemState {}
 export interface MenuCheckboxItemBaseProps extends CheckboxItemProps, PolymorphicProps {}
 export interface MenuCheckboxItemProps
   extends
@@ -35,6 +36,8 @@ const props = withDefaults(defineProps<MenuCheckboxItemProps>(), {
   closeOnSelect: undefined,
 } satisfies BooleanDefaults<CheckboxItemProps>)
 
+defineSlots<PolymorphicSlots<MenuCheckboxItemState>>()
+
 const emits = defineEmits<MenuCheckboxItemEmits>()
 
 const menu = useMenuContext()
@@ -53,7 +56,16 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="menu.getOptionItemProps(optionItemProps)" :as-child="asChild">
-    <slot />
+  <ark.div
+    v-bind="menu.getOptionItemProps(optionItemProps)"
+    :state="menu.getOptionItemState(optionItemProps)"
+    :as-child="asChild"
+  >
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

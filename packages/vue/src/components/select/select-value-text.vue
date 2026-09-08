@@ -28,6 +28,11 @@ useForwardExpose()
 
 <template>
   <ark.span v-bind="select.getValueTextProps()" :as-child="asChild">
-    <slot>{{ slots.default?.() || select.valueAsString || props.placeholder }}</slot>
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot>{{ slots.default?.() || select.valueAsString || props.placeholder }}</slot>
+    </template>
   </ark.span>
 </template>

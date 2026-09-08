@@ -18,7 +18,7 @@ const replaceNewOptionValue = (values: string[], value: string) =>
 const getNewOptionData = (inputValue: string): Item => ({ label: inputValue, value: inputValue, __new__: true })
 
 export const Creatable = () => {
-  const filterFn = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: 'base' })
 
   const { collection, filter, upsert, update, remove } = useListCollection<Item>({
     initialItems: [
@@ -27,7 +27,7 @@ export const Creatable = () => {
       { label: 'Enhancement', value: 'enhancement' },
       { label: 'Documentation', value: 'docs' },
     ],
-    filter: filterFn().contains,
+    filter: contains,
   })
 
   const isValidNewOption = (inputValue: string) => {

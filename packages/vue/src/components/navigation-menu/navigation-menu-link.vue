@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types.ts'
 import type { LinkProps } from '@zag-js/navigation-menu'
 import type { AnchorHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory.ts'
@@ -20,7 +21,10 @@ import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
 import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
-const props = defineProps<NavigationMenuLinkProps>()
+const props = withDefaults(defineProps<NavigationMenuLinkProps>(), {
+  closeOnClick: undefined,
+  current: undefined,
+} satisfies BooleanDefaults<LinkProps>)
 const navigationMenu = useNavigationMenuContext()
 const itemContext = useNavigationMenuItemPropsContext()
 
@@ -32,6 +36,11 @@ useForwardExpose()
 
 <template>
   <ark.a v-bind="navigationMenu.getLinkProps(linkProps)" :as-child="asChild">
-    <slot />
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.a>
 </template>

@@ -5,7 +5,7 @@
   import button from 'styles/button.module.css'
   import styles from 'styles/combobox.module.css'
 
-  const filters = useFilter({ sensitivity: 'base' })
+  const { contains } = useFilter({ sensitivity: 'base' })
 
   const initialItems = [
     { label: 'Designer', value: 'designer' },
@@ -19,7 +19,7 @@
   const { collection, filter } = useListCollection({
     initialItems,
     filter(itemString, filterText) {
-      return filters().contains(itemString, filterText)
+      return contains(itemString, filterText)
     },
   })
 

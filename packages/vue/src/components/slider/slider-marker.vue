@@ -1,8 +1,9 @@
 <script lang="ts">
-import type { MarkerProps } from '@zag-js/slider'
+import type { MarkerProps, MarkerState } from '@zag-js/slider'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface SliderMarkerState extends MarkerState {}
 export interface SliderMarkerBaseProps extends MarkerProps, PolymorphicProps {}
 export interface SliderMarkerProps
   extends
@@ -19,13 +20,20 @@ import { useSliderContext } from './use-slider-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<SliderMarkerProps>()
+
+defineSlots<PolymorphicSlots<SliderMarkerState>>()
 const slider = useSliderContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.span v-bind="slider.getMarkerProps(props)" :as-child="asChild">
-    <slot />
+  <ark.span v-bind="slider.getMarkerProps(props)" :state="slider.getMarkerState(props)" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.span>
 </template>

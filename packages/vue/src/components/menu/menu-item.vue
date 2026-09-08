@@ -1,9 +1,10 @@
 <script lang="ts">
-import type { ItemProps } from '@zag-js/menu'
+import type { ItemProps, ItemState } from '@zag-js/menu'
 import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types.ts'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface MenuItemState extends ItemState {}
 export interface MenuItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface MenuItemProps
   extends
@@ -27,6 +28,8 @@ const props = withDefaults(defineProps<MenuItemProps>(), {
   closeOnSelect: undefined,
 } satisfies BooleanDefaults<ItemProps>)
 
+defineSlots<PolymorphicSlots<MenuItemState>>()
+
 const emit = defineEmits<{
   (e: 'select'): void
 }>()
@@ -46,7 +49,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="menu.getItemProps(props)" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="menu.getItemProps(props)" :state="menu.getItemState(props)" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

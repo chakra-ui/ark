@@ -1,9 +1,11 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/pin-input'
 import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types.ts'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { RootEmits, RootProps } from './pin-input.types.ts'
 
+export interface PinInputRootState extends RootState {}
 export interface PinInputRootBaseProps extends RootProps, PolymorphicProps {}
 export interface PinInputRootProps
   extends
@@ -34,6 +36,8 @@ const props = withDefaults(defineProps<PinInputRootProps>(), {
   selectOnFocus: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
+defineSlots<PolymorphicSlots<PinInputRootState>>()
+
 const emits = defineEmits<PinInputRootEmits>()
 
 const pinInput = usePinInput(props, emits)
@@ -44,7 +48,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="pinInput.getRootProps()" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="pinInput.getRootProps()" :state="pinInput.getRootState()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

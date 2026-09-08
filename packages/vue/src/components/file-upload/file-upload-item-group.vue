@@ -1,9 +1,10 @@
 <script lang="ts">
-import type { ItemGroupProps } from '@zag-js/file-upload'
+import type { ItemGroupProps, ItemGroupState } from '@zag-js/file-upload'
 import { computed, type HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import { pick } from '@zag-js/utils'
 
+export interface FileUploadItemGroupState extends ItemGroupState {}
 export interface FileUploadItemGroupBaseProps extends PolymorphicProps, ItemGroupProps {}
 export interface FileUploadItemGroupProps
   extends
@@ -21,6 +22,8 @@ import { useFileUploadContext } from './use-file-upload-context.ts'
 import { FileUploadItemGroupPropsProvider } from './use-file-upload-item-group-props-context.ts'
 
 const props = defineProps<FileUploadItemGroupProps>()
+
+defineSlots<PolymorphicSlots<FileUploadItemGroupState>>()
 const groupProps = computed(() => pick(props, ['type']))
 
 const fileUpload = useFileUploadContext()
@@ -31,7 +34,16 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.ul v-bind="fileUpload.getItemGroupProps(groupProps)" :as-child="asChild">
-    <slot />
+  <ark.ul
+    v-bind="fileUpload.getItemGroupProps(groupProps)"
+    :state="fileUpload.getItemGroupState(groupProps)"
+    :as-child="asChild"
+  >
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.ul>
 </template>

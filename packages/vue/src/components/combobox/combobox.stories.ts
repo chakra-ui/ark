@@ -16,6 +16,7 @@ import HighlightMatchingTextExample from './examples/highlight-matching-text.vue
 import AutoHighlightExample from './examples/auto-highlight.vue'
 import InlineAutocompleteExample from './examples/inline-autocomplete.vue'
 import LimitResultsExample from './examples/limit-results.vue'
+import VirtualizedExample from './examples/virtualized.vue'
 
 const meta: Meta = {
   title: 'Components / Combobox',
@@ -131,6 +132,13 @@ export const InlineAutocomplete = {
 export const LimitResults = {
   render: () => ({
     components: { Component: LimitResultsExample },
+    template: '<Component />',
+  }),
+}
+
+export const Virtualized = {
+  render: () => ({
+    components: { Component: VirtualizedExample },
     template: '<Component />',
   }),
 }

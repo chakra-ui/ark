@@ -1,21 +1,21 @@
 import { createCollator } from '@zag-js/i18n-utils'
+import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 import { useLocaleContext } from './use-locale-context.ts'
-import type { Accessor } from '$lib/types'
 
 export interface UseCollatorProps extends Intl.CollatorOptions {
   locale?: string
 }
 
-export interface UseCollatorReturn extends Accessor<Intl.Collator> {}
+export interface UseCollatorReturn extends Intl.Collator {}
 
-export function useCollator(props: UseCollatorProps = {}): UseCollatorReturn {
+export function useCollator(inProps: MaybeFunction<UseCollatorProps> = {}): UseCollatorReturn {
   const env = useLocaleContext()
-  const locale = $derived(props.locale ?? env().locale)
-
   const collator = $derived.by(() => {
-    const { locale: _, ...options } = props
-    return createCollator(locale, options)
+    const { locale, ...options } = runIfFn(inProps)
+    return createCollator(locale ?? env().locale, options)
   })
-
-  return () => collator
+  return {
+    compare: (x, y) => collator.compare(x, y),
+    resolvedOptions: () => collator.resolvedOptions(),
+  }
 }

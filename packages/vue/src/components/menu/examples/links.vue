@@ -14,15 +14,15 @@ import styles from 'styles/menu.module.css'
     </Menu.Trigger>
     <Menu.Positioner>
       <Menu.Content :class="styles.Content">
-        <Menu.Item :class="styles.Item" value="docs" as-child>
-          <a href="https://ark-ui.com">Documentation</a>
+        <Menu.Item :class="styles.Item" value="docs" #render="ctx">
+          <a href="https://ark-ui.com" v-bind="ctx.props">Documentation</a>
         </Menu.Item>
-        <Menu.Item :class="styles.Item" value="github" as-child>
-          <a href="https://github.com/chakra-ui/ark">GitHub</a>
+        <Menu.Item :class="styles.Item" value="github" #render="ctx">
+          <a href="https://github.com/chakra-ui/ark" v-bind="ctx.props">GitHub</a>
         </Menu.Item>
         <Menu.Separator :class="styles.Separator" />
-        <Menu.Item :class="styles.Item" value="changelog" as-child>
-          <a href="https://github.com/chakra-ui/ark/releases">Changelog</a>
+        <Menu.Item :class="styles.Item" value="changelog" #render="ctx">
+          <a href="https://github.com/chakra-ui/ark/releases" v-bind="ctx.props">Changelog</a>
         </Menu.Item>
       </Menu.Content>
     </Menu.Positioner>

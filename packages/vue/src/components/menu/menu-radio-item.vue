@@ -1,11 +1,12 @@
 <script lang="ts">
-import type { OptionItemProps } from '@zag-js/menu'
+import type { OptionItemProps, OptionItemState } from '@zag-js/menu'
 import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types.ts'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
 type RadioItemProps = Omit<OptionItemProps, 'type' | 'onCheckedChange' | 'checked'>
 
+export interface MenuRadioItemState extends OptionItemState {}
 export interface MenuRadioItemBaseProps extends RadioItemProps, PolymorphicProps {}
 export interface MenuRadioItemProps
   extends
@@ -30,6 +31,8 @@ const props = withDefaults(defineProps<MenuRadioItemProps>(), {
   closeOnSelect: undefined,
 } satisfies BooleanDefaults<RadioItemProps>)
 
+defineSlots<PolymorphicSlots<MenuRadioItemState>>()
+
 const menu = useMenuContext()
 const itemGroup = useMenuItemGroupContext()
 
@@ -49,7 +52,16 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="menu.getOptionItemProps(optionItemProps)" :as-child="asChild">
-    <slot />
+  <ark.div
+    v-bind="menu.getOptionItemProps(optionItemProps)"
+    :state="menu.getOptionItemState(optionItemProps)"
+    :as-child="asChild"
+  >
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

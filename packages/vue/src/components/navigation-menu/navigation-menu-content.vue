@@ -1,8 +1,9 @@
 <script lang="ts">
-import type { ContentProps } from '@zag-js/navigation-menu'
+import type { ContentProps, ContentState } from '@zag-js/navigation-menu'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface NavigationMenuContentState extends ContentState {}
 export interface NavigationMenuContentBaseProps extends Partial<ContentProps>, PolymorphicProps {}
 export interface NavigationMenuContentProps
   extends
@@ -24,6 +25,8 @@ import { usePresence } from '../presence/index.ts'
 import { ark } from '../factory.ts'
 
 const props = defineProps<NavigationMenuContentProps>()
+
+defineSlots<PolymorphicSlots<NavigationMenuContentState>>()
 const attrs = useAttrs()
 
 const api = useNavigationMenuContext()
@@ -51,12 +54,22 @@ useForwardExpose()
     <div v-bind="api.getViewportProxyProps(contentProps)" />
     <div v-bind="api.getTriggerProxyProps(contentProps)" />
     <Teleport :to="viewportNode">
-      <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild">
+      <ark.div
+        v-if="!presence.unmounted"
+        v-bind="mergedProps"
+        :as-child="asChild"
+        :state="api.getContentState(contentProps)"
+      >
         <slot />
       </ark.div>
     </Teleport>
   </template>
-  <ark.div v-else-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild">
+  <ark.div
+    v-else-if="!presence.unmounted"
+    v-bind="mergedProps"
+    :as-child="asChild"
+    :state="api.getContentState(contentProps)"
+  >
     <slot />
   </ark.div>
 </template>

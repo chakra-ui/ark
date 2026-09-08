@@ -1,0 +1,127 @@
+---
+id: virtualizer
+title: Virtualizer
+description: Render large lists, grids, and window-scrolled content by only mounting the items in view.
+---
+
+<ComponentPreview id="Virtualizer" />
+
+## Usage
+
+The virtualizer keeps the DOM small by rendering only the items that intersect the scroll viewport, plus a few extra for
+smooth scrolling. It comes in three flavors, each with a hook and a matching set of components:
+
+- `useListVirtualizer` + `ListVirtualizer` for vertical or horizontal lists that scroll inside their own container.
+- `useGridVirtualizer` + `GridVirtualizer` for two-dimensional grids of rows and cells.
+- `useWindowVirtualizer` + `WindowVirtualizer` for lists that scroll with the window or the nearest scrollable ancestor.
+
+Create a virtualizer with one of the hooks, pass it to `Root` as `value`, render the spacer with `Content`, and map the
+virtual items to `Item` elements.
+
+```tsx
+import { ListVirtualizer, useListVirtualizer } from '@ark-ui/react/virtualizer'
+
+const virtualizer = useListVirtualizer({
+  count: items.length,
+  estimatedSize: () => 48,
+})
+
+<ListVirtualizer.Root value={virtualizer}>
+  <ListVirtualizer.Content>
+    {virtualizer.getVirtualItems().map((item) => (
+      <ListVirtualizer.Item key={item.key} item={item}>
+        {items[item.index]}
+      </ListVirtualizer.Item>
+    ))}
+  </ListVirtualizer.Content>
+</ListVirtualizer.Root>
+```
+
+`Root` is the scroll container: it receives the ARIA attributes, the `overflow` styles, and the scroll listener. Give it
+a fixed height (or width for horizontal lists) so it can scroll. `Content` is the spacer that grows to the total size of
+the list. `Item` is positioned absolutely with a `transform`; its size comes from your CSS or from the estimate, so give
+your items a height that matches `estimatedSize`, or opt into measurement as shown below.
+
+### List
+
+<Example id="list" />
+
+### Dynamic Size
+
+When items have different heights, set the `measure` prop on `Item`. The rendered size of each item is then measured and
+fed back into the virtualizer, so `estimatedSize` only needs to be a rough guess.
+
+<Example id="dynamic-size" />
+
+### Horizontal
+
+Set `orientation` to `horizontal` to virtualize along the x-axis. `Content` grows in width and items are translated
+horizontally.
+
+<Example id="horizontal" />
+
+### Scroll to Index
+
+Use `scrollToIndex` on the virtualizer to jump to an item. It accepts an `align` option (`start`, `center`, `end`, or
+`auto`) and a `smooth` option for animated scrolling.
+
+<Example id="scroll-to-index" />
+
+### Grid
+
+The grid virtualizer is row-first: map `getVirtualRows()` to `Row` elements and each row's `columns` to `Cell` elements.
+`Cell` reads its row from context, so it only needs the `column`. Rows can opt into height measurement with the
+`measure` prop.
+
+<Example id="grid" />
+
+### Window
+
+The window virtualizer delegates scrolling to the window or the nearest scrollable ancestor, so `Root` does not need a
+height or an overflow style. Use it for long pages where the list is part of the document flow.
+
+<Example id="window" />
+
+### Using the Context
+
+`Context` exposes the virtualizer to child components, which is useful for rendering derived state such as the visible
+range.
+
+```tsx
+<ListVirtualizer.Root value={virtualizer}>
+  <ListVirtualizer.Context>
+    {(virtualizer) => <span>{virtualizer.getVirtualItems().length} items rendered</span>}
+  </ListVirtualizer.Context>
+</ListVirtualizer.Root>
+```
+
+### Composing with other components
+
+The virtualizer parts compose with any Ark component through the `render` prop. Render the component's scroll container
+as `ListVirtualizer.Root` and each of its items as `ListVirtualizer.Item`; the component's own props (roles, ids,
+handlers) win over the virtualizer's, and the virtualizer adds the positioning and the `aria-posinset` / `aria-setsize`
+attributes.
+
+```tsx
+<Combobox.List render={<ListVirtualizer.Root value={virtualizer} />}>
+  <ListVirtualizer.Content>
+    {virtualizer.getVirtualItems().map((virtualItem) => {
+      const item = collection.items[virtualItem.index]
+      return (
+        <Combobox.Item key={item.value} item={item} render={<ListVirtualizer.Item item={virtualItem} />}>
+          <Combobox.ItemText>{item.label}</Combobox.ItemText>
+        </Combobox.Item>
+      )
+    })}
+  </ListVirtualizer.Content>
+</Combobox.List>
+```
+
+Pass the component's `scrollToIndexFn` through to `virtualizer.scrollToIndex` so keyboard navigation reaches items that
+are not mounted. See the virtualized examples for [Select](/docs/components/select#virtualized),
+[Combobox](/docs/components/combobox#virtualized), [Listbox](/docs/components/listbox#virtualized), and
+[Tree View](/docs/components/tree-view#virtualized).
+
+## API Reference
+
+<ComponentTypes id="virtualizer" />

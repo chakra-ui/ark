@@ -1,9 +1,11 @@
 <script lang="ts">
+import type { ContentState } from '@zag-js/date-picker'
 import { mergeProps } from '@zag-js/vue'
 import { type HTMLAttributes, computed } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import { usePresenceContext } from '../presence/index.ts'
 
+export interface DatePickerContentState extends ContentState {}
 export interface DatePickerContentBaseProps extends PolymorphicProps {}
 export interface DatePickerContentProps
   extends
@@ -20,6 +22,8 @@ import { useDatePickerContext } from './use-date-picker-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<DatePickerContentProps>()
+
+defineSlots<PolymorphicSlots<DatePickerContentState>>()
 const datePicker = useDatePickerContext()
 const presence = usePresenceContext()
 const mergedProps = computed(() => mergeProps(datePicker.value.getContentProps(), presence.value.presenceProps))
@@ -28,7 +32,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild">
-    <slot />
+  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild" :state="datePicker.getContentState()">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>

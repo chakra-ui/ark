@@ -1,8 +1,9 @@
 <script lang="ts">
-import type { TriggerProps } from '@zag-js/dialog'
+import type { TriggerProps, TriggerState } from '@zag-js/dialog'
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface DialogTriggerState extends TriggerState {}
 export interface DialogTriggerBaseProps extends TriggerProps, PolymorphicProps {}
 export interface DialogTriggerProps
   extends
@@ -19,13 +20,20 @@ import { useDialogContext } from './use-dialog-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<DialogTriggerProps>()
+
+defineSlots<PolymorphicSlots<DialogTriggerState>>()
 const dialog = useDialogContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="dialog.getTriggerProps(props)" :as-child="asChild">
-    <slot />
+  <ark.button v-bind="dialog.getTriggerProps(props)" :state="dialog.getTriggerState(props)" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.button>
 </template>

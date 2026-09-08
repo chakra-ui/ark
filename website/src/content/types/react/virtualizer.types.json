@@ -1,0 +1,193 @@
+{
+  "GridCell": {
+    "props": {
+      "column": {
+        "type": "VirtualColumn",
+        "isRequired": true,
+        "description": "The virtual column to render within the current row."
+      },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "GridContent": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "GridRoot": {
+    "props": {
+      "value": {
+        "type": "UseGridVirtualizerReturn",
+        "isRequired": true,
+        "description": "The virtualizer instance returned by `useGridVirtualizer`."
+      },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "GridRow": {
+    "props": {
+      "row": { "type": "VirtualRow", "isRequired": true, "description": "The virtual row to render." },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "measure": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to measure the rendered height of the row and use it instead of the estimate."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "ListContent": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "ListItem": {
+    "props": {
+      "item": { "type": "VirtualItem", "isRequired": true, "description": "The virtual item to render." },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "measure": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to measure the rendered size of the item and use it instead of the estimate."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "ListRoot": {
+    "props": {
+      "value": {
+        "type": "UseListVirtualizerReturn",
+        "isRequired": true,
+        "description": "The virtualizer instance returned by `useListVirtualizer`."
+      },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "WindowContent": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "WindowItem": {
+    "props": {
+      "item": { "type": "VirtualItem", "isRequired": true, "description": "The virtual item to render." },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "measure": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to measure the rendered size of the item and use it instead of the estimate."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "WindowRoot": {
+    "props": {
+      "value": {
+        "type": "UseWindowVirtualizerReturn",
+        "isRequired": true,
+        "description": "The virtualizer instance returned by `useWindowVirtualizer`."
+      },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "ReactElement<unknown, string | JSXElementConstructor<any>> | RenderFn<EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nPass an element to have the part's props merged into it, or a function to control the merge\nyourself and read the part's state."
+      }
+    },
+    "element": "HTMLDivElement"
+  }
+}

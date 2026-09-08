@@ -1,9 +1,11 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/switch'
 import type { LabelHTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types.ts'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { RootEmits, RootProps } from './switch.types.ts'
 
+export interface SwitchRootState extends RootState {}
 export interface SwitchRootBaseProps extends RootProps, PolymorphicProps {}
 export interface SwitchRootProps
   extends
@@ -30,6 +32,8 @@ const props = withDefaults(defineProps<SwitchRootProps>(), {
   required: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
+defineSlots<PolymorphicSlots<SwitchRootState>>()
+
 const emits = defineEmits<SwitchRootEmits>()
 
 const context = useSwitch(props, emits)
@@ -39,7 +43,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.label v-bind="context.getRootProps()" :as-child="asChild">
-    <slot />
+  <ark.label v-bind="context.getRootProps()" :state="context.getRootState()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.label>
 </template>

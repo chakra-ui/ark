@@ -6,14 +6,14 @@ import styles from 'styles/tabs.module.css'
 <template>
   <Tabs.Root :class="styles.Root" default-value="account">
     <Tabs.List :class="styles.List">
-      <Tabs.Trigger :class="styles.Trigger" value="account" as-child>
-        <a href="#account">Account</a>
+      <Tabs.Trigger :class="styles.Trigger" value="account" #render="ctx">
+        <a href="#account" v-bind="ctx.props">Account</a>
       </Tabs.Trigger>
-      <Tabs.Trigger :class="styles.Trigger" value="password" as-child>
-        <a href="#password">Password</a>
+      <Tabs.Trigger :class="styles.Trigger" value="password" #render="ctx">
+        <a href="#password" v-bind="ctx.props">Password</a>
       </Tabs.Trigger>
-      <Tabs.Trigger :class="styles.Trigger" value="billing" as-child>
-        <a href="#billing">Billing</a>
+      <Tabs.Trigger :class="styles.Trigger" value="billing" #render="ctx">
+        <a href="#billing" v-bind="ctx.props">Billing</a>
       </Tabs.Trigger>
     </Tabs.List>
     <Tabs.Content :class="styles.Content" value="account">Make changes to your account here.</Tabs.Content>

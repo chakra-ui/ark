@@ -6,7 +6,7 @@ import { useFilter } from '@ark-ui/vue/locale'
 import styles from 'styles/combobox.module.css'
 import field from 'styles/field.module.css'
 
-const filters = useFilter({ sensitivity: 'base' })
+const { contains } = useFilter({ sensitivity: 'base' })
 
 const initialItems = [
   { label: 'Engineering', value: 'engineering' },
@@ -19,7 +19,7 @@ const initialItems = [
 
 const { collection, filter } = useListCollection({
   initialItems,
-  filter: filters.value.contains,
+  filter: contains,
 })
 
 const handleInputChange = (details: Combobox.InputValueChangeDetails) => {

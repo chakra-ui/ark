@@ -4,6 +4,7 @@ import BasicExample from './examples/basic.vue'
 import ControlledExample from './examples/controlled.vue'
 import DisabledTabExample from './examples/disabled-tab.vue'
 import IndicatorExample from './examples/indicator.vue'
+import LinksExample from './examples/links.vue'
 import LazyMountExample from './examples/lazy-mount.vue'
 import ManualActivationExample from './examples/manual-activation.vue'
 import RootProviderExample from './examples/root-provider.vue'
@@ -46,6 +47,13 @@ export const Indicator = {
 export const LazyMount = {
   render: () => ({
     components: { Component: LazyMountExample },
+    template: '<Component />',
+  }),
+}
+
+export const Links = {
+  render: () => ({
+    components: { Component: LinksExample },
     template: '<Component />',
   }),
 }

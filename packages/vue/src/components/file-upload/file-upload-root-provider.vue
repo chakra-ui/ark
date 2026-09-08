@@ -1,12 +1,14 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/file-upload'
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { UseFileUploadReturn } from './use-file-upload.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseFileUploadReturn>
 }
 
+export interface FileUploadRootProviderState extends RootState {}
 export interface FileUploadRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface FileUploadRootProviderProps
   extends
@@ -24,6 +26,8 @@ import { FileUploadProvider } from './use-file-upload-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<FileUploadRootProviderProps>()
+
+defineSlots<PolymorphicSlots<FileUploadRootProviderState>>()
 const fileUpload = computed(() => props.value)
 
 FileUploadProvider(fileUpload)
@@ -32,7 +36,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="fileUpload.getRootProps()" :as-child="asChild">
-    <slot />
+  <ark.div v-bind="fileUpload.getRootProps()" :state="fileUpload.getRootState()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.div>
 </template>
