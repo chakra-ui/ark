@@ -41,7 +41,7 @@ export const Demo = () => {
           <ListVirtualizer.Item
             key={item.key}
             item={item}
-            className={cx(styles.item, item.index % 2 && styles.itemAlt)}
+            className={cx(styles.item, item.index % 2 === 1 && styles.itemAlt)}
           >
             {items[item.index]}
           </ListVirtualizer.Item>
