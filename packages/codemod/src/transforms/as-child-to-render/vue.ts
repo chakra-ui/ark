@@ -2,32 +2,33 @@ import { parse } from '@vue/compiler-sfc'
 import MagicString from 'magic-string'
 import type { TransformResult } from '../../types.ts'
 
-type Node = {
+interface Loc {
+  start: { offset: number }
+  end: { offset: number }
+}
+
+interface Prop {
+  type: number
+  name: string
+  arg?: { content?: string }
+  loc: Loc
+}
+
+interface Node {
   type: number
   tag?: string
-  props?: Array<{ type: number; name: string; loc: { start: { offset: number }; end: { offset: number } } }>
+  props?: Prop[]
   children?: Node[]
-  loc: { start: { offset: number }; end: { offset: number } }
+  loc: Loc
 }
 
 const ELEMENT = 1
 const TEXT = 2
 const ATTRIBUTE = 6
+const DIRECTIVE = 7
 
-/**
- * Vue's `asChild` is a boolean and the replaced element is the single child. The
- * `render` slot hands the props to the slot body, so the child has to bind them.
- *
- *   <Popover.Trigger asChild>
- *     <button>Open</button>
- *   </Popover.Trigger>
- *
- * becomes
- *
- *   <Popover.Trigger #render="{ props }">
- *     <button v-bind="props">Open</button>
- *   </Popover.Trigger>
- */
+const isAsChild = (name: string | undefined) => name === 'asChild' || name === 'as-child'
+
 export function vueAsChildToRender(source: string, _filePath: string): TransformResult {
   const { descriptor, errors } = parse(source)
   if (errors.length > 0) return { code: null, count: 0, skipped: [`template did not parse: ${errors[0].message}`] }
@@ -40,30 +41,31 @@ export function vueAsChildToRender(source: string, _filePath: string): Transform
   const skipped: string[] = []
 
   walk(ast, (node) => {
-    const attr = node.props?.find((p) => p.type === ATTRIBUTE && (p.name === 'asChild' || p.name === 'as-child'))
+    const at = `line ${lineOf(source, node.loc.start.offset)}`
+
+    const bound = node.props?.find((p) => p.type === DIRECTIVE && p.name === 'bind' && isAsChild(p.arg?.content))
+    if (bound) {
+      skipped.push(`${at}: asChild is bound to an expression, so the child cannot be lifted mechanically`)
+      return
+    }
+
+    const attr = node.props?.find((p) => p.type === ATTRIBUTE && isAsChild(p.name))
     if (!attr) return
 
-    const at = `line ${lineOf(source, node.loc.start.offset)}`
     const children = (node.children ?? []).filter((c) => !(c.type === TEXT && !textOf(source, c).trim()))
-
     if (children.length !== 1 || children[0].type !== ELEMENT) {
       skipped.push(`${at}: expected exactly one child element, found ${children.length}`)
       return
     }
 
     const child = children[0]
-    const bound = child.props?.some((p) => p.name === 'bind' || p.name === 'v-bind')
-    if (bound) {
+    if (child.props?.some((p) => p.name === 'bind' && !p.arg?.content)) {
       skipped.push(`${at}: the child already binds props`)
       return
     }
 
     s.overwrite(attr.loc.start.offset, attr.loc.end.offset, '#render="{ props }"')
-
-    // insert v-bind on the child's opening tag, right after the tag name
-    const childStart = child.loc.start.offset
-    const tagEnd = childStart + 1 + (child.tag?.length ?? 0)
-    s.appendLeft(tagEnd, ' v-bind="props"')
+    s.appendLeft(child.loc.start.offset + 1 + (child.tag?.length ?? 0), ' v-bind="props"')
     count++
   })
 

@@ -1,16 +1,6 @@
 import { Node, Project, SyntaxKind } from 'ts-morph'
 import type { TransformResult } from '../../types.ts'
 
-/**
- * Solid's `asChild` already took a callback, but it received a props *accessor*.
- * `render` receives the props directly, so the call has to go.
- *
- *   <Popover.Trigger asChild={(props) => <button {...props()} />}>
- *
- * becomes
- *
- *   <Popover.Trigger render={(props) => <button {...props} />}>
- */
 export function solidAsChildToRender(source: string, filePath: string): TransformResult {
   const project = new Project({ useInMemoryFileSystem: true, compilerOptions: { jsx: 4 } })
   const sf = project.createSourceFile(filePath.endsWith('.tsx') ? filePath : `${filePath}.tsx`, source)
@@ -35,7 +25,6 @@ export function solidAsChildToRender(source: string, filePath: string): Transfor
 
     const [param] = fn.getParameters()
     if (param) {
-      // the accessor is now a plain object, so `props()` becomes `props`
       const name = param.getName()
       for (const call of fn.getDescendantsOfKind(SyntaxKind.CallExpression)) {
         if (call.getExpression().getText() === name && call.getArguments().length === 0) {

@@ -1,6 +1,5 @@
 import pc from 'picocolors'
 
-/** A minimal line diff, enough to review a dry run without pulling in a diff library. */
 export function unifiedDiff(before: string, after: string, path: string): string {
   const a = before.split('\n')
   const b = after.split('\n')
@@ -14,7 +13,6 @@ export function unifiedDiff(before: string, after: string, path: string): string
       j++
       continue
     }
-    // resynchronise on the next line that matches, so a rewrite shows as a block
     const next = b.indexOf(a[i], j)
     if (next === -1) {
       if (i < a.length) lines.push(pc.red(`- ${a[i++]}`))

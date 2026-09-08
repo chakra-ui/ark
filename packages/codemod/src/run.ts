@@ -32,8 +32,6 @@ export async function runTransform(transform: TransformDef, options: RunOptions)
   const targets = files.filter((f) => transform.extensions.includes(extname(f)))
   const summary: RunSummary = { scanned: targets.length, changed: 0, sites: 0, skipped: [] }
 
-  // a bounded pool: reads are IO-bound but parsing is not, so unbounded fan-out
-  // just thrashes on a large repo
   let cursor = 0
   const workers = Array.from({ length: Math.max(1, options.concurrency) }, async () => {
     while (true) {

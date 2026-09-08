@@ -112,3 +112,23 @@ describe('svelte', () => {
     expect(result.skipped[0]).toContain('bare asChild')
   })
 })
+
+describe('vue bound asChild', () => {
+  it('reports a shorthand bound asChild instead of skipping it silently', () => {
+    const result = vueAsChildToRender(`<template><X :as-child="cond"><b>y</b></X></template>`, 'a.vue')
+    expect(result.code).toBeNull()
+    expect(result.skipped).toHaveLength(1)
+    expect(result.skipped[0]).toContain('bound to an expression')
+  })
+
+  it('reports the long form too', () => {
+    const result = vueAsChildToRender(`<template><X v-bind:as-child="flag"><b>y</b></X></template>`, 'a.vue')
+    expect(result.skipped[0]).toContain('bound to an expression')
+  })
+
+  it('does not mistake a bound attribute on the child for v-bind', () => {
+    const result = vueAsChildToRender(`<template><X asChild><b :class="c">y</b></X></template>`, 'a.vue')
+    expect(result.count).toBe(1)
+    expect(result.code).toContain('<b v-bind="props" :class="c">y</b>')
+  })
+})
