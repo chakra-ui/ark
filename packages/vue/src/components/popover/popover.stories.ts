@@ -11,6 +11,7 @@ import MultipleTriggersExample from './examples/multiple-triggers.vue'
 import NestedExample from './examples/nested.vue'
 import PositioningExample from './examples/positioning.vue'
 import RenderExample from './examples/render.vue'
+import RenderStateExample from './examples/render-state.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import SameWidthExample from './examples/same-width.vue'
 import WithDialogExample from './examples/with-dialog.vue'
@@ -94,6 +95,13 @@ export const Positioning = {
 export const Render = {
   render: () => ({
     components: { Component: RenderExample },
+    template: '<Component />',
+  }),
+}
+
+export const RenderState = {
+  render: () => ({
+    components: { Component: RenderStateExample },
     template: '<Component />',
   }),
 }

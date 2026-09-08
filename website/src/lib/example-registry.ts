@@ -399,6 +399,7 @@ import * as Popover_Modal from '@examples/popover/examples/modal'
 import * as Popover_MultipleTriggers from '@examples/popover/examples/multiple-triggers'
 import * as Popover_Nested from '@examples/popover/examples/nested'
 import * as Popover_Positioning from '@examples/popover/examples/positioning'
+import * as Popover_RenderState from '@examples/popover/examples/render-state'
 import * as Popover_Render from '@examples/popover/examples/render'
 import * as Popover_RootProvider from '@examples/popover/examples/root-provider'
 import * as Popover_SameWidth from '@examples/popover/examples/same-width'
@@ -1044,6 +1045,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'popover/multiple-triggers': Popover_MultipleTriggers,
   'popover/nested': Popover_Nested,
   'popover/positioning': Popover_Positioning,
+  'popover/render-state': Popover_RenderState,
   'popover/render': Popover_Render,
   'popover/root-provider': Popover_RootProvider,
   'popover/same-width': Popover_SameWidth,
