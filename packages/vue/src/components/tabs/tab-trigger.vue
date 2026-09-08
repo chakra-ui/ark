@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types.ts'
 import type { TriggerProps, TriggerState } from '@zag-js/tabs'
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
@@ -19,7 +20,9 @@ import { ark } from '../factory.ts'
 import { useTabsContext } from './use-tabs-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
-const props = defineProps<TabTriggerProps>()
+const props = withDefaults(defineProps<TabTriggerProps>(), {
+  disabled: undefined,
+} satisfies BooleanDefaults<TriggerProps>)
 
 defineSlots<PolymorphicSlots<TabTriggerState>>()
 const tabs = useTabsContext()

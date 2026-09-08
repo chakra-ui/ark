@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types.ts'
 import type { IndicatorProps, IndicatorState } from '@zag-js/carousel'
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
@@ -19,7 +20,9 @@ import { ark } from '../factory.ts'
 import { useCarouselContext } from './use-carousel-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
-const props = defineProps<CarouselIndicatorProps>()
+const props = withDefaults(defineProps<CarouselIndicatorProps>(), {
+  readOnly: undefined,
+} satisfies BooleanDefaults<IndicatorProps>)
 
 defineSlots<PolymorphicSlots<CarouselIndicatorState>>()
 const carousel = useCarouselContext()

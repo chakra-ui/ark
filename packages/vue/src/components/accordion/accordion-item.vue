@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types.ts'
 import type { ItemProps, ItemState } from '@zag-js/accordion'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
@@ -24,7 +25,9 @@ import { AccordionItemProvider } from './use-accordion-item-context.ts'
 import { AccordionItemPropsProvider } from './use-accordion-item-props-context.ts'
 
 const accordion = useAccordionContext()
-const props = defineProps<AccordionItemProps>()
+const props = withDefaults(defineProps<AccordionItemProps>(), {
+  disabled: undefined,
+} satisfies BooleanDefaults<ItemProps>)
 
 defineSlots<PolymorphicSlots<AccordionItemState>>()
 const item = computed(() => accordion.value.getItemState(props))

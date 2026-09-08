@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types.ts'
 import type { TriggerProps, TriggerState } from '@zag-js/combobox'
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
@@ -18,7 +19,9 @@ export interface ComboboxTriggerProps
 import { ark } from '../factory.ts'
 import { useComboboxContext } from './use-combobox-context.ts'
 
-const props = defineProps<ComboboxTriggerProps>()
+const props = withDefaults(defineProps<ComboboxTriggerProps>(), {
+  focusable: undefined,
+} satisfies BooleanDefaults<TriggerProps>)
 
 defineSlots<PolymorphicSlots<ComboboxTriggerState>>()
 const combobox = useComboboxContext()

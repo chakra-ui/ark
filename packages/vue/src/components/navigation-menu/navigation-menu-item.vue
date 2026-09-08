@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types.ts'
 import type { ItemProps, ItemState } from '@zag-js/navigation-menu'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
@@ -21,7 +22,9 @@ import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
 import { NavigationMenuItemPropsProvider } from './use-navigation-menu-item-props-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
-const props = defineProps<NavigationMenuItemProps>()
+const props = withDefaults(defineProps<NavigationMenuItemProps>(), {
+  disabled: undefined,
+} satisfies BooleanDefaults<ItemProps>)
 
 defineSlots<PolymorphicSlots<NavigationMenuItemState>>()
 const navigationMenu = useNavigationMenuContext()
