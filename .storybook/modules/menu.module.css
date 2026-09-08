@@ -84,7 +84,6 @@
     animation: scale-fade-out 0.1s ease-in;
   }
 
-  /* Swapping between menubar menus should not re-run the open/close animation. */
   &[data-instant] {
     animation: none;
     transition: none;
