@@ -6,6 +6,7 @@ import MaxToastsExample from './examples/max-toasts.svelte'
 import PlacementExample from './examples/placement.svelte'
 import PromiseExample from './examples/promise-toast.svelte'
 import TypesExample from './examples/types.svelte'
+import UndoExample from './examples/undo.svelte'
 import UpdateExample from './examples/update.svelte'
 import VaryingHeightExample from './examples/varying-height.svelte'
 
@@ -48,6 +49,12 @@ export const PromiseToast = {
 export const Types = {
   render: () => ({
     Component: TypesExample,
+  }),
+}
+
+export const Undo = {
+  render: () => ({
+    Component: UndoExample,
   }),
 }
 

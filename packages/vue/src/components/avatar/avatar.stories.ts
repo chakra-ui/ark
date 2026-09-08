@@ -5,6 +5,7 @@ import ContextExample from './examples/context.vue'
 import EventsExample from './examples/events.vue'
 import ProviderExample from './examples/provider.vue'
 import RootProviderExample from './examples/root-provider.vue'
+import AvatarStackExample from './examples/avatar-stack.vue'
 
 const meta: Meta = {
   title: 'Components / Avatar',
@@ -43,6 +44,13 @@ export const Context = {
 export const Provider = {
   render: () => ({
     components: { Component: ProviderExample },
+    template: '<Component />',
+  }),
+}
+
+export const AvatarStack = {
+  render: () => ({
+    components: { Component: AvatarStackExample },
     template: '<Component />',
   }),
 }

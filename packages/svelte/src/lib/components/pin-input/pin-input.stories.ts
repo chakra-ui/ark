@@ -5,6 +5,7 @@ import CustomPlaceholderExample from './examples/custom-placeholder.svelte'
 import MaskExample from './examples/mask.svelte'
 import OtpModeExample from './examples/otp-mode.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import VerifyOnCompleteExample from './examples/verify-on-complete.svelte'
 import WithFieldExample from './examples/with-field.svelte'
 
 const meta: Meta = {
@@ -46,6 +47,12 @@ export const OtpMode = {
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
+  }),
+}
+
+export const VerifyOnComplete = {
+  render: () => ({
+    Component: VerifyOnCompleteExample,
   }),
 }
 
