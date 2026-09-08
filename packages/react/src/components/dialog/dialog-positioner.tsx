@@ -5,8 +5,11 @@ import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { usePresenceContext } from '../presence/index.ts'
 import { useDialogContext } from './use-dialog-context.ts'
+import type { PositionerState } from '@zag-js/dialog'
 
-export interface DialogPositionerBaseProps extends PolymorphicProps {}
+export interface DialogPositionerState extends PositionerState {}
+
+export interface DialogPositionerBaseProps extends PolymorphicProps<DialogPositionerState> {}
 export interface DialogPositionerProps extends HTMLProps<'div'>, DialogPositionerBaseProps {}
 
 export const DialogPositioner = forwardRef<HTMLDivElement, DialogPositionerProps>((props, ref) => {
@@ -18,7 +21,7 @@ export const DialogPositioner = forwardRef<HTMLDivElement, DialogPositionerProps
     return null
   }
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return <ark.div {...mergedProps} ref={ref} state={dialog.getPositionerState()} />
 })
 
 DialogPositioner.displayName = 'DialogPositioner'

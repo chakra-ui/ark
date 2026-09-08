@@ -9,6 +9,7 @@
     "check:llms": "bun run src/check-llms-size.ts",
     "check:nodes": "bun run src/check-nodes.ts",
     "check:zag": "bun run src/check-zag-versions.ts",
+    "forward:state": "bun run src/forward-part-state.ts",
     "exports:files": "bun run src/exports-files.ts",
     "exports:sync": "bun run src/exports-sync.ts",
     "document:types": "bun run src/generate-type-docs.ts",

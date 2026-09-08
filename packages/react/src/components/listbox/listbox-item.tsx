@@ -1,6 +1,6 @@
 'use client'
 
-import type { ItemProps } from '@zag-js/listbox'
+import type { ItemProps, ItemState } from '@zag-js/listbox'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -9,7 +9,9 @@ import { useListboxContext } from './use-listbox-context.ts'
 import { ListboxItemProvider } from './use-listbox-item-context.ts'
 import { ListboxItemPropsProvider } from './use-listbox-item-props-context.ts'
 
-export interface ListboxItemBaseProps extends ItemProps, PolymorphicProps {}
+export interface ListboxItemState extends ItemState {}
+
+export interface ListboxItemBaseProps extends ItemProps, PolymorphicProps<ListboxItemState> {}
 export interface ListboxItemProps extends HTMLProps<'div'>, ListboxItemBaseProps {}
 
 const splitItemProps = createSplitProps<ItemProps>()
@@ -23,7 +25,7 @@ export const ListboxItem = forwardRef<HTMLDivElement, ListboxItemProps>((props, 
   return (
     <ListboxItemPropsProvider value={itemProps}>
       <ListboxItemProvider value={itemState}>
-        <ark.div {...mergedProps} ref={ref} />
+        <ark.div {...mergedProps} ref={ref} state={listbox.getItemState(itemProps)} />
       </ListboxItemProvider>
     </ListboxItemPropsProvider>
   )

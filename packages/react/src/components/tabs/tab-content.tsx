@@ -1,7 +1,7 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import type { ContentProps } from '@zag-js/tabs'
+import type { ContentProps, ContentState } from '@zag-js/tabs'
 import { forwardRef } from 'react'
 import { useComposedRefs } from '../../utils/compose-refs.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -11,7 +11,9 @@ import { PresenceGate } from '../presence/presence-gate.tsx'
 import { PresenceProvider, usePresence } from '../presence/index.ts'
 import { useTabsContext } from './use-tabs-context.ts'
 
-export interface TabContentBaseProps extends ContentProps, PolymorphicProps {}
+export interface TabContentState extends ContentState {}
+
+export interface TabContentBaseProps extends ContentProps, PolymorphicProps<TabContentState> {}
 export interface TabContentProps extends HTMLProps<'div'>, TabContentBaseProps {}
 
 const splitContentProps = createSplitProps<ContentProps>()
@@ -33,7 +35,7 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>((props, re
   return (
     <PresenceProvider value={presence}>
       <PresenceGate presence={presence}>
-        <ark.div {...mergedProps} ref={composedRefs} />
+        <ark.div {...mergedProps} ref={composedRefs} state={tabs.getContentState(contentProps)} />
       </PresenceGate>
     </PresenceProvider>
   )

@@ -7,8 +7,11 @@ import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { type UsePinInputProps, usePinInput } from './use-pin-input.ts'
 import { PinInputProvider } from './use-pin-input-context.ts'
+import type { RootState } from '@zag-js/pin-input'
 
-export interface PinInputRootBaseProps extends UsePinInputProps, PolymorphicProps {}
+export interface PinInputRootState extends RootState {}
+
+export interface PinInputRootBaseProps extends UsePinInputProps, PolymorphicProps<PinInputRootState> {}
 export interface PinInputRootProps extends Assign<HTMLProps<'div'>, PinInputRootBaseProps> {}
 
 const splitRootProps = createSplitProps<UsePinInputProps>()
@@ -46,7 +49,7 @@ export const PinInputRoot = forwardRef<HTMLDivElement, PinInputRootProps>((props
 
   return (
     <PinInputProvider value={pinInput}>
-      <ark.div {...mergedProps} ref={ref} />
+      <ark.div {...mergedProps} ref={ref} state={pinInput.getRootState()} />
     </PinInputProvider>
   )
 })

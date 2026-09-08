@@ -5,8 +5,11 @@ import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { usePresenceContext } from '../presence/index.ts'
 import { useMenuContext } from './use-menu-context.ts'
+import type { PositionerState } from '@zag-js/menu'
 
-export interface MenuPositionerBaseProps extends PolymorphicProps {}
+export interface MenuPositionerState extends PositionerState {}
+
+export interface MenuPositionerBaseProps extends PolymorphicProps<MenuPositionerState> {}
 export interface MenuPositionerProps extends HTMLProps<'div'>, MenuPositionerBaseProps {}
 
 export const MenuPositioner = forwardRef<HTMLDivElement, MenuPositionerProps>((props, ref) => {
@@ -18,7 +21,7 @@ export const MenuPositioner = forwardRef<HTMLDivElement, MenuPositionerProps>((p
     return null
   }
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return <ark.div {...mergedProps} ref={ref} state={menu.getPositionerState()} />
 })
 
 MenuPositioner.displayName = 'MenuPositioner'

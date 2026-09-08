@@ -1,6 +1,6 @@
 'use client'
 
-import type { ItemProps } from '@zag-js/combobox'
+import type { ItemProps, ItemState } from '@zag-js/combobox'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -9,7 +9,9 @@ import { useComboboxContext } from './use-combobox-context.ts'
 import { ComboboxItemProvider } from './use-combobox-item-context.ts'
 import { ComboboxItemPropsProvider } from './use-combobox-item-props-context.ts'
 
-export interface ComboboxItemBaseProps extends ItemProps, PolymorphicProps {}
+export interface ComboboxItemState extends ItemState {}
+
+export interface ComboboxItemBaseProps extends ItemProps, PolymorphicProps<ComboboxItemState> {}
 export interface ComboboxItemProps extends HTMLProps<'div'>, ComboboxItemBaseProps {}
 
 const splitItemProps = createSplitProps<ItemProps>()
@@ -23,7 +25,7 @@ export const ComboboxItem = forwardRef<HTMLDivElement, ComboboxItemProps>((props
   return (
     <ComboboxItemPropsProvider value={itemProps}>
       <ComboboxItemProvider value={itemState}>
-        <ark.div {...mergedProps} ref={ref} />
+        <ark.div {...mergedProps} ref={ref} state={combobox.getItemState(itemProps)} />
       </ComboboxItemProvider>
     </ComboboxItemPropsProvider>
   )

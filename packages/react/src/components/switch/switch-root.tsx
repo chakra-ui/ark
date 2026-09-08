@@ -6,8 +6,11 @@ import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { type UseSwitchProps, useSwitch } from './use-switch.ts'
 import { SwitchProvider } from './use-switch-context.ts'
+import type { RootState } from '@zag-js/switch'
 
-export interface SwitchRootBaseProps extends UseSwitchProps, PolymorphicProps {}
+export interface SwitchRootState extends RootState {}
+
+export interface SwitchRootBaseProps extends UseSwitchProps, PolymorphicProps<SwitchRootState> {}
 export interface SwitchRootProps extends HTMLProps<'label'>, SwitchRootBaseProps {}
 
 const splitRootProps = createSplitProps<UseSwitchProps>()
@@ -34,7 +37,7 @@ export const SwitchRoot = forwardRef<HTMLLabelElement, SwitchRootProps>((props, 
 
   return (
     <SwitchProvider value={switchContext}>
-      <ark.label {...mergedProps} ref={ref} />
+      <ark.label {...mergedProps} ref={ref} state={switchContext.getRootState()} />
     </SwitchProvider>
   )
 })

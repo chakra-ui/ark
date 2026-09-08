@@ -1,6 +1,6 @@
 'use client'
 
-import type { SegmentProps } from '@zag-js/date-input'
+import type { SegmentProps, SegmentState } from '@zag-js/date-input'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -8,7 +8,10 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { useDateInputContext } from './use-date-input-context.ts'
 import { useDateInputSegmentGroupPropsContext } from './use-date-input-segment-group-props-context.ts'
 
-export interface DateInputSegmentBaseProps extends PolymorphicProps, Pick<SegmentProps, 'segment'> {}
+export interface DateInputSegmentState extends SegmentState {}
+
+export interface DateInputSegmentBaseProps
+  extends PolymorphicProps<DateInputSegmentState>, Pick<SegmentProps, 'segment'> {}
 
 export interface DateInputSegmentProps extends HTMLProps<'span'>, DateInputSegmentBaseProps {}
 
@@ -23,7 +26,11 @@ export const DateInputSegment = forwardRef<HTMLSpanElement, DateInputSegmentProp
     localProps,
   )
   return (
-    <ark.span {...mergedProps} ref={ref}>
+    <ark.span
+      {...mergedProps}
+      ref={ref}
+      state={dateInput.getSegmentState({ ...segmentProps, index: segmentGroupProps.index })}
+    >
       {segmentProps.segment.text}
     </ark.span>
   )

@@ -7,12 +7,16 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.ts'
 import type { UseColorPickerReturn } from './use-color-picker.ts'
 import { ColorPickerProvider } from './use-color-picker-context.ts'
+import type { RootState } from '@zag-js/color-picker'
 
 interface RootProviderProps {
   value: UseColorPickerReturn
 }
 
-export interface ColorPickerRootProviderBaseProps extends RootProviderProps, UsePresenceProps, PolymorphicProps {}
+export interface ColorPickerRootProviderState extends RootState {}
+
+export interface ColorPickerRootProviderBaseProps
+  extends RootProviderProps, UsePresenceProps, PolymorphicProps<ColorPickerRootProviderState> {}
 export interface ColorPickerRootProviderProps extends HTMLProps<'div'>, ColorPickerRootProviderBaseProps {}
 
 const splitRootProviderProps = createSplitProps<RootProviderProps>()
@@ -26,7 +30,7 @@ export const ColorPickerRootProvider = forwardRef<HTMLDivElement, ColorPickerRoo
   return (
     <ColorPickerProvider value={colorPicker}>
       <PresenceProvider value={presence}>
-        <ark.div {...mergedProps} ref={ref} />
+        <ark.div {...mergedProps} ref={ref} state={colorPicker.getRootState()} />
       </PresenceProvider>
     </ColorPickerProvider>
   )

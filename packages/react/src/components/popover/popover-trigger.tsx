@@ -1,7 +1,7 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import type { TriggerProps } from '@zag-js/popover'
+import type { TriggerProps, TriggerState } from '@zag-js/popover'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -9,7 +9,9 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { usePresenceContext } from '../presence/index.ts'
 import { usePopoverContext } from './use-popover-context.ts'
 
-export interface PopoverTriggerBaseProps extends TriggerProps, PolymorphicProps {}
+export interface PopoverTriggerState extends TriggerState {}
+
+export interface PopoverTriggerBaseProps extends TriggerProps, PolymorphicProps<PopoverTriggerState> {}
 export interface PopoverTriggerProps extends Assign<HTMLProps<'button'>, PopoverTriggerBaseProps> {}
 
 const splitTriggerProps = createSplitProps<TriggerProps>()
@@ -27,7 +29,7 @@ export const PopoverTrigger = forwardRef<HTMLButtonElement, PopoverTriggerProps>
     localProps,
   )
 
-  return <ark.button {...mergedProps} ref={ref} />
+  return <ark.button {...mergedProps} ref={ref} state={popover.getTriggerState(triggerProps)} />
 })
 
 PopoverTrigger.displayName = 'PopoverTrigger'

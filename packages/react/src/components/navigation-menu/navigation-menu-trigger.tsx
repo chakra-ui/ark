@@ -1,7 +1,7 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import type { ItemProps } from '@zag-js/navigation-menu'
+import type { ItemProps, TriggerState } from '@zag-js/navigation-menu'
 import { ensure } from '@zag-js/utils'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types.ts'
@@ -10,7 +10,10 @@ import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context.ts'
 
-export interface NavigationMenuTriggerBaseProps extends Omit<ItemProps, 'value'>, PolymorphicProps {}
+export interface NavigationMenuTriggerState extends TriggerState {}
+
+export interface NavigationMenuTriggerBaseProps
+  extends Omit<ItemProps, 'value'>, PolymorphicProps<NavigationMenuTriggerState> {}
 export interface NavigationMenuTriggerProps extends Assign<HTMLProps<'button'>, NavigationMenuTriggerBaseProps> {}
 
 const splitItemProps = createSplitProps<ItemProps>()
@@ -26,7 +29,7 @@ export const NavigationMenuTrigger = forwardRef<HTMLButtonElement, NavigationMen
   const navigationMenu = useNavigationMenuContext()
   const mergedProps = mergeProps(navigationMenu.getTriggerProps(triggerProps), localProps)
 
-  return <ark.button {...mergedProps} ref={ref} />
+  return <ark.button {...mergedProps} ref={ref} state={navigationMenu.getTriggerState(triggerProps)} />
 })
 
 NavigationMenuTrigger.displayName = 'NavigationMenuTrigger'

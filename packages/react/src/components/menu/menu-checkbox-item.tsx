@@ -1,6 +1,6 @@
 'use client'
 
-import type { OptionItemProps } from '@zag-js/menu'
+import type { OptionItemProps, OptionItemState } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -11,7 +11,9 @@ import { MenuItemPropsProvider } from './use-menu-option-item-props-context.ts'
 
 type PartialOptionItemProps = Omit<OptionItemProps, 'type'>
 
-export interface MenuCheckboxItemBaseProps extends PartialOptionItemProps, PolymorphicProps {}
+export interface MenuCheckboxItemState extends OptionItemState {}
+
+export interface MenuCheckboxItemBaseProps extends PartialOptionItemProps, PolymorphicProps<MenuCheckboxItemState> {}
 export interface MenuCheckboxItemProps extends HTMLProps<'div'>, MenuCheckboxItemBaseProps {}
 
 const splitOptionItemProps = createSplitProps<PartialOptionItemProps>()
@@ -36,7 +38,7 @@ export const MenuCheckboxItem = forwardRef<HTMLDivElement, MenuCheckboxItemProps
   return (
     <MenuItemPropsProvider value={optionItemProps}>
       <MenuItemProvider value={optionItemState}>
-        <ark.div {...mergedProps} ref={ref} />
+        <ark.div {...mergedProps} ref={ref} state={menu.getOptionItemState(optionItemProps)} />
       </MenuItemProvider>
     </MenuItemPropsProvider>
   )

@@ -1,7 +1,7 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import type { TriggerProps } from '@zag-js/drawer'
+import type { TriggerProps, TriggerState } from '@zag-js/drawer'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -9,7 +9,9 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { usePresenceContext } from '../presence/index.ts'
 import { useDrawerContext } from './use-drawer-context.ts'
 
-export interface DrawerTriggerBaseProps extends TriggerProps, PolymorphicProps {}
+export interface DrawerTriggerState extends TriggerState {}
+
+export interface DrawerTriggerBaseProps extends TriggerProps, PolymorphicProps<DrawerTriggerState> {}
 export interface DrawerTriggerProps extends Assign<HTMLProps<'button'>, DrawerTriggerBaseProps> {}
 
 const splitTriggerProps = createSplitProps<TriggerProps>()
@@ -27,7 +29,7 @@ export const DrawerTrigger = forwardRef<HTMLButtonElement, DrawerTriggerProps>((
     localProps,
   )
 
-  return <ark.button {...mergedProps} ref={ref} />
+  return <ark.button {...mergedProps} ref={ref} state={drawer.getTriggerState(triggerProps)} />
 })
 
 DrawerTrigger.displayName = 'DrawerTrigger'

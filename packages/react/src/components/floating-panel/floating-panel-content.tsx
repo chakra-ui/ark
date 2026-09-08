@@ -7,8 +7,11 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { PresenceGate } from '../presence/presence-gate.tsx'
 import { usePresenceContext } from '../presence/index.ts'
 import { useFloatingPanelContext } from './use-floating-panel-context.ts'
+import type { ContentState } from '@zag-js/floating-panel'
 
-export interface FloatingPanelContentBaseProps extends PolymorphicProps {}
+export interface FloatingPanelContentState extends ContentState {}
+
+export interface FloatingPanelContentBaseProps extends PolymorphicProps<FloatingPanelContentState> {}
 export interface FloatingPanelContentProps extends HTMLProps<'div'>, FloatingPanelContentBaseProps {}
 
 export const FloatingPanelContent = forwardRef<HTMLDivElement, FloatingPanelContentProps>((props, ref) => {
@@ -19,7 +22,7 @@ export const FloatingPanelContent = forwardRef<HTMLDivElement, FloatingPanelCont
 
   return (
     <PresenceGate presence={presence}>
-      <ark.div {...mergedProps} ref={composedRefs} />
+      <ark.div {...mergedProps} ref={composedRefs} state={floatingPanel.getContentState()} />
     </PresenceGate>
   )
 })

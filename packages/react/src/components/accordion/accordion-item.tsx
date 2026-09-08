@@ -1,6 +1,6 @@
 'use client'
 
-import type { ItemProps } from '@zag-js/accordion'
+import type { ItemProps, ItemState } from '@zag-js/accordion'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { Collapsible } from '../../components/index.ts'
@@ -11,7 +11,9 @@ import { useAccordionContext } from './use-accordion-context.ts'
 import { AccordionItemProvider } from './use-accordion-item-context.ts'
 import { AccordionItemPropsProvider } from './use-accordion-item-props-context.ts'
 
-export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps {}
+export interface AccordionItemState extends ItemState {}
+
+export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps<AccordionItemState> {}
 export interface AccordionItemProps extends HTMLProps<'div'>, AccordionItemBaseProps {}
 
 const splitItemProps = createSplitProps<ItemProps>()
@@ -33,6 +35,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((pro
           ids={{ content: itemContentProps.id }}
           {...renderStrategy}
           {...mergedProps}
+          state={accordion.getItemState(itemProps)}
         />
       </AccordionItemProvider>
     </AccordionItemPropsProvider>

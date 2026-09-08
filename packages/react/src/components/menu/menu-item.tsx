@@ -1,6 +1,6 @@
 'use client'
 
-import type { ItemProps } from '@zag-js/menu'
+import type { ItemProps, ItemState } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, useEffect } from 'react'
 import type { Assign } from '../../types.ts'
@@ -17,7 +17,9 @@ interface ItemBaseProps extends ItemProps {
   onSelect?: VoidFunction | undefined
 }
 
-export interface MenuItemBaseProps extends ItemBaseProps, PolymorphicProps {}
+export interface MenuItemState extends ItemState {}
+
+export interface MenuItemBaseProps extends ItemBaseProps, PolymorphicProps<MenuItemState> {}
 
 export interface MenuItemProps extends Assign<HTMLProps<'div'>, MenuItemBaseProps> {}
 
@@ -44,7 +46,7 @@ export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>((props, ref) =
   return (
     <MenuItemPropsProvider value={itemProps}>
       <MenuItemProvider value={itemState}>
-        <ark.div {...mergedProps} ref={ref} />
+        <ark.div {...mergedProps} ref={ref} state={menu.getItemState(itemProps)} />
       </MenuItemProvider>
     </MenuItemPropsProvider>
   )

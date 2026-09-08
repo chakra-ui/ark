@@ -1,6 +1,6 @@
 'use client'
 
-import type { ItemProps } from '@zag-js/radio-group'
+import type { ItemProps, ItemState } from '@zag-js/radio-group'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -9,7 +9,9 @@ import { useRadioGroupContext } from './use-radio-group-context.ts'
 import { RadioGroupItemProvider } from './use-radio-group-item-context.ts'
 import { RadioGroupItemPropsProvider } from './use-radio-group-item-props-context.ts'
 
-export interface RadioGroupItemBaseProps extends ItemProps, PolymorphicProps {}
+export interface RadioGroupItemState extends ItemState {}
+
+export interface RadioGroupItemBaseProps extends ItemProps, PolymorphicProps<RadioGroupItemState> {}
 export interface RadioGroupItemProps extends HTMLProps<'label'>, RadioGroupItemBaseProps {}
 
 const splitItemProps = createSplitProps<ItemProps>()
@@ -23,7 +25,7 @@ export const RadioGroupItem = forwardRef<HTMLLabelElement, RadioGroupItemProps>(
   return (
     <RadioGroupItemProvider value={itemState}>
       <RadioGroupItemPropsProvider value={itemProps}>
-        <ark.label {...mergedProps} ref={ref} />
+        <ark.label {...mergedProps} ref={ref} state={radioGroup.getItemState(itemProps)} />
       </RadioGroupItemPropsProvider>
     </RadioGroupItemProvider>
   )

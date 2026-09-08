@@ -9,9 +9,12 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.ts'
 import { type UseComboboxProps, useCombobox } from './use-combobox.ts'
 import { ComboboxProvider } from './use-combobox-context.ts'
+import type { RootState } from '@zag-js/combobox'
+
+export interface ComboboxRootState extends RootState {}
 
 export interface ComboboxRootBaseProps<T extends CollectionItem>
-  extends UseComboboxProps<T>, UsePresenceProps, PolymorphicProps {}
+  extends UseComboboxProps<T>, UsePresenceProps, PolymorphicProps<ComboboxRootState> {}
 export interface ComboboxRootProps<T extends CollectionItem> extends Assign<
   HTMLProps<'div'>,
   ComboboxRootBaseProps<T>
@@ -71,7 +74,7 @@ const ComboboxImpl = <T extends CollectionItem>(props: ComboboxRootProps<T>, ref
   return (
     <ComboboxProvider value={combobox}>
       <PresenceProvider value={presence}>
-        <ark.div {...mergedProps} ref={ref} />
+        <ark.div {...mergedProps} ref={ref} state={combobox.getRootState()} />
       </PresenceProvider>
     </ComboboxProvider>
   )

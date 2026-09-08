@@ -1,7 +1,7 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import type { ContentProps } from '@zag-js/drawer'
+import type { ContentProps, ContentState } from '@zag-js/drawer'
 import { forwardRef } from 'react'
 import { useComposedRefs } from '../../utils/compose-refs.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -10,7 +10,9 @@ import { PresenceGate } from '../presence/presence-gate.tsx'
 import { usePresenceContext } from '../presence/index.ts'
 import { useDrawerContext } from './use-drawer-context.ts'
 
-export interface DrawerContentBaseProps extends PolymorphicProps, ContentProps {}
+export interface DrawerContentState extends ContentState {}
+
+export interface DrawerContentBaseProps extends PolymorphicProps<DrawerContentState>, ContentProps {}
 export interface DrawerContentProps extends Omit<HTMLProps<'div'>, 'draggable'>, DrawerContentBaseProps {}
 
 const splitContentProps = createSplitProps<ContentProps>()
@@ -28,7 +30,7 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>((pro
 
   return (
     <PresenceGate presence={presence}>
-      <ark.div {...mergedProps} ref={composedRefs} />
+      <ark.div {...mergedProps} ref={composedRefs} state={drawer.getContentState()} />
     </PresenceGate>
   )
 })

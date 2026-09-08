@@ -7,8 +7,11 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { PresenceGate } from '../presence/presence-gate.tsx'
 import { usePresenceContext } from '../presence/index.ts'
 import { useMenuContext } from './use-menu-context.ts'
+import type { ContentState } from '@zag-js/menu'
 
-export interface MenuContentBaseProps extends PolymorphicProps {}
+export interface MenuContentState extends ContentState {}
+
+export interface MenuContentBaseProps extends PolymorphicProps<MenuContentState> {}
 export interface MenuContentProps extends HTMLProps<'div'>, MenuContentBaseProps {}
 
 export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>((props, ref) => {
@@ -19,7 +22,7 @@ export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>((props, 
 
   return (
     <PresenceGate presence={presence}>
-      <ark.div {...mergedProps} ref={composedRefs} />
+      <ark.div {...mergedProps} ref={composedRefs} state={menu.getContentState()} />
     </PresenceGate>
   )
 })
