@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types.ts'
 import type { ItemProps, ItemState } from '@zag-js/toggle-group'
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
@@ -19,7 +20,9 @@ import { ark } from '../factory.ts'
 import { useToggleGroupContext } from './use-toggle-group-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
-const props = defineProps<ToggleGroupItemProps>()
+const props = withDefaults(defineProps<ToggleGroupItemProps>(), {
+  disabled: undefined,
+} satisfies BooleanDefaults<ItemProps>)
 
 defineSlots<PolymorphicSlots<ToggleGroupItemState>>()
 const toggleGroup = useToggleGroupContext()

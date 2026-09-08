@@ -22,7 +22,9 @@ import { ComboboxItemProvider } from './use-combobox-item-context.ts'
 import { ComboboxItemPropsProvider } from './use-combobox-item-props-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
-const props = defineProps<ComboboxItemProps>()
+const props = withDefaults(defineProps<ComboboxItemProps>(), {
+  persistFocus: undefined,
+})
 
 defineSlots<PolymorphicSlots<ComboboxItemState>>()
 const combobox = useComboboxContext()

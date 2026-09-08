@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types.ts'
 import type { SwatchTriggerProps, SwatchTriggerState } from '@zag-js/color-picker'
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
@@ -19,7 +20,9 @@ import { ark } from '../factory.ts'
 import { useColorPickerContext } from './use-color-picker-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
-const props = defineProps<ColorPickerSwatchTriggerProps>()
+const props = withDefaults(defineProps<ColorPickerSwatchTriggerProps>(), {
+  disabled: undefined,
+} satisfies BooleanDefaults<SwatchTriggerProps>)
 
 defineSlots<PolymorphicSlots<ColorPickerSwatchTriggerState>>()
 const colorPicker = useColorPickerContext()

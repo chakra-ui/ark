@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types.ts'
 import type { ItemProps, TriggerState } from '@zag-js/navigation-menu'
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
@@ -22,7 +23,9 @@ import { ark } from '../factory.ts'
 import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
 import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context.ts'
 
-const props = defineProps<NavigationMenuTriggerProps>()
+const props = withDefaults(defineProps<NavigationMenuTriggerProps>(), {
+  disabled: undefined,
+} satisfies BooleanDefaults<ItemProps>)
 
 defineSlots<PolymorphicSlots<NavigationMenuTriggerState>>()
 const navigationMenu = useNavigationMenuContext()

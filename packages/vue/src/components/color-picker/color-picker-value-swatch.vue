@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types.ts'
 import type { SwatchProps } from '@zag-js/color-picker'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory.ts'
@@ -22,7 +23,9 @@ import { useColorPickerContext } from './use-color-picker-context.ts'
 import { ColorPickerSwatchPropsProvider } from './use-color-picker-swatch-props-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
-const props = defineProps<ColorPickerValueSwatchBaseProps>()
+const props = withDefaults(defineProps<ColorPickerValueSwatchBaseProps>(), {
+  respectAlpha: undefined,
+} satisfies BooleanDefaults<SwatchProps>)
 const colorPicker = useColorPickerContext()
 const swatchProps = computed(() => ({
   value: colorPicker.value.value,

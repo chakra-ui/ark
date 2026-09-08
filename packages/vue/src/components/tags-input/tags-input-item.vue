@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types.ts'
 import type { ItemProps, ItemState } from '@zag-js/tags-input'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
@@ -22,7 +23,9 @@ import { TagsInputItemProvider } from './use-tags-input-item-context.ts'
 import { TagsInputItemPropsProvider } from './use-tags-input-item-props-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
-const props = defineProps<TagsInputItemProps>()
+const props = withDefaults(defineProps<TagsInputItemProps>(), {
+  disabled: undefined,
+} satisfies BooleanDefaults<ItemProps>)
 
 defineSlots<PolymorphicSlots<TagsInputItemState>>()
 const tagsInput = useTagsInputContext()
