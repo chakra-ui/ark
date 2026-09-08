@@ -1,8 +1,31 @@
+diff --git a/node_modules/@zag-js/popper/.bun-tag-327300fd8a2c8f51 b/.bun-tag-327300fd8a2c8f51
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@zag-js/popper/.bun-tag-834d0f706a7e8e9 b/.bun-tag-834d0f706a7e8e9
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 diff --git a/dist/get-placement.js b/dist/get-placement.js
-index eb3576bff199a21ac5318b1e91f29e072d5e8aa5..34298a6e1bbd2b7fc51748d04be8b490ea493161 100644
+index c23ec8948b751cb15bcd82147f9cdf4ffbb70e46..6a25cb21dd8bf9370efae545ade06fb7a995b5be 100644
 --- a/dist/get-placement.js
 +++ b/dist/get-placement.js
-@@ -203,14 +203,15 @@ function getPlacementImpl(referenceOrVirtual, floatingOrVirtual, opts = {}) {
+@@ -56,6 +56,16 @@ function resolveBoundaryOption(boundary) {
+   if (boundary === "clipping-ancestors") return "clippingAncestors";
+   return boundary;
+ }
++function findArrowEl(floating) {
++  if (!floating) return null;
++  const nodes = floating.querySelectorAll("*");
++  for (const node of nodes) {
++    for (const attr of node.attributes) {
++      if (attr.name.startsWith("data-") && attr.name.endsWith("-arrow")) return node;
++    }
++  }
++  return null;
++}
+ function getArrowMiddleware(arrowElement, doc, opts) {
+   const element = arrowElement || doc.createElement("div");
+   return (0, import_dom.arrow)({ element, padding: opts.arrowPadding });
+@@ -203,14 +213,15 @@ function getPlacementImpl(referenceOrVirtual, floatingOrVirtual, opts = {}) {
    const options = Object.assign({}, defaultOptions, opts);
    let middleware = [];
    let cachedMiddlewareFloating = null;
@@ -19,24 +42,42 @@ index eb3576bff199a21ac5318b1e91f29e072d5e8aa5..34298a6e1bbd2b7fc51748d04be8b490
 -    const arrowEl = floating.querySelector("[data-part=arrow]");
      restoreArrowStyles = options.restoreStyles ? createStyleCleanup(arrowEl, arrowStyleProps) : void 0;
      middleware = [
-       getOffsetMiddleware(arrowEl, options),
-@@ -254,8 +255,9 @@ function getPlacementImpl(referenceOrVirtual, floatingOrVirtual, opts = {}) {
+       ...options.middleware ?? [],
+@@ -254,9 +265,9 @@ function getPlacementImpl(referenceOrVirtual, floatingOrVirtual, opts = {}) {
+   async function updatePosition() {
      syncAutoUpdateObservers();
      const floating = resolveFloating();
-     if (!floating) return;
+-    if (!floating) return;
 -    if (floating !== cachedMiddlewareFloating) {
 -      rebuildMiddlewareForFloating(floating);
-+    const arrowEl = options.getArrowElement?.() ?? null;
++    const arrowEl = options.getArrowElement?.() ?? findArrowEl(floating);
 +    if (floating !== cachedMiddlewareFloating || arrowEl !== cachedArrowEl) {
 +      rebuildMiddlewareForFloating(floating, arrowEl);
        zIndexComputed = false;
      }
      const reference = resolveReference();
 diff --git a/dist/get-placement.mjs b/dist/get-placement.mjs
-index 989b43436b22b1e215d631d2b18ce31bc47b766b..ef0501476ee7e715a0757cc5f18454af163db6b8 100644
+index 8abe034a177b2d1666fdb8e0ee304e28874fb705..e0ad322f48515f03cac476faf19e1d7888e855f4 100644
 --- a/dist/get-placement.mjs
 +++ b/dist/get-placement.mjs
-@@ -179,14 +179,15 @@ function getPlacementImpl(referenceOrVirtual, floatingOrVirtual, opts = {}) {
+@@ -32,6 +32,16 @@ function resolveBoundaryOption(boundary) {
+   if (boundary === "clipping-ancestors") return "clippingAncestors";
+   return boundary;
+ }
++function findArrowEl(floating) {
++  if (!floating) return null;
++  const nodes = floating.querySelectorAll("*");
++  for (const node of nodes) {
++    for (const attr of node.attributes) {
++      if (attr.name.startsWith("data-") && attr.name.endsWith("-arrow")) return node;
++    }
++  }
++  return null;
++}
+ function getArrowMiddleware(arrowElement, doc, opts) {
+   const element = arrowElement || doc.createElement("div");
+   return arrow({ element, padding: opts.arrowPadding });
+@@ -179,14 +189,15 @@ function getPlacementImpl(referenceOrVirtual, floatingOrVirtual, opts = {}) {
    const options = Object.assign({}, defaultOptions, opts);
    let middleware = [];
    let cachedMiddlewareFloating = null;
@@ -53,14 +94,15 @@ index 989b43436b22b1e215d631d2b18ce31bc47b766b..ef0501476ee7e715a0757cc5f18454af
 -    const arrowEl = floating.querySelector("[data-part=arrow]");
      restoreArrowStyles = options.restoreStyles ? createStyleCleanup(arrowEl, arrowStyleProps) : void 0;
      middleware = [
-       getOffsetMiddleware(arrowEl, options),
-@@ -230,8 +231,9 @@ function getPlacementImpl(referenceOrVirtual, floatingOrVirtual, opts = {}) {
+       ...options.middleware ?? [],
+@@ -230,9 +241,9 @@ function getPlacementImpl(referenceOrVirtual, floatingOrVirtual, opts = {}) {
+   async function updatePosition() {
      syncAutoUpdateObservers();
      const floating = resolveFloating();
-     if (!floating) return;
+-    if (!floating) return;
 -    if (floating !== cachedMiddlewareFloating) {
 -      rebuildMiddlewareForFloating(floating);
-+    const arrowEl = options.getArrowElement?.() ?? null;
++    const arrowEl = options.getArrowElement?.() ?? findArrowEl(floating);
 +    if (floating !== cachedMiddlewareFloating || arrowEl !== cachedArrowEl) {
 +      rebuildMiddlewareForFloating(floating, arrowEl);
        zIndexComputed = false;
