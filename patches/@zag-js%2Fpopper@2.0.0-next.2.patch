@@ -1,0 +1,98 @@
+diff --git a/dist/get-placement.js b/dist/get-placement.js
+index eb3576bff199a21ac5318b1e91f29e072d5e8aa5..34298a6e1bbd2b7fc51748d04be8b490ea493161 100644
+--- a/dist/get-placement.js
++++ b/dist/get-placement.js
+@@ -203,14 +203,15 @@ function getPlacementImpl(referenceOrVirtual, floatingOrVirtual, opts = {}) {
+   const options = Object.assign({}, defaultOptions, opts);
+   let middleware = [];
+   let cachedMiddlewareFloating = null;
++  let cachedArrowEl = null;
+   let restoreFloatingStyles;
+   let restoreArrowStyles;
+-  function rebuildMiddlewareForFloating(floating) {
++  function rebuildMiddlewareForFloating(floating, arrowEl) {
+     restoreFloatingStyles?.();
+     restoreArrowStyles?.();
+     cachedMiddlewareFloating = floating;
++    cachedArrowEl = arrowEl;
+     restoreFloatingStyles = options.restoreStyles ? createStyleCleanup(floating, floatingStyleProps) : void 0;
+-    const arrowEl = floating.querySelector("[data-part=arrow]");
+     restoreArrowStyles = options.restoreStyles ? createStyleCleanup(arrowEl, arrowStyleProps) : void 0;
+     middleware = [
+       getOffsetMiddleware(arrowEl, options),
+@@ -254,8 +255,9 @@ function getPlacementImpl(referenceOrVirtual, floatingOrVirtual, opts = {}) {
+     syncAutoUpdateObservers();
+     const floating = resolveFloating();
+     if (!floating) return;
+-    if (floating !== cachedMiddlewareFloating) {
+-      rebuildMiddlewareForFloating(floating);
++    const arrowEl = options.getArrowElement?.() ?? null;
++    if (floating !== cachedMiddlewareFloating || arrowEl !== cachedArrowEl) {
++      rebuildMiddlewareForFloating(floating, arrowEl);
+       zIndexComputed = false;
+     }
+     const reference = resolveReference();
+diff --git a/dist/get-placement.mjs b/dist/get-placement.mjs
+index 989b43436b22b1e215d631d2b18ce31bc47b766b..ef0501476ee7e715a0757cc5f18454af163db6b8 100644
+--- a/dist/get-placement.mjs
++++ b/dist/get-placement.mjs
+@@ -179,14 +179,15 @@ function getPlacementImpl(referenceOrVirtual, floatingOrVirtual, opts = {}) {
+   const options = Object.assign({}, defaultOptions, opts);
+   let middleware = [];
+   let cachedMiddlewareFloating = null;
++  let cachedArrowEl = null;
+   let restoreFloatingStyles;
+   let restoreArrowStyles;
+-  function rebuildMiddlewareForFloating(floating) {
++  function rebuildMiddlewareForFloating(floating, arrowEl) {
+     restoreFloatingStyles?.();
+     restoreArrowStyles?.();
+     cachedMiddlewareFloating = floating;
++    cachedArrowEl = arrowEl;
+     restoreFloatingStyles = options.restoreStyles ? createStyleCleanup(floating, floatingStyleProps) : void 0;
+-    const arrowEl = floating.querySelector("[data-part=arrow]");
+     restoreArrowStyles = options.restoreStyles ? createStyleCleanup(arrowEl, arrowStyleProps) : void 0;
+     middleware = [
+       getOffsetMiddleware(arrowEl, options),
+@@ -230,8 +231,9 @@ function getPlacementImpl(referenceOrVirtual, floatingOrVirtual, opts = {}) {
+     syncAutoUpdateObservers();
+     const floating = resolveFloating();
+     if (!floating) return;
+-    if (floating !== cachedMiddlewareFloating) {
+-      rebuildMiddlewareForFloating(floating);
++    const arrowEl = options.getArrowElement?.() ?? null;
++    if (floating !== cachedMiddlewareFloating || arrowEl !== cachedArrowEl) {
++      rebuildMiddlewareForFloating(floating, arrowEl);
+       zIndexComputed = false;
+     }
+     const reference = resolveReference();
+diff --git a/dist/types.d.mts b/dist/types.d.mts
+index 16688ff05d03dcd60f8f33560adb27f13becd267..9504467b9f6dd9e184a5d8083ba7241b8315a749 100644
+--- a/dist/types.d.mts
++++ b/dist/types.d.mts
+@@ -114,6 +114,10 @@ interface PositioningOptions {
+      * Useful when you want to use a different element as the anchor.
+      */
+     getAnchorElement?: (() => HTMLElement | VirtualElement | null) | undefined;
++    /**
++     * Function that returns the arrow element.
++     */
++    getArrowElement?: (() => HTMLElement | null) | undefined;
+     /**
+      *  Function that returns the anchor rect
+      * @deprecated Use `getAnchorElement` instead
+diff --git a/dist/types.d.ts b/dist/types.d.ts
+index 16688ff05d03dcd60f8f33560adb27f13becd267..9504467b9f6dd9e184a5d8083ba7241b8315a749 100644
+--- a/dist/types.d.ts
++++ b/dist/types.d.ts
+@@ -114,6 +114,10 @@ interface PositioningOptions {
+      * Useful when you want to use a different element as the anchor.
+      */
+     getAnchorElement?: (() => HTMLElement | VirtualElement | null) | undefined;
++    /**
++     * Function that returns the arrow element.
++     */
++    getArrowElement?: (() => HTMLElement | null) | undefined;
+     /**
+      *  Function that returns the anchor rect
+      * @deprecated Use `getAnchorElement` instead

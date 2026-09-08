@@ -1,0 +1,54 @@
+diff --git a/dist/tooltip.machine.js b/dist/tooltip.machine.js
+--- a/dist/tooltip.machine.js
++++ b/dist/tooltip.machine.js
+@@ -329,6 +329,7 @@
+         const getPositionerEl2 = () => dom.getPositionerEl(scope);
+         const getTriggerEl = () => dom.getActiveTriggerEl(scope, context.get("triggerValue"));
+         (0, import_popper.getPlacement)(getTriggerEl, getPositionerEl2, {
++          getArrowElement: () => dom.getArrowEl(scope),
+           ...prop("positioning"),
+           ...event.options,
+           listeners: false,
+@@ -342,6 +343,7 @@
+         const getPositionerEl2 = () => dom.getPositionerEl(scope);
+         const getTriggerEl = () => dom.getActiveTriggerEl(scope, triggerValue);
+         return (0, import_popper.getPlacement)(getTriggerEl, getPositionerEl2, {
++          getArrowElement: () => dom.getArrowEl(scope),
+           ...prop("positioning"),
+           onComplete(data) {
+             context.set("currentPlacement", data.placement);
+@@ -404,6 +406,7 @@
+         const getPositionerEl2 = () => dom.getPositionerEl(scope);
+         const getTriggerEl = () => dom.getActiveTriggerEl(scope, context.get("triggerValue"));
+         return (0, import_popper.getPlacement)(getTriggerEl, getPositionerEl2, {
++          getArrowElement: () => dom.getArrowEl(scope),
+           ...prop("positioning"),
+           defer: true,
+           onComplete(data) {
+diff --git a/dist/tooltip.machine.mjs b/dist/tooltip.machine.mjs
+--- a/dist/tooltip.machine.mjs
++++ b/dist/tooltip.machine.mjs
+@@ -295,6 +295,7 @@
+         const getPositionerEl2 = () => dom.getPositionerEl(scope);
+         const getTriggerEl = () => dom.getActiveTriggerEl(scope, context.get("triggerValue"));
+         getPlacement(getTriggerEl, getPositionerEl2, {
++          getArrowElement: () => dom.getArrowEl(scope),
+           ...prop("positioning"),
+           ...event.options,
+           listeners: false,
+@@ -308,6 +309,7 @@
+         const getPositionerEl2 = () => dom.getPositionerEl(scope);
+         const getTriggerEl = () => dom.getActiveTriggerEl(scope, triggerValue);
+         return getPlacement(getTriggerEl, getPositionerEl2, {
++          getArrowElement: () => dom.getArrowEl(scope),
+           ...prop("positioning"),
+           onComplete(data) {
+             context.set("currentPlacement", data.placement);
+@@ -370,6 +372,7 @@
+         const getPositionerEl2 = () => dom.getPositionerEl(scope);
+         const getTriggerEl = () => dom.getActiveTriggerEl(scope, context.get("triggerValue"));
+         return getPlacement(getTriggerEl, getPositionerEl2, {
++          getArrowElement: () => dom.getArrowEl(scope),
+           ...prop("positioning"),
+           defer: true,
+           onComplete(data) {
