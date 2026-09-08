@@ -1,8 +1,9 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseCollapsibleProps } from './use-collapsible.svelte.ts'
 
-  export interface CollapsibleRootBaseProps extends UseCollapsibleProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface CollapsibleRootBaseProps
+    extends Optional<UseCollapsibleProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface CollapsibleRootProps extends Assign<HTMLProps<'div'>, CollapsibleRootBaseProps> {}
 </script>
 

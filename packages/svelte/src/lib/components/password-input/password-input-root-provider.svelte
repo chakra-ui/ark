@@ -5,7 +5,10 @@
   export interface PasswordInputRootProviderBaseProps extends PolymorphicProps<'div'>, RefAttribute {
     value: UsePasswordInputReturn
   }
-  export interface PasswordInputRootProviderProps extends Assign<HTMLProps<'div'>, PasswordInputRootProviderBaseProps> {}
+  export interface PasswordInputRootProviderProps extends Assign<
+    HTMLProps<'div'>,
+    PasswordInputRootProviderBaseProps
+  > {}
 </script>
 
 <script lang="ts">

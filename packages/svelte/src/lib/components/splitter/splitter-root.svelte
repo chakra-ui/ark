@@ -1,8 +1,9 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseSplitterProps } from './use-splitter.svelte.ts'
 
-  export interface SplitterRootBaseProps extends UseSplitterProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface SplitterRootBaseProps
+    extends Optional<UseSplitterProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface SplitterRootProps extends Assign<HTMLProps<'div'>, SplitterRootBaseProps> {}
 </script>
 

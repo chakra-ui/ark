@@ -1,15 +1,15 @@
 import { useEnvironmentContext, useLocaleContext } from '$lib/providers'
-import type { Accessor, Optional } from '$lib/types'
+import type { Accessor } from '$lib/types'
 import { runIfFn } from '$lib/utils/run-if-fn'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import * as tagsInput from '@zag-js/tags-input'
 import { type MaybeFunction, ensureProps } from '@zag-js/utils'
 import { useFieldContext } from '../field/index.ts'
 
-export interface UseTagsInputProps extends Optional<Omit<tagsInput.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseTagsInputProps extends Omit<tagsInput.Props, 'dir' | 'getRootNode'> {}
 export interface UseTagsInputReturn extends Accessor<tagsInput.Api<PropTypes>> {}
 
-export const useTagsInput = (inProps: MaybeFunction<UseTagsInputProps> = {}): UseTagsInputReturn => {
+export const useTagsInput = (inProps: MaybeFunction<UseTagsInputProps>): UseTagsInputReturn => {
   const props = $derived.by<UseTagsInputProps>(() => {
     const resolvedProps = runIfFn(inProps)
     ensureProps(resolvedProps, ['id'])

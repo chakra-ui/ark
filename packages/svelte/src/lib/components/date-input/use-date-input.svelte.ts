@@ -4,11 +4,11 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 import { useEnvironmentContext, useLocaleContext } from '../../providers/index.js'
 
-export interface UseDateInputProps extends Optional<Omit<dateInput.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseDateInputProps extends Omit<dateInput.Props, 'dir' | 'getRootNode'> {}
 
 export interface UseDateInputReturn extends Accessor<dateInput.Api<PropTypes>> {}
 
-export const useDateInput = (props?: MaybeFunction<UseDateInputProps>): UseDateInputReturn => {
+export const useDateInput = (props: MaybeFunction<UseDateInputProps>): UseDateInputReturn => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
 

@@ -4,11 +4,11 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 import { useEnvironmentContext, useLocaleContext } from '../../providers/index.js'
 
-export interface UseScrollAreaProps extends Optional<Omit<scrollArea.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseScrollAreaProps extends Omit<scrollArea.Props, 'dir' | 'getRootNode'> {}
 
 export interface UseScrollAreaReturn extends Accessor<scrollArea.Api<PropTypes>> {}
 
-export const useScrollArea = (props: MaybeFunction<UseScrollAreaProps> = {}): UseScrollAreaReturn => {
+export const useScrollArea = (props: MaybeFunction<UseScrollAreaProps>): UseScrollAreaReturn => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
 

@@ -1,9 +1,10 @@
 <script module lang="ts">
+  import type { Optional } from '$lib/types'
   import { onMount, type Snippet } from 'svelte'
   import type { UsePresenceProps } from '../presence/index.ts'
   import type { UseMenuProps } from './use-menu.svelte.ts'
 
-  export interface MenuRootBaseProps extends UseMenuProps, UsePresenceProps {
+  export interface MenuRootBaseProps extends Optional<UseMenuProps, 'id'>, UsePresenceProps {
     children?: Snippet
   }
   export interface MenuRootProps extends MenuRootBaseProps {}
@@ -22,7 +23,7 @@
 
   const [presenceProps, menuProps] = $derived(splitPresenceProps(props))
   const [useMenuProps, localProps] = $derived(
-    createSplitProps<UseMenuProps>()(menuProps, [
+    createSplitProps<Optional<UseMenuProps, 'id'>>()(menuProps, [
       'anchorPoint',
       'aria-label',
       'closeOnSelect',

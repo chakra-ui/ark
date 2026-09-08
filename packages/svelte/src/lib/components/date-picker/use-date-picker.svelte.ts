@@ -4,11 +4,11 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 import { useEnvironmentContext, useLocaleContext } from '../../providers/index.js'
 
-export interface UseDatePickerProps extends Optional<Omit<datePicker.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseDatePickerProps extends Omit<datePicker.Props, 'dir' | 'getRootNode'> {}
 
 export interface UseDatePickerReturn extends Accessor<datePicker.Api<PropTypes>> {}
 
-export const useDatePicker = (props?: MaybeFunction<UseDatePickerProps>): UseDatePickerReturn => {
+export const useDatePicker = (props: MaybeFunction<UseDatePickerProps>): UseDatePickerReturn => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
 

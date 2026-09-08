@@ -1,10 +1,10 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UsePresenceProps } from '../presence/index.ts'
   import type { UseColorPickerProps } from './use-color-picker.svelte.ts'
 
   export interface ColorPickerRootBaseProps
-    extends UseColorPickerProps, UsePresenceProps, PolymorphicProps<'div'>, RefAttribute {}
+    extends Optional<UseColorPickerProps, 'id'>, UsePresenceProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface ColorPickerRootProps extends Assign<HTMLProps<'div'>, ColorPickerRootBaseProps> {}
 </script>
 

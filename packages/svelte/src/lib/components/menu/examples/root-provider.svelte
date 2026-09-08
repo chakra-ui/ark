@@ -4,7 +4,8 @@
   import button from 'styles/button.module.css'
   import styles from 'styles/menu.module.css'
 
-  const menu = useMenu()
+  const id = $props.id()
+  const menu = useMenu({ id })
 </script>
 
 <div class="stack">

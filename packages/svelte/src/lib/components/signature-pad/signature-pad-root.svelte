@@ -1,8 +1,9 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseSignaturePadProps } from './use-signature-pad.svelte.ts'
 
-  export interface SignaturePadRootBaseProps extends UseSignaturePadProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface SignaturePadRootBaseProps
+    extends Optional<UseSignaturePadProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface SignaturePadRootProps extends Assign<HTMLProps<'div'>, SignaturePadRootBaseProps> {}
 </script>
 
@@ -17,7 +18,7 @@
   const providedId = $props.id()
 
   const [useSignaturePadProps, localProps] = $derived(
-    createSplitProps<UseSignaturePadProps>()(props, [
+    createSplitProps<Optional<UseSignaturePadProps, 'id'>>()(props, [
       'id',
       'ids',
       'defaultPaths',

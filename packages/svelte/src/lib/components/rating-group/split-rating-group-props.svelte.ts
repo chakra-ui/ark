@@ -1,9 +1,10 @@
+import type { Optional } from '$lib/types'
 import { createSplitProps } from '$lib/utils/create-split-props'
 import type { UseRatingGroupProps } from './use-rating-group.svelte.ts'
 
-const splitFn = createSplitProps<UseRatingGroupProps>()
+const splitFn = createSplitProps<Optional<UseRatingGroupProps, 'id'>>()
 
-export const splitRatingGroupProps = <T extends UseRatingGroupProps>(props: T) =>
+export const splitRatingGroupProps = <T extends Optional<UseRatingGroupProps, 'id'>>(props: T) =>
   splitFn(props, [
     'allowHalf',
     'autoFocus',

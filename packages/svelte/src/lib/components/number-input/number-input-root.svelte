@@ -1,8 +1,9 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseNumberInputProps } from './use-number-input.svelte.ts'
 
-  export interface NumberInputRootBaseProps extends UseNumberInputProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface NumberInputRootBaseProps
+    extends Optional<UseNumberInputProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface NumberInputRootProps extends Assign<HTMLProps<'div'>, NumberInputRootBaseProps> {}
 </script>
 

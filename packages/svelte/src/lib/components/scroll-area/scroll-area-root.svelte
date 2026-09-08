@@ -1,8 +1,10 @@
 <script module lang="ts">
+  import type { Optional } from '$lib/types'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
   import type { UseScrollAreaProps } from './use-scroll-area.svelte.ts'
 
-  export interface ScrollAreaRootBaseProps extends UseScrollAreaProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface ScrollAreaRootBaseProps
+    extends Optional<UseScrollAreaProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface ScrollAreaRootProps extends Assign<HTMLProps<'div'>, ScrollAreaRootBaseProps> {}
 </script>
 
@@ -16,7 +18,9 @@
   let { ref = $bindable(null), ...props }: ScrollAreaRootProps = $props()
   const providedId = $props.id()
 
-  const [scrollAreaProps, localProps] = $derived(createSplitProps<UseScrollAreaProps>()(props, ['id', 'ids']))
+  const [scrollAreaProps, localProps] = $derived(
+    createSplitProps<Optional<UseScrollAreaProps, 'id'>>()(props, ['id', 'ids']),
+  )
 
   const resolvedProps = $derived<UseScrollAreaProps>({
     ...scrollAreaProps,

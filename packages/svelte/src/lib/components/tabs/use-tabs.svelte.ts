@@ -1,14 +1,14 @@
 import { useEnvironmentContext } from '$lib/providers/environment'
 import { useLocaleContext } from '$lib/providers/locale'
-import type { Accessor, Optional } from '$lib/types'
+import type { Accessor } from '$lib/types'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import * as tabs from '@zag-js/tabs'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 
-export interface UseTabsProps extends Optional<Omit<tabs.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseTabsProps extends Omit<tabs.Props, 'dir' | 'getRootNode'> {}
 export interface UseTabsReturn extends Accessor<tabs.Api<PropTypes>> {}
 
-export const useTabs = (props?: MaybeFunction<UseTabsProps>): UseTabsReturn => {
+export const useTabs = (props: MaybeFunction<UseTabsProps>): UseTabsReturn => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
 

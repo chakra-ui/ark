@@ -1,9 +1,10 @@
+import type { Optional } from '$lib/types'
 import { createSplitProps } from '$lib/utils/create-split-props'
 import type { UseColorPickerProps } from './use-color-picker.svelte.ts'
 
-const splitFn = createSplitProps<UseColorPickerProps>()
+const splitFn = createSplitProps<Optional<UseColorPickerProps, 'id'>>()
 
-export const splitColorPickerProps = <T extends UseColorPickerProps>(props: T) =>
+export const splitColorPickerProps = <T extends Optional<UseColorPickerProps, 'id'>>(props: T) =>
   splitFn(props, [
     'closeOnSelect',
     'defaultOpen',

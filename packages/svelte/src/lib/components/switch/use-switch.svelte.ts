@@ -1,15 +1,15 @@
 import { useEnvironmentContext } from '$lib/providers/environment'
 import { useLocaleContext } from '$lib/providers/locale'
-import type { Accessor, Optional } from '$lib/types'
+import type { Accessor } from '$lib/types'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import * as zagSwitch from '@zag-js/switch'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 import { useFieldContext } from '../field/index.ts'
 
-export interface UseSwitchProps extends Optional<Omit<zagSwitch.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseSwitchProps extends Omit<zagSwitch.Props, 'dir' | 'getRootNode'> {}
 export interface UseSwitchReturn extends Accessor<zagSwitch.Api<PropTypes>> {}
 
-export const useSwitch = (props?: MaybeFunction<UseSwitchProps>) => {
+export const useSwitch = (props: MaybeFunction<UseSwitchProps>) => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
   const field = useFieldContext()

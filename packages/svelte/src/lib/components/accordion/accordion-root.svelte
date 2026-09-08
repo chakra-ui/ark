@@ -1,9 +1,9 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseAccordionProps } from './use-accordion.svelte.ts'
 
   export interface AccordionRootBaseProps
-    extends UseAccordionProps, RenderStrategyProps, PolymorphicProps<'div'>, RefAttribute {}
+    extends Optional<UseAccordionProps, 'id'>, RenderStrategyProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface AccordionRootProps extends Assign<HTMLProps<'div'>, AccordionRootBaseProps> {}
 </script>
 
@@ -24,7 +24,7 @@
 
   const [renderStrategyProps, accordionProps] = $derived(splitRenderStrategyProps(props))
   const [useAccordionProps, localProps] = $derived(
-    createSplitProps<UseAccordionProps>()(accordionProps, [
+    createSplitProps<Optional<UseAccordionProps, 'id'>>()(accordionProps, [
       'collapsible',
       'defaultValue',
       'disabled',

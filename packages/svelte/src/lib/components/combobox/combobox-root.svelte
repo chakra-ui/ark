@@ -1,12 +1,12 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { Snippet } from 'svelte'
   import type { CollectionItem } from '../collection/index.ts'
   import type { UsePresenceProps } from '../presence/index.ts'
   import type { UseComboboxProps } from './use-combobox.svelte.ts'
 
   export interface ComboboxRootBaseProps<T extends CollectionItem>
-    extends UseComboboxProps<T>, UsePresenceProps, PolymorphicProps<'div'>, RefAttribute {}
+    extends Optional<UseComboboxProps<T>, 'id'>, UsePresenceProps, PolymorphicProps<'div'>, RefAttribute {}
 
   export interface ComboboxRootProps<T extends CollectionItem> extends Assign<
     HTMLProps<'div'>,
@@ -41,7 +41,7 @@
 
   const [presenceProps, comboboxProps] = $derived(splitPresenceProps(props))
   const [useComboboxProps, localProps] = $derived(
-    createSplitProps<UseComboboxProps<T>>()(comboboxProps, [
+    createSplitProps<Optional<UseComboboxProps<T>, 'id'>>()(comboboxProps, [
       'allowCustomValue',
       'alwaysSubmitOnEnter',
       'autoFocus',

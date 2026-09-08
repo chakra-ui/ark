@@ -4,7 +4,8 @@
   import styles from 'styles/checkbox.module.css'
   import button from 'styles/button.module.css'
 
-  const checkbox = useCheckbox()
+  const id = $props.id()
+  const checkbox = useCheckbox({ id })
 </script>
 
 <div class="vstack">

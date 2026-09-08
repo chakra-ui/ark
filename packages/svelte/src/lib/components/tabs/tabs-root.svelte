@@ -1,8 +1,9 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseTabsProps } from './use-tabs.svelte.ts'
 
-  export interface TabsRootBaseProps extends UseTabsProps, RenderStrategyProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface TabsRootBaseProps
+    extends Optional<UseTabsProps, 'id'>, RenderStrategyProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface TabsRootProps extends Assign<HTMLProps<'div'>, TabsRootBaseProps> {}
 </script>
 
@@ -26,7 +27,7 @@
 
   const [useTabsProps, localProps] = $derived.by(() => {
     const props = { ...tabsProps, value }
-    return createSplitProps<UseTabsProps>()(props, [
+    return createSplitProps<Optional<UseTabsProps, 'id'>>()(props, [
       'value',
       'onValueChange',
       'onFocusChange',

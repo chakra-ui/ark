@@ -1,11 +1,11 @@
 import { useEnvironmentContext } from '$lib/providers/environment'
 import { useLocaleContext } from '$lib/providers/locale'
-import type { Accessor, Optional } from '$lib/types'
+import type { Accessor } from '$lib/types'
 import * as collapsible from '@zag-js/collapsible'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 
-export interface UseCollapsibleProps extends Optional<Omit<collapsible.Props, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseCollapsibleProps extends Omit<collapsible.Props, 'dir' | 'getRootNode'> {
   /**
    * Whether the content should be lazy mounted
    */
@@ -22,7 +22,7 @@ export interface UseCollapsibleProps extends Optional<Omit<collapsible.Props, 'd
 
 export interface UseCollapsibleReturn extends Accessor<collapsible.Api<PropTypes> & { isUnmounted: boolean }> {}
 
-export const useCollapsible = (props?: MaybeFunction<UseCollapsibleProps>): UseCollapsibleReturn => {
+export const useCollapsible = (props: MaybeFunction<UseCollapsibleProps>): UseCollapsibleReturn => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
 

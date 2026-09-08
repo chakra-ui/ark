@@ -4,10 +4,8 @@
   import button from 'styles/button.module.css'
   import styles from 'styles/drawer.module.css'
 
-  const drawer = useDrawer({
-    defaultSnapPoint: 0.5,
-    snapPoints: [0.25, 0.5, 1],
-  })
+  const id = $props.id()
+  const drawer = useDrawer({ id, defaultSnapPoint: 0.5, snapPoints: [0.25, 0.5, 1] })
 </script>
 
 <div class="stack">

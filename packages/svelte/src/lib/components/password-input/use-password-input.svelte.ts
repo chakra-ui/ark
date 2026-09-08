@@ -1,15 +1,15 @@
 import { useEnvironmentContext } from '$lib/providers/environment'
 import { useLocaleContext } from '$lib/providers/locale'
-import type { Accessor, Optional } from '$lib/types'
+import type { Accessor } from '$lib/types'
 import * as passwordInput from '@zag-js/password-input'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 import { useFieldContext } from '../field/index.ts'
 
-export interface UsePasswordInputProps extends Optional<Omit<passwordInput.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UsePasswordInputProps extends Omit<passwordInput.Props, 'dir' | 'getRootNode'> {}
 export interface UsePasswordInputReturn extends Accessor<passwordInput.Api<PropTypes>> {}
 
-export const usePasswordInput = (props?: MaybeFunction<UsePasswordInputProps>): UsePasswordInputReturn => {
+export const usePasswordInput = (props: MaybeFunction<UsePasswordInputProps>): UsePasswordInputReturn => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
   const field = useFieldContext()

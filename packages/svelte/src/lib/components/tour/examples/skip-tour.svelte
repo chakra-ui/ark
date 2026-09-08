@@ -42,7 +42,8 @@
     },
   ]
 
-  const tour = useTour({ steps })
+  const id = $props.id()
+  const tour = useTour({ id, steps })
 </script>
 
 <div class={styles.Root}>

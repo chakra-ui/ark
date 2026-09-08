@@ -5,7 +5,7 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers/index.t
 import type { Accessor, Optional } from '../../types.ts'
 import { useFieldsetContext } from '../fieldset/index.ts'
 
-export interface UseRadioGroupProps extends Optional<Omit<radio.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseRadioGroupProps extends Omit<radio.Props, 'dir' | 'getRootNode'> {}
 export interface UseRadioGroupReturn extends Accessor<radio.Api<PropTypes>> {}
 
 export const useRadioGroup = (props: MaybeFunction<UseRadioGroupProps>): UseRadioGroupReturn => {

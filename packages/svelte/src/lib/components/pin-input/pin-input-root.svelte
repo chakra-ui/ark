@@ -1,9 +1,10 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UsePinInputProps } from './use-pin-input.svelte.ts'
 
-  export interface PinInputRootBaseProps extends UsePinInputProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface PinInputRootBaseProps
+    extends Optional<UsePinInputProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface PinInputRootProps extends Assign<HTMLProps<'div'>, PinInputRootBaseProps> {
     children?: Snippet
   }
@@ -20,7 +21,7 @@
   const providedId = $props.id()
 
   const [usePinInputProps, localProps] = $derived(
-    createSplitProps<UsePinInputProps>()(props, [
+    createSplitProps<Optional<UsePinInputProps, 'id'>>()(props, [
       'autoFocus',
       'autoSubmit',
       'blurOnComplete',

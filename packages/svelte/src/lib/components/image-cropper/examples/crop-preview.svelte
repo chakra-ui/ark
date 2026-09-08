@@ -4,7 +4,8 @@
   import button from 'styles/button.module.css'
   import styles from 'styles/image-cropper.module.css'
 
-  const imageCropper = useImageCropper()
+  const id = $props.id()
+  const imageCropper = useImageCropper({ id })
   let preview = $state<string | null>(null)
 
   const handleCrop = async () => {

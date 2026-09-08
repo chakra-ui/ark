@@ -1,16 +1,16 @@
 import { useEnvironmentContext } from '$lib/providers/environment'
 import { useLocaleContext } from '$lib/providers/locale'
-import type { Accessor, Optional } from '$lib/types'
+import type { Accessor } from '$lib/types'
 import * as colorPicker from '@zag-js/color-picker'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 import { useFieldContext } from '../field/index.ts'
 
-export interface UseColorPickerProps extends Optional<Omit<colorPicker.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseColorPickerProps extends Omit<colorPicker.Props, 'dir' | 'getRootNode'> {}
 
 export interface UseColorPickerReturn extends Accessor<colorPicker.Api<PropTypes>> {}
 
-export const useColorPicker = (props: MaybeFunction<UseColorPickerProps> = {}): UseColorPickerReturn => {
+export const useColorPicker = (props: MaybeFunction<UseColorPickerProps>): UseColorPickerReturn => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
   const field = useFieldContext()

@@ -11,7 +11,8 @@
   import button from 'styles/button.module.css'
   import styles from 'styles/image-cropper.module.css'
 
-  const imageCropper = useImageCropper()
+  const id = $props.id()
+  const imageCropper = useImageCropper({ id })
 </script>
 
 <div class={styles.Layout}>
