@@ -8,6 +8,11 @@ import DelayExample from './examples/delay.vue'
 import MultipleTriggersExample from './examples/multiple-triggers.vue'
 import PositioningExample from './examples/positioning.vue'
 import RootProviderExample from './examples/root-provider.vue'
+import WithCheckboxExample from './examples/with-checkbox.vue'
+import WithDialogExample from './examples/with-dialog.vue'
+import WithMenuItemExample from './examples/with-menu-item.vue'
+import WithMenuTriggerExample from './examples/with-menu-trigger.vue'
+import WithPopoverExample from './examples/with-popover.vue'
 
 const meta: Meta = {
   title: 'Components / Tooltip',
@@ -67,6 +72,41 @@ export const Positioning = {
 export const RootProvider = {
   render: () => ({
     components: { Component: RootProviderExample },
+    template: '<Component />',
+  }),
+}
+
+export const WithCheckbox = {
+  render: () => ({
+    components: { Component: WithCheckboxExample },
+    template: '<Component />',
+  }),
+}
+
+export const WithDialog = {
+  render: () => ({
+    components: { Component: WithDialogExample },
+    template: '<Component />',
+  }),
+}
+
+export const WithMenuItem = {
+  render: () => ({
+    components: { Component: WithMenuItemExample },
+    template: '<Component />',
+  }),
+}
+
+export const WithMenuTrigger = {
+  render: () => ({
+    components: { Component: WithMenuTriggerExample },
+    template: '<Component />',
+  }),
+}
+
+export const WithPopover = {
+  render: () => ({
+    components: { Component: WithPopoverExample },
     template: '<Component />',
   }),
 }
