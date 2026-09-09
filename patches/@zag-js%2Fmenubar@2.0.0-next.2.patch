@@ -1,0 +1,26 @@
+diff --git a/dist/menubar.dom.js b/dist/menubar.dom.js
+index 1a12a12..213f141 100644
+--- a/dist/menubar.dom.js
++++ b/dist/menubar.dom.js
+@@ -42,7 +42,7 @@ var getTriggerEls = (ctx) => {
+   if (!rootEl) return [];
+   const els = rootEl.querySelectorAll("[role=menuitem]");
+   return Array.from(els).filter(
+-    (el) => !el.hasAttribute("data-disabled") && el.getAttribute("aria-disabled") !== "true"
++    (el) => !el.hasAttribute("data-disabled") && !el.hasAttribute("disabled") && el.getAttribute("aria-disabled") !== "true"
+   );
+ };
+ var isTriggerEl = (el) => {
+diff --git a/dist/menubar.dom.mjs b/dist/menubar.dom.mjs
+index 43b4583..5a729a1 100644
+--- a/dist/menubar.dom.mjs
++++ b/dist/menubar.dom.mjs
+@@ -9,7 +9,7 @@ var getTriggerEls = (ctx) => {
+   if (!rootEl) return [];
+   const els = rootEl.querySelectorAll("[role=menuitem]");
+   return Array.from(els).filter(
+-    (el) => !el.hasAttribute("data-disabled") && el.getAttribute("aria-disabled") !== "true"
++    (el) => !el.hasAttribute("data-disabled") && !el.hasAttribute("disabled") && el.getAttribute("aria-disabled") !== "true"
+   );
+ };
+ var isTriggerEl = (el) => {

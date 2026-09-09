@@ -83,6 +83,11 @@
   &[data-state='closed'] {
     animation: scale-fade-out 0.1s ease-in;
   }
+
+  &[data-instant] {
+    animation: none;
+    transition: none;
+  }
 }
 
 .Arrow {
