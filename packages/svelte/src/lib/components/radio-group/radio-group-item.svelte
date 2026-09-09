@@ -1,8 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { ItemProps } from '@zag-js/radio-group'
+  import type { ItemProps, ItemState } from '@zag-js/radio-group'
 
-  export interface RadioGroupItemBaseProps extends ItemProps, PolymorphicProps<'label'>, RefAttribute {}
+  export interface RadioGroupItemState extends ItemState {}
+  export interface RadioGroupItemBaseProps
+    extends ItemProps, PolymorphicProps<'label', RadioGroupItemState>, RefAttribute {}
   export interface RadioGroupItemProps extends Assign<HTMLProps<'label'>, RadioGroupItemBaseProps> {}
 </script>
 
@@ -25,4 +27,4 @@
   RadioGroupItemPropsProvider(() => itemProps)
 </script>
 
-<Ark as="label" bind:ref {...mergedProps} />
+<Ark as="label" bind:ref {...mergedProps} state={radioGroup().getItemState(itemProps)} />

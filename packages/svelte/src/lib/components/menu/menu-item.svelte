@@ -8,12 +8,13 @@
     onSelect?: VoidFunction
   }
 
-  export interface MenuItemBaseProps extends ItemBaseProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface MenuItemState extends ItemState {}
+  export interface MenuItemBaseProps extends ItemBaseProps, PolymorphicProps<'div', MenuItemState>, RefAttribute {}
   export interface MenuItemProps extends Assign<HTMLProps<'div'>, MenuItemBaseProps> {}
 </script>
 
 <script lang="ts">
-  import type { ItemProps } from '@zag-js/menu'
+  import type { ItemProps, ItemState } from '@zag-js/menu'
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory/index.ts'
   import { useMenuContext } from './use-menu-context.ts'
@@ -42,4 +43,4 @@
   MenuItemProvider(() => itemState)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={menu().getItemState(itemProps)} />

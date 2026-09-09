@@ -1,8 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { ItemProps } from '@zag-js/toggle-group'
+  import type { ItemProps, ItemState } from '@zag-js/toggle-group'
 
-  export interface ToggleGroupItemBaseProps extends ItemProps, PolymorphicProps<'button'>, RefAttribute {}
+  export interface ToggleGroupItemState extends ItemState {}
+  export interface ToggleGroupItemBaseProps
+    extends ItemProps, PolymorphicProps<'button', ToggleGroupItemState>, RefAttribute {}
   export interface ToggleGroupItemProps extends Assign<HTMLProps<'button'>, ToggleGroupItemBaseProps> {}
 </script>
 
@@ -20,4 +22,4 @@
   const mergedProps = $derived(mergeProps(toggleGroup().getItemProps(itemProps), localProps))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} state={toggleGroup().getItemState(itemProps)} />

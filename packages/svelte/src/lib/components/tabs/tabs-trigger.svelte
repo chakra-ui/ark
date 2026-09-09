@@ -1,8 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { TriggerProps } from '@zag-js/tabs'
+  import type { TriggerProps, TriggerState } from '@zag-js/tabs'
 
-  export interface TabsTriggerBaseProps extends TriggerProps, PolymorphicProps<'button'>, RefAttribute {}
+  export interface TabsTriggerState extends TriggerState {}
+  export interface TabsTriggerBaseProps
+    extends TriggerProps, PolymorphicProps<'button', TabsTriggerState>, RefAttribute {}
   export interface TabsTriggerProps extends Assign<HTMLProps<'button'>, TabsTriggerBaseProps> {}
 </script>
 
@@ -18,4 +20,4 @@
   const mergedProps = $derived(mergeProps(tabs().getTriggerProps(triggerProps), localProps))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} state={tabs().getTriggerState(triggerProps)} />

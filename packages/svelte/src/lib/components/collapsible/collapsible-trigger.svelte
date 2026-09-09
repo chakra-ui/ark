@@ -1,7 +1,10 @@
 <script module lang="ts">
+  import type { TriggerState } from '@zag-js/collapsible'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface CollapsibleTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
+  export interface CollapsibleTriggerState extends TriggerState {}
+  export interface CollapsibleTriggerBaseProps
+    extends PolymorphicProps<'button', CollapsibleTriggerState>, RefAttribute {}
   export interface CollapsibleTriggerProps extends Assign<HTMLProps<'button'>, CollapsibleTriggerBaseProps> {}
 </script>
 
@@ -15,4 +18,4 @@
   const mergedProps = $derived(mergeProps(collapsible().getTriggerProps(), props))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} state={collapsible().getTriggerState()} />

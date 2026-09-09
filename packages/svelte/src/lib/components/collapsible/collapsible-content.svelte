@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { ContentState } from '@zag-js/collapsible'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface CollapsibleContentBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface CollapsibleContentState extends ContentState {}
+  export interface CollapsibleContentBaseProps extends PolymorphicProps<'div', CollapsibleContentState>, RefAttribute {}
   export interface CollapsibleContentProps extends Assign<HTMLProps<'div'>, CollapsibleContentBaseProps> {}
 </script>
 
@@ -17,5 +19,5 @@
 </script>
 
 {#if !collapsible().isUnmounted}
-  <Ark as="div" bind:ref {...mergedProps} />
+  <Ark as="div" bind:ref {...mergedProps} state={collapsible().getContentState()} />
 {/if}

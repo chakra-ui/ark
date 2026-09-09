@@ -1,8 +1,10 @@
 <script module lang="ts">
-  import type { SegmentGroupProps } from '@zag-js/date-input'
+  import type { SegmentGroupProps, SegmentGroupState } from '@zag-js/date-input'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface DateInputSegmentGroupBaseProps extends PolymorphicProps<'div'>, RefAttribute, SegmentGroupProps {}
+  export interface DateInputSegmentGroupState extends SegmentGroupState {}
+  export interface DateInputSegmentGroupBaseProps
+    extends PolymorphicProps<'div', DateInputSegmentGroupState>, RefAttribute, SegmentGroupProps {}
   export interface DateInputSegmentGroupProps extends Assign<HTMLProps<'div'>, DateInputSegmentGroupBaseProps> {}
 </script>
 
@@ -21,4 +23,4 @@
   DateInputSegmentGroupPropsProvider(() => segmentGroupProps)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={dateInput().getSegmentGroupState(segmentGroupProps)} />

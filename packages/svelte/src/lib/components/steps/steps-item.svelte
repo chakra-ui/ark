@@ -1,8 +1,9 @@
 <script module lang="ts">
-  import type { ItemProps } from '@zag-js/steps'
+  import type { ItemProps, ItemState } from '@zag-js/steps'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface StepsItemBaseProps extends ItemProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface StepsItemState extends ItemState {}
+  export interface StepsItemBaseProps extends ItemProps, PolymorphicProps<'div', StepsItemState>, RefAttribute {}
   export interface StepsItemProps extends Assign<HTMLProps<'div'>, StepsItemBaseProps> {}
 </script>
 
@@ -25,4 +26,4 @@
   StepsItemProvider(() => itemState)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={steps().getItemState(itemProps)} />

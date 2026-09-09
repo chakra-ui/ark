@@ -1,10 +1,12 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/image-cropper'
   import type { Snippet } from 'svelte'
   import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseImageCropperProps } from './use-image-cropper.svelte.ts'
 
+  export interface ImageCropperRootState extends RootState {}
   export interface ImageCropperRootBaseProps
-    extends Optional<UseImageCropperProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
+    extends Optional<UseImageCropperProps, 'id'>, PolymorphicProps<'div', ImageCropperRootState>, RefAttribute {}
   export interface ImageCropperRootProps extends Assign<HTMLProps<'div'>, ImageCropperRootBaseProps> {
     children?: Snippet
   }
@@ -85,4 +87,4 @@
   ImageCropperProvider(imageCropper)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={imageCropper().getRootState()} />

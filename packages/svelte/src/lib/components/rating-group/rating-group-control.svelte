@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { ControlState } from '@zag-js/rating-group'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface RatingGroupControlBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface RatingGroupControlState extends ControlState {}
+  export interface RatingGroupControlBaseProps extends PolymorphicProps<'div', RatingGroupControlState>, RefAttribute {}
   export interface RatingGroupControlProps extends Assign<HTMLProps<'div'>, RatingGroupControlBaseProps> {}
 </script>
 
@@ -15,4 +17,4 @@
   const mergedProps = $derived(mergeProps(ratingGroup().getControlProps(), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={ratingGroup().getControlState()} />

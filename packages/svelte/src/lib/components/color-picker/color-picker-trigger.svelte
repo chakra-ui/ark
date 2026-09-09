@@ -1,7 +1,10 @@
 <script module lang="ts">
+  import type { TriggerState } from '@zag-js/color-picker'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ColorPickerTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
+  export interface ColorPickerTriggerState extends TriggerState {}
+  export interface ColorPickerTriggerBaseProps
+    extends PolymorphicProps<'button', ColorPickerTriggerState>, RefAttribute {}
   export interface ColorPickerTriggerProps extends Assign<HTMLProps<'button'>, ColorPickerTriggerBaseProps> {}
 </script>
 
@@ -16,4 +19,4 @@
   const mergedProps = $derived(mergeProps(colorPicker().getTriggerProps(), props))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} state={colorPicker().getTriggerState()} />

@@ -1,8 +1,11 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/checkbox'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseCheckboxReturn } from './use-checkbox.svelte.ts'
 
-  export interface CheckboxRootProviderBaseProps extends PolymorphicProps<'label'>, RefAttribute {
+  export interface CheckboxRootProviderState extends RootState {}
+  export interface CheckboxRootProviderBaseProps
+    extends PolymorphicProps<'label', CheckboxRootProviderState>, RefAttribute {
     value: UseCheckboxReturn
   }
   export interface CheckboxRootProviderProps extends Assign<HTMLProps<'label'>, CheckboxRootProviderBaseProps> {}
@@ -20,4 +23,4 @@
   CheckboxProvider(() => value())
 </script>
 
-<Ark as="label" bind:ref {...mergedProps} />
+<Ark as="label" bind:ref {...mergedProps} state={value().getRootState()} />

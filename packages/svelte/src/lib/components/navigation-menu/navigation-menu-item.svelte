@@ -1,8 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { ItemProps } from '@zag-js/navigation-menu'
+  import type { ItemProps, ItemState } from '@zag-js/navigation-menu'
 
-  export interface NavigationMenuItemBaseProps extends ItemProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface NavigationMenuItemState extends ItemState {}
+  export interface NavigationMenuItemBaseProps
+    extends ItemProps, PolymorphicProps<'div', NavigationMenuItemState>, RefAttribute {}
   export interface NavigationMenuItemProps extends Assign<HTMLProps<'div'>, NavigationMenuItemBaseProps> {}
 </script>
 
@@ -23,4 +25,4 @@
   NavigationMenuItemPropsProvider(() => itemProps)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={navigationMenu().getItemState(itemProps)} />

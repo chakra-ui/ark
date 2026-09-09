@@ -1,7 +1,10 @@
 <script module lang="ts">
+  import type { SelectionState } from '@zag-js/image-cropper'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ImageCropperSelectionBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface ImageCropperSelectionState extends SelectionState {}
+  export interface ImageCropperSelectionBaseProps
+    extends PolymorphicProps<'div', ImageCropperSelectionState>, RefAttribute {}
   export interface ImageCropperSelectionProps extends Assign<HTMLProps<'div'>, ImageCropperSelectionBaseProps> {}
 </script>
 
@@ -15,4 +18,4 @@
   const mergedProps = $derived(mergeProps(imageCropper().getSelectionProps(), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={imageCropper().getSelectionState()} />

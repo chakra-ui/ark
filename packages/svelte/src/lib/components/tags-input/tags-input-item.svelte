@@ -1,8 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { ItemProps } from '@zag-js/tags-input'
+  import type { ItemProps, ItemState } from '@zag-js/tags-input'
 
-  export interface TagsInputItemBaseProps extends ItemProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface TagsInputItemState extends ItemState {}
+  export interface TagsInputItemBaseProps
+    extends ItemProps, PolymorphicProps<'div', TagsInputItemState>, RefAttribute {}
   export interface TagsInputItemProps extends Assign<HTMLProps<'div'>, TagsInputItemBaseProps> {}
 </script>
 
@@ -23,4 +25,4 @@
   TagsInputItemPropsProvider(() => itemProps)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={tagsInput().getItemState(itemProps)} />

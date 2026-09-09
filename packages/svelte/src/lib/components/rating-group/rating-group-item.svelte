@@ -1,8 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { ItemProps } from '@zag-js/rating-group'
+  import type { ItemProps, ItemState } from '@zag-js/rating-group'
 
-  export interface RatingGroupItemBaseProps extends ItemProps, PolymorphicProps<'span'>, RefAttribute {}
+  export interface RatingGroupItemState extends ItemState {}
+  export interface RatingGroupItemBaseProps
+    extends ItemProps, PolymorphicProps<'span', RatingGroupItemState>, RefAttribute {}
   export interface RatingGroupItemProps extends Assign<HTMLProps<'span'>, RatingGroupItemBaseProps> {}
 </script>
 
@@ -23,4 +25,4 @@
   RatingGroupItemProvider(() => itemState)
 </script>
 
-<Ark as="span" bind:ref {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} state={ratingGroup().getItemState(itemProps)} />

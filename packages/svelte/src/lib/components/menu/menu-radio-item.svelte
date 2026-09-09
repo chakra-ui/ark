@@ -1,10 +1,12 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { OptionItemProps } from '@zag-js/menu'
+  import type { OptionItemProps, OptionItemState } from '@zag-js/menu'
 
   type PartialOptionItemProps = Omit<OptionItemProps, 'type' | 'checked' | 'onCheckedChange'>
 
-  export interface MenuRadioItemBaseProps extends PartialOptionItemProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface MenuRadioItemState extends OptionItemState {}
+  export interface MenuRadioItemBaseProps
+    extends PartialOptionItemProps, PolymorphicProps<'div', MenuRadioItemState>, RefAttribute {}
   export interface MenuRadioItemProps extends Assign<HTMLProps<'div'>, MenuRadioItemBaseProps> {}
 </script>
 
@@ -40,4 +42,4 @@
   MenuItemProvider(() => optionItemState)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={menu().getOptionItemState(optionItemProps)} />

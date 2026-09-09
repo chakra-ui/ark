@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { BackdropState } from '@zag-js/drawer'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface DrawerBackdropBaseProps extends PolymorphicProps<'div'>, RefAttribute {
+  export interface DrawerBackdropState extends BackdropState {}
+  export interface DrawerBackdropBaseProps extends PolymorphicProps<'div', DrawerBackdropState>, RefAttribute {
     ref?: Element | null
   }
   export interface DrawerBackdropProps extends Assign<HTMLProps<'div'>, DrawerBackdropBaseProps> {}
@@ -28,5 +30,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} state={drawer().getBackdropState()} />
 {/if}

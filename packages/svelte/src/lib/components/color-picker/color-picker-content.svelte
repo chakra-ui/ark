@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { ContentState } from '@zag-js/color-picker'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ColorPickerContentBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface ColorPickerContentState extends ContentState {}
+  export interface ColorPickerContentBaseProps extends PolymorphicProps<'div', ColorPickerContentState>, RefAttribute {}
   export interface ColorPickerContentProps extends Assign<HTMLProps<'div'>, ColorPickerContentBaseProps> {}
 </script>
 
@@ -23,5 +25,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} state={colorPicker().getContentState()} />
 {/if}
