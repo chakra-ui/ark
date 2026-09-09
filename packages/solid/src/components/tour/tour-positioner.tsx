@@ -3,8 +3,11 @@ import { Show } from 'solid-js'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresenceContext } from '../presence/index.tsx'
 import { useTourContext } from './use-tour-context.ts'
+import type { PositionerState } from '@zag-js/tour'
 
-export interface TourPositionerBaseProps extends PolymorphicProps<'div'> {}
+export interface TourPositionerState extends PositionerState {}
+
+export interface TourPositionerBaseProps extends PolymorphicProps<'div', TourPositionerState> {}
 export interface TourPositionerProps extends HTMLProps<'div'>, TourPositionerBaseProps {}
 
 export const TourPositioner = (props: TourPositionerProps) => {
@@ -14,7 +17,7 @@ export const TourPositioner = (props: TourPositionerProps) => {
 
   return (
     <Show when={!presence().unmounted}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} state={tour().getPositionerState()} />
     </Show>
   )
 }

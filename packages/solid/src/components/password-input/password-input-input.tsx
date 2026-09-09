@@ -2,8 +2,11 @@ import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useFieldContext } from '../field/index.tsx'
 import { usePasswordInputContext } from './use-password-input-context.ts'
+import type { InputState } from '@zag-js/password-input'
 
-export interface PasswordInputInputBaseProps extends PolymorphicProps<'input'> {}
+export interface PasswordInputInputState extends InputState {}
+
+export interface PasswordInputInputBaseProps extends PolymorphicProps<'input', PasswordInputInputState> {}
 export interface PasswordInputInputProps extends HTMLProps<'input'>, PasswordInputInputBaseProps {}
 
 export const PasswordInputInput = (props: PasswordInputInputProps) => {
@@ -11,5 +14,7 @@ export const PasswordInputInput = (props: PasswordInputInputProps) => {
   const mergedProps = mergeProps(() => passwordInput().getInputProps(), props)
   const field = useFieldContext()
 
-  return <ark.input aria-describedby={field?.().ariaDescribedby} {...mergedProps} />
+  return (
+    <ark.input aria-describedby={field?.().ariaDescribedby} {...mergedProps} state={passwordInput().getInputState()} />
+  )
 }

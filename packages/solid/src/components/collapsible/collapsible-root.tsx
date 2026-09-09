@@ -4,7 +4,12 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { type UseCollapsibleProps, useCollapsible } from './use-collapsible.ts'
 import { CollapsibleProvider } from './use-collapsible-context.ts'
 
-export interface CollapsibleRootBaseProps extends UseCollapsibleProps, PolymorphicProps<'div'> {}
+export interface CollapsibleRootBaseProps extends UseCollapsibleProps, PolymorphicProps<'div', any> {
+  /**
+   * The state of the part, forwarded to the `render` function. Set by the component, not the consumer.
+   */
+  state?: unknown
+}
 export interface CollapsibleRootProps extends HTMLProps<'div'>, CollapsibleRootBaseProps {}
 
 export const CollapsibleRoot = (props: CollapsibleRootProps) => {

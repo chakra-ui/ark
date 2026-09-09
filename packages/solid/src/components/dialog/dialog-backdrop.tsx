@@ -5,8 +5,11 @@ import { useRenderStrategyContext } from '../../utils/render-strategy.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresence } from '../presence/index.tsx'
 import { useDialogContext } from './use-dialog-context.ts'
+import type { BackdropState } from '@zag-js/dialog'
 
-export interface DialogBackdropBaseProps extends PolymorphicProps<'div'> {}
+export interface DialogBackdropState extends BackdropState {}
+
+export interface DialogBackdropBaseProps extends PolymorphicProps<'div', DialogBackdropState> {}
 export interface DialogBackdropProps extends HTMLProps<'div'>, DialogBackdropBaseProps {}
 
 export const DialogBackdrop = (props: DialogBackdropProps) => {
@@ -21,7 +24,7 @@ export const DialogBackdrop = (props: DialogBackdropProps) => {
 
   return (
     <Show when={!presenceApi().unmounted}>
-      <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} />
+      <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} state={api().getBackdropState()} />
     </Show>
   )
 }

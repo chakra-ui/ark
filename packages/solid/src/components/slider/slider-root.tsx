@@ -4,8 +4,11 @@ import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { type UseSliderProps, useSlider } from './use-slider.ts'
 import { SliderProvider } from './use-slider-context.ts'
+import type { RootState } from '@zag-js/slider'
 
-export interface SliderRootBaseProps extends UseSliderProps, PolymorphicProps<'div'> {}
+export interface SliderRootState extends RootState {}
+
+export interface SliderRootBaseProps extends UseSliderProps, PolymorphicProps<'div', SliderRootState> {}
 export interface SliderRootProps extends Assign<HTMLProps<'div'>, SliderRootBaseProps> {}
 
 export const SliderRoot = (props: SliderRootProps) => {
@@ -41,7 +44,7 @@ export const SliderRoot = (props: SliderRootProps) => {
 
   return (
     <SliderProvider value={api}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} state={api().getRootState()} />
     </SliderProvider>
   )
 }

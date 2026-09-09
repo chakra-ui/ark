@@ -1,4 +1,5 @@
 import { render, screen } from '@solidjs/testing-library'
+import type { Accessor } from 'solid-js'
 import user from '@testing-library/user-event'
 import type { JSX } from 'solid-js'
 import { ark } from './factory.tsx'
@@ -55,7 +56,9 @@ describe('Ark Factory', () => {
       render(() => (
         <ark.button
           state={{ open: true }}
-          render={(props, state: { open: boolean }) => <MyButton {...props}>{state.open ? 'Open' : 'Closed'}</MyButton>}
+          render={(props, state: Accessor<{ open: boolean }>) => (
+            <MyButton {...props}>{state().open ? 'Open' : 'Closed'}</MyButton>
+          )}
         />
       ))
 
@@ -67,7 +70,7 @@ describe('Ark Factory', () => {
       render(() => (
         <ark.button
           render={(props, state) => {
-            spy(state)
+            spy(state())
             return <MyButton {...props} />
           }}
         />

@@ -4,8 +4,11 @@ import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { type UseNumberInputProps, useNumberInput } from './use-number-input.ts'
 import { NumberInputProvider } from './use-number-input-context.ts'
+import type { RootState } from '@zag-js/number-input'
 
-export interface NumberInputRootBaseProps extends UseNumberInputProps, PolymorphicProps<'div'> {}
+export interface NumberInputRootState extends RootState {}
+
+export interface NumberInputRootBaseProps extends UseNumberInputProps, PolymorphicProps<'div', NumberInputRootState> {}
 export interface NumberInputRootProps extends Assign<HTMLProps<'div'>, NumberInputRootBaseProps> {}
 
 export const NumberInputRoot = (props: NumberInputRootProps) => {
@@ -49,7 +52,7 @@ export const NumberInputRoot = (props: NumberInputRootProps) => {
 
   return (
     <NumberInputProvider value={api}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} state={api().getRootState()} />
     </NumberInputProvider>
   )
 }

@@ -4,8 +4,11 @@ import { composeRefs } from '../../utils/compose-refs.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresenceContext } from '../presence/index.tsx'
 import { useTooltipContext } from './use-tooltip-context.ts'
+import type { ContentState } from '@zag-js/tooltip'
 
-export interface TooltipContentBaseProps extends PolymorphicProps<'div'> {}
+export interface TooltipContentState extends ContentState {}
+
+export interface TooltipContentBaseProps extends PolymorphicProps<'div', TooltipContentState> {}
 export interface TooltipContentProps extends HTMLProps<'div'>, TooltipContentBaseProps {}
 
 export const TooltipContent = (props: TooltipContentProps) => {
@@ -19,7 +22,7 @@ export const TooltipContent = (props: TooltipContentProps) => {
 
   return (
     <Show when={!presenceApi().unmounted}>
-      <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} />
+      <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} state={api().getContentState()} />
     </Show>
   )
 }

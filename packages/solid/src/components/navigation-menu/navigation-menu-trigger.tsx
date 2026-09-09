@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import type { ItemProps } from '@zag-js/navigation-menu'
+import type { ItemProps, TriggerState } from '@zag-js/navigation-menu'
 import { createMemo } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
@@ -7,7 +7,10 @@ import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
 import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context.ts'
 import type { Assign } from '../../types.ts'
 
-export interface NavigationMenuTriggerBaseProps extends Omit<ItemProps, 'value'>, PolymorphicProps<'button'> {}
+export interface NavigationMenuTriggerState extends TriggerState {}
+
+export interface NavigationMenuTriggerBaseProps
+  extends Omit<ItemProps, 'value'>, PolymorphicProps<'button', NavigationMenuTriggerState> {}
 export interface NavigationMenuTriggerProps extends Assign<HTMLProps<'button'>, NavigationMenuTriggerBaseProps> {}
 
 const splitItemProps = createSplitProps<ItemProps>()
@@ -25,5 +28,5 @@ export const NavigationMenuTrigger = (props: NavigationMenuTriggerProps) => {
   const api = useNavigationMenuContext()
   const mergedProps = mergeProps(() => api().getTriggerProps(triggerProps), localProps)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps} state={api().getTriggerState(triggerProps)} />
 }

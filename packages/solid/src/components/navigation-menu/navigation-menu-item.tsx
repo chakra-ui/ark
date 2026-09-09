@@ -1,11 +1,13 @@
-import type { ItemProps } from '@zag-js/navigation-menu'
+import type { ItemProps, ItemState } from '@zag-js/navigation-menu'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
 import { NavigationMenuItemPropsProvider } from './use-navigation-menu-item-props-context.ts'
 
-export interface NavigationMenuItemBaseProps extends ItemProps, PolymorphicProps<'div'> {}
+export interface NavigationMenuItemState extends ItemState {}
+
+export interface NavigationMenuItemBaseProps extends ItemProps, PolymorphicProps<'div', NavigationMenuItemState> {}
 export interface NavigationMenuItemProps extends HTMLProps<'div'>, NavigationMenuItemBaseProps {}
 
 const splitItemProps = createSplitProps<ItemProps>()
@@ -17,7 +19,7 @@ export const NavigationMenuItem = (props: NavigationMenuItemProps) => {
 
   return (
     <NavigationMenuItemPropsProvider value={itemProps}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} state={api().getItemState(itemProps)} />
     </NavigationMenuItemPropsProvider>
   )
 }

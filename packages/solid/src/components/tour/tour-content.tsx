@@ -5,8 +5,11 @@ import { useRenderStrategyContext } from '../../utils/render-strategy.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresence } from '../presence/index.tsx'
 import { useTourContext } from './use-tour-context.ts'
+import type { ContentState } from '@zag-js/tour'
 
-export interface TourContentBaseProps extends PolymorphicProps<'div'> {}
+export interface TourContentState extends ContentState {}
+
+export interface TourContentBaseProps extends PolymorphicProps<'div', TourContentState> {}
 export interface TourContentProps extends HTMLProps<'div'>, TourContentBaseProps {}
 
 export const TourContent = (props: TourContentProps) => {
@@ -21,7 +24,7 @@ export const TourContent = (props: TourContentProps) => {
 
   return (
     <Show when={!presence().unmounted}>
-      <ark.div {...mergedProps} ref={composeRefs(presence().ref, props.ref)} />
+      <ark.div {...mergedProps} ref={composeRefs(presence().ref, props.ref)} state={tour().getContentState()} />
     </Show>
   )
 }

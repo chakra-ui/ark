@@ -3,12 +3,15 @@ import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import type { UseCheckboxReturn } from './use-checkbox.ts'
 import { CheckboxProvider } from './use-checkbox-context.ts'
+import type { RootState } from '@zag-js/checkbox'
 
 interface RootProviderProps {
   value: UseCheckboxReturn
 }
 
-export interface CheckboxRootProviderBaseProps extends PolymorphicProps<'label'> {}
+export interface CheckboxRootProviderState extends RootState {}
+
+export interface CheckboxRootProviderBaseProps extends PolymorphicProps<'label', CheckboxRootProviderState> {}
 export interface CheckboxRootProviderProps
   extends HTMLProps<'label'>, RootProviderProps, CheckboxRootProviderBaseProps {}
 
@@ -18,7 +21,7 @@ export const CheckboxRootProvider = (props: CheckboxRootProviderProps) => {
 
   return (
     <CheckboxProvider value={checkbox}>
-      <ark.label {...mergedProps} />
+      <ark.label {...mergedProps} state={checkbox().getRootState()} />
     </CheckboxProvider>
   )
 }

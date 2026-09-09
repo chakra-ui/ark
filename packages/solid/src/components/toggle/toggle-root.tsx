@@ -3,8 +3,11 @@ import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { type UseToggleProps, useToggle } from './use-toggle.ts'
 import { ToggleProvider } from './use-toggle-context.ts'
+import type { RootState } from '@zag-js/toggle'
 
-export interface ToggleRootBaseProps extends UseToggleProps, PolymorphicProps<'button'> {}
+export interface ToggleRootState extends RootState {}
+
+export interface ToggleRootBaseProps extends UseToggleProps, PolymorphicProps<'button', ToggleRootState> {}
 
 export interface ToggleRootProps extends HTMLProps<'button'>, ToggleRootBaseProps {}
 
@@ -21,7 +24,7 @@ export const ToggleRoot = (props: ToggleRootProps) => {
 
   return (
     <ToggleProvider value={toggle}>
-      <ark.button {...mergedProps} />
+      <ark.button {...mergedProps} state={toggle().getRootState()} />
     </ToggleProvider>
   )
 }

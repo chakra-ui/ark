@@ -7,12 +7,16 @@ import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresenc
 import type { UseComboboxReturn } from './use-combobox.ts'
 import { ComboboxProvider } from './use-combobox-context.ts'
 import type { CollectionItem } from '../collection/index.tsx'
+import type { RootState } from '@zag-js/combobox'
 
 interface RootProviderProps<T extends CollectionItem> {
   value: UseComboboxReturn<T>
 }
+
+export interface ComboboxRootProviderState extends RootState {}
+
 export interface ComboboxRootProviderBaseProps<T extends CollectionItem>
-  extends RootProviderProps<T>, UsePresenceProps, PolymorphicProps<'div'> {}
+  extends RootProviderProps<T>, UsePresenceProps, PolymorphicProps<'div', ComboboxRootProviderState> {}
 export interface ComboboxRootProviderProps<T extends CollectionItem>
   extends HTMLProps<'div'>, ComboboxRootProviderBaseProps<T> {}
 
@@ -26,7 +30,7 @@ export const ComboboxRootProvider = <T extends CollectionItem>(props: ComboboxRo
   return (
     <ComboboxProvider value={combobox}>
       <PresenceProvider value={apiPresence}>
-        <ark.div {...mergedProps} />
+        <ark.div {...mergedProps} state={combobox().getRootState()} />
       </PresenceProvider>
     </ComboboxProvider>
   )

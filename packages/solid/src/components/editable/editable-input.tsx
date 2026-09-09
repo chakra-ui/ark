@@ -2,8 +2,11 @@ import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useFieldContext } from '../field/index.tsx'
 import { useEditableContext } from './use-editable-context.ts'
+import type { InputState } from '@zag-js/editable'
 
-export interface EditableInputBaseProps extends PolymorphicProps<'input'> {}
+export interface EditableInputState extends InputState {}
+
+export interface EditableInputBaseProps extends PolymorphicProps<'input', EditableInputState> {}
 export interface EditableInputProps extends HTMLProps<'input'>, EditableInputBaseProps {}
 
 export const EditableInput = (props: EditableInputProps) => {
@@ -11,5 +14,5 @@ export const EditableInput = (props: EditableInputProps) => {
   const mergedProps = mergeProps(() => api().getInputProps(), props)
   const field = useFieldContext()
 
-  return <ark.input aria-describedby={field?.().ariaDescribedby} {...mergedProps} />
+  return <ark.input aria-describedby={field?.().ariaDescribedby} {...mergedProps} state={api().getInputState()} />
 }

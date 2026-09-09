@@ -5,8 +5,11 @@ import { useRenderStrategyContext } from '../../utils/render-strategy.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresence } from '../presence/index.tsx'
 import { useDrawerContext } from './use-drawer-context.ts'
+import type { BackdropState } from '@zag-js/drawer'
 
-export interface DrawerBackdropBaseProps extends PolymorphicProps<'div'> {}
+export interface DrawerBackdropState extends BackdropState {}
+
+export interface DrawerBackdropBaseProps extends PolymorphicProps<'div', DrawerBackdropState> {}
 export interface DrawerBackdropProps extends HTMLProps<'div'>, DrawerBackdropBaseProps {}
 
 export const DrawerBackdrop = (props: DrawerBackdropProps) => {
@@ -21,7 +24,7 @@ export const DrawerBackdrop = (props: DrawerBackdropProps) => {
 
   return (
     <Show when={!presence().unmounted}>
-      <ark.div {...mergedProps} ref={composeRefs(presence().ref, props.ref)} />
+      <ark.div {...mergedProps} ref={composeRefs(presence().ref, props.ref)} state={drawer().getBackdropState()} />
     </Show>
   )
 }

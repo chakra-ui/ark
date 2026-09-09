@@ -1,4 +1,4 @@
-import type { ItemProps } from '@zag-js/listbox'
+import type { ItemProps, ItemState } from '@zag-js/listbox'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
@@ -6,7 +6,9 @@ import { useListboxContext } from './use-listbox-context.ts'
 import { ListboxItemProvider } from './use-listbox-item-context.ts'
 import { ListboxItemPropsProvider } from './use-listbox-item-props-context.ts'
 
-export interface ListboxItemBaseProps extends ItemProps, PolymorphicProps<'div'> {}
+export interface ListboxItemState extends ItemState {}
+
+export interface ListboxItemBaseProps extends ItemProps, PolymorphicProps<'div', ListboxItemState> {}
 export interface ListboxItemProps extends HTMLProps<'div'>, ListboxItemBaseProps {}
 
 export const ListboxItem = (props: ListboxItemProps) => {
@@ -18,7 +20,7 @@ export const ListboxItem = (props: ListboxItemProps) => {
   return (
     <ListboxItemPropsProvider value={itemProps}>
       <ListboxItemProvider value={itemState()}>
-        <ark.div {...mergedProps} />
+        <ark.div {...mergedProps} state={listbox().getItemState(itemProps)} />
       </ListboxItemProvider>
     </ListboxItemPropsProvider>
   )

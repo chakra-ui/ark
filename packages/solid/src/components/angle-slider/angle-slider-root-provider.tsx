@@ -3,12 +3,16 @@ import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import type { UseAngleSliderReturn } from './use-angle-slider.ts'
 import { AngleSliderProvider } from './use-angle-slider-context.ts'
+import type { RootState } from '@zag-js/angle-slider'
 
 interface RootProviderProps {
   value: UseAngleSliderReturn
 }
 
-export interface AngleSliderRootProviderBaseProps extends RootProviderProps, PolymorphicProps<'div'> {}
+export interface AngleSliderRootProviderState extends RootState {}
+
+export interface AngleSliderRootProviderBaseProps
+  extends RootProviderProps, PolymorphicProps<'div', AngleSliderRootProviderState> {}
 export interface AngleSliderRootProviderProps extends HTMLProps<'div'>, AngleSliderRootProviderBaseProps {}
 
 export const AngleSliderRootProvider = (props: AngleSliderRootProviderProps) => {
@@ -17,7 +21,7 @@ export const AngleSliderRootProvider = (props: AngleSliderRootProviderProps) => 
 
   return (
     <AngleSliderProvider value={rootProps.value}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} state={rootProps.value().getRootState()} />
     </AngleSliderProvider>
   )
 }

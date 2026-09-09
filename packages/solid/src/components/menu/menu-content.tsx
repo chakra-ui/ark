@@ -4,8 +4,11 @@ import { composeRefs } from '../../utils/compose-refs.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresenceContext } from '../presence/index.tsx'
 import { useMenuContext } from './use-menu-context.ts'
+import type { ContentState } from '@zag-js/menu'
 
-export interface MenuContentBaseProps extends PolymorphicProps<'div'> {}
+export interface MenuContentState extends ContentState {}
+
+export interface MenuContentBaseProps extends PolymorphicProps<'div', MenuContentState> {}
 export interface MenuContentProps extends HTMLProps<'div'>, MenuContentBaseProps {}
 
 export const MenuContent = (props: MenuContentProps) => {
@@ -19,7 +22,11 @@ export const MenuContent = (props: MenuContentProps) => {
 
   return (
     <Show when={!presenceContext().unmounted}>
-      <ark.div {...mergedProps} ref={composeRefs(presenceContext().ref, props.ref)} />
+      <ark.div
+        {...mergedProps}
+        ref={composeRefs(presenceContext().ref, props.ref)}
+        state={context().getContentState()}
+      />
     </Show>
   )
 }

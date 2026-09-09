@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { warn } from '@zag-js/utils'
-import { type ComponentProps, type JSX, splitProps } from 'solid-js'
+import { type Accessor, type ComponentProps, type JSX, splitProps } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
 import type { Assign } from '../types.ts'
 
@@ -17,7 +17,7 @@ export type EmptyState = Record<never, never>
 // intentionally `any`: the props are spread onto arbitrary user components, `unknown` would break that
 export type RenderProps = Record<string, any>
 
-export type RenderFn<State> = (props: RenderProps, state: State) => JSX.Element
+export type RenderFn<State> = (props: RenderProps, state: Accessor<State>) => JSX.Element
 
 export type PolymorphicProps<T extends ElementType, State = EmptyState> = {
   /**
@@ -71,7 +71,7 @@ const withRender = <T extends ElementType>(Component: T) => {
     const [, restProps] = splitProps(parentProps, ['ref'])
 
     if (localProps.render) {
-      return localProps.render(restProps as RenderProps, localProps.state ?? EMPTY_STATE)
+      return localProps.render(restProps as RenderProps, () => localProps.state ?? EMPTY_STATE)
     }
 
     if (localProps.asChild) {

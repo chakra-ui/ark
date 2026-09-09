@@ -5,8 +5,11 @@ import { useRenderStrategyContext } from '../../utils/render-strategy.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresence } from '../presence/index.tsx'
 import { useTourContext } from './use-tour-context.ts'
+import type { BackdropState } from '@zag-js/tour'
 
-export interface TourBackdropBaseProps extends PolymorphicProps<'div'> {}
+export interface TourBackdropState extends BackdropState {}
+
+export interface TourBackdropBaseProps extends PolymorphicProps<'div', TourBackdropState> {}
 export interface TourBackdropProps extends HTMLProps<'div'>, TourBackdropBaseProps {}
 
 export const TourBackdrop = (props: TourBackdropProps) => {
@@ -21,7 +24,12 @@ export const TourBackdrop = (props: TourBackdropProps) => {
 
   return (
     <Show when={!presence().unmounted}>
-      <ark.div {...mergedProps} hidden={!tour().step?.backdrop} ref={composeRefs(presence().ref, props.ref)} />
+      <ark.div
+        {...mergedProps}
+        hidden={!tour().step?.backdrop}
+        ref={composeRefs(presence().ref, props.ref)}
+        state={tour().getBackdropState()}
+      />
     </Show>
   )
 }

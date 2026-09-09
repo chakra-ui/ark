@@ -3,8 +3,11 @@ import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { type UseDateInputProps, useDateInput } from './use-date-input.ts'
 import { DateInputProvider } from './use-date-input-context.ts'
+import type { RootState } from '@zag-js/date-input'
 
-export interface DateInputRootBaseProps extends UseDateInputProps, PolymorphicProps<'div'> {}
+export interface DateInputRootState extends RootState {}
+
+export interface DateInputRootBaseProps extends UseDateInputProps, PolymorphicProps<'div', DateInputRootState> {}
 export interface DateInputRootProps extends HTMLProps<'div'>, DateInputRootBaseProps {}
 
 export const DateInputRoot = (props: DateInputRootProps) => {
@@ -45,7 +48,7 @@ export const DateInputRoot = (props: DateInputRootProps) => {
 
   return (
     <DateInputProvider value={api}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} state={api().getRootState()} />
     </DateInputProvider>
   )
 }

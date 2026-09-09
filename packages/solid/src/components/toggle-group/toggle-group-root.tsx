@@ -3,8 +3,11 @@ import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { type UseToggleGroupProps, useToggleGroup } from './use-toggle-group.ts'
 import { ToggleGroupProvider } from './use-toggle-group-context.ts'
+import type { RootState } from '@zag-js/toggle-group'
 
-export interface ToggleGroupRootBaseProps extends UseToggleGroupProps, PolymorphicProps<'div'> {}
+export interface ToggleGroupRootState extends RootState {}
+
+export interface ToggleGroupRootBaseProps extends UseToggleGroupProps, PolymorphicProps<'div', ToggleGroupRootState> {}
 export interface ToggleGroupRootProps extends HTMLProps<'div'>, ToggleGroupRootBaseProps {}
 
 export const ToggleGroupRoot = (props: ToggleGroupRootProps) => {
@@ -27,7 +30,7 @@ export const ToggleGroupRoot = (props: ToggleGroupRootProps) => {
 
   return (
     <ToggleGroupProvider value={api}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} state={api().getRootState()} />
     </ToggleGroupProvider>
   )
 }

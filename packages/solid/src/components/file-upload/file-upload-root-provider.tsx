@@ -3,12 +3,15 @@ import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import type { UseFileUploadReturn } from './use-file-upload.ts'
 import { FileUploadProvider } from './use-file-upload-context.ts'
+import type { RootState } from '@zag-js/file-upload'
 
 interface RootProviderProps {
   value: UseFileUploadReturn
 }
 
-export interface FileUploadRootProviderBaseProps extends PolymorphicProps<'div'> {}
+export interface FileUploadRootProviderState extends RootState {}
+
+export interface FileUploadRootProviderBaseProps extends PolymorphicProps<'div', FileUploadRootProviderState> {}
 export interface FileUploadRootProviderProps
   extends HTMLProps<'div'>, RootProviderProps, FileUploadRootProviderBaseProps {}
 
@@ -18,7 +21,7 @@ export const FileUploadRootProvider = (props: FileUploadRootProviderProps) => {
 
   return (
     <FileUploadProvider value={fileUpload}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} state={fileUpload().getRootState()} />
     </FileUploadProvider>
   )
 }

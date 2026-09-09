@@ -1,12 +1,14 @@
 import { mergeProps } from '@zag-js/solid'
-import type { TriggerProps } from '@zag-js/drawer'
+import type { TriggerProps, TriggerState } from '@zag-js/drawer'
 import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresenceContext } from '../presence/index.tsx'
 import { useDrawerContext } from './use-drawer-context.ts'
 
-export interface DrawerTriggerBaseProps extends TriggerProps, PolymorphicProps<'button'> {}
+export interface DrawerTriggerState extends TriggerState {}
+
+export interface DrawerTriggerBaseProps extends TriggerProps, PolymorphicProps<'button', DrawerTriggerState> {}
 export interface DrawerTriggerProps extends Assign<HTMLProps<'button'>, DrawerTriggerBaseProps> {}
 
 export const DrawerTrigger = (props: DrawerTriggerProps) => {
@@ -19,5 +21,5 @@ export const DrawerTrigger = (props: DrawerTriggerProps) => {
     localProps,
   )
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps} state={drawer().getTriggerState(triggerProps)} />
 }
