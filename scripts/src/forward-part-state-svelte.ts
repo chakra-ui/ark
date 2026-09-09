@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync } from 'node:fs'
-import { dirname, join, resolve } from 'node:path'
+import { dirname, resolve } from 'node:path'
 import { globbySync } from 'globby'
 
 const root = resolve(dirname(new URL(import.meta.url).pathname), '../..')
