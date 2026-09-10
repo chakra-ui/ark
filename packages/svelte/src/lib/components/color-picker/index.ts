@@ -59,6 +59,7 @@ export {
   default as ColorPickerContent,
   type ColorPickerContentBaseProps,
   type ColorPickerContentProps,
+  type ColorPickerContentState,
 } from './color-picker-content.svelte'
 export {
   default as ColorPickerControl,
@@ -99,11 +100,13 @@ export {
   default as ColorPickerRoot,
   type ColorPickerRootBaseProps,
   type ColorPickerRootProps,
+  type ColorPickerRootState,
 } from './color-picker-root.svelte'
 export {
   default as ColorPickerRootProvider,
   type ColorPickerRootProviderBaseProps,
   type ColorPickerRootProviderProps,
+  type ColorPickerRootProviderState,
 } from './color-picker-root-provider.svelte'
 export {
   default as ColorPickerSwatch,
@@ -124,6 +127,7 @@ export {
   default as ColorPickerSwatchTrigger,
   type ColorPickerSwatchTriggerBaseProps,
   type ColorPickerSwatchTriggerProps,
+  type ColorPickerSwatchTriggerState,
 } from './color-picker-swatch-trigger.svelte'
 export {
   default as ColorPickerTransparencyGrid,
@@ -134,6 +138,7 @@ export {
   default as ColorPickerTrigger,
   type ColorPickerTriggerBaseProps,
   type ColorPickerTriggerProps,
+  type ColorPickerTriggerState,
 } from './color-picker-trigger.svelte'
 export {
   default as ColorPickerValueSwatch,

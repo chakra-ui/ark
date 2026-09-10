@@ -4,7 +4,12 @@ export type {
   PointerDownOutsideEvent as EditablePointerDownOutsideEvent,
   ValueChangeDetails as EditableValueChangeDetails,
 } from '@zag-js/editable'
-export { default as EditableArea, type EditableAreaBaseProps, type EditableAreaProps } from './editable-area.svelte'
+export {
+  default as EditableArea,
+  type EditableAreaBaseProps,
+  type EditableAreaProps,
+  type EditableAreaState,
+} from './editable-area.svelte'
 export {
   default as EditableCancelTrigger,
   type EditableCancelTriggerBaseProps,
@@ -21,12 +26,23 @@ export {
   type EditableEditTriggerBaseProps,
   type EditableEditTriggerProps,
 } from './editable-edit-trigger.svelte'
-export { default as EditableInput, type EditableInputBaseProps, type EditableInputProps } from './editable-input.svelte'
-export { default as EditableLabel, type EditableLabelBaseProps, type EditableLabelProps } from './editable-label.svelte'
+export {
+  default as EditableInput,
+  type EditableInputBaseProps,
+  type EditableInputProps,
+  type EditableInputState,
+} from './editable-input.svelte'
+export {
+  default as EditableLabel,
+  type EditableLabelBaseProps,
+  type EditableLabelProps,
+  type EditableLabelState,
+} from './editable-label.svelte'
 export {
   default as EditablePreview,
   type EditablePreviewBaseProps,
   type EditablePreviewProps,
+  type EditablePreviewState,
 } from './editable-preview.svelte'
 export { default as EditableRoot, type EditableRootBaseProps, type EditableRootProps } from './editable-root.svelte'
 export {

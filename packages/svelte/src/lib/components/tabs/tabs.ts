@@ -3,6 +3,7 @@ export {
   default as Content,
   type TabsContentBaseProps as ContentBaseProps,
   type TabsContentProps as ContentProps,
+  type TabsContentState as ContentState,
 } from './tabs-content.svelte'
 export { default as Context, type TabsContextProps as ContextProps } from './tabs-context.svelte'
 export {
@@ -29,4 +30,5 @@ export {
   default as Trigger,
   type TabsTriggerBaseProps as TriggerBaseProps,
   type TabsTriggerProps as TriggerProps,
+  type TabsTriggerState as TriggerState,
 } from './tabs-trigger.svelte'

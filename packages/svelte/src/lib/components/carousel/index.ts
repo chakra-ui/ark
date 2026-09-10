@@ -28,13 +28,19 @@ export {
   default as CarouselIndicator,
   type CarouselIndicatorBaseProps,
   type CarouselIndicatorProps,
+  type CarouselIndicatorState,
 } from './carousel-indicator.svelte'
 export {
   default as CarouselIndicatorGroup,
   type CarouselIndicatorGroupBaseProps,
   type CarouselIndicatorGroupProps,
 } from './carousel-indicator-group.svelte'
-export { default as CarouselItem, type CarouselItemBaseProps, type CarouselItemProps } from './carousel-item.svelte'
+export {
+  default as CarouselItem,
+  type CarouselItemBaseProps,
+  type CarouselItemProps,
+  type CarouselItemState,
+} from './carousel-item.svelte'
 export {
   default as CarouselItemGroup,
   type CarouselItemGroupBaseProps,

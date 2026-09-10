@@ -8,6 +8,7 @@ export {
   default as Corner,
   type ScrollAreaCornerBaseProps as CornerBaseProps,
   type ScrollAreaCornerProps as CornerProps,
+  type ScrollAreaCornerState as CornerState,
 } from './scroll-area-corner.svelte'
 export {
   default as Root,

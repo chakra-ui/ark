@@ -9,13 +9,19 @@ export {
   default as DialogBackdrop,
   type DialogBackdropBaseProps,
   type DialogBackdropProps,
+  type DialogBackdropState,
 } from './dialog-backdrop.vue'
 export {
   default as DialogCloseTrigger,
   type DialogCloseTriggerBaseProps,
   type DialogCloseTriggerProps,
 } from './dialog-close-trigger.vue'
-export { default as DialogContent, type DialogContentBaseProps, type DialogContentProps } from './dialog-content.vue'
+export {
+  default as DialogContent,
+  type DialogContentBaseProps,
+  type DialogContentProps,
+  type DialogContentState,
+} from './dialog-content.vue'
 export { default as DialogContext, type DialogContextProps } from './dialog-context.vue'
 export {
   default as DialogDescription,
@@ -26,6 +32,7 @@ export {
   default as DialogPositioner,
   type DialogPositionerBaseProps,
   type DialogPositionerProps,
+  type DialogPositionerState,
 } from './dialog-positioner.vue'
 export {
   default as DialogRootProvider,
@@ -40,7 +47,12 @@ export {
   type DialogRootProps,
 } from './dialog-root.vue'
 export { default as DialogTitle, type DialogTitleBaseProps, type DialogTitleProps } from './dialog-title.vue'
-export { default as DialogTrigger, type DialogTriggerBaseProps, type DialogTriggerProps } from './dialog-trigger.vue'
+export {
+  default as DialogTrigger,
+  type DialogTriggerBaseProps,
+  type DialogTriggerProps,
+  type DialogTriggerState,
+} from './dialog-trigger.vue'
 export { dialogAnatomy } from './dialog.anatomy.ts'
 export { useDialog, type UseDialogProps, type UseDialogReturn } from './use-dialog.ts'
 export { useDialogContext, type UseDialogContext } from './use-dialog-context.ts'

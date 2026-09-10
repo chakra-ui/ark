@@ -16,6 +16,7 @@ export {
   SelectContent as Content,
   type SelectContentBaseProps as ContentBaseProps,
   type SelectContentProps as ContentProps,
+  type SelectContentState as ContentState,
 } from './select-content.tsx'
 export { SelectContext as Context, type SelectContextProps as ContextProps } from './select-context.tsx'
 export {
@@ -37,6 +38,7 @@ export {
   SelectItem as Item,
   type SelectItemBaseProps as ItemBaseProps,
   type SelectItemProps as ItemProps,
+  type SelectItemState as ItemState,
 } from './select-item.tsx'
 export {
   SelectItemContext as ItemContext,
@@ -83,17 +85,20 @@ export {
   type SelectRootProps as RootProps,
   type SelectRootComponent as RootComponent,
   type SelectRootComponentProps as RootComponentProps,
+  type SelectRootState as RootState,
 } from './select-root.tsx'
 export {
   SelectRootProvider as RootProvider,
   type SelectRootProviderBaseProps as RootProviderBaseProps,
   type SelectRootProviderProps as RootProviderProps,
   type SelectRootProviderComponent as RootProviderComponent,
+  type SelectRootProviderState as RootProviderState,
 } from './select-root-provider.tsx'
 export {
   SelectTrigger as Trigger,
   type SelectTriggerBaseProps as TriggerBaseProps,
   type SelectTriggerProps as TriggerProps,
+  type SelectTriggerState as TriggerState,
 } from './select-trigger.tsx'
 export {
   SelectValueText as ValueText,

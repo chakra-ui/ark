@@ -11,6 +11,7 @@ export {
   SplitterResizeTrigger as ResizeTrigger,
   type SplitterResizeTriggerBaseProps as ResizeTriggerBaseProps,
   type SplitterResizeTriggerProps as ResizeTriggerProps,
+  type SplitterResizeTriggerState as ResizeTriggerState,
 } from './splitter-resize-trigger.tsx'
 export {
   SplitterResizeTriggerIndicator as ResizeTriggerIndicator,

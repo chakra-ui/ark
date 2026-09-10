@@ -21,6 +21,7 @@ export {
   default as PopoverContent,
   type PopoverContentBaseProps,
   type PopoverContentProps,
+  type PopoverContentState,
 } from './popover-content.svelte'
 export { default as PopoverContext, type PopoverContextProps } from './popover-context.svelte'
 export {
@@ -37,6 +38,7 @@ export {
   default as PopoverPositioner,
   type PopoverPositionerBaseProps,
   type PopoverPositionerProps,
+  type PopoverPositionerState,
 } from './popover-positioner.svelte'
 export {
   default as PopoverRootProvider,
@@ -49,6 +51,7 @@ export {
   default as PopoverTrigger,
   type PopoverTriggerBaseProps,
   type PopoverTriggerProps,
+  type PopoverTriggerState,
 } from './popover-trigger.svelte'
 export { popoverAnatomy } from './popover.anatomy.ts'
 export { usePopoverContext } from './use-popover-context.ts'

@@ -4,6 +4,7 @@ export {
   AccordionItem as Item,
   type AccordionItemBaseProps as ItemBaseProps,
   type AccordionItemProps as ItemProps,
+  type AccordionItemState as ItemState,
 } from './accordion-item.tsx'
 export {
   AccordionItemContent as ItemContent,

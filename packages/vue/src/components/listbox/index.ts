@@ -11,10 +11,16 @@ export {
   default as ListboxContent,
   type ListboxContentBaseProps,
   type ListboxContentProps,
+  type ListboxContentState,
 } from './listbox-content.vue'
 export { default as ListboxEmpty, type ListboxEmptyBaseProps, type ListboxEmptyProps } from './listbox-empty.vue'
 export { default as ListboxInput, type ListboxInputBaseProps, type ListboxInputProps } from './listbox-input.vue'
-export { default as ListboxItem, type ListboxItemBaseProps, type ListboxItemProps } from './listbox-item.vue'
+export {
+  default as ListboxItem,
+  type ListboxItemBaseProps,
+  type ListboxItemProps,
+  type ListboxItemState,
+} from './listbox-item.vue'
 export { default as ListboxItemContext, type ListboxItemContextProps } from './listbox-item-context.vue'
 export {
   default as ListboxItemGroup,
@@ -37,7 +43,12 @@ export {
   type ListboxItemTextProps,
 } from './listbox-item-text.vue'
 export { default as ListboxLabel, type ListboxLabelBaseProps, type ListboxLabelProps } from './listbox-label.vue'
-export { default as ListboxList, type ListboxListBaseProps, type ListboxListProps } from './listbox-list.vue'
+export {
+  default as ListboxList,
+  type ListboxListBaseProps,
+  type ListboxListProps,
+  type ListboxListState,
+} from './listbox-list.vue'
 export {
   default as ListboxRoot,
   type ListboxRootBaseProps,

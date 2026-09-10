@@ -19,12 +19,14 @@ export {
   HoverCardContent as Content,
   type HoverCardContentBaseProps as ContentBaseProps,
   type HoverCardContentProps as ContentProps,
+  type HoverCardContentState as ContentState,
 } from './hover-card-content.tsx'
 export { HoverCardContext as Context, type HoverCardContextProps as ContextProps } from './hover-card-context.tsx'
 export {
   HoverCardPositioner as Positioner,
   type HoverCardPositionerBaseProps as PositionerBaseProps,
   type HoverCardPositionerProps as PositionerProps,
+  type HoverCardPositionerState as PositionerState,
 } from './hover-card-positioner.tsx'
 export {
   HoverCardRoot as Root,
@@ -40,4 +42,5 @@ export {
   HoverCardTrigger as Trigger,
   type HoverCardTriggerBaseProps as TriggerBaseProps,
   type HoverCardTriggerProps as TriggerProps,
+  type HoverCardTriggerState as TriggerState,
 } from './hover-card-trigger.tsx'

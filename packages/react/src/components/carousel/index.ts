@@ -24,13 +24,19 @@ export {
   CarouselIndicator,
   type CarouselIndicatorBaseProps,
   type CarouselIndicatorProps,
+  type CarouselIndicatorState,
 } from './carousel-indicator.tsx'
 export {
   CarouselIndicatorGroup,
   type CarouselIndicatorGroupBaseProps,
   type CarouselIndicatorGroupProps,
 } from './carousel-indicator-group.tsx'
-export { CarouselItem, type CarouselItemBaseProps, type CarouselItemProps } from './carousel-item.tsx'
+export {
+  CarouselItem,
+  type CarouselItemBaseProps,
+  type CarouselItemProps,
+  type CarouselItemState,
+} from './carousel-item.tsx'
 export {
   CarouselItemGroup,
   type CarouselItemGroupBaseProps,

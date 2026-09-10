@@ -49,7 +49,12 @@ export {
   type TagsInputItemTextBaseProps,
   type TagsInputItemTextProps,
 } from './tags-input-item-text.vue'
-export { default as TagsInputItem, type TagsInputItemBaseProps, type TagsInputItemProps } from './tags-input-item.vue'
+export {
+  default as TagsInputItem,
+  type TagsInputItemBaseProps,
+  type TagsInputItemProps,
+  type TagsInputItemState,
+} from './tags-input-item.vue'
 export {
   default as TagsInputLabel,
   type TagsInputLabelBaseProps,
@@ -59,12 +64,14 @@ export {
   default as TagsInputRootProvider,
   type TagsInputRootProviderBaseProps,
   type TagsInputRootProviderProps,
+  type TagsInputRootProviderState,
 } from './tags-input-root-provider.vue'
 export {
   default as TagsInputRoot,
   type TagsInputRootBaseProps,
   type TagsInputRootEmits,
   type TagsInputRootProps,
+  type TagsInputRootState,
 } from './tags-input-root.vue'
 export { tagsInputAnatomy } from './tags-input.anatomy.ts'
 export { useTagsInput, type UseTagsInputProps, type UseTagsInputReturn } from './use-tags-input.ts'

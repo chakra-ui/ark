@@ -12,7 +12,12 @@ export {
   type StepsIndicatorProps,
 } from './steps-indicator.vue'
 export { default as StepsItemContext, type StepsItemContextProps } from './steps-item-context.vue'
-export { default as StepsItem, type StepsItemBaseProps, type StepsItemProps } from './steps-item.vue'
+export {
+  default as StepsItem,
+  type StepsItemBaseProps,
+  type StepsItemProps,
+  type StepsItemState,
+} from './steps-item.vue'
 export { default as StepsList, type StepsListBaseProps, type StepsListProps } from './steps-list.vue'
 export {
   default as StepsNextTrigger,

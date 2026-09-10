@@ -9,13 +9,19 @@ export {
   default as DialogBackdrop,
   type DialogBackdropBaseProps,
   type DialogBackdropProps,
+  type DialogBackdropState,
 } from './dialog-backdrop.svelte'
 export {
   default as DialogCloseTrigger,
   type DialogCloseTriggerBaseProps,
   type DialogCloseTriggerProps,
 } from './dialog-close-trigger.svelte'
-export { default as DialogContent, type DialogContentBaseProps, type DialogContentProps } from './dialog-content.svelte'
+export {
+  default as DialogContent,
+  type DialogContentBaseProps,
+  type DialogContentProps,
+  type DialogContentState,
+} from './dialog-content.svelte'
 export { default as DialogContext, type DialogContextProps } from './dialog-context.svelte'
 export {
   default as DialogDescription,
@@ -26,6 +32,7 @@ export {
   default as Positioner,
   type DialogPositionerBaseProps,
   type DialogPositionerProps,
+  type DialogPositionerState,
 } from './dialog-positioner.svelte'
 export { default as Root, type DialogRootBaseProps, type DialogRootProps } from './dialog-root.svelte'
 export {
@@ -34,7 +41,12 @@ export {
   type DialogRootProviderProps,
 } from './dialog-root-provider.svelte'
 export { default as Title, type DialogTitleBaseProps, type DialogTitleProps } from './dialog-title.svelte'
-export { default as Trigger, type DialogTriggerBaseProps, type DialogTriggerProps } from './dialog-trigger.svelte'
+export {
+  default as Trigger,
+  type DialogTriggerBaseProps,
+  type DialogTriggerProps,
+  type DialogTriggerState,
+} from './dialog-trigger.svelte'
 export { dialogAnatomy } from './dialog.anatomy.ts'
 export { useDialogContext } from './use-dialog-context.ts'
 export type { UseDialogContext } from './use-dialog-context.ts'

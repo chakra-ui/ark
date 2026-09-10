@@ -20,12 +20,22 @@ export {
   type ComboboxClearTriggerBaseProps,
   type ComboboxClearTriggerProps,
 } from './combobox-clear-trigger.tsx'
-export { ComboboxContent, type ComboboxContentBaseProps, type ComboboxContentProps } from './combobox-content.tsx'
+export {
+  ComboboxContent,
+  type ComboboxContentBaseProps,
+  type ComboboxContentProps,
+  type ComboboxContentState,
+} from './combobox-content.tsx'
 export { ComboboxEmpty, type ComboboxEmptyBaseProps, type ComboboxEmptyProps } from './combobox-empty.tsx'
 export { ComboboxContext, type ComboboxContextProps } from './combobox-context.tsx'
 export { ComboboxControl, type ComboboxControlBaseProps, type ComboboxControlProps } from './combobox-control.tsx'
 export { ComboboxInput, type ComboboxInputBaseProps, type ComboboxInputProps } from './combobox-input.tsx'
-export { ComboboxItem, type ComboboxItemBaseProps, type ComboboxItemProps } from './combobox-item.tsx'
+export {
+  ComboboxItem,
+  type ComboboxItemBaseProps,
+  type ComboboxItemProps,
+  type ComboboxItemState,
+} from './combobox-item.tsx'
 export { ComboboxItemContext, type ComboboxItemContextProps } from './combobox-item-context.tsx'
 export {
   ComboboxItemGroup,
@@ -56,14 +66,21 @@ export {
   type ComboboxRootProps,
   type ComboboxRootComponent,
   type ComboboxRootComponentProps,
+  type ComboboxRootState,
 } from './combobox-root.tsx'
 export {
   ComboboxRootProvider,
   type ComboboxRootProviderBaseProps,
   type ComboboxRootProviderProps,
   type ComboboxRootProviderComponent,
+  type ComboboxRootProviderState,
 } from './combobox-root-provider.tsx'
-export { ComboboxTrigger, type ComboboxTriggerBaseProps, type ComboboxTriggerProps } from './combobox-trigger.tsx'
+export {
+  ComboboxTrigger,
+  type ComboboxTriggerBaseProps,
+  type ComboboxTriggerProps,
+  type ComboboxTriggerState,
+} from './combobox-trigger.tsx'
 export { comboboxAnatomy } from './combobox.anatomy.ts'
 export { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox.ts'
 export { useComboboxContext, type UseComboboxContext } from './use-combobox-context.ts'

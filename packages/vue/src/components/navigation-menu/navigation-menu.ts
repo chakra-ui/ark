@@ -8,6 +8,7 @@ export {
   default as Content,
   type NavigationMenuContentProps as ContentProps,
   type NavigationMenuContentBaseProps as ContentBaseProps,
+  type NavigationMenuContentState as ContentState,
 } from './navigation-menu-content.vue'
 export { default as Context, type NavigationMenuContextProps as ContextProps } from './navigation-menu-context.vue'
 export {
@@ -19,6 +20,7 @@ export {
   default as Item,
   type NavigationMenuItemProps as ItemProps,
   type NavigationMenuItemBaseProps as ItemBaseProps,
+  type NavigationMenuItemState as ItemState,
 } from './navigation-menu-item.vue'
 export {
   default as ItemIndicator,
@@ -50,6 +52,7 @@ export {
   default as Trigger,
   type NavigationMenuTriggerProps as TriggerProps,
   type NavigationMenuTriggerBaseProps as TriggerBaseProps,
+  type NavigationMenuTriggerState as TriggerState,
 } from './navigation-menu-trigger.vue'
 export {
   default as Viewport,

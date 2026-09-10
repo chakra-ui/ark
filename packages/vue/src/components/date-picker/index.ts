@@ -19,6 +19,7 @@ export {
   default as DatePickerContent,
   type DatePickerContentBaseProps,
   type DatePickerContentProps,
+  type DatePickerContentState,
 } from './date-picker-content.vue'
 export { default as DatePickerContext, type DatePickerContextProps } from './date-picker-context.vue'
 export {
@@ -30,6 +31,7 @@ export {
   default as DatePickerInput,
   type DatePickerInputBaseProps,
   type DatePickerInputProps,
+  type DatePickerInputState,
 } from './date-picker-input.vue'
 export {
   default as DatePickerLabel,
@@ -77,12 +79,14 @@ export {
   type DatePickerRootProviderBaseProps,
   type DatePickerRootProviderEmits,
   type DatePickerRootProviderProps,
+  type DatePickerRootProviderState,
 } from './date-picker-root-provider.vue'
 export {
   default as DatePickerRoot,
   type DatePickerRootBaseProps,
   type DatePickerRootEmits,
   type DatePickerRootProps,
+  type DatePickerRootState,
 } from './date-picker-root.vue'
 export {
   default as DatePickerTableBody,
@@ -123,6 +127,7 @@ export {
   default as DatePickerTrigger,
   type DatePickerTriggerBaseProps,
   type DatePickerTriggerProps,
+  type DatePickerTriggerState,
 } from './date-picker-trigger.vue'
 export {
   default as DatePickerViewControl,

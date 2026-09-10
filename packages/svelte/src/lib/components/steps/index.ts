@@ -11,7 +11,12 @@ export {
   type StepsIndicatorBaseProps,
   type StepsIndicatorProps,
 } from './steps-indicator.svelte'
-export { default as StepsItem, type StepsItemBaseProps, type StepsItemProps } from './steps-item.svelte'
+export {
+  default as StepsItem,
+  type StepsItemBaseProps,
+  type StepsItemProps,
+  type StepsItemState,
+} from './steps-item.svelte'
 export { default as StepsItemContext, type StepsItemContextProps } from './steps-item-context.svelte'
 export { default as StepsList, type StepsListBaseProps, type StepsListProps } from './steps-list.svelte'
 export {

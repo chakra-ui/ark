@@ -9,13 +9,29 @@ export {
   type PinInputHiddenInputBaseProps,
   type PinInputHiddenInputProps,
 } from './pin-input-hidden-input.tsx'
-export { PinInputInput, type PinInputInputBaseProps, type PinInputInputProps } from './pin-input-input.tsx'
-export { PinInputLabel, type PinInputLabelBaseProps, type PinInputLabelProps } from './pin-input-label.tsx'
-export { PinInputRoot, type PinInputRootBaseProps, type PinInputRootProps } from './pin-input-root.tsx'
+export {
+  PinInputInput,
+  type PinInputInputBaseProps,
+  type PinInputInputProps,
+  type PinInputInputState,
+} from './pin-input-input.tsx'
+export {
+  PinInputLabel,
+  type PinInputLabelBaseProps,
+  type PinInputLabelProps,
+  type PinInputLabelState,
+} from './pin-input-label.tsx'
+export {
+  PinInputRoot,
+  type PinInputRootBaseProps,
+  type PinInputRootProps,
+  type PinInputRootState,
+} from './pin-input-root.tsx'
 export {
   PinInputRootProvider,
   type PinInputRootProviderBaseProps,
   type PinInputRootProviderProps,
+  type PinInputRootProviderState,
 } from './pin-input-root-provider.tsx'
 export { pinInputAnatomy } from './pin-input.anatomy.ts'
 export { usePinInput, type UsePinInputProps, type UsePinInputReturn } from './use-pin-input.ts'

@@ -7,10 +7,20 @@ export type {
 } from '@zag-js/listbox'
 export { createListCollection, type CollectionItem, type ListCollection } from '../collection/index.tsx'
 export { ListboxContext, type ListboxContextProps } from './listbox-context.tsx'
-export { ListboxContent, type ListboxContentBaseProps, type ListboxContentProps } from './listbox-content.tsx'
+export {
+  ListboxContent,
+  type ListboxContentBaseProps,
+  type ListboxContentProps,
+  type ListboxContentState,
+} from './listbox-content.tsx'
 export { ListboxEmpty, type ListboxEmptyBaseProps, type ListboxEmptyProps } from './listbox-empty.tsx'
 export { ListboxInput, type ListboxInputBaseProps, type ListboxInputProps } from './listbox-input.tsx'
-export { ListboxItem, type ListboxItemBaseProps, type ListboxItemProps } from './listbox-item.tsx'
+export {
+  ListboxItem,
+  type ListboxItemBaseProps,
+  type ListboxItemProps,
+  type ListboxItemState,
+} from './listbox-item.tsx'
 export { ListboxItemContext, type ListboxItemContextProps } from './listbox-item-context.tsx'
 export { ListboxItemGroup, type ListboxItemGroupBaseProps, type ListboxItemGroupProps } from './listbox-item-group.tsx'
 export {
@@ -25,7 +35,12 @@ export {
 } from './listbox-item-indicator.tsx'
 export { ListboxItemText, type ListboxItemTextBaseProps, type ListboxItemTextProps } from './listbox-item-text.tsx'
 export { ListboxLabel, type ListboxLabelBaseProps, type ListboxLabelProps } from './listbox-label.tsx'
-export { ListboxList, type ListboxListBaseProps, type ListboxListProps } from './listbox-list.tsx'
+export {
+  ListboxList,
+  type ListboxListBaseProps,
+  type ListboxListProps,
+  type ListboxListState,
+} from './listbox-list.tsx'
 export {
   ListboxRoot,
   type ListboxRootBaseProps,

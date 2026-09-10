@@ -56,6 +56,7 @@ export {
   default as Item,
   type TagsInputItemProps as ItemProps,
   type TagsInputItemBaseProps as ItemBaseProps,
+  type TagsInputItemState as ItemState,
 } from './tags-input-item.vue'
 export {
   default as Label,
@@ -66,10 +67,12 @@ export {
   default as RootProvider,
   type TagsInputRootProviderProps as RootProviderProps,
   type TagsInputRootProviderBaseProps as RootProviderBaseProps,
+  type TagsInputRootProviderState as RootProviderState,
 } from './tags-input-root-provider.vue'
 export {
   default as Root,
   type TagsInputRootEmits as RootEmits,
   type TagsInputRootBaseProps as RootBaseProps,
   type TagsInputRootProps as RootProps,
+  type TagsInputRootState as RootState,
 } from './tags-input-root.vue'

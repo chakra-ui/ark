@@ -13,19 +13,32 @@ export {
   NumberInputDecrementTrigger,
   type NumberInputDecrementTriggerBaseProps,
   type NumberInputDecrementTriggerProps,
+  type NumberInputDecrementTriggerState,
 } from './number-input-decrement-trigger.tsx'
 export {
   NumberInputIncrementTrigger,
   type NumberInputIncrementTriggerBaseProps,
   type NumberInputIncrementTriggerProps,
+  type NumberInputIncrementTriggerState,
 } from './number-input-increment-trigger.tsx'
-export { NumberInputInput, type NumberInputInputBaseProps, type NumberInputInputProps } from './number-input-input.tsx'
+export {
+  NumberInputInput,
+  type NumberInputInputBaseProps,
+  type NumberInputInputProps,
+  type NumberInputInputState,
+} from './number-input-input.tsx'
 export { NumberInputLabel, type NumberInputLabelBaseProps, type NumberInputLabelProps } from './number-input-label.tsx'
-export { NumberInputRoot, type NumberInputRootBaseProps, type NumberInputRootProps } from './number-input-root.tsx'
+export {
+  NumberInputRoot,
+  type NumberInputRootBaseProps,
+  type NumberInputRootProps,
+  type NumberInputRootState,
+} from './number-input-root.tsx'
 export {
   NumberInputRootProvider,
   type NumberInputRootProviderBaseProps,
   type NumberInputRootProviderProps,
+  type NumberInputRootProviderState,
 } from './number-input-root-provider.tsx'
 export {
   NumberInputScrubber,

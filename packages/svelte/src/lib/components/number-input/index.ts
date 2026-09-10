@@ -13,16 +13,19 @@ export {
   default as NumberInputDecrementTrigger,
   type NumberInputDecrementTriggerBaseProps,
   type NumberInputDecrementTriggerProps,
+  type NumberInputDecrementTriggerState,
 } from './number-input-decrement-trigger.svelte'
 export {
   default as NumberInputIncrementTrigger,
   type NumberInputIncrementTriggerBaseProps,
   type NumberInputIncrementTriggerProps,
+  type NumberInputIncrementTriggerState,
 } from './number-input-increment-trigger.svelte'
 export {
   default as NumberInputInput,
   type NumberInputInputBaseProps,
   type NumberInputInputProps,
+  type NumberInputInputState,
 } from './number-input-input.svelte'
 export {
   default as NumberInputLabel,
@@ -33,11 +36,13 @@ export {
   default as NumberInputRoot,
   type NumberInputRootBaseProps,
   type NumberInputRootProps,
+  type NumberInputRootState,
 } from './number-input-root.svelte'
 export {
   default as NumberInputRootProvider,
   type NumberInputRootProviderBaseProps,
   type NumberInputRootProviderProps,
+  type NumberInputRootProviderState,
 } from './number-input-root-provider.svelte'
 export {
   default as NumberInputScrubber,

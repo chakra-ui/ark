@@ -13,6 +13,7 @@ export {
   default as Content,
   type TooltipContentBaseProps as ContentBaseProps,
   type TooltipContentProps as ContentProps,
+  type TooltipContentState as ContentState,
 } from './tooltip-content.svelte'
 export { default as Context, type TooltipContextProps as ContextProps } from './tooltip-context.svelte'
 export {
@@ -34,4 +35,5 @@ export {
   default as Trigger,
   type TooltipTriggerBaseProps as TriggerBaseProps,
   type TooltipTriggerProps as TriggerProps,
+  type TooltipTriggerState as TriggerState,
 } from './tooltip-trigger.svelte'

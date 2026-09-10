@@ -3,6 +3,7 @@ export {
   CollapsibleContent,
   type CollapsibleContentBaseProps,
   type CollapsibleContentProps,
+  type CollapsibleContentState,
 } from './collapsible-content.tsx'
 export { CollapsibleContext, type CollapsibleContextProps } from './collapsible-context.tsx'
 export {
@@ -20,6 +21,7 @@ export {
   CollapsibleTrigger,
   type CollapsibleTriggerBaseProps,
   type CollapsibleTriggerProps,
+  type CollapsibleTriggerState,
 } from './collapsible-trigger.tsx'
 export { collapsibleAnatomy } from './collapsible.anatomy.ts'
 export { useCollapsible, type UseCollapsibleProps, type UseCollapsibleReturn } from './use-collapsible.ts'

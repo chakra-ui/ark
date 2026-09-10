@@ -18,6 +18,7 @@ export {
   DatePickerContent as Content,
   type DatePickerContentBaseProps as ContentBaseProps,
   type DatePickerContentProps as ContentProps,
+  type DatePickerContentState as ContentState,
 } from './date-picker-content.tsx'
 export { DatePickerContext as Context, type DatePickerContextProps as ContextProps } from './date-picker-context.tsx'
 export {
@@ -29,6 +30,7 @@ export {
   DatePickerInput as Input,
   type DatePickerInputBaseProps as InputBaseProps,
   type DatePickerInputProps as InputProps,
+  type DatePickerInputState as InputState,
 } from './date-picker-input.tsx'
 export {
   DatePickerLabel as Label,
@@ -75,11 +77,13 @@ export {
   DatePickerRoot as Root,
   type DatePickerRootBaseProps as RootBaseProps,
   type DatePickerRootProps as RootProps,
+  type DatePickerRootState as RootState,
 } from './date-picker-root.tsx'
 export {
   DatePickerRootProvider as RootProvider,
   type DatePickerRootProviderBaseProps as RootProviderBaseProps,
   type DatePickerRootProviderProps as RootProviderProps,
+  type DatePickerRootProviderState as RootProviderState,
 } from './date-picker-root-provider.tsx'
 export {
   DatePickerTable as Table,
@@ -130,6 +134,7 @@ export {
   DatePickerTrigger as Trigger,
   type DatePickerTriggerBaseProps as TriggerBaseProps,
   type DatePickerTriggerProps as TriggerProps,
+  type DatePickerTriggerState as TriggerState,
 } from './date-picker-trigger.tsx'
 export {
   DatePickerView as View,

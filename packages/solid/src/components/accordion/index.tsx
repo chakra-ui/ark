@@ -3,7 +3,12 @@ export type {
   ValueChangeDetails as AccordionValueChangeDetails,
 } from '@zag-js/accordion'
 export { AccordionContext, type AccordionContextProps } from './accordion-context.tsx'
-export { AccordionItem, type AccordionItemBaseProps, type AccordionItemProps } from './accordion-item.tsx'
+export {
+  AccordionItem,
+  type AccordionItemBaseProps,
+  type AccordionItemProps,
+  type AccordionItemState,
+} from './accordion-item.tsx'
 export {
   AccordionItemContent,
   type AccordionItemContentBaseProps,

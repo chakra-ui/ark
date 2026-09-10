@@ -15,13 +15,23 @@ export {
 export { default as TourActions, type TourActionsProps } from './tour-actions.svelte'
 export { default as TourArrowTip, type TourArrowTipBaseProps, type TourArrowTipProps } from './tour-arrow-tip.svelte'
 export { default as TourArrow, type TourArrowBaseProps, type TourArrowProps } from './tour-arrow.svelte'
-export { default as TourBackdrop, type TourBackdropBaseProps, type TourBackdropProps } from './tour-backdrop.svelte'
+export {
+  default as TourBackdrop,
+  type TourBackdropBaseProps,
+  type TourBackdropProps,
+  type TourBackdropState,
+} from './tour-backdrop.svelte'
 export {
   default as TourCloseTrigger,
   type TourCloseTriggerBaseProps,
   type TourCloseTriggerProps,
 } from './tour-close-trigger.svelte'
-export { default as TourContent, type TourContentBaseProps, type TourContentProps } from './tour-content.svelte'
+export {
+  default as TourContent,
+  type TourContentBaseProps,
+  type TourContentProps,
+  type TourContentState,
+} from './tour-content.svelte'
 export { default as TourContext, type TourContextProps } from './tour-context.svelte'
 export { default as TourControl, type TourControlBaseProps, type TourControlProps } from './tour-control.svelte'
 export {
@@ -33,6 +43,7 @@ export {
   default as TourPositioner,
   type TourPositionerBaseProps,
   type TourPositionerProps,
+  type TourPositionerState,
 } from './tour-positioner.svelte'
 export {
   default as TourProgressText,
@@ -40,7 +51,12 @@ export {
   type TourProgressTextProps,
 } from './tour-progress-text.svelte'
 export { default as TourRoot, type TourRootBaseProps, type TourRootProps } from './tour-root.svelte'
-export { default as TourSpotlight, type TourSpotlightBaseProps, type TourSpotlightProps } from './tour-spotlight.svelte'
+export {
+  default as TourSpotlight,
+  type TourSpotlightBaseProps,
+  type TourSpotlightProps,
+  type TourSpotlightState,
+} from './tour-spotlight.svelte'
 export { default as TourTitle, type TourTitleBaseProps, type TourTitleProps } from './tour-title.svelte'
 export { tourAnatomy } from './tour.anatomy.ts'
 export { useTourContext, type UseTourContext } from './use-tour-context.ts'

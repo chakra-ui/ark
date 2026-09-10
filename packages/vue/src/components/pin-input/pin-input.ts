@@ -14,20 +14,24 @@ export {
   default as Input,
   type PinInputInputProps as InputProps,
   type PinInputInputBaseProps as InputBaseProps,
+  type PinInputInputState as InputState,
 } from './pin-input-input.vue'
 export {
   default as Label,
   type PinInputLabelProps as LabelProps,
   type PinInputLabelBaseProps as LabelBaseProps,
+  type PinInputLabelState as LabelState,
 } from './pin-input-label.vue'
 export {
   default as RootProvider,
   type PinInputRootProviderProps as RootProviderProps,
   type PinInputRootProviderBaseProps as RootProviderBaseProps,
+  type PinInputRootProviderState as RootProviderState,
 } from './pin-input-root-provider.vue'
 export {
   default as Root,
   type PinInputRootEmits as RootEmits,
   type PinInputRootBaseProps as RootBaseProps,
   type PinInputRootProps as RootProps,
+  type PinInputRootState as RootState,
 } from './pin-input-root.vue'

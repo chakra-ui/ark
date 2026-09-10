@@ -33,11 +33,13 @@ export {
   default as SignaturePadRoot,
   type SignaturePadRootBaseProps,
   type SignaturePadRootProps,
+  type SignaturePadRootState,
 } from './signature-pad-root.svelte'
 export {
   default as SignaturePadRootProvider,
   type SignaturePadRootProviderBaseProps,
   type SignaturePadRootProviderProps,
+  type SignaturePadRootProviderState,
 } from './signature-pad-root-provider.svelte'
 export {
   default as SignaturePadSegment,

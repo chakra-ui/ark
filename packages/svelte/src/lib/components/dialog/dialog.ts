@@ -9,6 +9,7 @@ export {
   default as Backdrop,
   type DialogBackdropBaseProps as BackdropBaseProps,
   type DialogBackdropProps as BackdropProps,
+  type DialogBackdropState as BackdropState,
 } from './dialog-backdrop.svelte'
 export {
   default as CloseTrigger,
@@ -19,6 +20,7 @@ export {
   default as Content,
   type DialogContentBaseProps as ContentBaseProps,
   type DialogContentProps as ContentProps,
+  type DialogContentState as ContentState,
 } from './dialog-content.svelte'
 export { default as Context, type DialogContextProps as ContextProps } from './dialog-context.svelte'
 export {
@@ -30,6 +32,7 @@ export {
   default as Positioner,
   type DialogPositionerBaseProps as PositionerBaseProps,
   type DialogPositionerProps as PositionerProps,
+  type DialogPositionerState as PositionerState,
 } from './dialog-positioner.svelte'
 export {
   default as Root,
@@ -50,4 +53,5 @@ export {
   default as Trigger,
   type DialogTriggerBaseProps as TriggerBaseProps,
   type DialogTriggerProps as TriggerProps,
+  type DialogTriggerState as TriggerState,
 } from './dialog-trigger.svelte'

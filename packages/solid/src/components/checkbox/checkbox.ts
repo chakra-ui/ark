@@ -34,9 +34,11 @@ export {
   CheckboxRoot as Root,
   type CheckboxRootBaseProps as RootBaseProps,
   type CheckboxRootProps as RootProps,
+  type CheckboxRootState as RootState,
 } from './checkbox-root.tsx'
 export {
   CheckboxRootProvider as RootProvider,
   type CheckboxRootProviderBaseProps as RootProviderBaseProps,
   type CheckboxRootProviderProps as RootProviderProps,
+  type CheckboxRootProviderState as RootProviderState,
 } from './checkbox-root-provider.tsx'

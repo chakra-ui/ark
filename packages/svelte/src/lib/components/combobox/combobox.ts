@@ -17,6 +17,7 @@ export {
   default as Content,
   type ComboboxContentProps as ContentProps,
   type ComboboxContentBaseProps as ContentBaseProps,
+  type ComboboxContentState as ContentState,
 } from './combobox-content.svelte'
 export {
   default as Empty,
@@ -38,6 +39,7 @@ export {
   default as Item,
   type ComboboxItemProps as ItemProps,
   type ComboboxItemBaseProps as ItemBaseProps,
+  type ComboboxItemState as ItemState,
 } from './combobox-item.svelte'
 export {
   default as ItemContext,
@@ -95,4 +97,5 @@ export {
   default as Trigger,
   type ComboboxTriggerProps as TriggerProps,
   type ComboboxTriggerBaseProps as TriggerBaseProps,
+  type ComboboxTriggerState as TriggerState,
 } from './combobox-trigger.svelte'

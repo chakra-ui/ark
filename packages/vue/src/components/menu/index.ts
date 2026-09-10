@@ -14,8 +14,14 @@ export {
   type MenuCheckboxItemBaseProps,
   type MenuCheckboxItemEmits,
   type MenuCheckboxItemProps,
+  type MenuCheckboxItemState,
 } from './menu-checkbox-item.vue'
-export { default as MenuContent, type MenuContentBaseProps, type MenuContentProps } from './menu-content.vue'
+export {
+  default as MenuContent,
+  type MenuContentBaseProps,
+  type MenuContentProps,
+  type MenuContentState,
+} from './menu-content.vue'
 export {
   default as MenuContextTrigger,
   type MenuContextTriggerBaseProps,
@@ -36,11 +42,12 @@ export {
   type MenuItemIndicatorProps,
 } from './menu-item-indicator.vue'
 export { default as MenuItemText, type MenuItemTextBaseProps, type MenuItemTextProps } from './menu-item-text.vue'
-export { default as MenuItem, type MenuItemBaseProps, type MenuItemProps } from './menu-item.vue'
+export { default as MenuItem, type MenuItemBaseProps, type MenuItemProps, type MenuItemState } from './menu-item.vue'
 export {
   default as MenuPositioner,
   type MenuPositionerBaseProps,
   type MenuPositionerProps,
+  type MenuPositionerState,
 } from './menu-positioner.vue'
 export {
   default as MenuRadioItemGroup,
@@ -48,7 +55,12 @@ export {
   type MenuRadioItemGroupEmits,
   type MenuRadioItemGroupProps,
 } from './menu-radio-item-group.vue'
-export { default as MenuRadioItem, type MenuRadioItemBaseProps, type MenuRadioItemProps } from './menu-radio-item.vue'
+export {
+  default as MenuRadioItem,
+  type MenuRadioItemBaseProps,
+  type MenuRadioItemProps,
+  type MenuRadioItemState,
+} from './menu-radio-item.vue'
 export {
   default as MenuRootProvider,
   type MenuRootProviderBaseProps,
@@ -62,7 +74,12 @@ export {
   type MenuTriggerItemBaseProps,
   type MenuTriggerItemProps,
 } from './menu-trigger-item.vue'
-export { default as MenuTrigger, type MenuTriggerBaseProps, type MenuTriggerProps } from './menu-trigger.vue'
+export {
+  default as MenuTrigger,
+  type MenuTriggerBaseProps,
+  type MenuTriggerProps,
+  type MenuTriggerState,
+} from './menu-trigger.vue'
 export { menuAnatomy } from './menu.anatomy.ts'
 export { useMenu, type UseMenuProps, type UseMenuReturn } from './use-menu.ts'
 export { useMenuContext, type UseMenuContext } from './use-menu-context.ts'

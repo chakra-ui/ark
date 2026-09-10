@@ -57,6 +57,7 @@ export {
   default as Content,
   type ColorPickerContentProps as ContentProps,
   type ColorPickerContentBaseProps as ContentBaseProps,
+  type ColorPickerContentState as ContentState,
 } from './color-picker-content.vue'
 export { default as Context, type ColorPickerContextProps as ContextProps } from './color-picker-context.vue'
 export {
@@ -98,12 +99,14 @@ export {
   default as RootProvider,
   type ColorPickerRootProviderProps as RootProviderProps,
   type ColorPickerRootProviderBaseProps as RootProviderBaseProps,
+  type ColorPickerRootProviderState as RootProviderState,
 } from './color-picker-root-provider.vue'
 export {
   default as Root,
   type ColorPickerRootEmits as RootEmits,
   type ColorPickerRootBaseProps as RootBaseProps,
   type ColorPickerRootProps as RootProps,
+  type ColorPickerRootState as RootState,
 } from './color-picker-root.vue'
 export {
   default as SwatchGroup,
@@ -119,6 +122,7 @@ export {
   default as SwatchTrigger,
   type ColorPickerSwatchTriggerProps as SwatchTriggerProps,
   type ColorPickerSwatchTriggerBaseProps as SwatchTriggerBaseProps,
+  type ColorPickerSwatchTriggerState as SwatchTriggerState,
 } from './color-picker-swatch-trigger.vue'
 export {
   default as Swatch,
@@ -139,6 +143,7 @@ export {
   default as Trigger,
   type ColorPickerTriggerProps as TriggerProps,
   type ColorPickerTriggerBaseProps as TriggerBaseProps,
+  type ColorPickerTriggerState as TriggerState,
 } from './color-picker-trigger.vue'
 export {
   default as ValueText,

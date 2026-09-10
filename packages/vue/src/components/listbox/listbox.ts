@@ -10,6 +10,7 @@ export {
   default as Content,
   type ListboxContentBaseProps as ContentBaseProps,
   type ListboxContentProps as ContentProps,
+  type ListboxContentState as ContentState,
 } from './listbox-content.vue'
 export {
   default as Empty,
@@ -46,6 +47,7 @@ export {
   default as Item,
   type ListboxItemBaseProps as ItemBaseProps,
   type ListboxItemProps as ItemProps,
+  type ListboxItemState as ItemState,
 } from './listbox-item.vue'
 export {
   default as Label,
@@ -56,6 +58,7 @@ export {
   default as List,
   type ListboxListBaseProps as ListBaseProps,
   type ListboxListProps as ListProps,
+  type ListboxListState as ListState,
 } from './listbox-list.vue'
 export {
   default as RootProvider,

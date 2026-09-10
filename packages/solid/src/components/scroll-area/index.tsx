@@ -10,7 +10,12 @@ export {
   type ScrollAreaContentBaseProps,
   type ScrollAreaContentProps,
 } from './scroll-area-content.tsx'
-export { ScrollAreaCorner, type ScrollAreaCornerBaseProps, type ScrollAreaCornerProps } from './scroll-area-corner.tsx'
+export {
+  ScrollAreaCorner,
+  type ScrollAreaCornerBaseProps,
+  type ScrollAreaCornerProps,
+  type ScrollAreaCornerState,
+} from './scroll-area-corner.tsx'
 export { ScrollAreaRoot, type ScrollAreaRootBaseProps, type ScrollAreaRootProps } from './scroll-area-root.tsx'
 export {
   ScrollAreaRootProvider,

@@ -14,6 +14,7 @@ export {
   default as Input,
   type PasswordInputInputBaseProps as InputBaseProps,
   type PasswordInputInputProps as InputProps,
+  type PasswordInputInputState as InputState,
 } from './password-input-input.vue'
 export {
   default as Label,
@@ -24,14 +25,17 @@ export {
   default as Root,
   type PasswordInputRootBaseProps as RootBaseProps,
   type PasswordInputRootProps as RootProps,
+  type PasswordInputRootState as RootState,
 } from './password-input-root.vue'
 export {
   default as RootProvider,
   type PasswordInputRootProviderBaseProps as RootProviderBaseProps,
   type PasswordInputRootProviderProps as RootProviderProps,
+  type PasswordInputRootProviderState as RootProviderState,
 } from './password-input-root-provider.vue'
 export {
   default as VisibilityTrigger,
   type PasswordInputVisibilityTriggerBaseProps as VisibilityTriggerBaseProps,
   type PasswordInputVisibilityTriggerProps as VisibilityTriggerProps,
+  type PasswordInputVisibilityTriggerState as VisibilityTriggerState,
 } from './password-input-visibility-trigger.vue'

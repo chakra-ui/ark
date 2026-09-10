@@ -14,17 +14,24 @@ export {
   AngleSliderMarker,
   type AngleSliderMarkerBaseProps,
   type AngleSliderMarkerProps,
+  type AngleSliderMarkerState,
 } from './angle-slider-marker.tsx'
 export {
   AngleSliderMarkerGroup,
   type AngleSliderMarkerGroupBaseProps,
   type AngleSliderMarkerGroupProps,
 } from './angle-slider-marker-group.tsx'
-export { AngleSliderRoot, type AngleSliderRootBaseProps, type AngleSliderRootProps } from './angle-slider-root.tsx'
+export {
+  AngleSliderRoot,
+  type AngleSliderRootBaseProps,
+  type AngleSliderRootProps,
+  type AngleSliderRootState,
+} from './angle-slider-root.tsx'
 export {
   AngleSliderRootProvider,
   type AngleSliderRootProviderBaseProps,
   type AngleSliderRootProviderProps,
+  type AngleSliderRootProviderState,
 } from './angle-slider-root-provider.tsx'
 export { AngleSliderThumb, type AngleSliderThumbBaseProps, type AngleSliderThumbProps } from './angle-slider-thumb.tsx'
 export {

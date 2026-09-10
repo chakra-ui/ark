@@ -33,12 +33,14 @@ export {
   default as SignaturePadRootProvider,
   type SignaturePadRootProviderBaseProps,
   type SignaturePadRootProviderProps,
+  type SignaturePadRootProviderState,
 } from './signature-pad-root-provider.vue'
 export {
   default as SignaturePadRoot,
   type SignaturePadRootBaseProps,
   type SignaturePadRootProps,
   type SignaturePadRootEmits,
+  type SignaturePadRootState,
 } from './signature-pad-root.vue'
 export {
   default as SignaturePadSegment,

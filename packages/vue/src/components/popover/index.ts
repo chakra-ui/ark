@@ -21,6 +21,7 @@ export {
   default as PopoverContent,
   type PopoverContentBaseProps,
   type PopoverContentProps,
+  type PopoverContentState,
 } from './popover-content.vue'
 export { default as PopoverContext, type PopoverContextProps } from './popover-context.vue'
 export {
@@ -37,6 +38,7 @@ export {
   default as PopoverPositioner,
   type PopoverPositionerBaseProps,
   type PopoverPositionerProps,
+  type PopoverPositionerState,
 } from './popover-positioner.vue'
 export {
   default as PopoverRootProvider,
@@ -55,6 +57,7 @@ export {
   default as PopoverTrigger,
   type PopoverTriggerBaseProps,
   type PopoverTriggerProps,
+  type PopoverTriggerState,
 } from './popover-trigger.vue'
 export { popoverAnatomy } from './popover.anatomy.ts'
 export { usePopover, type UsePopoverProps, type UsePopoverReturn } from './use-popover.ts'

@@ -4,6 +4,7 @@ export {
   RatingGroupControl as Control,
   type RatingGroupControlBaseProps as ControlBaseProps,
   type RatingGroupControlProps as ControlProps,
+  type RatingGroupControlState as ControlState,
 } from './rating-group-control.tsx'
 export {
   RatingGroupHiddenInput as HiddenInput,
@@ -14,6 +15,7 @@ export {
   RatingGroupItem as Item,
   type RatingGroupItemBaseProps as ItemBaseProps,
   type RatingGroupItemProps as ItemProps,
+  type RatingGroupItemState as ItemState,
 } from './rating-group-item.tsx'
 export {
   RatingGroupItemContext as ItemContext,

@@ -14,6 +14,7 @@ export {
   PasswordInputInput,
   type PasswordInputInputBaseProps,
   type PasswordInputInputProps,
+  type PasswordInputInputState,
 } from './password-input-input.tsx'
 export {
   PasswordInputLabel,
@@ -24,16 +25,19 @@ export {
   PasswordInputRoot,
   type PasswordInputRootBaseProps,
   type PasswordInputRootProps,
+  type PasswordInputRootState,
 } from './password-input-root.tsx'
 export {
   PasswordInputRootProvider,
   type PasswordInputRootProviderBaseProps,
   type PasswordInputRootProviderProps,
+  type PasswordInputRootProviderState,
 } from './password-input-root-provider.tsx'
 export {
   PasswordInputVisibilityTrigger,
   type PasswordInputVisibilityTriggerBaseProps,
   type PasswordInputVisibilityTriggerProps,
+  type PasswordInputVisibilityTriggerState,
 } from './password-input-visibility-trigger.tsx'
 export { passwordInputAnatomy } from './password-input.anatomy.ts'
 export { usePasswordInput, type UsePasswordInputProps, type UsePasswordInputReturn } from './use-password-input.ts'

@@ -24,6 +24,7 @@ export {
   default as ComboboxContent,
   type ComboboxContentBaseProps,
   type ComboboxContentProps,
+  type ComboboxContentState,
 } from './combobox-content.vue'
 export { default as ComboboxEmpty, type ComboboxEmptyBaseProps, type ComboboxEmptyProps } from './combobox-empty.vue'
 export { default as ComboboxContext, type ComboboxContextProps } from './combobox-context.vue'
@@ -54,7 +55,12 @@ export {
   type ComboboxItemTextBaseProps,
   type ComboboxItemTextProps,
 } from './combobox-item-text.vue'
-export { default as ComboboxItem, type ComboboxItemBaseProps, type ComboboxItemProps } from './combobox-item.vue'
+export {
+  default as ComboboxItem,
+  type ComboboxItemBaseProps,
+  type ComboboxItemProps,
+  type ComboboxItemState,
+} from './combobox-item.vue'
 export { default as ComboboxLabel, type ComboboxLabelBaseProps, type ComboboxLabelProps } from './combobox-label.vue'
 export { default as ComboboxList, type ComboboxListBaseProps, type ComboboxListProps } from './combobox-list.vue'
 export {
@@ -68,6 +74,7 @@ export {
   type ComboboxRootProviderEmits,
   type ComboboxRootProviderProps,
   type ComboboxRootProviderComponent,
+  type ComboboxRootProviderState,
 } from './combobox-root-provider.vue'
 export {
   default as ComboboxRoot,
@@ -76,11 +83,13 @@ export {
   type ComboboxRootComponent,
   type ComboboxRootEmits,
   type ComboboxRootProps,
+  type ComboboxRootState,
 } from './combobox-root.vue'
 export {
   default as ComboboxTrigger,
   type ComboboxTriggerBaseProps,
   type ComboboxTriggerProps,
+  type ComboboxTriggerState,
 } from './combobox-trigger.vue'
 export { comboboxAnatomy } from './combobox.anatomy.ts'
 export { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox.ts'

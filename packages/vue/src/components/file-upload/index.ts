@@ -17,6 +17,7 @@ export {
   default as FileUploadDropzone,
   type FileUploadDropzoneBaseProps,
   type FileUploadDropzoneProps,
+  type FileUploadDropzoneState,
 } from './file-upload-dropzone.vue'
 export {
   default as FileUploadHiddenInput,
@@ -32,6 +33,7 @@ export {
   default as FileUploadItemGroup,
   type FileUploadItemGroupBaseProps,
   type FileUploadItemGroupProps,
+  type FileUploadItemGroupState,
 } from './file-upload-item-group.vue'
 export {
   default as FileUploadItemName,
@@ -57,6 +59,7 @@ export {
   default as FileUploadItem,
   type FileUploadItemBaseProps,
   type FileUploadItemProps,
+  type FileUploadItemState,
 } from './file-upload-item.vue'
 export {
   default as FileUploadLabel,
@@ -67,17 +70,20 @@ export {
   default as FileUploadRootProvider,
   type FileUploadRootProviderBaseProps,
   type FileUploadRootProviderProps,
+  type FileUploadRootProviderState,
 } from './file-upload-root-provider.vue'
 export {
   default as FileUploadRoot,
   type FileUploadRootBaseProps,
   type FileUploadRootEmits,
   type FileUploadRootProps,
+  type FileUploadRootState,
 } from './file-upload-root.vue'
 export {
   default as FileUploadTrigger,
   type FileUploadTriggerBaseProps,
   type FileUploadTriggerProps,
+  type FileUploadTriggerState,
 } from './file-upload-trigger.vue'
 export { fileUploadAnatomy } from './file-upload.anatomy.ts'
 export { useFileUpload, type UseFileUploadProps, type UseFileUploadReturn } from './use-file-upload.ts'

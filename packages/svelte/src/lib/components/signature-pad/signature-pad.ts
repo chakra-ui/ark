@@ -29,11 +29,13 @@ export {
   default as Root,
   type SignaturePadRootBaseProps as RootBaseProps,
   type SignaturePadRootProps as RootProps,
+  type SignaturePadRootState as RootState,
 } from './signature-pad-root.svelte'
 export {
   default as RootProvider,
   type SignaturePadRootProviderBaseProps as RootProviderBaseProps,
   type SignaturePadRootProviderProps as RootProviderProps,
+  type SignaturePadRootProviderState as RootProviderState,
 } from './signature-pad-root-provider.svelte'
 export {
   default as Segment,

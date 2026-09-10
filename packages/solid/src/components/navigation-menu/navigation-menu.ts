@@ -8,6 +8,7 @@ export {
   NavigationMenuContent as Content,
   type NavigationMenuContentBaseProps as ContentBaseProps,
   type NavigationMenuContentProps as ContentProps,
+  type NavigationMenuContentState as ContentState,
 } from './navigation-menu-content.tsx'
 export {
   NavigationMenuContext as Context,
@@ -22,6 +23,7 @@ export {
   NavigationMenuItem as Item,
   type NavigationMenuItemBaseProps as ItemBaseProps,
   type NavigationMenuItemProps as ItemProps,
+  type NavigationMenuItemState as ItemState,
 } from './navigation-menu-item.tsx'
 export {
   NavigationMenuItemIndicator as ItemIndicator,
@@ -52,6 +54,7 @@ export {
   NavigationMenuTrigger as Trigger,
   type NavigationMenuTriggerBaseProps as TriggerBaseProps,
   type NavigationMenuTriggerProps as TriggerProps,
+  type NavigationMenuTriggerState as TriggerState,
 } from './navigation-menu-trigger.tsx'
 export {
   NavigationMenuViewport as Viewport,

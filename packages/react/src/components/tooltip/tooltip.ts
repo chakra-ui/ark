@@ -13,6 +13,7 @@ export {
   TooltipContent as Content,
   type TooltipContentBaseProps as ContentBaseProps,
   type TooltipContentProps as ContentProps,
+  type TooltipContentState as ContentState,
 } from './tooltip-content.tsx'
 export { TooltipContext as Context, type TooltipContextProps as ContextProps } from './tooltip-context.tsx'
 export {
@@ -34,4 +35,5 @@ export {
   TooltipTrigger as Trigger,
   type TooltipTriggerBaseProps as TriggerBaseProps,
   type TooltipTriggerProps as TriggerProps,
+  type TooltipTriggerState as TriggerState,
 } from './tooltip-trigger.tsx'

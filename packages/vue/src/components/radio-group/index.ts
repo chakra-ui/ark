@@ -25,6 +25,7 @@ export {
   default as RadioGroupItem,
   type RadioGroupItemBaseProps,
   type RadioGroupItemProps,
+  type RadioGroupItemState,
 } from './radio-group-item.vue'
 export {
   default as RadioGroupLabel,
@@ -35,12 +36,14 @@ export {
   default as RadioGroupRootProvider,
   type RadioGroupRootProviderBaseProps,
   type RadioGroupRootProviderProps,
+  type RadioGroupRootProviderState,
 } from './radio-group-root-provider.vue'
 export {
   default as RadioGroupRoot,
   type RadioGroupRootBaseProps,
   type RadioGroupRootEmits,
   type RadioGroupRootProps,
+  type RadioGroupRootState,
 } from './radio-group-root.vue'
 export { radioGroupAnatomy } from './radio-group.anatomy.ts'
 export { useRadioGroup, type UseRadioGroupProps, type UseRadioGroupReturn } from './use-radio-group.ts'

@@ -3,6 +3,7 @@ export {
   default as CollapsibleContent,
   type CollapsibleContentProps,
   type CollapsibleContentBaseProps,
+  type CollapsibleContentState,
 } from './collapsible-content.vue'
 export { default as CollapsibleContext, type CollapsibleContextProps } from './collapsible-context.vue'
 export {
@@ -20,6 +21,7 @@ export {
   default as CollapsibleTrigger,
   type CollapsibleTriggerProps,
   type CollapsibleTriggerBaseProps,
+  type CollapsibleTriggerState,
 } from './collapsible-trigger.vue'
 export {
   default as CollapsibleIndicator,

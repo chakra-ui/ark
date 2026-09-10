@@ -21,11 +21,17 @@ export {
   type CheckboxIndicatorProps,
 } from './checkbox-indicator.tsx'
 export { CheckboxLabel, type CheckboxLabelBaseProps, type CheckboxLabelProps } from './checkbox-label.tsx'
-export { CheckboxRoot, type CheckboxRootBaseProps, type CheckboxRootProps } from './checkbox-root.tsx'
+export {
+  CheckboxRoot,
+  type CheckboxRootBaseProps,
+  type CheckboxRootProps,
+  type CheckboxRootState,
+} from './checkbox-root.tsx'
 export {
   CheckboxRootProvider,
   type CheckboxRootProviderBaseProps,
   type CheckboxRootProviderProps,
+  type CheckboxRootProviderState,
 } from './checkbox-root-provider.tsx'
 export { checkboxAnatomy } from './checkbox.anatomy.ts'
 export { useCheckbox, type UseCheckboxProps, type UseCheckboxReturn } from './use-checkbox.ts'

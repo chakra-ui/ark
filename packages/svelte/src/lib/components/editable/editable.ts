@@ -8,6 +8,7 @@ export {
   default as Area,
   type EditableAreaBaseProps as AreaBaseProps,
   type EditableAreaProps as AreaProps,
+  type EditableAreaState as AreaState,
 } from './editable-area.svelte'
 export {
   default as CancelTrigger,
@@ -29,16 +30,19 @@ export {
   default as Input,
   type EditableInputBaseProps as InputBaseProps,
   type EditableInputProps as InputProps,
+  type EditableInputState as InputState,
 } from './editable-input.svelte'
 export {
   default as Label,
   type EditableLabelBaseProps as LabelBaseProps,
   type EditableLabelProps as LabelProps,
+  type EditableLabelState as LabelState,
 } from './editable-label.svelte'
 export {
   default as Preview,
   type EditablePreviewBaseProps as PreviewBaseProps,
   type EditablePreviewProps as PreviewProps,
+  type EditablePreviewState as PreviewState,
 } from './editable-preview.svelte'
 export {
   default as Root,

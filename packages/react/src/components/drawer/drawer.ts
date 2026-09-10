@@ -3,6 +3,7 @@ export {
   DrawerBackdrop as Backdrop,
   type DrawerBackdropBaseProps as BackdropBaseProps,
   type DrawerBackdropProps as BackdropProps,
+  type DrawerBackdropState as BackdropState,
 } from './drawer-backdrop.tsx'
 export {
   DrawerCloseTrigger as CloseTrigger,
@@ -13,6 +14,7 @@ export {
   DrawerContent as Content,
   type DrawerContentBaseProps as ContentBaseProps,
   type DrawerContentProps as ContentProps,
+  type DrawerContentState as ContentState,
 } from './drawer-content.tsx'
 export {
   DrawerDescription as Description,
@@ -34,6 +36,7 @@ export {
   DrawerPositioner as Positioner,
   type DrawerPositionerBaseProps as PositionerBaseProps,
   type DrawerPositionerProps as PositionerProps,
+  type DrawerPositionerState as PositionerState,
 } from './drawer-positioner.tsx'
 export {
   DrawerGrabber as Grabber,
@@ -60,6 +63,7 @@ export {
   DrawerSwipeArea as SwipeArea,
   type DrawerSwipeAreaBaseProps as SwipeAreaBaseProps,
   type DrawerSwipeAreaProps as SwipeAreaProps,
+  type DrawerSwipeAreaState as SwipeAreaState,
 } from './drawer-swipe-area.tsx'
 export {
   DrawerTitle as Title,
@@ -70,4 +74,5 @@ export {
   DrawerTrigger as Trigger,
   type DrawerTriggerBaseProps as TriggerBaseProps,
   type DrawerTriggerProps as TriggerProps,
+  type DrawerTriggerState as TriggerState,
 } from './drawer-trigger.tsx'

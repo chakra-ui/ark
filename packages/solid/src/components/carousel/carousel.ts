@@ -24,6 +24,7 @@ export {
   CarouselIndicator as Indicator,
   type CarouselIndicatorBaseProps as IndicatorBaseProps,
   type CarouselIndicatorProps as IndicatorProps,
+  type CarouselIndicatorState as IndicatorState,
 } from './carousel-indicator.tsx'
 export {
   CarouselIndicatorGroup as IndicatorGroup,
@@ -34,6 +35,7 @@ export {
   CarouselItem as Item,
   type CarouselItemBaseProps as ItemBaseProps,
   type CarouselItemProps as ItemProps,
+  type CarouselItemState as ItemState,
 } from './carousel-item.tsx'
 export {
   CarouselItemGroup as ItemGroup,

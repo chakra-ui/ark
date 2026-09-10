@@ -1,4 +1,4 @@
-export { default as Root } from './toggle-root.vue'
+export { default as Root, type ToggleRootState as RootState } from './toggle-root.vue'
 export type {
   ToggleRootProps as RootProps,
   ToggleRootBaseProps as RootBaseProps,

@@ -34,10 +34,12 @@ export {
   default as RootProvider,
   type CheckboxRootProviderBaseProps as RootProviderBaseProps,
   type CheckboxRootProviderProps as RootProviderProps,
+  type CheckboxRootProviderState as RootProviderState,
 } from './checkbox-root-provider.vue'
 export {
   default as Root,
   type CheckboxRootBaseProps as RootBaseProps,
   type CheckboxRootEmits as RootEmits,
   type CheckboxRootProps as RootProps,
+  type CheckboxRootState as RootState,
 } from './checkbox-root.vue'

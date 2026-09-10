@@ -28,6 +28,7 @@ export {
   ToastRoot as Root,
   type ToastRootBaseProps as RootBaseProps,
   type ToastRootProps as RootProps,
+  type ToastRootState as RootState,
 } from './toast-root.tsx'
 export {
   ToastTitle as Title,

@@ -9,6 +9,7 @@ export {
   default as ClipboardIndicator,
   type ClipboardIndicatorProps,
   type ClipboardIndicatorBaseProps,
+  type ClipboardIndicatorState,
 } from './clipboard-indicator.vue'
 export {
   default as ClipboardInput,

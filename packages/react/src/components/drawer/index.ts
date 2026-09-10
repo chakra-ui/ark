@@ -3,20 +3,35 @@ export type {
   SnapPointChangeDetails as DrawerSnapPointChangeDetails,
   TriggerValueChangeDetails as DrawerTriggerValueChangeDetails,
 } from '@zag-js/drawer'
-export { DrawerBackdrop, type DrawerBackdropBaseProps, type DrawerBackdropProps } from './drawer-backdrop.tsx'
+export {
+  DrawerBackdrop,
+  type DrawerBackdropBaseProps,
+  type DrawerBackdropProps,
+  type DrawerBackdropState,
+} from './drawer-backdrop.tsx'
 export {
   DrawerCloseTrigger,
   type DrawerCloseTriggerBaseProps,
   type DrawerCloseTriggerProps,
 } from './drawer-close-trigger.tsx'
-export { DrawerContent, type DrawerContentBaseProps, type DrawerContentProps } from './drawer-content.tsx'
+export {
+  DrawerContent,
+  type DrawerContentBaseProps,
+  type DrawerContentProps,
+  type DrawerContentState,
+} from './drawer-content.tsx'
 export {
   DrawerDescription,
   type DrawerDescriptionBaseProps,
   type DrawerDescriptionProps,
 } from './drawer-description.tsx'
 export { DrawerContext, type DrawerContextProps } from './drawer-context.tsx'
-export { DrawerPositioner, type DrawerPositionerBaseProps, type DrawerPositionerProps } from './drawer-positioner.tsx'
+export {
+  DrawerPositioner,
+  type DrawerPositionerBaseProps,
+  type DrawerPositionerProps,
+  type DrawerPositionerState,
+} from './drawer-positioner.tsx'
 export { DrawerGrabber, type DrawerGrabberBaseProps, type DrawerGrabberProps } from './drawer-grabber.tsx'
 export {
   DrawerGrabberIndicator,
@@ -30,7 +45,12 @@ export {
   type DrawerRootProviderProps,
 } from './drawer-root-provider.tsx'
 export { DrawerTitle, type DrawerTitleBaseProps, type DrawerTitleProps } from './drawer-title.tsx'
-export { DrawerTrigger, type DrawerTriggerBaseProps, type DrawerTriggerProps } from './drawer-trigger.tsx'
+export {
+  DrawerTrigger,
+  type DrawerTriggerBaseProps,
+  type DrawerTriggerProps,
+  type DrawerTriggerState,
+} from './drawer-trigger.tsx'
 export { DrawerIndent, type DrawerIndentBaseProps, type DrawerIndentProps } from './drawer-indent.tsx'
 export {
   DrawerIndentBackground,
@@ -38,7 +58,12 @@ export {
   type DrawerIndentBackgroundProps,
 } from './drawer-indent-background.tsx'
 export { DrawerStack, type DrawerStackProps } from './drawer-stack.tsx'
-export { DrawerSwipeArea, type DrawerSwipeAreaBaseProps, type DrawerSwipeAreaProps } from './drawer-swipe-area.tsx'
+export {
+  DrawerSwipeArea,
+  type DrawerSwipeAreaBaseProps,
+  type DrawerSwipeAreaProps,
+  type DrawerSwipeAreaState,
+} from './drawer-swipe-area.tsx'
 export { drawerAnatomy } from './drawer.anatomy.ts'
 export { useDrawer, type UseDrawerProps, type UseDrawerReturn } from './use-drawer.ts'
 export { useDrawerContext, type UseDrawerContext } from './use-drawer-context.ts'

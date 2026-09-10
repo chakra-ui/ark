@@ -12,6 +12,7 @@ export {
   default as TooltipContent,
   type TooltipContentBaseProps,
   type TooltipContentProps,
+  type TooltipContentState,
 } from './tooltip-content.vue'
 export { default as TooltipContext, type TooltipContextProps } from './tooltip-context.vue'
 export {
@@ -35,6 +36,7 @@ export {
   default as TooltipTrigger,
   type TooltipTriggerBaseProps,
   type TooltipTriggerProps,
+  type TooltipTriggerState,
 } from './tooltip-trigger.vue'
 export { tooltipAnatomy } from './tooltip.anatomy.ts'
 export { useTooltip, type UseTooltipProps, type UseTooltipReturn } from './use-tooltip.ts'

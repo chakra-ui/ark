@@ -32,7 +32,12 @@ export {
   type ProgressValueTextBaseProps,
   type ProgressValueTextProps,
 } from './progress-value-text.svelte'
-export { default as ProgressView, type ProgressViewBaseProps, type ProgressViewProps } from './progress-view.svelte'
+export {
+  default as ProgressView,
+  type ProgressViewBaseProps,
+  type ProgressViewProps,
+  type ProgressViewState,
+} from './progress-view.svelte'
 export { progressAnatomy } from './progress.anatomy.ts'
 export { useProgressContext, type UseProgressContext } from './use-progress-context.ts'
 export { useProgress, type UseProgressProps, type UseProgressReturn } from './use-progress.svelte.ts'

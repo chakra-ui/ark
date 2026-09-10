@@ -29,6 +29,7 @@ export {
   default as Marker,
   type SliderMarkerBaseProps as MarkerBaseProps,
   type SliderMarkerProps as MarkerProps,
+  type SliderMarkerState as MarkerState,
 } from './slider-marker.svelte'
 export {
   default as Range,
@@ -44,11 +45,13 @@ export {
   default as Root,
   type SliderRootBaseProps as RootBaseProps,
   type SliderRootProps as RootProps,
+  type SliderRootState as RootState,
 } from './slider-root.svelte'
 export {
   default as Thumb,
   type SliderThumbBaseProps as ThumbBaseProps,
   type SliderThumbProps as ThumbProps,
+  type SliderThumbState as ThumbState,
 } from './slider-thumb.svelte'
 export {
   default as Track,

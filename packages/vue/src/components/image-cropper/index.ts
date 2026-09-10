@@ -21,22 +21,26 @@ export {
   default as ImageCropperImage,
   type ImageCropperImageProps,
   type ImageCropperImageBaseProps,
+  type ImageCropperImageState,
 } from './image-cropper-image.vue'
 export {
   default as ImageCropperRoot,
   type ImageCropperRootEmits,
   type ImageCropperRootBaseProps,
   type ImageCropperRootProps,
+  type ImageCropperRootState,
 } from './image-cropper-root.vue'
 export {
   default as ImageCropperRootProvider,
   type ImageCropperRootProviderBaseProps,
   type ImageCropperRootProviderProps,
+  type ImageCropperRootProviderState,
 } from './image-cropper-root-provider.vue'
 export {
   default as ImageCropperSelection,
   type ImageCropperSelectionProps,
   type ImageCropperSelectionBaseProps,
+  type ImageCropperSelectionState,
 } from './image-cropper-selection.vue'
 export {
   default as ImageCropperViewport,

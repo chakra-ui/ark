@@ -8,6 +8,7 @@ export {
   default as Area,
   type EditableAreaProps as AreaProps,
   type EditableAreaBaseProps as AreaBaseProps,
+  type EditableAreaState as AreaState,
 } from './editable-area.vue'
 export {
   default as CancelTrigger,
@@ -29,16 +30,19 @@ export {
   default as Input,
   type EditableInputProps as InputProps,
   type EditableInputBaseProps as InputBaseProps,
+  type EditableInputState as InputState,
 } from './editable-input.vue'
 export {
   default as Label,
   type EditableLabelProps as LabelProps,
   type EditableLabelBaseProps as LabelBaseProps,
+  type EditableLabelState as LabelState,
 } from './editable-label.vue'
 export {
   default as Preview,
   type EditablePreviewProps as PreviewProps,
   type EditablePreviewBaseProps as PreviewBaseProps,
+  type EditablePreviewState as PreviewState,
 } from './editable-preview.vue'
 export {
   default as RootProvider,

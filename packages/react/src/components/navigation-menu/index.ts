@@ -8,6 +8,7 @@ export {
   NavigationMenuContent,
   type NavigationMenuContentBaseProps,
   type NavigationMenuContentProps,
+  type NavigationMenuContentState,
 } from './navigation-menu-content.tsx'
 export { NavigationMenuContext, type NavigationMenuContextProps } from './navigation-menu-context.tsx'
 export {
@@ -19,6 +20,7 @@ export {
   NavigationMenuItem,
   type NavigationMenuItemBaseProps,
   type NavigationMenuItemProps,
+  type NavigationMenuItemState,
 } from './navigation-menu-item.tsx'
 export {
   NavigationMenuItemIndicator,
@@ -49,6 +51,7 @@ export {
   NavigationMenuTrigger,
   type NavigationMenuTriggerBaseProps,
   type NavigationMenuTriggerProps,
+  type NavigationMenuTriggerState,
 } from './navigation-menu-trigger.tsx'
 export {
   NavigationMenuViewport,

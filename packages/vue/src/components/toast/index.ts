@@ -24,10 +24,21 @@ export {
   type ToastDescriptionBaseProps,
   type ToastDescriptionProps,
 } from './toast-description.vue'
-export { default as ToastRoot, type ToastRootBaseProps, type ToastRootProps } from './toast-root.vue'
+export {
+  default as ToastRoot,
+  type ToastRootBaseProps,
+  type ToastRootProps,
+  type ToastRootState,
+} from './toast-root.vue'
 export { default as ToastTitle, type ToastTitleBaseProps, type ToastTitleProps } from './toast-title.vue'
 export { toastAnatomy } from './toast.anatomy.ts'
-export { default as Toaster, type ToasterBaseProps, type ToasterProps, type ToastOptions } from './toaster.vue'
+export {
+  default as Toaster,
+  type ToasterBaseProps,
+  type ToasterProps,
+  type ToastOptions,
+  type ToasterState,
+} from './toaster.vue'
 export { useToastContext, type UseToastContext } from './use-toast-context.ts'
 
 export * as Toast from './toast.ts'

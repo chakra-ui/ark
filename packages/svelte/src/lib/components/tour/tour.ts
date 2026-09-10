@@ -37,6 +37,7 @@ export {
   default as Backdrop,
   type TourBackdropBaseProps as BackdropBaseProps,
   type TourBackdropProps as BackdropProps,
+  type TourBackdropState as BackdropState,
 } from './tour-backdrop.svelte'
 export {
   default as CloseTrigger,
@@ -47,6 +48,7 @@ export {
   default as Content,
   type TourContentBaseProps as ContentBaseProps,
   type TourContentProps as ContentProps,
+  type TourContentState as ContentState,
 } from './tour-content.svelte'
 export { default as Context, type TourContextProps as ContextProps } from './tour-context.svelte'
 export {
@@ -63,6 +65,7 @@ export {
   default as Positioner,
   type TourPositionerBaseProps as PositionerBaseProps,
   type TourPositionerProps as PositionerProps,
+  type TourPositionerState as PositionerState,
 } from './tour-positioner.svelte'
 export {
   default as ProgressText,
@@ -74,6 +77,7 @@ export {
   default as Spotlight,
   type TourSpotlightBaseProps as SpotlightBaseProps,
   type TourSpotlightProps as SpotlightProps,
+  type TourSpotlightState as SpotlightState,
 } from './tour-spotlight.svelte'
 export {
   default as Title,

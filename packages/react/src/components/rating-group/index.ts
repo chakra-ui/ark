@@ -7,13 +7,19 @@ export {
   RatingGroupControl,
   type RatingGroupControlBaseProps,
   type RatingGroupControlProps,
+  type RatingGroupControlState,
 } from './rating-group-control.tsx'
 export {
   RatingGroupHiddenInput,
   type RatingGroupHiddenInputBaseProps,
   type RatingGroupHiddenInputProps,
 } from './rating-group-hidden-input.tsx'
-export { RatingGroupItem, type RatingGroupItemBaseProps, type RatingGroupItemProps } from './rating-group-item.tsx'
+export {
+  RatingGroupItem,
+  type RatingGroupItemBaseProps,
+  type RatingGroupItemProps,
+  type RatingGroupItemState,
+} from './rating-group-item.tsx'
 export { RatingGroupItemContext, type RatingGroupItemContextProps } from './rating-group-item-context.tsx'
 export { RatingGroupLabel, type RatingGroupLabelBaseProps, type RatingGroupLabelProps } from './rating-group-label.tsx'
 export { RatingGroupRoot, type RatingGroupRootBaseProps, type RatingGroupRootProps } from './rating-group-root.tsx'

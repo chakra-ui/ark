@@ -25,6 +25,7 @@ export {
   default as SegmentGroupItem,
   type SegmentGroupItemBaseProps,
   type SegmentGroupItemProps,
+  type SegmentGroupItemState,
 } from './segment-group-item.vue'
 export {
   default as SegmentGroupLabel,
@@ -35,12 +36,14 @@ export {
   default as SegmentGroupRootProvider,
   type SegmentGroupRootProviderBaseProps,
   type SegmentGroupRootProviderProps,
+  type SegmentGroupRootProviderState,
 } from './segment-group-root-provider.vue'
 export {
   default as SegmentGroupRoot,
   type SegmentGroupRootBaseProps,
   type SegmentGroupRootEmits,
   type SegmentGroupRootProps,
+  type SegmentGroupRootState,
 } from './segment-group-root.vue'
 export { segmentGroupAnatomy } from './segment-group.anatomy.ts'
 export { useSegmentGroup, type UseSegmentGroupProps, type UseSegmentGroupReturn } from './use-segment-group.ts'

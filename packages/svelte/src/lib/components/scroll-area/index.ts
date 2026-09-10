@@ -14,6 +14,7 @@ export {
   default as ScrollAreaCorner,
   type ScrollAreaCornerBaseProps,
   type ScrollAreaCornerProps,
+  type ScrollAreaCornerState,
 } from './scroll-area-corner.svelte'
 export {
   default as ScrollAreaRoot,

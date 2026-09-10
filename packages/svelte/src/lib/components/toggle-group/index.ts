@@ -4,16 +4,19 @@ export {
   default as ToggleGroupItem,
   type ToggleGroupItemBaseProps,
   type ToggleGroupItemProps,
+  type ToggleGroupItemState,
 } from './toggle-group-item.svelte'
 export {
   default as ToggleGroupRoot,
   type ToggleGroupRootBaseProps,
   type ToggleGroupRootProps,
+  type ToggleGroupRootState,
 } from './toggle-group-root.svelte'
 export {
   default as ToggleGroupRootProvider,
   type ToggleGroupRootProviderBaseProps,
   type ToggleGroupRootProviderProps,
+  type ToggleGroupRootProviderState,
 } from './toggle-group-root-provider.svelte'
 export { toggleGroupAnatomy } from './toggle-group.anatomy.ts'
 export { useToggleGroup, type UseToggleGroupProps, type UseToggleGroupReturn } from './use-toggle-group.svelte.ts'

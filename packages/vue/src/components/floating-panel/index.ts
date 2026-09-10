@@ -28,6 +28,7 @@ export {
   default as FloatingPanelContent,
   type FloatingPanelContentProps,
   type FloatingPanelContentBaseProps,
+  type FloatingPanelContentState,
 } from './floating-panel-content.vue'
 
 export { default as FloatingPanelContext, type FloatingPanelContextProps } from './floating-panel-context.vue'
@@ -54,12 +55,14 @@ export {
   default as FloatingPanelResizeTrigger,
   type FloatingPanelResizeTriggerProps,
   type FloatingPanelResizeTriggerBaseProps,
+  type FloatingPanelResizeTriggerState,
 } from './floating-panel-resize-trigger.vue'
 
 export {
   default as FloatingPanelStageTrigger,
   type FloatingPanelStageTriggerProps,
   type FloatingPanelStageTriggerBaseProps,
+  type FloatingPanelStageTriggerState,
 } from './floating-panel-stage-trigger.vue'
 
 export {
@@ -86,12 +89,14 @@ export {
   default as FloatingPanelTrigger,
   type FloatingPanelTriggerProps,
   type FloatingPanelTriggerBaseProps,
+  type FloatingPanelTriggerState,
 } from './floating-panel-trigger.vue'
 
 export {
   default as FloatingPanelControl,
   type FloatingPanelControlProps,
   type FloatingPanelControlBaseProps,
+  type FloatingPanelControlState,
 } from './floating-panel-control.vue'
 
 export { useFloatingPanel, type UseFloatingPanelProps, type UseFloatingPanelReturn } from './use-floating-panel.ts'

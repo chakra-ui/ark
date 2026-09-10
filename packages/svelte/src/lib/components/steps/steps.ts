@@ -19,6 +19,7 @@ export {
   default as Item,
   type StepsItemBaseProps as ItemBaseProps,
   type StepsItemProps as ItemProps,
+  type StepsItemState as ItemState,
 } from './steps-item.svelte'
 export { default as ItemContext, type StepsItemContextProps as ItemContextProps } from './steps-item-context.svelte'
 export {

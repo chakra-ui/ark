@@ -9,6 +9,7 @@ export {
   default as Backdrop,
   type DialogBackdropProps as BackdropProps,
   type DialogBackdropBaseProps as BackdropBaseProps,
+  type DialogBackdropState as BackdropState,
 } from './dialog-backdrop.vue'
 export {
   default as CloseTrigger,
@@ -19,6 +20,7 @@ export {
   default as Content,
   type DialogContentProps as ContentProps,
   type DialogContentBaseProps as ContentBaseProps,
+  type DialogContentState as ContentState,
 } from './dialog-content.vue'
 export { default as Context, type DialogContextProps as ContextProps } from './dialog-context.vue'
 export {
@@ -30,6 +32,7 @@ export {
   default as Positioner,
   type DialogPositionerProps as PositionerProps,
   type DialogPositionerBaseProps as PositionerBaseProps,
+  type DialogPositionerState as PositionerState,
 } from './dialog-positioner.vue'
 export {
   default as RootProvider,
@@ -51,4 +54,5 @@ export {
   default as Trigger,
   type DialogTriggerProps as TriggerProps,
   type DialogTriggerBaseProps as TriggerBaseProps,
+  type DialogTriggerState as TriggerState,
 } from './dialog-trigger.vue'

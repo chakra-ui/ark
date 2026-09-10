@@ -29,11 +29,13 @@ export {
   default as RootProvider,
   type SignaturePadRootProviderProps as RootProviderProps,
   type SignaturePadRootProviderBaseProps as RootProviderBaseProps,
+  type SignaturePadRootProviderState as RootProviderState,
 } from './signature-pad-root-provider.vue'
 export {
   default as Root,
   type SignaturePadRootProps as RootProps,
   type SignaturePadRootBaseProps as RootBaseProps,
+  type SignaturePadRootState as RootState,
 } from './signature-pad-root.vue'
 export {
   default as Segment,

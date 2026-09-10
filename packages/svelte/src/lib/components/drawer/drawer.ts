@@ -3,6 +3,7 @@ export {
   default as Backdrop,
   type DrawerBackdropBaseProps as BackdropBaseProps,
   type DrawerBackdropProps as BackdropProps,
+  type DrawerBackdropState as BackdropState,
 } from './drawer-backdrop.svelte'
 export {
   default as CloseTrigger,
@@ -13,6 +14,7 @@ export {
   default as Content,
   type DrawerContentBaseProps as ContentBaseProps,
   type DrawerContentProps as ContentProps,
+  type DrawerContentState as ContentState,
 } from './drawer-content.svelte'
 export {
   default as Description,
@@ -24,6 +26,7 @@ export {
   default as Positioner,
   type DrawerPositionerBaseProps as PositionerBaseProps,
   type DrawerPositionerProps as PositionerProps,
+  type DrawerPositionerState as PositionerState,
 } from './drawer-positioner.svelte'
 export {
   default as Grabber,
@@ -54,6 +57,7 @@ export {
   default as Trigger,
   type DrawerTriggerBaseProps as TriggerBaseProps,
   type DrawerTriggerProps as TriggerProps,
+  type DrawerTriggerState as TriggerState,
 } from './drawer-trigger.svelte'
 export {
   default as Indent,
@@ -70,4 +74,5 @@ export {
   default as SwipeArea,
   type DrawerSwipeAreaBaseProps as SwipeAreaBaseProps,
   type DrawerSwipeAreaProps as SwipeAreaProps,
+  type DrawerSwipeAreaState as SwipeAreaState,
 } from './drawer-swipe-area.svelte'

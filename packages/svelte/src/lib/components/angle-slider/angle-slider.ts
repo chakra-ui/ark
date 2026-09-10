@@ -3,6 +3,7 @@ export {
   default as Root,
   type AngleSliderRootProps as RootProps,
   type AngleSliderRootBaseProps as RootBaseProps,
+  type AngleSliderRootState as RootState,
 } from './angle-slider-root.svelte'
 export {
   default as RootProvider,
@@ -33,6 +34,7 @@ export {
   default as Marker,
   type AngleSliderMarkerBaseProps as MarkerBaseProps,
   type AngleSliderMarkerProps as MarkerProps,
+  type AngleSliderMarkerState as MarkerState,
 } from './angle-slider-marker.svelte'
 export {
   default as ValueText,

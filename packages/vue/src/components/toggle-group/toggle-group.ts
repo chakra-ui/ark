@@ -4,15 +4,18 @@ export {
   default as Item,
   type ToggleGroupItemProps as ItemProps,
   type ToggleGroupItemBaseProps as ItemBaseProps,
+  type ToggleGroupItemState as ItemState,
 } from './toggle-group-item.vue'
 export {
   default as RootProvider,
   type ToggleGroupRootProviderProps as RootProviderProps,
   type ToggleGroupRootProviderBaseProps as RootProviderBaseProps,
+  type ToggleGroupRootProviderState as RootProviderState,
 } from './toggle-group-root-provider.vue'
 export {
   default as Root,
   type ToggleGroupRootEmits as RootEmits,
   type ToggleGroupRootBaseProps as RootBaseProps,
   type ToggleGroupRootProps as RootProps,
+  type ToggleGroupRootState as RootState,
 } from './toggle-group-root.vue'

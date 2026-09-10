@@ -24,6 +24,7 @@ export {
   SliderMarker as Marker,
   type SliderMarkerBaseProps as MarkerBaseProps,
   type SliderMarkerProps as MarkerProps,
+  type SliderMarkerState as MarkerState,
 } from './slider-marker.tsx'
 export {
   SliderMarkerGroup as MarkerGroup,
@@ -39,16 +40,19 @@ export {
   SliderRoot as Root,
   type SliderRootBaseProps as RootBaseProps,
   type SliderRootProps as RootProps,
+  type SliderRootState as RootState,
 } from './slider-root.tsx'
 export {
   SliderRootProvider as RootProvider,
   type SliderRootProviderBaseProps as RootProviderBaseProps,
   type SliderRootProviderProps as RootProviderProps,
+  type SliderRootProviderState as RootProviderState,
 } from './slider-root-provider.tsx'
 export {
   SliderThumb as Thumb,
   type SliderThumbBaseProps as ThumbBaseProps,
   type SliderThumbProps as ThumbProps,
+  type SliderThumbState as ThumbState,
 } from './slider-thumb.tsx'
 export {
   SliderTrack as Track,

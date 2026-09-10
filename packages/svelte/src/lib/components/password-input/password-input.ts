@@ -14,6 +14,7 @@ export {
   default as Input,
   type PasswordInputInputBaseProps as InputBaseProps,
   type PasswordInputInputProps as InputProps,
+  type PasswordInputInputState as InputState,
 } from './password-input-input.svelte'
 export {
   default as Label,
@@ -29,9 +30,11 @@ export {
   default as RootProvider,
   type PasswordInputRootProviderBaseProps as RootProviderBaseProps,
   type PasswordInputRootProviderProps as RootProviderProps,
+  type PasswordInputRootProviderState as RootProviderState,
 } from './password-input-root-provider.svelte'
 export {
   default as VisibilityTrigger,
   type PasswordInputVisibilityTriggerBaseProps as VisibilityTriggerBaseProps,
   type PasswordInputVisibilityTriggerProps as VisibilityTriggerProps,
+  type PasswordInputVisibilityTriggerState as VisibilityTriggerState,
 } from './password-input-visibility-trigger.svelte'

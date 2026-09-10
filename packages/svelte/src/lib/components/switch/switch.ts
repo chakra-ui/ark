@@ -19,11 +19,13 @@ export {
   default as Root,
   type SwitchRootBaseProps as RootBaseProps,
   type SwitchRootProps as RootProps,
+  type SwitchRootState as RootState,
 } from './switch-root.svelte'
 export {
   default as RootProvider,
   type SwitchRootProviderBaseProps as RootProviderBaseProps,
   type SwitchRootProviderProps as RootProviderProps,
+  type SwitchRootProviderState as RootProviderState,
 } from './switch-root-provider.svelte'
 export {
   default as Thumb,

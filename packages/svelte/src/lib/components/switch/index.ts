@@ -7,11 +7,17 @@ export {
   type SwitchHiddenInputProps,
 } from './switch-hidden-input.svelte'
 export { default as SwitchLabel, type SwitchLabelBaseProps, type SwitchLabelProps } from './switch-label.svelte'
-export { default as SwitchRoot, type SwitchRootBaseProps, type SwitchRootProps } from './switch-root.svelte'
+export {
+  default as SwitchRoot,
+  type SwitchRootBaseProps,
+  type SwitchRootProps,
+  type SwitchRootState,
+} from './switch-root.svelte'
 export {
   default as SwitchRootProvider,
   type SwitchRootProviderBaseProps,
   type SwitchRootProviderProps,
+  type SwitchRootProviderState,
 } from './switch-root-provider.svelte'
 export { default as SwitchThumb, type SwitchThumbBaseProps, type SwitchThumbProps } from './switch-thumb.svelte'
 export { switchAnatomy } from './switch.anatomy.ts'

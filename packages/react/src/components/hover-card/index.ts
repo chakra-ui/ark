@@ -11,12 +11,18 @@ export {
   type HoverCardArrowTipBaseProps,
   type HoverCardArrowTipProps,
 } from './hover-card-arrow-tip.tsx'
-export { HoverCardContent, type HoverCardContentBaseProps, type HoverCardContentProps } from './hover-card-content.tsx'
+export {
+  HoverCardContent,
+  type HoverCardContentBaseProps,
+  type HoverCardContentProps,
+  type HoverCardContentState,
+} from './hover-card-content.tsx'
 export { HoverCardContext, type HoverCardContextProps } from './hover-card-context.tsx'
 export {
   HoverCardPositioner,
   type HoverCardPositionerBaseProps,
   type HoverCardPositionerProps,
+  type HoverCardPositionerState,
 } from './hover-card-positioner.tsx'
 export { HoverCardRoot, type HoverCardRootBaseProps, type HoverCardRootProps } from './hover-card-root.tsx'
 export {
@@ -24,7 +30,12 @@ export {
   type HoverCardRootProviderBaseProps,
   type HoverCardRootProviderProps,
 } from './hover-card-root-provider.tsx'
-export { HoverCardTrigger, type HoverCardTriggerBaseProps, type HoverCardTriggerProps } from './hover-card-trigger.tsx'
+export {
+  HoverCardTrigger,
+  type HoverCardTriggerBaseProps,
+  type HoverCardTriggerProps,
+  type HoverCardTriggerState,
+} from './hover-card-trigger.tsx'
 export { hoverCardAnatomy } from './hover-card.anatomy.ts'
 export { useHoverCard, type UseHoverCardProps, type UseHoverCardReturn } from './use-hover-card.ts'
 export { useHoverCardContext, type UseHoverCardContext } from './use-hover-card-context.ts'

@@ -2,6 +2,7 @@ export {
   TimerActionTrigger,
   type TimerActionTriggerBaseProps,
   type TimerActionTriggerProps,
+  type TimerActionTriggerState,
 } from './timer-action-trigger.tsx'
 export { TimerArea, type TimerAreaBaseProps, type TimerAreaProps } from './timer-area.tsx'
 export { TimerContext, type TimerContextProps } from './timer-context.tsx'

@@ -29,8 +29,14 @@ export {
   default as CheckboxRootProvider,
   type CheckboxRootProviderBaseProps,
   type CheckboxRootProviderProps,
+  type CheckboxRootProviderState,
 } from './checkbox-root-provider.svelte'
-export { default as CheckboxRoot, type CheckboxRootBaseProps, type CheckboxRootProps } from './checkbox-root.svelte'
+export {
+  default as CheckboxRoot,
+  type CheckboxRootBaseProps,
+  type CheckboxRootProps,
+  type CheckboxRootState,
+} from './checkbox-root.svelte'
 export { checkboxAnatomy } from './checkbox.anatomy.ts'
 export { CheckboxProvider, useCheckboxContext } from './use-checkbox-context.ts'
 export type { UseCheckboxContext } from './use-checkbox-context.ts'

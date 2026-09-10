@@ -3,6 +3,7 @@ export {
   default as CollapsibleContent,
   type CollapsibleContentBaseProps,
   type CollapsibleContentProps,
+  type CollapsibleContentState,
 } from './collapsible-content.svelte'
 export { default as CollapsibleContext, type CollapsibleContextProps } from './collapsible-context.svelte'
 export {
@@ -24,6 +25,7 @@ export {
   default as CollapsibleTrigger,
   type CollapsibleTriggerBaseProps,
   type CollapsibleTriggerProps,
+  type CollapsibleTriggerState,
 } from './collapsible-trigger.svelte'
 export { collapsibleAnatomy } from './collapsible.anatomy.ts'
 export { splitCollapsibleProps } from './split-collapsible-props.svelte.ts'

@@ -14,6 +14,7 @@ export {
   PaginationItem as Item,
   type PaginationItemBaseProps as ItemBaseProps,
   type PaginationItemProps as ItemProps,
+  type PaginationItemState as ItemState,
 } from './pagination-item.tsx'
 export {
   PaginationLastTrigger as LastTrigger,

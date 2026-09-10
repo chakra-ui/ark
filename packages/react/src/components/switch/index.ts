@@ -7,11 +7,12 @@ export {
   type SwitchHiddenInputProps,
 } from './switch-hidden-input.tsx'
 export { SwitchLabel, type SwitchLabelBaseProps, type SwitchLabelProps } from './switch-label.tsx'
-export { SwitchRoot, type SwitchRootBaseProps, type SwitchRootProps } from './switch-root.tsx'
+export { SwitchRoot, type SwitchRootBaseProps, type SwitchRootProps, type SwitchRootState } from './switch-root.tsx'
 export {
   SwitchRootProvider,
   type SwitchRootProviderBaseProps,
   type SwitchRootProviderProps,
+  type SwitchRootProviderState,
 } from './switch-root-provider.tsx'
 export { SwitchThumb, type SwitchThumbBaseProps, type SwitchThumbProps } from './switch-thumb.tsx'
 export { switchAnatomy } from './switch.anatomy.ts'

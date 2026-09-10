@@ -9,6 +9,7 @@ export {
   DialogBackdrop as Backdrop,
   type DialogBackdropBaseProps as BackdropBaseProps,
   type DialogBackdropProps as BackdropProps,
+  type DialogBackdropState as BackdropState,
 } from './dialog-backdrop.tsx'
 export {
   DialogCloseTrigger as CloseTrigger,
@@ -19,6 +20,7 @@ export {
   DialogContent as Content,
   type DialogContentBaseProps as ContentBaseProps,
   type DialogContentProps as ContentProps,
+  type DialogContentState as ContentState,
 } from './dialog-content.tsx'
 export { DialogContext as Context, type DialogContextProps as ContextProps } from './dialog-context.tsx'
 export {
@@ -30,6 +32,7 @@ export {
   DialogPositioner as Positioner,
   type DialogPositionerBaseProps as PositionerBaseProps,
   type DialogPositionerProps as PositionerProps,
+  type DialogPositionerState as PositionerState,
 } from './dialog-positioner.tsx'
 export {
   DialogRoot as Root,
@@ -50,4 +53,5 @@ export {
   DialogTrigger as Trigger,
   type DialogTriggerBaseProps as TriggerBaseProps,
   type DialogTriggerProps as TriggerProps,
+  type DialogTriggerState as TriggerState,
 } from './dialog-trigger.tsx'

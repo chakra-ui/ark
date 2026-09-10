@@ -23,6 +23,7 @@ export {
   default as Item,
   type AccordionItemBaseProps as ItemBaseProps,
   type AccordionItemProps as ItemProps,
+  type AccordionItemState as ItemState,
 } from './accordion-item.vue'
 export {
   default as RootProvider,

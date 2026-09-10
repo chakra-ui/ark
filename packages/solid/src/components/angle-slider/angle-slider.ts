@@ -3,11 +3,13 @@ export {
   AngleSliderRoot as Root,
   type AngleSliderRootProps as RootProps,
   type AngleSliderRootBaseProps as RootBaseProps,
+  type AngleSliderRootState as RootState,
 } from './angle-slider-root.tsx'
 export {
   AngleSliderRootProvider as RootProvider,
   type AngleSliderRootProviderProps as RootProviderProps,
   type AngleSliderRootProviderBaseProps as RootProviderBaseProps,
+  type AngleSliderRootProviderState as RootProviderState,
 } from './angle-slider-root-provider.tsx'
 export {
   AngleSliderLabel as Label,
@@ -33,6 +35,7 @@ export {
   AngleSliderMarker as Marker,
   type AngleSliderMarkerBaseProps as MarkerBaseProps,
   type AngleSliderMarkerProps as MarkerProps,
+  type AngleSliderMarkerState as MarkerState,
 } from './angle-slider-marker.tsx'
 export {
   AngleSliderValueText as ValueText,

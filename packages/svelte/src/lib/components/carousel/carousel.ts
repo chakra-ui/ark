@@ -24,6 +24,7 @@ export {
   default as Indicator,
   type CarouselIndicatorBaseProps as IndicatorBaseProps,
   type CarouselIndicatorProps as IndicatorProps,
+  type CarouselIndicatorState as IndicatorState,
 } from './carousel-indicator.svelte'
 export {
   default as IndicatorGroup,
@@ -34,6 +35,7 @@ export {
   default as Item,
   type CarouselItemBaseProps as ItemBaseProps,
   type CarouselItemProps as ItemProps,
+  type CarouselItemState as ItemState,
 } from './carousel-item.svelte'
 export {
   default as ItemGroup,

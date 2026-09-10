@@ -19,11 +19,13 @@ export {
   SwitchRoot as Root,
   type SwitchRootBaseProps as RootBaseProps,
   type SwitchRootProps as RootProps,
+  type SwitchRootState as RootState,
 } from './switch-root.tsx'
 export {
   SwitchRootProvider as RootProvider,
   type SwitchRootProviderBaseProps as RootProviderBaseProps,
   type SwitchRootProviderProps as RootProviderProps,
+  type SwitchRootProviderState as RootProviderState,
 } from './switch-root-provider.tsx'
 export {
   SwitchThumb as Thumb,

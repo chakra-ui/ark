@@ -32,6 +32,7 @@ export {
   TagsInputItem as Item,
   type TagsInputItemBaseProps as ItemBaseProps,
   type TagsInputItemProps as ItemProps,
+  type TagsInputItemState as ItemState,
 } from './tags-input-item.tsx'
 export {
   TagsInputItemContext as ItemContext,
@@ -66,9 +67,11 @@ export {
   TagsInputRoot as Root,
   type TagsInputRootBaseProps as RootBaseProps,
   type TagsInputRootProps as RootProps,
+  type TagsInputRootState as RootState,
 } from './tags-input-root.tsx'
 export {
   TagsInputRootProvider as RootProvider,
   type TagsInputRootProviderBaseProps as RootProviderBaseProps,
   type TagsInputRootProviderProps as RootProviderProps,
+  type TagsInputRootProviderState as RootProviderState,
 } from './tags-input-root-provider.tsx'

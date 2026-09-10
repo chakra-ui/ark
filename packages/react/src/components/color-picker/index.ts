@@ -54,6 +54,7 @@ export {
   ColorPickerContent,
   type ColorPickerContentBaseProps,
   type ColorPickerContentProps,
+  type ColorPickerContentState,
 } from './color-picker-content.tsx'
 export { ColorPickerContext, type ColorPickerContextProps } from './color-picker-context.tsx'
 export {
@@ -87,11 +88,17 @@ export {
   type ColorPickerPositionerBaseProps,
   type ColorPickerPositionerProps,
 } from './color-picker-positioner.tsx'
-export { ColorPickerRoot, type ColorPickerRootBaseProps, type ColorPickerRootProps } from './color-picker-root.tsx'
+export {
+  ColorPickerRoot,
+  type ColorPickerRootBaseProps,
+  type ColorPickerRootProps,
+  type ColorPickerRootState,
+} from './color-picker-root.tsx'
 export {
   ColorPickerRootProvider,
   type ColorPickerRootProviderBaseProps,
   type ColorPickerRootProviderProps,
+  type ColorPickerRootProviderState,
 } from './color-picker-root-provider.tsx'
 export {
   ColorPickerSwatch,
@@ -112,6 +119,7 @@ export {
   ColorPickerSwatchTrigger,
   type ColorPickerSwatchTriggerBaseProps,
   type ColorPickerSwatchTriggerProps,
+  type ColorPickerSwatchTriggerState,
 } from './color-picker-swatch-trigger.tsx'
 export {
   ColorPickerTransparencyGrid,
@@ -122,6 +130,7 @@ export {
   ColorPickerTrigger,
   type ColorPickerTriggerBaseProps,
   type ColorPickerTriggerProps,
+  type ColorPickerTriggerState,
 } from './color-picker-trigger.tsx'
 export {
   ColorPickerValueSwatch,

@@ -28,6 +28,7 @@ export {
   default as Root,
   type ToastRootProps as RootProps,
   type ToastRootBaseProps as RootBaseProps,
+  type ToastRootState as RootState,
 } from './toast-root.vue'
 export {
   default as Title,
