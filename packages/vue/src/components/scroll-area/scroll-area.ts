@@ -24,6 +24,7 @@ export {
   default as Scrollbar,
   type ScrollAreaScrollbarBaseProps as ScrollbarBaseProps,
   type ScrollAreaScrollbarProps as ScrollbarProps,
+  type ScrollAreaScrollbarState as ScrollbarState,
 } from './scroll-area-scrollbar.vue'
 export {
   default as Thumb,
