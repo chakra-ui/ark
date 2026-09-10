@@ -1,3 +1,4 @@
+import type { ContentState } from '@zag-js/dialog'
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
 import { composeRefs } from '../../utils/compose-refs.ts'
@@ -5,7 +6,9 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresenceContext } from '../presence/index.tsx'
 import { useDialogContext } from './use-dialog-context.ts'
 
-export interface DialogContentBaseProps extends PolymorphicProps<'div'> {}
+export interface DialogContentState extends ContentState {}
+
+export interface DialogContentBaseProps extends PolymorphicProps<'div', DialogContentState> {}
 export interface DialogContentProps extends HTMLProps<'div'>, DialogContentBaseProps {}
 
 export const DialogContent = (props: DialogContentProps) => {
@@ -19,7 +22,7 @@ export const DialogContent = (props: DialogContentProps) => {
 
   return (
     <Show when={!presenceApi().unmounted}>
-      <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} />
+      <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} state={api().getContentState()} />
     </Show>
   )
 }

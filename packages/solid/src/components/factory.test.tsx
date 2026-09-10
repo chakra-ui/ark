@@ -1,5 +1,6 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
+import type { Accessor } from 'solid-js'
 import type { JSX } from 'solid-js'
 import { ark } from './factory.tsx'
 
@@ -33,7 +34,11 @@ describe('Ark Factory', () => {
     it('should render the returned element with the forwarded props', async () => {
       const onClick = vi.fn()
       render(() => (
-        <ark.button data-part="trigger" onClick={onClick} render={(props) => <MyButton {...props}>Ark UI</MyButton>} />
+        <ark.button
+          data-part="trigger"
+          onClick={onClick}
+          render={(props) => <MyButton {...props()}>Ark UI</MyButton>}
+        />
       ))
 
       const child = screen.getByTestId('child')
@@ -45,7 +50,7 @@ describe('Ark Factory', () => {
 
     it('should not double-apply props the render fn did not spread', async () => {
       const onClick = vi.fn()
-      render(() => <ark.button onClick={onClick} render={(props) => <MyButton {...props} />} />)
+      render(() => <ark.button onClick={onClick} render={(props) => <MyButton {...props()} />} />)
 
       await user.click(screen.getByTestId('child'))
       expect(onClick).toHaveBeenCalledTimes(1)
@@ -55,7 +60,9 @@ describe('Ark Factory', () => {
       render(() => (
         <ark.button
           state={{ open: true }}
-          render={(props, state: { open: boolean }) => <MyButton {...props}>{state.open ? 'Open' : 'Closed'}</MyButton>}
+          render={(props, state: Accessor<{ open: boolean }>) => (
+            <MyButton {...props()}>{state().open ? 'Open' : 'Closed'}</MyButton>
+          )}
         />
       ))
 
@@ -67,8 +74,8 @@ describe('Ark Factory', () => {
       render(() => (
         <ark.button
           render={(props, state) => {
-            spy(state)
-            return <MyButton {...props} />
+            spy(state())
+            return <MyButton {...props()} />
           }}
         />
       ))
@@ -81,20 +88,23 @@ describe('Ark Factory', () => {
       expect(container).toBeEmptyDOMElement()
     })
 
-    it('should accept a component reference', async () => {
-      const onClick = vi.fn()
+    it('should merge the props passed to the props fn', async () => {
+      const onPart = vi.fn()
+      const onOwn = vi.fn()
       render(() => (
-        <ark.button class="merged" onClick={onClick} render={MyButton}>
-          Open
-        </ark.button>
+        <ark.button
+          class="part"
+          onClick={onPart}
+          render={(props) => <MyButton {...props({ class: 'own', onClick: onOwn })}>Open</MyButton>}
+        />
       ))
 
       const child = screen.getByTestId('child')
-      expect(child).toHaveTextContent('Open')
-      expect(child).toHaveClass('merged')
+      expect(child).toHaveClass('part own')
 
       await user.click(child)
-      expect(onClick).toHaveBeenCalled()
+      expect(onPart).toHaveBeenCalled()
+      expect(onOwn).toHaveBeenCalled()
     })
 
     it('should not pass ref to the render fn', () => {
@@ -104,8 +114,8 @@ describe('Ark Factory', () => {
         <ark.button
           ref={el}
           render={(props) => {
-            spy(Object.keys(props))
-            return <MyButton {...props} />
+            spy(Object.keys(props()))
+            return <MyButton {...props()} />
           }}
         />
       ))

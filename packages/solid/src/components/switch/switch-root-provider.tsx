@@ -1,4 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
+import type { RootState } from '@zag-js/switch'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import type { UseSwitchReturn } from './use-switch.ts'
@@ -8,7 +9,9 @@ interface RootProviderProps {
   value: UseSwitchReturn
 }
 
-export interface SwitchRootProviderBaseProps extends PolymorphicProps<'label'> {}
+export interface SwitchRootProviderState extends RootState {}
+
+export interface SwitchRootProviderBaseProps extends PolymorphicProps<'label', SwitchRootProviderState> {}
 export interface SwitchRootProviderProps extends HTMLProps<'label'>, RootProviderProps, SwitchRootProviderBaseProps {}
 
 export const SwitchRootProvider = (props: SwitchRootProviderProps) => {
@@ -17,7 +20,7 @@ export const SwitchRootProvider = (props: SwitchRootProviderProps) => {
 
   return (
     <SwitchProvider value={api}>
-      <ark.label {...mergedProps} />
+      <ark.label {...mergedProps} state={api().getRootState()} />
     </SwitchProvider>
   )
 }

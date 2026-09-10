@@ -1,4 +1,4 @@
-import type { ItemProps } from '@zag-js/file-upload'
+import type { ItemProps, ItemState } from '@zag-js/file-upload'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -9,7 +9,9 @@ import { FileUploadItemPropsProvider } from './use-file-upload-item-props-contex
 
 type ItemBaseProps = Omit<ItemProps, 'type'>
 
-export interface FileUploadItemBaseProps extends ItemBaseProps, PolymorphicProps<'li'> {}
+export interface FileUploadItemState extends ItemState {}
+
+export interface FileUploadItemBaseProps extends ItemBaseProps, PolymorphicProps<'li', FileUploadItemState> {}
 export interface FileUploadItemProps extends HTMLProps<'li'>, FileUploadItemBaseProps {}
 
 export const FileUploadItem = (props: FileUploadItemProps) => {
@@ -23,7 +25,7 @@ export const FileUploadItem = (props: FileUploadItemProps) => {
 
   return (
     <FileUploadItemPropsProvider value={itemPropsWithType}>
-      <ark.li {...mergedProps} />
+      <ark.li {...mergedProps} state={fileUpload().getItemState(itemPropsWithType())} />
     </FileUploadItemPropsProvider>
   )
 }

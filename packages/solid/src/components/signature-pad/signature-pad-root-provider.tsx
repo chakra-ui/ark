@@ -1,3 +1,4 @@
+import type { RootState } from '@zag-js/signature-pad'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
@@ -8,7 +9,9 @@ interface RootProviderProps {
   value: UseSignaturePadReturn
 }
 
-export interface SignaturePadRootProviderBaseProps extends PolymorphicProps<'div'> {}
+export interface SignaturePadRootProviderState extends RootState {}
+
+export interface SignaturePadRootProviderBaseProps extends PolymorphicProps<'div', SignaturePadRootProviderState> {}
 export interface SignaturePadRootProviderProps
   extends HTMLProps<'div'>, RootProviderProps, SignaturePadRootProviderBaseProps {}
 
@@ -18,7 +21,7 @@ export const SignaturePadRootProvider = (props: SignaturePadRootProviderProps) =
 
   return (
     <SignaturePadProvider value={signaturePad}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} state={signaturePad().getRootState()} />
     </SignaturePadProvider>
   )
 }

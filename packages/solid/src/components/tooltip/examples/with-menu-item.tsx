@@ -27,7 +27,7 @@ export const WithMenuItem = () => (
         <Tooltip.Root>
           <Tooltip.Trigger
             render={(props) => (
-              <Menu.Item {...props} class={styles.Item} value="save" disabled>
+              <Menu.Item {...props({ class: styles.Item })} value="save" disabled>
                 Save
               </Menu.Item>
             )}

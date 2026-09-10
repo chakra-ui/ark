@@ -40,7 +40,7 @@ export const Virtualized = () => {
             <Select.List
               class={styles.Scroller}
               style={{ '--total-size': `${virtualizer.getTotalSize()}px` }}
-              render={(props) => <ListVirtualizer.Root {...props} value={virtualizer} />}
+              render={(props) => <ListVirtualizer.Root {...props()} value={virtualizer} />}
             >
               <ListVirtualizer.Content>
                 <Index each={virtualizer.getVirtualItems()}>
@@ -50,7 +50,7 @@ export const Virtualized = () => {
                       <Select.Item
                         item={item()}
                         class={styles.Item}
-                        render={(props) => <ListVirtualizer.Item {...props} item={virtualItem()} />}
+                        render={(props) => <ListVirtualizer.Item {...props()} item={virtualItem()} />}
                       >
                         <Select.ItemText class={styles.ItemText}>{item().label}</Select.ItemText>
                         <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>

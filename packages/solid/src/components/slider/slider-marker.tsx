@@ -1,10 +1,12 @@
-import type { MarkerProps } from '@zag-js/slider'
+import type { MarkerProps, MarkerState } from '@zag-js/slider'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useSliderContext } from './use-slider-context.ts'
 
-export interface SliderMarkerBaseProps extends MarkerProps, PolymorphicProps<'span'> {}
+export interface SliderMarkerState extends MarkerState {}
+
+export interface SliderMarkerBaseProps extends MarkerProps, PolymorphicProps<'span', SliderMarkerState> {}
 export interface SliderMarkerProps extends HTMLProps<'span'>, SliderMarkerBaseProps {}
 
 export const SliderMarker = (props: SliderMarkerProps) => {
@@ -12,5 +14,5 @@ export const SliderMarker = (props: SliderMarkerProps) => {
   const api = useSliderContext()
   const mergedProps = mergeProps(() => api().getMarkerProps(markerProps), localProps)
 
-  return <ark.span {...mergedProps} />
+  return <ark.span {...mergedProps} state={api().getMarkerState(markerProps)} />
 }

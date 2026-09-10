@@ -1,4 +1,4 @@
-import type { ContentProps } from '@zag-js/navigation-menu'
+import type { ContentProps, ContentState } from '@zag-js/navigation-menu'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo, Show } from 'solid-js'
 import { Portal } from 'solid-js/web'
@@ -11,7 +11,10 @@ import { PresenceProvider, usePresence } from '../presence/index.tsx'
 import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
 import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context.ts'
 
-export interface NavigationMenuContentBaseProps extends Partial<ContentProps>, PolymorphicProps<'div'> {}
+export interface NavigationMenuContentState extends ContentState {}
+
+export interface NavigationMenuContentBaseProps
+  extends Partial<ContentProps>, PolymorphicProps<'div', NavigationMenuContentState> {}
 export interface NavigationMenuContentProps extends Assign<HTMLProps<'div'>, NavigationMenuContentBaseProps> {}
 
 const splitContentProps = createSplitProps<ContentProps>()
@@ -42,7 +45,11 @@ export const NavigationMenuContent = (props: NavigationMenuContentProps) => {
   const content = (
     <PresenceProvider value={presenceApi}>
       <Show when={!presenceApi().unmounted}>
-        <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} />
+        <ark.div
+          {...mergedProps}
+          ref={composeRefs(presenceApi().ref, props.ref)}
+          state={api().getContentState(contentProps)}
+        />
       </Show>
     </PresenceProvider>
   )
