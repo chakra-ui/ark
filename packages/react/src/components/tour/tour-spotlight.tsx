@@ -8,8 +8,11 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { PresenceGate } from '../presence/presence-gate.tsx'
 import { usePresence } from '../presence/index.ts'
 import { useTourContext } from './use-tour-context.ts'
+import type { SpotlightState } from '@zag-js/tour'
 
-export interface TourSpotlightBaseProps extends PolymorphicProps {}
+export interface TourSpotlightState extends SpotlightState {}
+
+export interface TourSpotlightBaseProps extends PolymorphicProps<TourSpotlightState> {}
 export interface TourSpotlightProps extends HTMLProps<'div'>, TourSpotlightBaseProps {}
 
 export const TourSpotlight = forwardRef<HTMLDivElement, TourSpotlightProps>((props, ref) => {
@@ -25,7 +28,7 @@ export const TourSpotlight = forwardRef<HTMLDivElement, TourSpotlightProps>((pro
 
   return (
     <PresenceGate presence={presence}>
-      <ark.div {...mergedProps} ref={composedRefs} hidden={hidden} />
+      <ark.div {...mergedProps} ref={composedRefs} hidden={hidden} state={tour.getSpotlightState()} />
     </PresenceGate>
   )
 })

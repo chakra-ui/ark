@@ -7,8 +7,11 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { PresenceGate } from '../presence/presence-gate.tsx'
 import { usePresenceContext } from '../presence/index.ts'
 import { usePopoverContext } from './use-popover-context.ts'
+import type { ContentState } from '@zag-js/popover'
 
-export interface PopoverContentBaseProps extends PolymorphicProps {}
+export interface PopoverContentState extends ContentState {}
+
+export interface PopoverContentBaseProps extends PolymorphicProps<PopoverContentState> {}
 export interface PopoverContentProps extends HTMLProps<'div'>, PopoverContentBaseProps {}
 
 export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>((props, ref) => {
@@ -19,7 +22,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>((p
 
   return (
     <PresenceGate presence={presence}>
-      <ark.div {...mergedProps} ref={composedRefs} />
+      <ark.div {...mergedProps} ref={composedRefs} state={popover.getContentState()} />
     </PresenceGate>
   )
 })

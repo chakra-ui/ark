@@ -7,8 +7,11 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { PresenceGate } from '../presence/presence-gate.tsx'
 import { usePresenceContext } from '../presence/index.ts'
 import { useSelectContext } from './use-select-context.ts'
+import type { ContentState } from '@zag-js/select'
 
-export interface SelectContentBaseProps extends PolymorphicProps {}
+export interface SelectContentState extends ContentState {}
+
+export interface SelectContentBaseProps extends PolymorphicProps<SelectContentState> {}
 export interface SelectContentProps extends HTMLProps<'div'>, SelectContentBaseProps {}
 
 export const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>((props, ref) => {
@@ -19,7 +22,7 @@ export const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>((pro
 
   return (
     <PresenceGate presence={presence}>
-      <ark.div {...mergedProps} ref={composedRefs} />
+      <ark.div {...mergedProps} ref={composedRefs} state={select.getContentState()} />
     </PresenceGate>
   )
 })

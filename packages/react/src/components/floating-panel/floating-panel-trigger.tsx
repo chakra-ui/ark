@@ -5,8 +5,11 @@ import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { usePresenceContext } from '../presence/index.ts'
 import { useFloatingPanelContext } from './use-floating-panel-context.ts'
+import type { TriggerState } from '@zag-js/floating-panel'
 
-export interface FloatingPanelTriggerBaseProps extends PolymorphicProps {}
+export interface FloatingPanelTriggerState extends TriggerState {}
+
+export interface FloatingPanelTriggerBaseProps extends PolymorphicProps<FloatingPanelTriggerState> {}
 export interface FloatingPanelTriggerProps extends HTMLProps<'button'>, FloatingPanelTriggerBaseProps {}
 
 export const FloatingPanelTrigger = forwardRef<HTMLButtonElement, FloatingPanelTriggerProps>((props, ref) => {
@@ -22,7 +25,7 @@ export const FloatingPanelTrigger = forwardRef<HTMLButtonElement, FloatingPanelT
     props,
   )
 
-  return <ark.button {...mergedProps} ref={ref} />
+  return <ark.button {...mergedProps} ref={ref} state={floatingPanel.getTriggerState()} />
 })
 
 FloatingPanelTrigger.displayName = 'FloatingPanelTrigger'

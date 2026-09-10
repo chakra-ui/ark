@@ -7,8 +7,11 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { PresenceGate } from '../presence/presence-gate.tsx'
 import { usePresenceContext } from '../presence/index.ts'
 import { useTooltipContext } from './use-tooltip-context.ts'
+import type { ContentState } from '@zag-js/tooltip'
 
-export interface TooltipContentBaseProps extends PolymorphicProps {}
+export interface TooltipContentState extends ContentState {}
+
+export interface TooltipContentBaseProps extends PolymorphicProps<TooltipContentState> {}
 export interface TooltipContentProps extends HTMLProps<'div'>, TooltipContentBaseProps {}
 
 export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>((props, ref) => {
@@ -19,7 +22,7 @@ export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>((p
 
   return (
     <PresenceGate presence={presence}>
-      <ark.div {...mergedProps} ref={composedRefs} />
+      <ark.div {...mergedProps} ref={composedRefs} state={tooltip.getContentState()} />
     </PresenceGate>
   )
 })

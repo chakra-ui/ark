@@ -8,8 +8,11 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { PresenceGate } from '../presence/presence-gate.tsx'
 import { usePresence } from '../presence/index.ts'
 import { useDrawerContext } from './use-drawer-context.ts'
+import type { BackdropState } from '@zag-js/drawer'
 
-export interface DrawerBackdropBaseProps extends PolymorphicProps {}
+export interface DrawerBackdropState extends BackdropState {}
+
+export interface DrawerBackdropBaseProps extends PolymorphicProps<DrawerBackdropState> {}
 export interface DrawerBackdropProps extends HTMLProps<'div'>, DrawerBackdropBaseProps {}
 
 export const DrawerBackdrop = forwardRef<HTMLDivElement, DrawerBackdropProps>((props, ref) => {
@@ -21,7 +24,7 @@ export const DrawerBackdrop = forwardRef<HTMLDivElement, DrawerBackdropProps>((p
 
   return (
     <PresenceGate presence={presence}>
-      <ark.div {...mergedProps} ref={composedRefs} />
+      <ark.div {...mergedProps} ref={composedRefs} state={drawer.getBackdropState()} />
     </PresenceGate>
   )
 })

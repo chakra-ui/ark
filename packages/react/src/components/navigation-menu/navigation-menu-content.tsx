@@ -1,6 +1,6 @@
 'use client'
 
-import type { ContentProps } from '@zag-js/navigation-menu'
+import type { ContentProps, ContentState } from '@zag-js/navigation-menu'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types.ts'
@@ -14,7 +14,10 @@ import { PresenceProvider, usePresence } from '../presence/index.ts'
 import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
 import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context.ts'
 
-export interface NavigationMenuContentBaseProps extends Partial<ContentProps>, PolymorphicProps {}
+export interface NavigationMenuContentState extends ContentState {}
+
+export interface NavigationMenuContentBaseProps
+  extends Partial<ContentProps>, PolymorphicProps<NavigationMenuContentState> {}
 export interface NavigationMenuContentProps extends Assign<HTMLProps<'div'>, NavigationMenuContentBaseProps> {}
 
 const splitContentProps = createSplitProps<ContentProps>()
@@ -34,7 +37,7 @@ export const NavigationMenuContent = forwardRef<HTMLDivElement, NavigationMenuCo
   const content = (
     <PresenceProvider value={presence}>
       <PresenceGate presence={presence}>
-        <ark.div {...mergedProps} ref={composedRefs} />
+        <ark.div {...mergedProps} ref={composedRefs} state={api.getContentState(contentProps)} />
       </PresenceGate>
     </PresenceProvider>
   )

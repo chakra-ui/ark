@@ -1,14 +1,16 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import type { ItemGroupProps } from '@zag-js/file-upload'
+import type { ItemGroupProps, ItemGroupState } from '@zag-js/file-upload'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { useFileUploadContext } from './use-file-upload-context.ts'
 import { FileUploadItemGroupPropsProvider } from './use-file-upload-item-group-props-context.ts'
 
-export interface FileUploadItemGroupBaseProps extends PolymorphicProps, ItemGroupProps {}
+export interface FileUploadItemGroupState extends ItemGroupState {}
+
+export interface FileUploadItemGroupBaseProps extends PolymorphicProps<FileUploadItemGroupState>, ItemGroupProps {}
 export interface FileUploadItemGroupProps extends HTMLProps<'ul'>, FileUploadItemGroupBaseProps {}
 
 const splitItemGroupProps = createSplitProps<ItemGroupProps>()
@@ -20,7 +22,7 @@ export const FileUploadItemGroup = forwardRef<HTMLUListElement, FileUploadItemGr
 
   return (
     <FileUploadItemGroupPropsProvider value={itemGroupProps}>
-      <ark.ul {...mergedProps} ref={ref} />
+      <ark.ul {...mergedProps} ref={ref} state={fileUpload.getItemGroupState(itemGroupProps)} />
     </FileUploadItemGroupPropsProvider>
   )
 })

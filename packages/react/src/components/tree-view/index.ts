@@ -6,7 +6,6 @@ export type {
   LoadChildrenDetails as TreeViewLoadChildrenDetails,
   LoadChildrenErrorDetails as TreeViewLoadChildrenErrorDetails,
   NodeIndicatorType as TreeViewNodeIndicatorType,
-  NodeState as TreeViewNodeState,
   RenameCompleteDetails as TreeViewRenameCompleteDetails,
   RenameStartDetails as TreeViewRenameStartDetails,
   SelectionChangeDetails as TreeViewSelectionChangeDetails,
@@ -25,7 +24,12 @@ export {
   type TreeViewIndentGuideProps,
 } from './tree-view-indent-guide.tsx'
 export { TreeViewLabel, type TreeViewLabelBaseProps, type TreeViewLabelProps } from './tree-view-label.tsx'
-export { TreeViewNode, type TreeViewNodeBaseProps, type TreeViewNodeProps } from './tree-view-node.tsx'
+export {
+  TreeViewNode,
+  type TreeViewNodeBaseProps,
+  type TreeViewNodeProps,
+  type TreeViewNodeState,
+} from './tree-view-node.tsx'
 export {
   TreeViewNodeCheckbox,
   type TreeViewNodeCheckboxBaseProps,

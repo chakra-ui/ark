@@ -1,13 +1,15 @@
 'use client'
 
-import type { ViewProps } from '@zag-js/progress'
+import type { ViewProps, ViewState } from '@zag-js/progress'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { useProgressContext } from './use-progress-context.ts'
 
-export interface ProgressViewBaseProps extends ViewProps, PolymorphicProps {}
+export interface ProgressViewState extends ViewState {}
+
+export interface ProgressViewBaseProps extends ViewProps, PolymorphicProps<ProgressViewState> {}
 export interface ProgressViewProps extends HTMLProps<'span'>, ProgressViewBaseProps {}
 
 const splitViewProps = createSplitProps<ViewProps>()
@@ -17,7 +19,7 @@ export const ProgressView = forwardRef<HTMLSpanElement, ProgressViewProps>((prop
   const progress = useProgressContext()
   const mergedProps = mergeProps(progress.getViewProps(viewProps), localProps)
 
-  return <ark.span {...mergedProps} ref={ref} />
+  return <ark.span {...mergedProps} ref={ref} state={progress.getViewState(viewProps)} />
 })
 
 ProgressView.displayName = 'ProgressView'

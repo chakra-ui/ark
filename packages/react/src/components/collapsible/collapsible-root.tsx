@@ -7,7 +7,12 @@ import { splitCollapsibleProps } from './split-collapsible-props.ts'
 import { type UseCollapsibleProps, useCollapsible } from './use-collapsible.ts'
 import { CollapsibleProvider } from './use-collapsible-context.ts'
 
-export interface CollapsibleRootBaseProps extends UseCollapsibleProps, PolymorphicProps {}
+export interface CollapsibleRootBaseProps extends UseCollapsibleProps, PolymorphicProps {
+  /**
+   * The state of the part, forwarded to the `render` function. Set by the component, not the consumer.
+   */
+  state?: unknown
+}
 export interface CollapsibleRootProps extends HTMLProps<'div'>, CollapsibleRootBaseProps {}
 
 export const CollapsibleRoot = forwardRef<HTMLDivElement, CollapsibleRootProps>((props, ref) => {
