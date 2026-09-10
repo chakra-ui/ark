@@ -5,12 +5,16 @@ import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import type { UsePasswordInputReturn } from './use-password-input.ts'
 import { PasswordInputProvider } from './use-password-input-context.ts'
+import type { RootState } from '@zag-js/password-input'
 
 interface RootProviderProps {
   value: UsePasswordInputReturn
 }
 
-export interface PasswordInputRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
+export interface PasswordInputRootProviderState extends RootState {}
+
+export interface PasswordInputRootProviderBaseProps
+  extends RootProviderProps, PolymorphicProps<PasswordInputRootProviderState> {}
 export interface PasswordInputRootProviderProps extends HTMLProps<'div'>, PasswordInputRootProviderBaseProps {}
 
 export const PasswordInputRootProvider = forwardRef<HTMLDivElement, PasswordInputRootProviderProps>((props, ref) => {
@@ -19,7 +23,7 @@ export const PasswordInputRootProvider = forwardRef<HTMLDivElement, PasswordInpu
 
   return (
     <PasswordInputProvider value={passwordInput}>
-      <ark.div {...mergedProps} ref={ref} />
+      <ark.div {...mergedProps} ref={ref} state={passwordInput.getRootState()} />
     </PasswordInputProvider>
   )
 })

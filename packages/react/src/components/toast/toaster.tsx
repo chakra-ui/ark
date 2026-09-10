@@ -8,10 +8,13 @@ import type { Assign } from '../../types.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import type { CreateToasterReturn } from './create-toaster.tsx'
 import { ToastProvider } from './use-toast-context.ts'
+import type { GroupState } from '@zag-js/toast'
 
 export type ToastOptions = toast.Options<ReactNode>
 
-export interface ToasterBaseProps extends PolymorphicProps, Omit<toast.GroupProps, 'store' | 'id'> {
+export interface ToasterState extends GroupState {}
+
+export interface ToasterBaseProps extends PolymorphicProps<ToasterState>, Omit<toast.GroupProps, 'store' | 'id'> {
   toaster: CreateToasterReturn<any>
   children: (toast: ToastOptions) => ReactNode
 }
@@ -36,7 +39,7 @@ export const Toaster = forwardRef<HTMLDivElement, ToasterProps>((props, ref) => 
   const mergedProps = mergeProps(api.getGroupProps(), localProps)
 
   return (
-    <ark.div {...mergedProps} ref={ref}>
+    <ark.div {...mergedProps} ref={ref} state={api.getGroupState()}>
       {api.getToasts().map((toast, index) => (
         <ToastActor key={toast.id} value={toast} parent={service} index={index}>
           {(ctx) => children(ctx)}

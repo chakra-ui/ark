@@ -9,9 +9,12 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.ts'
 import { type UseSelectProps, useSelect } from './use-select.ts'
 import { SelectProvider } from './use-select-context.ts'
+import type { RootState } from '@zag-js/select'
+
+export interface SelectRootState extends RootState {}
 
 export interface SelectRootBaseProps<T extends CollectionItem>
-  extends UseSelectProps<T>, UsePresenceProps, PolymorphicProps {}
+  extends UseSelectProps<T>, UsePresenceProps, PolymorphicProps<SelectRootState> {}
 export interface SelectRootProps<T extends CollectionItem> extends Assign<HTMLProps<'div'>, SelectRootBaseProps<T>> {}
 
 const SelectImpl = <T extends CollectionItem>(props: SelectRootProps<T>, ref: React.Ref<HTMLDivElement>) => {
@@ -58,7 +61,7 @@ const SelectImpl = <T extends CollectionItem>(props: SelectRootProps<T>, ref: Re
   return (
     <SelectProvider value={select}>
       <PresenceProvider value={presence}>
-        <ark.div {...mergedProps} ref={ref} />
+        <ark.div {...mergedProps} ref={ref} state={select.getRootState()} />
       </PresenceProvider>
     </SelectProvider>
   )

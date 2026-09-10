@@ -7,8 +7,11 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { PresenceGate } from '../presence/presence-gate.tsx'
 import { usePresenceContext } from '../presence/index.ts'
 import { useComboboxContext } from './use-combobox-context.ts'
+import type { ContentState } from '@zag-js/combobox'
 
-export interface ComboboxContentBaseProps extends PolymorphicProps {}
+export interface ComboboxContentState extends ContentState {}
+
+export interface ComboboxContentBaseProps extends PolymorphicProps<ComboboxContentState> {}
 export interface ComboboxContentProps extends HTMLProps<'div'>, ComboboxContentBaseProps {}
 
 export const ComboboxContent = forwardRef<HTMLDivElement, ComboboxContentProps>((props, ref) => {
@@ -19,7 +22,7 @@ export const ComboboxContent = forwardRef<HTMLDivElement, ComboboxContentProps>(
 
   return (
     <PresenceGate presence={presence}>
-      <ark.div {...mergedProps} ref={composedRefs} />
+      <ark.div {...mergedProps} ref={composedRefs} state={combobox.getContentState()} />
     </PresenceGate>
   )
 })

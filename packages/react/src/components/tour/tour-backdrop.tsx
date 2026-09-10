@@ -8,8 +8,11 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { PresenceGate } from '../presence/presence-gate.tsx'
 import { usePresence } from '../presence/index.ts'
 import { useTourContext } from './use-tour-context.ts'
+import type { BackdropState } from '@zag-js/tour'
 
-export interface TourBackdropBaseProps extends PolymorphicProps {}
+export interface TourBackdropState extends BackdropState {}
+
+export interface TourBackdropBaseProps extends PolymorphicProps<TourBackdropState> {}
 export interface TourBackdropProps extends HTMLProps<'div'>, TourBackdropBaseProps {}
 
 export const TourBackdrop = forwardRef<HTMLDivElement, TourBackdropProps>((props, ref) => {
@@ -24,7 +27,7 @@ export const TourBackdrop = forwardRef<HTMLDivElement, TourBackdropProps>((props
 
   return (
     <PresenceGate presence={presence}>
-      <ark.div {...mergedProps} ref={composedRefs} hidden={!tour.step?.backdrop} />
+      <ark.div {...mergedProps} ref={composedRefs} hidden={!tour.step?.backdrop} state={tour.getBackdropState()} />
     </PresenceGate>
   )
 })

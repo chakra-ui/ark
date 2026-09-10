@@ -7,8 +7,11 @@ import type { HTMLProps, PolymorphicProps } from '../factory.ts'
 import { ark } from '../factory.ts'
 import { type UseToggleProps, useToggle } from './use-toggle.ts'
 import { ToggleProvider } from './use-toggle-context.ts'
+import type { RootState } from '@zag-js/toggle'
 
-export interface ToggleRootBaseProps extends UseToggleProps, PolymorphicProps {}
+export interface ToggleRootState extends RootState {}
+
+export interface ToggleRootBaseProps extends UseToggleProps, PolymorphicProps<ToggleRootState> {}
 
 export interface ToggleRootProps extends HTMLProps<'button'>, ToggleRootBaseProps {}
 
@@ -27,7 +30,7 @@ export const ToggleRoot = forwardRef<HTMLButtonElement, ToggleRootProps>((props,
 
   return (
     <ToggleProvider value={toggle}>
-      <ark.button {...mergedProps} ref={ref} />
+      <ark.button {...mergedProps} ref={ref} state={toggle.getRootState()} />
     </ToggleProvider>
   )
 })

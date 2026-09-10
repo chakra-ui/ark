@@ -49,6 +49,20 @@ Props that belong to your component rather than the element — a `value`, an `i
 <Listbox.Item render={(props) => <ListVirtualizer.Item {...props()} item={virtualItem()} />} />
 ```
 
+## Reading the part's state
+
+The function form receives the part's state alongside its props, so your element can render from what the machine knows
+rather than from a CSS attribute selector.
+
+<ExampleCode id="render-state" component="popover" />
+
+`Popover.Trigger` gives you `open`, `current` and `value`. Each part publishes its own shape — `Checkbox.Root` has
+`checked` and `indeterminate`, `Accordion.Item` has `expanded` and `focused` — and the type comes with it, so
+`state.open` is checked rather than guessed.
+
+This is the difference between `render` and `asChild`. `asChild` could only place your element; `render` tells it what
+the part is doing.
+
 ## The asChild Prop
 
 `asChild` does the same job by wrapping the element as a child instead of passing it to `render`.
