@@ -6,7 +6,10 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useScrollAreaContext } from './use-scroll-area-context.ts'
 import { ScrollAreaScrollbarProvider } from './use-scroll-area-scrollbar-context.ts'
 
-export interface ScrollAreaScrollbarBaseProps extends ScrollbarProps, PolymorphicProps<'div', ScrollbarState> {}
+export interface ScrollAreaScrollbarState extends ScrollbarState {}
+
+export interface ScrollAreaScrollbarBaseProps
+  extends ScrollbarProps, PolymorphicProps<'div', ScrollAreaScrollbarState> {}
 export interface ScrollAreaScrollbarProps extends Assign<HTMLProps<'div'>, ScrollAreaScrollbarBaseProps> {}
 
 export const ScrollAreaScrollbar = (props: ScrollAreaScrollbarProps) => {
