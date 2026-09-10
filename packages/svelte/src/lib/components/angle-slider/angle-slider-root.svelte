@@ -1,9 +1,11 @@
 <script lang="ts" module>
+  import type { RootState } from '@zag-js/angle-slider'
   import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseAngleSliderProps } from './use-angle-slider.svelte.ts'
 
+  export interface AngleSliderRootState extends RootState {}
   export interface AngleSliderRootBaseProps
-    extends Optional<UseAngleSliderProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
+    extends Optional<UseAngleSliderProps, 'id'>, PolymorphicProps<'div', AngleSliderRootState>, RefAttribute {}
   export interface AngleSliderRootProps extends Assign<HTMLProps<'div'>, AngleSliderRootBaseProps> {}
 </script>
 
@@ -51,4 +53,4 @@
   AngleSliderProvider(angleSlider)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={angleSlider().getRootState()} />

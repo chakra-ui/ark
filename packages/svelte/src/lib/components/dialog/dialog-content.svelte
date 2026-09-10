@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { ContentState } from '@zag-js/dialog'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface DialogContentBaseProps extends PolymorphicProps<'div'> {
+  export interface DialogContentState extends ContentState {}
+  export interface DialogContentBaseProps extends PolymorphicProps<'div', DialogContentState> {
     ref?: Element | null
   }
   export interface DialogContentProps extends Assign<HTMLProps<'div'>, DialogContentBaseProps> {}
@@ -25,5 +27,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} state={dialog().getContentState()} />
 {/if}

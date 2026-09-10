@@ -1,7 +1,10 @@
 <script module lang="ts">
+  import type { DecrementTriggerState } from '@zag-js/number-input'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface NumberInputDecrementTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
+  export interface NumberInputDecrementTriggerState extends DecrementTriggerState {}
+  export interface NumberInputDecrementTriggerBaseProps
+    extends PolymorphicProps<'button', NumberInputDecrementTriggerState>, RefAttribute {}
   export interface NumberInputDecrementTriggerProps extends Assign<
     HTMLProps<'button'>,
     NumberInputDecrementTriggerBaseProps
@@ -19,4 +22,4 @@
   const mergedProps = $derived(mergeProps(numberInput().getDecrementTriggerProps(), props))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} state={numberInput().getDecrementTriggerState()} />

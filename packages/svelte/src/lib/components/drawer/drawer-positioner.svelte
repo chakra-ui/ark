@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { PositionerState } from '@zag-js/drawer'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface DrawerPositionerBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface DrawerPositionerState extends PositionerState {}
+  export interface DrawerPositionerBaseProps extends PolymorphicProps<'div', DrawerPositionerState>, RefAttribute {}
   export interface DrawerPositionerProps extends Assign<HTMLProps<'div'>, DrawerPositionerBaseProps> {}
 </script>
 
@@ -19,5 +21,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {...mergedProps} />
+  <Ark as="div" bind:ref {...mergedProps} state={drawer().getPositionerState()} />
 {/if}

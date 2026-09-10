@@ -1,8 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { ContentProps } from '@zag-js/drawer'
+  import type { ContentProps, ContentState } from '@zag-js/drawer'
 
-  export interface DrawerContentBaseProps extends PolymorphicProps<'div'>, ContentProps, RefAttribute {
+  export interface DrawerContentState extends ContentState {}
+  export interface DrawerContentBaseProps
+    extends PolymorphicProps<'div', DrawerContentState>, ContentProps, RefAttribute {
     ref?: Element | null
   }
   export interface DrawerContentProps extends Assign<Omit<HTMLProps<'div'>, 'draggable'>, DrawerContentBaseProps> {}
@@ -34,5 +36,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} state={drawer().getContentState()} />
 {/if}

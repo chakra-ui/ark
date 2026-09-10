@@ -1,9 +1,11 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/number-input'
   import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseNumberInputProps } from './use-number-input.svelte.ts'
 
+  export interface NumberInputRootState extends RootState {}
   export interface NumberInputRootBaseProps
-    extends Optional<UseNumberInputProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
+    extends Optional<UseNumberInputProps, 'id'>, PolymorphicProps<'div', NumberInputRootState>, RefAttribute {}
   export interface NumberInputRootProps extends Assign<HTMLProps<'div'>, NumberInputRootBaseProps> {}
 </script>
 
@@ -35,4 +37,4 @@
   NumberInputProvider(numberInput)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={numberInput().getRootState()} />

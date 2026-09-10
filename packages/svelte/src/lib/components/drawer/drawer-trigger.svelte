@@ -1,8 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { TriggerProps } from '@zag-js/drawer'
+  import type { TriggerProps, TriggerState } from '@zag-js/drawer'
 
-  export interface DrawerTriggerBaseProps extends TriggerProps, PolymorphicProps<'button'>, RefAttribute {}
+  export interface DrawerTriggerState extends TriggerState {}
+  export interface DrawerTriggerBaseProps
+    extends TriggerProps, PolymorphicProps<'button', DrawerTriggerState>, RefAttribute {}
   export interface DrawerTriggerProps extends Assign<HTMLProps<'button'>, DrawerTriggerBaseProps> {}
 </script>
 
@@ -30,4 +32,4 @@
   })
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} state={drawer().getTriggerState(triggerProps)} />

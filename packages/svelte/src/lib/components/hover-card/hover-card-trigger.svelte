@@ -1,8 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { TriggerProps } from '@zag-js/hover-card'
+  import type { TriggerProps, TriggerState } from '@zag-js/hover-card'
 
-  export interface HoverCardTriggerBaseProps extends TriggerProps, PolymorphicProps<'button'>, RefAttribute {}
+  export interface HoverCardTriggerState extends TriggerState {}
+  export interface HoverCardTriggerBaseProps
+    extends TriggerProps, PolymorphicProps<'button', HoverCardTriggerState>, RefAttribute {}
   export interface HoverCardTriggerProps extends Assign<HTMLProps<'button'>, HoverCardTriggerBaseProps> {}
 </script>
 
@@ -19,4 +21,4 @@
   const mergedProps = $derived(mergeProps(hoverCard().getTriggerProps(triggerProps), localProps))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} state={hoverCard().getTriggerState(triggerProps)} />

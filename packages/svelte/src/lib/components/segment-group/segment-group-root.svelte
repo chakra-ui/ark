@@ -1,14 +1,15 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { ValueChangeDetails } from '@zag-js/radio-group'
+  import type { RootState, ValueChangeDetails } from '@zag-js/radio-group'
   import type { UseSegmentGroupProps } from './use-segment-group.svelte.ts'
 
   export interface SegmentGroupRootEmits {
     valueChange: ValueChangeDetails
   }
 
+  export interface SegmentGroupRootState extends RootState {}
   export interface SegmentGroupRootBaseProps
-    extends Optional<UseSegmentGroupProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
+    extends Optional<UseSegmentGroupProps, 'id'>, PolymorphicProps<'div', SegmentGroupRootState>, RefAttribute {}
   export interface SegmentGroupRootProps extends Assign<HTMLProps<'div'>, SegmentGroupRootBaseProps> {}
 </script>
 
@@ -40,4 +41,4 @@
   SegmentGroupProvider(segmentGroup)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={segmentGroup().getRootState()} />

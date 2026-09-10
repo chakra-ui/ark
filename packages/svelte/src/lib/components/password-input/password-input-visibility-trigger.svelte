@@ -1,7 +1,10 @@
 <script module lang="ts">
+  import type { VisibilityTriggerState } from '@zag-js/password-input'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface PasswordInputVisibilityTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
+  export interface PasswordInputVisibilityTriggerState extends VisibilityTriggerState {}
+  export interface PasswordInputVisibilityTriggerBaseProps
+    extends PolymorphicProps<'button', PasswordInputVisibilityTriggerState>, RefAttribute {}
   export interface PasswordInputVisibilityTriggerProps extends Assign<
     HTMLProps<'button'>,
     PasswordInputVisibilityTriggerBaseProps
@@ -18,4 +21,4 @@
   const mergedProps = $derived(mergeProps(passwordInput().getVisibilityTriggerProps(), props))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} state={passwordInput().getVisibilityTriggerState()} />

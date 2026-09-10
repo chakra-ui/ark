@@ -1,8 +1,9 @@
 <script module lang="ts">
-  import type { ItemProps } from '@zag-js/listbox'
+  import type { ItemProps, ItemState } from '@zag-js/listbox'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface ListboxItemBaseProps extends ItemProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface ListboxItemState extends ItemState {}
+  export interface ListboxItemBaseProps extends ItemProps, PolymorphicProps<'div', ListboxItemState>, RefAttribute {}
   export interface ListboxItemProps extends Assign<HTMLProps<'div'>, ListboxItemBaseProps> {}
 </script>
 
@@ -25,4 +26,4 @@
   ListboxItemProvider(() => itemState)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={itemState} />

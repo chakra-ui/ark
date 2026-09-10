@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { LabelState } from '@zag-js/editable'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface EditableLabelBaseProps extends PolymorphicProps<'label'>, RefAttribute {}
+  export interface EditableLabelState extends LabelState {}
+  export interface EditableLabelBaseProps extends PolymorphicProps<'label', EditableLabelState>, RefAttribute {}
   export interface EditableLabelProps extends Assign<HTMLProps<'label'>, EditableLabelBaseProps> {}
 </script>
 
@@ -16,4 +18,4 @@
   const mergedProps = $derived(mergeProps(editable().getLabelProps(), props))
 </script>
 
-<Ark as="label" bind:ref {...mergedProps} />
+<Ark as="label" bind:ref {...mergedProps} state={editable().getLabelState()} />

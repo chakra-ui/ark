@@ -1,8 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { TriggerProps } from '@zag-js/dialog'
+  import type { TriggerProps, TriggerState } from '@zag-js/dialog'
 
-  export interface DialogTriggerBaseProps extends TriggerProps, PolymorphicProps<'button'>, RefAttribute {}
+  export interface DialogTriggerState extends TriggerState {}
+  export interface DialogTriggerBaseProps
+    extends TriggerProps, PolymorphicProps<'button', DialogTriggerState>, RefAttribute {}
   export interface DialogTriggerProps extends Assign<HTMLProps<'button'>, DialogTriggerBaseProps> {}
 </script>
 
@@ -30,4 +32,4 @@
   })
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} state={dialog().getTriggerState(triggerProps)} />

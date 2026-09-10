@@ -1,7 +1,10 @@
 <script lang="ts" module>
+  import type { ContentState } from '@zag-js/floating-panel'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface FloatingPanelContentBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface FloatingPanelContentState extends ContentState {}
+  export interface FloatingPanelContentBaseProps
+    extends PolymorphicProps<'div', FloatingPanelContentState>, RefAttribute {}
   export interface FloatingPanelContentProps extends Assign<HTMLProps<'div'>, FloatingPanelContentBaseProps> {}
 </script>
 
@@ -24,5 +27,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {@attach setNode} {...mergedProps} />
+  <Ark as="div" bind:ref {@attach setNode} {...mergedProps} state={floatingPanel().getContentState()} />
 {/if}

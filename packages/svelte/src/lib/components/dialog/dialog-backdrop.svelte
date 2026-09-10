@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { BackdropState } from '@zag-js/dialog'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface DialogBackdropBaseProps extends PolymorphicProps<'div'>, RefAttribute {
+  export interface DialogBackdropState extends BackdropState {}
+  export interface DialogBackdropBaseProps extends PolymorphicProps<'div', DialogBackdropState>, RefAttribute {
     ref?: Element | null
   }
   export interface DialogBackdropProps extends Assign<HTMLProps<'div'>, DialogBackdropBaseProps> {}
@@ -28,5 +30,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} state={dialog().getBackdropState()} />
 {/if}

@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { ContentState } from '@zag-js/menu'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface MenuContentBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface MenuContentState extends ContentState {}
+  export interface MenuContentBaseProps extends PolymorphicProps<'div', MenuContentState>, RefAttribute {}
   export interface MenuContentProps extends Assign<HTMLProps<'div'>, MenuContentBaseProps> {}
 </script>
 
@@ -23,5 +25,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {@attach setNode} {...mergedProps} />
+  <Ark as="div" bind:ref {@attach setNode} {...mergedProps} state={menu().getContentState()} />
 {/if}

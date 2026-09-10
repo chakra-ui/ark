@@ -1,4 +1,5 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/date-picker'
   import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
   import type { UsePresenceProps } from '../presence/index.js'
   import type { UseDatePickerReturn } from './use-date-picker.svelte.js'
@@ -7,8 +8,9 @@
     value: UseDatePickerReturn
   }
 
+  export interface DatePickerRootProviderState extends RootState {}
   export interface DatePickerRootProviderBaseProps
-    extends RootProviderProps, UsePresenceProps, PolymorphicProps<'div'> {}
+    extends RootProviderProps, UsePresenceProps, PolymorphicProps<'div', DatePickerRootProviderState> {}
   export interface DatePickerRootProviderProps extends Assign<HTMLProps<'div'>, DatePickerRootProviderBaseProps> {}
 </script>
 
@@ -29,4 +31,4 @@
   PresenceProvider(presence)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" {...mergedProps} state={value().getRootState()} />

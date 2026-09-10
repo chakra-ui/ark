@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { ContentState } from '@zag-js/tour'
   import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TourContentBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface TourContentState extends ContentState {}
+  export interface TourContentBaseProps extends PolymorphicProps<'div', TourContentState>, RefAttribute {}
   export interface TourContentProps extends HTMLProps<'div'>, TourContentBaseProps {}
 </script>
 
@@ -24,5 +26,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} state={tour().getContentState()} />
 {/if}

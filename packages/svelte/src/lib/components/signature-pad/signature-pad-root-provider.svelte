@@ -1,8 +1,11 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/signature-pad'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseSignaturePadReturn } from './use-signature-pad.svelte.ts'
 
-  export interface SignaturePadRootProviderBaseProps extends PolymorphicProps<'div'>, RefAttribute {
+  export interface SignaturePadRootProviderState extends RootState {}
+  export interface SignaturePadRootProviderBaseProps
+    extends PolymorphicProps<'div', SignaturePadRootProviderState>, RefAttribute {
     value: UseSignaturePadReturn
   }
   export interface SignaturePadRootProviderProps extends Assign<HTMLProps<'div'>, SignaturePadRootProviderBaseProps> {}
@@ -20,4 +23,4 @@
   SignaturePadProvider(() => value())
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={value().getRootState()} />

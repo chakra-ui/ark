@@ -1,8 +1,11 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/password-input'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UsePasswordInputReturn } from './use-password-input.svelte.ts'
 
-  export interface PasswordInputRootProviderBaseProps extends PolymorphicProps<'div'>, RefAttribute {
+  export interface PasswordInputRootProviderState extends RootState {}
+  export interface PasswordInputRootProviderBaseProps
+    extends PolymorphicProps<'div', PasswordInputRootProviderState>, RefAttribute {
     value: UsePasswordInputReturn
   }
   export interface PasswordInputRootProviderProps extends Assign<
@@ -23,4 +26,4 @@
   PasswordInputProvider(() => value())
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={value().getRootState()} />

@@ -6,7 +6,6 @@ export type {
   LoadChildrenDetails as TreeViewLoadChildrenDetails,
   LoadChildrenErrorDetails as TreeViewLoadChildrenErrorDetails,
   NodeIndicatorType as TreeViewNodeIndicatorType,
-  NodeState as TreeViewNodeState,
   RenameCompleteDetails as TreeViewRenameCompleteDetails,
   RenameStartDetails as TreeViewRenameStartDetails,
   SelectionChangeDetails as TreeViewSelectionChangeDetails,
@@ -24,7 +23,12 @@ export {
   type TreeViewIndentGuideBaseProps,
   type TreeViewIndentGuideProps,
 } from './tree-view-indent-guide.svelte'
-export { default as TreeViewNode, type TreeViewNodeBaseProps, type TreeViewNodeProps } from './tree-view-node.svelte'
+export {
+  default as TreeViewNode,
+  type TreeViewNodeBaseProps,
+  type TreeViewNodeProps,
+  type TreeViewNodeState,
+} from './tree-view-node.svelte'
 export {
   default as TreeViewNodeExpandTrigger,
   type TreeViewNodeExpandTriggerBaseProps,

@@ -1,8 +1,10 @@
 <script module lang="ts">
-  import type { InputProps } from '@zag-js/date-picker'
+  import type { InputProps, InputState } from '@zag-js/date-picker'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface DatePickerInputBaseProps extends InputProps, PolymorphicProps<'input'>, RefAttribute {}
+  export interface DatePickerInputState extends InputState {}
+  export interface DatePickerInputBaseProps
+    extends InputProps, PolymorphicProps<'input', DatePickerInputState>, RefAttribute {}
   export interface DatePickerInputProps extends Assign<HTMLProps<'input'>, DatePickerInputBaseProps> {}
 </script>
 
@@ -19,4 +21,4 @@
   const mergedProps = $derived(mergeProps(datePicker().getInputProps(inputProps), localProps))
 </script>
 
-<Ark as="input" bind:ref {...mergedProps} />
+<Ark as="input" bind:ref {...mergedProps} state={datePicker().getInputState()} />

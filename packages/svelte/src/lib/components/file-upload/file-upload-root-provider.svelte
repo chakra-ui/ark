@@ -1,4 +1,5 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/file-upload'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseFileUploadReturn } from './use-file-upload.svelte.ts'
 
@@ -6,7 +7,9 @@
     value: UseFileUploadReturn
   }
 
-  export interface FileUploadRootProviderBaseProps extends RootProviderProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface FileUploadRootProviderState extends RootState {}
+  export interface FileUploadRootProviderBaseProps
+    extends RootProviderProps, PolymorphicProps<'div', FileUploadRootProviderState>, RefAttribute {}
   export interface FileUploadRootProviderProps extends Assign<HTMLProps<'div'>, FileUploadRootProviderBaseProps> {}
 </script>
 
@@ -21,4 +24,4 @@
   FileUploadProvider(() => value())
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={value().getRootState()} />

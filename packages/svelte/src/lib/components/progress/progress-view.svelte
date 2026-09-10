@@ -1,8 +1,9 @@
 <script module lang="ts">
   import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { ViewProps } from '@zag-js/progress'
+  import type { ViewProps, ViewState } from '@zag-js/progress'
 
-  export interface ProgressViewBaseProps extends ViewProps, PolymorphicProps<'span'>, RefAttribute {}
+  export interface ProgressViewState extends ViewState {}
+  export interface ProgressViewBaseProps extends ViewProps, PolymorphicProps<'span', ProgressViewState>, RefAttribute {}
   export interface ProgressViewProps extends HTMLProps<'span'>, ProgressViewBaseProps {}
 </script>
 
@@ -16,4 +17,4 @@
   const mergedProps = $derived(mergeProps(progress().getViewProps(props), props))
 </script>
 
-<Ark as="span" bind:ref {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} state={progress().getViewState(props)} />

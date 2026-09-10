@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { CornerState } from '@zag-js/scroll-area'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface ScrollAreaCornerBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface ScrollAreaCornerState extends CornerState {}
+  export interface ScrollAreaCornerBaseProps extends PolymorphicProps<'div', ScrollAreaCornerState>, RefAttribute {}
   export interface ScrollAreaCornerProps extends Assign<HTMLProps<'div'>, ScrollAreaCornerBaseProps> {}
 </script>
 
@@ -16,4 +18,4 @@
   const mergedProps = $derived(mergeProps(scrollArea().getCornerProps(), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={scrollArea().getCornerState()} />

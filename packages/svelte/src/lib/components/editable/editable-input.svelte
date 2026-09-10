@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { InputState } from '@zag-js/editable'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface EditableInputBaseProps extends PolymorphicProps<'input'>, RefAttribute {}
+  export interface EditableInputState extends InputState {}
+  export interface EditableInputBaseProps extends PolymorphicProps<'input', EditableInputState>, RefAttribute {}
   export interface EditableInputProps extends Assign<HTMLProps<'input'>, EditableInputBaseProps> {}
 </script>
 
@@ -16,4 +18,4 @@
   const mergedProps = $derived(mergeProps(editable().getInputProps(), props))
 </script>
 
-<Ark as="input" bind:ref {...mergedProps} />
+<Ark as="input" bind:ref {...mergedProps} state={editable().getInputState()} />
