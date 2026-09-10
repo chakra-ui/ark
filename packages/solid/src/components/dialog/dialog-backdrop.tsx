@@ -1,3 +1,4 @@
+import type { BackdropState } from '@zag-js/dialog'
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
 import { composeRefs } from '../../utils/compose-refs.ts'
@@ -6,7 +7,9 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresence } from '../presence/index.tsx'
 import { useDialogContext } from './use-dialog-context.ts'
 
-export interface DialogBackdropBaseProps extends PolymorphicProps<'div'> {}
+export interface DialogBackdropState extends BackdropState {}
+
+export interface DialogBackdropBaseProps extends PolymorphicProps<'div', DialogBackdropState> {}
 export interface DialogBackdropProps extends HTMLProps<'div'>, DialogBackdropBaseProps {}
 
 export const DialogBackdrop = (props: DialogBackdropProps) => {
@@ -21,7 +24,7 @@ export const DialogBackdrop = (props: DialogBackdropProps) => {
 
   return (
     <Show when={!presenceApi().unmounted}>
-      <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} />
+      <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} state={api().getBackdropState()} />
     </Show>
   )
 }

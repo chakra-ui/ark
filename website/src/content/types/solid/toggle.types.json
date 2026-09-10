@@ -2,17 +2,22 @@
   "Indicator": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "fallback": { "type": "number | boolean | Node | ArrayElement | (string & {})", "isRequired": false }
+      "fallback": { "type": "number | boolean | Node | ArrayElement | (string & {})", "isRequired": false },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
+      }
     }
   },
   "Root": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'button'>) => Element",
+        "type": "(props: PropsFn<'button'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
@@ -26,7 +31,12 @@
         "isRequired": false,
         "description": "Event handler called when the pressed state of the toggle changes."
       },
-      "pressed": { "type": "boolean", "isRequired": false, "description": "The pressed state of the toggle." }
+      "pressed": { "type": "boolean", "isRequired": false, "description": "The pressed state of the toggle." },
+      "render": {
+        "type": "RenderFn<'button', ToggleRootState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
+      }
     }
   }
 }

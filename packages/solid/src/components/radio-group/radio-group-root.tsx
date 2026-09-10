@@ -1,10 +1,13 @@
+import type { RootState } from '@zag-js/radio-group'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { type UseRadioGroupProps, useRadioGroup } from './use-radio-group.ts'
 import { RadioGroupProvider } from './use-radio-group-context.ts'
 
-export interface RadioGroupRootBaseProps extends UseRadioGroupProps, PolymorphicProps<'div'> {}
+export interface RadioGroupRootState extends RootState {}
+
+export interface RadioGroupRootBaseProps extends UseRadioGroupProps, PolymorphicProps<'div', RadioGroupRootState> {}
 export interface RadioGroupRootProps extends HTMLProps<'div'>, RadioGroupRootBaseProps {}
 
 export const RadioGroupRoot = (props: RadioGroupRootProps) => {
@@ -28,7 +31,7 @@ export const RadioGroupRoot = (props: RadioGroupRootProps) => {
 
   return (
     <RadioGroupProvider value={radioGroup}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} state={radioGroup().getRootState()} />
     </RadioGroupProvider>
   )
 }

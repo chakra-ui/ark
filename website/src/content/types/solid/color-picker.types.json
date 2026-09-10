@@ -2,18 +2,28 @@
   "AreaBackground": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "Area": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       },
       "xChannel": { "type": "ColorChannel", "isRequired": false },
       "yChannel": { "type": "ColorChannel", "isRequired": false }
@@ -22,9 +32,14 @@
   "AreaThumb": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
@@ -32,19 +47,29 @@
     "props": {
       "channel": { "type": "ExtendedColorChannel", "isRequired": true },
       "asChild": {
-        "type": "(props: ParentProps<'input'>) => Element",
+        "type": "(props: PropsFn<'input'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "orientation": { "type": "Orientation", "isRequired": false }
+      "orientation": { "type": "Orientation", "isRequired": false },
+      "render": {
+        "type": "RenderFn<'input', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
+      }
     }
   },
   "ChannelSliderLabel": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'label'>) => Element",
+        "type": "(props: PropsFn<'label'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'label', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
@@ -52,116 +77,176 @@
     "props": {
       "channel": { "type": "ColorChannel", "isRequired": true },
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "orientation": { "type": "Orientation", "isRequired": false }
+      "orientation": { "type": "Orientation", "isRequired": false },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
+      }
     }
   },
   "ChannelSliderThumb": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "ChannelSliderTrack": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "ChannelSliderValueText": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'span'>) => Element",
+        "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'span', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "Content": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', ColorPickerContentState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "Control": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "EyeDropperTrigger": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'button'>) => Element",
+        "type": "(props: PropsFn<'button'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'button', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "FormatSelect": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'select'>) => Element",
+        "type": "(props: PropsFn<'select'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'select', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "FormatTrigger": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'button'>) => Element",
+        "type": "(props: PropsFn<'button'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'button', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "HiddenInput": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'input'>) => Element",
+        "type": "(props: PropsFn<'input'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'input', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "Label": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'label'>) => Element",
+        "type": "(props: PropsFn<'label'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'label', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "Positioner": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "Root": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
@@ -191,7 +276,7 @@
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is disabled" },
       "format": { "type": "ColorFormat", "isRequired": false, "description": "The controlled color format to use" },
       "ids": {
-        "type": "Partial<{ root: string; control: string; trigger: string; label: string; input: string; hiddenInput: string; content: string; area: string; areaGradient: string; positioner: string; formatSelect: string; areaThumb: string; channelInput: (id: string) => string; channelSliderTrack: (id: ColorChannel) => string; channe...",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the color picker. Useful for composition."
       },
@@ -214,6 +299,11 @@
         "description": "Whether to enable lazy mounting"
       },
       "name": { "type": "string", "isRequired": false, "description": "The name for the form input" },
+      "onEnterComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the open state"
+      },
       "onExitComplete": {
         "type": "VoidFunction",
         "isRequired": false,
@@ -276,6 +366,11 @@
         "description": "Whether the node is present (controlled by the user)"
       },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is read-only" },
+      "render": {
+        "type": "RenderFn<'div', ColorPickerRootState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
+      },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is required" },
       "skipAnimationOnMount": {
         "type": "boolean",
@@ -296,7 +391,7 @@
     "props": {
       "value": { "type": "UseColorPickerReturn", "isRequired": true },
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
@@ -311,6 +406,11 @@
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
       },
+      "onEnterComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the open state"
+      },
       "onExitComplete": {
         "type": "VoidFunction",
         "isRequired": false,
@@ -320,6 +420,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
+      },
+      "render": {
+        "type": "RenderFn<'div', ColorPickerRootProviderState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       },
       "skipAnimationOnMount": {
         "type": "boolean",
@@ -338,18 +443,28 @@
   "SwatchGroup": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "SwatchIndicator": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
@@ -357,9 +472,14 @@
     "props": {
       "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       },
       "respectAlpha": {
         "type": "boolean",
@@ -372,19 +492,29 @@
     "props": {
       "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
       "asChild": {
-        "type": "(props: ParentProps<'button'>) => Element",
+        "type": "(props: PropsFn<'button'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the swatch trigger is disabled" }
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the swatch trigger is disabled" },
+      "render": {
+        "type": "RenderFn<'button', ColorPickerSwatchTriggerState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
+      }
     }
   },
   "TransparencyGrid": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       },
       "size": { "type": "string", "isRequired": false }
     }
@@ -392,18 +522,28 @@
   "Trigger": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'button'>) => Element",
+        "type": "(props: PropsFn<'button'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'button', ColorPickerTriggerState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "ValueSwatch": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       },
       "respectAlpha": {
         "type": "boolean",
@@ -415,20 +555,30 @@
   "ValueText": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'span'>) => Element",
+        "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "format": { "type": "ColorStringFormat", "isRequired": false }
+      "format": { "type": "ColorStringFormat", "isRequired": false },
+      "render": {
+        "type": "RenderFn<'span', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
+      }
     }
   },
   "View": {
     "props": {
       "format": { "type": "ColorFormat", "isRequired": true },
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   }

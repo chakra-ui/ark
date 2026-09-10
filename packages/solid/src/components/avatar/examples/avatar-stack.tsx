@@ -31,7 +31,7 @@ export const AvatarStack = () => (
       <Menu.Root>
         <Menu.Trigger
           render={(props) => (
-            <Avatar.Root {...props} class={styles.Root}>
+            <Avatar.Root {...props({ class: styles.Root })}>
               <Avatar.Fallback class={styles.Fallback}>+{hidden.length}</Avatar.Fallback>
             </Avatar.Root>
           )}

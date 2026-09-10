@@ -51,7 +51,7 @@ export const Virtualized = () => {
             <Combobox.List
               class={styles.Scroller}
               style={{ '--total-size': `${virtualizer.getTotalSize()}px` }}
-              render={(props) => <ListVirtualizer.Root {...props} value={virtualizer} />}
+              render={(props) => <ListVirtualizer.Root {...props()} value={virtualizer} />}
             >
               <ListVirtualizer.Content>
                 <Index each={virtualizer.getVirtualItems()}>
@@ -61,7 +61,7 @@ export const Virtualized = () => {
                       <Combobox.Item
                         item={item()}
                         class={styles.Item}
-                        render={(props) => <ListVirtualizer.Item {...props} item={virtualItem()} />}
+                        render={(props) => <ListVirtualizer.Item {...props()} item={virtualItem()} />}
                       >
                         <Combobox.ItemText class={styles.ItemText}>
                           <span aria-hidden style={{ 'margin-right': '8px' }}>

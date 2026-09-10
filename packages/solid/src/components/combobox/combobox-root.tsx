@@ -1,15 +1,18 @@
+import type { RootState } from '@zag-js/combobox'
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js/jsx-runtime'
 import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
+import type { CollectionItem } from '../collection/index.tsx'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.tsx'
 import { type UseComboboxProps, useCombobox } from './use-combobox.ts'
 import { ComboboxProvider } from './use-combobox-context.ts'
-import type { CollectionItem } from '../collection/index.tsx'
+
+export interface ComboboxRootState extends RootState {}
 
 export interface ComboboxRootBaseProps<T extends CollectionItem>
-  extends UseComboboxProps<T>, UsePresenceProps, PolymorphicProps<'div'> {}
+  extends UseComboboxProps<T>, UsePresenceProps, PolymorphicProps<'div', ComboboxRootState> {}
 
 export interface ComboboxRootProps<T extends CollectionItem>
   extends Omit<HTMLProps<'div'>, 'onSelect'>, ComboboxRootBaseProps<T> {}
@@ -69,7 +72,7 @@ export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<
   return (
     <ComboboxProvider value={api}>
       <PresenceProvider value={apiPresence}>
-        <ark.div {...mergedProps} />
+        <ark.div {...mergedProps} state={api().getRootState()} />
       </PresenceProvider>
     </ComboboxProvider>
   )

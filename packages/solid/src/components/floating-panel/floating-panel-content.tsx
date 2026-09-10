@@ -1,3 +1,4 @@
+import type { ContentState } from '@zag-js/floating-panel'
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
 import { composeRefs } from '../../utils/compose-refs.ts'
@@ -5,7 +6,9 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresenceContext } from '../presence/index.tsx'
 import { useFloatingPanelContext } from './use-floating-panel-context.ts'
 
-export interface FloatingPanelContentBaseProps extends PolymorphicProps<'div'> {}
+export interface FloatingPanelContentState extends ContentState {}
+
+export interface FloatingPanelContentBaseProps extends PolymorphicProps<'div', FloatingPanelContentState> {}
 export interface FloatingPanelContentProps extends HTMLProps<'div'>, FloatingPanelContentBaseProps {}
 
 export const FloatingPanelContent = (props: FloatingPanelContentProps) => {
@@ -19,7 +22,11 @@ export const FloatingPanelContent = (props: FloatingPanelContentProps) => {
 
   return (
     <Show when={!presence().unmounted}>
-      <ark.div {...mergedProps} ref={composeRefs(presence().ref, props.ref)} />
+      <ark.div
+        {...mergedProps}
+        ref={composeRefs(presence().ref, props.ref)}
+        state={floatingPanel().getContentState()}
+      />
     </Show>
   )
 }

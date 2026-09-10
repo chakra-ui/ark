@@ -1,13 +1,19 @@
+import type { DecrementTriggerState } from '@zag-js/number-input'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useNumberInputContext } from './use-number-input-context.ts'
 
-export interface NumberInputDecrementTriggerBaseProps extends PolymorphicProps<'button'> {}
+export interface NumberInputDecrementTriggerState extends DecrementTriggerState {}
+
+export interface NumberInputDecrementTriggerBaseProps extends PolymorphicProps<
+  'button',
+  NumberInputDecrementTriggerState
+> {}
 export interface NumberInputDecrementTriggerProps extends HTMLProps<'button'>, NumberInputDecrementTriggerBaseProps {}
 
 export const NumberInputDecrementTrigger = (props: NumberInputDecrementTriggerProps) => {
   const api = useNumberInputContext()
   const mergedProps = mergeProps(() => api().getDecrementTriggerProps(), props)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps} state={api().getDecrementTriggerState()} />
 }

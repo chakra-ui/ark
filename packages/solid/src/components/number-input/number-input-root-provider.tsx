@@ -1,3 +1,4 @@
+import type { RootState } from '@zag-js/number-input'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
@@ -8,7 +9,9 @@ interface RootProviderProps {
   value: UseNumberInputReturn
 }
 
-export interface NumberInputRootProviderBaseProps extends PolymorphicProps<'div'> {}
+export interface NumberInputRootProviderState extends RootState {}
+
+export interface NumberInputRootProviderBaseProps extends PolymorphicProps<'div', NumberInputRootProviderState> {}
 export interface NumberInputRootProviderProps
   extends HTMLProps<'div'>, RootProviderProps, NumberInputRootProviderBaseProps {}
 
@@ -18,7 +21,7 @@ export const NumberInputRootProvider = (props: NumberInputRootProviderProps) => 
 
   return (
     <NumberInputProvider value={numberInput}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} state={numberInput().getRootState()} />
     </NumberInputProvider>
   )
 }

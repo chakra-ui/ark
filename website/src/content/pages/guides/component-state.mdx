@@ -4,13 +4,30 @@ title: Component State
 description: Learn how to manage component state using Context and Provider components.
 ---
 
-Need to access a component's state? You have three options:
+Need to access a component's state? You have four options:
 
 | Approach                        | When to use it                                |
 | ------------------------------- | --------------------------------------------- |
+| The `render` prop               | Read the state of the part you are replacing  |
 | `Component.Context`             | Quick inline access via render props          |
 | `use*Context` hooks             | Build custom child components that read state |
 | `useComponent` + `RootProvider` | Control the component from outside            |
+
+## The render Prop
+
+When you replace a part with your own element, `render` hands you that part's state alongside its props — no context
+needed for the thing you are already rendering.
+
+```tsx
+<Collapsible.Trigger render={(props, state) => <button {...props}>{state.open ? 'Open' : 'Closed'}</button>} />
+```
+
+Each part carries the state its machine exposes, so a trigger knows whether it is open, an item whether it is
+highlighted, a swatch whether it is checked. See [Composition](/docs/guides/composition) for the shape `render` takes in
+each framework.
+
+> **Solid**: the state arrives as an accessor, and the props as a function to call:
+> `render={(props, state) => <button {...props()}>{state().open ? 'Open' : 'Closed'}</button>}`
 
 ## Context Components
 

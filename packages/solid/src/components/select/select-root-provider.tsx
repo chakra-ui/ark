@@ -1,18 +1,22 @@
+import type { RootState } from '@zag-js/select'
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js/jsx-runtime'
 import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
+import type { CollectionItem } from '../collection/index.tsx'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.tsx'
 import type { UseSelectReturn } from './use-select.ts'
 import { SelectProvider } from './use-select-context.ts'
-import type { CollectionItem } from '../collection/index.tsx'
 
 interface RootProviderProps<T extends CollectionItem> {
   value: UseSelectReturn<T>
 }
+
+export interface SelectRootProviderState extends RootState {}
+
 export interface SelectRootProviderBaseProps<T extends CollectionItem>
-  extends RootProviderProps<T>, UsePresenceProps, PolymorphicProps<'div'> {}
+  extends RootProviderProps<T>, UsePresenceProps, PolymorphicProps<'div', SelectRootProviderState> {}
 export interface SelectRootProviderProps<T extends CollectionItem>
   extends HTMLProps<'div'>, SelectRootProviderBaseProps<T> {}
 
@@ -25,7 +29,7 @@ export const SelectRootProvider = <T extends CollectionItem>(props: SelectRootPr
   return (
     <SelectProvider value={select}>
       <PresenceProvider value={presence}>
-        <ark.div {...mergedProps} />
+        <ark.div {...mergedProps} state={select().getRootState()} />
       </PresenceProvider>
     </SelectProvider>
   )

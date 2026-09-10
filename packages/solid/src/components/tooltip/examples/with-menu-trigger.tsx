@@ -10,7 +10,7 @@ export const WithMenuTrigger = () => (
     <Tooltip.Root>
       <Tooltip.Trigger
         render={(props) => (
-          <Menu.Trigger {...props} class={styles.Trigger}>
+          <Menu.Trigger {...props({ class: styles.Trigger })}>
             File
             <Menu.Indicator class={styles.Indicator}>
               <ChevronDownIcon />

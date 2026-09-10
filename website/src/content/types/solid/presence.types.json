@@ -2,7 +2,7 @@
   "Presence": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
@@ -17,6 +17,11 @@
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
       },
+      "onEnterComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the open state"
+      },
       "onExitComplete": {
         "type": "VoidFunction",
         "isRequired": false,
@@ -26,6 +31,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       },
       "skipAnimationOnMount": {
         "type": "boolean",

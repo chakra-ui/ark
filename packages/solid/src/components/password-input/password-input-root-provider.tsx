@@ -1,3 +1,4 @@
+import type { RootState } from '@zag-js/password-input'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
@@ -8,7 +9,9 @@ interface RootProviderProps {
   value: UsePasswordInputReturn
 }
 
-export interface PasswordInputRootProviderBaseProps extends PolymorphicProps<'div'> {}
+export interface PasswordInputRootProviderState extends RootState {}
+
+export interface PasswordInputRootProviderBaseProps extends PolymorphicProps<'div', PasswordInputRootProviderState> {}
 export interface PasswordInputRootProviderProps
   extends HTMLProps<'div'>, RootProviderProps, PasswordInputRootProviderBaseProps {}
 
@@ -18,7 +21,7 @@ export const PasswordInputRootProvider = (props: PasswordInputRootProviderProps)
 
   return (
     <PasswordInputProvider value={passwordInput}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} state={passwordInput().getRootState()} />
     </PasswordInputProvider>
   )
 }

@@ -2,79 +2,119 @@
   "ClearTrigger": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'button'>) => Element",
+        "type": "(props: PropsFn<'button'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'button', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "Content": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', ComboboxContentState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "Control": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "Empty": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "Input": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'input'>) => Element",
+        "type": "(props: PropsFn<'input'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'input', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "ItemGroupLabel": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "ItemGroup": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "ItemIndicator": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "Item": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
@@ -83,42 +123,67 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether hovering outside should clear the highlighted state"
+      },
+      "render": {
+        "type": "RenderFn<'div', ComboboxItemState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "ItemText": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'span'>) => Element",
+        "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'span', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "Label": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'label'>) => Element",
+        "type": "(props: PropsFn<'label'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'label', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "List": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "Positioner": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
@@ -137,7 +202,7 @@
         "description": "Whether to always submit on Enter key press, even if popup is open.\nUseful for single-field autocomplete forms where Enter should submit the form."
       },
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
@@ -146,12 +211,6 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether to close the combobox when an item is selected."
-      },
-      "composite": {
-        "type": "boolean",
-        "defaultValue": "true",
-        "isRequired": false,
-        "description": "Whether the combobox is a composed with other composite widgets like tabs"
       },
       "defaultHighlightedValue": {
         "type": "string",
@@ -188,7 +247,7 @@
         "description": "The controlled highlighted value of the combobox"
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  trigger: string\n  clearTrigger: string\n  item: (id: string, index?: number | undefined) => string\n  positioner: string\n  itemGroup: (id: string | number) => string\n  itemGroupLabel: (id: string | number) => string\n}>",
+        "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  list: string\n  trigger: string\n  clearTrigger: string\n  item: (id: string, index?: number | undefined) => string\n  positioner: string\n  itemGroup: (id: string | number) => string\n  itemGroupLabel: (id: string | number) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the combobox. Useful for composition."
       },
@@ -235,6 +294,11 @@
         "type": "(details: NavigateDetails) => void",
         "isRequired": false,
         "description": "Function to navigate to the selected item"
+      },
+      "onEnterComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the open state"
       },
       "onExitComplete": {
         "type": "VoidFunction",
@@ -305,6 +369,12 @@
         "isRequired": false,
         "description": "The placeholder text of the combobox's input"
       },
+      "popupType": {
+        "type": "'dialog' | 'listbox'",
+        "defaultValue": "\"listbox\"",
+        "isRequired": false,
+        "description": "The ARIA pattern of the popup. Drives `aria-haspopup` on the trigger, the\n`role` of the content element, the trigger's keyboard handling, and the\nlabel's click target.\n- `\"listbox\"` (default) — input-driven combobox; popup is a passive listbox.\n- `\"dialog\"` — popover-style combobox; popup is announced as a dialog,\n  trigger is keyboard-active, label-click focuses the trigger."
+      },
       "positioning": {
         "type": "PositioningOptions",
         "defaultValue": "{ placement: \"bottom-start\" }",
@@ -320,6 +390,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the combobox is readonly. This puts the combobox in a \"non-editable\" mode\nbut the user can still interact with it"
+      },
+      "render": {
+        "type": "RenderFn<'div', ComboboxRootState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the combobox is required" },
       "scrollToIndexFn": {
@@ -361,7 +436,7 @@
     "props": {
       "value": { "type": "UseComboboxReturn<T>", "isRequired": true },
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
@@ -376,6 +451,11 @@
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
       },
+      "onEnterComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the open state"
+      },
       "onExitComplete": {
         "type": "VoidFunction",
         "isRequired": false,
@@ -385,6 +465,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
+      },
+      "render": {
+        "type": "RenderFn<'div', ComboboxRootProviderState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       },
       "skipAnimationOnMount": {
         "type": "boolean",
@@ -403,11 +488,16 @@
   "Trigger": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'button'>) => Element",
+        "type": "(props: PropsFn<'button'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "focusable": { "type": "boolean", "isRequired": false, "description": "Whether the trigger is focusable" }
+      "focusable": { "type": "boolean", "isRequired": false, "description": "Whether the trigger is focusable" },
+      "render": {
+        "type": "RenderFn<'button', ComboboxTriggerState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
+      }
     }
   }
 }

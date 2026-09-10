@@ -1,11 +1,13 @@
 import { mergeProps } from '@zag-js/solid'
-import type { TriggerProps } from '@zag-js/tabs'
+import type { TriggerProps, TriggerState } from '@zag-js/tabs'
 import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useTabsContext } from './use-tabs-context.ts'
 
-export interface TabTriggerBaseProps extends TriggerProps, PolymorphicProps<'button'> {}
+export interface TabTriggerState extends TriggerState {}
+
+export interface TabTriggerBaseProps extends TriggerProps, PolymorphicProps<'button', TabTriggerState> {}
 export interface TabTriggerProps extends Assign<HTMLProps<'button'>, TabTriggerBaseProps> {}
 
 export const TabTrigger = (props: TabTriggerProps) => {
@@ -13,5 +15,5 @@ export const TabTrigger = (props: TabTriggerProps) => {
   const api = useTabsContext()
   const mergedProps = mergeProps(() => api().getTriggerProps(triggerProps), localProps)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps} state={api().getTriggerState(triggerProps)} />
 }

@@ -2,40 +2,55 @@
   "Control": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', DateInputControlState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "HiddenInput": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'input'>) => Element",
+        "type": "(props: PropsFn<'input'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "index": { "type": "number", "isRequired": false }
+      "index": { "type": "number", "isRequired": false },
+      "render": {
+        "type": "RenderFn<'input', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
+      }
     }
   },
   "Label": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'label'>) => Element",
+        "type": "(props: PropsFn<'label'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'label', EmptyState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "Root": {
     "props": {
       "allSegments": {
-        "type": "Partial<{\n  year: boolean\n  month: boolean\n  day: boolean\n  hour: boolean\n  minute: boolean\n  second: boolean\n  dayPeriod: boolean\n  era: boolean\n  literal: boolean\n  timeZoneName: boolean\n  weekday: boolean\n  unknown: boolean\n  fractionalSecond: boolean\n}>",
+        "type": "Segments",
         "isRequired": false,
         "description": "The computed segments map for the formatter."
       },
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
@@ -84,7 +99,7 @@
         "description": "Whether to use 12-hour or 24-hour time format.\nBy default, this is determined by the locale."
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  label: (index: number) => string\n  control: string\n  segmentGroup: (index: number) => string\n  hiddenInput: (index: number) => string\n}>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the date input. Useful for composition."
       },
@@ -124,6 +139,11 @@
         "description": "The controlled placeholder date."
       },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the date input is read-only." },
+      "render": {
+        "type": "RenderFn<'div', DateInputRootState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
+      },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the date input is required" },
       "selectionMode": {
         "type": "SelectionMode",
@@ -155,29 +175,44 @@
     "props": {
       "value": { "type": "UseDateInputReturn", "isRequired": true },
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'div', DateInputRootProviderState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "SegmentGroup": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "index": { "type": "number", "isRequired": false }
+      "index": { "type": "number", "isRequired": false },
+      "render": {
+        "type": "RenderFn<'div', DateInputSegmentGroupState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
+      }
     }
   },
   "Segment": {
     "props": {
       "segment": { "type": "DateSegment", "isRequired": true },
       "asChild": {
-        "type": "(props: ParentProps<'span'>) => Element",
+        "type": "(props: PropsFn<'span'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "render": {
+        "type": "RenderFn<'span', DateInputSegmentState>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   }

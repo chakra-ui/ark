@@ -1,9 +1,12 @@
+import type { TriggerState } from '@zag-js/floating-panel'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresenceContext } from '../presence/index.tsx'
 import { useFloatingPanelContext } from './use-floating-panel-context.ts'
 
-export interface FloatingPanelTriggerBaseProps extends PolymorphicProps<'button'> {}
+export interface FloatingPanelTriggerState extends TriggerState {}
+
+export interface FloatingPanelTriggerBaseProps extends PolymorphicProps<'button', FloatingPanelTriggerState> {}
 export interface FloatingPanelTriggerProps extends HTMLProps<'button'>, FloatingPanelTriggerBaseProps {}
 
 export const FloatingPanelTrigger = (props: FloatingPanelTriggerProps) => {
@@ -17,5 +20,5 @@ export const FloatingPanelTrigger = (props: FloatingPanelTriggerProps) => {
     }
   }, props)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps} state={floatingPanel().getTriggerState()} />
 }
