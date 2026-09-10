@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Accessor, Assign, HTMLProps, RefAttribute } from '$lib/types.js'
+  import type { Accessor, Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
   import { mergeProps, normalizeProps, useMachine } from '@zag-js/svelte'
   import * as toast from '@zag-js/toast'
   import type { Snippet } from 'svelte'
@@ -10,7 +10,14 @@
 
   export type ToastOptions = toast.Options<Snippet>
 
-  export interface ToasterBaseProps extends Omit<toast.GroupProps, 'store' | 'id'>, RefAttribute {
+  export interface ToasterState extends toast.GroupState {}
+
+  export interface ToasterBaseProps
+    extends
+      Omit<toast.GroupProps, 'store' | 'id'>,
+      // the toaster's children snippet is scoped to a toast, so it replaces the polymorphic one
+      Omit<PolymorphicProps<'div', ToasterState>, 'children'>,
+      RefAttribute {
     /**
      * The toaster instance.
      */
@@ -44,7 +51,7 @@
   const mergedProps = $derived(mergeProps(api.getGroupProps(), otherProps))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps}>
+<Ark as="div" bind:ref {...mergedProps} state={api.getGroupState()}>
   {#each toasts as toast, index (toast.id)}
     {@const toastFn = () => toast}
     <ToasterItem value={toastFn} parent={service} {index}>
