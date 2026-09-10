@@ -1,12 +1,14 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/date-input'
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { UseDateInputReturn } from './use-date-input.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseDateInputReturn>
 }
 
+export interface DateInputRootProviderState extends RootState {}
 export interface DateInputRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface DateInputRootProviderProps
   extends
@@ -24,6 +26,7 @@ import { ark } from '../factory.ts'
 import { DateInputProvider } from './use-date-input-context.ts'
 
 const props = defineProps<DateInputRootProviderProps>()
+defineSlots<PolymorphicSlots<DateInputRootProviderState>>()
 
 const dateInput = computed(() => props.value)
 
@@ -33,7 +36,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="dateInput.getRootProps()" :as-child="asChild">
+  <ark.div v-bind="dateInput.getRootProps()" :state="dateInput.getRootState()" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

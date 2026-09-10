@@ -1,8 +1,9 @@
 <script lang="ts">
-import type { SegmentProps } from '@zag-js/date-input'
+import type { SegmentProps, SegmentState } from '@zag-js/date-input'
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
+export interface DateInputSegmentState extends SegmentState {}
 export interface DateInputSegmentBaseProps extends PolymorphicProps, Pick<SegmentProps, 'segment'> {}
 export interface DateInputSegmentProps
   extends
@@ -21,6 +22,7 @@ import { useDateInputSegmentGroupPropsContext } from './use-date-input-segment-g
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<DateInputSegmentProps>()
+defineSlots<PolymorphicSlots<DateInputSegmentState>>()
 const segmentGroupProps = useDateInputSegmentGroupPropsContext()
 const dateInput = useDateInputContext()
 
@@ -35,11 +37,16 @@ const currentSegment = computed(() => {
   return (typeof index === 'number' ? segments[index] : undefined) ?? props.segment
 })
 
-const mergedProps = computed(() =>
-  dateInput.value.getSegmentProps({ segment: currentSegment.value, index: segmentGroupProps!.value.index }),
-)
+const segmentArgs = computed(() => ({
+  segment: currentSegment.value,
+  index: segmentGroupProps!.value.index,
+}))
+
+const mergedProps = computed(() => dateInput.value.getSegmentProps(segmentArgs.value))
 </script>
 
 <template>
-  <ark.span v-bind="mergedProps" :as-child="asChild">{{ currentSegment.text }}</ark.span>
+  <ark.span v-bind="mergedProps" :state="dateInput.getSegmentState(segmentArgs)" :as-child="asChild">
+    {{ currentSegment.text }}
+  </ark.span>
 </template>
