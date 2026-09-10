@@ -1,7 +1,7 @@
+import type { TriggerState } from '@zag-js/select'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useSelectContext } from './use-select-context.ts'
-import type { TriggerState } from '@zag-js/select'
 
 export interface SelectTriggerState extends TriggerState {}
 

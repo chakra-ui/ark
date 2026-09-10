@@ -1,9 +1,9 @@
+import type { RootState } from '@zag-js/checkbox'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import type { UseCheckboxReturn } from './use-checkbox.ts'
 import { CheckboxProvider } from './use-checkbox-context.ts'
-import type { RootState } from '@zag-js/checkbox'
 
 interface RootProviderProps {
   value: UseCheckboxReturn

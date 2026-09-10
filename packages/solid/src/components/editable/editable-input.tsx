@@ -1,8 +1,8 @@
+import type { InputState } from '@zag-js/editable'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useFieldContext } from '../field/index.tsx'
 import { useEditableContext } from './use-editable-context.ts'
-import type { InputState } from '@zag-js/editable'
 
 export interface EditableInputState extends InputState {}
 

@@ -1,9 +1,9 @@
+import type { RootState } from '@zag-js/pin-input'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { type UsePinInputProps, usePinInput } from './use-pin-input.ts'
 import { PinInputProvider } from './use-pin-input-context.ts'
-import type { RootState } from '@zag-js/pin-input'
 
 export interface PinInputRootState extends RootState {}
 

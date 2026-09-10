@@ -1,3 +1,4 @@
+import type { BackdropState } from '@zag-js/drawer'
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
 import { composeRefs } from '../../utils/compose-refs.ts'
@@ -5,7 +6,6 @@ import { useRenderStrategyContext } from '../../utils/render-strategy.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresence } from '../presence/index.tsx'
 import { useDrawerContext } from './use-drawer-context.ts'
-import type { BackdropState } from '@zag-js/drawer'
 
 export interface DrawerBackdropState extends BackdropState {}
 

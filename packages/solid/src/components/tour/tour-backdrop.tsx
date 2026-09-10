@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
+import type { BackdropState } from '@zag-js/tour'
 import { Show } from 'solid-js'
 import { composeRefs } from '../../utils/compose-refs.ts'
 import { useRenderStrategyContext } from '../../utils/render-strategy.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresence } from '../presence/index.tsx'
 import { useTourContext } from './use-tour-context.ts'
-import type { BackdropState } from '@zag-js/tour'
 
 export interface TourBackdropState extends BackdropState {}
 

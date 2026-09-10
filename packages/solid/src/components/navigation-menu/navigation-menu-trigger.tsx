@@ -1,11 +1,11 @@
-import { mergeProps } from '@zag-js/solid'
 import type { ItemProps, TriggerState } from '@zag-js/navigation-menu'
+import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
+import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
 import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context.ts'
-import type { Assign } from '../../types.ts'
 
 export interface NavigationMenuTriggerState extends TriggerState {}
 

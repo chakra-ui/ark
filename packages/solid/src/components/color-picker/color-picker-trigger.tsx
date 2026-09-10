@@ -1,7 +1,7 @@
+import type { TriggerState } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useColorPickerContext } from './use-color-picker-context.ts'
-import type { TriggerState } from '@zag-js/color-picker'
 
 export interface ColorPickerTriggerState extends TriggerState {}
 

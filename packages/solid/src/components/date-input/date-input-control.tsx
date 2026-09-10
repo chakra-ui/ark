@@ -1,7 +1,7 @@
+import type { ControlState } from '@zag-js/date-input'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useDateInputContext } from './use-date-input-context.ts'
-import type { ControlState } from '@zag-js/date-input'
 
 export interface DateInputControlState extends ControlState {}
 

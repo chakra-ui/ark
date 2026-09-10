@@ -1,7 +1,7 @@
+import type { DecrementTriggerState } from '@zag-js/number-input'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useNumberInputContext } from './use-number-input-context.ts'
-import type { DecrementTriggerState } from '@zag-js/number-input'
 
 export interface NumberInputDecrementTriggerState extends DecrementTriggerState {}
 

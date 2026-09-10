@@ -1,5 +1,5 @@
-import { mergeProps } from '@zag-js/solid'
 import type { ItemGroupProps, ItemGroupState } from '@zag-js/file-upload'
+import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useFileUploadContext } from './use-file-upload-context.ts'

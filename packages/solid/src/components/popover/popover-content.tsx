@@ -1,10 +1,10 @@
+import type { ContentState } from '@zag-js/popover'
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
 import { composeRefs } from '../../utils/compose-refs.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresenceContext } from '../presence/index.tsx'
 import { usePopoverContext } from './use-popover-context.ts'
-import type { ContentState } from '@zag-js/popover'
 
 export interface PopoverContentState extends ContentState {}
 

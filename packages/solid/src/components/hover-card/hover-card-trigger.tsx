@@ -1,5 +1,5 @@
-import { mergeProps } from '@zag-js/solid'
 import type { TriggerProps, TriggerState } from '@zag-js/hover-card'
+import { mergeProps } from '@zag-js/solid'
 import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'

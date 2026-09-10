@@ -1,7 +1,7 @@
+import type { SwipeAreaState } from '@zag-js/drawer'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useDrawerContext } from './use-drawer-context.ts'
-import type { SwipeAreaState } from '@zag-js/drawer'
 
 export interface DrawerSwipeAreaState extends SwipeAreaState {}
 

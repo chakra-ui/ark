@@ -1,8 +1,8 @@
+import type { TriggerState } from '@zag-js/floating-panel'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresenceContext } from '../presence/index.tsx'
 import { useFloatingPanelContext } from './use-floating-panel-context.ts'
-import type { TriggerState } from '@zag-js/floating-panel'
 
 export interface FloatingPanelTriggerState extends TriggerState {}
 

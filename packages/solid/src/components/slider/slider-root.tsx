@@ -1,10 +1,10 @@
+import type { RootState } from '@zag-js/slider'
 import { mergeProps } from '@zag-js/solid'
 import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { type UseSliderProps, useSlider } from './use-slider.ts'
 import { SliderProvider } from './use-slider-context.ts'
-import type { RootState } from '@zag-js/slider'
 
 export interface SliderRootState extends RootState {}
 

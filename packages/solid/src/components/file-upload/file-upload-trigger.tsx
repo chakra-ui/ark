@@ -1,7 +1,7 @@
+import type { TriggerState } from '@zag-js/file-upload'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useFileUploadContext } from './use-file-upload-context.ts'
-import type { TriggerState } from '@zag-js/file-upload'
 
 export interface FileUploadTriggerState extends TriggerState {}
 

@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
+import type { RootState } from '@zag-js/toast'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useToastContext } from './use-toast-context.ts'
-import type { RootState } from '@zag-js/toast'
 
 export interface ToastRootState extends RootState {}
 

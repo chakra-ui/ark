@@ -1,9 +1,9 @@
+import type { RootState } from '@zag-js/signature-pad'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { type UseSignaturePadProps, useSignaturePad } from './use-signature-pad.ts'
 import { SignaturePadProvider } from './use-signature-pad-context.ts'
-import type { RootState } from '@zag-js/signature-pad'
 
 export interface SignaturePadRootState extends RootState {}
 

@@ -1,9 +1,9 @@
+import type { RootState } from '@zag-js/radio-group'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { type UseSegmentGroupProps, useSegmentGroup } from './use-segment-group.ts'
 import { SegmentGroupProvider } from './use-segment-group-context.ts'
-import type { RootState } from '@zag-js/radio-group'
 
 export interface SegmentGroupRootState extends RootState {}
 

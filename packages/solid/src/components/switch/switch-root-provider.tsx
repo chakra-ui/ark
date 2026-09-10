@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
+import type { RootState } from '@zag-js/switch'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import type { UseSwitchReturn } from './use-switch.ts'
 import { SwitchProvider } from './use-switch-context.ts'
-import type { RootState } from '@zag-js/switch'
 
 interface RootProviderProps {
   value: UseSwitchReturn

@@ -1,7 +1,7 @@
+import type { ListState } from '@zag-js/listbox'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useListboxContext } from './use-listbox-context.ts'
-import type { ListState } from '@zag-js/listbox'
 
 export interface ListboxListState extends ListState {}
 

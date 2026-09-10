@@ -1,10 +1,10 @@
+import type { ContentState } from '@zag-js/select'
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
 import { composeRefs } from '../../utils/compose-refs.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresenceContext } from '../presence/index.tsx'
 import { useSelectContext } from './use-select-context.ts'
-import type { ContentState } from '@zag-js/select'
 
 export interface SelectContentState extends ContentState {}
 

@@ -1,10 +1,10 @@
+import type { ContentState } from '@zag-js/floating-panel'
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
 import { composeRefs } from '../../utils/compose-refs.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresenceContext } from '../presence/index.tsx'
 import { useFloatingPanelContext } from './use-floating-panel-context.ts'
-import type { ContentState } from '@zag-js/floating-panel'
 
 export interface FloatingPanelContentState extends ContentState {}
 

@@ -1,7 +1,7 @@
+import type { ControlState } from '@zag-js/rating-group'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useRatingGroupContext } from './use-rating-group-context.ts'
-import type { ControlState } from '@zag-js/rating-group'
 
 export interface RatingGroupControlState extends ControlState {}
 

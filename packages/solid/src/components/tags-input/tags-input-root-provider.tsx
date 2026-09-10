@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
+import type { RootState } from '@zag-js/tags-input'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import type { UseTagsInputReturn } from './use-tags-input.ts'
 import { TagsInputProvider } from './use-tags-input-context.ts'
-import type { RootState } from '@zag-js/tags-input'
 
 interface RootProviderProps {
   value: UseTagsInputReturn

@@ -1,13 +1,13 @@
+import type { RootState } from '@zag-js/select'
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js/jsx-runtime'
 import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
+import type { CollectionItem } from '../collection/index.tsx'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.tsx'
 import type { UseSelectReturn } from './use-select.ts'
 import { SelectProvider } from './use-select-context.ts'
-import type { CollectionItem } from '../collection/index.tsx'
-import type { RootState } from '@zag-js/select'
 
 interface RootProviderProps<T extends CollectionItem> {
   value: UseSelectReturn<T>

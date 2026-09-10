@@ -1,7 +1,7 @@
+import type { ControlState } from '@zag-js/floating-panel'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useFloatingPanelContext } from './use-floating-panel-context.ts'
-import type { ControlState } from '@zag-js/floating-panel'
 
 export interface FloatingPanelControlState extends ControlState {}
 

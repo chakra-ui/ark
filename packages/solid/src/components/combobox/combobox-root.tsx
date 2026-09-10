@@ -1,13 +1,13 @@
+import type { RootState } from '@zag-js/combobox'
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js/jsx-runtime'
 import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
+import type { CollectionItem } from '../collection/index.tsx'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.tsx'
 import { type UseComboboxProps, useCombobox } from './use-combobox.ts'
 import { ComboboxProvider } from './use-combobox-context.ts'
-import type { CollectionItem } from '../collection/index.tsx'
-import type { RootState } from '@zag-js/combobox'
 
 export interface ComboboxRootState extends RootState {}
 

@@ -1,8 +1,8 @@
+import type { InputState } from '@zag-js/password-input'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useFieldContext } from '../field/index.tsx'
 import { usePasswordInputContext } from './use-password-input-context.ts'
-import type { InputState } from '@zag-js/password-input'
 
 export interface PasswordInputInputState extends InputState {}
 

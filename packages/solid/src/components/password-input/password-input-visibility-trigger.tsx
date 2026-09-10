@@ -1,7 +1,7 @@
+import type { VisibilityTriggerState } from '@zag-js/password-input'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePasswordInputContext } from './use-password-input-context.ts'
-import type { VisibilityTriggerState } from '@zag-js/password-input'
 
 export interface PasswordInputVisibilityTriggerState extends VisibilityTriggerState {}
 

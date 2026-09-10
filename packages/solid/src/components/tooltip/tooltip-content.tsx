@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
+import type { ContentState } from '@zag-js/tooltip'
 import { Show } from 'solid-js'
 import { composeRefs } from '../../utils/compose-refs.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresenceContext } from '../presence/index.tsx'
 import { useTooltipContext } from './use-tooltip-context.ts'
-import type { ContentState } from '@zag-js/tooltip'
 
 export interface TooltipContentState extends ContentState {}
 

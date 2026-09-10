@@ -1,7 +1,7 @@
+import type { TriggerState } from '@zag-js/collapsible'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useCollapsibleContext } from './use-collapsible-context.ts'
-import type { TriggerState } from '@zag-js/collapsible'
 
 export interface CollapsibleTriggerState extends TriggerState {}
 

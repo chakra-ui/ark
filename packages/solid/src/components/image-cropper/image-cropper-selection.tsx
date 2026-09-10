@@ -1,7 +1,7 @@
+import type { SelectionState } from '@zag-js/image-cropper'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useImageCropperContext } from './use-image-cropper-context.ts'
-import type { SelectionState } from '@zag-js/image-cropper'
 
 export interface ImageCropperSelectionState extends SelectionState {}
 

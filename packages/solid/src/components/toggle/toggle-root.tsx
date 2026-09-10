@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
+import type { RootState } from '@zag-js/toggle'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { type UseToggleProps, useToggle } from './use-toggle.ts'
 import { ToggleProvider } from './use-toggle-context.ts'
-import type { RootState } from '@zag-js/toggle'
 
 export interface ToggleRootState extends RootState {}
 

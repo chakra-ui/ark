@@ -1,10 +1,10 @@
+import type { ContentState } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
 import { composeRefs } from '../../utils/compose-refs.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresenceContext } from '../presence/index.tsx'
 import { useColorPickerContext } from './use-color-picker-context.ts'
-import type { ContentState } from '@zag-js/color-picker'
 
 export interface ColorPickerContentState extends ContentState {}
 

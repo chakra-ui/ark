@@ -1,7 +1,7 @@
+import type { AreaState } from '@zag-js/editable'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useEditableContext } from './use-editable-context.ts'
-import type { AreaState } from '@zag-js/editable'
 
 export interface EditableAreaState extends AreaState {}
 

@@ -1,10 +1,10 @@
+import type { RootState } from '@zag-js/date-picker'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.tsx'
 import { type UseDatePickerProps, useDatePicker } from './use-date-picker.ts'
 import { DatePickerProvider } from './use-date-picker-context.ts'
-import type { RootState } from '@zag-js/date-picker'
 
 export interface DatePickerRootState extends RootState {}
 

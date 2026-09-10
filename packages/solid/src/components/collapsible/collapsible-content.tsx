@@ -1,8 +1,8 @@
+import type { ContentState } from '@zag-js/collapsible'
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useCollapsibleContext } from './use-collapsible-context.ts'
-import type { ContentState } from '@zag-js/collapsible'
 
 export interface CollapsibleContentState extends ContentState {}
 

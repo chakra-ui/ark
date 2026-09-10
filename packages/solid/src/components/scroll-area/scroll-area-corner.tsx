@@ -1,8 +1,8 @@
+import type { CornerState } from '@zag-js/scroll-area'
 import { mergeProps } from '@zag-js/solid'
 import type { Assign } from '../../types.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useScrollAreaContext } from './use-scroll-area-context.ts'
-import type { CornerState } from '@zag-js/scroll-area'
 
 export interface ScrollAreaCornerState extends CornerState {}
 

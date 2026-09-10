@@ -1,6 +1,6 @@
 import { render, screen } from '@solidjs/testing-library'
-import type { Accessor } from 'solid-js'
 import user from '@testing-library/user-event'
+import type { Accessor } from 'solid-js'
 import type { JSX } from 'solid-js'
 import { ark } from './factory.tsx'
 

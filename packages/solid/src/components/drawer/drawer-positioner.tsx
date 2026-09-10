@@ -1,9 +1,9 @@
+import type { PositionerState } from '@zag-js/drawer'
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresenceContext } from '../presence/index.tsx'
 import { useDrawerContext } from './use-drawer-context.ts'
-import type { PositionerState } from '@zag-js/drawer'
 
 export interface DrawerPositionerState extends PositionerState {}
 

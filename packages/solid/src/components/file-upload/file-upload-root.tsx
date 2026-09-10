@@ -1,9 +1,9 @@
+import type { RootState } from '@zag-js/file-upload'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { type UseFileUploadProps, useFileUpload } from './use-file-upload.ts'
 import { FileUploadProvider } from './use-file-upload-context.ts'
-import type { RootState } from '@zag-js/file-upload'
 
 export interface FileUploadRootState extends RootState {}
 

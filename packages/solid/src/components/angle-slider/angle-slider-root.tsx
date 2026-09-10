@@ -1,9 +1,9 @@
+import type { RootState } from '@zag-js/angle-slider'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { type UseAngleSliderProps, useAngleSlider } from './use-angle-slider.ts'
 import { AngleSliderProvider } from './use-angle-slider-context.ts'
-import type { RootState } from '@zag-js/angle-slider'
 
 export interface AngleSliderRootState extends RootState {}
 
