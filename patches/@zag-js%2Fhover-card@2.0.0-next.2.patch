@@ -1,0 +1,88 @@
+diff --git a/dist/hover-card.dom.js b/dist/hover-card.dom.js
+index 7190931bfb174d9547151872d49bee0caf89727e..59b4e0a2d551d4327ac839057f18eae053f7e20e 100644
+--- a/dist/hover-card.dom.js
++++ b/dist/hover-card.dom.js
+@@ -21,6 +21,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
+ var hover_card_dom_exports = {};
+ __export(hover_card_dom_exports, {
+   getActiveTriggerEl: () => getActiveTriggerEl,
++  getArrowEl: () => getArrowEl,
+   getArrowId: () => getArrowId,
+   getContentEl: () => getContentEl,
+   getContentId: () => getContentId,
+@@ -41,6 +42,7 @@ var getTriggerId = (scope, value) => {
+ var getContentId = (scope) => scope.ids?.content ?? `${scope.id}:content`;
+ var getPositionerId = (scope) => scope.ids?.positioner ?? `${scope.id}:positioner`;
+ var getArrowId = (scope) => scope.ids?.arrow ?? `${scope.id}:arrow`;
++var getArrowEl = (scope) => scope.query(scope.selector(parts.arrow));
+ var getTriggerEl = (scope) => scope.query(scope.selector(import_hover_card.parts.trigger));
+ var getContentEl = (scope) => scope.query(scope.selector(import_hover_card.parts.content));
+ var getPositionerEl = (scope) => scope.query(scope.selector(import_hover_card.parts.positioner));
+@@ -52,6 +54,7 @@ var getActiveTriggerEl = (scope, value) => {
+ // Annotate the CommonJS export names for ESM import in node:
+ 0 && (module.exports = {
+   getActiveTriggerEl,
++  getArrowEl,
+   getArrowId,
+   getContentEl,
+   getContentId,
+diff --git a/dist/hover-card.dom.mjs b/dist/hover-card.dom.mjs
+index 4c04d5e6c4276b038fab747171cc17feecec7ec1..87b89fed4373563c773a6270d1c47a2433bffa7d 100644
+--- a/dist/hover-card.dom.mjs
++++ b/dist/hover-card.dom.mjs
+@@ -9,6 +9,7 @@ var getTriggerId = (scope, value) => {
+ var getContentId = (scope) => scope.ids?.content ?? `${scope.id}:content`;
+ var getPositionerId = (scope) => scope.ids?.positioner ?? `${scope.id}:positioner`;
+ var getArrowId = (scope) => scope.ids?.arrow ?? `${scope.id}:arrow`;
++var getArrowEl = (scope) => scope.query(scope.selector(parts.arrow));
+ var getTriggerEl = (scope) => scope.query(scope.selector(parts.trigger));
+ var getContentEl = (scope) => scope.query(scope.selector(parts.content));
+ var getPositionerEl = (scope) => scope.query(scope.selector(parts.positioner));
+@@ -19,6 +20,7 @@ var getActiveTriggerEl = (scope, value) => {
+ };
+ export {
+   getActiveTriggerEl,
++  getArrowEl,
+   getArrowId,
+   getContentEl,
+   getContentId,
+diff --git a/dist/hover-card.machine.js b/dist/hover-card.machine.js
+index ddac855af58f2c583848b5612f3a163c244de88c..3ba0a5a4573d0037dc365190dd7bc4a0945f5772 100644
+--- a/dist/hover-card.machine.js
++++ b/dist/hover-card.machine.js
+@@ -317,6 +317,7 @@ var machine = (0, import_core.createMachine)({
+           // Triggers are links in prose, which wrap.
+           middleware: [(0, import_popper.inline)({ getCoords: () => refs.get("inlineCoords") }), ...positioning.middleware ?? []],
+           defer: true,
++          getArrowElement: () => dom.getArrowEl(scope),
+           onComplete(data) {
+             context.set("currentPlacement", data.placement);
+           }
+@@ -368,6 +369,7 @@ var machine = (0, import_core.createMachine)({
+           ...positioning,
+           middleware: [(0, import_popper.inline)({ getCoords: () => refs.get("inlineCoords") }), ...positioning.middleware ?? []],
+           defer: true,
++          getArrowElement: () => dom.getArrowEl(scope),
+           listeners: false,
+           onComplete(data) {
+             context.set("currentPlacement", data.placement);
+diff --git a/dist/hover-card.machine.mjs b/dist/hover-card.machine.mjs
+index 71809753e5e7b50387b14c0cc767842317bafabd..078937bf4aebfdba504e2e9382faa6cd880dbe61 100644
+--- a/dist/hover-card.machine.mjs
++++ b/dist/hover-card.machine.mjs
+@@ -283,6 +283,7 @@ var machine = createMachine({
+           // Triggers are links in prose, which wrap.
+           middleware: [inline({ getCoords: () => refs.get("inlineCoords") }), ...positioning.middleware ?? []],
+           defer: true,
++          getArrowElement: () => dom.getArrowEl(scope),
+           onComplete(data) {
+             context.set("currentPlacement", data.placement);
+           }
+@@ -334,6 +335,7 @@ var machine = createMachine({
+           ...positioning,
+           middleware: [inline({ getCoords: () => refs.get("inlineCoords") }), ...positioning.middleware ?? []],
+           defer: true,
++          getArrowElement: () => dom.getArrowEl(scope),
+           listeners: false,
+           onComplete(data) {
+             context.set("currentPlacement", data.placement);

@@ -1,0 +1,88 @@
+diff --git a/dist/popover.dom.js b/dist/popover.dom.js
+index 1128388b3b47d496fd050fca6d8cb74a3ea6e5d2..e427be6f6deb2397d72c10e9d263d3abcc20ede8 100644
+--- a/dist/popover.dom.js
++++ b/dist/popover.dom.js
+@@ -23,6 +23,7 @@ __export(popover_dom_exports, {
+   getActiveTriggerEl: () => getActiveTriggerEl,
+   getAnchorEl: () => getAnchorEl,
+   getAnchorId: () => getAnchorId,
++  getArrowEl: () => getArrowEl,
+   getArrowId: () => getArrowId,
+   getCloseTriggerId: () => getCloseTriggerId,
+   getContentEl: () => getContentEl,
+@@ -51,6 +52,7 @@ var getTriggerId = (scope, value) => {
+ var getContentId = (scope) => scope.ids?.content ?? `${scope.id}:content`;
+ var getPositionerId = (scope) => scope.ids?.positioner ?? `${scope.id}:positioner`;
+ var getArrowId = (scope) => scope.ids?.arrow ?? `${scope.id}:arrow`;
++var getArrowEl = (scope) => scope.query(scope.selector(parts.arrow));
+ var getTitleId = (scope) => scope.ids?.title ?? `${scope.id}:title`;
+ var getDescriptionId = (scope) => scope.ids?.description ?? `${scope.id}:desc`;
+ var getCloseTriggerId = (scope) => scope.ids?.closeTrigger ?? `${scope.id}:close`;
+@@ -71,6 +73,7 @@ var getFirstFocusableEl = (scope) => getFocusableEls(scope)[0];
+   getActiveTriggerEl,
+   getAnchorEl,
+   getAnchorId,
++  getArrowEl,
+   getArrowId,
+   getCloseTriggerId,
+   getContentEl,
+diff --git a/dist/popover.dom.mjs b/dist/popover.dom.mjs
+index 7bb04acd19ff712a2cd3a3cc4a8ac0ce461ab080..83aaa225a62d0279f19bb0e4375e505cb6da2881 100644
+--- a/dist/popover.dom.mjs
++++ b/dist/popover.dom.mjs
+@@ -11,6 +11,7 @@ var getTriggerId = (scope, value) => {
+ var getContentId = (scope) => scope.ids?.content ?? `${scope.id}:content`;
+ var getPositionerId = (scope) => scope.ids?.positioner ?? `${scope.id}:positioner`;
+ var getArrowId = (scope) => scope.ids?.arrow ?? `${scope.id}:arrow`;
++var getArrowEl = (scope) => scope.query(scope.selector(parts.arrow));
+ var getTitleId = (scope) => scope.ids?.title ?? `${scope.id}:title`;
+ var getDescriptionId = (scope) => scope.ids?.description ?? `${scope.id}:desc`;
+ var getCloseTriggerId = (scope) => scope.ids?.closeTrigger ?? `${scope.id}:close`;
+@@ -30,6 +31,7 @@ export {
+   getActiveTriggerEl,
+   getAnchorEl,
+   getAnchorId,
++  getArrowEl,
+   getArrowId,
+   getCloseTriggerId,
+   getContentEl,
+diff --git a/dist/popover.machine.js b/dist/popover.machine.js
+index 2c9c2ec57527d75d7f7a5fa5a929c854d296b42b..6c86dba1366e9fa14bdbfc98e75a24cdbec55394 100644
+--- a/dist/popover.machine.js
++++ b/dist/popover.machine.js
+@@ -176,6 +176,7 @@ var machine = (0, import_core.createMachine)({
+         return (0, import_popper.getPlacement)(getTriggerEl, getPositionerEl2, {
+           ...prop("positioning"),
+           defer: true,
++          getArrowElement: () => dom.getArrowEl(scope),
+           onComplete(data) {
+             context.set("currentPlacement", data.placement);
+           }
+@@ -294,6 +295,7 @@ var machine = (0, import_core.createMachine)({
+           ...prop("positioning"),
+           ...event.options,
+           defer: true,
++          getArrowElement: () => dom.getArrowEl(scope),
+           listeners: false,
+           onComplete(data) {
+             context.set("currentPlacement", data.placement);
+diff --git a/dist/popover.machine.mjs b/dist/popover.machine.mjs
+index 9b889fc81df7607edffa2cf032cdb0f7d2db3285..c213d707bbe2a40a0a3bbb5aeecde10abe739e51 100644
+--- a/dist/popover.machine.mjs
++++ b/dist/popover.machine.mjs
+@@ -142,6 +142,7 @@ var machine = createMachine({
+         return getPlacement(getTriggerEl, getPositionerEl2, {
+           ...prop("positioning"),
+           defer: true,
++          getArrowElement: () => dom.getArrowEl(scope),
+           onComplete(data) {
+             context.set("currentPlacement", data.placement);
+           }
+@@ -260,6 +261,7 @@ var machine = createMachine({
+           ...prop("positioning"),
+           ...event.options,
+           defer: true,
++          getArrowElement: () => dom.getArrowEl(scope),
+           listeners: false,
+           onComplete(data) {
+             context.set("currentPlacement", data.placement);

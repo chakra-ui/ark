@@ -1,0 +1,72 @@
+diff --git a/dist/tour.dom.js b/dist/tour.dom.js
+index f686e315512312cb9b381159817b699bce21cfac..60c20803d0503debf52f22aa02d8c96da926ea97 100644
+--- a/dist/tour.dom.js
++++ b/dist/tour.dom.js
+@@ -20,6 +20,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
+ // src/tour.dom.ts
+ var tour_dom_exports = {};
+ __export(tour_dom_exports, {
++  getArrowEl: () => getArrowEl,
+   getArrowId: () => getArrowId,
+   getBackdropEl: () => getBackdropEl,
+   getBackdropId: () => getBackdropId,
+@@ -39,6 +40,7 @@ var getContentId = (ctx) => ctx.ids?.content ?? `${ctx.id}:content`;
+ var getTitleId = (ctx) => ctx.ids?.title ?? `${ctx.id}:title`;
+ var getDescriptionId = (ctx) => ctx.ids?.description ?? `${ctx.id}:desc`;
+ var getArrowId = (ctx) => ctx.ids?.arrow ?? `${ctx.id}:arrow`;
++var getArrowEl = (ctx) => ctx.query(ctx.selector(parts.arrow));
+ var getBackdropId = (ctx) => ctx.ids?.backdrop ?? `${ctx.id}:backdrop`;
+ var getContentEl = (ctx) => ctx.query(ctx.selector(import_tour.parts.content));
+ var getPositionerEl = (ctx) => ctx.query(ctx.selector(import_tour.parts.positioner));
+@@ -64,6 +66,7 @@ function syncZIndex(scope) {
+ }
+ // Annotate the CommonJS export names for ESM import in node:
+ 0 && (module.exports = {
++  getArrowEl,
+   getArrowId,
+   getBackdropEl,
+   getBackdropId,
+diff --git a/dist/tour.dom.mjs b/dist/tour.dom.mjs
+index de00973cf1a08a822f37374a45e0d0de07cc2fde..3f536e2974a48f9848b350ea80895868fb495a79 100644
+--- a/dist/tour.dom.mjs
++++ b/dist/tour.dom.mjs
+@@ -6,6 +6,7 @@ var getContentId = (ctx) => ctx.ids?.content ?? `${ctx.id}:content`;
+ var getTitleId = (ctx) => ctx.ids?.title ?? `${ctx.id}:title`;
+ var getDescriptionId = (ctx) => ctx.ids?.description ?? `${ctx.id}:desc`;
+ var getArrowId = (ctx) => ctx.ids?.arrow ?? `${ctx.id}:arrow`;
++var getArrowEl = (ctx) => ctx.query(ctx.selector(parts.arrow));
+ var getBackdropId = (ctx) => ctx.ids?.backdrop ?? `${ctx.id}:backdrop`;
+ var getContentEl = (ctx) => ctx.query(ctx.selector(parts.content));
+ var getPositionerEl = (ctx) => ctx.query(ctx.selector(parts.positioner));
+@@ -30,6 +31,7 @@ function syncZIndex(scope) {
+   };
+ }
+ export {
++  getArrowEl,
+   getArrowId,
+   getBackdropEl,
+   getBackdropId,
+diff --git a/dist/tour.machine.js b/dist/tour.machine.js
+index 015a5a0df33b77ce67602afd6d4b0b441b6f05e9..679c3a1940cf0b3829861d442778682a58a1d8ca 100644
+--- a/dist/tour.machine.js
++++ b/dist/tour.machine.js
+@@ -513,6 +513,7 @@ var machine = (0, import_core.createMachine)({
+         const positionerEl = () => dom.getPositionerEl(scope);
+         return (0, import_popper.getPlacement)(context.get("resolvedTarget"), positionerEl, {
+           defer: true,
++          getArrowElement: () => dom.getArrowEl(scope),
+           placement: step.placement ?? "bottom",
+           strategy: "absolute",
+           gutter: 10,
+diff --git a/dist/tour.machine.mjs b/dist/tour.machine.mjs
+index f4da3eacde9a5f8d829bdea7c264b5dfe0258bd9..e4e99291cb31c11c12d9bd38874e8bdfd43e7d66 100644
+--- a/dist/tour.machine.mjs
++++ b/dist/tour.machine.mjs
+@@ -487,6 +487,7 @@ var machine = createMachine({
+         const positionerEl = () => dom.getPositionerEl(scope);
+         return getPlacement(context.get("resolvedTarget"), positionerEl, {
+           defer: true,
++          getArrowElement: () => dom.getArrowEl(scope),
+           placement: step.placement ?? "bottom",
+           strategy: "absolute",
+           gutter: 10,
