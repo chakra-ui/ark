@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { PositionerState } from '@zag-js/dialog'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface DialogPositionerBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface DialogPositionerState extends PositionerState {}
+  export interface DialogPositionerBaseProps extends PolymorphicProps<'div', DialogPositionerState>, RefAttribute {}
   export interface DialogPositionerProps extends Assign<HTMLProps<'div'>, DialogPositionerBaseProps> {}
 </script>
 
@@ -19,5 +21,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {...mergedProps} />
+  <Ark as="div" bind:ref {...mergedProps} state={dialog().getPositionerState()} />
 {/if}

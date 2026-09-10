@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { NodeState } from '@zag-js/tree-view'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TreeViewNodeBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface TreeViewNodeState extends NodeState {}
+  export interface TreeViewNodeBaseProps extends PolymorphicProps<'div', TreeViewNodeState>, RefAttribute {}
   export interface TreeViewNodeProps extends Assign<HTMLProps<'div'>, TreeViewNodeBaseProps> {}
 </script>
 
@@ -18,4 +20,4 @@
   const mergedProps = $derived(mergeProps(treeView().getNodeProps(nodeProps()), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={treeView().getNodeState(nodeProps())} />

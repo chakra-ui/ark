@@ -6,7 +6,6 @@ export type {
   LoadChildrenDetails,
   LoadChildrenErrorDetails,
   NodeIndicatorType,
-  NodeState,
   RenameCompleteDetails,
   RenameStartDetails,
   SelectionChangeDetails,
@@ -31,6 +30,7 @@ export {
   default as Node,
   type TreeViewNodeBaseProps as NodeBaseProps,
   type TreeViewNodeProps as NodeProps,
+  type TreeViewNodeState as NodeState,
 } from './tree-view-node.svelte'
 export {
   default as NodeCheckbox,

@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { ContentState } from '@zag-js/select'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SelectContentBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface SelectContentState extends ContentState {}
+  export interface SelectContentBaseProps extends PolymorphicProps<'div', SelectContentState>, RefAttribute {}
   export interface SelectContentProps extends Assign<HTMLProps<'div'>, SelectContentBaseProps> {}
 </script>
 
@@ -22,5 +24,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} state={select().getContentState()} />
 {/if}

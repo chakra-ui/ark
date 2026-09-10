@@ -1,8 +1,10 @@
 <script module lang="ts">
-  import type { DropzoneProps } from '@zag-js/file-upload'
+  import type { DropzoneProps, DropzoneState } from '@zag-js/file-upload'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FileUploadDropzoneBaseProps extends PolymorphicProps<'div'>, DropzoneProps, RefAttribute {}
+  export interface FileUploadDropzoneState extends DropzoneState {}
+  export interface FileUploadDropzoneBaseProps
+    extends PolymorphicProps<'div', FileUploadDropzoneState>, DropzoneProps, RefAttribute {}
   export interface FileUploadDropzoneProps extends Assign<HTMLProps<'div'>, FileUploadDropzoneBaseProps> {}
 </script>
 
@@ -20,4 +22,4 @@
   const mergedProps = $derived(mergeProps(fileUpload().getDropzoneProps(dropzoneProps), localProps))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={fileUpload().getDropzoneState()} />

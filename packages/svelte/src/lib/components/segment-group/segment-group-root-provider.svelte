@@ -1,4 +1,5 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/radio-group'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseSegmentGroupReturn } from './use-segment-group.svelte.ts'
 
@@ -6,7 +7,9 @@
     value: UseSegmentGroupReturn
   }
 
-  export interface SegmentGroupRootProviderBaseProps extends RootProviderProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface SegmentGroupRootProviderState extends RootState {}
+  export interface SegmentGroupRootProviderBaseProps
+    extends RootProviderProps, PolymorphicProps<'div', SegmentGroupRootProviderState>, RefAttribute {}
   export interface SegmentGroupRootProviderProps extends Assign<HTMLProps<'div'>, SegmentGroupRootProviderBaseProps> {}
 </script>
 
@@ -22,4 +25,4 @@
   SegmentGroupProvider(() => value())
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={value().getRootState()} />

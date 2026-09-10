@@ -1,10 +1,12 @@
 <script module lang="ts">
-  import type { ItemProps } from '@zag-js/file-upload'
+  import type { ItemProps, ItemState } from '@zag-js/file-upload'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   type ItemBaseProps = Omit<ItemProps, 'type'>
 
-  export interface FileUploadItemBaseProps extends ItemBaseProps, PolymorphicProps<'li'>, RefAttribute {}
+  export interface FileUploadItemState extends ItemState {}
+  export interface FileUploadItemBaseProps
+    extends ItemBaseProps, PolymorphicProps<'li', FileUploadItemState>, RefAttribute {}
   export interface FileUploadItemProps extends Assign<HTMLProps<'li'>, FileUploadItemBaseProps> {}
 </script>
 
@@ -29,4 +31,4 @@
   FileUploadItemPropsProvider(() => itemPropsWithType)
 </script>
 
-<Ark as="li" bind:ref {...mergedProps} />
+<Ark as="li" bind:ref {...mergedProps} state={fileUpload().getItemState(itemPropsWithType)} />

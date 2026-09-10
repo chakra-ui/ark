@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { ContentState } from '@zag-js/listbox'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface ListboxContentBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface ListboxContentState extends ContentState {}
+  export interface ListboxContentBaseProps extends PolymorphicProps<'div', ListboxContentState>, RefAttribute {}
   export interface ListboxContentProps extends Assign<HTMLProps<'div'>, ListboxContentBaseProps> {}
 </script>
 
@@ -16,4 +18,4 @@
   const mergedProps = $derived(mergeProps(listbox().getContentProps(), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={listbox().getContentState()} />

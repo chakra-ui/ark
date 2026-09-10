@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { ContentState } from '@zag-js/combobox'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ComboboxContentBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface ComboboxContentState extends ContentState {}
+  export interface ComboboxContentBaseProps extends PolymorphicProps<'div', ComboboxContentState>, RefAttribute {}
   export interface ComboboxContentProps extends Assign<HTMLProps<'div'>, ComboboxContentBaseProps> {}
 </script>
 
@@ -23,5 +25,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} state={combobox().getContentState()} />
 {/if}

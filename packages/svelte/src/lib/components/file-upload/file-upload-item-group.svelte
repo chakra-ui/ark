@@ -1,8 +1,10 @@
 <script module lang="ts">
-  import type { ItemGroupProps } from '@zag-js/file-upload'
+  import type { ItemGroupProps, ItemGroupState } from '@zag-js/file-upload'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FileUploadItemGroupBaseProps extends PolymorphicProps<'div'>, RefAttribute, ItemGroupProps {}
+  export interface FileUploadItemGroupState extends ItemGroupState {}
+  export interface FileUploadItemGroupBaseProps
+    extends PolymorphicProps<'div', FileUploadItemGroupState>, RefAttribute, ItemGroupProps {}
   export interface FileUploadItemGroupProps extends Assign<HTMLProps<'div'>, FileUploadItemGroupBaseProps> {}
 </script>
 
@@ -22,4 +24,4 @@
   FileUploadItemGroupPropsProvider(() => itemGroupProps)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={fileUpload().getItemGroupState(itemGroupProps)} />

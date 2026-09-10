@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { ContentState } from '@zag-js/popover'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface PopoverContentBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface PopoverContentState extends ContentState {}
+  export interface PopoverContentBaseProps extends PolymorphicProps<'div', PopoverContentState>, RefAttribute {}
   export interface PopoverContentProps extends Assign<HTMLProps<'div'>, PopoverContentBaseProps> {}
 </script>
 
@@ -23,5 +25,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} state={popover().getContentState()} />
 {/if}

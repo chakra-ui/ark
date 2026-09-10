@@ -1,8 +1,9 @@
 <script module lang="ts">
   import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { ThumbProps } from '@zag-js/slider'
+  import type { ThumbProps, ThumbState } from '@zag-js/slider'
 
-  export interface SliderThumbBaseProps extends ThumbProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface SliderThumbState extends ThumbState {}
+  export interface SliderThumbBaseProps extends ThumbProps, PolymorphicProps<'div', SliderThumbState>, RefAttribute {}
   export interface SliderThumbProps extends HTMLProps<'div'>, SliderThumbBaseProps {}
 </script>
 
@@ -20,5 +21,5 @@
 </script>
 
 <SliderThumbPropsProvider value={thumbProps}>
-  <Ark as="div" bind:ref {...mergedProps} />
+  <Ark as="div" bind:ref {...mergedProps} state={slider().getThumbState(thumbProps)} />
 </SliderThumbPropsProvider>

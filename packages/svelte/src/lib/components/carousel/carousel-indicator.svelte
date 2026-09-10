@@ -1,8 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { IndicatorProps } from '@zag-js/carousel'
+  import type { IndicatorProps, IndicatorState } from '@zag-js/carousel'
 
-  export interface CarouselIndicatorBaseProps extends IndicatorProps, PolymorphicProps<'button'>, RefAttribute {}
+  export interface CarouselIndicatorState extends IndicatorState {}
+  export interface CarouselIndicatorBaseProps
+    extends IndicatorProps, PolymorphicProps<'button', CarouselIndicatorState>, RefAttribute {}
   export interface CarouselIndicatorProps extends Assign<HTMLProps<'button'>, CarouselIndicatorBaseProps> {}
 </script>
 
@@ -19,4 +21,4 @@
   const mergedProps = $derived(mergeProps(carousel().getIndicatorProps(indicatorProps), localProps))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} state={carousel().getIndicatorState(indicatorProps)} />

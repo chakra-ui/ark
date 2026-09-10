@@ -64,6 +64,7 @@
     "@zag-js/menu@2.0.0-next.2": "patches/@zag-js%2Fmenu@2.0.0-next.2.patch",
     "@zag-js/tooltip@2.0.0-next.2": "patches/@zag-js%2Ftooltip@2.0.0-next.2.patch",
     "@zag-js/dismissable@2.0.0-next.2": "patches/@zag-js%2Fdismissable@2.0.0-next.2.patch",
-    "@zag-js/menubar@2.0.0-next.2": "patches/@zag-js%2Fmenubar@2.0.0-next.2.patch"
+    "@zag-js/menubar@2.0.0-next.2": "patches/@zag-js%2Fmenubar@2.0.0-next.2.patch",
+    "@zag-js/select@2.0.0-next.2": "patches/@zag-js%2Fselect@2.0.0-next.2.patch"
   }
 }

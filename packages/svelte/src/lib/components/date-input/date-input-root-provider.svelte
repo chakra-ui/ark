@@ -1,4 +1,5 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/date-input'
   import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
   import type { UseDateInputReturn } from './use-date-input.svelte.js'
 
@@ -6,7 +7,9 @@
     value: UseDateInputReturn
   }
 
-  export interface DateInputRootProviderBaseProps extends RootProviderProps, PolymorphicProps<'div'> {}
+  export interface DateInputRootProviderState extends RootState {}
+  export interface DateInputRootProviderBaseProps
+    extends RootProviderProps, PolymorphicProps<'div', DateInputRootProviderState> {}
   export interface DateInputRootProviderProps extends Assign<HTMLProps<'div'>, DateInputRootProviderBaseProps> {}
 </script>
 
@@ -22,4 +25,4 @@
   DateInputProvider(() => value())
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" {...mergedProps} state={value().getRootState()} />

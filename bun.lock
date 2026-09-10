@@ -615,6 +615,7 @@
     "@zag-js/menubar@2.0.0-next.2": "patches/@zag-js%2Fmenubar@2.0.0-next.2.patch",
     "@zag-js/menu@2.0.0-next.2": "patches/@zag-js%2Fmenu@2.0.0-next.2.patch",
     "@zag-js/tree-view@2.0.0-next.2": "patches/@zag-js%2Ftree-view@2.0.0-next.2.patch",
+    "@zag-js/select@2.0.0-next.2": "patches/@zag-js%2Fselect@2.0.0-next.2.patch",
   },
   "overrides": {
     "flexsearch": "0.8.212",

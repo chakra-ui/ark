@@ -1,8 +1,9 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { ContentProps } from '@zag-js/tabs'
+  import type { ContentProps, ContentState } from '@zag-js/tabs'
 
-  export interface TabsContentBaseProps extends ContentProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface TabsContentState extends ContentState {}
+  export interface TabsContentBaseProps extends ContentProps, PolymorphicProps<'div', TabsContentState>, RefAttribute {}
   export interface TabsContentProps extends Assign<HTMLProps<'div'>, TabsContentBaseProps> {}
 </script>
 
@@ -38,5 +39,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} state={tabs().getContentState(contentProps)} />
 {/if}

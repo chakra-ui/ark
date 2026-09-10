@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { TriggerState } from '@zag-js/select'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SelectTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
+  export interface SelectTriggerState extends TriggerState {}
+  export interface SelectTriggerBaseProps extends PolymorphicProps<'button', SelectTriggerState>, RefAttribute {}
   export interface SelectTriggerProps extends Assign<HTMLProps<'button'>, SelectTriggerBaseProps> {}
 </script>
 
@@ -15,4 +17,4 @@
   const mergedProps = $derived(mergeProps(select().getTriggerProps(), props))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} state={select().getTriggerState()} />

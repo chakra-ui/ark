@@ -1,10 +1,16 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/color-picker'
   import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UsePresenceProps } from '../presence/index.ts'
   import type { UseColorPickerProps } from './use-color-picker.svelte.ts'
 
+  export interface ColorPickerRootState extends RootState {}
   export interface ColorPickerRootBaseProps
-    extends Optional<UseColorPickerProps, 'id'>, UsePresenceProps, PolymorphicProps<'div'>, RefAttribute {}
+    extends
+      Optional<UseColorPickerProps, 'id'>,
+      UsePresenceProps,
+      PolymorphicProps<'div', ColorPickerRootState>,
+      RefAttribute {}
   export interface ColorPickerRootProps extends Assign<HTMLProps<'div'>, ColorPickerRootBaseProps> {}
 </script>
 
@@ -52,4 +58,4 @@
   PresenceProvider(presence)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={colorPicker().getRootState()} />

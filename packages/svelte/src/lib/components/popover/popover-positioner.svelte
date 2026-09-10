@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { PositionerState } from '@zag-js/popover'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface PopoverPositionerBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface PopoverPositionerState extends PositionerState {}
+  export interface PopoverPositionerBaseProps extends PolymorphicProps<'div', PopoverPositionerState>, RefAttribute {}
   export interface PopoverPositionerProps extends Assign<HTMLProps<'div'>, PopoverPositionerBaseProps> {}
 </script>
 
@@ -19,5 +21,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {...mergedProps} />
+  <Ark as="div" bind:ref {...mergedProps} state={popover().getPositionerState()} />
 {/if}

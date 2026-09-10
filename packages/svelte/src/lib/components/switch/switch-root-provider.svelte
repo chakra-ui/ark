@@ -1,8 +1,11 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/switch'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseSwitchReturn } from './use-switch.svelte.ts'
 
-  export interface SwitchRootProviderBaseProps extends PolymorphicProps<'label'>, RefAttribute {
+  export interface SwitchRootProviderState extends RootState {}
+  export interface SwitchRootProviderBaseProps
+    extends PolymorphicProps<'label', SwitchRootProviderState>, RefAttribute {
     value: UseSwitchReturn
   }
   export interface SwitchRootProviderProps extends Assign<HTMLProps<'label'>, SwitchRootProviderBaseProps> {}
@@ -20,4 +23,4 @@
   SwitchProvider(() => value())
 </script>
 
-<Ark as="label" bind:ref {...mergedProps} />
+<Ark as="label" bind:ref {...mergedProps} state={value().getRootState()} />

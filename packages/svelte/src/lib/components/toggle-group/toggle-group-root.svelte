@@ -1,9 +1,11 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/toggle-group'
   import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseToggleGroupProps } from './use-toggle-group.svelte.ts'
 
+  export interface ToggleGroupRootState extends RootState {}
   export interface ToggleGroupRootBaseProps
-    extends Optional<UseToggleGroupProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
+    extends Optional<UseToggleGroupProps, 'id'>, PolymorphicProps<'div', ToggleGroupRootState>, RefAttribute {}
   export interface ToggleGroupRootProps extends Assign<HTMLProps<'div'>, ToggleGroupRootBaseProps> {}
 </script>
 
@@ -50,4 +52,4 @@
   ToggleGroupProvider(toggleGroup)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={toggleGroup().getRootState()} />

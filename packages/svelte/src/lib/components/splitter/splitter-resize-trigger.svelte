@@ -1,9 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { ResizeTriggerProps } from '@zag-js/splitter'
+  import type { ResizeTriggerProps, ResizeTriggerState } from '@zag-js/splitter'
 
+  export interface SplitterResizeTriggerState extends ResizeTriggerState {}
   export interface SplitterResizeTriggerBaseProps
-    extends ResizeTriggerProps, PolymorphicProps<'button'>, RefAttribute {}
+    extends ResizeTriggerProps, PolymorphicProps<'button', SplitterResizeTriggerState>, RefAttribute {}
   export interface SplitterResizeTriggerProps extends Assign<HTMLProps<'button'>, SplitterResizeTriggerBaseProps> {}
 </script>
 
@@ -24,4 +25,4 @@
   SplitterResizeTriggerPropsProvider(() => triggerProps)
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} state={splitter().getResizeTriggerState(triggerProps)} />

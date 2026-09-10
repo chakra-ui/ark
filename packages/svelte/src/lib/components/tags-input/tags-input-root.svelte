@@ -1,9 +1,11 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/tags-input'
   import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseTagsInputProps } from './use-tags-input.svelte.ts'
 
+  export interface TagsInputRootState extends RootState {}
   export interface TagsInputRootBaseProps
-    extends Optional<UseTagsInputProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
+    extends Optional<UseTagsInputProps, 'id'>, PolymorphicProps<'div', TagsInputRootState>, RefAttribute {}
   export interface TagsInputRootProps extends Assign<HTMLProps<'div'>, TagsInputRootBaseProps> {}
 </script>
 
@@ -83,4 +85,4 @@
   TagsInputProvider(tagsInput)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={tagsInput().getRootState()} />
