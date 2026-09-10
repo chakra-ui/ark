@@ -1,0 +1,26 @@
+diff --git a/dist/select.machine.js b/dist/select.machine.js
+index f51b8a8621654d34c14ba92ded1424e198463a61..bd5bdbdb491ceb9c7699afffd228f745ad39bb2a 100644
+--- a/dist/select.machine.js
++++ b/dist/select.machine.js
+@@ -859,7 +859,7 @@ var machine = (0, import_core.createMachine)({
+         const label = collection2.stringifyItem(collection2.find(value));
+         if (!label) return;
+         const selected = context.get("value").includes(value);
+-        const formatter = prop("translations").itemAnnouncement;
++        const formatter = prop("translations")?.itemAnnouncement;
+         const message = formatter ? formatter({ value, label, selected }) : selected ? `${label}, selected` : label;
+         refs.get("liveRegion")?.announce(message);
+       },
+diff --git a/dist/select.machine.mjs b/dist/select.machine.mjs
+index d25f4b40b2fde058d4a8d7f18884fe52f7d0d347..58a4d6db98cebde23c5c62de5ffdaaea389ef9d2 100644
+--- a/dist/select.machine.mjs
++++ b/dist/select.machine.mjs
+@@ -836,7 +836,7 @@ var machine = createMachine({
+         const label = collection2.stringifyItem(collection2.find(value));
+         if (!label) return;
+         const selected = context.get("value").includes(value);
+-        const formatter = prop("translations").itemAnnouncement;
++        const formatter = prop("translations")?.itemAnnouncement;
+         const message = formatter ? formatter({ value, label, selected }) : selected ? `${label}, selected` : label;
+         refs.get("liveRegion")?.announce(message);
+       },
