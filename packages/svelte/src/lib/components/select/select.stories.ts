@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/svelte'
 
 import AsyncExample from './examples/async.svelte'
+import AlignItemWithTriggerExample from './examples/align-item-with-trigger.svelte'
 import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import DisabledExample from './examples/disabled.svelte'
@@ -20,6 +21,12 @@ const meta: Meta = {
 }
 
 export default meta
+
+export const AlignItemWithTrigger = {
+  render: () => ({
+    Component: AlignItemWithTriggerExample,
+  }),
+}
 
 export const Basic = {
   render: () => ({

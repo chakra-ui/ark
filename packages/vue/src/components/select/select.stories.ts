@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/vue3-vite'
 
 import AsyncExample from './examples/async.vue'
+import AlignItemWithTriggerExample from './examples/align-item-with-trigger.vue'
 import BasicExample from './examples/basic.vue'
 import ControlledExample from './examples/controlled.vue'
 import DisabledExample from './examples/disabled.vue'
@@ -27,6 +28,13 @@ export default meta
 export const Async = {
   render: () => ({
     components: { Component: AsyncExample },
+    template: '<Component />',
+  }),
+}
+
+export const AlignItemWithTrigger = {
+  render: () => ({
+    components: { Component: AlignItemWithTriggerExample },
     template: '<Component />',
   }),
 }
