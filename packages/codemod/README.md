@@ -8,6 +8,10 @@ npx @ark-ui/codemod react/as-child-to-render "src/**/*.tsx" --dry
 npx @ark-ui/codemod react/as-child-to-render "src/**/*.tsx"
 ```
 
+Run it without a transform in a terminal and it prompts you to pick one, then reports progress as it goes. Pipe it or
+run it in CI (no TTY) and it stays non-interactive: pass the transform as an argument and it prints plain output, so
+scripts never hang on a prompt.
+
 ## Try it first
 
 `--dry` prints a diff and writes nothing:

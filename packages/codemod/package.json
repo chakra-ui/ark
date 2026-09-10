@@ -19,6 +19,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@clack/prompts": "1.5.1",
     "@vue/compiler-sfc": "3.5.42",
     "commander": "14.0.3",
     "globby": "16.2.4",

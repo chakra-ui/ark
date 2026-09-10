@@ -1,5 +1,6 @@
 import { readFile, writeFile } from 'node:fs/promises'
 import { extname, relative } from 'node:path'
+import * as p from '@clack/prompts'
 import { globby } from 'globby'
 import pc from 'picocolors'
 import type { TransformDef } from './types.ts'
@@ -59,11 +60,21 @@ export async function runTransform(transform: TransformDef, options: RunOptions)
   return summary
 }
 
-export function printSummary(transform: TransformDef, summary: RunSummary, dry: boolean): void {
+export function printSummary(transform: TransformDef, summary: RunSummary, dry: boolean, interactive = false): void {
   const verb = dry ? 'would change' : 'changed'
-  console.log(
-    `\n${pc.bold(transform.name)}  scanned ${summary.scanned} files, ${verb} ${pc.green(String(summary.changed))} (${summary.sites} sites)`,
-  )
+  const headline = `scanned ${summary.scanned} files, ${verb} ${pc.green(String(summary.changed))} (${summary.sites} sites)`
+
+  if (interactive) {
+    if (summary.skipped.length > 0) {
+      const body = summary.skipped.map(([file, reason]) => `${pc.dim(file)}  ${reason}`).join('\n')
+      p.note(body, `${summary.skipped.length} site(s) left for you`)
+    }
+    const tail = dry && summary.changed > 0 ? pc.dim(' Re-run without --dry to write.') : ''
+    p.outro(`${pc.bold(transform.name)}  ${headline}${tail}`)
+    return
+  }
+
+  console.log(`\n${pc.bold(transform.name)}  ${headline}`)
   if (summary.skipped.length > 0) {
     console.log(pc.yellow(`\n${summary.skipped.length} site(s) left for you:`))
     for (const [file, reason] of summary.skipped) console.log(`  ${pc.dim(file)}  ${reason}`)
