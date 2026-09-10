@@ -26,4 +26,4 @@
   StepsItemProvider(() => itemState)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} state={steps().getItemState(itemProps)} />
+<Ark as="div" bind:ref {...mergedProps} state={itemState} />

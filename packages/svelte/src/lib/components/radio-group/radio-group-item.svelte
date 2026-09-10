@@ -27,4 +27,4 @@
   RadioGroupItemPropsProvider(() => itemProps)
 </script>
 
-<Ark as="label" bind:ref {...mergedProps} state={radioGroup().getItemState(itemProps)} />
+<Ark as="label" bind:ref {...mergedProps} state={itemState} />

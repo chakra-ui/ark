@@ -25,4 +25,4 @@
   RatingGroupItemProvider(() => itemState)
 </script>
 
-<Ark as="span" bind:ref {...mergedProps} state={ratingGroup().getItemState(itemProps)} />
+<Ark as="span" bind:ref {...mergedProps} state={itemState} />

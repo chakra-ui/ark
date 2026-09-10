@@ -29,4 +29,4 @@
   SegmentGroupItemPropsProvider(() => itemProps)
 </script>
 
-<Ark as="label" bind:ref {...mergedProps} state={segmentGroup().getItemState(itemProps)} />
+<Ark as="label" bind:ref {...mergedProps} state={itemState} />

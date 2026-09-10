@@ -1,9 +1,11 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { ItemState } from '@zag-js/select'
   import type { CollectionItem } from '../collection/index.ts'
 
+  export interface SelectItemState extends ItemState {}
   export interface SelectItemBaseProps<T extends CollectionItem = CollectionItem>
-    extends PolymorphicProps<'div'>, RefAttribute {
+    extends PolymorphicProps<'div', SelectItemState>, RefAttribute {
     item: T
     disabled?: boolean
   }
@@ -27,9 +29,10 @@
   const select = useSelectContext()
   const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['item', 'persistFocus']))
   const mergedProps = $derived(mergeProps(select().getItemProps(itemProps), localProps))
+  const itemState = $derived(select().getItemState(itemProps))
 
-  SelectItemProvider(() => select().getItemState(itemProps))
+  SelectItemProvider(() => itemState)
   SelectItemPropsProvider(() => itemProps)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={itemState} />

@@ -20,9 +20,10 @@
   const tagsInput = useTagsInputContext()
   const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['index', 'disabled', 'value']))
   const mergedProps = $derived(mergeProps(tagsInput().getItemProps(itemProps), localProps))
+  const itemState = $derived(tagsInput().getItemState(itemProps))
 
-  TagsInputItemProvider(() => tagsInput().getItemState(itemProps))
+  TagsInputItemProvider(() => itemState)
   TagsInputItemPropsProvider(() => itemProps)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} state={tagsInput().getItemState(itemProps)} />
+<Ark as="div" bind:ref {...mergedProps} state={itemState} />
