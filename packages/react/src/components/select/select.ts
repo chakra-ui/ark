@@ -75,6 +75,11 @@ export {
   type SelectListProps as ListProps,
 } from './select-list.tsx'
 export {
+  SelectScrollArrow as ScrollArrow,
+  type SelectScrollArrowBaseProps as ScrollArrowBaseProps,
+  type SelectScrollArrowProps as ScrollArrowProps,
+} from './select-scroll-arrow.tsx'
+export {
   SelectPositioner as Positioner,
   type SelectPositionerBaseProps as PositionerBaseProps,
   type SelectPositionerProps as PositionerProps,

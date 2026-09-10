@@ -66,6 +66,11 @@ export {
 export { default as SelectLabel, type SelectLabelBaseProps, type SelectLabelProps } from './select-label.svelte'
 export { default as SelectList, type SelectListBaseProps, type SelectListProps } from './select-list.svelte'
 export {
+  default as SelectScrollArrow,
+  type SelectScrollArrowBaseProps,
+  type SelectScrollArrowProps,
+} from './select-scroll-arrow.svelte'
+export {
   default as SelectPositioner,
   type SelectPositionerBaseProps,
   type SelectPositionerProps,

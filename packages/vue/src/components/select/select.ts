@@ -39,6 +39,11 @@ export {
   type SelectListProps as ListProps,
   type SelectListBaseProps as ListBaseProps,
 } from './select-list.vue'
+export {
+  default as ScrollArrow,
+  type SelectScrollArrowProps as ScrollArrowProps,
+  type SelectScrollArrowBaseProps as ScrollArrowBaseProps,
+} from './select-scroll-arrow.vue'
 export { default as ItemContext, type SelectItemContextProps as ItemContextProps } from './select-item-context.vue'
 export {
   default as ItemGroupLabel,

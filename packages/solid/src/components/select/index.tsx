@@ -48,6 +48,11 @@ export {
 export { SelectItemText, type SelectItemTextBaseProps, type SelectItemTextProps } from './select-item-text.tsx'
 export { SelectLabel, type SelectLabelBaseProps, type SelectLabelProps } from './select-label.tsx'
 export { SelectList, type SelectListBaseProps, type SelectListProps } from './select-list.tsx'
+export {
+  SelectScrollArrow,
+  type SelectScrollArrowBaseProps,
+  type SelectScrollArrowProps,
+} from './select-scroll-arrow.tsx'
 export { SelectPositioner, type SelectPositionerBaseProps, type SelectPositionerProps } from './select-positioner.tsx'
 export {
   SelectRoot,
