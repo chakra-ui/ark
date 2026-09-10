@@ -1,5 +1,6 @@
 import { Key, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import * as toast from '@zag-js/toast'
+import type { GroupState } from '@zag-js/toast'
 import { type Accessor, type JSX, createMemo, createUniqueId, splitProps } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers/index.tsx'
 import type { Assign } from '../../types.ts'
@@ -9,7 +10,10 @@ import { ToastProvider } from './use-toast-context.ts'
 
 export type ToastOptions = toast.Options<JSX.Element>
 
-export interface ToasterBaseProps extends PolymorphicProps<'div'>, Omit<toast.GroupProps, 'id' | 'store'> {
+export interface ToasterState extends GroupState {}
+
+export interface ToasterBaseProps
+  extends PolymorphicProps<'div', ToasterState>, Omit<toast.GroupProps, 'id' | 'store'> {
   toaster: CreateToasterReturn<any>
   children: (toast: Accessor<ToastOptions>) => JSX.Element
 }
@@ -34,7 +38,7 @@ export const Toaster = (props: ToasterProps) => {
   const mergedProps = mergeProps(() => api().getGroupProps(), localProps)
 
   return (
-    <ark.div {...mergedProps}>
+    <ark.div {...mergedProps} state={api().getGroupState()}>
       <Key each={toasts()} by="id">
         {(toast, index) => (
           <ToastActor value={toast} index={index} parent={service}>

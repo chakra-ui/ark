@@ -1,11 +1,13 @@
-import type { ItemProps } from '@zag-js/pagination'
+import type { ItemProps, ItemState } from '@zag-js/pagination'
 import { mergeProps } from '@zag-js/solid'
 import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePaginationContext } from './use-pagination-context.ts'
 
-export interface PaginationItemBaseProps extends ItemProps, PolymorphicProps<'button'> {}
+export interface PaginationItemState extends ItemState {}
+
+export interface PaginationItemBaseProps extends ItemProps, PolymorphicProps<'button', PaginationItemState> {}
 export interface PaginationItemProps extends Assign<HTMLProps<'button'>, PaginationItemBaseProps> {}
 
 export const PaginationItem = (props: PaginationItemProps) => {
@@ -14,5 +16,5 @@ export const PaginationItem = (props: PaginationItemProps) => {
   const api = usePaginationContext()
   const mergedProps = mergeProps(() => api().getItemProps(itemProps), localProps)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps} state={api().getItemState(itemProps)} />
 }

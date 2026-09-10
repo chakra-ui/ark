@@ -1,4 +1,4 @@
-import type { ItemProps } from '@zag-js/menu'
+import type { ItemProps, ItemState } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/solid'
 import { createEffect, createMemo, onCleanup } from 'solid-js'
 import type { Assign } from '../../types.ts'
@@ -15,7 +15,9 @@ interface ItemBaseProps extends ItemProps {
   onSelect?: VoidFunction
 }
 
-export interface MenuItemBaseProps extends ItemBaseProps, PolymorphicProps<'div'> {}
+export interface MenuItemState extends ItemState {}
+
+export interface MenuItemBaseProps extends ItemBaseProps, PolymorphicProps<'div', MenuItemState> {}
 export interface MenuItemProps extends Assign<HTMLProps<'div'>, MenuItemBaseProps> {}
 
 export const MenuItem = (props: MenuItemProps) => {
@@ -38,7 +40,7 @@ export const MenuItem = (props: MenuItemProps) => {
   return (
     <MenuItemPropsProvider value={itemProps}>
       <MenuItemProvider value={itemState}>
-        <ark.div {...mergedProps} />
+        <ark.div {...mergedProps} state={context().getItemState(itemProps)} />
       </MenuItemProvider>
     </MenuItemPropsProvider>
   )

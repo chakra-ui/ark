@@ -1,11 +1,13 @@
 import { mergeProps } from '@zag-js/solid'
-import type { TriggerProps } from '@zag-js/tooltip'
+import type { TriggerProps, TriggerState } from '@zag-js/tooltip'
 import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useTooltipContext } from './use-tooltip-context.ts'
 
-export interface TooltipTriggerBaseProps extends TriggerProps, PolymorphicProps<'button'> {}
+export interface TooltipTriggerState extends TriggerState {}
+
+export interface TooltipTriggerBaseProps extends TriggerProps, PolymorphicProps<'button', TooltipTriggerState> {}
 export interface TooltipTriggerProps extends Assign<HTMLProps<'button'>, TooltipTriggerBaseProps> {}
 
 export const TooltipTrigger = (props: TooltipTriggerProps) => {
@@ -13,5 +15,5 @@ export const TooltipTrigger = (props: TooltipTriggerProps) => {
   const api = useTooltipContext()
   const mergedProps = mergeProps(() => api().getTriggerProps(triggerProps), localProps)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps} state={api().getTriggerState(triggerProps)} />
 }

@@ -1,3 +1,4 @@
+import type { IndicatorState } from '@zag-js/clipboard'
 import { mergeProps } from '@zag-js/solid'
 import { type JSX, Show, children } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -8,7 +9,9 @@ interface IndicatorProps {
   copied?: JSX.Element
 }
 
-export interface ClipboardIndicatorBaseProps extends IndicatorProps, PolymorphicProps<'div'> {}
+export interface ClipboardIndicatorState extends IndicatorState {}
+
+export interface ClipboardIndicatorBaseProps extends IndicatorProps, PolymorphicProps<'div', ClipboardIndicatorState> {}
 export interface ClipboardIndicatorProps extends HTMLProps<'div'>, ClipboardIndicatorBaseProps {}
 
 export const ClipboardIndicator = (props: ClipboardIndicatorProps) => {
@@ -18,7 +21,7 @@ export const ClipboardIndicator = (props: ClipboardIndicatorProps) => {
   const getChildren = children(() => localProps.children)
 
   return (
-    <ark.div {...mergedProps}>
+    <ark.div {...mergedProps} state={api().getIndicatorState({ copied: api().copied })}>
       <Show when={api().copied} fallback={getChildren()}>
         {indicatorProps.copied}
       </Show>

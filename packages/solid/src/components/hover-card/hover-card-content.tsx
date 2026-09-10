@@ -1,3 +1,4 @@
+import type { ContentState } from '@zag-js/hover-card'
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
 import { composeRefs } from '../../utils/compose-refs.ts'
@@ -5,7 +6,9 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresenceContext } from '../presence/index.tsx'
 import { useHoverCardContext } from './use-hover-card-context.ts'
 
-export interface HoverCardContentBaseProps extends PolymorphicProps<'div'> {}
+export interface HoverCardContentState extends ContentState {}
+
+export interface HoverCardContentBaseProps extends PolymorphicProps<'div', HoverCardContentState> {}
 export interface HoverCardContentProps extends HTMLProps<'div'>, HoverCardContentBaseProps {}
 
 export const HoverCardContent = (props: HoverCardContentProps) => {
@@ -19,7 +22,7 @@ export const HoverCardContent = (props: HoverCardContentProps) => {
 
   return (
     <Show when={!presenceApi().unmounted}>
-      <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} />
+      <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} state={api().getContentState()} />
     </Show>
   )
 }

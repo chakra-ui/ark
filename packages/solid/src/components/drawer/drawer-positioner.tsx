@@ -1,10 +1,13 @@
+import type { PositionerState } from '@zag-js/drawer'
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePresenceContext } from '../presence/index.tsx'
 import { useDrawerContext } from './use-drawer-context.ts'
 
-export interface DrawerPositionerBaseProps extends PolymorphicProps<'div'> {}
+export interface DrawerPositionerState extends PositionerState {}
+
+export interface DrawerPositionerBaseProps extends PolymorphicProps<'div', DrawerPositionerState> {}
 export interface DrawerPositionerProps extends HTMLProps<'div'>, DrawerPositionerBaseProps {}
 
 export const DrawerPositioner = (props: DrawerPositionerProps) => {
@@ -14,7 +17,7 @@ export const DrawerPositioner = (props: DrawerPositionerProps) => {
 
   return (
     <Show when={!presence().unmounted}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} state={drawer().getPositionerState()} />
     </Show>
   )
 }

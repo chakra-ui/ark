@@ -9,7 +9,7 @@ import tooltipStyles from 'styles/tooltip.module.css'
 export const WithDialog = () => (
   <Dialog.Root>
     <Tooltip.Root>
-      <Tooltip.Trigger render={(props) => <Dialog.Trigger {...props} class={button.Root} />}>
+      <Tooltip.Trigger render={(props) => <Dialog.Trigger {...props({ class: button.Root })} />}>
         Open Dialog
       </Tooltip.Trigger>
       <Portal>

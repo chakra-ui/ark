@@ -1,10 +1,14 @@
+import type { RootState } from '@zag-js/image-cropper'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { type UseImageCropperProps, useImageCropper } from './use-image-cropper.ts'
 import { ImageCropperProvider } from './use-image-cropper-context.ts'
 
-export interface ImageCropperRootBaseProps extends UseImageCropperProps, PolymorphicProps<'div'> {}
+export interface ImageCropperRootState extends RootState {}
+
+export interface ImageCropperRootBaseProps
+  extends UseImageCropperProps, PolymorphicProps<'div', ImageCropperRootState> {}
 export interface ImageCropperRootProps extends HTMLProps<'div'>, ImageCropperRootBaseProps {}
 
 export const ImageCropperRoot = (props: ImageCropperRootProps) => {
@@ -44,7 +48,7 @@ export const ImageCropperRoot = (props: ImageCropperRootProps) => {
 
   return (
     <ImageCropperProvider value={api}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} state={api().getRootState()} />
     </ImageCropperProvider>
   )
 }

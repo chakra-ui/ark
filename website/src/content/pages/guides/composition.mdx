@@ -19,11 +19,35 @@ Each framework spells this the way that framework composes:
 | Framework | Shape                                                   |
 | --------- | ------------------------------------------------------- |
 | React     | a `render` prop, taking an element or a function        |
-| Solid     | a `render` prop, taking a component or a function       |
+| Solid     | a `render` prop, taking a function                      |
 | Vue       | a `render` slot, written `#render` directly on the part |
 | Svelte    | a `render` snippet                                      |
 
 The capability is the same in all four: each one hands you the part's props to apply, and the part's state.
+
+### Merging your own props
+
+Applying the part's props and then adding your own replaces them rather than combining them. A trigger given your
+`onClick` stops toggling, a part told to animate loses the custom properties driving it, and nothing warns you.
+
+In React, pass an element rather than a function and the factory merges for you:
+
+```tsx
+<Popover.Trigger render={<Button className="my-button" onClick={handleClick} />} />
+```
+
+In Solid, `render` receives a function rather than a props object. Call it to get the part's props, passing your own to
+merge them in:
+
+```tsx
+<Popover.Trigger render={(props) => <Button {...props({ class: 'my-button', onClick: handleClick })} />} />
+```
+
+Props that belong to your component rather than the element — a `value`, an `item` — stay outside the call:
+
+```tsx
+<Listbox.Item render={(props) => <ListVirtualizer.Item {...props()} item={virtualItem()} />} />
+```
 
 ## Reading the part's state
 
