@@ -27,14 +27,16 @@ const props = defineProps<SelectItemProps>()
 defineSlots<PolymorphicSlots<SelectItemState>>()
 const select = useSelectContext()
 
+const itemState = computed(() => select.value.getItemState(props))
+
 SelectItemPropsProvider(props)
-SelectItemProvider(computed(() => select.value.getItemState(props)))
+SelectItemProvider(itemState)
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="select.getItemProps(props)" :state="select.getItemState(props)" :as-child="asChild">
+  <ark.div v-bind="select.getItemProps(props)" :state="itemState" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

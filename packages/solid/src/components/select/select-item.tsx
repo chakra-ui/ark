@@ -21,7 +21,7 @@ export const SelectItem = (props: SelectItemProps) => {
   return (
     <SelectItemPropsProvider value={itemProps}>
       <SelectItemProvider value={itemState}>
-        <ark.div {...mergedProps} state={select().getItemState(itemProps)} />
+        <ark.div {...mergedProps} state={itemState()} />
       </SelectItemProvider>
     </SelectItemPropsProvider>
   )
