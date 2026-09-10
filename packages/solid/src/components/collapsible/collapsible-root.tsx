@@ -1,18 +1,19 @@
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { type EmptyState, type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { type UseCollapsibleProps, useCollapsible } from './use-collapsible.ts'
 import { CollapsibleProvider } from './use-collapsible-context.ts'
 
-export interface CollapsibleRootBaseProps extends UseCollapsibleProps, PolymorphicProps<'div', any> {
+export interface CollapsibleRootBaseProps<State = EmptyState>
+  extends UseCollapsibleProps, PolymorphicProps<'div', State> {
   /**
-   * The state of the part, forwarded to the `render` function. Set by the component, not the consumer.
+   * @internal Set by a composing part such as `Accordion.Item`; the collapsible machine has no root state of its own.
    */
-  state?: unknown
+  state?: State
 }
-export interface CollapsibleRootProps extends HTMLProps<'div'>, CollapsibleRootBaseProps {}
+export interface CollapsibleRootProps<State = EmptyState> extends HTMLProps<'div'>, CollapsibleRootBaseProps<State> {}
 
-export const CollapsibleRoot = (props: CollapsibleRootProps) => {
+export const CollapsibleRoot = <State = EmptyState,>(props: CollapsibleRootProps<State>) => {
   const [useCollapsibleProps, localProps] = createSplitProps<UseCollapsibleProps>()(props, [
     'collapsedHeight',
     'collapsedWidth',

@@ -1,13 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
+import type { NodeState } from '@zag-js/tree-view'
 import type { Assign } from '../../types.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useTreeViewContext } from './use-tree-view-context.ts'
 import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
-import type { NodeState } from '@zag-js/tree-view'
 
-export interface TreeViewNodeState extends NodeState {}
-
-export interface TreeViewNodeBaseProps extends PolymorphicProps<'div', TreeViewNodeState> {}
+export interface TreeViewNodeBaseProps extends PolymorphicProps<'div', NodeState> {}
 export interface TreeViewNodeProps extends Assign<HTMLProps<'div'>, TreeViewNodeBaseProps> {}
 
 export const TreeViewNode = (props: TreeViewNodeProps) => {
