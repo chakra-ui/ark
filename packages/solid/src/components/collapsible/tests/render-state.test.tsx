@@ -6,7 +6,7 @@ const ComponentUnderTest = () => (
   <Collapsible.Root>
     <Collapsible.Trigger
       render={(props, state) => (
-        <button type="button" {...props}>
+        <button type="button" {...props()}>
           {state().open ? 'Open' : 'Closed'}
         </button>
       )}
@@ -24,5 +24,21 @@ describe('Collapsible / render state', () => {
 
     await user.click(trigger)
     expect(trigger).toHaveTextContent('Open')
+  })
+
+  it('should keep the part behavior when the caller passes its own handler', async () => {
+    const onClick = vi.fn()
+    render(() => (
+      <Collapsible.Root>
+        <Collapsible.Trigger render={(props) => <button type="button" {...props({ onClick })} />} />
+        <Collapsible.Content>Content</Collapsible.Content>
+      </Collapsible.Root>
+    ))
+
+    const trigger = screen.getByRole('button')
+    await user.click(trigger)
+
+    expect(onClick).toHaveBeenCalled()
+    expect(trigger).toHaveAttribute('aria-expanded', 'true')
   })
 })

@@ -8,7 +8,9 @@ import tooltipStyles from 'styles/tooltip.module.css'
 export const WithPopover = () => (
   <Popover.Root>
     <Tooltip.Root>
-      <Tooltip.Trigger render={(props) => <Popover.Trigger {...props} class={button.Root} />}>Click Me</Tooltip.Trigger>
+      <Tooltip.Trigger render={(props) => <Popover.Trigger {...props({ class: button.Root })} />}>
+        Click Me
+      </Tooltip.Trigger>
       <Portal>
         <Tooltip.Positioner>
           <Tooltip.Content class={tooltipStyles.Content}>See more details</Tooltip.Content>
