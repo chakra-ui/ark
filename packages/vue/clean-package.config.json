@@ -54,6 +54,26 @@
           "default": "./dist/providers/locale/index.cjs"
         }
       },
+      "./hotkeys": {
+        "import": {
+          "types": "./dist/providers/hotkeys/index.d.ts",
+          "default": "./dist/providers/hotkeys/index.js"
+        },
+        "require": {
+          "types": "./dist/providers/hotkeys/index.d.cts",
+          "default": "./dist/providers/hotkeys/index.cjs"
+        }
+      },
+      "./interaction": {
+        "import": {
+          "types": "./dist/providers/interaction/index.d.ts",
+          "default": "./dist/providers/interaction/index.js"
+        },
+        "require": {
+          "types": "./dist/providers/interaction/index.d.cts",
+          "default": "./dist/providers/interaction/index.cjs"
+        }
+      },
       "./utils": {
         "import": {
           "types": "./dist/utils/index.d.ts",

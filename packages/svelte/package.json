@@ -86,7 +86,11 @@
       "svelte": "./src/lib/providers/environment/index.ts",
       "default": "./src/lib/providers/environment/index.ts"
     },
-    "./hotkeys": "./src/lib/providers/hotkeys/index.ts",
+    "./hotkeys": {
+      "types": "./src/lib/providers/hotkeys/index.ts",
+      "svelte": "./src/lib/providers/hotkeys/index.ts",
+      "default": "./src/lib/providers/hotkeys/index.ts"
+    },
     "./interaction": {
       "types": "./src/lib/providers/interaction/index.ts",
       "svelte": "./src/lib/providers/interaction/index.ts",
@@ -130,6 +134,12 @@
       "exports.\\./environment.svelte": "./dist/providers/environment/index.js",
       "exports.\\./environment.types": "./dist/providers/environment/index.d.ts",
       "exports.\\./environment.default": "./dist/providers/environment/index.js",
+      "exports.\\./hotkeys.svelte": "./dist/providers/hotkeys/index.js",
+      "exports.\\./hotkeys.types": "./dist/providers/hotkeys/index.d.ts",
+      "exports.\\./hotkeys.default": "./dist/providers/hotkeys/index.js",
+      "exports.\\./interaction.svelte": "./dist/providers/interaction/index.js",
+      "exports.\\./interaction.types": "./dist/providers/interaction/index.d.ts",
+      "exports.\\./interaction.default": "./dist/providers/interaction/index.js",
       "exports.\\./utils.svelte": "./dist/utils/index.js",
       "exports.\\./utils.types": "./dist/utils/index.d.ts",
       "exports.\\./utils.default": "./dist/utils/index.js",

@@ -13,6 +13,7 @@
     "build": "bun run --filter='./packages/*' build",
     "check:anatomy": "bun scripts check:anatomy",
     "check:exports": "bun scripts check:exports",
+    "check:publish-exports": "bun scripts check:publish-exports",
     "check:zag": "bun scripts check:zag",
     "clean": "find . -name 'node_modules' -type d -prune -exec rm -rf {} \\;",
     "exports:sync": "bun scripts exports:sync",
