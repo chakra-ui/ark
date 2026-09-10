@@ -43,4 +43,4 @@
   MenuItemProvider(() => itemState)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} state={menu().getItemState(itemProps)} />
+<Ark as="div" bind:ref {...mergedProps} state={itemState} />

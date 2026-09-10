@@ -26,4 +26,4 @@
   ListboxItemProvider(() => itemState)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} state={listbox().getItemState(itemProps)} />
+<Ark as="div" bind:ref {...mergedProps} state={itemState} />

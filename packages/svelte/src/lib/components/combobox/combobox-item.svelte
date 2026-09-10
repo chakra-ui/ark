@@ -32,4 +32,4 @@
   ComboboxItemPropsProvider(() => itemProps)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} state={combobox().getItemState(itemProps)} />
+<Ark as="div" bind:ref {...mergedProps} state={itemState} />
