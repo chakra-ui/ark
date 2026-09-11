@@ -49,7 +49,6 @@
   }
 
   &[data-orientation='horizontal'] {
-    flex-direction: row;
     max-height: none;
     max-width: max-content;
     overflow-x: auto;
@@ -58,7 +57,23 @@
 }
 
 .List {
-  display: contents;
+  /* a real box: zag makes the list focusable (tabindex=0), and `display: contents`
+     generates no box, which makes it unreachable by keyboard */
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  outline: none;
+
+  &[data-orientation='horizontal'] {
+    flex-direction: row;
+  }
+
+  /* zag sets --column-count on the list itself */
+  &[data-layout='grid'] {
+    display: grid;
+    grid-template-columns: repeat(var(--column-count, 5), 1fr);
+    gap: 0.25rem;
+  }
 }
 
 .ItemCard {
@@ -174,9 +189,7 @@
 }
 
 .GridContent {
-  display: grid;
-  grid-template-columns: repeat(var(--column-count, 5), 1fr);
-  gap: 0.25rem;
+  display: flex;
   padding: 0.5rem;
   background: var(--demo-bg-popover);
   border: 1px solid var(--demo-border-emphasized);
