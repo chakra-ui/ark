@@ -27,8 +27,6 @@
 <Ark
   as="button"
   bind:ref
-  data-scope="menu"
-  data-part="trigger"
   {...mergedProps}
   state={menu().getTriggerState(triggerProps)}
 />

@@ -24,5 +24,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref data-scope="presence" data-part="root" {@attach setNode} {...mergedProps} />
+  <Ark as="div" bind:ref data-presence-root="" {@attach setNode} {...mergedProps} />
 {/if}
