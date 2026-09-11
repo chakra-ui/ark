@@ -4,6 +4,19 @@ import { describe, expect, it } from 'vitest'
 import ComponentUnderTest from './examples/basic.svelte'
 
 describe('Presence', () => {
+  it('renders the unified data-presence-root attribute and no legacy scope/part attributes', async () => {
+    render(ComponentUnderTest)
+    await user.click(screen.getByRole('button'))
+    const box = await waitFor(() => {
+      const el = screen.getByText('Content')
+      expect(el).toBeVisible()
+      return el
+    })
+    expect(box).toHaveAttribute('data-presence-root')
+    expect(box).not.toHaveAttribute('data-scope')
+    expect(box).not.toHaveAttribute('data-part')
+  })
+
   it('should control presence when not lazy mounting and not unmounting on exit', async () => {
     render(ComponentUnderTest)
 

@@ -38,13 +38,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div
-    v-if="!presence.unmounted"
-    v-bind="presence.presenceProps"
-    :as-child="asChild"
-    data-scope="presence"
-    data-part="root"
-  >
+  <ark.div v-if="!presence.unmounted" v-bind="presence.presenceProps" :as-child="asChild" data-presence-root="">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

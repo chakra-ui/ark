@@ -16,4 +16,4 @@
   const mergedProps = $derived(mergeProps(menu().getSeparatorProps(), props))
 </script>
 
-<Ark as="div" bind:ref data-scope="menu" data-part="separator" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />
