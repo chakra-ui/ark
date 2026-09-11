@@ -41,8 +41,10 @@ const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
     <Teleport to="body">
       <Combobox.Positioner>
         <Combobox.Content :class="styles.Content">
+          <Combobox.Empty>
+            <div :class="styles.Empty">No results found</div>
+          </Combobox.Empty>
           <Combobox.List :class="styles.List">
-            <Combobox.Empty :class="styles.Item">No results found</Combobox.Empty>
             <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item" :class="styles.Item">
               <Combobox.ItemText :class="styles.ItemText">{{ item.label }}</Combobox.ItemText>
               <Combobox.ItemIndicator :class="styles.ItemIndicator">✓</Combobox.ItemIndicator>

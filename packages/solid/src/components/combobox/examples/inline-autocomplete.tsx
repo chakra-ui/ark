@@ -41,8 +41,10 @@ export const InlineAutocomplete = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content class={styles.Content}>
+            <Combobox.Empty>
+              <div class={styles.Empty}>No results found</div>
+            </Combobox.Empty>
             <Combobox.List class={styles.List}>
-              <Combobox.Empty class={styles.Item}>No results found</Combobox.Empty>
               <For each={collection().items}>
                 {(item) => (
                   <Combobox.Item class={styles.Item} item={item}>

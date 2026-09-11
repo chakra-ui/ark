@@ -73,6 +73,13 @@ const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
     list.value.setFilter(details.inputValue)
   }
 }
+
+const status = computed(() => {
+  if (list.value.isLoading) return 'Searching...'
+  if (list.value.error) return list.value.error.message
+  if (list.value.items.length > 0) return null
+  return list.value.filter ? 'No results found' : 'Start typing to search movies...'
+})
 </script>
 
 <template>
@@ -92,16 +99,14 @@ const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
     <Teleport to="body">
       <Combobox.Positioner>
         <Combobox.Content :class="styles.Content">
+          <Combobox.Status>
+            <div v-if="status" :class="styles.Status">
+              <LoaderIcon v-if="list.isLoading" :class="styles.Spinner" />
+              <span>{{ status }}</span>
+            </div>
+          </Combobox.Status>
           <Combobox.List :class="styles.List">
-            <div v-if="list.isLoading" :class="styles.Status">
-              <LoaderIcon :class="styles.Spinner" />
-              <span>Searching...</span>
-            </div>
-            <div v-else-if="list.error" :class="styles.Status">{{ list.error.message }}</div>
-            <div v-else-if="list.items.length === 0" :class="styles.Status">
-              {{ list.filter ? 'No results found' : 'Start typing to search movies...' }}
-            </div>
-            <Combobox.Item v-else v-for="movie in list.items" :key="movie.id" :item="movie" :class="styles.Item">
+            <Combobox.Item v-for="movie in list.items" :key="movie.id" :item="movie" :class="styles.Item">
               <Combobox.ItemText :class="styles.ItemText">
                 <span :class="styles.ItemTitle">{{ movie.title }}</span>
                 <span :class="styles.ItemSubtitle">{{ movie.year }} · {{ movie.director }}</span>

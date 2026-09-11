@@ -60,6 +60,7 @@ export {
   type SelectRootComponent as RootComponent,
   type SelectRootComponentProps as RootComponentProps,
 } from './select-root.svelte'
+export { default as Status, type SelectStatusProps as StatusProps } from './select-status.svelte'
 export {
   default as Trigger,
   type SelectTriggerProps as TriggerProps,

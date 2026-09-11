@@ -75,6 +75,11 @@ export {
   type ListboxRootProps as RootProps,
 } from './listbox-root.vue'
 export {
+  default as Status,
+  type ListboxStatusProps as StatusProps,
+  type ListboxStatusBaseProps as StatusBaseProps,
+} from './listbox-status.vue'
+export {
   default as ValueText,
   type ListboxValueTextBaseProps as ValueTextBaseProps,
   type ListboxValueTextProps as ValueTextProps,

@@ -92,6 +92,7 @@ export {
   type SelectRootComponentProps,
   type SelectRootState,
 } from './select-root.vue'
+export { default as SelectStatus, type SelectStatusProps, type SelectStatusBaseProps } from './select-status.vue'
 export {
   default as SelectTrigger,
   type SelectTriggerBaseProps,

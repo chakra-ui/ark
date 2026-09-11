@@ -98,6 +98,11 @@ export {
   type SelectRootState as RootState,
 } from './select-root.vue'
 export {
+  default as Status,
+  type SelectStatusProps as StatusProps,
+  type SelectStatusBaseProps as StatusBaseProps,
+} from './select-status.vue'
+export {
   default as Trigger,
   type SelectTriggerProps as TriggerProps,
   type SelectTriggerBaseProps as TriggerBaseProps,

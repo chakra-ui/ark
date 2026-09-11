@@ -100,6 +100,11 @@ export {
   type SelectRootProviderState as RootProviderState,
 } from './select-root-provider.tsx'
 export {
+  SelectStatus as Status,
+  type SelectStatusBaseProps as StatusBaseProps,
+  type SelectStatusProps as StatusProps,
+} from './select-status.tsx'
+export {
   SelectTrigger as Trigger,
   type SelectTriggerBaseProps as TriggerBaseProps,
   type SelectTriggerProps as TriggerProps,

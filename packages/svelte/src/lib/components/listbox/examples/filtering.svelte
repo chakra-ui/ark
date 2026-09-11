@@ -30,6 +30,9 @@
     oninput={(e) => filter(e.currentTarget.value)}
   />
   <Listbox.Content class={styles.Content}>
+    <Listbox.Empty>
+      <div class={styles.Empty}>No frameworks found</div>
+    </Listbox.Empty>
     <Listbox.List class={styles.List}>
       {#each collection().items as item (item.value)}
         <Listbox.Item class={styles.Item} {item}>
@@ -39,7 +42,6 @@
           </Listbox.ItemIndicator>
         </Listbox.Item>
       {/each}
-      <Listbox.Empty class={styles.Empty}>No frameworks found</Listbox.Empty>
     </Listbox.List>
   </Listbox.Content>
 </Listbox.Root>

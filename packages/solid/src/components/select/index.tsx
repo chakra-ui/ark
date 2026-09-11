@@ -75,6 +75,7 @@ export {
   type SelectTriggerProps,
   type SelectTriggerState,
 } from './select-trigger.tsx'
+export { SelectStatus, type SelectStatusBaseProps, type SelectStatusProps } from './select-status.tsx'
 export { SelectValueText, type SelectValueTextBaseProps, type SelectValueTextProps } from './select-value-text.tsx'
 export { selectAnatomy } from './select.anatomy.ts'
 export { useSelect, type UseSelectProps, type UseSelectReturn } from './use-select.ts'

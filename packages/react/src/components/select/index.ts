@@ -69,6 +69,7 @@ export {
   type SelectRootProviderComponent,
   type SelectRootProviderState,
 } from './select-root-provider.tsx'
+export { SelectStatus, type SelectStatusBaseProps, type SelectStatusProps } from './select-status.tsx'
 export {
   SelectTrigger,
   type SelectTriggerBaseProps,

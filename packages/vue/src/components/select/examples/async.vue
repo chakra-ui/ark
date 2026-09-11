@@ -51,15 +51,15 @@ const handleOpenChange = async (details: Select.OpenChangeDetails) => {
     <Teleport to="body">
       <Select.Positioner>
         <Select.Content :class="styles.Content">
+          <Select.Status>
+            <div v-if="loading" :class="styles.Status">Loading...</div>
+            <div v-else-if="error" :class="styles.Status">Error: {{ error.message }}</div>
+          </Select.Status>
           <Select.List :class="styles.List">
-            <div v-if="loading" :class="styles.Item">Loading...</div>
-            <div v-else-if="error" :class="styles.Item">Error: {{ error.message }}</div>
-            <template v-else>
-              <Select.Item v-for="item in collection.items" :key="item" :item="item" :class="styles.Item">
-                <Select.ItemText :class="styles.ItemText">{{ item }}</Select.ItemText>
-                <Select.ItemIndicator :class="styles.ItemIndicator">✓</Select.ItemIndicator>
-              </Select.Item>
-            </template>
+            <Select.Item v-for="item in collection.items" :key="item" :item="item" :class="styles.Item">
+              <Select.ItemText :class="styles.ItemText">{{ item }}</Select.ItemText>
+              <Select.ItemIndicator :class="styles.ItemIndicator">✓</Select.ItemIndicator>
+            </Select.Item>
           </Select.List>
         </Select.Content>
       </Select.Positioner>

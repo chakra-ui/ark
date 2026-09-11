@@ -75,6 +75,7 @@ export {
   type ComboboxRootProviderComponent,
   type ComboboxRootProviderState,
 } from './combobox-root-provider.tsx'
+export { ComboboxStatus, type ComboboxStatusBaseProps, type ComboboxStatusProps } from './combobox-status.tsx'
 export {
   ComboboxTrigger,
   type ComboboxTriggerBaseProps,

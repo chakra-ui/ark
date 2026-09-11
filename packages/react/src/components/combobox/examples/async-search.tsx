@@ -47,6 +47,15 @@ export const AsyncSearch = () => {
     }
   }
 
+  const getStatus = () => {
+    if (list.isLoading) return 'Searching...'
+    if (list.error) return list.error.message
+    if (list.items.length > 0) return null
+    return list.filter ? 'No results found' : 'Start typing to search movies...'
+  }
+
+  const status = getStatus()
+
   return (
     <Combobox.Root className={styles.Root} collection={collection} onInputValueChange={handleInputChange}>
       <Combobox.Label className={styles.Label}>Movie</Combobox.Label>
@@ -64,33 +73,28 @@ export const AsyncSearch = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content className={styles.Content}>
-            <Combobox.List className={styles.List}>
-              {list.isLoading ? (
+            <Combobox.Status>
+              {status && (
                 <div className={styles.Status}>
-                  <LoaderIcon className={styles.Spinner} />
-                  <span>Searching...</span>
+                  {list.isLoading && <LoaderIcon className={styles.Spinner} />}
+                  <span>{status}</span>
                 </div>
-              ) : list.error ? (
-                <div className={styles.Status}>{list.error.message}</div>
-              ) : list.items.length === 0 ? (
-                <div className={styles.Status}>
-                  {list.filter ? 'No results found' : 'Start typing to search movies...'}
-                </div>
-              ) : (
-                collection.items.map((movie) => (
-                  <Combobox.Item className={styles.Item} key={movie.id} item={movie}>
-                    <Combobox.ItemText className={styles.ItemText}>
-                      <span className={styles.ItemTitle}>{movie.title}</span>
-                      <span className={styles.ItemSubtitle}>
-                        {movie.year} · {movie.director}
-                      </span>
-                    </Combobox.ItemText>
-                    <Combobox.ItemIndicator className={styles.ItemIndicator}>
-                      <CheckIcon />
-                    </Combobox.ItemIndicator>
-                  </Combobox.Item>
-                ))
               )}
+            </Combobox.Status>
+            <Combobox.List className={styles.List}>
+              {collection.items.map((movie) => (
+                <Combobox.Item className={styles.Item} key={movie.id} item={movie}>
+                  <Combobox.ItemText className={styles.ItemText}>
+                    <span className={styles.ItemTitle}>{movie.title}</span>
+                    <span className={styles.ItemSubtitle}>
+                      {movie.year} · {movie.director}
+                    </span>
+                  </Combobox.ItemText>
+                  <Combobox.ItemIndicator className={styles.ItemIndicator}>
+                    <CheckIcon />
+                  </Combobox.ItemIndicator>
+                </Combobox.Item>
+              ))}
             </Combobox.List>
           </Combobox.Content>
         </Combobox.Positioner>

@@ -44,19 +44,20 @@ export const Async = () => {
       <Portal>
         <Select.Positioner>
           <Select.Content className={styles.Content}>
-            <Select.List className={styles.List}>
+            <Select.Status>
               {loading ? (
-                <div className={styles.Item}>Loading...</div>
+                <div className={styles.Status}>Loading...</div>
               ) : error ? (
-                <div className={styles.Item}>Error: {error.message}</div>
-              ) : (
-                collection.items.map((item) => (
-                  <Select.Item className={styles.Item} key={item} item={item}>
-                    <Select.ItemText className={styles.ItemText}>{item}</Select.ItemText>
-                    <Select.ItemIndicator className={styles.ItemIndicator}>✓</Select.ItemIndicator>
-                  </Select.Item>
-                ))
-              )}
+                <div className={styles.Status}>Error: {error.message}</div>
+              ) : null}
+            </Select.Status>
+            <Select.List className={styles.List}>
+              {collection.items.map((item) => (
+                <Select.Item className={styles.Item} key={item} item={item}>
+                  <Select.ItemText className={styles.ItemText}>{item}</Select.ItemText>
+                  <Select.ItemIndicator className={styles.ItemIndicator}>✓</Select.ItemIndicator>
+                </Select.Item>
+              ))}
             </Select.List>
           </Select.Content>
         </Select.Positioner>
