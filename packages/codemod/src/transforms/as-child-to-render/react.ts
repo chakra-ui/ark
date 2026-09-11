@@ -26,6 +26,11 @@ export function reactAsChildToRender(source: string, filePath: string): Transfor
       continue
     }
 
+    if (opening.getAttribute('render')) {
+      skipped.push(`${describe(opening)}: element already has a render prop`)
+      continue
+    }
+
     const children = element.getJsxChildren().filter((child) => {
       if (Node.isJsxText(child)) return child.getText().trim().length > 0
       return true

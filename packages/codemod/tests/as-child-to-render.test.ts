@@ -132,3 +132,99 @@ describe('vue bound asChild', () => {
     expect(result.code).toContain('<b v-bind="props" :class="c">y</b>')
   })
 })
+
+// Regressions for the ways a transform can silently emit broken code.
+describe('edge cases', () => {
+  describe('solid keeps the props call in every shape', () => {
+    it('keeps the call inside a block body', () => {
+      const result = solidAsChildToRender(
+        `const A = () => <Popover.Trigger asChild={(props) => { return <button {...props()} /> }}>Open</Popover.Trigger>`,
+        'a.tsx',
+      )
+      expect(result.count).toBe(1)
+      expect(result.code).toContain('{...props()}')
+      expect(result.code).toContain('render={(props) => { return <button {...props()} /> }}')
+    })
+
+    it('keeps the call when the state accessor is also used', () => {
+      const result = solidAsChildToRender(
+        `const A = () => <Switch.Thumb asChild={(props, state) => <span {...props()}>{state().checked}</span>} />`,
+        'a.tsx',
+      )
+      expect(result.code).toContain('{...props()}')
+      expect(result.code).toContain('{state().checked}')
+    })
+
+    it('renames every asChild in a file and leaves each body intact', () => {
+      const result = solidAsChildToRender(
+        `const A = () => (
+  <>
+    <Menu.Item asChild={(props) => <a href="/1" {...props()} />}>One</Menu.Item>
+    <Menu.Item asChild={(props) => <a href="/2" {...props()} />}>Two</Menu.Item>
+  </>
+)`,
+        'a.tsx',
+      )
+      expect(result.count).toBe(2)
+      expect(result.code).not.toContain('asChild')
+      expect(result.code?.match(/\{\.\.\.props\(\)\}/g)).toHaveLength(2)
+    })
+
+    it('renames nested render callbacks without touching the inner call', () => {
+      const result = solidAsChildToRender(
+        `const A = () => <Tooltip.Trigger asChild={(outer) => <Dialog.Trigger asChild={(inner) => <button {...inner()} />} {...outer()} />} />`,
+        'a.tsx',
+      )
+      expect(result.count).toBe(2)
+      expect(result.code).toContain('{...outer()}')
+      expect(result.code).toContain('{...inner()}')
+      expect(result.code).not.toContain('asChild')
+    })
+  })
+
+  describe('react does not emit invalid jsx', () => {
+    it('skips an element that already has a render prop instead of writing two', () => {
+      const result = reactAsChildToRender(
+        `const A = () => <Menu.Item asChild render={<a href="#">x</a>}><b>y</b></Menu.Item>`,
+        'a.tsx',
+      )
+      expect(result.code).toBeNull()
+      expect(result.skipped[0]).toContain('already has a render prop')
+    })
+
+    it('preserves a member-expression tag name', () => {
+      const result = reactAsChildToRender(`const A = () => <Menu.Item asChild><a href="#">Go</a></Menu.Item>`, 'a.tsx')
+      expect(result.code).toContain('<Menu.Item render={<a href="#">Go</a>} />')
+    })
+
+    it('skips when the child is an expression container, not an element', () => {
+      const result = reactAsChildToRender(`const A = () => <Popover.Trigger asChild>{child}</Popover.Trigger>`, 'a.tsx')
+      expect(result.code).toBeNull()
+      expect(result.skipped[0]).toContain('not an element')
+    })
+  })
+
+  describe('vue and svelte', () => {
+    it('vue rewrites two asChild parts in one template', () => {
+      const result = vueAsChildToRender(`<template><X asChild><a>1</a></X><Y asChild><b>2</b></Y></template>`, 'a.vue')
+      expect(result.count).toBe(2)
+      expect(result.code).toContain('<a v-bind="props">1</a>')
+      expect(result.code).toContain('<b v-bind="props">2</b>')
+    })
+
+    it('svelte renames every asChild snippet and keeps the props call', () => {
+      const result = svelteAsChildToRender(
+        `<A>
+  {#snippet asChild(props)}<a {...props()}>1</a>{/snippet}
+</A>
+<B>
+  {#snippet asChild(props)}<b {...props()}>2</b>{/snippet}
+</B>`,
+        'a.svelte',
+      )
+      expect(result.count).toBe(2)
+      expect(result.code).not.toContain('asChild')
+      expect(result.code?.match(/\{\.\.\.props\(\)\}/g)).toHaveLength(2)
+    })
+  })
+})
