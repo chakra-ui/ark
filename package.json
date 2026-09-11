@@ -68,6 +68,8 @@
     "@zag-js/select@2.0.0-next.2": "patches/@zag-js%2Fselect@2.0.0-next.2.patch",
     "@zag-js/popover@2.0.0-next.2": "patches/@zag-js%2Fpopover@2.0.0-next.2.patch",
     "@zag-js/hover-card@2.0.0-next.2": "patches/@zag-js%2Fhover-card@2.0.0-next.2.patch",
-    "@zag-js/tour@2.0.0-next.2": "patches/@zag-js%2Ftour@2.0.0-next.2.patch"
+    "@zag-js/tour@2.0.0-next.2": "patches/@zag-js%2Ftour@2.0.0-next.2.patch",
+    "@zag-js/live-region@2.0.0-next.2": "patches/@zag-js%2Flive-region@2.0.0-next.2.patch",
+    "@zag-js/combobox@2.0.0-next.2": "patches/@zag-js%2Fcombobox@2.0.0-next.2.patch"
   }
 }

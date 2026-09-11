@@ -1,0 +1,276 @@
+diff --git a/dist/index.d.mts b/dist/index.d.mts
+index c102d2c35d99c5b15bdaf40a70f3a7175c82ccd1..d02f0a27aec7f0011c4c8bc41b4bffabdfee1855 100644
+--- a/dist/index.d.mts
++++ b/dist/index.d.mts
+@@ -3,11 +3,13 @@ interface LiveRegionOptions {
+     document?: Document | undefined;
+     root?: HTMLElement | null | undefined;
+     delay?: number | undefined;
++    timeout?: number | undefined;
+     debug?: boolean | undefined;
+ }
+ type LiveRegion = ReturnType<typeof createLiveRegion>;
+ declare function createLiveRegion(opts?: Partial<LiveRegionOptions>): {
+     announce: (message: string, delay?: number) => void;
++    clear: () => void;
+     destroy: () => void;
+     toJSON(): string;
+ };
+diff --git a/dist/index.d.ts b/dist/index.d.ts
+index c102d2c35d99c5b15bdaf40a70f3a7175c82ccd1..d02f0a27aec7f0011c4c8bc41b4bffabdfee1855 100644
+--- a/dist/index.d.ts
++++ b/dist/index.d.ts
+@@ -3,11 +3,13 @@ interface LiveRegionOptions {
+     document?: Document | undefined;
+     root?: HTMLElement | null | undefined;
+     delay?: number | undefined;
++    timeout?: number | undefined;
+     debug?: boolean | undefined;
+ }
+ type LiveRegion = ReturnType<typeof createLiveRegion>;
+ declare function createLiveRegion(opts?: Partial<LiveRegionOptions>): {
+     announce: (message: string, delay?: number) => void;
++    clear: () => void;
+     destroy: () => void;
+     toJSON(): string;
+ };
+diff --git a/dist/index.js b/dist/index.js
+index 53a2fb9ba250d01abf042ffeac2e9da01d208dad..11a8fb43dd01673e6b406486df0dcafd9c03e70c 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -23,13 +23,50 @@ __export(index_exports, {
+   createLiveRegion: () => createLiveRegion
+ });
+ module.exports = __toCommonJS(index_exports);
+-var ID = "__live-region__";
++var getId = (level) => `__live-region-${level}__`;
+ var DEBUG_ID = "__live-region-debug__";
+ var DEBUG_STYLES = "position:fixed;inset-inline:0;bottom:0;z-index:2147483647;padding:12px 16px;background:black;color:white;font-size:14px;line-height:20px;text-align:center;pointer-events:none;";
++var CLEAR_DELAY = 7e3;
++var HIDDEN_STYLES = {
++  border: "0",
++  clip: "rect(0 0 0 0)",
++  clipPath: "inset(50%)",
++  height: "1px",
++  margin: "-1px",
++  overflow: "hidden",
++  padding: "0",
++  position: "absolute",
++  width: "1px",
++  whiteSpace: "nowrap",
++  wordWrap: "normal"
++};
+ function createLiveRegion(opts = {}) {
+-  const { level = "polite", document: doc = document, root, delay: _delay = 0, debug = false } = opts;
++  const {
++    level = "polite",
++    document: doc = document,
++    root,
++    delay: _delay = 0,
++    timeout = CLEAR_DELAY,
++    debug = false
++  } = opts;
+   const win = doc.defaultView ?? window;
+   const parent = root ?? doc.body;
++  const ID = getId(level);
++  let announceTimer;
++  let clearTimer;
++  function getRegion() {
++    let region = doc.getElementById(ID);
++    if (region) return region;
++    region = doc.createElement("span");
++    region.id = ID;
++    region.dataset.liveAnnouncer = "true";
++    region.setAttribute("aria-live", level);
++    region.setAttribute("aria-atomic", "true");
++    region.setAttribute("role", level === "assertive" ? "alert" : "status");
++    Object.assign(region.style, HIDDEN_STYLES);
++    parent.appendChild(region);
++    return region;
++  }
+   function getDebugRegion() {
+     if (!debug) return;
+     let region = doc.getElementById(DEBUG_ID);
+@@ -43,43 +80,37 @@ function createLiveRegion(opts = {}) {
+     return region;
+   }
+   function announce(message, delay) {
+-    const oldRegion = doc.getElementById(ID);
+-    oldRegion?.remove();
++    const region = getRegion();
+     delay = delay ?? _delay;
+-    const region = doc.createElement("span");
+-    region.id = ID;
+-    region.dataset.liveAnnouncer = "true";
+-    const role = level !== "assertive" ? "status" : "alert";
+-    region.setAttribute("aria-live", level);
+-    region.setAttribute("role", role);
+-    Object.assign(region.style, {
+-      border: "0",
+-      clip: "rect(0 0 0 0)",
+-      height: "1px",
+-      margin: "-1px",
+-      overflow: "hidden",
+-      padding: "0",
+-      position: "absolute",
+-      width: "1px",
+-      whiteSpace: "nowrap",
+-      wordWrap: "normal"
+-    });
+-    parent.appendChild(region);
+-    win.setTimeout(() => {
++    win.clearTimeout(announceTimer);
++    win.clearTimeout(clearTimer);
++    region.textContent = "";
++    announceTimer = win.setTimeout(() => {
+       if (!region.isConnected) return;
+       region.textContent = message;
+       const debugRegion = getDebugRegion();
+       if (debugRegion) debugRegion.textContent = message;
++      if (message) clearTimer = win.setTimeout(clear, timeout);
+     }, delay);
+   }
+-  function destroy() {
+-    const oldRegion = doc.getElementById(ID);
+-    oldRegion?.remove();
++  function clear() {
++    win.clearTimeout(announceTimer);
++    win.clearTimeout(clearTimer);
++    const region = doc.getElementById(ID);
++    if (region) region.textContent = "";
+     const debugRegion = doc.getElementById(DEBUG_ID);
+-    debugRegion?.remove();
++    if (debugRegion) debugRegion.textContent = "";
++  }
++  function destroy() {
++    win.clearTimeout(announceTimer);
++    win.clearTimeout(clearTimer);
++    doc.getElementById(ID)?.remove();
++    doc.getElementById(DEBUG_ID)?.remove();
+   }
++  getRegion();
+   return {
+     announce,
++    clear,
+     destroy,
+     toJSON() {
+       return ID;
+diff --git a/dist/index.mjs b/dist/index.mjs
+index c3a2194422c1403d9ae0e6468450a532a2bd1b47..386195ca4ab40b6b9e337444b81916e180a4eeef 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -1,11 +1,48 @@
+ // src/index.ts
+-var ID = "__live-region__";
++var getId = (level) => `__live-region-${level}__`;
+ var DEBUG_ID = "__live-region-debug__";
+ var DEBUG_STYLES = "position:fixed;inset-inline:0;bottom:0;z-index:2147483647;padding:12px 16px;background:black;color:white;font-size:14px;line-height:20px;text-align:center;pointer-events:none;";
++var CLEAR_DELAY = 7e3;
++var HIDDEN_STYLES = {
++  border: "0",
++  clip: "rect(0 0 0 0)",
++  clipPath: "inset(50%)",
++  height: "1px",
++  margin: "-1px",
++  overflow: "hidden",
++  padding: "0",
++  position: "absolute",
++  width: "1px",
++  whiteSpace: "nowrap",
++  wordWrap: "normal"
++};
+ function createLiveRegion(opts = {}) {
+-  const { level = "polite", document: doc = document, root, delay: _delay = 0, debug = false } = opts;
++  const {
++    level = "polite",
++    document: doc = document,
++    root,
++    delay: _delay = 0,
++    timeout = CLEAR_DELAY,
++    debug = false
++  } = opts;
+   const win = doc.defaultView ?? window;
+   const parent = root ?? doc.body;
++  const ID = getId(level);
++  let announceTimer;
++  let clearTimer;
++  function getRegion() {
++    let region = doc.getElementById(ID);
++    if (region) return region;
++    region = doc.createElement("span");
++    region.id = ID;
++    region.dataset.liveAnnouncer = "true";
++    region.setAttribute("aria-live", level);
++    region.setAttribute("aria-atomic", "true");
++    region.setAttribute("role", level === "assertive" ? "alert" : "status");
++    Object.assign(region.style, HIDDEN_STYLES);
++    parent.appendChild(region);
++    return region;
++  }
+   function getDebugRegion() {
+     if (!debug) return;
+     let region = doc.getElementById(DEBUG_ID);
+@@ -19,43 +56,37 @@ function createLiveRegion(opts = {}) {
+     return region;
+   }
+   function announce(message, delay) {
+-    const oldRegion = doc.getElementById(ID);
+-    oldRegion?.remove();
++    const region = getRegion();
+     delay = delay ?? _delay;
+-    const region = doc.createElement("span");
+-    region.id = ID;
+-    region.dataset.liveAnnouncer = "true";
+-    const role = level !== "assertive" ? "status" : "alert";
+-    region.setAttribute("aria-live", level);
+-    region.setAttribute("role", role);
+-    Object.assign(region.style, {
+-      border: "0",
+-      clip: "rect(0 0 0 0)",
+-      height: "1px",
+-      margin: "-1px",
+-      overflow: "hidden",
+-      padding: "0",
+-      position: "absolute",
+-      width: "1px",
+-      whiteSpace: "nowrap",
+-      wordWrap: "normal"
+-    });
+-    parent.appendChild(region);
+-    win.setTimeout(() => {
++    win.clearTimeout(announceTimer);
++    win.clearTimeout(clearTimer);
++    region.textContent = "";
++    announceTimer = win.setTimeout(() => {
+       if (!region.isConnected) return;
+       region.textContent = message;
+       const debugRegion = getDebugRegion();
+       if (debugRegion) debugRegion.textContent = message;
++      if (message) clearTimer = win.setTimeout(clear, timeout);
+     }, delay);
+   }
+-  function destroy() {
+-    const oldRegion = doc.getElementById(ID);
+-    oldRegion?.remove();
++  function clear() {
++    win.clearTimeout(announceTimer);
++    win.clearTimeout(clearTimer);
++    const region = doc.getElementById(ID);
++    if (region) region.textContent = "";
+     const debugRegion = doc.getElementById(DEBUG_ID);
+-    debugRegion?.remove();
++    if (debugRegion) debugRegion.textContent = "";
++  }
++  function destroy() {
++    win.clearTimeout(announceTimer);
++    win.clearTimeout(clearTimer);
++    doc.getElementById(ID)?.remove();
++    doc.getElementById(DEBUG_ID)?.remove();
+   }
++  getRegion();
+   return {
+     announce,
++    clear,
+     destroy,
+     toJSON() {
+       return ID;

@@ -1,32 +1,18 @@
-diff --git a/node_modules/@zag-js/select/.bun-tag-432c279044541be0 b/.bun-tag-432c279044541be0
-new file mode 100644
-index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
-diff --git a/node_modules/@zag-js/select/.bun-tag-49f65ac67a8435b8 b/.bun-tag-49f65ac67a8435b8
-new file mode 100644
-index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
-diff --git a/node_modules/@zag-js/select/.bun-tag-4d85b56f1b487802 b/.bun-tag-4d85b56f1b487802
-new file mode 100644
-index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
-diff --git a/node_modules/@zag-js/select/.bun-tag-5ebb04bff23f0a42 b/.bun-tag-5ebb04bff23f0a42
-new file mode 100644
-index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
-diff --git a/node_modules/@zag-js/select/.bun-tag-77238f9d6a70dfbb b/.bun-tag-77238f9d6a70dfbb
-new file mode 100644
-index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
-diff --git a/node_modules/@zag-js/select/.bun-tag-8dac9a08e0941dcd b/.bun-tag-8dac9a08e0941dcd
-new file mode 100644
-index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
-diff --git a/node_modules/@zag-js/select/.bun-tag-92c750eddb28bc0d b/.bun-tag-92c750eddb28bc0d
-new file mode 100644
-index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
-diff --git a/node_modules/@zag-js/select/.bun-tag-a2940ee19bf5c2ae b/.bun-tag-a2940ee19bf5c2ae
-new file mode 100644
-index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 diff --git a/dist/align-with-trigger.js b/dist/align-with-trigger.js
-index e372220c1e9968bdf9d533920faaa6fda1224615..b382ae51905e28b5bd565ca28a8427d698b3048b 100644
+index e372220c1e9968bdf9d533920faaa6fda1224615..da65192a0f59f25e5e4049484550a8f2b8f65c62 100644
 --- a/dist/align-with-trigger.js
 +++ b/dist/align-with-trigger.js
-@@ -147,10 +147,11 @@ function alignItemWithTrigger(options) {
+@@ -53,7 +53,8 @@ var POSITIONER_STYLE_KEYS = [
+ var CONTENT_STYLE_KEYS = ["height"];
+ var EMPTY_RESULT = {
+   cleanup: import_utils.noop,
+-  transformOrigin: "50% 50%"
++  transformOrigin: "50% 50%",
++  styles: {}
+ };
+ function captureStyles(el, keys) {
+   const prev = {};
+@@ -147,10 +148,11 @@ function alignItemWithTrigger(options) {
    }
    const restorePositioner = captureStyles(positionerEl, POSITIONER_STYLE_KEYS);
    const restoreContent = captureStyles(contentEl, CONTENT_STYLE_KEYS);
@@ -39,14 +25,11 @@ index e372220c1e9968bdf9d533920faaa6fda1224615..b382ae51905e28b5bd565ca28a8427d6
    positionerEl.style.marginTop = (0, import_utils.toPx)(marginTop);
    positionerEl.style.marginBottom = (0, import_utils.toPx)(marginBottom);
    contentEl.style.height = "100%";
-@@ -171,14 +172,38 @@ function alignItemWithTrigger(options) {
+@@ -171,14 +173,36 @@ function alignItemWithTrigger(options) {
      positionerEl.style.bottom = "auto";
      const adjustedHeight = Math.max(0, height - contentOffsetTop);
      positionerEl.style.height = (0, import_utils.toPx)(adjustedHeight);
 -    scroller.scrollTop = Math.max(0, scrollHeight - adjustedHeight);
-+    // Pin to the end of the *resized* scroller. The original used the positioner height
-+    // as a stand-in for the scroller height, which is smaller once padding and the
-+    // overlaid arrows are accounted for, leaving mid-list items short of the trigger.
 +    scroller.scrollTop = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
    } else {
      positionerEl.style.top = "auto";
@@ -61,7 +44,7 @@ index e372220c1e9968bdf9d533920faaa6fda1224615..b382ae51905e28b5bd565ca28a8427d6
      scroller.scrollTop = scrollTopTarget;
    }
 +  const styles = {};
-+  for (const [key, value] of [
++  const resolved = [
 +    ["--reference-width", (0, import_utils.toPx)(triggerRect.width)],
 +    ["position", positionerEl.style.position],
 +    ["left", positionerEl.style.left],
@@ -71,7 +54,8 @@ index e372220c1e9968bdf9d533920faaa6fda1224615..b382ae51905e28b5bd565ca28a8427d6
 +    ["maxHeight", positionerEl.style.maxHeight],
 +    ["marginTop", positionerEl.style.marginTop],
 +    ["marginBottom", positionerEl.style.marginBottom]
-+  ]) {
++  ];
++  for (const [key, value] of resolved) {
 +    if (value !== "" && value != null) styles[key] = value;
 +  }
    return {
@@ -80,7 +64,7 @@ index e372220c1e9968bdf9d533920faaa6fda1224615..b382ae51905e28b5bd565ca28a8427d6
      cleanup() {
        restoreContent();
        restorePositioner();
-@@ -214,8 +239,11 @@ function trackAlignItemWithTrigger(scope, options) {
+@@ -214,8 +238,11 @@ function trackAlignItemWithTrigger(scope, options) {
      const marginTop = parseFloat(positionerStyles.marginTop) || 0;
      const marginBottom = parseFloat(positionerStyles.marginBottom) || 0;
      const viewportMax = win.document.documentElement.clientHeight - marginTop - marginBottom;
@@ -94,7 +78,7 @@ index e372220c1e9968bdf9d533920faaa6fda1224615..b382ae51905e28b5bd565ca28a8427d6
      const scrollTop = scroller.scrollTop;
      const maxScrollTop = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
      const diff = isTopPositioned ? maxScrollTop - scrollTop : scrollTop;
-@@ -277,7 +305,7 @@ function trackAlignItemWithTrigger(scope, options) {
+@@ -277,7 +304,7 @@ function trackAlignItemWithTrigger(scope, options) {
      if (fellBack) return;
      currentCleanup = result.cleanup;
      dom.getContentEl(scope)?.style.setProperty(TRANSFORM_ORIGIN_VAR, result.transformOrigin);
@@ -104,10 +88,20 @@ index e372220c1e9968bdf9d533920faaa6fda1224615..b382ae51905e28b5bd565ca28a8427d6
    const scheduleAlign = () => {
      if (disposed || fellBack || pendingFrame != null) return;
 diff --git a/dist/align-with-trigger.mjs b/dist/align-with-trigger.mjs
-index a7de71241583789c2e2d8f85de3b40e8c3a96bc9..611b1ae10564040a0312add1701f3d85bbde2238 100644
+index a7de71241583789c2e2d8f85de3b40e8c3a96bc9..a1181a1d09b7192862eb8238b8e92f70091020d7 100644
 --- a/dist/align-with-trigger.mjs
 +++ b/dist/align-with-trigger.mjs
-@@ -113,10 +113,11 @@ function alignItemWithTrigger(options) {
+@@ -19,7 +19,8 @@ var POSITIONER_STYLE_KEYS = [
+ var CONTENT_STYLE_KEYS = ["height"];
+ var EMPTY_RESULT = {
+   cleanup: noop,
+-  transformOrigin: "50% 50%"
++  transformOrigin: "50% 50%",
++  styles: {}
+ };
+ function captureStyles(el, keys) {
+   const prev = {};
+@@ -113,10 +114,11 @@ function alignItemWithTrigger(options) {
    }
    const restorePositioner = captureStyles(positionerEl, POSITIONER_STYLE_KEYS);
    const restoreContent = captureStyles(contentEl, CONTENT_STYLE_KEYS);
@@ -120,14 +114,11 @@ index a7de71241583789c2e2d8f85de3b40e8c3a96bc9..611b1ae10564040a0312add1701f3d85
    positionerEl.style.marginTop = toPx(marginTop);
    positionerEl.style.marginBottom = toPx(marginBottom);
    contentEl.style.height = "100%";
-@@ -137,14 +138,38 @@ function alignItemWithTrigger(options) {
+@@ -137,14 +139,36 @@ function alignItemWithTrigger(options) {
      positionerEl.style.bottom = "auto";
      const adjustedHeight = Math.max(0, height - contentOffsetTop);
      positionerEl.style.height = toPx(adjustedHeight);
 -    scroller.scrollTop = Math.max(0, scrollHeight - adjustedHeight);
-+    // Pin to the end of the *resized* scroller. The original used the positioner height
-+    // as a stand-in for the scroller height, which is smaller once padding and the
-+    // overlaid arrows are accounted for, leaving mid-list items short of the trigger.
 +    scroller.scrollTop = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
    } else {
      positionerEl.style.top = "auto";
@@ -142,7 +133,7 @@ index a7de71241583789c2e2d8f85de3b40e8c3a96bc9..611b1ae10564040a0312add1701f3d85
      scroller.scrollTop = scrollTopTarget;
    }
 +  const styles = {};
-+  for (const [key, value] of [
++  const resolved = [
 +    ["--reference-width", toPx(triggerRect.width)],
 +    ["position", positionerEl.style.position],
 +    ["left", positionerEl.style.left],
@@ -152,7 +143,8 @@ index a7de71241583789c2e2d8f85de3b40e8c3a96bc9..611b1ae10564040a0312add1701f3d85
 +    ["maxHeight", positionerEl.style.maxHeight],
 +    ["marginTop", positionerEl.style.marginTop],
 +    ["marginBottom", positionerEl.style.marginBottom]
-+  ]) {
++  ];
++  for (const [key, value] of resolved) {
 +    if (value !== "" && value != null) styles[key] = value;
 +  }
    return {
@@ -161,7 +153,7 @@ index a7de71241583789c2e2d8f85de3b40e8c3a96bc9..611b1ae10564040a0312add1701f3d85
      cleanup() {
        restoreContent();
        restorePositioner();
-@@ -180,8 +205,11 @@ function trackAlignItemWithTrigger(scope, options) {
+@@ -180,8 +204,11 @@ function trackAlignItemWithTrigger(scope, options) {
      const marginTop = parseFloat(positionerStyles.marginTop) || 0;
      const marginBottom = parseFloat(positionerStyles.marginBottom) || 0;
      const viewportMax = win.document.documentElement.clientHeight - marginTop - marginBottom;
@@ -175,7 +167,7 @@ index a7de71241583789c2e2d8f85de3b40e8c3a96bc9..611b1ae10564040a0312add1701f3d85
      const scrollTop = scroller.scrollTop;
      const maxScrollTop = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
      const diff = isTopPositioned ? maxScrollTop - scrollTop : scrollTop;
-@@ -243,7 +271,7 @@ function trackAlignItemWithTrigger(scope, options) {
+@@ -243,7 +270,7 @@ function trackAlignItemWithTrigger(scope, options) {
      if (fellBack) return;
      currentCleanup = result.cleanup;
      dom.getContentEl(scope)?.style.setProperty(TRANSFORM_ORIGIN_VAR, result.transformOrigin);
@@ -225,7 +217,7 @@ index 795e2b12153f7fae63b4866a4afedd1c15b25fd3..cf1b17fc6caacc5a715e42262d9d73e6
          }
        });
 diff --git a/dist/select.machine.js b/dist/select.machine.js
-index f51b8a8621654d34c14ba92ded1424e198463a61..4b51101699bed6c6d0c76b62a1c742cf14544e5e 100644
+index f51b8a8621654d34c14ba92ded1424e198463a61..213e5455d7e162d776540e97f1c677a9e8f1e55c 100644
 --- a/dist/select.machine.js
 +++ b/dist/select.machine.js
 @@ -125,6 +125,9 @@ var machine = (0, import_core.createMachine)({
@@ -244,7 +236,7 @@ index f51b8a8621654d34c14ba92ded1424e198463a61..4b51101699bed6c6d0c76b62a1c742cf
            onPlacementChange,
 -          onAligned() {
 +          onAligned(styles) {
-+            context.set("alignStyles", styles ?? null);
++            context.set("alignStyles", styles);
              context.set("aligned", true);
            }
          });
@@ -256,7 +248,18 @@ index f51b8a8621654d34c14ba92ded1424e198463a61..4b51101699bed6c6d0c76b62a1c742cf
        },
        startAutoScroll({ refs, scope, prop, event }) {
          const placement = event.placement;
-@@ -859,7 +864,7 @@ var machine = (0, import_core.createMachine)({
+@@ -852,14 +857,17 @@ var machine = (0, import_core.createMachine)({
+       },
+       announceHighlightedItem({ context, prop, refs, scope }) {
+         const value = context.get("highlightedValue");
+-        if (value == null) return;
++        if (value == null) {
++          refs.get("liveRegion")?.clear();
++          return;
++        }
+         const listFocused = scope.isActiveElement(dom.getListEl(scope));
+         if (listFocused && !(0, import_dom_query.isApple)()) return;
+         const collection2 = prop("collection");
          const label = collection2.stringifyItem(collection2.find(value));
          if (!label) return;
          const selected = context.get("value").includes(value);
@@ -266,7 +269,7 @@ index f51b8a8621654d34c14ba92ded1424e198463a61..4b51101699bed6c6d0c76b62a1c742cf
          refs.get("liveRegion")?.announce(message);
        },
 diff --git a/dist/select.machine.mjs b/dist/select.machine.mjs
-index d25f4b40b2fde058d4a8d7f18884fe52f7d0d347..20d839de33d3ec6c281c46cb3dc902d1d9226117 100644
+index d25f4b40b2fde058d4a8d7f18884fe52f7d0d347..31a91838331dcb776e0e63330af074d54f9ba704 100644
 --- a/dist/select.machine.mjs
 +++ b/dist/select.machine.mjs
 @@ -102,6 +102,9 @@ var machine = createMachine({
@@ -285,7 +288,7 @@ index d25f4b40b2fde058d4a8d7f18884fe52f7d0d347..20d839de33d3ec6c281c46cb3dc902d1
            onPlacementChange,
 -          onAligned() {
 +          onAligned(styles) {
-+            context.set("alignStyles", styles ?? null);
++            context.set("alignStyles", styles);
              context.set("aligned", true);
            }
          });
@@ -297,7 +300,18 @@ index d25f4b40b2fde058d4a8d7f18884fe52f7d0d347..20d839de33d3ec6c281c46cb3dc902d1
        },
        startAutoScroll({ refs, scope, prop, event }) {
          const placement = event.placement;
-@@ -836,7 +841,7 @@ var machine = createMachine({
+@@ -829,14 +834,17 @@ var machine = createMachine({
+       },
+       announceHighlightedItem({ context, prop, refs, scope }) {
+         const value = context.get("highlightedValue");
+-        if (value == null) return;
++        if (value == null) {
++          refs.get("liveRegion")?.clear();
++          return;
++        }
+         const listFocused = scope.isActiveElement(dom.getListEl(scope));
+         if (listFocused && !isApple()) return;
+         const collection2 = prop("collection");
          const label = collection2.stringifyItem(collection2.find(value));
          if (!label) return;
          const selected = context.get("value").includes(value);

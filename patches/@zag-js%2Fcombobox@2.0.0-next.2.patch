@@ -1,0 +1,32 @@
+diff --git a/dist/combobox.machine.js b/dist/combobox.machine.js
+index 8476e28dbf34ef61d1f10d825fb7d5eb6ba817a3..70e3e97679b058bffd2dfaae232a202bb133e6b4 100644
+--- a/dist/combobox.machine.js
++++ b/dist/combobox.machine.js
+@@ -1017,7 +1017,10 @@ var machine = createMachine({
+         if (!(0, import_dom_query.isApple)()) return;
+         const value = context.get("highlightedValue");
+         const optionText = value ? prop("collection").stringifyItem(prop("collection").find(value)) : null;
+-        if (!optionText) return;
++        if (!optionText) {
++          refs.get("liveRegion")?.clear();
++          return;
++        }
+         const isSelected = value ? context.get("value").includes(value) : false;
+         refs.get("liveRegion")?.announce(isSelected ? `${optionText}, selected` : optionText);
+       },
+diff --git a/dist/combobox.machine.mjs b/dist/combobox.machine.mjs
+index 66b4cead7bbadeebcc803bcda492486cafcf32ff..5b4565745f4c5e5fa1819cf69219178d285c51fc 100644
+--- a/dist/combobox.machine.mjs
++++ b/dist/combobox.machine.mjs
+@@ -995,7 +995,10 @@ var machine = createMachine({
+         if (!isApple()) return;
+         const value = context.get("highlightedValue");
+         const optionText = value ? prop("collection").stringifyItem(prop("collection").find(value)) : null;
+-        if (!optionText) return;
++        if (!optionText) {
++          refs.get("liveRegion")?.clear();
++          return;
++        }
+         const isSelected = value ? context.get("value").includes(value) : false;
+         refs.get("liveRegion")?.announce(isSelected ? `${optionText}, selected` : optionText);
+       },
