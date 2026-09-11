@@ -29,6 +29,16 @@
         "solid": "./dist/providers/locale/index.jsx",
         "default": "./dist/providers/locale/index.js"
       },
+      "./hotkeys": {
+        "types": "./dist/providers/hotkeys/index.d.ts",
+        "solid": "./dist/providers/hotkeys/index.jsx",
+        "default": "./dist/providers/hotkeys/index.js"
+      },
+      "./interaction": {
+        "types": "./dist/providers/interaction/index.d.ts",
+        "solid": "./dist/providers/interaction/index.jsx",
+        "default": "./dist/providers/interaction/index.js"
+      },
       "./utils": {
         "types": "./dist/utils/index.d.ts",
         "solid": "./dist/utils/index.jsx",
