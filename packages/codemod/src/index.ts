@@ -35,27 +35,34 @@ program
   .action(async (name: string | undefined, paths: string[], options) => {
     if (interactive) p.intro(pc.bgCyan(pc.black(' ark-codemod ')))
 
-    if (!name) {
-      if (!interactive) {
-        program.outputHelp()
-        console.log(`\nRun ${pc.bold('ark-codemod list')} to see the transforms.`)
-        return
-      }
-      const picked = await p.select({
-        message: 'Which transform do you want to run?',
+    let names: string[]
+    if (name) {
+      names = [name]
+    } else if (interactive) {
+      const picked = await p.multiselect({
+        message: 'Which transforms do you want to run?',
         options: transforms.map((t) => ({ value: t.name, label: t.name, hint: t.description })),
+        required: true,
       })
-      if (p.isCancel(picked)) return p.cancel('Nothing to do.')
-      name = picked
+      if (p.isCancel(picked) || picked.length === 0) return p.cancel('Nothing to do.')
+      names = picked
+    } else {
+      program.outputHelp()
+      console.log(`\nRun ${pc.bold('ark-codemod list')} to see the transforms.`)
+      return
     }
 
-    const transform = findTransform(name)
-    if (!transform) {
-      const msg = `Unknown transform: ${name}. Run ${pc.bold('ark-codemod list')} to see what is available.`
-      if (interactive) p.cancel(msg)
-      else console.error(pc.red(msg))
-      process.exitCode = 1
-      return
+    const selected = []
+    for (const n of names) {
+      const transform = findTransform(n)
+      if (!transform) {
+        const msg = `Unknown transform: ${n}. Run ${pc.bold('ark-codemod list')} to see what is available.`
+        if (interactive) p.cancel(msg)
+        else console.error(pc.red(msg))
+        process.exitCode = 1
+        return
+      }
+      selected.push(transform)
     }
 
     const cwd = process.cwd()
@@ -75,20 +82,22 @@ program
       }
     }
 
-    const spinner = interactive && !options.dry ? p.spinner() : undefined
-    spinner?.start(`Running ${transform.name}`)
-    const summary = await runTransform(transform, {
-      cwd,
-      include: paths,
-      exclude: options.exclude,
-      dry: options.dry,
-      concurrency: Number(options.concurrency),
-      printDiff: options.diff,
-      crossFile: options.crossFile,
-    })
-    spinner?.stop(`Ran ${transform.name}`)
+    for (const transform of selected) {
+      const spinner = interactive && !options.dry ? p.spinner() : undefined
+      spinner?.start(`Running ${transform.name}`)
+      const summary = await runTransform(transform, {
+        cwd,
+        include: paths,
+        exclude: options.exclude,
+        dry: options.dry,
+        concurrency: Number(options.concurrency),
+        printDiff: options.diff,
+        crossFile: options.crossFile,
+      })
+      spinner?.stop(`Ran ${transform.name}`)
 
-    printSummary(transform, summary, options.dry, interactive)
+      printSummary(transform, summary, options.dry, interactive)
+    }
   })
 
 export async function run(): Promise<void> {
