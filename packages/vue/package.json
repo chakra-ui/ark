@@ -167,7 +167,7 @@
     "@testing-library/vue": "8.1.0",
     "@vitejs/plugin-vue": "6.0.8",
     "@vitejs/plugin-vue-jsx": "5.1.6",
-    "@vitest/coverage-v8": "4.1.11",
+    "@vitest/coverage-v8": "5.0.0",
     "@vue/compiler-sfc": "3.5.42",
     "@vue/language-core": "3.3.11",
     "ajv": "8.20.0",
@@ -184,7 +184,7 @@
     "vitest-axe": "1.0.0-pre.5",
     "vite": "8.2.2",
     "vite-plugin-dts": "5.1.0",
-    "vitest": "4.1.11",
+    "vitest": "5.0.0",
     "vue": "3.5.42",
     "vue-tsc": "3.3.11"
   },
