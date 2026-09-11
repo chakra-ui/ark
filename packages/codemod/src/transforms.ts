@@ -13,7 +13,7 @@ export const transforms: TransformDef[] = [
   },
   {
     name: 'solid/as-child-to-render',
-    description: 'Rename the asChild callback to render and drop the props accessor call',
+    description: 'Rename the asChild callback to render',
     extensions: ['.tsx', '.jsx'],
     run: solidAsChildToRender,
   },

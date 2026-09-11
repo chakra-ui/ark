@@ -1,12 +1,20 @@
-import { Node, Project, SyntaxKind } from 'ts-morph'
-import type { TransformResult } from '../../types.ts'
+import { Node, SyntaxKind } from 'ts-morph'
+import type { TransformOptions, TransformResult } from '../../types.ts'
+import { arkLocalNames, isTrackedJsx } from '../../utils/ark-imports.ts'
+import { createTransformSourceFile } from '../../utils/ts-project.ts'
 
-export function reactAsChildToRender(source: string, filePath: string): TransformResult {
-  const project = new Project({ useInMemoryFileSystem: true, compilerOptions: { jsx: 4 } })
-  const sf = project.createSourceFile(filePath.endsWith('.tsx') ? filePath : `${filePath}.tsx`, source)
+export function reactAsChildToRender(
+  source: string,
+  filePath: string,
+  options: TransformOptions = {},
+): TransformResult {
+  const sf = createTransformSourceFile(filePath, source, options.crossFile ?? false)
 
   let count = 0
   const skipped: string[] = []
+
+  const arkNames = arkLocalNames(sf, { crossFile: options.crossFile })
+  if (arkNames.size === 0) return { code: null, count: 0, skipped: [] }
 
   const elements = sf.getDescendantsOfKind(SyntaxKind.JsxElement).reverse()
 
@@ -14,6 +22,8 @@ export function reactAsChildToRender(source: string, filePath: string): Transfor
     const opening = element.getOpeningElement()
     const asChild = opening.getAttribute('asChild')
     if (!asChild) continue
+
+    if (!isTrackedJsx(opening, arkNames)) continue
 
     if (!Node.isJsxAttribute(asChild)) {
       skipped.push(`${describe(opening)}: asChild is spread, not an attribute`)
@@ -23,6 +33,11 @@ export function reactAsChildToRender(source: string, filePath: string): Transfor
     const initializer = asChild.getInitializer()
     if (initializer && initializer.getText() !== '{true}') {
       skipped.push(`${describe(opening)}: asChild={${initializer.getText()}} is not a plain boolean`)
+      continue
+    }
+
+    if (opening.getAttribute('render')) {
+      skipped.push(`${describe(opening)}: element already has a render prop`)
       continue
     }
 

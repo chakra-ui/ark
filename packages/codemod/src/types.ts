@@ -4,7 +4,11 @@ export interface TransformResult {
   skipped: string[]
 }
 
-export type Transform = (source: string, filePath: string) => TransformResult
+export interface TransformOptions {
+  crossFile?: boolean
+}
+
+export type Transform = (source: string, filePath: string, options?: TransformOptions) => TransformResult
 
 export interface TransformDef {
   name: string
