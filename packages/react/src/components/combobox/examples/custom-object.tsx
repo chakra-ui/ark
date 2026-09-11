@@ -39,16 +39,18 @@ export const CustomObject = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content className={styles.Content}>
-            {collection.items.map((item) => (
-              <Combobox.Item className={styles.Item} key={item.code} item={item}>
-                <Combobox.ItemText className={styles.ItemText}>
-                  {item.flag} {item.country}
-                </Combobox.ItemText>
-                <Combobox.ItemIndicator className={styles.ItemIndicator}>
-                  <CheckIcon />
-                </Combobox.ItemIndicator>
-              </Combobox.Item>
-            ))}
+            <Combobox.List className={styles.List}>
+              {collection.items.map((item) => (
+                <Combobox.Item className={styles.Item} key={item.code} item={item}>
+                  <Combobox.ItemText className={styles.ItemText}>
+                    {item.flag} {item.country}
+                  </Combobox.ItemText>
+                  <Combobox.ItemIndicator className={styles.ItemIndicator}>
+                    <CheckIcon />
+                  </Combobox.ItemIndicator>
+                </Combobox.Item>
+              ))}
+            </Combobox.List>
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

@@ -29,11 +29,17 @@ export {
   type SignaturePadLabelBaseProps,
   type SignaturePadLabelProps,
 } from './signature-pad-label.tsx'
-export { SignaturePadRoot, type SignaturePadRootBaseProps, type SignaturePadRootProps } from './signature-pad-root.tsx'
+export {
+  SignaturePadRoot,
+  type SignaturePadRootBaseProps,
+  type SignaturePadRootProps,
+  type SignaturePadRootState,
+} from './signature-pad-root.tsx'
 export {
   SignaturePadRootProvider,
   type SignaturePadRootProviderBaseProps,
   type SignaturePadRootProviderProps,
+  type SignaturePadRootProviderState,
 } from './signature-pad-root-provider.tsx'
 export {
   SignaturePadSegment,

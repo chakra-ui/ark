@@ -4,9 +4,11 @@ import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
+import { useMenubarContext } from '../menubar/use-menubar-context.ts'
 import type { RootEmits } from './menu.ts'
+import { useMenuContext } from './use-menu-context.ts'
 
-export interface UseMenuProps extends Optional<Omit<menu.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseMenuProps extends Optional<Omit<menu.Props, 'dir' | 'getRootNode' | 'menubar'>, 'id'> {}
 
 export interface UseMenuReturn {
   api: ComputedRef<menu.Api<PropTypes>>
@@ -18,6 +20,9 @@ export const useMenu = (props: MaybeRef<UseMenuProps> = {}, emit?: EmitFn<RootEm
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
+  const parentMenu = useMenuContext()
+  const menubar = useMenubarContext()
+
   const context = computed<menu.Props>(() => {
     const localeProps = toValue<UseMenuProps>(props)
 
@@ -26,6 +31,7 @@ export const useMenu = (props: MaybeRef<UseMenuProps> = {}, emit?: EmitFn<RootEm
       dir: locale.value.dir,
       getRootNode: env?.value.getRootNode,
       ...cleanProps(localeProps),
+      menubar: parentMenu?.value ? undefined : menubar?.value.getMenuContext(),
       onOpenChange: (details) => {
         emit?.('openChange', details)
         emit?.('update:open', details.open)

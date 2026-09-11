@@ -1,4 +1,4 @@
-import type { OptionItemProps } from '@zag-js/menu'
+import type { OptionItemProps, OptionItemState } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -10,7 +10,9 @@ import { MenuItemPropsProvider } from './use-menu-option-item-props-context.ts'
 
 type PartialOptionItemProps = Omit<OptionItemProps, 'type' | 'checked' | 'onCheckedChange'>
 
-export interface MenuRadioItemBaseProps extends PartialOptionItemProps, PolymorphicProps<'div'> {}
+export interface MenuRadioItemState extends OptionItemState {}
+
+export interface MenuRadioItemBaseProps extends PartialOptionItemProps, PolymorphicProps<'div', MenuRadioItemState> {}
 export interface MenuRadioItemProps extends HTMLProps<'div'>, MenuRadioItemBaseProps {}
 
 export const MenuRadioItem = (props: MenuRadioItemProps) => {
@@ -34,7 +36,7 @@ export const MenuRadioItem = (props: MenuRadioItemProps) => {
   return (
     <MenuItemPropsProvider value={optionItemProps}>
       <MenuItemProvider value={optionItemState}>
-        <ark.div {...mergedProps} />
+        <ark.div {...mergedProps} state={context().getOptionItemState(optionItemProps)} />
       </MenuItemProvider>
     </MenuItemPropsProvider>
   )

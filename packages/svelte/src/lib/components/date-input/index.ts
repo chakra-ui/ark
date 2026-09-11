@@ -13,6 +13,7 @@ export {
   default as DateInputControl,
   type DateInputControlBaseProps,
   type DateInputControlProps,
+  type DateInputControlState,
 } from './date-input-control.svelte'
 export {
   default as DateInputHiddenInput,
@@ -28,21 +29,25 @@ export {
   default as DateInputRoot,
   type DateInputRootBaseProps,
   type DateInputRootProps,
+  type DateInputRootState,
 } from './date-input-root.svelte'
 export {
   default as DateInputRootProvider,
   type DateInputRootProviderBaseProps,
   type DateInputRootProviderProps,
+  type DateInputRootProviderState,
 } from './date-input-root-provider.svelte'
 export {
   default as DateInputSegment,
   type DateInputSegmentBaseProps,
   type DateInputSegmentProps,
+  type DateInputSegmentState,
 } from './date-input-segment.svelte'
 export {
   default as DateInputSegmentGroup,
   type DateInputSegmentGroupBaseProps,
   type DateInputSegmentGroupProps,
+  type DateInputSegmentGroupState,
 } from './date-input-segment-group.svelte'
 export { dateInputAnatomy } from './date-input.anatomy.js'
 export { useDateInput, type UseDateInputProps, type UseDateInputReturn } from './use-date-input.svelte.js'

@@ -4,17 +4,20 @@ export {
   default as ToggleGroupItem,
   type ToggleGroupItemBaseProps,
   type ToggleGroupItemProps,
+  type ToggleGroupItemState,
 } from './toggle-group-item.vue'
 export {
   default as ToggleGroupRootProvider,
   type ToggleGroupRootProviderBaseProps,
   type ToggleGroupRootProviderProps,
+  type ToggleGroupRootProviderState,
 } from './toggle-group-root-provider.vue'
 export {
   default as ToggleGroupRoot,
   type ToggleGroupRootBaseProps,
   type ToggleGroupRootEmits,
   type ToggleGroupRootProps,
+  type ToggleGroupRootState,
 } from './toggle-group-root.vue'
 export { toggleGroupAnatomy } from './toggle-group.anatomy.ts'
 export { useToggleGroup, type UseToggleGroupProps, type UseToggleGroupReturn } from './use-toggle-group.ts'

@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { PositionerState } from '@zag-js/tour'
   import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TourPositionerBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface TourPositionerState extends PositionerState {}
+  export interface TourPositionerBaseProps extends PolymorphicProps<'div', TourPositionerState>, RefAttribute {}
   export interface TourPositionerProps extends HTMLProps<'div'>, TourPositionerBaseProps {}
 </script>
 
@@ -20,5 +22,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {...mergedProps} />
+  <Ark as="div" bind:ref {...mergedProps} state={tour().getPositionerState()} />
 {/if}

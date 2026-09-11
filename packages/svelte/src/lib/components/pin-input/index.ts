@@ -17,17 +17,25 @@ export {
   default as PinInputInput,
   type PinInputInputBaseProps,
   type PinInputInputProps,
+  type PinInputInputState,
 } from './pin-input-input.svelte'
 export {
   default as PinInputLabel,
   type PinInputLabelBaseProps,
   type PinInputLabelProps,
+  type PinInputLabelState,
 } from './pin-input-label.svelte'
-export { default as PinInputRoot, type PinInputRootBaseProps, type PinInputRootProps } from './pin-input-root.svelte'
+export {
+  default as PinInputRoot,
+  type PinInputRootBaseProps,
+  type PinInputRootProps,
+  type PinInputRootState,
+} from './pin-input-root.svelte'
 export {
   default as PinInputRootProvider,
   type PinInputRootProviderBaseProps,
   type PinInputRootProviderProps,
+  type PinInputRootProviderState,
 } from './pin-input-root-provider.svelte'
 export { pinInputAnatomy } from './pin-input.anatomy.ts'
 export { usePinInputContext, type UsePinInputContext } from './use-pin-input-context.ts'

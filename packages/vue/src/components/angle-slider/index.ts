@@ -3,6 +3,7 @@ export {
   default as AngleSliderRoot,
   type AngleSliderRootBaseProps,
   type AngleSliderRootProps,
+  type AngleSliderRootState,
 } from './angle-slider-root.vue'
 export { angleSliderAnatomy } from './angle-slider.anatomy.ts'
 
@@ -30,11 +31,13 @@ export {
   default as AngleSliderMarker,
   type AngleSliderMarkerBaseProps,
   type AngleSliderMarkerProps,
+  type AngleSliderMarkerState,
 } from './angle-slider-marker.vue'
 export {
   default as AngleSliderRootProvider,
   type AngleSliderRootProviderBaseProps,
   type AngleSliderRootProviderProps,
+  type AngleSliderRootProviderState,
 } from './angle-slider-root-provider.vue'
 export {
   default as AngleSliderThumb,

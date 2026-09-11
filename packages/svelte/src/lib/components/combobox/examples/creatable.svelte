@@ -87,19 +87,21 @@
   <Portal>
     <Combobox.Positioner>
       <Combobox.Content class={styles.Content}>
-        {#each collection().items as item (item.value)}
-          <Combobox.Item class={styles.Item} {item}>
-            {#if isNewOptionValue(item.value)}
-              <Combobox.ItemText class={styles.ItemText}>+ Create "{item.label}"</Combobox.ItemText>
-            {:else}
-              <Combobox.ItemText class={styles.ItemText}>
-                {item.label}
-                {item.__new__ ? '(new)' : ''}
-              </Combobox.ItemText>
-            {/if}
-            <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
-          </Combobox.Item>
-        {/each}
+        <Combobox.List class={styles.List}>
+          {#each collection().items as item (item.value)}
+            <Combobox.Item class={styles.Item} {item}>
+              {#if isNewOptionValue(item.value)}
+                <Combobox.ItemText class={styles.ItemText}>+ Create "{item.label}"</Combobox.ItemText>
+              {:else}
+                <Combobox.ItemText class={styles.ItemText}>
+                  {item.label}
+                  {item.__new__ ? '(new)' : ''}
+                </Combobox.ItemText>
+              {/if}
+              <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
+            </Combobox.Item>
+          {/each}
+        </Combobox.List>
       </Combobox.Content>
     </Combobox.Positioner>
   </Portal>

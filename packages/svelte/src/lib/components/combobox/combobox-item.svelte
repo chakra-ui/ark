@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { ItemState } from '@zag-js/combobox'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ComboboxItemBaseProps extends PolymorphicProps<'div'>, RefAttribute {
+  export interface ComboboxItemState extends ItemState {}
+  export interface ComboboxItemBaseProps extends PolymorphicProps<'div', ComboboxItemState>, RefAttribute {
     item: unknown
     persistFocus?: boolean
   }
@@ -30,4 +32,4 @@
   ComboboxItemPropsProvider(() => itemProps)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={itemState} />

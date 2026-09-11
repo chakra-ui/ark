@@ -17,13 +17,19 @@ export {
   FileUploadDropzone,
   type FileUploadDropzoneBaseProps,
   type FileUploadDropzoneProps,
+  type FileUploadDropzoneState,
 } from './file-upload-dropzone.tsx'
 export {
   FileUploadHiddenInput,
   type FileUploadHiddenInputBaseProps,
   type FileUploadHiddenInputProps,
 } from './file-upload-hidden-input.tsx'
-export { FileUploadItem, type FileUploadItemBaseProps, type FileUploadItemProps } from './file-upload-item.tsx'
+export {
+  FileUploadItem,
+  type FileUploadItemBaseProps,
+  type FileUploadItemProps,
+  type FileUploadItemState,
+} from './file-upload-item.tsx'
 export {
   FileUploadItemDeleteTrigger,
   type FileUploadItemDeleteTriggerBaseProps,
@@ -33,6 +39,7 @@ export {
   FileUploadItemGroup,
   type FileUploadItemGroupBaseProps,
   type FileUploadItemGroupProps,
+  type FileUploadItemGroupState,
 } from './file-upload-item-group.tsx'
 export {
   FileUploadItemName,
@@ -55,16 +62,23 @@ export {
   type FileUploadItemSizeTextProps,
 } from './file-upload-item-size-text.tsx'
 export { FileUploadLabel, type FileUploadLabelBaseProps, type FileUploadLabelProps } from './file-upload-label.tsx'
-export { FileUploadRoot, type FileUploadRootBaseProps, type FileUploadRootProps } from './file-upload-root.tsx'
+export {
+  FileUploadRoot,
+  type FileUploadRootBaseProps,
+  type FileUploadRootProps,
+  type FileUploadRootState,
+} from './file-upload-root.tsx'
 export {
   FileUploadRootProvider,
   type FileUploadRootProviderBaseProps,
   type FileUploadRootProviderProps,
+  type FileUploadRootProviderState,
 } from './file-upload-root-provider.tsx'
 export {
   FileUploadTrigger,
   type FileUploadTriggerBaseProps,
   type FileUploadTriggerProps,
+  type FileUploadTriggerState,
 } from './file-upload-trigger.tsx'
 export { fileUploadAnatomy } from './file-upload.anatomy.ts'
 export { useFileUpload, type UseFileUploadProps, type UseFileUploadReturn } from './use-file-upload.ts'

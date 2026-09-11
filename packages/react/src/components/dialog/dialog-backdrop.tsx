@@ -8,8 +8,11 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { PresenceGate } from '../presence/presence-gate.tsx'
 import { usePresence } from '../presence/index.ts'
 import { useDialogContext } from './use-dialog-context.ts'
+import type { BackdropState } from '@zag-js/dialog'
 
-export interface DialogBackdropBaseProps extends PolymorphicProps {}
+export interface DialogBackdropState extends BackdropState {}
+
+export interface DialogBackdropBaseProps extends PolymorphicProps<DialogBackdropState> {}
 export interface DialogBackdropProps extends HTMLProps<'div'>, DialogBackdropBaseProps {}
 
 export const DialogBackdrop = forwardRef<HTMLDivElement, DialogBackdropProps>((props, ref) => {
@@ -21,7 +24,7 @@ export const DialogBackdrop = forwardRef<HTMLDivElement, DialogBackdropProps>((p
 
   return (
     <PresenceGate presence={presence}>
-      <ark.div {...mergedProps} ref={composedRefs} />
+      <ark.div {...mergedProps} ref={composedRefs} state={dialog.getBackdropState()} />
     </PresenceGate>
   )
 })

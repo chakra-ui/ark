@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { ContentState } from '@zag-js/tooltip'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TooltipContentBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface TooltipContentState extends ContentState {}
+  export interface TooltipContentBaseProps extends PolymorphicProps<'div', TooltipContentState>, RefAttribute {}
   export interface TooltipContentProps extends Assign<HTMLProps<'div'>, TooltipContentBaseProps> {}
 </script>
 
@@ -23,5 +25,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} state={tooltip().getContentState()} />
 {/if}

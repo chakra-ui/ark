@@ -1,4 +1,4 @@
-export { default as ToggleRoot } from './toggle-root.vue'
+export { default as ToggleRoot, type ToggleRootState } from './toggle-root.vue'
 export type { ToggleRootProps, ToggleRootBaseProps, ToggleRootEmits } from './toggle-root.vue'
 export { default as ToggleIndicator } from './toggle-indicator.vue'
 export type { ToggleIndicatorProps, ToggleIndicatorBaseProps } from './toggle-indicator.vue'

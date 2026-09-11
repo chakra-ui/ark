@@ -1,3 +1,4 @@
+import type { RootState } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
@@ -5,7 +6,10 @@ import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresenc
 import { type UseColorPickerProps, useColorPicker } from './use-color-picker.ts'
 import { ColorPickerProvider } from './use-color-picker-context.ts'
 
-export interface ColorPickerRootBaseProps extends UseColorPickerProps, UsePresenceProps, PolymorphicProps<'div'> {}
+export interface ColorPickerRootState extends RootState {}
+
+export interface ColorPickerRootBaseProps
+  extends UseColorPickerProps, UsePresenceProps, PolymorphicProps<'div', ColorPickerRootState> {}
 export interface ColorPickerRootProps extends HTMLProps<'div'>, ColorPickerRootBaseProps {}
 
 export const ColorPickerRoot = (props: ColorPickerRootProps) => {
@@ -45,7 +49,7 @@ export const ColorPickerRoot = (props: ColorPickerRootProps) => {
   return (
     <ColorPickerProvider value={api}>
       <PresenceProvider value={apiPresence}>
-        <ark.div {...mergedProps} />
+        <ark.div {...mergedProps} state={api().getRootState()} />
       </PresenceProvider>
     </ColorPickerProvider>
   )

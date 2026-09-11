@@ -6,7 +6,6 @@ export type {
   LoadChildrenDetails as TreeViewLoadChildrenDetails,
   LoadChildrenErrorDetails as TreeViewLoadChildrenErrorDetails,
   NodeIndicatorType as TreeViewNodeIndicatorType,
-  NodeState as TreeViewNodeState,
   RenameCompleteDetails as TreeViewRenameCompleteDetails,
   RenameStartDetails as TreeViewRenameStartDetails,
   SelectionChangeDetails as TreeViewSelectionChangeDetails,
@@ -25,7 +24,12 @@ export {
   type TreeViewIndentGuideProps,
 } from './tree-view-indent-guide.vue'
 export { default as TreeViewLabel, type TreeViewLabelBaseProps, type TreeViewLabelProps } from './tree-view-label.vue'
-export { default as TreeViewNode, type TreeViewNodeBaseProps, type TreeViewNodeProps } from './tree-view-node.vue'
+export {
+  default as TreeViewNode,
+  type TreeViewNodeBaseProps,
+  type TreeViewNodeProps,
+  type TreeViewNodeState,
+} from './tree-view-node.vue'
 export {
   default as TreeViewNodeCheckbox,
   type TreeViewNodeCheckboxBaseProps,

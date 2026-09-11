@@ -5,7 +5,12 @@ export {
   type RadioGroupIndicatorBaseProps,
   type RadioGroupIndicatorProps,
 } from './radio-group-indicator.tsx'
-export { RadioGroupItem, type RadioGroupItemBaseProps, type RadioGroupItemProps } from './radio-group-item.tsx'
+export {
+  RadioGroupItem,
+  type RadioGroupItemBaseProps,
+  type RadioGroupItemProps,
+  type RadioGroupItemState,
+} from './radio-group-item.tsx'
 export { RadioGroupItemContext, type RadioGroupItemContextProps } from './radio-group-item-context.tsx'
 export {
   RadioGroupItemControl,
@@ -23,11 +28,17 @@ export {
   type RadioGroupItemTextProps,
 } from './radio-group-item-text.tsx'
 export { RadioGroupLabel, type RadioGroupLabelBaseProps, type RadioGroupLabelProps } from './radio-group-label.tsx'
-export { RadioGroupRoot, type RadioGroupRootBaseProps, type RadioGroupRootProps } from './radio-group-root.tsx'
+export {
+  RadioGroupRoot,
+  type RadioGroupRootBaseProps,
+  type RadioGroupRootProps,
+  type RadioGroupRootState,
+} from './radio-group-root.tsx'
 export {
   RadioGroupRootProvider,
   type RadioGroupRootProviderBaseProps,
   type RadioGroupRootProviderProps,
+  type RadioGroupRootProviderState,
 } from './radio-group-root-provider.tsx'
 export { radioGroupAnatomy } from './radio-group.anatomy.ts'
 export { useRadioGroup, type UseRadioGroupProps, type UseRadioGroupReturn } from './use-radio-group.ts'

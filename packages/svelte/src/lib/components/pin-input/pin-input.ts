@@ -14,19 +14,23 @@ export {
   default as Input,
   type PinInputInputBaseProps as InputBaseProps,
   type PinInputInputProps as InputProps,
+  type PinInputInputState as InputState,
 } from './pin-input-input.svelte'
 export {
   default as Label,
   type PinInputLabelBaseProps as LabelBaseProps,
   type PinInputLabelProps as LabelProps,
+  type PinInputLabelState as LabelState,
 } from './pin-input-label.svelte'
 export {
   default as Root,
   type PinInputRootBaseProps as RootBaseProps,
   type PinInputRootProps as RootProps,
+  type PinInputRootState as RootState,
 } from './pin-input-root.svelte'
 export {
   default as RootProvider,
   type PinInputRootProviderBaseProps as RootProviderBaseProps,
   type PinInputRootProviderProps as RootProviderProps,
+  type PinInputRootProviderState as RootProviderState,
 } from './pin-input-root-provider.svelte'

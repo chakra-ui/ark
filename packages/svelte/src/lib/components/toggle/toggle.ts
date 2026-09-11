@@ -4,5 +4,6 @@ export {
   default as Root,
   type ToggleRootBaseProps as RootBaseProps,
   type ToggleRootProps as RootProps,
+  type ToggleRootState as RootState,
 } from './toggle-root.svelte'
 export { toggleAnatomy } from './toggle.anatomy.ts'

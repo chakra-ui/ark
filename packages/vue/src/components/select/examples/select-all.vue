@@ -23,25 +23,27 @@ const collection = createListCollection({
     <Teleport to="body">
       <Select.Positioner>
         <Select.Content :class="styles.Content">
-          <Select.Context v-slot="api">
-            <button
-              :class="button.Root"
-              type="button"
-              style="margin-bottom: 0.5rem"
-              @click="
-                () => {
-                  api.selectAll()
-                  api.setOpen(false)
-                }
-              "
-            >
-              Select All
-            </button>
-          </Select.Context>
-          <Select.Item v-for="item in collection.items" :key="item" :item="item" :class="styles.Item">
-            <Select.ItemText :class="styles.ItemText">{{ item }}</Select.ItemText>
-            <Select.ItemIndicator :class="styles.ItemIndicator">✓</Select.ItemIndicator>
-          </Select.Item>
+          <Select.List :class="styles.List">
+            <Select.Context v-slot="api">
+              <button
+                :class="button.Root"
+                type="button"
+                style="margin-bottom: 0.5rem"
+                @click="
+                  () => {
+                    api.selectAll()
+                    api.setOpen(false)
+                  }
+                "
+              >
+                Select All
+              </button>
+            </Select.Context>
+            <Select.Item v-for="item in collection.items" :key="item" :item="item" :class="styles.Item">
+              <Select.ItemText :class="styles.ItemText">{{ item }}</Select.ItemText>
+              <Select.ItemIndicator :class="styles.ItemIndicator">✓</Select.ItemIndicator>
+            </Select.Item>
+          </Select.List>
         </Select.Content>
       </Select.Positioner>
     </Teleport>

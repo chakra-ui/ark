@@ -1,7 +1,7 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import type { TriggerProps } from '@zag-js/menu'
+import type { TriggerProps, TriggerState } from '@zag-js/menu'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -9,7 +9,9 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { usePresenceContext } from '../presence/index.ts'
 import { useMenuContext } from './use-menu-context.ts'
 
-export interface MenuTriggerBaseProps extends TriggerProps, PolymorphicProps {}
+export interface MenuTriggerState extends TriggerState {}
+
+export interface MenuTriggerBaseProps extends TriggerProps, PolymorphicProps<MenuTriggerState> {}
 export interface MenuTriggerProps extends Assign<HTMLProps<'button'>, MenuTriggerBaseProps> {}
 
 const splitTriggerProps = createSplitProps<TriggerProps>()
@@ -27,7 +29,7 @@ export const MenuTrigger = forwardRef<HTMLButtonElement, MenuTriggerProps>((prop
     localProps,
   )
 
-  return <ark.button {...mergedProps} ref={ref} />
+  return <ark.button {...mergedProps} ref={ref} state={menu.getTriggerState(triggerProps)} />
 })
 
 MenuTrigger.displayName = 'MenuTrigger'

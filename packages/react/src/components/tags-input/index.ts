@@ -20,7 +20,12 @@ export {
   type TagsInputHiddenInputProps,
 } from './tags-input-hidden-input.tsx'
 export { TagsInputInput, type TagsInputInputBaseProps, type TagsInputInputProps } from './tags-input-input.tsx'
-export { TagsInputItem, type TagsInputItemBaseProps, type TagsInputItemProps } from './tags-input-item.tsx'
+export {
+  TagsInputItem,
+  type TagsInputItemBaseProps,
+  type TagsInputItemProps,
+  type TagsInputItemState,
+} from './tags-input-item.tsx'
 export { TagsInputItemContext, type TagsInputItemContextProps } from './tags-input-item-context.tsx'
 export {
   TagsInputItemDeleteTrigger,
@@ -43,11 +48,17 @@ export {
   type TagsInputItemTextProps,
 } from './tags-input-item-text.tsx'
 export { TagsInputLabel, type TagsInputLabelBaseProps, type TagsInputLabelProps } from './tags-input-label.tsx'
-export { TagsInputRoot, type TagsInputRootBaseProps, type TagsInputRootProps } from './tags-input-root.tsx'
+export {
+  TagsInputRoot,
+  type TagsInputRootBaseProps,
+  type TagsInputRootProps,
+  type TagsInputRootState,
+} from './tags-input-root.tsx'
 export {
   TagsInputRootProvider,
   type TagsInputRootProviderBaseProps,
   type TagsInputRootProviderProps,
+  type TagsInputRootProviderState,
 } from './tags-input-root-provider.tsx'
 export { tagsInputAnatomy } from './tags-input.anatomy.ts'
 export { useTagsInput, type UseTagsInputProps, type UseTagsInputReturn } from './use-tags-input.ts'

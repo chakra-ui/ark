@@ -23,7 +23,7 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
           <TreeView.Node class={styles.Node}>
             <TreeView.Cell
               class={styles.Cell}
-              asChild={(cellProps) => (
+              render={(cellProps) => (
                 <a href={props.node.href} {...cellProps()}>
                   <TreeView.NodeText class={styles.NodeText}>
                     <FileIcon />

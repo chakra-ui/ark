@@ -5,7 +5,12 @@ export {
   type SegmentGroupIndicatorBaseProps,
   type SegmentGroupIndicatorProps,
 } from './segment-group-indicator.tsx'
-export { SegmentGroupItem, type SegmentGroupItemBaseProps, type SegmentGroupItemProps } from './segment-group-item.tsx'
+export {
+  SegmentGroupItem,
+  type SegmentGroupItemBaseProps,
+  type SegmentGroupItemProps,
+  type SegmentGroupItemState,
+} from './segment-group-item.tsx'
 export { SegmentGroupItemContext, type SegmentGroupItemContextProps } from './segment-group-item-context.tsx'
 export {
   SegmentGroupItemControl,
@@ -27,11 +32,17 @@ export {
   type SegmentGroupLabelBaseProps,
   type SegmentGroupLabelProps,
 } from './segment-group-label.tsx'
-export { SegmentGroupRoot, type SegmentGroupRootBaseProps, type SegmentGroupRootProps } from './segment-group-root.tsx'
+export {
+  SegmentGroupRoot,
+  type SegmentGroupRootBaseProps,
+  type SegmentGroupRootProps,
+  type SegmentGroupRootState,
+} from './segment-group-root.tsx'
 export {
   SegmentGroupRootProvider,
   type SegmentGroupRootProviderBaseProps,
   type SegmentGroupRootProviderProps,
+  type SegmentGroupRootProviderState,
 } from './segment-group-root-provider.tsx'
 export { segmentGroupAnatomy } from './segment-group.anatomy.ts'
 export { useSegmentGroup, type UseSegmentGroupProps, type UseSegmentGroupReturn } from './use-segment-group.ts'

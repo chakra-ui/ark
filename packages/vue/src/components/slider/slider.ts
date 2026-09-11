@@ -29,6 +29,7 @@ export {
   default as Marker,
   type SliderMarkerBaseProps as MarkerBaseProps,
   type SliderMarkerProps as MarkerProps,
+  type SliderMarkerState as MarkerState,
 } from './slider-marker.vue'
 export {
   default as Range,
@@ -39,17 +40,20 @@ export {
   default as RootProvider,
   type SliderRootProviderBaseProps as RootProviderBaseProps,
   type SliderRootProviderProps as RootProviderProps,
+  type SliderRootProviderState as RootProviderState,
 } from './slider-root-provider.vue'
 export {
   default as Root,
   type SliderRootBaseProps as RootBaseProps,
   type SliderRootEmits as RootEmits,
   type SliderRootProps as RootProps,
+  type SliderRootState as RootState,
 } from './slider-root.vue'
 export {
   default as Thumb,
   type SliderThumbBaseProps as ThumbBaseProps,
   type SliderThumbProps as ThumbProps,
+  type SliderThumbState as ThumbState,
 } from './slider-thumb.vue'
 export {
   default as Track,

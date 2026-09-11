@@ -12,12 +12,14 @@ export const Disabled = () => {
           value={item.value}
           disabled={item.value === 'getting-started'}
         >
-          <Accordion.ItemTrigger className={styles.ItemTrigger}>
-            {item.title}
-            <Accordion.ItemIndicator className={styles.ItemIndicator}>
-              <ChevronDownIcon />
-            </Accordion.ItemIndicator>
-          </Accordion.ItemTrigger>
+          <Accordion.ItemHeader className={styles.ItemHeader}>
+            <Accordion.ItemTrigger className={styles.ItemTrigger}>
+              {item.title}
+              <Accordion.ItemIndicator className={styles.ItemIndicator}>
+                <ChevronDownIcon />
+              </Accordion.ItemIndicator>
+            </Accordion.ItemTrigger>
+          </Accordion.ItemHeader>
           <Accordion.ItemContent className={styles.ItemContent}>
             <div className={styles.ItemBody}>{item.content}</div>
           </Accordion.ItemContent>

@@ -2,6 +2,7 @@ export {
   default as Content,
   type ListboxContentBaseProps as ContentBaseProps,
   type ListboxContentProps as ContentProps,
+  type ListboxContentState as ContentState,
 } from './listbox-content.svelte'
 export { default as Context, type ListboxContextProps as ContextProps } from './listbox-context.svelte'
 export {
@@ -18,6 +19,7 @@ export {
   default as Item,
   type ListboxItemBaseProps as ItemBaseProps,
   type ListboxItemProps as ItemProps,
+  type ListboxItemState as ItemState,
 } from './listbox-item.svelte'
 export { default as ItemContext, type ListboxItemContextProps as ItemContextProps } from './listbox-item-context.svelte'
 export {
@@ -49,6 +51,7 @@ export {
   default as List,
   type ListboxListBaseProps as ListBaseProps,
   type ListboxListProps as ListProps,
+  type ListboxListState as ListState,
 } from './listbox-list.svelte'
 export {
   default as Root,
@@ -63,6 +66,7 @@ export {
   type ListboxRootProviderProps as RootProviderProps,
   type ListboxRootProviderComponent as RootProviderComponent,
 } from './listbox-root-provider.svelte'
+export { default as Status, type ListboxStatusProps as StatusProps } from './listbox-status.svelte'
 export {
   default as ValueText,
   type ListboxValueTextBaseProps as ValueTextBaseProps,

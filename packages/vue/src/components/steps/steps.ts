@@ -18,6 +18,7 @@ export {
   default as Item,
   type StepsItemBaseProps as ItemBaseProps,
   type StepsItemProps as ItemProps,
+  type StepsItemState as ItemState,
 } from './steps-item.vue'
 export {
   default as List,

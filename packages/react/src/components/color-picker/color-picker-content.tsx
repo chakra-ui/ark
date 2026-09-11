@@ -7,8 +7,11 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { PresenceGate } from '../presence/presence-gate.tsx'
 import { usePresenceContext } from '../presence/index.ts'
 import { useColorPickerContext } from './use-color-picker-context.ts'
+import type { ContentState } from '@zag-js/color-picker'
 
-export interface ColorPickerContentBaseProps extends PolymorphicProps {}
+export interface ColorPickerContentState extends ContentState {}
+
+export interface ColorPickerContentBaseProps extends PolymorphicProps<ColorPickerContentState> {}
 export interface ColorPickerContentProps extends HTMLProps<'div'>, ColorPickerContentBaseProps {}
 
 export const ColorPickerContent = forwardRef<HTMLDivElement, ColorPickerContentProps>((props, ref) => {
@@ -19,7 +22,7 @@ export const ColorPickerContent = forwardRef<HTMLDivElement, ColorPickerContentP
 
   return (
     <PresenceGate presence={presence}>
-      <ark.div {...mergedProps} ref={composedRefs} />
+      <ark.div {...mergedProps} ref={composedRefs} state={colorPicker.getContentState()} />
     </PresenceGate>
   )
 })

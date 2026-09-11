@@ -13,18 +13,30 @@ export {
   type PinInputHiddenInputBaseProps,
   type PinInputHiddenInputProps,
 } from './pin-input-hidden-input.vue'
-export { default as PinInputInput, type PinInputInputBaseProps, type PinInputInputProps } from './pin-input-input.vue'
-export { default as PinInputLabel, type PinInputLabelBaseProps, type PinInputLabelProps } from './pin-input-label.vue'
+export {
+  default as PinInputInput,
+  type PinInputInputBaseProps,
+  type PinInputInputProps,
+  type PinInputInputState,
+} from './pin-input-input.vue'
+export {
+  default as PinInputLabel,
+  type PinInputLabelBaseProps,
+  type PinInputLabelProps,
+  type PinInputLabelState,
+} from './pin-input-label.vue'
 export {
   default as PinInputRootProvider,
   type PinInputRootProviderBaseProps,
   type PinInputRootProviderProps,
+  type PinInputRootProviderState,
 } from './pin-input-root-provider.vue'
 export {
   default as PinInputRoot,
   type PinInputRootBaseProps,
   type PinInputRootEmits,
   type PinInputRootProps,
+  type PinInputRootState,
 } from './pin-input-root.vue'
 export { pinInputAnatomy } from './pin-input.anatomy.ts'
 export { usePinInput, type UsePinInputProps, type UsePinInputReturn } from './use-pin-input.ts'

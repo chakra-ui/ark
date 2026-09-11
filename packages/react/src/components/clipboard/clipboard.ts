@@ -9,6 +9,7 @@ export {
   ClipboardIndicator as Indicator,
   type ClipboardIndicatorBaseProps as IndicatorBaseProps,
   type ClipboardIndicatorProps as IndicatorProps,
+  type ClipboardIndicatorState as IndicatorState,
 } from './clipboard-indicator.tsx'
 export {
   ClipboardInput as Input,

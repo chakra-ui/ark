@@ -19,6 +19,7 @@ export {
   default as PaginationItem,
   type PaginationItemBaseProps,
   type PaginationItemProps,
+  type PaginationItemState,
 } from './pagination-item.vue'
 export {
   default as PaginationLastTrigger,

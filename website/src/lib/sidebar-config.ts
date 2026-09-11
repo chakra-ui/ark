@@ -58,6 +58,7 @@ export const sidebarConfig: SidebarGroupConfig[] = [
       { id: 'listbox' },
       { id: 'marquee' },
       { id: 'menu' },
+      { id: 'menubar' },
       { id: 'navigation-menu' },
       { id: 'number-input' },
       { id: 'pagination' },

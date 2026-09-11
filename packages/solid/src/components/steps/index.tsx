@@ -7,7 +7,7 @@ export {
 export { StepsContent, type StepsContentBaseProps, type StepsContentProps } from './steps-content.tsx'
 export { StepsContext, type StepsContextProps } from './steps-context.tsx'
 export { StepsIndicator, type StepsIndicatorBaseProps, type StepsIndicatorProps } from './steps-indicator.tsx'
-export { StepsItem, type StepsItemBaseProps, type StepsItemProps } from './steps-item.tsx'
+export { StepsItem, type StepsItemBaseProps, type StepsItemProps, type StepsItemState } from './steps-item.tsx'
 export { StepsItemContext, type StepsItemContextProps } from './steps-item-context.tsx'
 export { StepsList, type StepsListBaseProps, type StepsListProps } from './steps-list.tsx'
 export { StepsNextTrigger, type StepsNextTriggerBaseProps, type StepsNextTriggerProps } from './steps-next-trigger.tsx'

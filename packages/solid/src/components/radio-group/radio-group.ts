@@ -9,6 +9,7 @@ export {
   RadioGroupItem as Item,
   type RadioGroupItemBaseProps as ItemBaseProps,
   type RadioGroupItemProps as ItemProps,
+  type RadioGroupItemState as ItemState,
 } from './radio-group-item.tsx'
 export {
   RadioGroupItemContext as ItemContext,
@@ -38,9 +39,11 @@ export {
   RadioGroupRoot as Root,
   type RadioGroupRootBaseProps as RootBaseProps,
   type RadioGroupRootProps as RootProps,
+  type RadioGroupRootState as RootState,
 } from './radio-group-root.tsx'
 export {
   RadioGroupRootProvider as RootProvider,
   type RadioGroupRootProviderBaseProps as RootProviderBaseProps,
   type RadioGroupRootProviderProps as RootProviderProps,
+  type RadioGroupRootProviderState as RootProviderState,
 } from './radio-group-root-provider.tsx'

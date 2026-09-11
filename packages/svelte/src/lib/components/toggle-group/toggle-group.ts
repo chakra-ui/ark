@@ -3,14 +3,17 @@ export {
   default as Item,
   type ToggleGroupItemBaseProps as ItemBaseProps,
   type ToggleGroupItemProps as ItemProps,
+  type ToggleGroupItemState as ItemState,
 } from './toggle-group-item.svelte'
 export {
   default as Root,
   type ToggleGroupRootBaseProps as RootBaseProps,
   type ToggleGroupRootProps as RootProps,
+  type ToggleGroupRootState as RootState,
 } from './toggle-group-root.svelte'
 export {
   default as RootProvider,
   type ToggleGroupRootProviderBaseProps as RootProviderBaseProps,
   type ToggleGroupRootProviderProps as RootProviderProps,
+  type ToggleGroupRootProviderState as RootProviderState,
 } from './toggle-group-root-provider.svelte'

@@ -15,7 +15,12 @@ export {
   type PaginationFirstTriggerBaseProps,
   type PaginationFirstTriggerProps,
 } from './pagination-first-trigger.tsx'
-export { PaginationItem, type PaginationItemBaseProps, type PaginationItemProps } from './pagination-item.tsx'
+export {
+  PaginationItem,
+  type PaginationItemBaseProps,
+  type PaginationItemProps,
+  type PaginationItemState,
+} from './pagination-item.tsx'
 export {
   PaginationLastTrigger,
   type PaginationLastTriggerBaseProps,

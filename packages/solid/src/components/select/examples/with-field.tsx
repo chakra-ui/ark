@@ -22,14 +22,16 @@ export const WithField = () => {
         </Select.Control>
         <Select.Positioner>
           <Select.Content class={styles.Content}>
-            <Index each={collection.items}>
-              {(item) => (
-                <Select.Item class={styles.Item} item={item()}>
-                  <Select.ItemText class={styles.ItemText}>{item()}</Select.ItemText>
-                  <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
-                </Select.Item>
-              )}
-            </Index>
+            <Select.List class={styles.List}>
+              <Index each={collection.items}>
+                {(item) => (
+                  <Select.Item class={styles.Item} item={item()}>
+                    <Select.ItemText class={styles.ItemText}>{item()}</Select.ItemText>
+                    <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
+                  </Select.Item>
+                )}
+              </Index>
+            </Select.List>
           </Select.Content>
         </Select.Positioner>
         <Select.HiddenSelect />

@@ -1,8 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { ItemProps } from '@zag-js/pagination'
+  import type { ItemProps, ItemState } from '@zag-js/pagination'
 
-  export interface PaginationItemBaseProps extends ItemProps, PolymorphicProps<'button'>, RefAttribute {}
+  export interface PaginationItemState extends ItemState {}
+  export interface PaginationItemBaseProps
+    extends ItemProps, PolymorphicProps<'button', PaginationItemState>, RefAttribute {}
   export interface PaginationItemProps extends Assign<HTMLProps<'button'>, PaginationItemBaseProps> {}
 </script>
 
@@ -18,4 +20,4 @@
   const mergedProps = $derived(mergeProps(pagination().getItemProps(itemProps), localProps))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} state={pagination().getItemState(itemProps)} />

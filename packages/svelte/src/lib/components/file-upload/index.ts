@@ -17,6 +17,7 @@ export {
   default as FileUploadDropzone,
   type FileUploadDropzoneBaseProps,
   type FileUploadDropzoneProps,
+  type FileUploadDropzoneState,
 } from './file-upload-dropzone.svelte'
 export {
   default as FileUploadHiddenInput,
@@ -27,6 +28,7 @@ export {
   default as FileUploadItem,
   type FileUploadItemBaseProps,
   type FileUploadItemProps,
+  type FileUploadItemState,
 } from './file-upload-item.svelte'
 export {
   default as FileUploadItemDeleteTrigger,
@@ -37,6 +39,7 @@ export {
   default as FileUploadItemGroup,
   type FileUploadItemGroupBaseProps,
   type FileUploadItemGroupProps,
+  type FileUploadItemGroupState,
 } from './file-upload-item-group.svelte'
 export {
   default as FileUploadItemName,
@@ -67,16 +70,19 @@ export {
   default as FileUploadRoot,
   type FileUploadRootBaseProps,
   type FileUploadRootProps,
+  type FileUploadRootState,
 } from './file-upload-root.svelte'
 export {
   default as FileUploadRootProvider,
   type FileUploadRootProviderBaseProps,
   type FileUploadRootProviderProps,
+  type FileUploadRootProviderState,
 } from './file-upload-root-provider.svelte'
 export {
   default as FileUploadTrigger,
   type FileUploadTriggerBaseProps,
   type FileUploadTriggerProps,
+  type FileUploadTriggerState,
 } from './file-upload-trigger.svelte'
 export { fileUploadAnatomy } from './file-upload.anatomy.ts'
 export { useFileUploadContext, type UseFileUploadContext } from './use-file-upload-context.ts'

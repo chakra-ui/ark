@@ -7,6 +7,7 @@ export {
   default as Control,
   type DateInputControlProps as ControlProps,
   type DateInputControlBaseProps as ControlBaseProps,
+  type DateInputControlState as ControlState,
 } from './date-input-control.vue'
 export {
   default as HiddenInput,
@@ -22,20 +23,24 @@ export {
   default as RootProvider,
   type DateInputRootProviderProps as RootProviderProps,
   type DateInputRootProviderBaseProps as RootProviderBaseProps,
+  type DateInputRootProviderState as RootProviderState,
 } from './date-input-root-provider.vue'
 export {
   default as Root,
   type DateInputRootEmits as RootEmits,
   type DateInputRootBaseProps as RootBaseProps,
   type DateInputRootProps as RootProps,
+  type DateInputRootState as RootState,
 } from './date-input-root.vue'
 export {
   default as SegmentGroup,
   type DateInputSegmentGroupProps as SegmentGroupProps,
   type DateInputSegmentGroupBaseProps as SegmentGroupBaseProps,
+  type DateInputSegmentGroupState as SegmentGroupState,
 } from './date-input-segment-group.vue'
 export {
   default as Segment,
   type DateInputSegmentProps as SegmentProps,
   type DateInputSegmentBaseProps as SegmentBaseProps,
+  type DateInputSegmentState as SegmentState,
 } from './date-input-segment.vue'

@@ -18,6 +18,7 @@ export {
   default as Content,
   type DatePickerContentBaseProps as ContentBaseProps,
   type DatePickerContentProps as ContentProps,
+  type DatePickerContentState as ContentState,
 } from './date-picker-content.svelte'
 export { default as Context, type DatePickerContextProps as ContextProps } from './date-picker-context.svelte'
 export {
@@ -29,6 +30,7 @@ export {
   default as Input,
   type DatePickerInputBaseProps as InputBaseProps,
   type DatePickerInputProps as InputProps,
+  type DatePickerInputState as InputState,
 } from './date-picker-input.svelte'
 export {
   default as Label,
@@ -75,11 +77,13 @@ export {
   default as Root,
   type DatePickerRootBaseProps as RootBaseProps,
   type DatePickerRootProps as RootProps,
+  type DatePickerRootState as RootState,
 } from './date-picker-root.svelte'
 export {
   default as RootProvider,
   type DatePickerRootProviderBaseProps as RootProviderBaseProps,
   type DatePickerRootProviderProps as RootProviderProps,
+  type DatePickerRootProviderState as RootProviderState,
 } from './date-picker-root-provider.svelte'
 export {
   default as Table,
@@ -105,6 +109,7 @@ export {
   default as Trigger,
   type DatePickerTriggerBaseProps as TriggerBaseProps,
   type DatePickerTriggerProps as TriggerProps,
+  type DatePickerTriggerState as TriggerState,
 } from './date-picker-trigger.svelte'
 export {
   default as TableCell,

@@ -1,9 +1,10 @@
 <script lang="ts" module>
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
-  import type { ResizeTriggerProps } from '@zag-js/floating-panel'
+  import type { ResizeTriggerProps, ResizeTriggerState } from '@zag-js/floating-panel'
 
+  export interface FloatingPanelResizeTriggerState extends ResizeTriggerState {}
   export interface FloatingPanelResizeTriggerBaseProps
-    extends ResizeTriggerProps, PolymorphicProps<'div'>, RefAttribute {}
+    extends ResizeTriggerProps, PolymorphicProps<'div', FloatingPanelResizeTriggerState>, RefAttribute {}
   export interface FloatingPanelResizeTriggerProps extends Assign<
     HTMLProps<'div'>,
     FloatingPanelResizeTriggerBaseProps
@@ -23,4 +24,4 @@
   const mergedProps = $derived(mergeProps(floatingPanel().getResizeTriggerProps(resizeProps), localProps))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={floatingPanel().getResizeTriggerState(resizeProps)} />

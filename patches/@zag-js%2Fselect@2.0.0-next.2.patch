@@ -1,0 +1,322 @@
+diff --git a/dist/align-with-trigger.js b/dist/align-with-trigger.js
+index e372220c1e9968bdf9d533920faaa6fda1224615..da65192a0f59f25e5e4049484550a8f2b8f65c62 100644
+--- a/dist/align-with-trigger.js
++++ b/dist/align-with-trigger.js
+@@ -53,7 +53,8 @@ var POSITIONER_STYLE_KEYS = [
+ var CONTENT_STYLE_KEYS = ["height"];
+ var EMPTY_RESULT = {
+   cleanup: import_utils.noop,
+-  transformOrigin: "50% 50%"
++  transformOrigin: "50% 50%",
++  styles: {}
+ };
+ function captureStyles(el, keys) {
+   const prev = {};
+@@ -147,10 +148,11 @@ function alignItemWithTrigger(options) {
+   }
+   const restorePositioner = captureStyles(positionerEl, POSITIONER_STYLE_KEYS);
+   const restoreContent = captureStyles(contentEl, CONTENT_STYLE_KEYS);
++  positionerEl.style.setProperty("--reference-width", (0, import_utils.toPx)(triggerRect.width));
+   positionerEl.style.position = "fixed";
+   positionerEl.style.left = (0, import_utils.toPx)(clampedLeft);
+   positionerEl.style.height = (0, import_utils.toPx)(height);
+-  positionerEl.style.maxHeight = "auto";
++  positionerEl.style.maxHeight = "none";
+   positionerEl.style.marginTop = (0, import_utils.toPx)(marginTop);
+   positionerEl.style.marginBottom = (0, import_utils.toPx)(marginBottom);
+   contentEl.style.height = "100%";
+@@ -171,14 +173,36 @@ function alignItemWithTrigger(options) {
+     positionerEl.style.bottom = "auto";
+     const adjustedHeight = Math.max(0, height - contentOffsetTop);
+     positionerEl.style.height = (0, import_utils.toPx)(adjustedHeight);
+-    scroller.scrollTop = Math.max(0, scrollHeight - adjustedHeight);
++    scroller.scrollTop = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
+   } else {
+     positionerEl.style.top = "auto";
+-    positionerEl.style.bottom = "0px";
++    const naturalHeight = positionerRect.height - scrollerRect.height + scrollHeight;
++    if (naturalHeight < height) {
++      positionerEl.style.bottom = (0, import_utils.toPx)(height - naturalHeight);
++      positionerEl.style.height = (0, import_utils.toPx)(naturalHeight);
++    } else {
++      positionerEl.style.bottom = "0px";
++    }
+     scroller.scrollTop = scrollTopTarget;
+   }
++  const styles = {};
++  const resolved = [
++    ["--reference-width", (0, import_utils.toPx)(triggerRect.width)],
++    ["position", positionerEl.style.position],
++    ["left", positionerEl.style.left],
++    ["top", positionerEl.style.top],
++    ["bottom", positionerEl.style.bottom],
++    ["height", positionerEl.style.height],
++    ["maxHeight", positionerEl.style.maxHeight],
++    ["marginTop", positionerEl.style.marginTop],
++    ["marginBottom", positionerEl.style.marginBottom]
++  ];
++  for (const [key, value] of resolved) {
++    if (value !== "" && value != null) styles[key] = value;
++  }
+   return {
+     transformOrigin,
++    styles,
+     cleanup() {
+       restoreContent();
+       restorePositioner();
+@@ -214,8 +238,11 @@ function trackAlignItemWithTrigger(scope, options) {
+     const marginTop = parseFloat(positionerStyles.marginTop) || 0;
+     const marginBottom = parseFloat(positionerStyles.marginBottom) || 0;
+     const viewportMax = win.document.documentElement.clientHeight - marginTop - marginBottom;
+-    const contentMaxHeight = parseFloat((0, import_dom_query.getComputedStyle)(scroller).maxHeight);
+-    const maxAvailableHeight = contentMaxHeight > 0 ? Math.min(viewportMax, contentMaxHeight) : viewportMax;
++    const readMaxHeight = (el) => {
++      const value = parseFloat((0, import_dom_query.getComputedStyle)(el).maxHeight);
++      return Number.isFinite(value) && value > 0 ? value : Number.POSITIVE_INFINITY;
++    };
++    const maxAvailableHeight = Math.min(viewportMax, readMaxHeight(scroller), readMaxHeight(contentEl));
+     const scrollTop = scroller.scrollTop;
+     const maxScrollTop = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
+     const diff = isTopPositioned ? maxScrollTop - scrollTop : scrollTop;
+@@ -277,7 +304,7 @@ function trackAlignItemWithTrigger(scope, options) {
+     if (fellBack) return;
+     currentCleanup = result.cleanup;
+     dom.getContentEl(scope)?.style.setProperty(TRANSFORM_ORIGIN_VAR, result.transformOrigin);
+-    onAligned?.();
++    onAligned?.(result.styles);
+   };
+   const scheduleAlign = () => {
+     if (disposed || fellBack || pendingFrame != null) return;
+diff --git a/dist/align-with-trigger.mjs b/dist/align-with-trigger.mjs
+index a7de71241583789c2e2d8f85de3b40e8c3a96bc9..a1181a1d09b7192862eb8238b8e92f70091020d7 100644
+--- a/dist/align-with-trigger.mjs
++++ b/dist/align-with-trigger.mjs
+@@ -19,7 +19,8 @@ var POSITIONER_STYLE_KEYS = [
+ var CONTENT_STYLE_KEYS = ["height"];
+ var EMPTY_RESULT = {
+   cleanup: noop,
+-  transformOrigin: "50% 50%"
++  transformOrigin: "50% 50%",
++  styles: {}
+ };
+ function captureStyles(el, keys) {
+   const prev = {};
+@@ -113,10 +114,11 @@ function alignItemWithTrigger(options) {
+   }
+   const restorePositioner = captureStyles(positionerEl, POSITIONER_STYLE_KEYS);
+   const restoreContent = captureStyles(contentEl, CONTENT_STYLE_KEYS);
++  positionerEl.style.setProperty("--reference-width", toPx(triggerRect.width));
+   positionerEl.style.position = "fixed";
+   positionerEl.style.left = toPx(clampedLeft);
+   positionerEl.style.height = toPx(height);
+-  positionerEl.style.maxHeight = "auto";
++  positionerEl.style.maxHeight = "none";
+   positionerEl.style.marginTop = toPx(marginTop);
+   positionerEl.style.marginBottom = toPx(marginBottom);
+   contentEl.style.height = "100%";
+@@ -137,14 +139,36 @@ function alignItemWithTrigger(options) {
+     positionerEl.style.bottom = "auto";
+     const adjustedHeight = Math.max(0, height - contentOffsetTop);
+     positionerEl.style.height = toPx(adjustedHeight);
+-    scroller.scrollTop = Math.max(0, scrollHeight - adjustedHeight);
++    scroller.scrollTop = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
+   } else {
+     positionerEl.style.top = "auto";
+-    positionerEl.style.bottom = "0px";
++    const naturalHeight = positionerRect.height - scrollerRect.height + scrollHeight;
++    if (naturalHeight < height) {
++      positionerEl.style.bottom = toPx(height - naturalHeight);
++      positionerEl.style.height = toPx(naturalHeight);
++    } else {
++      positionerEl.style.bottom = "0px";
++    }
+     scroller.scrollTop = scrollTopTarget;
+   }
++  const styles = {};
++  const resolved = [
++    ["--reference-width", toPx(triggerRect.width)],
++    ["position", positionerEl.style.position],
++    ["left", positionerEl.style.left],
++    ["top", positionerEl.style.top],
++    ["bottom", positionerEl.style.bottom],
++    ["height", positionerEl.style.height],
++    ["maxHeight", positionerEl.style.maxHeight],
++    ["marginTop", positionerEl.style.marginTop],
++    ["marginBottom", positionerEl.style.marginBottom]
++  ];
++  for (const [key, value] of resolved) {
++    if (value !== "" && value != null) styles[key] = value;
++  }
+   return {
+     transformOrigin,
++    styles,
+     cleanup() {
+       restoreContent();
+       restorePositioner();
+@@ -180,8 +204,11 @@ function trackAlignItemWithTrigger(scope, options) {
+     const marginTop = parseFloat(positionerStyles.marginTop) || 0;
+     const marginBottom = parseFloat(positionerStyles.marginBottom) || 0;
+     const viewportMax = win.document.documentElement.clientHeight - marginTop - marginBottom;
+-    const contentMaxHeight = parseFloat(getComputedStyle(scroller).maxHeight);
+-    const maxAvailableHeight = contentMaxHeight > 0 ? Math.min(viewportMax, contentMaxHeight) : viewportMax;
++    const readMaxHeight = (el) => {
++      const value = parseFloat(getComputedStyle(el).maxHeight);
++      return Number.isFinite(value) && value > 0 ? value : Number.POSITIVE_INFINITY;
++    };
++    const maxAvailableHeight = Math.min(viewportMax, readMaxHeight(scroller), readMaxHeight(contentEl));
+     const scrollTop = scroller.scrollTop;
+     const maxScrollTop = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
+     const diff = isTopPositioned ? maxScrollTop - scrollTop : scrollTop;
+@@ -243,7 +270,7 @@ function trackAlignItemWithTrigger(scope, options) {
+     if (fellBack) return;
+     currentCleanup = result.cleanup;
+     dom.getContentEl(scope)?.style.setProperty(TRANSFORM_ORIGIN_VAR, result.transformOrigin);
+-    onAligned?.();
++    onAligned?.(result.styles);
+   };
+   const scheduleAlign = () => {
+     if (disposed || fellBack || pendingFrame != null) return;
+diff --git a/dist/select.connect.js b/dist/select.connect.js
+index 6e18a869997d8fa75c00226abf040912d5a2fc14..c0f8827c6c682a597631a8160014fb2ff1e44efc 100644
+--- a/dist/select.connect.js
++++ b/dist/select.connect.js
+@@ -68,6 +68,7 @@ function connect(service, normalize) {
+   const selectedItems = computed("selectedItems");
+   const currentPlacement = context.get("currentPlacement");
+   const aligned = context.get("aligned");
++  const alignStyles = context.get("alignStyles");
+   const currentPlacementSide = currentPlacement ? (0, import_popper.getPlacementSide)(currentPlacement) : void 0;
+   const isTypingAhead = computed("isTypingAhead");
+   const interactive = computed("isInteractive");
+@@ -452,6 +453,7 @@ function connect(service, normalize) {
+         style: {
+           ...popperStyles.floating,
+           transform: aligned ? "none" : popperStyles.floating.transform,
++          ...alignStyles ?? {},
+           ...(0, import_dismissable.getDismissableLayerStyle)(layer, { zIndex: true })
+         }
+       });
+diff --git a/dist/select.connect.mjs b/dist/select.connect.mjs
+index 795e2b12153f7fae63b4866a4afedd1c15b25fd3..cf1b17fc6caacc5a715e42262d9d73e699fce926 100644
+--- a/dist/select.connect.mjs
++++ b/dist/select.connect.mjs
+@@ -46,6 +46,7 @@ function connect(service, normalize) {
+   const selectedItems = computed("selectedItems");
+   const currentPlacement = context.get("currentPlacement");
+   const aligned = context.get("aligned");
++  const alignStyles = context.get("alignStyles");
+   const currentPlacementSide = currentPlacement ? getPlacementSide(currentPlacement) : void 0;
+   const isTypingAhead = computed("isTypingAhead");
+   const interactive = computed("isInteractive");
+@@ -430,6 +431,7 @@ function connect(service, normalize) {
+         style: {
+           ...popperStyles.floating,
+           transform: aligned ? "none" : popperStyles.floating.transform,
++          ...alignStyles ?? {},
+           ...getDismissableLayerStyle(layer, { zIndex: true })
+         }
+       });
+diff --git a/dist/select.machine.js b/dist/select.machine.js
+index f51b8a8621654d34c14ba92ded1424e198463a61..213e5455d7e162d776540e97f1c677a9e8f1e55c 100644
+--- a/dist/select.machine.js
++++ b/dist/select.machine.js
+@@ -125,6 +125,9 @@ var machine = (0, import_core.createMachine)({
+       })),
+       aligned: bindable(() => ({
+         defaultValue: false
++      })),
++      alignStyles: bindable(() => ({
++        defaultValue: null
+       }))
+     };
+   },
+@@ -530,7 +533,8 @@ var machine = (0, import_core.createMachine)({
+           dir: prop("dir"),
+           positioning,
+           onPlacementChange,
+-          onAligned() {
++          onAligned(styles) {
++            context.set("alignStyles", styles);
+             context.set("aligned", true);
+           }
+         });
+@@ -766,6 +770,7 @@ var machine = (0, import_core.createMachine)({
+       clearPlacementState({ context }) {
+         context.set("currentPlacement", void 0);
+         context.set("aligned", false);
++        context.set("alignStyles", null);
+       },
+       startAutoScroll({ refs, scope, prop, event }) {
+         const placement = event.placement;
+@@ -852,14 +857,17 @@ var machine = (0, import_core.createMachine)({
+       },
+       announceHighlightedItem({ context, prop, refs, scope }) {
+         const value = context.get("highlightedValue");
+-        if (value == null) return;
++        if (value == null) {
++          refs.get("liveRegion")?.clear();
++          return;
++        }
+         const listFocused = scope.isActiveElement(dom.getListEl(scope));
+         if (listFocused && !(0, import_dom_query.isApple)()) return;
+         const collection2 = prop("collection");
+         const label = collection2.stringifyItem(collection2.find(value));
+         if (!label) return;
+         const selected = context.get("value").includes(value);
+-        const formatter = prop("translations").itemAnnouncement;
++        const formatter = prop("translations")?.itemAnnouncement;
+         const message = formatter ? formatter({ value, label, selected }) : selected ? `${label}, selected` : label;
+         refs.get("liveRegion")?.announce(message);
+       },
+diff --git a/dist/select.machine.mjs b/dist/select.machine.mjs
+index d25f4b40b2fde058d4a8d7f18884fe52f7d0d347..31a91838331dcb776e0e63330af074d54f9ba704 100644
+--- a/dist/select.machine.mjs
++++ b/dist/select.machine.mjs
+@@ -102,6 +102,9 @@ var machine = createMachine({
+       })),
+       aligned: bindable(() => ({
+         defaultValue: false
++      })),
++      alignStyles: bindable(() => ({
++        defaultValue: null
+       }))
+     };
+   },
+@@ -507,7 +510,8 @@ var machine = createMachine({
+           dir: prop("dir"),
+           positioning,
+           onPlacementChange,
+-          onAligned() {
++          onAligned(styles) {
++            context.set("alignStyles", styles);
+             context.set("aligned", true);
+           }
+         });
+@@ -743,6 +747,7 @@ var machine = createMachine({
+       clearPlacementState({ context }) {
+         context.set("currentPlacement", void 0);
+         context.set("aligned", false);
++        context.set("alignStyles", null);
+       },
+       startAutoScroll({ refs, scope, prop, event }) {
+         const placement = event.placement;
+@@ -829,14 +834,17 @@ var machine = createMachine({
+       },
+       announceHighlightedItem({ context, prop, refs, scope }) {
+         const value = context.get("highlightedValue");
+-        if (value == null) return;
++        if (value == null) {
++          refs.get("liveRegion")?.clear();
++          return;
++        }
+         const listFocused = scope.isActiveElement(dom.getListEl(scope));
+         if (listFocused && !isApple()) return;
+         const collection2 = prop("collection");
+         const label = collection2.stringifyItem(collection2.find(value));
+         if (!label) return;
+         const selected = context.get("value").includes(value);
+-        const formatter = prop("translations").itemAnnouncement;
++        const formatter = prop("translations")?.itemAnnouncement;
+         const message = formatter ? formatter({ value, label, selected }) : selected ? `${label}, selected` : label;
+         refs.get("liveRegion")?.announce(message);
+       },

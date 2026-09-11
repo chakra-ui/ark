@@ -8,6 +8,7 @@ export {
   default as Content,
   type NavigationMenuContentBaseProps as ContentBaseProps,
   type NavigationMenuContentProps as ContentProps,
+  type NavigationMenuContentState as ContentState,
 } from './navigation-menu-content.svelte'
 export { default as Context, type NavigationMenuContextProps as ContextProps } from './navigation-menu-context.svelte'
 export {
@@ -19,6 +20,7 @@ export {
   default as Item,
   type NavigationMenuItemBaseProps as ItemBaseProps,
   type NavigationMenuItemProps as ItemProps,
+  type NavigationMenuItemState as ItemState,
 } from './navigation-menu-item.svelte'
 export {
   default as ItemIndicator,
@@ -49,6 +51,7 @@ export {
   default as Trigger,
   type NavigationMenuTriggerBaseProps as TriggerBaseProps,
   type NavigationMenuTriggerProps as TriggerProps,
+  type NavigationMenuTriggerState as TriggerState,
 } from './navigation-menu-trigger.svelte'
 export {
   default as Viewport,

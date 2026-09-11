@@ -72,6 +72,13 @@
       list().setFilter(details.inputValue)
     }
   }
+
+  const status = $derived.by(() => {
+    if (list().isLoading) return 'Searching...'
+    if (list().error) return list().error?.message
+    if (list().items.length > 0) return null
+    return list().filter ? 'No results found' : 'Start typing to search movies...'
+  })
 </script>
 
 <Combobox.Root class={styles.Root} {collection} onInputValueChange={handleInputChange}>
@@ -90,18 +97,17 @@
   <Portal>
     <Combobox.Positioner>
       <Combobox.Content class={styles.Content}>
-        {#if list().isLoading}
-          <div class={styles.Status}>
-            <LoaderIcon class={styles.Spinner} />
-            <span>Searching...</span>
-          </div>
-        {:else if list().error}
-          <div class={styles.Status}>{list().error?.message}</div>
-        {:else if list().items.length === 0}
-          <div class={styles.Status}>
-            {list().filter ? 'No results found' : 'Start typing to search movies...'}
-          </div>
-        {:else}
+        <Combobox.Status>
+          {#if status}
+            <div class={styles.Status}>
+              {#if list().isLoading}
+                <LoaderIcon class={styles.Spinner} />
+              {/if}
+              <span>{status}</span>
+            </div>
+          {/if}
+        </Combobox.Status>
+        <Combobox.List class={styles.List}>
           {#each list().items as movie (movie.id)}
             <Combobox.Item class={styles.Item} item={movie}>
               <Combobox.ItemText class={styles.ItemText}>
@@ -115,7 +121,7 @@
               </Combobox.ItemIndicator>
             </Combobox.Item>
           {/each}
-        {/if}
+        </Combobox.List>
       </Combobox.Content>
     </Combobox.Positioner>
   </Portal>

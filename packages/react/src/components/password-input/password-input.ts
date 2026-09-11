@@ -17,6 +17,7 @@ export {
   PasswordInputInput as Input,
   type PasswordInputInputBaseProps as InputBaseProps,
   type PasswordInputInputProps as InputProps,
+  type PasswordInputInputState as InputState,
 } from './password-input-input.tsx'
 export {
   PasswordInputLabel as Label,
@@ -27,14 +28,17 @@ export {
   PasswordInputRoot as Root,
   type PasswordInputRootBaseProps as RootBaseProps,
   type PasswordInputRootProps as RootProps,
+  type PasswordInputRootState as RootState,
 } from './password-input-root.tsx'
 export {
   PasswordInputRootProvider as RootProvider,
   type PasswordInputRootProviderBaseProps as RootProviderBaseProps,
   type PasswordInputRootProviderProps as RootProviderProps,
+  type PasswordInputRootProviderState as RootProviderState,
 } from './password-input-root-provider.tsx'
 export {
   PasswordInputVisibilityTrigger as VisibilityTrigger,
   type PasswordInputVisibilityTriggerBaseProps as VisibilityTriggerBaseProps,
   type PasswordInputVisibilityTriggerProps as VisibilityTriggerProps,
+  type PasswordInputVisibilityTriggerState as VisibilityTriggerState,
 } from './password-input-visibility-trigger.tsx'

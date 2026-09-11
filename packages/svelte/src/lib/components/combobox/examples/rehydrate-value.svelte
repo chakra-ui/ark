@@ -64,20 +64,22 @@
   <Portal>
     <Combobox.Positioner>
       <Combobox.Content class={styles.Content}>
-        {#if _state.loading()}
-          <span style="padding: 0.5rem">Loading...</span>
-        {:else if _state.error()}
-          <span style="padding: 0.5rem">{_state.error()?.message}</span>
-        {:else}
-          {#each collection().items as item (item.name)}
-            <Combobox.Item class={styles.Item} {item}>
-              <Combobox.ItemText class={styles.ItemText}>
-                {item.name} - {item.height}cm / {item.mass}kg
-              </Combobox.ItemText>
-              <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
-            </Combobox.Item>
-          {/each}
-        {/if}
+        <Combobox.List class={styles.List}>
+          {#if _state.loading()}
+            <span style="padding: 0.5rem">Loading...</span>
+          {:else if _state.error()}
+            <span style="padding: 0.5rem">{_state.error()?.message}</span>
+          {:else}
+            {#each collection().items as item (item.name)}
+              <Combobox.Item class={styles.Item} {item}>
+                <Combobox.ItemText class={styles.ItemText}>
+                  {item.name} - {item.height}cm / {item.mass}kg
+                </Combobox.ItemText>
+                <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
+              </Combobox.Item>
+            {/each}
+          {/if}
+        </Combobox.List>
       </Combobox.Content>
     </Combobox.Positioner>
   </Portal>

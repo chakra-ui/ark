@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { LabelState } from '@zag-js/pin-input'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface PinInputLabelBaseProps extends PolymorphicProps<'label'>, RefAttribute {}
+  export interface PinInputLabelState extends LabelState {}
+  export interface PinInputLabelBaseProps extends PolymorphicProps<'label', PinInputLabelState>, RefAttribute {}
   export interface PinInputLabelProps extends Assign<HTMLProps<'label'>, PinInputLabelBaseProps> {}
 </script>
 
@@ -15,4 +17,4 @@
   const mergedProps = $derived(mergeProps(pinInput().getLabelProps(), props))
 </script>
 
-<Ark as="label" bind:ref {...mergedProps} />
+<Ark as="label" bind:ref {...mergedProps} state={pinInput().getLabelState()} />

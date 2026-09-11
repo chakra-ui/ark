@@ -47,6 +47,7 @@ const SelectAllHeader = () => {
 export const SelectAll = () => {
   return (
     <Listbox.Root class={styles.Root} collection={frameworks} selectionMode="multiple">
+      <Listbox.Label class={styles.Label}>Frameworks</Listbox.Label>
       <SelectAllHeader />
       <Listbox.Content class={styles.Content}>
         <Listbox.List class={styles.List}>

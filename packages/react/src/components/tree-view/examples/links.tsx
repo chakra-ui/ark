@@ -40,15 +40,18 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
         </TreeView.NodeGroup>
       ) : (
         <TreeView.Node className={styles.Node}>
-          <TreeView.Cell className={styles.Cell} asChild>
-            <a href={node.href}>
-              <TreeView.NodeText className={styles.NodeText}>
-                <FileIcon />
-                {node.name}
-              </TreeView.NodeText>
-              {node.href?.startsWith('http') && <ExternalLinkIcon size={12} />}
-            </a>
-          </TreeView.Cell>
+          <TreeView.Cell
+            className={styles.Cell}
+            render={
+              <a href={node.href}>
+                <TreeView.NodeText className={styles.NodeText}>
+                  <FileIcon />
+                  {node.name}
+                </TreeView.NodeText>
+                {node.href?.startsWith('http') && <ExternalLinkIcon size={12} />}
+              </a>
+            }
+          />
         </TreeView.Node>
       )}
     </TreeView.NodeProvider>

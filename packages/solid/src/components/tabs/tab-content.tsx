@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import type { ContentProps } from '@zag-js/tabs'
+import type { ContentProps, ContentState } from '@zag-js/tabs'
 import { Show } from 'solid-js'
 import { composeRefs } from '../../utils/compose-refs.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -8,7 +8,9 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { PresenceProvider, usePresence } from '../presence/index.tsx'
 import { useTabsContext } from './use-tabs-context.ts'
 
-export interface TabContentBaseProps extends ContentProps, PolymorphicProps<'div'> {}
+export interface TabContentState extends ContentState {}
+
+export interface TabContentBaseProps extends ContentProps, PolymorphicProps<'div', TabContentState> {}
 export interface TabContentProps extends HTMLProps<'div'>, TabContentBaseProps {}
 
 export const TabContent = (props: TabContentProps) => {
@@ -30,7 +32,11 @@ export const TabContent = (props: TabContentProps) => {
   return (
     <PresenceProvider value={presenceApi}>
       <Show when={!presenceApi().unmounted}>
-        <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} />
+        <ark.div
+          {...mergedProps}
+          ref={composeRefs(presenceApi().ref, props.ref)}
+          state={api().getContentState(contentProps)}
+        />
       </Show>
     </PresenceProvider>
   )

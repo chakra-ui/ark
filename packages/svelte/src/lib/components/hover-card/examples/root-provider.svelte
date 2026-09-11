@@ -13,7 +13,7 @@
     <p>
       Liked by
       <HoverCard.Trigger class={styles.Trigger}>
-        {#snippet asChild(props)}
+        {#snippet render(props)}
           <a href="#profile" {...props()}>@sarah_chen</a>
         {/snippet}
       </HoverCard.Trigger>

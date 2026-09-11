@@ -22,21 +22,25 @@ export {
   default as ImageCropperImage,
   type ImageCropperImageBaseProps,
   type ImageCropperImageProps,
+  type ImageCropperImageState,
 } from './image-cropper-image.svelte'
 export {
   default as ImageCropperRoot,
   type ImageCropperRootBaseProps,
   type ImageCropperRootProps,
+  type ImageCropperRootState,
 } from './image-cropper-root.svelte'
 export {
   default as ImageCropperRootProvider,
   type ImageCropperRootProviderBaseProps,
   type ImageCropperRootProviderProps,
+  type ImageCropperRootProviderState,
 } from './image-cropper-root-provider.svelte'
 export {
   default as ImageCropperSelection,
   type ImageCropperSelectionBaseProps,
   type ImageCropperSelectionProps,
+  type ImageCropperSelectionState,
 } from './image-cropper-selection.svelte'
 export {
   default as ImageCropperViewport,

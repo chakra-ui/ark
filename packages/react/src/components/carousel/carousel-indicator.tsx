@@ -1,13 +1,15 @@
 'use client'
 
-import type { IndicatorProps } from '@zag-js/carousel'
+import type { IndicatorProps, IndicatorState } from '@zag-js/carousel'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { useCarouselContext } from './use-carousel-context.ts'
 
-export interface CarouselIndicatorBaseProps extends IndicatorProps, PolymorphicProps {}
+export interface CarouselIndicatorState extends IndicatorState {}
+
+export interface CarouselIndicatorBaseProps extends IndicatorProps, PolymorphicProps<CarouselIndicatorState> {}
 export interface CarouselIndicatorProps extends HTMLProps<'button'>, CarouselIndicatorBaseProps {}
 
 const splitIndicatorProps = createSplitProps<IndicatorProps>()
@@ -18,7 +20,7 @@ export const CarouselIndicator = forwardRef<HTMLButtonElement, CarouselIndicator
   const carousel = useCarouselContext()
   const mergedProps = mergeProps(carousel.getIndicatorProps(indicatorProps), localProps)
 
-  return <ark.button {...mergedProps} ref={ref} />
+  return <ark.button {...mergedProps} ref={ref} state={carousel.getIndicatorState(indicatorProps)} />
 })
 
 CarouselIndicator.displayName = 'CarouselIndicator'

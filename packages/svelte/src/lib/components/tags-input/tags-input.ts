@@ -11,11 +11,13 @@ export {
   default as Root,
   type TagsInputRootProps as RootProps,
   type TagsInputRootBaseProps as RootBaseProps,
+  type TagsInputRootState as RootState,
 } from './tags-input-root.svelte'
 export {
   default as RootProvider,
   type TagsInputRootProviderProps as RootProviderProps,
   type TagsInputRootProviderBaseProps as RootProviderBaseProps,
+  type TagsInputRootProviderState as RootProviderState,
 } from './tags-input-root-provider.svelte'
 export { default as Context, type TagsInputContextProps as ContextProps } from './tags-input-context.svelte'
 export {
@@ -47,6 +49,7 @@ export {
   default as Item,
   type TagsInputItemProps as ItemProps,
   type TagsInputItemBaseProps as ItemBaseProps,
+  type TagsInputItemState as ItemState,
 } from './tags-input-item.svelte'
 export {
   default as ItemContext,

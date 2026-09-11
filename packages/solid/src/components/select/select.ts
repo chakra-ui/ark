@@ -16,6 +16,7 @@ export {
   SelectContent as Content,
   type SelectContentBaseProps as ContentBaseProps,
   type SelectContentProps as ContentProps,
+  type SelectContentState as ContentState,
 } from './select-content.tsx'
 export { SelectContext as Context, type SelectContextProps as ContextProps } from './select-context.tsx'
 export {
@@ -37,6 +38,7 @@ export {
   SelectItem as Item,
   type SelectItemBaseProps as ItemBaseProps,
   type SelectItemProps as ItemProps,
+  type SelectItemState as ItemState,
 } from './select-item.tsx'
 export {
   SelectItemContext as ItemContext,
@@ -73,6 +75,11 @@ export {
   type SelectListProps as ListProps,
 } from './select-list.tsx'
 export {
+  SelectScrollArrow as ScrollArrow,
+  type SelectScrollArrowBaseProps as ScrollArrowBaseProps,
+  type SelectScrollArrowProps as ScrollArrowProps,
+} from './select-scroll-arrow.tsx'
+export {
   SelectPositioner as Positioner,
   type SelectPositionerBaseProps as PositionerBaseProps,
   type SelectPositionerProps as PositionerProps,
@@ -83,17 +90,25 @@ export {
   type SelectRootProps as RootProps,
   type SelectRootComponent as RootComponent,
   type SelectRootComponentProps as RootComponentProps,
+  type SelectRootState as RootState,
 } from './select-root.tsx'
 export {
   SelectRootProvider as RootProvider,
   type SelectRootProviderBaseProps as RootProviderBaseProps,
   type SelectRootProviderProps as RootProviderProps,
   type SelectRootProviderComponent as RootProviderComponent,
+  type SelectRootProviderState as RootProviderState,
 } from './select-root-provider.tsx'
+export {
+  SelectStatus as Status,
+  type SelectStatusBaseProps as StatusBaseProps,
+  type SelectStatusProps as StatusProps,
+} from './select-status.tsx'
 export {
   SelectTrigger as Trigger,
   type SelectTriggerBaseProps as TriggerBaseProps,
   type SelectTriggerProps as TriggerProps,
+  type SelectTriggerState as TriggerState,
 } from './select-trigger.tsx'
 export {
   SelectValueText as ValueText,

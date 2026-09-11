@@ -18,6 +18,7 @@ export {
   ComboboxContent as Content,
   type ComboboxContentBaseProps as ContentBaseProps,
   type ComboboxContentProps as ContentProps,
+  type ComboboxContentState as ContentState,
 } from './combobox-content.tsx'
 export { ComboboxContext as Context, type ComboboxContextProps as ContextProps } from './combobox-context.tsx'
 export {
@@ -39,6 +40,7 @@ export {
   ComboboxItem as Item,
   type ComboboxItemBaseProps as ItemBaseProps,
   type ComboboxItemProps as ItemProps,
+  type ComboboxItemState as ItemState,
 } from './combobox-item.tsx'
 export {
   ComboboxItemContext as ItemContext,
@@ -85,15 +87,23 @@ export {
   type ComboboxRootComponent as RootComponent,
   type ComboboxRootComponentProps as RootComponentProps,
   type ComboboxRootProps as RootProps,
+  type ComboboxRootState as RootState,
 } from './combobox-root.tsx'
 export {
   ComboboxRootProvider as RootProvider,
   type ComboboxRootProviderBaseProps as RootProviderBaseProps,
   type ComboboxRootProviderComponent as RootProviderComponent,
   type ComboboxRootProviderProps as RootProviderProps,
+  type ComboboxRootProviderState as RootProviderState,
 } from './combobox-root-provider.tsx'
+export {
+  ComboboxStatus as Status,
+  type ComboboxStatusBaseProps as StatusBaseProps,
+  type ComboboxStatusProps as StatusProps,
+} from './combobox-status.tsx'
 export {
   ComboboxTrigger as Trigger,
   type ComboboxTriggerBaseProps as TriggerBaseProps,
   type ComboboxTriggerProps as TriggerProps,
+  type ComboboxTriggerState as TriggerState,
 } from './combobox-trigger.tsx'

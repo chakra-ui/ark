@@ -1,4 +1,4 @@
-import type { ItemProps } from '@zag-js/select'
+import type { ItemProps, ItemState } from '@zag-js/select'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -7,7 +7,9 @@ import { useSelectContext } from './use-select-context.ts'
 import { SelectItemProvider } from './use-select-item-context.ts'
 import { SelectItemPropsProvider } from './use-select-item-props-context.ts'
 
-export interface SelectItemBaseProps extends ItemProps, PolymorphicProps<'div'> {}
+export interface SelectItemState extends ItemState {}
+
+export interface SelectItemBaseProps extends ItemProps, PolymorphicProps<'div', SelectItemState> {}
 export interface SelectItemProps extends HTMLProps<'div'>, SelectItemBaseProps {}
 
 export const SelectItem = (props: SelectItemProps) => {
@@ -19,7 +21,7 @@ export const SelectItem = (props: SelectItemProps) => {
   return (
     <SelectItemPropsProvider value={itemProps}>
       <SelectItemProvider value={itemState}>
-        <ark.div {...mergedProps} />
+        <ark.div {...mergedProps} state={itemState()} />
       </SelectItemProvider>
     </SelectItemPropsProvider>
   )

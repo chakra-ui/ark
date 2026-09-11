@@ -19,12 +19,14 @@ export {
   default as RootProvider,
   type SwitchRootProviderProps as RootProviderProps,
   type SwitchRootProviderBaseProps as RootProviderBaseProps,
+  type SwitchRootProviderState as RootProviderState,
 } from './switch-root-provider.vue'
 export {
   default as Root,
   type SwitchRootEmits as RootEmits,
   type SwitchRootBaseProps as RootBaseProps,
   type SwitchRootProps as RootProps,
+  type SwitchRootState as RootState,
 } from './switch-root.vue'
 export {
   default as Thumb,

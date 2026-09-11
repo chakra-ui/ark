@@ -3,6 +3,7 @@ export {
   TabContent as Content,
   type TabContentBaseProps as ContentBaseProps,
   type TabContentProps as ContentProps,
+  type TabContentState as ContentState,
 } from './tab-content.tsx'
 export {
   TabIndicator as Indicator,
@@ -14,6 +15,7 @@ export {
   TabTrigger as Trigger,
   type TabTriggerBaseProps as TriggerBaseProps,
   type TabTriggerProps as TriggerProps,
+  type TabTriggerState as TriggerState,
 } from './tab-trigger.tsx'
 export { TabsContext as Context, type TabsContextProps as ContextProps } from './tabs-context.tsx'
 export {

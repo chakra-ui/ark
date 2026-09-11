@@ -32,11 +32,13 @@ export {
   SignaturePadRoot as Root,
   type SignaturePadRootBaseProps as RootBaseProps,
   type SignaturePadRootProps as RootProps,
+  type SignaturePadRootState as RootState,
 } from './signature-pad-root.tsx'
 export {
   SignaturePadRootProvider as RootProvider,
   type SignaturePadRootProviderBaseProps as RootProviderBaseProps,
   type SignaturePadRootProviderProps as RootProviderProps,
+  type SignaturePadRootProviderState as RootProviderState,
 } from './signature-pad-root-provider.tsx'
 export {
   SignaturePadSegment as Segment,

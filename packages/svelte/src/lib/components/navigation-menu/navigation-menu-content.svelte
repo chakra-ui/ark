@@ -1,9 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { ContentProps } from '@zag-js/navigation-menu'
+  import type { ContentProps, ContentState } from '@zag-js/navigation-menu'
 
+  export interface NavigationMenuContentState extends ContentState {}
   export interface NavigationMenuContentBaseProps
-    extends Partial<ContentProps>, PolymorphicProps<'div'>, RefAttribute {}
+    extends Partial<ContentProps>, PolymorphicProps<'div', NavigationMenuContentState>, RefAttribute {}
   export interface NavigationMenuContentProps extends Assign<HTMLProps<'div'>, NavigationMenuContentBaseProps> {}
 </script>
 
@@ -53,7 +54,13 @@
   <div {...navigationMenu().getTriggerProxyProps(contentProps)}></div>
   <Portal container={viewportNode}>
     {#if !presence().unmounted}
-      <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
+      <Ark
+        as="div"
+        bind:ref
+        {...mergedProps}
+        {@attach setNode}
+        state={navigationMenu().getContentState(contentProps)}
+      />
     {/if}
   </Portal>
 {:else if !presence().unmounted}

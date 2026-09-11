@@ -1,3 +1,4 @@
+import type { RootState } from '@zag-js/radio-group'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
@@ -8,7 +9,9 @@ interface RootProviderProps {
   value: UseSegmentGroupReturn
 }
 
-export interface SegmentGroupRootProviderBaseProps extends PolymorphicProps<'div'> {}
+export interface SegmentGroupRootProviderState extends RootState {}
+
+export interface SegmentGroupRootProviderBaseProps extends PolymorphicProps<'div', SegmentGroupRootProviderState> {}
 export interface SegmentGroupRootProviderProps
   extends HTMLProps<'div'>, RootProviderProps, SegmentGroupRootProviderBaseProps {}
 
@@ -18,7 +21,7 @@ export const SegmentGroupRootProvider = (props: SegmentGroupRootProviderProps) =
 
   return (
     <SegmentGroupProvider value={segmentGroup}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} state={segmentGroup().getRootState()} />
     </SegmentGroupProvider>
   )
 }

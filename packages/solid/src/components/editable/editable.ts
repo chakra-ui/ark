@@ -8,6 +8,7 @@ export {
   EditableArea as Area,
   type EditableAreaBaseProps as AreaBaseProps,
   type EditableAreaProps as AreaProps,
+  type EditableAreaState as AreaState,
 } from './editable-area.tsx'
 export {
   EditableCancelTrigger as CancelTrigger,
@@ -29,16 +30,19 @@ export {
   EditableInput as Input,
   type EditableInputBaseProps as InputBaseProps,
   type EditableInputProps as InputProps,
+  type EditableInputState as InputState,
 } from './editable-input.tsx'
 export {
   EditableLabel as Label,
   type EditableLabelBaseProps as LabelBaseProps,
   type EditableLabelProps as LabelProps,
+  type EditableLabelState as LabelState,
 } from './editable-label.tsx'
 export {
   EditablePreview as Preview,
   type EditablePreviewBaseProps as PreviewBaseProps,
   type EditablePreviewProps as PreviewProps,
+  type EditablePreviewState as PreviewState,
 } from './editable-preview.tsx'
 export {
   EditableRoot as Root,

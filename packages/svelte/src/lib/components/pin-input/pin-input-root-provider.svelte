@@ -1,4 +1,5 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/pin-input'
   import type { Snippet } from 'svelte'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UsePinInputReturn } from './use-pin-input.svelte.ts'
@@ -7,8 +8,12 @@
     value: UsePinInputReturn
   }
 
+  export interface PinInputRootProviderState extends RootState {}
   export interface PinInputRootProviderBaseProps
-    extends Assign<HTMLProps<'div'>, RootProviderProps>, PolymorphicProps<'div'>, RefAttribute {}
+    extends
+      Assign<HTMLProps<'div'>, RootProviderProps>,
+      PolymorphicProps<'div', PinInputRootProviderState>,
+      RefAttribute {}
   export interface PinInputRootProviderProps extends PinInputRootProviderBaseProps {
     children?: Snippet
   }
@@ -25,4 +30,4 @@
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={value().getRootState()} />

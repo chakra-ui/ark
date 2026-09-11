@@ -11,6 +11,7 @@ export {
   default as SplitterResizeTrigger,
   type SplitterResizeTriggerBaseProps,
   type SplitterResizeTriggerProps,
+  type SplitterResizeTriggerState,
 } from './splitter-resize-trigger.vue'
 export {
   default as SplitterResizeTriggerIndicator,

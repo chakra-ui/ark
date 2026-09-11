@@ -4,7 +4,6 @@
   import * as toast from '@zag-js/toast'
   import type { Snippet } from 'svelte'
   import { useEnvironmentContext, useLocaleContext } from '../../providers/index.js'
-  import { Ark } from '../factory/index.js'
   import type { CreateToasterReturn } from './create-toaster.js'
   import ToasterItem from './toaster-item.svelte'
 
@@ -44,11 +43,11 @@
   const mergedProps = $derived(mergeProps(api.getGroupProps(), otherProps))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps}>
+<div bind:this={ref} {...mergedProps}>
   {#each toasts as toast, index (toast.id)}
     {@const toastFn = () => toast}
     <ToasterItem value={toastFn} parent={service} {index}>
       {@render children(toastFn)}
     </ToasterItem>
   {/each}
-</Ark>
+</div>

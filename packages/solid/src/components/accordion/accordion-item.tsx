@@ -1,4 +1,4 @@
-import type { ItemProps } from '@zag-js/accordion'
+import type { ItemProps, ItemState } from '@zag-js/accordion'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -9,7 +9,9 @@ import { useAccordionContext } from './use-accordion-context.ts'
 import { AccordionItemProvider } from './use-accordion-item-context.ts'
 import { AccordionItemPropsProvider } from './use-accordion-item-props-context.ts'
 
-export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps<'div'> {}
+export interface AccordionItemState extends ItemState {}
+
+export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps<'div', AccordionItemState> {}
 export interface AccordionItemProps extends HTMLProps<'div'>, AccordionItemBaseProps {}
 
 export const AccordionItem = (props: AccordionItemProps) => {
@@ -28,6 +30,7 @@ export const AccordionItem = (props: AccordionItemProps) => {
           ids={{ content: itemContentProps.id }}
           {...renderStrategyProps}
           {...mergedProps}
+          state={accordion().getItemState(itemProps)}
         />
       </AccordionItemProvider>
     </AccordionItemPropsProvider>

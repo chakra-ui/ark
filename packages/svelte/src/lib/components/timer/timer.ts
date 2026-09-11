@@ -3,6 +3,7 @@ export {
   default as ActionTrigger,
   type TimerActionTriggerBaseProps as ActionTriggerBaseProps,
   type TimerActionTriggerProps as ActionTriggerProps,
+  type TimerActionTriggerState as ActionTriggerState,
 } from './timer-action-trigger.svelte'
 export {
   default as Area,

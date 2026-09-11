@@ -341,6 +341,11 @@ import * as Menu_Nested from '@examples/menu/examples/nested'
 import * as Menu_RadioItems from '@examples/menu/examples/radio-items'
 import * as Menu_RootProvider from '@examples/menu/examples/root-provider'
 import * as Menu_SelectEvent from '@examples/menu/examples/select-event'
+import * as Menubar_Basic from '@examples/menubar/examples/basic'
+import * as Menubar_Disabled from '@examples/menubar/examples/disabled'
+import * as Menubar_Nested from '@examples/menubar/examples/nested'
+import * as Menubar_RootProvider from '@examples/menubar/examples/root-provider'
+import * as Menubar_Vertical from '@examples/menubar/examples/vertical'
 import * as NavigationMenu_Basic from '@examples/navigation-menu/examples/basic'
 import * as NavigationMenu_Context from '@examples/navigation-menu/examples/context'
 import * as NavigationMenu_Controlled from '@examples/navigation-menu/examples/controlled'
@@ -399,6 +404,7 @@ import * as Popover_Modal from '@examples/popover/examples/modal'
 import * as Popover_MultipleTriggers from '@examples/popover/examples/multiple-triggers'
 import * as Popover_Nested from '@examples/popover/examples/nested'
 import * as Popover_Positioning from '@examples/popover/examples/positioning'
+import * as Popover_RenderState from '@examples/popover/examples/render-state'
 import * as Popover_Render from '@examples/popover/examples/render'
 import * as Popover_RootProvider from '@examples/popover/examples/root-provider'
 import * as Popover_SameWidth from '@examples/popover/examples/same-width'
@@ -456,6 +462,7 @@ import * as SegmentGroup_Controlled from '@examples/segment-group/examples/contr
 import * as SegmentGroup_Disabled from '@examples/segment-group/examples/disabled'
 import * as SegmentGroup_RootProvider from '@examples/segment-group/examples/root-provider'
 import * as Select_Async from '@examples/select/examples/async'
+import * as Select_AlignItemWithTrigger from '@examples/select/examples/align-item-with-trigger'
 import * as Select_Basic from '@examples/select/examples/basic'
 import * as Select_Controlled from '@examples/select/examples/controlled'
 import * as Select_DynamicItems from '@examples/select/examples/dynamic-items'
@@ -986,6 +993,11 @@ const exampleModules: Record<string, ExampleModule> = {
   'menu/radio-items': Menu_RadioItems,
   'menu/root-provider': Menu_RootProvider,
   'menu/select-event': Menu_SelectEvent,
+  'menubar/basic': Menubar_Basic,
+  'menubar/disabled': Menubar_Disabled,
+  'menubar/nested': Menubar_Nested,
+  'menubar/root-provider': Menubar_RootProvider,
+  'menubar/vertical': Menubar_Vertical,
   'navigation-menu/basic': NavigationMenu_Basic,
   'navigation-menu/context': NavigationMenu_Context,
   'navigation-menu/controlled': NavigationMenu_Controlled,
@@ -1044,6 +1056,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'popover/multiple-triggers': Popover_MultipleTriggers,
   'popover/nested': Popover_Nested,
   'popover/positioning': Popover_Positioning,
+  'popover/render-state': Popover_RenderState,
   'popover/render': Popover_Render,
   'popover/root-provider': Popover_RootProvider,
   'popover/same-width': Popover_SameWidth,
@@ -1101,6 +1114,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'segment-group/disabled': SegmentGroup_Disabled,
   'segment-group/root-provider': SegmentGroup_RootProvider,
   'select/async': Select_Async,
+  'select/align-item-with-trigger': Select_AlignItemWithTrigger,
   'select/basic': Select_Basic,
   'select/controlled': Select_Controlled,
   'select/dynamic-items': Select_DynamicItems,

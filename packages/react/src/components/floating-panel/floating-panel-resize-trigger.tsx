@@ -1,13 +1,16 @@
 'use client'
 
-import type { ResizeTriggerProps } from '@zag-js/floating-panel'
+import type { ResizeTriggerProps, ResizeTriggerState } from '@zag-js/floating-panel'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { useFloatingPanelContext } from './use-floating-panel-context.ts'
 
-export interface FloatingPanelResizeTriggerBaseProps extends ResizeTriggerProps, PolymorphicProps {}
+export interface FloatingPanelResizeTriggerState extends ResizeTriggerState {}
+
+export interface FloatingPanelResizeTriggerBaseProps
+  extends ResizeTriggerProps, PolymorphicProps<FloatingPanelResizeTriggerState> {}
 export interface FloatingPanelResizeTriggerProps extends HTMLProps<'div'>, FloatingPanelResizeTriggerBaseProps {}
 
 const splitResizeTriggerProps = createSplitProps<ResizeTriggerProps>()
@@ -17,7 +20,7 @@ export const FloatingPanelResizeTrigger = forwardRef<HTMLDivElement, FloatingPan
   const floatingPanel = useFloatingPanelContext()
   const mergedProps = mergeProps(floatingPanel.getResizeTriggerProps(resizeProps), localProps)
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return <ark.div {...mergedProps} ref={ref} state={floatingPanel.getResizeTriggerState(resizeProps)} />
 })
 
 FloatingPanelResizeTrigger.displayName = 'FloatingPanelResizeTrigger'

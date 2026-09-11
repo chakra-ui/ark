@@ -22,11 +22,13 @@ export {
   type MenuCheckboxItemEmits as CheckboxItemEmits,
   type MenuCheckboxItemBaseProps as CheckboxItemBaseProps,
   type MenuCheckboxItemProps as CheckboxItemProps,
+  type MenuCheckboxItemState as CheckboxItemState,
 } from './menu-checkbox-item.vue'
 export {
   default as Content,
   type MenuContentProps as ContentProps,
   type MenuContentBaseProps as ContentBaseProps,
+  type MenuContentState as ContentState,
 } from './menu-content.vue'
 export {
   default as ContextTrigger,
@@ -64,11 +66,13 @@ export {
   default as Item,
   type MenuItemProps as ItemProps,
   type MenuItemBaseProps as ItemBaseProps,
+  type MenuItemState as ItemState,
 } from './menu-item.vue'
 export {
   default as Positioner,
   type MenuPositionerProps as PositionerProps,
   type MenuPositionerBaseProps as PositionerBaseProps,
+  type MenuPositionerState as PositionerState,
 } from './menu-positioner.vue'
 export {
   default as RadioItemGroup,
@@ -80,6 +84,7 @@ export {
   default as RadioItem,
   type MenuRadioItemProps as RadioItemProps,
   type MenuRadioItemBaseProps as RadioItemBaseProps,
+  type MenuRadioItemState as RadioItemState,
 } from './menu-radio-item.vue'
 export {
   default as RootProvider,
@@ -106,5 +111,6 @@ export {
   default as Trigger,
   type MenuTriggerProps as TriggerProps,
   type MenuTriggerBaseProps as TriggerBaseProps,
+  type MenuTriggerState as TriggerState,
 } from './menu-trigger.vue'
 export type { ValueChangeDetails } from './use-menu-item-group-context.ts'

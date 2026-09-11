@@ -1,4 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
+import type { RootState } from '@zag-js/toggle-group'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import type { UseToggleGroupReturn } from './use-toggle-group.ts'
@@ -8,7 +9,9 @@ interface RootProviderProps {
   value: UseToggleGroupReturn
 }
 
-export interface ToggleGroupRootProviderBaseProps extends PolymorphicProps<'div'> {}
+export interface ToggleGroupRootProviderState extends RootState {}
+
+export interface ToggleGroupRootProviderBaseProps extends PolymorphicProps<'div', ToggleGroupRootProviderState> {}
 export interface ToggleGroupRootProviderProps
   extends HTMLProps<'div'>, RootProviderProps, ToggleGroupRootProviderBaseProps {}
 
@@ -18,7 +21,7 @@ export const ToggleGroupRootProvider = (props: ToggleGroupRootProviderProps) => 
 
   return (
     <ToggleGroupProvider value={toggleGroup}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} state={toggleGroup().getRootState()} />
     </ToggleGroupProvider>
   )
 }

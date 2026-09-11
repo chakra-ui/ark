@@ -3,6 +3,7 @@ export {
   default as Content,
   type MarqueeContentBaseProps as ContentBaseProps,
   type MarqueeContentProps as ContentProps,
+  type MarqueeContentState as ContentState,
 } from './marquee-content.vue'
 export { default as Context, type MarqueeContextProps as ContextProps } from './marquee-context.vue'
 export {

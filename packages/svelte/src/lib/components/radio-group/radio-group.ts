@@ -28,6 +28,7 @@ export {
   default as Item,
   type RadioGroupItemProps as ItemProps,
   type RadioGroupItemBaseProps as ItemBaseProps,
+  type RadioGroupItemState as ItemState,
 } from './radio-group-item.svelte'
 export {
   default as Label,
@@ -38,9 +39,11 @@ export {
   default as RootProvider,
   type RadioGroupRootProviderProps as RootProviderProps,
   type RadioGroupRootProviderBaseProps as RootProviderBaseProps,
+  type RadioGroupRootProviderState as RootProviderState,
 } from './radio-group-root-provider.svelte'
 export {
   default as Root,
   type RadioGroupRootBaseProps as RootBaseProps,
   type RadioGroupRootProps as RootProps,
+  type RadioGroupRootState as RootState,
 } from './radio-group-root.svelte'

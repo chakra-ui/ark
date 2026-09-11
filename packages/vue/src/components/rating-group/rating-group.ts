@@ -4,6 +4,7 @@ export {
   default as Control,
   type RatingGroupControlProps as ControlProps,
   type RatingGroupControlBaseProps as ControlBaseProps,
+  type RatingGroupControlState as ControlState,
 } from './rating-group-control.vue'
 export {
   default as HiddenInput,
@@ -18,6 +19,7 @@ export {
   default as Item,
   type RatingGroupItemProps as ItemProps,
   type RatingGroupItemBaseProps as ItemBaseProps,
+  type RatingGroupItemState as ItemState,
 } from './rating-group-item.vue'
 export {
   default as Label,

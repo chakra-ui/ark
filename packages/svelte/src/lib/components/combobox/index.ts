@@ -24,6 +24,7 @@ export {
   default as ComboboxContent,
   type ComboboxContentProps,
   type ComboboxContentBaseProps,
+  type ComboboxContentState,
 } from './combobox-content.svelte'
 export { default as ComboboxEmpty, type ComboboxEmptyProps, type ComboboxEmptyBaseProps } from './combobox-empty.svelte'
 export { default as ComboboxContext, type ComboboxContextProps } from './combobox-context.svelte'
@@ -33,7 +34,12 @@ export {
   type ComboboxControlBaseProps,
 } from './combobox-control.svelte'
 export { default as ComboboxInput, type ComboboxInputProps, type ComboboxInputBaseProps } from './combobox-input.svelte'
-export { default as ComboboxItem, type ComboboxItemBaseProps, type ComboboxItemProps } from './combobox-item.svelte'
+export {
+  default as ComboboxItem,
+  type ComboboxItemBaseProps,
+  type ComboboxItemProps,
+  type ComboboxItemState,
+} from './combobox-item.svelte'
 export { default as ComboboxItemContext, type ComboboxItemContextProps } from './combobox-item-context.svelte'
 export {
   default as ComboboxItemGroup,
@@ -75,10 +81,12 @@ export {
   type ComboboxRootProviderProps,
   type ComboboxRootProviderComponent,
 } from './combobox-root-provider.svelte'
+export { default as ComboboxStatus, type ComboboxStatusProps } from './combobox-status.svelte'
 export {
   default as ComboboxTrigger,
   type ComboboxTriggerProps,
   type ComboboxTriggerBaseProps,
+  type ComboboxTriggerState,
 } from './combobox-trigger.svelte'
 export { comboboxAnatomy } from './combobox.anatomy.ts'
 export { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox.svelte.ts'

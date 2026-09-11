@@ -9,7 +9,7 @@ export const WithCheckbox = () => (
   <Tooltip.Root>
     <Tooltip.Trigger
       render={(props) => (
-        <Checkbox.Root {...props} class={styles.Root}>
+        <Checkbox.Root {...props({ class: styles.Root })}>
           <Checkbox.Control class={styles.Control}>
             <Checkbox.Indicator class={styles.Indicator}>
               <CheckIcon />

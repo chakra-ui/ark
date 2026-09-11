@@ -14,6 +14,7 @@ export {
   default as Content,
   type FloatingPanelContentBaseProps as ContentBaseProps,
   type FloatingPanelContentProps as ContentProps,
+  type FloatingPanelContentState as ContentState,
 } from './floating-panel-content.vue'
 
 export { default as Context, type FloatingPanelContextProps as ContextProps } from './floating-panel-context.vue'
@@ -22,6 +23,7 @@ export {
   default as Control,
   type FloatingPanelControlBaseProps as ControlBaseProps,
   type FloatingPanelControlProps as ControlProps,
+  type FloatingPanelControlState as ControlState,
 } from './floating-panel-control.vue'
 
 export {
@@ -46,6 +48,7 @@ export {
   default as ResizeTrigger,
   type FloatingPanelResizeTriggerBaseProps as ResizeTriggerBaseProps,
   type FloatingPanelResizeTriggerProps as ResizeTriggerProps,
+  type FloatingPanelResizeTriggerState as ResizeTriggerState,
 } from './floating-panel-resize-trigger.vue'
 
 export {
@@ -64,6 +67,7 @@ export {
   default as StageTrigger,
   type FloatingPanelStageTriggerBaseProps as StageTriggerBaseProps,
   type FloatingPanelStageTriggerProps as StageTriggerProps,
+  type FloatingPanelStageTriggerState as StageTriggerState,
 } from './floating-panel-stage-trigger.vue'
 
 export {
@@ -76,6 +80,7 @@ export {
   default as Trigger,
   type FloatingPanelTriggerBaseProps as TriggerBaseProps,
   type FloatingPanelTriggerProps as TriggerProps,
+  type FloatingPanelTriggerState as TriggerState,
 } from './floating-panel-trigger.vue'
 
 export { resizeTriggerPlacements } from '@zag-js/floating-panel'

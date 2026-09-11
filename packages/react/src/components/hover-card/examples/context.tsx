@@ -9,9 +9,10 @@ export const Context = () => (
       {(context) => (
         <p>
           Liked by{' '}
-          <HoverCard.Trigger className={styles.Trigger} asChild>
-            <a href="#profile">@sarah_chen {context.open ? <ChevronUpIcon /> : <ChevronDownIcon />}</a>
-          </HoverCard.Trigger>{' '}
+          <HoverCard.Trigger
+            className={styles.Trigger}
+            render={<a href="#profile">@sarah_chen {context.open ? <ChevronUpIcon /> : <ChevronDownIcon />}</a>}
+          />{' '}
           and 3 others
         </p>
       )}

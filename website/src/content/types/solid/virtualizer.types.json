@@ -7,28 +7,28 @@
         "description": "The virtual column to render within the current row."
       },
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "render": {
-        "type": "RenderFn<EmptyState>",
+        "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
-        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "GridContent": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "render": {
-        "type": "RenderFn<EmptyState>",
+        "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
-        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
@@ -40,14 +40,14 @@
         "description": "The virtualizer instance returned by `useGridVirtualizer`."
       },
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "render": {
-        "type": "RenderFn<EmptyState>",
+        "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
-        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
@@ -55,7 +55,7 @@
     "props": {
       "row": { "type": "VirtualRow", "isRequired": true, "description": "The virtual row to render." },
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
@@ -66,23 +66,23 @@
         "description": "Whether to measure the rendered height of the row and use it instead of the estimate."
       },
       "render": {
-        "type": "RenderFn<EmptyState>",
+        "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
-        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "ListContent": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "render": {
-        "type": "RenderFn<EmptyState>",
+        "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
-        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
@@ -90,7 +90,7 @@
     "props": {
       "item": { "type": "VirtualItem", "isRequired": true, "description": "The virtual item to render." },
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
@@ -101,9 +101,9 @@
         "description": "Whether to measure the rendered size of the item and use it instead of the estimate."
       },
       "render": {
-        "type": "RenderFn<EmptyState>",
+        "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
-        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
@@ -115,28 +115,28 @@
         "description": "The virtualizer instance returned by `useListVirtualizer`."
       },
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "render": {
-        "type": "RenderFn<EmptyState>",
+        "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
-        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
   "WindowContent": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "render": {
-        "type": "RenderFn<EmptyState>",
+        "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
-        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
@@ -144,7 +144,7 @@
     "props": {
       "item": { "type": "VirtualItem", "isRequired": true, "description": "The virtual item to render." },
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
@@ -155,9 +155,9 @@
         "description": "Whether to measure the rendered size of the item and use it instead of the estimate."
       },
       "render": {
-        "type": "RenderFn<EmptyState>",
+        "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
-        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   },
@@ -169,14 +169,14 @@
         "description": "The virtualizer instance returned by `useWindowVirtualizer`."
       },
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "(props: PropsFn<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "render": {
-        "type": "RenderFn<EmptyState>",
+        "type": "RenderFn<'div', EmptyState>",
         "isRequired": false,
-        "description": "Render the part as a custom element, combining their props and behavior.\n\nTakes a function, or a component, since a solid component is a function of its props:\n`render={MyButton}` and `render={(props) => <MyButton {...props} />}` both work."
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   }

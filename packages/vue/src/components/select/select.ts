@@ -16,6 +16,7 @@ export {
   default as Content,
   type SelectContentProps as ContentProps,
   type SelectContentBaseProps as ContentBaseProps,
+  type SelectContentState as ContentState,
 } from './select-content.vue'
 export { default as Context, type SelectContextProps as ContextProps } from './select-context.vue'
 export {
@@ -38,6 +39,11 @@ export {
   type SelectListProps as ListProps,
   type SelectListBaseProps as ListBaseProps,
 } from './select-list.vue'
+export {
+  default as ScrollArrow,
+  type SelectScrollArrowProps as ScrollArrowProps,
+  type SelectScrollArrowBaseProps as ScrollArrowBaseProps,
+} from './select-scroll-arrow.vue'
 export { default as ItemContext, type SelectItemContextProps as ItemContextProps } from './select-item-context.vue'
 export {
   default as ItemGroupLabel,
@@ -63,6 +69,7 @@ export {
   default as Item,
   type SelectItemProps as ItemProps,
   type SelectItemBaseProps as ItemBaseProps,
+  type SelectItemState as ItemState,
 } from './select-item.vue'
 export {
   default as Label,
@@ -79,6 +86,7 @@ export {
   type SelectRootProviderProps as RootProviderProps,
   type SelectRootProviderBaseProps as RootProviderBaseProps,
   type SelectRootProviderComponent as RootProviderComponent,
+  type SelectRootProviderState as RootProviderState,
 } from './select-root-provider.vue'
 export {
   default as Root,
@@ -87,11 +95,18 @@ export {
   type SelectRootProps as RootProps,
   type SelectRootComponent as RootComponent,
   type SelectRootComponentProps as RootComponentProps,
+  type SelectRootState as RootState,
 } from './select-root.vue'
+export {
+  default as Status,
+  type SelectStatusProps as StatusProps,
+  type SelectStatusBaseProps as StatusBaseProps,
+} from './select-status.vue'
 export {
   default as Trigger,
   type SelectTriggerProps as TriggerProps,
   type SelectTriggerBaseProps as TriggerBaseProps,
+  type SelectTriggerState as TriggerState,
 } from './select-trigger.vue'
 export {
   default as ValueText,

@@ -4,7 +4,12 @@ export type {
 } from '@zag-js/tooltip'
 export { TooltipArrow, type TooltipArrowBaseProps, type TooltipArrowProps } from './tooltip-arrow.tsx'
 export { TooltipArrowTip, type TooltipArrowTipBaseProps, type TooltipArrowTipProps } from './tooltip-arrow-tip.tsx'
-export { TooltipContent, type TooltipContentBaseProps, type TooltipContentProps } from './tooltip-content.tsx'
+export {
+  TooltipContent,
+  type TooltipContentBaseProps,
+  type TooltipContentProps,
+  type TooltipContentState,
+} from './tooltip-content.tsx'
 export { TooltipContext, type TooltipContextProps } from './tooltip-context.tsx'
 export {
   TooltipPositioner,
@@ -17,7 +22,12 @@ export {
   type TooltipRootProviderBaseProps,
   type TooltipRootProviderProps,
 } from './tooltip-root-provider.tsx'
-export { TooltipTrigger, type TooltipTriggerBaseProps, type TooltipTriggerProps } from './tooltip-trigger.tsx'
+export {
+  TooltipTrigger,
+  type TooltipTriggerBaseProps,
+  type TooltipTriggerProps,
+  type TooltipTriggerState,
+} from './tooltip-trigger.tsx'
 export { tooltipAnatomy } from './tooltip.anatomy.ts'
 export { useTooltip, type UseTooltipProps, type UseTooltipReturn } from './use-tooltip.ts'
 export { useTooltipContext, type UseTooltipContext } from './use-tooltip-context.ts'

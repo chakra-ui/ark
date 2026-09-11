@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { SpotlightState } from '@zag-js/tour'
   import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TourSpotlightBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface TourSpotlightState extends SpotlightState {}
+  export interface TourSpotlightBaseProps extends PolymorphicProps<'div', TourSpotlightState>, RefAttribute {}
   export interface TourSpotlightProps extends HTMLProps<'div'>, TourSpotlightBaseProps {}
 </script>
 
@@ -31,5 +33,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} {hidden} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} {hidden} state={tour().getSpotlightState()} />
 {/if}

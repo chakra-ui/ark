@@ -26,7 +26,7 @@ export const WithTooltip = () => {
               value={item.value}
               aria-label={item.label}
               class={styles.Item}
-              asChild={(itemProps) => (
+              render={(itemProps) => (
                 <Tooltip.Trigger value={item.value} {...itemProps()}>
                   <item.icon />
                 </Tooltip.Trigger>

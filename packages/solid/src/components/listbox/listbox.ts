@@ -10,6 +10,7 @@ export {
   ListboxContent as Content,
   type ListboxContentBaseProps as ContentBaseProps,
   type ListboxContentProps as ContentProps,
+  type ListboxContentState as ContentState,
 } from './listbox-content.tsx'
 export {
   ListboxEmpty as Empty,
@@ -25,6 +26,7 @@ export {
   ListboxItem as Item,
   type ListboxItemBaseProps as ItemBaseProps,
   type ListboxItemProps as ItemProps,
+  type ListboxItemState as ItemState,
 } from './listbox-item.tsx'
 export {
   ListboxItemContext as ItemContext,
@@ -59,6 +61,7 @@ export {
   ListboxList as List,
   type ListboxListBaseProps as ListBaseProps,
   type ListboxListProps as ListProps,
+  type ListboxListState as ListState,
 } from './listbox-list.tsx'
 export {
   ListboxRoot as Root,
@@ -73,6 +76,11 @@ export {
   type ListboxRootProviderProps as RootProviderProps,
   type ListboxRootProviderComponent as RootProviderComponent,
 } from './listbox-root-provider.tsx'
+export {
+  ListboxStatus as Status,
+  type ListboxStatusBaseProps as StatusBaseProps,
+  type ListboxStatusProps as StatusProps,
+} from './listbox-status.tsx'
 export {
   ListboxValueText as ValueText,
   type ListboxValueTextBaseProps as ValueTextBaseProps,

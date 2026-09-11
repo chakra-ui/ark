@@ -37,6 +37,7 @@ export {
   TourBackdrop as Backdrop,
   type TourBackdropBaseProps as BackdropBaseProps,
   type TourBackdropProps as BackdropProps,
+  type TourBackdropState as BackdropState,
 } from './tour-backdrop.tsx'
 export {
   TourCloseTrigger as CloseTrigger,
@@ -47,6 +48,7 @@ export {
   TourContent as Content,
   type TourContentBaseProps as ContentBaseProps,
   type TourContentProps as ContentProps,
+  type TourContentState as ContentState,
 } from './tour-content.tsx'
 export { TourContext as Context, type TourContextProps as ContextProps } from './tour-context.tsx'
 export {
@@ -63,6 +65,7 @@ export {
   TourPositioner as Positioner,
   type TourPositionerBaseProps as PositionerBaseProps,
   type TourPositionerProps as PositionerProps,
+  type TourPositionerState as PositionerState,
 } from './tour-positioner.tsx'
 export {
   TourProgressText as ProgressText,
@@ -78,6 +81,7 @@ export {
   TourSpotlight as Spotlight,
   type TourSpotlightBaseProps as SpotlightBaseProps,
   type TourSpotlightProps as SpotlightProps,
+  type TourSpotlightState as SpotlightState,
 } from './tour-spotlight.tsx'
 export {
   TourTitle as Title,

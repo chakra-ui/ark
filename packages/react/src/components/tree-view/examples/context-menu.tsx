@@ -60,19 +60,22 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node> & { triggerId: string 
             <TreeView.NodeGroup className={styles.NodeGroup}>
               <TreeView.Node className={styles.Node}>
                 <TreeNodeContextMenu triggerId={triggerId}>
-                  <TreeView.Cell className={styles.Cell} asChild>
-                    <Menu.ContextTrigger>
-                      <TreeView.NodeExpandTrigger className={styles.NodeExpandTrigger}>
-                        <TreeView.NodeIndicator type="expanded" className={styles.NodeIndicator}>
-                          <ChevronRightIcon />
-                        </TreeView.NodeIndicator>
-                      </TreeView.NodeExpandTrigger>
-                      <TreeView.NodeText className={styles.NodeText}>
-                        {nodeState.expanded ? <FolderOpenIcon /> : <FolderIcon />}
-                        {node.name}
-                      </TreeView.NodeText>
-                    </Menu.ContextTrigger>
-                  </TreeView.Cell>
+                  <TreeView.Cell
+                    className={styles.Cell}
+                    render={
+                      <Menu.ContextTrigger>
+                        <TreeView.NodeExpandTrigger className={styles.NodeExpandTrigger}>
+                          <TreeView.NodeIndicator type="expanded" className={styles.NodeIndicator}>
+                            <ChevronRightIcon />
+                          </TreeView.NodeIndicator>
+                        </TreeView.NodeExpandTrigger>
+                        <TreeView.NodeText className={styles.NodeText}>
+                          {nodeState.expanded ? <FolderOpenIcon /> : <FolderIcon />}
+                          {node.name}
+                        </TreeView.NodeText>
+                      </Menu.ContextTrigger>
+                    }
+                  />
                 </TreeNodeContextMenu>
               </TreeView.Node>
               <TreeView.NodeGroupContent className={styles.NodeGroupContent}>
@@ -85,12 +88,15 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node> & { triggerId: string 
           ) : (
             <TreeView.Node className={styles.Node}>
               <TreeNodeContextMenu triggerId={triggerId}>
-                <TreeView.Cell className={styles.Cell} asChild>
-                  <Menu.ContextTrigger>
-                    <FileIcon />
-                    <TreeView.NodeText className={styles.NodeText}>{node.name}</TreeView.NodeText>
-                  </Menu.ContextTrigger>
-                </TreeView.Cell>
+                <TreeView.Cell
+                  className={styles.Cell}
+                  render={
+                    <Menu.ContextTrigger>
+                      <FileIcon />
+                      <TreeView.NodeText className={styles.NodeText}>{node.name}</TreeView.NodeText>
+                    </Menu.ContextTrigger>
+                  }
+                />
               </TreeNodeContextMenu>
             </TreeView.Node>
           )

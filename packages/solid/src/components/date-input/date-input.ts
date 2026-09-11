@@ -8,21 +8,25 @@ export {
   DateInputRoot as Root,
   type DateInputRootBaseProps as RootBaseProps,
   type DateInputRootProps as RootProps,
+  type DateInputRootState as RootState,
 } from './date-input-root.tsx'
 export {
   DateInputRootProvider as RootProvider,
   type DateInputRootProviderBaseProps as RootProviderBaseProps,
   type DateInputRootProviderProps as RootProviderProps,
+  type DateInputRootProviderState as RootProviderState,
 } from './date-input-root-provider.tsx'
 export {
   DateInputSegment as Segment,
   type DateInputSegmentBaseProps as SegmentBaseProps,
   type DateInputSegmentProps as SegmentProps,
+  type DateInputSegmentState as SegmentState,
 } from './date-input-segment.tsx'
 export {
   DateInputSegmentGroup as SegmentGroup,
   type DateInputSegmentGroupBaseProps as SegmentGroupBaseProps,
   type DateInputSegmentGroupProps as SegmentGroupProps,
+  type DateInputSegmentGroupState as SegmentGroupState,
 } from './date-input-segment-group.tsx'
 export {
   DateInputHiddenInput as HiddenInput,
@@ -33,6 +37,7 @@ export {
   DateInputControl as Control,
   type DateInputControlBaseProps as ControlBaseProps,
   type DateInputControlProps as ControlProps,
+  type DateInputControlState as ControlState,
 } from './date-input-control.tsx'
 export {
   DateInputSegmentContext as SegmentContext,

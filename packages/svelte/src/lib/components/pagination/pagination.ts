@@ -14,6 +14,7 @@ export {
   default as Item,
   type PaginationItemBaseProps as ItemBaseProps,
   type PaginationItemProps as ItemProps,
+  type PaginationItemState as ItemState,
 } from './pagination-item.svelte'
 export {
   default as LastTrigger,

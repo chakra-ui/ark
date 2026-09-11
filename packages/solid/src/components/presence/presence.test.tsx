@@ -18,6 +18,18 @@ const ComponentUnderTest = (props: PresenceProps) => {
 }
 
 describe('Presence', () => {
+  it('renders the unified data-presence-root attribute and no legacy scope/part attributes', async () => {
+    render(() => <ComponentUnderTest />)
+    await user.click(screen.getByRole('button'))
+    const box = await waitFor(() => {
+      expect(screen.getByTestId('box')).toBeVisible()
+      return screen.getByTestId('box')
+    })
+    expect(box).toHaveAttribute('data-presence-root')
+    expect(box).not.toHaveAttribute('data-scope')
+    expect(box).not.toHaveAttribute('data-part')
+  })
+
   it('should control presence when not lazy mounting and not unmounting on exit', async () => {
     render(() => <ComponentUnderTest />)
     expect(screen.queryByTestId('box')).not.toBeVisible()

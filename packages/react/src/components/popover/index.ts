@@ -13,7 +13,12 @@ export {
   type PopoverCloseTriggerBaseProps,
   type PopoverCloseTriggerProps,
 } from './popover-close-trigger.tsx'
-export { PopoverContent, type PopoverContentBaseProps, type PopoverContentProps } from './popover-content.tsx'
+export {
+  PopoverContent,
+  type PopoverContentBaseProps,
+  type PopoverContentProps,
+  type PopoverContentState,
+} from './popover-content.tsx'
 export { PopoverContext, type PopoverContextProps } from './popover-context.tsx'
 export {
   PopoverDescription,
@@ -25,6 +30,7 @@ export {
   PopoverPositioner,
   type PopoverPositionerBaseProps,
   type PopoverPositionerProps,
+  type PopoverPositionerState,
 } from './popover-positioner.tsx'
 export { PopoverRoot, type PopoverRootBaseProps, type PopoverRootProps } from './popover-root.tsx'
 export {
@@ -33,7 +39,12 @@ export {
   type PopoverRootProviderProps,
 } from './popover-root-provider.tsx'
 export { PopoverTitle, type PopoverTitleBaseProps, type PopoverTitleProps } from './popover-title.tsx'
-export { PopoverTrigger, type PopoverTriggerBaseProps, type PopoverTriggerProps } from './popover-trigger.tsx'
+export {
+  PopoverTrigger,
+  type PopoverTriggerBaseProps,
+  type PopoverTriggerProps,
+  type PopoverTriggerState,
+} from './popover-trigger.tsx'
 export { popoverAnatomy } from './popover.anatomy.ts'
 export { usePopover, type UsePopoverProps, type UsePopoverReturn } from './use-popover.ts'
 export { usePopoverContext, type UsePopoverContext } from './use-popover-context.ts'

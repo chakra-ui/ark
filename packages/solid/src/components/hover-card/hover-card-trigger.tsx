@@ -1,11 +1,13 @@
+import type { TriggerProps, TriggerState } from '@zag-js/hover-card'
 import { mergeProps } from '@zag-js/solid'
-import type { TriggerProps } from '@zag-js/hover-card'
 import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useHoverCardContext } from './use-hover-card-context.ts'
 
-export interface HoverCardTriggerBaseProps extends TriggerProps, PolymorphicProps<'button'> {}
+export interface HoverCardTriggerState extends TriggerState {}
+
+export interface HoverCardTriggerBaseProps extends TriggerProps, PolymorphicProps<'button', HoverCardTriggerState> {}
 export interface HoverCardTriggerProps extends Assign<HTMLProps<'button'>, HoverCardTriggerBaseProps> {}
 
 export const HoverCardTrigger = (props: HoverCardTriggerProps) => {
@@ -13,5 +15,5 @@ export const HoverCardTrigger = (props: HoverCardTriggerProps) => {
   const hoverCard = useHoverCardContext()
   const mergedProps = mergeProps(() => hoverCard().getTriggerProps(triggerProps), localProps)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps} state={hoverCard().getTriggerState(triggerProps)} />
 }

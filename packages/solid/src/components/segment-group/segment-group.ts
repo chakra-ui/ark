@@ -12,6 +12,7 @@ export {
   SegmentGroupItem as Item,
   type SegmentGroupItemBaseProps as ItemBaseProps,
   type SegmentGroupItemProps as ItemProps,
+  type SegmentGroupItemState as ItemState,
 } from './segment-group-item.tsx'
 export {
   SegmentGroupItemContext as ItemContext,
@@ -41,9 +42,11 @@ export {
   SegmentGroupRoot as Root,
   type SegmentGroupRootBaseProps as RootBaseProps,
   type SegmentGroupRootProps as RootProps,
+  type SegmentGroupRootState as RootState,
 } from './segment-group-root.tsx'
 export {
   SegmentGroupRootProvider as RootProvider,
   type SegmentGroupRootProviderBaseProps as RootProviderBaseProps,
   type SegmentGroupRootProviderProps as RootProviderProps,
+  type SegmentGroupRootProviderState as RootProviderState,
 } from './segment-group-root-provider.tsx'

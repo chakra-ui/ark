@@ -1,8 +1,9 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { ItemProps } from '@zag-js/carousel'
+  import type { ItemProps, ItemState } from '@zag-js/carousel'
 
-  export interface CarouselItemBaseProps extends ItemProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface CarouselItemState extends ItemState {}
+  export interface CarouselItemBaseProps extends ItemProps, PolymorphicProps<'div', CarouselItemState>, RefAttribute {}
   export interface CarouselItemProps extends Assign<HTMLProps<'div'>, CarouselItemBaseProps> {}
 </script>
 
@@ -20,4 +21,4 @@
   const mergedProps = $derived(mergeProps(carousel().getItemProps(itemProps), localProps))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={carousel().getItemState(itemProps)} />

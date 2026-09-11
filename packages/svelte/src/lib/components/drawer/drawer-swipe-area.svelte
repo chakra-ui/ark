@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { SwipeAreaState } from '@zag-js/drawer'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface DrawerSwipeAreaBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface DrawerSwipeAreaState extends SwipeAreaState {}
+  export interface DrawerSwipeAreaBaseProps extends PolymorphicProps<'div', DrawerSwipeAreaState>, RefAttribute {}
   export interface DrawerSwipeAreaProps extends Assign<HTMLProps<'div'>, DrawerSwipeAreaBaseProps> {}
 </script>
 
@@ -16,4 +18,4 @@
   const mergedProps = $derived(mergeProps(drawer().getSwipeAreaProps(), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={drawer().getSwipeAreaState()} />

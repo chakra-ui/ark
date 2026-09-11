@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { ContentState } from '@zag-js/hover-card'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface HoverCardContentBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface HoverCardContentState extends ContentState {}
+  export interface HoverCardContentBaseProps extends PolymorphicProps<'div', HoverCardContentState>, RefAttribute {}
   export interface HoverCardContentProps extends Assign<HTMLProps<'div'>, HoverCardContentBaseProps> {}
 </script>
 
@@ -23,5 +25,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {@attach setNode} {...mergedProps} />
+  <Ark as="div" bind:ref {@attach setNode} {...mergedProps} state={hoverCard().getContentState()} />
 {/if}

@@ -11,12 +11,14 @@ export {
   default as SwitchRootProvider,
   type SwitchRootProviderBaseProps,
   type SwitchRootProviderProps,
+  type SwitchRootProviderState,
 } from './switch-root-provider.vue'
 export {
   default as SwitchRoot,
   type SwitchRootBaseProps,
   type SwitchRootEmits,
   type SwitchRootProps,
+  type SwitchRootState,
 } from './switch-root.vue'
 export { default as SwitchThumb, type SwitchThumbBaseProps, type SwitchThumbProps } from './switch-thumb.vue'
 export { switchAnatomy } from './switch.anatomy.ts'

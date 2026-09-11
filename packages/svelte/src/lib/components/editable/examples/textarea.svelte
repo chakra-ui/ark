@@ -12,7 +12,7 @@
   <Editable.Label class={styles.Label}>Description</Editable.Label>
   <Editable.Area class={styles.Area}>
     <Editable.Input class={styles.Textarea}>
-      {#snippet asChild(props)}
+      {#snippet render(props)}
         <textarea {...props()}></textarea>
       {/snippet}
     </Editable.Input>

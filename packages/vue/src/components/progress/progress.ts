@@ -50,4 +50,5 @@ export {
   default as View,
   type ProgressViewBaseProps as ViewBaseProps,
   type ProgressViewProps as ViewProps,
+  type ProgressViewState as ViewState,
 } from './progress-view.vue'

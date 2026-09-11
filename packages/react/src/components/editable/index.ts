@@ -5,7 +5,12 @@ export type {
   PointerDownOutsideEvent as EditablePointerDownOutsideEvent,
   ValueChangeDetails as EditableValueChangeDetails,
 } from '@zag-js/editable'
-export { EditableArea, type EditableAreaBaseProps, type EditableAreaProps } from './editable-area.tsx'
+export {
+  EditableArea,
+  type EditableAreaBaseProps,
+  type EditableAreaProps,
+  type EditableAreaState,
+} from './editable-area.tsx'
 export {
   EditableCancelTrigger,
   type EditableCancelTriggerBaseProps,
@@ -18,9 +23,24 @@ export {
   type EditableEditTriggerBaseProps,
   type EditableEditTriggerProps,
 } from './editable-edit-trigger.tsx'
-export { EditableInput, type EditableInputBaseProps, type EditableInputProps } from './editable-input.tsx'
-export { EditableLabel, type EditableLabelBaseProps, type EditableLabelProps } from './editable-label.tsx'
-export { EditablePreview, type EditablePreviewBaseProps, type EditablePreviewProps } from './editable-preview.tsx'
+export {
+  EditableInput,
+  type EditableInputBaseProps,
+  type EditableInputProps,
+  type EditableInputState,
+} from './editable-input.tsx'
+export {
+  EditableLabel,
+  type EditableLabelBaseProps,
+  type EditableLabelProps,
+  type EditableLabelState,
+} from './editable-label.tsx'
+export {
+  EditablePreview,
+  type EditablePreviewBaseProps,
+  type EditablePreviewProps,
+  type EditablePreviewState,
+} from './editable-preview.tsx'
 export { EditableRoot, type EditableRootBaseProps, type EditableRootProps } from './editable-root.tsx'
 export {
   EditableRootProvider,

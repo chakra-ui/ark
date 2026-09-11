@@ -135,24 +135,10 @@
   border: 1px solid var(--demo-border-emphasized);
   border-radius: 0.375rem;
   box-shadow: var(--demo-shadow-md);
+  position: relative;
   z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
-  max-height: min(var(--available-height, 300px), 300px);
-  overflow-y: auto;
+  overflow: hidden;
   outline: none;
-
-  /* Fancy (custom) scrollbar styles using neutral */
-  scrollbar-width: thin;
-  scrollbar-color: var(--demo-border-emphasized) var(--demo-bg-popover);
-
-  &::-webkit-scrollbar {
-    width: 8px;
-    background: var(--demo-bg-popover);
-    border-radius: 4px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 0.375rem;
-  }
 
   &[data-state='open'] {
     animation: scale-fade-in 0.15s ease-out;
@@ -160,6 +146,21 @@
 
   &[data-state='closed'] {
     animation: scale-fade-out 0.1s ease-in;
+  }
+
+  /* the machine owns the height while aligned, so only cap it when it does not */
+  &:not([data-align-with-trigger]) {
+    max-height: min(var(--available-height, 300px), 300px);
+  }
+
+  /*
+   * While aligned, the machine owns position, height and transform. A scale/fade entrance
+   * fights the alignment, and the content has to track the positioner as it grows -- else
+   * you get a tall empty box with a still-scrolling list inside it.
+   */
+  &[data-align-with-trigger] {
+    animation: none;
+    height: 100%;
   }
 }
 
@@ -265,5 +266,69 @@
   &::-webkit-scrollbar-thumb {
     border-radius: 0.375rem;
     background: var(--demo-border-emphasized);
+  }
+}
+
+.Status {
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--demo-neutral-emphasized);
+}
+
+.List {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  outline: none;
+  /* keep an item scrolled into view clear of the overlaid arrows */
+  scroll-padding-block: 1.5rem;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--demo-border-emphasized) var(--demo-bg-popover);
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    background: var(--demo-bg-popover);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0.375rem;
+  }
+}
+
+.ScrollArrow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1.5rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  color: var(--demo-fg-muted);
+  background: var(--demo-bg-popover);
+  border-radius: inherit;
+
+  &[data-placement='top'] {
+    top: 0;
+  }
+
+  &[data-placement='bottom'] {
+    bottom: 0;
+  }
+
+  &[data-state='hidden'] {
+    display: none;
+  }
+
+  & svg {
+    width: 0.875rem;
+    height: 0.875rem;
   }
 }

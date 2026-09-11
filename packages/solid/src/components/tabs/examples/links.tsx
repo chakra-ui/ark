@@ -7,7 +7,7 @@ export const Links = () => (
       <Tabs.Trigger
         class={styles.Trigger}
         value="account"
-        asChild={(props) => (
+        render={(props) => (
           <a href="#account" {...props()}>
             Account
           </a>
@@ -16,7 +16,7 @@ export const Links = () => (
       <Tabs.Trigger
         class={styles.Trigger}
         value="password"
-        asChild={(props) => (
+        render={(props) => (
           <a href="#password" {...props()}>
             Password
           </a>
@@ -25,7 +25,7 @@ export const Links = () => (
       <Tabs.Trigger
         class={styles.Trigger}
         value="billing"
-        asChild={(props) => (
+        render={(props) => (
           <a href="#billing" {...props()}>
             Billing
           </a>

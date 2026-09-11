@@ -7,6 +7,7 @@ export {
   default as RatingGroupControl,
   type RatingGroupControlBaseProps,
   type RatingGroupControlProps,
+  type RatingGroupControlState,
 } from './rating-group-control.svelte'
 export {
   default as RatingGroupHiddenInput,
@@ -18,6 +19,7 @@ export {
   default as RatingGroupItem,
   type RatingGroupItemBaseProps,
   type RatingGroupItemProps,
+  type RatingGroupItemState,
 } from './rating-group-item.svelte'
 export {
   default as RatingGroupLabel,

@@ -25,6 +25,7 @@ export {
   default as FloatingPanelContent,
   type FloatingPanelContentProps,
   type FloatingPanelContentBaseProps,
+  type FloatingPanelContentState,
 } from './floating-panel-content.svelte'
 export { default as FloatingPanelContext, type FloatingPanelContextProps } from './floating-panel-context.svelte'
 export {
@@ -46,11 +47,13 @@ export {
   default as FloatingPanelResizeTrigger,
   type FloatingPanelResizeTriggerProps,
   type FloatingPanelResizeTriggerBaseProps,
+  type FloatingPanelResizeTriggerState,
 } from './floating-panel-resize-trigger.svelte'
 export {
   default as FloatingPanelStageTrigger,
   type FloatingPanelStageTriggerProps,
   type FloatingPanelStageTriggerBaseProps,
+  type FloatingPanelStageTriggerState,
 } from './floating-panel-stage-trigger.svelte'
 export {
   default as FloatingPanelRoot,
@@ -71,11 +74,13 @@ export {
   default as FloatingPanelTrigger,
   type FloatingPanelTriggerProps,
   type FloatingPanelTriggerBaseProps,
+  type FloatingPanelTriggerState,
 } from './floating-panel-trigger.svelte'
 export {
   default as FloatingPanelControl,
   type FloatingPanelControlProps,
   type FloatingPanelControlBaseProps,
+  type FloatingPanelControlState,
 } from './floating-panel-control.svelte'
 
 export {

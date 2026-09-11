@@ -28,7 +28,12 @@ export {
   type ProgressValueTextBaseProps,
   type ProgressValueTextProps,
 } from './progress-value-text.tsx'
-export { ProgressView, type ProgressViewBaseProps, type ProgressViewProps } from './progress-view.tsx'
+export {
+  ProgressView,
+  type ProgressViewBaseProps,
+  type ProgressViewProps,
+  type ProgressViewState,
+} from './progress-view.tsx'
 export { progressAnatomy } from './progress.anatomy.ts'
 export { useProgress, type UseProgressProps, type UseProgressReturn } from './use-progress.ts'
 export { useProgressContext, type UseProgressContext } from './use-progress-context.ts'

@@ -46,15 +46,17 @@ export const Overflow = () => {
       <Portal>
         <Select.Positioner>
           <Select.Content className={styles.Content} style={{ maxHeight: '200px' }}>
-            <Select.ItemGroup className={styles.ItemGroup}>
-              <Select.ItemGroupLabel className={styles.ItemGroupLabel}>Names</Select.ItemGroupLabel>
-              {collection.items.map((item) => (
-                <Select.Item className={styles.Item} key={item} item={item}>
-                  <Select.ItemText className={styles.ItemText}>{item}</Select.ItemText>
-                  <Select.ItemIndicator className={styles.ItemIndicator}>✓</Select.ItemIndicator>
-                </Select.Item>
-              ))}
-            </Select.ItemGroup>
+            <Select.List className={styles.List}>
+              <Select.ItemGroup className={styles.ItemGroup}>
+                <Select.ItemGroupLabel className={styles.ItemGroupLabel}>Names</Select.ItemGroupLabel>
+                {collection.items.map((item) => (
+                  <Select.Item className={styles.Item} key={item} item={item}>
+                    <Select.ItemText className={styles.ItemText}>{item}</Select.ItemText>
+                    <Select.ItemIndicator className={styles.ItemIndicator}>✓</Select.ItemIndicator>
+                  </Select.Item>
+                ))}
+              </Select.ItemGroup>
+            </Select.List>
           </Select.Content>
         </Select.Positioner>
       </Portal>

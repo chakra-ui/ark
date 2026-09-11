@@ -20,15 +20,30 @@ export {
   type SliderMarkerGroupBaseProps,
   type SliderMarkerGroupProps,
 } from './slider-marker-group.svelte'
-export { default as SliderMarker, type SliderMarkerBaseProps, type SliderMarkerProps } from './slider-marker.svelte'
+export {
+  default as SliderMarker,
+  type SliderMarkerBaseProps,
+  type SliderMarkerProps,
+  type SliderMarkerState,
+} from './slider-marker.svelte'
 export { default as SliderRange, type SliderRangeBaseProps, type SliderRangeProps } from './slider-range.svelte'
 export {
   default as SliderRootProvider,
   type SliderRootProviderBaseProps,
   type SliderRootProviderProps,
 } from './slider-root-provider.svelte'
-export { default as SliderRoot, type SliderRootBaseProps, type SliderRootProps } from './slider-root.svelte'
-export { default as SliderThumb, type SliderThumbBaseProps, type SliderThumbProps } from './slider-thumb.svelte'
+export {
+  default as SliderRoot,
+  type SliderRootBaseProps,
+  type SliderRootProps,
+  type SliderRootState,
+} from './slider-root.svelte'
+export {
+  default as SliderThumb,
+  type SliderThumbBaseProps,
+  type SliderThumbProps,
+  type SliderThumbState,
+} from './slider-thumb.svelte'
 export { default as SliderTrack, type SliderTrackBaseProps, type SliderTrackProps } from './slider-track.svelte'
 export {
   default as SliderValueText,

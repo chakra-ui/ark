@@ -13,16 +13,19 @@ export {
   default as NumberInputDecrementTrigger,
   type NumberInputDecrementTriggerBaseProps,
   type NumberInputDecrementTriggerProps,
+  type NumberInputDecrementTriggerState,
 } from './number-input-decrement-trigger.vue'
 export {
   default as NumberInputIncrementTrigger,
   type NumberInputIncrementTriggerBaseProps,
   type NumberInputIncrementTriggerProps,
+  type NumberInputIncrementTriggerState,
 } from './number-input-increment-trigger.vue'
 export {
   default as NumberInputInput,
   type NumberInputInputBaseProps,
   type NumberInputInputProps,
+  type NumberInputInputState,
 } from './number-input-input.vue'
 export {
   default as NumberInputLabel,
@@ -33,12 +36,14 @@ export {
   default as NumberInputRootProvider,
   type NumberInputRootProviderBaseProps,
   type NumberInputRootProviderProps,
+  type NumberInputRootProviderState,
 } from './number-input-root-provider.vue'
 export {
   default as NumberInputRoot,
   type NumberInputRootBaseProps,
   type NumberInputRootEmits,
   type NumberInputRootProps,
+  type NumberInputRootState,
 } from './number-input-root.vue'
 export {
   default as NumberInputScrubber,

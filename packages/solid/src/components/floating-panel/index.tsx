@@ -25,6 +25,7 @@ export {
   FloatingPanelContent,
   type FloatingPanelContentProps,
   type FloatingPanelContentBaseProps,
+  type FloatingPanelContentState,
 } from './floating-panel-content.tsx'
 export { FloatingPanelContext, type FloatingPanelContextProps } from './floating-panel-context.tsx'
 export {
@@ -46,11 +47,13 @@ export {
   FloatingPanelResizeTrigger,
   type FloatingPanelResizeTriggerProps,
   type FloatingPanelResizeTriggerBaseProps,
+  type FloatingPanelResizeTriggerState,
 } from './floating-panel-resize-trigger.tsx'
 export {
   FloatingPanelStageTrigger,
   type FloatingPanelStageTriggerProps,
   type FloatingPanelStageTriggerBaseProps,
+  type FloatingPanelStageTriggerState,
 } from './floating-panel-stage-trigger.tsx'
 export {
   FloatingPanelRoot,
@@ -71,11 +74,13 @@ export {
   FloatingPanelTrigger,
   type FloatingPanelTriggerProps,
   type FloatingPanelTriggerBaseProps,
+  type FloatingPanelTriggerState,
 } from './floating-panel-trigger.tsx'
 export {
   FloatingPanelControl,
   type FloatingPanelControlProps,
   type FloatingPanelControlBaseProps,
+  type FloatingPanelControlState,
 } from './floating-panel-control.tsx'
 
 export { useFloatingPanel, type UseFloatingPanelProps, type UseFloatingPanelReturn } from './use-floating-panel.ts'

@@ -8,5 +8,6 @@ export {
   ToggleRoot as Root,
   type ToggleRootBaseProps as RootBaseProps,
   type ToggleRootProps as RootProps,
+  type ToggleRootState as RootState,
 } from './toggle-root.tsx'
 export { toggleAnatomy } from './toggle.anatomy.ts'

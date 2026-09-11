@@ -1,1 +1,3 @@
-export { anatomy as selectAnatomy } from '@zag-js/select'
+import { anatomy } from '@zag-js/select'
+
+export const selectAnatomy = anatomy.extendWith('status')

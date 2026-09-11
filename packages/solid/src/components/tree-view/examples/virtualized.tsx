@@ -65,7 +65,7 @@ export const Virtualized = () => {
       <TreeView.Tree
         class={styles.Tree}
         style={{ height: '400px' }}
-        render={(props) => <ListVirtualizer.Root {...props} value={virtualizer} />}
+        render={(props) => <ListVirtualizer.Root {...props()} value={virtualizer} />}
       >
         <ListVirtualizer.Content>
           <Index each={virtualizer.getVirtualItems()}>
@@ -79,7 +79,7 @@ export const Virtualized = () => {
                 <TreeView.NodeProvider node={visibleNode().node} indexPath={visibleNode().indexPath}>
                   <TreeView.Node
                     class={styles.Node}
-                    render={(props) => <ListVirtualizer.Item {...props} item={virtualItem()} />}
+                    render={(props) => <ListVirtualizer.Item {...props()} item={virtualItem()} />}
                   >
                     <TreeView.Cell class={styles.Cell} style={{ 'padding-left': `${nodeState().depth * 22}px` }}>
                       <Show when={nodeState().isBranch}>

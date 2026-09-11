@@ -7,12 +7,14 @@ export const Multiple = () => {
     <Accordion.Root className={styles.Root} defaultValue={['ark-ui']} multiple>
       {items.map((item) => (
         <Accordion.Item className={styles.Item} key={item.value} value={item.value}>
-          <Accordion.ItemTrigger className={styles.ItemTrigger}>
-            {item.title}
-            <Accordion.ItemIndicator className={styles.ItemIndicator}>
-              <ChevronDownIcon />
-            </Accordion.ItemIndicator>
-          </Accordion.ItemTrigger>
+          <Accordion.ItemHeader className={styles.ItemHeader}>
+            <Accordion.ItemTrigger className={styles.ItemTrigger}>
+              {item.title}
+              <Accordion.ItemIndicator className={styles.ItemIndicator}>
+                <ChevronDownIcon />
+              </Accordion.ItemIndicator>
+            </Accordion.ItemTrigger>
+          </Accordion.ItemHeader>
           <Accordion.ItemContent className={styles.ItemContent}>
             <div className={styles.ItemBody}>{item.content}</div>
           </Accordion.ItemContent>

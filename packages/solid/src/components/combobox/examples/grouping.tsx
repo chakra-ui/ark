@@ -47,23 +47,25 @@ export const Grouping = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content class={styles.Content}>
-            <For each={collection().group()}>
-              {([continent, group]) => (
-                <Combobox.ItemGroup class={styles.ItemGroup}>
-                  <Combobox.ItemGroupLabel class={styles.ItemGroupLabel}>{continent}</Combobox.ItemGroupLabel>
-                  <For each={group}>
-                    {(item) => (
-                      <Combobox.Item class={styles.Item} item={item}>
-                        <Combobox.ItemText class={styles.ItemText}>{item.label}</Combobox.ItemText>
-                        <Combobox.ItemIndicator class={styles.ItemIndicator}>
-                          <CheckIcon />
-                        </Combobox.ItemIndicator>
-                      </Combobox.Item>
-                    )}
-                  </For>
-                </Combobox.ItemGroup>
-              )}
-            </For>
+            <Combobox.List class={styles.List}>
+              <For each={collection().group()}>
+                {([continent, group]) => (
+                  <Combobox.ItemGroup class={styles.ItemGroup}>
+                    <Combobox.ItemGroupLabel class={styles.ItemGroupLabel}>{continent}</Combobox.ItemGroupLabel>
+                    <For each={group}>
+                      {(item) => (
+                        <Combobox.Item class={styles.Item} item={item}>
+                          <Combobox.ItemText class={styles.ItemText}>{item.label}</Combobox.ItemText>
+                          <Combobox.ItemIndicator class={styles.ItemIndicator}>
+                            <CheckIcon />
+                          </Combobox.ItemIndicator>
+                        </Combobox.Item>
+                      )}
+                    </For>
+                  </Combobox.ItemGroup>
+                )}
+              </For>
+            </Combobox.List>
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

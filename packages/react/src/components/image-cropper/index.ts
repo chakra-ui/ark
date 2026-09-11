@@ -17,17 +17,25 @@ export {
   ImageCropperImage,
   type ImageCropperImageBaseProps,
   type ImageCropperImageProps,
+  type ImageCropperImageState,
 } from './image-cropper-image.tsx'
-export { ImageCropperRoot, type ImageCropperRootBaseProps, type ImageCropperRootProps } from './image-cropper-root.tsx'
+export {
+  ImageCropperRoot,
+  type ImageCropperRootBaseProps,
+  type ImageCropperRootProps,
+  type ImageCropperRootState,
+} from './image-cropper-root.tsx'
 export {
   ImageCropperRootProvider,
   type ImageCropperRootProviderBaseProps,
   type ImageCropperRootProviderProps,
+  type ImageCropperRootProviderState,
 } from './image-cropper-root-provider.tsx'
 export {
   ImageCropperSelection,
   type ImageCropperSelectionBaseProps,
   type ImageCropperSelectionProps,
+  type ImageCropperSelectionState,
 } from './image-cropper-selection.tsx'
 export {
   ImageCropperViewport,

@@ -1,10 +1,13 @@
-import type { StageTriggerProps } from '@zag-js/floating-panel'
+import type { StageTriggerProps, StageTriggerState } from '@zag-js/floating-panel'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useFloatingPanelContext } from './use-floating-panel-context.ts'
 
-export interface FloatingPanelStageTriggerBaseProps extends PolymorphicProps<'button'>, StageTriggerProps {}
+export interface FloatingPanelStageTriggerState extends StageTriggerState {}
+
+export interface FloatingPanelStageTriggerBaseProps
+  extends PolymorphicProps<'button', FloatingPanelStageTriggerState>, StageTriggerProps {}
 export interface FloatingPanelStageTriggerProps extends HTMLProps<'button'>, FloatingPanelStageTriggerBaseProps {}
 
 export const FloatingPanelStageTrigger = (props: FloatingPanelStageTriggerProps) => {
@@ -12,5 +15,5 @@ export const FloatingPanelStageTrigger = (props: FloatingPanelStageTriggerProps)
   const floatingPanel = useFloatingPanelContext()
   const mergedProps = mergeProps(() => floatingPanel().getStageTriggerProps(stage), localProps)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps} state={floatingPanel().getStageTriggerState(stage)} />
 }

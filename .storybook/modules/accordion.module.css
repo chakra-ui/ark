@@ -30,6 +30,20 @@
   }
 }
 
+.ItemHeader {
+  display: flex;
+  margin: 0;
+  font: inherit;
+
+  &[data-orientation='vertical'] {
+    width: 100%;
+  }
+
+  &[data-orientation='horizontal'] {
+    height: 100%;
+  }
+}
+
 .ItemTrigger {
   display: flex;
   align-items: center;

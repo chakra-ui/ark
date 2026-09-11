@@ -19,12 +19,14 @@ export {
   default as Content,
   type HoverCardContentProps as ContentProps,
   type HoverCardContentBaseProps as ContentBaseProps,
+  type HoverCardContentState as ContentState,
 } from './hover-card-content.vue'
 export { default as Context, type HoverCardContextProps as ContextProps } from './hover-card-context.vue'
 export {
   default as Positioner,
   type HoverCardPositionerProps as PositionerProps,
   type HoverCardPositionerBaseProps as PositionerBaseProps,
+  type HoverCardPositionerState as PositionerState,
 } from './hover-card-positioner.vue'
 export {
   default as RootProvider,
@@ -41,4 +43,5 @@ export {
   default as Trigger,
   type HoverCardTriggerProps as TriggerProps,
   type HoverCardTriggerBaseProps as TriggerBaseProps,
+  type HoverCardTriggerState as TriggerState,
 } from './hover-card-trigger.vue'

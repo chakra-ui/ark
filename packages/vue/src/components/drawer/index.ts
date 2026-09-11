@@ -7,13 +7,19 @@ export {
   default as DrawerBackdrop,
   type DrawerBackdropBaseProps,
   type DrawerBackdropProps,
+  type DrawerBackdropState,
 } from './drawer-backdrop.vue'
 export {
   default as DrawerCloseTrigger,
   type DrawerCloseTriggerBaseProps,
   type DrawerCloseTriggerProps,
 } from './drawer-close-trigger.vue'
-export { default as DrawerContent, type DrawerContentBaseProps, type DrawerContentProps } from './drawer-content.vue'
+export {
+  default as DrawerContent,
+  type DrawerContentBaseProps,
+  type DrawerContentProps,
+  type DrawerContentState,
+} from './drawer-content.vue'
 export {
   default as DrawerDescription,
   type DrawerDescriptionBaseProps,
@@ -24,6 +30,7 @@ export {
   default as DrawerPositioner,
   type DrawerPositionerBaseProps,
   type DrawerPositionerProps,
+  type DrawerPositionerState,
 } from './drawer-positioner.vue'
 export { default as DrawerGrabber, type DrawerGrabberBaseProps, type DrawerGrabberProps } from './drawer-grabber.vue'
 export {
@@ -48,9 +55,15 @@ export {
   default as DrawerSwipeArea,
   type DrawerSwipeAreaBaseProps,
   type DrawerSwipeAreaProps,
+  type DrawerSwipeAreaState,
 } from './drawer-swipe-area.vue'
 export { default as DrawerTitle, type DrawerTitleBaseProps, type DrawerTitleProps } from './drawer-title.vue'
-export { default as DrawerTrigger, type DrawerTriggerBaseProps, type DrawerTriggerProps } from './drawer-trigger.vue'
+export {
+  default as DrawerTrigger,
+  type DrawerTriggerBaseProps,
+  type DrawerTriggerProps,
+  type DrawerTriggerState,
+} from './drawer-trigger.vue'
 export { drawerAnatomy } from './drawer.anatomy.ts'
 export { useDrawer, type UseDrawerProps, type UseDrawerReturn } from './use-drawer.ts'
 export { useDrawerContext, type UseDrawerContext } from './use-drawer-context.ts'

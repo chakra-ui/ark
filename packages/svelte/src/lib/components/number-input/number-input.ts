@@ -9,16 +9,19 @@ export {
   default as DecrementTrigger,
   type NumberInputDecrementTriggerBaseProps as DecrementTriggerBaseProps,
   type NumberInputDecrementTriggerProps as DecrementTriggerProps,
+  type NumberInputDecrementTriggerState as DecrementTriggerState,
 } from './number-input-decrement-trigger.svelte'
 export {
   default as IncrementTrigger,
   type NumberInputIncrementTriggerBaseProps as IncrementTriggerBaseProps,
   type NumberInputIncrementTriggerProps as IncrementTriggerProps,
+  type NumberInputIncrementTriggerState as IncrementTriggerState,
 } from './number-input-increment-trigger.svelte'
 export {
   default as Input,
   type NumberInputInputBaseProps as InputBaseProps,
   type NumberInputInputProps as InputProps,
+  type NumberInputInputState as InputState,
 } from './number-input-input.svelte'
 export {
   default as Label,
@@ -29,11 +32,13 @@ export {
   default as Root,
   type NumberInputRootBaseProps as RootBaseProps,
   type NumberInputRootProps as RootProps,
+  type NumberInputRootState as RootState,
 } from './number-input-root.svelte'
 export {
   default as RootProvider,
   type NumberInputRootProviderBaseProps as RootProviderBaseProps,
   type NumberInputRootProviderProps as RootProviderProps,
+  type NumberInputRootProviderState as RootProviderState,
 } from './number-input-root-provider.svelte'
 export {
   default as Scrubber,

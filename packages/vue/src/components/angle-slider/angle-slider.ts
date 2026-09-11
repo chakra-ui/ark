@@ -1,9 +1,15 @@
 export { default as Context, type AngleSliderContextProps } from './angle-slider-context.vue'
-export { default as Root, type AngleSliderRootProps, type AngleSliderRootBaseProps } from './angle-slider-root.vue'
+export {
+  default as Root,
+  type AngleSliderRootProps,
+  type AngleSliderRootBaseProps,
+  type AngleSliderRootState as RootState,
+} from './angle-slider-root.vue'
 export {
   default as RootProvider,
   type AngleSliderRootProviderProps,
   type AngleSliderRootProviderBaseProps,
+  type AngleSliderRootProviderState as RootProviderState,
 } from './angle-slider-root-provider.vue'
 export { default as Thumb, type AngleSliderThumbProps, type AngleSliderThumbBaseProps } from './angle-slider-thumb.vue'
 export {
@@ -26,6 +32,7 @@ export {
   default as Marker,
   type AngleSliderMarkerProps,
   type AngleSliderMarkerBaseProps,
+  type AngleSliderMarkerState as MarkerState,
 } from './angle-slider-marker.vue'
 export {
   default as HiddenInput,

@@ -1,4 +1,10 @@
 export type { FocusChangeDetails, ValueChangeDetails } from '@zag-js/accordion'
+export {
+  default as ItemHeader,
+  type AccordionItemHeaderBaseProps as ItemHeaderBaseProps,
+  type AccordionItemHeaderProps as ItemHeaderProps,
+  type AccordionItemHeaderState as ItemHeaderState,
+} from './accordion-item-header.svelte'
 export { default as Context, type AccordionContextProps as ContextProps } from './accordion-context.svelte'
 export {
   default as Item,

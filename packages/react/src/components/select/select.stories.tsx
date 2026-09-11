@@ -7,6 +7,7 @@ const meta: Meta = {
 export default meta
 
 export { Async } from './examples/async.tsx'
+export { AlignItemWithTrigger } from './examples/align-item-with-trigger.tsx'
 export { Basic } from './examples/basic.tsx'
 export { Controlled } from './examples/controlled.tsx'
 export { FormLibrary } from './examples/form-library.tsx'

@@ -10,11 +10,17 @@ export {
   default as ListboxContent,
   type ListboxContentBaseProps,
   type ListboxContentProps,
+  type ListboxContentState,
 } from './listbox-content.svelte'
 export { default as ListboxContext, type ListboxContextProps } from './listbox-context.svelte'
 export { default as ListboxEmpty, type ListboxEmptyBaseProps, type ListboxEmptyProps } from './listbox-empty.svelte'
 export { default as ListboxInput, type ListboxInputBaseProps, type ListboxInputProps } from './listbox-input.svelte'
-export { default as ListboxItem, type ListboxItemBaseProps, type ListboxItemProps } from './listbox-item.svelte'
+export {
+  default as ListboxItem,
+  type ListboxItemBaseProps,
+  type ListboxItemProps,
+  type ListboxItemState,
+} from './listbox-item.svelte'
 export { default as ListboxItemContext, type ListboxItemContextProps } from './listbox-item-context.svelte'
 export {
   default as ListboxItemGroup,
@@ -37,7 +43,12 @@ export {
   type ListboxItemTextProps,
 } from './listbox-item-text.svelte'
 export { default as ListboxLabel, type ListboxLabelBaseProps, type ListboxLabelProps } from './listbox-label.svelte'
-export { default as ListboxList, type ListboxListBaseProps, type ListboxListProps } from './listbox-list.svelte'
+export {
+  default as ListboxList,
+  type ListboxListBaseProps,
+  type ListboxListProps,
+  type ListboxListState,
+} from './listbox-list.svelte'
 export {
   default as ListboxRoot,
   type ListboxRootBaseProps,
@@ -51,6 +62,7 @@ export {
   type ListboxRootProviderProps,
   type ListboxRootProviderComponent,
 } from './listbox-root-provider.svelte'
+export { default as ListboxStatus, type ListboxStatusProps } from './listbox-status.svelte'
 export {
   default as ListboxValueText,
   type ListboxValueTextBaseProps,

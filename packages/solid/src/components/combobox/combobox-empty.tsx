@@ -1,4 +1,4 @@
-import { createMemo, Show } from 'solid-js'
+import { createMemo, Show, splitProps } from 'solid-js'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { comboboxAnatomy } from './combobox.anatomy.ts'
 import { useComboboxContext } from './use-combobox-context.ts'
@@ -9,12 +9,15 @@ export interface ComboboxEmptyBaseProps extends PolymorphicProps<'div'> {}
 export interface ComboboxEmptyProps extends HTMLProps<'div'>, ComboboxEmptyBaseProps {}
 
 export const ComboboxEmpty = (props: ComboboxEmptyProps) => {
+  const [localProps, restProps] = splitProps(props, ['children'])
   const combobox = useComboboxContext()
-  const size = createMemo(() => combobox().collection.size)
+  const isEmpty = createMemo(() => combobox().collection.size === 0)
 
+  // the element stays mounted so the live region is already known to screen
+  // readers when the message appears; only the children are conditional
   return (
-    <Show when={size() === 0}>
-      <ark.div {...parts.empty.attrs('')} {...props} role="presentation" />
-    </Show>
+    <ark.div {...parts.empty.attrs('')} role="status" aria-live="polite" aria-atomic="true" {...restProps}>
+      <Show when={isEmpty()}>{localProps.children}</Show>
+    </ark.div>
   )
 }

@@ -113,6 +113,12 @@
   }
 }
 
+.List {
+  /* layout-transparent: the element exists for role="listbox" and aria-controls,
+     while the content's own flex layout still applies to the items */
+  display: contents;
+}
+
 .Content {
   display: flex;
   flex-direction: column;
@@ -245,6 +251,12 @@
   min-height: 24px;
   display: inline-flex;
   align-items: center;
+}
+
+.Empty {
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--demo-neutral-emphasized);
 }
 
 .Status {

@@ -1,8 +1,10 @@
 <script module lang="ts">
   import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { MarkerProps } from '@zag-js/slider'
+  import type { MarkerProps, MarkerState } from '@zag-js/slider'
 
-  export interface SliderMarkerBaseProps extends MarkerProps, PolymorphicProps<'span'>, RefAttribute {}
+  export interface SliderMarkerState extends MarkerState {}
+  export interface SliderMarkerBaseProps
+    extends MarkerProps, PolymorphicProps<'span', SliderMarkerState>, RefAttribute {}
   export interface SliderMarkerProps extends HTMLProps<'span'>, SliderMarkerBaseProps {}
 </script>
 
@@ -19,4 +21,4 @@
   const mergedProps = $derived(mergeProps(slider().getMarkerProps(markerProps), localProps))
 </script>
 
-<Ark as="span" bind:ref {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} state={slider().getMarkerState(markerProps)} />

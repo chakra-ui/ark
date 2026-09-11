@@ -1,14 +1,16 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import type { ThumbProps } from '@zag-js/slider'
+import type { ThumbProps, ThumbState } from '@zag-js/slider'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { useSliderContext } from './use-slider-context.ts'
 import { SliderThumbPropsProvider } from './use-slider-thumb-props-context.ts'
 
-export interface SliderThumbBaseProps extends ThumbProps, PolymorphicProps {}
+export interface SliderThumbState extends ThumbState {}
+
+export interface SliderThumbBaseProps extends ThumbProps, PolymorphicProps<SliderThumbState> {}
 export interface SliderThumbProps extends HTMLProps<'div'>, SliderThumbBaseProps {}
 
 const splitThumbProps = createSplitProps<ThumbProps>()
@@ -20,7 +22,7 @@ export const SliderThumb = forwardRef<HTMLDivElement, SliderThumbProps>((props, 
 
   return (
     <SliderThumbPropsProvider value={thumbProps}>
-      <ark.div {...mergedProps} ref={ref} />
+      <ark.div {...mergedProps} ref={ref} state={slider.getThumbState(thumbProps)} />
     </SliderThumbPropsProvider>
   )
 })

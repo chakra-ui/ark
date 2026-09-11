@@ -1,8 +1,137 @@
+diff --git a/dist/menu.connect.js b/dist/menu.connect.js
+index b4a33ed..d21026e 100644
+--- a/dist/menu.connect.js
++++ b/dist/menu.connect.js
+@@ -48,6 +48,7 @@ function connect(service, normalize) {
+   const open = state.hasTag("open");
+   const isSubmenu = context.get("isSubmenu");
+   const isInMenubar = computed("isInMenubar");
++  const instant = context.get("instant");
+   const menubarDisabled = computed("menubarDisabled");
+   const menubarActiveId = prop("menubar")?.activeId;
+   const menubarRootId = prop("menubar")?.rootId;
+@@ -298,7 +299,7 @@ function connect(service, normalize) {
+           if (!isInMenubar || open) return;
+           if (dom.isTargetDisabled(event.currentTarget)) return;
+           if (dom.getMenubarEl(scope, menubarRootId)?.dataset.hasOpenMenu === "true") {
+-            send({ type: "OPEN" });
++            send({ type: "OPEN", instant: true });
+           }
+         },
+         onBlur() {
+@@ -347,6 +348,7 @@ function connect(service, normalize) {
+       return normalize.element({
+         ...import_menu.parts.positioner.attrs(scope.id),
+         dir: prop("dir"),
++        "data-instant": (0, import_dom_query.dataAttr)(instant),
+         ...(0, import_dismissable.getDismissableLayerAttrs)(layer),
+         style: {
+           ...popperStyles.floating,
+@@ -377,6 +379,7 @@ function connect(service, normalize) {
+         "aria-label": prop("aria-label"),
+         hidden: !contentState.open,
+         "data-state": contentState.open ? "open" : "closed",
++        "data-instant": (0, import_dom_query.dataAttr)(instant),
+         role: composite ? "menu" : "dialog",
+         tabIndex: 0,
+         dir: prop("dir"),
+diff --git a/dist/menu.connect.mjs b/dist/menu.connect.mjs
+index 9d38dc6..4cb8000 100644
+--- a/dist/menu.connect.mjs
++++ b/dist/menu.connect.mjs
+@@ -28,6 +28,7 @@ function connect(service, normalize) {
+   const open = state.hasTag("open");
+   const isSubmenu = context.get("isSubmenu");
+   const isInMenubar = computed("isInMenubar");
++  const instant = context.get("instant");
+   const menubarDisabled = computed("menubarDisabled");
+   const menubarActiveId = prop("menubar")?.activeId;
+   const menubarRootId = prop("menubar")?.rootId;
+@@ -278,7 +279,7 @@ function connect(service, normalize) {
+           if (!isInMenubar || open) return;
+           if (dom.isTargetDisabled(event.currentTarget)) return;
+           if (dom.getMenubarEl(scope, menubarRootId)?.dataset.hasOpenMenu === "true") {
+-            send({ type: "OPEN" });
++            send({ type: "OPEN", instant: true });
+           }
+         },
+         onBlur() {
+@@ -327,6 +328,7 @@ function connect(service, normalize) {
+       return normalize.element({
+         ...parts.positioner.attrs(scope.id),
+         dir: prop("dir"),
++        "data-instant": dataAttr(instant),
+         ...getDismissableLayerAttrs(layer),
+         style: {
+           ...popperStyles.floating,
+@@ -357,6 +359,7 @@ function connect(service, normalize) {
+         "aria-label": prop("aria-label"),
+         hidden: !contentState.open,
+         "data-state": contentState.open ? "open" : "closed",
++        "data-instant": dataAttr(instant),
+         role: composite ? "menu" : "dialog",
+         tabIndex: 0,
+         dir: prop("dir"),
 diff --git a/dist/menu.machine.js b/dist/menu.machine.js
-index 04ebf442524c7d0c540c0bfc6bc24c7191c8c499..046e6e3068989931673c5c237af4cc469af4b951 100644
+index 0246641..5cd2eb5 100644
 --- a/dist/menu.machine.js
 +++ b/dist/menu.machine.js
-@@ -625,6 +625,7 @@ var machine = (0, import_core.createMachine)({
+@@ -108,6 +108,9 @@ var machine = (0, import_core.createMachine)({
+       })),
+       pointerRoutingMode: bindable(() => ({
+         defaultValue: "interactive"
++      })),
++      instant: bindable(() => ({
++        defaultValue: false
+       }))
+     };
+   },
+@@ -347,7 +350,7 @@ var machine = (0, import_core.createMachine)({
+     },
+     closed: {
+       tags: ["closed"],
+-      entry: ["clearHighlightedItem", "unlockParentOnClose", "clearAnchorPoint", "dispatchMenubarClose"],
++      entry: ["setInstant", "clearHighlightedItem", "unlockParentOnClose", "clearAnchorPoint", "dispatchMenubarClose"],
+       on: {
+         "CONTROLLED.OPEN": [
+           {
+@@ -424,7 +427,7 @@ var machine = (0, import_core.createMachine)({
+         "scrollToHighlightedItem",
+         "trackMenubarSiblings"
+       ],
+-      entry: ["focusMenu", "unlockParentOnOpen", "dispatchMenubarOpen"],
++      entry: ["setInstant", "focusMenu", "unlockParentOnOpen", "dispatchMenubarOpen"],
+       on: {
+         "CONTROLLED.CLOSE": [
+           {
+@@ -557,7 +560,7 @@ var machine = (0, import_core.createMachine)({
+     guards: {
+       closeOnSelect: ({ prop, event }) => !!(event?.closeOnSelect ?? prop("closeOnSelect")),
+       // whether the trigger is also a menu item
+-      isTriggerItem: ({ event }) => dom.isTriggerItem(event.target),
++      isTriggerItem: ({ event, computed }) => !computed("isInMenubar") && dom.isTriggerItem(event.target),
+       // whether the trigger item is the active item
+       isTriggerItemHighlighted: ({ event, scope, computed }) => {
+         const target = event.target ?? scope.getById(computed("highlightedId"));
+@@ -580,7 +583,7 @@ var machine = (0, import_core.createMachine)({
+         if (!menubarEl) return;
+         const triggerId = dom.getTriggerId(scope);
+         return (0, import_dom_query.addDomEvent)(menubarEl, "menubar:open-request", (event) => {
+-          if (event.detail?.triggerId === triggerId) send({ type: "OPEN" });
++          if (event.detail?.triggerId === triggerId) send({ type: "OPEN", instant: true });
+         });
+       },
+       // When coordinated by a menubar, close this menu if a sibling menu opens.
+@@ -590,7 +593,7 @@ var machine = (0, import_core.createMachine)({
+         return (0, import_dom_query.addDomEvent)(menubarEl, "menu:open", (event) => {
+           if (event.detail?.menuId === scope.id) return;
+           refs.set("menubarCloseReason", "sibling-open");
+-          send({ type: "CLOSE", src: "menubar-sibling-open", restoreFocus: false });
++          send({ type: "CLOSE", src: "menubar-sibling-open", restoreFocus: false, instant: true });
+         });
+       },
+       waitForOpenDelay({ send }) {
+@@ -625,6 +628,7 @@ var machine = (0, import_core.createMachine)({
          const getPositionerEl2 = () => dom.getPositionerEl(scope);
          const getTriggerEl2 = () => dom.getActiveTriggerEl(scope, context.get("triggerValue"));
          return (0, import_popper.getPlacement)(getTriggerEl2, getPositionerEl2, {
@@ -10,7 +139,15 @@ index 04ebf442524c7d0c540c0bfc6bc24c7191c8c499..046e6e3068989931673c5c237af4cc46
            ...positioning,
            defer: true,
            onComplete(data) {
-@@ -747,6 +748,7 @@ var machine = (0, import_core.createMachine)({
+@@ -640,6 +644,7 @@ var machine = (0, import_core.createMachine)({
+         };
+         return (0, import_dismissable.trackDismissableElement)(getContentEl2, {
+           type: "menu",
++          group: prop("menubar")?.rootId,
+           onLayerChange(layer) {
+             context.set("layer", layer);
+           },
+@@ -747,6 +752,7 @@ var machine = (0, import_core.createMachine)({
          const triggerValue = event.value ?? context.get("triggerValue");
          const getTriggerEl2 = () => dom.getActiveTriggerEl(scope, triggerValue);
          (0, import_popper.getPlacement)(getTriggerEl2, getPositionerEl2, {
@@ -18,11 +155,76 @@ index 04ebf442524c7d0c540c0bfc6bc24c7191c8c499..046e6e3068989931673c5c237af4cc46
            ...positioning,
            defer: true,
            getAnchorRect,
+@@ -957,6 +963,9 @@ var machine = (0, import_core.createMachine)({
+       setTriggerValue({ context, event }) {
+         if (event.value === void 0) return;
+         context.set("triggerValue", event.value);
++      },
++      setInstant({ context, event }) {
++        context.set("instant", !!event.instant);
+       }
+     }
+   }
 diff --git a/dist/menu.machine.mjs b/dist/menu.machine.mjs
-index f911b65411b18cd53851009a2799a3baa9a5159c..8d68105e53e548384fbcb91ae524f9f9ee376393 100644
+index c2bba1d..f0c9a87 100644
 --- a/dist/menu.machine.mjs
 +++ b/dist/menu.machine.mjs
-@@ -610,6 +610,7 @@ var machine = createMachine({
+@@ -93,6 +93,9 @@ var machine = createMachine({
+       })),
+       pointerRoutingMode: bindable(() => ({
+         defaultValue: "interactive"
++      })),
++      instant: bindable(() => ({
++        defaultValue: false
+       }))
+     };
+   },
+@@ -332,7 +335,7 @@ var machine = createMachine({
+     },
+     closed: {
+       tags: ["closed"],
+-      entry: ["clearHighlightedItem", "unlockParentOnClose", "clearAnchorPoint", "dispatchMenubarClose"],
++      entry: ["setInstant", "clearHighlightedItem", "unlockParentOnClose", "clearAnchorPoint", "dispatchMenubarClose"],
+       on: {
+         "CONTROLLED.OPEN": [
+           {
+@@ -409,7 +412,7 @@ var machine = createMachine({
+         "scrollToHighlightedItem",
+         "trackMenubarSiblings"
+       ],
+-      entry: ["focusMenu", "unlockParentOnOpen", "dispatchMenubarOpen"],
++      entry: ["setInstant", "focusMenu", "unlockParentOnOpen", "dispatchMenubarOpen"],
+       on: {
+         "CONTROLLED.CLOSE": [
+           {
+@@ -542,7 +545,7 @@ var machine = createMachine({
+     guards: {
+       closeOnSelect: ({ prop, event }) => !!(event?.closeOnSelect ?? prop("closeOnSelect")),
+       // whether the trigger is also a menu item
+-      isTriggerItem: ({ event }) => dom.isTriggerItem(event.target),
++      isTriggerItem: ({ event, computed }) => !computed("isInMenubar") && dom.isTriggerItem(event.target),
+       // whether the trigger item is the active item
+       isTriggerItemHighlighted: ({ event, scope, computed }) => {
+         const target = event.target ?? scope.getById(computed("highlightedId"));
+@@ -565,7 +568,7 @@ var machine = createMachine({
+         if (!menubarEl) return;
+         const triggerId = dom.getTriggerId(scope);
+         return addDomEvent(menubarEl, "menubar:open-request", (event) => {
+-          if (event.detail?.triggerId === triggerId) send({ type: "OPEN" });
++          if (event.detail?.triggerId === triggerId) send({ type: "OPEN", instant: true });
+         });
+       },
+       // When coordinated by a menubar, close this menu if a sibling menu opens.
+@@ -575,7 +578,7 @@ var machine = createMachine({
+         return addDomEvent(menubarEl, "menu:open", (event) => {
+           if (event.detail?.menuId === scope.id) return;
+           refs.set("menubarCloseReason", "sibling-open");
+-          send({ type: "CLOSE", src: "menubar-sibling-open", restoreFocus: false });
++          send({ type: "CLOSE", src: "menubar-sibling-open", restoreFocus: false, instant: true });
+         });
+       },
+       waitForOpenDelay({ send }) {
+@@ -610,6 +613,7 @@ var machine = createMachine({
          const getPositionerEl2 = () => dom.getPositionerEl(scope);
          const getTriggerEl2 = () => dom.getActiveTriggerEl(scope, context.get("triggerValue"));
          return getPlacement(getTriggerEl2, getPositionerEl2, {
@@ -30,7 +232,15 @@ index f911b65411b18cd53851009a2799a3baa9a5159c..8d68105e53e548384fbcb91ae524f9f9
            ...positioning,
            defer: true,
            onComplete(data) {
-@@ -732,6 +733,7 @@ var machine = createMachine({
+@@ -625,6 +629,7 @@ var machine = createMachine({
+         };
+         return trackDismissableElement(getContentEl2, {
+           type: "menu",
++          group: prop("menubar")?.rootId,
+           onLayerChange(layer) {
+             context.set("layer", layer);
+           },
+@@ -732,6 +737,7 @@ var machine = createMachine({
          const triggerValue = event.value ?? context.get("triggerValue");
          const getTriggerEl2 = () => dom.getActiveTriggerEl(scope, triggerValue);
          getPlacement(getTriggerEl2, getPositionerEl2, {
@@ -38,3 +248,47 @@ index f911b65411b18cd53851009a2799a3baa9a5159c..8d68105e53e548384fbcb91ae524f9f9
            ...positioning,
            defer: true,
            getAnchorRect,
+@@ -942,6 +948,9 @@ var machine = createMachine({
+       setTriggerValue({ context, event }) {
+         if (event.value === void 0) return;
+         context.set("triggerValue", event.value);
++      },
++      setInstant({ context, event }) {
++        context.set("instant", !!event.instant);
+       }
+     }
+   }
+diff --git a/dist/menu.types.d.mts b/dist/menu.types.d.mts
+index 538ee48..4af0927 100644
+--- a/dist/menu.types.d.mts
++++ b/dist/menu.types.d.mts
+@@ -176,6 +176,12 @@ interface MenuSchema {
+         isSubmenu: boolean;
+         triggerValue: string | null;
+         pointerRoutingMode: "interactive" | "locked";
++        /**
++         * Whether the current open/close was driven by menubar sibling coordination (arrowing or
++         * hovering from one menubar menu to the next). Surfaced as `data-instant` so styles can
++         * skip the open/close animation while swapping between menus.
++         */
++        instant: boolean;
+     };
+     computed: {
+         isRtl: boolean;
+diff --git a/dist/menu.types.d.ts b/dist/menu.types.d.ts
+index 538ee48..4af0927 100644
+--- a/dist/menu.types.d.ts
++++ b/dist/menu.types.d.ts
+@@ -176,6 +176,12 @@ interface MenuSchema {
+         isSubmenu: boolean;
+         triggerValue: string | null;
+         pointerRoutingMode: "interactive" | "locked";
++        /**
++         * Whether the current open/close was driven by menubar sibling coordination (arrowing or
++         * hovering from one menubar menu to the next). Surfaced as `data-instant` so styles can
++         * skip the open/close animation while swapping between menus.
++         */
++        instant: boolean;
+     };
+     computed: {
+         isRtl: boolean;

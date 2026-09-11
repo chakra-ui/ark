@@ -1,7 +1,7 @@
 'use client'
 
 import { mergeProps } from '@zag-js/react'
-import type { TriggerProps } from '@zag-js/dialog'
+import type { TriggerProps, TriggerState } from '@zag-js/dialog'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -9,7 +9,9 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { usePresenceContext } from '../presence/index.ts'
 import { useDialogContext } from './use-dialog-context.ts'
 
-export interface DialogTriggerBaseProps extends TriggerProps, PolymorphicProps {}
+export interface DialogTriggerState extends TriggerState {}
+
+export interface DialogTriggerBaseProps extends TriggerProps, PolymorphicProps<DialogTriggerState> {}
 export interface DialogTriggerProps extends Assign<HTMLProps<'button'>, DialogTriggerBaseProps> {}
 
 const splitTriggerProps = createSplitProps<TriggerProps>()
@@ -28,7 +30,7 @@ export const DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>((
     localProps,
   )
 
-  return <ark.button {...mergedProps} ref={ref} />
+  return <ark.button {...mergedProps} ref={ref} state={dialog.getTriggerState(triggerProps)} />
 })
 
 DialogTrigger.displayName = 'DialogTrigger'

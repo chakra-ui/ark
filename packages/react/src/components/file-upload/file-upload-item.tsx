@@ -1,6 +1,6 @@
 'use client'
 
-import type { ItemProps } from '@zag-js/file-upload'
+import type { ItemProps, ItemState } from '@zag-js/file-upload'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -11,7 +11,9 @@ import { FileUploadItemPropsProvider } from './use-file-upload-item-props-contex
 
 type ItemBaseProps = Omit<ItemProps, 'type'>
 
-export interface FileUploadItemBaseProps extends ItemBaseProps, PolymorphicProps {}
+export interface FileUploadItemState extends ItemState {}
+
+export interface FileUploadItemBaseProps extends ItemBaseProps, PolymorphicProps<FileUploadItemState> {}
 export interface FileUploadItemProps extends HTMLProps<'li'>, FileUploadItemBaseProps {}
 
 const splitItemBaseProps = createSplitProps<ItemBaseProps>()
@@ -27,7 +29,7 @@ export const FileUploadItem = forwardRef<HTMLLIElement, FileUploadItemProps>((pr
 
   return (
     <FileUploadItemPropsProvider value={itemPropsWithType}>
-      <ark.li {...mergedProps} ref={ref} />
+      <ark.li {...mergedProps} ref={ref} state={fileUpload.getItemState(itemPropsWithType)} />
     </FileUploadItemPropsProvider>
   )
 })

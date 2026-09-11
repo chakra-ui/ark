@@ -3,7 +3,7 @@
 </script>
 
 <Ark as="span">
-  {#snippet asChild(props)}
+  {#snippet render(props)}
     <a href="#" {...props()}>Ark UI</a>
   {/snippet}
 </Ark>

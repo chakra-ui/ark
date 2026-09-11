@@ -1,11 +1,13 @@
-import type { ThumbProps } from '@zag-js/slider'
+import type { ThumbProps, ThumbState } from '@zag-js/slider'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useSliderContext } from './use-slider-context.ts'
 import { SliderThumbPropsProvider } from './use-slider-thumb-props-context.ts'
 
-export interface SliderThumbBaseProps extends ThumbProps, PolymorphicProps<'div'> {}
+export interface SliderThumbState extends ThumbState {}
+
+export interface SliderThumbBaseProps extends ThumbProps, PolymorphicProps<'div', SliderThumbState> {}
 export interface SliderThumbProps extends HTMLProps<'div'>, SliderThumbBaseProps {}
 
 export const SliderThumb = (props: SliderThumbProps) => {
@@ -15,7 +17,7 @@ export const SliderThumb = (props: SliderThumbProps) => {
 
   return (
     <SliderThumbPropsProvider value={thumbProps}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} state={slider().getThumbState(thumbProps)} />
     </SliderThumbPropsProvider>
   )
 }

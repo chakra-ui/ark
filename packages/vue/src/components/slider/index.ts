@@ -20,20 +20,32 @@ export {
   type SliderMarkerGroupBaseProps,
   type SliderMarkerGroupProps,
 } from './slider-marker-group.vue'
-export { default as SliderMarker, type SliderMarkerBaseProps, type SliderMarkerProps } from './slider-marker.vue'
+export {
+  default as SliderMarker,
+  type SliderMarkerBaseProps,
+  type SliderMarkerProps,
+  type SliderMarkerState,
+} from './slider-marker.vue'
 export { default as SliderRange, type SliderRangeBaseProps, type SliderRangeProps } from './slider-range.vue'
 export {
   default as SliderRootProvider,
   type SliderRootProviderBaseProps,
   type SliderRootProviderProps,
+  type SliderRootProviderState,
 } from './slider-root-provider.vue'
 export {
   default as SliderRoot,
   type SliderRootBaseProps,
   type SliderRootEmits,
   type SliderRootProps,
+  type SliderRootState,
 } from './slider-root.vue'
-export { default as SliderThumb, type SliderThumbBaseProps, type SliderThumbProps } from './slider-thumb.vue'
+export {
+  default as SliderThumb,
+  type SliderThumbBaseProps,
+  type SliderThumbProps,
+  type SliderThumbState,
+} from './slider-thumb.vue'
 export { default as SliderTrack, type SliderTrackBaseProps, type SliderTrackProps } from './slider-track.vue'
 export {
   default as SliderValueText,

@@ -14,6 +14,7 @@ export {
   default as PasswordInputInput,
   type PasswordInputInputBaseProps,
   type PasswordInputInputProps,
+  type PasswordInputInputState,
 } from './password-input-input.svelte'
 export {
   default as PasswordInputLabel,
@@ -29,11 +30,13 @@ export {
   default as PasswordInputRootProvider,
   type PasswordInputRootProviderBaseProps,
   type PasswordInputRootProviderProps,
+  type PasswordInputRootProviderState,
 } from './password-input-root-provider.svelte'
 export {
   default as PasswordInputVisibilityTrigger,
   type PasswordInputVisibilityTriggerBaseProps,
   type PasswordInputVisibilityTriggerProps,
+  type PasswordInputVisibilityTriggerState,
 } from './password-input-visibility-trigger.svelte'
 export { passwordInputAnatomy } from './password-input.anatomy.ts'
 export { usePasswordInputContext, type UsePasswordInputContext } from './use-password-input-context.ts'

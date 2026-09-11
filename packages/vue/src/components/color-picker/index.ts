@@ -58,6 +58,7 @@ export {
   default as ColorPickerContent,
   type ColorPickerContentBaseProps,
   type ColorPickerContentProps,
+  type ColorPickerContentState,
 } from './color-picker-content.vue'
 export { default as ColorPickerContext, type ColorPickerContextProps } from './color-picker-context.vue'
 export {
@@ -100,12 +101,14 @@ export {
   type ColorPickerRootProviderBaseProps,
   type ColorPickerRootProviderEmits,
   type ColorPickerRootProviderProps,
+  type ColorPickerRootProviderState,
 } from './color-picker-root-provider.vue'
 export {
   default as ColorPickerRoot,
   type ColorPickerRootBaseProps,
   type ColorPickerRootEmits,
   type ColorPickerRootProps,
+  type ColorPickerRootState,
 } from './color-picker-root.vue'
 export {
   default as ColorPickerSwatchGroup,
@@ -121,6 +124,7 @@ export {
   default as ColorPickerSwatchTrigger,
   type ColorPickerSwatchTriggerBaseProps,
   type ColorPickerSwatchTriggerProps,
+  type ColorPickerSwatchTriggerState,
 } from './color-picker-swatch-trigger.vue'
 export {
   default as ColorPickerSwatch,
@@ -136,6 +140,7 @@ export {
   default as ColorPickerTrigger,
   type ColorPickerTriggerBaseProps,
   type ColorPickerTriggerProps,
+  type ColorPickerTriggerState,
 } from './color-picker-trigger.vue'
 export {
   default as ColorPickerValueSwatch,

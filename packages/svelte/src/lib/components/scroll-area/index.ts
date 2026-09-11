@@ -1,7 +1,6 @@
 export type {
   ElementIds as ScrollAreaElementIds,
   ScrollToEdge as ScrollAreaScrollToEdge,
-  ScrollbarState as ScrollAreaScrollbarState,
   ScrollToDetails as ScrollAreaScrollToDetails,
   ScrollToEdgeDetails as ScrollAreaScrollToEdgeDetails,
 } from '@zag-js/scroll-area'
@@ -15,6 +14,7 @@ export {
   default as ScrollAreaCorner,
   type ScrollAreaCornerBaseProps,
   type ScrollAreaCornerProps,
+  type ScrollAreaCornerState,
 } from './scroll-area-corner.svelte'
 export {
   default as ScrollAreaRoot,
@@ -30,6 +30,7 @@ export {
   default as ScrollAreaScrollbar,
   type ScrollAreaScrollbarBaseProps,
   type ScrollAreaScrollbarProps,
+  type ScrollAreaScrollbarState,
 } from './scroll-area-scrollbar.svelte'
 export {
   default as ScrollAreaThumb,

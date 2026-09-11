@@ -1,7 +1,6 @@
 export type {
   ElementIds as ScrollAreaElementIds,
   ScrollToEdge as ScrollAreaScrollToEdge,
-  ScrollbarState as ScrollAreaScrollbarState,
   ScrollToDetails as ScrollAreaScrollToDetails,
   ScrollToEdgeDetails as ScrollAreaScrollToEdgeDetails,
 } from '@zag-js/scroll-area'
@@ -11,7 +10,12 @@ export {
   type ScrollAreaContentBaseProps,
   type ScrollAreaContentProps,
 } from './scroll-area-content.tsx'
-export { ScrollAreaCorner, type ScrollAreaCornerBaseProps, type ScrollAreaCornerProps } from './scroll-area-corner.tsx'
+export {
+  ScrollAreaCorner,
+  type ScrollAreaCornerBaseProps,
+  type ScrollAreaCornerProps,
+  type ScrollAreaCornerState,
+} from './scroll-area-corner.tsx'
 export { ScrollAreaRoot, type ScrollAreaRootBaseProps, type ScrollAreaRootProps } from './scroll-area-root.tsx'
 export {
   ScrollAreaRootProvider,
@@ -22,6 +26,7 @@ export {
   ScrollAreaScrollbar,
   type ScrollAreaScrollbarBaseProps,
   type ScrollAreaScrollbarProps,
+  type ScrollAreaScrollbarState,
 } from './scroll-area-scrollbar.tsx'
 export { ScrollAreaThumb, type ScrollAreaThumbBaseProps, type ScrollAreaThumbProps } from './scroll-area-thumb.tsx'
 export {

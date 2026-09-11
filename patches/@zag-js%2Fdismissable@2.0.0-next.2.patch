@@ -1,0 +1,160 @@
+diff --git a/dist/dismissable-layer.d.mts b/dist/dismissable-layer.d.mts
+index c009824..f9d61e9 100644
+--- a/dist/dismissable-layer.d.mts
++++ b/dist/dismissable-layer.d.mts
+@@ -56,6 +56,12 @@ interface DismissableElementOptions extends DismissableElementHandlers, Persiste
+      * The type of layer being tracked
+      */
+     type?: LayerType | undefined;
++    /**
++     * Groups this layer with its peers. Layers in the same group are siblings: one opening while
++     * another is still registered adopts that layer's parent instead of nesting under it, so
++     * closing the outgoing layer does not dismiss the incoming one.
++     */
++    group?: string | undefined;
+ }
+ declare function trackDismissableElement(nodeOrFn: NodeOrFn, options: DismissableElementOptions): (args_0?: TeardownReason | undefined) => void;
+ declare function trackDismissableBranch(nodeOrFn: NodeOrFn, options?: {
+diff --git a/dist/dismissable-layer.d.ts b/dist/dismissable-layer.d.ts
+index 7212ec5..8ffe175 100644
+--- a/dist/dismissable-layer.d.ts
++++ b/dist/dismissable-layer.d.ts
+@@ -56,6 +56,12 @@ interface DismissableElementOptions extends DismissableElementHandlers, Persiste
+      * The type of layer being tracked
+      */
+     type?: LayerType | undefined;
++    /**
++     * Groups this layer with its peers. Layers in the same group are siblings: one opening while
++     * another is still registered adopts that layer's parent instead of nesting under it, so
++     * closing the outgoing layer does not dismiss the incoming one.
++     */
++    group?: string | undefined;
+ }
+ declare function trackDismissableElement(nodeOrFn: NodeOrFn, options: DismissableElementOptions): (args_0?: TeardownReason | undefined) => void;
+ declare function trackDismissableBranch(nodeOrFn: NodeOrFn, options?: {
+diff --git a/dist/dismissable-layer.js b/dist/dismissable-layer.js
+index b71d060..b2dee9c 100644
+--- a/dist/dismissable-layer.js
++++ b/dist/dismissable-layer.js
+@@ -38,12 +38,14 @@ function trackDismissableElementImpl(node, options) {
+     exclude: excludeContainers,
+     debug,
+     type = "dialog",
++    group,
+     onLayerChange
+   } = options;
+   const layer = {
+     dismiss: onDismiss,
+     node,
+     type,
++    group,
+     pointerBlocking,
+     requestDismiss: onRequestDismiss,
+     onLayerChange
+diff --git a/dist/dismissable-layer.mjs b/dist/dismissable-layer.mjs
+index 001b816..ad1efd4 100644
+--- a/dist/dismissable-layer.mjs
++++ b/dist/dismissable-layer.mjs
+@@ -18,12 +18,14 @@ function trackDismissableElementImpl(node, options) {
+     exclude: excludeContainers,
+     debug,
+     type = "dialog",
++    group,
+     onLayerChange
+   } = options;
+   const layer = {
+     dismiss: onDismiss,
+     node,
+     type,
++    group,
+     pointerBlocking,
+     requestDismiss: onRequestDismiss,
+     onLayerChange
+diff --git a/dist/layer-stack.d.mts b/dist/layer-stack.d.mts
+index c11bc3f..6da7f34 100644
+--- a/dist/layer-stack.d.mts
++++ b/dist/layer-stack.d.mts
+@@ -20,6 +20,12 @@ interface Layer {
+     id?: string | undefined;
+     /** The layer this one opened inside. Captured once and kept across re-registration. */
+     parentId?: string | undefined;
++    /**
++     * Layers sharing a group are peers, not ancestors of one another. A layer that opens while a
++     * peer is still registered adopts the peer's parent instead of nesting under it, so closing
++     * the peer does not dismiss it. Used by menubar menus, which swap while a sibling is open.
++     */
++    group?: string | undefined;
+     dismiss: VoidFunction;
+     node: HTMLElement;
+     type: LayerType;
+diff --git a/dist/layer-stack.d.ts b/dist/layer-stack.d.ts
+index c11bc3f..6da7f34 100644
+--- a/dist/layer-stack.d.ts
++++ b/dist/layer-stack.d.ts
+@@ -20,6 +20,12 @@ interface Layer {
+     id?: string | undefined;
+     /** The layer this one opened inside. Captured once and kept across re-registration. */
+     parentId?: string | undefined;
++    /**
++     * Layers sharing a group are peers, not ancestors of one another. A layer that opens while a
++     * peer is still registered adopts the peer's parent instead of nesting under it, so closing
++     * the peer does not dismiss it. Used by menubar menus, which swap while a sibling is open.
++     */
++    group?: string | undefined;
+     dismiss: VoidFunction;
+     node: HTMLElement;
+     type: LayerType;
+diff --git a/dist/layer-stack.js b/dist/layer-stack.js
+index 7be035a..67313b4 100644
+--- a/dist/layer-stack.js
++++ b/dist/layer-stack.js
+@@ -61,6 +61,12 @@ var layerStack = {
+   layerFor(node) {
+     return this.layers.find((layer) => layer.node === node);
+   },
++  peerFor(group) {
++    for (let i = this.count() - 1; i >= 0; i--) {
++      if (this.layers[i].group === group) return this.layers[i];
++    }
++    return void 0;
++  },
+   isDescendantOf(layer, ancestorId) {
+     if (!ancestorId) return false;
+     const seen = /* @__PURE__ */ new Set();
+@@ -131,7 +137,8 @@ var layerStack = {
+       layer.parentId = pending.parentId;
+     } else {
+       layer.id ?? (layer.id = `layer-${++layerId}`);
+-      layer.parentId ?? (layer.parentId = this.layers[this.count() - 1]?.id);
++      const peer = layer.group ? this.peerFor(layer.group) : void 0;
++      layer.parentId = peer ? peer.parentId : layer.parentId ?? this.layers[this.count() - 1]?.id;
+     }
+     if (existingIndex !== -1) {
+       this.layers.splice(existingIndex, 1);
+diff --git a/dist/layer-stack.mjs b/dist/layer-stack.mjs
+index d10cccb..30d57bb 100644
+--- a/dist/layer-stack.mjs
++++ b/dist/layer-stack.mjs
+@@ -36,6 +36,12 @@ var layerStack = {
+   layerFor(node) {
+     return this.layers.find((layer) => layer.node === node);
+   },
++  peerFor(group) {
++    for (let i = this.count() - 1; i >= 0; i--) {
++      if (this.layers[i].group === group) return this.layers[i];
++    }
++    return void 0;
++  },
+   isDescendantOf(layer, ancestorId) {
+     if (!ancestorId) return false;
+     const seen = /* @__PURE__ */ new Set();
+@@ -106,7 +112,8 @@ var layerStack = {
+       layer.parentId = pending.parentId;
+     } else {
+       layer.id ?? (layer.id = `layer-${++layerId}`);
+-      layer.parentId ?? (layer.parentId = this.layers[this.count() - 1]?.id);
++      const peer = layer.group ? this.peerFor(layer.group) : void 0;
++      layer.parentId = peer ? peer.parentId : layer.parentId ?? this.layers[this.count() - 1]?.id;
+     }
+     if (existingIndex !== -1) {
+       this.layers.splice(existingIndex, 1);

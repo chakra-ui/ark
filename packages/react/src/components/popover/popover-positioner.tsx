@@ -5,8 +5,11 @@ import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { usePresenceContext } from '../presence/index.ts'
 import { usePopoverContext } from './use-popover-context.ts'
+import type { PositionerState } from '@zag-js/popover'
 
-export interface PopoverPositionerBaseProps extends PolymorphicProps {}
+export interface PopoverPositionerState extends PositionerState {}
+
+export interface PopoverPositionerBaseProps extends PolymorphicProps<PopoverPositionerState> {}
 export interface PopoverPositionerProps extends HTMLProps<'div'>, PopoverPositionerBaseProps {}
 
 export const PopoverPositioner = forwardRef<HTMLDivElement, PopoverPositionerProps>((props, ref) => {
@@ -18,7 +21,7 @@ export const PopoverPositioner = forwardRef<HTMLDivElement, PopoverPositionerPro
     return null
   }
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return <ark.div {...mergedProps} ref={ref} state={popover.getPositionerState()} />
 })
 
 PopoverPositioner.displayName = 'PopoverPositioner'

@@ -12,6 +12,7 @@ export {
   default as TooltipContent,
   type TooltipContentBaseProps,
   type TooltipContentProps,
+  type TooltipContentState,
 } from './tooltip-content.svelte'
 export { default as TooltipContext, type TooltipContextProps } from './tooltip-context.svelte'
 export {
@@ -29,6 +30,7 @@ export {
   default as TooltipTrigger,
   type TooltipTriggerBaseProps,
   type TooltipTriggerProps,
+  type TooltipTriggerState,
 } from './tooltip-trigger.svelte'
 export { tooltipAnatomy } from './tooltip.anatomy.ts'
 export { useTooltipContext, type UseTooltipContext } from './use-tooltip-context.ts'

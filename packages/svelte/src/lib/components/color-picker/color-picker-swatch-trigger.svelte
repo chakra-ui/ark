@@ -1,9 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { SwatchTriggerProps } from '@zag-js/color-picker'
+  import type { SwatchTriggerProps, SwatchTriggerState } from '@zag-js/color-picker'
 
+  export interface ColorPickerSwatchTriggerState extends SwatchTriggerState {}
   export interface ColorPickerSwatchTriggerBaseProps
-    extends SwatchTriggerProps, PolymorphicProps<'button'>, RefAttribute {}
+    extends SwatchTriggerProps, PolymorphicProps<'button', ColorPickerSwatchTriggerState>, RefAttribute {}
   export interface ColorPickerSwatchTriggerProps extends Assign<
     HTMLProps<'button'>,
     ColorPickerSwatchTriggerBaseProps
@@ -26,4 +27,4 @@
   const mergedProps = $derived(mergeProps(colorPicker().getSwatchTriggerProps(swatchTriggerProps), localProps))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} state={colorPicker().getSwatchTriggerState(swatchTriggerProps)} />

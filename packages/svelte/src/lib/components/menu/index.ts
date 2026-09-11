@@ -13,8 +13,14 @@ export {
   default as MenuCheckboxItem,
   type MenuCheckboxItemBaseProps,
   type MenuCheckboxItemProps,
+  type MenuCheckboxItemState,
 } from './menu-checkbox-item.svelte'
-export { default as MenuContent, type MenuContentBaseProps, type MenuContentProps } from './menu-content.svelte'
+export {
+  default as MenuContent,
+  type MenuContentBaseProps,
+  type MenuContentProps,
+  type MenuContentState,
+} from './menu-content.svelte'
 export {
   default as MenuContextTrigger,
   type MenuContextTriggerBaseProps,
@@ -39,11 +45,12 @@ export {
   type MenuItemIndicatorProps,
 } from './menu-item-indicator.svelte'
 export { default as MenuItemText, type MenuItemTextBaseProps, type MenuItemTextProps } from './menu-item-text.svelte'
-export { default as MenuItem, type MenuItemBaseProps, type MenuItemProps } from './menu-item.svelte'
+export { default as MenuItem, type MenuItemBaseProps, type MenuItemProps, type MenuItemState } from './menu-item.svelte'
 export {
   default as MenuPositioner,
   type MenuPositionerBaseProps,
   type MenuPositionerProps,
+  type MenuPositionerState,
 } from './menu-positioner.svelte'
 export {
   default as MenuRadioItemGroup,
@@ -54,6 +61,7 @@ export {
   default as MenuRadioItem,
   type MenuRadioItemBaseProps,
   type MenuRadioItemProps,
+  type MenuRadioItemState,
 } from './menu-radio-item.svelte'
 export {
   default as MenuRootProvider,
@@ -67,7 +75,12 @@ export {
   type MenuTriggerItemBaseProps,
   type MenuTriggerItemProps,
 } from './menu-trigger-item.svelte'
-export { default as MenuTrigger, type MenuTriggerBaseProps, type MenuTriggerProps } from './menu-trigger.svelte'
+export {
+  default as MenuTrigger,
+  type MenuTriggerBaseProps,
+  type MenuTriggerProps,
+  type MenuTriggerState,
+} from './menu-trigger.svelte'
 export { menuAnatomy } from './menu.anatomy.ts'
 export { useMenuContext, type UseMenuContext } from './use-menu-context.ts'
 export { useMenuItemContext, type UseMenuItemContext } from './use-menu-item-context.ts'

@@ -5,8 +5,11 @@ import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { usePresenceContext } from '../presence/index.ts'
 import { useDrawerContext } from './use-drawer-context.ts'
+import type { PositionerState } from '@zag-js/drawer'
 
-export interface DrawerPositionerBaseProps extends PolymorphicProps {}
+export interface DrawerPositionerState extends PositionerState {}
+
+export interface DrawerPositionerBaseProps extends PolymorphicProps<DrawerPositionerState> {}
 export interface DrawerPositionerProps extends HTMLProps<'div'>, DrawerPositionerBaseProps {}
 
 export const DrawerPositioner = forwardRef<HTMLDivElement, DrawerPositionerProps>((props, ref) => {
@@ -18,7 +21,7 @@ export const DrawerPositioner = forwardRef<HTMLDivElement, DrawerPositionerProps
     return null
   }
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return <ark.div {...mergedProps} ref={ref} state={drawer.getPositionerState()} />
 })
 
 DrawerPositioner.displayName = 'DrawerPositioner'

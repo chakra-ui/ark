@@ -39,17 +39,19 @@
   <Portal>
     <Combobox.Positioner>
       <Combobox.Content class={styles.Content}>
-        {#each collection().items as item (item.value)}
-          <Combobox.Item class={styles.Item} {item}>
-            <Combobox.ItemText class={styles.ItemText}>
-              <Combobox.Context>
-                {#snippet render(context)}
-                  <Highlight text={item.label} query={context().inputValue} ignoreCase />
-                {/snippet}
-              </Combobox.Context>
-            </Combobox.ItemText>
-          </Combobox.Item>
-        {/each}
+        <Combobox.List class={styles.List}>
+          {#each collection().items as item (item.value)}
+            <Combobox.Item class={styles.Item} {item}>
+              <Combobox.ItemText class={styles.ItemText}>
+                <Combobox.Context>
+                  {#snippet render(context)}
+                    <Highlight text={item.label} query={context().inputValue} ignoreCase />
+                  {/snippet}
+                </Combobox.Context>
+              </Combobox.ItemText>
+            </Combobox.Item>
+          {/each}
+        </Combobox.List>
       </Combobox.Content>
     </Combobox.Positioner>
   </Portal>

@@ -1,4 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
+import type { NodeState } from '@zag-js/tree-view'
 import { createMemo } from 'solid-js'
 import type { Assign } from '../../types.ts'
 import { useRenderStrategyContext } from '../../utils/render-strategy.ts'
@@ -8,7 +9,7 @@ import { useTreeViewContext } from './use-tree-view-context.ts'
 import { useTreeViewNodeContext } from './use-tree-view-node-context.ts'
 import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
 
-export interface TreeViewNodeGroupBaseProps extends PolymorphicProps<'div'> {}
+export interface TreeViewNodeGroupBaseProps extends PolymorphicProps<'div', NodeState> {}
 export interface TreeViewNodeGroupProps extends Assign<HTMLProps<'div'>, TreeViewNodeGroupBaseProps> {}
 
 export const TreeViewNodeGroup = (props: TreeViewNodeGroupProps) => {
@@ -27,6 +28,7 @@ export const TreeViewNodeGroup = (props: TreeViewNodeGroupProps) => {
       ids={{ content: nodeGroupContentProps().id }}
       {...renderStrategyProps}
       {...mergedProps}
+      state={treeView().getNodeState(nodeProps)}
     />
   )
 }

@@ -7,8 +7,11 @@ import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { type UseTagsInputProps, useTagsInput } from './use-tags-input.ts'
 import { TagsInputProvider } from './use-tags-input-context.ts'
+import type { RootState } from '@zag-js/tags-input'
 
-export interface TagsInputRootBaseProps extends UseTagsInputProps, PolymorphicProps {}
+export interface TagsInputRootState extends RootState {}
+
+export interface TagsInputRootBaseProps extends UseTagsInputProps, PolymorphicProps<TagsInputRootState> {}
 export interface TagsInputRootProps extends Assign<HTMLProps<'div'>, TagsInputRootBaseProps> {}
 
 const splitTagsInputProps = createSplitProps<UseTagsInputProps>()
@@ -53,7 +56,7 @@ export const TagsInputRoot = forwardRef<HTMLDivElement, TagsInputRootProps>((pro
 
   return (
     <TagsInputProvider value={tagsInput}>
-      <ark.div {...mergedProps} ref={ref} />
+      <ark.div {...mergedProps} ref={ref} state={tagsInput.getRootState()} />
     </TagsInputProvider>
   )
 })

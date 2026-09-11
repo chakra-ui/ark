@@ -19,12 +19,14 @@ export {
   default as Content,
   type HoverCardContentBaseProps as ContentBaseProps,
   type HoverCardContentProps as ContentProps,
+  type HoverCardContentState as ContentState,
 } from './hover-card-content.svelte'
 export { default as Context, type HoverCardContextProps as ContextProps } from './hover-card-context.svelte'
 export {
   default as Positioner,
   type HoverCardPositionerBaseProps as PositionerBaseProps,
   type HoverCardPositionerProps as PositionerProps,
+  type HoverCardPositionerState as PositionerState,
 } from './hover-card-positioner.svelte'
 export {
   default as Root,
@@ -40,4 +42,5 @@ export {
   default as Trigger,
   type HoverCardTriggerBaseProps as TriggerBaseProps,
   type HoverCardTriggerProps as TriggerProps,
+  type HoverCardTriggerState as TriggerState,
 } from './hover-card-trigger.svelte'

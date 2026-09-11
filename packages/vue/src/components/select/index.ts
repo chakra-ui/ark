@@ -18,7 +18,12 @@ export {
   type SelectClearTriggerBaseProps,
   type SelectClearTriggerProps,
 } from './select-clear-trigger.vue'
-export { default as SelectContent, type SelectContentBaseProps, type SelectContentProps } from './select-content.vue'
+export {
+  default as SelectContent,
+  type SelectContentBaseProps,
+  type SelectContentProps,
+  type SelectContentState,
+} from './select-content.vue'
 export { default as SelectContext, type SelectContextProps } from './select-context.vue'
 export { default as SelectControl, type SelectControlBaseProps, type SelectControlProps } from './select-control.vue'
 export {
@@ -52,9 +57,19 @@ export {
   type SelectItemTextBaseProps,
   type SelectItemTextProps,
 } from './select-item-text.vue'
-export { default as SelectItem, type SelectItemBaseProps, type SelectItemProps } from './select-item.vue'
+export {
+  default as SelectItem,
+  type SelectItemBaseProps,
+  type SelectItemProps,
+  type SelectItemState,
+} from './select-item.vue'
 export { default as SelectLabel, type SelectLabelBaseProps, type SelectLabelProps } from './select-label.vue'
 export { default as SelectList, type SelectListBaseProps, type SelectListProps } from './select-list.vue'
+export {
+  default as SelectScrollArrow,
+  type SelectScrollArrowBaseProps,
+  type SelectScrollArrowProps,
+} from './select-scroll-arrow.vue'
 export {
   default as SelectPositioner,
   type SelectPositionerBaseProps,
@@ -66,6 +81,7 @@ export {
   type SelectRootProviderEmits,
   type SelectRootProviderProps,
   type SelectRootProviderComponent,
+  type SelectRootProviderState,
 } from './select-root-provider.vue'
 export {
   default as SelectRoot,
@@ -74,8 +90,15 @@ export {
   type SelectRootProps,
   type SelectRootComponent,
   type SelectRootComponentProps,
+  type SelectRootState,
 } from './select-root.vue'
-export { default as SelectTrigger, type SelectTriggerBaseProps, type SelectTriggerProps } from './select-trigger.vue'
+export { default as SelectStatus, type SelectStatusProps, type SelectStatusBaseProps } from './select-status.vue'
+export {
+  default as SelectTrigger,
+  type SelectTriggerBaseProps,
+  type SelectTriggerProps,
+  type SelectTriggerState,
+} from './select-trigger.vue'
 export {
   default as SelectValueText,
   type SelectValueTextBaseProps,

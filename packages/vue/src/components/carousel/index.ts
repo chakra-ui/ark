@@ -33,13 +33,19 @@ export {
   default as CarouselIndicator,
   type CarouselIndicatorBaseProps,
   type CarouselIndicatorProps,
+  type CarouselIndicatorState,
 } from './carousel-indicator.vue'
 export {
   default as CarouselItemGroup,
   type CarouselItemGroupBaseProps,
   type CarouselItemGroupProps,
 } from './carousel-item-group.vue'
-export { default as CarouselItem, type CarouselItemBaseProps, type CarouselItemProps } from './carousel-item.vue'
+export {
+  default as CarouselItem,
+  type CarouselItemBaseProps,
+  type CarouselItemProps,
+  type CarouselItemState,
+} from './carousel-item.vue'
 export {
   default as CarouselNextTrigger,
   type CarouselNextTriggerBaseProps,

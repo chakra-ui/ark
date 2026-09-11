@@ -7,8 +7,11 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { type UseDateInputProps, useDateInput } from './use-date-input.ts'
 import { DateInputProvider } from './use-date-input-context.ts'
 import type { Assign } from '../../types.ts'
+import type { RootState } from '@zag-js/date-input'
 
-export interface DateInputRootBaseProps extends UseDateInputProps, PolymorphicProps {}
+export interface DateInputRootState extends RootState {}
+
+export interface DateInputRootBaseProps extends UseDateInputProps, PolymorphicProps<DateInputRootState> {}
 export interface DateInputRootProps extends Assign<HTMLProps<'div'>, DateInputRootBaseProps> {}
 
 const splitRootProps = createSplitProps<UseDateInputProps>()
@@ -53,7 +56,7 @@ export const DateInputRoot = forwardRef<HTMLDivElement, DateInputRootProps>((pro
 
   return (
     <DateInputProvider value={dateInput}>
-      <ark.div {...mergedProps} ref={ref} />
+      <ark.div {...mergedProps} ref={ref} state={dateInput.getRootState()} />
     </DateInputProvider>
   )
 })

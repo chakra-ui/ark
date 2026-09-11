@@ -18,7 +18,12 @@ export {
   type SelectClearTriggerBaseProps,
   type SelectClearTriggerProps,
 } from './select-clear-trigger.tsx'
-export { SelectContent, type SelectContentBaseProps, type SelectContentProps } from './select-content.tsx'
+export {
+  SelectContent,
+  type SelectContentBaseProps,
+  type SelectContentProps,
+  type SelectContentState,
+} from './select-content.tsx'
 export { SelectContext, type SelectContextProps } from './select-context.tsx'
 export { SelectControl, type SelectControlBaseProps, type SelectControlProps } from './select-control.tsx'
 export {
@@ -27,7 +32,7 @@ export {
   type SelectHiddenSelectProps,
 } from './select-hidden-select.tsx'
 export { SelectIndicator, type SelectIndicatorBaseProps, type SelectIndicatorProps } from './select-indicator.tsx'
-export { SelectItem, type SelectItemBaseProps, type SelectItemProps } from './select-item.tsx'
+export { SelectItem, type SelectItemBaseProps, type SelectItemProps, type SelectItemState } from './select-item.tsx'
 export { SelectItemContext, type SelectItemContextProps } from './select-item-context.tsx'
 export { SelectItemGroup, type SelectItemGroupBaseProps, type SelectItemGroupProps } from './select-item-group.tsx'
 export {
@@ -43,6 +48,11 @@ export {
 export { SelectItemText, type SelectItemTextBaseProps, type SelectItemTextProps } from './select-item-text.tsx'
 export { SelectLabel, type SelectLabelBaseProps, type SelectLabelProps } from './select-label.tsx'
 export { SelectList, type SelectListBaseProps, type SelectListProps } from './select-list.tsx'
+export {
+  SelectScrollArrow,
+  type SelectScrollArrowBaseProps,
+  type SelectScrollArrowProps,
+} from './select-scroll-arrow.tsx'
 export { SelectPositioner, type SelectPositionerBaseProps, type SelectPositionerProps } from './select-positioner.tsx'
 export {
   SelectRoot,
@@ -50,14 +60,22 @@ export {
   type SelectRootProps,
   type SelectRootComponent,
   type SelectRootComponentProps,
+  type SelectRootState,
 } from './select-root.tsx'
 export {
   SelectRootProvider,
   type SelectRootProviderBaseProps,
   type SelectRootProviderProps,
   type SelectRootProviderComponent,
+  type SelectRootProviderState,
 } from './select-root-provider.tsx'
-export { SelectTrigger, type SelectTriggerBaseProps, type SelectTriggerProps } from './select-trigger.tsx'
+export { SelectStatus, type SelectStatusBaseProps, type SelectStatusProps } from './select-status.tsx'
+export {
+  SelectTrigger,
+  type SelectTriggerBaseProps,
+  type SelectTriggerProps,
+  type SelectTriggerState,
+} from './select-trigger.tsx'
 export { SelectValueText, type SelectValueTextBaseProps, type SelectValueTextProps } from './select-value-text.tsx'
 export { selectAnatomy } from './select.anatomy.ts'
 export { useSelect, type UseSelectProps, type UseSelectReturn } from './use-select.ts'

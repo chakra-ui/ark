@@ -1,7 +1,9 @@
 <script module lang="ts">
+  import type { BackdropState } from '@zag-js/tour'
   import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TourBackdropBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface TourBackdropState extends BackdropState {}
+  export interface TourBackdropBaseProps extends PolymorphicProps<'div', TourBackdropState>, RefAttribute {}
   export interface TourBackdropProps extends HTMLProps<'div'>, TourBackdropBaseProps {}
 </script>
 
@@ -29,5 +31,12 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} hidden={!tour().step?.backdrop} />
+  <Ark
+    as="div"
+    bind:ref
+    {...mergedProps}
+    {@attach setNode}
+    hidden={!tour().step?.backdrop}
+    state={tour().getBackdropState()}
+  />
 {/if}

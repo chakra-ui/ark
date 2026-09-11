@@ -1,8 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { TriggerProps } from '@zag-js/menu'
+  import type { TriggerProps, TriggerState } from '@zag-js/menu'
 
-  export interface MenuTriggerBaseProps extends TriggerProps, PolymorphicProps<'button'>, RefAttribute {}
+  export interface MenuTriggerState extends TriggerState {}
+  export interface MenuTriggerBaseProps
+    extends TriggerProps, PolymorphicProps<'button', MenuTriggerState>, RefAttribute {}
   export interface MenuTriggerProps extends Assign<HTMLProps<'button'>, MenuTriggerBaseProps> {}
 </script>
 
@@ -22,4 +24,9 @@
   const mergedProps = $derived(mergeProps(menu().getTriggerProps(triggerProps), triggerItemProps?.() || {}, localProps))
 </script>
 
-<Ark as="button" bind:ref data-scope="menu" data-part="trigger" {...mergedProps} />
+<Ark
+  as="button"
+  bind:ref
+  {...mergedProps}
+  state={menu().getTriggerState(triggerProps)}
+/>

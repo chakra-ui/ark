@@ -15,13 +15,7 @@ export const Presence = forwardRef<HTMLDivElement, PresenceProps>((props, ref) =
 
   return (
     <PresenceGate presence={presence}>
-      <ark.div
-        {...localProps}
-        {...presence.getPresenceProps()}
-        data-scope="presence"
-        data-part="root"
-        ref={composedRefs}
-      />
+      <ark.div {...localProps} {...presence.getPresenceProps()} data-presence-root="" ref={composedRefs} />
     </PresenceGate>
   )
 })

@@ -1,8 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { TriggerProps } from '@zag-js/popover'
+  import type { TriggerProps, TriggerState } from '@zag-js/popover'
 
-  export interface PopoverTriggerBaseProps extends TriggerProps, PolymorphicProps<'button'>, RefAttribute {}
+  export interface PopoverTriggerState extends TriggerState {}
+  export interface PopoverTriggerBaseProps
+    extends TriggerProps, PolymorphicProps<'button', PopoverTriggerState>, RefAttribute {}
   export interface PopoverTriggerProps extends Assign<HTMLProps<'button'>, PopoverTriggerBaseProps> {}
 </script>
 
@@ -30,4 +32,4 @@
   })
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} state={popover().getTriggerState(triggerProps)} />

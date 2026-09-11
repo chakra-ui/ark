@@ -15,20 +15,31 @@ export {
   type SliderHiddenInputProps,
 } from './slider-hidden-input.tsx'
 export { SliderLabel, type SliderLabelBaseProps, type SliderLabelProps } from './slider-label.tsx'
-export { SliderMarker, type SliderMarkerBaseProps, type SliderMarkerProps } from './slider-marker.tsx'
+export {
+  SliderMarker,
+  type SliderMarkerBaseProps,
+  type SliderMarkerProps,
+  type SliderMarkerState,
+} from './slider-marker.tsx'
 export {
   SliderMarkerGroup,
   type SliderMarkerGroupBaseProps,
   type SliderMarkerGroupProps,
 } from './slider-marker-group.tsx'
 export { SliderRange, type SliderRangeBaseProps, type SliderRangeProps } from './slider-range.tsx'
-export { SliderRoot, type SliderRootBaseProps, type SliderRootProps } from './slider-root.tsx'
+export { SliderRoot, type SliderRootBaseProps, type SliderRootProps, type SliderRootState } from './slider-root.tsx'
 export {
   SliderRootProvider,
   type SliderRootProviderBaseProps,
   type SliderRootProviderProps,
+  type SliderRootProviderState,
 } from './slider-root-provider.tsx'
-export { SliderThumb, type SliderThumbBaseProps, type SliderThumbProps } from './slider-thumb.tsx'
+export {
+  SliderThumb,
+  type SliderThumbBaseProps,
+  type SliderThumbProps,
+  type SliderThumbState,
+} from './slider-thumb.tsx'
 export { SliderTrack, type SliderTrackBaseProps, type SliderTrackProps } from './slider-track.tsx'
 export { SliderValueText, type SliderValueTextBaseProps, type SliderValueTextProps } from './slider-value-text.tsx'
 export { sliderAnatomy } from './slider.anatomy.ts'

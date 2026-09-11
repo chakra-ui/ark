@@ -29,6 +29,7 @@ export {
   PopoverContent as Content,
   type PopoverContentBaseProps as ContentBaseProps,
   type PopoverContentProps as ContentProps,
+  type PopoverContentState as ContentState,
 } from './popover-content.tsx'
 export { PopoverContext as Context, type PopoverContextProps as ContextProps } from './popover-context.tsx'
 export {
@@ -45,6 +46,7 @@ export {
   PopoverPositioner as Positioner,
   type PopoverPositionerBaseProps as PositionerBaseProps,
   type PopoverPositionerProps as PositionerProps,
+  type PopoverPositionerState as PositionerState,
 } from './popover-positioner.tsx'
 export {
   PopoverRoot as Root,
@@ -65,4 +67,5 @@ export {
   PopoverTrigger as Trigger,
   type PopoverTriggerBaseProps as TriggerBaseProps,
   type PopoverTriggerProps as TriggerProps,
+  type PopoverTriggerState as TriggerState,
 } from './popover-trigger.tsx'

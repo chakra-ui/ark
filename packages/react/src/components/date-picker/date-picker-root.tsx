@@ -8,8 +8,12 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.ts'
 import { type UseDatePickerProps, useDatePicker } from './use-date-picker.ts'
 import { DatePickerProvider } from './use-date-picker-context.ts'
+import type { RootState } from '@zag-js/date-picker'
 
-export interface DatePickerRootBaseProps extends UseDatePickerProps, UsePresenceProps, PolymorphicProps {}
+export interface DatePickerRootState extends RootState {}
+
+export interface DatePickerRootBaseProps
+  extends UseDatePickerProps, UsePresenceProps, PolymorphicProps<DatePickerRootState> {}
 export interface DatePickerRootProps extends Assign<HTMLProps<'div'>, DatePickerRootBaseProps> {}
 
 const splitRootProps = createSplitProps<UseDatePickerProps>()
@@ -68,7 +72,7 @@ export const DatePickerRoot = forwardRef<HTMLDivElement, DatePickerRootProps>((p
   return (
     <DatePickerProvider value={datePicker}>
       <PresenceProvider value={presence}>
-        <ark.div {...mergedProps} ref={ref} />
+        <ark.div {...mergedProps} ref={ref} state={datePicker.getRootState()} />
       </PresenceProvider>
     </DatePickerProvider>
   )

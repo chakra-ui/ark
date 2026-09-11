@@ -20,7 +20,7 @@ export {
 } from './toast-close-trigger.tsx'
 export { ToastContext, type ToastContextProps } from './toast-context.tsx'
 export { ToastDescription, type ToastDescriptionBaseProps, type ToastDescriptionProps } from './toast-description.tsx'
-export { ToastRoot, type ToastRootBaseProps, type ToastRootProps } from './toast-root.tsx'
+export { ToastRoot, type ToastRootBaseProps, type ToastRootProps, type ToastRootState } from './toast-root.tsx'
 export { ToastTitle, type ToastTitleBaseProps, type ToastTitleProps } from './toast-title.tsx'
 export { toastAnatomy } from './toast.anatomy.ts'
 export { Toaster, type ToasterBaseProps, type ToasterProps, type ToastOptions } from './toaster.tsx'

@@ -2,6 +2,12 @@ export type {
   FocusChangeDetails as AccordionFocusChangeDetails,
   ValueChangeDetails as AccordionValueChangeDetails,
 } from '@zag-js/accordion'
+export {
+  default as AccordionItemHeader,
+  type AccordionItemHeaderBaseProps,
+  type AccordionItemHeaderProps,
+  type AccordionItemHeaderState,
+} from './accordion-item-header.svelte'
 export { default as AccordionContext, type AccordionContextProps } from './accordion-context.svelte'
 export { default as AccordionItem, type AccordionItemBaseProps, type AccordionItemProps } from './accordion-item.svelte'
 export {

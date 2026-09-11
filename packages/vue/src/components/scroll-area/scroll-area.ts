@@ -9,6 +9,7 @@ export {
   default as Corner,
   type ScrollAreaCornerBaseProps as CornerBaseProps,
   type ScrollAreaCornerProps as CornerProps,
+  type ScrollAreaCornerState as CornerState,
 } from './scroll-area-corner.vue'
 export {
   default as Root,
@@ -24,6 +25,7 @@ export {
   default as Scrollbar,
   type ScrollAreaScrollbarBaseProps as ScrollbarBaseProps,
   type ScrollAreaScrollbarProps as ScrollbarProps,
+  type ScrollAreaScrollbarState as ScrollbarState,
 } from './scroll-area-scrollbar.vue'
 export {
   default as Thumb,

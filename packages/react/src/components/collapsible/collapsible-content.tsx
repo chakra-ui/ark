@@ -5,8 +5,11 @@ import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { CollapsibleGate } from './collapsible-gate.tsx'
 import { useCollapsibleContext } from './use-collapsible-context.ts'
+import type { ContentState } from '@zag-js/collapsible'
 
-export interface CollapsibleContentBaseProps extends PolymorphicProps {}
+export interface CollapsibleContentState extends ContentState {}
+
+export interface CollapsibleContentBaseProps extends PolymorphicProps<CollapsibleContentState> {}
 export interface CollapsibleContentProps extends HTMLProps<'div'>, CollapsibleContentBaseProps {}
 
 export const CollapsibleContent = forwardRef<HTMLDivElement, CollapsibleContentProps>((props, ref) => {
@@ -20,7 +23,7 @@ export const CollapsibleContent = forwardRef<HTMLDivElement, CollapsibleContentP
 
   return (
     <CollapsibleGate collapsible={collapsible}>
-      <ark.div {...mergedProps} ref={ref} />
+      <ark.div {...mergedProps} ref={ref} state={collapsible.getContentState()} />
     </CollapsibleGate>
   )
 })

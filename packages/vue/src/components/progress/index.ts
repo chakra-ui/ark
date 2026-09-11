@@ -37,7 +37,12 @@ export {
   type ProgressValueTextBaseProps,
   type ProgressValueTextProps,
 } from './progress-value-text.vue'
-export { default as ProgressView, type ProgressViewBaseProps, type ProgressViewProps } from './progress-view.vue'
+export {
+  default as ProgressView,
+  type ProgressViewBaseProps,
+  type ProgressViewProps,
+  type ProgressViewState,
+} from './progress-view.vue'
 export { progressAnatomy } from './progress.anatomy.ts'
 export { useProgress, type UseProgressProps, type UseProgressReturn } from './use-progress.ts'
 export { useProgressContext, type UseProgressContext } from './use-progress-context.ts'

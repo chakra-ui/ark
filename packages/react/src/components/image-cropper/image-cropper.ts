@@ -28,21 +28,25 @@ export {
   ImageCropperImage as Image,
   type ImageCropperImageBaseProps as ImageBaseProps,
   type ImageCropperImageProps as ImageProps,
+  type ImageCropperImageState as ImageState,
 } from './image-cropper-image.tsx'
 export {
   ImageCropperRoot as Root,
   type ImageCropperRootBaseProps as RootBaseProps,
   type ImageCropperRootProps as RootProps,
+  type ImageCropperRootState as RootState,
 } from './image-cropper-root.tsx'
 export {
   ImageCropperRootProvider as RootProvider,
   type ImageCropperRootProviderBaseProps as RootProviderBaseProps,
   type ImageCropperRootProviderProps as RootProviderProps,
+  type ImageCropperRootProviderState as RootProviderState,
 } from './image-cropper-root-provider.tsx'
 export {
   ImageCropperSelection as Selection,
   type ImageCropperSelectionBaseProps as SelectionBaseProps,
   type ImageCropperSelectionProps as SelectionProps,
+  type ImageCropperSelectionState as SelectionState,
 } from './image-cropper-selection.tsx'
 export {
   ImageCropperViewport as Viewport,

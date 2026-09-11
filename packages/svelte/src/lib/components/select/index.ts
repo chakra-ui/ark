@@ -18,7 +18,12 @@ export {
   type SelectClearTriggerBaseProps,
   type SelectClearTriggerProps,
 } from './select-clear-trigger.svelte'
-export { default as SelectContent, type SelectContentBaseProps, type SelectContentProps } from './select-content.svelte'
+export {
+  default as SelectContent,
+  type SelectContentBaseProps,
+  type SelectContentProps,
+  type SelectContentState,
+} from './select-content.svelte'
 export { default as SelectContext, type SelectContextProps } from './select-context.svelte'
 export { default as SelectControl, type SelectControlBaseProps, type SelectControlProps } from './select-control.svelte'
 export {
@@ -31,7 +36,12 @@ export {
   type SelectIndicatorBaseProps,
   type SelectIndicatorProps,
 } from './select-indicator.svelte'
-export { default as SelectItem, type SelectItemBaseProps, type SelectItemProps } from './select-item.svelte'
+export {
+  default as SelectItem,
+  type SelectItemBaseProps,
+  type SelectItemProps,
+  type SelectItemState,
+} from './select-item.svelte'
 export { default as SelectItemContext, type SelectItemContextProps } from './select-item-context.svelte'
 export {
   default as SelectItemGroup,
@@ -56,6 +66,11 @@ export {
 export { default as SelectLabel, type SelectLabelBaseProps, type SelectLabelProps } from './select-label.svelte'
 export { default as SelectList, type SelectListBaseProps, type SelectListProps } from './select-list.svelte'
 export {
+  default as SelectScrollArrow,
+  type SelectScrollArrowBaseProps,
+  type SelectScrollArrowProps,
+} from './select-scroll-arrow.svelte'
+export {
   default as SelectPositioner,
   type SelectPositionerBaseProps,
   type SelectPositionerProps,
@@ -73,7 +88,13 @@ export {
   type SelectRootProviderProps,
   type SelectRootProviderComponent,
 } from './select-root-provider.svelte'
-export { default as SelectTrigger, type SelectTriggerBaseProps, type SelectTriggerProps } from './select-trigger.svelte'
+export { default as SelectStatus, type SelectStatusProps } from './select-status.svelte'
+export {
+  default as SelectTrigger,
+  type SelectTriggerBaseProps,
+  type SelectTriggerProps,
+  type SelectTriggerState,
+} from './select-trigger.svelte'
 export {
   default as SelectValueText,
   type SelectValueTextBaseProps,

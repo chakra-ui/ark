@@ -5,6 +5,7 @@ export {
   ClipboardIndicator,
   type ClipboardIndicatorBaseProps,
   type ClipboardIndicatorProps,
+  type ClipboardIndicatorState,
 } from './clipboard-indicator.tsx'
 export { ClipboardInput, type ClipboardInputBaseProps, type ClipboardInputProps } from './clipboard-input.tsx'
 export { ClipboardLabel, type ClipboardLabelBaseProps, type ClipboardLabelProps } from './clipboard-label.tsx'

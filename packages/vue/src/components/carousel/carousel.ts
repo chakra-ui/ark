@@ -24,6 +24,7 @@ export {
   default as Indicator,
   type CarouselIndicatorProps as IndicatorProps,
   type CarouselIndicatorBaseProps as IndicatorBaseProps,
+  type CarouselIndicatorState as IndicatorState,
 } from './carousel-indicator.vue'
 export {
   default as ItemGroup,
@@ -34,6 +35,7 @@ export {
   default as Item,
   type CarouselItemProps as ItemProps,
   type CarouselItemBaseProps as ItemBaseProps,
+  type CarouselItemState as ItemState,
 } from './carousel-item.vue'
 export {
   default as NextTrigger,

@@ -18,6 +18,7 @@ export {
   default as AngleSliderMarker,
   type AngleSliderMarkerBaseProps,
   type AngleSliderMarkerProps,
+  type AngleSliderMarkerState,
 } from './angle-slider-marker.svelte'
 export {
   default as AngleSliderMarkerGroup,
@@ -28,6 +29,7 @@ export {
   default as AngleSliderRoot,
   type AngleSliderRootBaseProps,
   type AngleSliderRootProps,
+  type AngleSliderRootState,
 } from './angle-slider-root.svelte'
 export {
   default as AngleSliderRootProvider,

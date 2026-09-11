@@ -1,8 +1,11 @@
 <script module lang="ts">
+  import type { RootState } from '@zag-js/toggle'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseToggleProps } from './use-toggle.svelte.ts'
 
-  export interface ToggleRootBaseProps extends UseToggleProps, PolymorphicProps<'button'>, RefAttribute {}
+  export interface ToggleRootState extends RootState {}
+  export interface ToggleRootBaseProps
+    extends UseToggleProps, PolymorphicProps<'button', ToggleRootState>, RefAttribute {}
   export interface ToggleRootProps extends Assign<HTMLProps<'button'>, ToggleRootBaseProps> {}
 </script>
 
@@ -34,4 +37,4 @@
   ToggleProvider(toggle)
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} state={toggle().getRootState()} />

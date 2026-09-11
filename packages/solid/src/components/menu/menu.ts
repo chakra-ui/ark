@@ -21,11 +21,13 @@ export {
   MenuCheckboxItem as CheckboxItem,
   type MenuCheckboxItemBaseProps as CheckboxItemBaseProps,
   type MenuCheckboxItemProps as CheckboxItemProps,
+  type MenuCheckboxItemState as CheckboxItemState,
 } from './menu-checkbox-item.tsx'
 export {
   MenuContent as Content,
   type MenuContentBaseProps as ContentBaseProps,
   type MenuContentProps as ContentProps,
+  type MenuContentState as ContentState,
 } from './menu-content.tsx'
 export { MenuContext as Context, type MenuContextProps as ContextProps } from './menu-context.tsx'
 export {
@@ -42,6 +44,7 @@ export {
   MenuItem as Item,
   type MenuItemBaseProps as ItemBaseProps,
   type MenuItemProps as ItemProps,
+  type MenuItemState as ItemState,
 } from './menu-item.tsx'
 export { MenuItemContext as ItemContext, type MenuItemContextProps as ItemContextProps } from './menu-item-context.tsx'
 export {
@@ -68,11 +71,13 @@ export {
   MenuPositioner as Positioner,
   type MenuPositionerBaseProps as PositionerBaseProps,
   type MenuPositionerProps as PositionerProps,
+  type MenuPositionerState as PositionerState,
 } from './menu-positioner.tsx'
 export {
   MenuRadioItem as RadioItem,
   type MenuRadioItemBaseProps as RadioItemBaseProps,
   type MenuRadioItemProps as RadioItemProps,
+  type MenuRadioItemState as RadioItemState,
 } from './menu-radio-item.tsx'
 export {
   MenuRadioItemGroup as RadioItemGroup,
@@ -98,6 +103,7 @@ export {
   MenuTrigger as Trigger,
   type MenuTriggerBaseProps as TriggerBaseProps,
   type MenuTriggerProps as TriggerProps,
+  type MenuTriggerState as TriggerState,
 } from './menu-trigger.tsx'
 export {
   MenuTriggerItem as TriggerItem,

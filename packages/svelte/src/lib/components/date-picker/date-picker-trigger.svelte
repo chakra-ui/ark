@@ -1,7 +1,10 @@
 <script module lang="ts">
+  import type { TriggerState } from '@zag-js/date-picker'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface DatePickerTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
+  export interface DatePickerTriggerState extends TriggerState {}
+  export interface DatePickerTriggerBaseProps
+    extends PolymorphicProps<'button', DatePickerTriggerState>, RefAttribute {}
   export interface DatePickerTriggerProps extends Assign<HTMLProps<'button'>, DatePickerTriggerBaseProps> {}
 </script>
 
@@ -16,4 +19,4 @@
   const mergedProps = $derived(mergeProps(datePicker().getTriggerProps(), props))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} state={datePicker().getTriggerState()} />

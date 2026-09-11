@@ -19,6 +19,7 @@ export {
   StepsItem as Item,
   type StepsItemBaseProps as ItemBaseProps,
   type StepsItemProps as ItemProps,
+  type StepsItemState as ItemState,
 } from './steps-item.tsx'
 export {
   StepsItemContext as ItemContext,

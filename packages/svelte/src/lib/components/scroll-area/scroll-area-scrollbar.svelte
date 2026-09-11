@@ -1,4 +1,5 @@
 <script module lang="ts">
+  import type { ScrollbarState } from '@zag-js/scroll-area'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
   import type { Orientation } from '@zag-js/types'
 
@@ -6,7 +7,9 @@
     orientation?: Orientation
   }
 
-  export interface ScrollAreaScrollbarBaseProps extends ScrollbarProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface ScrollAreaScrollbarState extends ScrollbarState {}
+  export interface ScrollAreaScrollbarBaseProps
+    extends ScrollbarProps, PolymorphicProps<'div', ScrollAreaScrollbarState>, RefAttribute {}
   export interface ScrollAreaScrollbarProps extends Assign<HTMLProps<'div'>, ScrollAreaScrollbarBaseProps> {}
 </script>
 
@@ -27,4 +30,4 @@
   ScrollAreaScrollbarProvider(() => scrollbarProps)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={scrollAreaApi().getScrollbarState(scrollbarProps)} />

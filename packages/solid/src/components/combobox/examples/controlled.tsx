@@ -35,17 +35,19 @@ export const Controlled = () => {
         <Portal>
           <Combobox.Positioner>
             <Combobox.Content>
-              <Combobox.ItemGroup>
-                <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-                <For each={collection().items}>
-                  {(item) => (
-                    <Combobox.Item item={item}>
-                      <Combobox.ItemText>{item}</Combobox.ItemText>
-                      <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
-                    </Combobox.Item>
-                  )}
-                </For>
-              </Combobox.ItemGroup>
+              <Combobox.List>
+                <Combobox.ItemGroup>
+                  <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
+                  <For each={collection().items}>
+                    {(item) => (
+                      <Combobox.Item item={item}>
+                        <Combobox.ItemText>{item}</Combobox.ItemText>
+                        <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
+                      </Combobox.Item>
+                    )}
+                  </For>
+                </Combobox.ItemGroup>
+              </Combobox.List>
             </Combobox.Content>
           </Combobox.Positioner>
         </Portal>

@@ -29,12 +29,14 @@ export {
   default as CheckboxRootProvider,
   type CheckboxRootProviderProps,
   type CheckboxRootProviderBaseProps,
+  type CheckboxRootProviderState,
 } from './checkbox-root-provider.vue'
 export {
   default as CheckboxRoot,
   type CheckboxRootEmits,
   type CheckboxRootBaseProps,
   type CheckboxRootProps,
+  type CheckboxRootState,
 } from './checkbox-root.vue'
 export { useCheckbox, type UseCheckboxProps, type UseCheckboxReturn } from './use-checkbox.ts'
 export { useCheckboxContext, type UseCheckboxContext } from './use-checkbox-context.ts'

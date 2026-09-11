@@ -1,5 +1,10 @@
 export type { PauseStatusDetails as MarqueePauseStatusDetails, Side as MarqueeSide } from '@zag-js/marquee'
-export { MarqueeContent, type MarqueeContentBaseProps, type MarqueeContentProps } from './marquee-content.tsx'
+export {
+  MarqueeContent,
+  type MarqueeContentBaseProps,
+  type MarqueeContentProps,
+  type MarqueeContentState,
+} from './marquee-content.tsx'
 export { MarqueeContext, type MarqueeContextProps } from './marquee-context.tsx'
 export { MarqueeEdge, type MarqueeEdgeBaseProps, type MarqueeEdgeProps } from './marquee-edge.tsx'
 export { MarqueeItem, type MarqueeItemBaseProps, type MarqueeItemProps } from './marquee-item.tsx'

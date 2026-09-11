@@ -54,22 +54,24 @@ export const RehydrateValue = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content class={styles.Content}>
-            {state.loading() ? (
-              <span style={{ padding: '0.5rem' }}>Loading...</span>
-            ) : state.error() ? (
-              <span style={{ padding: '0.5rem' }}>{state.error()?.message}</span>
-            ) : (
-              <For each={collection().items}>
-                {(item) => (
-                  <Combobox.Item class={styles.Item} item={item}>
-                    <Combobox.ItemText class={styles.ItemText}>
-                      {item.name} - {item.height}cm / {item.mass}kg
-                    </Combobox.ItemText>
-                    <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
-                  </Combobox.Item>
-                )}
-              </For>
-            )}
+            <Combobox.List class={styles.List}>
+              {state.loading() ? (
+                <span style={{ padding: '0.5rem' }}>Loading...</span>
+              ) : state.error() ? (
+                <span style={{ padding: '0.5rem' }}>{state.error()?.message}</span>
+              ) : (
+                <For each={collection().items}>
+                  {(item) => (
+                    <Combobox.Item class={styles.Item} item={item}>
+                      <Combobox.ItemText class={styles.ItemText}>
+                        {item.name} - {item.height}cm / {item.mass}kg
+                      </Combobox.ItemText>
+                      <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
+                    </Combobox.Item>
+                  )}
+                </For>
+              )}
+            </Combobox.List>
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

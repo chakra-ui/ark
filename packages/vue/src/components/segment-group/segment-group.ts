@@ -28,6 +28,7 @@ export {
   default as Item,
   type SegmentGroupItemProps as ItemProps,
   type SegmentGroupItemBaseProps as ItemBaseProps,
+  type SegmentGroupItemState as ItemState,
 } from './segment-group-item.vue'
 export {
   default as Label,
@@ -38,10 +39,12 @@ export {
   default as RootProvider,
   type SegmentGroupRootProviderProps as RootProviderProps,
   type SegmentGroupRootProviderBaseProps as RootProviderBaseProps,
+  type SegmentGroupRootProviderState as RootProviderState,
 } from './segment-group-root-provider.vue'
 export {
   default as Root,
   type SegmentGroupRootEmits as RootEmits,
   type SegmentGroupRootBaseProps as RootBaseProps,
   type SegmentGroupRootProps as RootProps,
+  type SegmentGroupRootState as RootState,
 } from './segment-group-root.vue'

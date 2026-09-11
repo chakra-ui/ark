@@ -30,6 +30,9 @@ export const Filtering = () => {
         onChange={(e) => filter(e.target.value)}
       />
       <Listbox.Content className={styles.Content}>
+        <Listbox.Empty>
+          <div className={styles.Empty}>No frameworks found</div>
+        </Listbox.Empty>
         <Listbox.List className={styles.List}>
           {collection.items.map((item) => (
             <Listbox.Item className={styles.Item} key={item.value} item={item}>
@@ -39,7 +42,6 @@ export const Filtering = () => {
               </Listbox.ItemIndicator>
             </Listbox.Item>
           ))}
-          <Listbox.Empty className={styles.Empty}>No frameworks found</Listbox.Empty>
         </Listbox.List>
       </Listbox.Content>
     </Listbox.Root>
