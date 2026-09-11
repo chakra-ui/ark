@@ -20,6 +20,7 @@ const frameworks = createListCollection({
 
 <template>
   <Listbox.Root :class="styles.Root" :collection="frameworks" selectionMode="multiple">
+    <Listbox.Label :class="styles.Label">Frameworks</Listbox.Label>
     <SelectAllHeader :frameworks="frameworks" />
     <Listbox.Content :class="styles.Content">
       <Listbox.List :class="styles.List">
