@@ -66,7 +66,7 @@
     "./environment": "./src/providers/environment/index.tsx",
     "./factory": "./src/components/factory.tsx",
     "./hotkeys": "./src/providers/hotkeys/index.tsx",
-    "./interaction": "./src/providers/interaction/index.ts",
+    "./interaction": "./src/providers/interaction/index.tsx",
     "./locale": "./src/providers/locale/index.tsx"
   },
   "scripts": {
