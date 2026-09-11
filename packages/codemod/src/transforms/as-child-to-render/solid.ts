@@ -1,5 +1,7 @@
 import { Node, Project, SyntaxKind } from 'ts-morph'
+import type { JsxOpeningElement, JsxSelfClosingElement } from 'ts-morph'
 import type { TransformResult } from '../../types.ts'
+import { arkLocalNames, isTrackedJsx } from '../../utils/ark-imports.ts'
 
 export function solidAsChildToRender(source: string, filePath: string): TransformResult {
   const project = new Project({ useInMemoryFileSystem: true, compilerOptions: { jsx: 4 } })
@@ -8,8 +10,17 @@ export function solidAsChildToRender(source: string, filePath: string): Transfor
   let count = 0
   const skipped: string[] = []
 
+  const arkNames = arkLocalNames(sf)
+  if (arkNames.size === 0) return { code: null, count: 0, skipped: [] }
+
   for (const attr of sf.getDescendantsOfKind(SyntaxKind.JsxAttribute)) {
     if (attr.getNameNode().getText() !== 'asChild') continue
+
+    const opening = attr.getFirstAncestor(
+      (node): node is JsxOpeningElement | JsxSelfClosingElement =>
+        Node.isJsxOpeningElement(node) || Node.isJsxSelfClosingElement(node),
+    )
+    if (!opening || !isTrackedJsx(opening, arkNames)) continue
 
     const initializer = attr.getInitializer()
     if (!initializer || !Node.isJsxExpression(initializer)) {

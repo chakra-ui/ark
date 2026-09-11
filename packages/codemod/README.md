@@ -58,6 +58,10 @@ Paths are globs, `**/*` by default. `.gitignore`, `node_modules` and `dist` are 
 
 See [docs/AS_CHILD_MIGRATION.md](./docs/AS_CHILD_MIGRATION.md) for what each one does and what it leaves for you.
 
+## Scope
+
+The React, Solid and Vue transforms only touch Ark UI parts — elements whose tag resolves to an `@ark-ui/*` import, following aliases (`import { Menu as M }`) and the `ark` factory. Another library's `asChild` (Radix, for one) in the same file is left alone, and a file that never imports Ark is skipped. If you re-export Ark parts through a local barrel, run the codemod against the barrel's own imports, or use `--force` and review the diff. The Svelte transform keys off the Ark-specific `asChild` snippet name instead.
+
 ## What it will not do
 
 A codemod that guesses is worse than one that stops. Anything ambiguous is left alone and reported:

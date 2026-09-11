@@ -1,5 +1,6 @@
 import { Node, Project, SyntaxKind } from 'ts-morph'
 import type { TransformResult } from '../../types.ts'
+import { arkLocalNames, isTrackedJsx } from '../../utils/ark-imports.ts'
 
 export function reactAsChildToRender(source: string, filePath: string): TransformResult {
   const project = new Project({ useInMemoryFileSystem: true, compilerOptions: { jsx: 4 } })
@@ -8,12 +9,17 @@ export function reactAsChildToRender(source: string, filePath: string): Transfor
   let count = 0
   const skipped: string[] = []
 
+  const arkNames = arkLocalNames(sf)
+  if (arkNames.size === 0) return { code: null, count: 0, skipped: [] }
+
   const elements = sf.getDescendantsOfKind(SyntaxKind.JsxElement).reverse()
 
   for (const element of elements) {
     const opening = element.getOpeningElement()
     const asChild = opening.getAttribute('asChild')
     if (!asChild) continue
+
+    if (!isTrackedJsx(opening, arkNames)) continue
 
     if (!Node.isJsxAttribute(asChild)) {
       skipped.push(`${describe(opening)}: asChild is spread, not an attribute`)

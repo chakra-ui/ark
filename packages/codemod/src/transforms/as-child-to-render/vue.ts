@@ -1,6 +1,7 @@
 import { parse } from '@vue/compiler-sfc'
 import MagicString from 'magic-string'
 import type { TransformResult } from '../../types.ts'
+import { arkLocalNamesFromSource, jsxBaseNameFromText } from '../../utils/ark-imports.ts'
 
 interface Loc {
   start: { offset: number }
@@ -36,11 +37,16 @@ export function vueAsChildToRender(source: string, _filePath: string): Transform
   const ast = descriptor.template?.ast as unknown as Node | undefined
   if (!ast) return { code: null, count: 0, skipped: [] }
 
+  const arkNames = arkLocalNamesFromSource(source)
+  if (arkNames.size === 0) return { code: null, count: 0, skipped: [] }
+
   const s = new MagicString(source)
   let count = 0
   const skipped: string[] = []
 
   walk(ast, (node) => {
+    if (!arkNames.has(jsxBaseNameFromText(node.tag ?? ''))) return
+
     const at = `line ${lineOf(source, node.loc.start.offset)}`
 
     const bound = node.props?.find((p) => p.type === DIRECTIVE && p.name === 'bind' && isAsChild(p.arg?.content))
