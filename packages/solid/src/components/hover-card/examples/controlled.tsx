@@ -17,7 +17,7 @@ export const Controlled = () => {
           Liked by{' '}
           <HoverCard.Trigger
             class={styles.Trigger}
-            asChild={(props) => (
+            render={(props) => (
               <a href="#profile" {...props()}>
                 @sarah_chen
               </a>

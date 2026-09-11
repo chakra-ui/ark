@@ -20,7 +20,7 @@ export const TreeNodeWithLinks: Component<Props> = (props) => (
       when={props.node.children}
       fallback={
         <TreeView.Node>
-          <TreeView.Cell asChild={(cellProps) => <a href={props.node.href} {...cellProps()} />}>
+          <TreeView.Cell render={(cellProps) => <a href={props.node.href} {...cellProps()} />}>
             <TreeView.NodeText>
               <File />
               {props.node.name}

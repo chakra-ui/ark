@@ -37,14 +37,19 @@ export const Links = () => {
           <Combobox.Content className={styles.Content}>
             <Combobox.List className={styles.List}>
               {collection.items.map((item) => (
-                <Combobox.Item className={styles.Item} key={item.value} item={item} asChild>
-                  <a href={item.href}>
-                    <Combobox.ItemText className={styles.ItemText}>{item.label}</Combobox.ItemText>
-                    <Combobox.ItemIndicator className={styles.ItemIndicator}>
-                      <CheckIcon />
-                    </Combobox.ItemIndicator>
-                  </a>
-                </Combobox.Item>
+                <Combobox.Item
+                  className={styles.Item}
+                  key={item.value}
+                  item={item}
+                  render={
+                    <a href={item.href}>
+                      <Combobox.ItemText className={styles.ItemText}>{item.label}</Combobox.ItemText>
+                      <Combobox.ItemIndicator className={styles.ItemIndicator}>
+                        <CheckIcon />
+                      </Combobox.ItemIndicator>
+                    </a>
+                  }
+                />
               ))}
             </Combobox.List>
           </Combobox.Content>

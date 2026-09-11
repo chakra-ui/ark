@@ -72,7 +72,7 @@
             <TreeView.Node class={styles.Node}>
               <Menu.Root ids={{ contextTrigger: triggerId }}>
                 <TreeView.Cell class={styles.Cell}>
-                  {#snippet asChild(cellProps)}
+                  {#snippet render(cellProps)}
                     <Menu.ContextTrigger {...cellProps()}>
                       <TreeView.NodeExpandTrigger class={styles.NodeExpandTrigger}>
                         <TreeView.NodeIndicator type="expanded" class={styles.NodeIndicator}>
@@ -104,7 +104,7 @@
           <TreeView.Node class={styles.Node}>
             <Menu.Root ids={{ contextTrigger: triggerId }}>
               <TreeView.Cell class={styles.Cell}>
-                {#snippet asChild(cellProps)}
+                {#snippet render(cellProps)}
                   <Menu.ContextTrigger {...cellProps()}>
                     <FileIcon />
                     <TreeView.NodeText class={styles.NodeText}>{node.name}</TreeView.NodeText>

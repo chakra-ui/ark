@@ -46,23 +46,32 @@ export const MultipleTriggers = () => {
     >
       <p className={styles.Paragraph}>
         Reviewed by{' '}
-        <HoverCard.Trigger value="sarah" asChild>
-          <a href="#" className={styles.Trigger}>
-            @sarah_chen
-          </a>
-        </HoverCard.Trigger>
+        <HoverCard.Trigger
+          value="sarah"
+          render={
+            <a href="#" className={styles.Trigger}>
+              @sarah_chen
+            </a>
+          }
+        />
         ,{' '}
-        <HoverCard.Trigger value="alex" asChild>
-          <a href="#" className={styles.Trigger}>
-            @alex_r
-          </a>
-        </HoverCard.Trigger>
+        <HoverCard.Trigger
+          value="alex"
+          render={
+            <a href="#" className={styles.Trigger}>
+              @alex_r
+            </a>
+          }
+        />
         , and{' '}
-        <HoverCard.Trigger value="jordan" asChild>
-          <a href="#" className={styles.Trigger}>
-            @jordan_lee
-          </a>
-        </HoverCard.Trigger>
+        <HoverCard.Trigger
+          value="jordan"
+          render={
+            <a href="#" className={styles.Trigger}>
+              @jordan_lee
+            </a>
+          }
+        />
       </p>
       <Portal>
         <HoverCard.Positioner>

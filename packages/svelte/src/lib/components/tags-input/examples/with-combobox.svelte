@@ -59,7 +59,7 @@
         </TagsInput.Item>
       {/each}
       <Combobox.Input>
-        {#snippet asChild(inputProps)}
+        {#snippet render(inputProps)}
           <TagsInput.Input placeholder="Add Framework" class={styles.Input} {...inputProps()} />
         {/snippet}
       </Combobox.Input>

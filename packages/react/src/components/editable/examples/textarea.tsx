@@ -10,9 +10,7 @@ export const Textarea = () => (
   >
     <Editable.Label className={styles.Label}>Description</Editable.Label>
     <Editable.Area className={styles.Area}>
-      <Editable.Input className={styles.Textarea} asChild>
-        <textarea />
-      </Editable.Input>
+      <Editable.Input className={styles.Textarea} render={<textarea />} />
       <Editable.Preview className={styles.Textarea} />
     </Editable.Area>
     <div className={styles.HelperText}>Press Cmd + Enter to save</div>

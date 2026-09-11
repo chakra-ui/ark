@@ -6,17 +6,17 @@
 <Tabs.Root class={styles.Root} defaultValue="account">
   <Tabs.List class={styles.List}>
     <Tabs.Trigger class={styles.Trigger} value="account">
-      {#snippet asChild(props)}
+      {#snippet render(props)}
         <a href="#account" {...props()}>Account</a>
       {/snippet}
     </Tabs.Trigger>
     <Tabs.Trigger class={styles.Trigger} value="password">
-      {#snippet asChild(props)}
+      {#snippet render(props)}
         <a href="#password" {...props()}>Password</a>
       {/snippet}
     </Tabs.Trigger>
     <Tabs.Trigger class={styles.Trigger} value="billing">
-      {#snippet asChild(props)}
+      {#snippet render(props)}
         <a href="#billing" {...props()}>Billing</a>
       {/snippet}
     </Tabs.Trigger>

@@ -56,7 +56,7 @@ export const WithCombobox = () => {
             )}
           </For>
           <Combobox.Input
-            asChild={(props) => <TagsInput.Input placeholder="Add Framework" class={styles.Input} {...props()} />}
+            render={(props) => <TagsInput.Input placeholder="Add Framework" class={styles.Input} {...props()} />}
           />
           <TagsInput.ClearTrigger class={styles.ClearTrigger}>
             <XIcon />

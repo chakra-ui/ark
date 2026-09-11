@@ -46,19 +46,19 @@
   <p class={styles.Paragraph}>
     Reviewed by{' '}
     <HoverCard.Trigger value="sarah" class={styles.Trigger}>
-      {#snippet asChild(props)}
+      {#snippet render(props)}
         <a href="#" {...props()}>@sarah_chen</a>
       {/snippet}
     </HoverCard.Trigger>
     ,{' '}
     <HoverCard.Trigger value="alex" class={styles.Trigger}>
-      {#snippet asChild(props)}
+      {#snippet render(props)}
         <a href="#" {...props()}>@alex_r</a>
       {/snippet}
     </HoverCard.Trigger>
     , and{' '}
     <HoverCard.Trigger value="jordan" class={styles.Trigger}>
-      {#snippet asChild(props)}
+      {#snippet render(props)}
         <a href="#" {...props()}>@jordan_lee</a>
       {/snippet}
     </HoverCard.Trigger>

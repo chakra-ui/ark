@@ -51,7 +51,7 @@
       {:else}
         <TreeView.Node class={styles.Node}>
           <TreeView.Cell class={styles.Cell}>
-            {#snippet asChild(itemProps)}
+            {#snippet render(itemProps)}
               <a href={node.href} {...itemProps()}>
                 <TreeView.NodeText class={styles.NodeText}>
                   <FileIcon />
