@@ -31,12 +31,14 @@ const items = [
       :value="item.value"
       :disabled="item.value === 'getting-started'"
     >
-      <Accordion.ItemTrigger :class="styles.ItemTrigger">
-        {{ item.title }}
-        <Accordion.ItemIndicator :class="styles.ItemIndicator">
-          <ChevronDownIcon />
-        </Accordion.ItemIndicator>
-      </Accordion.ItemTrigger>
+      <Accordion.ItemHeader :class="styles.ItemHeader">
+        <Accordion.ItemTrigger :class="styles.ItemTrigger">
+          {{ item.title }}
+          <Accordion.ItemIndicator :class="styles.ItemIndicator">
+            <ChevronDownIcon />
+          </Accordion.ItemIndicator>
+        </Accordion.ItemTrigger>
+      </Accordion.ItemHeader>
       <Accordion.ItemContent :class="styles.ItemContent">
         <div :class="styles.ItemBody">{{ item.content }}</div>
       </Accordion.ItemContent>

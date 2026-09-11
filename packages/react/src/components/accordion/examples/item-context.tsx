@@ -6,17 +6,19 @@ export const ItemContext = () => {
     <Accordion.Root className={styles.Root} defaultValue={['ark-ui']}>
       {items.map((item) => (
         <Accordion.Item className={styles.Item} key={item.value} value={item.value}>
-          <Accordion.ItemTrigger className={styles.ItemTrigger}>
-            {item.title}
-            <Accordion.ItemContext>
-              {(context) => (
-                <code style={{ display: 'inline-flex', gap: '0.5rem', fontSize: '0.75rem' }}>
-                  {context.expanded && <span>Expanded</span>}
-                  {context.focused && <span>Focused</span>}
-                </code>
-              )}
-            </Accordion.ItemContext>
-          </Accordion.ItemTrigger>
+          <Accordion.ItemHeader className={styles.ItemHeader}>
+            <Accordion.ItemTrigger className={styles.ItemTrigger}>
+              {item.title}
+              <Accordion.ItemContext>
+                {(context) => (
+                  <code style={{ display: 'inline-flex', gap: '0.5rem', fontSize: '0.75rem' }}>
+                    {context.expanded && <span>Expanded</span>}
+                    {context.focused && <span>Focused</span>}
+                  </code>
+                )}
+              </Accordion.ItemContext>
+            </Accordion.ItemTrigger>
+          </Accordion.ItemHeader>
           <Accordion.ItemContent className={styles.ItemContent}>
             <div className={styles.ItemBody}>{item.content}</div>
           </Accordion.ItemContent>

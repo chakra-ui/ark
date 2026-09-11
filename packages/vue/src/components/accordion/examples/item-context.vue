@@ -25,19 +25,21 @@ const items = [
 <template>
   <Accordion.Root :class="styles.Root" :defaultValue="['ark-ui']">
     <Accordion.Item v-for="item in items" :key="item.value" :class="styles.Item" :value="item.value">
-      <Accordion.ItemTrigger :class="styles.ItemTrigger">
-        {{ item.title }}
-        <Accordion.ItemIndicator :class="styles.ItemIndicator">
-          <ChevronDownIcon />
-        </Accordion.ItemIndicator>
-        <Accordion.ItemContext v-slot="context">
-          <div style="display: inline-flex; gap: 0.5rem; font-size: 0.75rem">
-            <span>Expanded: {{ context.expanded }}</span>
-            <span>Focused: {{ context.focused }}</span>
-            <span>Disabled: {{ context.disabled }}</span>
-          </div>
-        </Accordion.ItemContext>
-      </Accordion.ItemTrigger>
+      <Accordion.ItemHeader :class="styles.ItemHeader">
+        <Accordion.ItemTrigger :class="styles.ItemTrigger">
+          {{ item.title }}
+          <Accordion.ItemIndicator :class="styles.ItemIndicator">
+            <ChevronDownIcon />
+          </Accordion.ItemIndicator>
+          <Accordion.ItemContext v-slot="context">
+            <div style="display: inline-flex; gap: 0.5rem; font-size: 0.75rem">
+              <span>Expanded: {{ context.expanded }}</span>
+              <span>Focused: {{ context.focused }}</span>
+              <span>Disabled: {{ context.disabled }}</span>
+            </div>
+          </Accordion.ItemContext>
+        </Accordion.ItemTrigger>
+      </Accordion.ItemHeader>
       <Accordion.ItemContent :class="styles.ItemContent">
         <div :class="styles.ItemBody">{{ item.content }}</div>
       </Accordion.ItemContent>
