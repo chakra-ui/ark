@@ -5,16 +5,13 @@ import * as toast from '@zag-js/toast'
 import { type ReactNode, forwardRef, useId } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { Assign } from '../../types.ts'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import type { HTMLProps } from '../factory.ts'
 import type { CreateToasterReturn } from './create-toaster.tsx'
 import { ToastProvider } from './use-toast-context.ts'
-import type { GroupState } from '@zag-js/toast'
 
 export type ToastOptions = toast.Options<ReactNode>
 
-export interface ToasterState extends GroupState {}
-
-export interface ToasterBaseProps extends PolymorphicProps<ToasterState>, Omit<toast.GroupProps, 'store' | 'id'> {
+export interface ToasterBaseProps extends Omit<toast.GroupProps, 'store' | 'id'> {
   toaster: CreateToasterReturn<any>
   children: (toast: ToastOptions) => ReactNode
 }
@@ -39,13 +36,13 @@ export const Toaster = forwardRef<HTMLDivElement, ToasterProps>((props, ref) => 
   const mergedProps = mergeProps(api.getGroupProps(), localProps)
 
   return (
-    <ark.div {...mergedProps} ref={ref} state={api.getGroupState()}>
+    <div {...mergedProps} ref={ref}>
       {api.getToasts().map((toast, index) => (
         <ToastActor key={toast.id} value={toast} parent={service} index={index}>
           {(ctx) => children(ctx)}
         </ToastActor>
       ))}
-    </ark.div>
+    </div>
   )
 })
 
