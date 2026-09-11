@@ -41,8 +41,8 @@ should not make. For a conditional, the equivalent is usually a function:
 
 ## Solid
 
-`asChild` already took a callback, but it received a props **accessor**. `render` receives the props directly, so the
-call goes.
+`asChild` and `render` take the same callback: a props **function** you call to spread the part's props. So this is a
+pure rename — `{...props()}` stays exactly as it is.
 
 ```sh
 npx @ark-ui/codemod solid/as-child-to-render "src/**/*.tsx" --dry
@@ -50,16 +50,13 @@ npx @ark-ui/codemod solid/as-child-to-render "src/**/*.tsx" --dry
 
 ```diff
 - <Popover.Trigger asChild={(props) => <button {...props()} />}>Open</Popover.Trigger>
-+ <Popover.Trigger render={(props) => <button {...props} />}>Open</Popover.Trigger>
++ <Popover.Trigger render={(props) => <button {...props()} />}>Open</Popover.Trigger>
 ```
-
-Only `props()` — a zero-argument call on the callback's own parameter — is unwrapped. An unrelated call keeping the same
-name is untouched.
 
 `render` also passes the part's state as a second argument, which existing call sites simply do not declare:
 
 ```tsx
-<Switch.Thumb render={(props, state) => <span {...props}>{state.checked ? '✓' : ''}</span>} />
+<Switch.Root render={(props, state) => <label {...props()}>{state().checked ? 'On' : 'Off'}</label>} />
 ```
 
 ## Vue
