@@ -277,7 +277,7 @@ const A = () => <Popover.Trigger asChild={(props) => { return <button {...props(
     it('keeps the call when the state accessor is also used', () => {
       const result = solidAsChildToRender(
         `import { Switch } from '@ark-ui/solid/switch'
-const A = () => <Switch.Thumb asChild={(props, state) => <span {...props()}>{state().checked}</span>} />`,
+const A = () => <Switch.Root asChild={(props, state) => <label {...props()}>{state().checked}</label>} />`,
         'a.tsx',
       )
       expect(result.code).toContain('{...props()}')

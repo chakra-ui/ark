@@ -56,7 +56,7 @@ npx @ark-ui/codemod solid/as-child-to-render "src/**/*.tsx" --dry
 `render` also passes the part's state as a second argument, which existing call sites simply do not declare:
 
 ```tsx
-<Switch.Thumb render={(props, state) => <span {...props()}>{state().checked ? '✓' : ''}</span>} />
+<Switch.Root render={(props, state) => <label {...props()}>{state().checked ? 'On' : 'Off'}</label>} />
 ```
 
 ## Vue
