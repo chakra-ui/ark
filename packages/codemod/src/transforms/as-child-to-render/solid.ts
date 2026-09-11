@@ -23,16 +23,6 @@ export function solidAsChildToRender(source: string, filePath: string): Transfor
       continue
     }
 
-    const [param] = fn.getParameters()
-    if (param) {
-      const name = param.getName()
-      for (const call of fn.getDescendantsOfKind(SyntaxKind.CallExpression)) {
-        if (call.getExpression().getText() === name && call.getArguments().length === 0) {
-          call.replaceWithText(name)
-        }
-      }
-    }
-
     attr.getNameNode().replaceWithText('render')
     count++
   }

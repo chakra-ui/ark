@@ -44,22 +44,22 @@ describe('react', () => {
 })
 
 describe('solid', () => {
-  it('renames the callback and drops the accessor call', () => {
+  it('renames the callback and keeps the props accessor call', () => {
     const result = solidAsChildToRender(
       `const A = () => <Popover.Trigger asChild={(props) => <button {...props()} />}>Open</Popover.Trigger>`,
       'a.tsx',
     )
     expect(result.count).toBe(1)
-    expect(result.code).toContain('render={(props) => <button {...props} />}')
-    expect(result.code).not.toContain('props()')
+    expect(result.code).toContain('render={(props) => <button {...props()} />}')
   })
 
-  it('leaves an unrelated call of the same name alone', () => {
+  it('keeps props calls that pass merge arguments', () => {
     const result = solidAsChildToRender(
-      `const A = () => <X asChild={(props) => <b {...props()}>{other()}</b>} />`,
+      `const A = () => <X asChild={(props) => <b {...props({ class: 'x' })}>{other()}</b>} />`,
       'a.tsx',
     )
-    expect(result.code).toContain('other()')
+    expect(result.count).toBe(1)
+    expect(result.code).toContain("render={(props) => <b {...props({ class: 'x' })}>{other()}</b>}")
   })
 })
 
