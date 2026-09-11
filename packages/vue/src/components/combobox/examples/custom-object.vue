@@ -35,10 +35,12 @@ const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
     <Teleport to="body">
       <Combobox.Positioner>
         <Combobox.Content :class="styles.Content">
-          <Combobox.Item v-for="item in collection.items" :key="item.code" :item="item" :class="styles.Item">
-            <Combobox.ItemText :class="styles.ItemText">{{ item.flag }} {{ item.country }}</Combobox.ItemText>
-            <Combobox.ItemIndicator :class="styles.ItemIndicator">✓</Combobox.ItemIndicator>
-          </Combobox.Item>
+          <Combobox.List :class="styles.List">
+            <Combobox.Item v-for="item in collection.items" :key="item.code" :item="item" :class="styles.Item">
+              <Combobox.ItemText :class="styles.ItemText">{{ item.flag }} {{ item.country }}</Combobox.ItemText>
+              <Combobox.ItemIndicator :class="styles.ItemIndicator">✓</Combobox.ItemIndicator>
+            </Combobox.Item>
+          </Combobox.List>
         </Combobox.Content>
       </Combobox.Positioner>
     </Teleport>

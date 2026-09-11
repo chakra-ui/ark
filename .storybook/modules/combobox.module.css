@@ -113,6 +113,12 @@
   }
 }
 
+.List {
+  /* layout-transparent: the element exists for role="listbox" and aria-controls,
+     while the content's own flex layout still applies to the items */
+  display: contents;
+}
+
 .Content {
   display: flex;
   flex-direction: column;

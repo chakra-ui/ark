@@ -90,32 +90,34 @@
   <Portal>
     <Combobox.Positioner>
       <Combobox.Content class={styles.Content}>
-        {#if list().isLoading}
-          <div class={styles.Status}>
-            <LoaderIcon class={styles.Spinner} />
-            <span>Searching...</span>
-          </div>
-        {:else if list().error}
-          <div class={styles.Status}>{list().error?.message}</div>
-        {:else if list().items.length === 0}
-          <div class={styles.Status}>
-            {list().filter ? 'No results found' : 'Start typing to search movies...'}
-          </div>
-        {:else}
-          {#each list().items as movie (movie.id)}
-            <Combobox.Item class={styles.Item} item={movie}>
-              <Combobox.ItemText class={styles.ItemText}>
-                <span class={styles.ItemTitle}>{movie.title}</span>
-                <span class={styles.ItemSubtitle}>
-                  {movie.year} · {movie.director}
-                </span>
-              </Combobox.ItemText>
-              <Combobox.ItemIndicator class={styles.ItemIndicator}>
-                <CheckIcon />
-              </Combobox.ItemIndicator>
-            </Combobox.Item>
-          {/each}
-        {/if}
+        <Combobox.List class={styles.List}>
+          {#if list().isLoading}
+            <div class={styles.Status}>
+              <LoaderIcon class={styles.Spinner} />
+              <span>Searching...</span>
+            </div>
+          {:else if list().error}
+            <div class={styles.Status}>{list().error?.message}</div>
+          {:else if list().items.length === 0}
+            <div class={styles.Status}>
+              {list().filter ? 'No results found' : 'Start typing to search movies...'}
+            </div>
+          {:else}
+            {#each list().items as movie (movie.id)}
+              <Combobox.Item class={styles.Item} item={movie}>
+                <Combobox.ItemText class={styles.ItemText}>
+                  <span class={styles.ItemTitle}>{movie.title}</span>
+                  <span class={styles.ItemSubtitle}>
+                    {movie.year} · {movie.director}
+                  </span>
+                </Combobox.ItemText>
+                <Combobox.ItemIndicator class={styles.ItemIndicator}>
+                  <CheckIcon />
+                </Combobox.ItemIndicator>
+              </Combobox.Item>
+            {/each}
+          {/if}
+        </Combobox.List>
       </Combobox.Content>
     </Combobox.Positioner>
   </Portal>

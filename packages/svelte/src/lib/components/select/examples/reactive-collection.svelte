@@ -39,17 +39,19 @@
     </Select.Control>
     <Select.Positioner>
       <Select.Content class={styles.Content}>
-        <Select.ItemGroup class={styles.ItemGroup}>
-          <Select.ItemGroupLabel class={styles.ItemGroupLabel}>Framework</Select.ItemGroupLabel>
-          {#each collection.items as item (item.label)}
-            <Select.Item class={styles.Item} {item}>
-              <Select.ItemText class={styles.ItemText}>{item.label}</Select.ItemText>
-              <Select.ItemIndicator class={styles.ItemIndicator}>
-                <CheckIcon />
-              </Select.ItemIndicator>
-            </Select.Item>
-          {/each}
-        </Select.ItemGroup>
+        <Select.List class={styles.List}>
+          <Select.ItemGroup class={styles.ItemGroup}>
+            <Select.ItemGroupLabel class={styles.ItemGroupLabel}>Framework</Select.ItemGroupLabel>
+            {#each collection.items as item (item.label)}
+              <Select.Item class={styles.Item} {item}>
+                <Select.ItemText class={styles.ItemText}>{item.label}</Select.ItemText>
+                <Select.ItemIndicator class={styles.ItemIndicator}>
+                  <CheckIcon />
+                </Select.ItemIndicator>
+              </Select.Item>
+            {/each}
+          </Select.ItemGroup>
+        </Select.List>
       </Select.Content>
     </Select.Positioner>
   </Select.Root>

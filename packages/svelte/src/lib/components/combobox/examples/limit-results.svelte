@@ -54,12 +54,14 @@
   <Portal>
     <Combobox.Positioner>
       <Combobox.Content class={styles.Content}>
-        {#each collection().items as item (item.value)}
-          <Combobox.Item class={styles.Item} {item}>
-            <Combobox.ItemText class={styles.ItemText}>{item.label}</Combobox.ItemText>
-            <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
-          </Combobox.Item>
-        {/each}
+        <Combobox.List class={styles.List}>
+          {#each collection().items as item (item.value)}
+            <Combobox.Item class={styles.Item} {item}>
+              <Combobox.ItemText class={styles.ItemText}>{item.label}</Combobox.ItemText>
+              <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
+            </Combobox.Item>
+          {/each}
+        </Combobox.List>
       </Combobox.Content>
     </Combobox.Positioner>
   </Portal>

@@ -34,21 +34,23 @@ export const Grouping = () => {
       <Portal>
         <Select.Positioner>
           <Select.Content class={styles.Content}>
-            <For each={frameworks.group()}>
-              {([type, group]) => (
-                <Select.ItemGroup class={styles.ItemGroup}>
-                  <Select.ItemGroupLabel class={styles.ItemGroupLabel}>{type}</Select.ItemGroupLabel>
-                  <For each={group}>
-                    {(item) => (
-                      <Select.Item class={styles.Item} item={item}>
-                        <Select.ItemText class={styles.ItemText}>{item.label}</Select.ItemText>
-                        <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
-                      </Select.Item>
-                    )}
-                  </For>
-                </Select.ItemGroup>
-              )}
-            </For>
+            <Select.List class={styles.List}>
+              <For each={frameworks.group()}>
+                {([type, group]) => (
+                  <Select.ItemGroup class={styles.ItemGroup}>
+                    <Select.ItemGroupLabel class={styles.ItemGroupLabel}>{type}</Select.ItemGroupLabel>
+                    <For each={group}>
+                      {(item) => (
+                        <Select.Item class={styles.Item} item={item}>
+                          <Select.ItemText class={styles.ItemText}>{item.label}</Select.ItemText>
+                          <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
+                        </Select.Item>
+                      )}
+                    </For>
+                  </Select.ItemGroup>
+                )}
+              </For>
+            </Select.List>
           </Select.Content>
         </Select.Positioner>
       </Portal>

@@ -22,14 +22,16 @@
   <Listbox.RootProvider class={styles.Root} value={listbox}>
     <Listbox.Label class={styles.Label}>Select Priority</Listbox.Label>
     <Listbox.Content class={styles.Content}>
-      {#each collection.items as item (item.value)}
-        <Listbox.Item class={styles.Item} {item}>
-          <Listbox.ItemText class={styles.ItemText}>{item.label}</Listbox.ItemText>
-          <Listbox.ItemIndicator class={styles.ItemIndicator}>
-            <CheckIcon />
-          </Listbox.ItemIndicator>
-        </Listbox.Item>
-      {/each}
+      <Listbox.List class={styles.List}>
+        {#each collection.items as item (item.value)}
+          <Listbox.Item class={styles.Item} {item}>
+            <Listbox.ItemText class={styles.ItemText}>{item.label}</Listbox.ItemText>
+            <Listbox.ItemIndicator class={styles.ItemIndicator}>
+              <CheckIcon />
+            </Listbox.ItemIndicator>
+          </Listbox.Item>
+        {/each}
+      </Listbox.List>
     </Listbox.Content>
   </Listbox.RootProvider>
 </div>

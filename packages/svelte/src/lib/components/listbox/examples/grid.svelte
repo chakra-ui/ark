@@ -33,10 +33,12 @@
 <Listbox.Root class={styles.Root} {collection}>
   <Listbox.Label class={styles.Label}>Pick a reaction</Listbox.Label>
   <Listbox.Content class={styles.GridContent}>
-    {#each collection.items as item (item.value)}
-      <Listbox.Item class={styles.GridItem} {item}>
-        <Listbox.ItemText>{item.label}</Listbox.ItemText>
-      </Listbox.Item>
-    {/each}
+    <Listbox.List class={styles.List}>
+      {#each collection.items as item (item.value)}
+        <Listbox.Item class={styles.GridItem} {item}>
+          <Listbox.ItemText>{item.label}</Listbox.ItemText>
+        </Listbox.Item>
+      {/each}
+    </Listbox.List>
   </Listbox.Content>
 </Listbox.Root>

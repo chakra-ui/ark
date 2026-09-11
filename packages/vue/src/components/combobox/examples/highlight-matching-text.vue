@@ -37,13 +37,15 @@ const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
     <Teleport to="body">
       <Combobox.Positioner>
         <Combobox.Content :class="styles.Content">
-          <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item" :class="styles.Item">
-            <Combobox.ItemText :class="styles.ItemText">
-              <Combobox.Context v-slot="context">
-                <Highlight :text="item.label" :query="context.inputValue" ignore-case />
-              </Combobox.Context>
-            </Combobox.ItemText>
-          </Combobox.Item>
+          <Combobox.List :class="styles.List">
+            <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item" :class="styles.Item">
+              <Combobox.ItemText :class="styles.ItemText">
+                <Combobox.Context v-slot="context">
+                  <Highlight :text="item.label" :query="context.inputValue" ignore-case />
+                </Combobox.Context>
+              </Combobox.ItemText>
+            </Combobox.Item>
+          </Combobox.List>
         </Combobox.Content>
       </Combobox.Positioner>
     </Teleport>

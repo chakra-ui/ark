@@ -51,13 +51,15 @@ const collection = computed(() => {
       </Select.Control>
       <Select.Positioner>
         <Select.Content :class="styles.Content">
-          <Select.ItemGroup :class="styles.ItemGroup">
-            <Select.ItemGroupLabel :class="styles.ItemGroupLabel">Framework</Select.ItemGroupLabel>
-            <Select.Item v-for="item in collection.items" :item="item" :key="item.label" :class="styles.Item">
-              <Select.ItemText :class="styles.ItemText">{{ item.label }}</Select.ItemText>
-              <Select.ItemIndicator :class="styles.ItemIndicator">✓</Select.ItemIndicator>
-            </Select.Item>
-          </Select.ItemGroup>
+          <Select.List :class="styles.List">
+            <Select.ItemGroup :class="styles.ItemGroup">
+              <Select.ItemGroupLabel :class="styles.ItemGroupLabel">Framework</Select.ItemGroupLabel>
+              <Select.Item v-for="item in collection.items" :item="item" :key="item.label" :class="styles.Item">
+                <Select.ItemText :class="styles.ItemText">{{ item.label }}</Select.ItemText>
+                <Select.ItemIndicator :class="styles.ItemIndicator">✓</Select.ItemIndicator>
+              </Select.Item>
+            </Select.ItemGroup>
+          </Select.List>
         </Select.Content>
       </Select.Positioner>
     </Select.Root>

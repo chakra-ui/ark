@@ -45,15 +45,17 @@ export const InlineAutocomplete = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content className={styles.Content}>
-            <Combobox.Empty className={styles.Item}>No results found</Combobox.Empty>
-            {collection.items.map((item) => (
-              <Combobox.Item className={styles.Item} key={item.value} item={item}>
-                <Combobox.ItemText className={styles.ItemText}>{item.label}</Combobox.ItemText>
-                <Combobox.ItemIndicator className={styles.ItemIndicator}>
-                  <CheckIcon />
-                </Combobox.ItemIndicator>
-              </Combobox.Item>
-            ))}
+            <Combobox.List className={styles.List}>
+              <Combobox.Empty className={styles.Item}>No results found</Combobox.Empty>
+              {collection.items.map((item) => (
+                <Combobox.Item className={styles.Item} key={item.value} item={item}>
+                  <Combobox.ItemText className={styles.ItemText}>{item.label}</Combobox.ItemText>
+                  <Combobox.ItemIndicator className={styles.ItemIndicator}>
+                    <CheckIcon />
+                  </Combobox.ItemIndicator>
+                </Combobox.Item>
+              ))}
+            </Combobox.List>
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

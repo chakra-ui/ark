@@ -64,32 +64,36 @@ export const AsyncSearch = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content class={styles.Content}>
-            {list().isLoading ? (
-              <div class={styles.Status}>
-                <LoaderIcon class={styles.Spinner} />
-                <span>Searching...</span>
-              </div>
-            ) : list().error ? (
-              <div class={styles.Status}>{list().error?.message}</div>
-            ) : list().items.length === 0 ? (
-              <div class={styles.Status}>{list().filter ? 'No results found' : 'Start typing to search movies...'}</div>
-            ) : (
-              <For each={list().items}>
-                {(movie) => (
-                  <Combobox.Item class={styles.Item} item={movie}>
-                    <Combobox.ItemText class={styles.ItemText}>
-                      <span class={styles.ItemTitle}>{movie.title}</span>
-                      <span class={styles.ItemSubtitle}>
-                        {movie.year} · {movie.director}
-                      </span>
-                    </Combobox.ItemText>
-                    <Combobox.ItemIndicator class={styles.ItemIndicator}>
-                      <CheckIcon />
-                    </Combobox.ItemIndicator>
-                  </Combobox.Item>
-                )}
-              </For>
-            )}
+            <Combobox.List class={styles.List}>
+              {list().isLoading ? (
+                <div class={styles.Status}>
+                  <LoaderIcon class={styles.Spinner} />
+                  <span>Searching...</span>
+                </div>
+              ) : list().error ? (
+                <div class={styles.Status}>{list().error?.message}</div>
+              ) : list().items.length === 0 ? (
+                <div class={styles.Status}>
+                  {list().filter ? 'No results found' : 'Start typing to search movies...'}
+                </div>
+              ) : (
+                <For each={list().items}>
+                  {(movie) => (
+                    <Combobox.Item class={styles.Item} item={movie}>
+                      <Combobox.ItemText class={styles.ItemText}>
+                        <span class={styles.ItemTitle}>{movie.title}</span>
+                        <span class={styles.ItemSubtitle}>
+                          {movie.year} · {movie.director}
+                        </span>
+                      </Combobox.ItemText>
+                      <Combobox.ItemIndicator class={styles.ItemIndicator}>
+                        <CheckIcon />
+                      </Combobox.ItemIndicator>
+                    </Combobox.Item>
+                  )}
+                </For>
+              )}
+            </Combobox.List>
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

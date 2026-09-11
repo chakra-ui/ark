@@ -54,13 +54,15 @@ const onSubmit = handleSubmit((values) => {
         <Teleport to="body">
           <Select.Positioner>
             <Select.Content :class="styles.Content">
-              <Select.ItemGroup :class="styles.ItemGroup">
-                <Select.ItemGroupLabel :class="styles.ItemGroupLabel">Frameworks</Select.ItemGroupLabel>
-                <Select.Item v-for="item in frameworks.items" :key="item.value" :item="item" :class="styles.Item">
-                  <Select.ItemText :class="styles.ItemText">{{ item.label }}</Select.ItemText>
-                  <Select.ItemIndicator :class="styles.ItemIndicator">✓</Select.ItemIndicator>
-                </Select.Item>
-              </Select.ItemGroup>
+              <Select.List :class="styles.List">
+                <Select.ItemGroup :class="styles.ItemGroup">
+                  <Select.ItemGroupLabel :class="styles.ItemGroupLabel">Frameworks</Select.ItemGroupLabel>
+                  <Select.Item v-for="item in frameworks.items" :key="item.value" :item="item" :class="styles.Item">
+                    <Select.ItemText :class="styles.ItemText">{{ item.label }}</Select.ItemText>
+                    <Select.ItemIndicator :class="styles.ItemIndicator">✓</Select.ItemIndicator>
+                  </Select.Item>
+                </Select.ItemGroup>
+              </Select.List>
             </Select.Content>
           </Select.Positioner>
         </Teleport>

@@ -34,17 +34,19 @@
   <Portal>
     <Select.Positioner>
       <Select.Content class={styles.Content}>
-        {#each frameworks.group() as [type, group]}
-          <Select.ItemGroup class={styles.ItemGroup}>
-            <Select.ItemGroupLabel class={styles.ItemGroupLabel}>{type}</Select.ItemGroupLabel>
-            {#each group as item (item.value)}
-              <Select.Item class={styles.Item} {item}>
-                <Select.ItemText class={styles.ItemText}>{item.label}</Select.ItemText>
-                <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
-              </Select.Item>
-            {/each}
-          </Select.ItemGroup>
-        {/each}
+        <Select.List class={styles.List}>
+          {#each frameworks.group() as [type, group]}
+            <Select.ItemGroup class={styles.ItemGroup}>
+              <Select.ItemGroupLabel class={styles.ItemGroupLabel}>{type}</Select.ItemGroupLabel>
+              {#each group as item (item.value)}
+                <Select.Item class={styles.Item} {item}>
+                  <Select.ItemText class={styles.ItemText}>{item.label}</Select.ItemText>
+                  <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
+                </Select.Item>
+              {/each}
+            </Select.ItemGroup>
+          {/each}
+        </Select.List>
       </Select.Content>
     </Select.Positioner>
   </Portal>

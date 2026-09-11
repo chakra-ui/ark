@@ -56,17 +56,19 @@ export const Multiple = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content class={styles.Content}>
-            <Combobox.Empty class={styles.Item}>No skills found</Combobox.Empty>
-            <For each={collection().items}>
-              {(item) => (
-                <Combobox.Item class={styles.Item} item={item}>
-                  <Combobox.ItemText class={styles.ItemText}>{item.label}</Combobox.ItemText>
-                  <Combobox.ItemIndicator class={styles.ItemIndicator}>
-                    <CheckIcon />
-                  </Combobox.ItemIndicator>
-                </Combobox.Item>
-              )}
-            </For>
+            <Combobox.List class={styles.List}>
+              <Combobox.Empty class={styles.Item}>No skills found</Combobox.Empty>
+              <For each={collection().items}>
+                {(item) => (
+                  <Combobox.Item class={styles.Item} item={item}>
+                    <Combobox.ItemText class={styles.ItemText}>{item.label}</Combobox.ItemText>
+                    <Combobox.ItemIndicator class={styles.ItemIndicator}>
+                      <CheckIcon />
+                    </Combobox.ItemIndicator>
+                  </Combobox.Item>
+                )}
+              </For>
+            </Combobox.List>
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

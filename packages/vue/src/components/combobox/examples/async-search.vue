@@ -92,23 +92,25 @@ const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
     <Teleport to="body">
       <Combobox.Positioner>
         <Combobox.Content :class="styles.Content">
-          <div v-if="list.isLoading" :class="styles.Status">
-            <LoaderIcon :class="styles.Spinner" />
-            <span>Searching...</span>
-          </div>
-          <div v-else-if="list.error" :class="styles.Status">{{ list.error.message }}</div>
-          <div v-else-if="list.items.length === 0" :class="styles.Status">
-            {{ list.filter ? 'No results found' : 'Start typing to search movies...' }}
-          </div>
-          <Combobox.Item v-else v-for="movie in list.items" :key="movie.id" :item="movie" :class="styles.Item">
-            <Combobox.ItemText :class="styles.ItemText">
-              <span :class="styles.ItemTitle">{{ movie.title }}</span>
-              <span :class="styles.ItemSubtitle">{{ movie.year }} · {{ movie.director }}</span>
-            </Combobox.ItemText>
-            <Combobox.ItemIndicator :class="styles.ItemIndicator">
-              <CheckIcon />
-            </Combobox.ItemIndicator>
-          </Combobox.Item>
+          <Combobox.List :class="styles.List">
+            <div v-if="list.isLoading" :class="styles.Status">
+              <LoaderIcon :class="styles.Spinner" />
+              <span>Searching...</span>
+            </div>
+            <div v-else-if="list.error" :class="styles.Status">{{ list.error.message }}</div>
+            <div v-else-if="list.items.length === 0" :class="styles.Status">
+              {{ list.filter ? 'No results found' : 'Start typing to search movies...' }}
+            </div>
+            <Combobox.Item v-else v-for="movie in list.items" :key="movie.id" :item="movie" :class="styles.Item">
+              <Combobox.ItemText :class="styles.ItemText">
+                <span :class="styles.ItemTitle">{{ movie.title }}</span>
+                <span :class="styles.ItemSubtitle">{{ movie.year }} · {{ movie.director }}</span>
+              </Combobox.ItemText>
+              <Combobox.ItemIndicator :class="styles.ItemIndicator">
+                <CheckIcon />
+              </Combobox.ItemIndicator>
+            </Combobox.Item>
+          </Combobox.List>
         </Combobox.Content>
       </Combobox.Positioner>
     </Teleport>
