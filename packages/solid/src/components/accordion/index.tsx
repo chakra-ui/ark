@@ -2,6 +2,12 @@ export type {
   FocusChangeDetails as AccordionFocusChangeDetails,
   ValueChangeDetails as AccordionValueChangeDetails,
 } from '@zag-js/accordion'
+export {
+  AccordionItemHeader,
+  type AccordionItemHeaderBaseProps,
+  type AccordionItemHeaderProps,
+  type AccordionItemHeaderState,
+} from './accordion-item-header.tsx'
 export { AccordionContext, type AccordionContextProps } from './accordion-context.tsx'
 export {
   AccordionItem,

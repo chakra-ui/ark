@@ -39,15 +39,17 @@
 <Listbox.Root class={styles.Root} {collection} orientation="horizontal">
   <Listbox.Label class={styles.Label}>Select Album</Listbox.Label>
   <Listbox.Content class={styles.Content}>
-    {#each collection.items as item (item.title)}
-      <Listbox.Item class={styles.ItemCard} {item}>
-        <Listbox.ItemIndicator class={styles.ItemCardIndicator}>
-          <CheckIcon />
-        </Listbox.ItemIndicator>
-        <img class={styles.ItemCardImage} src={item.image} alt={item.title} />
-        <span class={styles.ItemCardTitle}>{item.title}</span>
-        <span class={styles.ItemCardArtist}>{item.artist}</span>
-      </Listbox.Item>
-    {/each}
+    <Listbox.List class={styles.List}>
+      {#each collection.items as item (item.title)}
+        <Listbox.Item class={styles.ItemCard} {item}>
+          <Listbox.ItemIndicator class={styles.ItemCardIndicator}>
+            <CheckIcon />
+          </Listbox.ItemIndicator>
+          <img class={styles.ItemCardImage} src={item.image} alt={item.title} />
+          <span class={styles.ItemCardTitle}>{item.title}</span>
+          <span class={styles.ItemCardArtist}>{item.artist}</span>
+        </Listbox.Item>
+      {/each}
+    </Listbox.List>
   </Listbox.Content>
 </Listbox.Root>

@@ -86,20 +86,22 @@ export const Creatable = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content class={styles.Content}>
-            <For each={collection().items}>
-              {(item) => (
-                <Combobox.Item class={styles.Item} item={item}>
-                  {isNewOptionValue(item.value) ? (
-                    <Combobox.ItemText class={styles.ItemText}>+ Create "{item.label}"</Combobox.ItemText>
-                  ) : (
-                    <Combobox.ItemText class={styles.ItemText}>
-                      {item.label} {item.__new__ ? '(new)' : ''}
-                    </Combobox.ItemText>
-                  )}
-                  <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
-                </Combobox.Item>
-              )}
-            </For>
+            <Combobox.List class={styles.List}>
+              <For each={collection().items}>
+                {(item) => (
+                  <Combobox.Item class={styles.Item} item={item}>
+                    {isNewOptionValue(item.value) ? (
+                      <Combobox.ItemText class={styles.ItemText}>+ Create "{item.label}"</Combobox.ItemText>
+                    ) : (
+                      <Combobox.ItemText class={styles.ItemText}>
+                        {item.label} {item.__new__ ? '(new)' : ''}
+                      </Combobox.ItemText>
+                    )}
+                    <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
+                  </Combobox.Item>
+                )}
+              </For>
+            </Combobox.List>
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

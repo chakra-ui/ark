@@ -66,6 +66,7 @@ export {
   type ListboxRootProviderProps as RootProviderProps,
   type ListboxRootProviderComponent as RootProviderComponent,
 } from './listbox-root-provider.svelte'
+export { default as Status, type ListboxStatusProps as StatusProps } from './listbox-status.svelte'
 export {
   default as ValueText,
   type ListboxValueTextBaseProps as ValueTextBaseProps,

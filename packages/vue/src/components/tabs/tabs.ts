@@ -3,7 +3,7 @@ export {
   default as Content,
   type TabContentProps as ContentProps,
   type TabContentBaseProps as ContentBaseProps,
-  type TabContentState ,
+  type TabContentState as ContentState,
 } from './tab-content.vue'
 export {
   default as Indicator,
@@ -15,7 +15,7 @@ export {
   default as Trigger,
   type TabTriggerProps as TriggerProps,
   type TabTriggerBaseProps as TriggerBaseProps,
-  type TabTriggerState ,
+  type TabTriggerState as TriggerState,
 } from './tab-trigger.vue'
 export { default as Context, type TabsContextProps as ContextProps } from './tabs-context.vue'
 export {

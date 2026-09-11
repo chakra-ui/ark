@@ -52,18 +52,21 @@
   <Portal>
     <Select.Positioner>
       <Select.Content class={styles.Content}>
-        {#if loading}
-          <div class={styles.Item}>Loading...</div>
-        {:else if error}
-          <div class={styles.Item}>Error: {error.message}</div>
-        {:else}
+        <Select.Status>
+          {#if loading}
+            <div class={styles.Status}>Loading...</div>
+          {:else if error}
+            <div class={styles.Status}>Error: {error.message}</div>
+          {/if}
+        </Select.Status>
+        <Select.List class={styles.List}>
           {#each collection.items as item}
             <Select.Item class={styles.Item} {item}>
               <Select.ItemText class={styles.ItemText}>{item}</Select.ItemText>
               <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
             </Select.Item>
           {/each}
-        {/if}
+        </Select.List>
       </Select.Content>
     </Select.Positioner>
   </Portal>

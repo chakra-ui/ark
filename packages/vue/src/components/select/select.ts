@@ -39,6 +39,11 @@ export {
   type SelectListProps as ListProps,
   type SelectListBaseProps as ListBaseProps,
 } from './select-list.vue'
+export {
+  default as ScrollArrow,
+  type SelectScrollArrowProps as ScrollArrowProps,
+  type SelectScrollArrowBaseProps as ScrollArrowBaseProps,
+} from './select-scroll-arrow.vue'
 export { default as ItemContext, type SelectItemContextProps as ItemContextProps } from './select-item-context.vue'
 export {
   default as ItemGroupLabel,
@@ -92,6 +97,11 @@ export {
   type SelectRootComponentProps as RootComponentProps,
   type SelectRootState as RootState,
 } from './select-root.vue'
+export {
+  default as Status,
+  type SelectStatusProps as StatusProps,
+  type SelectStatusBaseProps as StatusBaseProps,
+} from './select-status.vue'
 export {
   default as Trigger,
   type SelectTriggerProps as TriggerProps,

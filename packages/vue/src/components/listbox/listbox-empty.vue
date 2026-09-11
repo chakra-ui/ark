@@ -29,12 +29,14 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-if="isEmpty" v-bind="parts.empty.attrs('')" role="presentation" :as-child="asChild">
+  <!-- stays mounted so the live region is already known to screen readers
+       when the message appears; only the children are conditional -->
+  <ark.div v-bind="parts.empty.attrs('')" role="status" aria-live="polite" aria-atomic="true" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>
     <template v-else #default>
-      <slot />
+      <slot v-if="isEmpty" />
     </template>
   </ark.div>
 </template>

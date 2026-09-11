@@ -45,6 +45,7 @@ export {
 } from './select-item.svelte'
 export { default as Label, type SelectLabelProps as LabelProps } from './select-label.svelte'
 export { default as List, type SelectListProps as ListProps } from './select-list.svelte'
+export { default as ScrollArrow, type SelectScrollArrowProps as ScrollArrowProps } from './select-scroll-arrow.svelte'
 export { default as Positioner, type SelectPositionerProps as PositionerProps } from './select-positioner.svelte'
 export {
   default as RootProvider,
@@ -59,6 +60,7 @@ export {
   type SelectRootComponent as RootComponent,
   type SelectRootComponentProps as RootComponentProps,
 } from './select-root.svelte'
+export { default as Status, type SelectStatusProps as StatusProps } from './select-status.svelte'
 export {
   default as Trigger,
   type SelectTriggerProps as TriggerProps,

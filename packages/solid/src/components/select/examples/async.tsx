@@ -46,24 +46,26 @@ export const Async = () => {
       <Portal>
         <Select.Positioner>
           <Select.Content class={styles.Content}>
-            <Switch>
-              <Match when={loading()}>
-                <div class={styles.Item}>Loading...</div>
-              </Match>
-              <Match when={error()}>
-                <div class={styles.Item}>Error: {error()?.message}</div>
-              </Match>
-              <Match when={items() !== null}>
-                <Index each={collection().items}>
-                  {(item) => (
-                    <Select.Item class={styles.Item} item={item()}>
-                      <Select.ItemText class={styles.ItemText}>{item()}</Select.ItemText>
-                      <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
-                    </Select.Item>
-                  )}
-                </Index>
-              </Match>
-            </Switch>
+            <Select.Status>
+              <Switch>
+                <Match when={loading()}>
+                  <div class={styles.Status}>Loading...</div>
+                </Match>
+                <Match when={error()}>
+                  <div class={styles.Status}>Error: {error()?.message}</div>
+                </Match>
+              </Switch>
+            </Select.Status>
+            <Select.List class={styles.List}>
+              <Index each={collection().items}>
+                {(item) => (
+                  <Select.Item class={styles.Item} item={item()}>
+                    <Select.ItemText class={styles.ItemText}>{item()}</Select.ItemText>
+                    <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
+                  </Select.Item>
+                )}
+              </Index>
+            </Select.List>
           </Select.Content>
         </Select.Positioner>
       </Portal>

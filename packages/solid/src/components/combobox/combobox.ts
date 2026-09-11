@@ -97,6 +97,11 @@ export {
   type ComboboxRootProviderState as RootProviderState,
 } from './combobox-root-provider.tsx'
 export {
+  ComboboxStatus as Status,
+  type ComboboxStatusBaseProps as StatusBaseProps,
+  type ComboboxStatusProps as StatusProps,
+} from './combobox-status.tsx'
+export {
   ComboboxTrigger as Trigger,
   type ComboboxTriggerBaseProps as TriggerBaseProps,
   type ComboboxTriggerProps as TriggerProps,

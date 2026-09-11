@@ -34,13 +34,15 @@ const collection = createListCollection({
     <Teleport to="body">
       <Select.Positioner>
         <Select.Content :class="styles.Content">
-          <Select.ItemGroup v-for="[type, group] in collection.group()" :key="type" :class="styles.ItemGroup">
-            <Select.ItemGroupLabel :class="styles.ItemGroupLabel">{{ type }}</Select.ItemGroupLabel>
-            <Select.Item v-for="item in group" :key="item.value" :item="item" :class="styles.Item">
-              <Select.ItemText :class="styles.ItemText">{{ item.label }}</Select.ItemText>
-              <Select.ItemIndicator :class="styles.ItemIndicator">✓</Select.ItemIndicator>
-            </Select.Item>
-          </Select.ItemGroup>
+          <Select.List :class="styles.List">
+            <Select.ItemGroup v-for="[type, group] in collection.group()" :key="type" :class="styles.ItemGroup">
+              <Select.ItemGroupLabel :class="styles.ItemGroupLabel">{{ type }}</Select.ItemGroupLabel>
+              <Select.Item v-for="item in group" :key="item.value" :item="item" :class="styles.Item">
+                <Select.ItemText :class="styles.ItemText">{{ item.label }}</Select.ItemText>
+                <Select.ItemIndicator :class="styles.ItemIndicator">✓</Select.ItemIndicator>
+              </Select.Item>
+            </Select.ItemGroup>
+          </Select.List>
         </Select.Content>
       </Select.Positioner>
     </Teleport>

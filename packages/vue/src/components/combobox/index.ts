@@ -86,6 +86,11 @@ export {
   type ComboboxRootState,
 } from './combobox-root.vue'
 export {
+  default as ComboboxStatus,
+  type ComboboxStatusProps,
+  type ComboboxStatusBaseProps,
+} from './combobox-status.vue'
+export {
   default as ComboboxTrigger,
   type ComboboxTriggerBaseProps,
   type ComboboxTriggerProps,

@@ -29,14 +29,16 @@ export const Dynamic = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content class={styles.Content}>
-            <For each={collection().items}>
-              {(item) => (
-                <Combobox.Item class={styles.Item} item={item}>
-                  <Combobox.ItemText class={styles.ItemText}>{item}</Combobox.ItemText>
-                  <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
-                </Combobox.Item>
-              )}
-            </For>
+            <Combobox.List class={styles.List}>
+              <For each={collection().items}>
+                {(item) => (
+                  <Combobox.Item class={styles.Item} item={item}>
+                    <Combobox.ItemText class={styles.ItemText}>{item}</Combobox.ItemText>
+                    <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
+                  </Combobox.Item>
+                )}
+              </For>
+            </Combobox.List>
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

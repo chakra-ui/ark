@@ -45,17 +45,19 @@
   <Portal>
     <Combobox.Positioner>
       <Combobox.Content class={styles.Content}>
-        {#each collection().group() as [continent, group]}
-          <Combobox.ItemGroup>
-            <Combobox.ItemGroupLabel class={styles.ItemGroupLabel}>{continent}</Combobox.ItemGroupLabel>
-            {#each group as item}
-              <Combobox.Item class={styles.Item} {item}>
-                <Combobox.ItemText class={styles.ItemText}>{item.label}</Combobox.ItemText>
-                <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
-              </Combobox.Item>
-            {/each}
-          </Combobox.ItemGroup>
-        {/each}
+        <Combobox.List class={styles.List}>
+          {#each collection().group() as [continent, group]}
+            <Combobox.ItemGroup>
+              <Combobox.ItemGroupLabel class={styles.ItemGroupLabel}>{continent}</Combobox.ItemGroupLabel>
+              {#each group as item}
+                <Combobox.Item class={styles.Item} {item}>
+                  <Combobox.ItemText class={styles.ItemText}>{item.label}</Combobox.ItemText>
+                  <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
+                </Combobox.Item>
+              {/each}
+            </Combobox.ItemGroup>
+          {/each}
+        </Combobox.List>
       </Combobox.Content>
     </Combobox.Positioner>
   </Portal>

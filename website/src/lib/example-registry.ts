@@ -462,6 +462,7 @@ import * as SegmentGroup_Controlled from '@examples/segment-group/examples/contr
 import * as SegmentGroup_Disabled from '@examples/segment-group/examples/disabled'
 import * as SegmentGroup_RootProvider from '@examples/segment-group/examples/root-provider'
 import * as Select_Async from '@examples/select/examples/async'
+import * as Select_AlignItemWithTrigger from '@examples/select/examples/align-item-with-trigger'
 import * as Select_Basic from '@examples/select/examples/basic'
 import * as Select_Controlled from '@examples/select/examples/controlled'
 import * as Select_DynamicItems from '@examples/select/examples/dynamic-items'
@@ -1113,6 +1114,7 @@ const exampleModules: Record<string, ExampleModule> = {
   'segment-group/disabled': SegmentGroup_Disabled,
   'segment-group/root-provider': SegmentGroup_RootProvider,
   'select/async': Select_Async,
+  'select/align-item-with-trigger': Select_AlignItemWithTrigger,
   'select/basic': Select_Basic,
   'select/controlled': Select_Controlled,
   'select/dynamic-items': Select_DynamicItems,

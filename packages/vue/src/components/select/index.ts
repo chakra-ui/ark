@@ -66,6 +66,11 @@ export {
 export { default as SelectLabel, type SelectLabelBaseProps, type SelectLabelProps } from './select-label.vue'
 export { default as SelectList, type SelectListBaseProps, type SelectListProps } from './select-list.vue'
 export {
+  default as SelectScrollArrow,
+  type SelectScrollArrowBaseProps,
+  type SelectScrollArrowProps,
+} from './select-scroll-arrow.vue'
+export {
   default as SelectPositioner,
   type SelectPositionerBaseProps,
   type SelectPositionerProps,
@@ -87,6 +92,7 @@ export {
   type SelectRootComponentProps,
   type SelectRootState,
 } from './select-root.vue'
+export { default as SelectStatus, type SelectStatusProps, type SelectStatusBaseProps } from './select-status.vue'
 export {
   default as SelectTrigger,
   type SelectTriggerBaseProps,

@@ -24,27 +24,29 @@
   <Portal>
     <Select.Positioner>
       <Select.Content class={styles.Content}>
-        <Select.Context>
-          {#snippet render(api)}
-            <button
-              class={button.Root}
-              type="button"
-              style="width: 100%; margin-bottom: 0.25rem"
-              onclick={() => {
-                api().selectAll()
-                api().setOpen(false)
-              }}
-            >
-              Select All
-            </button>
-          {/snippet}
-        </Select.Context>
-        {#each collection.items as item}
-          <Select.Item class={styles.Item} {item}>
-            <Select.ItemText class={styles.ItemText}>{item}</Select.ItemText>
-            <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
-          </Select.Item>
-        {/each}
+        <Select.List class={styles.List}>
+          <Select.Context>
+            {#snippet render(api)}
+              <button
+                class={button.Root}
+                type="button"
+                style="width: 100%; margin-bottom: 0.25rem"
+                onclick={() => {
+                  api().selectAll()
+                  api().setOpen(false)
+                }}
+              >
+                Select All
+              </button>
+            {/snippet}
+          </Select.Context>
+          {#each collection.items as item}
+            <Select.Item class={styles.Item} {item}>
+              <Select.ItemText class={styles.ItemText}>{item}</Select.ItemText>
+              <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
+            </Select.Item>
+          {/each}
+        </Select.List>
       </Select.Content>
     </Select.Positioner>
   </Portal>

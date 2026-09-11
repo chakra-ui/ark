@@ -37,17 +37,19 @@ export const HighlightMatchingText = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content class={styles.Content}>
-            <For each={collection().items}>
-              {(item) => (
-                <Combobox.Item class={styles.Item} item={item}>
-                  <Combobox.ItemText class={styles.ItemText}>
-                    <Combobox.Context>
-                      {(context) => <Highlight text={item.label} query={context().inputValue} ignoreCase />}
-                    </Combobox.Context>
-                  </Combobox.ItemText>
-                </Combobox.Item>
-              )}
-            </For>
+            <Combobox.List class={styles.List}>
+              <For each={collection().items}>
+                {(item) => (
+                  <Combobox.Item class={styles.Item} item={item}>
+                    <Combobox.ItemText class={styles.ItemText}>
+                      <Combobox.Context>
+                        {(context) => <Highlight text={item.label} query={context().inputValue} ignoreCase />}
+                      </Combobox.Context>
+                    </Combobox.ItemText>
+                  </Combobox.Item>
+                )}
+              </For>
+            </Combobox.List>
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

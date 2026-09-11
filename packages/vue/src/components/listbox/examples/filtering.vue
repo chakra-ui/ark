@@ -31,6 +31,9 @@ const { collection, filter } = useListCollection({
       @input="(e: Event) => filter((e.target as HTMLInputElement).value)"
     />
     <Listbox.Content :class="styles.Content">
+      <Listbox.Empty>
+        <div :class="styles.Empty">No frameworks found</div>
+      </Listbox.Empty>
       <Listbox.List :class="styles.List">
         <Listbox.Item v-for="item in collection.items" :key="item.value" :class="styles.Item" :item="item">
           <Listbox.ItemText :class="styles.ItemText">{{ item.label }}</Listbox.ItemText>
@@ -38,7 +41,6 @@ const { collection, filter } = useListCollection({
             <CheckIcon />
           </Listbox.ItemIndicator>
         </Listbox.Item>
-        <Listbox.Empty :class="styles.Empty">No frameworks found</Listbox.Empty>
       </Listbox.List>
     </Listbox.Content>
   </Listbox.Root>

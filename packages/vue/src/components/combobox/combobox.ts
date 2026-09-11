@@ -94,6 +94,11 @@ export {
   type ComboboxRootState as RootState,
 } from './combobox-root.vue'
 export {
+  default as Status,
+  type ComboboxStatusProps as StatusProps,
+  type ComboboxStatusBaseProps as StatusBaseProps,
+} from './combobox-status.vue'
+export {
   default as Trigger,
   type ComboboxTriggerProps as TriggerProps,
   type ComboboxTriggerBaseProps as TriggerBaseProps,

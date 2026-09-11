@@ -43,13 +43,17 @@
   <Portal>
     <Combobox.Positioner>
       <Combobox.Content class={styles.Content}>
-        <Combobox.Empty class={styles.Item}>No results found</Combobox.Empty>
-        {#each collection().items as item (item.value)}
-          <Combobox.Item class={styles.Item} {item}>
-            <Combobox.ItemText class={styles.ItemText}>{item.label}</Combobox.ItemText>
-            <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
-          </Combobox.Item>
-        {/each}
+        <Combobox.Empty>
+          <div class={styles.Empty}>No results found</div>
+        </Combobox.Empty>
+        <Combobox.List class={styles.List}>
+          {#each collection().items as item (item.value)}
+            <Combobox.Item class={styles.Item} {item}>
+              <Combobox.ItemText class={styles.ItemText}>{item.label}</Combobox.ItemText>
+              <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
+            </Combobox.Item>
+          {/each}
+        </Combobox.List>
       </Combobox.Content>
     </Combobox.Positioner>
   </Portal>

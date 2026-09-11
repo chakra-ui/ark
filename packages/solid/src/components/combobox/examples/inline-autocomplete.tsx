@@ -41,15 +41,19 @@ export const InlineAutocomplete = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content class={styles.Content}>
-            <Combobox.Empty class={styles.Item}>No results found</Combobox.Empty>
-            <For each={collection().items}>
-              {(item) => (
-                <Combobox.Item class={styles.Item} item={item}>
-                  <Combobox.ItemText class={styles.ItemText}>{item.label}</Combobox.ItemText>
-                  <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
-                </Combobox.Item>
-              )}
-            </For>
+            <Combobox.Empty>
+              <div class={styles.Empty}>No results found</div>
+            </Combobox.Empty>
+            <Combobox.List class={styles.List}>
+              <For each={collection().items}>
+                {(item) => (
+                  <Combobox.Item class={styles.Item} item={item}>
+                    <Combobox.ItemText class={styles.ItemText}>{item.label}</Combobox.ItemText>
+                    <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>
+                  </Combobox.Item>
+                )}
+              </For>
+            </Combobox.List>
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

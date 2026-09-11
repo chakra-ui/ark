@@ -1,7 +1,7 @@
 import { useAsyncList } from '@ark-ui/solid/collection'
 import { Combobox, createListCollection } from '@ark-ui/solid/combobox'
 import { CheckIcon, ChevronsUpDownIcon, LoaderIcon, XIcon } from 'lucide-solid'
-import { For, createMemo } from 'solid-js'
+import { For, Show, createMemo } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import styles from 'styles/combobox.module.css'
 
@@ -47,6 +47,13 @@ export const AsyncSearch = () => {
     }
   }
 
+  const status = createMemo(() => {
+    if (list().isLoading) return 'Searching...'
+    if (list().error) return list().error?.message
+    if (list().items.length > 0) return null
+    return list().filter ? 'No results found' : 'Start typing to search movies...'
+  })
+
   return (
     <Combobox.Root class={styles.Root} collection={collection()} onInputValueChange={handleInputChange}>
       <Combobox.Label class={styles.Label}>Movie</Combobox.Label>
@@ -64,16 +71,17 @@ export const AsyncSearch = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content class={styles.Content}>
-            {list().isLoading ? (
-              <div class={styles.Status}>
-                <LoaderIcon class={styles.Spinner} />
-                <span>Searching...</span>
-              </div>
-            ) : list().error ? (
-              <div class={styles.Status}>{list().error?.message}</div>
-            ) : list().items.length === 0 ? (
-              <div class={styles.Status}>{list().filter ? 'No results found' : 'Start typing to search movies...'}</div>
-            ) : (
+            <Combobox.Status>
+              <Show when={status()}>
+                <div class={styles.Status}>
+                  <Show when={list().isLoading}>
+                    <LoaderIcon class={styles.Spinner} />
+                  </Show>
+                  <span>{status()}</span>
+                </div>
+              </Show>
+            </Combobox.Status>
+            <Combobox.List class={styles.List}>
               <For each={list().items}>
                 {(movie) => (
                   <Combobox.Item class={styles.Item} item={movie}>
@@ -89,7 +97,7 @@ export const AsyncSearch = () => {
                   </Combobox.Item>
                 )}
               </For>
-            )}
+            </Combobox.List>
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

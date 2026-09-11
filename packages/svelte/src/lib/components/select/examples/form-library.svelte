@@ -67,15 +67,17 @@
         <Portal>
           <Select.Positioner>
             <Select.Content class={styles.Content}>
-              <Select.ItemGroup class={styles.ItemGroup}>
-                <Select.ItemGroupLabel class={styles.ItemGroupLabel}>Frameworks</Select.ItemGroupLabel>
-                {#each frameworks.items as item}
-                  <Select.Item class={styles.Item} {item}>
-                    <Select.ItemText class={styles.ItemText}>{item.label}</Select.ItemText>
-                    <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
-                  </Select.Item>
-                {/each}
-              </Select.ItemGroup>
+              <Select.List class={styles.List}>
+                <Select.ItemGroup class={styles.ItemGroup}>
+                  <Select.ItemGroupLabel class={styles.ItemGroupLabel}>Frameworks</Select.ItemGroupLabel>
+                  {#each frameworks.items as item}
+                    <Select.Item class={styles.Item} {item}>
+                      <Select.ItemText class={styles.ItemText}>{item.label}</Select.ItemText>
+                      <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
+                    </Select.Item>
+                  {/each}
+                </Select.ItemGroup>
+              </Select.List>
             </Select.Content>
           </Select.Positioner>
         </Portal>

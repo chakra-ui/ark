@@ -27,13 +27,7 @@ export {
 export { default as ToastRoot, type ToastRootBaseProps, type ToastRootProps } from './toast-root.svelte'
 export { default as ToastTitle, type ToastTitleBaseProps, type ToastTitleProps } from './toast-title.svelte'
 export { toastAnatomy } from './toast.anatomy.js'
-export {
-  default as Toaster,
-  type ToasterBaseProps,
-  type ToasterProps,
-  type ToastOptions,
-  type ToasterState,
-} from './toaster.svelte'
+export { default as Toaster, type ToasterBaseProps, type ToasterProps, type ToastOptions } from './toaster.svelte'
 export { useToastContext, type UseToastContext } from './use-toast-context.js'
 
 export * as Toast from './toast.js'

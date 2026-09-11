@@ -75,6 +75,11 @@ export {
   type SelectListProps as ListProps,
 } from './select-list.tsx'
 export {
+  SelectScrollArrow as ScrollArrow,
+  type SelectScrollArrowBaseProps as ScrollArrowBaseProps,
+  type SelectScrollArrowProps as ScrollArrowProps,
+} from './select-scroll-arrow.tsx'
+export {
   SelectPositioner as Positioner,
   type SelectPositionerBaseProps as PositionerBaseProps,
   type SelectPositionerProps as PositionerProps,
@@ -94,6 +99,11 @@ export {
   type SelectRootProviderComponent as RootProviderComponent,
   type SelectRootProviderState as RootProviderState,
 } from './select-root-provider.tsx'
+export {
+  SelectStatus as Status,
+  type SelectStatusBaseProps as StatusBaseProps,
+  type SelectStatusProps as StatusProps,
+} from './select-status.tsx'
 export {
   SelectTrigger as Trigger,
   type SelectTriggerBaseProps as TriggerBaseProps,

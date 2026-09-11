@@ -11,13 +11,16 @@ export interface ListboxEmptyBaseProps extends PolymorphicProps {}
 export interface ListboxEmptyProps extends HTMLProps<'div'>, ListboxEmptyBaseProps {}
 
 export const ListboxEmpty = forwardRef<HTMLDivElement, ListboxEmptyProps>((props, ref) => {
+  const { children, ...rest } = props
   const listbox = useListboxContext()
 
-  if (listbox.collection.size !== 0) {
-    return null
-  }
-
-  return <ark.div {...parts.empty.attrs('')} {...props} role="presentation" ref={ref} />
+  // the element stays mounted so the live region is already known to screen
+  // readers when the message appears; only the children are conditional
+  return (
+    <ark.div {...parts.empty.attrs('')} role="status" aria-live="polite" aria-atomic="true" {...rest} ref={ref}>
+      {listbox.collection.size === 0 ? children : null}
+    </ark.div>
+  )
 })
 
 ListboxEmpty.displayName = 'ListboxEmpty'

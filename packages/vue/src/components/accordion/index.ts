@@ -2,6 +2,12 @@ export type {
   FocusChangeDetails as AccordionFocusChangeDetails,
   ValueChangeDetails as AccordionValueChangeDetails,
 } from '@zag-js/accordion'
+export {
+  default as AccordionItemHeader,
+  type AccordionItemHeaderBaseProps,
+  type AccordionItemHeaderProps,
+  type AccordionItemHeaderState,
+} from './accordion-item-header.vue'
 export { default as AccordionContext, type AccordionContextProps } from './accordion-context.vue'
 export {
   default as AccordionItemContent,

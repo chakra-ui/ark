@@ -124,11 +124,6 @@
   "Toaster": {
     "props": {
       "toaster": { "type": "CreateToasterReturn<any>", "isRequired": true },
-      "asChild": {
-        "type": "(props: PropsFn<'div'>) => Element",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
       "dir": {
         "type": "'ltr' | 'rtl'",
         "defaultValue": "\"ltr\"",
@@ -139,11 +134,6 @@
         "type": "() => Node | ShadowRoot | Document",
         "isRequired": false,
         "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
-      },
-      "render": {
-        "type": "RenderFn<'div', ToasterState>",
-        "isRequired": false,
-        "description": "Render the part as a custom element, combining their props and behavior.\n\nCall `props()` to spread the part's props, passing your own to merge them rather than overwrite them.\nThe state arrives as an accessor:\n`render={(props, state) => <button {...props({ onClick: mine })}>{state().open}</button>}`"
       }
     }
   }

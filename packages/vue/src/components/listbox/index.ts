@@ -63,6 +63,7 @@ export {
   type ListboxRootProviderProps,
   type ListboxRootProviderComponent,
 } from './listbox-root-provider.vue'
+export { default as ListboxStatus, type ListboxStatusProps, type ListboxStatusBaseProps } from './listbox-status.vue'
 export {
   default as ListboxValueText,
   type ListboxValueTextBaseProps,

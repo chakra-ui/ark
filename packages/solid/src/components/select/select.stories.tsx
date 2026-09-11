@@ -6,6 +6,7 @@ const meta: Meta = {
 
 export default meta
 
+export { AlignItemWithTrigger } from './examples/align-item-with-trigger.tsx'
 export { Basic } from './examples/basic.tsx'
 export { Controlled } from './examples/controlled.tsx'
 export { Disabled } from './examples/disabled.tsx'

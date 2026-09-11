@@ -77,6 +77,11 @@ export {
   type ListboxRootProviderComponent as RootProviderComponent,
 } from './listbox-root-provider.tsx'
 export {
+  ListboxStatus as Status,
+  type ListboxStatusBaseProps as StatusBaseProps,
+  type ListboxStatusProps as StatusProps,
+} from './listbox-status.tsx'
+export {
   ListboxValueText as ValueText,
   type ListboxValueTextBaseProps as ValueTextBaseProps,
   type ListboxValueTextProps as ValueTextProps,

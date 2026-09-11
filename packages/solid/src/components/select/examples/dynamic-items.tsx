@@ -35,17 +35,19 @@ export const DynamicItems = () => {
         <Portal>
           <Select.Positioner>
             <Select.Content class={styles.Content}>
-              <Select.ItemGroup class={styles.ItemGroup}>
-                <Select.ItemGroupLabel class={styles.ItemGroupLabel}>Frameworks</Select.ItemGroupLabel>
-                <Index each={collection().items}>
-                  {(item) => (
-                    <Select.Item class={styles.Item} item={item()}>
-                      <Select.ItemText class={styles.ItemText}>{item()}</Select.ItemText>
-                      <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
-                    </Select.Item>
-                  )}
-                </Index>
-              </Select.ItemGroup>
+              <Select.List class={styles.List}>
+                <Select.ItemGroup class={styles.ItemGroup}>
+                  <Select.ItemGroupLabel class={styles.ItemGroupLabel}>Frameworks</Select.ItemGroupLabel>
+                  <Index each={collection().items}>
+                    {(item) => (
+                      <Select.Item class={styles.Item} item={item()}>
+                        <Select.ItemText class={styles.ItemText}>{item()}</Select.ItemText>
+                        <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
+                      </Select.Item>
+                    )}
+                  </Index>
+                </Select.ItemGroup>
+              </Select.List>
             </Select.Content>
           </Select.Positioner>
         </Portal>

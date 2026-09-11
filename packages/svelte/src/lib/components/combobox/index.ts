@@ -81,6 +81,7 @@ export {
   type ComboboxRootProviderProps,
   type ComboboxRootProviderComponent,
 } from './combobox-root-provider.svelte'
+export { default as ComboboxStatus, type ComboboxStatusProps } from './combobox-status.svelte'
 export {
   default as ComboboxTrigger,
   type ComboboxTriggerProps,

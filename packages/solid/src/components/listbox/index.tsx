@@ -54,6 +54,7 @@ export {
   type ListboxRootProviderProps,
   type ListboxRootProviderComponent,
 } from './listbox-root-provider.tsx'
+export { ListboxStatus, type ListboxStatusBaseProps, type ListboxStatusProps } from './listbox-status.tsx'
 export { ListboxValueText, type ListboxValueTextBaseProps, type ListboxValueTextProps } from './listbox-value-text.tsx'
 export { listboxAnatomy } from './listbox.anatomy.ts'
 export { useListbox, type UseListboxProps, type UseListboxReturn } from './use-listbox.ts'
