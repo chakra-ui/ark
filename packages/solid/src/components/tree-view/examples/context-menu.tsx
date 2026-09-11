@@ -58,7 +58,7 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node> & { triggerId: string 
                 <TreeNodeContextMenu triggerId={props.triggerId}>
                   <TreeView.Cell
                     class={styles.Cell}
-                    asChild={(cellProps) => (
+                    render={(cellProps) => (
                       <Menu.ContextTrigger {...cellProps()}>
                         <FileIcon />
                         <TreeView.NodeText class={styles.NodeText}>{props.node.name}</TreeView.NodeText>
@@ -74,7 +74,7 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node> & { triggerId: string 
                 <TreeNodeContextMenu triggerId={props.triggerId}>
                   <TreeView.Cell
                     class={styles.Cell}
-                    asChild={(cellProps) => (
+                    render={(cellProps) => (
                       <Menu.ContextTrigger {...cellProps()}>
                         <TreeView.NodeExpandTrigger class={styles.NodeExpandTrigger}>
                           <TreeView.NodeIndicator type="expanded" class={styles.NodeIndicator}>

@@ -51,7 +51,7 @@ export const Links = () => {
                   <Combobox.Item
                     class={styles.Item}
                     item={item}
-                    asChild={(props) => <a href={item.href} {...props()} />}
+                    render={(props) => <a href={item.href} {...props()} />}
                   >
                     <Combobox.ItemText class={styles.ItemText}>{item.label}</Combobox.ItemText>
                     <Combobox.ItemIndicator class={styles.ItemIndicator}>

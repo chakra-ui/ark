@@ -14,11 +14,8 @@ export const Controlled = () => {
       </button>
       <HoverCard.Root open={open} onOpenChange={(e) => setOpen(e.open)}>
         <p>
-          Liked by{' '}
-          <HoverCard.Trigger className={styles.Trigger} asChild>
-            <a href="#profile">@sarah_chen</a>
-          </HoverCard.Trigger>{' '}
-          and 3 others
+          Liked by <HoverCard.Trigger className={styles.Trigger} render={<a href="#profile">@sarah_chen</a>} /> and 3
+          others
         </p>
         <Portal>
           <HoverCard.Positioner>

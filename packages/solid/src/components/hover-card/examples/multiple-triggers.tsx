@@ -48,7 +48,7 @@ export const MultipleTriggers = () => {
         Reviewed by{' '}
         <HoverCard.Trigger
           value="sarah"
-          asChild={(props) => (
+          render={(props) => (
             <a href="#" class={styles.Trigger} {...props()}>
               @sarah_chen
             </a>
@@ -57,7 +57,7 @@ export const MultipleTriggers = () => {
         ,{' '}
         <HoverCard.Trigger
           value="alex"
-          asChild={(props) => (
+          render={(props) => (
             <a href="#" class={styles.Trigger} {...props()}>
               @alex_r
             </a>
@@ -66,7 +66,7 @@ export const MultipleTriggers = () => {
         , and{' '}
         <HoverCard.Trigger
           value="jordan"
-          asChild={(props) => (
+          render={(props) => (
             <a href="#" class={styles.Trigger} {...props()}>
               @jordan_lee
             </a>

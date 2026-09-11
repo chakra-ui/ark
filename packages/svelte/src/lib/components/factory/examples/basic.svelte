@@ -18,7 +18,7 @@
   style="background: red"
   onclick={onClickParent}
 >
-  {#snippet asChild(props)}
+  {#snippet render(props)}
     <Ark
       as="span"
       {...props({ id: 'child', class: 'child', style: 'color: blue', onclick: onClickChild })}

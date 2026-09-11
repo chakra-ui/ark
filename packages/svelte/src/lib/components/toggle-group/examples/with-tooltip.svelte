@@ -24,7 +24,7 @@
   <ToggleGroup.Root defaultValue={['bold']} ids={{ item: getTriggerId }} class={styles.Root}>
     {#each items as item (item.value)}
       <ToggleGroup.Item value={item.value} aria-label={item.label} class={styles.Item}>
-        {#snippet asChild(itemProps)}
+        {#snippet render(itemProps)}
           <Tooltip.Trigger value={item.value} {...itemProps()}>
             <item.icon />
           </Tooltip.Trigger>

@@ -14,18 +14,18 @@
   <Menu.Positioner>
     <Menu.Content class={styles.Content}>
       <Menu.Item class={styles.Item} value="docs">
-        {#snippet asChild(itemProps)}
+        {#snippet render(itemProps)}
           <a href="https://ark-ui.com" {...itemProps()}>Documentation</a>
         {/snippet}
       </Menu.Item>
       <Menu.Item class={styles.Item} value="github">
-        {#snippet asChild(itemProps)}
+        {#snippet render(itemProps)}
           <a href="https://github.com/chakra-ui/ark" {...itemProps()}>GitHub</a>
         {/snippet}
       </Menu.Item>
       <Menu.Separator class={styles.Separator} />
       <Menu.Item class={styles.Item} value="changelog">
-        {#snippet asChild(itemProps)}
+        {#snippet render(itemProps)}
           <a href="https://github.com/chakra-ui/ark/releases" {...itemProps()}>Changelog</a>
         {/snippet}
       </Menu.Item>

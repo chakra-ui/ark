@@ -43,7 +43,7 @@
         <Combobox.List class={styles.List}>
           {#each collection().items as item (item.value)}
             <Combobox.Item class={styles.Item} {item}>
-              {#snippet asChild(props)}
+              {#snippet render(props)}
                 <a {...props()} href={item.href}>
                   <Combobox.ItemText class={styles.ItemText}>{item.label}</Combobox.ItemText>
                   <Combobox.ItemIndicator class={styles.ItemIndicator}>✓</Combobox.ItemIndicator>

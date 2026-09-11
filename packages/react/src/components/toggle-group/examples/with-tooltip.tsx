@@ -20,9 +20,13 @@ export const WithTooltip = () => {
     <Tooltip.RootProvider value={tooltip}>
       <ToggleGroup.Root defaultValue={['bold']} ids={{ item: getTriggerId }} className={styles.Root}>
         {items.map((item) => (
-          <ToggleGroup.Item key={item.value} value={item.value} aria-label={item.label} className={styles.Item} asChild>
-            <Tooltip.Trigger value={item.value}>{item.icon}</Tooltip.Trigger>
-          </ToggleGroup.Item>
+          <ToggleGroup.Item
+            key={item.value}
+            value={item.value}
+            aria-label={item.label}
+            className={styles.Item}
+            render={<Tooltip.Trigger value={item.value}>{item.icon}</Tooltip.Trigger>}
+          />
         ))}
       </ToggleGroup.Root>
       <Portal>
