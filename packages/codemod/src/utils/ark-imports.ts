@@ -18,7 +18,7 @@ export function jsxBaseNameFromText(tag: string): string {
   return tag.split('.')[0]
 }
 
-export function arkLocalNames(sf: SourceFile): Set<string> {
+export function arkLocalNames(sf: SourceFile, options: { crossFile?: boolean } = {}): Set<string> {
   const names = new Set<string>()
 
   for (const imp of sf.getImportDeclarations()) {
@@ -44,7 +44,70 @@ export function arkLocalNames(sf: SourceFile): Set<string> {
     }
   }
 
+  if (options.crossFile) {
+    for (const imp of sf.getImportDeclarations()) {
+      if (ARK_SOURCE.test(imp.getModuleSpecifierValue())) continue
+      const target = imp.getModuleSpecifierSourceFile()
+      if (!target) continue
+      for (const spec of imp.getNamedImports()) {
+        const local = spec.getAliasNode()?.getText() ?? spec.getName()
+        if (names.has(local)) continue
+        if (reExportsArk(target, spec.getName(), new Set(), 0)) names.add(local)
+      }
+    }
+  }
+
   return names
+}
+
+const MAX_REEXPORT_DEPTH = 8
+
+function importedNameIsArk(file: SourceFile, localName: string): boolean {
+  for (const imp of file.getImportDeclarations()) {
+    if (!ARK_SOURCE.test(imp.getModuleSpecifierValue())) continue
+    if (imp.getDefaultImport()?.getText() === localName) return true
+    if (imp.getNamespaceImport()?.getText() === localName) return true
+    for (const spec of imp.getNamedImports()) {
+      if ((spec.getAliasNode()?.getText() ?? spec.getName()) === localName) return true
+    }
+  }
+  return false
+}
+
+function reExportsArk(file: SourceFile, exportName: string, visited: Set<string>, depth: number): boolean {
+  if (depth > MAX_REEXPORT_DEPTH) return false
+  const key = `${file.getFilePath()}::${exportName}`
+  if (visited.has(key)) return false
+  visited.add(key)
+
+  for (const exp of file.getExportDeclarations()) {
+    const spec = exp.getModuleSpecifierValue()
+    const named = exp.getNamedExports()
+
+    if (spec) {
+      const targetIsArk = ARK_SOURCE.test(spec)
+      let matched = false
+      for (const n of named) {
+        const exported = n.getAliasNode()?.getText() ?? n.getName()
+        if (exported !== exportName) continue
+        matched = true
+        if (targetIsArk) return true
+        const target = exp.getModuleSpecifierSourceFile()
+        if (target && reExportsArk(target, n.getName(), visited, depth + 1)) return true
+      }
+      if (!matched && named.length === 0) {
+        if (targetIsArk) return true
+        const target = exp.getModuleSpecifierSourceFile()
+        if (target && reExportsArk(target, exportName, visited, depth + 1)) return true
+      }
+    } else {
+      for (const n of named) {
+        const exported = n.getAliasNode()?.getText() ?? n.getName()
+        if (exported === exportName && importedNameIsArk(file, n.getName())) return true
+      }
+    }
+  }
+  return false
 }
 
 export function isTrackedJsx(opening: JsxOpening, arkNames: Set<string>): boolean {

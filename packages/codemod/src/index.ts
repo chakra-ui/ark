@@ -31,6 +31,7 @@ program
   .option('-e, --exclude <globs...>', 'globs to skip', [])
   .option('-c, --concurrency <n>', 'files to process at once', String(availableParallelism()))
   .option('--force', 'run even though the working tree has uncommitted changes', false)
+  .option('--cross-file', 'resolve ark components imported through local barrels/re-exports (react, solid)', false)
   .action(async (name: string | undefined, paths: string[], options) => {
     if (interactive) p.intro(pc.bgCyan(pc.black(' ark-codemod ')))
 
@@ -83,6 +84,7 @@ program
       dry: options.dry,
       concurrency: Number(options.concurrency),
       printDiff: options.diff,
+      crossFile: options.crossFile,
     })
     spinner?.stop(`Ran ${transform.name}`)
 

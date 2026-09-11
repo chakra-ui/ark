@@ -13,6 +13,7 @@ export interface RunOptions {
   dry: boolean
   concurrency: number
   printDiff: boolean
+  crossFile: boolean
 }
 
 export interface RunSummary {
@@ -42,7 +43,7 @@ export async function runTransform(transform: TransformDef, options: RunOptions)
       const source = await readFile(path, 'utf8')
       if (!source.includes('asChild') && !source.includes('as-child')) continue
 
-      const result = transform.run(source, path)
+      const result = transform.run(source, path, { crossFile: options.crossFile })
       for (const reason of result.skipped) summary.skipped.push([relative(options.cwd, path), reason])
       if (!result.code) continue
 
