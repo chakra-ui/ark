@@ -4,16 +4,18 @@ type EnsureKeys<ExpectedKeys extends (keyof Target)[], Target> = keyof Target ex
 
 export const createSplitProps =
   <Target>() =>
-  <Keys extends (keyof Target)[], Props extends Target = Target>(props: Props, keys: Keys & EnsureKeys<Keys, Target>) =>
-    (keys as string[]).reduce<[Target, Omit<Props, Extract<(typeof keys)[number], string>>]>(
-      (previousValue, currentValue) => {
-        const [target, source] = previousValue
-        const key = currentValue as keyof Target & keyof typeof source
-        if (source[key] !== undefined) {
-          target[key] = source[key]
-        }
-        delete source[key]
-        return [target, source]
-      },
-      [{} as Target, { ...props }],
-    )
+  <Keys extends (keyof Target)[], Props extends Target = Target>(
+    props: Props,
+    keys: Keys & EnsureKeys<Keys, Target>,
+  ): [Target, Omit<Props, Extract<Keys[number], string>>] => {
+    const target = {} as Target
+    const rest = { ...props }
+    const list = keys as (keyof Target & keyof typeof rest)[]
+    for (let i = 0; i < list.length; i++) {
+      const key = list[i]
+      const value = rest[key]
+      if (value !== undefined) target[key] = value
+      delete rest[key]
+    }
+    return [target, rest]
+  }
