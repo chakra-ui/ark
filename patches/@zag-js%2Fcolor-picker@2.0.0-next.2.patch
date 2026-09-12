@@ -1,0 +1,80 @@
+diff --git a/dist/utils/get-area-format.js b/dist/utils/get-area-format.js
+index 00fe17595dd192a7e9668bf38a2963b4999ca955..ee9f895faaf16cfc67820405e1a970139c0ac14e 100644
+--- a/dist/utils/get-area-format.js
++++ b/dist/utils/get-area-format.js
+@@ -26,7 +26,6 @@ module.exports = __toCommonJS(get_area_format_exports);
+ function getAreaFormat(format) {
+   if (format.startsWith("hsl")) return "hsla";
+   if (format.startsWith("hsb")) return "hsba";
+-  if (format.startsWith("rgb")) return "rgba";
+   if (format === "oklab") return "hsba";
+   if (format === "oklch") return "hsba";
+   return "hsba";
+diff --git a/dist/utils/get-area-format.mjs b/dist/utils/get-area-format.mjs
+index 761545a5a012ac13322bb328de7073176eb717c6..04429bac3ba1c98887fcf5a5f02f636bbd2baf41 100644
+--- a/dist/utils/get-area-format.mjs
++++ b/dist/utils/get-area-format.mjs
+@@ -2,7 +2,6 @@
+ function getAreaFormat(format) {
+   if (format.startsWith("hsl")) return "hsla";
+   if (format.startsWith("hsb")) return "hsba";
+-  if (format.startsWith("rgb")) return "rgba";
+   if (format === "oklab") return "hsba";
+   if (format === "oklch") return "hsba";
+   return "hsba";
+diff --git a/dist/utils/get-slider-background.js b/dist/utils/get-slider-background.js
+index 8c2b8b6484e32b8e8f2ccac28c11c5b541995f38..cb59e514037cc06ef1a68806d361fc223fcf374e 100644
+--- a/dist/utils/get-slider-background.js
++++ b/dist/utils/get-slider-background.js
+@@ -35,7 +35,6 @@ function getSliderBackgroundDirection(orientation, dir) {
+ var getSliderBackground = (props) => {
+   const { channel, value, dir, orientation } = props;
+   const bgDirection = getSliderBackgroundDirection(orientation, dir);
+-  const { minValue, maxValue } = value.getChannelRange(channel);
+   const fmt = value.getFormat();
+   switch (channel) {
+     case "hue":
+@@ -46,6 +45,7 @@ var getSliderBackground = (props) => {
+       }
+       return `linear-gradient(to ${bgDirection}, rgb(255, 0, 0) 0%, rgb(255, 255, 0) 17%, rgb(0, 255, 0) 33%, rgb(0, 255, 255) 50%, rgb(0, 0, 255) 67%, rgb(255, 0, 255) 83%, rgb(255, 0, 0) 100%)`;
+     case "lightness": {
++      const { minValue, maxValue } = value.getChannelRange(channel);
+       let start = value.withChannelValue(channel, minValue).toString("css");
+       let middle = value.withChannelValue(channel, (maxValue - minValue) / 2).toString("css");
+       let end = value.withChannelValue(channel, maxValue).toString("css");
+@@ -60,6 +60,7 @@ var getSliderBackground = (props) => {
+     case "a":
+     case "b":
+     case "chroma": {
++      const { minValue, maxValue } = value.getChannelRange(channel);
+       let start = value.withChannelValue(channel, minValue).toString("css");
+       let end = value.withChannelValue(channel, maxValue).toString("css");
+       if (fmt === "oklab" && (channel === "a" || channel === "b")) {
+diff --git a/dist/utils/get-slider-background.mjs b/dist/utils/get-slider-background.mjs
+index afa74847688c916aa589a8faf5a4eecc484b7a04..b6a8f48559940223aa33d85a561e840d2d315ddc 100644
+--- a/dist/utils/get-slider-background.mjs
++++ b/dist/utils/get-slider-background.mjs
+@@ -11,7 +11,6 @@ function getSliderBackgroundDirection(orientation, dir) {
+ var getSliderBackground = (props) => {
+   const { channel, value, dir, orientation } = props;
+   const bgDirection = getSliderBackgroundDirection(orientation, dir);
+-  const { minValue, maxValue } = value.getChannelRange(channel);
+   const fmt = value.getFormat();
+   switch (channel) {
+     case "hue":
+@@ -22,6 +21,7 @@ var getSliderBackground = (props) => {
+       }
+       return `linear-gradient(to ${bgDirection}, rgb(255, 0, 0) 0%, rgb(255, 255, 0) 17%, rgb(0, 255, 0) 33%, rgb(0, 255, 255) 50%, rgb(0, 0, 255) 67%, rgb(255, 0, 255) 83%, rgb(255, 0, 0) 100%)`;
+     case "lightness": {
++      const { minValue, maxValue } = value.getChannelRange(channel);
+       let start = value.withChannelValue(channel, minValue).toString("css");
+       let middle = value.withChannelValue(channel, (maxValue - minValue) / 2).toString("css");
+       let end = value.withChannelValue(channel, maxValue).toString("css");
+@@ -36,6 +36,7 @@ var getSliderBackground = (props) => {
+     case "a":
+     case "b":
+     case "chroma": {
++      const { minValue, maxValue } = value.getChannelRange(channel);
+       let start = value.withChannelValue(channel, minValue).toString("css");
+       let end = value.withChannelValue(channel, maxValue).toString("css");
+       if (fmt === "oklab" && (channel === "a" || channel === "b")) {
