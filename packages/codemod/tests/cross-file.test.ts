@@ -76,6 +76,48 @@ describe('cross-file barrel resolution', () => {
     expect(on.code).toBeNull()
   })
 
+  it('resolves a styled(ark.x) wrapper across files (react)', () => {
+    write(
+      'prim.tsx',
+      `import { ark } from '@ark-ui/react/factory'\nimport { styled } from 'styled-system/jsx'\nexport const Btn = styled(ark.button, {})\n`,
+    )
+    const consumer = write('app.tsx', 'x')
+    const source = `import { Btn } from './prim'\nconst A = () => <Btn asChild><a href="#">x</a></Btn>\n`
+
+    const off = reactAsChildToRender(source, consumer)
+    expect(off.code).toBeNull()
+
+    const on = reactAsChildToRender(source, consumer, { crossFile: true })
+    expect(on.count).toBe(1)
+    expect(on.code).toContain('<Btn render={<a href="#">x</a>} />')
+  })
+
+  it('resolves a forwardRef wrapper chain across files (react)', () => {
+    write(
+      'prim.tsx',
+      `import { ark } from '@ark-ui/react/factory'\nimport { styled } from 'styled-system/jsx'\nexport const Button = styled(ark.button, {})\n`,
+    )
+    write(
+      'button.tsx',
+      `import { forwardRef } from 'react'\nimport { Button as Styled } from './prim'\nexport const Button = forwardRef((props, ref) => <Styled {...props} ref={ref} />)\n`,
+    )
+    const consumer = write('app.tsx', 'x')
+    const source = `import { Button } from './button'\nconst A = () => <Button asChild><a href="#">x</a></Button>\n`
+
+    const on = reactAsChildToRender(source, consumer, { crossFile: true })
+    expect(on.count).toBe(1)
+    expect(on.code).toContain('<Button render={<a href="#">x</a>} />')
+  })
+
+  it('leaves a wrapper that does not bottom out at ark alone (react)', () => {
+    write('prim.tsx', `import { styled } from 'styled-system/jsx'\nexport const Box = styled('div', {})\n`)
+    const consumer = write('app.tsx', 'x')
+    const source = `import { Box } from './prim'\nconst A = () => <Box asChild><a href="#">x</a></Box>\n`
+
+    const on = reactAsChildToRender(source, consumer, { crossFile: true })
+    expect(on.code).toBeNull()
+  })
+
   it('resolves a barrel component and keeps the props call (solid)', () => {
     write('ui.ts', `export { Menu } from '@ark-ui/solid/menu'\n`)
     const consumer = write('app.tsx', 'x')

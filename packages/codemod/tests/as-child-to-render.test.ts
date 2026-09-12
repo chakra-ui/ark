@@ -220,6 +220,18 @@ const A = () => <ark.div asChild><span>x</span></ark.div>`,
     expect(result.code).toContain('<ark.div render={<span>x</span>} />')
   })
 
+  it('react tracks an in-file styled(ark.x) wrapper', () => {
+    const result = reactAsChildToRender(
+      `import { ark } from '@ark-ui/react/factory'
+import { styled } from 'styled-system/jsx'
+const Btn = styled(ark.button, {})
+const A = () => <Btn asChild><a href="#">x</a></Btn>`,
+      'a.tsx',
+    )
+    expect(result.count).toBe(1)
+    expect(result.code).toContain('<Btn render={<a href="#">x</a>} />')
+  })
+
   it('solid leaves a non-ark component alone', () => {
     const result = solidAsChildToRender(
       `import { Menu } from '@ark-ui/solid/menu'
