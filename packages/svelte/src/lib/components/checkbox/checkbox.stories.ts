@@ -15,6 +15,7 @@ import RootProviderExample from './examples/root-provider.svelte'
 import WithFieldExample from './examples/with-field.svelte'
 import GroupWithFieldsetExample from './examples/group-with-fieldset.svelte'
 import WithFormExample from './examples/with-form.svelte'
+import GroupControlledExample from './examples/group-controlled.svelte'
 
 const meta: Meta = {
   title: 'Components/Checkbox',
@@ -118,5 +119,11 @@ export const WithForm = {
 export const GroupProvider = {
   render: () => ({
     Component: GroupProviderExample,
+  }),
+}
+
+export const GroupControlled = {
+  render: () => ({
+    Component: GroupControlledExample,
   }),
 }

@@ -13,6 +13,7 @@ import SwatchOnlyExample from './examples/swatch-only.vue'
 import SwatchesExample from './examples/swatches.vue'
 import ValueSwatchExample from './examples/value-swatch.vue'
 import WithFieldExample from './examples/with-field.vue'
+import FormUsageExample from './examples/form-usage.vue'
 
 const meta: Meta = {
   title: 'Components / ColorPicker',
@@ -107,6 +108,13 @@ export const ValueSwatch = {
 export const WithField = {
   render: () => ({
     components: { Component: WithFieldExample },
+    template: '<Component />',
+  }),
+}
+
+export const FormUsage = {
+  render: () => ({
+    components: { Component: FormUsageExample },
     template: '<Component />',
   }),
 }

@@ -24,6 +24,9 @@ import FixedWeeksExample from './examples/fixed-weeks.svelte'
 import FormExample from './examples/form.svelte'
 import MaxSelectedDatesExample from './examples/max-selected-dates.svelte'
 import CustomCalendarExample from './examples/custom-calendar.svelte'
+import FormatParseExample from './examples/format-parse.svelte'
+import MonthPickerRangeExample from './examples/month-picker-range.svelte'
+import YearPickerRangeExample from './examples/year-picker-range.svelte'
 
 const meta: Meta = {
   title: 'Components / DatePicker',
@@ -178,5 +181,23 @@ export const MaxSelectedDates = {
 export const CustomCalendar = {
   render: () => ({
     Component: CustomCalendarExample,
+  }),
+}
+
+export const FormatParse = {
+  render: () => ({
+    Component: FormatParseExample,
+  }),
+}
+
+export const MonthPickerRange = {
+  render: () => ({
+    Component: MonthPickerRangeExample,
+  }),
+}
+
+export const YearPickerRange = {
+  render: () => ({
+    Component: YearPickerRangeExample,
   }),
 }

@@ -9,6 +9,7 @@ import DisabledExample from './examples/disabled.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import ContextExample from './examples/context.vue'
 import ItemContextExample from './examples/item-context.vue'
+import LazyMountExample from './examples/lazy-mount.vue'
 
 const meta: Meta = {
   title: 'Components / Accordion',
@@ -75,6 +76,13 @@ export const Context = {
 export const ItemContext = {
   render: () => ({
     components: { Component: ItemContextExample },
+    template: '<Component />',
+  }),
+}
+
+export const LazyMount = {
+  render: () => ({
+    components: { Component: LazyMountExample },
     template: '<Component />',
   }),
 }

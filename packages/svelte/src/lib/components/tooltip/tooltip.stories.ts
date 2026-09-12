@@ -12,6 +12,7 @@ import WithDialogExample from './examples/with-dialog.svelte'
 import WithMenuItemExample from './examples/with-menu-item.svelte'
 import WithMenuTriggerExample from './examples/with-menu-trigger.svelte'
 import WithPopoverExample from './examples/with-popover.svelte'
+import WithinFixedExample from './examples/within-fixed.svelte'
 
 const meta: Meta = {
   title: 'Components/Tooltip',
@@ -94,5 +95,11 @@ export const WithMenuTrigger = {
 export const WithPopover = {
   render: () => ({
     Component: WithPopoverExample,
+  }),
+}
+
+export const WithinFixed = {
+  render: () => ({
+    Component: WithinFixedExample,
   }),
 }
