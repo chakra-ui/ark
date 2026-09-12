@@ -1,8 +1,11 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { IndicatorState } from '@zag-js/clipboard'
   import type { Snippet } from 'svelte'
 
-  export interface ClipboardIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {
+  export interface ClipboardIndicatorState extends IndicatorState {}
+
+  export interface ClipboardIndicatorBaseProps extends PolymorphicProps<'div', ClipboardIndicatorState>, RefAttribute {
     copied?: Snippet
   }
   export interface ClipboardIndicatorProps extends Assign<HTMLProps<'div'>, ClipboardIndicatorBaseProps> {}
@@ -19,7 +22,7 @@
   const mergedProps = $derived(mergeProps(clipboard().getIndicatorProps({ copied: clipboard().copied }), localProps))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps}>
+<Ark as="div" bind:ref {...mergedProps} state={clipboard().getIndicatorState({ copied: clipboard().copied })}>
   {#if clipboard().copied && copied}
     {@render copied()}
   {:else if children}

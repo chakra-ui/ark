@@ -3,7 +3,12 @@
   import type { UseCollapsibleProps } from './use-collapsible.svelte.ts'
 
   export interface CollapsibleRootBaseProps
-    extends Optional<UseCollapsibleProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
+    extends Optional<UseCollapsibleProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {
+    /**
+     * The state of the part, forwarded to the `render` snippet. Set by the component, not the consumer.
+     */
+    state?: unknown
+  }
   export interface CollapsibleRootProps extends Assign<HTMLProps<'div'>, CollapsibleRootBaseProps> {}
 </script>
 

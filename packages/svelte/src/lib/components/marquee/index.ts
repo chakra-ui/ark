@@ -3,6 +3,7 @@ export {
   default as MarqueeContent,
   type MarqueeContentBaseProps,
   type MarqueeContentProps,
+  type MarqueeContentState,
 } from './marquee-content.svelte'
 export { default as MarqueeContext, type MarqueeContextProps } from './marquee-context.svelte'
 export { default as MarqueeEdge, type MarqueeEdgeBaseProps, type MarqueeEdgeProps } from './marquee-edge.svelte'

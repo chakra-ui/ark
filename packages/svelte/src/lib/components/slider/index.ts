@@ -31,6 +31,7 @@ export {
   default as SliderRootProvider,
   type SliderRootProviderBaseProps,
   type SliderRootProviderProps,
+  type SliderRootProviderState,
 } from './slider-root-provider.svelte'
 export {
   default as SliderRoot,

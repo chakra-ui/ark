@@ -24,9 +24,4 @@
   const mergedProps = $derived(mergeProps(menu().getTriggerProps(triggerProps), triggerItemProps?.() || {}, localProps))
 </script>
 
-<Ark
-  as="button"
-  bind:ref
-  {...mergedProps}
-  state={menu().getTriggerState(triggerProps)}
-/>
+<Ark as="button" bind:ref {...mergedProps} state={menu().getTriggerState(triggerProps)} />

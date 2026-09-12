@@ -1,6 +1,6 @@
 export { parse as parseColor } from '@zag-js/color-picker'
 export type {
-  Color as ColorPickerColor,
+  Color,
   ColorFormat as ColorPickerColorFormat,
   FocusOutsideEvent as ColorPickerFocusOutsideEvent,
   FormatChangeDetails as ColorPickerFormatChangeDetails,
@@ -156,18 +156,8 @@ export {
   type ColorPickerViewProps,
 } from './color-picker-view.svelte'
 export { colorPickerAnatomy } from './color-picker.anatomy.ts'
-export { ColorPickerProvider, useColorPickerContext } from './use-color-picker-context.ts'
+export { useColorPickerContext } from './use-color-picker-context.ts'
 export type { UseColorPickerContext } from './use-color-picker-context.ts'
-export {
-  ColorPickerChannelPropsProvider,
-  useColorPickerChannelPropsContext,
-} from './use-color-picker-channel-props-context.ts'
-export type { UseColorPickerChannelPropsContext } from './use-color-picker-channel-props-context.ts'
-export {
-  ColorPickerSwatchPropsProvider,
-  useColorPickerSwatchPropsContext,
-} from './use-color-picker-swatch-props-context.ts'
-export type { UseColorPickerSwatchPropsContext } from './use-color-picker-swatch-props-context.ts'
 export { useColorPicker } from './use-color-picker.svelte.ts'
 export type { UseColorPickerProps, UseColorPickerReturn } from './use-color-picker.svelte.ts'
 

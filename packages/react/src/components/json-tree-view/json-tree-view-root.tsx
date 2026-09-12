@@ -7,7 +7,7 @@ import { TreeView, createTreeCollection } from '../tree-view/index.ts'
 import { getBranchValues } from './get-branch-value.ts'
 import { type JsonTreeViewOptions, JsonTreeViewPropsProvider } from './json-tree-view-props-context.ts'
 
-export interface JsonTreeViewRootProps extends Omit<TreeView.RootProps<JsonNode>, 'collection'>, JsonTreeViewOptions {
+export interface JsonTreeViewRootBaseProps extends JsonTreeViewOptions {
   /**
    * The data to display in the tree.
    */
@@ -17,6 +17,9 @@ export interface JsonTreeViewRootProps extends Omit<TreeView.RootProps<JsonNode>
    */
   defaultExpandedDepth?: number
 }
+
+export interface JsonTreeViewRootProps
+  extends Omit<TreeView.RootProps<JsonNode>, 'collection'>, JsonTreeViewRootBaseProps {}
 
 const splitJsonTreeViewProps = createSplitProps<JsonTreeViewOptions>()
 

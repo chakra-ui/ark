@@ -81,14 +81,16 @@ export {
   type SelectRootProps,
   type SelectRootComponent,
   type SelectRootComponentProps,
+  type SelectRootState,
 } from './select-root.svelte'
 export {
   default as SelectRootProvider,
   type SelectRootProviderBaseProps,
   type SelectRootProviderProps,
   type SelectRootProviderComponent,
+  type SelectRootProviderState,
 } from './select-root-provider.svelte'
-export { default as SelectStatus, type SelectStatusProps } from './select-status.svelte'
+export { default as SelectStatus, type SelectStatusBaseProps, type SelectStatusProps } from './select-status.svelte'
 export {
   default as SelectTrigger,
   type SelectTriggerBaseProps,

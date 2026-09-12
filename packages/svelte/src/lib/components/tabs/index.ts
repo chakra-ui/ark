@@ -6,7 +6,7 @@ export {
   default as TabContent,
   type TabsContentBaseProps as TabContentBaseProps,
   type TabsContentProps as TabContentProps,
-  type TabsContentState,
+  type TabsContentState as TabContentState,
 } from './tabs-content.svelte'
 export { default as TabsContext, type TabsContextProps } from './tabs-context.svelte'
 export {
@@ -29,7 +29,7 @@ export {
   default as TabTrigger,
   type TabsTriggerBaseProps as TabTriggerBaseProps,
   type TabsTriggerProps as TabTriggerProps,
-  type TabsTriggerState,
+  type TabsTriggerState as TabTriggerState,
 } from './tabs-trigger.svelte'
 export { tabsAnatomy } from './tabs.anatomy.ts'
 export { useTabsContext, type UseTabsContext } from './use-tabs-context.ts'

@@ -74,14 +74,20 @@ export {
   type ComboboxRootProps,
   type ComboboxRootComponent,
   type ComboboxRootComponentProps,
+  type ComboboxRootState,
 } from './combobox-root.svelte'
 export {
   default as ComboboxRootProvider,
   type ComboboxRootProviderBaseProps,
   type ComboboxRootProviderProps,
   type ComboboxRootProviderComponent,
+  type ComboboxRootProviderState,
 } from './combobox-root-provider.svelte'
-export { default as ComboboxStatus, type ComboboxStatusProps } from './combobox-status.svelte'
+export {
+  default as ComboboxStatus,
+  type ComboboxStatusBaseProps,
+  type ComboboxStatusProps,
+} from './combobox-status.svelte'
 export {
   default as ComboboxTrigger,
   type ComboboxTriggerProps,

@@ -1,10 +1,13 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { CollectionItem } from '../collection/index.ts'
+  import type { RootState } from '@zag-js/select'
   import type { UseSelectReturn } from './use-select.svelte.ts'
 
+  export interface SelectRootProviderState extends RootState {}
+
   export interface SelectRootProviderBaseProps<T extends CollectionItem = CollectionItem>
-    extends PolymorphicProps<'div'>, UsePresenceProps, RefAttribute {
+    extends PolymorphicProps<'div', SelectRootProviderState>, UsePresenceProps, RefAttribute {
     value: UseSelectReturn<T>
   }
 
@@ -37,4 +40,4 @@
   PresenceProvider(presence)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={props.value().getRootState()} />
