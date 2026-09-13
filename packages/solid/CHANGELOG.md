@@ -1,5 +1,23 @@
 # @ark-ui/solid
 
+## [5.39.2] - 2026-09-11
+
+### Fixed
+
+- **Listbox**: Fix `ItemContext.selected` staying `false` after selection. The option already set `data-selected` and
+  `aria-selected`; the render-prop kept the first-render value. `ItemContext` is now an accessor, matching Select and
+  Combobox. Read `item().selected` instead of `item.selected`.
+  - **Field**: Fix `Field.Context` inside `Field.Item` missing later `invalid` and `disabled` changes on `Field.Root`.
+  - **ColorPicker**: Fix `SwatchIndicator` inside `ValueSwatch` keeping the first-rendered color.
+- Fix `./hotkeys` and `./interaction` entrypoints missing from the published `exports` map. The build files shipped, but
+  the publish config (`clean-package`) maintains its own `exports` map and was never updated when the `hotkeys` and
+  `interaction` primitives were added, so `import { useHotkeys } from '@ark-ui/react/hotkeys'` failed with
+  `ERR_MODULE_NOT_FOUND`. Both entrypoints are now included in the published map for every framework.
+- Fix the Solid build failing to resolve the `interaction` provider barrel. The providers index still imported
+  `./interaction/index.ts` after the file was renamed to `index.tsx`, so `bun run build` aborted with an unresolved
+  import.
+- Fix issue where the tour backdrop stayed visible after the tour was closed
+
 ## [5.39.1] - 2026-08-28
 
 ### Fixed

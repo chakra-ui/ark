@@ -1,5 +1,14 @@
 # @ark-ui/vue
 
+## [5.39.2] - 2026-09-11
+
+### Fixed
+
+- Fix `./hotkeys` and `./interaction` entrypoints missing from the published `exports` map. The build files shipped, but
+  the publish config (`clean-package`) maintains its own `exports` map and was never updated when the `hotkeys` and
+  `interaction` primitives were added, so `import { useHotkeys } from '@ark-ui/react/hotkeys'` failed with
+  `ERR_MODULE_NOT_FOUND`. Both entrypoints are now included in the published map for every framework.
+
 ## [5.39.1] - 2026-08-28
 
 ### Fixed
