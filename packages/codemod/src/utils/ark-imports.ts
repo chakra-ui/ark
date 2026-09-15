@@ -1,5 +1,12 @@
-import { Node, SyntaxKind } from 'ts-morph'
-import type { JsxOpeningElement, JsxSelfClosingElement, SourceFile } from 'ts-morph'
+import { Node } from 'ts-morph'
+import type {
+  ArrowFunction,
+  FunctionDeclaration,
+  FunctionExpression,
+  JsxOpeningElement,
+  JsxSelfClosingElement,
+  SourceFile,
+} from 'ts-morph'
 
 type JsxOpening = JsxOpeningElement | JsxSelfClosingElement
 
@@ -66,6 +73,10 @@ function nameResolvesToArk(
 
     if (imp.getDefaultImport()?.getText() === name || imp.getNamespaceImport()?.getText() === name) {
       if (isArk) return true
+      if (crossFile && imp.getDefaultImport()?.getText() === name) {
+        const target = imp.getModuleSpecifierSourceFile()
+        if (target && defaultExportResolvesToArk(target, crossFile, visited, depth + 1)) return true
+      }
     }
     for (const spec of imp.getNamedImports()) {
       const local = spec.getAliasNode()?.getText() ?? spec.getName()
@@ -134,7 +145,7 @@ function initializerIsArk(
     return nameResolvesToArk(file, getJsxBaseName(node), crossFile, visited, depth + 1)
   }
   if (Node.isCallExpression(node)) {
-    return node.getArguments().some((arg) => initializerIsArk(file, arg, crossFile, visited, depth + 1))
+    return initializerIsArk(file, node.getArguments()[0], crossFile, visited, depth + 1)
   }
   if (Node.isArrowFunction(node) || Node.isFunctionExpression(node)) {
     return returnedJsxBaseNames(node).some((base) => nameResolvesToArk(file, base, crossFile, visited, depth + 1))
@@ -142,26 +153,66 @@ function initializerIsArk(
   return false
 }
 
+const isFunctionNode = (node: Node): node is ArrowFunction | FunctionExpression | FunctionDeclaration =>
+  Node.isArrowFunction(node) || Node.isFunctionExpression(node) || Node.isFunctionDeclaration(node)
+
 function returnedJsxBaseNames(fn: Node): string[] {
   const bases: string[] = []
   const push = (expr: Node | undefined) => {
     if (!expr) return
     let node: Node = expr
-    while (Node.isParenthesizedExpression(node)) node = node.getExpression()
+    while (Node.isParenthesizedExpression(node) || Node.isJsxExpression(node)) {
+      const inner = node.getExpression()
+      if (!inner) return
+      node = inner
+    }
     if (Node.isJsxElement(node)) bases.push(getJsxBaseName(node.getOpeningElement().getTagNameNode()))
     else if (Node.isJsxSelfClosingElement(node)) bases.push(getJsxBaseName(node.getTagNameNode()))
+    else if (Node.isConditionalExpression(node)) {
+      push(node.getWhenTrue())
+      push(node.getWhenFalse())
+    } else if (Node.isBinaryExpression(node)) {
+      push(node.getLeft())
+      push(node.getRight())
+    } else if (Node.isJsxFragment(node)) {
+      for (const child of node.getJsxChildren()) push(child)
+    }
   }
 
-  const body =
-    Node.isArrowFunction(fn) || Node.isFunctionExpression(fn) || Node.isFunctionDeclaration(fn)
-      ? fn.getBody()
-      : undefined
+  const body = isFunctionNode(fn) ? fn.getBody() : undefined
   if (body && !Node.isBlock(body)) {
     push(body)
-  } else {
-    for (const ret of fn.getDescendantsOfKind(SyntaxKind.ReturnStatement)) push(ret.getExpression())
+  } else if (body) {
+    body.forEachDescendant((node, traversal) => {
+      if (isFunctionNode(node)) {
+        traversal.skip()
+        return
+      }
+      if (Node.isReturnStatement(node)) push(node.getExpression())
+    })
   }
   return bases
+}
+
+function defaultExportResolvesToArk(
+  file: SourceFile,
+  crossFile: boolean,
+  visited: Set<string>,
+  depth: number,
+): boolean {
+  if (depth > MAX_DEPTH) return false
+  for (const assignment of file.getExportAssignments()) {
+    if (assignment.isExportEquals()) continue
+    if (initializerIsArk(file, assignment.getExpression(), crossFile, visited, depth)) return true
+  }
+  for (const fn of file.getFunctions()) {
+    if (
+      fn.isDefaultExport() &&
+      returnedJsxBaseNames(fn).some((base) => nameResolvesToArk(file, base, crossFile, visited, depth + 1))
+    )
+      return true
+  }
+  return false
 }
 
 export function arkLocalNamesFromSource(source: string): Set<string> {

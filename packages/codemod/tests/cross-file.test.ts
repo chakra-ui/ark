@@ -109,6 +109,34 @@ describe('cross-file barrel resolution', () => {
     expect(on.code).toContain('<Button render={<a href="#">x</a>} />')
   })
 
+  it('resolves a default-exported wrapper across files (react)', () => {
+    write(
+      'prim.tsx',
+      `import { ark } from '@ark-ui/react/factory'\nimport { styled } from 'styled-system/jsx'\nexport default styled(ark.button, {})\n`,
+    )
+    const consumer = write('app.tsx', 'x')
+    const source = `import Button from './prim'\nconst A = () => <Button asChild><a href="#">x</a></Button>\n`
+
+    const off = reactAsChildToRender(source, consumer)
+    expect(off.code).toBeNull()
+
+    const on = reactAsChildToRender(source, consumer, { crossFile: true })
+    expect(on.count).toBe(1)
+    expect(on.code).toContain('<Button render={<a href="#">x</a>} />')
+  })
+
+  it('leaves a helper that only takes ark as a later argument alone (react)', () => {
+    write(
+      'prim.tsx',
+      `import { ark } from '@ark-ui/react/factory'\nconst wrap = (_config: unknown, _base: unknown) => (props: any) => <div {...props} />\nexport const Box = wrap({}, ark.button)\n`,
+    )
+    const consumer = write('app.tsx', 'x')
+    const source = `import { Box } from './prim'\nconst A = () => <Box asChild><a href="#">x</a></Box>\n`
+
+    const on = reactAsChildToRender(source, consumer, { crossFile: true })
+    expect(on.code).toBeNull()
+  })
+
   it('leaves a wrapper that does not bottom out at ark alone (react)', () => {
     write('prim.tsx', `import { styled } from 'styled-system/jsx'\nexport const Box = styled('div', {})\n`)
     const consumer = write('app.tsx', 'x')

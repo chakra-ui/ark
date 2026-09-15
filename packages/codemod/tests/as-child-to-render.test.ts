@@ -232,6 +232,31 @@ const A = () => <Btn asChild><a href="#">x</a></Btn>`,
     expect(result.code).toContain('<Btn render={<a href="#">x</a>} />')
   })
 
+  it('react ignores an ark element returned from a nested callback', () => {
+    const result = reactAsChildToRender(
+      `import { ark } from '@ark-ui/react/factory'
+const Box = () => {
+  const render = () => { return <ark.div /> }
+  return <section />
+}
+const A = () => <Box asChild><a href="#">x</a></Box>`,
+      'a.tsx',
+    )
+    expect(result.code).toBeNull()
+  })
+
+  it('react tracks a wrapper that returns ark conditionally', () => {
+    const result = reactAsChildToRender(
+      `import { ark } from '@ark-ui/react/factory'
+import { forwardRef } from 'react'
+const Btn = forwardRef((props, ref) => (props.hidden ? null : <ark.button ref={ref} {...props} />))
+const A = () => <Btn asChild><a href="#">x</a></Btn>`,
+      'a.tsx',
+    )
+    expect(result.count).toBe(1)
+    expect(result.code).toContain('<Btn render={<a href="#">x</a>} />')
+  })
+
   it('solid leaves a non-ark component alone', () => {
     const result = solidAsChildToRender(
       `import { Menu } from '@ark-ui/solid/menu'
