@@ -17,7 +17,7 @@ export const globalCss = defineGlobalStyles({
     display: 'flex',
     flexDirection: 'column',
     flexGrow: '1',
-    fontFamily: 'sans',
+    fontFamily: 'var(--font-wix-madefor-text), token(fonts.sans)',
     _dark: {
       colorScheme: 'dark',
     },
@@ -26,6 +26,10 @@ export const globalCss = defineGlobalStyles({
     borderColor: 'border.subtle',
     borderStyle: 'solid',
     boxSizing: 'border-box',
+  },
+  ':is(h1, h2, h3, h4, h5, h6, [data-scroll-target])': {
+    scrollMarginTop:
+      'calc(var(--navbar-height, 4rem) + var(--banner-height, 0px) + var(--tabbar-height, 3rem) + 1.5rem)',
   },
   '*::placeholder': {
     opacity: 1,
@@ -48,7 +52,7 @@ export const globalCss = defineGlobalStyles({
     color: 'fg.default!',
   },
   code: {
-    fontFamily: 'mono!',
+    fontFamily: 'var(--font-roboto-mono), token(fonts.mono)!',
     '::selection': {
       bg: 'gray.dark.a4',
     },

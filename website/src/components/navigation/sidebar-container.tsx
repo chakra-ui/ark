@@ -1,8 +1,6 @@
-import NextLink from 'next/link'
 import type { PropsWithChildren } from 'react'
 import { cx } from 'styled-system/css'
-import { Box, HStack } from 'styled-system/jsx'
-import { Logo } from '~/components/logo'
+import { Box } from 'styled-system/jsx'
 import { getFramework } from '~/lib/frameworks'
 import { VersionSelect } from './version-select'
 
@@ -18,15 +16,10 @@ export const SidebarContainer = async (props: PropsWithChildren<Props>) => {
 
   return (
     <aside className={cx('scroller', className)}>
-      <Box py="4.5" position="sticky" top="0" bg="inherit" zIndex="sticky" borderBottomWidth="1px">
-        <HStack justifyContent="space-between">
-          <NextLink href="/" aria-label="Go to start page">
-            <Logo />
-          </NextLink>
-          <div id="version-select">
-            <VersionSelect latest={version} />
-          </div>
-        </HStack>
+      <Box pt="6" pb="3">
+        <div id="version-select">
+          <VersionSelect latest={version} />
+        </div>
       </Box>
       {props.children}
     </aside>
