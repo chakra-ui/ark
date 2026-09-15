@@ -7,6 +7,7 @@ import { DocsSidebar } from '~/components/navigation/docs/docs-sidebar'
 import { DocsTabBar } from '~/components/navigation/docs/docs-tab-bar'
 import { Navbar } from '~/components/navigation/navbar'
 import { SidebarContainer } from '~/components/navigation/sidebar-container'
+import { getLatestVersion } from '~/lib/latest-version'
 import { getSidebarTabs } from '~/lib/sidebar'
 
 const styles = layout()
@@ -17,8 +18,9 @@ const shell = css({
   '--tabbar-height': '3rem',
 })
 
-export default function Layout(props: PropsWithChildren) {
+export default async function Layout(props: PropsWithChildren) {
   const tabs = getSidebarTabs()
+  const version = await getLatestVersion()
 
   return (
     <Box className={shell}>
@@ -29,11 +31,11 @@ export default function Layout(props: PropsWithChildren) {
         position="fixed"
         top="var(--navbar-height)"
         insetX="0"
-        zIndex="10"
+        zIndex="20"
         bg="bg.canvas"
         display={{ base: 'none', md: 'block' }}
       >
-        <DocsTabBar tabs={tabs} />
+        <DocsTabBar tabs={tabs} latestVersion={version} />
       </Box>
       <DocsNavbar tabs={tabs} />
       <Flex

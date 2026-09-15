@@ -7,6 +7,7 @@ import { css } from 'styled-system/css'
 import { Box, HStack } from 'styled-system/jsx'
 import { getActiveTab } from '~/lib/active-tab'
 import type { SidebarTab } from '~/lib/sidebar'
+import { VersionSelect } from '../version-select'
 
 const icons: Record<string, LucideIcon> = {
   guides: BookOpenIcon,
@@ -16,10 +17,11 @@ const icons: Record<string, LucideIcon> = {
 
 interface Props {
   tabs: SidebarTab[]
+  latestVersion?: string
 }
 
 export const DocsTabBar = (props: Props) => {
-  const { tabs } = props
+  const { tabs, latestVersion } = props
   const pathname = usePathname()
   const active = getActiveTab(pathname, tabs)
 
@@ -77,6 +79,11 @@ export const DocsTabBar = (props: Props) => {
             </NextLink>
           )
         })}
+        {latestVersion && (
+          <Box ms="auto" ps="4" flexShrink="0">
+            <VersionSelect latest={latestVersion} />
+          </Box>
+        )}
       </HStack>
     </Box>
   )

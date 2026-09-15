@@ -7,10 +7,6 @@ export const layout = defineSlotRecipe({
   slots: ['aside', 'main'],
   base: {
     aside: {
-      bg: {
-        base: 'gray.2',
-        _dark: '#0e0e0e',
-      },
       borderRightWidth: '1px',
       display: { base: 'none', md: 'block' },
       position: 'sticky',
@@ -20,6 +16,7 @@ export const layout = defineSlotRecipe({
       width: '18rem',
       ps: '6',
       pe: '6',
+      pt: '8',
       pb: '10',
       overflowY: 'auto',
       overscrollBehavior: 'contain',
