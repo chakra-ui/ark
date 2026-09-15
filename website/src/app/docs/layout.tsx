@@ -32,7 +32,7 @@ export default async function Layout(props: PropsWithChildren) {
         top="var(--navbar-height)"
         insetX="0"
         zIndex="20"
-        bg="bg.canvas"
+        background="var(--colors-bg-canvas)"
         display={{ base: 'none', md: 'block' }}
       >
         <DocsTabBar tabs={tabs} latestVersion={version} />

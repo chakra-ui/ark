@@ -12,7 +12,7 @@ export const globalCss = defineGlobalStyles({
     flexDirection: 'column',
   },
   body: {
-    background: 'bg.canvas',
+    background: 'var(--colors-bg-canvas)',
     color: 'fg.default',
     display: 'flex',
     flexDirection: 'column',

@@ -16,7 +16,6 @@ const standardizeGrayTokens = <T>(input: T): T =>
 
 export const parkPreset = definePreset({
   name: 'park-preset',
-  presets: ['@pandacss/preset-base'],
   conditions,
   globalCss,
   theme: {

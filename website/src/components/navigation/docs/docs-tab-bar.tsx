@@ -26,7 +26,7 @@ export const DocsTabBar = (props: Props) => {
   const active = getActiveTab(pathname, tabs)
 
   return (
-    <Box borderBottomWidth="1px" borderColor="border.default" bg="bg.canvas">
+    <Box borderBottomWidth="1px" borderColor="border.default" background="var(--colors-bg-canvas)">
       <HStack
         as="nav"
         aria-label="Documentation sections"
