@@ -32,12 +32,12 @@ export default async function Layout(props: PropsWithChildren) {
         top="var(--navbar-height)"
         insetX="0"
         zIndex="20"
-        background="var(--colors-bg-canvas)"
+        bg="bg.canvas"
         display={{ base: 'none', md: 'block' }}
       >
         <DocsTabBar tabs={tabs} latestVersion={version} />
       </Box>
-      <DocsNavbar tabs={tabs} />
+      <DocsNavbar tabs={tabs} latestVersion={version} />
       <Flex
         pt="calc(var(--navbar-height) + var(--banner-height) + var(--tabbar-height))"
         maxW="1440px"

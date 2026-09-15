@@ -7,10 +7,11 @@ import { DocsTabBar } from './docs-tab-bar'
 
 interface Props {
   tabs: SidebarTab[]
+  latestVersion?: string
 }
 
 export const DocsNavbar = (props: Props) => {
-  const { tabs } = props
+  const { tabs, latestVersion } = props
   return (
     <HStack
       height="12"
@@ -28,7 +29,7 @@ export const DocsNavbar = (props: Props) => {
       zIndex="2"
     >
       <MobileSidebarContainer>
-        <DocsTabBar tabs={tabs} />
+        <DocsTabBar tabs={tabs} latestVersion={latestVersion} />
         <DocsSidebar tabs={tabs} />
       </MobileSidebarContainer>
       <Breadcrumbs tabs={tabs} />
