@@ -91,8 +91,6 @@ const nextConfig = {
   },
 }
 
-const withMDX = createMDX({
-  macro: { include: ['**/src/lib/source.ts'] },
-})
+const withMDX = createMDX()
 
 export default withMDX(nextConfig)

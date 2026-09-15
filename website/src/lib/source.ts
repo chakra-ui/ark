@@ -1,38 +1,15 @@
 import { loader } from 'fumadocs-core/source'
-import { defineCollections } from 'fumadocs-mdx/macro'
-import { z } from 'zod'
+import { toFumadocsSource } from 'fumadocs-mdx/runtime/server'
+import type { ComponentType } from 'react'
+import { blog, pages } from '../../.source/server'
 
-const pagesCollection = defineCollections({
-  type: 'doc',
-  dir: 'src/content/pages',
-  schema: z.object({
-    id: z.string(),
-    title: z.string(),
-    subtitle: z.string().optional(),
-    description: z.string().optional(),
-    status: z.string().optional(),
-    metadata: z.record(z.string(), z.any()).optional(),
-  }),
-})
-
-const blogCollection = defineCollections({
-  type: 'doc',
-  dir: 'src/content/blog',
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    date: z.coerce.date(),
-    author: z.union([z.string(), z.array(z.string())]).optional(),
-    tags: z.array(z.string()).optional(),
-    image: z.string().optional(),
-  }),
-})
-
-export const docsSource = loader({ baseUrl: '/docs', source: pagesCollection.toFumadocsSource() })
-export const blogSource = loader({ baseUrl: '/blog', source: blogCollection.toFumadocsSource() })
+export const docsSource = loader({ baseUrl: '/docs', source: toFumadocsSource(pages, []) })
+export const blogSource = loader({ baseUrl: '/blog', source: toFumadocsSource(blog, []) })
 
 export type DocsPage = (typeof docsSource)['$inferPage']
-export type BlogPage = (typeof blogSource)['$inferPage']
+export type BlogPageData = (typeof blogSource)['$inferPage']
+
+type MDXBody = ComponentType<{ components?: Record<string, ComponentType<any>> }>
 
 export interface PageMeta {
   id: string
@@ -44,6 +21,27 @@ export interface PageMeta {
   slug: string
   category: string
   url: string
+}
+
+export interface TocEntry {
+  title: string
+  url: string
+  items: TocEntry[]
+}
+
+export interface PageWithToc extends PageMeta {
+  toc: TocEntry[]
+}
+
+export interface BlogMeta {
+  slug: string
+  title: string
+  description?: string
+  author?: string | string[]
+  date: string
+  tags?: string[]
+  image?: string
+  body: MDXBody
 }
 
 const toMeta = (page: DocsPage): PageMeta => ({
@@ -58,10 +56,34 @@ const toMeta = (page: DocsPage): PageMeta => ({
   url: page.url,
 })
 
+const tocEntries = (toc: DocsPage['data']['toc']): TocEntry[] =>
+  toc.map((item) => ({ title: typeof item.title === 'string' ? item.title : '', url: item.url, items: [] }))
+
 export const pageMetas = (): PageMeta[] => docsSource.getPages().map(toMeta)
+
+export const pagesWithToc = (): PageWithToc[] =>
+  docsSource.getPages().map((page) => ({ ...toMeta(page), toc: tocEntries(page.data.toc) }))
 
 export const findDocsPageBySlug = (slug: string): DocsPage | undefined =>
   docsSource.getPages().find((page) => page.slugs.join('/') === slug)
 
 export const findDocsPageById = (id: string): DocsPage | undefined =>
   docsSource.getPages().find((page) => page.data.id === id)
+
+export const getRawBySlug = async (slug: string): Promise<string> => {
+  const page = findDocsPageBySlug(slug)
+  return page ? await page.data.getText('raw') : ''
+}
+
+export const docsPageToc = (page: DocsPage): TocEntry[] => tocEntries(page.data.toc)
+
+export const blogs: BlogMeta[] = blogSource.getPages().map((page) => ({
+  slug: page.slugs.join('/'),
+  title: page.data.title,
+  description: page.data.description,
+  author: page.data.author,
+  date: page.data.date instanceof Date ? page.data.date.toISOString() : String(page.data.date),
+  tags: page.data.tags,
+  image: page.data.image,
+  body: page.data.body as MDXBody,
+}))

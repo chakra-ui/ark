@@ -2,7 +2,7 @@ import NextLink from 'next/link'
 import { css } from 'styled-system/css'
 import { Card } from '~/components/ui/card'
 import { Text } from '~/components/ui/text'
-import { blogs } from '.velite'
+import { blogs } from '~/lib/source'
 
 interface BlogCardGroupProps {
   match: string

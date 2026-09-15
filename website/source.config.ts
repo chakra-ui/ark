@@ -7,9 +7,36 @@ import {
   transformerNotationHighlight,
   transformerNotationWordHighlight,
 } from '@shikijs/transformers'
-import { defineConfig } from 'fumadocs-mdx/config'
+import { defineCollections, defineConfig } from 'fumadocs-mdx/config'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import { z } from 'zod'
 import remarkRemoveFirstHeading from './src/lib/remark-remove-first-heading'
+
+export const pages = defineCollections({
+  type: 'doc',
+  dir: 'src/content/pages',
+  schema: z.object({
+    id: z.string(),
+    title: z.string(),
+    subtitle: z.string().optional(),
+    description: z.string().optional(),
+    status: z.string().optional(),
+    metadata: z.record(z.string(), z.any()).optional(),
+  }),
+})
+
+export const blog = defineCollections({
+  type: 'doc',
+  dir: 'src/content/blog',
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    date: z.coerce.date(),
+    author: z.union([z.string(), z.array(z.string())]).optional(),
+    tags: z.array(z.string()).optional(),
+    image: z.string().optional(),
+  }),
+})
 
 export default defineConfig({
   mdxOptions: {

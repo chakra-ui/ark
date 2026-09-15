@@ -1,5 +1,5 @@
-import type { Framework } from '~/lib/frameworks'
-import { type Pages, pages } from '.velite'
+import { CHANGELOG_META } from './changelog'
+import { type PageMeta, findDocsPageById } from './source'
 import { sidebarConfig } from './sidebar-config'
 
 export interface SidebarItem {
@@ -16,50 +16,46 @@ export interface SidebarGroup {
 
 export interface SidebarGroupWithPages {
   title: string
-  items: Pages[]
+  items: PageMeta[]
 }
 
-// most pages are framework-agnostic ('*'); the changelogs exist once per framework
-const findPageById = (id: string, framework?: Framework): Pages | undefined =>
-  pages.find((p) => p.id === id && p.framework === '*') ??
-  (framework ? pages.find((p) => p.id === id && p.framework === framework) : undefined) ??
-  pages.find((p) => p.id === id)
+const resolveMeta = (id: string): PageMeta | undefined => {
+  if (id === 'changelog') return CHANGELOG_META
+  const page = findDocsPageById(id)
+  if (!page) return undefined
+  return {
+    id: page.data.id,
+    title: page.data.title,
+    subtitle: page.data.subtitle,
+    description: page.data.description,
+    status: page.data.status,
+    framework: '*',
+    slug: page.slugs.join('/'),
+    category: page.slugs[0] ?? '',
+    url: page.url,
+  }
+}
 
-export const getSidebarGroups = (): SidebarGroup[] => {
-  return sidebarConfig
-    .map((group) => {
-      const items: SidebarItem[] = []
-      for (const item of group.items) {
-        const page = findPageById(item.id)
-        if (page) {
-          items.push({
-            id: page.id,
-            title: item.title ?? page.title,
-            slug: page.slug,
-            status: page.status,
-          })
-        }
-      }
-      return { title: group.title, items }
-    })
+export const getSidebarGroups = (): SidebarGroup[] =>
+  sidebarConfig
+    .map((group) => ({
+      title: group.title,
+      items: group.items.flatMap((item) => {
+        const meta = resolveMeta(item.id)
+        return meta ? [{ id: meta.id, title: item.title ?? meta.title, slug: meta.slug, status: meta.status }] : []
+      }),
+    }))
     .filter((group) => group.items.length > 0)
-}
 
-// Returns full page objects for LLMs routes that need content
-export const getSidebarGroupsWithPages = (framework?: Framework): SidebarGroupWithPages[] => {
-  return sidebarConfig
-    .map((group) => {
-      const items: Pages[] = []
-      for (const item of group.items) {
-        const page = findPageById(item.id, framework)
-        if (page) {
-          items.push(page)
-        }
-      }
-      return { title: group.title, items }
-    })
+export const getSidebarGroupsWithPages = (): SidebarGroupWithPages[] =>
+  sidebarConfig
+    .map((group) => ({
+      title: group.title,
+      items: group.items.flatMap((item) => {
+        const meta = resolveMeta(item.id)
+        return meta ? [meta] : []
+      }),
+    }))
     .filter((group) => group.items.length > 0)
-}
 
-// Alias for backward compatibility
 export const getSidebarItems = getSidebarGroups

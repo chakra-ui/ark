@@ -9,7 +9,7 @@ import { Navbar } from '~/components/marketing/navbar'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import { MDXContent } from '~/mdx-content'
-import { blogs } from '.velite'
+import { blogs } from '~/lib/source'
 
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString('en-US', {
@@ -76,7 +76,7 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
         />
 
         <article className={css({ lineHeight: '1.75', color: 'var(--colors-prose-body)' })}>
-          <MDXContent code={blog.code} />
+          <MDXContent body={blog.body} />
         </article>
       </Container>
 
