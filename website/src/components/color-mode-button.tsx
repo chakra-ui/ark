@@ -1,23 +1,16 @@
 'use client'
-import { useIsClient } from '@uidotdev/usehooks'
 import { MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
-import { Box } from 'styled-system/jsx'
+import { css } from 'styled-system/css'
 import { IconButton } from '~/components/ui/icon-button'
 
 export const ColorModeButton = () => {
-  const isClient = useIsClient()
-  const { theme, setTheme } = useTheme()
-
-  if (!isClient) return <Box width="9" height="9" />
-
-  const handleClick = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light')
-  }
+  const { resolvedTheme, setTheme } = useTheme()
 
   return (
     <IconButton
-      onClick={handleClick}
+      onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+      aria-label="Toggle color mode"
       variant="ghost"
       size={{ base: 'md', md: 'sm' }}
       css={{
@@ -29,7 +22,8 @@ export const ColorModeButton = () => {
         },
       }}
     >
-      {theme === 'light' ? <SunIcon /> : <MoonIcon />}
+      <SunIcon className={css({ _dark: { display: 'none' } })} />
+      <MoonIcon className={css({ display: 'none', _dark: { display: 'block' } })} />
     </IconButton>
   )
 }
