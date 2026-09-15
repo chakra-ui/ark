@@ -9,6 +9,7 @@ export {
   default as ClipboardIndicator,
   type ClipboardIndicatorBaseProps,
   type ClipboardIndicatorProps,
+  type ClipboardIndicatorState,
 } from './clipboard-indicator.svelte'
 export {
   default as ClipboardInput,
@@ -37,7 +38,7 @@ export {
   type ClipboardValueTextProps,
 } from './clipboard-value-text.svelte'
 export { clipboardAnatomy } from './clipboard.anatomy.ts'
-export { ClipboardProvider, useClipboardContext } from './use-clipboard-context.ts'
+export { useClipboardContext } from './use-clipboard-context.ts'
 export type { UseClipboardContext } from './use-clipboard-context.ts'
 export { useClipboard } from './use-clipboard.svelte.ts'
 export type { UseClipboardProps, UseClipboardReturn } from './use-clipboard.svelte.ts'

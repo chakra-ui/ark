@@ -29,6 +29,7 @@ export {
   type SplitterRegistryProps,
   type SplitterRegistryReturn,
 } from './create-splitter-registry.ts'
+export { splitterAnatomy } from './splitter.anatomy.ts'
 export { useSplitterContext, type UseSplitterContext } from './use-splitter-context.ts'
 export { useSplitter, type UseSplitterProps, type UseSplitterReturn } from './use-splitter.svelte.ts'
 

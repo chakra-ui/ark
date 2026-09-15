@@ -38,7 +38,7 @@ export {
   type CheckboxRootState,
 } from './checkbox-root.svelte'
 export { checkboxAnatomy } from './checkbox.anatomy.ts'
-export { CheckboxProvider, useCheckboxContext } from './use-checkbox-context.ts'
+export { useCheckboxContext } from './use-checkbox-context.ts'
 export type { UseCheckboxContext } from './use-checkbox-context.ts'
 export { useCheckboxGroupContext } from './use-checkbox-group-context.ts'
 export type { UseCheckboxGroupContext } from './use-checkbox-group-context.ts'

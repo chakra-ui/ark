@@ -1,4 +1,5 @@
 export type {
+  EditChangeDetails as EditableEditChangeDetails,
   FocusOutsideEvent as EditableFocusOutsideEvent,
   InteractOutsideEvent as EditableInteractOutsideEvent,
   PointerDownOutsideEvent as EditablePointerDownOutsideEvent,

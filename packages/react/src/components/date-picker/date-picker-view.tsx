@@ -2,9 +2,9 @@
 
 import type { ViewProps } from '@zag-js/date-picker'
 import { forwardRef } from 'react'
+import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
-import { datePickerAnatomy } from './date-picker.anatomy.ts'
 import { useDatePickerContext } from './use-date-picker-context.ts'
 import { DatePickerViewPropsProvider } from './use-date-picker-view-props-context.ts'
 
@@ -16,15 +16,11 @@ const splitViewProps = createSplitProps<Required<ViewProps>>()
 export const DatePickerView = forwardRef<HTMLDivElement, DatePickerViewProps>((props, ref) => {
   const [viewProps, localProps] = splitViewProps(props, ['view'])
   const datePicker = useDatePickerContext()
+  const mergedProps = mergeProps(datePicker.getViewProps(viewProps), localProps)
 
   return (
     <DatePickerViewPropsProvider value={viewProps}>
-      <ark.div
-        hidden={datePicker.view !== viewProps.view}
-        {...datePickerAnatomy.build().view.attrs}
-        {...localProps}
-        ref={ref}
-      />
+      <ark.div {...mergedProps} ref={ref} />
     </DatePickerViewPropsProvider>
   )
 })

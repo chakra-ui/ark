@@ -64,7 +64,9 @@ See [docs/AS_CHILD_MIGRATION.md](./docs/AS_CHILD_MIGRATION.md) for what each one
 
 The React, Solid and Vue transforms only touch Ark UI parts — elements whose tag resolves to an `@ark-ui/*` import, following aliases (`import { Menu as M }`) and the `ark` factory. Another library's `asChild` (Radix, for one) in the same file is left alone, and a file that never imports Ark is skipped. The Svelte transform keys off the Ark-specific `asChild` snippet name instead.
 
-If you re-export Ark parts through a local barrel — `import { Menu } from '@/components/ui'` where `ui` re-exports `@ark-ui/react/menu` — pass `--cross-file` (React and Solid). It resolves the import back to `@ark-ui/*` through direct, transitive, aliased, `export *`, and import-then-reexport chains, using the nearest `tsconfig.json` for path aliases. It is off by default because it reads sibling files.
+A local wrapper counts as an Ark part when it bottoms out at one — `const Button = styled(ark.button, …)`, or a `forwardRef` that renders it. In-file wrappers are recognised on their own.
+
+If a wrapper or re-export crosses files — `import { Button } from '@/components/ui'` where `ui` wraps or re-exports `@ark-ui/react/*` — pass `--cross-file` (React and Solid). It follows `styled()`/`forwardRef` wrappers and direct, transitive, aliased, `export *`, and import-then-reexport chains back to `@ark-ui/*`, using the nearest `tsconfig.json` for path aliases. It is off by default because it reads sibling files.
 
 ## What it will not do
 

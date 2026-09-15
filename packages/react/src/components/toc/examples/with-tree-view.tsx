@@ -72,7 +72,10 @@ const TocTreeNode = ({ node, indexPath }: TreeView.NodeProviderProps<TocNode>) =
                 </TreeView.NodeIndicator>
               </TreeView.NodeExpandTrigger>
               <TreeView.NodeText className={treeStyles.NodeText}>
-                <a className={tocStyles.TreeLink} {...toc.getLinkProps({ item: { value: node.id, depth: node.depth } })}>
+                <a
+                  className={tocStyles.TreeLink}
+                  {...toc.getLinkProps({ item: { value: node.id, depth: node.depth } })}
+                >
                   {node.name}
                 </a>
               </TreeView.NodeText>

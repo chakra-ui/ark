@@ -8,6 +8,7 @@ import NestedExample from './examples/nested.vue'
 import ResizeIndicatorExample from './examples/resize-indicator.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import VerticalExample from './examples/vertical.vue'
+import DynamicCollapsibleExample from './examples/dynamic-collapsible.vue'
 
 const meta: Meta = {
   title: 'Components / Splitter',
@@ -67,6 +68,13 @@ export const ResizeIndicator = {
 export const RootProvider = {
   render: () => ({
     components: { Component: RootProviderExample },
+    template: '<Component />',
+  }),
+}
+
+export const DynamicCollapsible = {
+  render: () => ({
+    components: { Component: DynamicCollapsibleExample },
     template: '<Component />',
   }),
 }

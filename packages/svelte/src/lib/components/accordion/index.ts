@@ -9,7 +9,12 @@ export {
   type AccordionItemHeaderState,
 } from './accordion-item-header.svelte'
 export { default as AccordionContext, type AccordionContextProps } from './accordion-context.svelte'
-export { default as AccordionItem, type AccordionItemBaseProps, type AccordionItemProps } from './accordion-item.svelte'
+export {
+  default as AccordionItem,
+  type AccordionItemBaseProps,
+  type AccordionItemProps,
+  type AccordionItemState,
+} from './accordion-item.svelte'
 export {
   default as AccordionItemContent,
   type AccordionItemContentBaseProps,

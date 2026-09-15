@@ -1,8 +1,11 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { ItemProps } from '@zag-js/accordion'
+  import type { ItemProps, ItemState } from '@zag-js/accordion'
 
-  export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface AccordionItemState extends ItemState {}
+
+  export interface AccordionItemBaseProps
+    extends ItemProps, PolymorphicProps<'div', AccordionItemState>, RefAttribute {}
   export interface AccordionItemProps extends Assign<HTMLProps<'div'>, AccordionItemBaseProps> {}
 </script>
 
@@ -36,4 +39,5 @@
   ids={{ content: itemContentProps.id ?? undefined }}
   {...renderStrategy()}
   {...mergedProps}
+  state={itemState}
 />

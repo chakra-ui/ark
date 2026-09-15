@@ -8,6 +8,7 @@ import NestedExample from './examples/nested.svelte'
 import ResizeIndicatorExample from './examples/resize-indicator.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import VerticalExample from './examples/vertical.svelte'
+import DynamicCollapsibleExample from './examples/dynamic-collapsible.svelte'
 
 const meta: Meta = {
   title: 'Components/Splitter',
@@ -60,5 +61,11 @@ export const ResizeIndicator = {
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
+  }),
+}
+
+export const DynamicCollapsible = {
+  render: () => ({
+    Component: DynamicCollapsibleExample,
   }),
 }

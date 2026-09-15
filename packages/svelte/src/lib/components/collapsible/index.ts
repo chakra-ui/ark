@@ -28,7 +28,6 @@ export {
   type CollapsibleTriggerState,
 } from './collapsible-trigger.svelte'
 export { collapsibleAnatomy } from './collapsible.anatomy.ts'
-export { splitCollapsibleProps } from './split-collapsible-props.svelte.ts'
 export { useCollapsibleContext, type UseCollapsibleContext } from './use-collapsible-context.ts'
 export { useCollapsible, type UseCollapsibleProps, type UseCollapsibleReturn } from './use-collapsible.svelte.ts'
 

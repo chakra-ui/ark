@@ -15,6 +15,8 @@ import RootProviderExample from './examples/root-provider.svelte'
 import SelectOnHighlightExample from './examples/select-on-highlight.svelte'
 import WithFieldExample from './examples/with-field.svelte'
 import VirtualizedExample from './examples/virtualized.svelte'
+import OverflowExample from './examples/overflow.svelte'
+import SelectAllExample from './examples/select-all.svelte'
 
 const meta: Meta = {
   title: 'Components/Select',
@@ -112,5 +114,17 @@ export const LazyMount = {
 export const Virtualized = {
   render: () => ({
     Component: VirtualizedExample,
+  }),
+}
+
+export const Overflow = {
+  render: () => ({
+    Component: OverflowExample,
+  }),
+}
+
+export const SelectAll = {
+  render: () => ({
+    Component: SelectAllExample,
   }),
 }

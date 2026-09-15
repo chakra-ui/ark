@@ -16,6 +16,7 @@ import AutoHighlightExample from './examples/auto-highlight.svelte'
 import InlineAutocompleteExample from './examples/inline-autocomplete.svelte'
 import LimitResultsExample from './examples/limit-results.svelte'
 import VirtualizedExample from './examples/virtualized.svelte'
+import AsyncSearchExample from './examples/async-search.svelte'
 
 const meta: Meta = {
   title: 'Components / Combobox',
@@ -122,5 +123,11 @@ export const LimitResults = {
 export const Virtualized = {
   render: () => ({
     Component: VirtualizedExample,
+  }),
+}
+
+export const AsyncSearch = {
+  render: () => ({
+    Component: AsyncSearchExample,
   }),
 }

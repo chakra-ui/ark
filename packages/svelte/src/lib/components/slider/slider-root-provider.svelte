@@ -1,12 +1,16 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { RootState } from '@zag-js/slider'
   import type { UseSliderReturn } from './use-slider.svelte.ts'
+
+  export interface SliderRootProviderState extends RootState {}
 
   interface RootProviderProps {
     value: UseSliderReturn
   }
 
-  export interface SliderRootProviderBaseProps extends RootProviderProps, RefAttribute {}
+  export interface SliderRootProviderBaseProps
+    extends RootProviderProps, PolymorphicProps<'div', SliderRootProviderState>, RefAttribute {}
   export interface SliderRootProviderProps extends Assign<HTMLProps<'div'>, SliderRootProviderBaseProps> {}
 </script>
 
@@ -21,4 +25,4 @@
   SliderProvider(() => slider())
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={slider().getRootState()} />

@@ -25,6 +25,7 @@ export {
   default as PasswordInputRoot,
   type PasswordInputRootBaseProps,
   type PasswordInputRootProps,
+  type PasswordInputRootState,
 } from './password-input-root.svelte'
 export {
   default as PasswordInputRootProvider,

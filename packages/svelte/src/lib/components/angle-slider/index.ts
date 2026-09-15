@@ -35,6 +35,7 @@ export {
   default as AngleSliderRootProvider,
   type AngleSliderRootProviderBaseProps,
   type AngleSliderRootProviderProps,
+  type AngleSliderRootProviderState,
 } from './angle-slider-root-provider.svelte'
 export {
   default as AngleSliderThumb,
