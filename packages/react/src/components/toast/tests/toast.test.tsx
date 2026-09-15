@@ -30,4 +30,23 @@ describe('Toast', () => {
     expect(region).toHaveAccessibleName(expect.stringContaining('Alerts'))
     expect(region).not.toHaveAttribute('label')
   })
+
+  it('should forward dir to the machine, flipping the placement edge', () => {
+    render(<ComponentUnderTest dir="rtl" />)
+
+    const region = screen.getByRole('region')
+    expect(region).toHaveAttribute('dir', 'rtl')
+    expect(region.style.alignItems).toBe('flex-start')
+    expect(region.style.insetInlineStart).not.toBe('')
+  })
+
+  it('should forward getRootNode to the machine rather than the region element', async () => {
+    const getRootNode = vi.fn(() => document)
+    render(<ComponentUnderTest getRootNode={getRootNode} />)
+
+    await user.click(screen.getByText('Create Toast'))
+
+    expect(getRootNode).toHaveBeenCalled()
+    expect(screen.getByRole('region')).not.toHaveAttribute('getrootnode')
+  })
 })

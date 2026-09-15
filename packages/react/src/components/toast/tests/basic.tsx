@@ -1,10 +1,10 @@
-import { Toast, Toaster, createToaster } from '@ark-ui/react/toast'
+import { Toast, Toaster, type ToasterProps, createToaster } from '@ark-ui/react/toast'
 
 const toaster = createToaster({
   placement: 'bottom-end',
 })
 
-export const ComponentUnderTest = () => (
+export const ComponentUnderTest = (props: Partial<ToasterProps>) => (
   <div>
     <button
       type="button"
@@ -18,7 +18,7 @@ export const ComponentUnderTest = () => (
     >
       Create Toast
     </button>
-    <Toaster toaster={toaster} label="Alerts">
+    <Toaster toaster={toaster} label="Alerts" {...props}>
       {(toast) => (
         <Toast.Root key={toast.id}>
           <Toast.Title>{toast.title}</Toast.Title>
