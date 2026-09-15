@@ -1,6 +1,5 @@
 'use client'
-import { Collapsible } from '@ark-ui/react/collapsible'
-import { ChevronRightIcon, SparklesIcon } from 'lucide-react'
+import { SparklesIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Flex } from 'styled-system/jsx'
@@ -21,47 +20,32 @@ export const ExamplesSidebar = (props: Props) => {
 
   return (
     <nav>
-      <ul className={styles.root}>
-        {groups.map((group, id) => {
-          return (
-            <li key={id} className={styles.group}>
-              <Collapsible.Root defaultOpen>
-                <Collapsible.Trigger className={styles.trigger}>
-                  <span>{group.title}</span>
-                  <Icon size="sm" className={styles.indicator}>
-                    <ChevronRightIcon />
-                  </Icon>
-                </Collapsible.Trigger>
-                <Collapsible.Content>
-                  <ul>
-                    {group.items.map((item) => {
-                      const href = `/examples/${item.id}`
-                      return (
-                        <li key={item.id}>
-                          <NextLink
-                            href={href}
-                            aria-current={pathname === href ? 'page' : undefined}
-                            className={styles.link}
-                          >
-                            <Flex gap="2" align="center">
-                              <Text as="span">{item.title}</Text>
-                              {item.accessLevel === 'paid' && (
-                                <Icon width="3.5" height="3.5" color="colorPalette.default">
-                                  <SparklesIcon />
-                                </Icon>
-                              )}
-                            </Flex>
-                          </NextLink>
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </Collapsible.Content>
-              </Collapsible.Root>
-            </li>
-          )
-        })}
-      </ul>
+      <div className={styles.root}>
+        {groups.map((group, id) => (
+          <div key={id} className={styles.group}>
+            <p className={styles.label}>{group.title}</p>
+            <ul className={styles.list}>
+              {group.items.map((item) => {
+                const href = `/examples/${item.id}`
+                return (
+                  <li key={item.id}>
+                    <NextLink href={href} aria-current={pathname === href ? 'page' : undefined} className={styles.link}>
+                      <Flex gap="2" align="center">
+                        <Text as="span">{item.title}</Text>
+                        {item.accessLevel === 'paid' && (
+                          <Icon width="3.5" height="3.5" color="colorPalette.default">
+                            <SparklesIcon />
+                          </Icon>
+                        )}
+                      </Flex>
+                    </NextLink>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        ))}
+      </div>
     </nav>
   )
 }

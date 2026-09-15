@@ -1,11 +1,8 @@
 'use client'
-import { Collapsible } from '@ark-ui/react/collapsible'
-import { ChevronRightIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 import { Badge } from '~/components/ui/badge'
-import { Icon } from '~/components/ui/icon'
 import { getActiveTab } from '~/lib/active-tab'
 import type { SidebarTab } from '~/lib/sidebar'
 import { recipe } from '../sidebar.recipe'
@@ -30,56 +27,47 @@ export const DocsSidebar = (props: Props) => {
 
   return (
     <nav>
-      <ul className={styles.root}>
+      <div className={styles.root}>
         {groups.map((group) => (
-          <li key={group.title} className={styles.group}>
-            <Collapsible.Root defaultOpen>
-              <Collapsible.Trigger className={styles.trigger}>
-                <span>{group.title}</span>
-                <Icon size="sm" className={styles.indicator}>
-                  <ChevronRightIcon />
-                </Icon>
-              </Collapsible.Trigger>
-              <Collapsible.Content>
-                <ul>
-                  {group.items.map((item) => {
-                    const href = `/docs/${item.slug}`
-                    const isCurrent = pathname === href
-                    return (
-                      <li key={item.id}>
-                        <NextLink
-                          ref={isCurrent ? currentRef : undefined}
-                          href={href}
-                          aria-current={isCurrent ? 'page' : undefined}
-                          className={styles.link}
+          <div key={group.title} className={styles.group}>
+            <p className={styles.label}>{group.title}</p>
+            <ul className={styles.list}>
+              {group.items.map((item) => {
+                const href = `/docs/${item.slug}`
+                const isCurrent = pathname === href
+                return (
+                  <li key={item.id}>
+                    <NextLink
+                      ref={isCurrent ? currentRef : undefined}
+                      href={href}
+                      aria-current={isCurrent ? 'page' : undefined}
+                      className={styles.link}
+                    >
+                      {item.title}
+                      {item.status && (
+                        <Badge
+                          textTransform="capitalize"
+                          size="sm"
+                          data-status={item.status}
+                          css={{
+                            '&[data-status=new]': {
+                              bg: 'colorPalette.default',
+                              color: 'colorPalette.fg',
+                              borderColor: 'transparent',
+                            },
+                          }}
                         >
-                          {item.title}
-                          {item.status && (
-                            <Badge
-                              textTransform="capitalize"
-                              size="sm"
-                              data-status={item.status}
-                              css={{
-                                '&[data-status=new]': {
-                                  bg: 'colorPalette.default',
-                                  color: 'colorPalette.fg',
-                                  borderColor: 'transparent',
-                                },
-                              }}
-                            >
-                              {item.status}
-                            </Badge>
-                          )}
-                        </NextLink>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </Collapsible.Content>
-            </Collapsible.Root>
-          </li>
+                          {item.status}
+                        </Badge>
+                      )}
+                    </NextLink>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
         ))}
-      </ul>
+      </div>
     </nav>
   )
 }
