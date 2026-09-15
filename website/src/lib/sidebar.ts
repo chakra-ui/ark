@@ -1,6 +1,6 @@
 import { CHANGELOG_META } from './changelog'
 import { type PageMeta, findDocsPageById } from './source'
-import { sidebarConfig } from './sidebar-config'
+import { type SidebarGroupConfig, sidebarConfig } from './sidebar-config'
 
 export interface SidebarItem {
   id: string
@@ -12,6 +12,14 @@ export interface SidebarItem {
 export interface SidebarGroup {
   title: string
   items: SidebarItem[]
+}
+
+export interface SidebarTab {
+  key: string
+  title: string
+  categories: string[]
+  landingSlug?: string
+  groups: SidebarGroup[]
 }
 
 export interface SidebarGroupWithPages {
@@ -36,8 +44,8 @@ const resolveMeta = (id: string): PageMeta | undefined => {
   }
 }
 
-export const getSidebarGroups = (): SidebarGroup[] =>
-  sidebarConfig
+const resolveGroups = (groups: SidebarGroupConfig[]): SidebarGroup[] =>
+  groups
     .map((group) => ({
       title: group.title,
       items: group.items.flatMap((item) => {
@@ -47,8 +55,21 @@ export const getSidebarGroups = (): SidebarGroup[] =>
     }))
     .filter((group) => group.items.length > 0)
 
+export const getSidebarTabs = (): SidebarTab[] =>
+  sidebarConfig
+    .map((tab) => {
+      const groups = resolveGroups(tab.groups)
+      const slugs = groups.flatMap((group) => group.items.map((item) => item.slug))
+      const categories = [...new Set(slugs.map((slug) => slug.split('/')[0]))]
+      return { key: tab.key, title: tab.title, categories, landingSlug: slugs[0], groups }
+    })
+    .filter((tab) => tab.groups.length > 0)
+
+export const getSidebarGroups = (): SidebarGroup[] => getSidebarTabs().flatMap((tab) => tab.groups)
+
 export const getSidebarGroupsWithPages = (): SidebarGroupWithPages[] =>
   sidebarConfig
+    .flatMap((tab) => tab.groups)
     .map((group) => ({
       title: group.title,
       items: group.items.flatMap((item) => {

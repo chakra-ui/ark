@@ -6,19 +6,21 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 import { Badge } from '~/components/ui/badge'
 import { Icon } from '~/components/ui/icon'
-import type { SidebarGroup } from '~/lib/sidebar'
+import { getActiveTab } from '~/lib/active-tab'
+import type { SidebarTab } from '~/lib/sidebar'
 import { recipe } from '../sidebar.recipe'
 
 const styles = recipe()
 
 interface Props {
-  groups: SidebarGroup[]
+  tabs: SidebarTab[]
 }
 
 export const DocsSidebar = (props: Props) => {
-  const { groups } = props
+  const { tabs } = props
   const pathname = usePathname()
   const currentRef = useRef<HTMLAnchorElement>(null)
+  const groups = getActiveTab(pathname, tabs)?.groups ?? []
 
   // On load the sidebar starts at the top, so a page low in the list is scrolled out of sight.
   // `nearest` brings it in without moving anything when it is already visible.

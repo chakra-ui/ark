@@ -1,11 +1,16 @@
 import { HStack } from 'styled-system/jsx'
-import { getSidebarItems } from '~/lib/sidebar'
+import type { SidebarTab } from '~/lib/sidebar'
 import { Breadcrumbs } from '../breadcrumbs'
 import { MobileSidebarContainer } from '../mobile-sidebar-container'
 import { DocsSidebar } from './docs-sidebar'
+import { DocsTabBar } from './docs-tab-bar'
 
-export const DocsNavbar = () => {
-  const groups = getSidebarItems()
+interface Props {
+  tabs: SidebarTab[]
+}
+
+export const DocsNavbar = (props: Props) => {
+  const { tabs } = props
   return (
     <HStack
       height="12"
@@ -23,9 +28,10 @@ export const DocsNavbar = () => {
       zIndex="2"
     >
       <MobileSidebarContainer>
-        <DocsSidebar groups={groups} />
+        <DocsTabBar tabs={tabs} />
+        <DocsSidebar tabs={tabs} />
       </MobileSidebarContainer>
-      <Breadcrumbs />
+      <Breadcrumbs tabs={tabs} />
     </HStack>
   )
 }
