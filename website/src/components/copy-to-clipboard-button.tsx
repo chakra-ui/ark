@@ -1,5 +1,5 @@
 'use client'
-import { useCopyToClipboard } from '@uidotdev/usehooks'
+import { useCopyToClipboard } from '~/lib/use-hooks'
 import { CheckIcon, CopyIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { IconButton } from '~/components/ui/icon-button'
@@ -10,7 +10,7 @@ interface Props {
 
 export const CopyToClipboardButton = (props: Props) => {
   const { content } = props
-  const [_, copyToClipboard] = useCopyToClipboard()
+  const copyToClipboard = useCopyToClipboard()
   const [visible, setVisible] = useState(true)
 
   useEffect(() => {
