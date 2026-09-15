@@ -5,6 +5,7 @@ export const globalCss = defineGlobalStyles({
     colorPalette: 'coral',
     scrollPaddingTop: '6rem',
     minHeight: '100%',
+    '--global-color-border': 'colors.border.subtle',
   },
   'html, body': {
     display: 'flex',
