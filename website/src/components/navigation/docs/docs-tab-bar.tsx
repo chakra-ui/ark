@@ -62,7 +62,7 @@ export const DocsTabBar = (props: Props) => {
               transitionProperty: 'color',
               transitionDuration: 'normal',
               _hover: { color: 'fg.default' },
-              '& svg': { width: '4', height: '4', color: 'var(--colors-red-9)', fill: 'var(--colors-red-9)' },
+              '& svg': { width: '4', height: '4', color: 'red.9', fill: 'red.9' },
             })}
           >
             <HeartIcon />

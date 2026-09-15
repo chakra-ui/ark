@@ -8,7 +8,7 @@ export const NavbarContainer = (props: BoxProps) => {
       top="0"
       width="full"
       minH="var(--navbar-height, 4rem)"
-      background="var(--colors-bg-canvas)"
+      bg="bg.canvas"
       zIndex="20"
       borderBottomWidth="1px"
       borderColor={{ _light: 'border.subtle', _dark: 'black' }}
