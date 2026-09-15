@@ -7,7 +7,7 @@
  * with that framework's examples and prop tables inlined, so
  * corpus + examples + types is an upper bound on the response.
  */
-import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
+import { existsSync, readdirSync, statSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 
 const VERCEL_LIMIT_BYTES = 20_000_000
@@ -21,7 +21,7 @@ const FRAMEWORKS = [
 ] as const
 
 const root = resolve('..')
-const pagesPath = join(root, 'website/.velite/pages.json')
+const pagesDir = join(root, 'website/src/content/pages')
 
 const dirBytes = (dir: string): number => {
   if (!existsSync(dir)) return 0
@@ -40,13 +40,12 @@ const exampleBytes = (framework: (typeof FRAMEWORKS)[number]) => {
 }
 
 const main = () => {
-  if (!existsSync(pagesPath)) {
-    console.error(`No velite output at ${pagesPath}. Run \`bunx velite build\` in website/ first.`)
+  if (!existsSync(pagesDir)) {
+    console.error(`No content at ${pagesDir}.`)
     process.exit(1)
   }
 
-  const pages: { llm?: string }[] = JSON.parse(readFileSync(pagesPath, 'utf-8'))
-  const corpus = pages.reduce((sum, page) => sum + Buffer.byteLength(page.llm ?? '', 'utf8'), 0)
+  const corpus = dirBytes(pagesDir)
   const mb = (bytes: number) => `${(bytes / 1e6).toFixed(2)}MB`
 
   const bounds = FRAMEWORKS.map((framework) => ({

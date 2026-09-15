@@ -1,4 +1,4 @@
-import { showcases } from '.velite'
+import { showcases } from '~/lib/showcases'
 import { Container, Grid, Stack } from 'styled-system/jsx'
 import { SectionHeader } from '../section-header'
 import { ShowcaseCard } from '../showcase-card'

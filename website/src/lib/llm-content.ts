@@ -1,8 +1,11 @@
 import { type AccessibilityDocKey, type DataAttrDocKey, getAccessibilityDoc, getDataAttrDoc } from '@zag-js/docs'
 import { frameworkExample } from '~/components/example'
 import { cmdMap } from '~/components/install-cmd'
-import type { Pages } from '.velite'
-import { types } from '.velite'
+import { getChangelogContent, isChangelogSlug } from './changelog'
+import { replaceContextType } from './mdx-transform'
+import type { PageMeta } from './source'
+import { getRawBySlug } from './source'
+import { types } from './types-source'
 
 // Constants for regex patterns
 const PATTERNS = {
@@ -127,7 +130,7 @@ const applyReplacements = (content: string, rest: string) => {
   return res
 }
 
-const replaceExamples = async (content: string, page: Pages, framework: string) => {
+const replaceExamples = async (content: string, page: PageMeta, framework: string) => {
   const examples = content.match(PATTERNS.EXAMPLE) || []
   let res = content
 
@@ -146,9 +149,10 @@ const replaceExamples = async (content: string, page: Pages, framework: string) 
   return res
 }
 
-export const cleanupPageContent = async (page: Pages, framework: 'react' | 'solid' | 'vue' | 'svelte') => {
-  if (!page.llm) return ''
-  let res = page.llm
+export const cleanupPageContent = async (page: PageMeta, framework: 'react' | 'solid' | 'vue' | 'svelte') => {
+  const raw = isChangelogSlug(page.slug) ? getChangelogContent(framework) : await getRawBySlug(page.slug)
+  if (!raw) return ''
+  let res = replaceContextType(raw)
 
   // Remove unwanted components
   res = res.replace(PATTERNS.ANATOMY, '')

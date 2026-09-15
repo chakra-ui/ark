@@ -6,7 +6,7 @@ import { Navbar } from '~/components/marketing/navbar'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import { Card } from '../../components/ui/card'
-import { blogs } from '.velite'
+import { blogs } from '~/lib/source'
 
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString('en-US', {
