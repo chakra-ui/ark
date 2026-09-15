@@ -56,8 +56,18 @@ const toMeta = (page: DocsPage): PageMeta => ({
   url: page.url,
 })
 
+const tocText = (node: unknown): string => {
+  if (node == null || node === false) return ''
+  if (typeof node === 'string' || typeof node === 'number') return String(node)
+  if (Array.isArray(node)) return node.map(tocText).join('')
+  if (typeof node === 'object' && 'props' in node) {
+    return tocText((node as { props?: { children?: unknown } }).props?.children)
+  }
+  return ''
+}
+
 const tocEntries = (toc: DocsPage['data']['toc']): TocEntry[] =>
-  toc.map((item) => ({ title: typeof item.title === 'string' ? item.title : '', url: item.url, items: [] }))
+  toc.map((item) => ({ title: tocText(item.title), url: item.url, items: [] }))
 
 export const pageMetas = (): PageMeta[] => docsSource.getPages().map(toMeta)
 

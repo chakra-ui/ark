@@ -48,13 +48,25 @@ export const VersionSelect = (props: Props) => {
       <Select.Control py={{ base: '1', md: '0' }}>
         <Select.Trigger
           css={{
+            display: 'inline-flex',
+            alignItems: 'center',
             color: 'fg.muted',
             fontWeight: 'medium',
+            textStyle: 'sm',
             width: 'fit-content',
-            _hover: { color: 'fg.default', '& :where(svg)': { color: 'fg.default' } },
-            height: '6',
-            gap: '0.5',
-            px: '2',
+            height: '8',
+            gap: '1',
+            px: '2.5',
+            borderWidth: '1px',
+            borderColor: 'border.default',
+            rounded: 'md',
+            transitionProperty: 'color, border-color',
+            transitionDuration: 'normal',
+            _hover: {
+              color: 'fg.default',
+              borderColor: 'border.emphasized',
+              '& :where(svg)': { color: 'fg.default' },
+            },
           }}
         >
           <Select.ValueText placeholder="Select a Framework" />

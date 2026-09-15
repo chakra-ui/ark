@@ -4,8 +4,8 @@ import { parkPreset } from '~/theme'
 
 export default defineConfig({
   preflight: true,
-  validation: 'none',
-  presets: ['@pandacss/preset-panda', parkPreset, typographyPreset({ notProse: true })],
+
+  presets: ['@pandacss/preset-base', '@pandacss/preset-panda', parkPreset, typographyPreset({ notProse: true })],
   include: ['./src/**/*.{js,jsx,ts,tsx}'],
   jsxFramework: 'react',
   outdir: 'styled-system',

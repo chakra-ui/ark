@@ -4,8 +4,14 @@ import { usePathname } from 'next/navigation'
 import { Fragment } from 'react'
 import { Box, HStack } from 'styled-system/jsx'
 import { Text } from '~/components/ui/text'
+import { getActiveTab } from '~/lib/active-tab'
+import type { SidebarTab } from '~/lib/sidebar'
 
-export const Breadcrumbs = () => {
+interface Props {
+  tabs?: SidebarTab[]
+}
+
+export const Breadcrumbs = (props: Props) => {
   const pathname = usePathname()
   const crumbs = pathname
     .split('/')
@@ -13,6 +19,11 @@ export const Breadcrumbs = () => {
     .filter((path) => !['docs', 'react', 'vue', 'solid', 'usage', 'types'].includes(path))
     .map((path) => path.replace(/-/g, ' '))
     .map((item) => item.charAt(0).toUpperCase() + item.substring(1))
+
+  const tabTitle = props.tabs ? getActiveTab(pathname, props.tabs)?.title : undefined
+  if (tabTitle && crumbs[0]?.toLowerCase() !== tabTitle.toLowerCase()) {
+    crumbs.unshift(tabTitle)
+  }
 
   return (
     <HStack gap="1">
