@@ -1,5 +1,21 @@
 # @ark-ui/svelte
 
+## [5.24.3] - 2026-09-15
+
+### Fixed
+
+- Fix `Dialog.Description` and `Popover.Description` rendering a `p` element. React, Solid and Vue render a `div`, so a
+  stylesheet or a nested block element written against one stack broke on the other.
+- Fix `Select.ValueText` rendering its `placeholder` as a DOM attribute. The component spread every prop onto the
+  underlying `span`, so the fallback text showed up as `placeholder="…"` in the markup. `Listbox.ValueText` and
+  `DatePicker.ValueText` already split it out.
+- Fix `Tabs.Content` omitting the presence props. The content merged only the machine props, so it never carried
+  `data-state="open" | "closed"` (the React, Solid and Vue implementations do) and it was hidden the moment the tab
+  changed, cutting exit animations short.
+- Fix `Tooltip.Root` ignoring a controlled `open` prop. The root destructured `open` out of its props and never passed
+  it to the machine, so `<Tooltip.Root open={true}>` (or a `bind:open` the parent drives) rendered a closed tooltip. The
+  other popper roots (`Dialog`, `Popover`, `HoverCard`) already forward it.
+
 ## [5.24.2] - 2026-09-11
 
 ### Fixed
