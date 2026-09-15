@@ -1,0 +1,271 @@
+{
+  "ClearTrigger": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Content": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Control": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "HiddenInput": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Indicator": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ItemIndicator": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Item": {
+    "props": {
+      "indexPath": { "type": "IndexPath", "isRequired": true, "description": "The index path of the item" },
+      "value": { "type": "string[]", "isRequired": true, "description": "The value path of the item" },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "item": { "type": "any", "isRequired": false, "description": "The item to render" }
+    }
+  },
+  "ItemText": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "List": {
+    "props": {
+      "indexPath": { "type": "IndexPath", "isRequired": true, "description": "The index path of the item" },
+      "value": { "type": "string[]", "isRequired": true, "description": "The value path of the item" },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "item": { "type": "any", "isRequired": false, "description": "The item to render" }
+    }
+  },
+  "Positioner": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Root": {
+    "props": {
+      "collection": { "type": "TreeCollection<T>", "isRequired": true, "description": "The tree collection data" },
+      "allowParentSelection": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether parent (branch) items can be selectable"
+      },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "closeOnSelect": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether the cascade-select should close when an item is selected"
+      },
+      "defaultHighlightedValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The initial highlighted value of the cascade-select when rendered."
+      },
+      "defaultOpen": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The initial open state of the cascade-select when rendered.\nUse when you don't need to control the open state."
+      },
+      "defaultValue": {
+        "type": "string[][]",
+        "isRequired": false,
+        "description": "The initial value of the cascade-select when rendered.\nUse when you don't need to control the value."
+      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the cascade-select is disabled" },
+      "form": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The associate form of the underlying input element"
+      },
+      "formatValue": {
+        "type": "(selectedItems: T[][]) => string",
+        "isRequired": false,
+        "description": "Function to format the display value"
+      },
+      "highlightedValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The controlled highlighted value of the cascade-select"
+      },
+      "highlightTrigger": {
+        "type": "'click' | 'hover'",
+        "defaultValue": "\"click\"",
+        "isRequired": false,
+        "description": "What triggers highlighting of items"
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  trigger: string\n  indicator: string\n  clearTrigger: string\n  positioner: string\n  content: string\n  hiddenInput: string\n  list(valuePath: string): string\n  item(valuePath: string): string\n}>",
+        "isRequired": false,
+        "description": "The ids of the cascade-select elements. Useful for composition."
+      },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the cascade-select is invalid" },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "loopFocus": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the cascade-select should loop focus when navigating with keyboard"
+      },
+      "modelValue": {
+        "type": "string[][]",
+        "isRequired": false,
+        "description": "The v-model value of the cascade-select"
+      },
+      "multiple": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow multiple selections"
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The name attribute of the underlying input element"
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The controlled open state of the cascade-select"
+      },
+      "positioning": {
+        "type": "PositioningOptions",
+        "isRequired": false,
+        "description": "The positioning options for the cascade-select content"
+      },
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the cascade-select is read-only" },
+      "required": { "type": "boolean", "isRequired": false, "description": "Whether the cascade-select is required" },
+      "scrollToIndexFn": {
+        "type": "(details: ScrollToIndexDetails) => void",
+        "isRequired": false,
+        "description": "Function to scroll to a specific index in a list"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
+    }
+  },
+  "RootProvider": {
+    "emits": {
+      "exitComplete": {
+        "type": "[]",
+        "isRequired": true,
+        "description": "Function called when the animation ends in the closed state"
+      }
+    },
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      },
+      "value": { "type": "any", "isRequired": false }
+    }
+  },
+  "Trigger": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ValueText": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "placeholder": { "type": "string", "isRequired": false }
+    }
+  }
+}
