@@ -18,7 +18,7 @@ export const ComponentUnderTest = () => (
     >
       Create Toast
     </button>
-    <Toaster toaster={toaster}>
+    <Toaster toaster={toaster} label="Alerts">
       {(toast) => (
         <Toast.Root key={toast.id}>
           <Toast.Title>{toast.title}</Toast.Title>

@@ -12,6 +12,11 @@ export type ToastOptions = toast.Options<VNodeChild>
 
 export interface ToasterBaseProps extends PolymorphicProps {
   toaster: CreateToasterReturn<any>
+  /**
+   * The human-readable label for the toast region.
+   * @default "Notifications"
+   */
+  label?: string | undefined
 }
 
 export interface ToasterProps
@@ -42,7 +47,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="api.getGroupProps()">
+  <ark.div v-bind="api.getGroupProps({ label: props.label })">
     <ToasterItem
       v-for="(toastItem, index) in api.getToasts()"
       :key="toastItem.id"

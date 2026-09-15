@@ -22,4 +22,12 @@ describe('Toast', () => {
 
     await waitFor(() => expect(screen.queryByText('Title')).not.toBeInTheDocument())
   })
+
+  it('should forward the label to the toast region', () => {
+    render(<ComponentUnderTest />)
+
+    const region = screen.getByRole('region')
+    expect(region).toHaveAccessibleName(expect.stringContaining('Alerts'))
+    expect(region).not.toHaveAttribute('label')
+  })
 })
