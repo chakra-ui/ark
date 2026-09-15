@@ -7,6 +7,7 @@ import LazyMount from './examples/lazy-mount.svelte'
 import ManualActivation from './examples/manual-activation.svelte'
 import RootProvider from './examples/root-provider.svelte'
 import Vertical from './examples/vertical.svelte'
+import LinksExample from './examples/links.svelte'
 
 const meta = {
   title: 'Components / Tabs',
@@ -67,5 +68,11 @@ export const RootProviderStory = {
   name: 'Root Provider',
   render: () => ({
     Component: RootProvider,
+  }),
+}
+
+export const Links = {
+  render: () => ({
+    Component: LinksExample,
   }),
 }

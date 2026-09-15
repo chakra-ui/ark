@@ -29,20 +29,20 @@ export {
   type DialogDescriptionProps,
 } from './dialog-description.svelte'
 export {
-  default as Positioner,
+  default as DialogPositioner,
   type DialogPositionerBaseProps,
   type DialogPositionerProps,
   type DialogPositionerState,
 } from './dialog-positioner.svelte'
-export { default as Root, type DialogRootBaseProps, type DialogRootProps } from './dialog-root.svelte'
+export { default as DialogRoot, type DialogRootBaseProps, type DialogRootProps } from './dialog-root.svelte'
 export {
-  default as RootProvider,
+  default as DialogRootProvider,
   type DialogRootProviderBaseProps,
   type DialogRootProviderProps,
 } from './dialog-root-provider.svelte'
-export { default as Title, type DialogTitleBaseProps, type DialogTitleProps } from './dialog-title.svelte'
+export { default as DialogTitle, type DialogTitleBaseProps, type DialogTitleProps } from './dialog-title.svelte'
 export {
-  default as Trigger,
+  default as DialogTrigger,
   type DialogTriggerBaseProps,
   type DialogTriggerProps,
   type DialogTriggerState,

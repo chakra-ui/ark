@@ -18,6 +18,7 @@ import SelectOnHighlightExample from './examples/select-on-highlight.vue'
 import ShadowRootExample from './examples/shadow-root.vue'
 import WithFieldExample from './examples/with-field.vue'
 import VirtualizedExample from './examples/virtualized.vue'
+import OverflowExample from './examples/overflow.vue'
 
 const meta: Meta = {
   title: 'Components / Select',
@@ -147,6 +148,13 @@ export const WithField = {
 export const Virtualized = {
   render: () => ({
     components: { Component: VirtualizedExample },
+    template: '<Component />',
+  }),
+}
+
+export const Overflow = {
+  render: () => ({
+    components: { Component: OverflowExample },
     template: '<Component />',
   }),
 }

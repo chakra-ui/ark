@@ -2,7 +2,6 @@ export type {
   CropChangeDetails as ImageCropperCropChangeDetails,
   FlipChangeDetails as ImageCropperFlipChangeDetails,
   FlipState as ImageCropperFlipState,
-  GetCroppedImageOptions as ImageCropperGetCroppedImageOptions,
   HandlePosition as ImageCropperHandlePosition,
   RotationChangeDetails as ImageCropperRotationChangeDetails,
   ZoomChangeDetails as ImageCropperZoomChangeDetails,

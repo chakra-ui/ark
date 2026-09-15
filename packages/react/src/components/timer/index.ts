@@ -1,3 +1,4 @@
+export type { TickDetails as TimerTickDetails } from '@zag-js/timer'
 export {
   TimerActionTrigger,
   type TimerActionTriggerBaseProps,

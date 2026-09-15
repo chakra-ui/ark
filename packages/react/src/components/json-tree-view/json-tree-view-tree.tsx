@@ -5,7 +5,9 @@ import { createSplitProps } from '../../utils/create-split-props.ts'
 import { TreeView, useTreeViewContext } from '../tree-view/index.ts'
 import { JsonTreeViewNode, type JsonTreeViewNodeBaseProps } from './json-tree-view-node.tsx'
 
-export interface JsonTreeViewTreeProps extends TreeView.TreeProps, JsonTreeViewNodeBaseProps {}
+export interface JsonTreeViewTreeBaseProps extends JsonTreeViewNodeBaseProps {}
+
+export interface JsonTreeViewTreeProps extends TreeView.TreeProps, JsonTreeViewTreeBaseProps {}
 
 const splitTreeNodeProps = createSplitProps<JsonTreeViewNodeBaseProps>()
 

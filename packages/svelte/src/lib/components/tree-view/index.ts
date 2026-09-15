@@ -94,8 +94,6 @@ export { useTreeViewContext } from './use-tree-view-context.ts'
 export type { UseTreeViewContext } from './use-tree-view-context.ts'
 export { useTreeViewNodeContext } from './use-tree-view-node-context.ts'
 export type { UseTreeViewNodeContext } from './use-tree-view-node-context.ts'
-export { useTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
-export type { UseTreeViewNodePropsContext } from './use-tree-view-node-props-context.ts'
 export { useTreeView } from './use-tree-view.svelte.ts'
 export type { UseTreeViewProps, UseTreeViewReturn } from './use-tree-view.svelte.ts'
 

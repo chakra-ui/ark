@@ -19,7 +19,6 @@ export interface DatePickerViewProps
 import { ark } from '../factory.ts'
 import { useDatePickerContext } from './use-date-picker-context.ts'
 import { DatePickerViewPropsProvider } from './use-date-picker-view-props-context.ts'
-import { datePickerAnatomy } from './date-picker.anatomy.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<DatePickerViewProps>()
@@ -30,7 +29,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="datePickerAnatomy.build().view.attrs" :hidden="datePicker.view !== view" :as-child="asChild">
+  <ark.div v-bind="datePicker.getViewProps({ view })" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

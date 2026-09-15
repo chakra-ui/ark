@@ -13,6 +13,7 @@ import WithDialogExample from './examples/with-dialog.vue'
 import WithMenuItemExample from './examples/with-menu-item.vue'
 import WithMenuTriggerExample from './examples/with-menu-trigger.vue'
 import WithPopoverExample from './examples/with-popover.vue'
+import WithinFixedExample from './examples/within-fixed.vue'
 
 const meta: Meta = {
   title: 'Components / Tooltip',
@@ -107,6 +108,13 @@ export const WithMenuTrigger = {
 export const WithPopover = {
   render: () => ({
     components: { Component: WithPopoverExample },
+    template: '<Component />',
+  }),
+}
+
+export const WithinFixed = {
+  render: () => ({
+    components: { Component: WithinFixedExample },
     template: '<Component />',
   }),
 }

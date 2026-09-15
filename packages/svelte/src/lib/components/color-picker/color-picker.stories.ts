@@ -12,6 +12,7 @@ import SwatchOnlyExample from './examples/swatch-only.svelte'
 import SwatchesExample from './examples/swatches.svelte'
 import ValueSwatchExample from './examples/value-swatch.svelte'
 import WithFieldExample from './examples/with-field.svelte'
+import FormUsageExample from './examples/form-usage.svelte'
 
 const meta: Meta = {
   title: 'Components/ColorPicker',
@@ -94,5 +95,11 @@ export const ValueSwatch = {
 export const WithField = {
   render: () => ({
     Component: WithFieldExample,
+  }),
+}
+
+export const FormUsage = {
+  render: () => ({
+    Component: FormUsageExample,
   }),
 }

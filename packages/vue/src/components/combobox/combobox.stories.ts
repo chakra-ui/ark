@@ -17,6 +17,7 @@ import AutoHighlightExample from './examples/auto-highlight.vue'
 import InlineAutocompleteExample from './examples/inline-autocomplete.vue'
 import LimitResultsExample from './examples/limit-results.vue'
 import VirtualizedExample from './examples/virtualized.vue'
+import AsyncSearchExample from './examples/async-search.vue'
 
 const meta: Meta = {
   title: 'Components / Combobox',
@@ -139,6 +140,13 @@ export const LimitResults = {
 export const Virtualized = {
   render: () => ({
     components: { Component: VirtualizedExample },
+    template: '<Component />',
+  }),
+}
+
+export const AsyncSearch = {
+  render: () => ({
+    components: { Component: AsyncSearchExample },
     template: '<Component />',
   }),
 }

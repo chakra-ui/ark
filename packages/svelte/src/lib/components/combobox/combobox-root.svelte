@@ -3,10 +3,17 @@
   import type { Snippet } from 'svelte'
   import type { CollectionItem } from '../collection/index.ts'
   import type { UsePresenceProps } from '../presence/index.ts'
+  import type { RootState } from '@zag-js/combobox'
   import type { UseComboboxProps } from './use-combobox.svelte.ts'
 
+  export interface ComboboxRootState extends RootState {}
+
   export interface ComboboxRootBaseProps<T extends CollectionItem>
-    extends Optional<UseComboboxProps<T>, 'id'>, UsePresenceProps, PolymorphicProps<'div'>, RefAttribute {}
+    extends
+      Optional<UseComboboxProps<T>, 'id'>,
+      UsePresenceProps,
+      PolymorphicProps<'div', ComboboxRootState>,
+      RefAttribute {}
 
   export interface ComboboxRootProps<T extends CollectionItem> extends Assign<
     HTMLProps<'div'>,
@@ -118,4 +125,4 @@
   PresenceProvider(presence)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} state={combobox().getRootState()} />

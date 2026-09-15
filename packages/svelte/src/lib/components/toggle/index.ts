@@ -1,5 +1,9 @@
 export { default as ToggleContext, type ToggleContextProps } from './toggle-context.svelte'
-export { default as ToggleIndicator, type ToggleIndicatorProps } from './toggle-indicator.svelte'
+export {
+  default as ToggleIndicator,
+  type ToggleIndicatorBaseProps,
+  type ToggleIndicatorProps,
+} from './toggle-indicator.svelte'
 export {
   default as ToggleRoot,
   type ToggleRootBaseProps,

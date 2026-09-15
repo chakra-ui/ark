@@ -25,6 +25,9 @@ import FixedWeeksExample from './examples/fixed-weeks.vue'
 import FormExample from './examples/form.vue'
 import MaxSelectedDatesExample from './examples/max-selected-dates.vue'
 import CustomCalendarExample from './examples/custom-calendar.vue'
+import FormatParseExample from './examples/format-parse.vue'
+import MonthPickerRangeExample from './examples/month-picker-range.vue'
+import YearPickerRangeExample from './examples/year-picker-range.vue'
 
 const meta: Meta = {
   title: 'Components / DatePicker',
@@ -203,6 +206,27 @@ export const MaxSelectedDates = {
 export const CustomCalendar = {
   render: () => ({
     components: { Component: CustomCalendarExample },
+    template: '<Component />',
+  }),
+}
+
+export const FormatParse = {
+  render: () => ({
+    components: { Component: FormatParseExample },
+    template: '<Component />',
+  }),
+}
+
+export const MonthPickerRange = {
+  render: () => ({
+    components: { Component: MonthPickerRangeExample },
+    template: '<Component />',
+  }),
+}
+
+export const YearPickerRange = {
+  render: () => ({
+    components: { Component: YearPickerRangeExample },
     template: '<Component />',
   }),
 }
