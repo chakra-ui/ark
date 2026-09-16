@@ -1,5 +1,5 @@
 'use client'
-import { useIsClient } from '@uidotdev/usehooks'
+import { useIsClient } from '~/lib/use-hooks'
 import { useTheme } from 'next-themes'
 
 interface Props {
