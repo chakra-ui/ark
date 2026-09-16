@@ -1,7 +1,7 @@
 import { matchSorter } from 'match-sorter'
 import type { Framework } from '~/lib/frameworks'
 import { cleanupPageContent } from '~/lib/llm-content'
-import type { Pages } from '.velite'
+import type { PageMeta } from './source'
 import { getSidebarGroupsWithPages } from './sidebar'
 
 export interface DocsEntry {
@@ -17,29 +17,27 @@ export interface DocsPage extends DocsEntry {
 }
 
 interface DocsPageSource {
-  page: Pages
+  page: PageMeta
   category: string
 }
 
-const getDocsSources = (framework?: Framework): DocsPageSource[] =>
-  getSidebarGroupsWithPages(framework).flatMap((group) =>
-    group.items
-      .filter((page) => !!page.llm)
-      .map((page) => ({
-        page,
-        category: group.title,
-      })),
+const getDocsSources = (): DocsPageSource[] =>
+  getSidebarGroupsWithPages().flatMap((group) =>
+    group.items.map((page) => ({
+      page,
+      category: group.title,
+    })),
   )
 
 const toEntry = ({ page, category }: DocsPageSource): DocsEntry => ({
   slug: page.slug,
   title: page.title,
-  description: page.description,
+  description: page.description ?? '',
   category,
   url: `https://ark-ui.com/docs/${page.slug}`,
 })
 
-export const formatDocContent = async (page: Pages, framework: Framework = 'react') => `# ${page.title}
+export const formatDocContent = async (page: PageMeta, framework: Framework = 'react') => `# ${page.title}
 
 URL: https://ark-ui.com/docs/${page.slug}
 LLM: https://ark-ui.com/llms.txt/${page.slug}
@@ -54,7 +52,7 @@ export const listDocs = (): DocsEntry[] => getDocsSources().map(toEntry)
 
 export const getDoc = async (slug: string, framework: Framework = 'react'): Promise<DocsPage | null> => {
   const normalized = slug.replace(/\.mdx$/, '')
-  const source = getDocsSources(framework).find(({ page }) => page.slug === normalized)
+  const source = getDocsSources().find(({ page }) => page.slug === normalized)
   if (!source) return null
 
   return {

@@ -5,9 +5,9 @@
     "prepare": "bun panda codegen",
     "generate:examples": "bun run --cwd ../scripts src/generate-example-registry.ts",
     "predev": "bun run generate:examples",
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "prebuild": "bun run generate:examples",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
     "setup": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull .env",
     "setup:prod": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull --environment production .env"
@@ -16,7 +16,6 @@
     "@ark-ui/react": "workspace:*",
     "@biomejs/biome": "2.5.11",
     "@chakra-ui/better-auth": "0.3.0",
-    "@effect/schema": "0.75.5",
     "@icons-pack/react-simple-icons": "13.15.1",
     "@pandacss/dev": "2.0.0-beta.17",
     "@pandacss/preset-base": "2.0.0-beta.17",
@@ -35,9 +34,12 @@
     "@zag-js/docs": "2.0.0-next.3",
     "better-auth": "1.4.22",
     "effect": "3.22.1",
+    "fumadocs-core": "16.15.11",
+    "fumadocs-mdx": "15.4.1",
     "lucide-react": "1.37.0",
+    "marked": "14.1.4",
     "match-sorter": "8.3.0",
-    "next": "15.5.24",
+    "next": "16.3.5",
     "next-themes": "0.4.6",
     "pg": "8.23.0",
     "postmark": "5.1.0",
@@ -48,7 +50,8 @@
     "shiki": "4.4.3",
     "ts-morph": "28.0.0",
     "typescript": "6.0.3",
-    "velite": "0.4.0"
+    "unist-util-visit": "5.0.0",
+    "zod": "4.5.4"
   },
   "devDependencies": {
     "@types/mdast": "4.0.4"

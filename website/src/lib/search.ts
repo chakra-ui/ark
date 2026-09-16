@@ -1,6 +1,8 @@
 import { fetchExamplesGroupedByCategory } from './examples'
 import type { SearchItem } from './search-query'
-import { pages } from '.velite'
+import { pagesWithToc } from './source'
+
+const pages = pagesWithToc()
 
 export type { SearchData, SearchItem } from './search-query'
 
@@ -19,9 +21,7 @@ const categoryToGroup: Record<string, string> = {
   ai: 'AI',
 }
 
-const uniquePages = [...new Map(pages.map((page) => [page.slug, page])).values()].filter(
-  (page) => page.category !== 'license.mdx',
-)
+const uniquePages = [...new Map(pages.map((page) => [page.slug, page])).values()]
 
 const flattenToc = (entries: TocEntry[], pageTitle: string, pageSlug: string, parents: string[] = []): SearchItem[] =>
   entries.flatMap((entry) => {
@@ -42,7 +42,7 @@ const docsPages: SearchItem[] = uniquePages
     label: page.title,
     value: `/docs/${page.slug}`,
     group: categoryToGroup[page.category],
-    description: page.description,
+    description: page.description ?? '',
   }))
 
 const sections: SearchItem[] = uniquePages
