@@ -9,7 +9,7 @@ export const conditions = {
     today: '&:is([data-today])',
     underValue: '&:is([data-state="under-value"])',
     dark: '.dark &',
-    light: ':root &, .light &',
+    light: '.light &',
     invalid: '&:is([aria-invalid])',
   },
 }

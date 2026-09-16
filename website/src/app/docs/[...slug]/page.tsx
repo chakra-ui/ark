@@ -77,9 +77,9 @@ export default async function Page(props: Props) {
         width="14rem"
         hideBelow="xl"
         position="sticky"
-        top="20"
+        top="calc(var(--navbar-height) + var(--banner-height) + var(--tabbar-height) + 2.5rem)"
         alignSelf="flex-start"
-        maxH="calc(100dvh - 100px)"
+        maxH="calc(100dvh - var(--navbar-height) - var(--banner-height) - var(--tabbar-height) - 4rem)"
         overflowY="auto"
         overscrollBehavior="contain"
       >

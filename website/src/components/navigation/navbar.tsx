@@ -20,13 +20,15 @@ export const Navbar = async () => {
     <>
       <NavbarContainer>
         <HStack justifyContent="space-between">
-          <NextLink href="/" aria-label="Go to start page">
-            <Logo />
-          </NextLink>
-          <HStack gap="3" py="1" display={{ base: 'none', md: 'flex' }}>
-            <Box position="absolute" left="300px" hideBelow="xl">
+          <HStack gap="4" minW="0">
+            <NextLink href="/" aria-label="Go to start page">
+              <Logo />
+            </NextLink>
+            <Box hideBelow="xl">
               <Announcement />
             </Box>
+          </HStack>
+          <HStack gap="3" py="1" display={{ base: 'none', md: 'flex' }}>
             <NavbarLinks me="2" />
             <Divider orientation="vertical" h="6" />
             <div id="framework-select">

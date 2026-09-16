@@ -44,6 +44,7 @@ import { spinner } from './spinner'
 import { splitter } from './splitter'
 import { switchRecipe } from './switch'
 import { table } from './table'
+import { tabBar } from './tab-bar'
 import { tabs } from './tabs'
 import { tagsInput } from './tags-input'
 import { text } from './text'
@@ -70,6 +71,7 @@ export const recipes = {
 }
 
 export const slotRecipes = {
+  tabBar,
   accordion,
   alert,
   avatar,
