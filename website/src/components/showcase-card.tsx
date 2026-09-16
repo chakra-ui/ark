@@ -1,4 +1,4 @@
-import type { Showcases } from '.velite'
+import type { Showcases } from '~/lib/showcases'
 import { cva } from 'styled-system/css'
 import { GridItem, styled } from 'styled-system/jsx'
 import { Card } from './ui/card'

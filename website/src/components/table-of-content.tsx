@@ -1,5 +1,5 @@
 'use client'
-import { useWindowScroll } from '@uidotdev/usehooks'
+import { useWindowScroll } from '~/lib/use-hooks'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { SegmentGroup } from '~/components/ui/segment-group'
@@ -29,7 +29,7 @@ export const TableOfContent = (props: Props) => {
   const entries = flattenTocEntries(props.entries)
   const activeItem = useScrollSpy(entries.map((entry) => entry.url))
   const router = useRouter()
-  const [{ y }] = useWindowScroll()
+  const { y } = useWindowScroll()
   const navRef = useRef<HTMLElement>(null)
 
   useEffect(() => {

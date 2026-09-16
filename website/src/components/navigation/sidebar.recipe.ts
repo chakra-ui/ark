@@ -1,60 +1,54 @@
 import { sva } from 'styled-system/css'
 
 export const recipe = sva({
-  slots: ['root', 'item', 'trigger', 'link', 'group', 'indicator'],
+  slots: ['root', 'group', 'label', 'list', 'link'],
   base: {
     root: {
       display: 'flex',
       flexDirection: 'column',
+      gap: '6',
     },
-    indicator: {
-      color: 'fg.muted',
-      transformOrigin: 'center',
-      transitionDuration: 'normal',
-      transitionProperty: 'transform',
-      transitionTimingFunction: 'default',
-    },
-    trigger: {
-      alignItems: 'center',
-      cursor: 'pointer',
-      justifyContent: 'space-between',
+    group: {
       display: 'flex',
-      width: 'full',
+      flexDirection: 'column',
+    },
+    label: {
       textStyle: { base: 'md', md: 'sm' },
       fontWeight: 'semibold',
-      textTransform: 'capitalize',
-      py: '1.5',
-      _expanded: {
-        '& > svg': {
-          transform: 'rotate(90deg)',
-        },
-      },
+      color: 'fg.default',
+      pb: '2',
+    },
+    list: {
+      display: 'flex',
+      flexDirection: 'column',
+      borderInlineStartWidth: '1px',
+      borderColor: 'border.default',
     },
     link: {
       display: 'flex',
-      alignItems: 'baseline',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      gap: '2',
       textStyle: { base: 'md', md: 'sm' },
       fontWeight: 'medium',
       color: 'fg.muted',
-      gap: '2',
+      ms: '-1px',
+      ps: '4',
       py: '1.5',
+      borderInlineStartWidth: '1px',
+      borderColor: 'transparent',
       textDecoration: 'none',
+      transitionProperty: 'color, border-color',
       transitionDuration: 'normal',
-      transitionProperty: 'color',
       transitionTimingFunction: 'default',
       _hover: {
         color: 'fg.default',
       },
       _currentPage: {
         color: 'colorPalette.default',
-        _hover: {
-          color: 'colorPalette.default',
-        },
+        borderColor: 'colorPalette.default',
+        _hover: { color: 'colorPalette.default' },
       },
-    },
-    group: {
-      pt: '2.5',
-      pb: '3',
     },
   },
 })

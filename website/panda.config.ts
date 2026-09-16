@@ -1,19 +1,11 @@
 import { defineConfig } from '@pandacss/dev'
-import typographyPreset from 'pandacss-preset-typography'
+import typographyPreset from '@pandacss/preset-typography'
 import { parkPreset } from '~/theme'
 
 export default defineConfig({
   preflight: true,
-  validation: 'none',
-  presets: [
-    parkPreset,
-    typographyPreset({
-      recipe: {
-        sizes: ['base'],
-        notProse: true,
-      },
-    }),
-  ],
+
+  presets: ['@pandacss/preset-base', '@pandacss/preset-panda', parkPreset, typographyPreset({ notProse: true })],
   include: ['./src/**/*.{js,jsx,ts,tsx}'],
   jsxFramework: 'react',
   outdir: 'styled-system',

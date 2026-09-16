@@ -1,20 +1,23 @@
 import 'server-only'
 
-import { type Pages, pages } from '.velite'
-import { getSidebarGroupsWithPages } from './sidebar'
+import { CHANGELOG_META, isChangelogSlug } from './changelog'
+import type { PageMeta } from './source'
+import { getSidebarGroupsWithPages, getSidebarTabs } from './sidebar'
 
 const orderedPages = getSidebarGroupsWithPages().flatMap((group) => group.items)
 const uniqueOrderedPages = orderedPages.filter(
   (page, index, self) => self.findIndex((p) => p.slug === page.slug) === index,
 )
 
-export function getPageBySlug(slug: string[], framework?: string): Pages | undefined {
+const tabOrders = getSidebarTabs().map((tab) => ({
+  categories: tab.categories,
+  items: tab.groups.flatMap((group) => group.items),
+}))
+
+export function getPageBySlug(slug: string[]): PageMeta | undefined {
   const slugStr = slug.join('/')
-  return pages.find((page) => {
-    if (page.slug !== slugStr) return false
-    if (!framework) return true
-    return page.framework === '*' || page.framework === framework
-  })
+  if (isChangelogSlug(slugStr)) return CHANGELOG_META
+  return uniqueOrderedPages.find((page) => page.slug === slugStr)
 }
 
 export interface NavItem {
@@ -24,19 +27,20 @@ export interface NavItem {
 
 export function getPageNavigation(slug: string[]): { prev?: NavItem; next?: NavItem } {
   const slugStr = slug.join('/')
-  const index = uniqueOrderedPages.findIndex((page) => page.slug === slugStr)
+  const category = slug[0]
+  const tab = tabOrders.find((t) => t.categories.includes(category)) ?? tabOrders[0]
+  const items = tab?.items ?? []
+  const index = items.findIndex((item) => item.slug === slugStr)
+  if (index === -1) return {}
 
-  const prevPage = uniqueOrderedPages[index - 1]
-  const nextPage = uniqueOrderedPages[index + 1]
-
+  const prevItem = items[index - 1]
+  const nextItem = items[index + 1]
   return {
-    prev: prevPage ? { slug: prevPage.slug, title: prevPage.title } : undefined,
-    next: nextPage ? { slug: nextPage.slug, title: nextPage.title } : undefined,
+    prev: prevItem ? { slug: prevItem.slug, title: prevItem.title } : undefined,
+    next: nextItem ? { slug: nextItem.slug, title: nextItem.title } : undefined,
   }
 }
 
-export function getAllPageSlugs(): Array<{ slug: string[]; framework: string }> {
-  return ['react', 'solid', 'vue'].flatMap((framework) =>
-    orderedPages.map((page) => ({ framework, slug: page.slug.split('/') })),
-  )
+export function getAllPageSlugs(): Array<{ slug: string[] }> {
+  return uniqueOrderedPages.map((page) => ({ slug: page.slug.split('/') }))
 }

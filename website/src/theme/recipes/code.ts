@@ -4,7 +4,7 @@ export const code = defineRecipe({
   className: 'code',
   base: {
     alignItems: 'center',
-    bg: 'bg.subtle',
+    background: 'var(--colors-bg-subtle)',
     borderRadius: 'l2',
     color: 'fg.default',
     display: 'inline-flex',

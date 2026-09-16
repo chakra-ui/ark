@@ -1,4 +1,4 @@
-import { type SemanticTokens, definePreset } from '@pandacss/dev'
+import { definePreset } from '@pandacss/dev'
 import { coral } from '~/coral'
 import { breakpoints } from './breakpoints'
 import red from './colors/red'
@@ -11,12 +11,11 @@ import { semanticTokens } from './semantic-tokens'
 import { textStyles } from './text-styles'
 import { tokens } from './tokens'
 
-const standardizeGrayTokens = (input: SemanticTokens['colors']) =>
+const standardizeGrayTokens = <T>(input: T): T =>
   JSON.parse(JSON.stringify(input).replace(new RegExp(sand.name, 'g'), 'gray'))
 
 export const parkPreset = definePreset({
   name: 'park-preset',
-  presets: ['@pandacss/preset-base'],
   conditions,
   globalCss,
   theme: {

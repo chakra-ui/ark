@@ -1,4 +1,3 @@
-import type { RecipeConfig, RecipeVariantRecord, SlotRecipeConfig } from '@pandacss/dev'
 import { accordion } from './accordion'
 import { alert } from './alert'
 import { avatar } from './avatar'
@@ -45,6 +44,7 @@ import { spinner } from './spinner'
 import { splitter } from './splitter'
 import { switchRecipe } from './switch'
 import { table } from './table'
+import { tabBar } from './tab-bar'
 import { tabs } from './tabs'
 import { tagsInput } from './tags-input'
 import { text } from './text'
@@ -55,7 +55,7 @@ import { tooltip } from './tooltip'
 import { tour } from './tour'
 import { treeView } from './tree-view'
 
-export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>> = {
+export const recipes = {
   badge,
   button,
   code,
@@ -70,7 +70,8 @@ export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>>
   text,
 }
 
-export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
+export const slotRecipes = {
+  tabBar,
   accordion,
   alert,
   avatar,
