@@ -12,7 +12,7 @@ export const globalCss = defineGlobalStyles({
     flexDirection: 'column',
   },
   body: {
-    background: 'var(--colors-bg-canvas)',
+    bg: 'bg.canvas',
     color: 'fg.default',
     display: 'flex',
     flexDirection: 'column',
@@ -41,7 +41,7 @@ export const globalCss = defineGlobalStyles({
   pre: {
     overflowX: 'auto',
     fontSize: '13px !important',
-    bg: 'gray.dark.2!',
+    background: 'token(colors.gray.dark.2) !important',
     lineHeight: '1.5!',
   },
   blockquote: {
@@ -49,7 +49,7 @@ export const globalCss = defineGlobalStyles({
     fontWeight: 'normal!',
   },
   strong: {
-    color: 'fg.default!',
+    color: 'token(colors.fg.default) !important',
   },
   code: {
     fontFamily: 'var(--font-roboto-mono), token(fonts.mono)!',

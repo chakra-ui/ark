@@ -7,7 +7,7 @@ export const tabBar = defineSlotRecipe({
     root: {
       borderBottomWidth: '1px',
       borderColor: 'border.default',
-      background: 'var(--colors-bg-canvas)',
+      bg: 'bg.canvas',
     },
     list: {
       display: 'flex',
@@ -16,7 +16,7 @@ export const tabBar = defineSlotRecipe({
       maxW: '1440px',
       mx: 'auto',
       px: { base: '4', md: '8' },
-      height: 'var(--tabbar-height)',
+      height: 'var(--tabbar-height, 3rem)',
       overflowX: 'auto',
     },
     link: {
