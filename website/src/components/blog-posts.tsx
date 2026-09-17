@@ -5,7 +5,8 @@ import { css, cx } from 'styled-system/css'
 import { Grid, HStack, Stack } from 'styled-system/jsx'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
-import { avatarUrl, resolveAuthors } from '~/lib/authors'
+import { AuthorAvatars } from '~/components/author-avatars'
+import { resolveAuthors } from '~/lib/authors'
 
 export interface BlogPost {
   slug: string
@@ -34,8 +35,6 @@ const cardBase = css({
   _hover: { borderColor: 'colorPalette.default', bg: 'bg.subtle' },
 })
 
-const avatar = css({ rounded: 'full', objectFit: 'cover', borderWidth: '1px', borderColor: 'border.subtle' })
-
 const tagBase = css({
   display: 'inline-flex',
   alignItems: 'center',
@@ -63,19 +62,12 @@ const Tag = ({ label, accent }: { label: string; accent?: boolean }) => (
 )
 
 const Meta = ({ author, date }: { author?: string | string[]; date: string }) => {
-  const authors = resolveAuthors(author)
+  const hasAuthor = resolveAuthors(author).length > 0
   return (
     <HStack gap="2" className={css({ color: 'fg.muted', textStyle: 'sm' })}>
-      {authors.length > 0 && (
+      {hasAuthor && (
         <>
-          <HStack gap="1.5">
-            {authors.map((a) =>
-              a.login ? (
-                <img key={a.name} src={avatarUrl(a.login)} alt={a.name} width={20} height={20} className={avatar} />
-              ) : null,
-            )}
-            <Text as="span">{authors.map((a) => a.name).join(', ')}</Text>
-          </HStack>
+          <AuthorAvatars author={author} size={20} />
           <span>·</span>
         </>
       )}
