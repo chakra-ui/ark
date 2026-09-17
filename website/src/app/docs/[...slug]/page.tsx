@@ -11,6 +11,7 @@ import { Text } from '~/components/ui/text'
 import { getChangelogContent, isChangelogSlug } from '~/lib/changelog'
 import { docsHref, extractFramework, frameworks } from '~/lib/frameworks'
 import { getPublicUrl } from '~/lib/get-public-url'
+import { ogImageUrl } from '~/lib/og-template'
 import { cleanupPageContent } from '~/lib/llm-content'
 import { getAllPageSlugs, getPageBySlug, getPageNavigation } from '~/lib/pages'
 import { getServerContext } from '~/lib/server-context'
@@ -97,10 +98,13 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
   const page = getPageBySlug(slug)
 
   if (page) {
+    const image = ogImageUrl({ title: page.title, description: page.description, category: slug[0]?.replace(/-/g, ' ') })
     return {
       title: page.title,
       description: page.description,
       alternates: { canonical: getPublicUrl(docsHref(framework, slug.join('/'))) },
+      openGraph: { title: page.title, description: page.description, images: [image], type: 'article' },
+      twitter: { card: 'summary_large_image', title: page.title, description: page.description, images: [image] },
     }
   }
   return {}

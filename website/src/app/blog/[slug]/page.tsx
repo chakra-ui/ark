@@ -10,6 +10,7 @@ import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import { avatarUrl, resolveAuthors } from '~/lib/authors'
 import { getPublicUrl } from '~/lib/get-public-url'
+import { ogImageUrl } from '~/lib/og-template'
 import { MDXContent } from '~/mdx-content'
 import { blogs } from '~/lib/source'
 
@@ -113,6 +114,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const blog = blogs.find((blog) => blog.slug === slug)
   if (!blog) return {}
 
+  const image = ogImageUrl({ title: blog.title, description: blog.description, category: 'Blog' })
   return {
     title: blog.title,
     description: blog.description,
@@ -121,17 +123,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `/blog/${slug}`,
       title: blog.title,
       description: blog.description,
-      images: '/og-image.png',
+      images: [image],
       type: 'article',
       publishedTime: blog.date,
-      authors: [blog.author],
+      authors: blog.author ? [blog.author].flat() : undefined,
       tags: blog.tags,
     },
     twitter: {
       card: 'summary_large_image',
       title: blog.title,
       description: blog.description,
-      images: '/og-image.png',
+      images: [image],
     },
   }
 }

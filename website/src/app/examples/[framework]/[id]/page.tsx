@@ -13,6 +13,7 @@ import { notFound } from 'next/navigation'
 import { fetchCodeExamples, fetchExample } from '~/lib/examples'
 import { type Framework, examplesHref, isFramework } from '~/lib/frameworks'
 import { getPublicUrl } from '~/lib/get-public-url'
+import { ogImageUrl } from '~/lib/og-template'
 
 interface Props {
   params: Promise<{ framework: string; id: string }>
@@ -92,9 +93,12 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
   const { framework, id } = await props.params
   const example = await fetchExample(id)
   if (!example) return {}
+  const image = ogImageUrl({ title: example.title, description: example.description, category: 'Example' })
   return {
     title: example.title,
     description: example.description,
     alternates: { canonical: getPublicUrl(examplesHref(framework as Framework, id)) },
+    openGraph: { title: example.title, description: example.description, images: [image], type: 'article' },
+    twitter: { card: 'summary_large_image', title: example.title, description: example.description, images: [image] },
   }
 }
