@@ -6,7 +6,7 @@ import { getSidebarGroups } from '~/lib/sidebar'
 import { blogs } from '~/lib/source'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticPages = ['', '/blog', '/showcase', '/plus', '/team', '/license'].map((path) => ({
+  const staticPages = ['', '/blog', '/showcase', '/plus', '/team', '/brand', '/license'].map((path) => ({
     url: getPublicUrl(path),
   }))
 

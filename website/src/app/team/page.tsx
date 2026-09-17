@@ -98,7 +98,7 @@ export default async function TeamPage() {
   return (
     <Box minH="100vh">
       <Navbar />
-      <Container pt={{ base: '16', md: '24' }} pb="20">
+      <Container py={{ base: '16', md: '24' }} maxW="5xl">
         <Stack gap="12">
           <Stack gap="3">
             <Heading as="h1" size="4xl" fontWeight="bold">
