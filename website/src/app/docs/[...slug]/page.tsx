@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import { marked } from 'marked'
 import { notFound } from 'next/navigation'
 import { css } from 'styled-system/css'
 import { Box, Container, Stack } from 'styled-system/jsx'
+import { renderChangelog } from '~/components/changelog'
 import { CopyPageWidget } from '~/components/copy-page-widget'
 import { DocsFooter } from '~/components/navigation/docs/docs-footer'
 import { TableOfContent } from '~/components/table-of-content'
@@ -46,7 +46,8 @@ export default async function Page(props: Props) {
 
   if (!meta || (!page && !isChangelogSlug(slugStr))) return notFound()
 
-  const toc = page ? docsPageToc(page) : []
+  const changelog = isChangelogSlug(slugStr) ? await renderChangelog(getChangelogContent(framework)) : null
+  const toc = changelog ? changelog.toc : page ? docsPageToc(page) : []
 
   return (
     <Container display="flex" py="12" gap="8" justifyContent="center">
@@ -65,11 +66,7 @@ export default async function Page(props: Props) {
               content={await cleanupPageContent(meta, framework)}
             />
           </Box>
-          {isChangelogSlug(slugStr) ? (
-            <div dangerouslySetInnerHTML={{ __html: marked.parse(getChangelogContent(framework)) as string }} />
-          ) : (
-            page && <MDXContent body={page.data.body} />
-          )}
+          {changelog ? changelog.body : page && <MDXContent body={page.data.body} />}
         </article>
 
         <DocsFooter nextPage={next} prevPage={prev} framework={framework} />
@@ -98,7 +95,11 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
   const page = getPageBySlug(slug)
 
   if (page) {
-    const image = ogImageUrl({ title: page.title, description: page.description, category: slug[0]?.replace(/-/g, ' ') })
+    const image = ogImageUrl({
+      title: page.title,
+      description: page.description,
+      category: slug[0]?.replace(/-/g, ' '),
+    })
     return {
       title: page.title,
       description: page.description,
