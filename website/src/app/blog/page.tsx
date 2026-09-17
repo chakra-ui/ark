@@ -1,89 +1,24 @@
-import NextLink from 'next/link'
-import { css, cx } from 'styled-system/css'
-import { Box, Container, Grid, HStack, Stack } from 'styled-system/jsx'
+import { Box, Container, Stack } from 'styled-system/jsx'
+import { type BlogPost, BlogPosts } from '~/components/blog-posts'
 import { Footer } from '~/components/marketing/footer'
 import { Navbar } from '~/components/marketing/navbar'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
-import { avatarUrl, resolveAuthors } from '~/lib/authors'
-import { type BlogMeta, blogs } from '~/lib/source'
+import { blogs } from '~/lib/source'
 
-function formatDate(date: string) {
-  return new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
-}
-
-const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-
-const categoryLabel = (blog: BlogMeta) => (blog.featured ? 'Featured' : blog.type === 'release' ? 'Release' : 'Article')
-
-const cardBase = css({
-  display: 'block',
-  borderWidth: '1px',
-  borderColor: 'border.default',
-  rounded: 'l3',
-  textDecoration: 'none',
-  transitionProperty: 'border-color, background',
-  transitionDuration: 'normal',
-  transitionTimingFunction: 'default',
-  _hover: { borderColor: 'colorPalette.default', bg: 'bg.subtle' },
-})
-
-const avatar = css({ rounded: 'full', objectFit: 'cover', borderWidth: '1px', borderColor: 'border.subtle' })
-
-const tag = cx(
-  css({
-    display: 'inline-flex',
-    alignItems: 'center',
-    width: 'fit-content',
-    textStyle: 'xs',
-    fontWeight: 'semibold',
-    letterSpacing: 'wide',
-    textTransform: 'uppercase',
-    rounded: 'l1',
-    px: '2',
-    py: '0.5',
-  }),
-)
-
-const Tag = ({ label, accent }: { label: string; accent?: boolean }) => (
-  <span
-    className={cx(
-      tag,
-      accent
-        ? css({ bg: 'colorPalette.default', color: 'colorPalette.fg' })
-        : css({ bg: 'bg.muted', color: 'fg.muted' }),
-    )}
-  >
-    {label}
-  </span>
-)
-
-const Meta = ({ author, date }: { author?: string | string[]; date: string }) => {
-  const authors = resolveAuthors(author)
-  return (
-    <HStack gap="2" className={css({ color: 'fg.muted', textStyle: 'sm' })}>
-      {authors.length > 0 && (
-        <>
-          <HStack gap="1.5">
-            {authors.map((a) =>
-              a.login ? (
-                <img key={a.name} src={avatarUrl(a.login)} alt={a.name} width={20} height={20} className={avatar} />
-              ) : null,
-            )}
-            <Text as="span">{authors.map((a) => a.name).join(', ')}</Text>
-          </HStack>
-          <span>·</span>
-        </>
-      )}
-      <time dateTime={date}>{formatDate(date)}</time>
-    </HStack>
-  )
-}
+const posts: BlogPost[] = [...blogs]
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .map((blog) => ({
+    slug: blog.slug,
+    title: blog.title,
+    description: blog.description,
+    author: blog.author,
+    date: blog.date,
+    featured: blog.featured,
+    type: blog.type,
+  }))
 
 export default function Page() {
-  const featured = sortedBlogs.find((blog) => blog.featured) ?? sortedBlogs[0]
-  const rest = sortedBlogs.filter((blog) => blog !== featured)
-
   return (
     <Box minH="100vh">
       <Navbar />
@@ -96,43 +31,7 @@ export default function Page() {
             News, updates, and deep dives from the Ark UI team.
           </Text>
         </Stack>
-
-        {featured && (
-          <NextLink
-            href={`/blog/${featured.slug}`}
-            className={cx(cardBase, css({ mt: '12', p: { base: '6', md: '10' } }))}
-          >
-            <Stack gap="4">
-              <Tag label={categoryLabel(featured)} accent />
-              <Heading as="h2" size="2xl" fontWeight="bold" _hover={{ color: 'colorPalette.default' }}>
-                {featured.title}
-              </Heading>
-              <Text color="fg.muted" maxW="42rem">
-                {featured.description}
-              </Text>
-              <Meta author={featured.author} date={featured.date} />
-            </Stack>
-          </NextLink>
-        )}
-
-        {rest.length > 0 && (
-          <Grid columns={{ base: 1, md: 2 }} gap="6" mt="6">
-            {rest.map((blog) => (
-              <NextLink key={blog.slug} href={`/blog/${blog.slug}`} className={cx(cardBase, css({ p: '6' }))}>
-                <Stack gap="3" height="full">
-                  <Tag label={categoryLabel(blog)} />
-                  <Heading as="h3" size="lg" fontWeight="semibold" _hover={{ color: 'colorPalette.default' }}>
-                    {blog.title}
-                  </Heading>
-                  <Text color="fg.muted" textStyle="sm" flex="1">
-                    {blog.description}
-                  </Text>
-                  <Meta author={blog.author} date={blog.date} />
-                </Stack>
-              </NextLink>
-            ))}
-          </Grid>
-        )}
+        <BlogPosts posts={posts} />
       </Container>
       <Footer />
     </Box>
