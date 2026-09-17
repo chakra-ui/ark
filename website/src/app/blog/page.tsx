@@ -5,7 +5,8 @@ import { Footer } from '~/components/marketing/footer'
 import { Navbar } from '~/components/marketing/navbar'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
-import { blogs } from '~/lib/source'
+import { avatarUrl, resolveAuthors } from '~/lib/authors'
+import { type BlogMeta, blogs } from '~/lib/source'
 
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
@@ -13,13 +14,7 @@ function formatDate(date: string) {
 
 const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
-const eyebrow = css({
-  textStyle: 'xs',
-  fontWeight: 'semibold',
-  letterSpacing: 'wide',
-  textTransform: 'uppercase',
-  color: 'fg.subtle',
-})
+const categoryLabel = (blog: BlogMeta) => (blog.featured ? 'Featured' : blog.type === 'release' ? 'Release' : 'Article')
 
 const cardBase = css({
   display: 'block',
@@ -33,13 +28,50 @@ const cardBase = css({
   _hover: { borderColor: 'colorPalette.default', bg: 'bg.subtle' },
 })
 
+const avatar = css({ rounded: 'full', objectFit: 'cover', borderWidth: '1px', borderColor: 'border.subtle' })
+
+const tag = cx(
+  css({
+    display: 'inline-flex',
+    alignItems: 'center',
+    width: 'fit-content',
+    textStyle: 'xs',
+    fontWeight: 'semibold',
+    letterSpacing: 'wide',
+    textTransform: 'uppercase',
+    rounded: 'l1',
+    px: '2',
+    py: '0.5',
+  }),
+)
+
+const Tag = ({ label, accent }: { label: string; accent?: boolean }) => (
+  <span
+    className={cx(
+      tag,
+      accent
+        ? css({ bg: 'colorPalette.default', color: 'colorPalette.fg' })
+        : css({ bg: 'bg.muted', color: 'fg.muted' }),
+    )}
+  >
+    {label}
+  </span>
+)
+
 const Meta = ({ author, date }: { author?: string | string[]; date: string }) => {
-  const name = Array.isArray(author) ? author.join(', ') : author
+  const authors = resolveAuthors(author)
   return (
     <HStack gap="2" className={css({ color: 'fg.muted', textStyle: 'sm' })}>
-      {name && (
+      {authors.length > 0 && (
         <>
-          <Text as="span">{name}</Text>
+          <HStack gap="1.5">
+            {authors.map((a) =>
+              a.login ? (
+                <img key={a.name} src={avatarUrl(a.login)} alt={a.name} width={20} height={20} className={avatar} />
+              ) : null,
+            )}
+            <Text as="span">{authors.map((a) => a.name).join(', ')}</Text>
+          </HStack>
           <span>·</span>
         </>
       )}
@@ -49,7 +81,8 @@ const Meta = ({ author, date }: { author?: string | string[]; date: string }) =>
 }
 
 export default function Page() {
-  const [featured, ...rest] = sortedBlogs
+  const featured = sortedBlogs.find((blog) => blog.featured) ?? sortedBlogs[0]
+  const rest = sortedBlogs.filter((blog) => blog !== featured)
 
   return (
     <Box minH="100vh">
@@ -70,7 +103,7 @@ export default function Page() {
             className={cx(cardBase, css({ mt: '12', p: { base: '6', md: '10' } }))}
           >
             <Stack gap="4">
-              <span className={eyebrow}>Latest</span>
+              <Tag label={categoryLabel(featured)} accent />
               <Heading as="h2" size="2xl" fontWeight="bold" _hover={{ color: 'colorPalette.default' }}>
                 {featured.title}
               </Heading>
@@ -87,6 +120,7 @@ export default function Page() {
             {rest.map((blog) => (
               <NextLink key={blog.slug} href={`/blog/${blog.slug}`} className={cx(cardBase, css({ p: '6' }))}>
                 <Stack gap="3" height="full">
+                  <Tag label={categoryLabel(blog)} />
                   <Heading as="h3" size="lg" fontWeight="semibold" _hover={{ color: 'colorPalette.default' }}>
                     {blog.title}
                   </Heading>
