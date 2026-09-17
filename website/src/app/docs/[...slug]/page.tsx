@@ -9,7 +9,7 @@ import { TableOfContent } from '~/components/table-of-content'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import { getChangelogContent, isChangelogSlug } from '~/lib/changelog'
-import { getFramework } from '~/lib/frameworks'
+import { docsHref, extractFramework, frameworks } from '~/lib/frameworks'
 import { getPublicUrl } from '~/lib/get-public-url'
 import { cleanupPageContent } from '~/lib/llm-content'
 import { getAllPageSlugs, getPageBySlug, getPageNavigation } from '~/lib/pages'
@@ -32,14 +32,15 @@ const articleClass = css({
 
 export default async function Page(props: Props) {
   const params = await props.params
-  const framework = await getFramework()
-  const slugStr = params.slug.join('/')
-  const { prev, next } = getPageNavigation(params.slug)
+  const { framework, slug } = extractFramework(params.slug)
+  const slugStr = slug.join('/')
+  const { prev, next } = getPageNavigation(slug)
 
   const serverContext = getServerContext()
-  serverContext.component = params.slug[1]
+  serverContext.component = slug[1]
+  serverContext.framework = framework
 
-  const meta = getPageBySlug(params.slug)
+  const meta = getPageBySlug(slug)
   const page = findDocsPageBySlug(slugStr)
 
   if (!meta || (!page && !isChangelogSlug(slugStr))) return notFound()
@@ -70,7 +71,7 @@ export default async function Page(props: Props) {
           )}
         </article>
 
-        <DocsFooter nextPage={next} prevPage={prev} />
+        <DocsFooter nextPage={next} prevPage={prev} framework={framework} />
       </Stack>
       <Box
         className="scroller"
@@ -92,16 +93,18 @@ export default async function Page(props: Props) {
 
 export const generateMetadata = async (props: Props): Promise<Metadata> => {
   const params = await props.params
-  const page = getPageBySlug(params.slug)
+  const { framework, slug } = extractFramework(params.slug)
+  const page = getPageBySlug(slug)
 
   if (page) {
     return {
       title: page.title,
       description: page.description,
-      alternates: { canonical: getPublicUrl(`/docs/${params.slug.join('/')}`) },
+      alternates: { canonical: getPublicUrl(docsHref(framework, slug.join('/'))) },
     }
   }
   return {}
 }
 
-export const generateStaticParams = () => getAllPageSlugs()
+export const generateStaticParams = () =>
+  getAllPageSlugs().flatMap(({ slug }) => frameworks.map((framework) => ({ slug: [framework, ...slug] })))

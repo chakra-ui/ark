@@ -11,7 +11,7 @@ export const NavbarContainer = (props: BoxProps) => {
       bg="bg.canvas"
       zIndex="30"
       borderBottomWidth="1px"
-      borderColor={{ _light: 'border.subtle', _dark: 'black' }}
+      borderColor="border.subtle"
       pe="var(--scrollbar-width, 0)"
     >
       <Container py="2.5" {...props} />

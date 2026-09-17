@@ -2,7 +2,6 @@ import NextLink from 'next/link'
 import { Box, Divider, HStack, Stack } from 'styled-system/jsx'
 import { ColorModeButton } from '~/components/color-mode-button'
 import { Logo } from '~/components/logo'
-import { getFramework } from '~/lib/frameworks'
 import { UserButton } from '../auth/user-button'
 import { CommandMenu } from '../command-menu'
 import { Announcement } from '../marketing/annoucement'
@@ -13,9 +12,7 @@ import { MobileNavbarLinks } from './mobile-navbar-links'
 import { NavbarContainer } from './navbar-container'
 import { NavbarLinks } from './navbar-links'
 
-export const Navbar = async () => {
-  const framework = await getFramework()
-
+export const Navbar = () => {
   return (
     <>
       <NavbarContainer>
@@ -32,7 +29,7 @@ export const Navbar = async () => {
             <NavbarLinks me="2" />
             <Divider orientation="vertical" h="6" />
             <div id="framework-select">
-              <FrameworkSelect framework={framework} />
+              <FrameworkSelect />
             </div>
             <Divider orientation="vertical" h="6" />
             <HStack gap="2">
@@ -48,7 +45,7 @@ export const Navbar = async () => {
             <MobileNavbar>
               <Stack gap="0" width="17rem">
                 <MobileNavbarLinks />
-                <FrameworkSelect framework={framework} />
+                <FrameworkSelect />
                 <Divider />
                 <HStack gap="3" justifyContent="center" px="3" pt="6">
                   <ColorModeButton />

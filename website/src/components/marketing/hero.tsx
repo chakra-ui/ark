@@ -33,10 +33,10 @@ export const Hero = () => {
           </Stack>
           <Stack direction={{ base: 'column', sm: 'row' }} gap="3">
             <Button asChild size={{ base: 'xl', md: '2xl' }}>
-              <NextLink href="/docs/overview/getting-started">Get Started</NextLink>
+              <NextLink href="/docs/react/overview/getting-started">Get Started</NextLink>
             </Button>
             <Button asChild size={{ base: 'xl', md: '2xl' }} variant="outline">
-              <NextLink href="/docs/components/overview">Show Components</NextLink>
+              <NextLink href="/docs/react/components/overview">Show Components</NextLink>
             </Button>
           </Stack>
           <HStack gap={{ base: '4', md: '8' }}>

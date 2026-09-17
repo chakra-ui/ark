@@ -1,4 +1,5 @@
 import { HStack } from 'styled-system/jsx'
+import type { Framework } from '~/lib/frameworks'
 import type { SidebarTab } from '~/lib/sidebar'
 import { Breadcrumbs } from '../breadcrumbs'
 import { MobileSidebarContainer } from '../mobile-sidebar-container'
@@ -7,11 +8,11 @@ import { DocsTabBar } from './docs-tab-bar'
 
 interface Props {
   tabs: SidebarTab[]
-  latestVersion?: string
+  versions?: Record<Framework, string>
 }
 
 export const DocsNavbar = (props: Props) => {
-  const { tabs, latestVersion } = props
+  const { tabs, versions } = props
   return (
     <HStack
       height="12"
@@ -29,7 +30,7 @@ export const DocsNavbar = (props: Props) => {
       zIndex="2"
     >
       <MobileSidebarContainer>
-        <DocsTabBar tabs={tabs} latestVersion={latestVersion} />
+        <DocsTabBar tabs={tabs} versions={versions} />
         <DocsSidebar tabs={tabs} />
       </MobileSidebarContainer>
       <Breadcrumbs tabs={tabs} />

@@ -8,6 +8,7 @@ import { Box, HStack } from 'styled-system/jsx'
 import { Button } from '~/components/ui/button'
 import { IconButton } from '~/components/ui/icon-button'
 import { Menu } from '~/components/ui/menu'
+import { type Framework, docsHref } from '~/lib/frameworks'
 import { getPublicUrl } from '~/lib/get-public-url'
 
 interface CopyPageWidgetProps {
@@ -44,7 +45,7 @@ const CopyPageButton = (props: { content: string }) => {
 const ActionMenu = (props: { slug: string; framework: string }) => {
   const { slug, framework } = props
 
-  const pageUrl = getPublicUrl(`/docs/${slug}`)
+  const pageUrl = getPublicUrl(docsHref(framework as Framework, slug))
   const readUrl = encodeURIComponent(
     `Use web browsing to access links and information: ${pageUrl}\n\nI want to ask some questions`,
   )
@@ -52,7 +53,7 @@ const ActionMenu = (props: { slug: string; framework: string }) => {
   const items = [
     {
       label: 'View as markdown',
-      href: `${pageUrl}.mdx?framework=${framework}`,
+      href: `${getPublicUrl(`/docs/${slug}`)}.mdx?framework=${framework}`,
       icon: () => <SiMarkdown size={18} />,
     },
     {
