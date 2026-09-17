@@ -50,7 +50,7 @@ export default async function Layout(props: PropsWithChildren) {
         </SidebarContainer>
         <main className={styles.main}>{props.children}</main>
       </Flex>
-      <Footer />
+      <Footer minimal />
     </Box>
   )
 }
