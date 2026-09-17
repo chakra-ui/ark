@@ -1,5 +1,6 @@
 import { styled } from 'styled-system/jsx'
 import { BlogCardGroup } from '~/components/blog-card'
+import { ComponentGrid } from '~/components/component-grid'
 import { Kbd } from '~/components/ui/kbd'
 import { Link } from '~/components/ui/link'
 import { Step, Steps } from '~/components/ui/stepper'
@@ -425,6 +426,7 @@ export const sharedComponents = {
   a: Link,
   Anatomy,
   code: Code,
+  ComponentGrid,
   ComponentPreview,
   ComponentTypes,
   ContextType,
