@@ -1,5 +1,5 @@
-import { SiGithub } from '@icons-pack/react-simple-icons'
-import { HeartIcon } from 'lucide-react'
+import { SiGithub, SiX } from '@icons-pack/react-simple-icons'
+import { GlobeIcon } from 'lucide-react'
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { css } from 'styled-system/css'
@@ -41,13 +41,25 @@ const MemberCard = ({ user, role }: { user: GitHubUser; role: string }) => (
           {role}
         </Text>
         <HStack gap="3" pt="1" flexWrap="wrap">
-          <a className={iconLink} href={user.html_url} target="_blank" rel="noreferrer">
+          <a className={iconLink} href={user.html_url} target="_blank" rel="noopener">
             <SiGithub size={13} />@{user.login}
           </a>
-          <a className={iconLink} href={`https://github.com/sponsors/${user.login}`} target="_blank" rel="noreferrer">
-            <HeartIcon size={13} />
-            sponsor
-          </a>
+          {user.twitter_username && (
+            <a className={iconLink} href={`https://x.com/${user.twitter_username}`} target="_blank" rel="noopener">
+              <SiX size={13} />@{user.twitter_username}
+            </a>
+          )}
+          {user.blog && (
+            <a
+              className={iconLink}
+              href={user.blog.startsWith('http') ? user.blog : `https://${user.blog}`}
+              target="_blank"
+              rel="noopener"
+            >
+              <GlobeIcon size={13} />
+              Website
+            </a>
+          )}
         </HStack>
       </Stack>
     </HStack>
@@ -85,7 +97,7 @@ export default async function TeamPage() {
       <header>
         <Navbar />
       </header>
-      <Container maxW="4xl" pt={{ base: '28', md: '32' }} pb="24">
+      <Container pt={{ base: '16', md: '24' }} pb="20">
         <Stack gap="12">
           <Stack gap="3">
             <Heading as="h1" size="4xl" fontWeight="bold">
