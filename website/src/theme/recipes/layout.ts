@@ -14,7 +14,7 @@ export const layout = defineSlotRecipe({
       height: `calc(100vh - ${belowBars})`,
       flexShrink: '0',
       width: '18rem',
-      ps: '6',
+      ps: '8',
       pe: '6',
       pt: '8',
       pb: '10',
