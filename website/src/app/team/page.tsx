@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { css } from 'styled-system/css'
 import { Box, Container, Flex, Grid, HStack, Stack } from 'styled-system/jsx'
-import { Navbar } from '~/components/navigation/navbar'
+import { Navbar } from '~/components/marketing/navbar'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import { type GitHubUser, fetchContributors, fetchGithubUsers } from '~/lib/github-utils'
@@ -16,6 +16,14 @@ export const metadata: Metadata = {
 }
 
 const avatar = css({ rounded: 'l2', flexShrink: '0', objectFit: 'cover' })
+
+const toUrl = (value: string) => {
+  try {
+    return new URL(value).href
+  } catch {
+    return `https://${value}`
+  }
+}
 
 const iconLink = css({
   display: 'inline-flex',
@@ -50,12 +58,7 @@ const MemberCard = ({ user, role }: { user: GitHubUser; role: string }) => (
             </a>
           )}
           {user.blog && (
-            <a
-              className={iconLink}
-              href={user.blog.startsWith('http') ? user.blog : `https://${user.blog}`}
-              target="_blank"
-              rel="noopener"
-            >
+            <a className={iconLink} href={toUrl(user.blog)} target="_blank" rel="noopener">
               <GlobeIcon size={13} />
               Website
             </a>
@@ -93,10 +96,8 @@ export default async function TeamPage() {
   )
 
   return (
-    <>
-      <header>
-        <Navbar />
-      </header>
+    <Box minH="100vh">
+      <Navbar />
       <Container pt={{ base: '16', md: '24' }} pb="20">
         <Stack gap="12">
           <Stack gap="3">
@@ -124,6 +125,6 @@ export default async function TeamPage() {
           )}
         </Stack>
       </Container>
-    </>
+    </Box>
   )
 }
