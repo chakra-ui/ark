@@ -10,6 +10,7 @@ import { Button } from '~/components/ui/button'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import { fetchCodeExamples, fetchExample } from '~/lib/examples'
+import { getPublicUrl } from '~/lib/get-public-url'
 import { getFramework } from '~/lib/frameworks'
 
 interface Props {
@@ -93,5 +94,6 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
   return {
     title: example.title,
     description: example.description,
+    alternates: { canonical: getPublicUrl(`/examples/${id}`) },
   }
 }
