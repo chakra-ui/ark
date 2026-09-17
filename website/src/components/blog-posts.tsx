@@ -18,7 +18,7 @@ export interface BlogPost {
 }
 
 const formatDate = (date: string) =>
-  new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+  new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
 
 const categoryLabel = (post: BlogPost) => (post.featured ? 'Featured' : post.type === 'release' ? 'Release' : 'Article')
 
@@ -111,7 +111,7 @@ export const BlogPosts = ({ posts }: { posts: BlogPost[] }) => {
 
   const featured = posts.find((post) => post.featured) ?? posts[0]
   const rest = posts.filter((post) => post !== featured)
-  const visible = filter === 'all' ? rest : rest.filter((post) => (post.type ?? 'article') === filter)
+  const visible = filter === 'all' ? rest : posts.filter((post) => (post.type ?? 'article') === filter)
 
   return (
     <Stack gap="8" mt="12">
