@@ -18,7 +18,8 @@ const posts: BlogPost[] = [...blogs]
     type: blog.type,
   }))
 
-export default function Page() {
+export default async function Page({ searchParams }: { searchParams: Promise<{ filter?: string }> }) {
+  const { filter } = await searchParams
   return (
     <Box minH="100vh">
       <Navbar />
@@ -31,7 +32,7 @@ export default function Page() {
             News, updates, and deep dives from the Ark UI team.
           </Text>
         </Stack>
-        <BlogPosts posts={posts} />
+        <BlogPosts posts={posts} filter={filter} />
       </Container>
       <Footer />
     </Box>
