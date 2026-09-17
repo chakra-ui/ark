@@ -8,6 +8,7 @@ import { Footer } from '~/components/marketing/footer'
 import { Navbar } from '~/components/marketing/navbar'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
+import { getPublicUrl } from '~/lib/get-public-url'
 import { MDXContent } from '~/mdx-content'
 import { blogs } from '~/lib/source'
 
@@ -93,6 +94,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: blog.title,
     description: blog.description,
+    alternates: { canonical: getPublicUrl(`/blog/${slug}`) },
     openGraph: {
       url: `/blog/${slug}`,
       title: blog.title,

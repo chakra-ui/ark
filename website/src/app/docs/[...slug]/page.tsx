@@ -10,6 +10,7 @@ import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import { getChangelogContent, isChangelogSlug } from '~/lib/changelog'
 import { getFramework } from '~/lib/frameworks'
+import { getPublicUrl } from '~/lib/get-public-url'
 import { cleanupPageContent } from '~/lib/llm-content'
 import { getAllPageSlugs, getPageBySlug, getPageNavigation } from '~/lib/pages'
 import { getServerContext } from '~/lib/server-context'
@@ -97,6 +98,7 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
     return {
       title: page.title,
       description: page.description,
+      alternates: { canonical: getPublicUrl(`/docs/${params.slug.join('/')}`) },
     }
   }
   return {}
