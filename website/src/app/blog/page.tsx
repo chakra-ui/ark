@@ -33,13 +33,20 @@ const cardBase = css({
   _hover: { borderColor: 'colorPalette.default', bg: 'bg.subtle' },
 })
 
-const Meta = ({ author, date }: { author?: string | string[]; date: string }) => (
-  <HStack gap="2" className={css({ color: 'fg.muted', textStyle: 'sm' })}>
-    <Text as="span">{Array.isArray(author) ? author.join(', ') : author}</Text>
-    <span>·</span>
-    <time dateTime={date}>{formatDate(date)}</time>
-  </HStack>
-)
+const Meta = ({ author, date }: { author?: string | string[]; date: string }) => {
+  const name = Array.isArray(author) ? author.join(', ') : author
+  return (
+    <HStack gap="2" className={css({ color: 'fg.muted', textStyle: 'sm' })}>
+      {name && (
+        <>
+          <Text as="span">{name}</Text>
+          <span>·</span>
+        </>
+      )}
+      <time dateTime={date}>{formatDate(date)}</time>
+    </HStack>
+  )
+}
 
 export default function Page() {
   const [featured, ...rest] = sortedBlogs
