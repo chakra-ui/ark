@@ -50,11 +50,33 @@ export const OgTemplate = ({ title, description, category }: OgOptions) => (
     </div>
 
     <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
-      <div style={{ display: 'flex', fontSize: 76, fontWeight: 800, lineHeight: 1.05, letterSpacing: '-0.03em' }}>
+      <div
+        style={{
+          display: '-webkit-box',
+          WebkitBoxOrient: 'vertical',
+          WebkitLineClamp: 3,
+          overflow: 'hidden',
+          fontSize: 76,
+          fontWeight: 800,
+          lineHeight: 1.05,
+          letterSpacing: '-0.03em',
+        }}
+      >
         {title}
       </div>
       {description ? (
-        <div style={{ display: 'flex', fontSize: 34, color: '#b5b3ad', lineHeight: 1.35, maxWidth: 960 }}>
+        <div
+          style={{
+            display: '-webkit-box',
+            WebkitBoxOrient: 'vertical',
+            WebkitLineClamp: 2,
+            overflow: 'hidden',
+            fontSize: 34,
+            color: '#b5b3ad',
+            lineHeight: 1.35,
+            maxWidth: 960,
+          }}
+        >
           {description}
         </div>
       ) : null}
