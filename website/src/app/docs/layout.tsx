@@ -2,6 +2,7 @@ import type { PropsWithChildren } from 'react'
 import { css } from 'styled-system/css'
 import { Box, Flex } from 'styled-system/jsx'
 import { layout } from 'styled-system/recipes'
+import { Footer } from '~/components/marketing/footer'
 import { DocsNavbar } from '~/components/navigation/docs/docs-navbar'
 import { DocsSidebar } from '~/components/navigation/docs/docs-sidebar'
 import { DocsTabBar } from '~/components/navigation/docs/docs-tab-bar'
@@ -49,6 +50,7 @@ export default async function Layout(props: PropsWithChildren) {
         </SidebarContainer>
         <main className={styles.main}>{props.children}</main>
       </Flex>
+      <Footer />
     </Box>
   )
 }
