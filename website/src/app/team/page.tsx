@@ -37,13 +37,13 @@ const iconLink = css({
   _hover: { color: 'fg.default' },
 })
 
-const MemberCard = ({ user, role }: { user: GitHubUser; role: string }) => (
+const MemberCard = ({ user, role, name }: { user: GitHubUser; role: string; name?: string }) => (
   <Box borderWidth="1px" borderColor="border.default" rounded="l3" p="4">
     <HStack gap="3" alignItems="flex-start">
       <img src={user.avatar_url} alt={user.login} width={48} height={48} className={avatar} />
       <Stack gap="1" minW="0">
         <Text fontWeight="semibold" color="fg.default" truncate>
-          {user.name ?? user.login}
+          {name ?? user.name ?? user.login}
         </Text>
         <Text textStyle="sm" color="fg.muted">
           {role}
@@ -90,7 +90,7 @@ export default async function TeamPage() {
     <Grid columns={{ base: 1, sm: 2, md: 3 }} gap="4">
       {members.map((member) => {
         const user = byLogin(member.login)
-        return user ? <MemberCard key={member.login} user={user} role={member.role} /> : null
+        return user ? <MemberCard key={member.login} user={user} role={member.role} name={member.name} /> : null
       })}
     </Grid>
   )

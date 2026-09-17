@@ -77,7 +77,7 @@ export const Footer = () => {
     <Box as="footer" borderTopWidth="1px" borderColor="border.subtle">
       <Container py={{ base: '12', md: '16' }}>
         <Grid columns={{ base: 2, md: 6 }} gap={{ base: '8', md: '12' }}>
-          <Stack gap="4" gridColumn={{ base: 'span 2', md: 'span 2' }}>
+          <Stack gap="4" alignItems="flex-start" gridColumn={{ base: 'span 2', md: 'span 2' }}>
             <Logo />
             <Text color="fg.muted" textStyle="sm" maxW="16rem">
               The headless UI library for building reusable, scalable design systems.
