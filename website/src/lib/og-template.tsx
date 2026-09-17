@@ -5,16 +5,20 @@ interface OgOptions {
   title: string
   description?: string
   category?: string
+  author?: string
+  authorImage?: string
 }
 
-export const ogImageUrl = ({ title, description, category }: OgOptions) => {
+export const ogImageUrl = ({ title, description, category, author, authorImage }: OgOptions) => {
   const params = new URLSearchParams({ title })
   if (description) params.set('description', description)
   if (category) params.set('category', category)
+  if (author) params.set('author', author)
+  if (authorImage) params.set('authorImage', authorImage)
   return `/api/og?${params.toString()}`
 }
 
-export const OgTemplate = ({ title, description, category }: OgOptions) => (
+export const OgTemplate = ({ title, description, category, author, authorImage }: OgOptions) => (
   <div
     style={{
       height: '100%',
@@ -83,8 +87,25 @@ export const OgTemplate = ({ title, description, category }: OgOptions) => (
     </div>
 
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-      <div style={{ display: 'flex', fontSize: 28, color: '#8d8d86' }}>ark-ui.com</div>
-      <div style={{ display: 'flex', fontSize: 28, color: '#8d8d86' }}>Headless UI for React, Solid, Vue & Svelte</div>
+      {author ? (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          {authorImage ? (
+            <img
+              src={authorImage}
+              alt={author}
+              width={48}
+              height={48}
+              style={{ borderRadius: 999, border: '2px solid rgba(255,255,255,0.15)' }}
+            />
+          ) : null}
+          <div style={{ display: 'flex', fontSize: 30, color: '#eeeeec', fontWeight: 600 }}>{author}</div>
+        </div>
+      ) : (
+        <div style={{ display: 'flex', fontSize: 28, color: '#8d8d86' }}>ark-ui.com</div>
+      )}
+      <div style={{ display: 'flex', fontSize: 28, color: '#8d8d86' }}>
+        {author ? 'ark-ui.com' : 'Headless UI for React, Solid, Vue & Svelte'}
+      </div>
     </div>
   </div>
 )

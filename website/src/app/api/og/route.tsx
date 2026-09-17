@@ -7,6 +7,17 @@ export function GET(request: NextRequest) {
   const title = searchParams.get('title') ?? 'Ark UI'
   const description = searchParams.get('description') ?? undefined
   const category = searchParams.get('category') ?? undefined
+  const author = searchParams.get('author') ?? undefined
+  const authorImage = searchParams.get('authorImage') ?? undefined
 
-  return new ImageResponse(<OgTemplate title={title} description={description} category={category} />, ogSize)
+  return new ImageResponse(
+    <OgTemplate
+      title={title}
+      description={description}
+      category={category}
+      author={author}
+      authorImage={authorImage}
+    />,
+    ogSize,
+  )
 }
