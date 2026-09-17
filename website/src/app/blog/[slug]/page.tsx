@@ -8,7 +8,8 @@ import { Footer } from '~/components/marketing/footer'
 import { Navbar } from '~/components/marketing/navbar'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
-import { avatarUrl, resolveAuthors } from '~/lib/authors'
+import { AuthorAvatars, formatAuthorNames } from '~/components/author-avatars'
+import { resolveAuthors } from '~/lib/authors'
 import { getPublicUrl } from '~/lib/get-public-url'
 import { ogImageUrl } from '~/lib/og-template'
 import { MDXContent } from '~/mdx-content'
@@ -63,28 +64,7 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
           </Heading>
           <Text color="fg.muted">{blog.description}</Text>
           <HStack mt="4" gap="2" className={css({ color: 'fg.muted' })}>
-            {resolveAuthors(blog.author).map((author) =>
-              author.login ? (
-                <img
-                  key={author.name}
-                  src={avatarUrl(author.login)}
-                  alt={author.name}
-                  width={24}
-                  height={24}
-                  className={css({
-                    rounded: 'full',
-                    objectFit: 'cover',
-                    borderWidth: '1px',
-                    borderColor: 'border.subtle',
-                  })}
-                />
-              ) : null,
-            )}
-            <Text>
-              {resolveAuthors(blog.author)
-                .map((author) => author.name)
-                .join(', ') || blog.author}
-            </Text>
+            <AuthorAvatars author={blog.author} size={28} />
             <span>·</span>
             <time dateTime={blog.date}>{formatDate(blog.date)}</time>
           </HStack>
@@ -114,7 +94,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const blog = blogs.find((blog) => blog.slug === slug)
   if (!blog) return {}
 
-  const image = ogImageUrl({ title: blog.title, description: blog.description, category: 'Blog' })
+  const authors = resolveAuthors(blog.author)
+  const image = ogImageUrl({
+    title: blog.title,
+    description: blog.description,
+    category: 'Blog',
+    author: authors.length ? formatAuthorNames(authors.map((a) => a.name)) : undefined,
+    authorLogin: authors[0]?.login,
+  })
   return {
     title: blog.title,
     description: blog.description,
