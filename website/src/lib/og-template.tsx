@@ -1,7 +1,24 @@
 export const ogSize = { width: 1200, height: 630 }
 export const ogContentType = 'image/png'
 
-interface OgOptions {
+interface OgImageParams {
+  title: string
+  description?: string
+  category?: string
+  author?: string
+  authorLogin?: string
+}
+
+export const ogImageUrl = ({ title, description, category, author, authorLogin }: OgImageParams) => {
+  const params = new URLSearchParams({ title })
+  if (description) params.set('description', description)
+  if (category) params.set('category', category)
+  if (author) params.set('author', author)
+  if (authorLogin) params.set('authorLogin', authorLogin)
+  return `/api/og?${params.toString()}`
+}
+
+interface OgTemplateProps {
   title: string
   description?: string
   category?: string
@@ -9,16 +26,7 @@ interface OgOptions {
   authorImage?: string
 }
 
-export const ogImageUrl = ({ title, description, category, author, authorImage }: OgOptions) => {
-  const params = new URLSearchParams({ title })
-  if (description) params.set('description', description)
-  if (category) params.set('category', category)
-  if (author) params.set('author', author)
-  if (authorImage) params.set('authorImage', authorImage)
-  return `/api/og?${params.toString()}`
-}
-
-export const OgTemplate = ({ title, description, category, author, authorImage }: OgOptions) => (
+export const OgTemplate = ({ title, description, category, author, authorImage }: OgTemplateProps) => (
   <div
     style={{
       height: '100%',

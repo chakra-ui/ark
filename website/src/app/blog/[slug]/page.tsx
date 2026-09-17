@@ -9,7 +9,7 @@ import { Navbar } from '~/components/marketing/navbar'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import { AuthorAvatars, formatAuthorNames } from '~/components/author-avatars'
-import { avatarUrl, resolveAuthors } from '~/lib/authors'
+import { resolveAuthors } from '~/lib/authors'
 import { getPublicUrl } from '~/lib/get-public-url'
 import { ogImageUrl } from '~/lib/og-template'
 import { MDXContent } from '~/mdx-content'
@@ -100,7 +100,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: blog.description,
     category: 'Blog',
     author: authors.length ? formatAuthorNames(authors.map((a) => a.name)) : undefined,
-    authorImage: authors[0]?.login ? avatarUrl(authors[0].login, 96) : undefined,
+    authorLogin: authors[0]?.login,
   })
   return {
     title: blog.title,
