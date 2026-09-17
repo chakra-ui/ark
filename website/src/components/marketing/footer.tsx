@@ -72,7 +72,37 @@ const FooterLink = ({ link }: { link: FooterLink }) =>
     </NextLink>
   )
 
-export const Footer = () => {
+const BottomBar = ({ withBorder }: { withBorder?: boolean }) => (
+  <Flex
+    mt={withBorder ? { base: '10', md: '16' } : '0'}
+    pt={withBorder ? '6' : '0'}
+    borderTopWidth={withBorder ? '1px' : '0'}
+    borderColor="border.subtle"
+    justify="space-between"
+    align="center"
+    gap="4"
+    direction={{ base: 'column', sm: 'row' }}
+  >
+    <Text color="fg.subtle" textStyle="sm">
+      Copyright © {new Date().getFullYear()}
+    </Text>
+    <NextLink href="/team" className={linkClass}>
+      Proudly made by the Chakra team
+    </NextLink>
+  </Flex>
+)
+
+export const Footer = ({ minimal = false }: { minimal?: boolean }) => {
+  if (minimal) {
+    return (
+      <Box as="footer" borderTopWidth="1px" borderColor="border.subtle">
+        <Container py="6">
+          <BottomBar />
+        </Container>
+      </Box>
+    )
+  }
+
   return (
     <Box as="footer" borderTopWidth="1px" borderColor="border.subtle">
       <Container py={{ base: '12', md: '16' }}>
@@ -116,23 +146,7 @@ export const Footer = () => {
             </Stack>
           ))}
         </Grid>
-        <Flex
-          mt={{ base: '10', md: '16' }}
-          pt="6"
-          borderTopWidth="1px"
-          borderColor="border.subtle"
-          justify="space-between"
-          align="center"
-          gap="4"
-          direction={{ base: 'column', sm: 'row' }}
-        >
-          <Text color="fg.subtle" textStyle="sm">
-            Copyright © {new Date().getFullYear()}
-          </Text>
-          <NextLink href="/team" className={linkClass}>
-            Proudly made by the Chakra team
-          </NextLink>
-        </Flex>
+        <BottomBar withBorder />
       </Container>
     </Box>
   )

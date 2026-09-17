@@ -62,7 +62,7 @@ export const ContactDialog = (props: Props) => {
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
-          <Dialog.Content p="4">
+          <Dialog.Content p="4" width="full" maxW="lg">
             <form action={handleSubmit}>
               <Stack gap="1">
                 <Dialog.Title textStyle="lg">Contact Us</Dialog.Title>

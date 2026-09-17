@@ -3,7 +3,8 @@ import { GlobeIcon } from 'lucide-react'
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { css } from 'styled-system/css'
-import { Box, Container, Flex, Grid, HStack, Stack } from 'styled-system/jsx'
+import { Box, Container, Flex, Stack } from 'styled-system/jsx'
+import { Footer } from '~/components/marketing/footer'
 import { Navbar } from '~/components/marketing/navbar'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
@@ -15,8 +16,6 @@ export const metadata: Metadata = {
   description: 'Ark UI is built by a small core team and a large community of contributors.',
 }
 
-const avatar = css({ rounded: 'l2', flexShrink: '0', objectFit: 'cover' })
-
 const toUrl = (value: string) => {
   try {
     return new URL(value).href
@@ -25,57 +24,97 @@ const toUrl = (value: string) => {
   }
 }
 
-const iconLink = css({
-  display: 'inline-flex',
-  alignItems: 'center',
-  gap: '1',
-  textStyle: 'xs',
-  color: 'fg.muted',
-  transitionProperty: 'color',
-  transitionDuration: 'normal',
-  whiteSpace: 'nowrap',
-  _hover: { color: 'fg.default' },
+const eyebrow = css({
+  textStyle: 'sm',
+  fontWeight: 'semibold',
+  letterSpacing: 'wide',
+  textTransform: 'uppercase',
+  color: 'fg.subtle',
 })
 
-const MemberCard = ({ user, role, name }: { user: GitHubUser; role: string; name?: string }) => (
-  <Box borderWidth="1px" borderColor="border.default" rounded="l3" p="4">
-    <HStack gap="3" alignItems="flex-start">
-      <img src={user.avatar_url} alt={user.login} width={48} height={48} className={avatar} />
-      <Stack gap="1" minW="0">
-        <Text fontWeight="semibold" color="fg.default" truncate>
-          {name ?? user.name ?? user.login}
-        </Text>
-        <Text textStyle="sm" color="fg.muted">
-          {role}
-        </Text>
-        <HStack gap="3" pt="1" flexWrap="wrap">
-          <a className={iconLink} href={user.html_url} target="_blank" rel="noopener">
-            <SiGithub size={13} />@{user.login}
-          </a>
-          {user.twitter_username && (
-            <a className={iconLink} href={`https://x.com/${user.twitter_username}`} target="_blank" rel="noopener">
-              <SiX size={13} />@{user.twitter_username}
-            </a>
-          )}
-          {user.blog && (
-            <a className={iconLink} href={toUrl(user.blog)} target="_blank" rel="noopener">
-              <GlobeIcon size={13} />
-              Website
-            </a>
-          )}
-        </HStack>
-      </Stack>
-    </HStack>
+const socialButton = css({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '8',
+  height: '8',
+  rounded: 'md',
+  color: 'fg.subtle',
+  transitionProperty: 'color, background',
+  transitionDuration: 'normal',
+  _hover: { color: 'fg.default', bg: 'bg.muted' },
+})
+
+const MemberRow = ({ user, role, name }: { user: GitHubUser; role: string; name?: string }) => (
+  <Box
+    display="grid"
+    gridTemplateColumns={{ base: 'auto 1fr', md: 'auto 1fr auto' }}
+    alignItems="center"
+    gap={{ base: '4', md: '6' }}
+    py="5"
+    borderTopWidth="1px"
+    borderColor="border.default"
+  >
+    <img
+      src={user.avatar_url}
+      alt={name ?? user.name ?? user.login}
+      width={48}
+      height={48}
+      className={css({ rounded: 'full', width: '12', height: '12', objectFit: 'cover' })}
+    />
+    <Box minW="0">
+      <Text textStyle="lg" fontWeight="semibold" color="fg.default">
+        {name ?? user.name ?? user.login}
+      </Text>
+      <Text textStyle="sm" color="fg.subtle" mt="1">
+        {role}
+      </Text>
+    </Box>
+    <Flex gap="1" gridColumn={{ base: '2', md: 'auto' }}>
+      <a
+        href={user.html_url}
+        target="_blank"
+        rel="noopener"
+        aria-label={`${user.login} on GitHub`}
+        className={socialButton}
+      >
+        <SiGithub size={16} />
+      </a>
+      {user.twitter_username && (
+        <a
+          href={`https://x.com/${user.twitter_username}`}
+          target="_blank"
+          rel="noopener"
+          aria-label={`${user.login} on X`}
+          className={socialButton}
+        >
+          <SiX size={16} />
+        </a>
+      )}
+      {user.blog && (
+        <a
+          href={toUrl(user.blog)}
+          target="_blank"
+          rel="noopener"
+          aria-label={`${user.login} website`}
+          className={socialButton}
+        >
+          <GlobeIcon size={16} />
+        </a>
+      )}
+    </Flex>
   </Box>
 )
 
 const Section = ({ title, children }: { title: string; children: ReactNode }) => (
-  <Stack gap="4">
-    <Text textStyle="sm" fontWeight="semibold" letterSpacing="wide" textTransform="uppercase" color="fg.subtle">
+  <Box>
+    <Text className={eyebrow} mb="2">
       {title}
     </Text>
-    {children}
-  </Stack>
+    <Box borderBottomWidth="1px" borderColor="border.default">
+      {children}
+    </Box>
+  </Box>
 )
 
 export default async function TeamPage() {
@@ -86,19 +125,10 @@ export default async function TeamPage() {
   const maintainers = teamMembers.filter((member) => member.status === 'maintainer')
   const advisors = teamMembers.filter((member) => member.status === 'advisor')
 
-  const renderMembers = (members: typeof teamMembers) => (
-    <Grid columns={{ base: 1, sm: 2, md: 3 }} gap="4">
-      {members.map((member) => {
-        const user = byLogin(member.login)
-        return user ? <MemberCard key={member.login} user={user} role={member.role} name={member.name} /> : null
-      })}
-    </Grid>
-  )
-
   return (
     <Box minH="100vh">
       <Navbar />
-      <Container py={{ base: '16', md: '24' }} maxW="5xl">
+      <Container maxW="4xl" py={{ base: '16', md: '24' }}>
         <Stack gap="12">
           <Stack gap="3">
             <Heading as="h1" size="4xl" fontWeight="bold">
@@ -109,22 +139,44 @@ export default async function TeamPage() {
             </Text>
           </Stack>
 
-          <Section title="Core">{renderMembers(maintainers)}</Section>
-          {advisors.length > 0 && <Section title="Advisors">{renderMembers(advisors)}</Section>}
+          <Section title="Core">
+            {maintainers.map((member) => {
+              const user = byLogin(member.login)
+              return user ? <MemberRow key={member.login} user={user} role={member.role} name={member.name} /> : null
+            })}
+          </Section>
+          {advisors.length > 0 && (
+            <Section title="Advisors">
+              {advisors.map((member) => {
+                const user = byLogin(member.login)
+                return user ? <MemberRow key={member.login} user={user} role={member.role} name={member.name} /> : null
+              })}
+            </Section>
+          )}
 
           {contributors.length > 0 && (
-            <Section title={`Contributors · ${contributors.length}`}>
+            <Box>
+              <Text className={eyebrow} mb="4">
+                Contributors · {contributors.length}
+              </Text>
               <Flex wrap="wrap" gap="2">
                 {contributors.map((person) => (
-                  <a key={person.login} href={person.html_url} target="_blank" rel="noreferrer" title={person.login}>
-                    <img src={person.avatar_url} alt={person.login} width={40} height={40} className={avatar} />
+                  <a key={person.login} href={person.html_url} target="_blank" rel="noopener" title={person.login}>
+                    <img
+                      src={person.avatar_url}
+                      alt={person.login}
+                      width={40}
+                      height={40}
+                      className={css({ rounded: 'full', bg: 'bg.muted', objectFit: 'cover' })}
+                    />
                   </a>
                 ))}
               </Flex>
-            </Section>
+            </Box>
           )}
         </Stack>
       </Container>
+      <Footer />
     </Box>
   )
 }
