@@ -6,6 +6,7 @@ import { Flex } from 'styled-system/jsx'
 import { Icon } from '~/components/ui/icon'
 import { Text } from '~/components/ui/text'
 import type { ExampleGroup } from '~/lib/examples'
+import { examplesHref, frameworkFromPathname } from '~/lib/frameworks'
 import { recipe } from '../sidebar.recipe'
 
 const styles = recipe()
@@ -17,6 +18,7 @@ interface Props {
 export const ExamplesSidebar = (props: Props) => {
   const { groups } = props
   const pathname = usePathname()
+  const framework = frameworkFromPathname(pathname)
 
   return (
     <nav>
@@ -26,7 +28,7 @@ export const ExamplesSidebar = (props: Props) => {
             <p className={styles.label}>{group.title}</p>
             <ul className={styles.list}>
               {group.items.map((item) => {
-                const href = `/examples/${item.id}`
+                const href = examplesHref(framework, item.id)
                 return (
                   <li key={item.id}>
                     <NextLink href={href} aria-current={pathname === href ? 'page' : undefined} className={styles.link}>

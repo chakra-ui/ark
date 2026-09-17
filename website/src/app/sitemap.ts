@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { fetchExamples } from '~/lib/examples'
-import { docsHref, frameworks } from '~/lib/frameworks'
+import { docsHref, examplesHref, frameworks } from '~/lib/frameworks'
 import { getPublicUrl } from '~/lib/get-public-url'
 import { getSidebarGroups } from '~/lib/sidebar'
 import { blogs } from '~/lib/source'
@@ -20,7 +20,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
 
   const examples = await fetchExamples()
-  const examplePages = examples.map((example) => ({ url: getPublicUrl(`/examples/${example}`) }))
+  const examplePages = examples.flatMap((example) =>
+    frameworks.map((framework) => ({ url: getPublicUrl(examplesHref(framework, example.id)) })),
+  )
 
   return [...staticPages, ...docsPages, ...blogPages, ...examplePages]
 }

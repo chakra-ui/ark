@@ -4,7 +4,7 @@ import { CheckIcon, ChevronDownIcon } from 'lucide-react'
 import { usePathname, useRouter } from 'next/navigation'
 import { Icon } from '~/components/ui/icon'
 import { Select } from '~/components/ui/select'
-import { type Framework, docsHref, extractFramework, frameworkFromPathname } from '~/lib/frameworks'
+import { type Framework, docsHref, examplesHref, extractFramework, frameworkFromPathname } from '~/lib/frameworks'
 
 const collection = createListCollection({
   items: [
@@ -22,13 +22,13 @@ export const FrameworkSelect = () => {
 
   const onValueChange = (next: Framework) => {
     const segments = pathname.split('/').filter(Boolean)
-    if (segments[0] === 'docs') {
+    if (segments[0] === 'examples') {
       const { slug } = extractFramework(segments.slice(1))
-      router.push(docsHref(next, slug.join('/')))
+      router.push(examplesHref(next, slug[0] ?? ''))
       return
     }
-    document.cookie = `framework=${next}; path=/; max-age=31536000`
-    window.location.reload()
+    const { slug } = extractFramework(segments.slice(1))
+    router.push(docsHref(next, slug.join('/') || 'overview/getting-started'))
   }
 
   return (

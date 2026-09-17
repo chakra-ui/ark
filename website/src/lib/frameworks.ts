@@ -11,8 +11,11 @@ export const extractFramework = (segments: string[]): { framework: Framework; sl
 }
 
 export const docsHref = (framework: Framework, slug: string) => `/docs/${framework}/${slug}`
+export const examplesHref = (framework: Framework, id: string) => `/examples/${framework}/${id}`
 
 export const frameworkFromPathname = (pathname: string): Framework => {
   const segments = pathname.split('/').filter(Boolean)
-  return segments[0] === 'docs' ? extractFramework(segments.slice(1)).framework : defaultFramework
+  return segments[0] === 'docs' || segments[0] === 'examples'
+    ? extractFramework(segments.slice(1)).framework
+    : defaultFramework
 }
