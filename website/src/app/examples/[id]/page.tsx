@@ -10,8 +10,8 @@ import { Button } from '~/components/ui/button'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import { fetchCodeExamples, fetchExample } from '~/lib/examples'
+import { getFramework } from '~/lib/get-framework'
 import { getPublicUrl } from '~/lib/get-public-url'
-import { getFramework } from '~/lib/frameworks'
 
 interface Props {
   params: Promise<{ id: string }>

@@ -5,6 +5,7 @@ import { css, cva, cx } from 'styled-system/css'
 import { HStack, Stack } from 'styled-system/jsx'
 import { Icon } from '~/components/ui/icon'
 import { Text } from '~/components/ui/text'
+import { type Framework, docsHref } from '~/lib/frameworks'
 
 export interface FooterNavItem {
   slug: string
@@ -14,16 +15,16 @@ export interface FooterNavItem {
 interface Props {
   prevPage?: FooterNavItem
   nextPage?: FooterNavItem
+  framework: Framework
 }
 
 export const DocsFooter = (props: Props) => {
-  const { prevPage, nextPage } = props
-  const basepath = '/docs'
+  const { prevPage, nextPage, framework } = props
 
   return (
     <Stack justify="space-between" gap="3" direction={{ base: 'column-reverse', sm: 'row' }}>
       {prevPage && (
-        <NextLink href={[basepath, prevPage.slug].join('/')} className={link}>
+        <NextLink href={docsHref(framework, prevPage.slug)} className={link}>
           <Text color="fg.muted" fontWeight="medium" textStyle="sm">
             Prev page
           </Text>
@@ -37,7 +38,7 @@ export const DocsFooter = (props: Props) => {
       )}
       {nextPage && (
         <NextLink
-          href={[basepath, nextPage.slug].join('/')}
+          href={docsHref(framework, nextPage.slug)}
           className={cx(link, css({ marginLeft: 'auto', alignItems: 'flex-end' }))}
         >
           <Text color="fg.muted" fontWeight="medium" textStyle="sm">

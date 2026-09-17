@@ -16,7 +16,7 @@ export const Breadcrumbs = (props: Props) => {
   const crumbs = pathname
     .split('/')
     .filter(Boolean)
-    .filter((path) => !['docs', 'react', 'vue', 'solid', 'usage', 'types'].includes(path))
+    .filter((path) => !['docs', 'react', 'vue', 'solid', 'svelte', 'usage', 'types'].includes(path))
     .map((path) => path.replace(/-/g, ' '))
     .map((item) => item.charAt(0).toUpperCase() + item.substring(1))
 

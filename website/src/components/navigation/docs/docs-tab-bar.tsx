@@ -7,6 +7,7 @@ import { css } from 'styled-system/css'
 import { HStack } from 'styled-system/jsx'
 import { tabBar } from 'styled-system/recipes'
 import { getActiveTab } from '~/lib/active-tab'
+import { docsHref, frameworkFromPathname } from '~/lib/frameworks'
 import type { SidebarTab } from '~/lib/sidebar'
 import { VersionSelect } from '../version-select'
 
@@ -26,6 +27,7 @@ interface Props {
 export const DocsTabBar = (props: Props) => {
   const { tabs, latestVersion } = props
   const pathname = usePathname()
+  const framework = frameworkFromPathname(pathname)
   const active = getActiveTab(pathname, tabs)
 
   return (
@@ -37,7 +39,7 @@ export const DocsTabBar = (props: Props) => {
           return (
             <NextLink
               key={tab.key}
-              href={`/docs/${tab.landingSlug ?? ''}`}
+              href={docsHref(framework, tab.landingSlug ?? '')}
               aria-current={isActive ? 'page' : undefined}
               className={styles.link}
             >

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { fetchExamples } from '~/lib/examples'
+import { docsHref, frameworks } from '~/lib/frameworks'
 import { getPublicUrl } from '~/lib/get-public-url'
 import { getSidebarGroups } from '~/lib/sidebar'
 import { blogs } from '~/lib/source'
@@ -11,7 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const docsPages = getSidebarGroups()
     .flatMap((group) => group.items)
-    .map((page) => ({ url: getPublicUrl(`/docs/${page.slug}`) }))
+    .flatMap((page) => frameworks.map((framework) => ({ url: getPublicUrl(docsHref(framework, page.slug)) })))
 
   const blogPages = blogs.map((blog) => ({
     url: getPublicUrl(`/blog/${blog.slug}`),

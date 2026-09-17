@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 import { Badge } from '~/components/ui/badge'
 import { getActiveTab } from '~/lib/active-tab'
+import { docsHref, frameworkFromPathname } from '~/lib/frameworks'
 import type { SidebarTab } from '~/lib/sidebar'
 import { recipe } from '../sidebar.recipe'
 
@@ -16,6 +17,7 @@ interface Props {
 export const DocsSidebar = (props: Props) => {
   const { tabs } = props
   const pathname = usePathname()
+  const framework = frameworkFromPathname(pathname)
   const currentRef = useRef<HTMLAnchorElement>(null)
   const groups = getActiveTab(pathname, tabs)?.groups ?? []
 
@@ -33,7 +35,7 @@ export const DocsSidebar = (props: Props) => {
             <p className={styles.label}>{group.title}</p>
             <ul className={styles.list}>
               {group.items.map((item) => {
-                const href = `/docs/${item.slug}`
+                const href = docsHref(framework, item.slug)
                 const isCurrent = pathname === href
                 return (
                   <li key={item.id}>

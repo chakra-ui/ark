@@ -1,5 +1,6 @@
+import { defaultFramework } from '~/lib/frameworks'
 import { getHighlighter } from '~/lib/highlighter'
-import { getFramework } from '~/lib/frameworks'
+import { getServerContext } from '~/lib/server-context'
 import { CodeTabs } from './code-tabs'
 
 export const InstallCmd = async () => {
@@ -18,7 +19,7 @@ export const cmdMap: Record<PackageManger, string> = {
 }
 
 const getInstallCmds = async () => {
-  const framework = await getFramework()
+  const framework = getServerContext().framework ?? defaultFramework
   const pkgmanagers = ['npm', 'pnpm', 'yarn', 'bun'] as const
   const highlighter = await getHighlighter()
 

@@ -1,8 +1,10 @@
 'use client'
 import { createListCollection } from '@ark-ui/react/collection'
 import { CheckIcon, ChevronDownIcon } from 'lucide-react'
+import { usePathname, useRouter } from 'next/navigation'
 import { Icon } from '~/components/ui/icon'
 import { Select } from '~/components/ui/select'
+import { type Framework, docsHref, extractFramework, frameworkFromPathname } from '~/lib/frameworks'
 
 const collection = createListCollection({
   items: [
@@ -13,19 +15,26 @@ const collection = createListCollection({
   ],
 })
 
-interface Props {
-  framework: string
-}
+export const FrameworkSelect = () => {
+  const pathname = usePathname()
+  const router = useRouter()
+  const framework = frameworkFromPathname(pathname)
 
-export const FrameworkSelect = (props: Props) => {
-  const { framework } = props
+  const onValueChange = (next: Framework) => {
+    const segments = pathname.split('/').filter(Boolean)
+    if (segments[0] === 'docs') {
+      const { slug } = extractFramework(segments.slice(1))
+      router.push(docsHref(next, slug.join('/')))
+      return
+    }
+    document.cookie = `framework=${next}; path=/; max-age=31536000`
+    window.location.reload()
+  }
+
   return (
     <Select.Root
-      defaultValue={[framework]}
-      onValueChange={(e) => {
-        document.cookie = `framework=${e.value[0]}; path=/; max-age=31536000;`
-        window.location.reload()
-      }}
+      value={[framework]}
+      onValueChange={(e) => onValueChange(e.value[0] as Framework)}
       size={{ base: 'md', md: 'sm' }}
       collection={collection}
       variant="ghost"

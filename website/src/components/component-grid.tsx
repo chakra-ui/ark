@@ -1,7 +1,9 @@
 import NextLink from 'next/link'
 import { css } from 'styled-system/css'
 import { Box, Grid, Stack } from 'styled-system/jsx'
+import { defaultFramework, docsHref } from '~/lib/frameworks'
 import { getPageBySlug } from '~/lib/pages'
+import { getServerContext } from '~/lib/server-context'
 import { getSidebarTabs } from '~/lib/sidebar'
 
 const card = css({
@@ -21,6 +23,7 @@ interface Props {
 }
 
 export const ComponentGrid = ({ tab = 'components' }: Props) => {
+  const framework = getServerContext().framework ?? defaultFramework
   const active = getSidebarTabs().find((entry) => entry.key === tab)
   const items = (active?.groups ?? [])
     .flatMap((group) => group.items)
@@ -31,7 +34,7 @@ export const ComponentGrid = ({ tab = 'components' }: Props) => {
       {items.map((item) => {
         const meta = getPageBySlug(item.slug.split('/'))
         return (
-          <NextLink key={item.slug} href={`/docs/${item.slug}`} className={card}>
+          <NextLink key={item.slug} href={docsHref(framework, item.slug)} className={card}>
             <Stack gap="1">
               <Box fontWeight="semibold" color="fg.default">
                 {item.title}
