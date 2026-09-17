@@ -1,3 +1,6 @@
 
 # Fumadocs MDX
 .source
+
+# generated at build from packages/*/CHANGELOG.md
+src/content/changelogs/

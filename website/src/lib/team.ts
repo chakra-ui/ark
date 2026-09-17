@@ -9,5 +9,6 @@ export const teamMembers: TeamMember[] = [
   { login: 'segunadebayo', role: 'Creator of Chakra UI and Zag.js', status: 'maintainer' },
   { login: 'cschroeter', role: 'Core maintainer', status: 'maintainer' },
   { login: 'Adebesin-Cell', role: 'Maintainer', status: 'maintainer' },
-  { login: 'estheragbaje', role: 'Developer Advocate', status: 'advisor' },
+  { login: 'estheragbaje', role: 'Developer Marketing', status: 'maintainer' },
+  { login: 'anubra266', role: 'Advisor', status: 'advisor' },
 ]

@@ -17,7 +17,7 @@ export const CHANGELOG_META: PageMeta = {
 export const isChangelogSlug = (slug: string) => slug === CHANGELOG_META.slug
 
 export const getChangelogContent = (framework: Framework): string => {
-  const path = join(process.cwd(), '..', 'packages', framework, 'CHANGELOG.md')
+  const path = join(process.cwd(), 'src/content/changelogs', `${framework}.md`)
   try {
     return readFileSync(path, 'utf8')
   } catch {

@@ -25,6 +25,7 @@ const iconLink = css({
   color: 'fg.muted',
   transitionProperty: 'color',
   transitionDuration: 'normal',
+  whiteSpace: 'nowrap',
   _hover: { color: 'fg.default' },
 })
 
@@ -39,7 +40,7 @@ const MemberCard = ({ user, role }: { user: GitHubUser; role: string }) => (
         <Text textStyle="sm" color="fg.muted">
           {role}
         </Text>
-        <HStack gap="3" pt="1">
+        <HStack gap="3" pt="1" flexWrap="wrap">
           <a className={iconLink} href={user.html_url} target="_blank" rel="noreferrer">
             <SiGithub size={13} />@{user.login}
           </a>
