@@ -12,13 +12,20 @@ export type ToastOptions = toast.Options<VNodeChild>
 
 export interface ToasterBaseProps extends PolymorphicProps {
   toaster: CreateToasterReturn<any>
+  dir?: toast.GroupProps['dir']
+  getRootNode?: toast.GroupProps['getRootNode']
+  /**
+   * The human-readable label for the toast region.
+   * @default "Notifications"
+   */
+  label?: string | undefined
 }
 
 export interface ToasterProps
   extends
     ToasterBaseProps,
     /** @vue-ignore */
-    HTMLAttributes,
+    Omit<HTMLAttributes, 'dir'>,
     /** @vue-ignore */
     SlotsType<{
       default: ToastOptions
@@ -32,8 +39,8 @@ const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
 const service = useMachine(toast.group.machine, {
   store: props.toaster,
   id: useId(),
-  dir: locale?.value.dir,
-  getRootNode: env?.value.getRootNode,
+  dir: props.dir ?? locale?.value.dir,
+  getRootNode: props.getRootNode ?? env?.value.getRootNode,
 })
 
 const api = computed(() => toast.group.connect(service, normalizeProps))
@@ -42,7 +49,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="api.getGroupProps()">
+  <ark.div v-bind="api.getGroupProps({ label: props.label })">
     <ToasterItem
       v-for="(toastItem, index) in api.getToasts()"
       :key="toastItem.id"
