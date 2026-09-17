@@ -8,6 +8,7 @@ import { Footer } from '~/components/marketing/footer'
 import { Navbar } from '~/components/marketing/navbar'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
+import { avatarUrl, resolveAuthors } from '~/lib/authors'
 import { getPublicUrl } from '~/lib/get-public-url'
 import { ogImageUrl } from '~/lib/og-template'
 import { MDXContent } from '~/mdx-content'
@@ -62,8 +63,29 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
           </Heading>
           <Text color="fg.muted">{blog.description}</Text>
           <HStack mt="4" gap="2" className={css({ color: 'fg.muted' })}>
-            <Text>{blog.author}</Text>
-            <span>/</span>
+            {resolveAuthors(blog.author).map((author) =>
+              author.login ? (
+                <img
+                  key={author.name}
+                  src={avatarUrl(author.login)}
+                  alt={author.name}
+                  width={24}
+                  height={24}
+                  className={css({
+                    rounded: 'full',
+                    objectFit: 'cover',
+                    borderWidth: '1px',
+                    borderColor: 'border.subtle',
+                  })}
+                />
+              ) : null,
+            )}
+            <Text>
+              {resolveAuthors(blog.author)
+                .map((author) => author.name)
+                .join(', ') || blog.author}
+            </Text>
+            <span>·</span>
             <time dateTime={blog.date}>{formatDate(blog.date)}</time>
           </HStack>
         </Stack>

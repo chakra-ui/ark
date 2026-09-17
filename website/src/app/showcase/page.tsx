@@ -22,7 +22,7 @@ export default function Page() {
   return (
     <Box minH="100vh">
       <Navbar />
-      <Container pt={{ base: '16', md: '24' }} pb="20">
+      <Container py={{ base: '16', md: '24' }} maxW="5xl">
         <Stack gap={{ base: '12', md: '16' }}>
           <Stack>
             <Text textStyle={{ base: 'sm', md: 'md' }} fontWeight="medium" color="colorPalette.default">

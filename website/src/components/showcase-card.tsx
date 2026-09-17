@@ -12,12 +12,11 @@ export const ShowcaseCard = ({ data }: ShowcaseCardProps) => {
     <GridItem display="flex">
       <a href={data.url} className={link} target="_blank" rel="noreferrer">
         <Card.Root boxShadow="none">
-          <Card.Header px="4" pt="4" pb="3" maxH="13rem" overflow="hidden">
+          <Card.Header p="0" overflow="hidden" borderBottomWidth="1px" borderColor="border.default">
             <styled.img
               src={data.image}
               alt={data.title}
-              borderRadius="l2"
-              minH="8rem"
+              width="full"
               aspectRatio="16 / 9"
               objectFit="cover"
               objectPosition="top center"
