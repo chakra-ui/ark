@@ -24,6 +24,9 @@ jobs:
       - name: Build packages
         run: bun run build
 
+      - name: Build website
+        run: bun run --filter='@ark-ui/website' build
+
   tests:
     name: Tests
     runs-on: ubuntu-latest
