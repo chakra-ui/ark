@@ -21,7 +21,12 @@ export const sidebarConfig: SidebarTabConfig[] = [
     groups: [
       {
         title: 'Overview',
-        items: [{ id: 'getting-started' }, { id: 'changelog' }, { id: 'about', title: 'About' }],
+        items: [
+          { id: 'getting-started' },
+          { id: 'upgrade-guide' },
+          { id: 'changelog' },
+          { id: 'about', title: 'About' },
+        ],
       },
       {
         title: 'Guides',

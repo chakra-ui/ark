@@ -1,0 +1,162 @@
+---
+id: upgrade-guide
+title: Upgrade Guide
+description: How to upgrade your Ark UI project to v6.
+---
+
+Ark UI v6 focuses on accessibility, cross-framework parity, and a single, state-aware
+composition API. This guide covers the breaking changes and how to migrate.
+
+## Automated migration
+
+Most of the mechanical work — chiefly the `asChild` → `render` rename — ships as a codemod.
+
+```sh
+# See every available transform
+npx @ark-ui/codemod list
+
+# Preview the changes without writing them
+npx @ark-ui/codemod react/as-child-to-render "src/**/*.tsx" --dry
+```
+
+`--dry` prints a diff and writes nothing. Without it the codemod refuses to run on a dirty
+working tree, so a bad run is one `git checkout` away. Anything ambiguous is left untouched and
+reported with a file and a reason rather than guessed.
+
+Only Ark UI elements are rewritten — a `asChild` from another library in the same file is left
+alone. Parts reached through local barrels, re-exports, or factory wrappers
+(`styled(ark.button)`) are resolved with the `--cross-file` flag.
+
+## Breaking changes
+
+### `asChild` is now `render`
+
+Polymorphism moves from a wrapper prop to a `render` function that receives the part's props and
+its state. This gives every part a single, typed composition API and lets you read machine state
+inline.
+
+The shape differs per framework. React and Vue move the child into the function or slot; Solid and
+Svelte are a rename where the props object becomes a props **function** you must call.
+
+```diff
+// React
+- <Collapsible.Trigger asChild>
+-   <button>Toggle</button>
+- </Collapsible.Trigger>
++ <Collapsible.Trigger render={(props, state) => (
++   <button {...props}>{state.open ? 'Open' : 'Closed'}</button>
++ )} />
+```
+
+```diff
+// Solid — {...props} becomes {...props()}, state is an accessor
+- <Collapsible.Trigger asChild>
+-   {(props) => <button {...props}>Toggle</button>}
+- </Collapsible.Trigger>
++ <Collapsible.Trigger render={(props, state) => (
++   <button {...props()}>{state().open ? 'Open' : 'Closed'}</button>
++ )} />
+```
+
+```svelte
+<!-- Svelte -->
+<Collapsible.Trigger>
+  {#snippet render(props, state)}
+    <button {...props()}>{state.open ? 'Open' : 'Closed'}</button>
+  {/snippet}
+</Collapsible.Trigger>
+```
+
+```vue
+<!-- Vue -->
+<Collapsible.Trigger>
+  <template #render="{ props, state }">
+    <button v-bind="props()">{{ state.open ? 'Open' : 'Closed' }}</button>
+  </template>
+</Collapsible.Trigger>
+```
+
+> In Solid, Svelte, and Vue, `props` is a merge function: call `props({ onClick: mine })` to merge
+> your handlers with the part's instead of overwriting them.
+
+### `Toaster` is no longer polymorphic
+
+`Toaster` no longer accepts `render` or `asChild`, and `ToasterState` is gone. Its children belong
+to the machine, so handing them over dropped toasts. Style the group with CSS — it carries
+`data-placement`, `data-side`, and `data-align` — or wrap your own element around `Toaster`.
+
+### `Combobox.Empty` and `Listbox.Empty`
+
+`Empty` used to render inside `List` and unmount when the collection was non-empty, which kept it
+out of the accessibility tree and prevented any announcement. It now stays mounted as a sibling of
+`List` with `role="status"`, swapping only its children. Move it out of `List` and put your styled
+message in a child element.
+
+```diff
+  <Combobox.Content>
+-   <Combobox.List>
+-     <Combobox.Empty className={styles.Item}>No results found</Combobox.Empty>
++   <Combobox.Empty>
++     <div className={styles.Empty}>No results found</div>
++   </Combobox.Empty>
++   <Combobox.List>
+      {/* items */}
+    </Combobox.List>
+  </Combobox.Content>
+```
+
+A new `Status` part on `Combobox`, `Listbox`, and `Select` covers loading and error states that
+`Empty` cannot distinguish (it keys off `collection.size === 0`).
+
+### `useCollator` and `useFilter` return values
+
+For Solid, Svelte, and Vue, these hooks now return their values directly instead of an accessor,
+matching React. They still follow locale changes.
+
+```diff
+- const collator = useCollator()
+- collator().compare(a, b)      // Solid, Svelte
+- collator.value.compare(a, b)  // Vue
++ const collator = useCollator()
++ collator.compare(a, b)
+```
+
+```diff
+- const filters = useFilter({ sensitivity: 'base' })
+- filters().contains(text, query)     // Solid, Svelte
+- filters.value.contains(text, query) // Vue
++ const { contains } = useFilter({ sensitivity: 'base' })
++ contains(text, query)
+```
+
+### Svelte: hooks require an `id`
+
+After moving to Zag 2, the `useX` hooks require an `id`. Without one, two instances on a page
+generated the same element ids. Components (`<Collapsible.Root>`) are unaffected and still mint
+their own.
+
+```diff
+- const collapsible = useCollapsible()
++ const id = $props.id()
++ const collapsible = useCollapsible({ id })
+```
+
+`$props.id()` may only be called once per component; derive from it if you need two.
+
+### Svelte: export parity
+
+Svelte exports now match the other frameworks. `Dialog`'s `Positioner`, `Root`, `RootProvider`,
+`Title`, and `Trigger` are prefixed (`DialogPositioner`). `StepsStepChangeDetails` →
+`StepChangeDetails`, `ColorPickerColor` → `Color`, `TabsContentState` / `TabsTriggerState` →
+`TabContentState` / `TabTriggerState`. Internals such as `CheckboxProvider` and
+`splitCollapsibleProps` are no longer exported.
+
+## New in v6
+
+- **`Menubar`** — an application-style menu bar that coordinates a row of `Menu`s.
+- **`Virtualizer`** — list, grid, and window virtualization hooks and components for large data.
+- **`Accordion.ItemHeader`** — the missing ARIA `h3` wrapper around each trigger.
+- **`Status` part** — a polite live region for loading and error states in `Combobox`, `Listbox`,
+  and `Select`.
+- **Part state in `render`** — every part now forwards its machine state as the second argument, so
+  you can read `state.open`, `state.checked`, and friends inline.
