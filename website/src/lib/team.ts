@@ -7,8 +7,8 @@ export interface TeamMember {
 
 export const teamMembers: TeamMember[] = [
   { login: 'segunadebayo', role: 'Creator of Chakra UI and Zag.js', status: 'maintainer' },
-  { login: 'cschroeter', role: 'Core maintainer', status: 'maintainer' },
-  { login: 'Adebesin-Cell', role: 'Maintainer', status: 'maintainer', name: 'Adebesin Tolulope' },
+  { login: 'cschroeter', role: 'Creator of Ark UI', status: 'maintainer' },
+  { login: 'Adebesin-Cell', role: 'Core maintainer', status: 'maintainer', name: 'Adebesin Tolulope' },
   { login: 'estheragbaje', role: 'Developer Marketing', status: 'maintainer' },
   { login: 'anubra266', role: 'Advisor', status: 'advisor' },
 ]
