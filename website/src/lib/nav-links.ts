@@ -10,7 +10,7 @@ interface NavLinkItem {
 export const navLinks: NavLinkItem[] = [
   {
     label: 'Docs',
-    href: '/docs/overview/about',
+    href: '/docs/react/overview/getting-started',
     hrefPrefix: '/docs',
   },
   {
