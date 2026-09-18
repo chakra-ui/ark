@@ -9,7 +9,6 @@ interface Adapter {
   elementOf: (content: string) => string | undefined
 }
 
-// A part's element is the root ark node it renders. Nested ark nodes are children, not the contract.
 const rootElement = (pattern: RegExp) => (content: string) => content.match(pattern)?.[1]
 
 const adapters: Adapter[] = [
@@ -35,13 +34,12 @@ const adapters: Adapter[] = [
     name: 'svelte',
     dir: '../packages/svelte/src/lib/components',
     extension: 'svelte',
-    elementOf: rootElement(/<Ark\s+as="([A-Za-z0-9]+)"/),
+    elementOf: rootElement(/<Ark\b[^>]*?\bas="([A-Za-z0-9]+)"/),
   },
 ]
 
-// Parts whose element still differs across adapters, tracked in
-// https://github.com/chakra-ui/ark/discussions/4047. The list is shrink-only: a part that no longer
-// diverges has to be deleted from it, and a divergence that is not listed fails the check.
+// Both lists are shrink-only: an entry that no longer applies fails the check, so a fix has to
+// delete its line. Tracked in https://github.com/chakra-ui/ark/discussions/4047
 const knownDivergences = new Set([
   'angle-slider/angle-slider-marker',
   'angle-slider/angle-slider-value-text',
@@ -56,6 +54,15 @@ const knownDivergences = new Set([
   'toggle/toggle-indicator',
   'tree-view/tree-view-branch-trigger',
   'tree-view/tree-view-item',
+])
+
+// Parts that render a native element rather than an ark node on some adapters, so there is no
+// element to compare.
+const knownUnreadableRoots = new Set([
+  'frame/frame',
+  'highlight/highlight',
+  'json-tree-view/json-tree-view-key-node',
+  'toast/toast-root',
 ])
 
 const readParts = async (adapter: Adapter) => {
@@ -77,54 +84,83 @@ const readParts = async (adapter: Adapter) => {
 }
 
 const main = async () => {
-  const parts = new Map<string, Map<string, string>>()
+  const parts = new Map<string, Map<string, string | undefined>>()
 
   for (const adapter of adapters) {
     for (const { part, element } of await readParts(adapter)) {
-      // A file that renders no ark node (context providers, hidden inputs) has no element to compare.
-      if (!element) continue
       if (!parts.has(part)) parts.set(part, new Map())
       parts.get(part)?.set(adapter.name, element)
     }
   }
 
+  const comparable = Array.from(parts).filter(([, byAdapter]) =>
+    Array.from(byAdapter.values()).some((element) => element !== undefined),
+  )
+
   const describe = (part: string) => {
-    const byAdapter = parts.get(part) ?? new Map<string, string>()
-    return Array.from(byAdapter, ([adapter, element]) => `${adapter}: ${element}`).join(', ')
+    const byAdapter = parts.get(part) ?? new Map<string, string | undefined>()
+    return Array.from(byAdapter, ([adapter, element]) => `${adapter}: ${element ?? 'not an ark node'}`).join(', ')
   }
 
-  const divergent = Array.from(parts)
-    .filter(([, byAdapter]) => byAdapter.size > 1 && new Set(byAdapter.values()).size > 1)
+  const elementsOf = (byAdapter: Map<string, string | undefined>) =>
+    Array.from(byAdapter.values()).filter((element): element is string => element !== undefined)
+
+  const divergent = comparable
+    .filter(([, byAdapter]) => elementsOf(byAdapter).length > 1)
+    .filter(([, byAdapter]) => new Set(elementsOf(byAdapter)).size > 1)
     .map(([part]) => part)
     .sort()
 
-  const unexpected = divergent.filter((part) => !knownDivergences.has(part))
-  const stale = Array.from(knownDivergences)
-    .filter((part) => !divergent.includes(part))
+  const unreadable = comparable
+    .filter(([, byAdapter]) => Array.from(byAdapter.values()).some((element) => element === undefined))
+    .map(([part]) => part)
     .sort()
 
-  if (unexpected.length > 0) {
-    console.log('The following parts render a different element across adapters:')
-    for (const part of unexpected) {
-      console.log(`  ${part} — ${describe(part)}`)
+  const report = (heading: string, found: string[], known: Set<string>): { failed: boolean; tracked: string[] } => {
+    const unexpected = found.filter((part) => !known.has(part))
+    const stale = Array.from(known)
+      .filter((part) => !found.includes(part))
+      .sort()
+
+    if (unexpected.length > 0) {
+      console.log(`${heading}:`)
+      for (const part of unexpected) {
+        console.log(`  ${part} — ${describe(part)}`)
+      }
+      console.log()
     }
-    console.log("\nA part's element is part of its contract. Align the adapters before merging.")
+
+    if (stale.length > 0) {
+      console.log(`The following parts no longer apply. Delete them from the list in check-nodes.ts:`)
+      for (const part of stale) {
+        console.log(`  ${part}`)
+      }
+      console.log()
+    }
+
+    return { failed: unexpected.length > 0 || stale.length > 0, tracked: found.filter((part) => known.has(part)) }
   }
 
-  if (stale.length > 0) {
-    console.log('\nThe following parts no longer diverge. Delete them from knownDivergences:')
-    for (const part of stale) {
-      console.log(`  ${part}`)
-    }
-  }
+  const elements = report(
+    "The following parts render a different element across adapters, and a part's element is part of its contract",
+    divergent,
+    knownDivergences,
+  )
+  const roots = report(
+    'The following parts no longer render an ark node on every adapter, so their element cannot be compared',
+    unreadable,
+    knownUnreadableRoots,
+  )
 
-  if (unexpected.length > 0 || stale.length > 0) {
+  if (elements.failed || roots.failed) {
     process.exit(1)
   }
 
-  console.log(`Checked ${parts.size} parts across ${adapters.map((adapter) => adapter.name).join(', ')}.`)
-  console.log(`${divergent.length} known divergences:`)
-  for (const part of divergent) {
+  console.log(`Checked ${comparable.length} parts across ${adapters.map((adapter) => adapter.name).join(', ')}.`)
+  console.log(
+    `${elements.tracked.length} known divergences, ${roots.tracked.length} parts not read through the factory:`,
+  )
+  for (const part of [...elements.tracked, ...roots.tracked].sort()) {
     console.log(`  ${part} — ${describe(part)}`)
   }
 }
