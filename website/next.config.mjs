@@ -5,6 +5,12 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['@ark-ui/react'],
   },
+  turbopack: {
+    ignoreIssue: [
+      { path: '**/components/example.tsx', title: /matches \d+ files/ },
+      { path: '**/lib/example-utils.ts', title: /matches \d+ files/ },
+    ],
+  },
   async redirects() {
     return [
       {
