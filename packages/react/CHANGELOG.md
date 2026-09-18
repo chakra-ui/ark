@@ -1,5 +1,14 @@
 # @ark-ui/react
 
+## [5.39.3] - 2026-09-18
+
+### Fixed
+
+- Fix `Toaster` dropping the group props it accepts. `dir` and `getRootNode` were typed on the component but never
+  reached the group machine — the locale and environment contexts always won, and both props were spread onto the region
+  element instead. The toast region's `aria-label` is now settable through a `label` prop, which is forwarded to
+  `getGroupProps`.
+
 ## [5.39.2] - 2026-09-11
 
 ### Fixed
