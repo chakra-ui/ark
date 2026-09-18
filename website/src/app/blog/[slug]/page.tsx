@@ -43,49 +43,51 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
       backgroundRepeat="repeat-x"
     >
       <Navbar />
-      <Container py={{ base: '16', md: '24' }} maxW="6xl" flex="1">
-        <Flex gap="12" justifyContent="center" alignItems="flex-start">
-          <Stack gap="0" width="full" maxW="3xl">
-            <Stack pb="10" gap="3">
-              <Link
-                href="/blog"
-                className={hstack({
-                  color: 'colorPalette.default',
-                  alignSelf: 'flex-start',
-                  gap: '1',
-                  _icon: {
-                    width: '4',
-                    height: '4',
-                  },
+      <Container py={{ base: '16', md: '24' }} maxW="90rem" flex="1">
+        <Flex gap="10" alignItems="flex-start">
+          <Box flex="1" minW="0">
+            <Stack gap="0" maxW="3xl" mx="auto">
+              <Stack pb="10" gap="3">
+                <Link
+                  href="/blog"
+                  className={hstack({
+                    color: 'colorPalette.default',
+                    alignSelf: 'flex-start',
+                    gap: '1',
+                    _icon: {
+                      width: '4',
+                      height: '4',
+                    },
+                  })}
+                >
+                  <ArrowLeftIcon />
+                  Back to Blog
+                </Link>
+                <Heading as="h1" size="5xl" mt="4">
+                  {blog.title}
+                </Heading>
+                <Text color="fg.muted">{blog.description}</Text>
+                <HStack mt="4" gap="2" className={css({ color: 'fg.muted' })}>
+                  <AuthorAvatars author={blog.author} size={28} linkAvatars />
+                  <span>·</span>
+                  <time dateTime={blog.date}>{formatDate(blog.date)}</time>
+                </HStack>
+              </Stack>
+
+              <div
+                className={css({
+                  borderBottomWidth: '1px',
+                  borderColor: 'border.muted',
+                  mb: '6',
+                  borderStyle: 'dashed',
                 })}
-              >
-                <ArrowLeftIcon />
-                Back to Blog
-              </Link>
-              <Heading as="h1" size="5xl" mt="4">
-                {blog.title}
-              </Heading>
-              <Text color="fg.muted">{blog.description}</Text>
-              <HStack mt="4" gap="2" className={css({ color: 'fg.muted' })}>
-                <AuthorAvatars author={blog.author} size={28} linkAvatars />
-                <span>·</span>
-                <time dateTime={blog.date}>{formatDate(blog.date)}</time>
-              </HStack>
+              />
+
+              <article className={css({ lineHeight: '1.75', color: 'var(--colors-prose-body)' })}>
+                <MDXContent body={blog.body} />
+              </article>
             </Stack>
-
-            <div
-              className={css({
-                borderBottomWidth: '1px',
-                borderColor: 'border.muted',
-                mb: '6',
-                borderStyle: 'dashed',
-              })}
-            />
-
-            <article className={css({ lineHeight: '1.75', color: 'var(--colors-prose-body)' })}>
-              <MDXContent body={blog.body} />
-            </article>
-          </Stack>
+          </Box>
 
           {blog.toc.length > 0 && (
             <Box
