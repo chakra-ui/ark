@@ -39,6 +39,7 @@ export const sidebarConfig: SidebarGroupConfig[] = [
       { id: 'angle-slider' },
       { id: 'avatar' },
       { id: 'carousel' },
+      { id: 'cascade-select' },
       { id: 'checkbox' },
       { id: 'clipboard' },
       { id: 'collapsible' },
