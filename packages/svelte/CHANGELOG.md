@@ -1,5 +1,33 @@
 # @ark-ui/svelte
 
+## [5.24.3] - 2026-09-18
+
+### Fixed
+
+- Fix `Dialog.Description` and `Popover.Description` rendering a `p` element. React, Solid and Vue render a `div`, so a
+  stylesheet or a nested block element written against one stack broke on the other.
+- Render `FileUpload.ItemGroup` as `ul`, `Menu.Separator` as `hr`, `Slider.ValueText` as `span`, and
+  `DatePicker.TableCellTrigger`, `Steps.List`, `TreeView.BranchTrigger` and `TreeView.Item` as `div`, matching the other
+  frameworks.
+- Export the `Fieldset` namespace's prop types under their namespaced names. Every other Svelte namespace aliases them —
+  `Field.RootProps`, `Dialog.RootProps`, `Accordion.ItemProps` and so on — but `fieldset.ts` re-exported the flat
+  `FieldsetRootProps` / `FieldsetLegendProps` names, so `Fieldset.RootProps` and its siblings did not resolve and the
+  `BaseProps` variants were not exported at all. This matches the React package, whose `Fieldset` namespace already
+  aliases both.
+- Fix `Select.ValueText` rendering its `placeholder` as a DOM attribute. The component spread every prop onto the
+  underlying `span`, so the fallback text showed up as `placeholder="…"` in the markup. `Listbox.ValueText` and
+  `DatePicker.ValueText` already split it out.
+- Fix `Tabs.Content` omitting the presence props. The content merged only the machine props, so it never carried
+  `data-state="open" | "closed"` (the React, Solid and Vue implementations do) and it was hidden the moment the tab
+  changed, cutting exit animations short.
+- Fix `Tooltip.Root` ignoring a controlled `open` prop. The root destructured `open` out of its props and never passed
+  it to the machine, so `<Tooltip.Root open={true}>` (or a `bind:open` the parent drives) rendered a closed tooltip. The
+  other popper roots (`Dialog`, `Popover`, `HoverCard`) already forward it.
+- Fix `Toaster` dropping the group props it accepts. `dir` and `getRootNode` were typed on the component but never
+  reached the group machine — the locale and environment contexts always won, and both props were spread onto the region
+  element instead. The toast region's `aria-label` is now settable through a `label` prop, which is forwarded to
+  `getGroupProps`.
+
 ## [5.24.2] - 2026-09-11
 
 ### Fixed
