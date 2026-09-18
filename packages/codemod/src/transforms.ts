@@ -4,14 +4,21 @@ import { solidAsChildToRender } from './transforms/as-child-to-render/solid.ts'
 import { svelteAsChildToRender } from './transforms/as-child-to-render/svelte.ts'
 import { vueAsChildToRender } from './transforms/as-child-to-render/vue.ts'
 import { cssDataAttributes } from './transforms/data-attributes/css.ts'
-import { renameRun, renameTransforms } from './transforms/rename-props/configs.ts'
+import {
+  type RenameFramework,
+  renameFrameworkExtensions,
+  renameRun,
+  renameTransforms,
+} from './transforms/rename-props/configs.ts'
 
-const jsxRenameTransforms: TransformDef[] = renameTransforms.flatMap((def) =>
-  (['react', 'solid'] as const).map((framework) => ({
+const renameFrameworks: RenameFramework[] = ['react', 'solid', 'svelte', 'vue']
+
+const propRenameTransforms: TransformDef[] = renameTransforms.flatMap((def) =>
+  renameFrameworks.map((framework) => ({
     name: `${framework}/${def.slug}`,
     description: def.description,
-    extensions: ['.tsx', '.jsx'],
-    run: renameRun(def.slug),
+    extensions: renameFrameworkExtensions[framework],
+    run: renameRun(def.slug, framework),
   })),
 )
 
@@ -40,7 +47,7 @@ export const transforms: TransformDef[] = [
     extensions: ['.svelte'],
     run: svelteAsChildToRender,
   },
-  ...jsxRenameTransforms,
+  ...propRenameTransforms,
   {
     name: 'css/data-attributes',
     description: 'Merge data-scope/data-part selectors and update toggle state selectors',

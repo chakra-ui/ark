@@ -30,7 +30,8 @@ Only Ark UI elements are rewritten — an `asChild` from another library in the 
 alone. Parts reached through local barrels, re-exports, or factory wrappers (`styled(ark.button)`)
 are resolved with the `--cross-file` flag.
 
-Beyond `as-child-to-render`, prop renames ship as `react/*` and `solid/*` transforms:
+Beyond `as-child-to-render`, prop renames ship for every framework — `react/*`, `solid/*`, `svelte/*`,
+and `vue/*` (Vue rewrites kebab and bound props too):
 
 | Transform | What it does |
 | --- | --- |

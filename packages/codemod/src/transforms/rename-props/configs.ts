@@ -1,4 +1,7 @@
 import { makeRenameTransform, type PropRule } from './engine.ts'
+import { makeSvelteRenameTransform } from './svelte.ts'
+import { makeVueRenameTransform } from './vue.ts'
+import type { Transform } from '../../types.ts'
 
 export interface RenameTransformDef {
   slug: string
@@ -70,8 +73,20 @@ export const renameTransforms: RenameTransformDef[] = [
   },
 ]
 
-export function renameRun(slug: string) {
+export type RenameFramework = 'react' | 'solid' | 'svelte' | 'vue'
+
+export const renameFrameworkExtensions: Record<RenameFramework, string[]> = {
+  react: ['.tsx', '.jsx'],
+  solid: ['.tsx', '.jsx'],
+  svelte: ['.svelte'],
+  vue: ['.vue'],
+}
+
+export function renameRun(slug: string, framework: RenameFramework = 'react'): Transform {
   const def = renameTransforms.find((t) => t.slug === slug)
   if (!def) throw new Error(`unknown rename transform: ${slug}`)
-  return makeRenameTransform({ rules: def.rules })
+  const config = { rules: def.rules }
+  if (framework === 'svelte') return makeSvelteRenameTransform(config)
+  if (framework === 'vue') return makeVueRenameTransform(config)
+  return makeRenameTransform(config)
 }

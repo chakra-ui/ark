@@ -4,7 +4,7 @@
 
 Add prop-rename and data-attribute transforms alongside `as-child-to-render`.
 
-Prop renames ship as `react/*` and `solid/*` transforms, driven by the zag v2 changes: `carousel-props`
+Prop renames ship for every framework — `react/*`, `solid/*`, `svelte/*`, and `vue/*` — driven by the zag v2 changes: `carousel-props`
 (`slideCount` → `count`, `autoplay` → `autoPlay`, `padding` → `itemSpacing`), `floating-panel-placement`,
 `image-cropper-placement`, `tabs-virtual-focus` (inverts the value), `popover-portalled`,
 `tags-input-editable` (preserves the old default), and `pin-input-count` (renames `length`, or flags a
