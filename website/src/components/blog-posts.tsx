@@ -1,6 +1,4 @@
-'use client'
 import NextLink from 'next/link'
-import { useState } from 'react'
 import { css, cx } from 'styled-system/css'
 import { Grid, HStack, Stack } from 'styled-system/jsx'
 import { Heading } from '~/components/ui/heading'
@@ -98,30 +96,32 @@ const filterButton = css({
   '&[data-active=true]': { bg: 'bg.muted', color: 'fg.default' },
 })
 
-export const BlogPosts = ({ posts }: { posts: BlogPost[] }) => {
-  const [filter, setFilter] = useState<Filter>('all')
+const hrefFor = (value: Filter) => (value === 'all' ? '/blog' : `/blog?filter=${value}`)
+
+export const BlogPosts = ({ posts, filter }: { posts: BlogPost[]; filter?: string }) => {
+  const activeFilter: Filter = filters.some((f) => f.value === filter) ? (filter as Filter) : 'all'
 
   const featured = posts.find((post) => post.featured) ?? posts[0]
   const rest = posts.filter((post) => post !== featured)
-  const visible = filter === 'all' ? rest : posts.filter((post) => (post.type ?? 'article') === filter)
+  const visible = activeFilter === 'all' ? rest : posts.filter((post) => (post.type ?? 'article') === activeFilter)
 
   return (
     <Stack gap="8" mt="12">
       <HStack gap="1">
         {filters.map((f) => (
-          <button
+          <NextLink
             key={f.value}
-            type="button"
-            data-active={filter === f.value}
+            href={hrefFor(f.value)}
+            scroll={false}
+            data-active={activeFilter === f.value}
             className={filterButton}
-            onClick={() => setFilter(f.value)}
           >
             {f.label}
-          </button>
+          </NextLink>
         ))}
       </HStack>
 
-      {filter === 'all' && featured && (
+      {activeFilter === 'all' && featured && (
         <NextLink href={`/blog/${featured.slug}`} className={cx(cardBase, css({ p: { base: '6', md: '10' } }))}>
           <Stack gap="4">
             <Tag label={categoryLabel(featured)} accent />
