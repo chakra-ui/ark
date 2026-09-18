@@ -10,6 +10,7 @@ import { TableOfContent } from '~/components/table-of-content'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import { AuthorAvatars, formatAuthorNames } from '~/components/author-avatars'
+import { BlogPostActions } from '~/components/blog-post-actions'
 import { resolveAuthors } from '~/lib/authors'
 import { getPublicUrl } from '~/lib/get-public-url'
 import { ogImageUrl } from '~/lib/og-template'
@@ -67,11 +68,21 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
                   {blog.title}
                 </Heading>
                 <Text color="fg.muted">{blog.description}</Text>
-                <HStack mt="4" gap="2" className={css({ color: 'fg.muted' })}>
-                  <AuthorAvatars author={blog.author} size={28} linkAvatars />
-                  <span>·</span>
-                  <time dateTime={blog.date}>{formatDate(blog.date)}</time>
-                </HStack>
+                <Flex
+                  mt="4"
+                  gap="4"
+                  justify="space-between"
+                  align="center"
+                  wrap="wrap"
+                  className={css({ color: 'fg.muted' })}
+                >
+                  <HStack gap="2">
+                    <AuthorAvatars author={blog.author} size={28} linkAvatars />
+                    <span>·</span>
+                    <time dateTime={blog.date}>{formatDate(blog.date)}</time>
+                  </HStack>
+                  <BlogPostActions url={getPublicUrl(`/blog/${blog.slug}`)} title={blog.title} />
+                </Flex>
               </Stack>
 
               <div
