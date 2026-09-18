@@ -1,5 +1,5 @@
 import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { basename, dirname, join } from 'node:path'
+import { dirname, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -8,23 +8,29 @@ const assetsDir = join(root, 'public/changelog')
 
 mkdirSync(outDir, { recursive: true })
 
-// Local image refs (e.g. `![alt](./v5.svg)`) are relative to the package that owns the
-// CHANGELOG, so they 404 once the file is served from the website. Copy each referenced
-// asset into public/ and rewrite the path to an absolute, served URL.
-const localImage = /(!\[[^\]]*\]\()(\.\/[^)\s]+)(\))/g
+const localImage = /(!\[[^\]]*\]\(\s*)(<[^>]+>|[^)\s]+)(\s*(?:"[^"]*"|'[^']*'|\([^)]*\))?\s*\))/g
+
+const isInside = (parent, child) => child === parent || child.startsWith(parent + sep)
 
 for (const framework of ['react', 'solid', 'vue', 'svelte']) {
   const sourceDir = join(root, '..', 'packages', framework)
   const source = join(sourceDir, 'CHANGELOG.md')
   if (!existsSync(source)) continue
 
-  const content = readFileSync(source, 'utf-8').replace(localImage, (match, open, path, close) => {
-    const asset = basename(path)
-    const from = join(sourceDir, path)
-    if (!existsSync(from)) return match
-    mkdirSync(join(assetsDir, framework), { recursive: true })
-    copyFileSync(from, join(assetsDir, framework, asset))
-    return `${open}/changelog/${framework}/${asset}${close}`
+  const content = readFileSync(source, 'utf-8').replace(localImage, (match, open, dest, close) => {
+    const target = dest.startsWith('<') ? dest.slice(1, -1) : dest
+    if (!target.startsWith('.')) return match
+
+    const from = resolve(sourceDir, target)
+    if (!isInside(sourceDir, from) || !existsSync(from)) return match
+
+    const rel = relative(sourceDir, from)
+    const to = join(assetsDir, framework, rel)
+    if (!isInside(join(assetsDir, framework), to)) return match
+
+    mkdirSync(dirname(to), { recursive: true })
+    copyFileSync(from, to)
+    return `${open}/changelog/${framework}/${rel.split(sep).join('/')}${close}`
   })
 
   writeFileSync(join(outDir, `${framework}.md`), content)
