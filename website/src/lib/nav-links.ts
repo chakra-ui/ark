@@ -1,4 +1,5 @@
 import { SparklesIcon } from 'lucide-react'
+import { docsHref, frameworkFromPathname } from './frameworks'
 
 interface NavLinkItem {
   label: string
@@ -30,3 +31,6 @@ export const navLinks: NavLinkItem[] = [
     icon: SparklesIcon,
   },
 ]
+
+export const resolveNavHref = (link: NavLinkItem, pathname: string) =>
+  link.hrefPrefix === '/docs' ? docsHref(frameworkFromPathname(pathname), 'overview/getting-started') : link.href
