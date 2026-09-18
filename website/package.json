@@ -6,9 +6,9 @@
     "generate:examples": "bun run --cwd ../scripts src/generate-example-registry.ts",
     "generate:changelogs": "node scripts/generate-changelogs.mjs",
     "predev": "bun run generate:examples && bun run generate:changelogs",
-    "dev": "next dev --webpack",
+    "dev": "next dev",
     "prebuild": "bun run generate:examples && bun run generate:changelogs",
-    "build": "next build --webpack",
+    "build": "next build",
     "start": "next start",
     "setup": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull .env",
     "setup:prod": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull --environment production .env"
