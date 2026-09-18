@@ -3,7 +3,7 @@ import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cva } from 'styled-system/css'
 import { styled } from 'styled-system/jsx'
-import { navLinks } from '~/lib/nav-links'
+import { navLinks, resolveNavHref } from '~/lib/nav-links'
 
 const link = cva({
   base: {
@@ -42,7 +42,7 @@ export const MobileNavbarLinks = () => {
       {navLinks.map((link) => (
         <NavbarLink
           key={link.href}
-          href={link.href}
+          href={resolveNavHref(link, pathname)}
           aria-current={pathname.startsWith(link.hrefPrefix) ? 'page' : undefined}
         >
           {link.label}
