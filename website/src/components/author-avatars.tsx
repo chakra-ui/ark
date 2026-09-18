@@ -1,7 +1,7 @@
 import { css } from 'styled-system/css'
 import { HStack } from 'styled-system/jsx'
 import { Text } from '~/components/ui/text'
-import { type ResolvedAuthor, avatarUrl, resolveAuthors } from '~/lib/authors'
+import { type ResolvedAuthor, avatarUrl, resolveAuthors, twitterUrl } from '~/lib/authors'
 
 const ring = css({
   rounded: 'full',
@@ -34,9 +34,11 @@ interface Props {
   size?: number
   max?: number
   showNames?: boolean
+  /** Link each avatar to the author's Twitter/X profile when available. */
+  linkAvatars?: boolean
 }
 
-export const AuthorAvatars = ({ author, size = 24, max = 4, showNames = true }: Props) => {
+export const AuthorAvatars = ({ author, size = 24, max = 4, showNames = true, linkAvatars = false }: Props) => {
   const authors = resolveAuthors(author)
   if (authors.length === 0) return null
 
@@ -49,17 +51,42 @@ export const AuthorAvatars = ({ author, size = 24, max = 4, showNames = true }: 
     <HStack gap="2" className={css({ color: 'fg.muted', textStyle: 'sm' })}>
       {shown.length > 0 && (
         <HStack gap="0">
-          {shown.map((a, index) => (
-            <img
-              key={a.login}
-              src={avatarUrl(a.login, size * 2)}
-              alt={a.name}
-              width={size}
-              height={size}
-              className={ring}
-              style={{ marginLeft: index === 0 ? 0 : `-${overlap}px`, zIndex: shown.length - index }}
-            />
-          ))}
+          {shown.map((a, index) => {
+            const avatar = (
+              <img
+                src={avatarUrl(a.login, size * 2)}
+                alt={a.name}
+                width={size}
+                height={size}
+                className={ring}
+                style={{ marginLeft: index === 0 ? 0 : `-${overlap}px`, zIndex: shown.length - index }}
+              />
+            )
+            if (linkAvatars && a.twitter) {
+              return (
+                <a
+                  key={a.login}
+                  href={twitterUrl(a.twitter)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${a.name} on X`}
+                  className={css({
+                    display: 'inline-flex',
+                    rounded: 'full',
+                    transition: 'opacity',
+                    _hover: { opacity: 0.8 },
+                  })}
+                >
+                  {avatar}
+                </a>
+              )
+            }
+            return (
+              <span key={a.login} className={css({ display: 'inline-flex' })}>
+                {avatar}
+              </span>
+            )
+          })}
           {extra > 0 && (
             <div
               className={badge}

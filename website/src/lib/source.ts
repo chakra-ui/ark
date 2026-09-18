@@ -43,6 +43,7 @@ export interface BlogMeta {
   image?: string
   featured?: boolean
   type?: 'article' | 'release'
+  toc: TocEntry[]
   body: MDXBody
 }
 
@@ -99,5 +100,6 @@ export const blogs: BlogMeta[] = blogSource.getPages().map((page) => ({
   image: page.data.image,
   featured: page.data.featured,
   type: page.data.type,
+  toc: tocEntries(page.data.toc),
   body: page.data.body as MDXBody,
 }))
