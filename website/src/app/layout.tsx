@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   },
   description,
   keywords: ['react', 'solid', 'vue', 'svelte', 'design systems', 'headless', 'components', 'library'],
+  alternates: {
+    types: { 'application/rss+xml': [{ url: '/rss.xml', title: 'Ark UI Blog' }] },
+  },
   openGraph: {
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
