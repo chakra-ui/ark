@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
+import { ComponentUnderTest as AsChildComponentUnderTest } from './as-child.tsx'
 import { ComponentUnderTest } from './basic.tsx'
 
 describe('Toast', () => {
@@ -48,5 +49,19 @@ describe('Toast', () => {
 
     expect(getRootNode).toHaveBeenCalled()
     expect(screen.getByRole('region')).not.toHaveAttribute('getrootnode')
+  })
+
+  it('should render the asChild element as the root, keeping the ghosts inside it', async () => {
+    render(<AsChildComponentUnderTest />)
+
+    await user.click(screen.getByText('Create Toast'))
+
+    const root = await screen.findByTestId('custom-root')
+    expect(root.tagName).toBe('SECTION')
+    expect(root).toHaveAttribute('data-part', 'root')
+    expect(root).not.toHaveAttribute('aschild')
+    expect(document.querySelectorAll('[data-part="root"]')).toHaveLength(1)
+    expect(root.firstElementChild).toHaveAttribute('data-ghost', 'before')
+    expect(root.lastElementChild).toHaveAttribute('data-ghost', 'after')
   })
 })
