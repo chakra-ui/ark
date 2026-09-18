@@ -8,8 +8,8 @@ export interface Author {
 
 const AUTHORS: Record<string, Author> = {
   sage: { name: 'Segun Adebayo', login: 'segunadebayo', twitter: 'thesegunadebayo' },
-  esther: { name: 'Esther Agbaje', login: 'estheragbaje' },
-  lope: { name: 'Adebesin Tolulope', login: 'Adebesin-Cell' },
+  esther: { name: 'Esther Agbaje', login: 'estheragbaje', twitter: '_estheradebayo' },
+  lope: { name: 'Adebesin Tolulope', login: 'Adebesin-Cell', twitter: 'I_am_Lope' },
   christian: { name: 'Christian Schröter', login: 'cschroeter' },
   abraham: { name: 'Abraham', login: 'anubra266' },
 }
