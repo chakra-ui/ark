@@ -11,7 +11,8 @@ how to migrate.
 
 ## Automated migration
 
-Most of the mechanical work — chiefly the `asChild` → `render` rename — ships as a codemod.
+Most of the mechanical work ships as codemods. Run `list` to see every transform, then run the ones
+you need against your files.
 
 ```sh
 # See every available transform
@@ -28,6 +29,26 @@ a file and a reason rather than guessed.
 Only Ark UI elements are rewritten — an `asChild` from another library in the same file is left
 alone. Parts reached through local barrels, re-exports, or factory wrappers (`styled(ark.button)`)
 are resolved with the `--cross-file` flag.
+
+Beyond `as-child-to-render`, prop renames ship as `react/*` and `solid/*` transforms:
+
+| Transform | What it does |
+| --- | --- |
+| `carousel-props` | `slideCount` → `count`, `autoplay` → `autoPlay`, `padding` → `itemSpacing` |
+| `floating-panel-placement` | `resizeTriggerAxes` → `resizeTriggerPlacements`, `axis` → `placement` |
+| `image-cropper-placement` | `handles` → `placements`, `position` → `placement` |
+| `tabs-virtual-focus` | `composite` → `virtualFocus` (value inverted) |
+| `popover-portalled` | removes the `portalled` prop |
+| `tags-input-editable` | adds `editable` to keep the old default |
+| `pin-input-count` | `length` → `count`, or flags a missing `count` |
+
+Stylesheets have their own transform, `css/data-attributes`, covered under
+[Data attributes are merged](#data-attributes-are-merged) below.
+
+Two changes are left to do by hand because they reshape markup, not just props: the popover
+`api.portalled ? Portal : Fragment` wrapper (drop it for a plain `Portal`), and the
+`Combobox`/`Listbox`/`Select` `content` → `content` + `list` split described under
+[the list part](#comboboxlistboxselect-gain-a-list-part).
 
 ## Migrate with an AI agent
 
@@ -158,6 +179,48 @@ a child element.
 
 A new `Status` part on `Combobox`, `Listbox`, and `Select` covers loading and error states that
 `Empty` cannot distinguish (it keys off `collection.size === 0`).
+
+### Combobox/Listbox/Select gain a `List` part
+
+The listbox semantics (`role="listbox"`, active-descendant, keyboard focus) move off `Content` onto a
+new `List` part. `Content` becomes a plain wrapper, so you can render headers, footers, or a search
+input in the popup without polluting the listbox. Wrap the items in `List` inside `Content`. This is
+structural, so the codemod leaves it to you.
+
+```diff
+  <Combobox.Content>
++   <Combobox.List>
+      {items.map((item) => (
+        <Combobox.Item key={item.value} item={item}>{item.label}</Combobox.Item>
+      ))}
++   </Combobox.List>
+  </Combobox.Content>
+```
+
+The `composite` prop is gone; pass `popupType="dialog"` where you previously set `composite={false}`.
+
+### Data attributes are merged
+
+`data-scope`, `data-part`, and `data-ownedby` collapse into one attribute per part,
+`data-{scope}-{part}`. An element can now take part in more than one machine, and selectors get
+shorter. This does not change your JSX — it changes the CSS and any `querySelector` that targets
+these attributes.
+
+```diff
+- [data-scope="dialog"][data-part="trigger"] { ... }
++ [data-dialog-trigger] { ... }
+```
+
+The `css/data-attributes` transform rewrites stylesheets: it merges scope/part selectors, turns
+toggle `[data-state="on"]` into `[data-pressed]`, and swaps the removed `data-focus` on toggle-group
+and toolbar for `:focus-within` / `:focus-visible`.
+
+```sh
+npx @ark-ui/codemod css/data-attributes "src/**/*.css" --dry
+```
+
+Attributes referenced from JavaScript strings, or selectors where scope and part are not adjacent,
+are left for you to update.
 
 ### `useCollator` and `useFilter` return values
 
