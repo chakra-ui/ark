@@ -43,17 +43,10 @@ const adapters: Adapter[] = [
 const knownDivergences = new Set([
   'angle-slider/angle-slider-marker',
   'angle-slider/angle-slider-value-text',
-  'date-picker/date-picker-table-cell-trigger',
-  'file-upload/file-upload-item-group',
   'listbox/listbox-item-text',
-  'menu/menu-separator',
   'number-input/number-input-scrubber',
   'popover/popover-title',
-  'slider/slider-value-text',
-  'steps/steps-list',
   'toggle/toggle-indicator',
-  'tree-view/tree-view-branch-trigger',
-  'tree-view/tree-view-item',
 ])
 
 // Parts that render a native element rather than an ark node on some adapters, so there is no

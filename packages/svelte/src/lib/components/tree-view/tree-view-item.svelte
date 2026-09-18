@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TreeViewItemBaseProps extends PolymorphicProps<'li'>, RefAttribute {}
-  export interface TreeViewItemProps extends Assign<HTMLProps<'li'>, TreeViewItemBaseProps> {}
+  export interface TreeViewItemBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface TreeViewItemProps extends Assign<HTMLProps<'div'>, TreeViewItemBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -18,4 +18,4 @@
   const mergedProps = $derived(mergeProps(treeView().getItemProps(nodeProps()), props))
 </script>
 
-<Ark as="li" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />
