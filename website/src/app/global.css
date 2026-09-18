@@ -10,6 +10,29 @@ body {
   position: relative;
 }
 
+html {
+  scroll-padding-top: 6rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .page-transition {
+    animation: page-fade-in 0.25s ease-out both;
+  }
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .scroller {
   --scroller-thumb: var(--colors-gray-7);
   --scroller-thumb-hover: var(--colors-gray-8);
