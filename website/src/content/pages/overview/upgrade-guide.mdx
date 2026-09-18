@@ -29,6 +29,54 @@ Only Ark UI elements are rewritten — an `asChild` from another library in the 
 alone. Parts reached through local barrels, re-exports, or factory wrappers (`styled(ark.button)`)
 are resolved with the `--cross-file` flag.
 
+## Migrate with an AI agent
+
+The codemod handles `asChild` → `render`. For the rest, paste this prompt into an AI agent (Claude
+Code, Cursor, Copilot) pointed at your codebase — it has the full context for the manual changes.
+
+```text
+You are migrating this codebase from Ark UI v5 to v6. Work framework-aware
+(React, Solid, Svelte, or Vue — detect which one this project uses) and change
+only Ark UI usage. After each step, run the project's typecheck/build.
+
+1. Run the codemod for the mechanical rename, then review its report:
+   npx @ark-ui/codemod react/as-child-to-render "src/**/*.tsx"
+   (swap `react` for solid/svelte/vue; add `--cross-file` if parts are reached
+   through local barrels, re-exports, or factory wrappers like styled(ark.button).)
+
+2. Finish anything the codemod left. `asChild` is now a `render` function that
+   receives (props, state):
+   - React/Vue: move the child into the function/slot; spread `props`.
+   - Solid/Svelte/Vue: `props` is a MERGE FUNCTION — spread `{...props()}`
+     (Solid/Svelte) or `v-bind="props()"` (Vue), and call `props({ onClick })`
+     to merge your handlers instead of overwriting them. In Solid, `state` is an
+     accessor: `state().open`.
+
+3. Toaster is no longer polymorphic: remove any `render`/`asChild` on it and
+   drop `ToasterState`. Style the group with CSS (`data-placement`, `data-side`,
+   `data-align`) or wrap your own element around it.
+
+4. Combobox.Empty / Listbox.Empty move OUT of List to become a sibling of List.
+   Put the styled message in a child element. For loading/error states, use the
+   new `Status` part on Combobox, Listbox, and Select.
+
+5. useCollator / useFilter now return values directly (no accessor/.value) on
+   Solid, Svelte, and Vue: `collator.compare(a, b)`, `const { contains } = useFilter(...)`.
+
+6. Svelte only:
+   - The `useX` hooks now require an `id`: `useCollapsible({ id })` where
+     `const id = $props.id()`. `$props.id()` may be called once — derive if you
+     need two. Components like `<Collapsible.Root>` are unaffected.
+   - Exports now match the other frameworks: Dialog parts are prefixed
+     (`DialogPositioner`, `DialogRoot`, ...); `StepsStepChangeDetails` →
+     `StepChangeDetails`, `ColorPickerColor` → `Color`, `TabsContentState` /
+     `TabsTriggerState` → `TabContentState` / `TabTriggerState`. Internals like
+     `CheckboxProvider` and `splitCollapsibleProps` are no longer exported.
+
+Report anything ambiguous instead of guessing. Full guide:
+https://ark-ui.com/docs/overview/upgrade-guide
+```
+
 ## Breaking changes to fix
 
 These are the changes you have to act on when you move a project from v5.
@@ -153,25 +201,3 @@ Svelte exports now match the other frameworks. `Dialog`'s `Positioner`, `Root`, 
 `StepChangeDetails`, `ColorPickerColor` → `Color`, `TabsContentState` / `TabsTriggerState` →
 `TabContentState` / `TabTriggerState`. Internals such as `CheckboxProvider` and `splitCollapsibleProps`
 are no longer exported.
-
-## New in v6
-
-Beyond the migration, v6 adds parts and components worth reaching for:
-
-- **[Menubar](/docs/components/menubar)** — an application-style menu bar that coordinates a row of
-  `Menu`s with arrow-key navigation.
-- **[Virtualizer](/docs/utilities/virtualizer)** — list, grid, and window virtualization hooks and
-  components for large datasets.
-- **`Accordion.ItemHeader`** — the missing ARIA `h3` wrapper around each trigger. See
-  [Accordion](/docs/components/accordion).
-- **`Status` part** — a polite live region for loading and error states on
-  [Combobox](/docs/components/combobox), [Listbox](/docs/components/listbox), and
-  [Select](/docs/components/select).
-- **Part state in `render`** — every part now forwards its machine state as the second argument, so
-  you can read `state.open`, `state.checked`, and friends inline. See
-  [Composition](/docs/guides/composition).
-
-## See also
-
-- [Composition](/docs/guides/composition) — how `render` and part state work.
-- [Changelog](/docs/overview/changelog) — the full per-release list of changes.
