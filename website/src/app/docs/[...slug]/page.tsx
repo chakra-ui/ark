@@ -18,6 +18,8 @@ import { getServerContext } from '~/lib/server-context'
 import { docsPageToc, findDocsPageBySlug } from '~/lib/source'
 import { MDXContent } from '~/mdx-content'
 
+export const dynamic = 'force-static'
+
 interface Props {
   params: Promise<{ slug: string[] }>
 }
