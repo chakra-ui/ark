@@ -158,6 +158,28 @@ Svelte are a rename where the props object becomes a props **function** you must
 the machine, so handing them over dropped toasts. Style the group with CSS — it carries
 `data-placement`, `data-side`, and `data-align` — or wrap your own element around `Toaster`.
 
+### `Popover` is no longer portalled by prop
+
+The `portalled` prop and `api.portalled` value are gone. The popover now detects whether its content is
+portalled from where you render it and proxies tab order accordingly, so a forgotten `portalled` can no
+longer break keyboard access. Decide portalling by rendering the content inside `Portal` or not.
+
+```diff
+- <Popover.Root portalled>
++ <Popover.Root>
+    <Popover.Trigger>Open</Popover.Trigger>
++   <Portal>
+      <Popover.Positioner>
+        <Popover.Content>...</Popover.Content>
+      </Popover.Positioner>
++   </Portal>
+  </Popover.Root>
+```
+
+The `react/popover-portalled` codemod (and its `solid`/`svelte`/`vue` variants) removes the prop; wrap
+the content in `Portal` yourself, as this is markup the codemod won't reshape. To render inline, drop
+the `Portal` — tab order is still handled.
+
 ### `Combobox.Empty` and `Listbox.Empty` move out of `List`
 
 `Empty` used to render inside `List` and unmount when the collection was non-empty, which kept it out
