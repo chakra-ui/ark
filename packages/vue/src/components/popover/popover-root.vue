@@ -23,7 +23,6 @@ const props = withDefaults(defineProps<PopoverRootProps>(), {
   defaultOpen: undefined,
   modal: undefined,
   open: undefined,
-  portalled: undefined,
   restoreFocus: undefined,
 } satisfies BooleanDefaults<RootProps>)
 

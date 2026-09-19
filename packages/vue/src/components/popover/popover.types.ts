@@ -69,13 +69,6 @@ export interface RootProps {
    */
   persistentElements?: (() => Element | null)[]
   /**
-   * Whether the popover is portalled. This will proxy the tabbing behavior regardless of the DOM position
-   * of the popover content.
-   *
-   * @default true
-   */
-  portalled?: boolean
-  /**
    * The user provided options used to position the popover content
    */
   positioning?: popover.PositioningOptions
