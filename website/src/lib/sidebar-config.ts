@@ -21,7 +21,12 @@ export const sidebarConfig: SidebarTabConfig[] = [
     groups: [
       {
         title: 'Overview',
-        items: [{ id: 'getting-started' }, { id: 'changelog' }, { id: 'about', title: 'About' }],
+        items: [
+          { id: 'getting-started' },
+          { id: 'upgrade-guide' },
+          { id: 'changelog' },
+          { id: 'about', title: 'About' },
+        ],
       },
       {
         title: 'Guides',
@@ -48,6 +53,10 @@ export const sidebarConfig: SidebarTabConfig[] = [
     key: 'components',
     title: 'Components',
     groups: [
+      {
+        title: 'Overview',
+        items: [{ id: 'components-overview', title: 'Overview' }],
+      },
       {
         title: 'Forms & Inputs',
         items: [
@@ -127,6 +136,10 @@ export const sidebarConfig: SidebarTabConfig[] = [
     key: 'utilities',
     title: 'Utilities',
     groups: [
+      {
+        title: 'Overview',
+        items: [{ id: 'utilities-overview', title: 'Overview' }],
+      },
       {
         title: 'Formatting',
         items: [{ id: 'format-byte' }, { id: 'format-number' }, { id: 'format-time' }, { id: 'format-relative-time' }],

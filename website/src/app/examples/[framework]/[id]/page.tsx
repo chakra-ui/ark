@@ -9,16 +9,19 @@ import { ExamplesFooter } from '~/components/navigation/examples/examples-footer
 import { Button } from '~/components/ui/button'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
+import { notFound } from 'next/navigation'
 import { fetchCodeExamples, fetchExample } from '~/lib/examples'
-import { getFramework } from '~/lib/frameworks'
+import { type Framework, examplesHref, isFramework } from '~/lib/frameworks'
+import { getPublicUrl } from '~/lib/get-public-url'
+import { ogImageUrl } from '~/lib/og-template'
 
 interface Props {
-  params: Promise<{ id: string }>
+  params: Promise<{ framework: string; id: string }>
 }
 
 export default async function Page(props: Props) {
-  const { id } = await props.params
-  const framework = await getFramework()
+  const { framework, id } = await props.params
+  if (!isFramework(framework)) notFound()
   const example = await fetchExample(id)
 
   const isPaidExample = example.accessLevel === 'paid'
@@ -79,7 +82,7 @@ export default async function Page(props: Props) {
           )}
         </Box>
         <Box maxW="61rem" mx="auto" width="full">
-          <ExamplesFooter example={example} />
+          <ExamplesFooter example={example} framework={framework} />
         </Box>
       </Stack>
     </Container>
@@ -87,11 +90,15 @@ export default async function Page(props: Props) {
 }
 
 export const generateMetadata = async (props: Props): Promise<Metadata> => {
-  const { id } = await props.params
+  const { framework, id } = await props.params
   const example = await fetchExample(id)
   if (!example) return {}
+  const image = ogImageUrl({ title: example.title, description: example.description, category: 'Example' })
   return {
     title: example.title,
     description: example.description,
+    alternates: { canonical: getPublicUrl(examplesHref(framework as Framework, id)) },
+    openGraph: { title: example.title, description: example.description, images: [image], type: 'article' },
+    twitter: { card: 'summary_large_image', title: example.title, description: example.description, images: [image] },
   }
 }

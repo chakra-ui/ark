@@ -4,9 +4,10 @@ import type { LucideIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { css } from 'styled-system/css'
-import { Box, HStack } from 'styled-system/jsx'
+import { HStack } from 'styled-system/jsx'
 import { tabBar } from 'styled-system/recipes'
 import { getActiveTab } from '~/lib/active-tab'
+import { type Framework, docsHref, frameworkFromPathname } from '~/lib/frameworks'
 import type { SidebarTab } from '~/lib/sidebar'
 import { VersionSelect } from '../version-select'
 
@@ -20,12 +21,13 @@ const icons: Record<string, LucideIcon> = {
 
 interface Props {
   tabs: SidebarTab[]
-  latestVersion?: string
+  versions?: Record<Framework, string>
 }
 
 export const DocsTabBar = (props: Props) => {
-  const { tabs, latestVersion } = props
+  const { tabs, versions } = props
   const pathname = usePathname()
+  const framework = frameworkFromPathname(pathname)
   const active = getActiveTab(pathname, tabs)
 
   return (
@@ -37,7 +39,7 @@ export const DocsTabBar = (props: Props) => {
           return (
             <NextLink
               key={tab.key}
-              href={`/docs/${tab.landingSlug ?? ''}`}
+              href={docsHref(framework, tab.landingSlug ?? '')}
               aria-current={isActive ? 'page' : undefined}
               className={styles.link}
             >
@@ -62,13 +64,13 @@ export const DocsTabBar = (props: Props) => {
               transitionProperty: 'color',
               transitionDuration: 'normal',
               _hover: { color: 'fg.default' },
-              '& svg': { width: '4', height: '4', color: 'var(--colors-red-9)', fill: 'var(--colors-red-9)' },
+              '& svg': { width: '4', height: '4', color: 'red.9', fill: 'red.9' },
             })}
           >
             <HeartIcon />
             Sponsor
           </a>
-          {latestVersion && <VersionSelect latest={latestVersion} />}
+          {versions && <VersionSelect latest={versions[framework]} />}
         </HStack>
       </nav>
     </div>

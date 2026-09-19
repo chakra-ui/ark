@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   },
   description,
   keywords: ['react', 'solid', 'vue', 'svelte', 'design systems', 'headless', 'components', 'library'],
+  alternates: {
+    types: { 'application/rss+xml': [{ url: '/rss.xml', title: 'Ark UI Blog' }] },
+  },
   openGraph: {
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
@@ -38,7 +41,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout(props: PropsWithChildren) {
   return (
-    <html lang="en" className={cx(wixMadeforText.variable, roboto.variable)} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={cx(wixMadeforText.variable, roboto.variable)}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <head>
         <Script src="https://plausible.io/js/plausible.js" data-domain="ark-ui.com" />
       </head>

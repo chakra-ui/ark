@@ -24,6 +24,7 @@
     "paths": {
       "~/*": ["./src/*"],
       "@examples/*": ["../packages/react/src/components/*", "../packages/react/src/providers/*"],
+      "styles/*": ["../.storybook/modules/*"],
       "styled-system/*": ["./styled-system/*"]
     }
   },

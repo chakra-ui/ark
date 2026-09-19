@@ -1,15 +1,17 @@
 import type { Metadata } from 'next'
-import { marked } from 'marked'
 import { notFound } from 'next/navigation'
 import { css } from 'styled-system/css'
 import { Box, Container, Stack } from 'styled-system/jsx'
+import { renderChangelog } from '~/components/changelog'
 import { CopyPageWidget } from '~/components/copy-page-widget'
 import { DocsFooter } from '~/components/navigation/docs/docs-footer'
 import { TableOfContent } from '~/components/table-of-content'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import { getChangelogContent, isChangelogSlug } from '~/lib/changelog'
-import { getFramework } from '~/lib/frameworks'
+import { docsHref, extractFramework, frameworks } from '~/lib/frameworks'
+import { getPublicUrl } from '~/lib/get-public-url'
+import { ogImageUrl } from '~/lib/og-template'
 import { cleanupPageContent } from '~/lib/llm-content'
 import { getAllPageSlugs, getPageBySlug, getPageNavigation } from '~/lib/pages'
 import { getServerContext } from '~/lib/server-context'
@@ -31,19 +33,21 @@ const articleClass = css({
 
 export default async function Page(props: Props) {
   const params = await props.params
-  const framework = await getFramework()
-  const slugStr = params.slug.join('/')
-  const { prev, next } = getPageNavigation(params.slug)
+  const { framework, slug } = extractFramework(params.slug)
+  const slugStr = slug.join('/')
+  const { prev, next } = getPageNavigation(slug)
 
   const serverContext = getServerContext()
-  serverContext.component = params.slug[1]
+  serverContext.component = slug[1]
+  serverContext.framework = framework
 
-  const meta = getPageBySlug(params.slug)
+  const meta = getPageBySlug(slug)
   const page = findDocsPageBySlug(slugStr)
 
   if (!meta || (!page && !isChangelogSlug(slugStr))) return notFound()
 
-  const toc = page ? docsPageToc(page) : []
+  const changelog = isChangelogSlug(slugStr) ? await renderChangelog(getChangelogContent(framework)) : null
+  const toc = changelog ? changelog.toc : page ? docsPageToc(page) : []
 
   return (
     <Container display="flex" py="12" gap="8" justifyContent="center">
@@ -62,14 +66,10 @@ export default async function Page(props: Props) {
               content={await cleanupPageContent(meta, framework)}
             />
           </Box>
-          {isChangelogSlug(slugStr) ? (
-            <div dangerouslySetInnerHTML={{ __html: marked.parse(getChangelogContent(framework)) as string }} />
-          ) : (
-            page && <MDXContent body={page.data.body} />
-          )}
+          {changelog ? changelog.body : page && <MDXContent body={page.data.body} />}
         </article>
 
-        <DocsFooter nextPage={next} prevPage={prev} />
+        <DocsFooter nextPage={next} prevPage={prev} framework={framework} />
       </Stack>
       <Box
         className="scroller"
@@ -91,15 +91,25 @@ export default async function Page(props: Props) {
 
 export const generateMetadata = async (props: Props): Promise<Metadata> => {
   const params = await props.params
-  const page = getPageBySlug(params.slug)
+  const { framework, slug } = extractFramework(params.slug)
+  const page = getPageBySlug(slug)
 
   if (page) {
+    const image = ogImageUrl({
+      title: page.title,
+      description: page.description,
+      category: slug[0]?.replace(/-/g, ' '),
+    })
     return {
       title: page.title,
       description: page.description,
+      alternates: { canonical: getPublicUrl(docsHref(framework, slug.join('/'))) },
+      openGraph: { title: page.title, description: page.description, images: [image], type: 'article' },
+      twitter: { card: 'summary_large_image', title: page.title, description: page.description, images: [image] },
     }
   }
   return {}
 }
 
-export const generateStaticParams = () => getAllPageSlugs()
+export const generateStaticParams = () =>
+  getAllPageSlugs().flatMap(({ slug }) => frameworks.map((framework) => ({ slug: [framework, ...slug] })))

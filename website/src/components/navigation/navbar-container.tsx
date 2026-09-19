@@ -8,10 +8,10 @@ export const NavbarContainer = (props: BoxProps) => {
       top="0"
       width="full"
       minH="var(--navbar-height, 4rem)"
-      background="var(--colors-bg-canvas)"
-      zIndex="20"
+      bg="bg.canvas"
+      zIndex="30"
       borderBottomWidth="1px"
-      borderColor={{ _light: 'border.subtle', _dark: 'black' }}
+      borderColor="border.subtle"
       pe="var(--scrollbar-width, 0)"
     >
       <Container py="2.5" {...props} />

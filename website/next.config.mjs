@@ -1,68 +1,21 @@
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { createMDX } from 'fumadocs-mdx/next'
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
     optimizePackageImports: ['@ark-ui/react'],
   },
-  // Don't transpile @ark-ui/react - use built dist instead to avoid node: protocol issues
-  webpack(config, { isServer }) {
-    // Resolve 'styles' alias for CSS modules (used by package examples)
-    config.resolve.alias.styles = path.resolve(__dirname, '../.storybook/modules')
-
-    // Resolve '@examples' alias for loading example components. Examples live under
-    // components/ or providers/, so both are listed and tried in order.
-    config.resolve.alias['@examples'] = [
-      path.resolve(__dirname, '../packages/react/src/components'),
-      path.resolve(__dirname, '../packages/react/src/providers'),
-    ]
-
-    // Add packages/react/src to the module resolution
-    config.resolve.modules = [...(config.resolve.modules || []), path.resolve(__dirname, '../packages/react/src')]
-
-    // Handle node: protocol URLs for client bundles
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        path: false,
-        module: false,
-      }
-
-      // Map node: protocol imports to their fallbacks
-      config.resolve.alias = {
-        ...config.resolve.alias,
-        'node:fs': false,
-        'node:path': false,
-        'node:module': false,
-        'node:url': false,
-        'node:buffer': false,
-        'node:process': false,
-      }
-    }
-
-    // Ignore node: protocol for server-side files being analyzed
-    config.module = {
-      ...config.module,
-      exprContextCritical: false,
-    }
-
-    return config
+  turbopack: {
+    ignoreIssue: [
+      { path: '**/components/example.tsx', title: /matches \d+ files/ },
+      { path: '**/lib/example-utils.ts', title: /matches \d+ files/ },
+    ],
   },
   async redirects() {
     return [
       {
         source: '/examples',
         destination: '/examples/checkbox-group',
-        permanent: false,
-      },
-      {
-        source: '/docs',
-        destination: '/docs/overview/getting-started',
         permanent: false,
       },
       {
@@ -74,9 +27,8 @@ const nextConfig = {
         permanent: false,
       },
       {
-        // Exclude `api` so /api/docs* is not treated as a framework docs path.
         source: '/:framework((?!api)[^/]+)/docs/:slug*',
-        destination: '/docs/:slug*',
+        destination: '/docs/:framework/:slug*',
         permanent: false,
       },
     ]

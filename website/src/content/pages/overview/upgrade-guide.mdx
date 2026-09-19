@@ -1,0 +1,289 @@
+---
+id: upgrade-guide
+title: Upgrade Guide
+description: What changed in Ark UI v6, and the breaking changes to fix as you migrate.
+---
+
+v6 keeps the components you already know and unifies how you compose them. Polymorphism moves to a
+single `render` function, every part forwards its machine state, and the frameworks line up so the
+same anatomy works across React, Solid, Svelte, and Vue. This guide covers the breaking changes and
+how to migrate.
+
+## Automated migration
+
+Most of the mechanical work ships as codemods. Run `list` to see every transform, then run the ones
+you need against your files.
+
+```sh
+# See every available transform
+npx @ark-ui/codemod list
+
+# Preview the changes without writing them
+npx @ark-ui/codemod react/as-child-to-render "src/**/*.tsx" --dry
+```
+
+`--dry` prints a diff and writes nothing. Without it the codemod refuses to run on a dirty working
+tree, so a bad run is one `git checkout` away. Anything ambiguous is left untouched and reported with
+a file and a reason rather than guessed.
+
+Only Ark UI elements are rewritten — an `asChild` from another library in the same file is left
+alone. Parts reached through local barrels, re-exports, or factory wrappers (`styled(ark.button)`)
+are resolved with the `--cross-file` flag.
+
+Beyond `as-child-to-render`, prop renames ship for every framework — `react/*`, `solid/*`, `svelte/*`,
+and `vue/*` (Vue rewrites kebab and bound props too):
+
+| Transform | What it does |
+| --- | --- |
+| `carousel-props` | `slideCount` → `count`, `autoplay` → `autoPlay`, `padding` → `itemSpacing` |
+| `floating-panel-placement` | `resizeTriggerAxes` → `resizeTriggerPlacements`, `axis` → `placement` |
+| `image-cropper-placement` | `handles` → `placements`, `position` → `placement` |
+| `tabs-virtual-focus` | `composite` → `virtualFocus` (value inverted) |
+| `popover-portalled` | removes the `portalled` prop |
+| `tags-input-editable` | adds `editable` to keep the old default |
+| `pin-input-count` | `length` → `count`, or flags a missing `count` |
+
+Stylesheets have their own transform, `css/data-attributes`, covered under
+[Data attributes are merged](#data-attributes-are-merged) below.
+
+Two changes are left to do by hand because they reshape markup, not just props: the popover
+`api.portalled ? Portal : Fragment` wrapper (drop it for a plain `Portal`), and the
+`Combobox`/`Listbox`/`Select` `content` → `content` + `list` split described under
+[the list part](#comboboxlistboxselect-gain-a-list-part).
+
+## Migrate with an AI agent
+
+The codemod handles `asChild` → `render`. For the rest, paste this prompt into an AI agent (Claude
+Code, Cursor, Copilot) pointed at your codebase — it has the full context for the manual changes.
+
+```text
+You are migrating this codebase from Ark UI v5 to v6. Work framework-aware
+(React, Solid, Svelte, or Vue — detect which one this project uses) and change
+only Ark UI usage. After each step, run the project's typecheck/build.
+
+1. Run the codemod for the mechanical rename, then review its report:
+   npx @ark-ui/codemod react/as-child-to-render "src/**/*.tsx"
+   (swap `react` for solid/svelte/vue; add `--cross-file` if parts are reached
+   through local barrels, re-exports, or factory wrappers like styled(ark.button).)
+
+2. Finish anything the codemod left. `asChild` is now a `render` function that
+   receives (props, state):
+   - React/Vue: move the child into the function/slot; spread `props`.
+   - Solid/Svelte/Vue: `props` is a MERGE FUNCTION — spread `{...props()}`
+     (Solid/Svelte) or `v-bind="props()"` (Vue), and call `props({ onClick })`
+     to merge your handlers instead of overwriting them. In Solid, `state` is an
+     accessor: `state().open`.
+
+3. Toaster is no longer polymorphic: remove any `render`/`asChild` on it and
+   drop `ToasterState`. Style the group with CSS (`data-placement`, `data-side`,
+   `data-align`) or wrap your own element around it.
+
+4. Combobox.Empty / Listbox.Empty move OUT of List to become a sibling of List.
+   Put the styled message in a child element. For loading/error states, use the
+   new `Status` part on Combobox, Listbox, and Select.
+
+5. useCollator / useFilter now return values directly (no accessor/.value) on
+   Solid, Svelte, and Vue: `collator.compare(a, b)`, `const { contains } = useFilter(...)`.
+
+6. Svelte only:
+   - The `useX` hooks now require an `id`: `useCollapsible({ id })` where
+     `const id = $props.id()`. `$props.id()` may be called once — derive if you
+     need two. Components like `<Collapsible.Root>` are unaffected.
+   - Exports now match the other frameworks: Dialog parts are prefixed
+     (`DialogPositioner`, `DialogRoot`, ...); `StepsStepChangeDetails` →
+     `StepChangeDetails`, `ColorPickerColor` → `Color`, `TabsContentState` /
+     `TabsTriggerState` → `TabContentState` / `TabTriggerState`. Internals like
+     `CheckboxProvider` and `splitCollapsibleProps` are no longer exported.
+
+Report anything ambiguous instead of guessing. Full guide:
+https://ark-ui.com/docs/overview/upgrade-guide
+```
+
+## Breaking changes to fix
+
+These are the changes you have to act on when you move a project from v5.
+
+### `asChild` is now `render`
+
+Polymorphism moves from a wrapper prop to a `render` function that receives the part's props and its
+state. Every part gets one typed composition API, and you can read machine state inline.
+
+The shape differs per framework. React and Vue move the child into the function or slot; Solid and
+Svelte are a rename where the props object becomes a props **function** you must call.
+
+```diff
+// React
+- <Collapsible.Trigger asChild>
+-   <button>Toggle</button>
+- </Collapsible.Trigger>
++ <Collapsible.Trigger render={(props, state) => (
++   <button {...props}>{state.open ? 'Open' : 'Closed'}</button>
++ )} />
+```
+
+```diff
+// Solid — {...props} becomes {...props()}, state is an accessor
+- <Collapsible.Trigger asChild>
+-   {(props) => <button {...props}>Toggle</button>}
+- </Collapsible.Trigger>
++ <Collapsible.Trigger render={(props, state) => (
++   <button {...props()}>{state().open ? 'Open' : 'Closed'}</button>
++ )} />
+```
+
+```svelte
+<!-- Svelte -->
+<Collapsible.Trigger>
+  {#snippet render(props, state)}
+    <button {...props()}>{state.open ? 'Open' : 'Closed'}</button>
+  {/snippet}
+</Collapsible.Trigger>
+```
+
+```vue
+<!-- Vue -->
+<Collapsible.Trigger>
+  <template #render="{ props, state }">
+    <button v-bind="props()">{{ state.open ? 'Open' : 'Closed' }}</button>
+  </template>
+</Collapsible.Trigger>
+```
+
+> In Solid, Svelte, and Vue, `props` is a merge function: call `props({ onClick: mine })` to merge
+> your handlers with the part's instead of overwriting them.
+
+### `Toaster` is no longer polymorphic
+
+`Toaster` no longer accepts `render` or `asChild`, and `ToasterState` is gone. Its children belong to
+the machine, so handing them over dropped toasts. Style the group with CSS — it carries
+`data-placement`, `data-side`, and `data-align` — or wrap your own element around `Toaster`.
+
+### `Popover` is no longer portalled by prop
+
+The `portalled` prop and `api.portalled` value are gone. The popover now detects whether its content is
+portalled from where you render it and proxies tab order accordingly, so a forgotten `portalled` can no
+longer break keyboard access. Decide portalling by rendering the content inside `Portal` or not.
+
+```diff
+- <Popover.Root portalled>
++ <Popover.Root>
+    <Popover.Trigger>Open</Popover.Trigger>
++   <Portal>
+      <Popover.Positioner>
+        <Popover.Content>...</Popover.Content>
+      </Popover.Positioner>
++   </Portal>
+  </Popover.Root>
+```
+
+The `react/popover-portalled` codemod (and its `solid`/`svelte`/`vue` variants) removes the prop; wrap
+the content in `Portal` yourself, as this is markup the codemod won't reshape. To render inline, drop
+the `Portal` — tab order is still handled.
+
+### `Combobox.Empty` and `Listbox.Empty` move out of `List`
+
+`Empty` used to render inside `List` and unmount when the collection was non-empty, which kept it out
+of the accessibility tree and prevented any announcement. It now stays mounted as a sibling of `List`
+with `role="status"`, swapping only its children. Move it out of `List` and put your styled message in
+a child element.
+
+```diff
+  <Combobox.Content>
+-   <Combobox.List>
+-     <Combobox.Empty className={styles.Item}>No results found</Combobox.Empty>
++   <Combobox.Empty>
++     <div className={styles.Empty}>No results found</div>
++   </Combobox.Empty>
++   <Combobox.List>
+      {/* items */}
+    </Combobox.List>
+  </Combobox.Content>
+```
+
+A new `Status` part on `Combobox`, `Listbox`, and `Select` covers loading and error states that
+`Empty` cannot distinguish (it keys off `collection.size === 0`).
+
+### Combobox/Listbox/Select gain a `List` part
+
+The listbox semantics (`role="listbox"`, active-descendant, keyboard focus) move off `Content` onto a
+new `List` part. `Content` becomes a plain wrapper, so you can render headers, footers, or a search
+input in the popup without polluting the listbox. Wrap the items in `List` inside `Content`. This is
+structural, so the codemod leaves it to you.
+
+```diff
+  <Combobox.Content>
++   <Combobox.List>
+      {items.map((item) => (
+        <Combobox.Item key={item.value} item={item}>{item.label}</Combobox.Item>
+      ))}
++   </Combobox.List>
+  </Combobox.Content>
+```
+
+The `composite` prop is gone; pass `popupType="dialog"` where you previously set `composite={false}`.
+
+### Data attributes are merged
+
+`data-scope`, `data-part`, and `data-ownedby` collapse into one attribute per part,
+`data-{scope}-{part}`. An element can now take part in more than one machine, and selectors get
+shorter. This does not change your JSX — it changes the CSS and any `querySelector` that targets
+these attributes.
+
+```diff
+- [data-scope="dialog"][data-part="trigger"] { ... }
++ [data-dialog-trigger] { ... }
+```
+
+The `css/data-attributes` transform rewrites stylesheets: it merges scope/part selectors, turns
+toggle `[data-state="on"]` into `[data-pressed]`, and swaps the removed `data-focus` on toggle-group
+and toolbar for `:focus-within` / `:focus-visible`.
+
+```sh
+npx @ark-ui/codemod css/data-attributes "src/**/*.css" --dry
+```
+
+Attributes referenced from JavaScript strings, or selectors where scope and part are not adjacent,
+are left for you to update.
+
+### `useCollator` and `useFilter` return values
+
+For Solid, Svelte, and Vue, these hooks now return their values directly instead of an accessor,
+matching React. They still follow locale changes.
+
+```diff
+- const collator = useCollator()
+- collator().compare(a, b)      // Solid, Svelte
+- collator.value.compare(a, b)  // Vue
++ const collator = useCollator()
++ collator.compare(a, b)
+```
+
+```diff
+- const filters = useFilter({ sensitivity: 'base' })
+- filters().contains(text, query)     // Solid, Svelte
+- filters.value.contains(text, query) // Vue
++ const { contains } = useFilter({ sensitivity: 'base' })
++ contains(text, query)
+```
+
+### Svelte: hooks require an `id`
+
+After moving to Zag 2, the `useX` hooks require an `id`. Without one, two instances on a page
+generated the same element ids. Components (`<Collapsible.Root>`) are unaffected and still mint their
+own.
+
+```diff
+- const collapsible = useCollapsible()
++ const id = $props.id()
++ const collapsible = useCollapsible({ id })
+```
+
+`$props.id()` may only be called once per component; derive from it if you need two.
+
+### Svelte: export parity
+
+Svelte exports now match the other frameworks. `Dialog`'s `Positioner`, `Root`, `RootProvider`,
+`Title`, and `Trigger` are prefixed (`DialogPositioner`). `StepsStepChangeDetails` →
+`StepChangeDetails`, `ColorPickerColor` → `Color`, `TabsContentState` / `TabsTriggerState` →
+`TabContentState` / `TabTriggerState`. Internals such as `CheckboxProvider` and `splitCollapsibleProps`
+are no longer exported.

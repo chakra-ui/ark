@@ -2,12 +2,18 @@ import { ArrowLeftIcon } from 'lucide-react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { css } from 'styled-system/css'
-import { Container, Flex, HStack, Stack } from 'styled-system/jsx'
+import { Box, Container, Flex, HStack, Stack } from 'styled-system/jsx'
 import { hstack } from 'styled-system/patterns'
 import { Footer } from '~/components/marketing/footer'
 import { Navbar } from '~/components/marketing/navbar'
+import { TableOfContent } from '~/components/table-of-content'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
+import { AuthorAvatars, formatAuthorNames } from '~/components/author-avatars'
+import { BlogPostActions } from '~/components/blog-post-actions'
+import { resolveAuthors } from '~/lib/authors'
+import { getPublicUrl } from '~/lib/get-public-url'
+import { ogImageUrl } from '~/lib/og-template'
 import { MDXContent } from '~/mdx-content'
 import { blogs } from '~/lib/source'
 
@@ -38,46 +44,79 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
       backgroundRepeat="repeat-x"
     >
       <Navbar />
-      <Container py={{ base: '16', md: '24' }} maxW="4xl" flex="1">
-        <Stack pb="10" gap="3">
-          <Link
-            href="/blog"
-            className={hstack({
-              color: 'colorPalette.default',
-              alignSelf: 'flex-start',
-              gap: '1',
-              _icon: {
-                width: '4',
-                height: '4',
-              },
-            })}
-          >
-            <ArrowLeftIcon />
-            Back to Blog
-          </Link>
-          <Heading as="h1" size="5xl" mt="4">
-            {blog.title}
-          </Heading>
-          <Text color="fg.muted">{blog.description}</Text>
-          <HStack mt="4" gap="2" className={css({ color: 'fg.muted' })}>
-            <Text>{blog.author}</Text>
-            <span>/</span>
-            <time dateTime={blog.date}>{formatDate(blog.date)}</time>
-          </HStack>
-        </Stack>
+      <Container py={{ base: '16', md: '24' }} maxW="90rem" flex="1">
+        <Flex gap="10" alignItems="flex-start">
+          <Box flex="1" minW="0">
+            <Stack gap="0" maxW="3xl" mx="auto">
+              <Stack pb="10" gap="3">
+                <Link
+                  href="/blog"
+                  className={hstack({
+                    color: 'colorPalette.default',
+                    alignSelf: 'flex-start',
+                    gap: '1',
+                    _icon: {
+                      width: '4',
+                      height: '4',
+                    },
+                  })}
+                >
+                  <ArrowLeftIcon />
+                  Back to Blog
+                </Link>
+                <Heading as="h1" size="5xl" mt="4">
+                  {blog.title}
+                </Heading>
+                <Text color="fg.muted">{blog.description}</Text>
+                <Flex
+                  mt="4"
+                  gap="4"
+                  justify="space-between"
+                  align="center"
+                  wrap="wrap"
+                  className={css({ color: 'fg.muted' })}
+                >
+                  <HStack gap="2">
+                    <AuthorAvatars author={blog.author} size={28} linkAvatars />
+                    <span>·</span>
+                    <time dateTime={blog.date}>{formatDate(blog.date)}</time>
+                  </HStack>
+                  <BlogPostActions url={getPublicUrl(`/blog/${blog.slug}`)} title={blog.title} />
+                </Flex>
+              </Stack>
 
-        <div
-          className={css({
-            borderBottomWidth: '1px',
-            borderColor: 'border.muted',
-            mb: '6',
-            borderStyle: 'dashed',
-          })}
-        />
+              <div
+                className={css({
+                  borderBottomWidth: '1px',
+                  borderColor: 'border.muted',
+                  mb: '6',
+                  borderStyle: 'dashed',
+                })}
+              />
 
-        <article className={css({ lineHeight: '1.75', color: 'var(--colors-prose-body)' })}>
-          <MDXContent body={blog.body} />
-        </article>
+              <article className={css({ lineHeight: '1.75', color: 'var(--colors-prose-body)' })}>
+                <MDXContent body={blog.body} />
+              </article>
+            </Stack>
+          </Box>
+
+          {blog.toc.length > 0 && (
+            <Box
+              className="scroller"
+              flexShrink="0"
+              width="14rem"
+              hideBelow="xl"
+              position="sticky"
+              top="7rem"
+              alignSelf="flex-start"
+              maxH="calc(100dvh - 9rem)"
+              overflowY="auto"
+              overscrollBehavior="contain"
+            >
+              <TableOfContent entries={blog.toc} />
+            </Box>
+          )}
+        </Flex>
       </Container>
 
       <Footer />
@@ -90,24 +129,33 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const blog = blogs.find((blog) => blog.slug === slug)
   if (!blog) return {}
 
+  const authors = resolveAuthors(blog.author)
+  const image = ogImageUrl({
+    title: blog.title,
+    description: blog.description,
+    category: 'Blog',
+    author: authors.length ? formatAuthorNames(authors.map((a) => a.name)) : undefined,
+    authorLogin: authors[0]?.login,
+  })
   return {
     title: blog.title,
     description: blog.description,
+    alternates: { canonical: getPublicUrl(`/blog/${slug}`) },
     openGraph: {
       url: `/blog/${slug}`,
       title: blog.title,
       description: blog.description,
-      images: '/og-image.png',
+      images: [image],
       type: 'article',
       publishedTime: blog.date,
-      authors: [blog.author],
+      authors: blog.author ? [blog.author].flat() : undefined,
       tags: blog.tags,
     },
     twitter: {
       card: 'summary_large_image',
       title: blog.title,
       description: blog.description,
-      images: '/og-image.png',
+      images: [image],
     },
   }
 }

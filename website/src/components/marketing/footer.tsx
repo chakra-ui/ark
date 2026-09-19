@@ -1,47 +1,153 @@
+import { SiDiscord, SiGithub, SiX } from '@icons-pack/react-simple-icons'
 import NextLink from 'next/link'
-import { Container, Stack } from 'styled-system/jsx'
+import { css } from 'styled-system/css'
+import { Box, Container, Flex, Grid, HStack, Stack } from 'styled-system/jsx'
 import { Text } from '~/components/ui/text'
 import { Logo } from '../logo'
 
-const resources = [
+interface FooterLink {
+  label: string
+  href: string
+  external?: boolean
+}
+
+const columns: { title: string; links: FooterLink[] }[] = [
   {
-    name: 'GitHub',
-    href: 'https://github.com/chakra-ui/ark',
+    title: 'Learn',
+    links: [
+      { label: 'Documentation', href: '/docs/react/overview/getting-started' },
+      { label: 'Examples', href: '/examples/react/checkbox-group' },
+      { label: 'Blog', href: '/blog' },
+    ],
   },
   {
-    name: 'Twitter',
-    href: 'https://twitter.com/ark_ui_',
+    title: 'Toolkit',
+    links: [
+      { label: 'MCP Server', href: '/docs/react/ai/mcp-server' },
+      { label: 'LLMs.txt', href: '/llms.txt', external: true },
+      { label: 'Changelog', href: '/docs/react/overview/changelog' },
+    ],
   },
   {
-    name: 'Discord',
-    href: 'https://discord.gg/ww6HE5xaZ2',
+    title: 'Community',
+    links: [
+      { label: 'Discord', href: 'https://discord.gg/ww6HE5xaZ2', external: true },
+      { label: 'GitHub', href: 'https://github.com/chakra-ui/ark', external: true },
+      { label: 'X (Twitter)', href: 'https://twitter.com/ark_ui_', external: true },
+    ],
+  },
+  {
+    title: 'Project',
+    links: [
+      { label: 'Showcase', href: '/showcase' },
+      { label: 'Team', href: '/team' },
+      { label: 'Ark Plus', href: '/plus' },
+    ],
   },
 ]
 
-export const Footer = () => {
+const socials = [
+  { label: 'GitHub', href: 'https://github.com/chakra-ui/ark', icon: SiGithub },
+  { label: 'Discord', href: 'https://discord.gg/ww6HE5xaZ2', icon: SiDiscord },
+  { label: 'X (Twitter)', href: 'https://twitter.com/ark_ui_', icon: SiX },
+]
+
+const linkClass = css({
+  color: 'fg.muted',
+  textStyle: 'sm',
+  transitionProperty: 'color',
+  transitionDuration: 'normal',
+  width: 'fit-content',
+  _hover: { color: 'fg.default' },
+})
+
+const FooterLink = ({ link }: { link: FooterLink }) =>
+  link.external ? (
+    <a className={linkClass} href={link.href} target="_blank" rel="noopener">
+      {link.label}
+    </a>
+  ) : (
+    <NextLink className={linkClass} href={link.href}>
+      {link.label}
+    </NextLink>
+  )
+
+const BottomBar = ({ withBorder }: { withBorder?: boolean }) => (
+  <Flex
+    mt={withBorder ? { base: '10', md: '16' } : '0'}
+    pt={withBorder ? '6' : '0'}
+    borderTopWidth={withBorder ? '1px' : '0'}
+    borderColor="border.subtle"
+    justify="space-between"
+    align="center"
+    gap="4"
+    direction={{ base: 'column', sm: 'row' }}
+  >
+    <Text color="fg.subtle" textStyle="sm">
+      Copyright © {new Date().getFullYear()}
+    </Text>
+    <NextLink href="/team" className={linkClass}>
+      Proudly made by the Chakra team
+    </NextLink>
+  </Flex>
+)
+
+export const Footer = ({ minimal = false }: { minimal?: boolean }) => {
+  if (minimal) {
+    return (
+      <Box as="footer" borderTopWidth="1px" borderColor="border.subtle">
+        <Container py="6">
+          <BottomBar />
+        </Container>
+      </Box>
+    )
+  }
+
   return (
-    <footer>
-      <Container py="8">
-        <Stack
-          direction={{ base: 'column-reverse', md: 'row' }}
-          justify="space-between"
-          align={{ base: 'start', md: 'center' }}
-          gap="8"
-        >
-          <Stack gap="1" align="start">
+    <Box as="footer" borderTopWidth="1px" borderColor="border.subtle">
+      <Container py={{ base: '12', md: '16' }}>
+        <Grid columns={{ base: 2, md: 6 }} gap={{ base: '8', md: '12' }}>
+          <Stack gap="4" alignItems="flex-start" gridColumn={{ base: 'span 2', md: 'span 2' }}>
             <Logo />
-            <Text color="fg.muted">A project by Chakra Systems</Text>
+            <Text color="fg.muted" textStyle="sm" maxW="16rem">
+              The headless UI library for building reusable, scalable design systems.
+            </Text>
+            <HStack gap="4">
+              {socials.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener"
+                  aria-label={social.label}
+                  className={css({ color: 'fg.subtle', _hover: { color: 'fg.default' } })}
+                >
+                  <social.icon size={18} />
+                </a>
+              ))}
+            </HStack>
           </Stack>
-          <Stack direction="row" gap="8">
-            <NextLink href="/docs/overview/getting-started">Docs</NextLink>
-            {resources.map((resource) => (
-              <a key={resource.name} href={resource.href} target="_blank" rel="noreferrer">
-                {resource.name}
-              </a>
-            ))}
-          </Stack>
-        </Stack>
+          {columns.map((column) => (
+            <Stack key={column.title} gap="3">
+              <Text
+                textStyle="xs"
+                fontWeight="semibold"
+                letterSpacing="wide"
+                textTransform="uppercase"
+                color="fg.subtle"
+              >
+                {column.title}
+              </Text>
+              <Stack gap="2.5">
+                {column.links.map((link) => (
+                  <FooterLink key={link.label} link={link} />
+                ))}
+              </Stack>
+            </Stack>
+          ))}
+        </Grid>
+        <BottomBar withBorder />
       </Container>
-    </footer>
+    </Box>
   )
 }

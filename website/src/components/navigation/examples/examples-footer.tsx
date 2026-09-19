@@ -4,14 +4,16 @@ import { Grid, Stack } from 'styled-system/jsx'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import type { Example } from '~/lib/examples'
+import { type Framework, docsHref, examplesHref } from '~/lib/frameworks'
 import { findDocsPageById } from '~/lib/source'
 
 interface Props {
   example: Example
+  framework: Framework
 }
 
 export const ExamplesFooter = (props: Props) => {
-  const { example } = props
+  const { example, framework } = props
 
   return (
     <Stack gap="12">
@@ -21,7 +23,7 @@ export const ExamplesFooter = (props: Props) => {
           {example.relatedComponents.map((component) => {
             const page = findDocsPageById(component)
             return (
-              <NextLink key={component} href={`/docs/components/${component}`} className={link}>
+              <NextLink key={component} href={docsHref(framework, `components/${component}`)} className={link}>
                 <Text fontWeight="medium">{page?.data.title}</Text>
                 <Text color="fg.muted" textStyle="sm">
                   {page?.data.description}
@@ -37,7 +39,7 @@ export const ExamplesFooter = (props: Props) => {
           <Grid columns={{ base: 1, sm: 2, md: 3 }} gap="8">
             {example.relatedExamples.map((relatedExample) => {
               return (
-                <NextLink key={relatedExample.id} href={`/examples/${relatedExample.id}`} className={link}>
+                <NextLink key={relatedExample.id} href={examplesHref(framework, relatedExample.id)} className={link}>
                   <Text fontWeight="medium">{relatedExample?.title}</Text>
                   <Text color="fg.muted" textStyle="sm">
                     {relatedExample?.description}

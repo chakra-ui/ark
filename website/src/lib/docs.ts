@@ -39,7 +39,7 @@ const toEntry = ({ page, category }: DocsPageSource): DocsEntry => ({
 
 export const formatDocContent = async (page: PageMeta, framework: Framework = 'react') => `# ${page.title}
 
-URL: https://ark-ui.com/docs/${page.slug}
+URL: https://ark-ui.com/docs/${framework}/${page.slug}
 LLM: https://ark-ui.com/llms.txt/${page.slug}
 
 ${page.description || ''}

@@ -2,7 +2,8 @@ import { Fragment } from 'react'
 import { Code } from '~/components/ui/code'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
-import { getFramework } from '~/lib/frameworks'
+import { defaultFramework } from '~/lib/frameworks'
+import { getServerContext } from '~/lib/server-context'
 import { CssVarTable } from './css-var-table'
 import { DataAttrTable } from './data-attr-table'
 import { EmitsTable } from './emits-table'
@@ -47,7 +48,7 @@ const elementToTag = (element: string): string => {
 }
 
 export const ComponentTypes = async (props: Props) => {
-  const framework = await getFramework()
+  const framework = getServerContext().framework ?? defaultFramework
   const api = types.find((type) => type.component === props.id && type.framework === framework)
 
   if (!api) {

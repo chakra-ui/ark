@@ -1,86 +1,45 @@
-import NextLink from 'next/link'
-import { css } from 'styled-system/css'
-import { Box, Container, Flex, Grid, HStack, Stack } from 'styled-system/jsx'
+import { Box, Container, Stack } from 'styled-system/jsx'
+import { type BlogPost, BlogPosts } from '~/components/blog-posts'
 import { Footer } from '~/components/marketing/footer'
 import { Navbar } from '~/components/marketing/navbar'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
-import { Card } from '../../components/ui/card'
 import { blogs } from '~/lib/source'
 
-function formatDate(date: string) {
-  return new Date(date).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
-}
+const posts: BlogPost[] = [...blogs]
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .map((blog) => ({
+    slug: blog.slug,
+    title: blog.title,
+    description: blog.description,
+    author: blog.author,
+    date: blog.date,
+    featured: blog.featured,
+    type: blog.type,
+  }))
 
-const sortedBlogs = blogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-
-export default async function Page() {
+export default async function Page({ searchParams }: { searchParams: Promise<{ filter?: string }> }) {
+  const { filter } = await searchParams
   return (
-    <Flex
-      direction="column"
-      flex="1"
-      minH="100%"
-      height="100%"
-      position="relative"
-      backgroundImage="url(/images/pattern.svg)"
-      backgroundRepeat="repeat-x"
-    >
-      <Box
-        position="absolute"
-        display={{ base: 'none', sm: 'block' }}
-        inset="0"
-        height="830px"
-        background="radial-gradient(42.48% 42.48% at calc(50% + 100vw / 2) center, #EB5E41 0%, rgba(235, 94, 65, 0) 100%)"
-        filter="blur(282px)"
-        pointerEvents="none"
-      />
+    <Box minH="100vh">
       <Navbar />
-      <Container py={{ base: '16', md: '24' }} maxW="5xl" flex="1">
-        <Stack>
-          <Heading as="h1" size="4xl">
-            Ark UI Blog
+      <Container maxW="5xl" py={{ base: '16', md: '24' }}>
+        <Stack gap="3">
+          <Heading as="h1" size="4xl" fontWeight="bold">
+            Blog
           </Heading>
           <Text size="lg" color="fg.muted">
-            This blog is the official source for the updates from the Ark UI team
+            News, updates, and deep dives from the Ark UI team.
           </Text>
         </Stack>
-
-        <Grid columns={{ base: 1, md: 2 }} gap="6" mt="12">
-          {sortedBlogs.map((blog, index) => (
-            <NextLink href={`/blog/${blog.slug}`} key={index}>
-              <Card.Root h="100%">
-                <Card.Header gap="2">
-                  <Card.Title textStyle="xl" _hover={{ textDecoration: 'underline' }}>
-                    {blog.title}
-                  </Card.Title>
-                  <HStack gap="2" className={css({ color: 'fg.muted', textStyle: 'sm' })}>
-                    <Text>{blog.author}</Text>
-                    <span>/</span>
-                    <time dateTime={blog.date}>{formatDate(blog.date)}</time>
-                  </HStack>
-                </Card.Header>
-                <Card.Body>
-                  <Text minH="2lh">{blog.description}</Text>
-                  <Text mt="2" fontWeight="medium" color="colorPalette.default">
-                    Read more
-                  </Text>
-                </Card.Body>
-              </Card.Root>
-            </NextLink>
-          ))}
-        </Grid>
+        <BlogPosts posts={posts} filter={filter} />
       </Container>
-
       <Footer />
-    </Flex>
+    </Box>
   )
 }
 
 export const metadata = {
   title: 'Blog',
-  description: 'This blog is the official source for the updates from the Ark UI team',
+  description: 'News, updates, and deep dives from the Ark UI team',
 }
