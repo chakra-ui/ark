@@ -6,6 +6,7 @@ const fetchVersion = async (framework: Framework): Promise<string> => {
   try {
     const response = await fetch(`https://registry.npmjs.org/@ark-ui/${framework}/latest`, {
       next: { revalidate: 3600 },
+      signal: AbortSignal.timeout(5000),
     })
     if (!response.ok) return FALLBACK_VERSION
     const data = await response.json()
