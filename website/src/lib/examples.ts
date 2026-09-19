@@ -26,7 +26,8 @@ const { ARK_PLUS_API_KEY, ARK_PLUS_URL } = process.env
 
 export const fetchExamples = async (): Promise<Example[]> => {
   const examples = await fetch(`${ARK_PLUS_URL}/api/examples`, {
-    cache: 'no-cache',
+    next: { revalidate: 3600 },
+    signal: AbortSignal.timeout(5000),
     headers: {
       Authorization: ARK_PLUS_API_KEY,
     },
