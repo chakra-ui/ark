@@ -158,10 +158,10 @@
     "@zag-js/utils": "1.44.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.13",
+    "@biomejs/biome": "2.5.14",
     "@storybook/addon-a11y": "10.6.0",
     "@storybook/react-vite": "10.6.0",
-    "@tanstack/react-virtual": "3.14.12",
+    "@tanstack/react-virtual": "3.14.13",
     "@testing-library/dom": "10.4.2",
     "@testing-library/jest-dom": "7.0.1",
     "@testing-library/react": "16.3.3",
@@ -176,7 +176,7 @@
     "globby": "16.2.4",
     "happy-dom": "20.14.5",
     "image-conversion": "2.1.1",
-    "lucide-react": "1.45.0",
+    "lucide-react": "1.47.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-frame-component": "5.3.2",
@@ -187,7 +187,7 @@
     "storybook": "10.6.0",
     "typescript": "6.0.3",
     "vite": "8.3.0",
-    "vite-plugin-dts": "5.1.0",
+    "vite-plugin-dts": "5.1.1",
     "vitest": "4.1.11",
     "vitest-axe": "1.0.0-pre.5"
   },
