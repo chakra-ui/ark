@@ -7,7 +7,14 @@ import { cleanProps } from '../../utils/clean-props.ts'
 import type { RootEmits } from './pagination.ts'
 
 export interface UsePaginationProps extends Optional<Omit<pagination.Props, 'dir' | 'getRootNode'>, 'id'> {}
-export interface UsePaginationReturn extends ComputedRef<pagination.Api<PropTypes>> {}
+export interface UsePaginationReturn extends ComputedRef<
+  pagination.Api<PropTypes> & {
+    /**
+     * Whether the items and triggers navigate as links or act as buttons.
+     */
+    type: 'button' | 'link'
+  }
+> {}
 
 export const usePagination = (
   props: MaybeRef<UsePaginationProps> = {},
@@ -39,5 +46,8 @@ export const usePagination = (
   })
 
   const service = useMachine(pagination.machine, context)
-  return computed(() => pagination.connect(service, normalizeProps))
+  return computed(() => ({
+    ...pagination.connect(service, normalizeProps),
+    type: context.value.type ?? 'button',
+  }))
 }

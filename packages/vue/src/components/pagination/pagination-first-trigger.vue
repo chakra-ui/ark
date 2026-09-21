@@ -24,7 +24,10 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="pagination.getFirstTriggerProps()" :as-child="asChild">
+  <ark.a v-if="pagination.type === 'link'" v-bind="pagination.getFirstTriggerProps()" :as-child="asChild">
+    <slot />
+  </ark.a>
+  <ark.button v-else v-bind="pagination.getFirstTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

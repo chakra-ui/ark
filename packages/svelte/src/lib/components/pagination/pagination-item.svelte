@@ -18,4 +18,8 @@
   const mergedProps = $derived(mergeProps(pagination().getItemProps(itemProps), localProps))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+{#if pagination().type === 'link'}
+  <Ark as="a" bind:ref {...mergedProps} />
+{:else}
+  <Ark as="button" bind:ref {...mergedProps} />
+{/if}

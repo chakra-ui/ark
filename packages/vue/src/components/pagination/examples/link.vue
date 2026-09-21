@@ -1,32 +1,33 @@
 <script setup lang="ts">
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
-import { Pagination, usePagination } from '@ark-ui/vue/pagination'
+import { Pagination } from '@ark-ui/vue/pagination'
 import styles from 'styles/pagination.module.css'
-
-const pagination = usePagination({
-  type: 'link',
-  count: 100,
-  pageSize: 10,
-  siblingCount: 2,
-  getPageUrl: ({ page }) => `/page=${page}`,
-})
 </script>
 
 <template>
-  <Pagination.RootProvider :value="pagination" :class="styles.Root">
+  <Pagination.Root
+    :count="100"
+    :page-size="10"
+    :sibling-count="2"
+    type="link"
+    :get-page-url="({ page }) => `/page=${page}`"
+    :class="styles.Root"
+  >
     <div :class="styles.Controls">
-      <a :class="styles.Trigger" v-bind="pagination.getPrevTriggerProps()">
+      <Pagination.PrevTrigger :class="styles.Trigger">
         <ChevronLeft />
-      </a>
-      <template v-for="(page, index) in pagination.pages" :key="index">
-        <a v-if="page.type === 'page'" :class="styles.Item" v-bind="pagination.getItemProps(page)">
-          {{ page.value }}
-        </a>
-        <span v-else :class="styles.Ellipsis" v-bind="pagination.getEllipsisProps({ index })">&#8230;</span>
-      </template>
-      <a :class="styles.Trigger" v-bind="pagination.getNextTriggerProps()">
+      </Pagination.PrevTrigger>
+      <Pagination.Context v-slot="pagination">
+        <template v-for="(page, index) in pagination.pages" :key="index">
+          <Pagination.Item v-if="page.type === 'page'" v-bind="page" :class="styles.Item">
+            {{ page.value }}
+          </Pagination.Item>
+          <Pagination.Ellipsis v-else :index="index" :class="styles.Ellipsis">&#8230;</Pagination.Ellipsis>
+        </template>
+      </Pagination.Context>
+      <Pagination.NextTrigger :class="styles.Trigger">
         <ChevronRight />
-      </a>
+      </Pagination.NextTrigger>
     </div>
-  </Pagination.RootProvider>
+  </Pagination.Root>
 </template>

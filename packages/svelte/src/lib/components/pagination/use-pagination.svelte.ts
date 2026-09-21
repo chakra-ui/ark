@@ -6,7 +6,14 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers/index.t
 import type { Accessor, Optional } from '../../types.ts'
 
 export interface UsePaginationProps extends Optional<Omit<pagination.Props, 'dir' | 'getRootNode'>, 'id'> {}
-export interface UsePaginationReturn extends Accessor<pagination.Api<PropTypes>> {}
+export interface UsePaginationReturn extends Accessor<
+  pagination.Api<PropTypes> & {
+    /**
+     * Whether the items and triggers navigate as links or act as buttons.
+     */
+    type: 'button' | 'link'
+  }
+> {}
 
 export const usePagination = (props: MaybeFunction<UsePaginationProps> = {}): UsePaginationReturn => {
   const env = useEnvironmentContext()
@@ -24,5 +31,5 @@ export const usePagination = (props: MaybeFunction<UsePaginationProps> = {}): Us
   const service = useMachine(pagination.machine, () => resolvedProps)
   const api = $derived(pagination.connect(service, normalizeProps))
 
-  return () => api
+  return () => ({ ...api, type: resolvedProps.type ?? 'button' })
 }
