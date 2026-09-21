@@ -40,14 +40,7 @@ const adapters: Adapter[] = [
 
 // Both lists are shrink-only: an entry that no longer applies fails the check, so a fix has to
 // delete its line. Tracked in https://github.com/chakra-ui/ark/discussions/4047
-const knownDivergences = new Set([
-  'angle-slider/angle-slider-marker',
-  'angle-slider/angle-slider-value-text',
-  'listbox/listbox-item-text',
-  'number-input/number-input-scrubber',
-  'popover/popover-title',
-  'toggle/toggle-indicator',
-])
+const knownDivergences = new Set<string>([])
 
 // Parts that render a native element rather than an ark node on some adapters, so there is no
 // element to compare.
