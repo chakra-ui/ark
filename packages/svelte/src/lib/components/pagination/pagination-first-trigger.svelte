@@ -1,8 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { PaginationAnchorProps } from './use-pagination.svelte.ts'
 
   export interface PaginationFirstTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
-  export interface PaginationFirstTriggerProps extends Assign<HTMLProps<'button'>, PaginationFirstTriggerBaseProps> {}
+  export interface PaginationFirstTriggerProps
+    extends Assign<HTMLProps<'button'> & PaginationAnchorProps, PaginationFirstTriggerBaseProps> {}
 </script>
 
 <script lang="ts">

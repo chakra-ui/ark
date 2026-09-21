@@ -1,9 +1,11 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { PaginationAnchorProps } from './use-pagination.svelte.ts'
   import type { ItemProps } from '@zag-js/pagination'
 
   export interface PaginationItemBaseProps extends ItemProps, PolymorphicProps<'button'>, RefAttribute {}
-  export interface PaginationItemProps extends Assign<HTMLProps<'button'>, PaginationItemBaseProps> {}
+  export interface PaginationItemProps
+    extends Assign<HTMLProps<'button'> & PaginationAnchorProps, PaginationItemBaseProps> {}
 </script>
 
 <script lang="ts">

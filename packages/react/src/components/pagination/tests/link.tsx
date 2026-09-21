@@ -19,7 +19,9 @@ export const ComponentUnderTest = (props: Pagination.RootProps) => (
         )
       }
     </Pagination.Context>
-    <Pagination.NextTrigger>Next</Pagination.NextTrigger>
+    <Pagination.NextTrigger target="_blank" rel="noreferrer">
+      Next
+    </Pagination.NextTrigger>
     <Pagination.LastTrigger>Last</Pagination.LastTrigger>
   </Pagination.Root>
 )

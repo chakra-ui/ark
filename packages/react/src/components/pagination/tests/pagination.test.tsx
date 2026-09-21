@@ -76,6 +76,14 @@ describe('Pagination', () => {
     }
   })
 
+  it('should accept anchor attributes on a link-typed trigger', async () => {
+    render(<LinkComponentUnderTest count={100} pageSize={10} page={2} />)
+
+    const nextTrigger = screen.getByLabelText('next page')
+    expect(nextTrigger).toHaveAttribute('target', '_blank')
+    expect(nextTrigger).toHaveAttribute('rel', 'noreferrer')
+  })
+
   it('should have no a11y violations when type is link', async () => {
     const { container } = render(<LinkComponentUnderTest count={100} pageSize={10} page={2} />)
     const results = await axe(container)

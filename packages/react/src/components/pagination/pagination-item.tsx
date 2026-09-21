@@ -6,10 +6,14 @@ import { type Ref, forwardRef } from 'react'
 import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import type { PaginationAnchorProps } from './use-pagination.ts'
 import { usePaginationContext } from './use-pagination-context.ts'
 
 export interface PaginationItemBaseProps extends ItemProps, PolymorphicProps {}
-export interface PaginationItemProps extends Assign<HTMLProps<'button'>, PaginationItemBaseProps> {}
+export interface PaginationItemProps extends Assign<
+  HTMLProps<'button'> & PaginationAnchorProps,
+  PaginationItemBaseProps
+> {}
 
 const splitItemProps = createSplitProps<ItemProps>()
 

@@ -1,10 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import type { PaginationAnchorProps } from './use-pagination.ts'
 import { usePaginationContext } from './use-pagination-context.ts'
 
 export interface PaginationFirstTriggerBaseProps extends PolymorphicProps<'button'> {}
-export interface PaginationFirstTriggerProps extends HTMLProps<'button'>, PaginationFirstTriggerBaseProps {}
+export interface PaginationFirstTriggerProps
+  extends HTMLProps<'button'>, PaginationAnchorProps, PaginationFirstTriggerBaseProps {}
 
 export const PaginationFirstTrigger = (props: PaginationFirstTriggerProps) => {
   const api = usePaginationContext()

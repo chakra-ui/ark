@@ -1,10 +1,23 @@
 import * as pagination from '@zag-js/pagination'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import {
+  type AnchorHTMLAttributes,
+  type ButtonHTMLAttributes,
+  type ComputedRef,
+  type MaybeRef,
+  computed,
+  toValue,
+  useId,
+} from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
 import type { RootEmits } from './pagination.ts'
+
+/**
+ * The anchor attributes the items and triggers accept, since they render as links under `type="link"`.
+ */
+export type PaginationAnchorProps = Omit<AnchorHTMLAttributes, keyof ButtonHTMLAttributes>
 
 export interface UsePaginationProps extends Optional<Omit<pagination.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UsePaginationReturn extends ComputedRef<

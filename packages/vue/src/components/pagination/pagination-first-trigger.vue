@@ -1,11 +1,16 @@
 <script lang="ts">
 import type { ButtonHTMLAttributes } from 'vue'
+import type { PaginationAnchorProps } from './use-pagination.ts'
 import type { PolymorphicProps } from '../factory.ts'
 
 export interface PaginationFirstTriggerBaseProps extends PolymorphicProps {}
 export interface PaginationFirstTriggerProps
   extends
     PaginationFirstTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    PaginationAnchorProps,
     /**
      * @vue-ignore
      */
