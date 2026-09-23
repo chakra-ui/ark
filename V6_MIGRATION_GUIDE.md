@@ -1,31 +1,129 @@
 # Ark UI v6 — migration guide
 
-> v6 is in progress on the [`v6`](https://github.com/chakra-ui/ark/tree/v6) branch. Nothing is published yet.
+> v6 is in beta on the [`v6`](https://github.com/chakra-ui/ark/tree/v6) branch, published under the `next` tag.
 >
 > You write the same Ark you already know — the same components, the same parts, the same state machines. What changed
-> is how you compose a part with your own element, and what the DOM looks like.
+> is how you compose a part with your own element, what the DOM looks like, and the zag v2 bump underneath.
 >
-> This guide grows as v6 lands. Sections marked **planned** aren't built yet, so treat them as intent, not API. The
-> checklist of what's done is in [the roadmap](https://github.com/chakra-ui/ark/discussions/3997).
+> Most of the mechanical work is a codemod — see [Automated migration](#automated-migration). The checklist of what's
+> done is in [the roadmap](https://github.com/chakra-ui/ark/discussions/3997).
 
 ---
 
 ## What v6 is
 
-Four changes, plus the zag v2 bump underneath them:
+Three changes, plus the zag v2 bump underneath them:
 
-1. **Composition.** `asChild` becomes a `render` prop.
-2. **Indicators.** Indicator parts render from their own state instead of being toggled by boolean props.
-3. **Data attributes.** `data-scope` / `data-part` become one attribute per part.
-4. **Anatomy.** Anatomy moves to its own entry point.
+1. **Composition.** `asChild` becomes a `render` function that also forwards the part's state.
+2. **Data attributes.** `data-scope` / `data-part` become one attribute per part.
+3. **Anatomy.** Anatomy moves to its own entry point.
 
-v6 ships when zag v2 is stable. The base work runs on zag v2 betas.
+v6 ships when zag v2 is stable. The beta runs on zag v2's `next` line.
 
 ---
 
-## Composition: `asChild` becomes `render` — planned
+## Try the beta
 
-`asChild` is removed in v6. Pass your element to `render` instead:
+v5 and v6 ship side by side on npm. Install without a tag and you stay on stable v5; add `@next` for v6.
+
+```bash
+# React
+npm i @ark-ui/react@next
+
+# Solid / Svelte / Vue
+npm i @ark-ui/solid@next
+npm i @ark-ui/svelte@next
+npm i @ark-ui/vue@next
+```
+
+Pin the exact version (`@ark-ui/react@6.0.0-next.0`) for reproducible installs — `@next` always resolves to the newest
+prerelease.
+
+---
+
+## Automated migration
+
+Most of the mechanical work ships as codemods in `@ark-ui/codemod`. Run `list` to see every transform, then run the ones
+you need against your files.
+
+```sh
+# See every available transform
+npx @ark-ui/codemod list
+
+# Preview the changes without writing them
+npx @ark-ui/codemod react/as-child-to-render "src/**/*.tsx" --dry
+```
+
+`--dry` prints a diff and writes nothing. Without it the codemod refuses to run on a dirty working tree, so a bad run is
+one `git checkout` away (`--force` overrides). Anything ambiguous is left untouched and reported with a file and a reason
+rather than guessed. Only Ark UI elements are rewritten — an `asChild` from another library in the same file is left
+alone. Parts reached through local barrels, re-exports, or factory wrappers (`styled(ark.button)`) are resolved with the
+`--cross-file` flag.
+
+Beyond `as-child-to-render`, prop renames ship for every framework — `react/*`, `solid/*`, `svelte/*`, and `vue/*`:
+
+| Transform                  | What it does                                                              |
+| -------------------------- | ------------------------------------------------------------------------ |
+| `as-child-to-render`       | Lift the `asChild` child into a `render` prop                            |
+| `carousel-props`           | `slideCount` → `count`, `autoplay` → `autoPlay`, `padding` → `itemSpacing` |
+| `floating-panel-placement` | `resizeTriggerAxes` → `resizeTriggerPlacements`, `axis` → `placement`     |
+| `image-cropper-placement`  | `handles` → `placements`, `position` → `placement`                       |
+| `tabs-virtual-focus`       | `composite` → `virtualFocus` (value inverted)                            |
+| `popover-portalled`        | removes the `portalled` prop                                             |
+| `tags-input-editable`      | adds `editable` to keep the old default                                  |
+| `pin-input-count`          | `length` → `count`, or flags a missing `count`                          |
+| `css/data-attributes`      | merge scope/part selectors, update toggle state selectors (stylesheets)  |
+
+Two changes are left to do by hand because they reshape markup, not just props: the `popover` `Portal` wrapper, and the
+`Combobox`/`Listbox`/`Select` `content` → `content` + `list` split. Both are covered below.
+
+### Migrate with an AI agent
+
+The codemod handles the renames. For the structural changes, paste this prompt into an AI agent (Claude Code, Cursor,
+Copilot) pointed at your codebase — it has the full context for the manual work.
+
+```text
+You are migrating this codebase from Ark UI v5 to v6. Work framework-aware
+(React, Solid, Svelte, or Vue — detect which one this project uses) and change
+only Ark UI usage. After each step, run the project's typecheck/build.
+
+1. Run the codemod for the mechanical rename, then review its report:
+   npx @ark-ui/codemod react/as-child-to-render "src/**/*.tsx"
+   (swap `react` for solid/svelte/vue; add `--cross-file` if parts are reached
+   through local barrels, re-exports, or factory wrappers like styled(ark.button).)
+
+2. Finish anything the codemod left. `asChild` is now a `render` function that
+   receives (props, state):
+   - React/Vue: move the child into the function/slot; spread `props`.
+   - Solid/Svelte/Vue: `props` is a MERGE FUNCTION — spread `{...props()}`
+     (Solid/Svelte) or `v-bind="props()"` (Vue), and call `props({ onClick })`
+     to merge your handlers instead of overwriting them. In Solid, `state` is an
+     accessor: `state().open`.
+
+3. Toaster is no longer polymorphic: remove any `render`/`asChild` on it and
+   drop `ToasterState`. Style the group with CSS (`data-placement`, `data-side`,
+   `data-align`) or wrap your own element around it.
+
+4. Combobox.Empty / Listbox.Empty move OUT of List to become a sibling of List.
+   Put the styled message in a child element. For loading/error states, use the
+   new `Status` part on Combobox, Listbox, and Select.
+
+5. useCollator / useFilter now return values directly (no accessor/.value) on
+   Solid, Svelte, and Vue: `collator.compare(a, b)`, `const { contains } = useFilter(...)`.
+
+6. Svelte only: `useX` hooks require an `id` (`useCollapsible({ id })` where
+   `const id = $props.id()`), and exports now match the other frameworks
+   (Dialog parts prefixed, `TabsContentState` → `TabContentState`, etc.).
+
+Report anything ambiguous instead of guessing.
+```
+
+---
+
+## Composition: `asChild` becomes `render`
+
+Polymorphism moves from a wrapper prop to a `render` function that receives the part's props **and** its state. Every
+part gets one typed composition API, and you can read machine state inline.
 
 ```tsx
 // ❌ v5
@@ -33,48 +131,95 @@ v6 ships when zag v2 is stable. The base work runs on zag v2 betas.
   <Button>Open</Button>
 </Popover.Trigger>
 
-// ✅ v6
+// ✅ v6 — an element
 <Popover.Trigger render={<Button>Open</Button>} />
+
+// ✅ v6 — a function, to merge props and read state
+<Popover.Trigger render={(props, state) => <Button {...props}>{state.open ? 'Close' : 'Open'}</Button>} />
 ```
 
-`render` also takes a function, so you can merge the props yourself and read the part's state:
+The shape differs per framework. React and Vue move the child into the function or slot; Solid and Svelte are a rename
+where the props object becomes a props **function** you must call.
 
-```tsx
-// ✅ v6
-<Popover.Trigger render={(props) => <Button {...props}>Open</Button>} />
+```svelte
+<!-- Svelte -->
+<Collapsible.Trigger>
+  {#snippet render(props, state)}
+    <button {...props()}>{state.open ? 'Open' : 'Closed'}</button>
+  {/snippet}
+</Collapsible.Trigger>
 ```
 
-**Status.** The React factory supports `render` today. Solid, Vue and Svelte still ship the v5 `asChild` factory, and
-the non-JSX form is an open question — a Vue SFC and a Svelte snippet don't take a render function the way React does.
+```vue
+<!-- Vue -->
+<Collapsible.Trigger>
+  <template #render="{ props, state }">
+    <button v-bind="props()">{{ state.open ? 'Open' : 'Closed' }}</button>
+  </template>
+</Collapsible.Trigger>
+```
+
+> In Solid, Svelte, and Vue, `props` is a merge function: call `props({ onClick: mine })` to merge your handlers with the
+> part's instead of overwriting them. In Solid, `state` is an accessor (`state().open`).
+
+**Status.** Shipped in React, Solid, Svelte, and Vue. `asChild` still works and is deprecated — pairing it with `render`
+throws in dev. Removal is a future major, not v6.
 
 ---
 
-## Indicators render from state — planned
+## `Toaster` is no longer polymorphic
 
-Indicator parts take a `render` function and branch on state, rather than being toggled by boolean props:
+`Toaster` no longer accepts `render` or `asChild`, and `ToasterState` is gone. Its children belong to the machine, so
+handing them over dropped toasts. Style the group with CSS — it carries `data-placement`, `data-side`, and `data-align`
+— or wrap your own element around `Toaster`.
 
-```tsx
-// ❌ v5
-<Checkbox.Indicator>
-  <CheckIcon />
-</Checkbox.Indicator>
-<Checkbox.Indicator indeterminate>
-  <MinusIcon />
-</Checkbox.Indicator>
+---
 
-// ✅ v6
-<Checkbox.Indicator
-  render={(props, state) => {
-    if (state.status === 'checked') return <CheckIcon {...props} />
-    if (state.status === 'indeterminate') return <MinusIcon {...props} />
-    return <SquareIcon {...props} />
-  }}
-/>
+## `Popover` is no longer portalled by prop
+
+The `portalled` prop and `api.portalled` value are gone. The popover now detects whether its content is portalled from
+where you render it and proxies tab order accordingly, so a forgotten `portalled` can no longer break keyboard access.
+Decide portalling by rendering the content inside `Portal` or not.
+
+```diff
+- <Popover.Root portalled>
++ <Popover.Root>
+    <Popover.Trigger>Open</Popover.Trigger>
++   <Portal>
+      <Popover.Positioner>
+        <Popover.Content>...</Popover.Content>
+      </Popover.Positioner>
++   </Portal>
+  </Popover.Root>
 ```
 
-This also fixes the layout problem in v5, where an indicator that rendered nothing left a hole in a flex or grid row.
+The `popover-portalled` codemod removes the prop; wrap the content in `Portal` yourself, as this is markup the codemod
+won't reshape.
 
-**Status.** Not built in any framework.
+---
+
+## `Combobox`/`Listbox`/`Select` gain a `List` part
+
+The listbox semantics (`role="listbox"`, active-descendant, keyboard focus) move off `Content` onto a new `List` part.
+`Content` becomes a plain wrapper, so you can render headers, footers, or a search input in the popup without polluting
+the listbox. Wrap the items in `List` inside `Content`. This is structural, so the codemod leaves it to you.
+
+```diff
+  <Combobox.Content>
++   <Combobox.List>
+      {items.map((item) => (
+        <Combobox.Item key={item.value} item={item}>{item.label}</Combobox.Item>
+      ))}
++   </Combobox.List>
+  </Combobox.Content>
+```
+
+`Combobox.Empty` and `Listbox.Empty` also move **out** of `List`. `Empty` used to unmount when the collection was
+non-empty, which kept it out of the accessibility tree. It now stays mounted as a sibling of `List` with `role="status"`,
+swapping only its children — move it out and put your styled message in a child element. A new `Status` part on
+`Combobox`, `Listbox`, and `Select` covers loading and error states that `Empty` can't distinguish.
+
+The `composite` prop is gone; pass `popupType="dialog"` where you previously set `composite={false}`.
 
 ---
 
@@ -104,10 +249,14 @@ Update your selectors:
 }
 ```
 
-Ids are still generated where ARIA needs them to point somewhere, so `aria-controls` and `aria-labelledby` keep working.
-Parts that nothing references no longer carry an `id` of their own.
+The `css/data-attributes` codemod rewrites stylesheets: it merges scope/part selectors, turns toggle `[data-state="on"]`
+into `[data-pressed]`, and swaps the removed `data-focus` on toggle-group and toolbar for `:focus-within` /
+`:focus-visible`. Attributes referenced from JavaScript strings, or selectors where scope and part aren't adjacent, are
+left for you to update.
 
-This comes from zag v2's anatomy, so it applies to every framework at once.
+Ids are still generated where ARIA needs them to point somewhere, so `aria-controls` and `aria-labelledby` keep working.
+Parts that nothing references no longer carry an `id` of their own. This comes from zag v2's anatomy, so it applies to
+every framework at once.
 
 **Known issue.** `SegmentGroup` currently emits `data-radio-group-*` instead of `data-segment-group-*`, because its
 anatomy rename doesn't reach the attributes the machine emits. Don't write selectors against segment-group attributes
@@ -132,7 +281,7 @@ import { dialogAnatomy } from '@ark-ui/react/anatomy'
 
 ## Prop and export renames
 
-These come from zag v2 and apply to every framework.
+These come from zag v2 and apply to every framework. Most have a codemod (see [above](#automated-migration)).
 
 | Component        | v5                      | v6                                       |
 | ---------------- | ----------------------- | ---------------------------------------- |
@@ -146,6 +295,7 @@ These come from zag v2 and apply to every framework.
 | ImageCropper     | `position`              | `placement`                              |
 | ImageCropper     | `handles`               | `placements`                             |
 | Popover          | `portalled`             | removed                                  |
+| PinInput         | `length`                | `count` (now required)                   |
 
 New props you can now pass: `Select.alignItemWithTrigger`, `Select.initialFocusEl`, `Menu.menubar`,
 `Accordion.loopFocus`, and the NumberInput scrubber props (`scrubberDirection`, `scrubberPixelSensitivity`,
@@ -153,7 +303,7 @@ New props you can now pass: `Select.alignItemWithTrigger`, `Select.initialFocusE
 
 ---
 
-## TreeView parts — planned
+## TreeView parts
 
 TreeView's parts are restructured. `Branch` and `Item` are replaced by `Node`, `NodeGroup` and `Cell`:
 
@@ -171,24 +321,66 @@ TreeView's parts are restructured. `Branch` and `Item` are replaced by `Node`, `
 | `TreeView.ItemIndicator`     | `TreeView.NodeIndicator type="selected"` |
 
 `NodeIndicator` replaces both indicators and takes a required `type`: `"expanded"`, `"selected"`, `"checked"` or
-`"indeterminate"`.
+`"indeterminate"`. `NodeProvider`, `NodeContext`, `NodeCheckbox`, `NodeRenameInput`, `Label`, `Tree` and `Root` are
+unchanged.
 
-`NodeProvider`, `NodeContext`, `NodeCheckbox`, `NodeRenameInput`, `Label`, `Tree` and `Root` are unchanged.
+**Status.** Done across React, Solid, Vue, and Svelte.
 
-**Status.** Done in React, Solid and Vue. Svelte still ships the v5 parts.
+---
+
+## Svelte
+
+Two Svelte-only changes beyond the shared ones above.
+
+**Hooks require an `id`.** After moving to zag v2, the `useX` hooks require an `id`. Without one, two instances on a page
+generated the same element ids. Components (`<Collapsible.Root>`) are unaffected and still mint their own.
+
+```diff
+- const collapsible = useCollapsible()
++ const id = $props.id()
++ const collapsible = useCollapsible({ id })
+```
+
+`$props.id()` may only be called once per component; derive from it if you need two.
+
+**Export parity.** Svelte exports now match the other frameworks. `Dialog`'s `Positioner`, `Root`, `RootProvider`,
+`Title`, and `Trigger` are prefixed (`DialogPositioner`). `StepsStepChangeDetails` → `StepChangeDetails`,
+`ColorPickerColor` → `Color`, `TabsContentState` / `TabsTriggerState` → `TabContentState` / `TabTriggerState`. Internals
+such as `CheckboxProvider` and `splitCollapsibleProps` are no longer exported.
+
+---
+
+## `useCollator` and `useFilter` return values
+
+For Solid, Svelte, and Vue, these hooks now return their values directly instead of an accessor, matching React. They
+still follow locale changes.
+
+```diff
+- const collator = useCollator()
+- collator().compare(a, b)      // Solid, Svelte
+- collator.value.compare(a, b)  // Vue
++ const collator = useCollator()
++ collator.compare(a, b)
+```
+
+```diff
+- const filters = useFilter({ sensitivity: 'base' })
+- filters().contains(text, query)     // Solid, Svelte
+- filters.value.contains(text, query) // Vue
++ const { contains } = useFilter({ sensitivity: 'base' })
++ contains(text, query)
+```
 
 ---
 
 ## Still being finalized
 
-Expect these to change:
+Expect these to change before stable:
 
-- **The non-JSX `render` API.** What `render` looks like in a Vue SFC and a Svelte snippet isn't settled.
-- **Indicator state shapes.** The state each indicator receives is still being designed.
-- **A deprecation window for the data attributes.** Whether v6 emits the new attributes alongside the old for a release,
+- **Stable zag v2.** v6 tracks zag's `2.0.0-next` line; stable zag v2 is the release gate for v6.
+- **Masonry virtualization.** `WaterfallVirtualizer` isn't bound yet — planned for a later minor.
+- **A deprecation window for the data attributes** — whether v6 emits the new attributes alongside the old for a release,
   or makes a clean break.
-- **A `useRender` utility.** So library authors can build parts with the same composition behaviour.
-- **A codemod** for `asChild` → `render`.
 
 ---
 
