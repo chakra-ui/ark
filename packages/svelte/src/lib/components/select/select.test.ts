@@ -26,4 +26,9 @@ describe('Select', () => {
     expect(screen.getByRole('option', { name: 'React' })).toBeInTheDocument()
     expect(screen.getByRole('option', { name: 'Svelte' })).toBeInTheDocument()
   })
+
+  it('should not leak the placeholder prop to the DOM', () => {
+    render(ComponentUnderTest)
+    expect(screen.getByText('Select')).not.toHaveAttribute('placeholder')
+  })
 })

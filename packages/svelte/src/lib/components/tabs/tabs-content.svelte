@@ -29,7 +29,9 @@
 
   const presence = usePresence(() => machineProps)
 
-  const mergedProps = $derived(mergeProps(tabs().getContentProps(contentProps), localProps))
+  const mergedProps = $derived(
+    mergeProps(tabs().getContentProps(contentProps), presence().getPresenceProps(), localProps),
+  )
 
   PresenceProvider(presence)
 
