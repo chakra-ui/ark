@@ -12,11 +12,21 @@ export type ToastOptions = toast.Options<JSX.Element>
 export interface ToasterBaseProps extends Omit<toast.GroupProps, 'id' | 'store'> {
   toaster: CreateToasterReturn<any>
   children: (toast: Accessor<ToastOptions>) => JSX.Element
+  /**
+   * The human-readable label for the toast region.
+   * @default "Notifications"
+   */
+  label?: string | undefined
 }
 export interface ToasterProps extends Assign<HTMLProps<'div'>, ToasterBaseProps> {}
 
 export const Toaster = (props: ToasterProps) => {
-  const [toasterProps, localProps] = splitProps(props, ['toaster', 'children'])
+  const [toasterProps, machineProps, groupProps, localProps] = splitProps(
+    props,
+    ['toaster', 'children'],
+    ['dir', 'getRootNode'],
+    ['label'],
+  )
 
   const locale = useLocaleContext()
   const env = useEnvironmentContext()
@@ -24,14 +34,14 @@ export const Toaster = (props: ToasterProps) => {
   const service = useMachine(toast.group.machine, () => ({
     store: toasterProps.toaster,
     id: createUniqueId(),
-    dir: locale()?.dir,
-    getRootNode: env()?.getRootNode,
+    dir: machineProps.dir ?? locale()?.dir,
+    getRootNode: machineProps.getRootNode ?? env()?.getRootNode,
   }))
 
   const api = createMemo(() => toast.group.connect(service, normalizeProps))
   const toasts = createMemo(() => api().getToasts())
 
-  const mergedProps = mergeProps(() => api().getGroupProps(), localProps)
+  const mergedProps = mergeProps(() => api().getGroupProps(groupProps), localProps)
 
   return (
     <div {...mergedProps}>

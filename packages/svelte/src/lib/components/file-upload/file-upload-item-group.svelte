@@ -4,8 +4,8 @@
 
   export interface FileUploadItemGroupState extends ItemGroupState {}
   export interface FileUploadItemGroupBaseProps
-    extends PolymorphicProps<'div', FileUploadItemGroupState>, RefAttribute, ItemGroupProps {}
-  export interface FileUploadItemGroupProps extends Assign<HTMLProps<'div'>, FileUploadItemGroupBaseProps> {}
+    extends PolymorphicProps<'ul', FileUploadItemGroupState>, RefAttribute, ItemGroupProps {}
+  export interface FileUploadItemGroupProps extends Assign<HTMLProps<'ul'>, FileUploadItemGroupBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -24,4 +24,4 @@
   FileUploadItemGroupPropsProvider(() => itemGroupProps)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} state={fileUpload().getItemGroupState(itemGroupProps)} />
+<Ark as="ul" bind:ref {...mergedProps} state={fileUpload().getItemGroupState(itemGroupProps)} />

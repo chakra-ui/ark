@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface StepsListBaseProps extends PolymorphicProps<'ol'>, RefAttribute {}
-  export interface StepsListProps extends Assign<HTMLProps<'ol'>, StepsListBaseProps> {}
+  export interface StepsListBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface StepsListProps extends Assign<HTMLProps<'div'>, StepsListBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -16,4 +16,4 @@
   const mergedProps = $derived(mergeProps(steps().getListProps(), props))
 </script>
 
-<Ark as="ol" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />
