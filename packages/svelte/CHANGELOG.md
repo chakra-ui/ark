@@ -1,5 +1,212 @@
 # @ark-ui/svelte
 
+## [6.0.0-next.0] - 2026-09-23
+
+### Changed
+
+- **Svelte breaking**: `Dialog`'s `Positioner`, `Root`, `RootProvider`, `Title` and `Trigger` exports are now prefixed
+  (`DialogPositioner` and so on). `StepsStepChangeDetails` is now `StepChangeDetails`, `ColorPickerColor` is `Color`,
+  and `TabsContentState` / `TabsTriggerState` are `TabContentState` / `TabTriggerState`. Internals the other frameworks
+  keep private are no longer exported, including `CheckboxProvider`, `splitCollapsibleProps` and
+  `useTreeViewNodePropsContext`. Fix `render` receiving empty state in eleven Svelte parts, among them `Accordion.Item`,
+  `Toast.Root` and `Select.Root`. Add `TimerTickDetails` to every framework, and `JsonTreeViewRootBaseProps` /
+  `JsonTreeViewTreeBaseProps` to react, solid and vue.
+- **Breaking:** `Toaster` no longer accepts `render` or `asChild`, and `ToasterState` is gone. `Toaster`'s children
+  belong to the machine (one actor per toast), not the consumer, so `render` handed over an element whose children had
+  to be passed through untouched — and every framework broke that differently, silently dropping the toasts. Style the
+  group with CSS instead: it already carries `data-placement`, `data-side` and `data-align`. To wrap the toasts in your
+  own element, put that element around `Toaster`.
+- **Breaking:** `useCollator` now returns the collator directly instead of an accessor, so `compare` can be used or
+  destructured the same way as in React. The collator still follows locale changes.
+  ```diff
+  - const collator = useCollator()
+  - collator().compare(a, b)      // Solid, Svelte
+  - collator.value.compare(a, b)  // Vue
+  + const collator = useCollator()
+  + collator.compare(a, b)
+  ```
+- **Breaking:** `useFilter` now returns the filter methods directly instead of an accessor, so `contains`, `startsWith`,
+  and `endsWith` can be destructured the same way as in React. The methods still follow locale changes. Migrate by
+  dropping the accessor call:
+  ```diff
+  - const filters = useFilter({ sensitivity: 'base' })
+  - filters().contains(text, query)   // Solid, Svelte
+  - filters.value.contains(text, query) // Vue
+  + const { contains } = useFilter({ sensitivity: 'base' })
+  + contains(text, query)
+  ```
+- Replace `data-scope` and `data-part` with a single attribute per part. `data-scope="popover" data-part="trigger"` is
+  now `data-popover-trigger`. The attribute comes from zag's anatomy rather than from a wrapper in Ark, so it stays in
+  step with the machine. Selectors written against the old pair need updating:
+  ```diff
+  - [data-scope='popover'][data-part='trigger'] { }
+  + [data-popover-trigger] { }
+  ```
+- Bring the Svelte package up to the v6 API. Svelte had not had the pass Solid and Vue were given, so it carried the v1
+  zag surface throughout. The library, its examples and its tests now match the other three frameworks. `TreeView` is
+  restructured onto the node parts: `TreeView.Branch`, `TreeView.BranchContent` and their siblings are replaced by
+  `TreeView.Node`, `TreeView.NodeGroup` and `TreeView.NodeGroupContent`, matching zag v2 and the other frameworks.
+- Move every component onto zag v2. Machines now take their props through a single `props` object and expose state with
+  `getXState()` alongside the existing `getXProps()` getters. Components that changed shape in zag are reflected here:
+  `FloatingPanel.ResizeTrigger` takes a `placement` instead of an `axis`, `ImageCropper` takes `placement` instead of
+  `position`, `PinInput` requires `count`, and `Carousel` no longer takes `slideCount` or `padding`.
+
+### Added
+
+- Add the `Accordion.ItemHeader` part, which zag has had since `itemHeader` joined its anatomy but Ark never wired up.
+  It renders an `h3` and wraps the trigger, which is what the ARIA accordion pattern asks for — without it the triggers
+  are bare buttons and screen reader users cannot navigate between sections by heading. Its `render` receives the item
+  state (`expanded`, `disabled`, `focused`).
+  ```diff
+    <Accordion.Item value={item.value}>
+  -   <Accordion.ItemTrigger>
+  -     {item.title}
+  -   </Accordion.ItemTrigger>
+  +   <Accordion.ItemHeader>
+  +     <Accordion.ItemTrigger>
+  +       {item.title}
+  +     </Accordion.ItemTrigger>
+  +   </Accordion.ItemHeader>
+      <Accordion.ItemContent>{item.content}</Accordion.ItemContent>
+    </Accordion.Item>
+  ```
+  An `h3` carries browser default margin and font-size, so reset them on the part when adopting it.
+- Announce empty, loading and error states to screen readers. **`Combobox.Empty` and `Listbox.Empty` are breaking
+  changes.** They used to render `role="presentation"` inside the `List`, and unmount entirely when the collection was
+  not empty. Both defeated the purpose:
+  - A `role="listbox"` may only own `option` and `group` elements, so the message was pruned from the accessibility
+    tree. The listbox reported as empty and the text existed for sighted users only.
+  - A live region only announces a change to a region already in the accessibility tree, so mounting the element at the
+    same moment its text appears announces nothing. `Empty` now stays mounted and swaps only its children, renders as a
+    sibling of `List` rather than inside it, and carries `role="status"` with `aria-live="polite"` and
+    `aria-atomic="true"`. Move it out of `List` and put the styled message in a child element — the part itself
+    collapses to zero height while there is nothing to say:
+  ```diff
+    <Combobox.Content>
+  -   <Combobox.List>
+  -     <Combobox.Empty className={styles.Item}>No results found</Combobox.Empty>
+  +   <Combobox.Empty>
+  +     <div className={styles.Empty}>No results found</div>
+  +   </Combobox.Empty>
+  +   <Combobox.List>
+        {/* items */}
+      </Combobox.List>
+    </Combobox.Content>
+  ```
+  **Adds a `Status` part** to `Combobox`, `Listbox` and `Select`: an always-mounted polite live region whose content the
+  consumer drives. `Empty` keys off `collection.size === 0`, which is also true while an async list is loading, so it
+  cannot distinguish "loading" from "genuinely empty" and cannot carry an error message. `Status` covers those. Zag
+  announces the highlighted option and nothing else, so neither state reached a screen reader before this.
+- Add the `Menubar` component, an application-style menu bar that coordinates a row of `Menu`s. `Menubar.Root` owns
+  roving tabindex, arrow/Home/End navigation and typeahead across the triggers, and hands each top-level `Menu` the
+  config it needs to behave as a menubar menu. Menus read that from context, so no extra prop or wrapper is involved:
+  ```tsx
+  <Menubar.Root>
+    <Menu.Root>
+      <Menu.Trigger>File</Menu.Trigger>
+      <Portal>
+        <Menu.Positioner>
+          <Menu.Content>{/* ... */}</Menu.Content>
+        </Menu.Positioner>
+      </Portal>
+    </Menu.Root>
+    {/* more menus */}
+  </Menubar.Root>
+  ```
+  Menus must be portalled. The menubar treats every `[role=menuitem]` inside its root as one of its own items, so
+  content rendered inline would be picked up as a trigger. Once one menu is open, arrowing or hovering to a sibling
+  switches to it. Both the outgoing and incoming content get `data-instant` for that swap, so styles can skip the
+  open/close animation while only the first open animates:
+  ```css
+  .Content[data-instant] {
+    animation: none;
+  }
+  ```
+  Nested submenus work as usual via `Menu.TriggerItem`, and a `Menu.Trigger` marked `disabled` is skipped by keyboard
+  navigation and does not open on hover. `Menu.Root` and `useMenu` no longer accept a `menubar` prop. It was only ever
+  meant to be supplied by a parent menubar, and is now always read from `Menubar.Root`'s context.
+- Add the missing `Listbox.List` part, matching the React, Solid, and Vue packages.
+- Forward each part's state into the `render` snippet. `render` received the props to bind but no state, so the second
+  parameter was always the frozen empty object. 124 parts now pass the state their machine exposes, and each declares
+  the type to go with it:
+  ```svelte
+  <Collapsible.Trigger>
+    {#snippet render(props, state)}
+      <button {...props()}>{state.open ? 'Open' : 'Closed'}</button>
+    {/snippet}
+  </Collapsible.Trigger>
+  ```
+- Add `render` as the way to compose a part with your own element, and deprecate `asChild`. `render` is explicit about
+  which element is being replaced, and it hands you the part's state as well as its props, so an indicator can render
+  from what the machine knows rather than from a CSS attribute selector. Each framework spells it the way that framework
+  composes: a prop in React and Solid, a slot in Vue, a snippet in Svelte.
+  ```diff
+  - <Popover.Trigger asChild>
+  -   <MyButton>Open</MyButton>
+  - </Popover.Trigger>
+  + <Popover.Trigger render={<MyButton>Open</MyButton>} />
+  ```
+  `asChild` still works and is marked deprecated. It will be removed in the next major.
+- Add the `Virtualizer` utility for rendering large lists, grids, and window-scrolled content.
+  - `useListVirtualizer`, `useGridVirtualizer`, `useWindowVirtualizer` hooks
+  - `ListVirtualizer`, `GridVirtualizer`, `WindowVirtualizer` components
+  - `measure` prop on `Item` and `Row` to size items from the DOM instead of the estimate
+
+### Fixed
+
+- Migrate the `Presence` and Svelte `Menu` parts off the legacy `data-scope`/`data-part` attributes. `Presence` now
+  renders the unified `data-presence-root` attribute, and the Svelte `Menu.Separator`/`Menu.Trigger` parts drop the
+  redundant hardcoded attributes in favour of the ones Zag emits (`data-menu-separator`, `data-menu-trigger`).
+- Fix `./hotkeys` and `./interaction` entrypoints missing from the published `exports` map. The build files shipped, but
+  the publish config (`clean-package`) maintains its own `exports` map and was never updated when the `hotkeys` and
+  `interaction` primitives were added, so `import { useHotkeys } from '@ark-ui/react/hotkeys'` failed with
+  `ERR_MODULE_NOT_FOUND`. Both entrypoints are now included in the published map for every framework.
+- Fix `Dialog.Description` and `Popover.Description` rendering a `p` element. React, Solid and Vue render a `div`, so a
+  stylesheet or a nested block element written against one stack broke on the other.
+- Render `FileUpload.ItemGroup` as `ul`, `Menu.Separator` as `hr`, `Slider.ValueText` as `span`, and
+  `DatePicker.TableCellTrigger` and `Steps.List` as `div`, matching the element the other frameworks render.
+- Export the `Fieldset` namespace's prop types under their namespaced names. Every other Svelte namespace aliases them —
+  `Field.RootProps`, `Dialog.RootProps`, `Accordion.ItemProps` and so on — but `fieldset.ts` re-exported the flat
+  `FieldsetRootProps` / `FieldsetLegendProps` names, so `Fieldset.RootProps` and its siblings did not resolve and the
+  `BaseProps` variants were not exported at all. This matches the React package, whose `Fieldset` namespace already
+  aliases both.
+- Fix composing one part inside another part's `render` snippet. The props function was typed as returning Svelte's
+  `HTMLAttributes`, whose `id` is `string | null`. Ark parts take `string | undefined`, so spreading the props into a
+  part did not typecheck:
+  ```svelte
+  <Tooltip.Trigger>
+    {#snippet render(props)}
+      <Checkbox.Root {...props({ class: styles.Root })}>
+  ```
+  The factory merges the machine's props, where `id` is always a string, so the nullable type was never accurate.
+- Fix `Select.ValueText` rendering its `placeholder` as a DOM attribute. The component spread every prop onto the
+  underlying `span`, so the fallback text showed up as `placeholder="…"` in the markup. `Listbox.ValueText` and
+  `DatePicker.ValueText` already split it out.
+- Fix `Tabs.Content` omitting the presence props. The content merged only the machine props, so it never carried
+  `data-state="open" | "closed"` (the React, Solid and Vue implementations do) and it was hidden the moment the tab
+  changed, cutting exit animations short.
+- Fix `Tooltip.Root` ignoring a controlled `open` prop. The root destructured `open` out of its props and never passed
+  it to the machine, so `<Tooltip.Root open={true}>` (or a `bind:open` the parent drives) rendered a closed tooltip. The
+  other popper roots (`Dialog`, `Popover`, `HoverCard`) already forward it.
+- Fix `Toaster` dropping the group props it accepts. `dir` and `getRootNode` were typed on the component but never
+  reached the group machine — the locale and environment contexts always won, and both props were spread onto the region
+  element instead. The toast region's `aria-label` is now settable through a `label` prop, which is forwarded to
+  `getGroupProps`.
+- Fix issue where the tour backdrop stayed visible after the tour was closed
+- Move to zag `2.0.0-next.2` and drop the shims it makes unnecessary. `normalizeHotkey` and the `Platform` re-export are
+  back in `@zag-js/hotkeys`, and `@zag-js/presence` now calls `onEnterComplete`, so Ark's local stand-ins for all three
+  are gone. **Svelte:** the `useX` hooks now require an `id`. `useMachine` began taking `InputProps<T>` rather than
+  `Partial<T["props"]>`, which surfaced that Svelte never passed one — two hook instances on a page rendered the same
+  element ids (`undefined:trigger` for both). Svelte can only mint an id inside a component (`$props.id()` is not
+  callable from `.svelte.ts`, and a module counter is not SSR-safe), so the hook has to be given one:
+  ```diff
+  - const collapsible = useCollapsible()
+  + const id = $props.id()
+  + const collapsible = useCollapsible({ id })
+  ```
+  Components are unaffected — `<Collapsible.Root>` and friends still generate their own id, and `id` stays optional on
+  them. Note that `$props.id()` may only be called once per component; derive from it if you need two.
+
 ## [5.24.1] - 2026-08-28
 
 ### Fixed
