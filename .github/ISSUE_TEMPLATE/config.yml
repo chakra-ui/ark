@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Feature Request
-    url: https://ark-ui.canny.io/
-    about: Request, vote and explore new features
+  - name: Request a feature or enhancement
+    url: https://github.com/chakra-ui/ark/discussions/new?category=ideas
+    about: Please post feature requests in GitHub Discussions
   - name: Questions & Discussions
     url: https://github.com/chakra-ui/ark/discussions
     about: Ask questions and discuss topics with other devlopers
