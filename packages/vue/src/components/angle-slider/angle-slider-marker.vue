@@ -26,7 +26,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="angleSlider.getMarkerProps(props)" :as-child="asChild">
+  <ark.span v-bind="angleSlider.getMarkerProps(props)" :as-child="asChild">
     <slot />
-  </ark.div>
+  </ark.span>
 </template>
