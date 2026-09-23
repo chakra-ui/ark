@@ -1,5 +1,6 @@
 // Do not replace with '@zag-js/react'
 import { mergeProps } from '@zag-js/core'
+import { invariant } from '@zag-js/utils'
 import type React from 'react'
 import {
   Children,
@@ -97,9 +98,10 @@ const withRender = (Component: React.ElementType) => {
     forwardRef<unknown, ArkPropsWithRef<typeof Component>>((props, ref) => {
       const { asChild, render, state, children, ...restProps } = props as ArkProps
 
-      if (process.env.NODE_ENV !== 'production' && asChild && render) {
-        throw new Error('[ark-ui] `asChild` and `render` cannot be used together. Prefer `render`.')
-      }
+      invariant(
+        Boolean(asChild) && Boolean(render),
+        '[ark-ui] `asChild` and `render` cannot be used together. Prefer `render`.',
+      )
 
       const rendered = typeof render === 'function' ? render({ ...restProps, children }, state ?? EMPTY_STATE) : render
       const target = render ? rendered : asChild ? children : undefined
