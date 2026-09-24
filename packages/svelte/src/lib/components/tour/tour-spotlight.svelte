@@ -23,7 +23,7 @@
   }))
 
   const mergedProps = $derived(mergeProps(tour().getSpotlightProps(), presence().getPresenceProps(), props))
-  const hidden = $derived(!tour().open || !tour().step?.target?.())
+  const hidden = $derived(mergedProps.hidden || !tour().step?.target?.())
 
   function setNode(node: Element | null) {
     presence().setNode(node)

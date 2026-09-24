@@ -1,11 +1,27 @@
 export { waitForElement, waitForElementValue, waitForPromise, type WaitOptions } from '@zag-js/tour'
 export { waitForEvent, type WaitForEventOptions } from './wait-for-event.ts'
 export type {
+  ElementIds as TourElementIds,
   FocusOutsideEvent as TourFocusOutsideEvent,
   InteractOutsideEvent as TourInteractOutsideEvent,
+  IntlTranslations as TourIntlTranslations,
+  Point as TourPoint,
   PointerDownOutsideEvent as TourPointerDownOutsideEvent,
+  ProgressTextDetails as TourProgressTextDetails,
+  StatusChangeDetails as TourStatusChangeDetails,
+  StepAction as TourStepAction,
+  StepActionFn as TourStepActionFn,
+  StepActionMap as TourStepActionMap,
+  StepActionType as TourStepActionType,
+  StepBaseDetails as TourStepBaseDetails,
+  StepChangeDetails as TourStepChangeDetails,
   StepDetails as TourStepDetails,
   StepEffectArgs as TourStepEffectArgs,
+  StepEffectCleanup as TourStepEffectCleanup,
+  StepPlacement as TourStepPlacement,
+  StepsChangeDetails as TourStepsChangeDetails,
+  StepStatus as TourStepStatus,
+  StepType as TourStepType,
 } from '@zag-js/tour'
 export {
   default as TourActionTrigger,
