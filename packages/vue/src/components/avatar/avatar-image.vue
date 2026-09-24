@@ -28,5 +28,8 @@ useForwardExpose()
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>
+    <template v-else #default>
+      <slot />
+    </template>
   </ark.img>
 </template>
