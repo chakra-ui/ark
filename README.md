@@ -299,7 +299,7 @@ Ark UI works seamlessly with:
 
 ### Developer Tools
 
-- **[MCP Server](https://github.com/chakra-ui/ark/tree/main/integrations/mcp)** - AI-assisted development with Claude
+- **[MCP Server](https://github.com/chakra-ui/ark/tree/main/packages/mcp)** - AI-assisted development with Claude
   and other AI agents
 
 ## Community
