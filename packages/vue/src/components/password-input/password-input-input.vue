@@ -27,5 +27,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.input v-bind="passwordInput.getInputProps()" :aria-describedby="field?.ariaDescribedby" :as-child="asChild" />
+  <ark.input v-bind="passwordInput.getInputProps()" :aria-describedby="field?.ariaDescribedby" :as-child="asChild">
+    <slot />
+  </ark.input>
 </template>

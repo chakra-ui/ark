@@ -1,5 +1,6 @@
 import { userEvent as user } from '@testing-library/user-event'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
+import SeparatorAsChildComponentUnderTest from './menu-separator-as-child.test.vue'
 import ComponentUnderTest from './menu.test.vue'
 
 describe('Menu', () => {
@@ -109,5 +110,13 @@ describe('Menu', () => {
     const radioButton = screen.getByRole('menuitemradio', { name: /react/i })
     await user.click(radioButton)
     await waitFor(() => expect(radioButton).toHaveAttribute('aria-checked', 'true'))
+  })
+
+  it('should render the slotted element when Separator uses asChild', () => {
+    render(SeparatorAsChildComponentUnderTest)
+
+    const separator = screen.getByTestId('separator')
+    expect(separator).toHaveAttribute('data-scope', 'menu')
+    expect(separator).toHaveAttribute('data-part', 'separator')
   })
 })
