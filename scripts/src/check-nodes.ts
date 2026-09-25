@@ -44,12 +44,7 @@ const knownDivergences = new Set<string>([])
 
 // Parts that render a native element rather than an ark node on some adapters, so there is no
 // element to compare.
-const knownUnreadableRoots = new Set([
-  'frame/frame',
-  'highlight/highlight',
-  'json-tree-view/json-tree-view-key-node',
-  'toast/toast-root',
-])
+const knownUnreadableRoots = new Set(['frame/frame', 'highlight/highlight', 'json-tree-view/json-tree-view-key-node'])
 
 const readParts = async (adapter: Adapter) => {
   const files = await globby([
