@@ -3,10 +3,22 @@ import * as pagination from '@zag-js/pagination'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import type { MaybeFunction } from '@zag-js/utils'
 import { useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
-import type { Accessor, Optional } from '../../types.ts'
+import type { Accessor, HTMLProps, Optional } from '../../types.ts'
+
+/**
+ * The anchor attributes the items and triggers accept, since they render as links under `type="link"`.
+ */
+export type PaginationAnchorProps = Omit<HTMLProps<'a'>, keyof HTMLProps<'button'>>
 
 export interface UsePaginationProps extends Optional<Omit<pagination.Props, 'dir' | 'getRootNode'>, 'id'> {}
-export interface UsePaginationReturn extends Accessor<pagination.Api<PropTypes>> {}
+export interface UsePaginationReturn extends Accessor<
+  pagination.Api<PropTypes> & {
+    /**
+     * Whether the items and triggers navigate as links or act as buttons.
+     */
+    type: 'button' | 'link'
+  }
+> {}
 
 export const usePagination = (props: MaybeFunction<UsePaginationProps> = {}): UsePaginationReturn => {
   const env = useEnvironmentContext()
@@ -24,5 +36,5 @@ export const usePagination = (props: MaybeFunction<UsePaginationProps> = {}): Us
   const service = useMachine(pagination.machine, () => resolvedProps)
   const api = $derived(pagination.connect(service, normalizeProps))
 
-  return () => api
+  return () => ({ ...api, type: resolvedProps.type ?? 'button' })
 }

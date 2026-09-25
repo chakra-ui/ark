@@ -1,8 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { PaginationAnchorProps } from './use-pagination.svelte.ts'
 
   export interface PaginationNextTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
-  export interface PaginationNextTriggerProps extends Assign<HTMLProps<'button'>, PaginationNextTriggerBaseProps> {}
+  export interface PaginationNextTriggerProps
+    extends Assign<HTMLProps<'button'> & PaginationAnchorProps, PaginationNextTriggerBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -15,4 +17,8 @@
   const mergedProps = $derived(mergeProps(pagination().getNextTriggerProps(), props))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+{#if pagination().type === 'link'}
+  <Ark as="a" bind:ref {...mergedProps} />
+{:else}
+  <Ark as="button" bind:ref {...mergedProps} />
+{/if}

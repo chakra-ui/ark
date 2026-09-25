@@ -2,11 +2,24 @@ import * as pagination from '@zag-js/pagination'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers/index.tsx'
+import type { HTMLProps } from '../factory.tsx'
 import type { MaybeAccessor, Optional } from '../../types.ts'
 import { runIfFn } from '../../utils/run-if-fn.ts'
 
+/**
+ * The anchor attributes the items and triggers accept, since they render as links under `type="link"`.
+ */
+export type PaginationAnchorProps = Omit<HTMLProps<'a'>, keyof HTMLProps<'button'>>
+
 export interface UsePaginationProps extends Optional<Omit<pagination.Props, 'dir' | 'getRootNode'>, 'id'> {}
-export interface UsePaginationReturn extends Accessor<pagination.Api<PropTypes>> {}
+export interface UsePaginationReturn extends Accessor<
+  pagination.Api<PropTypes> & {
+    /**
+     * Whether the items and triggers navigate as links or act as buttons.
+     */
+    type: 'button' | 'link'
+  }
+> {}
 
 export const usePagination = (props?: MaybeAccessor<UsePaginationProps>): UsePaginationReturn => {
   const locale = useLocaleContext()
@@ -21,5 +34,8 @@ export const usePagination = (props?: MaybeAccessor<UsePaginationProps>): UsePag
   }))
 
   const service = useMachine(pagination.machine, machineProps)
-  return createMemo(() => pagination.connect(service, normalizeProps))
+  return createMemo(() => ({
+    ...pagination.connect(service, normalizeProps),
+    type: machineProps().type ?? 'button',
+  }))
 }
