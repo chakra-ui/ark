@@ -22,7 +22,9 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 defineProps<ColorPickerChannelSliderValueTextProps>()
 const colorPicker = useColorPickerContext()
 const channelProps = useColorPickerChannelPropsContext()
-const slots = defineSlots()
+const slots = defineSlots<{
+  default?(): unknown
+}>()
 const localeContext = useLocaleContext(DEFAULT_LOCALE)
 
 useForwardExpose()

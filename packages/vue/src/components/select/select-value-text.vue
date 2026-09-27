@@ -21,7 +21,9 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<SelectValueTextProps>()
 const select = useSelectContext()
-const slots = defineSlots()
+const slots = defineSlots<{
+  default?(): unknown
+}>()
 
 useForwardExpose()
 </script>
