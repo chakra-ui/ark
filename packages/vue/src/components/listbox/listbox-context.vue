@@ -8,7 +8,7 @@ export interface ListboxContextProps<T extends CollectionItem> extends SlotsType
 }> {}
 </script>
 
-<script setup lang="ts" generic="T extends CollectionItem">
+<script setup lang="ts" generic="T extends CollectionItem = CollectionItem">
 import { useListboxContext } from './use-listbox-context.ts'
 
 const listbox = useListboxContext()

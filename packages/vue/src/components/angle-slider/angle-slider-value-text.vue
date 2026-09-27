@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
 export interface AngleSliderValueTextBaseProps extends PolymorphicProps {}
 export interface AngleSliderValueTextProps
@@ -19,7 +19,7 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<AngleSliderValueTextProps>()
 const angleSlider = useAngleSliderContext()
-const slots = defineSlots()
+const slots = defineSlots<PolymorphicSlots>()
 
 useForwardExpose()
 </script>

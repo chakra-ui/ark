@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
 export interface SelectValueTextBaseProps extends PolymorphicProps {}
 export interface SelectValueTextProps
@@ -21,7 +21,7 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<SelectValueTextProps>()
 const select = useSelectContext()
-const slots = defineSlots()
+const slots = defineSlots<PolymorphicSlots>()
 
 useForwardExpose()
 </script>

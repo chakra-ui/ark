@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
 export interface ColorPickerChannelSliderValueTextBaseProps extends PolymorphicProps {}
 export interface ColorPickerChannelSliderValueTextProps
@@ -22,7 +22,7 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 defineProps<ColorPickerChannelSliderValueTextProps>()
 const colorPicker = useColorPickerContext()
 const channelProps = useColorPickerChannelPropsContext()
-const slots = defineSlots()
+const slots = defineSlots<PolymorphicSlots>()
 const localeContext = useLocaleContext(DEFAULT_LOCALE)
 
 useForwardExpose()

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
 export interface SliderDraggingIndicatorBaseProps extends PolymorphicProps {}
 export interface SliderDraggingIndicatorProps
@@ -21,7 +21,7 @@ import { useSliderThumbPropsContext } from './use-slider-thumb-props-context.ts'
 defineProps<SliderDraggingIndicatorProps>()
 const slider = useSliderContext()
 const thumbProps = useSliderThumbPropsContext()
-const slots = defineSlots()
+const slots = defineSlots<PolymorphicSlots>()
 
 useForwardExpose()
 </script>

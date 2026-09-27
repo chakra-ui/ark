@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
 export interface FileUploadItemNameBaseProps extends PolymorphicProps {}
 export interface FileUploadItemNameProps
@@ -21,7 +21,7 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 defineProps<FileUploadItemNameProps>()
 const fileUpload = useFileUploadContext()
 const itemProps = useFileUploadItemPropsContext()
-const slots = defineSlots()
+const slots = defineSlots<PolymorphicSlots>()
 
 useForwardExpose()
 </script>

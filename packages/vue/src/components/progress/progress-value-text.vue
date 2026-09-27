@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
 export interface ProgressValueTextBaseProps extends PolymorphicProps {}
 export interface ProgressValueTextProps
@@ -19,7 +19,7 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ProgressValueTextProps>()
 const progress = useProgressContext()
-const slots = defineSlots()
+const slots = defineSlots<PolymorphicSlots>()
 
 useForwardExpose()
 </script>

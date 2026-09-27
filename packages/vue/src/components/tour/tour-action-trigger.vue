@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { StepActionTriggerProps } from '@zag-js/tour'
 import type { ButtonHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
 export interface TourActionTriggerBaseProps extends StepActionTriggerProps, PolymorphicProps {}
 export interface TourActionTriggerProps
@@ -20,7 +20,7 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<TourActionTriggerBaseProps>()
 const tour = useTourContext()
-const slots = defineSlots()
+const slots = defineSlots<PolymorphicSlots>()
 
 useForwardExpose()
 </script>
