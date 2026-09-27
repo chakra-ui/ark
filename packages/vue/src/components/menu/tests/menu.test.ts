@@ -1,6 +1,7 @@
 import { userEvent as user } from '@testing-library/user-event'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
 import SeparatorAsChildComponentUnderTest from './menu-separator-as-child.test.vue'
+import NestedComponentUnderTest from './menu-nested.test.vue'
 import ComponentUnderTest from './menu.test.vue'
 
 describe('Menu', () => {
@@ -116,5 +117,15 @@ describe('Menu', () => {
 
     const separator = screen.getByTestId('separator')
     expect(separator).toHaveAttribute('data-menu-separator')
+  })
+
+  it('should emit requestDismiss when the parent layer closes', async () => {
+    const onRequestDismiss = vi.fn()
+    const { rerender } = render(NestedComponentUnderTest, { props: { dialogOpen: true, onRequestDismiss } })
+    await user.click(screen.getByText('click me'))
+    await waitFor(() => expect(screen.getByText('Edit')).toBeVisible())
+
+    await rerender({ dialogOpen: false })
+    await waitFor(() => expect(onRequestDismiss).toHaveBeenCalledTimes(1))
   })
 })

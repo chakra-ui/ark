@@ -48,6 +48,10 @@ export const usePopover = (props: MaybeRef<UsePopoverProps> = {}, emit?: EmitFn<
         emit?.('pointerDownOutside', details)
         localeProps.onPointerDownOutside?.(details)
       },
+      onRequestDismiss: (details) => {
+        emit?.('requestDismiss', details)
+        localeProps.onRequestDismiss?.(details)
+      },
     }
   })
 

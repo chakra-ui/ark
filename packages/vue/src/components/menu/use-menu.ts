@@ -63,6 +63,10 @@ export const useMenu = (props: MaybeRef<UseMenuProps> = {}, emit?: EmitFn<RootEm
         emit?.('pointerDownOutside', details)
         localeProps.onPointerDownOutside?.(details)
       },
+      onRequestDismiss: (details) => {
+        emit?.('requestDismiss', details)
+        localeProps.onRequestDismiss?.(details)
+      },
       onSelect: (details) => {
         emit?.('select', details)
         localeProps.onSelect?.(details)
