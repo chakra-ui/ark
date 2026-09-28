@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
 export interface TourTitleBaseProps extends PolymorphicProps {}
 export interface TourTitleProps
@@ -19,7 +19,7 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<TourTitleProps>()
 const tour = useTourContext()
-const slots = defineSlots()
+const slots = defineSlots<PolymorphicSlots>()
 
 useForwardExpose()
 </script>

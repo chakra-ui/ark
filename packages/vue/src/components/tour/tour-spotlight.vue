@@ -16,8 +16,9 @@ export interface TourSpotlightProps
 </script>
 
 <script setup lang="ts">
+import { mergeProps } from '@zag-js/vue'
 import { ark } from '../factory.ts'
-import { PresenceProvider, usePresence } from '../presence/index.ts'
+import { usePresence } from '../presence/index.ts'
 import { useTourContext } from './use-tour-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
@@ -34,7 +35,7 @@ const presence = usePresence(
     present: tour.value.open,
   })),
 )
-PresenceProvider(presence)
+const mergedProps = computed(() => mergeProps(tour.value.getSpotlightProps(), presence.value.presenceProps))
 
 useForwardExpose()
 </script>
@@ -42,9 +43,9 @@ useForwardExpose()
 <template>
   <ark.div
     v-if="!presence.unmounted"
-    v-bind="tour.getSpotlightProps()"
+    v-bind="mergedProps"
     :state="tour.getSpotlightState()"
-    :hidden="!tour.open || !tour.step?.target?.()"
+    :hidden="mergedProps.hidden || !tour.step?.target?.()"
     :as-child="asChild"
   >
     <template v-if="$slots.render" #render="scope">

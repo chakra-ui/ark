@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
 export interface SliderValueTextBaseProps extends PolymorphicProps {}
 export interface SliderValueTextProps
@@ -19,7 +19,7 @@ import { useSliderContext } from './use-slider-context.ts'
 
 defineProps<SliderValueTextProps>()
 const slider = useSliderContext()
-const slots = defineSlots()
+const slots = defineSlots<PolymorphicSlots>()
 
 useForwardExpose()
 </script>

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
 export interface FileUploadItemSizeTextBaseProps extends PolymorphicProps {}
 export interface FileUploadItemSizeTextProps
@@ -22,7 +22,7 @@ defineProps<FileUploadItemSizeTextProps>()
 
 const fileUpload = useFileUploadContext()
 const itemProps = useFileUploadItemPropsContext()
-const slots = defineSlots()
+const slots = defineSlots<PolymorphicSlots>()
 
 useForwardExpose()
 </script>

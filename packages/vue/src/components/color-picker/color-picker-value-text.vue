@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ColorStringFormat } from '@zag-js/color-utils'
 import { type HTMLAttributes, computed } from 'vue'
-import type { PolymorphicProps } from '../factory.ts'
+import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
 export interface ColorPickerValueTextBaseProps extends PolymorphicProps {
   format?: ColorStringFormat
@@ -22,7 +22,7 @@ import { useColorPickerContext } from './use-color-picker-context.ts'
 
 const props = defineProps<ColorPickerValueTextProps>()
 const colorPicker = useColorPickerContext()
-const slots = defineSlots()
+const slots = defineSlots<PolymorphicSlots>()
 
 useForwardExpose()
 
