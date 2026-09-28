@@ -22,11 +22,11 @@
   },
   "dependencies": {
     "@types/fs-extra": "11.0.4",
-    "@types/node": "26.6.2",
+    "@types/node": "26.6.3",
     "@types/voca": "1.4.6",
     "find-packages": "10.0.4",
     "find-up": "8.0.0",
-    "fs-extra": "11.4.0",
+    "fs-extra": "11.4.1",
     "glob": "13.0.6",
     "globby": "16.2.4",
     "pkg-dir": "9.0.0",
