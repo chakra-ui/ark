@@ -47,7 +47,7 @@
     "next": "15.5.26",
     "prettier": "3.9.9",
     "prettier-plugin-svelte": "4.1.1",
-    "typescript": "6.0.3",
+    "typescript": "7.0.2",
     "vercel": "59.26.0"
   },
   "packageManager": "bun@1.4.2",
