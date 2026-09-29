@@ -29,7 +29,7 @@ export interface PolymorphicProps<State = EmptyState> {
    *
    * @deprecated Use `render` instead. Pass the element directly (`render={<MyButton />}`) or a function
    * (`render={(props, state) => <MyButton {...props} />}`) to access the part's state.
-   * `asChild` will be removed in the next major.
+   * `asChild` is still supported, but `render` is preferred.
    */
   asChild?: boolean | undefined
   /**
