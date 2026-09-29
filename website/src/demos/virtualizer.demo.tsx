@@ -30,6 +30,7 @@ const styles = {
 
 export const Demo = () => {
   const virtualizer = useListVirtualizer({
+    observeScrollElementSize: true,
     count: items.length,
     estimatedSize: () => 40,
   })

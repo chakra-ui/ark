@@ -8,6 +8,7 @@
   }))
 
   const virtualizer = useListVirtualizer(() => ({
+    observeScrollElementSize: true,
     count: items.length,
     estimatedSize: () => 64,
   }))
