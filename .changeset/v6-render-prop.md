@@ -18,4 +18,4 @@ spells it the way that framework composes: a prop in React and Solid, a slot in 
 + <Popover.Trigger render={<MyButton>Open</MyButton>} />
 ```
 
-`asChild` still works and is marked deprecated. It will be removed in the next major.
+`asChild` still works and is marked deprecated, but it is not being removed. Prefer `render` for new code.

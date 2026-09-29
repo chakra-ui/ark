@@ -1,22 +1,21 @@
 import NextLink from 'next/link'
 import { css } from 'styled-system/css'
-import { Box, Grid, Stack } from 'styled-system/jsx'
+import { Grid } from 'styled-system/jsx'
 import { defaultFramework, docsHref } from '~/lib/frameworks'
-import { getPageBySlug } from '~/lib/pages'
 import { getServerContext } from '~/lib/server-context'
 import { getSidebarTabs } from '~/lib/sidebar'
 
-const card = css({
-  borderWidth: '1px',
-  borderColor: 'border.default',
-  rounded: 'l2',
-  p: '4',
+const link = css({
+  color: 'fg.default',
+  fontWeight: 'medium',
   textDecoration: 'none',
-  transitionProperty: 'border-color, background',
-  transitionDuration: 'normal',
-  transitionTimingFunction: 'default',
-  _hover: { borderColor: 'colorPalette.default', bg: 'bg.subtle' },
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: '2',
+  _hover: { textDecoration: 'underline', textUnderlineOffset: '4px' },
 })
+
+const dot = css({ boxSize: '2', rounded: 'full', bg: 'colorPalette.default' })
 
 interface Props {
   tab?: string
@@ -28,26 +27,16 @@ export const ComponentGrid = ({ tab = 'components' }: Props) => {
   const items = (active?.groups ?? [])
     .flatMap((group) => group.items)
     .filter((item) => !item.slug.endsWith('/overview'))
+    .sort((a, b) => a.title.localeCompare(b.title))
 
   return (
-    <Grid columns={{ base: 1, sm: 2, lg: 3 }} gap="4" mt="8">
-      {items.map((item) => {
-        const meta = getPageBySlug(item.slug.split('/'))
-        return (
-          <NextLink key={item.slug} href={docsHref(framework, item.slug)} className={card}>
-            <Stack gap="1">
-              <Box fontWeight="semibold" color="fg.default">
-                {item.title}
-              </Box>
-              {meta?.description && (
-                <Box color="fg.muted" textStyle="sm" lineClamp="2">
-                  {meta.description}
-                </Box>
-              )}
-            </Stack>
-          </NextLink>
-        )
-      })}
+    <Grid columns={{ base: 2, md: 3 }} columnGap="8" rowGap="5" mt="6" className="not-prose">
+      {items.map((item) => (
+        <NextLink key={item.slug} href={docsHref(framework, item.slug)} className={link}>
+          {item.title}
+          {item.status === 'new' && <span className={dot} role="img" aria-label="New" />}
+        </NextLink>
+      ))}
     </Grid>
   )
 }

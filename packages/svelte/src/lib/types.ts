@@ -23,7 +23,7 @@ export type PolymorphicProps<T extends HTMLTag, State = EmptyState> = {
    * Use the provided child element as the default rendered element, combining their props and behavior.
    *
    * @deprecated Use the `render` snippet instead. It also receives the part's state.
-   * `asChild` will be removed in the next major.
+   * `asChild` is still supported, but `render` is preferred.
    */
   asChild?: Snippet<[PropsFn<T>]>
   /**
