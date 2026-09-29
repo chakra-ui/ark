@@ -1,6 +1,6 @@
 'use client'
 import NextLink from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 import { Badge } from '~/components/ui/badge'
 import { getActiveTab } from '~/lib/active-tab'
@@ -17,6 +17,7 @@ interface Props {
 export const DocsSidebar = (props: Props) => {
   const { tabs } = props
   const pathname = usePathname()
+  const router = useRouter()
   const framework = frameworkFromPathname(pathname)
   const currentRef = useRef<HTMLAnchorElement>(null)
   const groups = getActiveTab(pathname, tabs)?.groups ?? []
@@ -42,6 +43,10 @@ export const DocsSidebar = (props: Props) => {
                     <NextLink
                       ref={isCurrent ? currentRef : undefined}
                       href={href}
+                      prefetch={false}
+                      onMouseEnter={() => router.prefetch(href)}
+                      onFocus={() => router.prefetch(href)}
+                      onTouchStart={() => router.prefetch(href)}
                       aria-current={isCurrent ? 'page' : undefined}
                       className={styles.link}
                     >
