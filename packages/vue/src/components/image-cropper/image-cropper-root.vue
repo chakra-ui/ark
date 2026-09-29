@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { RootState } from '@zag-js/image-cropper'
 import type { HTMLAttributes } from 'vue'
+import type { BooleanDefaults } from '../../types.ts'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 import type { RootEmits, RootProps } from './image-cropper.types.ts'
 
@@ -22,13 +23,15 @@ import { useImageCropper } from './use-image-cropper.ts'
 import { ImageCropperProvider } from './use-image-cropper-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
-defineProps<ImageCropperRootProps>()
+const props = withDefaults(defineProps<ImageCropperRootProps>(), {
+  fixedCropArea: undefined,
+} satisfies BooleanDefaults<RootProps>)
 
 defineSlots<PolymorphicSlots<ImageCropperRootState>>()
 
 const emits = defineEmits<ImageCropperRootEmits>()
 
-const imageCropper = useImageCropper({}, emits)
+const imageCropper = useImageCropper(props, emits)
 ImageCropperProvider(imageCropper)
 
 useForwardExpose()
