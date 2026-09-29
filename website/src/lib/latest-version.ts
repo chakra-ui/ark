@@ -1,11 +1,13 @@
+import { cacheLife } from 'next/cache'
 import { type Framework, frameworks } from './frameworks'
 
 const FALLBACK_VERSION = 'latest'
 
 const fetchVersion = async (framework: Framework): Promise<string> => {
+  'use cache'
+  cacheLife('hours')
   try {
     const response = await fetch(`https://registry.npmjs.org/@ark-ui/${framework}/latest`, {
-      next: { revalidate: 3600 },
       signal: AbortSignal.timeout(5000),
     })
     if (!response.ok) return FALLBACK_VERSION

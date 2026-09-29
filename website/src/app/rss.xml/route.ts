@@ -3,8 +3,6 @@ import { resolveAuthors } from '~/lib/authors'
 import { getPublicUrl } from '~/lib/get-public-url'
 import { blogs } from '~/lib/source'
 
-export const dynamic = 'force-static'
-
 const SITE_TITLE = 'Ark UI Blog'
 const SITE_DESCRIPTION = 'Articles and release notes from the Ark UI team.'
 
@@ -44,10 +42,8 @@ const toItem = (blog: (typeof blogs)[number]) => {
 }
 
 export function GET() {
-  const items = [...blogs]
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .map(toItem)
-    .join('\n')
+  const sorted = [...blogs].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  const items = sorted.map(toItem).join('\n')
 
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
@@ -57,7 +53,7 @@ export function GET() {
     `    <link>${getPublicUrl('/blog')}</link>`,
     `    <description>${escapeXml(SITE_DESCRIPTION)}</description>`,
     '    <language>en</language>',
-    `    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>`,
+    `    <lastBuildDate>${new Date(sorted[0]?.date ?? 0).toUTCString()}</lastBuildDate>`,
     `    <atom:link href="${getPublicUrl('/rss.xml')}" rel="self" type="application/rss+xml" />`,
     items,
     '  </channel>',

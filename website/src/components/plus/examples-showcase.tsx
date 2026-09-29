@@ -1,3 +1,4 @@
+import { cacheLife } from 'next/cache'
 import { SparklesIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { cva } from 'styled-system/css'
@@ -9,6 +10,8 @@ import { Text } from '~/components/ui/text'
 import { fetchExamples } from '~/lib/examples'
 
 export const ExamplesShowcase = async () => {
+  'use cache'
+  cacheLife('hours')
   const examples = await fetchExamples()
   const featuredExamples = examples.filter((example) => example.accessLevel === 'paid').slice(0, 6)
 
