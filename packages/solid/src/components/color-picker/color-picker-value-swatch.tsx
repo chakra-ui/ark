@@ -12,16 +12,16 @@ export interface ColorPickerValueSwatchBaseProps extends ValueSwatchProps, Polym
 export interface ColorPickerValueSwatchProps extends HTMLProps<'div'>, ColorPickerValueSwatchBaseProps {}
 
 export const ColorPickerValueSwatch = (props: ColorPickerValueSwatchProps) => {
-  const [{ respectAlpha }, localProps] = createSplitProps<ValueSwatchProps>()(props, ['respectAlpha'])
+  const [valueSwatchProps, localProps] = createSplitProps<ValueSwatchProps>()(props, ['respectAlpha'])
   const colorPicker = useColorPickerContext()
   const swatchProps = createMemo(() => ({
-    respectAlpha,
+    respectAlpha: valueSwatchProps.respectAlpha,
     value: colorPicker().value,
   }))
   const mergedProps = mergeProps(() => colorPicker().getSwatchProps(swatchProps()), localProps)
 
   return (
-    <ColorPickerSwatchPropsProvider value={swatchProps()}>
+    <ColorPickerSwatchPropsProvider value={swatchProps}>
       <ark.div {...mergedProps} />
     </ColorPickerSwatchPropsProvider>
   )

@@ -1,5 +1,6 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
+import { createSignal } from 'solid-js'
 import { Field } from '@ark-ui/solid/field'
 
 const ComponentUnderTest = (props: Field.RootProps) => (
@@ -250,6 +251,27 @@ describe('Field / Item', () => {
 
     await user.click(screen.getByText('Amount'))
     expect(input).toHaveFocus()
+  })
+
+  it('should update Field.Context inside Field.Item when invalid changes', async () => {
+    const [invalid, setInvalid] = createSignal(false)
+
+    render(() => (
+      <Field.Root invalid={invalid()} target="amount">
+        <Field.Item value="amount">
+          <Field.Input data-testid="amount-input" />
+          <Field.Context>{(field) => <span data-testid="invalid">{String(field().invalid)}</span>}</Field.Context>
+        </Field.Item>
+      </Field.Root>
+    ))
+
+    expect(screen.getByTestId('invalid')).toHaveTextContent('false')
+    expect(screen.getByTestId('amount-input')).not.toHaveAttribute('aria-invalid')
+
+    setInvalid(true)
+
+    expect(screen.getByTestId('invalid')).toHaveTextContent('true')
+    expect(screen.getByTestId('amount-input')).toHaveAttribute('aria-invalid', 'true')
   })
 
   it('should throw when Field.Item is used outside Field.Root', () => {

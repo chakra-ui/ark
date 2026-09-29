@@ -295,6 +295,10 @@ const extractTypesForFramework = async (framework: string) => {
           return { ...acc, ...value }
         }, {})
 
+      // hook-only modules (interaction, collection) document no props, and
+      // nothing renders an empty table
+      if (Object.keys(typeExportsWithElement).length === 0) return
+
       const filename = `${path.basename(component)}.types.json`
       const filePath = path.join(outDir, framework, filename)
 

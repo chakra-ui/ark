@@ -8,6 +8,7 @@ import { TableOfContent } from '~/components/table-of-content'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import { getFramework } from '~/lib/frameworks'
+import { cleanupPageContent } from '~/lib/llm-content'
 import { getAllPageSlugs, getPageBySlug, getPageNavigation } from '~/lib/pages'
 import { getServerContext } from '~/lib/server-context'
 import { MDXContent } from '~/mdx-content'
@@ -46,7 +47,11 @@ export default async function Page(props: Props) {
               {currentPage.description}
             </Text>
             <Box position={{ md: 'absolute' }} top="2" right="2">
-              <CopyPageWidget slug={currentPage.slug} content={currentPage.llm} />
+              <CopyPageWidget
+                slug={currentPage.slug}
+                framework={framework}
+                content={await cleanupPageContent(currentPage, framework)}
+              />
             </Box>
             <MDXContent code={currentPage.code} />
           </article>

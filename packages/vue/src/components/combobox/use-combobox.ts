@@ -68,6 +68,10 @@ export const useCombobox = <T extends CollectionItem>(
         emit?.('pointerDownOutside', details)
         localeProps.onPointerDownOutside?.(details)
       },
+      onSelect: (details) => {
+        emit?.('select', details)
+        localeProps.onSelect?.(details)
+      },
       onOpenChange: (details) => {
         emit?.('openChange', details)
         emit?.('update:open', details.open)

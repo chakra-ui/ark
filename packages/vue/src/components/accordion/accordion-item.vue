@@ -23,7 +23,9 @@ import { AccordionItemProvider } from './use-accordion-item-context.ts'
 import { AccordionItemPropsProvider } from './use-accordion-item-props-context.ts'
 
 const accordion = useAccordionContext()
-const props = defineProps<AccordionItemProps>()
+const props = withDefaults(defineProps<AccordionItemProps>(), {
+  disabled: undefined,
+})
 const item = computed(() => accordion.value.getItemState(props))
 const renderStrategyProps = useRenderStrategyProps()
 const itemContentProps = computed(() => accordion.value.getItemContentProps(props))

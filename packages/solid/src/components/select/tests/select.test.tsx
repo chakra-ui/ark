@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
+import { Select, createListCollection } from '@ark-ui/solid/select'
 import { ComponentUnderTest } from './basic.tsx'
 import { SelectWithField } from './field.tsx'
 
@@ -123,5 +124,15 @@ describe('Select / Field', () => {
   it('should not display error text when no error is present', async () => {
     render(() => <SelectWithField />)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+  })
+
+  it('should render custom children in value text', async () => {
+    const collection = createListCollection({ items: ['React', 'Solid'] })
+    render(() => (
+      <Select.Root collection={collection}>
+        <Select.ValueText placeholder="Pick one">Custom</Select.ValueText>
+      </Select.Root>
+    ))
+    expect(screen.getByText('Custom')).toBeInTheDocument()
   })
 })

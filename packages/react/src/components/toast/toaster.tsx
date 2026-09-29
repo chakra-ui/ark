@@ -14,12 +14,17 @@ export type ToastOptions = toast.Options<ReactNode>
 export interface ToasterBaseProps extends PolymorphicProps, Omit<toast.GroupProps, 'store' | 'id'> {
   toaster: CreateToasterReturn<any>
   children: (toast: ToastOptions) => ReactNode
+  /**
+   * The human-readable label for the toast region.
+   * @default "Notifications"
+   */
+  label?: string | undefined
 }
 
 export interface ToasterProps extends Assign<HTMLProps<'div'>, ToasterBaseProps> {}
 
 export const Toaster = forwardRef<HTMLDivElement, ToasterProps>((props, ref) => {
-  const { toaster, children, ...localProps } = props
+  const { toaster, children, label, dir, getRootNode, ...localProps } = props
 
   const locale = useLocaleContext()
   const env = useEnvironmentContext()
@@ -27,13 +32,13 @@ export const Toaster = forwardRef<HTMLDivElement, ToasterProps>((props, ref) => 
   const service = useMachine(toast.group.machine, {
     store: toaster,
     id: useId(),
-    dir: locale?.dir,
-    getRootNode: env?.getRootNode,
+    dir: dir ?? locale?.dir,
+    getRootNode: getRootNode ?? env?.getRootNode,
   })
 
   const api = toast.group.connect(service, normalizeProps)
 
-  const mergedProps = mergeProps(api.getGroupProps(), localProps)
+  const mergedProps = mergeProps(api.getGroupProps({ label }), localProps)
 
   return (
     <ark.div {...mergedProps} ref={ref}>

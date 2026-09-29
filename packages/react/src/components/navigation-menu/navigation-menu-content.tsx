@@ -39,7 +39,7 @@ export const NavigationMenuContent = forwardRef<HTMLDivElement, NavigationMenuCo
     </PresenceProvider>
   )
 
-  const viewportNode = api.getViewportNode()
+  const viewportNode = api.isViewportRendered ? api.getViewportNode() : null
   if (api.isViewportRendered && viewportNode) {
     return (
       <>

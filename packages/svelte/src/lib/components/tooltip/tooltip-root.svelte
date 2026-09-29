@@ -25,6 +25,7 @@
   const resolvedProps = $derived<UseTooltipProps>({
     ...useTooltipProps,
     id: providedId,
+    open,
     onOpenChange(details) {
       useTooltipProps.onOpenChange?.(details)
       if (open !== undefined) open = details.open

@@ -1,3 +1,4 @@
+import type { Framework } from '~/lib/frameworks'
 import { type Pages, pages } from '.velite'
 import { sidebarConfig } from './sidebar-config'
 
@@ -18,9 +19,11 @@ export interface SidebarGroupWithPages {
   items: Pages[]
 }
 
-const findPageById = (id: string): Pages | undefined => {
-  return pages.find((p) => p.id === id && p.framework === '*') ?? pages.find((p) => p.id === id)
-}
+// most pages are framework-agnostic ('*'); the changelogs exist once per framework
+const findPageById = (id: string, framework?: Framework): Pages | undefined =>
+  pages.find((p) => p.id === id && p.framework === '*') ??
+  (framework ? pages.find((p) => p.id === id && p.framework === framework) : undefined) ??
+  pages.find((p) => p.id === id)
 
 export const getSidebarGroups = (): SidebarGroup[] => {
   return sidebarConfig
@@ -43,12 +46,12 @@ export const getSidebarGroups = (): SidebarGroup[] => {
 }
 
 // Returns full page objects for LLMs routes that need content
-export const getSidebarGroupsWithPages = (): SidebarGroupWithPages[] => {
+export const getSidebarGroupsWithPages = (framework?: Framework): SidebarGroupWithPages[] => {
   return sidebarConfig
     .map((group) => {
       const items: Pages[] = []
       for (const item of group.items) {
-        const page = findPageById(item.id)
+        const page = findPageById(item.id, framework)
         if (page) {
           items.push(page)
         }

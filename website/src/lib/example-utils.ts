@@ -26,7 +26,7 @@ export const getExamplePath = (component: string) => {
       () => `components/progress/examples/${component.split('-')[1]}`,
     ),
     Match.when(
-      () => ['environment', 'locale'].includes(component),
+      () => ['environment', 'hotkeys', 'interaction', 'locale'].includes(component),
       () => `providers/${component}/examples`,
     ),
     Match.orElse(() => `components/${component}/examples`),

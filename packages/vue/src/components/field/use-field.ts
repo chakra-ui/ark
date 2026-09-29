@@ -1,4 +1,3 @@
-import { ariaAttr, dataAttr } from '@zag-js/dom-query'
 import {
   type HTMLAttributes,
   type MaybeRef,
@@ -12,6 +11,7 @@ import {
 } from 'vue'
 import { useEnvironmentContext } from '../../providers/index.ts'
 import { DEFAULT_ENVIRONMENT } from '../../providers/environment/use-environment-context.ts'
+import { ariaAttr, dataAttr } from '../../utils/attr.ts'
 import { unrefElement } from '../../utils/unref-element.ts'
 import { parts } from './field.anatomy.ts'
 import type { ElementIds } from './field.types.ts'

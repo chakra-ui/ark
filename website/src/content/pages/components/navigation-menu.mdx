@@ -1,0 +1,167 @@
+---
+id: navigation-menu
+title: Navigation Menu
+description: A collection of links and menus for website navigation.
+---
+
+<ComponentPreview id="NavigationMenu" />
+
+## Anatomy
+
+<Anatomy id="navigation-menu" />
+
+```tsx
+<NavigationMenu.Root>
+  <NavigationMenu.List>
+    <NavigationMenu.Item>
+      <NavigationMenu.Trigger />
+      <NavigationMenu.ItemIndicator />
+      <NavigationMenu.Content>
+        <NavigationMenu.Link />
+      </NavigationMenu.Content>
+    </NavigationMenu.Item>
+    <NavigationMenu.Indicator>
+      <NavigationMenu.Arrow />
+    </NavigationMenu.Indicator>
+  </NavigationMenu.List>
+  <NavigationMenu.ViewportPositioner>
+    <NavigationMenu.Viewport />
+  </NavigationMenu.ViewportPositioner>
+</NavigationMenu.Root>
+```
+
+## Examples
+
+<Example id="basic" />
+
+### Viewport
+
+Render `NavigationMenu.Viewport` to share one animated panel across menu items. The viewport resizes as you move between
+triggers.
+
+<Example id="viewport" />
+
+### Current link
+
+Pass the `current` prop to the link that represents the page the user is on. It renders `aria-current="page"` for
+assistive technology and a `data-current` attribute for styling.
+
+<Example id="current-link" />
+
+### Vertical
+
+Set `orientation="vertical"` on the root to build sidebar-style navigation. Panels open to the side, and the keyboard
+model adapts: ArrowUp and ArrowDown move between triggers, ArrowRight enters the open panel.
+
+<Example id="vertical" />
+
+### Indicator
+
+Render `NavigationMenu.Indicator` inside the list to highlight the active trigger, tab-style. The machine exposes
+`--trigger-x` and `--trigger-width` CSS variables, so the indicator slides between triggers with a plain CSS transition.
+For a static per-item marker, use `NavigationMenu.ItemIndicator` instead.
+
+<Example id="indicator" />
+
+### Controlled
+
+Use the `value` and `onValueChange` props to control the active menu item.
+
+<Example id="controlled" />
+
+### Root Provider
+
+An alternative way to control the navigation menu is to use the `RootProvider` component and the `useNavigationMenu`
+hook. This way you can access the state and methods from outside the component.
+
+<Example id="root-provider" />
+
+> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+
+### Context
+
+Access the navigation menu's state with `NavigationMenu.Context` or the `useNavigationMenuContext` hook:
+
+<Example id="context" />
+
+## Guides
+
+### Custom links
+
+Use the `asChild` prop to render `NavigationMenu.Link` as your framework's link component for client-side routing.
+
+```tsx
+import { Link as RouterLink } from 'react-router-dom'
+import { NavigationMenu } from '@ark-ui/<framework>/navigation-menu'
+
+export const MenuLink = (props: NavigationMenu.LinkProps) => {
+  return (
+    <NavigationMenu.Link {...props} asChild>
+      <RouterLink to={props.href ?? '#'}>{props.children}</RouterLink>
+    </NavigationMenu.Link>
+  )
+}
+```
+
+### Viewport size
+
+The following CSS variables are exposed on `NavigationMenu.Root` and `NavigationMenu.Viewport`:
+
+```css
+/* size and position of the active trigger */
+--trigger-width: <pixel-value>;
+--trigger-height: <pixel-value>;
+--trigger-x: <pixel-value>;
+--trigger-y: <pixel-value>;
+
+/* size and position of the active content */
+--viewport-width: <pixel-value>;
+--viewport-height: <pixel-value>;
+--viewport-x: <pixel-value>;
+--viewport-y: <pixel-value>;
+```
+
+Use `--viewport-width` and `--viewport-height` to animate the shared panel as the active item changes:
+
+```css
+[data-scope='navigation-menu'][data-part='viewport'] {
+  width: var(--viewport-width);
+  height: var(--viewport-height);
+  transition:
+    width 250ms ease,
+    height 250ms ease;
+}
+```
+
+### Large menus
+
+When menu content is taller than the viewport, constrain the panel and scroll the content:
+
+```css
+[data-scope='navigation-menu'][data-part='viewport'] {
+  max-height: min(var(--viewport-height), 70vh);
+}
+
+[data-scope='navigation-menu'][data-part='content'] {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+```
+
+## API Reference
+
+### Props
+
+<ComponentTypes id="navigation-menu" />
+
+### Context
+
+<ContextType id="navigation-menu" />
+
+## Accessibility
+
+Complies with the [Navigation Menubar WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/).
+
+### Keyboard Support
+
+<KeyBindingsTable id="navigation-menu" />

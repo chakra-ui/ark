@@ -21,7 +21,9 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 defineProps<FileUploadItemNameProps>()
 const fileUpload = useFileUploadContext()
 const itemProps = useFileUploadItemPropsContext()
-const slots = defineSlots()
+const slots = defineSlots<{
+  default?(): unknown
+}>()
 
 useForwardExpose()
 </script>

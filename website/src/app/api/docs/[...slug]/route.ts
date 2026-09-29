@@ -4,7 +4,7 @@ type Params = Promise<{ slug: string[] }>
 
 export const GET = async (_request: Request, segmentData: { params: Params }) => {
   const { slug } = await segmentData.params
-  const doc = getDoc(slug.join('/'))
+  const doc = await getDoc(slug.join('/'))
 
   if (!doc) {
     return Response.json({ error: `Documentation page not found: ${slug.join('/')}` }, { status: 404 })

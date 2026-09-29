@@ -23,7 +23,7 @@
     ],
     "paths": {
       "~/*": ["./src/*"],
-      "@examples/*": ["../packages/react/src/components/*"],
+      "@examples/*": ["../packages/react/src/components/*", "../packages/react/src/providers/*"],
       ".velite": ["./.velite"],
       "styled-system/*": ["./styled-system/*"]
     }

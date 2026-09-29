@@ -122,10 +122,12 @@ function generateGlobalCss(cssModules: Record<string, string>): string {
 export async function openInStackblitzSvelte(opts: {
   code: string
   cssModules: Record<string, string>
+  localFiles?: Record<string, string>
   id: string
   component: string
 }) {
   let { code, cssModules, id, component } = opts
+  const { localFiles = {} } = opts
 
   code = rewriteCssImports(code)
 
@@ -138,6 +140,9 @@ export async function openInStackblitzSvelte(opts: {
     'svelte.config.js': svelteConfig,
     'index.html': indexHtml,
     'src/App.svelte': code,
+    ...Object.fromEntries(
+      Object.entries(localFiles).map(([name, content]) => [`src/${name}`, rewriteCssImports(content)]),
+    ),
     'src/global.css': generateGlobalCss(cssModules),
     'src/main.ts': main,
     'src/app.d.ts': appDts,

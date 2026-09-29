@@ -56,7 +56,7 @@ export const ExamplePreview = (props: Props) => {
       borderRadius="lg"
       borderWidth="1px"
       width="full"
-      overflow="hidden"
+      overflow={component === 'navigation-menu' ? 'visible' : 'hidden'}
       className="not-prose example-preview-scope"
     >
       <Flex justify="center" align="center" direction="column" flex="1" p={{ base: '4', md: '6' }} width="full">

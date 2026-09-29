@@ -1,0 +1,125 @@
+---
+id: toc
+title: Table of Contents
+status: Preview
+description:
+  A navigation component that tracks and highlights the active section as users scroll through document content.
+---
+
+<ComponentPreview id="Toc" />
+
+## Anatomy
+
+<Anatomy id="toc" />
+
+```tsx
+<Toc.Root items={items} scrollEl={() => scrollContainer}>
+  <Toc.Content />
+  <Toc.Nav>
+    <Toc.Title />
+    <Toc.List>
+      <Toc.Indicator />
+      <Toc.Item item={item}>
+        <Toc.Link />
+      </Toc.Item>
+    </Toc.List>
+  </Toc.Nav>
+</Toc.Root>
+```
+
+## Examples
+
+### Basic
+
+Pass headings to `items`, and point `scrollEl` at the scrollable container so the TOC knows what to track.
+
+<Example id="basic" />
+
+### Nested Headings
+
+Read `depth` in your own markup to indent sub-headings. Nothing is indented for you.
+
+<Example id="nested" />
+
+### Root Provider
+
+Use `useToc` with `Toc.RootProvider` to reach `activeIds` from outside the tree, so other parts of your UI can follow
+the reading position.
+
+<Example id="root-provider" />
+
+### With Collapsible
+
+Wrap `Toc.Nav` in a `Collapsible` to let users hide the navigation. `Toc.Context` exposes `activeItems`, here driving a
+progress ring.
+
+<Example id="with-collapsible" />
+
+### With Hover
+
+Expand the navigation on `onMouseEnter` and collapse it on `onMouseLeave`, with a pin toggle to keep it open.
+
+> **Note:** Hover does not exist on touch screens. Pair this with a pin button or a disclosure control so the navigation
+> stays reachable on mobile.
+
+<Example id="with-hover" />
+
+### With Indicator
+
+Add `Toc.Indicator` inside `Toc.List` for a marker that slides to the active item.
+
+<Example id="with-indicator" />
+
+### With Rail
+
+Give each item a small SVG offset by `depth`. Where neighbouring items sit at different depths, a bezier joins the two
+positions so the rail steps rather than breaks.
+
+<Example id="with-rail" />
+
+### With Tree View
+
+Pair `Toc.Root` with `TreeView` for hierarchical navigation. `onActiveChange` expands the branch holding the active
+heading.
+
+<Example id="with-tree-view" />
+
+## Guides
+
+### Items
+
+Every entry needs `value`, the `id` of the heading element, and `depth`, the heading level.
+
+```tsx
+const items = [
+  { value: 'introduction', depth: 2 },
+  { value: 'installation', depth: 2 },
+  { value: 'peer-dependencies', depth: 3 },
+]
+```
+
+`value` must match the heading's `id` exactly. The component resolves it with `getElementById` to track visibility, and
+`Toc.Link` targets it with `href="#introduction"`. An item whose id is missing renders but never activates.
+
+Ids are global to the page, so prefix them when a page holds more than one TOC.
+
+Extra properties are fine, a `label` for link text being the common one. `TocItemData` covers only `value` and `depth`,
+so extend it rather than annotating with it directly:
+
+```tsx
+import type { TocItemData } from '@ark-ui/react/toc'
+
+interface Item extends TocItemData {
+  label: string
+}
+```
+
+## API Reference
+
+### Props
+
+<ComponentTypes id="toc" />
+
+### Context
+
+<ContextType id="toc" />

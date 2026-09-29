@@ -1,6 +1,7 @@
 import { writeFileSync } from 'node:fs'
 import { basename, join } from 'node:path'
 import { globby } from 'globby'
+import prettier from 'prettier'
 
 const rootDir = join(import.meta.dirname, '../..')
 
@@ -89,17 +90,16 @@ const main = async () => {
       exampleFileName,
     )
 
-    // Use @examples alias configured in next.config.mjs
-    // @examples points to packages/react/src/components
+    // @examples is configured in next.config.mjs and website/tsconfig.json, and resolves
+    // against both packages/react/src/components and packages/react/src/providers.
     let importPath: string
     if (file.includes('/providers/')) {
-      // Provider examples need different path
       const providerIdx = parts.indexOf('providers')
       const rest = parts
         .slice(providerIdx + 1)
         .join('/')
         .replace('.tsx', '')
-      importPath = `../../../packages/react/src/providers/${rest}`
+      importPath = `@examples/${rest}`
     } else {
       // Use @examples alias for component examples
       const componentsIdx = parts.indexOf('components')
@@ -165,7 +165,10 @@ export function hasExample(component: string, example: string): boolean {
 
   // Write to website/src/lib/example-registry.ts
   const outputPath = join(rootDir, 'website/src/lib/example-registry.ts')
-  writeFileSync(outputPath, output)
+
+  // format before writing, so a build never leaves the tree failing `prettier --check`
+  const config = await prettier.resolveConfig(outputPath)
+  writeFileSync(outputPath, await prettier.format(output, { ...config, parser: 'typescript' }))
 
   console.log(`Generated example registry with ${allFiles.length} examples`)
   console.log(`Output: ${outputPath}`)

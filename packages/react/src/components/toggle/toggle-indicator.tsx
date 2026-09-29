@@ -13,16 +13,16 @@ export interface ToggleIndicatorBaseProps {
   fallback?: React.ReactNode | undefined
 }
 
-export interface ToggleIndicatorProps extends HTMLArkProps<'div'>, ToggleIndicatorBaseProps {}
+export interface ToggleIndicatorProps extends HTMLArkProps<'span'>, ToggleIndicatorBaseProps {}
 
-export const ToggleIndicator = forwardRef<HTMLDivElement, ToggleIndicatorProps>((props, ref) => {
+export const ToggleIndicator = forwardRef<HTMLSpanElement, ToggleIndicatorProps>((props, ref) => {
   const { children, fallback, ...restProps } = props
   const toggle = useToggleContext()
   const mergedProps = mergeProps(toggle.getIndicatorProps(), restProps)
   return (
-    <ark.div {...mergedProps} ref={ref}>
+    <ark.span {...mergedProps} ref={ref}>
       {toggle.pressed ? children : fallback}
-    </ark.div>
+    </ark.span>
   )
 })
 

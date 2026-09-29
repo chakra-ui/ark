@@ -36,7 +36,7 @@ export const NavigationMenuContent = (props: NavigationMenuContentProps) => {
     localProps,
   )
 
-  const viewportNode = createMemo(() => api().getViewportNode())
+  const viewportNode = createMemo(() => (api().isViewportRendered ? api().getViewportNode() : null))
   const isViewportRendered = createMemo(() => api().isViewportRendered)
 
   const content = (
