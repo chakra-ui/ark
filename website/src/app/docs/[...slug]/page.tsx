@@ -1,3 +1,4 @@
+import { cacheLife } from 'next/cache'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { css } from 'styled-system/css'
@@ -31,6 +32,8 @@ const articleClass = css({
 })
 
 export default async function Page(props: Props) {
+  'use cache'
+  cacheLife('hours')
   const params = await props.params
   const { framework, slug } = extractFramework(params.slug)
   const slugStr = slug.join('/')

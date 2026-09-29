@@ -6,6 +6,8 @@ import { Logo } from '~/components/logo'
 import { Card } from '~/components/ui/card'
 import { Text } from '~/components/ui/text'
 
+export const instant = false
+
 interface Props {
   searchParams: Promise<{ callbackURL?: string }>
 }

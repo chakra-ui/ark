@@ -6,6 +6,8 @@ import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import { blogs } from '~/lib/source'
 
+export const instant = false
+
 const posts: BlogPost[] = [...blogs]
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   .map((blog) => ({

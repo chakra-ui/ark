@@ -1,3 +1,4 @@
+import { cacheLife } from 'next/cache'
 import type { MetadataRoute } from 'next'
 import { fetchExamples } from '~/lib/examples'
 import { docsHref, examplesHref, frameworks } from '~/lib/frameworks'
@@ -6,6 +7,8 @@ import { getSidebarGroups } from '~/lib/sidebar'
 import { blogs } from '~/lib/source'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  'use cache'
+  cacheLife('hours')
   const staticPages = ['', '/blog', '/showcase', '/plus', '/team', '/brand', '/license'].map((path) => ({
     url: getPublicUrl(path),
   }))
