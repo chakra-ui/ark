@@ -49,6 +49,9 @@ export default function RootLayout(props: PropsWithChildren) {
     >
       <head>
         <Script src="https://plausible.io/js/plausible.js" data-domain="ark-ui.com" />
+        <Script id="smooth-scroll" strategy="afterInteractive">
+          {`document.documentElement.dataset.smoothScroll = ''`}
+        </Script>
       </head>
       <body suppressHydrationWarning>
         <ThemeProvider attribute="class">
