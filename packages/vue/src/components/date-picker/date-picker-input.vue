@@ -19,7 +19,9 @@ import { ark } from '../factory.ts'
 import { useDatePickerContext } from './use-date-picker-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
-const props = defineProps<DatePickerInputProps>()
+const props = withDefaults(defineProps<DatePickerInputBaseProps>(), {
+  fixOnBlur: undefined,
+})
 
 defineSlots<PolymorphicSlots<DatePickerInputState>>()
 const datePicker = useDatePickerContext()

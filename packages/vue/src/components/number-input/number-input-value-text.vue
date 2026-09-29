@@ -29,7 +29,7 @@ useForwardExpose()
       <slot name="render" v-bind="scope" />
     </template>
     <template v-else #default>
-      <slot />
+      <slot>{{ numberInput.value }}</slot>
     </template>
   </ark.span>
 </template>
