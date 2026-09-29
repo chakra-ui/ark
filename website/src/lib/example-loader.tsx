@@ -18,8 +18,7 @@ export function hasExample(component: string, example: string): boolean {
 }
 
 /**
- * Load an example component using static imports from the registry
- * This ensures React context is shared across all examples (no module isolation)
+ * Load an example component from the registry. Each example is a lazy chunk, so render it inside Suspense.
  */
 export function loadExample(component: string, example: string): ComponentType | null {
   // Handle special cases for progress variants
