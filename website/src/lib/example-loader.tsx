@@ -17,9 +17,6 @@ export function hasExample(component: string, example: string): boolean {
   return registryHasExample(component, example)
 }
 
-/**
- * Load an example component from the registry. Each example is a lazy chunk, so render it inside Suspense.
- */
 export function loadExample(component: string, example: string): ComponentType | null {
   // Handle special cases for progress variants
   if (component === 'progress-circular') {

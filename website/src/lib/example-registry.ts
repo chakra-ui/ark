@@ -4,7 +4,6 @@
 
 import { type ComponentType, lazy } from 'react'
 
-// Registry maps example keys to a lazy module loader, so each page only downloads the examples it renders
 type ExampleModule = Record<string, unknown>
 
 const exampleModules: Record<string, () => Promise<ExampleModule>> = {
