@@ -2,6 +2,7 @@
   import type { EmptyState, HTMLProps, PolymorphicProps, PropsFn } from '$lib/types'
   import { isVoidHTMLTag, isVoidSVGTag } from '$lib/utils/tags'
   import { mergeProps } from '@zag-js/svelte'
+  import { createAttachmentKey } from 'svelte/attachments'
   import type { SvelteHTMLElements } from 'svelte/elements'
   import Svg from './svg-factory.svelte'
 
@@ -25,7 +26,16 @@
 
   const EMPTY_STATE: EmptyState = Object.freeze({})
 
-  const propsFn: PropsFn<T> = (props) => mergeProps(rest, props ?? {})
+  const refAttachment = {
+    [createAttachmentKey()]: (node: Element) => {
+      ref = node
+      return () => {
+        ref = null
+      }
+    },
+  }
+
+  const propsFn: PropsFn<T> = (props) => ({ ...mergeProps(rest, props ?? {}), ...refAttachment })
 </script>
 
 {#if render}

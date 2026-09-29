@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/svelte'
 import user from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 import ComponentUnderTest from './examples/basic.svelte'
+import RefTest from './examples/ref.svelte'
 import RenderTest from './examples/render.svelte'
 
 describe('Ark Factory / render', () => {
@@ -76,5 +77,13 @@ describe('Ark Factory', () => {
 
     expect(onClickParent).toHaveBeenCalled()
     expect(onClickChild).toHaveBeenCalled()
+  })
+})
+
+describe('Ark Factory / ref', () => {
+  it.each(['default', 'render', 'asChild'] as const)('should bind the ref to the rendered element (%s)', (mode) => {
+    const onRef = vi.fn()
+    render(RefTest, { mode, onRef })
+    expect(onRef).toHaveBeenLastCalledWith(screen.getByTestId('target'))
   })
 })
