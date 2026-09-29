@@ -4,6 +4,7 @@ import styles from 'styles/virtualizer.module.css'
 
 export const Grid = () => {
   const virtualizer = useGridVirtualizer({
+    observeScrollElementSize: true,
     rowCount: 1000,
     columnCount: 50,
     estimatedRowSize: () => 40,

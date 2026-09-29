@@ -5,6 +5,7 @@
   const items = Array.from({ length: 10000 }, (_, index) => `${index + 1}`)
 
   const virtualizer = useListVirtualizer(() => ({
+    observeScrollElementSize: true,
     count: items.length,
     orientation: 'horizontal',
     estimatedSize: () => 80,

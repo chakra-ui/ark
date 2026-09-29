@@ -10,6 +10,7 @@ const items = Array.from({ length: 10000 }, (_, index) => ({
 
 const virtualizer = useListVirtualizer(
   computed(() => ({
+    observeScrollElementSize: true,
     count: items.length,
     estimatedSize: () => 64,
   })),
