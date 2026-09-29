@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useState, useSyncExternalStore } from 'react'
+import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 'react'
 
 interface VirtualizerLike {
   subscribe: (listener: VoidFunction) => VoidFunction
@@ -11,9 +11,18 @@ interface VirtualizerLike {
 
 export type VirtualizerRef = (element: HTMLElement | null) => void
 
+const createView = <T extends VirtualizerLike>(virtualizer: T, ref: VirtualizerRef) =>
+  new Proxy(virtualizer, {
+    get(target, key) {
+      if (key === 'ref') return ref
+      const value = Reflect.get(target, key, target)
+      return typeof value === 'function' ? value.bind(target) : value
+    },
+  }) as T & { ref: VirtualizerRef }
+
 export function useVirtualizerStore<T extends VirtualizerLike>(create: () => T): T & { ref: VirtualizerRef } {
   const [virtualizer] = useState(create)
-  useSyncExternalStore(virtualizer.subscribe, virtualizer.getSnapshot, () => 0)
+  const version = useSyncExternalStore(virtualizer.subscribe, virtualizer.getSnapshot, () => 0)
 
   const ref = useCallback<VirtualizerRef>(
     (element) => {
@@ -24,5 +33,6 @@ export function useVirtualizerStore<T extends VirtualizerLike>(create: () => T):
 
   useEffect(() => () => virtualizer.destroy(), [virtualizer])
 
-  return Object.assign(virtualizer, { ref })
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional
+  return useMemo(() => createView(virtualizer, ref), [virtualizer, ref, version])
 }
