@@ -20,7 +20,9 @@ import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
 import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
-const props = defineProps<NavigationMenuLinkProps>()
+const props = withDefaults(defineProps<NavigationMenuLinkProps>(), {
+  closeOnClick: undefined,
+})
 const navigationMenu = useNavigationMenuContext()
 const itemContext = useNavigationMenuItemPropsContext()
 
