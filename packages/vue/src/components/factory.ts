@@ -33,7 +33,7 @@ export interface PolymorphicProps {
   /**
    * Use the provided child element as the default rendered element, combining their props and behavior.
    *
-   * @deprecated Use the `render` slot instead. `asChild` will be removed in the next major.
+   * @deprecated Use the `render` slot instead. `asChild` is still supported, but `render` is preferred.
    */
   asChild?: boolean
 }
