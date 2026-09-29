@@ -2,8 +2,10 @@ import { createMDX } from 'fumadocs-mdx/next'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactCompiler: true,
   experimental: {
     optimizePackageImports: ['@ark-ui/react'],
+    turbopackRustReactCompiler: true,
   },
   turbopack: {
     ignoreIssue: [

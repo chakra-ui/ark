@@ -1,9 +1,9 @@
 'use client'
 
-import { useClipboard } from '@ark-ui/react/clipboard'
 import { Portal } from '@ark-ui/react/portal'
 import { SiMarkdown } from '@icons-pack/react-simple-icons'
 import { CheckIcon, ChevronDownIcon } from 'lucide-react'
+import { useState } from 'react'
 import { Box, HStack } from 'styled-system/jsx'
 import { Button } from '~/components/ui/button'
 import { IconButton } from '~/components/ui/icon-button'
@@ -13,27 +13,48 @@ import { getPublicUrl } from '~/lib/get-public-url'
 
 interface CopyPageWidgetProps {
   slug: string
-  content: string
   framework: string
 }
 
 export const CopyPageWidget = (props: CopyPageWidgetProps) => {
-  const { slug, content, framework } = props
+  const { slug, framework } = props
   return (
     <HStack gap="0" spaceX="-1px">
-      <CopyPageButton content={content} />
+      <CopyPageButton url={`/docs/${slug}.mdx?framework=${framework}`} />
       <ActionMenu slug={slug} framework={framework} />
     </HStack>
   )
 }
 
-const CopyPageButton = (props: { content: string }) => {
-  const { content } = props
-  const clipboard = useClipboard({ value: content, timeout: 1000 })
+const fetchMarkdown = async (url: string) => {
+  const response = await fetch(url)
+  if (!response.ok) throw new Error(`Failed to fetch ${url}: ${response.status}`)
+  return response.text()
+}
+
+const copyMarkdown = (url: string) => {
+  const text = fetchMarkdown(url)
+  if (typeof ClipboardItem !== 'undefined' && navigator.clipboard.write) {
+    const blob = text.then((value) => new Blob([value], { type: 'text/plain' }))
+    return navigator.clipboard.write([new ClipboardItem({ 'text/plain': blob })])
+  }
+  return text.then((value) => navigator.clipboard.writeText(value))
+}
+
+const CopyPageButton = (props: { url: string }) => {
+  const { url } = props
+  const [copied, setCopied] = useState(false)
+  const onClick = () =>
+    copyMarkdown(url)
+      .then(() => {
+        setCopied(true)
+        setTimeout(() => setCopied(false), 1000)
+      })
+      .catch((error) => console.error(error))
   return (
-    <Button onClick={clipboard.copy} size="xs" variant="outline" borderEndRadius="0">
+    <Button onClick={onClick} size="xs" variant="outline" borderEndRadius="0">
       <HStack gap="2">
-        {clipboard.copied ? <CheckIcon size={16} /> : <SiMarkdown size={18} />}
+        {copied ? <CheckIcon size={16} /> : <SiMarkdown size={18} />}
         <Box as="span" textStyle="sm" fontWeight="medium">
           Copy Page
         </Box>
