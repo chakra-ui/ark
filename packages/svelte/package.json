@@ -255,6 +255,6 @@
     "vitest-axe": "1.0.0-pre.5"
   },
   "peerDependencies": {
-    "svelte": ">=5.20.0"
+    "svelte": ">=5.29.0"
   }
 }

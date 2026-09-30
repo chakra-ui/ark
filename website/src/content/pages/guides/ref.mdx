@@ -73,3 +73,20 @@ In Svelte 5, use the `bind:ref` directive to access the rendered element.
 
 <Slider.Root bind:ref={rootRef}>{/* ... */}</Slider.Root>
 ```
+
+When a part renders through the `render` snippet, `bind:ref` resolves to the element you spread `props()` onto. No
+extra wiring is needed.
+
+```svelte
+<script lang="ts">
+  import { Popover } from '@ark-ui/svelte/popover'
+
+  let triggerRef = $state<HTMLButtonElement | null>(null)
+</script>
+
+<Popover.Trigger bind:ref={triggerRef}>
+  {#snippet render(props)}
+    <button {...props()}>Open</button>
+  {/snippet}
+</Popover.Trigger>
+```
