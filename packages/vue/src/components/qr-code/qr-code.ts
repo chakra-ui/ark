@@ -1,5 +1,5 @@
 export type { QrCodeGenerateOptions as GenerateOptions, QrCodeGenerateResult as GenerateResult } from '@zag-js/qr-code'
-export { default, type QrCodeContextProps } from './qr-code-context.vue'
+export { default as Context, type QrCodeContextProps as ContextProps } from './qr-code-context.vue'
 export {
   default as DownloadTrigger,
   type QrCodeDownloadTriggerBaseProps as DownloadTriggerBaseProps,
