@@ -25,6 +25,7 @@ export default async function Page(props: Props) {
   const { framework, id } = await props.params
   if (!isFramework(framework)) notFound()
   const example = await fetchExample(id)
+  if (!example) notFound()
 
   const isPaidExample = example.accessLevel === 'paid'
   const hasAccess = isPaidExample ? await hasUserPermission() : true
