@@ -1,5 +1,7 @@
 import { redirect } from 'next/navigation'
 
+export const instant = false
+
 interface Props {
   searchParams: Promise<{ orderId: string }>
 }

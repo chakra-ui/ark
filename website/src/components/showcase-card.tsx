@@ -20,6 +20,8 @@ export const ShowcaseCard = ({ data }: ShowcaseCardProps) => {
               aspectRatio="16 / 9"
               objectFit="cover"
               objectPosition="top center"
+              loading="lazy"
+              decoding="async"
             />
           </Card.Header>
           <Card.Body p="4">

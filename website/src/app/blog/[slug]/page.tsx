@@ -17,6 +17,8 @@ import { ogImageUrl } from '~/lib/og-template'
 import { MDXContent } from '~/mdx-content'
 import { blogs } from '~/lib/source'
 
+export const instant = false
+
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',

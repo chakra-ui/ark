@@ -20,7 +20,9 @@ import { useForwardExpose } from '../../utils/use-forward-expose'
 import { useToc } from './use-toc'
 import { TocProvider } from './use-toc-context'
 
-const props = defineProps<TocRootProps>()
+const props = withDefaults(defineProps<TocRootProps>(), {
+  autoScroll: undefined,
+})
 const emits = defineEmits<TocRootEmits>()
 
 const toc = useToc(props, emits)

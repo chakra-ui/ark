@@ -8,6 +8,7 @@ const items = Array.from({ length: 10000 }, (_, index) => ({
 
 export const DynamicSize = () => {
   const virtualizer = useListVirtualizer({
+    observeScrollElementSize: true,
     count: items.length,
     estimatedSize: () => 64,
   })

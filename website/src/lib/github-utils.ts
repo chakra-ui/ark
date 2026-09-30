@@ -1,3 +1,4 @@
+import { cacheLife } from 'next/cache'
 export interface GitHubUser {
   login: string
   name: string | null
@@ -10,10 +11,10 @@ export interface GitHubUser {
 }
 
 export async function fetchGitHubUser(username: string): Promise<GitHubUser | null> {
+  'use cache'
+  cacheLife('hours')
   try {
-    const response = await fetch(`https://api.github.com/users/${username}`, {
-      next: { revalidate: 3600 },
-    })
+    const response = await fetch(`https://api.github.com/users/${username}`, {})
     if (!response.ok) return null
     return await response.json()
   } catch (error) {
@@ -36,10 +37,10 @@ export interface Contributor {
 
 /** Repo contributors, with bots and the core team removed. */
 export async function fetchContributors(exclude: string[] = []): Promise<Contributor[]> {
+  'use cache'
+  cacheLife('days')
   try {
-    const response = await fetch('https://api.github.com/repos/chakra-ui/ark/contributors?per_page=100', {
-      next: { revalidate: 86400 },
-    })
+    const response = await fetch('https://api.github.com/repos/chakra-ui/ark/contributors?per_page=100', {})
     if (!response.ok) return []
 
     const contributors: Contributor[] = await response.json()

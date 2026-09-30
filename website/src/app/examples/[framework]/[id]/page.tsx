@@ -15,6 +15,8 @@ import { type Framework, examplesHref, isFramework } from '~/lib/frameworks'
 import { getPublicUrl } from '~/lib/get-public-url'
 import { ogImageUrl } from '~/lib/og-template'
 
+export const instant = false
+
 interface Props {
   params: Promise<{ framework: string; id: string }>
 }
@@ -23,6 +25,7 @@ export default async function Page(props: Props) {
   const { framework, id } = await props.params
   if (!isFramework(framework)) notFound()
   const example = await fetchExample(id)
+  if (!example) notFound()
 
   const isPaidExample = example.accessLevel === 'paid'
   const hasAccess = isPaidExample ? await hasUserPermission() : true

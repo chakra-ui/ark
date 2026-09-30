@@ -1,9 +1,18 @@
+import { join } from 'node:path'
 import { createMDX } from 'fumadocs-mdx/next'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactCompiler: true,
+  cacheComponents: true,
+  partialPrefetching: true,
+  outputFileTracingRoot: join(import.meta.dirname, '..'),
+  outputFileTracingIncludes: {
+    '/**': ['../packages/*/src/**/examples/**/*', '../.storybook/modules/**/*', './src/content/**/*'],
+  },
   experimental: {
     optimizePackageImports: ['@ark-ui/react'],
+    turbopackRustReactCompiler: true,
   },
   turbopack: {
     ignoreIssue: [

@@ -1,3 +1,4 @@
+import { cacheLife } from 'next/cache'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { css } from 'styled-system/css'
@@ -12,7 +13,6 @@ import { getChangelogContent, isChangelogSlug } from '~/lib/changelog'
 import { docsHref, extractFramework, frameworks } from '~/lib/frameworks'
 import { getPublicUrl } from '~/lib/get-public-url'
 import { ogImageUrl } from '~/lib/og-template'
-import { cleanupPageContent } from '~/lib/llm-content'
 import { getAllPageSlugs, getPageBySlug, getPageNavigation } from '~/lib/pages'
 import { getServerContext } from '~/lib/server-context'
 import { docsPageToc, findDocsPageBySlug } from '~/lib/source'
@@ -32,6 +32,8 @@ const articleClass = css({
 })
 
 export default async function Page(props: Props) {
+  'use cache'
+  cacheLife('hours')
   const params = await props.params
   const { framework, slug } = extractFramework(params.slug)
   const slugStr = slug.join('/')
@@ -60,11 +62,7 @@ export default async function Page(props: Props) {
             {meta.description}
           </Text>
           <Box position={{ md: 'absolute' }} top="2" right="2">
-            <CopyPageWidget
-              slug={meta.slug}
-              framework={framework}
-              content={await cleanupPageContent(meta, framework)}
-            />
+            <CopyPageWidget slug={meta.slug} framework={framework} />
           </Box>
           {changelog ? changelog.body : page && <MDXContent body={page.data.body} />}
         </article>

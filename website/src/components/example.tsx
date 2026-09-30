@@ -2,6 +2,7 @@ import { existsSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import { extname, join } from 'node:path'
 import { Match } from 'effect'
+import { cache } from 'react'
 import { css, cx } from 'styled-system/css'
 import { Stack } from 'styled-system/jsx'
 import type { SupportedLang } from '~/lib/shiki-client'
@@ -193,12 +194,12 @@ function extractCssModuleImports(code: string): string[] {
 /**
  * Fetch CSS modules used by an example (single code string)
  */
-const fetchCssModulesFromCode = async (code: string): Promise<Record<string, string>> => {
+const fetchCssModulesFromCode = (code: string) => loadCssModules(extractCssModuleImports(code).sort().join(','))
+
+const loadCssModules = cache(async (key: string): Promise<Record<string, string>> => {
   const cssModules: Record<string, string> = {}
   const modulesPath = join(process.cwd(), '..', '.storybook', 'modules')
-
-  // Extract CSS module imports from code
-  const imports = extractCssModuleImports(code)
+  const imports = key ? key.split(',') : []
 
   // Load each CSS module
   for (const moduleName of imports) {
@@ -226,4 +227,4 @@ const fetchCssModulesFromCode = async (code: string): Promise<Record<string, str
   }
 
   return cssModules
-}
+})

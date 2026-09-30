@@ -17,10 +17,6 @@ export function hasExample(component: string, example: string): boolean {
   return registryHasExample(component, example)
 }
 
-/**
- * Load an example component using static imports from the registry
- * This ensures React context is shared across all examples (no module isolation)
- */
 export function loadExample(component: string, example: string): ComponentType | null {
   // Handle special cases for progress variants
   if (component === 'progress-circular') {

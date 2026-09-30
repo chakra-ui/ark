@@ -1,3 +1,4 @@
+import { cacheLife } from 'next/cache'
 import { getHighlighter } from '~/lib/highlighter'
 import { Tabs } from '~/components/ui/tabs'
 import { CodePreview } from '../code-preview'
@@ -11,6 +12,8 @@ const frameworks = {
 }
 
 export const CodeExamples = async () => {
+  'use cache'
+  cacheLife('max')
   const highlighter = await getHighlighter()
   return (
     <Tabs.Root

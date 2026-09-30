@@ -1,4 +1,5 @@
 import { SiDiscord, SiGithub, SiX } from '@icons-pack/react-simple-icons'
+import { cacheLife } from 'next/cache'
 import NextLink from 'next/link'
 import { css } from 'styled-system/css'
 import { Box, Container, Flex, Grid, HStack, Stack } from 'styled-system/jsx'
@@ -84,7 +85,7 @@ const BottomBar = ({ withBorder }: { withBorder?: boolean }) => (
     direction={{ base: 'column', sm: 'row' }}
   >
     <Text color="fg.subtle" textStyle="sm">
-      Copyright © {new Date().getFullYear()}
+      Copyright © <CopyrightYear />
     </Text>
     <NextLink href="/team" className={linkClass}>
       Proudly made by the Chakra team
@@ -150,4 +151,10 @@ export const Footer = ({ minimal = false }: { minimal?: boolean }) => {
       </Container>
     </Box>
   )
+}
+
+const CopyrightYear = async () => {
+  'use cache'
+  cacheLife('days')
+  return new Date().getFullYear()
 }

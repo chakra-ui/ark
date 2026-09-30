@@ -1,8 +1,6 @@
 import { frameworks } from '~/lib/frameworks'
 import { getSidebarGroups } from '~/lib/sidebar'
 
-export const dynamic = 'force-static'
-
 const LABELS: Record<string, string> = { react: 'React', solid: 'Solid', vue: 'Vue', svelte: 'Svelte' }
 
 const SUMMARY =

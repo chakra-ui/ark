@@ -38,13 +38,17 @@ export const fetchExamples = async (): Promise<Example[]> => {
   return examples
 }
 
-export const fetchExample = async (id: string): Promise<Example> => {
-  const example: Example = await fetch(`${ARK_PLUS_URL}/api/examples/${id}`, {
+export const fetchExample = async (id: string): Promise<Example | null> => {
+  const example: Example | null = await fetch(`${ARK_PLUS_URL}/api/examples/${id}`, {
     headers: {
       Authorization: ARK_PLUS_API_KEY,
     },
     cache: 'no-cache',
-  }).then((res) => res.json())
+  })
+    .then((res) => (res.ok ? res.json() : null))
+    .catch(() => null)
+
+  if (!example) return null
 
   return {
     ...example,
