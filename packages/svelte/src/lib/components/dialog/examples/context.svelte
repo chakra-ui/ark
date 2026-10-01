@@ -18,7 +18,7 @@
         <Dialog.Title class={styles.Title}>Status</Dialog.Title>
         <Dialog.Description class={styles.Description}>
           <Dialog.Context>
-            {#snippet children(dialog)}
+            {#snippet render(dialog)}
               <span>Dialog is {dialog().open ? 'open' : 'closed'}</span>
             {/snippet}
           </Dialog.Context>
