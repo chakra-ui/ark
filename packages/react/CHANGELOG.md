@@ -1,5 +1,36 @@
 # @ark-ui/react
 
+## [5.39.3] - 2026-10-02
+
+### Fixed
+
+- Align the last six parts that rendered a different element across adapters: `Toggle.Indicator`, `AngleSlider.Marker`,
+  `AngleSlider.ValueText` and `Listbox.ItemText` render `span`, `Popover.Title` renders `h2`, and Svelte's
+  `NumberInput.Scrubber` renders `div`.
+- - **Select**: Export `SelectIntlTranslations`, `SelectPositioningOptions`, `SelectScrollToIndexDetails` and
+    `SelectSelectionDetails`.
+  - **Clipboard**: Export `ClipboardValueChangeDetails`.
+  - **DateInput**: Export `DateInputPlaceholderChangeDetails`.
+  - **ImageCropper**: Export `ImageCropperRect`.
+  - **QrCode**: Export `QrCodeValueChangeDetails`.
+  - **Steps**: Export `StepInvalidDetails`. In Vue, this fixes TS2883 ("cannot be named without a reference to …") when
+    emitting declarations for a component that wraps one of these roots, for example a generic `Select.Root` wrapper
+    built with pnpm.
+- - **Field**: Fix `Field.ErrorText` not being announced by VoiceOver and Narrator. It is now linked via
+    `aria-describedby` instead of `aria-errormessage`, since screen reader support for `aria-errormessage` is still
+    incomplete.
+    ```diff
+    - expect(input).toHaveAccessibleErrorMessage('Error Info')
+    + expect(input).toHaveAccessibleDescription(expect.stringContaining('Error Info'))
+    ```
+- Fix `Toaster` dropping the group props it accepts. `dir` and `getRootNode` were typed on the component but never
+  reached the group machine — the locale and environment contexts always won, and both props were spread onto the region
+  element instead. The toast region's `aria-label` is now settable through a `label` prop, which is forwarded to
+  `getGroupProps`.
+- Fix `Tour.Spotlight` disappearing immediately when the tour closes, so its exit animation can run.
+- Export the missing Tour types, including `TourStepsChangeDetails` for `onStepsChange`, and add flat `Tour*` aliases
+  for the step, action, and callback detail types.
+
 ## [5.39.2] - 2026-09-11
 
 ### Fixed

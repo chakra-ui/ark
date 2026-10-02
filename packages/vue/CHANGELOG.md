@@ -1,5 +1,69 @@
 # @ark-ui/vue
 
+## [5.39.3] - 2026-10-02
+
+### Fixed
+
+- Align the last six parts that rendered a different element across adapters: `Toggle.Indicator`, `AngleSlider.Marker`,
+  `AngleSlider.ValueText` and `Listbox.ItemText` render `span`, `Popover.Title` renders `h2`, and Svelte's
+  `NumberInput.Scrubber` renders `div`.
+- - **Select**: Export `SelectIntlTranslations`, `SelectPositioningOptions`, `SelectScrollToIndexDetails` and
+    `SelectSelectionDetails`.
+  - **Clipboard**: Export `ClipboardValueChangeDetails`.
+  - **DateInput**: Export `DateInputPlaceholderChangeDetails`.
+  - **ImageCropper**: Export `ImageCropperRect`.
+  - **QrCode**: Export `QrCodeValueChangeDetails`.
+  - **Steps**: Export `StepInvalidDetails`. In Vue, this fixes TS2883 ("cannot be named without a reference to …") when
+    emitting declarations for a component that wraps one of these roots, for example a generic `Select.Root` wrapper
+    built with pnpm.
+- - **Field**: Fix `Field.ErrorText` not being announced by VoiceOver and Narrator. It is now linked via
+    `aria-describedby` instead of `aria-errormessage`, since screen reader support for `aria-errormessage` is still
+    incomplete.
+    ```diff
+    - expect(input).toHaveAccessibleErrorMessage('Error Info')
+    + expect(input).toHaveAccessibleDescription(expect.stringContaining('Error Info'))
+    ```
+- - **Progress, QrCode**: Fix `Root` not emitting `valueChange` and `update:modelValue`, so `v-model` stayed stale after
+    `setValue()` from context.
+  - **QrCode**: Fix `QrCode.Context` being undefined because it was exported under the wrong name.
+- Fix `Toaster` dropping the group props it accepts. `dir` and `getRootNode` were typed on the component but never
+  reached the group machine — the locale and environment contexts always won, and both props were spread onto the region
+  element instead. The toast region's `aria-label` is now settable through a `label` prop, which is forwarded to
+  `getGroupProps`.
+- Fix `Tour.Spotlight` disappearing immediately when the tour closes, so its exit animation can run. It also now sets
+  `data-state`.
+- Export the missing Tour types, including `TourStepsChangeDetails` for `onStepsChange`, and add flat `Tour*` aliases
+  for the step, action, and callback detail types.
+- Fix `aria-label` and `aria-labelledby` being ignored on `AngleSlider.Root`, `Slider.Root`, `Dialog.Root`, `Menu.Root`,
+  and `Tooltip.Root`. For example, `<AngleSlider.Root aria-label="Rotation">` now names the thumb.
+- Fix `Avatar.Image`, `ImageCropper.Image`, `Menu.Separator`, and `PasswordInput.Input` rendering nothing when using
+  `asChild`.
+- - **ImageCropper**: Fix `ImageCropper.Root` ignoring all of its props, such as `fixedCropArea`, `aspectRatio`, and
+    `initialCrop`.
+  - **Accordion**: Fix `Accordion.Item` not inheriting `disabled` from `Accordion.Root`.
+  - **ColorPicker**: Fix `ColorPicker.Swatch` and `ColorPicker.ValueSwatch` dropping the alpha channel by default.
+  - **DatePicker**: Fix `DatePicker.Input` not committing the typed date on blur by default.
+  - **NavigationMenu**: Fix `NavigationMenu.Link` not closing the menu when clicked.
+  - **Toc**: Fix `Toc.Root` not auto-scrolling to the active item by default.
+- - **Select, Listbox, TreeView**: Fix `Context` slot items typed as `unknown` inside generic wrapper components.
+  - Fix `Cannot find name '__VLS_Slots'` type errors when `skipLibCheck` is disabled.
+- - **Highlight**: Fix `class`, `style` and other attributes not being forwarded to the rendered `<mark>` elements.
+- - **JsonTreeView**: Fix `v-model:expanded-value`, `v-model:selected-value`, `v-model:checked-value` and
+    `v-model:focused-value` not updating, and the tree not re-rendering when `data` changes. `useJsonTreeView` now also
+    reacts to `data` changes.
+- - **Combobox**: Fix `select` event not being emitted when an item is selected.
+  - **Menu, Popover**: Fix `requestDismiss` event not being emitted when a parent layer closes.
+- - **NumberInput**: Fix `NumberInput.ValueText` rendering empty when used without a default slot. It now displays the
+    current value.
+- - **Tour**: Fix `Tour.RootEmits` declaring `statusChange`, `stepChange` and other machine events that `Tour.Root`
+    never emits. It now only declares `enterComplete` and `exitComplete`. Pass `onStatusChange`, `onStepChange` and the
+    other callbacks to `useTour` instead.
+  - **Presence**: Fix the `enterComplete` and `exitComplete` event descriptions being swapped.
+- - **TreeView**: Fix `TreeView.RootEmits<T>` and `useTreeView` losing the node type, so `selectedNodes`,
+    `expandedNodes` and `focusedNode` are typed as `T` instead of `TreeNode`.
+  - **TreeView**: Remove the `fallback` and `indeterminate` props from `TreeView.NodeCheckboxIndicator`. They were never
+    rendered; use the `#fallback` and `#indeterminate` slots instead.
+
 ## [5.39.2] - 2026-09-11
 
 ### Fixed
