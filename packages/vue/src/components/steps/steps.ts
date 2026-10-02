@@ -1,4 +1,4 @@
-export type { StepChangeDetails } from '@zag-js/steps'
+export type { StepChangeDetails, StepInvalidDetails } from '@zag-js/steps'
 export {
   default as Content,
   type StepsContentBaseProps as ContentBaseProps,

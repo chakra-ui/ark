@@ -1,4 +1,7 @@
-export type { CopyStatusDetails as ClipboardCopyStatusDetails } from '@zag-js/clipboard'
+export type {
+  CopyStatusDetails as ClipboardCopyStatusDetails,
+  ValueChangeDetails as ClipboardValueChangeDetails,
+} from '@zag-js/clipboard'
 export { default as ClipboardContext, type ClipboardContextProps } from './clipboard-context.svelte'
 export {
   default as ClipboardControl,
