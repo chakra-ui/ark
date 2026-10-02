@@ -8,7 +8,7 @@ export type Accessor<T> = () => T
 export type HTMLTag = keyof SvelteHTMLElements
 export type PropsFn<T extends HTMLTag> = (props?: HTMLProps<T>) => PartProps
 
-export type PartProps = Omit<HTMLAttributes<HTMLElement>, 'id'> & { id?: string | undefined }
+export type PartProps = Omit<HTMLAttributes<any>, 'id'> & { id?: string | undefined }
 
 export type HTMLProps<T extends HTMLTag> = SvelteHTMLElements[T]
 
