@@ -30,7 +30,7 @@
     [createAttachmentKey()]: (node: Element) => {
       ref = node
       return () => {
-        ref = null
+        if (ref === node) ref = null
       }
     },
   }
