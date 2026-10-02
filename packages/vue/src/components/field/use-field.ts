@@ -119,12 +119,16 @@ export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
   }
 
   const errorMessageId = computed(() => (state.hasErrorText && toValue(props).invalid ? errorTextId.value : undefined))
+  const describedById = computed(
+    () =>
+      [errorMessageId.value, state.hasHelperText ? helperTextId.value : undefined].filter(Boolean).join(' ') ||
+      undefined,
+  )
 
   const getControlProps = () => {
     const values = toValue(props)
     return {
-      'aria-describedby': state.hasHelperText ? helperTextId.value : undefined,
-      'aria-errormessage': errorMessageId.value,
+      'aria-describedby': describedById.value,
       'aria-invalid': ariaAttr(values.invalid),
       'data-invalid': dataAttr(values.invalid),
       'data-required': dataAttr(values.required),
@@ -174,7 +178,7 @@ export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
   return computed(() => {
     const values = toValue(props)
     return {
-      ariaDescribedby: state.hasHelperText ? helperTextId.value : undefined,
+      ariaDescribedby: describedById.value,
       ids: {
         control: id.value,
         label: labelId.value,
