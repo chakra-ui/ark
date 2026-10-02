@@ -24,7 +24,12 @@ const nextConfig = {
     return [
       {
         source: '/examples',
-        destination: '/examples/checkbox-group',
+        destination: '/examples/react/checkbox-group',
+        permanent: false,
+      },
+      {
+        source: '/examples/:id',
+        destination: '/examples/react/:id',
         permanent: false,
       },
       {
