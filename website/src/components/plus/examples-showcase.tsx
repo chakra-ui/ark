@@ -8,6 +8,7 @@ import { Heading } from '~/components/ui/heading'
 import { Icon } from '~/components/ui/icon'
 import { Text } from '~/components/ui/text'
 import { fetchExamples } from '~/lib/examples'
+import { defaultFramework, examplesHref } from '~/lib/frameworks'
 
 export const ExamplesShowcase = async () => {
   'use cache'
@@ -29,7 +30,7 @@ export const ExamplesShowcase = async () => {
 
         <Grid columns={{ base: 1, sm: 2, lg: 3 }} gap="6" maxW="5xl" width="full">
           {featuredExamples.map((example) => (
-            <NextLink key={example.id} href={`/examples/${example.id}`} className={link()}>
+            <NextLink key={example.id} href={examplesHref(defaultFramework, example.id)} className={link()}>
               <HStack gap="2" mb="2">
                 <Text fontWeight="medium" flex="1">
                   {example.title}
