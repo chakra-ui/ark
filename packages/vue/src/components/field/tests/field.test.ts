@@ -33,7 +33,7 @@ describe('Field', () => {
     render(ComponentUnderTest, { props: { invalid: true } })
     await nextTick()
     expect(screen.getByText('Error Info')).toBeInTheDocument()
-    expect(screen.getByRole('textbox')).toHaveAccessibleErrorMessage('Error Info')
+    expect(screen.getByRole('textbox')).toHaveAccessibleDescription(expect.stringContaining('Error Info'))
   })
 
   it('should focus on input when label is clicked', async () => {

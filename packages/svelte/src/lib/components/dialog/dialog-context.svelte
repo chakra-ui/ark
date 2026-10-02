@@ -3,16 +3,20 @@
   import type { UseDialogContext } from './use-dialog-context.ts'
 
   export interface DialogContextProps {
-    children: Snippet<[UseDialogContext]>
+    render?: Snippet<[UseDialogContext]>
+    /**
+     * @deprecated Use `render` instead.
+     */
+    children?: Snippet<[UseDialogContext]>
   }
 </script>
 
 <script lang="ts">
   import { useDialogContext } from './use-dialog-context.ts'
 
-  const { children }: DialogContextProps = $props()
+  const { render, children }: DialogContextProps = $props()
 
   const dialog = useDialogContext()
 </script>
 
-{@render children(dialog)}
+{@render (render ?? children)?.(dialog)}

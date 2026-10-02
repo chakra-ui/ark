@@ -108,10 +108,12 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
   })
 
   const errorMessageId = createMemo(() => (hasErrorText() && fieldProps.invalid ? errorTextId : undefined))
+  const describedById = createMemo(
+    () => [errorMessageId(), hasHelperText() ? helperTextId : undefined].filter(Boolean).join(' ') || undefined,
+  )
 
   const getControlProps = () => ({
-    'aria-describedby': hasHelperText() ? helperTextId : undefined,
-    'aria-errormessage': errorMessageId(),
+    'aria-describedby': describedById(),
     'aria-invalid': ariaAttr(fieldProps.invalid),
     'data-invalid': dataAttr(fieldProps.invalid),
     'data-required': dataAttr(fieldProps.required),
@@ -155,7 +157,7 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
   })
 
   return createMemo(() => ({
-    ariaDescribedby: hasHelperText() ? helperTextId : undefined,
+    ariaDescribedby: describedById(),
     ids: {
       control: id,
       label: labelId,

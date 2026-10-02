@@ -6,6 +6,7 @@ export type {
   RotationChangeDetails as ImageCropperRotationChangeDetails,
   ZoomChangeDetails as ImageCropperZoomChangeDetails,
 } from '@zag-js/image-cropper'
+export type { Rect as ImageCropperRect } from '@zag-js/types'
 export { default as ImageCropperContext, type ImageCropperContextProps } from './image-cropper-context.svelte'
 export {
   default as ImageCropperGrid,

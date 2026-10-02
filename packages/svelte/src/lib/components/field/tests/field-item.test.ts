@@ -96,7 +96,7 @@ describe('Field / Item', () => {
     expect(screen.getByTestId('amount-input')).toHaveAttribute('aria-invalid', 'true')
     expect(screen.getByTestId('amount-input')).toHaveAttribute('data-invalid')
     expect(screen.getByText('Invalid amount')).toBeInTheDocument()
-    expect(screen.getByTestId('amount-input')).toHaveAccessibleErrorMessage('Invalid amount')
+    expect(screen.getByTestId('amount-input')).toHaveAccessibleDescription(expect.stringContaining('Invalid amount'))
   })
 
   it('should throw when Field.Item is used outside Field.Root', () => {

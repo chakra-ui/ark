@@ -22,22 +22,26 @@ export interface UseJsonTreeViewReturn extends Accessor<
 const splitJsonTreeViewProps = createSplitProps<JsonTreeViewOptions>()
 
 export const useJsonTreeView = (props: MaybeFunction<UseJsonTreeViewProps>): UseJsonTreeViewReturn => {
-  const [jsonTreeProps, localProps] = splitJsonTreeViewProps(runIfFn(props), [
-    'maxPreviewItems',
-    'collapseStringsAfterLength',
-    'quotesOnKeys',
-    'groupArraysAfterLength',
-    'showNonenumerable',
-  ])
+  const [jsonTreeProps, localProps] = $derived(
+    splitJsonTreeViewProps(runIfFn(props), [
+      'maxPreviewItems',
+      'collapseStringsAfterLength',
+      'quotesOnKeys',
+      'groupArraysAfterLength',
+      'showNonenumerable',
+    ]),
+  )
 
-  const machineProps = $derived.by<UseTreeViewProps<JsonNode>>(() => {
-    const { data, defaultExpandedDepth, ...restProps } = localProps
-
-    const collection = createTreeCollection<JsonNode>({
+  const collection = $derived(
+    createTreeCollection<JsonNode>({
       nodeToValue,
       nodeToString,
-      rootNode: getRootNode(data),
-    })
+      rootNode: getRootNode(localProps.data),
+    }),
+  )
+
+  const machineProps = $derived.by<UseTreeViewProps<JsonNode>>(() => {
+    const { data: _, defaultExpandedDepth, ...restProps } = localProps
 
     const defaultExpandedValue = untrack(() =>
       defaultExpandedDepth != null ? getBranchValues(collection, defaultExpandedDepth) : undefined,

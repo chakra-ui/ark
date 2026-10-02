@@ -28,11 +28,11 @@ export interface RootProps {
 
 export type RootEmits = {
   /**
-   * Function called when the animation ends in the closed state
-   */
-  /**
    * Function called when the animation ends in the open state
    */
   enterComplete: []
+  /**
+   * Function called when the animation ends in the closed state
+   */
   exitComplete: []
 }
