@@ -19,35 +19,39 @@ export interface UseJsonTreeViewReturn extends ComputedRef<
 const splitJsonTreeViewProps = createSplitProps<JsonTreeViewOptions>()
 
 export const useJsonTreeView = (props: MaybeRef<UseJsonTreeViewProps>): UseJsonTreeViewReturn => {
-  const [jsonTreeProps, localProps] = splitJsonTreeViewProps(toValue(props), [
-    'maxPreviewItems',
-    'collapseStringsAfterLength',
-    'quotesOnKeys',
-    'groupArraysAfterLength',
-    'showNonenumerable',
-  ])
+  const splitProps = computed(() =>
+    splitJsonTreeViewProps(toValue(props), [
+      'maxPreviewItems',
+      'collapseStringsAfterLength',
+      'quotesOnKeys',
+      'groupArraysAfterLength',
+      'showNonenumerable',
+    ]),
+  )
 
-  const machineProps = computed<UseTreeViewProps<JsonNode>>(() => {
-    const { data, defaultExpandedDepth, ...restProps } = localProps
-
-    const collection = createTreeCollection<JsonNode>({
+  const collection = computed(() =>
+    createTreeCollection<JsonNode>({
       nodeToValue,
       nodeToString,
-      rootNode: getRootNode(data),
-    })
+      rootNode: getRootNode(toValue(props).data),
+    }),
+  )
+
+  const machineProps = computed<UseTreeViewProps<JsonNode>>(() => {
+    const { data: _, defaultExpandedDepth, ...restProps } = splitProps.value[1]
 
     const defaultExpandedValue =
-      defaultExpandedDepth != null ? getBranchValues(collection, defaultExpandedDepth) : undefined
+      defaultExpandedDepth != null ? getBranchValues(collection.value, defaultExpandedDepth) : undefined
 
     return {
       defaultExpandedValue,
       ...restProps,
-      collection,
+      collection: collection.value,
       typeahead: false,
     }
   })
 
   const treeView = useTreeView(machineProps)
 
-  return computed(() => ({ ...treeView.value, options: jsonTreeProps }))
+  return computed(() => ({ ...treeView.value, options: splitProps.value[0] }))
 }
