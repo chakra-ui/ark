@@ -23,6 +23,11 @@ const emit = defineEmits<{
 
 const tree = useTreeViewContext()
 const nodeState = tree.value.getNodeState(props)
+
+const addChild = () => {
+  emit('add', { node: props.node, indexPath: props.indexPath })
+  tree.value.expand([props.node.id])
+}
 </script>
 
 <template>
@@ -38,13 +43,7 @@ const nodeState = tree.value.getNodeState(props)
             <button :class="styles.Action" @click.stop="emit('remove', { node, indexPath })">
               <Trash />
             </button>
-            <button
-              :class="styles.Action"
-              @click.stop="
-                emit('add', { node, indexPath })
-                tree.expand([node.id])
-              "
-            >
+            <button :class="styles.Action" @click.stop="addChild">
               <Plus />
             </button>
           </div>
