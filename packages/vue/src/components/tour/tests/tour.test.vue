@@ -1,9 +1,15 @@
 <script setup lang="ts">
-import { type Tour, type TourStepDetails, useTour } from '@ark-ui/vue/tour'
+import {
+  Tour,
+  type TourStatusChangeDetails,
+  type TourStepChangeDetails,
+  type TourStepDetails,
+  useTour,
+} from '@ark-ui/vue/tour'
 
 const props = defineProps<{
-  onStatusChange: (details: Tour.StatusChangeDetails) => void
-  onStepChange: (details: Tour.StepChangeDetails) => void
+  onStatusChange: (details: TourStatusChangeDetails) => void
+  onStepChange: (details: TourStepChangeDetails) => void
 }>()
 
 const steps: TourStepDetails[] = [
