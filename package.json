@@ -44,7 +44,7 @@
     "@shikijs/themes": "4.4.3",
     "@types/bun": "1.4.2",
     "lefthook": "2.1.14",
-    "next": "15.5.26",
+    "next": "16.3.8",
     "prettier": "3.9.9",
     "prettier-plugin-svelte": "4.1.1",
     "typescript": "6.0.3",
