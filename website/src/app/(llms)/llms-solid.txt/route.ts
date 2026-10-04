@@ -1,4 +1,4 @@
-import { cleanupPageContent } from '~/app/(llms)/shared'
+import { cleanupPageContent } from '~/lib/llm-content'
 import { getSidebarGroupsWithPages } from '~/lib/sidebar'
 import type { Pages } from '.velite'
 
@@ -13,7 +13,7 @@ const generateCategorySection = async (group: { title: string; items: Pages[] })
 }
 
 export const GET = async () => {
-  const sidebarGroups = getSidebarGroupsWithPages()
+  const sidebarGroups = getSidebarGroupsWithPages('solid')
   const content = await Promise.all(sidebarGroups.map(generateCategorySection)).then((sections) =>
     sections.join('\n\n'),
   )

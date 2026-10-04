@@ -98,12 +98,6 @@
       }
     }
   },
-  "NodeCheckboxIndicator": {
-    "props": {
-      "fallback": { "type": "{}", "isRequired": false },
-      "indeterminate": { "type": "{}", "isRequired": false }
-    }
-  },
   "NodeCheckbox": {
     "props": {
       "asChild": {

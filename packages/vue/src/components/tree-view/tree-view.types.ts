@@ -86,15 +86,15 @@ export type RootEmits<T extends TreeNode> = {
   /**
    * Called when the tree is opened or closed
    */
-  expandedChange: [details: treeView.ExpandedChangeDetails]
+  expandedChange: [details: treeView.ExpandedChangeDetails<T>]
   /**
    * Called when the focused node changes
    */
-  focusChange: [details: treeView.FocusChangeDetails]
+  focusChange: [details: treeView.FocusChangeDetails<T>]
   /**
    * Called when the selection changes
    */
-  selectionChange: [details: treeView.SelectionChangeDetails]
+  selectionChange: [details: treeView.SelectionChangeDetails<T>]
   /**
    * Called when the checked value changes
    */

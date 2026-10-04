@@ -56,7 +56,7 @@
         "description": "The qr code encoding options."
       },
       "ids": {
-        "type": "Partial<{ root: string; frame: string }>",
+        "type": "Partial<{ root: string; frame: string; overlay: string }>",
         "isRequired": false,
         "description": "The element ids."
       },

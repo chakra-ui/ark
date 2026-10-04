@@ -19,7 +19,15 @@
   export interface JsonTreeViewRootProps
     extends Omit<TreeViewRootProps<JsonNode>, 'collection'>, JsonTreeViewRootBaseProps {}
 
-  const { data, defaultExpandedDepth, ...props }: JsonTreeViewRootProps = $props()
+  let {
+    data,
+    defaultExpandedDepth,
+    expandedValue = $bindable<string[]>(),
+    selectedValue = $bindable<string[]>(),
+    focusedValue = $bindable<string>(),
+    checkedValue = $bindable<string[]>(),
+    ...props
+  }: JsonTreeViewRootProps = $props()
 
   const splitJsonTreeViewProps = createSplitProps<JsonTreeViewOptions>()
 
@@ -48,6 +56,15 @@
   JsonTreeViewPropsProvider(() => jsonTreeProps)
 </script>
 
-<TreeView.Root data-scope="json-tree-view" {collection} {defaultExpandedValue} {...localProps}>
+<TreeView.Root
+  data-scope="json-tree-view"
+  {collection}
+  {defaultExpandedValue}
+  bind:expandedValue
+  bind:selectedValue
+  bind:focusedValue
+  bind:checkedValue
+  {...localProps}
+>
   {@render props.children?.()}
 </TreeView.Root>

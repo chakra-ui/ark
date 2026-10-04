@@ -1,8 +1,8 @@
 'use client'
 
-import { ariaAttr, dataAttr } from '@zag-js/dom-query'
 import { useId, useMemo, useRef, useState } from 'react'
 import { useEnvironmentContext } from '../../providers/index.ts'
+import { ariaAttr, dataAttr } from '../../utils/attr.ts'
 import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect.ts'
 import type { HTMLProps } from '../factory.ts'
 import { useFieldsetContext } from '../fieldset/use-fieldset-context.ts'
@@ -124,12 +124,13 @@ export const useField = (props: UseFieldProps = {}) => {
   )
 
   const errorMessageId = hasErrorText && invalid ? errorTextId : undefined
+  const describedById =
+    [errorMessageId, hasHelperText ? helperTextId : undefined].filter(Boolean).join(' ') || undefined
 
   const getControlProps = useMemo(
     () => () =>
       ({
-        'aria-describedby': hasHelperText ? helperTextId : undefined,
-        'aria-errormessage': errorMessageId,
+        'aria-describedby': describedById,
         'aria-invalid': ariaAttr(invalid),
         'data-invalid': dataAttr(invalid),
         'data-required': dataAttr(required),
@@ -139,7 +140,7 @@ export const useField = (props: UseFieldProps = {}) => {
         disabled,
         readOnly,
       }) as HTMLProps<'input'>,
-    [hasHelperText, helperTextId, invalid, required, readOnly, id, errorMessageId, disabled],
+    [describedById, invalid, required, readOnly, id, disabled],
   )
 
   const getInputProps = useMemo(
@@ -199,7 +200,7 @@ export const useField = (props: UseFieldProps = {}) => {
   )
 
   return {
-    ariaDescribedby: hasHelperText ? helperTextId : undefined,
+    ariaDescribedby: describedById,
     ids: {
       root: rootId,
       control: id,

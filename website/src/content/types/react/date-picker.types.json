@@ -385,7 +385,7 @@
         "description": "The time zone to use"
       },
       "translations": {
-        "type": "IntlTranslations",
+        "type": "Partial<IntlTranslations>",
         "isRequired": false,
         "description": "The localized messages to use."
       },

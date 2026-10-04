@@ -1,3 +1,4 @@
+export type { PlaceholderChangeDetails } from '@zag-js/date-input'
 export { DateInputContext as Context, type DateInputContextProps as ContextProps } from './date-input-context.tsx'
 export {
   DateInputLabel as Label,

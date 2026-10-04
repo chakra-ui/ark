@@ -8,7 +8,7 @@ import type { TreeCollection, TreeNode } from '../collection/index.ts'
 import type { RootEmits } from './tree-view.types.ts'
 
 export interface UseTreeViewProps<T extends TreeNode> extends Optional<
-  Omit<treeView.Props, 'dir' | 'getRootNode' | 'collection'>,
+  Omit<treeView.Props<T>, 'dir' | 'getRootNode' | 'collection'>,
   'id'
 > {
   /**

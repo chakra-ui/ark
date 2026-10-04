@@ -3,6 +3,7 @@ import { Collapsible } from '@ark-ui/react/collapsible'
 import { ChevronRightIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useEffect, useRef } from 'react'
 import { Badge } from '~/components/ui/badge'
 import { Icon } from '~/components/ui/icon'
 import type { SidebarGroup } from '~/lib/sidebar'
@@ -17,6 +18,13 @@ interface Props {
 export const DocsSidebar = (props: Props) => {
   const { groups } = props
   const pathname = usePathname()
+  const currentRef = useRef<HTMLAnchorElement>(null)
+
+  // On load the sidebar starts at the top, so a page low in the list is scrolled out of sight.
+  // `nearest` brings it in without moving anything when it is already visible.
+  useEffect(() => {
+    currentRef.current?.scrollIntoView({ block: 'nearest' })
+  }, [])
 
   return (
     <nav>
@@ -34,11 +42,13 @@ export const DocsSidebar = (props: Props) => {
                 <ul>
                   {group.items.map((item) => {
                     const href = `/docs/${item.slug}`
+                    const isCurrent = pathname === href
                     return (
                       <li key={item.id}>
                         <NextLink
+                          ref={isCurrent ? currentRef : undefined}
                           href={href}
-                          aria-current={pathname === href ? 'page' : undefined}
+                          aria-current={isCurrent ? 'page' : undefined}
                           className={styles.link}
                         >
                           {item.title}

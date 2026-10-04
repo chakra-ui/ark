@@ -1,8 +1,8 @@
 import { useEnvironmentContext } from '$lib/providers'
 import type { HTMLProps } from '$lib/types'
-import { ariaAttr, dataAttr } from '@zag-js/dom-query'
 import { type MaybeFunction, ensureProps, runIfFn } from '@zag-js/utils'
 import { onMount } from 'svelte'
+import { ariaAttr, dataAttr } from '../../utils/attr.ts'
 import { useFieldsetContext } from '../fieldset/use-fieldset-context.ts'
 import { parts } from './field.anatomy.ts'
 
@@ -99,6 +99,9 @@ export const useField = (inProps: MaybeFunction<UseFieldProps> = {}) => {
   })
 
   const errorMessageId = $derived(hasErrorText && invalid ? errorTextId : undefined)
+  const describedById = $derived(
+    [errorMessageId, hasHelperText ? helperTextId : undefined].filter(Boolean).join(' ') || undefined,
+  )
 
   const getRootProps = () =>
     ({
@@ -125,8 +128,7 @@ export const useField = (inProps: MaybeFunction<UseFieldProps> = {}) => {
 
   const getControlProps = () =>
     ({
-      'aria-describedby': hasHelperText ? helperTextId : undefined,
-      'aria-errormessage': errorMessageId,
+      'aria-describedby': describedById,
       'aria-invalid': ariaAttr(invalid),
       'data-invalid': dataAttr(invalid),
       'data-required': dataAttr(required),
@@ -177,7 +179,7 @@ export const useField = (inProps: MaybeFunction<UseFieldProps> = {}) => {
 
   const api = $derived({
     setRootRef,
-    ariaDescribedby: hasHelperText ? helperTextId : undefined,
+    ariaDescribedby: describedById,
     ids: {
       root: rootId,
       control: controlId,

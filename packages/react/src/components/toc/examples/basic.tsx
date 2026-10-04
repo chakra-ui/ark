@@ -1,0 +1,47 @@
+import { Toc } from '@ark-ui/react/toc'
+import { useRef } from 'react'
+import styles from 'styles/toc.module.css'
+
+const items = [
+  { value: '01-introduction', depth: 2, label: 'Introduction', lines: 12 },
+  { value: '01-getting-started', depth: 2, label: 'Getting Started', lines: 10 },
+  { value: '01-installation', depth: 2, label: 'Installation', lines: 8 },
+  { value: '01-usage', depth: 2, label: 'Usage', lines: 14 },
+  { value: '01-conclusion', depth: 2, label: 'Conclusion', lines: 10 },
+]
+
+export const Basic = () => {
+  const contentRef = useRef<HTMLElement | null>(null)
+
+  return (
+    <Toc.Root className={styles.Root} items={items} scrollEl={() => contentRef.current}>
+      <Toc.Content className={styles.Content} ref={contentRef}>
+        {items.map((item) => (
+          <section key={item.value} className={styles.Section}>
+            <h2 id={item.value} className={styles.Heading} data-depth={item.depth}>
+              {item.label}
+            </h2>
+            <div className={styles.DummyText}>
+              {Array.from({ length: item.lines }).map((_, i) => (
+                <div key={i} className={styles.DummyLine} />
+              ))}
+            </div>
+          </section>
+        ))}
+      </Toc.Content>
+
+      <Toc.Nav className={styles.Nav}>
+        <Toc.Title className={styles.Title}>On this page</Toc.Title>
+        <Toc.List className={styles.List}>
+          {items.map((item) => (
+            <Toc.Item className={styles.Item} key={item.value} item={item}>
+              <Toc.Link className={styles.Link} href={`#${item.value}`}>
+                {item.label}
+              </Toc.Link>
+            </Toc.Item>
+          ))}
+        </Toc.List>
+      </Toc.Nav>
+    </Toc.Root>
+  )
+}

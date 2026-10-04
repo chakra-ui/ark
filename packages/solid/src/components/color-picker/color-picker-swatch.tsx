@@ -1,5 +1,6 @@
 import type { SwatchProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/solid'
+import { createMemo } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useColorPickerContext } from './use-color-picker-context.ts'
@@ -9,9 +10,13 @@ export interface ColorPickerSwatchBaseProps extends SwatchProps, PolymorphicProp
 export interface ColorPickerSwatchProps extends HTMLProps<'div'>, ColorPickerSwatchBaseProps {}
 
 export const ColorPickerSwatch = (props: ColorPickerSwatchProps) => {
-  const [swatchProps, localProps] = createSplitProps<SwatchProps>()(props, ['respectAlpha', 'value'])
+  const [itemProps, localProps] = createSplitProps<SwatchProps>()(props, ['respectAlpha', 'value'])
   const api = useColorPickerContext()
-  const mergedProps = mergeProps(() => api().getSwatchProps(swatchProps), localProps)
+  const swatchProps = createMemo(() => ({
+    respectAlpha: itemProps.respectAlpha,
+    value: itemProps.value,
+  }))
+  const mergedProps = mergeProps(() => api().getSwatchProps(swatchProps()), localProps)
 
   return (
     <ColorPickerSwatchPropsProvider value={swatchProps}>

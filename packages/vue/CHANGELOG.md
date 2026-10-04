@@ -1,5 +1,115 @@
 # @ark-ui/vue
 
+## [5.39.2] - 2026-09-11
+
+### Fixed
+
+- Fix `./hotkeys` and `./interaction` entrypoints missing from the published `exports` map. The build files shipped, but
+  the publish config (`clean-package`) maintains its own `exports` map and was never updated when the `hotkeys` and
+  `interaction` primitives were added, so `import { useHotkeys } from '@ark-ui/react/hotkeys'` failed with
+  `ERR_MODULE_NOT_FOUND`. Both entrypoints are now included in the published map for every framework.
+
+## [5.39.1] - 2026-08-28
+
+### Fixed
+
+- Fix `NavigationMenu.Content` throwing `document is not defined` during SSR.
+
+## [5.39.0] - 2026-08-21
+
+### Added
+
+- **Toc** [New]: Add a table of contents component that tracks which headings are in view as the reader scrolls. Pass
+  the headings to `Toc.Root` as `items`, where each entry needs the heading element's `id` as `value` and its level as
+  `depth`. Set `scrollEl` when the content scrolls inside a container rather than the page, so tracking observes that
+  element instead of the viewport.
+  ```tsx
+  <Toc.Root items={items} scrollEl={() => contentRef.current}>
+    <Toc.Content />
+    <Toc.Nav>
+      <Toc.Title />
+      <Toc.List>
+        <Toc.Indicator />
+        <Toc.Item item={item}>
+          <Toc.Link />
+        </Toc.Item>
+      </Toc.List>
+    </Toc.Nav>
+  </Toc.Root>
+  ```
+  More than one heading can be active at once, so `Toc.Item` carries `data-first` and `data-last` to mark the ends of
+  the range, and `Toc.Indicator` spans it. Use `useToc` with `Toc.RootProvider` to reach `activeItems` and `scrollTo`
+  from outside the tree. The API may still change while the component is in preview.
+- **Hotkeys** [New]: Add a `hotkeys` entrypoint with hooks for registering and inspecting keyboard shortcuts, built on
+  `@zag-js/hotkeys`. `useHotkey` registers one command. `useHotkeys` registers several. `mod+K` resolves per platform,
+  and sequences like `G > H` go through the same hook. Command ids are optional and generated when omitted.
+  ```tsx
+  useHotkey({ hotkey: 'mod+K', action: openSearch })
+  useHotkeys({
+    commands: [
+      { hotkey: 'mod+S', action: save, label: 'Save', category: 'File' },
+      { hotkey: 'G > H', action: goHome, label: 'Home' },
+    ],
+  })
+  ```
+  `useHotkeyRegistrations` returns those commands with their metadata (`label`, `description`, `category`, `keywords`),
+  so a command palette or shortcut dialog can render from the same registration that binds the key. Pass a store from
+  `createHotkeyStore` to scope a set of commands. Without one, hooks share a default store.
+  ```tsx
+  const store = createHotkeyStore()
+  useHotkeys({ commands, store })
+  const registered = useHotkeyRegistrations({ store })
+  ```
+  Active scopes, conflict behavior, sequence timeout, and default options are configured on the store. `usePressedKeys`
+  and `useIsKeyPressed` track live key state. `useHotkeyRecorder` records a chord or sequence for rebinding UIs.
+  `usePlatform` and `useFormatHotkey` render shortcuts for the current platform without a hydration mismatch.
+- **Presence**: Add `onEnterComplete`, called once the enter animation finishes, mirroring the existing
+  `onExitComplete`. Vue exposes it as the `enter-complete` emit.
+  > Affects Color Picker, Combobox, Date Picker, Dialog, Drawer, Floating Panel, Hover Card, Menu, Popover, Select,
+  > Tooltip, and Tour.
+
+### Fixed
+
+- Expose `ariaAttr` and `dataAttr` from the package root.
+
+## [5.38.2] - 2026-08-17
+
+### Fixed
+
+- - **Date Picker**
+    - Fix `translations` requiring every message. It's now `Partial`, so you can override one message and let the rest
+      fall back to the defaults.
+    - Fix the view trigger's `aria-label` naming the wrong view. In day view it announced "Switch to year view" while
+      the trigger actually switches to month view. The trigger also disables itself once there's no further view to
+      switch to.
+    - Fix dates between a range's start and end announcing the generic "Choose" label. They now announce "In range".
+  - **Escape Dismissal**: Fix `Escape` being ignored right after an overlay opens. Handlers registered a frame late, so
+    the overlay was painted and focus-trapped before it could listen. Under CPU load that gap grew well past one frame
+    and swallowed the keypress. They now register as soon as the layer mounts.
+    > Affects Dialog, Drawer, Menu, Popover, and anything else that closes on `Escape`.
+  - **Floating Panel**
+    - Fix closing a panel leaving it on the stack, so the next panel now becomes topmost.
+    - Fix stack order not applying to the positioner, so focusing a panel raises it above its siblings.
+  - **Focus Visible**: Fix clicking a label adding `data-focus-visible` to the control. Activating the label briefly
+    moved focus to an overlay container, which was read as virtual focus.
+    > Affects Checkbox, Radio Group, and Switch.
+  - **Form Submission**: Fix trigger and close trigger buttons submitting an ancestor form on click. They carried no
+    `type`, so they defaulted to `type="submit"`.
+    > Affects Drawer, Navigation Menu, Steps, and Tour.
+  - **Hover Highlight**: Fix keyboard navigation losing or moving the highlighted item while the pointer rests over
+    scrollable content. Scrolling the item into view moved the content under the cursor, and the resulting
+    `pointerleave` (or `pointermove` in Safari) counted as a real hover.
+    > Affects Cascade Select, Combobox, Listbox, Menu, and Select.
+  - **Image Cropper**: Fix `fixedCropArea` disabling every keyboard interaction on the crop selection, including the `+`
+    and `-` zoom shortcuts that still apply in fixed mode. The selection is now always focusable, and arrow keys pan the
+    image since there's nothing to move or resize.
+  - **QR Code**: Fix `getDataUrl()` and the download trigger dropping the overlay. The export contained only the QR
+    matrix, so a logo or badge placed over the code went missing.
+  - **Splitter**: Fix the resize trigger matching `:focus-visible` after a pointer drag. It still takes focus, so
+    keyboard resizing keeps working, but no longer shows the focus ring.
+  - **Tags Input**: Fix an XSS vector in the hidden element that measures input width. It set the tag value with
+    `innerHTML`, so a value containing markup was parsed and could execute. It now uses `textContent`.
+
 ## [5.38.1] - 2026-08-07
 
 ### Fixed

@@ -19,12 +19,17 @@
      * The children of the toaster.
      */
     children: Snippet<[Accessor<ToastOptions>]>
+    /**
+     * The human-readable label for the toast region.
+     * @default "Notifications"
+     */
+    label?: string | undefined
   }
 
   export interface ToasterProps extends Assign<HTMLProps<'div'>, ToasterBaseProps> {}
 
   const id = $props.id()
-  let { ref = $bindable(null), toaster, children, ...otherProps }: ToasterProps = $props()
+  let { ref = $bindable(null), toaster, children, label, dir, getRootNode, ...otherProps }: ToasterProps = $props()
 
   const locale = useLocaleContext()
   const env = useEnvironmentContext()
@@ -32,8 +37,8 @@
   const machineProps = $derived.by(() => ({
     store: toaster,
     id,
-    dir: locale().dir,
-    getRootNode: env().getRootNode,
+    dir: dir ?? locale().dir,
+    getRootNode: getRootNode ?? env().getRootNode,
   }))
 
   const service = useMachine(toast.group.machine, () => machineProps)
@@ -41,7 +46,7 @@
   const api = $derived(toast.group.connect(service, normalizeProps))
   const toasts = $derived(api.getToasts())
 
-  const mergedProps = $derived(mergeProps(api.getGroupProps(), otherProps))
+  const mergedProps = $derived(mergeProps(api.getGroupProps({ label }), otherProps))
 </script>
 
 <Ark as="div" bind:ref {...mergedProps}>

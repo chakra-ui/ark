@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface PopoverDescriptionBaseProps extends PolymorphicProps<'p'>, RefAttribute {}
-  export interface PopoverDescriptionProps extends Assign<HTMLProps<'p'>, PopoverDescriptionBaseProps> {}
+  export interface PopoverDescriptionBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface PopoverDescriptionProps extends Assign<HTMLProps<'div'>, PopoverDescriptionBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -16,4 +16,4 @@
   const mergedProps = $derived(mergeProps(popover().getDescriptionProps(), props))
 </script>
 
-<Ark as="p" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

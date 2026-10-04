@@ -12,13 +12,15 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
 import remarkRemoveFirstHeading from './src/lib/remark-remove-first-heading'
 import { defineCollection, defineConfig, s } from 'velite'
-import { replaceComponentTypes, replaceContextType, replaceExample } from './src/lib/mdx-transform'
+import { replaceContextType } from './src/lib/mdx-transform'
 
 const normalizePath = (path: string) => path.replace(/\\/g, '/')
 
 const pages = defineCollection({
   name: 'Pages',
-  pattern: ['pages/**/*.mdx', '../../../packages/*/CHANGELOG.md'],
+  // only the framework packages: `framework` is set from this directory name,
+  // and packages like mcp are not frameworks
+  pattern: ['pages/**/*.mdx', '../../../packages/{react,solid,svelte,vue}/CHANGELOG.md'],
   schema: s
     .object({
       // TODO create a changelog collection instead
@@ -34,18 +36,9 @@ const pages = defineCollection({
       code: s.mdx(),
       llm: s.custom<string>().transform((_data, { meta }) => {
         const content = meta.content as string
-        const path = normalizePath(meta.path as string)
-        const isChangelog = path.includes('CHANGELOG.md')
-        const component = isChangelog
-          ? ''
-          : path
-              .split('/')
-              .pop()
-              ?.replace(/\.mdx$/, '') || ''
-        let processed = replaceExample(content, component)
-        processed = replaceComponentTypes(processed)
-        processed = replaceContextType(processed)
-        return processed
+        // `<Example />` and `<ComponentTypes />` stay as tags: they resolve per
+        // framework, and there is no framework at build time. See ~/lib/llm-content.
+        return replaceContextType(content)
       }),
     })
     .transform((data, { meta }) => {

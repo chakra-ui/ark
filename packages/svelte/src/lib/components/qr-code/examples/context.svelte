@@ -5,7 +5,7 @@
 
 <QrCode.Root defaultValue="http://ark-ui.com">
   <QrCode.Context>
-    {#snippet api(qrCode: UseQrCodeContext)}
+    {#snippet render(qrCode: UseQrCodeContext)}
       <QrCode.Frame>
         {#if qrCode().value === 'http://ark-ui.com'}
           <QrCode.Pattern />

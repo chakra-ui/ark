@@ -1,6 +1,6 @@
-import { dataAttr } from '@zag-js/dom-query'
 import { createMemo, createSignal, createUniqueId, mergeProps, onCleanup, onMount } from 'solid-js'
 import { useEnvironmentContext } from '../../providers/index.tsx'
+import { dataAttr } from '../../utils/attr.ts'
 import type { MaybeAccessor } from '../../types.ts'
 import { runIfFn } from '../../utils/run-if-fn.ts'
 import { parts } from './fieldset.anatomy.ts'

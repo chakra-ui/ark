@@ -20,7 +20,7 @@ export const TourSpotlight = forwardRef<HTMLDivElement, TourSpotlightProps>((pro
     present: tour.open,
   })
   const mergedProps = mergeProps(tour.getSpotlightProps(), presence.getPresenceProps(), props)
-  const hidden = !tour.open || !tour.step?.target?.()
+  const hidden = mergedProps.hidden || !tour.step?.target?.()
   const composedRefs = useComposedRefs(presence.ref, ref)
 
   return (

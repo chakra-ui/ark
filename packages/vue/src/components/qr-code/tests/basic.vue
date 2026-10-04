@@ -16,5 +16,8 @@ const localProps = useForwardPropsEmits(props, emits)
       <img src="https://ark-ui.com/icon-192.png" alt="" />
     </QrCode.Overlay>
     <QrCode.DownloadTrigger fileName="qr-code.png" mimeType="image/png">Download</QrCode.DownloadTrigger>
+    <QrCode.Context v-slot="api">
+      <button @click="api.setValue('https://example.com')">Set value</button>
+    </QrCode.Context>
   </QrCode.Root>
 </template>

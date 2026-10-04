@@ -2,6 +2,7 @@
   import type { HTMLProps, PolymorphicProps, PropsFn } from '$lib/types'
   import { isVoidHTMLTag, isVoidSVGTag } from '$lib/utils/tags'
   import { mergeProps } from '@zag-js/svelte'
+  import { createAttachmentKey } from 'svelte/attachments'
   import type { SvelteHTMLElements } from 'svelte/elements'
   import Svg from './svg-factory.svelte'
 
@@ -19,7 +20,16 @@
 
   let { asChild, children, as, ref = $bindable(null), ...rest }: Props = $props()
 
-  const propsFn: PropsFn<T> = (props) => mergeProps(rest, props ?? {})
+  const refKey = createAttachmentKey()
+
+  const setRef = (node: Element) => {
+    ref = node
+    return () => {
+      if (ref === node) ref = null
+    }
+  }
+
+  const propsFn: PropsFn<T> = (props) => mergeProps(rest, props ?? {}, { [refKey]: setRef })
 </script>
 
 {#if asChild}

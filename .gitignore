@@ -313,3 +313,6 @@ vite.config.mts.timestamp-*
 # Release
 .npmrc
 release.sh
+
+# playwright-mcp session artifacts
+.playwright-mcp
