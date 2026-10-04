@@ -8,16 +8,19 @@
 }
 
 .Backdrop {
-  --z-index: 2;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: var(--z-index);
+  z-index: calc(var(--demo-popover-z-index) + var(--tour-layer, 0));
 }
 
 .Spotlight {
   border-radius: 4px;
+  z-index: calc(var(--demo-popover-z-index) + var(--tour-layer, 0));
 }
 
 .Positioner {
+  --tour-z-index: var(--demo-popover-z-index);
+  z-index: calc(var(--demo-popover-z-index) + var(--tour-layer, 0));
+
   &[data-type='dialog'] {
     width: 100%;
     position: fixed;
@@ -26,12 +29,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: var(--z-index);
+    z-index: calc(var(--demo-popover-z-index) + var(--tour-layer, 0));
   }
 
   &[data-type='floating'] {
     position: fixed;
-    z-index: var(--z-index);
+    z-index: calc(var(--demo-popover-z-index) + var(--tour-layer, 0));
 
     &[data-placement*='bottom'] {
       bottom: 24px;
