@@ -19,6 +19,7 @@
 
 .Positioner {
   --tour-z-index: var(--demo-popover-z-index);
+  z-index: calc(var(--demo-popover-z-index) + var(--tour-layer, 0));
 
   &[data-type='dialog'] {
     width: 100%;
