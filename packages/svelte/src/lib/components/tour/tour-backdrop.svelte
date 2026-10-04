@@ -29,5 +29,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} hidden={!tour().step?.backdrop} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} hidden={!tour().open || !tour().step?.backdrop} />
 {/if}
