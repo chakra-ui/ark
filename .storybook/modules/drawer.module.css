@@ -4,7 +4,6 @@
   position: fixed;
   inset: 0;
   background-color: var(--demo-backdrop);
-  backdrop-filter: blur(4px);
   z-index: var(--demo-popover-z-index);
 
   &[data-state='open'] {
