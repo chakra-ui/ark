@@ -46,8 +46,9 @@ export interface RootProps {
   }>
   /**
    * The element to focus on when the popover is opened.
+   * Return `false` to skip moving focus, or `null` to use the default.
    */
-  initialFocusEl?: () => HTMLElement | null
+  initialFocusEl?: () => HTMLElement | null | false
   /**
    * Whether the popover should be modal. When set to `true`:
    * - interaction with outside elements will be disabled

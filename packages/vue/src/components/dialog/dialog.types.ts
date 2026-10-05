@@ -43,8 +43,9 @@ export interface RootProps {
   }>
   /**
    * Element to receive focus when the dialog is opened
+   * Return `false` to skip moving focus, or `null` to use the default.
    */
-  initialFocusEl?: () => HTMLElement | null
+  initialFocusEl?: () => HTMLElement | null | false
   /**
    * Whether to prevent pointer interaction outside the element and hide all content below it
    * @default true
