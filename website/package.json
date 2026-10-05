@@ -35,7 +35,7 @@
     "@zag-js/date-input": "1.45.0",
     "@zag-js/docs": "1.45.0",
     "better-auth": "1.4.22",
-    "effect": "3.22.2",
+    "effect": "4.0.1",
     "lucide-react": "1.48.0",
     "match-sorter": "8.3.0",
     "next": "15.5.26",
