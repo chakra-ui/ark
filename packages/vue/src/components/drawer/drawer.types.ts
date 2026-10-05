@@ -35,8 +35,9 @@ export interface RootProps {
   modal?: boolean
   /**
    * Element to receive focus when the sheet is opened.
+   * Return `false` to skip moving focus, or `null` to use the default.
    */
-  initialFocusEl?: () => HTMLElement | null
+  initialFocusEl?: () => HTMLElement | null | false
   /**
    * Element to receive focus when the sheet is closed.
    */
