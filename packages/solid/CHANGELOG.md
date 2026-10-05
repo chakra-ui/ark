@@ -1,5 +1,77 @@
 # @ark-ui/solid
 
+## [5.39.3] - 2026-10-05
+
+### Fixed
+
+- Align the last six parts that rendered a different element across adapters: `Toggle.Indicator`, `AngleSlider.Marker`,
+  `AngleSlider.ValueText` and `Listbox.ItemText` render `span`, `Popover.Title` renders `h2`, and Svelte's
+  `NumberInput.Scrubber` renders `div`.
+- - **Select**: Export `SelectIntlTranslations`, `SelectPositioningOptions`, `SelectScrollToIndexDetails` and
+    `SelectSelectionDetails`.
+  - **Clipboard**: Export `ClipboardValueChangeDetails`.
+  - **DateInput**: Export `DateInputPlaceholderChangeDetails`.
+  - **ImageCropper**: Export `ImageCropperRect`.
+  - **QrCode**: Export `QrCodeValueChangeDetails`.
+  - **Steps**: Export `StepInvalidDetails`. In Vue, this fixes TS2883 ("cannot be named without a reference to …") when
+    emitting declarations for a component that wraps one of these roots, for example a generic `Select.Root` wrapper
+    built with pnpm.
+- - **Field**: Fix `Field.ErrorText` not being announced by VoiceOver and Narrator. It is now linked via
+    `aria-describedby` instead of `aria-errormessage`, since screen reader support for `aria-errormessage` is still
+    incomplete.
+    ```diff
+    - expect(input).toHaveAccessibleErrorMessage('Error Info')
+    + expect(input).toHaveAccessibleDescription(expect.stringContaining('Error Info'))
+    ```
+- Fix `Tour.Content` unmounting before its exit animation finishes when using `lazyMount` and `unmountOnExit`.
+- - **TreeView**: Fix `TreeView.NodeCheckboxIndicator` not updating when a node is checked or becomes indeterminate.
+  - **TreeView**: Fix `useTreeView` losing the node type, so `selectedNodes`, `expandedNodes` and `focusedNode` are
+    typed as `T` instead of `TreeNode`.
+- - **NumberInput**: Fix `NumberInput.ValueText` rendering empty when used without children. It now displays the current
+    value.
+  - **Select**: Fix `Select.ValueText` ignoring custom children.
+- Fix `Toaster` dropping the group props it accepts. `dir` and `getRootNode` were typed on the component but never
+  reached the group machine — the locale and environment contexts always won, and both props were spread onto the region
+  element instead. The toast region's `aria-label` is now settable through a `label` prop, which is forwarded to
+  `getGroupProps`.
+- Fix `Tour.Spotlight` disappearing immediately when the tour closes, so its exit animation can run.
+- Export the missing Tour types, including `TourStepsChangeDetails` for `onStepsChange`, and add flat `Tour*` aliases
+  for the step, action, and callback detail types.
+- - **Initial Focus**: `initialFocusEl` can now return `false` to open without moving focus. Returning `null` still uses
+    the default.
+    ```jsx
+    <Dialog.Root initialFocusEl={() => false} />
+    ```
+    > Supported in Color Picker, Dialog, Drawer, Floating Panel, and Popover.
+  - **Image Cropper**: Add `api.setCrop(rect)` to place the crop area programmatically, in viewport coordinates. The
+    rect is constrained like `initialCrop`, and unlike `api.reset()` it keeps the current zoom, rotation, flip, and pan.
+  - **Pagination**: Add `api.type` and `api.getPageUrl(page)`, so custom parts can tell whether the controls are buttons
+    or links and build a page's URL.
+  - **Carousel**: Fix `allowMouseDrag` advancing a full page per pointer move in Vue.
+  - **Floating Panel**
+    - Fix `strategy="absolute"` placing the panel outside its boundary.
+    - Fix the panel not following its boundary element when an ancestor scrolls.
+  - **Image Cropper**: Fix `Alt+Arrow` resizing ignoring `aspectRatio` and `cropShape="circle"`.
+  - **Listbox**: Fix range selection anchoring on the highlighted item instead of the one you clicked. Shift+click with
+    `highlightOnHover` now selects the full range, and Shift+arrow can reverse direction.
+  - **Popover**: Fix `autoFocus={false}` being ignored for modal popovers.
+  - **Popover, Select, Menu, and other positioned parts**: Fix a stylesheet `z-index` on the positioner being ignored
+    when the content has no stacking level.
+  - **Presence**: Fix an element with an exit animation staying mounted forever in Safari, invisible but still
+    intercepting clicks.
+  - **Progress**: Fix the formatter not updating when `formatOptions` changes to a subset of the previous options.
+  - **Splitter**: Fix slow dragging in large documents.
+  - **Tabs**: Fix programmatic tab selection triggering link navigation.
+  - **TOC**: Fix `onActiveChange` reporting the previous `activeIds` and `activeItems`, which kept a controlled TOC
+    stuck on the old section.
+  - **Tour**: Fix the step card, spotlight and backdrop collapsing into the top-left corner when the step's target is
+    replaced, and the backdrop leaving part of the page undimmed on resize.
+  - **Svelte**: Fix `derived_inert` warnings when a component's cleanup runs after it unmounts.
+  - **General**
+    - Fix inline style values containing semicolons being cut off when props merge, such as quoted CSS custom properties
+      and data URLs.
+    - Fix `Illegal invocation` thrown on setup when a tool like Storybook has replaced `HTMLElement.prototype.focus`.
+
 ## [5.39.2] - 2026-09-11
 
 ### Fixed
