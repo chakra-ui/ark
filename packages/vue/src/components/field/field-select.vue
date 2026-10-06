@@ -29,8 +29,7 @@ useForwardExpose()
 
 <template>
   <ark.select
-    v-bind="field?.getSelectProps()"
-    :value="modelValue"
+    v-bind="{ ...field?.getSelectProps(), ...(modelValue !== undefined ? { value: modelValue } : {}) }"
     @change="(event) => emit('update:modelValue', (event.target as HTMLSelectElement).value)"
     :as-child="asChild"
   >

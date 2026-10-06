@@ -2,6 +2,7 @@ import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
 import ComponentUnderTest from './field.test.vue'
 import StandaloneControls from './field-standalone.test.vue'
+import NativeDefaults from './field-native-defaults.test.vue'
 import { nextTick } from 'vue'
 
 describe('Field', () => {
@@ -53,6 +54,17 @@ describe('Field', () => {
     expect(screen.getByRole('textbox', { name: /label/i })).toHaveValue('Input is controlled')
   })
 
+  it('should sync controlled input value with v-model', async () => {
+    const { emitted, rerender } = render(ComponentUnderTest, { props: { modelValue: 'a' } })
+    const textbox = screen.getByRole('textbox', { name: /label/i })
+
+    await rerender({ modelValue: 'b' })
+    expect(textbox).toHaveValue('b')
+
+    await user.type(textbox, 'c')
+    expect(emitted('update:modelValue')).toContainEqual(['bc'])
+  })
+
   it('should set aria-describedby to the ids of the error and helper text', async () => {
     render(ComponentUnderTest)
     const textbox = screen.getByRole('textbox', { name: /label/i })
@@ -65,5 +77,18 @@ describe('Field', () => {
     expect(screen.getByPlaceholderText('Email')).toBeInTheDocument()
     expect(screen.getByPlaceholderText('Description')).toBeInTheDocument()
     expect(screen.getByRole('combobox')).toBeInTheDocument()
+  })
+
+  it('should preserve native initial values when uncontrolled', () => {
+    render(NativeDefaults)
+
+    expect(document.querySelector('input[name="code"]')).toHaveValue('MAPS')
+    expect(document.querySelector('textarea[name="notes"]')).toHaveValue('Hello')
+    expect(screen.getByRole('combobox')).toHaveValue('us')
+
+    const formData = new FormData(screen.getByTestId('form') as HTMLFormElement)
+    expect(formData.get('code')).toBe('MAPS')
+    expect(formData.get('notes')).toBe('Hello')
+    expect(formData.get('country')).toBe('us')
   })
 })
