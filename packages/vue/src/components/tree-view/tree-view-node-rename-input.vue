@@ -13,6 +13,7 @@ export interface TreeViewNodeRenameInputProps
 </script>
 
 <script setup lang="ts">
+import { computed, onMounted, watch } from 'vue'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 import { ark } from '../factory.ts'
 import { useTreeViewContext } from './use-tree-view-context.ts'
@@ -22,11 +23,24 @@ defineProps<TreeViewNodeRenameInputProps>()
 const treeView = useTreeViewContext()
 const nodeProps = useTreeViewNodePropsContext()
 
-useForwardExpose()
+const { forwardRef, currentElement } = useForwardExpose()
+
+const renaming = computed(() => treeView.value.getNodeState(nodeProps).renaming)
+
+const focusInput = () => {
+  const inputEl = currentElement.value as HTMLInputElement | undefined
+  if (!renaming.value || !inputEl) return
+  inputEl.value = treeView.value.collection.stringifyNode(nodeProps.node)
+  inputEl.focus()
+  inputEl.select()
+}
+
+onMounted(focusInput)
+watch(renaming, focusInput, { flush: 'post' })
 </script>
 
 <template>
-  <ark.input v-bind="treeView.getNodeRenameInputProps(nodeProps)" :as-child="asChild">
+  <ark.input :ref="forwardRef" v-bind="treeView.getNodeRenameInputProps(nodeProps)" :as-child="asChild">
     <slot />
   </ark.input>
 </template>
