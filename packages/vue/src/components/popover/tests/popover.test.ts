@@ -89,6 +89,19 @@ describe('Popover', () => {
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 
+  it('should label lazy mounted content by its title', async () => {
+    render(ComponentUnderTest, {
+      props: {
+        lazyMount: true,
+        unmountOnExit: true,
+      },
+    })
+
+    await user.click(screen.getByRole('button', { name: 'click me' }))
+    await waitFor(() => expect(screen.getByRole('dialog', { name: 'title' })).toBeInTheDocument())
+    expect(screen.getByRole('dialog')).toHaveAccessibleDescription('description')
+  })
+
   it('should emit requestDismiss when the parent layer closes', async () => {
     const onRequestDismiss = vi.fn()
     const { rerender } = render(NestedComponentUnderTest, { props: { dialogOpen: true, onRequestDismiss } })

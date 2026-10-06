@@ -72,6 +72,14 @@ describe('Popover', () => {
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 
+  it('should label lazy mounted content by its title', async () => {
+    render(<ComponentUnderTest lazyMount unmountOnExit />)
+
+    await user.click(screen.getByRole('button', { name: 'click me' }))
+    await waitFor(() => expect(screen.getByRole('dialog', { name: 'title' })).toBeInTheDocument())
+    expect(screen.getByRole('dialog')).toHaveAccessibleDescription('description')
+  })
+
   it('should open by default', async () => {
     render(<ComponentUnderTest defaultOpen />)
     expect(await screen.findByRole('dialog')).toBeInTheDocument()

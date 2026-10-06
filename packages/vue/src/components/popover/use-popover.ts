@@ -1,6 +1,7 @@
+import { raf } from '@zag-js/dom-query'
 import * as popover from '@zag-js/popover'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRef, computed, toValue, useId, watch } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -56,5 +57,25 @@ export const usePopover = (props: MaybeRef<UsePopoverProps> = {}, emit?: EmitFn<
   })
 
   const service = useMachine(popover.machine, context)
-  return computed(() => popover.connect(service, normalizeProps))
+  const api = computed(() => popover.connect(service, normalizeProps))
+
+  watch(
+    () => api.value.open,
+    (open, _, onCleanup) => {
+      if (!open) return
+      const titleId = api.value.getTitleProps().id
+      const descriptionId = api.value.getDescriptionProps().id
+      onCleanup(
+        raf(() => {
+          service.context.set('renderedElements', {
+            title: !!(titleId && service.scope.getById(titleId)),
+            description: !!(descriptionId && service.scope.getById(descriptionId)),
+          })
+        }),
+      )
+    },
+    { flush: 'post' },
+  )
+
+  return api
 }
