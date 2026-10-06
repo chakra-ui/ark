@@ -1,10 +1,10 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface CheckboxIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {
+  export interface CheckboxIndicatorBaseProps extends PolymorphicProps<'span'>, RefAttribute {
     indeterminate?: boolean
   }
-  export interface CheckboxIndicatorProps extends Assign<HTMLProps<'div'>, CheckboxIndicatorBaseProps> {}
+  export interface CheckboxIndicatorProps extends Assign<HTMLProps<'span'>, CheckboxIndicatorBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -19,4 +19,4 @@
   const isVisible = $derived(indeterminate ? checkbox().indeterminate : checkbox().checked)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} hidden={!isVisible} />
+<Ark as="span" bind:ref {...mergedProps} hidden={!isVisible} />

@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ComboboxItemIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface ComboboxItemIndicatorProps extends Assign<HTMLProps<'div'>, ComboboxItemIndicatorBaseProps> {}
+  export interface ComboboxItemIndicatorBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
+  export interface ComboboxItemIndicatorProps extends Assign<HTMLProps<'span'>, ComboboxItemIndicatorBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -18,4 +18,4 @@
   const mergedProps = $derived(mergeProps(combobox().getItemIndicatorProps(itemProps()), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} />

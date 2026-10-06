@@ -6,13 +6,13 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { useTabsContext } from './use-tabs-context.ts'
 
 export interface TabIndicatorBaseProps extends PolymorphicProps {}
-export interface TabIndicatorProps extends HTMLProps<'div'>, TabIndicatorBaseProps {}
+export interface TabIndicatorProps extends HTMLProps<'span'>, TabIndicatorBaseProps {}
 
-export const TabIndicator = forwardRef<HTMLDivElement, TabIndicatorProps>((props, ref) => {
+export const TabIndicator = forwardRef<HTMLSpanElement, TabIndicatorProps>((props, ref) => {
   const tabs = useTabsContext()
   const mergedProps = mergeProps(tabs.getIndicatorProps(), props)
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return <ark.span {...mergedProps} ref={ref} />
 })
 
 TabIndicator.displayName = 'TabIndicator'

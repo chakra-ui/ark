@@ -5,10 +5,10 @@
 
   export interface ClipboardIndicatorState extends IndicatorState {}
 
-  export interface ClipboardIndicatorBaseProps extends PolymorphicProps<'div', ClipboardIndicatorState>, RefAttribute {
+  export interface ClipboardIndicatorBaseProps extends PolymorphicProps<'span', ClipboardIndicatorState>, RefAttribute {
     copied?: Snippet
   }
-  export interface ClipboardIndicatorProps extends Assign<HTMLProps<'div'>, ClipboardIndicatorBaseProps> {}
+  export interface ClipboardIndicatorProps extends Assign<HTMLProps<'span'>, ClipboardIndicatorBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -22,7 +22,7 @@
   const mergedProps = $derived(mergeProps(clipboard().getIndicatorProps({ copied: clipboard().copied }), localProps))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} state={clipboard().getIndicatorState({ copied: clipboard().copied })}>
+<Ark as="span" bind:ref {...mergedProps} state={clipboard().getIndicatorState({ copied: clipboard().copied })}>
   {#if clipboard().copied && copied}
     {@render copied()}
   {:else if children}

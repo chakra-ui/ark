@@ -7,14 +7,14 @@ import { useStepsContext } from './use-steps-context.ts'
 import { useStepsItemPropsContext } from './use-steps-item-props-context.ts'
 
 export interface StepsIndicatorBaseProps extends PolymorphicProps {}
-export interface StepsIndicatorProps extends HTMLProps<'div'>, StepsIndicatorBaseProps {}
+export interface StepsIndicatorProps extends HTMLProps<'span'>, StepsIndicatorBaseProps {}
 
-export const StepsIndicator = forwardRef<HTMLDivElement, StepsIndicatorProps>((props, ref) => {
+export const StepsIndicator = forwardRef<HTMLSpanElement, StepsIndicatorProps>((props, ref) => {
   const steps = useStepsContext()
   const itemProps = useStepsItemPropsContext()
   const mergedProps = mergeProps(steps.getIndicatorProps(itemProps), props)
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return <ark.span {...mergedProps} ref={ref} />
 })
 
 StepsIndicator.displayName = 'StepsIndicator'

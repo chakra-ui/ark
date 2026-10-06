@@ -2,14 +2,14 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { Snippet } from 'svelte'
 
-  export interface ToggleIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {
+  export interface ToggleIndicatorBaseProps extends PolymorphicProps<'span'>, RefAttribute {
     /**
      * The fallback content to render when the toggle is not pressed.
      */
     fallback?: Snippet
   }
 
-  export interface ToggleIndicatorProps extends Assign<HTMLProps<'div'>, ToggleIndicatorBaseProps> {}
+  export interface ToggleIndicatorProps extends Assign<HTMLProps<'span'>, ToggleIndicatorBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -23,7 +23,7 @@
   const mergedProps = $derived(mergeProps(toggle().getIndicatorProps(), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps}>
+<Ark as="span" bind:ref {...mergedProps}>
   {#if toggle().pressed}
     {@render children?.()}
   {:else if fallback}

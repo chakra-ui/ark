@@ -30,12 +30,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="avatar.getRootProps()" :as-child="asChild">
+  <ark.span v-bind="avatar.getRootProps()" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>
     <template v-else #default>
       <slot />
     </template>
-  </ark.div>
+  </ark.span>
 </template>

@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface ListboxItemIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface ListboxItemIndicatorProps extends Assign<HTMLProps<'div'>, ListboxItemIndicatorBaseProps> {}
+  export interface ListboxItemIndicatorBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
+  export interface ListboxItemIndicatorProps extends Assign<HTMLProps<'span'>, ListboxItemIndicatorBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -18,4 +18,4 @@
   const mergedProps = $derived(mergeProps(listbox().getItemIndicatorProps(itemProps()), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} />

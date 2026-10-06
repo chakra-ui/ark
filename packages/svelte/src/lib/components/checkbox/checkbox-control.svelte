@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface CheckboxControlBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface CheckboxControlProps extends Assign<HTMLProps<'div'>, CheckboxControlBaseProps> {}
+  export interface CheckboxControlBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
+  export interface CheckboxControlProps extends Assign<HTMLProps<'span'>, CheckboxControlBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -16,4 +16,4 @@
   const mergedProps = $derived(mergeProps(checkbox().getControlProps(), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} />

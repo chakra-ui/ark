@@ -6,13 +6,13 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { useMenuContext } from './use-menu-context.ts'
 
 export interface MenuIndicatorBaseProps extends PolymorphicProps {}
-export interface MenuIndicatorProps extends HTMLProps<'div'>, MenuIndicatorBaseProps {}
+export interface MenuIndicatorProps extends HTMLProps<'span'>, MenuIndicatorBaseProps {}
 
-export const MenuIndicator = forwardRef<HTMLDivElement, MenuIndicatorProps>((props, ref) => {
+export const MenuIndicator = forwardRef<HTMLSpanElement, MenuIndicatorProps>((props, ref) => {
   const menu = useMenuContext()
   const mergedProps = mergeProps(menu.getIndicatorProps(), props)
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return <ark.span {...mergedProps} ref={ref} />
 })
 
 MenuIndicator.displayName = 'MenuIndicator'

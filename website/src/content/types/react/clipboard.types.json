@@ -22,8 +22,8 @@
         "isRequired": false
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLSpanElement",
+    "tag": "span"
   },
   "Input": {
     "props": {

@@ -26,12 +26,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div
+  <ark.span
     v-bind="clipboard.getIndicatorProps({ copied: clipboard.copied })"
     :state="clipboard.getIndicatorState({ copied: clipboard.copied })"
     :as-child="asChild"
   >
     <slot name="copied" v-if="clipboard.copied" />
     <slot v-else />
-  </ark.div>
+  </ark.span>
 </template>

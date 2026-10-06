@@ -8,15 +8,15 @@ import { useSplitterResizeTriggerPropsContext } from './use-splitter-resize-trig
 
 export interface SplitterResizeTriggerIndicatorBaseProps extends PolymorphicProps {}
 export interface SplitterResizeTriggerIndicatorProps
-  extends HTMLProps<'div'>, SplitterResizeTriggerIndicatorBaseProps {}
+  extends HTMLProps<'span'>, SplitterResizeTriggerIndicatorBaseProps {}
 
-export const SplitterResizeTriggerIndicator = forwardRef<HTMLDivElement, SplitterResizeTriggerIndicatorProps>(
+export const SplitterResizeTriggerIndicator = forwardRef<HTMLSpanElement, SplitterResizeTriggerIndicatorProps>(
   (props, ref) => {
     const splitter = useSplitterContext()
     const triggerProps = useSplitterResizeTriggerPropsContext()
     const mergedProps = mergeProps(splitter.getResizeTriggerIndicator(triggerProps), props)
 
-    return <ark.div ref={ref} {...mergedProps} />
+    return <ark.span ref={ref} {...mergedProps} />
   },
 )
 

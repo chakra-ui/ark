@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SegmentGroupItemControlBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface SegmentGroupItemControlProps extends Assign<HTMLProps<'div'>, SegmentGroupItemControlBaseProps> {}
+  export interface SegmentGroupItemControlBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
+  export interface SegmentGroupItemControlProps extends Assign<HTMLProps<'span'>, SegmentGroupItemControlBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -19,4 +19,4 @@
   const mergedProps = $derived(mergeProps(segmentGroup().getItemControlProps(itemProps()), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} />

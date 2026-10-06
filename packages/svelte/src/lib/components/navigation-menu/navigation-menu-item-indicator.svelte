@@ -1,9 +1,9 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface NavigationMenuItemIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface NavigationMenuItemIndicatorBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
   export interface NavigationMenuItemIndicatorProps extends Assign<
-    HTMLProps<'div'>,
+    HTMLProps<'span'>,
     NavigationMenuItemIndicatorBaseProps
   > {}
 </script>
@@ -22,4 +22,4 @@
   const mergedProps = $derived(mergeProps(navigationMenu().getItemIndicatorProps(itemProps()), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} />

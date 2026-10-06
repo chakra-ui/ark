@@ -12,17 +12,17 @@ interface RootProviderProps {
 }
 
 export interface AvatarRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
-export interface AvatarRootProviderProps extends HTMLProps<'div'>, AvatarRootProviderBaseProps {}
+export interface AvatarRootProviderProps extends HTMLProps<'span'>, AvatarRootProviderBaseProps {}
 
 const splitRootProviderProps = createSplitProps<RootProviderProps>()
 
-export const AvatarRootProvider = forwardRef<HTMLDivElement, AvatarRootProviderProps>((props, ref) => {
+export const AvatarRootProvider = forwardRef<HTMLSpanElement, AvatarRootProviderProps>((props, ref) => {
   const [{ value: avatar }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(avatar.getRootProps(), localProps)
 
   return (
     <AvatarProvider value={avatar}>
-      <ark.div {...mergedProps} ref={ref} />
+      <ark.span {...mergedProps} ref={ref} />
     </AvatarProvider>
   )
 })

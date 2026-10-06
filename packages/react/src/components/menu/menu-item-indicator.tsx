@@ -7,14 +7,14 @@ import { useMenuContext } from './use-menu-context.ts'
 import { useMenuItemPropsContext } from './use-menu-option-item-props-context.ts'
 
 export interface MenuItemIndicatorBaseProps extends PolymorphicProps {}
-export interface MenuItemIndicatorProps extends HTMLProps<'div'>, MenuItemIndicatorBaseProps {}
+export interface MenuItemIndicatorProps extends HTMLProps<'span'>, MenuItemIndicatorBaseProps {}
 
-export const MenuItemIndicator = forwardRef<HTMLDivElement, MenuItemIndicatorProps>((props, ref) => {
+export const MenuItemIndicator = forwardRef<HTMLSpanElement, MenuItemIndicatorProps>((props, ref) => {
   const menu = useMenuContext()
   const itemProps = useMenuItemPropsContext()
   const mergedProps = mergeProps(menu.getItemIndicatorProps(itemProps), props)
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return <ark.span {...mergedProps} ref={ref} />
 })
 
 MenuItemIndicator.displayName = 'MenuItemIndicator'

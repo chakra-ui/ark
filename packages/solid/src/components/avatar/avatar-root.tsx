@@ -4,8 +4,8 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { type UseAvatarProps, useAvatar } from './use-avatar.ts'
 import { AvatarProvider } from './use-avatar-context.ts'
 
-export interface AvatarRootBaseProps extends UseAvatarProps, PolymorphicProps<'div'> {}
-export interface AvatarRootProps extends HTMLProps<'div'>, AvatarRootBaseProps {}
+export interface AvatarRootBaseProps extends UseAvatarProps, PolymorphicProps<'span'> {}
+export interface AvatarRootProps extends HTMLProps<'span'>, AvatarRootBaseProps {}
 
 export const AvatarRoot = (props: AvatarRootProps) => {
   const [useAvatarProps, localProps] = createSplitProps<UseAvatarProps>()(props, ['id', 'ids', 'onStatusChange'])
@@ -15,7 +15,7 @@ export const AvatarRoot = (props: AvatarRootProps) => {
 
   return (
     <AvatarProvider value={context}>
-      <ark.div {...mergedProps} />
+      <ark.span {...mergedProps} />
     </AvatarProvider>
   )
 }

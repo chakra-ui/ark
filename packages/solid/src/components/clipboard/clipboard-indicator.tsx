@@ -11,8 +11,9 @@ interface IndicatorProps {
 
 export interface ClipboardIndicatorState extends IndicatorState {}
 
-export interface ClipboardIndicatorBaseProps extends IndicatorProps, PolymorphicProps<'div', ClipboardIndicatorState> {}
-export interface ClipboardIndicatorProps extends HTMLProps<'div'>, ClipboardIndicatorBaseProps {}
+export interface ClipboardIndicatorBaseProps
+  extends IndicatorProps, PolymorphicProps<'span', ClipboardIndicatorState> {}
+export interface ClipboardIndicatorProps extends HTMLProps<'span'>, ClipboardIndicatorBaseProps {}
 
 export const ClipboardIndicator = (props: ClipboardIndicatorProps) => {
   const [indicatorProps, localProps] = createSplitProps<IndicatorProps>()(props, ['copied'])
@@ -21,10 +22,10 @@ export const ClipboardIndicator = (props: ClipboardIndicatorProps) => {
   const getChildren = children(() => localProps.children)
 
   return (
-    <ark.div {...mergedProps} state={api().getIndicatorState({ copied: api().copied })}>
+    <ark.span {...mergedProps} state={api().getIndicatorState({ copied: api().copied })}>
       <Show when={api().copied} fallback={getChildren()}>
         {indicatorProps.copied}
       </Show>
-    </ark.div>
+    </ark.span>
   )
 }

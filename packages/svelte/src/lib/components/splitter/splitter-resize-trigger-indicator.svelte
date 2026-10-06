@@ -1,9 +1,9 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SplitterResizeTriggerIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface SplitterResizeTriggerIndicatorBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
   export interface SplitterResizeTriggerIndicatorProps extends Assign<
-    HTMLProps<'div'>,
+    HTMLProps<'span'>,
     SplitterResizeTriggerIndicatorBaseProps
   > {}
 </script>
@@ -21,4 +21,4 @@
   const mergedProps = $derived(mergeProps(splitter().getResizeTriggerIndicator(triggerProps()), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} />

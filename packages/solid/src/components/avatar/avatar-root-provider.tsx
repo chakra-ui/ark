@@ -8,8 +8,8 @@ interface RootProviderProps {
   value: UseAvatarReturn
 }
 
-export interface AvatarRootProviderBaseProps extends PolymorphicProps<'div'> {}
-export interface AvatarRootProviderProps extends HTMLProps<'div'>, RootProviderProps, AvatarRootProviderBaseProps {}
+export interface AvatarRootProviderBaseProps extends PolymorphicProps<'span'> {}
+export interface AvatarRootProviderProps extends HTMLProps<'span'>, RootProviderProps, AvatarRootProviderBaseProps {}
 
 export const AvatarRootProvider = (props: AvatarRootProviderProps) => {
   const [{ value: avatar }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
@@ -17,7 +17,7 @@ export const AvatarRootProvider = (props: AvatarRootProviderProps) => {
 
   return (
     <AvatarProvider value={avatar}>
-      <ark.div {...mergedProps} />
+      <ark.span {...mergedProps} />
     </AvatarProvider>
   )
 }

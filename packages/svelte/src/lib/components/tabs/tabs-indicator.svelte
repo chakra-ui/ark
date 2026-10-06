@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TabsIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface TabsIndicatorProps extends Assign<HTMLProps<'div'>, TabsIndicatorBaseProps> {}
+  export interface TabsIndicatorBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
+  export interface TabsIndicatorProps extends Assign<HTMLProps<'span'>, TabsIndicatorBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -15,4 +15,4 @@
   const mergedProps = $derived(mergeProps(tabs().getIndicatorProps(), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} />

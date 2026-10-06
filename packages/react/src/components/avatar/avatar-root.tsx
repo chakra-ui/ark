@@ -8,18 +8,18 @@ import { type UseAvatarProps, useAvatar } from './use-avatar.ts'
 import { AvatarProvider } from './use-avatar-context.ts'
 
 export interface AvatarRootBaseProps extends UseAvatarProps, PolymorphicProps {}
-export interface AvatarRootProps extends HTMLProps<'div'>, AvatarRootBaseProps {}
+export interface AvatarRootProps extends HTMLProps<'span'>, AvatarRootBaseProps {}
 
 const splitRootProps = createSplitProps<UseAvatarProps>()
 
-export const AvatarRoot = forwardRef<HTMLDivElement, AvatarRootProps>((props, ref) => {
+export const AvatarRoot = forwardRef<HTMLSpanElement, AvatarRootProps>((props, ref) => {
   const [useAvatarProps, localProps] = splitRootProps(props, ['id', 'ids', 'onStatusChange'])
   const avatar = useAvatar(useAvatarProps)
   const mergedProps = mergeProps(avatar.getRootProps(), localProps)
 
   return (
     <AvatarProvider value={avatar}>
-      <ark.div {...mergedProps} ref={ref} />
+      <ark.span {...mergedProps} ref={ref} />
     </AvatarProvider>
   )
 })

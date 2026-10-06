@@ -7,14 +7,14 @@ import { useComboboxContext } from './use-combobox-context.ts'
 import { useComboboxItemPropsContext } from './use-combobox-item-props-context.ts'
 
 export interface ComboboxItemIndicatorBaseProps extends PolymorphicProps {}
-export interface ComboboxItemIndicatorProps extends HTMLProps<'div'>, ComboboxItemIndicatorBaseProps {}
+export interface ComboboxItemIndicatorProps extends HTMLProps<'span'>, ComboboxItemIndicatorBaseProps {}
 
-export const ComboboxItemIndicator = forwardRef<HTMLDivElement, ComboboxItemIndicatorProps>((props, ref) => {
+export const ComboboxItemIndicator = forwardRef<HTMLSpanElement, ComboboxItemIndicatorProps>((props, ref) => {
   const combobox = useComboboxContext()
   const itemProps = useComboboxItemPropsContext()
   const mergedProps = mergeProps(combobox.getItemIndicatorProps(itemProps), props)
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return <ark.span {...mergedProps} ref={ref} />
 })
 
 ComboboxItemIndicator.displayName = 'ComboboxItemIndicator'

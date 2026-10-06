@@ -2,8 +2,8 @@
   import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseAvatarProps } from './use-avatar.svelte.ts'
 
-  export interface AvatarRootBaseProps extends Optional<UseAvatarProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
-  export interface AvatarRootProps extends Assign<HTMLProps<'div'>, AvatarRootBaseProps> {}
+  export interface AvatarRootBaseProps extends Optional<UseAvatarProps, 'id'>, PolymorphicProps<'span'>, RefAttribute {}
+  export interface AvatarRootProps extends Assign<HTMLProps<'span'>, AvatarRootBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -31,4 +31,4 @@
   AvatarProvider(avatar)
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} />

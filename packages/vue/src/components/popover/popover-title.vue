@@ -24,12 +24,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="popover.getTitleProps()" :as-child="asChild">
+  <ark.h2 v-bind="popover.getTitleProps()" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>
     <template v-else #default>
       <slot />
     </template>
-  </ark.div>
+  </ark.h2>
 </template>

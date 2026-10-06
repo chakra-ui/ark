@@ -6,16 +6,16 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { useAngleSliderContext } from './use-angle-slider-context.ts'
 
 export interface AngleSliderValueTextBaseProps extends PolymorphicProps {}
-export interface AngleSliderValueTextProps extends HTMLProps<'div'>, AngleSliderValueTextBaseProps {}
+export interface AngleSliderValueTextProps extends HTMLProps<'span'>, AngleSliderValueTextBaseProps {}
 
-export const AngleSliderValueText = forwardRef<HTMLDivElement, AngleSliderValueTextProps>((props, ref) => {
+export const AngleSliderValueText = forwardRef<HTMLSpanElement, AngleSliderValueTextProps>((props, ref) => {
   const angleSlider = useAngleSliderContext()
   const mergedProps = mergeProps(angleSlider.getValueTextProps(), props)
 
   return (
-    <ark.div {...mergedProps} ref={ref}>
+    <ark.span {...mergedProps} ref={ref}>
       {props.children || angleSlider.valueAsDegree}
-    </ark.div>
+    </ark.span>
   )
 })
 

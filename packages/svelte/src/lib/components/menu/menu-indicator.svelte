@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface MenuIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface MenuIndicatorProps extends Assign<HTMLProps<'div'>, MenuIndicatorBaseProps> {}
+  export interface MenuIndicatorBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
+  export interface MenuIndicatorProps extends Assign<HTMLProps<'span'>, MenuIndicatorBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -16,4 +16,4 @@
   const mergedProps = $derived(mergeProps(menu().getIndicatorProps(), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} />

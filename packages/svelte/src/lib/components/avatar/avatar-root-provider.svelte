@@ -7,7 +7,7 @@
   }
 
   export interface AvatarRootProviderBaseProps extends RootProviderProps, RefAttribute {}
-  export interface AvatarRootProviderProps extends Assign<HTMLProps<'div'>, AvatarRootProviderBaseProps> {}
+  export interface AvatarRootProviderProps extends Assign<HTMLProps<'span'>, AvatarRootProviderBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -21,4 +21,4 @@
   AvatarProvider(() => value())
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} />

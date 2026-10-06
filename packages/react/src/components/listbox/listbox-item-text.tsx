@@ -7,14 +7,14 @@ import { useListboxContext } from './use-listbox-context.ts'
 import { useListboxItemPropsContext } from './use-listbox-item-props-context.ts'
 
 export interface ListboxItemTextBaseProps extends PolymorphicProps {}
-export interface ListboxItemTextProps extends HTMLProps<'div'>, ListboxItemTextBaseProps {}
+export interface ListboxItemTextProps extends HTMLProps<'span'>, ListboxItemTextBaseProps {}
 
-export const ListboxItemText = forwardRef<HTMLDivElement, ListboxItemTextProps>((props, ref) => {
+export const ListboxItemText = forwardRef<HTMLSpanElement, ListboxItemTextProps>((props, ref) => {
   const listbox = useListboxContext()
   const itemProps = useListboxItemPropsContext()
   const mergedProps = mergeProps(listbox.getItemTextProps(itemProps), props)
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return <ark.span {...mergedProps} ref={ref} />
 })
 
 ListboxItemText.displayName = 'ListboxItemText'

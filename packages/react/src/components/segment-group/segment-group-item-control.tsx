@@ -7,14 +7,14 @@ import { useSegmentGroupContext } from './use-segment-group-context.ts'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context.ts'
 
 export interface SegmentGroupItemControlBaseProps extends PolymorphicProps {}
-export interface SegmentGroupItemControlProps extends HTMLProps<'div'>, SegmentGroupItemControlBaseProps {}
+export interface SegmentGroupItemControlProps extends HTMLProps<'span'>, SegmentGroupItemControlBaseProps {}
 
-export const SegmentGroupItemControl = forwardRef<HTMLDivElement, SegmentGroupItemControlProps>((props, ref) => {
+export const SegmentGroupItemControl = forwardRef<HTMLSpanElement, SegmentGroupItemControlProps>((props, ref) => {
   const segmentGroup = useSegmentGroupContext()
   const itemProps = useSegmentGroupItemPropsContext()
   const mergedProps = mergeProps(segmentGroup.getItemControlProps(itemProps), props)
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return <ark.span {...mergedProps} ref={ref} />
 })
 
 SegmentGroupItemControl.displayName = 'SegmentGroupItemControl'

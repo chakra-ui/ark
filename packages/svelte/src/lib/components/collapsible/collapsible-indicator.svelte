@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface CollapsibleIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface CollapsibleIndicatorProps extends Assign<HTMLProps<'div'>, CollapsibleIndicatorBaseProps> {}
+  export interface CollapsibleIndicatorBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
+  export interface CollapsibleIndicatorProps extends Assign<HTMLProps<'span'>, CollapsibleIndicatorBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -15,4 +15,4 @@
   const mergedProps = $derived(mergeProps(collapsible().getIndicatorProps(), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} />

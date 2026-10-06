@@ -6,13 +6,13 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { useCheckboxContext } from './use-checkbox-context.ts'
 
 export interface CheckboxControlBaseProps extends PolymorphicProps {}
-export interface CheckboxControlProps extends HTMLProps<'div'>, CheckboxControlBaseProps {}
+export interface CheckboxControlProps extends HTMLProps<'span'>, CheckboxControlBaseProps {}
 
-export const CheckboxControl = forwardRef<HTMLDivElement, CheckboxControlProps>((props, ref) => {
+export const CheckboxControl = forwardRef<HTMLSpanElement, CheckboxControlProps>((props, ref) => {
   const checkbox = useCheckboxContext()
   const mergedProps = mergeProps(checkbox.getControlProps(), props)
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return <ark.span {...mergedProps} ref={ref} />
 })
 
 CheckboxControl.displayName = 'CheckboxControl'

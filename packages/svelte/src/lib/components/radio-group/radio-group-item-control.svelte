@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface RadioGroupItemControlBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface RadioGroupItemControlProps extends Assign<HTMLProps<'div'>, RadioGroupItemControlBaseProps> {}
+  export interface RadioGroupItemControlBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
+  export interface RadioGroupItemControlProps extends Assign<HTMLProps<'span'>, RadioGroupItemControlBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -19,4 +19,4 @@
   const mergedProps = $derived(mergeProps(radioGroup().getItemControlProps(itemProps()), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} />

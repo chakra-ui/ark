@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface StepsIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface StepsIndicatorProps extends Assign<HTMLProps<'div'>, StepsIndicatorBaseProps> {}
+  export interface StepsIndicatorBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
+  export interface StepsIndicatorProps extends Assign<HTMLProps<'span'>, StepsIndicatorBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -18,4 +18,4 @@
   const mergedProps = $derived(mergeProps(steps().getIndicatorProps(itemProps()), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} />

@@ -7,15 +7,15 @@ import { useNavigationMenuContext } from './use-navigation-menu-context.ts'
 import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context.ts'
 
 export interface NavigationMenuItemIndicatorBaseProps extends PolymorphicProps {}
-export interface NavigationMenuItemIndicatorProps extends HTMLProps<'div'>, NavigationMenuItemIndicatorBaseProps {}
+export interface NavigationMenuItemIndicatorProps extends HTMLProps<'span'>, NavigationMenuItemIndicatorBaseProps {}
 
-export const NavigationMenuItemIndicator = forwardRef<HTMLDivElement, NavigationMenuItemIndicatorProps>(
+export const NavigationMenuItemIndicator = forwardRef<HTMLSpanElement, NavigationMenuItemIndicatorProps>(
   (props, ref) => {
     const navigationMenu = useNavigationMenuContext()
     const itemProps = useNavigationMenuItemPropsContext()
     const mergedProps = mergeProps(navigationMenu.getItemIndicatorProps(itemProps), props)
 
-    return <ark.div {...mergedProps} ref={ref} />
+    return <ark.span {...mergedProps} ref={ref} />
   },
 )
 
