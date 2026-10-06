@@ -3,6 +3,7 @@ import * as toast from '@zag-js/toast'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { type VNodeChild, computed } from 'vue'
 import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../../providers/index.ts'
+import { Dynamic } from '../../utils/dynamic.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 import { ToastProvider } from './use-toast-context.ts'
 
@@ -32,5 +33,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <slot v-bind="props.value" />
+  <Dynamic>
+    <slot v-bind="props.value" />
+  </Dynamic>
 </template>
