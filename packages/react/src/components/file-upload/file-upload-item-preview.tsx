@@ -15,7 +15,7 @@ export interface FileUploadItemPreviewBaseProps extends PolymorphicProps {
 }
 export interface FileUploadItemPreviewProps extends HTMLProps<'div'>, FileUploadItemPreviewBaseProps {}
 
-export const FileUploadItemPreview = forwardRef<HTMLImageElement, FileUploadItemPreviewProps>((props, ref) => {
+export const FileUploadItemPreview = forwardRef<HTMLDivElement, FileUploadItemPreviewProps>((props, ref) => {
   const fileUpload = useFileUploadContext()
   const itemProps = useFileUploadItemPropsContext()
   const mergedProps = mergeProps(fileUpload.getItemPreviewProps(itemProps), props)

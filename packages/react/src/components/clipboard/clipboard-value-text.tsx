@@ -7,7 +7,7 @@ import { useClipboardContext } from './use-clipboard-context.ts'
 export interface ClipboardValueTextBaseProps extends PolymorphicProps {}
 export interface ClipboardValueTextProps extends HTMLProps<'span'>, ClipboardValueTextBaseProps {}
 
-export const ClipboardValueText = forwardRef<HTMLDivElement, ClipboardValueTextProps>((props, ref) => {
+export const ClipboardValueText = forwardRef<HTMLSpanElement, ClipboardValueTextProps>((props, ref) => {
   const clipboard = useClipboardContext()
   return (
     <ark.span {...props} ref={ref}>

@@ -11,7 +11,7 @@ export interface ColorPickerValueTextBaseProps extends PolymorphicProps {
 }
 export interface ColorPickerValueTextProps extends HTMLProps<'span'>, ColorPickerValueTextBaseProps {}
 
-export const ColorPickerValueText = forwardRef<HTMLDivElement, ColorPickerValueTextProps>((props, ref) => {
+export const ColorPickerValueText = forwardRef<HTMLSpanElement, ColorPickerValueTextProps>((props, ref) => {
   const { children, format, ...localProps } = props
   const colorPicker = useColorPickerContext()
   const mergedProps = mergeProps(colorPicker.getValueTextProps(), localProps)

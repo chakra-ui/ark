@@ -1,8 +1,8 @@
 <script lang="ts" module>
   import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface AngleSliderValueTextBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface AngleSliderValueTextProps extends HTMLProps<'div'>, AngleSliderValueTextBaseProps {}
+  export interface AngleSliderValueTextBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
+  export interface AngleSliderValueTextProps extends HTMLProps<'span'>, AngleSliderValueTextBaseProps {}
 </script>
 
 <script lang="ts">

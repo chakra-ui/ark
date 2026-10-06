@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { VisibilityTriggerState } from '@zag-js/password-input'
-import type { HTMLAttributes } from 'vue'
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
 export interface PasswordInputVisibilityTriggerState extends VisibilityTriggerState {}
@@ -11,7 +11,7 @@ export interface PasswordInputVisibilityTriggerProps
     /**
      * @vue-ignore
      */
-    HTMLAttributes {}
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

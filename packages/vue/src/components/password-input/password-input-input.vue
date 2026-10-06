@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { InputState } from '@zag-js/password-input'
-import type { HTMLAttributes } from 'vue'
+import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
 export interface PasswordInputInputState extends InputState {}
@@ -11,7 +11,7 @@ export interface PasswordInputInputProps
     /**
      * @vue-ignore
      */
-    HTMLAttributes {}
+    InputHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

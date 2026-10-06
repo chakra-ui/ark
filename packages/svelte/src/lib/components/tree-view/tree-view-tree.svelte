@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TreeViewTreeBaseProps extends PolymorphicProps<'ul'>, RefAttribute {}
-  export interface TreeViewTreeProps extends Assign<HTMLProps<'ul'>, TreeViewTreeBaseProps> {}
+  export interface TreeViewTreeBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface TreeViewTreeProps extends Assign<HTMLProps<'div'>, TreeViewTreeBaseProps> {}
 </script>
 
 <script lang="ts">

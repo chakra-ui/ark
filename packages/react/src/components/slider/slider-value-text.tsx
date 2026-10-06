@@ -8,7 +8,7 @@ import { useSliderContext } from './use-slider-context.ts'
 export interface SliderValueTextBaseProps extends PolymorphicProps {}
 export interface SliderValueTextProps extends HTMLProps<'span'>, SliderValueTextBaseProps {}
 
-export const SliderValueText = forwardRef<HTMLDivElement, SliderValueTextProps>((props, ref) => {
+export const SliderValueText = forwardRef<HTMLSpanElement, SliderValueTextProps>((props, ref) => {
   const { children, ...rest } = props
   const slider = useSliderContext()
   const mergedProps = mergeProps(slider.getValueTextProps(), rest)

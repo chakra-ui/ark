@@ -9,7 +9,7 @@ import { useComboboxItemPropsContext } from './use-combobox-item-props-context.t
 export interface ComboboxItemTextBaseProps extends PolymorphicProps {}
 export interface ComboboxItemTextProps extends HTMLProps<'span'>, ComboboxItemTextBaseProps {}
 
-export const ComboboxItemText = forwardRef<HTMLDivElement, ComboboxItemTextProps>((props, ref) => {
+export const ComboboxItemText = forwardRef<HTMLSpanElement, ComboboxItemTextProps>((props, ref) => {
   const combobox = useComboboxContext()
   const itemProps = useComboboxItemPropsContext()
   const mergedProps = mergeProps(combobox.getItemTextProps(itemProps), props)

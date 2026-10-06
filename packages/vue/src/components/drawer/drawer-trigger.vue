@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { TriggerProps, TriggerState } from '@zag-js/drawer'
-import type { HTMLAttributes } from 'vue'
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
 export interface DrawerTriggerState extends TriggerState {}
@@ -11,7 +11,7 @@ export interface DrawerTriggerProps
     /**
      * @vue-ignore
      */
-    HTMLAttributes {}
+    Omit<ButtonHTMLAttributes, 'value'> {}
 </script>
 
 <script setup lang="ts">

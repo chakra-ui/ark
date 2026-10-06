@@ -8,7 +8,7 @@ import { useFloatingPanelContext } from './use-floating-panel-context.ts'
 export interface FloatingPanelTitleBaseProps extends PolymorphicProps {}
 export interface FloatingPanelTitleProps extends HTMLProps<'h2'>, FloatingPanelTitleBaseProps {}
 
-export const FloatingPanelTitle = forwardRef<HTMLDivElement, FloatingPanelTitleProps>((props, ref) => {
+export const FloatingPanelTitle = forwardRef<HTMLHeadingElement, FloatingPanelTitleProps>((props, ref) => {
   const floatingPanel = useFloatingPanelContext()
   const mergedProps = mergeProps(floatingPanel.getTitleProps(), props)
 

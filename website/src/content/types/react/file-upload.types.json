@@ -99,7 +99,7 @@
         "description": "The file type to match against. Matches all file types by default."
       }
     },
-    "element": "HTMLImageElement",
+    "element": "HTMLDivElement",
     "tag": "div"
   },
   "Item": {

@@ -561,7 +561,7 @@
         "isRequired": false
       }
     },
-    "element": "HTMLDivElement",
+    "element": "HTMLSpanElement",
     "tag": "span"
   },
   "View": {

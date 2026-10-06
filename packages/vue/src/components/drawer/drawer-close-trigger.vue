@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory.ts'
 
 export interface DrawerCloseTriggerBaseProps extends PolymorphicProps {}
@@ -9,7 +9,7 @@ export interface DrawerCloseTriggerProps
     /**
      * @vue-ignore
      */
-    HTMLAttributes {}
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

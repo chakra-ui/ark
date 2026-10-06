@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
+import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory.ts'
 
 export interface PasswordInputLabelBaseProps extends PolymorphicProps {}
@@ -9,7 +9,7 @@ export interface PasswordInputLabelProps
     /**
      * @vue-ignore
      */
-    HTMLAttributes {}
+    LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

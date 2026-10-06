@@ -9,7 +9,7 @@ import { useSelectItemPropsContext } from './use-select-item-props-context.ts'
 export interface SelectItemTextBaseProps extends PolymorphicProps {}
 export interface SelectItemTextProps extends HTMLProps<'span'>, SelectItemTextBaseProps {}
 
-export const SelectItemText = forwardRef<HTMLDivElement, SelectItemTextProps>((props, ref) => {
+export const SelectItemText = forwardRef<HTMLSpanElement, SelectItemTextProps>((props, ref) => {
   const select = useSelectContext()
   const itemProps = useSelectItemPropsContext()
   const mergedProps = mergeProps(select.getItemTextProps(itemProps), props)
