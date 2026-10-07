@@ -142,7 +142,13 @@ export const sidebarConfig: SidebarTabConfig[] = [
       },
       {
         title: 'Formatting',
-        items: [{ id: 'format-byte' }, { id: 'format-number' }, { id: 'format-time' }, { id: 'format-relative-time' }],
+        items: [
+          { id: 'format-byte' },
+          { id: 'format-number' },
+          { id: 'format-time' },
+          { id: 'format-relative-time' },
+          { id: 'number-flow' },
+        ],
       },
       {
         title: 'Utilities',

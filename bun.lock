@@ -105,6 +105,7 @@
         "@zag-js/menu": "2.0.0-next.3",
         "@zag-js/menubar": "2.0.0-next.3",
         "@zag-js/navigation-menu": "2.0.0-next.3",
+        "@zag-js/number-flow": "2.0.0-next.3",
         "@zag-js/number-input": "2.0.0-next.3",
         "@zag-js/pagination": "2.0.0-next.3",
         "@zag-js/password-input": "2.0.0-next.3",
@@ -219,6 +220,7 @@
         "@zag-js/menu": "2.0.0-next.3",
         "@zag-js/menubar": "2.0.0-next.3",
         "@zag-js/navigation-menu": "2.0.0-next.3",
+        "@zag-js/number-flow": "2.0.0-next.3",
         "@zag-js/number-input": "2.0.0-next.3",
         "@zag-js/pagination": "2.0.0-next.3",
         "@zag-js/password-input": "2.0.0-next.3",
@@ -329,6 +331,7 @@
         "@zag-js/menu": "2.0.0-next.3",
         "@zag-js/menubar": "2.0.0-next.3",
         "@zag-js/navigation-menu": "2.0.0-next.3",
+        "@zag-js/number-flow": "2.0.0-next.3",
         "@zag-js/number-input": "2.0.0-next.3",
         "@zag-js/pagination": "2.0.0-next.3",
         "@zag-js/password-input": "2.0.0-next.3",
@@ -437,6 +440,7 @@
         "@zag-js/menu": "2.0.0-next.3",
         "@zag-js/menubar": "2.0.0-next.3",
         "@zag-js/navigation-menu": "2.0.0-next.3",
+        "@zag-js/number-flow": "2.0.0-next.3",
         "@zag-js/number-input": "2.0.0-next.3",
         "@zag-js/pagination": "2.0.0-next.3",
         "@zag-js/password-input": "2.0.0-next.3",
@@ -1900,6 +1904,8 @@
     "@zag-js/menubar": ["@zag-js/menubar@2.0.0-next.3", "", { "dependencies": { "@zag-js/anatomy": "2.0.0-next.3", "@zag-js/core": "2.0.0-next.3", "@zag-js/dom-query": "2.0.0-next.3", "@zag-js/types": "2.0.0-next.3", "@zag-js/utils": "2.0.0-next.3" } }, "sha512-fcJ1fCjGm/nhNM00BYPa15BNMwOUFzGSw+0Ggyr98vxvxWrkc5NX/EnPHqBRgDMTVij/XTJ7otvN83JuOotLdA=="],
 
     "@zag-js/navigation-menu": ["@zag-js/navigation-menu@2.0.0-next.3", "", { "dependencies": { "@zag-js/anatomy": "2.0.0-next.3", "@zag-js/core": "2.0.0-next.3", "@zag-js/dismissable": "2.0.0-next.3", "@zag-js/dom-query": "2.0.0-next.3", "@zag-js/types": "2.0.0-next.3", "@zag-js/utils": "2.0.0-next.3" } }, "sha512-+dQEJgCytp/GeHehWSkXWtRqXOtCMJLKWO/zdwDgaHUDQF3NmURzwr2XEemcLMFJ31p1tvzQV/3SCLLeRwP6ZQ=="],
+
+    "@zag-js/number-flow": ["@zag-js/number-flow@2.0.0-next.3", "", { "dependencies": { "@zag-js/anatomy": "2.0.0-next.3", "@zag-js/core": "2.0.0-next.3", "@zag-js/dom-query": "2.0.0-next.3", "@zag-js/i18n-utils": "2.0.0-next.3", "@zag-js/types": "2.0.0-next.3", "@zag-js/utils": "2.0.0-next.3" } }, "sha512-h7IEUBWWHNTCfjtSmFqBrJ3IKqTigDXa3IKKTDiUEp94jCPlqm4KA2GZkHnPCOJQUvaJ5Xamh+gLTaFfmtDrMQ=="],
 
     "@zag-js/number-input": ["@zag-js/number-input@2.0.0-next.3", "", { "dependencies": { "@internationalized/number": "3.6.7", "@zag-js/anatomy": "2.0.0-next.3", "@zag-js/core": "2.0.0-next.3", "@zag-js/dom-query": "2.0.0-next.3", "@zag-js/types": "2.0.0-next.3", "@zag-js/utils": "2.0.0-next.3" } }, "sha512-55dM2PMVbX32g/55ewr6OaJkUYy3IQ9QwoLWx8rTCznNDNXY1SAp9nGUN7hl3A4Njl22DF0NxSHXcf1ElYOfpw=="],
 

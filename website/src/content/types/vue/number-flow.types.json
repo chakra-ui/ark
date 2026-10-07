@@ -1,0 +1,168 @@
+{
+  "DigitCell": {
+    "props": {
+      "cell": { "type": "DigitCell", "isRequired": true },
+      "segment": { "type": "DigitSegment", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Digit": {
+    "props": {
+      "segment": { "type": "DigitSegment", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "DigitTrack": {
+    "props": {
+      "segment": { "type": "DigitSegment", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Root": {
+    "emits": {
+      "animationComplete": {
+        "type": "[details: AnimationDetails]",
+        "isRequired": true,
+        "description": "Callback fired when the roll animation settles."
+      },
+      "animationStart": {
+        "type": "[details: AnimationDetails]",
+        "isRequired": true,
+        "description": "Callback fired when a value change starts a roll animation."
+      },
+      "update:modelValue": {
+        "type": "[value: number]",
+        "isRequired": true,
+        "description": "The callback fired when the model value changes."
+      },
+      "valueChange": {
+        "type": "[details: ValueChangeDetails]",
+        "isRequired": true,
+        "description": "Callback fired when the value changes."
+      }
+    },
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "continuous": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether digits spin through every intermediate value instead of taking the nearest path."
+      },
+      "defaultValue": {
+        "type": "number",
+        "defaultValue": "0",
+        "isRequired": false,
+        "description": "The initial value to render when uncontrolled."
+      },
+      "formatOptions": {
+        "type": "NumberFormatOptions",
+        "isRequired": false,
+        "description": "The options to pass to the `Intl.NumberFormat` constructor."
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{ root: string; valueText: string }>",
+        "isRequired": false,
+        "description": "The ids of the elements in the number-flow. Useful for composition."
+      },
+      "live": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the value is announced to assistive technology as it changes.\nWhen `false`, the rendered value is still readable, but changes are not announced."
+      },
+      "locale": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The locale to use when formatting the number."
+      },
+      "modelValue": { "type": "number", "isRequired": false, "description": "The v-model value of the number flow" },
+      "prefix": {
+        "type": "string",
+        "isRequired": false,
+        "description": "A static string rendered before the formatted value. Does not animate."
+      },
+      "respectMotionPreference": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to suppress the roll animation when the user prefers reduced motion."
+      },
+      "spinTiming": {
+        "type": "TimingOptions",
+        "defaultValue": "{ duration: \"900ms\", easing: \"cubic-bezier(0.4, 0, 0.2, 1)\" }",
+        "isRequired": false,
+        "description": "The timing of the per-digit roll transition."
+      },
+      "stagger": {
+        "type": "string",
+        "defaultValue": "undefined",
+        "isRequired": false,
+        "description": "A CSS `<time>` delay applied between adjacent digits, e.g. `\"25ms\"`."
+      },
+      "suffix": {
+        "type": "string",
+        "isRequired": false,
+        "description": "A static string rendered after the formatted value. Does not animate."
+      },
+      "transformTiming": {
+        "type": "TimingOptions",
+        "defaultValue": "{ duration: \"500ms\", easing: \"cubic-bezier(0.4, 0, 0.2, 1)\" }",
+        "isRequired": false,
+        "description": "The timing of layout transitions - segments entering/exiting."
+      },
+      "trend": {
+        "type": "Trend",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Controls the roll direction of each digit.\n- `false` (default): each digit takes its own shortest path (`9 -> 0` rolls forward one step).\n- `true`: every digit rolls in the direction of the overall value change.\n- `1` / `-1`: force every digit to roll up or down, regardless of the value change."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "NumberFlowApi<PropTypes>", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Symbol": {
+    "props": {
+      "segment": { "type": "SymbolSegment", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "HiddenValueText": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
+}

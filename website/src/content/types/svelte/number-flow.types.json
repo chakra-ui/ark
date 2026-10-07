@@ -1,0 +1,205 @@
+{
+  "Context": { "props": { "render": { "type": "Snippet<[UseNumberFlowContext]>", "isRequired": false } } },
+  "DigitCell": {
+    "props": {
+      "cell": { "type": "DigitCell", "isRequired": true },
+      "segment": { "type": "DigitSegment", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'span'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  },
+  "Digit": {
+    "props": {
+      "segment": { "type": "DigitSegment", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'span'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  },
+  "DigitTrack": {
+    "props": {
+      "segment": { "type": "DigitSegment", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'span'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "continuous": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether digits spin through every intermediate value instead of taking the nearest path."
+      },
+      "defaultValue": {
+        "type": "number",
+        "defaultValue": "0",
+        "isRequired": false,
+        "description": "The initial value to render when uncontrolled."
+      },
+      "formatOptions": {
+        "type": "NumberFormatOptions",
+        "isRequired": false,
+        "description": "The options to pass to the `Intl.NumberFormat` constructor."
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{ root: string; valueText: string }>",
+        "isRequired": false,
+        "description": "The ids of the elements in the number-flow. Useful for composition."
+      },
+      "live": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the value is announced to assistive technology as it changes.\nWhen `false`, the rendered value is still readable, but changes are not announced."
+      },
+      "locale": {
+        "type": "string",
+        "defaultValue": "\"en-US\"",
+        "isRequired": false,
+        "description": "The current locale. Based on the BCP 47 definition."
+      },
+      "onAnimationComplete": {
+        "type": "(details: AnimationDetails) => void",
+        "isRequired": false,
+        "description": "Callback fired when the roll animation settles."
+      },
+      "onAnimationStart": {
+        "type": "(details: AnimationDetails) => void",
+        "isRequired": false,
+        "description": "Callback fired when a value change starts a roll animation."
+      },
+      "onValueChange": {
+        "type": "(details: ValueChangeDetails) => void",
+        "isRequired": false,
+        "description": "Callback fired when the value changes."
+      },
+      "prefix": {
+        "type": "string",
+        "isRequired": false,
+        "description": "A static string rendered before the formatted value. Does not animate."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'span'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      },
+      "respectMotionPreference": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to suppress the roll animation when the user prefers reduced motion."
+      },
+      "spinTiming": {
+        "type": "TimingOptions",
+        "defaultValue": "{ duration: \"900ms\", easing: \"cubic-bezier(0.4, 0, 0.2, 1)\" }",
+        "isRequired": false,
+        "description": "The timing of the per-digit roll transition."
+      },
+      "stagger": {
+        "type": "string",
+        "defaultValue": "undefined",
+        "isRequired": false,
+        "description": "A CSS `<time>` delay applied between adjacent digits, e.g. `\"25ms\"`."
+      },
+      "suffix": {
+        "type": "string",
+        "isRequired": false,
+        "description": "A static string rendered after the formatted value. Does not animate."
+      },
+      "transformTiming": {
+        "type": "TimingOptions",
+        "defaultValue": "{ duration: \"500ms\", easing: \"cubic-bezier(0.4, 0, 0.2, 1)\" }",
+        "isRequired": false,
+        "description": "The timing of layout transitions - segments entering/exiting."
+      },
+      "trend": {
+        "type": "Trend",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Controls the roll direction of each digit.\n- `false` (default): each digit takes its own shortest path (`9 -> 0` rolls forward one step).\n- `true`: every digit rolls in the direction of the overall value change.\n- `1` / `-1`: force every digit to roll up or down, regardless of the value change."
+      },
+      "value": { "type": "number", "isRequired": false, "description": "The controlled numeric value to render." }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseNumberFlowReturn", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'span'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  },
+  "Symbol": {
+    "props": {
+      "segment": { "type": "SymbolSegment", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'span'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  },
+  "HiddenValueText": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "render": {
+        "type": "Snippet<[PropsFn<'span'>, EmptyState]>",
+        "isRequired": false,
+        "description": "Render the part as a custom element, combining their props and behavior.\n\nA template can't take an element as a prop value, so this is a snippet rather than react's\n`render` prop. It receives the props to bind and the part's state."
+      }
+    }
+  }
+}

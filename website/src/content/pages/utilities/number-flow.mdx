@@ -1,0 +1,160 @@
+---
+id: number-flow
+title: Number Flow
+description: Animates a number by rolling each digit to its new value.
+status: new
+---
+
+<ComponentPreview id="NumberFlow" />
+
+## Anatomy
+
+```tsx
+<NumberFlow.Root>
+  <NumberFlow.Segments />
+  <NumberFlow.HiddenValueText />
+</NumberFlow.Root>
+```
+
+`Segments` renders one `Digit` per rolling digit and one `Symbol` per separator, currency sign, or literal. Each `Digit`
+renders a `DigitTrack` that holds a strip of `DigitCell`s, and the strip is translated so the right cell lands in view.
+Pass a render function to `Segments` to compose the parts yourself:
+
+```tsx
+<NumberFlow.Root>
+  <NumberFlow.Segments>
+    {(segment) =>
+      segment.kind === 'digit' ? (
+        <NumberFlow.Digit segment={segment}>
+          <NumberFlow.DigitTrack segment={segment} />
+        </NumberFlow.Digit>
+      ) : (
+        <NumberFlow.Symbol segment={segment} />
+      )
+    }
+  </NumberFlow.Segments>
+  <NumberFlow.HiddenValueText />
+</NumberFlow.Root>
+```
+
+## Examples
+
+### Basic
+
+Pass a `value` and the number rolls to it whenever it changes. Use `defaultValue` instead to let the component own the
+value.
+
+<Example id="basic" />
+
+### Formatting
+
+`formatOptions` goes straight to `Intl.NumberFormat`, so currency, percent, compact notation, and precision all work as
+they would in `Intl`. Only the digits roll; signs, separators, and currency symbols swap in place.
+
+<Example id="formatting" />
+
+### Pricing
+
+Switching between two prices is a common use. Set `trend` so every digit rolls in the direction the price moved.
+
+<Example id="pricing" />
+
+### Trend
+
+The root carries `data-trend` (`up`, `down`, or `none`) for the whole roll, so the color can follow the direction of the
+last change.
+
+<Example id="trend" />
+
+### Continuous
+
+By default each digit takes its shortest path, so `9` to `0` rolls forward one step. Set `continuous` to spin through
+every value in between instead, which makes a jump from `120` to `245` read as counting rather than a cut.
+
+<Example id="continuous" />
+
+### Timing
+
+`spinTiming` controls the digit roll and `transformTiming` controls digits entering and leaving. Both take CSS
+`duration` and `easing` values. Set `stagger` to delay each digit behind the one before it.
+
+<Example id="timing" />
+
+### Locale
+
+The number follows the locale from `LocaleProvider`, or the `locale` prop. Non-Latin numeral systems roll through their
+own glyphs, so `ar-EG` rolls through `٠` to `٩`.
+
+<Example id="locale" />
+
+### Prefix and Suffix
+
+Use `prefix` and `suffix` for static text around the number. They never roll, and they are included in the accessible
+label.
+
+<Example id="prefix-suffix" />
+
+### Composition
+
+Pass a function as the child of `Segments` to render each segment yourself. Each digit segment carries its decimal
+`place` (`0` is the ones column, negative values are fraction digits), and each symbol carries its `Intl` `type`, so you
+can style the cents or the currency sign on their own. `Segments` keys every segment for you, so digits keep rolling
+when the number gains or loses a digit.
+
+<Example id="composition" />
+
+### Live Announcements
+
+Set `live` to announce changes to screen readers. The value is announced through `HiddenValueText` once the roll
+settles, so a fast counter is read once rather than for every intermediate value.
+
+<Example id="live" />
+
+### Root Provider
+
+Use the `useNumberFlow` hook with `RootProvider` to read the value and call `setValue` from outside the component.
+
+<Example id="root-provider" />
+
+## Guides
+
+### Styling
+
+The component sets the structural styles inline: each digit is clipped to one line and the track is a vertical strip of
+`1lh` cells. What is left is typography and color.
+
+```css
+[data-number-flow-root] {
+  font-variant-numeric: tabular-nums;
+}
+
+[data-number-flow-symbol] {
+  white-space: pre;
+}
+
+[data-number-flow-digit] {
+  vertical-align: top;
+}
+```
+
+Use a font with tabular figures. Proportional digits change width as they roll, which makes the number jitter.
+
+The root exposes `data-state` (`idle` or `rolling`), `data-trend`, and `data-reduced-motion`. Digits carry `data-place`,
+and symbols carry `data-type` with their `Intl.NumberFormat` part type, such as `currency` or `group`.
+
+### Accessibility
+
+By default the root has `role="img"` and an `aria-label` with the formatted value, so assistive technology reads the
+number instead of the strip of cells. `HiddenValueText` is visually hidden and stays silent.
+
+With `live`, the root drops its role and `HiddenValueText` becomes a polite status region that holds the settled value.
+Render `HiddenValueText` whenever you set `live`; without it, nothing is announced.
+
+When the user prefers reduced motion, the number snaps to its new value. Set `respectMotionPreference` to `false` to
+roll anyway.
+
+## API Reference
+
+### Props
+
+<ComponentTypes id="number-flow" />
