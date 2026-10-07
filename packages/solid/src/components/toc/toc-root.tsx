@@ -25,7 +25,10 @@ export const TocRoot = (props: TocRootProps) => {
     'threshold',
   ])
   const toc = useToc(useTocProps)
-  const mergedProps = mergeProps(() => toc().getRootProps(), localProps)
+  const mergedProps = mergeProps(() => {
+    const { id: _, 'aria-labelledby': __, ...rootProps } = toc().getRootProps()
+    return rootProps
+  }, localProps)
 
   return (
     <TocProvider value={toc}>
