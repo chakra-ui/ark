@@ -3,11 +3,15 @@
   import { type UseTimerContext, useTimerContext } from './use-timer-context.ts'
 
   export interface TimerContextProps {
+    render?: Snippet<[UseTimerContext]>
+    /**
+     * @deprecated Use `render` instead.
+     */
     api?: Snippet<[UseTimerContext]>
   }
 
-  const { api }: TimerContextProps = $props()
+  const { render, api }: TimerContextProps = $props()
   const timer = useTimerContext()
 </script>
 
-{@render api?.(timer)}
+{@render (render ?? api)?.(timer)}

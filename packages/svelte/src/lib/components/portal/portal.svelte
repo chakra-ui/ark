@@ -20,25 +20,24 @@
 
   const context = getAllContexts()
 
-  let instance: any = null
   $effect(() => {
-    const cleanup = () => {
+    if (disabled) return
+
+    const target = container
+    let cancelled = false
+    let instance: ReturnType<typeof mount> | null = null
+
+    tick().then(() => {
+      if (cancelled) return
+      instance = mount(children, { target, context })
+    })
+
+    return () => {
+      cancelled = true
       if (instance) {
         void unmount(instance)
         instance = null
       }
-    }
-
-    if (disabled) {
-      cleanup()
-      return
-    }
-
-    tick().then(() => {
-      instance = mount(children, { target: container, context })
-    })
-    return () => {
-      cleanup()
     }
   })
 </script>

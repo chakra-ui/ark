@@ -27,7 +27,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="listbox.getItemTextProps(ItemProps)" :as-child="asChild">
+  <ark.span v-bind="listbox.getItemTextProps(ItemProps)" :as-child="asChild">
     <slot />
-  </ark.div>
+  </ark.span>
 </template>

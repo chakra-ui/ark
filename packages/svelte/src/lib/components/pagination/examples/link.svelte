@@ -1,33 +1,36 @@
 <script lang="ts">
   import { ChevronLeft, ChevronRight } from 'lucide-svelte'
-  import { Pagination, usePagination } from '@ark-ui/svelte/pagination'
+  import { Pagination } from '@ark-ui/svelte/pagination'
   import styles from 'styles/pagination.module.css'
-
-  const id = $props.id()
-  const pagination = usePagination({
-    id,
-    type: 'link',
-    count: 100,
-    pageSize: 10,
-    siblingCount: 2,
-    getPageUrl: ({ page }) => `/page=${page}`,
-  })
 </script>
 
-<Pagination.RootProvider value={pagination} class={styles.Root}>
+<Pagination.Root
+  count={100}
+  pageSize={10}
+  siblingCount={2}
+  type="link"
+  getPageUrl={({ page }) => `/page=${page}`}
+  class={styles.Root}
+>
   <div class={styles.Controls}>
-    <a class={styles.Trigger} {...pagination().getPrevTriggerProps()}>
+    <Pagination.PrevTrigger class={styles.Trigger}>
       <ChevronLeft />
-    </a>
-    {#each pagination().pages as page, index (index)}
-      {#if page.type === 'page'}
-        <a class={styles.Item} {...pagination().getItemProps(page)}>{page.value}</a>
-      {:else}
-        <span class={styles.Ellipsis} {...pagination().getEllipsisProps({ index })}>&#8230;</span>
-      {/if}
-    {/each}
-    <a class={styles.Trigger} {...pagination().getNextTriggerProps()}>
+    </Pagination.PrevTrigger>
+    <Pagination.Context>
+      {#snippet render(pagination)}
+        {#each pagination().pages as page, index (index)}
+          {#if page.type === 'page'}
+            <Pagination.Item {...page} class={styles.Item}>
+              {page.value}
+            </Pagination.Item>
+          {:else}
+            <Pagination.Ellipsis {index} class={styles.Ellipsis}>&#8230;</Pagination.Ellipsis>
+          {/if}
+        {/each}
+      {/snippet}
+    </Pagination.Context>
+    <Pagination.NextTrigger class={styles.Trigger}>
       <ChevronRight />
-    </a>
+    </Pagination.NextTrigger>
   </div>
-</Pagination.RootProvider>
+</Pagination.Root>

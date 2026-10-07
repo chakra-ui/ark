@@ -34,6 +34,17 @@ describe('Combobox', () => {
     await waitFor(() => expect(onValueChange).toHaveBeenCalledTimes(1))
   })
 
+  it('should emit select when item is selected', async () => {
+    const onSelect = vi.fn()
+    render(ComponentUnderTest, { props: { onSelect } })
+
+    fireEvent.click(screen.getByText('Open'))
+    await waitFor(() => expect(screen.getByRole('option', { name: 'React' })).toBeVisible())
+
+    fireEvent.click(screen.getByRole('option', { name: 'React' }))
+    await waitFor(() => expect(onSelect).toHaveBeenCalledWith({ value: ['react'], itemValue: 'react' }))
+  })
+
   it('should open menu when onOpenChange is called', async () => {
     const onOpenChange = vi.fn()
     render(ComponentUnderTest, { props: { onOpenChange } })

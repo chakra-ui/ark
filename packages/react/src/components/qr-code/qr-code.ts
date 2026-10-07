@@ -1,4 +1,8 @@
-export type { QrCodeGenerateOptions as GenerateOptions, QrCodeGenerateResult as GenerateResult } from '@zag-js/qr-code'
+export type {
+  QrCodeGenerateOptions as GenerateOptions,
+  QrCodeGenerateResult as GenerateResult,
+  ValueChangeDetails,
+} from '@zag-js/qr-code'
 export { QrCodeContext as Context, type QrCodeContextProps as ContextProps } from './qr-code-context.tsx'
 export {
   QrCodeDownloadTrigger as DownloadTrigger,

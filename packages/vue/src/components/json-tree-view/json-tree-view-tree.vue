@@ -39,10 +39,10 @@ defineSlots<{
       :index-path="[index]"
       v-bind="nodeProps"
     >
-      <template #arrow>
+      <template v-if="$slots.arrow" #arrow>
         <slot name="arrow" />
       </template>
-      <template #indentGuide>
+      <template v-if="$slots.indentGuide" #indentGuide>
         <slot name="indentGuide" />
       </template>
       <template #renderValue="{ node: childNode }">

@@ -19,7 +19,9 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ProgressValueTextProps>()
 const progress = useProgressContext()
-const slots = defineSlots()
+const slots = defineSlots<{
+  default?(): unknown
+}>()
 
 useForwardExpose()
 </script>

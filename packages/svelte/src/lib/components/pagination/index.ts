@@ -46,7 +46,12 @@ export {
   type PaginationRootProps,
 } from './pagination-root.svelte'
 export { paginationAnatomy } from './pagination.anatomy.ts'
-export { usePagination, type UsePaginationProps, type UsePaginationReturn } from './use-pagination.svelte.ts'
+export {
+  usePagination,
+  type PaginationAnchorProps,
+  type UsePaginationProps,
+  type UsePaginationReturn,
+} from './use-pagination.svelte.ts'
 export { usePaginationContext, type UsePaginationContext } from './use-pagination-context.ts'
 
 export * as Pagination from './pagination.ts'
