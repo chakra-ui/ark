@@ -47,8 +47,7 @@ useForwardExpose()
 <template>
   <ark.textarea
     ref="textareaRef"
-    v-bind="field?.getTextareaProps()"
-    :value="modelValue"
+    v-bind="{ ...field?.getTextareaProps(), ...(modelValue !== undefined ? { value: modelValue } : {}) }"
     @input="(event) => emit('update:modelValue', (event.target as HTMLTextAreaElement).value)"
     :style="props.autoresize ? { resize: 'none', overflow: 'hidden' } : undefined"
     :as-child="asChild"
