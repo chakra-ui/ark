@@ -27,11 +27,17 @@ const props = defineProps<TocRootProviderProps>()
 const toc = computed(() => props.value)
 
 TocProvider(toc)
+
+const rootProps = computed(() => {
+  const { id, 'aria-labelledby': ariaLabelledby, ...rest } = toc.value.getRootProps()
+  return rest
+})
+
 useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="toc.getRootProps()" :as-child="asChild">
+  <ark.div v-bind="rootProps" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

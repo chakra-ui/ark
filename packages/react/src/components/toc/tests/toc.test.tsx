@@ -21,6 +21,14 @@ describe('Toc', () => {
     expect(container.querySelector('article')).toBeInTheDocument()
   })
 
+  it('should not render the root and nav with the same id', () => {
+    render(<ComponentUnderTest data-testid="root" />)
+    const nav = screen.getByRole('navigation')
+    expect(nav).toHaveAttribute('id')
+    expect(screen.getByTestId('root').id).not.toBe(nav.id)
+    expect(nav).toHaveAttribute('aria-labelledby', screen.getByText('On this page').id)
+  })
+
   it('should render the title', () => {
     render(<ComponentUnderTest />)
     expect(screen.getByText('On this page')).toBeInTheDocument()
