@@ -12,14 +12,7 @@ import { runIfFn } from '../../utils/run-if-fn.ts'
 export type PaginationAnchorProps = Omit<HTMLProps<'a'>, keyof HTMLProps<'button'>>
 
 export interface UsePaginationProps extends Optional<Omit<pagination.Props, 'dir' | 'getRootNode'>, 'id'> {}
-export interface UsePaginationReturn extends Accessor<
-  pagination.Api<PropTypes> & {
-    /**
-     * Whether the items and triggers navigate as links or act as buttons.
-     */
-    type: 'button' | 'link'
-  }
-> {}
+export interface UsePaginationReturn extends Accessor<pagination.Api<PropTypes>> {}
 
 export const usePagination = (props?: MaybeAccessor<UsePaginationProps>): UsePaginationReturn => {
   const locale = useLocaleContext()
@@ -34,8 +27,5 @@ export const usePagination = (props?: MaybeAccessor<UsePaginationProps>): UsePag
   }))
 
   const service = useMachine(pagination.machine, machineProps)
-  return createMemo(() => ({
-    ...pagination.connect(service, normalizeProps),
-    type: machineProps().type ?? 'button',
-  }))
+  return createMemo(() => pagination.connect(service, normalizeProps))
 }

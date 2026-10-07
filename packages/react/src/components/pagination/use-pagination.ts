@@ -13,12 +13,7 @@ import type { HTMLProps } from '../factory.ts'
 export type PaginationAnchorProps = Omit<HTMLProps<'a'>, keyof HTMLProps<'button'>>
 
 export interface UsePaginationProps extends Optional<Omit<pagination.Props, 'dir' | 'getRootNode'>, 'id'> {}
-export interface UsePaginationReturn extends pagination.Api<PropTypes> {
-  /**
-   * Whether the items and triggers navigate as links or act as buttons.
-   */
-  type: 'button' | 'link'
-}
+export interface UsePaginationReturn extends pagination.Api<PropTypes> {}
 
 export const usePagination = (props?: UsePaginationProps): UsePaginationReturn => {
   const id = useId()
@@ -33,7 +28,5 @@ export const usePagination = (props?: UsePaginationProps): UsePaginationReturn =
   }
 
   const service = useMachine(pagination.machine, machineProps)
-  const api = pagination.connect(service, normalizeProps)
-
-  return { ...api, type: machineProps.type ?? 'button' }
+  return pagination.connect(service, normalizeProps)
 }
