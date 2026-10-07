@@ -47,7 +47,12 @@ export {
   type PaginationRootProps,
 } from './pagination-root.vue'
 export { paginationAnatomy } from './pagination.anatomy.ts'
-export { usePagination, type UsePaginationProps, type UsePaginationReturn } from './use-pagination.ts'
+export {
+  usePagination,
+  type PaginationAnchorProps,
+  type UsePaginationProps,
+  type UsePaginationReturn,
+} from './use-pagination.ts'
 export { usePaginationContext, type UsePaginationContext } from './use-pagination-context.ts'
 
 export * as Pagination from './pagination.ts'

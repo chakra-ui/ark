@@ -9,7 +9,9 @@ import { runIfFn } from '../../utils/run-if-fn.ts'
 /**
  * The anchor attributes the items and triggers accept, since they render as links under `type="link"`.
  */
-export type PaginationAnchorProps = Omit<HTMLProps<'a'>, keyof HTMLProps<'button'>>
+export type PaginationAnchorProps = Omit<HTMLProps<'a'>, keyof HTMLProps<'button'>> & {
+  ref?: HTMLButtonElement | HTMLAnchorElement | ((el: HTMLButtonElement | HTMLAnchorElement) => void)
+}
 
 export interface UsePaginationProps extends Optional<Omit<pagination.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UsePaginationReturn extends Accessor<pagination.Api<PropTypes>> {}

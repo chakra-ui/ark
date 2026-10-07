@@ -44,8 +44,23 @@ describe('Pagination', () => {
     expect(pageThree).toHaveProperty('tagName', 'A')
     expect(pageThree).toHaveAttribute('href', '/page/3')
 
-    const nextTrigger = screen.getByText(/next/i)
-    expect(nextTrigger).toHaveProperty('tagName', 'A')
-    expect(nextTrigger).toHaveAttribute('href', '/page/3')
+    for (const [label, href] of [
+      ['first page', '/page/1'],
+      ['previous page', '/page/1'],
+      ['next page', '/page/3'],
+      ['last page', '/page/10'],
+    ]) {
+      const trigger = screen.getByLabelText(label)
+      expect(trigger).toHaveProperty('tagName', 'A')
+      expect(trigger).toHaveAttribute('href', href)
+    }
+  })
+
+  it('should accept anchor attributes on a link-typed trigger', async () => {
+    render(() => <LinkComponentUnderTest count={100} pageSize={10} page={2} />)
+
+    const nextTrigger = screen.getByLabelText('next page')
+    expect(nextTrigger).toHaveAttribute('target', '_blank')
+    expect(nextTrigger).toHaveAttribute('rel', 'noreferrer')
   })
 })

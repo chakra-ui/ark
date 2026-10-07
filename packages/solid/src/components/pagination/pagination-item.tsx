@@ -7,10 +7,10 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import type { PaginationAnchorProps } from './use-pagination.ts'
 import { usePaginationContext } from './use-pagination-context.ts'
 
-export interface PaginationItemBaseProps extends ItemProps, PolymorphicProps<'button'> {}
+export interface PaginationItemBaseProps extends ItemProps, PolymorphicProps<'button' | 'a'> {}
 export interface PaginationItemProps extends Assign<
-  HTMLProps<'button'> & PaginationAnchorProps,
-  PaginationItemBaseProps
+  HTMLProps<'button'>,
+  PaginationAnchorProps & PaginationItemBaseProps
 > {}
 
 export const PaginationItem = (props: PaginationItemProps) => {
@@ -21,7 +21,7 @@ export const PaginationItem = (props: PaginationItemProps) => {
 
   return (
     <Show when={api().type === 'button'} fallback={<ark.a {...(mergedProps as HTMLProps<'a'>)} />}>
-      <ark.button {...mergedProps} />
+      <ark.button {...(mergedProps as HTMLProps<'button'>)} />
     </Show>
   )
 }

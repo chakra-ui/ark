@@ -3,6 +3,7 @@ import { For } from 'solid-js'
 
 export const ComponentUnderTest = (props: Pagination.RootProps) => (
   <Pagination.Root type="link" getPageUrl={({ page }) => `/page/${page}`} {...props}>
+    <Pagination.FirstTrigger>First</Pagination.FirstTrigger>
     <Pagination.PrevTrigger>Prev</Pagination.PrevTrigger>
     <Pagination.Context>
       {(pagination) => (
@@ -17,6 +18,9 @@ export const ComponentUnderTest = (props: Pagination.RootProps) => (
         </For>
       )}
     </Pagination.Context>
-    <Pagination.NextTrigger>Next</Pagination.NextTrigger>
+    <Pagination.NextTrigger target="_blank" rel="noreferrer">
+      Next
+    </Pagination.NextTrigger>
+    <Pagination.LastTrigger>Last</Pagination.LastTrigger>
   </Pagination.Root>
 )

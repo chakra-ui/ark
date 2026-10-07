@@ -2,9 +2,11 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { PaginationAnchorProps } from './use-pagination.svelte.ts'
 
-  export interface PaginationPrevTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
-  export interface PaginationPrevTriggerProps
-    extends Assign<HTMLProps<'button'> & PaginationAnchorProps, PaginationPrevTriggerBaseProps> {}
+  export interface PaginationPrevTriggerBaseProps extends PolymorphicProps<'button' | 'a'>, RefAttribute {}
+  export interface PaginationPrevTriggerProps extends Assign<
+    HTMLProps<'button'> & PaginationAnchorProps,
+    PaginationPrevTriggerBaseProps
+  > {}
 </script>
 
 <script lang="ts">
