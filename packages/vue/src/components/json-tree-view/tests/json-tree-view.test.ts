@@ -2,6 +2,7 @@ import userEvent from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
 import Basic from './basic.test.vue'
 import Controlled from './controlled.test.vue'
+import IndentGuide from './indent-guide.test.vue'
 import RootProvider from './root-provider.test.vue'
 
 const getBranch = (index: number) => document.querySelectorAll<HTMLElement>('[data-part="branch"]')[index]
@@ -57,6 +58,18 @@ describe('JsonTreeView', () => {
     await userEvent.click(screen.getByRole('button', { name: 'replace' }))
     await waitFor(() => expect(screen.getByRole('tree')).toHaveTextContent('replaced'))
     expect(screen.getByRole('tree')).not.toHaveTextContent('original')
+  })
+
+  it('should render built-in indent guides when indentGuide is set', () => {
+    render(IndentGuide)
+    expect(document.querySelectorAll('[data-part="branch-indent-guide"]')).toHaveLength(3)
+    expect(document.querySelector('[data-part="branch-indicator"]')).toBeNull()
+  })
+
+  it('should render custom indent guides when the indentGuide slot is provided', () => {
+    render(IndentGuide, { props: { customGuide: true } })
+    expect(screen.getAllByTestId('custom-guide')).toHaveLength(3)
+    expect(document.querySelector('[data-part="branch-indent-guide"]')).toBeNull()
   })
 
   it('should update useJsonTreeView when data changes', async () => {
