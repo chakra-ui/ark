@@ -16,6 +16,8 @@ export interface HighlightProps
 <script lang="ts" setup>
 import { useHighlight } from './use-highlight.ts'
 
+defineOptions({ inheritAttrs: false })
+
 const props = withDefaults(defineProps<HighlightProps>(), {
   ignoreCase: undefined,
   matchAll: undefined,
@@ -31,7 +33,7 @@ const chunks = useHighlight(props)
 
 <template>
   <template v-for="chunk in chunks">
-    <mark v-if="chunk.match">{{ chunk.text }}</mark>
+    <mark v-if="chunk.match" v-bind="$attrs">{{ chunk.text }}</mark>
     <template v-else>
       {{ chunk.text }}
     </template>

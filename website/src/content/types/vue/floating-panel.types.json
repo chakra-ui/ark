@@ -74,6 +74,11 @@
   },
   "Root": {
     "emits": {
+      "enterComplete": {
+        "type": "[]",
+        "isRequired": true,
+        "description": "Function called when the animation ends in the open state"
+      },
       "exitComplete": {
         "type": "[]",
         "isRequired": true,
@@ -248,6 +253,11 @@
   },
   "RootProvider": {
     "emits": {
+      "enterComplete": {
+        "type": "[]",
+        "isRequired": true,
+        "description": "Function called when the animation ends in the open state"
+      },
       "exitComplete": {
         "type": "[]",
         "isRequired": true,

@@ -25,6 +25,6 @@ useForwardExpose()
 
 <template>
   <ark.span v-bind="numberInput.getValueTextProps()" :as-child="asChild">
-    <slot />
+    <slot>{{ numberInput.value }}</slot>
   </ark.span>
 </template>

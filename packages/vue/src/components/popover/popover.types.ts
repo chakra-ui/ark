@@ -46,8 +46,9 @@ export interface RootProps {
   }>
   /**
    * The element to focus on when the popover is opened.
+   * Return `false` to skip moving focus, or `null` to use the default.
    */
-  initialFocusEl?: () => HTMLElement | null
+  initialFocusEl?: () => HTMLElement | null | false
   /**
    * Whether the popover should be modal. When set to `true`:
    * - interaction with outside elements will be disabled
@@ -105,6 +106,10 @@ export type RootEmits = {
    * Function called when the escape key is pressed
    */
   escapeKeyDown: [event: KeyboardEvent]
+  /**
+   * Function called when the animation ends in the open state
+   */
+  enterComplete: []
   /**
    * Function called when the animation ends in the closed state
    */

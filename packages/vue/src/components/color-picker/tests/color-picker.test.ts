@@ -3,6 +3,7 @@ import { render, screen, waitFor } from '@testing-library/vue'
 import { parseColor } from '@ark-ui/vue/color-picker'
 import ComponentUnderTest from './color-picker.test.vue'
 import ColorPickerWithField from './field.test.vue'
+import SwatchComponentUnderTest from './swatch.test.vue'
 
 describe('ColorPicker', () => {
   it('should be able to lazy mount', async () => {
@@ -42,7 +43,7 @@ describe('ColorPicker', () => {
     render(ComponentUnderTest, { props: { defaultValue: parseColor('#ff00ff') } })
 
     const style = screen.getByTestId('swatch-trigger').getAttribute('style') ?? ''
-    expect(style.toLowerCase()).toContain('#ff00ff')
+    expect(style).toContain('rgba(255, 0, 255, 1)')
   })
 })
 
@@ -81,5 +82,11 @@ describe('Color Picker / Field', () => {
   it('should not display error text when no error is present', async () => {
     render(ColorPickerWithField)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+  })
+
+  it('should respect alpha in swatches by default', async () => {
+    render(SwatchComponentUnderTest)
+    expect(screen.getByTestId('swatch').style.getPropertyValue('--color')).toBe('rgba(255, 0, 0, 0.5)')
+    expect(screen.getByTestId('value-swatch').style.getPropertyValue('--color')).toBe('rgba(255, 0, 0, 0.5)')
   })
 })

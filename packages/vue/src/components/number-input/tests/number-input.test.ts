@@ -142,4 +142,9 @@ describe('NumberInput / smallStep', () => {
     await user.keyboard('{Alt>}[ArrowUp]{/Alt}')
     await waitFor(() => expect(input).toHaveValue('5.5'))
   })
+
+  it('should render the value in value text without a default slot', async () => {
+    const { container } = render(ComponentUnderTest, { props: { defaultValue: '42' } })
+    expect(container.querySelector('[data-part="value-text"]')).toHaveTextContent('42')
+  })
 })

@@ -65,8 +65,9 @@ export interface RootProps {
   id?: string
   /**
    * The element to receive focus when the panel opens
+   * Return `false` to skip moving focus, or `null` to use the default.
    */
-  initialFocusEl?: () => HTMLElement | null
+  initialFocusEl?: () => HTMLElement | null | false
   /**
    * The ids of the elements in the floating panel. Useful for composition.
    */
@@ -121,6 +122,10 @@ export interface RootProps {
 }
 
 export type RootEmits = {
+  /**
+   * Function called when the animation ends in the open state
+   */
+  enterComplete: []
   /**
    * Function called when the animation ends in the closed state
    */
