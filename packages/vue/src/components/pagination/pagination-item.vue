@@ -1,12 +1,17 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/pagination'
 import type { ButtonHTMLAttributes } from 'vue'
+import type { PaginationAnchorProps } from './use-pagination.ts'
 import type { PolymorphicProps } from '../factory.ts'
 
 export interface PaginationItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface PaginationItemProps
   extends
     PaginationItemBaseProps,
+    /**
+     * @vue-ignore
+     */
+    PaginationAnchorProps,
     /**
      * @vue-ignore
      */
@@ -25,7 +30,10 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="pagination.getItemProps(props)" :as-child="asChild">
+  <ark.a v-if="pagination.type === 'link'" v-bind="pagination.getItemProps(props)" :as-child="asChild">
+    <slot />
+  </ark.a>
+  <ark.button v-else v-bind="pagination.getItemProps(props)" :as-child="asChild">
     <slot />
   </ark.button>
 </template>
