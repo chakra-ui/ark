@@ -120,6 +120,7 @@ export const sidebarConfig: SidebarTabConfig[] = [
           { id: 'tree-view' },
           { id: 'toc' },
           { id: 'marquee' },
+          { id: 'meter' },
           { id: 'image-cropper' },
           { id: 'scroll-area' },
           { id: 'splitter' },

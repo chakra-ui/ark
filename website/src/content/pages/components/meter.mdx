@@ -1,0 +1,130 @@
+---
+id: meter
+title: Meter
+description: Displays a numeric value within a known range, such as disk usage or battery level.
+status: new
+---
+
+<ComponentPreview id="Meter" />
+
+## Anatomy
+
+```tsx
+<Meter.Root>
+  <Meter.Label />
+  <Meter.ValueText />
+  <Meter.Track>
+    <Meter.Indicator />
+  </Meter.Track>
+</Meter.Root>
+```
+
+## Meter or Progress?
+
+A meter shows a measurement that stays within a range: storage used, battery remaining, a password's strength. A
+progress bar shows how far a task has come and finishes when the task does. Use `Progress` for loading and uploads, and
+`Meter` for everything that is a reading rather than a countdown to done.
+
+## Examples
+
+### Basic
+
+Pass a `defaultValue` between `min` and `max` (`0` and `100` by default). The value is formatted as a percentage.
+
+<Example id="basic" />
+
+### Value State
+
+`low`, `high`, and `optimum` split the range into regions, the same way the HTML `<meter>` element does. The root,
+track, and indicator expose the result as `data-state`: `optimal`, `suboptimal`, or `least-optimal`.
+
+Put `optimum` below `low` when lower is better, as with server load, and above `high` when higher is better, as with
+battery charge. The regions are exclusive at the optimal end, so with `high={80}` a value of exactly `80` is still
+`suboptimal`.
+
+<Example id="value-state" />
+
+### Format Options
+
+`formatOptions` goes to `Intl.NumberFormat`. Any style other than `percent` formats the value itself rather than its
+percentage, which suits currency and units.
+
+<Example id="format-options" />
+
+### Value Text
+
+Use the `value` translation to describe the value in words. It sets both the rendered `ValueText` and the
+`aria-valuetext` that screen readers announce.
+
+<Example id="value-text" />
+
+### Min and Max
+
+Set `min` and `max` for ranges that don't start at zero.
+
+<Example id="min-max" />
+
+### Vertical
+
+Set `orientation="vertical"` to fill the indicator from the bottom. The indicator's height is set instead of its width.
+
+<Example id="vertical" />
+
+### Battery
+
+A meter without a visible label needs an `aria-label`. Set `optimum` above `high` so a full battery reads as optimal and
+an almost empty one as least optimal.
+
+<Example id="battery" />
+
+### Password Strength
+
+A meter is a good fit for a password strength score. Map each score to a word with the `value` translation and let
+`data-state` color the bar.
+
+<Example id="password-strength" />
+
+### Context
+
+Use `Context` to read `valueState` and render content that depends on it.
+
+<Example id="context" />
+
+### Root Provider
+
+Use the `useMeter` hook with `RootProvider` to read the value and update it from outside the component.
+
+<Example id="root-provider" />
+
+## Guides
+
+### Styling
+
+The indicator's `width` (or `height` when vertical) is set inline from the value, so the track only needs a size and
+`overflow: hidden`. The root also exposes the fill as the `--percent` CSS variable.
+
+```css
+[data-meter-indicator][data-state='optimal'] {
+  background: green;
+}
+
+[data-meter-indicator][data-state='suboptimal'] {
+  background: orange;
+}
+
+[data-meter-indicator][data-state='least-optimal'] {
+  background: red;
+}
+```
+
+### Accessibility
+
+The root has `role="meter"` with `aria-valuenow`, `aria-valuemin`, `aria-valuemax`, and `aria-valuetext` set from the
+value and its formatting. `Label` names the meter; without one, pass an `aria-label` to the root. `ValueText` is hidden
+from assistive technology, because `aria-valuetext` already announces the value.
+
+## API Reference
+
+### Props
+
+<ComponentTypes id="meter" />

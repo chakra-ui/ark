@@ -1,0 +1,126 @@
+{
+  "Indicator": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Root": {
+    "emits": {
+      "update:modelValue": {
+        "type": "[value: number]",
+        "isRequired": true,
+        "description": "The callback fired when the model value changes."
+      },
+      "valueChange": {
+        "type": "[details: ValueChangeDetails]",
+        "isRequired": true,
+        "description": "Callback fired when the value changes."
+      }
+    },
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "defaultValue": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The initial value of the meter when rendered.\nUse when you don't need to control the value of the meter."
+      },
+      "formatOptions": {
+        "type": "NumberFormatOptions",
+        "defaultValue": "{ style: \"percent\" }",
+        "isRequired": false,
+        "description": "The options to use for formatting the value."
+      },
+      "high": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The lower numeric bound of the high end of the measured range.\nDefaults to `max`."
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{ label: string }>",
+        "isRequired": false,
+        "description": "The ids of the elements in the meter. Useful when the label lives outside\nthe machine and you need to control `aria-labelledby`."
+      },
+      "locale": { "type": "string", "isRequired": false, "description": "The locale to use for formatting the value." },
+      "low": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The upper numeric bound of the low end of the measured range.\nDefaults to `min`."
+      },
+      "max": {
+        "type": "number",
+        "defaultValue": "100",
+        "isRequired": false,
+        "description": "The maximum allowed value of the meter."
+      },
+      "min": {
+        "type": "number",
+        "defaultValue": "0",
+        "isRequired": false,
+        "description": "The minimum allowed value of the meter."
+      },
+      "modelValue": { "type": "number", "isRequired": false, "description": "The v-model value of the meter" },
+      "optimum": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The optimal numeric value. Combined with `low` and `high`, this decides\nwhich region is preferred (HTML `<meter>` algorithm).\nDefaults to the midpoint of `min` and `max`."
+      },
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "defaultValue": "\"horizontal\"",
+        "isRequired": false,
+        "description": "The orientation of the element."
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "The localized messages to use."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "MeterApi<PropTypes>", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Track": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ValueText": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
+}

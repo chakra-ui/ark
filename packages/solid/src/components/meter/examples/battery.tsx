@@ -1,0 +1,20 @@
+import { Meter } from '@ark-ui/solid/meter'
+import { ZapIcon } from 'lucide-solid'
+import styles from 'styles/meter.module.css'
+
+export const Battery = () => (
+  <Meter.Root
+    class={`${styles.Battery} ${styles.Graded}`}
+    defaultValue={18}
+    low={20}
+    high={50}
+    optimum={100}
+    aria-label="Battery remaining"
+  >
+    <Meter.Track class={styles.Track}>
+      <Meter.Indicator class={styles.Indicator} />
+    </Meter.Track>
+    <Meter.ValueText class={styles.ValueText} />
+    <ZapIcon />
+  </Meter.Root>
+)
