@@ -26,6 +26,6 @@ useForwardExpose()
 
 <template>
   <ark.div v-bind="timer.getItemProps(props)" :as-child="asChild">
-    {{ timer.formattedTime[props.type] }}
+    <slot>{{ timer.formattedTime[props.type] }}</slot>
   </ark.div>
 </template>
