@@ -21,7 +21,6 @@ export const ToastRoot = forwardRef<HTMLDivElement, ToastRootProps>((props, ref)
     </>
   )
 
-  // The ghosts belong to the root, so asChild has to nest them inside the child it renders as.
   const asChildContent = () => {
     if (!isValidElement<{ children?: ReactNode }>(children)) return children
     return cloneElement(children, undefined, withGhosts(children.props.children))
