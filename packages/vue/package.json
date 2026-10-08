@@ -169,7 +169,7 @@
     "@vitejs/plugin-vue-jsx": "5.1.6",
     "@vitest/coverage-v8": "5.0.3",
     "@vue/compiler-sfc": "3.5.43",
-    "@vue/language-core": "3.3.12",
+    "@vue/language-core": "3.3.11",
     "ajv": "8.20.0",
     "check-password-strength": "3.0.0",
     "clean-package": "2.2.0",
@@ -186,7 +186,7 @@
     "vite-plugin-dts": "5.1.2",
     "vitest": "5.0.3",
     "vue": "3.5.43",
-    "vue-tsc": "3.3.12"
+    "vue-tsc": "3.3.11"
   },
   "peerDependencies": {
     "vue": ">=3.5.0"

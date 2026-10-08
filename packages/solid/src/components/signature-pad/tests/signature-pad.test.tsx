@@ -31,7 +31,7 @@ describe('Signature Pad / Field', () => {
   it('should focus on signature pad when label is clicked', async () => {
     render(() => <SignaturePadWithField />)
     await user.click(screen.getByText(/label/i))
-    expect(screen.getByRole('textbox', { hidden: true })).toHaveFocus()
+    expect(screen.getByRole('application')).toHaveFocus()
   })
 
   it('should not display error text when no error is present', async () => {
