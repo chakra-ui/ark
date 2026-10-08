@@ -28,7 +28,13 @@
   import { SelectProvider } from './use-select-context.ts'
   import { useSelect } from './use-select.svelte.ts'
 
-  let { ref = $bindable(null), value = $bindable<string[] | undefined>(), ...props }: SelectRootProps<T> = $props()
+  let {
+    ref = $bindable(null),
+    value = $bindable<string[] | undefined>(),
+    open = $bindable<boolean>(),
+    highlightedValue = $bindable<string | null>(),
+    ...props
+  }: SelectRootProps<T> = $props()
 
   const [presenceProps, selectProps] = $derived(splitPresenceProps(props))
   const [useSelectProps, localProps] = $derived(
@@ -72,9 +78,19 @@
     ...useSelectProps,
     id: props.id ?? providedId,
     value,
+    open,
+    highlightedValue,
     onValueChange(details) {
       useSelectProps.onValueChange?.(details)
       if (value !== undefined) value = details.value
+    },
+    onOpenChange(details) {
+      useSelectProps.onOpenChange?.(details)
+      if (open !== undefined) open = details.open
+    },
+    onHighlightChange(details) {
+      useSelectProps.onHighlightChange?.(details)
+      if (highlightedValue !== undefined) highlightedValue = details.highlightedValue
     },
   }))
 

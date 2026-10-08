@@ -12,7 +12,7 @@
   import { TocProvider } from './use-toc-context'
   import { useToc } from './use-toc.svelte'
 
-  let { ref = $bindable(null), ...props }: TocRootProps = $props()
+  let { ref = $bindable(null), activeIds = $bindable<string[]>(), ...props }: TocRootProps = $props()
   const providedId = $props.id()
 
   const [useTocProps, localProps] = $derived(
@@ -31,7 +31,15 @@
     ]),
   )
 
-  const resolvedProps = $derived({ ...useTocProps, id: useTocProps.id ?? providedId })
+  const resolvedProps = $derived<UseTocProps>({
+    ...useTocProps,
+    id: useTocProps.id ?? providedId,
+    activeIds,
+    onActiveChange(details) {
+      useTocProps.onActiveChange?.(details)
+      if (activeIds !== undefined) activeIds = details.activeIds
+    },
+  })
   const toc = useToc(() => resolvedProps)
 
   TocProvider(toc)

@@ -16,7 +16,7 @@
   import { useTooltip } from './use-tooltip.svelte.ts'
   import type { Optional } from '$lib/types'
 
-  let { open = $bindable(), ...props }: TooltipRootProps = $props()
+  let { open = $bindable(), triggerValue = $bindable<string | null>(), ...props }: TooltipRootProps = $props()
   const providedId = $props.id()
 
   const [presenceProps, localProps] = $derived(splitPresenceProps(props))
@@ -26,9 +26,14 @@
     ...useTooltipProps,
     id: providedId,
     open,
+    triggerValue,
     onOpenChange(details) {
       useTooltipProps.onOpenChange?.(details)
       if (open !== undefined) open = details.open
+    },
+    onTriggerValueChange(details) {
+      useTooltipProps.onTriggerValueChange?.(details)
+      if (triggerValue !== undefined) triggerValue = details.value
     },
   })
 
