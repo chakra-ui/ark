@@ -8,6 +8,7 @@
 </script>
 
 <script lang="ts">
+  import { mergeProps } from '@zag-js/svelte'
   import { createSplitProps } from '../../utils/create-split-props'
   import { Ark } from '../factory'
   import { TocProvider } from './use-toc-context'
@@ -42,8 +43,9 @@
     },
   })
   const toc = useToc(() => resolvedProps)
+  const mergedProps = $derived(mergeProps(toc().getRootProps(), localProps))
 
   TocProvider(toc)
 </script>
 
-<Ark as="div" bind:ref {...localProps} />
+<Ark as="div" bind:ref {...mergedProps} />

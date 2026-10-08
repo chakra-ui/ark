@@ -26,8 +26,7 @@ export const TocRoot = forwardRef<HTMLDivElement, TocRootProps>((props, ref) => 
     'threshold',
   ])
   const toc = useToc(useTocProps)
-  const { id: _, 'aria-labelledby': __, ...rootProps } = toc.getRootProps()
-  const mergedProps = mergeProps(rootProps, localProps)
+  const mergedProps = mergeProps(toc.getRootProps(), localProps)
 
   return (
     <TocProvider value={toc}>
