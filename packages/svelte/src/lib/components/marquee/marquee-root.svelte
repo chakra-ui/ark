@@ -14,7 +14,7 @@
   import { MarqueeProvider } from './use-marquee-context.ts'
   import { useMarquee } from './use-marquee.svelte.ts'
 
-  let { ref = $bindable(null), ...props }: MarqueeRootProps = $props()
+  let { ref = $bindable(null), paused = $bindable<boolean>(), ...props }: MarqueeRootProps = $props()
   const providedId = $props.id()
 
   const [useMarqueeProps, localProps] = $derived(
@@ -38,9 +38,14 @@
     ]),
   )
 
-  const resolvedProps = $derived({
+  const resolvedProps = $derived<UseMarqueeProps>({
     ...useMarqueeProps,
     id: providedId,
+    paused,
+    onPauseChange(details) {
+      useMarqueeProps.onPauseChange?.(details)
+      if (paused !== undefined) paused = details.paused
+    },
   })
 
   const marquee = useMarquee(() => resolvedProps)
