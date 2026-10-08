@@ -14,7 +14,11 @@
   import { HoverCardProvider } from './use-hover-card-context.ts'
   import { useHoverCard } from './use-hover-card.svelte.ts'
 
-  let { open = $bindable<boolean>(), ...props }: HoverCardRootProps = $props()
+  let {
+    open = $bindable<boolean>(),
+    triggerValue = $bindable<string | null>(),
+    ...props
+  }: HoverCardRootProps = $props()
   const providedId = $props.id()
 
   const [presenceProps, localProps] = $derived(splitPresenceProps(props))
@@ -23,9 +27,14 @@
     ...localProps,
     id: localProps.id ?? providedId,
     open,
+    triggerValue,
     onOpenChange(details) {
       localProps.onOpenChange?.(details)
       if (open !== undefined) open = details.open
+    },
+    onTriggerValueChange(details) {
+      localProps.onTriggerValueChange?.(details)
+      if (triggerValue !== undefined) triggerValue = details.value
     },
   })
 

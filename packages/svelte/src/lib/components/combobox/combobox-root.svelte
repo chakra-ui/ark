@@ -36,6 +36,7 @@
     open = $bindable<boolean>(),
     value = $bindable<string[]>(),
     inputValue = $bindable<string>(),
+    highlightedValue = $bindable<string | null>(),
     ...props
   }: ComboboxRootProps<T> = $props()
 
@@ -96,6 +97,7 @@
     open,
     value,
     inputValue,
+    highlightedValue,
     onOpenChange(details) {
       useComboboxProps.onOpenChange?.(details)
       if (open !== undefined) open = details.open
@@ -107,6 +109,10 @@
     onInputValueChange(details) {
       useComboboxProps.onInputValueChange?.(details)
       if (inputValue !== undefined) inputValue = details.inputValue
+    },
+    onHighlightChange(details) {
+      useComboboxProps.onHighlightChange?.(details)
+      if (highlightedValue !== undefined) highlightedValue = details.highlightedValue
     },
   }))
 

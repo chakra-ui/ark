@@ -1,4 +1,5 @@
 <script module lang="ts">
+  import type { SnapPoint } from '@zag-js/drawer'
   import type { Snippet } from 'svelte'
   import type { UsePresenceProps } from '../presence/index.ts'
   import type { UseDrawerProps } from './use-drawer.svelte.ts'
@@ -16,7 +17,13 @@
   import { DrawerProvider } from './use-drawer-context.ts'
   import { useDrawer } from './use-drawer.svelte.ts'
 
-  let { open = $bindable(), children, ...props }: DrawerRootProps = $props()
+  let {
+    open = $bindable(),
+    triggerValue = $bindable<string | null>(),
+    snapPoint = $bindable<SnapPoint | null>(),
+    children,
+    ...props
+  }: DrawerRootProps = $props()
 
   const providedId = $props.id()
 
@@ -28,9 +35,19 @@
       ...localProps,
       id: localProps.id ?? providedId,
       open,
+      triggerValue,
+      snapPoint,
       onOpenChange(details) {
         localProps.onOpenChange?.(details)
         if (open !== undefined) open = details.open
+      },
+      onTriggerValueChange(details) {
+        localProps.onTriggerValueChange?.(details)
+        if (triggerValue !== undefined) triggerValue = details.value
+      },
+      onSnapPointChange(details) {
+        localProps.onSnapPointChange?.(details)
+        if (snapPoint !== undefined) snapPoint = details.snapPoint
       },
     }
   })

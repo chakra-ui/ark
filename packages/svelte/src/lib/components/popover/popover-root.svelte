@@ -15,7 +15,7 @@
   import { PopoverProvider } from './use-popover-context.ts'
   import { usePopover } from './use-popover.svelte.ts'
 
-  let { open = $bindable(), children, ...props }: PopoverRootProps = $props()
+  let { open = $bindable(), triggerValue = $bindable<string | null>(), children, ...props }: PopoverRootProps = $props()
 
   const providedId = $props.id()
 
@@ -26,9 +26,14 @@
       ...localProps,
       id: localProps.id ?? providedId,
       open,
+      triggerValue,
       onOpenChange(details) {
         localProps.onOpenChange?.(details)
         if (open !== undefined) open = details.open
+      },
+      onTriggerValueChange(details) {
+        localProps.onTriggerValueChange?.(details)
+        if (triggerValue !== undefined) triggerValue = details.value
       },
     }
   })
