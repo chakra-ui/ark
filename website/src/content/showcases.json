@@ -6,22 +6,10 @@
     "image": "https://chakra-ui.com/og-image.png"
   },
   {
-    "title": "Park UI",
-    "description": "Build your own Design System with Panda and Ark UI",
-    "url": "https://park-ui.com",
-    "image": "https://park-ui.com/opengraph-image.png"
-  },
-  {
-    "title": "Tark UI",
-    "description": "Beautiful UI components with Ark UI and Tailwind",
-    "url": "https://tarkui.com",
-    "image": "https://tarkui.com/open-graph.png"
-  },
-  {
-    "title": "Pando Design System",
-    "description": "PluralSight's Design System",
-    "url": "https://pando.pluralsight.com/92687036d/p/498dc1-pando-design-system",
-    "image": "/images/pando-design-system.png"
+    "title": "AdGuard",
+    "description": "Network-wide ads and trackers blocking DNS server",
+    "url": "https://adguard.com/adguard-home/overview.html",
+    "image": "/images/adguard.png"
   },
   {
     "title": "OVHCloud Design System",
@@ -36,22 +24,10 @@
     "image": "/images/hash.png"
   },
   {
-    "title": "RELAND",
-    "description": "Marketplace for rural real estate in Brazil",
-    "url": "https://reland.com.br/",
-    "image": "/images/reland.png"
-  },
-  {
-    "title": "Gumbo",
-    "description": "AI-powered Personalised Recipe Search Engine",
-    "url": "https://www.gumbo.kitchen/",
-    "image": "/images/gumbo.png"
-  },
-  {
-    "title": "Promptmetheus",
-    "description": "Forge better Prompts for your LLM-powered Apps",
-    "url": "https://promptmetheus.com/",
-    "image": "https://promptmetheus.com/og-image.jpg"
+    "title": "Pando Design System",
+    "description": "PluralSight's Design System",
+    "url": "https://pando.pluralsight.com/92687036d/p/498dc1-pando-design-system",
+    "image": "/images/pando-design-system.png"
   },
   {
     "title": "NDLA",
@@ -60,15 +36,63 @@
     "image": "https://ndla.no/static/metaimage.png"
   },
   {
+    "title": "Pollinations",
+    "description": "Open-source platform for building AI apps",
+    "url": "https://pollinations.ai",
+    "image": "/images/pollinations.png"
+  },
+  {
+    "title": "Vrite",
+    "description": "Open-source developer content platform",
+    "url": "https://vrite.io",
+    "image": "/images/vrite.png"
+  },
+  {
+    "title": "Storyden",
+    "description": "A modern take on bulletin board forums",
+    "url": "https://www.storyden.org",
+    "image": "/images/storyden.png"
+  },
+  {
+    "title": "Promptmetheus",
+    "description": "Forge better Prompts for your LLM-powered Apps",
+    "url": "https://promptmetheus.com/",
+    "image": "https://promptmetheus.com/og-image.jpg"
+  },
+  {
+    "title": "RELAND",
+    "description": "Marketplace for rural real estate in Brazil",
+    "url": "https://reland.com.br/",
+    "image": "/images/reland.png"
+  },
+  {
     "title": "Cerberus Design System",
     "description": "Guarding brand integrity with a flexible design system",
     "url": "https://cerberus.digitalu.design/",
     "image": "/images/cerberus-design-system.png"
   },
   {
-    "title": "Shark UI",
-    "description": "Shadcn-style components built on Ark UI",
-    "url": "https://shark.vini.one/",
-    "image": "https://shark.vini.one/opengraph-image.png"
+    "title": "Park UI",
+    "description": "Build your own Design System with Panda and Ark UI",
+    "url": "https://park-ui.com",
+    "image": "https://park-ui.com/opengraph-image.png"
+  },
+  {
+    "title": "Tark UI",
+    "description": "Beautiful UI components with Ark UI and Tailwind",
+    "url": "https://tarkui.com",
+    "image": "https://tarkui.com/open-graph.png"
+  },
+  {
+    "title": "Vuzeno",
+    "description": "Complete Vue design system built on Ark UI",
+    "url": "https://vuzeno.com",
+    "image": "/images/vuzeno.png"
+  },
+  {
+    "title": "Moduix",
+    "description": "Multi-framework component system built on Ark UI",
+    "url": "https://moduix.dev",
+    "image": "/images/moduix.png"
   }
 ]
