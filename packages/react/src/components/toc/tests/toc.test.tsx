@@ -27,6 +27,8 @@ describe('Toc', () => {
     expect(nav).toHaveAttribute('id')
     expect(screen.getByTestId('root').id).not.toBe(nav.id)
     expect(nav).toHaveAttribute('aria-labelledby', screen.getByText('On this page').id)
+    expect(nav).toHaveAttribute('data-part', 'nav')
+    expect(screen.getByTestId('root')).not.toHaveAttribute('aria-labelledby')
   })
 
   it('should render the title', () => {

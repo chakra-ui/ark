@@ -13,10 +13,7 @@ export interface TocRootProviderProps extends HTMLProps<'div'>, TocRootProviderB
 
 export const TocRootProvider = (props: TocRootProviderProps) => {
   const [{ value: toc }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
-  const mergedProps = mergeProps(() => {
-    const { id: _, 'aria-labelledby': __, ...rootProps } = toc().getRootProps()
-    return rootProps
-  }, localProps)
+  const mergedProps = mergeProps(() => toc().getRootProps(), localProps)
 
   return (
     <TocProvider value={toc}>

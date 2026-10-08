@@ -11,7 +11,7 @@ export interface TocNavProps extends HTMLProps<'nav'>, TocNavBaseProps {}
 export const TocNav = forwardRef<HTMLElement, TocNavProps>((props, ref) => {
   const { placement, ...rest } = props
   const toc = useTocContext()
-  const mergedProps = mergeProps(toc.getRootProps(), rest)
+  const mergedProps = mergeProps(toc.getNavProps(), rest)
 
   return <ark.nav {...mergedProps} data-placement={placement} ref={ref} />
 })

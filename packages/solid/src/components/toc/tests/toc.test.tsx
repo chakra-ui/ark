@@ -17,6 +17,8 @@ describe('Toc', () => {
     expect(container.querySelector('[data-scope="toc"][data-part="root"]')).not.toBe(nav)
     expect(container.querySelectorAll(`[id="${nav.id}"]`)).toHaveLength(1)
     expect(nav).toHaveAttribute('aria-labelledby', screen.getByText('On this page').id)
+    expect(nav).toHaveAttribute('data-part', 'nav')
+    expect(container.querySelector('[data-scope="toc"][data-part="root"]')).not.toHaveAttribute('aria-labelledby')
   })
 
   it('should render the correct number of items', () => {

@@ -28,5 +28,7 @@ describe('Toc', () => {
     expect(nav).toHaveAttribute('id')
     expect(root.id).not.toBe(nav.id)
     expect(nav).toHaveAttribute('aria-labelledby', screen.getByText('On this page').id)
+    expect(nav).toHaveAttribute('data-part', 'nav')
+    expect(root).not.toHaveAttribute('aria-labelledby')
   })
 })
