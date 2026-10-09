@@ -22,6 +22,7 @@ export const MenuRoot = (props: MenuRootProps) => {
   const [useMenuProps, localProps] = splitRootProps(menuProps, [
     'anchorPoint',
     'aria-label',
+    'autoHighlight',
     'closeOnSelect',
     'composite',
     'defaultHighlightedValue',

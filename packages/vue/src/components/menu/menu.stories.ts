@@ -5,6 +5,8 @@ import CheckboxItemsExample from './examples/checkbox-items.vue'
 import ContextExample from './examples/context.vue'
 import ContextLazyMountExample from './examples/context-lazy-mount.vue'
 import ControlledExample from './examples/controlled.vue'
+import FilteringExample from './examples/filtering.vue'
+import FilteringSubmenuExample from './examples/filtering-submenu.vue'
 import GroupExample from './examples/group.vue'
 import ItemContextExample from './examples/item-context.vue'
 import LinksExample from './examples/links.vue'
@@ -54,6 +56,20 @@ export const ContextLazyMount = {
 export const Controlled = {
   render: () => ({
     components: { Component: ControlledExample },
+    template: '<Component />',
+  }),
+}
+
+export const Filtering = {
+  render: () => ({
+    components: { Component: FilteringExample },
+    template: '<Component />',
+  }),
+}
+
+export const FilteringSubmenu = {
+  render: () => ({
+    components: { Component: FilteringSubmenuExample },
     template: '<Component />',
   }),
 }

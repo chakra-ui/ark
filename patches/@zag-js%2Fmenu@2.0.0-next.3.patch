@@ -1,0 +1,1501 @@
+diff --git a/node_modules/@zag-js/menu/.bun-tag-2302d21b9739b4b1 b/.bun-tag-2302d21b9739b4b1
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@zag-js/menu/.bun-tag-3dc4ffe3955aee05 b/.bun-tag-3dc4ffe3955aee05
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@zag-js/menu/.bun-tag-556230c7ca643f9a b/.bun-tag-556230c7ca643f9a
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@zag-js/menu/.bun-tag-59cca18ec58d4e28 b/.bun-tag-59cca18ec58d4e28
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@zag-js/menu/.bun-tag-b90d446e30ad08e9 b/.bun-tag-b90d446e30ad08e9
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@zag-js/menu/.bun-tag-cd203bd335639396 b/.bun-tag-cd203bd335639396
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@zag-js/menu/.bun-tag-d16ce83d9022275e b/.bun-tag-d16ce83d9022275e
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@zag-js/menu/.bun-tag-d632a2d8d955c5d4 b/.bun-tag-d632a2d8d955c5d4
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@zag-js/menu/.bun-tag-dd63bbd7b3a212e8 b/.bun-tag-dd63bbd7b3a212e8
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/dist/menu.anatomy.d.mts b/dist/menu.anatomy.d.mts
+index 0fb8db4fcad42cf9f67cd04b7a26e0add7b25bc1..cde9cca7e520175d9c8fdea2b2c0726851797cd5 100644
+--- a/dist/menu.anatomy.d.mts
++++ b/dist/menu.anatomy.d.mts
+@@ -1,6 +1,6 @@
+ import * as _zag_js_anatomy from '@zag-js/anatomy';
+ 
+-declare const anatomy: _zag_js_anatomy.AnatomyInstance<"content" | "separator" | "item" | "arrow" | "arrowTip" | "contextTrigger" | "indicator" | "itemGroup" | "itemGroupLabel" | "itemIndicator" | "itemText" | "positioner" | "trigger" | "triggerItem">;
+-declare const parts: Record<"content" | "separator" | "item" | "arrow" | "arrowTip" | "contextTrigger" | "indicator" | "itemGroup" | "itemGroupLabel" | "itemIndicator" | "itemText" | "positioner" | "trigger" | "triggerItem", _zag_js_anatomy.AnatomyPart>;
++declare const anatomy: _zag_js_anatomy.AnatomyInstance<"content" | "separator" | "list" | "input" | "item" | "arrow" | "arrowTip" | "contextTrigger" | "indicator" | "itemGroup" | "itemGroupLabel" | "itemIndicator" | "itemText" | "positioner" | "trigger" | "triggerItem">;
++declare const parts: Record<"content" | "separator" | "list" | "input" | "item" | "arrow" | "arrowTip" | "contextTrigger" | "indicator" | "itemGroup" | "itemGroupLabel" | "itemIndicator" | "itemText" | "positioner" | "trigger" | "triggerItem", _zag_js_anatomy.AnatomyPart>;
+ 
+ export { anatomy, parts };
+diff --git a/dist/menu.anatomy.d.ts b/dist/menu.anatomy.d.ts
+index 0fb8db4fcad42cf9f67cd04b7a26e0add7b25bc1..cde9cca7e520175d9c8fdea2b2c0726851797cd5 100644
+--- a/dist/menu.anatomy.d.ts
++++ b/dist/menu.anatomy.d.ts
+@@ -1,6 +1,6 @@
+ import * as _zag_js_anatomy from '@zag-js/anatomy';
+ 
+-declare const anatomy: _zag_js_anatomy.AnatomyInstance<"content" | "separator" | "item" | "arrow" | "arrowTip" | "contextTrigger" | "indicator" | "itemGroup" | "itemGroupLabel" | "itemIndicator" | "itemText" | "positioner" | "trigger" | "triggerItem">;
+-declare const parts: Record<"content" | "separator" | "item" | "arrow" | "arrowTip" | "contextTrigger" | "indicator" | "itemGroup" | "itemGroupLabel" | "itemIndicator" | "itemText" | "positioner" | "trigger" | "triggerItem", _zag_js_anatomy.AnatomyPart>;
++declare const anatomy: _zag_js_anatomy.AnatomyInstance<"content" | "separator" | "list" | "input" | "item" | "arrow" | "arrowTip" | "contextTrigger" | "indicator" | "itemGroup" | "itemGroupLabel" | "itemIndicator" | "itemText" | "positioner" | "trigger" | "triggerItem">;
++declare const parts: Record<"content" | "separator" | "list" | "input" | "item" | "arrow" | "arrowTip" | "contextTrigger" | "indicator" | "itemGroup" | "itemGroupLabel" | "itemIndicator" | "itemText" | "positioner" | "trigger" | "triggerItem", _zag_js_anatomy.AnatomyPart>;
+ 
+ export { anatomy, parts };
+diff --git a/dist/menu.anatomy.js b/dist/menu.anatomy.js
+index d1f8d4d7f6ebc5756b18ce0f3f2ed2a5cf6235a8..2424b0b32cd309169365d9cbc16852de850872fd 100644
+--- a/dist/menu.anatomy.js
++++ b/dist/menu.anatomy.js
+@@ -31,11 +31,13 @@ var anatomy = (0, import_anatomy.createAnatomy)("menu").parts(
+   "content",
+   "contextTrigger",
+   "indicator",
++  "input",
+   "item",
+   "itemGroup",
+   "itemGroupLabel",
+   "itemIndicator",
+   "itemText",
++  "list",
+   "positioner",
+   "separator",
+   "trigger",
+diff --git a/dist/menu.anatomy.mjs b/dist/menu.anatomy.mjs
+index 3dd3082c9e9e58d12dfb1c0208c19169d218c289..c504a71181652b0bf8c41b6562710ad9c97940f9 100644
+--- a/dist/menu.anatomy.mjs
++++ b/dist/menu.anatomy.mjs
+@@ -6,11 +6,13 @@ var anatomy = createAnatomy("menu").parts(
+   "content",
+   "contextTrigger",
+   "indicator",
++  "input",
+   "item",
+   "itemGroup",
+   "itemGroupLabel",
+   "itemIndicator",
+   "itemText",
++  "list",
+   "positioner",
+   "separator",
+   "trigger",
+diff --git a/dist/menu.connect.js b/dist/menu.connect.js
+index a9014a04c18e70290a2bed58f0cae43abad5dc41..4511531b5e37b8cd4b788103cce4e1b7f8947cfa 100644
+--- a/dist/menu.connect.js
++++ b/dist/menu.connect.js
+@@ -43,7 +43,7 @@ var import_menu = require("./menu.anatomy.js");
+ var dom = __toESM(require("./menu.dom.js"));
+ var import_menu2 = require("./menu.utils.js");
+ function connect(service, normalize) {
+-  const { context, send, state, computed, prop, scope } = service;
++  const { context, send, state, computed, prop, scope, refs } = service;
+   const layer = context.get("layer");
+   const open = state.hasTag("open");
+   const isSubmenu = context.get("isSubmenu");
+@@ -60,6 +60,7 @@ function connect(service, normalize) {
+   const anchorPoint = context.get("anchorPoint");
+   const highlightedValue = context.get("highlightedValue");
+   const triggerValue = context.get("triggerValue");
++  const labelledBy = anchorPoint ? dom.getContextTriggerId(scope, triggerValue ?? void 0) : dom.getTriggerId(scope, triggerValue ?? void 0);
+   const popperStyles = (0, import_popper.getPlacementStyles)({
+     ...prop("positioning"),
+     placement: currentPlacement
+@@ -115,6 +116,8 @@ function connect(service, normalize) {
+       "aria-disabled": (0, import_dom_query.ariaAttr)(itemState.disabled),
+       "data-disabled": (0, import_dom_query.dataAttr)(itemState.disabled),
+       "data-highlighted": (0, import_dom_query.dataAttr)(itemState.highlighted),
++      // WebKit only announces an `aria-activedescendant` change from a filter input when the item is also selected
++      "aria-selected": !composite && itemState.highlighted && context.get("isWebKit") ? true : void 0,
+       "data-value": value,
+       "data-valuetext": valueText,
+       onDragStart(event) {
+@@ -278,6 +281,7 @@ function connect(service, normalize) {
+           });
+         },
+         onPointerDown(event) {
++          refs.set("pointerType", event.pointerType);
+           if (dom.isTargetDisabled(event.currentTarget)) return;
+           if ((0, import_dom_query.isContextMenuEvent)(event)) return;
+           event.preventDefault();
+@@ -289,7 +293,8 @@ function connect(service, normalize) {
+           send({
+             type: shouldSwitch ? "TRIGGER_VALUE.SET" : "TRIGGER_CLICK",
+             target: event.currentTarget,
+-            value
++            value,
++            pointerType: getPointerType(event)
+           });
+         },
+         onPointerEnter(event) {
+@@ -308,6 +313,10 @@ function connect(service, normalize) {
+         },
+         onKeyDown(event) {
+           if (event.defaultPrevented) return;
++          if (open && !isSubmenu && (0, import_dom_query.isPrintableKey)(event) && event.key !== " " && !(0, import_dom_query.isModifierKey)(event)) {
++            dom.getInputEl(scope)?.focus({ preventScroll: true });
++            return;
++          }
+           const keyMap = {
+             Enter() {
+               send({ type: "ARROW_DOWN", src: "enter", value });
+@@ -382,7 +391,7 @@ function connect(service, normalize) {
+         tabIndex: 0,
+         dir: prop("dir"),
+         "aria-activedescendant": computed("highlightedId") || void 0,
+-        "aria-labelledby": anchorPoint ? dom.getContextTriggerId(scope, triggerValue ?? void 0) : dom.getTriggerId(scope, triggerValue ?? void 0),
++        "aria-labelledby": labelledBy,
+         "data-placement": contentState.placement,
+         "data-side": contentState.side,
+         ...(0, import_dismissable.getDismissableLayerAttrs)(layer),
+@@ -393,6 +402,28 @@ function connect(service, normalize) {
+           if (event.pointerType !== "mouse") return;
+           send({ type: "MENU_POINTERENTER" });
+         },
++        onPointerDown(event) {
++          refs.set("pointerType", event.pointerType);
++        },
++        // A filter input owns focus while the menu is open: presses in the content keep it there
++        onMouseDown(event) {
++          const inputEl = dom.getInputEl(scope);
++          const target = (0, import_dom_query.getEventTarget)(event);
++          if (!inputEl || target === inputEl || scope.getActiveElement() !== inputEl) return;
++          if (!(0, import_dom_query.contains)(event.currentTarget, target)) return;
++          event.preventDefault();
++        },
++        // ...and focus that lands in the content (a scrollbar press, a screen reader following the
++        // active descendant) returns to it, unless a touch or pen press put it there
++        onFocus(event) {
++          const inputEl = dom.getInputEl(scope);
++          const target = (0, import_dom_query.getEventTarget)(event);
++          if (!inputEl || target === inputEl || !open) return;
++          if (!(0, import_dom_query.contains)(event.currentTarget, target)) return;
++          const pointerType = refs.get("pointerType");
++          if (pointerType === "touch" || pointerType === "pen") return;
++          inputEl.focus({ preventScroll: true });
++        },
+         onKeyDown(event) {
+           if (event.defaultPrevented) return;
+           if (!(0, import_dom_query.contains)(event.currentTarget, (0, import_dom_query.getEventTarget)(event))) return;
+@@ -475,6 +506,97 @@ function connect(service, normalize) {
+         }
+       });
+     },
++    getInputProps() {
++      const highlightedId = computed("highlightedId");
++      return normalize.input({
++        ...import_menu.parts.input.attrs(scope.id),
++        id: dom.getInputId(scope),
++        type: "text",
++        role: "searchbox",
++        autoComplete: "off",
++        autoCorrect: "off",
++        spellCheck: "false",
++        dir: prop("dir"),
++        "aria-autocomplete": "list",
++        "aria-controls": dom.getListId(scope),
++        "aria-activedescendant": highlightedId || void 0,
++        "data-highlighted": (0, import_dom_query.dataAttr)(!highlightedId),
++        onChange() {
++          send({ type: "INPUT.CHANGE" });
++        },
++        onKeyDown(event) {
++          if (event.defaultPrevented || (0, import_dom_query.isComposingEvent)(event)) return;
++          if (event.key === "Escape") return;
++          event.stopPropagation();
++          const hasValue = event.currentTarget.value !== "";
++          const highlightedEl = highlightedId ? scope.getById(highlightedId) : null;
++          const opensSubmenu = !!highlightedEl?.hasAttribute("aria-haspopup");
++          const modified = event.shiftKey || event.ctrlKey || event.altKey || event.metaKey;
++          const keyMap = {
++            ArrowDown() {
++              if (modified) return false;
++              send({ type: "INPUT.NAVIGATE", key: "next" });
++              return true;
++            },
++            ArrowUp() {
++              if (modified) return false;
++              send({ type: "INPUT.NAVIGATE", key: "prev" });
++              return true;
++            },
++            // Home and End move the caret unless the input is empty and an item is highlighted
++            Home() {
++              if (modified || !highlightedEl || hasValue) return false;
++              send({ type: "INPUT.NAVIGATE", key: "first" });
++              return true;
++            },
++            End() {
++              if (modified || !highlightedEl || hasValue) return false;
++              send({ type: "INPUT.NAVIGATE", key: "last" });
++              return true;
++            },
++            ArrowRight() {
++              if (modified || !opensSubmenu) return false;
++              send({ type: "ARROW_RIGHT" });
++              return true;
++            },
++            ArrowLeft() {
++              if (modified || !isSubmenu || hasValue) return false;
++              send({ type: "ARROW_LEFT" });
++              return true;
++            },
++            Enter() {
++              if (!highlightedEl) return true;
++              if (opensSubmenu || !modified) {
++                send({ type: "ENTER" });
++                return true;
++              }
++              dom.dispatchClickWithModifiers(highlightedEl, event);
++              return true;
++            },
++            Tab() {
++              if (event.shiftKey) {
++                send({ type: isSubmenu ? "ARROW_LEFT" : "CLOSE" });
++              } else {
++                send({ type: "INPUT.TAB" });
++              }
++              return true;
++            }
++          };
++          const exec = keyMap[(0, import_dom_query.getEventKey)(event, { dir: prop("dir") })];
++          if (exec?.()) event.preventDefault();
++        }
++      });
++    },
++    getListProps() {
++      return normalize.element({
++        ...import_menu.parts.list.attrs(scope.id),
++        id: dom.getListId(scope),
++        dir: prop("dir"),
++        // A dialog popup holds the input, so the list takes the menu role
++        role: composite ? "presentation" : "menu",
++        "aria-labelledby": composite ? void 0 : labelledBy
++      });
++    },
+     getSeparatorProps() {
+       return normalize.element({
+         ...import_menu.parts.separator.attrs(scope.id),
+@@ -551,6 +673,10 @@ function connect(service, normalize) {
+     }
+   };
+ }
++var getPointerType = (event) => {
++  const nativeEvent = "nativeEvent" in event && event.nativeEvent ? event.nativeEvent : event;
++  return "pointerType" in nativeEvent ? nativeEvent.pointerType : void 0;
++};
+ // Annotate the CommonJS export names for ESM import in node:
+ 0 && (module.exports = {
+   connect
+diff --git a/dist/menu.connect.mjs b/dist/menu.connect.mjs
+index 88510f08404c9b898333fad2fdc7b5640179a45b..d13b3c8b141a6173a62db06177ea216e0ff0ba30 100644
+--- a/dist/menu.connect.mjs
++++ b/dist/menu.connect.mjs
+@@ -9,6 +9,7 @@ import {
+   getEventTarget,
+   isContextMenuEvent,
+   isDownloadingEvent,
++  isComposingEvent,
+   isEditableElement,
+   isModifierKey,
+   isOpeningInNewTab,
+@@ -23,7 +24,7 @@ import { parts } from "./menu.anatomy.mjs";
+ import * as dom from "./menu.dom.mjs";
+ import { getTreeMenubar, setParentRoutingLock } from "./menu.utils.mjs";
+ function connect(service, normalize) {
+-  const { context, send, state, computed, prop, scope } = service;
++  const { context, send, state, computed, prop, scope, refs } = service;
+   const layer = context.get("layer");
+   const open = state.hasTag("open");
+   const isSubmenu = context.get("isSubmenu");
+@@ -40,6 +41,7 @@ function connect(service, normalize) {
+   const anchorPoint = context.get("anchorPoint");
+   const highlightedValue = context.get("highlightedValue");
+   const triggerValue = context.get("triggerValue");
++  const labelledBy = anchorPoint ? dom.getContextTriggerId(scope, triggerValue ?? void 0) : dom.getTriggerId(scope, triggerValue ?? void 0);
+   const popperStyles = getPlacementStyles({
+     ...prop("positioning"),
+     placement: currentPlacement
+@@ -95,6 +97,8 @@ function connect(service, normalize) {
+       "aria-disabled": ariaAttr(itemState.disabled),
+       "data-disabled": dataAttr(itemState.disabled),
+       "data-highlighted": dataAttr(itemState.highlighted),
++      // WebKit only announces an `aria-activedescendant` change from a filter input when the item is also selected
++      "aria-selected": !composite && itemState.highlighted && context.get("isWebKit") ? true : void 0,
+       "data-value": value,
+       "data-valuetext": valueText,
+       onDragStart(event) {
+@@ -258,6 +262,7 @@ function connect(service, normalize) {
+           });
+         },
+         onPointerDown(event) {
++          refs.set("pointerType", event.pointerType);
+           if (dom.isTargetDisabled(event.currentTarget)) return;
+           if (isContextMenuEvent(event)) return;
+           event.preventDefault();
+@@ -269,7 +274,8 @@ function connect(service, normalize) {
+           send({
+             type: shouldSwitch ? "TRIGGER_VALUE.SET" : "TRIGGER_CLICK",
+             target: event.currentTarget,
+-            value
++            value,
++            pointerType: getPointerType(event)
+           });
+         },
+         onPointerEnter(event) {
+@@ -288,6 +294,10 @@ function connect(service, normalize) {
+         },
+         onKeyDown(event) {
+           if (event.defaultPrevented) return;
++          if (open && !isSubmenu && isPrintableKey(event) && event.key !== " " && !isModifierKey(event)) {
++            dom.getInputEl(scope)?.focus({ preventScroll: true });
++            return;
++          }
+           const keyMap = {
+             Enter() {
+               send({ type: "ARROW_DOWN", src: "enter", value });
+@@ -362,7 +372,7 @@ function connect(service, normalize) {
+         tabIndex: 0,
+         dir: prop("dir"),
+         "aria-activedescendant": computed("highlightedId") || void 0,
+-        "aria-labelledby": anchorPoint ? dom.getContextTriggerId(scope, triggerValue ?? void 0) : dom.getTriggerId(scope, triggerValue ?? void 0),
++        "aria-labelledby": labelledBy,
+         "data-placement": contentState.placement,
+         "data-side": contentState.side,
+         ...getDismissableLayerAttrs(layer),
+@@ -373,6 +383,28 @@ function connect(service, normalize) {
+           if (event.pointerType !== "mouse") return;
+           send({ type: "MENU_POINTERENTER" });
+         },
++        onPointerDown(event) {
++          refs.set("pointerType", event.pointerType);
++        },
++        // A filter input owns focus while the menu is open: presses in the content keep it there
++        onMouseDown(event) {
++          const inputEl = dom.getInputEl(scope);
++          const target = getEventTarget(event);
++          if (!inputEl || target === inputEl || scope.getActiveElement() !== inputEl) return;
++          if (!contains(event.currentTarget, target)) return;
++          event.preventDefault();
++        },
++        // ...and focus that lands in the content (a scrollbar press, a screen reader following the
++        // active descendant) returns to it, unless a touch or pen press put it there
++        onFocus(event) {
++          const inputEl = dom.getInputEl(scope);
++          const target = getEventTarget(event);
++          if (!inputEl || target === inputEl || !open) return;
++          if (!contains(event.currentTarget, target)) return;
++          const pointerType = refs.get("pointerType");
++          if (pointerType === "touch" || pointerType === "pen") return;
++          inputEl.focus({ preventScroll: true });
++        },
+         onKeyDown(event) {
+           if (event.defaultPrevented) return;
+           if (!contains(event.currentTarget, getEventTarget(event))) return;
+@@ -455,6 +487,97 @@ function connect(service, normalize) {
+         }
+       });
+     },
++    getInputProps() {
++      const highlightedId = computed("highlightedId");
++      return normalize.input({
++        ...parts.input.attrs(scope.id),
++        id: dom.getInputId(scope),
++        type: "text",
++        role: "searchbox",
++        autoComplete: "off",
++        autoCorrect: "off",
++        spellCheck: "false",
++        dir: prop("dir"),
++        "aria-autocomplete": "list",
++        "aria-controls": dom.getListId(scope),
++        "aria-activedescendant": highlightedId || void 0,
++        "data-highlighted": dataAttr(!highlightedId),
++        onChange() {
++          send({ type: "INPUT.CHANGE" });
++        },
++        onKeyDown(event) {
++          if (event.defaultPrevented || isComposingEvent(event)) return;
++          if (event.key === "Escape") return;
++          event.stopPropagation();
++          const hasValue = event.currentTarget.value !== "";
++          const highlightedEl = highlightedId ? scope.getById(highlightedId) : null;
++          const opensSubmenu = !!highlightedEl?.hasAttribute("aria-haspopup");
++          const modified = event.shiftKey || event.ctrlKey || event.altKey || event.metaKey;
++          const keyMap = {
++            ArrowDown() {
++              if (modified) return false;
++              send({ type: "INPUT.NAVIGATE", key: "next" });
++              return true;
++            },
++            ArrowUp() {
++              if (modified) return false;
++              send({ type: "INPUT.NAVIGATE", key: "prev" });
++              return true;
++            },
++            // Home and End move the caret unless the input is empty and an item is highlighted
++            Home() {
++              if (modified || !highlightedEl || hasValue) return false;
++              send({ type: "INPUT.NAVIGATE", key: "first" });
++              return true;
++            },
++            End() {
++              if (modified || !highlightedEl || hasValue) return false;
++              send({ type: "INPUT.NAVIGATE", key: "last" });
++              return true;
++            },
++            ArrowRight() {
++              if (modified || !opensSubmenu) return false;
++              send({ type: "ARROW_RIGHT" });
++              return true;
++            },
++            ArrowLeft() {
++              if (modified || !isSubmenu || hasValue) return false;
++              send({ type: "ARROW_LEFT" });
++              return true;
++            },
++            Enter() {
++              if (!highlightedEl) return true;
++              if (opensSubmenu || !modified) {
++                send({ type: "ENTER" });
++                return true;
++              }
++              dom.dispatchClickWithModifiers(highlightedEl, event);
++              return true;
++            },
++            Tab() {
++              if (event.shiftKey) {
++                send({ type: isSubmenu ? "ARROW_LEFT" : "CLOSE" });
++              } else {
++                send({ type: "INPUT.TAB" });
++              }
++              return true;
++            }
++          };
++          const exec = keyMap[getEventKey(event, { dir: prop("dir") })];
++          if (exec?.()) event.preventDefault();
++        }
++      });
++    },
++    getListProps() {
++      return normalize.element({
++        ...parts.list.attrs(scope.id),
++        id: dom.getListId(scope),
++        dir: prop("dir"),
++        // A dialog popup holds the input, so the list takes the menu role
++        role: composite ? "presentation" : "menu",
++        "aria-labelledby": composite ? void 0 : labelledBy
++      });
++    },
+     getSeparatorProps() {
+       return normalize.element({
+         ...parts.separator.attrs(scope.id),
+@@ -531,6 +654,10 @@ function connect(service, normalize) {
+     }
+   };
+ }
++var getPointerType = (event) => {
++  const nativeEvent = "nativeEvent" in event && event.nativeEvent ? event.nativeEvent : event;
++  return "pointerType" in nativeEvent ? nativeEvent.pointerType : void 0;
++};
+ export {
+   connect
+ };
+diff --git a/dist/menu.dom.d.mts b/dist/menu.dom.d.mts
+index 66e77b97587a95109dfcb2b7b0d2d2a84b0cfc28..ae49e12140b7178947f17a5dfa46404e8e4052a9 100644
+--- a/dist/menu.dom.d.mts
++++ b/dist/menu.dom.d.mts
+@@ -10,6 +10,8 @@ declare const getTriggerId: (ctx: Scope, value?: string) => any;
+ declare const getContextTriggerId: (ctx: Scope, value?: string) => any;
+ declare const getContentId: (ctx: Scope) => any;
+ declare const getArrowId: (ctx: Scope) => any;
++declare const getInputId: (ctx: Scope) => any;
++declare const getListId: (ctx: Scope) => any;
+ declare const getPositionerId: (ctx: Scope) => any;
+ declare const getGroupId: (ctx: Scope, id: string) => any;
+ declare const getItemId: (ctx: Scope, id: string) => string;
+@@ -18,6 +20,7 @@ declare const getGroupLabelId: (ctx: Scope, id: string) => any;
+ declare const getContentEl: (ctx: Scope) => HTMLElement | null;
+ declare const getPositionerEl: (ctx: Scope) => HTMLElement | null;
+ declare const getTriggerEl: (ctx: Scope) => HTMLElement | null;
++declare const getInputEl: (ctx: Scope) => HTMLInputElement | null;
+ declare const getMenubarEl: (ctx: Scope, rootId: string | undefined) => HTMLElement | null;
+ declare const dispatchMenubarEvent: (menubarEl: HTMLElement, type: string, detail?: any) => void;
+ declare const getItemEl: (ctx: Scope, value: string | null) => HTMLElement | null;
+@@ -57,5 +60,7 @@ declare const getOptionFromItemEl: (el: HTMLElement) => {
+ declare const itemSelectEvent = "menu:select";
+ declare function dispatchSelectionEvent(el: HTMLElement | null, value: string): void;
+ declare function isTargetWithinMenuTree(target: EventTarget | null, children: Record<string, MenuService>): boolean;
++declare function isFocusHeldBySubmenuOf(target: EventTarget | null, children: Record<string, MenuService>): boolean;
++declare function dispatchClickWithModifiers(el: HTMLElement, event: Pick<KeyboardEvent, "ctrlKey" | "metaKey" | "shiftKey" | "altKey">): void;
+ 
+-export { dispatchMenubarEvent, dispatchSelectionEvent, getActiveTriggerEl, getArrowEl, getArrowId, getContentEl, getContentId, getContextTriggerEl, getContextTriggerEls, getContextTriggerId, getElemByKey, getElements, getFirstEl, getGroupId, getGroupLabelId, getItemEl, getItemId, getItemValue, getLastEl, getMenubarEl, getNextEl, getOptionFromItemEl, getPositionerEl, getPositionerId, getPrevEl, getTriggerEl, getTriggerEls, getTriggerId, getTriggerItemEl, isTargetDisabled, isTargetWithinMenuTree, isTriggerItem, itemSelectEvent };
++export { dispatchClickWithModifiers, dispatchMenubarEvent, dispatchSelectionEvent, getActiveTriggerEl, getArrowEl, getArrowId, getContentEl, getContentId, getContextTriggerEl, getContextTriggerEls, getContextTriggerId, getElemByKey, getElements, getFirstEl, getGroupId, getGroupLabelId, getInputEl, getInputId, getItemEl, getItemId, getItemValue, getLastEl, getListId, getMenubarEl, getNextEl, getOptionFromItemEl, getPositionerEl, getPositionerId, getPrevEl, getTriggerEl, getTriggerEls, getTriggerId, getTriggerItemEl, isFocusHeldBySubmenuOf, isTargetDisabled, isTargetWithinMenuTree, isTriggerItem, itemSelectEvent };
+diff --git a/dist/menu.dom.d.ts b/dist/menu.dom.d.ts
+index a37308e0adfd043b60f366745aa05a6906b4b343..2f9b22f8dc295456b9743d97872a57724a173b3e 100644
+--- a/dist/menu.dom.d.ts
++++ b/dist/menu.dom.d.ts
+@@ -10,6 +10,8 @@ declare const getTriggerId: (ctx: Scope, value?: string) => any;
+ declare const getContextTriggerId: (ctx: Scope, value?: string) => any;
+ declare const getContentId: (ctx: Scope) => any;
+ declare const getArrowId: (ctx: Scope) => any;
++declare const getInputId: (ctx: Scope) => any;
++declare const getListId: (ctx: Scope) => any;
+ declare const getPositionerId: (ctx: Scope) => any;
+ declare const getGroupId: (ctx: Scope, id: string) => any;
+ declare const getItemId: (ctx: Scope, id: string) => string;
+@@ -18,6 +20,7 @@ declare const getGroupLabelId: (ctx: Scope, id: string) => any;
+ declare const getContentEl: (ctx: Scope) => HTMLElement | null;
+ declare const getPositionerEl: (ctx: Scope) => HTMLElement | null;
+ declare const getTriggerEl: (ctx: Scope) => HTMLElement | null;
++declare const getInputEl: (ctx: Scope) => HTMLInputElement | null;
+ declare const getMenubarEl: (ctx: Scope, rootId: string | undefined) => HTMLElement | null;
+ declare const dispatchMenubarEvent: (menubarEl: HTMLElement, type: string, detail?: any) => void;
+ declare const getItemEl: (ctx: Scope, value: string | null) => HTMLElement | null;
+@@ -57,5 +60,7 @@ declare const getOptionFromItemEl: (el: HTMLElement) => {
+ declare const itemSelectEvent = "menu:select";
+ declare function dispatchSelectionEvent(el: HTMLElement | null, value: string): void;
+ declare function isTargetWithinMenuTree(target: EventTarget | null, children: Record<string, MenuService>): boolean;
++declare function isFocusHeldBySubmenuOf(target: EventTarget | null, children: Record<string, MenuService>): boolean;
++declare function dispatchClickWithModifiers(el: HTMLElement, event: Pick<KeyboardEvent, "ctrlKey" | "metaKey" | "shiftKey" | "altKey">): void;
+ 
+-export { dispatchMenubarEvent, dispatchSelectionEvent, getActiveTriggerEl, getArrowEl, getArrowId, getContentEl, getContentId, getContextTriggerEl, getContextTriggerEls, getContextTriggerId, getElemByKey, getElements, getFirstEl, getGroupId, getGroupLabelId, getItemEl, getItemId, getItemValue, getLastEl, getMenubarEl, getNextEl, getOptionFromItemEl, getPositionerEl, getPositionerId, getPrevEl, getTriggerEl, getTriggerEls, getTriggerId, getTriggerItemEl, isTargetDisabled, isTargetWithinMenuTree, isTriggerItem, itemSelectEvent };
++export { dispatchClickWithModifiers, dispatchMenubarEvent, dispatchSelectionEvent, getActiveTriggerEl, getArrowEl, getArrowId, getContentEl, getContentId, getContextTriggerEl, getContextTriggerEls, getContextTriggerId, getElemByKey, getElements, getFirstEl, getGroupId, getGroupLabelId, getInputEl, getInputId, getItemEl, getItemId, getItemValue, getLastEl, getListId, getMenubarEl, getNextEl, getOptionFromItemEl, getPositionerEl, getPositionerId, getPrevEl, getTriggerEl, getTriggerEls, getTriggerId, getTriggerItemEl, isFocusHeldBySubmenuOf, isTargetDisabled, isTargetWithinMenuTree, isTriggerItem, itemSelectEvent };
+diff --git a/dist/menu.dom.js b/dist/menu.dom.js
+index 8cb7197f8d7e20f404cc3daf7646a4a6743f6675..d4ea71df44f7cecb2f14b2fcd3ecd377c098d91b 100644
+--- a/dist/menu.dom.js
++++ b/dist/menu.dom.js
+@@ -20,6 +20,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
+ // src/menu.dom.ts
+ var menu_dom_exports = {};
+ __export(menu_dom_exports, {
++  dispatchClickWithModifiers: () => dispatchClickWithModifiers,
+   dispatchMenubarEvent: () => dispatchMenubarEvent,
+   dispatchSelectionEvent: () => dispatchSelectionEvent,
+   getActiveTriggerEl: () => getActiveTriggerEl,
+@@ -35,10 +36,13 @@ __export(menu_dom_exports, {
+   getFirstEl: () => getFirstEl,
+   getGroupId: () => getGroupId,
+   getGroupLabelId: () => getGroupLabelId,
++  getInputEl: () => getInputEl,
++  getInputId: () => getInputId,
+   getItemEl: () => getItemEl,
+   getItemId: () => getItemId,
+   getItemValue: () => getItemValue,
+   getLastEl: () => getLastEl,
++  getListId: () => getListId,
+   getMenubarEl: () => getMenubarEl,
+   getNextEl: () => getNextEl,
+   getOptionFromItemEl: () => getOptionFromItemEl,
+@@ -49,6 +53,7 @@ __export(menu_dom_exports, {
+   getTriggerEls: () => getTriggerEls,
+   getTriggerId: () => getTriggerId,
+   getTriggerItemEl: () => getTriggerItemEl,
++  isFocusHeldBySubmenuOf: () => isFocusHeldBySubmenuOf,
+   isTargetDisabled: () => isTargetDisabled,
+   isTargetWithinMenuTree: () => isTargetWithinMenuTree,
+   isTriggerItem: () => isTriggerItem,
+@@ -70,6 +75,8 @@ var getContextTriggerId = (ctx, value) => {
+ };
+ var getContentId = (ctx) => ctx.ids?.content ?? `${ctx.id}:content`;
+ var getArrowId = (ctx) => ctx.ids?.arrow ?? `${ctx.id}:arrow`;
++var getInputId = (ctx) => ctx.ids?.input ?? `${ctx.id}:input`;
++var getListId = (ctx) => ctx.ids?.list ?? `${ctx.id}:list`;
+ var getPositionerId = (ctx) => ctx.ids?.positioner ?? `${ctx.id}:positioner`;
+ var getGroupId = (ctx, id) => ctx.ids?.group?.(id) ?? `${ctx.id}:group:${id}`;
+ var getItemId = (ctx, id) => `${ctx.id}:${id}`;
+@@ -78,6 +85,7 @@ var getGroupLabelId = (ctx, id) => ctx.ids?.groupLabel?.(id) ?? `${ctx.id}:group
+ var getContentEl = (ctx) => ctx.query(ctx.selector(import_menu.parts.content));
+ var getPositionerEl = (ctx) => ctx.query(ctx.selector(import_menu.parts.positioner));
+ var getTriggerEl = (ctx) => ctx.query(ctx.selector(import_menu.parts.trigger));
++var getInputEl = (ctx) => ctx.query(ctx.selector(import_menu.parts.input));
+ var getMenubarEl = (ctx, rootId) => rootId ? ctx.getById(rootId) : null;
+ var dispatchMenubarEvent = (menubarEl, type, detail) => {
+   const win = (0, import_dom_query.getWindow)(menubarEl);
+@@ -159,8 +167,24 @@ function isTargetWithinMenuTree(target, children) {
+   }
+   return false;
+ }
++function isFocusHeldBySubmenuOf(target, children) {
++  if (!(0, import_dom_query.isHTMLElement)(target)) return false;
++  for (const id in children) {
++    const child = children[id];
++    if (target.id !== getTriggerId(child.scope)) continue;
++    if (!child.state.hasTag("open")) return false;
++    return isTargetWithinMenuTree(child.scope.getActiveElement(), { [id]: child });
++  }
++  return false;
++}
++function dispatchClickWithModifiers(el, event) {
++  const win = (0, import_dom_query.getWindow)(el);
++  const { ctrlKey, metaKey, shiftKey, altKey } = event;
++  el.dispatchEvent(new win.MouseEvent("click", { bubbles: true, cancelable: true, ctrlKey, metaKey, shiftKey, altKey }));
++}
+ // Annotate the CommonJS export names for ESM import in node:
+ 0 && (module.exports = {
++  dispatchClickWithModifiers,
+   dispatchMenubarEvent,
+   dispatchSelectionEvent,
+   getActiveTriggerEl,
+@@ -176,10 +200,13 @@ function isTargetWithinMenuTree(target, children) {
+   getFirstEl,
+   getGroupId,
+   getGroupLabelId,
++  getInputEl,
++  getInputId,
+   getItemEl,
+   getItemId,
+   getItemValue,
+   getLastEl,
++  getListId,
+   getMenubarEl,
+   getNextEl,
+   getOptionFromItemEl,
+@@ -190,6 +217,7 @@ function isTargetWithinMenuTree(target, children) {
+   getTriggerEls,
+   getTriggerId,
+   getTriggerItemEl,
++  isFocusHeldBySubmenuOf,
+   isTargetDisabled,
+   isTargetWithinMenuTree,
+   isTriggerItem,
+diff --git a/dist/menu.dom.mjs b/dist/menu.dom.mjs
+index a60e0b0567727ffa43350a4b3058791ae6b79751..5fe9b2d25f6639dcd6b8213940cac2d6421bf9e9 100644
+--- a/dist/menu.dom.mjs
++++ b/dist/menu.dom.mjs
+@@ -14,6 +14,8 @@ var getContextTriggerId = (ctx, value) => {
+ };
+ var getContentId = (ctx) => ctx.ids?.content ?? `${ctx.id}:content`;
+ var getArrowId = (ctx) => ctx.ids?.arrow ?? `${ctx.id}:arrow`;
++var getInputId = (ctx) => ctx.ids?.input ?? `${ctx.id}:input`;
++var getListId = (ctx) => ctx.ids?.list ?? `${ctx.id}:list`;
+ var getPositionerId = (ctx) => ctx.ids?.positioner ?? `${ctx.id}:positioner`;
+ var getGroupId = (ctx, id) => ctx.ids?.group?.(id) ?? `${ctx.id}:group:${id}`;
+ var getItemId = (ctx, id) => `${ctx.id}:${id}`;
+@@ -22,6 +24,7 @@ var getGroupLabelId = (ctx, id) => ctx.ids?.groupLabel?.(id) ?? `${ctx.id}:group
+ var getContentEl = (ctx) => ctx.query(ctx.selector(parts.content));
+ var getPositionerEl = (ctx) => ctx.query(ctx.selector(parts.positioner));
+ var getTriggerEl = (ctx) => ctx.query(ctx.selector(parts.trigger));
++var getInputEl = (ctx) => ctx.query(ctx.selector(parts.input));
+ var getMenubarEl = (ctx, rootId) => rootId ? ctx.getById(rootId) : null;
+ var dispatchMenubarEvent = (menubarEl, type, detail) => {
+   const win = getWindow(menubarEl);
+@@ -103,7 +106,23 @@ function isTargetWithinMenuTree(target, children) {
+   }
+   return false;
+ }
++function isFocusHeldBySubmenuOf(target, children) {
++  if (!isHTMLElement(target)) return false;
++  for (const id in children) {
++    const child = children[id];
++    if (target.id !== getTriggerId(child.scope)) continue;
++    if (!child.state.hasTag("open")) return false;
++    return isTargetWithinMenuTree(child.scope.getActiveElement(), { [id]: child });
++  }
++  return false;
++}
++function dispatchClickWithModifiers(el, event) {
++  const win = getWindow(el);
++  const { ctrlKey, metaKey, shiftKey, altKey } = event;
++  el.dispatchEvent(new win.MouseEvent("click", { bubbles: true, cancelable: true, ctrlKey, metaKey, shiftKey, altKey }));
++}
+ export {
++  dispatchClickWithModifiers,
+   dispatchMenubarEvent,
+   dispatchSelectionEvent,
+   getActiveTriggerEl,
+@@ -119,10 +138,13 @@ export {
+   getFirstEl,
+   getGroupId,
+   getGroupLabelId,
++  getInputEl,
++  getInputId,
+   getItemEl,
+   getItemId,
+   getItemValue,
+   getLastEl,
++  getListId,
+   getMenubarEl,
+   getNextEl,
+   getOptionFromItemEl,
+@@ -133,6 +155,7 @@ export {
+   getTriggerEls,
+   getTriggerId,
+   getTriggerItemEl,
++  isFocusHeldBySubmenuOf,
+   isTargetDisabled,
+   isTargetWithinMenuTree,
+   isTriggerItem,
+diff --git a/dist/menu.machine.js b/dist/menu.machine.js
+index d67bf358d01fcbb8b64054e96768178b70eca9b7..5b56ae60d4081aba065997addfdbffadaa4fe627 100644
+--- a/dist/menu.machine.js
++++ b/dist/menu.machine.js
+@@ -44,6 +44,31 @@ var import_menu = require("./menu.anatomy.js");
+ var dom = __toESM(require("./menu.dom.js"));
+ var import_menu2 = require("./menu.utils.js");
+ var { not, and, or } = (0, import_core.createGuards)();
++var keyboardEvents = /* @__PURE__ */ new Set([
++  "ARROW_UP",
++  "ARROW_DOWN",
++  "ARROW_LEFT",
++  "ARROW_RIGHT",
++  "HOME",
++  "END",
++  "TYPEAHEAD",
++  "ENTER",
++  "INPUT.NAVIGATE"
++]);
++var pointerEvents = /* @__PURE__ */ new Set(["ITEM_POINTERMOVE", "ITEM_POINTERLEAVE", "ITEM_POINTERDOWN", "ITEM_CLICK"]);
++function getHighlightReason(event) {
++  const type = event?.type === "CONTROLLED.OPEN" ? event.previousEvent?.type : event?.type;
++  if (keyboardEvents.has(type)) return "keyboard";
++  if (pointerEvents.has(type)) return "pointer";
++  return "programmatic";
++}
++function getFocusSource(event) {
++  const evt = event.type === "CONTROLLED.OPEN" && event.previousEvent ? event.previousEvent : event;
++  if (evt.type === "DELAY.OPEN") return "hover";
++  if (evt.pointerType === "touch" || evt.pointerType === "pen") return "touch";
++  if (evt.type === "ITEM_POINTERMOVE") return "pointer";
++  return "other";
++}
+ var openTransitions = [
+   {
+     guard: "isOpenControlled",
+@@ -86,7 +111,7 @@ var machine = (0, import_core.createMachine)({
+     const open = prop("open") || prop("defaultOpen");
+     return open ? "open" : "idle";
+   },
+-  context({ bindable, prop, scope }) {
++  context({ bindable, prop, scope, getEvent }) {
+     return {
+       layer: bindable(() => ({
+         defaultValue: null
+@@ -95,12 +120,15 @@ var machine = (0, import_core.createMachine)({
+         defaultValue: prop("defaultHighlightedValue") || null,
+         value: prop("highlightedValue"),
+         onChange(value) {
+-          prop("onHighlightChange")?.({ highlightedValue: value });
++          prop("onHighlightChange")?.({ highlightedValue: value, reason: getHighlightReason(getEvent()) });
+         }
+       })),
+       lastHighlightedValue: bindable(() => ({
+         defaultValue: null
+       })),
++      isWebKit: bindable(() => ({
++        defaultValue: false
++      })),
+       currentPlacement: bindable(() => ({
+         defaultValue: void 0
+       })),
+@@ -141,7 +169,8 @@ var machine = (0, import_core.createMachine)({
+       pointerRoutingLocked: false,
+       typeaheadState: { ...import_dom_query.getByTypeahead.defaultOptions },
+       positioningOverride: {},
+-      menubarCloseReason: null
++      menubarCloseReason: null,
++      pointerType: null
+     };
+   },
+   computed: {
+@@ -151,6 +180,8 @@ var machine = (0, import_core.createMachine)({
+     isInMenubar: ({ prop }) => prop("menubar") != null,
+     menubarDisabled: ({ prop }) => prop("menubar")?.disabled ?? false
+   },
++  entry: ["setIsWebKit"],
++  exit: ["focusParentIfOrphaned"],
+   effects: ["trackMenubarOpenRequest"],
+   watch({ track, action, context, prop }) {
+     track([() => context.get("isSubmenu")], () => {
+@@ -433,9 +464,17 @@ var machine = (0, import_core.createMachine)({
+         "trackFocusVisible",
+         "trackPositioning",
+         "scrollToHighlightedItem",
+-        "trackMenubarSiblings"
++        "trackMenubarSiblings",
++        "trackItemsChange"
++      ],
++      entry: [
++        "setInstant",
++        "focusMenu",
++        "unlockParentOnOpen",
++        "dispatchMenubarOpen",
++        "highlightFirstIfAlways",
++        "warnIfFilterInputComposite"
+       ],
+-      entry: ["setInstant", "focusMenu", "unlockParentOnOpen", "dispatchMenubarOpen"],
+       on: {
+         CLOSE: closeTransitions,
+         "CONTROLLED.CLOSE": [
+@@ -509,9 +548,21 @@ var machine = (0, import_core.createMachine)({
+           }
+         ],
+         ITEM_POINTERLEAVE: {
+-          guard: and(not("isPointerRoutingLocked"), not("isTriggerItem")),
++          guard: and(not("isPointerRoutingLocked"), not("isTriggerItem"), not("isAutoHighlightAlways")),
+           actions: ["clearHighlightedItem"]
+         },
++        "INPUT.NAVIGATE": {
++          actions: ["navigateFromInput"]
++        },
++        "INPUT.CHANGE": {
++          actions: ["syncInputHighlight"]
++        },
++        "ITEMS.CHANGE": {
++          actions: ["syncInputHighlight"]
++        },
++        "INPUT.TAB": {
++          actions: ["closeTreeAndTabForward"]
++        },
+         ITEM_CLICK: [
+           // == grouped ==
+           {
+@@ -577,6 +628,7 @@ var machine = (0, import_core.createMachine)({
+         return !!target?.hasAttribute("data-controls");
+       },
+       isSubmenu: ({ context }) => context.get("isSubmenu"),
++      isAutoHighlightAlways: ({ prop }) => prop("autoHighlight") === "always",
+       isPointerRoutingLocked: ({ refs }) => refs.get("pointerRoutingLocked"),
+       isHighlightedItemEditable: ({ scope, computed }) => (0, import_dom_query.isEditableElement)(scope.getById(computed("highlightedId"))),
+       // guard assertions (for controlled mode)
+@@ -597,6 +649,21 @@ var machine = (0, import_core.createMachine)({
+         });
+       },
+       // When coordinated by a menubar, close this menu if a sibling menu opens.
++      // The consumer re-renders the filtered items, sometimes without a keystroke (async results, a clear button),
++      // so the highlight is re-synced whenever the items change
++      trackItemsChange({ scope, send }) {
++        let observer;
++        const frame = (0, import_dom_query.raf)(() => {
++          const contentEl = dom.getContentEl(scope);
++          if (!contentEl || !dom.getInputEl(scope)) return;
++          observer = new (scope.getWin()).MutationObserver(() => send({ type: "ITEMS.CHANGE" }));
++          observer.observe(contentEl, { childList: true, subtree: true });
++        });
++        return () => {
++          frame();
++          observer?.disconnect();
++        };
++      },
+       trackMenubarSiblings({ scope, prop, send, refs }) {
+         const menubarEl = dom.getMenubarEl(scope, prop("menubar")?.rootId);
+         if (!menubarEl) return;
+@@ -682,7 +749,13 @@ var machine = (0, import_core.createMachine)({
+           },
+           onEscapeKeyDown(event) {
+             prop("onEscapeKeyDown")?.(event);
+-            if (context.get("isSubmenu")) event.preventDefault();
++            if (context.get("isSubmenu")) {
++              event.preventDefault();
++              if ((0, import_dom_query.isEditableElement)((0, import_dom_query.getEventTarget)(event))) {
++                send({ type: "ARROW_LEFT" });
++                return;
++              }
++            }
+             (0, import_menu2.closeRootMenu)({ parent: refs.get("parent") });
+           },
+           onPointerDownOutside(event) {
+@@ -843,7 +916,87 @@ var machine = (0, import_core.createMachine)({
+       clearHighlightedItem({ context }) {
+         context.set("highlightedValue", null);
+       },
+-      focusMenu({ scope }) {
++      // Read once the machine starts in the browser, so server and hydration markup leave it out
++      setIsWebKit({ context }) {
++        context.set("isWebKit", (0, import_dom_query.isWebKit)());
++      },
++      highlightFirstIfAlways({ prop, scope, context }) {
++        if (prop("autoHighlight") !== "always") return;
++        (0, import_dom_query.raf)(() => {
++          if (!dom.getInputEl(scope) || context.get("highlightedValue") != null) return;
++          const first = dom.getFirstEl(scope);
++          if (first) context.set("highlightedValue", dom.getItemValue(first));
++        });
++      },
++      warnIfFilterInputComposite({ prop, scope }) {
++        if (process.env.NODE_ENV === "production" || !prop("composite")) return;
++        (0, import_dom_query.raf)(() => {
++          if (!dom.getInputEl(scope)) return;
++          console.warn("[@zag-js/menu] A menu with a filter input needs `composite: false` to render a dialog popup.");
++        });
++      },
++      // A submenu removed while it held focus (its trigger was filtered out) hands focus back to its parent.
++      // Some frameworks blur the focused element as they remove it, so check where focus ended up.
++      focusParentIfOrphaned({ refs, scope }) {
++        const parent = refs.get("parent");
++        if (!parent) return;
++        queueMicrotask(() => {
++          const activeEl = scope.getActiveElement();
++          if (activeEl && activeEl !== scope.getDoc().body) return;
++          parent.send({ type: "FOCUS_MENU" });
++        });
++      },
++      // Arrow keys from a filter input cycle through the input: past either end of the list the highlight
++      // returns to the input, unless `autoHighlight` keeps an item highlighted
++      navigateFromInput({ context, scope, event, prop }) {
++        const items = dom.getElements(scope);
++        const index = items.findIndex((el) => dom.getItemValue(el) === context.get("highlightedValue"));
++        const wrap = !!prop("autoHighlight");
++        const lastIndex = items.length - 1;
++        let next = null;
++        if (event.key === "first") next = items[0];
++        else if (event.key === "last") next = items[lastIndex];
++        else if (event.key === "next") next = index === -1 ? items[0] : index < lastIndex ? items[index + 1] : wrap ? items[0] : null;
++        else if (event.key === "prev") next = index === -1 ? items[lastIndex] : index > 0 ? items[index - 1] : wrap ? items[lastIndex] : null;
++        context.set("highlightedValue", next ? dom.getItemValue(next) : null);
++      },
++      // Keeps the highlight on a rendered item once the consumer has re-rendered the filtered items
++      syncInputHighlight({ context, scope, event, prop }) {
++        const queryChanged = event.type === "INPUT.CHANGE";
++        (0, import_dom_query.raf)(() => {
++          const inputEl = dom.getInputEl(scope);
++          if (!inputEl) return;
++          const items = dom.getElements(scope);
++          const autoHighlight = prop("autoHighlight");
++          const hasQuery = inputEl.value.trim() !== "";
++          const current = context.get("highlightedValue");
++          const isRendered = items.some((el) => dom.getItemValue(el) === current);
++          if (autoHighlight === "always" || autoHighlight && hasQuery) {
++            if (queryChanged || !isRendered) context.set("highlightedValue", items[0] ? dom.getItemValue(items[0]) : null);
++            return;
++          }
++          if (autoHighlight && queryChanged) {
++            context.set("highlightedValue", null);
++            return;
++          }
++          if (current != null && !isRendered) context.set("highlightedValue", null);
++        });
++      },
++      // Tab from a filter input closes the whole menu and moves focus past its trigger
++      closeTreeAndTabForward({ refs, send, scope }) {
++        let root = refs.get("parent");
++        while (root?.refs.get("parent")) root = root.refs.get("parent");
++        if (root) root.send({ type: "CLOSE" });
++        else send({ type: "CLOSE" });
++        const doc = scope.getDoc();
++        (0, import_dom_query.raf)(() => {
++          const current = scope.getActiveElement();
++          (0, import_dom_query.getNextTabbable)(doc.body, { current })?.focus();
++        });
++      },
++      focusMenu({ scope, event, refs }) {
++        const source = getFocusSource(event);
++        const target = event.target;
+         (0, import_dom_query.raf)(() => {
+           const contentEl = dom.getContentEl(scope);
+           const initialFocusEl = (0, import_dom_query.getInitialFocus)({
+@@ -853,7 +1006,16 @@ var machine = (0, import_core.createMachine)({
+               return !node.role?.startsWith("menuitem");
+             }
+           });
+-          initialFocusEl?.focus({ preventScroll: true });
++          if (!initialFocusEl) return;
++          if ((0, import_dom_query.isEditableElement)(initialFocusEl)) {
++            if (source === "hover") return;
++            if (source === "touch") {
++              contentEl?.focus({ preventScroll: true });
++              return;
++            }
++            if (source === "pointer" && dom.isFocusHeldBySubmenuOf(target, refs.get("children"))) return;
++          }
++          initialFocusEl.focus({ preventScroll: true });
+         });
+       },
+       highlightFirstItem({ context, scope }) {
+diff --git a/dist/menu.machine.mjs b/dist/menu.machine.mjs
+index 69be6e2dfde435a5800f525ec5331b645e4d59dd..7e02a2022623a04716c7369cea626861cab070cc 100644
+--- a/dist/menu.machine.mjs
++++ b/dist/menu.machine.mjs
+@@ -8,8 +8,10 @@ import {
+   getByTypeahead,
+   getEventTarget,
+   getInitialFocus,
++  getNextTabbable,
+   isAnchorElement,
+   isEditableElement,
++  isWebKit,
+   observeAttributes,
+   raf,
+   scrollIntoView
+@@ -29,6 +31,31 @@ import {
+   unlockParentOnSubmenuClose
+ } from "./menu.utils.mjs";
+ var { not, and, or } = createGuards();
++var keyboardEvents = /* @__PURE__ */ new Set([
++  "ARROW_UP",
++  "ARROW_DOWN",
++  "ARROW_LEFT",
++  "ARROW_RIGHT",
++  "HOME",
++  "END",
++  "TYPEAHEAD",
++  "ENTER",
++  "INPUT.NAVIGATE"
++]);
++var pointerEvents = /* @__PURE__ */ new Set(["ITEM_POINTERMOVE", "ITEM_POINTERLEAVE", "ITEM_POINTERDOWN", "ITEM_CLICK"]);
++function getHighlightReason(event) {
++  const type = event?.type === "CONTROLLED.OPEN" ? event.previousEvent?.type : event?.type;
++  if (keyboardEvents.has(type)) return "keyboard";
++  if (pointerEvents.has(type)) return "pointer";
++  return "programmatic";
++}
++function getFocusSource(event) {
++  const evt = event.type === "CONTROLLED.OPEN" && event.previousEvent ? event.previousEvent : event;
++  if (evt.type === "DELAY.OPEN") return "hover";
++  if (evt.pointerType === "touch" || evt.pointerType === "pen") return "touch";
++  if (evt.type === "ITEM_POINTERMOVE") return "pointer";
++  return "other";
++}
+ var openTransitions = [
+   {
+     guard: "isOpenControlled",
+@@ -71,7 +98,7 @@ var machine = createMachine({
+     const open = prop("open") || prop("defaultOpen");
+     return open ? "open" : "idle";
+   },
+-  context({ bindable, prop, scope }) {
++  context({ bindable, prop, scope, getEvent }) {
+     return {
+       layer: bindable(() => ({
+         defaultValue: null
+@@ -80,12 +107,15 @@ var machine = createMachine({
+         defaultValue: prop("defaultHighlightedValue") || null,
+         value: prop("highlightedValue"),
+         onChange(value) {
+-          prop("onHighlightChange")?.({ highlightedValue: value });
++          prop("onHighlightChange")?.({ highlightedValue: value, reason: getHighlightReason(getEvent()) });
+         }
+       })),
+       lastHighlightedValue: bindable(() => ({
+         defaultValue: null
+       })),
++      isWebKit: bindable(() => ({
++        defaultValue: false
++      })),
+       currentPlacement: bindable(() => ({
+         defaultValue: void 0
+       })),
+@@ -126,7 +156,8 @@ var machine = createMachine({
+       pointerRoutingLocked: false,
+       typeaheadState: { ...getByTypeahead.defaultOptions },
+       positioningOverride: {},
+-      menubarCloseReason: null
++      menubarCloseReason: null,
++      pointerType: null
+     };
+   },
+   computed: {
+@@ -136,6 +167,8 @@ var machine = createMachine({
+     isInMenubar: ({ prop }) => prop("menubar") != null,
+     menubarDisabled: ({ prop }) => prop("menubar")?.disabled ?? false
+   },
++  entry: ["setIsWebKit"],
++  exit: ["focusParentIfOrphaned"],
+   effects: ["trackMenubarOpenRequest"],
+   watch({ track, action, context, prop }) {
+     track([() => context.get("isSubmenu")], () => {
+@@ -418,9 +451,17 @@ var machine = createMachine({
+         "trackFocusVisible",
+         "trackPositioning",
+         "scrollToHighlightedItem",
+-        "trackMenubarSiblings"
++        "trackMenubarSiblings",
++        "trackItemsChange"
++      ],
++      entry: [
++        "setInstant",
++        "focusMenu",
++        "unlockParentOnOpen",
++        "dispatchMenubarOpen",
++        "highlightFirstIfAlways",
++        "warnIfFilterInputComposite"
+       ],
+-      entry: ["setInstant", "focusMenu", "unlockParentOnOpen", "dispatchMenubarOpen"],
+       on: {
+         CLOSE: closeTransitions,
+         "CONTROLLED.CLOSE": [
+@@ -494,9 +535,21 @@ var machine = createMachine({
+           }
+         ],
+         ITEM_POINTERLEAVE: {
+-          guard: and(not("isPointerRoutingLocked"), not("isTriggerItem")),
++          guard: and(not("isPointerRoutingLocked"), not("isTriggerItem"), not("isAutoHighlightAlways")),
+           actions: ["clearHighlightedItem"]
+         },
++        "INPUT.NAVIGATE": {
++          actions: ["navigateFromInput"]
++        },
++        "INPUT.CHANGE": {
++          actions: ["syncInputHighlight"]
++        },
++        "ITEMS.CHANGE": {
++          actions: ["syncInputHighlight"]
++        },
++        "INPUT.TAB": {
++          actions: ["closeTreeAndTabForward"]
++        },
+         ITEM_CLICK: [
+           // == grouped ==
+           {
+@@ -562,6 +615,7 @@ var machine = createMachine({
+         return !!target?.hasAttribute("data-controls");
+       },
+       isSubmenu: ({ context }) => context.get("isSubmenu"),
++      isAutoHighlightAlways: ({ prop }) => prop("autoHighlight") === "always",
+       isPointerRoutingLocked: ({ refs }) => refs.get("pointerRoutingLocked"),
+       isHighlightedItemEditable: ({ scope, computed }) => isEditableElement(scope.getById(computed("highlightedId"))),
+       // guard assertions (for controlled mode)
+@@ -582,6 +636,21 @@ var machine = createMachine({
+         });
+       },
+       // When coordinated by a menubar, close this menu if a sibling menu opens.
++      // The consumer re-renders the filtered items, sometimes without a keystroke (async results, a clear button),
++      // so the highlight is re-synced whenever the items change
++      trackItemsChange({ scope, send }) {
++        let observer;
++        const frame = raf(() => {
++          const contentEl = dom.getContentEl(scope);
++          if (!contentEl || !dom.getInputEl(scope)) return;
++          observer = new (scope.getWin()).MutationObserver(() => send({ type: "ITEMS.CHANGE" }));
++          observer.observe(contentEl, { childList: true, subtree: true });
++        });
++        return () => {
++          frame();
++          observer?.disconnect();
++        };
++      },
+       trackMenubarSiblings({ scope, prop, send, refs }) {
+         const menubarEl = dom.getMenubarEl(scope, prop("menubar")?.rootId);
+         if (!menubarEl) return;
+@@ -667,7 +736,13 @@ var machine = createMachine({
+           },
+           onEscapeKeyDown(event) {
+             prop("onEscapeKeyDown")?.(event);
+-            if (context.get("isSubmenu")) event.preventDefault();
++            if (context.get("isSubmenu")) {
++              event.preventDefault();
++              if (isEditableElement(getEventTarget(event))) {
++                send({ type: "ARROW_LEFT" });
++                return;
++              }
++            }
+             closeRootMenu({ parent: refs.get("parent") });
+           },
+           onPointerDownOutside(event) {
+@@ -828,7 +903,87 @@ var machine = createMachine({
+       clearHighlightedItem({ context }) {
+         context.set("highlightedValue", null);
+       },
+-      focusMenu({ scope }) {
++      // Read once the machine starts in the browser, so server and hydration markup leave it out
++      setIsWebKit({ context }) {
++        context.set("isWebKit", isWebKit());
++      },
++      highlightFirstIfAlways({ prop, scope, context }) {
++        if (prop("autoHighlight") !== "always") return;
++        raf(() => {
++          if (!dom.getInputEl(scope) || context.get("highlightedValue") != null) return;
++          const first = dom.getFirstEl(scope);
++          if (first) context.set("highlightedValue", dom.getItemValue(first));
++        });
++      },
++      warnIfFilterInputComposite({ prop, scope }) {
++        if (process.env.NODE_ENV === "production" || !prop("composite")) return;
++        raf(() => {
++          if (!dom.getInputEl(scope)) return;
++          console.warn("[@zag-js/menu] A menu with a filter input needs `composite: false` to render a dialog popup.");
++        });
++      },
++      // A submenu removed while it held focus (its trigger was filtered out) hands focus back to its parent.
++      // Some frameworks blur the focused element as they remove it, so check where focus ended up.
++      focusParentIfOrphaned({ refs, scope }) {
++        const parent = refs.get("parent");
++        if (!parent) return;
++        queueMicrotask(() => {
++          const activeEl = scope.getActiveElement();
++          if (activeEl && activeEl !== scope.getDoc().body) return;
++          parent.send({ type: "FOCUS_MENU" });
++        });
++      },
++      // Arrow keys from a filter input cycle through the input: past either end of the list the highlight
++      // returns to the input, unless `autoHighlight` keeps an item highlighted
++      navigateFromInput({ context, scope, event, prop }) {
++        const items = dom.getElements(scope);
++        const index = items.findIndex((el) => dom.getItemValue(el) === context.get("highlightedValue"));
++        const wrap = !!prop("autoHighlight");
++        const lastIndex = items.length - 1;
++        let next = null;
++        if (event.key === "first") next = items[0];
++        else if (event.key === "last") next = items[lastIndex];
++        else if (event.key === "next") next = index === -1 ? items[0] : index < lastIndex ? items[index + 1] : wrap ? items[0] : null;
++        else if (event.key === "prev") next = index === -1 ? items[lastIndex] : index > 0 ? items[index - 1] : wrap ? items[lastIndex] : null;
++        context.set("highlightedValue", next ? dom.getItemValue(next) : null);
++      },
++      // Keeps the highlight on a rendered item once the consumer has re-rendered the filtered items
++      syncInputHighlight({ context, scope, event, prop }) {
++        const queryChanged = event.type === "INPUT.CHANGE";
++        raf(() => {
++          const inputEl = dom.getInputEl(scope);
++          if (!inputEl) return;
++          const items = dom.getElements(scope);
++          const autoHighlight = prop("autoHighlight");
++          const hasQuery = inputEl.value.trim() !== "";
++          const current = context.get("highlightedValue");
++          const isRendered = items.some((el) => dom.getItemValue(el) === current);
++          if (autoHighlight === "always" || autoHighlight && hasQuery) {
++            if (queryChanged || !isRendered) context.set("highlightedValue", items[0] ? dom.getItemValue(items[0]) : null);
++            return;
++          }
++          if (autoHighlight && queryChanged) {
++            context.set("highlightedValue", null);
++            return;
++          }
++          if (current != null && !isRendered) context.set("highlightedValue", null);
++        });
++      },
++      // Tab from a filter input closes the whole menu and moves focus past its trigger
++      closeTreeAndTabForward({ refs, send, scope }) {
++        let root = refs.get("parent");
++        while (root?.refs.get("parent")) root = root.refs.get("parent");
++        if (root) root.send({ type: "CLOSE" });
++        else send({ type: "CLOSE" });
++        const doc = scope.getDoc();
++        raf(() => {
++          const current = scope.getActiveElement();
++          getNextTabbable(doc.body, { current })?.focus();
++        });
++      },
++      focusMenu({ scope, event, refs }) {
++        const source = getFocusSource(event);
++        const target = event.target;
+         raf(() => {
+           const contentEl = dom.getContentEl(scope);
+           const initialFocusEl = getInitialFocus({
+@@ -838,7 +993,16 @@ var machine = createMachine({
+               return !node.role?.startsWith("menuitem");
+             }
+           });
+-          initialFocusEl?.focus({ preventScroll: true });
++          if (!initialFocusEl) return;
++          if (isEditableElement(initialFocusEl)) {
++            if (source === "hover") return;
++            if (source === "touch") {
++              contentEl?.focus({ preventScroll: true });
++              return;
++            }
++            if (source === "pointer" && dom.isFocusHeldBySubmenuOf(target, refs.get("children"))) return;
++          }
++          initialFocusEl.focus({ preventScroll: true });
+         });
+       },
+       highlightFirstItem({ context, scope }) {
+diff --git a/dist/menu.props.js b/dist/menu.props.js
+index 65e9043b8214e3cf0ca85774d6d8b1fab99950c4..7dd6b69fa9f1f159d089308a8b95360cb5dede25 100644
+--- a/dist/menu.props.js
++++ b/dist/menu.props.js
+@@ -37,6 +37,7 @@ var import_utils = require("@zag-js/utils");
+ var props = (0, import_types.createProps)()([
+   "anchorPoint",
+   "aria-label",
++  "autoHighlight",
+   "closeOnSelect",
+   "composite",
+   "defaultHighlightedValue",
+diff --git a/dist/menu.props.mjs b/dist/menu.props.mjs
+index 18c4e8655e11b26abcf07651bb51038fd8df7339..02dd7e2e8fa073810cf30dbd025f090c31d3be6f 100644
+--- a/dist/menu.props.mjs
++++ b/dist/menu.props.mjs
+@@ -4,6 +4,7 @@ import { createSplitProps } from "@zag-js/utils";
+ var props = createProps()([
+   "anchorPoint",
+   "aria-label",
++  "autoHighlight",
+   "closeOnSelect",
+   "composite",
+   "defaultHighlightedValue",
+diff --git a/dist/menu.types.d.mts b/dist/menu.types.d.mts
+index 21ae8b8a7ad4e4a415d62df5fbd776475a1f8e0e..a81d63b78e5c6f13e11456bd92711e656a11c366 100644
+--- a/dist/menu.types.d.mts
++++ b/dist/menu.types.d.mts
+@@ -29,11 +29,16 @@ interface SelectionDetails {
+      */
+     value: string;
+ }
++type HighlightChangeReason = "keyboard" | "pointer" | "programmatic";
+ interface HighlightChangeDetails {
+     /**
+      * The value of the highlighted menu item
+      */
+     highlightedValue: string | null;
++    /**
++     * What caused the highlight to change
++     */
++    reason: HighlightChangeReason;
+ }
+ interface NavigateDetails {
+     value: string;
+@@ -48,6 +53,8 @@ interface ElementIds {
+     group?: ((id: string) => string) | undefined;
+     positioner?: string | undefined;
+     arrow?: string | undefined;
++    input?: string | undefined;
++    list?: string | undefined;
+ }
+ interface MenuProps extends DirectionProperty, CommonProperties, DismissableElementHandlers {
+     /**
+@@ -111,6 +118,13 @@ interface MenuProps extends DirectionProperty, CommonProperties, DismissableElem
+      * @default true
+      */
+     typeahead?: boolean | undefined;
++    /**
++     * Whether a filter input highlights the first item when its query changes.
++     * - `true`: highlight it while the query is not empty
++     * - `"always"`: highlight it even when the query is empty, and keep a highlight when the pointer leaves
++     * @default false
++     */
++    autoHighlight?: boolean | "always" | undefined;
+     /**
+      * Whether the menu is a composed with other composite widgets like a combobox or tabs
+      * @default true
+@@ -170,6 +184,7 @@ interface MenuSchema {
+         layer: LayerSnapshot | null;
+         highlightedValue: string | null;
+         lastHighlightedValue: string | null;
++        isWebKit: boolean;
+         currentPlacement: Placement | undefined;
+         intentPolygon: Point[] | null;
+         anchorPoint: Point | null;
+@@ -193,6 +208,7 @@ interface MenuSchema {
+         typeaheadState: TypeaheadState;
+         positioningOverride: Partial<PositioningOptions>;
+         menubarCloseReason: string | null;
++        pointerType: string | null;
+     };
+     action: string;
+     effect: string;
+@@ -374,7 +390,7 @@ interface MenuApi<T extends PropTypes = PropTypes> {
+     /**
+      * Function to set the highlighted menuitem
+      */
+-    setHighlightedValue: (value: string) => void;
++    setHighlightedValue: (value: string | null) => void;
+     /**
+      * Function to register a parent menu. This is used for submenus
+      */
+@@ -420,6 +436,14 @@ interface MenuApi<T extends PropTypes = PropTypes> {
+     getContentState: () => ContentState;
+     getContentProps: () => T["element"];
+     getSeparatorProps: () => T["element"];
++    /**
++     * Props for a filter input that owns focus while its menu is open
++     */
++    getInputProps: () => T["input"];
++    /**
++     * Props for the list that holds the items next to a filter input
++     */
++    getListProps: () => T["element"];
+     getItemProps: (options: ItemProps) => T["element"];
+     getOptionItemProps: (option: OptionItemProps) => T["element"];
+     getItemIndicatorProps: (option: ItemBaseProps) => T["element"];
+@@ -428,4 +452,4 @@ interface MenuApi<T extends PropTypes = PropTypes> {
+     getItemGroupProps: (options: ItemGroupProps) => T["element"];
+ }
+ 
+-export type { Api, ChildMenuService, ContentState, ElementIds, HighlightChangeDetails, ItemBaseProps, ItemGroupLabelProps, ItemGroupProps, ItemListenerProps, ItemProps, ItemState, MenuApi, MenuMachine, MenuProps, MenuSchema, MenuService, MenubarContext, NavigateDetails, OpenChangeDetails, OptionItemProps, OptionItemState, ParentMenuService, PositionerState, SelectionDetails, TriggerProps, TriggerState, TriggerValueChangeDetails };
++export type { Api, ChildMenuService, ContentState, ElementIds, HighlightChangeDetails, HighlightChangeReason, ItemBaseProps, ItemGroupLabelProps, ItemGroupProps, ItemListenerProps, ItemProps, ItemState, MenuApi, MenuMachine, MenuProps, MenuSchema, MenuService, MenubarContext, NavigateDetails, OpenChangeDetails, OptionItemProps, OptionItemState, ParentMenuService, PositionerState, SelectionDetails, TriggerProps, TriggerState, TriggerValueChangeDetails };
+diff --git a/dist/menu.types.d.ts b/dist/menu.types.d.ts
+index 21ae8b8a7ad4e4a415d62df5fbd776475a1f8e0e..a81d63b78e5c6f13e11456bd92711e656a11c366 100644
+--- a/dist/menu.types.d.ts
++++ b/dist/menu.types.d.ts
+@@ -29,11 +29,16 @@ interface SelectionDetails {
+      */
+     value: string;
+ }
++type HighlightChangeReason = "keyboard" | "pointer" | "programmatic";
+ interface HighlightChangeDetails {
+     /**
+      * The value of the highlighted menu item
+      */
+     highlightedValue: string | null;
++    /**
++     * What caused the highlight to change
++     */
++    reason: HighlightChangeReason;
+ }
+ interface NavigateDetails {
+     value: string;
+@@ -48,6 +53,8 @@ interface ElementIds {
+     group?: ((id: string) => string) | undefined;
+     positioner?: string | undefined;
+     arrow?: string | undefined;
++    input?: string | undefined;
++    list?: string | undefined;
+ }
+ interface MenuProps extends DirectionProperty, CommonProperties, DismissableElementHandlers {
+     /**
+@@ -111,6 +118,13 @@ interface MenuProps extends DirectionProperty, CommonProperties, DismissableElem
+      * @default true
+      */
+     typeahead?: boolean | undefined;
++    /**
++     * Whether a filter input highlights the first item when its query changes.
++     * - `true`: highlight it while the query is not empty
++     * - `"always"`: highlight it even when the query is empty, and keep a highlight when the pointer leaves
++     * @default false
++     */
++    autoHighlight?: boolean | "always" | undefined;
+     /**
+      * Whether the menu is a composed with other composite widgets like a combobox or tabs
+      * @default true
+@@ -170,6 +184,7 @@ interface MenuSchema {
+         layer: LayerSnapshot | null;
+         highlightedValue: string | null;
+         lastHighlightedValue: string | null;
++        isWebKit: boolean;
+         currentPlacement: Placement | undefined;
+         intentPolygon: Point[] | null;
+         anchorPoint: Point | null;
+@@ -193,6 +208,7 @@ interface MenuSchema {
+         typeaheadState: TypeaheadState;
+         positioningOverride: Partial<PositioningOptions>;
+         menubarCloseReason: string | null;
++        pointerType: string | null;
+     };
+     action: string;
+     effect: string;
+@@ -374,7 +390,7 @@ interface MenuApi<T extends PropTypes = PropTypes> {
+     /**
+      * Function to set the highlighted menuitem
+      */
+-    setHighlightedValue: (value: string) => void;
++    setHighlightedValue: (value: string | null) => void;
+     /**
+      * Function to register a parent menu. This is used for submenus
+      */
+@@ -420,6 +436,14 @@ interface MenuApi<T extends PropTypes = PropTypes> {
+     getContentState: () => ContentState;
+     getContentProps: () => T["element"];
+     getSeparatorProps: () => T["element"];
++    /**
++     * Props for a filter input that owns focus while its menu is open
++     */
++    getInputProps: () => T["input"];
++    /**
++     * Props for the list that holds the items next to a filter input
++     */
++    getListProps: () => T["element"];
+     getItemProps: (options: ItemProps) => T["element"];
+     getOptionItemProps: (option: OptionItemProps) => T["element"];
+     getItemIndicatorProps: (option: ItemBaseProps) => T["element"];
+@@ -428,4 +452,4 @@ interface MenuApi<T extends PropTypes = PropTypes> {
+     getItemGroupProps: (options: ItemGroupProps) => T["element"];
+ }
+ 
+-export type { Api, ChildMenuService, ContentState, ElementIds, HighlightChangeDetails, ItemBaseProps, ItemGroupLabelProps, ItemGroupProps, ItemListenerProps, ItemProps, ItemState, MenuApi, MenuMachine, MenuProps, MenuSchema, MenuService, MenubarContext, NavigateDetails, OpenChangeDetails, OptionItemProps, OptionItemState, ParentMenuService, PositionerState, SelectionDetails, TriggerProps, TriggerState, TriggerValueChangeDetails };
++export type { Api, ChildMenuService, ContentState, ElementIds, HighlightChangeDetails, HighlightChangeReason, ItemBaseProps, ItemGroupLabelProps, ItemGroupProps, ItemListenerProps, ItemProps, ItemState, MenuApi, MenuMachine, MenuProps, MenuSchema, MenuService, MenubarContext, NavigateDetails, OpenChangeDetails, OptionItemProps, OptionItemState, ParentMenuService, PositionerState, SelectionDetails, TriggerProps, TriggerState, TriggerValueChangeDetails };

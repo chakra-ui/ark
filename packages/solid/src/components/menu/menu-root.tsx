@@ -17,6 +17,7 @@ export const MenuRoot = (props: MenuRootProps) => {
   const [useMenuProps, localProps] = createSplitProps<UseMenuProps>()(menuProps, [
     'anchorPoint',
     'aria-label',
+    'autoHighlight',
     'closeOnSelect',
     'composite',
     'defaultHighlightedValue',
