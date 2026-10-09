@@ -6,6 +6,12 @@
     "image": "https://chakra-ui.com/og-image.png"
   },
   {
+    "title": "Adaptive Security",
+    "description": "Security awareness training for the AI era",
+    "url": "https://www.adaptivesecurity.com",
+    "image": "/images/adaptive-security.png"
+  },
+  {
     "title": "AdGuard",
     "description": "Network-wide ads and trackers blocking DNS server",
     "url": "https://adguard.com/adguard-home/overview.html",
