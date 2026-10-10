@@ -1,6 +1,6 @@
 import * as combobox from '@zag-js/combobox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -21,7 +21,7 @@ export interface UseComboboxProps<T extends CollectionItem> extends Optional<
 export interface UseComboboxReturn<T extends CollectionItem> extends ComputedRef<combobox.Api<PropTypes, T>> {}
 
 export const useCombobox = <T extends CollectionItem>(
-  props: MaybeRef<UseComboboxProps<T>>,
+  props: MaybeRefOrGetter<UseComboboxProps<T>>,
   emit?: EmitFn<RootEmits<T>>,
 ): UseComboboxReturn<T> => {
   const id = useId()

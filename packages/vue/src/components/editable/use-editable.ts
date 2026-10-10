@@ -1,6 +1,6 @@
 import * as editable from '@zag-js/editable'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -16,7 +16,10 @@ export interface UseEditableProps extends Optional<Omit<editable.Props, 'dir' | 
 
 export interface UseEditableReturn extends ComputedRef<editable.Api<PropTypes>> {}
 
-export const useEditable = (props: MaybeRef<UseEditableProps> = {}, emit?: EmitFn<RootEmits>): UseEditableReturn => {
+export const useEditable = (
+  props: MaybeRefOrGetter<UseEditableProps> = {},
+  emit?: EmitFn<RootEmits>,
+): UseEditableReturn => {
   const id = useId()
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const locale = useLocaleContext(DEFAULT_LOCALE)

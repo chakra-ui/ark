@@ -1,6 +1,6 @@
 import * as treeView from '@zag-js/tree-view'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -20,7 +20,7 @@ export interface UseTreeViewProps<T extends TreeNode> extends Optional<
 export interface UseTreeViewReturn<T extends TreeNode> extends ComputedRef<treeView.Api<PropTypes, T>> {}
 
 export const useTreeView = <T extends TreeNode>(
-  props: MaybeRef<UseTreeViewProps<T>>,
+  props: MaybeRefOrGetter<UseTreeViewProps<T>>,
   emit?: EmitFn<RootEmits<T>>,
 ): UseTreeViewReturn<T> => {
   const id = useId()

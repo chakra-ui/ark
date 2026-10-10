@@ -1,4 +1,4 @@
-import { type MaybeRef, type Ref, computed, ref, toValue } from 'vue'
+import { type MaybeRefOrGetter, type Ref, computed, ref, toValue } from 'vue'
 import { type CollectionOptions, type ListCollection, createListCollection } from './list-collection.ts'
 
 export interface UseListCollectionProps<T> extends Omit<CollectionOptions<T>, 'items'> {
@@ -17,7 +17,7 @@ export interface UseListCollectionProps<T> extends Omit<CollectionOptions<T>, 'i
   limit?: number
 }
 
-export function useListCollection<T>(props: MaybeRef<UseListCollectionProps<T>>): UseListCollectionReturn<T> {
+export function useListCollection<T>(props: MaybeRefOrGetter<UseListCollectionProps<T>>): UseListCollectionReturn<T> {
   const resolvedProps = computed(() => {
     const { initialItems = [], filter, limit, ...collectionOptions } = toValue(props)
     return [{ initialItems, filter, limit }, collectionOptions] as const

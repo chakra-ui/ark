@@ -1,6 +1,6 @@
 import * as radioGroup from '@zag-js/radio-group'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { toBooleanValue } from '../../utils/boolean.ts'
@@ -17,7 +17,7 @@ export interface UseRadioGroupProps extends Optional<Omit<radioGroup.Props, 'dir
 export interface UseRadioGroupReturn extends ComputedRef<radioGroup.Api<PropTypes>> {}
 
 export const useRadioGroup = (
-  props: MaybeRef<UseRadioGroupProps> = {},
+  props: MaybeRefOrGetter<UseRadioGroupProps> = {},
   emit?: EmitFn<RootEmits>,
 ): UseRadioGroupReturn => {
   const id = useId()

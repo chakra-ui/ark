@@ -83,9 +83,7 @@ const countries: Country[] = [
 const { startsWith } = useFilter({ sensitivity: 'base' })
 
 const { collection, filter, reset } = useListCollection({
-  get initialItems() {
-    return countries
-  },
+  initialItems: countries,
   filter: startsWith,
 })
 
