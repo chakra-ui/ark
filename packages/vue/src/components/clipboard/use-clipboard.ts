@@ -1,6 +1,6 @@
 import * as clipboard from '@zag-js/clipboard'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -15,7 +15,10 @@ export interface UseClipboardProps extends Optional<Omit<clipboard.Props, 'dir' 
 
 export interface UseClipboardReturn extends ComputedRef<clipboard.Api<PropTypes>> {}
 
-export const useClipboard = (props: MaybeRef<UseClipboardProps> = {}, emit?: EmitFn<RootEmits>): UseClipboardReturn => {
+export const useClipboard = (
+  props: MaybeRefOrGetter<UseClipboardProps> = {},
+  emit?: EmitFn<RootEmits>,
+): UseClipboardReturn => {
   const id = useId()
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const context = computed<clipboard.Props>(() => {

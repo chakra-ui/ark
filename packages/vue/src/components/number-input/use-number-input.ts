@@ -1,6 +1,6 @@
 import * as numberInput from '@zag-js/number-input'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -17,7 +17,7 @@ export interface UseNumberInputProps extends Optional<Omit<numberInput.Props, 'd
 export interface UseNumberInputReturn extends ComputedRef<numberInput.Api<PropTypes>> {}
 
 export const useNumberInput = (
-  props: MaybeRef<UseNumberInputProps> = {},
+  props: MaybeRefOrGetter<UseNumberInputProps> = {},
   emit?: EmitFn<RootEmits>,
 ): UseNumberInputReturn => {
   const id = useId()

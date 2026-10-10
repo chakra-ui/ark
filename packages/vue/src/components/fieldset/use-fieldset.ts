@@ -1,7 +1,7 @@
 import {
   type FieldsetHTMLAttributes,
   type HTMLAttributes,
-  type MaybeRef,
+  type MaybeRefOrGetter,
   computed,
   onBeforeUnmount,
   onMounted,
@@ -32,7 +32,7 @@ export interface UseFieldsetProps {
 
 export type UseFieldsetReturn = ReturnType<typeof useFieldset>
 
-export const useFieldset = (props: MaybeRef<UseFieldsetProps> = {}) => {
+export const useFieldset = (props: MaybeRefOrGetter<UseFieldsetProps> = {}) => {
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const state = reactive({
     hasErrorText: false,

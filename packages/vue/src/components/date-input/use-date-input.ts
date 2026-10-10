@@ -1,6 +1,6 @@
 import * as dateInput from '@zag-js/date-input'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -15,7 +15,10 @@ export interface UseDateInputProps extends Optional<Omit<dateInput.Props, 'dir' 
 
 export interface UseDateInputReturn extends ComputedRef<dateInput.Api<PropTypes>> {}
 
-export const useDateInput = (props: MaybeRef<UseDateInputProps> = {}, emit?: EmitFn<RootEmits>): UseDateInputReturn => {
+export const useDateInput = (
+  props: MaybeRefOrGetter<UseDateInputProps> = {},
+  emit?: EmitFn<RootEmits>,
+): UseDateInputReturn => {
   const id = useId()
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const locale = useLocaleContext(DEFAULT_LOCALE)

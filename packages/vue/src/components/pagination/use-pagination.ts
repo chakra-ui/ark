@@ -4,7 +4,7 @@ import {
   type AnchorHTMLAttributes,
   type ButtonHTMLAttributes,
   type ComputedRef,
-  type MaybeRef,
+  type MaybeRefOrGetter,
   computed,
   toValue,
   useId,
@@ -23,7 +23,7 @@ export interface UsePaginationProps extends Optional<Omit<pagination.Props, 'dir
 export interface UsePaginationReturn extends ComputedRef<pagination.Api<PropTypes>> {}
 
 export const usePagination = (
-  props: MaybeRef<UsePaginationProps> = {},
+  props: MaybeRefOrGetter<UsePaginationProps> = {},
   emit?: EmitFn<RootEmits>,
 ): UsePaginationReturn => {
   const id = useId()
