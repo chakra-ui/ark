@@ -20,11 +20,9 @@ const tagsInput = useTagsInput({
   ids: { input: `input_${uid}`, control: `control_${uid}` },
 })
 
-const comboboxApi = useCombobox({
+const comboboxApi = useCombobox(() => ({
   ids: { input: `input_${uid}`, control: `control_${uid}` },
-  get collection() {
-    return collection.value
-  },
+  collection: collection.value,
   onInputValueChange(details) {
     filter(details.inputValue)
   },
@@ -36,7 +34,7 @@ const comboboxApi = useCombobox({
     }
   },
   selectionBehavior: 'clear',
-})
+}))
 </script>
 
 <template>

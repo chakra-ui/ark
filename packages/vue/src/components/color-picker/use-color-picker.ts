@@ -1,6 +1,6 @@
 import * as colorPicker from '@zag-js/color-picker'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -17,7 +17,7 @@ export interface UseColorPickerProps extends Optional<Omit<colorPicker.Props, 'd
 export interface UseColorPickerReturn extends ComputedRef<colorPicker.Api<PropTypes>> {}
 
 export const useColorPicker = (
-  props: MaybeRef<UseColorPickerProps> = {},
+  props: MaybeRefOrGetter<UseColorPickerProps> = {},
   emit?: EmitFn<RootEmits>,
 ): UseColorPickerReturn => {
   const id = useId()

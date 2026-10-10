@@ -1,6 +1,6 @@
 import * as select from '@zag-js/select'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -25,7 +25,7 @@ export interface UseSelectProps<T extends CollectionItem> extends Optional<
 export interface UseSelectReturn<T extends CollectionItem> extends ComputedRef<select.Api<PropTypes, T>> {}
 
 export const useSelect = <T extends CollectionItem>(
-  props: MaybeRef<UseSelectProps<T>>,
+  props: MaybeRefOrGetter<UseSelectProps<T>>,
   emit?: EmitFn<RootEmits<T>>,
 ): UseSelectReturn<T> => {
   const id = useId()

@@ -1,6 +1,6 @@
 import * as accordion from '@zag-js/accordion'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -15,7 +15,10 @@ export interface UseAccordionProps extends Optional<Omit<accordion.Props, 'dir' 
 
 export interface UseAccordionReturn extends ComputedRef<accordion.Api<PropTypes>> {}
 
-export const useAccordion = (props: MaybeRef<UseAccordionProps> = {}, emit?: EmitFn<RootEmits>): UseAccordionReturn => {
+export const useAccordion = (
+  props: MaybeRefOrGetter<UseAccordionProps> = {},
+  emit?: EmitFn<RootEmits>,
+): UseAccordionReturn => {
   const id = useId()
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const locale = useLocaleContext(DEFAULT_LOCALE)

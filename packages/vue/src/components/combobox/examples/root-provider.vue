@@ -20,14 +20,12 @@ const { collection, filter } = useListCollection({
   filter: filters.value.contains,
 })
 
-const combobox = useCombobox({
-  get collection() {
-    return collection.value
-  },
+const combobox = useCombobox(() => ({
+  collection: collection.value,
   onInputValueChange(details) {
     filter(details.inputValue)
   },
-})
+}))
 </script>
 
 <template>

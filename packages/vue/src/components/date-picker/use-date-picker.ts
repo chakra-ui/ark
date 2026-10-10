@@ -1,6 +1,6 @@
 import * as datePicker from '@zag-js/date-picker'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -16,7 +16,7 @@ export interface UseDatePickerProps extends Optional<Omit<datePicker.Props, 'dir
 export interface UseDatePickerReturn extends ComputedRef<datePicker.Api<PropTypes>> {}
 
 export const useDatePicker = (
-  props: MaybeRef<UseDatePickerProps> = {},
+  props: MaybeRefOrGetter<UseDatePickerProps> = {},
   emit?: EmitFn<RootEmits>,
 ): UseDatePickerReturn => {
   const id = useId()
