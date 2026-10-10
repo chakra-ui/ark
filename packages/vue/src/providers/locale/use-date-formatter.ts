@@ -1,5 +1,5 @@
 import { DateFormatter } from '@internationalized/date'
-import { type ComputedRef, type MaybeRef, computed, toValue } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue } from 'vue'
 import { DEFAULT_LOCALE, useLocaleContext } from './use-locale-context.ts'
 
 export interface UseDateFormatterProps extends Intl.DateTimeFormatOptions {
@@ -8,7 +8,7 @@ export interface UseDateFormatterProps extends Intl.DateTimeFormatOptions {
 
 export interface UseDateFormatterReturn extends ComputedRef<DateFormatter> {}
 
-export function useDateFormatter(propsOrFn: MaybeRef<UseDateFormatterProps> = {}): UseDateFormatterReturn {
+export function useDateFormatter(propsOrFn: MaybeRefOrGetter<UseDateFormatterProps> = {}): UseDateFormatterReturn {
   const env = useLocaleContext(DEFAULT_LOCALE)
 
   return computed(() => {

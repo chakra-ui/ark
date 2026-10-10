@@ -1,6 +1,6 @@
 import * as listbox from '@zag-js/listbox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -24,7 +24,7 @@ export interface UseListboxProps<T extends CollectionItem> extends Optional<
 export interface UseListboxReturn<T extends CollectionItem> extends ComputedRef<listbox.Api<PropTypes, T>> {}
 
 export const useListbox = <T extends CollectionItem>(
-  props: MaybeRef<UseListboxProps<T>>,
+  props: MaybeRefOrGetter<UseListboxProps<T>>,
   emit?: EmitFn<RootEmits<T>>,
 ): UseListboxReturn<T> => {
   const id = useId()

@@ -1,6 +1,6 @@
 import * as pagination from '@zag-js/pagination'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -10,7 +10,7 @@ export interface UsePaginationProps extends Optional<Omit<pagination.Props, 'dir
 export interface UsePaginationReturn extends ComputedRef<pagination.Api<PropTypes>> {}
 
 export const usePagination = (
-  props: MaybeRef<UsePaginationProps> = {},
+  props: MaybeRefOrGetter<UsePaginationProps> = {},
   emit?: EmitFn<RootEmits>,
 ): UsePaginationReturn => {
   const id = useId()

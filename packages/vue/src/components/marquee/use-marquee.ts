@@ -1,6 +1,6 @@
 import * as marquee from '@zag-js/marquee'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -9,7 +9,10 @@ import type { RootEmits } from './marquee.types.ts'
 export interface UseMarqueeProps extends Optional<Omit<marquee.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseMarqueeReturn extends ComputedRef<marquee.Api<PropTypes>> {}
 
-export const useMarquee = (props: MaybeRef<UseMarqueeProps> = {}, emit?: EmitFn<RootEmits>): UseMarqueeReturn => {
+export const useMarquee = (
+  props: MaybeRefOrGetter<UseMarqueeProps> = {},
+  emit?: EmitFn<RootEmits>,
+): UseMarqueeReturn => {
   const id = useId()
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const locale = useLocaleContext(DEFAULT_LOCALE)

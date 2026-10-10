@@ -1,6 +1,6 @@
 import * as drawer from '@zag-js/drawer'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -12,7 +12,7 @@ export interface UseDrawerProps extends Optional<Omit<drawer.Props, 'dir' | 'get
 }
 export interface UseDrawerReturn extends ComputedRef<drawer.Api<PropTypes>> {}
 
-export const useDrawer = (props: MaybeRef<UseDrawerProps> = {}, emit?: EmitFn<RootEmits>): UseDrawerReturn => {
+export const useDrawer = (props: MaybeRefOrGetter<UseDrawerProps> = {}, emit?: EmitFn<RootEmits>): UseDrawerReturn => {
   const id = useId()
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const locale = useLocaleContext(DEFAULT_LOCALE)
