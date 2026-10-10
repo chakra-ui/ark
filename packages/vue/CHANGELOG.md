@@ -1,5 +1,43 @@
 # @ark-ui/vue
 
+## [5.40.0] - 2026-10-10
+
+### Added
+
+- Render `Pagination.Item`, `Pagination.PrevTrigger`, `Pagination.NextTrigger`, `Pagination.FirstTrigger` and
+  `Pagination.LastTrigger` as anchors when the machine is `type="link"`. They rendered buttons carrying the `href` the
+  machine emits, which navigates nowhere.
+
+### Fixed
+
+- - **Toc**: Fix `Root` and `Nav` rendering with the same `id`. The `id` and `aria-labelledby` now live only on `Nav`.
+- - **Toc**: Add `getNavProps()` to `useToc` and render `Toc.Nav` with it. `Toc.Nav` now has `data-part="nav"` instead
+    of `data-part="root"`, so update any styles that target the nav through `[data-part="root"]`.
+  - **Toc**: Move `aria-labelledby` from `Root` to `Nav`, and render the root props on `RootProvider` in React and on
+    `Root` in Svelte so the indicator keeps its position.
+  - **Toc (Svelte)**: Fix `Root` and `Nav` rendering with the same `id`.
+  - **Toc (Svelte)**: `Toc.Nav` now reads the Toc from `Toc.Root` like the other frameworks and no longer accepts
+    `useToc` props or creates its own Toc. Wrap it in `Toc.Root` if you were rendering it on its own.
+- - **ColorPicker, Combobox, DatePicker, Dialog, Drawer, FloatingPanel, HoverCard, Menu, Popover, Select, Tooltip**: Fix
+    `Root` not declaring `enterComplete`. `usePresence` already emits it, so Vue warned that the event was undeclared.
+- - **Field**: Fix `Field.Input`, `Field.Textarea`, and `Field.Select` clearing native initial values (`defaultValue`,
+    `<option selected>`) when used without `v-model`.
+- All `use*` composables now accept a getter for their props (`MaybeRefOrGetter`), so reactive values can be passed
+  without `computed` or object getters:
+  ```ts
+  const combobox = useCombobox(() => ({
+    collection: collection.value,
+    onInputValueChange: ({ inputValue }) => filter(inputValue),
+  }))
+  ```
+  Plain objects, `ref`s and `computed`s keep working.
+- - **JsonTreeView**: Fix `JsonTreeView.Tree` with `indent-guide` rendering no built-in indent guides when no
+    `indentGuide` slot is provided, and an empty `BranchIndicator` when no `arrow` slot is provided.
+- - **Timer**: Fix `Timer.Item` dropping the element passed through its default slot when using `asChild`. The element
+    is now rendered and receives the item attributes, and the formatted value is used only as fallback content.
+- - **Toast**: Fix `Toast.Root` with `asChild` applying the root attributes to the internal ghost element instead of the
+    slotted element.
+
 ## [5.39.3] - 2026-10-05
 
 ### Fixed
