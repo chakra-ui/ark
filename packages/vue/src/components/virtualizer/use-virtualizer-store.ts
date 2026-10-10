@@ -1,5 +1,12 @@
 import { useSyncExternalStore } from '@zag-js/vue'
-import { type ComponentPublicInstance, type MaybeRef, nextTick, onUnmounted, toValue, watchSyncEffect } from 'vue'
+import {
+  type ComponentPublicInstance,
+  type MaybeRefOrGetter,
+  nextTick,
+  onUnmounted,
+  toValue,
+  watchSyncEffect,
+} from 'vue'
 
 interface VirtualizerLike<Options> {
   subscribe: (listener: VoidFunction) => VoidFunction
@@ -12,7 +19,7 @@ interface VirtualizerLike<Options> {
 export type VirtualizerRef = (element: Element | ComponentPublicInstance | null) => void
 
 export function useVirtualizerStore<Options extends object, T extends VirtualizerLike<Options>>(
-  props: MaybeRef<Options>,
+  props: MaybeRefOrGetter<Options>,
   create: (options: Options) => T,
 ): T & { ref: VirtualizerRef } {
   const virtualizer = create(toValue(props))

@@ -1,6 +1,6 @@
 import * as tooltip from '@zag-js/tooltip'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -10,7 +10,10 @@ export interface UseTooltipProps extends Optional<Omit<tooltip.Props, 'dir' | 'g
 
 export interface UseTooltipReturn extends ComputedRef<tooltip.Api<PropTypes>> {}
 
-export const useTooltip = (props: MaybeRef<UseTooltipProps> = {}, emit?: EmitFn<RootEmits>): UseTooltipReturn => {
+export const useTooltip = (
+  props: MaybeRefOrGetter<UseTooltipProps> = {},
+  emit?: EmitFn<RootEmits>,
+): UseTooltipReturn => {
   const id = useId()
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const locale = useLocaleContext(DEFAULT_LOCALE)

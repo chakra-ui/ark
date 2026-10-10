@@ -1,6 +1,6 @@
 import { type CommandDefinition, type HotkeyStore, type Platform, normalizeHotkey } from '@zag-js/hotkeys'
 import { isEqual, warn } from '@zag-js/utils'
-import { type MaybeRef, onUnmounted, toValue, useId, watchEffect } from 'vue'
+import { type MaybeRefOrGetter, onUnmounted, toValue, useId, watchEffect } from 'vue'
 import { type UseHotkeyStoreProps, useHotkeyStore } from './use-hotkey-store.ts'
 import { usePlatform } from './use-platform.ts'
 
@@ -53,7 +53,7 @@ const toRegistration = (command: UseHotkeysCommand, platform: Platform): Registr
   options: command.options,
 })
 
-export const useHotkeys = (props: MaybeRef<UseHotkeysProps>) => {
+export const useHotkeys = (props: MaybeRefOrGetter<UseHotkeysProps>) => {
   const store = useHotkeyStore({ store: toValue(props).store })
   const platform = usePlatform()
   const instanceId = toValue(props).id ?? useId()

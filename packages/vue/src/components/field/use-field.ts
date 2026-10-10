@@ -1,6 +1,6 @@
 import {
   type HTMLAttributes,
-  type MaybeRef,
+  type MaybeRefOrGetter,
   computed,
   onBeforeUnmount,
   onMounted,
@@ -49,7 +49,7 @@ export interface UseFieldProps {
 
 export type UseFieldReturn = ReturnType<typeof useField>
 
-export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
+export const useField = (props: MaybeRefOrGetter<UseFieldProps> = {}) => {
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
 
   const state = reactive({
