@@ -1,0 +1,225 @@
+diff --git a/dist/merge-props.js b/dist/merge-props.js
+index cea6fca9468d9a5a5f3af3b1c608937977444ba2..50397741d56ab38ba5d9d6636ec1dd537f34c374 100644
+--- a/dist/merge-props.js
++++ b/dist/merge-props.js
+@@ -1,14 +1,5 @@
+ import { mergeProps as zagMergeProps } from "@zag-js/core";
+-import { toStyleString } from "./normalize-props";
+-const CSS_REGEX = /((?:--)?(?:\w+-?)+)\s*:\s*([^;]*)/g;
+-const serialize = (style) => {
+-    const res = {};
+-    let match;
+-    while ((match = CSS_REGEX.exec(style))) {
+-        res[match[1]] = match[2];
+-    }
+-    return res;
+-};
++import { getAttachedStyle, parseStyleString, STYLE_KEY, toCssNames, toStyleProps } from "./style";
+ export function mergeProps(...args) {
+     // Collect all class values (as-is, without conversion)
+     // Svelte 5.15+ supports ClassValue types (string | array | object) and handles
+@@ -23,17 +14,26 @@ export function mergeProps(...args) {
+             classNames.push(props.class);
+         }
+     }
++    // Styles arrive as strings (consumers) or as style attachments (normalized machine props). Later sources win.
++    const styles = [];
++    for (const props of args) {
++        if (!props)
++            continue;
++        const attached = getAttachedStyle(props[STYLE_KEY]);
++        if (attached)
++            styles.push(attached);
++        if (props.style != null)
++            styles.push(typeof props.style === "string" ? parseStyleString(props.style) : props.style);
++    }
+     const merged = zagMergeProps(...args);
+     // Override class with our collected values
+     // If only one value, return as-is; if multiple, return as array
+     if (classNames.length > 0) {
+         merged.class = classNames.length === 1 ? classNames[0] : classNames;
+     }
+-    if ("style" in merged) {
+-        if (typeof merged.style === "string") {
+-            merged.style = serialize(merged.style);
+-        }
+-        merged.style = toStyleString(merged.style);
++    if (styles.length > 0) {
++        delete merged.style;
++        Object.assign(merged, toStyleProps(Object.assign({}, ...styles.map(toCssNames))));
+     }
+     return merged;
+ }
+diff --git a/dist/normalize-props.d.ts b/dist/normalize-props.d.ts
+index dc44f96616e309252423c16d1916726d4c45e98d..7841bd360d4023decb923bc7811fb1a3b7f4659a 100644
+--- a/dist/normalize-props.d.ts
++++ b/dist/normalize-props.d.ts
+@@ -3,5 +3,5 @@ export type PropTypes = SvelteHTMLElements & {
+     element: HTMLAttributes<HTMLElement>;
+     style?: HTMLAttributes<HTMLElement>["style"] | undefined;
+ };
+-export declare function toStyleString(style: Record<string, number | string>): string;
+ export declare const normalizeProps: import("@zag-js/types").NormalizeProps<PropTypes>;
++export { toStyleString } from "./style";
+diff --git a/dist/normalize-props.js b/dist/normalize-props.js
+index 987fc09b3db2920b245b24587c2ef89268568675..cd531a05249d89215f0c1bca68e4221af67f7b8a 100644
+--- a/dist/normalize-props.js
++++ b/dist/normalize-props.js
+@@ -1,4 +1,5 @@
+ import { createNormalizer } from "@zag-js/types";
++import { toStyleProps } from "./style";
+ const propMap = {
+     className: "class",
+     defaultChecked: "checked",
+@@ -9,24 +10,6 @@ const propMap = {
+     onFocus: "onfocusin",
+     onDoubleClick: "ondblclick",
+ };
+-export function toStyleString(style) {
+-    let string = "";
+-    for (let key in style) {
+-        /**
+-         * Ignore null and undefined values.
+-         */
+-        const value = style[key];
+-        if (value === null || value === undefined)
+-            continue;
+-        /**
+-         * Convert camelCase to kebab-case except for CSS custom properties.
+-         */
+-        if (!key.startsWith("--"))
+-            key = key.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`);
+-        string += `${key}:${value};`;
+-    }
+-    return string;
+-}
+ const preserveKeys = new Set("viewBox,className,preserveAspectRatio,fillRule,clipPath,clipRule,strokeWidth,strokeLinecap,strokeLinejoin,strokeDasharray,strokeDashoffset,strokeMiterlimit".split(","));
+ function toSvelteProp(key) {
+     if (key in propMap)
+@@ -35,15 +18,16 @@ function toSvelteProp(key) {
+         return key;
+     return key.toLowerCase();
+ }
+-function toSveltePropValue(key, value) {
+-    if (key === "style" && typeof value === "object")
+-        return toStyleString(value);
+-    return value;
+-}
+ export const normalizeProps = createNormalizer((props) => {
+     const normalized = {};
+     for (const key in props) {
+-        normalized[toSvelteProp(key)] = toSveltePropValue(key, props[key]);
++        const value = props[key];
++        if (key === "style" && value && typeof value === "object") {
++            Object.assign(normalized, toStyleProps(value));
++            continue;
++        }
++        normalized[toSvelteProp(key)] = value;
+     }
+     return normalized;
+ });
++export { toStyleString } from "./style";
+diff --git a/node_modules/@zag-js/svelte/dist/style.d.ts b/dist/style.d.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..a03a90aefffc50b36c8becfe4693a42740d42c55
+--- /dev/null
++++ b/dist/style.d.ts
+@@ -0,0 +1,27 @@
++export type StyleObject = Record<string, string | number | null | undefined>;
++/**
++ * Svelte replaces the whole `style` attribute when a spread style changes, which drops the properties machines
++ * write to the element directly (positioning variables, measured sizes). On the client, styles are applied
++ * through an attachment one property at a time instead, like the other frameworks do. The server keeps the
++ * style string, since attachments only run in the browser.
++ */
++export declare const STYLE_KEY: symbol;
++export declare const isServer: boolean;
++declare const STYLES: unique symbol;
++export declare function toCssNames(style: StyleObject): StyleObject;
++export declare function toStyleString(style: StyleObject): string;
++export declare function parseStyleString(style: string): StyleObject;
++export declare function createStyleAttachment(style: StyleObject): ((node: Element) => void) & {
++    [STYLES]: StyleObject;
++};
++export declare const getAttachedStyle: (value: unknown) => StyleObject | undefined;
++/** Puts a style where Svelte applies it: an attachment in the browser, the `style` attribute on the server */
++export declare function toStyleProps(style: StyleObject): {
++    style: string;
++} | {
++    [STYLE_KEY]: ((node: Element) => void) & {
++        [STYLES]: StyleObject;
++    };
++    style?: never;
++};
++export {};
+diff --git a/node_modules/@zag-js/svelte/dist/style.js b/dist/style.js
+new file mode 100644
+index 0000000000000000000000000000000000000000..9d7e3e915ead1857b7fef5d470dfd10774c45ac8
+--- /dev/null
++++ b/dist/style.js
+@@ -0,0 +1,65 @@
++import { createAttachmentKey } from "svelte/attachments";
++/**
++ * Svelte replaces the whole `style` attribute when a spread style changes, which drops the properties machines
++ * write to the element directly (positioning variables, measured sizes). On the client, styles are applied
++ * through an attachment one property at a time instead, like the other frameworks do. The server keeps the
++ * style string, since attachments only run in the browser.
++ */
++export const STYLE_KEY = createAttachmentKey();
++export const isServer = typeof document === "undefined";
++const STYLES = Symbol("styles");
++const toCssName = (key) => key.startsWith("--") ? key : key.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`);
++export function toCssNames(style) {
++    const res = {};
++    for (const key in style)
++        res[toCssName(key)] = style[key];
++    return res;
++}
++export function toStyleString(style) {
++    let string = "";
++    for (const key in style) {
++        const value = style[key];
++        if (value === null || value === undefined)
++            continue;
++        string += `${toCssName(key)}:${value};`;
++    }
++    return string;
++}
++const CSS_REGEX = /((?:--)?(?:\w+-?)+)\s*:\s*([^;]*)/g;
++export function parseStyleString(style) {
++    const res = {};
++    let match;
++    while ((match = CSS_REGEX.exec(style))) {
++        res[match[1]] = match[2];
++    }
++    return res;
++}
++const applied = new WeakMap();
++function applyStyle(node, style) {
++    const prev = applied.get(node) ?? {};
++    const next = {};
++    for (const key in style) {
++        const value = style[key];
++        if (value === null || value === undefined)
++            continue;
++        next[toCssName(key)] = String(value);
++    }
++    for (const name in prev) {
++        if (!(name in next))
++            node.style.removeProperty(name);
++    }
++    for (const name in next) {
++        if (node.style.getPropertyValue(name) !== next[name])
++            node.style.setProperty(name, next[name]);
++    }
++    applied.set(node, next);
++}
++export function createStyleAttachment(style) {
++    const attachment = (node) => applyStyle(node, style);
++    return Object.assign(attachment, { [STYLES]: style });
++}
++export const getAttachedStyle = (value) => value?.[STYLES];
++/** Puts a style where Svelte applies it: an attachment in the browser, the `style` attribute on the server */
++export function toStyleProps(style) {
++    return isServer ? { style: toStyleString(style) } : { [STYLE_KEY]: createStyleAttachment(style) };
++}

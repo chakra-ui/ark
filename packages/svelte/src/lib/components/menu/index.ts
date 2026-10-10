@@ -28,6 +28,7 @@ export {
 } from './menu-context-trigger.svelte'
 export { default as MenuContext, type MenuContextProps } from './menu-context.svelte'
 export { default as MenuIndicator, type MenuIndicatorBaseProps, type MenuIndicatorProps } from './menu-indicator.svelte'
+export { default as MenuInput, type MenuInputBaseProps, type MenuInputProps } from './menu-input.svelte'
 export { default as MenuItemContext, type MenuItemContextProps } from './menu-item-context.svelte'
 export {
   default as MenuItemGroupLabel,
@@ -46,6 +47,7 @@ export {
 } from './menu-item-indicator.svelte'
 export { default as MenuItemText, type MenuItemTextBaseProps, type MenuItemTextProps } from './menu-item-text.svelte'
 export { default as MenuItem, type MenuItemBaseProps, type MenuItemProps, type MenuItemState } from './menu-item.svelte'
+export { default as MenuList, type MenuListBaseProps, type MenuListProps } from './menu-list.svelte'
 export {
   default as MenuPositioner,
   type MenuPositionerBaseProps,

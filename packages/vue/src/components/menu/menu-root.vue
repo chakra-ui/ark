@@ -20,6 +20,7 @@ import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-c
 import { MenuTriggerItemProvider } from './use-menu-trigger-item-context.ts'
 
 const props = withDefaults(defineProps<MenuRootProps>(), {
+  autoHighlight: undefined,
   closeOnSelect: undefined,
   composite: undefined,
   defaultOpen: undefined,

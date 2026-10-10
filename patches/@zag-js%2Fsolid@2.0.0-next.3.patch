@@ -1,0 +1,173 @@
+diff --git a/dist/merge-props.js b/dist/merge-props.js
+index c40fc6f58767730d5d99f064e1cbd0dcdc4d2d53..80d59b690d0bf4b3101d1539cde5141b209ce1d2 100644
+--- a/dist/merge-props.js
++++ b/dist/merge-props.js
+@@ -24,39 +24,51 @@ __export(merge_props_exports, {
+ });
+ module.exports = __toCommonJS(merge_props_exports);
+ var import_core = require("@zag-js/core");
++var import_solid_js = require("solid-js");
++var resolve = (source) => (typeof source === "function" ? source() : source) || {};
++var isComposed = (key) => key === "style" || key === "class" || key === "className" || key === "data-ownedby" || key.startsWith("on");
++var keyTraps = {
++  get(_, key, receiver) {
++    if (key === import_solid_js.$PROXY) return receiver;
++    return _.get(key);
++  },
++  has(_, key) {
++    if (key === import_solid_js.$PROXY) return true;
++    return _.keys().includes(key);
++  },
++  ownKeys(_) {
++    return _.keys();
++  },
++  getOwnPropertyDescriptor(_, key) {
++    if (!_.keys().includes(key)) return void 0;
++    return { configurable: true, enumerable: true, get: () => _.get(key) };
++  },
++  set: () => true,
++  deleteProperty: () => true
++};
+ function mergeProps(...sources) {
+-  const target = {};
+-  for (let i = 0; i < sources.length; i++) {
+-    let source = sources[i];
+-    if (typeof source === "function") source = source();
+-    if (source) {
+-      const descriptors = Object.getOwnPropertyDescriptors(source);
+-      for (const key in descriptors) {
+-        if (key in target) continue;
+-        Object.defineProperty(target, key, {
+-          enumerable: true,
+-          get() {
+-            let e = {};
+-            if (key === "style" || key === "class" || key === "className" || key === "data-ownedby" || key.startsWith("on")) {
+-              for (let i2 = 0; i2 < sources.length; i2++) {
+-                let s = sources[i2];
+-                if (typeof s === "function") s = s();
+-                e = (0, import_core.mergeProps)(e, { [key]: (s || {})[key] });
+-              }
+-              return e[key];
+-            }
+-            for (let i2 = sources.length - 1; i2 >= 0; i2--) {
+-              let v, s = sources[i2];
+-              if (typeof s === "function") s = s();
+-              v = (s || {})[key];
+-              if (v !== void 0) return v;
+-            }
+-          }
+-        });
++  return new Proxy(
++    {
++      get(key) {
++        if (typeof key !== "string") return void 0;
++        if (isComposed(key)) {
++          let merged = {};
++          for (const source of sources) merged = (0, import_core.mergeProps)(merged, { [key]: resolve(source)[key] });
++          return merged[key];
++        }
++        for (let i = sources.length - 1; i >= 0; i--) {
++          const value = resolve(sources[i])[key];
++          if (value !== void 0) return value;
++        }
++      },
++      keys() {
++        const keys = /* @__PURE__ */ new Set();
++        for (const source of sources) for (const key in resolve(source)) keys.add(key);
++        return [...keys];
+       }
+-    }
+-  }
+-  return target;
++    },
++    keyTraps
++  );
+ }
+ // Annotate the CommonJS export names for ESM import in node:
+ 0 && (module.exports = {
+diff --git a/dist/merge-props.mjs b/dist/merge-props.mjs
+index f2add8d2fc8ad6ad9e9ebb0526433a19c200922a..5036d490c67c27d306d97eb930987c6368261474 100644
+--- a/dist/merge-props.mjs
++++ b/dist/merge-props.mjs
+@@ -1,38 +1,50 @@
+ // src/merge-props.ts
+ import { mergeProps as zagMergeProps } from "@zag-js/core";
++import { $PROXY } from "solid-js";
++var resolve = (source) => (typeof source === "function" ? source() : source) || {};
++var isComposed = (key) => key === "style" || key === "class" || key === "className" || key === "data-ownedby" || key.startsWith("on");
++var keyTraps = {
++  get(_, key, receiver) {
++    if (key === $PROXY) return receiver;
++    return _.get(key);
++  },
++  has(_, key) {
++    if (key === $PROXY) return true;
++    return _.keys().includes(key);
++  },
++  ownKeys(_) {
++    return _.keys();
++  },
++  getOwnPropertyDescriptor(_, key) {
++    if (!_.keys().includes(key)) return void 0;
++    return { configurable: true, enumerable: true, get: () => _.get(key) };
++  },
++  set: () => true,
++  deleteProperty: () => true
++};
+ function mergeProps(...sources) {
+-  const target = {};
+-  for (let i = 0; i < sources.length; i++) {
+-    let source = sources[i];
+-    if (typeof source === "function") source = source();
+-    if (source) {
+-      const descriptors = Object.getOwnPropertyDescriptors(source);
+-      for (const key in descriptors) {
+-        if (key in target) continue;
+-        Object.defineProperty(target, key, {
+-          enumerable: true,
+-          get() {
+-            let e = {};
+-            if (key === "style" || key === "class" || key === "className" || key === "data-ownedby" || key.startsWith("on")) {
+-              for (let i2 = 0; i2 < sources.length; i2++) {
+-                let s = sources[i2];
+-                if (typeof s === "function") s = s();
+-                e = zagMergeProps(e, { [key]: (s || {})[key] });
+-              }
+-              return e[key];
+-            }
+-            for (let i2 = sources.length - 1; i2 >= 0; i2--) {
+-              let v, s = sources[i2];
+-              if (typeof s === "function") s = s();
+-              v = (s || {})[key];
+-              if (v !== void 0) return v;
+-            }
+-          }
+-        });
++  return new Proxy(
++    {
++      get(key) {
++        if (typeof key !== "string") return void 0;
++        if (isComposed(key)) {
++          let merged = {};
++          for (const source of sources) merged = zagMergeProps(merged, { [key]: resolve(source)[key] });
++          return merged[key];
++        }
++        for (let i = sources.length - 1; i >= 0; i--) {
++          const value = resolve(sources[i])[key];
++          if (value !== void 0) return value;
++        }
++      },
++      keys() {
++        const keys = /* @__PURE__ */ new Set();
++        for (const source of sources) for (const key in resolve(source)) keys.add(key);
++        return [...keys];
+       }
+-    }
+-  }
+-  return target;
++    },
++    keyTraps
++  );
+ }
+ export {
+   mergeProps

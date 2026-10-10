@@ -29,6 +29,7 @@ export {
 } from './menu-context-trigger.vue'
 export { default as MenuContext, type MenuContextProps } from './menu-context.vue'
 export { default as MenuIndicator, type MenuIndicatorBaseProps, type MenuIndicatorProps } from './menu-indicator.vue'
+export { default as MenuInput, type MenuInputBaseProps, type MenuInputProps } from './menu-input.vue'
 export { default as MenuItemContext, type MenuItemContextProps } from './menu-item-context.vue'
 export {
   default as MenuItemGroupLabel,
@@ -43,6 +44,7 @@ export {
 } from './menu-item-indicator.vue'
 export { default as MenuItemText, type MenuItemTextBaseProps, type MenuItemTextProps } from './menu-item-text.vue'
 export { default as MenuItem, type MenuItemBaseProps, type MenuItemProps, type MenuItemState } from './menu-item.vue'
+export { default as MenuList, type MenuListBaseProps, type MenuListProps } from './menu-list.vue'
 export {
   default as MenuPositioner,
   type MenuPositionerBaseProps,
