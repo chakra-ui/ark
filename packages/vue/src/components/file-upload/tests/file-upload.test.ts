@@ -1,6 +1,6 @@
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import WithField from '../examples/with-field.vue'
+import WithField from './field.test.vue'
 
 describe('File Upload / Field', () => {
   it('should set file upload as required', async () => {
@@ -32,5 +32,15 @@ describe('File Upload / Field', () => {
   it('should not display error text when no error is present', async () => {
     render(WithField)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+  })
+
+  it('should describe the trigger and dropzone with the helper and error text', async () => {
+    render(WithField, { props: { invalid: true } })
+    expect(await screen.findByRole('button', { name: 'Select' })).toHaveAccessibleDescription(
+      'Error Info Additional Info',
+    )
+    expect(await screen.findByRole('button', { name: 'dropzone' })).toHaveAccessibleDescription(
+      'Error Info Additional Info',
+    )
   })
 })

@@ -10,11 +10,13 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '$lib/components/factory'
+  import { useFieldContext } from '../field/index.ts'
   import { useSelectContext } from './use-select-context.ts'
 
   let { ref = $bindable(null), ...props }: SelectTriggerProps = $props()
   const select = useSelectContext()
+  const field = useFieldContext()
   const mergedProps = $derived(mergeProps(select().getTriggerProps(), props))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} state={select().getTriggerState()} />
+<Ark as="button" bind:ref aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} state={select().getTriggerState()} />

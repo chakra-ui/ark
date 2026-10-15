@@ -18,6 +18,7 @@ export interface FileUploadDropzoneProps
 <script setup lang="ts">
 import { ark } from '../factory.ts'
 import { useFileUploadContext } from './use-file-upload-context.ts'
+import { useFieldContext } from '../field/index.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<FileUploadDropzoneProps>(), {
@@ -27,12 +28,18 @@ const props = withDefaults(defineProps<FileUploadDropzoneProps>(), {
 defineSlots<PolymorphicSlots<FileUploadDropzoneState>>()
 
 const fileUpload = useFileUploadContext()
+const field = useFieldContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="fileUpload.getDropzoneProps(props)" :state="fileUpload.getDropzoneState()" :as-child="asChild">
+  <ark.div
+    :aria-describedby="field?.ariaDescribedby"
+    v-bind="fileUpload.getDropzoneProps(props)"
+    :state="fileUpload.getDropzoneState()"
+    :as-child="asChild"
+  >
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

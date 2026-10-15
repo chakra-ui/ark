@@ -17,18 +17,25 @@ export interface SelectTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory.ts'
 import { useSelectContext } from './use-select-context.ts'
+import { useFieldContext } from '../field/index.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<SelectTriggerProps>()
 
 defineSlots<PolymorphicSlots<SelectTriggerState>>()
 const select = useSelectContext()
+const field = useFieldContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="select.getTriggerProps()" :state="select.getTriggerState()" :as-child="asChild">
+  <ark.button
+    :aria-describedby="field?.ariaDescribedby"
+    v-bind="select.getTriggerProps()"
+    :state="select.getTriggerState()"
+    :as-child="asChild"
+  >
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

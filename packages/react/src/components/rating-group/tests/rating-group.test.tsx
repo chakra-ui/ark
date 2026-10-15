@@ -85,4 +85,12 @@ describe('Rating Group / Field', () => {
     await screen.findByRole('textbox', { hidden: true })
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
+
+  it('should describe the group and its items with the helper and error text', async () => {
+    render(<RatingGroupWithField invalid />)
+    expect(screen.getByRole('radiogroup')).toHaveAccessibleDescription('Error Info Additional Info')
+    for (const radio of screen.getAllByRole('radio')) {
+      expect(radio).toHaveAccessibleDescription('Error Info Additional Info')
+    }
+  })
 })
