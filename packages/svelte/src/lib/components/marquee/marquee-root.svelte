@@ -40,7 +40,7 @@
 
   const resolvedProps = $derived<UseMarqueeProps>({
     ...useMarqueeProps,
-    id: providedId,
+    id: useMarqueeProps.id ?? providedId,
     paused,
     onPauseChange(details) {
       useMarqueeProps.onPauseChange?.(details)

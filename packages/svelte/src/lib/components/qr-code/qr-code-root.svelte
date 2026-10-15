@@ -30,7 +30,7 @@
 
   const resolvedProps = $derived<UseQrCodeProps>({
     ...useQrCodeProps,
-    id: providedId,
+    id: useQrCodeProps.id ?? providedId,
     value,
     onValueChange(details) {
       useQrCodeProps.onValueChange?.(details)
