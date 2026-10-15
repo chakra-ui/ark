@@ -120,6 +120,16 @@ describe('Select / Field', () => {
     expect(screen.getByRole('combobox')).toHaveAttribute('data-readonly')
   })
 
+  it('should describe the trigger with the helper text', async () => {
+    render(SelectWithField)
+    await waitFor(() => expect(screen.getByRole('combobox')).toHaveAccessibleDescription('Additional Info'))
+  })
+
+  it('should describe the trigger with the error text when invalid', async () => {
+    render(SelectWithField, { props: { invalid: true } })
+    await waitFor(() => expect(screen.getByRole('combobox')).toHaveAccessibleDescription('Error Info Additional Info'))
+  })
+
   it('should display helper text', async () => {
     render(SelectWithField)
     expect(screen.getByText('Additional Info')).toBeInTheDocument()

@@ -8,14 +8,16 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '$lib/components/factory'
+  import { useFieldContext } from '../field/index.ts'
   import { useSelectContext } from './use-select-context.ts'
 
   let { ref = $bindable(null), ...props }: SelectHiddenSelectProps = $props()
   const select = useSelectContext()
+  const field = useFieldContext()
   const mergedProps = $derived(mergeProps(select().getHiddenSelectProps(), props))
 </script>
 
-<Ark as="select" bind:ref {...mergedProps}>
+<Ark as="select" bind:ref aria-describedby={field?.()?.ariaDescribedby} {...mergedProps}>
   {#if select().value.length === 0}
     <option value=""></option>
   {/if}

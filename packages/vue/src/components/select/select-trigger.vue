@@ -14,17 +14,19 @@ export interface SelectTriggerProps
 
 <script setup lang="ts">
 import { ark } from '../factory.ts'
+import { useFieldContext } from '../field/index.ts'
 import { useSelectContext } from './use-select-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<SelectTriggerProps>()
 const select = useSelectContext()
+const field = useFieldContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="select.getTriggerProps()" :as-child="asChild">
+  <ark.button :aria-describedby="field?.ariaDescribedby" v-bind="select.getTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>
