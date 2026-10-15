@@ -8,11 +8,13 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory/index.ts'
+  import { useFieldContext } from '../field/index.ts'
   import { useFileUploadContext } from './use-file-upload-context.ts'
 
   let { ref = $bindable(null), ...props }: FileUploadTriggerProps = $props()
   const fileUpload = useFileUploadContext()
+  const field = useFieldContext()
   const mergedProps = $derived(mergeProps(fileUpload().getTriggerProps(), props))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="button" bind:ref aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} />

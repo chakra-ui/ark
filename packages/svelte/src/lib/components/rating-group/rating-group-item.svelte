@@ -10,11 +10,13 @@
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory/index.ts'
   import { createSplitProps } from '$lib/utils/create-split-props'
+  import { useFieldContext } from '../field/index.ts'
   import { useRatingGroupContext } from './use-rating-group-context.ts'
   import { RatingGroupItemProvider } from './use-rating-group-item-context.ts'
 
   let { ref = $bindable(null), ...props }: RatingGroupItemProps = $props()
   const ratingGroup = useRatingGroupContext()
+  const field = useFieldContext()
   const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['index']))
 
   const itemState = $derived(ratingGroup().getItemState(itemProps))
@@ -23,4 +25,4 @@
   RatingGroupItemProvider(() => itemState)
 </script>
 
-<Ark as="span" bind:ref {...mergedProps} />
+<Ark as="span" bind:ref aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} />

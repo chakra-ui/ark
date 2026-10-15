@@ -10,14 +10,16 @@
   import { mergeProps } from '@zag-js/svelte'
   import { createSplitProps } from '../../utils/create-split-props.ts'
   import { Ark } from '../factory/index.ts'
+  import { useFieldContext } from '../field/index.ts'
   import { useFileUploadContext } from './use-file-upload-context.ts'
 
   let { ref = $bindable(null), ...props }: FileUploadDropzoneProps = $props()
   const fileUpload = useFileUploadContext()
+  const field = useFieldContext()
 
   const [dropzoneProps, localProps] = $derived(createSplitProps<DropzoneProps>()(props, ['disableClick']))
 
   const mergedProps = $derived(mergeProps(fileUpload().getDropzoneProps(dropzoneProps), localProps))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} />

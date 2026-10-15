@@ -5,6 +5,7 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useFieldContext } from '../field/use-field-context.ts'
 import { useRatingGroupContext } from './use-rating-group-context.ts'
 import { RatingGroupItemProvider } from './use-rating-group-item-context.ts'
 
@@ -18,10 +19,11 @@ export const RatingGroupItem = forwardRef<HTMLSpanElement, RatingGroupItemProps>
   const ratingGroup = useRatingGroupContext()
   const mergedProps = mergeProps(ratingGroup.getItemProps(itemProps), localProps)
   const itemState = ratingGroup.getItemState(itemProps)
+  const field = useFieldContext()
 
   return (
     <RatingGroupItemProvider value={itemState}>
-      <ark.span {...mergedProps} ref={ref} />
+      <ark.span aria-describedby={field?.ariaDescribedby} {...mergedProps} ref={ref} />
     </RatingGroupItemProvider>
   )
 })
