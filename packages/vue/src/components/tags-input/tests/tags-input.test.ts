@@ -98,4 +98,11 @@ describe('TagsInput / Field', () => {
     render(WithField)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
+
+  it('should describe the input with the helper and error text', async () => {
+    render(WithField, { props: { invalid: true } })
+    expect(await screen.findByPlaceholderText('Add Framework')).toHaveAccessibleDescription(
+      'Error Info Additional Info',
+    )
+  })
 })

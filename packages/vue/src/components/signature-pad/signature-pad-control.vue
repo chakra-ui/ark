@@ -15,16 +15,18 @@ export interface SignaturePadControlProps
 <script setup lang="ts">
 import { ark } from '../factory.ts'
 import { useSignaturePadContext } from './use-signature-pad-context.ts'
+import { useFieldContext } from '../field/index.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<SignaturePadControlProps>()
 const signaturePad = useSignaturePadContext()
+const field = useFieldContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="signaturePad.getControlProps()" :as-child="asChild">
+  <ark.div :aria-describedby="field?.ariaDescribedby" v-bind="signaturePad.getControlProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

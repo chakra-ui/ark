@@ -17,6 +17,7 @@ export interface FileUploadDropzoneProps
 <script setup lang="ts">
 import { ark } from '../factory.ts'
 import { useFileUploadContext } from './use-file-upload-context.ts'
+import { useFieldContext } from '../field/index.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<FileUploadDropzoneProps>(), {
@@ -24,12 +25,13 @@ const props = withDefaults(defineProps<FileUploadDropzoneProps>(), {
 } satisfies BooleanDefaults<DropzoneProps>)
 
 const fileUpload = useFileUploadContext()
+const field = useFieldContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="fileUpload.getDropzoneProps(props)" :as-child="asChild">
+  <ark.div :aria-describedby="field?.ariaDescribedby" v-bind="fileUpload.getDropzoneProps(props)" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

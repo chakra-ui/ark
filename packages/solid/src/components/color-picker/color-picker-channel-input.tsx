@@ -2,6 +2,7 @@ import type { ChannelInputProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useFieldContext } from '../field/index.tsx'
 import { useColorPickerContext } from './use-color-picker-context.ts'
 
 export interface ColorPickerChannelInputBaseProps extends ChannelInputProps, PolymorphicProps<'input'> {}
@@ -11,6 +12,7 @@ export const ColorPickerChannelInput = (props: ColorPickerChannelInputProps) => 
   const [channelProps, inputProps] = createSplitProps<ChannelInputProps>()(props, ['channel', 'orientation'])
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().getChannelInputProps(channelProps), inputProps)
+  const field = useFieldContext()
 
-  return <ark.input {...mergedProps} />
+  return <ark.input aria-describedby={field?.().ariaDescribedby} {...mergedProps} />
 }

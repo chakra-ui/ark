@@ -1,5 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useFieldContext } from '../field/index.tsx'
 import { useColorPickerContext } from './use-color-picker-context.ts'
 
 export interface ColorPickerTriggerBaseProps extends PolymorphicProps<'button'> {}
@@ -8,6 +9,7 @@ export interface ColorPickerTriggerProps extends HTMLProps<'button'>, ColorPicke
 export const ColorPickerTrigger = (props: ColorPickerTriggerProps) => {
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().getTriggerProps(), props)
+  const field = useFieldContext()
 
-  return <ark.button {...mergedProps} />
+  return <ark.button aria-describedby={field?.().ariaDescribedby} {...mergedProps} />
 }
