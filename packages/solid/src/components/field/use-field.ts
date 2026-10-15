@@ -160,6 +160,7 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
   return createMemo(() => ({
     ariaDescribedby: describedById(),
     ids: {
+      root: rootId,
       control: controlId,
       label: labelId,
       errorText: errorTextId,

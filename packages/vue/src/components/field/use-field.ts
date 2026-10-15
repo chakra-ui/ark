@@ -181,6 +181,7 @@ export const useField = (props: MaybeRefOrGetter<UseFieldProps> = {}) => {
     return {
       ariaDescribedby: describedById.value,
       ids: {
+        root: rootId.value,
         control: controlId.value,
         label: labelId.value,
         errorText: errorTextId.value,
