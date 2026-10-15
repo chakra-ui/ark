@@ -5,9 +5,5 @@
 '@ark-ui/svelte': patch
 ---
 
-- **Field**: Screen readers now announce a field's helper and error text on the element that receives focus.
-  - Select trigger, TagsInput input, ColorPicker trigger and channel inputs, FileUpload trigger and dropzone,
-    SignaturePad control
-  - RatingGroup control and items
-  - PinInput control, which now renders as a group labelled by `Field.Label`
-  - Svelte: Switch hidden input, Combobox input, Editable input
+- **Field**: Fixed helper and error text not being announced on the focused element of Select, TagsInput, ColorPicker,
+  FileUpload, SignaturePad, RatingGroup and PinInput. `PinInput.Control` now renders as a labelled group.
