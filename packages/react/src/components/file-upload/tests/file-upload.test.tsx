@@ -38,4 +38,9 @@ describe('File Upload / Field', () => {
     render(<FileUploadWithField />)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
+
+  it('should describe the trigger with the helper and error text', async () => {
+    render(<FileUploadWithField invalid />)
+    expect(screen.getByRole('button', { name: 'Select' })).toHaveAccessibleDescription('Error Info Additional Info')
+  })
 })

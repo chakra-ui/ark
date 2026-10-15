@@ -3,6 +3,11 @@ import user from '@testing-library/user-event'
 import { WithField } from '../examples/with-field.tsx'
 
 describe('File Upload / Field', () => {
+  it('should describe the trigger with the helper and error text', async () => {
+    render(() => <WithField invalid />)
+    expect(screen.getByRole('button', { name: 'Select' })).toHaveAccessibleDescription('Error Info Additional Info')
+  })
+
   it('should set file upload as required', async () => {
     render(() => <WithField required />)
     expect(screen.getByTestId('input')).toBeRequired()

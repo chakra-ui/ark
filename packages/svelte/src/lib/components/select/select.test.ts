@@ -3,6 +3,7 @@ import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { describe, expect, it } from 'vitest'
 import ComponentUnderTest from './examples/basic.svelte'
+import FieldComponent from './tests/select-field.test.svelte'
 
 describe('Select', () => {
   it('should have no accessibility violations', async () => {
@@ -30,5 +31,12 @@ describe('Select', () => {
   it('should not leak the placeholder prop to the DOM', () => {
     render(ComponentUnderTest)
     expect(screen.getByText('Select')).not.toHaveAttribute('placeholder')
+  })
+
+  it('should describe the trigger with the helper and error text', async () => {
+    render(FieldComponent)
+    expect(await screen.findByRole('combobox', { name: 'Label' })).toHaveAccessibleDescription(
+      'Error Info Additional Info',
+    )
   })
 })

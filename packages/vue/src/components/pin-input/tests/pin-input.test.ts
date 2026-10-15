@@ -146,4 +146,9 @@ describe('NumberInput / Field', () => {
 
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
+
+  it('should describe the input group with the helper and error text', async () => {
+    await renderOnNextTick(WithField, { props: { invalid: true } })
+    expect(screen.getByRole('group', { name: 'Label' })).toHaveAccessibleDescription('Error Info Additional Info')
+  })
 })

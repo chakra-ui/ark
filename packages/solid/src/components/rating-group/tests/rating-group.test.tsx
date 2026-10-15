@@ -33,6 +33,14 @@ describe('Rating Group', () => {
 })
 
 describe('Rating Group / Field', () => {
+  it('should describe the radiogroup and its radios with the helper and error text', async () => {
+    render(() => <RatingGroupWithField invalid />)
+    expect(screen.getByRole('radiogroup')).toHaveAccessibleDescription('Error Info Additional Info')
+    for (const radio of screen.getAllByRole('radio')) {
+      expect(radio).toHaveAccessibleDescription('Error Info Additional Info')
+    }
+  })
+
   it('should set rating group as required', async () => {
     render(() => <RatingGroupWithField required />)
     expect(screen.getByRole('textbox', { hidden: true })).toBeRequired()

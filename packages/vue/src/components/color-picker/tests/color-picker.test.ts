@@ -89,4 +89,10 @@ describe('Color Picker / Field', () => {
     expect(screen.getByTestId('swatch').style.getPropertyValue('--color')).toBe('rgba(255, 0, 0, 0.5)')
     expect(screen.getByTestId('value-swatch').style.getPropertyValue('--color')).toBe('rgba(255, 0, 0, 0.5)')
   })
+
+  it('should describe the trigger and channel input with the helper and error text', async () => {
+    render(ColorPickerWithField, { props: { invalid: true } })
+    expect(await screen.findByRole('button')).toHaveAccessibleDescription('Error Info Additional Info')
+    expect(screen.getByRole('textbox', { name: 'hex' })).toHaveAccessibleDescription('Error Info Additional Info')
+  })
 })

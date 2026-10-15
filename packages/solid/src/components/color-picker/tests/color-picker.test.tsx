@@ -52,6 +52,12 @@ const WithField = (props: Field.RootProps) => (
 )
 
 describe('Color Picker / Field', () => {
+  it('should describe the trigger and channel input with the helper and error text', async () => {
+    render(() => <WithField invalid />)
+    expect(screen.getByRole('button', { name: /label/i })).toHaveAccessibleDescription('Error Info Additional Info')
+    expect(screen.getByRole('textbox', { name: 'hex' })).toHaveAccessibleDescription('Error Info Additional Info')
+  })
+
   it('should set color picker as required', async () => {
     render(() => <WithField required />)
     expect(screen.getByRole('textbox', { name: /label/i })).toBeRequired()

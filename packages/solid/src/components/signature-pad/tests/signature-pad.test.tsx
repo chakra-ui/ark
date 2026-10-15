@@ -3,6 +3,11 @@ import user from '@testing-library/user-event'
 import { SignaturePadWithField } from './basic.tsx'
 
 describe('Signature Pad / Field', () => {
+  it('should describe the control with the helper and error text', async () => {
+    render(() => <SignaturePadWithField invalid />)
+    expect(screen.getByRole('application')).toHaveAccessibleDescription('Error Info Additional Info')
+  })
+
   it('should set signature pad as required', async () => {
     render(() => <SignaturePadWithField required />)
     expect(screen.getByRole('textbox', { hidden: true })).toBeRequired()

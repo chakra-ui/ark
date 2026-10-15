@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { ComponentUnderTest } from './basic.tsx'
+import { ComponentUnderTest, PinInputWithField } from './basic.tsx'
 
 describe('PinInput', () => {
   it('should have the proper aria labels', async () => {
@@ -118,3 +118,10 @@ describe('PinInput', () => {
 //     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
 //   })
 // })
+
+describe('PinInput / Field', () => {
+  it('should describe the group with the helper and error text', async () => {
+    render(() => <PinInputWithField invalid />)
+    expect(screen.getByRole('group', { name: /label/i })).toHaveAccessibleDescription('Error Info Additional Info')
+  })
+})
