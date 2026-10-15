@@ -24,7 +24,7 @@
 
   const resolvedProps = $derived<UseTooltipProps>({
     ...useTooltipProps,
-    id: providedId,
+    id: useTooltipProps.id ?? providedId,
     open,
     triggerValue,
     onOpenChange(details) {
