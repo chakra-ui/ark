@@ -316,3 +316,23 @@ describe('Field / Textarea', () => {
     expect(callbackRef).toHaveBeenCalledTimes(callsAfterMount)
   })
 })
+
+describe('Field / ids', () => {
+  it('should give ids.root to the root and ids.control to the control', () => {
+    render(<ComponentUnderTest ids={{ root: 'custom-root', control: 'custom-control' }} />)
+    expect(screen.getByRole('textbox', { name: /label/i })).toHaveAttribute('id', 'custom-control')
+    expect(document.getElementById('custom-root')).toHaveAttribute('data-part', 'root')
+  })
+
+  it('should keep the label on the target item when ids.control is set', () => {
+    render(
+      <Field.Root target="amount" ids={{ control: 'custom-control' }}>
+        <Field.Label>Amount</Field.Label>
+        <Field.Item value="amount">
+          <Field.Input />
+        </Field.Item>
+      </Field.Root>,
+    )
+    expect(screen.getByRole('textbox', { name: 'Amount' })).toHaveAttribute('id', 'field::custom-control::item::amount')
+  })
+})

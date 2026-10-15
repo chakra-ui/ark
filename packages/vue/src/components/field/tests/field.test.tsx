@@ -6,6 +6,12 @@ import NativeDefaults from './field-native-defaults.test.vue'
 import { nextTick } from 'vue'
 
 describe('Field', () => {
+  it('should give ids.root to the root and ids.control to the control', () => {
+    render(ComponentUnderTest, { props: { ids: { root: 'custom-root', control: 'custom-control' } } })
+    expect(screen.getByRole('textbox', { name: /label/i })).toHaveAttribute('id', 'custom-control')
+    expect(document.getElementById('custom-root')).toHaveAttribute('data-part', 'root')
+  })
+
   it('should set textbox as required', async () => {
     render(ComponentUnderTest, { props: { required: true } })
     expect(screen.getByRole('textbox', { name: /label/i })).toBeRequired()
