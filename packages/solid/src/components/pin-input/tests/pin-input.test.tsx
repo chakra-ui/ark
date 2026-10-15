@@ -81,45 +81,43 @@ describe('PinInput', () => {
   // })
 })
 
-// describe('PinInput / Field', () => {
-//   it.skip('should set input as required', async () => {
-//     render(() => <WithField required />)
-//     expect(screen.getByRole('textbox', { name: /pin code 1 of 3/i })).toBeRequired()
-//   })
-
-//   it('should set input as disabled', async () => {
-//     render(() => <WithField disabled />)
-//     expect(screen.getByRole('textbox', { name: /pin code 1 of 3/i })).toBeDisabled()
-//   })
-
-//   it('should set input as readonly', async () => {
-//     render(() => <WithField readOnly />)
-//     expect(screen.getByRole('textbox', { name: /pin code 1 of 3/i })).toHaveAttribute('readonly')
-//   })
-
-//   it('should display helper text', async () => {
-//     render(() => <WithField />)
-//     expect(screen.getByText('Additional Info')).toBeInTheDocument()
-//   })
-
-//   it('should display error text when error is present', async () => {
-//     render(() => <WithField invalid />)
-//     expect(screen.getByText('Error Info')).toBeInTheDocument()
-//   })
-
-//   it('should focus on input when label is clicked', async () => {
-//     render(() => <WithField />)
-//     await user.click(screen.getByText(/label/i))
-//     expect(screen.getByRole('textbox', { name: /pin code 1 of 3/i })).toHaveFocus()
-//   })
-
-//   it('should not display error text when no error is present', async () => {
-//     render(() => <WithField />)
-//     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
-//   })
-// })
-
 describe('PinInput / Field', () => {
+  it('should set input as required', async () => {
+    render(() => <PinInputWithField required />)
+    expect(screen.getByRole('textbox', { name: /pin code 1 of 3/i })).toBeRequired()
+  })
+
+  it('should set input as disabled', async () => {
+    render(() => <PinInputWithField disabled />)
+    expect(screen.getByRole('textbox', { name: /pin code 1 of 3/i })).toBeDisabled()
+  })
+
+  it('should set input as readonly', async () => {
+    render(() => <PinInputWithField readOnly />)
+    expect(screen.getByRole('textbox', { name: /pin code 1 of 3/i })).toHaveAttribute('readonly')
+  })
+
+  it('should display helper text', async () => {
+    render(() => <PinInputWithField />)
+    expect(screen.getByText('Additional Info')).toBeInTheDocument()
+  })
+
+  it('should display error text when error is present', async () => {
+    render(() => <PinInputWithField invalid />)
+    expect(screen.getByText('Error Info')).toBeInTheDocument()
+  })
+
+  it('should focus on input when label is clicked', async () => {
+    render(() => <PinInputWithField />)
+    await user.click(screen.getByText(/label/i))
+    expect(screen.getByRole('textbox', { name: /pin code 1 of 3/i })).toHaveFocus()
+  })
+
+  it('should not display error text when no error is present', async () => {
+    render(() => <PinInputWithField />)
+    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+  })
+
   it('should describe the group with the helper and error text', async () => {
     render(() => <PinInputWithField invalid />)
     expect(screen.getByRole('group', { name: /label/i })).toHaveAccessibleDescription('Error Info Additional Info')

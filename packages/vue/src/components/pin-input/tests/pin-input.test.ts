@@ -109,7 +109,7 @@ describe('PinInput', () => {
   })
 })
 
-describe('NumberInput / Field', () => {
+describe('PinInput / Field', () => {
   it('should set input as required', async () => {
     await renderOnNextTick(WithField, { props: { required: true } })
     expect(screen.getAllByRole('textbox', { hidden: true })[3]).toBeRequired()
