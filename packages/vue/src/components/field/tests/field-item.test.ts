@@ -8,6 +8,11 @@ import InvalidTest from './field-item-invalid.test.vue'
 import OrphanItemTest from './field-item-orphan.test.vue'
 
 describe('Field / Item', () => {
+  it('should keep the label on the target item when ids.control is set', () => {
+    render(BasicTest, { props: { ids: { control: 'custom-control' } } })
+    expect(screen.getByRole('textbox', { name: 'Amount' })).toHaveAttribute('id', 'field::custom-control::item::amount')
+  })
+
   function formatFieldParts(parts: Array<{ name: string; element: Element | null; attrs?: string[] }>): string {
     return parts
       .filter((p) => p.element)
