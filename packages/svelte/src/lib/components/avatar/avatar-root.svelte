@@ -22,7 +22,7 @@
 
   const resolvedProps = $derived({
     ...useAvatarProps,
-    id: providedId,
+    id: useAvatarProps.id ?? providedId,
   })
 
   const avatar = useAvatar(() => resolvedProps)

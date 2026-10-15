@@ -30,7 +30,7 @@
 
   const resolvedProps = $derived({
     ...useTimerProps,
-    id: providedId,
+    id: useTimerProps.id ?? providedId,
   })
 
   const timer = useTimer(reflect(() => resolvedProps))
