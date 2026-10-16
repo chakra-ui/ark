@@ -1,5 +1,45 @@
 # @ark-ui/solid
 
+## [5.40.0] - 2026-10-16
+
+### Added
+
+- Render `Pagination.Item`, `Pagination.PrevTrigger`, `Pagination.NextTrigger`, `Pagination.FirstTrigger` and
+  `Pagination.LastTrigger` as anchors when the machine is `type="link"`. They rendered buttons carrying the `href` the
+  machine emits, which navigates nowhere.
+
+### Fixed
+
+- - **Field**: Fixed helper and error text not being announced on the focused element of Select, TagsInput, ColorPicker,
+    FileUpload, SignaturePad, RatingGroup and PinInput. `PinInput.Control` now renders as a labelled group.
+- - **Field**: Fixed `ids.root` being ignored and `ids.control` being applied to the root element instead of the
+    control.
+- - **Toc**: Fix `Root` and `Nav` rendering with the same `id`. The `id` and `aria-labelledby` now live only on `Nav`.
+- - **Toc**: Add `getNavProps()` to `useToc` and render `Toc.Nav` with it. `Toc.Nav` now has `data-part="nav"` instead
+    of `data-part="root"`, so update any styles that target the nav through `[data-part="root"]`.
+  - **Toc**: Move `aria-labelledby` from `Root` to `Nav`, and render the root props on `RootProvider` in React and on
+    `Root` in Svelte so the indicator keeps its position.
+  - **Toc (Svelte)**: Fix `Root` and `Nav` rendering with the same `id`.
+  - **Toc (Svelte)**: `Toc.Nav` now reads the Toc from `Toc.Root` like the other frameworks and no longer accepts
+    `useToc` props or creates its own Toc. Wrap it in `Toc.Root` if you were rendering it on its own.
+- - **Dialog / Drawer**: Expose `api.modal`.
+  - **Pin Input**: Add <kbd>Ctrl</kbd>/<kbd>Cmd</kbd> + arrow and <kbd>↑</kbd>/<kbd>↓</kbd> navigation, and run native
+    form validation when pressing <kbd>Enter</kbd>.
+  - **Toast**: Support functional store updates, and only reference the title and description when they render.
+  - **Color Picker**: Fix `api.setFormat` not changing the format.
+  - **Overlays**: Wait for lazily mounted content before wiring focus and layers, and keep nested layers exposed to
+    assistive tech.
+  - **Checkbox**: Sync the hidden input when initially indeterminate.
+  - **Date Picker**: Name the calendar grid and drop the role descriptions.
+  - **Pagination**: Mark link triggers disabled when they can't navigate.
+  - **Popover**: Detect the title and description when the popover opens.
+  - **Scroll Area**: Scope `data-dragging` to the dragged axis.
+  - **Splitter**: Notify collapse/expand on the first size change.
+  - **Tooltip**: Clear the global store when an open tooltip unmounts.
+  - **Tour**: Name an action trigger by its label instead of its translation.
+  - **Tree View**: Focus the rename input after it renders.
+  - **Carousel**: Preserve scrolling while slide content updates.
+
 ## [5.39.3] - 2026-10-05
 
 ### Fixed
