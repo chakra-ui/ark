@@ -14,6 +14,12 @@ describe('File Upload / Field', () => {
     expect(screen.getByTestId('input')).toBeRequired()
   })
 
+  it('should set file upload as read-only', async () => {
+    render(() => <FileUploadWithField readOnly />)
+    expect(screen.getByRole('button', { name: 'dropzone' })).toHaveAttribute('aria-disabled', 'true')
+    expect(screen.getByRole('button', { name: 'dropzone' })).toHaveAttribute('data-readonly')
+  })
+
   it('should set file upload as disabled', async () => {
     render(() => <FileUploadWithField disabled />)
     expect(screen.getByTestId('input')).toBeDisabled()
