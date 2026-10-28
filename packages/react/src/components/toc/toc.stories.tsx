@@ -9,6 +9,7 @@ export default meta
 export { Basic } from './examples/basic'
 export { Nested } from './examples/nested'
 export { RootProvider } from './examples/root-provider'
+export { SingleActive } from './examples/single-active'
 export { WithCollapsible } from './examples/with-collapsible'
 export { WithHover } from './examples/with-hover'
 export { WithIndicator } from './examples/with-indicator'

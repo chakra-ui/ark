@@ -2,6 +2,7 @@ import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
 import WithIndicatorExample from './examples/with-indicator.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import SingleActiveExample from './examples/single-active.svelte'
 import NestedExample from './examples/nested.svelte'
 import WithHoverExample from './examples/with-hover.svelte'
 import WithTreeViewExample from './examples/with-tree-view.svelte'
@@ -29,6 +30,12 @@ export const Nested = {
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
+  }),
+}
+
+export const SingleActive = {
+  render: () => ({
+    Component: SingleActiveExample,
   }),
 }
 

@@ -42,7 +42,9 @@ describe('Combobox', () => {
     await waitFor(() => expect(screen.getByRole('option', { name: 'React' })).toBeVisible())
 
     fireEvent.click(screen.getByRole('option', { name: 'React' }))
-    await waitFor(() => expect(onSelect).toHaveBeenCalledWith({ value: ['react'], itemValue: 'react' }))
+    await waitFor(() =>
+      expect(onSelect).toHaveBeenCalledWith(expect.objectContaining({ value: ['react'], itemValue: 'react' })),
+    )
   })
 
   it('should open menu when onOpenChange is called', async () => {

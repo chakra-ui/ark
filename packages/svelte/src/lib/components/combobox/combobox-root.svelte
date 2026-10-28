@@ -61,6 +61,7 @@
       'ids',
       'inputBehavior',
       'inputValue',
+      'loading',
       'invalid',
       'loopFocus',
       'multiple',

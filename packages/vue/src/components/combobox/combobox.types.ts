@@ -101,6 +101,13 @@ export interface RootProps<T extends CollectionItem> {
    */
   inputValue?: string
   /**
+   * Whether the results are being loaded (e.g. fetched from a server).
+   *
+   * While loading, the listbox is marked with `aria-busy`, the loading message is
+   * announced instead of the result count, and "no results" is never announced.
+   */
+  loading?: boolean
+  /**
    * Whether the combobox is invalid
    */
   invalid?: boolean
