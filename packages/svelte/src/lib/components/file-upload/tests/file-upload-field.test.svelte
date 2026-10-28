@@ -1,9 +1,11 @@
 <script lang="ts">
-  import { Field } from '@ark-ui/svelte/field'
+  import { Field, type FieldRootProps } from '@ark-ui/svelte/field'
   import { FileUpload } from '@ark-ui/svelte/file-upload'
+
+  const props: Omit<FieldRootProps, 'children'> = $props()
 </script>
 
-<Field.Root invalid>
+<Field.Root {...props}>
   <Field.Label>Label</Field.Label>
   <FileUpload.Root>
     <FileUpload.Dropzone>
