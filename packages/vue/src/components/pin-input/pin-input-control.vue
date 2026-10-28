@@ -20,20 +20,13 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<PinInputControlProps>()
 const pinInput = usePinInputContext()
-// TODO: remove role and aria-labelledby once Ark uses a @zag-js/pin-input release with chakra-ui/zag#3461
 const field = useFieldContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.div
-    role="group"
-    :aria-labelledby="field?.ids.label"
-    :aria-describedby="field?.ariaDescribedby"
-    v-bind="pinInput.getControlProps()"
-    :as-child="asChild"
-  >
+  <ark.div :aria-describedby="field?.ariaDescribedby" v-bind="pinInput.getControlProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>
