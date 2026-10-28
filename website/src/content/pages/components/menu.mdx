@@ -154,6 +154,20 @@ export const MenuItemLink = (props: MenuItemLinkProps) => {
 }
 ```
 
+Pressing <kbd>Enter</kbd> on a link item calls `onSelect` and closes the menu. The details include `modifiers`, so you
+can let the browser handle <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>Enter</kbd> and skip your own handling:
+
+```tsx
+<Menu.Root
+  onSelect={(details) => {
+    if (details.modifiers.metaKey || details.modifiers.ctrlKey) return
+    // ...
+  }}
+>
+  {/* ... */}
+</Menu.Root>
+```
+
 ## API Reference
 
 ### Props

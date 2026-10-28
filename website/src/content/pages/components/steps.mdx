@@ -55,6 +55,28 @@ Use the `orientation` prop to display the steps vertically.
 
 <Example id="vertical" />
 
+## Guides
+
+### Styling
+
+Each item exposes its state through data attributes:
+
+```css
+[data-scope='steps'][data-part='item'][data-current] {
+  /* the active step */
+}
+
+[data-scope='steps'][data-part='item'][data-complete] {
+  /* steps before the active one */
+}
+
+[data-scope='steps'][data-part='item'][data-incomplete] {
+  /* steps after the active one */
+}
+```
+
+The current step's trigger has `aria-current="step"`.
+
 ## API Reference
 
 ### Props
