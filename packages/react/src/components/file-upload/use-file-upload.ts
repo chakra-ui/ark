@@ -25,6 +25,7 @@ export const useFileUpload = (props?: UseFileUploadProps): UseFileUploadReturn =
     dir,
     disabled: field?.disabled,
     locale,
+    readOnly: field?.readOnly,
     required: field?.required,
     invalid: field?.invalid,
     getRootNode,
