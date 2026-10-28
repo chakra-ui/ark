@@ -169,6 +169,41 @@ function Demo() {
 }
 ```
 
+### Modifier Keys
+
+The `onSelect` and `navigate` details include `modifiers`, the keys held when the item was activated. A modifier-click
+on a link item opens the link the way the browser would, and still calls `onSelect`. If you navigate in `onSelect`, skip
+it while a modifier is held:
+
+```tsx
+<Combobox.Root
+  onSelect={(details) => {
+    const { metaKey, ctrlKey, shiftKey, altKey } = details.modifiers
+    if (metaKey || ctrlKey || shiftKey || altKey) return
+    router.push(`/docs/${details.itemValue}`)
+  }}
+>
+  {/* ... */}
+</Combobox.Root>
+```
+
+### Announcements
+
+After typing, the combobox announces the result count to screen readers, or "No results" when nothing matches. Change
+the messages with the `resultsCount`, `noResults` and `loading` translations, or set one to `""` to turn that
+announcement off.
+
+```tsx
+<Combobox.Root
+  translations={{
+    resultsCount: (count) => `${count} matches`,
+    noResults: 'Nothing found',
+  }}
+>
+  {/* ... */}
+</Combobox.Root>
+```
+
 ### Custom Objects
 
 By default, the combobox collection expects an array of objects with `label` and `value` properties. In some cases, you
