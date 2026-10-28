@@ -48,7 +48,12 @@ export const AsyncSearch = () => {
   }
 
   return (
-    <Combobox.Root className={styles.Root} collection={collection} onInputValueChange={handleInputChange}>
+    <Combobox.Root
+      className={styles.Root}
+      collection={collection}
+      loading={list.loading}
+      onInputValueChange={handleInputChange}
+    >
       <Combobox.Label className={styles.Label}>Movie</Combobox.Label>
       <Combobox.Control className={styles.Control}>
         <Combobox.Input className={styles.Input} placeholder="e.g. Inception" />

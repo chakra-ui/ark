@@ -8,15 +8,18 @@ const items = [
 
 describe('Toc', () => {
   it('should auto scroll to the active item by default', async () => {
-    const scrollIntoView = vi.fn()
-    Element.prototype.scrollIntoView = scrollIntoView
-
     const { rerender } = render(ComponentUnderTest, { props: { items, activeIds: ['intro'] } })
-    scrollIntoView.mockClear()
+
+    const nav = screen.getByTestId('nav')
+    Object.defineProperties(nav, { scrollHeight: { value: 200 }, clientHeight: { value: 100 } })
+    nav.getBoundingClientRect = () => new DOMRect(0, 0, 100, 100)
+    screen.getByTestId('item-usage').getBoundingClientRect = () => new DOMRect(0, 150, 100, 20)
+    const scrollTo = vi.fn()
+    nav.scrollTo = scrollTo
 
     await rerender({ items, activeIds: ['usage'] })
 
-    await waitFor(() => expect(scrollIntoView).toHaveBeenCalled())
+    await waitFor(() => expect(scrollTo).toHaveBeenCalledWith(expect.objectContaining({ top: 70 })))
   })
 
   it('should not render the root and nav with the same id', () => {

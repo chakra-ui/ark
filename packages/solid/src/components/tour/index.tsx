@@ -8,6 +8,7 @@ export type {
   Point as TourPoint,
   PointerDownOutsideEvent as TourPointerDownOutsideEvent,
   ProgressTextDetails as TourProgressTextDetails,
+  ScrollToTargetDetails as TourScrollToTargetDetails,
   StatusChangeDetails as TourStatusChangeDetails,
   StepAction as TourStepAction,
   StepActionFn as TourStepActionFn,

@@ -7,6 +7,7 @@ export type {
   Point,
   PointerDownOutsideEvent,
   ProgressTextDetails,
+  ScrollToTargetDetails,
   StatusChangeDetails,
   StepAction,
   StepActionFn,

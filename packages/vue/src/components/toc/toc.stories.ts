@@ -3,6 +3,7 @@ import type { Meta } from '@storybook/vue3-vite'
 import BasicExample from './examples/basic.vue'
 import NestedExample from './examples/nested.vue'
 import RootProviderExample from './examples/root-provider.vue'
+import SingleActiveExample from './examples/single-active.vue'
 import WithCollapsibleExample from './examples/with-collapsible.vue'
 import WithHoverExample from './examples/with-hover.vue'
 import WithIndicatorExample from './examples/with-indicator.vue'
@@ -32,6 +33,13 @@ export const Nested = {
 export const RootProvider = {
   render: () => ({
     components: { Component: RootProviderExample },
+    template: '<Component />',
+  }),
+}
+
+export const SingleActive = {
+  render: () => ({
+    components: { Component: SingleActiveExample },
     template: '<Component />',
   }),
 }

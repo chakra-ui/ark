@@ -76,7 +76,12 @@ const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
 </script>
 
 <template>
-  <Combobox.Root :class="styles.Root" :collection="collection" @input-value-change="handleInputChange">
+  <Combobox.Root
+    :class="styles.Root"
+    :collection="collection"
+    :loading="list.loading"
+    @input-value-change="handleInputChange"
+  >
     <Combobox.Label :class="styles.Label">Movie</Combobox.Label>
     <Combobox.Control :class="styles.Control">
       <Combobox.Input :class="styles.Input" placeholder="e.g. Inception" />

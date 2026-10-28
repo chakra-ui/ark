@@ -19,6 +19,7 @@ export const TocRoot = (props: TocRootProps) => {
     'id',
     'ids',
     'items',
+    'multiple',
     'onActiveChange',
     'rootMargin',
     'scrollBehavior',

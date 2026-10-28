@@ -123,6 +123,9 @@ datasets or fetching data from an API.
 
 <Example id="async-search" />
 
+Pass `loading` while results are fetched. It sets `aria-busy` on the list and holds back the "No results" announcement
+until loading ends.
+
 ### Virtualized
 
 For very large lists, use virtualization with `@tanstack/virtual` to render only the visible items. Pass the

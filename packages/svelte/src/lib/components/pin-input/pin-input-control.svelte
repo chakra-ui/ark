@@ -13,16 +13,8 @@
 
   let { ref = $bindable(null), ...props }: PinInputControlProps = $props()
   const pinInput = usePinInputContext()
-  // TODO: remove role and aria-labelledby once Ark uses a @zag-js/pin-input release with chakra-ui/zag#3461
   const field = useFieldContext()
   const mergedProps = $derived(mergeProps(pinInput().getControlProps(), props))
 </script>
 
-<Ark
-  as="div"
-  bind:ref
-  role="group"
-  aria-labelledby={field?.()?.ids.label}
-  aria-describedby={field?.()?.ariaDescribedby}
-  {...mergedProps}
-/>
+<Ark as="div" bind:ref aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} />

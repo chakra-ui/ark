@@ -35,6 +35,7 @@ export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<
     'ids',
     'inputBehavior',
     'inputValue',
+    'loading',
     'invalid',
     'loopFocus',
     'multiple',

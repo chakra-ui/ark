@@ -38,6 +38,7 @@ const ComboboxImpl = <T extends CollectionItem>(props: ComboboxRootProps<T>, ref
     'ids',
     'inputBehavior',
     'inputValue',
+    'loading',
     'invalid',
     'loopFocus',
     'multiple',

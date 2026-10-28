@@ -9,15 +9,7 @@ export interface PinInputControlProps extends HTMLProps<'div'>, PinInputControlB
 export const PinInputControl = (props: PinInputControlProps) => {
   const api = usePinInputContext()
   const mergedProps = mergeProps(() => api().getControlProps(), props)
-  // TODO: remove role and aria-labelledby once Ark uses a @zag-js/pin-input release with chakra-ui/zag#3461
   const field = useFieldContext()
 
-  return (
-    <ark.div
-      role="group"
-      aria-labelledby={field?.().ids.label}
-      aria-describedby={field?.().ariaDescribedby}
-      {...mergedProps}
-    />
-  )
+  return <ark.div aria-describedby={field?.().ariaDescribedby} {...mergedProps} />
 }
