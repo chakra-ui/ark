@@ -110,7 +110,7 @@
         "description": "The unique identifier of the machine."
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  label: string\n  input: string\n  incrementTrigger: string\n  decrementTrigger: string\n  scrubber: string\n}>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the number input. Useful for composition."
       },

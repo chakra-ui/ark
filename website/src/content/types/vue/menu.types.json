@@ -173,15 +173,15 @@
   },
   "Root": {
     "emits": {
-      "escapeKeyDown": {
-        "type": "[event: KeyboardEvent]",
-        "isRequired": true,
-        "description": "Function called when the escape key is pressed"
-      },
       "enterComplete": {
         "type": "[]",
         "isRequired": true,
         "description": "Function called when the animation ends in the open state"
+      },
+      "escapeKeyDown": {
+        "type": "[event: KeyboardEvent]",
+        "isRequired": true,
+        "description": "Function called when the escape key is pressed"
       },
       "exitComplete": {
         "type": "[]",

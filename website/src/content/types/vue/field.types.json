@@ -73,7 +73,7 @@
   "RootProvider": {
     "props": {
       "value": {
-        "type": "{ ariaDescribedby: string | undefined; ids: { control: string; label: string; errorText: string; helperText: string; }; refs: { rootRef: Ref<null, null>; }; disabled: boolean | undefined; ... 10 more ...; getRequiredIndicatorProps: () => HTMLAttributes; }",
+        "type": "{ ariaDescribedby: string | undefined; ids: { root: string; control: string; label: string; errorText: string; helperText: string; }; refs: { rootRef: Ref<null, null>; }; disabled: boolean | undefined; ... 10 more ...; getRequiredIndicatorProps: () => HTMLAttributes; }",
         "isRequired": true
       },
       "asChild": {

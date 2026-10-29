@@ -158,7 +158,7 @@
         "description": "The format of the date to display in the input."
       },
       "ids": {
-        "type": "Partial<{ root: string; label: (index: number) => string; table: (id: string) => string; tableHeader: (id: string) => string; tableBody: (id: string) => string; tableRow: (id: string) => string; content: string; ... 10 more ...; positioner: string; }>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the date picker. Useful for composition."
       },
@@ -207,6 +207,11 @@
       },
       "name": { "type": "string", "isRequired": false, "description": "The `name` attribute of the input element." },
       "numOfMonths": { "type": "number", "isRequired": false, "description": "The number of months to display." },
+      "onEnterComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the open state"
+      },
       "onExitComplete": {
         "type": "VoidFunction",
         "isRequired": false,
@@ -301,7 +306,7 @@
         "description": "The time zone to use"
       },
       "translations": {
-        "type": "Partial<IntlTranslations>",
+        "type": "IntlTranslations",
         "isRequired": false,
         "description": "The localized messages to use."
       },
@@ -333,6 +338,11 @@
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
+      },
+      "onEnterComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the open state"
       },
       "onExitComplete": {
         "type": "VoidFunction",

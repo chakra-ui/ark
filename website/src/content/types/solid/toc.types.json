@@ -81,9 +81,15 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  title: string\n  list: string\n  item: (value: string) => string\n  link: (value: string) => string\n  indicator: string\n}>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the TOC. Useful for composition."
+      },
+      "multiple": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether every visible heading can be active at once.\nWhen `false`, only the topmost visible heading is active."
       },
       "onActiveChange": {
         "type": "(details: ActiveChangeDetails) => void",

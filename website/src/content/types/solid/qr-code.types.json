@@ -55,11 +55,7 @@
         "isRequired": false,
         "description": "The qr code encoding options."
       },
-      "ids": {
-        "type": "Partial<{ root: string; frame: string; overlay: string }>",
-        "isRequired": false,
-        "description": "The element ids."
-      },
+      "ids": { "type": "ElementIds", "isRequired": false, "description": "The element ids." },
       "onValueChange": {
         "type": "(details: ValueChangeDetails) => void",
         "isRequired": false,

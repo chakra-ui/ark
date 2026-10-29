@@ -134,7 +134,7 @@
         "description": "The unique identifier of the machine."
       },
       "ids": {
-        "type": "Partial<{\n  anchor: string\n  trigger: string | ((value?: string | undefined) => string)\n  content: string\n  title: string\n  description: string\n  closeTrigger: string\n  positioner: string\n  arrow: string\n}>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the popover. Useful for composition."
       },
@@ -144,9 +144,9 @@
         "description": "Whether to synchronize the present change immediately or defer it to the next frame"
       },
       "initialFocusEl": {
-        "type": "() => HTMLElement | null",
+        "type": "() => false | HTMLElement | null",
         "isRequired": false,
-        "description": "The element to focus on when the popover is opened."
+        "description": "The element to focus on when the popover is opened.\nReturn `false` to skip moving focus, or `null` to use the default."
       },
       "lazyMount": {
         "type": "boolean",
@@ -159,6 +159,11 @@
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether the popover should be modal. When set to `true`:\n- interaction with outside elements will be disabled\n- only popover content will be visible to screen readers\n- scrolling is blocked\n- focus is trapped within the popover"
+      },
+      "onEnterComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the open state"
       },
       "onEscapeKeyDown": {
         "type": "(event: KeyboardEvent) => void",
@@ -279,6 +284,11 @@
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
       },
+      "onEnterComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the open state"
+      },
       "onExitComplete": {
         "type": "VoidFunction",
         "isRequired": false,
@@ -311,8 +321,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLHeadingElement",
+    "tag": "h2"
   },
   "Trigger": {
     "props": {
