@@ -1,5 +1,80 @@
 # @ark-ui/svelte
 
+## [5.25.0] - 2026-10-29
+
+### Added
+
+- Render `Pagination.Item`, `Pagination.PrevTrigger`, `Pagination.NextTrigger`, `Pagination.FirstTrigger` and
+  `Pagination.LastTrigger` as anchors when the machine is `type="link"`. They rendered buttons carrying the `href` the
+  machine emits, which navigates nowhere.
+
+### Fixed
+
+- - **Field**: Fixed helper and error text not being announced on the focused element of Select, TagsInput, ColorPicker,
+    FileUpload, SignaturePad, RatingGroup and PinInput. `PinInput.Control` now renders as a labelled group.
+- - **FileUpload**: Fixed `Field.Root readOnly` not making the file upload read-only.
+- Fix controlled props that accepted `bind:` but never wrote the new value back to the caller's variable. The following
+  props are now bindable:
+  - **Select**: `open`, `highlightedValue`
+  - **Combobox**: `highlightedValue`
+  - **Menu**: `highlightedValue`, `triggerValue`
+  - **Dialog**, **Popover**, **Tooltip**, **HoverCard**: `triggerValue`
+  - **Drawer**: `triggerValue`, `snapPoint`
+  - **Editable**: `edit`
+  - **ColorPicker**: `format`
+  - **DateInput**: `placeholderValue`
+  - **Marquee**: `paused`
+  - **Toc**: `activeIds`
+- - **Avatar, Marquee, QrCode, Timer, Tooltip**: Fixed the `id` prop being ignored on the root.
+- - **Toc**: Add `getNavProps()` to `useToc` and render `Toc.Nav` with it. `Toc.Nav` now has `data-part="nav"` instead
+    of `data-part="root"`, so update any styles that target the nav through `[data-part="root"]`.
+  - **Toc**: Move `aria-labelledby` from `Root` to `Nav`, and render the root props on `RootProvider` in React and on
+    `Root` in Svelte so the indicator keeps its position.
+  - **Toc (Svelte)**: Fix `Root` and `Nav` rendering with the same `id`.
+  - **Toc (Svelte)**: `Toc.Nav` now reads the Toc from `Toc.Root` like the other frameworks and no longer accepts
+    `useToc` props or creates its own Toc. Wrap it in `Toc.Root` if you were rendering it on its own.
+- - **Dialog / Drawer**: Expose `api.modal`.
+  - **Pin Input**: Add <kbd>Ctrl</kbd>/<kbd>Cmd</kbd> + arrow and <kbd>↑</kbd>/<kbd>↓</kbd> navigation, and run native
+    form validation when pressing <kbd>Enter</kbd>.
+  - **Toast**: Support functional store updates, and only reference the title and description when they render.
+  - **Color Picker**: Fix `api.setFormat` not changing the format.
+  - **Overlays**: Wait for lazily mounted content before wiring focus and layers, and keep nested layers exposed to
+    assistive tech.
+  - **Checkbox**: Sync the hidden input when initially indeterminate.
+  - **Date Picker**: Name the calendar grid and drop the role descriptions.
+  - **Pagination**: Mark link triggers disabled when they can't navigate.
+  - **Popover**: Detect the title and description when the popover opens.
+  - **Scroll Area**: Scope `data-dragging` to the dragged axis.
+  - **Splitter**: Notify collapse/expand on the first size change.
+  - **Tooltip**: Clear the global store when an open tooltip unmounts.
+  - **Tour**: Name an action trigger by its label instead of its translation.
+  - **Tree View**: Focus the rename input after it renders.
+  - **Carousel**: Preserve scrolling while slide content updates.
+- - **Combobox**: Add a `loading` prop that sets `aria-busy` on the list and holds back "No results" while loading.
+    Announce the result count after typing, configurable through the `resultsCount`, `noResults` and `loading`
+    translations.
+  - **Combobox, Menu**: Add `modifiers` to the `navigate` and `onSelect` details, and call `onSelect` when a link item
+    is modifier-clicked or (Menu) activated with <kbd>Enter</kbd>.
+  - **TOC**: Add a `multiple` prop. Set it to `false` to keep only the topmost visible heading active. Activate a
+    clicked item right away and keep the section the reader is in active after its heading scrolls out of view.
+  - **Tour**: Add `scrollToTargetFn` and `data-instant`, and use the `dialog` role for the content.
+  - **Drawer**: Add axis support to `data-no-drag` (`x` or `y`).
+  - **Steps**: Add `data-current`, `data-complete` and `data-incomplete` to the item, and move `aria-current="step"` to
+    the trigger.
+  - **Live Region**: Regions no longer have an `id`. Select them with `[data-live-announcer]` instead of
+    `#__live-region__`.
+  - **Overlays**: Fix <kbd>Escape</kbd> not closing content right after it opens, floating content flashing at the
+    top-left on first open, and focus being pulled back after it moved elsewhere.
+  - **Toast**: Move focus to the next toast when a focused toast is dismissed, and fix toasts staying paused or
+    collapsed.
+  - **Password Input**: Make the visibility trigger keyboard accessible and drop its `aria-expanded`.
+  - **Svelte**: Raise the minimum `svelte` peer version to `5.29.0`, and fix machines missing early prop changes and
+    popups losing their styles on re-render.
+  - **Solid**: Fix machines missing prop changes made before their first effect run.
+  - **Vue**: Fix "Maximum recursive updates exceeded" when a nested component receives an inline object prop.
+  - Plus focus, RTL and keyboard fixes across Carousel, Date Picker, Editable, Navigation Menu, Pin Input, Rating Group,
+    Splitter, Tabs, Tags Input, Toggle Group and Tree View.
+
 ## [5.24.3] - 2026-10-05
 
 ### Fixed
