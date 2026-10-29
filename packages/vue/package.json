@@ -174,7 +174,7 @@
     "check-password-strength": "3.0.0",
     "clean-package": "2.2.0",
     "globby": "16.2.4",
-    "happy-dom": "20.14.5",
+    "happy-dom": "21.0.4",
     "image-conversion": "2.1.1",
     "lucide-vue-next": "1.0.0",
     "storybook": "10.6.1",
