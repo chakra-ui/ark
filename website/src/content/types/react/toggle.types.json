@@ -12,8 +12,8 @@
         "description": "The fallback content to render when the toggle is not pressed."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLSpanElement",
+    "tag": "span"
   },
   "Root": {
     "props": {

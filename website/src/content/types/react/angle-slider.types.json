@@ -56,8 +56,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLSpanElement",
+    "tag": "span"
   },
   "Root": {
     "props": {
@@ -93,7 +93,7 @@
         "description": "The unique identifier of the machine."
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  thumb: string\n  hiddenInput: string\n  control: string\n  valueText: string\n  label: string\n}>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the machine.\nUseful for composition."
       },
@@ -171,7 +171,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLSpanElement",
+    "tag": "span"
   }
 }

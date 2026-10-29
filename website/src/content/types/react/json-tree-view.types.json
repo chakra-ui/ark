@@ -51,7 +51,7 @@
         "description": "How to hide content when mounted but not present.\n- `'display-none'`: HTML `hidden` attribute. Effects stay alive.\n- `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
       },
       "ids": {
-        "type": "Partial<{ root: string; tree: string; label: string; node: (value: string) => string }>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the tree elements. Useful for composition."
       },

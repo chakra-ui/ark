@@ -216,7 +216,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  trigger: string | ((value?: string | undefined) => string)\n  contextTrigger: string | ((value?: string | undefined) => string)\n  content: string\n  groupLabel: (id: string) => string\n  group: (id: string) => string\n  positioner: string\n  arrow: string\n}>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the menu. Useful for composition."
       },
@@ -241,6 +241,11 @@
         "type": "(details: NavigateDetails) => void",
         "isRequired": false,
         "description": "Function to navigate to the selected item if it's an anchor element"
+      },
+      "onEnterComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the open state"
       },
       "onEscapeKeyDown": {
         "type": "(event: KeyboardEvent) => void",
@@ -337,6 +342,11 @@
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
+      },
+      "onEnterComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the open state"
       },
       "onExitComplete": {
         "type": "VoidFunction",

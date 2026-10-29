@@ -25,7 +25,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "ids": {
-        "type": "Partial<{ root: string; image: string; fallback: string }>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the avatar. Useful for composition."
       },

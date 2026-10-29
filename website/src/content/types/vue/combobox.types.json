@@ -211,6 +211,11 @@
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
       },
+      "loading": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the results are being loaded (e.g. fetched from a server).\n\nWhile loading, the listbox is marked with `aria-busy`, the loading message is\nannounced instead of the result count, and \"no results\" is never announced."
+      },
       "loopFocus": {
         "type": "boolean",
         "defaultValue": "true",

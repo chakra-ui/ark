@@ -289,9 +289,9 @@
         "description": "The ids of the elements in the color picker. Useful for composition."
       },
       "initialFocusEl": {
-        "type": "() => HTMLElement | null",
+        "type": "() => false | HTMLElement | null",
         "isRequired": false,
-        "description": "The initial focus element when the color picker is opened."
+        "description": "The initial focus element when the color picker is opened.\nReturn `false` to skip moving focus, or `null` to use the default."
       },
       "inline": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is inline" },
       "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is invalid" },
