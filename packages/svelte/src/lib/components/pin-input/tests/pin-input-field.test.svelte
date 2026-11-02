@@ -5,7 +5,7 @@
 
 <Field.Root invalid>
   <Field.Label>Label</Field.Label>
-  <PinInput.Root>
+  <PinInput.Root count={3}>
     <PinInput.Control>
       {#each [0, 1, 2] as index (index)}
         <PinInput.Input {index} />

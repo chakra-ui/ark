@@ -46,6 +46,7 @@ export { paginationAnatomy } from './pagination.anatomy.ts'
 export {
   usePagination,
   type PaginationAnchorProps,
+  type UsePaginationApi,
   type UsePaginationProps,
   type UsePaginationReturn,
 } from './use-pagination.ts'

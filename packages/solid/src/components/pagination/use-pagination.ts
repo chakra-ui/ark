@@ -14,7 +14,11 @@ export type PaginationAnchorProps = Omit<HTMLProps<'a'>, keyof HTMLProps<'button
 }
 
 export interface UsePaginationProps extends Optional<Omit<pagination.Props, 'dir' | 'getRootNode'>, 'id'> {}
-export interface UsePaginationReturn extends Accessor<pagination.Api<PropTypes>> {}
+// zag v2 dropped `type` from the api; the items and triggers read it to pick their element
+export interface UsePaginationApi extends pagination.Api<PropTypes> {
+  type: NonNullable<pagination.Props['type']>
+}
+export interface UsePaginationReturn extends Accessor<UsePaginationApi> {}
 
 export const usePagination = (props?: MaybeAccessor<UsePaginationProps>): UsePaginationReturn => {
   const locale = useLocaleContext()
@@ -29,5 +33,5 @@ export const usePagination = (props?: MaybeAccessor<UsePaginationProps>): UsePag
   }))
 
   const service = useMachine(pagination.machine, machineProps)
-  return createMemo(() => pagination.connect(service, normalizeProps))
+  return createMemo(() => ({ ...pagination.connect(service, normalizeProps), type: service.prop('type') }))
 }

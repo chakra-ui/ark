@@ -19,4 +19,10 @@
   const mergedProps = $derived(mergeProps(select().getTriggerProps(), props))
 </script>
 
-<Ark as="button" bind:ref aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} state={select().getTriggerState()} />
+<Ark
+  as="button"
+  bind:ref
+  aria-describedby={field?.()?.ariaDescribedby}
+  {...mergedProps}
+  state={select().getTriggerState()}
+/>

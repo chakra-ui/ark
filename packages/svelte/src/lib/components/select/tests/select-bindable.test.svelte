@@ -16,11 +16,13 @@
   </Select.Control>
   <Select.Positioner>
     <Select.Content>
-      {#each collection.items as item (item)}
-        <Select.Item {item}>
-          <Select.ItemText>{item}</Select.ItemText>
-        </Select.Item>
-      {/each}
+      <Select.List>
+        {#each collection.items as item (item)}
+          <Select.Item {item}>
+            <Select.ItemText>{item}</Select.ItemText>
+          </Select.Item>
+        {/each}
+      </Select.List>
     </Select.Content>
   </Select.Positioner>
 </Select.Root>

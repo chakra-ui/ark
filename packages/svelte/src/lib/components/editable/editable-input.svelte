@@ -20,4 +20,10 @@
   const mergedProps = $derived(mergeProps(editable().getInputProps(), props))
 </script>
 
-<Ark as="input" bind:ref aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} state={editable().getInputState()} />
+<Ark
+  as="input"
+  bind:ref
+  aria-describedby={field?.()?.ariaDescribedby}
+  {...mergedProps}
+  state={editable().getInputState()}
+/>

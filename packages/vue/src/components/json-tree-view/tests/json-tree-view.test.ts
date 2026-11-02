@@ -62,14 +62,14 @@ describe('JsonTreeView', () => {
 
   it('should render built-in indent guides when indentGuide is set', () => {
     render(IndentGuide)
-    expect(document.querySelectorAll('[data-part="branch-indent-guide"]')).toHaveLength(3)
-    expect(document.querySelector('[data-part="branch-indicator"]')).toBeNull()
+    expect(document.querySelectorAll('[data-tree-view-indent-guide]')).toHaveLength(3)
+    expect(document.querySelector('[data-tree-view-node-indicator]')).toBeNull()
   })
 
   it('should render custom indent guides when the indentGuide slot is provided', () => {
     render(IndentGuide, { props: { customGuide: true } })
     expect(screen.getAllByTestId('custom-guide')).toHaveLength(3)
-    expect(document.querySelector('[data-part="branch-indent-guide"]')).toBeNull()
+    expect(document.querySelector('[data-tree-view-indent-guide]')).toBeNull()
   })
 
   it('should update useJsonTreeView when data changes', async () => {

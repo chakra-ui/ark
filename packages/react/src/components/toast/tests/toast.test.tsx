@@ -58,9 +58,9 @@ describe('Toast', () => {
 
     const root = await screen.findByTestId('custom-root')
     expect(root.tagName).toBe('SECTION')
-    expect(root).toHaveAttribute('data-part', 'root')
+    expect(root).toHaveAttribute('data-toast-root')
     expect(root).not.toHaveAttribute('aschild')
-    expect(document.querySelectorAll('[data-part="root"]')).toHaveLength(1)
+    expect(document.querySelectorAll('[data-toast-root]')).toHaveLength(1)
     expect(root.firstElementChild).toHaveAttribute('data-ghost', 'before')
     expect(root.lastElementChild).toHaveAttribute('data-ghost', 'after')
   })

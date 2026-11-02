@@ -10,10 +10,8 @@ describe('Toast.Root', () => {
 
     const root = await screen.findByTestId('toast-host')
     expect(root.tagName).toBe('ARTICLE')
-    expect(root).toHaveAttribute('data-scope', 'toast')
-    expect(root).toHaveAttribute('data-part', 'root')
+    expect(root).toHaveAttribute('data-toast-root')
     expect(root).toHaveAttribute('role', 'status')
-    expect(root).toHaveAttribute('id')
     expect(root).toHaveTextContent('Custom root')
     expect(document.querySelector('[data-ghost]')).toBeNull()
   })

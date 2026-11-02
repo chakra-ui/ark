@@ -121,7 +121,7 @@ export const useField = (props: UseFieldProps = {}) => {
         'data-required': dataAttr(required),
         htmlFor: targetControlId ?? controlId,
       }) as HTMLProps<'label'>,
-    [disabled, invalid, readOnly, required, controlId, labelId, targetControlId],
+    [disabled, invalid, readOnly, required, id, controlId, labelId, targetControlId],
   )
 
   const errorMessageId = hasErrorText && invalid ? errorTextId : undefined

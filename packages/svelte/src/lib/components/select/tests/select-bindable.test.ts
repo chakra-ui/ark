@@ -23,7 +23,7 @@ describe('Select / bindable', () => {
   it('should write back bind:highlightedValue', async () => {
     render(ComponentUnderTest)
     await user.click(screen.getByRole('combobox'))
-    await user.keyboard('[ArrowDown]')
-    await waitFor(() => expect(screen.getByTestId('highlighted')).not.toHaveTextContent('null'))
+    await user.hover(screen.getByRole('option', { name: 'Solid' }))
+    await waitFor(() => expect(screen.getByTestId('highlighted')).toHaveTextContent('Solid'))
   })
 })

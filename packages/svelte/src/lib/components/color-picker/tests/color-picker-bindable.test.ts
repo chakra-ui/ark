@@ -7,7 +7,7 @@ describe('ColorPicker / bindable', () => {
   it('should write back bind:format from the format trigger', async () => {
     render(ComponentUnderTest)
     await user.click(screen.getByText('Toggle format'))
-    await waitFor(() => expect(screen.getByTestId('format')).toHaveTextContent('hsba'))
+    await waitFor(() => expect(screen.getByTestId('format')).toHaveTextContent('oklab'))
   })
 
   // TODO: unskip once @zag-js/color-picker is bumped past chakra-ui/zag#3407 (api.setFormat never changes the format)

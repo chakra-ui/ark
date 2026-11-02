@@ -20,7 +20,11 @@ import type { RootEmits } from './pagination.ts'
 export type PaginationAnchorProps = Omit<AnchorHTMLAttributes, keyof ButtonHTMLAttributes>
 
 export interface UsePaginationProps extends Optional<Omit<pagination.Props, 'dir' | 'getRootNode'>, 'id'> {}
-export interface UsePaginationReturn extends ComputedRef<pagination.Api<PropTypes>> {}
+// zag v2 dropped `type` from the api; the items and triggers read it to pick their element
+export interface UsePaginationApi extends pagination.Api<PropTypes> {
+  type: NonNullable<pagination.Props['type']>
+}
+export interface UsePaginationReturn extends ComputedRef<UsePaginationApi> {}
 
 export const usePagination = (
   props: MaybeRefOrGetter<UsePaginationProps> = {},
@@ -52,5 +56,5 @@ export const usePagination = (
   })
 
   const service = useMachine(pagination.machine, context)
-  return computed(() => pagination.connect(service, normalizeProps))
+  return computed(() => ({ ...pagination.connect(service, normalizeProps), type: service.prop('type') }))
 }

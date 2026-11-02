@@ -9,7 +9,7 @@ describe('Field', () => {
   it('should give ids.root to the root and ids.control to the control', () => {
     render(ComponentUnderTest, { props: { ids: { root: 'custom-root', control: 'custom-control' } } })
     expect(screen.getByRole('textbox', { name: /label/i })).toHaveAttribute('id', 'custom-control')
-    expect(document.getElementById('custom-root')).toHaveAttribute('data-part', 'root')
+    expect(document.getElementById('custom-root')).toHaveAttribute('data-field-root')
   })
 
   it('should set textbox as required', async () => {

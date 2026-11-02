@@ -20,4 +20,10 @@
   const mergedProps = $derived(mergeProps(fileUpload().getTriggerProps(), props))
 </script>
 
-<Ark as="button" bind:ref aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} state={fileUpload().getTriggerState()} />
+<Ark
+  as="button"
+  bind:ref
+  aria-describedby={field?.()?.ariaDescribedby}
+  {...mergedProps}
+  state={fileUpload().getTriggerState()}
+/>

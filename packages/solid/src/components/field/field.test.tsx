@@ -289,7 +289,7 @@ describe('Field / ids', () => {
   it('should give ids.root to the root and ids.control to the control', () => {
     render(() => <ComponentUnderTest ids={{ root: 'custom-root', control: 'custom-control' }} />)
     expect(screen.getByRole('textbox', { name: /label/i })).toHaveAttribute('id', 'custom-control')
-    expect(document.getElementById('custom-root')).toHaveAttribute('data-part', 'root')
+    expect(document.getElementById('custom-root')).toHaveAttribute('data-field-root')
   })
 
   it('should keep the label on the target item when ids.control is set', () => {

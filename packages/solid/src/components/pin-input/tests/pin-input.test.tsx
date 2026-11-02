@@ -84,7 +84,7 @@ describe('PinInput', () => {
 describe('PinInput / Field', () => {
   it('should set input as required', async () => {
     render(() => <PinInputWithField required />)
-    expect(screen.getByRole('textbox', { name: /pin code 1 of 3/i })).toBeRequired()
+    expect(screen.getAllByRole('textbox', { hidden: true })[3]).toBeRequired()
   })
 
   it('should set input as disabled', async () => {

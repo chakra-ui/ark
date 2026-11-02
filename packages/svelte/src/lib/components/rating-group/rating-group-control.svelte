@@ -19,4 +19,10 @@
   const mergedProps = $derived(mergeProps(ratingGroup().getControlProps(), props))
 </script>
 
-<Ark as="div" bind:ref aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} state={ratingGroup().getControlState()} />
+<Ark
+  as="div"
+  bind:ref
+  aria-describedby={field?.()?.ariaDescribedby}
+  {...mergedProps}
+  state={ratingGroup().getControlState()}
+/>

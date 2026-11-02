@@ -24,4 +24,10 @@
   const mergedProps = $derived(mergeProps(fileUpload().getDropzoneProps(dropzoneProps), localProps))
 </script>
 
-<Ark as="div" bind:ref aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} state={fileUpload().getDropzoneState()} />
+<Ark
+  as="div"
+  bind:ref
+  aria-describedby={field?.()?.ariaDescribedby}
+  {...mergedProps}
+  state={fileUpload().getDropzoneState()}
+/>
