@@ -4,23 +4,28 @@
 
 ### Fixed
 
-- - Fixed `dist` shipping unresolved `$lib/` imports, which broke every consumer build in 5.25.0.
+- Fix `dist` shipping unresolved `$lib/` imports, which broke consumer builds in 5.25.0.
 
 ## [5.25.0] - 2026-10-29
 
 ### Added
 
-- Render `Pagination.Item`, `Pagination.PrevTrigger`, `Pagination.NextTrigger`, `Pagination.FirstTrigger` and
-  `Pagination.LastTrigger` as anchors when the machine is `type="link"`. They rendered buttons carrying the `href` the
-  machine emits, which navigates nowhere.
+- **Pagination**: Render `Pagination.Item`, `Pagination.PrevTrigger`, `Pagination.NextTrigger`,
+  `Pagination.FirstTrigger` and `Pagination.LastTrigger` as anchors when `type="link"`.
+  ```svelte
+  <Pagination.Root count={100} pageSize={10} type="link" getPageUrl={({ page }) => `/page=${page}`}>
+    <Pagination.PrevTrigger />
+    <Pagination.NextTrigger />
+  </Pagination.Root>
+  ```
 
 ### Fixed
 
-- - **Field**: Fixed helper and error text not being announced on the focused element of Select, TagsInput, ColorPicker,
-    FileUpload, SignaturePad, RatingGroup and PinInput. `PinInput.Control` now renders as a labelled group.
-- - **FileUpload**: Fixed `Field.Root readOnly` not making the file upload read-only.
-- Fix controlled props that accepted `bind:` but never wrote the new value back to the caller's variable. The following
-  props are now bindable:
+- **General**
+  - Raise the minimum `svelte` peer version to `5.29.0`.
+  - Fix machines missing early prop changes, and popups losing their styles on re-render.
+
+- Fix controlled props that accepted `bind:` but never wrote the new value back. These props are now bindable:
   - **Select**: `open`, `highlightedValue`
   - **Combobox**: `highlightedValue`
   - **Menu**: `highlightedValue`, `triggerValue`
@@ -31,404 +36,413 @@
   - **DateInput**: `placeholderValue`
   - **Marquee**: `paused`
   - **Toc**: `activeIds`
-- - **Avatar, Marquee, QrCode, Timer, Tooltip**: Fixed the `id` prop being ignored on the root.
-- - **Toc**: Add `getNavProps()` to `useToc` and render `Toc.Nav` with it. `Toc.Nav` now has `data-part="nav"` instead
-    of `data-part="root"`, so update any styles that target the nav through `[data-part="root"]`.
-  - **Toc**: Move `aria-labelledby` from `Root` to `Nav`, and render the root props on `RootProvider` in React and on
-    `Root` in Svelte so the indicator keeps its position.
-  - **Toc (Svelte)**: Fix `Root` and `Nav` rendering with the same `id`.
-  - **Toc (Svelte)**: `Toc.Nav` now reads the Toc from `Toc.Root` like the other frameworks and no longer accepts
-    `useToc` props or creates its own Toc. Wrap it in `Toc.Root` if you were rendering it on its own.
-- - **Dialog / Drawer**: Expose `api.modal`.
-  - **Pin Input**: Add <kbd>Ctrl</kbd>/<kbd>Cmd</kbd> + arrow and <kbd>↑</kbd>/<kbd>↓</kbd> navigation, and run native
-    form validation when pressing <kbd>Enter</kbd>.
-  - **Toast**: Support functional store updates, and only reference the title and description when they render.
-  - **Color Picker**: Fix `api.setFormat` not changing the format.
-  - **Overlays**: Wait for lazily mounted content before wiring focus and layers, and keep nested layers exposed to
-    assistive tech.
-  - **Checkbox**: Sync the hidden input when initially indeterminate.
-  - **Date Picker**: Name the calendar grid and drop the role descriptions.
-  - **Pagination**: Mark link triggers disabled when they can't navigate.
-  - **Popover**: Detect the title and description when the popover opens.
-  - **Scroll Area**: Scope `data-dragging` to the dragged axis.
-  - **Splitter**: Notify collapse/expand on the first size change.
-  - **Tooltip**: Clear the global store when an open tooltip unmounts.
-  - **Tour**: Name an action trigger by its label instead of its translation.
-  - **Tree View**: Focus the rename input after it renders.
-  - **Carousel**: Preserve scrolling while slide content updates.
-- - **Combobox**: Add a `loading` prop that sets `aria-busy` on the list and holds back "No results" while loading.
-    Announce the result count after typing, configurable through the `resultsCount`, `noResults` and `loading`
-    translations.
-  - **Combobox, Menu**: Add `modifiers` to the `navigate` and `onSelect` details, and call `onSelect` when a link item
-    is modifier-clicked or (Menu) activated with <kbd>Enter</kbd>.
-  - **TOC**: Add a `multiple` prop. Set it to `false` to keep only the topmost visible heading active. Activate a
-    clicked item right away and keep the section the reader is in active after its heading scrolls out of view.
-  - **Tour**: Add `scrollToTargetFn` and `data-instant`, and use the `dialog` role for the content.
-  - **Drawer**: Add axis support to `data-no-drag` (`x` or `y`).
-  - **Steps**: Add `data-current`, `data-complete` and `data-incomplete` to the item, and move `aria-current="step"` to
-    the trigger.
-  - **Live Region**: Regions no longer have an `id`. Select them with `[data-live-announcer]` instead of
-    `#__live-region__`.
-  - **Overlays**: Fix <kbd>Escape</kbd> not closing content right after it opens, floating content flashing at the
-    top-left on first open, and focus being pulled back after it moved elsewhere.
-  - **Toast**: Move focus to the next toast when a focused toast is dismissed, and fix toasts staying paused or
-    collapsed.
-  - **Password Input**: Make the visibility trigger keyboard accessible and drop its `aria-expanded`.
-  - **Svelte**: Raise the minimum `svelte` peer version to `5.29.0`, and fix machines missing early prop changes and
-    popups losing their styles on re-render.
-  - **Solid**: Fix machines missing prop changes made before their first effect run.
-  - **Vue**: Fix "Maximum recursive updates exceeded" when a nested component receives an inline object prop.
-  - Plus focus, RTL and keyboard fixes across Carousel, Date Picker, Editable, Navigation Menu, Pin Input, Rating Group,
-    Splitter, Tabs, Tags Input, Toggle Group and Tree View.
+
+- **Field**: Fix helper and error text not being announced in Select, TagsInput, ColorPicker, FileUpload, SignaturePad,
+  RatingGroup and PinInput. `PinInput.Control` now renders as a labelled group.
+
+- **FileUpload**: Fix `Field.Root readOnly` not making the file upload read-only.
+
+- **Avatar, Marquee, QrCode, Timer, Tooltip**: Fix the `id` prop being ignored on the root.
+
+- **Toast**
+  - Support functional store updates, and only reference the title and description when they render.
+  - Move focus to the next toast when a focused toast is dismissed, and fix toasts staying paused or collapsed.
+
+- **Toc**
+  - Fix `Root` and `Nav` rendering with the same `id`. The `id` and `aria-labelledby` now live only on `Nav`.
+  - Add `getNavProps()` to `useToc` and render `Toc.Nav` with `data-part="nav"` instead of `data-part="root"`. Update
+    styles that target the nav.
+    ```diff
+    - [data-scope="toc"][data-part="root"] { ... }
+    + [data-scope="toc"][data-part="nav"] { ... }
+    ```
+  - Make `Toc.Nav` read the Toc from `Toc.Root`. It no longer accepts `useToc` props, so wrap a standalone `Toc.Nav` in
+    `Toc.Root`.
+  - Render the root props on `Toc.Root` so the indicator keeps its position.
+  - Add a `multiple` prop. Set it to `false` to keep only the topmost visible heading active. Clicked items activate
+    immediately, and the current section stays active after its heading scrolls out of view.
+    ```svelte
+    <Toc.Root {items} multiple={false}>
+      <Toc.Nav />
+    </Toc.Root>
+    ```
+
+- **Dialog / Drawer**: Expose `api.modal`.
+
+- **PinInput**: Add <kbd>Ctrl</kbd>/<kbd>Cmd</kbd> + arrow and <kbd>↑</kbd>/<kbd>↓</kbd> navigation, and run native form
+  validation on <kbd>Enter</kbd>.
+
+- **ColorPicker**: Fix `api.setFormat` not changing the format.
+
+- **Overlays**
+  - Wait for lazily mounted content before wiring focus and layers, and keep nested layers exposed to assistive tech.
+  - Fix <kbd>Escape</kbd> not closing content right after it opens, floating content flashing at the top-left on first
+    open, and focus being pulled back after it moved elsewhere.
+
+- **Checkbox**: Sync the hidden input when initially indeterminate.
+
+- **DatePicker**: Name the calendar grid and remove the role descriptions.
+
+- **Pagination**: Mark link triggers disabled when they can't navigate.
+
+- **Popover**: Detect the title and description when the popover opens.
+
+- **ScrollArea**: Scope `data-dragging` to the dragged axis.
+
+- **Splitter**: Notify collapse and expand on the first size change.
+
+- **Tooltip**: Clear the global store when an open tooltip unmounts.
+
+- **Tour**
+  - Name an action trigger by its label instead of its translation.
+  - Add `scrollToTargetFn` and `data-instant`, and use the `dialog` role for the content.
+
+- **TreeView**: Focus the rename input after it renders.
+
+- **Carousel**: Preserve scrolling while slide content updates.
+
+- **Combobox**: Add a `loading` prop that sets `aria-busy` on the list and holds back "No results", and announce the
+  result count after typing via the `resultsCount`, `noResults` and `loading` translations.
+
+  ```svelte
+  <Combobox.Root {collection} loading={isFetching}>
+    <Combobox.Input />
+  </Combobox.Root>
+  ```
+
+- **Combobox, Menu**: Add `modifiers` to the `navigate` and `onSelect` details, and call `onSelect` when a link item is
+  modifier-clicked or (Menu) activated with <kbd>Enter</kbd>.
+
+- **Drawer**: Support an axis (`x` or `y`) in `data-no-drag`.
+
+- **Steps**: Add `data-current`, `data-complete` and `data-incomplete` to the item, and move `aria-current="step"` to
+  the trigger.
+
+- **LiveRegion**: Remove the `id` from regions. Select them with `[data-live-announcer]` instead.
+
+  ```diff
+  - document.querySelector('#__live-region__')
+  + document.querySelector('[data-live-announcer]')
+  ```
+
+- **PasswordInput**: Make the visibility trigger keyboard accessible and remove its `aria-expanded`.
+
+- Fix focus, RTL and keyboard issues in Carousel, DatePicker, Editable, NavigationMenu, PinInput, RatingGroup, Splitter,
+  Tabs, TagsInput, ToggleGroup and TreeView.
 
 ## [5.24.3] - 2026-10-05
 
 ### Fixed
 
-- Align the last six parts that rendered a different element across adapters: `Toggle.Indicator`, `AngleSlider.Marker`,
-  `AngleSlider.ValueText` and `Listbox.ItemText` render `span`, `Popover.Title` renders `h2`, and Svelte's
-  `NumberInput.Scrubber` renders `div`.
-- - **Select**: Export `SelectIntlTranslations`, `SelectPositioningOptions`, `SelectScrollToIndexDetails` and
+- **General**
+  - Render `Toggle.Indicator`, `AngleSlider.Marker`, `AngleSlider.ValueText` and `Listbox.ItemText` as `span`,
+    `Popover.Title` as `h2`, and `NumberInput.Scrubber` as `div`, to match the other frameworks.
+  - Render `Dialog.Description` and `Popover.Description` as `div`, `FileUpload.ItemGroup` as `ul`, `Menu.Separator` as
+    `hr`, `Slider.ValueText` as `span`, and `DatePicker.TableCellTrigger`, `Steps.List`, `TreeView.BranchTrigger` and
+    `TreeView.Item` as `div`, to match the other frameworks.
+  - Accept a `render` snippet on every `Context` component. `api` (Avatar, Progress, QrCode, Timer) and `children`
+    (Dialog, Drawer, Marquee, RadioGroup) remain as deprecated aliases.
+    ```svelte
+    <Avatar.Context>
+      {#snippet render(avatar)}
+        {avatar().loaded ? 'Loaded' : 'Loading'}
+      {/snippet}
+    </Avatar.Context>
+    ```
+  - Fix `bind:ref` staying `null` when a component renders through `asChild`.
+  - Fix the `asChild` props function rejecting an SVG child at the type level.
+  - Export `HTMLProps`, `HTMLTag`, `PolymorphicProps`, `PropsFn` and `RefAttribute` for typing wrapper components.
+  - Fix inline style values containing semicolons being cut off when props merge.
+  - Fix `Illegal invocation` on setup when a tool like Storybook has replaced `HTMLElement.prototype.focus`.
+  - Fix `derived_inert` warnings when a component's cleanup runs after it unmounts.
+
+- **Select**
+  - Export `SelectIntlTranslations`, `SelectPositioningOptions`, `SelectScrollToIndexDetails` and
     `SelectSelectionDetails`.
-  - **Clipboard**: Export `ClipboardValueChangeDetails`.
-  - **DateInput**: Export `DateInputPlaceholderChangeDetails`.
-  - **ImageCropper**: Export `ImageCropperRect`.
-  - **QrCode**: Export `QrCodeValueChangeDetails`.
-  - **Steps**: Export `StepInvalidDetails`. In Vue, this fixes TS2883 ("cannot be named without a reference to …") when
-    emitting declarations for a component that wraps one of these roots, for example a generic `Select.Root` wrapper
-    built with pnpm.
-- - **Field**: Fix `Field.ErrorText` not being announced by VoiceOver and Narrator. It is now linked via
-    `aria-describedby` instead of `aria-errormessage`, since screen reader support for `aria-errormessage` is still
-    incomplete.
-    ```diff
-    - expect(input).toHaveAccessibleErrorMessage('Error Info')
-    + expect(input).toHaveAccessibleDescription(expect.stringContaining('Error Info'))
+  - Fix `Select.ValueText` rendering its `placeholder` as a DOM attribute.
+
+- **Clipboard**: Export `ClipboardValueChangeDetails`.
+
+- **DateInput**: Export `DateInputPlaceholderChangeDetails`.
+
+- **Fieldset**: Export the prop types under namespaced names such as `Fieldset.RootProps`, including the `BaseProps`
+  variants.
+
+- **ImageCropper**
+  - Export `ImageCropperRect`.
+  - Add `api.setCrop(rect)` to set the crop area programmatically, in viewport coordinates, while keeping zoom,
+    rotation, flip and pan.
+    ```ts
+    imageCropper().setCrop({ x: 40, y: 40, width: 200, height: 200 })
     ```
-- - **AngleSlider**: Fix `AngleSlider.ValueText` rendering empty when used without children. It now displays the current
-    value in degrees.
-- Accept a `render` snippet on every `Context` component. 55 of the 63 take `render`; `Avatar`, `Progress`, `QrCode` and
-  `Timer` took `api`, and `Dialog`, `Drawer`, `Marquee` and `RadioGroup` took `children`. Those eight now take `render`
-  too, and keep `api` / `children` as deprecated aliases, so existing code keeps working.
-- Fix `Dialog.Description` and `Popover.Description` rendering a `p` element. React, Solid and Vue render a `div`, so a
-  stylesheet or a nested block element written against one stack broke on the other.
-- Render `FileUpload.ItemGroup` as `ul`, `Menu.Separator` as `hr`, `Slider.ValueText` as `span`, and
-  `DatePicker.TableCellTrigger`, `Steps.List`, `TreeView.BranchTrigger` and `TreeView.Item` as `div`, matching the other
-  frameworks.
-- Fix `bind:ref` staying `null` when a component renders through `asChild`. The factory bound `ref` only on the element
-  it renders itself, so in `asChild` mode the caller's element was never assigned. The props function now carries an
-  attachment that sets `ref` to the child element, matching React, where the ref reaches the `asChild` child.
-- Export the `Fieldset` namespace's prop types under their namespaced names. Every other Svelte namespace aliases them —
-  `Field.RootProps`, `Dialog.RootProps`, `Accordion.ItemProps` and so on — but `fieldset.ts` re-exported the flat
-  `FieldsetRootProps` / `FieldsetLegendProps` names, so `Fieldset.RootProps` and its siblings did not resolve and the
-  `BaseProps` variants were not exported at all. This matches the React package, whose `Fieldset` namespace already
-  aliases both.
-- - **JsonTreeView**: Fix `bind:expandedValue`, `bind:selectedValue`, `bind:checkedValue` and `bind:focusedValue` not
-    syncing, and the tree not re-rendering when `data` changes. `useJsonTreeView` now also reacts to `data` changes.
-- - Fix the `asChild` props function rejecting an SVG child. It returned `HTMLAttributes<HTMLElement>`, whose event
-    handlers don't accept an `SVGElement`, so `<svg {...props()}>` failed to typecheck without a cast. It now returns
-    attributes any element accepts, which keeps spreading a part's props onto a different element (a trigger rendered as
-    `<a>`) working.
-  - Export `HTMLProps`, `HTMLTag`, `PolymorphicProps`, `PropsFn` and `RefAttribute`, so wrappers can type their own
-    polymorphic props the way `@ark-ui/react` exports `HTMLArkProps` and `PolymorphicProps`.
-- - Fix `Portal` leaving its content in the DOM when unmounted immediately after mounting.
-  - Fix `Portal` not moving its content when the `container` prop changes.
-- Fix `Select.ValueText` rendering its `placeholder` as a DOM attribute. The component spread every prop onto the
-  underlying `span`, so the fallback text showed up as `placeholder="…"` in the markup. `Listbox.ValueText` and
-  `DatePicker.ValueText` already split it out.
-- Fix `Tabs.Content` omitting the presence props. The content merged only the machine props, so it never carried
-  `data-state="open" | "closed"` (the React, Solid and Vue implementations do) and it was hidden the moment the tab
-  changed, cutting exit animations short.
-- Fix `Tooltip.Root` ignoring a controlled `open` prop. The root destructured `open` out of its props and never passed
-  it to the machine, so `<Tooltip.Root open={true}>` (or a `bind:open` the parent drives) rendered a closed tooltip. The
-  other popper roots (`Dialog`, `Popover`, `HoverCard`) already forward it.
-- Fix `Toaster` dropping the group props it accepts. `dir` and `getRootNode` were typed on the component but never
-  reached the group machine — the locale and environment contexts always won, and both props were spread onto the region
-  element instead. The toast region's `aria-label` is now settable through a `label` prop, which is forwarded to
-  `getGroupProps`.
-- Fix `Tour.Spotlight` disappearing immediately when the tour closes, so its exit animation can run.
-- Export the missing Tour types, including `TourStepsChangeDetails` for `onStepsChange`, and add flat `Tour*` aliases
-  for the step, action, and callback detail types.
-- - **Initial Focus**: `initialFocusEl` can now return `false` to open without moving focus. Returning `null` still uses
-    the default.
-    ```jsx
-    <Dialog.Root initialFocusEl={() => false} />
-    ```
-    > Supported in Color Picker, Dialog, Drawer, Floating Panel, and Popover.
-  - **Image Cropper**: Add `api.setCrop(rect)` to place the crop area programmatically, in viewport coordinates. The
-    rect is constrained like `initialCrop`, and unlike `api.reset()` it keeps the current zoom, rotation, flip, and pan.
-  - **Pagination**: Add `api.type` and `api.getPageUrl(page)`, so custom parts can tell whether the controls are buttons
-    or links and build a page's URL.
-  - **Carousel**: Fix `allowMouseDrag` advancing a full page per pointer move in Vue.
-  - **Floating Panel**
-    - Fix `strategy="absolute"` placing the panel outside its boundary.
-    - Fix the panel not following its boundary element when an ancestor scrolls.
-  - **Image Cropper**: Fix `Alt+Arrow` resizing ignoring `aspectRatio` and `cropShape="circle"`.
-  - **Listbox**: Fix range selection anchoring on the highlighted item instead of the one you clicked. Shift+click with
-    `highlightOnHover` now selects the full range, and Shift+arrow can reverse direction.
-  - **Popover**: Fix `autoFocus={false}` being ignored for modal popovers.
-  - **Popover, Select, Menu, and other positioned parts**: Fix a stylesheet `z-index` on the positioner being ignored
-    when the content has no stacking level.
-  - **Presence**: Fix an element with an exit animation staying mounted forever in Safari, invisible but still
-    intercepting clicks.
-  - **Progress**: Fix the formatter not updating when `formatOptions` changes to a subset of the previous options.
-  - **Splitter**: Fix slow dragging in large documents.
-  - **Tabs**: Fix programmatic tab selection triggering link navigation.
-  - **TOC**: Fix `onActiveChange` reporting the previous `activeIds` and `activeItems`, which kept a controlled TOC
-    stuck on the old section.
-  - **Tour**: Fix the step card, spotlight and backdrop collapsing into the top-left corner when the step's target is
-    replaced, and the backdrop leaving part of the page undimmed on resize.
-  - **Svelte**: Fix `derived_inert` warnings when a component's cleanup runs after it unmounts.
-  - **General**
-    - Fix inline style values containing semicolons being cut off when props merge, such as quoted CSS custom properties
-      and data URLs.
-    - Fix `Illegal invocation` thrown on setup when a tool like Storybook has replaced `HTMLElement.prototype.focus`.
+  - Fix <kbd>Alt</kbd>+arrow resizing ignoring `aspectRatio` and `cropShape="circle"`.
+
+- **QrCode**: Export `QrCodeValueChangeDetails`.
+
+- **Steps**: Export `StepInvalidDetails`.
+
+- **Field**: Fix `Field.ErrorText` not being announced by VoiceOver and Narrator. It is now linked via
+  `aria-describedby` instead of `aria-errormessage`.
+
+  ```diff
+  - expect(input).toHaveAccessibleErrorMessage('Error Info')
+  + expect(input).toHaveAccessibleDescription(expect.stringContaining('Error Info'))
+  ```
+
+- **AngleSlider**: Fix `AngleSlider.ValueText` rendering empty without children. It now shows the value in degrees.
+
+- **JsonTreeView**: Fix `bind:expandedValue`, `bind:selectedValue`, `bind:checkedValue` and `bind:focusedValue` not
+  syncing, and the tree not re-rendering when `data` changes.
+
+- **Portal**
+  - Fix content staying in the DOM when unmounted immediately after mounting.
+  - Fix content not moving when the `container` prop changes.
+
+- **Toast**: Fix `Toaster` ignoring `dir` and `getRootNode`, and add a `label` prop for the region's `aria-label`.
+
+- **Tooltip**: Fix `Tooltip.Root` ignoring a controlled `open` prop.
+
+- **Tour**
+  - Fix `Tour.Spotlight` disappearing on close before its exit animation runs.
+  - Export the missing types, including `TourStepsChangeDetails`, and add flat `Tour*` aliases for the step, action and
+    callback detail types.
+  - Fix the step card, spotlight and backdrop collapsing to the top-left when the target is replaced, and the backdrop
+    leaving part of the page undimmed on resize.
+
+- **Overlays**: Support returning `false` from `initialFocusEl` to open without moving focus in ColorPicker, Dialog,
+  Drawer, FloatingPanel and Popover.
+
+  ```svelte
+  <Dialog.Root initialFocusEl={() => false} />
+  ```
+
+- **Pagination**: Add `api.type` and `api.getPageUrl(page)`.
+
+- **FloatingPanel**
+  - Fix `strategy="absolute"` placing the panel outside its boundary.
+  - Fix the panel not following its boundary element when an ancestor scrolls.
+
+- **Listbox**: Fix range selection anchoring on the highlighted item instead of the clicked one.
+
+- **Popover**: Fix `autoFocus={false}` being ignored for modal popovers.
+
+- **Positioning**: Fix a stylesheet `z-index` on the positioner being ignored when the content has no stacking level, in
+  Popover, Select, Menu and other positioned parts.
+
+- **Presence**: Fix elements with an exit animation staying mounted in Safari and intercepting clicks.
+
+- **Progress**: Fix the formatter not updating when `formatOptions` changes to a subset of the previous options.
+
+- **Splitter**: Fix slow dragging in large documents.
+
+- **Tabs**
+  - Fix programmatic tab selection triggering link navigation.
+  - Fix `Tabs.Content` missing `data-state`, which cut exit animations short.
+
+- **Toc**: Fix `onActiveChange` reporting the previous `activeIds` and `activeItems`.
 
 ## [5.24.2] - 2026-09-11
 
 ### Fixed
 
-- Fix `./hotkeys` and `./interaction` entrypoints missing from the published `exports` map. The build files shipped, but
-  the publish config (`clean-package`) maintains its own `exports` map and was never updated when the `hotkeys` and
-  `interaction` primitives were added, so `import { useHotkeys } from '@ark-ui/react/hotkeys'` failed with
-  `ERR_MODULE_NOT_FOUND`. Both entrypoints are now included in the published map for every framework.
-- Fix issue where the tour backdrop stayed visible after the tour was closed
+- Fix the `./hotkeys` and `./interaction` entrypoints missing from the published `exports` map.
+
+- **Tour**: Fix the backdrop staying visible after the tour closes.
 
 ## [5.24.1] - 2026-08-28
 
 ### Fixed
 
-- Fix `NavigationMenu.Content` throwing `document is not defined` during SSR.
+- **NavigationMenu**: Fix `NavigationMenu.Content` throwing `document is not defined` during SSR.
 
 ## [5.24.0] - 2026-08-21
 
 ### Added
 
-- **Toc** [New]: Add a table of contents component that tracks which headings are in view as the reader scrolls. Pass
-  the headings to `Toc.Root` as `items`, where each entry needs the heading element's `id` as `value` and its level as
-  `depth`. Set `scrollEl` when the content scrolls inside a container rather than the page, so tracking observes that
-  element instead of the viewport.
-  ```tsx
-  <Toc.Root items={items} scrollEl={() => contentRef.current}>
-    <Toc.Content />
+- **Toc**: Add a table of contents component that tracks which headings are in view as the reader scrolls (preview).
+
+  ```svelte
+  <Toc.Root {items}>
     <Toc.Nav>
-      <Toc.Title />
-      <Toc.List>
-        <Toc.Indicator />
-        <Toc.Item item={item}>
-          <Toc.Link />
-        </Toc.Item>
-      </Toc.List>
+      <Toc.List><!-- Toc.Item + Toc.Link per heading --></Toc.List>
     </Toc.Nav>
   </Toc.Root>
   ```
-  More than one heading can be active at once, so `Toc.Item` carries `data-first` and `data-last` to mark the ends of
-  the range, and `Toc.Indicator` spans it. Use `useToc` with `Toc.RootProvider` to reach `activeItems` and `scrollTo`
-  from outside the tree. The API may still change while the component is in preview.
-- **Hotkeys** [New]: Add a `hotkeys` entrypoint with hooks for registering and inspecting keyboard shortcuts, built on
-  `@zag-js/hotkeys`. `useHotkey` registers one command. `useHotkeys` registers several. `mod+K` resolves per platform,
-  and sequences like `G > H` go through the same hook. Command ids are optional and generated when omitted.
-  ```tsx
+
+- **Hotkeys**: Add a `hotkeys` entrypoint with `useHotkey`, `useHotkeys`, `useHotkeyRegistrations`, `createHotkeyStore`,
+  `usePressedKeys`, `useIsKeyPressed`, `useHotkeyRecorder`, `usePlatform` and `useFormatHotkey`.
+
+  ```ts
   useHotkey({ hotkey: 'mod+K', action: openSearch })
-  useHotkeys({
-    commands: [
-      { hotkey: 'mod+S', action: save, label: 'Save', category: 'File' },
-      { hotkey: 'G > H', action: goHome, label: 'Home' },
-    ],
-  })
+  useHotkeys({ commands: [{ hotkey: 'G > H', action: goHome, label: 'Home' }] })
   ```
-  `useHotkeyRegistrations` returns those commands with their metadata (`label`, `description`, `category`, `keywords`),
-  so a command palette or shortcut dialog can render from the same registration that binds the key. Pass a store from
-  `createHotkeyStore` to scope a set of commands. Without one, hooks share a default store.
-  ```tsx
-  const store = createHotkeyStore()
-  useHotkeys({ commands, store })
-  const registered = useHotkeyRegistrations({ store })
-  ```
-  Active scopes, conflict behavior, sequence timeout, and default options are configured on the store. `usePressedKeys`
-  and `useIsKeyPressed` track live key state. `useHotkeyRecorder` records a chord or sequence for rebinding UIs.
-  `usePlatform` and `useFormatHotkey` render shortcuts for the current platform without a hydration mismatch.
-- **Presence**: Add `onEnterComplete`, called once the enter animation finishes, mirroring the existing
-  `onExitComplete`. Vue exposes it as the `enter-complete` emit.
-  > Affects Color Picker, Combobox, Date Picker, Dialog, Drawer, Floating Panel, Hover Card, Menu, Popover, Select,
-  > Tooltip, and Tour.
+
+- **Presence**: Add `onEnterComplete`, called when the enter animation finishes.
 
 ### Fixed
 
-- Expose `ariaAttr` and `dataAttr` from the package root.
+- **General**: Export `ariaAttr` and `dataAttr` from the package root.
 
 ## [5.23.1] - 2026-08-17
 
 ### Fixed
 
-- - **Date Picker**
-    - Fix `translations` requiring every message. It's now `Partial`, so you can override one message and let the rest
-      fall back to the defaults.
-    - Fix the view trigger's `aria-label` naming the wrong view. In day view it announced "Switch to year view" while
-      the trigger actually switches to month view. The trigger also disables itself once there's no further view to
-      switch to.
-    - Fix dates between a range's start and end announcing the generic "Choose" label. They now announce "In range".
-  - **Escape Dismissal**: Fix `Escape` being ignored right after an overlay opens. Handlers registered a frame late, so
-    the overlay was painted and focus-trapped before it could listen. Under CPU load that gap grew well past one frame
-    and swallowed the keypress. They now register as soon as the layer mounts.
-    > Affects Dialog, Drawer, Menu, Popover, and anything else that closes on `Escape`.
-  - **Floating Panel**
-    - Fix closing a panel leaving it on the stack, so the next panel now becomes topmost.
-    - Fix stack order not applying to the positioner, so focusing a panel raises it above its siblings.
-  - **Focus Visible**: Fix clicking a label adding `data-focus-visible` to the control. Activating the label briefly
-    moved focus to an overlay container, which was read as virtual focus.
-    > Affects Checkbox, Radio Group, and Switch.
-  - **Form Submission**: Fix trigger and close trigger buttons submitting an ancestor form on click. They carried no
-    `type`, so they defaulted to `type="submit"`.
-    > Affects Drawer, Navigation Menu, Steps, and Tour.
-  - **Hover Highlight**: Fix keyboard navigation losing or moving the highlighted item while the pointer rests over
-    scrollable content. Scrolling the item into view moved the content under the cursor, and the resulting
-    `pointerleave` (or `pointermove` in Safari) counted as a real hover.
-    > Affects Cascade Select, Combobox, Listbox, Menu, and Select.
-  - **Image Cropper**: Fix `fixedCropArea` disabling every keyboard interaction on the crop selection, including the `+`
-    and `-` zoom shortcuts that still apply in fixed mode. The selection is now always focusable, and arrow keys pan the
-    image since there's nothing to move or resize.
-  - **QR Code**: Fix `getDataUrl()` and the download trigger dropping the overlay. The export contained only the QR
-    matrix, so a logo or badge placed over the code went missing.
-  - **Splitter**: Fix the resize trigger matching `:focus-visible` after a pointer drag. It still takes focus, so
-    keyboard resizing keeps working, but no longer shows the focus ring.
-  - **Tags Input**: Fix an XSS vector in the hidden element that measures input width. It set the tag value with
-    `innerHTML`, so a value containing markup was parsed and could execute. It now uses `textContent`.
+- **DatePicker**
+  - Fix `translations` requiring every message.
+  - Fix the view trigger's `aria-label` naming the wrong view, and disable it when there's no further view.
+  - Fix dates inside a range announcing "Choose" instead of "In range".
+
+- **Overlays**: Fix <kbd>Escape</kbd> being ignored right after an overlay opens.
+
+- **FloatingPanel**
+  - Fix closing a panel leaving it on the stack.
+  - Fix stack order not applying to the positioner.
+
+- **Checkbox, RadioGroup, Switch**: Fix clicking a label adding `data-focus-visible` to the control.
+
+- **Drawer, NavigationMenu, Steps, Tour**: Fix trigger and close trigger buttons submitting an ancestor form.
+
+- **CascadeSelect, Combobox, Listbox, Menu, Select**: Fix keyboard navigation losing the highlighted item while the
+  pointer rests over scrollable content.
+
+- **ImageCropper**: Fix `fixedCropArea` disabling keyboard interaction on the selection. Arrow keys pan the image in
+  fixed mode.
+
+- **QrCode**: Fix `getDataUrl()` and the download trigger dropping the overlay.
+
+- **Splitter**: Fix the resize trigger matching `:focus-visible` after a pointer drag.
+
+- **TagsInput**: Fix an XSS vector in the hidden width-measuring element, which set the tag value with `innerHTML`.
 
 ## [5.23.0] - 2026-08-01
 
 ### Added
 
-- - **Number Input**: Add `largeStep` and `smallStep` props for configurable keyboard stepping. Hold `Shift` for
-    `largeStep` (defaults to `10 * step`), `Alt` for `smallStep` (defaults to `step / 10`). The defaults match the
-    previous behavior.
-    ```jsx
-    <NumberInput.Root largeStep={20} smallStep={0.5} />
-    ```
-  - **Slider**: Add `largeStep` prop, applied on `Shift` or `PageUp`/`PageDown` (defaults to `10 * step`). The default
-    matches the previous behavior.
+- **NumberInput**: Add `largeStep` (<kbd>Shift</kbd>, default `10 * step`) and `smallStep` (<kbd>Alt</kbd>, default
+  `step / 10`) props.
 
-- - **Autofocus Control**: Add `data-autofocus` and `data-no-autofocus` to decide what gets focus when an overlay opens.
-    Mark chrome like the close button with `data-no-autofocus` to skip it, or mark the real target with
-    `data-autofocus`.
-    ```jsx
-    <Dialog.Content>
-      <Dialog.CloseTrigger data-no-autofocus>Close</Dialog.CloseTrigger>
-      <input data-autofocus />
-      <button>Save</button>
-    </Dialog.Content>
-    ```
-    Focus goes to `initialFocusEl`, then `[data-autofocus]`, then the first tabbable element without
-    `[data-no-autofocus]`, then the content root.
-    > Supported in Dialog and Drawer.
-  - **Focus Trap**: Add `persistentElements` to treat portalled content as part of the trap when it isn't reachable via
-    `aria-controls`/`aria-expanded`. Pass getters so the elements can be resolved lazily.
-    ```jsx
-    <FocusTrap persistentElements={[() => document.getElementById('toast-region')]} />
-    ```
-  - **Image Cropper**: `getCropData()` now returns the exact `corners` and `outputSize` of the crop in natural-image
-    pixels, so you can hand the region straight to a server-side cropper.
-  - **Image Cropper**: Add `maxSize` to `getCroppedImage()` to cap the output dimensions. The crop keeps its aspect
-    ratio and scales down to fit.
-    ```jsx
-    const blob = await imageCropper.getCroppedImage({ maxSize: { width: 512, height: 512 } })
+  ```svelte
+  <NumberInput.Root largeStep={20} smallStep={0.5} />
+  ```
+
+- **Slider**: Add a `largeStep` prop for <kbd>Shift</kbd> and <kbd>PageUp</kbd>/<kbd>PageDown</kbd> (default
+  `10 * step`).
+
+- **Dialog / Drawer**: Add `data-autofocus` and `data-no-autofocus` to control which element receives focus on open.
+
+  ```svelte
+  <Dialog.Content>
+    <Dialog.CloseTrigger data-no-autofocus>Close</Dialog.CloseTrigger>
+    <input data-autofocus />
+  </Dialog.Content>
+  ```
+
+- **FocusTrap**: Add `persistentElements` to treat portalled content as part of the trap.
+
+- **ImageCropper**
+  - Return the exact `corners` and `outputSize` from `getCropData()` in natural-image pixels.
+  - Add `maxSize` to `getCroppedImage()` to cap the output dimensions.
+    ```ts
+    const blob = await imageCropper().getCroppedImage({ maxSize: { width: 512, height: 512 } })
     ```
 
 ### Fixed
 
-- Exposed the toast content generic on `createToaster` so `CreateToasterReturn<T>` can type custom toast data.
+- **General**
+  - Fix machine exit actions running when a component is disposed before the machine starts.
+  - Fix `defaultValue` being resolved before `value`.
 
-- Fixed PasswordInput, PinInput, and FileUpload to consume Field context, propagating `invalid`, `disabled`, `readOnly`,
-  `required`, and `ids` when wrapped in `Field.Root`.
+- **Field**
+  - Fix PasswordInput, PinInput and FileUpload ignoring `invalid`, `disabled`, `readOnly`, `required` and `ids` from
+    `Field.Root`.
+  - Fix `Field.Textarea` with `autoresize` dispatching a synthetic `input` event when `value` is set programmatically,
+    which broke controlled state.
 
-- - **Scroll Area**: Fixed `RootProvider` not merging `getRootProps()` onto the root element.
-  - **Password Input**: Fixed `RootProvider` spreading the machine `value` onto the root DOM element and rendering
-    children twice.
-  - **Json Tree View**: Fixed `RootProvider` not stripping `options` from `value` before forwarding to
-    `TreeView.RootProvider`, and rendering children twice.
+- **Toast**
+  - Expose the toast data generic on `createToaster` so `CreateToasterReturn<T>` can type custom data.
+  - Fix a height flicker when expanding the stack in overlap mode.
 
-- - **Date Input**
-    - Type dates using your locale's native numerals (Arabic-Indic `٠-٩`, Devanagari `०-९`), not just ASCII digits.
-    - Fix timezone-naive values (`CalendarDate`/`CalendarDateTime`) shifting by your local UTC offset when you pass a
-      custom `formatter` without a `timeZone`. A wall-clock value now round-trips unchanged.
-  - **Date Picker**
-    - Type dates using your locale's native numerals, not just ASCII digits.
-    - Reorder dates on blur in range selection, matching the other selection paths.
-    - Fix the day view briefly flashing when you close the picker from the month or year view.
-    - Fix `visibleRangeText` returning a stale value when multiple pickers share a visible range. This was also causing
-      SSR hydration mismatches.
-  - **Menu**: Fix the context menu flashing at the top-left before positioning. Long-press (touch) context menus no
-    longer open stuck at `(0,0)`.
-  - **Number Input**
-    - Fix `api.setValue` throwing when you pass a number and `formatOptions` is set.
-    - Fix `Cmd`/`Ctrl` + arrow keys producing values off the `step` grid.
-  - **Slider**: Fix `Cmd`/`Ctrl` + arrow keys producing values off the `step` grid.
-  - **Tags Input**: Fix native form submit so `FormData` reflects the current tags. The hidden input used to keep its
-    initial value after you added, removed, or cleared tags.
-  - **Toast**: Fix a height flicker when expanding the stack in overlap mode. Heights are now measured without the
-    `scale` transform.
+- **ScrollArea**: Fix `ScrollArea.RootProvider` not applying the root props.
 
-- - **Color Picker**: Fix the channel input committing a partial value when you press `Enter` to confirm an IME
-    composition.
-  - **Date Input**
-    - Fix segment text lagging behind while you type over an already committed date.
-    - Fix in-progress edits being dropped while focus catches up after auto-advance. Fast typing and
-      `ArrowUp`/`ArrowDown`/`Home`/`End` now land on the segment you're actually editing.
-  - **Date Picker**
-    - Fix disabled and read-only pickers still reacting to cell clicks, the clear trigger, and presets. Read-only
-      pickers keep roving-focus navigation; disabled pickers drop out of the tab order.
-    - Fix `minView`, `maxView`, and `defaultView` being ignored when resolving the initial view, which was hardcoded to
-      day through year.
-    - Fix `defaultOpen` winning over `open`, so a controlled picker could open against its own prop.
-    - Fix `maxSelectedDates` not being enforced on month and year cells in `multiple` selection mode.
-    - Fix keyboard range selection drifting from pointer behavior. Picking a third date restarts the range, and the
-      hover preview updates for `Enter`, `Home`, `End`, and `PageUp`/`PageDown`.
-    - Fix reopening the calendar with only a start date restarting the range instead of resuming it.
-  - **Drawer**: Fix the backdrop flickering on a controlled close when the `open` setter is async.
-  - **Field**: Fix `Field.Textarea` with `autoresize` dispatching a synthetic `input` event when you set `value`
-    programmatically, which fed the value back into your framework and broke controlled state.
-  - **Focus Return**: Fix three focus-trap issues you'd hit with overlays.
-    - Closing an overlay no longer steals focus back from an element your app focused in the meantime, like a second
-      dialog opened right after closing the first.
-    - Closing a nested overlay, such as a popover inside a dialog, no longer throws when the outer container has no
-      connected focusable element at that moment.
-    - The focus ring now shows on the returned-to element after you close with `Escape`.
-    > Affects Dialog, Drawer, Popover, and anything else that traps focus.
-  - **Image Cropper**: Fix `getCroppedImage()` and `getCropData()` returning a different region from the one you see
-    after rotating or flipping the image.
-  - **Marquee**: Fix scroll speed depending on content width. The duration now comes from the content size and the
-    actual translation distance, so `speed` matches real pixel speed even when the content is narrower than the
-    viewport.
-  - **Popover**: Fix tabbing out of portalled content looping back into the content when the trigger was the last
-    tabbable element on the page. Focus now moves to the next tabbable element after the trigger.
-  - **Scroll Lock**: Fix the scroll lock targeting `<body>` on layouts where `<html>` is the real scroll container,
-    which meant nothing was locked while an overlay was open.
-  - **Signature Pad**: Fix controlled `paths` drifting out of sync because the in-progress stroke was appended to
-    `paths`. It now stays in `onDraw.currentPath` until the stroke ends.
-  - **Splitter**
-    - Fix collapsed panels sizing to `minSize` instead of `collapsedSize`.
-    - Fix keyboard resizing breaking when a resize trigger got focus while hovered.
-  - **Tour**
-    - Fix dismissing a tour from a step's `effect` skipping cleanup, which could miss firing the `completed` status.
-    - Fix a tooltip step's position resetting unexpectedly when the tour closed.
-    - Fix a step action with `action: "skip"` doing nothing when clicked.
-  - **Solid**: Fix a `value` of `null` being read as uncontrolled, so controlled components fell back to internal state.
-  - **Solid, Svelte**: Fix machine exit actions running when a component was disposed before the machine started.
-  - **Vue, Svelte**: Fix `defaultValue` being resolved before `value`, unlike React and Solid.
+- **PasswordInput**: Fix `PasswordInput.RootProvider` spreading `value` onto the root element and rendering children
+  twice.
+
+- **JsonTreeView**: Fix `JsonTreeView.RootProvider` forwarding `options` to the tree view and rendering children twice.
+
+- **DateInput**
+  - Support typing dates with locale-native numerals such as Arabic-Indic and Devanagari.
+  - Fix timezone-naive values shifting by the local UTC offset with a custom `formatter` and no `timeZone`.
+  - Fix segment text lagging while typing over a committed date.
+  - Fix in-progress edits being dropped after auto-advance during fast typing or arrow, Home and End keys.
+
+- **DatePicker**
+  - Support typing dates with locale-native numerals.
+  - Reorder range dates on blur, matching the other selection paths.
+  - Fix the day view flashing when closing from the month or year view.
+  - Fix `visibleRangeText` returning a stale value when pickers share a visible range, which caused SSR hydration
+    mismatches.
+  - Fix disabled and read-only pickers reacting to cell clicks, the clear trigger and presets.
+  - Fix `minView`, `maxView` and `defaultView` being ignored when resolving the initial view.
+  - Fix `defaultOpen` taking precedence over `open`.
+  - Fix `maxSelectedDates` not being enforced on month and year cells in `multiple` mode.
+  - Fix keyboard range selection differing from pointer selection.
+  - Fix reopening the calendar with only a start date restarting the range instead of resuming it.
+
+- **Menu**: Fix the context menu flashing at the top-left before positioning, including long-press menus on touch.
+
+- **NumberInput**
+  - Fix `api.setValue` throwing when passed a number with `formatOptions` set.
+  - Fix <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + arrow keys producing values off the `step` grid.
+
+- **Slider**: Fix <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + arrow keys producing values off the `step` grid.
+
+- **TagsInput**: Fix `FormData` not reflecting the current tags on native form submit.
+
+- **ColorPicker**: Fix the channel input committing a partial value when pressing <kbd>Enter</kbd> to confirm an IME
+  composition.
+
+- **Drawer**: Fix the backdrop flickering on a controlled close when the `open` setter is async.
+
+- **Overlays**
+  - Fix closing an overlay stealing focus back from an element the app focused in the meantime.
+  - Fix closing a nested overlay throwing when the outer container has no connected focusable element.
+  - Fix the focus ring not showing on the returned-to element after closing with <kbd>Escape</kbd>.
+  - Fix scroll lock targeting `<body>` when `<html>` is the scroll container.
+
+- **ImageCropper**: Fix `getCroppedImage()` and `getCropData()` returning the wrong region after rotating or flipping.
+
+- **Marquee**: Fix scroll speed depending on content width.
+
+- **Popover**: Fix tabbing out of portalled content looping back in when the trigger is the last tabbable element.
+
+- **SignaturePad**: Fix controlled `paths` drifting out of sync. The in-progress stroke now stays in
+  `onDraw.currentPath` until the stroke ends instead of being appended to `paths`.
+
+- **Splitter**
+  - Fix collapsed panels sizing to `minSize` instead of `collapsedSize`.
+  - Fix keyboard resizing breaking when a resize trigger got focus while hovered.
+
+- **Tour**
+  - Fix dismissing a tour from a step's `effect` skipping cleanup and the `completed` status.
+  - Fix a tooltip step's position resetting when the tour closes.
+  - Fix a step action with `action: "skip"` doing nothing.
 
 ## [5.22.1] - 2026-06-06
 
 ### Fixed
 
-- Fix missing presence properties (e.g. `onExitComplete`) on `Drawer.RootProvider` and `Dialog.RootProvider` type
-  declarations.
+- **Dialog / Drawer**: Fix presence props such as `onExitComplete` missing from the `RootProvider` type declarations.
 
-- - **Date Input**: Fix segment placeholders for locales with explicit script subtags.
-  - **Drawer**: Fix flickering when a controlled drawer is swiped or backdrop-closed while the `open` setter is async
-    (e.g. the History API or a delayed state update).
-  - **Image Cropper**: Fix `getCroppedImage` and `getCropData` returning the wrong region when the image is shown at a
-    size different from its natural resolution (e.g. `width` / `height` of `100%`).
-  - **Pin Input**: Fix `data-filled` being set on every input on first render.
-  - **Signature Pad**: Fix the `dir` prop being accepted but never forwarded to the DOM.
+- **DateInput**: Fix segment placeholders for locales with explicit script subtags.
+
+- **Drawer**: Fix flickering when a controlled drawer is swiped or backdrop-closed while the `open` setter is async.
+
+- **ImageCropper**: Fix `getCroppedImage` and `getCropData` returning the wrong region when the image is displayed at a
+  size different from its natural resolution.
+
+- **PinInput**: Fix `data-filled` being set on every input on first render.
+
+- **SignaturePad**: Fix the `dir` prop not being forwarded to the DOM.
 
 ## [5.22.0] - 2026-05-26
 
@@ -771,6 +785,7 @@
   - Handle rapid mixed interactions (drag, wheel, buttons, indicators) more consistently
   - Keep page state valid when `slidesPerPage`, `slidesPerMove`, direction, or orientation change
   - Make `slidesPerMove` progression more predictable
+
 - **Combobox, Listbox, Select**: Improved controlled-mode synchronization and callback/item resolution behavior across
   filtered collections
 
@@ -789,6 +804,7 @@
 ### Fixed
 
 - **Build**: Fixed CJS build issues in downstream Zag.js packages
+
 - **Download Trigger**: Fixed window resolution to use environment context in custom environments (for example, iframes)
 
 ## [5.18.0] - 2026-02-26
@@ -822,20 +838,27 @@
 ### Fixed
 
 - **Combobox**: Fixed `onValueChange` returning empty `items` array when using controlled value
+
 - **Popover**: Fixed nested popover z-index layering
+
 - **Toast**: Fixed types to ensure `parent`/`index` are exposed as props and `expand`/`collapse` are exposed on the
   store
+
 - **Radio Group, Listbox, Progress, Segment Group**: Fixed group labels rendering orphan label elements; now render as
   `span` per W3C ARIA pattern
 
 ### Added
 
 - **Locale**: Added `useDateFormatter` hook for localized date formatting using `@internationalized/date`
+
 - **Swap**: Added new `Swap` component for toggling between two visual states with CSS animations using dual presence
   instances
+
 - **Checkbox**: Added `maxSelectedValues` prop to `CheckboxGroup` to limit the number of selected values
+
 - **Drawer**: Replaced `BottomSheet` with new `Drawer` component supporting multi-directional swipe via `swipeDirection`
   prop (`up`, `down`, `left`, `right`), a new `Positioner` part, and `snapToSequentialPoints` option
+
 - **Date Picker**:
   - Added `focus` option to `api.clearValue({ focus?: boolean })`
   - Added `api.setTime(time, index?)` for date-time picker support
@@ -843,7 +866,9 @@
   - Added `api.isMaxSelected` to check if maximum number of dates has been selected
   - Added `openOnClick` prop to open the calendar when clicking the input field
   - Added `showWeekNumbers` support to display ISO 8601 week number column in the day view
+
 - **Popover**: Added `sizeMiddleware` positioning option to optionally disable the size middleware
+
 - **Select**: Added `autoComplete` prop for browser autofill hints
 
 ### Fixed
@@ -852,15 +877,22 @@
   - Fixed `aria-selected` being set on highlighted items instead of selected items
   - Fixed `selectedItems` getting out of sync with `value` in controlled mode
   - Fixed item disabled state not accounting for root-level `disabled` prop
+
 - **Date Picker**:
   - Fixed `api.selectToday()` sending incorrect value format
   - Preserve time/timezone when selecting new dates (`CalendarDateTime` and `ZonedDateTime`)
   - Improved focus management in trigger-only mode
+
 - **Dialog**: Fixed non-modal dialog closing on outside click when `modal` is `false`
+
 - **Listbox**: Fixed DOM IDs
+
 - **Number Input**: Fixed `invalid` prop being ignored when value is out of range
+
 - **Popover**: Improved performance by reducing style recalculations when scrolling
+
 - **Select**: Fixed autofill not updating value when hidden select value changes
+
 - **Svelte**: Fixed `state_unsafe_mutation` warning during component teardown
 
 ## [5.16.0] - 2026-02-04
@@ -869,29 +901,49 @@
 
 - **Date Picker**: Added `ValueText` component for displaying selected date value(s) with placeholder support and
   snippet for custom formatting
+
 - **Scroll Area**: Added overflow CSS variables (`--scroll-area-overflow-{x,y}-{start,end}`) for scroll fade effects
+
 - **Slider**: Added `thumbCollisionBehavior` prop (`none`, `push`, `swap`)
+
 - **Steps**: Added `isStepValid`, `isStepSkippable`, and `onStepInvalid` for validation support
+
 - **Tags Input**: Added `placeholder` prop (shown only when no tags exist)
+
 - **Tooltip**: Added `data-instant` attribute for instant animations
 
 ### Fixed
 
 - **Auto Resize**: Fixed change event not emitted after clearing controlled textarea
+
 - **Date Picker**: Fixed `visibleRangeText` to show correct format based on current view (year/month/day)
+
 - **Dismissable**: Fixed issue where closing a nested dialog/popover would incorrectly close its parent layers
+
 - **Menu**: Fixed glitchy submenu behavior when hovering between trigger items quickly
+
 - **Checkbox**: Fixed individual checkbox props being overridden by `CheckboxGroup`
+
 - **Factory**: Fixed textarea hydration marker issue
+
 - **Collection, Tree View**: Fixed initial focus when first node/branch is disabled
+
 - **Color Picker**: Fixed color not updating when selecting black shades in controlled mode
+
 - **Floating Panel**: Fixed double-click on minimized title bar incorrectly maximizing
+
 - **Image Cropper**: Fixed `reset()` destroying cropper, prop changes not updating instantly, and panning bounds
+
 - **Number Input**: Fixed cursor positioning after clicking label or scrubbing
+
 - **Pagination**: Fixed next trigger not disabled when `count` is `0`
+
 - **Slider**: Fixed thumb drag from edge in `thumbAlignment="contain"` mode
+
 - **Switch**: Fixed `api.toggleChecked()` not working
+
 - **Toast**: Fixed toasts created before state machine connects not showing
+
 - **Tour**: Fixed janky scroll between steps
 
 ## [5.15.0] - 2025-12-10
@@ -899,34 +951,47 @@
 ### Added
 
 - **Date Picker**: Added `required` and `invalid` props
+
 - **Number Input**: Added `onValueCommit` callback that fires when the input loses focus or Enter is pressed
+
 - **Pagination**:
   - Added `FirstTrigger` and `LastTrigger` components for navigating to first/last page
   - Added `boundaryCount` parameter for controlling boundary pages (start/end)
   - Implemented balanced pagination algorithm for consistent UI with max 7 elements
+
 - **Radio Group**: Added `invalid` and `required` props with corresponding `data-*` and `aria-*` attributes
+
 - **Tree View**: Added `scrollToIndexFn` prop to enable keyboard navigation in virtualized trees
 
 ### Fixed
 
 - **Accordion, Menu**: Fixed issue where querying elements by `aria-controls` attribute could fail when lazy mounting
   the content
+
 - **Color Picker**: Added `role="dialog"` to content and `aria-haspopup="dialog"` to trigger when not inline for better
   accessibility
+
 - **Date Picker**: Fixed issue where date picker input does not update format when locale changes
+
 - **Floating Panel**:
   - Fixed `dir` prop now properly delegated to all panel parts
   - Fixed double-click behavior improvements and to check `event.defaultPrevented` for custom behavior
+
 - **Listbox**:
   - Fixed issue where `data-highlighted` wasn't applied to the first item when using `autoHighlight` with input
     filtering
+
 - **Number Input**:
   - Fixed issue where input element doesn't sync when `formatOptions` changes dynamically
   - Ensured cursor position is preserved when `Enter` key is pressed and formatting is triggered
   - Fixed cursor jumping to start when value is changed externally via props while user is typing
+
 - **Pagination**: Fixed ellipsis showing when only 1 page gap
+
 - **Rating Group**: Fixed issue where rating group becomes unfocusable via keyboard when value is 0
+
 - **Tooltip**: Fixed tooltip not showing when scrolling with pointer over trigger
+
 - **Collapsible, Presence, Tour**: Fixed machines setting reactive state in unmount lifecycle
 
 ### Changed
@@ -940,6 +1005,7 @@
 - **Floating Panel**:
   - Fixed resize trigger issue with `n` axis by explicitly setting `top: 0`
   - Fixed `draggable` and `resizable` options not being respected when set to `false`
+
 - **Presence**: Fixed regression where UNMOUNT transition might not be called consistently
 
 ## [5.14.0] - 2025-11-20
@@ -948,10 +1014,13 @@
 
 - **Carousel, Color Picker, Combobox, Date Picker, Select**: Added `value` to `OpenChangeDetails` for better context
   when handling open state changes
+
 - **Carousel**: Added support for `autoSize` prop to allow variable width/height slide items
+
 - **Splitter**:
   - Added `Splitter.ResizeTriggerIndicator` to render an indicator when resizing
   - Exported `getLayout` and `getSplitterLayout` functions for calculating splitter panel layouts
+
 - **Toast**: Exposed viewport offset as CSS variables on the toast group element
 
 ### Fixed
@@ -959,17 +1028,25 @@
 - **Carousel**:
   - Fixed dragging behavior that stops working after switching browser tabs or scrolling the page
   - Fixed dragging not working after scrolling with mouse wheel when `allowMouseDrag` is enabled
+
 - **Combobox**: Fixed `onHighlightChange` not being invoked when collection is filtered to empty
+
 - **Date Picker**: Fixed issue where the range date picker crashes when typing the end date first and blurring the input
   field multiple times
+
 - **File Upload**: Fixed issue where clicking on non-interactive children inside the dropzone doesn't open the file
   picker
+
 - **Presence**: Fixed a bug where elements get stuck in unmountSuspended state during rapid state updates
+
 - **Radio Group**:
   - Fixed inconsistent application of `data-focus-visible` and `data-focus` attributes
+
 - **Splitter**: Fixed disabled splitter showing resize cursor and allowing dragging
+
 - **Tabs**:
   - Fixed tabs indicator position not updating when inactive tabs change size
+
 - **Tags Input**: Fixed issue where item delete trigger doesn't have `data-*` attached
 
 ## [5.13.0] - 2025-11-14
@@ -978,9 +1055,11 @@
 
 - **General**: Exported `InteractOutsideEvent`, `FocusOutsideEvent`, and `PointerDownOutsideEvent` types for better type
   safety
+
 - **Carousel**:
   - Added `Carousel.AutoplayIndicator` component for conditionally rendering content based on autoplay state
   - Added `Carousel.ProgressText` component for displaying current page progress (e.g., "1 / 5")
+
 - **Toast**: Exported `ToastOptions` and `ToastStoreProps` types for better type safety
 
 ### Changed
@@ -993,6 +1072,7 @@
 - **Slider**:
   - Fixed `Slider.ValueText` not displaying default value when no children provided
   - Fixed `SliderThumbPropsProvider` to use modern Svelte 5 runes (`$props()` and `{@render children?.()}`)
+
 - **Combobox**:
   - Fixed focus stealing in controlled open mode
   - Removed problematic `aria-hidden` behavior to allow interaction with other page elements
@@ -1002,8 +1082,11 @@
 ### Fixed
 
 - **Dialog, Popover**: Improved shadow DOM support for interact outside and focus trap detection
+
 - **Marquee**: Fixed Firefox flicker and added GPU acceleration
+
 - **Dialog**: Fixed layout shift issue when using `scrollbar-gutter: stable` in CSS
+
 - **Slider**: Fixed `onValueChangeEnd` callback not triggering for programmatic value changes
 
 ## [5.12.0] - 2025-11-01
@@ -1159,6 +1242,7 @@ const service = useMachine(pagination.machine, {
 ### Added
 
 - Added `mergeProps` utility for combining multiple props objects with proper event handler and className merging.
+
 - Added `createContext` utility for creating typed React contexts with improved DX.
 
 ```tsx
@@ -1228,6 +1312,7 @@ import { createContext } from '@ark-ui/solid/utils'
 ### Added
 
 - **Field**: Add `data-required` attribute to `Field.Label`
+
 - **Select, Combobox, Listbox, TreeView**: Export `RootComponent` and `RootProviderComponent` types which are useful
   when building compositions that wrap the `Root` and `RootProvider` components and you still want type-safety for the
   collection.
@@ -1278,6 +1363,7 @@ import { createContext } from '@ark-ui/solid/utils'
 
 - **Functions**: Add `useAsyncList` and `useCollator` functions for managing asynchronous list operations and
   locale-aware string comparison
+
 - **Toast**: Export type definitions `ToastActionOptions`, `ToastPlacement`, `ToastPromiseOptions`, `ToastStatus`,
   `ToastStatusChangeDetails`, and `ToastType`
 
@@ -1482,13 +1568,17 @@ import { createContext } from '@ark-ui/solid/utils'
 ### Added
 
 - **Angle Slider [New]**: Add support for angle slider component for angle selection.
+
 - **Color Picker**: Add support for `inline` prop to render color picker inline
+
 - **Date Picker**: Add support for `inline` prop to render the date calendar inline
 
 ### Fixed
 
 - **Color Picker**: Auto-prefix Hex values with `#` if missing when using the `hex` channel input
+
 - **Menu**: Fix interaction outside detection for focusable context trigger
+
 - **Tree View**: Improve support for rendering tree items as links
 
 ## [5.0.5] - 2025-06-28
@@ -1555,6 +1645,7 @@ import { createContext } from '@ark-ui/solid/utils'
 ### Fixed
 
 - **Accordion**: Fix issue where `Accordion.ItemContext` doesn't work
+
 - **Listbox**: Fix issue where `Listbox.ItemContext` was not exported
 
 ## [5.0.0] - 2025-06-23
@@ -1580,6 +1671,7 @@ import { createContext } from '@ark-ui/solid/utils'
 ## [0.3.0] - 2025-01-08
 
 - Added `Format` component.
+
 - Added `Progress` component.
 
 ## [0.2.0] - 2024-12-12
@@ -1587,10 +1679,15 @@ import { createContext } from '@ark-ui/solid/utils'
 ## Added
 
 - Added `Ark` factory component for `asChild` prop.
+
 - Added `Environment` component.
+
 - Added `Collection` helpers.
+
 - Added `Timer` component.
+
 - Added `Highlight` component.
+
 - Added `QrCode` component.
 
 ## [0.1.0] - 2024-11-27

@@ -6,3 +6,29 @@ documentation for it [in the main repo](https://github.com/changesets/changesets
 
 We have a quick list of common questions to get you started engaging with this project in
 [our documentation](https://github.com/changesets/changesets/blob/main/docs/common-questions.md)
+
+## Writing a changeset
+
+Skip changesets for internal changes consumers can't observe: refactors, tooling, tests, docs, stories.
+
+Each line becomes one changelog entry. Keep it to one line where you can.
+
+- Start with an imperative verb: `Fix`, `Add`, `Remove`, `Export`.
+- Prefix with the component in PascalCase: `**DatePicker**: Fix ...`.
+- Say what changed for the consumer, not how the bug happened.
+- Add a second sentence only when consumers need to change their code.
+- Add a short code block (2-6 lines) for a new API worth showing or a migration (`diff`). Skip it for plain bug fixes.
+- List several changes as `- ` items. Each item becomes its own entry, separated by a blank line.
+- Group several changes to one component under its name as a sub-list.
+- List only the packages a change affects. A Vue-only fix goes in a changeset for `@ark-ui/vue` alone.
+
+```md
+---
+'@ark-ui/react': patch
+---
+
+- **Toast**: Fix `Toast.Root` ignoring `asChild`.
+- **Toc**
+  - Fix `Root` and `Nav` rendering with the same `id`.
+  - Render `Toc.Nav` with `data-part="nav"`. Update styles that target it through `[data-part="root"]`.
+```

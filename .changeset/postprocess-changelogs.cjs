@@ -19,6 +19,7 @@ function formatChangelog(content) {
   return content
     .replace(SEMVER_HEADING_RE, (_, version) => `## [${version}] - ${date}\n`)
     .replace(CHANGESET_SECTION_HEADING_RE, (_, type) => `### ${SECTION_MAP[`${type} Changes`]}\n`)
+    .replace(/\n{3,}/g, '\n\n')
 }
 
 const packages = fs.readdirSync(PACKAGES_DIR).filter((dir) => {
