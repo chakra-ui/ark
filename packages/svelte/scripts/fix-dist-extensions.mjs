@@ -2,35 +2,69 @@ import { readdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-// svelte-package does not rewrite import specifiers, so .ts / .svelte.ts
-// extensions added in source leak into dist. Map them to emitted files:
-//   ./x.ts        -> ./x.js
-//   ./x.svelte.ts -> ./x.svelte.js
-//   ./x.svelte    -> unchanged (component shipped as-is)
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const distRoot = path.resolve(__dirname, '../dist')
+// svelte-package copies import specifiers verbatim, but node16 / nodenext need
+// fully specified relative imports. Rewrite each one to the file it resolves to:
+//   ./x.ts, ./x.svelte.ts -> ./x.js, ./x.svelte.js
+//   ./x                   -> ./x.js or ./x/index.js
+//   ./x.svelte            -> unchanged in .js / .svelte (the consumer compiles it),
+//                            ./x.svelte.js in .d.ts so it maps to x.svelte.d.ts
+//                            instead of Svelte's ambient `*.svelte` module
+const distRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../dist')
 
-const RE = /(\bfrom\s*['"]|\bimport\s*\(\s*['"]|\bimport\s*['"])(\.\.?\/[^'"]*?)(\.svelte)?\.tsx?(['"])/g
+const SPECIFIER_RE = /(\bfrom\s*|\bimport\s*\(\s*|\bimport\s*)(['"])(\.{1,2}\/[^'"]*)\2/g
+const REWRITE_RE = /\.(js|svelte|d\.ts)$/
+const ASSET_RE = /\.(json|css)$/
 
-const walk = async (dir) => {
-  const entries = await readdir(dir, { withFileTypes: true })
-  const out = []
-  for (const e of entries) {
-    const full = path.join(dir, e.name)
-    if (e.isDirectory()) out.push(...(await walk(full)))
-    else if (/\.(js|svelte|d\.ts)$/.test(e.name)) out.push(full)
+const files = new Set(
+  (await readdir(distRoot, { recursive: true, withFileTypes: true }))
+    .filter((entry) => entry.isFile())
+    .map((entry) => path.join(entry.parentPath, entry.name)),
+)
+
+const hasModule = (base) => files.has(`${base}.js`) || files.has(`${base}.d.ts`)
+
+const resolveSpecifier = (file, spec) => {
+  const base = path.resolve(path.dirname(file), spec)
+
+  if (spec.endsWith('.svelte')) {
+    if (!files.has(base)) return null
+    return file.endsWith('.d.ts') ? `${spec}.js` : spec
   }
-  return out
+  if (ASSET_RE.test(spec)) return files.has(base) ? spec : null
+
+  const stem = spec.replace(/\.(js|tsx?)$/, '')
+  const stemBase = path.resolve(path.dirname(file), stem)
+  if (hasModule(stemBase)) return `${stem}.js`
+  if (stem === spec && hasModule(path.join(stemBase, 'index'))) return `${stem.replace(/\/$/, '')}/index.js`
+  return null
 }
 
-const files = await walk(distRoot)
+const unresolved = []
 let changed = 0
-for (const file of files) {
-  const code = await readFile(file, 'utf8')
-  const next = code.replace(RE, (_m, pre, spec, svelte, post) => `${pre}${spec}${svelte ?? ''}.js${post}`)
-  if (next !== code) {
-    await writeFile(file, next)
-    changed++
-  }
+
+await Promise.all(
+  [...files]
+    .filter((file) => REWRITE_RE.test(file))
+    .map(async (file) => {
+      const code = await readFile(file, 'utf8')
+      const next = code.replace(SPECIFIER_RE, (match, prefix, quote, spec) => {
+        const resolved = resolveSpecifier(file, spec)
+        if (resolved === null) {
+          unresolved.push(`${path.relative(distRoot, file)}: ${spec}`)
+          return match
+        }
+        return `${prefix}${quote}${resolved}${quote}`
+      })
+      if (next !== code) {
+        await writeFile(file, next)
+        changed++
+      }
+    }),
+)
+
+console.log(`fix-dist-extensions: rewrote ${changed} of ${files.size} files`)
+
+if (unresolved.length > 0) {
+  console.error(`fix-dist-extensions: ${unresolved.length} unresolved relative imports:\n  ${unresolved.join('\n  ')}`)
+  process.exitCode = 1
 }
-console.log(`fix-dist-extensions: rewrote ${changed}/${files.length} files`)
