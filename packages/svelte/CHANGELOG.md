@@ -1,5 +1,11 @@
 # @ark-ui/svelte
 
+## [5.25.1] - 2026-11-02
+
+### Fixed
+
+- - Fixed `dist` shipping unresolved `$lib/` imports, which broke every consumer build in 5.25.0.
+
 ## [5.25.0] - 2026-10-29
 
 ### Added
