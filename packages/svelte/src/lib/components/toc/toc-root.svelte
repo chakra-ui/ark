@@ -1,7 +1,7 @@
 <script module lang="ts">
   import type { Optional } from '$lib/types'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '../../types'
-  import type { UseTocProps } from './use-toc.svelte'
+  import type { UseTocProps } from './use-toc.svelte.ts'
 
   export interface TocRootBaseProps extends Optional<UseTocProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface TocRootProps extends Assign<HTMLProps<'div'>, TocRootBaseProps> {}
@@ -12,7 +12,7 @@
   import { createSplitProps } from '../../utils/create-split-props'
   import { Ark } from '../factory'
   import { TocProvider } from './use-toc-context'
-  import { useToc } from './use-toc.svelte'
+  import { useToc } from './use-toc.svelte.ts'
 
   let { ref = $bindable(null), activeIds = $bindable<string[]>(), ...props }: TocRootProps = $props()
   const providedId = $props.id()

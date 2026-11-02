@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '../../types'
-  import type { UseTocReturn } from './use-toc.svelte'
+  import type { UseTocReturn } from './use-toc.svelte.ts'
 
   export interface TocRootProviderBaseProps extends PolymorphicProps<'div'>, RefAttribute {
     value: UseTocReturn
