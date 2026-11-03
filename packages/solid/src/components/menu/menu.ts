@@ -41,6 +41,11 @@ export {
   type MenuIndicatorProps as IndicatorProps,
 } from './menu-indicator.tsx'
 export {
+  MenuInput as Input,
+  type MenuInputBaseProps as InputBaseProps,
+  type MenuInputProps as InputProps,
+} from './menu-input.tsx'
+export {
   MenuItem as Item,
   type MenuItemBaseProps as ItemBaseProps,
   type MenuItemProps as ItemProps,
@@ -67,6 +72,11 @@ export {
   type MenuItemTextBaseProps as ItemTextBaseProps,
   type MenuItemTextProps as ItemTextProps,
 } from './menu-item-text.tsx'
+export {
+  MenuList as List,
+  type MenuListBaseProps as ListBaseProps,
+  type MenuListProps as ListProps,
+} from './menu-list.tsx'
 export {
   MenuPositioner as Positioner,
   type MenuPositionerBaseProps as PositionerBaseProps,

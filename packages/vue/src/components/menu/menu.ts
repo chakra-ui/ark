@@ -63,11 +63,21 @@ export {
   type MenuItemTextBaseProps as ItemTextBaseProps,
 } from './menu-item-text.vue'
 export {
+  default as Input,
+  type MenuInputProps as InputProps,
+  type MenuInputBaseProps as InputBaseProps,
+} from './menu-input.vue'
+export {
   default as Item,
   type MenuItemProps as ItemProps,
   type MenuItemBaseProps as ItemBaseProps,
   type MenuItemState as ItemState,
 } from './menu-item.vue'
+export {
+  default as List,
+  type MenuListProps as ListProps,
+  type MenuListBaseProps as ListBaseProps,
+} from './menu-list.vue'
 export {
   default as Positioner,
   type MenuPositionerProps as PositionerProps,
