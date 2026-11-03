@@ -78,10 +78,13 @@ select element to change the page size.
 
 ### Links
 
-Create pagination with link navigation for better SEO and accessibility. This example shows how to use the pagination
-component with anchor links instead of buttons.
+Set `type="link"` and supply `getPageUrl` to paginate with real navigation, which crawlers can follow and users can open
+in a new tab. The items and the triggers render as anchors carrying the generated `href`, so no other change is needed:
 
 <Example id="link" />
+
+To render a router's link component instead, pass it through `asChild` on the items and the triggers. See the
+[Composition guide](/docs/guides/composition) for details.
 
 ## API Reference
 

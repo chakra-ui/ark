@@ -17,18 +17,25 @@ export interface FileUploadTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory.ts'
 import { useFileUploadContext } from './use-file-upload-context.ts'
+import { useFieldContext } from '../field/index.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<FileUploadTriggerProps>()
 
 defineSlots<PolymorphicSlots<FileUploadTriggerState>>()
 const fileUpload = useFileUploadContext()
+const field = useFieldContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="fileUpload.getTriggerProps()" :state="fileUpload.getTriggerState()" :as-child="asChild">
+  <ark.button
+    :aria-describedby="field?.ariaDescribedby"
+    v-bind="fileUpload.getTriggerProps()"
+    :state="fileUpload.getTriggerState()"
+    :as-child="asChild"
+  >
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

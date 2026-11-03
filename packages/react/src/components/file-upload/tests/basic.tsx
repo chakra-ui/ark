@@ -39,6 +39,7 @@ export const FileUploadWithField = (props: Field.RootProps) => (
   <Field.Root {...props}>
     <FileUpload.Root maxFiles={5}>
       <FileUpload.Label>Label</FileUpload.Label>
+      <FileUpload.Dropzone>Drag your files here</FileUpload.Dropzone>
       <FileUpload.Trigger>Select</FileUpload.Trigger>
       <FileUpload.ItemGroup />
       <FileUpload.HiddenInput data-testid="input" />

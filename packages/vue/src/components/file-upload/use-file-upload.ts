@@ -33,6 +33,7 @@ export const useFileUpload = (
       disabled: field?.value.disabled,
       invalid: field?.value.invalid,
       locale: locale.value.locale,
+      readOnly: field?.value.readOnly,
       required: field?.value.required,
       getRootNode: env?.value.getRootNode,
       ...cleanProps(localeProps),

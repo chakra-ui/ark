@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { Field } from '@ark-ui/vue/field'
+import { Field, type FieldRootProps } from '@ark-ui/vue/field'
+
+defineProps<{ ids?: FieldRootProps['ids'] }>()
 </script>
 
 <template>
-  <Field.Root target="amount">
+  <Field.Root target="amount" :ids="ids">
     <Field.Label>Amount</Field.Label>
     <Field.Item value="currency">
       <Field.Select>

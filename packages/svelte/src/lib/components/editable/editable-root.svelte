@@ -13,7 +13,12 @@
   import { EditableProvider } from './use-editable-context.ts'
   import { useEditable } from './use-editable.svelte.ts'
 
-  let { ref = $bindable(null), value = $bindable(), ...props }: EditableRootProps = $props()
+  let {
+    ref = $bindable(null),
+    value = $bindable(),
+    edit = $bindable<boolean>(),
+    ...props
+  }: EditableRootProps = $props()
 
   const providedId = $props.id()
 
@@ -24,9 +29,14 @@
       ...useEditableProps,
       id: useEditableProps.id ?? providedId,
       value,
+      edit,
       onValueChange(details) {
         useEditableProps.onValueChange?.(details)
         if (value !== undefined) value = details.value
+      },
+      onEditChange(details) {
+        useEditableProps.onEditChange?.(details)
+        if (edit !== undefined) edit = details.edit
       },
     }
   })

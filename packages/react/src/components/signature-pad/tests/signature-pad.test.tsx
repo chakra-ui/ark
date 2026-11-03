@@ -48,4 +48,9 @@ describe('Signature Pad / Field', () => {
     render(<SignaturePadWithField />)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
+
+  it('should describe the control with the helper and error text', async () => {
+    render(<SignaturePadWithField invalid />)
+    expect(screen.getByRole('application')).toHaveAccessibleDescription('Error Info Additional Info')
+  })
 })

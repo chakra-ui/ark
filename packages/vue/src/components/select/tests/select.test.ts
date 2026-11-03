@@ -140,4 +140,9 @@ describe('Select / Field', () => {
     render(SelectWithField)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
+
+  it('should describe the trigger with the helper and error text', async () => {
+    render(SelectWithField, { props: { invalid: true } })
+    expect(await screen.findByRole('combobox')).toHaveAccessibleDescription('Error Info Additional Info')
+  })
 })

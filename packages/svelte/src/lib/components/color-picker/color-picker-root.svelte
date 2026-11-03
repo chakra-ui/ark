@@ -15,7 +15,7 @@
 </script>
 
 <script lang="ts">
-  import type { Color } from '@zag-js/color-utils'
+  import type { Color, ColorFormat } from '@zag-js/color-utils'
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory/index.ts'
   import { PresenceProvider, splitPresenceProps, usePresence } from '../presence/index.ts'
@@ -27,6 +27,7 @@
     ref = $bindable(null),
     value = $bindable<Color>(),
     open = $bindable<boolean>(),
+    format = $bindable<ColorFormat>(),
     ...props
   }: ColorPickerRootProps = $props()
   const providedId = $props.id()
@@ -39,6 +40,7 @@
     id: useColorPickerProps.id ?? providedId,
     value,
     open,
+    format,
     onValueChange(details) {
       useColorPickerProps.onValueChange?.(details)
       if (value !== undefined) value = details.value
@@ -46,6 +48,10 @@
     onOpenChange(details) {
       useColorPickerProps.onOpenChange?.(details)
       if (open !== undefined) open = details.open
+    },
+    onFormatChange(details) {
+      useColorPickerProps.onFormatChange?.(details)
+      if (format !== undefined) format = details.format
     },
   })
 

@@ -138,4 +138,9 @@ describe('PinInput / Field', () => {
     await act(async () => render(<PinInputWithField />))
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
+
+  it('should describe the input group with the helper and error text', async () => {
+    render(<PinInputWithField invalid />)
+    expect(screen.getByRole('group', { name: 'Label' })).toHaveAccessibleDescription('Error Info Additional Info')
+  })
 })

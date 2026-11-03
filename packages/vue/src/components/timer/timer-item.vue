@@ -30,7 +30,7 @@ useForwardExpose()
       <slot name="render" v-bind="scope" />
     </template>
     <template v-else #default>
-      {{ timer.formattedTime[props.type] }}
+      <slot>{{ timer.formattedTime[props.type] }}</slot>
     </template>
   </ark.div>
 </template>

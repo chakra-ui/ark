@@ -26,7 +26,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.nav v-bind="toc.getRootProps()" :data-placement="placement" :as-child="asChild">
+  <ark.nav v-bind="toc.getNavProps()" :data-placement="placement" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>
