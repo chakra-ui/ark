@@ -1,5 +1,12 @@
 # @ark-ui/vue
 
+## [5.40.1] - 2026-11-04
+
+### Fixed
+
+- **Menu**: Forward `value` on `Menu.ContextTrigger` the same way `Menu.Trigger` does.
+- **Toc**: Fix type declarations failing under `moduleResolution: node16` and `nodenext` without `skipLibCheck`.
+
 ## [5.40.0] - 2026-10-29
 
 ### Added
