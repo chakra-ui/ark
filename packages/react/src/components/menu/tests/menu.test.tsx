@@ -148,6 +148,34 @@ describe('Menu', () => {
     await waitFor(() => expect(screen.getByText(/Ark UI/i)).toBeVisible())
   })
 
+  it('should forward value to the context trigger', async () => {
+    const onTriggerValueChange = vi.fn()
+    render(
+      <Menu.Root onTriggerValueChange={onTriggerValueChange}>
+        <Menu.ContextTrigger value="first">First</Menu.ContextTrigger>
+        <Menu.ContextTrigger value="second">Second</Menu.ContextTrigger>
+        <Menu.Positioner>
+          <Menu.Content>
+            <Menu.Item value="edit">Edit</Menu.Item>
+          </Menu.Content>
+        </Menu.Positioner>
+      </Menu.Root>,
+    )
+
+    const first = screen.getByRole('button', { name: 'First' })
+    const second = screen.getByRole('button', { name: 'Second' })
+    expect(first).toHaveAttribute('data-value', 'first')
+    expect(first).not.toHaveAttribute('value')
+
+    fireEvent.contextMenu(first)
+    await waitFor(() => expect(screen.getByText('Edit')).toBeVisible())
+    expect(onTriggerValueChange).toHaveBeenLastCalledWith(expect.objectContaining({ value: 'first' }))
+
+    fireEvent.contextMenu(second)
+    await waitFor(() => expect(onTriggerValueChange).toHaveBeenLastCalledWith(expect.objectContaining({ value: 'second' })))
+    expect(screen.getByText('Edit')).toBeVisible()
+  })
+
   it('should open on nested menu', async () => {
     render(<ComponentUnderTest />)
 
