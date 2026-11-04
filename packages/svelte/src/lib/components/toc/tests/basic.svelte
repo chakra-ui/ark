@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Toc } from '../'
+  import { Toc } from '../index.ts'
 
   interface Props {
     defaultActiveIds?: string[]

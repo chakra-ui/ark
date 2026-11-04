@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface TocNavBaseProps extends PolymorphicProps {
   placement?: 'left' | 'right'
@@ -15,9 +15,9 @@ export interface TocNavProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { useTocContext } from './use-toc-context'
+import { ark } from '../factory.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { useTocContext } from './use-toc-context.ts'
 
 defineProps<TocNavProps>()
 const toc = useTocContext()

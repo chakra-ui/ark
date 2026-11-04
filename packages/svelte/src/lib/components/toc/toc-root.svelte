@@ -1,5 +1,5 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '../../types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '../../types.ts'
   import type { UseTocProps } from './use-toc.svelte.ts'
 
   export interface TocRootBaseProps extends UseTocProps, PolymorphicProps<'div'>, RefAttribute {}
@@ -8,9 +8,9 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { createSplitProps } from '../../utils/create-split-props'
-  import { Ark } from '../factory'
-  import { TocProvider } from './use-toc-context'
+  import { createSplitProps } from '../../utils/create-split-props.ts'
+  import { Ark } from '../factory/index.ts'
+  import { TocProvider } from './use-toc-context.ts'
   import { useToc } from './use-toc.svelte.ts'
 
   let { ref = $bindable(null), activeIds = $bindable<string[]>(), ...props }: TocRootProps = $props()

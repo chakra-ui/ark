@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 
 export interface TocContentBaseProps extends PolymorphicProps {}
 export interface TocContentProps extends HTMLProps<'article'>, TocContentBaseProps {}

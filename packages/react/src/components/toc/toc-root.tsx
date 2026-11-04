@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type UseTocProps, useToc } from './use-toc'
-import { TocProvider } from './use-toc-context'
+import type { Assign } from '../../types.ts'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { type UseTocProps, useToc } from './use-toc.ts'
+import { TocProvider } from './use-toc-context.ts'
 
 export interface TocRootBaseProps extends UseTocProps, PolymorphicProps {}
 export interface TocRootProps extends Assign<HTMLProps<'div'>, TocRootBaseProps> {}

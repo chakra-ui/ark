@@ -1,4 +1,4 @@
-import { createContext } from '../../utils/create-context'
+import { createContext } from '../../utils/create-context.ts'
 import type { UseTocReturn } from './use-toc.svelte.ts'
 
 export interface UseTocContext extends UseTocReturn {}

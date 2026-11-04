@@ -1,8 +1,8 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import * as toc from '@zag-js/toc'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.tsx'
+import type { Optional } from '../../types.ts'
 
 export interface UseTocProps extends Optional<Omit<toc.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseTocApi extends toc.Api<PropTypes> {}

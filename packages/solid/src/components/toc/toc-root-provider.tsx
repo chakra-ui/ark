@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import type { UseTocReturn } from './use-toc'
-import { TocProvider } from './use-toc-context'
+import { createSplitProps } from '../../utils/create-split-props.ts'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import type { UseTocReturn } from './use-toc.ts'
+import { TocProvider } from './use-toc-context.ts'
 
 interface RootProviderProps {
   value: UseTocReturn

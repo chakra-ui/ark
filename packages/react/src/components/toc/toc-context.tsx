@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { type UseTocContext, useTocContext } from './use-toc-context'
+import { type UseTocContext, useTocContext } from './use-toc-context.ts'
 
 export interface TocContextProps {
   children: (context: UseTocContext) => ReactNode

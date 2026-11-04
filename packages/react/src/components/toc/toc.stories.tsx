@@ -6,13 +6,13 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
-export { Nested } from './examples/nested'
-export { RootProvider } from './examples/root-provider'
-export { SingleActive } from './examples/single-active'
-export { WithCollapsible } from './examples/with-collapsible'
-export { WithHover } from './examples/with-hover'
-export { WithIndicator } from './examples/with-indicator'
-export { WithRail } from './examples/with-rail'
-export { WithSelect } from './examples/with-select'
-export { WithTreeView } from './examples/with-tree-view'
+export { Basic } from './examples/basic.tsx'
+export { Nested } from './examples/nested.tsx'
+export { RootProvider } from './examples/root-provider.tsx'
+export { SingleActive } from './examples/single-active.tsx'
+export { WithCollapsible } from './examples/with-collapsible.tsx'
+export { WithHover } from './examples/with-hover.tsx'
+export { WithIndicator } from './examples/with-indicator.tsx'
+export { WithRail } from './examples/with-rail.tsx'
+export { WithSelect } from './examples/with-select.tsx'
+export { WithTreeView } from './examples/with-tree-view.tsx'

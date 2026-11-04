@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface TocListBaseProps extends PolymorphicProps {}
 export interface TocListProps
@@ -13,9 +13,9 @@ export interface TocListProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { useTocContext } from './use-toc-context'
+import { ark } from '../factory.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { useTocContext } from './use-toc-context.ts'
 
 defineProps<TocListProps>()
 const toc = useTocContext()

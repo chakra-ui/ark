@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { PolymorphicProps } from '../factory'
-import type { UseTocReturn } from './use-toc'
+import type { PolymorphicProps } from '../factory.ts'
+import type { UseTocReturn } from './use-toc.ts'
 
 interface RootProviderProps {
   value: UnwrapRef<UseTocReturn>
@@ -19,9 +19,9 @@ export interface TocRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { TocProvider } from './use-toc-context'
+import { ark } from '../factory.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { TocProvider } from './use-toc-context.ts'
 
 const props = defineProps<TocRootProviderProps>()
 const toc = computed(() => props.value)
