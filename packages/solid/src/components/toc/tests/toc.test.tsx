@@ -1,6 +1,6 @@
 import { render, screen } from '@solidjs/testing-library'
 import { describe, it, expect } from 'vitest'
-import { ComponentUnderTest } from './basic'
+import { ComponentUnderTest } from './basic.tsx'
 
 describe('Toc', () => {
   it('should render correct semantic landmarks', () => {

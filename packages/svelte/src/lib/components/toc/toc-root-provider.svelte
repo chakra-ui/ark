@@ -1,5 +1,5 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '../../types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '../../types.ts'
   import type { UseTocReturn } from './use-toc.svelte.ts'
 
   export interface TocRootProviderBaseProps extends PolymorphicProps<'div'>, RefAttribute {
@@ -10,8 +10,8 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
-  import { Ark } from '../factory'
-  import { TocProvider } from './use-toc-context'
+  import { Ark } from '../factory/index.ts'
+  import { TocProvider } from './use-toc-context.ts'
 
   let { ref = $bindable(null), value, ...props }: TocRootProviderProps = $props()
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
