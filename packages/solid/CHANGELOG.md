@@ -1,5 +1,13 @@
 # @ark-ui/solid
 
+## [5.40.1] - 2026-11-13
+
+### Fixed
+
+- **Menu**: Forward `value` on `Menu.ContextTrigger` the same way `Menu.Trigger` does.
+- **General**: Fix namespaced types like `PinInput.ValueChangeDetails` being declared as values, which broke
+  type-checking without `skipLibCheck` and made them unusable as types.
+
 ## [5.40.0] - 2026-10-29
 
 ### Added

@@ -1,5 +1,12 @@
 # @ark-ui/svelte
 
+## [5.25.2] - 2026-11-13
+
+### Fixed
+
+- **Menu**: Forward `value` on `Menu.ContextTrigger` the same way `Menu.Trigger` does.
+- **General**: Fix types failing to resolve under `moduleResolution: node16` and `nodenext` without `skipLibCheck`.
+
 ## [5.25.1] - 2026-11-02
 
 ### Fixed
