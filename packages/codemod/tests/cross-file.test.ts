@@ -4,6 +4,7 @@ import { join } from 'node:path'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { reactAsChildToRender } from '../src/transforms/as-child-to-render/react.ts'
 import { solidAsChildToRender } from '../src/transforms/as-child-to-render/solid.ts'
+import { renameRun } from '../src/transforms/rename-props/configs.ts'
 
 let dir: string
 
@@ -65,6 +66,51 @@ describe('cross-file barrel resolution', () => {
 
     const on = reactAsChildToRender(source, consumer, { crossFile: true })
     expect(on.count).toBe(1)
+  })
+
+  it('resolves a namespace re-export whose module wraps a differently named component (react)', () => {
+    write(
+      'drawer.tsx',
+      `import { Dialog } from '@ark-ui/react/dialog'\nexport const Trigger = Dialog.Trigger\nexport const CloseTrigger = Dialog.CloseTrigger\n`,
+    )
+    write('ui.ts', `export * as Drawer from './drawer'\n`)
+    const consumer = write('app.tsx', 'x')
+    const source = `import { Drawer } from './ui'\nconst A = () => <Drawer.Trigger asChild><button>open</button></Drawer.Trigger>\n`
+
+    const on = reactAsChildToRender(source, consumer, { crossFile: true })
+    expect(on.count).toBe(1)
+    expect(on.code).toContain('<Drawer.Trigger render={<button>open</button>} />')
+  })
+
+  it('resolves a namespace import of a local module that wraps ark (react)', () => {
+    write('checkbox.tsx', `import { Checkbox } from '@ark-ui/react/checkbox'\nexport const Label = Checkbox.Label\n`)
+    const consumer = write('app.tsx', 'x')
+    const source = `import * as StyledCheckbox from './checkbox'\nconst A = () => <StyledCheckbox.Label asChild><span>x</span></StyledCheckbox.Label>\n`
+
+    const on = reactAsChildToRender(source, consumer, { crossFile: true })
+    expect(on.count).toBe(1)
+    expect(on.code).toContain('<StyledCheckbox.Label render={<span>x</span>} />')
+  })
+
+  it('leaves a namespace re-export of a non-ark module alone (react)', () => {
+    write('tooltip.tsx', `import { Tooltip } from '@radix-ui/react-tooltip'\nexport const Trigger = Tooltip.Trigger\n`)
+    write('ui.ts', `export * as Tip from './tooltip'\n`)
+    const consumer = write('app.tsx', 'x')
+    const source = `import { Tip } from './ui'\nconst A = () => <Tip.Trigger asChild><a href="#">x</a></Tip.Trigger>\n`
+
+    const on = reactAsChildToRender(source, consumer, { crossFile: true })
+    expect(on.code).toBeNull()
+  })
+
+  it('renames props on an aliased component imported through a barrel (react)', () => {
+    write('pin-input.tsx', `import { PinInput } from '@ark-ui/react/pin-input'\nexport const Root = PinInput.Root\n`)
+    write('ui.ts', `export * as PinInput from './pin-input'\n`)
+    const consumer = write('app.tsx', 'x')
+    const source = `import { PinInput as StyledPinInput } from './ui'\nconst A = () => <StyledPinInput.Root length={4} />\n`
+
+    const on = renameRun('pin-input-count')(source, consumer, { crossFile: true })
+    expect(on.count).toBe(1)
+    expect(on.code).toContain('<StyledPinInput.Root count={4} />')
   })
 
   it('leaves a non-ark barrel component alone (react)', () => {
@@ -144,6 +190,27 @@ describe('cross-file barrel resolution', () => {
 
     const on = reactAsChildToRender(source, consumer, { crossFile: true })
     expect(on.code).toBeNull()
+  })
+
+  it('resolves a namespace re-export whose module wraps a differently named component (solid)', () => {
+    write('drawer.tsx', `import { Dialog } from '@ark-ui/solid/dialog'\nexport const Trigger = Dialog.Trigger\n`)
+    write('ui.ts', `export * as Drawer from './drawer'\n`)
+    const consumer = write('app.tsx', 'x')
+    const source = `import { Drawer } from './ui'\nconst A = () => <Drawer.Trigger asChild={(props) => <button {...props()} />} />\n`
+
+    const on = solidAsChildToRender(source, consumer, { crossFile: true })
+    expect(on.count).toBe(1)
+    expect(on.code).toContain('render={(props) => <button {...props()} />}')
+  })
+
+  it('resolves a namespace import of a local module that wraps ark (solid)', () => {
+    write('checkbox.tsx', `import { Checkbox } from '@ark-ui/solid/checkbox'\nexport const Label = Checkbox.Label\n`)
+    const consumer = write('app.tsx', 'x')
+    const source = `import * as StyledCheckbox from './checkbox'\nconst A = () => <StyledCheckbox.Label asChild={(props) => <span {...props()} />} />\n`
+
+    const on = solidAsChildToRender(source, consumer, { crossFile: true })
+    expect(on.count).toBe(1)
+    expect(on.code).toContain('render={(props) => <span {...props()} />}')
   })
 
   it('resolves a barrel component and keeps the props call (solid)', () => {

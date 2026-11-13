@@ -1,7 +1,7 @@
 import { Node, SyntaxKind } from 'ts-morph'
 import type { JsxOpeningElement, JsxSelfClosingElement } from 'ts-morph'
 import type { TransformOptions, TransformResult } from '../../types.ts'
-import { arkLocalNames, isTrackedJsx } from '../../utils/ark-imports.ts'
+import { arkComponentNames, arkLocalNames, getJsxBaseName } from '../../utils/ark-imports.ts'
 import { createTransformSourceFile } from '../../utils/ts-project.ts'
 
 type JsxOpening = JsxOpeningElement | JsxSelfClosingElement
@@ -35,12 +35,24 @@ export function makeRenameTransform(config: RenameConfig) {
       ...sf.getDescendantsOfKind(SyntaxKind.JsxSelfClosingElement),
     ]
 
+    const originsByBase = new Map<string, Set<string>>()
+    const originsOf = (base: string) => {
+      let origins = originsByBase.get(base)
+      if (!origins) {
+        origins = new Set([...arkComponentNames(sf, base, options)].map((n) => n.toLowerCase()))
+        originsByBase.set(base, origins)
+      }
+      return origins
+    }
+
     for (const opening of openings) {
-      if (!isTrackedJsx(opening, arkNames)) continue
-      const tag = opening.getTagNameNode().getText()
+      const tagNode = opening.getTagNameNode()
+      const base = getJsxBaseName(tagNode)
+      if (!arkNames.has(base)) continue
+      const tag = tagNode.getText()
 
       for (const rule of config.rules) {
-        if (!matchesPart(tag, rule.component, rule.part)) continue
+        if (!matchesPart(tag, rule.component, rule.part, originsOf(base))) continue
         count += applyRule(opening, rule, skipped)
       }
     }
@@ -49,10 +61,10 @@ export function makeRenameTransform(config: RenameConfig) {
   }
 }
 
-function matchesPart(tag: string, component: string, part: string): boolean {
+function matchesPart(tag: string, component: string, part: string, origins: Set<string>): boolean {
   const segs = tag.split('.')
   if (segs.length !== 2) return false
-  return segs[1] === part && segs[0].toLowerCase() === component.toLowerCase()
+  return segs[1] === part && origins.has(component.toLowerCase())
 }
 
 function applyRule(opening: JsxOpening, rule: PropRule, skipped: string[]): number {
