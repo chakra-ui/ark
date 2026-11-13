@@ -1,6 +1,8 @@
-import { Node } from 'ts-morph'
+import { Node, ts } from 'ts-morph'
 import type {
   ArrowFunction,
+  ExportDeclaration,
+  ImportDeclaration,
   FunctionDeclaration,
   FunctionExpression,
   JsxOpeningElement,
@@ -12,6 +14,29 @@ type JsxOpening = JsxOpeningElement | JsxSelfClosingElement
 
 const ARK_SOURCE = /^@ark-ui\//
 const MAX_DEPTH = 12
+
+const resolutionCache = new Map<string, string | null>()
+
+function moduleSourceFile(decl: ImportDeclaration | ExportDeclaration): SourceFile | undefined {
+  const specifier = decl.getModuleSpecifierValue()
+  if (!specifier) return undefined
+  const from = decl.getSourceFile()
+  const project = from.getProject()
+  const key = `${from.getFilePath()}\0${specifier}`
+  let resolved = resolutionCache.get(key)
+  if (resolved === undefined) {
+    const result = ts.resolveModuleName(
+      specifier,
+      from.getFilePath(),
+      project.getCompilerOptions(),
+      project.getModuleResolutionHost(),
+    )
+    resolved = result.resolvedModule?.resolvedFileName ?? null
+    resolutionCache.set(key, resolved)
+  }
+  if (!resolved) return undefined
+  return project.getSourceFile(resolved) ?? project.addSourceFileAtPathIfExists(resolved)
+}
 
 export function getJsxBaseName(nameNode: Node): string {
   if (Node.isPropertyAccessExpression(nameNode)) {
@@ -71,6 +96,76 @@ export function arkComponentNames(sf: SourceFile, name: string, options: { cross
   return new Set(arkOriginNames(sf, name, options.crossFile ?? false, new Set(), 0))
 }
 
+export function jsxTagArkOrigins(sf: SourceFile, tag: string, options: { crossFile?: boolean } = {}): Set<string> {
+  const segs = tag.split('.')
+  if (options.crossFile && segs.length === 2) {
+    const module = namespaceModule(sf, segs[0], new Set(), 0)
+    if (module) return new Set(resolveInModule(module, segs[1]))
+  }
+  return arkComponentNames(sf, segs[0], options)
+}
+
+const arkTagCache = new WeakMap<SourceFile, Map<string, boolean>>()
+
+export function isArkJsx(
+  sf: SourceFile,
+  opening: JsxOpening,
+  arkNames: Set<string>,
+  options: { crossFile?: boolean } = {},
+) {
+  if (!isTrackedJsx(opening, arkNames)) return false
+  const tag = opening.getTagNameNode().getText()
+  let cache = arkTagCache.get(sf)
+  if (!cache) {
+    cache = new Map()
+    arkTagCache.set(sf, cache)
+  }
+  let isArk = cache.get(tag)
+  if (isArk === undefined) {
+    isArk = jsxTagArkOrigins(sf, tag, options).size > 0
+    cache.set(tag, isArk)
+  }
+  return isArk
+}
+
+function namespaceModule(file: SourceFile, name: string, visited: Set<string>, depth: number): SourceFile | undefined {
+  if (depth > MAX_DEPTH) return undefined
+  const key = `${file.getFilePath()}::ns::${name}`
+  if (visited.has(key)) return undefined
+  visited.add(key)
+
+  for (const imp of file.getImportDeclarations()) {
+    if (ARK_SOURCE.test(imp.getModuleSpecifierValue())) continue
+    if (imp.getNamespaceImport()?.getText() === name) return moduleSourceFile(imp)
+    for (const spec of imp.getNamedImports()) {
+      if ((spec.getAliasNode()?.getText() ?? spec.getName()) !== name) continue
+      const target = moduleSourceFile(imp)
+      const module = target && namespaceModule(target, spec.getName(), visited, depth + 1)
+      if (module) return module
+    }
+  }
+
+  for (const exp of file.getExportDeclarations()) {
+    const source = exp.getModuleSpecifierValue()
+    if (source && ARK_SOURCE.test(source)) continue
+    const target = source ? moduleSourceFile(exp) : file
+    if (!target) continue
+    if (exp.getNamespaceExport()?.getName() === name) return target
+    const named = exp.getNamedExports()
+    for (const spec of named) {
+      if ((spec.getAliasNode()?.getText() ?? spec.getName()) !== name) continue
+      const module = namespaceModule(target, spec.getName(), visited, depth + 1)
+      if (module) return module
+    }
+    if (source && named.length === 0 && !exp.getNamespaceExport()) {
+      const module = namespaceModule(target, name, visited, depth + 1)
+      if (module) return module
+    }
+  }
+
+  return undefined
+}
+
 function arkOriginNames(
   file: SourceFile,
   name: string,
@@ -89,13 +184,13 @@ function arkOriginNames(
 
     if (imp.getDefaultImport()?.getText() === name || imp.getNamespaceImport()?.getText() === name) {
       if (isArk) return new Set([name])
-      const target = crossFile ? imp.getModuleSpecifierSourceFile() : undefined
+      const target = crossFile ? moduleSourceFile(imp) : undefined
       if (target && imp.getDefaultImport()?.getText() === name) {
         const names = defaultExportArkNames(target, visited, depth + 1)
         if (names.size > 0) return names
       }
       if (target && imp.getNamespaceImport()?.getText() === name) {
-        const names = moduleArkNames(target, visited, depth + 1)
+        const names = resolveModule(target)
         if (names.size > 0) return names
       }
     }
@@ -104,8 +199,8 @@ function arkOriginNames(
       if (local !== name) continue
       if (isArk) return new Set([spec.getName()])
       if (!crossFile) continue
-      const target = imp.getModuleSpecifierSourceFile()
-      const names = target ? arkOriginNames(target, spec.getName(), crossFile, visited, depth + 1) : NONE
+      const target = moduleSourceFile(imp)
+      const names = target ? resolveInModule(target, spec.getName()) : NONE
       if (names.size > 0) return names
     }
   }
@@ -131,8 +226,8 @@ function arkOriginNames(
       if (namespace) {
         if (namespace.getName() !== name) continue
         if (isArk) return new Set([name])
-        const target = crossFile ? exp.getModuleSpecifierSourceFile() : undefined
-        const names = target ? moduleArkNames(target, visited, depth + 1) : NONE
+        const target = crossFile ? moduleSourceFile(exp) : undefined
+        const names = target ? resolveModule(target) : NONE
         if (names.size > 0) return names
         continue
       }
@@ -142,15 +237,15 @@ function arkOriginNames(
         matched = true
         if (isArk) return new Set([spec.getName()])
         if (!crossFile) continue
-        const target = exp.getModuleSpecifierSourceFile()
-        const names = target ? arkOriginNames(target, spec.getName(), crossFile, visited, depth + 1) : NONE
+        const target = moduleSourceFile(exp)
+        const names = target ? resolveInModule(target, spec.getName()) : NONE
         if (names.size > 0) return names
       }
       if (!matched && named.length === 0) {
         if (isArk) return new Set([name])
         if (crossFile) {
-          const target = exp.getModuleSpecifierSourceFile()
-          const names = target ? arkOriginNames(target, name, crossFile, visited, depth + 1) : NONE
+          const target = moduleSourceFile(exp)
+          const names = target ? resolveInModule(target, name) : NONE
           if (names.size > 0) return names
         }
       }
@@ -164,6 +259,31 @@ function arkOriginNames(
   }
 
   return NONE
+}
+
+const MODULE_KEY = '\0module'
+const moduleCache = new WeakMap<SourceFile, Map<string, ReadonlySet<string>>>()
+
+function cached(file: SourceFile, key: string, resolve: () => ReadonlySet<string>): ReadonlySet<string> {
+  let entries = moduleCache.get(file)
+  if (!entries) {
+    entries = new Map()
+    moduleCache.set(file, entries)
+  }
+  const hit = entries.get(key)
+  if (hit) return hit
+  entries.set(key, NONE)
+  const result = resolve()
+  entries.set(key, result)
+  return result
+}
+
+function resolveInModule(file: SourceFile, name: string): ReadonlySet<string> {
+  return cached(file, name, () => arkOriginNames(file, name, true, new Set(), 0))
+}
+
+function resolveModule(file: SourceFile): ReadonlySet<string> {
+  return cached(file, MODULE_KEY, () => moduleArkNames(file, new Set(), 0))
 }
 
 function moduleArkNames(file: SourceFile, visited: Set<string>, depth: number): ReadonlySet<string> {

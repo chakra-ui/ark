@@ -60,6 +60,9 @@ export function makeVueRenameTransform(config: RenameConfig) {
 
 function matchesPart(tag: string, component: string, part: string, origins: Map<string, string>): boolean {
   const segs = tag.split('.')
+  if (segs.length === 1) {
+    return (origins.get(tag) ?? tag).toLowerCase() === `${component}${part}`.toLowerCase()
+  }
   if (segs.length !== 2) return false
   return segs[1] === part && (origins.get(segs[0]) ?? segs[0]).toLowerCase() === component.toLowerCase()
 }

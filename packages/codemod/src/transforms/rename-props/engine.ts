@@ -1,7 +1,7 @@
 import { Node, SyntaxKind } from 'ts-morph'
 import type { JsxOpeningElement, JsxSelfClosingElement } from 'ts-morph'
 import type { TransformOptions, TransformResult } from '../../types.ts'
-import { arkComponentNames, arkLocalNames, getJsxBaseName } from '../../utils/ark-imports.ts'
+import { arkLocalNames, getJsxBaseName, jsxTagArkOrigins } from '../../utils/ark-imports.ts'
 import { createTransformSourceFile } from '../../utils/ts-project.ts'
 
 type JsxOpening = JsxOpeningElement | JsxSelfClosingElement
@@ -35,24 +35,23 @@ export function makeRenameTransform(config: RenameConfig) {
       ...sf.getDescendantsOfKind(SyntaxKind.JsxSelfClosingElement),
     ]
 
-    const originsByBase = new Map<string, Set<string>>()
-    const originsOf = (base: string) => {
-      let origins = originsByBase.get(base)
+    const originsByTag = new Map<string, Set<string>>()
+    const originsOf = (tag: string) => {
+      let origins = originsByTag.get(tag)
       if (!origins) {
-        origins = new Set([...arkComponentNames(sf, base, options)].map((n) => n.toLowerCase()))
-        originsByBase.set(base, origins)
+        origins = new Set([...jsxTagArkOrigins(sf, tag, options)].map((n) => n.toLowerCase()))
+        originsByTag.set(tag, origins)
       }
       return origins
     }
 
     for (const opening of openings) {
       const tagNode = opening.getTagNameNode()
-      const base = getJsxBaseName(tagNode)
-      if (!arkNames.has(base)) continue
+      if (!arkNames.has(getJsxBaseName(tagNode))) continue
       const tag = tagNode.getText()
 
       for (const rule of config.rules) {
-        if (!matchesPart(tag, rule.component, rule.part, originsOf(base))) continue
+        if (!matchesPart(tag, rule.component, rule.part, originsOf(tag))) continue
         count += applyRule(opening, rule, skipped)
       }
     }
@@ -63,6 +62,7 @@ export function makeRenameTransform(config: RenameConfig) {
 
 function matchesPart(tag: string, component: string, part: string, origins: Set<string>): boolean {
   const segs = tag.split('.')
+  if (segs.length === 1) return origins.has(`${component}${part}`.toLowerCase())
   if (segs.length !== 2) return false
   return segs[1] === part && origins.has(component.toLowerCase())
 }

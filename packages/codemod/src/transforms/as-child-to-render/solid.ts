@@ -1,7 +1,7 @@
 import { Node, SyntaxKind } from 'ts-morph'
 import type { JsxOpeningElement, JsxSelfClosingElement } from 'ts-morph'
 import type { TransformOptions, TransformResult } from '../../types.ts'
-import { arkLocalNames, isTrackedJsx } from '../../utils/ark-imports.ts'
+import { arkLocalNames, isArkJsx } from '../../utils/ark-imports.ts'
 import { createTransformSourceFile } from '../../utils/ts-project.ts'
 
 export function solidAsChildToRender(
@@ -24,7 +24,7 @@ export function solidAsChildToRender(
       (node): node is JsxOpeningElement | JsxSelfClosingElement =>
         Node.isJsxOpeningElement(node) || Node.isJsxSelfClosingElement(node),
     )
-    if (!opening || !isTrackedJsx(opening, arkNames)) continue
+    if (!opening || !isArkJsx(sf, opening, arkNames, options)) continue
 
     const initializer = attr.getInitializer()
     if (!initializer || !Node.isJsxExpression(initializer)) {

@@ -1,6 +1,6 @@
 import { Node, SyntaxKind } from 'ts-morph'
 import type { TransformOptions, TransformResult } from '../../types.ts'
-import { arkLocalNames, isTrackedJsx } from '../../utils/ark-imports.ts'
+import { arkLocalNames, isArkJsx } from '../../utils/ark-imports.ts'
 import { createTransformSourceFile } from '../../utils/ts-project.ts'
 
 export function reactAsChildToRender(
@@ -23,7 +23,7 @@ export function reactAsChildToRender(
     const asChild = opening.getAttribute('asChild')
     if (!asChild) continue
 
-    if (!isTrackedJsx(opening, arkNames)) continue
+    if (!isArkJsx(sf, opening, arkNames, options)) continue
 
     if (!Node.isJsxAttribute(asChild)) {
       skipped.push(`${describe(opening)}: asChild is spread, not an attribute`)

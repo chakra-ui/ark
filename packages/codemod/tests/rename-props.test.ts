@@ -180,3 +180,24 @@ const A = () => <Carousel.Root slideCount={5} />`,
     expect(result.code).toBeNull()
   })
 })
+
+describe('flat part exports', () => {
+  it('renames on a flat part import', () => {
+    const result = carousel(
+      `import { CarouselRoot } from '@ark-ui/react/carousel'
+const A = () => <CarouselRoot slideCount={5} />`,
+      'a.tsx',
+    )
+    expect(result.count).toBe(1)
+    expect(result.code).toContain('<CarouselRoot count={5} />')
+  })
+
+  it('leaves a flat part of another component alone', () => {
+    const result = carousel(
+      `import { TabsRoot } from '@ark-ui/react/tabs'
+const A = () => <TabsRoot slideCount={5} />`,
+      'a.tsx',
+    )
+    expect(result.code).toBeNull()
+  })
+})

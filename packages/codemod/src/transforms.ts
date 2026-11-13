@@ -13,6 +13,11 @@ import {
 
 const renameFrameworks: RenameFramework[] = ['react', 'solid', 'svelte', 'vue']
 
+const partTagPattern = (parts: string[]) => {
+  const pattern = new RegExp(`<[\\w$.]*(?:${[...new Set(parts)].join('|')})\\b`)
+  return (source: string) => pattern.test(source)
+}
+
 const mentionsAsChild = (source: string) => source.includes('asChild') || source.includes('as-child')
 
 const propRenameTransforms: TransformDef[] = renameTransforms.flatMap((def) =>
@@ -20,10 +25,7 @@ const propRenameTransforms: TransformDef[] = renameTransforms.flatMap((def) =>
     name: `${framework}/${def.slug}`,
     description: def.description,
     extensions: renameFrameworkExtensions[framework],
-    prefilter: (source: string) => {
-      const lower = source.toLowerCase()
-      return def.rules.some((rule) => lower.includes(rule.component.toLowerCase()))
-    },
+    prefilter: partTagPattern(def.rules.map((rule) => rule.part)),
     run: renameRun(def.slug, framework),
   })),
 )
