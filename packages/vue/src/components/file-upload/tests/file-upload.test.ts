@@ -1,6 +1,7 @@
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
 import WithField from './field.test.vue'
+import PreviewImage from './preview-image.test.vue'
 
 describe('File Upload / Field', () => {
   it('should set file upload as required', async () => {
@@ -48,5 +49,34 @@ describe('File Upload / Field', () => {
     expect(await screen.findByRole('button', { name: 'dropzone' })).toHaveAccessibleDescription(
       'Error Info Additional Info',
     )
+  })
+})
+
+describe('File Upload / ItemPreviewImage', () => {
+  const file = new File([''], 'photo.png', { type: 'image/png' })
+
+  beforeEach(() => {
+    URL.createObjectURL = vi.fn(() => 'blob:photo')
+    URL.revokeObjectURL = vi.fn()
+  })
+
+  it('should keep the preview url while the root re-renders', async () => {
+    render(PreviewImage, { props: { file } })
+    await user.click(screen.getByText('Drop'))
+    await user.tab()
+
+    expect(await screen.findByAltText('preview')).toHaveAttribute('src', 'blob:photo')
+    expect(URL.createObjectURL).toHaveBeenCalledTimes(1)
+    expect(URL.revokeObjectURL).not.toHaveBeenCalled()
+  })
+
+  it('should revoke the url when the file changes and on unmount', async () => {
+    const { rerender, unmount } = render(PreviewImage, { props: { file } })
+    await rerender({ file: new File([''], 'other.png', { type: 'image/png' }) })
+    expect(URL.createObjectURL).toHaveBeenCalledTimes(2)
+    expect(URL.revokeObjectURL).toHaveBeenCalledTimes(1)
+
+    unmount()
+    expect(URL.revokeObjectURL).toHaveBeenCalledTimes(2)
   })
 })
