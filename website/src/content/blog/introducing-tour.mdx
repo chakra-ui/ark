@@ -8,160 +8,39 @@ tags: ['tour', 'onboarding', 'ark-ui', 'headless']
 
 Meet **[Tour](/docs/components/tour)**, a headless component for guided product tours.
 
-Look through the headless libraries you probably already use: Radix, Base UI, React Aria, Headless UI, Reka. You'll find
-dialogs, popovers, menus and comboboxes, but no tour. When a product needs onboarding, teams usually end up choosing
-between two options:
+When a product needs onboarding, teams usually end up choosing between two options:
 
-- **A styled tour library** like Shepherd.js, Intro.js, Driver.js or React Joyride. These work, but they come with their
-  own markup and CSS, which you then override to match your design system. Shepherd.js and Intro.js are also AGPL-3.0,
-  so closed-source products need a paid commercial license.
+- **A styled tour library.** These work, but they come with their own markup and CSS, which you then override to match
+  your design system.
 - **Building it yourself** on top of a popover. That covers positioning, but you still have to build the backdrop with a
   hole cut around the target, scroll handling, focus management, step sequencing, and waiting for the user to do
   something before moving on.
 
-Tour gives you a third option: the behavior and the parts, with styling left to you. The shadcn.io registry already uses
-it for every base it supports, including React Aria, which has no tour primitive of its own.
+Tour handles that behavior for you and gives you unstyled parts, so the tour looks like the rest of your product.
 
 Tour was built by Christian Schröter ([@cschroeter](https://github.com/cschroeter)) on top of Zag.js. Thank you!
 
 <Example component="tour" id="basic" />
 
-What you get:
+## Steps are data
 
-- Steps are plain objects with a title, a description, a target, and actions.
-- Four step types: `dialog`, `tooltip`, `floating`, and `wait`.
-- A backdrop and spotlight that cut out the target, which is scrolled into view for you.
-- Steps can wait for a click, valid input, or an element to appear before moving on.
-- Focus trapping, <kbd>Esc</kbd> to dismiss, and the left and right arrow keys to move between steps.
-- Available for React, Solid, Svelte, and Vue.
+A tour is a list of plain objects. Each step has a title, a description, an optional target, and the actions it shows.
+Steps can be a centered `dialog`, a `tooltip` anchored to an element, a `floating` panel, or a `wait` step that renders
+nothing.
 
-```tsx
-import { Tour, useTour } from '@ark-ui/react/tour'
+## Wait for the user
 
-const tour = useTour({ steps })
-
-<Tour.Root tour={tour}>
-  <Tour.Backdrop />
-  <Tour.Spotlight />
-  <Tour.Positioner>
-    <Tour.Content>
-      <Tour.Arrow>
-        <Tour.ArrowTip />
-      </Tour.Arrow>
-      <Tour.Title />
-      <Tour.Description />
-      <Tour.ProgressText />
-      <Tour.CloseTrigger />
-      <Tour.Actions>
-        {(actions) => actions.map((action) => <Tour.ActionTrigger key={action.label} action={action} />)}
-      </Tour.Actions>
-    </Tour.Content>
-  </Tour.Positioner>
-</Tour.Root>
-```
-
-Steps are plain data:
-
-```tsx
-const steps: Tour.StepDetails[] = [
-  {
-    id: 'welcome',
-    type: 'dialog',
-    title: 'Welcome!',
-    description: "Let's take a quick look around.",
-    actions: [{ label: 'Start', action: 'next' }],
-  },
-  {
-    id: 'upload',
-    type: 'tooltip',
-    title: 'Upload files',
-    description: 'Click here to upload your files.',
-    target: () => document.querySelector<HTMLElement>('#btn-upload'),
-    actions: [
-      { label: 'Back', action: 'prev' },
-      { label: 'Next', action: 'next' },
-    ],
-  },
-]
-```
-
-### Step types
-
-Real onboarding flows mix several kinds of content, so a step can take one of four types:
-
-- `dialog`: a centered modal, good for the welcome and the wrap-up
-- `tooltip`: anchored to a target element, with placement and an optional arrow
-- `floating`: fixed-position content that isn't tied to an element
-- `wait`: renders nothing and waits for a condition before moving on
-
-<Example component="tour" id="mixed-types" />
-
-### Wait for the user
-
-Clicking Next isn't always enough. Real tutorials often need the user to _do_ the thing. Every step can take an `effect`
-that runs before the step opens. It receives `next`, `show`, `update`, and the `target` element, and it can return a
-cleanup function.
-
-```tsx
-import { waitForEvent } from '@ark-ui/react/tour'
-
-const step: Tour.StepDetails = {
-  id: 'click-add',
-  type: 'tooltip',
-  title: 'Add an item',
-  description: 'Click "Add Item" to continue.',
-  target: () => document.querySelector<HTMLElement>('#btn-add'),
-  effect({ next, target, show }) {
-    show()
-    const [promise, cancel] = waitForEvent(target, 'click')
-    promise.then(() => next())
-    return cancel
-  },
-}
-```
+Clicking Next isn't always enough. Good onboarding asks the user to _do_ the thing. A step's `effect` runs before it
+opens, so it can wait for a click, valid input, or a late-rendering target, then move on by itself.
 
 <Example component="tour" id="wait-for-click" />
 
-The same hook covers form tutorials that wait for valid input, as well as targets that render late.
+## Accessible by default
 
-<Example component="tour" id="wait-for-input" />
+Each step is a labelled, modal `alertdialog`. Focus is trapped across the step and its highlighted target, so users can
+still reach the control you're pointing at. <kbd>Esc</kbd> dismisses the tour and the arrow keys move between steps.
 
-### Async steps
+## Get started
 
-Fetch data in the effect, call `update()` with the new content, then `show()` the step.
-
-<Example component="tour" id="async-step" />
-
-### Progress
-
-Show users how far along they are.
-
-<Example component="tour" id="progress-bar" />
-
-### Accessibility
-
-The parts that are tedious to get right come from the underlying Zag.js machine:
-
-- The content renders as `role="dialog"` with `aria-modal`, and it's labelled by the title and described by the
-  description.
-- Focus is trapped across both the step content and the highlighted target, so users can still reach the control you're
-  pointing at. Focus is restored when the tour ends.
-- <kbd>Esc</kbd> dismisses the tour, and the left and right arrow keys move between steps (`closeOnEscape`,
-  `keyboardNavigation`).
-- `preventInteraction` makes the target `inert` when you want it to be view-only.
-- Progress text and the close label come from `translations`, so you can localize them.
-
-### Styling
-
-Every part exposes `data-scope="tour"` and `data-part` attributes, plus state attributes such as `data-instant`, which
-is set when the parts should snap into place instead of animating. Use CSS modules, Tailwind, Panda, or anything else.
-You can shape the spotlight with `spotlightOffset` and `spotlightRadius`, and replace the default scroll-into-view
-behavior with `scrollToTargetFn`.
-
-```css
-[data-scope='tour'][data-instant] {
-  transition: none;
-}
-```
-
-Check out the [Tour docs](/docs/components/tour) for every example and the full API.
+Tour is available today for React, Solid, Svelte, and Vue. Head to the [Tour docs](/docs/components/tour) for every
+example and the full API.
