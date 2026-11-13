@@ -10,3 +10,5 @@
   and Svelte.
 - Fixed `--cross-file` missing components reached through a namespace re-export (`export * as Drawer from './drawer'`)
   or a namespace import (`import * as Checkbox from './checkbox'`). Those sites were skipped without being reported.
+- `as-child-to-render` (React) now converts a child that is a conditional between two elements
+  (`{hero ? <Button /> : <IconButton />}`) instead of reporting it.
