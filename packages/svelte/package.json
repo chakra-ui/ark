@@ -241,7 +241,7 @@
     "check-password-strength": "3.0.0",
     "clean-package": "2.2.0",
     "image-conversion": "2.1.1",
-    "jsdom": "30.1.2",
+    "jsdom": "31.0.1",
     "lucide-svelte": "1.0.1",
     "storybook": "10.6.1",
     "svelte": "5.57.2",
