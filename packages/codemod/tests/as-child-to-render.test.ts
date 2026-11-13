@@ -41,6 +41,26 @@ const A = () => <Popover.Trigger asChild><span/><span/></Popover.Trigger>`,
     expect(result.skipped[0]).toContain('exactly one child')
   })
 
+  it('lifts a conditional whose branches are both elements', () => {
+    const result = reactAsChildToRender(
+      `import { Dialog } from '@ark-ui/react/dialog'
+const A = ({ hero }) => <Dialog.Trigger asChild>{hero ? <button>Big</button> : <a href="#">Small</a>}</Dialog.Trigger>`,
+      'a.tsx',
+    )
+    expect(result.count).toBe(1)
+    expect(result.code).toContain('<Dialog.Trigger render={hero ? <button>Big</button> : <a href="#">Small</a>} />')
+  })
+
+  it('reports a conditional with a non-element branch', () => {
+    const result = reactAsChildToRender(
+      `import { Dialog } from '@ark-ui/react/dialog'
+const A = ({ hero, children }) => <Dialog.Trigger asChild>{hero ? <button>Big</button> : children}</Dialog.Trigger>`,
+      'a.tsx',
+    )
+    expect(result.code).toBeNull()
+    expect(result.skipped[0]).toContain('not an element')
+  })
+
   it('does nothing to a file without asChild', () => {
     expect(
       reactAsChildToRender(

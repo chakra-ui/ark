@@ -1,6 +1,6 @@
 import { Node, SyntaxKind } from 'ts-morph'
 import type { TransformOptions, TransformResult } from '../../types.ts'
-import { arkLocalNames, isTrackedJsx } from '../../utils/ark-imports.ts'
+import { arkLocalNames, isArkJsx } from '../../utils/ark-imports.ts'
 import { createTransformSourceFile } from '../../utils/ts-project.ts'
 
 export function reactAsChildToRender(
@@ -23,7 +23,7 @@ export function reactAsChildToRender(
     const asChild = opening.getAttribute('asChild')
     if (!asChild) continue
 
-    if (!isTrackedJsx(opening, arkNames)) continue
+    if (!isArkJsx(sf, opening, arkNames, options)) continue
 
     if (!Node.isJsxAttribute(asChild)) {
       skipped.push(`${describe(opening)}: asChild is spread, not an attribute`)
@@ -52,12 +52,13 @@ export function reactAsChildToRender(
     }
 
     const [child] = children
-    if (!Node.isJsxElement(child) && !Node.isJsxSelfClosingElement(child)) {
+    const renderText = elementText(child)
+    if (renderText === undefined) {
       skipped.push(`${describe(opening)}: the child is not an element`)
       continue
     }
 
-    const childText = child.getText()
+    const childText = renderText
     asChild.remove()
     const attrs = opening.getAttributes().map((a) => a.getText())
     element.replaceWithText(
@@ -67,6 +68,24 @@ export function reactAsChildToRender(
   }
 
   return { code: count > 0 ? sf.getFullText() : null, count, skipped }
+}
+
+function elementText(child: Node): string | undefined {
+  if (Node.isJsxElement(child) || Node.isJsxSelfClosingElement(child)) return child.getText()
+  if (Node.isJsxExpression(child)) {
+    const expression = child.getExpression()
+    if (expression && isElementExpression(expression)) return expression.getText()
+  }
+  return undefined
+}
+
+function isElementExpression(node: Node): boolean {
+  if (Node.isParenthesizedExpression(node)) return isElementExpression(node.getExpression())
+  if (Node.isJsxElement(node) || Node.isJsxSelfClosingElement(node)) return true
+  if (Node.isConditionalExpression(node)) {
+    return isElementExpression(node.getWhenTrue()) && isElementExpression(node.getWhenFalse())
+  }
+  return false
 }
 
 function describe(node: Node): string {

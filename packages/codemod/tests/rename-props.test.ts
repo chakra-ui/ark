@@ -150,3 +150,54 @@ const A = () => <PinInput.Root count={4} />`,
     ).toBeNull()
   })
 })
+
+describe('aliased components', () => {
+  it('renames on a component imported under an alias', () => {
+    const result = carousel(
+      `import { Carousel as StyledCarousel } from '@ark-ui/react/carousel'
+const A = () => <StyledCarousel.Root slideCount={5} />`,
+      'a.tsx',
+    )
+    expect(result.count).toBe(1)
+    expect(result.code).toContain('<StyledCarousel.Root count={5} />')
+  })
+
+  it('flags a missing count on an aliased PinInput', () => {
+    const result = pinInput(
+      `import { PinInput as StyledPinInput } from '@ark-ui/react/pin-input'
+const A = () => <StyledPinInput.Root />`,
+      'a.tsx',
+    )
+    expect(result.skipped).toHaveLength(1)
+  })
+
+  it('leaves an aliased non-matching component alone', () => {
+    const result = carousel(
+      `import { Tabs as Carousel } from '@ark-ui/react/tabs'
+const A = () => <Carousel.Root slideCount={5} />`,
+      'a.tsx',
+    )
+    expect(result.code).toBeNull()
+  })
+})
+
+describe('flat part exports', () => {
+  it('renames on a flat part import', () => {
+    const result = carousel(
+      `import { CarouselRoot } from '@ark-ui/react/carousel'
+const A = () => <CarouselRoot slideCount={5} />`,
+      'a.tsx',
+    )
+    expect(result.count).toBe(1)
+    expect(result.code).toContain('<CarouselRoot count={5} />')
+  })
+
+  it('leaves a flat part of another component alone', () => {
+    const result = carousel(
+      `import { TabsRoot } from '@ark-ui/react/tabs'
+const A = () => <TabsRoot slideCount={5} />`,
+      'a.tsx',
+    )
+    expect(result.code).toBeNull()
+  })
+})
