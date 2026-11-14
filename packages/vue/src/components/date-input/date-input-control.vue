@@ -1,9 +1,9 @@
 <script lang="ts">
-import type { ControlState } from '@zag-js/date-input'
+import type { RootState } from '@zag-js/date-input'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
-export interface DateInputControlState extends ControlState {}
+export interface DateInputControlState extends RootState {}
 export interface DateInputControlBaseProps extends PolymorphicProps {}
 export interface DateInputControlProps
   extends
@@ -27,7 +27,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="dateInput.getControlProps()" :state="dateInput.getControlState()" :as-child="asChild">
+  <ark.div v-bind="dateInput.getControlProps()" :state="dateInput.getRootState()" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

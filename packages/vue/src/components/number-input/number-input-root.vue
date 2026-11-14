@@ -25,8 +25,7 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<NumberInputRootProps>(), {
   allowMouseWheel: undefined,
-  allowOverflow: undefined,
-  clampValueOnBlur: undefined,
+  allowOutOfRange: undefined,
   disabled: undefined,
   focusInputOnChange: undefined,
   invalid: undefined,

@@ -13,7 +13,7 @@ export interface StepsContentProps extends HTMLProps<'div'>, StepsContentBasePro
 const splitContentProps = createSplitProps<ItemProps>()
 
 export const StepsContent = forwardRef<HTMLDivElement, StepsContentProps>((props, ref) => {
-  const [itemProps, localProps] = splitContentProps(props, ['index'])
+  const [itemProps, localProps] = splitContentProps(props, ['value'])
   const steps = useStepsContext()
   const mergedProps = mergeProps(steps.getContentProps(itemProps), localProps)
 

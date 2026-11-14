@@ -1,9 +1,9 @@
 <script lang="ts">
-import type { LabelState } from '@zag-js/editable'
+import type { RootState } from '@zag-js/editable'
 import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
-export interface EditableLabelState extends LabelState {}
+export interface EditableLabelState extends RootState {}
 export interface EditableLabelBaseProps extends PolymorphicProps {}
 export interface EditableLabelProps
   extends
@@ -28,7 +28,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.label v-bind="editable.getLabelProps()" :state="editable.getLabelState()" :as-child="asChild">
+  <ark.label v-bind="editable.getLabelProps()" :state="editable.getRootState()" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

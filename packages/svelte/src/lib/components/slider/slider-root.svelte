@@ -44,8 +44,8 @@
       'thumbAlignment',
       'thumbCollisionBehavior',
       'thumbSize',
-      'aria-labelledby',
-      'aria-label',
+      'getAriaLabelledBy',
+      'getAriaLabel',
     ]),
   )
 

@@ -17,6 +17,12 @@ export interface RootProps {
    */
   defaultActiveIds?: string[]
   /**
+   * Whether every visible heading can be active at once.
+   * When `false`, only the topmost visible heading is active.
+   * @default false
+   */
+  multiple?: boolean
+  /**
    * Function that returns the scroll container element to observe within.
    * Defaults to the document/viewport.
    */

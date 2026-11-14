@@ -16,6 +16,11 @@ export interface RootProps {
    */
   disabled?: boolean
   /**
+   * Whether closed items stay searchable with the browser's find-in-page.
+   * Uses `hidden="until-found"`, and expands an item when a match is found inside it.
+   */
+  hiddenUntilFound?: boolean
+  /**
    * The unique identifier of the machine.
    */
   id?: string
@@ -28,12 +33,6 @@ export interface RootProps {
     itemContent(value: string): string
     itemTrigger(value: string): string
   }>
-  /**
-   * Whether to loop focus back to the first/last trigger when navigating
-   * past the end/start with the arrow keys.
-   * @default true
-   */
-  loopFocus?: boolean
   /**
    * The v-model value of the accordion
    */

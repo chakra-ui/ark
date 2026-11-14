@@ -6,11 +6,16 @@ import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
 import type { RootEmits } from './steps.types.ts'
 
-export interface UseStepsProps extends Optional<Omit<steps.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseStepsProps extends Optional<Omit<steps.Props, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The v-model value of the stepper
+   */
+  modelValue?: string | null
+}
 
 export interface UseStepsReturn extends ComputedRef<steps.Api<PropTypes>> {}
 
-export function useSteps(props: MaybeRefOrGetter<UseStepsProps> = {}, emit?: EmitFn<RootEmits>): UseStepsReturn {
+export function useSteps(props: MaybeRefOrGetter<UseStepsProps>, emit?: EmitFn<RootEmits>): UseStepsReturn {
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const id = useId()
@@ -22,19 +27,24 @@ export function useSteps(props: MaybeRefOrGetter<UseStepsProps> = {}, emit?: Emi
       id,
       dir: locale.value.dir,
       getRootNode: env?.value?.getRootNode,
+      value: localProps.modelValue ?? undefined,
       ...cleanProps(localProps),
-      onStepChange: (details) => {
-        emit?.('stepChange', details)
-        emit?.('update:step', details.step)
-        localProps.onStepChange?.(details)
+      onValueChange: (details) => {
+        emit?.('valueChange', details)
+        emit?.('update:modelValue', details.value)
+        localProps.onValueChange?.(details)
       },
-      onStepComplete: () => {
-        emit?.('stepComplete')
-        localProps.onStepComplete?.()
+      onCompletedChange: (details) => {
+        emit?.('completedChange', details)
+        localProps.onCompletedChange?.(details)
       },
-      onStepInvalid: (details) => {
-        emit?.('stepInvalid', details)
-        localProps.onStepInvalid?.(details)
+      onComplete: (details) => {
+        emit?.('complete', details)
+        localProps.onComplete?.(details)
+      },
+      onNavigationBlocked: (details) => {
+        emit?.('navigationBlocked', details)
+        localProps.onNavigationBlocked?.(details)
       },
     }
   })

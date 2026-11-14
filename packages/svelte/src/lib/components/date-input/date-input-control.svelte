@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { ControlState } from '@zag-js/date-input'
+  import type { RootState } from '@zag-js/date-input'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface DateInputControlState extends ControlState {}
+  export interface DateInputControlState extends RootState {}
   export interface DateInputControlBaseProps extends PolymorphicProps<'div', DateInputControlState>, RefAttribute {}
   export interface DateInputControlProps extends Assign<HTMLProps<'div'>, DateInputControlBaseProps> {}
 </script>
@@ -18,4 +18,4 @@
   const mergedProps = $derived(mergeProps(dateInput().getControlProps(), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} state={dateInput().getControlState()} />
+<Ark as="div" bind:ref {...mergedProps} state={dateInput().getRootState()} />

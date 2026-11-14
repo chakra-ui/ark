@@ -7,8 +7,7 @@ const splitFn = createSplitProps<Optional<UseNumberInputProps, 'id'>>()
 export const splitNumberInputProps = <T extends Optional<UseNumberInputProps, 'id'>>(props: T) =>
   splitFn(props, [
     'allowMouseWheel',
-    'allowOverflow',
-    'clampValueOnBlur',
+    'allowOutOfRange',
     'defaultValue',
     'disabled',
     'focusInputOnChange',

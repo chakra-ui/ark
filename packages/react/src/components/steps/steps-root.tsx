@@ -2,30 +2,33 @@
 
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
+import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { type UseStepsProps, useSteps } from './use-steps.ts'
 import { StepsProvider } from './use-steps-context.ts'
 
 export interface StepsRootBaseProps extends UseStepsProps, PolymorphicProps {}
-export interface StepsRootProps extends HTMLProps<'div'>, StepsRootBaseProps {}
+export interface StepsRootProps extends Assign<HTMLProps<'div'>, StepsRootBaseProps> {}
 
 const splitRootProps = createSplitProps<UseStepsProps>()
 
 export const StepsRoot = forwardRef<HTMLDivElement, StepsRootProps>((props, ref) => {
   const [useStepsProps, localProps] = splitRootProps(props, [
-    'count',
-    'defaultStep',
+    'completedValues',
+    'defaultCompletedValues',
+    'defaultValue',
     'id',
     'ids',
-    'isStepSkippable',
-    'isStepValid',
+    'items',
     'linear',
-    'onStepChange',
-    'onStepComplete',
-    'onStepInvalid',
+    'onComplete',
+    'onCompletedChange',
+    'onNavigationBlocked',
+    'onValueChange',
     'orientation',
-    'step',
+    'translations',
+    'value',
   ])
 
   const steps = useSteps(useStepsProps)

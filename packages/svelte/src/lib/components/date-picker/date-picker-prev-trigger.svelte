@@ -15,7 +15,7 @@
 
   const datePicker = useDatePickerContext()
   const viewProps = useDatePickerViewPropsContext()
-  const mergedProps = $derived(mergeProps(datePicker().getPrevTriggerProps(viewProps()), props))
+  const mergedProps = $derived(mergeProps(datePicker().getPreviousTriggerProps(viewProps()), props))
 </script>
 
 <Ark as="button" bind:ref {...mergedProps} />

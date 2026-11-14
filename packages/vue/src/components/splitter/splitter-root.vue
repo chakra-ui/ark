@@ -1,5 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { BooleanDefaults } from '../../types.ts'
 import type { PolymorphicProps } from '../factory.ts'
 import type { RootEmits, RootProps } from './splitter.types.ts'
 
@@ -20,7 +21,9 @@ import { useSplitter } from './use-splitter.ts'
 import { SplitterProvider } from './use-splitter-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
-const props = defineProps<SplitterRootProps>()
+const props = withDefaults(defineProps<SplitterRootProps>(), {
+  disabled: undefined,
+} satisfies BooleanDefaults<RootProps>)
 const emits = defineEmits<SplitterRootEmits>()
 
 const splitter = useSplitter(props, emits)

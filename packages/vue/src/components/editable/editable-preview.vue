@@ -1,9 +1,9 @@
 <script lang="ts">
-import type { PreviewState } from '@zag-js/editable'
+import type { RootState } from '@zag-js/editable'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
-export interface EditablePreviewState extends PreviewState {}
+export interface EditablePreviewState extends RootState {}
 export interface EditablePreviewBaseProps extends PolymorphicProps {}
 export interface EditablePreviewProps
   extends
@@ -28,7 +28,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.span v-bind="editable.getPreviewProps()" :state="editable.getPreviewState()" :as-child="asChild">
+  <ark.span v-bind="editable.getPreviewProps()" :state="editable.getRootState()" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

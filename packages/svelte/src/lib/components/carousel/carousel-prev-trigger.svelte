@@ -13,7 +13,7 @@
   let { ref = $bindable(null), ...props }: CarouselPrevTriggerProps = $props()
 
   const carousel = useCarouselContext()
-  const mergedProps = $derived(mergeProps(carousel().getPrevTriggerProps(), props))
+  const mergedProps = $derived(mergeProps(carousel().getPreviousTriggerProps(), props))
 </script>
 
 <Ark as="button" bind:ref {...mergedProps} />

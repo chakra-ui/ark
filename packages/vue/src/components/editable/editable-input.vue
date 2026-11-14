@@ -1,9 +1,9 @@
 <script lang="ts">
-import type { InputState } from '@zag-js/editable'
+import type { RootState } from '@zag-js/editable'
 import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
-export interface EditableInputState extends InputState {}
+export interface EditableInputState extends RootState {}
 export interface EditableInputBaseProps extends PolymorphicProps {}
 export interface EditableInputProps
   extends
@@ -33,7 +33,7 @@ useForwardExpose()
   <ark.input
     :aria-describedby="field?.ariaDescribedby"
     v-bind="editable.getInputProps()"
-    :state="editable.getInputState()"
+    :state="editable.getRootState()"
     :as-child="asChild"
   >
     <template v-if="$slots.render" #render="scope">

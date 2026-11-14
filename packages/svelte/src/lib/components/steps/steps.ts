@@ -1,4 +1,10 @@
-export type { StepChangeDetails, StepInvalidDetails } from '@zag-js/steps'
+export type {
+  CompleteDetails,
+  CompletedChangeDetails,
+  NavigationBlockedDetails,
+  StepItem,
+  ValueChangeDetails,
+} from '@zag-js/steps'
 export {
   default as CompletedContent,
   type StepsCompletedContentBaseProps as CompletedContentBaseProps,
@@ -52,6 +58,11 @@ export {
   type StepsRootProviderBaseProps as RootProviderBaseProps,
   type StepsRootProviderProps as RootProviderProps,
 } from './steps-root-provider.svelte'
+export {
+  default as SkipTrigger,
+  type StepsSkipTriggerBaseProps as SkipTriggerBaseProps,
+  type StepsSkipTriggerProps as SkipTriggerProps,
+} from './steps-skip-trigger.svelte'
 export {
   default as Separator,
   type StepsSeparatorBaseProps as SeparatorBaseProps,

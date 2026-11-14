@@ -13,7 +13,7 @@
   import { useStepsContext } from './use-steps-context.ts'
 
   let { ref = $bindable(null), ...props }: StepsContentProps = $props()
-  const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['index']))
+  const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['value']))
 
   const steps = useStepsContext()
   const mergedProps = $derived(mergeProps(steps().getContentProps(itemProps), localProps))

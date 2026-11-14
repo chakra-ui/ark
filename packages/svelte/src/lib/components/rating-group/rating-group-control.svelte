@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { ControlState } from '@zag-js/rating-group'
+  import type { RootState } from '@zag-js/rating-group'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface RatingGroupControlState extends ControlState {}
+  export interface RatingGroupControlState extends RootState {}
   export interface RatingGroupControlBaseProps extends PolymorphicProps<'div', RatingGroupControlState>, RefAttribute {}
   export interface RatingGroupControlProps extends Assign<HTMLProps<'div'>, RatingGroupControlBaseProps> {}
 </script>
@@ -24,5 +24,5 @@
   bind:ref
   aria-describedby={field?.()?.ariaDescribedby}
   {...mergedProps}
-  state={ratingGroup().getControlState()}
+  state={ratingGroup().getRootState()}
 />
