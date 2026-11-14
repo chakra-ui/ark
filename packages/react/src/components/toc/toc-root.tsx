@@ -20,6 +20,7 @@ export const TocRoot = forwardRef<HTMLDivElement, TocRootProps>((props, ref) => 
     'id',
     'ids',
     'items',
+    'multiple',
     'onActiveChange',
     'rootMargin',
     'scrollBehavior',

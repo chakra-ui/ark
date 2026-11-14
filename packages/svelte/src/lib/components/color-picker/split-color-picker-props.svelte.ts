@@ -16,6 +16,7 @@ export const splitColorPickerProps = <T extends Optional<UseColorPickerProps, 'i
     'ids',
     'initialFocusEl',
     'invalid',
+    'locale',
     'name',
     'onFocusOutside',
     'onFormatChange',

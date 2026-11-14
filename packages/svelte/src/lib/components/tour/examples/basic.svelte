@@ -20,7 +20,7 @@
       description: 'Click here to upload your files to the cloud.',
       target: () => document.querySelector<HTMLElement>('#btn-upload'),
       actions: [
-        { label: 'Back', action: 'prev' },
+        { label: 'Back', action: 'previous' },
         { label: 'Next', action: 'next' },
       ],
     },
@@ -31,7 +31,7 @@
       description: 'Save your work to keep your progress.',
       target: () => document.querySelector<HTMLElement>('#btn-save'),
       actions: [
-        { label: 'Back', action: 'prev' },
+        { label: 'Back', action: 'previous' },
         { label: 'Next', action: 'next' },
       ],
     },
@@ -42,7 +42,7 @@
       description: 'Access additional settings and actions from this menu.',
       target: () => document.querySelector<HTMLElement>('#btn-more'),
       actions: [
-        { label: 'Back', action: 'prev' },
+        { label: 'Back', action: 'previous' },
         { label: 'Next', action: 'next' },
       ],
     },

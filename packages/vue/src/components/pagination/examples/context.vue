@@ -11,7 +11,7 @@ import styles from 'styles/pagination.module.css'
         <button :class="styles.Trigger" @click="pagination.goToFirstPage()">
           <ChevronsLeft />
         </button>
-        <button :class="styles.Trigger" @click="pagination.goToPrevPage()">
+        <button :class="styles.Trigger" @click="pagination.goToPreviousPage()">
           <ChevronLeft />
         </button>
         <p :class="styles.Text" style="min-width: 120px; text-align: center">

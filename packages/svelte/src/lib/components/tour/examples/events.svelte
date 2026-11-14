@@ -21,7 +21,7 @@
       description: 'Each step change triggers an event.',
       target: () => document.querySelector<HTMLElement>('#event-2'),
       actions: [
-        { label: 'Back', action: 'prev' },
+        { label: 'Back', action: 'previous' },
         { label: 'Next', action: 'next' },
       ],
     },
@@ -32,7 +32,7 @@
       description: 'Complete the tour to see the status change.',
       target: () => document.querySelector<HTMLElement>('#event-3'),
       actions: [
-        { label: 'Back', action: 'prev' },
+        { label: 'Back', action: 'previous' },
         { label: 'Finish', action: 'dismiss' },
       ],
     },

@@ -8,6 +8,6 @@ describe('ColorPicker / Field', () => {
     expect(await screen.findByRole('button', { name: 'Label' })).toHaveAccessibleDescription(
       'Error Info Additional Info',
     )
-    expect(screen.getByRole('textbox', { name: 'hex' })).toHaveAccessibleDescription('Error Info Additional Info')
+    expect(screen.getByRole('textbox', { name: /hex/i })).toHaveAccessibleDescription('Error Info Additional Info')
   })
 })

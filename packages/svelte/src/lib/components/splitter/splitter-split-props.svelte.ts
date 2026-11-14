@@ -5,6 +5,7 @@ import type { UseSplitterProps } from './use-splitter.svelte.ts'
 export function splitSplitterProps<T extends Optional<UseSplitterProps, 'id'>>(props: T) {
   return createSplitProps<Optional<UseSplitterProps, 'id'>>()(props, [
     'defaultSize',
+    'disabled',
     'id',
     'ids',
     'keyboardResizeBy',

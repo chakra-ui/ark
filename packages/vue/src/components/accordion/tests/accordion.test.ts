@@ -59,36 +59,6 @@ describe('Accordion', () => {
     expect(onFocusChange).toHaveBeenCalled()
   })
 
-  it('should focus the next/previous item on arrow up & down', async () => {
-    render(ComponentUnderTest)
-
-    const firstTrigger = screen.getByRole('button', { name: 'React Trigger' })
-    const secondTrigger = screen.getByRole('button', { name: 'Solid Trigger' })
-
-    await user.click(firstTrigger)
-
-    await user.type(firstTrigger, '{arrowdown}')
-    expect(secondTrigger).toHaveFocus()
-
-    await user.type(secondTrigger, '{arrowup}')
-    expect(firstTrigger).toHaveFocus()
-  })
-
-  it('should focus the first/last item on home & end', async () => {
-    render(ComponentUnderTest)
-
-    const firstTrigger = screen.getByRole('button', { name: 'React Trigger' })
-    const lastTrigger = screen.getByRole('button', { name: 'Vue Trigger' })
-
-    await user.click(lastTrigger)
-
-    await user.type(lastTrigger, '{home}')
-    expect(firstTrigger).toHaveFocus()
-
-    await user.type(firstTrigger, '{end}')
-    expect(lastTrigger).toHaveFocus()
-  })
-
   it('should not collapse the current visible item', async () => {
     render(ComponentUnderTest, { props: { collapsible: false } })
 

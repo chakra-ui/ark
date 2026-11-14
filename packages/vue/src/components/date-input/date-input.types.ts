@@ -45,6 +45,13 @@ export interface RootProps {
    */
   max?: dateInput.DateValue
   /**
+   * Determines the largest unit that is displayed in the date input.
+   * To create a time-only input, set this to `"hour"` and set `granularity`
+   * to `"hour"`, `"minute"`, or `"second"`.
+   * @default "year"
+   */
+  maxGranularity?: dateInput.Props['maxGranularity']
+  /**
    * The minimum date that can be selected.
    */
   min?: dateInput.DateValue

@@ -6,7 +6,7 @@ export const FractionDigits = () => (
   <NumberInput.Root
     className={styles.Root}
     formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 3 }}
-    defaultValue="1.00"
+    defaultValue={1}
   >
     <NumberInput.Label className={styles.Label}>Label</NumberInput.Label>
     <NumberInput.Control className={styles.Control}>

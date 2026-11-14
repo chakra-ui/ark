@@ -6,20 +6,14 @@ export interface RootProps {
    */
   allowMouseWheel?: boolean
   /**
-   * Whether to allow the value overflow the min/max range
-   * @default true
+   * Whether to keep a typed value outside the min/max range and report it as invalid, instead of clamping it.
    */
-  allowOverflow?: boolean
-  /**
-   * Whether to clamp the value when the input loses focus (blur)
-   * @default true
-   */
-  clampValueOnBlur?: boolean
+  allowOutOfRange?: boolean
   /**
    * The initial value of the input when rendered.
    * Use when you don't need to control the value of the input.
    */
-  defaultValue?: string
+  defaultValue?: number | null
   /**
    * Whether the number input is disabled.
    */
@@ -85,7 +79,7 @@ export interface RootProps {
   /**
    * The v-model value of the number input
    */
-  modelValue?: string
+  modelValue?: number | null
   /**
    * The name attribute of the number input. Useful for form submission.
    */
@@ -162,5 +156,5 @@ export type RootEmits = {
   /**
    * The callback fired when the model value changes.
    */
-  'update:modelValue': [value: string]
+  'update:modelValue': [value: number | null]
 }

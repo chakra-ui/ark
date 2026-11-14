@@ -10,7 +10,7 @@ export interface StepsCompletedContentProps extends HTMLProps<'div'>, StepsCompl
 
 export const StepsCompletedContent = forwardRef<HTMLDivElement, StepsCompletedContentProps>((props, ref) => {
   const steps = useStepsContext()
-  const mergedProps = mergeProps(steps.getContentProps({ index: steps.count }), props)
+  const mergedProps = mergeProps(steps.getCompletedContentProps(), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

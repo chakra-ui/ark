@@ -8,7 +8,7 @@ import styles from 'styles/number-input.module.css'
   <NumberInput.Root
     :class="styles.Root"
     :formatOptions="{ minimumFractionDigits: 2, maximumFractionDigits: 3 }"
-    defaultValue="1.00"
+    :defaultValue="1"
   >
     <NumberInput.Label :class="styles.Label">Label</NumberInput.Label>
     <NumberInput.Control :class="styles.Control">

@@ -5,9 +5,9 @@ import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { useFieldContext } from '../field/index.ts'
 import { useEditableContext } from './use-editable-context.ts'
-import type { InputState } from '@zag-js/editable'
+import type { RootState } from '@zag-js/editable'
 
-export interface EditableInputState extends InputState {}
+export interface EditableInputState extends RootState {}
 
 export interface EditableInputBaseProps extends PolymorphicProps<EditableInputState> {}
 export interface EditableInputProps extends HTMLProps<'input'>, EditableInputBaseProps {}
@@ -18,7 +18,7 @@ export const EditableInput = forwardRef<HTMLInputElement, EditableInputProps>((p
   const field = useFieldContext()
 
   return (
-    <ark.input aria-describedby={field?.ariaDescribedby} {...mergedProps} ref={ref} state={editable.getInputState()} />
+    <ark.input aria-describedby={field?.ariaDescribedby} {...mergedProps} ref={ref} state={editable.getRootState()} />
   )
 })
 

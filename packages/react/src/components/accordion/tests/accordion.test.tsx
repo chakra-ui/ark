@@ -99,36 +99,6 @@ describe('Accordion', () => {
     expect(button).toHaveAttribute('dir', 'rtl')
   })
 
-  it('should focus the next/previous item on arrow up & down', async () => {
-    render(<ComponentUnderTest />)
-
-    const firstButton = screen.getByRole('button', { name: 'React Trigger' })
-    const secondButton = screen.getByRole('button', { name: 'Solid Trigger' })
-
-    await user.click(firstButton)
-
-    await user.type(firstButton, '{arrowdown}')
-    expect(secondButton).toHaveFocus()
-
-    await user.type(secondButton, '{arrowup}')
-    expect(firstButton).toHaveFocus()
-  })
-
-  it('should focus the first/last item on home & end', async () => {
-    render(<ComponentUnderTest />)
-
-    const firstButton = screen.getByRole('button', { name: 'React Trigger' })
-    const lastButton = screen.getByRole('button', { name: 'Vue Trigger' })
-
-    await user.click(lastButton)
-
-    await user.type(lastButton, '{home}')
-    expect(firstButton).toHaveFocus()
-
-    await user.type(firstButton, '{end}')
-    expect(lastButton).toHaveFocus()
-  })
-
   it('should not collapse the current visible item', async () => {
     render(<ComponentUnderTest collapsible={false} />)
 

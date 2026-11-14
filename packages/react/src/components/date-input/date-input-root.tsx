@@ -26,6 +26,7 @@ export const DateInputRoot = forwardRef<HTMLDivElement, DateInputRootProps>((pro
     'invalid',
     'locale',
     'max',
+    'maxGranularity',
     'min',
     'name',
     'form',

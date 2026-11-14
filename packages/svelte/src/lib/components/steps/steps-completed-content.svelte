@@ -13,7 +13,7 @@
   let { ref = $bindable(null), ...props }: StepsCompletedContentProps = $props()
 
   const steps = useStepsContext()
-  const mergedProps = $derived(mergeProps(steps().getContentProps({ index: steps().count }), props))
+  const mergedProps = $derived(mergeProps(steps().getCompletedContentProps(), props))
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

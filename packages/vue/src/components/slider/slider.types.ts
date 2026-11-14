@@ -2,14 +2,6 @@ import type * as slider from '@zag-js/slider'
 
 export interface RootProps {
   /**
-   * The aria-label of each slider thumb. Useful for providing an accessible name to the slider
-   */
-  'aria-label'?: string[]
-  /**
-   * The `id` of the elements that labels each slider thumb. Useful for providing an accessible name to the slider
-   */
-  'aria-labelledby'?: string[]
-  /**
    * The initial value of the slider when rendered.
    * Use when you don't need to control the value of the slider.
    */
@@ -27,6 +19,15 @@ export interface RootProps {
    * The associate form of the underlying input element.
    */
   form?: string
+  /**
+   * Function that returns the accessible name of each thumb, e.g. "Minimum price"
+   */
+  getAriaLabel?: slider.Props['getAriaLabel']
+  /**
+   * Function that returns the `id` of the element that labels each thumb.
+   * Defaults to the label part when no `getAriaLabel` is provided.
+   */
+  getAriaLabelledBy?: slider.Props['getAriaLabelledBy']
   /**
    * Function that returns a human readable value for the slider thumb
    */

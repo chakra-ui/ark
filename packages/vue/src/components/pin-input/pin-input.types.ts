@@ -10,10 +10,6 @@ export interface RootProps {
    */
   autoSubmit?: boolean
   /**
-   * Whether to blur the input when the value is complete
-   */
-  blurOnComplete?: boolean
-  /**
    * The number of inputs to render to improve SSR aria attributes.
    */
   count: number
@@ -55,6 +51,11 @@ export interface RootProps {
    */
   name?: string
   /**
+   * Function to normalize typed or pasted text, such as uppercasing it.
+   * @example (value) => value.toUpperCase()
+   */
+  normalizeValue?: (value: string) => string
+  /**
    * If `true`, the pin input component signals to its fields that they should
    * use `autocomplete="one-time-code"`.
    */
@@ -76,15 +77,6 @@ export interface RootProps {
    * Whether the pin input is required
    */
   required?: boolean
-  /**
-   * Function to sanitize pasted values before validation.
-   * Useful for stripping dashes, spaces, or other formatting.
-   */
-  sanitizeValue?: (value: string) => string
-  /**
-   * Whether to select input value when input is focused
-   */
-  selectOnFocus?: boolean
   /**
    * Specifies the localized strings that identifies the accessibility elements and their states
    */

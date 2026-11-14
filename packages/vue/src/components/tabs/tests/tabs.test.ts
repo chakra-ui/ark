@@ -17,7 +17,7 @@ describe('Tabs', () => {
     const tab = screen.getByText('React Trigger')
 
     await user.click(tab)
-    expect(onValueChange).toHaveBeenCalledWith({ value: 'React' })
+    expect(onValueChange).toHaveBeenCalledWith(expect.objectContaining({ value: 'React' }))
   })
 
   it('should not focus disabled tab', async () => {

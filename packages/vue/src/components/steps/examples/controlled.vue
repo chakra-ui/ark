@@ -10,16 +10,16 @@ const items = [
   { value: 'third', title: 'Third', description: 'Select Rooms' },
 ]
 
-const currentStep = ref(0)
+const currentStep = ref<string | null>('first')
 </script>
 
 <template>
   <div class="stack">
-    <output>current step: {{ currentStep + 1 }}</output>
+    <output>current step: {{ currentStep }}</output>
 
-    <Steps.Root v-model:step="currentStep" :class="styles.Root" :count="items.length">
+    <Steps.Root v-model="currentStep" :class="styles.Root" :items="items">
       <Steps.List :class="styles.List">
-        <Steps.Item v-for="(item, index) in items" :key="index" :class="styles.Item" :index="index">
+        <Steps.Item v-for="(item, index) in items" :key="item.value" :class="styles.Item" :value="item.value">
           <Steps.Trigger :class="styles.Trigger">
             <Steps.Indicator :class="styles.Indicator">{{ index + 1 }}</Steps.Indicator>
             <span>{{ item.title }}</span>
@@ -28,7 +28,7 @@ const currentStep = ref(0)
         </Steps.Item>
       </Steps.List>
 
-      <Steps.Content v-for="(item, index) in items" :key="index" :class="styles.Content" :index="index">
+      <Steps.Content v-for="item in items" :key="item.value" :class="styles.Content" :value="item.value">
         {{ item.title }} - {{ item.description }}
       </Steps.Content>
 

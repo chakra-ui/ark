@@ -9,7 +9,7 @@ export interface UseToggleProps extends Omit<toggle.Props, 'dir' | 'getRootNode'
 
 export interface UseToggleReturn extends Accessor<toggle.Api<PropTypes>> {}
 
-export const useToggle = (props: MaybeFunction<UseToggleProps> = {}): UseToggleReturn => {
+export const useToggle = (props: MaybeFunction<UseToggleProps>): UseToggleReturn => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
 

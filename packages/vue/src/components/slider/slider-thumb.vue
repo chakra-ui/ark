@@ -20,7 +20,7 @@ import { ark } from '../factory.ts'
 import { useSliderContext } from './use-slider-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
-const props = defineProps<SliderThumbProps>()
+const props = withDefaults(defineProps<SliderThumbProps>(), { disabled: undefined })
 
 defineSlots<PolymorphicSlots<SliderThumbState>>()
 const slider = useSliderContext()

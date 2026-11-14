@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { AreaState } from '@zag-js/editable'
+  import type { RootState } from '@zag-js/editable'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface EditableAreaState extends AreaState {}
+  export interface EditableAreaState extends RootState {}
   export interface EditableAreaBaseProps extends PolymorphicProps<'div', EditableAreaState>, RefAttribute {}
   export interface EditableAreaProps extends Assign<HTMLProps<'div'>, EditableAreaBaseProps> {}
 </script>
@@ -18,4 +18,4 @@
   const mergedProps = $derived(mergeProps(editable().getAreaProps(), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} state={editable().getAreaState()} />
+<Ark as="div" bind:ref {...mergedProps} state={editable().getRootState()} />

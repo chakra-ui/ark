@@ -13,7 +13,6 @@ export interface StepsCompletedContentProps
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import { ark } from '../factory.ts'
 import { useStepsContext } from './use-steps-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
@@ -21,13 +20,12 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 defineProps<StepsCompletedContentProps>()
 
 const steps = useStepsContext()
-const itemProps = computed(() => ({ index: steps.value.count }))
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="steps.getContentProps(itemProps)" :as-child="asChild">
+  <ark.div v-bind="steps.getCompletedContentProps()" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>
