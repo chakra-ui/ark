@@ -1,7 +1,7 @@
 import { Field } from '@ark-ui/solid/field'
 import { Select, createListCollection } from '@ark-ui/solid/select'
 import { ChevronsUpDownIcon } from 'lucide-solid'
-import { Index } from 'solid-js/web'
+import { For } from '@solidjs/web'
 import field from 'styles/field.module.css'
 import styles from 'styles/select.module.css'
 
@@ -23,14 +23,14 @@ export const WithField = () => {
         <Select.Positioner>
           <Select.Content class={styles.Content}>
             <Select.List class={styles.List}>
-              <Index each={collection.items}>
+              <For each={collection.items} keyed={false}>
                 {(item) => (
                   <Select.Item class={styles.Item} item={item()}>
                     <Select.ItemText class={styles.ItemText}>{item()}</Select.ItemText>
                     <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
                   </Select.Item>
                 )}
-              </Index>
+              </For>
             </Select.List>
           </Select.Content>
         </Select.Positioner>

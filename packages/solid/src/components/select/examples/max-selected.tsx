@@ -1,7 +1,7 @@
 import { Select, createListCollection } from '@ark-ui/solid/select'
 import { ChevronsUpDownIcon, XIcon } from 'lucide-solid'
-import { Index, createMemo, createSignal } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { For, createMemo, createSignal } from 'solid-js'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/select.module.css'
 
 const items = ['React', 'Solid', 'Vue', 'Svelte']
@@ -52,14 +52,14 @@ export const MaxSelected = () => {
             <Select.List class={styles.List}>
               <Select.ItemGroup class={styles.ItemGroup}>
                 <Select.ItemGroupLabel class={styles.ItemGroupLabel}>Frameworks</Select.ItemGroupLabel>
-                <Index each={collection().items}>
+                <For each={collection().items} keyed={false}>
                   {(item) => (
                     <Select.Item class={styles.Item} item={item()}>
                       <Select.ItemText class={styles.ItemText}>{item().label}</Select.ItemText>
                       <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
                     </Select.Item>
                   )}
-                </Index>
+                </For>
               </Select.ItemGroup>
             </Select.List>
           </Select.Content>

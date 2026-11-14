@@ -1,7 +1,7 @@
 import { Popover } from '@ark-ui/solid/popover'
 import { XIcon } from 'lucide-solid'
 import { createSignal } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import button from 'styles/button.module.css'
 import styles from 'styles/popover.module.css'
 

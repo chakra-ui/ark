@@ -1,6 +1,7 @@
 import { Menu } from '@ark-ui/solid/menu'
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
-import { Index, splitProps } from 'solid-js'
+import { For } from 'solid-js'
+import { splitProps } from '../../../utils/split-props.ts'
 
 interface ComponentUnderTestProps extends Menu.RootProps {
   onValueChange?: (e: { value: string }) => void
@@ -34,14 +35,14 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
           <Menu.Separator />
           <Menu.RadioItemGroup value="react" onValueChange={onValueChange}>
             <Menu.ItemGroupLabel>JS Frameworks</Menu.ItemGroupLabel>
-            <Index each={['react', 'solid', 'svelte', 'vue']}>
+            <For each={['react', 'solid', 'svelte', 'vue']} keyed={false}>
               {(framework) => (
                 <Menu.RadioItem value={framework()} disabled={framework() === 'svelte'}>
                   <Menu.ItemIndicator>✅</Menu.ItemIndicator>
                   <Menu.ItemText>{framework()}</Menu.ItemText>
                 </Menu.RadioItem>
               )}
-            </Index>
+            </For>
           </Menu.RadioItemGroup>
           <Menu.Separator />
           <Menu.Root>

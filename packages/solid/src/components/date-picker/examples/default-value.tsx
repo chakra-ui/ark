@@ -1,7 +1,7 @@
 import { DatePicker, parseDate } from '@ark-ui/solid/date-picker'
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-solid'
-import { Index } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { For } from 'solid-js'
+import { Portal } from '@solidjs/web'
 import button from 'styles/button.module.css'
 import styles from 'styles/date-picker.module.css'
 
@@ -37,20 +37,20 @@ export const DefaultValue = () => {
                     <DatePicker.Table class={styles.Table}>
                       <DatePicker.TableHead class={styles.TableHead}>
                         <DatePicker.TableRow class={styles.TableRow}>
-                          <Index each={context().weekDays}>
+                          <For each={context().weekDays} keyed={false}>
                             {(weekDay) => (
                               <DatePicker.TableHeader class={styles.TableHeader}>
                                 {weekDay().short}
                               </DatePicker.TableHeader>
                             )}
-                          </Index>
+                          </For>
                         </DatePicker.TableRow>
                       </DatePicker.TableHead>
                       <DatePicker.TableBody class={styles.TableBody}>
-                        <Index each={context().weeks}>
+                        <For each={context().weeks} keyed={false}>
                           {(week) => (
                             <DatePicker.TableRow class={styles.TableRow}>
-                              <Index each={week()}>
+                              <For each={week()} keyed={false}>
                                 {(day) => (
                                   <DatePicker.TableCell class={styles.TableCell} value={day()}>
                                     <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>
@@ -58,10 +58,10 @@ export const DefaultValue = () => {
                                     </DatePicker.TableCellTrigger>
                                   </DatePicker.TableCell>
                                 )}
-                              </Index>
+                              </For>
                             </DatePicker.TableRow>
                           )}
-                        </Index>
+                        </For>
                       </DatePicker.TableBody>
                     </DatePicker.Table>
                   </>
@@ -85,10 +85,10 @@ export const DefaultValue = () => {
                     </DatePicker.ViewControl>
                     <DatePicker.Table class={styles.Table}>
                       <DatePicker.TableBody class={styles.TableBody}>
-                        <Index each={context().getMonthsGrid({ columns: 4, format: 'short' })}>
+                        <For each={context().getMonthsGrid({ columns: 4, format: 'short' })} keyed={false}>
                           {(months) => (
                             <DatePicker.TableRow class={styles.TableRow}>
-                              <Index each={months()}>
+                              <For each={months()} keyed={false}>
                                 {(month) => (
                                   <DatePicker.TableCell class={styles.TableCell} value={month().value}>
                                     <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>
@@ -96,10 +96,10 @@ export const DefaultValue = () => {
                                     </DatePicker.TableCellTrigger>
                                   </DatePicker.TableCell>
                                 )}
-                              </Index>
+                              </For>
                             </DatePicker.TableRow>
                           )}
-                        </Index>
+                        </For>
                       </DatePicker.TableBody>
                     </DatePicker.Table>
                   </>
@@ -123,10 +123,10 @@ export const DefaultValue = () => {
                     </DatePicker.ViewControl>
                     <DatePicker.Table class={styles.Table}>
                       <DatePicker.TableBody class={styles.TableBody}>
-                        <Index each={context().getYearsGrid({ columns: 4 })}>
+                        <For each={context().getYearsGrid({ columns: 4 })} keyed={false}>
                           {(years) => (
                             <DatePicker.TableRow class={styles.TableRow}>
-                              <Index each={years()}>
+                              <For each={years()} keyed={false}>
                                 {(year) => (
                                   <DatePicker.TableCell class={styles.TableCell} value={year().value}>
                                     <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>
@@ -134,10 +134,10 @@ export const DefaultValue = () => {
                                     </DatePicker.TableCellTrigger>
                                   </DatePicker.TableCell>
                                 )}
-                              </Index>
+                              </For>
                             </DatePicker.TableRow>
                           )}
-                        </Index>
+                        </For>
                       </DatePicker.TableBody>
                     </DatePicker.Table>
                   </>

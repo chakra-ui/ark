@@ -1,6 +1,6 @@
 import { RatingGroup } from '@ark-ui/solid/rating-group'
 import { StarIcon } from 'lucide-solid'
-import { Index, createSignal } from 'solid-js'
+import { For, createSignal } from 'solid-js'
 import styles from 'styles/rating-group.module.css'
 
 export const Controlled = () => {
@@ -12,7 +12,7 @@ export const Controlled = () => {
       <RatingGroup.Control class={styles.Control}>
         <RatingGroup.Context>
           {(context) => (
-            <Index each={context().items}>
+            <For each={context().items} keyed={false}>
               {(item) => (
                 <RatingGroup.Item class={styles.Item} index={item()}>
                   <RatingGroup.ItemContext>
@@ -29,7 +29,7 @@ export const Controlled = () => {
                   </RatingGroup.ItemContext>
                 </RatingGroup.Item>
               )}
-            </Index>
+            </For>
           )}
         </RatingGroup.Context>
         <RatingGroup.HiddenInput />

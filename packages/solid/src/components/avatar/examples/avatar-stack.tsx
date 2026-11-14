@@ -1,7 +1,7 @@
 import { Avatar } from '@ark-ui/solid/avatar'
 import { Menu } from '@ark-ui/solid/menu'
 import { For, Show } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/avatar.module.css'
 import menuStyles from 'styles/menu.module.css'
 

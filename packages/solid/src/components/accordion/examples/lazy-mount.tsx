@@ -1,12 +1,12 @@
 import { Accordion } from '@ark-ui/solid/accordion'
 import { ChevronDownIcon } from 'lucide-solid'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import styles from 'styles/accordion.module.css'
 
 export const LazyMount = () => {
   return (
     <Accordion.Root class={styles.Root} lazyMount unmountOnExit>
-      <Index each={items}>
+      <For each={items} keyed={false}>
         {(item) => (
           <Accordion.Item class={styles.Item} value={item().value}>
             <Accordion.ItemHeader class={styles.ItemHeader}>
@@ -22,7 +22,7 @@ export const LazyMount = () => {
             </Accordion.ItemContent>
           </Accordion.Item>
         )}
-      </Index>
+      </For>
     </Accordion.Root>
   )
 }

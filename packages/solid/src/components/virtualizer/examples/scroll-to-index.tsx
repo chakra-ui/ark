@@ -1,5 +1,5 @@
 import { ListVirtualizer, useListVirtualizer } from '@ark-ui/solid/virtualizer'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import styles from 'styles/virtualizer.module.css'
 
 const items = Array.from({ length: 10000 }, (_, index) => `Item ${index + 1}`)
@@ -30,13 +30,13 @@ export const ScrollToIndex = () => {
       </div>
       <ListVirtualizer.Root value={virtualizer} class={styles.Root}>
         <ListVirtualizer.Content>
-          <Index each={virtualizer.getVirtualItems()}>
+          <For each={virtualizer.getVirtualItems()} keyed={false}>
             {(item) => (
               <ListVirtualizer.Item item={item()} class={`${styles.Item} ${item().index % 2 ? styles.ItemAlt : ''}`}>
                 {items[item().index]}
               </ListVirtualizer.Item>
             )}
-          </Index>
+          </For>
         </ListVirtualizer.Content>
       </ListVirtualizer.Root>
     </div>

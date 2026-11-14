@@ -1,5 +1,5 @@
 import { Dialog } from '@ark-ui/solid/dialog'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 
 export const ComponentUnderTest = (props: Dialog.RootProps) => (
   <Dialog.Root {...props}>

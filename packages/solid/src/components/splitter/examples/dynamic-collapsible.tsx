@@ -1,12 +1,12 @@
 import { Splitter, useSplitter } from '@ark-ui/solid/splitter'
-import { createEffect, createSignal, onMount } from 'solid-js'
+import { createEffect, createSignal, onSettled } from 'solid-js'
 import styles from 'styles/splitter.module.css'
 
 export const DynamicCollapsible = () => {
   const [rootSize, setRootSize] = createSignal<number | null>(null)
   let ref: HTMLDivElement | undefined
 
-  onMount(() => {
+  onSettled(() => {
     const handleResize = () => setRootSize(ref?.offsetWidth ?? null)
     handleResize()
     window.addEventListener('resize', handleResize)
@@ -20,8 +20,8 @@ export const DynamicCollapsible = () => {
     defaultSize: [15, 85],
   }))
 
-  createEffect(() => {
-    if (isBelowMd()) splitter().collapsePanel('a')
+  createEffect(isBelowMd, (below) => {
+    if (below) splitter().collapsePanel('a')
     else splitter().expandPanel('a')
   })
 

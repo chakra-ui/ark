@@ -1,4 +1,4 @@
-import { createSignal, onCleanup, onMount } from 'solid-js'
+import { createSignal, onCleanup, onSettled } from 'solid-js'
 
 export function useAsync<T>(fn: (signal: AbortSignal | null) => Promise<T>) {
   const [loading, setLoading] = createSignal(false)
@@ -26,7 +26,7 @@ export function useAsync<T>(fn: (signal: AbortSignal | null) => Promise<T>) {
     }
   }
 
-  onMount(() => {
+  onSettled(() => {
     void load()
   })
 

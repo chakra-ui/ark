@@ -1,7 +1,7 @@
 import { DatePicker } from '@ark-ui/solid/date-picker'
 import { CalendarIcon } from 'lucide-solid'
-import { Index, createMemo } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { For, createMemo } from 'solid-js'
+import { Portal } from '@solidjs/web'
 import button from 'styles/button.module.css'
 import styles from 'styles/date-picker.module.css'
 
@@ -29,20 +29,20 @@ export const RangeSelection = () => {
                   <DatePicker.Table class={styles.Table}>
                     <DatePicker.TableHead class={styles.TableHead}>
                       <DatePicker.TableRow class={styles.TableRow}>
-                        <Index each={context().weekDays}>
+                        <For each={context().weekDays} keyed={false}>
                           {(weekDay) => (
                             <DatePicker.TableHeader class={styles.TableHeader}>
                               {weekDay().short}
                             </DatePicker.TableHeader>
                           )}
-                        </Index>
+                        </For>
                       </DatePicker.TableRow>
                     </DatePicker.TableHead>
                     <DatePicker.TableBody class={styles.TableBody}>
-                      <Index each={context().weeks}>
+                      <For each={context().weeks} keyed={false}>
                         {(week) => (
                           <DatePicker.TableRow class={styles.TableRow}>
-                            <Index each={week()}>
+                            <For each={week()} keyed={false}>
                               {(day) => (
                                 <DatePicker.TableCell class={styles.TableCell} value={day()}>
                                   <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>
@@ -50,10 +50,10 @@ export const RangeSelection = () => {
                                   </DatePicker.TableCellTrigger>
                                 </DatePicker.TableCell>
                               )}
-                            </Index>
+                            </For>
                           </DatePicker.TableRow>
                         )}
-                      </Index>
+                      </For>
                     </DatePicker.TableBody>
                   </DatePicker.Table>
                 )}
@@ -65,20 +65,20 @@ export const RangeSelection = () => {
                     <DatePicker.Table class={styles.Table}>
                       <DatePicker.TableHead class={styles.TableHead}>
                         <DatePicker.TableRow class={styles.TableRow}>
-                          <Index each={context().weekDays}>
+                          <For each={context().weekDays} keyed={false}>
                             {(weekDay) => (
                               <DatePicker.TableHeader class={styles.TableHeader}>
                                 {weekDay().short}
                               </DatePicker.TableHeader>
                             )}
-                          </Index>
+                          </For>
                         </DatePicker.TableRow>
                       </DatePicker.TableHead>
                       <DatePicker.TableBody class={styles.TableBody}>
-                        <Index each={offset().weeks}>
+                        <For each={offset().weeks} keyed={false}>
                           {(week) => (
                             <DatePicker.TableRow class={styles.TableRow}>
-                              <Index each={week()}>
+                              <For each={week()} keyed={false}>
                                 {(day) => (
                                   <DatePicker.TableCell
                                     class={styles.TableCell}
@@ -90,10 +90,10 @@ export const RangeSelection = () => {
                                     </DatePicker.TableCellTrigger>
                                   </DatePicker.TableCell>
                                 )}
-                              </Index>
+                              </For>
                             </DatePicker.TableRow>
                           )}
-                        </Index>
+                        </For>
                       </DatePicker.TableBody>
                     </DatePicker.Table>
                   )

@@ -1,7 +1,7 @@
 import { ColorPicker, parseColor } from '@ark-ui/solid/color-picker'
 import { Dialog } from '@ark-ui/solid/dialog'
 import { Pipette, XIcon } from 'lucide-solid'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import button from 'styles/button.module.css'
 import dialog from 'styles/dialog.module.css'
 import styles from 'styles/color-picker.module.css'

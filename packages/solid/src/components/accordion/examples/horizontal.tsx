@@ -1,11 +1,11 @@
 import { Accordion } from '@ark-ui/solid/accordion'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import styles from 'styles/accordion.module.css'
 
 export const Horizontal = () => {
   return (
     <Accordion.Root class={styles.Root} defaultValue={['ark-ui']} orientation="horizontal">
-      <Index each={items}>
+      <For each={items} keyed={false}>
         {(item) => (
           <Accordion.Item class={styles.Item} value={item().value}>
             <Accordion.ItemHeader class={styles.ItemHeader}>
@@ -16,7 +16,7 @@ export const Horizontal = () => {
             </Accordion.ItemContent>
           </Accordion.Item>
         )}
-      </Index>
+      </For>
     </Accordion.Root>
   )
 }

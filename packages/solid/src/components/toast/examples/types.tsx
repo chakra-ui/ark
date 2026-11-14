@@ -1,7 +1,7 @@
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import { Toast, Toaster, createToaster } from '@ark-ui/solid/toast'
 import { CircleAlertIcon, CircleCheckIcon, InfoIcon, TriangleAlertIcon, XIcon } from 'lucide-solid'
-import { Dynamic } from 'solid-js/web'
+import { Dynamic } from '@solidjs/web'
 import button from 'styles/button.module.css'
 import styles from 'styles/toast.module.css'
 

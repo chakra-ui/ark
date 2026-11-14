@@ -7,7 +7,7 @@ export const RootProvider = () => {
 
   return (
     <div class="stack">
-      <output>valueAsNumber: {numberInput().valueAsNumber}</output>
+      <output>value: {numberInput().value}</output>
       <NumberInput.RootProvider class={styles.Root} value={numberInput}>
         <NumberInput.Label class={styles.Label}>Label</NumberInput.Label>
         <NumberInput.Control class={styles.Control}>

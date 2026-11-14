@@ -1,5 +1,5 @@
 import { SegmentGroup } from '@ark-ui/solid/segment-group'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import styles from 'styles/segment-group.module.css'
 
 export const Disabled = () => {
@@ -7,7 +7,7 @@ export const Disabled = () => {
   return (
     <SegmentGroup.Root class={styles.Root} defaultValue="React">
       <SegmentGroup.Indicator class={styles.Indicator} />
-      <Index each={frameworks}>
+      <For each={frameworks} keyed={false}>
         {(framework) => (
           <SegmentGroup.Item class={styles.Item} value={framework()} disabled={framework() === 'Svelte'}>
             <SegmentGroup.ItemText class={styles.ItemText}>{framework()}</SegmentGroup.ItemText>
@@ -15,7 +15,7 @@ export const Disabled = () => {
             <SegmentGroup.ItemHiddenInput />
           </SegmentGroup.Item>
         )}
-      </Index>
+      </For>
     </SegmentGroup.Root>
   )
 }

@@ -30,7 +30,7 @@ export const CropPreview = () => {
             class={styles.Image}
             src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800"
             alt="Sample"
-            crossOrigin="anonymous"
+            crossorigin="anonymous"
           />
           <ImageCropper.Selection class={styles.Selection}>
             <For each={ImageCropper.placements}>

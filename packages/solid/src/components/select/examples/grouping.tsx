@@ -1,6 +1,6 @@
 import { Select, createListCollection } from '@ark-ui/solid/select'
 import { ChevronsUpDownIcon, XIcon } from 'lucide-solid'
-import { For, Portal } from 'solid-js/web'
+import { For, Portal } from '@solidjs/web'
 import styles from 'styles/select.module.css'
 
 const frameworks = createListCollection({

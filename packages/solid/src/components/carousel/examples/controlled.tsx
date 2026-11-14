@@ -1,6 +1,6 @@
 import { Carousel } from '@ark-ui/solid/carousel'
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-solid'
-import { Index, createSignal } from 'solid-js'
+import { For, createSignal } from 'solid-js'
 import styles from 'styles/carousel.module.css'
 
 const images = [
@@ -26,20 +26,22 @@ export const Controlled = () => {
           <ArrowLeftIcon />
         </Carousel.PrevTrigger>
         <Carousel.ItemGroup class={styles.ItemGroup}>
-          <Index each={images}>
+          <For each={images} keyed={false}>
             {(image, index) => (
               <Carousel.Item class={styles.Item} index={index}>
                 <img src={image().src} alt={image().alt} width="500" height="300" />
               </Carousel.Item>
             )}
-          </Index>
+          </For>
         </Carousel.ItemGroup>
         <Carousel.NextTrigger class={styles.Trigger}>
           <ArrowRightIcon />
         </Carousel.NextTrigger>
       </Carousel.Control>
       <Carousel.IndicatorGroup class={styles.IndicatorGroup}>
-        <Index each={images}>{(_, index) => <Carousel.Indicator class={styles.Indicator} index={index} />}</Index>
+        <For each={images} keyed={false}>
+          {(_, index) => <Carousel.Indicator class={styles.Indicator} index={index} />}
+        </For>
       </Carousel.IndicatorGroup>
     </Carousel.Root>
   )

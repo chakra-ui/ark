@@ -4,7 +4,7 @@ import { createSignal } from 'solid-js'
 import styles from 'styles/number-input.module.css'
 
 export const Controlled = () => {
-  const [value, setValue] = createSignal('0')
+  const [value, setValue] = createSignal<number | null>(0)
 
   return (
     <div class="stack">

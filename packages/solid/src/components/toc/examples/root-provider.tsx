@@ -1,5 +1,5 @@
 import { Toc, useToc } from '@ark-ui/solid/toc'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import styles from 'styles/toc.module.css'
 
 const items = [
@@ -17,22 +17,24 @@ export const RootProvider = () => {
   return (
     <Toc.RootProvider class={styles.Root} value={toc}>
       <Toc.Content class={styles.Content} ref={(el) => (contentRef = el)}>
-        <Index each={items}>
+        <For each={items} keyed={false}>
           {(item) => (
             <section>
               <h2 id={item().value}>{item().label}</h2>
               <div class={styles.DummyText}>
-                <Index each={Array.from({ length: item().lines })}>{() => <div class={styles.DummyLine} />}</Index>
+                <For each={Array.from({ length: item().lines })} keyed={false}>
+                  {() => <div class={styles.DummyLine} />}
+                </For>
               </div>
             </section>
           )}
-        </Index>
+        </For>
       </Toc.Content>
 
       <Toc.Nav class={styles.Nav}>
         <Toc.Title class={styles.Title}>On this page</Toc.Title>
         <Toc.List class={styles.List}>
-          <Index each={items}>
+          <For each={items} keyed={false}>
             {(item) => (
               <Toc.Item class={styles.Item} item={item()}>
                 <Toc.Link class={styles.Link} href={`#${item().value}`}>
@@ -40,7 +42,7 @@ export const RootProvider = () => {
                 </Toc.Link>
               </Toc.Item>
             )}
-          </Index>
+          </For>
         </Toc.List>
       </Toc.Nav>
     </Toc.RootProvider>

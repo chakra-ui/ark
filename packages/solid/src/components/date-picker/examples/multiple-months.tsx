@@ -1,6 +1,6 @@
 import { DatePicker } from '@ark-ui/solid/date-picker'
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-solid'
-import { Index, createMemo } from 'solid-js'
+import { For, createMemo } from 'solid-js'
 import button from 'styles/button.module.css'
 import styles from 'styles/date-picker.module.css'
 
@@ -32,18 +32,18 @@ export const MultipleMonths = () => {
                 <DatePicker.Table class={styles.Table}>
                   <DatePicker.TableHead class={styles.TableHead}>
                     <DatePicker.TableRow class={styles.TableRow}>
-                      <Index each={datePicker().weekDays}>
+                      <For each={datePicker().weekDays} keyed={false}>
                         {(weekDay) => (
                           <DatePicker.TableHeader class={styles.TableHeader}>{weekDay().short}</DatePicker.TableHeader>
                         )}
-                      </Index>
+                      </For>
                     </DatePicker.TableRow>
                   </DatePicker.TableHead>
                   <DatePicker.TableBody class={styles.TableBody}>
-                    <Index each={datePicker().weeks}>
+                    <For each={datePicker().weeks} keyed={false}>
                       {(week) => (
                         <DatePicker.TableRow class={styles.TableRow}>
-                          <Index each={week()}>
+                          <For each={week()} keyed={false}>
                             {(day) => (
                               <DatePicker.TableCell class={styles.TableCell} value={day()}>
                                 <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>
@@ -51,10 +51,10 @@ export const MultipleMonths = () => {
                                 </DatePicker.TableCellTrigger>
                               </DatePicker.TableCell>
                             )}
-                          </Index>
+                          </For>
                         </DatePicker.TableRow>
                       )}
-                    </Index>
+                    </For>
                   </DatePicker.TableBody>
                 </DatePicker.Table>
               )}
@@ -66,20 +66,20 @@ export const MultipleMonths = () => {
                   <DatePicker.Table class={styles.Table}>
                     <DatePicker.TableHead class={styles.TableHead}>
                       <DatePicker.TableRow class={styles.TableRow}>
-                        <Index each={datePicker().weekDays}>
+                        <For each={datePicker().weekDays} keyed={false}>
                           {(weekDay) => (
                             <DatePicker.TableHeader class={styles.TableHeader}>
                               {weekDay().short}
                             </DatePicker.TableHeader>
                           )}
-                        </Index>
+                        </For>
                       </DatePicker.TableRow>
                     </DatePicker.TableHead>
                     <DatePicker.TableBody class={styles.TableBody}>
-                      <Index each={offset().weeks}>
+                      <For each={offset().weeks} keyed={false}>
                         {(week) => (
                           <DatePicker.TableRow class={styles.TableRow}>
-                            <Index each={week()}>
+                            <For each={week()} keyed={false}>
                               {(day) => (
                                 <DatePicker.TableCell
                                   class={styles.TableCell}
@@ -91,10 +91,10 @@ export const MultipleMonths = () => {
                                   </DatePicker.TableCellTrigger>
                                 </DatePicker.TableCell>
                               )}
-                            </Index>
+                            </For>
                           </DatePicker.TableRow>
                         )}
-                      </Index>
+                      </For>
                     </DatePicker.TableBody>
                   </DatePicker.Table>
                 )

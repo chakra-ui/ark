@@ -1,6 +1,6 @@
 import { Select, createListCollection } from '@ark-ui/solid/select'
 import { ChevronsUpDownIcon } from 'lucide-solid'
-import { Index, Portal } from 'solid-js/web'
+import { For, Portal } from '@solidjs/web'
 import styles from 'styles/select.module.css'
 import button from 'styles/button.module.css'
 
@@ -44,14 +44,14 @@ export const SelectAll = () => {
           <Select.Content class={styles.Content}>
             <SelectAllButton />
             <Select.List class={styles.List}>
-              <Index each={collection.items}>
+              <For each={collection.items} keyed={false}>
                 {(item) => (
                   <Select.Item class={styles.Item} item={item()}>
                     <Select.ItemText class={styles.ItemText}>{item()}</Select.ItemText>
                     <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
                   </Select.Item>
                 )}
-              </Index>
+              </For>
             </Select.List>
           </Select.Content>
         </Select.Positioner>

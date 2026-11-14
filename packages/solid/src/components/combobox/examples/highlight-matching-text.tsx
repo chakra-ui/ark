@@ -2,7 +2,7 @@ import { Combobox, useListCollection } from '@ark-ui/solid/combobox'
 import { Highlight } from '@ark-ui/solid/highlight'
 import { useFilter } from '@ark-ui/solid/locale'
 import { For } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/combobox.module.css'
 
 export const HighlightMatchingText = () => {

@@ -1,5 +1,5 @@
 import { Tour, useTour, waitForElement, waitForEvent } from '@ark-ui/solid/tour'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import { PlusIcon, SparklesIcon, XIcon } from 'lucide-solid'
 import { For, createSignal } from 'solid-js'
 import button from 'styles/button.module.css'

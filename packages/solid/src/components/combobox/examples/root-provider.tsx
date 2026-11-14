@@ -2,7 +2,7 @@ import { Combobox, useCombobox, useListCollection } from '@ark-ui/solid/combobox
 import { useFilter } from '@ark-ui/solid/locale'
 import { CheckIcon, ChevronsUpDownIcon, XIcon } from 'lucide-solid'
 import { For } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import button from 'styles/button.module.css'
 import styles from 'styles/combobox.module.css'
 
