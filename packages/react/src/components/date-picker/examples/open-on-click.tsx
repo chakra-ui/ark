@@ -11,7 +11,7 @@ export const OpenOnClick = () => {
         <DatePicker.Input className={styles.Input} />
       </DatePicker.Control>
       <Portal>
-        <DatePicker.Positioner>
+        <DatePicker.Positioner className={styles.Positioner}>
           <DatePicker.Content className={styles.Content}>
             <DatePicker.View view="day" className={styles.View}>
               <DatePicker.Context>

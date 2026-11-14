@@ -39,7 +39,7 @@
         <Combobox.Trigger class={styles.Trigger}>Open</Combobox.Trigger>
       </div>
     </Combobox.Control>
-    <Combobox.Positioner>
+    <Combobox.Positioner class={styles.Positioner}>
       <Combobox.Content class={styles.Content}>
         <Combobox.List class={styles.List}>
           {#each collection().items as item (item.value)}

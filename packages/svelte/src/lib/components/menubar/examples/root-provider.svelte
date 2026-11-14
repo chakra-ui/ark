@@ -14,7 +14,7 @@
     <Menu.Root>
       <Menu.Trigger class={styles.Trigger}>File</Menu.Trigger>
       <Portal>
-        <Menu.Positioner>
+        <Menu.Positioner class={menu.Positioner}>
           <Menu.Content class={menu.Content}>
             <Menu.Item class={menu.Item} value="new">New File</Menu.Item>
             <Menu.Item class={menu.Item} value="open">Open...</Menu.Item>
@@ -26,7 +26,7 @@
     <Menu.Root>
       <Menu.Trigger class={styles.Trigger}>Edit</Menu.Trigger>
       <Portal>
-        <Menu.Positioner>
+        <Menu.Positioner class={menu.Positioner}>
           <Menu.Content class={menu.Content}>
             <Menu.Item class={menu.Item} value="undo">Undo</Menu.Item>
             <Menu.Item class={menu.Item} value="redo">Redo</Menu.Item>

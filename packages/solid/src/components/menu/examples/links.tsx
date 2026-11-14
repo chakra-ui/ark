@@ -10,7 +10,7 @@ export const Links = () => (
         <ChevronDownIcon />
       </Menu.Indicator>
     </Menu.Trigger>
-    <Menu.Positioner>
+    <Menu.Positioner class={styles.Positioner}>
       <Menu.Content class={styles.Content}>
         <Menu.Item class={styles.Item} value="docs" render={(props) => <a href="https://ark-ui.com" {...props()} />}>
           Documentation

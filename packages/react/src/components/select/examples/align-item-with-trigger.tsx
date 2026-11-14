@@ -30,7 +30,7 @@ export const AlignItemWithTrigger = () => {
         </Select.Trigger>
       </Select.Control>
       <Portal>
-        <Select.Positioner>
+        <Select.Positioner className={styles.Positioner}>
           <Select.Content className={styles.Content}>
             <Select.ScrollArrow className={styles.ScrollArrow} placement="top">
               <ChevronUpIcon />

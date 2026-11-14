@@ -86,7 +86,7 @@ const handleValueChange = async ({ value }: Combobox.ValueChangeDetails) => {
       </div>
     </Combobox.Control>
     <Teleport to="body">
-      <Combobox.Positioner>
+      <Combobox.Positioner :class="styles.Positioner">
         <Combobox.Content :class="styles.Content">
           <Combobox.List :class="styles.List">
             <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item" :class="styles.Item">

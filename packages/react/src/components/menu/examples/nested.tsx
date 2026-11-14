@@ -12,7 +12,7 @@ export const Nested = () => (
       </Menu.Indicator>
     </Menu.Trigger>
     <Portal>
-      <Menu.Positioner>
+      <Menu.Positioner className={styles.Positioner}>
         <Menu.Content className={styles.Content}>
           <Menu.Item className={styles.Item} value="new">
             New File
@@ -24,7 +24,7 @@ export const Nested = () => (
           <Menu.Root>
             <Menu.TriggerItem className={styles.TriggerItem}>Share</Menu.TriggerItem>
             <Portal>
-              <Menu.Positioner>
+              <Menu.Positioner className={styles.Positioner}>
                 <Menu.Content className={styles.Content}>
                   <Menu.Item className={styles.Item} value="email">
                     Email
@@ -54,7 +54,7 @@ export const Nested = () => (
           <Menu.Root>
             <Menu.TriggerItem className={styles.TriggerItem}>Export</Menu.TriggerItem>
             <Portal>
-              <Menu.Positioner>
+              <Menu.Positioner className={styles.Positioner}>
                 <Menu.Content className={styles.Content}>
                   <Menu.Item className={styles.Item} value="pdf">
                     PDF
@@ -72,7 +72,7 @@ export const Nested = () => (
           <Menu.Root>
             <Menu.TriggerItem className={styles.TriggerItem}>Share</Menu.TriggerItem>
             <Portal>
-              <Menu.Positioner>
+              <Menu.Positioner className={styles.Positioner}>
                 <Menu.Content className={styles.Content}>
                   <Menu.Item className={styles.Item} value="email">
                     Email
@@ -102,7 +102,7 @@ export const Nested = () => (
           <Menu.Root>
             <Menu.TriggerItem className={styles.TriggerItem}>Share</Menu.TriggerItem>
             <Portal>
-              <Menu.Positioner>
+              <Menu.Positioner className={styles.Positioner}>
                 <Menu.Content className={styles.Content}>
                   <Menu.Item className={styles.Item} value="email">
                     Email

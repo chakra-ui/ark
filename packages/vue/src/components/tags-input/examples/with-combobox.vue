@@ -70,7 +70,7 @@ const comboboxApi = useCombobox(() => ({
     </TagsInput.RootProvider>
 
     <Teleport to="body">
-      <Combobox.Positioner>
+      <Combobox.Positioner :class="combobox.Positioner">
         <Combobox.Content :class="combobox.Content">
           <Combobox.Empty :class="combobox.Item">No frameworks found</Combobox.Empty>
           <Combobox.Item v-for="item in collection.items" :key="item" :item="item" :class="combobox.Item">

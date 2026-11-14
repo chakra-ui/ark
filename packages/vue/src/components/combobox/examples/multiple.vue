@@ -51,7 +51,7 @@ const handleValueChange = (details: Combobox.ValueChangeDetails) => {
       </div>
     </Combobox.Control>
     <Teleport to="body">
-      <Combobox.Positioner>
+      <Combobox.Positioner :class="styles.Positioner">
         <Combobox.Content :class="styles.Content">
           <Combobox.Empty>
             <div :class="styles.Empty">No skills found</div>

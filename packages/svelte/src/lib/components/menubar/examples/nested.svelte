@@ -10,7 +10,7 @@
   <Menu.Root>
     <Menu.Trigger class={styles.Trigger}>File</Menu.Trigger>
     <Portal>
-      <Menu.Positioner>
+      <Menu.Positioner class={menu.Positioner}>
         <Menu.Content class={menu.Content}>
           <Menu.Item class={menu.Item} value="new">New File</Menu.Item>
           <Menu.Item class={menu.Item} value="open">Open...</Menu.Item>
@@ -18,7 +18,7 @@
           <Menu.Root>
             <Menu.TriggerItem class={menu.TriggerItem}>Export</Menu.TriggerItem>
             <Portal>
-              <Menu.Positioner>
+              <Menu.Positioner class={menu.Positioner}>
                 <Menu.Content class={menu.Content}>
                   <Menu.Item class={menu.Item} value="pdf">PDF</Menu.Item>
                   <Menu.Item class={menu.Item} value="png">PNG</Menu.Item>
@@ -37,7 +37,7 @@
   <Menu.Root>
     <Menu.Trigger class={styles.Trigger}>Edit</Menu.Trigger>
     <Portal>
-      <Menu.Positioner>
+      <Menu.Positioner class={menu.Positioner}>
         <Menu.Content class={menu.Content}>
           <Menu.Item class={menu.Item} value="cut">Cut</Menu.Item>
           <Menu.Item class={menu.Item} value="copy">Copy</Menu.Item>
@@ -46,7 +46,7 @@
           <Menu.Root>
             <Menu.TriggerItem class={menu.TriggerItem}>Find</Menu.TriggerItem>
             <Portal>
-              <Menu.Positioner>
+              <Menu.Positioner class={menu.Positioner}>
                 <Menu.Content class={menu.Content}>
                   <Menu.Item class={menu.Item} value="find">Find...</Menu.Item>
                   <Menu.Item class={menu.Item} value="find-next">Find Next</Menu.Item>
@@ -63,7 +63,7 @@
   <Menu.Root>
     <Menu.Trigger class={styles.Trigger}>View</Menu.Trigger>
     <Portal>
-      <Menu.Positioner>
+      <Menu.Positioner class={menu.Positioner}>
         <Menu.Content class={menu.Content}>
           <Menu.Item class={menu.Item} value="zoom-in">Zoom In</Menu.Item>
           <Menu.Item class={menu.Item} value="zoom-out">Zoom Out</Menu.Item>

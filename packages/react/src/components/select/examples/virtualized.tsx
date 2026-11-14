@@ -35,7 +35,7 @@ export const Virtualized = () => {
         </div>
       </Select.Control>
       <Portal>
-        <Select.Positioner>
+        <Select.Positioner className={styles.Positioner}>
           <Select.Content className={styles.Content}>
             <Select.List
               className={styles.Scroller}

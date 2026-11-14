@@ -32,7 +32,7 @@ export const Grouping = () => {
         </div>
       </Combobox.Control>
       <Portal>
-        <Combobox.Positioner>
+        <Combobox.Positioner className={styles.Positioner}>
           <Combobox.Content className={styles.Content}>
             <Combobox.List className={styles.List}>
               {collection.group().map(([continent, group]) => (

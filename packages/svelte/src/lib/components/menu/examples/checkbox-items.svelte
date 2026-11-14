@@ -14,7 +14,7 @@
       <ChevronDownIcon />
     </Menu.Indicator>
   </Menu.Trigger>
-  <Menu.Positioner>
+  <Menu.Positioner class={styles.Positioner}>
     <Menu.Content class={styles.Content}>
       <Menu.CheckboxItem class={styles.CheckboxItem} bind:checked={showToolbar} value="toolbar">
         <Menu.ItemIndicator class={styles.ItemIndicator}>

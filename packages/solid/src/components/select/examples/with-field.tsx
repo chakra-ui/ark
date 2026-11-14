@@ -20,7 +20,7 @@ export const WithField = () => {
             </Select.Indicator>
           </Select.Trigger>
         </Select.Control>
-        <Select.Positioner>
+        <Select.Positioner class={styles.Positioner}>
           <Select.Content class={styles.Content}>
             <Select.List class={styles.List}>
               <Index each={collection.items}>

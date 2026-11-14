@@ -13,7 +13,7 @@ export const WithMenuItem = () => (
         <ChevronDownIcon />
       </Menu.Indicator>
     </Menu.Trigger>
-    <Menu.Positioner>
+    <Menu.Positioner className={styles.Positioner}>
       <Menu.Content className={styles.Content}>
         <Menu.Arrow className={styles.Arrow}>
           <Menu.ArrowTip className={styles.ArrowTip} />
@@ -33,7 +33,7 @@ export const WithMenuItem = () => (
             }
           />
           <Portal>
-            <Tooltip.Positioner>
+            <Tooltip.Positioner className={tooltipStyles.Positioner}>
               <Tooltip.Content className={tooltipStyles.Content}>No changes to save</Tooltip.Content>
             </Tooltip.Positioner>
           </Portal>

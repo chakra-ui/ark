@@ -9,7 +9,7 @@ export const Basic = () => (
     <Menu.Root>
       <Menu.Trigger class={styles.Trigger}>File</Menu.Trigger>
       <Portal>
-        <Menu.Positioner>
+        <Menu.Positioner class={menu.Positioner}>
           <Menu.Content class={menu.Content}>
             <Menu.Item class={menu.Item} value="new">
               New File
@@ -32,7 +32,7 @@ export const Basic = () => (
     <Menu.Root>
       <Menu.Trigger class={styles.Trigger}>Edit</Menu.Trigger>
       <Portal>
-        <Menu.Positioner>
+        <Menu.Positioner class={menu.Positioner}>
           <Menu.Content class={menu.Content}>
             <Menu.Item class={menu.Item} value="undo">
               Undo
@@ -60,7 +60,7 @@ export const Basic = () => (
         Develop
       </Menu.Trigger>
       <Portal>
-        <Menu.Positioner>
+        <Menu.Positioner class={menu.Positioner}>
           <Menu.Content class={menu.Content}>
             <Menu.Item class={menu.Item} value="inspect">
               Inspect Element
@@ -73,7 +73,7 @@ export const Basic = () => (
     <Menu.Root>
       <Menu.Trigger class={styles.Trigger}>View</Menu.Trigger>
       <Portal>
-        <Menu.Positioner>
+        <Menu.Positioner class={menu.Positioner}>
           <Menu.Content class={menu.Content}>
             <Menu.Item class={menu.Item} value="zoom-in">
               Zoom In

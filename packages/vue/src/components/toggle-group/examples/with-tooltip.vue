@@ -35,7 +35,7 @@ const activeLabel = computed(() => items.find((item) => item.value === tooltip.v
       </ToggleGroup.Item>
     </ToggleGroup.Root>
     <Teleport to="body">
-      <Tooltip.Positioner>
+      <Tooltip.Positioner :class="tooltipStyles.Positioner">
         <Tooltip.Content :class="tooltipStyles.Content">{{ activeLabel }}</Tooltip.Content>
       </Tooltip.Positioner>
     </Teleport>

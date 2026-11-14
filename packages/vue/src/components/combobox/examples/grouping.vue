@@ -40,7 +40,7 @@ const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
       </div>
     </Combobox.Control>
     <Teleport to="body">
-      <Combobox.Positioner>
+      <Combobox.Positioner :class="styles.Positioner">
         <Combobox.Content :class="styles.Content">
           <Combobox.List :class="styles.List">
             <Combobox.ItemGroup :key="continent" v-for="[continent, group] in collection.group()">

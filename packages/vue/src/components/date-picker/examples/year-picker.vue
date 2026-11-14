@@ -35,7 +35,7 @@ const parse = (value: string | undefined) => {
       </DatePicker.Trigger>
       <DatePicker.ClearTrigger :class="button.Root">Clear</DatePicker.ClearTrigger>
     </DatePicker.Control>
-    <DatePicker.Positioner>
+    <DatePicker.Positioner :class="styles.Positioner">
       <DatePicker.Content :class="styles.Content">
         <DatePicker.View view="year" :class="styles.View">
           <DatePicker.Context v-slot="api">

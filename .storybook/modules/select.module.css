@@ -125,6 +125,10 @@
   }
 }
 
+.Positioner {
+  z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
+}
+
 .Content {
   display: flex;
   flex-direction: column;
@@ -136,7 +140,6 @@
   border-radius: 0.375rem;
   box-shadow: var(--demo-shadow-md);
   position: relative;
-  z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
   overflow: hidden;
   outline: none;
 

@@ -10,7 +10,7 @@ export const SelectEvent = () => (
         <ChevronDownIcon />
       </Menu.Indicator>
     </Menu.Trigger>
-    <Menu.Positioner>
+    <Menu.Positioner className={styles.Positioner}>
       <Menu.Content className={styles.Content}>
         {items.map((item) => (
           <Menu.Item

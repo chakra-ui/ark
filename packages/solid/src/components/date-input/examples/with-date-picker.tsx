@@ -31,7 +31,7 @@ export const WithDatePicker = () => {
             </DatePicker.Trigger>
           </DatePicker.Control>
           <Portal>
-            <DatePicker.Positioner>
+            <DatePicker.Positioner class={datePickerStyles.Positioner}>
               <DatePicker.Content class={datePickerStyles.Content}>
                 <DatePicker.View view="day" class={datePickerStyles.View}>
                   <DatePicker.Context>

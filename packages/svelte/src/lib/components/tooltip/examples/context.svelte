@@ -7,7 +7,7 @@
 <Tooltip.Root>
   <Tooltip.Trigger class={styles.Trigger}>Hover Me</Tooltip.Trigger>
   <Portal>
-    <Tooltip.Positioner>
+    <Tooltip.Positioner class={styles.Positioner}>
       <Tooltip.Context>
         {#snippet render(context)}
           <Tooltip.Content class={styles.Content}>

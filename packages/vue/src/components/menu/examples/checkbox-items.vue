@@ -16,7 +16,7 @@ const showStatusBar = ref(false)
         <ChevronDownIcon />
       </Menu.Indicator>
     </Menu.Trigger>
-    <Menu.Positioner>
+    <Menu.Positioner :class="styles.Positioner">
       <Menu.Content :class="styles.Content">
         <Menu.CheckboxItem :class="styles.CheckboxItem" v-model:checked="showToolbar" value="toolbar">
           <Menu.ItemIndicator :class="styles.ItemIndicator">

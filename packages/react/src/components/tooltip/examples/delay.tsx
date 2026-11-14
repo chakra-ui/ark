@@ -6,7 +6,7 @@ export const Delay = () => (
   <Tooltip.Root closeDelay={0} openDelay={0}>
     <Tooltip.Trigger className={styles.Trigger}>Hover Me</Tooltip.Trigger>
     <Portal>
-      <Tooltip.Positioner>
+      <Tooltip.Positioner className={styles.Positioner}>
         <Tooltip.Content className={styles.Content}>I am a tooltip!</Tooltip.Content>
       </Tooltip.Positioner>
     </Portal>

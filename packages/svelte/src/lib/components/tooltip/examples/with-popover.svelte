@@ -15,7 +15,7 @@
       {/snippet}
     </Tooltip.Trigger>
     <Portal>
-      <Tooltip.Positioner>
+      <Tooltip.Positioner class={tooltipStyles.Positioner}>
         <Tooltip.Content class={tooltipStyles.Content}>See more details</Tooltip.Content>
       </Tooltip.Positioner>
     </Portal>
