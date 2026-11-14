@@ -11,7 +11,7 @@ import styles from 'styles/pagination.module.css'
     :sibling-count="3"
     :translations="{
       nextTriggerLabel: 'Next',
-      prevTriggerLabel: 'Prev',
+      previousTriggerLabel: 'Prev',
       itemLabel: (details) => `Page ${details.page}`,
     }"
     :class="styles.Root"

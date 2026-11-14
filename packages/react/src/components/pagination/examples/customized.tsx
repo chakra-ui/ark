@@ -9,7 +9,7 @@ export const Customized = () => (
     siblingCount={3}
     translations={{
       nextTriggerLabel: 'Next',
-      prevTriggerLabel: 'Prev',
+      previousTriggerLabel: 'Prev',
       itemLabel: (details) => `Page ${details.page}`,
     }}
     className={styles.Root}

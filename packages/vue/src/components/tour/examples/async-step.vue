@@ -19,7 +19,7 @@ const steps: TourStepDetails[] = [
     description: 'Fetching user data...',
     target: () => document.querySelector<HTMLElement>('#user-card'),
     actions: [
-      { label: 'Back', action: 'prev' },
+      { label: 'Back', action: 'previous' },
       { label: 'Next', action: 'next' },
     ],
     effect({ show, update }) {

@@ -19,7 +19,7 @@ const steps: TourStepDetails[] = [
     description: 'This step appears as a tooltip anchored to a specific element.',
     target: () => document.querySelector<HTMLElement>('#target-element'),
     actions: [
-      { label: 'Back', action: 'prev' },
+      { label: 'Back', action: 'previous' },
       { label: 'Next', action: 'next' },
     ],
   },
@@ -30,7 +30,7 @@ const steps: TourStepDetails[] = [
     title: 'Floating Step',
     description: 'This step floats at a fixed position on the screen, independent of any target.',
     actions: [
-      { label: 'Back', action: 'prev' },
+      { label: 'Back', action: 'previous' },
       { label: 'Next', action: 'next' },
     ],
   },

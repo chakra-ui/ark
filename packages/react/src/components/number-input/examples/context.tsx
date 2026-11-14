@@ -5,7 +5,7 @@ import styles from 'styles/number-input.module.css'
 export const Context = () => (
   <NumberInput.Root className={styles.Root}>
     <NumberInput.Context>
-      {(context) => <NumberInput.Label className={styles.Label}>Value: {context.valueAsNumber}</NumberInput.Label>}
+      {(context) => <NumberInput.Label className={styles.Label}>Value: {context.value}</NumberInput.Label>}
     </NumberInput.Context>
     <NumberInput.Control className={styles.Control}>
       <NumberInput.Input className={styles.Input} />

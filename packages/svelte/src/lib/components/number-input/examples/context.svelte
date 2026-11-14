@@ -7,7 +7,7 @@
 <NumberInput.Root class={styles.Root}>
   <NumberInput.Context>
     {#snippet render(context)}
-      <NumberInput.Label class={styles.Label}>Value: {context().valueAsNumber}</NumberInput.Label>
+      <NumberInput.Label class={styles.Label}>Value: {context().value}</NumberInput.Label>
     {/snippet}
   </NumberInput.Context>
   <NumberInput.Control class={styles.Control}>

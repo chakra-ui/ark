@@ -6,7 +6,7 @@ export const RootProvider = () => {
   const numberInput = useNumberInput()
   return (
     <div className="stack">
-      <output>valueAsNumber: {numberInput.valueAsNumber}</output>
+      <output>value: {numberInput.value}</output>
       <NumberInput.RootProvider className={styles.Root} value={numberInput}>
         <NumberInput.Label className={styles.Label}>Label</NumberInput.Label>
         <NumberInput.Control className={styles.Control}>

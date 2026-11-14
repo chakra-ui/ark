@@ -20,7 +20,7 @@ const steps: TourStepDetails[] = [
     description: 'Press the left arrow key to go back.',
     target: () => document.querySelector<HTMLElement>('#key-2'),
     actions: [
-      { label: 'Back', action: 'prev' },
+      { label: 'Back', action: 'previous' },
       { label: 'Next', action: 'next' },
     ],
   },
@@ -31,7 +31,7 @@ const steps: TourStepDetails[] = [
     description: 'Press Escape to close the tour at any time.',
     target: () => document.querySelector<HTMLElement>('#key-3'),
     actions: [
-      { label: 'Back', action: 'prev' },
+      { label: 'Back', action: 'previous' },
       { label: 'Finish', action: 'dismiss' },
     ],
   },
