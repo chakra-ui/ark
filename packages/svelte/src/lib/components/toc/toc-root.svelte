@@ -26,6 +26,7 @@
       'id',
       'ids',
       'items',
+      'multiple',
       'onActiveChange',
       'rootMargin',
       'scrollBehavior',

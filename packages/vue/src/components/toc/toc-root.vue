@@ -21,6 +21,7 @@ import { useToc } from './use-toc'
 import { TocProvider } from './use-toc-context'
 
 const props = withDefaults(defineProps<TocRootProps>(), {
+  multiple: undefined,
   autoScroll: undefined,
 })
 const emits = defineEmits<TocRootEmits>()

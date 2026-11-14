@@ -25,9 +25,9 @@ import { useAccordion } from './use-accordion.ts'
 import { AccordionProvider } from './use-accordion-context.ts'
 
 const props = withDefaults(defineProps<AccordionRootProps>(), {
+  hiddenUntilFound: undefined,
   collapsible: undefined,
   disabled: undefined,
-  loopFocus: undefined,
   multiple: undefined,
 } satisfies BooleanDefaults<RootProps>)
 

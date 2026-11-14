@@ -1,4 +1,10 @@
-export type { StepChangeDetails as ChangeDetails, StepInvalidDetails as InvalidDetails } from '@zag-js/steps'
+export type {
+  CompleteDetails,
+  CompletedChangeDetails,
+  NavigationBlockedDetails,
+  StepItem,
+  ValueChangeDetails,
+} from '@zag-js/steps'
 export {
   StepsCompletedContent as CompletedContent,
   type StepsCompletedContentBaseProps as CompletedContentBaseProps,
@@ -55,6 +61,11 @@ export {
   type StepsRootProviderBaseProps as RootProviderBaseProps,
   type StepsRootProviderProps as RootProviderProps,
 } from './steps-root-provider.tsx'
+export {
+  StepsSkipTrigger as SkipTrigger,
+  type StepsSkipTriggerBaseProps as SkipTriggerBaseProps,
+  type StepsSkipTriggerProps as SkipTriggerProps,
+} from './steps-skip-trigger.tsx'
 export {
   StepsSeparator as Separator,
   type StepsSeparatorBaseProps as SeparatorBaseProps,

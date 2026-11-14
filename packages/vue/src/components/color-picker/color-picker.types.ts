@@ -64,6 +64,10 @@ export interface RootProps {
    */
   invalid?: boolean
   /**
+   * The locale used to format the channel values.
+   */
+  locale?: string
+  /**
    * The v-model value of the color picker
    */
   modelValue?: colorPicker.Color

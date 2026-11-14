@@ -4,9 +4,9 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { useEditableContext } from './use-editable-context.ts'
-import type { AreaState } from '@zag-js/editable'
+import type { RootState } from '@zag-js/editable'
 
-export interface EditableAreaState extends AreaState {}
+export interface EditableAreaState extends RootState {}
 
 export interface EditableAreaBaseProps extends PolymorphicProps<EditableAreaState> {}
 export interface EditableAreaProps extends HTMLProps<'div'>, EditableAreaBaseProps {}
@@ -15,7 +15,7 @@ export const EditableArea = forwardRef<HTMLDivElement, EditableAreaProps>((props
   const editable = useEditableContext()
   const mergedProps = mergeProps(editable.getAreaProps(), props)
 
-  return <ark.div {...mergedProps} ref={ref} state={editable.getAreaState()} />
+  return <ark.div {...mergedProps} ref={ref} state={editable.getRootState()} />
 })
 
 EditableArea.displayName = 'EditableArea'

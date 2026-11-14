@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { PreviewState } from '@zag-js/editable'
+  import type { RootState } from '@zag-js/editable'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface EditablePreviewState extends PreviewState {}
+  export interface EditablePreviewState extends RootState {}
   export interface EditablePreviewBaseProps extends PolymorphicProps<'span', EditablePreviewState>, RefAttribute {}
   export interface EditablePreviewProps extends Assign<HTMLProps<'span'>, EditablePreviewBaseProps> {}
 </script>
@@ -18,7 +18,7 @@
   const mergedProps = $derived(mergeProps(editable().getPreviewProps(), props))
 </script>
 
-<Ark as="span" bind:ref {...mergedProps} state={editable().getPreviewState()}>
+<Ark as="span" bind:ref {...mergedProps} state={editable().getRootState()}>
   {#if props.children}
     {@render props.children()}
   {:else}
