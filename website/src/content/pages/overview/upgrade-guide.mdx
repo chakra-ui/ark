@@ -43,7 +43,7 @@ and `vue/*` (Vue rewrites kebab and bound props too):
 | `tags-input-editable` | adds `editable` to keep the old default |
 | `pin-input-count` | `length` → `count`, or flags a missing `count` |
 
-Stylesheets have their own transform, `css/data-attributes`, covered under
+Data-attribute selectors, in stylesheets, components or JS/TS, have their own transform, `css/data-attributes`, covered under
 [Data attributes are merged](#data-attributes-are-merged) below.
 
 Two changes are left to do by hand because they reshape markup, not just props: the popover
@@ -282,16 +282,20 @@ these attributes.
 + [data-dialog-trigger] { ... }
 ```
 
-The `css/data-attributes` transform rewrites stylesheets: it merges scope/part selectors, turns
+The `css/data-attributes` transform rewrites stylesheets, Vue and Svelte `<style>` blocks, and the
+selectors in JS/TS files (style objects, CSS-in-JS template literals, `querySelector` strings): it
+merges scope/part selectors, turns
 toggle `[data-state="on"]` into `[data-pressed]`, and swaps the removed `data-focus` on toggle-group
 and toolbar for `:focus-within` / `:focus-visible`.
 
 ```sh
-npx @ark-ui/codemod css/data-attributes "src/**/*.css" --dry
+npx @ark-ui/codemod css/data-attributes "src/**/*.{css,ts,tsx,vue,svelte}" --dry
 ```
 
-Attributes referenced from JavaScript strings, or selectors where scope and part are not adjacent,
-are left for you to update.
+Selectors where scope and part are not adjacent, that use escaped quotes, or that are built from
+variables are left for you to update. Outside `.css` files, `[data-state="on"]` only becomes
+`[data-pressed]` right after a toggle or toggle-group item selector, so other libraries' selectors
+stay as they are.
 
 ### `useCollator` and `useFilter` return values
 

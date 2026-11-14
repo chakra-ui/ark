@@ -63,7 +63,8 @@ export const transforms: TransformDef[] = [
   {
     name: 'css/data-attributes',
     description: 'Merge data-scope/data-part selectors and update toggle state selectors',
-    extensions: ['.css'],
+    extensions: ['.css', '.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs', '.vue', '.svelte'],
+    prefilter: (source) => source.includes('[data-'),
     run: cssDataAttributes,
   },
 ]

@@ -1,6 +1,6 @@
 import type { TransformResult } from '../../types.ts'
 
-export function cssDataAttributes(source: string, _filePath: string): TransformResult {
+export function cssDataAttributes(source: string, filePath: string): TransformResult {
   let count = 0
 
   let code = source
@@ -20,7 +20,10 @@ export function cssDataAttributes(source: string, _filePath: string): TransformR
     },
   )
 
-  code = code.replace(/\[data-state=(["'])on\1\]/g, () => {
+  const pressed = filePath.endsWith('.css')
+    ? /\[data-state=(["'])on\1\]/g
+    : /(?<=\[data-(?:toggle-root|toggle-group-item)\])\[data-state=(["'])on\1\]/g
+  code = code.replace(pressed, () => {
     count++
     return '[data-pressed]'
   })
