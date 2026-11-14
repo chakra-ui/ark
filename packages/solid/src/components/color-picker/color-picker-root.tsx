@@ -25,6 +25,7 @@ export const ColorPickerRoot = (props: ColorPickerRootProps) => {
     'ids',
     'initialFocusEl',
     'invalid',
+    'locale',
     'name',
     'name',
     'onFocusOutside',

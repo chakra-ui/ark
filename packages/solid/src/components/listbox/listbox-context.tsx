@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import type { CollectionItem } from '../collection/index.tsx'
 import { type UseListboxContext, useListboxContext } from './use-listbox-context.ts'
 

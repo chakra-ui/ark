@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseSegmentGroupItemContext, useSegmentGroupItemContext } from './use-segment-group-item-context.ts'
 
 export interface SegmentGroupItemContextProps {

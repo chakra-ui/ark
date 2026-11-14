@@ -24,7 +24,7 @@ export const MenuContent = (props: MenuContentProps) => {
     <Show when={!presenceContext().unmounted}>
       <ark.div
         {...mergedProps}
-        ref={composeRefs(presenceContext().ref, props.ref)}
+        ref={composeRefs((el) => presenceContext().ref(el), props.ref)}
         state={context().getContentState()}
       />
     </Show>

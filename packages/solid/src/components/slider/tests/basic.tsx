@@ -1,5 +1,5 @@
 import { Slider } from '@ark-ui/solid/slider'
-import { Index, createSignal } from 'solid-js'
+import { For, createSignal } from 'solid-js'
 
 export const ComponentUnderTest = (props: Slider.RootProps) => {
   const [value, setValue] = createSignal([-20, 20])
@@ -11,14 +11,14 @@ export const ComponentUnderTest = (props: Slider.RootProps) => {
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Index each={value()}>
+        <For each={value()} keyed={false}>
           {(_value, index) => (
             <Slider.Thumb index={index}>
               <Slider.DraggingIndicator />
               <Slider.HiddenInput />
             </Slider.Thumb>
           )}
-        </Index>
+        </For>
       </Slider.Control>
       <Slider.MarkerGroup>
         <Slider.Marker value={-30}>*</Slider.Marker>

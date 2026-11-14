@@ -1,5 +1,5 @@
 import { useSyncExternalStore } from '@zag-js/solid'
-import { createComputed, createMemo, onCleanup, onMount, untrack } from 'solid-js'
+import { createMemo, createRenderEffect, onCleanup, onSettled, untrack } from 'solid-js'
 import type { MaybeAccessor } from '../../types.ts'
 import { runIfFn } from '../../utils/run-if-fn.ts'
 
@@ -29,12 +29,12 @@ export function useVirtualizerStore<Options extends object, T extends Virtualize
     untrack(() => virtualizer.updateOptions(next))
   }
 
-  createComputed(sync)
+  createRenderEffect(options, sync)
 
   let scrollElement: HTMLElement | null = null
   let mounted = false
 
-  onMount(() => {
+  onSettled(() => {
     mounted = true
     if (scrollElement) virtualizer.init(scrollElement)
   })

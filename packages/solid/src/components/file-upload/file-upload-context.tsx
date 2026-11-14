@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseFileUploadContext, useFileUploadContext } from './use-file-upload-context.ts'
 
 export interface FileUploadContextProps {

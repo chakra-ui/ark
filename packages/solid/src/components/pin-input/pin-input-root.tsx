@@ -14,7 +14,6 @@ export const PinInputRoot = (props: PinInputRootProps) => {
   const [usePinInputProps, localProps] = createSplitProps<UsePinInputProps>()(props, [
     'autoFocus',
     'autoSubmit',
-    'blurOnComplete',
     'count',
     'defaultValue',
     'disabled',
@@ -32,8 +31,7 @@ export const PinInputRoot = (props: PinInputRootProps) => {
     'placeholder',
     'readOnly',
     'required',
-    'sanitizeValue',
-    'selectOnFocus',
+    'normalizeValue',
     'translations',
     'type',
     'value',

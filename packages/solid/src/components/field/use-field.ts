@@ -1,4 +1,5 @@
-import { createMemo, createSignal, createUniqueId, mergeProps, onCleanup, onMount } from 'solid-js'
+import { mergeProps } from '@zag-js/solid'
+import { createMemo, createSignal, createUniqueId, onSettled } from 'solid-js'
 import { useEnvironmentContext } from '../../providers/index.tsx'
 import { ariaAttr, dataAttr } from '../../utils/attr.ts'
 import type { MaybeAccessor } from '../../types.ts'
@@ -68,7 +69,7 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
   const helperTextId = fieldProps.ids?.helperText ?? `field::${id}::helper-text`
   const labelId = fieldProps.ids?.label ?? `field::${id}::label`
 
-  onMount(() => {
+  onSettled(() => {
     const rootNode = rootRef()
     if (!rootNode) return
 
@@ -84,7 +85,7 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
     const observer = new win.MutationObserver(checkTextElements)
     observer.observe(rootNode, { childList: true, subtree: true })
 
-    onCleanup(() => observer.disconnect())
+    return () => observer.disconnect()
   })
 
   const getRootProps = () => ({
@@ -105,7 +106,7 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
     'data-invalid': dataAttr(fieldProps.invalid),
     'data-readonly': dataAttr(fieldProps.readOnly),
     'data-required': dataAttr(fieldProps.required),
-    htmlFor: targetControlId ?? controlId,
+    for: targetControlId ?? controlId,
   })
 
   const errorMessageId = createMemo(() => (hasErrorText() && fieldProps.invalid ? errorTextId : undefined))
@@ -122,7 +123,7 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
     id: controlId,
     required: fieldProps.required,
     disabled: fieldProps.disabled,
-    readOnly: fieldProps.readOnly || undefined,
+    readonly: fieldProps.readOnly || undefined,
   })
 
   const getInputProps = () => ({
@@ -153,7 +154,7 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
   })
 
   const getRequiredIndicatorProps = () => ({
-    'aria-hidden': true,
+    'aria-hidden': 'true',
     ...parts.requiredIndicator.attrs(id),
   })
 

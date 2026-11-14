@@ -1,5 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type JSX, createEffect } from 'solid-js'
+import { createEffect } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.tsx'
 import type { UseMenuReturn } from './use-menu.ts'
 import { MenuProvider, useMenuContext } from './use-menu-context.ts'
@@ -21,11 +22,14 @@ export const MenuRootProvider = (props: MenuRootProviderProps) => {
   const [presenceProps, menuProps] = splitPresenceProps(props)
   const presenceApi = usePresence(mergeProps(presenceProps, () => ({ present: menuProps.value.api().open })))
 
-  createEffect(() => {
-    if (!parentMachine) return
-    parentApi?.().setChild(menuProps.value.service)
-    menuProps.value.api().setParent(parentMachine)
-  })
+  createEffect(
+    () => [parentApi?.(), menuProps.value] as const,
+    ([parent, value]) => {
+      if (!parentMachine) return
+      parent?.setChild(value.service)
+      value.api().setParent(parentMachine)
+    },
+  )
 
   const triggerItemContext = () => parentApi?.().getTriggerItemProps(menuProps.value.api())
 

@@ -1,6 +1,6 @@
 import { Carousel } from '@ark-ui/solid/carousel'
 import { ArrowLeftIcon, ArrowRightIcon, PlusIcon } from 'lucide-solid'
-import { Index, createSignal } from 'solid-js'
+import { For, createSignal } from 'solid-js'
 import button from 'styles/button.module.css'
 import styles from 'styles/carousel.module.css'
 
@@ -24,20 +24,22 @@ export const DynamicSlides = () => {
         onPageChange={(details) => setPage(details.page)}
       >
         <Carousel.ItemGroup class={styles.ItemGroup}>
-          <Index each={slides()}>
+          <For each={slides()} keyed={false}>
             {(slide, index) => (
               <Carousel.Item class={styles.Item} index={index}>
                 <div class={styles.Slide}>Slide {slide() + 1}</div>
               </Carousel.Item>
             )}
-          </Index>
+          </For>
         </Carousel.ItemGroup>
         <Carousel.Control class={styles.Control}>
           <Carousel.PrevTrigger class={styles.Trigger}>
             <ArrowLeftIcon />
           </Carousel.PrevTrigger>
           <Carousel.IndicatorGroup class={styles.IndicatorGroup}>
-            <Index each={slides()}>{(_, index) => <Carousel.Indicator class={styles.Indicator} index={index} />}</Index>
+            <For each={slides()} keyed={false}>
+              {(_, index) => <Carousel.Indicator class={styles.Indicator} index={index} />}
+            </For>
           </Carousel.IndicatorGroup>
           <Carousel.NextTrigger class={styles.Trigger}>
             <ArrowRightIcon />

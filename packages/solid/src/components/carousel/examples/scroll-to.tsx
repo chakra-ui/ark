@@ -1,6 +1,6 @@
 import { Carousel } from '@ark-ui/solid/carousel'
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-solid'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import button from 'styles/button.module.css'
 import styles from 'styles/carousel.module.css'
 
@@ -17,13 +17,13 @@ export const ScrollTo = () => {
         )}
       </Carousel.Context>
       <Carousel.ItemGroup class={styles.ItemGroup}>
-        <Index each={slides}>
+        <For each={slides} keyed={false}>
           {(_, index) => (
             <Carousel.Item class={styles.Item} index={index}>
               <div class={styles.Slide}>Slide {index + 1}</div>
             </Carousel.Item>
           )}
-        </Index>
+        </For>
       </Carousel.ItemGroup>
       <Carousel.Control class={styles.Control}>
         <Carousel.PrevTrigger class={styles.Trigger}>
@@ -34,7 +34,9 @@ export const ScrollTo = () => {
         </Carousel.NextTrigger>
       </Carousel.Control>
       <Carousel.IndicatorGroup class={styles.IndicatorGroup}>
-        <Index each={slides}>{(_, index) => <Carousel.Indicator class={styles.Indicator} index={index} />}</Index>
+        <For each={slides} keyed={false}>
+          {(_, index) => <Carousel.Indicator class={styles.Indicator} index={index} />}
+        </For>
       </Carousel.IndicatorGroup>
     </Carousel.Root>
   )

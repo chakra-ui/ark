@@ -1,6 +1,6 @@
 import { Field } from '@ark-ui/solid/field'
 import { TagsInput } from '@ark-ui/solid/tags-input'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 
 export const ComponentUnderTest = (props: TagsInput.RootProps) => {
   return (
@@ -10,7 +10,7 @@ export const ComponentUnderTest = (props: TagsInput.RootProps) => {
           <>
             <TagsInput.Label>Frameworks</TagsInput.Label>
             <TagsInput.Control>
-              <Index each={api().value}>
+              <For each={api().value} keyed={false}>
                 {(value, index) => (
                   <TagsInput.Item index={index} value={value()}>
                     <TagsInput.ItemPreview>
@@ -20,7 +20,7 @@ export const ComponentUnderTest = (props: TagsInput.RootProps) => {
                     <TagsInput.ItemInput />
                   </TagsInput.Item>
                 )}
-              </Index>
+              </For>
             </TagsInput.Control>
             <TagsInput.Input placeholder="Add tag" />
             <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
@@ -41,7 +41,7 @@ export const TagsInputWithField = (props: Field.RootProps) => {
             <>
               <TagsInput.Label>Label</TagsInput.Label>
               <TagsInput.Control>
-                <Index each={api().value}>
+                <For each={api().value} keyed={false}>
                   {(value, index) => (
                     <TagsInput.Item index={index} value={value()}>
                       <TagsInput.ItemPreview>
@@ -51,7 +51,7 @@ export const TagsInputWithField = (props: Field.RootProps) => {
                       <TagsInput.ItemInput />
                     </TagsInput.Item>
                   )}
-                </Index>
+                </For>
               </TagsInput.Control>
               <TagsInput.Input placeholder="Add tag" />
             </>

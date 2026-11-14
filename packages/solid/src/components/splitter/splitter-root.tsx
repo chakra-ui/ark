@@ -11,6 +11,7 @@ export interface SplitterRootProps extends Assign<HTMLProps<'div'>, SplitterRoot
 export const SplitterRoot = (props: SplitterRootProps) => {
   const [useSplitterProps, localProps] = createSplitProps<UseSplitterProps>()(props, [
     'defaultSize',
+    'disabled',
     'id',
     'ids',
     'keyboardResizeBy',

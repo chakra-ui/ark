@@ -2,8 +2,8 @@ import { Field } from '@ark-ui/solid/field'
 import { Fieldset } from '@ark-ui/solid/fieldset'
 import { Select, createListCollection } from '@ark-ui/solid/select'
 import { ChevronsUpDownIcon } from 'lucide-solid'
-import { Index, createSignal } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { For, createSignal } from 'solid-js'
+import { Portal } from '@solidjs/web'
 import field from 'styles/field.module.css'
 import styles from 'styles/fieldset.module.css'
 import select from 'styles/select.module.css'
@@ -44,13 +44,13 @@ export const PhoneInput = () => {
             <Portal>
               <Select.Positioner>
                 <Select.Content class={select.Content}>
-                  <Index each={extensions.items}>
+                  <For each={extensions.items} keyed={false}>
                     {(item) => (
                       <Select.Item class={select.Item} item={item()}>
                         <Select.ItemText class={select.ItemText}>{item().label}</Select.ItemText>
                       </Select.Item>
                     )}
-                  </Index>
+                  </For>
                 </Select.Content>
               </Select.Positioner>
             </Portal>

@@ -1,7 +1,7 @@
 import { Tooltip } from '@ark-ui/solid/tooltip'
 import { BoldIcon, ItalicIcon, StrikethroughIcon, UnderlineIcon } from 'lucide-solid'
 import { type Component, For, createSignal } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/tooltip.module.css'
 
 interface Tool {

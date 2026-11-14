@@ -10,7 +10,7 @@ import {
 import { useFilter } from '@ark-ui/solid/locale'
 import { CornerDownLeftIcon, SearchIcon } from 'lucide-solid'
 import { For, Show, createEffect, createSignal } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import button from 'styles/button.module.css'
 import styles from 'styles/command-palette.module.css'
 
@@ -64,9 +64,7 @@ export const CommandPalette = () => {
       contains(itemText, filterText) || item.keywords.some((keyword) => contains(keyword, filterText)),
   })
 
-  createEffect(() => {
-    set([...commands()])
-  })
+  createEffect(commands, (list) => set([...list]))
 
   const openPalette = () => setOpen(true)
 
@@ -107,7 +105,7 @@ export const CommandPalette = () => {
                 class={styles.Root}
                 collection={collection()}
                 open
-                disableLayer
+                inline
                 inputBehavior="autohighlight"
                 selectionBehavior="preserve"
                 loopFocus={false}

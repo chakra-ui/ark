@@ -22,7 +22,11 @@ export const TourContent = (props: TourContentProps) => {
 
   return (
     <Show when={!presence().unmounted}>
-      <ark.div {...mergedProps} ref={composeRefs(presence().ref, props.ref)} state={tour().getContentState()} />
+      <ark.div
+        {...mergedProps}
+        ref={composeRefs((el) => presence().ref(el), props.ref)}
+        state={tour().getContentState()}
+      />
     </Show>
   )
 }

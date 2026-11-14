@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UsePinInputContext, usePinInputContext } from './use-pin-input-context.ts'
 
 export interface PinInputContextProps {

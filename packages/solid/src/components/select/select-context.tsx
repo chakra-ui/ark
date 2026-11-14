@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseSelectContext, useSelectContext } from './use-select-context.ts'
 import type { CollectionItem } from '../collection/index.tsx'
 

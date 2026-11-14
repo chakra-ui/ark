@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseRatingGroupItemContext, useRatingGroupItemContext } from './use-rating-group-item-context.ts'
 
 export interface RatingGroupItemContextProps {

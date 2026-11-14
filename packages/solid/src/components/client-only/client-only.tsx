@@ -1,4 +1,5 @@
-import { type JSX, Show, createSignal, onMount } from 'solid-js'
+import { Show, createSignal, onSettled } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 
 export interface ClientOnlyProps {
   children: JSX.Element
@@ -8,7 +9,7 @@ export interface ClientOnlyProps {
 export function ClientOnly(props: ClientOnlyProps) {
   const [isClient, setIsClient] = createSignal(false)
 
-  onMount(() => {
+  onSettled(() => {
     setIsClient(true)
   })
 

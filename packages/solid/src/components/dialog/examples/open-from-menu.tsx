@@ -2,7 +2,7 @@ import { Dialog } from '@ark-ui/solid/dialog'
 import { Menu } from '@ark-ui/solid/menu'
 import { ChevronDownIcon, XIcon } from 'lucide-solid'
 import { createSignal } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import dialog from 'styles/dialog.module.css'
 import menu from 'styles/menu.module.css'
 

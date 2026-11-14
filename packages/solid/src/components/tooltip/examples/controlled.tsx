@@ -1,6 +1,6 @@
 import { Tooltip } from '@ark-ui/solid/tooltip'
 import { createSignal } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/tooltip.module.css'
 
 export const Controlled = () => {

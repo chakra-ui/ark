@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseListVirtualizerContext, useListVirtualizerContext } from './use-list-virtualizer-context.ts'
 
 export interface ListVirtualizerContextProps {

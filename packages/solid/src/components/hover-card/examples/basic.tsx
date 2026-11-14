@@ -1,5 +1,5 @@
 import { HoverCard } from '@ark-ui/solid/hover-card'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/hover-card.module.css'
 
 export const Basic = () => (

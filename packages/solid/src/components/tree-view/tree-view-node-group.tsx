@@ -25,7 +25,7 @@ export const TreeViewNodeGroup = (props: TreeViewNodeGroupProps) => {
   return (
     <Collapsible.Root
       open={nodeState().expanded}
-      ids={{ content: nodeGroupContentProps().id }}
+      ids={{ content: nodeGroupContentProps().id || undefined }}
       {...renderStrategyProps}
       {...mergedProps}
       state={treeView().getNodeState(nodeProps)}

@@ -1,5 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { Show, splitProps } from 'solid-js'
+import { Show } from 'solid-js'
+import { splitProps } from '../../utils/split-props.ts'
 import { composeRefs } from '../../utils/compose-refs.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useSwapContext } from './use-swap-context.ts'
@@ -22,7 +23,7 @@ export const SwapIndicator = (props: SwapIndicatorProps) => {
 
   return (
     <Show when={!presence().unmounted}>
-      <ark.span {...mergedProps} ref={composeRefs(presence().ref, localProps.ref)} />
+      <ark.span {...mergedProps} ref={composeRefs((el) => presence().ref(el), localProps.ref)} />
     </Show>
   )
 }

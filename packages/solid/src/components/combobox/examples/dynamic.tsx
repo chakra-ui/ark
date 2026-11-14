@@ -1,6 +1,6 @@
 import { Combobox, useListCollection } from '@ark-ui/solid/combobox'
 import { For } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/combobox.module.css'
 
 const suggestList = ['gmail.com', 'yahoo.com', 'ark-ui.com']

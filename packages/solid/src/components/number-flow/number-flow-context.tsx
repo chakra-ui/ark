@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseNumberFlowContext, useNumberFlowContext } from './use-number-flow-context.ts'
 
 export interface NumberFlowContextProps {

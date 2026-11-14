@@ -20,7 +20,7 @@ export const Pricing = () => {
               <button
                 type="button"
                 class={styles.ToggleItem}
-                aria-pressed={billing() === option}
+                aria-pressed={billing() === option ? 'true' : 'false'}
                 onClick={() => setBilling(option)}
               >
                 {option === 'monthly' ? 'Monthly' : 'Yearly'}

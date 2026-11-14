@@ -1,6 +1,6 @@
 import { Menu } from '@ark-ui/solid/menu'
 import { Menubar, useMenubar } from '@ark-ui/solid/menubar'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import menu from 'styles/menu.module.css'
 import styles from 'styles/menubar.module.css'
 

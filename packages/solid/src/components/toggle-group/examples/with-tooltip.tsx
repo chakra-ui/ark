@@ -2,7 +2,7 @@ import { ToggleGroup } from '@ark-ui/solid/toggle-group'
 import { Tooltip, useTooltip } from '@ark-ui/solid/tooltip'
 import { BoldIcon, ItalicIcon, UnderlineIcon } from 'lucide-solid'
 import { For } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/toggle-group.module.css'
 import tooltipStyles from 'styles/tooltip.module.css'
 

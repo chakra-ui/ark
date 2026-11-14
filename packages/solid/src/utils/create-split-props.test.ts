@@ -24,14 +24,14 @@ describe('createSplitProps', () => {
   it('should create an empty object when no keys are required', () => {
     const [firstGroup, rest] = createSplitProps()(source, [])
 
-    expect(firstGroup).toStrictEqual({})
-    expect(rest).toStrictEqual(source)
+    expect(firstGroup).toEqual({})
+    expect(rest).toEqual(source)
   })
 
   it('should split props', () => {
     const [firstGroup, rest] = createSplitProps<Target>()(source, ['name'])
 
-    expect(firstGroup).toStrictEqual({ name: 'react' })
+    expect(firstGroup).toEqual({ name: 'react' })
     expect(rest).toEqual({ b: 2, c: 3 })
   })
 })

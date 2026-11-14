@@ -1,6 +1,7 @@
 import type { DigitSegment, Segment, SymbolSegment } from '@zag-js/number-flow'
 import { Key } from '@zag-js/solid'
-import { type Accessor, type JSX, Show } from 'solid-js'
+import { type Accessor, Show } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { NumberFlowDigit } from './number-flow-digit.tsx'
 import { NumberFlowSymbol } from './number-flow-symbol.tsx'
 import { useNumberFlowContext } from './use-number-flow-context.ts'

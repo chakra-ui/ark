@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { RenderStrategyProvider, splitRenderStrategyProps } from '../../utils/render-strategy.ts'
 import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.tsx'
 import type { UseDialogReturn } from './use-dialog.ts'

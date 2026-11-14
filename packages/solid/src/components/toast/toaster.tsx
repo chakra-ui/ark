@@ -1,6 +1,8 @@
 import { Key, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import * as toast from '@zag-js/toast'
-import { type Accessor, type JSX, createMemo, createUniqueId, splitProps } from 'solid-js'
+import { type Accessor, createMemo, createUniqueId } from 'solid-js'
+import { splitProps } from '../../utils/split-props.ts'
+import type { JSX } from '@solidjs/web'
 import { useEnvironmentContext, useLocaleContext } from '../../providers/index.tsx'
 import type { Assign } from '../../types.ts'
 import type { HTMLProps } from '../factory.tsx'
@@ -21,12 +23,9 @@ export interface ToasterBaseProps extends Omit<toast.GroupProps, 'id' | 'store'>
 export interface ToasterProps extends Assign<HTMLProps<'div'>, ToasterBaseProps> {}
 
 export const Toaster = (props: ToasterProps) => {
-  const [toasterProps, machineProps, groupProps, localProps] = splitProps(
-    props,
-    ['toaster', 'children'],
-    ['dir', 'getRootNode'],
-    ['label'],
-  )
+  const [toasterProps, rest] = splitProps(props, ['toaster', 'children'])
+  const [machineProps, restProps] = splitProps(rest, ['dir', 'getRootNode'])
+  const [groupProps, localProps] = splitProps(restProps, ['label'])
 
   const locale = useLocaleContext()
   const env = useEnvironmentContext()

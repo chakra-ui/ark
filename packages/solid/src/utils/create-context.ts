@@ -1,5 +1,10 @@
 import { hasProp, isFunction } from '@zag-js/utils'
-import { type Context, createContext as createSolidContext, useContext as useSolidContext } from 'solid-js'
+import {
+  type Context,
+  type ContextProviderComponent,
+  createContext as createSolidContext,
+  useContext as useSolidContext,
+} from 'solid-js'
 
 export interface CreateContextOptions<T> {
   strict?: boolean
@@ -9,7 +14,7 @@ export interface CreateContextOptions<T> {
   defaultValue?: T
 }
 
-export type CreateContextReturn<T> = [Context<T>['Provider'], () => T, Context<T>]
+export type CreateContextReturn<T> = [ContextProviderComponent<T>, () => T, Context<T>]
 
 function getErrorMessage(hook: string, provider: string) {
   return `${hook} returned \`undefined\`. Seems you forgot to wrap component within ${provider}`
@@ -18,10 +23,11 @@ function getErrorMessage(hook: string, provider: string) {
 export function createContext<T>(options: CreateContextOptions<T> = {}) {
   const { strict = true, hookName = 'useContext', providerName = 'Provider', errorMessage, defaultValue } = options
 
-  const Context = createSolidContext<T | undefined>(defaultValue)
+  // Solid 2 throws on a missing provider unless the context has a default; `null` keeps the lookup soft
+  const Context = createSolidContext<T | null>(defaultValue ?? null)
 
   function useContext() {
-    const context = useSolidContext(Context)
+    const context = useSolidContext(Context) ?? undefined
 
     if (!context && strict) {
       const error = new Error(errorMessage ?? getErrorMessage(hookName, providerName))
@@ -35,5 +41,5 @@ export function createContext<T>(options: CreateContextOptions<T> = {}) {
     return context
   }
 
-  return [Context.Provider, useContext, Context] as CreateContextReturn<T>
+  return [Context, useContext, Context] as unknown as CreateContextReturn<T>
 }

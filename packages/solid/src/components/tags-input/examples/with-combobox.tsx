@@ -3,7 +3,7 @@ import { useFilter } from '@ark-ui/solid/locale'
 import { TagsInput, useTagsInput } from '@ark-ui/solid/tags-input'
 import { CheckIcon, XIcon } from 'lucide-solid'
 import { For, createUniqueId } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import combobox from 'styles/combobox.module.css'
 import styles from 'styles/tags-input.module.css'
 

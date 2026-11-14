@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseSliderContext, useSliderContext } from './use-slider-context.ts'
 
 export interface SliderContextProps {

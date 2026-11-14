@@ -1,7 +1,7 @@
 import { Menu } from '@ark-ui/solid/menu'
 import { Tooltip } from '@ark-ui/solid/tooltip'
 import { ChevronDownIcon } from 'lucide-solid'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/menu.module.css'
 import tooltipStyles from 'styles/tooltip.module.css'
 

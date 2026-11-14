@@ -1,5 +1,5 @@
 import { isApple, isLinux } from '@zag-js/dom-query'
-import { type Accessor, createSignal, onMount } from 'solid-js'
+import { type Accessor, createSignal, onSettled } from 'solid-js'
 
 import type { Platform } from '@zag-js/hotkeys'
 
@@ -14,7 +14,7 @@ const detect = (): Platform => {
 export const usePlatform = (): Accessor<Platform> => {
   const [platform, setPlatform] = createSignal<Platform>('windows')
 
-  onMount(() => {
+  onSettled(() => {
     setPlatform(detect())
   })
 

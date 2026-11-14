@@ -1,7 +1,7 @@
 import { Checkbox } from '@ark-ui/solid/checkbox'
 import { Tooltip } from '@ark-ui/solid/tooltip'
 import { CheckIcon } from 'lucide-solid'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/checkbox.module.css'
 import tooltipStyles from 'styles/tooltip.module.css'
 

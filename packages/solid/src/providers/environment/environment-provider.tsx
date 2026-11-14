@@ -1,5 +1,6 @@
 import { getDocument, getWindow } from '@zag-js/dom-query'
-import { type JSX, Show, createMemo, createSignal } from 'solid-js'
+import { Show, createMemo, createSignal } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { ark } from '../../components/factory.tsx'
 import { runIfFn } from '../../utils/run-if-fn.ts'
 import { EnvironmentContextProvider, type RootNode } from './use-environment-context.ts'

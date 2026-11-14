@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseRadioGroupContext, useRadioGroupContext } from './use-radio-group-context.ts'
 
 export interface RadioGroupContextProps {

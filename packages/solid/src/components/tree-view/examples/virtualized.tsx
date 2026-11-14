@@ -1,7 +1,7 @@
 import { TreeView, createTreeCollection, useTreeView } from '@ark-ui/solid/tree-view'
 import { ListVirtualizer, useListVirtualizer } from '@ark-ui/solid/virtualizer'
 import { ChevronRightIcon, FileIcon, FolderIcon } from 'lucide-solid'
-import { Index, Show, createMemo } from 'solid-js'
+import { For, Show, createMemo } from 'solid-js'
 import button from 'styles/button.module.css'
 import styles from 'styles/tree-view.module.css'
 
@@ -68,7 +68,7 @@ export const Virtualized = () => {
         render={(props) => <ListVirtualizer.Root {...props()} value={virtualizer} />}
       >
         <ListVirtualizer.Content>
-          <Index each={virtualizer.getVirtualItems()}>
+          <For each={virtualizer.getVirtualItems()} keyed={false}>
             {(virtualItem) => {
               const visibleNode = () => visibleNodes()[virtualItem().index]
               const nodeState = createMemo(() =>
@@ -100,7 +100,7 @@ export const Virtualized = () => {
                 </TreeView.NodeProvider>
               )
             }}
-          </Index>
+          </For>
         </ListVirtualizer.Content>
       </TreeView.Tree>
     </TreeView.RootProvider>

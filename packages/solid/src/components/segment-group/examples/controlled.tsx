@@ -1,5 +1,5 @@
 import { SegmentGroup } from '@ark-ui/solid/segment-group'
-import { Index, createSignal } from 'solid-js'
+import { For, createSignal } from 'solid-js'
 import styles from 'styles/segment-group.module.css'
 
 export const Controlled = () => {
@@ -9,7 +9,7 @@ export const Controlled = () => {
   return (
     <SegmentGroup.Root class={styles.Root} value={value()} onValueChange={(e) => setValue(e.value)}>
       <SegmentGroup.Indicator class={styles.Indicator} />
-      <Index each={frameworks}>
+      <For each={frameworks} keyed={false}>
         {(framework) => (
           <SegmentGroup.Item class={styles.Item} value={framework()}>
             <SegmentGroup.ItemText class={styles.ItemText}>{framework()}</SegmentGroup.ItemText>
@@ -17,7 +17,7 @@ export const Controlled = () => {
             <SegmentGroup.ItemHiddenInput />
           </SegmentGroup.Item>
         )}
-      </Index>
+      </For>
     </SegmentGroup.Root>
   )
 }

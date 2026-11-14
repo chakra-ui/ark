@@ -1,6 +1,6 @@
 import { Carousel } from '@ark-ui/solid/carousel'
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-solid'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import styles from 'styles/carousel.module.css'
 
 const slides = Array.from({ length: 6 })
@@ -10,13 +10,13 @@ export const Spacing = () => {
     <Carousel.Root class={styles.Root} count={slides.length} slidesPerPage={1.5} spacing="48px">
       <span class={styles.StatusText}>spacing='48px'</span>
       <Carousel.ItemGroup class={styles.ItemGroup}>
-        <Index each={slides}>
+        <For each={slides} keyed={false}>
           {(_, index) => (
             <Carousel.Item class={styles.Item} index={index}>
               <div class={styles.Slide}>{index + 1}</div>
             </Carousel.Item>
           )}
-        </Index>
+        </For>
       </Carousel.ItemGroup>
       <Carousel.Control class={styles.Control} data-align="center">
         <Carousel.PrevTrigger class={styles.Trigger}>
@@ -25,9 +25,9 @@ export const Spacing = () => {
         <Carousel.Context>
           {(api) => (
             <Carousel.IndicatorGroup class={styles.IndicatorGroup}>
-              <Index each={api().pageSnapPoints}>
+              <For each={api().pageSnapPoints} keyed={false}>
                 {(_, index) => <Carousel.Indicator class={styles.Indicator} index={index} />}
-              </Index>
+              </For>
             </Carousel.IndicatorGroup>
           )}
         </Carousel.Context>

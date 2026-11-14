@@ -1,4 +1,5 @@
-import { type JSX, splitProps } from 'solid-js'
+import { splitProps } from '../../utils/split-props.ts'
+import type { JSX } from '@solidjs/web'
 import type { HTMLProps, PolymorphicProps } from '../factory.tsx'
 import { ark } from '../factory.tsx'
 import { type UseDownloadProps, useDownload } from './use-download.ts'

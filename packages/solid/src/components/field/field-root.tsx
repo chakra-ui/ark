@@ -23,7 +23,7 @@ export const FieldRoot = (props: FieldRootProps) => {
 
   return (
     <FieldProvider value={field}>
-      <ark.div {...mergedProps} ref={composeRefs(field().refs.rootRef, props.ref)} />
+      <ark.div {...mergedProps} ref={composeRefs((el) => field().refs.rootRef(el), props.ref)} />
     </FieldProvider>
   )
 }

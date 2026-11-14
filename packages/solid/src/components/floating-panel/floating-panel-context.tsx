@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseFloatingPanelContext, useFloatingPanelContext } from './use-floating-panel-context.ts'
 
 export interface FloatingPanelContextProps {

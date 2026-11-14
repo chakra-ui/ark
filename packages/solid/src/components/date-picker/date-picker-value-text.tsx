@@ -1,5 +1,6 @@
 import type { DateValue } from '@zag-js/date-picker'
-import { type JSX, For, Show } from 'solid-js'
+import { For, Show } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import type { Assign } from '../../types.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { datePickerAnatomy } from './date-picker.anatomy.ts'

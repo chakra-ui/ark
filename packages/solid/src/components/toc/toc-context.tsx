@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseTocContext, useTocContext } from './use-toc-context'
 
 export interface TocContextProps {

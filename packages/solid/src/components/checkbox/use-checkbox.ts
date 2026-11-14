@@ -16,7 +16,7 @@ export const useCheckbox = (ownProps: MaybeAccessor<UseCheckboxProps> = {}): Use
   const props = createMemo(() => {
     const resolvedProps = runIfFn(ownProps)
     return mergeProps(checkboxGroup?.().getItemProps({ value: resolvedProps.value }) ?? {}, resolvedProps)
-  }, [ownProps, checkboxGroup])
+  })
 
   const id = createUniqueId()
   const locale = useLocaleContext()

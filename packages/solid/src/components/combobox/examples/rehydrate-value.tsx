@@ -1,6 +1,6 @@
 import { Combobox, useCombobox, useComboboxContext, useListCollection } from '@ark-ui/solid/combobox'
-import { For, createEffect, createRenderEffect, createSignal, on } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { For, createEffect, createSignal } from 'solid-js'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/combobox.module.css'
 import { useAsync } from './use-async.ts'
 
@@ -8,9 +8,9 @@ function ComboboxRehydrateValue() {
   const combobox = useComboboxContext()
   let hydrated = false
 
-  createRenderEffect(() => {
-    if (combobox().value.length && combobox().collection.size && !hydrated) {
-      combobox().syncSelectedItems()
+  createEffect(combobox, (api) => {
+    if (api.value.length && api.collection.size && !hydrated) {
+      api.syncSelectedItems()
       hydrated = true
     }
   })
@@ -41,7 +41,9 @@ export const RehydrateValue = () => {
     set(data.results)
   })
 
-  createEffect(on(inputValue, () => state.load()))
+  createEffect(inputValue, () => {
+    state.load()
+  })
 
   return (
     <Combobox.RootProvider class={styles.Root} value={combobox}>

@@ -1,8 +1,8 @@
 import { Select, createListCollection } from '@ark-ui/solid/select'
 import { ListVirtualizer, useListVirtualizer } from '@ark-ui/solid/virtualizer'
 import { ChevronsUpDownIcon } from 'lucide-solid'
-import { Index } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { For } from 'solid-js'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/select.module.css'
 
 const collection = createListCollection({
@@ -43,7 +43,7 @@ export const Virtualized = () => {
               render={(props) => <ListVirtualizer.Root {...props()} value={virtualizer} />}
             >
               <ListVirtualizer.Content>
-                <Index each={virtualizer.getVirtualItems()}>
+                <For each={virtualizer.getVirtualItems()} keyed={false}>
                   {(virtualItem) => {
                     const item = () => collection.items[virtualItem().index]
                     return (
@@ -57,7 +57,7 @@ export const Virtualized = () => {
                       </Select.Item>
                     )
                   }}
-                </Index>
+                </For>
               </ListVirtualizer.Content>
             </Select.List>
           </Select.Content>
