@@ -49,7 +49,7 @@ const handleOpenChange = async (details: Select.OpenChangeDetails) => {
       </Select.Trigger>
     </Select.Control>
     <Teleport to="body">
-      <Select.Positioner>
+      <Select.Positioner :class="styles.Positioner">
         <Select.Content :class="styles.Content">
           <Select.Status>
             <div v-if="loading" :class="styles.Status">Loading...</div>

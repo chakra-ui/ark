@@ -13,7 +13,7 @@
       <ChevronDownIcon />
     </Menu.Indicator>
   </Menu.Trigger>
-  <Menu.Positioner>
+  <Menu.Positioner class={styles.Positioner}>
     <Menu.Content class={styles.Content}>
       <Menu.RadioItemGroup class={styles.ItemGroup} bind:value={sortBy}>
         <Menu.ItemGroupLabel class={styles.ItemGroupLabel}>Sort By</Menu.ItemGroupLabel>

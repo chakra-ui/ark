@@ -24,7 +24,7 @@ export const RootProvider = () => {
             </div>
           </ColorPicker.Trigger>
         </ColorPicker.Control>
-        <ColorPicker.Positioner>
+        <ColorPicker.Positioner class={styles.Positioner}>
           <ColorPicker.Content class={styles.Content}>
             <ColorPicker.Area class={styles.Area}>
               <ColorPicker.AreaBackground class={styles.AreaBackground} />

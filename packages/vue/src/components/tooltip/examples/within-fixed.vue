@@ -8,7 +8,7 @@ import styles from 'styles/tooltip.module.css'
     <Tooltip.Root :positioning="{ strategy: 'fixed' }">
       <Tooltip.Trigger :class="styles.Trigger">Hover Me</Tooltip.Trigger>
       <Teleport to="body">
-        <Tooltip.Positioner>
+        <Tooltip.Positioner :class="styles.Positioner">
           <Tooltip.Content :class="styles.Content">I am a tooltip!</Tooltip.Content>
         </Tooltip.Positioner>
       </Teleport>

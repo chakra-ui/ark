@@ -14,7 +14,7 @@ export const RadioItems = () => {
           <ChevronDownIcon />
         </Menu.Indicator>
       </Menu.Trigger>
-      <Menu.Positioner>
+      <Menu.Positioner class={styles.Positioner}>
         <Menu.Content class={styles.Content}>
           <Menu.RadioItemGroup class={styles.ItemGroup} value={sortBy()} onValueChange={(e) => setSortBy(e.value)}>
             <Menu.ItemGroupLabel class={styles.ItemGroupLabel}>Sort By</Menu.ItemGroupLabel>

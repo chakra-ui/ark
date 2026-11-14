@@ -8,7 +8,7 @@ export const Basic = () => (
       Liked by <HoverCard.Trigger className={styles.Trigger} render={<a href="#profile">@sarah_chen</a>} /> and 3 others
     </p>
     <Portal>
-      <HoverCard.Positioner>
+      <HoverCard.Positioner className={styles.Positioner}>
         <HoverCard.Content className={styles.Content}>
           <HoverCard.Arrow className={styles.Arrow}>
             <HoverCard.ArrowTip className={styles.ArrowTip} />

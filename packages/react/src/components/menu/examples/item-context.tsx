@@ -10,7 +10,7 @@ export const ItemContext = () => (
         <ChevronDownIcon />
       </Menu.Indicator>
     </Menu.Trigger>
-    <Menu.Positioner>
+    <Menu.Positioner className={styles.Positioner}>
       <Menu.Content className={styles.Content}>
         <Menu.Item className={styles.Item} value="profile">
           <Menu.ItemContext>

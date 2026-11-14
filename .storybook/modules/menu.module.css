@@ -60,6 +60,10 @@
   user-select: none;
 }
 
+.Positioner {
+  z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
+}
+
 .Content {
   --arrow-size: 10px;
   position: relative;
@@ -72,7 +76,6 @@
   border: 1px solid var(--demo-border-emphasized);
   border-radius: 0.375rem;
   box-shadow: var(--demo-shadow-md);
-  z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
   outline: none;
   transform-origin: var(--transform-origin);
 

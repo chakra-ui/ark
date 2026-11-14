@@ -49,7 +49,7 @@ export const RootProvider = () => {
           </div>
         </Combobox.Control>
         <Portal>
-          <Combobox.Positioner>
+          <Combobox.Positioner className={styles.Positioner}>
             <Combobox.Content className={styles.Content}>
               <Combobox.List className={styles.List}>
                 {collection.items.map((item) => (

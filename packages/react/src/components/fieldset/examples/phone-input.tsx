@@ -41,7 +41,7 @@ export const PhoneInput = () => {
               </Select.Trigger>
             </Select.Control>
             <Portal>
-              <Select.Positioner>
+              <Select.Positioner className={select.Positioner}>
                 <Select.Content className={select.Content}>
                   {extensions.items.map((item) => (
                     <Select.Item className={select.Item} key={item.value} item={item}>

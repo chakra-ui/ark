@@ -11,7 +11,7 @@ const open = ref(false)
   <Tooltip.Root v-model:open="open">
     <Tooltip.Trigger :class="styles.Trigger">Hover Me</Tooltip.Trigger>
     <Teleport to="body">
-      <Tooltip.Positioner>
+      <Tooltip.Positioner :class="styles.Positioner">
         <Tooltip.Content :class="styles.Content">I am a tooltip!</Tooltip.Content>
       </Tooltip.Positioner>
     </Teleport>

@@ -6,7 +6,7 @@ export const ContextLazyMount = () => (
   <Menu.Root lazyMount unmountOnExit>
     <Menu.ContextTrigger className={styles.ContextTrigger}>Right click here</Menu.ContextTrigger>
     <Portal>
-      <Menu.Positioner>
+      <Menu.Positioner className={styles.Positioner}>
         <Menu.Content className={styles.Content}>
           <Menu.Item className={styles.Item} value="cut">
             Cut
@@ -21,7 +21,7 @@ export const ContextLazyMount = () => (
           <Menu.Root lazyMount unmountOnExit>
             <Menu.TriggerItem className={styles.TriggerItem}>Share</Menu.TriggerItem>
             <Portal>
-              <Menu.Positioner>
+              <Menu.Positioner className={styles.Positioner}>
                 <Menu.Content className={styles.Content}>
                   <Menu.Item className={styles.Item} value="email">
                     Email

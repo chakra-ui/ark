@@ -9,7 +9,7 @@ export const Nested = () => (
     <Menu.Root>
       <Menu.Trigger class={styles.Trigger}>File</Menu.Trigger>
       <Portal>
-        <Menu.Positioner>
+        <Menu.Positioner class={menu.Positioner}>
           <Menu.Content class={menu.Content}>
             <Menu.Item class={menu.Item} value="new">
               New File
@@ -21,7 +21,7 @@ export const Nested = () => (
             <Menu.Root>
               <Menu.TriggerItem class={menu.TriggerItem}>Export</Menu.TriggerItem>
               <Portal>
-                <Menu.Positioner>
+                <Menu.Positioner class={menu.Positioner}>
                   <Menu.Content class={menu.Content}>
                     <Menu.Item class={menu.Item} value="pdf">
                       PDF
@@ -48,7 +48,7 @@ export const Nested = () => (
     <Menu.Root>
       <Menu.Trigger class={styles.Trigger}>Edit</Menu.Trigger>
       <Portal>
-        <Menu.Positioner>
+        <Menu.Positioner class={menu.Positioner}>
           <Menu.Content class={menu.Content}>
             <Menu.Item class={menu.Item} value="cut">
               Cut
@@ -63,7 +63,7 @@ export const Nested = () => (
             <Menu.Root>
               <Menu.TriggerItem class={menu.TriggerItem}>Find</Menu.TriggerItem>
               <Portal>
-                <Menu.Positioner>
+                <Menu.Positioner class={menu.Positioner}>
                   <Menu.Content class={menu.Content}>
                     <Menu.Item class={menu.Item} value="find">
                       Find...
@@ -86,7 +86,7 @@ export const Nested = () => (
     <Menu.Root>
       <Menu.Trigger class={styles.Trigger}>View</Menu.Trigger>
       <Portal>
-        <Menu.Positioner>
+        <Menu.Positioner class={menu.Positioner}>
           <Menu.Content class={menu.Content}>
             <Menu.Item class={menu.Item} value="zoom-in">
               Zoom In

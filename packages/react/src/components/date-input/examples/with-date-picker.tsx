@@ -40,7 +40,7 @@ export const WithDatePicker = () => {
             </DatePicker.Trigger>
           </DatePicker.Control>
           <Portal>
-            <DatePicker.Positioner>
+            <DatePicker.Positioner className={datePickerStyles.Positioner}>
               <DatePicker.Content className={datePickerStyles.Content}>
                 <DatePicker.View view="day" className={datePickerStyles.View}>
                   <DatePicker.Context>

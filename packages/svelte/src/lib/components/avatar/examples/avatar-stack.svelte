@@ -35,7 +35,7 @@
         {/snippet}
       </Menu.Trigger>
       <Portal>
-        <Menu.Positioner>
+        <Menu.Positioner class={menuStyles.Positioner}>
           <Menu.Content class={menuStyles.Content}>
             {#each hidden as user (user.id)}
               <Menu.Item class={menuStyles.Item} value={user.id}>

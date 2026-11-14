@@ -10,7 +10,7 @@ export const Group = () => (
         <ChevronDownIcon />
       </Menu.Indicator>
     </Menu.Trigger>
-    <Menu.Positioner>
+    <Menu.Positioner className={styles.Positioner}>
       <Menu.Content className={styles.Content}>
         <Menu.ItemGroup className={styles.ItemGroup}>
           <Menu.ItemGroupLabel className={styles.ItemGroupLabel}>Clipboard</Menu.ItemGroupLabel>

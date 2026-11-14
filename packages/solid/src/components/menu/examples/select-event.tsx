@@ -11,7 +11,7 @@ export const SelectEvent = () => (
         <ChevronDownIcon />
       </Menu.Indicator>
     </Menu.Trigger>
-    <Menu.Positioner>
+    <Menu.Positioner class={styles.Positioner}>
       <Menu.Content class={styles.Content}>
         <For each={items}>
           {(item) => (

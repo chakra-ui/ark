@@ -20,7 +20,7 @@ import tooltipStyles from 'styles/tooltip.module.css'
       </Checkbox.Root>
     </Tooltip.Trigger>
     <Teleport to="body">
-      <Tooltip.Positioner>
+      <Tooltip.Positioner :class="tooltipStyles.Positioner">
         <Tooltip.Content :class="tooltipStyles.Content">Required to continue</Tooltip.Content>
       </Tooltip.Positioner>
     </Teleport>

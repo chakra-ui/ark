@@ -14,7 +14,7 @@ import tooltipStyles from 'styles/tooltip.module.css'
         <ChevronDownIcon />
       </Menu.Indicator>
     </Menu.Trigger>
-    <Menu.Positioner>
+    <Menu.Positioner :class="styles.Positioner">
       <Menu.Content :class="styles.Content">
         <Menu.Arrow :class="styles.Arrow">
           <Menu.ArrowTip :class="styles.ArrowTip" />
@@ -26,7 +26,7 @@ import tooltipStyles from 'styles/tooltip.module.css'
             <Menu.Item v-bind="ctx.props" :class="styles.Item" value="save" disabled>Save</Menu.Item>
           </Tooltip.Trigger>
           <Teleport to="body">
-            <Tooltip.Positioner>
+            <Tooltip.Positioner :class="tooltipStyles.Positioner">
               <Tooltip.Content :class="tooltipStyles.Content">No changes to save</Tooltip.Content>
             </Tooltip.Positioner>
           </Teleport>

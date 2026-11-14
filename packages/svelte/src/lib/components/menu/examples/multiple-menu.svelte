@@ -25,7 +25,7 @@
         <ChevronDownIcon />
       </Menu.Indicator>
     </Menu.Trigger>
-    <Menu.Positioner>
+    <Menu.Positioner class={styles.Positioner}>
       <Menu.Content class={styles.Content}>
         {#each fileItems as item}
           <Menu.Item class={styles.Item} value={item.value}>{item.label}</Menu.Item>
@@ -41,7 +41,7 @@
         <ChevronDownIcon />
       </Menu.Indicator>
     </Menu.Trigger>
-    <Menu.Positioner>
+    <Menu.Positioner class={styles.Positioner}>
       <Menu.Content class={styles.Content}>
         {#each editItems as item}
           <Menu.Item class={styles.Item} value={item.value}>{item.label}</Menu.Item>

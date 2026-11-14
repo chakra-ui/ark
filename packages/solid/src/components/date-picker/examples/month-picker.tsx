@@ -40,7 +40,7 @@ export const MonthPicker = () => {
         <DatePicker.ClearTrigger class={button.Root}>Clear</DatePicker.ClearTrigger>
       </DatePicker.Control>
       <Portal>
-        <DatePicker.Positioner>
+        <DatePicker.Positioner class={styles.Positioner}>
           <DatePicker.Content class={styles.Content}>
             <DatePicker.View view="month" class={styles.View}>
               <DatePicker.ViewControl class={styles.ViewControl}>

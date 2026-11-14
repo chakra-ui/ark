@@ -19,7 +19,7 @@ const dialogOpen = ref(false)
       </Menu.Indicator>
     </Menu.Trigger>
     <Teleport to="body">
-      <Menu.Positioner>
+      <Menu.Positioner :class="styles.Positioner">
         <Menu.Content :class="styles.Content">
           <Menu.Item :class="styles.Item" value="edit">Edit</Menu.Item>
           <Menu.Item :class="styles.Item" value="duplicate">Duplicate</Menu.Item>

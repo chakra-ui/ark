@@ -37,7 +37,7 @@ export const AvatarStack = () => (
           )}
         />
         <Portal>
-          <Menu.Positioner>
+          <Menu.Positioner class={menuStyles.Positioner}>
             <Menu.Content class={menuStyles.Content}>
               <For each={hidden}>
                 {(user) => (

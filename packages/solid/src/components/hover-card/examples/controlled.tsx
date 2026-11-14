@@ -26,7 +26,7 @@ export const Controlled = () => {
           and 3 others
         </p>
         <Portal>
-          <HoverCard.Positioner>
+          <HoverCard.Positioner class={styles.Positioner}>
             <HoverCard.Content class={styles.Content}>
               <HoverCard.Arrow class={styles.Arrow}>
                 <HoverCard.ArrowTip class={styles.ArrowTip} />

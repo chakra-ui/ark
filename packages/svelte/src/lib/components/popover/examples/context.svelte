@@ -9,7 +9,7 @@
 <Popover.Root>
   <Popover.Trigger class={button.Root}>Click Me</Popover.Trigger>
   <Portal>
-    <Popover.Positioner>
+    <Popover.Positioner class={styles.Positioner}>
       <Popover.Context>
         {#snippet render(popover)}
           <Popover.Content class={styles.Content}>

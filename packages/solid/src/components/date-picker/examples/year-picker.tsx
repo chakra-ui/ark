@@ -38,7 +38,7 @@ export const YearPicker = () => {
         <DatePicker.ClearTrigger class={button.Root}>Clear</DatePicker.ClearTrigger>
       </DatePicker.Control>
       <Portal>
-        <DatePicker.Positioner>
+        <DatePicker.Positioner class={styles.Positioner}>
           <DatePicker.Content class={styles.Content}>
             <DatePicker.View view="year" class={styles.View}>
               <DatePicker.ViewControl class={styles.ViewControl}>

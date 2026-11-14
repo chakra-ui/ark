@@ -10,7 +10,7 @@ export const WithPopover = () => (
     <Tooltip.Root>
       <Tooltip.Trigger render={<Popover.Trigger className={button.Root}>Click Me</Popover.Trigger>} />
       <Portal>
-        <Tooltip.Positioner>
+        <Tooltip.Positioner className={tooltipStyles.Positioner}>
           <Tooltip.Content className={tooltipStyles.Content}>See more details</Tooltip.Content>
         </Tooltip.Positioner>
       </Portal>

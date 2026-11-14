@@ -15,7 +15,7 @@ export const CheckboxItems = () => {
           <ChevronDownIcon />
         </Menu.Indicator>
       </Menu.Trigger>
-      <Menu.Positioner>
+      <Menu.Positioner className={styles.Positioner}>
         <Menu.Content className={styles.Content}>
           <Menu.CheckboxItem
             className={styles.CheckboxItem}

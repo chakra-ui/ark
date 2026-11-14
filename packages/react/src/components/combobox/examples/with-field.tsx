@@ -32,7 +32,7 @@ export const WithField = () => {
             </Combobox.Trigger>
           </div>
         </Combobox.Control>
-        <Combobox.Positioner>
+        <Combobox.Positioner className={styles.Positioner}>
           <Combobox.Content className={styles.Content}>
             <Combobox.List className={styles.List}>
               {collection.items.map((item) => (

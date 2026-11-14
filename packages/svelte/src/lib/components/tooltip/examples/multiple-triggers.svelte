@@ -40,7 +40,7 @@
     </Tooltip.Trigger>
   </div>
   <Portal>
-    <Tooltip.Positioner>
+    <Tooltip.Positioner class={styles.Positioner}>
       <Tooltip.Content class={styles.Content}>
         {#if activeTool}
           {activeTool.label}

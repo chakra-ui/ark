@@ -26,7 +26,7 @@
       <ChevronDownIcon />
     </Menu.Indicator>
   </Menu.Trigger>
-  <Menu.Positioner>
+  <Menu.Positioner class={styles.Positioner}>
     <Menu.Content class={styles.Content}>
       {#each items as item}
         <Menu.Item class={styles.Item} value={item.value} onSelect={() => handleItemSelect(item.label)}>

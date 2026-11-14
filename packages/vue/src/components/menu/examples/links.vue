@@ -12,7 +12,7 @@ import styles from 'styles/menu.module.css'
         <ChevronDownIcon />
       </Menu.Indicator>
     </Menu.Trigger>
-    <Menu.Positioner>
+    <Menu.Positioner :class="styles.Positioner">
       <Menu.Content :class="styles.Content">
         <Menu.Item :class="styles.Item" value="docs" #render="ctx">
           <a href="https://ark-ui.com" v-bind="ctx.props">Documentation</a>

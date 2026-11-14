@@ -38,7 +38,7 @@ export const Context = () => {
         </div>
       </Combobox.Control>
       <Portal>
-        <Combobox.Positioner>
+        <Combobox.Positioner class={styles.Positioner}>
           <Combobox.Content class={styles.Content}>
             <Combobox.List class={styles.List}>
               <For each={collection().items}>

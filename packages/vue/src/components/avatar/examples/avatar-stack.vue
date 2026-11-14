@@ -30,7 +30,7 @@ const hidden = users.slice(max)
         </Avatar.Root>
       </Menu.Trigger>
       <Teleport to="body">
-        <Menu.Positioner>
+        <Menu.Positioner :class="menuStyles.Positioner">
           <Menu.Content :class="menuStyles.Content">
             <Menu.Item v-for="user in hidden" :key="user.id" :class="menuStyles.Item" :value="user.id">
               <Avatar.Root :class="styles.MenuAvatar">

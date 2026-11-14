@@ -52,7 +52,7 @@ const onSubmit = handleSubmit((values) => {
           </div>
         </Select.Control>
         <Teleport to="body">
-          <Select.Positioner>
+          <Select.Positioner :class="styles.Positioner">
             <Select.Content :class="styles.Content">
               <Select.List :class="styles.List">
                 <Select.ItemGroup :class="styles.ItemGroup">

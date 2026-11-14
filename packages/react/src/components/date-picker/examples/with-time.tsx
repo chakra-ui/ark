@@ -46,7 +46,7 @@ export const WithTime = () => {
         </DatePicker.Trigger>
       </DatePicker.Control>
       <Portal>
-        <DatePicker.Positioner>
+        <DatePicker.Positioner className={styles.Positioner}>
           <DatePicker.Content className={styles.Content}>
             <DatePicker.View view="day" className={styles.View}>
               <DatePicker.Context>
