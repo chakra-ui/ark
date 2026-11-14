@@ -20,6 +20,7 @@ export default {
       resolve: {
         alias: {
           styles: resolve(__dirname, '../../../.storybook/modules'),
+          'lucide-solid': resolve(__dirname, '../shims/lucide-solid.tsx'),
         },
       },
     })
