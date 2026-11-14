@@ -108,7 +108,7 @@
             class={styles.Root}
             collection={collection()}
             open
-            disableLayer
+            inline
             inputBehavior="autohighlight"
             selectionBehavior="preserve"
             loopFocus={false}

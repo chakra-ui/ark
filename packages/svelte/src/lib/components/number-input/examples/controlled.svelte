@@ -3,7 +3,7 @@
   import { ChevronDownIcon, ChevronUpIcon } from 'lucide-svelte'
   import styles from 'styles/number-input.module.css'
 
-  let value = $state('0')
+  let value = $state<number | null>(0)
 </script>
 
 <div class="stack">

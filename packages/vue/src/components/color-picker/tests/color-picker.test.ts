@@ -94,6 +94,6 @@ describe('Color Picker / Field', () => {
   it('should describe the trigger and channel input with the helper and error text', async () => {
     render(ColorPickerWithField, { props: { invalid: true } })
     expect(await screen.findByRole('button')).toHaveAccessibleDescription('Error Info Additional Info')
-    expect(screen.getByRole('textbox', { name: 'hex' })).toHaveAccessibleDescription('Error Info Additional Info')
+    expect(screen.getByRole('textbox', { name: /hex/i })).toHaveAccessibleDescription('Error Info Additional Info')
   })
 })

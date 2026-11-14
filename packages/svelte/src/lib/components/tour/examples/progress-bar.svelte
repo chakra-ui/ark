@@ -21,7 +21,7 @@
       description: 'The progress bar shows how far along you are.',
       target: () => document.querySelector<HTMLElement>('#progress-2'),
       actions: [
-        { label: 'Back', action: 'prev' },
+        { label: 'Back', action: 'previous' },
         { label: 'Next', action: 'next' },
       ],
     },
@@ -32,7 +32,7 @@
       description: 'One more step to complete the tour.',
       target: () => document.querySelector<HTMLElement>('#progress-3'),
       actions: [
-        { label: 'Back', action: 'prev' },
+        { label: 'Back', action: 'previous' },
         { label: 'Next', action: 'next' },
       ],
     },
@@ -43,7 +43,7 @@
       description: 'You have completed all the steps.',
       target: () => document.querySelector<HTMLElement>('#progress-4'),
       actions: [
-        { label: 'Back', action: 'prev' },
+        { label: 'Back', action: 'previous' },
         { label: 'Finish', action: 'dismiss' },
       ],
     },

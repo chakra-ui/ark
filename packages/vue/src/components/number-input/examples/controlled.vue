@@ -4,7 +4,7 @@ import { ChevronDownIcon, ChevronUpIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 import styles from 'styles/number-input.module.css'
 
-const value = ref('0')
+const value = ref<number | null>(0)
 </script>
 
 <template>
