@@ -333,6 +333,8 @@ const exampleModules: Record<string, () => Promise<ExampleModule>> = {
   'menu/context-lazy-mount': () => import('@examples/menu/examples/context-lazy-mount'),
   'menu/context': () => import('@examples/menu/examples/context'),
   'menu/controlled': () => import('@examples/menu/examples/controlled'),
+  'menu/filtering-submenu': () => import('@examples/menu/examples/filtering-submenu'),
+  'menu/filtering': () => import('@examples/menu/examples/filtering'),
   'menu/group': () => import('@examples/menu/examples/group'),
   'menu/item-context': () => import('@examples/menu/examples/item-context'),
   'menu/links': () => import('@examples/menu/examples/links'),

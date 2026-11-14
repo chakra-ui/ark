@@ -31,6 +31,7 @@
     createSplitProps<Optional<UseMenuProps, 'id'>>()(menuProps, [
       'anchorPoint',
       'aria-label',
+      'autoHighlight',
       'closeOnSelect',
       'composite',
       'defaultHighlightedValue',

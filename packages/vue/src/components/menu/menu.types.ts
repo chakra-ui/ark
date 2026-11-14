@@ -10,6 +10,13 @@ export interface RootProps {
    */
   'aria-label'?: string
   /**
+   * Whether a filter input highlights the first item when its query changes.
+   * - `true`: highlight it while the query is not empty
+   * - `"always"`: highlight it even when the query is empty, and keep a highlight when the pointer leaves
+   * @default false
+   */
+  autoHighlight?: boolean | 'always'
+  /**
    * Whether to close the menu when an option is selected
    * @default true
    */
@@ -48,6 +55,8 @@ export interface RootProps {
     group(id: string): string
     positioner: string
     arrow: string
+    input: string
+    list: string
   }>
   /**
    * Whether to loop the keyboard navigation.

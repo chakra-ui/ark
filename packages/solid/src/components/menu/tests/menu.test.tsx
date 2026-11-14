@@ -134,6 +134,15 @@ describe('Menu', () => {
     await waitFor(() => expect(screen.getByText(/Panda/i)).toBeVisible())
   })
 
+  it('should mark a nested trigger as a trigger item once it registers with its parent', async () => {
+    render(() => <ComponentUnderTest />)
+    fireEvent.click(screen.getByRole('button', { name: /open menu/i }))
+    await waitFor(() => expect(screen.getByText(/Ark UI/i)).toBeVisible())
+    const triggerItem = screen.getByText(/CSS Frameworks/i)
+    fireEvent.pointerMove(triggerItem, { pointerType: 'mouse' })
+    await waitFor(() => expect(triggerItem).toHaveAttribute('data-menu-trigger-item'))
+  })
+
   it('should select a radio option', async () => {
     render(() => <ComponentUnderTest />)
     const menuButton = screen.getByRole('button', { name: /open menu/i })

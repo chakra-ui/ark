@@ -57,5 +57,10 @@
   "overrides": {
     "flexsearch": "0.8.212",
     "vite": "8.2.2"
+  },
+  "patchedDependencies": {
+    "@zag-js/menu@2.0.0-next.3": "patches/@zag-js%2Fmenu@2.0.0-next.3.patch",
+    "@zag-js/solid@2.0.0-next.3": "patches/@zag-js%2Fsolid@2.0.0-next.3.patch",
+    "@zag-js/svelte@2.0.0-next.3": "patches/@zag-js%2Fsvelte@2.0.0-next.3.patch"
   }
 }

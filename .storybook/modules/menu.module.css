@@ -307,3 +307,71 @@
     transform: scale(0.96);
   }
 }
+
+.Input {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  height: 2rem;
+  margin-bottom: 0.25rem;
+  padding: 0 0.5rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  background: transparent;
+  border: 1px solid var(--demo-border-emphasized);
+  border-radius: 0.25rem;
+  color: var(--demo-neutral-fg);
+  outline: none;
+
+  &::placeholder {
+    color: var(--demo-neutral-emphasized);
+  }
+
+  &:focus-visible {
+    border-color: var(--demo-coral-solid);
+  }
+}
+
+.Empty {
+  padding: 0.75rem 0.5rem;
+  font-size: 0.875rem;
+  color: var(--demo-neutral-emphasized);
+}
+
+.InputControl {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  & .Input {
+    padding-right: 2rem;
+  }
+}
+
+.InputClear {
+  position: absolute;
+  top: 0;
+  right: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--demo-neutral-emphasized);
+  cursor: pointer;
+
+  & svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+}
+
+.List {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  outline: none;
+}
