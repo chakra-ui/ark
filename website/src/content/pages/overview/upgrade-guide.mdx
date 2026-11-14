@@ -82,10 +82,23 @@ only Ark UI usage. After each step, run the project's typecheck/build.
    Put the styled message in a child element. For loading/error states, use the
    new `Status` part on Combobox, Listbox, and Select.
 
-5. useCollator / useFilter now return values directly (no accessor/.value) on
+5. Indicator and control parts inside a button or label now render `span`, not
+   `div`: Accordion.ItemIndicator, Collapsible.Indicator, Popover.Indicator,
+   Toggle.Indicator, Select.Indicator/ItemIndicator, Combobox.ItemIndicator,
+   Listbox.ItemIndicator, Menu.Indicator/ItemIndicator,
+   NavigationMenu.ItemIndicator, Checkbox.Control/Indicator,
+   RadioGroup.ItemControl, SegmentGroup.ItemControl, Clipboard.Indicator,
+   Steps.Indicator, Splitter.ResizeTriggerIndicator, Avatar.Root,
+   Tabs.Indicator, NumberInput.Scrubber. Add an explicit `display` wherever
+   styles assumed a block (sizes, transforms). React refs become HTMLSpanElement.
+
+6. TagsInput is no longer editable by default. Add `editable` wherever tags
+   should still open for editing on double-click.
+
+7. useCollator / useFilter now return values directly (no accessor/.value) on
    Solid, Svelte, and Vue: `collator.compare(a, b)`, `const { contains } = useFilter(...)`.
 
-6. Svelte only:
+8. Svelte only:
    - The `useX` hooks now require an `id`: `useCollapsible({ id })` where
      `const id = $props.id()`. `$props.id()` may be called once — derive if you
      need two. Components like `<Collapsible.Root>` are unaffected.
@@ -221,6 +234,41 @@ structural, so the codemod leaves it to you.
 ```
 
 The `composite` prop is gone; pass `popupType="dialog"` where you previously set `composite={false}`.
+
+### Indicator and control parts render `span`
+
+Indicator and control parts that sit inside a `button` or `label` now render `span` instead of `div`.
+A `div` there is invalid HTML, since both only accept phrasing content. The affected parts:
+
+- `Accordion.ItemIndicator`, `Collapsible.Indicator`, `Popover.Indicator`, `Toggle.Indicator`
+- `Select.Indicator`, `Select.ItemIndicator`, `Combobox.ItemIndicator`, `Listbox.ItemIndicator`
+- `Menu.Indicator`, `Menu.ItemIndicator`, `NavigationMenu.ItemIndicator`
+- `Checkbox.Control`, `Checkbox.Indicator`, `RadioGroup.ItemControl`, `SegmentGroup.ItemControl`
+- `Clipboard.Indicator`, `Steps.Indicator`, `Splitter.ResizeTriggerIndicator`
+- `Avatar.Root`, `Avatar.RootProvider`, `Tabs.Indicator`, `NumberInput.Scrubber`
+
+A `span` is inline, so width, height and `transform` stop applying to it. If your styles relied on
+the part being a block, a rotating accordion indicator for example, give it an explicit `display`.
+
+```diff
+  [data-accordion-item-indicator] {
++   display: inline-flex;
+    transition: transform 0.2s;
+  }
+```
+
+In React, refs to these parts are now typed `HTMLSpanElement`.
+
+### `TagsInput` is no longer editable by default
+
+Tags no longer open for editing on double-click unless you pass `editable`. The
+`react/tags-input-editable` codemod (and its `solid`/`svelte`/`vue` variants) adds it for you; without
+the codemod, add it wherever tags should stay editable.
+
+```diff
+- <TagsInput.Root>
++ <TagsInput.Root editable>
+```
 
 ### Data attributes are merged
 
