@@ -44,8 +44,7 @@ export const FocusTrap = (props: FocusTrapProps) => {
     (disabled) => {
       if (!localNode || disabled) return
       const autoFocusNode = localNode.querySelector<HTMLElement>('[autofocus], [data-autofocus]')
-      trapProps.initialFocus ||= autoFocusNode ?? undefined
-      return trapFocus(localNode, trapProps)
+      return trapFocus(localNode, { ...trapProps, initialFocus: trapProps.initialFocus || autoFocusNode || undefined })
     },
   )
 

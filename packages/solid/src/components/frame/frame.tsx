@@ -34,7 +34,8 @@ export const Frame = (props: FrameProps) => {
 
   const srcdoc = createMemo(() => frameProps.srcdoc || initialSrcDoc)
 
-  const [frameRef, setFrameRef] = createSignal<HTMLIFrameElement | null>(null)
+  // set from the ref callback, which runs during render
+  const [frameRef, setFrameRef] = createSignal<HTMLIFrameElement | null>(null, { ownedWrite: true })
   const [mountNode, setMountNode] = createSignal<HTMLElement | null>(null)
 
   createEffect(
@@ -53,33 +54,36 @@ export const Frame = (props: FrameProps) => {
     },
   )
 
-  createEffect(frameRef, (frame) => {
-    if (!frame?.contentDocument) return
+  createEffect(
+    () => [frameRef(), mountNode()] as const,
+    ([frame]) => {
+      if (!frame?.contentDocument) return
 
-    const win = frame.contentWindow as Window & typeof globalThis
-    if (!win) return
+      const win = frame.contentWindow as Window & typeof globalThis
+      if (!win) return
 
-    const node = getMountNode(frame)
-    if (!node) return
+      const node = getMountNode(frame)
+      if (!node) return
 
-    const exec = () => {
-      win.requestAnimationFrame(() => {
-        const rootEl = frame.contentDocument?.documentElement
-        if (!rootEl) return
-        frame.style.setProperty('--width', `${node.scrollWidth}px`)
-        frame.style.setProperty('--height', `${node.scrollHeight}px`)
-      })
-    }
+      const exec = () => {
+        win.requestAnimationFrame(() => {
+          const rootEl = frame.contentDocument?.documentElement
+          if (!rootEl) return
+          frame.style.setProperty('--width', `${node.scrollWidth}px`)
+          frame.style.setProperty('--height', `${node.scrollHeight}px`)
+        })
+      }
 
-    const resizeObserver = new win.ResizeObserver(exec)
-    exec()
+      const resizeObserver = new win.ResizeObserver(exec)
+      exec()
 
-    if (frame.contentDocument) {
-      resizeObserver.observe(node)
-    }
+      if (frame.contentDocument) {
+        resizeObserver.observe(node)
+      }
 
-    return () => resizeObserver.disconnect()
-  })
+      return () => resizeObserver.disconnect()
+    },
+  )
 
   return (
     <EnvironmentProvider value={() => frameRef()?.contentDocument ?? document}>
