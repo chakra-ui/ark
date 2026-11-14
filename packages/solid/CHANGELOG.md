@@ -1,5 +1,86 @@
 # @ark-ui/solid
 
+## [6.0.0-next.1] - 2026-11-14
+
+### Changed
+
+- Render indicator and control parts that sit inside a `button` or `label` as `span` instead of `div`. A `div` inside a
+  `button` or `label` is invalid HTML, since both only accept phrasing content. The parts now render `span`, matching
+  Base UI:
+  - `Accordion.ItemIndicator`, `Collapsible.Indicator`, `Popover.Indicator`, `Toggle.Indicator`
+  - `Select.Indicator`, `Select.ItemIndicator`, `Combobox.ItemIndicator`, `Listbox.ItemIndicator`
+  - `Menu.Indicator`, `Menu.ItemIndicator`, `NavigationMenu.ItemIndicator`
+  - `Checkbox.Control`, `Checkbox.Indicator`, `RadioGroup.ItemControl`, `SegmentGroup.ItemControl`
+  - `Clipboard.Indicator`, `Steps.Indicator`, `Splitter.ResizeTriggerIndicator`
+  - `Avatar.Root`, `Avatar.RootProvider`, `Tabs.Indicator`, `NumberInput.Scrubber` A `span` is `display: inline` by
+    default, so styles that relied on these parts being block-level need an explicit `display` (`block`, `flex` or
+    `inline-flex`). In React, refs to these parts are now typed `HTMLSpanElement`.
+- Render the same element for every part across frameworks.
+  - `AngleSlider.Marker` renders `span` instead of `div` in React, Solid and Vue, matching `Slider.Marker`.
+  - `AngleSlider.ValueText` renders `span` instead of `div` in React and Solid, matching every other `ValueText`.
+  - `Listbox.ItemText` renders `span` instead of `div` in React, Solid and Vue, matching `Select.ItemText` and
+    `Combobox.ItemText`.
+  - `Popover.Title` renders `h2` instead of `div` in React, Solid and Vue, matching Svelte and `Dialog.Title`, so screen
+    reader users can reach it with heading navigation. Without a CSS reset it picks up the browser's default heading
+    margins and font size. Use `render` for a different heading level. Styles that relied on the `span` parts being
+    block-level need an explicit `display`.
+
+### Added
+
+- Add the `Meter` component, which displays a numeric value within a known range, such as disk usage or battery level.
+  ```tsx
+  <Meter.Root defaultValue={24}>
+    <Meter.Label>Storage used</Meter.Label>
+    <Meter.ValueText />
+    <Meter.Track>
+      <Meter.Indicator />
+    </Meter.Track>
+  </Meter.Root>
+  ```
+  `low`, `high`, and `optimum` grade the value the way the HTML `<meter>` element does, exposed as `data-state`
+  (`optimal`, `suboptimal`, or `least-optimal`) for styling. The value is formatted with `Intl.NumberFormat` and
+  announced through `aria-valuetext`.
+- Render `Pagination.Item`, `Pagination.PrevTrigger`, `Pagination.NextTrigger`, `Pagination.FirstTrigger` and
+  `Pagination.LastTrigger` as anchors when the machine is `type="link"`. They rendered buttons carrying the `href` the
+  machine emits, which navigates nowhere.
+- Add the `NumberFlow` component, which animates a number by rolling each digit to its new value.
+  ```tsx
+  <NumberFlow.Root value={price} formatOptions={{ style: 'currency', currency: 'USD' }}>
+    <NumberFlow.Segments />
+    <NumberFlow.HiddenValueText />
+  </NumberFlow.Root>
+  ```
+  Formatting goes through `Intl.NumberFormat`, including currency, percent, compact notation, and non-Latin numeral
+  systems. Digits can roll along their shortest path, in the direction of the change (`trend`), or through every value
+  in between (`continuous`), with configurable `spinTiming`, `transformTiming`, and `stagger`. The number snaps instead
+  of rolling when the user prefers reduced motion, and `live` announces the settled value to screen readers. Use
+  `Segments` for the default rendering, or compose `Digit`, `DigitTrack`, `DigitCell`, and `Symbol` to style individual
+  digits and symbols.
+
+### Fixed
+
+- - **Field**: Fixed helper and error text not being announced on the focused element of Select, TagsInput, ColorPicker,
+    FileUpload, SignaturePad, RatingGroup and PinInput. `PinInput.Control` now renders as a labelled group.
+- - **Field**: Fixed `ids.root` being ignored and `ids.control` being applied to the root element instead of the
+    control.
+- - **FileUpload**: Fixed `Field.Root readOnly` not making the file upload read-only.
+- Fix part types that named a different element than the one the part renders.
+  - React: the refs of `Clipboard.ValueText`, `ColorPicker.ValueText`, `Combobox.ItemText`, `Select.ItemText` and
+    `Slider.ValueText` are now `HTMLSpanElement`, `FloatingPanel.Title` is `HTMLHeadingElement`, and
+    `FileUpload.ItemPreview` is `HTMLDivElement`.
+  - Solid: `ColorPicker.ChannelSliderValueText` takes `span` props.
+  - Svelte: `TreeView.Tree` takes `div` props and `AngleSlider.ValueText` takes `span` props.
+  - Vue: `Drawer.Trigger`, `Drawer.CloseTrigger` and `PasswordInput.VisibilityTrigger` accept button attributes,
+    `PasswordInput.Input` accepts input attributes, and `PasswordInput.Label`, `SignaturePad.Label` and
+    `ColorPicker.ChannelSliderLabel` accept label attributes.
+- - **Toc**: Add `getNavProps()` to `useToc` and render `Toc.Nav` with it. `Toc.Nav` rendered the root props, so it
+    carried `data-toc-root` and no `id`. It now carries `data-toc-nav` and its own `id`, so update any styles that
+    target the nav through `[data-toc-root]`.
+  - **Toc**: Move `aria-labelledby` from `Root` to `Nav`, and render the root props on `RootProvider` in React and on
+    `Root` in Svelte so the indicator keeps its position.
+  - **Toc (Svelte)**: `Toc.Nav` now reads the Toc from `Toc.Root` like the other frameworks and no longer accepts
+    `useToc` props or creates its own Toc. Wrap it in `Toc.Root` if you were rendering it on its own.
+
 ## [6.0.0-next.0] - 2026-10-05
 
 ### Changed
