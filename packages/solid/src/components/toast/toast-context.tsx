@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseToastContext, useToastContext } from './use-toast-context.ts'
 
 export interface ToastContextProps {

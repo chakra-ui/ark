@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.tsx'
 import type { UsePopoverReturn } from './use-popover.ts'
 import { PopoverProvider } from './use-popover-context.ts'

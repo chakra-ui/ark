@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseListboxItemContext, useListboxItemContext } from './use-listbox-item-context.ts'
 
 export interface ListboxItemContextProps {

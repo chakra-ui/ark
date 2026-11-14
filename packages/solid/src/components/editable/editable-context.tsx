@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseEditableContext, useEditableContext } from './use-editable-context.ts'
 
 export interface EditableContextProps {

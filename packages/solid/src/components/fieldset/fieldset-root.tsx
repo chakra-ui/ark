@@ -4,9 +4,10 @@ import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { type UseFieldsetProps, useFieldset } from './use-fieldset.ts'
 import { FieldsetProvider } from './use-fieldset-context.ts'
+import type { Assign } from '../../types.ts'
 
 export interface FieldsetRootBaseProps extends UseFieldsetProps, PolymorphicProps<'fieldset'> {}
-export interface FieldsetRootProps extends HTMLProps<'fieldset'>, FieldsetRootBaseProps {}
+export interface FieldsetRootProps extends Assign<HTMLProps<'fieldset'>, FieldsetRootBaseProps> {}
 
 export const FieldsetRoot = (props: FieldsetRootProps) => {
   const [useFieldsetProps, localProps] = createSplitProps<UseFieldsetProps>()(props, ['id', 'disabled', 'invalid'])
@@ -15,7 +16,7 @@ export const FieldsetRoot = (props: FieldsetRootProps) => {
 
   return (
     <FieldsetProvider value={fieldset}>
-      <ark.fieldset {...mergedProps} ref={composeRefs(fieldset().refs.rootRef, props.ref)} />
+      <ark.fieldset {...mergedProps} ref={composeRefs((el) => fieldset().refs.rootRef(el), props.ref)} />
     </FieldsetProvider>
   )
 }

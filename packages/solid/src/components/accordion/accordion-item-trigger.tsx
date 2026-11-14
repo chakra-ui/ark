@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { splitProps } from 'solid-js'
+import { splitProps } from '../../utils/split-props.ts'
 import { useCollapsibleContext } from '../collapsible/index.tsx'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useAccordionContext } from './use-accordion-context.ts'
@@ -16,5 +16,5 @@ export const AccordionItemTrigger = (props: AccordionItemTriggerProps) => {
   const mergedProps = mergeProps(() => accordion().getItemTriggerProps(itemProps), props)
   const [ariaControls, buttonProps] = splitProps(mergedProps, ['aria-controls'])
 
-  return <ark.button {...buttonProps} {...(!collapsible().unmounted && ariaControls)} />
+  return <ark.button {...buttonProps} {...(collapsible().unmounted ? {} : ariaControls)} />
 }

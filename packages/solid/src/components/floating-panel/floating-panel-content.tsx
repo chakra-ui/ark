@@ -24,7 +24,7 @@ export const FloatingPanelContent = (props: FloatingPanelContentProps) => {
     <Show when={!presence().unmounted}>
       <ark.div
         {...mergedProps}
-        ref={composeRefs(presence().ref, props.ref)}
+        ref={composeRefs((el) => presence().ref(el), props.ref)}
         state={floatingPanel().getContentState()}
       />
     </Show>

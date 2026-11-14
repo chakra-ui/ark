@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseSwitchContext, useSwitchContext } from './use-switch-context.ts'
 
 export interface SwitchContextProps {

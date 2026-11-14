@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { PresenceProvider, splitPresenceProps, usePresence, type UsePresenceProps } from '../presence/index.tsx'
 import type { UseDrawerReturn } from './use-drawer.ts'
 import { DrawerProvider } from './use-drawer-context.ts'

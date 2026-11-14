@@ -7,7 +7,7 @@ export interface StepsCompletedContentProps extends HTMLProps<'div'>, StepsCompl
 
 export const StepsCompletedContent = (props: StepsCompletedContentProps) => {
   const steps = useStepsContext()
-  const mergedProps = mergeProps(() => steps().getContentProps({ index: steps().count }), props)
+  const mergedProps = mergeProps(() => steps().getCompletedContentProps(), props)
 
   return <ark.div {...mergedProps} />
 }

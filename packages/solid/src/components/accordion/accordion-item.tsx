@@ -20,14 +20,14 @@ export const AccordionItem = (props: AccordionItemProps) => {
   const renderStrategyProps = useRenderStrategyContext()
   const mergedProps = mergeProps(() => accordion().getItemProps(itemProps), localProps)
   const itemState = createMemo(() => accordion().getItemState(itemProps))
-  const itemContentProps = accordion().getItemContentProps(itemProps)
+  const itemContentProps = createMemo(() => accordion().getItemContentProps(itemProps))
 
   return (
     <AccordionItemPropsProvider value={itemProps}>
       <AccordionItemProvider value={itemState}>
         <Collapsible.Root
           open={itemState().expanded}
-          ids={{ content: itemContentProps.id }}
+          ids={{ content: itemContentProps().id || undefined }}
           {...renderStrategyProps}
           {...mergedProps}
           state={accordion().getItemState(itemProps)}

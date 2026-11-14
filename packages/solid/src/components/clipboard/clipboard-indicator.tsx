@@ -1,6 +1,7 @@
 import type { IndicatorState } from '@zag-js/clipboard'
 import { mergeProps } from '@zag-js/solid'
-import { type JSX, Show, children } from 'solid-js'
+import { Show, children } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useClipboardContext } from './use-clipboard-context.ts'
@@ -18,7 +19,7 @@ export interface ClipboardIndicatorProps extends HTMLProps<'span'>, ClipboardInd
 export const ClipboardIndicator = (props: ClipboardIndicatorProps) => {
   const [indicatorProps, localProps] = createSplitProps<IndicatorProps>()(props, ['copied'])
   const api = useClipboardContext()
-  const mergedProps = mergeProps(api().getIndicatorProps({ copied: api().copied }), localProps)
+  const mergedProps = mergeProps(() => api().getIndicatorProps({ copied: api().copied }), localProps)
   const getChildren = children(() => localProps.children)
 
   return (

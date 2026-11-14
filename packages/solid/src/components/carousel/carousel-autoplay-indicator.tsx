@@ -1,4 +1,5 @@
-import { Show, type JSX } from 'solid-js'
+import { Show } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { carouselAnatomy } from './carousel.anatomy.ts'
 import { useCarouselContext } from './use-carousel-context.ts'

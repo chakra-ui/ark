@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useColorPickerContext } from './use-color-picker-context.ts'
 
@@ -12,7 +12,9 @@ export const ColorPickerFormatSelect = (props: ColorPickerFormatSelectProps) => 
 
   return (
     <ark.select {...mergedProps}>
-      <Index each={['rgba', 'hsla', 'hsba']}>{(format) => <ark.option value={format()}>{format()}</ark.option>}</Index>
+      <For each={['rgba', 'hsla', 'hsba']} keyed={false}>
+        {(format) => <ark.option value={format()}>{format()}</ark.option>}
+      </For>
     </ark.select>
   )
 }

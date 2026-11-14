@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseDatePickerContext, useDatePickerContext } from './use-date-picker-context.ts'
 
 export interface DatePickerContextProps {

@@ -8,7 +8,9 @@ export interface UseControllableStateProps<T> {
 }
 
 export function useControllableState<T>(props: UseControllableStateProps<T>) {
-  const [uncontrolledValue, setUncontrolledValue] = createSignal(runIfFn(props.defaultValue))
+  const [uncontrolledValue, setUncontrolledValue] = createSignal<T | undefined>(
+    runIfFn(props.defaultValue) as Exclude<T, Function> | undefined,
+  )
   const controlled = createMemo(() => props.value?.() !== undefined)
 
   const currentValue = createMemo(() => (controlled() ? props.value?.() : uncontrolledValue()))

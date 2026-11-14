@@ -19,6 +19,7 @@ export const CollapsibleRoot = <State = EmptyState,>(props: CollapsibleRootProps
     'collapsedWidth',
     'defaultOpen',
     'disabled',
+    'hiddenUntilFound',
     'id',
     'ids',
     'lazyMount',

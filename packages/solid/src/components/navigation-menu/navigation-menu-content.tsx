@@ -1,7 +1,7 @@
 import type { ContentProps, ContentState } from '@zag-js/navigation-menu'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo, Show } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import type { Assign } from '../../types.ts'
 import { composeRefs } from '../../utils/compose-refs.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -47,7 +47,7 @@ export const NavigationMenuContent = (props: NavigationMenuContentProps) => {
       <Show when={!presenceApi().unmounted}>
         <ark.div
           {...mergedProps}
-          ref={composeRefs(presenceApi().ref, props.ref)}
+          ref={composeRefs((el) => presenceApi().ref(el), props.ref)}
           state={api().getContentState(contentProps)}
         />
       </Show>

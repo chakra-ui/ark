@@ -1,4 +1,4 @@
-import { splitProps } from 'solid-js'
+import { splitProps } from './split-props.ts'
 
 type EnsureKeys<ExpectedKeys extends (keyof Target)[], Target> = keyof Target extends ExpectedKeys[number]
   ? unknown

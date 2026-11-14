@@ -8,7 +8,7 @@ export interface StepsContentBaseProps extends PolymorphicProps<'div'>, ItemProp
 export interface StepsContentProps extends HTMLProps<'div'>, StepsContentBaseProps {}
 
 export const StepsContent = (props: StepsContentProps) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['index'])
+  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value'])
   const steps = useStepsContext()
   const mergedProps = mergeProps(() => steps().getContentProps(itemProps), localProps)
 

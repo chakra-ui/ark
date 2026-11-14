@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseSplitterContext, useSplitterContext } from './use-splitter-context.ts'
 
 export interface SplitterContextProps {

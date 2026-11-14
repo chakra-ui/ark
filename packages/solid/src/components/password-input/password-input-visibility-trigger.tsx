@@ -1,9 +1,9 @@
-import type { VisibilityTriggerState } from '@zag-js/password-input'
+import type { RootState } from '@zag-js/password-input'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePasswordInputContext } from './use-password-input-context.ts'
 
-export interface PasswordInputVisibilityTriggerState extends VisibilityTriggerState {}
+export interface PasswordInputVisibilityTriggerState extends RootState {}
 
 export interface PasswordInputVisibilityTriggerBaseProps extends PolymorphicProps<
   'button',
@@ -16,5 +16,5 @@ export const PasswordInputVisibilityTrigger = (props: PasswordInputVisibilityTri
   const passwordInput = usePasswordInputContext()
   const mergedProps = mergeProps(() => passwordInput().getVisibilityTriggerProps(), props)
 
-  return <ark.button {...mergedProps} state={passwordInput().getVisibilityTriggerState()} />
+  return <ark.button {...mergedProps} state={passwordInput().getRootState()} />
 }

@@ -22,7 +22,11 @@ export const DialogContent = (props: DialogContentProps) => {
 
   return (
     <Show when={!presenceApi().unmounted}>
-      <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} state={api().getContentState()} />
+      <ark.div
+        {...mergedProps}
+        ref={composeRefs((el) => presenceApi().ref(el), props.ref)}
+        state={api().getContentState()}
+      />
     </Show>
   )
 }

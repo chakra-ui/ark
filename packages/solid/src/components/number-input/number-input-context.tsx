@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseNumberInputContext, useNumberInputContext } from './use-number-input-context.ts'
 
 export interface NumberInputContextProps {

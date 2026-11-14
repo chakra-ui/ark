@@ -1,6 +1,7 @@
-import type { JSX } from 'solid-js'
-import { Show, createEffect, createMemo, createSignal, onCleanup, splitProps } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import type { JSX } from '@solidjs/web'
+import { Show, createEffect, createMemo, createSignal } from 'solid-js'
+import { splitProps } from '../../utils/split-props.ts'
+import { Portal } from '@solidjs/web'
 import { EnvironmentProvider } from '../../providers/index.tsx'
 import type { Assign } from '../../types.ts'
 import { composeRefs } from '../../utils/compose-refs.ts'
@@ -31,27 +32,28 @@ function getMountNode(frame: HTMLIFrameElement) {
 export const Frame = (props: FrameProps) => {
   const [frameProps, localProps] = splitProps(props, ['children', 'head', 'onMount', 'onUnmount', 'srcdoc'])
 
-  const srcdoc = createMemo(() => frameProps.srcdoc ?? initialSrcDoc)
+  const srcdoc = createMemo(() => frameProps.srcdoc || initialSrcDoc)
 
   const [frameRef, setFrameRef] = createSignal<HTMLIFrameElement | null>(null)
   const [mountNode, setMountNode] = createSignal<HTMLElement | null>(null)
 
-  createEffect(() => {
-    const frame = frameRef()
-    if (!frame) return
+  createEffect(
+    () => [frameRef(), srcdoc()] as const,
+    ([frame, html]) => {
+      if (!frame) return
 
-    const doc = frame.contentWindow?.document
-    if (!doc) return
+      const doc = frame.contentWindow?.document
+      if (!doc) return
 
-    doc.open()
-    doc.write(srcdoc())
-    doc.close()
+      doc.open()
+      doc.write(html)
+      doc.close()
 
-    setMountNode(getMountNode(frame))
-  })
+      setMountNode(getMountNode(frame))
+    },
+  )
 
-  createEffect(() => {
-    const frame = frameRef()
+  createEffect(frameRef, (frame) => {
     if (!frame?.contentDocument) return
 
     const win = frame.contentWindow as Window & typeof globalThis
@@ -76,9 +78,7 @@ export const Frame = (props: FrameProps) => {
       resizeObserver.observe(node)
     }
 
-    onCleanup(() => {
-      resizeObserver.disconnect()
-    })
+    return () => resizeObserver.disconnect()
   })
 
   return (

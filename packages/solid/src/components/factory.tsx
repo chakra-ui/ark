@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { warn } from '@zag-js/utils'
-import { type Accessor, type ComponentProps, type JSX, splitProps } from 'solid-js'
-import { Dynamic } from 'solid-js/web'
+import { type Accessor, children, omit, untrack } from 'solid-js'
+import { type ComponentProps, Dynamic, type JSX } from '@solidjs/web'
 import type { Assign } from '../types.ts'
 
 type ElementType = keyof JSX.IntrinsicElements
@@ -38,7 +38,8 @@ export type PolymorphicProps<T extends ElementType, State = EmptyState> = {
    */
   render?: RenderFn<T, State>
 }
-export type HTMLProps<E extends ElementType> = JSX.IntrinsicElements[E]
+// Solid 2 types `id` as `string | RemoveAttribute`; parts forward it to zag, which takes a string
+export type HTMLProps<E extends ElementType> = Assign<JSX.IntrinsicElements[E], { id?: string | undefined }>
 export type HTMLArkProps<E extends ElementType> = Assign<ComponentProps<E>, PolymorphicProps<E>>
 
 /**
@@ -63,27 +64,34 @@ const EMPTY_STATE: EmptyState = Object.freeze({})
 
 const withRender = <T extends ElementType>(Component: T) => {
   const ArkComponent: ArkComponent<T> = (props) => {
-    const [localProps, parentProps] = splitProps(props as FactoryProps, ['asChild', 'render', 'state'])
+    const localProps = props as FactoryProps
+    const parentProps = omit(localProps, 'asChild', 'render', 'state')
+    const render = untrack(() => localProps.render)
+    const asChild = untrack(() => localProps.asChild)
 
     warn(
-      Boolean(localProps.asChild) && Boolean(localProps.render),
+      Boolean(asChild) && Boolean(render),
       '[ark-ui] `asChild` and `render` cannot be used together. Prefer `render`.',
     )
 
     // the caller applies the props itself, so only the ref is left to us
-    const [, restProps] = splitProps(parentProps, ['ref'])
+    const restProps = omit(parentProps, 'ref')
     const propsFn = (userProps?: JSX.IntrinsicElements[T]) => mergeProps(restProps, userProps ?? {})
 
-    if (localProps.render) {
-      return localProps.render(propsFn, () => localProps.state ?? EMPTY_STATE)
+    if (render) {
+      return render(propsFn, () => localProps.state ?? EMPTY_STATE)
     }
 
-    if (localProps.asChild) {
-      return localProps.asChild(propsFn)
+    if (asChild) {
+      return asChild(propsFn)
     }
+
+    // resolved once: read inside the spread, children would be re-created on every prop change
+    const resolved = children(() => localProps.children)
+    const elementProps = omit(parentProps, 'children')
 
     // @ts-expect-error generic element props can't be expressed against Dynamic
-    return <Dynamic component={Component} {...parentProps} />
+    return <Dynamic component={Component} {...elementProps} children={resolved()} />
   }
 
   return ArkComponent

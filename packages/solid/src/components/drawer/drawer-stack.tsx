@@ -1,8 +1,8 @@
 import * as drawer from '@zag-js/drawer'
 import { normalizeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { createMemo } from 'solid-js'
-import { createStore, reconcile } from 'solid-js/store'
+import { createStore, reconcile } from 'solid-js'
 import { DrawerStackProvider } from './use-drawer-stack-context.ts'
 import { DrawerStackStoreProvider } from './use-drawer-stack-store.ts'
 

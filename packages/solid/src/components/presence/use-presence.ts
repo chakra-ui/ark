@@ -21,10 +21,12 @@ export const usePresence = (props: MaybeAccessor<UsePresenceProps>) => {
   const service = useMachine(presence.machine, props)
   const api = createMemo(() => presence.connect(service, normalizeProps))
 
-  createEffect(() => {
-    const present = api().present
-    if (present) setWasEverPresent(true)
-  })
+  createEffect(
+    () => api().present,
+    (present) => {
+      if (present) setWasEverPresent(true)
+    },
+  )
 
   const setNode = (node: Element | null) => {
     if (!node) return

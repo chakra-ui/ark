@@ -1,4 +1,4 @@
-import type { ComponentProps } from 'solid-js'
+import type { ComponentProps } from '@solidjs/web'
 import { For, Show } from 'solid-js'
 import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'

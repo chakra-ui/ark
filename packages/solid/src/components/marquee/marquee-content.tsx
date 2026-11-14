@@ -1,6 +1,8 @@
 import type { ContentState } from '@zag-js/marquee'
 import { mergeProps } from '@zag-js/solid'
-import { type JSX, For, splitProps } from 'solid-js'
+import { For } from 'solid-js'
+import { splitProps } from '../../utils/split-props.ts'
+import type { JSX } from '@solidjs/web'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useMarqueeContext } from './use-marquee-context.ts'
 

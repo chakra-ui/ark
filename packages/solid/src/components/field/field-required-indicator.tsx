@@ -1,5 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type JSX, Show } from 'solid-js'
+import { Show } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useFieldContext } from './use-field-context.ts'
 

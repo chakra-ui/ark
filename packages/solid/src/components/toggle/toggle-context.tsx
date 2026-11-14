@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseToggleContext, useToggleContext } from './use-toggle-context.ts'
 
 export interface ToggleContextProps {

@@ -1,4 +1,5 @@
-import { createMemo, createSignal, createUniqueId, mergeProps, onCleanup, onMount } from 'solid-js'
+import { mergeProps } from '@zag-js/solid'
+import { createMemo, createSignal, createUniqueId, onSettled } from 'solid-js'
 import { useEnvironmentContext } from '../../providers/index.tsx'
 import { dataAttr } from '../../utils/attr.ts'
 import type { MaybeAccessor } from '../../types.ts'
@@ -37,7 +38,7 @@ export const useFieldset = (props?: MaybeAccessor<UseFieldsetProps>) => {
   const [hasErrorText, setHasErrorText] = createSignal(false)
   const [hasHelperText, setHasHelperText] = createSignal(false)
 
-  onMount(() => {
+  onSettled(() => {
     const rootNode = rootRef()
     if (!rootNode) return
 
@@ -53,7 +54,7 @@ export const useFieldset = (props?: MaybeAccessor<UseFieldsetProps>) => {
     const observer = new win.MutationObserver(checkTextElements)
     observer.observe(rootNode, { childList: true, subtree: true })
 
-    onCleanup(() => observer.disconnect())
+    return () => observer.disconnect()
   })
 
   const labelIds = createMemo(() => {

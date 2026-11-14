@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseMenuContext, useMenuContext } from './use-menu-context.ts'
 
 export interface MenuContextProps {
