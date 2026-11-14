@@ -32,7 +32,7 @@ export const Grouping = () => {
         </div>
       </Select.Control>
       <Portal>
-        <Select.Positioner>
+        <Select.Positioner className={styles.Positioner}>
           <Select.Content className={styles.Content}>
             <Select.List className={styles.List}>
               {frameworks.group().map(([type, group]) => (

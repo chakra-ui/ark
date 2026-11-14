@@ -13,6 +13,10 @@
   display: inline-flex;
 }
 
+.Positioner {
+  z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
+}
+
 .Content {
   --arrow-background: var(--demo-bg-popover);
   --arrow-size: 10px;
@@ -29,7 +33,6 @@
   position: relative;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
   transform-origin: var(--transform-origin);
-  z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
 
   &[data-state='open'] {
     animation: scale-fade-in 0.15s ease-in-out;

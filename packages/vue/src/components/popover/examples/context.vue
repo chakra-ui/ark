@@ -10,7 +10,7 @@ import styles from 'styles/popover.module.css'
   <Popover.Root>
     <Popover.Trigger :class="button.Root">Click Me</Popover.Trigger>
     <Teleport to="body">
-      <Popover.Positioner>
+      <Popover.Positioner :class="styles.Positioner">
         <Popover.Context v-slot="popover">
           <Popover.Content :class="styles.Content">
             <Popover.CloseTrigger :class="styles.CloseTrigger">

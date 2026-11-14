@@ -37,7 +37,7 @@ const virtualizer = useListVirtualizer(
       </div>
     </Select.Control>
     <Teleport to="body">
-      <Select.Positioner>
+      <Select.Positioner :class="styles.Positioner">
         <Select.Content :class="styles.Content">
           <Select.List
             :ref="virtualizer.ref"

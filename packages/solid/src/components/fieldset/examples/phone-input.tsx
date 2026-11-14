@@ -42,7 +42,7 @@ export const PhoneInput = () => {
               </Select.Trigger>
             </Select.Control>
             <Portal>
-              <Select.Positioner>
+              <Select.Positioner class={select.Positioner}>
                 <Select.Content class={select.Content}>
                   <For each={extensions.items} keyed={false}>
                     {(item) => (

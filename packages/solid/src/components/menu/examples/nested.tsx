@@ -12,7 +12,7 @@ export const Nested = () => (
       </Menu.Indicator>
     </Menu.Trigger>
     <Portal>
-      <Menu.Positioner>
+      <Menu.Positioner class={styles.Positioner}>
         <Menu.Content class={styles.Content}>
           <Menu.Item class={styles.Item} value="new">
             New File
@@ -24,7 +24,7 @@ export const Nested = () => (
           <Menu.Root>
             <Menu.TriggerItem class={styles.TriggerItem}>Share</Menu.TriggerItem>
             <Portal>
-              <Menu.Positioner>
+              <Menu.Positioner class={styles.Positioner}>
                 <Menu.Content class={styles.Content}>
                   <Menu.Item class={styles.Item} value="email">
                     Email
@@ -42,7 +42,7 @@ export const Nested = () => (
           <Menu.Root>
             <Menu.TriggerItem class={styles.TriggerItem}>Export</Menu.TriggerItem>
             <Portal>
-              <Menu.Positioner>
+              <Menu.Positioner class={styles.Positioner}>
                 <Menu.Content class={styles.Content}>
                   <Menu.Item class={styles.Item} value="pdf">
                     PDF

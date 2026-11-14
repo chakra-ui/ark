@@ -6,7 +6,7 @@ export const Arrow = () => (
   <Tooltip.Root>
     <Tooltip.Trigger class={styles.Trigger}>Hover Me</Tooltip.Trigger>
     <Portal>
-      <Tooltip.Positioner>
+      <Tooltip.Positioner class={styles.Positioner}>
         <Tooltip.Content class={styles.Content}>
           <Tooltip.Arrow class={styles.Arrow}>
             <Tooltip.ArrowTip class={styles.ArrowTip} />

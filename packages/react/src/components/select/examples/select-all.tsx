@@ -40,7 +40,7 @@ export const SelectAll = () => {
         <Select.ClearTrigger className={styles.ClearTrigger}>Clear</Select.ClearTrigger>
       </Select.Control>
       <Portal>
-        <Select.Positioner>
+        <Select.Positioner className={styles.Positioner}>
           <Select.Content className={styles.Content}>
             <SelectAllButton />
             <Select.List className={styles.List}>
