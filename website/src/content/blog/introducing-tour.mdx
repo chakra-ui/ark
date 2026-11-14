@@ -1,0 +1,46 @@
+---
+title: Introducing Tour
+description: A headless, accessible product tour for React, Solid, Svelte, and Vue
+date: '2026-11-12'
+author: 'Lope'
+tags: ['tour', 'onboarding', 'ark-ui', 'headless']
+---
+
+Meet **[Tour](/docs/components/tour)**, a headless component for guided product tours.
+
+When a product needs onboarding, teams usually end up choosing between two options:
+
+- **A styled tour library.** These work, but they come with their own markup and CSS, which you then override to match
+  your design system.
+- **Building it yourself** on top of a popover. That covers positioning, but you still have to build the backdrop with a
+  hole cut around the target, scroll handling, focus management, step sequencing, and waiting for the user to do
+  something before moving on.
+
+Tour handles that behavior for you and gives you unstyled parts, so the tour looks like the rest of your product.
+
+Tour was built by Christian Schröter ([@cschroeter](https://github.com/cschroeter)) on top of Zag.js. Thank you!
+
+<Example component="tour" id="basic" />
+
+## Steps are data
+
+A tour is a list of plain objects. Each step has a title, a description, an optional target, and the actions it shows.
+Steps can be a centered `dialog`, a `tooltip` anchored to an element, a `floating` panel, or a `wait` step that renders
+nothing.
+
+## Wait for the user
+
+Clicking Next isn't always enough. Good onboarding asks the user to _do_ the thing. A step's `effect` runs before it
+opens, so it can wait for a click, valid input, or a late-rendering target, then move on by itself.
+
+<Example component="tour" id="wait-for-click" />
+
+## Accessible by default
+
+Each step is a labelled, modal `alertdialog`. Focus is trapped across the step and its highlighted target, so users can
+still reach the control you're pointing at. <kbd>Esc</kbd> dismisses the tour and the arrow keys move between steps.
+
+## Get started
+
+Tour is available today for React, Solid, Svelte, and Vue. Head to the [Tour docs](/docs/components/tour) for every
+example and the full API.
