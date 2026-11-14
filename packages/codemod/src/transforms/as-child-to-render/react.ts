@@ -52,29 +52,30 @@ export function reactAsChildToRender(
     }
 
     const [child] = children
-    const renderText = elementText(child)
-    if (renderText === undefined) {
+    const renderNode = elementNode(child)
+    if (renderNode === undefined) {
       skipped.push(`${describe(opening)}: the child is not an element`)
       continue
     }
 
-    const childText = renderText
+    const childText = dedent(renderNode, lineIndent(child) - lineIndent(element))
     asChild.remove()
     const attrs = opening.getAttributes().map((a) => a.getText())
-    element.replaceWithText(
-      `<${opening.getTagNameNode().getText()} ${[...attrs, `render={${childText}}`].join(' ')} />`,
-    )
+    const replacement = `<${opening.getTagNameNode().getText()} ${[...attrs, `render={${childText}}`].join(' ')} />`
+    element.replaceWithText((writer) => writer.queueIndentationLevel(0).write(replacement))
     count++
   }
 
-  return { code: count > 0 ? sf.getFullText() : null, count, skipped }
+  if (count === 0) return { code: null, count, skipped }
+  const code = sf.getFullText()
+  return { code: source.includes('\r\n') ? code.replace(/\r?\n/g, '\r\n') : code, count, skipped }
 }
 
-function elementText(child: Node): string | undefined {
-  if (Node.isJsxElement(child) || Node.isJsxSelfClosingElement(child)) return child.getText()
+function elementNode(child: Node): Node | undefined {
+  if (Node.isJsxElement(child) || Node.isJsxSelfClosingElement(child)) return child
   if (Node.isJsxExpression(child)) {
     const expression = child.getExpression()
-    if (expression && isElementExpression(expression)) return expression.getText()
+    if (expression && isElementExpression(expression)) return expression
   }
   return undefined
 }
@@ -90,4 +91,30 @@ function isElementExpression(node: Node): boolean {
 
 function describe(node: Node): string {
   return `line ${node.getStartLineNumber()}`
+}
+
+function lineIndent(node: Node): number {
+  const line = node.getSourceFile().getFullText().slice(node.getStartLinePos(), node.getStart())
+  return line.length - line.trimStart().length
+}
+
+function dedent(node: Node, by: number): string {
+  const text = node.getText()
+  if (by <= 0) return text
+  const start = node.getStart()
+  const literals = node
+    .getDescendants()
+    .filter((d) => Node.isNoSubstitutionTemplateLiteral(d) || Node.isTemplateExpression(d) || Node.isStringLiteral(d))
+    .map((d) => [d.getStart() - start, d.getEnd() - start])
+  const insideLiteral = (offset: number) => literals.some(([from, to]) => offset > from && offset < to)
+  const indent = new RegExp(`^[ \\t]{0,${by}}`)
+  let offset = 0
+  return text
+    .split('\n')
+    .map((line, index) => {
+      const lineStart = offset
+      offset += line.length + 1
+      return index === 0 || insideLiteral(lineStart) ? line : line.replace(indent, '')
+    })
+    .join('\n')
 }

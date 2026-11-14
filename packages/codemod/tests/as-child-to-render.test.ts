@@ -20,6 +20,127 @@ export const A = () => (
     expect(result.code).not.toContain('asChild')
   })
 
+  it('keeps a multi-line child indented under its part', () => {
+    const result = reactAsChildToRender(
+      `import { Dialog } from '@ark-ui/react/dialog'
+export const A = () => (
+  <div>
+    <Dialog.Trigger asChild>
+      <Button variant="outline">
+        <PlusIcon />
+        Add item
+      </Button>
+    </Dialog.Trigger>
+  </div>
+)`,
+      'a.tsx',
+    )
+    expect(result.code).toContain(`    <Dialog.Trigger render={<Button variant="outline">
+      <PlusIcon />
+      Add item
+    </Button>} />
+  </div>`)
+  })
+
+  it('leaves multi-line template literals in the child untouched', () => {
+    const result = reactAsChildToRender(
+      `import { Dialog } from '@ark-ui/react/dialog'
+export const A = () => (
+  <div>
+    <Dialog.Trigger asChild>
+      <Button className={\`
+        px-4
+      \`}>
+        Add item
+      </Button>
+    </Dialog.Trigger>
+  </div>
+)`,
+      'a.tsx',
+    )
+    expect(result.code).toContain(`    <Dialog.Trigger render={<Button className={\`
+        px-4
+      \`}>
+      Add item
+    </Button>} />`)
+  })
+
+  it('keeps nested parts indented after both are converted', () => {
+    const result = reactAsChildToRender(
+      `import { Tooltip } from '@ark-ui/react/tooltip'
+import { Dialog } from '@ark-ui/react/dialog'
+export const A = () => (
+  <Tooltip.Trigger asChild>
+    <Dialog.Trigger asChild>
+      <Button>
+        Add item
+      </Button>
+    </Dialog.Trigger>
+  </Tooltip.Trigger>
+)`,
+      'a.tsx',
+    )
+    expect(result.count).toBe(2)
+    expect(result.code).toContain(`  <Tooltip.Trigger render={<Dialog.Trigger render={<Button>
+    Add item
+  </Button>} />} />`)
+  })
+
+  it('leaves the child alone when it starts on the part line', () => {
+    const result = reactAsChildToRender(
+      `import { Dialog } from '@ark-ui/react/dialog'
+const A = () => (
+    <Dialog.Trigger asChild><Button>
+        Hi
+      </Button></Dialog.Trigger>
+)`,
+      'a.tsx',
+    )
+    expect(result.code).toContain(`    <Dialog.Trigger render={<Button>
+        Hi
+      </Button>} />`)
+  })
+
+  it('dedents when the part does not start its line', () => {
+    const result = reactAsChildToRender(
+      `import { Dialog } from '@ark-ui/react/dialog'
+const A = () => (
+  <div>{open && <Dialog.Trigger asChild>
+    <Button>
+      Hi
+    </Button>
+  </Dialog.Trigger>}</div>
+)`,
+      'a.tsx',
+    )
+    expect(result.code).toContain(`  <div>{open && <Dialog.Trigger render={<Button>
+    Hi
+  </Button>} />}</div>`)
+  })
+
+  it('keeps multi-line string attributes in the child', () => {
+    const result = reactAsChildToRender(
+      `import { Dialog } from '@ark-ui/react/dialog'
+const A = () => (
+  <Dialog.Trigger asChild>
+    <Button title="a
+      b">Hi</Button>
+  </Dialog.Trigger>
+)`,
+      'a.tsx',
+    )
+    expect(result.code).toContain(`title="a
+      b"`)
+  })
+
+  it('keeps CRLF line endings', () => {
+    const result = reactAsChildToRender(
+      "import { Dialog } from '@ark-ui/react/dialog'\r\nconst A = () => (\r\n  <Dialog.Trigger asChild>\r\n    <Button>\r\n      Hi\r\n    </Button>\r\n  </Dialog.Trigger>\r\n)\r\n",
+      'a.tsx',
+    )
+    expect(result.code).not.toMatch(/[^\r]\n/)
+  })
+
   it("keeps the part's own props", () => {
     const result = reactAsChildToRender(
       `import { Menu } from '@ark-ui/react/menu'
