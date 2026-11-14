@@ -144,7 +144,7 @@ export const CommandMenu = (props: Props) => {
           >
             <Combobox.Root
               open
-              disableLayer
+              inline
               inputBehavior="autohighlight"
               placeholder="Search"
               selectionBehavior="preserve"
