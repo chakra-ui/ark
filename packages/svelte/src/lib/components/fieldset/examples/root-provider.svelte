@@ -4,7 +4,8 @@
   import field from 'styles/field.module.css'
   import styles from 'styles/fieldset.module.css'
 
-  const fieldset = useFieldset()
+  const id = $props.id()
+  const fieldset = useFieldset({ id })
 </script>
 
 <Fieldset.RootProvider class={styles.Root} value={fieldset}>

@@ -316,3 +316,8 @@ release.sh
 
 # playwright-mcp session artifacts
 .playwright-mcp
+
+# Playwright
+e2e/results
+e2e/report
+storybook-static
