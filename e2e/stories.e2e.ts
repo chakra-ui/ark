@@ -8,8 +8,8 @@ interface StoryEntry {
 // Stories that render nothing on purpose (code-only snippets)
 const EMPTY_STORIES = new Set(['utilities-locale--setup'])
 
-// Failed requests come from stories that fetch remote data; they are not render errors
-const IGNORED_CONSOLE = [/Failed to load resource/]
+// Stories that fetch remote demo data fail when the API is unreachable or blocks CI; not render errors
+const IGNORED_CONSOLE = [/Failed to load resource/, /has been blocked by CORS policy/]
 
 // Tests are collected before Storybook starts, so the stories are split into fixed slices
 const SLICES = 4
