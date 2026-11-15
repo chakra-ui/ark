@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseComboboxItemContext, useComboboxItemContext } from './use-combobox-item-context.ts'
 
 export interface ComboboxItemContextProps {

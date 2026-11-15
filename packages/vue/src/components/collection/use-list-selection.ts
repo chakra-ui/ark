@@ -1,5 +1,5 @@
 import { Selection, type SelectionMode } from '@zag-js/collection'
-import { type MaybeRef, type Ref, computed, shallowRef, toValue, watch } from 'vue'
+import { type MaybeRefOrGetter, type Ref, computed, shallowRef, toValue, watch } from 'vue'
 import type { CollectionItem, ListCollection } from './list-collection.ts'
 
 export interface UseListSelectionProps<T extends CollectionItem> {
@@ -26,7 +26,7 @@ export interface UseListSelectionProps<T extends CollectionItem> {
 }
 
 export function useListSelection<T extends CollectionItem>(
-  props: MaybeRef<UseListSelectionProps<T>>,
+  props: MaybeRefOrGetter<UseListSelectionProps<T>>,
 ): UseListSelectionReturn {
   const resolvedProps = computed(() => {
     const {

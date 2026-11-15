@@ -34,7 +34,7 @@ export const TabContent = (props: TabContentProps) => {
       <Show when={!presenceApi().unmounted}>
         <ark.div
           {...mergedProps}
-          ref={composeRefs(presenceApi().ref, props.ref)}
+          ref={composeRefs((el) => presenceApi().ref(el), props.ref)}
           state={api().getContentState(contentProps)}
         />
       </Show>

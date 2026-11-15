@@ -15,7 +15,7 @@ const menubar = useMenubar()
       <Menu.Root>
         <Menu.Trigger :class="styles.Trigger">File</Menu.Trigger>
         <Teleport to="body">
-          <Menu.Positioner>
+          <Menu.Positioner :class="menu.Positioner">
             <Menu.Content :class="menu.Content">
               <Menu.Item :class="menu.Item" value="new">New File</Menu.Item>
               <Menu.Item :class="menu.Item" value="open">Open...</Menu.Item>
@@ -27,7 +27,7 @@ const menubar = useMenubar()
       <Menu.Root>
         <Menu.Trigger :class="styles.Trigger">Edit</Menu.Trigger>
         <Teleport to="body">
-          <Menu.Positioner>
+          <Menu.Positioner :class="menu.Positioner">
             <Menu.Content :class="menu.Content">
               <Menu.Item :class="menu.Item" value="undo">Undo</Menu.Item>
               <Menu.Item :class="menu.Item" value="redo">Redo</Menu.Item>

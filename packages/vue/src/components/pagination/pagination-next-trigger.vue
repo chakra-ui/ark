@@ -1,11 +1,16 @@
 <script lang="ts">
 import type { ButtonHTMLAttributes } from 'vue'
+import type { PaginationAnchorProps } from './use-pagination.ts'
 import type { PolymorphicProps } from '../factory.ts'
 
 export interface PaginationNextTriggerBaseProps extends PolymorphicProps {}
 export interface PaginationNextTriggerProps
   extends
     PaginationNextTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    PaginationAnchorProps,
     /**
      * @vue-ignore
      */
@@ -24,7 +29,15 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="pagination.getNextTriggerProps()" :as-child="asChild">
+  <ark.a v-if="pagination.type === 'link'" v-bind="pagination.getNextTriggerProps()" :as-child="asChild">
+    <template v-if="$slots.render" #render="scope">
+      <slot name="render" v-bind="scope" />
+    </template>
+    <template v-else #default>
+      <slot />
+    </template>
+  </ark.a>
+  <ark.button v-else v-bind="pagination.getNextTriggerProps()" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

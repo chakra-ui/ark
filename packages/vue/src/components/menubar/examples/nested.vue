@@ -11,7 +11,7 @@ import styles from 'styles/menubar.module.css'
     <Menu.Root>
       <Menu.Trigger :class="styles.Trigger">File</Menu.Trigger>
       <Teleport to="body">
-        <Menu.Positioner>
+        <Menu.Positioner :class="menu.Positioner">
           <Menu.Content :class="menu.Content">
             <Menu.Item :class="menu.Item" value="new">New File</Menu.Item>
             <Menu.Item :class="menu.Item" value="open">Open...</Menu.Item>
@@ -19,7 +19,7 @@ import styles from 'styles/menubar.module.css'
             <Menu.Root>
               <Menu.TriggerItem :class="menu.TriggerItem">Export</Menu.TriggerItem>
               <Teleport to="body">
-                <Menu.Positioner>
+                <Menu.Positioner :class="menu.Positioner">
                   <Menu.Content :class="menu.Content">
                     <Menu.Item :class="menu.Item" value="pdf">PDF</Menu.Item>
                     <Menu.Item :class="menu.Item" value="png">PNG</Menu.Item>
@@ -38,7 +38,7 @@ import styles from 'styles/menubar.module.css'
     <Menu.Root>
       <Menu.Trigger :class="styles.Trigger">Edit</Menu.Trigger>
       <Teleport to="body">
-        <Menu.Positioner>
+        <Menu.Positioner :class="menu.Positioner">
           <Menu.Content :class="menu.Content">
             <Menu.Item :class="menu.Item" value="cut">Cut</Menu.Item>
             <Menu.Item :class="menu.Item" value="copy">Copy</Menu.Item>
@@ -47,7 +47,7 @@ import styles from 'styles/menubar.module.css'
             <Menu.Root>
               <Menu.TriggerItem :class="menu.TriggerItem">Find</Menu.TriggerItem>
               <Teleport to="body">
-                <Menu.Positioner>
+                <Menu.Positioner :class="menu.Positioner">
                   <Menu.Content :class="menu.Content">
                     <Menu.Item :class="menu.Item" value="find">Find...</Menu.Item>
                     <Menu.Item :class="menu.Item" value="find-next">Find Next</Menu.Item>
@@ -64,7 +64,7 @@ import styles from 'styles/menubar.module.css'
     <Menu.Root>
       <Menu.Trigger :class="styles.Trigger">View</Menu.Trigger>
       <Teleport to="body">
-        <Menu.Positioner>
+        <Menu.Positioner :class="menu.Positioner">
           <Menu.Content :class="menu.Content">
             <Menu.Item :class="menu.Item" value="zoom-in">Zoom In</Menu.Item>
             <Menu.Item :class="menu.Item" value="zoom-out">Zoom Out</Menu.Item>

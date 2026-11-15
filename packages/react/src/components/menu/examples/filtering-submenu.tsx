@@ -29,7 +29,7 @@ export const FilteringSubmenu = () => {
   const isEmpty = actionList.collection.size === 0 && !showMoveTo && !showShare
 
   return (
-    <Menu.Root composite={false} onExitComplete={() => handleQueryChange('')}>
+    <Menu.Root popupType="dialog" onExitComplete={() => handleQueryChange('')}>
       <Menu.Trigger className={styles.Trigger}>
         File
         <Menu.Indicator className={styles.Indicator}>
@@ -37,7 +37,7 @@ export const FilteringSubmenu = () => {
         </Menu.Indicator>
       </Menu.Trigger>
       <Portal>
-        <Menu.Positioner>
+        <Menu.Positioner className={styles.Positioner}>
           <Menu.Content className={styles.Content}>
             <Menu.Input
               className={styles.Input}
@@ -54,10 +54,10 @@ export const FilteringSubmenu = () => {
                 </Menu.Item>
               ))}
               {showMoveTo && (
-                <Menu.Root composite={false} onExitComplete={() => handleFolderQueryChange('')}>
+                <Menu.Root popupType="dialog" onExitComplete={() => handleFolderQueryChange('')}>
                   <Menu.TriggerItem className={styles.TriggerItem}>Move to folder</Menu.TriggerItem>
                   <Portal>
-                    <Menu.Positioner>
+                    <Menu.Positioner className={styles.Positioner}>
                       <Menu.Content className={styles.Content}>
                         <Menu.Input
                           className={styles.Input}
@@ -83,7 +83,7 @@ export const FilteringSubmenu = () => {
                 <Menu.Root>
                   <Menu.TriggerItem className={styles.TriggerItem}>Share</Menu.TriggerItem>
                   <Portal>
-                    <Menu.Positioner>
+                    <Menu.Positioner className={styles.Positioner}>
                       <Menu.Content className={styles.Content}>
                         {sharingOptions.map((option) => (
                           <Menu.Item className={styles.Item} key={option.value} value={option.value}>

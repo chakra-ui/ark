@@ -1,5 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
-import { type JSX, Show, splitProps } from 'solid-js'
+import { Show } from 'solid-js'
+import { splitProps } from '../../utils/split-props.ts'
+import type { JSX } from '@solidjs/web'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { usePasswordInputContext } from './use-password-input-context.ts'
 

@@ -39,7 +39,7 @@ const focusInput = () => {
             </Select.Trigger>
           </Select.Control>
 
-          <Select.Positioner>
+          <Select.Positioner :class="select.Positioner">
             <Select.Content :class="select.Content">
               <Select.Item v-for="item in extensions.items" :key="item.value" :class="select.Item" :item="item">
                 <Select.ItemText :class="select.ItemText">{{ item.label }}</Select.ItemText>

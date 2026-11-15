@@ -97,7 +97,7 @@ const status = computed(() => {
       </div>
     </Combobox.Control>
     <Teleport to="body">
-      <Combobox.Positioner>
+      <Combobox.Positioner :class="styles.Positioner">
         <Combobox.Content :class="styles.Content">
           <Combobox.Status>
             <div v-if="status" :class="styles.Status">

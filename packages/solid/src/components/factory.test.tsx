@@ -1,7 +1,7 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import type { Accessor } from 'solid-js'
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { ark } from './factory.tsx'
 
 const ComponentUnderTest = () => (

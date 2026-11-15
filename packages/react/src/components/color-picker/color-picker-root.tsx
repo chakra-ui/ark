@@ -31,6 +31,7 @@ export const ColorPickerRoot = forwardRef<HTMLDivElement, ColorPickerRootProps>(
     'ids',
     'initialFocusEl',
     'invalid',
+    'locale',
     'name',
     'name',
     'onFocusOutside',

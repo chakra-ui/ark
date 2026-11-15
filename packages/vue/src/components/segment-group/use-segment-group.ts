@@ -1,6 +1,6 @@
 import * as segmentGroup from '@zag-js/radio-group'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -16,7 +16,7 @@ export interface UseSegmentGroupProps extends Optional<Omit<segmentGroup.Props, 
 export interface UseSegmentGroupReturn extends ComputedRef<segmentGroup.Api<PropTypes>> {}
 
 export const useSegmentGroup = (
-  props: MaybeRef<UseSegmentGroupProps> = {},
+  props: MaybeRefOrGetter<UseSegmentGroupProps> = {},
   emit?: EmitFn<RootEmits>,
 ): UseSegmentGroupReturn => {
   const id = useId()

@@ -1,5 +1,6 @@
 import type { NodeProps } from '@zag-js/tree-view'
-import { type JSX, createMemo } from 'solid-js'
+import { createMemo } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { useTreeViewContext } from './use-tree-view-context.ts'
 import { TreeViewNodeStateProvider } from './use-tree-view-node-context.ts'

@@ -1,7 +1,7 @@
 import { parse } from '@vue/compiler-sfc'
 import MagicString from 'magic-string'
 import type { TransformResult } from '../../types.ts'
-import { arkLocalNamesFromSource, jsxBaseNameFromText } from '../../utils/ark-imports.ts'
+import { arkImportOriginsFromSource, jsxBaseNameFromText } from '../../utils/ark-imports.ts'
 import type { PropRule, RenameConfig } from './engine.ts'
 
 interface Loc {
@@ -38,7 +38,7 @@ export function makeVueRenameTransform(config: RenameConfig) {
     const ast = descriptor.template?.ast as unknown as Node | undefined
     if (!ast) return { code: null, count: 0, skipped: [] }
 
-    const arkNames = arkLocalNamesFromSource(source)
+    const arkNames = arkImportOriginsFromSource(source)
     if (arkNames.size === 0) return { code: null, count: 0, skipped: [] }
 
     const s = new MagicString(source)
@@ -49,7 +49,7 @@ export function makeVueRenameTransform(config: RenameConfig) {
       const tag = node.tag ?? ''
       if (!arkNames.has(jsxBaseNameFromText(tag))) return
       for (const rule of config.rules) {
-        if (!matchesPart(tag, rule.component, rule.part)) continue
+        if (!matchesPart(tag, rule.component, rule.part, arkNames)) continue
         count += applyRule(s, node, rule, source, skipped)
       }
     })
@@ -58,10 +58,13 @@ export function makeVueRenameTransform(config: RenameConfig) {
   }
 }
 
-function matchesPart(tag: string, component: string, part: string): boolean {
+function matchesPart(tag: string, component: string, part: string, origins: Map<string, string>): boolean {
   const segs = tag.split('.')
+  if (segs.length === 1) {
+    return (origins.get(tag) ?? tag).toLowerCase() === `${component}${part}`.toLowerCase()
+  }
   if (segs.length !== 2) return false
-  return segs[1] === part && segs[0].toLowerCase() === component.toLowerCase()
+  return segs[1] === part && (origins.get(segs[0]) ?? segs[0]).toLowerCase() === component.toLowerCase()
 }
 
 function applyRule(s: MagicString, node: Node, rule: PropRule, source: string, skipped: string[]): number {

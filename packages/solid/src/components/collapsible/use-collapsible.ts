@@ -34,12 +34,14 @@ export const useCollapsible = (props: MaybeAccessor<UseCollapsibleProps> = {}): 
   const service = useMachine(collapsible.machine, machineProps)
   const [wasVisible, setWasVisible] = createSignal(false)
 
-  createEffect(() => {
-    const isPresent = api().visible
-    if (isPresent) setWasVisible(true)
-  })
-
   const api = createMemo(() => collapsible.connect(service, normalizeProps))
+
+  createEffect(
+    () => api().visible,
+    (isPresent) => {
+      if (isPresent) setWasVisible(true)
+    },
+  )
 
   return createMemo(() => ({
     ...api(),

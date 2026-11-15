@@ -21,6 +21,11 @@ describe('File Upload / Field', () => {
     render(<FileUploadWithField disabled />)
     expect(screen.getByTestId('input')).toBeDisabled()
   })
+  it('should set file upload as read-only', async () => {
+    render(<FileUploadWithField readOnly />)
+    expect(screen.getByRole('button', { name: 'dropzone' })).toHaveAttribute('aria-disabled', 'true')
+    expect(screen.getByRole('button', { name: 'dropzone' })).toHaveAttribute('data-readonly')
+  })
   it('should display helper text', async () => {
     render(<FileUploadWithField />)
     expect(screen.getByText('Additional Info')).toBeInTheDocument()
@@ -37,5 +42,11 @@ describe('File Upload / Field', () => {
   it('should not display error text when no error is present', async () => {
     render(<FileUploadWithField />)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+  })
+
+  it('should describe the trigger and dropzone with the helper and error text', async () => {
+    render(<FileUploadWithField invalid />)
+    expect(screen.getByRole('button', { name: 'Select' })).toHaveAccessibleDescription('Error Info Additional Info')
+    expect(screen.getByRole('button', { name: 'dropzone' })).toHaveAccessibleDescription('Error Info Additional Info')
   })
 })

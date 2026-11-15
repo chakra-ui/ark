@@ -1,7 +1,7 @@
 import type { PropTypes } from '@zag-js/vue'
 import type * as treeView from '@zag-js/tree-view'
 import { type JsonNode, getRootNode, nodeToString, nodeToValue } from '@zag-js/json-tree-utils'
-import { type ComputedRef, type MaybeRef, computed, toValue } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue } from 'vue'
 import { createSplitProps } from '../create-split-props.ts'
 import { type UseTreeViewProps, createTreeCollection, useTreeView } from '../tree-view/index.ts'
 import { getBranchValues } from './get-branch-value.ts'
@@ -18,7 +18,7 @@ export interface UseJsonTreeViewReturn extends ComputedRef<
 
 const splitJsonTreeViewProps = createSplitProps<JsonTreeViewOptions>()
 
-export const useJsonTreeView = (props: MaybeRef<UseJsonTreeViewProps>): UseJsonTreeViewReturn => {
+export const useJsonTreeView = (props: MaybeRefOrGetter<UseJsonTreeViewProps>): UseJsonTreeViewReturn => {
   const splitProps = computed(() =>
     splitJsonTreeViewProps(toValue(props), [
       'maxPreviewItems',

@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseDateInputContext, useDateInputContext } from './use-date-input-context.ts'
 
 export interface DateInputContextProps {

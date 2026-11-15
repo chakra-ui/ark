@@ -96,6 +96,11 @@ describe('Select', () => {
 })
 
 describe('Select / Field', () => {
+  it('should describe the trigger with the helper and error text', async () => {
+    render(() => <SelectWithField invalid />)
+    expect(screen.getByRole('combobox')).toHaveAccessibleDescription('Error Info Additional Info')
+  })
+
   it('should set combobox as required', async () => {
     render(() => <SelectWithField required />)
     expect(screen.getAllByRole('combobox', { hidden: true })[1]).toBeRequired()

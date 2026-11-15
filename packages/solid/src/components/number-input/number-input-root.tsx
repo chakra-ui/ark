@@ -14,8 +14,7 @@ export interface NumberInputRootProps extends Assign<HTMLProps<'div'>, NumberInp
 export const NumberInputRoot = (props: NumberInputRootProps) => {
   const [useNumberInputProps, localProps] = createSplitProps<UseNumberInputProps>()(props, [
     'allowMouseWheel',
-    'allowOverflow',
-    'clampValueOnBlur',
+    'allowOutOfRange',
     'defaultValue',
     'disabled',
     'focusInputOnChange',

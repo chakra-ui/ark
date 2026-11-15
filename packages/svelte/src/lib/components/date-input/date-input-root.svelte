@@ -17,7 +17,12 @@
   import { useDateInput } from './use-date-input.svelte.js'
   import { DateInputProvider } from './use-date-input-context.js'
 
-  let { ref = $bindable(null), value = $bindable(), ...props }: DateInputRootProps = $props()
+  let {
+    ref = $bindable(null),
+    value = $bindable(),
+    placeholderValue = $bindable(),
+    ...props
+  }: DateInputRootProps = $props()
   const providedId = $props.id()
 
   const [useDateInputProps, localProps] = $derived(
@@ -28,6 +33,7 @@
       'invalid',
       'locale',
       'max',
+      'maxGranularity',
       'min',
       'name',
       'form',
@@ -59,9 +65,14 @@
     ...useDateInputProps,
     id: useDateInputProps.id ?? providedId,
     value,
+    placeholderValue,
     onValueChange(details) {
       useDateInputProps.onValueChange?.(details)
       if (value !== undefined) value = details.value
+    },
+    onPlaceholderChange(details) {
+      useDateInputProps.onPlaceholderChange?.(details)
+      if (placeholderValue !== undefined) placeholderValue = details.placeholderValue
     },
   })
 

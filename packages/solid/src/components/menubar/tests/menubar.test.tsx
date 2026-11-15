@@ -1,7 +1,7 @@
 import { Menu } from '@ark-ui/solid/menu'
 import { Menubar } from '@ark-ui/solid/menubar'
 import { fireEvent, render, screen, waitFor, within } from '@solidjs/testing-library'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import { axe } from 'vitest-axe'
 
 const ComponentUnderTest = (props: Menubar.RootProps) => (
@@ -57,6 +57,8 @@ const waitForOpenContent = async () => {
 }
 
 const focusTrigger = async (name: string) => {
+  // zag attaches the menubar's focus listeners once the first render settles
+  await new Promise((resolve) => setTimeout(resolve))
   const trigger = screen.getByText(name)
   fireEvent.focusIn(trigger)
   trigger.focus()

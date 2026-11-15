@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { InputState } from '@zag-js/password-input'
+  import type { RootState } from '@zag-js/password-input'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface PasswordInputInputState extends InputState {}
+  export interface PasswordInputInputState extends RootState {}
   export interface PasswordInputInputBaseProps
     extends PolymorphicProps<'input', PasswordInputInputState>, RefAttribute {}
   export interface PasswordInputInputProps extends Assign<HTMLProps<'input'>, PasswordInputInputBaseProps> {}
@@ -34,5 +34,5 @@
   bind:ref
   aria-describedby={field?.()?.ariaDescribedby}
   {...mergedProps}
-  state={passwordInput().getInputState()}
+  state={passwordInput().getRootState()}
 />

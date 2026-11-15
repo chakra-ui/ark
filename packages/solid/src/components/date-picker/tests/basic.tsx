@@ -1,5 +1,5 @@
 import { DatePicker } from '@ark-ui/solid/date-picker'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 
 export const ComponentUnderTest = (props: DatePicker.RootProps) => (
   <DatePicker.Root {...props}>

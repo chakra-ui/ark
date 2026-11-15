@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UsePaginationContext, usePaginationContext } from './use-pagination-context.ts'
 
 export interface PaginationContextProps {

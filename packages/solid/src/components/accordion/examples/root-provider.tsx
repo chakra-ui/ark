@@ -1,6 +1,6 @@
 import { Accordion, useAccordion } from '@ark-ui/solid/accordion'
 import { ChevronDownIcon } from 'lucide-solid'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import styles from 'styles/accordion.module.css'
 
 export const RootProvider = () => {
@@ -14,7 +14,7 @@ export const RootProvider = () => {
       <output>Value: {JSON.stringify(accordion().value)}</output>
 
       <Accordion.RootProvider class={styles.Root} value={accordion}>
-        <Index each={items}>
+        <For each={items} keyed={false}>
           {(item) => (
             <Accordion.Item class={styles.Item} value={item().value}>
               <Accordion.ItemHeader class={styles.ItemHeader}>
@@ -30,7 +30,7 @@ export const RootProvider = () => {
               </Accordion.ItemContent>
             </Accordion.Item>
           )}
-        </Index>
+        </For>
       </Accordion.RootProvider>
     </div>
   )

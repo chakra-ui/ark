@@ -19,12 +19,12 @@ export const WithMenuTrigger = () => (
         }
       />
       <Portal>
-        <Tooltip.Positioner>
+        <Tooltip.Positioner className={tooltipStyles.Positioner}>
           <Tooltip.Content className={tooltipStyles.Content}>Open the file menu</Tooltip.Content>
         </Tooltip.Positioner>
       </Portal>
     </Tooltip.Root>
-    <Menu.Positioner>
+    <Menu.Positioner className={styles.Positioner}>
       <Menu.Content className={styles.Content}>
         <Menu.Arrow className={styles.Arrow}>
           <Menu.ArrowTip className={styles.ArrowTip} />

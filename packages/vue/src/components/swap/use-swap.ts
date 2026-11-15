@@ -1,4 +1,4 @@
-import { type MaybeRef, computed, toValue } from 'vue'
+import { type MaybeRefOrGetter, computed, toValue } from 'vue'
 import type { UsePresenceReturn } from '../presence/use-presence.ts'
 import { usePresence } from '../presence/use-presence.ts'
 import { parts } from './swap.anatomy.ts'
@@ -46,7 +46,7 @@ export interface UseSwapReturn {
   getIndicatorProps: (props: IndicatorProps) => Record<string, unknown>
 }
 
-export const useSwap = (props: MaybeRef<UseSwapProps>): UseSwapReturn => {
+export const useSwap = (props: MaybeRefOrGetter<UseSwapProps>): UseSwapReturn => {
   const localProps = computed(() => toValue(props))
   const swap = computed(() => localProps.value.swap ?? false)
 

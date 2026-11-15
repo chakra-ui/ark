@@ -8,7 +8,6 @@ import { ref } from 'vue'
 const props = withDefaults(defineProps<MenuRootProps>(), {
   autoHighlight: undefined,
   closeOnSelect: undefined,
-  composite: undefined,
   defaultOpen: undefined,
   loopFocus: undefined,
   open: undefined,
@@ -36,7 +35,7 @@ const handleQueryChange = (value: string) => {
 </script>
 
 <template>
-  <Menu.Root v-bind="localProps" :composite="false" @open-change="(details) => !details.open && handleQueryChange('')">
+  <Menu.Root v-bind="localProps" popupType="dialog" @open-change="(details) => !details.open && handleQueryChange('')">
     <Menu.Trigger>Actions</Menu.Trigger>
     <Menu.Positioner>
       <Menu.Content>

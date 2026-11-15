@@ -41,7 +41,7 @@ export async function runTransform(transform: TransformDef, options: RunOptions)
       if (index >= targets.length) return
       const path = targets[index]
       const source = await readFile(path, 'utf8')
-      if (!source.includes('asChild') && !source.includes('as-child')) continue
+      if (transform.prefilter && !transform.prefilter(source)) continue
 
       const result = transform.run(source, path, { crossFile: options.crossFile })
       for (const reason of result.skipped) summary.skipped.push([relative(options.cwd, path), reason])

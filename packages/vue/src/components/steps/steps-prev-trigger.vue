@@ -24,7 +24,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="steps.getPrevTriggerProps()" :as-child="asChild">
+  <ark.button v-bind="steps.getPreviousTriggerProps()" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

@@ -1,6 +1,6 @@
 import { Popover } from '@ark-ui/solid/popover'
 import { XIcon } from 'lucide-solid'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import button from 'styles/button.module.css'
 import styles from 'styles/popover.module.css'
 
@@ -8,7 +8,7 @@ export const Context = () => (
   <Popover.Root>
     <Popover.Trigger class={button.Root}>Click Me</Popover.Trigger>
     <Portal>
-      <Popover.Positioner>
+      <Popover.Positioner class={styles.Positioner}>
         <Popover.Content class={styles.Content}>
           <Popover.CloseTrigger class={styles.CloseTrigger}>
             <XIcon />

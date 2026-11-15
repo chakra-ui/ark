@@ -10,7 +10,7 @@ import {
   SparklesIcon,
 } from 'lucide-solid'
 import { For } from 'solid-js'
-import { Dynamic } from 'solid-js/web'
+import { Dynamic } from '@solidjs/web'
 import styles from 'styles/navigation-menu.module.css'
 
 const overviewSections = [

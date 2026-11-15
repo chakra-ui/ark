@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseAccordionItemContext, useAccordionItemContext } from './use-accordion-item-context.ts'
 
 export interface AccordionItemContextProps {

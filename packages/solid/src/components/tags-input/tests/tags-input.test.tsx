@@ -59,6 +59,11 @@ describe('TagsInput', () => {
 })
 
 describe('TagsInput / Field', () => {
+  it('should describe the input with the helper and error text', async () => {
+    render(() => <TagsInputWithField invalid />)
+    expect(screen.getByRole('textbox', { name: /label/i })).toHaveAccessibleDescription('Error Info Additional Info')
+  })
+
   it('should set combobox as required', async () => {
     render(() => <TagsInputWithField required />)
     expect(screen.getAllByRole('textbox', { hidden: true })[1]).toBeRequired()

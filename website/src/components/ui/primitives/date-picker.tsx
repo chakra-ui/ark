@@ -67,7 +67,7 @@ export const PresetTrigger = withContext<
 export const PrevTrigger = withContext<
   HTMLButtonElement,
   Assign<HTMLStyledProps<'button'>, DatePicker.PrevTriggerBaseProps>
->(DatePicker.PrevTrigger, 'prevTrigger')
+>(DatePicker.PrevTrigger, 'previousTrigger')
 
 export const RangeText = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, DatePicker.RangeTextBaseProps>>(
   DatePicker.RangeText,

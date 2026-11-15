@@ -64,6 +64,10 @@ export interface RootProps {
    */
   invalid?: boolean
   /**
+   * The locale used to format the channel values.
+   */
+  locale?: string
+  /**
    * The v-model value of the color picker
    */
   modelValue?: colorPicker.Color
@@ -99,6 +103,10 @@ export interface RootProps {
 }
 
 export type RootEmits = {
+  /**
+   * Function called when the animation ends in the open state
+   */
+  enterComplete: []
   /**
    * Function called when the animation ends in the closed state
    */

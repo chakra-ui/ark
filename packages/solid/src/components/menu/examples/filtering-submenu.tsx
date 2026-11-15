@@ -3,7 +3,7 @@ import { useFilter } from '@ark-ui/solid/locale'
 import { Menu } from '@ark-ui/solid/menu'
 import { ChevronDownIcon } from 'lucide-solid'
 import { For, Show, createSignal } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/menu.module.css'
 
 export const FilteringSubmenu = () => {
@@ -29,7 +29,7 @@ export const FilteringSubmenu = () => {
   const isEmpty = () => actionList.collection().size === 0 && !showMoveTo() && !showShare()
 
   return (
-    <Menu.Root composite={false} onExitComplete={() => handleQueryChange('')}>
+    <Menu.Root popupType="dialog" onExitComplete={() => handleQueryChange('')}>
       <Menu.Trigger class={styles.Trigger}>
         File
         <Menu.Indicator class={styles.Indicator}>
@@ -37,7 +37,7 @@ export const FilteringSubmenu = () => {
         </Menu.Indicator>
       </Menu.Trigger>
       <Portal>
-        <Menu.Positioner>
+        <Menu.Positioner class={styles.Positioner}>
           <Menu.Content class={styles.Content}>
             <Menu.Input
               class={styles.Input}
@@ -58,10 +58,10 @@ export const FilteringSubmenu = () => {
                 )}
               </For>
               <Show when={showMoveTo()}>
-                <Menu.Root composite={false} onExitComplete={() => handleFolderQueryChange('')}>
+                <Menu.Root popupType="dialog" onExitComplete={() => handleFolderQueryChange('')}>
                   <Menu.TriggerItem class={styles.TriggerItem}>Move to folder</Menu.TriggerItem>
                   <Portal>
-                    <Menu.Positioner>
+                    <Menu.Positioner class={styles.Positioner}>
                       <Menu.Content class={styles.Content}>
                         <Menu.Input
                           class={styles.Input}
@@ -91,7 +91,7 @@ export const FilteringSubmenu = () => {
                 <Menu.Root>
                   <Menu.TriggerItem class={styles.TriggerItem}>Share</Menu.TriggerItem>
                   <Portal>
-                    <Menu.Positioner>
+                    <Menu.Positioner class={styles.Positioner}>
                       <Menu.Content class={styles.Content}>
                         <For each={sharingOptions}>
                           {(option) => (

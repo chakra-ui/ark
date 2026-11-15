@@ -1,5 +1,5 @@
 import * as toast from '@zag-js/toast'
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 
 export interface CreateToasterProps extends Partial<toast.StoreProps> {
   placement: toast.Placement

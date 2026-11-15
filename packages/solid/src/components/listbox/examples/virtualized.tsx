@@ -1,7 +1,7 @@
 import { Listbox, createListCollection } from '@ark-ui/solid/listbox'
 import { ListVirtualizer, useListVirtualizer } from '@ark-ui/solid/virtualizer'
 import { CheckIcon } from 'lucide-solid'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import styles from 'styles/listbox.module.css'
 
 const collection = createListCollection({
@@ -29,7 +29,7 @@ export const Virtualized = () => {
           render={(props) => <ListVirtualizer.Root {...props()} value={virtualizer} />}
         >
           <ListVirtualizer.Content>
-            <Index each={virtualizer.getVirtualItems()}>
+            <For each={virtualizer.getVirtualItems()} keyed={false}>
               {(virtualItem) => {
                 const item = () => collection.items[virtualItem().index]
                 return (
@@ -45,7 +45,7 @@ export const Virtualized = () => {
                   </Listbox.Item>
                 )
               }}
-            </Index>
+            </For>
           </ListVirtualizer.Content>
         </Listbox.List>
       </Listbox.Content>

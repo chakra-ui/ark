@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { Index, Show, createMemo } from 'solid-js'
+import { For, Show, createMemo } from 'solid-js'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useFieldContext } from '../field/index.tsx'
 import { useSelectContext } from './use-select-context.ts'
@@ -18,7 +18,7 @@ export const SelectHiddenSelect = (props: SelectHiddenSelectProps) => {
       <Show when={isValueEmpty()}>
         <ark.option value="" />
       </Show>
-      <Index each={select().collection.items}>
+      <For each={select().collection.items} keyed={false}>
         {(item) => (
           <ark.option
             value={select().collection.getItemValue(item()) ?? ''}
@@ -27,7 +27,7 @@ export const SelectHiddenSelect = (props: SelectHiddenSelectProps) => {
             {select().collection.stringifyItem(item())}
           </ark.option>
         )}
-      </Index>
+      </For>
     </ark.select>
   )
 }

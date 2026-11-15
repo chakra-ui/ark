@@ -40,13 +40,19 @@ vi.stubGlobal('cancelAnimationFrame', (id: number) => {
 Object.defineProperty(window, 'navigator', {
   value: {
     clipboard: {
-      writeText: vi.fn(),
+      writeText: vi.fn(() => Promise.resolve()),
     },
   },
 })
 
 Element.prototype.scrollTo = () => {
   // no-op
+}
+
+// jsdom has no layout, so zag would treat every element as invisible and never focusable
+Element.prototype.getClientRects = function (this: Element) {
+  const visible = this.isConnected && !this.closest('[hidden]')
+  return (visible ? [new DOMRect()] : []) as unknown as DOMRectList
 }
 
 class IntersectionObserverMock {

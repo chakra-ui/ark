@@ -13,33 +13,35 @@
   import { useSteps } from './use-steps.svelte.ts'
   import { StepsProvider } from './use-steps-context.ts'
 
-  let { ref = $bindable(null), step = $bindable(), ...props }: StepsRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: StepsRootProps = $props()
   const providedId = $props.id()
 
   const [useStepsProps, localProps] = $derived(
     createSplitProps<Optional<UseStepsProps, 'id'>>()(props, [
-      'count',
-      'defaultStep',
+      'completedValues',
+      'defaultCompletedValues',
+      'defaultValue',
       'id',
       'ids',
-      'isStepSkippable',
-      'isStepValid',
+      'items',
       'linear',
-      'onStepChange',
-      'onStepComplete',
-      'onStepInvalid',
+      'onComplete',
+      'onCompletedChange',
+      'onNavigationBlocked',
+      'onValueChange',
       'orientation',
-      'step',
+      'translations',
+      'value',
     ]),
   )
 
   const resolvedProps = $derived<UseStepsProps>({
     ...useStepsProps,
     id: useStepsProps.id ?? providedId,
-    step,
-    onStepChange(details) {
-      useStepsProps.onStepChange?.(details)
-      if (step !== undefined) step = details.step
+    value,
+    onValueChange(details) {
+      useStepsProps.onValueChange?.(details)
+      if (value !== undefined) value = details.value ?? undefined
     },
   })
 

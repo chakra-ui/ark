@@ -83,9 +83,7 @@ const countries: Country[] = [
 const { startsWith } = useFilter({ sensitivity: 'base' })
 
 const { collection, filter, reset } = useListCollection({
-  get initialItems() {
-    return countries
-  },
+  initialItems: countries,
   filter: startsWith,
 })
 
@@ -122,7 +120,7 @@ const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
       </div>
     </Combobox.Control>
     <Teleport to="body">
-      <Combobox.Positioner>
+      <Combobox.Positioner :class="styles.Positioner">
         <Combobox.Content :class="styles.Content">
           <Combobox.List
             :ref="virtualizer.ref"

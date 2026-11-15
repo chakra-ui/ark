@@ -2,7 +2,7 @@ import { Menu } from '@ark-ui/solid/menu'
 import { TreeView, createTreeCollection } from '@ark-ui/solid/tree-view'
 import { ChevronRightIcon, FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-solid'
 import { For, Show, createUniqueId, type ParentProps } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import menuStyles from 'styles/menu.module.css'
 import styles from 'styles/tree-view.module.css'
 
@@ -15,7 +15,7 @@ const TreeNodeContextMenu = (props: ParentProps<TreeNodeContextMenuProps>) => {
     <Menu.Root {...props} ids={{ contextTrigger: props.triggerId }}>
       {props.children}
       <Portal>
-        <Menu.Positioner>
+        <Menu.Positioner class={menuStyles.Positioner}>
           <Menu.Content class={menuStyles.Content}>
             <Menu.Item class={menuStyles.Item} value="rename">
               Rename

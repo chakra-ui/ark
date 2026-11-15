@@ -21,7 +21,7 @@ export const WithCheckbox = () => (
       }
     />
     <Portal>
-      <Tooltip.Positioner>
+      <Tooltip.Positioner className={tooltipStyles.Positioner}>
         <Tooltip.Content className={tooltipStyles.Content}>Required to continue</Tooltip.Content>
       </Tooltip.Positioner>
     </Portal>

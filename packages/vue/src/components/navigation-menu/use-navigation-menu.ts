@@ -1,6 +1,6 @@
 import * as navigationMenu from '@zag-js/navigation-menu'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -11,7 +11,7 @@ export interface UseNavigationMenuProps extends Optional<Omit<navigationMenu.Pro
 export interface UseNavigationMenuReturn extends ComputedRef<navigationMenu.Api<PropTypes>> {}
 
 export const useNavigationMenu = (
-  props: MaybeRef<UseNavigationMenuProps> = {},
+  props: MaybeRefOrGetter<UseNavigationMenuProps> = {},
   emit?: EmitFn<RootEmits>,
 ): UseNavigationMenuReturn => {
   const id = useId()

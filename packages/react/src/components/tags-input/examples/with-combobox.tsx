@@ -62,7 +62,7 @@ export const WithCombobox = () => {
       </TagsInput.RootProvider>
 
       <Portal>
-        <Combobox.Positioner>
+        <Combobox.Positioner className={combobox.Positioner}>
           <Combobox.Content className={combobox.Content}>
             <Combobox.Empty className={combobox.Item}>No frameworks found</Combobox.Empty>
             {collection.items.map((item) => (

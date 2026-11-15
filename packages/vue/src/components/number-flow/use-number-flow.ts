@@ -1,6 +1,6 @@
 import * as numberFlow from '@zag-js/number-flow'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -15,7 +15,7 @@ export interface UseNumberFlowProps extends Optional<Omit<numberFlow.Props, 'dir
 export interface UseNumberFlowReturn extends ComputedRef<numberFlow.Api<PropTypes>> {}
 
 export const useNumberFlow = (
-  props: MaybeRef<UseNumberFlowProps> = {},
+  props: MaybeRefOrGetter<UseNumberFlowProps> = {},
   emit?: EmitFn<RootEmits>,
 ): UseNumberFlowReturn => {
   const id = useId()

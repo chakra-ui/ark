@@ -56,7 +56,7 @@
   const isEmpty = $derived(actionList.collection().size === 0 && !showMoveTo && !showShare)
 </script>
 
-<Menu.Root composite={false} onExitComplete={() => handleQueryChange('')}>
+<Menu.Root popupType="dialog" onExitComplete={() => handleQueryChange('')}>
   <Menu.Trigger class={styles.Trigger}>
     File
     <Menu.Indicator class={styles.Indicator}>
@@ -64,7 +64,7 @@
     </Menu.Indicator>
   </Menu.Trigger>
   <Portal>
-    <Menu.Positioner>
+    <Menu.Positioner class={styles.Positioner}>
       <Menu.Content class={styles.Content}>
         <Menu.Input
           class={styles.Input}
@@ -81,10 +81,10 @@
             <Menu.Item class={styles.Item} value={item.value}>{item.label}</Menu.Item>
           {/each}
           {#if showMoveTo}
-            <Menu.Root composite={false} onExitComplete={() => handleFolderQueryChange('')}>
+            <Menu.Root popupType="dialog" onExitComplete={() => handleFolderQueryChange('')}>
               <Menu.TriggerItem class={styles.TriggerItem}>Move to folder</Menu.TriggerItem>
               <Portal>
-                <Menu.Positioner>
+                <Menu.Positioner class={styles.Positioner}>
                   <Menu.Content class={styles.Content}>
                     <Menu.Input
                       class={styles.Input}
@@ -110,7 +110,7 @@
             <Menu.Root>
               <Menu.TriggerItem class={styles.TriggerItem}>Share</Menu.TriggerItem>
               <Portal>
-                <Menu.Positioner>
+                <Menu.Positioner class={styles.Positioner}>
                   <Menu.Content class={styles.Content}>
                     {#each sharingOptions as option (option.value)}
                       <Menu.Item class={styles.Item} value={option.value}>{option.label}</Menu.Item>

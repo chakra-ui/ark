@@ -27,7 +27,7 @@
   }
 </script>
 
-<Menu.Root composite={false} onOpenChange={(details) => !details.open && handleQueryChange('')} {...props}>
+<Menu.Root popupType="dialog" onOpenChange={(details) => !details.open && handleQueryChange('')} {...props}>
   <Menu.Trigger>Actions</Menu.Trigger>
   <Menu.Positioner>
     <Menu.Content>

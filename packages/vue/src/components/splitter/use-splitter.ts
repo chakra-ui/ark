@@ -1,6 +1,6 @@
 import * as splitter from '@zag-js/splitter'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -10,7 +10,7 @@ export interface UseSplitterProps extends Optional<Omit<splitter.Props, 'dir' | 
 
 export interface UseSplitterReturn extends ComputedRef<splitter.Api<PropTypes>> {}
 
-export const useSplitter = (props: MaybeRef<UseSplitterProps>, emit?: EmitFn<RootEmits>): UseSplitterReturn => {
+export const useSplitter = (props: MaybeRefOrGetter<UseSplitterProps>, emit?: EmitFn<RootEmits>): UseSplitterReturn => {
   const id = useId()
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const locale = useLocaleContext(DEFAULT_LOCALE)

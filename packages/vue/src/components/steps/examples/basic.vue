@@ -11,9 +11,9 @@ const items = [
 </script>
 
 <template>
-  <Steps.Root :class="styles.Root" :count="items.length">
+  <Steps.Root :class="styles.Root" :items="items">
     <Steps.List :class="styles.List">
-      <Steps.Item v-for="(item, index) in items" :key="index" :class="styles.Item" :index="index">
+      <Steps.Item v-for="(item, index) in items" :key="item.value" :class="styles.Item" :value="item.value">
         <Steps.Trigger :class="styles.Trigger">
           <Steps.Indicator :class="styles.Indicator">{{ index + 1 }}</Steps.Indicator>
           <span>{{ item.title }}</span>
@@ -22,7 +22,7 @@ const items = [
       </Steps.Item>
     </Steps.List>
 
-    <Steps.Content v-for="(item, index) in items" :key="index" :class="styles.Content" :index="index">
+    <Steps.Content v-for="item in items" :key="item.value" :class="styles.Content" :value="item.value">
       {{ item.title }} - {{ item.description }}
     </Steps.Content>
 

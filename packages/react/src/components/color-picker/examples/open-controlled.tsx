@@ -30,7 +30,7 @@ export const OpenControlled = () => {
           </ColorPicker.Trigger>
         </ColorPicker.Control>
 
-        <ColorPicker.Positioner>
+        <ColorPicker.Positioner className={styles.Positioner}>
           <ColorPicker.Content className={styles.Content}>
             <ColorPicker.Area className={styles.Area}>
               <ColorPicker.AreaBackground className={styles.AreaBackground} />

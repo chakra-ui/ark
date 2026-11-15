@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UsePopoverContext, usePopoverContext } from './use-popover-context.ts'
 
 export interface PopoverContextProps {

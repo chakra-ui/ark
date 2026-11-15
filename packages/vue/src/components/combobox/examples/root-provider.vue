@@ -20,14 +20,12 @@ const { collection, filter } = useListCollection({
   filter: contains,
 })
 
-const combobox = useCombobox({
-  get collection() {
-    return collection.value
-  },
+const combobox = useCombobox(() => ({
+  collection: collection.value,
   onInputValueChange(details) {
     filter(details.inputValue)
   },
-})
+}))
 </script>
 
 <template>
@@ -44,7 +42,7 @@ const combobox = useCombobox({
         </div>
       </Combobox.Control>
       <Teleport to="body">
-        <Combobox.Positioner>
+        <Combobox.Positioner :class="styles.Positioner">
           <Combobox.Content :class="styles.Content">
             <Combobox.List :class="styles.List">
               <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item" :class="styles.Item">

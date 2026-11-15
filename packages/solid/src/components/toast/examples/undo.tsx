@@ -1,4 +1,4 @@
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import { For, createSignal } from 'solid-js'
 import { Toast, Toaster, createToaster } from '@ark-ui/solid/toast'
 import { XIcon } from 'lucide-solid'

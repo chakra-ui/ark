@@ -1,6 +1,6 @@
 import {
   type HTMLAttributes,
-  type MaybeRef,
+  type MaybeRefOrGetter,
   computed,
   onBeforeUnmount,
   onMounted,
@@ -49,7 +49,7 @@ export interface UseFieldProps {
 
 export type UseFieldReturn = ReturnType<typeof useField>
 
-export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
+export const useField = (props: MaybeRefOrGetter<UseFieldProps> = {}) => {
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
 
   const state = reactive({
@@ -62,7 +62,8 @@ export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
 
   const rootRef = ref(null)
 
-  const rootId = computed(() => toValue(props).ids?.control ?? `field::${id.value}`)
+  const rootId = computed(() => toValue(props).ids?.root ?? `field::${id.value}`)
+  const controlId = computed(() => toValue(props).ids?.control ?? id.value)
   const errorTextId = computed(() => toValue(props).ids?.errorText ?? `field::${id.value}::error-text`)
   const helperTextId = computed(() => toValue(props).ids?.helperText ?? `field::${id.value}::helper-text`)
   const labelId = computed(() => toValue(props).ids?.label ?? `field::${id.value}::label`)
@@ -102,7 +103,7 @@ export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
 
   const targetControlId = computed(() => {
     const target = toValue(props).target
-    return target ? `field::${id.value}::item::${target}` : undefined
+    return target ? `field::${controlId.value}::item::${target}` : undefined
   })
 
   const getLabelProps = () => {
@@ -114,7 +115,7 @@ export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
       'data-invalid': dataAttr(values.invalid),
       'data-readonly': dataAttr(values.readOnly),
       'data-required': dataAttr(values.required),
-      htmlFor: targetControlId.value ?? id.value,
+      htmlFor: targetControlId.value ?? controlId.value,
     }
   }
 
@@ -133,7 +134,7 @@ export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
       'data-invalid': dataAttr(values.invalid),
       'data-required': dataAttr(values.required),
       'data-readonly': dataAttr(values.readOnly),
-      id: id.value,
+      id: controlId.value,
       required: values.required,
       disabled: values.disabled,
       readOnly: values.readOnly,
@@ -180,7 +181,8 @@ export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
     return {
       ariaDescribedby: describedById.value,
       ids: {
-        control: id.value,
+        root: rootId.value,
+        control: controlId.value,
         label: labelId.value,
         errorText: errorTextId.value,
         helperText: helperTextId.value,

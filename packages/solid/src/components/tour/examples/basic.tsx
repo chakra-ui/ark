@@ -1,5 +1,5 @@
 import { Tour, useTour } from '@ark-ui/solid/tour'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import { MoreHorizontalIcon, SaveIcon, SparklesIcon, UploadIcon, XIcon } from 'lucide-solid'
 import { For } from 'solid-js'
 import button from 'styles/button.module.css'
@@ -20,7 +20,7 @@ const steps: Tour.StepDetails[] = [
     description: 'Click here to upload your files to the cloud.',
     target: () => document.querySelector<HTMLElement>('#btn-upload'),
     actions: [
-      { label: 'Back', action: 'prev' },
+      { label: 'Back', action: 'previous' },
       { label: 'Next', action: 'next' },
     ],
   },
@@ -31,7 +31,7 @@ const steps: Tour.StepDetails[] = [
     description: 'Save your work to keep your progress.',
     target: () => document.querySelector<HTMLElement>('#btn-save'),
     actions: [
-      { label: 'Back', action: 'prev' },
+      { label: 'Back', action: 'previous' },
       { label: 'Next', action: 'next' },
     ],
   },
@@ -42,7 +42,7 @@ const steps: Tour.StepDetails[] = [
     description: 'Access additional settings and actions from this menu.',
     target: () => document.querySelector<HTMLElement>('#btn-more'),
     actions: [
-      { label: 'Back', action: 'prev' },
+      { label: 'Back', action: 'previous' },
       { label: 'Next', action: 'next' },
     ],
   },

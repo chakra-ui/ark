@@ -1,5 +1,5 @@
 import { render } from '@solidjs/testing-library'
-import { createSignal } from 'solid-js'
+import { createSignal, flush } from 'solid-js'
 import { Highlight } from '../index.tsx'
 
 const text = 'Solid is great and Solid is fast'
@@ -35,6 +35,7 @@ describe('Highlight', () => {
     const { container } = render(() => <Highlight text={text} query={query()} />)
     expect(container.querySelector('mark')).toHaveTextContent('great')
     setQuery('fast')
+    flush()
     expect(container.querySelector('mark')).toHaveTextContent('fast')
   })
 })

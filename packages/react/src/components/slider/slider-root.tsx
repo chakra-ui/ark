@@ -18,8 +18,8 @@ const splitRootProps = createSplitProps<UseSliderProps>()
 
 export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>((props, ref) => {
   const [useSliderProps, localProps] = splitRootProps(props, [
-    'aria-label',
-    'aria-labelledby',
+    'getAriaLabel',
+    'getAriaLabelledBy',
     'defaultValue',
     'disabled',
     'form',

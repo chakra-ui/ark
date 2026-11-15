@@ -9,7 +9,7 @@ Add `Menu.Input` and `Menu.List` for filterable menus. Filter the items yourself
 `useListCollection`, and the input keeps focus while the arrow keys move the highlight through the list.
 
 ```tsx
-<Menu.Root composite={false}>
+<Menu.Root popupType="dialog">
   <Menu.Trigger>Actions</Menu.Trigger>
   <Menu.Positioner>
     <Menu.Content>
@@ -20,6 +20,6 @@ Add `Menu.Input` and `Menu.List` for filterable menus. Filter the items yourself
 </Menu.Root>
 ```
 
-Set `composite={false}` so the popup is a dialog holding the input and the `menu` list. `autoHighlight` on
-`Menu.Root` highlights the first match as the query changes, or always with `"always"`. Submenus can have their own
-input, and Escape or the left arrow on an empty input returns to the parent's.
+Set `popupType="dialog"` so the popup is a dialog holding the input and the `menu` list. `autoHighlight` on `Menu.Root`
+highlights the first match as the query changes, or always with `"always"`. Submenus can have their own input, and
+Escape or the left arrow on an empty input returns to the parent's.

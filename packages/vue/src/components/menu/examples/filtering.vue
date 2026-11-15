@@ -49,7 +49,7 @@ const toggleView = (value: string, checked: boolean) => {
 </script>
 
 <template>
-  <Menu.Root :composite="false" @exit-complete="handleQueryChange('')">
+  <Menu.Root popupType="dialog" @exit-complete="handleQueryChange('')">
     <Menu.Trigger :class="styles.Trigger">
       Actions
       <Menu.Indicator :class="styles.Indicator">
@@ -57,7 +57,7 @@ const toggleView = (value: string, checked: boolean) => {
       </Menu.Indicator>
     </Menu.Trigger>
     <Teleport to="body">
-      <Menu.Positioner>
+      <Menu.Positioner :class="styles.Positioner">
         <Menu.Content :class="styles.Content">
           <div :class="styles.InputControl">
             <Menu.Input

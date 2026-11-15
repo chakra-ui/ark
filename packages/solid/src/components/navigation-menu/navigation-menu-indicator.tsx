@@ -22,7 +22,7 @@ export const NavigationMenuIndicator = (props: NavigationMenuIndicatorProps) => 
   return (
     <PresenceProvider value={presenceApi}>
       <Show when={!presenceApi().unmounted}>
-        <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} />
+        <ark.div {...mergedProps} ref={composeRefs((el) => presenceApi().ref(el), props.ref)} />
       </Show>
     </PresenceProvider>
   )

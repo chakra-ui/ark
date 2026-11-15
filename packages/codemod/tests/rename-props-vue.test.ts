@@ -69,3 +69,22 @@ describe('vue pin-input-count', () => {
     expect(result.skipped[0]).toContain('count is now required')
   })
 })
+
+describe('vue aliased components', () => {
+  it('renames on a component imported under an alias', () => {
+    const result = carousel(
+      `<script setup>import { Carousel as StyledCarousel } from '@ark-ui/vue/carousel'</script>\n<template>\n  <StyledCarousel.Root slide-count="5">x</StyledCarousel.Root>\n</template>`,
+      'a.vue',
+    )
+    expect(result.count).toBe(1)
+    expect(result.code).toContain('<StyledCarousel.Root count="5">')
+  })
+
+  it('leaves an aliased non-matching component alone', () => {
+    const result = carousel(
+      `<script setup>import { Tabs as Carousel } from '@ark-ui/vue/tabs'</script>\n<template>\n  <Carousel.Root slide-count="5">x</Carousel.Root>\n</template>`,
+      'a.vue',
+    )
+    expect(result.code).toBeNull()
+  })
+})

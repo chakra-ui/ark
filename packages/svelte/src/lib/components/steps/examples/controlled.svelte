@@ -9,16 +9,16 @@
     { value: 'third', title: 'Third', description: 'Select Rooms' },
   ]
 
-  let step = $state(0)
+  let value = $state<string | undefined>('first')
 </script>
 
 <div class="stack">
-  <output>current step: {step + 1}</output>
+  <output>current step: {value}</output>
 
-  <Steps.Root class={styles.Root} bind:step count={items.length}>
+  <Steps.Root class={styles.Root} bind:value {items}>
     <Steps.List class={styles.List}>
       {#each items as item, index}
-        <Steps.Item class={styles.Item} {index}>
+        <Steps.Item class={styles.Item} value={item.value}>
           <Steps.Trigger class={styles.Trigger}>
             <Steps.Indicator class={styles.Indicator}>{index + 1}</Steps.Indicator>
             <span>{item.title}</span>
@@ -28,8 +28,8 @@
       {/each}
     </Steps.List>
 
-    {#each items as item, index}
-      <Steps.Content class={styles.Content} {index}>
+    {#each items as item (item.value)}
+      <Steps.Content class={styles.Content} value={item.value}>
         {item.title} - {item.description}
       </Steps.Content>
     {/each}

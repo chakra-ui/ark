@@ -1,6 +1,6 @@
 import { Combobox, useListCollection } from '@ark-ui/solid/combobox'
 import { For } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/combobox.module.css'
 
 const suggestList = ['gmail.com', 'yahoo.com', 'ark-ui.com']
@@ -27,7 +27,7 @@ export const Dynamic = () => {
         </div>
       </Combobox.Control>
       <Portal>
-        <Combobox.Positioner>
+        <Combobox.Positioner class={styles.Positioner}>
           <Combobox.Content class={styles.Content}>
             <Combobox.List class={styles.List}>
               <For each={collection().items}>

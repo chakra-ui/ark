@@ -1,6 +1,6 @@
 import { FloatingPanel } from '@ark-ui/solid/floating-panel'
 import { ArrowDownLeft, GripVertical, Maximize2, Minus, XIcon } from 'lucide-solid'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/floating-panel.module.css'
 
 export const Context = () => (

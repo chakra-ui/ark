@@ -10,6 +10,17 @@ describe('Toc', () => {
     expect(screen.getByText(/on this page/i)).toBeInTheDocument()
   })
 
+  it('should not render the root and nav with the same id', () => {
+    const { container } = render(() => <ComponentUnderTest />)
+    const nav = screen.getByRole('navigation')
+    expect(nav).toHaveAttribute('id')
+    expect(container.querySelector('[data-toc-root]')).not.toBe(nav)
+    expect(container.querySelectorAll(`[id="${nav.id}"]`)).toHaveLength(1)
+    expect(nav).toHaveAttribute('aria-labelledby', screen.getByText('On this page').id)
+    expect(nav).toHaveAttribute('data-toc-nav')
+    expect(container.querySelector('[data-toc-root]')).not.toHaveAttribute('aria-labelledby')
+  })
+
   it('should render the correct number of items', () => {
     render(() => <ComponentUnderTest />)
     const items = screen.getAllByRole('listitem')

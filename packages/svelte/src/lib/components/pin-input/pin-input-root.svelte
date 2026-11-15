@@ -26,7 +26,6 @@
     createSplitProps<Optional<UsePinInputProps, 'id'>>()(props, [
       'autoFocus',
       'autoSubmit',
-      'blurOnComplete',
       'count',
       'defaultValue',
       'disabled',
@@ -44,8 +43,7 @@
       'placeholder',
       'readOnly',
       'required',
-      'sanitizeValue',
-      'selectOnFocus',
+      'normalizeValue',
       'translations',
       'type',
       'value',

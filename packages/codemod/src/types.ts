@@ -14,5 +14,6 @@ export interface TransformDef {
   name: string
   description: string
   extensions: string[]
+  prefilter?: (source: string) => boolean
   run: Transform
 }

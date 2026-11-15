@@ -4,7 +4,7 @@
   import styles from 'styles/number-input.module.css'
 </script>
 
-<NumberInput.Root class={styles.Root} defaultValue="32">
+<NumberInput.Root class={styles.Root} defaultValue={32}>
   <NumberInput.Label class={styles.Label}>Label</NumberInput.Label>
   <NumberInput.Control class={styles.Control}>
     <NumberInput.Scrubber class={styles.Scrubber}>

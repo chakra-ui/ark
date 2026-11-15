@@ -42,7 +42,7 @@ export const Async = () => {
         </Select.Trigger>
       </Select.Control>
       <Portal>
-        <Select.Positioner>
+        <Select.Positioner className={styles.Positioner}>
           <Select.Content className={styles.Content}>
             <Select.Status>
               {loading ? (

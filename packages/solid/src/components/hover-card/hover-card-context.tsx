@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseHoverCardContext, useHoverCardContext } from './use-hover-card-context.ts'
 
 export interface HoverCardContextProps {

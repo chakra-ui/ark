@@ -68,12 +68,12 @@ describe('PinInput', () => {
     )
   })
 
-  it('should set one-time-code for autocomplete on fields', async () => {
+  it('should set one-time-code for autocomplete on the first field', async () => {
     await renderOnNextTick(ComponentUnderTest, { props: { otp: true } })
 
     expect(screen.getByLabelText('pin code 1 of 3')).toHaveAttribute('autocomplete', 'one-time-code')
-    expect(screen.getByLabelText('pin code 2 of 3')).toHaveAttribute('autocomplete', 'one-time-code')
-    expect(screen.getByLabelText('pin code 3 of 3')).toHaveAttribute('autocomplete', 'one-time-code')
+    expect(screen.getByLabelText('pin code 2 of 3')).toHaveAttribute('autocomplete', 'off')
+    expect(screen.getByLabelText('pin code 3 of 3')).toHaveAttribute('autocomplete', 'off')
   })
 
   it('should replace last input calls onValueComplete correctly', async () => {
@@ -109,7 +109,7 @@ describe('PinInput', () => {
   })
 })
 
-describe('NumberInput / Field', () => {
+describe('PinInput / Field', () => {
   it('should set input as required', async () => {
     await renderOnNextTick(WithField, { props: { required: true } })
     expect(screen.getAllByRole('textbox', { hidden: true })[3]).toBeRequired()
@@ -145,5 +145,10 @@ describe('NumberInput / Field', () => {
     await renderOnNextTick(WithField)
 
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+  })
+
+  it('should describe the input group with the helper and error text', async () => {
+    await renderOnNextTick(WithField, { props: { invalid: true } })
+    expect(screen.getByRole('group', { name: 'Label' })).toHaveAccessibleDescription('Error Info Additional Info')
   })
 })

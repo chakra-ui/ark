@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseProgressContext, useProgressContext } from './use-progress-context.ts'
 
 export interface ProgressContextProps {

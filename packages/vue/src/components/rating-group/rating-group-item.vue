@@ -19,12 +19,14 @@ import { computed } from 'vue'
 import { ark } from '../factory.ts'
 import { useRatingGroupContext } from './use-rating-group-context.ts'
 import { RatingGroupItemProvider } from './use-rating-group-item-context.ts'
+import { useFieldContext } from '../field/index.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<RatingGroupItemProps>()
 
 defineSlots<PolymorphicSlots<RatingGroupItemState>>()
 const ratingGroup = useRatingGroupContext()
+const field = useFieldContext()
 
 RatingGroupItemProvider(computed(() => ratingGroup.value.getItemState(props)))
 
@@ -32,7 +34,12 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.span v-bind="ratingGroup.getItemProps(props)" :state="ratingGroup.getItemState(props)" :as-child="asChild">
+  <ark.span
+    :aria-describedby="field?.ariaDescribedby"
+    v-bind="ratingGroup.getItemProps(props)"
+    :state="ratingGroup.getItemState(props)"
+    :as-child="asChild"
+  >
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

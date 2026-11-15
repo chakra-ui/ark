@@ -1,6 +1,6 @@
 import * as toggleGroup from '@zag-js/toggle-group'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -16,7 +16,7 @@ export interface UseToggleGroupProps extends Optional<Omit<toggleGroup.Props, 'd
 export interface UseToggleGroupReturn extends ComputedRef<toggleGroup.Api<PropTypes>> {}
 
 export const useToggleGroup = (
-  props: MaybeRef<UseToggleGroupProps> = {},
+  props: MaybeRefOrGetter<UseToggleGroupProps> = {},
   emit?: EmitFn<RootEmits>,
 ): UseToggleGroupReturn => {
   const id = useId()

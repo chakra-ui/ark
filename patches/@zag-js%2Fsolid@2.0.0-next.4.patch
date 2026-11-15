@@ -1,0 +1,28 @@
+diff --git a/dist/merge-props.js b/dist/merge-props.js
+index 14b1b20e553d666649b22564e4b38fc9eb2f4702..56279c6d51f33d2b714ce6239c84ee52f312f459 100644
+--- a/dist/merge-props.js
++++ b/dist/merge-props.js
+@@ -46,7 +46,8 @@ function mergeProps(...sources) {
+ 		},
+ 		has(key) {
+ 			if (typeof key !== "string") return false;
+-			return sources.some((source) => Object.prototype.hasOwnProperty.call(resolve(source), key));
++			for (let i = sources.length - 1; i >= 0; i--) if (Object.prototype.hasOwnProperty.call(resolve(sources[i]), key)) return true;
++			return false;
+ 		},
+ 		keys() {
+ 			const keys = /* @__PURE__ */ new Set();
+diff --git a/dist/merge-props.mjs b/dist/merge-props.mjs
+index c4b4ac1a4f757d6d23d18e4380475ce1c1a5397c..831131e546d6da5961aaf3782abe62dbd2a58eba 100644
+--- a/dist/merge-props.mjs
++++ b/dist/merge-props.mjs
+@@ -42,7 +42,8 @@ function mergeProps(...sources) {
+ 		},
+ 		has(key) {
+ 			if (typeof key !== "string") return false;
+-			return sources.some((source) => Object.prototype.hasOwnProperty.call(resolve(source), key));
++			for (let i = sources.length - 1; i >= 0; i--) if (Object.prototype.hasOwnProperty.call(resolve(sources[i]), key)) return true;
++			return false;
+ 		},
+ 		keys() {
+ 			const keys = /* @__PURE__ */ new Set();

@@ -2,12 +2,13 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "jsx": "preserve",
-    "jsxImportSource": "solid-js",
+    "jsxImportSource": "@solidjs/web",
     "paths": {
-      "styles/*": ["../../.storybook/modules/*"]
+      "styles/*": ["../../.storybook/modules/*"],
+      "lucide-solid": ["./shims/lucide-solid.tsx"]
     },
     "ignoreDeprecations": "6.0",
     "noPropertyAccessFromIndexSignature": false
   },
-  "include": ["src", "../../.storybook/modules/css-modules.d.ts"]
+  "include": ["src", "shims", "../../.storybook/modules/css-modules.d.ts"]
 }

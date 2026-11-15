@@ -18,6 +18,7 @@ export const DateInputRoot = (props: DateInputRootProps) => {
     'invalid',
     'locale',
     'max',
+    'maxGranularity',
     'min',
     'name',
     'form',

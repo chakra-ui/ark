@@ -1,4 +1,5 @@
-import { createMemo, createSignal, splitProps } from 'solid-js'
+import { createMemo, createSignal } from 'solid-js'
+import { splitProps } from '../../utils/split-props.ts'
 import type { MaybeAccessor } from '../../types.ts'
 import { type CollectionOptions, type ListCollection, createListCollection } from './list-collection.ts'
 

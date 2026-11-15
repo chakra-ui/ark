@@ -1,7 +1,7 @@
 import { ColorPicker, parseColor } from '@ark-ui/solid/color-picker'
 import { Dialog } from '@ark-ui/solid/dialog'
 import { Pipette, XIcon } from 'lucide-solid'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import button from 'styles/button.module.css'
 import dialog from 'styles/dialog.module.css'
 import styles from 'styles/color-picker.module.css'
@@ -36,7 +36,7 @@ export const InsideDialog = () => (
               </ColorPicker.Control>
 
               <Portal>
-                <ColorPicker.Positioner>
+                <ColorPicker.Positioner class={styles.Positioner}>
                   <ColorPicker.Content class={styles.Content}>
                     <ColorPicker.Area class={styles.Area}>
                       <ColorPicker.AreaBackground class={styles.AreaBackground} />

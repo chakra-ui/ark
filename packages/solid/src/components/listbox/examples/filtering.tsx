@@ -1,7 +1,7 @@
 import { useListCollection } from '@ark-ui/solid/collection'
 import { Listbox } from '@ark-ui/solid/listbox'
 import { CheckIcon } from 'lucide-solid'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import field from 'styles/field.module.css'
 import styles from 'styles/listbox.module.css'
 
@@ -31,7 +31,7 @@ export const Filtering = () => {
           <div class={styles.Empty}>No frameworks found</div>
         </Listbox.Empty>
         <Listbox.List class={styles.List}>
-          <Index each={collection().items}>
+          <For each={collection().items} keyed={false}>
             {(item) => (
               <Listbox.Item class={styles.Item} item={item()}>
                 <Listbox.ItemText class={styles.ItemText}>{item().label}</Listbox.ItemText>
@@ -40,7 +40,7 @@ export const Filtering = () => {
                 </Listbox.ItemIndicator>
               </Listbox.Item>
             )}
-          </Index>
+          </For>
         </Listbox.List>
       </Listbox.Content>
     </Listbox.Root>

@@ -11,11 +11,11 @@ const items = [
 
 export const Basic = () => {
   return (
-    <Steps.Root class={styles.Root} count={items.length}>
+    <Steps.Root class={styles.Root} items={items}>
       <Steps.List class={styles.List}>
         <For each={items}>
           {(item, index) => (
-            <Steps.Item class={styles.Item} index={index()}>
+            <Steps.Item class={styles.Item} value={item.value}>
               <Steps.Trigger class={styles.Trigger}>
                 <Steps.Indicator class={styles.Indicator}>{index() + 1}</Steps.Indicator>
                 <span>{item.title}</span>
@@ -27,8 +27,8 @@ export const Basic = () => {
       </Steps.List>
 
       <For each={items}>
-        {(item, index) => (
-          <Steps.Content class={styles.Content} index={index()}>
+        {(item) => (
+          <Steps.Content class={styles.Content} value={item.value}>
             {item.title} - {item.description}
           </Steps.Content>
         )}

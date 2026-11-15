@@ -29,7 +29,10 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="toast.getRootProps()" :state="toast.getRootState()" :as-child="asChild">
+  <ark.div v-if="asChild" v-bind="toast.getRootProps()" :state="toast.getRootState()" as-child>
+    <slot />
+  </ark.div>
+  <ark.div v-else v-bind="toast.getRootProps()" :state="toast.getRootState()">
     <div v-bind="toast.getGhostBeforeProps()" />
     <slot />
     <div v-bind="toast.getGhostAfterProps()" />

@@ -1,6 +1,6 @@
 import MagicString from 'magic-string'
 import type { TransformResult } from '../../types.ts'
-import { arkLocalNamesFromSource, jsxBaseNameFromText } from '../../utils/ark-imports.ts'
+import { arkImportOriginsFromSource, jsxBaseNameFromText } from '../../utils/ark-imports.ts'
 import type { PropRule, RenameConfig } from './engine.ts'
 
 interface Attr {
@@ -12,7 +12,7 @@ interface Attr {
 
 export function makeSvelteRenameTransform(config: RenameConfig) {
   return (source: string, _filePath: string): TransformResult => {
-    const arkNames = arkLocalNamesFromSource(source)
+    const arkNames = arkImportOriginsFromSource(source)
     if (arkNames.size === 0) return { code: null, count: 0, skipped: [] }
 
     const s = new MagicString(source)
@@ -24,7 +24,7 @@ export function makeSvelteRenameTransform(config: RenameConfig) {
       const tag = match[1]
       if (!arkNames.has(jsxBaseNameFromText(tag))) continue
 
-      const rules = config.rules.filter((rule) => matchesPart(tag, rule.component, rule.part))
+      const rules = config.rules.filter((rule) => matchesPart(tag, rule.component, rule.part, arkNames))
       if (rules.length === 0) continue
 
       const attrsStart = match.index + 1 + tag.length
@@ -44,10 +44,13 @@ export function makeSvelteRenameTransform(config: RenameConfig) {
   }
 }
 
-function matchesPart(tag: string, component: string, part: string): boolean {
+function matchesPart(tag: string, component: string, part: string, origins: Map<string, string>): boolean {
   const segs = tag.split('.')
+  if (segs.length === 1) {
+    return (origins.get(tag) ?? tag).toLowerCase() === `${component}${part}`.toLowerCase()
+  }
   if (segs.length !== 2) return false
-  return segs[1] === part && segs[0].toLowerCase() === component.toLowerCase()
+  return segs[1] === part && (origins.get(segs[0]) ?? segs[0]).toLowerCase() === component.toLowerCase()
 }
 
 function applyRule(attrs: Attr[], rule: PropRule, where: string, skipped: string[]): number {

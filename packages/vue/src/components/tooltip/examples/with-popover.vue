@@ -13,7 +13,7 @@ import tooltipStyles from 'styles/tooltip.module.css'
         <Popover.Trigger v-bind="ctx.props" :class="button.Root">Click Me</Popover.Trigger>
       </Tooltip.Trigger>
       <Teleport to="body">
-        <Tooltip.Positioner>
+        <Tooltip.Positioner :class="tooltipStyles.Positioner">
           <Tooltip.Content :class="tooltipStyles.Content">See more details</Tooltip.Content>
         </Tooltip.Positioner>
       </Teleport>

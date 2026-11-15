@@ -17,18 +17,25 @@ export interface ColorPickerTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory.ts'
 import { useColorPickerContext } from './use-color-picker-context.ts'
+import { useFieldContext } from '../field/index.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<ColorPickerTriggerProps>()
 
 defineSlots<PolymorphicSlots<ColorPickerTriggerState>>()
 const colorPicker = useColorPickerContext()
+const field = useFieldContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="colorPicker.getTriggerProps()" :state="colorPicker.getTriggerState()" :as-child="asChild">
+  <ark.button
+    :aria-describedby="field?.ariaDescribedby"
+    v-bind="colorPicker.getTriggerProps()"
+    :state="colorPicker.getTriggerState()"
+    :as-child="asChild"
+  >
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

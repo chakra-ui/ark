@@ -3,7 +3,7 @@ import { useFilter } from '@ark-ui/solid/locale'
 import { Menu } from '@ark-ui/solid/menu'
 import { CheckIcon, ChevronDownIcon, XIcon } from 'lucide-solid'
 import { For, Show, createSignal } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/menu.module.css'
 
 export const Filtering = () => {
@@ -26,7 +26,7 @@ export const Filtering = () => {
   }
 
   return (
-    <Menu.Root composite={false} onExitComplete={() => handleQueryChange('')}>
+    <Menu.Root popupType="dialog" onExitComplete={() => handleQueryChange('')}>
       <Menu.Trigger class={styles.Trigger}>
         Actions
         <Menu.Indicator class={styles.Indicator}>
@@ -34,7 +34,7 @@ export const Filtering = () => {
         </Menu.Indicator>
       </Menu.Trigger>
       <Portal>
-        <Menu.Positioner>
+        <Menu.Positioner class={styles.Positioner}>
           <Menu.Content class={styles.Content}>
             <div class={styles.InputControl}>
               <Menu.Input
@@ -46,11 +46,12 @@ export const Filtering = () => {
                 onInput={(event) => handleQueryChange(event.currentTarget.value)}
               />
               <Show when={query()}>
+                {/* biome-ignore lint/a11y/noAriaHiddenOnFocusable: tabindex -1 keeps it out of the tab order; Biome only reads camelCase tabIndex */}
                 <button
                   type="button"
                   class={styles.InputClear}
-                  tabIndex={-1}
-                  aria-hidden
+                  tabindex={-1}
+                  aria-hidden="true"
                   onClick={() => {
                     handleQueryChange('')
                     inputRef?.focus()

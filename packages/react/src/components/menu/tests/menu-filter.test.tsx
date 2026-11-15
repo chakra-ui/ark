@@ -27,7 +27,7 @@ const FilterMenu = (props: Menu.RootProps) => {
   }
 
   return (
-    <Menu.Root composite={false} onOpenChange={(details) => !details.open && handleQueryChange('')} {...rootProps}>
+    <Menu.Root popupType="dialog" onOpenChange={(details) => !details.open && handleQueryChange('')} {...rootProps}>
       <Menu.Trigger>Actions</Menu.Trigger>
       <Menu.Positioner>
         <Menu.Content>
@@ -94,7 +94,7 @@ describe('Menu / Filtering', () => {
     expect(input).toHaveAttribute('aria-activedescendant', getHighlighted()?.id)
 
     await user.keyboard('[Enter]')
-    expect(onSelect).toHaveBeenCalledWith({ value: 'save' })
+    expect(onSelect).toHaveBeenCalledWith(expect.objectContaining({ value: 'save' }))
   })
 
   it('should move between the input and the ends of the list', async () => {

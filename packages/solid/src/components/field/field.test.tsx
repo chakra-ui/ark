@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { createSignal } from 'solid-js'
+import { createSignal, flush } from 'solid-js'
 import { Field } from '@ark-ui/solid/field'
 
 const ComponentUnderTest = (props: Field.RootProps) => (
@@ -269,6 +269,7 @@ describe('Field / Item', () => {
     expect(screen.getByTestId('amount-input')).not.toHaveAttribute('aria-invalid')
 
     setInvalid(true)
+    flush()
 
     expect(screen.getByTestId('invalid')).toHaveTextContent('true')
     expect(screen.getByTestId('amount-input')).toHaveAttribute('aria-invalid', 'true')
@@ -282,5 +283,25 @@ describe('Field / Item', () => {
         </Field.Item>
       )),
     ).toThrow('Field.Item must be used within Field.Root')
+  })
+})
+
+describe('Field / ids', () => {
+  it('should give ids.root to the root and ids.control to the control', () => {
+    render(() => <ComponentUnderTest ids={{ root: 'custom-root', control: 'custom-control' }} />)
+    expect(screen.getByRole('textbox', { name: /label/i })).toHaveAttribute('id', 'custom-control')
+    expect(document.getElementById('custom-root')).toHaveAttribute('data-field-root')
+  })
+
+  it('should keep the label on the target item when ids.control is set', () => {
+    render(() => (
+      <Field.Root target="amount" ids={{ control: 'custom-control' }}>
+        <Field.Label>Amount</Field.Label>
+        <Field.Item value="amount">
+          <Field.Input />
+        </Field.Item>
+      </Field.Root>
+    ))
+    expect(screen.getByRole('textbox', { name: 'Amount' })).toHaveAttribute('id', 'field::custom-control::item::amount')
   })
 })

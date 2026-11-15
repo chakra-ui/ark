@@ -1,6 +1,6 @@
 import { TagsInput } from '@ark-ui/solid/tags-input'
 import { XIcon } from 'lucide-solid'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import styles from 'styles/tags-input.module.css'
 
 export const Invalid = () => {
@@ -11,7 +11,7 @@ export const Invalid = () => {
           <>
             <TagsInput.Label class={styles.Label}>Frameworks</TagsInput.Label>
             <TagsInput.Control class={styles.Control}>
-              <Index each={api().value}>
+              <For each={api().value} keyed={false}>
                 {(value, index) => (
                   <TagsInput.Item index={index} value={value()} class={styles.Item}>
                     <TagsInput.ItemPreview class={styles.ItemPreview}>
@@ -23,7 +23,7 @@ export const Invalid = () => {
                     <TagsInput.ItemInput class={styles.ItemInput} />
                   </TagsInput.Item>
                 )}
-              </Index>
+              </For>
               <TagsInput.Input placeholder="Add Framework" class={styles.Input} />
               <TagsInput.ClearTrigger class={styles.ClearTrigger}>
                 <XIcon />

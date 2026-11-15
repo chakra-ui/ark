@@ -63,7 +63,7 @@ watchEffect(() => {
     </Combobox.Control>
 
     <Teleport to="body">
-      <Combobox.Positioner>
+      <Combobox.Positioner :class="styles.Positioner">
         <Combobox.Content :class="styles.Content">
           <Combobox.List :class="styles.List">
             <span v-if="state.loading.value" style="padding: 0.5rem">Loading...</span>

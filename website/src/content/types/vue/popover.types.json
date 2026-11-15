@@ -78,6 +78,11 @@
         "isRequired": true,
         "description": "Function called when the escape key is pressed"
       },
+      "enterComplete": {
+        "type": "[]",
+        "isRequired": true,
+        "description": "Function called when the animation ends in the open state"
+      },
       "exitComplete": {
         "type": "[]",
         "isRequired": true,

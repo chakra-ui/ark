@@ -1,8 +1,8 @@
 import { DatePicker } from '@ark-ui/solid/date-picker'
 import { CalendarDate, type DateValue } from '@internationalized/date'
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-solid'
-import { Index } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { For } from 'solid-js'
+import { Portal } from '@solidjs/web'
 import button from 'styles/button.module.css'
 import styles from 'styles/date-picker.module.css'
 
@@ -39,7 +39,7 @@ export const YearPickerRange = () => {
         <DatePicker.ClearTrigger class={button.Root}>Clear</DatePicker.ClearTrigger>
       </DatePicker.Control>
       <Portal>
-        <DatePicker.Positioner>
+        <DatePicker.Positioner class={styles.Positioner}>
           <DatePicker.Content class={styles.Content}>
             <DatePicker.View view="year" class={styles.View}>
               <DatePicker.Context>
@@ -58,10 +58,10 @@ export const YearPickerRange = () => {
                     </DatePicker.ViewControl>
                     <DatePicker.Table class={styles.Table}>
                       <DatePicker.TableBody class={styles.TableBody}>
-                        <Index each={context().getYearsGrid({ columns: 4 })}>
+                        <For each={context().getYearsGrid({ columns: 4 })} keyed={false}>
                           {(years) => (
                             <DatePicker.TableRow class={styles.TableRow}>
-                              <Index each={years()}>
+                              <For each={years()} keyed={false}>
                                 {(year) => (
                                   <DatePicker.TableCell class={styles.TableCell} value={year().value}>
                                     <DatePicker.TableCellTrigger class={styles.YearTableCellTrigger}>
@@ -69,10 +69,10 @@ export const YearPickerRange = () => {
                                     </DatePicker.TableCellTrigger>
                                   </DatePicker.TableCell>
                                 )}
-                              </Index>
+                              </For>
                             </DatePicker.TableRow>
                           )}
-                        </Index>
+                        </For>
                       </DatePicker.TableBody>
                     </DatePicker.Table>
                   </>

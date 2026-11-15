@@ -1,6 +1,6 @@
 import { DatePicker } from '@ark-ui/solid/date-picker'
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-solid'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import styles from 'styles/date-picker.module.css'
 
 export const MaxSelectedDates = () => {
@@ -22,18 +22,18 @@ export const MaxSelectedDates = () => {
               <DatePicker.Table class={styles.Table}>
                 <DatePicker.TableHead class={styles.TableHead}>
                   <DatePicker.TableRow class={styles.TableRow}>
-                    <Index each={context().weekDays}>
+                    <For each={context().weekDays} keyed={false}>
                       {(weekDay) => (
                         <DatePicker.TableHeader class={styles.TableHeader}>{weekDay().short}</DatePicker.TableHeader>
                       )}
-                    </Index>
+                    </For>
                   </DatePicker.TableRow>
                 </DatePicker.TableHead>
                 <DatePicker.TableBody class={styles.TableBody}>
-                  <Index each={context().weeks}>
+                  <For each={context().weeks} keyed={false}>
                     {(week) => (
                       <DatePicker.TableRow class={styles.TableRow}>
-                        <Index each={week()}>
+                        <For each={week()} keyed={false}>
                           {(day) => (
                             <DatePicker.TableCell class={styles.TableCell} value={day()}>
                               <DatePicker.TableCellTrigger class={styles.TableCellTrigger}>
@@ -41,10 +41,10 @@ export const MaxSelectedDates = () => {
                               </DatePicker.TableCellTrigger>
                             </DatePicker.TableCell>
                           )}
-                        </Index>
+                        </For>
                       </DatePicker.TableRow>
                     )}
-                  </Index>
+                  </For>
                 </DatePicker.TableBody>
               </DatePicker.Table>
             </>

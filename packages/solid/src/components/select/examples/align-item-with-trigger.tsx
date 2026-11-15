@@ -1,6 +1,6 @@
 import { Select, createListCollection } from '@ark-ui/solid/select'
 import { ChevronDownIcon, ChevronUpIcon, ChevronsUpDownIcon } from 'lucide-solid'
-import { Index, Portal } from 'solid-js/web'
+import { For, Portal } from '@solidjs/web'
 import styles from 'styles/select.module.css'
 
 const frameworks = createListCollection({
@@ -30,20 +30,20 @@ export const AlignItemWithTrigger = () => {
         </Select.Trigger>
       </Select.Control>
       <Portal>
-        <Select.Positioner>
+        <Select.Positioner class={styles.Positioner}>
           <Select.Content class={styles.Content}>
             <Select.ScrollArrow class={styles.ScrollArrow} placement="top">
               <ChevronUpIcon />
             </Select.ScrollArrow>
             <Select.List class={styles.List}>
-              <Index each={frameworks.items}>
+              <For each={frameworks.items} keyed={false}>
                 {(item) => (
                   <Select.Item class={styles.Item} item={item()}>
                     <Select.ItemText class={styles.ItemText}>{item().label}</Select.ItemText>
                     <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
                   </Select.Item>
                 )}
-              </Index>
+              </For>
             </Select.List>
             <Select.ScrollArrow class={styles.ScrollArrow} placement="bottom">
               <ChevronDownIcon />

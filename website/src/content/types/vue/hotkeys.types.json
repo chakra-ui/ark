@@ -34,7 +34,7 @@
   "useHotkey": {
     "props": {
       "props": {
-        "type": "MaybeRef<UseHotkeyProps>",
+        "type": "MaybeRefOrGetter<UseHotkeyProps>",
         "isRequired": true,
         "description": "One command, plus an optional store. Takes every field of UseHotkeysCommand."
       }
@@ -45,7 +45,7 @@
       "commands": {
         "type": "UseHotkeysCommand[]",
         "isRequired": true,
-        "description": "The commands to register. Passed inside a single object, so the whole argument is MaybeRef<{ commands, store, id }>."
+        "description": "The commands to register. Passed inside a single object, so the whole argument is MaybeRefOrGetter<{ commands, store, id }>."
       },
       "store": {
         "type": "HotkeyStore",
@@ -206,7 +206,7 @@
       "hotkey": {
         "type": "string",
         "isRequired": true,
-        "description": "The key or combination to watch. Passed inside a single object, so the whole argument is MaybeRef<{ hotkey, store }>."
+        "description": "The key or combination to watch. Passed inside a single object, so the whole argument is MaybeRefOrGetter<{ hotkey, store }>."
       },
       "store": {
         "type": "HotkeyStore",
@@ -241,7 +241,7 @@
   "useHotkeyRecorder": {
     "props": {
       "props": {
-        "type": "MaybeRef<UseHotkeyRecorderProps>",
+        "type": "MaybeRefOrGetter<UseHotkeyRecorderProps>",
         "isRequired": false,
         "description": "Accepts onRecord, onCancel, onClear, formatOptions and sequenceTimeoutMs."
       },

@@ -12,31 +12,36 @@ const meta = {
 export default meta
 
 export const Basic = {
-  render: () => ({
+  render: (args: Record<string, unknown>) => ({
     Component: BasicExample,
+    props: args,
   }),
 }
 
 export const LazyMount = {
-  render: () => ({
+  render: (args: Record<string, unknown>) => ({
     Component: LazyMountExample,
+    props: args,
   }),
 }
 
 export const UnmountOnExit = {
-  render: () => ({
+  render: (args: Record<string, unknown>) => ({
     Component: UnmountOnExitExample,
+    props: args,
   }),
 }
 
 export const LazyMountAndUnmountOnExit = {
-  render: () => ({
+  render: (args: Record<string, unknown>) => ({
     Component: LazyMountAndUnmountOnExitExample,
+    props: args,
   }),
 }
 
 export const SkipAnimationOnMount = {
-  render: () => ({
+  render: (args: Record<string, unknown>) => ({
     Component: SkipAnimationOnMountExample,
+    props: args,
   }),
 }

@@ -69,3 +69,22 @@ describe('svelte pin-input-count', () => {
     expect(result.skipped[0]).toContain('count is now required')
   })
 })
+
+describe('svelte aliased components', () => {
+  it('renames on a component imported under an alias', () => {
+    const result = carousel(
+      `<script>import { Carousel as StyledCarousel } from '@ark-ui/svelte/carousel'</script>\n<StyledCarousel.Root slideCount={5}>x</StyledCarousel.Root>`,
+      'a.svelte',
+    )
+    expect(result.count).toBe(1)
+    expect(result.code).toContain('<StyledCarousel.Root count={5}>')
+  })
+
+  it('leaves an aliased non-matching component alone', () => {
+    const result = carousel(
+      `<script>import { Tabs as Carousel } from '@ark-ui/svelte/tabs'</script>\n<Carousel.Root slideCount={5}>x</Carousel.Root>`,
+      'a.svelte',
+    )
+    expect(result.code).toBeNull()
+  })
+})

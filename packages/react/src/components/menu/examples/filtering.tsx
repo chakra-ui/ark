@@ -26,7 +26,7 @@ export const Filtering = () => {
   }
 
   return (
-    <Menu.Root composite={false} onExitComplete={() => handleQueryChange('')}>
+    <Menu.Root popupType="dialog" onExitComplete={() => handleQueryChange('')}>
       <Menu.Trigger className={styles.Trigger}>
         Actions
         <Menu.Indicator className={styles.Indicator}>
@@ -34,7 +34,7 @@ export const Filtering = () => {
         </Menu.Indicator>
       </Menu.Trigger>
       <Portal>
-        <Menu.Positioner>
+        <Menu.Positioner className={styles.Positioner}>
           <Menu.Content className={styles.Content}>
             <div className={styles.InputControl}>
               <Menu.Input

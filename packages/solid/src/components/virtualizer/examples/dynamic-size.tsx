@@ -1,5 +1,5 @@
 import { ListVirtualizer, useListVirtualizer } from '@ark-ui/solid/virtualizer'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import styles from 'styles/virtualizer.module.css'
 
 const items = Array.from({ length: 10000 }, (_, index) => ({
@@ -17,7 +17,7 @@ export const DynamicSize = () => {
   return (
     <ListVirtualizer.Root value={virtualizer} class={styles.Root}>
       <ListVirtualizer.Content>
-        <Index each={virtualizer.getVirtualItems()}>
+        <For each={virtualizer.getVirtualItems()} keyed={false}>
           {(item) => (
             <ListVirtualizer.Item
               item={item()}
@@ -25,10 +25,12 @@ export const DynamicSize = () => {
               class={`${styles.ItemDynamic} ${item().index % 2 ? styles.ItemAlt : ''}`}
             >
               <strong>{items[item().index].title}</strong>
-              <Index each={items[item().index].lines}>{(line) => <p>{line()}</p>}</Index>
+              <For each={items[item().index].lines} keyed={false}>
+                {(line) => <p>{line()}</p>}
+              </For>
             </ListVirtualizer.Item>
           )}
-        </Index>
+        </For>
       </ListVirtualizer.Content>
     </ListVirtualizer.Root>
   )

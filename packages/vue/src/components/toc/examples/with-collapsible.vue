@@ -4,7 +4,7 @@ import { Collapsible } from '@ark-ui/vue/collapsible'
 import { Toc } from '@ark-ui/vue/toc'
 import { ChevronRight } from 'lucide-vue-next'
 import styles from 'styles/toc.module.css'
-import collapsibleStyles from 'styles/Collapsible.module.css'
+import collapsibleStyles from 'styles/collapsible.module.css'
 
 const items = [
   { value: '04-introduction', depth: 2, label: 'Introduction', lines: 12 },

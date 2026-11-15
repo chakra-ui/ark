@@ -1,7 +1,7 @@
 import { Node, SyntaxKind } from 'ts-morph'
 import type { JsxOpeningElement, JsxSelfClosingElement } from 'ts-morph'
 import type { TransformOptions, TransformResult } from '../../types.ts'
-import { arkLocalNames, isTrackedJsx } from '../../utils/ark-imports.ts'
+import { arkLocalNames, getJsxBaseName, jsxTagArkOrigins } from '../../utils/ark-imports.ts'
 import { createTransformSourceFile } from '../../utils/ts-project.ts'
 
 type JsxOpening = JsxOpeningElement | JsxSelfClosingElement
@@ -35,12 +35,23 @@ export function makeRenameTransform(config: RenameConfig) {
       ...sf.getDescendantsOfKind(SyntaxKind.JsxSelfClosingElement),
     ]
 
+    const originsByTag = new Map<string, Set<string>>()
+    const originsOf = (tag: string) => {
+      let origins = originsByTag.get(tag)
+      if (!origins) {
+        origins = new Set([...jsxTagArkOrigins(sf, tag, options)].map((n) => n.toLowerCase()))
+        originsByTag.set(tag, origins)
+      }
+      return origins
+    }
+
     for (const opening of openings) {
-      if (!isTrackedJsx(opening, arkNames)) continue
-      const tag = opening.getTagNameNode().getText()
+      const tagNode = opening.getTagNameNode()
+      if (!arkNames.has(getJsxBaseName(tagNode))) continue
+      const tag = tagNode.getText()
 
       for (const rule of config.rules) {
-        if (!matchesPart(tag, rule.component, rule.part)) continue
+        if (!matchesPart(tag, rule.component, rule.part, originsOf(tag))) continue
         count += applyRule(opening, rule, skipped)
       }
     }
@@ -49,10 +60,11 @@ export function makeRenameTransform(config: RenameConfig) {
   }
 }
 
-function matchesPart(tag: string, component: string, part: string): boolean {
+function matchesPart(tag: string, component: string, part: string, origins: Set<string>): boolean {
   const segs = tag.split('.')
+  if (segs.length === 1) return origins.has(`${component}${part}`.toLowerCase())
   if (segs.length !== 2) return false
-  return segs[1] === part && segs[0].toLowerCase() === component.toLowerCase()
+  return segs[1] === part && origins.has(component.toLowerCase())
 }
 
 function applyRule(opening: JsxOpening, rule: PropRule, skipped: string[]): number {

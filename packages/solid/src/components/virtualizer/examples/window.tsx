@@ -1,5 +1,5 @@
 import { WindowVirtualizer, useWindowVirtualizer } from '@ark-ui/solid/virtualizer'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import styles from 'styles/virtualizer.module.css'
 
 const items = Array.from({ length: 10000 }, (_, index) => `Item ${index + 1}`)
@@ -13,13 +13,13 @@ export const Window = () => {
   return (
     <WindowVirtualizer.Root value={virtualizer} class={styles.Window}>
       <WindowVirtualizer.Content>
-        <Index each={virtualizer.getVirtualItems()}>
+        <For each={virtualizer.getVirtualItems()} keyed={false}>
           {(item) => (
             <WindowVirtualizer.Item item={item()} class={`${styles.Item} ${item().index % 2 ? styles.ItemAlt : ''}`}>
               {items[item().index]}
             </WindowVirtualizer.Item>
           )}
-        </Index>
+        </For>
       </WindowVirtualizer.Content>
     </WindowVirtualizer.Root>
   )

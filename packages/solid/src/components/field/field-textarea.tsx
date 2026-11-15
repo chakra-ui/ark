@@ -1,6 +1,7 @@
 import { autoresizeTextarea } from '@zag-js/auto-resize'
 import { mergeProps } from '@zag-js/solid'
-import { onCleanup, onMount, splitProps } from 'solid-js'
+import { onSettled } from 'solid-js'
+import { splitProps } from '../../utils/split-props.ts'
 import { composeRefs } from '../../utils/compose-refs.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useFieldContext } from './use-field-context.ts'
@@ -25,10 +26,9 @@ export const FieldTextarea = (props: FieldTextareaProps) => {
     textareaProps,
   )
 
-  onMount(() => {
+  onSettled(() => {
     if (!autoresizeProps.autoresize) return
-    const cleanup = autoresizeTextarea(textareaRef)
-    onCleanup(() => cleanup?.())
+    return autoresizeTextarea(textareaRef)
   })
 
   return <ark.textarea {...mergedProps} ref={composeRefs((el) => (textareaRef = el), props.ref)} />

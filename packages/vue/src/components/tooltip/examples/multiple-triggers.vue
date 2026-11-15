@@ -30,7 +30,7 @@ const activeTool = computed(() => tools.find((t) => t.id === triggerValue.value)
       </Tooltip.Trigger>
     </div>
     <Teleport to="body">
-      <Tooltip.Positioner>
+      <Tooltip.Positioner :class="styles.Positioner">
         <Tooltip.Content :class="styles.Content">
           <template v-if="activeTool">
             {{ activeTool.label }}

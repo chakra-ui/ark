@@ -1,5 +1,5 @@
 import { Popover } from '@ark-ui/solid/popover'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import button from 'styles/button.module.css'
 import styles from 'styles/popover.module.css'
 

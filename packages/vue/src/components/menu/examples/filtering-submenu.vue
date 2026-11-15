@@ -51,7 +51,7 @@ const isEmpty = computed(() => actionList.collection.value.size === 0 && !showMo
 </script>
 
 <template>
-  <Menu.Root :composite="false" @exit-complete="handleQueryChange('')">
+  <Menu.Root popupType="dialog" @exit-complete="handleQueryChange('')">
     <Menu.Trigger :class="styles.Trigger">
       File
       <Menu.Indicator :class="styles.Indicator">
@@ -59,7 +59,7 @@ const isEmpty = computed(() => actionList.collection.value.size === 0 && !showMo
       </Menu.Indicator>
     </Menu.Trigger>
     <Teleport to="body">
-      <Menu.Positioner>
+      <Menu.Positioner :class="styles.Positioner">
         <Menu.Content :class="styles.Content">
           <Menu.Input
             :class="styles.Input"
@@ -78,10 +78,10 @@ const isEmpty = computed(() => actionList.collection.value.size === 0 && !showMo
             >
               {{ item.label }}
             </Menu.Item>
-            <Menu.Root v-if="showMoveTo" :composite="false" @exit-complete="handleFolderQueryChange('')">
+            <Menu.Root v-if="showMoveTo" popupType="dialog" @exit-complete="handleFolderQueryChange('')">
               <Menu.TriggerItem :class="styles.TriggerItem">Move to folder</Menu.TriggerItem>
               <Teleport to="body">
-                <Menu.Positioner>
+                <Menu.Positioner :class="styles.Positioner">
                   <Menu.Content :class="styles.Content">
                     <Menu.Input
                       :class="styles.Input"
@@ -108,7 +108,7 @@ const isEmpty = computed(() => actionList.collection.value.size === 0 && !showMo
             <Menu.Root v-if="showShare">
               <Menu.TriggerItem :class="styles.TriggerItem">Share</Menu.TriggerItem>
               <Teleport to="body">
-                <Menu.Positioner>
+                <Menu.Positioner :class="styles.Positioner">
                   <Menu.Content :class="styles.Content">
                     <Menu.Item
                       v-for="option in sharingOptions"

@@ -15,7 +15,7 @@ const sortBy = ref('date')
         <ChevronDownIcon />
       </Menu.Indicator>
     </Menu.Trigger>
-    <Menu.Positioner>
+    <Menu.Positioner :class="styles.Positioner">
       <Menu.Content :class="styles.Content">
         <Menu.RadioItemGroup :class="styles.ItemGroup" v-model="sortBy">
           <Menu.ItemGroupLabel :class="styles.ItemGroupLabel">Sort By</Menu.ItemGroupLabel>

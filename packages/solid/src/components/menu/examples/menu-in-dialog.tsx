@@ -1,7 +1,7 @@
 import { Dialog } from '@ark-ui/solid/dialog'
 import { Menu } from '@ark-ui/solid/menu'
 import { ChevronDownIcon, XIcon } from 'lucide-solid'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import button from 'styles/button.module.css'
 import dialog from 'styles/dialog.module.css'
 import styles from 'styles/menu.module.css'
@@ -27,7 +27,7 @@ export const MenuInDialog = () => (
                 </Menu.Indicator>
               </Menu.Trigger>
               <Portal>
-                <Menu.Positioner>
+                <Menu.Positioner class={styles.Positioner}>
                   <Menu.Content class={styles.Content}>
                     <Menu.Arrow class={styles.Arrow}>
                       <Menu.ArrowTip class={styles.ArrowTip} />

@@ -15,7 +15,7 @@ export const Presence = (props: PresenceProps) => {
 
   return (
     <Show when={!api().unmounted}>
-      <ark.div {...mergedProps} ref={composeRefs(api().ref, props.ref)} data-presence-root="" />
+      <ark.div {...mergedProps} ref={composeRefs((el) => api().ref(el), props.ref)} data-presence-root="" />
     </Show>
   )
 }

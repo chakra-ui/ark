@@ -1,7 +1,7 @@
 import { type CollectionItem, Listbox, createListCollection } from '@ark-ui/solid/listbox'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import { axe } from 'vitest-axe'
 
 const ComponentUnderTest = (props: Omit<Listbox.RootProps<CollectionItem>, 'collection'>) => {
@@ -23,14 +23,14 @@ const ComponentUnderTest = (props: Omit<Listbox.RootProps<CollectionItem>, 'coll
         <Listbox.List>
           <Listbox.ItemGroup>
             <Listbox.ItemGroupLabel>JS Frameworks</Listbox.ItemGroupLabel>
-            <Index each={collection.items}>
+            <For each={collection.items} keyed={false}>
               {(item) => (
                 <Listbox.Item item={item()}>
                   <Listbox.ItemText>{item().label}</Listbox.ItemText>
                   <Listbox.ItemIndicator />
                 </Listbox.Item>
               )}
-            </Index>
+            </For>
           </Listbox.ItemGroup>
         </Listbox.List>
       </Listbox.Content>
@@ -96,7 +96,7 @@ describe('Listbox', () => {
     render(() => (
       <Listbox.Root collection={collection}>
         <Listbox.Content>
-          <Index each={collection.items}>
+          <For each={collection.items} keyed={false}>
             {(item) => (
               <Listbox.Item item={item()}>
                 <Listbox.ItemText>{item().label}</Listbox.ItemText>
@@ -109,7 +109,7 @@ describe('Listbox', () => {
                 </Listbox.ItemContext>
               </Listbox.Item>
             )}
-          </Index>
+          </For>
         </Listbox.Content>
       </Listbox.Root>
     ))

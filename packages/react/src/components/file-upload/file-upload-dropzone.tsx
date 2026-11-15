@@ -5,6 +5,7 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useFieldContext } from '../field/use-field-context.ts'
 import { useFileUploadContext } from './use-file-upload-context.ts'
 
 export interface FileUploadDropzoneState extends DropzoneState {}
@@ -18,8 +19,16 @@ export const FileUploadDropzone = forwardRef<HTMLDivElement, FileUploadDropzoneP
   const [dropzoneProps, localProps] = splitDropzoneProps(props, ['disableClick'])
   const fileUpload = useFileUploadContext()
   const mergedProps = mergeProps(fileUpload.getDropzoneProps(dropzoneProps), localProps)
+  const field = useFieldContext()
 
-  return <ark.div {...mergedProps} ref={ref} state={fileUpload.getDropzoneState()} />
+  return (
+    <ark.div
+      aria-describedby={field?.ariaDescribedby}
+      {...mergedProps}
+      ref={ref}
+      state={fileUpload.getDropzoneState()}
+    />
+  )
 })
 
 FileUploadDropzone.displayName = 'FileUploadDropzone'

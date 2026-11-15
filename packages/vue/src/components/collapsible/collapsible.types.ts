@@ -19,6 +19,11 @@ export interface RootProps {
    */
   disabled?: boolean
   /**
+   * Whether the closed content stays searchable with the browser's find-in-page.
+   * Uses `hidden="until-found"`, and opens the collapsible when a match is found inside it.
+   */
+  hiddenUntilFound?: boolean
+  /**
    * The unique identifier of the machine.
    */
   id?: string

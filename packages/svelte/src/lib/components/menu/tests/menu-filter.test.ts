@@ -45,7 +45,7 @@ describe('Menu / Filtering', () => {
     expect(input).toHaveAttribute('aria-activedescendant', getHighlighted()?.id)
 
     await user.keyboard('[Enter]')
-    expect(onSelect).toHaveBeenCalledWith({ value: 'save' })
+    expect(onSelect).toHaveBeenCalledWith(expect.objectContaining({ value: 'save' }))
   })
 
   it('should move between the input and the ends of the list', async () => {

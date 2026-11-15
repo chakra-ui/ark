@@ -1,6 +1,6 @@
 import * as zagSwitch from '@zag-js/switch'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -11,7 +11,7 @@ export interface UseSwitchProps extends Optional<Omit<zagSwitch.Props, 'dir' | '
 
 export interface UseSwitchReturn extends ComputedRef<zagSwitch.Api<PropTypes>> {}
 
-export const useSwitch = (props: MaybeRef<UseSwitchProps> = {}, emit?: EmitFn<RootEmits>): UseSwitchReturn => {
+export const useSwitch = (props: MaybeRefOrGetter<UseSwitchProps> = {}, emit?: EmitFn<RootEmits>): UseSwitchReturn => {
   const id = useId()
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const locale = useLocaleContext(DEFAULT_LOCALE)

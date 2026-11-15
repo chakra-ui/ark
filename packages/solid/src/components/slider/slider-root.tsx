@@ -13,8 +13,8 @@ export interface SliderRootProps extends Assign<HTMLProps<'div'>, SliderRootBase
 
 export const SliderRoot = (props: SliderRootProps) => {
   const [useSliderProps, localProps] = createSplitProps<UseSliderProps>()(props, [
-    'aria-label',
-    'aria-labelledby',
+    'getAriaLabel',
+    'getAriaLabelledBy',
     'defaultValue',
     'disabled',
     'form',

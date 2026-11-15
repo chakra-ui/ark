@@ -27,7 +27,7 @@ export const TourSpotlight = (props: TourSpotlightProps) => {
       <ark.div
         {...mergedProps}
         hidden={mergedProps.hidden || !tour().step?.target?.()}
-        ref={composeRefs(presenceApi().ref, props.ref)}
+        ref={composeRefs((el) => presenceApi().ref(el), props.ref)}
         state={tour().getSpotlightState()}
       />
     </Show>

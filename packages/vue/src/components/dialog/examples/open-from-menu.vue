@@ -18,7 +18,7 @@ const open = ref(false)
       </Menu.Indicator>
     </Menu.Trigger>
     <Teleport to="body">
-      <Menu.Positioner>
+      <Menu.Positioner :class="menu.Positioner">
         <Menu.Content :class="menu.Content">
           <Menu.Item :class="menu.Item" value="edit">Edit</Menu.Item>
           <Menu.Item :class="menu.Item" value="duplicate">Duplicate</Menu.Item>

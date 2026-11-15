@@ -1,7 +1,7 @@
 import { Dialog } from '@ark-ui/solid/dialog'
 import { Tooltip } from '@ark-ui/solid/tooltip'
 import { XIcon } from 'lucide-solid'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import button from 'styles/button.module.css'
 import styles from 'styles/dialog.module.css'
 import tooltipStyles from 'styles/tooltip.module.css'
@@ -13,7 +13,7 @@ export const WithDialog = () => (
         Open Dialog
       </Tooltip.Trigger>
       <Portal>
-        <Tooltip.Positioner>
+        <Tooltip.Positioner class={tooltipStyles.Positioner}>
           <Tooltip.Content class={tooltipStyles.Content}>Opens a sign-in dialog</Tooltip.Content>
         </Tooltip.Positioner>
       </Portal>

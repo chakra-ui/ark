@@ -24,7 +24,11 @@ export const DrawerBackdrop = (props: DrawerBackdropProps) => {
 
   return (
     <Show when={!presence().unmounted}>
-      <ark.div {...mergedProps} ref={composeRefs(presence().ref, props.ref)} state={drawer().getBackdropState()} />
+      <ark.div
+        {...mergedProps}
+        ref={composeRefs((el) => presence().ref(el), props.ref)}
+        state={drawer().getBackdropState()}
+      />
     </Show>
   )
 }

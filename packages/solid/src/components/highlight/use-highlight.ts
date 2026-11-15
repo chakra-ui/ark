@@ -7,7 +7,8 @@ import { runIfFn } from '../../utils/run-if-fn.ts'
 export interface UseHighlightProps extends HighlightWordProps {}
 
 export const useHighlight = (props: MaybeAccessor<UseHighlightProps>): Accessor<HighlightChunk[]> => {
-  return createMemo(() => highlightWord(runIfFn(props)))
+  // highlightWord fills in defaults by writing to its props, so it gets a plain copy
+  return createMemo(() => highlightWord({ ...runIfFn(props) }))
 }
 
 export type { HighlightChunk }

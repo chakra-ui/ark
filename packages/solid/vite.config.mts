@@ -1,5 +1,5 @@
 import { resolve } from 'node:path'
-import solid from 'vite-plugin-solid'
+import solid from '@solidjs/vite-plugin'
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
@@ -17,6 +17,7 @@ export default defineConfig({
     conditions: ['source'],
     alias: {
       styles: resolve(__dirname, '../../.storybook/modules'),
+      'lucide-solid': resolve(__dirname, 'shims/lucide-solid.tsx'),
     },
   },
 })

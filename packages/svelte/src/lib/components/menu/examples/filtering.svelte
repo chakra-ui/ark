@@ -48,7 +48,7 @@
   }
 </script>
 
-<Menu.Root composite={false} onExitComplete={() => handleQueryChange('')}>
+<Menu.Root popupType="dialog" onExitComplete={() => handleQueryChange('')}>
   <Menu.Trigger class={styles.Trigger}>
     Actions
     <Menu.Indicator class={styles.Indicator}>
@@ -56,7 +56,7 @@
     </Menu.Indicator>
   </Menu.Trigger>
   <Portal>
-    <Menu.Positioner>
+    <Menu.Positioner class={styles.Positioner}>
       <Menu.Content class={styles.Content}>
         <div class={styles.InputControl}>
           <Menu.Input
