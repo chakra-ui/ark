@@ -20,7 +20,7 @@ export const RangeSelection = () => {
         Last 7 days
       </DatePicker.PresetTrigger>
       <Portal>
-        <DatePicker.Positioner>
+        <DatePicker.Positioner className={styles.Positioner}>
           <DatePicker.Content className={styles.Content}>
             <DatePicker.View view="day" className={styles.View}>
               <DatePicker.Context>

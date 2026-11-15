@@ -108,14 +108,13 @@ Converting values to numbers can cause issues with locale-specific formatting, p
 different decimal and thousands separators (e.g., `1.523,30` vs `1,523.30`). By keeping values as strings, you preserve
 the correct formatting and avoid parsing issues.
 
-If you need to submit a numeric value in your form, use a hidden input that reads `valueAsNumber` from
-`NumberInput.Context`:
+If you need to submit a numeric value in your form, use a hidden input that reads `value` from `NumberInput.Context`:
 
 ```tsx
 <NumberInput.Root value={value} onValueChange={(details) => setValue(details.value)}>
   <NumberInput.Input />
   <NumberInput.Context>
-    {(context) => <input type="hidden" name="amount" value={context.valueAsNumber} />}
+    {(context) => <input type="hidden" name="amount" value={context.value ?? ''} />}
   </NumberInput.Context>
 </NumberInput.Root>
 ```

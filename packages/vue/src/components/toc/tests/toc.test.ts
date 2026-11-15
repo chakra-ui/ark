@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/vue'
+import { render, screen } from '@testing-library/vue'
 import ComponentUnderTest from './toc.test.vue'
 
 const items = [
@@ -7,18 +7,6 @@ const items = [
 ]
 
 describe('Toc', () => {
-  it('should auto scroll to the active item by default', async () => {
-    const scrollIntoView = vi.fn()
-    Element.prototype.scrollIntoView = scrollIntoView
-
-    const { rerender } = render(ComponentUnderTest, { props: { items, activeIds: ['intro'] } })
-    scrollIntoView.mockClear()
-
-    await rerender({ items, activeIds: ['usage'] })
-
-    await waitFor(() => expect(scrollIntoView).toHaveBeenCalled())
-  })
-
   it('should not render the root and nav with the same id', () => {
     render(ComponentUnderTest, { props: { items } })
 

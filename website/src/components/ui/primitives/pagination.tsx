@@ -37,6 +37,6 @@ export const NextTrigger = withContext<
 export const PrevTrigger = withContext<
   HTMLButtonElement,
   Assign<HTMLStyledProps<'button'>, Pagination.PrevTriggerBaseProps>
->(Pagination.PrevTrigger, 'prevTrigger')
+>(Pagination.PrevTrigger, 'previousTrigger')
 
 export const Context = Pagination.Context

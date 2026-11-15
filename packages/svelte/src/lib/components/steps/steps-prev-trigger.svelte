@@ -13,7 +13,7 @@
   let { ref = $bindable(null), ...props }: StepsPrevTriggerProps = $props()
 
   const steps = useStepsContext()
-  const mergedProps = $derived(mergeProps(steps().getPrevTriggerProps(), props))
+  const mergedProps = $derived(mergeProps(steps().getPreviousTriggerProps(), props))
 </script>
 
 <Ark as="button" bind:ref {...mergedProps} />

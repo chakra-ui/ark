@@ -26,14 +26,12 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 const props = withDefaults(defineProps<PinInputRootProps>(), {
   autoFocus: undefined,
   autoSubmit: undefined,
-  blurOnComplete: undefined,
   disabled: undefined,
   invalid: undefined,
   mask: undefined,
   otp: undefined,
   readOnly: undefined,
   required: undefined,
-  selectOnFocus: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
 defineSlots<PolymorphicSlots<PinInputRootState>>()

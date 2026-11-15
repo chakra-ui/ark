@@ -15,7 +15,7 @@ export const MultipleMonths = () => {
         </DatePicker.Trigger>
         <DatePicker.ClearTrigger class={button.Root}>Clear</DatePicker.ClearTrigger>
       </DatePicker.Control>
-      <DatePicker.Positioner>
+      <DatePicker.Positioner class={styles.Positioner}>
         <DatePicker.Content class={styles.Content}>
           <DatePicker.ViewControl class={styles.ViewControl}>
             <DatePicker.PrevTrigger class={styles.PrevTrigger}>

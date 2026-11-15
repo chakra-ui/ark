@@ -1,9 +1,9 @@
 <script lang="ts">
-import type { InputState } from '@zag-js/password-input'
+import type { RootState } from '@zag-js/password-input'
 import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
-export interface PasswordInputInputState extends InputState {}
+export interface PasswordInputInputState extends RootState {}
 export interface PasswordInputInputBaseProps extends PolymorphicProps {}
 export interface PasswordInputInputProps
   extends
@@ -33,7 +33,7 @@ useForwardExpose()
 <template>
   <ark.input
     v-bind="passwordInput.getInputProps()"
-    :state="passwordInput.getInputState()"
+    :state="passwordInput.getRootState()"
     :aria-describedby="field?.ariaDescribedby"
     :as-child="asChild"
   >

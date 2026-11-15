@@ -11,7 +11,7 @@ export const Positioning = () => (
   >
     <Tooltip.Trigger class={styles.Trigger}>Hover Me</Tooltip.Trigger>
     <Portal>
-      <Tooltip.Positioner>
+      <Tooltip.Positioner class={styles.Positioner}>
         <Tooltip.Content class={styles.Content}>I am a tooltip!</Tooltip.Content>
       </Tooltip.Positioner>
     </Portal>

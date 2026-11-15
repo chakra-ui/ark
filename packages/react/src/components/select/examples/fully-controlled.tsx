@@ -27,7 +27,7 @@ export const FullyControlled = () => {
         </div>
       </Select.Control>
       <Portal>
-        <Select.Positioner>
+        <Select.Positioner className={styles.Positioner}>
           <Select.Content className={styles.Content}>
             <Select.List className={styles.List}>
               <Select.ItemGroup className={styles.ItemGroup}>

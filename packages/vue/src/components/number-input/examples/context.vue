@@ -7,7 +7,7 @@ import styles from 'styles/number-input.module.css'
 <template>
   <NumberInput.Root :class="styles.Root">
     <NumberInput.Context v-slot="context">
-      <NumberInput.Label :class="styles.Label">Value: {{ context.valueAsNumber }}</NumberInput.Label>
+      <NumberInput.Label :class="styles.Label">Value: {{ context.value }}</NumberInput.Label>
     </NumberInput.Context>
     <NumberInput.Control :class="styles.Control">
       <NumberInput.Input :class="styles.Input" />

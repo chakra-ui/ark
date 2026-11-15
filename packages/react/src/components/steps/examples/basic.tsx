@@ -10,10 +10,10 @@ const items = [
 
 export const Basic = () => {
   return (
-    <Steps.Root className={styles.Root} count={items.length}>
+    <Steps.Root className={styles.Root} items={items}>
       <Steps.List className={styles.List}>
         {items.map((item, index) => (
-          <Steps.Item className={styles.Item} key={index} index={index}>
+          <Steps.Item className={styles.Item} key={item.value} value={item.value}>
             <Steps.Trigger className={styles.Trigger}>
               <Steps.Indicator className={styles.Indicator}>{index + 1}</Steps.Indicator>
               <span>{item.title}</span>
@@ -23,8 +23,8 @@ export const Basic = () => {
         ))}
       </Steps.List>
 
-      {items.map((item, index) => (
-        <Steps.Content className={styles.Content} key={index} index={index}>
+      {items.map((item) => (
+        <Steps.Content className={styles.Content} key={item.value} value={item.value}>
           {item.title} - {item.description}
         </Steps.Content>
       ))}

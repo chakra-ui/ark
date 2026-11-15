@@ -4,9 +4,9 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { usePinInputContext } from './use-pin-input-context.ts'
-import type { LabelState } from '@zag-js/pin-input'
+import type { RootState } from '@zag-js/pin-input'
 
-export interface PinInputLabelState extends LabelState {}
+export interface PinInputLabelState extends RootState {}
 
 export interface PinInputLabelBaseProps extends PolymorphicProps<PinInputLabelState> {}
 export interface PinInputLabelProps extends HTMLProps<'label'>, PinInputLabelBaseProps {}
@@ -15,7 +15,7 @@ export const PinInputLabel = forwardRef<HTMLLabelElement, PinInputLabelProps>((p
   const pinInput = usePinInputContext()
   const mergedProps = mergeProps(pinInput.getLabelProps(), props)
 
-  return <ark.label {...mergedProps} ref={ref} state={pinInput.getLabelState()} />
+  return <ark.label {...mergedProps} ref={ref} state={pinInput.getRootState()} />
 })
 
 PinInputLabel.displayName = 'PinInputLabel'

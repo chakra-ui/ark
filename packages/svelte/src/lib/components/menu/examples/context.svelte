@@ -5,7 +5,7 @@
 
 <Menu.Root>
   <Menu.ContextTrigger class={styles.ContextTrigger}>Right click here</Menu.ContextTrigger>
-  <Menu.Positioner>
+  <Menu.Positioner class={styles.Positioner}>
     <Menu.Content class={styles.Content}>
       <Menu.Item class={styles.Item} value="cut">Cut</Menu.Item>
       <Menu.Item class={styles.Item} value="copy">Copy</Menu.Item>

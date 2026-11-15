@@ -7,6 +7,10 @@ export interface RootProps {
    */
   defaultSize?: number[]
   /**
+   * Whether resizing is disabled for the whole splitter
+   */
+  disabled?: boolean
+  /**
    * The unique identifier of the machine.
    */
   id?: string

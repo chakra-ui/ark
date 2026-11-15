@@ -29,7 +29,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.a v-if="pagination.type === 'link'" v-bind="pagination.getPrevTriggerProps()" :as-child="asChild">
+  <ark.a v-if="pagination.type === 'link'" v-bind="pagination.getPreviousTriggerProps()" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>
@@ -37,7 +37,7 @@ useForwardExpose()
       <slot />
     </template>
   </ark.a>
-  <ark.button v-else v-bind="pagination.getPrevTriggerProps()" :as-child="asChild">
+  <ark.button v-else v-bind="pagination.getPreviousTriggerProps()" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

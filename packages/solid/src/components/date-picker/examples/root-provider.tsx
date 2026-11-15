@@ -22,7 +22,7 @@ export const RootProvider = () => {
           <DatePicker.ClearTrigger class={button.Root}>Clear</DatePicker.ClearTrigger>
         </DatePicker.Control>
         <Portal>
-          <DatePicker.Positioner>
+          <DatePicker.Positioner class={styles.Positioner}>
             <DatePicker.Content class={styles.Content}>
               <DatePicker.View view="day" class={styles.View}>
                 <DatePicker.Context>

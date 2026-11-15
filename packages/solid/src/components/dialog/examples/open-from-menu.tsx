@@ -19,7 +19,7 @@ export const OpenFromMenu = () => {
           </Menu.Indicator>
         </Menu.Trigger>
         <Portal>
-          <Menu.Positioner>
+          <Menu.Positioner class={menu.Positioner}>
             <Menu.Content class={menu.Content}>
               <Menu.Item class={menu.Item} value="edit">
                 Edit

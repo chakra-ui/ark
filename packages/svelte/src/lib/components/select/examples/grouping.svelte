@@ -32,7 +32,7 @@
     </div>
   </Select.Control>
   <Portal>
-    <Select.Positioner>
+    <Select.Positioner class={styles.Positioner}>
       <Select.Content class={styles.Content}>
         <Select.List class={styles.List}>
           {#each frameworks.group() as [type, group]}

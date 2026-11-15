@@ -24,7 +24,7 @@ const steps: TourStepDetails[] = [
     target: () => document.querySelector<HTMLElement>('#item-2'),
     actions: [
       { label: 'Skip', action: 'dismiss' },
-      { label: 'Back', action: 'prev' },
+      { label: 'Back', action: 'previous' },
       { label: 'Next', action: 'next' },
     ],
   },
@@ -35,7 +35,7 @@ const steps: TourStepDetails[] = [
     description: 'This is the last step of the tour.',
     target: () => document.querySelector<HTMLElement>('#item-3'),
     actions: [
-      { label: 'Back', action: 'prev' },
+      { label: 'Back', action: 'previous' },
       { label: 'Finish', action: 'dismiss' },
     ],
   },

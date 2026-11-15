@@ -16,7 +16,7 @@
   import { StepsItemPropsProvider } from './use-steps-item-props-context.ts'
 
   let { ref = $bindable(null), ...props }: StepsItemProps = $props()
-  const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['index']))
+  const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['value']))
 
   const steps = useStepsContext()
   const itemState = $derived(steps().getItemState(itemProps))

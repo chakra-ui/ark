@@ -26,7 +26,7 @@ const editItems = [
           <ChevronDownIcon />
         </Menu.Indicator>
       </Menu.Trigger>
-      <Menu.Positioner>
+      <Menu.Positioner :class="styles.Positioner">
         <Menu.Content :class="styles.Content">
           <Menu.Item v-for="item in fileItems" :key="item.value" :class="styles.Item" :value="item.value">
             {{ item.label }}
@@ -42,7 +42,7 @@ const editItems = [
           <ChevronDownIcon />
         </Menu.Indicator>
       </Menu.Trigger>
-      <Menu.Positioner>
+      <Menu.Positioner :class="styles.Positioner">
         <Menu.Content :class="styles.Content">
           <Menu.Item v-for="item in editItems" :key="item.value" :class="styles.Item" :value="item.value">
             {{ item.label }}

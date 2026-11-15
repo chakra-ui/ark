@@ -43,7 +43,7 @@ export const Overflow = () => (
       <Select.ClearTrigger class={styles.ClearTrigger}>Clear</Select.ClearTrigger>
     </Select.Control>
     <Portal>
-      <Select.Positioner>
+      <Select.Positioner class={styles.Positioner}>
         <Select.Content class={styles.Content} style={{ 'max-height': '200px' }}>
           <Select.List class={styles.List}>
             <Select.ItemGroup class={styles.ItemGroup}>

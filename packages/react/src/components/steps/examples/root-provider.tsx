@@ -9,16 +9,16 @@ const items = [
 ]
 
 export const RootProvider = () => {
-  const steps = useSteps({ count: items.length })
+  const steps = useSteps({ items })
 
   return (
     <div className="stack">
-      <output>current step: {steps.value + 1}</output>
+      <output>current step: {steps.index + 1}</output>
 
       <Steps.RootProvider className={styles.Root} value={steps}>
         <Steps.List className={styles.List}>
           {items.map((item, index) => (
-            <Steps.Item className={styles.Item} key={index} index={index}>
+            <Steps.Item className={styles.Item} key={item.value} value={item.value}>
               <Steps.Trigger className={styles.Trigger}>
                 <Steps.Indicator className={styles.Indicator}>{index + 1}</Steps.Indicator>
                 <span>{item.title}</span>
@@ -28,8 +28,8 @@ export const RootProvider = () => {
           ))}
         </Steps.List>
 
-        {items.map((item, index) => (
-          <Steps.Content className={styles.Content} key={index} index={index}>
+        {items.map((item) => (
+          <Steps.Content className={styles.Content} key={item.value} value={item.value}>
             {item.title} - {item.description}
           </Steps.Content>
         ))}

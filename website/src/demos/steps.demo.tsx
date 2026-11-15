@@ -13,13 +13,13 @@ const items = [
 
 export const Demo = () => {
   return (
-    <Steps.Root count={items.length} className={stack({ gap: '4', w: 'full' })}>
+    <Steps.Root items={items} className={stack({ gap: '4', w: 'full' })}>
       <Steps.List className={flex({ gap: '2', flex: '1', w: 'full' })}>
         {items.map((item, index) => (
           <Steps.Item
-            key={index}
+            key={item.value}
             data-last={index === items.length - 1 ? '' : undefined}
-            index={index}
+            value={item.value}
             className={hstack({ flex: '1', '&[data-last]': { flex: '0' } })}
           >
             <Steps.Trigger className={hstack()}>
@@ -55,8 +55,8 @@ export const Demo = () => {
         ))}
       </Steps.List>
 
-      {items.map((item, index) => (
-        <Steps.Content key={index} index={index}>
+      {items.map((item) => (
+        <Steps.Content key={item.value} value={item.value}>
           {item.title} - {item.description}
         </Steps.Content>
       ))}

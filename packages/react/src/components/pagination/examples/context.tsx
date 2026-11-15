@@ -11,7 +11,7 @@ export const Context = () => {
             <button className={styles.Trigger} onClick={() => pagination.goToFirstPage()}>
               <ChevronsLeftIcon />
             </button>
-            <button className={styles.Trigger} onClick={() => pagination.goToPrevPage()}>
+            <button className={styles.Trigger} onClick={() => pagination.goToPreviousPage()}>
               <ChevronLeftIcon />
             </button>
             <p className={styles.Text} style={{ minWidth: '120px', textAlign: 'center' }}>

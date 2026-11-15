@@ -17,7 +17,7 @@ import styles from 'styles/date-picker.module.css'
       <DatePicker.ClearTrigger :class="button.Root">Clear</DatePicker.ClearTrigger>
     </DatePicker.Control>
     <DatePicker.PresetTrigger value="last7Days" :class="styles.PresetTrigger">Last 7 days</DatePicker.PresetTrigger>
-    <DatePicker.Positioner>
+    <DatePicker.Positioner :class="styles.Positioner">
       <DatePicker.Content :class="styles.Content">
         <DatePicker.View view="day" :class="styles.View">
           <DatePicker.Context v-slot="api">
