@@ -12,6 +12,11 @@ export interface RootProps {
    */
   defaultOpen?: boolean
   /**
+   * The initial trigger value when rendered.
+   * Use when you don't need to control the trigger value.
+   */
+  defaultTriggerValue?: string | null
+  /**
    * Whether the hover card is disabled
    */
   disabled?: boolean
@@ -22,14 +27,14 @@ export interface RootProps {
   /**
    * The ids of the elements in the popover. Useful for composition.
    */
-  ids?: Partial<{ trigger: string; content: string; positioner: string; arrow: string }>
+  ids?: hoverCard.ElementIds
   /**
    * The controlled open state of the hover card
    */
   open?: boolean
   /**
    * The duration from when the mouse enters the trigger until the hover card opens.
-   * @default 700
+   * @default 600
    */
   openDelay?: number
   /**
@@ -37,25 +42,12 @@ export interface RootProps {
    */
   positioning?: hoverCard.PositioningOptions
   /**
-   * The value of the trigger that currently open the hover card
+   * The controlled trigger value
    */
   triggerValue?: string | null
-  /**
-   * The initial trigger value when rendered.
-   * Use when you don't need to control the trigger value.
-   */
-  defaultTriggerValue?: string | null
 }
 
 export type RootEmits = {
-  /**
-   * Function called when the animation ends in the open state
-   */
-  enterComplete: []
-  /**
-   * Function called when the animation ends in the closed state
-   */
-  exitComplete: []
   /**
    * Function called when the focus is moved outside the component
    */
@@ -73,9 +65,17 @@ export type RootEmits = {
    */
   pointerDownOutside: [event: hoverCard.PointerDownOutsideEvent]
   /**
-   * Function called when the trigger value changes
+   * Function called when the trigger value changes.
    */
   triggerValueChange: [details: hoverCard.TriggerValueChangeDetails]
+  /**
+   * Function called when the animation ends in the open state
+   */
+  enterComplete: []
+  /**
+   * Function called when the animation ends in the closed state
+   */
+  exitComplete: []
   /**
    * The callback fired when the open state changes.
    */

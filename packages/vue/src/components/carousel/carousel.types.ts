@@ -17,6 +17,11 @@ export interface RootProps {
    */
   autoSize?: boolean
   /**
+   * The total number of slides.
+   * Useful for SSR to render the initial snap points.
+   */
+  count: number
+  /**
    * The initial page to scroll to when rendered.
    * Use when you don't need to control the page of the carousel.
    * @default 0
@@ -29,20 +34,17 @@ export interface RootProps {
   /**
    * The ids of the elements in the carousel. Useful for composition.
    */
-  ids?: Partial<{
-    root: string
-    item(index: number): string
-    itemGroup: string
-    nextTrigger: string
-    prevTrigger: string
-    indicatorGroup: string
-    indicator(index: number): string
-  }>
+  ids?: carousel.ElementIds
   /**
    * The threshold for determining if an item is in view.
    * @default 0.6
    */
   inViewThreshold?: number | number[]
+  /**
+   * Defines the extra space added around the scrollable area,
+   * enabling nearby items to remain partially in view.
+   */
+  itemSpacing?: string
   /**
    * Whether the carousel should loop around.
    * @default false
@@ -57,11 +59,6 @@ export interface RootProps {
    * The controlled page of the carousel.
    */
   page?: number
-  /**
-   * The total number of slides.
-   * Useful for SSR to render the initial snap points.
-   */
-  count: number
   /**
    * The number of slides to scroll at a time.
    *
@@ -86,11 +83,6 @@ export interface RootProps {
    * @default "0px"
    */
   spacing?: string
-  /**
-   * Defines the extra space added around the scrollable area,
-   * enabling nearby items to remain partially in view.
-   */
-  itemSpacing?: string
   /**
    * The localized messages to use.
    */

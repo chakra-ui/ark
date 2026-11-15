@@ -8,6 +8,10 @@ export interface RootProps {
    */
   disabled?: boolean
   /**
+   * The unique identifier of the machine.
+   */
+  id?: string
+  /**
    * The pressed state of the toggle.
    */
   pressed?: boolean

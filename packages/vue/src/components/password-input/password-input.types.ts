@@ -2,15 +2,16 @@ import type * as passwordInput from '@zag-js/password-input'
 
 export interface RootProps {
   /**
-   * The autocomplete attribute for the input
+   * The autocomplete attribute for the password input.
+   * @default "current-password"
    */
-  autoComplete?: passwordInput.Props['autoComplete']
+  autoComplete?: 'current-password' | 'new-password'
   /**
-   * Whether the password is visible by default
+   * The default visibility of the password input.
    */
   defaultVisible?: boolean
   /**
-   * Whether the input is disabled
+   * Whether the password input is disabled.
    */
   disabled?: boolean
   /**
@@ -18,42 +19,45 @@ export interface RootProps {
    */
   id?: string
   /**
-   * The ids of the elements in the password input. Useful for composition.
+   * The ids of the password input parts
    */
-  ids?: passwordInput.Props['ids']
+  ids?: passwordInput.ElementIds
   /**
-   * Whether to ignore password managers
+   * When `true`, the input will ignore password managers.
+   *
+   * **Only works for the following password managers**
+   * - 1Password, LastPass, Bitwarden, Dashlane, Proton Pass
    */
   ignorePasswordManagers?: boolean
   /**
-   * Whether the input is in an invalid state
+   * The invalid state of the password input.
    */
   invalid?: boolean
   /**
-   * The name attribute for the input
+   * The name of the password input.
    */
   name?: string
   /**
-   * Whether the input is read-only
+   * Whether the password input is read only.
    */
   readOnly?: boolean
   /**
-   * Whether the input is required
+   * Whether the password input is required.
    */
   required?: boolean
   /**
-   * Specifies the localized strings that identifies the accessibility elements and their states
+   * The localized messages to use.
    */
   translations?: passwordInput.IntlTranslations
   /**
-   * Whether the password is visible
+   * Whether the password input is visible.
    */
   visible?: boolean
 }
 
 export type RootEmits = {
   /**
-   * Function called when the visibility changes
+   * Function called when the visibility changes.
    */
   visibilityChange: [details: passwordInput.VisibilityChangeDetails]
   /**

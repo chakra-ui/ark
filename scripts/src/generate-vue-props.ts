@@ -1,22 +1,56 @@
-import { readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { parse, resolve } from 'node:path'
 import { globby } from 'globby'
 import prettier from 'prettier'
-import { type OptionalKind, Project, type PropertySignatureStructure } from 'ts-morph'
+import {
+  type ImportDeclarationStructure,
+  Node,
+  type OptionalKind,
+  Project,
+  type PropertySignatureStructure,
+} from 'ts-morph'
 import { chain } from 'voca'
+
+// types zag doesn't re-export print as import('<node_modules path>/@zag-js/x'); point them at the package
+const IMPORT_PATH_RE = /import\(["'][^"']*?node_modules\/(@zag-js\/[a-z-]+)["']\)/g
+
+const unquote = (name: string) => name.replace(/^['"]|['"]$/g, '')
 
 const extractTypes = (component: string) => {
   console.log('Generating props for', component)
-  const camelCaseComponent = chain(component).camelCase().value()
 
   const project = new Project()
   const sourceFile = project.addSourceFileAtPath(`../packages/vue/src/components/${component}/use-${component}.ts`)
+  const zagImport = sourceFile
+    .getImportDeclarations()
+    .find((decl) => decl.getModuleSpecifierValue().startsWith('@zag-js/') && decl.getNamespaceImport())
+  if (!zagImport) {
+    console.log('Skipping', component, '(no zag namespace import)')
+    return false
+  }
+  const zagModule = zagImport.getModuleSpecifierValue()
+  const zagNamespace = zagImport.getNamespaceImportOrThrow().getText()
+
+  const existing = readExistingMembers(project, component)
+  if (existing.otherExports) {
+    console.log('Skipping', component, '(types file has other exports, maintained by hand)')
+    return false
+  }
+  if (existing.generic) {
+    console.log('Skipping', component, '(generic RootProps, maintained by hand)')
+    return false
+  }
   const outputFile = project.createSourceFile(`../packages/vue/src/components/${component}/${component}.types.ts`, '', {
     overwrite: true,
   })
 
-  const propperties = sourceFile
-    .getInterfaceOrThrow(`Use${chain(component).camelCase().capitalize().value()}Props`)
+  const hookProps = sourceFile.getInterface(`Use${chain(component).camelCase().capitalize().value()}Props`)
+  if (!hookProps) {
+    console.log('Skipping', component, '(no hook props interface)')
+    return false
+  }
+
+  const propperties = hookProps
     .getType()
     .getProperties()
     .sort((a, b) => (a.getName() > b.getName() ? 1 : -1))
@@ -35,7 +69,12 @@ const extractTypes = (component: string) => {
         .flatMap((declaration) => declaration.getLeadingCommentRanges().map((comment) => `${comment.getText()}\n`))
       return {
         name: escapePropertyName(property.getName()),
-        type: property.getTypeAtLocation(sourceFile).getText(sourceFile),
+        // optional props already allow undefined; match the hand-written files
+        type: property
+          .getTypeAtLocation(sourceFile)
+          .getText(sourceFile)
+          .replace(/ \| undefined$/, '')
+          .replace(IMPORT_PATH_RE, "import('$1')"),
         hasQuestionToken: property.isOptional(),
         leadingTrivia: comment,
       }
@@ -53,11 +92,16 @@ const extractTypes = (component: string) => {
         .flatMap((declaration) => declaration.getLeadingCommentRanges().map((comment) => comment.getText())),
       type: property
         .getTypeAtLocation(sourceFile)
+        // callbacks are typed `fn | undefined`, which has no call signatures until undefined is removed
+        .getNonNullableType()
         .getCallSignatures()
         .flatMap((signature) =>
           signature
             .getParameters()
-            .map((param) => [param.getName(), param.getTypeAtLocation(sourceFile).getText(sourceFile)]),
+            .map((param) => [
+              param.getName(),
+              param.getTypeAtLocation(sourceFile).getText(sourceFile).replace(IMPORT_PATH_RE, "import('$1')"),
+            ]),
         ),
     }))
 
@@ -74,17 +118,27 @@ const extractTypes = (component: string) => {
     })
   }
 
+  // hand-written members may reference types from the old imports; organizeImports drops the unused ones
+  outputFile.addImportDeclarations(existing.imports.filter((decl) => decl.namespaceImport !== zagNamespace))
   outputFile.addImportDeclaration({
-    moduleSpecifier: `@zag-js/${component === 'segment-group' ? 'radio-group' : component}`,
-    namespaceImport: camelCaseComponent === 'switch' ? 'zagSwitch' : camelCaseComponent,
+    moduleSpecifier: zagModule,
+    namespaceImport: zagNamespace,
     isTypeOnly: true,
   })
+
+  // keep members the hook doesn't produce, such as presence emits or extra v-model events
+  const propNames = new Set(props.map((prop) => unquote(prop.name)))
+  const extraProps = existing.props.filter((member) => !propNames.has(member.name))
+  const emitNames = new Set(emits.map((emit) => emit.name))
+  const extraEmits = existing.emits.filter((member) => !emitNames.has(member.name))
 
   outputFile.addInterface({
     name: 'RootProps',
     isExported: true,
     properties: props,
   })
+  const rootProps = outputFile.getInterfaceOrThrow('RootProps')
+  for (const member of extraProps) rootProps.addMember(member.text)
 
   outputFile.addTypeAlias({
     name: 'RootEmits',
@@ -95,18 +149,25 @@ const extractTypes = (component: string) => {
           `\n${emit.comment}
         ${escapePropertyName(emit.name)}: [${emit.type.map(([key, value]) => `${key}: ${value}`)}]`,
       )
+      .concat(extraEmits.map((member) => `\n${member.text}`))
       .join('; ')}}`,
   })
   outputFile.organizeImports()
   outputFile.saveSync()
+  return true
+}
+
+const typesPath = (component: string) => resolve(`../packages/vue/src/components/${component}/${component}.types.ts`)
+
+const generate = async (component: string) => {
+  if (extractTypes(component)) await formatFile(typesPath(component))
 }
 
 const main = async () => {
   const component = process.argv.slice(2)[0]
 
   if (component) {
-    extractTypes(component)
-    return formatFile(resolve(`../packages/vue/src/components/${component}/${component}.types.ts`))
+    return generate(component)
   }
 
   console.log('Generating props for all components')
@@ -114,12 +175,17 @@ const main = async () => {
     onlyDirectories: true,
     deep: 1,
   })
-  Promise.all(
-    components
-      .map((component) => parse(component).base)
-      .filter((x) => !['format', 'toast', 'highlight', 'frame', 'client-only', 'focus-trap'].includes(x))
-      .map(extractTypes),
-  )
+  // only components with a machine hook and a generated types file
+  const generated = components
+    .map((dir) => parse(dir).base)
+    .filter(
+      (name) => existsSync(`../packages/vue/src/components/${name}/use-${name}.ts`) && existsSync(typesPath(name)),
+    )
+    .sort()
+
+  for (const name of generated) {
+    await generate(name)
+  }
 }
 
 main().catch((err) => {
@@ -135,6 +201,45 @@ async function formatFile(filePath: string) {
     parser: 'typescript',
   })
   writeFileSync(filePath, formatted)
+}
+
+interface ExistingMember {
+  name: string
+  text: string
+}
+
+function readExistingMembers(project: Project, component: string) {
+  const path = `../packages/vue/src/components/${component}/${component}.types.ts`
+  const result = {
+    props: [] as ExistingMember[],
+    emits: [] as ExistingMember[],
+    imports: [] as ImportDeclarationStructure[],
+    generic: false,
+    otherExports: false,
+  }
+  if (!existsSync(path)) return result
+  const file = project.addSourceFileAtPath(path)
+  const toMember = (member: { getText(includeJsDoc?: boolean): string }) => {
+    const text = member.getText(true)
+    const name = unquote(
+      text
+        .replace(/\/\*\*[\s\S]*?\*\/\s*/, '')
+        .split(/\??:\s/)[0]
+        .trim(),
+    )
+    return { name, text }
+  }
+  result.imports = file.getImportDeclarations().map((decl) => decl.getStructure())
+  result.otherExports = [...file.getExportedDeclarations().keys()].some(
+    (name) => name !== 'RootProps' && name !== 'RootEmits',
+  )
+  const rootProps = file.getInterface('RootProps')
+  result.generic = (rootProps?.getTypeParameters().length ?? 0) > 0
+  result.props = rootProps?.getMembers().map(toMember) ?? []
+  const emitsType = file.getTypeAlias('RootEmits')?.getTypeNode()
+  if (emitsType && Node.isTypeLiteral(emitsType)) result.emits = emitsType.getMembers().map(toMember)
+  project.removeSourceFile(file)
+  return result
 }
 
 function escapePropertyName(name: string): string {

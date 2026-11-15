@@ -6,12 +6,14 @@ export interface RootProps {
    */
   allowMouseWheel?: boolean
   /**
-   * Whether to keep a typed value outside the min/max range and report it as invalid, instead of clamping it.
+   * Whether a typed value can stay outside the min/max range instead of being clamped on blur or Enter.
+   * The value is then reported as invalid. Stepping always stays within the range.
+   * @default false
    */
   allowOutOfRange?: boolean
   /**
-   * The initial value of the input when rendered.
-   * Use when you don't need to control the value of the input.
+   * The initial value when rendered.
+   * Use when you don't need to control the value.
    */
   defaultValue?: number | null
   /**
@@ -45,13 +47,15 @@ export interface RootProps {
     incrementTrigger: string
     decrementTrigger: string
     scrubber: string
+    scrubberCursor: string
+    hiddenInput: string
   }>
   /**
    * Hints at the type of data that might be entered by the user. It also determines
-   * the type of keyboard shown to the user on mobile devices
-   * @default "decimal"
+   * the type of keyboard shown to the user on mobile devices.
+   * Defaults to `"text"` on iPhone when negatives are allowed, otherwise `"decimal"`.
    */
-  inputMode?: 'text' | 'tel' | 'numeric' | 'decimal'
+  inputMode?: numberInput.InputMode
   /**
    * Whether the number input value is invalid.
    */
@@ -68,12 +72,10 @@ export interface RootProps {
   locale?: string
   /**
    * The maximum value of the number input
-   * @default Number.MAX_SAFE_INTEGER
    */
   max?: number
   /**
    * The minimum value of the number input
-   * @default Number.MIN_SAFE_INTEGER
    */
   min?: number
   /**
@@ -87,7 +89,7 @@ export interface RootProps {
   /**
    * The pattern used to check the <input> element's value against
    *
-   * @default "[0-9]*(.[0-9]+)?"
+   * @default "-?[0-9]*(.[0-9]+)?"
    */
   pattern?: string
   /**
@@ -149,6 +151,11 @@ export type RootEmits = {
    * Function invoked when the value changes
    */
   valueChange: [details: numberInput.ValueChangeDetails]
+  /**
+   * Function invoked when the value settles: the input is blurred or `Enter` is pressed, a stepper
+   * or scrub gesture ends, or a key or wheel step completes.
+   */
+  valueCommit: [details: numberInput.ValueChangeDetails]
   /**
    * Function invoked when the value overflows or underflows the min/max range
    */

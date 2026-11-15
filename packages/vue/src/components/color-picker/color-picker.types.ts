@@ -38,33 +38,23 @@ export interface RootProps {
   /**
    * The ids of the elements in the color picker. Useful for composition.
    */
-  ids?: Partial<{
-    root: string
-    control: string
-    trigger: string
-    label: string
-    input: string
-    hiddenInput: string
-    content: string
-    area: string
-    areaGradient: string
-    positioner: string
-    formatSelect: string
-    areaThumb: string
-    channelInput(id: string): string
-    channelSliderTrack(id: colorPicker.ColorChannel): string
-    channelSliderThumb(id: colorPicker.ColorChannel): string
-  }>
+  ids?: colorPicker.ElementIds
   /**
    * The initial focus element when the color picker is opened.
+   * Return `false` to skip moving focus, or `null` to use the default.
    */
-  initialFocusEl?: () => HTMLElement | null
+  initialFocusEl?: (() => HTMLElement | null | false) | null
+  /**
+   * Whether to render the color picker inline
+   */
+  inline?: boolean
   /**
    * Whether the color picker is invalid
    */
   invalid?: boolean
   /**
-   * The locale used to format the channel values.
+   * The current locale. Based on the BCP 47 definition.
+   * @default "en-US"
    */
   locale?: string
   /**
@@ -96,21 +86,9 @@ export interface RootProps {
    * Whether the color picker is required
    */
   required?: boolean
-  /**
-   * Whether the color picker is inline
-   */
-  inline?: boolean
 }
 
 export type RootEmits = {
-  /**
-   * Function called when the animation ends in the open state
-   */
-  enterComplete: []
-  /**
-   * Function called when the animation ends in the closed state
-   */
-  exitComplete: []
   /**
    * Function called when the focus is moved outside the component
    */
@@ -143,6 +121,14 @@ export type RootEmits = {
    * The callback fired when the model value changes.
    */
   'update:modelValue': [value: colorPicker.Color]
+  /**
+   * Function called when the animation ends in the open state
+   */
+  enterComplete: []
+  /**
+   * Function called when the animation ends in the closed state
+   */
+  exitComplete: []
   /**
    * The callback fired when the open state changes.
    */

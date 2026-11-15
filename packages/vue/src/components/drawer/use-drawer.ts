@@ -41,6 +41,26 @@ export const useDrawer = (props: MaybeRefOrGetter<UseDrawerProps> = {}, emit?: E
         emit?.('update:snapPoint', details.snapPoint)
         localeProps.onSnapPointChange?.(details)
       },
+      onEscapeKeyDown: (details) => {
+        emit?.('escapeKeyDown', details)
+        localeProps.onEscapeKeyDown?.(details)
+      },
+      onFocusOutside: (details) => {
+        emit?.('focusOutside', details)
+        localeProps.onFocusOutside?.(details)
+      },
+      onInteractOutside: (details) => {
+        emit?.('interactOutside', details)
+        localeProps.onInteractOutside?.(details)
+      },
+      onPointerDownOutside: (details) => {
+        emit?.('pointerDownOutside', details)
+        localeProps.onPointerDownOutside?.(details)
+      },
+      onRequestDismiss: (details) => {
+        emit?.('requestDismiss', details)
+        localeProps.onRequestDismiss?.(details)
+      },
     }
   })
 

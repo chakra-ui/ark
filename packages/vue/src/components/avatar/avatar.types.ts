@@ -8,7 +8,7 @@ export interface RootProps {
   /**
    * The ids of the elements in the avatar. Useful for composition.
    */
-  ids?: Partial<{ root: string; image: string; fallback: string }>
+  ids?: avatar.ElementIds
 }
 
 export type RootEmits = {

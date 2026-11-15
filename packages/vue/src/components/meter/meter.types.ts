@@ -4,6 +4,7 @@ export interface RootProps {
   /**
    * The initial value of the meter when rendered.
    * Use when you don't need to control the value of the meter.
+   * @default min
    */
   defaultValue?: number
   /**

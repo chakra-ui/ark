@@ -2,6 +2,11 @@ import type * as pagination from '@zag-js/pagination'
 
 export interface RootProps {
   /**
+   * Number of pages to show at the beginning and end
+   * @default 1
+   */
+  boundaryCount?: number
+  /**
    * Total number of data items
    */
   count?: number
@@ -18,19 +23,18 @@ export interface RootProps {
    */
   defaultPageSize?: number
   /**
+   * Function to generate href attributes for pagination links.
+   * Only used when `type` is set to "link".
+   */
+  getPageUrl?: (details: pagination.PageUrlDetails) => string
+  /**
    * The unique identifier of the machine.
    */
   id?: string
   /**
    * The ids of the elements in the accordion. Useful for composition.
    */
-  ids?: Partial<{
-    root: string
-    ellipsis(index: number): string
-    prevTrigger: string
-    nextTrigger: string
-    item(page: number): string
-  }>
+  ids?: pagination.ElementIds
   /**
    * The controlled active page
    */
@@ -53,11 +57,6 @@ export interface RootProps {
    * @default "button"
    */
   type?: 'button' | 'link'
-  /**
-   * Function to generate href attributes for pagination links.
-   * Only used when `type` is set to "link".
-   */
-  getPageUrl?: (details: pagination.PageUrlDetails) => string
 }
 
 export type RootEmits = {

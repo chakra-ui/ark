@@ -22,12 +22,12 @@ export interface RootProps {
   /**
    * Function that returns the accessible name of each thumb, e.g. "Minimum price"
    */
-  getAriaLabel?: slider.Props['getAriaLabel']
+  getAriaLabel?: (details: slider.ThumbLabelDetails) => string
   /**
    * Function that returns the `id` of the element that labels each thumb.
    * Defaults to the label part when no `getAriaLabel` is provided.
    */
-  getAriaLabelledBy?: slider.Props['getAriaLabelledBy']
+  getAriaLabelledBy?: (details: slider.ThumbLabelDetails) => string
   /**
    * Function that returns a human readable value for the slider thumb
    */
@@ -43,24 +43,14 @@ export interface RootProps {
   /**
    * The ids of the elements in the slider. Useful for composition.
    */
-  ids?: Partial<{
-    root: string
-    thumb(index: number): string
-    hiddenInput(index: number): string
-    control: string
-    track: string
-    range: string
-    label: string
-    valueText: string
-    marker(index: number): string
-  }>
+  ids?: slider.ElementIds
   /**
    * Whether the slider is invalid
    */
   invalid?: boolean
   /**
-   * The amount to increment or decrement the value by when the shift key is held,
-   * or the page up/down keys are pressed
+   * The step value of the slider when the `Shift` key is held, or the
+   * `PageUp`/`PageDown` keys are used.
    * @default 10 * step
    */
   largeStep?: number
@@ -76,6 +66,12 @@ export interface RootProps {
   min?: number
   /**
    * The minimum permitted steps between multiple thumbs.
+   *
+   * `minStepsBetweenThumbs` * `step` should reflect the gap between the thumbs.
+   *
+   * - `step: 1` and `minStepsBetweenThumbs: 10` => gap is `10`
+   * - `step: 10` and `minStepsBetweenThumbs: 2` => gap is `20`
+   *
    * @default 0
    */
   minStepsBetweenThumbs?: number
@@ -93,13 +89,14 @@ export interface RootProps {
    */
   orientation?: 'vertical' | 'horizontal'
   /**
-   * The origin of the slider range
-   * - "start": Useful when the value represents an absolute value
-   * - "center": Useful when the value represents an offset (relative)
+   * The origin of the slider range. The track is filled from the origin to the thumb.
+   * - `"start"` / `"end"`: fill from `min` / `max`
+   * - `"center"`: fill from the midpoint of `min`/`max`
+   * - a `number`: fill from that value instead, for when the neutral point isn't the midpoint
    *
    * @default "start"
    */
-  origin?: 'start' | 'center'
+  origin?: slider.SliderOrigin
   /**
    * Whether the slider is read-only
    */
@@ -118,18 +115,18 @@ export interface RootProps {
    */
   thumbAlignment?: 'center' | 'contain'
   /**
-   * How thumbs behave when they collide during pointer interactions
-   * - `none`: Thumbs cannot move past each other
-   * - `push`: Thumbs push each other
-   * - `swap`: Thumbs swap places
+   * Controls how thumbs behave when they collide during pointer interactions.
+   * - `none` (default): Thumbs cannot move past each other; excess movement is ignored.
+   * - `push`: Thumbs push each other without restoring their previous positions when dragged back.
+   * - `swap`: Thumbs swap places when dragged past each other.
    *
    * @default "none"
    */
   thumbCollisionBehavior?: 'none' | 'push' | 'swap'
   /**
-   * The slider thumbs dimensions
+   * The slider thumbs dimensions. A number sets both the width and height.
    */
-  thumbSize?: { width: number; height: number }
+  thumbSize?: number | { width: number; height: number }
 }
 
 export type RootEmits = {

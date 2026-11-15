@@ -7,8 +7,7 @@ export interface RootProps {
    */
   defaultValue?: string[]
   /**
-   * Whether the toggle group allows empty selection.
-   * **Note:** This is ignored if `multiple` is `true`.
+   * Whether the last pressed item can be unpressed, leaving the selection empty.
    *
    * @default true
    */
@@ -24,7 +23,7 @@ export interface RootProps {
   /**
    * The ids of the elements in the toggle. Useful for composition.
    */
-  ids?: Partial<{ root: string; item(value: string): string }>
+  ids?: toggleGroup.ElementIds
   /**
    * Whether to loop focus inside the toggle group.
    * @default true

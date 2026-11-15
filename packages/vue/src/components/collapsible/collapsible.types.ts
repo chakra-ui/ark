@@ -4,11 +4,11 @@ export interface RootProps {
   /**
    * The height of the content when collapsed.
    */
-  collapsedHeight?: number | string
+  collapsedHeight?: string | number
   /**
    * The width of the content when collapsed.
    */
-  collapsedWidth?: number | string
+  collapsedWidth?: string | number
   /**
    * The initial open state of the collapsible when rendered.
    * Use when you don't need to control the open state of the collapsible.
@@ -30,7 +30,7 @@ export interface RootProps {
   /**
    * The ids of the elements in the collapsible. Useful for composition.
    */
-  ids?: Partial<{ root: string; content: string; trigger: string }>
+  ids?: collapsible.ElementIds
   /**
    * Whether to enable lazy mounting
    * @default false

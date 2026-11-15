@@ -4,12 +4,14 @@ export interface RootProps {
   /**
    * The initial value of the progress bar when rendered.
    * Use when you don't need to control the value of the progress bar.
-   * @default 50
+   * @default min
    */
   defaultValue?: number | null
   /**
    * The options to use for formatting the value.
    * @default { style: "percent" }
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat
    */
   formatOptions?: Intl.NumberFormatOptions
   /**
@@ -19,7 +21,7 @@ export interface RootProps {
   /**
    * The ids of the elements in the progress bar. Useful for composition.
    */
-  ids?: Partial<{ root: string; track: string; label: string; circle: string }>
+  ids?: progress.ElementIds
   /**
    * The locale to use for formatting the value.
    * @default "en-US"

@@ -25,3 +25,5 @@ export interface RootProps {
    */
   orientation?: menubar.Orientation
 }
+
+export type RootEmits = {}

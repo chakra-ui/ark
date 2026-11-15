@@ -6,10 +6,6 @@ export interface RootProps {
    */
   accept?: Record<string, string[]> | fileUpload.FileMimeType | fileUpload.FileMimeType[]
   /**
-   * The default accepted files
-   */
-  defaultAcceptedFiles?: File[]
-  /**
    * The controlled accepted files
    */
   acceptedFiles?: File[]
@@ -22,6 +18,11 @@ export interface RootProps {
    * The default camera to use when capturing media
    */
   capture?: 'user' | 'environment'
+  /**
+   * The default accepted files when rendered.
+   * Use when you don't need to control the accepted files of the input.
+   */
+  defaultAcceptedFiles?: File[]
   /**
    * Whether to accept directories, only works in webkit browsers
    */
@@ -37,17 +38,7 @@ export interface RootProps {
   /**
    * The ids of the elements. Useful for composition.
    */
-  ids?: Partial<{
-    root: string
-    dropzone: string
-    hiddenInput: string
-    trigger: string
-    label: string
-    item(id: string): string
-    itemName(id: string): string
-    itemSizeText(id: string): string
-    itemPreview(id: string): string
-  }>
+  ids?: fileUpload.ElementIds
   /**
    * Whether the file input is invalid
    */
@@ -92,6 +83,10 @@ export interface RootProps {
    */
   required?: boolean
   /**
+   * Function to transform the accepted files to apply transformations
+   */
+  transformFiles?: (files: File[]) => Promise<File[]>
+  /**
    * The localized messages to use.
    */
   translations?: fileUpload.IntlTranslations
@@ -99,17 +94,9 @@ export interface RootProps {
    * Function to validate a file
    */
   validate?: (file: File, details: fileUpload.FileValidateDetails) => fileUpload.FileError[] | null
-  /**
-   * Function to transform the files
-   */
-  transformFiles?: (files: File[]) => Promise<File[]>
 }
 
 export type RootEmits = {
-  /**
-   * Function called when the accepted files change
-   */
-  'update:acceptedFiles': [files: File[]]
   /**
    * Function called when the file is accepted
    */
@@ -122,4 +109,8 @@ export type RootEmits = {
    * Function called when the file is rejected
    */
   fileReject: [details: fileUpload.FileRejectDetails]
+  /**
+   * Function called when the accepted files change
+   */
+  'update:acceptedFiles': [files: File[]]
 }

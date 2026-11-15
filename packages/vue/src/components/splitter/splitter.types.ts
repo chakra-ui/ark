@@ -5,7 +5,7 @@ export interface RootProps {
    * The initial size of the panels when rendered.
    * Use when you don't need to control the size of the panels.
    */
-  defaultSize?: number[]
+  defaultSize?: splitter.PanelSize[]
   /**
    * Whether resizing is disabled for the whole splitter
    */
@@ -17,16 +17,12 @@ export interface RootProps {
   /**
    * The ids of the elements in the splitter. Useful for composition.
    */
-  ids?: Partial<{
-    root: string
-    resizeTrigger(id: string): string
-    label(id: string): string
-    panel(id: string | number): string
-  }>
+  ids?: splitter.ElementIds
   /**
-   * The number of pixels to resize the panel by when the keyboard is used.
+   * The percentage to resize the panel by when an arrow key is pressed.
+   * @default 1
    */
-  keyboardResizeBy?: number
+  keyboardResizeBy?: number | null
   /**
    * The nonce for the injected splitter cursor stylesheet.
    */
@@ -42,12 +38,13 @@ export interface RootProps {
   panels: splitter.PanelData[]
   /**
    * The splitter registry to use for multi-drag support.
+   * When provided, enables dragging at the intersection of multiple splitters.
    */
   registry?: splitter.SplitterRegistry
   /**
    * The controlled size data of the panels
    */
-  size?: number[]
+  size?: splitter.PanelSize[]
 }
 
 export type RootEmits = {

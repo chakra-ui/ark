@@ -2,6 +2,14 @@ import type * as angleSlider from '@zag-js/angle-slider'
 
 export interface RootProps {
   /**
+   * The accessible label for the slider thumb.
+   */
+  'aria-label'?: string
+  /**
+   * The id of the element that labels the slider thumb.
+   */
+  'aria-labelledby'?: string
+  /**
    * The initial value of the slider.
    * Use when you don't need to control the value of the slider.
    * @default 0
@@ -28,7 +36,7 @@ export interface RootProps {
    * The ids of the elements in the machine.
    * Useful for composition.
    */
-  ids?: Partial<{ root: string; thumb: string; hiddenInput: string; control: string; valueText: string }>
+  ids?: angleSlider.ElementIds
   /**
    * Whether the slider is invalid.
    */
@@ -50,14 +58,6 @@ export interface RootProps {
    * @default 1
    */
   step?: number
-  /**
-   * The aria-label of the slider.
-   */
-  'aria-label'?: string
-  /**
-   * The aria-labelledby of the slider.
-   */
-  'aria-labelledby'?: string
 }
 
 export type RootEmits = {

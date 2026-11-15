@@ -1,5 +1,4 @@
 import type * as floatingPanel from '@zag-js/floating-panel'
-import type { Point, Size } from '@zag-js/types'
 
 export interface RootProps {
   /**
@@ -21,11 +20,11 @@ export interface RootProps {
    * The initial position of the panel when rendered.
    * Use when you don't need to control the position of the panel.
    */
-  defaultPosition?: Point
+  defaultPosition?: floatingPanel.Point
   /**
    * The default size of the panel
    */
-  defaultSize?: Size
+  defaultSize?: floatingPanel.Size
   /**
    * The document's text/writing direction.
    * @default "ltr"
@@ -41,10 +40,15 @@ export interface RootProps {
    */
   draggable?: boolean
   /**
+   * Element to receive focus when the panel is closed.
+   * By default, the trigger element is focused.
+   */
+  finalFocusEl?: () => HTMLElement | null
+  /**
    * Function that returns the initial position of the panel when it is opened.
    * If provided, will be used instead of the default position.
    */
-  getAnchorPosition?: (details: floatingPanel.AnchorPositionDetails) => Point
+  getAnchorPosition?: (details: floatingPanel.AnchorPositionDetails) => floatingPanel.Point
   /**
    * The boundary of the panel. Useful for recalculating the boundary rect when
    * the it is resized.
@@ -56,21 +60,18 @@ export interface RootProps {
    */
   gridSize?: number
   /**
-   * The element to receive focus when the panel closes
-   */
-  finalFocusEl?: () => HTMLElement | null
-  /**
    * The unique identifier of the machine.
    */
   id?: string
   /**
-   * The element to receive focus when the panel opens
-   */
-  initialFocusEl?: () => HTMLElement | null
-  /**
    * The ids of the elements in the floating panel. Useful for composition.
    */
-  ids?: Partial<{ trigger: string; positioner: string; content: string; title: string; header: string }>
+  ids?: floatingPanel.ElementIds
+  /**
+   * Element to receive focus when the panel is opened. Defaults to the panel content.
+   * Return `false` to skip moving focus, or `null` to use the default.
+   */
+  initialFocusEl?: (() => HTMLElement | null | false) | null
   /**
    * Whether the panel is locked to its aspect ratio
    */
@@ -78,11 +79,11 @@ export interface RootProps {
   /**
    * The maximum size of the panel
    */
-  maxSize?: Size
+  maxSize?: floatingPanel.Size
   /**
    * The minimum size of the panel
    */
-  minSize?: Size
+  minSize?: floatingPanel.Size
   /**
    * The controlled open state of the panel
    */
@@ -94,24 +95,24 @@ export interface RootProps {
   /**
    * The controlled position of the panel
    */
-  position?: Point
+  position?: floatingPanel.Point
   /**
    * Whether the panel is resizable
    * @default true
    */
   resizable?: boolean
   /**
-   * Whether to restore focus to the trigger element when the panel closes
+   * Whether to restore focus to the trigger when the panel is closed.
    * @default true
    */
   restoreFocus?: boolean
   /**
    * The size of the panel
    */
-  size?: Size
+  size?: floatingPanel.Size
   /**
    * The strategy to use for positioning
-   * @default "absolute"
+   * @default "fixed"
    */
   strategy?: 'absolute' | 'fixed'
   /**
@@ -121,6 +122,30 @@ export interface RootProps {
 }
 
 export type RootEmits = {
+  /**
+   * Function called when the panel is opened or closed
+   */
+  openChange: [details: floatingPanel.OpenChangeDetails]
+  /**
+   * Function called when the position of the panel changes via dragging
+   */
+  positionChange: [details: floatingPanel.PositionChangeDetails]
+  /**
+   * Function called when the position of the panel changes via dragging ends
+   */
+  positionChangeEnd: [details: floatingPanel.PositionChangeDetails]
+  /**
+   * Function called when the size of the panel changes via resizing
+   */
+  sizeChange: [details: floatingPanel.SizeChangeDetails]
+  /**
+   * Function called when the size of the panel changes via resizing ends
+   */
+  sizeChangeEnd: [details: floatingPanel.SizeChangeDetails]
+  /**
+   * Function called when the stage of the panel changes
+   */
+  stageChange: [details: floatingPanel.StageChangeDetails]
   /**
    * Function called when the animation ends in the open state
    */
@@ -132,37 +157,13 @@ export type RootEmits = {
   /**
    * Function called when the panel is opened or closed
    */
-  openChange: [details: floatingPanel.OpenChangeDetails]
-  /**
-   * Function called when the panel is opened or closed
-   */
   'update:open': [open: boolean]
-  /**
-   * Function called when the position of the panel changes via dragging
-   */
-  positionChange: [details: floatingPanel.PositionChangeDetails]
   /**
    * Function called when the position of the panel changes via dragging
    */
   'update:position': [details: floatingPanel.PositionChangeDetails['position']]
   /**
-   * Function called when the position of the panel changes via dragging ends
-   */
-  positionChangeEnd: [details: floatingPanel.PositionChangeDetails]
-  /**
-   * Function called when the size of the panel changes via resizing
-   */
-  sizeChange: [details: floatingPanel.SizeChangeDetails]
-  /**
    * Function called when the size of the panel changes via resizing
    */
   'update:size': [details: floatingPanel.SizeChangeDetails['size']]
-  /**
-   * Function called when the size of the panel changes via resizing ends
-   */
-  sizeChangeEnd: [details: floatingPanel.SizeChangeDetails]
-  /**
-   * Function called when the stage of the panel changes
-   */
-  stageChange: [details: floatingPanel.StageChangeDetails]
 }
