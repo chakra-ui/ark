@@ -11,6 +11,11 @@ import {
 } from 'ts-morph'
 import { chain } from 'voca'
 
+// types zag doesn't re-export print as import('<node_modules path>/@zag-js/x'); point them at the package
+const IMPORT_PATH_RE = /import\(["'][^"']*?node_modules\/(@zag-js\/[a-z-]+)["']\)/g
+
+const unquote = (name: string) => name.replace(/^['"]|['"]$/g, '')
+
 const extractTypes = (component: string) => {
   console.log('Generating props for', component)
 
@@ -198,9 +203,6 @@ async function formatFile(filePath: string) {
   writeFileSync(filePath, formatted)
 }
 
-// types zag doesn't re-export print as import('<node_modules path>/@zag-js/x'); point them at the package
-const IMPORT_PATH_RE = /import\(["'][^"']*?node_modules\/(@zag-js\/[a-z-]+)["']\)/g
-
 interface ExistingMember {
   name: string
   text: string
@@ -239,8 +241,6 @@ function readExistingMembers(project: Project, component: string) {
   project.removeSourceFile(file)
   return result
 }
-
-const unquote = (name: string) => name.replace(/^['"]|['"]$/g, '')
 
 function escapePropertyName(name: string): string {
   if (/[^a-zA-Z0-9_]/.test(name)) {
