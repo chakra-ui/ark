@@ -29,7 +29,7 @@ function generateConfig(jsx: boolean): Options {
     platform: 'browser',
     format: 'esm',
     clean: true,
-    dts: !jsx,
+    dts: false,
     entry: [
       'src/index.tsx',
       'src/components/anatomy.ts',
