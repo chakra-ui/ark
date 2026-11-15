@@ -37,7 +37,7 @@ export const Range = () => {
           data-selected={selection.isSelected(item.value) || undefined}
           onClick={(e) => handleItemClick(item.value, e)}
         >
-          <input type="checkbox" className={styles.Checkbox} checked={selection.isSelected(item.value)} />
+          <input type="checkbox" className={styles.Checkbox} checked={selection.isSelected(item.value)} readOnly />
           <span className={styles.ItemText}>{item.label}</span>
         </label>
       ))}
