@@ -9,6 +9,11 @@
     "website"
   ],
   "scripts": {
+    "e2e": "playwright test",
+    "e2e:react": "FRAMEWORK=react playwright test",
+    "e2e:solid": "FRAMEWORK=solid playwright test",
+    "e2e:svelte": "FRAMEWORK=svelte playwright test",
+    "e2e:vue": "FRAMEWORK=vue playwright test",
     "postinstall": "lefthook install",
     "build": "bun run --filter='./packages/*' build",
     "check:anatomy": "bun scripts check:anatomy",
@@ -40,6 +45,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.5.11",
     "@changesets/cli": "3.0.1",
+    "@playwright/test": "1.56.1",
     "@shikijs/langs": "4.4.3",
     "@shikijs/themes": "4.4.3",
     "@types/bun": "1.4.0",
