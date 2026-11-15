@@ -9,7 +9,7 @@ export function splitProps<T extends Record<PropertyKey, any>, K extends (keyof 
   const picked = new Proxy({} as Pick<T, K[number]>, {
     get: (_, key) => (keys.includes(key as keyof T) ? props[key as keyof T] : undefined),
     has: (_, key) => own(key),
-    ownKeys: () => keys.filter(own) as (string | symbol)[],
+    ownKeys: () => [...new Set(keys)].filter(own) as (string | symbol)[],
     getOwnPropertyDescriptor: (_, key) =>
       own(key) ? { enumerable: true, configurable: true, get: () => props[key as keyof T] } : undefined,
   })

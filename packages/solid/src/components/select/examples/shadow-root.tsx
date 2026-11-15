@@ -1,21 +1,21 @@
 import { EnvironmentProvider } from '@ark-ui/solid/environment'
 import { Select, createListCollection } from '@ark-ui/solid/select'
 import { ChevronsUpDownIcon } from 'lucide-solid'
-import { onSettled } from 'solid-js'
-import { For, render } from '@solidjs/web'
+import { Show, createSignal } from 'solid-js'
+import { For, Portal } from '@solidjs/web'
 import styles from 'styles/select.module.css'
 
 export const ShadowRoot = () => {
-  let host!: HTMLDivElement
+  // set from the ref callback, which runs during render
+  const [mount, setMount] = createSignal<HTMLDivElement | null>(null, { ownedWrite: true })
+  const attachShadow = (host: HTMLDivElement) => {
+    const el = document.createElement('div')
+    host.attachShadow({ mode: 'open' }).appendChild(el)
+    setMount(el)
+  }
 
   const collection = createListCollection({
     items: ['React', 'Solid', 'Vue', 'Svelte'],
-  })
-
-  // Solid 2's Portal has no shadow option, so render into a shadow root we attach ourselves
-  onSettled(() => {
-    const shadowRoot = host.attachShadow({ mode: 'open' })
-    return render(() => <SelectInShadow shadowRoot={shadowRoot} />, shadowRoot)
   })
 
   const SelectInShadow = (props: { shadowRoot: ShadowRoot }) => (
@@ -53,5 +53,16 @@ export const ShadowRoot = () => {
     </EnvironmentProvider>
   )
 
-  return <div ref={host} />
+  // Solid 2's Portal has no shadow option, so portal into an element inside a shadow root
+  return (
+    <div ref={attachShadow}>
+      <Show when={mount()}>
+        {(el) => (
+          <Portal mount={el()}>
+            <SelectInShadow shadowRoot={el().getRootNode() as ShadowRoot} />
+          </Portal>
+        )}
+      </Show>
+    </div>
+  )
 }

@@ -27,7 +27,6 @@ export const ColorPickerRoot = (props: ColorPickerRootProps) => {
     'invalid',
     'locale',
     'name',
-    'name',
     'onFocusOutside',
     'onFormatChange',
     'onInteractOutside',
