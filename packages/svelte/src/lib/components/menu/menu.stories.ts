@@ -5,6 +5,8 @@ import CheckboxItemsExample from './examples/checkbox-items.svelte'
 import ContextExample from './examples/context.svelte'
 import ContextLazyMountExample from './examples/context-lazy-mount.svelte'
 import ControlledExample from './examples/controlled.svelte'
+import FilteringExample from './examples/filtering.svelte'
+import FilteringSubmenuExample from './examples/filtering-submenu.svelte'
 import GroupExample from './examples/group.svelte'
 import ItemContextExample from './examples/item-context.svelte'
 import LinksExample from './examples/links.svelte'
@@ -50,6 +52,18 @@ export const ContextLazyMount = {
 export const Controlled = {
   render: () => ({
     Component: ControlledExample,
+  }),
+}
+
+export const Filtering = {
+  render: () => ({
+    Component: FilteringExample,
+  }),
+}
+
+export const FilteringSubmenu = {
+  render: () => ({
+    Component: FilteringSubmenuExample,
   }),
 }
 

@@ -60,6 +60,8 @@ export interface RootProps {
     group(id: string): string
     positioner: string
     arrow: string
+    input: string
+    list: string
   }>
   /**
    * The element to focus when the menu opens.
