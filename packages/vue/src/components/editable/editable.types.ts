@@ -7,6 +7,7 @@ export interface RootProps {
    * - "focus" - Enter edit mode when the preview is focused
    * - "dblclick" - Enter edit mode when the preview is double-clicked
    * - "click" - Enter edit mode when the preview is clicked
+   * - "none" - Edit can be triggered programmatically only
    *
    * @default "focus"
    */
@@ -47,17 +48,7 @@ export interface RootProps {
   /**
    * The ids of the elements in the editable. Useful for composition.
    */
-  ids?: Partial<{
-    root: string
-    area: string
-    label: string
-    preview: string
-    input: string
-    control: string
-    submitTrigger: string
-    cancelTrigger: string
-    editTrigger: string
-  }>
+  ids?: editable.ElementIds
   /**
    * Whether the input's value is invalid.
    */

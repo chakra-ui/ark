@@ -2,11 +2,11 @@ import type * as steps from '@zag-js/steps'
 
 export interface RootProps {
   /**
-   * The controlled completed step values
+   * The controlled values of the completed steps
    */
   completedValues?: string[]
   /**
-   * The initial completed step values when rendered.
+   * The initial values of the completed steps when rendered.
    * Use when you don't need to control the completed steps.
    */
   defaultCompletedValues?: string[]
@@ -24,7 +24,7 @@ export interface RootProps {
    */
   ids?: steps.ElementIds
   /**
-   * The steps, in order. Each step has a unique `value`.
+   * The steps of the stepper
    */
   items: steps.StepItem[]
   /**
@@ -41,22 +41,24 @@ export interface RootProps {
    */
   orientation?: 'horizontal' | 'vertical'
   /**
-   * The localized messages to use.
+   * The localized messages to use
    */
   translations?: steps.IntlTranslations
 }
 
 export type RootEmits = {
   /**
-   * Callback to be called when the completed steps change
-   */
-  completedChange: [details: steps.CompletedChangeDetails]
-  /**
-   * Callback to be called when the last step is completed
+   * Callback to be called when the user moves past the last step.
+   * With a controlled value, it fires on each request, whether or not you apply it.
    */
   complete: [details: steps.CompleteDetails]
   /**
-   * Callback to be called when navigation to a step is blocked
+   * Callback to be called when the completed steps change.
+   * Also fires on `goToNext`, which marks the step it leaves as completed.
+   */
+  completedChange: [details: steps.CompletedChangeDetails]
+  /**
+   * Callback to be called when navigation is blocked
    */
   navigationBlocked: [details: steps.NavigationBlockedDetails]
   /**

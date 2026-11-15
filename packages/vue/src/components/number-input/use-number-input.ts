@@ -56,6 +56,10 @@ export const useNumberInput = (
         emit?.('valueInvalid', details)
         localeProps.onValueInvalid?.(details)
       },
+      onValueCommit: (details) => {
+        emit?.('valueCommit', details)
+        localeProps.onValueCommit?.(details)
+      },
     }
   })
 

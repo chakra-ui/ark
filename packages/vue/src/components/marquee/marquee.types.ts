@@ -23,7 +23,7 @@ export interface RootProps {
   /**
    * The ids of the elements in the marquee. Useful for composition.
    */
-  ids?: Partial<{ root: string; viewport: string; content: (index: number) => string }>
+  ids?: marquee.ElementIds
   /**
    * The number of times to loop the animation (0 = infinite).
    * @default 0

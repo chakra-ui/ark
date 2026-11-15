@@ -4,7 +4,7 @@ export interface RootProps {
   /**
    * The positioning point for the menu. Can be set by the context menu trigger or the button trigger.
    */
-  anchorPoint?: menu.Point
+  anchorPoint?: menu.Point | null
   /**
    * The accessibility label for the menu
    */
@@ -25,26 +25,31 @@ export interface RootProps {
    * The menu's items, in order. Set it when the items are virtualized, so the keyboard
    * and typeahead can reach items that aren't rendered.
    */
-  collection?: menu.Props['collection']
+  collection?: import('@zag-js/collection').ListCollection<any, never>
   /**
    * The initial highlighted value of the menu item when rendered.
    * Use when you don't need to control the highlighted value of the menu item.
    */
-  defaultHighlightedValue?: string
+  defaultHighlightedValue?: string | null
   /**
    * The initial open state of the menu when rendered.
    * Use when you don't need to control the open state of the menu.
    */
   defaultOpen?: boolean
   /**
+   * The initial trigger value when rendered.
+   * Use when you don't need to control the trigger value.
+   */
+  defaultTriggerValue?: string | null
+  /**
    * The element to focus when the menu closes.
    * Return `null` to use the default (the trigger, or the element focused before a context menu opened).
    */
-  finalFocusEl?: menu.Props['finalFocusEl']
+  finalFocusEl?: () => import('@zag-js/types').MaybeElement
   /**
    * The controlled highlighted value of the menu item.
    */
-  highlightedValue?: string
+  highlightedValue?: string | null
   /**
    * The unique identifier of the machine.
    */
@@ -52,20 +57,12 @@ export interface RootProps {
   /**
    * The ids of the elements in the menu. Useful for composition.
    */
-  ids?: Partial<{
-    trigger: string
-    contextTrigger: string
-    content: string
-    groupLabel(id: string): string
-    group(id: string): string
-    positioner: string
-    arrow: string
-  }>
+  ids?: menu.ElementIds
   /**
    * The element to focus when the menu opens.
    * Return `false` to skip moving focus, or `null` to use the default.
    */
-  initialFocusEl?: menu.Props['initialFocusEl']
+  initialFocusEl?: () => import('@zag-js/types').MaybeElement | false
   /**
    * Whether to loop the keyboard navigation.
    * @default false
@@ -74,7 +71,7 @@ export interface RootProps {
   /**
    * Function to navigate to the selected item if it's an anchor element
    */
-  navigate?: (details: menu.NavigateDetails) => void
+  navigate?: ((details: menu.NavigateDetails) => void) | null
   /**
    * The controlled open state of the menu
    */
@@ -93,21 +90,16 @@ export interface RootProps {
   /**
    * Scrolls the item at an index into view, for virtualized items. Used with `collection`.
    */
-  scrollToIndexFn?: menu.Props['scrollToIndexFn']
+  scrollToIndexFn?: (details: menu.ScrollToIndexDetails) => void
+  /**
+   * The controlled trigger value
+   */
+  triggerValue?: string | null
   /**
    * Whether the pressing printable characters should trigger typeahead navigation
    * @default true
    */
   typeahead?: boolean
-  /**
-   * The value of the trigger that currently open the menu
-   */
-  triggerValue?: string | null
-  /**
-   * The initial trigger value when rendered.
-   * Use when you don't need to control the trigger value.
-   */
-  defaultTriggerValue?: string | null
 }
 
 export type RootEmits = {
@@ -115,14 +107,6 @@ export type RootEmits = {
    * Function called when the escape key is pressed
    */
   escapeKeyDown: [event: KeyboardEvent]
-  /**
-   * Function called when the animation ends in the open state
-   */
-  enterComplete: []
-  /**
-   * Function called when the animation ends in the closed state
-   */
-  exitComplete: []
   /**
    * Function called when the focus is moved outside the component
    */
@@ -147,21 +131,24 @@ export type RootEmits = {
    * Function called when this layer is closed due to a parent layer being closed
    */
   requestDismiss: [
-    event: CustomEvent<{
-      originalLayer: HTMLElement
-      targetLayer: HTMLElement | undefined
-      originalIndex: number
-      targetIndex: number
-    }>,
+    event: import('../../../../../node_modules/.bun/@zag-js+dismissable@2.0.0-next.4/node_modules/@zag-js/dismissable/dist/layer-stack.mjs').LayerDismissEvent,
   ]
   /**
    * Function called when a menu item is selected.
    */
   select: [details: menu.SelectionDetails]
   /**
-   * Function called when the trigger value changes
+   * Function called when the trigger value changes.
    */
   triggerValueChange: [details: menu.TriggerValueChangeDetails]
+  /**
+   * Function called when the animation ends in the open state
+   */
+  enterComplete: []
+  /**
+   * Function called when the animation ends in the closed state
+   */
+  exitComplete: []
   /**
    * Function called when the menu is opened or closed.
    */

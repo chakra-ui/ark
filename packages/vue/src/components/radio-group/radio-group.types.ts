@@ -21,17 +21,9 @@ export interface RootProps {
   /**
    * The ids of the elements in the radio. Useful for composition.
    */
-  ids?: Partial<{
-    root: string
-    label: string
-    indicator: string
-    item(value: string): string
-    itemLabel(value: string): string
-    itemControl(value: string): string
-    itemHiddenInput(value: string): string
-  }>
+  ids?: radioGroup.ElementIds
   /**
-   * Whether the radio group is invalid
+   * If `true`, the radio group is marked as invalid.
    */
   invalid?: boolean
   /**
@@ -48,11 +40,11 @@ export interface RootProps {
    */
   orientation?: 'horizontal' | 'vertical'
   /**
-   * Whether the checkbox is read-only
+   * Whether the radio group is read-only
    */
   readOnly?: boolean
   /**
-   * Whether the radio group is required
+   * If `true`, the radio group is marked as required.
    */
   required?: boolean
 }
@@ -65,5 +57,5 @@ export type RootEmits = {
   /**
    * The callback fired when the model value changes.
    */
-  'update:modelValue': [value: radioGroup.ValueChangeDetails['value']]
+  'update:modelValue': [value: string | null]
 }

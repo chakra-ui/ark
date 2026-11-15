@@ -30,21 +30,14 @@ export interface RootProps {
   /**
    * The ids of the elements in the machine.
    */
-  ids?: Partial<{
-    root: string
-    list: string
-    item: string
-    trigger: (value: string) => string
-    content: (value: string) => string
-    viewport: string
-  }>
+  ids?: navigationMenu.ElementIds
   /**
    * The delay before the menu opens
    * @default 200
    */
   openDelay?: number
   /**
-   * The orientation of the navigation menu
+   * The orientation of the element.
    * @default "horizontal"
    */
   orientation?: 'horizontal' | 'vertical'
@@ -60,7 +53,7 @@ export interface RootProps {
 
 export type RootEmits = {
   /**
-   * Function called when the value of the navigation menu changes
+   * Function called when the value of the menu changes
    */
   valueChange: [details: navigationMenu.ValueChangeDetails]
   /**

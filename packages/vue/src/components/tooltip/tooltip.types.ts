@@ -7,7 +7,7 @@ export interface RootProps {
   'aria-label'?: string
   /**
    * The close delay of the tooltip.
-   * @default 500
+   * @default 150
    */
   closeDelay?: number
   /**
@@ -36,6 +36,11 @@ export interface RootProps {
    */
   defaultOpen?: boolean
   /**
+   * The initial trigger value when rendered.
+   * Use when you don't need to control the trigger value.
+   */
+  defaultTriggerValue?: string | null
+  /**
    * Whether the tooltip is disabled
    */
   disabled?: boolean
@@ -46,7 +51,7 @@ export interface RootProps {
   /**
    * The ids of the elements in the tooltip. Useful for composition.
    */
-  ids?: Partial<{ trigger: string; content: string; arrow: string; positioner: string }>
+  ids?: tooltip.ElementIds
   /**
    * Whether the tooltip's content is interactive.
    * In this mode, the tooltip will remain open when user hovers over the content.
@@ -61,7 +66,7 @@ export interface RootProps {
   open?: boolean
   /**
    * The open delay of the tooltip.
-   * @default 1000
+   * @default 400
    */
   openDelay?: number
   /**
@@ -69,17 +74,20 @@ export interface RootProps {
    */
   positioning?: tooltip.PositioningOptions
   /**
-   * The value of the trigger that currently open the tooltip
+   * The controlled trigger value
    */
   triggerValue?: string | null
-  /**
-   * The initial trigger value when rendered.
-   * Use when you don't need to control the trigger value.
-   */
-  defaultTriggerValue?: string | null
 }
 
 export type RootEmits = {
+  /**
+   * Function called when the tooltip is opened.
+   */
+  openChange: [details: tooltip.OpenChangeDetails]
+  /**
+   * Function called when the trigger value changes.
+   */
+  triggerValueChange: [details: tooltip.TriggerValueChangeDetails]
   /**
    * Function called when the animation ends in the open state
    */
@@ -88,14 +96,6 @@ export type RootEmits = {
    * Function called when the animation ends in the closed state
    */
   exitComplete: []
-  /**
-   * Function called when the tooltip is opened.
-   */
-  openChange: [details: tooltip.OpenChangeDetails]
-  /**
-   * Function called when the trigger value changes
-   */
-  triggerValueChange: [details: tooltip.TriggerValueChangeDetails]
   /**
    * The callback fired when the open state changes.
    */

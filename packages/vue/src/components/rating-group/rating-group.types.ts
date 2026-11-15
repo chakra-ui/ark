@@ -34,7 +34,7 @@ export interface RootProps {
   /**
    * The ids of the elements in the rating. Useful for composition.
    */
-  ids?: Partial<{ root: string; label: string; hiddenInput: string; control: string; item(id: string): string }>
+  ids?: ratingGroup.ElementIds
   /**
    * The v-model value of the rating group
    */

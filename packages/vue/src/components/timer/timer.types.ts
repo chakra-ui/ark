@@ -16,10 +16,10 @@ export interface RootProps {
   /**
    * The ids of the timer parts
    */
-  ids?: Partial<{ root: string; area: string }>
+  ids?: timer.ElementIds
   /**
    * The interval in milliseconds to update the timer count.
-   * @default 250
+   * @default 1000
    */
   interval?: number
   /**
@@ -27,13 +27,13 @@ export interface RootProps {
    */
   startMs?: number
   /**
-   * Specifies the localized strings that identifies the accessibility elements and their states
-   */
-  translations?: timer.IntlTranslations
-  /**
    * The minimum count of the timer in milliseconds.
    */
   targetMs?: number
+  /**
+   * Specifies the localized strings that identifies the accessibility elements and their states
+   */
+  translations?: timer.IntlTranslations
 }
 
 export type RootEmits = {

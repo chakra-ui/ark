@@ -2,10 +2,6 @@ import type * as clipboard from '@zag-js/clipboard'
 
 export interface RootProps {
   /**
-   * Specifies the localized strings that identifies the accessibility elements and their states
-   */
-  translations?: clipboard.IntlTranslations
-  /**
    * The initial value to be copied to the clipboard when rendered.
    * Use when you don't need to control the value of the clipboard.
    */
@@ -17,7 +13,7 @@ export interface RootProps {
   /**
    * The ids of the elements in the clipboard. Useful for composition.
    */
-  ids?: Partial<{ root: string; input: string; label: string }>
+  ids?: clipboard.ElementIds
   /**
    * The v-model value of the clipboard
    */
@@ -27,11 +23,15 @@ export interface RootProps {
    * @default 3000
    */
   timeout?: number
+  /**
+   * Specifies the localized strings that identifies the accessibility elements and their states
+   */
+  translations?: clipboard.IntlTranslations
 }
 
 export type RootEmits = {
   /**
-   * The function to be called when the value is copied to the clipboard
+   * The function to be called when the copied status changes, or copying fails
    */
   statusChange: [details: clipboard.CopyStatusDetails]
   /**

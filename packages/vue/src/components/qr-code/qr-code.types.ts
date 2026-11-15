@@ -17,7 +17,7 @@ export interface RootProps {
   /**
    * The element ids.
    */
-  ids?: Partial<{ root: string; frame: string }>
+  ids?: qrcode.ElementIds
   /**
    * The v-model value of the qr code
    */

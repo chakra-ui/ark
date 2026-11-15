@@ -3,7 +3,7 @@ import type * as accordion from '@zag-js/accordion'
 export interface RootProps {
   /**
    * Whether an accordion item can be closed after it has been expanded.
-   * @default false
+   * @default true
    */
   collapsible?: boolean
   /**
@@ -27,12 +27,7 @@ export interface RootProps {
   /**
    * The ids of the elements in the accordion. Useful for composition.
    */
-  ids?: Partial<{
-    root: string
-    item(value: string): string
-    itemContent(value: string): string
-    itemTrigger(value: string): string
-  }>
+  ids?: accordion.ElementIds
   /**
    * The v-model value of the accordion
    */

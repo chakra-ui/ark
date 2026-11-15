@@ -2,6 +2,23 @@ import type * as dateInput from '@zag-js/date-input'
 
 export interface RootProps {
   /**
+   * The computed segments map for the formatter.
+   */
+  allSegments?: dateInput.Segments
+  /**
+   * A function that creates a calendar object for a given calendar identifier.
+   * Use this to support non-Gregorian calendars (e.g., Persian, Islamic, Buddhist).
+   *
+   * @example
+   * import { createCalendar } from "@internationalized/date"
+   * { locale: "fa-IR", createCalendar }
+   */
+  createCalendar?: (identifier: dateInput.CalendarIdentifier) => dateInput.Calendar
+  /**
+   * The initial placeholder date when rendered.
+   */
+  defaultPlaceholderValue?: dateInput.DateValue
+  /**
    * The initial selected date(s) when rendered.
    * Use when you don't need to control the selected date(s).
    */
@@ -11,18 +28,33 @@ export interface RootProps {
    */
   disabled?: boolean
   /**
-   * The granularity of the date input.
+   * The `form` attribute of the hidden input element.
    */
-  granularity?: dateInput.Props['granularity']
+  form?: string
+  /**
+   * The format function for converting a DateValue to a string.
+   */
+  format?: (date: dateInput.DateValue, details: dateInput.FormatDateDetails) => string
+  /**
+   * The date formatter to use.
+   */
+  formatter?: dateInput.DateFormatter
+  /**
+   * Determines the smallest unit that is displayed in the date input.
+   * @default "day"
+   */
+  granularity?: import('@zag-js/date-utils').DateGranularity
   /**
    * Whether to hide the time zone segment when the value is a `ZonedDateTime`.
+   * Has no effect for values without a time zone.
    * @default false
    */
   hideTimeZone?: boolean
   /**
-   * The hour cycle used for formatting time segments.
+   * Whether to use 12-hour or 24-hour time format.
+   * By default, this is determined by the locale.
    */
-  hourCycle?: dateInput.Props['hourCycle']
+  hourCycle?: dateInput.HourCycle
   /**
    * The unique identifier of the machine.
    */
@@ -30,11 +62,16 @@ export interface RootProps {
   /**
    * The ids of the elements in the date input. Useful for composition.
    */
-  ids?: dateInput.Props['ids']
+  ids?: dateInput.ElementIds
   /**
-   * Whether the date input is invalid.
+   * Whether the date input is invalid
    */
   invalid?: boolean
+  /**
+   * Returns whether a date is unavailable.
+   * When a committed date matches, the input is marked as invalid.
+   */
+  isDateUnavailable?: (date: dateInput.DateValue, locale: string) => boolean
   /**
    * The locale (BCP 47 language tag) to use when formatting the date.
    * @default "en-US"
@@ -50,89 +87,71 @@ export interface RootProps {
    * to `"hour"`, `"minute"`, or `"second"`.
    * @default "year"
    */
-  maxGranularity?: dateInput.Props['maxGranularity']
+  maxGranularity?: dateInput.MaxGranularity
   /**
    * The minimum date that can be selected.
    */
   min?: dateInput.DateValue
   /**
-   * The v-model value of the date input.
+   * The v-model value of the date input
    */
   modelValue?: dateInput.DateValue[]
   /**
-   * The `name` attribute of the hidden input element.
+   * The `name` attribute of the input element.
    */
   name?: string
   /**
-   * The associate form of the hidden input element.
+   * The controlled placeholder date.
    */
-  form?: string
+  placeholderValue?: dateInput.DateValue
   /**
    * Whether the date input is read-only.
    */
   readOnly?: boolean
   /**
-   * Whether the date input is required.
+   * Whether the date input is required
    */
   required?: boolean
   /**
    * The selection mode of the date input.
-   * - `single` - only one date can be selected
-   * - `range` - a range of dates can be selected
+   * - `single` - only one date can be entered
+   * - `range` - a range of dates can be entered (start and end)
    *
    * @default "single"
    */
   selectionMode?: dateInput.SelectionMode
   /**
-   * The time zone to use.
+   * Whether to always show leading zeros in month, day, and hour fields.
+   * When false, formatting follows the locale default (e.g. "1" instead of "01").
+   * @default false
+   */
+  shouldForceLeadingZeros?: boolean
+  /**
+   * The time zone to use
    * @default "UTC"
    */
   timeZone?: string
   /**
    * The localized messages to use.
    */
-  translations?: dateInput.Props['translations']
+  translations?: dateInput.IntlTranslations
   /**
    * The controlled selected date(s).
    */
   value?: dateInput.DateValue[]
-  /**
-   * The format of the date to display in the input.
-   */
-  format?: dateInput.Props['format']
-  /**
-   * Whether to include all date/time segments based on the granularity.
-   */
-  allSegments?: dateInput.Props['allSegments']
-  /**
-   * The formatter used to format the date segments.
-   */
-  formatter?: dateInput.Props['formatter']
-  /**
-   * The placeholder date value used to generate placeholder segments.
-   */
-  placeholderValue?: dateInput.Props['placeholderValue']
-  /**
-   * The initial placeholder date value when rendered.
-   */
-  defaultPlaceholderValue?: dateInput.Props['defaultPlaceholderValue']
-  /**
-   * Whether to force leading zeros for numeric segments.
-   */
-  shouldForceLeadingZeros?: boolean
 }
 
 export type RootEmits = {
   /**
-   * Function invoked when the focused segment changes.
+   * A function called when the date input gains or loses focus.
    */
   focusChange: [details: dateInput.FocusChangeDetails]
   /**
-   * Function invoked when the placeholder value changes.
+   * A function called when the placeholder value changes.
    */
   placeholderChange: [details: dateInput.PlaceholderChangeDetails]
   /**
-   * Function invoked when the selected value changes.
+   * Function called when the value changes.
    */
   valueChange: [details: dateInput.ValueChangeDetails]
   /**

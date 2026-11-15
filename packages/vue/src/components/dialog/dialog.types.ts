@@ -12,7 +12,7 @@ export interface RootProps {
   closeOnEscape?: boolean
   /**
    * Whether to close the dialog when the outside is clicked
-   * @default true
+   * @default `true` for modal dialogs, `false` for non-modal dialogs
    */
   closeOnInteractOutside?: boolean
   /**
@@ -22,9 +22,14 @@ export interface RootProps {
    */
   defaultOpen?: boolean
   /**
+   * The initial active trigger value when rendered.
+   * Use when you don't need to control the active trigger value.
+   */
+  defaultTriggerValue?: string | null
+  /**
    * Element to receive focus when the dialog is closed
    */
-  finalFocusEl?: () => HTMLElement | null
+  finalFocusEl?: () => import('@zag-js/types').MaybeElement
   /**
    * The unique identifier of the machine.
    */
@@ -32,19 +37,12 @@ export interface RootProps {
   /**
    * The ids of the elements in the dialog. Useful for composition.
    */
-  ids?: Partial<{
-    trigger: string
-    positioner: string
-    backdrop: string
-    content: string
-    closeTrigger: string
-    title: string
-    description: string
-  }>
+  ids?: dialog.ElementIds
   /**
-   * Element to receive focus when the dialog is opened
+   * Element to receive focus when the dialog is opened.
+   * Return `false` to skip moving focus, or `null` to use the default.
    */
-  initialFocusEl?: () => HTMLElement | null
+  initialFocusEl?: (() => import('@zag-js/types').MaybeElement | false) | null
   /**
    * Whether to prevent pointer interaction outside the element and hide all content below it
    * @default true
@@ -80,14 +78,9 @@ export interface RootProps {
    */
   trapFocus?: boolean
   /**
-   * The value of the trigger that currently open the dialog
+   * The controlled active trigger value
    */
   triggerValue?: string | null
-  /**
-   * The initial trigger value when rendered.
-   * Use when you don't need to control the trigger value.
-   */
-  defaultTriggerValue?: string | null
 }
 
 export type RootEmits = {
@@ -95,14 +88,6 @@ export type RootEmits = {
    * Function called when the escape key is pressed
    */
   escapeKeyDown: [event: KeyboardEvent]
-  /**
-   * Function called when the animation ends in the open state
-   */
-  enterComplete: []
-  /**
-   * Function called when the animation ends in the closed state
-   */
-  exitComplete: []
   /**
    * Function called when the focus is moved outside the component
    */
@@ -123,17 +108,20 @@ export type RootEmits = {
    * Function called when this layer is closed due to a parent layer being closed
    */
   requestDismiss: [
-    event: CustomEvent<{
-      originalLayer: HTMLElement
-      targetLayer: HTMLElement | undefined
-      originalIndex: number
-      targetIndex: number
-    }>,
+    event: import('../../../../../node_modules/.bun/@zag-js+dismissable@2.0.0-next.4/node_modules/@zag-js/dismissable/dist/layer-stack.mjs').LayerDismissEvent,
   ]
   /**
-   * Function called when the trigger value changes
+   * Function to call when the active trigger changes
    */
   triggerValueChange: [details: dialog.TriggerValueChangeDetails]
+  /**
+   * Function called when the animation ends in the open state
+   */
+  enterComplete: []
+  /**
+   * Function called when the animation ends in the closed state
+   */
+  exitComplete: []
   /**
    * The callback fired when the open state changes.
    */

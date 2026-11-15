@@ -25,7 +25,9 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<SegmentGroupRootProps>(), {
   disabled: undefined,
+  invalid: undefined,
   readOnly: undefined,
+  required: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
 defineSlots<PolymorphicSlots<SegmentGroupRootState>>()

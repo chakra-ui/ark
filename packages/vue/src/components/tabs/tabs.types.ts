@@ -13,7 +13,7 @@ export interface RootProps {
    * The initial selected tab value when rendered.
    * Use when you don't need to control the selected tab value.
    */
-  defaultValue?: string
+  defaultValue?: string | null
   /**
    * Whether the active tab can be deselected when clicking on it.
    */
@@ -25,13 +25,7 @@ export interface RootProps {
   /**
    * The ids of the elements in the tabs. Useful for composition.
    */
-  ids?: Partial<{
-    root: string
-    trigger: (id: string) => string
-    content: (id: string) => string
-    list: string
-    indicator: string
-  }>
+  ids?: tabs.ElementIds
   /**
    * Whether the keyboard navigation will loop from last tab to first, and vice versa.
    * @default true
@@ -40,12 +34,12 @@ export interface RootProps {
   /**
    * The v-model value of the tabs
    */
-  modelValue?: string
+  modelValue?: string | null
   /**
    * Function to navigate to the selected tab when clicking on it.
    * Useful if tab triggers are anchor elements.
    */
-  navigate?: (details: tabs.NavigateDetails) => void
+  navigate?: ((details: tabs.NavigateDetails) => void) | null
   /**
    * The orientation of the tabs. Can be `horizontal` or `vertical`
    * - `horizontal`: only left and right arrow key navigation will work.
@@ -59,7 +53,7 @@ export interface RootProps {
    */
   translations?: tabs.IntlTranslations
   /**
-   * Whether the tab trigger should receive virtual focus instead of DOM focus.
+   * Whether the tabs use virtual focus instead of roving tabindex.
    *
    * When `true`, triggers receive no DOM focus — arrow keys update `focusedValue`
    * and all triggers remain `tabIndex: -1`. Useful when tabs live inside another

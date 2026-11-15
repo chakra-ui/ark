@@ -1,7 +1,6 @@
 export interface RootProps {
   /**
    * Whether to synchronize the present change immediately or defer it to the next frame
-   * @default false
    */
   immediate?: boolean
   /**
@@ -11,7 +10,6 @@ export interface RootProps {
   lazyMount?: boolean
   /**
    * Whether the node is present (controlled by the user)
-   * @default false
    */
   present?: boolean
   /**

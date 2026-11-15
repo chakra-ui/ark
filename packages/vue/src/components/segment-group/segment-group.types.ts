@@ -2,12 +2,12 @@ import type * as segmentGroup from '@zag-js/radio-group'
 
 export interface RootProps {
   /**
-   * The initial value of the segment group when it is first rendered.
-   * Use when you do not need to control the state of the segment group.
+   * The initial value of the checked radio when rendered.
+   * Use when you don't need to control the value of the radio group.
    */
-  defaultValue?: string
+  defaultValue?: string | null
   /**
-   * If `true`, the segment group will be disabled
+   * If `true`, the radio group will be disabled
    */
   disabled?: boolean
   /**
@@ -21,15 +21,11 @@ export interface RootProps {
   /**
    * The ids of the elements in the radio. Useful for composition.
    */
-  ids?: Partial<{
-    root: string
-    label: string
-    indicator: string
-    item(value: string): string
-    itemLabel(value: string): string
-    itemControl(value: string): string
-    itemHiddenInput(value: string): string
-  }>
+  ids?: segmentGroup.ElementIds
+  /**
+   * If `true`, the radio group is marked as invalid.
+   */
+  invalid?: boolean
   /**
    * The v-model value of the segment group
    */
@@ -40,13 +36,17 @@ export interface RootProps {
    */
   name?: string
   /**
-   * Orientation of the segment group
+   * Orientation of the radio group
    */
   orientation?: 'horizontal' | 'vertical'
   /**
-   * Whether the segment group is read-only
+   * Whether the radio group is read-only
    */
   readOnly?: boolean
+  /**
+   * If `true`, the radio group is marked as required.
+   */
+  required?: boolean
 }
 
 export type RootEmits = {

@@ -7,7 +7,7 @@ export interface RootProps {
    */
   addOnPaste?: boolean
   /**
-   * Whether to allow duplicate tags
+   * Whether to allow duplicate tags.
    * @default false
    */
   allowDuplicates?: boolean
@@ -50,7 +50,7 @@ export interface RootProps {
   disabled?: boolean
   /**
    * Whether a tag can be edited after creation, by pressing `Enter` or double clicking.
-   * @default true
+   * @default false
    */
   editable?: boolean
   /**
@@ -64,17 +64,7 @@ export interface RootProps {
   /**
    * The ids of the elements in the tags input. Useful for composition.
    */
-  ids?: Partial<{
-    root: string
-    input: string
-    hiddenInput: string
-    clearBtn: string
-    label: string
-    control: string
-    item(opts: tagsInput.ItemProps): string
-    itemDeleteTrigger(opts: tagsInput.ItemProps): string
-    itemInput(opts: tagsInput.ItemProps): string
-  }>
+  ids?: tagsInput.ElementIds
   /**
    * The controlled tag input's value
    */
@@ -101,7 +91,7 @@ export interface RootProps {
    */
   name?: string
   /**
-   * The placeholder text for the input when there are no tags
+   * The placeholder text for the input
    */
   placeholder?: string
   /**
@@ -113,7 +103,10 @@ export interface RootProps {
    */
   required?: boolean
   /**
-   * Function to sanitize the tag value before adding it
+   * Function to sanitize the tag value before adding.
+   * Useful for trimming whitespace, normalizing case, or stripping special characters.
+   * @default (value) => value.trim()
+   * @example (value) => value.toLowerCase().trim()
    */
   sanitizeValue?: (value: string) => string
   /**

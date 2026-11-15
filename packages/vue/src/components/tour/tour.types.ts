@@ -18,14 +18,7 @@ export interface RootProps {
   /**
    * The ids of the elements in the tour. Useful for composition.
    */
-  ids?: Partial<{
-    content: string
-    title: string
-    description: string
-    positioner: string
-    backdrop: string
-    arrow: string
-  }>
+  ids?: tour.ElementIds
   /**
    * Whether to allow keyboard navigation (right/left arrow keys to navigate between steps)
    * @default true
@@ -36,6 +29,11 @@ export interface RootProps {
    * @default false
    */
   preventInteraction?: boolean
+  /**
+   * Function to scroll the step target into view.
+   * Defaults to `scrollIntoView` with the nearest alignment.
+   */
+  scrollToTargetFn?: (details: tour.ScrollToTargetDetails) => void
   /**
    * The offsets to apply to the spotlight
    * @default "{ x: 10, y: 10 }"
@@ -49,7 +47,7 @@ export interface RootProps {
   /**
    * The id of the currently highlighted step
    */
-  stepId?: string
+  stepId?: string | null
   /**
    * The steps of the tour
    */
@@ -61,10 +59,6 @@ export interface RootProps {
 }
 
 export type RootEmits = {
-  /**
-   * Function called when the animation ends in the closed state
-   */
-  exitComplete: []
   /**
    * Function called when the focus is moved outside the component
    */
@@ -88,5 +82,9 @@ export type RootEmits = {
   /**
    * Callback when the steps change
    */
-  stepsChange: [details: { steps: tour.StepDetails[] }]
+  stepsChange: [details: tour.StepsChangeDetails]
+  /**
+   * Function called when the animation ends in the closed state
+   */
+  exitComplete: []
 }

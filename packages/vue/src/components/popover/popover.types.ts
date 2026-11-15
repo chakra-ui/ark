@@ -24,9 +24,14 @@ export interface RootProps {
    */
   defaultOpen?: boolean
   /**
-   * Element to receive focus when the popover is closed
+   * The initial trigger value when rendered.
+   * Use when you don't need to control the trigger value.
    */
-  finalFocusEl?: () => HTMLElement | null
+  defaultTriggerValue?: string | null
+  /**
+   * Element to receive focus when the popover is closed.
+   */
+  finalFocusEl?: () => import('@zag-js/types').MaybeElement
   /**
    * The unique identifier of the machine.
    */
@@ -34,20 +39,12 @@ export interface RootProps {
   /**
    * The ids of the elements in the popover. Useful for composition.
    */
-  ids?: Partial<{
-    anchor: string
-    trigger: string
-    content: string
-    title: string
-    description: string
-    closeTrigger: string
-    positioner: string
-    arrow: string
-  }>
+  ids?: popover.ElementIds
   /**
    * The element to focus on when the popover is opened.
+   * Return `false` to skip moving focus, or `null` to use the default.
    */
-  initialFocusEl?: () => HTMLElement | null
+  initialFocusEl?: (() => HTMLElement | null | false) | null
   /**
    * Whether the popover should be modal. When set to `true`:
    * - interaction with outside elements will be disabled
@@ -73,7 +70,7 @@ export interface RootProps {
    */
   positioning?: popover.PositioningOptions
   /**
-   * Whether to restore focus to the element that had focus before the popover was opened
+   * Whether to restore focus to the element that had focus before the popover was opened.
    *
    * @default true
    */
@@ -83,14 +80,9 @@ export interface RootProps {
    */
   translations?: popover.IntlTranslations
   /**
-   * The value of the trigger that currently open the popover
+   * The controlled trigger value
    */
   triggerValue?: string | null
-  /**
-   * The initial trigger value when rendered.
-   * Use when you don't need to control the trigger value.
-   */
-  defaultTriggerValue?: string | null
 }
 
 export type RootEmits = {
@@ -98,14 +90,6 @@ export type RootEmits = {
    * Function called when the escape key is pressed
    */
   escapeKeyDown: [event: KeyboardEvent]
-  /**
-   * Function called when the animation ends in the open state
-   */
-  enterComplete: []
-  /**
-   * Function called when the animation ends in the closed state
-   */
-  exitComplete: []
   /**
    * Function called when the focus is moved outside the component
    */
@@ -126,17 +110,20 @@ export type RootEmits = {
    * Function called when this layer is closed due to a parent layer being closed
    */
   requestDismiss: [
-    event: CustomEvent<{
-      originalLayer: HTMLElement
-      targetLayer: HTMLElement | undefined
-      originalIndex: number
-      targetIndex: number
-    }>,
+    event: import('../../../../../node_modules/.bun/@zag-js+dismissable@2.0.0-next.4/node_modules/@zag-js/dismissable/dist/layer-stack.mjs').LayerDismissEvent,
   ]
   /**
-   * Function called when the trigger value changes
+   * Function called when the trigger value changes.
    */
   triggerValueChange: [details: popover.TriggerValueChangeDetails]
+  /**
+   * Function called when the animation ends in the open state
+   */
+  enterComplete: []
+  /**
+   * Function called when the animation ends in the closed state
+   */
+  exitComplete: []
   /**
    * The callback fired when the open state changes.
    */

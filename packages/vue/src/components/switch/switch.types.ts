@@ -25,7 +25,7 @@ export interface RootProps {
   /**
    * The ids of the elements in the switch. Useful for composition.
    */
-  ids?: Partial<{ root: string; hiddenInput: string; control: string; label: string; thumb: string }>
+  ids?: zagSwitch.ElementIds
   /**
    * If `true`, the switch is marked as invalid.
    */
@@ -48,10 +48,10 @@ export interface RootProps {
    */
   required?: boolean
   /**
-   * The value of checkbox input. Useful for form submission.
+   * The value of switch input. Useful for form submission.
    * @default "on"
    */
-  value?: string
+  value?: string | number
 }
 
 export type RootEmits = {

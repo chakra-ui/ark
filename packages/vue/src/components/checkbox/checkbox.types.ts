@@ -25,7 +25,7 @@ export interface RootProps {
   /**
    * The ids of the elements in the checkbox. Useful for composition.
    */
-  ids?: Partial<{ root: string; hiddenInput: string; control: string; label: string }>
+  ids?: checkbox.ElementIds
   /**
    * Whether the checkbox is invalid
    */

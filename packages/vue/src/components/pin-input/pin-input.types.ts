@@ -10,7 +10,7 @@ export interface RootProps {
    */
   autoSubmit?: boolean
   /**
-   * The number of inputs to render to improve SSR aria attributes.
+   * The number of pin input fields.
    */
   count: number
   /**
@@ -33,7 +33,7 @@ export interface RootProps {
   /**
    * The ids of the elements in the pin input. Useful for composition.
    */
-  ids?: Partial<{ root: string; hiddenInput: string; label: string; control: string; input(id: string): string }>
+  ids?: pinInput.ElementIds
   /**
    * Whether the pin input is in the invalid state
    */

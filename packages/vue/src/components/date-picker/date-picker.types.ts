@@ -61,26 +61,15 @@ export interface RootProps {
   /**
    * The ids of the elements in the date picker. Useful for composition.
    */
-  ids?: Partial<{
-    root: string
-    label(index: number): string
-    table(id: string): string
-    tableHeader(id: string): string
-    tableBody(id: string): string
-    tableRow(id: string): string
-    content: string
-    cellTrigger(id: string): string
-    prevTrigger(view: datePicker.DateView): string
-    nextTrigger(view: datePicker.DateView): string
-    viewTrigger(view: datePicker.DateView): string
-    clearTrigger: string
-    control: string
-    input(index: number): string
-    trigger: string
-    monthSelect: string
-    yearSelect: string
-    positioner: string
-  }>
+  ids?: datePicker.ElementIds
+  /**
+   * Whether to render the date picker inline
+   */
+  inline?: boolean
+  /**
+   * Whether the date picker is invalid
+   */
+  invalid?: boolean
   /**
    * Returns whether a date of the calendar is available.
    */
@@ -156,6 +145,10 @@ export interface RootProps {
    */
   readOnly?: boolean
   /**
+   * Whether the date picker is required
+   */
+  required?: boolean
+  /**
    * The selection mode of the calendar.
    * - `single` - only one date can be selected
    * - `multiple` - multiple dates can be selected
@@ -192,29 +185,9 @@ export interface RootProps {
    * The view of the calendar
    */
   view?: datePicker.DateView
-  /**
-   * Whether the date picker is inline
-   */
-  inline?: boolean
-  /**
-   * Whether the date picker is in an invalid state
-   */
-  invalid?: boolean
-  /**
-   * Whether the date picker is required
-   */
-  required?: boolean
 }
 
 export type RootEmits = {
-  /**
-   * Function called when the animation ends in the open state
-   */
-  enterComplete: []
-  /**
-   * Function called when the animation ends in the closed state
-   */
-  exitComplete: []
   /**
    * Function called when the focused date changes.
    */
@@ -232,13 +205,21 @@ export type RootEmits = {
    */
   viewChange: [details: datePicker.ViewChangeDetails]
   /**
-   * Function called when the visible date range changes.
+   * Function called when the visible range changes.
    */
   visibleRangeChange: [details: datePicker.VisibleRangeChangeDetails]
   /**
    * The callback fired when the model value changes.
    */
   'update:modelValue': [value: datePicker.DateValue[]]
+  /**
+   * Function called when the animation ends in the open state
+   */
+  enterComplete: []
+  /**
+   * Function called when the animation ends in the closed state
+   */
+  exitComplete: []
   /**
    * The callback fired when the open state changes.
    */

@@ -1,3 +1,5 @@
+import type * as scrollArea from '@zag-js/scroll-area'
+
 export interface RootProps {
   /**
    * The unique identifier of the machine.
@@ -6,7 +8,7 @@ export interface RootProps {
   /**
    * The ids of the scroll area elements
    */
-  ids?: Partial<{ root: string; viewport: string; content: string; scrollbar: string; thumb: string }>
+  ids?: scrollArea.ElementIds
 }
 
 export type RootEmits = {}

@@ -1,6 +1,11 @@
-import type * as signaturePad from '@zag-js/signature-pad'
+import type * as signaturepad from '@zag-js/signature-pad'
 
 export interface RootProps {
+  /**
+   * The default paths of the signature pad.
+   * Use when you don't need to control the paths of the signature pad.
+   */
+  defaultPaths?: string[]
   /**
    * Whether the signature pad is disabled.
    */
@@ -9,15 +14,7 @@ export interface RootProps {
    * The drawing options.
    * @default '{ size: 2, simulatePressure: true }'
    */
-  drawing?: signaturePad.DrawingOptions
-  /**
-   * The default paths of the signature pad.
-   */
-  defaultPaths?: string[]
-  /**
-   * The controlled paths of the signature pad.
-   */
-  paths?: string[]
+  drawing?: signaturepad.DrawingOptions
   /**
    * The unique identifier of the machine.
    */
@@ -25,11 +22,15 @@ export interface RootProps {
   /**
    * The ids of the signature pad elements. Useful for composition.
    */
-  ids?: Partial<{ root: string; control: string; hiddenInput: string; label: string }>
+  ids?: signaturepad.ElementIds
   /**
    * The name of the signature pad. Useful for form submission.
    */
   name?: string
+  /**
+   * The controlled paths of the signature pad.
+   */
+  paths?: string[]
   /**
    * Whether the signature pad is read-only.
    */
@@ -41,20 +42,21 @@ export interface RootProps {
   /**
    * The translations of the signature pad. Useful for internationalization.
    */
-  translations?: signaturePad.IntlTranslations
+  translations?: signaturepad.IntlTranslations
 }
 
 export type RootEmits = {
   /**
-   * Callback when the paths change.
+   * Callback when the signature pad is drawing or the committed paths change.
+   * `paths` contains only committed strokes; use `currentPath` for the in-progress stroke.
    */
-  'update:paths': [paths: string[]]
-  /**
-   * Callback when the signature pad is drawing.
-   */
-  draw: [details: signaturePad.DrawDetails]
+  draw: [details: signaturepad.DrawDetails]
   /**
    * Callback when the signature pad is done drawing.
    */
-  drawEnd: [details: signaturePad.DrawEndDetails]
+  drawEnd: [details: signaturepad.DrawEndDetails]
+  /**
+   * Callback when the paths change.
+   */
+  'update:paths': [paths: string[]]
 }
