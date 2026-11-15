@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Frame } from '@ark-ui/svelte/frame'
 
-  let frameRef: HTMLIFrameElement | undefined
+  let frameRef = $state<HTMLIFrameElement | null>(null)
 </script>
 
 <Frame
