@@ -1,6 +1,6 @@
 import { Menu } from '@ark-ui/solid/menu'
 import { Menubar, useMenubar } from '@ark-ui/solid/menubar'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import menu from 'styles/menu.module.css'
 import styles from 'styles/menubar.module.css'
 
@@ -14,7 +14,7 @@ export const RootProvider = () => {
         <Menu.Root>
           <Menu.Trigger class={styles.Trigger}>File</Menu.Trigger>
           <Portal>
-            <Menu.Positioner>
+            <Menu.Positioner class={menu.Positioner}>
               <Menu.Content class={menu.Content}>
                 <Menu.Item class={menu.Item} value="new">
                   New File
@@ -30,7 +30,7 @@ export const RootProvider = () => {
         <Menu.Root>
           <Menu.Trigger class={styles.Trigger}>Edit</Menu.Trigger>
           <Portal>
-            <Menu.Positioner>
+            <Menu.Positioner class={menu.Positioner}>
               <Menu.Content class={menu.Content}>
                 <Menu.Item class={menu.Item} value="undo">
                   Undo

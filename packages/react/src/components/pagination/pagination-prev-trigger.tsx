@@ -13,7 +13,7 @@ export interface PaginationPrevTriggerProps
 export const PaginationPrevTrigger = forwardRef<HTMLButtonElement | HTMLAnchorElement, PaginationPrevTriggerProps>(
   (props, ref) => {
     const pagination = usePaginationContext()
-    const mergedProps = mergeProps(pagination.getPrevTriggerProps(), props)
+    const mergedProps = mergeProps(pagination.getPreviousTriggerProps(), props)
 
     if (pagination.type === 'link') return <ark.a {...mergedProps} ref={ref as Ref<HTMLAnchorElement>} />
 

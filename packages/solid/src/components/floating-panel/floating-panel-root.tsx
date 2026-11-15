@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import type { UsePresenceProps } from '../presence/index.tsx'
 import { PresenceProvider, usePresence } from '../presence/index.tsx'

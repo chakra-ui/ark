@@ -1,9 +1,9 @@
 <script lang="ts">
-import type { AreaState } from '@zag-js/editable'
+import type { RootState } from '@zag-js/editable'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
-export interface EditableAreaState extends AreaState {}
+export interface EditableAreaState extends RootState {}
 export interface EditableAreaBaseProps extends PolymorphicProps {}
 export interface EditableAreaProps
   extends
@@ -28,7 +28,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="editable.getAreaProps()" :state="editable.getAreaState()" :as-child="asChild">
+  <ark.div v-bind="editable.getAreaProps()" :state="editable.getRootState()" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

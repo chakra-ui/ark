@@ -16,6 +16,7 @@ const splitRootProps = createSplitProps<UseSplitterProps>()
 export const SplitterRoot = forwardRef<HTMLDivElement, SplitterRootProps>((props, ref) => {
   const [useSplitterProps, localProps] = splitRootProps(props, [
     'defaultSize',
+    'disabled',
     'id',
     'ids',
     'keyboardResizeBy',

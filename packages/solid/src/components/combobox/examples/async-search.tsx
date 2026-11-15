@@ -2,7 +2,7 @@ import { useAsyncList } from '@ark-ui/solid/collection'
 import { Combobox, createListCollection } from '@ark-ui/solid/combobox'
 import { CheckIcon, ChevronsUpDownIcon, LoaderIcon, XIcon } from 'lucide-solid'
 import { For, Show, createMemo } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/combobox.module.css'
 
 interface Movie {
@@ -69,7 +69,7 @@ export const AsyncSearch = () => {
         </div>
       </Combobox.Control>
       <Portal>
-        <Combobox.Positioner>
+        <Combobox.Positioner class={styles.Positioner}>
           <Combobox.Content class={styles.Content}>
             <Combobox.Status>
               <Show when={status()}>

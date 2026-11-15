@@ -1,5 +1,5 @@
 import { Tooltip, useTooltip } from '@ark-ui/solid/tooltip'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/tooltip.module.css'
 
 export const RootProvider = () => {
@@ -12,7 +12,7 @@ export const RootProvider = () => {
       <Tooltip.RootProvider value={tooltip}>
         <Tooltip.Trigger class={styles.Trigger}>Hover Me</Tooltip.Trigger>
         <Portal>
-          <Tooltip.Positioner>
+          <Tooltip.Positioner class={styles.Positioner}>
             <Tooltip.Content class={styles.Content}>I am a tooltip!</Tooltip.Content>
           </Tooltip.Positioner>
         </Portal>

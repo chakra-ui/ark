@@ -1,12 +1,18 @@
 import { PinInput } from '@ark-ui/solid/pin-input'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import styles from 'styles/pin-input.module.css'
 
 export const BlurOnComplete = () => (
-  <PinInput.Root class={styles.Root} count={3} blurOnComplete>
+  <PinInput.Root
+    class={styles.Root}
+    count={3}
+    onValueComplete={() => (document.activeElement as HTMLElement | null)?.blur()}
+  >
     <PinInput.Label class={styles.Label}>Label</PinInput.Label>
     <PinInput.Control class={styles.Control}>
-      <Index each={[0, 1, 2]}>{(id) => <PinInput.Input index={id()} class={styles.Input} />}</Index>
+      <For each={[0, 1, 2]} keyed={false}>
+        {(id) => <PinInput.Input index={id()} class={styles.Input} />}
+      </For>
     </PinInput.Control>
     <PinInput.HiddenInput />
   </PinInput.Root>

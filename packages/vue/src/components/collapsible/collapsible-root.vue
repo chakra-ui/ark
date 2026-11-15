@@ -24,6 +24,7 @@ import { CollapsibleProvider } from './use-collapsible-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = withDefaults(defineProps<CollapsibleRootProps>(), {
+  hiddenUntilFound: undefined,
   defaultOpen: undefined,
   disabled: undefined,
   lazyMount: undefined,

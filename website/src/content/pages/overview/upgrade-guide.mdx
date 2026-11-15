@@ -297,6 +297,72 @@ variables are left for you to update. Outside `.css` files, `[data-state="on"]` 
 `[data-pressed]` right after a toggle or toggle-group item selector, so other libraries' selectors
 stay as they are.
 
+### Overlays no longer set a `z-index`
+
+Popover, Menu, Select, Combobox, Tooltip, HoverCard, DatePicker, ColorPicker, Dialog, Drawer, Tour,
+FloatingPanel and Toast no longer put an inline `z-index` on their content. A `z-index` you set on the
+content now loses to its positioner, and overlays could drop behind each other while animating out.
+
+Set the `z-index` on the positioner (or the backdrop) in CSS. Each one exposes `--layer-index`, its
+place in the stack of open layers, so nested overlays stay on top of their parent.
+
+```diff
+- [data-popover-content] {
+-   z-index: 1400;
+- }
++ [data-popover-positioner] {
++   z-index: calc(1400 + var(--layer-index));
++ }
+```
+
+- Dialog and Drawer no longer set `--z-index`. Use `--layer-index` on the backdrop and positioner.
+- FloatingPanel: style the positioner the same way to bring the focused panel to the front.
+- Tour no longer copies the content's `z-index` onto dialog steps. Style the positioner with
+  `--tour-layer`.
+- Toast: set the `z-index` on `[data-toast-group]`.
+
+### `Steps` takes `items` and addresses steps by `value`
+
+Steps are defined by an `items` array and addressed by a string `value` instead of a `count` and an
+index. Each item can be `optional`, `invalid`, `disabled` or `editable`, and can carry a `title` and a
+`description`.
+
+```diff
++ const items = [{ value: 'shipping' }, { value: 'gift', optional: true }, { value: 'payment' }]
+
+- <Steps.Root count={3} defaultStep={0} onStepChange={(details) => setStep(details.step)}>
++ <Steps.Root items={items} defaultValue="shipping" onValueChange={(details) => setStep(details.value)}>
+    <Steps.List>
+-     <Steps.Item index={0}>
++     <Steps.Item value="shipping">
+        <Steps.Trigger>Shipping</Steps.Trigger>
+      </Steps.Item>
+    </Steps.List>
+-   <Steps.Content index={0}>...</Steps.Content>
++   <Steps.Content value="shipping">...</Steps.Content>
+    <Steps.CompletedContent>Done</Steps.CompletedContent>
+  </Steps.Root>
+```
+
+| v5                                   | v6                                            |
+| ------------------------------------ | --------------------------------------------- |
+| `count`                              | `items`                                       |
+| `step` / `defaultStep`               | `value` / `defaultValue`                      |
+| `onStepChange` / `onStepComplete`    | `onValueChange` / `onComplete`                |
+| `isStepValid` / `isStepSkippable`    | `invalid` / `optional` on the item            |
+| `onStepInvalid`                      | `onNavigationBlocked` (`reason`, `blockedBy`) |
+| `index` on parts                     | `value`                                       |
+| `api.setStep(index)`                 | `api.setValue(value)`                         |
+| `api.isCompleted`                    | `api.complete`                                |
+| `api.goToPrevStep()` / `hasPrevStep` | `api.goToPreviousStep()` / `hasPreviousStep`  |
+| `Steps.ChangeDetails`                | `Steps.ValueChangeDetails`                    |
+| `Steps.InvalidDetails`               | `Steps.NavigationBlockedDetails`              |
+
+`Steps.SkipTrigger` skips an `optional` step, and `completedValues` makes the completed steps
+controllable. In Vue, `v-model` holds the current step's value (it was `v-model:step`). In Svelte,
+bind `value` (it was `bind:step`). The `--percent` variable on the progress part is now
+`--steps-percent`.
+
 ### `useCollator` and `useFilter` return values
 
 For Solid, Svelte, and Vue, these hooks now return their values directly instead of an accessor,
@@ -336,6 +402,6 @@ own.
 
 Svelte exports now match the other frameworks. `Dialog`'s `Positioner`, `Root`, `RootProvider`,
 `Title`, and `Trigger` are prefixed (`DialogPositioner`). `StepsStepChangeDetails` →
-`StepChangeDetails`, `ColorPickerColor` → `Color`, `TabsContentState` / `TabsTriggerState` →
+`StepsValueChangeDetails` (see Steps above), `ColorPickerColor` → `Color`, `TabsContentState` / `TabsTriggerState` →
 `TabContentState` / `TabTriggerState`. Internals such as `CheckboxProvider` and `splitCollapsibleProps`
 are no longer exported.

@@ -14,7 +14,7 @@ export const RootProvider = () => {
         <Menu.Root>
           <Menu.Trigger className={styles.Trigger}>File</Menu.Trigger>
           <Portal>
-            <Menu.Positioner>
+            <Menu.Positioner className={menu.Positioner}>
               <Menu.Content className={menu.Content}>
                 <Menu.Item className={menu.Item} value="new">
                   New File
@@ -30,7 +30,7 @@ export const RootProvider = () => {
         <Menu.Root>
           <Menu.Trigger className={styles.Trigger}>Edit</Menu.Trigger>
           <Portal>
-            <Menu.Positioner>
+            <Menu.Positioner className={menu.Positioner}>
               <Menu.Content className={menu.Content}>
                 <Menu.Item className={menu.Item} value="undo">
                   Undo

@@ -1,5 +1,5 @@
 import { Toc } from '@ark-ui/solid/toc'
-import { Dynamic } from 'solid-js/web'
+import { Dynamic } from '@solidjs/web'
 import styles from 'styles/toc.module.css'
 
 const items = [

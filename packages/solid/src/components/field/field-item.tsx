@@ -1,4 +1,5 @@
-import type { JSX } from 'solid-js'
+import { createMemo } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { parts } from './field.anatomy.ts'
 import { FieldProvider, useFieldContext, type UseFieldContext } from './use-field-context.ts'
 
@@ -13,7 +14,7 @@ export interface FieldItemProps extends FieldItemBaseProps {
 export const FieldItem = (props: FieldItemProps) => {
   const parentField = useFieldContext()
 
-  const itemField: UseFieldContext = () => {
+  const itemField: UseFieldContext = createMemo(() => {
     const parent = parentField?.()
     if (!parent) {
       throw new Error('Field.Item must be used within Field.Root')
@@ -37,7 +38,7 @@ export const FieldItem = (props: FieldItemProps) => {
       getLabelProps: () => ({
         ...parent.getLabelProps(),
         id: labelId,
-        htmlFor: controlId,
+        for: controlId,
       }),
       getInputProps: () => ({
         ...getControlProps(parent.getInputProps),
@@ -52,7 +53,7 @@ export const FieldItem = (props: FieldItemProps) => {
         ...parts.textarea.attrs(controlId),
       }),
     } as ReturnType<UseFieldContext>
-  }
+  })
 
   return <FieldProvider value={itemField}>{props.children}</FieldProvider>
 }

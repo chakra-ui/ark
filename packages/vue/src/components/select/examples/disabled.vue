@@ -20,7 +20,7 @@ const collection = createListCollection({
       </Select.Trigger>
     </Select.Control>
     <Teleport to="body">
-      <Select.Positioner>
+      <Select.Positioner :class="styles.Positioner">
         <Select.Content :class="styles.Content">
           <Select.List :class="styles.List">
             <Select.Item v-for="item in collection.items" :key="item" :item="item" :class="styles.Item">

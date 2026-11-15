@@ -6,16 +6,16 @@ import { ComponentUnderTest, NumberInputWithField } from './basic.tsx'
 describe('NumberInput', () => {
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
-    await screen.findByRole('spinbutton')
+    await screen.findByRole('textbox')
     const results = await axe(container)
 
     expect(results).toHaveNoViolations()
   })
 
   it('should handle wheel event when allowMouseWheel is true', async () => {
-    render(<ComponentUnderTest allowMouseWheel />)
+    render(<ComponentUnderTest allowMouseWheel defaultValue={0} />)
 
-    const input = screen.getByRole('spinbutton')
+    const input = screen.getByRole('textbox')
 
     input.focus()
     await waitFor(() => expect(input).toHaveFocus())
@@ -24,10 +24,10 @@ describe('NumberInput', () => {
     await waitFor(() => expect(input).toHaveValue('1'))
   })
 
-  it('should clamp value on blur when clampValueOnBlur is true', async () => {
-    render(<ComponentUnderTest clampValueOnBlur min={0} max={10} defaultValue="15" />)
+  it('should clamp an out-of-range value on blur by default', async () => {
+    render(<ComponentUnderTest min={0} max={10} defaultValue={15} />)
 
-    const input = screen.getByRole('spinbutton')
+    const input = screen.getByRole('textbox')
 
     act(() => {
       input.focus()
@@ -40,10 +40,10 @@ describe('NumberInput', () => {
     })
   })
 
-  it('should allow value to exceed max when allowOverflow is true', async () => {
-    render(<ComponentUnderTest allowOverflow max={10} defaultValue="15" />)
+  it('should allow value to exceed max when allowOutOfRange is true', async () => {
+    render(<ComponentUnderTest allowOutOfRange max={10} defaultValue={15} />)
 
-    const input = await screen.findByRole('spinbutton')
+    const input = await screen.findByRole('textbox')
 
     expect(input).toHaveValue('15')
   })
@@ -54,11 +54,11 @@ describe('NumberInput', () => {
         formatOptions={{
           currency: 'USD',
         }}
-        defaultValue="5"
+        defaultValue={5}
       />,
     )
 
-    const input = screen.getByRole('spinbutton')
+    const input = screen.getByRole('textbox')
 
     await waitFor(() => {
       expect(input).toHaveValue('5')
@@ -66,13 +66,13 @@ describe('NumberInput', () => {
   })
 
   it('should increment value by step when using increment button', async () => {
-    render(<ComponentUnderTest step={5} defaultValue="0" />)
+    render(<ComponentUnderTest step={5} defaultValue={0} />)
 
     const incrementBtn = screen.getByText('+1')
 
     await user.click(incrementBtn)
 
-    const input = screen.getByRole('spinbutton')
+    const input = screen.getByRole('textbox')
 
     await waitFor(() => {
       expect(input).toHaveValue('5')
@@ -81,10 +81,10 @@ describe('NumberInput', () => {
 
   it('should handle min and max fraction digits', async () => {
     render(
-      <ComponentUnderTest defaultValue="1.00" formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 3 }} />,
+      <ComponentUnderTest defaultValue={1} formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 3 }} />,
     )
 
-    const input = screen.getByRole('spinbutton')
+    const input = screen.getByRole('textbox')
     expect(input).toHaveValue('1.00')
 
     await user.clear(input)
@@ -100,17 +100,17 @@ describe('NumberInput', () => {
 describe('NumberInput / Field', () => {
   it('should set input as required', async () => {
     render(<NumberInputWithField required />)
-    expect(await screen.findByRole('spinbutton', { name: /label/i })).toBeRequired()
+    expect(await screen.findByRole('textbox', { name: /label/i })).toBeRequired()
   })
 
   it('should set input as disabled', async () => {
     render(<NumberInputWithField disabled />)
-    expect(await screen.findByRole('spinbutton', { name: /label/i })).toBeDisabled()
+    expect(await screen.findByRole('textbox', { name: /label/i })).toBeDisabled()
   })
 
   it('should set input as readonly', async () => {
     render(<NumberInputWithField readOnly />)
-    expect(await screen.findByRole('spinbutton', { name: /label/i })).toHaveAttribute('readonly')
+    expect(await screen.findByRole('textbox', { name: /label/i })).toHaveAttribute('readonly')
   })
 
   it('should display helper text', async () => {
@@ -126,35 +126,35 @@ describe('NumberInput / Field', () => {
   it('should focus on input when label is clicked', async () => {
     render(<NumberInputWithField />)
     await user.click(screen.getByText(/label/i))
-    expect(screen.getByRole('spinbutton', { name: /label/i })).toHaveFocus()
+    expect(screen.getByRole('textbox', { name: /label/i })).toHaveFocus()
   })
 
   it('should not display error text when no error is present', async () => {
     render(<NumberInputWithField />)
-    await screen.findByRole('spinbutton', { name: /label/i })
+    await screen.findByRole('textbox', { name: /label/i })
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 
   describe('prop: largeStep', () => {
     it('should increment by the default largeStep (10 * step) when Shift is held', async () => {
-      render(<ComponentUnderTest defaultValue="5" />)
-      const input = screen.getByRole('spinbutton')
+      render(<ComponentUnderTest defaultValue={5} />)
+      const input = screen.getByRole('textbox')
       input.focus()
       await user.keyboard('{Shift>}[ArrowUp]{/Shift}')
       expect(input).toHaveValue('15')
     })
 
     it('should use an explicit largeStep when Shift is held', async () => {
-      render(<ComponentUnderTest defaultValue="5" largeStep={5} />)
-      const input = screen.getByRole('spinbutton')
+      render(<ComponentUnderTest defaultValue={5} largeStep={5} />)
+      const input = screen.getByRole('textbox')
       input.focus()
       await user.keyboard('{Shift>}[ArrowUp]{/Shift}')
       expect(input).toHaveValue('10')
     })
 
     it('should not use largeStep when Shift is not held', async () => {
-      render(<ComponentUnderTest defaultValue="5" largeStep={5} />)
-      const input = screen.getByRole('spinbutton')
+      render(<ComponentUnderTest defaultValue={5} largeStep={5} />)
+      const input = screen.getByRole('textbox')
       input.focus()
       await user.keyboard('[ArrowUp]')
       await waitFor(() => expect(input).toHaveValue('6'))
@@ -163,16 +163,16 @@ describe('NumberInput / Field', () => {
 
   describe('prop: smallStep', () => {
     it('should increment by the default smallStep (step / 10) when Alt is held', async () => {
-      render(<ComponentUnderTest defaultValue="5" />)
-      const input = screen.getByRole('spinbutton')
+      render(<ComponentUnderTest defaultValue={5} />)
+      const input = screen.getByRole('textbox')
       input.focus()
       await user.keyboard('{Alt>}[ArrowUp]{/Alt}')
       expect(input).toHaveValue('5.1')
     })
 
     it('should use an explicit smallStep when Alt is held', async () => {
-      render(<ComponentUnderTest defaultValue="5" smallStep={0.5} />)
-      const input = screen.getByRole('spinbutton')
+      render(<ComponentUnderTest defaultValue={5} smallStep={0.5} />)
+      const input = screen.getByRole('textbox')
       input.focus()
       await user.keyboard('{Alt>}[ArrowUp]{/Alt}')
       expect(input).toHaveValue('5.5')

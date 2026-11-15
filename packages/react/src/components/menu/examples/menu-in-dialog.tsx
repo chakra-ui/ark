@@ -27,7 +27,7 @@ export const MenuInDialog = () => (
                 </Menu.Indicator>
               </Menu.Trigger>
               <Portal>
-                <Menu.Positioner>
+                <Menu.Positioner className={styles.Positioner}>
                   <Menu.Content className={styles.Content}>
                     <Menu.Arrow className={styles.Arrow}>
                       <Menu.ArrowTip className={styles.ArrowTip} />

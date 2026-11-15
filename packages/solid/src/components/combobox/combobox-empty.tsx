@@ -1,4 +1,5 @@
-import { createMemo, Show, splitProps } from 'solid-js'
+import { createMemo, Show } from 'solid-js'
+import { splitProps } from '../../utils/split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { comboboxAnatomy } from './combobox.anatomy.ts'
 import { useComboboxContext } from './use-combobox-context.ts'

@@ -52,6 +52,6 @@ export const NextTrigger = withContext<
 export const PrevTrigger = withContext<
   HTMLButtonElement,
   Assign<HTMLStyledProps<'button'>, Carousel.PrevTriggerBaseProps>
->(Carousel.PrevTrigger, 'prevTrigger')
+>(Carousel.PrevTrigger, 'previousTrigger')
 
 export const Context = Carousel.Context

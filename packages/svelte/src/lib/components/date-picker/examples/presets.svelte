@@ -24,7 +24,7 @@
     <DatePicker.PresetTrigger class={styles.PresetTrigger} value="thisMonth">This month</DatePicker.PresetTrigger>
   </div>
   <Portal>
-    <DatePicker.Positioner>
+    <DatePicker.Positioner class={styles.Positioner}>
       <DatePicker.Content class={styles.Content}>
         <DatePicker.View view="day" class={styles.View}>
           <DatePicker.Context>

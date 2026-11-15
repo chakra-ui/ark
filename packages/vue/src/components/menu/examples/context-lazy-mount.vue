@@ -8,7 +8,7 @@ import styles from 'styles/menu.module.css'
   <Menu.Root lazy-mount unmount-on-exit>
     <Menu.ContextTrigger :class="styles.ContextTrigger">Right click here</Menu.ContextTrigger>
     <Teleport to="body">
-      <Menu.Positioner>
+      <Menu.Positioner :class="styles.Positioner">
         <Menu.Content :class="styles.Content">
           <Menu.Item :class="styles.Item" value="cut">Cut</Menu.Item>
           <Menu.Item :class="styles.Item" value="copy">Copy</Menu.Item>
@@ -17,7 +17,7 @@ import styles from 'styles/menu.module.css'
           <Menu.Root lazy-mount unmount-on-exit>
             <Menu.TriggerItem :class="styles.TriggerItem">Share</Menu.TriggerItem>
             <Teleport to="body">
-              <Menu.Positioner>
+              <Menu.Positioner :class="styles.Positioner">
                 <Menu.Content :class="styles.Content">
                   <Menu.Item :class="styles.Item" value="email">Email</Menu.Item>
                   <Menu.Item :class="styles.Item" value="message">Message</Menu.Item>

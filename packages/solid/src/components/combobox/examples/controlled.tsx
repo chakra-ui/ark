@@ -1,7 +1,7 @@
 import { Combobox, useListCollection } from '@ark-ui/solid/combobox'
 import { useFilter } from '@ark-ui/solid/locale'
 import { For, createSignal } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 
 const initialItems = ['React', 'Solid', 'Vue', 'Svelte']
 

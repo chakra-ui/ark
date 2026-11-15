@@ -34,7 +34,7 @@ export const AvatarStack = () => (
           }
         />
         <Portal>
-          <Menu.Positioner>
+          <Menu.Positioner className={menuStyles.Positioner}>
             <Menu.Content className={menuStyles.Content}>
               {hidden.map((user) => (
                 <Menu.Item key={user.id} className={menuStyles.Item} value={user.id}>

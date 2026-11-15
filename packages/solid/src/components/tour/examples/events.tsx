@@ -1,5 +1,5 @@
 import { Tour, useTour } from '@ark-ui/solid/tour'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import { SparklesIcon, XIcon } from 'lucide-solid'
 import { For, Show, createSignal } from 'solid-js'
 import button from 'styles/button.module.css'
@@ -21,7 +21,7 @@ const steps: Tour.StepDetails[] = [
     description: 'Each step change triggers an event.',
     target: () => document.querySelector<HTMLElement>('#event-2'),
     actions: [
-      { label: 'Back', action: 'prev' },
+      { label: 'Back', action: 'previous' },
       { label: 'Next', action: 'next' },
     ],
   },
@@ -32,7 +32,7 @@ const steps: Tour.StepDetails[] = [
     description: 'Complete the tour to see the status change.',
     target: () => document.querySelector<HTMLElement>('#event-3'),
     actions: [
-      { label: 'Back', action: 'prev' },
+      { label: 'Back', action: 'previous' },
       { label: 'Finish', action: 'dismiss' },
     ],
   },

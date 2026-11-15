@@ -11,7 +11,7 @@ export interface PaginationPrevTriggerProps
 
 export const PaginationPrevTrigger = (props: PaginationPrevTriggerProps) => {
   const api = usePaginationContext()
-  const mergedProps = mergeProps(() => api().getPrevTriggerProps(), props)
+  const mergedProps = mergeProps(() => api().getPreviousTriggerProps(), props)
 
   return (
     <Show when={api().type === 'button'} fallback={<ark.a {...(mergedProps as HTMLProps<'a'>)} />}>

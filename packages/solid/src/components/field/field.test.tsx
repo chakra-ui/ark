@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { createSignal } from 'solid-js'
+import { createSignal, flush } from 'solid-js'
 import { Field } from '@ark-ui/solid/field'
 
 const ComponentUnderTest = (props: Field.RootProps) => (
@@ -269,6 +269,7 @@ describe('Field / Item', () => {
     expect(screen.getByTestId('amount-input')).not.toHaveAttribute('aria-invalid')
 
     setInvalid(true)
+    flush()
 
     expect(screen.getByTestId('invalid')).toHaveTextContent('true')
     expect(screen.getByTestId('amount-input')).toHaveAttribute('aria-invalid', 'true')

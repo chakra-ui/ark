@@ -1,5 +1,5 @@
 import { type HotkeyStore, createHotkeyStore } from '@zag-js/hotkeys'
-import { onMount } from 'solid-js'
+import { onSettled } from 'solid-js'
 import { useEnvironmentContext } from '../environment/use-environment-context.ts'
 
 export interface UseHotkeyStoreProps {
@@ -29,7 +29,7 @@ export const useHotkeyStore = (props: UseHotkeyStoreProps = {}): HotkeyStore => 
   // Solid props are getters, so resolve the store once rather than on every read.
   const store = props.store ?? getDefaultHotkeyStore()
 
-  onMount(() => {
+  onSettled(() => {
     if (initialized.has(store)) return
     initialized.add(store)
     store.init({ target: env().getRootNode() as Document })

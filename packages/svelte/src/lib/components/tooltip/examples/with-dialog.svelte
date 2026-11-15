@@ -16,7 +16,7 @@
       {/snippet}
     </Tooltip.Trigger>
     <Portal>
-      <Tooltip.Positioner>
+      <Tooltip.Positioner class={tooltipStyles.Positioner}>
         <Tooltip.Content class={tooltipStyles.Content}>Opens a sign-in dialog</Tooltip.Content>
       </Tooltip.Positioner>
     </Portal>

@@ -10,15 +10,22 @@ export interface RootProps {
    */
   'aria-label'?: string
   /**
+   * Whether a filter input highlights the first item when its query changes.
+   * - `true`: highlight it while the query is not empty
+   * - `"always"`: highlight it even when the query is empty, and keep a highlight when the pointer leaves
+   * @default false
+   */
+  autoHighlight?: boolean | 'always'
+  /**
    * Whether to close the menu when an option is selected
    * @default true
    */
   closeOnSelect?: boolean
   /**
-   * Whether the menu is a composed with other composite widgets like a combobox or tabs
-   * @default true
+   * The menu's items, in order. Set it when the items are virtualized, so the keyboard
+   * and typeahead can reach items that aren't rendered.
    */
-  composite?: boolean
+  collection?: menu.Props['collection']
   /**
    * The initial highlighted value of the menu item when rendered.
    * Use when you don't need to control the highlighted value of the menu item.
@@ -29,6 +36,11 @@ export interface RootProps {
    * Use when you don't need to control the open state of the menu.
    */
   defaultOpen?: boolean
+  /**
+   * The element to focus when the menu closes.
+   * Return `null` to use the default (the trigger, or the element focused before a context menu opened).
+   */
+  finalFocusEl?: menu.Props['finalFocusEl']
   /**
    * The controlled highlighted value of the menu item.
    */
@@ -50,6 +62,11 @@ export interface RootProps {
     arrow: string
   }>
   /**
+   * The element to focus when the menu opens.
+   * Return `false` to skip moving focus, or `null` to use the default.
+   */
+  initialFocusEl?: menu.Props['initialFocusEl']
+  /**
    * Whether to loop the keyboard navigation.
    * @default false
    */
@@ -63,9 +80,20 @@ export interface RootProps {
    */
   open?: boolean
   /**
+   * The type of popup the trigger opens.
+   * - `"menu"`: the content is the menu and manages keyboard focus across its items.
+   * - `"dialog"`: the content is a dialog holding the menu list, for widgets that keep focus such as a filter input.
+   * @default "menu"
+   */
+  popupType?: 'menu' | 'dialog'
+  /**
    * The options used to dynamically position the menu
    */
   positioning?: menu.PositioningOptions
+  /**
+   * Scrolls the item at an index into view, for virtualized items. Used with `collection`.
+   */
+  scrollToIndexFn?: menu.Props['scrollToIndexFn']
   /**
    * Whether the pressing printable characters should trigger typeahead navigation
    * @default true

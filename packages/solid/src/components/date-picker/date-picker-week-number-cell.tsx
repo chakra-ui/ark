@@ -3,7 +3,7 @@ import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useDatePickerContext } from './use-date-picker-context.ts'
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 
 export interface DatePickerWeekNumberCellBaseProps extends PolymorphicProps<'td'> {
   weekIndex: number

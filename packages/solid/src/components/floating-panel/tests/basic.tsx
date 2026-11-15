@@ -1,5 +1,5 @@
 import { FloatingPanel } from '@ark-ui/solid/floating-panel'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 
 export const ComponentUnderTest = (props: FloatingPanel.RootProps) => (
   <FloatingPanel.Root {...props}>

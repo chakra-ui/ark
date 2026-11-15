@@ -16,7 +16,7 @@
 
   let { ref = $bindable(null), ...props }: PaginationPrevTriggerProps = $props()
   const pagination = usePaginationContext()
-  const mergedProps = $derived(mergeProps(pagination().getPrevTriggerProps(), props))
+  const mergedProps = $derived(mergeProps(pagination().getPreviousTriggerProps(), props))
 </script>
 
 {#if pagination().type === 'link'}

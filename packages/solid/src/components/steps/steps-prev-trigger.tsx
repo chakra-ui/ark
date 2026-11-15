@@ -7,7 +7,7 @@ export interface StepsPrevTriggerProps extends HTMLProps<'button'>, StepsPrevTri
 
 export const StepsPrevTrigger = (props: StepsPrevTriggerProps) => {
   const steps = useStepsContext()
-  const mergedProps = mergeProps(() => steps().getPrevTriggerProps(), props)
+  const mergedProps = mergeProps(() => steps().getPreviousTriggerProps(), props)
 
   return <ark.button {...mergedProps} />
 }

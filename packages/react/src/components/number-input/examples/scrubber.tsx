@@ -3,7 +3,7 @@ import { ChevronDownIcon, ChevronUpIcon, ArrowLeftRightIcon } from 'lucide-react
 import styles from 'styles/number-input.module.css'
 
 export const Scrubber = () => (
-  <NumberInput.Root className={styles.Root} defaultValue="32">
+  <NumberInput.Root className={styles.Root} defaultValue={32}>
     <NumberInput.Label className={styles.Label}>Label</NumberInput.Label>
     <NumberInput.Control className={styles.Control}>
       <NumberInput.Scrubber className={styles.Scrubber}>

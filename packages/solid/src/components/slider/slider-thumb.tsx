@@ -11,7 +11,7 @@ export interface SliderThumbBaseProps extends ThumbProps, PolymorphicProps<'div'
 export interface SliderThumbProps extends HTMLProps<'div'>, SliderThumbBaseProps {}
 
 export const SliderThumb = (props: SliderThumbProps) => {
-  const [thumbProps, localProps] = createSplitProps<ThumbProps>()(props, ['index', 'name'])
+  const [thumbProps, localProps] = createSplitProps<ThumbProps>()(props, ['disabled', 'index', 'name'])
   const slider = useSliderContext()
   const mergedProps = mergeProps(() => slider().getThumbProps(thumbProps), localProps)
 

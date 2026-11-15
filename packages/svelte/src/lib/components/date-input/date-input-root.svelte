@@ -33,6 +33,7 @@
       'invalid',
       'locale',
       'max',
+      'maxGranularity',
       'min',
       'name',
       'form',

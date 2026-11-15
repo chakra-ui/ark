@@ -57,7 +57,7 @@ export const ExampleCodeTabs = (props: Props) => {
   return (
     <Tabs.Root
       value={activeTab}
-      onValueChange={(e) => setActiveTab(e.value)}
+      onValueChange={(e) => e.value && setActiveTab(e.value)}
       variant="line"
       borderWidth="1px"
       borderColor="gray.dark.5"

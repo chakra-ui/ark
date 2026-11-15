@@ -11,7 +11,7 @@
         <button class={styles.Trigger} onclick={() => pagination().goToFirstPage()}>
           <ChevronsLeft />
         </button>
-        <button class={styles.Trigger} onclick={() => pagination().goToPrevPage()}>
+        <button class={styles.Trigger} onclick={() => pagination().goToPreviousPage()}>
           <ChevronLeft />
         </button>
         <p class={styles.Text} style="min-width: 120px; text-align: center;">

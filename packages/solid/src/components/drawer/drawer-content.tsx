@@ -24,7 +24,11 @@ export const DrawerContent = (props: DrawerContentProps) => {
 
   return (
     <Show when={!presence().unmounted}>
-      <ark.div {...mergedProps} ref={composeRefs(presence().ref, localProps.ref)} state={drawer().getContentState()} />
+      <ark.div
+        {...mergedProps}
+        ref={composeRefs((el) => presence().ref(el), localProps.ref)}
+        state={drawer().getContentState()}
+      />
     </Show>
   )
 }

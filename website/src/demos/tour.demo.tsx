@@ -32,7 +32,7 @@ export const Demo = () => {
                     {(actions) =>
                       actions.map((action) => (
                         <Tour.ActionTrigger key={action.label} action={action} asChild>
-                          <Button size="sm" variant={action.action === 'prev' ? 'outline' : 'solid'}>
+                          <Button size="sm" variant={action.action === 'previous' ? 'outline' : 'solid'}>
                             {action.label}
                           </Button>
                         </Tour.ActionTrigger>
@@ -70,7 +70,7 @@ const steps: Tour.StepDetails[] = [
       'Ark UI supports various JavaScript frameworks. Select one from the dropdown to view its documentation.',
     target: () => document.querySelector<HTMLElement>('#framework-select'),
     actions: [
-      { label: 'Prev', action: 'prev' },
+      { label: 'Prev', action: 'previous' },
       { label: 'Next', action: 'next' },
     ],
   },
@@ -82,7 +82,7 @@ const steps: Tour.StepDetails[] = [
       'The latest documentation is selected by default. To view a different version, select it from the dropdown.',
     target: () => document.querySelector<HTMLElement>('#version-select'),
     actions: [
-      { label: 'Prev', action: 'prev' },
+      { label: 'Prev', action: 'previous' },
       { label: 'Next', action: 'next' },
     ],
   },
@@ -92,7 +92,7 @@ const steps: Tour.StepDetails[] = [
     title: 'Tour Completed',
     description: 'You have completed the tour. Now, learn how to build a tour for your design system.',
     actions: [
-      { label: 'Prev', action: 'prev' },
+      { label: 'Prev', action: 'previous' },
       { label: 'Finish Tour', action: 'dismiss' },
     ],
   },

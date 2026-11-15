@@ -71,14 +71,14 @@ describe('PinInput', () => {
     await waitFor(() => expect(onComplete).toHaveBeenCalledWith({ value: ['1', '2', '3'], valueAsString: '123' }))
   })
 
-  it('should set one-time-code for autocomplete on fields', async () => {
+  it('should set one-time-code for autocomplete on the first field', async () => {
     render(<ComponentUnderTest otp />)
 
     const [input1, input2, input3] = await screen.findAllByRole('textbox')
 
     expect(input1).toHaveAttribute('autocomplete', 'one-time-code')
-    expect(input2).toHaveAttribute('autocomplete', 'one-time-code')
-    expect(input3).toHaveAttribute('autocomplete', 'one-time-code')
+    expect(input2).toHaveAttribute('autocomplete', 'off')
+    expect(input3).toHaveAttribute('autocomplete', 'off')
   })
 
   it('should replace last input calls onComplete correctly', async () => {

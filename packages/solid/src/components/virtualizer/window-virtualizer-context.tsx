@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseWindowVirtualizerContext, useWindowVirtualizerContext } from './use-window-virtualizer-context.ts'
 
 export interface WindowVirtualizerContextProps {

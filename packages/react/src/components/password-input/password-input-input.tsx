@@ -5,9 +5,9 @@ import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { useFieldContext } from '../field/index.ts'
 import { usePasswordInputContext } from './use-password-input-context.ts'
-import type { InputState } from '@zag-js/password-input'
+import type { RootState } from '@zag-js/password-input'
 
-export interface PasswordInputInputState extends InputState {}
+export interface PasswordInputInputState extends RootState {}
 
 export interface PasswordInputInputBaseProps extends PolymorphicProps<PasswordInputInputState> {}
 export interface PasswordInputInputProps extends HTMLProps<'input'>, PasswordInputInputBaseProps {}
@@ -22,7 +22,7 @@ export const PasswordInputInput = forwardRef<HTMLInputElement, PasswordInputInpu
       aria-describedby={field?.ariaDescribedby}
       {...mergedProps}
       ref={ref}
-      state={passwordInput.getInputState()}
+      state={passwordInput.getRootState()}
     />
   )
 })

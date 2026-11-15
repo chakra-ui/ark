@@ -1,4 +1,10 @@
-export type { StepChangeDetails, StepInvalidDetails } from '@zag-js/steps'
+export type {
+  CompleteDetails,
+  CompletedChangeDetails,
+  NavigationBlockedDetails,
+  StepItem,
+  ValueChangeDetails,
+} from '@zag-js/steps'
 export {
   default as Content,
   type StepsContentBaseProps as ContentBaseProps,
@@ -51,6 +57,11 @@ export {
   type StepsRootBaseProps as RootBaseProps,
   type StepsRootProps as RootProps,
 } from './steps-root.vue'
+export {
+  default as SkipTrigger,
+  type StepsSkipTriggerBaseProps as SkipTriggerBaseProps,
+  type StepsSkipTriggerProps as SkipTriggerProps,
+} from './steps-skip-trigger.vue'
 export {
   default as Separator,
   type StepsSeparatorBaseProps as SeparatorBaseProps,

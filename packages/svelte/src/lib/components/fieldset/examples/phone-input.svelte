@@ -39,7 +39,7 @@
           </Select.Trigger>
         </Select.Control>
         <Portal>
-          <Select.Positioner>
+          <Select.Positioner class={select.Positioner}>
             <Select.Content class={select.Content}>
               {#each extensions.items as item}
                 <Select.Item class={select.Item} {item}>

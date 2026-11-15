@@ -11,11 +11,11 @@ const items = [
 
 export const Vertical = () => {
   return (
-    <Steps.Root class={styles.Root} count={items.length} orientation="vertical">
+    <Steps.Root class={styles.Root} items={items} orientation="vertical">
       <Steps.List class={styles.List}>
         <For each={items}>
           {(item, index) => (
-            <Steps.Item class={styles.Item} index={index()}>
+            <Steps.Item class={styles.Item} value={item.value}>
               <Steps.Trigger class={styles.Trigger}>
                 <Steps.Indicator class={styles.Indicator}>{index() + 1}</Steps.Indicator>
                 <span>{item.title}</span>
@@ -27,8 +27,8 @@ export const Vertical = () => {
       </Steps.List>
 
       <For each={items}>
-        {(item, index) => (
-          <Steps.Content class={styles.Content} index={index()}>
+        {(item) => (
+          <Steps.Content class={styles.Content} value={item.value}>
             <div class="vstack">
               <span>
                 {item.title} - {item.description}

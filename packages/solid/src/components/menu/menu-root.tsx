@@ -1,5 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type JSX, onMount } from 'solid-js'
+import { onSettled } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence/index.tsx'
 import { type UseMenuProps, useMenu } from './use-menu.ts'
@@ -16,14 +17,18 @@ export const MenuRoot = (props: MenuRootProps) => {
   const [presenceProps, menuProps] = splitPresenceProps(props)
   const [useMenuProps, localProps] = createSplitProps<UseMenuProps>()(menuProps, [
     'anchorPoint',
+    'autoHighlight',
     'aria-label',
     'closeOnSelect',
-    'composite',
+    'collection',
+    'popupType',
     'defaultHighlightedValue',
     'defaultOpen',
+    'finalFocusEl',
     'highlightedValue',
     'id',
     'ids',
+    'initialFocusEl',
     'loopFocus',
     'navigate',
     'onEscapeKeyDown',
@@ -36,6 +41,7 @@ export const MenuRoot = (props: MenuRootProps) => {
     'onSelect',
     'open',
     'positioning',
+    'scrollToIndexFn',
     'typeahead',
     'triggerValue',
     'defaultTriggerValue',
@@ -47,7 +53,7 @@ export const MenuRoot = (props: MenuRootProps) => {
   const menu = useMenu(useMenuProps)
   const presenceApi = usePresence(mergeProps(presenceProps, () => ({ present: menu.api().open })))
 
-  onMount(() => {
+  onSettled(() => {
     if (!parentMachine) return
     parentApi?.().setChild(menu.service)
     menu.api().setParent(parentMachine)

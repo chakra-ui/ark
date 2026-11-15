@@ -4,7 +4,7 @@ import styles from 'styles/menu.module.css'
 export const Context = () => (
   <Menu.Root>
     <Menu.ContextTrigger class={styles.ContextTrigger}>Right click here</Menu.ContextTrigger>
-    <Menu.Positioner>
+    <Menu.Positioner class={styles.Positioner}>
       <Menu.Content class={styles.Content}>
         <Menu.Item class={styles.Item} value="cut">
           Cut

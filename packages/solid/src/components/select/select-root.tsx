@@ -1,6 +1,6 @@
 import type { RootState } from '@zag-js/select'
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import type { Assign } from '../../types.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import type { CollectionItem } from '../collection/index.tsx'

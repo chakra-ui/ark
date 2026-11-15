@@ -1,5 +1,5 @@
 import { Tour, useTour } from '@ark-ui/solid/tour'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import { KeyboardIcon, SparklesIcon, XIcon } from 'lucide-solid'
 import { For } from 'solid-js'
 import button from 'styles/button.module.css'
@@ -21,7 +21,7 @@ const steps: Tour.StepDetails[] = [
     description: 'Press the left arrow key to go back.',
     target: () => document.querySelector<HTMLElement>('#key-2'),
     actions: [
-      { label: 'Back', action: 'prev' },
+      { label: 'Back', action: 'previous' },
       { label: 'Next', action: 'next' },
     ],
   },
@@ -32,7 +32,7 @@ const steps: Tour.StepDetails[] = [
     description: 'Press Escape to close the tour at any time.',
     target: () => document.querySelector<HTMLElement>('#key-3'),
     actions: [
-      { label: 'Back', action: 'prev' },
+      { label: 'Back', action: 'previous' },
       { label: 'Finish', action: 'dismiss' },
     ],
   },

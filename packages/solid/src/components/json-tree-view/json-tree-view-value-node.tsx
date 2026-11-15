@@ -1,6 +1,7 @@
 import type { JsonNodeHastElement } from '@zag-js/json-tree-utils'
-import { For, type JSX } from 'solid-js'
-import { Dynamic } from 'solid-js/web'
+import { For } from 'solid-js'
+import type { JSX } from '@solidjs/web'
+import { Dynamic } from '@solidjs/web'
 
 interface JsonTreeViewValueNodeProps {
   node: JsonNodeHastElement

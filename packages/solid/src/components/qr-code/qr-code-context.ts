@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseQrCodeContext, useQrCodeContext } from './use-qr-code-context.ts'
 
 export interface QrCodeContextProps {

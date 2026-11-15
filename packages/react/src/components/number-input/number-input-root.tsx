@@ -19,8 +19,7 @@ const splitRootProps = createSplitProps<UseNumberInputProps>()
 export const NumberInputRoot = forwardRef<HTMLDivElement, NumberInputRootProps>((props, ref) => {
   const [useNumberInputProps, localProps] = splitRootProps(props, [
     'allowMouseWheel',
-    'allowOverflow',
-    'clampValueOnBlur',
+    'allowOutOfRange',
     'defaultValue',
     'disabled',
     'focusInputOnChange',

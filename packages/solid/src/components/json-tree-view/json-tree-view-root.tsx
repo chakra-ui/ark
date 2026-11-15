@@ -1,5 +1,7 @@
 import { type JsonNode, getRootNode, nodeToString, nodeToValue } from '@zag-js/json-tree-utils'
-import { type JSX, createMemo, splitProps } from 'solid-js'
+import { createMemo } from 'solid-js'
+import { splitProps } from '../../utils/split-props.ts'
+import type { JSX } from '@solidjs/web'
 import { createSplitProps } from '../../utils/create-split-props.ts'
 import { TreeView, createTreeCollection } from '../tree-view/index.tsx'
 import { getBranchValues } from './get-branch-value.ts'

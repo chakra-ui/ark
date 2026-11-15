@@ -1,9 +1,9 @@
 <script lang="ts">
-import type { VisibilityTriggerState } from '@zag-js/password-input'
+import type { RootState } from '@zag-js/password-input'
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps, PolymorphicSlots } from '../factory.ts'
 
-export interface PasswordInputVisibilityTriggerState extends VisibilityTriggerState {}
+export interface PasswordInputVisibilityTriggerState extends RootState {}
 export interface PasswordInputVisibilityTriggerBaseProps extends PolymorphicProps {}
 export interface PasswordInputVisibilityTriggerProps
   extends
@@ -31,7 +31,7 @@ useForwardExpose()
 <template>
   <ark.button
     v-bind="passwordInput.getVisibilityTriggerProps()"
-    :state="passwordInput.getVisibilityTriggerState()"
+    :state="passwordInput.getRootState()"
     :as-child="asChild"
   >
     <template v-if="$slots.render" #render="scope">

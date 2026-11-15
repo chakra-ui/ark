@@ -1,11 +1,11 @@
 <script module lang="ts">
   import type { RootState } from '@zag-js/toggle'
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseToggleProps } from './use-toggle.svelte.ts'
 
   export interface ToggleRootState extends RootState {}
   export interface ToggleRootBaseProps
-    extends UseToggleProps, PolymorphicProps<'button', ToggleRootState>, RefAttribute {}
+    extends Optional<UseToggleProps, 'id'>, PolymorphicProps<'button', ToggleRootState>, RefAttribute {}
   export interface ToggleRootProps extends Assign<HTMLProps<'button'>, ToggleRootBaseProps> {}
 </script>
 
@@ -17,13 +17,15 @@
   import { ToggleProvider } from './use-toggle-context.ts'
 
   let { ref = $bindable(null), pressed = $bindable<boolean>(), ...props }: ToggleRootProps = $props()
+  const providedId = $props.id()
 
   const [useToggleProps, localProps] = $derived(
-    createSplitProps<UseToggleProps>()(props, ['pressed', 'defaultPressed', 'disabled', 'onPressedChange']),
+    createSplitProps<Omit<UseToggleProps, 'id'>>()(props, ['pressed', 'defaultPressed', 'disabled', 'onPressedChange']),
   )
 
   const machineProps = $derived.by<UseToggleProps>(() => ({
     ...useToggleProps,
+    id: providedId,
     pressed,
     onPressedChange(nextPressed) {
       useToggleProps.onPressedChange?.(nextPressed)

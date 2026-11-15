@@ -1,5 +1,5 @@
 import { type FocusTrapOptions, trapFocus } from '@zag-js/focus-trap'
-import { createEffect, onCleanup } from 'solid-js'
+import { createEffect } from 'solid-js'
 import type { Assign } from '../../types.ts'
 import { composeRefs } from '../../utils/compose-refs.ts'
 import { createSplitProps } from '../../utils/create-split-props.ts'
@@ -39,12 +39,14 @@ export const FocusTrap = (props: FocusTrapProps) => {
     'persistentElements',
   ])
 
-  createEffect(() => {
-    if (!localNode || trapProps.disabled) return
-    const autoFocusNode = localNode.querySelector<HTMLElement>('[autofocus], [data-autofocus]')
-    trapProps.initialFocus ||= autoFocusNode ?? undefined
-    onCleanup(trapFocus(localNode, trapProps))
-  })
+  createEffect(
+    () => trapProps.disabled,
+    (disabled) => {
+      if (!localNode || disabled) return
+      const autoFocusNode = localNode.querySelector<HTMLElement>('[autofocus], [data-autofocus]')
+      return trapFocus(localNode, { ...trapProps, initialFocus: trapProps.initialFocus || autoFocusNode || undefined })
+    },
+  )
 
   return <ark.div {...localProps} ref={composeRefs((el) => (localNode = el), props.ref)} />
 }

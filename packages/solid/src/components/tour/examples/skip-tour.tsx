@@ -1,5 +1,5 @@
 import { Tour, useTour } from '@ark-ui/solid/tour'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import { SparklesIcon, XIcon } from 'lucide-solid'
 import { For } from 'solid-js'
 import button from 'styles/button.module.css'
@@ -25,7 +25,7 @@ const steps: Tour.StepDetails[] = [
     target: () => document.querySelector<HTMLElement>('#item-2'),
     actions: [
       { label: 'Skip', action: 'dismiss' },
-      { label: 'Back', action: 'prev' },
+      { label: 'Back', action: 'previous' },
       { label: 'Next', action: 'next' },
     ],
   },
@@ -36,7 +36,7 @@ const steps: Tour.StepDetails[] = [
     description: 'This is the last step of the tour.',
     target: () => document.querySelector<HTMLElement>('#item-3'),
     actions: [
-      { label: 'Back', action: 'prev' },
+      { label: 'Back', action: 'previous' },
       { label: 'Finish', action: 'dismiss' },
     ],
   },

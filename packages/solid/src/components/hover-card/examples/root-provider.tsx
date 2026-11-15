@@ -1,5 +1,5 @@
 import { HoverCard, useHoverCard } from '@ark-ui/solid/hover-card'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/hover-card.module.css'
 
 export const RootProvider = () => {
@@ -22,7 +22,7 @@ export const RootProvider = () => {
           and 3 others
         </p>
         <Portal>
-          <HoverCard.Positioner>
+          <HoverCard.Positioner class={styles.Positioner}>
             <HoverCard.Content class={styles.Content}>
               <HoverCard.Arrow class={styles.Arrow}>
                 <HoverCard.ArrowTip class={styles.ArrowTip} />

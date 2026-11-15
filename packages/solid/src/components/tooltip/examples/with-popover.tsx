@@ -1,6 +1,6 @@
 import { Popover } from '@ark-ui/solid/popover'
 import { Tooltip } from '@ark-ui/solid/tooltip'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import button from 'styles/button.module.css'
 import styles from 'styles/popover.module.css'
 import tooltipStyles from 'styles/tooltip.module.css'
@@ -12,7 +12,7 @@ export const WithPopover = () => (
         Click Me
       </Tooltip.Trigger>
       <Portal>
-        <Tooltip.Positioner>
+        <Tooltip.Positioner class={tooltipStyles.Positioner}>
           <Tooltip.Content class={tooltipStyles.Content}>See more details</Tooltip.Content>
         </Tooltip.Positioner>
       </Portal>

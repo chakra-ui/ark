@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 import { type UseTagsInputItemContext, useTagsInputItemContext } from './use-tags-input-item-context.ts'
 
 export interface TagsInputItemContextProps {

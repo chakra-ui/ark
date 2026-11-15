@@ -32,7 +32,7 @@ const collection = createListCollection({
       </div>
     </Select.Control>
     <Teleport to="body">
-      <Select.Positioner>
+      <Select.Positioner :class="styles.Positioner">
         <Select.Content :class="styles.Content">
           <Select.List :class="styles.List">
             <Select.ItemGroup v-for="[type, group] in collection.group()" :key="type" :class="styles.ItemGroup">

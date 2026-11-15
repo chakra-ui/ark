@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useDatePickerContext } from './use-date-picker-context.ts'
 
@@ -12,9 +12,9 @@ export const DatePickerYearSelect = (props: DatePickerYearSelectProps) => {
 
   return (
     <ark.select {...mergedProps}>
-      <Index each={datePicker().getYears()}>
+      <For each={datePicker().getYears()} keyed={false}>
         {(year) => <ark.option value={year().value}>{year().label}</ark.option>}
-      </Index>
+      </For>
     </ark.select>
   )
 }

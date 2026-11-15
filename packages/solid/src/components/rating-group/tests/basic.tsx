@@ -1,6 +1,6 @@
 import { Field } from '@ark-ui/solid/field'
 import { RatingGroup } from '@ark-ui/solid/rating-group'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 
 export const ComponentUnderTest = (props: RatingGroup.RootProps) => (
   <RatingGroup.Root {...props}>
@@ -8,7 +8,7 @@ export const ComponentUnderTest = (props: RatingGroup.RootProps) => (
     <RatingGroup.Control>
       <RatingGroup.Context>
         {(api) => (
-          <Index each={api().items}>
+          <For each={api().items} keyed={false}>
             {(index) => (
               <RatingGroup.Item index={index()}>
                 <RatingGroup.ItemContext>
@@ -20,7 +20,7 @@ export const ComponentUnderTest = (props: RatingGroup.RootProps) => (
                 </RatingGroup.ItemContext>
               </RatingGroup.Item>
             )}
-          </Index>
+          </For>
         )}
       </RatingGroup.Context>
       <RatingGroup.HiddenInput />
@@ -35,7 +35,7 @@ export const RatingGroupWithField = (props: Field.RootProps) => (
       <RatingGroup.Control>
         <RatingGroup.Context>
           {(api) => (
-            <Index each={api().items}>
+            <For each={api().items} keyed={false}>
               {(index) => (
                 <RatingGroup.Item index={index()}>
                   <RatingGroup.ItemContext>
@@ -47,7 +47,7 @@ export const RatingGroupWithField = (props: Field.RootProps) => (
                   </RatingGroup.ItemContext>
                 </RatingGroup.Item>
               )}
-            </Index>
+            </For>
           )}
         </RatingGroup.Context>
         <RatingGroup.HiddenInput />

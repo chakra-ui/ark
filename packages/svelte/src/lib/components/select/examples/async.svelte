@@ -50,7 +50,7 @@
     </Select.Trigger>
   </Select.Control>
   <Portal>
-    <Select.Positioner>
+    <Select.Positioner class={styles.Positioner}>
       <Select.Content class={styles.Content}>
         <Select.Status>
           {#if loading}

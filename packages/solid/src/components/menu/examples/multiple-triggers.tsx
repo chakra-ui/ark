@@ -1,5 +1,5 @@
 import { Menu } from '@ark-ui/solid/menu'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import { EllipsisVerticalIcon } from 'lucide-solid'
 import { For } from 'solid-js'
 import styles from 'styles/menu.module.css'

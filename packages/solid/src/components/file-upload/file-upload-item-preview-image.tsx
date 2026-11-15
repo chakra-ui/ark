@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { Show, createEffect, createSignal, onCleanup } from 'solid-js'
+import { Show, createEffect, createSignal } from 'solid-js'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useFileUploadContext } from './use-file-upload-context.ts'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context.ts'
@@ -12,10 +12,10 @@ export const FileUploadItemPreviewImage = (props: FileUploadItemPreviewImageProp
   const itemProps = useFileUploadItemPropsContext()
   const [url, setUrl] = createSignal<string>('')
 
-  createEffect(() => {
-    const cleanup = fileUpload().createFileUrl(itemProps().file, (url) => setUrl(url))
-    onCleanup(cleanup)
-  })
+  createEffect(
+    () => [fileUpload(), itemProps().file] as const,
+    ([api, file]) => api.createFileUrl(file, (url) => setUrl(url)),
+  )
 
   const mergedProps = mergeProps(() => fileUpload().getItemPreviewImageProps({ ...itemProps(), url: url() }), props)
 

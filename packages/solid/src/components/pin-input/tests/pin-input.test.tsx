@@ -50,12 +50,12 @@ describe('PinInput', () => {
     await waitFor(() => expect(onComplete).toHaveBeenCalledWith({ value: ['1', '2', '3'], valueAsString: '123' }))
   })
 
-  it('should set one-time-code for autocomplete on fields', async () => {
+  it('should set one-time-code for autocomplete on the first field', async () => {
     render(() => <ComponentUnderTest otp />)
 
     expect(screen.getByLabelText('pin code 1 of 3')).toHaveAttribute('autocomplete', 'one-time-code')
-    expect(screen.getByLabelText('pin code 2 of 3')).toHaveAttribute('autocomplete', 'one-time-code')
-    expect(screen.getByLabelText('pin code 3 of 3')).toHaveAttribute('autocomplete', 'one-time-code')
+    expect(screen.getByLabelText('pin code 2 of 3')).toHaveAttribute('autocomplete', 'off')
+    expect(screen.getByLabelText('pin code 3 of 3')).toHaveAttribute('autocomplete', 'off')
   })
 
   it('should replace last input calls onComplete correctly', async () => {

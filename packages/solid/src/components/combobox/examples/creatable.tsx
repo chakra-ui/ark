@@ -1,7 +1,7 @@
 import { Combobox, useListCollection } from '@ark-ui/solid/combobox'
 import { useFilter } from '@ark-ui/solid/locale'
 import { createSignal, For } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/combobox.module.css'
 
 interface Item {
@@ -84,7 +84,7 @@ export const Creatable = () => {
         </div>
       </Combobox.Control>
       <Portal>
-        <Combobox.Positioner>
+        <Combobox.Positioner class={styles.Positioner}>
           <Combobox.Content class={styles.Content}>
             <Combobox.List class={styles.List}>
               <For each={collection().items}>

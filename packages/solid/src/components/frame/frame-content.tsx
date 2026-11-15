@@ -1,4 +1,5 @@
-import { type JSX, createEffect, onCleanup } from 'solid-js'
+import { onSettled } from 'solid-js'
+import type { JSX } from '@solidjs/web'
 
 interface FrameContentProps {
   onMount?(): void
@@ -9,12 +10,9 @@ interface FrameContentProps {
 export const FrameContent = (props: FrameContentProps) => {
   const { onMount, onUnmount, children } = props
 
-  createEffect(() => {
+  onSettled(() => {
     onMount?.()
-
-    onCleanup(() => {
-      onUnmount?.()
-    })
+    return () => onUnmount?.()
   })
 
   return children

@@ -61,7 +61,7 @@ export const Multiple = () => {
         </div>
       </Combobox.Control>
       <Portal>
-        <Combobox.Positioner>
+        <Combobox.Positioner className={styles.Positioner}>
           <Combobox.Content className={styles.Content}>
             <Combobox.Empty>
               <div className={styles.Empty}>No skills found</div>

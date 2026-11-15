@@ -1,5 +1,7 @@
 import type { JsonNode } from '@zag-js/json-tree-utils'
-import { type JSX, createMemo, splitProps } from 'solid-js'
+import { createMemo } from 'solid-js'
+import { splitProps } from '../../utils/split-props.ts'
+import type { JSX } from '@solidjs/web'
 import { TreeView } from '../tree-view/index.tsx'
 import { JsonTreeViewPropsProvider } from './json-tree-view-props-context.ts'
 import type { UseJsonTreeViewReturn } from './use-json-tree-view.ts'

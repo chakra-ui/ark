@@ -1,6 +1,6 @@
 import { HoverCard } from '@ark-ui/solid/hover-card'
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-solid'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import styles from 'styles/hover-card.module.css'
 
 export const Context = () => (
@@ -22,7 +22,7 @@ export const Context = () => (
       )}
     </HoverCard.Context>
     <Portal>
-      <HoverCard.Positioner>
+      <HoverCard.Positioner class={styles.Positioner}>
         <HoverCard.Content class={styles.Content}>
           <HoverCard.Arrow class={styles.Arrow}>
             <HoverCard.ArrowTip class={styles.ArrowTip} />

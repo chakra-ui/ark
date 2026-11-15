@@ -1,6 +1,6 @@
 import { Listbox, createListCollection } from '@ark-ui/solid/listbox'
 import { CheckIcon } from 'lucide-solid'
-import { Index, createSignal } from 'solid-js'
+import { For, createSignal } from 'solid-js'
 import styles from 'styles/listbox.module.css'
 
 export const Controlled = () => {
@@ -19,7 +19,7 @@ export const Controlled = () => {
       <Listbox.Label class={styles.Label}>Select Size</Listbox.Label>
       <Listbox.Content class={styles.Content}>
         <Listbox.List class={styles.List}>
-          <Index each={collection.items}>
+          <For each={collection.items} keyed={false}>
             {(item) => (
               <Listbox.Item class={styles.Item} item={item()}>
                 <Listbox.ItemText class={styles.ItemText}>{item().label}</Listbox.ItemText>
@@ -28,7 +28,7 @@ export const Controlled = () => {
                 </Listbox.ItemIndicator>
               </Listbox.Item>
             )}
-          </Index>
+          </For>
         </Listbox.List>
       </Listbox.Content>
     </Listbox.Root>

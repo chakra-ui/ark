@@ -14,7 +14,7 @@ import tooltipStyles from 'styles/tooltip.module.css'
         <Dialog.Trigger v-bind="ctx.props" :class="button.Root">Open Dialog</Dialog.Trigger>
       </Tooltip.Trigger>
       <Teleport to="body">
-        <Tooltip.Positioner>
+        <Tooltip.Positioner :class="tooltipStyles.Positioner">
           <Tooltip.Content :class="tooltipStyles.Content">Opens a sign-in dialog</Tooltip.Content>
         </Tooltip.Positioner>
       </Teleport>

@@ -13,7 +13,7 @@ export interface StepsItemBaseProps extends ItemProps, PolymorphicProps<'div', S
 export interface StepsItemProps extends HTMLProps<'div'>, StepsItemBaseProps {}
 
 export const StepsItem = (props: StepsItemProps) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['index'])
+  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value'])
   const steps = useStepsContext()
   const mergedProps = mergeProps(() => steps().getItemProps(itemProps), localProps)
   const itemState = createMemo(() => steps().getItemState(itemProps))

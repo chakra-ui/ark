@@ -47,10 +47,6 @@ export interface RootProps<T extends CollectionItem> {
    */
   defaultValue?: string[]
   /**
-   * Whether to disable registering this a dismissable layer
-   */
-  disableLayer?: boolean
-  /**
    * Whether the combobox is disabled
    */
   disabled?: boolean
@@ -83,6 +79,10 @@ export interface RootProps<T extends CollectionItem> {
     itemGroupLabel(id: string | number): string
   }>
   /**
+   * Whether the list renders inline: always open, not positioned or dismissable
+   */
+  inline?: boolean
+  /**
    * Defines the auto-completion behavior of the combobox.
    *
    * - `autohighlight`: The first focused item is highlighted as the user types
@@ -99,6 +99,13 @@ export interface RootProps<T extends CollectionItem> {
    * Whether the combobox is invalid
    */
   invalid?: boolean
+  /**
+   * Whether the results are being loaded (e.g. fetched from a server).
+   *
+   * While loading, the listbox is marked with `aria-busy`, the loading message is
+   * announced instead of the result count, and "no results" is never announced.
+   */
+  loading?: boolean
   /**
    * Whether to loop the keyboard navigation through the items
    * @default true

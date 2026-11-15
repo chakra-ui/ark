@@ -1,7 +1,7 @@
 import { Collapsible } from '@ark-ui/solid/collapsible'
 import { Toc } from '@ark-ui/solid/toc'
 import { ChevronRightIcon } from 'lucide-solid'
-import CollapsibleStyles from 'styles/Collapsible.module.css'
+import CollapsibleStyles from 'styles/collapsible.module.css'
 import styles from 'styles/toc.module.css'
 
 const items = [
@@ -61,8 +61,8 @@ export const WithCollapsible = () => {
                           r={RADIUS}
                           fill="none"
                           stroke="currentColor"
-                          attr:stroke-opacity="0.2"
-                          attr:stroke-width="2.5"
+                          stroke-opacity="0.2"
+                          stroke-width="2.5"
                         />
                         <circle
                           cx="18"
@@ -70,19 +70,19 @@ export const WithCollapsible = () => {
                           r={RADIUS}
                           fill="none"
                           stroke="var(--demo-coral-solid)"
-                          attr:stroke-width="2.5"
-                          attr:stroke-dasharray={dashArray()}
-                          attr:stroke-linecap="round"
+                          stroke-width="2.5"
+                          stroke-dasharray={dashArray()}
+                          stroke-linecap="round"
                           transform="rotate(-90 18 18)"
                           style={{ transition: 'stroke-dasharray 0.4s ease-out' }}
                         />
                         <text
                           x="18"
                           y="18"
-                          attr:text-anchor="middle"
-                          attr:dominant-baseline="central"
-                          attr:font-size="10"
-                          attr:font-weight="600"
+                          text-anchor="middle"
+                          dominant-baseline="central"
+                          font-size="10"
+                          font-weight="600"
                           fill="currentColor"
                           class={styles.ProgressIndexText}
                         >

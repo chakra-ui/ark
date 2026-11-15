@@ -8,7 +8,7 @@ import { runIfFn } from '../../utils/run-if-fn.ts'
 export interface UseStepsProps extends Optional<Omit<steps.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseStepsReturn extends Accessor<steps.Api<PropTypes>> {}
 
-export function useSteps(props?: MaybeAccessor<UseStepsProps>): UseStepsReturn {
+export function useSteps(props: MaybeAccessor<UseStepsProps>): UseStepsReturn {
   const id = createUniqueId()
   const environment = useEnvironmentContext()
   const locale = useLocaleContext()

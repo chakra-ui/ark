@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { PinInput } from '@ark-ui/vue/pin-input'
 import styles from 'styles/pin-input.module.css'
+
+const blurInput = () => (document.activeElement as HTMLElement | null)?.blur()
 </script>
 
 <template>
-  <PinInput.Root :class="styles.Root" :count="3" blurOnComplete>
+  <PinInput.Root :class="styles.Root" :count="3" @value-complete="blurInput">
     <PinInput.Label :class="styles.Label">Label</PinInput.Label>
     <PinInput.Control :class="styles.Control">
       <PinInput.Input v-for="id in [0, 1, 2]" :key="id" :index="id" :class="styles.Input" />

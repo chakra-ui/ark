@@ -1,6 +1,6 @@
 import { Carousel } from '@ark-ui/solid/carousel'
 import { ChevronLeftIcon, ChevronRightIcon, PauseIcon, PlayIcon } from 'lucide-solid'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import styles from 'styles/carousel.module.css'
 
 const images = [
@@ -15,13 +15,13 @@ export const Autoplay = () => {
   return (
     <Carousel.Root class={styles.Root} count={images.length} autoPlay loop>
       <Carousel.ItemGroup class={styles.ItemGroup}>
-        <Index each={images}>
+        <For each={images} keyed={false}>
           {(image, index) => (
             <Carousel.Item class={styles.Item} index={index}>
               <img src={image().src} alt={image().alt} width="500" height="300" />
             </Carousel.Item>
           )}
-        </Index>
+        </For>
       </Carousel.ItemGroup>
       <Carousel.Control class={styles.Control} data-justify="center">
         <Carousel.PrevTrigger class={styles.Trigger}>

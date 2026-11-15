@@ -40,7 +40,7 @@ const parse = (value: string) => {
       </DatePicker.Trigger>
       <DatePicker.ClearTrigger :class="button.Root">Clear</DatePicker.ClearTrigger>
     </DatePicker.Control>
-    <DatePicker.Positioner>
+    <DatePicker.Positioner :class="styles.Positioner">
       <DatePicker.Content :class="styles.Content">
         <DatePicker.View view="month" :class="styles.View">
           <DatePicker.ViewControl :class="styles.ViewControl">

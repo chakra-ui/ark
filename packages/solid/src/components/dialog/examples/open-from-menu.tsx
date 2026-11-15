@@ -2,7 +2,7 @@ import { Dialog } from '@ark-ui/solid/dialog'
 import { Menu } from '@ark-ui/solid/menu'
 import { ChevronDownIcon, XIcon } from 'lucide-solid'
 import { createSignal } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import dialog from 'styles/dialog.module.css'
 import menu from 'styles/menu.module.css'
 
@@ -19,7 +19,7 @@ export const OpenFromMenu = () => {
           </Menu.Indicator>
         </Menu.Trigger>
         <Portal>
-          <Menu.Positioner>
+          <Menu.Positioner class={menu.Positioner}>
             <Menu.Content class={menu.Content}>
               <Menu.Item class={menu.Item} value="edit">
                 Edit

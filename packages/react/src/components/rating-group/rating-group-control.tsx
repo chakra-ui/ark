@@ -5,9 +5,9 @@ import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
 import { useFieldContext } from '../field/use-field-context.ts'
 import { useRatingGroupContext } from './use-rating-group-context.ts'
-import type { ControlState } from '@zag-js/rating-group'
+import type { RootState } from '@zag-js/rating-group'
 
-export interface RatingGroupControlState extends ControlState {}
+export interface RatingGroupControlState extends RootState {}
 
 export interface RatingGroupControlBaseProps extends PolymorphicProps<RatingGroupControlState> {}
 export interface RatingGroupControlProps extends HTMLProps<'div'>, RatingGroupControlBaseProps {}
@@ -18,12 +18,7 @@ export const RatingGroupControl = forwardRef<HTMLDivElement, RatingGroupControlP
   const field = useFieldContext()
 
   return (
-    <ark.div
-      aria-describedby={field?.ariaDescribedby}
-      {...mergedProps}
-      ref={ref}
-      state={ratingGroup.getControlState()}
-    />
+    <ark.div aria-describedby={field?.ariaDescribedby} {...mergedProps} ref={ref} state={ratingGroup.getRootState()} />
   )
 })
 

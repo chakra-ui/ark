@@ -11,7 +11,7 @@ export const WithDialog = () => (
     <Tooltip.Root>
       <Tooltip.Trigger render={<Dialog.Trigger className={button.Root}>Open Dialog</Dialog.Trigger>} />
       <Portal>
-        <Tooltip.Positioner>
+        <Tooltip.Positioner className={tooltipStyles.Positioner}>
           <Tooltip.Content className={tooltipStyles.Content}>Opens a sign-in dialog</Tooltip.Content>
         </Tooltip.Positioner>
       </Portal>

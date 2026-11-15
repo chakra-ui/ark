@@ -1,5 +1,5 @@
 import { SegmentGroup } from '@ark-ui/solid/segment-group'
-import { Index, Show, createSignal } from 'solid-js'
+import { For, Show, createSignal } from 'solid-js'
 import button from 'styles/button.module.css'
 import styles from 'styles/segment-group.module.css'
 
@@ -15,7 +15,7 @@ export const Conditional = () => {
       <Show when={show()}>
         <SegmentGroup.Root class={styles.Root} defaultValue="React">
           <SegmentGroup.Indicator class={styles.Indicator} />
-          <Index each={frameworks}>
+          <For each={frameworks} keyed={false}>
             {(framework) => (
               <SegmentGroup.Item class={styles.Item} value={framework()}>
                 <SegmentGroup.ItemText class={styles.ItemText}>{framework()}</SegmentGroup.ItemText>
@@ -23,7 +23,7 @@ export const Conditional = () => {
                 <SegmentGroup.ItemHiddenInput />
               </SegmentGroup.Item>
             )}
-          </Index>
+          </For>
         </SegmentGroup.Root>
       </Show>
     </div>

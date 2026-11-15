@@ -3,7 +3,7 @@ import { useFilter } from '@ark-ui/solid/locale'
 import { TagsInput, useTagsInput } from '@ark-ui/solid/tags-input'
 import { CheckIcon, XIcon } from 'lucide-solid'
 import { For, createUniqueId } from 'solid-js'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import combobox from 'styles/combobox.module.css'
 import styles from 'styles/tags-input.module.css'
 
@@ -66,7 +66,7 @@ export const WithCombobox = () => {
       </TagsInput.RootProvider>
 
       <Portal>
-        <Combobox.Positioner>
+        <Combobox.Positioner class={combobox.Positioner}>
           <Combobox.Content class={combobox.Content}>
             <Combobox.Empty class={combobox.Item}>No frameworks found</Combobox.Empty>
             <For each={collection().items}>

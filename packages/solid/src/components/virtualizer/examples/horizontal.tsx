@@ -1,5 +1,5 @@
 import { ListVirtualizer, useListVirtualizer } from '@ark-ui/solid/virtualizer'
-import { Index } from 'solid-js'
+import { For } from 'solid-js'
 import styles from 'styles/virtualizer.module.css'
 
 const items = Array.from({ length: 10000 }, (_, index) => `${index + 1}`)
@@ -15,7 +15,7 @@ export const Horizontal = () => {
   return (
     <ListVirtualizer.Root value={virtualizer} class={styles.RootHorizontal}>
       <ListVirtualizer.Content>
-        <Index each={virtualizer.getVirtualItems()}>
+        <For each={virtualizer.getVirtualItems()} keyed={false}>
           {(item) => (
             <ListVirtualizer.Item
               item={item()}
@@ -24,7 +24,7 @@ export const Horizontal = () => {
               {items[item().index]}
             </ListVirtualizer.Item>
           )}
-        </Index>
+        </For>
       </ListVirtualizer.Content>
     </ListVirtualizer.Root>
   )

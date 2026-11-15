@@ -1,5 +1,5 @@
 import { Dialog } from '@ark-ui/solid/dialog'
-import { Portal } from 'solid-js/web'
+import { Portal } from '@solidjs/web'
 import { XIcon } from 'lucide-solid'
 import { For, Show, createSignal } from 'solid-js'
 import button from 'styles/button.module.css'

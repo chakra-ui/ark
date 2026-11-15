@@ -8,7 +8,7 @@ export const Context = () => (
   <Popover.Root>
     <Popover.Trigger className={button.Root}>Click Me</Popover.Trigger>
     <Portal>
-      <Popover.Positioner>
+      <Popover.Positioner className={styles.Positioner}>
         <Popover.Content className={styles.Content}>
           <Popover.CloseTrigger className={styles.CloseTrigger}>
             <XIcon />

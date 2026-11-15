@@ -70,43 +70,43 @@ export const useHotkeys = (props: MaybeAccessor<UseHotkeysProps>) => {
   // Resolved on every event so the action and enabled state are never a render behind.
   const findCommand = (id: string) => untrack(latest).find((item, index) => resolveId(item, index) === id)
 
-  createEffect(() => {
-    const current = latest()
-    const resolvedPlatform = platform()
+  createEffect(
+    () => [latest(), platform()] as const,
+    ([current, resolvedPlatform]) => {
+      const nextIds = new Set(current.map(resolveId))
 
-    const nextIds = new Set(current.map(resolveId))
+      for (const id of [...registered.keys()]) {
+        if (nextIds.has(id)) continue
+        store.unregister(id)
+        registered.delete(id)
+      }
 
-    for (const id of [...registered.keys()]) {
-      if (nextIds.has(id)) continue
-      store.unregister(id)
-      registered.delete(id)
-    }
+      current.forEach((command, index) => {
+        const id = resolveId(command, index)
+        const next = toRegistration(command, resolvedPlatform)
+        const previous = registered.get(id)
 
-    current.forEach((command, index) => {
-      const id = resolveId(command, index)
-      const next = toRegistration(command, resolvedPlatform)
-      const previous = registered.get(id)
+        if (previous && isEqual(previous, next)) return
+        if (previous) store.unregister(id)
+        else warnOnForeignId(store, id)
 
-      if (previous && isEqual(previous, next)) return
-      if (previous) store.unregister(id)
-      else warnOnForeignId(store, id)
+        store.register({
+          ...command,
+          id,
+          action: (event) => {
+            findCommand(id)?.action(event)
+          },
+          enabled: () => {
+            const enabled = findCommand(id)?.enabled
+            if (enabled === undefined) return true
+            return typeof enabled === 'function' ? enabled() : enabled
+          },
+        })
 
-      store.register({
-        ...command,
-        id,
-        action: (event) => {
-          findCommand(id)?.action(event)
-        },
-        enabled: () => {
-          const enabled = findCommand(id)?.enabled
-          if (enabled === undefined) return true
-          return typeof enabled === 'function' ? enabled() : enabled
-        },
+        registered.set(id, next)
       })
-
-      registered.set(id, next)
-    })
-  })
+    },
+  )
 
   onCleanup(() => {
     for (const id of registered.keys()) store.unregister(id)

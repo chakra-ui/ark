@@ -1,6 +1,6 @@
 import { Field } from '@ark-ui/solid/field'
 import { Select, createListCollection } from '@ark-ui/solid/select'
-import { Index } from 'solid-js/web'
+import { For } from '@solidjs/web'
 
 export const SelectWithField = (props: Field.RootProps) => {
   const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
@@ -17,14 +17,14 @@ export const SelectWithField = (props: Field.RootProps) => {
         </Select.Control>
         <Select.Positioner>
           <Select.Content>
-            <Index each={collection.items}>
+            <For each={collection.items} keyed={false}>
               {(item) => (
                 <Select.Item item={item()}>
                   <Select.ItemText>{item()}</Select.ItemText>
                   <Select.ItemIndicator>✓</Select.ItemIndicator>
                 </Select.Item>
               )}
-            </Index>
+            </For>
           </Select.Content>
         </Select.Positioner>
         <Select.HiddenSelect />
