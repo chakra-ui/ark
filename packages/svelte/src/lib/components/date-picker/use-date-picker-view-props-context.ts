@@ -9,4 +9,6 @@ export const [DatePickerViewPropsProvider, useDatePickerViewPropsContext] =
     name: 'DatePickerViewPropsContext',
     hookName: 'useDatePickerViewPropsContext',
     providerName: '<DatePickerViewPropsProvider />',
+    strict: false,
+    defaultValue: () => ({ view: 'day' }),
   })
