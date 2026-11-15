@@ -19,7 +19,7 @@ export const WithField = () => {
             </Select.Indicator>
           </Select.Trigger>
         </Select.Control>
-        <Select.Positioner>
+        <Select.Positioner className={styles.Positioner}>
           <Select.Content className={styles.Content}>
             <Select.List className={styles.List}>
               {collection.items.map((item) => (

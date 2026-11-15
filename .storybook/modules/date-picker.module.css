@@ -168,6 +168,10 @@
   }
 }
 
+.Positioner {
+  z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
+}
+
 .Content {
   display: flex;
   flex-direction: column;
@@ -178,7 +182,6 @@
   border: 1px solid var(--demo-border);
   border-radius: 0.5rem;
   box-shadow: var(--demo-shadow-md);
-  z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
   outline: none;
 
   &[data-state='open'] {

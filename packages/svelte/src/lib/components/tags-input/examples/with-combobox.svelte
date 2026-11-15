@@ -69,7 +69,7 @@
   </TagsInput.RootProvider>
 
   <Portal>
-    <Combobox.Positioner>
+    <Combobox.Positioner class={combobox.Positioner}>
       <Combobox.Content class={combobox.Content}>
         <Combobox.Empty class={combobox.Item}>No frameworks found</Combobox.Empty>
         {#each collection().items as item (item)}

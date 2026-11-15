@@ -20,12 +20,12 @@
       {/snippet}
     </Tooltip.Trigger>
     <Portal>
-      <Tooltip.Positioner>
+      <Tooltip.Positioner class={tooltipStyles.Positioner}>
         <Tooltip.Content class={tooltipStyles.Content}>Open the file menu</Tooltip.Content>
       </Tooltip.Positioner>
     </Portal>
   </Tooltip.Root>
-  <Menu.Positioner>
+  <Menu.Positioner class={styles.Positioner}>
     <Menu.Content class={styles.Content}>
       <Menu.Arrow class={styles.Arrow}>
         <Menu.ArrowTip class={styles.ArrowTip} />

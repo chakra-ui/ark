@@ -10,7 +10,7 @@ export const Basic = () => (
         <ChevronDownIcon />
       </Menu.Indicator>
     </Menu.Trigger>
-    <Menu.Positioner>
+    <Menu.Positioner className={styles.Positioner}>
       <Menu.Content className={styles.Content}>
         <Menu.Arrow className={styles.Arrow}>
           <Menu.ArrowTip className={styles.ArrowTip} />

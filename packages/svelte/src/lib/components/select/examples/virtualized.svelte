@@ -34,7 +34,7 @@
     </div>
   </Select.Control>
   <Portal>
-    <Select.Positioner>
+    <Select.Positioner class={styles.Positioner}>
       <Select.Content class={styles.Content}>
         <Select.List class={styles.Scroller} style={`--total-size: ${virtualizer.getTotalSize()}px`}>
           {#snippet render(props)}

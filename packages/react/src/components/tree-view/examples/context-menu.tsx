@@ -19,7 +19,7 @@ const TreeNodeContextMenu = (props: TreeNodeContextMenuProps) => {
     <Menu.Root {...rest} ids={{ contextTrigger: triggerId }}>
       {children}
       <Portal>
-        <Menu.Positioner>
+        <Menu.Positioner className={menuStyles.Positioner}>
           <Menu.Content className={menuStyles.Content}>
             <Menu.Item className={menuStyles.Item} value="rename">
               Rename

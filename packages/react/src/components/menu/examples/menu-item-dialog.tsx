@@ -20,7 +20,7 @@ export const MenuItemDialog = () => {
           </Menu.Indicator>
         </Menu.Trigger>
         <Portal>
-          <Menu.Positioner>
+          <Menu.Positioner className={styles.Positioner}>
             <Menu.Content className={styles.Content}>
               <Menu.Item className={styles.Item} value="edit">
                 Edit

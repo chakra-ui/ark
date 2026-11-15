@@ -119,7 +119,7 @@
     </div>
   </Combobox.Control>
   <Portal>
-    <Combobox.Positioner>
+    <Combobox.Positioner class={styles.Positioner}>
       <Combobox.Content class={styles.Content}>
         <Combobox.List class={styles.Scroller} style={`--total-size: ${virtualizer.getTotalSize()}px`}>
           {#snippet render(props)}

@@ -21,7 +21,7 @@ import styles from 'styles/date-picker.module.css'
       <DatePicker.PresetTrigger value="last30Days" :class="styles.PresetTrigger">Last 30 days</DatePicker.PresetTrigger>
       <DatePicker.PresetTrigger value="thisMonth" :class="styles.PresetTrigger">This month</DatePicker.PresetTrigger>
     </div>
-    <DatePicker.Positioner>
+    <DatePicker.Positioner :class="styles.Positioner">
       <DatePicker.Content :class="styles.Content">
         <DatePicker.View view="day" :class="styles.View">
           <DatePicker.Context v-slot="api">

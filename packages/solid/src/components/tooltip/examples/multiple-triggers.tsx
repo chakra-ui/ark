@@ -37,7 +37,7 @@ export const MultipleTriggers = () => {
         </For>
       </div>
       <Portal>
-        <Tooltip.Positioner>
+        <Tooltip.Positioner class={styles.Positioner}>
           <Tooltip.Content class={styles.Content}>
             {activeTool() && (
               <>

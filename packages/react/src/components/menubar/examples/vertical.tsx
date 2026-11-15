@@ -9,7 +9,7 @@ export const Vertical = () => (
     <Menu.Root positioning={{ placement: 'right-start' }}>
       <Menu.Trigger className={styles.Trigger}>Account</Menu.Trigger>
       <Portal>
-        <Menu.Positioner>
+        <Menu.Positioner className={menu.Positioner}>
           <Menu.Content className={menu.Content}>
             <Menu.Item className={menu.Item} value="profile">
               Profile
@@ -25,7 +25,7 @@ export const Vertical = () => (
     <Menu.Root positioning={{ placement: 'right-start' }}>
       <Menu.Trigger className={styles.Trigger}>Workspace</Menu.Trigger>
       <Portal>
-        <Menu.Positioner>
+        <Menu.Positioner className={menu.Positioner}>
           <Menu.Content className={menu.Content}>
             <Menu.Item className={menu.Item} value="members">
               Members
@@ -41,7 +41,7 @@ export const Vertical = () => (
     <Menu.Root positioning={{ placement: 'right-start' }}>
       <Menu.Trigger className={styles.Trigger}>Help</Menu.Trigger>
       <Portal>
-        <Menu.Positioner>
+        <Menu.Positioner className={menu.Positioner}>
           <Menu.Content className={menu.Content}>
             <Menu.Item className={menu.Item} value="docs">
               Documentation

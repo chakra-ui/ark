@@ -38,7 +38,7 @@ import styles from 'styles/color-picker.module.css'
               </ColorPicker.Control>
 
               <Teleport to="body">
-                <ColorPicker.Positioner>
+                <ColorPicker.Positioner :class="styles.Positioner">
                   <ColorPicker.Content :class="styles.Content">
                     <ColorPicker.Area :class="styles.Area">
                       <ColorPicker.AreaBackground :class="styles.AreaBackground" />

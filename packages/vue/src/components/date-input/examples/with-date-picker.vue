@@ -32,7 +32,7 @@ const dateInput = useDateInput(
             <CalendarIcon />
           </DatePicker.Trigger>
         </DatePicker.Control>
-        <DatePicker.Positioner>
+        <DatePicker.Positioner :class="datePickerStyles.Positioner">
           <DatePicker.Content :class="datePickerStyles.Content">
             <DatePicker.View view="day" :class="datePickerStyles.View">
               <DatePicker.Context v-slot="api">

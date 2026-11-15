@@ -12,7 +12,7 @@ import styles from 'styles/menu.module.css'
         <ChevronDownIcon />
       </Menu.Indicator>
     </Menu.Trigger>
-    <Menu.Positioner>
+    <Menu.Positioner :class="styles.Positioner">
       <Menu.Content :class="styles.Content">
         <Menu.ItemGroup :class="styles.ItemGroup">
           <Menu.ItemGroupLabel :class="styles.ItemGroupLabel">Clipboard</Menu.ItemGroupLabel>

@@ -36,7 +36,7 @@ export const WithTooltip = () => {
         </For>
       </ToggleGroup.Root>
       <Portal>
-        <Tooltip.Positioner>
+        <Tooltip.Positioner class={tooltipStyles.Positioner}>
           <Tooltip.Content class={tooltipStyles.Content}>
             {items.find((item) => item.value === tooltip().triggerValue)?.label}
           </Tooltip.Content>

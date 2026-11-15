@@ -18,7 +18,7 @@ export const RootProvider = () => {
             <ChevronDownIcon />
           </Menu.Indicator>
         </Menu.Trigger>
-        <Menu.Positioner>
+        <Menu.Positioner className={styles.Positioner}>
           <Menu.Content className={styles.Content}>
             <Menu.Item className={styles.Item} value="cut">
               Cut

@@ -24,7 +24,7 @@ function createCalendar(identifier: string) {
         <CalendarIcon />
       </DatePicker.Trigger>
     </DatePicker.Control>
-    <DatePicker.Positioner>
+    <DatePicker.Positioner :class="styles.Positioner">
       <DatePicker.Content :class="styles.Content">
         <DatePicker.View view="day" :class="styles.View">
           <DatePicker.Context v-slot="api">

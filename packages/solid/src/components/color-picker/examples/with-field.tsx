@@ -17,7 +17,7 @@ export const WithField = () => (
           </div>
         </ColorPicker.Trigger>
       </ColorPicker.Control>
-      <ColorPicker.Positioner>
+      <ColorPicker.Positioner class={styles.Positioner}>
         <ColorPicker.Content class={styles.Content} />
       </ColorPicker.Positioner>
       <ColorPicker.HiddenInput />

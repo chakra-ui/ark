@@ -19,7 +19,7 @@ export const Controlled = () => {
             <ChevronDownIcon />
           </Menu.Indicator>
         </Menu.Trigger>
-        <Menu.Positioner>
+        <Menu.Positioner class={styles.Positioner}>
           <Menu.Content class={styles.Content}>
             <Menu.Item class={styles.Item} value="edit">
               Edit

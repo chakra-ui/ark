@@ -41,7 +41,7 @@ defineProps<Props>()
               </Menu.ContextTrigger>
             </TreeView.Cell>
             <Teleport to="body">
-              <Menu.Positioner>
+              <Menu.Positioner :class="menuStyles.Positioner">
                 <Menu.Content :class="menuStyles.Content">
                   <Menu.Item :class="menuStyles.Item" value="rename">Rename</Menu.Item>
                   <Menu.Item :class="menuStyles.Item" value="delete">Delete</Menu.Item>
@@ -70,7 +70,7 @@ defineProps<Props>()
             </Menu.ContextTrigger>
           </TreeView.Cell>
           <Teleport to="body">
-            <Menu.Positioner>
+            <Menu.Positioner :class="menuStyles.Positioner">
               <Menu.Content :class="menuStyles.Content">
                 <Menu.Item :class="menuStyles.Item" value="rename">Rename</Menu.Item>
                 <Menu.Item :class="menuStyles.Item" value="delete">Delete</Menu.Item>
