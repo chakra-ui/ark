@@ -32,6 +32,7 @@
       'anchorPoint',
       'autoHighlight',
       'aria-label',
+      'autoHighlight',
       'closeOnSelect',
       'collection',
       'popupType',

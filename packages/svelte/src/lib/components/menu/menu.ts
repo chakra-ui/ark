@@ -57,6 +57,11 @@ export {
   type MenuItemIndicatorProps as ItemIndicatorProps,
 } from './menu-item-indicator.svelte'
 export {
+  default as Input,
+  type MenuInputBaseProps as InputBaseProps,
+  type MenuInputProps as InputProps,
+} from './menu-input.svelte'
+export {
   default as ItemText,
   type MenuItemTextBaseProps as ItemTextBaseProps,
   type MenuItemTextProps as ItemTextProps,
@@ -67,6 +72,11 @@ export {
   type MenuItemProps as ItemProps,
   type MenuItemState as ItemState,
 } from './menu-item.svelte'
+export {
+  default as List,
+  type MenuListBaseProps as ListBaseProps,
+  type MenuListProps as ListProps,
+} from './menu-list.svelte'
 export {
   default as Positioner,
   type MenuPositionerBaseProps as PositionerBaseProps,

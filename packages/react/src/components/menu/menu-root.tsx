@@ -23,6 +23,7 @@ export const MenuRoot = (props: MenuRootProps) => {
     'anchorPoint',
     'autoHighlight',
     'aria-label',
+    'autoHighlight',
     'closeOnSelect',
     'collection',
     'popupType',

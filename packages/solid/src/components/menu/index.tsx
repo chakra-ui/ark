@@ -28,6 +28,7 @@ export {
   type MenuContextTriggerProps,
 } from './menu-context-trigger.tsx'
 export { MenuIndicator, type MenuIndicatorBaseProps, type MenuIndicatorProps } from './menu-indicator.tsx'
+export { MenuInput, type MenuInputBaseProps, type MenuInputProps } from './menu-input.tsx'
 export { MenuItem, type MenuItemBaseProps, type MenuItemProps, type MenuItemState } from './menu-item.tsx'
 export { MenuItemContext, type MenuItemContextProps } from './menu-item-context.tsx'
 export { MenuItemGroup, type MenuItemGroupBaseProps, type MenuItemGroupProps } from './menu-item-group.tsx'
@@ -42,6 +43,7 @@ export {
   type MenuItemIndicatorProps,
 } from './menu-item-indicator.tsx'
 export { MenuItemText, type MenuItemTextBaseProps, type MenuItemTextProps } from './menu-item-text.tsx'
+export { MenuList, type MenuListBaseProps, type MenuListProps } from './menu-list.tsx'
 export {
   MenuPositioner,
   type MenuPositionerBaseProps,
