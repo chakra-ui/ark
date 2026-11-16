@@ -72,7 +72,7 @@ Beyond `as-child-to-render`, prop renames ship for every framework — `react/*`
 | `popover-portalled`        | removes the `portalled` prop                                             |
 | `tags-input-editable`      | adds `editable` to keep the old default                                  |
 | `pin-input-count`          | `length` → `count`, or flags a missing `count`                          |
-| `css/data-attributes`      | merge scope/part selectors, update toggle state selectors (stylesheets)  |
+| `css/data-attributes`      | merge scope/part selectors, rename the attributes zag v2 changed         |
 
 Two changes are left to do by hand because they reshape markup, not just props: the `popover` `Portal` wrapper, and the
 `Combobox`/`Listbox`/`Select` `content` → `content` + `list` split. Both are covered below.
@@ -255,8 +255,8 @@ into `[data-pressed]`, and swaps the removed `data-focus` on toggle-group and to
 left for you to update.
 
 A few attributes also changed name (tree-view parts, the image-cropper and floating-panel `data-placement`, and
-JsonTreeView now using the tree view's attributes). The codemod doesn't cover these; see the table in the website's
-upgrade guide.
+JsonTreeView now using the tree view's attributes). The codemod renames these too; see the table in the website's
+upgrade guide for the cases it leaves.
 
 Ids are still generated where ARIA needs them to point somewhere, so `aria-controls` and `aria-labelledby` keep working.
 Parts that nothing references no longer carry an `id` of their own. This comes from zag v2's anatomy, so it applies to

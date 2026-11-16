@@ -297,7 +297,9 @@ variables are left for you to update. Outside `.css` files, `[data-state="on"]` 
 `[data-pressed]` right after a toggle or toggle-group item selector, so other libraries' selectors
 stay as they are.
 
-A few attributes changed name, and the codemod leaves these for you:
+A few attributes changed name. The codemod renames these too, except `item-indicator`. It renames `data-position`
+and `data-axis` only when they directly follow the handle or resize trigger part selector, so selectors that target
+those parts by class are left for you:
 
 | Component | v5 | v6 |
 | --- | --- | --- |
@@ -310,9 +312,11 @@ A few attributes changed name, and the codemod leaves these for you:
 | ImageCropper handle | `[data-position="nw"]`, … | `[data-placement="nw"]`, … |
 | FloatingPanel resize trigger | `[data-axis="n"]`, … | `[data-placement="n"]`, … |
 
-JsonTreeView also drops its own scope: v5 parts carried `data-scope="json-tree-view"`, and v6 parts use the tree view's
-attributes, so `[data-scope="json-tree-view"][data-part="branch"]` becomes `[data-tree-view-node-group]`, not
-`[data-json-tree-view-branch]`.
+A v5 `item` or `branch-control` selector becomes two attribute selectors, which raises its specificity, so check any
+overrides that relied on the old order.
+
+JsonTreeView parts use the tree view's part attributes, so
+`[data-scope="json-tree-view"][data-part="branch"]` becomes `[data-tree-view-node-group]`. The codemod handles this too.
 
 Steps also keeps a step completed when the user goes back to it, so a step can carry both
 `data-current` and `data-complete`. Put your current-step style after the completed one, or scope the
