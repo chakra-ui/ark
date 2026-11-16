@@ -77,6 +77,67 @@ const toggle = '[data-scope="toggle"][data-part="root"][data-state="on"]'`,
     expect(cssDataAttributes(sfc, 'a.svelte').code).toContain('[data-dialog-trigger] {')
   })
 
+  it('renames tree-view parts to their v6 names', () => {
+    const result = cssDataAttributes(
+      `[data-scope="tree-view"][data-part="branch-control"] { }
+[data-scope="tree-view"][data-part="item"] { }
+[data-tree-view-branch-content] { }
+[data-tree-view-branch-indent-guide] { }
+[data-tree-view-branch-trigger] { }
+[data-tree-view-item-text] { }`,
+      'a.css',
+    )
+    expect(result.code).toBe(`[data-tree-view-node][data-branch] { }
+[data-tree-view-node]:not([data-branch]) { }
+[data-tree-view-node-group-content] { }
+[data-tree-view-indent-guide] { }
+[data-tree-view-node-expand-trigger] { }
+[data-tree-view-node-text] { }`)
+  })
+
+  it('moves json-tree-view selectors onto the tree-view attributes', () => {
+    const result = cssDataAttributes(
+      `[data-scope="json-tree-view"][data-part="branch"] { } [data-scope="json-tree-view"][data-part="tree"] { }`,
+      'a.css',
+    )
+    expect(result.code).toBe(`[data-tree-view-node-group] { } [data-tree-view-tree] { }`)
+  })
+
+  it('counts a json-tree-view selector once and leaves parts v6 does not have', () => {
+    const result = cssDataAttributes(
+      `[data-scope="json-tree-view"][data-part="label"] { } [data-json-tree-view-item-indicator] { }`,
+      'a.css',
+    )
+    expect(result.count).toBe(1)
+    expect(result.code).toBe(`[data-tree-view-label] { } [data-json-tree-view-item-indicator] { }`)
+  })
+
+  it('renames only the attribute each part used, with any operator', () => {
+    const result = cssDataAttributes(
+      `[data-image-cropper-handle][data-position^="n"] { } [data-image-cropper-handle][data-position] { } [data-image-cropper-handle][data-axis="x"] { }`,
+      'a.css',
+    )
+    expect(result.code).toBe(
+      `[data-image-cropper-handle][data-placement^="n"] { } [data-image-cropper-handle][data-placement] { } [data-image-cropper-handle][data-axis="x"] { }`,
+    )
+  })
+
+  it('leaves v6 tree-view selectors alone', () => {
+    expect(cssDataAttributes(`[data-tree-view-node][data-branch] { }`, 'a.css').code).toBeNull()
+  })
+
+  it('renames image-cropper and floating-panel handle attributes to data-placement', () => {
+    const result = cssDataAttributes(
+      `[data-scope="image-cropper"][data-part="handle"][data-position="nw"] { }
+[data-floating-panel-resize-trigger][data-axis="se"] { }
+[data-image-cropper-grid][data-axis="vertical"] { }`,
+      'a.css',
+    )
+    expect(result.code).toBe(`[data-image-cropper-handle][data-placement="nw"] { }
+[data-floating-panel-resize-trigger][data-placement="se"] { }
+[data-image-cropper-grid][data-axis="vertical"] { }`)
+  })
+
   it('does nothing to unrelated css', () => {
     expect(cssDataAttributes(`.foo { color: red; }`, 'a.css').code).toBeNull()
   })

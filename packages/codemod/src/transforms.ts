@@ -62,7 +62,7 @@ export const transforms: TransformDef[] = [
   ...propRenameTransforms,
   {
     name: 'css/data-attributes',
-    description: 'Merge data-scope/data-part selectors and update toggle state selectors',
+    description: 'Merge data-scope/data-part selectors and rename the attributes zag v2 changed',
     extensions: ['.css', '.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs', '.vue', '.svelte'],
     prefilter: (source) => source.includes('[data-'),
     run: cssDataAttributes,
