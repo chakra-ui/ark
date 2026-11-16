@@ -5,7 +5,7 @@ export const conditions = {
     hidden: '&:is([hidden])',
     indeterminate: '&:is(:indeterminate, [data-indeterminate], [aria-checked=mixed], [data-state=indeterminate])',
     off: '&:is([data-state="off"])',
-    on: '&:is([data-state="on"])',
+    on: '&:is([data-state="on"], [data-pressed])',
     today: '&:is([data-today])',
     underValue: '&:is([data-state="under-value"])',
     dark: '.dark &',

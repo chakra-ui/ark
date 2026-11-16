@@ -38,7 +38,7 @@
     background: var(--demo-neutral-subtle);
   }
 
-  &[data-state='on'] {
+  &[data-pressed] {
     background: var(--demo-neutral-subtle);
     color: var(--demo-neutral-fg);
     box-shadow: var(--demo-shadow-xs);

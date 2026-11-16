@@ -41,15 +41,15 @@ const recipe = sva({
       fontWeight: 'medium',
     },
     resizeTrigger: {
-      '&[data-axis="n"], &[data-axis="s"]': {
+      '&[data-placement="n"], &[data-placement="s"]': {
         height: '6px',
         maxWidth: '90%',
       },
-      '&[data-axis="e"], &[data-axis="w"]': {
+      '&[data-placement="e"], &[data-placement="w"]': {
         width: '6px',
         maxHeight: '90%',
       },
-      '&[data-axis="ne"], &[data-axis="nw"], &[data-axis="se"], &[data-axis="sw"]': {
+      '&[data-placement="ne"], &[data-placement="nw"], &[data-placement="se"], &[data-placement="sw"]': {
         width: '10px',
         height: '10px',
       },

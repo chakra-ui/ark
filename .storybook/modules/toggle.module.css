@@ -24,7 +24,7 @@
     background: var(--demo-neutral-subtle);
   }
 
-  &[data-state='on'] {
+  &[data-pressed] {
     background: var(--demo-coral-subtle) !important;
     border-color: var(--demo-coral-muted);
     color: var(--demo-coral-fg);
