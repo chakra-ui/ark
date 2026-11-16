@@ -101,7 +101,7 @@ Marker: --marker-value css variable, and 'rotate: calc(var(--marker-value) * 1de
 Root: --x, --y, --scale, --z-index, --height, --opacity, --gap css variables
 Root styling MUST include these styles to work correctly:
 
-[data-scope=toast][data-part=root] {
+[data-toast-root] {
   translate: var(--x) var(--y);
   scale: var(--scale);
   z-index: var(--z-index);

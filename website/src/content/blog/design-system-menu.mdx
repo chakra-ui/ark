@@ -31,7 +31,7 @@ CSS.
 ## Anatomy
 
 To style the menu correctly, you'll need to understand its anatomy and part names. Each part includes
-a `data-part` attribute to help identify them in the DOM.
+a `data-menu-{part}` attribute to help identify them in the DOM.
 
 <Anatomy id="menu" />
 
@@ -80,30 +80,27 @@ export const Basic = () => (
 When rendered in the DOM, here's what the menu looks like when it is open:
 
 ```html
-<div data-scope="menu" data-part="root">
-  <button data-scope="menu" data-part="trigger" aria-haspopup="menu" aria-expanded="false">
-    Open menu
-    <span data-scope="menu" data-part="indicator">➡️</span>
-  </button>
+<button data-menu-trigger="" aria-haspopup="menu" aria-expanded="false">
+  Open menu
+  <span data-menu-indicator="">➡️</span>
+</button>
 
-  <!-- When menu is open -->
-  <div data-scope="menu" data-part="positioner">
-    <div data-scope="menu" data-part="content" role="menu">
-      <div data-scope="menu" data-part="item" role="menuitem" data-value="react">React</div>
+<!-- When menu is open -->
+<div data-menu-positioner="">
+  <div data-menu-content="" role="menu">
+    <div data-menu-item="" role="menuitem" data-value="react">React</div>
 
-      <div data-scope="menu" data-part="item" role="menuitem" data-value="solid">Solid</div>
+    <div data-menu-item="" role="menuitem" data-value="solid">Solid</div>
 
-      <div data-scope="menu" data-part="item" role="menuitem" data-value="vue">Vue</div>
-    </div>
+    <div data-menu-item="" role="menuitem" data-value="vue">Vue</div>
   </div>
 </div>
 ```
 
 Each part of the menu component comes with data attributes like:
 
-- **`data-scope="menu"`** which scopes all menu parts under the `menu` namespace, ensuring styles don't clash with other
-  components.
-- **`data-part="..."`** which identifies the specific slot or part of the component, such as `content`, `item` and more.
+- **`data-menu-{part}`** which identifies the specific part of the component, such as `data-menu-content`,
+  `data-menu-item` and more. The `menu` prefix keeps styles from clashing with other components.
 - **`data-state="..."`** which reflects dynamic states such as `data-state="open"` or `data-state="closed"` .
 
 ## Styling with Vanilla CSS
@@ -128,8 +125,7 @@ as reset styles, tokens, keyframes, and base button styles.
 > If you haven’t set that up yet, head over to the [Design System Introduction](/blog/design-system-series) to see how
 > to configure your global styles directory.
 
-Ark UI exposes helpful attributes like `data-scope="menu"` and `data-part="..."` for every part of the menu, which we'll
-use to style each part.
+Ark UI exposes a `data-menu-{part}` attribute for every part of the menu, which we'll use to style each part.
 
 **Styling the Menu Content**
 
@@ -138,7 +134,7 @@ The menu content is the floating container that holds all the items inside the d
 
 ```css
 /* Menu content */
-[data-scope='menu'][data-part='content'] {
+[data-menu-content] {
   outline: 0;
   background: var(--bg-panel);
   box-shadow: var(--shadow-md);
@@ -163,11 +159,11 @@ keyframes earlier so apply these animations using Ark UI's built-in `data-state=
 attribute:
 
 ```tsx
-[data-scope='menu'][data-part='content'][data-state='open'] {
+[data-menu-content][data-state='open'] {
   animation: slide-fade-in 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-[data-scope='menu'][data-part='content'][data-state='closed'] {
+[data-menu-content][data-state='closed'] {
   animation: slide-fade-out 100ms cubic-bezier(0.4, 0, 1, 1);
 }
 ```
@@ -177,7 +173,7 @@ attribute:
 Each individual `item` can be styled like this:
 
 ```tsx
-[data-scope='menu'][data-part='item'] {
+[data-menu-item] {
   text-decoration: none;
   color: var(--fg);
   user-select: none;
@@ -213,7 +209,7 @@ we'll define later.
   applies the `data-highlighted` attribute. We can use this to indicate the active item
 
   ```tsx
-   [data-scope='menu'][data-part='item'] {
+   [data-menu-item] {
     // other styles here
     &[data-highlighted] {
       background: var(--bg-muted);
@@ -225,7 +221,7 @@ we'll define later.
 - **Disabled state:** In many menus, not all option are available. For example, a "Delete" option may be unavailable for
   users without permission. Ark UI provides the `data-disabled` attribute to style the disabled styles
   ```css
-  [data-scope='menu'][data-part='item'] {
+  [data-menu-item] {
   	// item styles here
     }
    &[data-disabled] {
@@ -239,10 +235,10 @@ we'll define later.
 
 **Styling the Indicator**
 
-The indicator automatically receives the `data-part="indicator"` attribute, making it easy to style.
+The indicator automatically receives the `data-menu-indicator` attribute, making it easy to style.
 
 ```css
-[data-scope='menu'][data-part='indicator'] {
+[data-menu-indicator] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -265,7 +261,7 @@ single-selection).
 When an item is selected, Ark UI applies `data-state="checked"` attribute for styling.
 
 ```css
-[data-scope='menu'][data-part='item'] {
+[data-menu-item] {
   // item styles here
  &[data-state='checked'] {
     font-weight: 500;
@@ -289,7 +285,7 @@ For organizing long lists of menu items, Ark UI offers grouping capabilities wit
 - **Group Labels:** The `item-group-label` is used for headings above related sets of menu items.
 
   ```css
-  [data-scope='menu'][data-part='item-group-label'] {
+  [data-menu-item-group-label] {
     padding-inline: 0.5rem;
     padding-block: 0.375rem;
     font-size: var(--menu-item-font-size);
@@ -299,7 +295,7 @@ For organizing long lists of menu items, Ark UI offers grouping capabilities wit
 
 - **Separators**: The `separator` part is a visual line used to divide logical groups of menu items.
   ```css
-  [data-scope='menu'][data-part='separator'] {
+  [data-menu-separator] {
     height: 1px;
     border-color: var(--border);
     margin-block: var(--menu-content-padding);
@@ -312,20 +308,20 @@ For organizing long lists of menu items, Ark UI offers grouping capabilities wit
 Menu items can include more than just text. We often want to add leading icons or trailing keyboard shortcut hints
 (commands).
 
-Ark UI automatically applies `data-part="item-text"`, `"data-part='item-indicator"` and `data-part="item-command"`to the
-relevant parts.
+Ark UI applies `data-menu-item-text` and `data-menu-item-indicator` to those parts. The command is our own element, so we
+give it a `data-menu-item-command` attribute ourselves.
 
 ```css
-[data-scope='menu'][data-part='item-text'] {
+[data-menu-item-text] {
   flex: 1;
 }
 
-[data-scope='menu'][data-part='item-indicator'] {
+[data-menu-item-indicator] {
   position: absolute;
   inset-inline-start: 4px;
 }
 
-[data-scope='menu'][data-part='item-command'] {
+[data-menu-item-command] {
   opacity: 0.6;
   font-size: 0.75rem;
   margin-inline-start: auto;
@@ -342,7 +338,7 @@ push the command text to the right, which creates an aligned layout.
 
 Finally, to create our `small`, `medium`, and `large` menu sizes, we'll define the CSS classes that set the values for
 all our custom CSS variables. These variables will then cascade down to all the menu's parts, adjusting their dimensions
-and spacing, thanks to the `data-scope` and `data-part` selectors.
+and spacing, thanks to the `data-menu-*` selectors.
 
 ```css
 .menu--sm {
@@ -615,7 +611,7 @@ export const menuRecipe = sva({
 
 **Styling the Indicator**
 
-The indicator automatically receives the `data-part="indicator"` attribute, making it easy to style.
+The indicator automatically receives the `data-menu-indicator` attribute, making it easy to style.
 
 Here's how we define the `indicator`'s base styles, including its dynamic behavior:
 
@@ -1087,7 +1083,7 @@ To explore all of the menu styles and their variations, be sure to check out the
 
 Styling Ark UI's Menu component is flexible whether you're working with Vanilla CSS or Panda CSS.
 
-If you're using Vanilla CSS, you can target parts of the component using the `data-scope="menu"` and `data-part="..."`
+If you're using Vanilla CSS, you can target parts of the component using the `data-menu-{part}`
 attributes. This gives you complete control over styling, allowing you to write custom CSS styles for each slot like
 content, item, indicator, and more.
 

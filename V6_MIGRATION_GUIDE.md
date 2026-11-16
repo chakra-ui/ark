@@ -254,6 +254,10 @@ into `[data-pressed]`, and swaps the removed `data-focus` on toggle-group and to
 `:focus-visible`. Attributes referenced from JavaScript strings, or selectors where scope and part aren't adjacent, are
 left for you to update.
 
+A few attributes also changed name (tree-view parts, the image-cropper and floating-panel `data-placement`, and
+JsonTreeView now using the tree view's attributes). The codemod doesn't cover these; see the table in the website's
+upgrade guide.
+
 Ids are still generated where ARIA needs them to point somewhere, so `aria-controls` and `aria-labelledby` keep working.
 Parts that nothing references no longer carry an `id` of their own. This comes from zag v2's anatomy, so it applies to
 every framework at once.

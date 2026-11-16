@@ -107,7 +107,7 @@ Nest dialogs within one another. The parent receives `data-has-nested` and `--ne
 styling effects like zoom-out:
 
 ```css
-[data-part='content'][data-has-nested] {
+[data-dialog-content][data-has-nested] {
   transform: scale(calc(1 - var(--nested-layer-count) * 0.05));
 }
 ```
@@ -174,15 +174,15 @@ const Do = () => {
 Use a shared overlay z-index with `--layer-index` to keep stacked dialogs and nested overlays in order:
 
 ```css
-[data-scope='dialog'][data-part='content'] {
+[data-dialog-content] {
   z-index: calc(var(--z-index-overlay) + var(--layer-index, 0));
 }
 
-[data-scope='dialog'][data-part='positioner'] {
+[data-dialog-positioner] {
   z-index: var(--z-index, var(--z-index-overlay));
 }
 
-[data-scope='dialog'][data-part='backdrop'] {
+[data-dialog-backdrop] {
   z-index: calc(var(--z-index, var(--z-index-overlay)) - 1);
 }
 ```

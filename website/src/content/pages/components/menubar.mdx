@@ -99,16 +99,16 @@ Both the outgoing and the incoming content carry `data-instant` for that swap, s
 without giving it up for the first open:
 
 ```css
-[data-scope='menu'][data-part='content'][data-state='open'] {
+[data-menu-content][data-state='open'] {
   animation: fade-in 150ms ease-out;
 }
 
-[data-scope='menu'][data-part='content'][data-state='closed'] {
+[data-menu-content][data-state='closed'] {
   animation: fade-out 100ms ease-in;
 }
 
 /* switching between menus in a menubar */
-[data-scope='menu'][data-part='content'][data-instant] {
+[data-menu-content][data-instant] {
   animation: none;
 }
 ```
