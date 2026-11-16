@@ -34,7 +34,7 @@
     border-color 0.15s ease,
     box-shadow 0.15s ease;
 
-  &:has([data-part='clear-trigger']) {
+  &:has([data-tags-input-clear-trigger]) {
     position: relative;
     padding-inline-end: 2rem;
   }

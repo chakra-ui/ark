@@ -80,41 +80,40 @@ const styles = sva({
       '&[data-disabled]': {
         display: 'none',
       },
-      '&[data-position="top-left"], &[data-position="top-right"], &[data-position="bottom-right"], &[data-position="bottom-left"]':
-        {
-          '&:hover > *': {
-            transform: 'scale(1.1)',
-          },
+      '&[data-placement="nw"], &[data-placement="ne"], &[data-placement="se"], &[data-placement="sw"]': {
+        '&:hover > *': {
+          transform: 'scale(1.1)',
         },
-      '&[data-position="top-left"]': {
+      },
+      '&[data-placement="nw"]': {
         cursor: 'nwse-resize',
         '& > *': {
           borderLeft: 'var(--cropper-handler-width) solid var(--cropper-accent)',
           borderTop: 'var(--cropper-handler-width) solid var(--cropper-accent)',
         },
       },
-      '&[data-position="top-right"]': {
+      '&[data-placement="ne"]': {
         cursor: 'nesw-resize',
         '& > *': {
           borderRight: 'var(--cropper-handler-width) solid var(--cropper-accent)',
           borderTop: 'var(--cropper-handler-width) solid var(--cropper-accent)',
         },
       },
-      '&[data-position="bottom-right"]': {
+      '&[data-placement="se"]': {
         cursor: 'nwse-resize',
         '& > *': {
           borderRight: 'var(--cropper-handler-width) solid var(--cropper-accent)',
           borderBottom: 'var(--cropper-handler-width) solid var(--cropper-accent)',
         },
       },
-      '&[data-position="bottom-left"]': {
+      '&[data-placement="sw"]': {
         cursor: 'nesw-resize',
         '& > *': {
           borderLeft: 'var(--cropper-handler-width) solid var(--cropper-accent)',
           borderBottom: 'var(--cropper-handler-width) solid var(--cropper-accent)',
         },
       },
-      '&[data-position="top"], &[data-position="bottom"], &[data-position="left"], &[data-position="right"]': {
+      '&[data-placement="n"], &[data-placement="s"], &[data-placement="w"], &[data-placement="e"]': {
         '& > *': {
           width: '10px',
           height: '10px',
@@ -127,10 +126,10 @@ const styles = sva({
           transform: 'scale(1.2)',
         },
       },
-      '&[data-position="top"], &[data-position="bottom"]': {
+      '&[data-placement="n"], &[data-placement="s"]': {
         cursor: 'ns-resize',
       },
-      '&[data-position="left"], &[data-position="right"]': {
+      '&[data-placement="w"], &[data-placement="e"]': {
         cursor: 'ew-resize',
       },
     },

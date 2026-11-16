@@ -67,7 +67,7 @@ const CollapsibleCodeContent = (props: Props) => {
     <>
       {!collapsible.open && <ShowCodeTrigger />}
       <Collapsible.Content>
-        <Box className={css({ '& > [data-scope="tabs"]': { borderRadius: '0' } })}>
+        <Box className={css({ '& > [data-tabs-root]': { borderRadius: '0' } })}>
           {children}
           <HideCodeTrigger />
         </Box>

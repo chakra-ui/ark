@@ -14,11 +14,11 @@ export const jsonTreeView = sva({
       color: 'fg.default',
       fontFamily: 'mono',
 
-      '& [data-part="branch-content"]': {
+      '& [data-tree-view-node-group-content]': {
         position: 'relative',
       },
 
-      '& [data-part="branch-indent-guide"]': {
+      '& [data-tree-view-indent-guide]': {
         height: '100%',
         width: '1px',
         bg: 'border.default',
@@ -29,7 +29,7 @@ export const jsonTreeView = sva({
         },
       },
 
-      '& [data-part="branch-control"]': {
+      '& [data-tree-view-node][data-branch]': {
         display: 'flex',
         alignItems: 'baseline',
         ps: 'calc((var(--depth) - 1) * 12px)',
@@ -42,7 +42,12 @@ export const jsonTreeView = sva({
         },
       },
 
-      '& [data-part="branch-indicator"]': {
+      '& [data-tree-view-cell]': {
+        display: 'flex',
+        alignItems: 'baseline',
+      },
+
+      '& [data-tree-view-node-indicator]': {
         transformOrigin: 'center',
         transitionDuration: 'normal',
         transitionProperty: 'transform',
@@ -56,7 +61,7 @@ export const jsonTreeView = sva({
         },
       },
 
-      '& [data-part="item"]': {
+      '& [data-tree-view-node]:not([data-branch])': {
         display: 'flex',
         alignItems: 'baseline',
         position: 'relative',
@@ -69,7 +74,7 @@ export const jsonTreeView = sva({
         },
       },
 
-      '& [data-part="item-text"], & [data-part="branch-text"]': {
+      '& [data-tree-view-node-text]': {
         display: 'flex',
         alignItems: 'baseline',
       },

@@ -155,7 +155,7 @@ export const drawer = defineSlotRecipe({
       background: 'fg.subtle',
       transitionProperty: 'background-color',
       transitionDuration: 'normal',
-      '[data-scope=drawer][data-part=grabber]:hover &': {
+      '[data-drawer-grabber]:hover &': {
         background: 'fg.muted',
       },
     },
