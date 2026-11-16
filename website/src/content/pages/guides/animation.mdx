@@ -39,11 +39,11 @@ when your `Tooltip` enters the 'open' state, and `fadeOut` when it enters the 'c
 following styles:
 
 ```css
-[data-scope='tooltip'][data-part='content'][data-state='open'] {
+[data-tooltip-content][data-state='open'] {
   animation: fadeIn 300ms ease-out;
 }
 
-[data-scope='tooltip'][data-part='content'][data-state='closed'] {
+[data-tooltip-content][data-state='closed'] {
   animation: fadeOut 300ms ease-in;
 }
 ```

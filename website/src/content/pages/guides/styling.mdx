@@ -15,12 +15,13 @@ that can be used for styling or animations.
 
 ### Data Attributes
 
-Ark UI components use `data-scope` and `data-part` attributes to target specific elements within a component.
+Each part of an Ark UI component has a `data-{scope}-{part}` attribute, such as `data-accordion-item` or
+`data-date-picker-trigger`, that you can target.
 Interactive components often include `data-*` attributes to indicate their state. For example, here's what an open
 accordion item looks like:
 
 ```html
-<div data-scope="accordion" data-part="item" data-state="open"></div>
+<div data-accordion-item="" data-state="open"></div>
 ```
 
 For more details on each component's data attributes, refer to their respective documentation.
@@ -32,10 +33,10 @@ customization.
 
 ### Styling a Part
 
-To style a specific component part, target its `data-scope` and `data-part` attributes:
+To style a specific component part, target its `data-{scope}-{part}` attribute:
 
 ```css
-[data-scope='accordion'][data-part='item'] {
+[data-accordion-item] {
   border-bottom: 1px solid #e5e5e5;
 }
 ```
@@ -45,7 +46,7 @@ To style a specific component part, target its `data-scope` and `data-part` attr
 To style a component based on its state, use the `data-state` attribute:
 
 ```css
-[data-scope='accordion'][data-part='item'][data-state='open'] {
+[data-accordion-item][data-state='open'] {
   background-color: #f5f5f5;
 }
 ```
@@ -103,15 +104,15 @@ For dialogs and drawers, apply it to the content. Zag syncs the content's comput
 positioner as `--z-index`, so set the z-index property for those parts:
 
 ```css
-[data-scope='dialog'][data-part='content'] {
+[data-dialog-content] {
   z-index: calc(1000 + var(--layer-index, 0));
 }
 
-[data-scope='dialog'][data-part='positioner'] {
+[data-dialog-positioner] {
   z-index: var(--z-index, 1000);
 }
 
-[data-scope='dialog'][data-part='backdrop'] {
+[data-dialog-backdrop] {
   z-index: calc(var(--z-index, 1000) - 1);
 }
 ```
@@ -120,11 +121,11 @@ For popper-style components, apply it to the floating content. Zag syncs the con
 positioner as `--z-index`, and the positioner already uses `z-index: var(--z-index)`:
 
 ```css
-[data-scope='popover'][data-part='content'],
-[data-scope='menu'][data-part='content'],
-[data-scope='select'][data-part='content'],
-[data-scope='combobox'][data-part='content'],
-[data-scope='date-picker'][data-part='content'] {
+[data-popover-content],
+[data-menu-content],
+[data-select-content],
+[data-combobox-content],
+[data-date-picker-content] {
   z-index: calc(1000 + var(--layer-index, 0));
 }
 ```
@@ -132,19 +133,19 @@ positioner as `--z-index`, and the positioner already uses `z-index: var(--z-ind
 If your design system exposes z-index tokens, prefer one shared overlay token for dismissible layers:
 
 ```css
-[data-scope='dialog'][data-part='content'] {
+[data-dialog-content] {
   z-index: calc(var(--z-index-overlay) + var(--layer-index, 0));
 }
 
-[data-scope='dialog'][data-part='positioner'] {
+[data-dialog-positioner] {
   z-index: var(--z-index, var(--z-index-overlay));
 }
 
-[data-scope='dialog'][data-part='backdrop'] {
+[data-dialog-backdrop] {
   z-index: calc(var(--z-index, var(--z-index-overlay)) - 1);
 }
 
-[data-scope='popover'][data-part='content'] {
+[data-popover-content] {
   z-index: calc(var(--z-index-overlay) + var(--layer-index, 0));
 }
 ```
@@ -152,7 +153,7 @@ If your design system exposes z-index tokens, prefer one shared overlay token fo
 **Caution:** Avoid using `--layer-index` as the entire z-index:
 
 ```css
-[data-scope='dialog'][data-part='positioner'] {
+[data-dialog-positioner] {
   z-index: var(--layer-index);
 }
 ```
@@ -163,7 +164,7 @@ Zag also exposes `data-nested`, `data-has-nested`, and `--nested-layer-count` fo
 layers.
 
 ```css
-[data-scope='dialog'][data-part='content'][data-has-nested='dialog'] {
+[data-dialog-content][data-has-nested='dialog'] {
   scale: 0.98;
 }
 ```

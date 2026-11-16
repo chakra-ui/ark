@@ -297,6 +297,27 @@ variables are left for you to update. Outside `.css` files, `[data-state="on"]` 
 `[data-pressed]` right after a toggle or toggle-group item selector, so other libraries' selectors
 stay as they are.
 
+A few attributes changed name, and the codemod leaves these for you:
+
+| Component | v5 | v6 |
+| --- | --- | --- |
+| TreeView | `branch` | `node-group` |
+| TreeView | `branch-control`, `item` | `node` (`[data-branch]` on branches) |
+| TreeView | `branch-content`, `branch-indent-guide` | `node-group-content`, `indent-guide` |
+| TreeView | `branch-indicator`, `branch-trigger` | `node-indicator`, `node-expand-trigger` |
+| TreeView | `branch-text`, `item-text` | `node-text` |
+| TreeView | `item-indicator` | removed; use `node-indicator` |
+| ImageCropper handle | `[data-position="nw"]`, … | `[data-placement="nw"]`, … |
+| FloatingPanel resize trigger | `[data-axis="n"]`, … | `[data-placement="n"]`, … |
+
+JsonTreeView also drops its own scope: v5 parts carried `data-scope="json-tree-view"`, and v6 parts use the tree view's
+attributes, so `[data-scope="json-tree-view"][data-part="branch"]` becomes `[data-tree-view-node-group]`, not
+`[data-json-tree-view-branch]`.
+
+Steps also keeps a step completed when the user goes back to it, so a step can carry both
+`data-current` and `data-complete`. Put your current-step style after the completed one, or scope the
+completed style with `:not([data-current])`.
+
 ### Overlays no longer set a `z-index`
 
 Popover, Menu, Select, Combobox, Tooltip, HoverCard, DatePicker, ColorPicker, Dialog, Drawer, Tour,

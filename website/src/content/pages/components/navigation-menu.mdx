@@ -123,7 +123,7 @@ The following CSS variables are exposed on `NavigationMenu.Root` and `Navigation
 Use `--viewport-width` and `--viewport-height` to animate the shared panel as the active item changes:
 
 ```css
-[data-scope='navigation-menu'][data-part='viewport'] {
+[data-navigation-menu-viewport] {
   width: var(--viewport-width);
   height: var(--viewport-height);
   transition:
@@ -137,11 +137,11 @@ Use `--viewport-width` and `--viewport-height` to animate the shared panel as th
 When menu content is taller than the viewport, constrain the panel and scroll the content:
 
 ```css
-[data-scope='navigation-menu'][data-part='viewport'] {
+[data-navigation-menu-viewport] {
   max-height: min(var(--viewport-height), 70vh);
 }
 
-[data-scope='navigation-menu'][data-part='content'] {
+[data-navigation-menu-content] {
   max-height: 70vh;
   overflow-y: auto;
 }

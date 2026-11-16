@@ -100,7 +100,7 @@ the resolved physical direction the drawer slides in from.
 Target it to apply direction-aware styles — for example, rounded corners on the side facing the viewport:
 
 ```css
-[data-scope='drawer'][data-part='content'] {
+[data-drawer-content] {
   /* Top drawer */
   &[data-swipe-direction='up'] {
     border-top-left-radius: 0;
@@ -141,7 +141,7 @@ When a user drags the drawer past its open position, a small gap can appear betw
 edge. To prevent this, extend the drawer's background beyond its visible bounds using a CSS `::after` pseudo-element:
 
 ```css
-[data-scope='drawer'][data-part='content'] {
+[data-drawer-content] {
   --bleed: 3rem;
   position: relative;
 
@@ -161,7 +161,7 @@ edge. To prevent this, extend the drawer's background beyond its visible bounds 
 For side drawers, adjust the pseudo-element to extend horizontally:
 
 ```css
-[data-scope='drawer'][data-part='content'] {
+[data-drawer-content] {
   /* Right drawer */
   &[data-swipe-direction='right']::after {
     inset-inline: auto;

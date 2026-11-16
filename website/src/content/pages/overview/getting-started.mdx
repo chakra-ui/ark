@@ -36,13 +36,13 @@ In this guide, we will be adding a Slider component. Copy the following code to 
 
 <Step number="4" title="Style a component">
 Ark UI is a headless component library that doesn't include default styles.
-You can leverage the `data-scope` and `data-part` attributes to style your components with custom CSS.
+Each part has a `data-{scope}-{part}` attribute you can use to style your components with custom CSS.
 
 For example, to style a slider component, you can target its parts using these attributes:
 
 ```css
 /* Targets the <Slider.Root /> */
-[data-scope='slider'][data-part='root'] {
+[data-slider-root] {
   display: flex;
   flex-direction: column;
 }

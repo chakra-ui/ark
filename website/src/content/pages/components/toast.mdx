@@ -156,7 +156,7 @@ The toast root will be assigned these css properties at runtime:
 - `--gap` - The gap between toasts
 
 ```css
-[data-scope='toast'][data-part='root'] {
+[data-toast-root] {
   translate: var(--x) var(--y);
   scale: var(--scale);
   z-index: var(--z-index);
@@ -186,7 +186,7 @@ The toast root will be assigned these css properties at runtime:
 You can also style based on the `data-type` attribute.
 
 ```css
-[data-scope='toast'][data-part='root'] {
+[data-toast-root] {
   &[data-type='error'] {
     background: red;
     color: white;
@@ -214,11 +214,11 @@ A very common use case is to adjust the toast width on mobile so it spans the fu
 
 ```css
 @media (max-width: 640px) {
-  [data-scope='toast'][data-part='group'] {
+  [data-toast-group] {
     width: 100%;
   }
 
-  [data-scope='toast'][data-part='root'] {
+  [data-toast-root] {
     inset-inline: 0;
     width: calc(100% - var(--gap) * 2);
   }

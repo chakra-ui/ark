@@ -11,7 +11,7 @@ documentation sections, or grouped settings. It helps keep interfaces clean and 
 visibility without overwhelming them with information.
 
 With Ark UI, you get unstyled but accessible building blocks. This means you have full control and can style the
-accordion to match your design system by simply targeting the right `data-scope` and `data-part` attributes.
+accordion to match your design system by simply targeting the right `data-accordion-*` attributes.
 
 In this post, you’ll learn how to:
 
@@ -32,7 +32,7 @@ By the end, you’ll have a flexible, scalable pattern for styling accordions th
 ## Anatomy
 
 Before we dive into specific styles, it's essential to understand the parts that make up the Ark UI Accordion component.
-Each part supports the `data-scope` and `data-part` attributes, which you can target in both Vanilla CSS and Panda CSS.
+Each part has a `data-accordion-{part}` attribute, which you can target in both Vanilla CSS and Panda CSS.
 
 <Anatomy id="accordion" />
 
@@ -78,13 +78,13 @@ From the above code, it is worth noting that:
 When rendered, the structure looks like this in the DOM:
 
 ```tsx
-<div data-scope="accordion" data-part="root">
-  <div data-part="item" data-state="open">
-    <button data-part="item-trigger">
+<div data-accordion-root="">
+  <div data-accordion-item="" data-state="open">
+    <button data-accordion-item-trigger="">
       What is React?
-      <span data-part="item-indicator">▼</span>
+      <span data-accordion-item-indicator="">▼</span>
     </button>
-    <div data-part="item-content">
+    <div data-accordion-item-content="">
       React is a JavaScript library for building user interfaces.
     </div>
   </div>
@@ -94,10 +94,9 @@ When rendered, the structure looks like this in the DOM:
 
 Each part of the accordion component comes with data attributes like:
 
-- **`data-scope="accordion"`** which scopes all accordion parts under the `accordion` namespace, ensuring styles don't
-  clash with other components.
-- **`data-part="..."`** breaks the component down into its internal parts so you can style them individually such
-  as `data-part="item”`, `data-part="item-trigger”` and more.
+- **`data-accordion-{part}`** names each internal part so you can style them individually, such as
+  `data-accordion-item`, `data-accordion-item-trigger` and more. The `accordion` prefix keeps styles from clashing with
+  other components.
 - **`data-state="..."`** tells you what state a component is in. For example, `data-state="open"` means the item is
   currently expanded
 
@@ -118,7 +117,7 @@ With a recipe for Accordion, you can:
 ### Base Styles
 
 We’ll start by defining foundational styles for each part of the `Accordion` component using Ark UI’s attributes like
-`data-scope="accordion"` and `data-part="..."`.
+`data-accordion-item` and `data-accordion-item-trigger`.
 
 Before defining the base styles for the Accordion, **make sure your project includes the shared global styles** we use
 across the design system, such as reset styles, tokens, keyframes, and base button styles.
@@ -131,12 +130,12 @@ across the design system, such as reset styles, tokens, keyframes, and base butt
 Let's define the base styles of the accordion. Add the following styles to your `accordion.css` stylesheet:
 
 ```css
-[data-scope='accordion'][data-part='root'] {
+[data-accordion-root] {
   width: 100%;
   border-radius: var(--accordion-radius);
 }
 
-[data-scope='accordion'][data-part='item'] {
+[data-accordion-item] {
   overflow-anchor: none;
 }
 ```
@@ -152,7 +151,7 @@ The `item-trigger` is the clickable header that users interact with to expand or
 following styles to your `accordion.css` stylesheet:
 
 ```css
-[data-scope='accordion'][data-part='item-trigger'] {
+[data-accordion-item-trigger] {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -166,11 +165,11 @@ following styles to your `accordion.css` stylesheet:
   background: transparent;
 }
 
-[data-scope='accordion'][data-part='item-trigger']:focus-visible {
+[data-accordion-item-trigger]:focus-visible {
   outline: 2px solid var(--accordion-focus-ring, #3b82f6);
 }
 
-[data-scope='accordion'][data-part='item-trigger']:disabled {
+[data-accordion-item-trigger]:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
@@ -192,7 +191,7 @@ The `item-content` is the container that expands and collapses to reveal or hide
 Add the following styles to the stylesheet.
 
 ```tsx
-[data-scope='accordion'][data-part='item-content'] {
+[data-accordion-item-content] {
   overflow: hidden;
   border-radius: var(--accordion-radius);
   padding-inline: var(--accordion-padding-x);
@@ -248,12 +247,12 @@ Now, use the `data-state='open'` and `data-state='closed'`, to add beautiful ent
 content.
 
 ```css
-[data-scope='accordion'][data-part='item-content'][data-state='open'] {
+[data-accordion-item-content][data-state='open'] {
   animation-name: expand-height, fade-in;
   animation-duration: 200ms;
 }
 
-[data-scope='accordion'][data-part='item-content'][data-state='closed'] {
+[data-accordion-item-content][data-state='closed'] {
   animation-name: collapse-height, fade-out;
   animation-duration: 200ms;
 }
@@ -264,17 +263,17 @@ content.
 The indicator typically is an arrow or chevron icon that rotates when the accordion item is expanded or collapsed.
 
 ```css
-[data-scope='accordion'][data-part='item-indicator'] {
+[data-accordion-item-indicator] {
   transition: rotate 0.2s;
   transform-origin: center;
   color: var(--accordion-text-subtle, #a1a1aa);
 }
 
-[data-scope='accordion'][data-part='item-indicator'][data-state='open'] {
+[data-accordion-item-indicator][data-state='open'] {
   transform: rotate(180deg);
 }
 
-[data-scope='accordion'][data-part='item-indicator'] svg {
+[data-accordion-item-indicator] svg {
   width: 1.2em;
   height: 1.2em;
 }
@@ -289,7 +288,7 @@ Although Ark UI doesn’t include an `item-body` part by default, we’ll create
 The item body serves as a wrapper around the content inside each accordion item. Let's style it:
 
 ```tsx
-[data-scope='accordion'][data-part='item-body'] {
+[data-accordion-item-body] {
   padding-top: var(--accordion-padding-y);
   padding-bottom: calc(var(--accordion-padding-y) * 2);
 }
@@ -312,7 +311,7 @@ The `outline` variant adds a clean separator between items using a bottom border
 This works well for minimalist interfaces. In your `accordion.css` stylesheet, add the following styles:
 
 ```css
-.accordion--variant-outline [data-scope='accordion'][data-part='item'] {
+.accordion--variant-outline [data-accordion-item] {
   border-bottom: 1px solid var(--accordion-border, #e2e8f0);
 }
 ```
@@ -325,16 +324,16 @@ The `subtle` variant uses a soft background and padding to distinguish accordion
 
 ```css
 .accordion--variant-subtle {
-  [data-scope='accordion'][data-part='item-trigger'],
-  [data-scope='accordion'][data-part='item-content'] {
+  [data-accordion-item-trigger],
+  [data-accordion-item-content] {
     padding-inline: var(--accordion-padding-x);
   }
 
-  [data-scope='accordion'][data-part='item'] {
+  [data-accordion-item] {
     border-radius: var(--accordion-radius);
   }
 
-  [data-scope='accordion'][data-part='item'][data-state='open'] {
+  [data-accordion-item][data-state='open'] {
     background-color: var(--accordion-bg-subtle, #f4f4f5);
   }
 }
@@ -347,23 +346,23 @@ The `enclosed` variant visually groups all accordion items inside a bordered box
 <img src="/blog/accordion/accordion-enclosed.png" alt="enclosed-variant" />
 
 ```css
-.accordion--variant-enclosed [data-scope='accordion'][data-part='root'] {
+.accordion--variant-enclosed[data-accordion-root] {
   border: 1px solid #e2e8f0;
   border-radius: var(--accordion-radius);
   overflow: hidden;
 }
 
 .accordion--variant-enclosed {
-  [data-scope='accordion'][data-part='item-trigger'],
-  [data-scope='accordion'][data-part='item-content'] {
+  [data-accordion-item-trigger],
+  [data-accordion-item-content] {
     padding-inline: var(--accordion-padding-x);
   }
 
-  [data-scope='accordion'][data-part='item'] ~ [data-part='item'] {
+  [data-accordion-item] ~ [data-accordion-item] {
     border-top: 1px solid #e2e8f0;
   }
 
-  [data-scope='accordion'][data-part='item'][data-state='open'] {
+  [data-accordion-item][data-state='open'] {
     background-color: #fafafa;
   }
 }
@@ -404,38 +403,38 @@ Each size sets its own padding, border radius, and font size using CSS variables
 You can also customize the **font size** for the item trigger in each size variant:
 
 ```css
-.accordion--size-sm [data-part='item-trigger'] {
+.accordion--size-sm [data-accordion-item-trigger] {
   font-size: 0.875rem;
 }
 
-.accordion--size-md [data-part='item-trigger'] {
+.accordion--size-md [data-accordion-item-trigger] {
   font-size: 1rem;
 }
 
-.accordion--size-lg [data-part='item-trigger'] {
+.accordion--size-lg [data-accordion-item-trigger] {
   font-size: 1.125rem;
 }
 ```
 
 ### Putting It All Together
 
-We've covered how to define base styles using `data-scope` and `data-part` attributes, create scalable variants using
+We've covered how to define base styles using `data-accordion-*` attributes, create scalable variants using
 CSS custom properties, apply smooth animations, and even introduce custom parts like `item-body`.
 
 Here's what the complete `accordion.css` stylesheet will look like:
 
 ```tsx
 /* Base Styles */
-[data-scope='accordion'][data-part='root'] {
+[data-accordion-root] {
   width: 100%;
   border-radius: var(--accordion-radius);
 }
 
-[data-scope='accordion'][data-part='item'] {
+[data-accordion-item] {
   overflow-anchor: none;
 }
 
-[data-scope='accordion'][data-part='item-trigger'] {
+[data-accordion-item-trigger] {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -458,7 +457,7 @@ Here's what the complete `accordion.css` stylesheet will look like:
   }
 }
 
-[data-scope='accordion'][data-part='item-content'] {
+[data-accordion-item-content] {
   overflow: hidden;
   border-radius: var(--accordion-radius);
   padding-inline: var(--accordion-padding-x);
@@ -474,12 +473,12 @@ Here's what the complete `accordion.css` stylesheet will look like:
   }
 }
 
-[data-scope='accordion'][data-part='item-body'] {
+[data-accordion-item-body] {
   padding-top: var(--accordion-padding-y);
   padding-bottom: calc(var(--accordion-padding-y) * 2);
 }
 
-[data-scope='accordion'][data-part='item-indicator'] {
+[data-accordion-item-indicator] {
   transition: rotate 0.2s;
   transform-origin: center;
   color: var(--accordion-text-subtle, #a1a1aa);
@@ -495,17 +494,17 @@ Here's what the complete `accordion.css` stylesheet will look like:
 }
 
 /* Variants */
-.accordion--variant-outline [data-scope='accordion'][data-part='item'] {
+.accordion--variant-outline [data-accordion-item] {
   border-bottom: 1px solid var(--accordion-border, #e2e8f0);
 }
 
 .accordion--variant-subtle {
-  [data-scope='accordion'][data-part='item-trigger'],
-  [data-scope='accordion'][data-part='item-content'] {
+  [data-accordion-item-trigger],
+  [data-accordion-item-content] {
     padding-inline: var(--accordion-padding-x);
   }
 
-  [data-scope='accordion'][data-part='item'] {
+  [data-accordion-item] {
     border-radius: var(--accordion-radius);
     &[data-state='open'] {
       background-color: var(--accordion-bg-subtle, #f4f4f5);
@@ -514,16 +513,16 @@ Here's what the complete `accordion.css` stylesheet will look like:
 }
 
 .accordion--variant-enclosed {
-  &[data-scope='accordion'][data-part='root'] {
+  &[data-accordion-root] {
     border: 1px solid #e2e8f0;
     border-radius: var(--accordion-radius);
     overflow: hidden;
   }
-  [data-scope='accordion'][data-part='item-trigger'],
-  [data-scope='accordion'][data-part='item-content'] {
+  [data-accordion-item-trigger],
+  [data-accordion-item-content] {
     padding-inline: var(--accordion-padding-x);
   }
-  [data-scope='accordion'][data-part='item'] {
+  [data-accordion-item] {
     & ~ & {
       border-top: 1px solid #e2e8f0;
     }
@@ -541,7 +540,7 @@ Here's what the complete `accordion.css` stylesheet will look like:
   --accordion-padding-y: 0.5rem;
   --accordion-radius: 0.25rem;
 
-  [data-scope='accordion'][data-part='item-trigger'] {
+  [data-accordion-item-trigger] {
     font-size: 0.875rem;
   }
 }
@@ -551,7 +550,7 @@ Here's what the complete `accordion.css` stylesheet will look like:
   --accordion-padding-y: 0.5rem;
   --accordion-radius: 0.375rem;
 
-  [data-scope='accordion'][data-part='item-trigger'] {
+  [data-accordion-item-trigger] {
     font-size: 1rem;
   }
 }
@@ -561,7 +560,7 @@ Here's what the complete `accordion.css` stylesheet will look like:
   --accordion-padding-y: 0.75rem;
   --accordion-radius: 0.5rem;
 
-  [data-scope='accordion'][data-part='item-trigger'] {
+  [data-accordion-item-trigger] {
     font-size: 1.125rem;
   }
 }
@@ -581,7 +580,7 @@ import { ChevronDownIcon } from 'lucide-react'
 
 // Define the custom item body part
 const AccordionItemBody = ({ children }: { children: React.ReactNode }) => (
-  <div data-scope="accordion" data-part="item-body">
+  <div data-accordion-item-body="">
     {children}
   </div>
 )
@@ -1149,7 +1148,7 @@ import { ChevronDownIcon } from 'lucide-react'
 import { accordionRecipe } from './recipes/accordion'
 
 const AccordionItemBody = ({ children }: { children: React.ReactNode }) => (
-  <div data-scope="accordion" data-part="itemBody">
+  <div data-accordion-item-body="">
     {children}
   </div>
 )
