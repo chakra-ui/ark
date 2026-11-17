@@ -16,9 +16,10 @@ export const FileUploadItemPreviewImage = forwardRef<HTMLImageElement, FileUploa
     const itemProps = useFileUploadItemPropsContext()
     const mergedProps = mergeProps(fileUpload.getItemPreviewImageProps({ ...itemProps, url }), props)
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: recreate the url only when the file changes
     useEffect(() => {
       return fileUpload.createFileUrl(itemProps.file, (url) => setUrl(url))
-    }, [itemProps, fileUpload])
+    }, [itemProps.file])
 
     if (!url) return null
 
