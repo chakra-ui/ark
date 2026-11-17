@@ -69,7 +69,7 @@
       "overlap": { "type": "boolean", "isRequired": false, "description": "Whether to overlap the toasts" },
       "pauseOnPageIdle": {
         "type": "boolean",
-        "defaultValue": "false",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to pause toast when the user leaves the browser tab"
       },
@@ -114,6 +114,12 @@
         "type": "() => Node | ShadowRoot | Document",
         "isRequired": false,
         "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+      },
+      "label": {
+        "type": "string",
+        "defaultValue": "\"Notifications\"",
+        "isRequired": false,
+        "description": "The human-readable label for the toast region."
       }
     }
   }

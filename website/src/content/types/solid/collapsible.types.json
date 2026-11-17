@@ -41,7 +41,7 @@
       },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the collapsible is disabled." },
       "ids": {
-        "type": "Partial<{ root: string; content: string; trigger: string }>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the collapsible. Useful for composition."
       },

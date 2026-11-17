@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface DialogDescriptionBaseProps extends PolymorphicProps<'p'>, RefAttribute {}
-  export interface DialogDescriptionProps extends Assign<HTMLProps<'p'>, DialogDescriptionBaseProps> {}
+  export interface DialogDescriptionBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface DialogDescriptionProps extends Assign<HTMLProps<'div'>, DialogDescriptionBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -16,4 +16,4 @@
   const mergedProps = $derived(mergeProps(dialog().getDescriptionProps(), props))
 </script>
 
-<Ark as="p" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

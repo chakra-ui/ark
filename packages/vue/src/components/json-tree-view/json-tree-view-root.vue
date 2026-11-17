@@ -29,8 +29,10 @@ export interface JsonTreeViewRootProps
 <script setup lang="ts">
 import { getRootNode, nodeToString, nodeToValue } from '@zag-js/json-tree-utils'
 import { computed } from 'vue'
+import { useEmitAsProps } from '../../utils/use-emits-as-props.ts'
 import { createSplitProps } from '../create-split-props.ts'
 import { TreeView, createTreeCollection } from '../tree-view/index.ts'
+import type { RootEmits } from '../tree-view/tree-view.types.ts'
 import { getBranchValues } from './get-branch-value.ts'
 import { JsonTreeViewPropsProvider } from './json-tree-view-props-context.ts'
 
@@ -44,38 +46,46 @@ const props = withDefaults(defineProps<JsonTreeViewRootProps>(), {
   quotesOnKeys: undefined,
 } satisfies BooleanDefaults<JsonTreeViewRootBaseProps>)
 
-const splitJsonTreeViewProps = createSplitProps<JsonTreeViewOptions>()
-const [jsonTreeProps, localProps] = splitJsonTreeViewProps(props, [
-  'maxPreviewItems',
-  'collapseStringsAfterLength',
-  'quotesOnKeys',
-  'groupArraysAfterLength',
-  'showNonenumerable',
-])
+const emits = defineEmits<RootEmits<JsonNode>>()
+const emitsAsProps = useEmitAsProps(emits)
 
-const { data, defaultExpandedDepth, ...restProps } = localProps
+const splitJsonTreeViewProps = createSplitProps<JsonTreeViewOptions>()
+const splitProps = computed(() =>
+  splitJsonTreeViewProps(props, [
+    'maxPreviewItems',
+    'collapseStringsAfterLength',
+    'quotesOnKeys',
+    'groupArraysAfterLength',
+    'showNonenumerable',
+  ]),
+)
+
+const rootProps = computed(() => {
+  const { data: _, defaultExpandedDepth: __, ...rest } = splitProps.value[1]
+  return rest
+})
 
 const collection = computed(() => {
   return createTreeCollection<JsonNode>({
     nodeToValue,
     nodeToString,
-    rootNode: getRootNode(data),
+    rootNode: getRootNode(props.data),
   })
 })
 
 const defaultExpandedValue = computed(() => {
   const expandedValue =
-    defaultExpandedDepth != null ? getBranchValues(collection.value, defaultExpandedDepth) : undefined
+    props.defaultExpandedDepth != null ? getBranchValues(collection.value, props.defaultExpandedDepth) : undefined
   return props.defaultExpandedValue || expandedValue
 })
 
-JsonTreeViewPropsProvider(computed(() => jsonTreeProps))
+JsonTreeViewPropsProvider(computed(() => splitProps.value[0]))
 </script>
 
 <template>
   <TreeView.Root
     data-scope="json-tree-view"
-    v-bind="restProps"
+    v-bind="{ ...rootProps, ...emitsAsProps }"
     :collection="collection"
     :defaultExpandedValue="defaultExpandedValue"
     :typeahead="false"

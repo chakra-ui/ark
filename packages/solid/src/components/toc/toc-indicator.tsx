@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useTocContext } from './use-toc-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
+import { useTocContext } from './use-toc-context.ts'
 
 export interface TocIndicatorBaseProps extends PolymorphicProps<'div'> {}
 export interface TocIndicatorProps extends HTMLProps<'div'>, TocIndicatorBaseProps {}

@@ -1,6 +1,6 @@
 import { type HotkeyRecorderOptions, type HotkeyRecorderState, createHotkeyRecorder } from '@zag-js/hotkeys'
 import { useSyncExternalStore } from '@zag-js/vue'
-import { type MaybeRef, type Ref, onMounted, onUnmounted, toValue } from 'vue'
+import { type MaybeRefOrGetter, type Ref, onMounted, onUnmounted, toValue } from 'vue'
 import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../environment/use-environment-context.ts'
 
 export interface UseHotkeyRecorderProps extends Omit<HotkeyRecorderOptions, 'target'> {}
@@ -28,7 +28,7 @@ export interface UseHotkeyRecorderReturn {
   clear: () => void
 }
 
-export const useHotkeyRecorder = (props: MaybeRef<UseHotkeyRecorderProps> = {}): UseHotkeyRecorderReturn => {
+export const useHotkeyRecorder = (props: MaybeRefOrGetter<UseHotkeyRecorderProps> = {}): UseHotkeyRecorderReturn => {
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const recorder = createHotkeyRecorder()
 

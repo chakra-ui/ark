@@ -6,6 +6,7 @@ export type {
   RotationChangeDetails as ImageCropperRotationChangeDetails,
   ZoomChangeDetails as ImageCropperZoomChangeDetails,
 } from '@zag-js/image-cropper'
+export type { Rect as ImageCropperRect } from '@zag-js/types'
 export { ImageCropperContext, type ImageCropperContextProps } from './image-cropper-context.tsx'
 export { ImageCropperGrid, type ImageCropperGridBaseProps, type ImageCropperGridProps } from './image-cropper-grid.tsx'
 export {

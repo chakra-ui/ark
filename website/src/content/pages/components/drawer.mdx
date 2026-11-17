@@ -64,6 +64,13 @@ Use the `open` and `onOpenChange` props to control the drawer state.
 
 Apply the `data-no-drag` attribute to any element inside the drawer to prevent dragging from starting on it.
 
+Set it to `x` or `y` to block drags only along that axis, for example on horizontally scrolling content inside a bottom
+drawer:
+
+```html
+<div data-no-drag="x">Horizontally scrolling content</div>
+```
+
 <Example id="no-drag-area" />
 
 ### Non Draggable

@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/toc'
 import type { LiHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface TocItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface TocItemProps
@@ -15,10 +15,10 @@ export interface TocItemProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { useTocContext } from './use-toc-context'
-import { TocItemPropsProvider } from './use-toc-item-props-context'
+import { ark } from '../factory.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { useTocContext } from './use-toc-context.ts'
+import { TocItemPropsProvider } from './use-toc-item-props-context.ts'
 
 const props = defineProps<TocItemBaseProps>()
 const toc = useTocContext()

@@ -1,18 +1,19 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '../../types'
-  import type { UseTocProps } from './use-toc.svelte'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '../../types.ts'
+  import type { UseTocProps } from './use-toc.svelte.ts'
 
   export interface TocRootBaseProps extends UseTocProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface TocRootProps extends Assign<HTMLProps<'div'>, TocRootBaseProps> {}
 </script>
 
 <script lang="ts">
-  import { createSplitProps } from '../../utils/create-split-props'
-  import { Ark } from '../factory'
-  import { TocProvider } from './use-toc-context'
-  import { useToc } from './use-toc.svelte'
+  import { mergeProps } from '@zag-js/svelte'
+  import { createSplitProps } from '../../utils/create-split-props.ts'
+  import { Ark } from '../factory/index.ts'
+  import { TocProvider } from './use-toc-context.ts'
+  import { useToc } from './use-toc.svelte.ts'
 
-  let { ref = $bindable(null), ...props }: TocRootProps = $props()
+  let { ref = $bindable(null), activeIds = $bindable<string[]>(), ...props }: TocRootProps = $props()
   const providedId = $props.id()
 
   const [useTocProps, localProps] = $derived(
@@ -24,6 +25,7 @@
       'id',
       'ids',
       'items',
+      'multiple',
       'onActiveChange',
       'rootMargin',
       'scrollBehavior',
@@ -31,10 +33,19 @@
     ]),
   )
 
-  const resolvedProps = $derived({ ...useTocProps, id: useTocProps.id ?? providedId })
+  const resolvedProps = $derived<UseTocProps>({
+    ...useTocProps,
+    id: useTocProps.id ?? providedId,
+    activeIds,
+    onActiveChange(details) {
+      useTocProps.onActiveChange?.(details)
+      if (activeIds !== undefined) activeIds = details.activeIds
+    },
+  })
   const toc = useToc(() => resolvedProps)
+  const mergedProps = $derived(mergeProps(toc().getRootProps(), localProps))
 
   TocProvider(toc)
 </script>
 
-<Ark as="div" bind:ref {...localProps} />
+<Ark as="div" bind:ref {...mergedProps} />

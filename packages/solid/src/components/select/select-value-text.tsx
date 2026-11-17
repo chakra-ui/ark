@@ -14,5 +14,5 @@ export const SelectValueText = (props: SelectValueTextProps) => {
   const select = useSelectContext()
   const mergedProps = mergeProps(() => select().getValueTextProps(), props)
 
-  return <ark.span {...mergedProps}>{select().valueAsString || props.placeholder}</ark.span>
+  return <ark.span {...mergedProps}>{props.children || select().valueAsString || props.placeholder}</ark.span>
 }

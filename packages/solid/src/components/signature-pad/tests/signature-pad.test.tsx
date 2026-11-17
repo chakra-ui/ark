@@ -3,6 +3,11 @@ import user from '@testing-library/user-event'
 import { SignaturePadWithField } from './basic.tsx'
 
 describe('Signature Pad / Field', () => {
+  it('should describe the control with the helper and error text', async () => {
+    render(() => <SignaturePadWithField invalid />)
+    expect(screen.getByRole('application')).toHaveAccessibleDescription('Error Info Additional Info')
+  })
+
   it('should set signature pad as required', async () => {
     render(() => <SignaturePadWithField required />)
     expect(screen.getByRole('textbox', { hidden: true })).toBeRequired()
@@ -31,7 +36,7 @@ describe('Signature Pad / Field', () => {
   it('should focus on signature pad when label is clicked', async () => {
     render(() => <SignaturePadWithField />)
     await user.click(screen.getByText(/label/i))
-    expect(screen.getByRole('textbox', { hidden: true })).toHaveFocus()
+    expect(screen.getByRole('application')).toHaveFocus()
   })
 
   it('should not display error text when no error is present', async () => {

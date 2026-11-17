@@ -92,40 +92,15 @@
   },
   "Root": {
     "emits": {
+      "enterComplete": {
+        "type": "[]",
+        "isRequired": true,
+        "description": "Function called when the animation ends in the open state"
+      },
       "exitComplete": {
         "type": "[]",
         "isRequired": true,
         "description": "Function called when the animation ends in the closed state"
-      },
-      "focusOutside": {
-        "type": "[event: FocusOutsideEvent]",
-        "isRequired": true,
-        "description": "Function called when the focus is moved outside the component"
-      },
-      "interactOutside": {
-        "type": "[event: InteractOutsideEvent]",
-        "isRequired": true,
-        "description": "Function called when an interaction happens outside the component"
-      },
-      "pointerDownOutside": {
-        "type": "[event: PointerDownOutsideEvent]",
-        "isRequired": true,
-        "description": "Function called when the pointer is pressed down outside the component"
-      },
-      "statusChange": {
-        "type": "[details: StatusChangeDetails]",
-        "isRequired": true,
-        "description": "Callback when the tour is opened or closed"
-      },
-      "stepChange": {
-        "type": "[details: StepChangeDetails]",
-        "isRequired": true,
-        "description": "Callback when the highlighted step changes"
-      },
-      "stepsChange": {
-        "type": "[details: { steps: StepDetails[] }]",
-        "isRequired": true,
-        "description": "Callback when the steps change"
       }
     },
     "props": {

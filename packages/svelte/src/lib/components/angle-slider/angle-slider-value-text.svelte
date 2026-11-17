@@ -10,9 +10,15 @@
   import { Ark } from '../factory/index.ts'
   import { useAngleSliderContext } from './use-angle-slider-context.ts'
 
-  let { ref = $bindable(null), ...props }: AngleSliderValueTextProps = $props()
+  let { ref = $bindable(null), children, ...props }: AngleSliderValueTextProps = $props()
   const angleSlider = useAngleSliderContext()
   const mergedProps = $derived(mergeProps(angleSlider().getValueTextProps(), props))
 </script>
 
-<Ark as="span" bind:ref {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps}>
+  {#if children}
+    {@render children()}
+  {:else}
+    {angleSlider().valueAsDegree}
+  {/if}
+</Ark>

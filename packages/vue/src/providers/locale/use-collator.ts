@@ -1,5 +1,5 @@
 import { createCollator } from '@zag-js/i18n-utils'
-import { type ComputedRef, type MaybeRef, computed, toValue } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue } from 'vue'
 import { DEFAULT_LOCALE, useLocaleContext } from './use-locale-context.ts'
 
 export interface UseCollatorProps extends Intl.CollatorOptions {
@@ -8,7 +8,7 @@ export interface UseCollatorProps extends Intl.CollatorOptions {
 
 export interface UseCollatorReturn extends ComputedRef<Intl.Collator> {}
 
-export function useCollator(propsOrFn: MaybeRef<UseCollatorProps> = {}): UseCollatorReturn {
+export function useCollator(propsOrFn: MaybeRefOrGetter<UseCollatorProps> = {}): UseCollatorReturn {
   const env = useLocaleContext(DEFAULT_LOCALE)
 
   return computed(() => {

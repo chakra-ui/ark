@@ -146,7 +146,7 @@
         "description": "The unique identifier of the machine."
       },
       "ids": {
-        "type": "Partial<{ root: string; hiddenInput: string; control: string; label: string }>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the checkbox. Useful for composition."
       },

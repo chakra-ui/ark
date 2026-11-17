@@ -1,3 +1,4 @@
+export type { PlaceholderChangeDetails } from '@zag-js/date-input'
 export { default as Context, type DateInputContextProps as ContextProps } from './date-input-context.vue'
 export {
   default as SegmentContext,

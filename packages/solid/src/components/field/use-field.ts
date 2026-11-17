@@ -62,7 +62,8 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
   const id = fieldProps.id ?? createUniqueId()
   const [rootRef, setRootRef] = createSignal<HTMLDivElement | undefined>(undefined)
 
-  const rootId = fieldProps.ids?.control ?? `field::${id}`
+  const rootId = fieldProps.ids?.root ?? `field::${id}`
+  const controlId = fieldProps.ids?.control ?? id
   const errorTextId = fieldProps.ids?.errorText ?? `field::${id}::error-text`
   const helperTextId = fieldProps.ids?.helperText ?? `field::${id}::helper-text`
   const labelId = fieldProps.ids?.label ?? `field::${id}::label`
@@ -95,7 +96,7 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
     'data-readonly': dataAttr(fieldProps.readOnly),
   })
 
-  const targetControlId = fieldProps.target ? `field::${id}::item::${fieldProps.target}` : undefined
+  const targetControlId = fieldProps.target ? `field::${controlId}::item::${fieldProps.target}` : undefined
 
   const getLabelProps = () => ({
     ...parts.label.attrs,
@@ -104,19 +105,21 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
     'data-invalid': dataAttr(fieldProps.invalid),
     'data-readonly': dataAttr(fieldProps.readOnly),
     'data-required': dataAttr(fieldProps.required),
-    htmlFor: targetControlId ?? id,
+    htmlFor: targetControlId ?? controlId,
   })
 
   const errorMessageId = createMemo(() => (hasErrorText() && fieldProps.invalid ? errorTextId : undefined))
+  const describedById = createMemo(
+    () => [errorMessageId(), hasHelperText() ? helperTextId : undefined].filter(Boolean).join(' ') || undefined,
+  )
 
   const getControlProps = () => ({
-    'aria-describedby': hasHelperText() ? helperTextId : undefined,
-    'aria-errormessage': errorMessageId(),
+    'aria-describedby': describedById(),
     'aria-invalid': ariaAttr(fieldProps.invalid),
     'data-invalid': dataAttr(fieldProps.invalid),
     'data-required': dataAttr(fieldProps.required),
     'data-readonly': dataAttr(fieldProps.readOnly),
-    id,
+    id: controlId,
     required: fieldProps.required,
     disabled: fieldProps.disabled,
     readOnly: fieldProps.readOnly || undefined,
@@ -155,9 +158,10 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
   })
 
   return createMemo(() => ({
-    ariaDescribedby: hasHelperText() ? helperTextId : undefined,
+    ariaDescribedby: describedById(),
     ids: {
-      control: id,
+      root: rootId,
+      control: controlId,
       label: labelId,
       errorText: errorTextId,
       helperText: helperTextId,

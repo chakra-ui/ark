@@ -19,7 +19,9 @@ import { useSliderContext } from './use-slider-context.ts'
 
 defineProps<SliderValueTextProps>()
 const slider = useSliderContext()
-const slots = defineSlots()
+const slots = defineSlots<{
+  default?(): unknown
+}>()
 
 useForwardExpose()
 </script>

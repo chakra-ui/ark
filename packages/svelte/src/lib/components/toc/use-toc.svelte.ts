@@ -6,7 +6,8 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 
 export interface UseTocProps extends Optional<Omit<toc.Props, 'dir' | 'getRootNode'>, 'id'> {}
-export interface UseTocReturn extends Accessor<toc.Api<PropTypes>> {}
+export interface UseTocApi extends toc.Api<PropTypes> {}
+export interface UseTocReturn extends Accessor<UseTocApi> {}
 
 export const useToc = (props?: MaybeFunction<UseTocProps>): UseTocReturn => {
   const env = useEnvironmentContext()

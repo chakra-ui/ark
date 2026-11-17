@@ -21,7 +21,11 @@ export const TourBackdrop = (props: TourBackdropProps) => {
 
   return (
     <Show when={!presence().unmounted}>
-      <ark.div {...mergedProps} hidden={!tour().step?.backdrop} ref={composeRefs(presence().ref, props.ref)} />
+      <ark.div
+        {...mergedProps}
+        hidden={mergedProps.hidden || !tour().step?.backdrop}
+        ref={composeRefs(presence().ref, props.ref)}
+      />
     </Show>
   )
 }

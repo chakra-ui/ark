@@ -106,8 +106,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLSpanElement",
+    "tag": "span"
   },
   "Label": {
     "props": {
@@ -169,7 +169,7 @@
         "description": "The unique identifier of the machine."
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  content: string\n  label: string\n  item: (id: string | number) => string\n  itemGroup: (id: string | number) => string\n  itemGroupLabel: (id: string | number) => string\n}>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the listbox. Useful for composition."
       },

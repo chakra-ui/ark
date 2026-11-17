@@ -123,6 +123,9 @@ datasets or fetching data from an API.
 
 <Example id="async-search" />
 
+Pass `loading` while results are fetched. It sets `aria-busy` on the list and holds back the "No results" announcement
+until loading ends.
+
 ### Virtualized
 
 For very large lists, use virtualization with `@tanstack/virtual` to render only the visible items. Pass the
@@ -164,6 +167,41 @@ function Demo() {
     </Combobox.Root>
   )
 }
+```
+
+### Modifier Keys
+
+The `onSelect` and `navigate` details include `modifiers`, the keys held when the item was activated. A modifier-click
+on a link item opens the link the way the browser would, and still calls `onSelect`. If you navigate in `onSelect`, skip
+it while a modifier is held:
+
+```tsx
+<Combobox.Root
+  onSelect={(details) => {
+    const { metaKey, ctrlKey, shiftKey, altKey } = details.modifiers
+    if (metaKey || ctrlKey || shiftKey || altKey) return
+    router.push(`/docs/${details.itemValue}`)
+  }}
+>
+  {/* ... */}
+</Combobox.Root>
+```
+
+### Announcements
+
+After typing, the combobox announces the result count to screen readers, or "No results" when nothing matches. Change
+the messages with the `resultsCount`, `noResults` and `loading` translations, or set one to `""` to turn that
+announcement off.
+
+```tsx
+<Combobox.Root
+  translations={{
+    resultsCount: (count) => `${count} matches`,
+    noResults: 'Nothing found',
+  }}
+>
+  {/* ... */}
+</Combobox.Root>
 ```
 
 ### Custom Objects

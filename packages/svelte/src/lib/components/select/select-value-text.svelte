@@ -12,15 +12,15 @@
   import { Ark } from '$lib/components/factory'
   import { useSelectContext } from './use-select-context.ts'
 
-  let { ref = $bindable(null), ...props }: SelectValueTextProps = $props()
+  let { ref = $bindable(null), placeholder, children, ...props }: SelectValueTextProps = $props()
   const select = useSelectContext()
   const mergedProps = $derived(mergeProps(select().getValueTextProps(), props))
 </script>
 
 <Ark as="span" bind:ref {...mergedProps}>
-  {#if props.children}
-    {@render props.children()}
+  {#if children}
+    {@render children()}
   {:else}
-    {select().valueAsString || props.placeholder}
+    {select().valueAsString || placeholder}
   {/if}
 </Ark>

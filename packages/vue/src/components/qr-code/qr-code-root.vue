@@ -21,7 +21,8 @@ import { QrCodeProvider } from './use-qr-code-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<QrCodeRootProps>()
-const qrCode = useQrCode(props)
+const emits = defineEmits<QrCodeRootEmits>()
+const qrCode = useQrCode(props, emits)
 
 QrCodeProvider(qrCode)
 

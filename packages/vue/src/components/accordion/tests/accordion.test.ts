@@ -1,6 +1,7 @@
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
 import ComponentUnderTest from './accordion.test.vue'
+import DisabledComponentUnderTest from './accordion-disabled.test.vue'
 
 describe('Accordion', () => {
   it('should not have an expanded item by default', async () => {
@@ -150,5 +151,10 @@ describe('Accordion', () => {
 
     await user.click(button)
     await waitFor(() => expect(screen.queryByText('React Content')).not.toBeInTheDocument())
+  })
+
+  it('should inherit disabled from root when item does not set it', async () => {
+    render(DisabledComponentUnderTest)
+    expect(screen.getByRole('button', { name: 'React Trigger' })).toBeDisabled()
   })
 })

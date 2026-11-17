@@ -75,11 +75,7 @@
         "description": "Whether the crop area is fixed in size and position."
       },
       "flip": { "type": "FlipState", "isRequired": false, "description": "The controlled flip state of the image." },
-      "ids": {
-        "type": "Partial<{\n  root: string\n  viewport: string\n  image: string\n  selection: string\n  handle: (position: string) => string\n}>",
-        "isRequired": false,
-        "description": "The ids of the image cropper elements"
-      },
+      "ids": { "type": "ElementIds", "isRequired": false, "description": "The ids of the image cropper elements" },
       "initialCrop": {
         "type": "Rect",
         "isRequired": false,

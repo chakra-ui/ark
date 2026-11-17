@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
+import { ComponentUnderTest as AsChildComponentUnderTest } from './as-child.tsx'
 import { ComponentUnderTest } from './basic.tsx'
 
 describe('Toast', () => {
@@ -21,5 +22,46 @@ describe('Toast', () => {
     await user.click(screen.getByText('Close'))
 
     await waitFor(() => expect(screen.queryByText('Title')).not.toBeInTheDocument())
+  })
+
+  it('should forward the label to the toast region', () => {
+    render(<ComponentUnderTest />)
+
+    const region = screen.getByRole('region')
+    expect(region).toHaveAccessibleName(expect.stringContaining('Alerts'))
+    expect(region).not.toHaveAttribute('label')
+  })
+
+  it('should forward dir to the machine, flipping the placement edge', () => {
+    render(<ComponentUnderTest dir="rtl" />)
+
+    const region = screen.getByRole('region')
+    expect(region).toHaveAttribute('dir', 'rtl')
+    expect(region.style.alignItems).toBe('flex-start')
+    expect(region.style.insetInlineStart).not.toBe('')
+  })
+
+  it('should forward getRootNode to the machine rather than the region element', async () => {
+    const getRootNode = vi.fn(() => document)
+    render(<ComponentUnderTest getRootNode={getRootNode} />)
+
+    await user.click(screen.getByText('Create Toast'))
+
+    expect(getRootNode).toHaveBeenCalled()
+    expect(screen.getByRole('region')).not.toHaveAttribute('getrootnode')
+  })
+
+  it('should render the asChild element as the root, keeping the ghosts inside it', async () => {
+    render(<AsChildComponentUnderTest />)
+
+    await user.click(screen.getByText('Create Toast'))
+
+    const root = await screen.findByTestId('custom-root')
+    expect(root.tagName).toBe('SECTION')
+    expect(root).toHaveAttribute('data-part', 'root')
+    expect(root).not.toHaveAttribute('aschild')
+    expect(document.querySelectorAll('[data-part="root"]')).toHaveLength(1)
+    expect(root.firstElementChild).toHaveAttribute('data-ghost', 'before')
+    expect(root.lastElementChild).toHaveAttribute('data-ghost', 'after')
   })
 })

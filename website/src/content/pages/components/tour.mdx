@@ -261,6 +261,29 @@ const steps: TourStepDetails[] = [
 ]
 ```
 
+### Scrolling to the Target
+
+By default, a step's target is scrolled into view with the nearest alignment. Pass `scrollToTargetFn` to `useTour` to
+change how it scrolls.
+
+```tsx
+const tour = useTour({
+  steps,
+  scrollToTargetFn({ target }) {
+    target.scrollIntoView({ behavior: 'instant', block: 'center' })
+  },
+})
+```
+
+When the backdrop, spotlight and positioner should snap into place instead of animating, they get a `data-instant`
+attribute. Use it to turn off your transitions:
+
+```css
+[data-scope='tour'][data-instant] {
+  transition: none;
+}
+```
+
 ### Styling
 
 Ensure the `box-sizing` is set to `border-box` for the means of measuring the tour target.

@@ -54,11 +54,7 @@
         "isRequired": false,
         "description": "Whether the timer should countdown, decrementing the timer on each tick."
       },
-      "ids": {
-        "type": "Partial<{ root: string; area: string }>",
-        "isRequired": false,
-        "description": "The ids of the timer parts"
-      },
+      "ids": { "type": "ElementIds", "isRequired": false, "description": "The ids of the timer parts" },
       "interval": {
         "type": "number",
         "defaultValue": "1000",

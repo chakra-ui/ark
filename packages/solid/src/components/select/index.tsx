@@ -2,8 +2,12 @@ export type {
   FocusOutsideEvent as SelectFocusOutsideEvent,
   HighlightChangeDetails as SelectHighlightChangeDetails,
   InteractOutsideEvent as SelectInteractOutsideEvent,
+  IntlTranslations as SelectIntlTranslations,
   OpenChangeDetails as SelectOpenChangeDetails,
   PointerDownOutsideEvent as SelectPointerDownOutsideEvent,
+  PositioningOptions as SelectPositioningOptions,
+  ScrollToIndexDetails as SelectScrollToIndexDetails,
+  SelectionDetails as SelectSelectionDetails,
   ValueChangeDetails as SelectValueChangeDetails,
 } from '@zag-js/select'
 export {

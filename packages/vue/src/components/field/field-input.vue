@@ -29,9 +29,8 @@ useForwardExpose()
 
 <template>
   <ark.input
-    v-bind="field?.getInputProps()"
+    v-bind="{ ...field?.getInputProps(), ...(modelValue !== undefined ? { value: modelValue } : {}) }"
     :as-child="asChild"
-    :value="modelValue"
     @input="(event) => emit('update:modelValue', (event.target as HTMLInputElement).value)"
   >
     <slot />

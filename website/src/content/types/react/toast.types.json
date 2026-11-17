@@ -40,7 +40,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Store": {
     "props": {
@@ -80,7 +81,7 @@
       },
       "pauseOnPageIdle": {
         "type": "boolean",
-        "defaultValue": "false",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to pause toast when the user leaves the browser tab"
       },
@@ -130,6 +131,12 @@
         "type": "() => ShadowRoot | Node | Document",
         "isRequired": false,
         "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+      },
+      "label": {
+        "type": "string",
+        "defaultValue": "\"Notifications\"",
+        "isRequired": false,
+        "description": "The human-readable label for the toast region."
       }
     },
     "tag": "div"

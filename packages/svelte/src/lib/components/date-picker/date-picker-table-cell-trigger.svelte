@@ -1,9 +1,9 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface DatePickerTableCellTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
+  export interface DatePickerTableCellTriggerBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface DatePickerTableCellTriggerProps extends Assign<
-    HTMLProps<'button'>,
+    HTMLProps<'div'>,
     DatePickerTableCellTriggerBaseProps
   > {}
 </script>
@@ -37,4 +37,4 @@
   const mergedProps = $derived(mergeProps(triggerProps, props))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

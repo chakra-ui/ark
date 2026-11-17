@@ -1,5 +1,7 @@
 import { userEvent as user } from '@testing-library/user-event'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
+import SeparatorAsChildComponentUnderTest from './menu-separator-as-child.test.vue'
+import NestedComponentUnderTest from './menu-nested.test.vue'
 import ComponentUnderTest from './menu.test.vue'
 
 describe('Menu', () => {
@@ -109,5 +111,23 @@ describe('Menu', () => {
     const radioButton = screen.getByRole('menuitemradio', { name: /react/i })
     await user.click(radioButton)
     await waitFor(() => expect(radioButton).toHaveAttribute('aria-checked', 'true'))
+  })
+
+  it('should render the slotted element when Separator uses asChild', () => {
+    render(SeparatorAsChildComponentUnderTest)
+
+    const separator = screen.getByTestId('separator')
+    expect(separator).toHaveAttribute('data-scope', 'menu')
+    expect(separator).toHaveAttribute('data-part', 'separator')
+  })
+
+  it('should emit requestDismiss when the parent layer closes', async () => {
+    const onRequestDismiss = vi.fn()
+    const { rerender } = render(NestedComponentUnderTest, { props: { dialogOpen: true, onRequestDismiss } })
+    await user.click(screen.getByText('click me'))
+    await waitFor(() => expect(screen.getByText('Edit')).toBeVisible())
+
+    await rerender({ dialogOpen: false })
+    await waitFor(() => expect(onRequestDismiss).toHaveBeenCalledTimes(1))
   })
 })

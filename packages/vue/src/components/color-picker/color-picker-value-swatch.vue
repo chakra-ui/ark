@@ -22,7 +22,9 @@ import { useColorPickerContext } from './use-color-picker-context.ts'
 import { ColorPickerSwatchPropsProvider } from './use-color-picker-swatch-props-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
-const props = defineProps<ColorPickerValueSwatchBaseProps>()
+const props = withDefaults(defineProps<ColorPickerValueSwatchBaseProps>(), {
+  respectAlpha: undefined,
+})
 const colorPicker = useColorPickerContext()
 const swatchProps = computed(() => ({
   value: colorPicker.value.value,

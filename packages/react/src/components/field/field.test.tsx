@@ -51,7 +51,7 @@ describe('Field / Input', () => {
   it('should display error text when error is present', async () => {
     render(<ComponentUnderTest invalid />)
     expect(screen.getByText('Error Info')).toBeInTheDocument()
-    expect(screen.getByRole('textbox')).toHaveAccessibleErrorMessage('Error Info')
+    expect(screen.getByRole('textbox')).toHaveAccessibleDescription(expect.stringContaining('Error Info'))
   })
 
   it('should focus on input when label is clicked', async () => {
@@ -314,5 +314,25 @@ describe('Field / Textarea', () => {
     await user.click(screen.getByRole('button', { name: /re-render/i }))
 
     expect(callbackRef).toHaveBeenCalledTimes(callsAfterMount)
+  })
+})
+
+describe('Field / ids', () => {
+  it('should give ids.root to the root and ids.control to the control', () => {
+    render(<ComponentUnderTest ids={{ root: 'custom-root', control: 'custom-control' }} />)
+    expect(screen.getByRole('textbox', { name: /label/i })).toHaveAttribute('id', 'custom-control')
+    expect(document.getElementById('custom-root')).toHaveAttribute('data-part', 'root')
+  })
+
+  it('should keep the label on the target item when ids.control is set', () => {
+    render(
+      <Field.Root target="amount" ids={{ control: 'custom-control' }}>
+        <Field.Label>Amount</Field.Label>
+        <Field.Item value="amount">
+          <Field.Input />
+        </Field.Item>
+      </Field.Root>,
+    )
+    expect(screen.getByRole('textbox', { name: 'Amount' })).toHaveAttribute('id', 'field::custom-control::item::amount')
   })
 })

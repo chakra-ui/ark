@@ -8,7 +8,7 @@ export interface SelectContextProps<T extends CollectionItem> extends SlotsType<
 }> {}
 </script>
 
-<script setup lang="ts" generic="T extends CollectionItem">
+<script setup lang="ts" generic="T extends CollectionItem = CollectionItem">
 import { useSelectContext } from './use-select-context.ts'
 
 const select = useSelectContext()

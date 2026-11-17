@@ -157,7 +157,7 @@
         "description": "The unique identifier of the machine."
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  list: string\n  item: string\n  trigger: (value: string) => string\n  content: (value: string) => string\n  viewport: string\n}>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the machine."
       },

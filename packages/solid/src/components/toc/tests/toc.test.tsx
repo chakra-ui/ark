@@ -1,6 +1,6 @@
 import { render, screen } from '@solidjs/testing-library'
 import { describe, it, expect } from 'vitest'
-import { ComponentUnderTest } from './basic'
+import { ComponentUnderTest } from './basic.tsx'
 
 describe('Toc', () => {
   it('should render correct semantic landmarks', () => {
@@ -8,6 +8,17 @@ describe('Toc', () => {
     expect(screen.getByRole('navigation')).toBeInTheDocument()
     expect(screen.getByRole('article')).toBeInTheDocument()
     expect(screen.getByText(/on this page/i)).toBeInTheDocument()
+  })
+
+  it('should not render the root and nav with the same id', () => {
+    const { container } = render(() => <ComponentUnderTest />)
+    const nav = screen.getByRole('navigation')
+    expect(nav).toHaveAttribute('id')
+    expect(container.querySelector('[data-scope="toc"][data-part="root"]')).not.toBe(nav)
+    expect(container.querySelectorAll(`[id="${nav.id}"]`)).toHaveLength(1)
+    expect(nav).toHaveAttribute('aria-labelledby', screen.getByText('On this page').id)
+    expect(nav).toHaveAttribute('data-part', 'nav')
+    expect(container.querySelector('[data-scope="toc"][data-part="root"]')).not.toHaveAttribute('aria-labelledby')
   })
 
   it('should render the correct number of items', () => {

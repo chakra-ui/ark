@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/vue'
+import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import ComponentUnderTest from './progress.test.vue'
 
@@ -29,5 +30,14 @@ describe('Progress', () => {
     })
 
     screen.getByText('100%')
+  })
+
+  it('should emit value changes from context setValue', async () => {
+    const { emitted } = render(ComponentUnderTest)
+
+    await user.click(screen.getByRole('button', { name: 'Set value' }))
+
+    expect(emitted('valueChange')).toEqual([[{ value: 80 }]])
+    expect(emitted('update:modelValue')).toEqual([[80]])
   })
 })

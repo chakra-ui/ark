@@ -19,7 +19,9 @@ import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<TourTitleProps>()
 const tour = useTourContext()
-const slots = defineSlots()
+const slots = defineSlots<{
+  default?(): unknown
+}>()
 
 useForwardExpose()
 </script>

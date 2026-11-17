@@ -69,7 +69,7 @@
       "overlap": { "type": "boolean", "isRequired": false, "description": "Whether to overlap the toasts" },
       "pauseOnPageIdle": {
         "type": "boolean",
-        "defaultValue": "false",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to pause toast when the user leaves the browser tab"
       },
@@ -103,6 +103,14 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "dir": { "type": "'ltr' | 'rtl'", "isRequired": false },
+      "getRootNode": { "type": "() => ShadowRoot | Node | Document", "isRequired": false },
+      "label": {
+        "type": "string",
+        "defaultValue": "\"Notifications\"",
+        "isRequired": false,
+        "description": "The human-readable label for the toast region."
       }
     }
   }

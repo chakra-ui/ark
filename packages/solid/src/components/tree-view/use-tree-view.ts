@@ -7,7 +7,7 @@ import { runIfFn } from '../../utils/run-if-fn.ts'
 import type { TreeCollection, TreeNode } from '../collection/index.tsx'
 
 export interface UseTreeViewProps<T extends TreeNode> extends Optional<
-  Omit<treeView.Props, 'dir' | 'getRootNode' | 'colllection'>,
+  Omit<treeView.Props<T>, 'dir' | 'getRootNode' | 'collection'>,
   'id'
 > {
   /**

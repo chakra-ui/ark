@@ -1,4 +1,4 @@
-import { Toc } from '../'
+import { Toc } from '@ark-ui/react/toc'
 
 export const items = [
   { value: 'introduction', depth: 2 },

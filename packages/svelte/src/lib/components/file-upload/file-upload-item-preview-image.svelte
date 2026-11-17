@@ -10,6 +10,7 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
+  import { untrack } from 'svelte'
   import { Ark } from '../factory/index.ts'
   import { useFileUploadContext } from './use-file-upload-context.ts'
   import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context.ts'
@@ -20,10 +21,15 @@
   const fileUpload = useFileUploadContext()
   const itemProps = useFileUploadItemPropsContext()
 
+  const file = $derived(itemProps().file)
+
   $effect(() => {
-    return fileUpload().createFileUrl(itemProps().file, (nextUrl) => {
-      url = nextUrl
-    })
+    const current = file
+    return untrack(() =>
+      fileUpload().createFileUrl(current, (nextUrl) => {
+        url = nextUrl
+      }),
+    )
   })
 
   const mergedProps = $derived(mergeProps(fileUpload().getItemPreviewImageProps({ ...itemProps(), url }), props))

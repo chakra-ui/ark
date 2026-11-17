@@ -35,4 +35,13 @@ describe('Date Picker', () => {
     await user.click(screen.getByRole('button', { name: 'Close calendar' }))
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
+
+  it('should select the typed date on blur by default', async () => {
+    const { emitted } = render(ComponentUnderTest)
+
+    await user.type(screen.getByRole('textbox'), '01/15/2024')
+    await user.tab()
+
+    await waitFor(() => expect(emitted('valueChange')).toBeDefined())
+  })
 })

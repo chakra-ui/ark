@@ -69,7 +69,8 @@ export const useField = (props: UseFieldProps = {}) => {
   const id = props.id ?? uid
   const rootRef = useRef<HTMLDivElement>(null)
 
-  const rootId = ids?.control ?? `field::${id}`
+  const rootId = ids?.root ?? `field::${id}`
+  const controlId = ids?.control ?? id
   const errorTextId = ids?.errorText ?? `field::${id}::error-text`
   const helperTextId = ids?.helperText ?? `field::${id}::helper-text`
   const labelId = ids?.label ?? `field::${id}::label`
@@ -107,7 +108,7 @@ export const useField = (props: UseFieldProps = {}) => {
     [disabled, invalid, readOnly, rootId],
   )
 
-  const targetControlId = target ? `field::${id}::item::${target}` : undefined
+  const targetControlId = target ? `field::${controlId}::item::${target}` : undefined
 
   const getLabelProps = useMemo(
     () => () =>
@@ -118,28 +119,29 @@ export const useField = (props: UseFieldProps = {}) => {
         'data-invalid': dataAttr(invalid),
         'data-readonly': dataAttr(readOnly),
         'data-required': dataAttr(required),
-        htmlFor: targetControlId ?? id,
+        htmlFor: targetControlId ?? controlId,
       }) as HTMLProps<'label'>,
-    [disabled, invalid, readOnly, required, id, labelId, targetControlId],
+    [disabled, invalid, readOnly, required, controlId, labelId, targetControlId],
   )
 
   const errorMessageId = hasErrorText && invalid ? errorTextId : undefined
+  const describedById =
+    [errorMessageId, hasHelperText ? helperTextId : undefined].filter(Boolean).join(' ') || undefined
 
   const getControlProps = useMemo(
     () => () =>
       ({
-        'aria-describedby': hasHelperText ? helperTextId : undefined,
-        'aria-errormessage': errorMessageId,
+        'aria-describedby': describedById,
         'aria-invalid': ariaAttr(invalid),
         'data-invalid': dataAttr(invalid),
         'data-required': dataAttr(required),
         'data-readonly': dataAttr(readOnly),
-        id,
+        id: controlId,
         required,
         disabled,
         readOnly,
       }) as HTMLProps<'input'>,
-    [hasHelperText, helperTextId, invalid, required, readOnly, id, errorMessageId, disabled],
+    [describedById, invalid, required, readOnly, controlId, disabled],
   )
 
   const getInputProps = useMemo(
@@ -199,10 +201,10 @@ export const useField = (props: UseFieldProps = {}) => {
   )
 
   return {
-    ariaDescribedby: hasHelperText ? helperTextId : undefined,
+    ariaDescribedby: describedById,
     ids: {
       root: rootId,
-      control: id,
+      control: controlId,
       label: labelId,
       errorText: errorTextId,
       helperText: helperTextId,

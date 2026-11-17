@@ -8,12 +8,14 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory/index.ts'
+  import { useFieldContext } from '../field/index.ts'
   import { useColorPickerContext } from './use-color-picker-context.ts'
 
   let { ref = $bindable(null), ...props }: ColorPickerTriggerProps = $props()
 
   const colorPicker = useColorPickerContext()
+  const field = useFieldContext()
   const mergedProps = $derived(mergeProps(colorPicker().getTriggerProps(), props))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="button" bind:ref aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} />

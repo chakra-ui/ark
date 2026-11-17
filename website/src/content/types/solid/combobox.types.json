@@ -188,7 +188,7 @@
         "description": "The controlled highlighted value of the combobox"
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  trigger: string\n  clearTrigger: string\n  item: (id: string, index?: number | undefined) => string\n  positioner: string\n  itemGroup: (id: string | number) => string\n  itemGroupLabel: (id: string | number) => string\n}>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the combobox. Useful for composition."
       },
@@ -215,6 +215,11 @@
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
       },
+      "loading": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the results are being loaded (e.g. fetched from a server).\n\nWhile loading, the listbox is marked with `aria-busy`, the loading message is\nannounced instead of the result count, and \"no results\" is never announced."
+      },
       "loopFocus": {
         "type": "boolean",
         "defaultValue": "true",
@@ -235,6 +240,11 @@
         "type": "(details: NavigateDetails) => void",
         "isRequired": false,
         "description": "Function to navigate to the selected item"
+      },
+      "onEnterComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the open state"
       },
       "onExitComplete": {
         "type": "VoidFunction",
@@ -375,6 +385,11 @@
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
+      },
+      "onEnterComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the open state"
       },
       "onExitComplete": {
         "type": "VoidFunction",

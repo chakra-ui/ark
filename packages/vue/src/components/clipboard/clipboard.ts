@@ -1,4 +1,4 @@
-export type { CopyStatusDetails } from '@zag-js/clipboard'
+export type { CopyStatusDetails, ValueChangeDetails } from '@zag-js/clipboard'
 export { default as Context, type ClipboardContextProps as ContextProps } from './clipboard-context.vue'
 export {
   default as Control,

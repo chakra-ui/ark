@@ -1,16 +1,18 @@
 import * as toc from '@zag-js/toc'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
-import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { EmitFn, Optional } from '../../types'
-import { cleanProps } from '../../utils/clean-props'
-import type { RootEmits } from './toc.types'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
+import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { EmitFn, Optional } from '../../types.ts'
+import { cleanProps } from '../../utils/clean-props.ts'
+import type { RootEmits } from './toc.types.ts'
 
 export interface UseTocProps extends Optional<Omit<toc.Props, 'dir' | 'getRootNode'>, 'id'> {}
 
-export interface UseTocReturn extends ComputedRef<toc.Api<PropTypes>> {}
+export interface UseTocApi extends toc.Api<PropTypes> {}
 
-export const useToc = (props: MaybeRef<UseTocProps>, emits?: EmitFn<RootEmits>): UseTocReturn => {
+export interface UseTocReturn extends ComputedRef<UseTocApi> {}
+
+export const useToc = (props: MaybeRefOrGetter<UseTocProps>, emits?: EmitFn<RootEmits>): UseTocReturn => {
   const id = useId()
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const locale = useLocaleContext(DEFAULT_LOCALE)

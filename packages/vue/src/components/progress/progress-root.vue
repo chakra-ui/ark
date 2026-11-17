@@ -21,7 +21,8 @@ import { useProgress } from './use-progress.ts'
 import { ProgressProvider } from './use-progress-context.ts'
 
 const props = defineProps<ProgressRootProps>()
-const progress = useProgress(props)
+const emits = defineEmits<ProgressRootEmits>()
+const progress = useProgress(props, emits)
 
 ProgressProvider(progress)
 useForwardExpose()

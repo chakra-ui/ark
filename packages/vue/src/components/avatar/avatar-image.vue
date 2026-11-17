@@ -24,5 +24,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.img v-bind="avatar.getImageProps()" :as-child="asChild" />
+  <ark.img v-bind="avatar.getImageProps()" :as-child="asChild">
+    <slot />
+  </ark.img>
 </template>

@@ -9,6 +9,7 @@ export const Positioning = () => (
     positioning={{
       placement: 'left-start',
       offset: { mainAxis: 12, crossAxis: 12 },
+      flip: ['right-start', 'bottom', 'top'],
     }}
   >
     <Popover.Trigger className={button.Root}>Click Me</Popover.Trigger>

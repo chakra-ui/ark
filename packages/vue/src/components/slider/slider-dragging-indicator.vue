@@ -21,7 +21,9 @@ import { useSliderThumbPropsContext } from './use-slider-thumb-props-context.ts'
 defineProps<SliderDraggingIndicatorProps>()
 const slider = useSliderContext()
 const thumbProps = useSliderThumbPropsContext()
-const slots = defineSlots()
+const slots = defineSlots<{
+  default?(): unknown
+}>()
 
 useForwardExpose()
 </script>

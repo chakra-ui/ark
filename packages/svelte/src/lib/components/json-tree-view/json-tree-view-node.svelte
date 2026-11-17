@@ -35,7 +35,7 @@
 
   const props: JsonTreeViewNodeProps = $props()
 
-  const { node, indexPath, arrow, indentGuide, renderValue } = props
+  const { node, indexPath, arrow, indentGuide, renderValue } = $derived(props)
 
   const options = useJsonTreeViewPropsContext()
 

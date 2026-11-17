@@ -8,11 +8,13 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory/index.ts'
+  import { useFieldContext } from '../field/index.ts'
   import { useRatingGroupContext } from './use-rating-group-context.ts'
 
   let { ref = $bindable(null), ...props }: RatingGroupControlProps = $props()
   const ratingGroup = useRatingGroupContext()
+  const field = useFieldContext()
   const mergedProps = $derived(mergeProps(ratingGroup().getControlProps(), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} />

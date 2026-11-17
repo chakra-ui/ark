@@ -32,7 +32,10 @@
   --demo-bg-checkbox: white;
 
   /* Z-index tokens */
-  --demo-popover-z-index: 50;
+  --demo-popover-z-index: 1400;
+
+  /* Overlay tokens */
+  --demo-backdrop: rgb(0 0 0 / 0.4);
 
   /* Shadow tokens (soft, modern shadows) */
   --demo-shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -51,6 +54,8 @@
 }
 
 .dark {
+  --demo-backdrop: rgb(0 0 0 / 0.7);
+
   /* Coral dark mode */
   --demo-coral-solid: #eb5e41;
   --demo-coral-emphasized: #ef6b4e;

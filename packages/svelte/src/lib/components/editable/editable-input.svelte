@@ -8,12 +8,14 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory/index.ts'
+  import { useFieldContext } from '../field/index.ts'
   import { useEditableContext } from './use-editable-context.ts'
 
   let { ref = $bindable(null), ...props }: EditableInputProps = $props()
 
   const editable = useEditableContext()
+  const field = useFieldContext()
   const mergedProps = $derived(mergeProps(editable().getInputProps(), props))
 </script>
 
-<Ark as="input" bind:ref {...mergedProps} />
+<Ark as="input" bind:ref aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} />

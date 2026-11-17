@@ -35,8 +35,9 @@ export interface RootProps {
   modal?: boolean
   /**
    * Element to receive focus when the sheet is opened.
+   * Return `false` to skip moving focus, or `null` to use the default.
    */
-  initialFocusEl?: () => HTMLElement | null
+  initialFocusEl?: () => HTMLElement | null | false
   /**
    * Element to receive focus when the sheet is closed.
    */
@@ -119,6 +120,10 @@ export interface RootProps {
 }
 
 export type RootEmits = {
+  /**
+   * Function called when the animation ends in the open state
+   */
+  enterComplete: []
   /**
    * Function called when the animation ends in the closed state
    */

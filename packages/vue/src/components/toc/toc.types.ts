@@ -41,6 +41,12 @@ export interface RootProps {
    */
   items: toc.TocItem[]
   /**
+   * Whether every visible heading can be active at once.
+   * When `false`, only the topmost visible heading is active.
+   * @default true
+   */
+  multiple?: boolean
+  /**
    * The root margin for the IntersectionObserver.
    * @default "-20px 0px -40% 0px"
    */

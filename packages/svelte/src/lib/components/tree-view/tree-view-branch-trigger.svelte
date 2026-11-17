@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TreeViewBranchTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
-  export interface TreeViewBranchTriggerProps extends Assign<HTMLProps<'button'>, TreeViewBranchTriggerBaseProps> {}
+  export interface TreeViewBranchTriggerBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface TreeViewBranchTriggerProps extends Assign<HTMLProps<'div'>, TreeViewBranchTriggerBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -19,4 +19,4 @@
   const mergedProps = $derived(mergeProps(treeView().getBranchTriggerProps(nodeProps()), props))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

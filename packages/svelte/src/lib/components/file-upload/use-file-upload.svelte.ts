@@ -25,6 +25,7 @@ export const useFileUpload = (props?: MaybeFunction<UseFileUploadProps>): UseFil
       locale: locale().locale,
       disabled: field?.()?.disabled,
       invalid: field?.()?.invalid,
+      readOnly: field?.()?.readOnly,
       required: field?.()?.required,
       getRootNode: env().getRootNode,
       ...resolvedProps,

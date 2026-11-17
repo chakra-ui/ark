@@ -2,8 +2,12 @@ export type {
   FocusOutsideEvent,
   HighlightChangeDetails,
   InteractOutsideEvent,
+  IntlTranslations,
   OpenChangeDetails,
   PointerDownOutsideEvent,
+  PositioningOptions,
+  ScrollToIndexDetails,
+  SelectionDetails,
   ValueChangeDetails,
 } from '@zag-js/select'
 export type { CollectionItem, ListCollection } from '../collection/index.tsx'

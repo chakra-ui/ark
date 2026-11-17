@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import { vi } from 'vitest'
 import { axe } from 'vitest-axe'
-import { Toc } from '../'
-import { ComponentUnderTest, items } from './basic'
+import { Toc } from '../index.ts'
+import { ComponentUnderTest, items } from './basic.tsx'
 
 describe('Toc', () => {
   it('should have no a11y violations', async () => {
@@ -19,6 +19,16 @@ describe('Toc', () => {
   it('should render Content as an article', () => {
     const { container } = render(<ComponentUnderTest />)
     expect(container.querySelector('article')).toBeInTheDocument()
+  })
+
+  it('should not render the root and nav with the same id', () => {
+    render(<ComponentUnderTest data-testid="root" />)
+    const nav = screen.getByRole('navigation')
+    expect(nav).toHaveAttribute('id')
+    expect(screen.getByTestId('root').id).not.toBe(nav.id)
+    expect(nav).toHaveAttribute('aria-labelledby', screen.getByText('On this page').id)
+    expect(nav).toHaveAttribute('data-part', 'nav')
+    expect(screen.getByTestId('root')).not.toHaveAttribute('aria-labelledby')
   })
 
   it('should render the title', () => {

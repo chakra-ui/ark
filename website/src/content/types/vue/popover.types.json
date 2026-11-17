@@ -73,6 +73,11 @@
   },
   "Root": {
     "emits": {
+      "enterComplete": {
+        "type": "[]",
+        "isRequired": true,
+        "description": "Function called when the animation ends in the open state"
+      },
       "escapeKeyDown": {
         "type": "[event: KeyboardEvent]",
         "isRequired": true,
@@ -165,9 +170,9 @@
         "description": "The ids of the elements in the popover. Useful for composition."
       },
       "initialFocusEl": {
-        "type": "() => HTMLElement | null",
+        "type": "() => false | HTMLElement | null",
         "isRequired": false,
-        "description": "The element to focus on when the popover is opened."
+        "description": "The element to focus on when the popover is opened.\nReturn `false` to skip moving focus, or `null` to use the default."
       },
       "lazyMount": {
         "type": "boolean",
@@ -224,6 +229,11 @@
   },
   "RootProvider": {
     "emits": {
+      "enterComplete": {
+        "type": "[]",
+        "isRequired": true,
+        "description": "Function called when the animation ends in the open state"
+      },
       "exitComplete": {
         "type": "[]",
         "isRequired": true,

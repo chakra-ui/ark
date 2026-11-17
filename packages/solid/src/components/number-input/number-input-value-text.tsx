@@ -9,5 +9,5 @@ export const NumberInputValueText = (props: NumberInputValueTextProps) => {
   const numberInput = useNumberInputContext()
   const mergedProps = mergeProps(() => numberInput().getValueTextProps(), props)
 
-  return <ark.span {...mergedProps} />
+  return <ark.span {...mergedProps}>{props.children || numberInput().value}</ark.span>
 }

@@ -3,16 +3,20 @@
   import type { UseDrawerContext } from './use-drawer-context.ts'
 
   export interface DrawerContextProps {
-    children: Snippet<[UseDrawerContext]>
+    render?: Snippet<[UseDrawerContext]>
+    /**
+     * @deprecated Use `render` instead.
+     */
+    children?: Snippet<[UseDrawerContext]>
   }
 </script>
 
 <script lang="ts">
   import { useDrawerContext } from './use-drawer-context.ts'
 
-  const { children }: DrawerContextProps = $props()
+  const { render, children }: DrawerContextProps = $props()
 
   const drawer = useDrawerContext()
 </script>
 
-{@render children(drawer)}
+{@render (render ?? children)?.(drawer)}

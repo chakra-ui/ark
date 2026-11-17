@@ -1,8 +1,7 @@
 .Backdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(4px);
+  background-color: var(--demo-backdrop);
   z-index: calc(var(--demo-popover-z-index) + var(--layer-index, 0));
 
   &[data-state='open'] {

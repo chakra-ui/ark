@@ -149,4 +149,9 @@ describe('NumberInput / Field', () => {
       expect(input).toHaveValue('5.5')
     })
   })
+
+  it('should render the value in value text without children', async () => {
+    const { container } = render(() => <ComponentUnderTest defaultValue="42" />)
+    expect(container.querySelector('[data-part="value-text"]')).toHaveTextContent('42')
+  })
 })

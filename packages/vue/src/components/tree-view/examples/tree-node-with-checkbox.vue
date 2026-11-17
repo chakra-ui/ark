@@ -38,7 +38,7 @@ defineProps<Props>()
       </TreeView.BranchControl>
       <TreeView.BranchContent>
         <TreeView.BranchIndentGuide />
-        <TreeNodeCheckbox
+        <TreeNodeWithCheckbox
           v-for="(child, childIndex) in node.children"
           :key="child.id"
           :node="child"

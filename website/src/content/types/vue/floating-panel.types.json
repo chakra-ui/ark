@@ -74,6 +74,11 @@
   },
   "Root": {
     "emits": {
+      "enterComplete": {
+        "type": "[]",
+        "isRequired": true,
+        "description": "Function called when the animation ends in the open state"
+      },
       "exitComplete": {
         "type": "[]",
         "isRequired": true,
@@ -190,9 +195,9 @@
         "description": "The ids of the elements in the floating panel. Useful for composition."
       },
       "initialFocusEl": {
-        "type": "() => HTMLElement | null",
+        "type": "() => false | HTMLElement | null",
         "isRequired": false,
-        "description": "The element to receive focus when the panel opens"
+        "description": "The element to receive focus when the panel opens\nReturn `false` to skip moving focus, or `null` to use the default."
       },
       "lazyMount": {
         "type": "boolean",
@@ -248,6 +253,11 @@
   },
   "RootProvider": {
     "emits": {
+      "enterComplete": {
+        "type": "[]",
+        "isRequired": true,
+        "description": "Function called when the animation ends in the open state"
+      },
       "exitComplete": {
         "type": "[]",
         "isRequired": true,

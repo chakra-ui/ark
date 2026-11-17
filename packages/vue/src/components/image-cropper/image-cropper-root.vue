@@ -1,5 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { BooleanDefaults } from '../../types.ts'
 import type { PolymorphicProps } from '../factory.ts'
 import type { RootEmits, RootProps } from './image-cropper.types.ts'
 
@@ -20,11 +21,13 @@ import { useImageCropper } from './use-image-cropper.ts'
 import { ImageCropperProvider } from './use-image-cropper-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
-defineProps<ImageCropperRootProps>()
+const props = withDefaults(defineProps<ImageCropperRootProps>(), {
+  fixedCropArea: undefined,
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<ImageCropperRootEmits>()
 
-const imageCropper = useImageCropper({}, emits)
+const imageCropper = useImageCropper(props, emits)
 ImageCropperProvider(imageCropper)
 
 useForwardExpose()

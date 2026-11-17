@@ -109,7 +109,7 @@ describe('PinInput', () => {
   })
 })
 
-describe('NumberInput / Field', () => {
+describe('PinInput / Field', () => {
   it('should set input as required', async () => {
     await renderOnNextTick(WithField, { props: { required: true } })
     expect(screen.getAllByRole('textbox', { hidden: true })[3]).toBeRequired()
@@ -145,5 +145,10 @@ describe('NumberInput / Field', () => {
     await renderOnNextTick(WithField)
 
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+  })
+
+  it('should describe the input group with the helper and error text', async () => {
+    await renderOnNextTick(WithField, { props: { invalid: true } })
+    expect(screen.getByRole('group', { name: 'Label' })).toHaveAccessibleDescription('Error Info Additional Info')
   })
 })

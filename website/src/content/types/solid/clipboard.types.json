@@ -49,7 +49,7 @@
         "description": "The initial value to be copied to the clipboard when rendered.\nUse when you don't need to control the value of the clipboard."
       },
       "ids": {
-        "type": "Partial<{ root: string; input: string; label: string }>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the clipboard. Useful for composition."
       },

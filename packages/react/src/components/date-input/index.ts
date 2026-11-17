@@ -1,6 +1,7 @@
 export type {
   DateValue as DateInputDateValue,
   FocusChangeDetails as DateInputFocusChangeDetails,
+  PlaceholderChangeDetails as DateInputPlaceholderChangeDetails,
   SelectionMode as DateInputSelectionMode,
   ValueChangeDetails as DateInputValueChangeDetails,
 } from '@zag-js/date-input'

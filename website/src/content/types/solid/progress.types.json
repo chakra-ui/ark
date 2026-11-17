@@ -64,7 +64,7 @@
         "description": "The options to use for formatting the value."
       },
       "ids": {
-        "type": "Partial<{ root: string; track: string; label: string; circle: string }>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the progress bar. Useful for composition."
       },

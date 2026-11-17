@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { RenderStrategyProps } from '../../utils/use-render-strategy.ts'
-import type { RootEmits } from './tour.types.ts'
+import type { RootEmits as PresenceEmits } from '../presence/presence.types.ts'
 import type { UseTourReturn } from './use-tour.ts'
 
 interface RootProps {
@@ -9,7 +9,7 @@ interface RootProps {
 
 export interface TourRootBaseProps extends RootProps, RenderStrategyProps {}
 export interface TourRootProps extends TourRootBaseProps {}
-export interface TourRootEmits extends RootEmits {}
+export interface TourRootEmits extends PresenceEmits {}
 </script>
 
 <script setup lang="ts">

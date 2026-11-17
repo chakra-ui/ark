@@ -22,7 +22,9 @@ import { useColorPickerContext } from './use-color-picker-context.ts'
 
 const props = defineProps<ColorPickerValueTextProps>()
 const colorPicker = useColorPickerContext()
-const slots = defineSlots()
+const slots = defineSlots<{
+  default?(): unknown
+}>()
 
 useForwardExpose()
 

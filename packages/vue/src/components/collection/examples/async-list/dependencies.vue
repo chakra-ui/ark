@@ -68,11 +68,9 @@ const mockUsers: User[] = [
   { id: 20, name: 'Tina Walker', email: 'tina@example.com', department: 'Marketing', role: 'Social Media Manager' },
 ]
 
-const list = useAsyncList<User>({
+const list = useAsyncList<User>(() => ({
   initialItems: mockUsers.slice(0, LIMIT),
-  get dependencies() {
-    return [selectedDepartment.value, selectedRole.value]
-  },
+  dependencies: [selectedDepartment.value, selectedRole.value],
   async load({ filterText }: { filterText?: string } = {}) {
     await delay(400)
 
@@ -96,7 +94,7 @@ const list = useAsyncList<User>({
 
     return { items: items.slice(0, LIMIT) }
   },
-})
+}))
 </script>
 
 <template>

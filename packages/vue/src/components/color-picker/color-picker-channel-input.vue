@@ -16,16 +16,22 @@ export interface ColorPickerChannelInputProps
 <script setup lang="ts">
 import { ark } from '../factory.ts'
 import { useColorPickerContext } from './use-color-picker-context.ts'
+import { useFieldContext } from '../field/index.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 const props = defineProps<ColorPickerChannelInputProps>()
 const colorPicker = useColorPickerContext()
+const field = useFieldContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.input v-bind="colorPicker.getChannelInputProps(props)" :as-child="asChild">
+  <ark.input
+    :aria-describedby="field?.ariaDescribedby"
+    v-bind="colorPicker.getChannelInputProps(props)"
+    :as-child="asChild"
+  >
     <slot />
   </ark.input>
 </template>

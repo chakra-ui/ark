@@ -17,7 +17,12 @@
   import { MenuTriggerItemProvider } from './use-menu-trigger-item-context.ts'
   import { useMenu } from './use-menu.svelte.ts'
 
-  let { open = $bindable<boolean>(), ...props }: MenuRootProps = $props()
+  let {
+    open = $bindable<boolean>(),
+    highlightedValue = $bindable<string | null>(),
+    triggerValue = $bindable<string | null>(),
+    ...props
+  }: MenuRootProps = $props()
   const providedId = $props.id()
 
   const [presenceProps, menuProps] = $derived(splitPresenceProps(props))
@@ -58,9 +63,19 @@
     ...useMenuProps,
     id: useMenuProps.id ?? providedId,
     open,
+    highlightedValue,
+    triggerValue,
     onOpenChange(details) {
       useMenuProps.onOpenChange?.(details)
       if (open !== undefined) open = details.open
+    },
+    onHighlightChange(details) {
+      useMenuProps.onHighlightChange?.(details)
+      if (highlightedValue !== undefined) highlightedValue = details.highlightedValue
+    },
+    onTriggerValueChange(details) {
+      useMenuProps.onTriggerValueChange?.(details)
+      if (triggerValue !== undefined) triggerValue = details.value
     },
   })
 

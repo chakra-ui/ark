@@ -7,6 +7,7 @@ export type {
   RotationChangeDetails,
   ZoomChangeDetails,
 } from '@zag-js/image-cropper'
+export type { Rect } from '@zag-js/types'
 export { handles } from '@zag-js/image-cropper'
 export { default as Context, type ImageCropperContextProps as ContextProps } from './image-cropper-context.svelte'
 export {

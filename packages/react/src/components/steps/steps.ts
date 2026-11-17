@@ -1,4 +1,4 @@
-export type { StepChangeDetails as ChangeDetails } from '@zag-js/steps'
+export type { StepChangeDetails as ChangeDetails, StepInvalidDetails as InvalidDetails } from '@zag-js/steps'
 export {
   StepsCompletedContent as CompletedContent,
   type StepsCompletedContentBaseProps as CompletedContentBaseProps,

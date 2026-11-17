@@ -46,6 +46,7 @@ const props = withDefaults(defineProps<ComboboxRootProps<T>>(), {
   disabled: undefined,
   disableLayer: undefined,
   invalid: undefined,
+  loading: undefined,
   loopFocus: undefined,
   multiple: undefined,
   open: undefined,

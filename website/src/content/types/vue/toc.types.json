@@ -92,6 +92,12 @@
         "isRequired": false,
         "description": "The ids of the elements in the TOC. Useful for composition."
       },
+      "multiple": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether every visible heading can be active at once.\nWhen `false`, only the topmost visible heading is active."
+      },
       "rootMargin": {
         "type": "string",
         "defaultValue": "\"-20px 0px -40% 0px\"",
@@ -119,7 +125,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "TocApi<PropTypes>", "isRequired": true },
+      "value": { "type": "UseTocApi", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

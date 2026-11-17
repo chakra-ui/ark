@@ -1,15 +1,11 @@
 <script lang="ts">
-export interface TreeViewNodeCheckboxIndicatorBaseProps {
-  indeterminate?: unknown
-  fallback?: unknown
-}
+export type TreeViewNodeCheckboxIndicatorBaseProps = {}
 export interface TreeViewNodeCheckboxIndicatorProps extends TreeViewNodeCheckboxIndicatorBaseProps {}
 </script>
 
 <script setup lang="ts">
 import { useTreeViewNodeContext } from './use-tree-view-node-context.ts'
 
-defineProps<TreeViewNodeCheckboxIndicatorProps>()
 defineSlots<{
   default(): void
   indeterminate(): void

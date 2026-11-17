@@ -83,6 +83,43 @@ describe('Listbox', () => {
     expect(option).toHaveAttribute('aria-selected', 'true')
   })
 
+  it('should update ItemContext.selected after an option is selected', async () => {
+    const collection = createListCollection({
+      items: [
+        { label: 'React', value: 'react' },
+        { label: 'Solid', value: 'solid' },
+      ],
+    })
+
+    render(() => (
+      <Listbox.Root collection={collection}>
+        <Listbox.Content>
+          <Index each={collection.items}>
+            {(item) => (
+              <Listbox.Item item={item()}>
+                <Listbox.ItemText>{item().label}</Listbox.ItemText>
+                <Listbox.ItemContext>
+                  {(itemState) => (
+                    <span data-testid={`${item().value}-selected`} aria-hidden="true">
+                      {String(itemState().selected)}
+                    </span>
+                  )}
+                </Listbox.ItemContext>
+              </Listbox.Item>
+            )}
+          </Index>
+        </Listbox.Content>
+      </Listbox.Root>
+    ))
+
+    expect(screen.getByTestId('react-selected')).toHaveTextContent('false')
+
+    await user.click(await screen.findByRole('option', { name: 'React' }))
+
+    expect(screen.getByTestId('react-selected')).toHaveTextContent('true')
+    expect(screen.getByTestId('solid-selected')).toHaveTextContent('false')
+  })
+
   it('should allow multiple selections when selectionMode is multiple', async () => {
     const onValueChange = vi.fn()
     render(() => <ComponentUnderTest defaultValue={['react']} onValueChange={onValueChange} selectionMode="multiple" />)

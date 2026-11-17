@@ -1,5 +1,5 @@
 import type { JSX } from 'solid-js'
-import { type UseTocContext, useTocContext } from './use-toc-context'
+import { type UseTocContext, useTocContext } from './use-toc-context.ts'
 
 export interface TocContextProps {
   children: (context: UseTocContext) => JSX.Element

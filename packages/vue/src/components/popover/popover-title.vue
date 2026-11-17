@@ -24,7 +24,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="popover.getTitleProps()" :as-child="asChild">
+  <ark.h2 v-bind="popover.getTitleProps()" :as-child="asChild">
     <slot />
-  </ark.div>
+  </ark.h2>
 </template>

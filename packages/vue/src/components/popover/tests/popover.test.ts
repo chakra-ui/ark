@@ -1,6 +1,7 @@
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
 import ControlledComponentUnderTest from './controlled-popover.test.vue'
+import NestedComponentUnderTest from './popover-nested.test.vue'
 import ComponentUnderTest from './popover.test.vue'
 
 describe('Popover', () => {
@@ -86,5 +87,15 @@ describe('Popover', () => {
 
     await user.click(screen.getByRole('button', { name: 'close' }))
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
+  })
+
+  it('should emit requestDismiss when the parent layer closes', async () => {
+    const onRequestDismiss = vi.fn()
+    const { rerender } = render(NestedComponentUnderTest, { props: { dialogOpen: true, onRequestDismiss } })
+    await user.click(screen.getByText('click me'))
+    await waitFor(() => expect(screen.getByText('popover content')).toBeVisible())
+
+    await rerender({ dialogOpen: false })
+    await waitFor(() => expect(onRequestDismiss).toHaveBeenCalledTimes(1))
   })
 })

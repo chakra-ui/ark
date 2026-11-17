@@ -5,7 +5,7 @@
 
 <Avatar.Root class={styles.Root}>
   <Avatar.Context>
-    {#snippet api(avatar)}
+    {#snippet render(avatar)}
       <Avatar.Fallback class={styles.Fallback}>
         {#if avatar().loaded}
           <p>PA</p>

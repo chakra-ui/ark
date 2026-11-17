@@ -19,5 +19,8 @@ const localProps = useForwardPropsEmits(props, emits)
       <Progress.CircleTrack />
       <Progress.CircleRange />
     </Progress.Circle>
+    <Progress.Context v-slot="api">
+      <button @click="api.setValue(80)">Set value</button>
+    </Progress.Context>
   </Progress.Root>
 </template>

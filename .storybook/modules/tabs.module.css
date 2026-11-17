@@ -1,18 +1,23 @@
 .Root {
   color: var(--demo-neutral-fg);
-  display: flex;
+  display: grid;
+  width: 100%;
   max-width: 32rem;
 
   &[data-orientation='horizontal'] {
-    flex-direction: column;
+    grid-template-areas: 'list' 'content';
+    grid-template-rows: auto 1fr;
   }
 
   &[data-orientation='vertical'] {
-    flex-direction: row;
+    grid-template-areas: 'list content';
+    grid-template-columns: auto 1fr;
   }
 }
 
 .List {
+  grid-area: list;
+  justify-self: start;
   display: inline-flex;
   position: relative;
   isolation: isolate;
@@ -125,6 +130,7 @@
 }
 
 .Content {
+  grid-area: content;
   padding-block: 0.725rem;
   outline: none;
   font-size: 0.875rem;

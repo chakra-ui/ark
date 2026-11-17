@@ -59,7 +59,7 @@
       },
       "closeOnInteractOutside": {
         "type": "boolean",
-        "defaultValue": "true",
+        "defaultValue": "`true` for modal dialogs, `false` for non-modal dialogs",
         "isRequired": false,
         "description": "Whether to close the dialog when the outside is clicked"
       },
@@ -81,7 +81,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  trigger: string | ((value?: string | undefined) => string)\n  positioner: string\n  backdrop: string\n  content: string\n  closeTrigger: string\n  title: string\n  description: string\n}>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the dialog. Useful for composition."
       },
@@ -91,9 +91,9 @@
         "description": "Whether to synchronize the present change immediately or defer it to the next frame"
       },
       "initialFocusEl": {
-        "type": "() => MaybeElement",
+        "type": "() => false | MaybeElement",
         "isRequired": false,
-        "description": "Element to receive focus when the dialog is opened"
+        "description": "Element to receive focus when the dialog is opened.\nReturn `false` to skip moving focus, or `null` to use the default."
       },
       "lazyMount": {
         "type": "boolean",
@@ -106,6 +106,11 @@
         "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to prevent pointer interaction outside the element and hide all content below it"
+      },
+      "onEnterComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the open state"
       },
       "onEscapeKeyDown": {
         "type": "(event: KeyboardEvent) => void",
@@ -209,6 +214,11 @@
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
+      },
+      "onEnterComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the open state"
       },
       "onExitComplete": {
         "type": "VoidFunction",

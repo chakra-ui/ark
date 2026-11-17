@@ -2,10 +2,10 @@
   import type { Snippet } from 'svelte'
   import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SliderValueTextBaseProps extends PolymorphicProps<'div'>, RefAttribute {
+  export interface SliderValueTextBaseProps extends PolymorphicProps<'span'>, RefAttribute {
     children?: Snippet
   }
-  export interface SliderValueTextProps extends HTMLProps<'div'>, SliderValueTextBaseProps {}
+  export interface SliderValueTextProps extends HTMLProps<'span'>, SliderValueTextBaseProps {}
 </script>
 
 <script lang="ts">
@@ -18,7 +18,7 @@
   const mergedProps = $derived(mergeProps(slider().getValueTextProps(), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps}>
+<Ark as="span" bind:ref {...mergedProps}>
   {#if children}
     {@render children()}
   {:else}

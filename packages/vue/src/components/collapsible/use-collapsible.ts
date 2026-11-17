@@ -1,6 +1,6 @@
 import * as collapsible from '@zag-js/collapsible'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, type MaybeRef, computed, ref, toValue, useId, watch } from 'vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, ref, toValue, useId, watch } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
 import type { EmitFn, Optional } from '../../types.ts'
 import { cleanProps } from '../../utils/clean-props.ts'
@@ -20,7 +20,7 @@ interface Collapsible extends collapsible.Api<PropTypes> {
 export interface UseCollapsibleReturn extends ComputedRef<Collapsible> {}
 
 export const useCollapsible = (
-  props: MaybeRef<UseCollapsibleProps> = {},
+  props: MaybeRefOrGetter<UseCollapsibleProps> = {},
   emits?: EmitFn<RootEmits>,
 ): UseCollapsibleReturn => {
   const id = useId()

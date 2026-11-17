@@ -3,16 +3,20 @@
   import type { UseMarqueeContext } from './use-marquee-context.ts'
 
   export interface MarqueeContextProps {
-    children: Snippet<[UseMarqueeContext]>
+    render?: Snippet<[UseMarqueeContext]>
+    /**
+     * @deprecated Use `render` instead.
+     */
+    children?: Snippet<[UseMarqueeContext]>
   }
 </script>
 
 <script lang="ts">
   import { useMarqueeContext } from './use-marquee-context.ts'
 
-  let { children }: MarqueeContextProps = $props()
+  const { render, children }: MarqueeContextProps = $props()
 
   const context = useMarqueeContext()
 </script>
 
-{@render children(context)}
+{@render (render ?? children)?.(context)}

@@ -8,7 +8,7 @@ export interface TreeViewContextProps<T extends TreeNode> extends SlotsType<{
 }> {}
 </script>
 
-<script setup lang="ts" generic="T extends TreeNode">
+<script setup lang="ts" generic="T extends TreeNode = TreeNode">
 import { useTreeViewContext } from './use-tree-view-context.ts'
 
 const treeView = useTreeViewContext()

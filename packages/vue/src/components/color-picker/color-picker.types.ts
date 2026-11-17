@@ -57,8 +57,9 @@ export interface RootProps {
   }>
   /**
    * The initial focus element when the color picker is opened.
+   * Return `false` to skip moving focus, or `null` to use the default.
    */
-  initialFocusEl?: () => HTMLElement | null
+  initialFocusEl?: () => HTMLElement | null | false
   /**
    * Whether the color picker is invalid
    */
@@ -99,6 +100,10 @@ export interface RootProps {
 }
 
 export type RootEmits = {
+  /**
+   * Function called when the animation ends in the open state
+   */
+  enterComplete: []
   /**
    * Function called when the animation ends in the closed state
    */

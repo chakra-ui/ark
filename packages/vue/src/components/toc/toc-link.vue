@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { AnchorHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { PolymorphicProps } from '../factory.ts'
 
 export interface TocLinkBaseProps extends PolymorphicProps {}
 export interface TocLinkProps
@@ -13,10 +13,10 @@ export interface TocLinkProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useForwardExpose } from '../../utils/use-forward-expose'
-import { useTocContext } from './use-toc-context'
-import { useTocItemPropsContext } from './use-toc-item-props-context'
+import { ark } from '../factory.ts'
+import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { useTocContext } from './use-toc-context.ts'
+import { useTocItemPropsContext } from './use-toc-item-props-context.ts'
 
 defineProps<TocLinkProps>()
 const toc = useTocContext()

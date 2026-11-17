@@ -133,7 +133,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{ trigger: string; positioner: string; content: string; title: string; header: string }>",
+        "type": "ElementIds",
         "isRequired": false,
         "description": "The ids of the elements in the floating panel. Useful for composition."
       },
@@ -143,9 +143,9 @@
         "description": "Whether to synchronize the present change immediately or defer it to the next frame"
       },
       "initialFocusEl": {
-        "type": "() => HTMLElement | null",
+        "type": "() => false | HTMLElement | null",
         "isRequired": false,
-        "description": "Element to receive focus when the panel is opened.\nBy default, the first focusable element in the content is focused."
+        "description": "Element to receive focus when the panel is opened. Defaults to the panel content.\nReturn `false` to skip moving focus, or `null` to use the default."
       },
       "lazyMount": {
         "type": "boolean",
@@ -160,6 +160,11 @@
       },
       "maxSize": { "type": "Size", "isRequired": false, "description": "The maximum size of the panel" },
       "minSize": { "type": "Size", "isRequired": false, "description": "The minimum size of the panel" },
+      "onEnterComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the open state"
+      },
       "onExitComplete": {
         "type": "VoidFunction",
         "isRequired": false,
@@ -258,6 +263,11 @@
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
+      },
+      "onEnterComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the open state"
       },
       "onExitComplete": {
         "type": "VoidFunction",

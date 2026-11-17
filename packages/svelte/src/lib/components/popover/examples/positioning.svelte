@@ -10,6 +10,7 @@
   positioning={{
     placement: 'left-start',
     offset: { mainAxis: 12, crossAxis: 12 },
+    flip: ['right-start', 'bottom', 'top'],
   }}
 >
   <Popover.Trigger class={button.Root}>Click Me</Popover.Trigger>
