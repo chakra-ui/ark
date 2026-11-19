@@ -1,27 +1,26 @@
 import { z } from 'zod'
-import { fetchComponentList, getStyleGuide } from '../lib/fetch.js'
+import { resolveComponent } from '../lib/components.js'
+import { getStyleGuide } from '../lib/fetch.js'
 import type { Tool } from '../lib/types.js'
 
-export const stylingGuideTool: Tool<{ componentList: string[] }> = {
+export const stylingGuideTool: Tool = {
   name: 'styling_guide',
   description:
     'This tool retrieves the data attributes for a specific component in Ark UI, which can be used for styling and customization.',
-  ctx: async () => {
-    const componentList = await fetchComponentList('react') // Default to 'react' for initial context
-    return { componentList }
-  },
-  async exec(server, { ctx, name, description }) {
+  async exec(server, { name, description }) {
     server.registerTool(
       name,
       {
         description,
         inputSchema: {
           component: z
-            .enum(ctx.componentList as [string, ...string[]])
-            .describe('The name of the component to retrieve data attributes for.'),
+            .string()
+            .min(1)
+            .describe('The component name, e.g. "dialog" or "date-picker". Call list_components for the full list.'),
         },
       },
-      async ({ component }) => {
+      async ({ component: name }) => {
+        const component = await resolveComponent('react', name)
         const json = await getStyleGuide(component)
         const extraGuide = customGuides[component] || ''
 

@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { fetchComponentList } from '../lib/fetch.js'
 import { FRAMEWORKS, type Tool } from '../lib/types.js'
 
-export const listComponentsTool: Tool<{ componentList: string[] }> = {
+export const listComponentsTool: Tool = {
   name: 'list_components',
   description:
     'List all available components in Ark UI based on the framework type. This tool retrieves the names of all available Ark UI components.',

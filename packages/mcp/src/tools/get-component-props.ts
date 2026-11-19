@@ -1,16 +1,13 @@
 import { z } from 'zod'
-import { fetchComponentList, getComponentProps } from '../lib/fetch.js'
+import { resolveComponent } from '../lib/components.js'
+import { getComponentProps } from '../lib/fetch.js'
 import { FRAMEWORKS, type Tool } from '../lib/types.js'
 
-export const getComponentPropsTool: Tool<{ componentList: string[] }> = {
+export const getComponentPropsTool: Tool = {
   name: 'get_component_props',
   description:
     'Get the props/properties for a specific Ark UI component in a given framework. This tool retrieves detailed information about the available props for the specified component.',
-  ctx: async () => {
-    const componentList = await fetchComponentList('react') // Default to 'react' for initial context
-    return { componentList }
-  },
-  async exec(server, { name, description, ctx }) {
+  async exec(server, { name, description }) {
     server.registerTool(
       name,
       {
@@ -18,11 +15,13 @@ export const getComponentPropsTool: Tool<{ componentList: string[] }> = {
         inputSchema: {
           framework: z.enum(FRAMEWORKS).describe('The framework type to get component props for.'),
           component: z
-            .enum(ctx.componentList as [string, ...string[]])
-            .describe('The name of the component to get props for.'),
+            .string()
+            .min(1)
+            .describe('The component name, e.g. "dialog" or "date-picker". Call list_components for the full list.'),
         },
       },
-      async ({ framework, component }) => {
+      async ({ framework, component: name }) => {
+        const component = await resolveComponent(framework, name)
         const componentProps = await getComponentProps({ framework, component })
 
         return {
