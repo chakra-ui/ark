@@ -9,10 +9,12 @@ import type {
   SearchDocsResponse,
 } from './types.js'
 
-const API_BASE = 'https://ark-ui.com/api'
+const DEFAULT_API_BASE = 'https://ark-docs-git-v6-chakra-ui.vercel.app/api'
+
+export const getApiBase = () => (process.env.ARK_UI_MCP_API_URL || DEFAULT_API_BASE).replace(/\/+$/, '')
 
 const fetchJson = async <T>(path: string, label: string): Promise<T> => {
-  const response = await fetch(`${API_BASE}${path}`)
+  const response = await fetch(`${getApiBase()}${path}`)
 
   if (!response.ok) {
     throw new Error(`Failed to fetch ${label}: ${response.status} ${response.statusText}`)

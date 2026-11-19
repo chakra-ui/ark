@@ -18,18 +18,18 @@ const tools: Tool[] = [
   getDocsTool,
 ]
 
-const registeredToolCache = new Map<string, Tool>()
+const registered = new WeakMap<McpServer, Set<string>>()
 
 export const initializeTools = async (server: McpServer, config?: ToolConfig) => {
   const enabledTools = tools.filter((tool) => !tool.disabled?.(config))
+  const names = registered.get(server) ?? new Set<string>()
+  registered.set(server, names)
 
   await Promise.all(
     enabledTools.map(async (tool) => {
+      if (names.has(tool.name)) return
+      names.add(tool.name)
       const toolCtx = await tool.ctx?.()
-      if (registeredToolCache.has(tool.name)) {
-        return
-      }
-      registeredToolCache.set(tool.name, tool)
       tool.exec(server, {
         name: tool.name,
         description: tool.description,

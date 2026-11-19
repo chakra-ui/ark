@@ -36,6 +36,23 @@ across React, Vue, Svelte, and Solid.js frameworks.
 }
 ```
 
+### Docs source
+
+The server reads the Ark UI v6 docs. To point it at another deployment (for example a local `bun run dev` of the
+website), set `ARK_UI_MCP_API_URL`:
+
+```json
+{
+  "mcpServers": {
+    "ark-ui": {
+      "command": "npx",
+      "args": ["-y", "@ark-ui/mcp@next"],
+      "env": { "ARK_UI_MCP_API_URL": "http://localhost:3000/api" }
+    }
+  }
+}
+```
+
 ## License
 
 MIT @ Chakra Systems

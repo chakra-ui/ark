@@ -1,15 +1,12 @@
 import { z } from 'zod'
-import { fetchComponentList, getExample } from '../lib/fetch.js'
+import { resolveComponent } from '../lib/components.js'
+import { getExample } from '../lib/fetch.js'
 import { FRAMEWORKS, type Tool } from '../lib/types.js'
 
-export const getExampleTool: Tool<{ componentList: string[] }> = {
+export const getExampleTool: Tool = {
   name: 'get_example',
   description: 'Retrieve a specific example from Ark UI based on the framework and component type.',
-  ctx: async () => {
-    const componentList = await fetchComponentList('react') // Default to 'react' for initial context
-    return { componentList }
-  },
-  async exec(server, { ctx, name, description }) {
+  async exec(server, { name, description }) {
     server.registerTool(
       name,
       {
@@ -22,11 +19,13 @@ export const getExampleTool: Tool<{ componentList: string[] }> = {
             ),
           framework: z.enum(FRAMEWORKS).describe('The framework type.'),
           component: z
-            .enum(ctx.componentList as [string, ...string[]])
-            .describe('The name of the component to retrieve the example for.'),
+            .string()
+            .min(1)
+            .describe('The component name, e.g. "dialog" or "date-picker". Call list_components for the full list.'),
         },
       },
-      async ({ framework, component, exampleId }) => {
+      async ({ framework, component: name, exampleId }) => {
+        const component = await resolveComponent(framework, name)
         const example = await getExample({ framework, component, exampleId })
 
         return {
