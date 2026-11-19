@@ -50,6 +50,16 @@ export interface RootProps {
     arrow: string
   }>
   /**
+   * The element to focus when the menu closes.
+   * Return `null` to use the default (the trigger, or the element focused before a context menu opened).
+   */
+  finalFocusEl?: () => HTMLElement | null
+  /**
+   * The element to focus when the menu opens.
+   * Return `false` to skip moving focus, or `null` to use the default.
+   */
+  initialFocusEl?: () => HTMLElement | null | false
+  /**
    * Whether to loop the keyboard navigation.
    * @default false
    */

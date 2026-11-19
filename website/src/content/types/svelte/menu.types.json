@@ -236,6 +236,11 @@
         "isRequired": false,
         "description": "The initial trigger value when rendered.\nUse when you don't need to control the trigger value."
       },
+      "finalFocusEl": {
+        "type": "() => MaybeElement",
+        "isRequired": false,
+        "description": "The element to focus when the menu closes.\nReturn `null` to use the default (the trigger, or the element focused before a context menu opened)."
+      },
       "highlightedValue": {
         "type": "string",
         "isRequired": false,
@@ -251,6 +256,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
+      "initialFocusEl": {
+        "type": "() => false | MaybeElement",
+        "isRequired": false,
+        "description": "The element to focus when the menu opens.\nReturn `false` to skip moving focus, or `null` to use the default."
       },
       "lazyMount": {
         "type": "boolean",

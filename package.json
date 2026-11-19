@@ -38,14 +38,14 @@
     "release": "changeset publish"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.15",
+    "@biomejs/biome": "2.6.8",
     "@changesets/cli": "3.0.3",
-    "@shikijs/langs": "4.5.0",
-    "@shikijs/themes": "4.5.0",
-    "@types/bun": "1.4.2",
-    "lefthook": "2.2.1",
-    "next": "15.5.27",
-    "prettier": "3.9.9",
+    "@shikijs/langs": "4.6.0",
+    "@shikijs/themes": "4.6.0",
+    "@types/bun": "1.4.4",
+    "lefthook": "2.2.2",
+    "next": "15.5.29",
+    "prettier": "3.10.1",
     "prettier-plugin-svelte": "4.1.1",
     "typescript": "6.0.3",
     "vercel": "65.5.0"

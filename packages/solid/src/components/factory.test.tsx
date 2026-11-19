@@ -31,7 +31,7 @@ describe('Ark Factory', () => {
 
   it('should merge styles', () => {
     render(() => <ComponentUnderTest />)
-    expect(screen.getByText('Child')).toHaveStyle({ color: 'rgb(0, 0, 255)', background: 'red' })
+    expect(screen.getByText('Child')).toHaveStyle({ color: 'rgb(0, 0, 255)', backgroundColor: 'rgb(255, 0, 0)' })
   })
 
   it('should merge classes', () => {

@@ -24,6 +24,10 @@
     {
       "matchPackageNames": ["better-auth"],
       "allowedVersions": "<1.5.0"
+    },
+    {
+      "matchPackageNames": ["vue-tsc", "@vue/language-core"],
+      "allowedVersions": "<=3.3.11"
     }
   ]
 }
