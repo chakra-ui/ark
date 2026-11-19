@@ -15,6 +15,16 @@ describe('Dialog', () => {
     await waitFor(async () => expect(await screen.findByText('Dialog Title')).not.toBeVisible())
   })
 
+  it('should not have aria-controls if lazy mounted', async () => {
+    render(ComponentUnderTest, { props: { lazyMount: true } })
+    const trigger = screen.getByText('Open Dialog')
+
+    expect(trigger).not.toHaveAttribute('aria-controls')
+
+    await user.click(trigger)
+    await waitFor(() => expect(trigger).toHaveAttribute('aria-controls'))
+  })
+
   it('should emit exitComplete when close animation completes', async () => {
     const onExitComplete = vi.fn()
     render(ComponentUnderTest, { props: { onExitComplete } })

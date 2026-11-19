@@ -10,7 +10,7 @@ describe('PinInput', () => {
     await screen.findByLabelText('pin code 3 of 3')
   })
 
-  it.skip('should autofocus the first input', async () => {
+  it('should autofocus the first input', async () => {
     render(() => <ComponentUnderTest autoFocus />)
     await waitFor(() => expect(screen.getByLabelText('pin code 1 of 3')).toHaveFocus())
   })

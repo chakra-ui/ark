@@ -15,7 +15,7 @@ describe('Popover', () => {
     await waitFor(() => expect(screen.queryByText('title')).not.toBeVisible())
   })
 
-  it.skip('should hide the popover when escape is pressed', async () => {
+  it('should hide the popover when escape is pressed', async () => {
     render(ComponentUnderTest)
 
     await user.click(screen.getByText('click me'))
@@ -32,7 +32,7 @@ describe('Popover', () => {
     expect(screen.getByRole('dialog')).toBeInTheDocument()
   })
 
-  it.skip('should allow controlled usage', async () => {
+  it('should allow controlled usage', async () => {
     render(ControlledComponentUnderTest)
 
     expect(screen.queryByText('title')).not.toBeVisible()
@@ -61,8 +61,7 @@ describe('Popover', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
   })
 
-  // TODO fix me
-  it.skip('should not have aria-controls if lazy mounted', async () => {
+  it('should not have aria-controls if lazy mounted', async () => {
     render(ComponentUnderTest, {
       props: {
         lazyMount: true,

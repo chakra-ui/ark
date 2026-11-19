@@ -15,7 +15,9 @@ export interface PopoverTriggerProps
 </script>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { ark } from '../factory.ts'
+import { usePresenceContext } from '../presence/index.ts'
 import { usePopoverContext } from './use-popover-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
@@ -23,12 +25,21 @@ const props = defineProps<PopoverTriggerProps>()
 
 defineSlots<PolymorphicSlots<PopoverTriggerState>>()
 const popover = usePopoverContext()
+const presence = usePresenceContext()
+
+const triggerProps = computed(() => {
+  const localProps = popover.value.getTriggerProps(props)
+  return {
+    ...localProps,
+    'aria-controls': presence.value.unmounted ? undefined : localProps['aria-controls'],
+  }
+})
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="popover.getTriggerProps(props)" :as-child="asChild" :state="popover.getTriggerState(props)">
+  <ark.button v-bind="triggerProps" :as-child="asChild" :state="popover.getTriggerState(props)">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

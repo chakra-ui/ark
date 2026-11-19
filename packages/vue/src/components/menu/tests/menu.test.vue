@@ -9,6 +9,7 @@ const localProps = useForwardPropsEmits(props, emits)
 
 const items = ref(['react', 'solid', 'vue', 'svelte'])
 const checked = ref(false)
+const framework = ref('')
 </script>
 
 <template>
@@ -33,7 +34,7 @@ const checked = ref(false)
           <Menu.ItemText>Check me</Menu.ItemText>
         </Menu.CheckboxItem>
         <Menu.Separator />
-        <Menu.RadioItemGroup>
+        <Menu.RadioItemGroup v-model="framework">
           <Menu.ItemGroupLabel>JS Frameworks</Menu.ItemGroupLabel>
           <Menu.RadioItem v-for="item in items" :key="item" :value="item">
             <Menu.ItemIndicator>✅</Menu.ItemIndicator>
