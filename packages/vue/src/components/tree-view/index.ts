@@ -76,6 +76,7 @@ export {
   type TreeViewRootBaseProps,
   type TreeViewRootComponent,
   type TreeViewRootComponentProps,
+  type TreeViewRootEmits,
   type TreeViewRootProps,
 } from './tree-view-root.vue'
 export {

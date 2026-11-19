@@ -54,6 +54,7 @@ export {
 export {
   default as Root,
   type FloatingPanelRootBaseProps as RootBaseProps,
+  type FloatingPanelRootEmits as RootEmits,
   type FloatingPanelRootProps as RootProps,
 } from './floating-panel-root.vue'
 

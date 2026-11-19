@@ -24,6 +24,7 @@ export {
 export {
   default as PasswordInputRoot,
   type PasswordInputRootBaseProps,
+  type PasswordInputRootEmits,
   type PasswordInputRootProps,
   type PasswordInputRootState,
 } from './password-input-root.vue'

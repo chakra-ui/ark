@@ -51,6 +51,7 @@ export {
 export {
   default as Root,
   type DrawerRootBaseProps as RootBaseProps,
+  type DrawerRootEmits as RootEmits,
   type DrawerRootProps as RootProps,
 } from './drawer-root.vue'
 export {
