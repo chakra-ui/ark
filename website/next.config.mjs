@@ -50,8 +50,12 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/docs/:path*.mdx',
-        destination: '/llms.txt/:path*.mdx',
+        source: '/docs/:framework(react|solid|svelte|vue)/:path*.:ext(md|mdx)',
+        destination: '/llms.txt/:framework/:path*',
+      },
+      {
+        source: '/docs/:path*.:ext(md|mdx)',
+        destination: '/llms.txt/:path*',
       },
     ]
   },

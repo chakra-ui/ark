@@ -10,9 +10,12 @@ const isFramework = (value: string | null): value is Framework =>
   !!value && (frameworks as readonly string[]).includes(value)
 
 export async function GET(request: Request, context: RouteContext) {
-  const params = await context.params
+  const { slug } = await context.params
+  const [first, ...rest] = slug
+  const fromPath = isFramework(first) ? first : null
   const requested = new URL(request.url).searchParams.get('framework')
-  const doc = await getDoc(params.slug.join('/'), isFramework(requested) ? requested : 'react')
+  const framework = fromPath ?? (isFramework(requested) ? requested : 'react')
+  const doc = await getDoc((fromPath ? rest : slug).join('/'), framework)
 
   if (!doc) {
     notFound()
