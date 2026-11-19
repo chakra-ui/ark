@@ -15,7 +15,9 @@ export interface DrawerTriggerProps
 </script>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { ark } from '../factory.ts'
+import { usePresenceContext } from '../presence/index.ts'
 import { useDrawerContext } from './use-drawer-context.ts'
 import { useForwardExpose } from '../../utils/index.ts'
 
@@ -24,11 +26,20 @@ const props = defineProps<DrawerTriggerProps>()
 defineSlots<PolymorphicSlots<DrawerTriggerState>>()
 
 const drawer = useDrawerContext()
+const presence = usePresenceContext()
+
+const triggerProps = computed(() => {
+  const localProps = drawer.value.getTriggerProps(props)
+  return {
+    ...localProps,
+    'aria-controls': presence.value.unmounted ? undefined : localProps['aria-controls'],
+  }
+})
 useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="drawer.getTriggerProps(props)" :state="drawer.getTriggerState(props)" :as-child="asChild">
+  <ark.button v-bind="triggerProps" :state="drawer.getTriggerState(props)" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

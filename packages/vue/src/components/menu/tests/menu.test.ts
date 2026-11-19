@@ -30,7 +30,7 @@ describe('Menu', () => {
     await waitFor(() => expect(screen.getAllByRole('group')).toHaveLength(2))
   })
 
-  it.skip('should accept a custom placement', async () => {
+  it('should accept a custom placement', async () => {
     render(ComponentUnderTest, { props: { dir: 'rtl', positioning: { placement: 'left-start' } } })
 
     const button = screen.getByRole('button', { name: /open menu/i })
@@ -60,13 +60,13 @@ describe('Menu', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
   })
 
-  it.skip('should not have aria-controls if lazy mounted', async () => {
+  it('should not have aria-controls if lazy mounted', async () => {
     render(ComponentUnderTest, { props: { lazyMount: true } })
 
     expect(screen.getByRole('button', { name: 'Open menu' })).not.toHaveAttribute('aria-controls')
   })
 
-  it.skip('should lazy mount and unmount on exit', async () => {
+  it('should lazy mount and unmount on exit', async () => {
     render(ComponentUnderTest, { props: { lazyMount: true, unmountOnExit: true } })
 
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
@@ -80,7 +80,7 @@ describe('Menu', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
   })
 
-  it.skip('should open on context menu', async () => {
+  it('should open on context menu', async () => {
     render(ComponentUnderTest, { props: { contextMenu: true } })
 
     const button = screen.getByRole('button', { name: /Open Context Menu/i })
@@ -89,7 +89,7 @@ describe('Menu', () => {
     await waitFor(() => expect(screen.getByText(/Ark UI/i)).toBeVisible())
   })
 
-  it.skip('should open on nested menu', async () => {
+  it('should open on nested menu', async () => {
     render(ComponentUnderTest)
 
     const button = screen.getByRole('button', { name: /open menu/i })
@@ -101,7 +101,7 @@ describe('Menu', () => {
     await waitFor(() => expect(screen.getByText(/Panda/i)).toBeVisible())
   })
 
-  it.skip('should select a radio option', async () => {
+  it('should select a radio option', async () => {
     render(ComponentUnderTest)
 
     const menuButton = screen.getByRole('button', { name: /open menu/i })

@@ -46,7 +46,7 @@ describe('NumberInput', () => {
     await waitFor(() => expect(input).toHaveValue('5'))
   })
 
-  it.skip('should handle min and max fraction digits', async () => {
+  it('should handle min and max fraction digits', async () => {
     render(ComponentUnderTest, {
       props: {
         defaultValue: 1,
