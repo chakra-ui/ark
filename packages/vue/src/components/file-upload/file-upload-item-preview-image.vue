@@ -13,7 +13,7 @@ export interface FileUploadItemPreviewImageProps
 </script>
 
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
+import { ref, watch } from 'vue'
 import { ark } from '../factory.ts'
 import { useFileUploadContext } from './use-file-upload-context.ts'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context.ts'
@@ -26,10 +26,14 @@ const itemProps = useFileUploadItemPropsContext()
 
 const url = ref<string>('')
 
-watchEffect((onCleanup) => {
-  const cleanup = fileUpload.value.createFileUrl(itemProps.value.file, (src) => (url.value = src))
-  onCleanup(cleanup)
-})
+watch(
+  () => itemProps.value.file,
+  (file, _, onCleanup) => {
+    const cleanup = fileUpload.value.createFileUrl(file, (src) => (url.value = src))
+    onCleanup(cleanup)
+  },
+  { immediate: true },
+)
 
 useForwardExpose()
 </script>

@@ -13,8 +13,8 @@ export const FileUploadItemPreviewImage = (props: FileUploadItemPreviewImageProp
   const [url, setUrl] = createSignal<string>('')
 
   createEffect(
-    () => [fileUpload(), itemProps().file] as const,
-    ([api, file]) => api.createFileUrl(file, (url) => setUrl(url)),
+    () => itemProps().file,
+    (file) => fileUpload().createFileUrl(file, (url) => setUrl(url)),
   )
 
   const mergedProps = mergeProps(() => fileUpload().getItemPreviewImageProps({ ...itemProps(), url: url() }), props)

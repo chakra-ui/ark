@@ -78,6 +78,9 @@ To show the menu when a trigger element is right-clicked, use the `Menu.ContextT
 
 Context menus are also opened during a long-press of roughly `700ms` when the pointer is pen or touch.
 
+Pass a `value` to each `Menu.ContextTrigger` to share one menu across several targets. Right-clicking another trigger
+while the menu is open moves it there, and `onTriggerValueChange` reports which trigger is active.
+
 <Example id="context" />
 
 ### Nested

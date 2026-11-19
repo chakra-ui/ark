@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import { vi } from 'vitest'
 import { axe } from 'vitest-axe'
-import { Toc } from '../'
-import { ComponentUnderTest, items } from './basic'
+import { Toc } from '../index.ts'
+import { ComponentUnderTest, items } from './basic.tsx'
 
 describe('Toc', () => {
   it('should have no a11y violations', async () => {

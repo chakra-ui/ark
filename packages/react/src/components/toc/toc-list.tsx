@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useTocContext } from './use-toc-context'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory.ts'
+import { useTocContext } from './use-toc-context.ts'
 
 export interface TocListBaseProps extends PolymorphicProps {}
 export interface TocListProps extends HTMLProps<'ul'>, TocListBaseProps {}
