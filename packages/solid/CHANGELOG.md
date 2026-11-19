@@ -150,8 +150,8 @@
 
 ### Fixed
 
-- - **Select**: Export `SelectIntlTranslations`, `SelectPositioningOptions`, `SelectScrollToIndexDetails` and
-    `SelectSelectionDetails`.
+- **Select**: Export `SelectIntlTranslations`, `SelectPositioningOptions`, `SelectScrollToIndexDetails` and
+  `SelectSelectionDetails`.
   - **Clipboard**: Export `ClipboardValueChangeDetails`.
   - **DateInput**: Export `DateInputPlaceholderChangeDetails`.
   - **ImageCropper**: Export `ImageCropperRect`.
@@ -159,13 +159,13 @@
   - **Steps**: Export `StepInvalidDetails`. In Vue, this fixes TS2883 ("cannot be named without a reference to …") when
     emitting declarations for a component that wraps one of these roots, for example a generic `Select.Root` wrapper
     built with pnpm.
-- - **Field**: Fix `Field.ErrorText` not being announced by VoiceOver and Narrator. It is now linked via
-    `aria-describedby` instead of `aria-errormessage`, since screen reader support for `aria-errormessage` is still
-    incomplete.
-    ```diff
-    - expect(input).toHaveAccessibleErrorMessage('Error Info')
-    + expect(input).toHaveAccessibleDescription(expect.stringContaining('Error Info'))
-    ```
+- **Field**: Fix `Field.ErrorText` not being announced by VoiceOver and Narrator. It is now linked via
+  `aria-describedby` instead of `aria-errormessage`, since screen reader support for `aria-errormessage` is still
+  incomplete.
+  ```diff
+  - expect(input).toHaveAccessibleErrorMessage('Error Info')
+  + expect(input).toHaveAccessibleDescription(expect.stringContaining('Error Info'))
+  ```
 - **Listbox**: Fix `ItemContext.selected` staying `false` after selection. The option already set `data-selected` and
   `aria-selected`; the render-prop kept the first-render value. `ItemContext` is now an accessor, matching Select and
   Combobox. Read `item().selected` instead of `item.selected`.
@@ -182,10 +182,10 @@
   `./interaction/index.ts` after the file was renamed to `index.tsx`, so `bun run build` aborted with an unresolved
   import.
 - Fix `Tour.Content` unmounting before its exit animation finishes when using `lazyMount` and `unmountOnExit`.
-- - **TreeView**: Fix `useTreeView` losing the node type, so `selectedNodes`, `expandedNodes` and `focusedNode` are
-    typed as `T` instead of `TreeNode`.
-- - **NumberInput**: Fix `NumberInput.ValueText` rendering empty when used without children. It now displays the current
-    value.
+- **TreeView**: Fix `useTreeView` losing the node type, so `selectedNodes`, `expandedNodes` and `focusedNode` are
+  typed as `T` instead of `TreeNode`.
+- **NumberInput**: Fix `NumberInput.ValueText` rendering empty when used without children. It now displays the current
+  value.
   - **Select**: Fix `Select.ValueText` ignoring custom children.
 - Fix `Toaster` dropping the group props it accepts. `dir` and `getRootNode` were typed on the component but never
   reached the group machine — the locale and environment contexts always won, and both props were spread onto the region

@@ -139,8 +139,8 @@
 
 ### Fixed
 
-- - **Select**: Export `SelectIntlTranslations`, `SelectPositioningOptions`, `SelectScrollToIndexDetails` and
-    `SelectSelectionDetails`.
+- **Select**: Export `SelectIntlTranslations`, `SelectPositioningOptions`, `SelectScrollToIndexDetails` and
+  `SelectSelectionDetails`.
   - **Clipboard**: Export `ClipboardValueChangeDetails`.
   - **DateInput**: Export `DateInputPlaceholderChangeDetails`.
   - **ImageCropper**: Export `ImageCropperRect`.
@@ -148,15 +148,15 @@
   - **Steps**: Export `StepInvalidDetails`. In Vue, this fixes TS2883 ("cannot be named without a reference to …") when
     emitting declarations for a component that wraps one of these roots, for example a generic `Select.Root` wrapper
     built with pnpm.
-- - **Field**: Fix `Field.ErrorText` not being announced by VoiceOver and Narrator. It is now linked via
-    `aria-describedby` instead of `aria-errormessage`, since screen reader support for `aria-errormessage` is still
-    incomplete.
-    ```diff
-    - expect(input).toHaveAccessibleErrorMessage('Error Info')
-    + expect(input).toHaveAccessibleDescription(expect.stringContaining('Error Info'))
-    ```
-- - **Progress, QrCode**: Fix `Root` not emitting `valueChange` and `update:modelValue`, so `v-model` stayed stale after
-    `setValue()` from context.
+- **Field**: Fix `Field.ErrorText` not being announced by VoiceOver and Narrator. It is now linked via
+  `aria-describedby` instead of `aria-errormessage`, since screen reader support for `aria-errormessage` is still
+  incomplete.
+  ```diff
+  - expect(input).toHaveAccessibleErrorMessage('Error Info')
+  + expect(input).toHaveAccessibleDescription(expect.stringContaining('Error Info'))
+  ```
+- **Progress, QrCode**: Fix `Root` not emitting `valueChange` and `update:modelValue`, so `v-model` stayed stale after
+  `setValue()` from context.
   - **QrCode**: Fix `QrCode.Context` being undefined because it was exported under the wrong name.
 - Migrate the `Presence` and Svelte `Menu` parts off the legacy `data-scope`/`data-part` attributes. `Presence` now
   renders the unified `data-presence-root` attribute, and the Svelte `Menu.Separator`/`Menu.Trigger` parts drop the
@@ -189,20 +189,20 @@
   - `ColorPicker.Swatch` and `ColorPicker.ValueSwatch` rendered hex instead of the picker's format, because
     `respectAlpha` arrived as `false` and zag chose `toString("hex")` over `toString("css")`.
   - `NavigationMenu.Link` did not close the menu on click, because `closeOnClick` arrived as `false`.
-- - **Select, Listbox, TreeView**: Fix `Context` slot items typed as `unknown` inside generic wrapper components.
+- **Select, Listbox, TreeView**: Fix `Context` slot items typed as `unknown` inside generic wrapper components.
   - Fix `Cannot find name '__VLS_Slots'` type errors when `skipLibCheck` is disabled.
-- - **Highlight**: Fix `class`, `style` and other attributes not being forwarded to the rendered `<mark>` elements.
-- - **ImageCropper**: Fix `ImageCropper.Root` ignoring all of its props, such as `fixedCropArea`, `aspectRatio`, and
-    `initialCrop`.
+- **Highlight**: Fix `class`, `style` and other attributes not being forwarded to the rendered `<mark>` elements.
+- **ImageCropper**: Fix `ImageCropper.Root` ignoring all of its props, such as `fixedCropArea`, `aspectRatio`, and
+  `initialCrop`.
   - **DatePicker**: Fix `DatePicker.Input` not committing the typed date on blur by default.
   - **Toc**: Fix `Toc.Root` not auto-scrolling to the active item by default.
-- - **JsonTreeView**: Fix `v-model:expanded-value`, `v-model:selected-value`, `v-model:checked-value` and
-    `v-model:focused-value` not updating, and the tree not re-rendering when `data` changes. `useJsonTreeView` now also
-    reacts to `data` changes.
-- - **Combobox**: Fix `select` event not being emitted when an item is selected.
+- **JsonTreeView**: Fix `v-model:expanded-value`, `v-model:selected-value`, `v-model:checked-value` and
+  `v-model:focused-value` not updating, and the tree not re-rendering when `data` changes. `useJsonTreeView` now also
+  reacts to `data` changes.
+- **Combobox**: Fix `select` event not being emitted when an item is selected.
   - **Menu, Popover**: Fix `requestDismiss` event not being emitted when a parent layer closes.
-- - **NumberInput**: Fix `NumberInput.ValueText` rendering empty when used without a default slot. It now displays the
-    current value.
+- **NumberInput**: Fix `NumberInput.ValueText` rendering empty when used without a default slot. It now displays the
+  current value.
 - Remove the `portalled` prop from `Popover.Root`. Zag v2 dropped `portalled` — portalling is auto-detected from where
   the content is rendered — and React, Solid, and Svelte already removed it. Vue still declared the prop, so it lingered
   as dead surface that did nothing. Decide portalling by rendering the content inside `Portal` or not; there is no prop
@@ -216,12 +216,12 @@
   object as `state`, so `#render="{ props, state }"` receives the machine's part state instead of a hand-built
   `{ open }` object.
 - Fix `Select.HiddenSelect` rendering a stray `>` as text in every option, so each one read `Label >`.
-- - **Tour**: Fix `Tour.RootEmits` declaring `statusChange`, `stepChange` and other machine events that `Tour.Root`
-    never emits. It now only declares `enterComplete` and `exitComplete`. Pass `onStatusChange`, `onStepChange` and the
-    other callbacks to `useTour` instead.
+- **Tour**: Fix `Tour.RootEmits` declaring `statusChange`, `stepChange` and other machine events that `Tour.Root`
+  never emits. It now only declares `enterComplete` and `exitComplete`. Pass `onStatusChange`, `onStepChange` and the
+  other callbacks to `useTour` instead.
   - **Presence**: Fix the `enterComplete` and `exitComplete` event descriptions being swapped.
-- - **TreeView**: Fix `TreeView.RootEmits<T>` and `useTreeView` losing the node type, so `selectedNodes`,
-    `expandedNodes` and `focusedNode` are typed as `T` instead of `TreeNode`.
+- **TreeView**: Fix `TreeView.RootEmits<T>` and `useTreeView` losing the node type, so `selectedNodes`,
+  `expandedNodes` and `focusedNode` are typed as `T` instead of `TreeNode`.
 - Move to zag `2.0.0-next.2` and drop the shims it makes unnecessary. `normalizeHotkey` and the `Platform` re-export are
   back in `@zag-js/hotkeys`, and `@zag-js/presence` now calls `onEnterComplete`, so Ark's local stand-ins for all three
   are gone. **Svelte:** the `useX` hooks now require an `id`. `useMachine` began taking `InputProps<T>` rather than

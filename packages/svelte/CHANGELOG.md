@@ -154,8 +154,8 @@
 
 ### Fixed
 
-- - **Select**: Export `SelectIntlTranslations`, `SelectPositioningOptions`, `SelectScrollToIndexDetails` and
-    `SelectSelectionDetails`.
+- **Select**: Export `SelectIntlTranslations`, `SelectPositioningOptions`, `SelectScrollToIndexDetails` and
+  `SelectSelectionDetails`.
   - **Clipboard**: Export `ClipboardValueChangeDetails`.
   - **DateInput**: Export `DateInputPlaceholderChangeDetails`.
   - **ImageCropper**: Export `ImageCropperRect`.
@@ -163,13 +163,13 @@
   - **Steps**: Export `StepInvalidDetails`. In Vue, this fixes TS2883 ("cannot be named without a reference to …") when
     emitting declarations for a component that wraps one of these roots, for example a generic `Select.Root` wrapper
     built with pnpm.
-- - **Field**: Fix `Field.ErrorText` not being announced by VoiceOver and Narrator. It is now linked via
-    `aria-describedby` instead of `aria-errormessage`, since screen reader support for `aria-errormessage` is still
-    incomplete.
-    ```diff
-    - expect(input).toHaveAccessibleErrorMessage('Error Info')
-    + expect(input).toHaveAccessibleDescription(expect.stringContaining('Error Info'))
-    ```
+- **Field**: Fix `Field.ErrorText` not being announced by VoiceOver and Narrator. It is now linked via
+  `aria-describedby` instead of `aria-errormessage`, since screen reader support for `aria-errormessage` is still
+  incomplete.
+  ```diff
+  - expect(input).toHaveAccessibleErrorMessage('Error Info')
+  + expect(input).toHaveAccessibleDescription(expect.stringContaining('Error Info'))
+  ```
 - Migrate the `Presence` and Svelte `Menu` parts off the legacy `data-scope`/`data-part` attributes. `Presence` now
   renders the unified `data-presence-root` attribute, and the Svelte `Menu.Separator`/`Menu.Trigger` parts drop the
   redundant hardcoded attributes in favour of the ones Zag emits (`data-menu-separator`, `data-menu-trigger`).
@@ -177,8 +177,8 @@
   the publish config (`clean-package`) maintains its own `exports` map and was never updated when the `hotkeys` and
   `interaction` primitives were added, so `import { useHotkeys } from '@ark-ui/react/hotkeys'` failed with
   `ERR_MODULE_NOT_FOUND`. Both entrypoints are now included in the published map for every framework.
-- - **AngleSlider**: Fix `AngleSlider.ValueText` rendering empty when used without children. It now displays the current
-    value in degrees.
+- **AngleSlider**: Fix `AngleSlider.ValueText` rendering empty when used without children. It now displays the current
+  value in degrees.
 - Accept a `render` snippet on every `Context` component. 55 of the 63 take `render`; `Avatar`, `Progress`, `QrCode` and
   `Timer` took `api`, and `Dialog`, `Drawer`, `Marquee` and `RadioGroup` took `children`. Those eight now take `render`
   too, and keep `api` / `children` as deprecated aliases, so existing code keeps working.
@@ -191,15 +191,15 @@
   `FieldsetRootProps` / `FieldsetLegendProps` names, so `Fieldset.RootProps` and its siblings did not resolve and the
   `BaseProps` variants were not exported at all. This matches the React package, whose `Fieldset` namespace already
   aliases both.
-- - **JsonTreeView**: Fix `bind:expandedValue`, `bind:selectedValue`, `bind:checkedValue` and `bind:focusedValue` not
-    syncing, and the tree not re-rendering when `data` changes. `useJsonTreeView` now also reacts to `data` changes.
-- - Fix the `asChild` props function rejecting an SVG child. It returned `HTMLAttributes<HTMLElement>`, whose event
-    handlers don't accept an `SVGElement`, so `<svg {...props()}>` failed to typecheck without a cast. It now returns
-    attributes any element accepts, which keeps spreading a part's props onto a different element (a trigger rendered as
-    `<a>`) working.
+- **JsonTreeView**: Fix `bind:expandedValue`, `bind:selectedValue`, `bind:checkedValue` and `bind:focusedValue` not
+  syncing, and the tree not re-rendering when `data` changes. `useJsonTreeView` now also reacts to `data` changes.
+- Fix the `asChild` props function rejecting an SVG child. It returned `HTMLAttributes<HTMLElement>`, whose event
+  handlers don't accept an `SVGElement`, so `<svg {...props()}>` failed to typecheck without a cast. It now returns
+  attributes any element accepts, which keeps spreading a part's props onto a different element (a trigger rendered as
+  `<a>`) working.
   - Export `HTMLProps`, `HTMLTag`, `PolymorphicProps`, `PropsFn` and `RefAttribute`, so wrappers can type their own
     polymorphic props the way `@ark-ui/react` exports `HTMLArkProps` and `PolymorphicProps`.
-- - Fix `Portal` leaving its content in the DOM when unmounted immediately after mounting.
+- Fix `Portal` leaving its content in the DOM when unmounted immediately after mounting.
   - Fix `Portal` not moving its content when the `container` prop changes.
 - Fix composing one part inside another part's `render` snippet. The props function was typed as returning Svelte's
   `HTMLAttributes`, whose `id` is `string | null`. Ark parts take `string | undefined`, so spreading the props into a

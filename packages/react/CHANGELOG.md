@@ -128,8 +128,8 @@
 
 ### Fixed
 
-- - **Select**: Export `SelectIntlTranslations`, `SelectPositioningOptions`, `SelectScrollToIndexDetails` and
-    `SelectSelectionDetails`.
+- **Select**: Export `SelectIntlTranslations`, `SelectPositioningOptions`, `SelectScrollToIndexDetails` and
+  `SelectSelectionDetails`.
   - **Clipboard**: Export `ClipboardValueChangeDetails`.
   - **DateInput**: Export `DateInputPlaceholderChangeDetails`.
   - **ImageCropper**: Export `ImageCropperRect`.
@@ -137,13 +137,13 @@
   - **Steps**: Export `StepInvalidDetails`. In Vue, this fixes TS2883 ("cannot be named without a reference to …") when
     emitting declarations for a component that wraps one of these roots, for example a generic `Select.Root` wrapper
     built with pnpm.
-- - **Field**: Fix `Field.ErrorText` not being announced by VoiceOver and Narrator. It is now linked via
-    `aria-describedby` instead of `aria-errormessage`, since screen reader support for `aria-errormessage` is still
-    incomplete.
-    ```diff
-    - expect(input).toHaveAccessibleErrorMessage('Error Info')
-    + expect(input).toHaveAccessibleDescription(expect.stringContaining('Error Info'))
-    ```
+- **Field**: Fix `Field.ErrorText` not being announced by VoiceOver and Narrator. It is now linked via
+  `aria-describedby` instead of `aria-errormessage`, since screen reader support for `aria-errormessage` is still
+  incomplete.
+  ```diff
+  - expect(input).toHaveAccessibleErrorMessage('Error Info')
+  + expect(input).toHaveAccessibleDescription(expect.stringContaining('Error Info'))
+  ```
 - Migrate the `Presence` and Svelte `Menu` parts off the legacy `data-scope`/`data-part` attributes. `Presence` now
   renders the unified `data-presence-root` attribute, and the Svelte `Menu.Separator`/`Menu.Trigger` parts drop the
   redundant hardcoded attributes in favour of the ones Zag emits (`data-menu-separator`, `data-menu-trigger`).
