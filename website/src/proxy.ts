@@ -8,7 +8,7 @@ const fallbackSlug: Record<string, string> = {
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
-  if (pathname.endsWith('.mdx')) return NextResponse.next()
+  if (/\.mdx?$/.test(pathname)) return NextResponse.next()
 
   const [base, ...rest] = pathname.split('/').filter(Boolean)
   if (isFramework(rest[0])) return NextResponse.next()

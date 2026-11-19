@@ -40,7 +40,7 @@ const toEntry = ({ page, category }: DocsPageSource): DocsEntry => ({
 export const formatDocContent = async (page: PageMeta, framework: Framework = 'react') => `# ${page.title}
 
 URL: https://ark-ui.com/docs/${framework}/${page.slug}
-LLM: https://ark-ui.com/llms.txt/${page.slug}
+Markdown: https://ark-ui.com/docs/${framework}/${page.slug}.md
 
 ${page.description || ''}
 
@@ -51,7 +51,7 @@ ${await cleanupPageContent(page, framework)}`
 export const listDocs = (): DocsEntry[] => getDocsSources().map(toEntry)
 
 export const getDoc = async (slug: string, framework: Framework = 'react'): Promise<DocsPage | null> => {
-  const normalized = slug.replace(/\.mdx$/, '')
+  const normalized = slug.replace(/\.mdx?$/, '')
   const source = getDocsSources().find(({ page }) => page.slug === normalized)
   if (!source) return null
 

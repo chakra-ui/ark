@@ -7,7 +7,7 @@ const SUMMARY =
   'Ark UI is a headless component library for building design systems. It ships the same accessible, unstyled components for React, Solid, Svelte, and Vue, built on Zag.js state machines.'
 
 export const GET = async () => {
-  const pageUrl = (framework: string, slug: string) => `https://ark-ui.com/${framework}/docs/${slug}`
+  const pageUrl = (framework: string, slug: string) => `https://ark-ui.com/docs/${framework}/${slug}.md`
 
   // one H1, first line, then H2 sections (see https://llmstxt.org)
   const intro = [
@@ -23,7 +23,7 @@ export const GET = async () => {
       (f) => `- [llms-${f}.txt](https://ark-ui.com/llms-${f}.txt): All ${LABELS[f]} documentation in one file`,
     ),
     '',
-    '- A single page as markdown: `https://ark-ui.com/llms.txt/{slug}`, for example [components/accordion](https://ark-ui.com/llms.txt/components/accordion). Add `?framework=vue` to switch framework.',
+    '- Any docs page as markdown: add `.md` to its URL, for example [docs/vue/components/accordion.md](https://ark-ui.com/docs/vue/components/accordion.md).',
   ].join('\n')
 
   const section = (group: ReturnType<typeof getSidebarGroups>[number]) => {
