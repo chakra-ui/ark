@@ -2,6 +2,7 @@ export { default as AngleSliderContext, type AngleSliderContextProps } from './a
 export {
   default as AngleSliderRoot,
   type AngleSliderRootBaseProps,
+  type AngleSliderRootEmits,
   type AngleSliderRootProps,
   type AngleSliderRootState,
 } from './angle-slider-root.vue'

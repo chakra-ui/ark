@@ -3,6 +3,7 @@ import type { JsonNode } from '@zag-js/json-tree-utils'
 import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types.ts'
 import type { TreeViewRootBaseProps } from '../tree-view/index.ts'
+import type { RootEmits } from '../tree-view/tree-view.types.ts'
 import type { JsonTreeViewOptions } from './json-tree-view-props-context.ts'
 
 export interface JsonTreeViewRootBaseProps
@@ -16,6 +17,8 @@ export interface JsonTreeViewRootBaseProps
    */
   defaultExpandedDepth?: number
 }
+
+export type JsonTreeViewRootEmits = RootEmits<JsonNode>
 
 export interface JsonTreeViewRootProps
   extends
@@ -32,7 +35,6 @@ import { computed } from 'vue'
 import { useEmitAsProps } from '../../utils/use-emits-as-props.ts'
 import { createSplitProps } from '../create-split-props.ts'
 import { TreeView, createTreeCollection } from '../tree-view/index.ts'
-import type { RootEmits } from '../tree-view/tree-view.types.ts'
 import { getBranchValues } from './get-branch-value.ts'
 import { JsonTreeViewPropsProvider } from './json-tree-view-props-context.ts'
 
@@ -46,7 +48,7 @@ const props = withDefaults(defineProps<JsonTreeViewRootProps>(), {
   quotesOnKeys: undefined,
 } satisfies BooleanDefaults<JsonTreeViewRootBaseProps>)
 
-const emits = defineEmits<RootEmits<JsonNode>>()
+const emits = defineEmits<JsonTreeViewRootEmits>()
 const emitsAsProps = useEmitAsProps(emits)
 
 const splitJsonTreeViewProps = createSplitProps<JsonTreeViewOptions>()

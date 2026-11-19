@@ -41,7 +41,12 @@ export {
   type StepsRootProviderBaseProps,
   type StepsRootProviderProps,
 } from './steps-root-provider.vue'
-export { default as StepsRoot, type StepsRootBaseProps, type StepsRootProps } from './steps-root.vue'
+export {
+  default as StepsRoot,
+  type StepsRootBaseProps,
+  type StepsRootEmits,
+  type StepsRootProps,
+} from './steps-root.vue'
 export {
   default as StepsSkipTrigger,
   type StepsSkipTriggerBaseProps,

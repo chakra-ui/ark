@@ -35,6 +35,7 @@ export {
   default as Root,
   type SignaturePadRootProps as RootProps,
   type SignaturePadRootBaseProps as RootBaseProps,
+  type SignaturePadRootEmits as RootEmits,
   type SignaturePadRootState as RootState,
 } from './signature-pad-root.vue'
 export {

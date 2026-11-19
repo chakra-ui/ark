@@ -44,7 +44,12 @@ export {
   type DrawerIndentBackgroundBaseProps,
   type DrawerIndentBackgroundProps,
 } from './drawer-indent-background.vue'
-export { default as DrawerRoot, type DrawerRootBaseProps, type DrawerRootProps } from './drawer-root.vue'
+export {
+  default as DrawerRoot,
+  type DrawerRootBaseProps,
+  type DrawerRootEmits,
+  type DrawerRootProps,
+} from './drawer-root.vue'
 export {
   default as DrawerRootProvider,
   type DrawerRootProviderBaseProps,

@@ -1,6 +1,7 @@
 export {
   default as Root,
   type JsonTreeViewRootBaseProps as RootBaseProps,
+  type JsonTreeViewRootEmits as RootEmits,
   type JsonTreeViewRootProps as RootProps,
 } from './json-tree-view-root.vue'
 export {
