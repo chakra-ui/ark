@@ -18,7 +18,10 @@ Three changes, plus the zag v2 bump underneath them:
 2. **Data attributes.** `data-scope` / `data-part` become one attribute per part.
 3. **Anatomy.** Anatomy moves to its own entry point.
 
-v6 ships when zag v2 is stable. The beta runs on zag v2's `next` line.
+The zag v2 bump brings its own renames (Steps, NumberInput, overlay `z-index`, and more, below), and `@ark-ui/solid` now
+requires Solid 2.
+
+v6 ships when zag v2 is stable. The beta runs on zag v2's `next` line, currently `2.0.0-next.4`.
 
 ---
 
@@ -39,6 +42,8 @@ npm i @ark-ui/vue@next
 Pin the exact version (`@ark-ui/react@6.0.0-next.0`) for reproducible installs — `@next` always resolves to the newest
 prerelease.
 
+Solid also needs Solid 2 — see [Solid 2](#solid-2).
+
 ---
 
 ## Automated migration
@@ -55,27 +60,28 @@ npx @ark-ui/codemod react/as-child-to-render "src/**/*.tsx" --dry
 ```
 
 `--dry` prints a diff and writes nothing. Without it the codemod refuses to run on a dirty working tree, so a bad run is
-one `git checkout` away (`--force` overrides). Anything ambiguous is left untouched and reported with a file and a reason
-rather than guessed. Only Ark UI elements are rewritten — an `asChild` from another library in the same file is left
-alone. Parts reached through local barrels, re-exports, or factory wrappers (`styled(ark.button)`) are resolved with the
-`--cross-file` flag.
+one `git checkout` away (`--force` overrides). Anything ambiguous is left untouched and reported with a file and a
+reason rather than guessed. Only Ark UI elements are rewritten — an `asChild` from another library in the same file is
+left alone. Parts reached through local barrels, re-exports, or factory wrappers (`styled(ark.button)`) are resolved
+with the `--cross-file` flag.
 
 Beyond `as-child-to-render`, prop renames ship for every framework — `react/*`, `solid/*`, `svelte/*`, and `vue/*`:
 
-| Transform                  | What it does                                                              |
-| -------------------------- | ------------------------------------------------------------------------ |
-| `as-child-to-render`       | Lift the `asChild` child into a `render` prop                            |
+| Transform                  | What it does                                                               |
+| -------------------------- | -------------------------------------------------------------------------- |
+| `as-child-to-render`       | Lift the `asChild` child into a `render` prop                              |
 | `carousel-props`           | `slideCount` → `count`, `autoplay` → `autoPlay`, `padding` → `itemSpacing` |
-| `floating-panel-placement` | `resizeTriggerAxes` → `resizeTriggerPlacements`, `axis` → `placement`     |
-| `image-cropper-placement`  | `handles` → `placements`, `position` → `placement`                       |
-| `tabs-virtual-focus`       | `composite` → `virtualFocus` (value inverted)                            |
-| `popover-portalled`        | removes the `portalled` prop                                             |
-| `tags-input-editable`      | adds `editable` to keep the old default                                  |
-| `pin-input-count`          | `length` → `count`, or flags a missing `count`                          |
-| `css/data-attributes`      | merge scope/part selectors, rename the attributes zag v2 changed         |
+| `floating-panel-placement` | `resizeTriggerAxes` → `resizeTriggerPlacements`, `axis` → `placement`      |
+| `image-cropper-placement`  | `handles` → `placements`, `position` → `placement`                         |
+| `tabs-virtual-focus`       | `composite` → `virtualFocus` (value inverted)                              |
+| `popover-portalled`        | removes the `portalled` prop                                               |
+| `tags-input-editable`      | adds `editable` to keep the old default                                    |
+| `pin-input-count`          | `length` → `count`, or flags a missing `count`                             |
+| `css/data-attributes`      | merge scope/part selectors, rename the attributes zag v2 changed           |
 
-Two changes are left to do by hand because they reshape markup, not just props: the `popover` `Portal` wrapper, and the
-`Combobox`/`Listbox`/`Select` `content` → `content` + `list` split. Both are covered below.
+The rest is left to do by hand because it reshapes markup, values, or styles, not just props: the `popover` `Portal`
+wrapper, the `Combobox`/`Listbox`/`Select` `Content` → `Content` + `List` split, `Steps` moving to `items`, the numeric
+`NumberInput` value, overlay `z-index`, and parts that now render `span`. All are covered below.
 
 ### Migrate with an AI agent
 
@@ -114,6 +120,21 @@ only Ark UI usage. After each step, run the project's typecheck/build.
 6. Svelte only: `useX` hooks require an `id` (`useCollapsible({ id })` where
    `const id = $props.id()`), and exports now match the other frameworks
    (Dialog parts prefixed, `TabsContentState` → `TabContentState`, etc.).
+
+7. Solid only: upgrade to Solid 2 (`solid-js@next @solidjs/web@next`) and set
+   `"jsxImportSource": "@solidjs/web"` in tsconfig.
+
+8. Steps: replace `count`/`index` with an `items` array and string `value`s
+   (`step` → `value`, `onStepChange` → `onValueChange`, `index` on parts → `value`).
+
+9. NumberInput: the value is a `number` (or `null` when empty); drop
+   `valueAsNumber` and replace `allowOverflow`/`clampValueOnBlur` with `allowOutOfRange`.
+
+10. Overlays no longer set `z-index`. Move any `z-index` from content to the
+    positioner: `z-index: calc(1400 + var(--layer-index))`.
+
+11. Indicator and control parts inside a button or label now render `span`.
+    Add an explicit `display` where styles relied on them being block-level.
 
 Report anything ambiguous instead of guessing.
 ```
@@ -159,8 +180,8 @@ where the props object becomes a props **function** you must call.
 </Collapsible.Trigger>
 ```
 
-> In Solid, Svelte, and Vue, `props` is a merge function: call `props({ onClick: mine })` to merge your handlers with the
-> part's instead of overwriting them. In Solid, `state` is an accessor (`state().open`).
+> In Solid, Svelte, and Vue, `props` is a merge function: call `props({ onClick: mine })` to merge your handlers with
+> the part's instead of overwriting them. In Solid, `state` is an accessor (`state().open`).
 
 **Status.** Shipped in React, Solid, Svelte, and Vue. `asChild` still works and is deprecated — pairing it with `render`
 throws in dev. Removal is a future major, not v6.
@@ -215,11 +236,72 @@ the listbox. Wrap the items in `List` inside `Content`. This is structural, so t
 ```
 
 `Combobox.Empty` and `Listbox.Empty` also move **out** of `List`. `Empty` used to unmount when the collection was
-non-empty, which kept it out of the accessibility tree. It now stays mounted as a sibling of `List` with `role="status"`,
-swapping only its children — move it out and put your styled message in a child element. A new `Status` part on
-`Combobox`, `Listbox`, and `Select` covers loading and error states that `Empty` can't distinguish.
+non-empty, which kept it out of the accessibility tree. It now stays mounted as a sibling of `List` with
+`role="status"`, swapping only its children — move it out and put your styled message in a child element. A new `Status`
+part on `Combobox`, `Listbox`, and `Select` covers loading and error states that `Empty` can't distinguish.
 
 The `composite` prop is gone; pass `popupType="dialog"` where you previously set `composite={false}`.
+
+---
+
+## Indicator and control parts render `span`
+
+Indicator and control parts that sit inside a `button` or `label` now render `span` instead of `div`, since a `div`
+there is invalid HTML:
+
+- `Accordion.ItemIndicator`, `Collapsible.Indicator`, `Popover.Indicator`, `Toggle.Indicator`
+- `Select.Indicator`, `Select.ItemIndicator`, `Combobox.ItemIndicator`, `Listbox.ItemIndicator`
+- `Menu.Indicator`, `Menu.ItemIndicator`, `NavigationMenu.ItemIndicator`
+- `Checkbox.Control`, `Checkbox.Indicator`, `RadioGroup.ItemControl`, `SegmentGroup.ItemControl`
+- `Clipboard.Indicator`, `Steps.Indicator`, `Splitter.ResizeTriggerIndicator`
+- `Avatar.Root`, `Avatar.RootProvider`, `Tabs.Indicator`, `NumberInput.Scrubber`
+
+Every part now renders the same element in every framework, which moves a few more: `AngleSlider.Marker`,
+`AngleSlider.ValueText` and `Listbox.ItemText` render `span`, and `Popover.Title` renders `h2` (use `render` for another
+heading level).
+
+A `span` is inline, so width, height and `transform` stop applying. Give the part an explicit `display` where your
+styles relied on a block:
+
+```diff
+  [data-accordion-item-indicator] {
++   display: inline-flex;
+    transition: transform 0.2s;
+  }
+```
+
+In React, refs to these parts are now typed `HTMLSpanElement`.
+
+---
+
+## `TagsInput` is no longer editable by default
+
+Tags no longer open for editing on double-click unless you pass `editable`. The `tags-input-editable` codemod adds it.
+
+```diff
+- <TagsInput.Root>
++ <TagsInput.Root editable>
+```
+
+---
+
+## Overlays no longer set a `z-index`
+
+Popover, Menu, Select, Combobox, Tooltip, HoverCard, DatePicker, ColorPicker, Dialog, Drawer, Tour, FloatingPanel and
+Toast no longer put an inline `z-index` on their content. Set it on the positioner (or backdrop) instead. Each exposes
+`--layer-index`, its place in the stack of open layers, so nested overlays stay above their parent.
+
+```diff
+- [data-popover-content] {
+-   z-index: 1400;
+- }
++ [data-popover-positioner] {
++   z-index: calc(1400 + var(--layer-index));
++ }
+```
+
+Dialog and Drawer no longer set `--z-index`; Tour styles its positioner with `--tour-layer`; for Toast, set the
+`z-index` on `[data-toast-group]`.
 
 ---
 
@@ -262,9 +344,15 @@ Ids are still generated where ARIA needs them to point somewhere, so `aria-contr
 Parts that nothing references no longer carry an `id` of their own. This comes from zag v2's anatomy, so it applies to
 every framework at once.
 
-**Known issue.** `SegmentGroup` currently emits `data-radio-group-*` instead of `data-segment-group-*`, because its
-anatomy rename doesn't reach the attributes the machine emits. Don't write selectors against segment-group attributes
-until that's fixed.
+`SegmentGroup` is built on the radio group machine and carries its attributes (`data-radio-group-root`,
+`data-radio-group-item`, …). There are no `data-segment-group-*` attributes.
+
+`Toc.Nav` now carries `data-toc-nav` and its own `id` instead of the root's `data-toc-root`, so update styles that
+reached the nav through `[data-toc-root]`. `aria-labelledby` moves from `Toc.Root` to `Toc.Nav`. In Svelte, `Toc.Nav` no
+longer creates its own Toc; render it inside `Toc.Root`.
+
+Steps keeps a step completed when the user goes back to it, so a step can carry both `data-current` and `data-complete`.
+Put your current-step style after the completed one, or scope the completed style with `:not([data-current])`.
 
 ---
 
@@ -287,23 +375,101 @@ import { dialogAnatomy } from '@ark-ui/react/anatomy'
 
 These come from zag v2 and apply to every framework. Most have a codemod (see [above](#automated-migration)).
 
-| Component        | v5                      | v6                                       |
-| ---------------- | ----------------------- | ---------------------------------------- |
-| Combobox, Select | `composite`             | `popupType`                              |
-| Tabs             | `composite`             | removed, `virtualFocus` added            |
-| Carousel         | `autoplay`              | `autoPlay`                               |
-| Carousel         | `padding`, `slideCount` | removed, `count` and `itemSpacing` added |
-| FloatingPanel    | `axis`                  | `placement`                              |
-| FloatingPanel    | `resizeTriggerAxes`     | `resizeTriggerPlacements`                |
-| FloatingPanel    | `ResizeTriggerAxis`     | `HandlePosition`                         |
-| ImageCropper     | `position`              | `placement`                              |
-| ImageCropper     | `handles`               | `placements`                             |
-| Popover          | `portalled`             | removed                                  |
-| PinInput         | `length`                | `count` (now required)                   |
+| Component        | v5                                                           | v6                                       |
+| ---------------- | ------------------------------------------------------------ | ---------------------------------------- |
+| Combobox, Select | `composite`                                                  | `popupType`                              |
+| Tabs             | `composite`                                                  | removed, `virtualFocus` added            |
+| Carousel         | `autoplay`                                                   | `autoPlay`                               |
+| Carousel         | `padding`, `slideCount`                                      | removed, `count` and `itemSpacing` added |
+| FloatingPanel    | `axis`                                                       | `placement`                              |
+| FloatingPanel    | `resizeTriggerAxes`                                          | `resizeTriggerPlacements`                |
+| FloatingPanel    | `ResizeTriggerAxis`                                          | `HandlePosition`                         |
+| ImageCropper     | `position`                                                   | `placement`                              |
+| ImageCropper     | `handles`                                                    | `placements`                             |
+| Popover          | `portalled`                                                  | removed                                  |
+| PinInput         | `length`                                                     | `count` (now required)                   |
+| PinInput         | `sanitizeValue`                                              | `normalizeValue`                         |
+| PinInput         | `blurOnComplete`, `selectOnFocus`                            | removed; blur in `onValueComplete`       |
+| Accordion        | `loopFocus`                                                  | removed; triggers are reached with `Tab` |
+| Accordion        | `collapsible` default                                        | `true`                                   |
+| Combobox         | `disableLayer`                                               | `inline`                                 |
+| Menu             | `composite`                                                  | `popupType`                              |
+| Slider           | `aria-label`, `aria-labelledby` arrays                       | `getAriaLabel`, `getAriaLabelledBy`      |
+| Toc              | `multiple` default                                           | `false`                                  |
+| Tour             | `"prev"` action                                              | `"previous"`                             |
+| Steps            | see [Steps](#steps-takes-items-and-addresses-steps-by-value) |                                          |
+| NumberInput      | see [NumberInput](#numberinput-value-is-a-number)            |                                          |
 
-New props you can now pass: `Select.alignItemWithTrigger`, `Select.initialFocusEl`, `Menu.menubar`,
-`Accordion.loopFocus`, and the NumberInput scrubber props (`scrubberDirection`, `scrubberPixelSensitivity`,
-`scrubberTeleportDistance`, `snapOnStep`).
+Context and hook APIs spell out "previous": `getPreviousTriggerProps()`, `goToPreviousPage()`,
+`translations.previousTriggerLabel`, `goToPreviousStep()`, `hasPreviousStep`, `selectPrevious()` and `scrollPrevious()`.
+Part names such as `Pagination.PrevTrigger` are unchanged.
+
+Part state types keep their names but now describe zag's root state, which absorbed the per-part states:
+`CollapsibleTriggerState`, `EditableAreaState`/`InputState`/`LabelState`/`PreviewState`, `DateInputControlState`,
+`PasswordInputInputState`/`VisibilityTriggerState`, `PinInputLabelState` and `RatingGroupControlState`.
+
+New props you can now pass: `Select.alignItemWithTrigger`, `Select.initialFocusEl`, the NumberInput scrubber props
+(`scrubberDirection`, `scrubberPixelSensitivity`, `scrubberTeleportDistance`, `snapOnStep`), `hiddenUntilFound` on
+Accordion and Collapsible, `maxGranularity` on DateInput, `disabled` on Splitter and `Slider.Thumb`, `locale` on
+ColorPicker, and `collection`, `scrollToIndexFn`, `autoHighlight`, `initialFocusEl` and `finalFocusEl` on Menu.
+
+`Pagination.Item` and the `Pagination` triggers render anchors when the machine is `type="link"`. They used to render
+buttons carrying an `href`, which navigated nowhere.
+
+---
+
+## `Steps` takes `items` and addresses steps by `value`
+
+Steps are defined by an `items` array and addressed by a string `value` instead of a `count` and an index. Each item can
+be `optional`, `invalid`, `disabled` or `editable`, and can carry a `title` and a `description`.
+
+```diff
++ const items = [{ value: 'shipping' }, { value: 'gift', optional: true }, { value: 'payment' }]
+
+- <Steps.Root count={3} defaultStep={0} onStepChange={(details) => setStep(details.step)}>
++ <Steps.Root items={items} defaultValue="shipping" onValueChange={(details) => setStep(details.value)}>
+    <Steps.List>
+-     <Steps.Item index={0}>
++     <Steps.Item value="shipping">
+        <Steps.Trigger>Shipping</Steps.Trigger>
+      </Steps.Item>
+    </Steps.List>
+-   <Steps.Content index={0}>...</Steps.Content>
++   <Steps.Content value="shipping">...</Steps.Content>
+    <Steps.CompletedContent>Done</Steps.CompletedContent>
+  </Steps.Root>
+```
+
+| v5                                   | v6                                            |
+| ------------------------------------ | --------------------------------------------- |
+| `count`                              | `items`                                       |
+| `step` / `defaultStep`               | `value` / `defaultValue`                      |
+| `onStepChange` / `onStepComplete`    | `onValueChange` / `onComplete`                |
+| `isStepValid` / `isStepSkippable`    | `invalid` / `optional` on the item            |
+| `onStepInvalid`                      | `onNavigationBlocked` (`reason`, `blockedBy`) |
+| `index` on parts                     | `value`                                       |
+| `api.setStep(index)`                 | `api.setValue(value)`                         |
+| `api.isCompleted`                    | `api.complete`                                |
+| `api.goToPrevStep()` / `hasPrevStep` | `api.goToPreviousStep()` / `hasPreviousStep`  |
+| `Steps.ChangeDetails`                | `Steps.ValueChangeDetails`                    |
+| `Steps.InvalidDetails`               | `Steps.NavigationBlockedDetails`              |
+
+`Steps.SkipTrigger` skips an `optional` step, and `completedValues` makes the completed steps controllable. In Vue,
+`v-model` holds the current step's value (it was `v-model:step`); in Svelte, bind `value` (it was `bind:step`). The
+`--percent` variable on the progress part is now `--steps-percent`.
+
+---
+
+## `NumberInput` value is a number
+
+The value is a `number`, with `null` for an empty input. `valueAsNumber` is removed; read `value`. `allowOverflow` and
+`clampValueOnBlur` are replaced by `allowOutOfRange`. The input is now a text field instead of a spinbutton. In Vue,
+`v-model` is a `number | null`.
+
+```diff
+- <NumberInput.Root onValueChange={(details) => setValue(details.valueAsNumber)}>
++ <NumberInput.Root onValueChange={(details) => setValue(details.value)}>
+```
 
 ---
 
@@ -332,12 +498,42 @@ unchanged.
 
 ---
 
+## Solid 2
+
+`@ark-ui/solid` now peers on `solid-js` and `@solidjs/web` `>=2.0.0-rc.19` and no longer works with Solid 1.
+
+```sh
+npm install solid-js@next @solidjs/web@next
+```
+
+Set `"jsxImportSource": "@solidjs/web"` in your `tsconfig.json`.
+
+---
+
+## Vue
+
+Steps and NumberInput change their `v-model` shape (see above). All `use*` composables now also accept a getter for
+their props, so reactive values no longer need a `computed`:
+
+```ts
+const combobox = useCombobox(() => ({
+  collection: collection.value,
+  onInputValueChange: ({ inputValue }) => filter(inputValue),
+}))
+```
+
+`Drawer.Trigger`, `Drawer.CloseTrigger`, `PasswordInput.VisibilityTrigger`, `PasswordInput.Input`,
+`PasswordInput.Label`, `SignaturePad.Label` and `ColorPicker.ChannelSliderLabel` now accept the attributes of the
+element they render (button, input, label).
+
+---
+
 ## Svelte
 
 Two Svelte-only changes beyond the shared ones above.
 
-**Hooks require an `id`.** After moving to zag v2, the `useX` hooks require an `id`. Without one, two instances on a page
-generated the same element ids. Components (`<Collapsible.Root>`) are unaffected and still mint their own.
+**Hooks require an `id`.** After moving to zag v2, the `useX` hooks require an `id`. Without one, two instances on a
+page generated the same element ids. Components (`<Collapsible.Root>`) are unaffected and still mint their own.
 
 ```diff
 - const collapsible = useCollapsible()
@@ -377,14 +573,26 @@ still follow locale changes.
 
 ---
 
+## New in v6
+
+Nothing to migrate here, but worth knowing:
+
+- **Meter** — a numeric value within a known range (disk usage, battery), graded by `low`/`high`/`optimum` like
+  `<meter>`.
+- **NumberFlow** — animates a number by rolling each digit to its new value.
+- **Filterable menus** — `Menu.Input` and `Menu.List`, with `popupType="dialog"` and `autoHighlight` on the root.
+- **Menubar** — `Menubar.Root` wraps a row of portalled `Menu`s into an application-style menu bar.
+
+---
+
 ## Still being finalized
 
 Expect these to change before stable:
 
 - **Stable zag v2.** v6 tracks zag's `2.0.0-next` line; stable zag v2 is the release gate for v6.
 - **Masonry virtualization.** `WaterfallVirtualizer` isn't bound yet — planned for a later minor.
-- **A deprecation window for the data attributes** — whether v6 emits the new attributes alongside the old for a release,
-  or makes a clean break.
+- **A deprecation window for the data attributes** — whether v6 emits the new attributes alongside the old for a
+  release, or makes a clean break.
 
 ---
 
