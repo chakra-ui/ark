@@ -1,5 +1,12 @@
 # @ark-ui/mcp
 
+## [1.4.0-next.0] - 2026-11-21
+
+### Added
+
+- The server now reads the v6 docs and starts without a network connection. Set `ARK_UI_MCP_API_URL` to use another docs
+  deployment.
+
 ## [1.3.0] - 2026-08-01
 
 ### Added
