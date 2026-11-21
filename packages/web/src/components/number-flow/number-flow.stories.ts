@@ -7,6 +7,7 @@ import { mount as LiveExample } from '../../../examples/number-flow/live.js'
 import { mount as LocaleExample } from '../../../examples/number-flow/locale.js'
 import { mount as PrefixSuffixExample } from '../../../examples/number-flow/prefix-suffix.js'
 import { mount as TimingExample } from '../../../examples/number-flow/timing.js'
+import { mount as WithTimerExample } from '../../../examples/number-flow/with-timer.js'
 
 const meta: Meta = { title: 'Components / Number Flow' }
 export default meta
@@ -24,3 +25,5 @@ export const Locale: StoryObj = { name: 'Locale', render: renderExample(LocaleEx
 export const PrefixSuffix: StoryObj = { name: 'Prefix Suffix', render: renderExample(PrefixSuffixExample) }
 
 export const Timing: StoryObj = { name: 'Timing', render: renderExample(TimingExample) }
+
+export const WithTimer: StoryObj = { name: 'With Timer', render: renderExample(WithTimerExample) }

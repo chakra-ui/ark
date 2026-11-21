@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event'
 import { mount as Basic } from '../../../../examples/number-flow/basic.js'
 import { mount as Formatting } from '../../../../examples/number-flow/formatting.js'
 import { mount as PrefixSuffix } from '../../../../examples/number-flow/prefix-suffix.js'
+import { mount as WithTimer } from '../../../../examples/number-flow/with-timer.js'
 import { mount } from '../../../test-utils.js'
 
 const user = userEvent.setup()
@@ -47,4 +48,14 @@ test('number flow formats with formatOptions', async () => {
   await waitFor(() => expect(texts()[0]).toBe('$48,250.75'))
   expect(texts()[1]).toBe('+12.4%')
   expect(texts()[2]).toBe('1.3M')
+})
+
+test('number flow follows a countdown timer and resets with it', async () => {
+  mount(WithTimer)
+  const [minutes, seconds] = document.querySelectorAll('ark-number-flow')
+  await waitFor(() => expect([minutes.value, seconds.value]).toEqual([5, 0]))
+  await user.click(screen.getByRole('button', { name: 'Start' }))
+  await waitFor(() => expect(minutes.value).toBe(4), { timeout: 3000 })
+  await user.click(screen.getByRole('button', { name: 'Reset' }))
+  await waitFor(() => expect([minutes.value, seconds.value]).toEqual([5, 0]))
 })
