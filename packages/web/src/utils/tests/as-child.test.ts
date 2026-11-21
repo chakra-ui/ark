@@ -100,6 +100,7 @@ test('as-child menu items accept arbitrary elements and keep keyboard navigation
   const items = page.getByRole('menuitem')
   await expect(items).toHaveCount(2)
   await expect(page.locator('ark-menu-item > div')).toHaveAttribute('role', 'menuitem')
+  await expect(page.getByRole('menu')).toBeFocused()
   await page.keyboard.press('ArrowDown')
   await page.keyboard.press('ArrowDown')
   await expect(page.locator('ark-menu-item > div')).toHaveAttribute('data-highlighted', '')

@@ -1,0 +1,62 @@
+diff --git a/dist/combobox.machine.js b/dist/combobox.machine.js
+index 3819cb4d8aefcb200c1175d48b6fecb88e8fe214..cd3fc92d93364aff99d80c8ed5862202643b969c 100644
+--- a/dist/combobox.machine.js
++++ b/dist/combobox.machine.js
+@@ -915,7 +915,7 @@ const machine = createMachine({
+ 					const value = prop("collection").firstValue;
+ 					if (value) context.set("highlightedValue", value);
+ 				};
+-				if (require_combobox_dom.getContentEl(scope)) queueMicrotask(fn);
++				if (require_combobox_dom.getContentEl(scope) || require_combobox_dom.getListEl(scope)) queueMicrotask(fn);
+ 				else refs.get("highlightFrame").request(fn);
+ 			},
+ 			autoHighlightFirstItem({ context, prop, scope, refs }) {
+@@ -926,7 +926,7 @@ const machine = createMachine({
+ 					const value = prop("collection").firstValue;
+ 					if (value) context.set("highlightedValue", value);
+ 				};
+-				if (require_combobox_dom.getContentEl(scope)) queueMicrotask(fn);
++				if (require_combobox_dom.getContentEl(scope) || require_combobox_dom.getListEl(scope)) queueMicrotask(fn);
+ 				else refs.get("highlightFrame").request(fn);
+ 			},
+ 			cancelAutoHighlight({ refs }) {
+@@ -941,7 +941,7 @@ const machine = createMachine({
+ 					const value = prop("collection").lastValue;
+ 					if (value) context.set("highlightedValue", value);
+ 				};
+-				if (require_combobox_dom.getContentEl(scope)) queueMicrotask(fn);
++				if (require_combobox_dom.getContentEl(scope) || require_combobox_dom.getListEl(scope)) queueMicrotask(fn);
+ 				else refs.get("highlightFrame").request(fn);
+ 			},
+ 			highlightNextItem({ context, prop }) {
+diff --git a/dist/combobox.machine.mjs b/dist/combobox.machine.mjs
+index 7e7e779c1616315e8539135022c76ca62416cc47..5ef6492a17e7b6f10af3109607684d1b28f7f31b 100644
+--- a/dist/combobox.machine.mjs
++++ b/dist/combobox.machine.mjs
+@@ -911,7 +911,7 @@ const machine = createMachine({
+ 					const value = prop("collection").firstValue;
+ 					if (value) context.set("highlightedValue", value);
+ 				};
+-				if (getContentEl(scope)) queueMicrotask(fn);
++				if (getContentEl(scope) || getListEl(scope)) queueMicrotask(fn);
+ 				else refs.get("highlightFrame").request(fn);
+ 			},
+ 			autoHighlightFirstItem({ context, prop, scope, refs }) {
+@@ -922,7 +922,7 @@ const machine = createMachine({
+ 					const value = prop("collection").firstValue;
+ 					if (value) context.set("highlightedValue", value);
+ 				};
+-				if (getContentEl(scope)) queueMicrotask(fn);
++				if (getContentEl(scope) || getListEl(scope)) queueMicrotask(fn);
+ 				else refs.get("highlightFrame").request(fn);
+ 			},
+ 			cancelAutoHighlight({ refs }) {
+@@ -937,7 +937,7 @@ const machine = createMachine({
+ 					const value = prop("collection").lastValue;
+ 					if (value) context.set("highlightedValue", value);
+ 				};
+-				if (getContentEl(scope)) queueMicrotask(fn);
++				if (getContentEl(scope) || getListEl(scope)) queueMicrotask(fn);
+ 				else refs.get("highlightFrame").request(fn);
+ 			},
+ 			highlightNextItem({ context, prop }) {
