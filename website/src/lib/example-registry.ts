@@ -391,6 +391,7 @@ const exampleModules: Record<string, () => Promise<ExampleModule>> = {
   'number-flow/root-provider': () => import('@examples/number-flow/examples/root-provider'),
   'number-flow/timing': () => import('@examples/number-flow/examples/timing'),
   'number-flow/trend': () => import('@examples/number-flow/examples/trend'),
+  'number-flow/with-timer': () => import('@examples/number-flow/examples/with-timer'),
   'number-input/basic': () => import('@examples/number-input/examples/basic'),
   'number-input/context': () => import('@examples/number-input/examples/context'),
   'number-input/formatting': () => import('@examples/number-input/examples/formatting'),
