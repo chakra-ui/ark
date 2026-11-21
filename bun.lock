@@ -209,6 +209,8 @@
         "@zag-js/dom-query": "2.0.0-next.4",
         "@zag-js/drawer": "2.0.0-next.4",
         "@zag-js/editable": "2.0.0-next.4",
+        "@zag-js/field": "2.0.0-next.4",
+        "@zag-js/fieldset": "2.0.0-next.4",
         "@zag-js/file-upload": "2.0.0-next.4",
         "@zag-js/file-utils": "2.0.0-next.4",
         "@zag-js/floating-panel": "2.0.0-next.4",

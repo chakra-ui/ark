@@ -34,13 +34,13 @@ describe('Fieldset', () => {
 
   it('should not display error text when no error is present', async () => {
     render(() => <ComponentUnderTest />)
-    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+    expect(screen.getByText('Fieldset Error Text')).not.toBeVisible()
   })
 
   it('should render aria-labelledby on the fieldset', async () => {
     render(() => <ComponentUnderTest />)
     const fieldset = screen.getByRole('group', { name: /legend/i })
-    expect(fieldset).toHaveAttribute('aria-labelledby', expect.stringContaining('legend'))
+    await waitFor(() => expect(fieldset).toHaveAttribute('aria-labelledby', expect.stringContaining('legend')))
   })
 
   it('should have helper text accessible', async () => {
@@ -66,5 +66,20 @@ describe('Fieldset', () => {
       expect(describedBy).toContain('error-text')
       expect(describedBy).toContain('helper-text')
     })
+  })
+})
+
+describe('Fieldset / Field', () => {
+  it('should disable a field without a tracked control', () => {
+    render(() => (
+      <Fieldset.Root disabled>
+        <Fieldset.Legend>Legend</Fieldset.Legend>
+        <Field.Root data-testid="field">
+          <Field.Label>Label</Field.Label>
+        </Field.Root>
+      </Fieldset.Root>
+    ))
+    expect(screen.getByTestId('field')).toHaveAttribute('data-disabled')
+    expect(screen.getByText('Label')).toHaveAttribute('data-disabled')
   })
 })

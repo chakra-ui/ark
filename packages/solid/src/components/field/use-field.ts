@@ -1,186 +1,29 @@
-import { mergeProps } from '@zag-js/solid'
-import { createMemo, createSignal, createUniqueId, onSettled } from 'solid-js'
-import { useEnvironmentContext } from '../../providers/index.tsx'
-import { ariaAttr, dataAttr } from '../../utils/attr.ts'
-import type { MaybeAccessor } from '../../types.ts'
-import { useFieldsetContext } from '../fieldset/index.tsx'
-import type { UseFieldsetReturn } from '../fieldset/use-fieldset.ts'
-import { parts } from './field.anatomy.ts'
+import * as field from '@zag-js/field'
+import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
+import { type Accessor, createMemo, createUniqueId } from 'solid-js'
+import { useEnvironmentContext, useLocaleContext } from '../../providers/index.tsx'
+import type { MaybeAccessor, Optional } from '../../types.ts'
+import { runIfFn } from '../../utils/run-if-fn.ts'
+import { useFieldsetContext } from '../fieldset/use-fieldset-context.ts'
+import { compact } from '@zag-js/utils'
 
-export interface ElementIds {
-  root?: string
-  control?: string
-  label?: string
-  errorText?: string
-  helperText?: string
-}
+export interface UseFieldProps extends Optional<Omit<field.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export type UseFieldReturn = Accessor<field.Api<PropTypes>>
 
-export interface UseFieldProps {
-  /**
-   * The id of the field.
-   */
-  id?: string
-  /**
-   * The ids of the field parts.
-   */
-  ids?: ElementIds
-  /**
-   * Indicates whether the field is required.
-   */
-  required?: boolean
-  /**
-   * Indicates whether the field is disabled.
-   */
-  disabled?: boolean
-  /**
-   * Indicates whether the field is invalid.
-   */
-  invalid?: boolean
-  /**
-   * Indicates whether the field is read-only.
-   */
-  readOnly?: boolean
-  /**
-   * The target field item value the label should point to.
-   */
-  target?: string
-}
+export const useField = (props?: MaybeAccessor<UseFieldProps>): UseFieldReturn => {
+  const id = createUniqueId()
+  const environment = useEnvironmentContext()
+  const locale = useLocaleContext()
+  const fieldset = useFieldsetContext()
 
-export type UseFieldReturn = ReturnType<typeof useField>
-
-export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
-  const fieldset: UseFieldsetReturn | undefined = useFieldsetContext()
-  const env = useEnvironmentContext()
-
-  const fieldProps = mergeProps(
-    { disabled: Boolean(fieldset?.().disabled), required: false, invalid: false, readOnly: false },
-    props,
-  )
-
-  const [hasErrorText, setHasErrorText] = createSignal(false)
-  const [hasHelperText, setHasHelperText] = createSignal(false)
-
-  const id = fieldProps.id ?? createUniqueId()
-  const [rootRef, setRootRef] = createSignal<HTMLDivElement | undefined>(undefined)
-
-  const rootId = fieldProps.ids?.root ?? `field::${id}`
-  const controlId = fieldProps.ids?.control ?? id
-  const errorTextId = fieldProps.ids?.errorText ?? `field::${id}::error-text`
-  const helperTextId = fieldProps.ids?.helperText ?? `field::${id}::helper-text`
-  const labelId = fieldProps.ids?.label ?? `field::${id}::label`
-
-  onSettled(() => {
-    const rootNode = rootRef()
-    if (!rootNode) return
-
-    const checkTextElements = () => {
-      const docOrShadowRoot = env().getRootNode() as ShadowRoot | Document
-      setHasErrorText(!!docOrShadowRoot.getElementById(errorTextId))
-      setHasHelperText(!!docOrShadowRoot.getElementById(helperTextId))
-    }
-
-    checkTextElements()
-
-    const win = env().getWindow()
-    const observer = new win.MutationObserver(checkTextElements)
-    observer.observe(rootNode, { childList: true, subtree: true })
-
-    return () => observer.disconnect()
-  })
-
-  const getRootProps = () => ({
-    ...parts.root.attrs(id),
-    id: rootId,
-    role: 'group',
-    'data-disabled': dataAttr(fieldProps.disabled),
-    'data-invalid': dataAttr(fieldProps.invalid),
-    'data-readonly': dataAttr(fieldProps.readOnly),
-  })
-
-  const targetControlId = fieldProps.target ? `field::${controlId}::item::${fieldProps.target}` : undefined
-
-  const getLabelProps = () => ({
-    ...parts.label.attrs(id),
-    id: labelId,
-    'data-disabled': dataAttr(fieldProps.disabled),
-    'data-invalid': dataAttr(fieldProps.invalid),
-    'data-readonly': dataAttr(fieldProps.readOnly),
-    'data-required': dataAttr(fieldProps.required),
-    for: targetControlId ?? controlId,
-  })
-
-  const errorMessageId = createMemo(() => (hasErrorText() && fieldProps.invalid ? errorTextId : undefined))
-  const describedById = createMemo(
-    () => [errorMessageId(), hasHelperText() ? helperTextId : undefined].filter(Boolean).join(' ') || undefined,
-  )
-
-  const getControlProps = () => ({
-    'aria-describedby': describedById(),
-    'aria-invalid': ariaAttr(fieldProps.invalid),
-    'data-invalid': dataAttr(fieldProps.invalid),
-    'data-required': dataAttr(fieldProps.required),
-    'data-readonly': dataAttr(fieldProps.readOnly),
-    id: controlId,
-    required: fieldProps.required,
-    disabled: fieldProps.disabled,
-    readonly: fieldProps.readOnly || undefined,
-  })
-
-  const getInputProps = () => ({
-    ...getControlProps(),
-    ...parts.input.attrs(id),
-  })
-
-  const getTextareaProps = () => ({
-    ...getControlProps(),
-    ...parts.textarea.attrs(id),
-  })
-
-  const getSelectProps = () => ({
-    ...getControlProps(),
-    ...parts.select.attrs(id),
-  })
-
-  const getHelperTextProps = () => ({
-    id: helperTextId,
-    ...parts.helperText.attrs(id),
-    'data-disabled': dataAttr(fieldProps.disabled),
-  })
-
-  const getErrorTextProps = () => ({
-    id: errorTextId,
-    ...parts.errorText.attrs(id),
-    'aria-live': 'polite',
-  })
-
-  const getRequiredIndicatorProps = () => ({
-    'aria-hidden': 'true',
-    ...parts.requiredIndicator.attrs(id),
-  })
-
-  return createMemo(() => ({
-    ariaDescribedby: describedById(),
-    ids: {
-      root: rootId,
-      control: controlId,
-      label: labelId,
-      errorText: errorTextId,
-      helperText: helperTextId,
-    },
-    refs: {
-      rootRef: setRootRef,
-    },
-    disabled: fieldProps.disabled,
-    invalid: fieldProps.invalid,
-    readOnly: fieldProps.readOnly,
-    required: fieldProps.required,
-    getLabelProps,
-    getRootProps,
-    getInputProps,
-    getTextareaProps,
-    getSelectProps,
-    getHelperTextProps,
-    getErrorTextProps,
-    getRequiredIndicatorProps,
+  const machineProps = createMemo<field.Props>(() => ({
+    id,
+    dir: locale().dir,
+    getRootNode: environment().getRootNode,
+    disabled: fieldset?.().disabled,
+    ...compact(runIfFn(props) ?? {}),
   }))
+
+  const service = useMachine(field.machine, machineProps)
+  return createMemo(() => field.connect(service, normalizeProps))
 }

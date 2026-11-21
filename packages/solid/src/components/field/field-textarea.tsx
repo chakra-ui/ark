@@ -1,12 +1,14 @@
 import { autoresizeTextarea } from '@zag-js/auto-resize'
+import type { RootState } from '@zag-js/field'
 import { mergeProps } from '@zag-js/solid'
 import { onSettled } from 'solid-js'
-import { splitProps } from '../../utils/split-props.ts'
 import { composeRefs } from '../../utils/compose-refs.ts'
+import { splitProps } from '../../utils/split-props.ts'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory.tsx'
 import { useFieldContext } from './use-field-context.ts'
 
-export interface FieldTextareaBaseProps extends PolymorphicProps<'textarea'> {
+export interface FieldTextareaState extends RootState {}
+export interface FieldTextareaBaseProps extends PolymorphicProps<'textarea', FieldTextareaState> {
   /**
    * Whether the textarea should autoresize
    * @default false
@@ -31,5 +33,11 @@ export const FieldTextarea = (props: FieldTextareaProps) => {
     return autoresizeTextarea(textareaRef)
   })
 
-  return <ark.textarea {...mergedProps} ref={composeRefs((el) => (textareaRef = el), props.ref)} />
+  return (
+    <ark.textarea
+      {...mergedProps}
+      state={field?.().getRootState()}
+      ref={composeRefs((el) => (textareaRef = el), props.ref)}
+    />
+  )
 }

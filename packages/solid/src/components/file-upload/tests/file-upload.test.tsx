@@ -1,4 +1,4 @@
-import { render, screen } from '@solidjs/testing-library'
+import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { FileUpload } from '@ark-ui/solid/file-upload'
 import { createSignal, flush } from 'solid-js'
@@ -7,8 +7,14 @@ import { FileUploadWithField } from './basic.tsx'
 describe('File Upload / Field', () => {
   it('should describe the trigger and dropzone with the helper and error text', async () => {
     render(() => <FileUploadWithField invalid />)
-    expect(screen.getByRole('button', { name: 'Select' })).toHaveAccessibleDescription('Error Info Additional Info')
-    expect(screen.getByRole('button', { name: 'dropzone' })).toHaveAccessibleDescription('Error Info Additional Info')
+    await waitFor(() =>
+      expect(screen.getByRole('button', { name: 'Select' })).toHaveAccessibleDescription('Additional Info Error Info'),
+    )
+    await waitFor(() =>
+      expect(screen.getByRole('button', { name: 'dropzone' })).toHaveAccessibleDescription(
+        'Additional Info Error Info',
+      ),
+    )
   })
 
   it('should set file upload as required', async () => {
@@ -45,7 +51,7 @@ describe('File Upload / Field', () => {
 
   it('should not display error text when no error is present', async () => {
     render(() => <FileUploadWithField />)
-    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+    expect(screen.getByText('Error Info')).not.toBeVisible()
   })
 })
 

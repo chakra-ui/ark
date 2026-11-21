@@ -61,7 +61,9 @@ describe('TagsInput', () => {
 describe('TagsInput / Field', () => {
   it('should describe the input with the helper and error text', async () => {
     render(() => <TagsInputWithField invalid />)
-    expect(screen.getByRole('textbox', { name: /label/i })).toHaveAccessibleDescription('Error Info Additional Info')
+    await waitFor(() =>
+      expect(screen.getByRole('textbox', { name: /label/i })).toHaveAccessibleDescription('Additional Info Error Info'),
+    )
   })
 
   it('should set combobox as required', async () => {
@@ -97,6 +99,6 @@ describe('TagsInput / Field', () => {
 
   it('should not display error text when no error is present', async () => {
     render(() => <TagsInputWithField />)
-    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+    expect(screen.getByText('Error Info')).not.toBeVisible()
   })
 })
