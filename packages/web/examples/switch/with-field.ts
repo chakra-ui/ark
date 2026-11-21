@@ -4,7 +4,7 @@ import field from 'styles/field.module.css'
 
 import styles from 'styles/switch.module.css'
 
-const switchMarkup = (attrs: string) => `
+const switchMarkup = (attrs: string) => /* html */ `
   <ark-switch ${attrs}>
     <label class="${styles.Root}">
       <ark-switch-control class="${styles.Control}"><ark-switch-thumb class="${styles.Thumb}"></ark-switch-thumb></ark-switch-control>

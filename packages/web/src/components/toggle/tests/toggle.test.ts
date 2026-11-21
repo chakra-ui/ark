@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import type {} from '../src/components/toggle/index.js'
+import type {} from '../index.js'
 
 const story = (name: string) => `/iframe.html?id=components-toggle--${name}&viewMode=story`
 

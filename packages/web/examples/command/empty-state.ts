@@ -4,7 +4,7 @@ import '../../src/components/command/index.js'
 
 import styles from 'styles/command.module.css'
 
-const item = (value: string, label: string) => `
+const item = (value: string, label: string) => /* html */ `
   <ark-command-item class="${styles.Item}" value="${value}">
     <ark-command-item-text class="${styles.ItemText}">${label}</ark-command-item-text>
   </ark-command-item>`

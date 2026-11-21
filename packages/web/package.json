@@ -26,14 +26,17 @@
     "@zag-js/combobox": "2.0.0-next.4",
     "@zag-js/date-picker": "2.0.0-next.4",
     "@zag-js/dialog": "2.0.0-next.4",
+    "@zag-js/drawer": "2.0.0-next.4",
     "@zag-js/editable": "2.0.0-next.4",
     "@zag-js/file-upload": "2.0.0-next.4",
     "@zag-js/fuzzy": "2.0.0-next.4",
     "@zag-js/hover-card": "2.0.0-next.4",
     "@zag-js/listbox": "2.0.0-next.4",
     "@zag-js/menu": "2.0.0-next.4",
+    "@zag-js/meter": "2.0.0-next.4",
     "@zag-js/number-input": "2.0.0-next.4",
     "@zag-js/pagination": "2.0.0-next.4",
+    "@zag-js/password-input": "2.0.0-next.4",
     "@zag-js/pin-input": "2.0.0-next.4",
     "@zag-js/popover": "2.0.0-next.4",
     "@zag-js/presence": "2.0.0-next.4",
@@ -44,9 +47,11 @@
     "@zag-js/select": "2.0.0-next.4",
     "@zag-js/slider": "2.0.0-next.4",
     "@zag-js/splitter": "2.0.0-next.4",
+    "@zag-js/steps": "2.0.0-next.4",
     "@zag-js/switch": "2.0.0-next.4",
     "@zag-js/tabs": "2.0.0-next.4",
     "@zag-js/tags-input": "2.0.0-next.4",
+    "@zag-js/timer": "2.0.0-next.4",
     "@zag-js/toast": "2.0.0-next.4",
     "@zag-js/toggle": "2.0.0-next.4",
     "@zag-js/toggle-group": "2.0.0-next.4",
@@ -231,6 +236,26 @@
     "./scroll-area": {
       "types": "./dist/components/scroll-area/index.d.ts",
       "import": "./dist/components/scroll-area/index.js"
+    },
+    "./drawer": {
+      "types": "./dist/components/drawer/index.d.ts",
+      "import": "./dist/components/drawer/index.js"
+    },
+    "./steps": {
+      "types": "./dist/components/steps/index.d.ts",
+      "import": "./dist/components/steps/index.js"
+    },
+    "./password-input": {
+      "types": "./dist/components/password-input/index.d.ts",
+      "import": "./dist/components/password-input/index.js"
+    },
+    "./meter": {
+      "types": "./dist/components/meter/index.d.ts",
+      "import": "./dist/components/meter/index.js"
+    },
+    "./timer": {
+      "types": "./dist/components/timer/index.d.ts",
+      "import": "./dist/components/timer/index.js"
     }
   },
   "sideEffects": true,

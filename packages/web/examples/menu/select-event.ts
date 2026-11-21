@@ -4,11 +4,11 @@ import '../../src/components/menu/index.js'
 
 import styles from 'styles/menu.module.css'
 
-const arrow = `<ark-menu-arrow class="${styles.Arrow}"><ark-menu-arrow-tip class="${styles.ArrowTip}"></ark-menu-arrow-tip></ark-menu-arrow>`
+const arrow = /* html */ `<ark-menu-arrow class="${styles.Arrow}"><ark-menu-arrow-tip class="${styles.ArrowTip}"></ark-menu-arrow-tip></ark-menu-arrow>`
 
-const list = (items: string) => `<ark-menu-list class="${styles.List}">${items}</ark-menu-list>`
+const list = (items: string) => /* html */ `<ark-menu-list class="${styles.List}">${items}</ark-menu-list>`
 
-const menuMarkup = (label: string, items: string, attrs = '', options: { arrow?: boolean } = {}) => `
+const menuMarkup = (label: string, items: string, attrs = '', options: { arrow?: boolean } = {}) => /* html */ `
   <ark-menu ${attrs}>
     <ark-menu-trigger>
       <button class="${styles.Trigger}">
@@ -22,7 +22,7 @@ const menuMarkup = (label: string, items: string, attrs = '', options: { arrow?:
   </ark-menu>`
 
 const item = (value: string, label: string, extra = '') =>
-  `<ark-menu-item class="${styles.Item}" value="${value}" ${extra}>${label}</ark-menu-item>`
+  /* html */ `<ark-menu-item class="${styles.Item}" value="${value}" ${extra}>${label}</ark-menu-item>`
 
 const Basic = () =>
   menuMarkup(
@@ -34,7 +34,7 @@ const Basic = () =>
 
 export function mount(root: HTMLElement) {
   const host = document.createElement('div')
-  host.innerHTML = `<output>Selected: none</output>${Basic()}`
+  host.innerHTML = /* html */ `<output>Selected: none</output>${Basic()}`
   host.querySelector('ark-menu')!.addEventListener('itemselect', (event) => {
     const { value } = event.detail ?? {}
     if (value) host.querySelector('output')!.textContent = `Selected: ${value}`

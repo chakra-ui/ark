@@ -10,5 +10,5 @@
     "paths": {}
   },
   "include": ["src"],
-  "exclude": ["dist"]
+  "exclude": ["dist", "src/**/tests"]
 }

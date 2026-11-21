@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import type { CommandElement } from '../src/components/command/index.js'
+import type { CommandElement } from '../index.js'
 
 const story = (name: string) => `/iframe.html?id=components-command--${name}&viewMode=story`
 

@@ -21,11 +21,11 @@ const durations = [
   { label: '∞', value: Infinity },
 ]
 
-const typeStyle = `<style>${['info', 'success', 'error', 'warning', 'loading']
+const typeStyle = /* html */ `<style>${['info', 'success', 'error', 'warning', 'loading']
   .map((type) => `ark-toast:not([data-type='${type}']) [data-icon='${type}'] { display: none; }`)
   .join('\n')}</style>`
 
-const toaster = (body: string) => `
+const toaster = (body: string) => /* html */ `
   ${typeStyle}
   <ark-toaster>
     <template>
@@ -33,14 +33,14 @@ const toaster = (body: string) => `
     </template>
   </ark-toaster>`
 
-const title = (prefix = '') => `<ark-toast-title class="${styles.Title}">${prefix}</ark-toast-title>`
+const title = (prefix = '') => /* html */ `<ark-toast-title class="${styles.Title}">${prefix}</ark-toast-title>`
 
-const description = `<ark-toast-description class="${styles.Description}"></ark-toast-description>`
+const description = /* html */ `<ark-toast-description class="${styles.Description}"></ark-toast-description>`
 
 const content = (body = `${title()}${description}`, style = '') =>
-  `<ark-toast-content style="display: flex; flex-direction: column; gap: 0.25rem; ${style}">${body}</ark-toast-content>`
+  /* html */ `<ark-toast-content style="display: flex; flex-direction: column; gap: 0.25rem; ${style}">${body}</ark-toast-content>`
 
-const closeTrigger = `<ark-toast-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-toast-close-trigger>`
+const closeTrigger = /* html */ `<ark-toast-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-toast-close-trigger>`
 
 const onClick = (host: HTMLElement, selector: string, listener: (el: HTMLElement) => void) => {
   for (const el of host.querySelectorAll<HTMLElement>(selector)) el.addEventListener('click', () => listener(el))
@@ -54,9 +54,9 @@ const connect = (host: HTMLElement, store: toast.Store<string>) => {
 }
 
 export function mount(root: HTMLElement) {
-  const host = fragment(`
+  const host = fragment(/* html */ `
     <div style="display: flex; flex-wrap: wrap; gap: 8px">
-      ${durations.map((duration, index) => `<button type="button" class="${button.Root}" data-index="${index}">${duration.label}</button>`).join('')}
+      ${durations.map((duration, index) => /* html */ `<button type="button" class="${button.Root}" data-index="${index}">${duration.label}</button>`).join('')}
     </div>
     ${toaster(`${content(`${title(indicator('clock'))}${description}`)}${closeTrigger}`)}`)
   onClick(host, '[data-index]', (el) => {

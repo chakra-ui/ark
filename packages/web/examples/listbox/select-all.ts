@@ -11,7 +11,7 @@ const fragment = (html: string) => {
   return host
 }
 
-const item = (value = '', label = '') => `
+const item = (value = '', label = '') => /* html */ `
   <ark-listbox-item class="${styles.Item}" ${value ? `value="${value}"` : ''}>
     <ark-listbox-item-text class="${styles.ItemText}">${label}</ark-listbox-item-text>
     <ark-listbox-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-listbox-item-indicator>
@@ -20,7 +20,10 @@ const item = (value = '', label = '') => `
 const options = (items: { value: string; label: string; disabled?: boolean }[]) =>
   items
     .map((it) =>
-      item(it.value, it.label).replace('<ark-listbox-item ', `<ark-listbox-item ${it.disabled ? 'disabled ' : ''}`),
+      item(it.value, it.label).replace(
+        '<ark-listbox-item ',
+        /* html */ `<ark-listbox-item ${it.disabled ? 'disabled ' : ''}`,
+      ),
     )
     .join('')
 
@@ -35,7 +38,7 @@ export function mount(root: HTMLElement) {
     { label: 'Remix', value: 'remix' },
     { label: 'Gatsby', value: 'gatsby' },
   ]
-  const host = fragment(`
+  const host = fragment(/* html */ `
     <ark-listbox class="${styles.Root}" selection-mode="multiple">
       <ark-listbox-label class="${styles.Label}">Frameworks</ark-listbox-label>
       <button class="${styles.SelectAllHeader}" type="button">

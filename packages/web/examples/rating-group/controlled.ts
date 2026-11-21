@@ -4,7 +4,7 @@ import '../../src/components/rating-group/index.js'
 
 import styles from 'styles/rating-group.module.css'
 
-const ratingGroup = (attrs: string) => `
+const ratingGroup = (attrs: string) => /* html */ `
   <ark-rating-group class="${styles.Root}" ${attrs}>
     <ark-rating-group-label class="${styles.Label}">Label</ark-rating-group-label>
     <ark-rating-group-control class="${styles.Control}">

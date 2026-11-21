@@ -4,7 +4,8 @@ const port = 6017
 const CI = !!process.env.CI
 
 export default defineConfig({
-  testDir: './tests',
+  testDir: '.',
+  testMatch: ['src/**/tests/*.test.ts', 'tests/*.test.ts'],
   outputDir: './test-results',
   fullyParallel: true,
   forbidOnly: CI,

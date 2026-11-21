@@ -12,7 +12,7 @@ const dialogMarkup = (
   content: string,
   contentAttrs = '',
   positioner = styles.Positioner,
-) => `
+) => /* html */ `
   <ark-dialog ${attrs}>
     ${trigger}
     <ark-dialog-backdrop class="${styles.Backdrop}"></ark-dialog-backdrop>
@@ -22,17 +22,20 @@ const dialogMarkup = (
   </ark-dialog>`
 
 const openButton = (label: string) =>
-  `<ark-dialog-trigger><button class="${button.Root}">${label}</button></ark-dialog-trigger>`
+  /* html */ `<ark-dialog-trigger><button class="${button.Root}">${label}</button></ark-dialog-trigger>`
 
-const closeButton = `<ark-dialog-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-dialog-close-trigger>`
+const closeButton = /* html */ `<ark-dialog-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-dialog-close-trigger>`
 
-const heading = (title: string, description: string) => `
+const heading = (title: string, description: string) => /* html */ `
   <ark-dialog-title class="${styles.Title}">${title}</ark-dialog-title>
   <ark-dialog-description class="${styles.Description}">${description}</ark-dialog-description>`
 
 const sections = (items: string[][]) =>
   items
-    .map(([title, body]) => `<section class="${styles.ScrollSection}"><h3>${title}</h3><p>${body}</p></section>`)
+    .map(
+      ([title, body]) =>
+        /* html */ `<section class="${styles.ScrollSection}"><h3>${title}</h3><p>${body}</p></section>`,
+    )
     .join('')
 
 const policy = [
@@ -90,7 +93,7 @@ export function mount(root: HTMLElement) {
   root.innerHTML = dialogMarkup(
     'initial-focus="ark-dialog-content"',
     openButton('Open Dialog'),
-    `${closeButton}
+    /* html */ `${closeButton}
      ${heading('Privacy Policy', 'This layout allows the dialog to extend beyond the viewport while keeping the outer container scrollable.')}
      <div class="${styles.Body}">${sections(policy)}</div>`,
     'style="margin: 4rem auto; max-height: none"',

@@ -15,7 +15,7 @@ export function mount(root: HTMLElement) {
       <ark-segment-group-indicator class="${styles.Indicator}"></ark-segment-group-indicator>
       ${frameworks
         .map(
-          (framework) => `
+          (framework) => /* html */ `
       <ark-segment-group-item value="${framework}">
         <label class="${styles.Item}">
           <ark-segment-group-item-text class="${styles.ItemText}">${framework}</ark-segment-group-item-text>

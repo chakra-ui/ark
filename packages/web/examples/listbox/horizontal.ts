@@ -4,7 +4,7 @@ import '../../src/components/listbox/index.js'
 
 import styles from 'styles/listbox.module.css'
 
-const listbox = (attrs: string, label: string, list: string, data = '') => `
+const listbox = (attrs: string, label: string, list: string, data = '') => /* html */ `
   <ark-listbox class="${styles.Root}" ${attrs}>
     ${data}
     <ark-listbox-label class="${styles.Label}">${label}</ark-listbox-label>
@@ -27,7 +27,7 @@ export function mount(root: HTMLElement) {
     'Select Album',
     albums
       .map(
-        (album) => `
+        (album) => /* html */ `
         <ark-listbox-item class="${styles.ItemCard}" value="${album.title}">
           <ark-listbox-item-indicator class="${styles.ItemCardIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-listbox-item-indicator>
           <img class="${styles.ItemCardImage}" src="${album.image}" alt="${album.title}" />

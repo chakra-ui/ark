@@ -2,7 +2,7 @@ import '../../src/components/tooltip/index.js'
 
 import styles from 'styles/tooltip.module.css'
 
-const tooltipMarkup = (attrs: string, content = 'I am a tooltip!') => `
+const tooltipMarkup = (attrs: string, content = 'I am a tooltip!') => /* html */ `
   <ark-tooltip ${attrs}>
     <ark-tooltip-trigger><button class="${styles.Trigger}">Hover Me</button></ark-tooltip-trigger>
     <ark-tooltip-positioner class="${styles.Positioner}">
@@ -13,7 +13,7 @@ const tooltipMarkup = (attrs: string, content = 'I am a tooltip!') => `
 export function mount(root: HTMLElement) {
   root.innerHTML = tooltipMarkup(
     '',
-    `<ark-tooltip-arrow><ark-tooltip-arrow-tip class="${styles.ArrowTip}"></ark-tooltip-arrow-tip></ark-tooltip-arrow>
+    /* html */ `<ark-tooltip-arrow><ark-tooltip-arrow-tip class="${styles.ArrowTip}"></ark-tooltip-arrow-tip></ark-tooltip-arrow>
      I am a tooltip!`,
   )
 }

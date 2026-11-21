@@ -10,9 +10,9 @@ const element = (html: string) => {
   return host.firstElementChild as HTMLElement
 }
 
-const circular = (attrs: string, { label = false } = {}) => `
+const circular = (attrs: string, { label = false } = {}) => /* html */ `
   <ark-progress class="${styles.Root}" ${attrs}>
-    ${label ? `<ark-progress-label class="${styles.Label}">Label</ark-progress-label>` : ''}
+    ${label ? /* html */ `<ark-progress-label class="${styles.Label}">Label</ark-progress-label>` : ''}
     <div class="${styles.CircleContainer}">
       <ark-progress-circle>
         <svg class="${styles.Circle}">

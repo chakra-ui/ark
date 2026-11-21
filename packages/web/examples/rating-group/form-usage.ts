@@ -6,7 +6,7 @@ import button from 'styles/button.module.css'
 
 import styles from 'styles/rating-group.module.css'
 
-const ratingGroup = (attrs: string) => `
+const ratingGroup = (attrs: string) => /* html */ `
   <ark-rating-group class="${styles.Root}" ${attrs}>
     <ark-rating-group-label class="${styles.Label}">Label</ark-rating-group-label>
     <ark-rating-group-control class="${styles.Control}">
@@ -25,7 +25,7 @@ const ratingGroup = (attrs: string) => `
 export function mount(root: HTMLElement) {
   const form = document.createElement('form')
   form.className = 'stack'
-  form.innerHTML = `${ratingGroup(`name="review" default-value="3"`)}
+  form.innerHTML = /* html */ `${ratingGroup(`name="review" default-value="3"`)}
     <button type="submit" class="${button.Root}">Submit</button>
     <output></output>`
   form.addEventListener('submit', (event) => {

@@ -5,10 +5,10 @@ import '../../src/components/carousel/index.js'
 import styles from 'styles/carousel.module.css'
 
 const carouselMarkup = (attrs: string, children: string) =>
-  `<ark-carousel class="${styles.Root}" ${attrs}>${children}</ark-carousel>`
+  /* html */ `<ark-carousel class="${styles.Root}" ${attrs}>${children}</ark-carousel>`
 
 const itemGroup = (items: string) =>
-  `<ark-carousel-item-group class="${styles.ItemGroup}">${items}</ark-carousel-item-group>`
+  /* html */ `<ark-carousel-item-group class="${styles.ItemGroup}">${items}</ark-carousel-item-group>`
 
 const images = [
   { src: 'https://picsum.photos/seed/1/500/300', alt: 'Nature landscape' },
@@ -19,27 +19,27 @@ const images = [
 ]
 
 const item = (content: string, attrs = `class="${styles.Item}"`) =>
-  `<ark-carousel-item ${attrs}>${content}</ark-carousel-item>`
+  /* html */ `<ark-carousel-item ${attrs}>${content}</ark-carousel-item>`
 
 const image = ({ src, alt }: { src: string; alt: string }) =>
-  `<img src="${src}" alt="${alt}" width="500" height="300" />`
+  /* html */ `<img src="${src}" alt="${alt}" width="500" height="300" />`
 
 const imageItems = () => images.map((img) => item(image(img))).join('')
 
 const control = (children: string, attrs = '') =>
-  `<ark-carousel-control class="${styles.Control}" ${attrs}>${children}</ark-carousel-control>`
+  /* html */ `<ark-carousel-control class="${styles.Control}" ${attrs}>${children}</ark-carousel-control>`
 
 const prev = (icon = createElement(ArrowLeft, { 'aria-hidden': 'true' }).outerHTML) =>
-  `<ark-carousel-prev-trigger><button class="${styles.Trigger}">${icon}</button></ark-carousel-prev-trigger>`
+  /* html */ `<ark-carousel-prev-trigger><button class="${styles.Trigger}">${icon}</button></ark-carousel-prev-trigger>`
 
 const next = (icon = createElement(ArrowRight, { 'aria-hidden': 'true' }).outerHTML) =>
-  `<ark-carousel-next-trigger><button class="${styles.Trigger}">${icon}</button></ark-carousel-next-trigger>`
+  /* html */ `<ark-carousel-next-trigger><button class="${styles.Trigger}">${icon}</button></ark-carousel-next-trigger>`
 
 export function mount(root: HTMLElement) {
   root.innerHTML = carouselMarkup(
     'auto-play loop',
     `${itemGroup(imageItems())}${control(
-      `${prev(createElement(ChevronLeft, { 'aria-hidden': 'true' }).outerHTML)}
+      /* html */ `${prev(createElement(ChevronLeft, { 'aria-hidden': 'true' }).outerHTML)}
       <ark-carousel-autoplay-trigger>
         <button class="${styles.AutoplayTrigger}">
           <ark-carousel-autoplay-indicator>${createElement(Play, { 'aria-hidden': 'true' }).outerHTML.replace('<svg', '<svg fallback')}${createElement(Pause, { 'aria-hidden': 'true' }).outerHTML}</ark-carousel-autoplay-indicator>

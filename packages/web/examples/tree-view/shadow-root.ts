@@ -15,10 +15,10 @@ function inShadowRoot(markup: string, setup?: (root: ShadowRoot) => void) {
   return host
 }
 
-const treeView = (attrs: string, tree: string, data = '', label = 'Tree') => `
+const treeView = (attrs: string, tree: string, data = '', label = 'Tree') => /* html */ `
   <ark-tree-view class="${styles.Root}" ${attrs}>
     ${data}
-    ${label ? `<ark-tree-view-label class="${styles.Label}">${label}</ark-tree-view-label>` : ''}
+    ${label ? /* html */ `<ark-tree-view-label class="${styles.Label}">${label}</ark-tree-view-label>` : ''}
     <ark-tree-view-tree class="${styles.Tree}">${tree}</ark-tree-view-tree>
   </ark-tree-view>`
 
@@ -39,15 +39,21 @@ interface Options {
 
 const attrs = (value: string, disabled?: boolean) => `${value ? `value="${value}"` : ''} ${disabled ? 'disabled' : ''}`
 
-const checkbox = `
+const checkbox = /* html */ `
   <ark-tree-view-node-checkbox class="${styles.NodeCheckbox}">
     <ark-tree-view-node-indicator type="checked" class="${styles.NodeIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-tree-view-node-indicator>
     <ark-tree-view-node-indicator type="indeterminate" class="${styles.NodeIndicator}">${createElement(Minus, { 'aria-hidden': 'true' }).outerHTML}</ark-tree-view-node-indicator>
   </ark-tree-view-node-checkbox>`
 
-const renameInput = `<ark-tree-view-node-rename-input><input class="${styles.NodeRenameInput}" /></ark-tree-view-node-rename-input>`
+const renameInput = /* html */ `<ark-tree-view-node-rename-input><input class="${styles.NodeRenameInput}" /></ark-tree-view-node-rename-input>`
 
-const branch = (value: string, label: string, children: string, options: Options = {}, disabled?: boolean) => `
+const branch = (
+  value: string,
+  label: string,
+  children: string,
+  options: Options = {},
+  disabled?: boolean,
+) => /* html */ `
   <ark-tree-view-node-group class="${styles.NodeGroup}" ${attrs(value, disabled)}>
     <ark-tree-view-node class="${styles.Node}">
       <ark-tree-view-cell class="${styles.Cell}">
@@ -61,19 +67,19 @@ const branch = (value: string, label: string, children: string, options: Options
     </ark-tree-view-node>
     <ark-tree-view-node-group-content class="${styles.NodeGroupContent}">
       <ark-tree-view-indent-guide class="${styles.IndentGuide}"></ark-tree-view-indent-guide>
-      ${options.lazy ? `<template>${children}</template>` : children}
+      ${options.lazy ? /* html */ `<template>${children}</template>` : children}
     </ark-tree-view-node-group-content>
   </ark-tree-view-node-group>`
 
 const leaf = (value: string, label: string, options: Options = {}, node: Partial<Node> = {}) => {
   const text = (icon: string) =>
-    `<ark-tree-view-node-text class="${styles.NodeText}">${icon}${label}</ark-tree-view-node-text>`
+    /* html */ `<ark-tree-view-node-text class="${styles.NodeText}">${icon}${label}</ark-tree-view-node-text>`
   const cell = node.href
-    ? `<ark-tree-view-cell><a class="${styles.Cell}" href="${node.href}">${text(createElement(File, { 'aria-hidden': 'true' }).outerHTML)}${node.href.startsWith('http') ? createElement(ExternalLink, { 'aria-hidden': 'true' }).outerHTML : ''}</a></ark-tree-view-cell>`
+    ? /* html */ `<ark-tree-view-cell><a class="${styles.Cell}" href="${node.href}">${text(createElement(File, { 'aria-hidden': 'true' }).outerHTML)}${node.href.startsWith('http') ? createElement(ExternalLink, { 'aria-hidden': 'true' }).outerHTML : ''}</a></ark-tree-view-cell>`
     : options.rename
-      ? `<ark-tree-view-cell class="${styles.Cell}">${createElement(File, { 'aria-hidden': 'true' }).outerHTML}${text('')}${renameInput}</ark-tree-view-cell>`
-      : `<ark-tree-view-cell class="${styles.Cell}">${options.checkbox ? `${checkbox}${text('')}` : text(createElement(File, { 'aria-hidden': 'true' }).outerHTML)}</ark-tree-view-cell>`
-  return `
+      ? /* html */ `<ark-tree-view-cell class="${styles.Cell}">${createElement(File, { 'aria-hidden': 'true' }).outerHTML}${text('')}${renameInput}</ark-tree-view-cell>`
+      : /* html */ `<ark-tree-view-cell class="${styles.Cell}">${options.checkbox ? `${checkbox}${text('')}` : text(createElement(File, { 'aria-hidden': 'true' }).outerHTML)}</ark-tree-view-cell>`
+  return /* html */ `
   <ark-tree-view-node class="${styles.Node}" ${attrs(value, node.disabled)}>
     ${cell}
   </ark-tree-view-node>`

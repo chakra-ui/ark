@@ -8,27 +8,30 @@ const panes = [
   { value: 'billing', label: 'Billing', content: 'Manage your billing and payment details.' },
 ]
 
-const tabsMarkup = (attrs: string, { indicator = false, disabled = '', links = false, lazy = false } = {}) => `
+const tabsMarkup = (
+  attrs: string,
+  { indicator = false, disabled = '', links = false, lazy = false } = {},
+) => /* html */ `
   <ark-tabs class="${styles.Root}" ${attrs.includes('value=') ? '' : 'default-value="account"'} ${attrs}>
     <ark-tabs-list class="${styles.List}">
       ${panes
         .map(
-          (pane) => `
+          (pane) => /* html */ `
         <ark-tabs-trigger value="${pane.value}" ${disabled === pane.value ? 'disabled' : ''}>
           ${
             links
-              ? `<a class="${styles.Trigger}" href="#${pane.value}">${pane.label}</a>`
-              : `<button class="${indicator ? styles.TriggerIndicator : styles.Trigger}">${pane.label}</button>`
+              ? /* html */ `<a class="${styles.Trigger}" href="#${pane.value}">${pane.label}</a>`
+              : /* html */ `<button class="${indicator ? styles.TriggerIndicator : styles.Trigger}">${pane.label}</button>`
           }
         </ark-tabs-trigger>`,
         )
         .join('')}
-      ${indicator ? `<ark-tabs-indicator class="${styles.Indicator}"></ark-tabs-indicator>` : ''}
+      ${indicator ? /* html */ `<ark-tabs-indicator class="${styles.Indicator}"></ark-tabs-indicator>` : ''}
     </ark-tabs-list>
     ${panes
       .map(
         (pane) =>
-          `<ark-tabs-content class="${styles.Content}" value="${pane.value}">${lazy ? `<template>${pane.content}</template>` : pane.content}</ark-tabs-content>`,
+          /* html */ `<ark-tabs-content class="${styles.Content}" value="${pane.value}">${lazy ? /* html */ `<template>${pane.content}</template>` : pane.content}</ark-tabs-content>`,
       )
       .join('')}
   </ark-tabs>`

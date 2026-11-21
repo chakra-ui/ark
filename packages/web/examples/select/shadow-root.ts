@@ -15,7 +15,7 @@ function inShadowRoot(markup: string, setup?: (root: ShadowRoot) => void) {
   return host
 }
 
-const select = (attrs: string, list: string, data = '', lazy = false) => `
+const select = (attrs: string, list: string, data = '', lazy = false) => /* html */ `
   <ark-select class="${styles.Root}" ${attrs}>
     ${data}
     <ark-select-label class="${styles.Label}">Framework</ark-select-label>
@@ -36,7 +36,7 @@ const select = (attrs: string, list: string, data = '', lazy = false) => `
     </ark-select-positioner>
   </ark-select>`
 
-const item = (value = '', label = '', disabled = false) => `
+const item = (value = '', label = '', disabled = false) => /* html */ `
   <ark-select-item class="${styles.Item}" ${value ? `value="${value}"` : ''} ${disabled ? 'disabled' : ''}>
     <ark-select-item-text class="${styles.ItemText}">${label}</ark-select-item-text>
     <ark-select-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-select-item-indicator>

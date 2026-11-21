@@ -8,17 +8,17 @@ import menu from 'styles/menu.module.css'
 
 import styles from 'styles/tooltip.module.css'
 
-const menuTrigger = `
+const menuTrigger = /* html */ `
   <ark-menu-trigger>
     <button class="${menu.Trigger}">File<ark-menu-indicator class="${menu.Indicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-menu-indicator></button>
   </ark-menu-trigger>`
 
-const tooltipPopup = (content: string) => `
+const tooltipPopup = (content: string) => /* html */ `
   <ark-tooltip-positioner class="${styles.Positioner}">
     <ark-tooltip-content class="${styles.Content}">${content}</ark-tooltip-content>
   </ark-tooltip-positioner>`
 
-const menuPopup = (items: string) => `
+const menuPopup = (items: string) => /* html */ `
   <ark-menu-positioner class="${menu.Positioner}">
     <ark-menu-content class="${menu.Content}">
       <ark-menu-arrow class="${menu.Arrow}"><ark-menu-arrow-tip class="${menu.ArrowTip}"></ark-menu-arrow-tip></ark-menu-arrow>
@@ -27,7 +27,7 @@ const menuPopup = (items: string) => `
   </ark-menu-positioner>`
 
 const menuItem = (value: string, label: string, attrs = '') =>
-  `<ark-menu-item class="${menu.Item}" value="${value}" ${attrs}>${label}</ark-menu-item>`
+  /* html */ `<ark-menu-item class="${menu.Item}" value="${value}" ${attrs}>${label}</ark-menu-item>`
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `

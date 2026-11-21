@@ -4,7 +4,7 @@ import '../../src/components/listbox/index.js'
 
 import styles from 'styles/listbox.module.css'
 
-const listbox = (attrs: string, label: string, list: string, data = '') => `
+const listbox = (attrs: string, label: string, list: string, data = '') => /* html */ `
   <ark-listbox class="${styles.Root}" ${attrs}>
     ${data}
     <ark-listbox-label class="${styles.Label}">${label}</ark-listbox-label>
@@ -13,7 +13,7 @@ const listbox = (attrs: string, label: string, list: string, data = '') => `
     </ark-listbox-content>
   </ark-listbox>`
 
-const item = (value = '', label = '') => `
+const item = (value = '', label = '') => /* html */ `
   <ark-listbox-item class="${styles.Item}" ${value ? `value="${value}"` : ''}>
     <ark-listbox-item-text class="${styles.ItemText}">${label}</ark-listbox-item-text>
     <ark-listbox-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-listbox-item-indicator>
@@ -22,14 +22,17 @@ const item = (value = '', label = '') => `
 const options = (items: { value: string; label: string; disabled?: boolean }[]) =>
   items
     .map((it) =>
-      item(it.value, it.label).replace('<ark-listbox-item ', `<ark-listbox-item ${it.disabled ? 'disabled ' : ''}`),
+      item(it.value, it.label).replace(
+        '<ark-listbox-item ',
+        /* html */ `<ark-listbox-item ${it.disabled ? 'disabled ' : ''}`,
+      ),
     )
     .join('')
 
 export function mount(root: HTMLElement) {
   root.innerHTML = listbox(
     'selection-mode="multiple" default-value="red,blue"',
-    `Colors: <ark-listbox-value-text class="${styles.ValueText}"></ark-listbox-value-text>`,
+    /* html */ `Colors: <ark-listbox-value-text class="${styles.ValueText}"></ark-listbox-value-text>`,
     options(['Red', 'Blue', 'Green', 'Yellow', 'Purple'].map((label) => ({ label, value: label.toLowerCase() }))),
   )
 }

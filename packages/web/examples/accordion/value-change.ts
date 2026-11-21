@@ -25,22 +25,22 @@ const items = [
 const accordion = (
   attrs: string,
   options: { indicator?: boolean; lazy?: boolean; disabled?: string; bodyClass?: string; extra?: string } = {},
-) => `
+) => /* html */ `
   <ark-accordion class="${styles.Root}" ${attrs}>
     ${items
       .map((item) => {
-        const body = `<div class="${options.bodyClass ?? styles.ItemBody}">${item.content}${options.extra ?? ''}</div>`
-        return `
+        const body = /* html */ `<div class="${options.bodyClass ?? styles.ItemBody}">${item.content}${options.extra ?? ''}</div>`
+        return /* html */ `
       <ark-accordion-item class="${styles.Item}" value="${item.value}" ${options.disabled === item.value ? 'disabled' : ''}>
         <ark-accordion-item-header class="${styles.ItemHeader}">
           <ark-accordion-item-trigger>
             <button class="${styles.ItemTrigger}">
               ${item.title}
-              ${options.indicator === false ? '' : `<ark-accordion-item-indicator class="${styles.ItemIndicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-accordion-item-indicator>`}
+              ${options.indicator === false ? '' : /* html */ `<ark-accordion-item-indicator class="${styles.ItemIndicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-accordion-item-indicator>`}
             </button>
           </ark-accordion-item-trigger>
         </ark-accordion-item-header>
-        <ark-accordion-item-content class="${styles.ItemContent}">${options.lazy ? `<template>${body}</template>` : body}</ark-accordion-item-content>
+        <ark-accordion-item-content class="${styles.ItemContent}">${options.lazy ? /* html */ `<template>${body}</template>` : body}</ark-accordion-item-content>
       </ark-accordion-item>`
       })
       .join('')}
@@ -48,7 +48,7 @@ const accordion = (
 
 export function mount(root: HTMLElement) {
   const host = document.createElement('div')
-  host.innerHTML = `<output class="${styles.Output}">value: ark-ui</output>${accordion(`default-value="ark-ui" multiple`)}`
+  host.innerHTML = /* html */ `<output class="${styles.Output}">value: ark-ui</output>${accordion(`default-value="ark-ui" multiple`)}`
   host.querySelector('ark-accordion')!.addEventListener('valuechange', (event) => {
     host.querySelector('output')!.textContent = `value: ${event.detail.value.join(', ')}`
   })

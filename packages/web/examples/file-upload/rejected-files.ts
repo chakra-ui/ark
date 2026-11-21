@@ -31,9 +31,10 @@ const fragment = (html: string) => {
   return host
 }
 
-const label = (text: string) => `<ark-file-upload-label class="${styles.Label}">${text}</ark-file-upload-label>`
+const label = (text: string) =>
+  /* html */ `<ark-file-upload-label class="${styles.Label}">${text}</ark-file-upload-label>`
 
-const dropzone = (title: string, description: string) => `
+const dropzone = (title: string, description: string) => /* html */ `
   <ark-file-upload-dropzone class="${styles.Dropzone}">
     ${createElement(Upload, { 'aria-hidden': 'true', class: `${styles.DropzoneIcon}` }).outerHTML}
     <div class="${styles.DropzoneContent}">
@@ -43,11 +44,11 @@ const dropzone = (title: string, description: string) => `
   </ark-file-upload-dropzone>`
 
 const itemGroup = (template: string, type = '') =>
-  `<ark-file-upload-item-group class="${styles.ItemGroup}" ${type ? `type="${type}"` : ''}><template>${template}</template></ark-file-upload-item-group>`
+  /* html */ `<ark-file-upload-item-group class="${styles.ItemGroup}" ${type ? `type="${type}"` : ''}><template>${template}</template></ark-file-upload-item-group>`
 
-const staticPreview = (iconHtml: string) => `<div class="${styles.ItemPreview}">${iconHtml}</div>`
+const staticPreview = (iconHtml: string) => /* html */ `<div class="${styles.ItemPreview}">${iconHtml}</div>`
 
-const rejectedItem = `
+const rejectedItem = /* html */ `
   <ark-file-upload-item class="${styles.Item}" data-rejected>
     ${staticPreview(createElement(CircleAlert, { 'aria-hidden': 'true' }).outerHTML)}
     <ark-file-upload-item-name class="${styles.ItemName}"></ark-file-upload-item-name>
@@ -55,7 +56,7 @@ const rejectedItem = `
     <div class="${styles.ErrorList}"></div>
   </ark-file-upload-item>`
 
-const sections = (accepted: string) => `
+const sections = (accepted: string) => /* html */ `
   <div class="${styles.Section}" data-section="accepted" hidden>
     <div class="${styles.SectionTitle}" data-status="accepted">${createElement(CircleCheck, { 'aria-hidden': 'true', style: 'width: 0.875rem; height: 0.875rem; display: inline; margin-right: 0.25rem; vertical-align: middle' }).outerHTML}Accepted Files</div>
     ${itemGroup(accepted, 'accepted')}
@@ -65,9 +66,9 @@ const sections = (accepted: string) => `
     ${itemGroup(rejectedItem, 'rejected')}
   </div>`
 
-const deleteTrigger = `<ark-file-upload-item-delete-trigger><button class="${styles.ItemDeleteTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-file-upload-item-delete-trigger>`
+const deleteTrigger = /* html */ `<ark-file-upload-item-delete-trigger><button class="${styles.ItemDeleteTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-file-upload-item-delete-trigger>`
 
-const item = (previews: string) => `
+const item = (previews: string) => /* html */ `
   <ark-file-upload-item class="${styles.Item}">
     ${previews}
     <ark-file-upload-item-name class="${styles.ItemName}"></ark-file-upload-item-name>
@@ -75,16 +76,16 @@ const item = (previews: string) => `
     ${deleteTrigger}
   </ark-file-upload-item>`
 
-const imagePreview = `
+const imagePreview = /* html */ `
   <ark-file-upload-item-preview type="image/*" class="${styles.ItemPreview}">
     <ark-file-upload-item-preview-image><img class="${styles.ItemPreviewImage}" /></ark-file-upload-item-preview-image>
   </ark-file-upload-item-preview>`
 
-const hiddenInput = `<ark-file-upload-hidden-input></ark-file-upload-hidden-input>`
+const hiddenInput = /* html */ `<ark-file-upload-hidden-input></ark-file-upload-hidden-input>`
 
 export function mount(root: HTMLElement) {
   const host = trackSections(
-    fragment(`
+    fragment(/* html */ `
       <ark-file-upload max-files="2" class="${styles.Root}">
         ${label('Upload Files (Max 2)')}
         ${dropzone('Drop files here', 'Maximum 2 files allowed')}

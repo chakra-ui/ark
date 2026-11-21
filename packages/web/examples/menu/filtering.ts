@@ -24,9 +24,9 @@ const fragment = (html: string) => {
 }
 
 const item = (value: string, label: string, extra = '') =>
-  `<ark-menu-item class="${styles.Item}" value="${value}" ${extra}>${label}</ark-menu-item>`
+  /* html */ `<ark-menu-item class="${styles.Item}" value="${value}" ${extra}>${label}</ark-menu-item>`
 
-const option = (tag: string, className: string, value: string, label: string, extra = '') => `
+const option = (tag: string, className: string, value: string, label: string, extra = '') => /* html */ `
   <${tag} class="${className}" value="${value}" ${extra}>
     <ark-menu-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-menu-item-indicator>
     <ark-menu-item-text class="${styles.ItemText}">${label}</ark-menu-item-text>
@@ -34,7 +34,7 @@ const option = (tag: string, className: string, value: string, label: string, ex
 
 export function mount(root: HTMLElement) {
   const groups = [...new Set(actions.map((action) => action.group))]
-  const host = fragment(`
+  const host = fragment(/* html */ `
     <ark-menu popup-type="dialog">
       <ark-menu-trigger>
         <button class="${styles.Trigger}">Actions<ark-menu-indicator class="${styles.Indicator}">${createElement(ChevronDown, { 'aria-hidden': 'true' }).outerHTML}</ark-menu-indicator></button>
@@ -49,7 +49,7 @@ export function mount(root: HTMLElement) {
           <ark-menu-list class="${styles.List}">
             ${groups
               .map(
-                (group) => `
+                (group) => /* html */ `
               <ark-menu-item-group class="${styles.ItemGroup}" name="${group}">
                 <ark-menu-item-group-label class="${styles.ItemGroupLabel}">${group}</ark-menu-item-group-label>
                 ${actions

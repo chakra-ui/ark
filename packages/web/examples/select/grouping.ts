@@ -4,7 +4,7 @@ import '../../src/components/select/index.js'
 
 import styles from 'styles/select.module.css'
 
-const select = (attrs: string, list: string, data = '', lazy = false) => `
+const select = (attrs: string, list: string, data = '', lazy = false) => /* html */ `
   <ark-select class="${styles.Root}" ${attrs}>
     ${data}
     <ark-select-label class="${styles.Label}">Framework</ark-select-label>
@@ -25,20 +25,20 @@ const select = (attrs: string, list: string, data = '', lazy = false) => `
     </ark-select-positioner>
   </ark-select>`
 
-const item = (value = '', label = '', disabled = false) => `
+const item = (value = '', label = '', disabled = false) => /* html */ `
   <ark-select-item class="${styles.Item}" ${value ? `value="${value}"` : ''} ${disabled ? 'disabled' : ''}>
     <ark-select-item-text class="${styles.ItemText}">${label}</ark-select-item-text>
     <ark-select-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-select-item-indicator>
   </ark-select-item>`
 
-const itemTemplate = `<template>${item()}</template>`
+const itemTemplate = /* html */ `<template>${item()}</template>`
 
-const json = (items: unknown[]) => `<script type="application/json">${JSON.stringify(items)}</script>`
+const json = (items: unknown[]) => /* html */ `<script type="application/json">${JSON.stringify(items)}</script>`
 
 export function mount(root: HTMLElement) {
   root.innerHTML = select(
     `name="framework"`,
-    `<template data-group>
+    /* html */ `<template data-group>
       <ark-select-item-group class="${styles.ItemGroup}">
         <ark-select-item-group-label class="${styles.ItemGroupLabel}"></ark-select-item-group-label>
       </ark-select-item-group>

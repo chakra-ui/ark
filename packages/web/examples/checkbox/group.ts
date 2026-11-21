@@ -10,19 +10,19 @@ const frameworks = [
   { label: 'Vue', value: 'vue' },
 ]
 
-const checkbox = (attrs: string, label = 'Checkbox', indeterminate = false) => `
+const checkbox = (attrs: string, label = 'Checkbox', indeterminate = false) => /* html */ `
   <ark-checkbox ${attrs}>
     <label class="${styles.Root}">
       <ark-checkbox-control class="${styles.Control}">
         <ark-checkbox-indicator class="${styles.Indicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-checkbox-indicator>
-        ${indeterminate ? `<ark-checkbox-indicator class="${styles.Indicator}" indeterminate>${createElement(Minus, { 'aria-hidden': 'true' }).outerHTML}</ark-checkbox-indicator>` : ''}
+        ${indeterminate ? /* html */ `<ark-checkbox-indicator class="${styles.Indicator}" indeterminate>${createElement(Minus, { 'aria-hidden': 'true' }).outerHTML}</ark-checkbox-indicator>` : ''}
       </ark-checkbox-control>
       <ark-checkbox-label class="${styles.Label}">${label}</ark-checkbox-label>
       <ark-checkbox-hidden-input></ark-checkbox-hidden-input>
     </label>
   </ark-checkbox>`
 
-const group = (attrs: string, items = frameworks, indeterminate = false) => `
+const group = (attrs: string, items = frameworks, indeterminate = false) => /* html */ `
   <ark-checkbox-group class="${styles.Group}" ${attrs}>
     ${items.map((item) => checkbox(`value="${item.value}"`, item.label, indeterminate)).join('')}
   </ark-checkbox-group>`

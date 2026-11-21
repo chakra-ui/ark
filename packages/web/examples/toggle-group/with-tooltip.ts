@@ -16,12 +16,12 @@ const items = [
 
 export function mount(root: HTMLElement) {
   const host = document.createElement('div')
-  host.innerHTML = `
+  host.innerHTML = /* html */ `
     <ark-tooltip>
       <ark-toggle-group class="${styles.Root}" default-value="bold">
         ${items
           .map(
-            (item) => `
+            (item) => /* html */ `
         <ark-tooltip-trigger value="${item.value}">
           <ark-toggle-group-item value="${item.value}">
             <button class="${styles.Item}" aria-label="${item.label}">${item.icon}</button>

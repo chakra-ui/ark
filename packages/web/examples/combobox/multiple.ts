@@ -4,7 +4,7 @@ import '../../src/components/combobox/index.js'
 
 import styles from 'styles/combobox.module.css'
 
-const comboboxMarkup = (attrs: string, list: string, data = '') => `
+const comboboxMarkup = (attrs: string, list: string, data = '') => /* html */ `
   <ark-combobox class="${styles.Root}" ${attrs}>
     ${data}
     <ark-combobox-label class="${styles.Label}">Favorite Fruit</ark-combobox-label>
@@ -32,7 +32,7 @@ const fruits = [
   { label: 'Strawberry', value: 'strawberry' },
 ]
 
-const item = (value = '', label = '') => `
+const item = (value = '', label = '') => /* html */ `
   <ark-combobox-item class="${styles.Item}" ${value ? `value="${value}"` : ''}>
     <ark-combobox-item-text class="${styles.ItemText}">${label}</ark-combobox-item-text>
     <ark-combobox-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-combobox-item-indicator>

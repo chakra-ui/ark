@@ -55,7 +55,7 @@ export function mount(root: HTMLElement) {
       .slice(users)
       .map(
         (user) =>
-          `<div class="${styles.GridItem}"><span class="${styles.GridItemTitle}">${user.name}</span><span class="${styles.GridItemText}">${user.email}</span></div>`,
+          /* html */ `<div class="${styles.GridItem}"><span class="${styles.GridItemTitle}">${user.name}</span><span class="${styles.GridItemText}">${user.email}</span></div>`,
       )
       .join('')
   })

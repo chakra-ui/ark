@@ -8,7 +8,7 @@ import checkbox from 'styles/checkbox.module.css'
 
 import styles from 'styles/tooltip.module.css'
 
-const tooltipPopup = (content: string) => `
+const tooltipPopup = (content: string) => /* html */ `
   <ark-tooltip-positioner class="${styles.Positioner}">
     <ark-tooltip-content class="${styles.Content}">${content}</ark-tooltip-content>
   </ark-tooltip-positioner>`

@@ -2,7 +2,7 @@ import '../../src/components/listbox/index.js'
 
 import styles from 'styles/listbox.module.css'
 
-const json = (items: unknown[]) => `<script type="application/json">${JSON.stringify(items)}</script>`
+const json = (items: unknown[]) => /* html */ `<script type="application/json">${JSON.stringify(items)}</script>`
 
 export function mount(root: HTMLElement) {
   root.innerHTML = /* html */ `

@@ -2,14 +2,17 @@ import '../../src/components/radio-group/index.js'
 
 import styles from 'styles/radio-group.module.css'
 
-const radioGroup = (attrs: string, { disabled = '', indicator = false, hstack = false, label = true } = {}) => `
+const radioGroup = (
+  attrs: string,
+  { disabled = '', indicator = false, hstack = false, label = true } = {},
+) => /* html */ `
   <ark-radio-group class="${styles.Root}" ${attrs}>
-    ${label ? `<ark-radio-group-label class="${styles.Label}">Framework</ark-radio-group-label>` : ''}
-    ${indicator ? `<ark-radio-group-indicator class="${styles.Indicator}"></ark-radio-group-indicator>` : ''}
-    ${hstack ? `<div class="hstack">` : ''}
+    ${label ? /* html */ `<ark-radio-group-label class="${styles.Label}">Framework</ark-radio-group-label>` : ''}
+    ${indicator ? /* html */ `<ark-radio-group-indicator class="${styles.Indicator}"></ark-radio-group-indicator>` : ''}
+    ${hstack ? /* html */ `<div class="hstack">` : ''}
     ${['React', 'Solid', 'Vue']
       .map(
-        (framework) => `
+        (framework) => /* html */ `
       <ark-radio-group-item value="${framework}" ${disabled === framework ? 'disabled' : ''}>
         <label class="${styles.Item}">
           <ark-radio-group-item-control class="${styles.ItemControl}"></ark-radio-group-item-control>
@@ -25,7 +28,7 @@ const radioGroup = (attrs: string, { disabled = '', indicator = false, hstack = 
 export function mount(root: HTMLElement) {
   const host = document.createElement('div')
   host.className = 'stack'
-  host.innerHTML = `<output>value: null</output>${radioGroup('value=""')}`
+  host.innerHTML = /* html */ `<output>value: null</output>${radioGroup('value=""')}`
   const el = host.querySelector('ark-radio-group')!
   el.addEventListener('valuechange', (event) => {
     const { value } = event.detail

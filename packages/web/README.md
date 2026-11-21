@@ -4,9 +4,10 @@ Unstyled, accessible web components powered by Zag.js state machines. Components
 ordinary CSS. No framework runtime is required.
 
 This package is a prerelease. It includes accordion, avatar, carousel, checkbox and checkbox group, clipboard,
-collapsible, combobox, command, date picker, dialog, editable, file upload, hover card, listbox, menu, number input,
-pagination, pin input, popover, progress, radio group, rating group, scroll area, segment group, select, slider,
-splitter, switch, tabs, tags input, toast, toggle, toggle group, tooltip, and tree view.
+collapsible, combobox, command, date picker, dialog, drawer, editable, file upload, hover card, listbox, menu, meter,
+number input, pagination, password input, pin input, popover, progress, radio group, rating group, scroll area, segment
+group, select, slider, splitter, steps, switch, tabs, tags input, timer, toast, toggle, toggle group, tooltip, and tree
+view.
 
 ## Usage
 
@@ -170,7 +171,9 @@ The package is organized as follows:
 - `src/utils/`: element lifecycle, collections, attributes, lazy mounting, and presence.
 - `examples/<component>/`: self-contained examples with markup, data, icons, and helpers in the same file.
 - `stories/`: Storybook metadata and example exports.
-- `tests/`: browser smoke and interaction coverage.
+- `src/components/<component>/tests/`: browser interaction tests for that component.
+- `src/utils/tests/`: tests for the shared element runtime.
+- `tests/`: the smoke test that renders every story, and the contract test fixtures.
 
 ## Release prerequisite
 

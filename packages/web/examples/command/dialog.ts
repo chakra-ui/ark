@@ -8,7 +8,7 @@ import styles from 'styles/command.module.css'
 
 const icon = (node: Parameters<typeof createElement>[0]) => createElement(node, { 'aria-hidden': 'true' }).outerHTML
 
-const item = (value: string, label: string, node: Parameters<typeof createElement>[0], shortcut: string) => `
+const item = (value: string, label: string, node: Parameters<typeof createElement>[0], shortcut: string) => /* html */ `
   <ark-command-item class="${styles.Item}" value="${value}">
     <span class="${styles.ItemStart}">${icon(node)}<ark-command-item-text class="${styles.ItemText}">${label}</ark-command-item-text></span>
     <kbd class="${styles.Shortcut}">${shortcut}</kbd>

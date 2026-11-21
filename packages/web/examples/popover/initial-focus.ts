@@ -8,9 +8,9 @@ import styles from 'styles/popover.module.css'
 
 import field from 'styles/field.module.css'
 
-const closeButton = `<ark-popover-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-popover-close-trigger>`
+const closeButton = /* html */ `<ark-popover-close-trigger><button class="${styles.CloseTrigger}">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></ark-popover-close-trigger>`
 
-const heading = (title: string, description: string) => `
+const heading = (title: string, description: string) => /* html */ `
   <ark-popover-title class="${styles.Title}">${title}</ark-popover-title>
   <ark-popover-description class="${styles.Description}">${description}</ark-popover-description>`
 

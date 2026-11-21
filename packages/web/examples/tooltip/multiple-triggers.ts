@@ -36,6 +36,6 @@ export function mount(root: HTMLElement) {
     const tool = tools.find((tool) => tool.id === event.detail.value)
     if (tool)
       root.querySelector('ark-tooltip-content')!.innerHTML =
-        `${tool.label} <span class="${styles.Shortcut}">${tool.shortcut}</span>`
+        /* html */ `${tool.label} <span class="${styles.Shortcut}">${tool.shortcut}</span>`
   })
 }

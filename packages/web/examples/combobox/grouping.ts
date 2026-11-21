@@ -4,7 +4,7 @@ import '../../src/components/combobox/index.js'
 
 import styles from 'styles/combobox.module.css'
 
-const comboboxMarkup = (attrs: string, list: string, data = '') => `
+const comboboxMarkup = (attrs: string, list: string, data = '') => /* html */ `
   <ark-combobox class="${styles.Root}" ${attrs}>
     ${data}
     <ark-combobox-label class="${styles.Label}">Favorite Fruit</ark-combobox-label>
@@ -23,7 +23,7 @@ const comboboxMarkup = (attrs: string, list: string, data = '') => `
     </ark-combobox-positioner>
   </ark-combobox>`
 
-const item = (value = '', label = '') => `
+const item = (value = '', label = '') => /* html */ `
   <ark-combobox-item class="${styles.Item}" ${value ? `value="${value}"` : ''}>
     <ark-combobox-item-text class="${styles.ItemText}">${label}</ark-combobox-item-text>
     <ark-combobox-item-indicator class="${styles.ItemIndicator}">${createElement(Check, { 'aria-hidden': 'true' }).outerHTML}</ark-combobox-item-indicator>
@@ -32,13 +32,13 @@ const item = (value = '', label = '') => `
 export function mount(root: HTMLElement) {
   root.innerHTML = comboboxMarkup(
     '',
-    `<template data-group>
+    /* html */ `<template data-group>
        <ark-combobox-item-group class="${styles.ItemGroup}">
          <ark-combobox-item-group-label class="${styles.ItemGroupLabel}"></ark-combobox-item-group-label>
        </ark-combobox-item-group>
      </template>
      <template>${item()}</template>`,
-    `<script type="application/json">${JSON.stringify([
+    /* html */ `<script type="application/json">${JSON.stringify([
       { value: 'apple', label: 'Apple', group: 'Fruits' },
       { value: 'banana', label: 'Banana', group: 'Fruits' },
       { value: 'carrot', label: 'Carrot', group: 'Vegetables' },

@@ -4,7 +4,7 @@ import '../../src/components/collapsible/index.js'
 
 import styles from 'styles/collapsible.module.css'
 
-const trigger = (label: string) => `
+const trigger = (label: string) => /* html */ `
   <ark-collapsible-trigger>
     <button class="${styles.Trigger}">
       ${label}
@@ -12,7 +12,7 @@ const trigger = (label: string) => `
     </button>
   </ark-collapsible-trigger>`
 
-const collapsible = (attrs: string, label: string, body: string, className = styles.Root) => `
+const collapsible = (attrs: string, label: string, body: string, className = styles.Root) => /* html */ `
   <ark-collapsible class="${className}" ${attrs}>
     ${trigger(label)}
     <ark-collapsible-content class="${styles.Content}">${body}</ark-collapsible-content>
@@ -22,10 +22,10 @@ export function mount(root: HTMLElement) {
   root.innerHTML = collapsible(
     '',
     'Getting Started',
-    `<div class="${styles.Body}">
+    /* html */ `<div class="${styles.Body}">
       <p>Welcome to the Ark UI documentation. Here are some topics to explore:</p>
-      ${collapsible('', 'Installation', `<div class="${styles.Body}"><p>Install Ark UI using your preferred package manager:</p><code>npm install @ark-ui/react</code></div>`, styles.Nested)}
-      ${collapsible('', 'Styling', `<div class="${styles.Body}"><p>Ark UI components are unstyled by default. Use CSS modules, Tailwind, or any styling solution.</p></div>`, styles.Nested)}
+      ${collapsible('', 'Installation', /* html */ `<div class="${styles.Body}"><p>Install Ark UI using your preferred package manager:</p><code>npm install @ark-ui/react</code></div>`, styles.Nested)}
+      ${collapsible('', 'Styling', /* html */ `<div class="${styles.Body}"><p>Ark UI components are unstyled by default. Use CSS modules, Tailwind, or any styling solution.</p></div>`, styles.Nested)}
     </div>`,
   )
 }

@@ -26,7 +26,7 @@ const chevron = () => createElement(ChevronRight, { 'aria-hidden': 'true' }).out
 
 const isPage = (setting: Setting) => settings.some((item) => item.parent === setting.value)
 
-const item = (setting: Setting) => `
+const item = (setting: Setting) => /* html */ `
   <ark-command-item class="${styles.Item}" value="${setting.value}" ${setting.parent ? `parent="${setting.parent}"` : ''}>
     <ark-command-item-text class="${styles.ItemText}">${setting.label}</ark-command-item-text>
     <span class="${styles.ItemPath}" hidden></span>
@@ -69,8 +69,11 @@ export function mount(root: HTMLElement) {
   }
 
   command.addEventListener('pagechange', () => {
-    breadcrumb.innerHTML = `<button type="button" data-page="">Home</button>${command.path
-      .map((page) => `<span>${chevron()}<button type="button" data-page="${page.value}">${page.label}</button></span>`)
+    breadcrumb.innerHTML = /* html */ `<button type="button" data-page="">Home</button>${command.path
+      .map(
+        (page) =>
+          /* html */ `<span>${chevron()}<button type="button" data-page="${page.value}">${page.label}</button></span>`,
+      )
       .join('')}`
     input.placeholder = command.page ? 'Search... (Backspace to go back)' : 'Search settings...'
   })

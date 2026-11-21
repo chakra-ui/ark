@@ -27,7 +27,7 @@ const profiles = [
 ]
 
 const trigger = (text: string, value?: string) =>
-  `<ark-hover-card-trigger${value ? ` value="${value}"` : ''}><a href="#${value ? '' : 'profile'}" class="${styles.Trigger}">${text}</a></ark-hover-card-trigger>`
+  /* html */ `<ark-hover-card-trigger${value ? ` value="${value}"` : ''}><a href="#${value ? '' : 'profile'}" class="${styles.Trigger}">${text}</a></ark-hover-card-trigger>`
 
 const fragment = (html: string) => {
   const host = document.createElement('div')
@@ -35,7 +35,7 @@ const fragment = (html: string) => {
   return host
 }
 
-const card = (body: string) => `
+const card = (body: string) => /* html */ `
   <ark-hover-card-positioner class="${styles.Positioner}">
     <ark-hover-card-content class="${styles.Content}">
       <ark-hover-card-arrow class="${styles.Arrow}"><ark-hover-card-arrow-tip class="${styles.ArrowTip}"></ark-hover-card-arrow-tip></ark-hover-card-arrow>
@@ -45,7 +45,7 @@ const card = (body: string) => `
 
 type Profile = (typeof profiles)[number]
 
-const profileBody = (profile: Profile) => `
+const profileBody = (profile: Profile) => /* html */ `
   <div class="${styles.Body}">
     <div class="${styles.Header}">
       <img class="${styles.Avatar}" src="${profile.avatar}" alt="${profile.name}" />
@@ -59,7 +59,7 @@ const profileBody = (profile: Profile) => `
 
 export function mount(root: HTMLElement) {
   const [sarah, alex, jordan] = profiles.map((profile) => trigger(profile.username, profile.id))
-  const host = fragment(`
+  const host = fragment(/* html */ `
     <ark-hover-card>
       <p class="${styles.Paragraph}">Reviewed by ${sarah}, ${alex}, and ${jordan}</p>
       ${card('<div data-profile></div>')}

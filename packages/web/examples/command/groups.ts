@@ -4,12 +4,12 @@ import '../../src/components/command/index.js'
 
 import styles from 'styles/command.module.css'
 
-const item = (value: string, label: string, disabled = false) => `
+const item = (value: string, label: string, disabled = false) => /* html */ `
   <ark-command-item class="${styles.Item}" value="${value}" ${disabled ? 'disabled' : ''}>
     <ark-command-item-text class="${styles.ItemText}">${label}</ark-command-item-text>
   </ark-command-item>`
 
-const group = (name: string, items: string) => `
+const group = (name: string, items: string) => /* html */ `
   <ark-command-item-group class="${styles.ItemGroup}" name="${name}">
     <ark-command-item-group-label class="${styles.ItemGroupLabel}">${name}</ark-command-item-group-label>
     ${items}

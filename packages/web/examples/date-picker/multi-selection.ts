@@ -105,12 +105,12 @@ export function mount(root: HTMLElement) {
   const sync = (value: DateValue[]) => {
     list.replaceChildren()
     if (value.length === 0) {
-      list.innerHTML = `<span class="${styles.SelectedDatesPlaceholder}">Select dates...</span>`
+      list.innerHTML = /* html */ `<span class="${styles.SelectedDatesPlaceholder}">Select dates...</span>`
       return
     }
     value.forEach((date, index) => {
       const chip = fragment(
-        `<span class="${styles.SelectedDate}">${formatWithDay(date)}<button class="${styles.SelectedDateRemove}" aria-label="Remove">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></span>`,
+        /* html */ `<span class="${styles.SelectedDate}">${formatWithDay(date)}<button class="${styles.SelectedDateRemove}" aria-label="Remove">${createElement(X, { 'aria-hidden': 'true' }).outerHTML}</button></span>`,
       ).firstElementChild!
       chip.querySelector('button')!.addEventListener('click', () => {
         datePicker.api?.setValue(value.filter((_, i) => i !== index))

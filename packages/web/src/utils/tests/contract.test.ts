@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import type { DatePickerElement, PaginationElement, SelectElement } from '../src/index.js'
+import type { DatePickerElement, PaginationElement, SelectElement } from '../../index.js'
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/test-fixtures/index.html')
@@ -44,7 +44,7 @@ test('function properties survive an upgrade, replacement, clearing and reconnec
 })
 
 test('formatters update DOM and setting the identical function does no work', async ({ page }) => {
-  await page.setContent(`
+  await page.setContent(/* html */ `
     <ark-pagination count="100" page-size="10" type="link">
       <ark-pagination-item value="2"><a>Page 2</a></ark-pagination-item>
     </ark-pagination>`)
@@ -75,7 +75,7 @@ test('formatters update DOM and setting the identical function does no work', as
 })
 
 test('rich collection properties refresh templates and restore markup fallback', async ({ page }) => {
-  await page.setContent(`
+  await page.setContent(/* html */ `
     <ark-select>
       <script type="application/json">["Fallback"]</script>
       <ark-select-list>
@@ -102,7 +102,7 @@ test('notifications preserve details and compose through shadow roots without bu
   await page.evaluate(async () => {
     const host = document.createElement('div')
     const shadow = host.attachShadow({ mode: 'open' })
-    shadow.innerHTML = `<ark-checkbox><label><ark-checkbox-control></ark-checkbox-control><ark-checkbox-label>Accept</ark-checkbox-label><ark-checkbox-hidden-input></ark-checkbox-hidden-input></label></ark-checkbox>`
+    shadow.innerHTML = /* html */ `<ark-checkbox><label><ark-checkbox-control></ark-checkbox-control><ark-checkbox-label>Accept</ark-checkbox-label><ark-checkbox-hidden-input></ark-checkbox-hidden-input></label></ark-checkbox>`
     document.body.append(host)
     const received: unknown[] = []
     const bubbled: string[] = []
@@ -132,7 +132,7 @@ test('notifications preserve details and compose through shadow roots without bu
 })
 
 test('escape notifications forward cancellation to the original keyboard event', async ({ page }) => {
-  await page.setContent(`
+  await page.setContent(/* html */ `
     <ark-dialog>
       <ark-dialog-trigger><button>Open</button></ark-dialog-trigger>
       <ark-dialog-positioner><ark-dialog-content><ark-dialog-title>Confirm</ark-dialog-title><button>Inside</button></ark-dialog-content></ark-dialog-positioner>
@@ -156,12 +156,11 @@ test('escape notifications forward cancellation to the original keyboard event',
 
 test('async transformers preserve promises and custom validation returns file errors', async ({ page }) => {
   await page.setContent(
-    `<ark-file-upload><ark-file-upload-hidden-input></ark-file-upload-hidden-input></ark-file-upload>`,
+    /* html */ `<ark-file-upload><ark-file-upload-hidden-input></ark-file-upload-hidden-input></ark-file-upload>`,
   )
   await page.evaluate(() => {
     const upload = document.querySelector('ark-file-upload')!
-    upload.validate = (file) =>
-      file.name === 'reject.txt' ? [{ code: 'FILE_INVALID', message: 'Rejected by the application' }] : null
+    upload.validate = (file) => (file.name === 'reject.txt' ? ['FILE_INVALID'] : null)
     upload.transformFiles = async (files) => {
       await new Promise((resolve) => setTimeout(resolve, 20))
       return files.map((file) => new File([file], `processed-${file.name}`, { type: file.type }))
@@ -187,7 +186,7 @@ test('async transformers preserve promises and custom validation returns file er
 })
 
 test('as-child moves part props onto the first element child', async ({ page }) => {
-  await page.setContent(`
+  await page.setContent(/* html */ `
     <ark-collapsible>
       <ark-collapsible-trigger as-child><div tabindex="0">Toggle</div></ark-collapsible-trigger>
       <ark-collapsible-content as-child><section>Panel</section></ark-collapsible-content>
@@ -207,7 +206,7 @@ test('as-child moves part props onto the first element child', async ({ page }) 
 })
 
 test('as-child moves root props onto the first element child', async ({ page }) => {
-  await page.setContent(`
+  await page.setContent(/* html */ `
     <ark-tabs as-child default-value="a">
       <section>
         <ark-tabs-list>
@@ -222,7 +221,7 @@ test('as-child moves root props onto the first element child', async ({ page }) 
 })
 
 test('as-child moves props to a replacement child and strips the old one', async ({ page }) => {
-  await page.setContent(`
+  await page.setContent(/* html */ `
     <ark-collapsible>
       <ark-collapsible-trigger as-child><div data-testid="old" tabindex="0">Old</div></ark-collapsible-trigger>
       <ark-collapsible-content>Panel</ark-collapsible-content>
@@ -254,7 +253,7 @@ test('as-child moves props to a replacement child and strips the old one', async
 })
 
 test('as-child lazily mounts template children into the child', async ({ page }) => {
-  await page.setContent(`
+  await page.setContent(/* html */ `
     <ark-collapsible>
       <ark-collapsible-trigger><button>Toggle</button></ark-collapsible-trigger>
       <ark-collapsible-content as-child><section><template><p>Lazy</p></template></section></ark-collapsible-content>
@@ -265,7 +264,7 @@ test('as-child lazily mounts template children into the child', async ({ page })
 })
 
 test('as-child menu items accept arbitrary elements and keep keyboard navigation', async ({ page }) => {
-  await page.setContent(`
+  await page.setContent(/* html */ `
     <ark-menu>
       <ark-menu-trigger><button>Open</button></ark-menu-trigger>
       <ark-menu-positioner>
