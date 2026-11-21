@@ -9,7 +9,7 @@ const model = defineModel()
   <Field.Root v-bind="props">
     <Field.Label>
       Label
-      <Field.RequiredIndicator />
+      <Field.Indicator type="required">*</Field.Indicator>
     </Field.Label>
     <Field.Input v-model="model" />
     <Field.HelperText>Some additional Info</Field.HelperText>

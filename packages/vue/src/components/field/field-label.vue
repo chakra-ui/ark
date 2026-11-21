@@ -1,7 +1,9 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/field'
 import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory.ts'
 
+export interface FieldLabelState extends RootState {}
 export interface FieldLabelBaseProps extends PolymorphicProps {}
 export interface FieldLabelProps
   extends
@@ -13,18 +15,20 @@ export interface FieldLabelProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory.ts'
-import { useFieldContext } from './use-field-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
+import { type PolymorphicSlots, ark } from '../factory.ts'
+import { useFieldContext } from './use-field-context.ts'
 
 defineProps<FieldLabelProps>()
+defineSlots<PolymorphicSlots<FieldLabelState>>()
+
 const field = useFieldContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.label v-bind="field.getLabelProps()" :as-child="asChild">
+  <ark.label v-bind="field?.getLabelProps()" :state="field?.getRootState()" :as-child="asChild">
     <template v-if="$slots.render" #render="scope">
       <slot name="render" v-bind="scope" />
     </template>

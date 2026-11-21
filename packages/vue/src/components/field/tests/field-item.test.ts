@@ -2,17 +2,11 @@ import { render, screen, waitFor } from '@testing-library/vue'
 import user from '@testing-library/user-event'
 import BasicTest from './field-item-basic.test.vue'
 import MixedTest from './field-item-mixed.test.vue'
-import MixedTargetTest from './field-item-mixed-target.test.vue'
 import DisabledTest from './field-item-disabled.test.vue'
 import InvalidTest from './field-item-invalid.test.vue'
 import OrphanItemTest from './field-item-orphan.test.vue'
 
 describe('Field / Item', () => {
-  it('should keep the label on the target item when ids.control is set', () => {
-    render(BasicTest, { props: { ids: { control: 'custom-control' } } })
-    expect(screen.getByRole('textbox', { name: 'Amount' })).toHaveAttribute('id', 'field::custom-control::item::amount')
-  })
-
   function formatFieldParts(parts: Array<{ name: string; element: Element | null; attrs?: string[] }>): string {
     return parts
       .filter((p) => p.element)
@@ -32,13 +26,13 @@ describe('Field / Item', () => {
       const root = container.firstElementChild!
       const structure = formatFieldParts([
         { name: 'label', element: root.querySelector('[data-field-label]'), attrs: ['id', 'for'] },
-        { name: 'Field.Select', element: root.querySelector('[data-field-select]') },
-        { name: 'Field.Input', element: root.querySelector('[data-field-input]') },
+        { name: 'Field.Select', element: root.querySelector('select[data-field-control]') },
+        { name: 'Field.Input', element: root.querySelector('input[data-field-control]') },
       ])
       expect(structure).toMatchInlineSnapshot(`
-        "label (id=field::v-0::label, for=field::v-0::item::amount)
-        Field.Select (id=field::v-0::item::currency)
-        Field.Input (id=field::v-0::item::amount)"
+        "label (id=v-0:label, for=v-0:item:amount)
+        Field.Select (id=v-0:item:currency)
+        Field.Input (id=v-0:item:amount)"
       `)
     })
   })
@@ -55,38 +49,18 @@ describe('Field / Item', () => {
       const root = container.firstElementChild!
       const structure = formatFieldParts([
         { name: 'label', element: root.querySelector('[data-field-label]'), attrs: ['id', 'for'] },
-        { name: 'Field.Select', element: root.querySelector('[data-field-select]') },
-        { name: 'Field.Input', element: root.querySelector('[data-field-input]') },
+        { name: 'Field.Select', element: root.querySelector('select[data-field-control]') },
+        { name: 'Field.Input', element: root.querySelector('input[data-field-control]') },
       ])
       expect(structure).toMatchInlineSnapshot(`
-        "label (id=field::v-0::label, for=v-0)
-        Field.Select (id=field::v-0::item::currency)
-        Field.Input (id=v-0)"
+        "label (id=v-0:label, for=v-0:control)
+        Field.Select (id=v-0:item:currency)
+        Field.Input (id=v-0:control)"
       `)
     })
 
     await user.click(screen.getByText('Amount'))
     expect(screen.getByTestId('amount-input')).toHaveFocus()
-  })
-
-  it('should focus the item control when target is set in mixed usage', async () => {
-    const { container } = render(MixedTargetTest)
-    await waitFor(() => {
-      const root = container.firstElementChild!
-      const structure = formatFieldParts([
-        { name: 'label', element: root.querySelector('[data-field-label]'), attrs: ['id', 'for'] },
-        { name: 'Field.Select', element: root.querySelector('[data-field-select]') },
-        { name: 'Field.Input', element: root.querySelector('[data-field-input]') },
-      ])
-      expect(structure).toMatchInlineSnapshot(`
-        "label (id=field::v-0::label, for=field::v-0::item::currency)
-        Field.Select (id=field::v-0::item::currency)
-        Field.Input (id=v-0)"
-      `)
-    })
-
-    await user.click(screen.getByText('Currency'))
-    expect(screen.getByTestId('currency-select')).toHaveFocus()
   })
 
   it('should propagate disabled state to items', () => {

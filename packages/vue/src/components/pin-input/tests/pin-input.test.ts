@@ -144,11 +144,13 @@ describe('PinInput / Field', () => {
   it('should not display error text when no error is present', async () => {
     await renderOnNextTick(WithField)
 
-    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+    expect(screen.getByText('Error Info')).not.toBeVisible()
   })
 
   it('should describe the input group with the helper and error text', async () => {
     await renderOnNextTick(WithField, { props: { invalid: true } })
-    expect(screen.getByRole('group', { name: 'Label' })).toHaveAccessibleDescription('Error Info Additional Info')
+    await waitFor(() =>
+      expect(screen.getByRole('group', { name: 'Label' })).toHaveAccessibleDescription('Additional Info Error Info'),
+    )
   })
 })

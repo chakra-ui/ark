@@ -40,7 +40,9 @@ describe('Field', () => {
     render(ComponentUnderTest, { props: { invalid: true } })
     await nextTick()
     expect(screen.getByText('Error Info')).toBeInTheDocument()
-    expect(screen.getByRole('textbox')).toHaveAccessibleDescription(expect.stringContaining('Error Info'))
+    await waitFor(() =>
+      expect(screen.getByRole('textbox')).toHaveAccessibleDescription(expect.stringContaining('Error Info')),
+    )
   })
 
   it('should focus on input when label is clicked', async () => {
@@ -51,7 +53,7 @@ describe('Field', () => {
 
   it('should not display error text when no error is present', async () => {
     render(ComponentUnderTest, { props: { invalid: false } })
-    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+    expect(screen.getByText('Error Info')).not.toBeVisible()
   })
 
   it('should allow input to be controlled', async () => {

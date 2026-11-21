@@ -1,133 +1,34 @@
-import {
-  type FieldsetHTMLAttributes,
-  type HTMLAttributes,
-  type MaybeRefOrGetter,
-  computed,
-  onBeforeUnmount,
-  onMounted,
-  reactive,
-  ref,
-  toValue,
-  useId,
-} from 'vue'
-import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../../providers/index.ts'
-import { dataAttr } from '../../utils/attr.ts'
-import { unrefElement } from '../../utils/unref-element.ts'
-import { parts } from './fieldset.anatomy.ts'
+import * as fieldset from '@zag-js/fieldset'
+import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
+import { type ComputedRef, type MaybeRefOrGetter, computed, toValue, useId } from 'vue'
+import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers/index.ts'
+import type { Optional } from '../../types.ts'
+import { cleanProps } from '../../utils/clean-props.ts'
 
-export interface UseFieldsetProps {
+export interface UseFieldsetProps extends Optional<Omit<fieldset.Props, 'dir' | 'disabled' | 'getRootNode'>, 'id'> {
   /**
-   * The id of the fieldset.
+   * Whether the fieldset is disabled.
    */
-  id?: string
-  /**
-   * Indicates whether the fieldset is disabled.
-   */
-  disabled?: boolean | 'true' | 'false'
-  /**
-   * Indicates whether the fieldset is invalid.
-   */
-  invalid?: boolean
+  disabled?: boolean | 'true' | 'false' | undefined
 }
+export interface UseFieldsetReturn extends ComputedRef<fieldset.Api<PropTypes>> {}
 
-export type UseFieldsetReturn = ReturnType<typeof useFieldset>
-
-export const useFieldset = (props: MaybeRefOrGetter<UseFieldsetProps> = {}) => {
+export const useFieldset = (props: MaybeRefOrGetter<UseFieldsetProps> = {}): UseFieldsetReturn => {
+  const id = useId()
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
-  const state = reactive({
-    hasErrorText: false,
-    hasHelperText: false,
-  })
+  const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const rootRef = ref(null)
-
-  const uuid = useId()
-
-  const ids = computed(() => {
-    const fieldsetProps = toValue<UseFieldsetProps>(props)
-    const id = fieldsetProps.id ?? uuid
+  const machineProps = computed<fieldset.Props>(() => {
+    const { disabled, ...localProps } = toValue<UseFieldsetProps>(props)
     return {
       id,
-      legendId: `fieldset::${id}::legend`,
-      errorTextId: `fieldset::${id}::error-text`,
-      helperTextId: `fieldset::${id}::helper-text`,
+      dir: locale.value.dir,
+      getRootNode: env?.value.getRootNode,
+      ...cleanProps(localProps),
+      disabled: disabled === undefined ? undefined : disabled === true || disabled === 'true',
     }
   })
 
-  onMounted(() => {
-    const rootNode = unrefElement(rootRef)
-    if (!rootNode) return
-
-    const checkTextElements = () => {
-      const { errorTextId, helperTextId } = ids.value
-      const docOrShadowRoot = env.value.getRootNode() as ShadowRoot | Document
-      state.hasErrorText = !!docOrShadowRoot.getElementById(errorTextId)
-      state.hasHelperText = !!docOrShadowRoot.getElementById(helperTextId)
-    }
-
-    checkTextElements()
-
-    const win = env.value.getWindow()
-    const observer = new win.MutationObserver(checkTextElements)
-    observer.observe(rootNode, { childList: true, subtree: true })
-
-    onBeforeUnmount(() => {
-      observer.disconnect()
-    })
-  })
-
-  return computed(() => {
-    const { disabled, invalid } = toValue<UseFieldsetProps>(props)
-    const { id, legendId, errorTextId, helperTextId } = ids.value
-
-    const describedByIds: string[] = []
-    if (state.hasErrorText && invalid) describedByIds.push(errorTextId)
-    if (state.hasHelperText) describedByIds.push(helperTextId)
-    const describedBy = describedByIds.length > 0 ? describedByIds.join(' ') : undefined
-
-    const getRootProps = () =>
-      ({
-        ...parts.root.attrs(id),
-        disabled,
-        'data-disabled': dataAttr(!!disabled),
-        'data-invalid': dataAttr(invalid),
-        'aria-labelledby': legendId,
-        'aria-describedby': describedBy,
-      }) as FieldsetHTMLAttributes
-
-    const getLegendProps = () => ({
-      id: legendId,
-      ...parts.legend.attrs(id),
-      'data-disabled': dataAttr(!!disabled),
-      'data-invalid': dataAttr(invalid),
-    })
-
-    const getHelperTextProps = () => ({
-      id: helperTextId,
-      ...parts.helperText.attrs(id),
-    })
-
-    const getErrorTextProps = (): HTMLAttributes => ({
-      id: errorTextId,
-      ...parts.errorText.attrs(id),
-      'aria-live': 'polite',
-    })
-
-    return {
-      refs: {
-        rootRef,
-      },
-      ids: {
-        legend: legendId,
-        errorText: errorTextId,
-        helperText: helperTextId,
-      },
-      disabled,
-      invalid,
-      getRootProps,
-      getLegendProps,
-      getHelperTextProps,
-      getErrorTextProps,
-    }
-  })
+  const service = useMachine(fieldset.machine, machineProps)
+  return computed(() => fieldset.connect(service, normalizeProps))
 }

@@ -6,7 +6,7 @@ import { Field } from '@ark-ui/vue/field'
   <Field.Root required>
     <Field.Label>
       Label
-      <Field.RequiredIndicator>*</Field.RequiredIndicator>
+      <Field.Indicator type="required">*</Field.Indicator>
     </Field.Label>
     <Field.Input />
     <Field.HelperText>This field is required</Field.HelperText>

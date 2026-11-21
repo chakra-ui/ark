@@ -1,7 +1,9 @@
 <script lang="ts">
+import type { RootState } from '@zag-js/field'
 import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory.ts'
 
+export interface FieldInputState extends RootState {}
 export interface FieldInputBaseProps extends PolymorphicProps {}
 export interface FieldInputProps
   extends
@@ -15,11 +17,12 @@ export interface FieldInputProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory.ts'
+import { type PolymorphicSlots, ark } from '../factory.ts'
 import { useFieldContext } from './use-field-context.ts'
 import { useForwardExpose } from '../../utils/use-forward-expose.ts'
 
 defineProps<FieldInputProps>()
+defineSlots<PolymorphicSlots<FieldInputState>>()
 const field = useFieldContext()
 
 const emit = defineEmits(['update:modelValue'])
@@ -30,6 +33,7 @@ useForwardExpose()
 <template>
   <ark.input
     v-bind="{ ...field?.getInputProps(), ...(modelValue !== undefined ? { value: modelValue } : {}) }"
+    :state="field?.getRootState()"
     :as-child="asChild"
     @input="(event) => emit('update:modelValue', (event.target as HTMLInputElement).value)"
   >

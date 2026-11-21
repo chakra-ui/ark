@@ -82,7 +82,7 @@ describe('Color Picker / Field', () => {
 
   it('should not display error text when no error is present', async () => {
     render(ColorPickerWithField)
-    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+    expect(screen.getByText('Error Info')).not.toBeVisible()
   })
 
   it('should respect alpha in swatches by default', async () => {
@@ -93,7 +93,11 @@ describe('Color Picker / Field', () => {
 
   it('should describe the trigger and channel input with the helper and error text', async () => {
     render(ColorPickerWithField, { props: { invalid: true } })
-    expect(await screen.findByRole('button')).toHaveAccessibleDescription('Error Info Additional Info')
-    expect(screen.getByRole('textbox', { name: /hex/i })).toHaveAccessibleDescription('Error Info Additional Info')
+    await waitFor(async () =>
+      expect(await screen.findByRole('button')).toHaveAccessibleDescription('Additional Info Error Info'),
+    )
+    await waitFor(() =>
+      expect(screen.getByRole('textbox', { name: /hex/i })).toHaveAccessibleDescription('Additional Info Error Info'),
+    )
   })
 })
