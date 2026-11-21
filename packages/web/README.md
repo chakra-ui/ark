@@ -40,6 +40,15 @@ Interactive parts wrap real controls: triggers wrap a direct `button` or `a`, in
 checkbox and switch roots wrap a direct `label`. Keep the native element inside its custom element wrapper. Some
 collection items can optionally wrap an anchor. Examples show the markup each component expects.
 
+Add `as-child` to any part, or to a root that renders root props, to put its props on its first element child instead.
+The wrapper then gets `display: contents`. `template` and `script` children are skipped, and lazy `<template>` content
+goes inside the child. If the child is replaced, the new child receives the props and the old one loses them.
+
+```html
+<ark-menu-item value="settings" as-child><a href="/settings">Settings</a></ark-menu-item>
+<ark-dialog-content as-child><section class="sheet">…</section></ark-dialog-content>
+```
+
 ## State and events
 
 Use `default-value`, `default-checked`, or `default-open` where supported for uncontrolled initial state. Use `value`,

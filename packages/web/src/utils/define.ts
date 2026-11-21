@@ -13,7 +13,9 @@ function adoptDisplay(el: HTMLElement, display: string) {
   // `:where` so page styles win over defaults; `!important` so `hidden` wins over page styles
   for (const rule of [
     `:where(${el.localName}){display:${display}}`,
+    `:where(${el.localName}[as-child]){display:contents}`,
     `${el.localName}[hidden]:not([hidden=until-found]){display:none!important}`,
+    `[as-child]>[hidden]:not([hidden=until-found]){display:none!important}`,
   ]) {
     if (!sheet || rules.has(rule)) continue
     rules.add(rule)
@@ -22,6 +24,43 @@ function adoptDisplay(el: HTMLElement, display: string) {
   const root = el.getRootNode() as Document | ShadowRoot
   if (sheet && 'adoptedStyleSheets' in root && !root.adoptedStyleSheets.includes(sheet)) {
     root.adoptedStyleSheets = [...root.adoptedStyleSheets, sheet]
+  }
+}
+
+/** With `as-child`, the first element child (skipping `template` and `script`) receives the part's props. */
+export const asChild = (el: HTMLElement) =>
+  el.hasAttribute('as-child') ? el.querySelector<HTMLElement>(':scope > :not(template, script)') : null
+
+export const targetOf = (el: HTMLElement, target?: (el: HTMLElement) => HTMLElement | null) =>
+  asChild(el) ?? target?.(el) ?? el
+
+function observeChild(el: HTMLElement, onChange: VoidFunction): VoidFunction | undefined {
+  if (!el.hasAttribute('as-child')) return
+  const observer = new MutationObserver(onChange)
+  observer.observe(el, { childList: true })
+  return () => observer.disconnect()
+}
+
+class Target {
+  private node: HTMLElement | null = null
+  private cleanup: VoidFunction | undefined
+
+  spread(node: HTMLElement, props: Dict, scope: string) {
+    if (node !== this.node) this.release(scope)
+    this.node = node
+    this.cleanup = spreadProps(node, props, scope)
+  }
+
+  /** Strips the previous node's props when the target changes. */
+  release(scope: string) {
+    if (this.node) spreadProps(this.node, {}, scope)
+    this.detach()
+  }
+
+  detach() {
+    this.cleanup?.()
+    this.cleanup = undefined
+    this.node = null
   }
 }
 
@@ -63,7 +102,7 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
     private snapshot: Dict | undefined
     private parts = new Set<PartElement<Api>>()
     private cleanups: VoidFunction[] = []
-    private rootCleanup: VoidFunction | undefined
+    private rootTarget = new Target()
 
     constructor() {
       super()
@@ -99,6 +138,8 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
       const setupCleanup = config.setup?.(this)
       this.snapshot = undefined
       if (setupCleanup) this.cleanups.push(setupCleanup)
+      const unobserve = observeChild(this, () => this.render())
+      if (unobserve) this.cleanups.push(unobserve)
 
       this.cleanups.push(this.machine.subscribe(() => this.render()))
       // Parts render the initial state first; effects that query them run once they're in place
@@ -124,8 +165,7 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
 
     disconnectedCallback() {
       for (const cleanup of this.cleanups.splice(0)) cleanup()
-      this.rootCleanup?.()
-      this.rootCleanup = undefined
+      this.rootTarget.detach()
       this.machine?.stop()
       this.machine = undefined
       this.snapshot = undefined
@@ -154,8 +194,8 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
       if (!this.machine) return
       const api = config.connect(this.machine.service, normalizeProps)
       this.api = api
-      const target = config.target ? config.target(this) : this
-      if (config.rootProps && target) this.rootCleanup = spreadProps(target, config.rootProps(api), this.machineId)
+      const target = asChild(this) ?? (config.target ? config.target(this) : this)
+      if (config.rootProps && target) this.rootTarget.spread(target, config.rootProps(api), this.machineId)
       config.render?.(api, this)
       for (const part of this.parts) part.update(api)
     }
@@ -211,8 +251,9 @@ export const ownInput = (el: HTMLElement) =>
 export function definePart<Api>(config: PartConfig<Api>): { new (): PartElement<Api> } {
   class Part extends HTMLElement implements PartElement<Api> {
     private rootEl: RootElement<Api> | null = null
-    private cleanup: VoidFunction | undefined
+    private target = new Target()
     private setupCleanup: VoidFunction | void = undefined
+    private unobserve: VoidFunction | undefined
 
     connectedCallback() {
       adoptDisplay(this, config.display ?? (config.target ? 'contents' : 'block'))
@@ -227,21 +268,25 @@ export function definePart<Api>(config: PartConfig<Api>): { new (): PartElement<
       this.rootEl = this.closest<RootElement<Api> & HTMLElement>(config.root)
       if (!this.rootEl) return
       this.setupCleanup = config.setup?.(this, this.rootEl)
+      this.unobserve = observeChild(this, () => {
+        if (this.rootEl?.api) this.update(this.rootEl.api)
+      })
       this.rootEl.register(this)
     }
 
     disconnectedCallback() {
       this.setupCleanup?.()
       this.setupCleanup = undefined
-      this.cleanup?.()
+      this.unobserve?.()
+      this.unobserve = undefined
+      this.target.detach()
       this.rootEl?.unregister(this)
       this.rootEl = null
     }
 
     update(api: Api) {
-      const target = config.target?.(this) ?? this
       if (!this.rootEl) return
-      this.cleanup = spreadProps(target, config.props(api, this), this.rootEl.machineId)
+      this.target.spread(targetOf(this, config.target), config.props(api, this), this.rootEl.machineId)
       config.render?.(api, this)
     }
   }

@@ -7,8 +7,8 @@ import styles from 'styles/pagination.module.css'
 import '../../src/components/pagination/index.js'
 
 function onPaginationChange(el: HTMLElement, update: VoidFunction) {
-  el.querySelector('ark-pagination')!.addEventListener('pagechange', () => queueMicrotask(update))
-  el.querySelector('ark-pagination')!.addEventListener('pagesizechange', () => queueMicrotask(update))
+  el.addEventListener('pagechange', () => queueMicrotask(update))
+  el.addEventListener('pagesizechange', () => queueMicrotask(update))
   requestAnimationFrame(update)
 }
 

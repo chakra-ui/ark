@@ -1,6 +1,6 @@
 import * as presence from '@zag-js/presence'
 import { mergeProps, normalizeProps, VanillaMachine } from '@zag-js/vanilla'
-import { definePart, defineRoot, type PartConfig, type RootConfig } from './define.js'
+import { definePart, defineRoot, targetOf, type PartConfig, type RootConfig } from './define.js'
 import { mountTemplate } from './lazy.js'
 import { emit } from './events.js'
 
@@ -98,7 +98,7 @@ export function definePresencePart<Api>(config: PresencePartConfig<Api>) {
           )
         : undefined
       const entry = machines.get(hostOf(el))
-      if (animates && entry) apiOf(entry).setNode(el)
+      if (animates && entry) apiOf(entry).setNode(targetOf(el, rest.target))
       const cleanup = rest.setup?.(el, root)
       return () => {
         stop?.()

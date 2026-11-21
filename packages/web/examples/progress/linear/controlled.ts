@@ -1,3 +1,5 @@
+import type { ProgressElement } from '../../../src/components/progress/index.js'
+
 import '../../../src/components/progress/index.js'
 
 import styles from 'styles/progress.module.css'
@@ -18,8 +20,8 @@ const linear = (attrs: string) => `
   </ark-progress>`
 
 export function mount(root: HTMLElement) {
-  const progressEl = element(linear('value="42"'))
-  progressEl.querySelector('ark-progress')!.addEventListener('valuechange', (event) => {
+  const progressEl = element(linear('value="42"')) as ProgressElement
+  progressEl.addEventListener('valuechange', (event) => {
     const { value } = event.detail
     progressEl.setAttribute('value', value == null ? '' : String(value))
   })

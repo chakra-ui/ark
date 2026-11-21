@@ -1,4 +1,4 @@
-import { parseDate } from '@zag-js/date-picker'
+import { parse as parseDate } from '@zag-js/date-picker'
 import { createElement, Calendar, ChevronLeft, ChevronRight } from 'lucide'
 
 import '../../src/components/date-picker/index.js'
