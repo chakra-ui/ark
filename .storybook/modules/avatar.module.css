@@ -7,7 +7,8 @@
   vertical-align: top;
   flex-shrink: 0;
   user-select: none;
-  border-radius: 9999px;
+  --avatar-radius: 9999px;
+  border-radius: var(--avatar-radius, 9999px);
   background: var(--demo-neutral-subtle);
   color: var(--demo-neutral-fg);
   font-size: 1rem;
@@ -19,11 +20,11 @@
   object-fit: cover;
   width: 100%;
   height: 100%;
-  border-radius: inherit;
+  border-radius: var(--avatar-radius, 9999px);
 }
 
 .Fallback {
-  border-radius: inherit;
+  border-radius: var(--avatar-radius, 9999px);
   line-height: 1;
   text-transform: uppercase;
   font-weight: 500;

@@ -17,8 +17,10 @@
   "dependencies": {
     "@zag-js/accordion": "2.0.0-next.4",
     "@zag-js/async-list": "2.0.0-next.4",
+    "@zag-js/avatar": "2.0.0-next.4",
     "@zag-js/carousel": "2.0.0-next.4",
     "@zag-js/checkbox": "2.0.0-next.4",
+    "@zag-js/clipboard": "2.0.0-next.4",
     "@zag-js/collapsible": "2.0.0-next.4",
     "@zag-js/collection": "2.0.0-next.4",
     "@zag-js/combobox": "2.0.0-next.4",
@@ -38,6 +40,7 @@
     "@zag-js/progress": "2.0.0-next.4",
     "@zag-js/radio-group": "2.0.0-next.4",
     "@zag-js/rating-group": "2.0.0-next.4",
+    "@zag-js/scroll-area": "2.0.0-next.4",
     "@zag-js/select": "2.0.0-next.4",
     "@zag-js/slider": "2.0.0-next.4",
     "@zag-js/splitter": "2.0.0-next.4",
@@ -45,6 +48,7 @@
     "@zag-js/tabs": "2.0.0-next.4",
     "@zag-js/tags-input": "2.0.0-next.4",
     "@zag-js/toast": "2.0.0-next.4",
+    "@zag-js/toggle": "2.0.0-next.4",
     "@zag-js/toggle-group": "2.0.0-next.4",
     "@zag-js/tooltip": "2.0.0-next.4",
     "@zag-js/tree-view": "2.0.0-next.4",
@@ -207,6 +211,26 @@
     "./toggle-group": {
       "types": "./dist/components/toggle-group/index.d.ts",
       "import": "./dist/components/toggle-group/index.js"
+    },
+    "./avatar": {
+      "types": "./dist/components/avatar/index.d.ts",
+      "import": "./dist/components/avatar/index.js"
+    },
+    "./clipboard": {
+      "types": "./dist/components/clipboard/index.d.ts",
+      "import": "./dist/components/clipboard/index.js"
+    },
+    "./toggle": {
+      "types": "./dist/components/toggle/index.d.ts",
+      "import": "./dist/components/toggle/index.js"
+    },
+    "./segment-group": {
+      "types": "./dist/components/segment-group/index.d.ts",
+      "import": "./dist/components/segment-group/index.js"
+    },
+    "./scroll-area": {
+      "types": "./dist/components/scroll-area/index.d.ts",
+      "import": "./dist/components/scroll-area/index.js"
     }
   },
   "sideEffects": true,

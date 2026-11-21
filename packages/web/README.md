@@ -3,8 +3,10 @@
 Unstyled, accessible web components powered by Zag.js state machines. Components use light DOM, native controls, and
 ordinary CSS. No framework runtime is required.
 
-This package is a prerelease. Its initial surface includes accordion, checkbox and checkbox group, collapsible,
-combobox, command, dialog, listbox, menu, popover, radio group, select, slider, switch, tabs, tooltip, and tree view.
+This package is a prerelease. It includes accordion, avatar, carousel, checkbox and checkbox group, clipboard,
+collapsible, combobox, command, date picker, dialog, editable, file upload, hover card, listbox, menu, number input,
+pagination, pin input, popover, progress, radio group, rating group, scroll area, segment group, select, slider,
+splitter, switch, tabs, tags input, toast, toggle, toggle group, tooltip, and tree view.
 
 ## Usage
 
