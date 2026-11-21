@@ -17,8 +17,9 @@ export function mount(root: HTMLElement) {
   </ark-toggle>`
   const el = host.querySelector('ark-toggle')!
   el.addEventListener('pressedchange', (event) => {
-    el.setAttribute('pressed', String(event.detail))
-    host.querySelector('output')!.textContent = `pressed: ${event.detail}`
+    const { pressed } = event.detail
+    el.setAttribute('pressed', String(pressed))
+    host.querySelector('output')!.textContent = `pressed: ${pressed}`
   })
   root.replaceChildren(host)
 }

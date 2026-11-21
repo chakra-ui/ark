@@ -19,6 +19,12 @@ defineRoot<toggleGroup.Api>({
     'roving-focus',
     'deselectable',
   ],
+  state: {
+    value: {
+      get: (api) => api.value,
+      set: (api, value) => api.setValue(value),
+    },
+  },
   props: (el) => ({
     value: el.hasAttribute('value') ? (list(el, 'value') ?? []) : undefined,
     defaultValue: list(el, 'default-value'),

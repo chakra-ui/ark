@@ -1,5 +1,7 @@
 import type * as steps from '@zag-js/steps'
 
+import { rootOf } from '../../utils/define.js'
+
 export const root = 'ark-steps'
 
 export const itemTag = 'ark-steps-item'
@@ -15,7 +17,7 @@ const toItem = (el: Element): steps.StepItem => ({
 })
 
 export const readItems = (el: HTMLElement): steps.StepItem[] => {
-  const items = Array.from(el.querySelectorAll(itemTag)).filter((item) => item.closest(root) === el)
+  const items = Array.from(el.querySelectorAll(itemTag)).filter((item) => rootOf(item, root) === el)
   return items.map(toItem)
 }
 

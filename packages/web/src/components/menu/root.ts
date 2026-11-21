@@ -1,7 +1,16 @@
 import * as menu from '@zag-js/menu'
+
 import { controlled, positioning, positioningAttributes, str } from '../../utils/attrs.js'
+import { rootOf, type RootElement } from '../../utils/define.js'
 import { definePresenceRoot } from '../../utils/presence.js'
 import { link, queries, root, submenus } from './shared.js'
+
+function clearQuery(el: RootElement<menu.Api>) {
+  if (!queries.delete(el)) return
+  for (const input of el.querySelectorAll<HTMLInputElement>('ark-menu-input > input')) {
+    if (rootOf(input, root) === el) input.value = ''
+  }
+}
 
 definePresenceRoot<menu.Api>({
   properties: ['scrollToIndexFn', 'initialFocusEl', 'finalFocusEl', 'navigate', 'ids', 'positioning'],
@@ -19,6 +28,12 @@ definePresenceRoot<menu.Api>({
     'popup-type',
     ...positioningAttributes,
   ],
+  state: {
+    open: {
+      get: (api) => api.open,
+      set: (api, open) => api.setOpen(!!open),
+    },
+  },
   props: (el) => ({
     open: controlled(el, 'open'),
     popupType: str<menu.Props['popupType'] & string>(el, 'popup-type'),
@@ -39,19 +54,9 @@ definePresenceRoot<menu.Api>({
     onFocusOutside: 'focusoutside',
     onInteractOutside: 'interactoutside',
   },
-  setup: (el) => {
-    const onOpenChange = (event: Event) => {
-      if (event.target !== el || (event as CustomEvent<{ open: boolean }>).detail.open) return
-      if (!queries.delete(el)) return
-      for (const input of el.querySelectorAll<HTMLInputElement>('ark-menu-input > input')) {
-        if (input.closest(root) === el) input.value = ''
-      }
-    }
-    el.addEventListener('openchange', onOpenChange)
-    return () => el.removeEventListener('openchange', onOpenChange)
-  },
   started: link,
-  render: (_api, el) => {
+  render: (api, el) => {
+    if (!api.open) clearQuery(el)
     for (const child of submenus.get(el) ?? []) child.render()
   },
 })

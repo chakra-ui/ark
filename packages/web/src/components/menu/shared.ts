@@ -1,5 +1,5 @@
 import type * as menu from '@zag-js/menu'
-import type { RootElement } from '../../utils/define.js'
+import { rootOf, type RootElement } from '../../utils/define.js'
 export const root = 'ark-menu'
 
 export const itemSelector = 'ark-menu-item, ark-menu-checkbox-item, ark-menu-radio-item'
@@ -11,7 +11,7 @@ export const queries = new WeakMap<MenuElement, string>()
 export const textOf = (item: Element) => (item.querySelector('ark-menu-item-text') ?? item).textContent?.trim() ?? ''
 
 export function filteredOut(item: Element) {
-  const query = queries.get(item.closest<MenuElement>(root)!)?.toLocaleLowerCase()
+  const query = queries.get(rootOf<MenuElement>(item, root)!)?.toLocaleLowerCase()
   return !!query && !textOf(item).toLocaleLowerCase().includes(query)
 }
 
@@ -20,7 +20,7 @@ export const parents = new WeakMap<MenuElement, MenuElement>()
 export const submenus = new WeakMap<MenuElement, Set<MenuElement>>()
 
 export function link(child: MenuElement) {
-  const parent = child.parentElement?.closest<MenuElement>(root)
+  const parent = child.parentElement && rootOf<MenuElement>(child.parentElement, root)
   if (!parent?.api || !child.api || !parent.service || !child.service) return
   const parentService = parent.service
   const childService = child.service

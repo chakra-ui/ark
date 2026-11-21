@@ -5,7 +5,7 @@ const CI = !!process.env.CI
 
 export default defineConfig({
   testDir: '.',
-  testMatch: ['src/**/tests/*.test.ts', 'tests/*.test.ts'],
+  testMatch: ['src/**/tests/*.test.ts'],
   outputDir: './test-results',
   fullyParallel: true,
   forbidOnly: CI,

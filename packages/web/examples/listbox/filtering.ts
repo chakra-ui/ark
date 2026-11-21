@@ -1,6 +1,6 @@
 import { createElement, Check } from 'lucide'
 
-import '../../src/components/listbox/index.js'
+import { createListCollection } from '../../src/components/listbox/index.js'
 
 import styles from 'styles/listbox.module.css'
 
@@ -33,9 +33,9 @@ export function mount(root: HTMLElement) {
       </ark-listbox-content>
     </ark-listbox>`
   const el = root.querySelector('ark-listbox')!
-  el.items = all
+  el.collection = createListCollection({ items: all })
   root.querySelector('input')!.addEventListener('input', (event) => {
     const query = (event.target as HTMLInputElement).value.toLowerCase()
-    el.items = all.filter((it) => it.label.toLowerCase().includes(query))
+    el.collection = createListCollection({ items: all.filter((it) => it.label.toLowerCase().includes(query)) })
   })
 }

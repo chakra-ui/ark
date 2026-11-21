@@ -1,6 +1,6 @@
 import { createElement, ChevronsUpDown, X, Check } from 'lucide'
 
-import '../../src/components/select/index.js'
+import { createListCollection } from '../../src/components/select/index.js'
 
 import styles from 'styles/select.module.css'
 
@@ -34,12 +34,11 @@ export function mount(container: HTMLElement) {
   let value: string[] = []
   const update = () => {
     const full = value.length >= max
-    el.items = names.map((name) => ({
-      value: name,
-      label: name,
-      group: 'Frameworks',
-      disabled: full && !value.includes(name),
-    }))
+    el.collection = createListCollection({
+      items: names,
+      groupBy: () => 'Frameworks',
+      isItemDisabled: (name) => full && !value.includes(name),
+    })
     el.setAttribute('value', value.join(','))
   }
   el.addEventListener('valuechange', (event) => {

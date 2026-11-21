@@ -1,6 +1,6 @@
 import type * as menu from '@zag-js/menu'
 import { str } from '../../utils/attrs.js'
-import { definePart, wrapped, wrappedButton, type RootElement } from '../../utils/define.js'
+import { definePart, wrapped, wrappedButton, type RootElement, rootOf } from '../../utils/define.js'
 import { definePresencePart } from '../../utils/presence.js'
 import { emit } from '../../utils/events.js'
 import { filteredOut, itemSelector, type MenuElement, parents, queries, root, textOf } from './shared.js'
@@ -14,7 +14,7 @@ function optionOf(item: HTMLElement): menu.OptionItemProps | null {
     valueText: textOf(item),
     closeOnSelect: item.getAttribute('close-on-select') === 'false' ? false : undefined,
   }
-  const rerender = () => item.closest<RootElement<menu.Api>>(root)?.render()
+  const rerender = () => rootOf<RootElement<menu.Api>>(item, root)?.render()
 
   if (item.localName === 'ark-menu-checkbox-item') {
     return {
@@ -82,7 +82,7 @@ definePart<menu.Api>({
   root,
   // Belongs to the submenu, but it's an item of the parent
   props: (api, el) => {
-    const child = el.closest<MenuElement>(root)
+    const child = rootOf<MenuElement>(el, root)
     const parentApi = child && parents.get(child)?.api
     return parentApi ? parentApi.getTriggerItemProps(api) : {}
   },
@@ -140,8 +140,8 @@ definePart<menu.Api>({
   tag: 'ark-menu-empty',
   root,
   props: (api, el) => {
-    const menuEl = el.closest(root)!
-    const items = [...menuEl.querySelectorAll(itemSelector)].filter((item) => item.closest(root) === menuEl)
+    const menuEl = rootOf(el, root)!
+    const items = [...menuEl.querySelectorAll(itemSelector)].filter((item) => rootOf(item, root) === menuEl)
     return { ...api.getEmptyProps(), hidden: !items.every(filteredOut) }
   },
 })

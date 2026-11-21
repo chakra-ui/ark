@@ -1,18 +1,18 @@
 import * as combobox from '@zag-js/combobox'
+
 import { positioning, positioningAttributes, str } from '../../utils/attrs.js'
 import { definePresenceRoot } from '../../utils/presence.js'
 import { collection, filteredOf, listOf, queries, root } from './shared.js'
 
-definePresenceRoot<combobox.Api>({
-  properties: ['scrollToIndexFn', 'navigate', 'ids', 'translations', 'positioning', 'items'],
-  propertyChanged: (el, name) => {
-    if (name === 'items') collection.update(el)
-  },
+type InputBehavior = NonNullable<combobox.Props['inputBehavior']>
+type SelectionBehavior = NonNullable<combobox.Props['selectionBehavior']>
 
+definePresenceRoot<combobox.Api>({
   tag: root,
   machine: combobox.machine,
   connect: combobox.connect,
   present: (api) => api.open,
+
   attributes: [
     'value',
     'default-value',
@@ -24,12 +24,29 @@ definePresenceRoot<combobox.Api>({
     'name',
     'filter',
     'limit',
+    'loading',
     'allow-custom-value',
     'open-on-click',
     'input-behavior',
     'selection-behavior',
     ...positioningAttributes,
   ],
+  properties: ['scrollToIndexFn', 'navigate', 'ids', 'translations', 'positioning'],
+  ownProperties: ['collection'],
+  propertyChanged: (el, name) => {
+    if (name === 'collection') collection.update(el)
+  },
+
+  state: {
+    open: {
+      get: (api) => api.open,
+      set: (api, open) => api.setOpen(!!open),
+    },
+    value: {
+      get: (api) => api.value,
+      set: (api, value) => api.setValue(value),
+    },
+  },
   props: (el) => ({
     collection: filteredOf(el),
     value: listOf(el, 'value'),
@@ -39,13 +56,15 @@ definePresenceRoot<combobox.Api>({
     readOnly: el.hasAttribute('readonly'),
     invalid: el.hasAttribute('invalid'),
     required: el.hasAttribute('required'),
+    loading: el.hasAttribute('loading'),
     name: str(el, 'name'),
     openOnClick: el.hasAttribute('open-on-click'),
     allowCustomValue: el.hasAttribute('allow-custom-value'),
-    inputBehavior: str<combobox.Props['inputBehavior'] & string>(el, 'input-behavior') ?? 'none',
-    selectionBehavior: str<combobox.Props['selectionBehavior'] & string>(el, 'selection-behavior') ?? 'replace',
+    inputBehavior: str<InputBehavior>(el, 'input-behavior') ?? 'none',
+    selectionBehavior: str<SelectionBehavior>(el, 'selection-behavior') ?? 'replace',
     positioning: positioning(el),
   }),
+
   events: {
     onInputValueChange: 'inputvaluechange',
     onValueChange: 'valuechange',
@@ -56,6 +75,7 @@ definePresenceRoot<combobox.Api>({
     onFocusOutside: 'focusoutside',
     onInteractOutside: 'interactoutside',
   },
+
   rootProps: (api) => api.getRootProps(),
   setup: (el) => {
     const cleanup = collection.setup(el)

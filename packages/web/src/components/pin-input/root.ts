@@ -26,6 +26,12 @@ defineRoot<pinInput.Api>({
     'name',
     'form',
   ],
+  state: {
+    value: {
+      get: (api) => api.value,
+      set: (api, value) => api.setValue(value),
+    },
+  },
   props: (el) => ({
     // The rendered inputs are the count, as the machine's own DOM lookups already assume
     count: inputsOf(el).length,

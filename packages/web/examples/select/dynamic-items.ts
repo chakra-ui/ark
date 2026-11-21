@@ -1,6 +1,6 @@
 import { createElement, X, ChevronsUpDown, Check } from 'lucide'
 
-import '../../src/components/select/index.js'
+import { createListCollection } from '../../src/components/select/index.js'
 
 import styles from 'styles/select.module.css'
 
@@ -37,7 +37,9 @@ export function mount(container: HTMLElement) {
     </div>`
   const el = container.querySelector('ark-select')!
   const items = [...names]
-  const update = () => (el.items = items.map((name) => ({ value: name, label: name, group: 'Frameworks' })))
+  const update = () => {
+    el.collection = createListCollection({ items: [...items], groupBy: () => 'Frameworks' })
+  }
   container.querySelector('button[type="button"]')!.addEventListener('click', () => {
     items.push('Angular')
     update()

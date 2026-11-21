@@ -35,6 +35,16 @@ definePresenceRoot<drawer.Api>({
     'final-focus',
   ],
   properties: ['initialFocusEl', 'finalFocusEl', 'ids'],
+  state: {
+    open: {
+      get: (api) => api.open,
+      set: (api, open) => api.setOpen(!!open),
+    },
+    snapPoint: {
+      get: (api) => api.snapPoint,
+      set: (api, value) => api.setSnapPoint(value),
+    },
+  },
   props: (el) => ({
     open: controlled(el, 'open'),
     defaultOpen: el.hasAttribute('default-open'),

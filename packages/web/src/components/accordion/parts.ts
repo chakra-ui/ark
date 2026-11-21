@@ -1,12 +1,12 @@
 import type * as accordion from '@zag-js/accordion'
 import { mergeProps } from '@zag-js/vanilla'
-import { definePart, type PartElement, type RootElement, wrappedButton } from '../../utils/define.js'
+import { definePart, type PartElement, type RootElement, wrappedButton, rootOf } from '../../utils/define.js'
 import { itemCollapsible, stopItemCollapsible, withoutVisibility } from '../../utils/item-collapsible.js'
 import { mountTemplate } from '../../utils/lazy.js'
 import { contentTag, itemPropsOf, itemTag, root } from './shared.js'
 
 function collapsibleOf(item: HTMLElement, api: accordion.Api, props: accordion.ItemProps) {
-  const rootEl = item.closest<RootElement<accordion.Api>>(root)!
+  const rootEl = rootOf<RootElement<accordion.Api>>(item, root)!
   const collapsible = itemCollapsible(
     item,
     () => ({
@@ -78,6 +78,6 @@ definePart<accordion.Api>({
     const itemEl = el.closest<HTMLElement>(itemTag)
     if (!item || !itemEl) return
     const visible = collapsibleOf(itemEl, api, item).visible
-    mountTemplate(el, visible, !!el.closest(root)?.hasAttribute('unmount-on-exit'))
+    mountTemplate(el, visible, !!rootOf(el, root)?.hasAttribute('unmount-on-exit'))
   },
 })

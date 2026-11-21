@@ -85,48 +85,88 @@ checkbox.addEventListener('checkedchange', (event) => {
 })
 ```
 
+Roots also have live state properties that work like `input.value`: `open`, `value`, `checked`, `pressed`, `visible`,
+`page`, and so on, typed on each element. Reading returns the current state, using Zag's own value types (strings and
+arrays; date picker values are ISO date strings). Writing updates the state and, like a native property, dispatches no
+change event. Properties are for uncontrolled use: while the controlled attribute is present it wins and writes are
+ignored. Values written before the element connects apply once it starts.
+
+```ts
+const dialog = document.querySelector('ark-dialog')!
+dialog.open = true
+select.value = ['react']
+```
+
+Change event details also carry `source`: `'keyboard'`, `'mouse'`, `'touch'`, or `'pen'` when the change comes from user
+input being handled, and `'programmatic'` otherwise, e.g. for `api` calls. Zag's `reason`, where it provides one, is
+kept. A callback with a bare value gets an object detail, so `pressedchange` is `{ pressed, source }`.
+
 Root element types, such as `CheckboxElement` and `SelectElement`, expose a typed `api` after connection. Check `api`
 before using it. TypeScript's `HTMLElementTagNameMap` includes the root tags, so `document.querySelector('ark-select')`
 is typed.
 
 ## Collections and forms
 
-Select, combobox, command, listbox, and tree view accept items from their child markup, a direct
-`<script type="application/json">`, or an `items` property. Data-driven collections need item templates in the list; see
-`examples/select/from-json.ts` and `examples/tree-view/from-json.ts` for complete markup.
+Select, combobox, command, listbox, and tree view read their items from one of three sources, highest priority first:
+
+1. A `collection` property, created with `createListCollection` (or `createGridCollection` for a listbox grid,
+   `createPageListCollection` for command pages, `createTreeCollection` for a tree view). These are exported from the
+   package root, `@ark-ui/web/collection` and each component's module, as in the framework packages.
+2. A direct `<script type="application/json">` child with an array of strings or `{ value, label, disabled, group }`
+   objects. Tree items can include `children`; command items can include `keywords` and a `parent`.
+3. The item elements in the markup.
 
 ```ts
-import type { ItemInput } from '@ark-ui/web'
+import { createListCollection } from '@ark-ui/web/select'
 
-const items: ItemInput[] = [
-  { value: 'react', label: 'React' },
-  { value: 'solid', label: 'Solid', disabled: true },
-]
 const select = document.querySelector('ark-select')!
-select.items = items
+select.collection = createListCollection({
+  items: members,
+  itemToValue: (member) => member.id,
+  itemToString: (member) => member.name,
+  isItemDisabled: (member) => member.away,
+  groupBy: (member) => member.team,
+})
+select.addEventListener('valuechange', (event) => {
+  const [member] = event.detail.items
+})
 ```
 
-Assign a new `items` array when data changes. Markup and JSON changes are observed automatically. Tree items can include
-`children`; flat collections can include a `group`; command items can also include `keywords` and a `parent`, the value
-of the item whose page they appear on.
+Values stay string keys: the `value` attribute and form submissions use `itemToValue`. Assign a new collection when the
+data changes; changes inside an existing collection aren't observed. Markup and JSON changes are observed automatically.
+Element types take the item type, e.g. `document.querySelector<SelectElement<Member>>('ark-select')`, so
+`event.detail.items` and `api.selectedItems` are typed.
+
+Items from a property or JSON are rendered into the list. A `<template>` in the list is stamped once per item, and a
+`<template data-group>` once per group, filling in the item's value, disabled state and text from the collection.
+Without templates, minimal item parts are rendered, e.g.
+`<ark-select-item value="…"><ark-select-item-text>…</ark-select-item-text></ark-select-item>`. Add the `manual`
+attribute to the list to render items yourself, e.g. a virtualized window; see `examples/select/virtualized.ts`. Item
+parts set `aria-posinset` and `aria-setsize` from the collection, and `scrollToIndexFn` lets keyboard navigation reach
+items that aren't rendered.
+
+Separators aren't items: style them between groups in CSS, e.g.
+`.group:not([hidden]) ~ .group:not([hidden]) { border-top: 1px solid }`, so groups hidden by filtering never add one.
 
 For data that loads asynchronously, `createAsyncList` from `@ark-ui/web/async-list` wraps Zag's async list in a small
-store. Subscribe to it and assign its items to the component; see `examples/command/async.ts`.
+store. Subscribe to it and assign a new collection on each change; see `examples/combobox/async-search.ts` and
+`examples/listbox/load-more.ts`. Combobox and command take a `loading` attribute, which sets `aria-busy`.
 
 ```ts
 import { createAsyncList } from '@ark-ui/web/async-list'
+import { createListCollection } from '@ark-ui/web/combobox'
 
-const list = createAsyncList<{ id: string; name: string }>({
+const list = createAsyncList<Movie>({
   async load({ filter, signal }) {
-    const response = await fetch(`/api/people?q=${filter}`, { signal })
+    const response = await fetch(`/api/movies?q=${filter}`, { signal })
     return { items: await response.json() }
   },
 })
 list.subscribe(() => {
-  command.items = list.items.map((person) => ({ value: person.id, label: person.name }))
-  command.toggleAttribute('loading', list.isLoading)
+  combobox.collection = createListCollection({ items: list.items, itemToValue: (movie) => movie.id })
+  combobox.toggleAttribute('loading', list.isLoading)
 })
-command.addEventListener('inputvaluechange', (event) => list.setFilter(event.detail.inputValue))
+combobox.addEventListener('inputvaluechange', (event) => list.setFilter(event.detail.inputValue))
 ```
 
 Form controls use native hidden inputs or a hidden select for submission and validation. Include the component's
@@ -139,8 +179,21 @@ Style parts using your own classes or `[data-scope][data-part]` selectors. State
 `data-state`, `data-disabled`, and `data-invalid`. The library supplies only default element display and hidden
 handling. Storybook's styles are examples and are not included in the published package.
 
-Components also work within an existing shadow root; include your styles in that root. Overlay parts must stay in their
-root's DOM subtree so they can find their owning state machine.
+Components also work within an existing shadow root; include your styles in that root.
+
+A part can live outside its root, e.g. an overlay moved to the end of `<body>`, by pointing `for` at the root's `id`.
+Parts nested inside it find the root too. The part must be in the same document or shadow root as the root, and it
+connects once that root appears. Items that a root reads from its own markup, such as collection or carousel items, must
+stay in its subtree. See `examples/dialog/portal.ts`.
+
+```html
+<ark-dialog id="settings">
+  <ark-dialog-trigger><button>Open</button></ark-dialog-trigger>
+</ark-dialog>
+<ark-dialog-positioner for="settings">
+  <ark-dialog-content>…</ark-dialog-content>
+</ark-dialog-positioner>
+```
 
 For lazy content, put children in a `<template>` inside the content part. `unmount-on-exit` returns the children to that
 template when they exit. Presence-aware components keep content mounted for exit animations. See the lazy-mount and
@@ -170,10 +223,10 @@ The package is organized as follows:
 - `src/components/<component>/index.ts`: component registration and public element types.
 - `src/utils/`: element lifecycle, collections, attributes, lazy mounting, and presence.
 - `examples/<component>/`: self-contained examples with markup, data, icons, and helpers in the same file.
-- `stories/`: Storybook metadata and example exports.
+- `src/components/<component>/<component>.stories.ts`: Storybook metadata and example exports.
 - `src/components/<component>/tests/`: browser interaction tests for that component.
 - `src/utils/tests/`: tests for the shared element runtime.
-- `tests/`: the smoke test that renders every story, and the contract test fixtures.
+- `tests/fixtures/`: the page the runtime tests load their markup into.
 
 ## Release prerequisite
 

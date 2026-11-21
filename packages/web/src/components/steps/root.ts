@@ -41,6 +41,16 @@ defineRoot<steps.Api>({
 
   attributes: ['value', 'default-value', 'completed-values', 'default-completed-values', 'orientation', 'linear'],
   properties: ['items', 'ids', 'translations'],
+  state: {
+    value: {
+      get: (api) => api.value,
+      set: (api, value) => api.setValue(value),
+    },
+    completedValues: {
+      get: (api) => api.completedValues,
+      set: (api, value) => api.setCompletedValues(value),
+    },
+  },
   props: (el) => ({
     items: readItems(el),
     value: controlledValue(el),

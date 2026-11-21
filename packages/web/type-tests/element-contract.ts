@@ -1,4 +1,5 @@
 import type { SelectEventMap } from '../src/components/select/index.js'
+import type { InputSource } from '../src/index.js'
 import '../src/index.js'
 
 declare function expectType<T>(value: T): void
@@ -24,8 +25,33 @@ select.onValueChange = () => {}
 
 const checkbox = document.querySelector('ark-checkbox')!
 checkbox.addEventListener('checkedchange', (event) => expectType<boolean | 'indeterminate'>(event.detail.checked))
+checkbox.addEventListener('checkedchange', (event) => expectType<InputSource>(event.detail.source))
 const group = document.querySelector('ark-checkbox-group')!
 group.addEventListener('valuechange', (event) => expectType<string[]>(event.detail.value))
+group.addEventListener('valuechange', (event) => expectType<InputSource>(event.detail.source))
+group.value = ['a']
+
+const toggle = document.querySelector('ark-toggle')!
+toggle.addEventListener('pressedchange', (event) => {
+  expectType<boolean>(event.detail.pressed)
+  expectType<InputSource>(event.detail.source)
+})
+toggle.pressed = true
+expectType<boolean>(toggle.pressed)
+// @ts-expect-error Pressed state is a boolean.
+toggle.pressed = 'yes'
+
+const dialog = document.querySelector('ark-dialog')!
+dialog.open = true
+dialog.addEventListener('openchange', (event) => expectType<string | undefined>(event.detail.reason))
+// @ts-expect-error Keyboard event details are the native event, without a source.
+document.querySelector('ark-dialog')!.addEventListener('escapekeydown', (event) => event.detail.source)
+
+expectType<string[]>(select.value)
+expectType<boolean>(select.open)
+expectType<boolean | 'indeterminate'>(checkbox.checked)
+expectType<string | null>(document.querySelector('ark-tabs')!.value)
+expectType<string[]>(document.querySelector('ark-date-picker')!.value)
 
 const picker = document.querySelector('ark-date-picker')!
 picker.isDateUnavailable = (date, locale) => date.day === 1 && locale === 'en-US'

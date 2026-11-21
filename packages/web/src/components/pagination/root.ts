@@ -27,6 +27,16 @@ defineRoot<pagination.Api>({
     'boundary-count',
     'type',
   ],
+  state: {
+    page: {
+      get: (api) => api.page,
+      set: (api, value) => api.setPage(Number(value)),
+    },
+    pageSize: {
+      get: (api) => api.pageSize,
+      set: (api, value) => api.setPageSize(Number(value)),
+    },
+  },
   props: (el) => {
     const { getPageUrl, translations } = el as PaginationElement
     return {

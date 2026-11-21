@@ -198,3 +198,33 @@ test('command palette opens with the keyboard shortcut and runs a command', asyn
   await expect(dialog).toBeHidden()
   await expect(page.getByRole('button', { name: /Search commands/ })).toBeFocused()
 })
+
+test('command accepts a plain list collection of object items', async ({ page }) => {
+  await page.goto('/test-fixtures/index.html')
+  await page.setContent(/* html */ `
+    <ark-command>
+      <ark-command-input><input aria-label="Search" /></ark-command-input>
+      <ark-command-list></ark-command-list>
+    </ark-command>`)
+  await page.evaluate(() => {
+    const { createListCollection } = window as unknown as typeof import('../../../index.js')
+    const command = document.querySelector('ark-command')!
+    command.collection = createListCollection({
+      items: [
+        { id: 'copy', title: 'Copy link', keywords: ['clipboard'] },
+        { id: 'share', title: 'Share' },
+      ],
+      itemToValue: (item) => item.id,
+      itemToString: (item) => item.title,
+    })
+    command.addEventListener('itemselect', (event) =>
+      document.body.setAttribute('data-selected', event.detail.itemValue),
+    )
+  })
+  const options = page.getByRole('option')
+  await expect(options).toHaveText(['Copy link', 'Share'])
+  await page.getByRole('combobox').fill('clipboard')
+  await expect(options).toHaveText(['Copy link'])
+  await page.keyboard.press('Enter')
+  await expect(page.locator('body')).toHaveAttribute('data-selected', 'copy')
+})

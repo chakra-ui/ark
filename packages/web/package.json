@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "dev": "bun run storybook",
-    "lint": "biome lint src examples stories .storybook tests",
+    "lint": "biome lint src examples .storybook tests",
     "typecheck": "tsc",
     "test": "playwright test",
     "test:ci": "playwright test",
@@ -57,7 +57,8 @@
     "@zag-js/toggle-group": "2.0.0-next.4",
     "@zag-js/tooltip": "2.0.0-next.4",
     "@zag-js/tree-view": "2.0.0-next.4",
-    "@zag-js/vanilla": "2.0.0-next.4"
+    "@zag-js/vanilla": "2.0.0-next.4",
+    "@zag-js/virtualizer": "2.0.0-next.4"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "10.5.10",
@@ -107,6 +108,10 @@
     "./collapsible": {
       "types": "./dist/components/collapsible/index.d.ts",
       "import": "./dist/components/collapsible/index.js"
+    },
+    "./collection": {
+      "types": "./dist/components/collection/index.d.ts",
+      "import": "./dist/components/collection/index.js"
     },
     "./combobox": {
       "types": "./dist/components/combobox/index.d.ts",
@@ -256,6 +261,10 @@
     "./timer": {
       "types": "./dist/components/timer/index.d.ts",
       "import": "./dist/components/timer/index.js"
+    },
+    "./virtualizer": {
+      "types": "./dist/components/virtualizer/index.d.ts",
+      "import": "./dist/components/virtualizer/index.js"
     }
   },
   "sideEffects": true,

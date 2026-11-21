@@ -1,10 +1,20 @@
 import type * as combobox from '@zag-js/combobox'
+
+import { positionOf } from '../../utils/collection.js'
 import { definePart, wrapped } from '../../utils/define.js'
-import { isFilteredOut, itemOf, root } from './shared.js'
+import { hasGroup, isFilteredOut, itemOf, root } from './shared.js'
 
-definePart<combobox.Api>({ tag: 'ark-command-label', root, props: (api) => api.getLabelProps() })
+definePart<combobox.Api>({
+  tag: 'ark-command-label',
+  root,
+  props: (api) => api.getLabelProps(),
+})
 
-definePart<combobox.Api>({ tag: 'ark-command-control', root, props: (api) => api.getControlProps() })
+definePart<combobox.Api>({
+  tag: 'ark-command-control',
+  root,
+  props: (api) => api.getControlProps(),
+})
 
 definePart<combobox.Api>({
   tag: 'ark-command-input',
@@ -20,13 +30,19 @@ const keepFocus = (event: PointerEvent) => {
 definePart<combobox.Api>({
   tag: 'ark-command-list',
   root,
-  props: (api) => ({ ...api.getListProps(), onpointerdown: keepFocus }),
+  props: (api) => ({
+    ...api.getListProps(),
+    onpointerdown: keepFocus,
+  }),
 })
 
 definePart<combobox.Api>({
   tag: 'ark-command-empty',
   root,
-  props: (api) => ({ ...api.getEmptyProps(), hidden: api.collection.size > 0 }),
+  props: (api) => ({
+    ...api.getEmptyProps(),
+    hidden: api.collection.size > 0,
+  }),
 })
 
 definePart<combobox.Api>({
@@ -34,8 +50,10 @@ definePart<combobox.Api>({
   root,
   props: (api, el) => {
     const id = el.getAttribute('name') ?? ''
-    const empty = !api.collection.items.some((item) => item.group === id)
-    return { ...api.getItemGroupProps({ id }), hidden: empty }
+    return {
+      ...api.getItemGroupProps({ id }),
+      hidden: !hasGroup(api.collection, id),
+    }
   },
 })
 
@@ -54,7 +72,12 @@ definePart<combobox.Api>({
   props: (api, el) => {
     const item = itemOf(el)
     if (!item) return {}
-    return { ...api.getItemProps({ item, persistFocus: true }), hidden: isFilteredOut(el, item.value) }
+    const value = api.collection.getItemValue(item) ?? ''
+    return {
+      ...api.getItemProps({ item, persistFocus: true }),
+      ...positionOf(api.collection, value),
+      hidden: isFilteredOut(el, value),
+    }
   },
 })
 

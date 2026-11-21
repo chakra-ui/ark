@@ -10,6 +10,12 @@ defineRoot<toggle.Api>({
   connect: toggle.connect,
 
   attributes: ['pressed', 'default-pressed', 'disabled'],
+  state: {
+    pressed: {
+      get: (api) => api.pressed,
+      set: (api, value) => api.setPressed(!!value),
+    },
+  },
   props: (el) => ({
     pressed: controlled(el, 'pressed'),
     defaultPressed: el.hasAttribute('default-pressed'),

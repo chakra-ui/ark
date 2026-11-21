@@ -38,6 +38,12 @@ class CheckboxGroup extends HTMLElement {
     return this.hasAttribute('value') ? (list(this, 'value') ?? []) : this.uncontrolled
   }
 
+  /** Ignored while the `value` attribute controls the group. */
+  set value(next: string[]) {
+    this.uncontrolled = [...next]
+    this.attributeChangedCallback()
+  }
+
   isChecked(value: string) {
     return this.value.includes(value)
   }

@@ -27,6 +27,12 @@ defineRoot<splitter.Api>({
   machine: splitter.machine,
   connect: splitter.connect,
   attributes: ['size', 'default-size', 'orientation', 'disabled', 'keyboard-resize-by', 'nonce'],
+  state: {
+    size: {
+      get: (api) => api.getSizes(),
+      set: (api, value) => api.setSizes(value),
+    },
+  },
   props: (el) => ({
     panels: readPanels(el),
     size: sizes(el, 'size'),

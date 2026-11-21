@@ -1,5 +1,6 @@
 import { normalizeProps, spreadProps, VanillaMachine } from '@zag-js/vanilla'
-import { emit, type CallbackEvents, type EventElement } from './events.js'
+
+import { emit, silently, trackInput, type CallbackEvents, type EventElement } from './events.js'
 
 type Dict = Record<string, any>
 type Connect<Api> = (service: any, normalize: typeof normalizeProps) => Api
@@ -64,6 +65,45 @@ class Target {
   }
 }
 
+export interface StateProperty<Api> {
+  get: (api: Api) => unknown
+  set: (api: Api, value: any) => void
+}
+
+export type StateProperties<Props, Keys extends keyof Props> = {
+  -readonly [Key in Keys]-?: Exclude<Props[Key], undefined>
+}
+
+const isBareValue = (value: unknown) => ['boolean', 'number', 'string'].includes(typeof value)
+
+const detailKey = (prop: string) => {
+  const name = prop.slice(2).replace(/Change$/, '')
+  return name.charAt(0).toLowerCase() + name.slice(1)
+}
+
+const detailOf = (prop: string, detail: unknown) => (isBareValue(detail) ? { [detailKey(prop)]: detail } : detail)
+
+function forTarget(el: Element, tag: string): Element | null {
+  const id = el.getAttribute('for')
+  if (!id) return null
+
+  const scope = el.getRootNode() as Partial<Document>
+  const target = scope.getElementById?.(id)
+
+  return target?.localName === tag ? target : null
+}
+
+export function rootOf<T extends Element = HTMLElement>(part: Element, tag: string): T | null {
+  for (let el: Element | null = part; el; el = el.parentElement) {
+    if (el.localName === tag) return el as T
+
+    const target = forTarget(el, tag)
+    if (target) return target as T
+  }
+
+  return null
+}
+
 export interface RootConfig<Api> {
   tag: string
   machine: any
@@ -71,7 +111,9 @@ export interface RootConfig<Api> {
   attributes?: string[]
   /** Rich values and functions assigned directly to the element, never parsed from HTML. */
   properties?: readonly string[]
+  ownProperties?: readonly string[]
   propertyChanged?: (el: RootElement<Api>, name: string) => void
+  state?: Record<string, StateProperty<Api>>
   props: (el: RootElement<Api>) => Dict
   events?: Record<string, string>
   rootProps?: (api: Api) => Dict
@@ -93,6 +135,14 @@ export interface RootElement<Api = Dict, Props extends object = {}> extends Even
 
 export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<Api> } {
   const properties = new WeakMap<HTMLElement, Dict>()
+  const propertyNames = [...(config.properties ?? []), ...(config.ownProperties ?? [])]
+
+  const machineProperties = (el: HTMLElement) => {
+    const values = { ...properties.get(el) }
+    for (const name of config.ownProperties ?? []) delete values[name]
+    return values
+  }
+
   class Root extends HTMLElement implements RootElement<Api> {
     static observedAttributes = config.attributes ?? []
 
@@ -103,11 +153,13 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
     private parts = new Set<PartElement<Api>>()
     private cleanups: VoidFunction[] = []
     private rootTarget = new Target()
+    private started = false
+    private assigned = new Map<string, unknown>()
 
     constructor() {
       super()
       // Preserve values written before registration, including on detached elements.
-      for (const name of config.properties ?? []) {
+      for (const name of [...propertyNames, ...Object.keys(config.state ?? {})]) {
         const descriptor = Object.getOwnPropertyDescriptor(this, name)
         if (!descriptor || !('value' in descriptor)) continue
         delete (this as unknown as Dict)[name]
@@ -118,17 +170,18 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
     connectedCallback() {
       if (this.machine) return
       adoptDisplay(this, config.rootProps && !config.target ? 'block' : 'contents')
+      trackInput(this.ownerDocument)
       this.machineId = this.id || this.machineId || `ark-${config.tag}-${++uid}`
 
       const getRootNode = () => this.getRootNode()
       this.machine = new VanillaMachine(config.machine, () => {
         if (this.snapshot) return this.snapshot
-        const props: Dict = { id: this.machineId, getRootNode, ...config.props(this), ...properties.get(this) }
+        const props: Dict = { id: this.machineId, getRootNode, ...config.props(this), ...machineProperties(this) }
         for (const [prop, type] of Object.entries(config.events ?? {})) {
           const callback = props[prop]
           props[prop] = (detail: unknown) => {
             callback?.(detail)
-            emit(this, type, detail)
+            emit(this, type, detailOf(prop, detail))
           }
         }
         this.snapshot = props
@@ -148,6 +201,8 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
       const start = () => {
         if (this.machine !== machine) return
         machine.start()
+        this.started = true
+        for (const [name, value] of this.assigned) this.writeState(name, value)
         const cleanup = config.started?.(this)
         if (cleanup) this.cleanups.push(cleanup)
         this.render()
@@ -168,6 +223,7 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
       this.rootTarget.detach()
       this.machine?.stop()
       this.machine = undefined
+      this.started = false
       this.snapshot = undefined
       this.api = undefined
     }
@@ -179,6 +235,24 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
     refresh() {
       this.snapshot = undefined
       this.machine?.updateProps({})
+    }
+
+    readState(name: string) {
+      if (this.assigned.has(name)) return this.assigned.get(name)
+      return this.api ? config.state![name].get(this.api) : undefined
+    }
+
+    writeState(name: string, value: unknown) {
+      this.assigned.set(name, value)
+
+      const api = this.api
+      if (!this.started || !api) return
+
+      silently(this, () => config.state![name].set(api, value))
+
+      queueMicrotask(() => {
+        if (Object.is(this.assigned.get(name), value)) this.assigned.delete(name)
+      })
     }
 
     register(part: PartElement<Api>) {
@@ -201,7 +275,7 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
     }
   }
 
-  for (const name of config.properties ?? []) {
+  for (const name of propertyNames) {
     Object.defineProperty(Root.prototype, name, {
       configurable: true,
       get(this: Root) {
@@ -219,6 +293,18 @@ export function defineRoot<Api>(config: RootConfig<Api>): { new (): RootElement<
         if (this.service) config.propertyChanged?.(this, name)
         this.refresh()
         this.render()
+      },
+    })
+  }
+
+  for (const name of Object.keys(config.state ?? {})) {
+    Object.defineProperty(Root.prototype, name, {
+      configurable: true,
+      get(this: Root) {
+        return this.readState(name)
+      },
+      set(this: Root, value: unknown) {
+        this.writeState(name, value)
       },
     })
   }
@@ -254,6 +340,7 @@ export function definePart<Api>(config: PartConfig<Api>): { new (): PartElement<
     private target = new Target()
     private setupCleanup: VoidFunction | void = undefined
     private unobserve: VoidFunction | undefined
+    private unwait: VoidFunction | undefined
 
     connectedCallback() {
       adoptDisplay(this, config.display ?? (config.target ? 'contents' : 'block'))
@@ -265,8 +352,10 @@ export function definePart<Api>(config: PartConfig<Api>): { new (): PartElement<
     private connect() {
       // A part moved before its root is defined has two pending callbacks
       if (!this.isConnected || this.rootEl) return
-      this.rootEl = this.closest<RootElement<Api> & HTMLElement>(config.root)
-      if (!this.rootEl) return
+
+      this.rootEl = rootOf<RootElement<Api> & HTMLElement>(this, config.root)
+      if (!this.rootEl) return this.waitForRoot()
+
       this.setupCleanup = config.setup?.(this, this.rootEl)
       this.unobserve = observeChild(this, () => {
         if (this.rootEl?.api) this.update(this.rootEl.api)
@@ -274,7 +363,26 @@ export function definePart<Api>(config: PartConfig<Api>): { new (): PartElement<
       this.rootEl.register(this)
     }
 
+    private waitForRoot() {
+      if (this.unwait || !this.closest('[for]')) return
+
+      const observer = new MutationObserver(() => {
+        if (!rootOf(this, config.root)) return
+        this.stopWaiting()
+        this.connect()
+      })
+
+      observer.observe(this.getRootNode(), { childList: true, subtree: true, attributeFilter: ['id', 'for'] })
+      this.unwait = () => observer.disconnect()
+    }
+
+    private stopWaiting() {
+      this.unwait?.()
+      this.unwait = undefined
+    }
+
     disconnectedCallback() {
+      this.stopWaiting()
       this.setupCleanup?.()
       this.setupCleanup = undefined
       this.unobserve?.()

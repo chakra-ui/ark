@@ -38,6 +38,12 @@ defineRoot<carousel.Api>({
     'snap-type',
     'in-view-threshold',
   ],
+  state: {
+    page: {
+      get: (api) => api.page,
+      set: (api, value) => api.scrollTo(Number(value)),
+    },
+  },
   props: (el) => {
     const threshold = numbers(el, 'in-view-threshold')
     return {

@@ -1,6 +1,6 @@
 import { createElement, Search } from 'lucide'
 
-import '../../src/components/command/index.js'
+import { createListCollection } from '../../src/components/command/index.js'
 import { createAsyncList } from '../../src/utils/async-list.js'
 
 import styles from 'styles/command.module.css'
@@ -55,7 +55,11 @@ export function mount(root: HTMLElement) {
   })
 
   const update = () => {
-    command.items = list.items.map((person) => ({ value: person.id, label: person.name }))
+    command.collection = createListCollection({
+      items: list.items,
+      itemToValue: (person) => person.id,
+      itemToString: (person) => person.name,
+    })
     command.toggleAttribute('loading', list.isLoading)
     loading.hidden = !list.isLoading
     error.hidden = list.isLoading || !list.error

@@ -10,6 +10,12 @@ defineRoot<checkbox.Api>({
   machine: checkbox.machine,
   connect: checkbox.connect,
   attributes: ['checked', 'default-checked', 'disabled', 'invalid', 'required', 'readonly', 'name', 'value', 'form'],
+  state: {
+    checked: {
+      get: (api) => api.checkedState,
+      set: (api, checked) => api.setChecked(checked === 'indeterminate' ? checked : !!checked),
+    },
+  },
   props: (el) => ({
     checked: checkedOf(el),
     defaultChecked:

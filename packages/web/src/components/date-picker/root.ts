@@ -41,6 +41,20 @@ definePresenceRoot<datePicker.Api>({
     'placeholder',
     ...positioningAttributes,
   ],
+  state: {
+    open: {
+      get: (api) => api.open,
+      set: (api, open) => api.setOpen(!!open),
+    },
+    value: {
+      get: (api) => api.value.map(String),
+      set: (api, value) => api.setValue(datePicker.parse(value as string[])),
+    },
+    view: {
+      get: (api) => api.view,
+      set: (api, value) => api.setView(value),
+    },
+  },
   props: (el) => ({
     value: dates(el, 'value'),
     defaultValue: dates(el, 'default-value'),

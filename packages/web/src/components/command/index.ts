@@ -1,33 +1,59 @@
-import type { CallbackEvents } from '../../utils/events.js'
+import type { Api, Props } from '@zag-js/combobox'
+
+import type { CollectionItem, ListCollection, PageListCollection } from '../collection/index.js'
+import type { RootElement } from '../../utils/define.js'
+import type { CallbackEvents, FunctionProperties } from '../../utils/events.js'
+import type { CommandFilter } from './shared.js'
 import './root.js'
 import './parts.js'
-import type { Api, Props } from '@zag-js/combobox'
-import type { RootElement } from '../../utils/define.js'
-import type { FunctionProperties } from '../../utils/events.js'
-import type { Item, ItemInput } from '../../utils/collection.js'
-import type { CommandFilter } from './shared.js'
+
+type PropTypes = Api extends Api<infer P> ? P : never
 
 export type { Api as CommandApi } from '@zag-js/combobox'
 export type { CommandFilter } from './shared.js'
+export {
+  createListCollection,
+  createPageListCollection,
+  type CollectionItem,
+  type CollectionOptions,
+  type ListCollection,
+  type PageListCollection,
+  type PageListCollectionOptions,
+} from '../collection/index.js'
 
-export interface CommandPageChangeDetails {
+export interface CommandPageChangeDetails<T extends CollectionItem = CollectionItem> {
   page: string | null
-  item: Item | null
+  item: T | null
 }
 
-type CommandProps = Props & { onPageChange?: ((details: CommandPageChangeDetails) => void) | undefined }
+type CommandProps<T extends CollectionItem> = Props<T> & {
+  onPageChange?: ((details: CommandPageChangeDetails<T>) => void) | undefined
+}
 
-export type CommandEventMap = Pick<
-  CallbackEvents<CommandProps>,
+export type CommandEventMap<T extends CollectionItem = CollectionItem> = Pick<
+  CallbackEvents<CommandProps<T>>,
   'inputvaluechange' | 'highlightchange' | 'itemselect' | 'pagechange'
 >
 
-export type CommandElement = RootElement<Api, CommandProps> &
-  Pick<FunctionProperties<Props>, 'navigate' | 'scrollToIndexFn'> &
-  Pick<Props, 'ids' | 'translations'> &
-  CommandPages & { items?: ItemInput[]; filter?: CommandFilter }
+export type CommandElement<T extends CollectionItem = CollectionItem> = RootElement<
+  Api<PropTypes, T>,
+  CommandProps<T>
+> &
+  Pick<FunctionProperties<Props<T>>, 'navigate' | 'scrollToIndexFn'> &
+  Pick<Props<T>, 'ids' | 'translations'> &
+  CommandPages<T> & {
+    /**
+     * The items, e.g. from `createListCollection`, or `createPageListCollection` for nested pages,
+     * where an item with a `parent` value is shown on the page of that item
+     */
+    collection?: ListCollection<T> | PageListCollection<T> | undefined
+    /**
+     * Returns the items that match the query. Defaults to a fuzzy search of the item text and its `keywords`.
+     */
+    filter?: CommandFilter<T> | undefined
+  }
 
-export interface CommandPages {
+export interface CommandPages<T extends CollectionItem = CollectionItem> {
   /**
    * The value of the item whose page is open, or `null` at the top level
    */
@@ -35,7 +61,7 @@ export interface CommandPages {
   /**
    * The items from the top level to the open page
    */
-  readonly path: Item[]
+  readonly path: T[]
   /**
    * Whether there's a page to go back to
    */
@@ -55,11 +81,11 @@ export interface CommandPages {
   /**
    * Whether the item opens a page
    */
-  isPage(item: Item): boolean
+  isPage(item: T): boolean
   /**
    * The item's pages below the open page, e.g. to show where a search result lives
    */
-  getAncestors(item: Item): Item[]
+  getAncestors(item: T): T[]
 }
 
 declare global {

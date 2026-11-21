@@ -1,6 +1,6 @@
 import type * as tree from '@zag-js/tree-view'
 import { mergeProps } from '@zag-js/vanilla'
-import { definePart, type PartElement, type RootElement, wrapped } from '../../utils/define.js'
+import { definePart, type PartElement, type RootElement, wrapped, rootOf } from '../../utils/define.js'
 import { itemCollapsible, stopItemCollapsible, withoutVisibility } from '../../utils/item-collapsible.js'
 import { mountTemplate } from '../../utils/lazy.js'
 import { ancestors, contentTag, groupTag, nodePropsOf, nodeTag, root, textTag } from './shared.js'
@@ -22,7 +22,7 @@ const nodePart = (
   })
 
 function branchOf(group: HTMLElement, api: tree.Api, np: tree.NodeProps) {
-  const rootEl = group.closest<RootElement<tree.Api>>(root)!
+  const rootEl = rootOf<RootElement<tree.Api>>(group, root)!
   return itemCollapsible(
     group,
     () => ({
@@ -75,7 +75,7 @@ definePart<tree.Api>({
     const np = nodePropsOf(el)
     const group = el.closest<HTMLElement>(groupTag)
     if (!np || !group) return
-    mountTemplate(el, branchOf(group, api, np).api().visible, !!el.closest(root)?.hasAttribute('unmount-on-exit'))
+    mountTemplate(el, branchOf(group, api, np).api().visible, !!rootOf(el, root)?.hasAttribute('unmount-on-exit'))
   },
 })
 

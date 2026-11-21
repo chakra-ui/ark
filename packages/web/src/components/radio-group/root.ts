@@ -10,6 +10,12 @@ defineRoot<radio.Api>({
   machine: radio.machine,
   connect: radio.connect,
   attributes: ['value', 'default-value', 'name', 'form', 'disabled', 'invalid', 'required', 'readonly', 'orientation'],
+  state: {
+    value: {
+      get: (api) => api.value,
+      set: (api, value) => (value == null ? api.clearValue() : api.setValue(value)),
+    },
+  },
   props: (el) => ({
     value: el.hasAttribute('value') ? el.getAttribute('value') || null : undefined,
     defaultValue: str(el, 'default-value'),

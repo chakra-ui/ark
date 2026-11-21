@@ -1,8 +1,14 @@
 import type * as listbox from '@zag-js/listbox'
+
+import { positionOf } from '../../utils/collection.js'
 import { definePart, wrapped } from '../../utils/define.js'
 import { itemOf, root } from './shared.js'
 
-definePart<listbox.Api>({ tag: 'ark-listbox-label', root, props: (api) => api.getLabelProps() })
+definePart<listbox.Api>({
+  tag: 'ark-listbox-label',
+  root,
+  props: (api) => api.getLabelProps(),
+})
 
 definePart<listbox.Api>({
   tag: 'ark-listbox-value-text',
@@ -22,15 +28,26 @@ definePart<listbox.Api>({
   props: (api) => api.getInputProps(),
 })
 
-definePart<listbox.Api>({ tag: 'ark-listbox-content', root, props: (api) => api.getContentProps() })
+definePart<listbox.Api>({
+  tag: 'ark-listbox-content',
+  root,
+  props: (api) => api.getContentProps(),
+})
 
 definePart<listbox.Api>({
   tag: 'ark-listbox-empty',
   root,
-  props: (api) => ({ ...api.getEmptyProps(), hidden: api.collection.size > 0 }),
+  props: (api) => ({
+    ...api.getEmptyProps(),
+    hidden: api.collection.size > 0,
+  }),
 })
 
-definePart<listbox.Api>({ tag: 'ark-listbox-list', root, props: (api) => api.getListProps() })
+definePart<listbox.Api>({
+  tag: 'ark-listbox-list',
+  root,
+  props: (api) => api.getListProps(),
+})
 
 definePart<listbox.Api>({
   tag: 'ark-listbox-item-group',
@@ -50,7 +67,11 @@ definePart<listbox.Api>({
   root,
   props: (api, el) => {
     const item = itemOf(el)
-    return item ? api.getItemProps({ item }) : {}
+    if (!item) return {}
+    return {
+      ...api.getItemProps({ item }),
+      ...positionOf(api.collection, api.collection.getItemValue(item)),
+    }
   },
 })
 

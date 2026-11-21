@@ -1,6 +1,6 @@
 import { createElement, X, ChevronsUpDown, Check } from 'lucide'
 
-import '../../src/components/combobox/index.js'
+import { createListCollection } from '../../src/components/combobox/index.js'
 
 import styles from 'styles/combobox.module.css'
 
@@ -28,10 +28,12 @@ export function mount(root: HTMLElement) {
     </ark-combobox-positioner>
   </ark-combobox>`
   const el = root.querySelector('ark-combobox')!
-  el.items = []
+  el.collection = createListCollection<string>({ items: [] })
   el.addEventListener('inputvaluechange', (event) => {
     const { inputValue, reason } = event.detail
     if (reason !== 'input-change') return
-    el.items = ['gmail.com', 'yahoo.com', 'ark-ui.com'].map((domain) => `${inputValue}@${domain}`)
+    el.collection = createListCollection({
+      items: ['gmail.com', 'yahoo.com', 'ark-ui.com'].map((domain) => `${inputValue}@${domain}`),
+    })
   })
 }

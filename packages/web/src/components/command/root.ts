@@ -1,6 +1,7 @@
+import type { CollectionItem } from '@zag-js/collection'
 import * as combobox from '@zag-js/combobox'
+
 import { str } from '../../utils/attrs.js'
-import type { Item } from '../../utils/collection.js'
 import { defineRoot, type RootElement } from '../../utils/define.js'
 import { emit } from '../../utils/events.js'
 import { collection, filteredOf, type Pages, pagesOf, queries, queryOf, root, setPages } from './shared.js'
@@ -42,15 +43,16 @@ const up = (el: CommandHost) => {
 }
 
 const Command = defineRoot<combobox.Api>({
-  properties: ['filter', 'navigate', 'scrollToIndexFn', 'ids', 'translations', 'items'],
-  propertyChanged: (el, name) => {
-    if (name === 'items') collection.update(el)
-  },
-
   tag: root,
   machine: combobox.machine,
   connect: combobox.connect,
+
   attributes: ['input-value', 'default-input-value', 'disabled', 'loading', 'loop-focus', 'placeholder'],
+  properties: ['navigate', 'scrollToIndexFn', 'ids', 'translations'],
+  ownProperties: ['collection', 'filter'],
+  propertyChanged: (el, name) => {
+    if (name === 'collection') collection.update(el)
+  },
   props: (el) => {
     const items = filteredOf(el)
     return {
@@ -75,7 +77,12 @@ const Command = defineRoot<combobox.Api>({
       },
     }
   },
-  events: { onInputValueChange: 'inputvaluechange', onHighlightChange: 'highlightchange' },
+
+  events: {
+    onInputValueChange: 'inputvaluechange',
+    onHighlightChange: 'highlightchange',
+  },
+
   rootProps: (api) => api.getRootProps(),
   started: (el) => {
     const first = el.api?.collection.firstValue
@@ -143,13 +150,13 @@ Object.defineProperties(Command.prototype, {
   },
   isPage: {
     configurable: true,
-    value(this: CommandHost, item: Item) {
+    value(this: CommandHost, item: CollectionItem) {
       return pagesOf(this)?.isPage(item) ?? false
     },
   },
   getAncestors: {
     configurable: true,
-    value(this: CommandHost, item: Item) {
+    value(this: CommandHost, item: CollectionItem) {
       return pagesOf(this)?.getAncestors(item) ?? []
     },
   },

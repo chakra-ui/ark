@@ -1,5 +1,9 @@
+import type { TreeCollection } from '@zag-js/collection'
 import * as tree from '@zag-js/tree-view'
-import { defineCollection, type Item } from '../../utils/collection.js'
+
+import { clearRendered, cloneTemplate, defineCollection, type Item } from '../../utils/collection.js'
+import { rootOf } from '../../utils/define.js'
+
 export const root = 'ark-tree-view'
 
 export const groupTag = 'ark-tree-view-node-group'
@@ -42,46 +46,70 @@ function setText(el: Element, text: string) {
   el.append(text)
 }
 
-function renderNodes(container: Element, items: Item[], leaf: HTMLTemplateElement, branch: HTMLTemplateElement | null) {
-  for (const item of items) {
-    const template = item.children && branch ? branch : leaf
-    const holder = template.content.firstElementChild?.cloneNode(true) as HTMLElement
-    holder.setAttribute('value', item.value)
-    holder.toggleAttribute('disabled', item.disabled)
-    holder.setAttribute('data-rendered', '')
-    const text = holder.querySelector(textTag)
-    if (text) setText(text, item.label)
-    const content = holder.querySelector(contentTag)
-    if (item.children && content) renderNodes(content, item.children, leaf, branch)
-    container.append(holder)
-  }
+type Tree = TreeCollection<any>
+
+interface Templates {
+  leaf: HTMLTemplateElement | null
+  branch: HTMLTemplateElement | null
 }
 
-export const collection: ReturnType<typeof defineCollection<ReturnType<typeof tree.collection<Item>>>> =
-  defineCollection({
-    item: groupTag,
-    itemText: textTag,
-    list: 'ark-tree-view-tree',
-    create: (items) =>
-      tree.collection<Item>({
-        rootNode: { value: '', label: '', disabled: false, children: items },
-        nodeToValue: (node) => node.value,
-        nodeToString: (node) => node.label,
-        nodeToChildren: (node) => node.children ?? [],
-        isNodeDisabled: (node) => node.disabled,
-      }),
-    readMarkup: (el) => {
-      const treeEl = el.querySelector('ark-tree-view-tree')
-      return treeEl ? readNodes(treeEl) : []
-    },
-    render: (template, items) => {
-      const treeEl = template.parentElement!
-      for (const rendered of treeEl.querySelectorAll(':scope > [data-rendered]')) rendered.remove()
-      const leaf = treeEl.querySelector<HTMLTemplateElement>(':scope > template:not([data-branch])')
-      const branch = treeEl.querySelector<HTMLTemplateElement>(':scope > template[data-branch]')
-      if (leaf) renderNodes(treeEl, items, leaf, branch)
-    },
-  })
+function createPart(doc: Document, tags: string[]) {
+  const [tag, ...rest] = tags
+  const node = doc.createElement(tag)
+  if (rest.length) node.append(createPart(doc, rest))
+  return node
+}
+
+function createLeaf(doc: Document) {
+  return createPart(doc, [nodeTag, 'ark-tree-view-cell', textTag])
+}
+
+function createBranch(doc: Document) {
+  const group = doc.createElement(groupTag)
+  group.append(createPart(doc, [nodeTag, 'ark-tree-view-cell', textTag]), doc.createElement(contentTag))
+  return group
+}
+
+function renderNode(doc: Document, coll: Tree, node: unknown, templates: Templates) {
+  const isBranch = coll.isBranchNode(node)
+  const holder = isBranch
+    ? cloneTemplate(templates.branch, () => createBranch(doc))
+    : cloneTemplate(templates.leaf, () => createLeaf(doc))
+  holder.setAttribute('value', coll.getNodeValue(node))
+  holder.toggleAttribute('disabled', coll.getNodeDisabled(node))
+  const text = holder.querySelector(textTag)
+  if (text) setText(text, coll.stringifyNode(node))
+  const content = holder.querySelector(contentTag)
+  if (isBranch && content) renderNodes(doc, content, coll, coll.getNodeChildren(node), templates)
+  return holder
+}
+
+function renderNodes(doc: Document, container: Element, coll: Tree, nodes: unknown[], templates: Templates) {
+  for (const node of nodes) container.append(renderNode(doc, coll, node, templates))
+}
+
+export const collection = defineCollection<Tree>({
+  item: groupTag,
+  itemText: textTag,
+  list: 'ark-tree-view-tree',
+  create: (items: Item[]) =>
+    tree.collection<Item>({
+      rootNode: { value: '', label: '', disabled: false, children: items },
+      nodeToChildren: (node) => node.children ?? [],
+    }),
+  readMarkup: (el) => {
+    const treeEl = el.querySelector('ark-tree-view-tree')
+    return treeEl ? readNodes(treeEl) : []
+  },
+  render: (treeEl, coll) => {
+    const templates = {
+      leaf: treeEl.querySelector<HTMLTemplateElement>(':scope > template:not([data-branch])'),
+      branch: treeEl.querySelector<HTMLTemplateElement>(':scope > template[data-branch]'),
+    }
+    clearRendered(treeEl)
+    renderNodes(treeEl.ownerDocument, treeEl, coll, coll.getNodeChildren(coll.rootNode), templates)
+  },
+})
 
 type Collection = NonNullable<ReturnType<typeof collection.get>>
 
@@ -91,7 +119,7 @@ function indexOf(coll: Collection) {
   let index = indexes.get(coll)
   if (!index) {
     index = new Map()
-    coll.visit({ onEnter: (node, indexPath) => void index!.set(node.value, { node, indexPath }) })
+    coll.visit({ onEnter: (node, indexPath) => void index!.set(coll.getNodeValue(node), { node, indexPath }) })
     indexes.set(coll, index)
   }
   return index
@@ -102,7 +130,7 @@ export const ancestors = new WeakMap<HTMLElement, { holder: Element | null; root
 export const nodePropsOf = (part: HTMLElement) => {
   let found = ancestors.get(part)
   if (!found) {
-    found = { holder: part.closest(valueHolder), root: part.closest(root) }
+    found = { holder: part.closest(valueHolder), root: rootOf(part, root) }
     ancestors.set(part, found)
   }
   const value = found.holder?.getAttribute('value')

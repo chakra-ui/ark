@@ -1,11 +1,21 @@
 import type * as select from '@zag-js/select'
+
+import { positionOf } from '../../utils/collection.js'
 import { definePart, wrappedButton } from '../../utils/define.js'
 import { definePresencePart } from '../../utils/presence.js'
 import { itemOf, root } from './shared.js'
 
-definePart<select.Api>({ tag: 'ark-select-label', root, props: (api) => api.getLabelProps() })
+definePart<select.Api>({
+  tag: 'ark-select-label',
+  root,
+  props: (api) => api.getLabelProps(),
+})
 
-definePart<select.Api>({ tag: 'ark-select-control', root, props: (api) => api.getControlProps() })
+definePart<select.Api>({
+  tag: 'ark-select-control',
+  root,
+  props: (api) => api.getControlProps(),
+})
 
 definePart<select.Api>({
   tag: 'ark-select-trigger',
@@ -24,7 +34,11 @@ definePart<select.Api>({
   },
 })
 
-definePart<select.Api>({ tag: 'ark-select-indicator', root, props: (api) => api.getIndicatorProps() })
+definePart<select.Api>({
+  tag: 'ark-select-indicator',
+  root,
+  props: (api) => api.getIndicatorProps(),
+})
 
 definePart<select.Api>({
   tag: 'ark-select-clear-trigger',
@@ -40,9 +54,17 @@ definePresencePart<select.Api>({
   props: (api) => api.getPositionerProps(),
 })
 
-definePresencePart<select.Api>({ tag: 'ark-select-content', root, props: (api) => api.getContentProps() })
+definePresencePart<select.Api>({
+  tag: 'ark-select-content',
+  root,
+  props: (api) => api.getContentProps(),
+})
 
-definePart<select.Api>({ tag: 'ark-select-list', root, props: (api) => api.getListProps() })
+definePart<select.Api>({
+  tag: 'ark-select-list',
+  root,
+  props: (api) => api.getListProps(),
+})
 
 definePart<select.Api>({
   tag: 'ark-select-scroll-arrow',
@@ -69,7 +91,11 @@ definePart<select.Api>({
   root,
   props: (api, el) => {
     const item = itemOf(el)
-    return item ? api.getItemProps({ item }) : {}
+    if (!item) return {}
+    return {
+      ...api.getItemProps({ item }),
+      ...positionOf(api.collection, api.collection.getItemValue(item)),
+    }
   },
 })
 

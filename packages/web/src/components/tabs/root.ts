@@ -18,6 +18,12 @@ defineRoot<tabs.Api>({
     'deselectable',
     'unmount-on-exit',
   ],
+  state: {
+    value: {
+      get: (api) => api.value,
+      set: (api, value) => (value == null ? api.clearValue() : api.setValue(value)),
+    },
+  },
   props: (el) => ({
     value: el.hasAttribute('value') ? str(el, 'value') : undefined,
     defaultValue: str(el, 'default-value'),

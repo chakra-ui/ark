@@ -32,6 +32,16 @@ defineRoot<tagsInput.Api>({
     'form',
     'placeholder',
   ],
+  state: {
+    value: {
+      get: (api) => api.value,
+      set: (api, value) => api.setValue(value),
+    },
+    inputValue: {
+      get: (api) => api.inputValue,
+      set: (api, value) => api.setInputValue(value),
+    },
+  },
   props: (el) => {
     const { validate, sanitizeValue, delimiter, translations } = el as TagsInputElement
     return {

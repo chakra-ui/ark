@@ -1,7 +1,7 @@
 import type * as progress from '@zag-js/progress'
 import { spreadProps } from '@zag-js/vanilla'
 import { str } from '../../utils/attrs.js'
-import { definePart, wrapped, type RootElement } from '../../utils/define.js'
+import { definePart, wrapped, type RootElement, rootOf } from '../../utils/define.js'
 import { root } from './shared.js'
 
 const autoText = new WeakSet<HTMLElement>()
@@ -38,7 +38,7 @@ definePart<progress.Api>({
   props: (api) => api.getCircleProps(),
   render: (api, el) => {
     const [track, range] = el.querySelectorAll<SVGCircleElement>(':scope > svg > circle')
-    const machineId = el.closest<RootElement<progress.Api>>(root)!.machineId
+    const machineId = rootOf<RootElement<progress.Api>>(el, root)!.machineId
     if (track) spreadProps(track as unknown as HTMLElement, api.getCircleTrackProps(), machineId)
     if (range) spreadProps(range as unknown as HTMLElement, api.getCircleRangeProps(), machineId)
   },

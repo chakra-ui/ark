@@ -22,6 +22,12 @@ definePresenceRoot<tooltip.Api>({
     'strategy',
     ...positioningAttributes,
   ],
+  state: {
+    open: {
+      get: (api) => api.open,
+      set: (api, open) => api.setOpen(!!open),
+    },
+  },
   props: (el) => ({
     open: controlled(el, 'open'),
     defaultOpen: el.hasAttribute('default-open'),

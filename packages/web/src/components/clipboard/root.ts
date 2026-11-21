@@ -11,6 +11,12 @@ defineRoot<clipboard.Api>({
 
   attributes: ['value', 'default-value', 'timeout'],
   properties: ['ids', 'translations'],
+  state: {
+    value: {
+      get: (api) => api.value,
+      set: (api, value) => api.setValue(value),
+    },
+  },
   props: (el) => ({
     value: str(el, 'value'),
     defaultValue: str(el, 'default-value'),

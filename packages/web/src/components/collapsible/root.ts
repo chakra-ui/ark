@@ -9,6 +9,12 @@ defineRoot<collapsible.Api>({
   machine: collapsible.machine,
   connect: collapsible.connect,
   attributes: ['open', 'default-open', 'disabled', 'collapsed-height', 'collapsed-width', 'hidden-until-found'],
+  state: {
+    open: {
+      get: (api) => api.open,
+      set: (api, open) => api.setOpen(!!open),
+    },
+  },
   props: (el) => ({
     open: el.hasAttribute('open') ? true : undefined,
     defaultOpen: el.hasAttribute('default-open'),

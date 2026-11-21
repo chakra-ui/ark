@@ -9,7 +9,7 @@ test('toggle flips aria-pressed and emits pressedchange on click', async ({ page
   await expect(button).toHaveAttribute('aria-pressed', 'false')
   await page.evaluate(() => {
     const el = document.querySelector('ark-toggle')!
-    el.addEventListener('pressedchange', (event) => el.setAttribute('data-last', String(event.detail)))
+    el.addEventListener('pressedchange', (event) => el.setAttribute('data-last', String(event.detail.pressed)))
   })
   await button.click()
   await expect(button).toHaveAttribute('aria-pressed', 'true')

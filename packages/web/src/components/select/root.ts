@@ -1,18 +1,15 @@
 import * as select from '@zag-js/select'
+
 import { positioning, positioningAttributes, str } from '../../utils/attrs.js'
 import { definePresenceRoot } from '../../utils/presence.js'
 import { collection, hiddenSelects, listOf, root, syncHiddenSelect } from './shared.js'
 
 definePresenceRoot<select.Api>({
-  properties: ['scrollToIndexFn', 'initialFocusEl', 'ids', 'translations', 'positioning', 'items'],
-  propertyChanged: (el, name) => {
-    if (name === 'items') collection.update(el)
-  },
-
   tag: root,
-  present: (api) => api.open,
   machine: select.machine,
   connect: select.connect,
+  present: (api) => api.open,
+
   attributes: [
     'value',
     'default-value',
@@ -25,6 +22,22 @@ definePresenceRoot<select.Api>({
     'fit-viewport',
     ...positioningAttributes,
   ],
+  properties: ['scrollToIndexFn', 'initialFocusEl', 'ids', 'translations', 'positioning'],
+  ownProperties: ['collection'],
+  propertyChanged: (el, name) => {
+    if (name === 'collection') collection.update(el)
+  },
+
+  state: {
+    open: {
+      get: (api) => api.open,
+      set: (api, open) => api.setOpen(!!open),
+    },
+    value: {
+      get: (api) => api.value,
+      set: (api, value) => api.setValue(value),
+    },
+  },
   props: (el) => ({
     collection: collection.get(el),
     value: listOf(el, 'value'),
@@ -37,6 +50,7 @@ definePresenceRoot<select.Api>({
     alignItemWithTrigger: el.hasAttribute('align-item-with-trigger'),
     positioning: { ...positioning(el), ...(el.hasAttribute('fit-viewport') && { fitViewport: true }) },
   }),
+
   events: {
     onSelect: 'itemselect',
     onHighlightChange: 'highlightchange',
@@ -46,6 +60,7 @@ definePresenceRoot<select.Api>({
     onFocusOutside: 'focusoutside',
     onInteractOutside: 'interactoutside',
   },
+
   rootProps: (api) => api.getRootProps(),
   setup: (el) => {
     const cleanup = collection.setup(el)

@@ -1,5 +1,5 @@
 import type * as toast from '@zag-js/toast'
-import { definePart, wrappedButton } from '../../utils/define.js'
+import { definePart, wrappedButton, rootOf } from '../../utils/define.js'
 import { entries, root } from './shared.js'
 
 // Empty parts are filled from the toast; authored text wins. Icons may sit beside the managed text node.
@@ -21,7 +21,7 @@ function fillText(el: HTMLElement | null, value: unknown) {
   el.hidden = !data
 }
 
-const actionOf = (el: HTMLElement) => entries.get(el.closest(root)!)?.toast.action
+const actionOf = (el: HTMLElement) => entries.get(rootOf(el, root)!)?.toast.action
 
 definePart<toast.Api>({
   tag: 'ark-toast-content',

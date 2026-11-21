@@ -10,6 +10,12 @@ defineRoot<zagSwitch.Api>({
   machine: zagSwitch.machine,
   connect: zagSwitch.connect,
   attributes: ['checked', 'default-checked', 'disabled', 'invalid', 'required', 'readonly', 'name', 'value', 'form'],
+  state: {
+    checked: {
+      get: (api) => api.checked,
+      set: (api, value) => api.setChecked(!!value),
+    },
+  },
   props: (el) => ({
     checked: el.hasAttribute('checked') ? el.getAttribute('checked') !== 'false' : undefined,
     defaultChecked: el.hasAttribute('default-checked'),

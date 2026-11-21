@@ -567,6 +567,7 @@
         "@zag-js/tooltip": "2.0.0-next.4",
         "@zag-js/tree-view": "2.0.0-next.4",
         "@zag-js/vanilla": "2.0.0-next.4",
+        "@zag-js/virtualizer": "2.0.0-next.4",
       },
       "devDependencies": {
         "@biomejs/biome": "2.5.11",

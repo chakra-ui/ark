@@ -39,6 +39,12 @@ defineRoot<numberInput.Api>({
     'name',
     'form',
   ],
+  state: {
+    value: {
+      get: (api) => api.value,
+      set: (api, value) => (value == null ? api.clearValue() : api.setValue(Number(value))),
+    },
+  },
   props: (el) => ({
     value: el.hasAttribute('value') ? (num(el, 'value') ?? null) : undefined,
     defaultValue: num(el, 'default-value'),

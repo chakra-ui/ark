@@ -2,10 +2,10 @@ import type { CallbackEvents } from '../../utils/events.js'
 import './root.js'
 import './parts.js'
 import type { Api, Props } from '@zag-js/collapsible'
-import type { RootElement } from '../../utils/define.js'
+import type { RootElement, StateProperties } from '../../utils/define.js'
 
 export type { Api as CollapsibleApi } from '@zag-js/collapsible'
-export type CollapsibleElement = RootElement<Api, Props> & Pick<Props, 'ids'>
+export type CollapsibleElement = RootElement<Api, Props> & Pick<Props, 'ids'> & StateProperties<Props, 'open'>
 
 declare global {
   interface HTMLElementTagNameMap {

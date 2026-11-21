@@ -2,10 +2,10 @@ import type { CallbackEvents } from '../../utils/events.js'
 import './root.js'
 import './parts.js'
 import type { Api, Props } from '@zag-js/toggle-group'
-import type { RootElement } from '../../utils/define.js'
+import type { RootElement, StateProperties } from '../../utils/define.js'
 
 export type { Api as ToggleGroupApi } from '@zag-js/toggle-group'
-export type ToggleGroupElement = RootElement<Api, Props> & Pick<Props, 'ids'>
+export type ToggleGroupElement = RootElement<Api, Props> & Pick<Props, 'ids'> & StateProperties<Props, 'value'>
 
 declare global {
   interface HTMLElementTagNameMap {

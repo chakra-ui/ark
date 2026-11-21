@@ -1,4 +1,5 @@
-import '../../src/index.js'
 import { parse as parseDate } from '@zag-js/date-picker'
 
-Object.assign(window, { parseDate })
+import { createListCollection, createTreeCollection } from '../../src/index.js'
+
+Object.assign(window, { parseDate, createListCollection, createTreeCollection })

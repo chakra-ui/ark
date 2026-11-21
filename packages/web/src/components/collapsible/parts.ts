@@ -1,5 +1,5 @@
 import type * as collapsible from '@zag-js/collapsible'
-import { definePart, wrappedButton } from '../../utils/define.js'
+import { definePart, wrappedButton, rootOf } from '../../utils/define.js'
 import { mountTemplate } from '../../utils/lazy.js'
 import { root } from './shared.js'
 
@@ -16,5 +16,5 @@ definePart<collapsible.Api>({
   tag: 'ark-collapsible-content',
   root,
   props: (api) => api.getContentProps(),
-  render: (api, el) => mountTemplate(el, api.visible, !!el.closest(root)?.hasAttribute('unmount-on-exit')),
+  render: (api, el) => mountTemplate(el, api.visible, !!rootOf(el, root)?.hasAttribute('unmount-on-exit')),
 })

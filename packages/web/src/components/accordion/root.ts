@@ -9,6 +9,12 @@ defineRoot<accordion.Api>({
   machine: accordion.machine,
   connect: accordion.connect,
   attributes: ['multiple', 'collapsible', 'value', 'default-value', 'disabled', 'orientation'],
+  state: {
+    value: {
+      get: (api) => api.value,
+      set: (api, value) => api.setValue(value),
+    },
+  },
   props: (el) => ({
     multiple: el.hasAttribute('multiple'),
     collapsible: el.hasAttribute('collapsible'),

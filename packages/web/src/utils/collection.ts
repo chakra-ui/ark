@@ -10,7 +10,7 @@ export interface Item {
   children?: Item[]
 }
 
-export type ItemInput =
+type ItemInput =
   | string
   | {
       value: string
@@ -22,6 +22,16 @@ export type ItemInput =
       children?: ItemInput[]
     }
 
+export interface ListLike<T = any> {
+  items: T[]
+  size: number
+  getItemValue: (item: T | null | undefined) => string | null
+  getItemDisabled: (item: T | null) => boolean
+  stringifyItem: (item: T | null) => string | null
+  indexOf: (value: string | null) => number
+  group: () => [string, T[]][]
+}
+
 export interface CollectionConfig<C> {
   item: string
   itemText: string
@@ -31,7 +41,7 @@ export interface CollectionConfig<C> {
   create: (items: Item[], el: HTMLElement) => C
   attributes?: string[]
   readMarkup?: (el: HTMLElement, config: CollectionConfig<C>) => Item[]
-  render?: (template: HTMLTemplateElement, items: Item[], config: CollectionConfig<C>) => void
+  render?: (list: HTMLElement, collection: C, config: CollectionConfig<C>) => void
 }
 
 const toItem = (input: ItemInput): Item =>
@@ -50,6 +60,13 @@ const toItem = (input: ItemInput): Item =>
 export const grouping = (items: Item[]) =>
   items.some((item) => item.group) ? { groupBy: (item: Item) => item.group ?? '' } : {}
 
+export function positionOf(collection: Pick<ListLike, 'indexOf' | 'size'>, value: string | null) {
+  const index = collection.indexOf(value)
+  if (index < 0) return {}
+
+  return { 'aria-posinset': index + 1, 'aria-setsize': collection.size }
+}
+
 function readFlatMarkup<C>(el: HTMLElement, config: CollectionConfig<C>): Item[] {
   return Array.from(el.querySelectorAll<HTMLElement>(`${config.item}:not([data-rendered])`), (item) => ({
     value: item.getAttribute('value') ?? '',
@@ -59,71 +76,154 @@ function readFlatMarkup<C>(el: HTMLElement, config: CollectionConfig<C>): Item[]
   }))
 }
 
-function renderItem<C>(template: HTMLTemplateElement, item: Item, config: CollectionConfig<C>) {
-  const node = template.content.firstElementChild?.cloneNode(true) as HTMLElement
-  node.setAttribute('value', item.value)
-  node.toggleAttribute('disabled', item.disabled)
+function readJson(script: HTMLScriptElement): Item[] {
+  try {
+    return (JSON.parse(script.textContent || '[]') as ItemInput[]).map(toItem)
+  } catch {
+    return []
+  }
+}
+
+export function clearRendered(list: Element) {
+  for (const rendered of list.querySelectorAll(':scope > [data-rendered]')) rendered.remove()
+}
+
+export function cloneTemplate(template: HTMLTemplateElement | null, fallback: () => HTMLElement) {
+  const node = (template?.content.firstElementChild?.cloneNode(true) as HTMLElement | undefined) ?? fallback()
   node.setAttribute('data-rendered', '')
-  ;(node.querySelector(config.itemText) ?? node).textContent = item.label
   return node
 }
 
-function renderFlat<C>(template: HTMLTemplateElement, items: Item[], config: CollectionConfig<C>) {
-  const list = template.parentElement!
-  for (const rendered of list.querySelectorAll(':scope > [data-rendered]')) rendered.remove()
+function createPart(doc: Document, tag: string, child?: string) {
+  const node = doc.createElement(tag)
+  if (child) node.append(doc.createElement(child))
+  return node
+}
 
-  const groupTemplate = list.querySelector<HTMLTemplateElement>(':scope > template[data-group]')
-  const groups = new Map<string, HTMLElement>()
+interface Templates {
+  item: HTMLTemplateElement | null
+  group: HTMLTemplateElement | null
+}
 
-  for (const item of items) {
-    let parent: HTMLElement = list
-    if (item.group && groupTemplate && config.itemGroup) {
-      let group = groups.get(item.group)
-      if (!group) {
-        group = groupTemplate.content.firstElementChild?.cloneNode(true) as HTMLElement
-        group.setAttribute('name', item.group)
-        group.setAttribute('data-rendered', '')
-        if (config.itemGroupLabel) {
-          const label = group.querySelector(config.itemGroupLabel)
-          if (label) label.textContent = item.group
-        }
-        groups.set(item.group, group)
-        list.append(group)
-      }
-      parent = group
-    }
-    parent.append(renderItem(template, item, config))
+function renderGroup<C>(list: HTMLElement, templates: Templates, name: string, config: CollectionConfig<C>) {
+  const group = cloneTemplate(templates.group, () =>
+    createPart(list.ownerDocument, config.itemGroup!, config.itemGroupLabel),
+  )
+  group.setAttribute('name', name)
+
+  const label = config.itemGroupLabel && group.querySelector(config.itemGroupLabel)
+  if (label) label.textContent = name
+
+  list.append(group)
+  return group
+}
+
+function renderItem<C>(
+  list: HTMLElement,
+  templates: Templates,
+  collection: ListLike,
+  item: unknown,
+  config: CollectionConfig<C>,
+) {
+  const node = cloneTemplate(templates.item, () => createPart(list.ownerDocument, config.item, config.itemText))
+  node.setAttribute('value', collection.getItemValue(item) ?? '')
+  node.toggleAttribute('disabled', collection.getItemDisabled(item))
+
+  const text = node.querySelector(config.itemText) ?? node
+  text.textContent = collection.stringifyItem(item) ?? ''
+
+  return node
+}
+
+function renderList<C>(list: HTMLElement, collection: C, config: CollectionConfig<C>) {
+  const source = collection as unknown as ListLike
+  const templates = {
+    item: list.querySelector<HTMLTemplateElement>(':scope > template:not([data-group])'),
+    group: list.querySelector<HTMLTemplateElement>(':scope > template[data-group]'),
+  }
+
+  clearRendered(list)
+
+  for (const [name, items] of source.group()) {
+    const parent = name && config.itemGroup ? renderGroup(list, templates, name, config) : list
+    for (const item of items) parent.append(renderItem(list, templates, source, item, config))
   }
 }
 
-export function defineCollection<C>(config: CollectionConfig<C>) {
-  const collections = new WeakMap<HTMLElement, C>()
-  const keys = new WeakMap<HTMLElement, string>()
-  const readMarkup = config.readMarkup ?? readFlatMarkup
-  const render = config.render ?? renderFlat
+interface State<C> {
+  source: unknown
+  key: string
+  collection: C
+  list: HTMLElement | null
+}
 
-  function readData(el: HTMLElement): Item[] | null {
-    const prop = (el as HTMLElement & { items?: ItemInput[] }).items
-    if (prop) return prop.map(toItem)
+const markup = Symbol('markup')
+
+interface Source<C> {
+  source: unknown
+  key: string
+  property?: C
+  items?: () => Item[]
+}
+
+export function defineCollection<C>(config: CollectionConfig<C>) {
+  const states = new WeakMap<HTMLElement, State<C>>()
+  const readMarkup = config.readMarkup ?? readFlatMarkup
+  const render = config.render ?? renderList
+
+  const attributesOf = (el: HTMLElement) => JSON.stringify(config.attributes?.map((name) => el.getAttribute(name)))
+
+  const readProperty = (el: HTMLElement): Source<C> | null => {
+    const property = (el as HTMLElement & { collection?: C }).collection
+    if (!property) return null
+
+    return { source: property, key: '', property }
+  }
+
+  const readScript = (el: HTMLElement): Source<C> | null => {
     const script = el.querySelector<HTMLScriptElement>(':scope > script[type="application/json"]')
     if (!script) return null
-    try {
-      return (JSON.parse(script.textContent || '[]') as ItemInput[]).map(toItem)
-    } catch {
-      return []
+
+    return {
+      source: script,
+      key: `${script.textContent}|${attributesOf(el)}`,
+      items: () => readJson(script),
     }
   }
 
+  const readItems = (el: HTMLElement): Source<C> => {
+    const items = readMarkup(el, config)
+
+    return {
+      source: markup,
+      key: `${JSON.stringify(items)}|${attributesOf(el)}`,
+      items: () => items,
+    }
+  }
+
+  const read = (el: HTMLElement) => readProperty(el) ?? readScript(el) ?? readItems(el)
+
+  const renderTarget = (el: HTMLElement, dataDriven: boolean) => {
+    const list = el.querySelector<HTMLElement>(config.list)
+    if (!dataDriven || !list || list.hasAttribute('manual')) return null
+    return list
+  }
+
   function build(el: HTMLElement) {
-    const data = readData(el)
-    const items = data ?? readMarkup(el, config)
-    const template = data && el.querySelector<HTMLTemplateElement>(`${config.list} > template:not([data-group])`)
-    const key = JSON.stringify([items, config.attributes?.map((name) => el.getAttribute(name)), !!template])
-    if (keys.get(el) === key) return false
-    keys.set(el, key)
-    if (template) render(template, data, config)
-    collections.set(el, config.create(items, el))
-    return true
+    const next = read(el)
+    const prev = states.get(el)
+
+    const changed = !prev || prev.source !== next.source || prev.key !== next.key
+    const collection = changed ? (next.property ?? config.create(next.items!(), el)) : prev.collection
+
+    const dataDriven = next.source !== markup
+    if (!dataDriven && changed && prev?.list) clearRendered(prev.list)
+
+    const list = renderTarget(el, dataDriven)
+    if (list && (changed || prev?.list !== list)) render(list, collection, config)
+
+    states.set(el, { source: next.source, key: next.key, collection, list })
+    return changed
   }
 
   function setup(el: RootElement): VoidFunction {
@@ -144,7 +244,7 @@ export function defineCollection<C>(config: CollectionConfig<C>) {
   return {
     setup,
     update: build,
-    get: (el: HTMLElement) => collections.get(el),
+    get: (el: HTMLElement) => states.get(el)?.collection,
     valueOf: (part: HTMLElement) => part.closest(config.item)?.getAttribute('value') ?? null,
   }
 }

@@ -1,4 +1,5 @@
-import '../../src/components/tree-view/index.js'
+import { createTreeCollection } from '../../src/components/tree-view/index.js'
+
 import styles from 'styles/tree-view.module.css'
 
 export function mount(root: HTMLElement) {
@@ -30,7 +31,9 @@ export function mount(root: HTMLElement) {
     </ark-tree-view>
   `
   const tree = root.querySelector('ark-tree-view')!
-  tree.items = [{ value: 'src', label: 'src', children: [] }]
+  tree.collection = createTreeCollection({
+    rootNode: { value: 'ROOT', label: '', children: [{ value: 'src', label: 'src', childrenCount: 1 }] },
+  })
   tree.loadChildren = async ({ node, signal }) => {
     root.querySelector('output')!.textContent = 'Loading…'
     await new Promise<void>((resolve, reject) => {
@@ -47,7 +50,7 @@ export function mount(root: HTMLElement) {
     return [{ value: `${node.value}/index.ts`, label: 'index.ts', disabled: false }]
   }
   tree.addEventListener('loadchildrencomplete', (event) => {
-    tree.items = event.detail.collection.rootNode.children
+    tree.collection = event.detail.collection
     root.querySelector('output')!.textContent = 'Files loaded.'
   })
   tree.addEventListener('loadchildrenerror', () => {

@@ -21,6 +21,12 @@ defineRoot<rating.Api>({
     'name',
     'form',
   ],
+  state: {
+    value: {
+      get: (api) => api.value,
+      set: (api, value) => api.setValue(Number(value)),
+    },
+  },
   props: (el) => ({
     value: num(el, 'value'),
     defaultValue: num(el, 'default-value'),

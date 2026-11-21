@@ -10,5 +10,5 @@
     "paths": {}
   },
   "include": ["src"],
-  "exclude": ["dist", "src/**/tests"]
+  "exclude": ["dist", "src/**/tests", "src/**/*.stories.ts"]
 }

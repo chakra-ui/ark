@@ -2,13 +2,14 @@ import type { CallbackEvents } from '../../utils/events.js'
 import './root.js'
 import './parts.js'
 import type { Api, Props } from '@zag-js/pagination'
-import type { RootElement } from '../../utils/define.js'
+import type { RootElement, StateProperties } from '../../utils/define.js'
 import type { FunctionProperties } from '../../utils/events.js'
 
 export type { Api as PaginationApi } from '@zag-js/pagination'
 export type PaginationElement = RootElement<Api, Props> &
   FunctionProperties<Props> &
-  Pick<Props, 'ids' | 'translations'>
+  Pick<Props, 'ids' | 'translations'> &
+  StateProperties<Props, 'page' | 'pageSize'>
 
 declare global {
   interface HTMLElementTagNameMap {

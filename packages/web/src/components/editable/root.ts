@@ -27,6 +27,12 @@ defineRoot<editable.Api>({
     'name',
     'form',
   ],
+  state: {
+    value: {
+      get: (api) => api.value,
+      set: (api, value) => api.setValue(value),
+    },
+  },
   props: (el) => ({
     value: str(el, 'value'),
     defaultValue: str(el, 'default-value'),

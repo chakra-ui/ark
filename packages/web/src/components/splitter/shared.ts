@@ -1,5 +1,7 @@
 import type * as splitter from '@zag-js/splitter'
+
 import { num, str } from '../../utils/attrs.js'
+import { rootOf } from '../../utils/define.js'
 
 export const root = 'ark-splitter'
 export const panelTag = 'ark-splitter-panel'
@@ -29,7 +31,7 @@ export const panelValue = (el: Element) => el.getAttribute('value') ?? ''
 
 export const readPanels = (el: HTMLElement): splitter.PanelData[] =>
   Array.from(el.querySelectorAll<HTMLElement>(panelTag))
-    .filter((panel) => panel.closest(root) === el)
+    .filter((panel) => rootOf(panel, root) === el)
     .map((panel) => ({
       id: panelValue(panel),
       order: num(panel, 'order'),

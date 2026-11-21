@@ -11,5 +11,5 @@
       "styles/*": ["../../.storybook/modules/*"]
     }
   },
-  "include": ["src", "examples", "stories", ".storybook", "../../.storybook/modules/css-modules.d.ts", "type-tests"]
+  "include": ["src", "examples", ".storybook", "../../.storybook/modules/css-modules.d.ts", "type-tests"]
 }

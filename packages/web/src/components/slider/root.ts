@@ -26,6 +26,12 @@ defineRoot<slider.Api>({
     'name',
     'form',
   ],
+  state: {
+    value: {
+      get: (api) => api.value,
+      set: (api, value) => api.setValue(value),
+    },
+  },
   props: (el) => ({
     value: numbers(el, 'value'),
     defaultValue: numbers(el, 'default-value'),

@@ -1,5 +1,5 @@
 import type * as pinInput from '@zag-js/pin-input'
-import { definePart, ownInput, wrapped } from '../../utils/define.js'
+import { definePart, ownInput, wrapped, rootOf } from '../../utils/define.js'
 import { inputsOf, inputTag, root } from './shared.js'
 
 definePart<pinInput.Api>({ tag: 'ark-pin-input-label', root, props: (api) => api.getLabelProps() })
@@ -16,7 +16,7 @@ definePart<pinInput.Api>({
     return () => rootEl.refresh()
   },
   props: (api, el) => {
-    const rootEl = el.closest(root)
+    const rootEl = rootOf(el, root)
     return rootEl ? api.getInputProps({ index: inputsOf(rootEl).indexOf(el) }) : {}
   },
 })

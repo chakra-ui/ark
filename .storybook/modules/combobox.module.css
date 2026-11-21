@@ -164,10 +164,13 @@
 .ItemGroup {
   display: flex;
   flex-direction: column;
+}
 
-  & + & {
-    margin-top: 0.5rem;
-  }
+/* a divider between visible groups; hidden (filtered-out) groups never add one */
+.ItemGroup:not([hidden]) ~ .ItemGroup:not([hidden]) {
+  border-top: 1px solid var(--demo-border);
+  margin-top: 0.25rem;
+  padding-top: 0.25rem;
 }
 
 .ItemGroupLabel {

@@ -18,6 +18,12 @@ defineRoot<segmentGroup.Api>({
 
   attributes: ['value', 'default-value', 'name', 'form', 'disabled', 'invalid', 'required', 'readonly', 'orientation'],
   properties: ['ids'],
+  state: {
+    value: {
+      get: (api) => api.value,
+      set: (api, value) => (value == null ? api.clearValue() : api.setValue(value)),
+    },
+  },
   props: (el) => ({
     value: controlledValue(el),
     defaultValue: str(el, 'default-value'),

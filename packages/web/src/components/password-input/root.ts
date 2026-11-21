@@ -23,6 +23,12 @@ defineRoot<passwordInput.Api>({
     'ignore-password-managers',
   ],
   properties: ['ids', 'translations'],
+  state: {
+    visible: {
+      get: (api) => api.visible,
+      set: (api, value) => api.setVisible(!!value),
+    },
+  },
   props: (el) => ({
     visible: controlled(el, 'visible'),
     defaultVisible: el.hasAttribute('default-visible'),

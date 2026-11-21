@@ -1,20 +1,16 @@
-import { PageListCollection } from '@zag-js/collection'
+import { type CollectionItem, isPageListCollection, type ListCollection, PageListCollection } from '@zag-js/collection'
 import { createFuzzySearch, type FuzzySearch } from '@zag-js/fuzzy'
+
 import { defineCollection, grouping, type CollectionConfig, type Item } from '../../utils/collection.js'
+
+import { rootOf } from '../../utils/define.js'
 export const root = 'ark-command'
 
-export type CommandFilter = (items: Item[], query: string) => Item[]
+export type CommandFilter<T extends CollectionItem = CollectionItem> = (items: T[], query: string) => T[]
 
-const toCollection = (items: Item[]) =>
-  new PageListCollection<Item>({
-    items,
-    ...grouping(items),
-    itemToValue: (item) => item.value,
-    itemToString: (item) => item.label,
-    isItemDisabled: (item) => item.disabled,
-  })
+export type Pages = PageListCollection
 
-export type Pages = ReturnType<typeof toCollection>
+export type Source = ListCollection | PageListCollection
 
 const keywordsOf = (value: string | null) =>
   value
@@ -33,7 +29,7 @@ function readMarkup<C>(el: HTMLElement, config: CollectionConfig<C>): Item[] {
   }))
 }
 
-export const collection = defineCollection({
+export const collection = defineCollection<Source>({
   item: 'ark-command-item',
   itemText: 'ark-command-item-text',
   list: 'ark-command-list',
@@ -41,19 +37,20 @@ export const collection = defineCollection({
   itemGroupLabel: 'ark-command-item-group-label',
   attributes: ['keywords', 'parent'],
   readMarkup,
-  create: toCollection,
+  create: (items: Item[]) => new PageListCollection({ items, ...grouping(items) }),
 })
 
 export const queries = new WeakMap<HTMLElement, string>()
 
 type CommandHost = HTMLElement & { filter?: CommandFilter }
 
-const navigation = new WeakMap<HTMLElement, { source: Pages; pages: Pages }>()
+const navigation = new WeakMap<HTMLElement, { source: Source; pages: Pages }>()
 
 export function pagesOf(el: HTMLElement): Pages | undefined {
   const source = collection.get(el)
   const current = navigation.get(el)
-  return current && current.source === source ? current.pages : source
+  if (current && current.source === source) return current.pages
+  return source && isPageListCollection(source) ? (source as Pages) : undefined
 }
 
 export function setPages(el: HTMLElement, pages: Pages) {
@@ -61,12 +58,20 @@ export function setPages(el: HTMLElement, pages: Pages) {
   if (source) navigation.set(el, { source, pages })
 }
 
-const searches = new WeakMap<Pages, FuzzySearch<Item>>()
+const itemKeywords = (item: unknown): string[] | undefined => {
+  const keywords = (item as { keywords?: unknown } | null)?.keywords
+  return Array.isArray(keywords) ? keywords.filter((keyword) => typeof keyword === 'string') : undefined
+}
 
-function searchOf(source: Pages) {
+const searches = new WeakMap<Source, FuzzySearch<CollectionItem>>()
+
+function searchOf(source: Source) {
   let search = searches.get(source)
   if (!search) {
-    search = createFuzzySearch<Item>({ itemToString: (item) => item.label, itemToKeywords: (item) => item.keywords })
+    search = createFuzzySearch<CollectionItem>({
+      itemToString: (item) => source.stringifyItem(item) ?? '',
+      itemToKeywords: itemKeywords,
+    })
     searches.set(source, search)
   }
   return search
@@ -75,37 +80,48 @@ function searchOf(source: Pages) {
 export const queryOf = (el: HTMLElement) =>
   el.getAttribute('input-value') ?? queries.get(el) ?? el.getAttribute('default-input-value') ?? ''
 
-const descendants = new WeakMap<Pages, Item[]>()
+const descendants = new WeakMap<Pages, CollectionItem[]>()
 
-const filtered = new WeakMap<HTMLElement, { pages: Pages; query: string; filter: unknown; result: Pages }>()
-
-export function filteredOf(el: HTMLElement) {
-  const source = collection.get(el)
-  const pages = pagesOf(el)
-  if (!source || !pages) return undefined
-  const filter = (el as CommandHost).filter
-  const query = queryOf(el).trim()
-  if (!query) return pages
-  const cached = filtered.get(el)
-  if (cached && cached.pages === pages && cached.query === query && cached.filter === filter) return cached.result
+function searchableOf(pages: Pages) {
   let items = descendants.get(pages)
   if (!items) {
     items = pages.getDescendants()
     descendants.set(pages, items)
   }
-  const matches = new Set(filter ? filter(items, query) : searchOf(source).search(items, query))
-  const result = pages.setItems(pages.allItems.filter((item) => matches.has(item)))
-  filtered.set(el, { pages, query, filter, result })
+  return items
+}
+
+const filtered = new WeakMap<HTMLElement, { view: Source; query: string; filter: unknown; result: Source }>()
+
+export function filteredOf(el: HTMLElement): Source | undefined {
+  const source = collection.get(el)
+  if (!source) return undefined
+  const pages = pagesOf(el)
+  const view = pages ?? source
+  const filter = (el as CommandHost).filter
+  const query = queryOf(el).trim()
+  if (!query) return view
+  const cached = filtered.get(el)
+  if (cached && cached.view === view && cached.query === query && cached.filter === filter) return cached.result
+  const searchable = pages ? searchableOf(pages) : source.items
+  const matches = new Set(filter ? filter(searchable, query) : searchOf(source).search(searchable, query))
+  const ordered = pages ? pages.allItems : source.items
+  const result = view.setItems(ordered.filter((item) => matches.has(item)))
+  filtered.set(el, { view, query, filter, result })
   return result
 }
 
+export const hasGroup = (items: Source, name: string) => items.group().some(([key]) => key === name)
+
 export const itemOf = (part: HTMLElement) => {
   const value = collection.valueOf(part)
-  const rootEl = part.closest<HTMLElement>(root)
-  return value != null && rootEl ? collection.get(rootEl)?.getItem(value) : null
+  const rootEl = rootOf<HTMLElement>(part, root)
+  const source = rootEl ? collection.get(rootEl) : undefined
+  if (value == null || !source) return null
+  return isPageListCollection(source) ? (source as Pages).getItem(value) : source.find(value)
 }
 
 export const isFilteredOut = (part: HTMLElement, value: string) => {
-  const rootEl = part.closest<HTMLElement>(root)
+  const rootEl = rootOf<HTMLElement>(part, root)
   return !!rootEl && !filteredOf(rootEl)?.has(value)
 }

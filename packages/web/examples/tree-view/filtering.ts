@@ -1,6 +1,6 @@
 import { createElement, ChevronRight, Check, Minus, Folder, File, ExternalLink } from 'lucide'
 
-import '../../src/components/tree-view/index.js'
+import { createTreeCollection } from '../../src/components/tree-view/index.js'
 
 import field from 'styles/field.module.css'
 
@@ -76,9 +76,12 @@ export function mount(root: HTMLElement) {
   </ark-tree-view>
     </div>`
   const tree = root.querySelector('ark-tree-view')!
-  tree.items = files()
+  const show = (nodes: Node[]) => {
+    tree.collection = createTreeCollection({ rootNode: { value: 'ROOT', label: '', children: nodes } })
+  }
+  show(files())
   root.querySelector('input')!.addEventListener('input', (event) => {
     const query = (event.target as HTMLInputElement).value
-    tree.items = query ? filterNodes(files(), query) : files()
+    show(query ? filterNodes(files(), query) : files())
   })
 }

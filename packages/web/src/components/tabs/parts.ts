@@ -1,5 +1,5 @@
 import type * as tabs from '@zag-js/tabs'
-import { definePart, wrappedButton } from '../../utils/define.js'
+import { definePart, wrappedButton, rootOf } from '../../utils/define.js'
 import { mountTemplate } from '../../utils/lazy.js'
 import { root } from './shared.js'
 
@@ -18,7 +18,8 @@ definePart<tabs.Api>({
   tag: 'ark-tabs-content',
   root,
   props: (api, el) => api.getContentProps({ value: itemValue(el) }),
-  render: (api, el) => mountTemplate(el, api.value === itemValue(el), !!el.closest(`${root}[unmount-on-exit]`)),
+  render: (api, el) =>
+    mountTemplate(el, api.value === itemValue(el), !!rootOf(el, root)?.hasAttribute('unmount-on-exit')),
 })
 
 definePart<tabs.Api>({ tag: 'ark-tabs-indicator', root, props: (api) => api.getIndicatorProps() })

@@ -1,6 +1,6 @@
 import { createElement, X, ChevronsUpDown, Check } from 'lucide'
 
-import '../../src/components/combobox/index.js'
+import { createListCollection } from '../../src/components/combobox/index.js'
 
 import styles from 'styles/combobox.module.css'
 
@@ -37,20 +37,23 @@ export function mount(root: HTMLElement) {
     { label: 'Documentation', value: 'docs' },
   ]
   let inputValue = ''
-  el.items = items
+  const show = (next: typeof items) => {
+    el.collection = createListCollection({ items: next })
+  }
+  show(items)
   el.addEventListener('inputvaluechange', (event) => {
     const detail = event.detail
     if (detail.reason !== 'input-change') return
     inputValue = detail.inputValue
     const query = inputValue.trim().toLowerCase()
     const exists = items.some((it) => it.label.toLowerCase() === query)
-    el.items = query && !exists ? [...items, { label: `+ Create "${inputValue}"`, value: NEW_OPTION_VALUE }] : items
+    show(query && !exists ? [...items, { label: `+ Create "${inputValue}"`, value: NEW_OPTION_VALUE }] : items)
   })
   el.addEventListener('valuechange', (event) => {
     const { value } = event.detail
     if (value.includes(NEW_OPTION_VALUE)) {
       items = [...items, { label: inputValue, value: inputValue }]
-      el.items = items
+      show(items)
     }
     el.setAttribute('value', value.map((v) => (v === NEW_OPTION_VALUE ? inputValue : v)).join(','))
   })

@@ -11,6 +11,12 @@ definePresenceRoot<dialog.Api>({
   connect: dialog.connect,
   present: (api) => api.open,
   attributes: ['open', 'modal', 'role', 'initial-focus', 'final-focus'],
+  state: {
+    open: {
+      get: (api) => api.open,
+      set: (api, open) => api.setOpen(!!open),
+    },
+  },
   props: (el) => ({
     open: controlled(el, 'open'),
     modal: el.getAttribute('modal') !== 'false',

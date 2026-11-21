@@ -6,7 +6,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const config: StorybookConfig = {
   framework: { name: '@storybook/html-vite', options: {} },
-  stories: ['../stories/**/*.stories.ts'],
+  stories: ['../src/components/**/*.stories.ts'],
   addons: ['@storybook/addon-a11y'],
   staticDirs: [{ from: '../tests/fixtures', to: '/test-fixtures' }],
   core: { disableTelemetry: true },
